@@ -21,7 +21,7 @@ var _ MappedNullable = &ReplyTicketCommand{}
 // ReplyTicketCommand struct for ReplyTicketCommand
 type ReplyTicketCommand struct {
 	TicketId NullableString `json:"ticketId,omitempty"`
-	Body     NullableString `json:"body,omitempty"`
+	Body NullableString `json:"body,omitempty"`
 }
 
 // NewReplyTicketCommand instantiates a new ReplyTicketCommand object
@@ -73,7 +73,6 @@ func (o *ReplyTicketCommand) HasTicketId() bool {
 func (o *ReplyTicketCommand) SetTicketId(v string) {
 	o.TicketId.Set(&v)
 }
-
 // SetTicketIdNil sets the value for TicketId to be an explicit nil
 func (o *ReplyTicketCommand) SetTicketIdNil() {
 	o.TicketId.Set(nil)
@@ -116,7 +115,6 @@ func (o *ReplyTicketCommand) HasBody() bool {
 func (o *ReplyTicketCommand) SetBody(v string) {
 	o.Body.Set(&v)
 }
-
 // SetBodyNil sets the value for Body to be an explicit nil
 func (o *ReplyTicketCommand) SetBodyNil() {
 	o.Body.Set(nil)
@@ -128,7 +126,7 @@ func (o *ReplyTicketCommand) UnsetBody() {
 }
 
 func (o ReplyTicketCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableReplyTicketCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

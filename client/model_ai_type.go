@@ -21,7 +21,7 @@ type AiType string
 
 // List of AiType
 const (
-	AITYPE_TAIKUN  AiType = "Taikun"
+	AITYPE_TAIKUN AiType = "Taikun"
 	AITYPE_OPEN_AI AiType = "OpenAi"
 )
 
@@ -109,3 +109,4 @@ func (v *NullableAiType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

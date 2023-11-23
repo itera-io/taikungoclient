@@ -20,16 +20,16 @@ var _ MappedNullable = &OpaProfileUpdateCommand{}
 
 // OpaProfileUpdateCommand struct for OpaProfileUpdateCommand
 type OpaProfileUpdateCommand struct {
-	Id                    *int32         `json:"id,omitempty"`
-	Name                  NullableString `json:"name,omitempty"`
-	ForbidNodePort        NullableBool   `json:"forbidNodePort,omitempty"`
-	ForbidHttpIngress     NullableBool   `json:"forbidHttpIngress,omitempty"`
-	RequireProbe          NullableBool   `json:"requireProbe,omitempty"`
-	UniqueIngresses       NullableBool   `json:"uniqueIngresses,omitempty"`
-	UniqueServiceSelector NullableBool   `json:"uniqueServiceSelector,omitempty"`
-	AllowedRepo           []string       `json:"allowedRepo,omitempty"`
-	ForbidSpecificTags    []string       `json:"forbidSpecificTags,omitempty"`
-	IngressWhitelist      []string       `json:"ingressWhitelist,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ForbidNodePort NullableBool `json:"forbidNodePort,omitempty"`
+	ForbidHttpIngress NullableBool `json:"forbidHttpIngress,omitempty"`
+	RequireProbe NullableBool `json:"requireProbe,omitempty"`
+	UniqueIngresses NullableBool `json:"uniqueIngresses,omitempty"`
+	UniqueServiceSelector NullableBool `json:"uniqueServiceSelector,omitempty"`
+	AllowedRepo []string `json:"allowedRepo,omitempty"`
+	ForbidSpecificTags []string `json:"forbidSpecificTags,omitempty"`
+	IngressWhitelist []string `json:"ingressWhitelist,omitempty"`
 }
 
 // NewOpaProfileUpdateCommand instantiates a new OpaProfileUpdateCommand object
@@ -113,7 +113,6 @@ func (o *OpaProfileUpdateCommand) HasName() bool {
 func (o *OpaProfileUpdateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OpaProfileUpdateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -156,7 +155,6 @@ func (o *OpaProfileUpdateCommand) HasForbidNodePort() bool {
 func (o *OpaProfileUpdateCommand) SetForbidNodePort(v bool) {
 	o.ForbidNodePort.Set(&v)
 }
-
 // SetForbidNodePortNil sets the value for ForbidNodePort to be an explicit nil
 func (o *OpaProfileUpdateCommand) SetForbidNodePortNil() {
 	o.ForbidNodePort.Set(nil)
@@ -199,7 +197,6 @@ func (o *OpaProfileUpdateCommand) HasForbidHttpIngress() bool {
 func (o *OpaProfileUpdateCommand) SetForbidHttpIngress(v bool) {
 	o.ForbidHttpIngress.Set(&v)
 }
-
 // SetForbidHttpIngressNil sets the value for ForbidHttpIngress to be an explicit nil
 func (o *OpaProfileUpdateCommand) SetForbidHttpIngressNil() {
 	o.ForbidHttpIngress.Set(nil)
@@ -242,7 +239,6 @@ func (o *OpaProfileUpdateCommand) HasRequireProbe() bool {
 func (o *OpaProfileUpdateCommand) SetRequireProbe(v bool) {
 	o.RequireProbe.Set(&v)
 }
-
 // SetRequireProbeNil sets the value for RequireProbe to be an explicit nil
 func (o *OpaProfileUpdateCommand) SetRequireProbeNil() {
 	o.RequireProbe.Set(nil)
@@ -285,7 +281,6 @@ func (o *OpaProfileUpdateCommand) HasUniqueIngresses() bool {
 func (o *OpaProfileUpdateCommand) SetUniqueIngresses(v bool) {
 	o.UniqueIngresses.Set(&v)
 }
-
 // SetUniqueIngressesNil sets the value for UniqueIngresses to be an explicit nil
 func (o *OpaProfileUpdateCommand) SetUniqueIngressesNil() {
 	o.UniqueIngresses.Set(nil)
@@ -328,7 +323,6 @@ func (o *OpaProfileUpdateCommand) HasUniqueServiceSelector() bool {
 func (o *OpaProfileUpdateCommand) SetUniqueServiceSelector(v bool) {
 	o.UniqueServiceSelector.Set(&v)
 }
-
 // SetUniqueServiceSelectorNil sets the value for UniqueServiceSelector to be an explicit nil
 func (o *OpaProfileUpdateCommand) SetUniqueServiceSelectorNil() {
 	o.UniqueServiceSelector.Set(nil)
@@ -439,7 +433,7 @@ func (o *OpaProfileUpdateCommand) SetIngressWhitelist(v []string) {
 }
 
 func (o OpaProfileUpdateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -516,3 +510,5 @@ func (v *NullableOpaProfileUpdateCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

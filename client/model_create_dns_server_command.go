@@ -20,8 +20,8 @@ var _ MappedNullable = &CreateDnsServerCommand{}
 
 // CreateDnsServerCommand struct for CreateDnsServerCommand
 type CreateDnsServerCommand struct {
-	Address         NullableString `json:"address,omitempty"`
-	AccessProfileId *int32         `json:"accessProfileId,omitempty"`
+	Address NullableString `json:"address,omitempty"`
+	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
 }
 
 // NewCreateDnsServerCommand instantiates a new CreateDnsServerCommand object
@@ -73,7 +73,6 @@ func (o *CreateDnsServerCommand) HasAddress() bool {
 func (o *CreateDnsServerCommand) SetAddress(v string) {
 	o.Address.Set(&v)
 }
-
 // SetAddressNil sets the value for Address to be an explicit nil
 func (o *CreateDnsServerCommand) SetAddressNil() {
 	o.Address.Set(nil)
@@ -117,7 +116,7 @@ func (o *CreateDnsServerCommand) SetAccessProfileId(v int32) {
 }
 
 func (o CreateDnsServerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableCreateDnsServerCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

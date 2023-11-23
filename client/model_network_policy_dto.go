@@ -20,10 +20,10 @@ var _ MappedNullable = &NetworkPolicyDto{}
 
 // NetworkPolicyDto struct for NetworkPolicyDto
 type NetworkPolicyDto struct {
-	MetadataName NullableString    `json:"metadataName,omitempty"`
-	PodSelector  map[string]string `json:"podSelector,omitempty"`
-	Namespace    NullableString    `json:"namespace,omitempty"`
-	Age          NullableString    `json:"age,omitempty"`
+	MetadataName NullableString `json:"metadataName,omitempty"`
+	PodSelector map[string]string `json:"podSelector,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Age NullableString `json:"age,omitempty"`
 }
 
 // NewNetworkPolicyDto instantiates a new NetworkPolicyDto object
@@ -75,7 +75,6 @@ func (o *NetworkPolicyDto) HasMetadataName() bool {
 func (o *NetworkPolicyDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *NetworkPolicyDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -151,7 +150,6 @@ func (o *NetworkPolicyDto) HasNamespace() bool {
 func (o *NetworkPolicyDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *NetworkPolicyDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -194,7 +192,6 @@ func (o *NetworkPolicyDto) HasAge() bool {
 func (o *NetworkPolicyDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-
 // SetAgeNil sets the value for Age to be an explicit nil
 func (o *NetworkPolicyDto) SetAgeNil() {
 	o.Age.Set(nil)
@@ -206,7 +203,7 @@ func (o *NetworkPolicyDto) UnsetAge() {
 }
 
 func (o NetworkPolicyDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -265,3 +262,5 @@ func (v *NullableNetworkPolicyDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

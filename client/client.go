@@ -32,13 +32,14 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
+
 )
 
 var (
-	jsonCheck       = regexp.MustCompile(`(?i:(?:application|text)/(?:vnd\.[^;]+\+)?json)`)
-	xmlCheck        = regexp.MustCompile(`(?i:(?:application|text)/xml)`)
+	JsonCheck       = regexp.MustCompile(`(?i:(?:application|text)/(?:[^;]+\+)?json)`)
+	XmlCheck        = regexp.MustCompile(`(?i:(?:application|text)/(?:[^;]+\+)?xml)`)
 	queryParamSplit = regexp.MustCompile(`(^|&)([^&]+)`)
-	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
+	queryDescape    = strings.NewReplacer( "%5B", "[", "%5D", "]" )
 )
 
 // APIClient manages communication with the Taikun - WebApi API vv1
@@ -52,8 +53,6 @@ type APIClient struct {
 	AWSCloudCredentialAPI *AWSCloudCredentialAPIService
 
 	AccessProfilesAPI *AccessProfilesAPIService
-
-	AdminAPI *AdminAPIService
 
 	AiCredentialsAPI *AiCredentialsAPIService
 
@@ -85,10 +84,6 @@ type APIClient struct {
 
 	CloudCredentialAPI *CloudCredentialAPIService
 
-	CommonAPI *CommonAPIService
-
-	CronJobServiceAPI *CronJobServiceAPIService
-
 	DnsServersAPI *DnsServersAPIService
 
 	FlavorsAPI *FlavorsAPIService
@@ -101,8 +96,6 @@ type APIClient struct {
 
 	InfraBillingSummaryAPI *InfraBillingSummaryAPIService
 
-	InvoicesAPI *InvoicesAPIService
-
 	KeycloakAPI *KeycloakAPIService
 
 	KubeConfigAPI *KubeConfigAPIService
@@ -112,8 +105,6 @@ type APIClient struct {
 	KubernetesAPI *KubernetesAPIService
 
 	KubernetesProfilesAPI *KubernetesProfilesAPIService
-
-	KubesprayAPI *KubesprayAPIService
 
 	NotificationsAPI *NotificationsAPIService
 
@@ -127,13 +118,9 @@ type APIClient struct {
 
 	OperationCredentialsAPI *OperationCredentialsAPIService
 
-	OrganizationSubscriptionsAPI *OrganizationSubscriptionsAPIService
-
 	OrganizationsAPI *OrganizationsAPIService
 
 	PackageAPI *PackageAPIService
-
-	PartnersAPI *PartnersAPIService
 
 	PaymentsAPI *PaymentsAPIService
 
@@ -150,8 +137,6 @@ type APIClient struct {
 	ProjectInfracostsAPI *ProjectInfracostsAPIService
 
 	ProjectQuotasAPI *ProjectQuotasAPIService
-
-	ProjectRevisionsAPI *ProjectRevisionsAPIService
 
 	ProjectTemplatesAPI *ProjectTemplatesAPIService
 
@@ -185,10 +170,6 @@ type APIClient struct {
 
 	StandaloneVMDisksAPI *StandaloneVMDisksAPIService
 
-	StripeAPI *StripeAPIService
-
-	SubscriptionAPI *SubscriptionAPIService
-
 	TanzuAPI *TanzuAPIService
 
 	TicketAPI *TicketAPIService
@@ -220,7 +201,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AWSCloudCredentialAPI = (*AWSCloudCredentialAPIService)(&c.common)
 	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
-	c.AdminAPI = (*AdminAPIService)(&c.common)
 	c.AiCredentialsAPI = (*AiCredentialsAPIService)(&c.common)
 	c.AiManagementAPI = (*AiManagementAPIService)(&c.common)
 	c.AlertingIntegrationsAPI = (*AlertingIntegrationsAPIService)(&c.common)
@@ -236,31 +216,25 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CatalogAppAPI = (*CatalogAppAPIService)(&c.common)
 	c.CheckerAPI = (*CheckerAPIService)(&c.common)
 	c.CloudCredentialAPI = (*CloudCredentialAPIService)(&c.common)
-	c.CommonAPI = (*CommonAPIService)(&c.common)
-	c.CronJobServiceAPI = (*CronJobServiceAPIService)(&c.common)
 	c.DnsServersAPI = (*DnsServersAPIService)(&c.common)
 	c.FlavorsAPI = (*FlavorsAPIService)(&c.common)
 	c.GoogleAPI = (*GoogleAPIService)(&c.common)
 	c.ImagesAPI = (*ImagesAPIService)(&c.common)
 	c.InfraAPI = (*InfraAPIService)(&c.common)
 	c.InfraBillingSummaryAPI = (*InfraBillingSummaryAPIService)(&c.common)
-	c.InvoicesAPI = (*InvoicesAPIService)(&c.common)
 	c.KeycloakAPI = (*KeycloakAPIService)(&c.common)
 	c.KubeConfigAPI = (*KubeConfigAPIService)(&c.common)
 	c.KubeConfigRoleAPI = (*KubeConfigRoleAPIService)(&c.common)
 	c.KubernetesAPI = (*KubernetesAPIService)(&c.common)
 	c.KubernetesProfilesAPI = (*KubernetesProfilesAPIService)(&c.common)
-	c.KubesprayAPI = (*KubesprayAPIService)(&c.common)
 	c.NotificationsAPI = (*NotificationsAPIService)(&c.common)
 	c.NtpServersAPI = (*NtpServersAPIService)(&c.common)
 	c.OpaProfilesAPI = (*OpaProfilesAPIService)(&c.common)
 	c.OpenshiftAPI = (*OpenshiftAPIService)(&c.common)
 	c.OpenstackCloudCredentialAPI = (*OpenstackCloudCredentialAPIService)(&c.common)
 	c.OperationCredentialsAPI = (*OperationCredentialsAPIService)(&c.common)
-	c.OrganizationSubscriptionsAPI = (*OrganizationSubscriptionsAPIService)(&c.common)
 	c.OrganizationsAPI = (*OrganizationsAPIService)(&c.common)
 	c.PackageAPI = (*PackageAPIService)(&c.common)
-	c.PartnersAPI = (*PartnersAPIService)(&c.common)
 	c.PaymentsAPI = (*PaymentsAPIService)(&c.common)
 	c.PreDefinedQueriesAPI = (*PreDefinedQueriesAPIService)(&c.common)
 	c.ProjectActionsAPI = (*ProjectActionsAPIService)(&c.common)
@@ -269,7 +243,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectGroupsAPI = (*ProjectGroupsAPIService)(&c.common)
 	c.ProjectInfracostsAPI = (*ProjectInfracostsAPIService)(&c.common)
 	c.ProjectQuotasAPI = (*ProjectQuotasAPIService)(&c.common)
-	c.ProjectRevisionsAPI = (*ProjectRevisionsAPIService)(&c.common)
 	c.ProjectTemplatesAPI = (*ProjectTemplatesAPIService)(&c.common)
 	c.ProjectsAPI = (*ProjectsAPIService)(&c.common)
 	c.PrometheusBillingsAPI = (*PrometheusBillingsAPIService)(&c.common)
@@ -286,8 +259,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.StandaloneActionsAPI = (*StandaloneActionsAPIService)(&c.common)
 	c.StandaloneProfileAPI = (*StandaloneProfileAPIService)(&c.common)
 	c.StandaloneVMDisksAPI = (*StandaloneVMDisksAPIService)(&c.common)
-	c.StripeAPI = (*StripeAPIService)(&c.common)
-	c.SubscriptionAPI = (*SubscriptionAPIService)(&c.common)
 	c.TanzuAPI = (*TanzuAPIService)(&c.common)
 	c.TicketAPI = (*TicketAPIService)(&c.common)
 	c.UserGroupAPI = (*UserGroupAPIService)(&c.common)
@@ -350,15 +321,15 @@ func typeCheckParameter(obj interface{}, expected string, name string) error {
 	return nil
 }
 
-func parameterValueToString(obj interface{}, key string) string {
+func parameterValueToString( obj interface{}, key string ) string {
 	if reflect.TypeOf(obj).Kind() != reflect.Ptr {
 		return fmt.Sprintf("%v", obj)
 	}
-	var param, ok = obj.(MappedNullable)
+	var param,ok = obj.(MappedNullable)
 	if !ok {
 		return ""
 	}
-	dataMap, err := param.ToMap()
+	dataMap,err := param.ToMap()
 	if err != nil {
 		return ""
 	}
@@ -374,81 +345,81 @@ func parameterAddToHeaderOrQuery(headerOrQueryParams interface{}, keyPrefix stri
 		value = "null"
 	} else {
 		switch v.Kind() {
-		case reflect.Invalid:
-			value = "invalid"
+			case reflect.Invalid:
+				value = "invalid"
 
-		case reflect.Struct:
-			if t, ok := obj.(MappedNullable); ok {
-				dataMap, err := t.ToMap()
-				if err != nil {
+			case reflect.Struct:
+				if t,ok := obj.(MappedNullable); ok {
+					dataMap,err := t.ToMap()
+					if err != nil {
+						return
+					}
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, dataMap, collectionType)
 					return
 				}
-				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, dataMap, collectionType)
+				if t, ok := obj.(time.Time); ok {
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339), collectionType)
+					return
+				}
+				value = v.Type().String() + " value"
+			case reflect.Slice:
+				var indValue = reflect.ValueOf(obj)
+				if indValue == reflect.ValueOf(nil) {
+					return
+				}
+				var lenIndValue = indValue.Len()
+				for i:=0;i<lenIndValue;i++ {
+					var arrayValue = indValue.Index(i)
+					parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, arrayValue.Interface(), collectionType)
+				}
 				return
-			}
-			if t, ok := obj.(time.Time); ok {
-				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, t.Format(time.RFC3339), collectionType)
-				return
-			}
-			value = v.Type().String() + " value"
-		case reflect.Slice:
-			var indValue = reflect.ValueOf(obj)
-			if indValue == reflect.ValueOf(nil) {
-				return
-			}
-			var lenIndValue = indValue.Len()
-			for i := 0; i < lenIndValue; i++ {
-				var arrayValue = indValue.Index(i)
-				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, arrayValue.Interface(), collectionType)
-			}
-			return
 
-		case reflect.Map:
-			var indValue = reflect.ValueOf(obj)
-			if indValue == reflect.ValueOf(nil) {
+			case reflect.Map:
+				var indValue = reflect.ValueOf(obj)
+				if indValue == reflect.ValueOf(nil) {
+					return
+				}
+				iter := indValue.MapRange()
+				for iter.Next() {
+					k,v := iter.Key(), iter.Value()
+					parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), collectionType)
+				}
 				return
-			}
-			iter := indValue.MapRange()
-			for iter.Next() {
-				k, v := iter.Key(), iter.Value()
-				parameterAddToHeaderOrQuery(headerOrQueryParams, fmt.Sprintf("%s[%s]", keyPrefix, k.String()), v.Interface(), collectionType)
-			}
-			return
 
-		case reflect.Interface:
-			fallthrough
-		case reflect.Ptr:
-			parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), collectionType)
-			return
+			case reflect.Interface:
+				fallthrough
+			case reflect.Ptr:
+				parameterAddToHeaderOrQuery(headerOrQueryParams, keyPrefix, v.Elem().Interface(), collectionType)
+				return
 
-		case reflect.Int, reflect.Int8, reflect.Int16,
-			reflect.Int32, reflect.Int64:
-			value = strconv.FormatInt(v.Int(), 10)
-		case reflect.Uint, reflect.Uint8, reflect.Uint16,
-			reflect.Uint32, reflect.Uint64, reflect.Uintptr:
-			value = strconv.FormatUint(v.Uint(), 10)
-		case reflect.Float32, reflect.Float64:
-			value = strconv.FormatFloat(v.Float(), 'g', -1, 32)
-		case reflect.Bool:
-			value = strconv.FormatBool(v.Bool())
-		case reflect.String:
-			value = v.String()
-		default:
-			value = v.Type().String() + " value"
+			case reflect.Int, reflect.Int8, reflect.Int16,
+				reflect.Int32, reflect.Int64:
+				value = strconv.FormatInt(v.Int(), 10)
+			case reflect.Uint, reflect.Uint8, reflect.Uint16,
+				reflect.Uint32, reflect.Uint64, reflect.Uintptr:
+				value = strconv.FormatUint(v.Uint(), 10)
+			case reflect.Float32, reflect.Float64:
+				value = strconv.FormatFloat(v.Float(), 'g', -1, 32)
+			case reflect.Bool:
+				value = strconv.FormatBool(v.Bool())
+			case reflect.String:
+				value = v.String()
+			default:
+				value = v.Type().String() + " value"
 		}
 	}
 
 	switch valuesMap := headerOrQueryParams.(type) {
-	case url.Values:
-		if collectionType == "csv" && valuesMap.Get(keyPrefix) != "" {
-			valuesMap.Set(keyPrefix, valuesMap.Get(keyPrefix)+","+value)
-		} else {
-			valuesMap.Add(keyPrefix, value)
-		}
-		break
-	case map[string]string:
-		valuesMap[keyPrefix] = value
-		break
+		case url.Values:
+			if collectionType == "csv" && valuesMap.Get(keyPrefix) != "" {
+				valuesMap.Set(keyPrefix, valuesMap.Get(keyPrefix) + "," + value)
+			} else {
+				valuesMap.Add(keyPrefix, value)
+			}
+			break
+		case map[string]string:
+			valuesMap[keyPrefix] = value
+			break
 	}
 }
 
@@ -493,9 +464,9 @@ func (c *APIClient) GetConfig() *Configuration {
 }
 
 type formFile struct {
-	fileBytes    []byte
-	fileName     string
-	formFileName string
+		fileBytes []byte
+		fileName string
+		formFileName string
 }
 
 // prepareRequest build the request
@@ -549,11 +520,11 @@ func (c *APIClient) prepareRequest(
 				w.Boundary()
 				part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
 				if err != nil {
-					return nil, err
+						return nil, err
 				}
 				_, err = part.Write(formFile.fileBytes)
 				if err != nil {
-					return nil, err
+						return nil, err
 				}
 			}
 		}
@@ -661,7 +632,6 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = f.Seek(0, io.SeekStart)
-		err = os.Remove(f.Name())
 		return
 	}
 	if f, ok := v.(**os.File); ok {
@@ -674,16 +644,15 @@ func (c *APIClient) decode(v interface{}, b []byte, contentType string) (err err
 			return
 		}
 		_, err = (*f).Seek(0, io.SeekStart)
-		err = os.Remove((*f).Name())
 		return
 	}
-	if xmlCheck.MatchString(contentType) {
+	if XmlCheck.MatchString(contentType) {
 		if err = xml.Unmarshal(b, v); err != nil {
 			return err
 		}
 		return nil
 	}
-	if jsonCheck.MatchString(contentType) {
+	if JsonCheck.MatchString(contentType) {
 		if actualObj, ok := v.(interface{ GetActualInstance() interface{} }); ok { // oneOf, anyOf schemas
 			if unmarshalObj, ok := actualObj.(interface{ UnmarshalJSON([]byte) error }); ok { // make sure it has UnmarshalJSON defined
 				if err = unmarshalObj.UnmarshalJSON(b); err != nil {
@@ -748,9 +717,9 @@ func setBody(body interface{}, contentType string) (bodyBuf *bytes.Buffer, err e
 		_, err = bodyBuf.WriteString(s)
 	} else if s, ok := body.(*string); ok {
 		_, err = bodyBuf.WriteString(*s)
-	} else if jsonCheck.MatchString(contentType) {
+	} else if JsonCheck.MatchString(contentType) {
 		err = json.NewEncoder(bodyBuf).Encode(body)
-	} else if xmlCheck.MatchString(contentType) {
+	} else if XmlCheck.MatchString(contentType) {
 		var bs []byte
 		bs, err = xml.Marshal(body)
 		if err == nil {

@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // ProjectGroupsAPIService ProjectGroupsAPI service
 type ProjectGroupsAPIService service
 
 type ApiProjectgroupsBindRequest struct {
-	ctx                                 context.Context
-	ApiService                          *ProjectGroupsAPIService
+	ctx context.Context
+	ApiService *ProjectGroupsAPIService
 	bindUserGroupsToProjectGroupCommand *BindUserGroupsToProjectGroupCommand
 }
 
@@ -41,22 +42,22 @@ func (r ApiProjectgroupsBindRequest) Execute() (*http.Response, error) {
 /*
 ProjectgroupsBind Bind User groups
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProjectgroupsBindRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectgroupsBindRequest
 */
 func (a *ProjectGroupsAPIService) ProjectgroupsBind(ctx context.Context) ApiProjectgroupsBindRequest {
 	return ApiProjectgroupsBindRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectGroupsAPIService) ProjectgroupsBindExecute(r ApiProjectgroupsBindRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectGroupsAPIService.ProjectgroupsBind")
@@ -132,8 +133,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsBindExecute(r ApiProjectgroupsBin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -143,8 +144,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsBindExecute(r ApiProjectgroupsBin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -154,8 +155,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsBindExecute(r ApiProjectgroupsBin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -165,8 +166,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsBindExecute(r ApiProjectgroupsBin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -176,8 +177,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsBindExecute(r ApiProjectgroupsBin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -186,8 +187,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsBindExecute(r ApiProjectgroupsBin
 }
 
 type ApiProjectgroupsCreateRequest struct {
-	ctx                       context.Context
-	ApiService                *ProjectGroupsAPIService
+	ctx context.Context
+	ApiService *ProjectGroupsAPIService
 	createProjectGroupCommand *CreateProjectGroupCommand
 }
 
@@ -203,25 +204,24 @@ func (r ApiProjectgroupsCreateRequest) Execute() (*ApiResponse, *http.Response, 
 /*
 ProjectgroupsCreate Add Project groups
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProjectgroupsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectgroupsCreateRequest
 */
 func (a *ProjectGroupsAPIService) ProjectgroupsCreate(ctx context.Context) ApiProjectgroupsCreateRequest {
 	return ApiProjectgroupsCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *ProjectGroupsAPIService) ProjectgroupsCreateExecute(r ApiProjectgroupsCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectGroupsAPIService.ProjectgroupsCreate")
@@ -297,8 +297,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsCreateExecute(r ApiProjectgroupsC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -308,8 +308,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsCreateExecute(r ApiProjectgroupsC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -319,8 +319,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsCreateExecute(r ApiProjectgroupsC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -330,8 +330,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsCreateExecute(r ApiProjectgroupsC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -341,8 +341,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsCreateExecute(r ApiProjectgroupsC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -360,8 +360,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsCreateExecute(r ApiProjectgroupsC
 }
 
 type ApiProjectgroupsDeleteRequest struct {
-	ctx         context.Context
-	ApiService  *ProjectGroupsAPIService
+	ctx context.Context
+	ApiService *ProjectGroupsAPIService
 	requestBody *[]int32
 }
 
@@ -377,22 +377,22 @@ func (r ApiProjectgroupsDeleteRequest) Execute() (*http.Response, error) {
 /*
 ProjectgroupsDelete Remove Project group(s)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProjectgroupsDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectgroupsDeleteRequest
 */
 func (a *ProjectGroupsAPIService) ProjectgroupsDelete(ctx context.Context) ApiProjectgroupsDeleteRequest {
 	return ApiProjectgroupsDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectGroupsAPIService) ProjectgroupsDeleteExecute(r ApiProjectgroupsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectGroupsAPIService.ProjectgroupsDelete")
@@ -468,8 +468,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsDeleteExecute(r ApiProjectgroupsD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -479,8 +479,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsDeleteExecute(r ApiProjectgroupsD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -490,8 +490,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsDeleteExecute(r ApiProjectgroupsD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -501,8 +501,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsDeleteExecute(r ApiProjectgroupsD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -512,8 +512,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsDeleteExecute(r ApiProjectgroupsD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -522,9 +522,9 @@ func (a *ProjectGroupsAPIService) ProjectgroupsDeleteExecute(r ApiProjectgroupsD
 }
 
 type ApiProjectgroupsEditRequest struct {
-	ctx                   context.Context
-	ApiService            *ProjectGroupsAPIService
-	projectGroupId        int32
+	ctx context.Context
+	ApiService *ProjectGroupsAPIService
+	projectGroupId int32
 	updateProjectGroupDto *UpdateProjectGroupDto
 }
 
@@ -540,14 +540,14 @@ func (r ApiProjectgroupsEditRequest) Execute() (*http.Response, error) {
 /*
 ProjectgroupsEdit Update project groups
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectGroupId
-	@return ApiProjectgroupsEditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectGroupId
+ @return ApiProjectgroupsEditRequest
 */
 func (a *ProjectGroupsAPIService) ProjectgroupsEdit(ctx context.Context, projectGroupId int32) ApiProjectgroupsEditRequest {
 	return ApiProjectgroupsEditRequest{
-		ApiService:     a,
-		ctx:            ctx,
+		ApiService: a,
+		ctx: ctx,
 		projectGroupId: projectGroupId,
 	}
 }
@@ -555,9 +555,9 @@ func (a *ProjectGroupsAPIService) ProjectgroupsEdit(ctx context.Context, project
 // Execute executes the request
 func (a *ProjectGroupsAPIService) ProjectgroupsEditExecute(r ApiProjectgroupsEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectGroupsAPIService.ProjectgroupsEdit")
@@ -634,8 +634,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsEditExecute(r ApiProjectgroupsEdi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -645,8 +645,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsEditExecute(r ApiProjectgroupsEdi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -656,8 +656,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsEditExecute(r ApiProjectgroupsEdi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -667,8 +667,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsEditExecute(r ApiProjectgroupsEdi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -678,8 +678,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsEditExecute(r ApiProjectgroupsEdi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -688,16 +688,16 @@ func (a *ProjectGroupsAPIService) ProjectgroupsEditExecute(r ApiProjectgroupsEdi
 }
 
 type ApiProjectgroupsListRequest struct {
-	ctx            context.Context
-	ApiService     *ProjectGroupsAPIService
-	limit          *int32
-	offset         *int32
+	ctx context.Context
+	ApiService *ProjectGroupsAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
-	sortBy         *string
-	sortDirection  *string
-	search         *string
-	searchId       *string
-	id             *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	searchId *string
+	id *int32
 }
 
 func (r ApiProjectgroupsListRequest) Limit(limit int32) ApiProjectgroupsListRequest {
@@ -747,25 +747,24 @@ func (r ApiProjectgroupsListRequest) Execute() (*ProjectGroupList, *http.Respons
 /*
 ProjectgroupsList Retrieve list of Project groups
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProjectgroupsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectgroupsListRequest
 */
 func (a *ProjectGroupsAPIService) ProjectgroupsList(ctx context.Context) ApiProjectgroupsListRequest {
 	return ApiProjectgroupsListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ProjectGroupList
+//  @return ProjectGroupList
 func (a *ProjectGroupsAPIService) ProjectgroupsListExecute(r ApiProjectgroupsListRequest) (*ProjectGroupList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ProjectGroupList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ProjectGroupList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectGroupsAPIService.ProjectgroupsList")
@@ -863,8 +862,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListExecute(r ApiProjectgroupsLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -874,8 +873,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListExecute(r ApiProjectgroupsLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -885,8 +884,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListExecute(r ApiProjectgroupsLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -896,8 +895,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListExecute(r ApiProjectgroupsLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -907,8 +906,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListExecute(r ApiProjectgroupsLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -926,8 +925,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListExecute(r ApiProjectgroupsLis
 }
 
 type ApiProjectgroupsListByUserIdRequest struct {
-	ctx         context.Context
-	ApiService  *ProjectGroupsAPIService
+	ctx context.Context
+	ApiService *ProjectGroupsAPIService
 	userGroupId int32
 }
 
@@ -938,27 +937,26 @@ func (r ApiProjectgroupsListByUserIdRequest) Execute() ([]CommonDropdownDto, *ht
 /*
 ProjectgroupsListByUserId Retrieve list of Project groups by user group id for dropdown
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param userGroupId
-	@return ApiProjectgroupsListByUserIdRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param userGroupId
+ @return ApiProjectgroupsListByUserIdRequest
 */
 func (a *ProjectGroupsAPIService) ProjectgroupsListByUserId(ctx context.Context, userGroupId int32) ApiProjectgroupsListByUserIdRequest {
 	return ApiProjectgroupsListByUserIdRequest{
-		ApiService:  a,
-		ctx:         ctx,
+		ApiService: a,
+		ctx: ctx,
 		userGroupId: userGroupId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CommonDropdownDto
+//  @return []CommonDropdownDto
 func (a *ProjectGroupsAPIService) ProjectgroupsListByUserIdExecute(r ApiProjectgroupsListByUserIdRequest) ([]CommonDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CommonDropdownDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectGroupsAPIService.ProjectgroupsListByUserId")
@@ -1033,8 +1031,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListByUserIdExecute(r ApiProjectg
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1044,8 +1042,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListByUserIdExecute(r ApiProjectg
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1055,8 +1053,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListByUserIdExecute(r ApiProjectg
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1066,8 +1064,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListByUserIdExecute(r ApiProjectg
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1077,8 +1075,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListByUserIdExecute(r ApiProjectg
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1096,8 +1094,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListByUserIdExecute(r ApiProjectg
 }
 
 type ApiProjectgroupsProjectListRequest struct {
-	ctx            context.Context
-	ApiService     *ProjectGroupsAPIService
+	ctx context.Context
+	ApiService *ProjectGroupsAPIService
 	projectGroupId int32
 	organizationId *int32
 }
@@ -1114,27 +1112,26 @@ func (r ApiProjectgroupsProjectListRequest) Execute() ([]ProjectListForProjectGr
 /*
 ProjectgroupsProjectList Retrieve list of projects by project group id
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectGroupId
-	@return ApiProjectgroupsProjectListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectGroupId
+ @return ApiProjectgroupsProjectListRequest
 */
 func (a *ProjectGroupsAPIService) ProjectgroupsProjectList(ctx context.Context, projectGroupId int32) ApiProjectgroupsProjectListRequest {
 	return ApiProjectgroupsProjectListRequest{
-		ApiService:     a,
-		ctx:            ctx,
+		ApiService: a,
+		ctx: ctx,
 		projectGroupId: projectGroupId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []ProjectListForProjectGroupDto
+//  @return []ProjectListForProjectGroupDto
 func (a *ProjectGroupsAPIService) ProjectgroupsProjectListExecute(r ApiProjectgroupsProjectListRequest) ([]ProjectListForProjectGroupDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []ProjectListForProjectGroupDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []ProjectListForProjectGroupDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectGroupsAPIService.ProjectgroupsProjectList")
@@ -1213,8 +1210,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsProjectListExecute(r ApiProjectgr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1224,8 +1221,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsProjectListExecute(r ApiProjectgr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1235,8 +1232,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsProjectListExecute(r ApiProjectgr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1246,8 +1243,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsProjectListExecute(r ApiProjectgr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1257,8 +1254,8 @@ func (a *ProjectGroupsAPIService) ProjectgroupsProjectListExecute(r ApiProjectgr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

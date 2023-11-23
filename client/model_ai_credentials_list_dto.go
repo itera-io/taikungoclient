@@ -20,15 +20,15 @@ var _ MappedNullable = &AiCredentialsListDto{}
 
 // AiCredentialsListDto struct for AiCredentialsListDto
 type AiCredentialsListDto struct {
-	Id               *int32              `json:"id,omitempty"`
-	Url              NullableString      `json:"url,omitempty"`
-	Name             NullableString      `json:"name,omitempty"`
-	ApiKey           NullableString      `json:"apiKey,omitempty"`
-	Type             *AiType             `json:"type,omitempty"`
-	OrganizationId   NullableInt32       `json:"organizationId,omitempty"`
-	OrganizationName NullableString      `json:"organizationName,omitempty"`
-	Projects         []CommonDropdownDto `json:"projects,omitempty"`
-	IsDefault        *bool               `json:"isDefault,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ApiKey NullableString `json:"apiKey,omitempty"`
+	Type *AiType `json:"type,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
 }
 
 // NewAiCredentialsListDto instantiates a new AiCredentialsListDto object
@@ -112,7 +112,6 @@ func (o *AiCredentialsListDto) HasUrl() bool {
 func (o *AiCredentialsListDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *AiCredentialsListDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -155,7 +154,6 @@ func (o *AiCredentialsListDto) HasName() bool {
 func (o *AiCredentialsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AiCredentialsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -198,7 +196,6 @@ func (o *AiCredentialsListDto) HasApiKey() bool {
 func (o *AiCredentialsListDto) SetApiKey(v string) {
 	o.ApiKey.Set(&v)
 }
-
 // SetApiKeyNil sets the value for ApiKey to be an explicit nil
 func (o *AiCredentialsListDto) SetApiKeyNil() {
 	o.ApiKey.Set(nil)
@@ -273,7 +270,6 @@ func (o *AiCredentialsListDto) HasOrganizationId() bool {
 func (o *AiCredentialsListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *AiCredentialsListDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -316,7 +312,6 @@ func (o *AiCredentialsListDto) HasOrganizationName() bool {
 func (o *AiCredentialsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *AiCredentialsListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -393,7 +388,7 @@ func (o *AiCredentialsListDto) SetIsDefault(v bool) {
 }
 
 func (o AiCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -467,3 +462,5 @@ func (v *NullableAiCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,7 +20,7 @@ var _ MappedNullable = &ProjectDto{}
 
 // ProjectDto struct for ProjectDto
 type ProjectDto struct {
-	ProjectId   *int32         `json:"projectId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
 }
 
@@ -105,7 +105,6 @@ func (o *ProjectDto) HasProjectName() bool {
 func (o *ProjectDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *ProjectDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -117,7 +116,7 @@ func (o *ProjectDto) UnsetProjectName() {
 }
 
 func (o ProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableProjectDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,26 +20,26 @@ var _ MappedNullable = &ProjectDetailsForVmsDto{}
 
 // ProjectDetailsForVmsDto struct for ProjectDetailsForVmsDto
 type ProjectDetailsForVmsDto struct {
-	ProjectStatus            *ProjectStatus  `json:"projectStatus,omitempty"`
-	ProjectName              NullableString  `json:"projectName,omitempty"`
-	ProjectId                *int32          `json:"projectId,omitempty"`
-	CloudType                *CloudType      `json:"cloudType,omitempty"`
-	CloudName                NullableString  `json:"cloudName,omitempty"`
-	CloudId                  NullableInt32   `json:"cloudId,omitempty"`
-	OrganizationName         NullableString  `json:"organizationName,omitempty"`
-	OrganizationId           *int32          `json:"organizationId,omitempty"`
-	IsLocked                 *bool           `json:"isLocked,omitempty"`
-	HasSelectedFlavors       NullableBool    `json:"hasSelectedFlavors,omitempty"`
-	IsMaintenanceModeEnabled *bool           `json:"isMaintenanceModeEnabled,omitempty"`
-	ProjectCloudRevision     NullableInt32   `json:"projectCloudRevision,omitempty"`
-	CloudCredentialRevision  NullableInt32   `json:"cloudCredentialRevision,omitempty"`
-	AllowFullSpotKubernetes  *bool           `json:"allowFullSpotKubernetes,omitempty"`
-	AllowSpotWorkers         *bool           `json:"allowSpotWorkers,omitempty"`
-	AllowSpotVMs             *bool           `json:"allowSpotVMs,omitempty"`
-	MaxSpotPrice             NullableFloat64 `json:"maxSpotPrice,omitempty"`
-	TotalHourlyCost          *float64        `json:"totalHourlyCost,omitempty"`
-	AvailabilityZones        []string        `json:"availabilityZones,omitempty"`
-	Hypervisors              []string        `json:"hypervisors,omitempty"`
+	ProjectStatus *ProjectStatus `json:"projectStatus,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
+	CloudName NullableString `json:"cloudName,omitempty"`
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	HasSelectedFlavors NullableBool `json:"hasSelectedFlavors,omitempty"`
+	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
+	ProjectCloudRevision NullableInt32 `json:"projectCloudRevision,omitempty"`
+	CloudCredentialRevision NullableInt32 `json:"cloudCredentialRevision,omitempty"`
+	AllowFullSpotKubernetes *bool `json:"allowFullSpotKubernetes,omitempty"`
+	AllowSpotWorkers *bool `json:"allowSpotWorkers,omitempty"`
+	AllowSpotVMs *bool `json:"allowSpotVMs,omitempty"`
+	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice,omitempty"`
+	TotalHourlyCost *float64 `json:"totalHourlyCost,omitempty"`
+	AvailabilityZones []string `json:"availabilityZones,omitempty"`
+	Hypervisors []string `json:"hypervisors,omitempty"`
 }
 
 // NewProjectDetailsForVmsDto instantiates a new ProjectDetailsForVmsDto object
@@ -123,7 +123,6 @@ func (o *ProjectDetailsForVmsDto) HasProjectName() bool {
 func (o *ProjectDetailsForVmsDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *ProjectDetailsForVmsDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -230,7 +229,6 @@ func (o *ProjectDetailsForVmsDto) HasCloudName() bool {
 func (o *ProjectDetailsForVmsDto) SetCloudName(v string) {
 	o.CloudName.Set(&v)
 }
-
 // SetCloudNameNil sets the value for CloudName to be an explicit nil
 func (o *ProjectDetailsForVmsDto) SetCloudNameNil() {
 	o.CloudName.Set(nil)
@@ -273,7 +271,6 @@ func (o *ProjectDetailsForVmsDto) HasCloudId() bool {
 func (o *ProjectDetailsForVmsDto) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
-
 // SetCloudIdNil sets the value for CloudId to be an explicit nil
 func (o *ProjectDetailsForVmsDto) SetCloudIdNil() {
 	o.CloudId.Set(nil)
@@ -316,7 +313,6 @@ func (o *ProjectDetailsForVmsDto) HasOrganizationName() bool {
 func (o *ProjectDetailsForVmsDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ProjectDetailsForVmsDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -423,7 +419,6 @@ func (o *ProjectDetailsForVmsDto) HasHasSelectedFlavors() bool {
 func (o *ProjectDetailsForVmsDto) SetHasSelectedFlavors(v bool) {
 	o.HasSelectedFlavors.Set(&v)
 }
-
 // SetHasSelectedFlavorsNil sets the value for HasSelectedFlavors to be an explicit nil
 func (o *ProjectDetailsForVmsDto) SetHasSelectedFlavorsNil() {
 	o.HasSelectedFlavors.Set(nil)
@@ -498,7 +493,6 @@ func (o *ProjectDetailsForVmsDto) HasProjectCloudRevision() bool {
 func (o *ProjectDetailsForVmsDto) SetProjectCloudRevision(v int32) {
 	o.ProjectCloudRevision.Set(&v)
 }
-
 // SetProjectCloudRevisionNil sets the value for ProjectCloudRevision to be an explicit nil
 func (o *ProjectDetailsForVmsDto) SetProjectCloudRevisionNil() {
 	o.ProjectCloudRevision.Set(nil)
@@ -541,7 +535,6 @@ func (o *ProjectDetailsForVmsDto) HasCloudCredentialRevision() bool {
 func (o *ProjectDetailsForVmsDto) SetCloudCredentialRevision(v int32) {
 	o.CloudCredentialRevision.Set(&v)
 }
-
 // SetCloudCredentialRevisionNil sets the value for CloudCredentialRevision to be an explicit nil
 func (o *ProjectDetailsForVmsDto) SetCloudCredentialRevisionNil() {
 	o.CloudCredentialRevision.Set(nil)
@@ -680,7 +673,6 @@ func (o *ProjectDetailsForVmsDto) HasMaxSpotPrice() bool {
 func (o *ProjectDetailsForVmsDto) SetMaxSpotPrice(v float64) {
 	o.MaxSpotPrice.Set(&v)
 }
-
 // SetMaxSpotPriceNil sets the value for MaxSpotPrice to be an explicit nil
 func (o *ProjectDetailsForVmsDto) SetMaxSpotPriceNil() {
 	o.MaxSpotPrice.Set(nil)
@@ -790,7 +782,7 @@ func (o *ProjectDetailsForVmsDto) SetHypervisors(v []string) {
 }
 
 func (o ProjectDetailsForVmsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -897,3 +889,5 @@ func (v *NullableProjectDetailsForVmsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

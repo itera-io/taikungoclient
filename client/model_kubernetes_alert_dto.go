@@ -20,20 +20,20 @@ var _ MappedNullable = &KubernetesAlertDto{}
 
 // KubernetesAlertDto struct for KubernetesAlertDto
 type KubernetesAlertDto struct {
-	Id             *int32         `json:"id,omitempty"`
-	Labels         interface{}    `json:"labels,omitempty"`
-	Description    NullableString `json:"description,omitempty"`
-	Title          NullableString `json:"title,omitempty"`
-	Severity       NullableString `json:"severity,omitempty"`
-	Fingerprint    NullableString `json:"fingerprint,omitempty"`
-	Status         NullableString `json:"status,omitempty"`
-	StartsAt       NullableString `json:"startsAt,omitempty"`
-	EndAt          NullableString `json:"endAt,omitempty"`
-	IsSolved       *bool          `json:"isSolved,omitempty"`
-	ProjectId      *int32         `json:"projectId,omitempty"`
-	ProjectName    NullableString `json:"projectName,omitempty"`
-	IsSilenced     *bool          `json:"isSilenced,omitempty"`
-	SilenceReason  NullableString `json:"silenceReason,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Labels interface{} `json:"labels,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	Title NullableString `json:"title,omitempty"`
+	Severity NullableString `json:"severity,omitempty"`
+	Fingerprint NullableString `json:"fingerprint,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	StartsAt NullableString `json:"startsAt,omitempty"`
+	EndAt NullableString `json:"endAt,omitempty"`
+	IsSolved *bool `json:"isSolved,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	IsSilenced *bool `json:"isSilenced,omitempty"`
+	SilenceReason NullableString `json:"silenceReason,omitempty"`
 	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
 }
 
@@ -151,7 +151,6 @@ func (o *KubernetesAlertDto) HasDescription() bool {
 func (o *KubernetesAlertDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *KubernetesAlertDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -194,7 +193,6 @@ func (o *KubernetesAlertDto) HasTitle() bool {
 func (o *KubernetesAlertDto) SetTitle(v string) {
 	o.Title.Set(&v)
 }
-
 // SetTitleNil sets the value for Title to be an explicit nil
 func (o *KubernetesAlertDto) SetTitleNil() {
 	o.Title.Set(nil)
@@ -237,7 +235,6 @@ func (o *KubernetesAlertDto) HasSeverity() bool {
 func (o *KubernetesAlertDto) SetSeverity(v string) {
 	o.Severity.Set(&v)
 }
-
 // SetSeverityNil sets the value for Severity to be an explicit nil
 func (o *KubernetesAlertDto) SetSeverityNil() {
 	o.Severity.Set(nil)
@@ -280,7 +277,6 @@ func (o *KubernetesAlertDto) HasFingerprint() bool {
 func (o *KubernetesAlertDto) SetFingerprint(v string) {
 	o.Fingerprint.Set(&v)
 }
-
 // SetFingerprintNil sets the value for Fingerprint to be an explicit nil
 func (o *KubernetesAlertDto) SetFingerprintNil() {
 	o.Fingerprint.Set(nil)
@@ -323,7 +319,6 @@ func (o *KubernetesAlertDto) HasStatus() bool {
 func (o *KubernetesAlertDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *KubernetesAlertDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -366,7 +361,6 @@ func (o *KubernetesAlertDto) HasStartsAt() bool {
 func (o *KubernetesAlertDto) SetStartsAt(v string) {
 	o.StartsAt.Set(&v)
 }
-
 // SetStartsAtNil sets the value for StartsAt to be an explicit nil
 func (o *KubernetesAlertDto) SetStartsAtNil() {
 	o.StartsAt.Set(nil)
@@ -409,7 +403,6 @@ func (o *KubernetesAlertDto) HasEndAt() bool {
 func (o *KubernetesAlertDto) SetEndAt(v string) {
 	o.EndAt.Set(&v)
 }
-
 // SetEndAtNil sets the value for EndAt to be an explicit nil
 func (o *KubernetesAlertDto) SetEndAtNil() {
 	o.EndAt.Set(nil)
@@ -516,7 +509,6 @@ func (o *KubernetesAlertDto) HasProjectName() bool {
 func (o *KubernetesAlertDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *KubernetesAlertDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -591,7 +583,6 @@ func (o *KubernetesAlertDto) HasSilenceReason() bool {
 func (o *KubernetesAlertDto) SetSilenceReason(v string) {
 	o.SilenceReason.Set(&v)
 }
-
 // SetSilenceReasonNil sets the value for SilenceReason to be an explicit nil
 func (o *KubernetesAlertDto) SetSilenceReasonNil() {
 	o.SilenceReason.Set(nil)
@@ -634,7 +625,6 @@ func (o *KubernetesAlertDto) HasLastModifiedBy() bool {
 func (o *KubernetesAlertDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *KubernetesAlertDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -646,7 +636,7 @@ func (o *KubernetesAlertDto) UnsetLastModifiedBy() {
 }
 
 func (o KubernetesAlertDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -738,3 +728,5 @@ func (v *NullableKubernetesAlertDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

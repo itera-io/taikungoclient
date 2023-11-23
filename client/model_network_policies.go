@@ -20,8 +20,8 @@ var _ MappedNullable = &NetworkPolicies{}
 
 // NetworkPolicies struct for NetworkPolicies
 type NetworkPolicies struct {
-	Data       []NetworkPolicyDto `json:"data,omitempty"`
-	TotalCount *int32             `json:"totalCount,omitempty"`
+	Data []NetworkPolicyDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewNetworkPolicies instantiates a new NetworkPolicies object
@@ -107,7 +107,7 @@ func (o *NetworkPolicies) SetTotalCount(v int32) {
 }
 
 func (o NetworkPolicies) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableNetworkPolicies) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

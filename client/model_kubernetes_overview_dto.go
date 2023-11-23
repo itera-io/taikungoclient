@@ -20,13 +20,13 @@ var _ MappedNullable = &KubernetesOverviewDto{}
 
 // KubernetesOverviewDto struct for KubernetesOverviewDto
 type KubernetesOverviewDto struct {
-	ProjectId        *int32         `json:"projectId,omitempty"`
-	ProjectName      NullableString `json:"projectName,omitempty"`
-	HealthyPods      *int32         `json:"healthyPods,omitempty"`
-	UnhealthyPods    *int32         `json:"unhealthyPods,omitempty"`
-	HealthyNodes     *int32         `json:"healthyNodes,omitempty"`
-	UnhealthyNodes   *int32         `json:"unhealthyNodes,omitempty"`
-	AlertsCount      *int32         `json:"alertsCount,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	HealthyPods *int32 `json:"healthyPods,omitempty"`
+	UnhealthyPods *int32 `json:"unhealthyPods,omitempty"`
+	HealthyNodes *int32 `json:"healthyNodes,omitempty"`
+	UnhealthyNodes *int32 `json:"unhealthyNodes,omitempty"`
+	AlertsCount *int32 `json:"alertsCount,omitempty"`
 	KubernetesHealth NullableString `json:"kubernetesHealth,omitempty"`
 }
 
@@ -111,7 +111,6 @@ func (o *KubernetesOverviewDto) HasProjectName() bool {
 func (o *KubernetesOverviewDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *KubernetesOverviewDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -314,7 +313,6 @@ func (o *KubernetesOverviewDto) HasKubernetesHealth() bool {
 func (o *KubernetesOverviewDto) SetKubernetesHealth(v string) {
 	o.KubernetesHealth.Set(&v)
 }
-
 // SetKubernetesHealthNil sets the value for KubernetesHealth to be an explicit nil
 func (o *KubernetesOverviewDto) SetKubernetesHealthNil() {
 	o.KubernetesHealth.Set(nil)
@@ -326,7 +324,7 @@ func (o *KubernetesOverviewDto) UnsetKubernetesHealth() {
 }
 
 func (o KubernetesOverviewDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -397,3 +395,5 @@ func (v *NullableKubernetesOverviewDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

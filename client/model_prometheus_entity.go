@@ -20,9 +20,9 @@ var _ MappedNullable = &PrometheusEntity{}
 
 // PrometheusEntity struct for PrometheusEntity
 type PrometheusEntity struct {
-	PrometheusRuleId   *int32         `json:"prometheusRuleId,omitempty"`
+	PrometheusRuleId *int32 `json:"prometheusRuleId,omitempty"`
 	PrometheusRuleName NullableString `json:"prometheusRuleName,omitempty"`
-	RuleDiscountRate   *float64       `json:"ruleDiscountRate,omitempty"`
+	RuleDiscountRate *float64 `json:"ruleDiscountRate,omitempty"`
 }
 
 // NewPrometheusEntity instantiates a new PrometheusEntity object
@@ -106,7 +106,6 @@ func (o *PrometheusEntity) HasPrometheusRuleName() bool {
 func (o *PrometheusEntity) SetPrometheusRuleName(v string) {
 	o.PrometheusRuleName.Set(&v)
 }
-
 // SetPrometheusRuleNameNil sets the value for PrometheusRuleName to be an explicit nil
 func (o *PrometheusEntity) SetPrometheusRuleNameNil() {
 	o.PrometheusRuleName.Set(nil)
@@ -150,7 +149,7 @@ func (o *PrometheusEntity) SetRuleDiscountRate(v float64) {
 }
 
 func (o PrometheusEntity) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,3 +205,5 @@ func (v *NullablePrometheusEntity) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

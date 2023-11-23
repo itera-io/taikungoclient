@@ -20,9 +20,9 @@ var _ MappedNullable = &PatchIngressCommand{}
 
 // PatchIngressCommand struct for PatchIngressCommand
 type PatchIngressCommand struct {
-	ProjectId *int32         `json:"projectId,omitempty"`
-	Yaml      NullableString `json:"yaml,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Yaml NullableString `json:"yaml,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
 }
 
@@ -107,7 +107,6 @@ func (o *PatchIngressCommand) HasYaml() bool {
 func (o *PatchIngressCommand) SetYaml(v string) {
 	o.Yaml.Set(&v)
 }
-
 // SetYamlNil sets the value for Yaml to be an explicit nil
 func (o *PatchIngressCommand) SetYamlNil() {
 	o.Yaml.Set(nil)
@@ -150,7 +149,6 @@ func (o *PatchIngressCommand) HasName() bool {
 func (o *PatchIngressCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PatchIngressCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -193,7 +191,6 @@ func (o *PatchIngressCommand) HasNamespace() bool {
 func (o *PatchIngressCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *PatchIngressCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -205,7 +202,7 @@ func (o *PatchIngressCommand) UnsetNamespace() {
 }
 
 func (o PatchIngressCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,3 +261,5 @@ func (v *NullablePatchIngressCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

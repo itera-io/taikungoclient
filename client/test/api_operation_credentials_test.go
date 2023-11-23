@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_OperationCredentialsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_OperationCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test OperationCredentialsAPIService OpscredentialsCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OperationCredentialsAPI.OpscredentialsCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_OperationCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test OperationCredentialsAPIService OpscredentialsDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -49,7 +49,7 @@ func Test_taikuncore_OperationCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test OperationCredentialsAPIService OpscredentialsList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OperationCredentialsAPI.OpscredentialsList(context.Background()).Execute()
 
@@ -61,7 +61,7 @@ func Test_taikuncore_OperationCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test OperationCredentialsAPIService OpscredentialsListByOrganizationId", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.OperationCredentialsAPI.OpscredentialsListByOrganizationId(context.Background()).Execute()
 
@@ -73,7 +73,7 @@ func Test_taikuncore_OperationCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test OperationCredentialsAPIService OpscredentialsLockManager", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.OperationCredentialsAPI.OpscredentialsLockManager(context.Background()).Execute()
 
@@ -84,25 +84,11 @@ func Test_taikuncore_OperationCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test OperationCredentialsAPIService OpscredentialsMakeDefault", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.OperationCredentialsAPI.OpscredentialsMakeDefault(context.Background()).Execute()
 
 		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test OperationCredentialsAPIService OpscredentialsMetricNames", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var id int32
-
-		resp, httpRes, err := apiClient.OperationCredentialsAPI.OpscredentialsMetricNames(context.Background(), id).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

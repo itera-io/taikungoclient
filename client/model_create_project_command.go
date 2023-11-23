@@ -21,45 +21,45 @@ var _ MappedNullable = &CreateProjectCommand{}
 
 // CreateProjectCommand struct for CreateProjectCommand
 type CreateProjectCommand struct {
-	Name                    NullableString      `json:"name,omitempty"`
-	KubernetesVersion       NullableString      `json:"kubernetesVersion,omitempty"`
-	OrganizationId          NullableInt32       `json:"organizationId,omitempty"`
-	CloudCredentialId       *int32              `json:"cloudCredentialId,omitempty"`
-	S3CredentialId          NullableInt32       `json:"s3CredentialId,omitempty"`
-	AccessProfileId         NullableInt32       `json:"accessProfileId,omitempty"`
-	OpaProfileId            NullableInt32       `json:"opaProfileId,omitempty"`
-	KubernetesProfileId     NullableInt32       `json:"kubernetesProfileId,omitempty"`
-	IsKubernetes            *bool               `json:"isKubernetes,omitempty"`
-	IsAutoUpgrade           *bool               `json:"isAutoUpgrade,omitempty"`
-	IsBackupEnabled         *bool               `json:"isBackupEnabled,omitempty"`
-	IsMonitoringEnabled     *bool               `json:"isMonitoringEnabled,omitempty"`
-	AiEnabled               *bool               `json:"aiEnabled,omitempty"`
-	AiCredentialId          NullableInt32       `json:"aiCredentialId,omitempty"`
-	Flavors                 []string            `json:"flavors,omitempty"`
-	Users                   []string            `json:"users,omitempty"`
-	AlertingProfileId       NullableInt32       `json:"alertingProfileId,omitempty"`
-	TaikunLBFlavor          NullableString      `json:"taikunLBFlavor,omitempty"`
-	RouterIdStartRange      NullableInt32       `json:"routerIdStartRange,omitempty"`
-	RouterIdEndRange        NullableInt32       `json:"routerIdEndRange,omitempty"`
-	ExpiredAt               NullableTime        `json:"expiredAt,omitempty"`
-	DeleteOnExpiration      *bool               `json:"deleteOnExpiration,omitempty"`
-	AllowFullSpotKubernetes *bool               `json:"allowFullSpotKubernetes,omitempty"`
-	AllowSpotWorkers        *bool               `json:"allowSpotWorkers,omitempty"`
-	AllowSpotVMs            *bool               `json:"allowSpotVMs,omitempty"`
-	MaxSpotPrice            NullableFloat64     `json:"maxSpotPrice,omitempty"`
-	AutoscalingEnabled      *bool               `json:"autoscalingEnabled,omitempty"`
-	AutoscalingGroupName    NullableString      `json:"autoscalingGroupName,omitempty"`
-	MinSize                 *int32              `json:"minSize,omitempty"`
-	MaxSize                 *int32              `json:"maxSize,omitempty"`
-	DiskSize                *float64            `json:"diskSize,omitempty"`
-	AutoscalingFlavor       NullableString      `json:"autoscalingFlavor,omitempty"`
-	AutoscalingSpotEnabled  *bool               `json:"autoscalingSpotEnabled,omitempty"`
-	Cidr                    NullableString      `json:"cidr,omitempty"`
-	NetMask                 NullableInt32       `json:"netMask,omitempty"`
-	SaveAsTemplate          *bool               `json:"saveAsTemplate,omitempty"`
-	TemplateName            NullableString      `json:"templateName,omitempty"`
-	FromTemplate            *FromTemplateDto    `json:"fromTemplate,omitempty"`
-	ServerTemplates         []ServerTemplateDto `json:"serverTemplates,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	CloudCredentialId *int32 `json:"cloudCredentialId,omitempty"`
+	S3CredentialId NullableInt32 `json:"s3CredentialId,omitempty"`
+	AccessProfileId NullableInt32 `json:"accessProfileId,omitempty"`
+	OpaProfileId NullableInt32 `json:"opaProfileId,omitempty"`
+	KubernetesProfileId NullableInt32 `json:"kubernetesProfileId,omitempty"`
+	IsKubernetes *bool `json:"isKubernetes,omitempty"`
+	IsAutoUpgrade *bool `json:"isAutoUpgrade,omitempty"`
+	IsBackupEnabled *bool `json:"isBackupEnabled,omitempty"`
+	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
+	AiEnabled *bool `json:"aiEnabled,omitempty"`
+	AiCredentialId NullableInt32 `json:"aiCredentialId,omitempty"`
+	Flavors []string `json:"flavors,omitempty"`
+	Users []string `json:"users,omitempty"`
+	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
+	TaikunLBFlavor NullableString `json:"taikunLBFlavor,omitempty"`
+	RouterIdStartRange NullableInt32 `json:"routerIdStartRange,omitempty"`
+	RouterIdEndRange NullableInt32 `json:"routerIdEndRange,omitempty"`
+	ExpiredAt NullableTime `json:"expiredAt,omitempty"`
+	DeleteOnExpiration *bool `json:"deleteOnExpiration,omitempty"`
+	AllowFullSpotKubernetes *bool `json:"allowFullSpotKubernetes,omitempty"`
+	AllowSpotWorkers *bool `json:"allowSpotWorkers,omitempty"`
+	AllowSpotVMs *bool `json:"allowSpotVMs,omitempty"`
+	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice,omitempty"`
+	AutoscalingEnabled *bool `json:"autoscalingEnabled,omitempty"`
+	AutoscalingGroupName NullableString `json:"autoscalingGroupName,omitempty"`
+	MinSize *int32 `json:"minSize,omitempty"`
+	MaxSize *int32 `json:"maxSize,omitempty"`
+	DiskSize *float64 `json:"diskSize,omitempty"`
+	AutoscalingFlavor NullableString `json:"autoscalingFlavor,omitempty"`
+	AutoscalingSpotEnabled *bool `json:"autoscalingSpotEnabled,omitempty"`
+	Cidr NullableString `json:"cidr,omitempty"`
+	NetMask NullableInt32 `json:"netMask,omitempty"`
+	SaveAsTemplate *bool `json:"saveAsTemplate,omitempty"`
+	TemplateName NullableString `json:"templateName,omitempty"`
+	FromTemplate *FromTemplateDto `json:"fromTemplate,omitempty"`
+	ServerTemplates []ServerTemplateDto `json:"serverTemplates,omitempty"`
 }
 
 // NewCreateProjectCommand instantiates a new CreateProjectCommand object
@@ -111,7 +111,6 @@ func (o *CreateProjectCommand) HasName() bool {
 func (o *CreateProjectCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateProjectCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -154,7 +153,6 @@ func (o *CreateProjectCommand) HasKubernetesVersion() bool {
 func (o *CreateProjectCommand) SetKubernetesVersion(v string) {
 	o.KubernetesVersion.Set(&v)
 }
-
 // SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
 func (o *CreateProjectCommand) SetKubernetesVersionNil() {
 	o.KubernetesVersion.Set(nil)
@@ -197,7 +195,6 @@ func (o *CreateProjectCommand) HasOrganizationId() bool {
 func (o *CreateProjectCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateProjectCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -272,7 +269,6 @@ func (o *CreateProjectCommand) HasS3CredentialId() bool {
 func (o *CreateProjectCommand) SetS3CredentialId(v int32) {
 	o.S3CredentialId.Set(&v)
 }
-
 // SetS3CredentialIdNil sets the value for S3CredentialId to be an explicit nil
 func (o *CreateProjectCommand) SetS3CredentialIdNil() {
 	o.S3CredentialId.Set(nil)
@@ -315,7 +311,6 @@ func (o *CreateProjectCommand) HasAccessProfileId() bool {
 func (o *CreateProjectCommand) SetAccessProfileId(v int32) {
 	o.AccessProfileId.Set(&v)
 }
-
 // SetAccessProfileIdNil sets the value for AccessProfileId to be an explicit nil
 func (o *CreateProjectCommand) SetAccessProfileIdNil() {
 	o.AccessProfileId.Set(nil)
@@ -358,7 +353,6 @@ func (o *CreateProjectCommand) HasOpaProfileId() bool {
 func (o *CreateProjectCommand) SetOpaProfileId(v int32) {
 	o.OpaProfileId.Set(&v)
 }
-
 // SetOpaProfileIdNil sets the value for OpaProfileId to be an explicit nil
 func (o *CreateProjectCommand) SetOpaProfileIdNil() {
 	o.OpaProfileId.Set(nil)
@@ -401,7 +395,6 @@ func (o *CreateProjectCommand) HasKubernetesProfileId() bool {
 func (o *CreateProjectCommand) SetKubernetesProfileId(v int32) {
 	o.KubernetesProfileId.Set(&v)
 }
-
 // SetKubernetesProfileIdNil sets the value for KubernetesProfileId to be an explicit nil
 func (o *CreateProjectCommand) SetKubernetesProfileIdNil() {
 	o.KubernetesProfileId.Set(nil)
@@ -604,7 +597,6 @@ func (o *CreateProjectCommand) HasAiCredentialId() bool {
 func (o *CreateProjectCommand) SetAiCredentialId(v int32) {
 	o.AiCredentialId.Set(&v)
 }
-
 // SetAiCredentialIdNil sets the value for AiCredentialId to be an explicit nil
 func (o *CreateProjectCommand) SetAiCredentialIdNil() {
 	o.AiCredentialId.Set(nil)
@@ -713,7 +705,6 @@ func (o *CreateProjectCommand) HasAlertingProfileId() bool {
 func (o *CreateProjectCommand) SetAlertingProfileId(v int32) {
 	o.AlertingProfileId.Set(&v)
 }
-
 // SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
 func (o *CreateProjectCommand) SetAlertingProfileIdNil() {
 	o.AlertingProfileId.Set(nil)
@@ -756,7 +747,6 @@ func (o *CreateProjectCommand) HasTaikunLBFlavor() bool {
 func (o *CreateProjectCommand) SetTaikunLBFlavor(v string) {
 	o.TaikunLBFlavor.Set(&v)
 }
-
 // SetTaikunLBFlavorNil sets the value for TaikunLBFlavor to be an explicit nil
 func (o *CreateProjectCommand) SetTaikunLBFlavorNil() {
 	o.TaikunLBFlavor.Set(nil)
@@ -799,7 +789,6 @@ func (o *CreateProjectCommand) HasRouterIdStartRange() bool {
 func (o *CreateProjectCommand) SetRouterIdStartRange(v int32) {
 	o.RouterIdStartRange.Set(&v)
 }
-
 // SetRouterIdStartRangeNil sets the value for RouterIdStartRange to be an explicit nil
 func (o *CreateProjectCommand) SetRouterIdStartRangeNil() {
 	o.RouterIdStartRange.Set(nil)
@@ -842,7 +831,6 @@ func (o *CreateProjectCommand) HasRouterIdEndRange() bool {
 func (o *CreateProjectCommand) SetRouterIdEndRange(v int32) {
 	o.RouterIdEndRange.Set(&v)
 }
-
 // SetRouterIdEndRangeNil sets the value for RouterIdEndRange to be an explicit nil
 func (o *CreateProjectCommand) SetRouterIdEndRangeNil() {
 	o.RouterIdEndRange.Set(nil)
@@ -885,7 +873,6 @@ func (o *CreateProjectCommand) HasExpiredAt() bool {
 func (o *CreateProjectCommand) SetExpiredAt(v time.Time) {
 	o.ExpiredAt.Set(&v)
 }
-
 // SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
 func (o *CreateProjectCommand) SetExpiredAtNil() {
 	o.ExpiredAt.Set(nil)
@@ -1056,7 +1043,6 @@ func (o *CreateProjectCommand) HasMaxSpotPrice() bool {
 func (o *CreateProjectCommand) SetMaxSpotPrice(v float64) {
 	o.MaxSpotPrice.Set(&v)
 }
-
 // SetMaxSpotPriceNil sets the value for MaxSpotPrice to be an explicit nil
 func (o *CreateProjectCommand) SetMaxSpotPriceNil() {
 	o.MaxSpotPrice.Set(nil)
@@ -1131,7 +1117,6 @@ func (o *CreateProjectCommand) HasAutoscalingGroupName() bool {
 func (o *CreateProjectCommand) SetAutoscalingGroupName(v string) {
 	o.AutoscalingGroupName.Set(&v)
 }
-
 // SetAutoscalingGroupNameNil sets the value for AutoscalingGroupName to be an explicit nil
 func (o *CreateProjectCommand) SetAutoscalingGroupNameNil() {
 	o.AutoscalingGroupName.Set(nil)
@@ -1270,7 +1255,6 @@ func (o *CreateProjectCommand) HasAutoscalingFlavor() bool {
 func (o *CreateProjectCommand) SetAutoscalingFlavor(v string) {
 	o.AutoscalingFlavor.Set(&v)
 }
-
 // SetAutoscalingFlavorNil sets the value for AutoscalingFlavor to be an explicit nil
 func (o *CreateProjectCommand) SetAutoscalingFlavorNil() {
 	o.AutoscalingFlavor.Set(nil)
@@ -1345,7 +1329,6 @@ func (o *CreateProjectCommand) HasCidr() bool {
 func (o *CreateProjectCommand) SetCidr(v string) {
 	o.Cidr.Set(&v)
 }
-
 // SetCidrNil sets the value for Cidr to be an explicit nil
 func (o *CreateProjectCommand) SetCidrNil() {
 	o.Cidr.Set(nil)
@@ -1388,7 +1371,6 @@ func (o *CreateProjectCommand) HasNetMask() bool {
 func (o *CreateProjectCommand) SetNetMask(v int32) {
 	o.NetMask.Set(&v)
 }
-
 // SetNetMaskNil sets the value for NetMask to be an explicit nil
 func (o *CreateProjectCommand) SetNetMaskNil() {
 	o.NetMask.Set(nil)
@@ -1463,7 +1445,6 @@ func (o *CreateProjectCommand) HasTemplateName() bool {
 func (o *CreateProjectCommand) SetTemplateName(v string) {
 	o.TemplateName.Set(&v)
 }
-
 // SetTemplateNameNil sets the value for TemplateName to be an explicit nil
 func (o *CreateProjectCommand) SetTemplateNameNil() {
 	o.TemplateName.Set(nil)
@@ -1540,7 +1521,7 @@ func (o *CreateProjectCommand) SetServerTemplates(v []ServerTemplateDto) {
 }
 
 func (o CreateProjectCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1704,3 +1685,5 @@ func (v *NullableCreateProjectCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

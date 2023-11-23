@@ -73,7 +73,6 @@ func (o *UserTokenCreateDto) HasAccessKey() bool {
 func (o *UserTokenCreateDto) SetAccessKey(v string) {
 	o.AccessKey.Set(&v)
 }
-
 // SetAccessKeyNil sets the value for AccessKey to be an explicit nil
 func (o *UserTokenCreateDto) SetAccessKeyNil() {
 	o.AccessKey.Set(nil)
@@ -116,7 +115,6 @@ func (o *UserTokenCreateDto) HasSecretKey() bool {
 func (o *UserTokenCreateDto) SetSecretKey(v string) {
 	o.SecretKey.Set(&v)
 }
-
 // SetSecretKeyNil sets the value for SecretKey to be an explicit nil
 func (o *UserTokenCreateDto) SetSecretKeyNil() {
 	o.SecretKey.Set(nil)
@@ -128,7 +126,7 @@ func (o *UserTokenCreateDto) UnsetSecretKey() {
 }
 
 func (o UserTokenCreateDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableUserTokenCreateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

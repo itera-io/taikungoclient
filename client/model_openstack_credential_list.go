@@ -20,8 +20,8 @@ var _ MappedNullable = &OpenstackCredentialList{}
 
 // OpenstackCredentialList struct for OpenstackCredentialList
 type OpenstackCredentialList struct {
-	Data       []OpenstackCredentialsListDto `json:"data,omitempty"`
-	TotalCount *int32                        `json:"totalCount,omitempty"`
+	Data []OpenstackCredentialsListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewOpenstackCredentialList instantiates a new OpenstackCredentialList object
@@ -107,7 +107,7 @@ func (o *OpenstackCredentialList) SetTotalCount(v int32) {
 }
 
 func (o OpenstackCredentialList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableOpenstackCredentialList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

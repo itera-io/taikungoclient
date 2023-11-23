@@ -20,9 +20,9 @@ var _ MappedNullable = &CheckAwsCommand{}
 
 // CheckAwsCommand struct for CheckAwsCommand
 type CheckAwsCommand struct {
-	AwsAccessKeyId     NullableString `json:"awsAccessKeyId,omitempty"`
+	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
-	Region             NullableString `json:"region,omitempty"`
+	Region NullableString `json:"region,omitempty"`
 }
 
 // NewCheckAwsCommand instantiates a new CheckAwsCommand object
@@ -74,7 +74,6 @@ func (o *CheckAwsCommand) HasAwsAccessKeyId() bool {
 func (o *CheckAwsCommand) SetAwsAccessKeyId(v string) {
 	o.AwsAccessKeyId.Set(&v)
 }
-
 // SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
 func (o *CheckAwsCommand) SetAwsAccessKeyIdNil() {
 	o.AwsAccessKeyId.Set(nil)
@@ -117,7 +116,6 @@ func (o *CheckAwsCommand) HasAwsSecretAccessKey() bool {
 func (o *CheckAwsCommand) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey.Set(&v)
 }
-
 // SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
 func (o *CheckAwsCommand) SetAwsSecretAccessKeyNil() {
 	o.AwsSecretAccessKey.Set(nil)
@@ -160,7 +158,6 @@ func (o *CheckAwsCommand) HasRegion() bool {
 func (o *CheckAwsCommand) SetRegion(v string) {
 	o.Region.Set(&v)
 }
-
 // SetRegionNil sets the value for Region to be an explicit nil
 func (o *CheckAwsCommand) SetRegionNil() {
 	o.Region.Set(nil)
@@ -172,7 +169,7 @@ func (o *CheckAwsCommand) UnsetRegion() {
 }
 
 func (o CheckAwsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableCheckAwsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

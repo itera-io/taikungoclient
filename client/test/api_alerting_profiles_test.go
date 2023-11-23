@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_AlertingProfilesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_AlertingProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AlertingProfilesAPIService AlertingprofilesAssignEmail", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -37,7 +37,7 @@ func Test_taikuncore_AlertingProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AlertingProfilesAPIService AlertingprofilesAssignWebhooks", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -50,7 +50,7 @@ func Test_taikuncore_AlertingProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AlertingProfilesAPIService AlertingprofilesAttach", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AlertingProfilesAPI.AlertingprofilesAttach(context.Background()).Execute()
 
@@ -61,7 +61,7 @@ func Test_taikuncore_AlertingProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AlertingProfilesAPIService AlertingprofilesCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AlertingProfilesAPI.AlertingprofilesCreate(context.Background()).Execute()
 
@@ -73,7 +73,7 @@ func Test_taikuncore_AlertingProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AlertingProfilesAPIService AlertingprofilesDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -86,7 +86,7 @@ func Test_taikuncore_AlertingProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AlertingProfilesAPIService AlertingprofilesDetach", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AlertingProfilesAPI.AlertingprofilesDetach(context.Background()).Execute()
 
@@ -97,7 +97,7 @@ func Test_taikuncore_AlertingProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AlertingProfilesAPIService AlertingprofilesDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AlertingProfilesAPI.AlertingprofilesDropdown(context.Background()).Execute()
 
@@ -109,7 +109,7 @@ func Test_taikuncore_AlertingProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AlertingProfilesAPIService AlertingprofilesEdit", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AlertingProfilesAPI.AlertingprofilesEdit(context.Background()).Execute()
 
@@ -121,7 +121,7 @@ func Test_taikuncore_AlertingProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AlertingProfilesAPIService AlertingprofilesList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AlertingProfilesAPI.AlertingprofilesList(context.Background()).Execute()
 
@@ -133,20 +133,9 @@ func Test_taikuncore_AlertingProfilesAPIService(t *testing.T) {
 
 	t.Run("Test AlertingProfilesAPIService AlertingprofilesLockManager", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AlertingProfilesAPI.AlertingprofilesLockManager(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AlertingProfilesAPIService AlertingprofilesVerify", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.AlertingProfilesAPI.AlertingprofilesVerify(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

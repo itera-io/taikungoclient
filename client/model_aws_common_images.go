@@ -20,8 +20,8 @@ var _ MappedNullable = &AwsCommonImages{}
 
 // AwsCommonImages struct for AwsCommonImages
 type AwsCommonImages struct {
-	Name        NullableString `json:"name,omitempty"`
-	Id          NullableString `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	DisplayName NullableString `json:"displayName,omitempty"`
 }
 
@@ -74,7 +74,6 @@ func (o *AwsCommonImages) HasName() bool {
 func (o *AwsCommonImages) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AwsCommonImages) SetNameNil() {
 	o.Name.Set(nil)
@@ -117,7 +116,6 @@ func (o *AwsCommonImages) HasId() bool {
 func (o *AwsCommonImages) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *AwsCommonImages) SetIdNil() {
 	o.Id.Set(nil)
@@ -160,7 +158,6 @@ func (o *AwsCommonImages) HasDisplayName() bool {
 func (o *AwsCommonImages) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
-
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *AwsCommonImages) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -172,7 +169,7 @@ func (o *AwsCommonImages) UnsetDisplayName() {
 }
 
 func (o AwsCommonImages) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableAwsCommonImages) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

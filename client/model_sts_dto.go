@@ -21,9 +21,9 @@ var _ MappedNullable = &StsDto{}
 // StsDto struct for StsDto
 type StsDto struct {
 	MetadataName NullableString `json:"metadataName,omitempty"`
-	Status       NullableString `json:"status,omitempty"`
-	Namespace    NullableString `json:"namespace,omitempty"`
-	Age          NullableString `json:"age,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Age NullableString `json:"age,omitempty"`
 }
 
 // NewStsDto instantiates a new StsDto object
@@ -75,7 +75,6 @@ func (o *StsDto) HasMetadataName() bool {
 func (o *StsDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *StsDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -118,7 +117,6 @@ func (o *StsDto) HasStatus() bool {
 func (o *StsDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *StsDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -161,7 +159,6 @@ func (o *StsDto) HasNamespace() bool {
 func (o *StsDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *StsDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -204,7 +201,6 @@ func (o *StsDto) HasAge() bool {
 func (o *StsDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-
 // SetAgeNil sets the value for Age to be an explicit nil
 func (o *StsDto) SetAgeNil() {
 	o.Age.Set(nil)
@@ -216,7 +212,7 @@ func (o *StsDto) UnsetAge() {
 }
 
 func (o StsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,3 +271,5 @@ func (v *NullableStsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_AppRepositoriesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_AppRepositoriesAPIService(t *testing.T) {
 
 	t.Run("Test AppRepositoriesAPIService RepositoryAvailableList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AppRepositoriesAPI.RepositoryAvailableList(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_AppRepositoriesAPIService(t *testing.T) {
 
 	t.Run("Test AppRepositoriesAPIService RepositoryBind", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AppRepositoriesAPI.RepositoryBind(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_AppRepositoriesAPIService(t *testing.T) {
 
 	t.Run("Test AppRepositoriesAPIService RepositoryDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AppRepositoriesAPI.RepositoryDelete(context.Background()).Execute()
 
@@ -58,7 +58,7 @@ func Test_taikuncore_AppRepositoriesAPIService(t *testing.T) {
 
 	t.Run("Test AppRepositoriesAPIService RepositoryDisable", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AppRepositoriesAPI.RepositoryDisable(context.Background()).Execute()
 
@@ -69,7 +69,7 @@ func Test_taikuncore_AppRepositoriesAPIService(t *testing.T) {
 
 	t.Run("Test AppRepositoriesAPIService RepositoryImport", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AppRepositoriesAPI.RepositoryImport(context.Background()).Execute()
 
@@ -80,7 +80,7 @@ func Test_taikuncore_AppRepositoriesAPIService(t *testing.T) {
 
 	t.Run("Test AppRepositoriesAPIService RepositoryRecommendedList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AppRepositoriesAPI.RepositoryRecommendedList(context.Background()).Execute()
 
@@ -92,7 +92,7 @@ func Test_taikuncore_AppRepositoriesAPIService(t *testing.T) {
 
 	t.Run("Test AppRepositoriesAPIService RepositoryUnbind", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AppRepositoriesAPI.RepositoryUnbind(context.Background()).Execute()
 

@@ -21,9 +21,9 @@ type TicketPriority string
 
 // List of TicketPriority
 const (
-	TICKETPRIORITY_LOW    TicketPriority = "Low"
+	TICKETPRIORITY_LOW TicketPriority = "Low"
 	TICKETPRIORITY_MEDIUM TicketPriority = "Medium"
-	TICKETPRIORITY_HIGH   TicketPriority = "High"
+	TICKETPRIORITY_HIGH TicketPriority = "High"
 )
 
 // All allowed values of TicketPriority enum
@@ -111,3 +111,4 @@ func (v *NullableTicketPriority) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

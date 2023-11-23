@@ -20,13 +20,14 @@ import (
 	"strings"
 )
 
+
 // AlertingProfilesAPIService AlertingProfilesAPI service
 type AlertingProfilesAPIService service
 
 type ApiAlertingprofilesAssignEmailRequest struct {
-	ctx              context.Context
-	ApiService       *AlertingProfilesAPIService
-	id               int32
+	ctx context.Context
+	ApiService *AlertingProfilesAPIService
+	id int32
 	alertingEmailDto *[]AlertingEmailDto
 }
 
@@ -42,24 +43,24 @@ func (r ApiAlertingprofilesAssignEmailRequest) Execute() (*http.Response, error)
 /*
 AlertingprofilesAssignEmail Assign Alerting emails
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiAlertingprofilesAssignEmailRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiAlertingprofilesAssignEmailRequest
 */
 func (a *AlertingProfilesAPIService) AlertingprofilesAssignEmail(ctx context.Context, id int32) ApiAlertingprofilesAssignEmailRequest {
 	return ApiAlertingprofilesAssignEmailRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *AlertingProfilesAPIService) AlertingprofilesAssignEmailExecute(r ApiAlertingprofilesAssignEmailRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertingProfilesAPIService.AlertingprofilesAssignEmail")
@@ -136,8 +137,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignEmailExecute(r ApiAle
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -147,8 +148,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignEmailExecute(r ApiAle
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -158,8 +159,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignEmailExecute(r ApiAle
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -169,8 +170,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignEmailExecute(r ApiAle
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -180,8 +181,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignEmailExecute(r ApiAle
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -190,9 +191,9 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignEmailExecute(r ApiAle
 }
 
 type ApiAlertingprofilesAssignWebhooksRequest struct {
-	ctx                context.Context
-	ApiService         *AlertingProfilesAPIService
-	id                 int32
+	ctx context.Context
+	ApiService *AlertingProfilesAPIService
+	id int32
 	alertingWebhookDto *[]AlertingWebhookDto
 }
 
@@ -208,24 +209,24 @@ func (r ApiAlertingprofilesAssignWebhooksRequest) Execute() (*http.Response, err
 /*
 AlertingprofilesAssignWebhooks Assign Alerting webhooks
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiAlertingprofilesAssignWebhooksRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiAlertingprofilesAssignWebhooksRequest
 */
 func (a *AlertingProfilesAPIService) AlertingprofilesAssignWebhooks(ctx context.Context, id int32) ApiAlertingprofilesAssignWebhooksRequest {
 	return ApiAlertingprofilesAssignWebhooksRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *AlertingProfilesAPIService) AlertingprofilesAssignWebhooksExecute(r ApiAlertingprofilesAssignWebhooksRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertingProfilesAPIService.AlertingprofilesAssignWebhooks")
@@ -302,8 +303,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignWebhooksExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -313,8 +314,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignWebhooksExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -324,8 +325,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignWebhooksExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -335,8 +336,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignWebhooksExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -346,8 +347,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignWebhooksExecute(r Api
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -356,8 +357,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignWebhooksExecute(r Api
 }
 
 type ApiAlertingprofilesAttachRequest struct {
-	ctx                                context.Context
-	ApiService                         *AlertingProfilesAPIService
+	ctx context.Context
+	ApiService *AlertingProfilesAPIService
 	attachDetachAlertingProfileCommand *AttachDetachAlertingProfileCommand
 }
 
@@ -373,22 +374,22 @@ func (r ApiAlertingprofilesAttachRequest) Execute() (*http.Response, error) {
 /*
 AlertingprofilesAttach Attach alerting profile to project
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAlertingprofilesAttachRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAlertingprofilesAttachRequest
 */
 func (a *AlertingProfilesAPIService) AlertingprofilesAttach(ctx context.Context) ApiAlertingprofilesAttachRequest {
 	return ApiAlertingprofilesAttachRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AlertingProfilesAPIService) AlertingprofilesAttachExecute(r ApiAlertingprofilesAttachRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertingProfilesAPIService.AlertingprofilesAttach")
@@ -467,8 +468,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAttachExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -478,8 +479,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAttachExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -489,8 +490,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAttachExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -500,8 +501,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAttachExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -511,8 +512,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAttachExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -521,8 +522,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAttachExecute(r ApiAlerting
 }
 
 type ApiAlertingprofilesCreateRequest struct {
-	ctx                          context.Context
-	ApiService                   *AlertingProfilesAPIService
+	ctx context.Context
+	ApiService *AlertingProfilesAPIService
 	createAlertingProfileCommand *CreateAlertingProfileCommand
 }
 
@@ -538,25 +539,24 @@ func (r ApiAlertingprofilesCreateRequest) Execute() (*ApiResponse, *http.Respons
 /*
 AlertingprofilesCreate Add Alerting profile
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAlertingprofilesCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAlertingprofilesCreateRequest
 */
 func (a *AlertingProfilesAPIService) AlertingprofilesCreate(ctx context.Context) ApiAlertingprofilesCreateRequest {
 	return ApiAlertingprofilesCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *AlertingProfilesAPIService) AlertingprofilesCreateExecute(r ApiAlertingprofilesCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertingProfilesAPIService.AlertingprofilesCreate")
@@ -632,8 +632,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesCreateExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -643,8 +643,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesCreateExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -654,8 +654,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesCreateExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -665,8 +665,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesCreateExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -676,8 +676,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesCreateExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -695,9 +695,9 @@ func (a *AlertingProfilesAPIService) AlertingprofilesCreateExecute(r ApiAlerting
 }
 
 type ApiAlertingprofilesDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *AlertingProfilesAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiAlertingprofilesDeleteRequest) Execute() (*http.Response, error) {
@@ -707,24 +707,24 @@ func (r ApiAlertingprofilesDeleteRequest) Execute() (*http.Response, error) {
 /*
 AlertingprofilesDelete Remove Alerting profiles by Id
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiAlertingprofilesDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiAlertingprofilesDeleteRequest
 */
 func (a *AlertingProfilesAPIService) AlertingprofilesDelete(ctx context.Context, id int32) ApiAlertingprofilesDeleteRequest {
 	return ApiAlertingprofilesDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *AlertingProfilesAPIService) AlertingprofilesDeleteExecute(r ApiAlertingprofilesDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertingProfilesAPIService.AlertingprofilesDelete")
@@ -799,8 +799,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDeleteExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -810,8 +810,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDeleteExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -821,8 +821,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDeleteExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -832,8 +832,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDeleteExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -843,8 +843,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDeleteExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -853,8 +853,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDeleteExecute(r ApiAlerting
 }
 
 type ApiAlertingprofilesDetachRequest struct {
-	ctx                                context.Context
-	ApiService                         *AlertingProfilesAPIService
+	ctx context.Context
+	ApiService *AlertingProfilesAPIService
 	attachDetachAlertingProfileCommand *AttachDetachAlertingProfileCommand
 }
 
@@ -870,22 +870,22 @@ func (r ApiAlertingprofilesDetachRequest) Execute() (*http.Response, error) {
 /*
 AlertingprofilesDetach Detach alerting profile from project
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAlertingprofilesDetachRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAlertingprofilesDetachRequest
 */
 func (a *AlertingProfilesAPIService) AlertingprofilesDetach(ctx context.Context) ApiAlertingprofilesDetachRequest {
 	return ApiAlertingprofilesDetachRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AlertingProfilesAPIService) AlertingprofilesDetachExecute(r ApiAlertingprofilesDetachRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertingProfilesAPIService.AlertingprofilesDetach")
@@ -964,8 +964,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDetachExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -975,8 +975,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDetachExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -986,8 +986,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDetachExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -997,8 +997,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDetachExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1008,8 +1008,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDetachExecute(r ApiAlerting
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1018,10 +1018,10 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDetachExecute(r ApiAlerting
 }
 
 type ApiAlertingprofilesDropdownRequest struct {
-	ctx            context.Context
-	ApiService     *AlertingProfilesAPIService
+	ctx context.Context
+	ApiService *AlertingProfilesAPIService
 	organizationId *int32
-	search         *string
+	search *string
 }
 
 func (r ApiAlertingprofilesDropdownRequest) OrganizationId(organizationId int32) ApiAlertingprofilesDropdownRequest {
@@ -1041,25 +1041,24 @@ func (r ApiAlertingprofilesDropdownRequest) Execute() ([]CommonDropdownDto, *htt
 /*
 AlertingprofilesDropdown Retrieve all Alerting profiles for organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAlertingprofilesDropdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAlertingprofilesDropdownRequest
 */
 func (a *AlertingProfilesAPIService) AlertingprofilesDropdown(ctx context.Context) ApiAlertingprofilesDropdownRequest {
 	return ApiAlertingprofilesDropdownRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CommonDropdownDto
+//  @return []CommonDropdownDto
 func (a *AlertingProfilesAPIService) AlertingprofilesDropdownExecute(r ApiAlertingprofilesDropdownRequest) ([]CommonDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CommonDropdownDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertingProfilesAPIService.AlertingprofilesDropdown")
@@ -1139,8 +1138,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDropdownExecute(r ApiAlerti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1150,8 +1149,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDropdownExecute(r ApiAlerti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1161,8 +1160,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDropdownExecute(r ApiAlerti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1172,8 +1171,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDropdownExecute(r ApiAlerti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1183,8 +1182,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDropdownExecute(r ApiAlerti
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1202,8 +1201,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDropdownExecute(r ApiAlerti
 }
 
 type ApiAlertingprofilesEditRequest struct {
-	ctx                          context.Context
-	ApiService                   *AlertingProfilesAPIService
+	ctx context.Context
+	ApiService *AlertingProfilesAPIService
 	updateAlertingProfileCommand *UpdateAlertingProfileCommand
 }
 
@@ -1219,25 +1218,24 @@ func (r ApiAlertingprofilesEditRequest) Execute() (*ApiResponse, *http.Response,
 /*
 AlertingprofilesEdit Update Alerting profile
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAlertingprofilesEditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAlertingprofilesEditRequest
 */
 func (a *AlertingProfilesAPIService) AlertingprofilesEdit(ctx context.Context) ApiAlertingprofilesEditRequest {
 	return ApiAlertingprofilesEditRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *AlertingProfilesAPIService) AlertingprofilesEditExecute(r ApiAlertingprofilesEditRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertingProfilesAPIService.AlertingprofilesEdit")
@@ -1313,8 +1311,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesEditExecute(r ApiAlertingpr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1324,8 +1322,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesEditExecute(r ApiAlertingpr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1335,8 +1333,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesEditExecute(r ApiAlertingpr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1346,8 +1344,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesEditExecute(r ApiAlertingpr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1357,8 +1355,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesEditExecute(r ApiAlertingpr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1376,16 +1374,16 @@ func (a *AlertingProfilesAPIService) AlertingprofilesEditExecute(r ApiAlertingpr
 }
 
 type ApiAlertingprofilesListRequest struct {
-	ctx            context.Context
-	ApiService     *AlertingProfilesAPIService
+	ctx context.Context
+	ApiService *AlertingProfilesAPIService
 	organizationId *int32
-	limit          *int32
-	offset         *int32
-	sortBy         *string
-	sortDirection  *string
-	search         *string
-	id             *int32
-	searchId       *string
+	limit *int32
+	offset *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	id *int32
+	searchId *string
 }
 
 func (r ApiAlertingprofilesListRequest) OrganizationId(organizationId int32) ApiAlertingprofilesListRequest {
@@ -1435,25 +1433,24 @@ func (r ApiAlertingprofilesListRequest) Execute() (*AlertingProfilesList, *http.
 /*
 AlertingprofilesList Retrieve all Alerting profiles
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAlertingprofilesListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAlertingprofilesListRequest
 */
 func (a *AlertingProfilesAPIService) AlertingprofilesList(ctx context.Context) ApiAlertingprofilesListRequest {
 	return ApiAlertingprofilesListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AlertingProfilesList
+//  @return AlertingProfilesList
 func (a *AlertingProfilesAPIService) AlertingprofilesListExecute(r ApiAlertingprofilesListRequest) (*AlertingProfilesList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AlertingProfilesList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AlertingProfilesList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertingProfilesAPIService.AlertingprofilesList")
@@ -1551,8 +1548,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesListExecute(r ApiAlertingpr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1562,8 +1559,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesListExecute(r ApiAlertingpr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1573,8 +1570,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesListExecute(r ApiAlertingpr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1584,8 +1581,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesListExecute(r ApiAlertingpr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1595,8 +1592,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesListExecute(r ApiAlertingpr
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1614,8 +1611,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesListExecute(r ApiAlertingpr
 }
 
 type ApiAlertingprofilesLockManagerRequest struct {
-	ctx                                context.Context
-	ApiService                         *AlertingProfilesAPIService
+	ctx context.Context
+	ApiService *AlertingProfilesAPIService
 	alertingProfilesLockManagerCommand *AlertingProfilesLockManagerCommand
 }
 
@@ -1631,22 +1628,22 @@ func (r ApiAlertingprofilesLockManagerRequest) Execute() (*http.Response, error)
 /*
 AlertingprofilesLockManager Lock/Unlock Alerting profiles
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAlertingprofilesLockManagerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAlertingprofilesLockManagerRequest
 */
 func (a *AlertingProfilesAPIService) AlertingprofilesLockManager(ctx context.Context) ApiAlertingprofilesLockManagerRequest {
 	return ApiAlertingprofilesLockManagerRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AlertingProfilesAPIService) AlertingprofilesLockManagerExecute(r ApiAlertingprofilesLockManagerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertingProfilesAPIService.AlertingprofilesLockManager")
@@ -1725,8 +1722,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesLockManagerExecute(r ApiAle
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1736,8 +1733,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesLockManagerExecute(r ApiAle
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1747,8 +1744,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesLockManagerExecute(r ApiAle
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1758,8 +1755,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesLockManagerExecute(r ApiAle
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1769,170 +1766,8 @@ func (a *AlertingProfilesAPIService) AlertingprofilesLockManagerExecute(r ApiAle
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiAlertingprofilesVerifyRequest struct {
-	ctx                  context.Context
-	ApiService           *AlertingProfilesAPIService
-	verifyWebhookCommand *VerifyWebhookCommand
-}
-
-func (r ApiAlertingprofilesVerifyRequest) VerifyWebhookCommand(verifyWebhookCommand VerifyWebhookCommand) ApiAlertingprofilesVerifyRequest {
-	r.verifyWebhookCommand = &verifyWebhookCommand
-	return r
-}
-
-func (r ApiAlertingprofilesVerifyRequest) Execute() (*http.Response, error) {
-	return r.ApiService.AlertingprofilesVerifyExecute(r)
-}
-
-/*
-AlertingprofilesVerify Verify webhook endpoint
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAlertingprofilesVerifyRequest
-*/
-func (a *AlertingProfilesAPIService) AlertingprofilesVerify(ctx context.Context) ApiAlertingprofilesVerifyRequest {
-	return ApiAlertingprofilesVerifyRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-func (a *AlertingProfilesAPIService) AlertingprofilesVerifyExecute(r ApiAlertingprofilesVerifyRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AlertingProfilesAPIService.AlertingprofilesVerify")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/alertingprofiles/verifywebhook"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.verifyWebhookCommand
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["Bearer"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

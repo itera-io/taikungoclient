@@ -20,9 +20,9 @@ var _ MappedNullable = &DuplicateNameCheckerCommand{}
 
 // DuplicateNameCheckerCommand struct for DuplicateNameCheckerCommand
 type DuplicateNameCheckerCommand struct {
-	OrganizationId NullableInt32  `json:"organizationId,omitempty"`
-	Type           NullableString `json:"type,omitempty"`
-	Name           NullableString `json:"name,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	Type NullableString `json:"type,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 }
 
 // NewDuplicateNameCheckerCommand instantiates a new DuplicateNameCheckerCommand object
@@ -74,7 +74,6 @@ func (o *DuplicateNameCheckerCommand) HasOrganizationId() bool {
 func (o *DuplicateNameCheckerCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *DuplicateNameCheckerCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -117,7 +116,6 @@ func (o *DuplicateNameCheckerCommand) HasType() bool {
 func (o *DuplicateNameCheckerCommand) SetType(v string) {
 	o.Type.Set(&v)
 }
-
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *DuplicateNameCheckerCommand) SetTypeNil() {
 	o.Type.Set(nil)
@@ -160,7 +158,6 @@ func (o *DuplicateNameCheckerCommand) HasName() bool {
 func (o *DuplicateNameCheckerCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DuplicateNameCheckerCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -172,7 +169,7 @@ func (o *DuplicateNameCheckerCommand) UnsetName() {
 }
 
 func (o DuplicateNameCheckerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableDuplicateNameCheckerCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

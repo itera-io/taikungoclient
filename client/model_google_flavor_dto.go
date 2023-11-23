@@ -20,13 +20,13 @@ var _ MappedNullable = &GoogleFlavorDto{}
 
 // GoogleFlavorDto struct for GoogleFlavorDto
 type GoogleFlavorDto struct {
-	Name             NullableString `json:"name,omitempty"`
-	Cpu              NullableInt32  `json:"cpu,omitempty"`
-	Ram              NullableInt64  `json:"ram,omitempty"`
-	Description      interface{}    `json:"description,omitempty"`
-	LinuxPrice       NullableString `json:"linuxPrice,omitempty"`
-	WindowsPrice     NullableString `json:"windowsPrice,omitempty"`
-	LinuxSpotPrice   NullableString `json:"linuxSpotPrice,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Cpu NullableInt32 `json:"cpu,omitempty"`
+	Ram NullableInt64 `json:"ram,omitempty"`
+	Description interface{} `json:"description,omitempty"`
+	LinuxPrice NullableString `json:"linuxPrice,omitempty"`
+	WindowsPrice NullableString `json:"windowsPrice,omitempty"`
+	LinuxSpotPrice NullableString `json:"linuxSpotPrice,omitempty"`
 	WindowsSpotPrice NullableString `json:"windowsSpotPrice,omitempty"`
 }
 
@@ -79,7 +79,6 @@ func (o *GoogleFlavorDto) HasName() bool {
 func (o *GoogleFlavorDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GoogleFlavorDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -122,7 +121,6 @@ func (o *GoogleFlavorDto) HasCpu() bool {
 func (o *GoogleFlavorDto) SetCpu(v int32) {
 	o.Cpu.Set(&v)
 }
-
 // SetCpuNil sets the value for Cpu to be an explicit nil
 func (o *GoogleFlavorDto) SetCpuNil() {
 	o.Cpu.Set(nil)
@@ -165,7 +163,6 @@ func (o *GoogleFlavorDto) HasRam() bool {
 func (o *GoogleFlavorDto) SetRam(v int64) {
 	o.Ram.Set(&v)
 }
-
 // SetRamNil sets the value for Ram to be an explicit nil
 func (o *GoogleFlavorDto) SetRamNil() {
 	o.Ram.Set(nil)
@@ -241,7 +238,6 @@ func (o *GoogleFlavorDto) HasLinuxPrice() bool {
 func (o *GoogleFlavorDto) SetLinuxPrice(v string) {
 	o.LinuxPrice.Set(&v)
 }
-
 // SetLinuxPriceNil sets the value for LinuxPrice to be an explicit nil
 func (o *GoogleFlavorDto) SetLinuxPriceNil() {
 	o.LinuxPrice.Set(nil)
@@ -284,7 +280,6 @@ func (o *GoogleFlavorDto) HasWindowsPrice() bool {
 func (o *GoogleFlavorDto) SetWindowsPrice(v string) {
 	o.WindowsPrice.Set(&v)
 }
-
 // SetWindowsPriceNil sets the value for WindowsPrice to be an explicit nil
 func (o *GoogleFlavorDto) SetWindowsPriceNil() {
 	o.WindowsPrice.Set(nil)
@@ -327,7 +322,6 @@ func (o *GoogleFlavorDto) HasLinuxSpotPrice() bool {
 func (o *GoogleFlavorDto) SetLinuxSpotPrice(v string) {
 	o.LinuxSpotPrice.Set(&v)
 }
-
 // SetLinuxSpotPriceNil sets the value for LinuxSpotPrice to be an explicit nil
 func (o *GoogleFlavorDto) SetLinuxSpotPriceNil() {
 	o.LinuxSpotPrice.Set(nil)
@@ -370,7 +364,6 @@ func (o *GoogleFlavorDto) HasWindowsSpotPrice() bool {
 func (o *GoogleFlavorDto) SetWindowsSpotPrice(v string) {
 	o.WindowsSpotPrice.Set(&v)
 }
-
 // SetWindowsSpotPriceNil sets the value for WindowsSpotPrice to be an explicit nil
 func (o *GoogleFlavorDto) SetWindowsSpotPriceNil() {
 	o.WindowsSpotPrice.Set(nil)
@@ -382,7 +375,7 @@ func (o *GoogleFlavorDto) UnsetWindowsSpotPrice() {
 }
 
 func (o GoogleFlavorDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -453,3 +446,5 @@ func (v *NullableGoogleFlavorDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

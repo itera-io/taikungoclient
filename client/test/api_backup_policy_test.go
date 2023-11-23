@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupByName", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 		var name string
@@ -37,20 +37,9 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BackupPolicyAPIService BackupClearProject", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.BackupPolicyAPI.BackupClearProject(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test BackupPolicyAPIService BackupCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.BackupPolicyAPI.BackupCreate(context.Background()).Execute()
 
@@ -61,7 +50,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupDeleteBackup", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.BackupPolicyAPI.BackupDeleteBackup(context.Background()).Execute()
 
@@ -72,7 +61,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupDeleteBackupLocation", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.BackupPolicyAPI.BackupDeleteBackupLocation(context.Background()).Execute()
 
@@ -83,7 +72,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupDeleteRestore", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.BackupPolicyAPI.BackupDeleteRestore(context.Background()).Execute()
 
@@ -94,7 +83,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupDeleteSchedule", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.BackupPolicyAPI.BackupDeleteSchedule(context.Background()).Execute()
 
@@ -105,7 +94,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupDescribeBackup", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 		var name string
@@ -120,7 +109,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupDescribeRestore", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 		var name string
@@ -135,7 +124,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupDescribeSchedule", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 		var name string
@@ -150,7 +139,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupDisableBackup", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.BackupPolicyAPI.BackupDisableBackup(context.Background()).Execute()
 
@@ -161,7 +150,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupEnableBackup", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.BackupPolicyAPI.BackupEnableBackup(context.Background()).Execute()
 
@@ -172,7 +161,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupImportBackupStorage", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.BackupPolicyAPI.BackupImportBackupStorage(context.Background()).Execute()
 
@@ -183,7 +172,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupListAllBackupStorages", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -197,7 +186,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupListAllBackups", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -211,7 +200,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupListAllDeleteBackupRequests", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -225,7 +214,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupListAllRestores", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -239,7 +228,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupListAllSchedules", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -253,7 +242,7 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 	t.Run("Test BackupPolicyAPIService BackupRestoreBackup", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.BackupPolicyAPI.BackupRestoreBackup(context.Background()).Execute()
 

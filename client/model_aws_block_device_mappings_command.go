@@ -20,8 +20,8 @@ var _ MappedNullable = &AwsBlockDeviceMappingsCommand{}
 
 // AwsBlockDeviceMappingsCommand struct for AwsBlockDeviceMappingsCommand
 type AwsBlockDeviceMappingsCommand struct {
-	ProjectId *int32         `json:"projectId,omitempty"`
-	ImageId   NullableString `json:"imageId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	ImageId NullableString `json:"imageId,omitempty"`
 }
 
 // NewAwsBlockDeviceMappingsCommand instantiates a new AwsBlockDeviceMappingsCommand object
@@ -105,7 +105,6 @@ func (o *AwsBlockDeviceMappingsCommand) HasImageId() bool {
 func (o *AwsBlockDeviceMappingsCommand) SetImageId(v string) {
 	o.ImageId.Set(&v)
 }
-
 // SetImageIdNil sets the value for ImageId to be an explicit nil
 func (o *AwsBlockDeviceMappingsCommand) SetImageIdNil() {
 	o.ImageId.Set(nil)
@@ -117,7 +116,7 @@ func (o *AwsBlockDeviceMappingsCommand) UnsetImageId() {
 }
 
 func (o AwsBlockDeviceMappingsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableAwsBlockDeviceMappingsCommand) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

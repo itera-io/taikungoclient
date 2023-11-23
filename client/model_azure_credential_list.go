@@ -20,8 +20,8 @@ var _ MappedNullable = &AzureCredentialList{}
 
 // AzureCredentialList struct for AzureCredentialList
 type AzureCredentialList struct {
-	Data       []AzureCredentialsListDto `json:"data,omitempty"`
-	TotalCount *int32                    `json:"totalCount,omitempty"`
+	Data []AzureCredentialsListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewAzureCredentialList instantiates a new AzureCredentialList object
@@ -107,7 +107,7 @@ func (o *AzureCredentialList) SetTotalCount(v int32) {
 }
 
 func (o AzureCredentialList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableAzureCredentialList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

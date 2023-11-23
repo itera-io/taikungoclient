@@ -20,7 +20,7 @@ var _ MappedNullable = &PackageAutocompleteDto{}
 
 // PackageAutocompleteDto struct for PackageAutocompleteDto
 type PackageAutocompleteDto struct {
-	Key   NullableString `json:"key,omitempty"`
+	Key NullableString `json:"key,omitempty"`
 	Value NullableString `json:"value,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *PackageAutocompleteDto) HasKey() bool {
 func (o *PackageAutocompleteDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
-
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *PackageAutocompleteDto) SetKeyNil() {
 	o.Key.Set(nil)
@@ -116,7 +115,6 @@ func (o *PackageAutocompleteDto) HasValue() bool {
 func (o *PackageAutocompleteDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *PackageAutocompleteDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -128,7 +126,7 @@ func (o *PackageAutocompleteDto) UnsetValue() {
 }
 
 func (o PackageAutocompleteDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullablePackageAutocompleteDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

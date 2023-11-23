@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_PrometheusBillingsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_PrometheusBillingsAPIService(t *testing.T) {
 
 	t.Run("Test PrometheusBillingsAPIService PrometheusbillingsCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.PrometheusBillingsAPI.PrometheusbillingsCreate(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_PrometheusBillingsAPIService(t *testing.T) {
 
 	t.Run("Test PrometheusBillingsAPIService PrometheusbillingsExportCsv", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.PrometheusBillingsAPI.PrometheusbillingsExportCsv(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_PrometheusBillingsAPIService(t *testing.T) {
 
 	t.Run("Test PrometheusBillingsAPIService PrometheusbillingsGroupedList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.PrometheusBillingsAPI.PrometheusbillingsGroupedList(context.Background()).Execute()
 
@@ -59,7 +59,7 @@ func Test_taikuncore_PrometheusBillingsAPIService(t *testing.T) {
 
 	t.Run("Test PrometheusBillingsAPIService PrometheusbillingsList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.PrometheusBillingsAPI.PrometheusbillingsList(context.Background()).Execute()
 

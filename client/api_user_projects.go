@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // UserProjectsAPIService UserProjectsAPI service
 type UserProjectsAPIService service
 
 type ApiUserprojectsBindProjectsRequest struct {
-	ctx                 context.Context
-	ApiService          *UserProjectsAPIService
+	ctx context.Context
+	ApiService *UserProjectsAPIService
 	bindProjectsCommand *BindProjectsCommand
 }
 
@@ -41,22 +42,22 @@ func (r ApiUserprojectsBindProjectsRequest) Execute() (*http.Response, error) {
 /*
 UserprojectsBindProjects Bind projects to user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUserprojectsBindProjectsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUserprojectsBindProjectsRequest
 */
 func (a *UserProjectsAPIService) UserprojectsBindProjects(ctx context.Context) ApiUserprojectsBindProjectsRequest {
 	return ApiUserprojectsBindProjectsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UserProjectsAPIService) UserprojectsBindProjectsExecute(r ApiUserprojectsBindProjectsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserProjectsAPIService.UserprojectsBindProjects")
@@ -132,8 +133,8 @@ func (a *UserProjectsAPIService) UserprojectsBindProjectsExecute(r ApiUserprojec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -143,8 +144,8 @@ func (a *UserProjectsAPIService) UserprojectsBindProjectsExecute(r ApiUserprojec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -154,8 +155,8 @@ func (a *UserProjectsAPIService) UserprojectsBindProjectsExecute(r ApiUserprojec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -165,8 +166,8 @@ func (a *UserProjectsAPIService) UserprojectsBindProjectsExecute(r ApiUserprojec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -176,8 +177,8 @@ func (a *UserProjectsAPIService) UserprojectsBindProjectsExecute(r ApiUserprojec
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -186,8 +187,8 @@ func (a *UserProjectsAPIService) UserprojectsBindProjectsExecute(r ApiUserprojec
 }
 
 type ApiUserprojectsBindUsersRequest struct {
-	ctx              context.Context
-	ApiService       *UserProjectsAPIService
+	ctx context.Context
+	ApiService *UserProjectsAPIService
 	bindUsersCommand *BindUsersCommand
 }
 
@@ -203,22 +204,22 @@ func (r ApiUserprojectsBindUsersRequest) Execute() (*http.Response, error) {
 /*
 UserprojectsBindUsers Bind users to project
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUserprojectsBindUsersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUserprojectsBindUsersRequest
 */
 func (a *UserProjectsAPIService) UserprojectsBindUsers(ctx context.Context) ApiUserprojectsBindUsersRequest {
 	return ApiUserprojectsBindUsersRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UserProjectsAPIService) UserprojectsBindUsersExecute(r ApiUserprojectsBindUsersRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserProjectsAPIService.UserprojectsBindUsers")
@@ -294,8 +295,8 @@ func (a *UserProjectsAPIService) UserprojectsBindUsersExecute(r ApiUserprojectsB
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -305,8 +306,8 @@ func (a *UserProjectsAPIService) UserprojectsBindUsersExecute(r ApiUserprojectsB
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -316,8 +317,8 @@ func (a *UserProjectsAPIService) UserprojectsBindUsersExecute(r ApiUserprojectsB
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -327,8 +328,8 @@ func (a *UserProjectsAPIService) UserprojectsBindUsersExecute(r ApiUserprojectsB
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -338,8 +339,8 @@ func (a *UserProjectsAPIService) UserprojectsBindUsersExecute(r ApiUserprojectsB
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -348,7 +349,7 @@ func (a *UserProjectsAPIService) UserprojectsBindUsersExecute(r ApiUserprojectsB
 }
 
 type ApiUserprojectsProjectListByUserRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserProjectsAPIService
 }
 
@@ -359,25 +360,24 @@ func (r ApiUserprojectsProjectListByUserRequest) Execute() ([]CommonDropdownDto,
 /*
 UserprojectsProjectListByUser Projects list for user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUserprojectsProjectListByUserRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUserprojectsProjectListByUserRequest
 */
 func (a *UserProjectsAPIService) UserprojectsProjectListByUser(ctx context.Context) ApiUserprojectsProjectListByUserRequest {
 	return ApiUserprojectsProjectListByUserRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CommonDropdownDto
+//  @return []CommonDropdownDto
 func (a *UserProjectsAPIService) UserprojectsProjectListByUserExecute(r ApiUserprojectsProjectListByUserRequest) ([]CommonDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CommonDropdownDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserProjectsAPIService.UserprojectsProjectListByUser")
@@ -451,8 +451,8 @@ func (a *UserProjectsAPIService) UserprojectsProjectListByUserExecute(r ApiUserp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -462,8 +462,8 @@ func (a *UserProjectsAPIService) UserprojectsProjectListByUserExecute(r ApiUserp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -473,8 +473,8 @@ func (a *UserProjectsAPIService) UserprojectsProjectListByUserExecute(r ApiUserp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -484,8 +484,8 @@ func (a *UserProjectsAPIService) UserprojectsProjectListByUserExecute(r ApiUserp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -495,8 +495,8 @@ func (a *UserProjectsAPIService) UserprojectsProjectListByUserExecute(r ApiUserp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -514,9 +514,9 @@ func (a *UserProjectsAPIService) UserprojectsProjectListByUserExecute(r ApiUserp
 }
 
 type ApiUserprojectsUserListByProjectRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserProjectsAPIService
-	projectId  int32
+	projectId int32
 }
 
 func (r ApiUserprojectsUserListByProjectRequest) Execute() ([]CommonStringBasedDropdownDto, *http.Response, error) {
@@ -526,27 +526,26 @@ func (r ApiUserprojectsUserListByProjectRequest) Execute() ([]CommonStringBasedD
 /*
 UserprojectsUserListByProject Users list by project id
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiUserprojectsUserListByProjectRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiUserprojectsUserListByProjectRequest
 */
 func (a *UserProjectsAPIService) UserprojectsUserListByProject(ctx context.Context, projectId int32) ApiUserprojectsUserListByProjectRequest {
 	return ApiUserprojectsUserListByProjectRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CommonStringBasedDropdownDto
+//  @return []CommonStringBasedDropdownDto
 func (a *UserProjectsAPIService) UserprojectsUserListByProjectExecute(r ApiUserprojectsUserListByProjectRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CommonStringBasedDropdownDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserProjectsAPIService.UserprojectsUserListByProject")
@@ -621,8 +620,8 @@ func (a *UserProjectsAPIService) UserprojectsUserListByProjectExecute(r ApiUserp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -632,8 +631,8 @@ func (a *UserProjectsAPIService) UserprojectsUserListByProjectExecute(r ApiUserp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -643,8 +642,8 @@ func (a *UserProjectsAPIService) UserprojectsUserListByProjectExecute(r ApiUserp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -654,8 +653,8 @@ func (a *UserProjectsAPIService) UserprojectsUserListByProjectExecute(r ApiUserp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -665,8 +664,8 @@ func (a *UserProjectsAPIService) UserprojectsUserListByProjectExecute(r ApiUserp
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

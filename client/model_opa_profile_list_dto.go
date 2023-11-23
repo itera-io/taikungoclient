@@ -20,23 +20,23 @@ var _ MappedNullable = &OpaProfileListDto{}
 
 // OpaProfileListDto struct for OpaProfileListDto
 type OpaProfileListDto struct {
-	Id                    *int32              `json:"id,omitempty"`
-	Name                  NullableString      `json:"name,omitempty"`
-	ForbidNodePort        *bool               `json:"forbidNodePort,omitempty"`
-	ForbidHttpIngress     *bool               `json:"forbidHttpIngress,omitempty"`
-	RequireProbe          *bool               `json:"requireProbe,omitempty"`
-	UniqueIngresses       *bool               `json:"uniqueIngresses,omitempty"`
-	UniqueServiceSelector *bool               `json:"uniqueServiceSelector,omitempty"`
-	AllowedRepo           []string            `json:"allowedRepo,omitempty"`
-	ForbidSpecificTags    []string            `json:"forbidSpecificTags,omitempty"`
-	IngressWhitelist      []string            `json:"ingressWhitelist,omitempty"`
-	IsLocked              *bool               `json:"isLocked,omitempty"`
-	Revision              *int32              `json:"revision,omitempty"`
-	OrganizationId        *int32              `json:"organizationId,omitempty"`
-	OrganizationName      NullableString      `json:"organizationName,omitempty"`
-	CreatedAt             NullableString      `json:"createdAt,omitempty"`
-	IsDefault             *bool               `json:"isDefault,omitempty"`
-	Projects              []CommonDropdownDto `json:"projects,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ForbidNodePort *bool `json:"forbidNodePort,omitempty"`
+	ForbidHttpIngress *bool `json:"forbidHttpIngress,omitempty"`
+	RequireProbe *bool `json:"requireProbe,omitempty"`
+	UniqueIngresses *bool `json:"uniqueIngresses,omitempty"`
+	UniqueServiceSelector *bool `json:"uniqueServiceSelector,omitempty"`
+	AllowedRepo []string `json:"allowedRepo,omitempty"`
+	ForbidSpecificTags []string `json:"forbidSpecificTags,omitempty"`
+	IngressWhitelist []string `json:"ingressWhitelist,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	Revision *int32 `json:"revision,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
 }
 
 // NewOpaProfileListDto instantiates a new OpaProfileListDto object
@@ -120,7 +120,6 @@ func (o *OpaProfileListDto) HasName() bool {
 func (o *OpaProfileListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OpaProfileListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -518,7 +517,6 @@ func (o *OpaProfileListDto) HasOrganizationName() bool {
 func (o *OpaProfileListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *OpaProfileListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -561,7 +559,6 @@ func (o *OpaProfileListDto) HasCreatedAt() bool {
 func (o *OpaProfileListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *OpaProfileListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -638,7 +635,7 @@ func (o *OpaProfileListDto) SetProjects(v []CommonDropdownDto) {
 }
 
 func (o OpaProfileListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -736,3 +733,5 @@ func (v *NullableOpaProfileListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

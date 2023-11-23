@@ -20,10 +20,10 @@ var _ MappedNullable = &BackupCredentialsForOrganizationEntity{}
 
 // BackupCredentialsForOrganizationEntity struct for BackupCredentialsForOrganizationEntity
 type BackupCredentialsForOrganizationEntity struct {
-	BackupCredentialId *int32         `json:"backupCredentialId,omitempty"`
-	Name               NullableString `json:"name,omitempty"`
-	IsDefault          *bool          `json:"isDefault,omitempty"`
-	IsInfra            *bool          `json:"isInfra,omitempty"`
+	BackupCredentialId *int32 `json:"backupCredentialId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
+	IsInfra *bool `json:"isInfra,omitempty"`
 }
 
 // NewBackupCredentialsForOrganizationEntity instantiates a new BackupCredentialsForOrganizationEntity object
@@ -107,7 +107,6 @@ func (o *BackupCredentialsForOrganizationEntity) HasName() bool {
 func (o *BackupCredentialsForOrganizationEntity) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *BackupCredentialsForOrganizationEntity) SetNameNil() {
 	o.Name.Set(nil)
@@ -183,7 +182,7 @@ func (o *BackupCredentialsForOrganizationEntity) SetIsInfra(v bool) {
 }
 
 func (o BackupCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -242,3 +241,5 @@ func (v *NullableBackupCredentialsForOrganizationEntity) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

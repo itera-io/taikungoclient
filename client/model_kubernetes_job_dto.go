@@ -21,10 +21,10 @@ var _ MappedNullable = &KubernetesJobDto{}
 // KubernetesJobDto struct for KubernetesJobDto
 type KubernetesJobDto struct {
 	MetadataName NullableString `json:"metadataName,omitempty"`
-	Namespace    NullableString `json:"namespace,omitempty"`
-	Age          NullableString `json:"age,omitempty"`
-	Completions  NullableInt32  `json:"completions,omitempty"`
-	Conditions   NullableString `json:"conditions,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Age NullableString `json:"age,omitempty"`
+	Completions NullableInt32 `json:"completions,omitempty"`
+	Conditions NullableString `json:"conditions,omitempty"`
 }
 
 // NewKubernetesJobDto instantiates a new KubernetesJobDto object
@@ -76,7 +76,6 @@ func (o *KubernetesJobDto) HasMetadataName() bool {
 func (o *KubernetesJobDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *KubernetesJobDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -119,7 +118,6 @@ func (o *KubernetesJobDto) HasNamespace() bool {
 func (o *KubernetesJobDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *KubernetesJobDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -162,7 +160,6 @@ func (o *KubernetesJobDto) HasAge() bool {
 func (o *KubernetesJobDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-
 // SetAgeNil sets the value for Age to be an explicit nil
 func (o *KubernetesJobDto) SetAgeNil() {
 	o.Age.Set(nil)
@@ -205,7 +202,6 @@ func (o *KubernetesJobDto) HasCompletions() bool {
 func (o *KubernetesJobDto) SetCompletions(v int32) {
 	o.Completions.Set(&v)
 }
-
 // SetCompletionsNil sets the value for Completions to be an explicit nil
 func (o *KubernetesJobDto) SetCompletionsNil() {
 	o.Completions.Set(nil)
@@ -248,7 +244,6 @@ func (o *KubernetesJobDto) HasConditions() bool {
 func (o *KubernetesJobDto) SetConditions(v string) {
 	o.Conditions.Set(&v)
 }
-
 // SetConditionsNil sets the value for Conditions to be an explicit nil
 func (o *KubernetesJobDto) SetConditionsNil() {
 	o.Conditions.Set(nil)
@@ -260,7 +255,7 @@ func (o *KubernetesJobDto) UnsetConditions() {
 }
 
 func (o KubernetesJobDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -322,3 +317,5 @@ func (v *NullableKubernetesJobDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

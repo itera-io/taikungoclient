@@ -20,8 +20,8 @@ var _ MappedNullable = &ProjectAppList{}
 
 // ProjectAppList struct for ProjectAppList
 type ProjectAppList struct {
-	Data       []ProjectAppListDto `json:"data,omitempty"`
-	TotalCount *int32              `json:"totalCount,omitempty"`
+	Data []ProjectAppListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewProjectAppList instantiates a new ProjectAppList object
@@ -107,7 +107,7 @@ func (o *ProjectAppList) SetTotalCount(v int32) {
 }
 
 func (o ProjectAppList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableProjectAppList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

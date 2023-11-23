@@ -20,8 +20,8 @@ var _ MappedNullable = &ConfigMaps{}
 
 // ConfigMaps struct for ConfigMaps
 type ConfigMaps struct {
-	Data       []ConfigMapDto `json:"data,omitempty"`
-	TotalCount *int32         `json:"totalCount,omitempty"`
+	Data []ConfigMapDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewConfigMaps instantiates a new ConfigMaps object
@@ -107,7 +107,7 @@ func (o *ConfigMaps) SetTotalCount(v int32) {
 }
 
 func (o ConfigMaps) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableConfigMaps) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

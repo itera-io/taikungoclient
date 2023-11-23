@@ -72,7 +72,6 @@ func (o *ForgotPasswordCommand) HasEmail() bool {
 func (o *ForgotPasswordCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *ForgotPasswordCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -84,7 +83,7 @@ func (o *ForgotPasswordCommand) UnsetEmail() {
 }
 
 func (o ForgotPasswordCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -134,3 +133,5 @@ func (v *NullableForgotPasswordCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

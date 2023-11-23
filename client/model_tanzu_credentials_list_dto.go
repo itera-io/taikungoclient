@@ -20,24 +20,24 @@ var _ MappedNullable = &TanzuCredentialsListDto{}
 
 // TanzuCredentialsListDto struct for TanzuCredentialsListDto
 type TanzuCredentialsListDto struct {
-	Id               *int32              `json:"id,omitempty"`
-	ProjectCount     *int32              `json:"projectCount,omitempty"`
-	IsLocked         *bool               `json:"isLocked,omitempty"`
-	Name             NullableString      `json:"name,omitempty"`
-	Username         NullableString      `json:"username,omitempty"`
-	Url              NullableString      `json:"url,omitempty"`
-	VolumeType       NullableString      `json:"volumeType,omitempty"`
-	Namespace        NullableString      `json:"namespace,omitempty"`
-	Port             NullableInt32       `json:"port,omitempty"`
-	Projects         []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy        NullableString      `json:"createdBy,omitempty"`
-	CreatedAt        NullableString      `json:"createdAt,omitempty"`
-	LastModified     NullableString      `json:"lastModified,omitempty"`
-	LastModifiedBy   NullableString      `json:"lastModifiedBy,omitempty"`
-	IsDefault        *bool               `json:"isDefault,omitempty"`
-	OrganizationId   *int32              `json:"organizationId,omitempty"`
-	OrganizationName NullableString      `json:"organizationName,omitempty"`
-	ContinentName    NullableString      `json:"continentName,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	ProjectCount *int32 `json:"projectCount,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	VolumeType NullableString `json:"volumeType,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Port NullableInt32 `json:"port,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	ContinentName NullableString `json:"continentName,omitempty"`
 }
 
 // NewTanzuCredentialsListDto instantiates a new TanzuCredentialsListDto object
@@ -185,7 +185,6 @@ func (o *TanzuCredentialsListDto) HasName() bool {
 func (o *TanzuCredentialsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *TanzuCredentialsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -228,7 +227,6 @@ func (o *TanzuCredentialsListDto) HasUsername() bool {
 func (o *TanzuCredentialsListDto) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *TanzuCredentialsListDto) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -271,7 +269,6 @@ func (o *TanzuCredentialsListDto) HasUrl() bool {
 func (o *TanzuCredentialsListDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *TanzuCredentialsListDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -314,7 +311,6 @@ func (o *TanzuCredentialsListDto) HasVolumeType() bool {
 func (o *TanzuCredentialsListDto) SetVolumeType(v string) {
 	o.VolumeType.Set(&v)
 }
-
 // SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
 func (o *TanzuCredentialsListDto) SetVolumeTypeNil() {
 	o.VolumeType.Set(nil)
@@ -357,7 +353,6 @@ func (o *TanzuCredentialsListDto) HasNamespace() bool {
 func (o *TanzuCredentialsListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *TanzuCredentialsListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -400,7 +395,6 @@ func (o *TanzuCredentialsListDto) HasPort() bool {
 func (o *TanzuCredentialsListDto) SetPort(v int32) {
 	o.Port.Set(&v)
 }
-
 // SetPortNil sets the value for Port to be an explicit nil
 func (o *TanzuCredentialsListDto) SetPortNil() {
 	o.Port.Set(nil)
@@ -476,7 +470,6 @@ func (o *TanzuCredentialsListDto) HasCreatedBy() bool {
 func (o *TanzuCredentialsListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *TanzuCredentialsListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -519,7 +512,6 @@ func (o *TanzuCredentialsListDto) HasCreatedAt() bool {
 func (o *TanzuCredentialsListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *TanzuCredentialsListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -562,7 +554,6 @@ func (o *TanzuCredentialsListDto) HasLastModified() bool {
 func (o *TanzuCredentialsListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *TanzuCredentialsListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -605,7 +596,6 @@ func (o *TanzuCredentialsListDto) HasLastModifiedBy() bool {
 func (o *TanzuCredentialsListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *TanzuCredentialsListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -712,7 +702,6 @@ func (o *TanzuCredentialsListDto) HasOrganizationName() bool {
 func (o *TanzuCredentialsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *TanzuCredentialsListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -755,7 +744,6 @@ func (o *TanzuCredentialsListDto) HasContinentName() bool {
 func (o *TanzuCredentialsListDto) SetContinentName(v string) {
 	o.ContinentName.Set(&v)
 }
-
 // SetContinentNameNil sets the value for ContinentName to be an explicit nil
 func (o *TanzuCredentialsListDto) SetContinentNameNil() {
 	o.ContinentName.Set(nil)
@@ -767,7 +755,7 @@ func (o *TanzuCredentialsListDto) UnsetContinentName() {
 }
 
 func (o TanzuCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -868,3 +856,5 @@ func (v *NullableTanzuCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

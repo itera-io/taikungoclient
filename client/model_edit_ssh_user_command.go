@@ -20,10 +20,10 @@ var _ MappedNullable = &EditSshUserCommand{}
 
 // EditSshUserCommand struct for EditSshUserCommand
 type EditSshUserCommand struct {
-	Id              *int32         `json:"id,omitempty"`
-	Name            NullableString `json:"name,omitempty"`
-	SshPublicKey    NullableString `json:"sshPublicKey,omitempty"`
-	AccessProfileId *int32         `json:"accessProfileId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
+	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
 }
 
 // NewEditSshUserCommand instantiates a new EditSshUserCommand object
@@ -107,7 +107,6 @@ func (o *EditSshUserCommand) HasName() bool {
 func (o *EditSshUserCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *EditSshUserCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,6 @@ func (o *EditSshUserCommand) HasSshPublicKey() bool {
 func (o *EditSshUserCommand) SetSshPublicKey(v string) {
 	o.SshPublicKey.Set(&v)
 }
-
 // SetSshPublicKeyNil sets the value for SshPublicKey to be an explicit nil
 func (o *EditSshUserCommand) SetSshPublicKeyNil() {
 	o.SshPublicKey.Set(nil)
@@ -194,7 +192,7 @@ func (o *EditSshUserCommand) SetAccessProfileId(v int32) {
 }
 
 func (o EditSshUserCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,3 +251,5 @@ func (v *NullableEditSshUserCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,10 +20,10 @@ var _ MappedNullable = &SecurityReportSummary{}
 
 // SecurityReportSummary struct for SecurityReportSummary
 type SecurityReportSummary struct {
-	Low      NullableInt64 `json:"low,omitempty"`
-	High     NullableInt64 `json:"high,omitempty"`
-	Medium   NullableInt64 `json:"medium,omitempty"`
-	Unknown  NullableInt64 `json:"unknown,omitempty"`
+	Low NullableInt64 `json:"low,omitempty"`
+	High NullableInt64 `json:"high,omitempty"`
+	Medium NullableInt64 `json:"medium,omitempty"`
+	Unknown NullableInt64 `json:"unknown,omitempty"`
 	Critical NullableInt64 `json:"critical,omitempty"`
 }
 
@@ -76,7 +76,6 @@ func (o *SecurityReportSummary) HasLow() bool {
 func (o *SecurityReportSummary) SetLow(v int64) {
 	o.Low.Set(&v)
 }
-
 // SetLowNil sets the value for Low to be an explicit nil
 func (o *SecurityReportSummary) SetLowNil() {
 	o.Low.Set(nil)
@@ -119,7 +118,6 @@ func (o *SecurityReportSummary) HasHigh() bool {
 func (o *SecurityReportSummary) SetHigh(v int64) {
 	o.High.Set(&v)
 }
-
 // SetHighNil sets the value for High to be an explicit nil
 func (o *SecurityReportSummary) SetHighNil() {
 	o.High.Set(nil)
@@ -162,7 +160,6 @@ func (o *SecurityReportSummary) HasMedium() bool {
 func (o *SecurityReportSummary) SetMedium(v int64) {
 	o.Medium.Set(&v)
 }
-
 // SetMediumNil sets the value for Medium to be an explicit nil
 func (o *SecurityReportSummary) SetMediumNil() {
 	o.Medium.Set(nil)
@@ -205,7 +202,6 @@ func (o *SecurityReportSummary) HasUnknown() bool {
 func (o *SecurityReportSummary) SetUnknown(v int64) {
 	o.Unknown.Set(&v)
 }
-
 // SetUnknownNil sets the value for Unknown to be an explicit nil
 func (o *SecurityReportSummary) SetUnknownNil() {
 	o.Unknown.Set(nil)
@@ -248,7 +244,6 @@ func (o *SecurityReportSummary) HasCritical() bool {
 func (o *SecurityReportSummary) SetCritical(v int64) {
 	o.Critical.Set(&v)
 }
-
 // SetCriticalNil sets the value for Critical to be an explicit nil
 func (o *SecurityReportSummary) SetCriticalNil() {
 	o.Critical.Set(nil)
@@ -260,7 +255,7 @@ func (o *SecurityReportSummary) UnsetCritical() {
 }
 
 func (o SecurityReportSummary) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -322,3 +317,5 @@ func (v *NullableSecurityReportSummary) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

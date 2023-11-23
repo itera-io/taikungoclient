@@ -20,33 +20,33 @@ var _ MappedNullable = &OpenstackCredentialsListDto{}
 
 // OpenstackCredentialsListDto struct for OpenstackCredentialsListDto
 type OpenstackCredentialsListDto struct {
-	Id                     *int32              `json:"id,omitempty"`
-	ProjectCount           *int32              `json:"projectCount,omitempty"`
-	IsLocked               *bool               `json:"isLocked,omitempty"`
-	Name                   NullableString      `json:"name,omitempty"`
-	User                   NullableString      `json:"user,omitempty"`
-	Url                    NullableString      `json:"url,omitempty"`
-	Project                NullableString      `json:"project,omitempty"`
-	Domain                 NullableString      `json:"domain,omitempty"`
-	Region                 NullableString      `json:"region,omitempty"`
-	PublicNetwork          NullableString      `json:"publicNetwork,omitempty"`
-	ImportNetwork          *bool               `json:"importNetwork,omitempty"`
-	TenantId               NullableString      `json:"tenantId,omitempty"`
-	AvailabilityZone       NullableString      `json:"availabilityZone,omitempty"`
-	VolumeType             NullableString      `json:"volumeType,omitempty"`
-	InternalSubnetId       NullableString      `json:"internalSubnetId,omitempty"`
-	Projects               []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy              NullableString      `json:"createdBy,omitempty"`
-	LastModified           NullableString      `json:"lastModified,omitempty"`
-	LastModifiedBy         NullableString      `json:"lastModifiedBy,omitempty"`
-	IsDefault              *bool               `json:"isDefault,omitempty"`
-	OrganizationId         *int32              `json:"organizationId,omitempty"`
-	OrganizationName       NullableString      `json:"organizationName,omitempty"`
-	CreatedAt              NullableString      `json:"createdAt,omitempty"`
-	ContinentName          NullableString      `json:"continentName,omitempty"`
-	IsAdmin                *bool               `json:"isAdmin,omitempty"`
-	IsInfra                *bool               `json:"isInfra,omitempty"`
-	ApplicationCredEnabled *bool               `json:"applicationCredEnabled,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	ProjectCount *int32 `json:"projectCount,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	User NullableString `json:"user,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Project NullableString `json:"project,omitempty"`
+	Domain NullableString `json:"domain,omitempty"`
+	Region NullableString `json:"region,omitempty"`
+	PublicNetwork NullableString `json:"publicNetwork,omitempty"`
+	ImportNetwork *bool `json:"importNetwork,omitempty"`
+	TenantId NullableString `json:"tenantId,omitempty"`
+	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
+	VolumeType NullableString `json:"volumeType,omitempty"`
+	InternalSubnetId NullableString `json:"internalSubnetId,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	ContinentName NullableString `json:"continentName,omitempty"`
+	IsAdmin *bool `json:"isAdmin,omitempty"`
+	IsInfra *bool `json:"isInfra,omitempty"`
+	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
 }
 
 // NewOpenstackCredentialsListDto instantiates a new OpenstackCredentialsListDto object
@@ -194,7 +194,6 @@ func (o *OpenstackCredentialsListDto) HasName() bool {
 func (o *OpenstackCredentialsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -237,7 +236,6 @@ func (o *OpenstackCredentialsListDto) HasUser() bool {
 func (o *OpenstackCredentialsListDto) SetUser(v string) {
 	o.User.Set(&v)
 }
-
 // SetUserNil sets the value for User to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetUserNil() {
 	o.User.Set(nil)
@@ -280,7 +278,6 @@ func (o *OpenstackCredentialsListDto) HasUrl() bool {
 func (o *OpenstackCredentialsListDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -323,7 +320,6 @@ func (o *OpenstackCredentialsListDto) HasProject() bool {
 func (o *OpenstackCredentialsListDto) SetProject(v string) {
 	o.Project.Set(&v)
 }
-
 // SetProjectNil sets the value for Project to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetProjectNil() {
 	o.Project.Set(nil)
@@ -366,7 +362,6 @@ func (o *OpenstackCredentialsListDto) HasDomain() bool {
 func (o *OpenstackCredentialsListDto) SetDomain(v string) {
 	o.Domain.Set(&v)
 }
-
 // SetDomainNil sets the value for Domain to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetDomainNil() {
 	o.Domain.Set(nil)
@@ -409,7 +404,6 @@ func (o *OpenstackCredentialsListDto) HasRegion() bool {
 func (o *OpenstackCredentialsListDto) SetRegion(v string) {
 	o.Region.Set(&v)
 }
-
 // SetRegionNil sets the value for Region to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetRegionNil() {
 	o.Region.Set(nil)
@@ -452,7 +446,6 @@ func (o *OpenstackCredentialsListDto) HasPublicNetwork() bool {
 func (o *OpenstackCredentialsListDto) SetPublicNetwork(v string) {
 	o.PublicNetwork.Set(&v)
 }
-
 // SetPublicNetworkNil sets the value for PublicNetwork to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetPublicNetworkNil() {
 	o.PublicNetwork.Set(nil)
@@ -527,7 +520,6 @@ func (o *OpenstackCredentialsListDto) HasTenantId() bool {
 func (o *OpenstackCredentialsListDto) SetTenantId(v string) {
 	o.TenantId.Set(&v)
 }
-
 // SetTenantIdNil sets the value for TenantId to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetTenantIdNil() {
 	o.TenantId.Set(nil)
@@ -570,7 +562,6 @@ func (o *OpenstackCredentialsListDto) HasAvailabilityZone() bool {
 func (o *OpenstackCredentialsListDto) SetAvailabilityZone(v string) {
 	o.AvailabilityZone.Set(&v)
 }
-
 // SetAvailabilityZoneNil sets the value for AvailabilityZone to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetAvailabilityZoneNil() {
 	o.AvailabilityZone.Set(nil)
@@ -613,7 +604,6 @@ func (o *OpenstackCredentialsListDto) HasVolumeType() bool {
 func (o *OpenstackCredentialsListDto) SetVolumeType(v string) {
 	o.VolumeType.Set(&v)
 }
-
 // SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetVolumeTypeNil() {
 	o.VolumeType.Set(nil)
@@ -656,7 +646,6 @@ func (o *OpenstackCredentialsListDto) HasInternalSubnetId() bool {
 func (o *OpenstackCredentialsListDto) SetInternalSubnetId(v string) {
 	o.InternalSubnetId.Set(&v)
 }
-
 // SetInternalSubnetIdNil sets the value for InternalSubnetId to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetInternalSubnetIdNil() {
 	o.InternalSubnetId.Set(nil)
@@ -732,7 +721,6 @@ func (o *OpenstackCredentialsListDto) HasCreatedBy() bool {
 func (o *OpenstackCredentialsListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -775,7 +763,6 @@ func (o *OpenstackCredentialsListDto) HasLastModified() bool {
 func (o *OpenstackCredentialsListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -818,7 +805,6 @@ func (o *OpenstackCredentialsListDto) HasLastModifiedBy() bool {
 func (o *OpenstackCredentialsListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -925,7 +911,6 @@ func (o *OpenstackCredentialsListDto) HasOrganizationName() bool {
 func (o *OpenstackCredentialsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -968,7 +953,6 @@ func (o *OpenstackCredentialsListDto) HasCreatedAt() bool {
 func (o *OpenstackCredentialsListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -1011,7 +995,6 @@ func (o *OpenstackCredentialsListDto) HasContinentName() bool {
 func (o *OpenstackCredentialsListDto) SetContinentName(v string) {
 	o.ContinentName.Set(&v)
 }
-
 // SetContinentNameNil sets the value for ContinentName to be an explicit nil
 func (o *OpenstackCredentialsListDto) SetContinentNameNil() {
 	o.ContinentName.Set(nil)
@@ -1119,7 +1102,7 @@ func (o *OpenstackCredentialsListDto) SetApplicationCredEnabled(v bool) {
 }
 
 func (o OpenstackCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1247,3 +1230,5 @@ func (v *NullableOpenstackCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

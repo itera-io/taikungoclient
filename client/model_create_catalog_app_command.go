@@ -20,11 +20,11 @@ var _ MappedNullable = &CreateCatalogAppCommand{}
 
 // CreateCatalogAppCommand struct for CreateCatalogAppCommand
 type CreateCatalogAppCommand struct {
-	RepoName    NullableString        `json:"repoName,omitempty"`
-	PackageName NullableString        `json:"packageName,omitempty"`
-	CatalogId   *int32                `json:"catalogId,omitempty"`
-	Version     NullableString        `json:"version,omitempty"`
-	Parameters  []CatalogAppParamsDto `json:"parameters,omitempty"`
+	RepoName NullableString `json:"repoName,omitempty"`
+	PackageName NullableString `json:"packageName,omitempty"`
+	CatalogId *int32 `json:"catalogId,omitempty"`
+	Version NullableString `json:"version,omitempty"`
+	Parameters []CatalogAppParamsDto `json:"parameters,omitempty"`
 }
 
 // NewCreateCatalogAppCommand instantiates a new CreateCatalogAppCommand object
@@ -76,7 +76,6 @@ func (o *CreateCatalogAppCommand) HasRepoName() bool {
 func (o *CreateCatalogAppCommand) SetRepoName(v string) {
 	o.RepoName.Set(&v)
 }
-
 // SetRepoNameNil sets the value for RepoName to be an explicit nil
 func (o *CreateCatalogAppCommand) SetRepoNameNil() {
 	o.RepoName.Set(nil)
@@ -119,7 +118,6 @@ func (o *CreateCatalogAppCommand) HasPackageName() bool {
 func (o *CreateCatalogAppCommand) SetPackageName(v string) {
 	o.PackageName.Set(&v)
 }
-
 // SetPackageNameNil sets the value for PackageName to be an explicit nil
 func (o *CreateCatalogAppCommand) SetPackageNameNil() {
 	o.PackageName.Set(nil)
@@ -194,7 +192,6 @@ func (o *CreateCatalogAppCommand) HasVersion() bool {
 func (o *CreateCatalogAppCommand) SetVersion(v string) {
 	o.Version.Set(&v)
 }
-
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *CreateCatalogAppCommand) SetVersionNil() {
 	o.Version.Set(nil)
@@ -239,7 +236,7 @@ func (o *CreateCatalogAppCommand) SetParameters(v []CatalogAppParamsDto) {
 }
 
 func (o CreateCatalogAppCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -301,3 +298,5 @@ func (v *NullableCreateCatalogAppCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

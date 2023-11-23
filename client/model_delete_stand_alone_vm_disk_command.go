@@ -20,8 +20,8 @@ var _ MappedNullable = &DeleteStandAloneVmDiskCommand{}
 
 // DeleteStandAloneVmDiskCommand struct for DeleteStandAloneVmDiskCommand
 type DeleteStandAloneVmDiskCommand struct {
-	StandaloneVmId *int32  `json:"standaloneVmId,omitempty"`
-	VmDiskIds      []int32 `json:"vmDiskIds,omitempty"`
+	StandaloneVmId *int32 `json:"standaloneVmId,omitempty"`
+	VmDiskIds []int32 `json:"vmDiskIds,omitempty"`
 }
 
 // NewDeleteStandAloneVmDiskCommand instantiates a new DeleteStandAloneVmDiskCommand object
@@ -107,7 +107,7 @@ func (o *DeleteStandAloneVmDiskCommand) SetVmDiskIds(v []int32) {
 }
 
 func (o DeleteStandAloneVmDiskCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableDeleteStandAloneVmDiskCommand) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

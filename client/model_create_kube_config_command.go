@@ -20,14 +20,14 @@ var _ MappedNullable = &CreateKubeConfigCommand{}
 
 // CreateKubeConfigCommand struct for CreateKubeConfigCommand
 type CreateKubeConfigCommand struct {
-	Name                   NullableString `json:"name,omitempty"`
-	ProjectId              *int32         `json:"projectId,omitempty"`
-	IsAccessibleForAll     *bool          `json:"isAccessibleForAll,omitempty"`
-	IsAccessibleForManager *bool          `json:"isAccessibleForManager,omitempty"`
-	KubeConfigRoleId       *int32         `json:"kubeConfigRoleId,omitempty"`
-	UserId                 NullableString `json:"userId,omitempty"`
-	Namespace              NullableString `json:"namespace,omitempty"`
-	Ttl                    NullableInt32  `json:"ttl,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	IsAccessibleForAll *bool `json:"isAccessibleForAll,omitempty"`
+	IsAccessibleForManager *bool `json:"isAccessibleForManager,omitempty"`
+	KubeConfigRoleId *int32 `json:"kubeConfigRoleId,omitempty"`
+	UserId NullableString `json:"userId,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Ttl NullableInt32 `json:"ttl,omitempty"`
 }
 
 // NewCreateKubeConfigCommand instantiates a new CreateKubeConfigCommand object
@@ -79,7 +79,6 @@ func (o *CreateKubeConfigCommand) HasName() bool {
 func (o *CreateKubeConfigCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateKubeConfigCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -250,7 +249,6 @@ func (o *CreateKubeConfigCommand) HasUserId() bool {
 func (o *CreateKubeConfigCommand) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
-
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *CreateKubeConfigCommand) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -293,7 +291,6 @@ func (o *CreateKubeConfigCommand) HasNamespace() bool {
 func (o *CreateKubeConfigCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *CreateKubeConfigCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -336,7 +333,6 @@ func (o *CreateKubeConfigCommand) HasTtl() bool {
 func (o *CreateKubeConfigCommand) SetTtl(v int32) {
 	o.Ttl.Set(&v)
 }
-
 // SetTtlNil sets the value for Ttl to be an explicit nil
 func (o *CreateKubeConfigCommand) SetTtlNil() {
 	o.Ttl.Set(nil)
@@ -348,7 +344,7 @@ func (o *CreateKubeConfigCommand) UnsetTtl() {
 }
 
 func (o CreateKubeConfigCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -419,3 +415,5 @@ func (v *NullableCreateKubeConfigCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

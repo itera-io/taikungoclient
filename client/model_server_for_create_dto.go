@@ -20,22 +20,21 @@ var _ MappedNullable = &ServerForCreateDto{}
 
 // ServerForCreateDto struct for ServerForCreateDto
 type ServerForCreateDto struct {
-	Name                 NullableString            `json:"name,omitempty"`
-	Role                 *CloudRole                `json:"role,omitempty"`
-	ProjectId            *int32                    `json:"projectId,omitempty"`
-	DiskSize             *int64                    `json:"diskSize,omitempty"`
-	Flavor               NullableString            `json:"flavor,omitempty"`
-	Count                *int32                    `json:"count,omitempty"`
-	SpotPrice            NullableFloat64           `json:"spotPrice,omitempty"`
-	SpotInstance         *bool                     `json:"spotInstance,omitempty"`
-	WasmEnabled          *bool                     `json:"wasmEnabled,omitempty"`
-	AutoscalingGroup     NullableString            `json:"autoscalingGroup,omitempty"`
-	AvailabilityZone     NullableString            `json:"availabilityZone,omitempty"`
-	ProxmoxExtraDiskSize *int32                    `json:"proxmoxExtraDiskSize,omitempty"`
-	ProxmoxRole          *ProxmoxRole              `json:"proxmoxRole,omitempty"`
-	Hypervisor           NullableString            `json:"hypervisor,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Role *CloudRole `json:"role,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	DiskSize *int64 `json:"diskSize,omitempty"`
+	Flavor NullableString `json:"flavor,omitempty"`
+	Count *int32 `json:"count,omitempty"`
+	SpotPrice NullableFloat64 `json:"spotPrice,omitempty"`
+	SpotInstance *bool `json:"spotInstance,omitempty"`
+	AutoscalingGroup NullableString `json:"autoscalingGroup,omitempty"`
+	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
+	ProxmoxExtraDiskSize *int32 `json:"proxmoxExtraDiskSize,omitempty"`
+	ProxmoxRole *ProxmoxRole `json:"proxmoxRole,omitempty"`
+	Hypervisor NullableString `json:"hypervisor,omitempty"`
 	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
-	ReplicaCount         NullableInt32             `json:"replicaCount,omitempty"`
+	ReplicaCount NullableInt32 `json:"replicaCount,omitempty"`
 }
 
 // NewServerForCreateDto instantiates a new ServerForCreateDto object
@@ -87,7 +86,6 @@ func (o *ServerForCreateDto) HasName() bool {
 func (o *ServerForCreateDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ServerForCreateDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -226,7 +224,6 @@ func (o *ServerForCreateDto) HasFlavor() bool {
 func (o *ServerForCreateDto) SetFlavor(v string) {
 	o.Flavor.Set(&v)
 }
-
 // SetFlavorNil sets the value for Flavor to be an explicit nil
 func (o *ServerForCreateDto) SetFlavorNil() {
 	o.Flavor.Set(nil)
@@ -301,7 +298,6 @@ func (o *ServerForCreateDto) HasSpotPrice() bool {
 func (o *ServerForCreateDto) SetSpotPrice(v float64) {
 	o.SpotPrice.Set(&v)
 }
-
 // SetSpotPriceNil sets the value for SpotPrice to be an explicit nil
 func (o *ServerForCreateDto) SetSpotPriceNil() {
 	o.SpotPrice.Set(nil)
@@ -344,38 +340,6 @@ func (o *ServerForCreateDto) SetSpotInstance(v bool) {
 	o.SpotInstance = &v
 }
 
-// GetWasmEnabled returns the WasmEnabled field value if set, zero value otherwise.
-func (o *ServerForCreateDto) GetWasmEnabled() bool {
-	if o == nil || IsNil(o.WasmEnabled) {
-		var ret bool
-		return ret
-	}
-	return *o.WasmEnabled
-}
-
-// GetWasmEnabledOk returns a tuple with the WasmEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServerForCreateDto) GetWasmEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.WasmEnabled) {
-		return nil, false
-	}
-	return o.WasmEnabled, true
-}
-
-// HasWasmEnabled returns a boolean if a field has been set.
-func (o *ServerForCreateDto) HasWasmEnabled() bool {
-	if o != nil && !IsNil(o.WasmEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetWasmEnabled gets a reference to the given bool and assigns it to the WasmEnabled field.
-func (o *ServerForCreateDto) SetWasmEnabled(v bool) {
-	o.WasmEnabled = &v
-}
-
 // GetAutoscalingGroup returns the AutoscalingGroup field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServerForCreateDto) GetAutoscalingGroup() string {
 	if o == nil || IsNil(o.AutoscalingGroup.Get()) {
@@ -408,7 +372,6 @@ func (o *ServerForCreateDto) HasAutoscalingGroup() bool {
 func (o *ServerForCreateDto) SetAutoscalingGroup(v string) {
 	o.AutoscalingGroup.Set(&v)
 }
-
 // SetAutoscalingGroupNil sets the value for AutoscalingGroup to be an explicit nil
 func (o *ServerForCreateDto) SetAutoscalingGroupNil() {
 	o.AutoscalingGroup.Set(nil)
@@ -451,7 +414,6 @@ func (o *ServerForCreateDto) HasAvailabilityZone() bool {
 func (o *ServerForCreateDto) SetAvailabilityZone(v string) {
 	o.AvailabilityZone.Set(&v)
 }
-
 // SetAvailabilityZoneNil sets the value for AvailabilityZone to be an explicit nil
 func (o *ServerForCreateDto) SetAvailabilityZoneNil() {
 	o.AvailabilityZone.Set(nil)
@@ -558,7 +520,6 @@ func (o *ServerForCreateDto) HasHypervisor() bool {
 func (o *ServerForCreateDto) SetHypervisor(v string) {
 	o.Hypervisor.Set(&v)
 }
-
 // SetHypervisorNil sets the value for Hypervisor to be an explicit nil
 func (o *ServerForCreateDto) SetHypervisorNil() {
 	o.Hypervisor.Set(nil)
@@ -634,7 +595,6 @@ func (o *ServerForCreateDto) HasReplicaCount() bool {
 func (o *ServerForCreateDto) SetReplicaCount(v int32) {
 	o.ReplicaCount.Set(&v)
 }
-
 // SetReplicaCountNil sets the value for ReplicaCount to be an explicit nil
 func (o *ServerForCreateDto) SetReplicaCountNil() {
 	o.ReplicaCount.Set(nil)
@@ -646,7 +606,7 @@ func (o *ServerForCreateDto) UnsetReplicaCount() {
 }
 
 func (o ServerForCreateDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -678,9 +638,6 @@ func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SpotInstance) {
 		toSerialize["spotInstance"] = o.SpotInstance
-	}
-	if !IsNil(o.WasmEnabled) {
-		toSerialize["wasmEnabled"] = o.WasmEnabled
 	}
 	if o.AutoscalingGroup.IsSet() {
 		toSerialize["autoscalingGroup"] = o.AutoscalingGroup.Get()
@@ -741,3 +698,5 @@ func (v *NullableServerForCreateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

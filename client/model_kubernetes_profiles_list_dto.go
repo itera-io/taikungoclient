@@ -20,25 +20,24 @@ var _ MappedNullable = &KubernetesProfilesListDto{}
 
 // KubernetesProfilesListDto struct for KubernetesProfilesListDto
 type KubernetesProfilesListDto struct {
-	Id                       *int32              `json:"id,omitempty"`
-	Name                     NullableString      `json:"name,omitempty"`
-	OrganizationId           NullableInt32       `json:"organizationId,omitempty"`
-	OrganizationName         NullableString      `json:"organizationName,omitempty"`
-	Cni                      NullableString      `json:"cni,omitempty"`
-	OctaviaEnabled           *bool               `json:"octaviaEnabled,omitempty"`
-	ExposeNodePortOnBastion  *bool               `json:"exposeNodePortOnBastion,omitempty"`
-	IsLocked                 *bool               `json:"isLocked,omitempty"`
-	TaikunLBEnabled          *bool               `json:"taikunLBEnabled,omitempty"`
-	AllowSchedulingOnMaster  *bool               `json:"allowSchedulingOnMaster,omitempty"`
-	UniqueClusterName        *bool               `json:"uniqueClusterName,omitempty"`
-	Projects                 []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy                NullableString      `json:"createdBy,omitempty"`
-	CreatedAt                NullableString      `json:"createdAt,omitempty"`
-	LastModified             NullableString      `json:"lastModified,omitempty"`
-	LastModifiedBy           NullableString      `json:"lastModifiedBy,omitempty"`
-	ProxmoxStorage           NullableString      `json:"proxmoxStorage,omitempty"`
-	NvidiaGpuOperatorEnabled *bool               `json:"nvidiaGpuOperatorEnabled,omitempty"`
-	WasmEnabled              *bool               `json:"wasmEnabled,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	Cni NullableString `json:"cni,omitempty"`
+	OctaviaEnabled *bool `json:"octaviaEnabled,omitempty"`
+	ExposeNodePortOnBastion *bool `json:"exposeNodePortOnBastion,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	TaikunLBEnabled *bool `json:"taikunLBEnabled,omitempty"`
+	AllowSchedulingOnMaster *bool `json:"allowSchedulingOnMaster,omitempty"`
+	UniqueClusterName *bool `json:"uniqueClusterName,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	ProxmoxStorage NullableString `json:"proxmoxStorage,omitempty"`
+	NvidiaGpuOperatorEnabled *bool `json:"nvidiaGpuOperatorEnabled,omitempty"`
 }
 
 // NewKubernetesProfilesListDto instantiates a new KubernetesProfilesListDto object
@@ -122,7 +121,6 @@ func (o *KubernetesProfilesListDto) HasName() bool {
 func (o *KubernetesProfilesListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *KubernetesProfilesListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -165,7 +163,6 @@ func (o *KubernetesProfilesListDto) HasOrganizationId() bool {
 func (o *KubernetesProfilesListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *KubernetesProfilesListDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -208,7 +205,6 @@ func (o *KubernetesProfilesListDto) HasOrganizationName() bool {
 func (o *KubernetesProfilesListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *KubernetesProfilesListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -251,7 +247,6 @@ func (o *KubernetesProfilesListDto) HasCni() bool {
 func (o *KubernetesProfilesListDto) SetCni(v string) {
 	o.Cni.Set(&v)
 }
-
 // SetCniNil sets the value for Cni to be an explicit nil
 func (o *KubernetesProfilesListDto) SetCniNil() {
 	o.Cni.Set(nil)
@@ -519,7 +514,6 @@ func (o *KubernetesProfilesListDto) HasCreatedBy() bool {
 func (o *KubernetesProfilesListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *KubernetesProfilesListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -562,7 +556,6 @@ func (o *KubernetesProfilesListDto) HasCreatedAt() bool {
 func (o *KubernetesProfilesListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *KubernetesProfilesListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -605,7 +598,6 @@ func (o *KubernetesProfilesListDto) HasLastModified() bool {
 func (o *KubernetesProfilesListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *KubernetesProfilesListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -648,7 +640,6 @@ func (o *KubernetesProfilesListDto) HasLastModifiedBy() bool {
 func (o *KubernetesProfilesListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *KubernetesProfilesListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -691,7 +682,6 @@ func (o *KubernetesProfilesListDto) HasProxmoxStorage() bool {
 func (o *KubernetesProfilesListDto) SetProxmoxStorage(v string) {
 	o.ProxmoxStorage.Set(&v)
 }
-
 // SetProxmoxStorageNil sets the value for ProxmoxStorage to be an explicit nil
 func (o *KubernetesProfilesListDto) SetProxmoxStorageNil() {
 	o.ProxmoxStorage.Set(nil)
@@ -734,40 +724,8 @@ func (o *KubernetesProfilesListDto) SetNvidiaGpuOperatorEnabled(v bool) {
 	o.NvidiaGpuOperatorEnabled = &v
 }
 
-// GetWasmEnabled returns the WasmEnabled field value if set, zero value otherwise.
-func (o *KubernetesProfilesListDto) GetWasmEnabled() bool {
-	if o == nil || IsNil(o.WasmEnabled) {
-		var ret bool
-		return ret
-	}
-	return *o.WasmEnabled
-}
-
-// GetWasmEnabledOk returns a tuple with the WasmEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KubernetesProfilesListDto) GetWasmEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.WasmEnabled) {
-		return nil, false
-	}
-	return o.WasmEnabled, true
-}
-
-// HasWasmEnabled returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasWasmEnabled() bool {
-	if o != nil && !IsNil(o.WasmEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetWasmEnabled gets a reference to the given bool and assigns it to the WasmEnabled field.
-func (o *KubernetesProfilesListDto) SetWasmEnabled(v bool) {
-	o.WasmEnabled = &v
-}
-
 func (o KubernetesProfilesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -830,9 +788,6 @@ func (o KubernetesProfilesListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NvidiaGpuOperatorEnabled) {
 		toSerialize["nvidiaGpuOperatorEnabled"] = o.NvidiaGpuOperatorEnabled
 	}
-	if !IsNil(o.WasmEnabled) {
-		toSerialize["wasmEnabled"] = o.WasmEnabled
-	}
 	return toSerialize, nil
 }
 
@@ -871,3 +826,5 @@ func (v *NullableKubernetesProfilesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

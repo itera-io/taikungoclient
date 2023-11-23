@@ -21,17 +21,17 @@ var _ MappedNullable = &CRestoreDto{}
 
 // CRestoreDto struct for CRestoreDto
 type CRestoreDto struct {
-	MetadataName       NullableString `json:"metadataName,omitempty"`
-	BackupName         NullableString `json:"backupName,omitempty"`
-	ScheduleName       NullableString `json:"scheduleName,omitempty"`
-	Namespace          NullableString `json:"namespace,omitempty"`
-	ExcludeNamespaces  []string       `json:"excludeNamespaces,omitempty"`
-	IncludeNamespaces  []string       `json:"includeNamespaces,omitempty"`
-	CompletionDateTime *time.Time     `json:"completionDateTime,omitempty"`
-	StartTimeStamp     *time.Time     `json:"startTimeStamp,omitempty"`
-	CreatedAt          NullableTime   `json:"createdAt,omitempty"`
-	Warnings           *int64         `json:"warnings,omitempty"`
-	Phase              NullableString `json:"phase,omitempty"`
+	MetadataName NullableString `json:"metadataName,omitempty"`
+	BackupName NullableString `json:"backupName,omitempty"`
+	ScheduleName NullableString `json:"scheduleName,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	ExcludeNamespaces []string `json:"excludeNamespaces,omitempty"`
+	IncludeNamespaces []string `json:"includeNamespaces,omitempty"`
+	CompletionDateTime *time.Time `json:"completionDateTime,omitempty"`
+	StartTimeStamp *time.Time `json:"startTimeStamp,omitempty"`
+	CreatedAt NullableTime `json:"createdAt,omitempty"`
+	Warnings *int64 `json:"warnings,omitempty"`
+	Phase NullableString `json:"phase,omitempty"`
 }
 
 // NewCRestoreDto instantiates a new CRestoreDto object
@@ -83,7 +83,6 @@ func (o *CRestoreDto) HasMetadataName() bool {
 func (o *CRestoreDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *CRestoreDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -126,7 +125,6 @@ func (o *CRestoreDto) HasBackupName() bool {
 func (o *CRestoreDto) SetBackupName(v string) {
 	o.BackupName.Set(&v)
 }
-
 // SetBackupNameNil sets the value for BackupName to be an explicit nil
 func (o *CRestoreDto) SetBackupNameNil() {
 	o.BackupName.Set(nil)
@@ -169,7 +167,6 @@ func (o *CRestoreDto) HasScheduleName() bool {
 func (o *CRestoreDto) SetScheduleName(v string) {
 	o.ScheduleName.Set(&v)
 }
-
 // SetScheduleNameNil sets the value for ScheduleName to be an explicit nil
 func (o *CRestoreDto) SetScheduleNameNil() {
 	o.ScheduleName.Set(nil)
@@ -212,7 +209,6 @@ func (o *CRestoreDto) HasNamespace() bool {
 func (o *CRestoreDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *CRestoreDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -385,7 +381,6 @@ func (o *CRestoreDto) HasCreatedAt() bool {
 func (o *CRestoreDto) SetCreatedAt(v time.Time) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *CRestoreDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -460,7 +455,6 @@ func (o *CRestoreDto) HasPhase() bool {
 func (o *CRestoreDto) SetPhase(v string) {
 	o.Phase.Set(&v)
 }
-
 // SetPhaseNil sets the value for Phase to be an explicit nil
 func (o *CRestoreDto) SetPhaseNil() {
 	o.Phase.Set(nil)
@@ -472,7 +466,7 @@ func (o *CRestoreDto) UnsetPhase() {
 }
 
 func (o CRestoreDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -552,3 +546,5 @@ func (v *NullableCRestoreDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

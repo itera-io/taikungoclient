@@ -20,13 +20,13 @@ var _ MappedNullable = &CreateAccessProfileCommand{}
 
 // CreateAccessProfileCommand struct for CreateAccessProfileCommand
 type CreateAccessProfileCommand struct {
-	Name           NullableString         `json:"name,omitempty"`
-	HttpProxy      NullableString         `json:"httpProxy,omitempty"`
-	OrganizationId NullableInt32          `json:"organizationId,omitempty"`
-	SshUsers       []SshUserCreateDto     `json:"sshUsers,omitempty"`
-	DnsServers     []DnsServerCreateDto   `json:"dnsServers,omitempty"`
-	NtpServers     []NtpServerCreateDto   `json:"ntpServers,omitempty"`
-	AllowedHosts   []AllowedHostCreateDto `json:"allowedHosts,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	HttpProxy NullableString `json:"httpProxy,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	SshUsers []SshUserCreateDto `json:"sshUsers,omitempty"`
+	DnsServers []DnsServerCreateDto `json:"dnsServers,omitempty"`
+	NtpServers []NtpServerCreateDto `json:"ntpServers,omitempty"`
+	AllowedHosts []AllowedHostCreateDto `json:"allowedHosts,omitempty"`
 }
 
 // NewCreateAccessProfileCommand instantiates a new CreateAccessProfileCommand object
@@ -78,7 +78,6 @@ func (o *CreateAccessProfileCommand) HasName() bool {
 func (o *CreateAccessProfileCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateAccessProfileCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -121,7 +120,6 @@ func (o *CreateAccessProfileCommand) HasHttpProxy() bool {
 func (o *CreateAccessProfileCommand) SetHttpProxy(v string) {
 	o.HttpProxy.Set(&v)
 }
-
 // SetHttpProxyNil sets the value for HttpProxy to be an explicit nil
 func (o *CreateAccessProfileCommand) SetHttpProxyNil() {
 	o.HttpProxy.Set(nil)
@@ -164,7 +162,6 @@ func (o *CreateAccessProfileCommand) HasOrganizationId() bool {
 func (o *CreateAccessProfileCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateAccessProfileCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -308,7 +305,7 @@ func (o *CreateAccessProfileCommand) SetAllowedHosts(v []AllowedHostCreateDto) {
 }
 
 func (o CreateAccessProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -376,3 +373,5 @@ func (v *NullableCreateAccessProfileCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

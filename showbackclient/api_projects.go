@@ -19,19 +19,20 @@ import (
 	"net/url"
 )
 
+
 // ProjectsAPIService ProjectsAPI service
 type ProjectsAPIService service
 
 type ApiProjectsListRequest struct {
-	ctx            context.Context
-	ApiService     *ProjectsAPIService
-	limit          *int32
-	offset         *int32
+	ctx context.Context
+	ApiService *ProjectsAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
-	sortBy         *string
-	sortDirection  *string
-	search         *string
-	id             *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	id *int32
 }
 
 func (r ApiProjectsListRequest) Limit(limit int32) ApiProjectsListRequest {
@@ -76,25 +77,24 @@ func (r ApiProjectsListRequest) Execute() (*ShowbackProjectsList, *http.Response
 /*
 ProjectsList Retrieve all projects
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiProjectsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectsListRequest
 */
 func (a *ProjectsAPIService) ProjectsList(ctx context.Context) ApiProjectsListRequest {
 	return ApiProjectsListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ShowbackProjectsList
+//  @return ShowbackProjectsList
 func (a *ProjectsAPIService) ProjectsListExecute(r ApiProjectsListRequest) (*ShowbackProjectsList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ShowbackProjectsList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ShowbackProjectsList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ProjectsList")
@@ -189,8 +189,8 @@ func (a *ProjectsAPIService) ProjectsListExecute(r ApiProjectsListRequest) (*Sho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -200,8 +200,8 @@ func (a *ProjectsAPIService) ProjectsListExecute(r ApiProjectsListRequest) (*Sho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -211,8 +211,8 @@ func (a *ProjectsAPIService) ProjectsListExecute(r ApiProjectsListRequest) (*Sho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -222,8 +222,8 @@ func (a *ProjectsAPIService) ProjectsListExecute(r ApiProjectsListRequest) (*Sho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -233,8 +233,8 @@ func (a *ProjectsAPIService) ProjectsListExecute(r ApiProjectsListRequest) (*Sho
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

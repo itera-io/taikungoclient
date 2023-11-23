@@ -20,31 +20,31 @@ var _ MappedNullable = &ProjectActionVisibilityDto{}
 
 // ProjectActionVisibilityDto struct for ProjectActionVisibilityDto
 type ProjectActionVisibilityDto struct {
-	Commit                *ProjectButtonStatusDto `json:"commit,omitempty"`
-	Repair                *ProjectButtonStatusDto `json:"repair,omitempty"`
-	Upgrade               *ProjectButtonStatusDto `json:"upgrade,omitempty"`
-	Monitoring            *ProjectButtonStatusDto `json:"monitoring,omitempty"`
-	EnableBackup          *ProjectButtonStatusDto `json:"enableBackup,omitempty"`
-	DisableBackup         *ProjectButtonStatusDto `json:"disableBackup,omitempty"`
-	EnableOpa             *ProjectButtonStatusDto `json:"enableOpa,omitempty"`
-	DisableOpa            *ProjectButtonStatusDto `json:"disableOpa,omitempty"`
-	EnableAutoscaler      *ProjectButtonStatusDto `json:"enableAutoscaler,omitempty"`
-	DisableAutoscaler     *ProjectButtonStatusDto `json:"disableAutoscaler,omitempty"`
-	VmRepair              *ProjectButtonStatusDto `json:"vmRepair,omitempty"`
-	VmCommit              *ProjectButtonStatusDto `json:"vmCommit,omitempty"`
-	Lock                  *ProjectButtonStatusDto `json:"lock,omitempty"`
-	Unlock                *ProjectButtonStatusDto `json:"unlock,omitempty"`
-	EnableSpotWorker      *ProjectButtonStatusDto `json:"enableSpotWorker,omitempty"`
-	DisableSpotWorker     *ProjectButtonStatusDto `json:"disableSpotWorker,omitempty"`
-	EnableFullSpot        *ProjectButtonStatusDto `json:"enableFullSpot,omitempty"`
-	DisableFullSpot       *ProjectButtonStatusDto `json:"disableFullSpot,omitempty"`
-	EnableSpotVm          *ProjectButtonStatusDto `json:"enableSpotVm,omitempty"`
-	DisableSpotVm         *ProjectButtonStatusDto `json:"disableSpotVm,omitempty"`
+	Commit *ProjectButtonStatusDto `json:"commit,omitempty"`
+	Repair *ProjectButtonStatusDto `json:"repair,omitempty"`
+	Upgrade *ProjectButtonStatusDto `json:"upgrade,omitempty"`
+	Monitoring *ProjectButtonStatusDto `json:"monitoring,omitempty"`
+	EnableBackup *ProjectButtonStatusDto `json:"enableBackup,omitempty"`
+	DisableBackup *ProjectButtonStatusDto `json:"disableBackup,omitempty"`
+	EnableOpa *ProjectButtonStatusDto `json:"enableOpa,omitempty"`
+	DisableOpa *ProjectButtonStatusDto `json:"disableOpa,omitempty"`
+	EnableAutoscaler *ProjectButtonStatusDto `json:"enableAutoscaler,omitempty"`
+	DisableAutoscaler *ProjectButtonStatusDto `json:"disableAutoscaler,omitempty"`
+	VmRepair *ProjectButtonStatusDto `json:"vmRepair,omitempty"`
+	VmCommit *ProjectButtonStatusDto `json:"vmCommit,omitempty"`
+	Lock *ProjectButtonStatusDto `json:"lock,omitempty"`
+	Unlock *ProjectButtonStatusDto `json:"unlock,omitempty"`
+	EnableSpotWorker *ProjectButtonStatusDto `json:"enableSpotWorker,omitempty"`
+	DisableSpotWorker *ProjectButtonStatusDto `json:"disableSpotWorker,omitempty"`
+	EnableFullSpot *ProjectButtonStatusDto `json:"enableFullSpot,omitempty"`
+	DisableFullSpot *ProjectButtonStatusDto `json:"disableFullSpot,omitempty"`
+	EnableSpotVm *ProjectButtonStatusDto `json:"enableSpotVm,omitempty"`
+	DisableSpotVm *ProjectButtonStatusDto `json:"disableSpotVm,omitempty"`
 	AttachAlertingProfile *ProjectButtonStatusDto `json:"attachAlertingProfile,omitempty"`
 	DetachAlertingProfile *ProjectButtonStatusDto `json:"detachAlertingProfile,omitempty"`
-	EnableAi              *ProjectButtonStatusDto `json:"enableAi,omitempty"`
-	DisableAi             *ProjectButtonStatusDto `json:"disableAi,omitempty"`
-	AiAssistant           *ProjectButtonStatusDto `json:"aiAssistant,omitempty"`
+	EnableAi *ProjectButtonStatusDto `json:"enableAi,omitempty"`
+	DisableAi *ProjectButtonStatusDto `json:"disableAi,omitempty"`
+	AiAssistant *ProjectButtonStatusDto `json:"aiAssistant,omitempty"`
 }
 
 // NewProjectActionVisibilityDto instantiates a new ProjectActionVisibilityDto object
@@ -865,7 +865,7 @@ func (o *ProjectActionVisibilityDto) SetAiAssistant(v ProjectButtonStatusDto) {
 }
 
 func (o ProjectActionVisibilityDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -987,3 +987,5 @@ func (v *NullableProjectActionVisibilityDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,14 +20,14 @@ var _ MappedNullable = &ProjectQuotaListDto{}
 
 // ProjectQuotaListDto struct for ProjectQuotaListDto
 type ProjectQuotaListDto struct {
-	ServerCpu      *int64         `json:"serverCpu,omitempty"`
-	ServerRam      *int64         `json:"serverRam,omitempty"`
-	ServerDiskSize *int64         `json:"serverDiskSize,omitempty"`
-	VmCpu          *int64         `json:"vmCpu,omitempty"`
-	VmRam          *int64         `json:"vmRam,omitempty"`
-	VmVolumeSize   *int64         `json:"vmVolumeSize,omitempty"`
-	ProjectId      *int32         `json:"projectId,omitempty"`
-	ProjectName    NullableString `json:"projectName,omitempty"`
+	ServerCpu *int64 `json:"serverCpu,omitempty"`
+	ServerRam *int64 `json:"serverRam,omitempty"`
+	ServerDiskSize *int64 `json:"serverDiskSize,omitempty"`
+	VmCpu *int64 `json:"vmCpu,omitempty"`
+	VmRam *int64 `json:"vmRam,omitempty"`
+	VmVolumeSize *int64 `json:"vmVolumeSize,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
 }
 
 // NewProjectQuotaListDto instantiates a new ProjectQuotaListDto object
@@ -303,7 +303,6 @@ func (o *ProjectQuotaListDto) HasProjectName() bool {
 func (o *ProjectQuotaListDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *ProjectQuotaListDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -315,7 +314,7 @@ func (o *ProjectQuotaListDto) UnsetProjectName() {
 }
 
 func (o ProjectQuotaListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -386,3 +385,5 @@ func (v *NullableProjectQuotaListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,8 +21,8 @@ var _ MappedNullable = &JsonNode{}
 // JsonNode struct for JsonNode
 type JsonNode struct {
 	Options *JsonNodeOptions `json:"options,omitempty"`
-	Parent  *JsonNode        `json:"parent,omitempty"`
-	Root    *JsonNode        `json:"root,omitempty"`
+	Parent *JsonNode `json:"parent,omitempty"`
+	Root *JsonNode `json:"root,omitempty"`
 }
 
 // NewJsonNode instantiates a new JsonNode object
@@ -139,7 +139,7 @@ func (o *JsonNode) SetRoot(v JsonNode) {
 }
 
 func (o JsonNode) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableJsonNode) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

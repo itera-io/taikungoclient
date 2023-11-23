@@ -20,11 +20,11 @@ var _ MappedNullable = &CloudCredentialsForOrganizationEntity{}
 
 // CloudCredentialsForOrganizationEntity struct for CloudCredentialsForOrganizationEntity
 type CloudCredentialsForOrganizationEntity struct {
-	Id        *int32              `json:"id,omitempty"`
-	Projects  []CommonDropdownDto `json:"projects,omitempty"`
-	FullName  NullableString      `json:"fullName,omitempty"`
-	CloudType *CloudType          `json:"cloudType,omitempty"`
-	IsDefault *bool               `json:"isDefault,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	FullName NullableString `json:"fullName,omitempty"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
 }
 
 // NewCloudCredentialsForOrganizationEntity instantiates a new CloudCredentialsForOrganizationEntity object
@@ -141,7 +141,6 @@ func (o *CloudCredentialsForOrganizationEntity) HasFullName() bool {
 func (o *CloudCredentialsForOrganizationEntity) SetFullName(v string) {
 	o.FullName.Set(&v)
 }
-
 // SetFullNameNil sets the value for FullName to be an explicit nil
 func (o *CloudCredentialsForOrganizationEntity) SetFullNameNil() {
 	o.FullName.Set(nil)
@@ -217,7 +216,7 @@ func (o *CloudCredentialsForOrganizationEntity) SetIsDefault(v bool) {
 }
 
 func (o CloudCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -279,3 +278,5 @@ func (v *NullableCloudCredentialsForOrganizationEntity) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

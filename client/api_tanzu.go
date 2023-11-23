@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // TanzuAPIService TanzuAPI service
 type TanzuAPIService service
 
 type ApiTanzuCreateRequest struct {
-	ctx                context.Context
-	ApiService         *TanzuAPIService
+	ctx context.Context
+	ApiService *TanzuAPIService
 	createTanzuCommand *CreateTanzuCommand
 }
 
@@ -41,25 +42,24 @@ func (r ApiTanzuCreateRequest) Execute() (*ApiResponse, *http.Response, error) {
 /*
 TanzuCreate Create tanzu credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTanzuCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTanzuCreateRequest
 */
 func (a *TanzuAPIService) TanzuCreate(ctx context.Context) ApiTanzuCreateRequest {
 	return ApiTanzuCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *TanzuAPIService) TanzuCreateExecute(r ApiTanzuCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TanzuAPIService.TanzuCreate")
@@ -138,8 +138,8 @@ func (a *TanzuAPIService) TanzuCreateExecute(r ApiTanzuCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -149,8 +149,8 @@ func (a *TanzuAPIService) TanzuCreateExecute(r ApiTanzuCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -160,8 +160,8 @@ func (a *TanzuAPIService) TanzuCreateExecute(r ApiTanzuCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -171,8 +171,8 @@ func (a *TanzuAPIService) TanzuCreateExecute(r ApiTanzuCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -182,8 +182,8 @@ func (a *TanzuAPIService) TanzuCreateExecute(r ApiTanzuCreateRequest) (*ApiRespo
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -201,9 +201,9 @@ func (a *TanzuAPIService) TanzuCreateExecute(r ApiTanzuCreateRequest) (*ApiRespo
 }
 
 type ApiTanzuKubernetesVersionsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TanzuAPIService
-	cloudId    int32
+	cloudId int32
 }
 
 func (r ApiTanzuKubernetesVersionsRequest) Execute() ([]string, *http.Response, error) {
@@ -213,27 +213,26 @@ func (r ApiTanzuKubernetesVersionsRequest) Execute() ([]string, *http.Response, 
 /*
 TanzuKubernetesVersions Tanzu available k8s version list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param cloudId
-	@return ApiTanzuKubernetesVersionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param cloudId
+ @return ApiTanzuKubernetesVersionsRequest
 */
 func (a *TanzuAPIService) TanzuKubernetesVersions(ctx context.Context, cloudId int32) ApiTanzuKubernetesVersionsRequest {
 	return ApiTanzuKubernetesVersionsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		cloudId:    cloudId,
+		ctx: ctx,
+		cloudId: cloudId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *TanzuAPIService) TanzuKubernetesVersionsExecute(r ApiTanzuKubernetesVersionsRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TanzuAPIService.TanzuKubernetesVersions")
@@ -308,8 +307,8 @@ func (a *TanzuAPIService) TanzuKubernetesVersionsExecute(r ApiTanzuKubernetesVer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -319,8 +318,8 @@ func (a *TanzuAPIService) TanzuKubernetesVersionsExecute(r ApiTanzuKubernetesVer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -330,8 +329,8 @@ func (a *TanzuAPIService) TanzuKubernetesVersionsExecute(r ApiTanzuKubernetesVer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -341,8 +340,8 @@ func (a *TanzuAPIService) TanzuKubernetesVersionsExecute(r ApiTanzuKubernetesVer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -352,8 +351,8 @@ func (a *TanzuAPIService) TanzuKubernetesVersionsExecute(r ApiTanzuKubernetesVer
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -371,16 +370,16 @@ func (a *TanzuAPIService) TanzuKubernetesVersionsExecute(r ApiTanzuKubernetesVer
 }
 
 type ApiTanzuListRequest struct {
-	ctx            context.Context
-	ApiService     *TanzuAPIService
-	limit          *int32
-	offset         *int32
+	ctx context.Context
+	ApiService *TanzuAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
-	sortBy         *string
-	sortDirection  *string
-	search         *string
-	searchId       *string
-	id             *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	searchId *string
+	id *int32
 }
 
 func (r ApiTanzuListRequest) Limit(limit int32) ApiTanzuListRequest {
@@ -430,25 +429,24 @@ func (r ApiTanzuListRequest) Execute() (*TanzuCredentialsList, *http.Response, e
 /*
 TanzuList Retrieve list of tanzu cloud credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTanzuListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTanzuListRequest
 */
 func (a *TanzuAPIService) TanzuList(ctx context.Context) ApiTanzuListRequest {
 	return ApiTanzuListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return TanzuCredentialsList
+//  @return TanzuCredentialsList
 func (a *TanzuAPIService) TanzuListExecute(r ApiTanzuListRequest) (*TanzuCredentialsList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *TanzuCredentialsList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TanzuCredentialsList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TanzuAPIService.TanzuList")
@@ -546,8 +544,8 @@ func (a *TanzuAPIService) TanzuListExecute(r ApiTanzuListRequest) (*TanzuCredent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -557,8 +555,8 @@ func (a *TanzuAPIService) TanzuListExecute(r ApiTanzuListRequest) (*TanzuCredent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -568,8 +566,8 @@ func (a *TanzuAPIService) TanzuListExecute(r ApiTanzuListRequest) (*TanzuCredent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -579,8 +577,8 @@ func (a *TanzuAPIService) TanzuListExecute(r ApiTanzuListRequest) (*TanzuCredent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -590,8 +588,8 @@ func (a *TanzuAPIService) TanzuListExecute(r ApiTanzuListRequest) (*TanzuCredent
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -609,8 +607,8 @@ func (a *TanzuAPIService) TanzuListExecute(r ApiTanzuListRequest) (*TanzuCredent
 }
 
 type ApiTanzuStorageListRequest struct {
-	ctx                     context.Context
-	ApiService              *TanzuAPIService
+	ctx context.Context
+	ApiService *TanzuAPIService
 	tanzuStorageListCommand *TanzuStorageListCommand
 }
 
@@ -626,25 +624,24 @@ func (r ApiTanzuStorageListRequest) Execute() ([]string, *http.Response, error) 
 /*
 TanzuStorageList Tanzu storage list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTanzuStorageListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTanzuStorageListRequest
 */
 func (a *TanzuAPIService) TanzuStorageList(ctx context.Context) ApiTanzuStorageListRequest {
 	return ApiTanzuStorageListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *TanzuAPIService) TanzuStorageListExecute(r ApiTanzuStorageListRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TanzuAPIService.TanzuStorageList")
@@ -720,8 +717,8 @@ func (a *TanzuAPIService) TanzuStorageListExecute(r ApiTanzuStorageListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -731,8 +728,8 @@ func (a *TanzuAPIService) TanzuStorageListExecute(r ApiTanzuStorageListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -742,8 +739,8 @@ func (a *TanzuAPIService) TanzuStorageListExecute(r ApiTanzuStorageListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -753,8 +750,8 @@ func (a *TanzuAPIService) TanzuStorageListExecute(r ApiTanzuStorageListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -764,8 +761,8 @@ func (a *TanzuAPIService) TanzuStorageListExecute(r ApiTanzuStorageListRequest) 
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -783,8 +780,8 @@ func (a *TanzuAPIService) TanzuStorageListExecute(r ApiTanzuStorageListRequest) 
 }
 
 type ApiTanzuUpdateRequest struct {
-	ctx                context.Context
-	ApiService         *TanzuAPIService
+	ctx context.Context
+	ApiService *TanzuAPIService
 	updateTanzuCommand *UpdateTanzuCommand
 }
 
@@ -800,22 +797,22 @@ func (r ApiTanzuUpdateRequest) Execute() (*http.Response, error) {
 /*
 TanzuUpdate Update tanzu credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTanzuUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTanzuUpdateRequest
 */
 func (a *TanzuAPIService) TanzuUpdate(ctx context.Context) ApiTanzuUpdateRequest {
 	return ApiTanzuUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TanzuAPIService) TanzuUpdateExecute(r ApiTanzuUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TanzuAPIService.TanzuUpdate")
@@ -894,8 +891,8 @@ func (a *TanzuAPIService) TanzuUpdateExecute(r ApiTanzuUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -905,8 +902,8 @@ func (a *TanzuAPIService) TanzuUpdateExecute(r ApiTanzuUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -916,8 +913,8 @@ func (a *TanzuAPIService) TanzuUpdateExecute(r ApiTanzuUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -927,8 +924,8 @@ func (a *TanzuAPIService) TanzuUpdateExecute(r ApiTanzuUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -938,8 +935,8 @@ func (a *TanzuAPIService) TanzuUpdateExecute(r ApiTanzuUpdateRequest) (*http.Res
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

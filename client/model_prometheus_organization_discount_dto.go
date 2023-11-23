@@ -20,10 +20,10 @@ var _ MappedNullable = &PrometheusOrganizationDiscountDto{}
 
 // PrometheusOrganizationDiscountDto struct for PrometheusOrganizationDiscountDto
 type PrometheusOrganizationDiscountDto struct {
-	Id                 *int32         `json:"id,omitempty"`
-	Name               NullableString `json:"name,omitempty"`
-	RuleDiscountRate   *float64       `json:"ruleDiscountRate,omitempty"`
-	GlobalDiscountRate *float64       `json:"globalDiscountRate,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	RuleDiscountRate *float64 `json:"ruleDiscountRate,omitempty"`
+	GlobalDiscountRate *float64 `json:"globalDiscountRate,omitempty"`
 }
 
 // NewPrometheusOrganizationDiscountDto instantiates a new PrometheusOrganizationDiscountDto object
@@ -107,7 +107,6 @@ func (o *PrometheusOrganizationDiscountDto) HasName() bool {
 func (o *PrometheusOrganizationDiscountDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PrometheusOrganizationDiscountDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -183,7 +182,7 @@ func (o *PrometheusOrganizationDiscountDto) SetGlobalDiscountRate(v float64) {
 }
 
 func (o PrometheusOrganizationDiscountDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -242,3 +241,5 @@ func (v *NullablePrometheusOrganizationDiscountDto) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

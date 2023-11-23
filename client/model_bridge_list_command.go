@@ -20,10 +20,10 @@ var _ MappedNullable = &BridgeListCommand{}
 
 // BridgeListCommand struct for BridgeListCommand
 type BridgeListCommand struct {
-	Url         NullableString `json:"url,omitempty"`
-	TokenId     NullableString `json:"tokenId,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	TokenId NullableString `json:"tokenId,omitempty"`
 	TokenSecret NullableString `json:"tokenSecret,omitempty"`
-	Hypervisor  NullableString `json:"hypervisor,omitempty"`
+	Hypervisor NullableString `json:"hypervisor,omitempty"`
 }
 
 // NewBridgeListCommand instantiates a new BridgeListCommand object
@@ -75,7 +75,6 @@ func (o *BridgeListCommand) HasUrl() bool {
 func (o *BridgeListCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *BridgeListCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -118,7 +117,6 @@ func (o *BridgeListCommand) HasTokenId() bool {
 func (o *BridgeListCommand) SetTokenId(v string) {
 	o.TokenId.Set(&v)
 }
-
 // SetTokenIdNil sets the value for TokenId to be an explicit nil
 func (o *BridgeListCommand) SetTokenIdNil() {
 	o.TokenId.Set(nil)
@@ -161,7 +159,6 @@ func (o *BridgeListCommand) HasTokenSecret() bool {
 func (o *BridgeListCommand) SetTokenSecret(v string) {
 	o.TokenSecret.Set(&v)
 }
-
 // SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
 func (o *BridgeListCommand) SetTokenSecretNil() {
 	o.TokenSecret.Set(nil)
@@ -204,7 +201,6 @@ func (o *BridgeListCommand) HasHypervisor() bool {
 func (o *BridgeListCommand) SetHypervisor(v string) {
 	o.Hypervisor.Set(&v)
 }
-
 // SetHypervisorNil sets the value for Hypervisor to be an explicit nil
 func (o *BridgeListCommand) SetHypervisorNil() {
 	o.Hypervisor.Set(nil)
@@ -216,7 +212,7 @@ func (o *BridgeListCommand) UnsetHypervisor() {
 }
 
 func (o BridgeListCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,3 +271,5 @@ func (v *NullableBridgeListCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

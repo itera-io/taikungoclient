@@ -20,9 +20,9 @@ var _ MappedNullable = &CommonExtendedDropdownDto{}
 
 // CommonExtendedDropdownDto struct for CommonExtendedDropdownDto
 type CommonExtendedDropdownDto struct {
-	Id        *int32         `json:"id,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
-	IsDefault *bool          `json:"isDefault,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
 }
 
 // NewCommonExtendedDropdownDto instantiates a new CommonExtendedDropdownDto object
@@ -106,7 +106,6 @@ func (o *CommonExtendedDropdownDto) HasName() bool {
 func (o *CommonExtendedDropdownDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CommonExtendedDropdownDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,7 @@ func (o *CommonExtendedDropdownDto) SetIsDefault(v bool) {
 }
 
 func (o CommonExtendedDropdownDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,3 +205,5 @@ func (v *NullableCommonExtendedDropdownDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

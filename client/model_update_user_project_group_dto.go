@@ -21,7 +21,7 @@ var _ MappedNullable = &UpdateUserProjectGroupDto{}
 // UpdateUserProjectGroupDto struct for UpdateUserProjectGroupDto
 type UpdateUserProjectGroupDto struct {
 	ProjectGroupId *int32 `json:"projectGroupId,omitempty"`
-	IsBound        *bool  `json:"isBound,omitempty"`
+	IsBound *bool `json:"isBound,omitempty"`
 }
 
 // NewUpdateUserProjectGroupDto instantiates a new UpdateUserProjectGroupDto object
@@ -106,7 +106,7 @@ func (o *UpdateUserProjectGroupDto) SetIsBound(v bool) {
 }
 
 func (o UpdateUserProjectGroupDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableUpdateUserProjectGroupDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

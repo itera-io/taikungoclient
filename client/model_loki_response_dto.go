@@ -21,14 +21,14 @@ var _ MappedNullable = &LokiResponseDto{}
 
 // LokiResponseDto struct for LokiResponseDto
 type LokiResponseDto struct {
-	ProjectId   *int32         `json:"projectId,omitempty"`
-	Parameters  []Parameter    `json:"parameters,omitempty"`
-	Filters     []Filter       `json:"filters,omitempty"`
-	Start       NullableTime   `json:"start,omitempty"`
-	End         NullableTime   `json:"end,omitempty"`
-	Limit       NullableInt32  `json:"limit,omitempty"`
-	Direction   NullableString `json:"direction,omitempty"`
-	CanDownload *bool          `json:"canDownload,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Parameters []Parameter `json:"parameters,omitempty"`
+	Filters []Filter `json:"filters,omitempty"`
+	Start NullableTime `json:"start,omitempty"`
+	End NullableTime `json:"end,omitempty"`
+	Limit NullableInt32 `json:"limit,omitempty"`
+	Direction NullableString `json:"direction,omitempty"`
+	CanDownload *bool `json:"canDownload,omitempty"`
 }
 
 // NewLokiResponseDto instantiates a new LokiResponseDto object
@@ -178,7 +178,6 @@ func (o *LokiResponseDto) HasStart() bool {
 func (o *LokiResponseDto) SetStart(v time.Time) {
 	o.Start.Set(&v)
 }
-
 // SetStartNil sets the value for Start to be an explicit nil
 func (o *LokiResponseDto) SetStartNil() {
 	o.Start.Set(nil)
@@ -221,7 +220,6 @@ func (o *LokiResponseDto) HasEnd() bool {
 func (o *LokiResponseDto) SetEnd(v time.Time) {
 	o.End.Set(&v)
 }
-
 // SetEndNil sets the value for End to be an explicit nil
 func (o *LokiResponseDto) SetEndNil() {
 	o.End.Set(nil)
@@ -264,7 +262,6 @@ func (o *LokiResponseDto) HasLimit() bool {
 func (o *LokiResponseDto) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
-
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *LokiResponseDto) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -307,7 +304,6 @@ func (o *LokiResponseDto) HasDirection() bool {
 func (o *LokiResponseDto) SetDirection(v string) {
 	o.Direction.Set(&v)
 }
-
 // SetDirectionNil sets the value for Direction to be an explicit nil
 func (o *LokiResponseDto) SetDirectionNil() {
 	o.Direction.Set(nil)
@@ -351,7 +347,7 @@ func (o *LokiResponseDto) SetCanDownload(v bool) {
 }
 
 func (o LokiResponseDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -422,3 +418,5 @@ func (v *NullableLokiResponseDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

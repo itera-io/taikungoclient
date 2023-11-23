@@ -19,13 +19,14 @@ import (
 	"net/url"
 )
 
+
 // KubeConfigRoleAPIService KubeConfigRoleAPI service
 type KubeConfigRoleAPIService service
 
 type ApiKubeconfigroleListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *KubeConfigRoleAPIService
-	search     *string
+	search *string
 }
 
 func (r ApiKubeconfigroleListRequest) Search(search string) ApiKubeconfigroleListRequest {
@@ -40,25 +41,24 @@ func (r ApiKubeconfigroleListRequest) Execute() (*KubeConfigRoleResponse, *http.
 /*
 KubeconfigroleList Retrieve list of kube config role
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiKubeconfigroleListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiKubeconfigroleListRequest
 */
 func (a *KubeConfigRoleAPIService) KubeconfigroleList(ctx context.Context) ApiKubeconfigroleListRequest {
 	return ApiKubeconfigroleListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return KubeConfigRoleResponse
+//  @return KubeConfigRoleResponse
 func (a *KubeConfigRoleAPIService) KubeconfigroleListExecute(r ApiKubeconfigroleListRequest) (*KubeConfigRoleResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *KubeConfigRoleResponse
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *KubeConfigRoleResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubeConfigRoleAPIService.KubeconfigroleList")
@@ -135,8 +135,8 @@ func (a *KubeConfigRoleAPIService) KubeconfigroleListExecute(r ApiKubeconfigrole
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *KubeConfigRoleAPIService) KubeconfigroleListExecute(r ApiKubeconfigrole
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *KubeConfigRoleAPIService) KubeconfigroleListExecute(r ApiKubeconfigrole
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *KubeConfigRoleAPIService) KubeconfigroleListExecute(r ApiKubeconfigrole
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -179,8 +179,8 @@ func (a *KubeConfigRoleAPIService) KubeconfigroleListExecute(r ApiKubeconfigrole
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -20,8 +20,8 @@ var _ MappedNullable = &PrometheusDashboardListDto{}
 
 // PrometheusDashboardListDto struct for PrometheusDashboardListDto
 type PrometheusDashboardListDto struct {
-	CategoryName NullableString           `json:"categoryName,omitempty"`
-	Data         []PrometheusDashboardDto `json:"data,omitempty"`
+	CategoryName NullableString `json:"categoryName,omitempty"`
+	Data []PrometheusDashboardDto `json:"data,omitempty"`
 }
 
 // NewPrometheusDashboardListDto instantiates a new PrometheusDashboardListDto object
@@ -73,7 +73,6 @@ func (o *PrometheusDashboardListDto) HasCategoryName() bool {
 func (o *PrometheusDashboardListDto) SetCategoryName(v string) {
 	o.CategoryName.Set(&v)
 }
-
 // SetCategoryNameNil sets the value for CategoryName to be an explicit nil
 func (o *PrometheusDashboardListDto) SetCategoryNameNil() {
 	o.CategoryName.Set(nil)
@@ -118,7 +117,7 @@ func (o *PrometheusDashboardListDto) SetData(v []PrometheusDashboardDto) {
 }
 
 func (o PrometheusDashboardListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -171,3 +170,5 @@ func (v *NullablePrometheusDashboardListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,11 +20,11 @@ var _ MappedNullable = &EndpointElements{}
 
 // EndpointElements struct for EndpointElements
 type EndpointElements struct {
-	Id          *int32         `json:"id,omitempty"`
-	Controller  NullableString `json:"controller,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Controller NullableString `json:"controller,omitempty"`
 	Description NullableString `json:"description,omitempty"`
-	Method      NullableString `json:"method,omitempty"`
-	Path        NullableString `json:"path,omitempty"`
+	Method NullableString `json:"method,omitempty"`
+	Path NullableString `json:"path,omitempty"`
 }
 
 // NewEndpointElements instantiates a new EndpointElements object
@@ -108,7 +108,6 @@ func (o *EndpointElements) HasController() bool {
 func (o *EndpointElements) SetController(v string) {
 	o.Controller.Set(&v)
 }
-
 // SetControllerNil sets the value for Controller to be an explicit nil
 func (o *EndpointElements) SetControllerNil() {
 	o.Controller.Set(nil)
@@ -151,7 +150,6 @@ func (o *EndpointElements) HasDescription() bool {
 func (o *EndpointElements) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *EndpointElements) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -194,7 +192,6 @@ func (o *EndpointElements) HasMethod() bool {
 func (o *EndpointElements) SetMethod(v string) {
 	o.Method.Set(&v)
 }
-
 // SetMethodNil sets the value for Method to be an explicit nil
 func (o *EndpointElements) SetMethodNil() {
 	o.Method.Set(nil)
@@ -237,7 +234,6 @@ func (o *EndpointElements) HasPath() bool {
 func (o *EndpointElements) SetPath(v string) {
 	o.Path.Set(&v)
 }
-
 // SetPathNil sets the value for Path to be an explicit nil
 func (o *EndpointElements) SetPathNil() {
 	o.Path.Set(nil)
@@ -249,7 +245,7 @@ func (o *EndpointElements) UnsetPath() {
 }
 
 func (o EndpointElements) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -311,3 +307,5 @@ func (v *NullableEndpointElements) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

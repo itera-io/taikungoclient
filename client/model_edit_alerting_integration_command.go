@@ -20,11 +20,11 @@ var _ MappedNullable = &EditAlertingIntegrationCommand{}
 
 // EditAlertingIntegrationCommand struct for EditAlertingIntegrationCommand
 type EditAlertingIntegrationCommand struct {
-	Id                      *int32                   `json:"id,omitempty"`
-	Url                     NullableString           `json:"url,omitempty"`
-	Token                   NullableString           `json:"token,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Token NullableString `json:"token,omitempty"`
 	AlertingIntegrationType *AlertingIntegrationType `json:"alertingIntegrationType,omitempty"`
-	AlertingProfileId       *int32                   `json:"alertingProfileId,omitempty"`
+	AlertingProfileId *int32 `json:"alertingProfileId,omitempty"`
 }
 
 // NewEditAlertingIntegrationCommand instantiates a new EditAlertingIntegrationCommand object
@@ -108,7 +108,6 @@ func (o *EditAlertingIntegrationCommand) HasUrl() bool {
 func (o *EditAlertingIntegrationCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *EditAlertingIntegrationCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -151,7 +150,6 @@ func (o *EditAlertingIntegrationCommand) HasToken() bool {
 func (o *EditAlertingIntegrationCommand) SetToken(v string) {
 	o.Token.Set(&v)
 }
-
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *EditAlertingIntegrationCommand) SetTokenNil() {
 	o.Token.Set(nil)
@@ -227,7 +225,7 @@ func (o *EditAlertingIntegrationCommand) SetAlertingProfileId(v int32) {
 }
 
 func (o EditAlertingIntegrationCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -289,3 +287,5 @@ func (v *NullableEditAlertingIntegrationCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

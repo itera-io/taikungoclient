@@ -20,9 +20,9 @@ var _ MappedNullable = &Parameter{}
 
 // Parameter struct for Parameter
 type Parameter struct {
-	Label    NullableString `json:"label,omitempty"`
+	Label NullableString `json:"label,omitempty"`
 	Operator NullableString `json:"operator,omitempty"`
-	Value    NullableString `json:"value,omitempty"`
+	Value NullableString `json:"value,omitempty"`
 }
 
 // NewParameter instantiates a new Parameter object
@@ -74,7 +74,6 @@ func (o *Parameter) HasLabel() bool {
 func (o *Parameter) SetLabel(v string) {
 	o.Label.Set(&v)
 }
-
 // SetLabelNil sets the value for Label to be an explicit nil
 func (o *Parameter) SetLabelNil() {
 	o.Label.Set(nil)
@@ -117,7 +116,6 @@ func (o *Parameter) HasOperator() bool {
 func (o *Parameter) SetOperator(v string) {
 	o.Operator.Set(&v)
 }
-
 // SetOperatorNil sets the value for Operator to be an explicit nil
 func (o *Parameter) SetOperatorNil() {
 	o.Operator.Set(nil)
@@ -160,7 +158,6 @@ func (o *Parameter) HasValue() bool {
 func (o *Parameter) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *Parameter) SetValueNil() {
 	o.Value.Set(nil)
@@ -172,7 +169,7 @@ func (o *Parameter) UnsetValue() {
 }
 
 func (o Parameter) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableParameter) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

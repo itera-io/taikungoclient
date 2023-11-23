@@ -20,21 +20,21 @@ var _ MappedNullable = &OpenshiftListDto{}
 
 // OpenshiftListDto struct for OpenshiftListDto
 type OpenshiftListDto struct {
-	Id               *int32              `json:"id,omitempty"`
-	Name             NullableString      `json:"name,omitempty"`
-	BaseDomain       NullableString      `json:"baseDomain,omitempty"`
-	StorageClass     NullableString      `json:"storageClass,omitempty"`
-	OrganizationId   *int32              `json:"organizationId,omitempty"`
-	OrganizationName NullableString      `json:"organizationName,omitempty"`
-	Projects         []CommonDropdownDto `json:"projects,omitempty"`
-	ProjectCount     *int32              `json:"projectCount,omitempty"`
-	IsLocked         *bool               `json:"isLocked,omitempty"`
-	CreatedBy        NullableString      `json:"createdBy,omitempty"`
-	LastModified     NullableString      `json:"lastModified,omitempty"`
-	LastModifiedBy   NullableString      `json:"lastModifiedBy,omitempty"`
-	IsDefault        *bool               `json:"isDefault,omitempty"`
-	CreatedAt        NullableString      `json:"createdAt,omitempty"`
-	ContinentName    NullableString      `json:"continentName,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	BaseDomain NullableString `json:"baseDomain,omitempty"`
+	StorageClass NullableString `json:"storageClass,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	ProjectCount *int32 `json:"projectCount,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	ContinentName NullableString `json:"continentName,omitempty"`
 }
 
 // NewOpenshiftListDto instantiates a new OpenshiftListDto object
@@ -118,7 +118,6 @@ func (o *OpenshiftListDto) HasName() bool {
 func (o *OpenshiftListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OpenshiftListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -161,7 +160,6 @@ func (o *OpenshiftListDto) HasBaseDomain() bool {
 func (o *OpenshiftListDto) SetBaseDomain(v string) {
 	o.BaseDomain.Set(&v)
 }
-
 // SetBaseDomainNil sets the value for BaseDomain to be an explicit nil
 func (o *OpenshiftListDto) SetBaseDomainNil() {
 	o.BaseDomain.Set(nil)
@@ -204,7 +202,6 @@ func (o *OpenshiftListDto) HasStorageClass() bool {
 func (o *OpenshiftListDto) SetStorageClass(v string) {
 	o.StorageClass.Set(&v)
 }
-
 // SetStorageClassNil sets the value for StorageClass to be an explicit nil
 func (o *OpenshiftListDto) SetStorageClassNil() {
 	o.StorageClass.Set(nil)
@@ -279,7 +276,6 @@ func (o *OpenshiftListDto) HasOrganizationName() bool {
 func (o *OpenshiftListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *OpenshiftListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -419,7 +415,6 @@ func (o *OpenshiftListDto) HasCreatedBy() bool {
 func (o *OpenshiftListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *OpenshiftListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -462,7 +457,6 @@ func (o *OpenshiftListDto) HasLastModified() bool {
 func (o *OpenshiftListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *OpenshiftListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -505,7 +499,6 @@ func (o *OpenshiftListDto) HasLastModifiedBy() bool {
 func (o *OpenshiftListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *OpenshiftListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -580,7 +573,6 @@ func (o *OpenshiftListDto) HasCreatedAt() bool {
 func (o *OpenshiftListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *OpenshiftListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -623,7 +615,6 @@ func (o *OpenshiftListDto) HasContinentName() bool {
 func (o *OpenshiftListDto) SetContinentName(v string) {
 	o.ContinentName.Set(&v)
 }
-
 // SetContinentNameNil sets the value for ContinentName to be an explicit nil
 func (o *OpenshiftListDto) SetContinentNameNil() {
 	o.ContinentName.Set(nil)
@@ -635,7 +626,7 @@ func (o *OpenshiftListDto) UnsetContinentName() {
 }
 
 func (o OpenshiftListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -727,3 +718,5 @@ func (v *NullableOpenshiftListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

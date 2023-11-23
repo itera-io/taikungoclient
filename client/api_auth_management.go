@@ -19,12 +19,13 @@ import (
 	"net/url"
 )
 
+
 // AuthManagementAPIService AuthManagementAPI service
 type AuthManagementAPIService service
 
 type ApiAuthForgotPasswordRequest struct {
-	ctx                   context.Context
-	ApiService            *AuthManagementAPIService
+	ctx context.Context
+	ApiService *AuthManagementAPIService
 	forgotPasswordCommand *ForgotPasswordCommand
 }
 
@@ -40,22 +41,22 @@ func (r ApiAuthForgotPasswordRequest) Execute() (*http.Response, error) {
 /*
 AuthForgotPassword Generate reset password token if you forgot password
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthForgotPasswordRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAuthForgotPasswordRequest
 */
 func (a *AuthManagementAPIService) AuthForgotPassword(ctx context.Context) ApiAuthForgotPasswordRequest {
 	return ApiAuthForgotPasswordRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AuthManagementAPIService) AuthForgotPasswordExecute(r ApiAuthForgotPasswordRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.AuthForgotPassword")
@@ -131,8 +132,8 @@ func (a *AuthManagementAPIService) AuthForgotPasswordExecute(r ApiAuthForgotPass
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -142,8 +143,8 @@ func (a *AuthManagementAPIService) AuthForgotPasswordExecute(r ApiAuthForgotPass
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -153,8 +154,8 @@ func (a *AuthManagementAPIService) AuthForgotPasswordExecute(r ApiAuthForgotPass
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -164,8 +165,8 @@ func (a *AuthManagementAPIService) AuthForgotPasswordExecute(r ApiAuthForgotPass
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -175,8 +176,8 @@ func (a *AuthManagementAPIService) AuthForgotPasswordExecute(r ApiAuthForgotPass
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -185,8 +186,8 @@ func (a *AuthManagementAPIService) AuthForgotPasswordExecute(r ApiAuthForgotPass
 }
 
 type ApiAuthLoginRequest struct {
-	ctx          context.Context
-	ApiService   *AuthManagementAPIService
+	ctx context.Context
+	ApiService *AuthManagementAPIService
 	loginCommand *LoginCommand
 }
 
@@ -202,25 +203,24 @@ func (r ApiAuthLoginRequest) Execute() (*GetToken, *http.Response, error) {
 /*
 AuthLogin Login to API
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthLoginRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAuthLoginRequest
 */
 func (a *AuthManagementAPIService) AuthLogin(ctx context.Context) ApiAuthLoginRequest {
 	return ApiAuthLoginRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GetToken
+//  @return GetToken
 func (a *AuthManagementAPIService) AuthLoginExecute(r ApiAuthLoginRequest) (*GetToken, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GetToken
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetToken
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.AuthLogin")
@@ -299,8 +299,8 @@ func (a *AuthManagementAPIService) AuthLoginExecute(r ApiAuthLoginRequest) (*Get
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -310,8 +310,8 @@ func (a *AuthManagementAPIService) AuthLoginExecute(r ApiAuthLoginRequest) (*Get
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -321,8 +321,8 @@ func (a *AuthManagementAPIService) AuthLoginExecute(r ApiAuthLoginRequest) (*Get
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -332,8 +332,8 @@ func (a *AuthManagementAPIService) AuthLoginExecute(r ApiAuthLoginRequest) (*Get
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -343,8 +343,8 @@ func (a *AuthManagementAPIService) AuthLoginExecute(r ApiAuthLoginRequest) (*Get
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -362,8 +362,8 @@ func (a *AuthManagementAPIService) AuthLoginExecute(r ApiAuthLoginRequest) (*Get
 }
 
 type ApiAuthRefreshRequest struct {
-	ctx                 context.Context
-	ApiService          *AuthManagementAPIService
+	ctx context.Context
+	ApiService *AuthManagementAPIService
 	refreshTokenCommand *RefreshTokenCommand
 }
 
@@ -379,25 +379,24 @@ func (r ApiAuthRefreshRequest) Execute() (*GetToken, *http.Response, error) {
 /*
 AuthRefresh Refresh bearer token that generated automatically by API
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthRefreshRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAuthRefreshRequest
 */
 func (a *AuthManagementAPIService) AuthRefresh(ctx context.Context) ApiAuthRefreshRequest {
 	return ApiAuthRefreshRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return GetToken
+//  @return GetToken
 func (a *AuthManagementAPIService) AuthRefreshExecute(r ApiAuthRefreshRequest) (*GetToken, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *GetToken
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *GetToken
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.AuthRefresh")
@@ -473,8 +472,8 @@ func (a *AuthManagementAPIService) AuthRefreshExecute(r ApiAuthRefreshRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -484,8 +483,8 @@ func (a *AuthManagementAPIService) AuthRefreshExecute(r ApiAuthRefreshRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -495,8 +494,8 @@ func (a *AuthManagementAPIService) AuthRefreshExecute(r ApiAuthRefreshRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -506,8 +505,8 @@ func (a *AuthManagementAPIService) AuthRefreshExecute(r ApiAuthRefreshRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -517,8 +516,8 @@ func (a *AuthManagementAPIService) AuthRefreshExecute(r ApiAuthRefreshRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -536,8 +535,8 @@ func (a *AuthManagementAPIService) AuthRefreshExecute(r ApiAuthRefreshRequest) (
 }
 
 type ApiAuthResetPasswordRequest struct {
-	ctx                  context.Context
-	ApiService           *AuthManagementAPIService
+	ctx context.Context
+	ApiService *AuthManagementAPIService
 	resetPasswordCommand *ResetPasswordCommand
 }
 
@@ -553,22 +552,22 @@ func (r ApiAuthResetPasswordRequest) Execute() (*http.Response, error) {
 /*
 AuthResetPassword Reset password
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthResetPasswordRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAuthResetPasswordRequest
 */
 func (a *AuthManagementAPIService) AuthResetPassword(ctx context.Context) ApiAuthResetPasswordRequest {
 	return ApiAuthResetPasswordRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AuthManagementAPIService) AuthResetPasswordExecute(r ApiAuthResetPasswordRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.AuthResetPassword")
@@ -644,8 +643,8 @@ func (a *AuthManagementAPIService) AuthResetPasswordExecute(r ApiAuthResetPasswo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -655,8 +654,8 @@ func (a *AuthManagementAPIService) AuthResetPasswordExecute(r ApiAuthResetPasswo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -666,8 +665,8 @@ func (a *AuthManagementAPIService) AuthResetPasswordExecute(r ApiAuthResetPasswo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -677,8 +676,8 @@ func (a *AuthManagementAPIService) AuthResetPasswordExecute(r ApiAuthResetPasswo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -688,119 +687,8 @@ func (a *AuthManagementAPIService) AuthResetPasswordExecute(r ApiAuthResetPasswo
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiAuthTrialRequest struct {
-	ctx               context.Context
-	ApiService        *AuthManagementAPIService
-	tryForFreeCommand *TryForFreeCommand
-}
-
-func (r ApiAuthTrialRequest) TryForFreeCommand(tryForFreeCommand TryForFreeCommand) ApiAuthTrialRequest {
-	r.tryForFreeCommand = &tryForFreeCommand
-	return r
-}
-
-func (r ApiAuthTrialRequest) Execute() (*http.Response, error) {
-	return r.ApiService.AuthTrialExecute(r)
-}
-
-/*
-AuthTrial Try free
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAuthTrialRequest
-*/
-func (a *AuthManagementAPIService) AuthTrial(ctx context.Context) ApiAuthTrialRequest {
-	return ApiAuthTrialRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-func (a *AuthManagementAPIService) AuthTrialExecute(r ApiAuthTrialRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.AuthTrial")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/auth/trial"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.tryForFreeCommand == nil {
-		return nil, reportError("tryForFreeCommand is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.tryForFreeCommand
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["Bearer"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

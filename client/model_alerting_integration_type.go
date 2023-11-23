@@ -21,9 +21,9 @@ type AlertingIntegrationType string
 
 // List of AlertingIntegrationType
 const (
-	ALERTINGINTEGRATIONTYPE_OPSGENIE        AlertingIntegrationType = "Opsgenie"
-	ALERTINGINTEGRATIONTYPE_PAGERDUTY       AlertingIntegrationType = "Pagerduty"
-	ALERTINGINTEGRATIONTYPE_SPLUNK          AlertingIntegrationType = "Splunk"
+	ALERTINGINTEGRATIONTYPE_OPSGENIE AlertingIntegrationType = "Opsgenie"
+	ALERTINGINTEGRATIONTYPE_PAGERDUTY AlertingIntegrationType = "Pagerduty"
+	ALERTINGINTEGRATIONTYPE_SPLUNK AlertingIntegrationType = "Splunk"
 	ALERTINGINTEGRATIONTYPE_MICROSOFT_TEAMS AlertingIntegrationType = "MicrosoftTeams"
 )
 
@@ -113,3 +113,4 @@ func (v *NullableAlertingIntegrationType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

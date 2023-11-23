@@ -20,8 +20,8 @@ var _ MappedNullable = &ProjectCommonRecordDto{}
 
 // ProjectCommonRecordDto struct for ProjectCommonRecordDto
 type ProjectCommonRecordDto struct {
-	Id        *int32         `json:"id,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	ExpiredAt NullableString `json:"expiredAt,omitempty"`
 }
 
@@ -106,7 +106,6 @@ func (o *ProjectCommonRecordDto) HasName() bool {
 func (o *ProjectCommonRecordDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectCommonRecordDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -149,7 +148,6 @@ func (o *ProjectCommonRecordDto) HasExpiredAt() bool {
 func (o *ProjectCommonRecordDto) SetExpiredAt(v string) {
 	o.ExpiredAt.Set(&v)
 }
-
 // SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
 func (o *ProjectCommonRecordDto) SetExpiredAtNil() {
 	o.ExpiredAt.Set(nil)
@@ -161,7 +159,7 @@ func (o *ProjectCommonRecordDto) UnsetExpiredAt() {
 }
 
 func (o ProjectCommonRecordDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullableProjectCommonRecordDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

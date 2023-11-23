@@ -20,8 +20,8 @@ var _ MappedNullable = &ListCatalogAppAvailableVersionsCommand{}
 
 // ListCatalogAppAvailableVersionsCommand struct for ListCatalogAppAvailableVersionsCommand
 type ListCatalogAppAvailableVersionsCommand struct {
-	RepoName       NullableString `json:"repoName,omitempty"`
-	PackageName    NullableString `json:"packageName,omitempty"`
+	RepoName NullableString `json:"repoName,omitempty"`
+	PackageName NullableString `json:"packageName,omitempty"`
 	CurrentVersion NullableString `json:"currentVersion,omitempty"`
 }
 
@@ -74,7 +74,6 @@ func (o *ListCatalogAppAvailableVersionsCommand) HasRepoName() bool {
 func (o *ListCatalogAppAvailableVersionsCommand) SetRepoName(v string) {
 	o.RepoName.Set(&v)
 }
-
 // SetRepoNameNil sets the value for RepoName to be an explicit nil
 func (o *ListCatalogAppAvailableVersionsCommand) SetRepoNameNil() {
 	o.RepoName.Set(nil)
@@ -117,7 +116,6 @@ func (o *ListCatalogAppAvailableVersionsCommand) HasPackageName() bool {
 func (o *ListCatalogAppAvailableVersionsCommand) SetPackageName(v string) {
 	o.PackageName.Set(&v)
 }
-
 // SetPackageNameNil sets the value for PackageName to be an explicit nil
 func (o *ListCatalogAppAvailableVersionsCommand) SetPackageNameNil() {
 	o.PackageName.Set(nil)
@@ -160,7 +158,6 @@ func (o *ListCatalogAppAvailableVersionsCommand) HasCurrentVersion() bool {
 func (o *ListCatalogAppAvailableVersionsCommand) SetCurrentVersion(v string) {
 	o.CurrentVersion.Set(&v)
 }
-
 // SetCurrentVersionNil sets the value for CurrentVersion to be an explicit nil
 func (o *ListCatalogAppAvailableVersionsCommand) SetCurrentVersionNil() {
 	o.CurrentVersion.Set(nil)
@@ -172,7 +169,7 @@ func (o *ListCatalogAppAvailableVersionsCommand) UnsetCurrentVersion() {
 }
 
 func (o ListCatalogAppAvailableVersionsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableListCatalogAppAvailableVersionsCommand) UnmarshalJSON(src []byt
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

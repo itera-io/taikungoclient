@@ -20,13 +20,13 @@ var _ MappedNullable = &StandaloneVisibilityDto{}
 
 // StandaloneVisibilityDto struct for StandaloneVisibilityDto
 type StandaloneVisibilityDto struct {
-	ShowStatus  *bool `json:"showStatus,omitempty"`
+	ShowStatus *bool `json:"showStatus,omitempty"`
 	ShowConsole *bool `json:"showConsole,omitempty"`
-	Shelve      *bool `json:"shelve,omitempty"`
-	Unshelve    *bool `json:"unshelve,omitempty"`
-	Start       *bool `json:"start,omitempty"`
-	Stop        *bool `json:"stop,omitempty"`
-	Reboot      *bool `json:"reboot,omitempty"`
+	Shelve *bool `json:"shelve,omitempty"`
+	Unshelve *bool `json:"unshelve,omitempty"`
+	Start *bool `json:"start,omitempty"`
+	Stop *bool `json:"stop,omitempty"`
+	Reboot *bool `json:"reboot,omitempty"`
 }
 
 // NewStandaloneVisibilityDto instantiates a new StandaloneVisibilityDto object
@@ -271,7 +271,7 @@ func (o *StandaloneVisibilityDto) SetReboot(v bool) {
 }
 
 func (o StandaloneVisibilityDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -339,3 +339,5 @@ func (v *NullableStandaloneVisibilityDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

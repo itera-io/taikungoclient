@@ -20,16 +20,15 @@ var _ MappedNullable = &CreateKubernetesProfileCommand{}
 
 // CreateKubernetesProfileCommand struct for CreateKubernetesProfileCommand
 type CreateKubernetesProfileCommand struct {
-	Name                     NullableString  `json:"name,omitempty"`
-	OctaviaEnabled           *bool           `json:"octaviaEnabled,omitempty"`
-	ExposeNodePortOnBastion  *bool           `json:"exposeNodePortOnBastion,omitempty"`
-	OrganizationId           NullableInt32   `json:"organizationId,omitempty"`
-	TaikunLBEnabled          *bool           `json:"taikunLBEnabled,omitempty"`
-	AllowSchedulingOnMaster  *bool           `json:"allowSchedulingOnMaster,omitempty"`
-	UniqueClusterName        *bool           `json:"uniqueClusterName,omitempty"`
-	ProxmoxStorage           *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
-	NvidiaGpuOperatorEnabled *bool           `json:"nvidiaGpuOperatorEnabled,omitempty"`
-	WasmEnabled              *bool           `json:"wasmEnabled,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OctaviaEnabled *bool `json:"octaviaEnabled,omitempty"`
+	ExposeNodePortOnBastion *bool `json:"exposeNodePortOnBastion,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	TaikunLBEnabled *bool `json:"taikunLBEnabled,omitempty"`
+	AllowSchedulingOnMaster *bool `json:"allowSchedulingOnMaster,omitempty"`
+	UniqueClusterName *bool `json:"uniqueClusterName,omitempty"`
+	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
+	NvidiaGpuOperatorEnabled *bool `json:"nvidiaGpuOperatorEnabled,omitempty"`
 }
 
 // NewCreateKubernetesProfileCommand instantiates a new CreateKubernetesProfileCommand object
@@ -81,7 +80,6 @@ func (o *CreateKubernetesProfileCommand) HasName() bool {
 func (o *CreateKubernetesProfileCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateKubernetesProfileCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -188,7 +186,6 @@ func (o *CreateKubernetesProfileCommand) HasOrganizationId() bool {
 func (o *CreateKubernetesProfileCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateKubernetesProfileCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -359,40 +356,8 @@ func (o *CreateKubernetesProfileCommand) SetNvidiaGpuOperatorEnabled(v bool) {
 	o.NvidiaGpuOperatorEnabled = &v
 }
 
-// GetWasmEnabled returns the WasmEnabled field value if set, zero value otherwise.
-func (o *CreateKubernetesProfileCommand) GetWasmEnabled() bool {
-	if o == nil || IsNil(o.WasmEnabled) {
-		var ret bool
-		return ret
-	}
-	return *o.WasmEnabled
-}
-
-// GetWasmEnabledOk returns a tuple with the WasmEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateKubernetesProfileCommand) GetWasmEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.WasmEnabled) {
-		return nil, false
-	}
-	return o.WasmEnabled, true
-}
-
-// HasWasmEnabled returns a boolean if a field has been set.
-func (o *CreateKubernetesProfileCommand) HasWasmEnabled() bool {
-	if o != nil && !IsNil(o.WasmEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetWasmEnabled gets a reference to the given bool and assigns it to the WasmEnabled field.
-func (o *CreateKubernetesProfileCommand) SetWasmEnabled(v bool) {
-	o.WasmEnabled = &v
-}
-
 func (o CreateKubernetesProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -427,9 +392,6 @@ func (o CreateKubernetesProfileCommand) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.NvidiaGpuOperatorEnabled) {
 		toSerialize["nvidiaGpuOperatorEnabled"] = o.NvidiaGpuOperatorEnabled
-	}
-	if !IsNil(o.WasmEnabled) {
-		toSerialize["wasmEnabled"] = o.WasmEnabled
 	}
 	return toSerialize, nil
 }
@@ -469,3 +431,5 @@ func (v *NullableCreateKubernetesProfileCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_GoogleAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_GoogleAPIService(t *testing.T) {
 
 	t.Run("Test GoogleAPIService GooglecloudBillingAccountList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.GoogleAPI.GooglecloudBillingAccountList(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_GoogleAPIService(t *testing.T) {
 
 	t.Run("Test GoogleAPIService GooglecloudCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.GoogleAPI.GooglecloudCreate(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_taikuncore_GoogleAPIService(t *testing.T) {
 
 	t.Run("Test GoogleAPIService GooglecloudList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.GoogleAPI.GooglecloudList(context.Background()).Execute()
 
@@ -60,7 +60,7 @@ func Test_taikuncore_GoogleAPIService(t *testing.T) {
 
 	t.Run("Test GoogleAPIService GooglecloudRegionList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.GoogleAPI.GooglecloudRegionList(context.Background()).Execute()
 
@@ -72,7 +72,7 @@ func Test_taikuncore_GoogleAPIService(t *testing.T) {
 
 	t.Run("Test GoogleAPIService GooglecloudZoneList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var region string
 

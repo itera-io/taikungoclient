@@ -20,31 +20,31 @@ var _ MappedNullable = &UserForListDto{}
 
 // UserForListDto struct for UserForListDto
 type UserForListDto struct {
-	Id                           NullableString            `json:"id,omitempty"`
-	Username                     NullableString            `json:"username,omitempty"`
-	OrganizationName             NullableString            `json:"organizationName,omitempty"`
-	HasCustomerId                *bool                     `json:"hasCustomerId,omitempty"`
-	HasPaymentMethod             *bool                     `json:"hasPaymentMethod,omitempty"`
-	OrganizationId               *int32                    `json:"organizationId,omitempty"`
-	Role                         *UserRole                 `json:"role,omitempty"`
-	Email                        NullableString            `json:"email,omitempty"`
-	DisplayName                  NullableString            `json:"displayName,omitempty"`
-	CreatedAt                    NullableString            `json:"createdAt,omitempty"`
-	IsEmailConfirmed             *bool                     `json:"isEmailConfirmed,omitempty"`
-	IsEmailNotificationEnabled   *bool                     `json:"isEmailNotificationEnabled,omitempty"`
-	IsForcedToResetPassword      *bool                     `json:"isForcedToResetPassword,omitempty"`
-	IsCsm                        *bool                     `json:"isCsm,omitempty"`
-	IsEligibleUpdateSubscription *bool                     `json:"isEligibleUpdateSubscription,omitempty"`
-	IsLocked                     *bool                     `json:"isLocked,omitempty"`
-	IsApprovedByPartner          *bool                     `json:"isApprovedByPartner,omitempty"`
-	Owner                        *bool                     `json:"owner,omitempty"`
-	IsReadOnly                   *bool                     `json:"isReadOnly,omitempty"`
-	HasRepo                      *bool                     `json:"hasRepo,omitempty"`
-	DemoModeEnabled              *bool                     `json:"demoModeEnabled,omitempty"`
-	IsNewOrganization            *bool                     `json:"isNewOrganization,omitempty"`
-	LastLoginAt                  NullableString            `json:"lastLoginAt,omitempty"`
-	BoundProjects                []ProjectDto              `json:"boundProjects,omitempty"`
-	Partner                      *PartnerDetailsForUserDto `json:"partner,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	HasCustomerId *bool `json:"hasCustomerId,omitempty"`
+	HasPaymentMethod *bool `json:"hasPaymentMethod,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	Role *UserRole `json:"role,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	DisplayName NullableString `json:"displayName,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	IsEmailConfirmed *bool `json:"isEmailConfirmed,omitempty"`
+	IsEmailNotificationEnabled *bool `json:"isEmailNotificationEnabled,omitempty"`
+	IsForcedToResetPassword *bool `json:"isForcedToResetPassword,omitempty"`
+	IsCsm *bool `json:"isCsm,omitempty"`
+	IsEligibleUpdateSubscription *bool `json:"isEligibleUpdateSubscription,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	IsApprovedByPartner *bool `json:"isApprovedByPartner,omitempty"`
+	Owner *bool `json:"owner,omitempty"`
+	IsReadOnly *bool `json:"isReadOnly,omitempty"`
+	HasRepo *bool `json:"hasRepo,omitempty"`
+	DemoModeEnabled *bool `json:"demoModeEnabled,omitempty"`
+	IsNewOrganization *bool `json:"isNewOrganization,omitempty"`
+	LastLoginAt NullableString `json:"lastLoginAt,omitempty"`
+	BoundProjects []ProjectDto `json:"boundProjects,omitempty"`
+	Partner *PartnerDetailsForUserDto `json:"partner,omitempty"`
 }
 
 // NewUserForListDto instantiates a new UserForListDto object
@@ -96,7 +96,6 @@ func (o *UserForListDto) HasId() bool {
 func (o *UserForListDto) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *UserForListDto) SetIdNil() {
 	o.Id.Set(nil)
@@ -139,7 +138,6 @@ func (o *UserForListDto) HasUsername() bool {
 func (o *UserForListDto) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *UserForListDto) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -182,7 +180,6 @@ func (o *UserForListDto) HasOrganizationName() bool {
 func (o *UserForListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *UserForListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -353,7 +350,6 @@ func (o *UserForListDto) HasEmail() bool {
 func (o *UserForListDto) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *UserForListDto) SetEmailNil() {
 	o.Email.Set(nil)
@@ -396,7 +392,6 @@ func (o *UserForListDto) HasDisplayName() bool {
 func (o *UserForListDto) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
-
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *UserForListDto) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -439,7 +434,6 @@ func (o *UserForListDto) HasCreatedAt() bool {
 func (o *UserForListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *UserForListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -866,7 +860,6 @@ func (o *UserForListDto) HasLastLoginAt() bool {
 func (o *UserForListDto) SetLastLoginAt(v string) {
 	o.LastLoginAt.Set(&v)
 }
-
 // SetLastLoginAtNil sets the value for LastLoginAt to be an explicit nil
 func (o *UserForListDto) SetLastLoginAtNil() {
 	o.LastLoginAt.Set(nil)
@@ -943,7 +936,7 @@ func (o *UserForListDto) SetPartner(v PartnerDetailsForUserDto) {
 }
 
 func (o UserForListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1065,3 +1058,5 @@ func (v *NullableUserForListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

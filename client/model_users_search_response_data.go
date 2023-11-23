@@ -20,11 +20,11 @@ var _ MappedNullable = &UsersSearchResponseData{}
 
 // UsersSearchResponseData struct for UsersSearchResponseData
 type UsersSearchResponseData struct {
-	Id               NullableString `json:"id,omitempty"`
-	Name             NullableString `json:"name,omitempty"`
-	OrganizationId   NullableInt32  `json:"organizationId,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
-	Email            NullableString `json:"email,omitempty"`
+	Email NullableString `json:"email,omitempty"`
 }
 
 // NewUsersSearchResponseData instantiates a new UsersSearchResponseData object
@@ -76,7 +76,6 @@ func (o *UsersSearchResponseData) HasId() bool {
 func (o *UsersSearchResponseData) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *UsersSearchResponseData) SetIdNil() {
 	o.Id.Set(nil)
@@ -119,7 +118,6 @@ func (o *UsersSearchResponseData) HasName() bool {
 func (o *UsersSearchResponseData) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UsersSearchResponseData) SetNameNil() {
 	o.Name.Set(nil)
@@ -162,7 +160,6 @@ func (o *UsersSearchResponseData) HasOrganizationId() bool {
 func (o *UsersSearchResponseData) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *UsersSearchResponseData) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -205,7 +202,6 @@ func (o *UsersSearchResponseData) HasOrganizationName() bool {
 func (o *UsersSearchResponseData) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *UsersSearchResponseData) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -248,7 +244,6 @@ func (o *UsersSearchResponseData) HasEmail() bool {
 func (o *UsersSearchResponseData) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *UsersSearchResponseData) SetEmailNil() {
 	o.Email.Set(nil)
@@ -260,7 +255,7 @@ func (o *UsersSearchResponseData) UnsetEmail() {
 }
 
 func (o UsersSearchResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -322,3 +317,5 @@ func (v *NullableUsersSearchResponseData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

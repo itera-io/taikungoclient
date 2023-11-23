@@ -20,20 +20,20 @@ var _ MappedNullable = &OpenstackNetworkDto{}
 
 // OpenstackNetworkDto struct for OpenstackNetworkDto
 type OpenstackNetworkDto struct {
-	NetworkLimit           *int64 `json:"networkLimit,omitempty"`
-	SubnetLimit            *int64 `json:"subnetLimit,omitempty"`
-	FloatingIpLimit        *int64 `json:"floatingIpLimit,omitempty"`
-	RouterLimit            *int64 `json:"routerLimit,omitempty"`
-	SecurityGroupLimit     *int64 `json:"securityGroupLimit,omitempty"`
+	NetworkLimit *int64 `json:"networkLimit,omitempty"`
+	SubnetLimit *int64 `json:"subnetLimit,omitempty"`
+	FloatingIpLimit *int64 `json:"floatingIpLimit,omitempty"`
+	RouterLimit *int64 `json:"routerLimit,omitempty"`
+	SecurityGroupLimit *int64 `json:"securityGroupLimit,omitempty"`
 	SecurityGroupRuleLimit *int64 `json:"securityGroupRuleLimit,omitempty"`
-	PortLimit              *int64 `json:"portLimit,omitempty"`
-	NetworkUsed            *int64 `json:"networkUsed,omitempty"`
-	SubnetUsed             *int64 `json:"subnetUsed,omitempty"`
-	FloatingIpUsed         *int64 `json:"floatingIpUsed,omitempty"`
-	RouterUsed             *int64 `json:"routerUsed,omitempty"`
-	SecurityGroupUsed      *int64 `json:"securityGroupUsed,omitempty"`
-	PortUsed               *int64 `json:"portUsed,omitempty"`
-	SecurityGroupRuleUsed  *int64 `json:"securityGroupRuleUsed,omitempty"`
+	PortLimit *int64 `json:"portLimit,omitempty"`
+	NetworkUsed *int64 `json:"networkUsed,omitempty"`
+	SubnetUsed *int64 `json:"subnetUsed,omitempty"`
+	FloatingIpUsed *int64 `json:"floatingIpUsed,omitempty"`
+	RouterUsed *int64 `json:"routerUsed,omitempty"`
+	SecurityGroupUsed *int64 `json:"securityGroupUsed,omitempty"`
+	PortUsed *int64 `json:"portUsed,omitempty"`
+	SecurityGroupRuleUsed *int64 `json:"securityGroupRuleUsed,omitempty"`
 }
 
 // NewOpenstackNetworkDto instantiates a new OpenstackNetworkDto object
@@ -502,7 +502,7 @@ func (o *OpenstackNetworkDto) SetSecurityGroupRuleUsed(v int64) {
 }
 
 func (o OpenstackNetworkDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -591,3 +591,5 @@ func (v *NullableOpenstackNetworkDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

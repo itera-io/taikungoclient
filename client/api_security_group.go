@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // SecurityGroupAPIService SecurityGroupAPI service
 type SecurityGroupAPIService service
 
 type ApiSecuritygroupCreateRequest struct {
-	ctx                        context.Context
-	ApiService                 *SecurityGroupAPIService
+	ctx context.Context
+	ApiService *SecurityGroupAPIService
 	createSecurityGroupCommand *CreateSecurityGroupCommand
 }
 
@@ -41,25 +42,24 @@ func (r ApiSecuritygroupCreateRequest) Execute() (*ApiResponse, *http.Response, 
 /*
 SecuritygroupCreate Create standalonealone profile security group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSecuritygroupCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSecuritygroupCreateRequest
 */
 func (a *SecurityGroupAPIService) SecuritygroupCreate(ctx context.Context) ApiSecuritygroupCreateRequest {
 	return ApiSecuritygroupCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *SecurityGroupAPIService) SecuritygroupCreateExecute(r ApiSecuritygroupCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecurityGroupAPIService.SecuritygroupCreate")
@@ -135,8 +135,8 @@ func (a *SecurityGroupAPIService) SecuritygroupCreateExecute(r ApiSecuritygroupC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *SecurityGroupAPIService) SecuritygroupCreateExecute(r ApiSecuritygroupC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *SecurityGroupAPIService) SecuritygroupCreateExecute(r ApiSecuritygroupC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *SecurityGroupAPIService) SecuritygroupCreateExecute(r ApiSecuritygroupC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -179,8 +179,8 @@ func (a *SecurityGroupAPIService) SecuritygroupCreateExecute(r ApiSecuritygroupC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -198,9 +198,9 @@ func (a *SecurityGroupAPIService) SecuritygroupCreateExecute(r ApiSecuritygroupC
 }
 
 type ApiSecuritygroupDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SecurityGroupAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiSecuritygroupDeleteRequest) Execute() (*http.Response, error) {
@@ -210,24 +210,24 @@ func (r ApiSecuritygroupDeleteRequest) Execute() (*http.Response, error) {
 /*
 SecuritygroupDelete Delete standalone profile security group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiSecuritygroupDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiSecuritygroupDeleteRequest
 */
 func (a *SecurityGroupAPIService) SecuritygroupDelete(ctx context.Context, id int32) ApiSecuritygroupDeleteRequest {
 	return ApiSecuritygroupDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *SecurityGroupAPIService) SecuritygroupDeleteExecute(r ApiSecuritygroupDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecurityGroupAPIService.SecuritygroupDelete")
@@ -302,8 +302,8 @@ func (a *SecurityGroupAPIService) SecuritygroupDeleteExecute(r ApiSecuritygroupD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -313,8 +313,8 @@ func (a *SecurityGroupAPIService) SecuritygroupDeleteExecute(r ApiSecuritygroupD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -324,8 +324,8 @@ func (a *SecurityGroupAPIService) SecuritygroupDeleteExecute(r ApiSecuritygroupD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -335,8 +335,8 @@ func (a *SecurityGroupAPIService) SecuritygroupDeleteExecute(r ApiSecuritygroupD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -346,8 +346,8 @@ func (a *SecurityGroupAPIService) SecuritygroupDeleteExecute(r ApiSecuritygroupD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -356,8 +356,8 @@ func (a *SecurityGroupAPIService) SecuritygroupDeleteExecute(r ApiSecuritygroupD
 }
 
 type ApiSecuritygroupEditRequest struct {
-	ctx                      context.Context
-	ApiService               *SecurityGroupAPIService
+	ctx context.Context
+	ApiService *SecurityGroupAPIService
 	editSecurityGroupCommand *EditSecurityGroupCommand
 }
 
@@ -373,22 +373,22 @@ func (r ApiSecuritygroupEditRequest) Execute() (*http.Response, error) {
 /*
 SecuritygroupEdit Edit standalone profile security group
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSecuritygroupEditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSecuritygroupEditRequest
 */
 func (a *SecurityGroupAPIService) SecuritygroupEdit(ctx context.Context) ApiSecuritygroupEditRequest {
 	return ApiSecuritygroupEditRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *SecurityGroupAPIService) SecuritygroupEditExecute(r ApiSecuritygroupEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecurityGroupAPIService.SecuritygroupEdit")
@@ -464,8 +464,8 @@ func (a *SecurityGroupAPIService) SecuritygroupEditExecute(r ApiSecuritygroupEdi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -475,8 +475,8 @@ func (a *SecurityGroupAPIService) SecuritygroupEditExecute(r ApiSecuritygroupEdi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -486,8 +486,8 @@ func (a *SecurityGroupAPIService) SecuritygroupEditExecute(r ApiSecuritygroupEdi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -497,8 +497,8 @@ func (a *SecurityGroupAPIService) SecuritygroupEditExecute(r ApiSecuritygroupEdi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -508,8 +508,8 @@ func (a *SecurityGroupAPIService) SecuritygroupEditExecute(r ApiSecuritygroupEdi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -518,8 +518,8 @@ func (a *SecurityGroupAPIService) SecuritygroupEditExecute(r ApiSecuritygroupEdi
 }
 
 type ApiSecuritygroupListRequest struct {
-	ctx                 context.Context
-	ApiService          *SecurityGroupAPIService
+	ctx context.Context
+	ApiService *SecurityGroupAPIService
 	standAloneProfileId int32
 }
 
@@ -530,27 +530,26 @@ func (r ApiSecuritygroupListRequest) Execute() ([]SecurityGroupListDto, *http.Re
 /*
 SecuritygroupList List stand alone security group by profile id
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param standAloneProfileId
-	@return ApiSecuritygroupListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param standAloneProfileId
+ @return ApiSecuritygroupListRequest
 */
 func (a *SecurityGroupAPIService) SecuritygroupList(ctx context.Context, standAloneProfileId int32) ApiSecuritygroupListRequest {
 	return ApiSecuritygroupListRequest{
-		ApiService:          a,
-		ctx:                 ctx,
+		ApiService: a,
+		ctx: ctx,
 		standAloneProfileId: standAloneProfileId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []SecurityGroupListDto
+//  @return []SecurityGroupListDto
 func (a *SecurityGroupAPIService) SecuritygroupListExecute(r ApiSecuritygroupListRequest) ([]SecurityGroupListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []SecurityGroupListDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []SecurityGroupListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecurityGroupAPIService.SecuritygroupList")
@@ -625,8 +624,8 @@ func (a *SecurityGroupAPIService) SecuritygroupListExecute(r ApiSecuritygroupLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -636,8 +635,8 @@ func (a *SecurityGroupAPIService) SecuritygroupListExecute(r ApiSecuritygroupLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -647,8 +646,8 @@ func (a *SecurityGroupAPIService) SecuritygroupListExecute(r ApiSecuritygroupLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -658,8 +657,8 @@ func (a *SecurityGroupAPIService) SecuritygroupListExecute(r ApiSecuritygroupLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -669,8 +668,8 @@ func (a *SecurityGroupAPIService) SecuritygroupListExecute(r ApiSecuritygroupLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

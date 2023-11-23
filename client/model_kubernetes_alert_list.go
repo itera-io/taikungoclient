@@ -20,8 +20,8 @@ var _ MappedNullable = &KubernetesAlertList{}
 
 // KubernetesAlertList struct for KubernetesAlertList
 type KubernetesAlertList struct {
-	Data       []KubernetesAlertDto `json:"data,omitempty"`
-	TotalCount *int32               `json:"totalCount,omitempty"`
+	Data []KubernetesAlertDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewKubernetesAlertList instantiates a new KubernetesAlertList object
@@ -107,7 +107,7 @@ func (o *KubernetesAlertList) SetTotalCount(v int32) {
 }
 
 func (o KubernetesAlertList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableKubernetesAlertList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

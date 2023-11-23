@@ -21,13 +21,13 @@ var _ MappedNullable = &PodListDto{}
 // PodListDto struct for PodListDto
 type PodListDto struct {
 	MetadataName NullableString `json:"metadataName,omitempty"`
-	RestartCount *int32         `json:"restartCount,omitempty"`
-	Namespace    NullableString `json:"namespace,omitempty"`
-	Node         NullableString `json:"node,omitempty"`
-	Age          NullableString `json:"age,omitempty"`
-	Status       NullableString `json:"status,omitempty"`
-	Phase        NullableString `json:"phase,omitempty"`
-	Container    []string       `json:"container,omitempty"`
+	RestartCount *int32 `json:"restartCount,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Node NullableString `json:"node,omitempty"`
+	Age NullableString `json:"age,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Phase NullableString `json:"phase,omitempty"`
+	Container []string `json:"container,omitempty"`
 }
 
 // NewPodListDto instantiates a new PodListDto object
@@ -79,7 +79,6 @@ func (o *PodListDto) HasMetadataName() bool {
 func (o *PodListDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *PodListDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -154,7 +153,6 @@ func (o *PodListDto) HasNamespace() bool {
 func (o *PodListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *PodListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -197,7 +195,6 @@ func (o *PodListDto) HasNode() bool {
 func (o *PodListDto) SetNode(v string) {
 	o.Node.Set(&v)
 }
-
 // SetNodeNil sets the value for Node to be an explicit nil
 func (o *PodListDto) SetNodeNil() {
 	o.Node.Set(nil)
@@ -240,7 +237,6 @@ func (o *PodListDto) HasAge() bool {
 func (o *PodListDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-
 // SetAgeNil sets the value for Age to be an explicit nil
 func (o *PodListDto) SetAgeNil() {
 	o.Age.Set(nil)
@@ -283,7 +279,6 @@ func (o *PodListDto) HasStatus() bool {
 func (o *PodListDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *PodListDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -326,7 +321,6 @@ func (o *PodListDto) HasPhase() bool {
 func (o *PodListDto) SetPhase(v string) {
 	o.Phase.Set(&v)
 }
-
 // SetPhaseNil sets the value for Phase to be an explicit nil
 func (o *PodListDto) SetPhaseNil() {
 	o.Phase.Set(nil)
@@ -371,7 +365,7 @@ func (o *PodListDto) SetContainer(v []string) {
 }
 
 func (o PodListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -442,3 +436,5 @@ func (v *NullablePodListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,8 +20,8 @@ var _ MappedNullable = &AvailableEndpointsList{}
 
 // AvailableEndpointsList struct for AvailableEndpointsList
 type AvailableEndpointsList struct {
-	Data       []EndpointElements `json:"data,omitempty"`
-	TotalCount *int32             `json:"totalCount,omitempty"`
+	Data []EndpointElements `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewAvailableEndpointsList instantiates a new AvailableEndpointsList object
@@ -107,7 +107,7 @@ func (o *AvailableEndpointsList) SetTotalCount(v int32) {
 }
 
 func (o AvailableEndpointsList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableAvailableEndpointsList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

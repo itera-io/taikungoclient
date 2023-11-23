@@ -20,26 +20,26 @@ var _ MappedNullable = &BoundFlavorsForProjectsListDto{}
 
 // BoundFlavorsForProjectsListDto struct for BoundFlavorsForProjectsListDto
 type BoundFlavorsForProjectsListDto struct {
-	Id                     *int32         `json:"id,omitempty"`
-	Name                   NullableString `json:"name,omitempty"`
-	Cpu                    *int32         `json:"cpu,omitempty"`
-	Ram                    *int64         `json:"ram,omitempty"`
-	ProjectId              NullableInt32  `json:"projectId,omitempty"`
-	IsAzure                *bool          `json:"isAzure,omitempty"`
-	IsAws                  *bool          `json:"isAws,omitempty"`
-	IsOpenstack            *bool          `json:"isOpenstack,omitempty"`
-	IsGoogle               *bool          `json:"isGoogle,omitempty"`
-	IsProxmox              *bool          `json:"isProxmox,omitempty"`
-	IsTanzu                *bool          `json:"isTanzu,omitempty"`
-	IsOpenshift            *bool          `json:"isOpenshift,omitempty"`
-	ProjectName            NullableString `json:"projectName,omitempty"`
-	MaxDataDiskCount       NullableInt32  `json:"maxDataDiskCount,omitempty"`
-	ExistsLinuxSpotPrice   *bool          `json:"existsLinuxSpotPrice,omitempty"`
-	ExistsWindowsSpotPrice *bool          `json:"existsWindowsSpotPrice,omitempty"`
-	LinuxSpotPrice         NullableString `json:"linuxSpotPrice,omitempty"`
-	LinuxPrice             NullableString `json:"linuxPrice,omitempty"`
-	WindowsSpotPrice       NullableString `json:"windowsSpotPrice,omitempty"`
-	WindowsPrice           NullableString `json:"windowsPrice,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
+	Ram *int64 `json:"ram,omitempty"`
+	ProjectId NullableInt32 `json:"projectId,omitempty"`
+	IsAzure *bool `json:"isAzure,omitempty"`
+	IsAws *bool `json:"isAws,omitempty"`
+	IsOpenstack *bool `json:"isOpenstack,omitempty"`
+	IsGoogle *bool `json:"isGoogle,omitempty"`
+	IsProxmox *bool `json:"isProxmox,omitempty"`
+	IsTanzu *bool `json:"isTanzu,omitempty"`
+	IsOpenshift *bool `json:"isOpenshift,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	MaxDataDiskCount NullableInt32 `json:"maxDataDiskCount,omitempty"`
+	ExistsLinuxSpotPrice *bool `json:"existsLinuxSpotPrice,omitempty"`
+	ExistsWindowsSpotPrice *bool `json:"existsWindowsSpotPrice,omitempty"`
+	LinuxSpotPrice NullableString `json:"linuxSpotPrice,omitempty"`
+	LinuxPrice NullableString `json:"linuxPrice,omitempty"`
+	WindowsSpotPrice NullableString `json:"windowsSpotPrice,omitempty"`
+	WindowsPrice NullableString `json:"windowsPrice,omitempty"`
 }
 
 // NewBoundFlavorsForProjectsListDto instantiates a new BoundFlavorsForProjectsListDto object
@@ -123,7 +123,6 @@ func (o *BoundFlavorsForProjectsListDto) HasName() bool {
 func (o *BoundFlavorsForProjectsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *BoundFlavorsForProjectsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -230,7 +229,6 @@ func (o *BoundFlavorsForProjectsListDto) HasProjectId() bool {
 func (o *BoundFlavorsForProjectsListDto) SetProjectId(v int32) {
 	o.ProjectId.Set(&v)
 }
-
 // SetProjectIdNil sets the value for ProjectId to be an explicit nil
 func (o *BoundFlavorsForProjectsListDto) SetProjectIdNil() {
 	o.ProjectId.Set(nil)
@@ -497,7 +495,6 @@ func (o *BoundFlavorsForProjectsListDto) HasProjectName() bool {
 func (o *BoundFlavorsForProjectsListDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *BoundFlavorsForProjectsListDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -540,7 +537,6 @@ func (o *BoundFlavorsForProjectsListDto) HasMaxDataDiskCount() bool {
 func (o *BoundFlavorsForProjectsListDto) SetMaxDataDiskCount(v int32) {
 	o.MaxDataDiskCount.Set(&v)
 }
-
 // SetMaxDataDiskCountNil sets the value for MaxDataDiskCount to be an explicit nil
 func (o *BoundFlavorsForProjectsListDto) SetMaxDataDiskCountNil() {
 	o.MaxDataDiskCount.Set(nil)
@@ -647,7 +643,6 @@ func (o *BoundFlavorsForProjectsListDto) HasLinuxSpotPrice() bool {
 func (o *BoundFlavorsForProjectsListDto) SetLinuxSpotPrice(v string) {
 	o.LinuxSpotPrice.Set(&v)
 }
-
 // SetLinuxSpotPriceNil sets the value for LinuxSpotPrice to be an explicit nil
 func (o *BoundFlavorsForProjectsListDto) SetLinuxSpotPriceNil() {
 	o.LinuxSpotPrice.Set(nil)
@@ -690,7 +685,6 @@ func (o *BoundFlavorsForProjectsListDto) HasLinuxPrice() bool {
 func (o *BoundFlavorsForProjectsListDto) SetLinuxPrice(v string) {
 	o.LinuxPrice.Set(&v)
 }
-
 // SetLinuxPriceNil sets the value for LinuxPrice to be an explicit nil
 func (o *BoundFlavorsForProjectsListDto) SetLinuxPriceNil() {
 	o.LinuxPrice.Set(nil)
@@ -733,7 +727,6 @@ func (o *BoundFlavorsForProjectsListDto) HasWindowsSpotPrice() bool {
 func (o *BoundFlavorsForProjectsListDto) SetWindowsSpotPrice(v string) {
 	o.WindowsSpotPrice.Set(&v)
 }
-
 // SetWindowsSpotPriceNil sets the value for WindowsSpotPrice to be an explicit nil
 func (o *BoundFlavorsForProjectsListDto) SetWindowsSpotPriceNil() {
 	o.WindowsSpotPrice.Set(nil)
@@ -776,7 +769,6 @@ func (o *BoundFlavorsForProjectsListDto) HasWindowsPrice() bool {
 func (o *BoundFlavorsForProjectsListDto) SetWindowsPrice(v string) {
 	o.WindowsPrice.Set(&v)
 }
-
 // SetWindowsPriceNil sets the value for WindowsPrice to be an explicit nil
 func (o *BoundFlavorsForProjectsListDto) SetWindowsPriceNil() {
 	o.WindowsPrice.Set(nil)
@@ -788,7 +780,7 @@ func (o *BoundFlavorsForProjectsListDto) UnsetWindowsPrice() {
 }
 
 func (o BoundFlavorsForProjectsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -895,3 +887,5 @@ func (v *NullableBoundFlavorsForProjectsListDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_CatalogAppAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_CatalogAppAPIService(t *testing.T) {
 
 	t.Run("Test CatalogAppAPIService CatalogAppCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.CatalogAppAPI.CatalogAppCreate(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_CatalogAppAPIService(t *testing.T) {
 
 	t.Run("Test CatalogAppAPIService CatalogAppDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -48,7 +48,7 @@ func Test_taikuncore_CatalogAppAPIService(t *testing.T) {
 
 	t.Run("Test CatalogAppAPIService CatalogAppDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var catalogAppId int32
 
@@ -62,7 +62,7 @@ func Test_taikuncore_CatalogAppAPIService(t *testing.T) {
 
 	t.Run("Test CatalogAppAPIService CatalogAppEditParams", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.CatalogAppAPI.CatalogAppEditParams(context.Background()).Execute()
 
@@ -73,7 +73,7 @@ func Test_taikuncore_CatalogAppAPIService(t *testing.T) {
 
 	t.Run("Test CatalogAppAPIService CatalogAppEditVersion", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.CatalogAppAPI.CatalogAppEditVersion(context.Background()).Execute()
 
@@ -84,7 +84,7 @@ func Test_taikuncore_CatalogAppAPIService(t *testing.T) {
 
 	t.Run("Test CatalogAppAPIService CatalogAppLockManager", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.CatalogAppAPI.CatalogAppLockManager(context.Background()).Execute()
 
@@ -95,7 +95,7 @@ func Test_taikuncore_CatalogAppAPIService(t *testing.T) {
 
 	t.Run("Test CatalogAppAPIService CatalogAppParamDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var catalogAppId int32
 

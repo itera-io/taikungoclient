@@ -20,8 +20,8 @@ var _ MappedNullable = &AzResult{}
 
 // AzResult struct for AzResult
 type AzResult struct {
-	List       []string `json:"list,omitempty"`
-	TotalCount *int32   `json:"totalCount,omitempty"`
+	List []string `json:"list,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewAzResult instantiates a new AzResult object
@@ -107,7 +107,7 @@ func (o *AzResult) SetTotalCount(v int32) {
 }
 
 func (o AzResult) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableAzResult) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

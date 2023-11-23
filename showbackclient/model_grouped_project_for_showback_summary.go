@@ -20,10 +20,10 @@ var _ MappedNullable = &GroupedProjectForShowbackSummary{}
 
 // GroupedProjectForShowbackSummary struct for GroupedProjectForShowbackSummary
 type GroupedProjectForShowbackSummary struct {
-	Id         NullableInt32  `json:"id,omitempty"`
-	Name       NullableString `json:"name,omitempty"`
-	TotalPrice *float64       `json:"totalPrice,omitempty"`
-	IsDeleted  NullableBool   `json:"isDeleted,omitempty"`
+	Id NullableInt32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	TotalPrice *float64 `json:"totalPrice,omitempty"`
+	IsDeleted NullableBool `json:"isDeleted,omitempty"`
 }
 
 // NewGroupedProjectForShowbackSummary instantiates a new GroupedProjectForShowbackSummary object
@@ -75,7 +75,6 @@ func (o *GroupedProjectForShowbackSummary) HasId() bool {
 func (o *GroupedProjectForShowbackSummary) SetId(v int32) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *GroupedProjectForShowbackSummary) SetIdNil() {
 	o.Id.Set(nil)
@@ -118,7 +117,6 @@ func (o *GroupedProjectForShowbackSummary) HasName() bool {
 func (o *GroupedProjectForShowbackSummary) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GroupedProjectForShowbackSummary) SetNameNil() {
 	o.Name.Set(nil)
@@ -193,7 +191,6 @@ func (o *GroupedProjectForShowbackSummary) HasIsDeleted() bool {
 func (o *GroupedProjectForShowbackSummary) SetIsDeleted(v bool) {
 	o.IsDeleted.Set(&v)
 }
-
 // SetIsDeletedNil sets the value for IsDeleted to be an explicit nil
 func (o *GroupedProjectForShowbackSummary) SetIsDeletedNil() {
 	o.IsDeleted.Set(nil)
@@ -205,7 +202,7 @@ func (o *GroupedProjectForShowbackSummary) UnsetIsDeleted() {
 }
 
 func (o GroupedProjectForShowbackSummary) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,3 +261,5 @@ func (v *NullableGroupedProjectForShowbackSummary) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

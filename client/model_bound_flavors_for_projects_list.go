@@ -20,8 +20,8 @@ var _ MappedNullable = &BoundFlavorsForProjectsList{}
 
 // BoundFlavorsForProjectsList struct for BoundFlavorsForProjectsList
 type BoundFlavorsForProjectsList struct {
-	Data       []BoundFlavorsForProjectsListDto `json:"data,omitempty"`
-	TotalCount *int32                           `json:"totalCount,omitempty"`
+	Data []BoundFlavorsForProjectsListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewBoundFlavorsForProjectsList instantiates a new BoundFlavorsForProjectsList object
@@ -107,7 +107,7 @@ func (o *BoundFlavorsForProjectsList) SetTotalCount(v int32) {
 }
 
 func (o BoundFlavorsForProjectsList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableBoundFlavorsForProjectsList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,11 +21,11 @@ var _ MappedNullable = &UserTokenCreateCommand{}
 
 // UserTokenCreateCommand struct for UserTokenCreateCommand
 type UserTokenCreateCommand struct {
-	ExpireDate NullableTime            `json:"expireDate,omitempty"`
-	IsReadonly *bool                   `json:"isReadonly,omitempty"`
-	Name       NullableString          `json:"name,omitempty"`
-	Endpoints  []AvailableEndpointData `json:"endpoints,omitempty"`
-	BindALL    *bool                   `json:"bindALL,omitempty"`
+	ExpireDate NullableTime `json:"expireDate,omitempty"`
+	IsReadonly *bool `json:"isReadonly,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Endpoints []AvailableEndpointData `json:"endpoints,omitempty"`
+	BindALL *bool `json:"bindALL,omitempty"`
 }
 
 // NewUserTokenCreateCommand instantiates a new UserTokenCreateCommand object
@@ -77,7 +77,6 @@ func (o *UserTokenCreateCommand) HasExpireDate() bool {
 func (o *UserTokenCreateCommand) SetExpireDate(v time.Time) {
 	o.ExpireDate.Set(&v)
 }
-
 // SetExpireDateNil sets the value for ExpireDate to be an explicit nil
 func (o *UserTokenCreateCommand) SetExpireDateNil() {
 	o.ExpireDate.Set(nil)
@@ -152,7 +151,6 @@ func (o *UserTokenCreateCommand) HasName() bool {
 func (o *UserTokenCreateCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UserTokenCreateCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -229,7 +227,7 @@ func (o *UserTokenCreateCommand) SetBindALL(v bool) {
 }
 
 func (o UserTokenCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -291,3 +289,5 @@ func (v *NullableUserTokenCreateCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

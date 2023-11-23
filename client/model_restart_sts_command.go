@@ -20,8 +20,8 @@ var _ MappedNullable = &RestartStsCommand{}
 
 // RestartStsCommand struct for RestartStsCommand
 type RestartStsCommand struct {
-	ProjectId *int32         `json:"projectId,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
 }
 
@@ -106,7 +106,6 @@ func (o *RestartStsCommand) HasName() bool {
 func (o *RestartStsCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *RestartStsCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -149,7 +148,6 @@ func (o *RestartStsCommand) HasNamespace() bool {
 func (o *RestartStsCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *RestartStsCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -161,7 +159,7 @@ func (o *RestartStsCommand) UnsetNamespace() {
 }
 
 func (o RestartStsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullableRestartStsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

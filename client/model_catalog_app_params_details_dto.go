@@ -20,14 +20,14 @@ var _ MappedNullable = &CatalogAppParamsDetailsDto{}
 
 // CatalogAppParamsDetailsDto struct for CatalogAppParamsDetailsDto
 type CatalogAppParamsDetailsDto struct {
-	Id                          *int32         `json:"id,omitempty"`
-	CatalogAppName              NullableString `json:"catalogAppName,omitempty"`
-	Key                         NullableString `json:"key,omitempty"`
-	Value                       NullableString `json:"value,omitempty"`
-	IsEditableWhenInstalling    *bool          `json:"isEditableWhenInstalling,omitempty"`
-	IsEditableAfterInstallation *bool          `json:"isEditableAfterInstallation,omitempty"`
-	IsMandatory                 *bool          `json:"isMandatory,omitempty"`
-	HasJsonSchema               *bool          `json:"hasJsonSchema,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	CatalogAppName NullableString `json:"catalogAppName,omitempty"`
+	Key NullableString `json:"key,omitempty"`
+	Value NullableString `json:"value,omitempty"`
+	IsEditableWhenInstalling *bool `json:"isEditableWhenInstalling,omitempty"`
+	IsEditableAfterInstallation *bool `json:"isEditableAfterInstallation,omitempty"`
+	IsMandatory *bool `json:"isMandatory,omitempty"`
+	HasJsonSchema *bool `json:"hasJsonSchema,omitempty"`
 }
 
 // NewCatalogAppParamsDetailsDto instantiates a new CatalogAppParamsDetailsDto object
@@ -111,7 +111,6 @@ func (o *CatalogAppParamsDetailsDto) HasCatalogAppName() bool {
 func (o *CatalogAppParamsDetailsDto) SetCatalogAppName(v string) {
 	o.CatalogAppName.Set(&v)
 }
-
 // SetCatalogAppNameNil sets the value for CatalogAppName to be an explicit nil
 func (o *CatalogAppParamsDetailsDto) SetCatalogAppNameNil() {
 	o.CatalogAppName.Set(nil)
@@ -154,7 +153,6 @@ func (o *CatalogAppParamsDetailsDto) HasKey() bool {
 func (o *CatalogAppParamsDetailsDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
-
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *CatalogAppParamsDetailsDto) SetKeyNil() {
 	o.Key.Set(nil)
@@ -197,7 +195,6 @@ func (o *CatalogAppParamsDetailsDto) HasValue() bool {
 func (o *CatalogAppParamsDetailsDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *CatalogAppParamsDetailsDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -337,7 +334,7 @@ func (o *CatalogAppParamsDetailsDto) SetHasJsonSchema(v bool) {
 }
 
 func (o CatalogAppParamsDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -408,3 +405,5 @@ func (v *NullableCatalogAppParamsDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

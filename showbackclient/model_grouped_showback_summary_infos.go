@@ -20,10 +20,10 @@ var _ MappedNullable = &GroupedShowbackSummaryInfos{}
 
 // GroupedShowbackSummaryInfos struct for GroupedShowbackSummaryInfos
 type GroupedShowbackSummaryInfos struct {
-	Data       []GroupedShowbackSummaries `json:"data,omitempty"`
-	Id         NullableInt32              `json:"id,omitempty"`
-	Name       NullableString             `json:"name,omitempty"`
-	TotalPrice NullableFloat64            `json:"totalPrice,omitempty"`
+	Data []GroupedShowbackSummaries `json:"data,omitempty"`
+	Id NullableInt32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	TotalPrice NullableFloat64 `json:"totalPrice,omitempty"`
 }
 
 // NewGroupedShowbackSummaryInfos instantiates a new GroupedShowbackSummaryInfos object
@@ -108,7 +108,6 @@ func (o *GroupedShowbackSummaryInfos) HasId() bool {
 func (o *GroupedShowbackSummaryInfos) SetId(v int32) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *GroupedShowbackSummaryInfos) SetIdNil() {
 	o.Id.Set(nil)
@@ -151,7 +150,6 @@ func (o *GroupedShowbackSummaryInfos) HasName() bool {
 func (o *GroupedShowbackSummaryInfos) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GroupedShowbackSummaryInfos) SetNameNil() {
 	o.Name.Set(nil)
@@ -194,7 +192,6 @@ func (o *GroupedShowbackSummaryInfos) HasTotalPrice() bool {
 func (o *GroupedShowbackSummaryInfos) SetTotalPrice(v float64) {
 	o.TotalPrice.Set(&v)
 }
-
 // SetTotalPriceNil sets the value for TotalPrice to be an explicit nil
 func (o *GroupedShowbackSummaryInfos) SetTotalPriceNil() {
 	o.TotalPrice.Set(nil)
@@ -206,7 +203,7 @@ func (o *GroupedShowbackSummaryInfos) UnsetTotalPrice() {
 }
 
 func (o GroupedShowbackSummaryInfos) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -265,3 +262,5 @@ func (v *NullableGroupedShowbackSummaryInfos) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

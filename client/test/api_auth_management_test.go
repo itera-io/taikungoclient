@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_AuthManagementAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_AuthManagementAPIService(t *testing.T) {
 
 	t.Run("Test AuthManagementAPIService AuthForgotPassword", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AuthManagementAPI.AuthForgotPassword(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_AuthManagementAPIService(t *testing.T) {
 
 	t.Run("Test AuthManagementAPIService AuthLogin", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AuthManagementAPI.AuthLogin(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_AuthManagementAPIService(t *testing.T) {
 
 	t.Run("Test AuthManagementAPIService AuthRefresh", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AuthManagementAPI.AuthRefresh(context.Background()).Execute()
 
@@ -59,20 +59,9 @@ func Test_taikuncore_AuthManagementAPIService(t *testing.T) {
 
 	t.Run("Test AuthManagementAPIService AuthResetPassword", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AuthManagementAPI.AuthResetPassword(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test AuthManagementAPIService AuthTrial", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		httpRes, err := apiClient.AuthManagementAPI.AuthTrial(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

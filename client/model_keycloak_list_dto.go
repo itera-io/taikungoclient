@@ -20,16 +20,16 @@ var _ MappedNullable = &KeycloakListDto{}
 
 // KeycloakListDto struct for KeycloakListDto
 type KeycloakListDto struct {
-	Id               *int32         `json:"id,omitempty"`
-	Name             NullableString `json:"name,omitempty"`
-	Url              NullableString `json:"url,omitempty"`
-	ClientId         NullableString `json:"clientId,omitempty"`
-	ClientSecret     NullableString `json:"clientSecret,omitempty"`
-	RealmsName       NullableString `json:"realmsName,omitempty"`
-	OrganizationId   *int32         `json:"organizationId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	ClientId NullableString `json:"clientId,omitempty"`
+	ClientSecret NullableString `json:"clientSecret,omitempty"`
+	RealmsName NullableString `json:"realmsName,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
-	PartnerLogo      NullableString `json:"partnerLogo,omitempty"`
-	Enabled          *bool          `json:"enabled,omitempty"`
+	PartnerLogo NullableString `json:"partnerLogo,omitempty"`
+	Enabled *bool `json:"enabled,omitempty"`
 }
 
 // NewKeycloakListDto instantiates a new KeycloakListDto object
@@ -113,7 +113,6 @@ func (o *KeycloakListDto) HasName() bool {
 func (o *KeycloakListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *KeycloakListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -156,7 +155,6 @@ func (o *KeycloakListDto) HasUrl() bool {
 func (o *KeycloakListDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *KeycloakListDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -199,7 +197,6 @@ func (o *KeycloakListDto) HasClientId() bool {
 func (o *KeycloakListDto) SetClientId(v string) {
 	o.ClientId.Set(&v)
 }
-
 // SetClientIdNil sets the value for ClientId to be an explicit nil
 func (o *KeycloakListDto) SetClientIdNil() {
 	o.ClientId.Set(nil)
@@ -242,7 +239,6 @@ func (o *KeycloakListDto) HasClientSecret() bool {
 func (o *KeycloakListDto) SetClientSecret(v string) {
 	o.ClientSecret.Set(&v)
 }
-
 // SetClientSecretNil sets the value for ClientSecret to be an explicit nil
 func (o *KeycloakListDto) SetClientSecretNil() {
 	o.ClientSecret.Set(nil)
@@ -285,7 +281,6 @@ func (o *KeycloakListDto) HasRealmsName() bool {
 func (o *KeycloakListDto) SetRealmsName(v string) {
 	o.RealmsName.Set(&v)
 }
-
 // SetRealmsNameNil sets the value for RealmsName to be an explicit nil
 func (o *KeycloakListDto) SetRealmsNameNil() {
 	o.RealmsName.Set(nil)
@@ -360,7 +355,6 @@ func (o *KeycloakListDto) HasOrganizationName() bool {
 func (o *KeycloakListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *KeycloakListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -403,7 +397,6 @@ func (o *KeycloakListDto) HasPartnerLogo() bool {
 func (o *KeycloakListDto) SetPartnerLogo(v string) {
 	o.PartnerLogo.Set(&v)
 }
-
 // SetPartnerLogoNil sets the value for PartnerLogo to be an explicit nil
 func (o *KeycloakListDto) SetPartnerLogoNil() {
 	o.PartnerLogo.Set(nil)
@@ -447,7 +440,7 @@ func (o *KeycloakListDto) SetEnabled(v bool) {
 }
 
 func (o KeycloakListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -524,3 +517,5 @@ func (v *NullableKeycloakListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,24 +20,24 @@ var _ MappedNullable = &ProjectAppListDto{}
 
 // ProjectAppListDto struct for ProjectAppListDto
 type ProjectAppListDto struct {
-	Id             *int32         `json:"id,omitempty"`
-	Name           NullableString `json:"name,omitempty"`
-	Namespace      NullableString `json:"namespace,omitempty"`
-	Status         NullableString `json:"status,omitempty"`
-	Version        NullableString `json:"version,omitempty"`
-	CatalogId      *int32         `json:"catalogId,omitempty"`
-	CatalogName    NullableString `json:"catalogName,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Version NullableString `json:"version,omitempty"`
+	CatalogId *int32 `json:"catalogId,omitempty"`
+	CatalogName NullableString `json:"catalogName,omitempty"`
 	CatalogAppName NullableString `json:"catalogAppName,omitempty"`
-	CatalogAppId   *int32         `json:"catalogAppId,omitempty"`
-	AppRepoName    NullableString `json:"appRepoName,omitempty"`
-	Logo           NullableString `json:"logo,omitempty"`
-	AutoSync       *bool          `json:"autoSync,omitempty"`
-	Created        NullableString `json:"created,omitempty"`
-	CreatedBy      NullableString `json:"createdBy,omitempty"`
-	LastModified   NullableString `json:"lastModified,omitempty"`
+	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
+	AppRepoName NullableString `json:"appRepoName,omitempty"`
+	Logo NullableString `json:"logo,omitempty"`
+	AutoSync *bool `json:"autoSync,omitempty"`
+	Created NullableString `json:"created,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
 	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
-	ProjectId      *int32         `json:"projectId,omitempty"`
-	ProjectName    NullableString `json:"projectName,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
 }
 
 // NewProjectAppListDto instantiates a new ProjectAppListDto object
@@ -121,7 +121,6 @@ func (o *ProjectAppListDto) HasName() bool {
 func (o *ProjectAppListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectAppListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -164,7 +163,6 @@ func (o *ProjectAppListDto) HasNamespace() bool {
 func (o *ProjectAppListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *ProjectAppListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -207,7 +205,6 @@ func (o *ProjectAppListDto) HasStatus() bool {
 func (o *ProjectAppListDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *ProjectAppListDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -250,7 +247,6 @@ func (o *ProjectAppListDto) HasVersion() bool {
 func (o *ProjectAppListDto) SetVersion(v string) {
 	o.Version.Set(&v)
 }
-
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *ProjectAppListDto) SetVersionNil() {
 	o.Version.Set(nil)
@@ -325,7 +321,6 @@ func (o *ProjectAppListDto) HasCatalogName() bool {
 func (o *ProjectAppListDto) SetCatalogName(v string) {
 	o.CatalogName.Set(&v)
 }
-
 // SetCatalogNameNil sets the value for CatalogName to be an explicit nil
 func (o *ProjectAppListDto) SetCatalogNameNil() {
 	o.CatalogName.Set(nil)
@@ -368,7 +363,6 @@ func (o *ProjectAppListDto) HasCatalogAppName() bool {
 func (o *ProjectAppListDto) SetCatalogAppName(v string) {
 	o.CatalogAppName.Set(&v)
 }
-
 // SetCatalogAppNameNil sets the value for CatalogAppName to be an explicit nil
 func (o *ProjectAppListDto) SetCatalogAppNameNil() {
 	o.CatalogAppName.Set(nil)
@@ -443,7 +437,6 @@ func (o *ProjectAppListDto) HasAppRepoName() bool {
 func (o *ProjectAppListDto) SetAppRepoName(v string) {
 	o.AppRepoName.Set(&v)
 }
-
 // SetAppRepoNameNil sets the value for AppRepoName to be an explicit nil
 func (o *ProjectAppListDto) SetAppRepoNameNil() {
 	o.AppRepoName.Set(nil)
@@ -486,7 +479,6 @@ func (o *ProjectAppListDto) HasLogo() bool {
 func (o *ProjectAppListDto) SetLogo(v string) {
 	o.Logo.Set(&v)
 }
-
 // SetLogoNil sets the value for Logo to be an explicit nil
 func (o *ProjectAppListDto) SetLogoNil() {
 	o.Logo.Set(nil)
@@ -561,7 +553,6 @@ func (o *ProjectAppListDto) HasCreated() bool {
 func (o *ProjectAppListDto) SetCreated(v string) {
 	o.Created.Set(&v)
 }
-
 // SetCreatedNil sets the value for Created to be an explicit nil
 func (o *ProjectAppListDto) SetCreatedNil() {
 	o.Created.Set(nil)
@@ -604,7 +595,6 @@ func (o *ProjectAppListDto) HasCreatedBy() bool {
 func (o *ProjectAppListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ProjectAppListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -647,7 +637,6 @@ func (o *ProjectAppListDto) HasLastModified() bool {
 func (o *ProjectAppListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *ProjectAppListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -690,7 +679,6 @@ func (o *ProjectAppListDto) HasLastModifiedBy() bool {
 func (o *ProjectAppListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *ProjectAppListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -765,7 +753,6 @@ func (o *ProjectAppListDto) HasProjectName() bool {
 func (o *ProjectAppListDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *ProjectAppListDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -777,7 +764,7 @@ func (o *ProjectAppListDto) UnsetProjectName() {
 }
 
 func (o ProjectAppListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -878,3 +865,5 @@ func (v *NullableProjectAppListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

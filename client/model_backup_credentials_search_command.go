@@ -20,8 +20,8 @@ var _ MappedNullable = &BackupCredentialsSearchCommand{}
 
 // BackupCredentialsSearchCommand struct for BackupCredentialsSearchCommand
 type BackupCredentialsSearchCommand struct {
-	Limit      NullableInt32  `json:"limit,omitempty"`
-	Offset     NullableInt32  `json:"offset,omitempty"`
+	Limit NullableInt32 `json:"limit,omitempty"`
+	Offset NullableInt32 `json:"offset,omitempty"`
 	SearchTerm NullableString `json:"searchTerm,omitempty"`
 }
 
@@ -74,7 +74,6 @@ func (o *BackupCredentialsSearchCommand) HasLimit() bool {
 func (o *BackupCredentialsSearchCommand) SetLimit(v int32) {
 	o.Limit.Set(&v)
 }
-
 // SetLimitNil sets the value for Limit to be an explicit nil
 func (o *BackupCredentialsSearchCommand) SetLimitNil() {
 	o.Limit.Set(nil)
@@ -117,7 +116,6 @@ func (o *BackupCredentialsSearchCommand) HasOffset() bool {
 func (o *BackupCredentialsSearchCommand) SetOffset(v int32) {
 	o.Offset.Set(&v)
 }
-
 // SetOffsetNil sets the value for Offset to be an explicit nil
 func (o *BackupCredentialsSearchCommand) SetOffsetNil() {
 	o.Offset.Set(nil)
@@ -160,7 +158,6 @@ func (o *BackupCredentialsSearchCommand) HasSearchTerm() bool {
 func (o *BackupCredentialsSearchCommand) SetSearchTerm(v string) {
 	o.SearchTerm.Set(&v)
 }
-
 // SetSearchTermNil sets the value for SearchTerm to be an explicit nil
 func (o *BackupCredentialsSearchCommand) SetSearchTermNil() {
 	o.SearchTerm.Set(nil)
@@ -172,7 +169,7 @@ func (o *BackupCredentialsSearchCommand) UnsetSearchTerm() {
 }
 
 func (o BackupCredentialsSearchCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableBackupCredentialsSearchCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

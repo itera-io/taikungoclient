@@ -20,8 +20,8 @@ var _ MappedNullable = &ServiceSearchList{}
 
 // ServiceSearchList struct for ServiceSearchList
 type ServiceSearchList struct {
-	Data       []CommonSearchKubernetesResponseData `json:"data,omitempty"`
-	TotalCount *int32                               `json:"totalCount,omitempty"`
+	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewServiceSearchList instantiates a new ServiceSearchList object
@@ -107,7 +107,7 @@ func (o *ServiceSearchList) SetTotalCount(v int32) {
 }
 
 func (o ServiceSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableServiceSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

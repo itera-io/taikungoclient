@@ -20,29 +20,29 @@ var _ MappedNullable = &StandaloneVmListDto{}
 
 // StandaloneVmListDto struct for StandaloneVmListDto
 type StandaloneVmListDto struct {
-	Id                *int32                    `json:"id,omitempty"`
-	Name              NullableString            `json:"name,omitempty"`
-	FlavorId          NullableString            `json:"flavorId,omitempty"`
-	VolumeSize        *int64                    `json:"volumeSize,omitempty"`
-	OrganizationName  NullableString            `json:"organizationName,omitempty"`
-	OrganizationId    *int32                    `json:"organizationId,omitempty"`
-	Ram               *int64                    `json:"ram,omitempty"`
-	Cpu               *int32                    `json:"cpu,omitempty"`
-	VolumeType        NullableString            `json:"volumeType,omitempty"`
-	PublicIpEnabled   *bool                     `json:"publicIpEnabled,omitempty"`
-	PublicIp          NullableString            `json:"publicIp,omitempty"`
-	IpAddress         NullableString            `json:"ipAddress,omitempty"`
-	CloudType         *CloudType                `json:"cloudType,omitempty"`
-	ImageName         NullableString            `json:"imageName,omitempty"`
-	Revision          *int32                    `json:"revision,omitempty"`
-	IsWindows         *bool                     `json:"isWindows,omitempty"`
-	Status            *StandAloneVmStatus       `json:"status,omitempty"`
-	ProjectName       NullableString            `json:"projectName,omitempty"`
-	ProjectId         *int32                    `json:"projectId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	FlavorId NullableString `json:"flavorId,omitempty"`
+	VolumeSize *int64 `json:"volumeSize,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	Ram *int64 `json:"ram,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
+	VolumeType NullableString `json:"volumeType,omitempty"`
+	PublicIpEnabled *bool `json:"publicIpEnabled,omitempty"`
+	PublicIp NullableString `json:"publicIp,omitempty"`
+	IpAddress NullableString `json:"ipAddress,omitempty"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
+	ImageName NullableString `json:"imageName,omitempty"`
+	Revision *int32 `json:"revision,omitempty"`
+	IsWindows *bool `json:"isWindows,omitempty"`
+	Status *StandAloneVmStatus `json:"status,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
 	StandAloneProfile *StandaloneProfileListDto `json:"standAloneProfile,omitempty"`
-	CreatedAt         NullableString            `json:"createdAt,omitempty"`
-	CreatedBy         NullableString            `json:"createdBy,omitempty"`
-	LastModified      NullableString            `json:"lastModified,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
 }
 
 // NewStandaloneVmListDto instantiates a new StandaloneVmListDto object
@@ -126,7 +126,6 @@ func (o *StandaloneVmListDto) HasName() bool {
 func (o *StandaloneVmListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandaloneVmListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -169,7 +168,6 @@ func (o *StandaloneVmListDto) HasFlavorId() bool {
 func (o *StandaloneVmListDto) SetFlavorId(v string) {
 	o.FlavorId.Set(&v)
 }
-
 // SetFlavorIdNil sets the value for FlavorId to be an explicit nil
 func (o *StandaloneVmListDto) SetFlavorIdNil() {
 	o.FlavorId.Set(nil)
@@ -244,7 +242,6 @@ func (o *StandaloneVmListDto) HasOrganizationName() bool {
 func (o *StandaloneVmListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *StandaloneVmListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -383,7 +380,6 @@ func (o *StandaloneVmListDto) HasVolumeType() bool {
 func (o *StandaloneVmListDto) SetVolumeType(v string) {
 	o.VolumeType.Set(&v)
 }
-
 // SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
 func (o *StandaloneVmListDto) SetVolumeTypeNil() {
 	o.VolumeType.Set(nil)
@@ -458,7 +454,6 @@ func (o *StandaloneVmListDto) HasPublicIp() bool {
 func (o *StandaloneVmListDto) SetPublicIp(v string) {
 	o.PublicIp.Set(&v)
 }
-
 // SetPublicIpNil sets the value for PublicIp to be an explicit nil
 func (o *StandaloneVmListDto) SetPublicIpNil() {
 	o.PublicIp.Set(nil)
@@ -501,7 +496,6 @@ func (o *StandaloneVmListDto) HasIpAddress() bool {
 func (o *StandaloneVmListDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
-
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *StandaloneVmListDto) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -576,7 +570,6 @@ func (o *StandaloneVmListDto) HasImageName() bool {
 func (o *StandaloneVmListDto) SetImageName(v string) {
 	o.ImageName.Set(&v)
 }
-
 // SetImageNameNil sets the value for ImageName to be an explicit nil
 func (o *StandaloneVmListDto) SetImageNameNil() {
 	o.ImageName.Set(nil)
@@ -715,7 +708,6 @@ func (o *StandaloneVmListDto) HasProjectName() bool {
 func (o *StandaloneVmListDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *StandaloneVmListDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -822,7 +814,6 @@ func (o *StandaloneVmListDto) HasCreatedAt() bool {
 func (o *StandaloneVmListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *StandaloneVmListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -865,7 +856,6 @@ func (o *StandaloneVmListDto) HasCreatedBy() bool {
 func (o *StandaloneVmListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *StandaloneVmListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -908,7 +898,6 @@ func (o *StandaloneVmListDto) HasLastModified() bool {
 func (o *StandaloneVmListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *StandaloneVmListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -920,7 +909,7 @@ func (o *StandaloneVmListDto) UnsetLastModified() {
 }
 
 func (o StandaloneVmListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1036,3 +1025,5 @@ func (v *NullableStandaloneVmListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

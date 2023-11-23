@@ -20,8 +20,8 @@ var _ MappedNullable = &AlertingIntegrationDto{}
 
 // AlertingIntegrationDto struct for AlertingIntegrationDto
 type AlertingIntegrationDto struct {
-	Url                     NullableString           `json:"url,omitempty"`
-	Token                   NullableString           `json:"token,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Token NullableString `json:"token,omitempty"`
 	AlertingIntegrationType *AlertingIntegrationType `json:"alertingIntegrationType,omitempty"`
 }
 
@@ -74,7 +74,6 @@ func (o *AlertingIntegrationDto) HasUrl() bool {
 func (o *AlertingIntegrationDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *AlertingIntegrationDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -117,7 +116,6 @@ func (o *AlertingIntegrationDto) HasToken() bool {
 func (o *AlertingIntegrationDto) SetToken(v string) {
 	o.Token.Set(&v)
 }
-
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *AlertingIntegrationDto) SetTokenNil() {
 	o.Token.Set(nil)
@@ -161,7 +159,7 @@ func (o *AlertingIntegrationDto) SetAlertingIntegrationType(v AlertingIntegratio
 }
 
 func (o AlertingIntegrationDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullableAlertingIntegrationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

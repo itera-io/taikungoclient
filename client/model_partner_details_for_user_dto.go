@@ -23,7 +23,7 @@ type PartnerDetailsForUserDto struct {
 	Name NullableString `json:"name,omitempty"`
 	Logo NullableString `json:"logo,omitempty"`
 	Link NullableString `json:"link,omitempty"`
-	Id   *int32         `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 }
 
 // NewPartnerDetailsForUserDto instantiates a new PartnerDetailsForUserDto object
@@ -75,7 +75,6 @@ func (o *PartnerDetailsForUserDto) HasName() bool {
 func (o *PartnerDetailsForUserDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PartnerDetailsForUserDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -118,7 +117,6 @@ func (o *PartnerDetailsForUserDto) HasLogo() bool {
 func (o *PartnerDetailsForUserDto) SetLogo(v string) {
 	o.Logo.Set(&v)
 }
-
 // SetLogoNil sets the value for Logo to be an explicit nil
 func (o *PartnerDetailsForUserDto) SetLogoNil() {
 	o.Logo.Set(nil)
@@ -161,7 +159,6 @@ func (o *PartnerDetailsForUserDto) HasLink() bool {
 func (o *PartnerDetailsForUserDto) SetLink(v string) {
 	o.Link.Set(&v)
 }
-
 // SetLinkNil sets the value for Link to be an explicit nil
 func (o *PartnerDetailsForUserDto) SetLinkNil() {
 	o.Link.Set(nil)
@@ -205,7 +202,7 @@ func (o *PartnerDetailsForUserDto) SetId(v int32) {
 }
 
 func (o PartnerDetailsForUserDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,3 +261,5 @@ func (v *NullablePartnerDetailsForUserDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

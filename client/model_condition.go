@@ -21,11 +21,11 @@ var _ MappedNullable = &Condition{}
 
 // Condition struct for Condition
 type Condition struct {
-	LastTransitionTime NullableTime   `json:"lastTransitionTime,omitempty"`
-	Message            NullableString `json:"message,omitempty"`
-	Reason             NullableString `json:"reason,omitempty"`
-	Status             NullableString `json:"status,omitempty"`
-	Type               NullableString `json:"type,omitempty"`
+	LastTransitionTime NullableTime `json:"lastTransitionTime,omitempty"`
+	Message NullableString `json:"message,omitempty"`
+	Reason NullableString `json:"reason,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Type NullableString `json:"type,omitempty"`
 }
 
 // NewCondition instantiates a new Condition object
@@ -77,7 +77,6 @@ func (o *Condition) HasLastTransitionTime() bool {
 func (o *Condition) SetLastTransitionTime(v time.Time) {
 	o.LastTransitionTime.Set(&v)
 }
-
 // SetLastTransitionTimeNil sets the value for LastTransitionTime to be an explicit nil
 func (o *Condition) SetLastTransitionTimeNil() {
 	o.LastTransitionTime.Set(nil)
@@ -120,7 +119,6 @@ func (o *Condition) HasMessage() bool {
 func (o *Condition) SetMessage(v string) {
 	o.Message.Set(&v)
 }
-
 // SetMessageNil sets the value for Message to be an explicit nil
 func (o *Condition) SetMessageNil() {
 	o.Message.Set(nil)
@@ -163,7 +161,6 @@ func (o *Condition) HasReason() bool {
 func (o *Condition) SetReason(v string) {
 	o.Reason.Set(&v)
 }
-
 // SetReasonNil sets the value for Reason to be an explicit nil
 func (o *Condition) SetReasonNil() {
 	o.Reason.Set(nil)
@@ -206,7 +203,6 @@ func (o *Condition) HasStatus() bool {
 func (o *Condition) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *Condition) SetStatusNil() {
 	o.Status.Set(nil)
@@ -249,7 +245,6 @@ func (o *Condition) HasType() bool {
 func (o *Condition) SetType(v string) {
 	o.Type.Set(&v)
 }
-
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *Condition) SetTypeNil() {
 	o.Type.Set(nil)
@@ -261,7 +256,7 @@ func (o *Condition) UnsetType() {
 }
 
 func (o Condition) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -323,3 +318,5 @@ func (v *NullableCondition) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

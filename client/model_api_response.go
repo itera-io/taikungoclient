@@ -20,11 +20,11 @@ var _ MappedNullable = &ApiResponse{}
 
 // ApiResponse struct for ApiResponse
 type ApiResponse struct {
-	Id      NullableString `json:"id,omitempty"`
-	Status  *int32         `json:"status,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Status *int32 `json:"status,omitempty"`
 	Message NullableString `json:"message,omitempty"`
-	IsError *bool          `json:"isError,omitempty"`
-	Result  interface{}    `json:"result,omitempty"`
+	IsError *bool `json:"isError,omitempty"`
+	Result interface{} `json:"result,omitempty"`
 }
 
 // NewApiResponse instantiates a new ApiResponse object
@@ -76,7 +76,6 @@ func (o *ApiResponse) HasId() bool {
 func (o *ApiResponse) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *ApiResponse) SetIdNil() {
 	o.Id.Set(nil)
@@ -151,7 +150,6 @@ func (o *ApiResponse) HasMessage() bool {
 func (o *ApiResponse) SetMessage(v string) {
 	o.Message.Set(&v)
 }
-
 // SetMessageNil sets the value for Message to be an explicit nil
 func (o *ApiResponse) SetMessageNil() {
 	o.Message.Set(nil)
@@ -228,7 +226,7 @@ func (o *ApiResponse) SetResult(v interface{}) {
 }
 
 func (o ApiResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -290,3 +288,5 @@ func (v *NullableApiResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

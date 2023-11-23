@@ -21,8 +21,8 @@ var _ MappedNullable = &BindProjectGroupsToUserGroupCommand{}
 // BindProjectGroupsToUserGroupCommand struct for BindProjectGroupsToUserGroupCommand
 type BindProjectGroupsToUserGroupCommand struct {
 	ProjectGroups []UpdateUserProjectGroupDto `json:"projectGroups,omitempty"`
-	UserGroupId   *int32                      `json:"userGroupId,omitempty"`
-	UserGroupName NullableString              `json:"userGroupName,omitempty"`
+	UserGroupId *int32 `json:"userGroupId,omitempty"`
+	UserGroupName NullableString `json:"userGroupName,omitempty"`
 }
 
 // NewBindProjectGroupsToUserGroupCommand instantiates a new BindProjectGroupsToUserGroupCommand object
@@ -139,7 +139,6 @@ func (o *BindProjectGroupsToUserGroupCommand) HasUserGroupName() bool {
 func (o *BindProjectGroupsToUserGroupCommand) SetUserGroupName(v string) {
 	o.UserGroupName.Set(&v)
 }
-
 // SetUserGroupNameNil sets the value for UserGroupName to be an explicit nil
 func (o *BindProjectGroupsToUserGroupCommand) SetUserGroupNameNil() {
 	o.UserGroupName.Set(nil)
@@ -151,7 +150,7 @@ func (o *BindProjectGroupsToUserGroupCommand) UnsetUserGroupName() {
 }
 
 func (o BindProjectGroupsToUserGroupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -207,3 +206,5 @@ func (v *NullableBindProjectGroupsToUserGroupCommand) UnmarshalJSON(src []byte) 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

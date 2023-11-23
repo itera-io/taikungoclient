@@ -20,12 +20,12 @@ var _ MappedNullable = &OpenStackRegionListQuery{}
 
 // OpenStackRegionListQuery struct for OpenStackRegionListQuery
 type OpenStackRegionListQuery struct {
-	OpenStackUser          NullableString `json:"openStackUser,omitempty"`
-	OpenStackPassword      NullableString `json:"openStackPassword,omitempty"`
-	OpenStackUrl           NullableString `json:"openStackUrl,omitempty"`
-	OpenStackDomain        NullableString `json:"openStackDomain,omitempty"`
-	ApplicationCredEnabled *bool          `json:"applicationCredEnabled,omitempty"`
-	IsAdmin                *bool          `json:"isAdmin,omitempty"`
+	OpenStackUser NullableString `json:"openStackUser,omitempty"`
+	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
+	OpenStackUrl NullableString `json:"openStackUrl,omitempty"`
+	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
+	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
+	IsAdmin *bool `json:"isAdmin,omitempty"`
 }
 
 // NewOpenStackRegionListQuery instantiates a new OpenStackRegionListQuery object
@@ -77,7 +77,6 @@ func (o *OpenStackRegionListQuery) HasOpenStackUser() bool {
 func (o *OpenStackRegionListQuery) SetOpenStackUser(v string) {
 	o.OpenStackUser.Set(&v)
 }
-
 // SetOpenStackUserNil sets the value for OpenStackUser to be an explicit nil
 func (o *OpenStackRegionListQuery) SetOpenStackUserNil() {
 	o.OpenStackUser.Set(nil)
@@ -120,7 +119,6 @@ func (o *OpenStackRegionListQuery) HasOpenStackPassword() bool {
 func (o *OpenStackRegionListQuery) SetOpenStackPassword(v string) {
 	o.OpenStackPassword.Set(&v)
 }
-
 // SetOpenStackPasswordNil sets the value for OpenStackPassword to be an explicit nil
 func (o *OpenStackRegionListQuery) SetOpenStackPasswordNil() {
 	o.OpenStackPassword.Set(nil)
@@ -163,7 +161,6 @@ func (o *OpenStackRegionListQuery) HasOpenStackUrl() bool {
 func (o *OpenStackRegionListQuery) SetOpenStackUrl(v string) {
 	o.OpenStackUrl.Set(&v)
 }
-
 // SetOpenStackUrlNil sets the value for OpenStackUrl to be an explicit nil
 func (o *OpenStackRegionListQuery) SetOpenStackUrlNil() {
 	o.OpenStackUrl.Set(nil)
@@ -206,7 +203,6 @@ func (o *OpenStackRegionListQuery) HasOpenStackDomain() bool {
 func (o *OpenStackRegionListQuery) SetOpenStackDomain(v string) {
 	o.OpenStackDomain.Set(&v)
 }
-
 // SetOpenStackDomainNil sets the value for OpenStackDomain to be an explicit nil
 func (o *OpenStackRegionListQuery) SetOpenStackDomainNil() {
 	o.OpenStackDomain.Set(nil)
@@ -282,7 +278,7 @@ func (o *OpenStackRegionListQuery) SetIsAdmin(v bool) {
 }
 
 func (o OpenStackRegionListQuery) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -347,3 +343,5 @@ func (v *NullableOpenStackRegionListQuery) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

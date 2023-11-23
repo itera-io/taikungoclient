@@ -21,8 +21,8 @@ var _ MappedNullable = &OpenshiftFlavorData{}
 // OpenshiftFlavorData struct for OpenshiftFlavorData
 type OpenshiftFlavorData struct {
 	Name NullableString `json:"name,omitempty"`
-	Cpu  *int32         `json:"cpu,omitempty"`
-	Ram  *int64         `json:"ram,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
+	Ram *int64 `json:"ram,omitempty"`
 }
 
 // NewOpenshiftFlavorData instantiates a new OpenshiftFlavorData object
@@ -74,7 +74,6 @@ func (o *OpenshiftFlavorData) HasName() bool {
 func (o *OpenshiftFlavorData) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OpenshiftFlavorData) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,7 @@ func (o *OpenshiftFlavorData) SetRam(v int64) {
 }
 
 func (o OpenshiftFlavorData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,3 +205,5 @@ func (v *NullableOpenshiftFlavorData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

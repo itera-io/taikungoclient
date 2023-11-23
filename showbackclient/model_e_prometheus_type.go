@@ -22,7 +22,7 @@ type EPrometheusType string
 // List of EPrometheusType
 const (
 	EPROMETHEUSTYPE_COUNT EPrometheusType = "Count"
-	EPROMETHEUSTYPE_SUM   EPrometheusType = "Sum"
+	EPROMETHEUSTYPE_SUM EPrometheusType = "Sum"
 )
 
 // All allowed values of EPrometheusType enum
@@ -109,3 +109,4 @@ func (v *NullableEPrometheusType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

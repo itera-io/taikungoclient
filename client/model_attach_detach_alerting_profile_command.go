@@ -20,7 +20,7 @@ var _ MappedNullable = &AttachDetachAlertingProfileCommand{}
 
 // AttachDetachAlertingProfileCommand struct for AttachDetachAlertingProfileCommand
 type AttachDetachAlertingProfileCommand struct {
-	ProjectId         *int32        `json:"projectId,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
 }
 
@@ -105,7 +105,6 @@ func (o *AttachDetachAlertingProfileCommand) HasAlertingProfileId() bool {
 func (o *AttachDetachAlertingProfileCommand) SetAlertingProfileId(v int32) {
 	o.AlertingProfileId.Set(&v)
 }
-
 // SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
 func (o *AttachDetachAlertingProfileCommand) SetAlertingProfileIdNil() {
 	o.AlertingProfileId.Set(nil)
@@ -117,7 +116,7 @@ func (o *AttachDetachAlertingProfileCommand) UnsetAlertingProfileId() {
 }
 
 func (o AttachDetachAlertingProfileCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableAttachDetachAlertingProfileCommand) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

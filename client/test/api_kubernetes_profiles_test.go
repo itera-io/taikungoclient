@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_KubernetesProfilesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_KubernetesProfilesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesProfilesAPIService KubernetesprofilesCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesProfilesAPI.KubernetesprofilesCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_KubernetesProfilesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesProfilesAPIService KubernetesprofilesDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -49,7 +49,7 @@ func Test_taikuncore_KubernetesProfilesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesProfilesAPIService KubernetesprofilesDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesProfilesAPI.KubernetesprofilesDropdown(context.Background()).Execute()
 
@@ -61,7 +61,7 @@ func Test_taikuncore_KubernetesProfilesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesProfilesAPIService KubernetesprofilesList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesProfilesAPI.KubernetesprofilesList(context.Background()).Execute()
 
@@ -73,7 +73,7 @@ func Test_taikuncore_KubernetesProfilesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesProfilesAPIService KubernetesprofilesLockManager", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesProfilesAPI.KubernetesprofilesLockManager(context.Background()).Execute()
 

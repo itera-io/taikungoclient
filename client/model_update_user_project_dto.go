@@ -20,9 +20,9 @@ var _ MappedNullable = &UpdateUserProjectDto{}
 
 // UpdateUserProjectDto struct for UpdateUserProjectDto
 type UpdateUserProjectDto struct {
-	Id      *int32         `json:"id,omitempty"`
-	Name    NullableString `json:"name,omitempty"`
-	IsBound *bool          `json:"isBound,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	IsBound *bool `json:"isBound,omitempty"`
 }
 
 // NewUpdateUserProjectDto instantiates a new UpdateUserProjectDto object
@@ -106,7 +106,6 @@ func (o *UpdateUserProjectDto) HasName() bool {
 func (o *UpdateUserProjectDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateUserProjectDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,7 @@ func (o *UpdateUserProjectDto) SetIsBound(v bool) {
 }
 
 func (o UpdateUserProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,3 +205,5 @@ func (v *NullableUpdateUserProjectDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

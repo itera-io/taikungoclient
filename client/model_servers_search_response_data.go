@@ -20,12 +20,12 @@ var _ MappedNullable = &ServersSearchResponseData{}
 
 // ServersSearchResponseData struct for ServersSearchResponseData
 type ServersSearchResponseData struct {
-	Id               *int32         `json:"id,omitempty"`
-	Name             NullableString `json:"name,omitempty"`
-	OrganizationId   NullableInt32  `json:"organizationId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
-	ProjectId        *int32         `json:"projectId,omitempty"`
-	ProjectName      NullableString `json:"projectName,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
 }
 
 // NewServersSearchResponseData instantiates a new ServersSearchResponseData object
@@ -109,7 +109,6 @@ func (o *ServersSearchResponseData) HasName() bool {
 func (o *ServersSearchResponseData) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ServersSearchResponseData) SetNameNil() {
 	o.Name.Set(nil)
@@ -152,7 +151,6 @@ func (o *ServersSearchResponseData) HasOrganizationId() bool {
 func (o *ServersSearchResponseData) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *ServersSearchResponseData) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -195,7 +193,6 @@ func (o *ServersSearchResponseData) HasOrganizationName() bool {
 func (o *ServersSearchResponseData) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ServersSearchResponseData) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -270,7 +267,6 @@ func (o *ServersSearchResponseData) HasProjectName() bool {
 func (o *ServersSearchResponseData) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *ServersSearchResponseData) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -282,7 +278,7 @@ func (o *ServersSearchResponseData) UnsetProjectName() {
 }
 
 func (o ServersSearchResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -347,3 +343,5 @@ func (v *NullableServersSearchResponseData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

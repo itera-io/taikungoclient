@@ -20,8 +20,8 @@ var _ MappedNullable = &AzureCommonImages{}
 
 // AzureCommonImages struct for AzureCommonImages
 type AzureCommonImages struct {
-	Name        NullableString `json:"name,omitempty"`
-	Id          NullableString `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	DisplayName NullableString `json:"displayName,omitempty"`
 }
 
@@ -74,7 +74,6 @@ func (o *AzureCommonImages) HasName() bool {
 func (o *AzureCommonImages) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AzureCommonImages) SetNameNil() {
 	o.Name.Set(nil)
@@ -117,7 +116,6 @@ func (o *AzureCommonImages) HasId() bool {
 func (o *AzureCommonImages) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *AzureCommonImages) SetIdNil() {
 	o.Id.Set(nil)
@@ -160,7 +158,6 @@ func (o *AzureCommonImages) HasDisplayName() bool {
 func (o *AzureCommonImages) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
-
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *AzureCommonImages) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -172,7 +169,7 @@ func (o *AzureCommonImages) UnsetDisplayName() {
 }
 
 func (o AzureCommonImages) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableAzureCommonImages) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

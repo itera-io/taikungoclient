@@ -20,13 +20,13 @@ var _ MappedNullable = &SlackConfigurationDto{}
 
 // SlackConfigurationDto struct for SlackConfigurationDto
 type SlackConfigurationDto struct {
-	Id               *int32         `json:"id,omitempty"`
-	Name             NullableString `json:"name,omitempty"`
-	Url              NullableString `json:"url,omitempty"`
-	Channel          NullableString `json:"channel,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Channel NullableString `json:"channel,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
-	OrganizationId   NullableInt32  `json:"organizationId,omitempty"`
-	SlackType        *SlackType     `json:"slackType,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	SlackType *SlackType `json:"slackType,omitempty"`
 }
 
 // NewSlackConfigurationDto instantiates a new SlackConfigurationDto object
@@ -110,7 +110,6 @@ func (o *SlackConfigurationDto) HasName() bool {
 func (o *SlackConfigurationDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *SlackConfigurationDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -153,7 +152,6 @@ func (o *SlackConfigurationDto) HasUrl() bool {
 func (o *SlackConfigurationDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *SlackConfigurationDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -196,7 +194,6 @@ func (o *SlackConfigurationDto) HasChannel() bool {
 func (o *SlackConfigurationDto) SetChannel(v string) {
 	o.Channel.Set(&v)
 }
-
 // SetChannelNil sets the value for Channel to be an explicit nil
 func (o *SlackConfigurationDto) SetChannelNil() {
 	o.Channel.Set(nil)
@@ -239,7 +236,6 @@ func (o *SlackConfigurationDto) HasOrganizationName() bool {
 func (o *SlackConfigurationDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *SlackConfigurationDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -282,7 +278,6 @@ func (o *SlackConfigurationDto) HasOrganizationId() bool {
 func (o *SlackConfigurationDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *SlackConfigurationDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -326,7 +321,7 @@ func (o *SlackConfigurationDto) SetSlackType(v SlackType) {
 }
 
 func (o SlackConfigurationDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -394,3 +389,5 @@ func (v *NullableSlackConfigurationDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

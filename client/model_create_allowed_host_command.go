@@ -20,10 +20,10 @@ var _ MappedNullable = &CreateAllowedHostCommand{}
 
 // CreateAllowedHostCommand struct for CreateAllowedHostCommand
 type CreateAllowedHostCommand struct {
-	AccessProfileId *int32         `json:"accessProfileId,omitempty"`
-	Description     NullableString `json:"description,omitempty"`
-	IpAddress       NullableString `json:"ipAddress,omitempty"`
-	MaskBits        *int32         `json:"maskBits,omitempty"`
+	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	IpAddress NullableString `json:"ipAddress,omitempty"`
+	MaskBits *int32 `json:"maskBits,omitempty"`
 }
 
 // NewCreateAllowedHostCommand instantiates a new CreateAllowedHostCommand object
@@ -107,7 +107,6 @@ func (o *CreateAllowedHostCommand) HasDescription() bool {
 func (o *CreateAllowedHostCommand) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *CreateAllowedHostCommand) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -150,7 +149,6 @@ func (o *CreateAllowedHostCommand) HasIpAddress() bool {
 func (o *CreateAllowedHostCommand) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
-
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *CreateAllowedHostCommand) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -194,7 +192,7 @@ func (o *CreateAllowedHostCommand) SetMaskBits(v int32) {
 }
 
 func (o CreateAllowedHostCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,3 +251,5 @@ func (v *NullableCreateAllowedHostCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

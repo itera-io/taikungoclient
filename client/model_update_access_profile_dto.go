@@ -20,7 +20,7 @@ var _ MappedNullable = &UpdateAccessProfileDto{}
 
 // UpdateAccessProfileDto struct for UpdateAccessProfileDto
 type UpdateAccessProfileDto struct {
-	Name      NullableString `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	HttpProxy NullableString `json:"httpProxy,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *UpdateAccessProfileDto) HasName() bool {
 func (o *UpdateAccessProfileDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateAccessProfileDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -116,7 +115,6 @@ func (o *UpdateAccessProfileDto) HasHttpProxy() bool {
 func (o *UpdateAccessProfileDto) SetHttpProxy(v string) {
 	o.HttpProxy.Set(&v)
 }
-
 // SetHttpProxyNil sets the value for HttpProxy to be an explicit nil
 func (o *UpdateAccessProfileDto) SetHttpProxyNil() {
 	o.HttpProxy.Set(nil)
@@ -128,7 +126,7 @@ func (o *UpdateAccessProfileDto) UnsetHttpProxy() {
 }
 
 func (o UpdateAccessProfileDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableUpdateAccessProfileDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

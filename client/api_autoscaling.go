@@ -19,12 +19,13 @@ import (
 	"net/url"
 )
 
+
 // AutoscalingAPIService AutoscalingAPI service
 type AutoscalingAPIService service
 
 type ApiAutoscalingDisableRequest struct {
-	ctx                       context.Context
-	ApiService                *AutoscalingAPIService
+	ctx context.Context
+	ApiService *AutoscalingAPIService
 	disableAutoscalingCommand *DisableAutoscalingCommand
 }
 
@@ -40,22 +41,22 @@ func (r ApiAutoscalingDisableRequest) Execute() (*http.Response, error) {
 /*
 AutoscalingDisable Disable autoscaling
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAutoscalingDisableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAutoscalingDisableRequest
 */
 func (a *AutoscalingAPIService) AutoscalingDisable(ctx context.Context) ApiAutoscalingDisableRequest {
 	return ApiAutoscalingDisableRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AutoscalingAPIService) AutoscalingDisableExecute(r ApiAutoscalingDisableRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutoscalingAPIService.AutoscalingDisable")
@@ -134,8 +135,8 @@ func (a *AutoscalingAPIService) AutoscalingDisableExecute(r ApiAutoscalingDisabl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +146,8 @@ func (a *AutoscalingAPIService) AutoscalingDisableExecute(r ApiAutoscalingDisabl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +157,8 @@ func (a *AutoscalingAPIService) AutoscalingDisableExecute(r ApiAutoscalingDisabl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +168,8 @@ func (a *AutoscalingAPIService) AutoscalingDisableExecute(r ApiAutoscalingDisabl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -178,8 +179,8 @@ func (a *AutoscalingAPIService) AutoscalingDisableExecute(r ApiAutoscalingDisabl
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -188,8 +189,8 @@ func (a *AutoscalingAPIService) AutoscalingDisableExecute(r ApiAutoscalingDisabl
 }
 
 type ApiAutoscalingEditRequest struct {
-	ctx                    context.Context
-	ApiService             *AutoscalingAPIService
+	ctx context.Context
+	ApiService *AutoscalingAPIService
 	editAutoscalingCommand *EditAutoscalingCommand
 }
 
@@ -205,22 +206,22 @@ func (r ApiAutoscalingEditRequest) Execute() (*http.Response, error) {
 /*
 AutoscalingEdit Edit autoscaling
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAutoscalingEditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAutoscalingEditRequest
 */
 func (a *AutoscalingAPIService) AutoscalingEdit(ctx context.Context) ApiAutoscalingEditRequest {
 	return ApiAutoscalingEditRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AutoscalingAPIService) AutoscalingEditExecute(r ApiAutoscalingEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutoscalingAPIService.AutoscalingEdit")
@@ -299,8 +300,8 @@ func (a *AutoscalingAPIService) AutoscalingEditExecute(r ApiAutoscalingEditReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -310,8 +311,8 @@ func (a *AutoscalingAPIService) AutoscalingEditExecute(r ApiAutoscalingEditReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -321,8 +322,8 @@ func (a *AutoscalingAPIService) AutoscalingEditExecute(r ApiAutoscalingEditReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -332,8 +333,8 @@ func (a *AutoscalingAPIService) AutoscalingEditExecute(r ApiAutoscalingEditReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -343,8 +344,8 @@ func (a *AutoscalingAPIService) AutoscalingEditExecute(r ApiAutoscalingEditReque
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -353,8 +354,8 @@ func (a *AutoscalingAPIService) AutoscalingEditExecute(r ApiAutoscalingEditReque
 }
 
 type ApiAutoscalingEnableRequest struct {
-	ctx                      context.Context
-	ApiService               *AutoscalingAPIService
+	ctx context.Context
+	ApiService *AutoscalingAPIService
 	enableAutoscalingCommand *EnableAutoscalingCommand
 }
 
@@ -370,22 +371,22 @@ func (r ApiAutoscalingEnableRequest) Execute() (*http.Response, error) {
 /*
 AutoscalingEnable Enable autoscaling
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAutoscalingEnableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAutoscalingEnableRequest
 */
 func (a *AutoscalingAPIService) AutoscalingEnable(ctx context.Context) ApiAutoscalingEnableRequest {
 	return ApiAutoscalingEnableRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AutoscalingAPIService) AutoscalingEnableExecute(r ApiAutoscalingEnableRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutoscalingAPIService.AutoscalingEnable")
@@ -464,8 +465,8 @@ func (a *AutoscalingAPIService) AutoscalingEnableExecute(r ApiAutoscalingEnableR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -475,8 +476,8 @@ func (a *AutoscalingAPIService) AutoscalingEnableExecute(r ApiAutoscalingEnableR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -486,8 +487,8 @@ func (a *AutoscalingAPIService) AutoscalingEnableExecute(r ApiAutoscalingEnableR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -497,8 +498,8 @@ func (a *AutoscalingAPIService) AutoscalingEnableExecute(r ApiAutoscalingEnableR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -508,119 +509,8 @@ func (a *AutoscalingAPIService) AutoscalingEnableExecute(r ApiAutoscalingEnableR
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiAutoscalingSyncRequest struct {
-	ctx                    context.Context
-	ApiService             *AutoscalingAPIService
-	autoscalingSyncCommand *AutoscalingSyncCommand
-}
-
-func (r ApiAutoscalingSyncRequest) AutoscalingSyncCommand(autoscalingSyncCommand AutoscalingSyncCommand) ApiAutoscalingSyncRequest {
-	r.autoscalingSyncCommand = &autoscalingSyncCommand
-	return r
-}
-
-func (r ApiAutoscalingSyncRequest) Execute() (*http.Response, error) {
-	return r.ApiService.AutoscalingSyncExecute(r)
-}
-
-/*
-AutoscalingSync Sync autoscaling
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAutoscalingSyncRequest
-*/
-func (a *AutoscalingAPIService) AutoscalingSync(ctx context.Context) ApiAutoscalingSyncRequest {
-	return ApiAutoscalingSyncRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-func (a *AutoscalingAPIService) AutoscalingSyncExecute(r ApiAutoscalingSyncRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AutoscalingAPIService.AutoscalingSync")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/autoscaling/sync"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.autoscalingSyncCommand == nil {
-		return nil, reportError("autoscalingSyncCommand is required and must be specified")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.autoscalingSyncCommand
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["Bearer"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

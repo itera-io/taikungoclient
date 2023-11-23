@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_FlavorsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	t.Run("Test FlavorsAPIService FlavorsAwsInstanceTypes", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -38,7 +38,7 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	t.Run("Test FlavorsAPIService FlavorsAzureVmSizes", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -52,7 +52,7 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	t.Run("Test FlavorsAPIService FlavorsBindToProject", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.FlavorsAPI.FlavorsBindToProject(context.Background()).Execute()
 
@@ -61,21 +61,9 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test FlavorsAPIService FlavorsDropdownFlavors", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.FlavorsAPI.FlavorsDropdownFlavors(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test FlavorsAPIService FlavorsGoogleMachineTypes", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -89,7 +77,7 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	t.Run("Test FlavorsAPIService FlavorsOpenshiftFlavors", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -103,7 +91,7 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	t.Run("Test FlavorsAPIService FlavorsOpenstackFlavors", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -117,7 +105,7 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	t.Run("Test FlavorsAPIService FlavorsProxmoxFlavors", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -131,7 +119,7 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	t.Run("Test FlavorsAPIService FlavorsSelectedFlavorsForProject", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.FlavorsAPI.FlavorsSelectedFlavorsForProject(context.Background()).Execute()
 
@@ -143,7 +131,7 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	t.Run("Test FlavorsAPIService FlavorsTanzuFlavors", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -157,7 +145,7 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	t.Run("Test FlavorsAPIService FlavorsUnbindFromProject", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.FlavorsAPI.FlavorsUnbindFromProject(context.Background()).Execute()
 

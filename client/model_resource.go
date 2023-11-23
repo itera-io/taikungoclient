@@ -20,12 +20,12 @@ var _ MappedNullable = &Resource{}
 
 // Resource struct for Resource
 type Resource struct {
-	Name           NullableString  `json:"name,omitempty"`
-	Metadata       *Metadata       `json:"metadata,omitempty"`
-	HourlyCost     NullableString  `json:"hourlyCost,omitempty"`
-	MonthlyCost    NullableString  `json:"monthlyCost,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Metadata *Metadata `json:"metadata,omitempty"`
+	HourlyCost NullableString `json:"hourlyCost,omitempty"`
+	MonthlyCost NullableString `json:"monthlyCost,omitempty"`
 	CostComponents []CostComponent `json:"costComponents,omitempty"`
-	Subresources   []Subresource   `json:"subresources,omitempty"`
+	Subresources []Subresource `json:"subresources,omitempty"`
 }
 
 // NewResource instantiates a new Resource object
@@ -77,7 +77,6 @@ func (o *Resource) HasName() bool {
 func (o *Resource) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *Resource) SetNameNil() {
 	o.Name.Set(nil)
@@ -152,7 +151,6 @@ func (o *Resource) HasHourlyCost() bool {
 func (o *Resource) SetHourlyCost(v string) {
 	o.HourlyCost.Set(&v)
 }
-
 // SetHourlyCostNil sets the value for HourlyCost to be an explicit nil
 func (o *Resource) SetHourlyCostNil() {
 	o.HourlyCost.Set(nil)
@@ -195,7 +193,6 @@ func (o *Resource) HasMonthlyCost() bool {
 func (o *Resource) SetMonthlyCost(v string) {
 	o.MonthlyCost.Set(&v)
 }
-
 // SetMonthlyCostNil sets the value for MonthlyCost to be an explicit nil
 func (o *Resource) SetMonthlyCostNil() {
 	o.MonthlyCost.Set(nil)
@@ -273,7 +270,7 @@ func (o *Resource) SetSubresources(v []Subresource) {
 }
 
 func (o Resource) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -338,3 +335,5 @@ func (v *NullableResource) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

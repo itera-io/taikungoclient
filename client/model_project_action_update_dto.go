@@ -20,8 +20,8 @@ var _ MappedNullable = &ProjectActionUpdateDto{}
 
 // ProjectActionUpdateDto struct for ProjectActionUpdateDto
 type ProjectActionUpdateDto struct {
-	Operation     NullableString `json:"operation,omitempty"`
-	JobUrl        NullableString `json:"jobUrl,omitempty"`
+	Operation NullableString `json:"operation,omitempty"`
+	JobUrl NullableString `json:"jobUrl,omitempty"`
 	EstimatedTime NullableString `json:"estimatedTime,omitempty"`
 }
 
@@ -74,7 +74,6 @@ func (o *ProjectActionUpdateDto) HasOperation() bool {
 func (o *ProjectActionUpdateDto) SetOperation(v string) {
 	o.Operation.Set(&v)
 }
-
 // SetOperationNil sets the value for Operation to be an explicit nil
 func (o *ProjectActionUpdateDto) SetOperationNil() {
 	o.Operation.Set(nil)
@@ -117,7 +116,6 @@ func (o *ProjectActionUpdateDto) HasJobUrl() bool {
 func (o *ProjectActionUpdateDto) SetJobUrl(v string) {
 	o.JobUrl.Set(&v)
 }
-
 // SetJobUrlNil sets the value for JobUrl to be an explicit nil
 func (o *ProjectActionUpdateDto) SetJobUrlNil() {
 	o.JobUrl.Set(nil)
@@ -160,7 +158,6 @@ func (o *ProjectActionUpdateDto) HasEstimatedTime() bool {
 func (o *ProjectActionUpdateDto) SetEstimatedTime(v string) {
 	o.EstimatedTime.Set(&v)
 }
-
 // SetEstimatedTimeNil sets the value for EstimatedTime to be an explicit nil
 func (o *ProjectActionUpdateDto) SetEstimatedTimeNil() {
 	o.EstimatedTime.Set(nil)
@@ -172,7 +169,7 @@ func (o *ProjectActionUpdateDto) UnsetEstimatedTime() {
 }
 
 func (o ProjectActionUpdateDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableProjectActionUpdateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,9 +20,9 @@ var _ MappedNullable = &ProjectTemplateDropdownListDto{}
 
 // ProjectTemplateDropdownListDto struct for ProjectTemplateDropdownListDto
 type ProjectTemplateDropdownListDto struct {
-	Id        *int32         `json:"id,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
-	CanCommit *bool          `json:"canCommit,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	CanCommit *bool `json:"canCommit,omitempty"`
 }
 
 // NewProjectTemplateDropdownListDto instantiates a new ProjectTemplateDropdownListDto object
@@ -106,7 +106,6 @@ func (o *ProjectTemplateDropdownListDto) HasName() bool {
 func (o *ProjectTemplateDropdownListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectTemplateDropdownListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,7 @@ func (o *ProjectTemplateDropdownListDto) SetCanCommit(v bool) {
 }
 
 func (o ProjectTemplateDropdownListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,3 +205,5 @@ func (v *NullableProjectTemplateDropdownListDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

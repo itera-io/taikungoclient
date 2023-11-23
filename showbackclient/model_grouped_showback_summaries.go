@@ -21,7 +21,7 @@ var _ MappedNullable = &GroupedShowbackSummaries{}
 // GroupedShowbackSummaries struct for GroupedShowbackSummaries
 type GroupedShowbackSummaries struct {
 	StartDate NullableString `json:"startDate,omitempty"`
-	Price     *float64       `json:"price,omitempty"`
+	Price *float64 `json:"price,omitempty"`
 }
 
 // NewGroupedShowbackSummaries instantiates a new GroupedShowbackSummaries object
@@ -73,7 +73,6 @@ func (o *GroupedShowbackSummaries) HasStartDate() bool {
 func (o *GroupedShowbackSummaries) SetStartDate(v string) {
 	o.StartDate.Set(&v)
 }
-
 // SetStartDateNil sets the value for StartDate to be an explicit nil
 func (o *GroupedShowbackSummaries) SetStartDateNil() {
 	o.StartDate.Set(nil)
@@ -117,7 +116,7 @@ func (o *GroupedShowbackSummaries) SetPrice(v float64) {
 }
 
 func (o GroupedShowbackSummaries) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableGroupedShowbackSummaries) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

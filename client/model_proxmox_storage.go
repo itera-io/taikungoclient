@@ -21,7 +21,7 @@ type ProxmoxStorage string
 
 // List of ProxmoxStorage
 const (
-	PROXMOXSTORAGE_NFS      ProxmoxStorage = "NFS"
+	PROXMOXSTORAGE_NFS ProxmoxStorage = "NFS"
 	PROXMOXSTORAGE_OPEN_EBS ProxmoxStorage = "OpenEBS"
 )
 
@@ -109,3 +109,4 @@ func (v *NullableProxmoxStorage) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -20,19 +20,19 @@ var _ MappedNullable = &OperationCredentialsListDto{}
 
 // OperationCredentialsListDto struct for OperationCredentialsListDto
 type OperationCredentialsListDto struct {
-	Id                 *int32                   `json:"id,omitempty"`
-	Name               NullableString           `json:"name,omitempty"`
-	PrometheusUsername NullableString           `json:"prometheusUsername,omitempty"`
-	PrometheusPassword NullableString           `json:"prometheusPassword,omitempty"`
-	PrometheusUrl      NullableString           `json:"prometheusUrl,omitempty"`
-	OrganizationId     NullableInt32            `json:"organizationId,omitempty"`
-	OrganizationName   NullableString           `json:"organizationName,omitempty"`
-	IsLocked           *bool                    `json:"isLocked,omitempty"`
-	Rules              []SimplePrometheusEntity `json:"rules,omitempty"`
-	CreatedBy          NullableString           `json:"createdBy,omitempty"`
-	LastModified       NullableString           `json:"lastModified,omitempty"`
-	LastModifiedBy     NullableString           `json:"lastModifiedBy,omitempty"`
-	IsDefault          *bool                    `json:"isDefault,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	PrometheusUsername NullableString `json:"prometheusUsername,omitempty"`
+	PrometheusPassword NullableString `json:"prometheusPassword,omitempty"`
+	PrometheusUrl NullableString `json:"prometheusUrl,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	Rules []SimplePrometheusEntity `json:"rules,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
 }
 
 // NewOperationCredentialsListDto instantiates a new OperationCredentialsListDto object
@@ -116,7 +116,6 @@ func (o *OperationCredentialsListDto) HasName() bool {
 func (o *OperationCredentialsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OperationCredentialsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -159,7 +158,6 @@ func (o *OperationCredentialsListDto) HasPrometheusUsername() bool {
 func (o *OperationCredentialsListDto) SetPrometheusUsername(v string) {
 	o.PrometheusUsername.Set(&v)
 }
-
 // SetPrometheusUsernameNil sets the value for PrometheusUsername to be an explicit nil
 func (o *OperationCredentialsListDto) SetPrometheusUsernameNil() {
 	o.PrometheusUsername.Set(nil)
@@ -202,7 +200,6 @@ func (o *OperationCredentialsListDto) HasPrometheusPassword() bool {
 func (o *OperationCredentialsListDto) SetPrometheusPassword(v string) {
 	o.PrometheusPassword.Set(&v)
 }
-
 // SetPrometheusPasswordNil sets the value for PrometheusPassword to be an explicit nil
 func (o *OperationCredentialsListDto) SetPrometheusPasswordNil() {
 	o.PrometheusPassword.Set(nil)
@@ -245,7 +242,6 @@ func (o *OperationCredentialsListDto) HasPrometheusUrl() bool {
 func (o *OperationCredentialsListDto) SetPrometheusUrl(v string) {
 	o.PrometheusUrl.Set(&v)
 }
-
 // SetPrometheusUrlNil sets the value for PrometheusUrl to be an explicit nil
 func (o *OperationCredentialsListDto) SetPrometheusUrlNil() {
 	o.PrometheusUrl.Set(nil)
@@ -288,7 +284,6 @@ func (o *OperationCredentialsListDto) HasOrganizationId() bool {
 func (o *OperationCredentialsListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *OperationCredentialsListDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -331,7 +326,6 @@ func (o *OperationCredentialsListDto) HasOrganizationName() bool {
 func (o *OperationCredentialsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *OperationCredentialsListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -439,7 +433,6 @@ func (o *OperationCredentialsListDto) HasCreatedBy() bool {
 func (o *OperationCredentialsListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *OperationCredentialsListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -482,7 +475,6 @@ func (o *OperationCredentialsListDto) HasLastModified() bool {
 func (o *OperationCredentialsListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *OperationCredentialsListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -525,7 +517,6 @@ func (o *OperationCredentialsListDto) HasLastModifiedBy() bool {
 func (o *OperationCredentialsListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *OperationCredentialsListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -569,7 +560,7 @@ func (o *OperationCredentialsListDto) SetIsDefault(v bool) {
 }
 
 func (o OperationCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -655,3 +646,5 @@ func (v *NullableOperationCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

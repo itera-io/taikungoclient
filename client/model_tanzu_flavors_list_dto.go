@@ -21,8 +21,8 @@ var _ MappedNullable = &TanzuFlavorsListDto{}
 // TanzuFlavorsListDto struct for TanzuFlavorsListDto
 type TanzuFlavorsListDto struct {
 	Name NullableString `json:"name,omitempty"`
-	Cpu  *int32         `json:"cpu,omitempty"`
-	Ram  *int64         `json:"ram,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
+	Ram *int64 `json:"ram,omitempty"`
 }
 
 // NewTanzuFlavorsListDto instantiates a new TanzuFlavorsListDto object
@@ -74,7 +74,6 @@ func (o *TanzuFlavorsListDto) HasName() bool {
 func (o *TanzuFlavorsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *TanzuFlavorsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,7 @@ func (o *TanzuFlavorsListDto) SetRam(v int64) {
 }
 
 func (o TanzuFlavorsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,3 +205,5 @@ func (v *NullableTanzuFlavorsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

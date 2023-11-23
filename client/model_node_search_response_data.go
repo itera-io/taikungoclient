@@ -20,10 +20,10 @@ var _ MappedNullable = &NodeSearchResponseData{}
 
 // NodeSearchResponseData struct for NodeSearchResponseData
 type NodeSearchResponseData struct {
-	MetadataName     NullableString `json:"metadataName,omitempty"`
-	ProjectId        *int32         `json:"projectId,omitempty"`
-	ProjectName      NullableString `json:"projectName,omitempty"`
-	OrganizationId   *int32         `json:"organizationId,omitempty"`
+	MetadataName NullableString `json:"metadataName,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 }
 
@@ -76,7 +76,6 @@ func (o *NodeSearchResponseData) HasMetadataName() bool {
 func (o *NodeSearchResponseData) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *NodeSearchResponseData) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -151,7 +150,6 @@ func (o *NodeSearchResponseData) HasProjectName() bool {
 func (o *NodeSearchResponseData) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *NodeSearchResponseData) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -226,7 +224,6 @@ func (o *NodeSearchResponseData) HasOrganizationName() bool {
 func (o *NodeSearchResponseData) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *NodeSearchResponseData) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -238,7 +235,7 @@ func (o *NodeSearchResponseData) UnsetOrganizationName() {
 }
 
 func (o NodeSearchResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -300,3 +297,5 @@ func (v *NullableNodeSearchResponseData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

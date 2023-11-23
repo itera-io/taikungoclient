@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_ProjectInfracostsAPIService(t *testing.T) {
@@ -22,22 +22,9 @@ func Test_taikuncore_ProjectInfracostsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ProjectInfracostsAPIService ProjectinfracostsDelete", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var projectId int32
-
-		httpRes, err := apiClient.ProjectInfracostsAPI.ProjectinfracostsDelete(context.Background(), projectId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ProjectInfracostsAPIService ProjectinfracostsDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -45,19 +32,6 @@ func Test_taikuncore_ProjectInfracostsAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectInfracostsAPIService ProjectinfracostsUpsert", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var projectId int32
-
-		httpRes, err := apiClient.ProjectInfracostsAPI.ProjectinfracostsUpsert(context.Background(), projectId).Execute()
-
-		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

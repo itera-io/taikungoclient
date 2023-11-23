@@ -20,8 +20,8 @@ var _ MappedNullable = &AwsValidateOwnerCommand{}
 
 // AwsValidateOwnerCommand struct for AwsValidateOwnerCommand
 type AwsValidateOwnerCommand struct {
-	CloudId *int32   `json:"cloudId,omitempty"`
-	Owners  []string `json:"owners,omitempty"`
+	CloudId *int32 `json:"cloudId,omitempty"`
+	Owners []string `json:"owners,omitempty"`
 }
 
 // NewAwsValidateOwnerCommand instantiates a new AwsValidateOwnerCommand object
@@ -107,7 +107,7 @@ func (o *AwsValidateOwnerCommand) SetOwners(v []string) {
 }
 
 func (o AwsValidateOwnerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableAwsValidateOwnerCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,11 +20,11 @@ var _ MappedNullable = &AvailableEndpointData{}
 
 // AvailableEndpointData struct for AvailableEndpointData
 type AvailableEndpointData struct {
-	Id          *int32         `json:"id,omitempty"`
-	Path        NullableString `json:"path,omitempty"`
-	Method      NullableString `json:"method,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Path NullableString `json:"path,omitempty"`
+	Method NullableString `json:"method,omitempty"`
 	Description NullableString `json:"description,omitempty"`
-	Controller  NullableString `json:"controller,omitempty"`
+	Controller NullableString `json:"controller,omitempty"`
 }
 
 // NewAvailableEndpointData instantiates a new AvailableEndpointData object
@@ -108,7 +108,6 @@ func (o *AvailableEndpointData) HasPath() bool {
 func (o *AvailableEndpointData) SetPath(v string) {
 	o.Path.Set(&v)
 }
-
 // SetPathNil sets the value for Path to be an explicit nil
 func (o *AvailableEndpointData) SetPathNil() {
 	o.Path.Set(nil)
@@ -151,7 +150,6 @@ func (o *AvailableEndpointData) HasMethod() bool {
 func (o *AvailableEndpointData) SetMethod(v string) {
 	o.Method.Set(&v)
 }
-
 // SetMethodNil sets the value for Method to be an explicit nil
 func (o *AvailableEndpointData) SetMethodNil() {
 	o.Method.Set(nil)
@@ -194,7 +192,6 @@ func (o *AvailableEndpointData) HasDescription() bool {
 func (o *AvailableEndpointData) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *AvailableEndpointData) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -237,7 +234,6 @@ func (o *AvailableEndpointData) HasController() bool {
 func (o *AvailableEndpointData) SetController(v string) {
 	o.Controller.Set(&v)
 }
-
 // SetControllerNil sets the value for Controller to be an explicit nil
 func (o *AvailableEndpointData) SetControllerNil() {
 	o.Controller.Set(nil)
@@ -249,7 +245,7 @@ func (o *AvailableEndpointData) UnsetController() {
 }
 
 func (o AvailableEndpointData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -311,3 +307,5 @@ func (v *NullableAvailableEndpointData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

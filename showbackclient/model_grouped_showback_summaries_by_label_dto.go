@@ -20,7 +20,7 @@ var _ MappedNullable = &GroupedShowbackSummariesByLabelDto{}
 
 // GroupedShowbackSummariesByLabelDto struct for GroupedShowbackSummariesByLabelDto
 type GroupedShowbackSummariesByLabelDto struct {
-	ByLabel    NullableString  `json:"byLabel,omitempty"`
+	ByLabel NullableString `json:"byLabel,omitempty"`
 	TotalPrice NullableFloat64 `json:"totalPrice,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *GroupedShowbackSummariesByLabelDto) HasByLabel() bool {
 func (o *GroupedShowbackSummariesByLabelDto) SetByLabel(v string) {
 	o.ByLabel.Set(&v)
 }
-
 // SetByLabelNil sets the value for ByLabel to be an explicit nil
 func (o *GroupedShowbackSummariesByLabelDto) SetByLabelNil() {
 	o.ByLabel.Set(nil)
@@ -116,7 +115,6 @@ func (o *GroupedShowbackSummariesByLabelDto) HasTotalPrice() bool {
 func (o *GroupedShowbackSummariesByLabelDto) SetTotalPrice(v float64) {
 	o.TotalPrice.Set(&v)
 }
-
 // SetTotalPriceNil sets the value for TotalPrice to be an explicit nil
 func (o *GroupedShowbackSummariesByLabelDto) SetTotalPriceNil() {
 	o.TotalPrice.Set(nil)
@@ -128,7 +126,7 @@ func (o *GroupedShowbackSummariesByLabelDto) UnsetTotalPrice() {
 }
 
 func (o GroupedShowbackSummariesByLabelDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableGroupedShowbackSummariesByLabelDto) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

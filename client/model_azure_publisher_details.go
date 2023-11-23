@@ -20,8 +20,8 @@ var _ MappedNullable = &AzurePublisherDetails{}
 
 // AzurePublisherDetails struct for AzurePublisherDetails
 type AzurePublisherDetails struct {
-	Publisher NullableString     `json:"publisher,omitempty"`
-	Image     *AzureCommonImages `json:"image,omitempty"`
+	Publisher NullableString `json:"publisher,omitempty"`
+	Image *AzureCommonImages `json:"image,omitempty"`
 }
 
 // NewAzurePublisherDetails instantiates a new AzurePublisherDetails object
@@ -73,7 +73,6 @@ func (o *AzurePublisherDetails) HasPublisher() bool {
 func (o *AzurePublisherDetails) SetPublisher(v string) {
 	o.Publisher.Set(&v)
 }
-
 // SetPublisherNil sets the value for Publisher to be an explicit nil
 func (o *AzurePublisherDetails) SetPublisherNil() {
 	o.Publisher.Set(nil)
@@ -117,7 +116,7 @@ func (o *AzurePublisherDetails) SetImage(v AzureCommonImages) {
 }
 
 func (o AzurePublisherDetails) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableAzurePublisherDetails) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

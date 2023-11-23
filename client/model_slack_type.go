@@ -21,7 +21,7 @@ type SlackType string
 
 // List of SlackType
 const (
-	SLACKTYPE_ALERT   SlackType = "Alert"
+	SLACKTYPE_ALERT SlackType = "Alert"
 	SLACKTYPE_GENERAL SlackType = "General"
 )
 
@@ -109,3 +109,4 @@ func (v *NullableSlackType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

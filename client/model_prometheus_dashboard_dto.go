@@ -20,12 +20,12 @@ var _ MappedNullable = &PrometheusDashboardDto{}
 
 // PrometheusDashboardDto struct for PrometheusDashboardDto
 type PrometheusDashboardDto struct {
-	Id                *int32         `json:"id,omitempty"`
-	Name              NullableString `json:"name,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	ExpressionDecoded NullableString `json:"expressionDecoded,omitempty"`
 	ExpressionEncoded NullableString `json:"expressionEncoded,omitempty"`
-	Description       NullableString `json:"description,omitempty"`
-	IsReadonly        *bool          `json:"isReadonly,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	IsReadonly *bool `json:"isReadonly,omitempty"`
 }
 
 // NewPrometheusDashboardDto instantiates a new PrometheusDashboardDto object
@@ -109,7 +109,6 @@ func (o *PrometheusDashboardDto) HasName() bool {
 func (o *PrometheusDashboardDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PrometheusDashboardDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -152,7 +151,6 @@ func (o *PrometheusDashboardDto) HasExpressionDecoded() bool {
 func (o *PrometheusDashboardDto) SetExpressionDecoded(v string) {
 	o.ExpressionDecoded.Set(&v)
 }
-
 // SetExpressionDecodedNil sets the value for ExpressionDecoded to be an explicit nil
 func (o *PrometheusDashboardDto) SetExpressionDecodedNil() {
 	o.ExpressionDecoded.Set(nil)
@@ -195,7 +193,6 @@ func (o *PrometheusDashboardDto) HasExpressionEncoded() bool {
 func (o *PrometheusDashboardDto) SetExpressionEncoded(v string) {
 	o.ExpressionEncoded.Set(&v)
 }
-
 // SetExpressionEncodedNil sets the value for ExpressionEncoded to be an explicit nil
 func (o *PrometheusDashboardDto) SetExpressionEncodedNil() {
 	o.ExpressionEncoded.Set(nil)
@@ -238,7 +235,6 @@ func (o *PrometheusDashboardDto) HasDescription() bool {
 func (o *PrometheusDashboardDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *PrometheusDashboardDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -282,7 +278,7 @@ func (o *PrometheusDashboardDto) SetIsReadonly(v bool) {
 }
 
 func (o PrometheusDashboardDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -347,3 +343,5 @@ func (v *NullablePrometheusDashboardDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

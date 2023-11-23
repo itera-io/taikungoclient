@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_UserGroupAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 
 	t.Run("Test UserGroupAPIService UsergroupsBindProjectsGroup", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.UserGroupAPI.UsergroupsBindProjectsGroup(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 
 	t.Run("Test UserGroupAPIService UsergroupsCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.UserGroupAPI.UsergroupsCreate(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 
 	t.Run("Test UserGroupAPIService UsergroupsDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.UserGroupAPI.UsergroupsDelete(context.Background()).Execute()
 
@@ -58,7 +58,7 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 
 	t.Run("Test UserGroupAPIService UsergroupsList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.UserGroupAPI.UsergroupsList(context.Background()).Execute()
 
@@ -70,7 +70,7 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 
 	t.Run("Test UserGroupAPIService UsergroupsListByProjectGroupId", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectGroupId int32
 
@@ -84,7 +84,7 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 
 	t.Run("Test UserGroupAPIService UsergroupsUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var userGroupId int32
 
@@ -97,7 +97,7 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 
 	t.Run("Test UserGroupAPIService UsergroupsUserGroupUsers", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var userGroupId int32
 

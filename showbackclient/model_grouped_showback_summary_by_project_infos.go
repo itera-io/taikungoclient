@@ -20,10 +20,10 @@ var _ MappedNullable = &GroupedShowbackSummaryByProjectInfos{}
 
 // GroupedShowbackSummaryByProjectInfos struct for GroupedShowbackSummaryByProjectInfos
 type GroupedShowbackSummaryByProjectInfos struct {
-	Data           []GroupedShowbackSummariesByProjectDto `json:"data,omitempty"`
-	RuleName       NullableString                         `json:"ruleName,omitempty"`
-	CredentialName NullableString                         `json:"credentialName,omitempty"`
-	TotalPrice     NullableFloat64                        `json:"totalPrice,omitempty"`
+	Data []GroupedShowbackSummariesByProjectDto `json:"data,omitempty"`
+	RuleName NullableString `json:"ruleName,omitempty"`
+	CredentialName NullableString `json:"credentialName,omitempty"`
+	TotalPrice NullableFloat64 `json:"totalPrice,omitempty"`
 }
 
 // NewGroupedShowbackSummaryByProjectInfos instantiates a new GroupedShowbackSummaryByProjectInfos object
@@ -108,7 +108,6 @@ func (o *GroupedShowbackSummaryByProjectInfos) HasRuleName() bool {
 func (o *GroupedShowbackSummaryByProjectInfos) SetRuleName(v string) {
 	o.RuleName.Set(&v)
 }
-
 // SetRuleNameNil sets the value for RuleName to be an explicit nil
 func (o *GroupedShowbackSummaryByProjectInfos) SetRuleNameNil() {
 	o.RuleName.Set(nil)
@@ -151,7 +150,6 @@ func (o *GroupedShowbackSummaryByProjectInfos) HasCredentialName() bool {
 func (o *GroupedShowbackSummaryByProjectInfos) SetCredentialName(v string) {
 	o.CredentialName.Set(&v)
 }
-
 // SetCredentialNameNil sets the value for CredentialName to be an explicit nil
 func (o *GroupedShowbackSummaryByProjectInfos) SetCredentialNameNil() {
 	o.CredentialName.Set(nil)
@@ -194,7 +192,6 @@ func (o *GroupedShowbackSummaryByProjectInfos) HasTotalPrice() bool {
 func (o *GroupedShowbackSummaryByProjectInfos) SetTotalPrice(v float64) {
 	o.TotalPrice.Set(&v)
 }
-
 // SetTotalPriceNil sets the value for TotalPrice to be an explicit nil
 func (o *GroupedShowbackSummaryByProjectInfos) SetTotalPriceNil() {
 	o.TotalPrice.Set(nil)
@@ -206,7 +203,7 @@ func (o *GroupedShowbackSummaryByProjectInfos) UnsetTotalPrice() {
 }
 
 func (o GroupedShowbackSummaryByProjectInfos) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -265,3 +262,5 @@ func (v *NullableGroupedShowbackSummaryByProjectInfos) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,8 +20,8 @@ var _ MappedNullable = &AccessProfilesList{}
 
 // AccessProfilesList struct for AccessProfilesList
 type AccessProfilesList struct {
-	Data       []AccessProfilesListDto `json:"data,omitempty"`
-	TotalCount *int32                  `json:"totalCount,omitempty"`
+	Data []AccessProfilesListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewAccessProfilesList instantiates a new AccessProfilesList object
@@ -107,7 +107,7 @@ func (o *AccessProfilesList) SetTotalCount(v int32) {
 }
 
 func (o AccessProfilesList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableAccessProfilesList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

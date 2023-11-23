@@ -20,10 +20,10 @@ var _ MappedNullable = &FlavorsListDto{}
 
 // FlavorsListDto struct for FlavorsListDto
 type FlavorsListDto struct {
-	Ram              *int64          `json:"ram,omitempty"`
-	Cpu              *int32          `json:"cpu,omitempty"`
-	Name             NullableString  `json:"name,omitempty"`
-	Description      interface{}     `json:"description,omitempty"`
+	Ram *int64 `json:"ram,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Description interface{} `json:"description,omitempty"`
 	MaxDataDiskCount NullableFloat64 `json:"maxDataDiskCount,omitempty"`
 }
 
@@ -140,7 +140,6 @@ func (o *FlavorsListDto) HasName() bool {
 func (o *FlavorsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *FlavorsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -216,7 +215,6 @@ func (o *FlavorsListDto) HasMaxDataDiskCount() bool {
 func (o *FlavorsListDto) SetMaxDataDiskCount(v float64) {
 	o.MaxDataDiskCount.Set(&v)
 }
-
 // SetMaxDataDiskCountNil sets the value for MaxDataDiskCount to be an explicit nil
 func (o *FlavorsListDto) SetMaxDataDiskCountNil() {
 	o.MaxDataDiskCount.Set(nil)
@@ -228,7 +226,7 @@ func (o *FlavorsListDto) UnsetMaxDataDiskCount() {
 }
 
 func (o FlavorsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -290,3 +288,5 @@ func (v *NullableFlavorsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,19 +20,19 @@ var _ MappedNullable = &ShowbackCredentialsListDto{}
 
 // ShowbackCredentialsListDto struct for ShowbackCredentialsListDto
 type ShowbackCredentialsListDto struct {
-	Id               *int32                  `json:"id,omitempty"`
-	Name             NullableString          `json:"name,omitempty"`
-	Url              NullableString          `json:"url,omitempty"`
-	CreatedAt        NullableString          `json:"createdAt,omitempty"`
-	Username         NullableString          `json:"username,omitempty"`
-	Password         NullableString          `json:"password,omitempty"`
-	IsLocked         *bool                   `json:"isLocked,omitempty"`
-	OrganizationName NullableString          `json:"organizationName,omitempty"`
-	OrganizationId   *int32                  `json:"organizationId,omitempty"`
-	CreatedBy        NullableString          `json:"createdBy,omitempty"`
-	LastModified     NullableString          `json:"lastModified,omitempty"`
-	LastModifiedBy   NullableString          `json:"lastModifiedBy,omitempty"`
-	Rules            []ShowbackRuleEntityDto `json:"rules,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Password NullableString `json:"password,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	Rules []ShowbackRuleEntityDto `json:"rules,omitempty"`
 }
 
 // NewShowbackCredentialsListDto instantiates a new ShowbackCredentialsListDto object
@@ -116,7 +116,6 @@ func (o *ShowbackCredentialsListDto) HasName() bool {
 func (o *ShowbackCredentialsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ShowbackCredentialsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -159,7 +158,6 @@ func (o *ShowbackCredentialsListDto) HasUrl() bool {
 func (o *ShowbackCredentialsListDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ShowbackCredentialsListDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -202,7 +200,6 @@ func (o *ShowbackCredentialsListDto) HasCreatedAt() bool {
 func (o *ShowbackCredentialsListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *ShowbackCredentialsListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -245,7 +242,6 @@ func (o *ShowbackCredentialsListDto) HasUsername() bool {
 func (o *ShowbackCredentialsListDto) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *ShowbackCredentialsListDto) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -288,7 +284,6 @@ func (o *ShowbackCredentialsListDto) HasPassword() bool {
 func (o *ShowbackCredentialsListDto) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *ShowbackCredentialsListDto) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -363,7 +358,6 @@ func (o *ShowbackCredentialsListDto) HasOrganizationName() bool {
 func (o *ShowbackCredentialsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ShowbackCredentialsListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -438,7 +432,6 @@ func (o *ShowbackCredentialsListDto) HasCreatedBy() bool {
 func (o *ShowbackCredentialsListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ShowbackCredentialsListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -481,7 +474,6 @@ func (o *ShowbackCredentialsListDto) HasLastModified() bool {
 func (o *ShowbackCredentialsListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *ShowbackCredentialsListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -524,7 +516,6 @@ func (o *ShowbackCredentialsListDto) HasLastModifiedBy() bool {
 func (o *ShowbackCredentialsListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *ShowbackCredentialsListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -569,7 +560,7 @@ func (o *ShowbackCredentialsListDto) SetRules(v []ShowbackRuleEntityDto) {
 }
 
 func (o ShowbackCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -655,3 +646,5 @@ func (v *NullableShowbackCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
