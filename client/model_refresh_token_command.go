@@ -20,7 +20,7 @@ var _ MappedNullable = &RefreshTokenCommand{}
 
 // RefreshTokenCommand struct for RefreshTokenCommand
 type RefreshTokenCommand struct {
-	Token        NullableString `json:"token,omitempty"`
+	Token NullableString `json:"token,omitempty"`
 	RefreshToken NullableString `json:"refreshToken,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *RefreshTokenCommand) HasToken() bool {
 func (o *RefreshTokenCommand) SetToken(v string) {
 	o.Token.Set(&v)
 }
-
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *RefreshTokenCommand) SetTokenNil() {
 	o.Token.Set(nil)
@@ -116,7 +115,6 @@ func (o *RefreshTokenCommand) HasRefreshToken() bool {
 func (o *RefreshTokenCommand) SetRefreshToken(v string) {
 	o.RefreshToken.Set(&v)
 }
-
 // SetRefreshTokenNil sets the value for RefreshToken to be an explicit nil
 func (o *RefreshTokenCommand) SetRefreshTokenNil() {
 	o.RefreshToken.Set(nil)
@@ -128,7 +126,7 @@ func (o *RefreshTokenCommand) UnsetRefreshToken() {
 }
 
 func (o RefreshTokenCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableRefreshTokenCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

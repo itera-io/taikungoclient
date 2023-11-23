@@ -20,11 +20,11 @@ var _ MappedNullable = &EditSecurityGroupCommand{}
 
 // EditSecurityGroupCommand struct for EditSecurityGroupCommand
 type EditSecurityGroupCommand struct {
-	Id             *int32         `json:"id,omitempty"`
-	Name           NullableString `json:"name,omitempty"`
-	Protocol       NullableString `json:"protocol,omitempty"`
-	PortMinRange   *int32         `json:"portMinRange,omitempty"`
-	PortMaxRange   *int32         `json:"portMaxRange,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Protocol NullableString `json:"protocol,omitempty"`
+	PortMinRange *int32 `json:"portMinRange,omitempty"`
+	PortMaxRange *int32 `json:"portMaxRange,omitempty"`
 	RemoteIpPrefix NullableString `json:"remoteIpPrefix,omitempty"`
 }
 
@@ -109,7 +109,6 @@ func (o *EditSecurityGroupCommand) HasName() bool {
 func (o *EditSecurityGroupCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *EditSecurityGroupCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -152,7 +151,6 @@ func (o *EditSecurityGroupCommand) HasProtocol() bool {
 func (o *EditSecurityGroupCommand) SetProtocol(v string) {
 	o.Protocol.Set(&v)
 }
-
 // SetProtocolNil sets the value for Protocol to be an explicit nil
 func (o *EditSecurityGroupCommand) SetProtocolNil() {
 	o.Protocol.Set(nil)
@@ -259,7 +257,6 @@ func (o *EditSecurityGroupCommand) HasRemoteIpPrefix() bool {
 func (o *EditSecurityGroupCommand) SetRemoteIpPrefix(v string) {
 	o.RemoteIpPrefix.Set(&v)
 }
-
 // SetRemoteIpPrefixNil sets the value for RemoteIpPrefix to be an explicit nil
 func (o *EditSecurityGroupCommand) SetRemoteIpPrefixNil() {
 	o.RemoteIpPrefix.Set(nil)
@@ -271,7 +268,7 @@ func (o *EditSecurityGroupCommand) UnsetRemoteIpPrefix() {
 }
 
 func (o EditSecurityGroupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -336,3 +333,5 @@ func (v *NullableEditSecurityGroupCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

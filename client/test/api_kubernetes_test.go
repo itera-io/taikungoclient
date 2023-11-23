@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_KubernetesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesAddK8sAlert", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -37,7 +37,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesAddK8sEvents", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -50,7 +50,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesAlertList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -64,7 +64,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesCli", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesCli(context.Background()).Execute()
 
@@ -76,7 +76,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesConfigMapList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -90,7 +90,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesCrdList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -104,7 +104,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesCronJobList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -118,7 +118,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDaemonSetList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -132,7 +132,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDashboardList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -146,7 +146,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDeploymentList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -160,7 +160,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeConfigMap", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeConfigMap(context.Background()).Execute()
 
@@ -172,7 +172,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeCrd", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeCrd(context.Background()).Execute()
 
@@ -184,7 +184,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeCronjob", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeCronjob(context.Background()).Execute()
 
@@ -196,7 +196,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeDaemonSet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeDaemonSet(context.Background()).Execute()
 
@@ -208,7 +208,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeDeployment", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeDeployment(context.Background()).Execute()
 
@@ -220,7 +220,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeIngress", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeIngress(context.Background()).Execute()
 
@@ -232,7 +232,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeJob", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeJob(context.Background()).Execute()
 
@@ -244,7 +244,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeNetworkPolicy", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeNetworkPolicy(context.Background()).Execute()
 
@@ -256,7 +256,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeNode", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeNode(context.Background()).Execute()
 
@@ -268,7 +268,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribePdb", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribePdb(context.Background()).Execute()
 
@@ -280,7 +280,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribePod", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribePod(context.Background()).Execute()
 
@@ -292,7 +292,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribePvc", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribePvc(context.Background()).Execute()
 
@@ -304,7 +304,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeSecret", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeSecret(context.Background()).Execute()
 
@@ -316,7 +316,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeService", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeService(context.Background()).Execute()
 
@@ -328,7 +328,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeStorageClass", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeStorageClass(context.Background()).Execute()
 
@@ -340,7 +340,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDescribeSts", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeSts(context.Background()).Execute()
 
@@ -352,7 +352,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesDownload", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -366,7 +366,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesExport", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesExport(context.Background()).Execute()
 
@@ -378,7 +378,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesGetSupportedList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesGetSupportedList(context.Background()).Execute()
 
@@ -390,7 +390,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesHelmReleaseList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -404,7 +404,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesIngressList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -418,7 +418,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesInteractiveShell", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesInteractiveShell(context.Background()).Execute()
 
@@ -430,7 +430,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesJobsList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -444,7 +444,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesKillPod", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 		var metadataName string
@@ -459,7 +459,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesKubeConfig", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -473,7 +473,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesNamespaceList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -487,7 +487,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesNetworkPolicyList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -501,7 +501,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesNodeList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -515,7 +515,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesOverview", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesOverview(context.Background()).Execute()
 
@@ -527,7 +527,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPatchCrd", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchCrd(context.Background()).Execute()
 
@@ -538,7 +538,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPatchCronJob", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchCronJob(context.Background()).Execute()
 
@@ -549,7 +549,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPatchIngress", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchIngress(context.Background()).Execute()
 
@@ -560,7 +560,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPatchJob", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchJob(context.Background()).Execute()
 
@@ -571,7 +571,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPatchNode", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchNode(context.Background()).Execute()
 
@@ -582,7 +582,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPatchPdb", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchPdb(context.Background()).Execute()
 
@@ -593,7 +593,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPatchPod", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchPod(context.Background()).Execute()
 
@@ -604,7 +604,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPatchPvc", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchPvc(context.Background()).Execute()
 
@@ -615,7 +615,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPatchSecret", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchSecret(context.Background()).Execute()
 
@@ -626,7 +626,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPatchSts", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchSts(context.Background()).Execute()
 
@@ -637,7 +637,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPdbList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -651,7 +651,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPodList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -665,7 +665,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPodLogs", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesPodLogs(context.Background()).Execute()
 
@@ -677,7 +677,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesPvcList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -691,7 +691,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesQuota", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -705,7 +705,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesRemovealerts", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesRemovealerts(context.Background()).Execute()
 
@@ -716,7 +716,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesRestartDaemonSet", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesRestartDaemonSet(context.Background()).Execute()
 
@@ -727,7 +727,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesRestartDeployment", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesRestartDeployment(context.Background()).Execute()
 
@@ -738,7 +738,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesRestartSts", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesRestartSts(context.Background()).Execute()
 
@@ -749,7 +749,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesSecretList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -763,7 +763,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesServiceList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -777,7 +777,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesSilenceManager", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.KubernetesAPI.KubernetesSilenceManager(context.Background()).Execute()
 
@@ -788,7 +788,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesStorageClassList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -802,7 +802,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesStsList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -816,7 +816,7 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	t.Run("Test KubernetesAPIService KubernetesUpdateAlert", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var alertId int32
 

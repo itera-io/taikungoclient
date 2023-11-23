@@ -20,8 +20,8 @@ var _ MappedNullable = &ProxmoxFlavorList{}
 
 // ProxmoxFlavorList struct for ProxmoxFlavorList
 type ProxmoxFlavorList struct {
-	Data       []ProxmoxFlavorData `json:"data,omitempty"`
-	TotalCount *int32              `json:"totalCount,omitempty"`
+	Data []ProxmoxFlavorData `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewProxmoxFlavorList instantiates a new ProxmoxFlavorList object
@@ -107,7 +107,7 @@ func (o *ProxmoxFlavorList) SetTotalCount(v int32) {
 }
 
 func (o ProxmoxFlavorList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableProxmoxFlavorList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

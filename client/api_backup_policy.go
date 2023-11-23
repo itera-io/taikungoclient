@@ -20,14 +20,15 @@ import (
 	"strings"
 )
 
+
 // BackupPolicyAPIService BackupPolicyAPI service
 type BackupPolicyAPIService service
 
 type ApiBackupByNameRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BackupPolicyAPIService
-	projectId  int32
-	name       string
+	projectId int32
+	name string
 }
 
 func (r ApiBackupByNameRequest) Execute() (*BackupDto, *http.Response, error) {
@@ -37,29 +38,28 @@ func (r ApiBackupByNameRequest) Execute() (*BackupDto, *http.Response, error) {
 /*
 BackupByName Method for BackupByName
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@param name
-	@return ApiBackupByNameRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @param name
+ @return ApiBackupByNameRequest
 */
 func (a *BackupPolicyAPIService) BackupByName(ctx context.Context, projectId int32, name string) ApiBackupByNameRequest {
 	return ApiBackupByNameRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
-		name:       name,
+		ctx: ctx,
+		projectId: projectId,
+		name: name,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BackupDto
+//  @return BackupDto
 func (a *BackupPolicyAPIService) BackupByNameExecute(r ApiBackupByNameRequest) (*BackupDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BackupDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BackupDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupByName")
@@ -135,8 +135,8 @@ func (a *BackupPolicyAPIService) BackupByNameExecute(r ApiBackupByNameRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *BackupPolicyAPIService) BackupByNameExecute(r ApiBackupByNameRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *BackupPolicyAPIService) BackupByNameExecute(r ApiBackupByNameRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *BackupPolicyAPIService) BackupByNameExecute(r ApiBackupByNameRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -179,8 +179,8 @@ func (a *BackupPolicyAPIService) BackupByNameExecute(r ApiBackupByNameRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -198,8 +198,8 @@ func (a *BackupPolicyAPIService) BackupByNameExecute(r ApiBackupByNameRequest) (
 }
 
 type ApiBackupClearProjectRequest struct {
-	ctx                       context.Context
-	ApiService                *BackupPolicyAPIService
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
 	clearProjectBackupCommand *ClearProjectBackupCommand
 }
 
@@ -215,22 +215,22 @@ func (r ApiBackupClearProjectRequest) Execute() (*http.Response, error) {
 /*
 BackupClearProject Delete unfinished backup for project
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiBackupClearProjectRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiBackupClearProjectRequest
 */
 func (a *BackupPolicyAPIService) BackupClearProject(ctx context.Context) ApiBackupClearProjectRequest {
 	return ApiBackupClearProjectRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *BackupPolicyAPIService) BackupClearProjectExecute(r ApiBackupClearProjectRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupClearProject")
@@ -309,8 +309,8 @@ func (a *BackupPolicyAPIService) BackupClearProjectExecute(r ApiBackupClearProje
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -320,8 +320,8 @@ func (a *BackupPolicyAPIService) BackupClearProjectExecute(r ApiBackupClearProje
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -331,8 +331,8 @@ func (a *BackupPolicyAPIService) BackupClearProjectExecute(r ApiBackupClearProje
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -342,8 +342,8 @@ func (a *BackupPolicyAPIService) BackupClearProjectExecute(r ApiBackupClearProje
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -353,8 +353,8 @@ func (a *BackupPolicyAPIService) BackupClearProjectExecute(r ApiBackupClearProje
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -363,8 +363,8 @@ func (a *BackupPolicyAPIService) BackupClearProjectExecute(r ApiBackupClearProje
 }
 
 type ApiBackupCreateRequest struct {
-	ctx                       context.Context
-	ApiService                *BackupPolicyAPIService
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
 	createBackupPolicyCommand *CreateBackupPolicyCommand
 }
 
@@ -380,22 +380,22 @@ func (r ApiBackupCreateRequest) Execute() (*http.Response, error) {
 /*
 BackupCreate Add backup policy
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiBackupCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiBackupCreateRequest
 */
 func (a *BackupPolicyAPIService) BackupCreate(ctx context.Context) ApiBackupCreateRequest {
 	return ApiBackupCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *BackupPolicyAPIService) BackupCreateExecute(r ApiBackupCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupCreate")
@@ -471,8 +471,8 @@ func (a *BackupPolicyAPIService) BackupCreateExecute(r ApiBackupCreateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -482,8 +482,8 @@ func (a *BackupPolicyAPIService) BackupCreateExecute(r ApiBackupCreateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -493,8 +493,8 @@ func (a *BackupPolicyAPIService) BackupCreateExecute(r ApiBackupCreateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -504,8 +504,8 @@ func (a *BackupPolicyAPIService) BackupCreateExecute(r ApiBackupCreateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -515,8 +515,8 @@ func (a *BackupPolicyAPIService) BackupCreateExecute(r ApiBackupCreateRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -525,8 +525,8 @@ func (a *BackupPolicyAPIService) BackupCreateExecute(r ApiBackupCreateRequest) (
 }
 
 type ApiBackupDeleteBackupRequest struct {
-	ctx                 context.Context
-	ApiService          *BackupPolicyAPIService
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
 	deleteBackupCommand *DeleteBackupCommand
 }
 
@@ -542,22 +542,22 @@ func (r ApiBackupDeleteBackupRequest) Execute() (*http.Response, error) {
 /*
 BackupDeleteBackup Remove policy backup
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiBackupDeleteBackupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiBackupDeleteBackupRequest
 */
 func (a *BackupPolicyAPIService) BackupDeleteBackup(ctx context.Context) ApiBackupDeleteBackupRequest {
 	return ApiBackupDeleteBackupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *BackupPolicyAPIService) BackupDeleteBackupExecute(r ApiBackupDeleteBackupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupDeleteBackup")
@@ -636,8 +636,8 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupExecute(r ApiBackupDeleteBack
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -647,8 +647,8 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupExecute(r ApiBackupDeleteBack
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -658,8 +658,8 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupExecute(r ApiBackupDeleteBack
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -669,8 +669,8 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupExecute(r ApiBackupDeleteBack
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -680,8 +680,8 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupExecute(r ApiBackupDeleteBack
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -690,8 +690,8 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupExecute(r ApiBackupDeleteBack
 }
 
 type ApiBackupDeleteBackupLocationRequest struct {
-	ctx                                context.Context
-	ApiService                         *BackupPolicyAPIService
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
 	deleteBackupStorageLocationCommand *DeleteBackupStorageLocationCommand
 }
 
@@ -707,22 +707,22 @@ func (r ApiBackupDeleteBackupLocationRequest) Execute() (*http.Response, error) 
 /*
 BackupDeleteBackupLocation Remove backup location from project
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiBackupDeleteBackupLocationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiBackupDeleteBackupLocationRequest
 */
 func (a *BackupPolicyAPIService) BackupDeleteBackupLocation(ctx context.Context) ApiBackupDeleteBackupLocationRequest {
 	return ApiBackupDeleteBackupLocationRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *BackupPolicyAPIService) BackupDeleteBackupLocationExecute(r ApiBackupDeleteBackupLocationRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupDeleteBackupLocation")
@@ -801,8 +801,8 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupLocationExecute(r ApiBackupDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -812,8 +812,8 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupLocationExecute(r ApiBackupDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -823,8 +823,8 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupLocationExecute(r ApiBackupDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -834,8 +834,8 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupLocationExecute(r ApiBackupDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -845,8 +845,8 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupLocationExecute(r ApiBackupDe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -855,8 +855,8 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupLocationExecute(r ApiBackupDe
 }
 
 type ApiBackupDeleteRestoreRequest struct {
-	ctx                  context.Context
-	ApiService           *BackupPolicyAPIService
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
 	deleteRestoreCommand *DeleteRestoreCommand
 }
 
@@ -872,22 +872,22 @@ func (r ApiBackupDeleteRestoreRequest) Execute() (*http.Response, error) {
 /*
 BackupDeleteRestore Remove policy restore
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiBackupDeleteRestoreRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiBackupDeleteRestoreRequest
 */
 func (a *BackupPolicyAPIService) BackupDeleteRestore(ctx context.Context) ApiBackupDeleteRestoreRequest {
 	return ApiBackupDeleteRestoreRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *BackupPolicyAPIService) BackupDeleteRestoreExecute(r ApiBackupDeleteRestoreRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupDeleteRestore")
@@ -966,8 +966,8 @@ func (a *BackupPolicyAPIService) BackupDeleteRestoreExecute(r ApiBackupDeleteRes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -977,8 +977,8 @@ func (a *BackupPolicyAPIService) BackupDeleteRestoreExecute(r ApiBackupDeleteRes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -988,8 +988,8 @@ func (a *BackupPolicyAPIService) BackupDeleteRestoreExecute(r ApiBackupDeleteRes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -999,8 +999,8 @@ func (a *BackupPolicyAPIService) BackupDeleteRestoreExecute(r ApiBackupDeleteRes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1010,8 +1010,8 @@ func (a *BackupPolicyAPIService) BackupDeleteRestoreExecute(r ApiBackupDeleteRes
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1020,8 +1020,8 @@ func (a *BackupPolicyAPIService) BackupDeleteRestoreExecute(r ApiBackupDeleteRes
 }
 
 type ApiBackupDeleteScheduleRequest struct {
-	ctx                   context.Context
-	ApiService            *BackupPolicyAPIService
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
 	deleteScheduleCommand *DeleteScheduleCommand
 }
 
@@ -1037,22 +1037,22 @@ func (r ApiBackupDeleteScheduleRequest) Execute() (*http.Response, error) {
 /*
 BackupDeleteSchedule Remove policy schedule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiBackupDeleteScheduleRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiBackupDeleteScheduleRequest
 */
 func (a *BackupPolicyAPIService) BackupDeleteSchedule(ctx context.Context) ApiBackupDeleteScheduleRequest {
 	return ApiBackupDeleteScheduleRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *BackupPolicyAPIService) BackupDeleteScheduleExecute(r ApiBackupDeleteScheduleRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupDeleteSchedule")
@@ -1131,8 +1131,8 @@ func (a *BackupPolicyAPIService) BackupDeleteScheduleExecute(r ApiBackupDeleteSc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1142,8 +1142,8 @@ func (a *BackupPolicyAPIService) BackupDeleteScheduleExecute(r ApiBackupDeleteSc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1153,8 +1153,8 @@ func (a *BackupPolicyAPIService) BackupDeleteScheduleExecute(r ApiBackupDeleteSc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1164,8 +1164,8 @@ func (a *BackupPolicyAPIService) BackupDeleteScheduleExecute(r ApiBackupDeleteSc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1175,8 +1175,8 @@ func (a *BackupPolicyAPIService) BackupDeleteScheduleExecute(r ApiBackupDeleteSc
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1185,10 +1185,10 @@ func (a *BackupPolicyAPIService) BackupDeleteScheduleExecute(r ApiBackupDeleteSc
 }
 
 type ApiBackupDescribeBackupRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BackupPolicyAPIService
-	projectId  int32
-	name       string
+	projectId int32
+	name string
 }
 
 func (r ApiBackupDescribeBackupRequest) Execute() (string, *http.Response, error) {
@@ -1198,29 +1198,28 @@ func (r ApiBackupDescribeBackupRequest) Execute() (string, *http.Response, error
 /*
 BackupDescribeBackup Method for BackupDescribeBackup
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@param name
-	@return ApiBackupDescribeBackupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @param name
+ @return ApiBackupDescribeBackupRequest
 */
 func (a *BackupPolicyAPIService) BackupDescribeBackup(ctx context.Context, projectId int32, name string) ApiBackupDescribeBackupRequest {
 	return ApiBackupDescribeBackupRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
-		name:       name,
+		ctx: ctx,
+		projectId: projectId,
+		name: name,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *BackupPolicyAPIService) BackupDescribeBackupExecute(r ApiBackupDescribeBackupRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupDescribeBackup")
@@ -1296,8 +1295,8 @@ func (a *BackupPolicyAPIService) BackupDescribeBackupExecute(r ApiBackupDescribe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1307,8 +1306,8 @@ func (a *BackupPolicyAPIService) BackupDescribeBackupExecute(r ApiBackupDescribe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1318,8 +1317,8 @@ func (a *BackupPolicyAPIService) BackupDescribeBackupExecute(r ApiBackupDescribe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1329,8 +1328,8 @@ func (a *BackupPolicyAPIService) BackupDescribeBackupExecute(r ApiBackupDescribe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1340,8 +1339,8 @@ func (a *BackupPolicyAPIService) BackupDescribeBackupExecute(r ApiBackupDescribe
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1359,10 +1358,10 @@ func (a *BackupPolicyAPIService) BackupDescribeBackupExecute(r ApiBackupDescribe
 }
 
 type ApiBackupDescribeRestoreRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BackupPolicyAPIService
-	projectId  int32
-	name       string
+	projectId int32
+	name string
 }
 
 func (r ApiBackupDescribeRestoreRequest) Execute() (string, *http.Response, error) {
@@ -1372,29 +1371,28 @@ func (r ApiBackupDescribeRestoreRequest) Execute() (string, *http.Response, erro
 /*
 BackupDescribeRestore Method for BackupDescribeRestore
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@param name
-	@return ApiBackupDescribeRestoreRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @param name
+ @return ApiBackupDescribeRestoreRequest
 */
 func (a *BackupPolicyAPIService) BackupDescribeRestore(ctx context.Context, projectId int32, name string) ApiBackupDescribeRestoreRequest {
 	return ApiBackupDescribeRestoreRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
-		name:       name,
+		ctx: ctx,
+		projectId: projectId,
+		name: name,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *BackupPolicyAPIService) BackupDescribeRestoreExecute(r ApiBackupDescribeRestoreRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupDescribeRestore")
@@ -1470,8 +1468,8 @@ func (a *BackupPolicyAPIService) BackupDescribeRestoreExecute(r ApiBackupDescrib
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1481,8 +1479,8 @@ func (a *BackupPolicyAPIService) BackupDescribeRestoreExecute(r ApiBackupDescrib
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1492,8 +1490,8 @@ func (a *BackupPolicyAPIService) BackupDescribeRestoreExecute(r ApiBackupDescrib
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1503,8 +1501,8 @@ func (a *BackupPolicyAPIService) BackupDescribeRestoreExecute(r ApiBackupDescrib
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1514,8 +1512,8 @@ func (a *BackupPolicyAPIService) BackupDescribeRestoreExecute(r ApiBackupDescrib
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1533,10 +1531,10 @@ func (a *BackupPolicyAPIService) BackupDescribeRestoreExecute(r ApiBackupDescrib
 }
 
 type ApiBackupDescribeScheduleRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *BackupPolicyAPIService
-	projectId  int32
-	name       string
+	projectId int32
+	name string
 }
 
 func (r ApiBackupDescribeScheduleRequest) Execute() (string, *http.Response, error) {
@@ -1546,29 +1544,28 @@ func (r ApiBackupDescribeScheduleRequest) Execute() (string, *http.Response, err
 /*
 BackupDescribeSchedule Method for BackupDescribeSchedule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@param name
-	@return ApiBackupDescribeScheduleRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @param name
+ @return ApiBackupDescribeScheduleRequest
 */
 func (a *BackupPolicyAPIService) BackupDescribeSchedule(ctx context.Context, projectId int32, name string) ApiBackupDescribeScheduleRequest {
 	return ApiBackupDescribeScheduleRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
-		name:       name,
+		ctx: ctx,
+		projectId: projectId,
+		name: name,
 	}
 }
 
 // Execute executes the request
-//
-//	@return string
+//  @return string
 func (a *BackupPolicyAPIService) BackupDescribeScheduleExecute(r ApiBackupDescribeScheduleRequest) (string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupDescribeSchedule")
@@ -1644,8 +1641,8 @@ func (a *BackupPolicyAPIService) BackupDescribeScheduleExecute(r ApiBackupDescri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1655,8 +1652,8 @@ func (a *BackupPolicyAPIService) BackupDescribeScheduleExecute(r ApiBackupDescri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1666,8 +1663,8 @@ func (a *BackupPolicyAPIService) BackupDescribeScheduleExecute(r ApiBackupDescri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1677,8 +1674,8 @@ func (a *BackupPolicyAPIService) BackupDescribeScheduleExecute(r ApiBackupDescri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1688,8 +1685,8 @@ func (a *BackupPolicyAPIService) BackupDescribeScheduleExecute(r ApiBackupDescri
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1707,8 +1704,8 @@ func (a *BackupPolicyAPIService) BackupDescribeScheduleExecute(r ApiBackupDescri
 }
 
 type ApiBackupDisableBackupRequest struct {
-	ctx                  context.Context
-	ApiService           *BackupPolicyAPIService
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
 	disableBackupCommand *DisableBackupCommand
 }
 
@@ -1724,22 +1721,22 @@ func (r ApiBackupDisableBackupRequest) Execute() (*http.Response, error) {
 /*
 BackupDisableBackup Disable backup by the projectId
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiBackupDisableBackupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiBackupDisableBackupRequest
 */
 func (a *BackupPolicyAPIService) BackupDisableBackup(ctx context.Context) ApiBackupDisableBackupRequest {
 	return ApiBackupDisableBackupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *BackupPolicyAPIService) BackupDisableBackupExecute(r ApiBackupDisableBackupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupDisableBackup")
@@ -1818,8 +1815,8 @@ func (a *BackupPolicyAPIService) BackupDisableBackupExecute(r ApiBackupDisableBa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1829,8 +1826,8 @@ func (a *BackupPolicyAPIService) BackupDisableBackupExecute(r ApiBackupDisableBa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1840,8 +1837,8 @@ func (a *BackupPolicyAPIService) BackupDisableBackupExecute(r ApiBackupDisableBa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1851,8 +1848,8 @@ func (a *BackupPolicyAPIService) BackupDisableBackupExecute(r ApiBackupDisableBa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1862,8 +1859,8 @@ func (a *BackupPolicyAPIService) BackupDisableBackupExecute(r ApiBackupDisableBa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1872,8 +1869,8 @@ func (a *BackupPolicyAPIService) BackupDisableBackupExecute(r ApiBackupDisableBa
 }
 
 type ApiBackupEnableBackupRequest struct {
-	ctx                 context.Context
-	ApiService          *BackupPolicyAPIService
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
 	enableBackupCommand *EnableBackupCommand
 }
 
@@ -1889,22 +1886,22 @@ func (r ApiBackupEnableBackupRequest) Execute() (*http.Response, error) {
 /*
 BackupEnableBackup Enable backup by the projectId
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiBackupEnableBackupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiBackupEnableBackupRequest
 */
 func (a *BackupPolicyAPIService) BackupEnableBackup(ctx context.Context) ApiBackupEnableBackupRequest {
 	return ApiBackupEnableBackupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *BackupPolicyAPIService) BackupEnableBackupExecute(r ApiBackupEnableBackupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupEnableBackup")
@@ -1983,8 +1980,8 @@ func (a *BackupPolicyAPIService) BackupEnableBackupExecute(r ApiBackupEnableBack
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1994,8 +1991,8 @@ func (a *BackupPolicyAPIService) BackupEnableBackupExecute(r ApiBackupEnableBack
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2005,8 +2002,8 @@ func (a *BackupPolicyAPIService) BackupEnableBackupExecute(r ApiBackupEnableBack
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2016,8 +2013,8 @@ func (a *BackupPolicyAPIService) BackupEnableBackupExecute(r ApiBackupEnableBack
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2027,8 +2024,8 @@ func (a *BackupPolicyAPIService) BackupEnableBackupExecute(r ApiBackupEnableBack
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2037,8 +2034,8 @@ func (a *BackupPolicyAPIService) BackupEnableBackupExecute(r ApiBackupEnableBack
 }
 
 type ApiBackupImportBackupStorageRequest struct {
-	ctx                                context.Context
-	ApiService                         *BackupPolicyAPIService
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
 	importBackupStorageLocationCommand *ImportBackupStorageLocationCommand
 }
 
@@ -2054,22 +2051,22 @@ func (r ApiBackupImportBackupStorageRequest) Execute() (*http.Response, error) {
 /*
 BackupImportBackupStorage Import backup storage from source project to target project
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiBackupImportBackupStorageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiBackupImportBackupStorageRequest
 */
 func (a *BackupPolicyAPIService) BackupImportBackupStorage(ctx context.Context) ApiBackupImportBackupStorageRequest {
 	return ApiBackupImportBackupStorageRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *BackupPolicyAPIService) BackupImportBackupStorageExecute(r ApiBackupImportBackupStorageRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupImportBackupStorage")
@@ -2148,8 +2145,8 @@ func (a *BackupPolicyAPIService) BackupImportBackupStorageExecute(r ApiBackupImp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2159,8 +2156,8 @@ func (a *BackupPolicyAPIService) BackupImportBackupStorageExecute(r ApiBackupImp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2170,8 +2167,8 @@ func (a *BackupPolicyAPIService) BackupImportBackupStorageExecute(r ApiBackupImp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2181,8 +2178,8 @@ func (a *BackupPolicyAPIService) BackupImportBackupStorageExecute(r ApiBackupImp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2192,8 +2189,8 @@ func (a *BackupPolicyAPIService) BackupImportBackupStorageExecute(r ApiBackupImp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2202,14 +2199,14 @@ func (a *BackupPolicyAPIService) BackupImportBackupStorageExecute(r ApiBackupImp
 }
 
 type ApiBackupListAllBackupStoragesRequest struct {
-	ctx           context.Context
-	ApiService    *BackupPolicyAPIService
-	projectId     int32
-	limit         *int32
-	offset        *int32
-	sortBy        *string
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
+	projectId int32
+	limit *int32
+	offset *int32
+	sortBy *string
 	sortDirection *string
-	search        *string
+	search *string
 }
 
 func (r ApiBackupListAllBackupStoragesRequest) Limit(limit int32) ApiBackupListAllBackupStoragesRequest {
@@ -2244,27 +2241,26 @@ func (r ApiBackupListAllBackupStoragesRequest) Execute() (*ListAllBackupStorageL
 /*
 BackupListAllBackupStorages List all backup locations
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiBackupListAllBackupStoragesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiBackupListAllBackupStoragesRequest
 */
 func (a *BackupPolicyAPIService) BackupListAllBackupStorages(ctx context.Context, projectId int32) ApiBackupListAllBackupStoragesRequest {
 	return ApiBackupListAllBackupStoragesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListAllBackupStorageLocations
+//  @return ListAllBackupStorageLocations
 func (a *BackupPolicyAPIService) BackupListAllBackupStoragesExecute(r ApiBackupListAllBackupStoragesRequest) (*ListAllBackupStorageLocations, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListAllBackupStorageLocations
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListAllBackupStorageLocations
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupListAllBackupStorages")
@@ -2354,8 +2350,8 @@ func (a *BackupPolicyAPIService) BackupListAllBackupStoragesExecute(r ApiBackupL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2365,8 +2361,8 @@ func (a *BackupPolicyAPIService) BackupListAllBackupStoragesExecute(r ApiBackupL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2376,8 +2372,8 @@ func (a *BackupPolicyAPIService) BackupListAllBackupStoragesExecute(r ApiBackupL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2387,8 +2383,8 @@ func (a *BackupPolicyAPIService) BackupListAllBackupStoragesExecute(r ApiBackupL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2398,8 +2394,8 @@ func (a *BackupPolicyAPIService) BackupListAllBackupStoragesExecute(r ApiBackupL
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2417,14 +2413,14 @@ func (a *BackupPolicyAPIService) BackupListAllBackupStoragesExecute(r ApiBackupL
 }
 
 type ApiBackupListAllBackupsRequest struct {
-	ctx           context.Context
-	ApiService    *BackupPolicyAPIService
-	projectId     int32
-	limit         *int32
-	offset        *int32
-	sortBy        *string
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
+	projectId int32
+	limit *int32
+	offset *int32
+	sortBy *string
 	sortDirection *string
-	search        *string
+	search *string
 }
 
 func (r ApiBackupListAllBackupsRequest) Limit(limit int32) ApiBackupListAllBackupsRequest {
@@ -2459,27 +2455,26 @@ func (r ApiBackupListAllBackupsRequest) Execute() (*ListAllBackups, *http.Respon
 /*
 BackupListAllBackups List all backups
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiBackupListAllBackupsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiBackupListAllBackupsRequest
 */
 func (a *BackupPolicyAPIService) BackupListAllBackups(ctx context.Context, projectId int32) ApiBackupListAllBackupsRequest {
 	return ApiBackupListAllBackupsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListAllBackups
+//  @return ListAllBackups
 func (a *BackupPolicyAPIService) BackupListAllBackupsExecute(r ApiBackupListAllBackupsRequest) (*ListAllBackups, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListAllBackups
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListAllBackups
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupListAllBackups")
@@ -2569,8 +2564,8 @@ func (a *BackupPolicyAPIService) BackupListAllBackupsExecute(r ApiBackupListAllB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2580,8 +2575,8 @@ func (a *BackupPolicyAPIService) BackupListAllBackupsExecute(r ApiBackupListAllB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2591,8 +2586,8 @@ func (a *BackupPolicyAPIService) BackupListAllBackupsExecute(r ApiBackupListAllB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2602,8 +2597,8 @@ func (a *BackupPolicyAPIService) BackupListAllBackupsExecute(r ApiBackupListAllB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2613,8 +2608,8 @@ func (a *BackupPolicyAPIService) BackupListAllBackupsExecute(r ApiBackupListAllB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2632,14 +2627,14 @@ func (a *BackupPolicyAPIService) BackupListAllBackupsExecute(r ApiBackupListAllB
 }
 
 type ApiBackupListAllDeleteBackupRequestsRequest struct {
-	ctx           context.Context
-	ApiService    *BackupPolicyAPIService
-	projectId     int32
-	limit         *int32
-	offset        *int32
-	sortBy        *string
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
+	projectId int32
+	limit *int32
+	offset *int32
+	sortBy *string
 	sortDirection *string
-	search        *string
+	search *string
 }
 
 func (r ApiBackupListAllDeleteBackupRequestsRequest) Limit(limit int32) ApiBackupListAllDeleteBackupRequestsRequest {
@@ -2674,27 +2669,26 @@ func (r ApiBackupListAllDeleteBackupRequestsRequest) Execute() (*ListAllDeleteBa
 /*
 BackupListAllDeleteBackupRequests List all delete backup requests
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiBackupListAllDeleteBackupRequestsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiBackupListAllDeleteBackupRequestsRequest
 */
 func (a *BackupPolicyAPIService) BackupListAllDeleteBackupRequests(ctx context.Context, projectId int32) ApiBackupListAllDeleteBackupRequestsRequest {
 	return ApiBackupListAllDeleteBackupRequestsRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListAllDeleteBackupRequests
+//  @return ListAllDeleteBackupRequests
 func (a *BackupPolicyAPIService) BackupListAllDeleteBackupRequestsExecute(r ApiBackupListAllDeleteBackupRequestsRequest) (*ListAllDeleteBackupRequests, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListAllDeleteBackupRequests
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListAllDeleteBackupRequests
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupListAllDeleteBackupRequests")
@@ -2784,8 +2778,8 @@ func (a *BackupPolicyAPIService) BackupListAllDeleteBackupRequestsExecute(r ApiB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2795,8 +2789,8 @@ func (a *BackupPolicyAPIService) BackupListAllDeleteBackupRequestsExecute(r ApiB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2806,8 +2800,8 @@ func (a *BackupPolicyAPIService) BackupListAllDeleteBackupRequestsExecute(r ApiB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2817,8 +2811,8 @@ func (a *BackupPolicyAPIService) BackupListAllDeleteBackupRequestsExecute(r ApiB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2828,8 +2822,8 @@ func (a *BackupPolicyAPIService) BackupListAllDeleteBackupRequestsExecute(r ApiB
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -2847,14 +2841,14 @@ func (a *BackupPolicyAPIService) BackupListAllDeleteBackupRequestsExecute(r ApiB
 }
 
 type ApiBackupListAllRestoresRequest struct {
-	ctx           context.Context
-	ApiService    *BackupPolicyAPIService
-	projectId     int32
-	limit         *int32
-	offset        *int32
-	sortBy        *string
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
+	projectId int32
+	limit *int32
+	offset *int32
+	sortBy *string
 	sortDirection *string
-	search        *string
+	search *string
 }
 
 func (r ApiBackupListAllRestoresRequest) Limit(limit int32) ApiBackupListAllRestoresRequest {
@@ -2889,27 +2883,26 @@ func (r ApiBackupListAllRestoresRequest) Execute() (*ListAllRestores, *http.Resp
 /*
 BackupListAllRestores List all restores
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiBackupListAllRestoresRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiBackupListAllRestoresRequest
 */
 func (a *BackupPolicyAPIService) BackupListAllRestores(ctx context.Context, projectId int32) ApiBackupListAllRestoresRequest {
 	return ApiBackupListAllRestoresRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListAllRestores
+//  @return ListAllRestores
 func (a *BackupPolicyAPIService) BackupListAllRestoresExecute(r ApiBackupListAllRestoresRequest) (*ListAllRestores, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListAllRestores
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListAllRestores
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupListAllRestores")
@@ -2999,8 +2992,8 @@ func (a *BackupPolicyAPIService) BackupListAllRestoresExecute(r ApiBackupListAll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3010,8 +3003,8 @@ func (a *BackupPolicyAPIService) BackupListAllRestoresExecute(r ApiBackupListAll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3021,8 +3014,8 @@ func (a *BackupPolicyAPIService) BackupListAllRestoresExecute(r ApiBackupListAll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3032,8 +3025,8 @@ func (a *BackupPolicyAPIService) BackupListAllRestoresExecute(r ApiBackupListAll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3043,8 +3036,8 @@ func (a *BackupPolicyAPIService) BackupListAllRestoresExecute(r ApiBackupListAll
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3062,14 +3055,14 @@ func (a *BackupPolicyAPIService) BackupListAllRestoresExecute(r ApiBackupListAll
 }
 
 type ApiBackupListAllSchedulesRequest struct {
-	ctx           context.Context
-	ApiService    *BackupPolicyAPIService
-	projectId     int32
-	limit         *int32
-	offset        *int32
-	sortBy        *string
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
+	projectId int32
+	limit *int32
+	offset *int32
+	sortBy *string
 	sortDirection *string
-	search        *string
+	search *string
 }
 
 func (r ApiBackupListAllSchedulesRequest) Limit(limit int32) ApiBackupListAllSchedulesRequest {
@@ -3104,27 +3097,26 @@ func (r ApiBackupListAllSchedulesRequest) Execute() (*ListAllSchedules, *http.Re
 /*
 BackupListAllSchedules List all schedules
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiBackupListAllSchedulesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiBackupListAllSchedulesRequest
 */
 func (a *BackupPolicyAPIService) BackupListAllSchedules(ctx context.Context, projectId int32) ApiBackupListAllSchedulesRequest {
 	return ApiBackupListAllSchedulesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ListAllSchedules
+//  @return ListAllSchedules
 func (a *BackupPolicyAPIService) BackupListAllSchedulesExecute(r ApiBackupListAllSchedulesRequest) (*ListAllSchedules, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ListAllSchedules
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ListAllSchedules
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupListAllSchedules")
@@ -3214,8 +3206,8 @@ func (a *BackupPolicyAPIService) BackupListAllSchedulesExecute(r ApiBackupListAl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3225,8 +3217,8 @@ func (a *BackupPolicyAPIService) BackupListAllSchedulesExecute(r ApiBackupListAl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3236,8 +3228,8 @@ func (a *BackupPolicyAPIService) BackupListAllSchedulesExecute(r ApiBackupListAl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3247,8 +3239,8 @@ func (a *BackupPolicyAPIService) BackupListAllSchedulesExecute(r ApiBackupListAl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3258,8 +3250,8 @@ func (a *BackupPolicyAPIService) BackupListAllSchedulesExecute(r ApiBackupListAl
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -3277,8 +3269,8 @@ func (a *BackupPolicyAPIService) BackupListAllSchedulesExecute(r ApiBackupListAl
 }
 
 type ApiBackupRestoreBackupRequest struct {
-	ctx                  context.Context
-	ApiService           *BackupPolicyAPIService
+	ctx context.Context
+	ApiService *BackupPolicyAPIService
 	restoreBackupCommand *RestoreBackupCommand
 }
 
@@ -3294,22 +3286,22 @@ func (r ApiBackupRestoreBackupRequest) Execute() (*http.Response, error) {
 /*
 BackupRestoreBackup Restore backup
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiBackupRestoreBackupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiBackupRestoreBackupRequest
 */
 func (a *BackupPolicyAPIService) BackupRestoreBackup(ctx context.Context) ApiBackupRestoreBackupRequest {
 	return ApiBackupRestoreBackupRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *BackupPolicyAPIService) BackupRestoreBackupExecute(r ApiBackupRestoreBackupRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupPolicyAPIService.BackupRestoreBackup")
@@ -3385,8 +3377,8 @@ func (a *BackupPolicyAPIService) BackupRestoreBackupExecute(r ApiBackupRestoreBa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -3396,8 +3388,8 @@ func (a *BackupPolicyAPIService) BackupRestoreBackupExecute(r ApiBackupRestoreBa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -3407,8 +3399,8 @@ func (a *BackupPolicyAPIService) BackupRestoreBackupExecute(r ApiBackupRestoreBa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -3418,8 +3410,8 @@ func (a *BackupPolicyAPIService) BackupRestoreBackupExecute(r ApiBackupRestoreBa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -3429,8 +3421,8 @@ func (a *BackupPolicyAPIService) BackupRestoreBackupExecute(r ApiBackupRestoreBa
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

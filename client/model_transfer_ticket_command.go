@@ -21,7 +21,7 @@ var _ MappedNullable = &TransferTicketCommand{}
 // TransferTicketCommand struct for TransferTicketCommand
 type TransferTicketCommand struct {
 	TicketId NullableString `json:"ticketId,omitempty"`
-	UserId   NullableString `json:"userId,omitempty"`
+	UserId NullableString `json:"userId,omitempty"`
 }
 
 // NewTransferTicketCommand instantiates a new TransferTicketCommand object
@@ -73,7 +73,6 @@ func (o *TransferTicketCommand) HasTicketId() bool {
 func (o *TransferTicketCommand) SetTicketId(v string) {
 	o.TicketId.Set(&v)
 }
-
 // SetTicketIdNil sets the value for TicketId to be an explicit nil
 func (o *TransferTicketCommand) SetTicketIdNil() {
 	o.TicketId.Set(nil)
@@ -116,7 +115,6 @@ func (o *TransferTicketCommand) HasUserId() bool {
 func (o *TransferTicketCommand) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
-
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *TransferTicketCommand) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -128,7 +126,7 @@ func (o *TransferTicketCommand) UnsetUserId() {
 }
 
 func (o TransferTicketCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableTransferTicketCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

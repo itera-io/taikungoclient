@@ -20,8 +20,8 @@ var _ MappedNullable = &AzureImageList{}
 
 // AzureImageList struct for AzureImageList
 type AzureImageList struct {
-	Data       []CommonStringBasedDropdownDto `json:"data,omitempty"`
-	TotalCount *int32                         `json:"totalCount,omitempty"`
+	Data []CommonStringBasedDropdownDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewAzureImageList instantiates a new AzureImageList object
@@ -107,7 +107,7 @@ func (o *AzureImageList) SetTotalCount(v int32) {
 }
 
 func (o AzureImageList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableAzureImageList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

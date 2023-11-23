@@ -21,9 +21,9 @@ var _ MappedNullable = &IngressDto{}
 // IngressDto struct for IngressDto
 type IngressDto struct {
 	MetadataName NullableString `json:"metadataName,omitempty"`
-	Hosts        NullableString `json:"hosts,omitempty"`
-	Namespace    NullableString `json:"namespace,omitempty"`
-	Age          NullableString `json:"age,omitempty"`
+	Hosts NullableString `json:"hosts,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Age NullableString `json:"age,omitempty"`
 }
 
 // NewIngressDto instantiates a new IngressDto object
@@ -75,7 +75,6 @@ func (o *IngressDto) HasMetadataName() bool {
 func (o *IngressDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *IngressDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -118,7 +117,6 @@ func (o *IngressDto) HasHosts() bool {
 func (o *IngressDto) SetHosts(v string) {
 	o.Hosts.Set(&v)
 }
-
 // SetHostsNil sets the value for Hosts to be an explicit nil
 func (o *IngressDto) SetHostsNil() {
 	o.Hosts.Set(nil)
@@ -161,7 +159,6 @@ func (o *IngressDto) HasNamespace() bool {
 func (o *IngressDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *IngressDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -204,7 +201,6 @@ func (o *IngressDto) HasAge() bool {
 func (o *IngressDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-
 // SetAgeNil sets the value for Age to be an explicit nil
 func (o *IngressDto) SetAgeNil() {
 	o.Age.Set(nil)
@@ -216,7 +212,7 @@ func (o *IngressDto) UnsetAge() {
 }
 
 func (o IngressDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,3 +271,5 @@ func (v *NullableIngressDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

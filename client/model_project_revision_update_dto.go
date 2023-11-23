@@ -21,8 +21,8 @@ var _ MappedNullable = &ProjectRevisionUpdateDto{}
 // ProjectRevisionUpdateDto struct for ProjectRevisionUpdateDto
 type ProjectRevisionUpdateDto struct {
 	CloudCredentialRevision NullableInt32 `json:"cloudCredentialRevision,omitempty"`
-	OpaProfileRevision      NullableInt32 `json:"opaProfileRevision,omitempty"`
-	AccessProfileRevision   NullableInt32 `json:"accessProfileRevision,omitempty"`
+	OpaProfileRevision NullableInt32 `json:"opaProfileRevision,omitempty"`
+	AccessProfileRevision NullableInt32 `json:"accessProfileRevision,omitempty"`
 }
 
 // NewProjectRevisionUpdateDto instantiates a new ProjectRevisionUpdateDto object
@@ -74,7 +74,6 @@ func (o *ProjectRevisionUpdateDto) HasCloudCredentialRevision() bool {
 func (o *ProjectRevisionUpdateDto) SetCloudCredentialRevision(v int32) {
 	o.CloudCredentialRevision.Set(&v)
 }
-
 // SetCloudCredentialRevisionNil sets the value for CloudCredentialRevision to be an explicit nil
 func (o *ProjectRevisionUpdateDto) SetCloudCredentialRevisionNil() {
 	o.CloudCredentialRevision.Set(nil)
@@ -117,7 +116,6 @@ func (o *ProjectRevisionUpdateDto) HasOpaProfileRevision() bool {
 func (o *ProjectRevisionUpdateDto) SetOpaProfileRevision(v int32) {
 	o.OpaProfileRevision.Set(&v)
 }
-
 // SetOpaProfileRevisionNil sets the value for OpaProfileRevision to be an explicit nil
 func (o *ProjectRevisionUpdateDto) SetOpaProfileRevisionNil() {
 	o.OpaProfileRevision.Set(nil)
@@ -160,7 +158,6 @@ func (o *ProjectRevisionUpdateDto) HasAccessProfileRevision() bool {
 func (o *ProjectRevisionUpdateDto) SetAccessProfileRevision(v int32) {
 	o.AccessProfileRevision.Set(&v)
 }
-
 // SetAccessProfileRevisionNil sets the value for AccessProfileRevision to be an explicit nil
 func (o *ProjectRevisionUpdateDto) SetAccessProfileRevisionNil() {
 	o.AccessProfileRevision.Set(nil)
@@ -172,7 +169,7 @@ func (o *ProjectRevisionUpdateDto) UnsetAccessProfileRevision() {
 }
 
 func (o ProjectRevisionUpdateDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableProjectRevisionUpdateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

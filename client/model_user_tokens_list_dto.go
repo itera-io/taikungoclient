@@ -20,12 +20,12 @@ var _ MappedNullable = &UserTokensListDto{}
 
 // UserTokensListDto struct for UserTokensListDto
 type UserTokensListDto struct {
-	Id         NullableString `json:"id,omitempty"`
-	Name       NullableString `json:"name,omitempty"`
-	CreatedAt  NullableString `json:"createdAt,omitempty"`
-	IsReadonly *bool          `json:"isReadonly,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	IsReadonly *bool `json:"isReadonly,omitempty"`
 	ExpireDate NullableString `json:"expireDate,omitempty"`
-	AccessKey  NullableString `json:"accessKey,omitempty"`
+	AccessKey NullableString `json:"accessKey,omitempty"`
 }
 
 // NewUserTokensListDto instantiates a new UserTokensListDto object
@@ -77,7 +77,6 @@ func (o *UserTokensListDto) HasId() bool {
 func (o *UserTokensListDto) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *UserTokensListDto) SetIdNil() {
 	o.Id.Set(nil)
@@ -120,7 +119,6 @@ func (o *UserTokensListDto) HasName() bool {
 func (o *UserTokensListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UserTokensListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -163,7 +161,6 @@ func (o *UserTokensListDto) HasCreatedAt() bool {
 func (o *UserTokensListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *UserTokensListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -238,7 +235,6 @@ func (o *UserTokensListDto) HasExpireDate() bool {
 func (o *UserTokensListDto) SetExpireDate(v string) {
 	o.ExpireDate.Set(&v)
 }
-
 // SetExpireDateNil sets the value for ExpireDate to be an explicit nil
 func (o *UserTokensListDto) SetExpireDateNil() {
 	o.ExpireDate.Set(nil)
@@ -281,7 +277,6 @@ func (o *UserTokensListDto) HasAccessKey() bool {
 func (o *UserTokensListDto) SetAccessKey(v string) {
 	o.AccessKey.Set(&v)
 }
-
 // SetAccessKeyNil sets the value for AccessKey to be an explicit nil
 func (o *UserTokensListDto) SetAccessKeyNil() {
 	o.AccessKey.Set(nil)
@@ -293,7 +288,7 @@ func (o *UserTokensListDto) UnsetAccessKey() {
 }
 
 func (o UserTokensListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -358,3 +353,5 @@ func (v *NullableUserTokensListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

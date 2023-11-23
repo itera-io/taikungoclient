@@ -20,12 +20,12 @@ var _ MappedNullable = &BackupCredentialsCreateCommand{}
 
 // BackupCredentialsCreateCommand struct for BackupCredentialsCreateCommand
 type BackupCredentialsCreateCommand struct {
-	S3Name         NullableString `json:"s3Name,omitempty"`
-	S3AccessKeyId  NullableString `json:"s3AccessKeyId,omitempty"`
-	S3SecretKey    NullableString `json:"s3SecretKey,omitempty"`
-	S3Endpoint     NullableString `json:"s3Endpoint,omitempty"`
-	S3Region       NullableString `json:"s3Region,omitempty"`
-	OrganizationId NullableInt32  `json:"organizationId,omitempty"`
+	S3Name NullableString `json:"s3Name,omitempty"`
+	S3AccessKeyId NullableString `json:"s3AccessKeyId,omitempty"`
+	S3SecretKey NullableString `json:"s3SecretKey,omitempty"`
+	S3Endpoint NullableString `json:"s3Endpoint,omitempty"`
+	S3Region NullableString `json:"s3Region,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
 
 // NewBackupCredentialsCreateCommand instantiates a new BackupCredentialsCreateCommand object
@@ -77,7 +77,6 @@ func (o *BackupCredentialsCreateCommand) HasS3Name() bool {
 func (o *BackupCredentialsCreateCommand) SetS3Name(v string) {
 	o.S3Name.Set(&v)
 }
-
 // SetS3NameNil sets the value for S3Name to be an explicit nil
 func (o *BackupCredentialsCreateCommand) SetS3NameNil() {
 	o.S3Name.Set(nil)
@@ -120,7 +119,6 @@ func (o *BackupCredentialsCreateCommand) HasS3AccessKeyId() bool {
 func (o *BackupCredentialsCreateCommand) SetS3AccessKeyId(v string) {
 	o.S3AccessKeyId.Set(&v)
 }
-
 // SetS3AccessKeyIdNil sets the value for S3AccessKeyId to be an explicit nil
 func (o *BackupCredentialsCreateCommand) SetS3AccessKeyIdNil() {
 	o.S3AccessKeyId.Set(nil)
@@ -163,7 +161,6 @@ func (o *BackupCredentialsCreateCommand) HasS3SecretKey() bool {
 func (o *BackupCredentialsCreateCommand) SetS3SecretKey(v string) {
 	o.S3SecretKey.Set(&v)
 }
-
 // SetS3SecretKeyNil sets the value for S3SecretKey to be an explicit nil
 func (o *BackupCredentialsCreateCommand) SetS3SecretKeyNil() {
 	o.S3SecretKey.Set(nil)
@@ -206,7 +203,6 @@ func (o *BackupCredentialsCreateCommand) HasS3Endpoint() bool {
 func (o *BackupCredentialsCreateCommand) SetS3Endpoint(v string) {
 	o.S3Endpoint.Set(&v)
 }
-
 // SetS3EndpointNil sets the value for S3Endpoint to be an explicit nil
 func (o *BackupCredentialsCreateCommand) SetS3EndpointNil() {
 	o.S3Endpoint.Set(nil)
@@ -249,7 +245,6 @@ func (o *BackupCredentialsCreateCommand) HasS3Region() bool {
 func (o *BackupCredentialsCreateCommand) SetS3Region(v string) {
 	o.S3Region.Set(&v)
 }
-
 // SetS3RegionNil sets the value for S3Region to be an explicit nil
 func (o *BackupCredentialsCreateCommand) SetS3RegionNil() {
 	o.S3Region.Set(nil)
@@ -292,7 +287,6 @@ func (o *BackupCredentialsCreateCommand) HasOrganizationId() bool {
 func (o *BackupCredentialsCreateCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *BackupCredentialsCreateCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -304,7 +298,7 @@ func (o *BackupCredentialsCreateCommand) UnsetOrganizationId() {
 }
 
 func (o BackupCredentialsCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -369,3 +363,5 @@ func (v *NullableBackupCredentialsCreateCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

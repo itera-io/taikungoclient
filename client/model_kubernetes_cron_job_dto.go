@@ -22,10 +22,10 @@ var _ MappedNullable = &KubernetesCronJobDto{}
 type KubernetesCronJobDto struct {
 	MetadataName NullableString `json:"metadataName,omitempty"`
 	LastSchedule NullableString `json:"lastSchedule,omitempty"`
-	Suspend      NullableBool   `json:"suspend,omitempty"`
-	Schedule     NullableString `json:"schedule,omitempty"`
-	Namespace    NullableString `json:"namespace,omitempty"`
-	Age          NullableString `json:"age,omitempty"`
+	Suspend NullableBool `json:"suspend,omitempty"`
+	Schedule NullableString `json:"schedule,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Age NullableString `json:"age,omitempty"`
 }
 
 // NewKubernetesCronJobDto instantiates a new KubernetesCronJobDto object
@@ -77,7 +77,6 @@ func (o *KubernetesCronJobDto) HasMetadataName() bool {
 func (o *KubernetesCronJobDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *KubernetesCronJobDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -120,7 +119,6 @@ func (o *KubernetesCronJobDto) HasLastSchedule() bool {
 func (o *KubernetesCronJobDto) SetLastSchedule(v string) {
 	o.LastSchedule.Set(&v)
 }
-
 // SetLastScheduleNil sets the value for LastSchedule to be an explicit nil
 func (o *KubernetesCronJobDto) SetLastScheduleNil() {
 	o.LastSchedule.Set(nil)
@@ -163,7 +161,6 @@ func (o *KubernetesCronJobDto) HasSuspend() bool {
 func (o *KubernetesCronJobDto) SetSuspend(v bool) {
 	o.Suspend.Set(&v)
 }
-
 // SetSuspendNil sets the value for Suspend to be an explicit nil
 func (o *KubernetesCronJobDto) SetSuspendNil() {
 	o.Suspend.Set(nil)
@@ -206,7 +203,6 @@ func (o *KubernetesCronJobDto) HasSchedule() bool {
 func (o *KubernetesCronJobDto) SetSchedule(v string) {
 	o.Schedule.Set(&v)
 }
-
 // SetScheduleNil sets the value for Schedule to be an explicit nil
 func (o *KubernetesCronJobDto) SetScheduleNil() {
 	o.Schedule.Set(nil)
@@ -249,7 +245,6 @@ func (o *KubernetesCronJobDto) HasNamespace() bool {
 func (o *KubernetesCronJobDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *KubernetesCronJobDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -292,7 +287,6 @@ func (o *KubernetesCronJobDto) HasAge() bool {
 func (o *KubernetesCronJobDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-
 // SetAgeNil sets the value for Age to be an explicit nil
 func (o *KubernetesCronJobDto) SetAgeNil() {
 	o.Age.Set(nil)
@@ -304,7 +298,7 @@ func (o *KubernetesCronJobDto) UnsetAge() {
 }
 
 func (o KubernetesCronJobDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -369,3 +363,5 @@ func (v *NullableKubernetesCronJobDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

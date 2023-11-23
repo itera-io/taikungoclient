@@ -20,8 +20,8 @@ var _ MappedNullable = &PvcSearchList{}
 
 // PvcSearchList struct for PvcSearchList
 type PvcSearchList struct {
-	Data       []CommonSearchKubernetesResponseData `json:"data,omitempty"`
-	TotalCount *int32                               `json:"totalCount,omitempty"`
+	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewPvcSearchList instantiates a new PvcSearchList object
@@ -107,7 +107,7 @@ func (o *PvcSearchList) SetTotalCount(v int32) {
 }
 
 func (o PvcSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullablePvcSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

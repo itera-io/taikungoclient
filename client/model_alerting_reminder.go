@@ -22,9 +22,9 @@ type AlertingReminder string
 // List of AlertingReminder
 const (
 	ALERTINGREMINDER_HALF_HOUR AlertingReminder = "HalfHour"
-	ALERTINGREMINDER_HOURLY    AlertingReminder = "Hourly"
-	ALERTINGREMINDER_DAILY     AlertingReminder = "Daily"
-	ALERTINGREMINDER_NONE      AlertingReminder = "None"
+	ALERTINGREMINDER_HOURLY AlertingReminder = "Hourly"
+	ALERTINGREMINDER_DAILY AlertingReminder = "Daily"
+	ALERTINGREMINDER_NONE AlertingReminder = "None"
 )
 
 // All allowed values of AlertingReminder enum
@@ -113,3 +113,4 @@ func (v *NullableAlertingReminder) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

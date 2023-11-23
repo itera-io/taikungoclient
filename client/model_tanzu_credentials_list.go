@@ -20,8 +20,8 @@ var _ MappedNullable = &TanzuCredentialsList{}
 
 // TanzuCredentialsList struct for TanzuCredentialsList
 type TanzuCredentialsList struct {
-	Data       []TanzuCredentialsListDto `json:"data,omitempty"`
-	TotalCount *int32                    `json:"totalCount,omitempty"`
+	Data []TanzuCredentialsListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewTanzuCredentialsList instantiates a new TanzuCredentialsList object
@@ -107,7 +107,7 @@ func (o *TanzuCredentialsList) SetTotalCount(v int32) {
 }
 
 func (o TanzuCredentialsList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableTanzuCredentialsList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

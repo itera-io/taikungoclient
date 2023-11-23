@@ -20,10 +20,10 @@ var _ MappedNullable = &CloudCredentialsDropdownRecordDto{}
 
 // CloudCredentialsDropdownRecordDto struct for CloudCredentialsDropdownRecordDto
 type CloudCredentialsDropdownRecordDto struct {
-	Id        *int32                           `json:"id,omitempty"`
-	Name      NullableString                   `json:"name,omitempty"`
-	CloudType NullableString                   `json:"cloudType,omitempty"`
-	Projects  []ProjectWithFlavorsAndImagesDto `json:"projects,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	CloudType NullableString `json:"cloudType,omitempty"`
+	Projects []ProjectWithFlavorsAndImagesDto `json:"projects,omitempty"`
 }
 
 // NewCloudCredentialsDropdownRecordDto instantiates a new CloudCredentialsDropdownRecordDto object
@@ -107,7 +107,6 @@ func (o *CloudCredentialsDropdownRecordDto) HasName() bool {
 func (o *CloudCredentialsDropdownRecordDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CloudCredentialsDropdownRecordDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,6 @@ func (o *CloudCredentialsDropdownRecordDto) HasCloudType() bool {
 func (o *CloudCredentialsDropdownRecordDto) SetCloudType(v string) {
 	o.CloudType.Set(&v)
 }
-
 // SetCloudTypeNil sets the value for CloudType to be an explicit nil
 func (o *CloudCredentialsDropdownRecordDto) SetCloudTypeNil() {
 	o.CloudType.Set(nil)
@@ -195,7 +193,7 @@ func (o *CloudCredentialsDropdownRecordDto) SetProjects(v []ProjectWithFlavorsAn
 }
 
 func (o CloudCredentialsDropdownRecordDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -254,3 +252,5 @@ func (v *NullableCloudCredentialsDropdownRecordDto) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

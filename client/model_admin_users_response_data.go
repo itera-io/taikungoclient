@@ -20,13 +20,13 @@ var _ MappedNullable = &AdminUsersResponseData{}
 
 // AdminUsersResponseData struct for AdminUsersResponseData
 type AdminUsersResponseData struct {
-	Id               NullableString `json:"id,omitempty"`
-	Name             NullableString `json:"name,omitempty"`
-	Email            NullableString `json:"email,omitempty"`
-	Role             NullableString `json:"role,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	Role NullableString `json:"role,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
-	Owner            *bool          `json:"owner,omitempty"`
-	Csm              *bool          `json:"csm,omitempty"`
+	Owner *bool `json:"owner,omitempty"`
+	Csm *bool `json:"csm,omitempty"`
 }
 
 // NewAdminUsersResponseData instantiates a new AdminUsersResponseData object
@@ -78,7 +78,6 @@ func (o *AdminUsersResponseData) HasId() bool {
 func (o *AdminUsersResponseData) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *AdminUsersResponseData) SetIdNil() {
 	o.Id.Set(nil)
@@ -121,7 +120,6 @@ func (o *AdminUsersResponseData) HasName() bool {
 func (o *AdminUsersResponseData) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AdminUsersResponseData) SetNameNil() {
 	o.Name.Set(nil)
@@ -164,7 +162,6 @@ func (o *AdminUsersResponseData) HasEmail() bool {
 func (o *AdminUsersResponseData) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *AdminUsersResponseData) SetEmailNil() {
 	o.Email.Set(nil)
@@ -207,7 +204,6 @@ func (o *AdminUsersResponseData) HasRole() bool {
 func (o *AdminUsersResponseData) SetRole(v string) {
 	o.Role.Set(&v)
 }
-
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *AdminUsersResponseData) SetRoleNil() {
 	o.Role.Set(nil)
@@ -250,7 +246,6 @@ func (o *AdminUsersResponseData) HasOrganizationName() bool {
 func (o *AdminUsersResponseData) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *AdminUsersResponseData) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -326,7 +321,7 @@ func (o *AdminUsersResponseData) SetCsm(v bool) {
 }
 
 func (o AdminUsersResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -394,3 +389,5 @@ func (v *NullableAdminUsersResponseData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

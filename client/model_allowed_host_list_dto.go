@@ -20,11 +20,11 @@ var _ MappedNullable = &AllowedHostListDto{}
 
 // AllowedHostListDto struct for AllowedHostListDto
 type AllowedHostListDto struct {
-	Id                *int32         `json:"id,omitempty"`
-	Description       NullableString `json:"description,omitempty"`
-	IpAddress         NullableString `json:"ipAddress,omitempty"`
-	MaskBits          *int32         `json:"maskBits,omitempty"`
-	AccessProfileId   *int32         `json:"accessProfileId,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	IpAddress NullableString `json:"ipAddress,omitempty"`
+	MaskBits *int32 `json:"maskBits,omitempty"`
+	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
 	AccessProfileName NullableString `json:"accessProfileName,omitempty"`
 }
 
@@ -109,7 +109,6 @@ func (o *AllowedHostListDto) HasDescription() bool {
 func (o *AllowedHostListDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *AllowedHostListDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -152,7 +151,6 @@ func (o *AllowedHostListDto) HasIpAddress() bool {
 func (o *AllowedHostListDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
-
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *AllowedHostListDto) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -259,7 +257,6 @@ func (o *AllowedHostListDto) HasAccessProfileName() bool {
 func (o *AllowedHostListDto) SetAccessProfileName(v string) {
 	o.AccessProfileName.Set(&v)
 }
-
 // SetAccessProfileNameNil sets the value for AccessProfileName to be an explicit nil
 func (o *AllowedHostListDto) SetAccessProfileNameNil() {
 	o.AccessProfileName.Set(nil)
@@ -271,7 +268,7 @@ func (o *AllowedHostListDto) UnsetAccessProfileName() {
 }
 
 func (o AllowedHostListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -336,3 +333,5 @@ func (v *NullableAllowedHostListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

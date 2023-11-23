@@ -73,7 +73,6 @@ func (o *PrometheusLabelListDto) HasLabel() bool {
 func (o *PrometheusLabelListDto) SetLabel(v string) {
 	o.Label.Set(&v)
 }
-
 // SetLabelNil sets the value for Label to be an explicit nil
 func (o *PrometheusLabelListDto) SetLabelNil() {
 	o.Label.Set(nil)
@@ -116,7 +115,6 @@ func (o *PrometheusLabelListDto) HasValue() bool {
 func (o *PrometheusLabelListDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *PrometheusLabelListDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -128,7 +126,7 @@ func (o *PrometheusLabelListDto) UnsetValue() {
 }
 
 func (o PrometheusLabelListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullablePrometheusLabelListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

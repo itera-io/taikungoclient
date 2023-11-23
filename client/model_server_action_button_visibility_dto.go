@@ -20,8 +20,8 @@ var _ MappedNullable = &ServerActionButtonVisibilityDto{}
 
 // ServerActionButtonVisibilityDto struct for ServerActionButtonVisibilityDto
 type ServerActionButtonVisibilityDto struct {
-	Status  *bool `json:"status,omitempty"`
-	Reboot  *bool `json:"reboot,omitempty"`
+	Status *bool `json:"status,omitempty"`
+	Reboot *bool `json:"reboot,omitempty"`
 	Console *bool `json:"console,omitempty"`
 }
 
@@ -139,7 +139,7 @@ func (o *ServerActionButtonVisibilityDto) SetConsole(v bool) {
 }
 
 func (o ServerActionButtonVisibilityDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableServerActionButtonVisibilityDto) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

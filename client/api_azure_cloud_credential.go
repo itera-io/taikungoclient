@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // AzureCloudCredentialAPIService AzureCloudCredentialAPI service
 type AzureCloudCredentialAPIService service
 
 type ApiAzureCreateRequest struct {
-	ctx                     context.Context
-	ApiService              *AzureCloudCredentialAPIService
+	ctx context.Context
+	ApiService *AzureCloudCredentialAPIService
 	createAzureCloudCommand *CreateAzureCloudCommand
 }
 
@@ -41,25 +42,24 @@ func (r ApiAzureCreateRequest) Execute() (*ApiResponse, *http.Response, error) {
 /*
 AzureCreate Add Azure credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAzureCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAzureCreateRequest
 */
 func (a *AzureCloudCredentialAPIService) AzureCreate(ctx context.Context) ApiAzureCreateRequest {
 	return ApiAzureCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *AzureCloudCredentialAPIService) AzureCreateExecute(r ApiAzureCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AzureCloudCredentialAPIService.AzureCreate")
@@ -135,8 +135,8 @@ func (a *AzureCloudCredentialAPIService) AzureCreateExecute(r ApiAzureCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +146,8 @@ func (a *AzureCloudCredentialAPIService) AzureCreateExecute(r ApiAzureCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +157,8 @@ func (a *AzureCloudCredentialAPIService) AzureCreateExecute(r ApiAzureCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +168,8 @@ func (a *AzureCloudCredentialAPIService) AzureCreateExecute(r ApiAzureCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -179,8 +179,8 @@ func (a *AzureCloudCredentialAPIService) AzureCreateExecute(r ApiAzureCreateRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -198,8 +198,8 @@ func (a *AzureCloudCredentialAPIService) AzureCreateExecute(r ApiAzureCreateRequ
 }
 
 type ApiAzureDashboardRequest struct {
-	ctx                   context.Context
-	ApiService            *AzureCloudCredentialAPIService
+	ctx context.Context
+	ApiService *AzureCloudCredentialAPIService
 	azureDashboardCommand *AzureDashboardCommand
 }
 
@@ -215,25 +215,24 @@ func (r ApiAzureDashboardRequest) Execute() ([]AzureQuotaListRecordDto, *http.Re
 /*
 AzureDashboard Fetch Azure quota list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAzureDashboardRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAzureDashboardRequest
 */
 func (a *AzureCloudCredentialAPIService) AzureDashboard(ctx context.Context) ApiAzureDashboardRequest {
 	return ApiAzureDashboardRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []AzureQuotaListRecordDto
+//  @return []AzureQuotaListRecordDto
 func (a *AzureCloudCredentialAPIService) AzureDashboardExecute(r ApiAzureDashboardRequest) ([]AzureQuotaListRecordDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []AzureQuotaListRecordDto
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []AzureQuotaListRecordDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AzureCloudCredentialAPIService.AzureDashboard")
@@ -312,8 +311,8 @@ func (a *AzureCloudCredentialAPIService) AzureDashboardExecute(r ApiAzureDashboa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -323,8 +322,8 @@ func (a *AzureCloudCredentialAPIService) AzureDashboardExecute(r ApiAzureDashboa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -334,8 +333,8 @@ func (a *AzureCloudCredentialAPIService) AzureDashboardExecute(r ApiAzureDashboa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -345,8 +344,8 @@ func (a *AzureCloudCredentialAPIService) AzureDashboardExecute(r ApiAzureDashboa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -356,8 +355,8 @@ func (a *AzureCloudCredentialAPIService) AzureDashboardExecute(r ApiAzureDashboa
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -375,16 +374,16 @@ func (a *AzureCloudCredentialAPIService) AzureDashboardExecute(r ApiAzureDashboa
 }
 
 type ApiAzureListRequest struct {
-	ctx            context.Context
-	ApiService     *AzureCloudCredentialAPIService
-	limit          *int32
-	offset         *int32
+	ctx context.Context
+	ApiService *AzureCloudCredentialAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
-	sortBy         *string
-	sortDirection  *string
-	search         *string
-	searchId       *string
-	id             *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	searchId *string
+	id *int32
 }
 
 func (r ApiAzureListRequest) Limit(limit int32) ApiAzureListRequest {
@@ -434,25 +433,24 @@ func (r ApiAzureListRequest) Execute() (*AzureCredentialList, *http.Response, er
 /*
 AzureList Retrieve list of azure cloud credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAzureListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAzureListRequest
 */
 func (a *AzureCloudCredentialAPIService) AzureList(ctx context.Context) ApiAzureListRequest {
 	return ApiAzureListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AzureCredentialList
+//  @return AzureCredentialList
 func (a *AzureCloudCredentialAPIService) AzureListExecute(r ApiAzureListRequest) (*AzureCredentialList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AzureCredentialList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AzureCredentialList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AzureCloudCredentialAPIService.AzureList")
@@ -550,8 +548,8 @@ func (a *AzureCloudCredentialAPIService) AzureListExecute(r ApiAzureListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -561,8 +559,8 @@ func (a *AzureCloudCredentialAPIService) AzureListExecute(r ApiAzureListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -572,8 +570,8 @@ func (a *AzureCloudCredentialAPIService) AzureListExecute(r ApiAzureListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -583,8 +581,8 @@ func (a *AzureCloudCredentialAPIService) AzureListExecute(r ApiAzureListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -594,8 +592,8 @@ func (a *AzureCloudCredentialAPIService) AzureListExecute(r ApiAzureListRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -613,8 +611,8 @@ func (a *AzureCloudCredentialAPIService) AzureListExecute(r ApiAzureListRequest)
 }
 
 type ApiAzureLocationsRequest struct {
-	ctx                   context.Context
-	ApiService            *AzureCloudCredentialAPIService
+	ctx context.Context
+	ApiService *AzureCloudCredentialAPIService
 	azureLocationsCommand *AzureLocationsCommand
 }
 
@@ -630,25 +628,24 @@ func (r ApiAzureLocationsRequest) Execute() ([]string, *http.Response, error) {
 /*
 AzureLocations Fetch Azure location list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAzureLocationsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAzureLocationsRequest
 */
 func (a *AzureCloudCredentialAPIService) AzureLocations(ctx context.Context) ApiAzureLocationsRequest {
 	return ApiAzureLocationsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *AzureCloudCredentialAPIService) AzureLocationsExecute(r ApiAzureLocationsRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AzureCloudCredentialAPIService.AzureLocations")
@@ -727,8 +724,8 @@ func (a *AzureCloudCredentialAPIService) AzureLocationsExecute(r ApiAzureLocatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -738,8 +735,8 @@ func (a *AzureCloudCredentialAPIService) AzureLocationsExecute(r ApiAzureLocatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -749,8 +746,8 @@ func (a *AzureCloudCredentialAPIService) AzureLocationsExecute(r ApiAzureLocatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -760,8 +757,8 @@ func (a *AzureCloudCredentialAPIService) AzureLocationsExecute(r ApiAzureLocatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -771,8 +768,8 @@ func (a *AzureCloudCredentialAPIService) AzureLocationsExecute(r ApiAzureLocatio
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -790,15 +787,15 @@ func (a *AzureCloudCredentialAPIService) AzureLocationsExecute(r ApiAzureLocatio
 }
 
 type ApiAzureOffersRequest struct {
-	ctx           context.Context
-	ApiService    *AzureCloudCredentialAPIService
-	cloudId       int32
-	publisher     string
-	offset        *int32
-	limit         *int32
-	sortBy        *string
+	ctx context.Context
+	ApiService *AzureCloudCredentialAPIService
+	cloudId int32
+	publisher string
+	offset *int32
+	limit *int32
+	sortBy *string
 	sortDirection *string
-	search        *string
+	search *string
 }
 
 func (r ApiAzureOffersRequest) Offset(offset int32) ApiAzureOffersRequest {
@@ -833,29 +830,28 @@ func (r ApiAzureOffersRequest) Execute() (*AzureOffersList, *http.Response, erro
 /*
 AzureOffers Method for AzureOffers
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param cloudId
-	@param publisher
-	@return ApiAzureOffersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param cloudId
+ @param publisher
+ @return ApiAzureOffersRequest
 */
 func (a *AzureCloudCredentialAPIService) AzureOffers(ctx context.Context, cloudId int32, publisher string) ApiAzureOffersRequest {
 	return ApiAzureOffersRequest{
 		ApiService: a,
-		ctx:        ctx,
-		cloudId:    cloudId,
-		publisher:  publisher,
+		ctx: ctx,
+		cloudId: cloudId,
+		publisher: publisher,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AzureOffersList
+//  @return AzureOffersList
 func (a *AzureCloudCredentialAPIService) AzureOffersExecute(r ApiAzureOffersRequest) (*AzureOffersList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AzureOffersList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AzureOffersList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AzureCloudCredentialAPIService.AzureOffers")
@@ -946,8 +942,8 @@ func (a *AzureCloudCredentialAPIService) AzureOffersExecute(r ApiAzureOffersRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -957,8 +953,8 @@ func (a *AzureCloudCredentialAPIService) AzureOffersExecute(r ApiAzureOffersRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -968,8 +964,8 @@ func (a *AzureCloudCredentialAPIService) AzureOffersExecute(r ApiAzureOffersRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -979,8 +975,8 @@ func (a *AzureCloudCredentialAPIService) AzureOffersExecute(r ApiAzureOffersRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -990,8 +986,8 @@ func (a *AzureCloudCredentialAPIService) AzureOffersExecute(r ApiAzureOffersRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1009,14 +1005,14 @@ func (a *AzureCloudCredentialAPIService) AzureOffersExecute(r ApiAzureOffersRequ
 }
 
 type ApiAzurePublishersRequest struct {
-	ctx           context.Context
-	ApiService    *AzureCloudCredentialAPIService
-	cloudId       int32
-	offset        *int32
-	limit         *int32
-	sortBy        *string
+	ctx context.Context
+	ApiService *AzureCloudCredentialAPIService
+	cloudId int32
+	offset *int32
+	limit *int32
+	sortBy *string
 	sortDirection *string
-	search        *string
+	search *string
 }
 
 func (r ApiAzurePublishersRequest) Offset(offset int32) ApiAzurePublishersRequest {
@@ -1051,27 +1047,26 @@ func (r ApiAzurePublishersRequest) Execute() (*AzurePublishersList, *http.Respon
 /*
 AzurePublishers List Azure publishers list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param cloudId
-	@return ApiAzurePublishersRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param cloudId
+ @return ApiAzurePublishersRequest
 */
 func (a *AzureCloudCredentialAPIService) AzurePublishers(ctx context.Context, cloudId int32) ApiAzurePublishersRequest {
 	return ApiAzurePublishersRequest{
 		ApiService: a,
-		ctx:        ctx,
-		cloudId:    cloudId,
+		ctx: ctx,
+		cloudId: cloudId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AzurePublishersList
+//  @return AzurePublishersList
 func (a *AzureCloudCredentialAPIService) AzurePublishersExecute(r ApiAzurePublishersRequest) (*AzurePublishersList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AzurePublishersList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AzurePublishersList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AzureCloudCredentialAPIService.AzurePublishers")
@@ -1161,8 +1156,8 @@ func (a *AzureCloudCredentialAPIService) AzurePublishersExecute(r ApiAzurePublis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1172,8 +1167,8 @@ func (a *AzureCloudCredentialAPIService) AzurePublishersExecute(r ApiAzurePublis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1183,8 +1178,8 @@ func (a *AzureCloudCredentialAPIService) AzurePublishersExecute(r ApiAzurePublis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1194,8 +1189,8 @@ func (a *AzureCloudCredentialAPIService) AzurePublishersExecute(r ApiAzurePublis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1205,8 +1200,8 @@ func (a *AzureCloudCredentialAPIService) AzurePublishersExecute(r ApiAzurePublis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1224,16 +1219,16 @@ func (a *AzureCloudCredentialAPIService) AzurePublishersExecute(r ApiAzurePublis
 }
 
 type ApiAzureSkusRequest struct {
-	ctx           context.Context
-	ApiService    *AzureCloudCredentialAPIService
-	cloudId       int32
-	publisher     string
-	offer         string
-	offset        *int32
-	limit         *int32
-	sortBy        *string
+	ctx context.Context
+	ApiService *AzureCloudCredentialAPIService
+	cloudId int32
+	publisher string
+	offer string
+	offset *int32
+	limit *int32
+	sortBy *string
 	sortDirection *string
-	search        *string
+	search *string
 }
 
 func (r ApiAzureSkusRequest) Offset(offset int32) ApiAzureSkusRequest {
@@ -1268,31 +1263,30 @@ func (r ApiAzureSkusRequest) Execute() (*AzureSkusList, *http.Response, error) {
 /*
 AzureSkus Method for AzureSkus
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param cloudId
-	@param publisher
-	@param offer
-	@return ApiAzureSkusRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param cloudId
+ @param publisher
+ @param offer
+ @return ApiAzureSkusRequest
 */
 func (a *AzureCloudCredentialAPIService) AzureSkus(ctx context.Context, cloudId int32, publisher string, offer string) ApiAzureSkusRequest {
 	return ApiAzureSkusRequest{
 		ApiService: a,
-		ctx:        ctx,
-		cloudId:    cloudId,
-		publisher:  publisher,
-		offer:      offer,
+		ctx: ctx,
+		cloudId: cloudId,
+		publisher: publisher,
+		offer: offer,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AzureSkusList
+//  @return AzureSkusList
 func (a *AzureCloudCredentialAPIService) AzureSkusExecute(r ApiAzureSkusRequest) (*AzureSkusList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AzureSkusList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AzureSkusList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AzureCloudCredentialAPIService.AzureSkus")
@@ -1384,8 +1378,8 @@ func (a *AzureCloudCredentialAPIService) AzureSkusExecute(r ApiAzureSkusRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1395,8 +1389,8 @@ func (a *AzureCloudCredentialAPIService) AzureSkusExecute(r ApiAzureSkusRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1406,8 +1400,8 @@ func (a *AzureCloudCredentialAPIService) AzureSkusExecute(r ApiAzureSkusRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1417,8 +1411,8 @@ func (a *AzureCloudCredentialAPIService) AzureSkusExecute(r ApiAzureSkusRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1428,8 +1422,8 @@ func (a *AzureCloudCredentialAPIService) AzureSkusExecute(r ApiAzureSkusRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1447,8 +1441,8 @@ func (a *AzureCloudCredentialAPIService) AzureSkusExecute(r ApiAzureSkusRequest)
 }
 
 type ApiAzureSubscriptionsRequest struct {
-	ctx                          context.Context
-	ApiService                   *AzureCloudCredentialAPIService
+	ctx context.Context
+	ApiService *AzureCloudCredentialAPIService
 	azureSubscriptionListCommand *AzureSubscriptionListCommand
 }
 
@@ -1464,25 +1458,24 @@ func (r ApiAzureSubscriptionsRequest) Execute() ([]CommonStringBasedDropdownDto,
 /*
 AzureSubscriptions Azure subscriptions list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAzureSubscriptionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAzureSubscriptionsRequest
 */
 func (a *AzureCloudCredentialAPIService) AzureSubscriptions(ctx context.Context) ApiAzureSubscriptionsRequest {
 	return ApiAzureSubscriptionsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []CommonStringBasedDropdownDto
+//  @return []CommonStringBasedDropdownDto
 func (a *AzureCloudCredentialAPIService) AzureSubscriptionsExecute(r ApiAzureSubscriptionsRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []CommonStringBasedDropdownDto
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AzureCloudCredentialAPIService.AzureSubscriptions")
@@ -1561,8 +1554,8 @@ func (a *AzureCloudCredentialAPIService) AzureSubscriptionsExecute(r ApiAzureSub
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1572,8 +1565,8 @@ func (a *AzureCloudCredentialAPIService) AzureSubscriptionsExecute(r ApiAzureSub
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1583,8 +1576,8 @@ func (a *AzureCloudCredentialAPIService) AzureSubscriptionsExecute(r ApiAzureSub
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1594,8 +1587,8 @@ func (a *AzureCloudCredentialAPIService) AzureSubscriptionsExecute(r ApiAzureSub
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1605,8 +1598,8 @@ func (a *AzureCloudCredentialAPIService) AzureSubscriptionsExecute(r ApiAzureSub
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1624,8 +1617,8 @@ func (a *AzureCloudCredentialAPIService) AzureSubscriptionsExecute(r ApiAzureSub
 }
 
 type ApiAzureUpdateRequest struct {
-	ctx                context.Context
-	ApiService         *AzureCloudCredentialAPIService
+	ctx context.Context
+	ApiService *AzureCloudCredentialAPIService
 	updateAzureCommand *UpdateAzureCommand
 }
 
@@ -1641,22 +1634,22 @@ func (r ApiAzureUpdateRequest) Execute() (*http.Response, error) {
 /*
 AzureUpdate Update Azure credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAzureUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAzureUpdateRequest
 */
 func (a *AzureCloudCredentialAPIService) AzureUpdate(ctx context.Context) ApiAzureUpdateRequest {
 	return ApiAzureUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *AzureCloudCredentialAPIService) AzureUpdateExecute(r ApiAzureUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AzureCloudCredentialAPIService.AzureUpdate")
@@ -1732,8 +1725,8 @@ func (a *AzureCloudCredentialAPIService) AzureUpdateExecute(r ApiAzureUpdateRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1743,8 +1736,8 @@ func (a *AzureCloudCredentialAPIService) AzureUpdateExecute(r ApiAzureUpdateRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1754,8 +1747,8 @@ func (a *AzureCloudCredentialAPIService) AzureUpdateExecute(r ApiAzureUpdateRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1765,8 +1758,8 @@ func (a *AzureCloudCredentialAPIService) AzureUpdateExecute(r ApiAzureUpdateRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1776,8 +1769,8 @@ func (a *AzureCloudCredentialAPIService) AzureUpdateExecute(r ApiAzureUpdateRequ
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1786,8 +1779,8 @@ func (a *AzureCloudCredentialAPIService) AzureUpdateExecute(r ApiAzureUpdateRequ
 }
 
 type ApiAzureZonesRequest struct {
-	ctx               context.Context
-	ApiService        *AzureCloudCredentialAPIService
+	ctx context.Context
+	ApiService *AzureCloudCredentialAPIService
 	azureZonesCommand *AzureZonesCommand
 }
 
@@ -1803,25 +1796,24 @@ func (r ApiAzureZonesRequest) Execute() (*AzResult, *http.Response, error) {
 /*
 AzureZones Fetch Azure zone list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiAzureZonesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiAzureZonesRequest
 */
 func (a *AzureCloudCredentialAPIService) AzureZones(ctx context.Context) ApiAzureZonesRequest {
 	return ApiAzureZonesRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AzResult
+//  @return AzResult
 func (a *AzureCloudCredentialAPIService) AzureZonesExecute(r ApiAzureZonesRequest) (*AzResult, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AzResult
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AzResult
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AzureCloudCredentialAPIService.AzureZones")
@@ -1900,8 +1892,8 @@ func (a *AzureCloudCredentialAPIService) AzureZonesExecute(r ApiAzureZonesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1911,8 +1903,8 @@ func (a *AzureCloudCredentialAPIService) AzureZonesExecute(r ApiAzureZonesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1922,8 +1914,8 @@ func (a *AzureCloudCredentialAPIService) AzureZonesExecute(r ApiAzureZonesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1933,8 +1925,8 @@ func (a *AzureCloudCredentialAPIService) AzureZonesExecute(r ApiAzureZonesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1944,8 +1936,8 @@ func (a *AzureCloudCredentialAPIService) AzureZonesExecute(r ApiAzureZonesReques
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -20,7 +20,7 @@ var _ MappedNullable = &OperationCredentialLockManagerCommand{}
 
 // OperationCredentialLockManagerCommand struct for OperationCredentialLockManagerCommand
 type OperationCredentialLockManagerCommand struct {
-	Id   *int32         `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
 }
 
@@ -105,7 +105,6 @@ func (o *OperationCredentialLockManagerCommand) HasMode() bool {
 func (o *OperationCredentialLockManagerCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
-
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *OperationCredentialLockManagerCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -117,7 +116,7 @@ func (o *OperationCredentialLockManagerCommand) UnsetMode() {
 }
 
 func (o OperationCredentialLockManagerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableOperationCredentialLockManagerCommand) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

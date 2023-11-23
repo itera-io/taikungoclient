@@ -20,10 +20,10 @@ var _ MappedNullable = &AiCredentialDto{}
 
 // AiCredentialDto struct for AiCredentialDto
 type AiCredentialDto struct {
-	Url    NullableString `json:"url,omitempty"`
-	Name   NullableString `json:"name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	ApiKey NullableString `json:"apiKey,omitempty"`
-	Type   *AiType        `json:"type,omitempty"`
+	Type *AiType `json:"type,omitempty"`
 }
 
 // NewAiCredentialDto instantiates a new AiCredentialDto object
@@ -75,7 +75,6 @@ func (o *AiCredentialDto) HasUrl() bool {
 func (o *AiCredentialDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *AiCredentialDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -118,7 +117,6 @@ func (o *AiCredentialDto) HasName() bool {
 func (o *AiCredentialDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AiCredentialDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -161,7 +159,6 @@ func (o *AiCredentialDto) HasApiKey() bool {
 func (o *AiCredentialDto) SetApiKey(v string) {
 	o.ApiKey.Set(&v)
 }
-
 // SetApiKeyNil sets the value for ApiKey to be an explicit nil
 func (o *AiCredentialDto) SetApiKeyNil() {
 	o.ApiKey.Set(nil)
@@ -205,7 +202,7 @@ func (o *AiCredentialDto) SetType(v AiType) {
 }
 
 func (o AiCredentialDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,3 +261,5 @@ func (v *NullableAiCredentialDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

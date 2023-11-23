@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_AdminAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminAddBalance", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AdminAPI.AdminAddBalance(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminBillingOperations", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AdminAPI.AdminBillingOperations(context.Background()).Execute()
 
@@ -46,7 +46,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminCreateUser", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AdminAPI.AdminCreateUser(context.Background()).Execute()
 
@@ -57,7 +57,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminDeleteOrg", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AdminAPI.AdminDeleteOrg(context.Background()).Execute()
 
@@ -68,7 +68,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminKeycloakList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AdminAPI.AdminKeycloakList(context.Background()).Execute()
 
@@ -80,7 +80,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminMakeCsm", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AdminAPI.AdminMakeCsm(context.Background()).Execute()
 
@@ -91,7 +91,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminMakeOwner", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AdminAPI.AdminMakeOwner(context.Background()).Execute()
 
@@ -102,7 +102,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminOrganizations", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AdminAPI.AdminOrganizations(context.Background()).Execute()
 
@@ -114,7 +114,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminProjectList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AdminAPI.AdminProjectList(context.Background()).Execute()
 
@@ -126,7 +126,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminUpdateProject", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AdminAPI.AdminUpdateProject(context.Background()).Execute()
 
@@ -137,7 +137,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminUpdateProjectKube", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AdminAPI.AdminUpdateProjectKube(context.Background()).Execute()
 
@@ -148,7 +148,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminUpdateUser", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AdminAPI.AdminUpdateUser(context.Background()).Execute()
 
@@ -159,7 +159,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminUpdateUserKube", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AdminAPI.AdminUpdateUserKube(context.Background()).Execute()
 
@@ -170,7 +170,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminUpdateUsers", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AdminAPI.AdminUpdateUsers(context.Background()).Execute()
 
@@ -181,7 +181,7 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 	t.Run("Test AdminAPIService AdminUsersList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AdminAPI.AdminUsersList(context.Background()).Execute()
 

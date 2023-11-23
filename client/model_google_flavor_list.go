@@ -20,8 +20,8 @@ var _ MappedNullable = &GoogleFlavorList{}
 
 // GoogleFlavorList struct for GoogleFlavorList
 type GoogleFlavorList struct {
-	Data       []GoogleFlavorDto `json:"data,omitempty"`
-	TotalCount *int32            `json:"totalCount,omitempty"`
+	Data []GoogleFlavorDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewGoogleFlavorList instantiates a new GoogleFlavorList object
@@ -107,7 +107,7 @@ func (o *GoogleFlavorList) SetTotalCount(v int32) {
 }
 
 func (o GoogleFlavorList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableGoogleFlavorList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

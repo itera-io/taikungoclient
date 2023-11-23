@@ -20,13 +20,14 @@ import (
 	"strings"
 )
 
+
 // ProjectRevisionsAPIService ProjectRevisionsAPI service
 type ProjectRevisionsAPIService service
 
 type ApiProjectrevisionsEditRequest struct {
-	ctx                      context.Context
-	ApiService               *ProjectRevisionsAPIService
-	projectId                int32
+	ctx context.Context
+	ApiService *ProjectRevisionsAPIService
+	projectId int32
 	projectRevisionUpdateDto *ProjectRevisionUpdateDto
 }
 
@@ -42,24 +43,24 @@ func (r ApiProjectrevisionsEditRequest) Execute() (*http.Response, error) {
 /*
 ProjectrevisionsEdit Update project revision by ProjectId for poller
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId
-	@return ApiProjectrevisionsEditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId
+ @return ApiProjectrevisionsEditRequest
 */
 func (a *ProjectRevisionsAPIService) ProjectrevisionsEdit(ctx context.Context, projectId int32) ApiProjectrevisionsEditRequest {
 	return ApiProjectrevisionsEditRequest{
 		ApiService: a,
-		ctx:        ctx,
-		projectId:  projectId,
+		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
 func (a *ProjectRevisionsAPIService) ProjectrevisionsEditExecute(r ApiProjectrevisionsEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectRevisionsAPIService.ProjectrevisionsEdit")
@@ -136,8 +137,8 @@ func (a *ProjectRevisionsAPIService) ProjectrevisionsEditExecute(r ApiProjectrev
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -147,8 +148,8 @@ func (a *ProjectRevisionsAPIService) ProjectrevisionsEditExecute(r ApiProjectrev
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -158,8 +159,8 @@ func (a *ProjectRevisionsAPIService) ProjectrevisionsEditExecute(r ApiProjectrev
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -169,8 +170,8 @@ func (a *ProjectRevisionsAPIService) ProjectrevisionsEditExecute(r ApiProjectrev
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -180,8 +181,8 @@ func (a *ProjectRevisionsAPIService) ProjectrevisionsEditExecute(r ApiProjectrev
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

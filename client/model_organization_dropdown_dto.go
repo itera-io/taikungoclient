@@ -20,9 +20,9 @@ var _ MappedNullable = &OrganizationDropdownDto{}
 
 // OrganizationDropdownDto struct for OrganizationDropdownDto
 type OrganizationDropdownDto struct {
-	Id      *int32         `json:"id,omitempty"`
-	Name    NullableString `json:"name,omitempty"`
-	IsInfra *bool          `json:"isInfra,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	IsInfra *bool `json:"isInfra,omitempty"`
 }
 
 // NewOrganizationDropdownDto instantiates a new OrganizationDropdownDto object
@@ -106,7 +106,6 @@ func (o *OrganizationDropdownDto) HasName() bool {
 func (o *OrganizationDropdownDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OrganizationDropdownDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,7 @@ func (o *OrganizationDropdownDto) SetIsInfra(v bool) {
 }
 
 func (o OrganizationDropdownDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,3 +205,5 @@ func (v *NullableOrganizationDropdownDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

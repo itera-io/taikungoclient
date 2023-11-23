@@ -20,19 +20,19 @@ var _ MappedNullable = &OpenstackCredentialsForProjectDto{}
 
 // OpenstackCredentialsForProjectDto struct for OpenstackCredentialsForProjectDto
 type OpenstackCredentialsForProjectDto struct {
-	OpenStackUser             NullableString `json:"openStackUser,omitempty"`
-	OpenStackDomain           NullableString `json:"openStackDomain,omitempty"`
-	OpenStackPassword         NullableString `json:"openStackPassword,omitempty"`
-	OpenStackProject          NullableString `json:"openStackProject,omitempty"`
-	OpenStackRegion           NullableString `json:"openStackRegion,omitempty"`
-	OpenStackUrl              NullableString `json:"openStackUrl,omitempty"`
-	OpenStackPublicNetwork    NullableString `json:"openStackPublicNetwork,omitempty"`
+	OpenStackUser NullableString `json:"openStackUser,omitempty"`
+	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
+	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
+	OpenStackProject NullableString `json:"openStackProject,omitempty"`
+	OpenStackRegion NullableString `json:"openStackRegion,omitempty"`
+	OpenStackUrl NullableString `json:"openStackUrl,omitempty"`
+	OpenStackPublicNetwork NullableString `json:"openStackPublicNetwork,omitempty"`
 	OpenStackAvailabilityZone NullableString `json:"openStackAvailabilityZone,omitempty"`
-	OpenStackVolumeType       NullableString `json:"openStackVolumeType,omitempty"`
-	OpenStackTenantId         NullableString `json:"openStackTenantId,omitempty"`
-	OpenStackImportNetwork    *bool          `json:"openStackImportNetwork,omitempty"`
+	OpenStackVolumeType NullableString `json:"openStackVolumeType,omitempty"`
+	OpenStackTenantId NullableString `json:"openStackTenantId,omitempty"`
+	OpenStackImportNetwork *bool `json:"openStackImportNetwork,omitempty"`
 	OpenStackInternalSubnetId NullableString `json:"openStackInternalSubnetId,omitempty"`
-	ApplicationCredEnabled    *bool          `json:"applicationCredEnabled,omitempty"`
+	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
 }
 
 // NewOpenstackCredentialsForProjectDto instantiates a new OpenstackCredentialsForProjectDto object
@@ -84,7 +84,6 @@ func (o *OpenstackCredentialsForProjectDto) HasOpenStackUser() bool {
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackUser(v string) {
 	o.OpenStackUser.Set(&v)
 }
-
 // SetOpenStackUserNil sets the value for OpenStackUser to be an explicit nil
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackUserNil() {
 	o.OpenStackUser.Set(nil)
@@ -127,7 +126,6 @@ func (o *OpenstackCredentialsForProjectDto) HasOpenStackDomain() bool {
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackDomain(v string) {
 	o.OpenStackDomain.Set(&v)
 }
-
 // SetOpenStackDomainNil sets the value for OpenStackDomain to be an explicit nil
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackDomainNil() {
 	o.OpenStackDomain.Set(nil)
@@ -170,7 +168,6 @@ func (o *OpenstackCredentialsForProjectDto) HasOpenStackPassword() bool {
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackPassword(v string) {
 	o.OpenStackPassword.Set(&v)
 }
-
 // SetOpenStackPasswordNil sets the value for OpenStackPassword to be an explicit nil
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackPasswordNil() {
 	o.OpenStackPassword.Set(nil)
@@ -213,7 +210,6 @@ func (o *OpenstackCredentialsForProjectDto) HasOpenStackProject() bool {
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackProject(v string) {
 	o.OpenStackProject.Set(&v)
 }
-
 // SetOpenStackProjectNil sets the value for OpenStackProject to be an explicit nil
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackProjectNil() {
 	o.OpenStackProject.Set(nil)
@@ -256,7 +252,6 @@ func (o *OpenstackCredentialsForProjectDto) HasOpenStackRegion() bool {
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackRegion(v string) {
 	o.OpenStackRegion.Set(&v)
 }
-
 // SetOpenStackRegionNil sets the value for OpenStackRegion to be an explicit nil
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackRegionNil() {
 	o.OpenStackRegion.Set(nil)
@@ -299,7 +294,6 @@ func (o *OpenstackCredentialsForProjectDto) HasOpenStackUrl() bool {
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackUrl(v string) {
 	o.OpenStackUrl.Set(&v)
 }
-
 // SetOpenStackUrlNil sets the value for OpenStackUrl to be an explicit nil
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackUrlNil() {
 	o.OpenStackUrl.Set(nil)
@@ -342,7 +336,6 @@ func (o *OpenstackCredentialsForProjectDto) HasOpenStackPublicNetwork() bool {
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackPublicNetwork(v string) {
 	o.OpenStackPublicNetwork.Set(&v)
 }
-
 // SetOpenStackPublicNetworkNil sets the value for OpenStackPublicNetwork to be an explicit nil
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackPublicNetworkNil() {
 	o.OpenStackPublicNetwork.Set(nil)
@@ -385,7 +378,6 @@ func (o *OpenstackCredentialsForProjectDto) HasOpenStackAvailabilityZone() bool 
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackAvailabilityZone(v string) {
 	o.OpenStackAvailabilityZone.Set(&v)
 }
-
 // SetOpenStackAvailabilityZoneNil sets the value for OpenStackAvailabilityZone to be an explicit nil
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackAvailabilityZoneNil() {
 	o.OpenStackAvailabilityZone.Set(nil)
@@ -428,7 +420,6 @@ func (o *OpenstackCredentialsForProjectDto) HasOpenStackVolumeType() bool {
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackVolumeType(v string) {
 	o.OpenStackVolumeType.Set(&v)
 }
-
 // SetOpenStackVolumeTypeNil sets the value for OpenStackVolumeType to be an explicit nil
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackVolumeTypeNil() {
 	o.OpenStackVolumeType.Set(nil)
@@ -471,7 +462,6 @@ func (o *OpenstackCredentialsForProjectDto) HasOpenStackTenantId() bool {
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackTenantId(v string) {
 	o.OpenStackTenantId.Set(&v)
 }
-
 // SetOpenStackTenantIdNil sets the value for OpenStackTenantId to be an explicit nil
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackTenantIdNil() {
 	o.OpenStackTenantId.Set(nil)
@@ -546,7 +536,6 @@ func (o *OpenstackCredentialsForProjectDto) HasOpenStackInternalSubnetId() bool 
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackInternalSubnetId(v string) {
 	o.OpenStackInternalSubnetId.Set(&v)
 }
-
 // SetOpenStackInternalSubnetIdNil sets the value for OpenStackInternalSubnetId to be an explicit nil
 func (o *OpenstackCredentialsForProjectDto) SetOpenStackInternalSubnetIdNil() {
 	o.OpenStackInternalSubnetId.Set(nil)
@@ -590,7 +579,7 @@ func (o *OpenstackCredentialsForProjectDto) SetApplicationCredEnabled(v bool) {
 }
 
 func (o OpenstackCredentialsForProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -676,3 +665,5 @@ func (v *NullableOpenstackCredentialsForProjectDto) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

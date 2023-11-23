@@ -22,7 +22,7 @@ type EmailMode string
 // List of EmailMode
 const (
 	EMAILMODE_CONFIRM EmailMode = "Confirm"
-	EMAILMODE_CHANGE  EmailMode = "Change"
+	EMAILMODE_CHANGE EmailMode = "Change"
 )
 
 // All allowed values of EmailMode enum
@@ -109,3 +109,4 @@ func (v *NullableEmailMode) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

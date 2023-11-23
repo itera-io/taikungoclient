@@ -20,8 +20,8 @@ var _ MappedNullable = &DescribeCrdCommand{}
 
 // DescribeCrdCommand struct for DescribeCrdCommand
 type DescribeCrdCommand struct {
-	ProjectId *int32         `json:"projectId,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 }
 
 // NewDescribeCrdCommand instantiates a new DescribeCrdCommand object
@@ -105,7 +105,6 @@ func (o *DescribeCrdCommand) HasName() bool {
 func (o *DescribeCrdCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DescribeCrdCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -117,7 +116,7 @@ func (o *DescribeCrdCommand) UnsetName() {
 }
 
 func (o DescribeCrdCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableDescribeCrdCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

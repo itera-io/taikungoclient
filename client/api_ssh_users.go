@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // SshUsersAPIService SshUsersAPI service
 type SshUsersAPIService service
 
 type ApiSshusersCreateRequest struct {
-	ctx                  context.Context
-	ApiService           *SshUsersAPIService
+	ctx context.Context
+	ApiService *SshUsersAPIService
 	createSshUserCommand *CreateSshUserCommand
 }
 
@@ -41,25 +42,24 @@ func (r ApiSshusersCreateRequest) Execute() (*ApiResponse, *http.Response, error
 /*
 SshusersCreate Create access profile ssh user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSshusersCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSshusersCreateRequest
 */
 func (a *SshUsersAPIService) SshusersCreate(ctx context.Context) ApiSshusersCreateRequest {
 	return ApiSshusersCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *SshUsersAPIService) SshusersCreateExecute(r ApiSshusersCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SshUsersAPIService.SshusersCreate")
@@ -138,8 +138,8 @@ func (a *SshUsersAPIService) SshusersCreateExecute(r ApiSshusersCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -149,8 +149,8 @@ func (a *SshUsersAPIService) SshusersCreateExecute(r ApiSshusersCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -160,8 +160,8 @@ func (a *SshUsersAPIService) SshusersCreateExecute(r ApiSshusersCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -171,8 +171,8 @@ func (a *SshUsersAPIService) SshusersCreateExecute(r ApiSshusersCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -182,8 +182,8 @@ func (a *SshUsersAPIService) SshusersCreateExecute(r ApiSshusersCreateRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -201,8 +201,8 @@ func (a *SshUsersAPIService) SshusersCreateExecute(r ApiSshusersCreateRequest) (
 }
 
 type ApiSshusersDeleteRequest struct {
-	ctx                  context.Context
-	ApiService           *SshUsersAPIService
+	ctx context.Context
+	ApiService *SshUsersAPIService
 	deleteSshUserCommand *DeleteSshUserCommand
 }
 
@@ -218,22 +218,22 @@ func (r ApiSshusersDeleteRequest) Execute() (*http.Response, error) {
 /*
 SshusersDelete Delete access profile ssh user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSshusersDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSshusersDeleteRequest
 */
 func (a *SshUsersAPIService) SshusersDelete(ctx context.Context) ApiSshusersDeleteRequest {
 	return ApiSshusersDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *SshUsersAPIService) SshusersDeleteExecute(r ApiSshusersDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SshUsersAPIService.SshusersDelete")
@@ -312,8 +312,8 @@ func (a *SshUsersAPIService) SshusersDeleteExecute(r ApiSshusersDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -323,8 +323,8 @@ func (a *SshUsersAPIService) SshusersDeleteExecute(r ApiSshusersDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -334,8 +334,8 @@ func (a *SshUsersAPIService) SshusersDeleteExecute(r ApiSshusersDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -345,8 +345,8 @@ func (a *SshUsersAPIService) SshusersDeleteExecute(r ApiSshusersDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -356,8 +356,8 @@ func (a *SshUsersAPIService) SshusersDeleteExecute(r ApiSshusersDeleteRequest) (
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -366,8 +366,8 @@ func (a *SshUsersAPIService) SshusersDeleteExecute(r ApiSshusersDeleteRequest) (
 }
 
 type ApiSshusersEditRequest struct {
-	ctx                context.Context
-	ApiService         *SshUsersAPIService
+	ctx context.Context
+	ApiService *SshUsersAPIService
 	editSshUserCommand *EditSshUserCommand
 }
 
@@ -383,22 +383,22 @@ func (r ApiSshusersEditRequest) Execute() (*http.Response, error) {
 /*
 SshusersEdit Edit access profile ssh user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiSshusersEditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiSshusersEditRequest
 */
 func (a *SshUsersAPIService) SshusersEdit(ctx context.Context) ApiSshusersEditRequest {
 	return ApiSshusersEditRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *SshUsersAPIService) SshusersEditExecute(r ApiSshusersEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SshUsersAPIService.SshusersEdit")
@@ -474,8 +474,8 @@ func (a *SshUsersAPIService) SshusersEditExecute(r ApiSshusersEditRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -485,8 +485,8 @@ func (a *SshUsersAPIService) SshusersEditExecute(r ApiSshusersEditRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -496,8 +496,8 @@ func (a *SshUsersAPIService) SshusersEditExecute(r ApiSshusersEditRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -507,8 +507,8 @@ func (a *SshUsersAPIService) SshusersEditExecute(r ApiSshusersEditRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -518,8 +518,8 @@ func (a *SshUsersAPIService) SshusersEditExecute(r ApiSshusersEditRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -528,10 +528,10 @@ func (a *SshUsersAPIService) SshusersEditExecute(r ApiSshusersEditRequest) (*htt
 }
 
 type ApiSshusersListRequest struct {
-	ctx             context.Context
-	ApiService      *SshUsersAPIService
+	ctx context.Context
+	ApiService *SshUsersAPIService
 	accessProfileId int32
-	search          *string
+	search *string
 }
 
 func (r ApiSshusersListRequest) Search(search string) ApiSshusersListRequest {
@@ -546,27 +546,26 @@ func (r ApiSshusersListRequest) Execute() ([]SshUsersListDto, *http.Response, er
 /*
 SshusersList List ssh user by access profile id
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param accessProfileId
-	@return ApiSshusersListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param accessProfileId
+ @return ApiSshusersListRequest
 */
 func (a *SshUsersAPIService) SshusersList(ctx context.Context, accessProfileId int32) ApiSshusersListRequest {
 	return ApiSshusersListRequest{
-		ApiService:      a,
-		ctx:             ctx,
+		ApiService: a,
+		ctx: ctx,
 		accessProfileId: accessProfileId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []SshUsersListDto
+//  @return []SshUsersListDto
 func (a *SshUsersAPIService) SshusersListExecute(r ApiSshusersListRequest) ([]SshUsersListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []SshUsersListDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []SshUsersListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SshUsersAPIService.SshusersList")
@@ -644,8 +643,8 @@ func (a *SshUsersAPIService) SshusersListExecute(r ApiSshusersListRequest) ([]Ss
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -655,8 +654,8 @@ func (a *SshUsersAPIService) SshusersListExecute(r ApiSshusersListRequest) ([]Ss
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -666,8 +665,8 @@ func (a *SshUsersAPIService) SshusersListExecute(r ApiSshusersListRequest) ([]Ss
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -677,8 +676,8 @@ func (a *SshUsersAPIService) SshusersListExecute(r ApiSshusersListRequest) ([]Ss
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -688,8 +687,8 @@ func (a *SshUsersAPIService) SshusersListExecute(r ApiSshusersListRequest) ([]Ss
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

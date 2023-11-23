@@ -20,10 +20,10 @@ var _ MappedNullable = &CreateTicketCommand{}
 
 // CreateTicketCommand struct for CreateTicketCommand
 type CreateTicketCommand struct {
-	Name           NullableString  `json:"name,omitempty"`
-	Description    NullableString  `json:"description,omitempty"`
-	OrganizationId NullableInt32   `json:"organizationId,omitempty"`
-	Priority       *TicketPriority `json:"priority,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	Priority *TicketPriority `json:"priority,omitempty"`
 }
 
 // NewCreateTicketCommand instantiates a new CreateTicketCommand object
@@ -75,7 +75,6 @@ func (o *CreateTicketCommand) HasName() bool {
 func (o *CreateTicketCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateTicketCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -118,7 +117,6 @@ func (o *CreateTicketCommand) HasDescription() bool {
 func (o *CreateTicketCommand) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *CreateTicketCommand) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -161,7 +159,6 @@ func (o *CreateTicketCommand) HasOrganizationId() bool {
 func (o *CreateTicketCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateTicketCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -205,7 +202,7 @@ func (o *CreateTicketCommand) SetPriority(v TicketPriority) {
 }
 
 func (o CreateTicketCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,3 +261,5 @@ func (v *NullableCreateTicketCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

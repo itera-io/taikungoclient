@@ -20,12 +20,12 @@ var _ MappedNullable = &BindSubscriptionResponseDto{}
 
 // BindSubscriptionResponseDto struct for BindSubscriptionResponseDto
 type BindSubscriptionResponseDto struct {
-	Status                    NullableString `json:"status,omitempty"`
+	Status NullableString `json:"status,omitempty"`
 	PaymentIntentClientSecret NullableString `json:"paymentIntentClientSecret,omitempty"`
-	PaymentIntentId           NullableString `json:"paymentIntentId,omitempty"`
-	InvoiceFailureCode        NullableString `json:"invoiceFailureCode,omitempty"`
-	InvoiceFailureMessage     NullableString `json:"invoiceFailureMessage,omitempty"`
-	InvoiceFailureReason      NullableString `json:"invoiceFailureReason,omitempty"`
+	PaymentIntentId NullableString `json:"paymentIntentId,omitempty"`
+	InvoiceFailureCode NullableString `json:"invoiceFailureCode,omitempty"`
+	InvoiceFailureMessage NullableString `json:"invoiceFailureMessage,omitempty"`
+	InvoiceFailureReason NullableString `json:"invoiceFailureReason,omitempty"`
 }
 
 // NewBindSubscriptionResponseDto instantiates a new BindSubscriptionResponseDto object
@@ -77,7 +77,6 @@ func (o *BindSubscriptionResponseDto) HasStatus() bool {
 func (o *BindSubscriptionResponseDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *BindSubscriptionResponseDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -120,7 +119,6 @@ func (o *BindSubscriptionResponseDto) HasPaymentIntentClientSecret() bool {
 func (o *BindSubscriptionResponseDto) SetPaymentIntentClientSecret(v string) {
 	o.PaymentIntentClientSecret.Set(&v)
 }
-
 // SetPaymentIntentClientSecretNil sets the value for PaymentIntentClientSecret to be an explicit nil
 func (o *BindSubscriptionResponseDto) SetPaymentIntentClientSecretNil() {
 	o.PaymentIntentClientSecret.Set(nil)
@@ -163,7 +161,6 @@ func (o *BindSubscriptionResponseDto) HasPaymentIntentId() bool {
 func (o *BindSubscriptionResponseDto) SetPaymentIntentId(v string) {
 	o.PaymentIntentId.Set(&v)
 }
-
 // SetPaymentIntentIdNil sets the value for PaymentIntentId to be an explicit nil
 func (o *BindSubscriptionResponseDto) SetPaymentIntentIdNil() {
 	o.PaymentIntentId.Set(nil)
@@ -206,7 +203,6 @@ func (o *BindSubscriptionResponseDto) HasInvoiceFailureCode() bool {
 func (o *BindSubscriptionResponseDto) SetInvoiceFailureCode(v string) {
 	o.InvoiceFailureCode.Set(&v)
 }
-
 // SetInvoiceFailureCodeNil sets the value for InvoiceFailureCode to be an explicit nil
 func (o *BindSubscriptionResponseDto) SetInvoiceFailureCodeNil() {
 	o.InvoiceFailureCode.Set(nil)
@@ -249,7 +245,6 @@ func (o *BindSubscriptionResponseDto) HasInvoiceFailureMessage() bool {
 func (o *BindSubscriptionResponseDto) SetInvoiceFailureMessage(v string) {
 	o.InvoiceFailureMessage.Set(&v)
 }
-
 // SetInvoiceFailureMessageNil sets the value for InvoiceFailureMessage to be an explicit nil
 func (o *BindSubscriptionResponseDto) SetInvoiceFailureMessageNil() {
 	o.InvoiceFailureMessage.Set(nil)
@@ -292,7 +287,6 @@ func (o *BindSubscriptionResponseDto) HasInvoiceFailureReason() bool {
 func (o *BindSubscriptionResponseDto) SetInvoiceFailureReason(v string) {
 	o.InvoiceFailureReason.Set(&v)
 }
-
 // SetInvoiceFailureReasonNil sets the value for InvoiceFailureReason to be an explicit nil
 func (o *BindSubscriptionResponseDto) SetInvoiceFailureReasonNil() {
 	o.InvoiceFailureReason.Set(nil)
@@ -304,7 +298,7 @@ func (o *BindSubscriptionResponseDto) UnsetInvoiceFailureReason() {
 }
 
 func (o BindSubscriptionResponseDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -369,3 +363,5 @@ func (v *NullableBindSubscriptionResponseDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

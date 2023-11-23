@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_AzureCloudCredentialAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_AzureCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AzureCloudCredentialAPIService AzureCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AzureCloudCredentialAPI.AzureCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_AzureCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AzureCloudCredentialAPIService AzureDashboard", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AzureCloudCredentialAPI.AzureDashboard(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_taikuncore_AzureCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AzureCloudCredentialAPIService AzureList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AzureCloudCredentialAPI.AzureList(context.Background()).Execute()
 
@@ -60,7 +60,7 @@ func Test_taikuncore_AzureCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AzureCloudCredentialAPIService AzureLocations", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AzureCloudCredentialAPI.AzureLocations(context.Background()).Execute()
 
@@ -72,7 +72,7 @@ func Test_taikuncore_AzureCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AzureCloudCredentialAPIService AzureOffers", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 		var publisher string
@@ -87,7 +87,7 @@ func Test_taikuncore_AzureCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AzureCloudCredentialAPIService AzurePublishers", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -101,7 +101,7 @@ func Test_taikuncore_AzureCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AzureCloudCredentialAPIService AzureSkus", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 		var publisher string
@@ -117,7 +117,7 @@ func Test_taikuncore_AzureCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AzureCloudCredentialAPIService AzureSubscriptions", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AzureCloudCredentialAPI.AzureSubscriptions(context.Background()).Execute()
 
@@ -129,7 +129,7 @@ func Test_taikuncore_AzureCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AzureCloudCredentialAPIService AzureUpdate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.AzureCloudCredentialAPI.AzureUpdate(context.Background()).Execute()
 
@@ -140,7 +140,7 @@ func Test_taikuncore_AzureCloudCredentialAPIService(t *testing.T) {
 
 	t.Run("Test AzureCloudCredentialAPIService AzureZones", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AzureCloudCredentialAPI.AzureZones(context.Background()).Execute()
 

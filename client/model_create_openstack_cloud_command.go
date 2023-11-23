@@ -20,22 +20,22 @@ var _ MappedNullable = &CreateOpenstackCloudCommand{}
 
 // CreateOpenstackCloudCommand struct for CreateOpenstackCloudCommand
 type CreateOpenstackCloudCommand struct {
-	Name                      NullableString `json:"name,omitempty"`
-	OpenStackUser             NullableString `json:"openStackUser,omitempty"`
-	OpenStackPassword         NullableString `json:"openStackPassword,omitempty"`
-	OpenStackUrl              NullableString `json:"openStackUrl,omitempty"`
-	OpenStackProject          NullableString `json:"openStackProject,omitempty"`
-	OpenStackPublicNetwork    NullableString `json:"openStackPublicNetwork,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OpenStackUser NullableString `json:"openStackUser,omitempty"`
+	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
+	OpenStackUrl NullableString `json:"openStackUrl,omitempty"`
+	OpenStackProject NullableString `json:"openStackProject,omitempty"`
+	OpenStackPublicNetwork NullableString `json:"openStackPublicNetwork,omitempty"`
 	OpenStackAvailabilityZone NullableString `json:"openStackAvailabilityZone,omitempty"`
-	OpenStackDomain           NullableString `json:"openStackDomain,omitempty"`
-	OpenStackRegion           NullableString `json:"openStackRegion,omitempty"`
-	OpenStackContinent        NullableString `json:"openStackContinent,omitempty"`
-	OpenStackVolumeType       NullableString `json:"openStackVolumeType,omitempty"`
-	OpenStackImportNetwork    *bool          `json:"openStackImportNetwork,omitempty"`
+	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
+	OpenStackRegion NullableString `json:"openStackRegion,omitempty"`
+	OpenStackContinent NullableString `json:"openStackContinent,omitempty"`
+	OpenStackVolumeType NullableString `json:"openStackVolumeType,omitempty"`
+	OpenStackImportNetwork *bool `json:"openStackImportNetwork,omitempty"`
 	OpenStackInternalSubnetId NullableString `json:"openStackInternalSubnetId,omitempty"`
-	OrganizationId            NullableInt32  `json:"organizationId,omitempty"`
-	ApplicationCredEnabled    *bool          `json:"applicationCredEnabled,omitempty"`
-	IsAdmin                   *bool          `json:"isAdmin,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
+	IsAdmin *bool `json:"isAdmin,omitempty"`
 }
 
 // NewCreateOpenstackCloudCommand instantiates a new CreateOpenstackCloudCommand object
@@ -87,7 +87,6 @@ func (o *CreateOpenstackCloudCommand) HasName() bool {
 func (o *CreateOpenstackCloudCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -130,7 +129,6 @@ func (o *CreateOpenstackCloudCommand) HasOpenStackUser() bool {
 func (o *CreateOpenstackCloudCommand) SetOpenStackUser(v string) {
 	o.OpenStackUser.Set(&v)
 }
-
 // SetOpenStackUserNil sets the value for OpenStackUser to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetOpenStackUserNil() {
 	o.OpenStackUser.Set(nil)
@@ -173,7 +171,6 @@ func (o *CreateOpenstackCloudCommand) HasOpenStackPassword() bool {
 func (o *CreateOpenstackCloudCommand) SetOpenStackPassword(v string) {
 	o.OpenStackPassword.Set(&v)
 }
-
 // SetOpenStackPasswordNil sets the value for OpenStackPassword to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetOpenStackPasswordNil() {
 	o.OpenStackPassword.Set(nil)
@@ -216,7 +213,6 @@ func (o *CreateOpenstackCloudCommand) HasOpenStackUrl() bool {
 func (o *CreateOpenstackCloudCommand) SetOpenStackUrl(v string) {
 	o.OpenStackUrl.Set(&v)
 }
-
 // SetOpenStackUrlNil sets the value for OpenStackUrl to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetOpenStackUrlNil() {
 	o.OpenStackUrl.Set(nil)
@@ -259,7 +255,6 @@ func (o *CreateOpenstackCloudCommand) HasOpenStackProject() bool {
 func (o *CreateOpenstackCloudCommand) SetOpenStackProject(v string) {
 	o.OpenStackProject.Set(&v)
 }
-
 // SetOpenStackProjectNil sets the value for OpenStackProject to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetOpenStackProjectNil() {
 	o.OpenStackProject.Set(nil)
@@ -302,7 +297,6 @@ func (o *CreateOpenstackCloudCommand) HasOpenStackPublicNetwork() bool {
 func (o *CreateOpenstackCloudCommand) SetOpenStackPublicNetwork(v string) {
 	o.OpenStackPublicNetwork.Set(&v)
 }
-
 // SetOpenStackPublicNetworkNil sets the value for OpenStackPublicNetwork to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetOpenStackPublicNetworkNil() {
 	o.OpenStackPublicNetwork.Set(nil)
@@ -345,7 +339,6 @@ func (o *CreateOpenstackCloudCommand) HasOpenStackAvailabilityZone() bool {
 func (o *CreateOpenstackCloudCommand) SetOpenStackAvailabilityZone(v string) {
 	o.OpenStackAvailabilityZone.Set(&v)
 }
-
 // SetOpenStackAvailabilityZoneNil sets the value for OpenStackAvailabilityZone to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetOpenStackAvailabilityZoneNil() {
 	o.OpenStackAvailabilityZone.Set(nil)
@@ -388,7 +381,6 @@ func (o *CreateOpenstackCloudCommand) HasOpenStackDomain() bool {
 func (o *CreateOpenstackCloudCommand) SetOpenStackDomain(v string) {
 	o.OpenStackDomain.Set(&v)
 }
-
 // SetOpenStackDomainNil sets the value for OpenStackDomain to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetOpenStackDomainNil() {
 	o.OpenStackDomain.Set(nil)
@@ -431,7 +423,6 @@ func (o *CreateOpenstackCloudCommand) HasOpenStackRegion() bool {
 func (o *CreateOpenstackCloudCommand) SetOpenStackRegion(v string) {
 	o.OpenStackRegion.Set(&v)
 }
-
 // SetOpenStackRegionNil sets the value for OpenStackRegion to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetOpenStackRegionNil() {
 	o.OpenStackRegion.Set(nil)
@@ -474,7 +465,6 @@ func (o *CreateOpenstackCloudCommand) HasOpenStackContinent() bool {
 func (o *CreateOpenstackCloudCommand) SetOpenStackContinent(v string) {
 	o.OpenStackContinent.Set(&v)
 }
-
 // SetOpenStackContinentNil sets the value for OpenStackContinent to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetOpenStackContinentNil() {
 	o.OpenStackContinent.Set(nil)
@@ -517,7 +507,6 @@ func (o *CreateOpenstackCloudCommand) HasOpenStackVolumeType() bool {
 func (o *CreateOpenstackCloudCommand) SetOpenStackVolumeType(v string) {
 	o.OpenStackVolumeType.Set(&v)
 }
-
 // SetOpenStackVolumeTypeNil sets the value for OpenStackVolumeType to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetOpenStackVolumeTypeNil() {
 	o.OpenStackVolumeType.Set(nil)
@@ -592,7 +581,6 @@ func (o *CreateOpenstackCloudCommand) HasOpenStackInternalSubnetId() bool {
 func (o *CreateOpenstackCloudCommand) SetOpenStackInternalSubnetId(v string) {
 	o.OpenStackInternalSubnetId.Set(&v)
 }
-
 // SetOpenStackInternalSubnetIdNil sets the value for OpenStackInternalSubnetId to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetOpenStackInternalSubnetIdNil() {
 	o.OpenStackInternalSubnetId.Set(nil)
@@ -635,7 +623,6 @@ func (o *CreateOpenstackCloudCommand) HasOrganizationId() bool {
 func (o *CreateOpenstackCloudCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateOpenstackCloudCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -711,7 +698,7 @@ func (o *CreateOpenstackCloudCommand) SetIsAdmin(v bool) {
 }
 
 func (o CreateOpenstackCloudCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -806,3 +793,5 @@ func (v *NullableCreateOpenstackCloudCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

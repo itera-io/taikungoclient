@@ -20,25 +20,25 @@ var _ MappedNullable = &CatalogAppDetailsDto{}
 
 // CatalogAppDetailsDto struct for CatalogAppDetailsDto
 type CatalogAppDetailsDto struct {
-	Id                      *int32                    `json:"id,omitempty"`
-	Name                    NullableString            `json:"name,omitempty"`
-	AppRepoName             NullableString            `json:"appRepoName,omitempty"`
-	AppRepoOrganizationName NullableString            `json:"appRepoOrganizationName,omitempty"`
-	AppRepoId               *int32                    `json:"appRepoId,omitempty"`
-	CatalogName             NullableString            `json:"catalogName,omitempty"`
-	CatalogId               *int32                    `json:"catalogId,omitempty"`
-	PackageId               NullableString            `json:"packageId,omitempty"`
-	Version                 NullableString            `json:"version,omitempty"`
-	LogoId                  NullableString            `json:"logoId,omitempty"`
-	ProjectApps             []ProjectAppDto           `json:"projectApps,omitempty"`
-	Description             NullableString            `json:"description,omitempty"`
-	Readme                  NullableString            `json:"readme,omitempty"`
-	SecurityReport          *SecurityReportSummaryDto `json:"securityReport,omitempty"`
-	AppVersion              NullableString            `json:"appVersion,omitempty"`
-	Stars                   *int32                    `json:"stars,omitempty"`
-	VerifiedPublisher       *bool                     `json:"verifiedPublisher,omitempty"`
-	Official                *bool                     `json:"official,omitempty"`
-	HasJsonSchema           *bool                     `json:"hasJsonSchema,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	AppRepoName NullableString `json:"appRepoName,omitempty"`
+	AppRepoOrganizationName NullableString `json:"appRepoOrganizationName,omitempty"`
+	AppRepoId *int32 `json:"appRepoId,omitempty"`
+	CatalogName NullableString `json:"catalogName,omitempty"`
+	CatalogId *int32 `json:"catalogId,omitempty"`
+	PackageId NullableString `json:"packageId,omitempty"`
+	Version NullableString `json:"version,omitempty"`
+	LogoId NullableString `json:"logoId,omitempty"`
+	ProjectApps []ProjectAppDto `json:"projectApps,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	Readme NullableString `json:"readme,omitempty"`
+	SecurityReport *SecurityReportSummaryDto `json:"securityReport,omitempty"`
+	AppVersion NullableString `json:"appVersion,omitempty"`
+	Stars *int32 `json:"stars,omitempty"`
+	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
+	Official *bool `json:"official,omitempty"`
+	HasJsonSchema *bool `json:"hasJsonSchema,omitempty"`
 }
 
 // NewCatalogAppDetailsDto instantiates a new CatalogAppDetailsDto object
@@ -122,7 +122,6 @@ func (o *CatalogAppDetailsDto) HasName() bool {
 func (o *CatalogAppDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CatalogAppDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -165,7 +164,6 @@ func (o *CatalogAppDetailsDto) HasAppRepoName() bool {
 func (o *CatalogAppDetailsDto) SetAppRepoName(v string) {
 	o.AppRepoName.Set(&v)
 }
-
 // SetAppRepoNameNil sets the value for AppRepoName to be an explicit nil
 func (o *CatalogAppDetailsDto) SetAppRepoNameNil() {
 	o.AppRepoName.Set(nil)
@@ -208,7 +206,6 @@ func (o *CatalogAppDetailsDto) HasAppRepoOrganizationName() bool {
 func (o *CatalogAppDetailsDto) SetAppRepoOrganizationName(v string) {
 	o.AppRepoOrganizationName.Set(&v)
 }
-
 // SetAppRepoOrganizationNameNil sets the value for AppRepoOrganizationName to be an explicit nil
 func (o *CatalogAppDetailsDto) SetAppRepoOrganizationNameNil() {
 	o.AppRepoOrganizationName.Set(nil)
@@ -283,7 +280,6 @@ func (o *CatalogAppDetailsDto) HasCatalogName() bool {
 func (o *CatalogAppDetailsDto) SetCatalogName(v string) {
 	o.CatalogName.Set(&v)
 }
-
 // SetCatalogNameNil sets the value for CatalogName to be an explicit nil
 func (o *CatalogAppDetailsDto) SetCatalogNameNil() {
 	o.CatalogName.Set(nil)
@@ -358,7 +354,6 @@ func (o *CatalogAppDetailsDto) HasPackageId() bool {
 func (o *CatalogAppDetailsDto) SetPackageId(v string) {
 	o.PackageId.Set(&v)
 }
-
 // SetPackageIdNil sets the value for PackageId to be an explicit nil
 func (o *CatalogAppDetailsDto) SetPackageIdNil() {
 	o.PackageId.Set(nil)
@@ -401,7 +396,6 @@ func (o *CatalogAppDetailsDto) HasVersion() bool {
 func (o *CatalogAppDetailsDto) SetVersion(v string) {
 	o.Version.Set(&v)
 }
-
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *CatalogAppDetailsDto) SetVersionNil() {
 	o.Version.Set(nil)
@@ -444,7 +438,6 @@ func (o *CatalogAppDetailsDto) HasLogoId() bool {
 func (o *CatalogAppDetailsDto) SetLogoId(v string) {
 	o.LogoId.Set(&v)
 }
-
 // SetLogoIdNil sets the value for LogoId to be an explicit nil
 func (o *CatalogAppDetailsDto) SetLogoIdNil() {
 	o.LogoId.Set(nil)
@@ -520,7 +513,6 @@ func (o *CatalogAppDetailsDto) HasDescription() bool {
 func (o *CatalogAppDetailsDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *CatalogAppDetailsDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -563,7 +555,6 @@ func (o *CatalogAppDetailsDto) HasReadme() bool {
 func (o *CatalogAppDetailsDto) SetReadme(v string) {
 	o.Readme.Set(&v)
 }
-
 // SetReadmeNil sets the value for Readme to be an explicit nil
 func (o *CatalogAppDetailsDto) SetReadmeNil() {
 	o.Readme.Set(nil)
@@ -638,7 +629,6 @@ func (o *CatalogAppDetailsDto) HasAppVersion() bool {
 func (o *CatalogAppDetailsDto) SetAppVersion(v string) {
 	o.AppVersion.Set(&v)
 }
-
 // SetAppVersionNil sets the value for AppVersion to be an explicit nil
 func (o *CatalogAppDetailsDto) SetAppVersionNil() {
 	o.AppVersion.Set(nil)
@@ -778,7 +768,7 @@ func (o *CatalogAppDetailsDto) SetHasJsonSchema(v bool) {
 }
 
 func (o CatalogAppDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -882,3 +872,5 @@ func (v *NullableCatalogAppDetailsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

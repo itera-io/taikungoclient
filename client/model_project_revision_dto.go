@@ -20,8 +20,8 @@ var _ MappedNullable = &ProjectRevisionDto{}
 
 // ProjectRevisionDto struct for ProjectRevisionDto
 type ProjectRevisionDto struct {
-	AccessProfileRevision   *int32 `json:"accessProfileRevision,omitempty"`
-	OpaProfileRevision      *int32 `json:"opaProfileRevision,omitempty"`
+	AccessProfileRevision *int32 `json:"accessProfileRevision,omitempty"`
+	OpaProfileRevision *int32 `json:"opaProfileRevision,omitempty"`
 	CloudCredentialRevision *int32 `json:"cloudCredentialRevision,omitempty"`
 }
 
@@ -139,7 +139,7 @@ func (o *ProjectRevisionDto) SetCloudCredentialRevision(v int32) {
 }
 
 func (o ProjectRevisionDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -195,3 +195,5 @@ func (v *NullableProjectRevisionDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

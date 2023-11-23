@@ -20,8 +20,8 @@ var _ MappedNullable = &DocumentationData{}
 
 // DocumentationData struct for DocumentationData
 type DocumentationData struct {
-	Id   *int32         `json:"id,omitempty"`
-	Key  NullableString `json:"key,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Key NullableString `json:"key,omitempty"`
 	Link NullableString `json:"link,omitempty"`
 	Role NullableString `json:"role,omitempty"`
 }
@@ -107,7 +107,6 @@ func (o *DocumentationData) HasKey() bool {
 func (o *DocumentationData) SetKey(v string) {
 	o.Key.Set(&v)
 }
-
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *DocumentationData) SetKeyNil() {
 	o.Key.Set(nil)
@@ -150,7 +149,6 @@ func (o *DocumentationData) HasLink() bool {
 func (o *DocumentationData) SetLink(v string) {
 	o.Link.Set(&v)
 }
-
 // SetLinkNil sets the value for Link to be an explicit nil
 func (o *DocumentationData) SetLinkNil() {
 	o.Link.Set(nil)
@@ -193,7 +191,6 @@ func (o *DocumentationData) HasRole() bool {
 func (o *DocumentationData) SetRole(v string) {
 	o.Role.Set(&v)
 }
-
 // SetRoleNil sets the value for Role to be an explicit nil
 func (o *DocumentationData) SetRoleNil() {
 	o.Role.Set(nil)
@@ -205,7 +202,7 @@ func (o *DocumentationData) UnsetRole() {
 }
 
 func (o DocumentationData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,3 +261,5 @@ func (v *NullableDocumentationData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_ImagesAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesAwsCommonImages", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -38,7 +38,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesAwsImagesList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ImagesAPI.ImagesAwsImagesList(context.Background()).Execute()
 
@@ -50,7 +50,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesAwsPersonalImages", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -64,7 +64,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesAzureCommonImages", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -78,7 +78,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesAzureImages", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 		var publisherName string
@@ -95,7 +95,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesAzurePersonalImages", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -109,7 +109,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesBindImagesToProject", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ImagesAPI.ImagesBindImagesToProject(context.Background()).Execute()
 
@@ -120,7 +120,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesCommonGoogleImages", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -134,7 +134,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesGoogleImages", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 		var type_ string
@@ -149,7 +149,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesImageDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ImagesAPI.ImagesImageDetails(context.Background()).Execute()
 
@@ -161,7 +161,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesOpenstackImages", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -175,7 +175,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesProxmoxImages", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -189,7 +189,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesSelectedImagesForProject", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ImagesAPI.ImagesSelectedImagesForProject(context.Background()).Execute()
 
@@ -201,7 +201,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesTanzuImages", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var cloudId int32
 
@@ -215,7 +215,7 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	t.Run("Test ImagesAPIService ImagesUnbindImagesFromProject", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ImagesAPI.ImagesUnbindImagesFromProject(context.Background()).Execute()
 

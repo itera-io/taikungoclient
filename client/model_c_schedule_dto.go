@@ -21,16 +21,16 @@ var _ MappedNullable = &CScheduleDto{}
 
 // CScheduleDto struct for CScheduleDto
 type CScheduleDto struct {
-	Status             *Status        `json:"status,omitempty"`
-	MetadataName       NullableString `json:"metadataName,omitempty"`
-	Namespace          NullableString `json:"namespace,omitempty"`
-	CreatedAt          NullableTime   `json:"createdAt,omitempty"`
-	Schedule           NullableString `json:"schedule,omitempty"`
-	Ttl                NullableString `json:"ttl,omitempty"`
-	LastBackup         NullableTime   `json:"lastBackup,omitempty"`
-	Phase              NullableString `json:"phase,omitempty"`
-	ExcludedNamespaces []string       `json:"excludedNamespaces,omitempty"`
-	IncludedNamespaces []string       `json:"includedNamespaces,omitempty"`
+	Status *Status `json:"status,omitempty"`
+	MetadataName NullableString `json:"metadataName,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	CreatedAt NullableTime `json:"createdAt,omitempty"`
+	Schedule NullableString `json:"schedule,omitempty"`
+	Ttl NullableString `json:"ttl,omitempty"`
+	LastBackup NullableTime `json:"lastBackup,omitempty"`
+	Phase NullableString `json:"phase,omitempty"`
+	ExcludedNamespaces []string `json:"excludedNamespaces,omitempty"`
+	IncludedNamespaces []string `json:"includedNamespaces,omitempty"`
 }
 
 // NewCScheduleDto instantiates a new CScheduleDto object
@@ -114,7 +114,6 @@ func (o *CScheduleDto) HasMetadataName() bool {
 func (o *CScheduleDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *CScheduleDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -157,7 +156,6 @@ func (o *CScheduleDto) HasNamespace() bool {
 func (o *CScheduleDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *CScheduleDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -200,7 +198,6 @@ func (o *CScheduleDto) HasCreatedAt() bool {
 func (o *CScheduleDto) SetCreatedAt(v time.Time) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *CScheduleDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -243,7 +240,6 @@ func (o *CScheduleDto) HasSchedule() bool {
 func (o *CScheduleDto) SetSchedule(v string) {
 	o.Schedule.Set(&v)
 }
-
 // SetScheduleNil sets the value for Schedule to be an explicit nil
 func (o *CScheduleDto) SetScheduleNil() {
 	o.Schedule.Set(nil)
@@ -286,7 +282,6 @@ func (o *CScheduleDto) HasTtl() bool {
 func (o *CScheduleDto) SetTtl(v string) {
 	o.Ttl.Set(&v)
 }
-
 // SetTtlNil sets the value for Ttl to be an explicit nil
 func (o *CScheduleDto) SetTtlNil() {
 	o.Ttl.Set(nil)
@@ -329,7 +324,6 @@ func (o *CScheduleDto) HasLastBackup() bool {
 func (o *CScheduleDto) SetLastBackup(v time.Time) {
 	o.LastBackup.Set(&v)
 }
-
 // SetLastBackupNil sets the value for LastBackup to be an explicit nil
 func (o *CScheduleDto) SetLastBackupNil() {
 	o.LastBackup.Set(nil)
@@ -372,7 +366,6 @@ func (o *CScheduleDto) HasPhase() bool {
 func (o *CScheduleDto) SetPhase(v string) {
 	o.Phase.Set(&v)
 }
-
 // SetPhaseNil sets the value for Phase to be an explicit nil
 func (o *CScheduleDto) SetPhaseNil() {
 	o.Phase.Set(nil)
@@ -450,7 +443,7 @@ func (o *CScheduleDto) SetIncludedNamespaces(v []string) {
 }
 
 func (o CScheduleDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -527,3 +520,5 @@ func (v *NullableCScheduleDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

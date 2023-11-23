@@ -20,21 +20,21 @@ var _ MappedNullable = &AlertingProfilesListDto{}
 
 // AlertingProfilesListDto struct for AlertingProfilesListDto
 type AlertingProfilesListDto struct {
-	Id                     *int32               `json:"id,omitempty"`
-	Name                   NullableString       `json:"name,omitempty"`
-	OrganizationId         NullableInt32        `json:"organizationId,omitempty"`
-	OrganizationName       NullableString       `json:"organizationName,omitempty"`
-	SlackConfigurationId   NullableInt32        `json:"slackConfigurationId,omitempty"`
-	SlackConfigurationName NullableString       `json:"slackConfigurationName,omitempty"`
-	IsLocked               *bool                `json:"isLocked,omitempty"`
-	Emails                 []AlertingEmailDto   `json:"emails,omitempty"`
-	Webhooks               []AlertingWebhookDto `json:"webhooks,omitempty"`
-	Projects               []CommonDropdownDto  `json:"projects,omitempty"`
-	CreatedBy              NullableString       `json:"createdBy,omitempty"`
-	LastModified           NullableString       `json:"lastModified,omitempty"`
-	LastModifiedBy         NullableString       `json:"lastModifiedBy,omitempty"`
-	Reminder               *AlertingReminder    `json:"reminder,omitempty"`
-	CreatedAt              NullableString       `json:"createdAt,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	SlackConfigurationId NullableInt32 `json:"slackConfigurationId,omitempty"`
+	SlackConfigurationName NullableString `json:"slackConfigurationName,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	Emails []AlertingEmailDto `json:"emails,omitempty"`
+	Webhooks []AlertingWebhookDto `json:"webhooks,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	Reminder *AlertingReminder `json:"reminder,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
 }
 
 // NewAlertingProfilesListDto instantiates a new AlertingProfilesListDto object
@@ -118,7 +118,6 @@ func (o *AlertingProfilesListDto) HasName() bool {
 func (o *AlertingProfilesListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AlertingProfilesListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -161,7 +160,6 @@ func (o *AlertingProfilesListDto) HasOrganizationId() bool {
 func (o *AlertingProfilesListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *AlertingProfilesListDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -204,7 +202,6 @@ func (o *AlertingProfilesListDto) HasOrganizationName() bool {
 func (o *AlertingProfilesListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *AlertingProfilesListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -247,7 +244,6 @@ func (o *AlertingProfilesListDto) HasSlackConfigurationId() bool {
 func (o *AlertingProfilesListDto) SetSlackConfigurationId(v int32) {
 	o.SlackConfigurationId.Set(&v)
 }
-
 // SetSlackConfigurationIdNil sets the value for SlackConfigurationId to be an explicit nil
 func (o *AlertingProfilesListDto) SetSlackConfigurationIdNil() {
 	o.SlackConfigurationId.Set(nil)
@@ -290,7 +286,6 @@ func (o *AlertingProfilesListDto) HasSlackConfigurationName() bool {
 func (o *AlertingProfilesListDto) SetSlackConfigurationName(v string) {
 	o.SlackConfigurationName.Set(&v)
 }
-
 // SetSlackConfigurationNameNil sets the value for SlackConfigurationName to be an explicit nil
 func (o *AlertingProfilesListDto) SetSlackConfigurationNameNil() {
 	o.SlackConfigurationName.Set(nil)
@@ -464,7 +459,6 @@ func (o *AlertingProfilesListDto) HasCreatedBy() bool {
 func (o *AlertingProfilesListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *AlertingProfilesListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -507,7 +501,6 @@ func (o *AlertingProfilesListDto) HasLastModified() bool {
 func (o *AlertingProfilesListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *AlertingProfilesListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -550,7 +543,6 @@ func (o *AlertingProfilesListDto) HasLastModifiedBy() bool {
 func (o *AlertingProfilesListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *AlertingProfilesListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -625,7 +617,6 @@ func (o *AlertingProfilesListDto) HasCreatedAt() bool {
 func (o *AlertingProfilesListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *AlertingProfilesListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -637,7 +628,7 @@ func (o *AlertingProfilesListDto) UnsetCreatedAt() {
 }
 
 func (o AlertingProfilesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -729,3 +720,5 @@ func (v *NullableAlertingProfilesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,12 +20,12 @@ var _ MappedNullable = &StorageClassDto{}
 
 // StorageClassDto struct for StorageClassDto
 type StorageClassDto struct {
-	MetadataName         NullableString `json:"metadataName,omitempty"`
-	Age                  NullableString `json:"age,omitempty"`
-	Provisioner          NullableString `json:"provisioner,omitempty"`
-	ReclaimPolicy        NullableString `json:"reclaimPolicy,omitempty"`
-	VolumeBindingMode    NullableString `json:"volumeBindingMode,omitempty"`
-	AllowVolumeExpansion NullableBool   `json:"allowVolumeExpansion,omitempty"`
+	MetadataName NullableString `json:"metadataName,omitempty"`
+	Age NullableString `json:"age,omitempty"`
+	Provisioner NullableString `json:"provisioner,omitempty"`
+	ReclaimPolicy NullableString `json:"reclaimPolicy,omitempty"`
+	VolumeBindingMode NullableString `json:"volumeBindingMode,omitempty"`
+	AllowVolumeExpansion NullableBool `json:"allowVolumeExpansion,omitempty"`
 }
 
 // NewStorageClassDto instantiates a new StorageClassDto object
@@ -77,7 +77,6 @@ func (o *StorageClassDto) HasMetadataName() bool {
 func (o *StorageClassDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *StorageClassDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -120,7 +119,6 @@ func (o *StorageClassDto) HasAge() bool {
 func (o *StorageClassDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-
 // SetAgeNil sets the value for Age to be an explicit nil
 func (o *StorageClassDto) SetAgeNil() {
 	o.Age.Set(nil)
@@ -163,7 +161,6 @@ func (o *StorageClassDto) HasProvisioner() bool {
 func (o *StorageClassDto) SetProvisioner(v string) {
 	o.Provisioner.Set(&v)
 }
-
 // SetProvisionerNil sets the value for Provisioner to be an explicit nil
 func (o *StorageClassDto) SetProvisionerNil() {
 	o.Provisioner.Set(nil)
@@ -206,7 +203,6 @@ func (o *StorageClassDto) HasReclaimPolicy() bool {
 func (o *StorageClassDto) SetReclaimPolicy(v string) {
 	o.ReclaimPolicy.Set(&v)
 }
-
 // SetReclaimPolicyNil sets the value for ReclaimPolicy to be an explicit nil
 func (o *StorageClassDto) SetReclaimPolicyNil() {
 	o.ReclaimPolicy.Set(nil)
@@ -249,7 +245,6 @@ func (o *StorageClassDto) HasVolumeBindingMode() bool {
 func (o *StorageClassDto) SetVolumeBindingMode(v string) {
 	o.VolumeBindingMode.Set(&v)
 }
-
 // SetVolumeBindingModeNil sets the value for VolumeBindingMode to be an explicit nil
 func (o *StorageClassDto) SetVolumeBindingModeNil() {
 	o.VolumeBindingMode.Set(nil)
@@ -292,7 +287,6 @@ func (o *StorageClassDto) HasAllowVolumeExpansion() bool {
 func (o *StorageClassDto) SetAllowVolumeExpansion(v bool) {
 	o.AllowVolumeExpansion.Set(&v)
 }
-
 // SetAllowVolumeExpansionNil sets the value for AllowVolumeExpansion to be an explicit nil
 func (o *StorageClassDto) SetAllowVolumeExpansionNil() {
 	o.AllowVolumeExpansion.Set(nil)
@@ -304,7 +298,7 @@ func (o *StorageClassDto) UnsetAllowVolumeExpansion() {
 }
 
 func (o StorageClassDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -369,3 +363,5 @@ func (v *NullableStorageClassDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

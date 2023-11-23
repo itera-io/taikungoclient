@@ -20,9 +20,9 @@ var _ MappedNullable = &AllFlavorsList{}
 
 // AllFlavorsList struct for AllFlavorsList
 type AllFlavorsList struct {
-	Data       []FlavorsListDto `json:"data,omitempty"`
-	TotalCount *int32           `json:"totalCount,omitempty"`
-	CloudType  NullableString   `json:"cloudType,omitempty"`
+	Data []FlavorsListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
+	CloudType NullableString `json:"cloudType,omitempty"`
 }
 
 // NewAllFlavorsList instantiates a new AllFlavorsList object
@@ -139,7 +139,6 @@ func (o *AllFlavorsList) HasCloudType() bool {
 func (o *AllFlavorsList) SetCloudType(v string) {
 	o.CloudType.Set(&v)
 }
-
 // SetCloudTypeNil sets the value for CloudType to be an explicit nil
 func (o *AllFlavorsList) SetCloudTypeNil() {
 	o.CloudType.Set(nil)
@@ -151,7 +150,7 @@ func (o *AllFlavorsList) UnsetCloudType() {
 }
 
 func (o AllFlavorsList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -207,3 +206,5 @@ func (v *NullableAllFlavorsList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,24 +20,24 @@ var _ MappedNullable = &GoogleCredentialsListDto{}
 
 // GoogleCredentialsListDto struct for GoogleCredentialsListDto
 type GoogleCredentialsListDto struct {
-	Id                     *int32              `json:"id,omitempty"`
-	Name                   NullableString      `json:"name,omitempty"`
-	Projects               []CommonDropdownDto `json:"projects,omitempty"`
-	OrganizationId         *int32              `json:"organizationId,omitempty"`
-	OrganizationName       NullableString      `json:"organizationName,omitempty"`
-	PartnerLogo            NullableString      `json:"partnerLogo,omitempty"`
-	PartnerName            NullableString      `json:"partnerName,omitempty"`
-	FolderId               NullableString      `json:"folderId,omitempty"`
-	ProjectId              NullableString      `json:"projectId,omitempty"`
-	BillingAccountId       NullableString      `json:"billingAccountId,omitempty"`
-	Zones                  []string            `json:"zones,omitempty"`
-	AvailabilityZonesCount *int32              `json:"availabilityZonesCount,omitempty"`
-	Region                 NullableString      `json:"region,omitempty"`
-	IsLocked               *bool               `json:"isLocked,omitempty"`
-	IsDefault              *bool               `json:"isDefault,omitempty"`
-	BillingAccountName     NullableString      `json:"billingAccountName,omitempty"`
-	CreatedAt              NullableString      `json:"createdAt,omitempty"`
-	ContinentName          NullableString      `json:"continentName,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	PartnerLogo NullableString `json:"partnerLogo,omitempty"`
+	PartnerName NullableString `json:"partnerName,omitempty"`
+	FolderId NullableString `json:"folderId,omitempty"`
+	ProjectId NullableString `json:"projectId,omitempty"`
+	BillingAccountId NullableString `json:"billingAccountId,omitempty"`
+	Zones []string `json:"zones,omitempty"`
+	AvailabilityZonesCount *int32 `json:"availabilityZonesCount,omitempty"`
+	Region NullableString `json:"region,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
+	BillingAccountName NullableString `json:"billingAccountName,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	ContinentName NullableString `json:"continentName,omitempty"`
 }
 
 // NewGoogleCredentialsListDto instantiates a new GoogleCredentialsListDto object
@@ -121,7 +121,6 @@ func (o *GoogleCredentialsListDto) HasName() bool {
 func (o *GoogleCredentialsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *GoogleCredentialsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -229,7 +228,6 @@ func (o *GoogleCredentialsListDto) HasOrganizationName() bool {
 func (o *GoogleCredentialsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *GoogleCredentialsListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -272,7 +270,6 @@ func (o *GoogleCredentialsListDto) HasPartnerLogo() bool {
 func (o *GoogleCredentialsListDto) SetPartnerLogo(v string) {
 	o.PartnerLogo.Set(&v)
 }
-
 // SetPartnerLogoNil sets the value for PartnerLogo to be an explicit nil
 func (o *GoogleCredentialsListDto) SetPartnerLogoNil() {
 	o.PartnerLogo.Set(nil)
@@ -315,7 +312,6 @@ func (o *GoogleCredentialsListDto) HasPartnerName() bool {
 func (o *GoogleCredentialsListDto) SetPartnerName(v string) {
 	o.PartnerName.Set(&v)
 }
-
 // SetPartnerNameNil sets the value for PartnerName to be an explicit nil
 func (o *GoogleCredentialsListDto) SetPartnerNameNil() {
 	o.PartnerName.Set(nil)
@@ -358,7 +354,6 @@ func (o *GoogleCredentialsListDto) HasFolderId() bool {
 func (o *GoogleCredentialsListDto) SetFolderId(v string) {
 	o.FolderId.Set(&v)
 }
-
 // SetFolderIdNil sets the value for FolderId to be an explicit nil
 func (o *GoogleCredentialsListDto) SetFolderIdNil() {
 	o.FolderId.Set(nil)
@@ -401,7 +396,6 @@ func (o *GoogleCredentialsListDto) HasProjectId() bool {
 func (o *GoogleCredentialsListDto) SetProjectId(v string) {
 	o.ProjectId.Set(&v)
 }
-
 // SetProjectIdNil sets the value for ProjectId to be an explicit nil
 func (o *GoogleCredentialsListDto) SetProjectIdNil() {
 	o.ProjectId.Set(nil)
@@ -444,7 +438,6 @@ func (o *GoogleCredentialsListDto) HasBillingAccountId() bool {
 func (o *GoogleCredentialsListDto) SetBillingAccountId(v string) {
 	o.BillingAccountId.Set(&v)
 }
-
 // SetBillingAccountIdNil sets the value for BillingAccountId to be an explicit nil
 func (o *GoogleCredentialsListDto) SetBillingAccountIdNil() {
 	o.BillingAccountId.Set(nil)
@@ -552,7 +545,6 @@ func (o *GoogleCredentialsListDto) HasRegion() bool {
 func (o *GoogleCredentialsListDto) SetRegion(v string) {
 	o.Region.Set(&v)
 }
-
 // SetRegionNil sets the value for Region to be an explicit nil
 func (o *GoogleCredentialsListDto) SetRegionNil() {
 	o.Region.Set(nil)
@@ -659,7 +651,6 @@ func (o *GoogleCredentialsListDto) HasBillingAccountName() bool {
 func (o *GoogleCredentialsListDto) SetBillingAccountName(v string) {
 	o.BillingAccountName.Set(&v)
 }
-
 // SetBillingAccountNameNil sets the value for BillingAccountName to be an explicit nil
 func (o *GoogleCredentialsListDto) SetBillingAccountNameNil() {
 	o.BillingAccountName.Set(nil)
@@ -702,7 +693,6 @@ func (o *GoogleCredentialsListDto) HasCreatedAt() bool {
 func (o *GoogleCredentialsListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *GoogleCredentialsListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -745,7 +735,6 @@ func (o *GoogleCredentialsListDto) HasContinentName() bool {
 func (o *GoogleCredentialsListDto) SetContinentName(v string) {
 	o.ContinentName.Set(&v)
 }
-
 // SetContinentNameNil sets the value for ContinentName to be an explicit nil
 func (o *GoogleCredentialsListDto) SetContinentNameNil() {
 	o.ContinentName.Set(nil)
@@ -757,7 +746,7 @@ func (o *GoogleCredentialsListDto) UnsetContinentName() {
 }
 
 func (o GoogleCredentialsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -858,3 +847,5 @@ func (v *NullableGoogleCredentialsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

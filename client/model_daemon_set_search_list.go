@@ -20,8 +20,8 @@ var _ MappedNullable = &DaemonSetSearchList{}
 
 // DaemonSetSearchList struct for DaemonSetSearchList
 type DaemonSetSearchList struct {
-	Data       []CommonSearchKubernetesResponseData `json:"data,omitempty"`
-	TotalCount *int32                               `json:"totalCount,omitempty"`
+	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewDaemonSetSearchList instantiates a new DaemonSetSearchList object
@@ -107,7 +107,7 @@ func (o *DaemonSetSearchList) SetTotalCount(v int32) {
 }
 
 func (o DaemonSetSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableDaemonSetSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

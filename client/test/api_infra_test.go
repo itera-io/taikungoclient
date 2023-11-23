@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_InfraAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_InfraAPIService(t *testing.T) {
 
 	t.Run("Test InfraAPIService InfraCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.InfraAPI.InfraCreate(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_InfraAPIService(t *testing.T) {
 
 	t.Run("Test InfraAPIService InfraDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.InfraAPI.InfraDetails(context.Background()).Execute()
 
@@ -47,7 +47,7 @@ func Test_taikuncore_InfraAPIService(t *testing.T) {
 
 	t.Run("Test InfraAPIService InfraOrganizationsList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.InfraAPI.InfraOrganizationsList(context.Background()).Execute()
 
@@ -59,7 +59,7 @@ func Test_taikuncore_InfraAPIService(t *testing.T) {
 
 	t.Run("Test InfraAPIService InfraProductList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.InfraAPI.InfraProductList(context.Background()).Execute()
 

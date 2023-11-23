@@ -20,20 +20,19 @@ var _ MappedNullable = &KubernetesProfilesLisForPollerDto{}
 
 // KubernetesProfilesLisForPollerDto struct for KubernetesProfilesLisForPollerDto
 type KubernetesProfilesLisForPollerDto struct {
-	Id                       *int32         `json:"id,omitempty"`
-	Name                     NullableString `json:"name,omitempty"`
-	OrganizationId           NullableInt32  `json:"organizationId,omitempty"`
-	OrganizationName         NullableString `json:"organizationName,omitempty"`
-	Cni                      NullableString `json:"cni,omitempty"`
-	OctaviaEnabled           *bool          `json:"octaviaEnabled,omitempty"`
-	ExposeNodePortOnBastion  *bool          `json:"exposeNodePortOnBastion,omitempty"`
-	IsLocked                 *bool          `json:"isLocked,omitempty"`
-	TaikunLBEnabled          *bool          `json:"taikunLBEnabled,omitempty"`
-	AllowSchedulingOnMaster  *bool          `json:"allowSchedulingOnMaster,omitempty"`
-	UniqueClusterName        *bool          `json:"uniqueClusterName,omitempty"`
-	ProxmoxStorage           NullableString `json:"proxmoxStorage,omitempty"`
-	NvidiaGpuOperatorEnabled *bool          `json:"nvidiaGpuOperatorEnabled,omitempty"`
-	WasmEnabled              *bool          `json:"wasmEnabled,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	Cni NullableString `json:"cni,omitempty"`
+	OctaviaEnabled *bool `json:"octaviaEnabled,omitempty"`
+	ExposeNodePortOnBastion *bool `json:"exposeNodePortOnBastion,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	TaikunLBEnabled *bool `json:"taikunLBEnabled,omitempty"`
+	AllowSchedulingOnMaster *bool `json:"allowSchedulingOnMaster,omitempty"`
+	UniqueClusterName *bool `json:"uniqueClusterName,omitempty"`
+	ProxmoxStorage NullableString `json:"proxmoxStorage,omitempty"`
+	NvidiaGpuOperatorEnabled *bool `json:"nvidiaGpuOperatorEnabled,omitempty"`
 }
 
 // NewKubernetesProfilesLisForPollerDto instantiates a new KubernetesProfilesLisForPollerDto object
@@ -117,7 +116,6 @@ func (o *KubernetesProfilesLisForPollerDto) HasName() bool {
 func (o *KubernetesProfilesLisForPollerDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *KubernetesProfilesLisForPollerDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -160,7 +158,6 @@ func (o *KubernetesProfilesLisForPollerDto) HasOrganizationId() bool {
 func (o *KubernetesProfilesLisForPollerDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *KubernetesProfilesLisForPollerDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -203,7 +200,6 @@ func (o *KubernetesProfilesLisForPollerDto) HasOrganizationName() bool {
 func (o *KubernetesProfilesLisForPollerDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *KubernetesProfilesLisForPollerDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -246,7 +242,6 @@ func (o *KubernetesProfilesLisForPollerDto) HasCni() bool {
 func (o *KubernetesProfilesLisForPollerDto) SetCni(v string) {
 	o.Cni.Set(&v)
 }
-
 // SetCniNil sets the value for Cni to be an explicit nil
 func (o *KubernetesProfilesLisForPollerDto) SetCniNil() {
 	o.Cni.Set(nil)
@@ -481,7 +476,6 @@ func (o *KubernetesProfilesLisForPollerDto) HasProxmoxStorage() bool {
 func (o *KubernetesProfilesLisForPollerDto) SetProxmoxStorage(v string) {
 	o.ProxmoxStorage.Set(&v)
 }
-
 // SetProxmoxStorageNil sets the value for ProxmoxStorage to be an explicit nil
 func (o *KubernetesProfilesLisForPollerDto) SetProxmoxStorageNil() {
 	o.ProxmoxStorage.Set(nil)
@@ -524,40 +518,8 @@ func (o *KubernetesProfilesLisForPollerDto) SetNvidiaGpuOperatorEnabled(v bool) 
 	o.NvidiaGpuOperatorEnabled = &v
 }
 
-// GetWasmEnabled returns the WasmEnabled field value if set, zero value otherwise.
-func (o *KubernetesProfilesLisForPollerDto) GetWasmEnabled() bool {
-	if o == nil || IsNil(o.WasmEnabled) {
-		var ret bool
-		return ret
-	}
-	return *o.WasmEnabled
-}
-
-// GetWasmEnabledOk returns a tuple with the WasmEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *KubernetesProfilesLisForPollerDto) GetWasmEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.WasmEnabled) {
-		return nil, false
-	}
-	return o.WasmEnabled, true
-}
-
-// HasWasmEnabled returns a boolean if a field has been set.
-func (o *KubernetesProfilesLisForPollerDto) HasWasmEnabled() bool {
-	if o != nil && !IsNil(o.WasmEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetWasmEnabled gets a reference to the given bool and assigns it to the WasmEnabled field.
-func (o *KubernetesProfilesLisForPollerDto) SetWasmEnabled(v bool) {
-	o.WasmEnabled = &v
-}
-
 func (o KubernetesProfilesLisForPollerDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -605,9 +567,6 @@ func (o KubernetesProfilesLisForPollerDto) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.NvidiaGpuOperatorEnabled) {
 		toSerialize["nvidiaGpuOperatorEnabled"] = o.NvidiaGpuOperatorEnabled
 	}
-	if !IsNil(o.WasmEnabled) {
-		toSerialize["wasmEnabled"] = o.WasmEnabled
-	}
 	return toSerialize, nil
 }
 
@@ -646,3 +605,5 @@ func (v *NullableKubernetesProfilesLisForPollerDto) UnmarshalJSON(src []byte) er
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

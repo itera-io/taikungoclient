@@ -20,8 +20,8 @@ var _ MappedNullable = &DeleteBackupCommand{}
 
 // DeleteBackupCommand struct for DeleteBackupCommand
 type DeleteBackupCommand struct {
-	ProjectId *int32         `json:"projectId,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 }
 
 // NewDeleteBackupCommand instantiates a new DeleteBackupCommand object
@@ -105,7 +105,6 @@ func (o *DeleteBackupCommand) HasName() bool {
 func (o *DeleteBackupCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DeleteBackupCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -117,7 +116,7 @@ func (o *DeleteBackupCommand) UnsetName() {
 }
 
 func (o DeleteBackupCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableDeleteBackupCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

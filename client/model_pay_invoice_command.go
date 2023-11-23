@@ -72,7 +72,6 @@ func (o *PayInvoiceCommand) HasInvoiceId() bool {
 func (o *PayInvoiceCommand) SetInvoiceId(v string) {
 	o.InvoiceId.Set(&v)
 }
-
 // SetInvoiceIdNil sets the value for InvoiceId to be an explicit nil
 func (o *PayInvoiceCommand) SetInvoiceIdNil() {
 	o.InvoiceId.Set(nil)
@@ -84,7 +83,7 @@ func (o *PayInvoiceCommand) UnsetInvoiceId() {
 }
 
 func (o PayInvoiceCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -134,3 +133,5 @@ func (v *NullablePayInvoiceCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

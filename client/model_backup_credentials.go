@@ -20,8 +20,8 @@ var _ MappedNullable = &BackupCredentials{}
 
 // BackupCredentials struct for BackupCredentials
 type BackupCredentials struct {
-	Data       []BackupCredentialsListDto `json:"data,omitempty"`
-	TotalCount *int32                     `json:"totalCount,omitempty"`
+	Data []BackupCredentialsListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewBackupCredentials instantiates a new BackupCredentials object
@@ -107,7 +107,7 @@ func (o *BackupCredentials) SetTotalCount(v int32) {
 }
 
 func (o BackupCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableBackupCredentials) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

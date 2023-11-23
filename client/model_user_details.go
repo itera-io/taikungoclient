@@ -20,10 +20,10 @@ var _ MappedNullable = &UserDetails{}
 
 // UserDetails struct for UserDetails
 type UserDetails struct {
-	Data                     *UserForListDto `json:"data,omitempty"`
-	IsMaintenanceModeEnabled *bool           `json:"isMaintenanceModeEnabled,omitempty"`
-	DemoOrganization         NullableInt32   `json:"demoOrganization,omitempty"`
-	TrialDays                NullableInt32   `json:"trialDays,omitempty"`
+	Data *UserForListDto `json:"data,omitempty"`
+	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
+	DemoOrganization NullableInt32 `json:"demoOrganization,omitempty"`
+	TrialDays NullableInt32 `json:"trialDays,omitempty"`
 }
 
 // NewUserDetails instantiates a new UserDetails object
@@ -139,7 +139,6 @@ func (o *UserDetails) HasDemoOrganization() bool {
 func (o *UserDetails) SetDemoOrganization(v int32) {
 	o.DemoOrganization.Set(&v)
 }
-
 // SetDemoOrganizationNil sets the value for DemoOrganization to be an explicit nil
 func (o *UserDetails) SetDemoOrganizationNil() {
 	o.DemoOrganization.Set(nil)
@@ -182,7 +181,6 @@ func (o *UserDetails) HasTrialDays() bool {
 func (o *UserDetails) SetTrialDays(v int32) {
 	o.TrialDays.Set(&v)
 }
-
 // SetTrialDaysNil sets the value for TrialDays to be an explicit nil
 func (o *UserDetails) SetTrialDaysNil() {
 	o.TrialDays.Set(nil)
@@ -194,7 +192,7 @@ func (o *UserDetails) UnsetTrialDays() {
 }
 
 func (o UserDetails) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,3 +251,5 @@ func (v *NullableUserDetails) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

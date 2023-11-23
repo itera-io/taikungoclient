@@ -22,10 +22,10 @@ var _ MappedNullable = &CDeleteBackupRequestDto{}
 // CDeleteBackupRequestDto struct for CDeleteBackupRequestDto
 type CDeleteBackupRequestDto struct {
 	MetadataName NullableString `json:"metadataName,omitempty"`
-	CreatedAt    NullableTime   `json:"createdAt,omitempty"`
-	BackupName   NullableString `json:"backupName,omitempty"`
-	Namespace    NullableString `json:"namespace,omitempty"`
-	Phase        NullableString `json:"phase,omitempty"`
+	CreatedAt NullableTime `json:"createdAt,omitempty"`
+	BackupName NullableString `json:"backupName,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Phase NullableString `json:"phase,omitempty"`
 }
 
 // NewCDeleteBackupRequestDto instantiates a new CDeleteBackupRequestDto object
@@ -77,7 +77,6 @@ func (o *CDeleteBackupRequestDto) HasMetadataName() bool {
 func (o *CDeleteBackupRequestDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *CDeleteBackupRequestDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -120,7 +119,6 @@ func (o *CDeleteBackupRequestDto) HasCreatedAt() bool {
 func (o *CDeleteBackupRequestDto) SetCreatedAt(v time.Time) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *CDeleteBackupRequestDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -163,7 +161,6 @@ func (o *CDeleteBackupRequestDto) HasBackupName() bool {
 func (o *CDeleteBackupRequestDto) SetBackupName(v string) {
 	o.BackupName.Set(&v)
 }
-
 // SetBackupNameNil sets the value for BackupName to be an explicit nil
 func (o *CDeleteBackupRequestDto) SetBackupNameNil() {
 	o.BackupName.Set(nil)
@@ -206,7 +203,6 @@ func (o *CDeleteBackupRequestDto) HasNamespace() bool {
 func (o *CDeleteBackupRequestDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *CDeleteBackupRequestDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -249,7 +245,6 @@ func (o *CDeleteBackupRequestDto) HasPhase() bool {
 func (o *CDeleteBackupRequestDto) SetPhase(v string) {
 	o.Phase.Set(&v)
 }
-
 // SetPhaseNil sets the value for Phase to be an explicit nil
 func (o *CDeleteBackupRequestDto) SetPhaseNil() {
 	o.Phase.Set(nil)
@@ -261,7 +256,7 @@ func (o *CDeleteBackupRequestDto) UnsetPhase() {
 }
 
 func (o CDeleteBackupRequestDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -323,3 +318,5 @@ func (v *NullableCDeleteBackupRequestDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

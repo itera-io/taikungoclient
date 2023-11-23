@@ -21,12 +21,12 @@ var _ MappedNullable = &UpdateKubernetesAlertDto{}
 
 // UpdateKubernetesAlertDto struct for UpdateKubernetesAlertDto
 type UpdateKubernetesAlertDto struct {
-	Status        NullableString `json:"status,omitempty"`
-	Labels        interface{}    `json:"labels,omitempty"`
-	StartsAt      *time.Time     `json:"startsAt,omitempty"`
-	EndsAt        *time.Time     `json:"endsAt,omitempty"`
-	Fingerprint   NullableString `json:"fingerprint,omitempty"`
-	IsSilenced    NullableBool   `json:"isSilenced,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Labels interface{} `json:"labels,omitempty"`
+	StartsAt *time.Time `json:"startsAt,omitempty"`
+	EndsAt *time.Time `json:"endsAt,omitempty"`
+	Fingerprint NullableString `json:"fingerprint,omitempty"`
+	IsSilenced NullableBool `json:"isSilenced,omitempty"`
 	SilenceReason NullableString `json:"silenceReason,omitempty"`
 }
 
@@ -79,7 +79,6 @@ func (o *UpdateKubernetesAlertDto) HasStatus() bool {
 func (o *UpdateKubernetesAlertDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *UpdateKubernetesAlertDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -219,7 +218,6 @@ func (o *UpdateKubernetesAlertDto) HasFingerprint() bool {
 func (o *UpdateKubernetesAlertDto) SetFingerprint(v string) {
 	o.Fingerprint.Set(&v)
 }
-
 // SetFingerprintNil sets the value for Fingerprint to be an explicit nil
 func (o *UpdateKubernetesAlertDto) SetFingerprintNil() {
 	o.Fingerprint.Set(nil)
@@ -262,7 +260,6 @@ func (o *UpdateKubernetesAlertDto) HasIsSilenced() bool {
 func (o *UpdateKubernetesAlertDto) SetIsSilenced(v bool) {
 	o.IsSilenced.Set(&v)
 }
-
 // SetIsSilencedNil sets the value for IsSilenced to be an explicit nil
 func (o *UpdateKubernetesAlertDto) SetIsSilencedNil() {
 	o.IsSilenced.Set(nil)
@@ -305,7 +302,6 @@ func (o *UpdateKubernetesAlertDto) HasSilenceReason() bool {
 func (o *UpdateKubernetesAlertDto) SetSilenceReason(v string) {
 	o.SilenceReason.Set(&v)
 }
-
 // SetSilenceReasonNil sets the value for SilenceReason to be an explicit nil
 func (o *UpdateKubernetesAlertDto) SetSilenceReasonNil() {
 	o.SilenceReason.Set(nil)
@@ -317,7 +313,7 @@ func (o *UpdateKubernetesAlertDto) UnsetSilenceReason() {
 }
 
 func (o UpdateKubernetesAlertDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -385,3 +381,5 @@ func (v *NullableUpdateKubernetesAlertDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

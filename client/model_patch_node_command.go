@@ -20,8 +20,8 @@ var _ MappedNullable = &PatchNodeCommand{}
 
 // PatchNodeCommand struct for PatchNodeCommand
 type PatchNodeCommand struct {
-	ProjectId  *int32               `json:"projectId,omitempty"`
-	Name       NullableString       `json:"name,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Parameters []PatchNodeLabelsDto `json:"parameters,omitempty"`
 }
 
@@ -106,7 +106,6 @@ func (o *PatchNodeCommand) HasName() bool {
 func (o *PatchNodeCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PatchNodeCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -151,7 +150,7 @@ func (o *PatchNodeCommand) SetParameters(v []PatchNodeLabelsDto) {
 }
 
 func (o PatchNodeCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -207,3 +206,5 @@ func (v *NullablePatchNodeCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

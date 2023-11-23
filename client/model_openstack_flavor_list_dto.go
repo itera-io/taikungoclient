@@ -20,9 +20,9 @@ var _ MappedNullable = &OpenstackFlavorListDto{}
 
 // OpenstackFlavorListDto struct for OpenstackFlavorListDto
 type OpenstackFlavorListDto struct {
-	Ram         *int64         `json:"ram,omitempty"`
-	Cpu         *int64         `json:"cpu,omitempty"`
-	Name        NullableString `json:"name,omitempty"`
+	Ram *int64 `json:"ram,omitempty"`
+	Cpu *int64 `json:"cpu,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Description NullableString `json:"description,omitempty"`
 }
 
@@ -139,7 +139,6 @@ func (o *OpenstackFlavorListDto) HasName() bool {
 func (o *OpenstackFlavorListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OpenstackFlavorListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -182,7 +181,6 @@ func (o *OpenstackFlavorListDto) HasDescription() bool {
 func (o *OpenstackFlavorListDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *OpenstackFlavorListDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -194,7 +192,7 @@ func (o *OpenstackFlavorListDto) UnsetDescription() {
 }
 
 func (o OpenstackFlavorListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,3 +251,5 @@ func (v *NullableOpenstackFlavorListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -73,7 +73,6 @@ func (o *SourceRef) HasKind() bool {
 func (o *SourceRef) SetKind(v string) {
 	o.Kind.Set(&v)
 }
-
 // SetKindNil sets the value for Kind to be an explicit nil
 func (o *SourceRef) SetKindNil() {
 	o.Kind.Set(nil)
@@ -116,7 +115,6 @@ func (o *SourceRef) HasName() bool {
 func (o *SourceRef) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *SourceRef) SetNameNil() {
 	o.Name.Set(nil)
@@ -128,7 +126,7 @@ func (o *SourceRef) UnsetName() {
 }
 
 func (o SourceRef) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableSourceRef) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

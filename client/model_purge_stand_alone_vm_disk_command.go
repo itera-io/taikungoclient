@@ -20,8 +20,8 @@ var _ MappedNullable = &PurgeStandAloneVmDiskCommand{}
 
 // PurgeStandAloneVmDiskCommand struct for PurgeStandAloneVmDiskCommand
 type PurgeStandAloneVmDiskCommand struct {
-	StandaloneVmId *int32  `json:"standaloneVmId,omitempty"`
-	VmDiskIds      []int32 `json:"vmDiskIds,omitempty"`
+	StandaloneVmId *int32 `json:"standaloneVmId,omitempty"`
+	VmDiskIds []int32 `json:"vmDiskIds,omitempty"`
 }
 
 // NewPurgeStandAloneVmDiskCommand instantiates a new PurgeStandAloneVmDiskCommand object
@@ -107,7 +107,7 @@ func (o *PurgeStandAloneVmDiskCommand) SetVmDiskIds(v []int32) {
 }
 
 func (o PurgeStandAloneVmDiskCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullablePurgeStandAloneVmDiskCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

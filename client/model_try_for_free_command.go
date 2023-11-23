@@ -21,8 +21,8 @@ var _ MappedNullable = &TryForFreeCommand{}
 // TryForFreeCommand struct for TryForFreeCommand
 type TryForFreeCommand struct {
 	OrganizationName NullableString `json:"organizationName,omitempty"`
-	Username         NullableString `json:"username,omitempty"`
-	Email            NullableString `json:"email,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Email NullableString `json:"email,omitempty"`
 }
 
 // NewTryForFreeCommand instantiates a new TryForFreeCommand object
@@ -74,7 +74,6 @@ func (o *TryForFreeCommand) HasOrganizationName() bool {
 func (o *TryForFreeCommand) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *TryForFreeCommand) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -117,7 +116,6 @@ func (o *TryForFreeCommand) HasUsername() bool {
 func (o *TryForFreeCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *TryForFreeCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -160,7 +158,6 @@ func (o *TryForFreeCommand) HasEmail() bool {
 func (o *TryForFreeCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *TryForFreeCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -172,7 +169,7 @@ func (o *TryForFreeCommand) UnsetEmail() {
 }
 
 func (o TryForFreeCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableTryForFreeCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

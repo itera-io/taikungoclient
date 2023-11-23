@@ -20,32 +20,32 @@ var _ MappedNullable = &StandAloneVmFullDto{}
 
 // StandAloneVmFullDto struct for StandAloneVmFullDto
 type StandAloneVmFullDto struct {
-	Id                *int32                    `json:"id,omitempty"`
-	Name              NullableString            `json:"name,omitempty"`
-	FlavorId          NullableString            `json:"flavorId,omitempty"`
-	VolumeSize        *int64                    `json:"volumeSize,omitempty"`
-	Ram               *int64                    `json:"ram,omitempty"`
-	Cpu               *int32                    `json:"cpu,omitempty"`
-	VolumeType        NullableString            `json:"volumeType,omitempty"`
-	SshPublicKey      NullableString            `json:"sshPublicKey,omitempty"`
-	PublicIpEnabled   *bool                     `json:"publicIpEnabled,omitempty"`
-	ImageId           NullableString            `json:"imageId,omitempty"`
-	ImageName         NullableString            `json:"imageName,omitempty"`
-	Status            NullableString            `json:"status,omitempty"`
-	Revision          *int32                    `json:"revision,omitempty"`
-	ShutOff           *bool                     `json:"shutOff,omitempty"`
-	PublicIp          NullableString            `json:"publicIp,omitempty"`
-	IpAddress         NullableString            `json:"ipAddress,omitempty"`
-	CloudInit         NullableString            `json:"cloudInit,omitempty"`
-	IsWindows         *bool                     `json:"isWindows,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	FlavorId NullableString `json:"flavorId,omitempty"`
+	VolumeSize *int64 `json:"volumeSize,omitempty"`
+	Ram *int64 `json:"ram,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
+	VolumeType NullableString `json:"volumeType,omitempty"`
+	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
+	PublicIpEnabled *bool `json:"publicIpEnabled,omitempty"`
+	ImageId NullableString `json:"imageId,omitempty"`
+	ImageName NullableString `json:"imageName,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Revision *int32 `json:"revision,omitempty"`
+	ShutOff *bool `json:"shutOff,omitempty"`
+	PublicIp NullableString `json:"publicIp,omitempty"`
+	IpAddress NullableString `json:"ipAddress,omitempty"`
+	CloudInit NullableString `json:"cloudInit,omitempty"`
+	IsWindows *bool `json:"isWindows,omitempty"`
 	StandAloneProfile *StandAloneProfileFullDto `json:"standAloneProfile,omitempty"`
 	StandAloneVmDisks []StandAloneVmDiskFullDto `json:"standAloneVmDisks,omitempty"`
-	Username          NullableString            `json:"username,omitempty"`
-	Password          NullableString            `json:"password,omitempty"`
-	SpotPrice         NullableString            `json:"spotPrice,omitempty"`
-	Hypervisor        NullableString            `json:"hypervisor,omitempty"`
-	SpotInstance      *bool                     `json:"spotInstance,omitempty"`
-	AvailabilityZone  NullableString            `json:"availabilityZone,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Password NullableString `json:"password,omitempty"`
+	SpotPrice NullableString `json:"spotPrice,omitempty"`
+	Hypervisor NullableString `json:"hypervisor,omitempty"`
+	SpotInstance *bool `json:"spotInstance,omitempty"`
+	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
 }
 
 // NewStandAloneVmFullDto instantiates a new StandAloneVmFullDto object
@@ -129,7 +129,6 @@ func (o *StandAloneVmFullDto) HasName() bool {
 func (o *StandAloneVmFullDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandAloneVmFullDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -172,7 +171,6 @@ func (o *StandAloneVmFullDto) HasFlavorId() bool {
 func (o *StandAloneVmFullDto) SetFlavorId(v string) {
 	o.FlavorId.Set(&v)
 }
-
 // SetFlavorIdNil sets the value for FlavorId to be an explicit nil
 func (o *StandAloneVmFullDto) SetFlavorIdNil() {
 	o.FlavorId.Set(nil)
@@ -311,7 +309,6 @@ func (o *StandAloneVmFullDto) HasVolumeType() bool {
 func (o *StandAloneVmFullDto) SetVolumeType(v string) {
 	o.VolumeType.Set(&v)
 }
-
 // SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
 func (o *StandAloneVmFullDto) SetVolumeTypeNil() {
 	o.VolumeType.Set(nil)
@@ -354,7 +351,6 @@ func (o *StandAloneVmFullDto) HasSshPublicKey() bool {
 func (o *StandAloneVmFullDto) SetSshPublicKey(v string) {
 	o.SshPublicKey.Set(&v)
 }
-
 // SetSshPublicKeyNil sets the value for SshPublicKey to be an explicit nil
 func (o *StandAloneVmFullDto) SetSshPublicKeyNil() {
 	o.SshPublicKey.Set(nil)
@@ -429,7 +425,6 @@ func (o *StandAloneVmFullDto) HasImageId() bool {
 func (o *StandAloneVmFullDto) SetImageId(v string) {
 	o.ImageId.Set(&v)
 }
-
 // SetImageIdNil sets the value for ImageId to be an explicit nil
 func (o *StandAloneVmFullDto) SetImageIdNil() {
 	o.ImageId.Set(nil)
@@ -472,7 +467,6 @@ func (o *StandAloneVmFullDto) HasImageName() bool {
 func (o *StandAloneVmFullDto) SetImageName(v string) {
 	o.ImageName.Set(&v)
 }
-
 // SetImageNameNil sets the value for ImageName to be an explicit nil
 func (o *StandAloneVmFullDto) SetImageNameNil() {
 	o.ImageName.Set(nil)
@@ -515,7 +509,6 @@ func (o *StandAloneVmFullDto) HasStatus() bool {
 func (o *StandAloneVmFullDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *StandAloneVmFullDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -622,7 +615,6 @@ func (o *StandAloneVmFullDto) HasPublicIp() bool {
 func (o *StandAloneVmFullDto) SetPublicIp(v string) {
 	o.PublicIp.Set(&v)
 }
-
 // SetPublicIpNil sets the value for PublicIp to be an explicit nil
 func (o *StandAloneVmFullDto) SetPublicIpNil() {
 	o.PublicIp.Set(nil)
@@ -665,7 +657,6 @@ func (o *StandAloneVmFullDto) HasIpAddress() bool {
 func (o *StandAloneVmFullDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
-
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *StandAloneVmFullDto) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -708,7 +699,6 @@ func (o *StandAloneVmFullDto) HasCloudInit() bool {
 func (o *StandAloneVmFullDto) SetCloudInit(v string) {
 	o.CloudInit.Set(&v)
 }
-
 // SetCloudInitNil sets the value for CloudInit to be an explicit nil
 func (o *StandAloneVmFullDto) SetCloudInitNil() {
 	o.CloudInit.Set(nil)
@@ -848,7 +838,6 @@ func (o *StandAloneVmFullDto) HasUsername() bool {
 func (o *StandAloneVmFullDto) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *StandAloneVmFullDto) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -891,7 +880,6 @@ func (o *StandAloneVmFullDto) HasPassword() bool {
 func (o *StandAloneVmFullDto) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *StandAloneVmFullDto) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -934,7 +922,6 @@ func (o *StandAloneVmFullDto) HasSpotPrice() bool {
 func (o *StandAloneVmFullDto) SetSpotPrice(v string) {
 	o.SpotPrice.Set(&v)
 }
-
 // SetSpotPriceNil sets the value for SpotPrice to be an explicit nil
 func (o *StandAloneVmFullDto) SetSpotPriceNil() {
 	o.SpotPrice.Set(nil)
@@ -977,7 +964,6 @@ func (o *StandAloneVmFullDto) HasHypervisor() bool {
 func (o *StandAloneVmFullDto) SetHypervisor(v string) {
 	o.Hypervisor.Set(&v)
 }
-
 // SetHypervisorNil sets the value for Hypervisor to be an explicit nil
 func (o *StandAloneVmFullDto) SetHypervisorNil() {
 	o.Hypervisor.Set(nil)
@@ -1052,7 +1038,6 @@ func (o *StandAloneVmFullDto) HasAvailabilityZone() bool {
 func (o *StandAloneVmFullDto) SetAvailabilityZone(v string) {
 	o.AvailabilityZone.Set(&v)
 }
-
 // SetAvailabilityZoneNil sets the value for AvailabilityZone to be an explicit nil
 func (o *StandAloneVmFullDto) SetAvailabilityZoneNil() {
 	o.AvailabilityZone.Set(nil)
@@ -1064,7 +1049,7 @@ func (o *StandAloneVmFullDto) UnsetAvailabilityZone() {
 }
 
 func (o StandAloneVmFullDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1189,3 +1174,5 @@ func (v *NullableStandAloneVmFullDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,8 +20,8 @@ var _ MappedNullable = &AiCredentials{}
 
 // AiCredentials struct for AiCredentials
 type AiCredentials struct {
-	Data       []AiCredentialsListDto `json:"data,omitempty"`
-	TotalCount *int32                 `json:"totalCount,omitempty"`
+	Data []AiCredentialsListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewAiCredentials instantiates a new AiCredentials object
@@ -107,7 +107,7 @@ func (o *AiCredentials) SetTotalCount(v int32) {
 }
 
 func (o AiCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableAiCredentials) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

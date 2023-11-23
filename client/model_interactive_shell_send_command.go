@@ -20,8 +20,8 @@ var _ MappedNullable = &InteractiveShellSendCommand{}
 
 // InteractiveShellSendCommand struct for InteractiveShellSendCommand
 type InteractiveShellSendCommand struct {
-	ProjectId *int32         `json:"projectId,omitempty"`
-	Token     NullableString `json:"token,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Token NullableString `json:"token,omitempty"`
 }
 
 // NewInteractiveShellSendCommand instantiates a new InteractiveShellSendCommand object
@@ -105,7 +105,6 @@ func (o *InteractiveShellSendCommand) HasToken() bool {
 func (o *InteractiveShellSendCommand) SetToken(v string) {
 	o.Token.Set(&v)
 }
-
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *InteractiveShellSendCommand) SetTokenNil() {
 	o.Token.Set(nil)
@@ -117,7 +116,7 @@ func (o *InteractiveShellSendCommand) UnsetToken() {
 }
 
 func (o InteractiveShellSendCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableInteractiveShellSendCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

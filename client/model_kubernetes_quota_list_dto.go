@@ -20,12 +20,12 @@ var _ MappedNullable = &KubernetesQuotaListDto{}
 
 // KubernetesQuotaListDto struct for KubernetesQuotaListDto
 type KubernetesQuotaListDto struct {
-	SumOfCpu       *float64 `json:"sumOfCpu,omitempty"`
-	SumOfRamInGb   *float64 `json:"sumOfRamInGb,omitempty"`
-	SumOfCpuUsage  *float64 `json:"sumOfCpuUsage,omitempty"`
-	SumOfRamUsage  *float64 `json:"sumOfRamUsage,omitempty"`
-	PodsCapacity   *int32   `json:"podsCapacity,omitempty"`
-	PodsTotalCount *int32   `json:"podsTotalCount,omitempty"`
+	SumOfCpu *float64 `json:"sumOfCpu,omitempty"`
+	SumOfRamInGb *float64 `json:"sumOfRamInGb,omitempty"`
+	SumOfCpuUsage *float64 `json:"sumOfCpuUsage,omitempty"`
+	SumOfRamUsage *float64 `json:"sumOfRamUsage,omitempty"`
+	PodsCapacity *int32 `json:"podsCapacity,omitempty"`
+	PodsTotalCount *int32 `json:"podsTotalCount,omitempty"`
 }
 
 // NewKubernetesQuotaListDto instantiates a new KubernetesQuotaListDto object
@@ -238,7 +238,7 @@ func (o *KubernetesQuotaListDto) SetPodsTotalCount(v int32) {
 }
 
 func (o KubernetesQuotaListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -303,3 +303,5 @@ func (v *NullableKubernetesQuotaListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

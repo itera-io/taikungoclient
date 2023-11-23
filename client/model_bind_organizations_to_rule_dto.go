@@ -20,10 +20,10 @@ var _ MappedNullable = &BindOrganizationsToRuleDto{}
 
 // BindOrganizationsToRuleDto struct for BindOrganizationsToRuleDto
 type BindOrganizationsToRuleDto struct {
-	OrganizationId   *int32          `json:"organizationId,omitempty"`
-	OrganizationName NullableString  `json:"organizationName,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
 	RuleDiscountRate NullableFloat64 `json:"ruleDiscountRate,omitempty"`
-	IsBound          *bool           `json:"isBound,omitempty"`
+	IsBound *bool `json:"isBound,omitempty"`
 }
 
 // NewBindOrganizationsToRuleDto instantiates a new BindOrganizationsToRuleDto object
@@ -107,7 +107,6 @@ func (o *BindOrganizationsToRuleDto) HasOrganizationName() bool {
 func (o *BindOrganizationsToRuleDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *BindOrganizationsToRuleDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -150,7 +149,6 @@ func (o *BindOrganizationsToRuleDto) HasRuleDiscountRate() bool {
 func (o *BindOrganizationsToRuleDto) SetRuleDiscountRate(v float64) {
 	o.RuleDiscountRate.Set(&v)
 }
-
 // SetRuleDiscountRateNil sets the value for RuleDiscountRate to be an explicit nil
 func (o *BindOrganizationsToRuleDto) SetRuleDiscountRateNil() {
 	o.RuleDiscountRate.Set(nil)
@@ -194,7 +192,7 @@ func (o *BindOrganizationsToRuleDto) SetIsBound(v bool) {
 }
 
 func (o BindOrganizationsToRuleDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,3 +251,5 @@ func (v *NullableBindOrganizationsToRuleDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

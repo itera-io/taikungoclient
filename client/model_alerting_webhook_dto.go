@@ -20,8 +20,8 @@ var _ MappedNullable = &AlertingWebhookDto{}
 
 // AlertingWebhookDto struct for AlertingWebhookDto
 type AlertingWebhookDto struct {
-	Id      *int32             `json:"id,omitempty"`
-	Url     NullableString     `json:"url,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Url NullableString `json:"url,omitempty"`
 	Headers []WebhookHeaderDto `json:"headers,omitempty"`
 }
 
@@ -106,7 +106,6 @@ func (o *AlertingWebhookDto) HasUrl() bool {
 func (o *AlertingWebhookDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *AlertingWebhookDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -151,7 +150,7 @@ func (o *AlertingWebhookDto) SetHeaders(v []WebhookHeaderDto) {
 }
 
 func (o AlertingWebhookDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -207,3 +206,5 @@ func (v *NullableAlertingWebhookDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,8 +20,8 @@ var _ MappedNullable = &PurgeStandAloneCommand{}
 
 // PurgeStandAloneCommand struct for PurgeStandAloneCommand
 type PurgeStandAloneCommand struct {
-	ProjectId *int32  `json:"projectId,omitempty"`
-	VmIds     []int32 `json:"vmIds,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	VmIds []int32 `json:"vmIds,omitempty"`
 }
 
 // NewPurgeStandAloneCommand instantiates a new PurgeStandAloneCommand object
@@ -107,7 +107,7 @@ func (o *PurgeStandAloneCommand) SetVmIds(v []int32) {
 }
 
 func (o PurgeStandAloneCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullablePurgeStandAloneCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

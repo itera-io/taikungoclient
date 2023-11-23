@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // TicketAPIService TicketAPI service
 type TicketAPIService service
 
 type ApiTicketArchiveRequest struct {
-	ctx                  context.Context
-	ApiService           *TicketAPIService
+	ctx context.Context
+	ApiService *TicketAPIService
 	archiveTicketCommand *ArchiveTicketCommand
 }
 
@@ -41,22 +42,22 @@ func (r ApiTicketArchiveRequest) Execute() (*http.Response, error) {
 /*
 TicketArchive Archive ticket
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTicketArchiveRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTicketArchiveRequest
 */
 func (a *TicketAPIService) TicketArchive(ctx context.Context) ApiTicketArchiveRequest {
 	return ApiTicketArchiveRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TicketAPIService) TicketArchiveExecute(r ApiTicketArchiveRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketArchive")
@@ -135,8 +136,8 @@ func (a *TicketAPIService) TicketArchiveExecute(r ApiTicketArchiveRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -146,8 +147,8 @@ func (a *TicketAPIService) TicketArchiveExecute(r ApiTicketArchiveRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -157,8 +158,8 @@ func (a *TicketAPIService) TicketArchiveExecute(r ApiTicketArchiveRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -168,8 +169,8 @@ func (a *TicketAPIService) TicketArchiveExecute(r ApiTicketArchiveRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -179,8 +180,8 @@ func (a *TicketAPIService) TicketArchiveExecute(r ApiTicketArchiveRequest) (*htt
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -189,8 +190,8 @@ func (a *TicketAPIService) TicketArchiveExecute(r ApiTicketArchiveRequest) (*htt
 }
 
 type ApiTicketCloseRequest struct {
-	ctx                context.Context
-	ApiService         *TicketAPIService
+	ctx context.Context
+	ApiService *TicketAPIService
 	closeTicketCommand *CloseTicketCommand
 }
 
@@ -206,22 +207,22 @@ func (r ApiTicketCloseRequest) Execute() (*http.Response, error) {
 /*
 TicketClose Close ticket
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTicketCloseRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTicketCloseRequest
 */
 func (a *TicketAPIService) TicketClose(ctx context.Context) ApiTicketCloseRequest {
 	return ApiTicketCloseRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TicketAPIService) TicketCloseExecute(r ApiTicketCloseRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketClose")
@@ -300,8 +301,8 @@ func (a *TicketAPIService) TicketCloseExecute(r ApiTicketCloseRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -311,8 +312,8 @@ func (a *TicketAPIService) TicketCloseExecute(r ApiTicketCloseRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -322,8 +323,8 @@ func (a *TicketAPIService) TicketCloseExecute(r ApiTicketCloseRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -333,8 +334,8 @@ func (a *TicketAPIService) TicketCloseExecute(r ApiTicketCloseRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -344,8 +345,8 @@ func (a *TicketAPIService) TicketCloseExecute(r ApiTicketCloseRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -354,8 +355,8 @@ func (a *TicketAPIService) TicketCloseExecute(r ApiTicketCloseRequest) (*http.Re
 }
 
 type ApiTicketCreateRequest struct {
-	ctx                 context.Context
-	ApiService          *TicketAPIService
+	ctx context.Context
+	ApiService *TicketAPIService
 	createTicketCommand *CreateTicketCommand
 }
 
@@ -371,22 +372,22 @@ func (r ApiTicketCreateRequest) Execute() (*http.Response, error) {
 /*
 TicketCreate Create ticket
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTicketCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTicketCreateRequest
 */
 func (a *TicketAPIService) TicketCreate(ctx context.Context) ApiTicketCreateRequest {
 	return ApiTicketCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TicketAPIService) TicketCreateExecute(r ApiTicketCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketCreate")
@@ -465,8 +466,8 @@ func (a *TicketAPIService) TicketCreateExecute(r ApiTicketCreateRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -476,8 +477,8 @@ func (a *TicketAPIService) TicketCreateExecute(r ApiTicketCreateRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -487,8 +488,8 @@ func (a *TicketAPIService) TicketCreateExecute(r ApiTicketCreateRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -498,8 +499,8 @@ func (a *TicketAPIService) TicketCreateExecute(r ApiTicketCreateRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -509,8 +510,8 @@ func (a *TicketAPIService) TicketCreateExecute(r ApiTicketCreateRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -519,9 +520,9 @@ func (a *TicketAPIService) TicketCreateExecute(r ApiTicketCreateRequest) (*http.
 }
 
 type ApiTicketDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TicketAPIService
-	ticketId   string
+	ticketId string
 }
 
 func (r ApiTicketDeleteRequest) Execute() (*http.Response, error) {
@@ -531,24 +532,24 @@ func (r ApiTicketDeleteRequest) Execute() (*http.Response, error) {
 /*
 TicketDelete Method for TicketDelete
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ticketId
-	@return ApiTicketDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ticketId
+ @return ApiTicketDeleteRequest
 */
 func (a *TicketAPIService) TicketDelete(ctx context.Context, ticketId string) ApiTicketDeleteRequest {
 	return ApiTicketDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		ticketId:   ticketId,
+		ctx: ctx,
+		ticketId: ticketId,
 	}
 }
 
 // Execute executes the request
 func (a *TicketAPIService) TicketDeleteExecute(r ApiTicketDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketDelete")
@@ -623,8 +624,8 @@ func (a *TicketAPIService) TicketDeleteExecute(r ApiTicketDeleteRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -634,8 +635,8 @@ func (a *TicketAPIService) TicketDeleteExecute(r ApiTicketDeleteRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -645,8 +646,8 @@ func (a *TicketAPIService) TicketDeleteExecute(r ApiTicketDeleteRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -656,8 +657,8 @@ func (a *TicketAPIService) TicketDeleteExecute(r ApiTicketDeleteRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -667,8 +668,8 @@ func (a *TicketAPIService) TicketDeleteExecute(r ApiTicketDeleteRequest) (*http.
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -677,9 +678,9 @@ func (a *TicketAPIService) TicketDeleteExecute(r ApiTicketDeleteRequest) (*http.
 }
 
 type ApiTicketDeleteMessageRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TicketAPIService
-	messageId  string
+	messageId string
 }
 
 func (r ApiTicketDeleteMessageRequest) Execute() (*http.Response, error) {
@@ -689,24 +690,24 @@ func (r ApiTicketDeleteMessageRequest) Execute() (*http.Response, error) {
 /*
 TicketDeleteMessage Method for TicketDeleteMessage
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param messageId
-	@return ApiTicketDeleteMessageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param messageId
+ @return ApiTicketDeleteMessageRequest
 */
 func (a *TicketAPIService) TicketDeleteMessage(ctx context.Context, messageId string) ApiTicketDeleteMessageRequest {
 	return ApiTicketDeleteMessageRequest{
 		ApiService: a,
-		ctx:        ctx,
-		messageId:  messageId,
+		ctx: ctx,
+		messageId: messageId,
 	}
 }
 
 // Execute executes the request
 func (a *TicketAPIService) TicketDeleteMessageExecute(r ApiTicketDeleteMessageRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketDeleteMessage")
@@ -781,8 +782,8 @@ func (a *TicketAPIService) TicketDeleteMessageExecute(r ApiTicketDeleteMessageRe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -792,8 +793,8 @@ func (a *TicketAPIService) TicketDeleteMessageExecute(r ApiTicketDeleteMessageRe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -803,8 +804,8 @@ func (a *TicketAPIService) TicketDeleteMessageExecute(r ApiTicketDeleteMessageRe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -814,8 +815,8 @@ func (a *TicketAPIService) TicketDeleteMessageExecute(r ApiTicketDeleteMessageRe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -825,8 +826,8 @@ func (a *TicketAPIService) TicketDeleteMessageExecute(r ApiTicketDeleteMessageRe
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -835,8 +836,8 @@ func (a *TicketAPIService) TicketDeleteMessageExecute(r ApiTicketDeleteMessageRe
 }
 
 type ApiTicketEditRequest struct {
-	ctx               context.Context
-	ApiService        *TicketAPIService
+	ctx context.Context
+	ApiService *TicketAPIService
 	editTicketCommand *EditTicketCommand
 }
 
@@ -852,22 +853,22 @@ func (r ApiTicketEditRequest) Execute() (*http.Response, error) {
 /*
 TicketEdit Edit ticket
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTicketEditRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTicketEditRequest
 */
 func (a *TicketAPIService) TicketEdit(ctx context.Context) ApiTicketEditRequest {
 	return ApiTicketEditRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TicketAPIService) TicketEditExecute(r ApiTicketEditRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketEdit")
@@ -946,8 +947,8 @@ func (a *TicketAPIService) TicketEditExecute(r ApiTicketEditRequest) (*http.Resp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -957,8 +958,8 @@ func (a *TicketAPIService) TicketEditExecute(r ApiTicketEditRequest) (*http.Resp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -968,8 +969,8 @@ func (a *TicketAPIService) TicketEditExecute(r ApiTicketEditRequest) (*http.Resp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -979,8 +980,8 @@ func (a *TicketAPIService) TicketEditExecute(r ApiTicketEditRequest) (*http.Resp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -990,8 +991,8 @@ func (a *TicketAPIService) TicketEditExecute(r ApiTicketEditRequest) (*http.Resp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1000,8 +1001,8 @@ func (a *TicketAPIService) TicketEditExecute(r ApiTicketEditRequest) (*http.Resp
 }
 
 type ApiTicketEditMessageRequest struct {
-	ctx                context.Context
-	ApiService         *TicketAPIService
+	ctx context.Context
+	ApiService *TicketAPIService
 	editArticleCommand *EditArticleCommand
 }
 
@@ -1017,22 +1018,22 @@ func (r ApiTicketEditMessageRequest) Execute() (*http.Response, error) {
 /*
 TicketEditMessage Edit ticket message
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTicketEditMessageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTicketEditMessageRequest
 */
 func (a *TicketAPIService) TicketEditMessage(ctx context.Context) ApiTicketEditMessageRequest {
 	return ApiTicketEditMessageRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TicketAPIService) TicketEditMessageExecute(r ApiTicketEditMessageRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketEditMessage")
@@ -1111,8 +1112,8 @@ func (a *TicketAPIService) TicketEditMessageExecute(r ApiTicketEditMessageReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1122,8 +1123,8 @@ func (a *TicketAPIService) TicketEditMessageExecute(r ApiTicketEditMessageReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1133,8 +1134,8 @@ func (a *TicketAPIService) TicketEditMessageExecute(r ApiTicketEditMessageReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1144,8 +1145,8 @@ func (a *TicketAPIService) TicketEditMessageExecute(r ApiTicketEditMessageReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1155,8 +1156,8 @@ func (a *TicketAPIService) TicketEditMessageExecute(r ApiTicketEditMessageReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1165,15 +1166,15 @@ func (a *TicketAPIService) TicketEditMessageExecute(r ApiTicketEditMessageReques
 }
 
 type ApiTicketListRequest struct {
-	ctx            context.Context
-	ApiService     *TicketAPIService
-	limit          *int32
-	offset         *int32
+	ctx context.Context
+	ApiService *TicketAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
-	search         *string
-	startDate      *string
-	endDate        *string
-	ticketId       *string
+	search *string
+	startDate *string
+	endDate *string
+	ticketId *string
 }
 
 func (r ApiTicketListRequest) Limit(limit int32) ApiTicketListRequest {
@@ -1218,25 +1219,24 @@ func (r ApiTicketListRequest) Execute() (*AllTicketsList, *http.Response, error)
 /*
 TicketList Retrieve list of tickets
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTicketListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTicketListRequest
 */
 func (a *TicketAPIService) TicketList(ctx context.Context) ApiTicketListRequest {
 	return ApiTicketListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AllTicketsList
+//  @return AllTicketsList
 func (a *TicketAPIService) TicketListExecute(r ApiTicketListRequest) (*AllTicketsList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AllTicketsList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AllTicketsList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketList")
@@ -1331,8 +1331,8 @@ func (a *TicketAPIService) TicketListExecute(r ApiTicketListRequest) (*AllTicket
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1342,8 +1342,8 @@ func (a *TicketAPIService) TicketListExecute(r ApiTicketListRequest) (*AllTicket
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1353,8 +1353,8 @@ func (a *TicketAPIService) TicketListExecute(r ApiTicketListRequest) (*AllTicket
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1364,8 +1364,8 @@ func (a *TicketAPIService) TicketListExecute(r ApiTicketListRequest) (*AllTicket
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1375,8 +1375,8 @@ func (a *TicketAPIService) TicketListExecute(r ApiTicketListRequest) (*AllTicket
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1394,11 +1394,11 @@ func (a *TicketAPIService) TicketListExecute(r ApiTicketListRequest) (*AllTicket
 }
 
 type ApiTicketMessagesRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *TicketAPIService
-	ticketId   string
-	limit      *int32
-	offset     *int32
+	ticketId string
+	limit *int32
+	offset *int32
 }
 
 func (r ApiTicketMessagesRequest) Limit(limit int32) ApiTicketMessagesRequest {
@@ -1418,27 +1418,26 @@ func (r ApiTicketMessagesRequest) Execute() (*ArticleList, *http.Response, error
 /*
 TicketMessages Method for TicketMessages
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param ticketId
-	@return ApiTicketMessagesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param ticketId
+ @return ApiTicketMessagesRequest
 */
 func (a *TicketAPIService) TicketMessages(ctx context.Context, ticketId string) ApiTicketMessagesRequest {
 	return ApiTicketMessagesRequest{
 		ApiService: a,
-		ctx:        ctx,
-		ticketId:   ticketId,
+		ctx: ctx,
+		ticketId: ticketId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ArticleList
+//  @return ArticleList
 func (a *TicketAPIService) TicketMessagesExecute(r ApiTicketMessagesRequest) (*ArticleList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ArticleList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ArticleList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketMessages")
@@ -1519,8 +1518,8 @@ func (a *TicketAPIService) TicketMessagesExecute(r ApiTicketMessagesRequest) (*A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1530,8 +1529,8 @@ func (a *TicketAPIService) TicketMessagesExecute(r ApiTicketMessagesRequest) (*A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1541,8 +1540,8 @@ func (a *TicketAPIService) TicketMessagesExecute(r ApiTicketMessagesRequest) (*A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1552,8 +1551,8 @@ func (a *TicketAPIService) TicketMessagesExecute(r ApiTicketMessagesRequest) (*A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1563,8 +1562,8 @@ func (a *TicketAPIService) TicketMessagesExecute(r ApiTicketMessagesRequest) (*A
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1582,8 +1581,8 @@ func (a *TicketAPIService) TicketMessagesExecute(r ApiTicketMessagesRequest) (*A
 }
 
 type ApiTicketOpenRequest struct {
-	ctx               context.Context
-	ApiService        *TicketAPIService
+	ctx context.Context
+	ApiService *TicketAPIService
 	openTicketCommand *OpenTicketCommand
 }
 
@@ -1599,22 +1598,22 @@ func (r ApiTicketOpenRequest) Execute() (*http.Response, error) {
 /*
 TicketOpen Open ticket
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTicketOpenRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTicketOpenRequest
 */
 func (a *TicketAPIService) TicketOpen(ctx context.Context) ApiTicketOpenRequest {
 	return ApiTicketOpenRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TicketAPIService) TicketOpenExecute(r ApiTicketOpenRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketOpen")
@@ -1693,8 +1692,8 @@ func (a *TicketAPIService) TicketOpenExecute(r ApiTicketOpenRequest) (*http.Resp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1704,8 +1703,8 @@ func (a *TicketAPIService) TicketOpenExecute(r ApiTicketOpenRequest) (*http.Resp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1715,8 +1714,8 @@ func (a *TicketAPIService) TicketOpenExecute(r ApiTicketOpenRequest) (*http.Resp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1726,8 +1725,8 @@ func (a *TicketAPIService) TicketOpenExecute(r ApiTicketOpenRequest) (*http.Resp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1737,8 +1736,8 @@ func (a *TicketAPIService) TicketOpenExecute(r ApiTicketOpenRequest) (*http.Resp
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1747,8 +1746,8 @@ func (a *TicketAPIService) TicketOpenExecute(r ApiTicketOpenRequest) (*http.Resp
 }
 
 type ApiTicketReplyRequest struct {
-	ctx                context.Context
-	ApiService         *TicketAPIService
+	ctx context.Context
+	ApiService *TicketAPIService
 	replyTicketCommand *ReplyTicketCommand
 }
 
@@ -1764,22 +1763,22 @@ func (r ApiTicketReplyRequest) Execute() (*http.Response, error) {
 /*
 TicketReply Reply message
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTicketReplyRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTicketReplyRequest
 */
 func (a *TicketAPIService) TicketReply(ctx context.Context) ApiTicketReplyRequest {
 	return ApiTicketReplyRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TicketAPIService) TicketReplyExecute(r ApiTicketReplyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketReply")
@@ -1858,8 +1857,8 @@ func (a *TicketAPIService) TicketReplyExecute(r ApiTicketReplyRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1869,8 +1868,8 @@ func (a *TicketAPIService) TicketReplyExecute(r ApiTicketReplyRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1880,8 +1879,8 @@ func (a *TicketAPIService) TicketReplyExecute(r ApiTicketReplyRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1891,8 +1890,8 @@ func (a *TicketAPIService) TicketReplyExecute(r ApiTicketReplyRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1902,8 +1901,8 @@ func (a *TicketAPIService) TicketReplyExecute(r ApiTicketReplyRequest) (*http.Re
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1912,8 +1911,8 @@ func (a *TicketAPIService) TicketReplyExecute(r ApiTicketReplyRequest) (*http.Re
 }
 
 type ApiTicketSetPriorityRequest struct {
-	ctx                      context.Context
-	ApiService               *TicketAPIService
+	ctx context.Context
+	ApiService *TicketAPIService
 	setTicketPriorityCommand *SetTicketPriorityCommand
 }
 
@@ -1929,22 +1928,22 @@ func (r ApiTicketSetPriorityRequest) Execute() (*http.Response, error) {
 /*
 TicketSetPriority Set priority
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTicketSetPriorityRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTicketSetPriorityRequest
 */
 func (a *TicketAPIService) TicketSetPriority(ctx context.Context) ApiTicketSetPriorityRequest {
 	return ApiTicketSetPriorityRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TicketAPIService) TicketSetPriorityExecute(r ApiTicketSetPriorityRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketSetPriority")
@@ -2023,8 +2022,8 @@ func (a *TicketAPIService) TicketSetPriorityExecute(r ApiTicketSetPriorityReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2034,8 +2033,8 @@ func (a *TicketAPIService) TicketSetPriorityExecute(r ApiTicketSetPriorityReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2045,8 +2044,8 @@ func (a *TicketAPIService) TicketSetPriorityExecute(r ApiTicketSetPriorityReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2056,8 +2055,8 @@ func (a *TicketAPIService) TicketSetPriorityExecute(r ApiTicketSetPriorityReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2067,8 +2066,8 @@ func (a *TicketAPIService) TicketSetPriorityExecute(r ApiTicketSetPriorityReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2077,8 +2076,8 @@ func (a *TicketAPIService) TicketSetPriorityExecute(r ApiTicketSetPriorityReques
 }
 
 type ApiTicketTransferRequest struct {
-	ctx                   context.Context
-	ApiService            *TicketAPIService
+	ctx context.Context
+	ApiService *TicketAPIService
 	transferTicketCommand *TransferTicketCommand
 }
 
@@ -2094,22 +2093,22 @@ func (r ApiTicketTransferRequest) Execute() (*http.Response, error) {
 /*
 TicketTransfer Transfer ticket
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTicketTransferRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTicketTransferRequest
 */
 func (a *TicketAPIService) TicketTransfer(ctx context.Context) ApiTicketTransferRequest {
 	return ApiTicketTransferRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *TicketAPIService) TicketTransferExecute(r ApiTicketTransferRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketTransfer")
@@ -2188,8 +2187,8 @@ func (a *TicketAPIService) TicketTransferExecute(r ApiTicketTransferRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2199,8 +2198,8 @@ func (a *TicketAPIService) TicketTransferExecute(r ApiTicketTransferRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2210,8 +2209,8 @@ func (a *TicketAPIService) TicketTransferExecute(r ApiTicketTransferRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2221,8 +2220,8 @@ func (a *TicketAPIService) TicketTransferExecute(r ApiTicketTransferRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2232,8 +2231,8 @@ func (a *TicketAPIService) TicketTransferExecute(r ApiTicketTransferRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -2242,8 +2241,8 @@ func (a *TicketAPIService) TicketTransferExecute(r ApiTicketTransferRequest) (*h
 }
 
 type ApiTicketTransferListRequest struct {
-	ctx            context.Context
-	ApiService     *TicketAPIService
+	ctx context.Context
+	ApiService *TicketAPIService
 	organizationId *int32
 }
 
@@ -2259,25 +2258,24 @@ func (r ApiTicketTransferListRequest) Execute() ([]TransferList, *http.Response,
 /*
 TicketTransferList Retrieve organization managers
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiTicketTransferListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiTicketTransferListRequest
 */
 func (a *TicketAPIService) TicketTransferList(ctx context.Context) ApiTicketTransferListRequest {
 	return ApiTicketTransferListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []TransferList
+//  @return []TransferList
 func (a *TicketAPIService) TicketTransferListExecute(r ApiTicketTransferListRequest) ([]TransferList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []TransferList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []TransferList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TicketAPIService.TicketTransferList")
@@ -2354,8 +2352,8 @@ func (a *TicketAPIService) TicketTransferListExecute(r ApiTicketTransferListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2365,8 +2363,8 @@ func (a *TicketAPIService) TicketTransferListExecute(r ApiTicketTransferListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2376,8 +2374,8 @@ func (a *TicketAPIService) TicketTransferListExecute(r ApiTicketTransferListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2387,8 +2385,8 @@ func (a *TicketAPIService) TicketTransferListExecute(r ApiTicketTransferListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2398,8 +2396,8 @@ func (a *TicketAPIService) TicketTransferListExecute(r ApiTicketTransferListRequ
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -21,8 +21,8 @@ var _ MappedNullable = &ConfigMapDto{}
 // ConfigMapDto struct for ConfigMapDto
 type ConfigMapDto struct {
 	MetadataName NullableString `json:"metadataName,omitempty"`
-	Namespace    NullableString `json:"namespace,omitempty"`
-	Age          NullableString `json:"age,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Age NullableString `json:"age,omitempty"`
 }
 
 // NewConfigMapDto instantiates a new ConfigMapDto object
@@ -74,7 +74,6 @@ func (o *ConfigMapDto) HasMetadataName() bool {
 func (o *ConfigMapDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *ConfigMapDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -117,7 +116,6 @@ func (o *ConfigMapDto) HasNamespace() bool {
 func (o *ConfigMapDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *ConfigMapDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -160,7 +158,6 @@ func (o *ConfigMapDto) HasAge() bool {
 func (o *ConfigMapDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-
 // SetAgeNil sets the value for Age to be an explicit nil
 func (o *ConfigMapDto) SetAgeNil() {
 	o.Age.Set(nil)
@@ -172,7 +169,7 @@ func (o *ConfigMapDto) UnsetAge() {
 }
 
 func (o ConfigMapDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableConfigMapDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

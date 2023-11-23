@@ -20,11 +20,11 @@ var _ MappedNullable = &AlertingIntegrationsListDto{}
 
 // AlertingIntegrationsListDto struct for AlertingIntegrationsListDto
 type AlertingIntegrationsListDto struct {
-	Id                      *int32                   `json:"id,omitempty"`
-	Url                     NullableString           `json:"url,omitempty"`
-	Token                   NullableString           `json:"token,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Token NullableString `json:"token,omitempty"`
 	AlertingIntegrationType *AlertingIntegrationType `json:"alertingIntegrationType,omitempty"`
-	AlertingProfileName     NullableString           `json:"alertingProfileName,omitempty"`
+	AlertingProfileName NullableString `json:"alertingProfileName,omitempty"`
 }
 
 // NewAlertingIntegrationsListDto instantiates a new AlertingIntegrationsListDto object
@@ -108,7 +108,6 @@ func (o *AlertingIntegrationsListDto) HasUrl() bool {
 func (o *AlertingIntegrationsListDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *AlertingIntegrationsListDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -151,7 +150,6 @@ func (o *AlertingIntegrationsListDto) HasToken() bool {
 func (o *AlertingIntegrationsListDto) SetToken(v string) {
 	o.Token.Set(&v)
 }
-
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *AlertingIntegrationsListDto) SetTokenNil() {
 	o.Token.Set(nil)
@@ -226,7 +224,6 @@ func (o *AlertingIntegrationsListDto) HasAlertingProfileName() bool {
 func (o *AlertingIntegrationsListDto) SetAlertingProfileName(v string) {
 	o.AlertingProfileName.Set(&v)
 }
-
 // SetAlertingProfileNameNil sets the value for AlertingProfileName to be an explicit nil
 func (o *AlertingIntegrationsListDto) SetAlertingProfileNameNil() {
 	o.AlertingProfileName.Set(nil)
@@ -238,7 +235,7 @@ func (o *AlertingIntegrationsListDto) UnsetAlertingProfileName() {
 }
 
 func (o AlertingIntegrationsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -300,3 +297,5 @@ func (v *NullableAlertingIntegrationsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

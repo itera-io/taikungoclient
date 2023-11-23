@@ -20,8 +20,8 @@ var _ MappedNullable = &ShowbackRuleList{}
 
 // ShowbackRuleList struct for ShowbackRuleList
 type ShowbackRuleList struct {
-	Data       []ShowbackRulesListDto `json:"data,omitempty"`
-	TotalCount *int32                 `json:"totalCount,omitempty"`
+	Data []ShowbackRulesListDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewShowbackRuleList instantiates a new ShowbackRuleList object
@@ -107,7 +107,7 @@ func (o *ShowbackRuleList) SetTotalCount(v int32) {
 }
 
 func (o ShowbackRuleList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableShowbackRuleList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

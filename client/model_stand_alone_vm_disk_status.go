@@ -21,12 +21,12 @@ type StandAloneVmDiskStatus string
 
 // List of StandAloneVmDiskStatus
 const (
-	STANDALONEVMDISKSTATUS_DELETING       StandAloneVmDiskStatus = "Deleting"
-	STANDALONEVMDISKSTATUS_FAILURE        StandAloneVmDiskStatus = "Failure"
-	STANDALONEVMDISKSTATUS_WAITING        StandAloneVmDiskStatus = "Waiting"
+	STANDALONEVMDISKSTATUS_DELETING StandAloneVmDiskStatus = "Deleting"
+	STANDALONEVMDISKSTATUS_FAILURE StandAloneVmDiskStatus = "Failure"
+	STANDALONEVMDISKSTATUS_WAITING StandAloneVmDiskStatus = "Waiting"
 	STANDALONEVMDISKSTATUS_PENDING_DELETE StandAloneVmDiskStatus = "PendingDelete"
-	STANDALONEVMDISKSTATUS_READY          StandAloneVmDiskStatus = "Ready"
-	STANDALONEVMDISKSTATUS_UPDATING       StandAloneVmDiskStatus = "Updating"
+	STANDALONEVMDISKSTATUS_READY StandAloneVmDiskStatus = "Ready"
+	STANDALONEVMDISKSTATUS_UPDATING StandAloneVmDiskStatus = "Updating"
 )
 
 // All allowed values of StandAloneVmDiskStatus enum
@@ -117,3 +117,4 @@ func (v *NullableStandAloneVmDiskStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

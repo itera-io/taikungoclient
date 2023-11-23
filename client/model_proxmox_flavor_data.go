@@ -21,8 +21,8 @@ var _ MappedNullable = &ProxmoxFlavorData{}
 // ProxmoxFlavorData struct for ProxmoxFlavorData
 type ProxmoxFlavorData struct {
 	Name NullableString `json:"name,omitempty"`
-	Cpu  *int32         `json:"cpu,omitempty"`
-	Ram  *int64         `json:"ram,omitempty"`
+	Cpu *int32 `json:"cpu,omitempty"`
+	Ram *int64 `json:"ram,omitempty"`
 }
 
 // NewProxmoxFlavorData instantiates a new ProxmoxFlavorData object
@@ -74,7 +74,6 @@ func (o *ProxmoxFlavorData) HasName() bool {
 func (o *ProxmoxFlavorData) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProxmoxFlavorData) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,7 @@ func (o *ProxmoxFlavorData) SetRam(v int64) {
 }
 
 func (o ProxmoxFlavorData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -206,3 +205,5 @@ func (v *NullableProxmoxFlavorData) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

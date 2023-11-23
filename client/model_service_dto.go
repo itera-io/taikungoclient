@@ -21,10 +21,10 @@ var _ MappedNullable = &ServiceDto{}
 // ServiceDto struct for ServiceDto
 type ServiceDto struct {
 	MetadataName NullableString `json:"metadataName,omitempty"`
-	Namespace    NullableString `json:"namespace,omitempty"`
-	Age          NullableString `json:"age,omitempty"`
-	Type         NullableString `json:"type,omitempty"`
-	Ip           interface{}    `json:"ip,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Age NullableString `json:"age,omitempty"`
+	Type NullableString `json:"type,omitempty"`
+	Ip interface{} `json:"ip,omitempty"`
 }
 
 // NewServiceDto instantiates a new ServiceDto object
@@ -76,7 +76,6 @@ func (o *ServiceDto) HasMetadataName() bool {
 func (o *ServiceDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *ServiceDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -119,7 +118,6 @@ func (o *ServiceDto) HasNamespace() bool {
 func (o *ServiceDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *ServiceDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -162,7 +160,6 @@ func (o *ServiceDto) HasAge() bool {
 func (o *ServiceDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-
 // SetAgeNil sets the value for Age to be an explicit nil
 func (o *ServiceDto) SetAgeNil() {
 	o.Age.Set(nil)
@@ -205,7 +202,6 @@ func (o *ServiceDto) HasType() bool {
 func (o *ServiceDto) SetType(v string) {
 	o.Type.Set(&v)
 }
-
 // SetTypeNil sets the value for Type to be an explicit nil
 func (o *ServiceDto) SetTypeNil() {
 	o.Type.Set(nil)
@@ -250,7 +246,7 @@ func (o *ServiceDto) SetIp(v interface{}) {
 }
 
 func (o ServiceDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -312,3 +308,5 @@ func (v *NullableServiceDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

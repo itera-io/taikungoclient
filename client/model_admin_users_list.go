@@ -20,8 +20,8 @@ var _ MappedNullable = &AdminUsersList{}
 
 // AdminUsersList struct for AdminUsersList
 type AdminUsersList struct {
-	Data       []AdminUsersResponseData `json:"data,omitempty"`
-	TotalCount *int32                   `json:"totalCount,omitempty"`
+	Data []AdminUsersResponseData `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewAdminUsersList instantiates a new AdminUsersList object
@@ -107,7 +107,7 @@ func (o *AdminUsersList) SetTotalCount(v int32) {
 }
 
 func (o AdminUsersList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableAdminUsersList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

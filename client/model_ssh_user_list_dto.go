@@ -20,10 +20,10 @@ var _ MappedNullable = &SshUserListDto{}
 
 // SshUserListDto struct for SshUserListDto
 type SshUserListDto struct {
-	Id           *int32         `json:"id,omitempty"`
-	Name         NullableString `json:"name,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
-	IsDeleted    *bool          `json:"isDeleted,omitempty"`
+	IsDeleted *bool `json:"isDeleted,omitempty"`
 }
 
 // NewSshUserListDto instantiates a new SshUserListDto object
@@ -107,7 +107,6 @@ func (o *SshUserListDto) HasName() bool {
 func (o *SshUserListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *SshUserListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,6 @@ func (o *SshUserListDto) HasSshPublicKey() bool {
 func (o *SshUserListDto) SetSshPublicKey(v string) {
 	o.SshPublicKey.Set(&v)
 }
-
 // SetSshPublicKeyNil sets the value for SshPublicKey to be an explicit nil
 func (o *SshUserListDto) SetSshPublicKeyNil() {
 	o.SshPublicKey.Set(nil)
@@ -194,7 +192,7 @@ func (o *SshUserListDto) SetIsDeleted(v bool) {
 }
 
 func (o SshUserListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,3 +251,5 @@ func (v *NullableSshUserListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

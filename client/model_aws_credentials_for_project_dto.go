@@ -20,9 +20,9 @@ var _ MappedNullable = &AwsCredentialsForProjectDto{}
 
 // AwsCredentialsForProjectDto struct for AwsCredentialsForProjectDto
 type AwsCredentialsForProjectDto struct {
-	AwsAccessKeyId     NullableString `json:"awsAccessKeyId,omitempty"`
+	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
-	AwsRegion          NullableString `json:"awsRegion,omitempty"`
+	AwsRegion NullableString `json:"awsRegion,omitempty"`
 }
 
 // NewAwsCredentialsForProjectDto instantiates a new AwsCredentialsForProjectDto object
@@ -74,7 +74,6 @@ func (o *AwsCredentialsForProjectDto) HasAwsAccessKeyId() bool {
 func (o *AwsCredentialsForProjectDto) SetAwsAccessKeyId(v string) {
 	o.AwsAccessKeyId.Set(&v)
 }
-
 // SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
 func (o *AwsCredentialsForProjectDto) SetAwsAccessKeyIdNil() {
 	o.AwsAccessKeyId.Set(nil)
@@ -117,7 +116,6 @@ func (o *AwsCredentialsForProjectDto) HasAwsSecretAccessKey() bool {
 func (o *AwsCredentialsForProjectDto) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey.Set(&v)
 }
-
 // SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
 func (o *AwsCredentialsForProjectDto) SetAwsSecretAccessKeyNil() {
 	o.AwsSecretAccessKey.Set(nil)
@@ -160,7 +158,6 @@ func (o *AwsCredentialsForProjectDto) HasAwsRegion() bool {
 func (o *AwsCredentialsForProjectDto) SetAwsRegion(v string) {
 	o.AwsRegion.Set(&v)
 }
-
 // SetAwsRegionNil sets the value for AwsRegion to be an explicit nil
 func (o *AwsCredentialsForProjectDto) SetAwsRegionNil() {
 	o.AwsRegion.Set(nil)
@@ -172,7 +169,7 @@ func (o *AwsCredentialsForProjectDto) UnsetAwsRegion() {
 }
 
 func (o AwsCredentialsForProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableAwsCredentialsForProjectDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

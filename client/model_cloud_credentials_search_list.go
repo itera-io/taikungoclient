@@ -20,8 +20,8 @@ var _ MappedNullable = &CloudCredentialsSearchList{}
 
 // CloudCredentialsSearchList struct for CloudCredentialsSearchList
 type CloudCredentialsSearchList struct {
-	Data       []CloudCredentialsResponseData `json:"data,omitempty"`
-	TotalCount *int32                         `json:"totalCount,omitempty"`
+	Data []CloudCredentialsResponseData `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewCloudCredentialsSearchList instantiates a new CloudCredentialsSearchList object
@@ -107,7 +107,7 @@ func (o *CloudCredentialsSearchList) SetTotalCount(v int32) {
 }
 
 func (o CloudCredentialsSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableCloudCredentialsSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

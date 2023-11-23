@@ -72,7 +72,6 @@ func (o *DisableRepoCommand) HasRepoName() bool {
 func (o *DisableRepoCommand) SetRepoName(v string) {
 	o.RepoName.Set(&v)
 }
-
 // SetRepoNameNil sets the value for RepoName to be an explicit nil
 func (o *DisableRepoCommand) SetRepoNameNil() {
 	o.RepoName.Set(nil)
@@ -84,7 +83,7 @@ func (o *DisableRepoCommand) UnsetRepoName() {
 }
 
 func (o DisableRepoCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -134,3 +133,5 @@ func (v *NullableDisableRepoCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

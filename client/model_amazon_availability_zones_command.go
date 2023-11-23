@@ -20,10 +20,10 @@ var _ MappedNullable = &AmazonAvailabilityZonesCommand{}
 
 // AmazonAvailabilityZonesCommand struct for AmazonAvailabilityZonesCommand
 type AmazonAvailabilityZonesCommand struct {
-	Region             NullableString `json:"region,omitempty"`
-	AwsAccessKeyId     NullableString `json:"awsAccessKeyId,omitempty"`
+	Region NullableString `json:"region,omitempty"`
+	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
-	CloudId            NullableInt32  `json:"cloudId,omitempty"`
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
 }
 
 // NewAmazonAvailabilityZonesCommand instantiates a new AmazonAvailabilityZonesCommand object
@@ -75,7 +75,6 @@ func (o *AmazonAvailabilityZonesCommand) HasRegion() bool {
 func (o *AmazonAvailabilityZonesCommand) SetRegion(v string) {
 	o.Region.Set(&v)
 }
-
 // SetRegionNil sets the value for Region to be an explicit nil
 func (o *AmazonAvailabilityZonesCommand) SetRegionNil() {
 	o.Region.Set(nil)
@@ -118,7 +117,6 @@ func (o *AmazonAvailabilityZonesCommand) HasAwsAccessKeyId() bool {
 func (o *AmazonAvailabilityZonesCommand) SetAwsAccessKeyId(v string) {
 	o.AwsAccessKeyId.Set(&v)
 }
-
 // SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
 func (o *AmazonAvailabilityZonesCommand) SetAwsAccessKeyIdNil() {
 	o.AwsAccessKeyId.Set(nil)
@@ -161,7 +159,6 @@ func (o *AmazonAvailabilityZonesCommand) HasAwsSecretAccessKey() bool {
 func (o *AmazonAvailabilityZonesCommand) SetAwsSecretAccessKey(v string) {
 	o.AwsSecretAccessKey.Set(&v)
 }
-
 // SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
 func (o *AmazonAvailabilityZonesCommand) SetAwsSecretAccessKeyNil() {
 	o.AwsSecretAccessKey.Set(nil)
@@ -204,7 +201,6 @@ func (o *AmazonAvailabilityZonesCommand) HasCloudId() bool {
 func (o *AmazonAvailabilityZonesCommand) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
-
 // SetCloudIdNil sets the value for CloudId to be an explicit nil
 func (o *AmazonAvailabilityZonesCommand) SetCloudIdNil() {
 	o.CloudId.Set(nil)
@@ -216,7 +212,7 @@ func (o *AmazonAvailabilityZonesCommand) UnsetCloudId() {
 }
 
 func (o AmazonAvailabilityZonesCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,3 +271,5 @@ func (v *NullableAmazonAvailabilityZonesCommand) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

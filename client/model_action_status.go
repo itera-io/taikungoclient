@@ -22,8 +22,8 @@ type ActionStatus string
 // List of ActionStatus
 const (
 	ACTIONSTATUS_SUCCEEDED ActionStatus = "succeeded"
-	ACTIONSTATUS_FAILED    ActionStatus = "failed"
-	ACTIONSTATUS_WARNING   ActionStatus = "warning"
+	ACTIONSTATUS_FAILED ActionStatus = "failed"
+	ACTIONSTATUS_WARNING ActionStatus = "warning"
 )
 
 // All allowed values of ActionStatus enum
@@ -111,3 +111,4 @@ func (v *NullableActionStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

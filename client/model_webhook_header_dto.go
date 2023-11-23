@@ -20,8 +20,8 @@ var _ MappedNullable = &WebhookHeaderDto{}
 
 // WebhookHeaderDto struct for WebhookHeaderDto
 type WebhookHeaderDto struct {
-	Id    *int32         `json:"id,omitempty"`
-	Key   NullableString `json:"key,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Key NullableString `json:"key,omitempty"`
 	Value NullableString `json:"value,omitempty"`
 }
 
@@ -106,7 +106,6 @@ func (o *WebhookHeaderDto) HasKey() bool {
 func (o *WebhookHeaderDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
-
 // SetKeyNil sets the value for Key to be an explicit nil
 func (o *WebhookHeaderDto) SetKeyNil() {
 	o.Key.Set(nil)
@@ -149,7 +148,6 @@ func (o *WebhookHeaderDto) HasValue() bool {
 func (o *WebhookHeaderDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
-
 // SetValueNil sets the value for Value to be an explicit nil
 func (o *WebhookHeaderDto) SetValueNil() {
 	o.Value.Set(nil)
@@ -161,7 +159,7 @@ func (o *WebhookHeaderDto) UnsetValue() {
 }
 
 func (o WebhookHeaderDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullableWebhookHeaderDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

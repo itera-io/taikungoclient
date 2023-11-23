@@ -17,16 +17,17 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"os"
 	"strings"
+	"os"
 )
+
 
 // PartnersAPIService PartnersAPI service
 type PartnersAPIService service
 
 type ApiPartnerAddWhitelistDomainRequest struct {
-	ctx                          context.Context
-	ApiService                   *PartnersAPIService
+	ctx context.Context
+	ApiService *PartnersAPIService
 	whiteListDomainCreateCommand *WhiteListDomainCreateCommand
 }
 
@@ -42,22 +43,22 @@ func (r ApiPartnerAddWhitelistDomainRequest) Execute() (*http.Response, error) {
 /*
 PartnerAddWhitelistDomain Add white list domain
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPartnerAddWhitelistDomainRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPartnerAddWhitelistDomainRequest
 */
 func (a *PartnersAPIService) PartnerAddWhitelistDomain(ctx context.Context) ApiPartnerAddWhitelistDomainRequest {
 	return ApiPartnerAddWhitelistDomainRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PartnersAPIService) PartnerAddWhitelistDomainExecute(r ApiPartnerAddWhitelistDomainRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerAddWhitelistDomain")
@@ -133,8 +134,8 @@ func (a *PartnersAPIService) PartnerAddWhitelistDomainExecute(r ApiPartnerAddWhi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -144,8 +145,8 @@ func (a *PartnersAPIService) PartnerAddWhitelistDomainExecute(r ApiPartnerAddWhi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -155,8 +156,8 @@ func (a *PartnersAPIService) PartnerAddWhitelistDomainExecute(r ApiPartnerAddWhi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -166,8 +167,8 @@ func (a *PartnersAPIService) PartnerAddWhitelistDomainExecute(r ApiPartnerAddWhi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -177,8 +178,8 @@ func (a *PartnersAPIService) PartnerAddWhitelistDomainExecute(r ApiPartnerAddWhi
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -187,8 +188,8 @@ func (a *PartnersAPIService) PartnerAddWhitelistDomainExecute(r ApiPartnerAddWhi
 }
 
 type ApiPartnerBecomeAPartnerRequest struct {
-	ctx                  context.Context
-	ApiService           *PartnersAPIService
+	ctx context.Context
+	ApiService *PartnersAPIService
 	becomePartnerCommand *BecomePartnerCommand
 }
 
@@ -204,22 +205,22 @@ func (r ApiPartnerBecomeAPartnerRequest) Execute() (*http.Response, error) {
 /*
 PartnerBecomeAPartner Become a partner
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPartnerBecomeAPartnerRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPartnerBecomeAPartnerRequest
 */
 func (a *PartnersAPIService) PartnerBecomeAPartner(ctx context.Context) ApiPartnerBecomeAPartnerRequest {
 	return ApiPartnerBecomeAPartnerRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PartnersAPIService) PartnerBecomeAPartnerExecute(r ApiPartnerBecomeAPartnerRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerBecomeAPartner")
@@ -298,8 +299,8 @@ func (a *PartnersAPIService) PartnerBecomeAPartnerExecute(r ApiPartnerBecomeAPar
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -309,8 +310,8 @@ func (a *PartnersAPIService) PartnerBecomeAPartnerExecute(r ApiPartnerBecomeAPar
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -320,8 +321,8 @@ func (a *PartnersAPIService) PartnerBecomeAPartnerExecute(r ApiPartnerBecomeAPar
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -331,8 +332,8 @@ func (a *PartnersAPIService) PartnerBecomeAPartnerExecute(r ApiPartnerBecomeAPar
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -342,8 +343,8 @@ func (a *PartnersAPIService) PartnerBecomeAPartnerExecute(r ApiPartnerBecomeAPar
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -352,8 +353,8 @@ func (a *PartnersAPIService) PartnerBecomeAPartnerExecute(r ApiPartnerBecomeAPar
 }
 
 type ApiPartnerBindOrganizationsRequest struct {
-	ctx                      context.Context
-	ApiService               *PartnersAPIService
+	ctx context.Context
+	ApiService *PartnersAPIService
 	bindOrganizationsCommand *BindOrganizationsCommand
 }
 
@@ -369,22 +370,22 @@ func (r ApiPartnerBindOrganizationsRequest) Execute() (*http.Response, error) {
 /*
 PartnerBindOrganizations Bind organizations to a partner
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPartnerBindOrganizationsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPartnerBindOrganizationsRequest
 */
 func (a *PartnersAPIService) PartnerBindOrganizations(ctx context.Context) ApiPartnerBindOrganizationsRequest {
 	return ApiPartnerBindOrganizationsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PartnersAPIService) PartnerBindOrganizationsExecute(r ApiPartnerBindOrganizationsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerBindOrganizations")
@@ -460,8 +461,8 @@ func (a *PartnersAPIService) PartnerBindOrganizationsExecute(r ApiPartnerBindOrg
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -471,8 +472,8 @@ func (a *PartnersAPIService) PartnerBindOrganizationsExecute(r ApiPartnerBindOrg
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -482,8 +483,8 @@ func (a *PartnersAPIService) PartnerBindOrganizationsExecute(r ApiPartnerBindOrg
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -493,8 +494,8 @@ func (a *PartnersAPIService) PartnerBindOrganizationsExecute(r ApiPartnerBindOrg
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -504,8 +505,8 @@ func (a *PartnersAPIService) PartnerBindOrganizationsExecute(r ApiPartnerBindOrg
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -514,8 +515,8 @@ func (a *PartnersAPIService) PartnerBindOrganizationsExecute(r ApiPartnerBindOrg
 }
 
 type ApiPartnerContactUsRequest struct {
-	ctx              context.Context
-	ApiService       *PartnersAPIService
+	ctx context.Context
+	ApiService *PartnersAPIService
 	contactUsCommand *ContactUsCommand
 }
 
@@ -531,22 +532,22 @@ func (r ApiPartnerContactUsRequest) Execute() (*http.Response, error) {
 /*
 PartnerContactUs Contact with us
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPartnerContactUsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPartnerContactUsRequest
 */
 func (a *PartnersAPIService) PartnerContactUs(ctx context.Context) ApiPartnerContactUsRequest {
 	return ApiPartnerContactUsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PartnersAPIService) PartnerContactUsExecute(r ApiPartnerContactUsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerContactUs")
@@ -625,8 +626,8 @@ func (a *PartnersAPIService) PartnerContactUsExecute(r ApiPartnerContactUsReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -636,8 +637,8 @@ func (a *PartnersAPIService) PartnerContactUsExecute(r ApiPartnerContactUsReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -647,8 +648,8 @@ func (a *PartnersAPIService) PartnerContactUsExecute(r ApiPartnerContactUsReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -658,8 +659,8 @@ func (a *PartnersAPIService) PartnerContactUsExecute(r ApiPartnerContactUsReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -669,8 +670,8 @@ func (a *PartnersAPIService) PartnerContactUsExecute(r ApiPartnerContactUsReques
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -679,22 +680,22 @@ func (a *PartnersAPIService) PartnerContactUsExecute(r ApiPartnerContactUsReques
 }
 
 type ApiPartnerCreateRequest struct {
-	ctx                  context.Context
-	ApiService           *PartnersAPIService
-	allowRegistration    *bool
+	ctx context.Context
+	ApiService *PartnersAPIService
+	allowRegistration *bool
 	requiredUserApproval *bool
-	paymentEnabled       *bool
-	name                 *string
-	domain               *string
-	link                 *string
-	phone                *string
-	email                *string
-	country              *string
-	city                 *string
-	vatNumber            *string
-	address              *string
-	logo                 *os.File
-	backgroundImage      *os.File
+	paymentEnabled *bool
+	name *string
+	domain *string
+	link *string
+	phone *string
+	email *string
+	country *string
+	city *string
+	vatNumber *string
+	address *string
+	logo *os.File
+	backgroundImage *os.File
 }
 
 func (r ApiPartnerCreateRequest) AllowRegistration(allowRegistration bool) ApiPartnerCreateRequest {
@@ -774,22 +775,22 @@ func (r ApiPartnerCreateRequest) Execute() (*http.Response, error) {
 /*
 PartnerCreate Method for PartnerCreate
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPartnerCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPartnerCreateRequest
 */
 func (a *PartnersAPIService) PartnerCreate(ctx context.Context) ApiPartnerCreateRequest {
 	return ApiPartnerCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerCreate")
@@ -857,11 +858,10 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var logoLocalVarFormFileName string
-	var logoLocalVarFileName string
-	var logoLocalVarFileBytes []byte
+	var logoLocalVarFileName     string
+	var logoLocalVarFileBytes    []byte
 
 	logoLocalVarFormFileName = "logo"
-
 	logoLocalVarFile := r.logo
 
 	if logoLocalVarFile != nil {
@@ -873,11 +873,10 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 		formFiles = append(formFiles, formFile{fileBytes: logoLocalVarFileBytes, fileName: logoLocalVarFileName, formFileName: logoLocalVarFormFileName})
 	}
 	var backgroundImageLocalVarFormFileName string
-	var backgroundImageLocalVarFileName string
-	var backgroundImageLocalVarFileBytes []byte
+	var backgroundImageLocalVarFileName     string
+	var backgroundImageLocalVarFileBytes    []byte
 
 	backgroundImageLocalVarFormFileName = "backgroundImage"
-
 	backgroundImageLocalVarFile := r.backgroundImage
 
 	if backgroundImageLocalVarFile != nil {
@@ -931,8 +930,8 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -942,8 +941,8 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -953,8 +952,8 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -964,8 +963,8 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -975,8 +974,8 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -985,8 +984,8 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 }
 
 type ApiPartnerDeleteWhitelistDomainRequest struct {
-	ctx                          context.Context
-	ApiService                   *PartnersAPIService
+	ctx context.Context
+	ApiService *PartnersAPIService
 	whiteListDomainDeleteCommand *WhiteListDomainDeleteCommand
 }
 
@@ -1002,22 +1001,22 @@ func (r ApiPartnerDeleteWhitelistDomainRequest) Execute() (*http.Response, error
 /*
 PartnerDeleteWhitelistDomain Delete white list domain
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPartnerDeleteWhitelistDomainRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPartnerDeleteWhitelistDomainRequest
 */
 func (a *PartnersAPIService) PartnerDeleteWhitelistDomain(ctx context.Context) ApiPartnerDeleteWhitelistDomainRequest {
 	return ApiPartnerDeleteWhitelistDomainRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PartnersAPIService) PartnerDeleteWhitelistDomainExecute(r ApiPartnerDeleteWhitelistDomainRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerDeleteWhitelistDomain")
@@ -1093,8 +1092,8 @@ func (a *PartnersAPIService) PartnerDeleteWhitelistDomainExecute(r ApiPartnerDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1104,8 +1103,8 @@ func (a *PartnersAPIService) PartnerDeleteWhitelistDomainExecute(r ApiPartnerDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1115,8 +1114,8 @@ func (a *PartnersAPIService) PartnerDeleteWhitelistDomainExecute(r ApiPartnerDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1126,8 +1125,8 @@ func (a *PartnersAPIService) PartnerDeleteWhitelistDomainExecute(r ApiPartnerDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1137,8 +1136,8 @@ func (a *PartnersAPIService) PartnerDeleteWhitelistDomainExecute(r ApiPartnerDel
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1147,7 +1146,7 @@ func (a *PartnersAPIService) PartnerDeleteWhitelistDomainExecute(r ApiPartnerDel
 }
 
 type ApiPartnerDetailsRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PartnersAPIService
 }
 
@@ -1158,25 +1157,24 @@ func (r ApiPartnerDetailsRequest) Execute() (*PartnerDetailsDto, *http.Response,
 /*
 PartnerDetails Details of partners
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPartnerDetailsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPartnerDetailsRequest
 */
 func (a *PartnersAPIService) PartnerDetails(ctx context.Context) ApiPartnerDetailsRequest {
 	return ApiPartnerDetailsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return PartnerDetailsDto
+//  @return PartnerDetailsDto
 func (a *PartnersAPIService) PartnerDetailsExecute(r ApiPartnerDetailsRequest) (*PartnerDetailsDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PartnerDetailsDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PartnerDetailsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerDetails")
@@ -1250,8 +1248,8 @@ func (a *PartnersAPIService) PartnerDetailsExecute(r ApiPartnerDetailsRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1261,8 +1259,8 @@ func (a *PartnersAPIService) PartnerDetailsExecute(r ApiPartnerDetailsRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1272,8 +1270,8 @@ func (a *PartnersAPIService) PartnerDetailsExecute(r ApiPartnerDetailsRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1283,8 +1281,8 @@ func (a *PartnersAPIService) PartnerDetailsExecute(r ApiPartnerDetailsRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1294,8 +1292,8 @@ func (a *PartnersAPIService) PartnerDetailsExecute(r ApiPartnerDetailsRequest) (
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1313,9 +1311,9 @@ func (a *PartnersAPIService) PartnerDetailsExecute(r ApiPartnerDetailsRequest) (
 }
 
 type ApiPartnerDropdownRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PartnersAPIService
-	search     *string
+	search *string
 }
 
 func (r ApiPartnerDropdownRequest) Search(search string) ApiPartnerDropdownRequest {
@@ -1330,25 +1328,24 @@ func (r ApiPartnerDropdownRequest) Execute() ([]PartnerEntity, *http.Response, e
 /*
 PartnerDropdown Get partners dropdown
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPartnerDropdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPartnerDropdownRequest
 */
 func (a *PartnersAPIService) PartnerDropdown(ctx context.Context) ApiPartnerDropdownRequest {
 	return ApiPartnerDropdownRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []PartnerEntity
+//  @return []PartnerEntity
 func (a *PartnersAPIService) PartnerDropdownExecute(r ApiPartnerDropdownRequest) ([]PartnerEntity, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []PartnerEntity
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []PartnerEntity
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerDropdown")
@@ -1425,8 +1422,8 @@ func (a *PartnersAPIService) PartnerDropdownExecute(r ApiPartnerDropdownRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1436,8 +1433,8 @@ func (a *PartnersAPIService) PartnerDropdownExecute(r ApiPartnerDropdownRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1447,8 +1444,8 @@ func (a *PartnersAPIService) PartnerDropdownExecute(r ApiPartnerDropdownRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1458,8 +1455,8 @@ func (a *PartnersAPIService) PartnerDropdownExecute(r ApiPartnerDropdownRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1469,8 +1466,8 @@ func (a *PartnersAPIService) PartnerDropdownExecute(r ApiPartnerDropdownRequest)
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1488,9 +1485,9 @@ func (a *PartnersAPIService) PartnerDropdownExecute(r ApiPartnerDropdownRequest)
 }
 
 type ApiPartnerInfoRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *PartnersAPIService
-	domain     *string
+	domain *string
 }
 
 func (r ApiPartnerInfoRequest) Domain(domain string) ApiPartnerInfoRequest {
@@ -1505,25 +1502,24 @@ func (r ApiPartnerInfoRequest) Execute() (*PartnerRecordDto, *http.Response, err
 /*
 PartnerInfo Get partner's registration info
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPartnerInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPartnerInfoRequest
 */
 func (a *PartnersAPIService) PartnerInfo(ctx context.Context) ApiPartnerInfoRequest {
 	return ApiPartnerInfoRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return PartnerRecordDto
+//  @return PartnerRecordDto
 func (a *PartnersAPIService) PartnerInfoExecute(r ApiPartnerInfoRequest) (*PartnerRecordDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PartnerRecordDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PartnerRecordDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerInfo")
@@ -1600,8 +1596,8 @@ func (a *PartnersAPIService) PartnerInfoExecute(r ApiPartnerInfoRequest) (*Partn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1611,8 +1607,8 @@ func (a *PartnersAPIService) PartnerInfoExecute(r ApiPartnerInfoRequest) (*Partn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1622,8 +1618,8 @@ func (a *PartnersAPIService) PartnerInfoExecute(r ApiPartnerInfoRequest) (*Partn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1633,8 +1629,8 @@ func (a *PartnersAPIService) PartnerInfoExecute(r ApiPartnerInfoRequest) (*Partn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1644,8 +1640,8 @@ func (a *PartnersAPIService) PartnerInfoExecute(r ApiPartnerInfoRequest) (*Partn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1663,15 +1659,15 @@ func (a *PartnersAPIService) PartnerInfoExecute(r ApiPartnerInfoRequest) (*Partn
 }
 
 type ApiPartnerListRequest struct {
-	ctx            context.Context
-	ApiService     *PartnersAPIService
-	offset         *int32
-	limit          *int32
+	ctx context.Context
+	ApiService *PartnersAPIService
+	offset *int32
+	limit *int32
 	organizationId *int32
-	sortBy         *string
-	sortDirection  *string
-	search         *string
-	searchId       *string
+	sortBy *string
+	sortDirection *string
+	search *string
+	searchId *string
 }
 
 func (r ApiPartnerListRequest) Offset(offset int32) ApiPartnerListRequest {
@@ -1716,25 +1712,24 @@ func (r ApiPartnerListRequest) Execute() (*PartnersList, *http.Response, error) 
 /*
 PartnerList Get partners
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPartnerListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPartnerListRequest
 */
 func (a *PartnersAPIService) PartnerList(ctx context.Context) ApiPartnerListRequest {
 	return ApiPartnerListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return PartnersList
+//  @return PartnersList
 func (a *PartnersAPIService) PartnerListExecute(r ApiPartnerListRequest) (*PartnersList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PartnersList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PartnersList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerList")
@@ -1829,8 +1824,8 @@ func (a *PartnersAPIService) PartnerListExecute(r ApiPartnerListRequest) (*Partn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1840,8 +1835,8 @@ func (a *PartnersAPIService) PartnerListExecute(r ApiPartnerListRequest) (*Partn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1851,8 +1846,8 @@ func (a *PartnersAPIService) PartnerListExecute(r ApiPartnerListRequest) (*Partn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1862,8 +1857,8 @@ func (a *PartnersAPIService) PartnerListExecute(r ApiPartnerListRequest) (*Partn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1873,8 +1868,8 @@ func (a *PartnersAPIService) PartnerListExecute(r ApiPartnerListRequest) (*Partn
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -1892,23 +1887,23 @@ func (a *PartnersAPIService) PartnerListExecute(r ApiPartnerListRequest) (*Partn
 }
 
 type ApiPartnerUpdateRequest struct {
-	ctx                  context.Context
-	ApiService           *PartnersAPIService
-	id                   int32
-	name                 *string
-	domain               *string
-	link                 *string
-	phone                *string
-	email                *string
-	country              *string
-	city                 *string
-	vatNumber            *string
-	address              *string
-	allowRegistration    *bool
+	ctx context.Context
+	ApiService *PartnersAPIService
+	id int32
+	name *string
+	domain *string
+	link *string
+	phone *string
+	email *string
+	country *string
+	city *string
+	vatNumber *string
+	address *string
+	allowRegistration *bool
 	requiredUserApproval *bool
-	paymentEnabled       *bool
-	logo                 *os.File
-	backgroundImage      *os.File
+	paymentEnabled *bool
+	logo *os.File
+	backgroundImage *os.File
 }
 
 func (r ApiPartnerUpdateRequest) Name(name string) ApiPartnerUpdateRequest {
@@ -1988,24 +1983,24 @@ func (r ApiPartnerUpdateRequest) Execute() (*http.Response, error) {
 /*
 PartnerUpdate Method for PartnerUpdate
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiPartnerUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPartnerUpdateRequest
 */
 func (a *PartnersAPIService) PartnerUpdate(ctx context.Context, id int32) ApiPartnerUpdateRequest {
 	return ApiPartnerUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerUpdate")
@@ -2074,11 +2069,10 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	var logoLocalVarFormFileName string
-	var logoLocalVarFileName string
-	var logoLocalVarFileBytes []byte
+	var logoLocalVarFileName     string
+	var logoLocalVarFileBytes    []byte
 
 	logoLocalVarFormFileName = "logo"
-
 	logoLocalVarFile := r.logo
 
 	if logoLocalVarFile != nil {
@@ -2090,11 +2084,10 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 		formFiles = append(formFiles, formFile{fileBytes: logoLocalVarFileBytes, fileName: logoLocalVarFileName, formFileName: logoLocalVarFormFileName})
 	}
 	var backgroundImageLocalVarFormFileName string
-	var backgroundImageLocalVarFileName string
-	var backgroundImageLocalVarFileBytes []byte
+	var backgroundImageLocalVarFileName     string
+	var backgroundImageLocalVarFileBytes    []byte
 
 	backgroundImageLocalVarFormFileName = "backgroundImage"
-
 	backgroundImageLocalVarFile := r.backgroundImage
 
 	if backgroundImageLocalVarFile != nil {
@@ -2148,8 +2141,8 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -2159,8 +2152,8 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -2170,8 +2163,8 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -2181,8 +2174,8 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -2192,8 +2185,8 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

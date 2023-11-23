@@ -21,7 +21,7 @@ var _ MappedNullable = &UpdateOrganizationSubscriptionCommand{}
 // UpdateOrganizationSubscriptionCommand struct for UpdateOrganizationSubscriptionCommand
 type UpdateOrganizationSubscriptionCommand struct {
 	SubscriptionId *int32 `json:"subscriptionId,omitempty"`
-	IsYearly       *bool  `json:"isYearly,omitempty"`
+	IsYearly *bool `json:"isYearly,omitempty"`
 }
 
 // NewUpdateOrganizationSubscriptionCommand instantiates a new UpdateOrganizationSubscriptionCommand object
@@ -106,7 +106,7 @@ func (o *UpdateOrganizationSubscriptionCommand) SetIsYearly(v bool) {
 }
 
 func (o UpdateOrganizationSubscriptionCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -159,3 +159,5 @@ func (v *NullableUpdateOrganizationSubscriptionCommand) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

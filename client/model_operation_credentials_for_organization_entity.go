@@ -20,9 +20,9 @@ var _ MappedNullable = &OperationCredentialsForOrganizationEntity{}
 
 // OperationCredentialsForOrganizationEntity struct for OperationCredentialsForOrganizationEntity
 type OperationCredentialsForOrganizationEntity struct {
-	OperationCredentialId NullableInt32  `json:"operationCredentialId,omitempty"`
-	Name                  NullableString `json:"name,omitempty"`
-	IsDefault             *bool          `json:"isDefault,omitempty"`
+	OperationCredentialId NullableInt32 `json:"operationCredentialId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
 }
 
 // NewOperationCredentialsForOrganizationEntity instantiates a new OperationCredentialsForOrganizationEntity object
@@ -74,7 +74,6 @@ func (o *OperationCredentialsForOrganizationEntity) HasOperationCredentialId() b
 func (o *OperationCredentialsForOrganizationEntity) SetOperationCredentialId(v int32) {
 	o.OperationCredentialId.Set(&v)
 }
-
 // SetOperationCredentialIdNil sets the value for OperationCredentialId to be an explicit nil
 func (o *OperationCredentialsForOrganizationEntity) SetOperationCredentialIdNil() {
 	o.OperationCredentialId.Set(nil)
@@ -117,7 +116,6 @@ func (o *OperationCredentialsForOrganizationEntity) HasName() bool {
 func (o *OperationCredentialsForOrganizationEntity) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *OperationCredentialsForOrganizationEntity) SetNameNil() {
 	o.Name.Set(nil)
@@ -161,7 +159,7 @@ func (o *OperationCredentialsForOrganizationEntity) SetIsDefault(v bool) {
 }
 
 func (o OperationCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullableOperationCredentialsForOrganizationEntity) UnmarshalJSON(src []
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

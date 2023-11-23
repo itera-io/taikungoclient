@@ -21,8 +21,8 @@ type ProxmoxRole string
 
 // List of ProxmoxRole
 const (
-	PROXMOXROLE_NONE    ProxmoxRole = "NONE"
-	PROXMOXROLE_NFS     ProxmoxRole = "NFS"
+	PROXMOXROLE_NONE ProxmoxRole = "NONE"
+	PROXMOXROLE_NFS ProxmoxRole = "NFS"
 	PROXMOXROLE_STORAGE ProxmoxRole = "STORAGE"
 )
 
@@ -111,3 +111,4 @@ func (v *NullableProxmoxRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

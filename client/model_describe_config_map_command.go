@@ -20,8 +20,8 @@ var _ MappedNullable = &DescribeConfigMapCommand{}
 
 // DescribeConfigMapCommand struct for DescribeConfigMapCommand
 type DescribeConfigMapCommand struct {
-	ProjectId *int32         `json:"projectId,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
 }
 
@@ -106,7 +106,6 @@ func (o *DescribeConfigMapCommand) HasName() bool {
 func (o *DescribeConfigMapCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *DescribeConfigMapCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -149,7 +148,6 @@ func (o *DescribeConfigMapCommand) HasNamespace() bool {
 func (o *DescribeConfigMapCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *DescribeConfigMapCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -161,7 +159,7 @@ func (o *DescribeConfigMapCommand) UnsetNamespace() {
 }
 
 func (o DescribeConfigMapCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullableDescribeConfigMapCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

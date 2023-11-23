@@ -20,8 +20,8 @@ var _ MappedNullable = &BindRulesCommand{}
 
 // BindRulesCommand struct for BindRulesCommand
 type BindRulesCommand struct {
-	Rules          []BindRulesToOrganizationDto `json:"rules,omitempty"`
-	OrganizationId *int32                       `json:"organizationId,omitempty"`
+	Rules []BindRulesToOrganizationDto `json:"rules,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
 }
 
 // NewBindRulesCommand instantiates a new BindRulesCommand object
@@ -107,7 +107,7 @@ func (o *BindRulesCommand) SetOrganizationId(v int32) {
 }
 
 func (o BindRulesCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableBindRulesCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

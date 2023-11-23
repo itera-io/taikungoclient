@@ -20,8 +20,8 @@ var _ MappedNullable = &BindImageToProjectCommand{}
 
 // BindImageToProjectCommand struct for BindImageToProjectCommand
 type BindImageToProjectCommand struct {
-	ProjectId *int32   `json:"projectId,omitempty"`
-	Images    []string `json:"images,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Images []string `json:"images,omitempty"`
 }
 
 // NewBindImageToProjectCommand instantiates a new BindImageToProjectCommand object
@@ -107,7 +107,7 @@ func (o *BindImageToProjectCommand) SetImages(v []string) {
 }
 
 func (o BindImageToProjectCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableBindImageToProjectCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

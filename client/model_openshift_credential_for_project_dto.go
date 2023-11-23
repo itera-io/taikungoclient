@@ -20,10 +20,10 @@ var _ MappedNullable = &OpenshiftCredentialForProjectDto{}
 
 // OpenshiftCredentialForProjectDto struct for OpenshiftCredentialForProjectDto
 type OpenshiftCredentialForProjectDto struct {
-	KubeConfig   NullableString `json:"kubeConfig,omitempty"`
-	PullSecret   NullableString `json:"pullSecret,omitempty"`
+	KubeConfig NullableString `json:"kubeConfig,omitempty"`
+	PullSecret NullableString `json:"pullSecret,omitempty"`
 	StorageClass NullableString `json:"storageClass,omitempty"`
-	BaseDomain   NullableString `json:"baseDomain,omitempty"`
+	BaseDomain NullableString `json:"baseDomain,omitempty"`
 }
 
 // NewOpenshiftCredentialForProjectDto instantiates a new OpenshiftCredentialForProjectDto object
@@ -75,7 +75,6 @@ func (o *OpenshiftCredentialForProjectDto) HasKubeConfig() bool {
 func (o *OpenshiftCredentialForProjectDto) SetKubeConfig(v string) {
 	o.KubeConfig.Set(&v)
 }
-
 // SetKubeConfigNil sets the value for KubeConfig to be an explicit nil
 func (o *OpenshiftCredentialForProjectDto) SetKubeConfigNil() {
 	o.KubeConfig.Set(nil)
@@ -118,7 +117,6 @@ func (o *OpenshiftCredentialForProjectDto) HasPullSecret() bool {
 func (o *OpenshiftCredentialForProjectDto) SetPullSecret(v string) {
 	o.PullSecret.Set(&v)
 }
-
 // SetPullSecretNil sets the value for PullSecret to be an explicit nil
 func (o *OpenshiftCredentialForProjectDto) SetPullSecretNil() {
 	o.PullSecret.Set(nil)
@@ -161,7 +159,6 @@ func (o *OpenshiftCredentialForProjectDto) HasStorageClass() bool {
 func (o *OpenshiftCredentialForProjectDto) SetStorageClass(v string) {
 	o.StorageClass.Set(&v)
 }
-
 // SetStorageClassNil sets the value for StorageClass to be an explicit nil
 func (o *OpenshiftCredentialForProjectDto) SetStorageClassNil() {
 	o.StorageClass.Set(nil)
@@ -204,7 +201,6 @@ func (o *OpenshiftCredentialForProjectDto) HasBaseDomain() bool {
 func (o *OpenshiftCredentialForProjectDto) SetBaseDomain(v string) {
 	o.BaseDomain.Set(&v)
 }
-
 // SetBaseDomainNil sets the value for BaseDomain to be an explicit nil
 func (o *OpenshiftCredentialForProjectDto) SetBaseDomainNil() {
 	o.BaseDomain.Set(nil)
@@ -216,7 +212,7 @@ func (o *OpenshiftCredentialForProjectDto) UnsetBaseDomain() {
 }
 
 func (o OpenshiftCredentialForProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,3 +271,5 @@ func (v *NullableOpenshiftCredentialForProjectDto) UnmarshalJSON(src []byte) err
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

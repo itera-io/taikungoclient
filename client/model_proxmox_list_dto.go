@@ -20,25 +20,25 @@ var _ MappedNullable = &ProxmoxListDto{}
 
 // ProxmoxListDto struct for ProxmoxListDto
 type ProxmoxListDto struct {
-	Id               *int32                  `json:"id,omitempty"`
-	ProjectCount     *int32                  `json:"projectCount,omitempty"`
-	IsLocked         *bool                   `json:"isLocked,omitempty"`
-	Name             NullableString          `json:"name,omitempty"`
-	Projects         []CommonDropdownDto     `json:"projects,omitempty"`
-	CreatedBy        NullableString          `json:"createdBy,omitempty"`
-	CreatedAt        NullableString          `json:"createdAt,omitempty"`
-	LastModified     NullableString          `json:"lastModified,omitempty"`
-	LastModifiedBy   NullableString          `json:"lastModifiedBy,omitempty"`
-	IsDefault        *bool                   `json:"isDefault,omitempty"`
-	OrganizationId   *int32                  `json:"organizationId,omitempty"`
-	OrganizationName NullableString          `json:"organizationName,omitempty"`
-	ContinentName    NullableString          `json:"continentName,omitempty"`
-	Hypervisors      []CommonDropdownDto     `json:"hypervisors,omitempty"`
-	TokenId          NullableString          `json:"tokenId,omitempty"`
-	Url              NullableString          `json:"url,omitempty"`
-	Storage          NullableString          `json:"storage,omitempty"`
-	VmTemplateName   NullableString          `json:"vmTemplateName,omitempty"`
-	ProxmoxNetworks  []ProxmoxNetworkListDto `json:"proxmoxNetworks,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	ProjectCount *int32 `json:"projectCount,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Projects []CommonDropdownDto `json:"projects,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	ContinentName NullableString `json:"continentName,omitempty"`
+	Hypervisors []CommonDropdownDto `json:"hypervisors,omitempty"`
+	TokenId NullableString `json:"tokenId,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Storage NullableString `json:"storage,omitempty"`
+	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
+	ProxmoxNetworks []ProxmoxNetworkListDto `json:"proxmoxNetworks,omitempty"`
 }
 
 // NewProxmoxListDto instantiates a new ProxmoxListDto object
@@ -186,7 +186,6 @@ func (o *ProxmoxListDto) HasName() bool {
 func (o *ProxmoxListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProxmoxListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -262,7 +261,6 @@ func (o *ProxmoxListDto) HasCreatedBy() bool {
 func (o *ProxmoxListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *ProxmoxListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -305,7 +303,6 @@ func (o *ProxmoxListDto) HasCreatedAt() bool {
 func (o *ProxmoxListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *ProxmoxListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -348,7 +345,6 @@ func (o *ProxmoxListDto) HasLastModified() bool {
 func (o *ProxmoxListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *ProxmoxListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -391,7 +387,6 @@ func (o *ProxmoxListDto) HasLastModifiedBy() bool {
 func (o *ProxmoxListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *ProxmoxListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -498,7 +493,6 @@ func (o *ProxmoxListDto) HasOrganizationName() bool {
 func (o *ProxmoxListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ProxmoxListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -541,7 +535,6 @@ func (o *ProxmoxListDto) HasContinentName() bool {
 func (o *ProxmoxListDto) SetContinentName(v string) {
 	o.ContinentName.Set(&v)
 }
-
 // SetContinentNameNil sets the value for ContinentName to be an explicit nil
 func (o *ProxmoxListDto) SetContinentNameNil() {
 	o.ContinentName.Set(nil)
@@ -617,7 +610,6 @@ func (o *ProxmoxListDto) HasTokenId() bool {
 func (o *ProxmoxListDto) SetTokenId(v string) {
 	o.TokenId.Set(&v)
 }
-
 // SetTokenIdNil sets the value for TokenId to be an explicit nil
 func (o *ProxmoxListDto) SetTokenIdNil() {
 	o.TokenId.Set(nil)
@@ -660,7 +652,6 @@ func (o *ProxmoxListDto) HasUrl() bool {
 func (o *ProxmoxListDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ProxmoxListDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -703,7 +694,6 @@ func (o *ProxmoxListDto) HasStorage() bool {
 func (o *ProxmoxListDto) SetStorage(v string) {
 	o.Storage.Set(&v)
 }
-
 // SetStorageNil sets the value for Storage to be an explicit nil
 func (o *ProxmoxListDto) SetStorageNil() {
 	o.Storage.Set(nil)
@@ -746,7 +736,6 @@ func (o *ProxmoxListDto) HasVmTemplateName() bool {
 func (o *ProxmoxListDto) SetVmTemplateName(v string) {
 	o.VmTemplateName.Set(&v)
 }
-
 // SetVmTemplateNameNil sets the value for VmTemplateName to be an explicit nil
 func (o *ProxmoxListDto) SetVmTemplateNameNil() {
 	o.VmTemplateName.Set(nil)
@@ -791,7 +780,7 @@ func (o *ProxmoxListDto) SetProxmoxNetworks(v []ProxmoxNetworkListDto) {
 }
 
 func (o ProxmoxListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -895,3 +884,5 @@ func (v *NullableProxmoxListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

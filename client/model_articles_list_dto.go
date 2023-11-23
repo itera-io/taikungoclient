@@ -21,11 +21,11 @@ var _ MappedNullable = &ArticlesListDto{}
 // ArticlesListDto struct for ArticlesListDto
 type ArticlesListDto struct {
 	SenderName NullableString `json:"senderName,omitempty"`
-	IsCsm      *bool          `json:"isCsm,omitempty"`
-	CreateAt   NullableString `json:"createAt,omitempty"`
-	Body       NullableString `json:"body,omitempty"`
-	MessageId  NullableString `json:"messageId,omitempty"`
-	UserId     NullableString `json:"userId,omitempty"`
+	IsCsm *bool `json:"isCsm,omitempty"`
+	CreateAt NullableString `json:"createAt,omitempty"`
+	Body NullableString `json:"body,omitempty"`
+	MessageId NullableString `json:"messageId,omitempty"`
+	UserId NullableString `json:"userId,omitempty"`
 }
 
 // NewArticlesListDto instantiates a new ArticlesListDto object
@@ -77,7 +77,6 @@ func (o *ArticlesListDto) HasSenderName() bool {
 func (o *ArticlesListDto) SetSenderName(v string) {
 	o.SenderName.Set(&v)
 }
-
 // SetSenderNameNil sets the value for SenderName to be an explicit nil
 func (o *ArticlesListDto) SetSenderNameNil() {
 	o.SenderName.Set(nil)
@@ -152,7 +151,6 @@ func (o *ArticlesListDto) HasCreateAt() bool {
 func (o *ArticlesListDto) SetCreateAt(v string) {
 	o.CreateAt.Set(&v)
 }
-
 // SetCreateAtNil sets the value for CreateAt to be an explicit nil
 func (o *ArticlesListDto) SetCreateAtNil() {
 	o.CreateAt.Set(nil)
@@ -195,7 +193,6 @@ func (o *ArticlesListDto) HasBody() bool {
 func (o *ArticlesListDto) SetBody(v string) {
 	o.Body.Set(&v)
 }
-
 // SetBodyNil sets the value for Body to be an explicit nil
 func (o *ArticlesListDto) SetBodyNil() {
 	o.Body.Set(nil)
@@ -238,7 +235,6 @@ func (o *ArticlesListDto) HasMessageId() bool {
 func (o *ArticlesListDto) SetMessageId(v string) {
 	o.MessageId.Set(&v)
 }
-
 // SetMessageIdNil sets the value for MessageId to be an explicit nil
 func (o *ArticlesListDto) SetMessageIdNil() {
 	o.MessageId.Set(nil)
@@ -281,7 +277,6 @@ func (o *ArticlesListDto) HasUserId() bool {
 func (o *ArticlesListDto) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
-
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *ArticlesListDto) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -293,7 +288,7 @@ func (o *ArticlesListDto) UnsetUserId() {
 }
 
 func (o ArticlesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -358,3 +353,5 @@ func (v *NullableArticlesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

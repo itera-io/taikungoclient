@@ -20,9 +20,9 @@ var _ MappedNullable = &PatchPvcCommand{}
 
 // PatchPvcCommand struct for PatchPvcCommand
 type PatchPvcCommand struct {
-	ProjectId *int32         `json:"projectId,omitempty"`
-	Yaml      NullableString `json:"yaml,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Yaml NullableString `json:"yaml,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
 }
 
@@ -107,7 +107,6 @@ func (o *PatchPvcCommand) HasYaml() bool {
 func (o *PatchPvcCommand) SetYaml(v string) {
 	o.Yaml.Set(&v)
 }
-
 // SetYamlNil sets the value for Yaml to be an explicit nil
 func (o *PatchPvcCommand) SetYamlNil() {
 	o.Yaml.Set(nil)
@@ -150,7 +149,6 @@ func (o *PatchPvcCommand) HasName() bool {
 func (o *PatchPvcCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PatchPvcCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -193,7 +191,6 @@ func (o *PatchPvcCommand) HasNamespace() bool {
 func (o *PatchPvcCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *PatchPvcCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -205,7 +202,7 @@ func (o *PatchPvcCommand) UnsetNamespace() {
 }
 
 func (o PatchPvcCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,3 +261,5 @@ func (v *NullablePatchPvcCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

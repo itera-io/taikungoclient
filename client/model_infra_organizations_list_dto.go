@@ -21,12 +21,12 @@ var _ MappedNullable = &InfraOrganizationsListDto{}
 
 // InfraOrganizationsListDto struct for InfraOrganizationsListDto
 type InfraOrganizationsListDto struct {
-	OrganizationId   *int32         `json:"organizationId,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
-	CreatedAt        *time.Time     `json:"createdAt,omitempty"`
-	SubscriptionId   NullableString `json:"subscriptionId,omitempty"`
-	BillingStartDate NullableTime   `json:"billingStartDate,omitempty"`
-	Yearly           *bool          `json:"yearly,omitempty"`
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	SubscriptionId NullableString `json:"subscriptionId,omitempty"`
+	BillingStartDate NullableTime `json:"billingStartDate,omitempty"`
+	Yearly *bool `json:"yearly,omitempty"`
 }
 
 // NewInfraOrganizationsListDto instantiates a new InfraOrganizationsListDto object
@@ -110,7 +110,6 @@ func (o *InfraOrganizationsListDto) HasOrganizationName() bool {
 func (o *InfraOrganizationsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *InfraOrganizationsListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -185,7 +184,6 @@ func (o *InfraOrganizationsListDto) HasSubscriptionId() bool {
 func (o *InfraOrganizationsListDto) SetSubscriptionId(v string) {
 	o.SubscriptionId.Set(&v)
 }
-
 // SetSubscriptionIdNil sets the value for SubscriptionId to be an explicit nil
 func (o *InfraOrganizationsListDto) SetSubscriptionIdNil() {
 	o.SubscriptionId.Set(nil)
@@ -228,7 +226,6 @@ func (o *InfraOrganizationsListDto) HasBillingStartDate() bool {
 func (o *InfraOrganizationsListDto) SetBillingStartDate(v time.Time) {
 	o.BillingStartDate.Set(&v)
 }
-
 // SetBillingStartDateNil sets the value for BillingStartDate to be an explicit nil
 func (o *InfraOrganizationsListDto) SetBillingStartDateNil() {
 	o.BillingStartDate.Set(nil)
@@ -272,7 +269,7 @@ func (o *InfraOrganizationsListDto) SetYearly(v bool) {
 }
 
 func (o InfraOrganizationsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -337,3 +334,5 @@ func (v *NullableInfraOrganizationsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,13 +20,13 @@ var _ MappedNullable = &StandAloneProfileSecurityGroupForDetailsDto{}
 
 // StandAloneProfileSecurityGroupForDetailsDto struct for StandAloneProfileSecurityGroupForDetailsDto
 type StandAloneProfileSecurityGroupForDetailsDto struct {
-	Id               *int32         `json:"id,omitempty"`
-	Name             NullableString `json:"name,omitempty"`
-	Protocol         NullableString `json:"protocol,omitempty"`
-	PortMinRange     *int32         `json:"portMinRange,omitempty"`
-	PortMaxRange     *int32         `json:"portMaxRange,omitempty"`
-	RemoteIpPrefix   NullableString `json:"remoteIpPrefix,omitempty"`
-	IsRdpPortEnabled *bool          `json:"isRdpPortEnabled,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Protocol NullableString `json:"protocol,omitempty"`
+	PortMinRange *int32 `json:"portMinRange,omitempty"`
+	PortMaxRange *int32 `json:"portMaxRange,omitempty"`
+	RemoteIpPrefix NullableString `json:"remoteIpPrefix,omitempty"`
+	IsRdpPortEnabled *bool `json:"isRdpPortEnabled,omitempty"`
 }
 
 // NewStandAloneProfileSecurityGroupForDetailsDto instantiates a new StandAloneProfileSecurityGroupForDetailsDto object
@@ -110,7 +110,6 @@ func (o *StandAloneProfileSecurityGroupForDetailsDto) HasName() bool {
 func (o *StandAloneProfileSecurityGroupForDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandAloneProfileSecurityGroupForDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -153,7 +152,6 @@ func (o *StandAloneProfileSecurityGroupForDetailsDto) HasProtocol() bool {
 func (o *StandAloneProfileSecurityGroupForDetailsDto) SetProtocol(v string) {
 	o.Protocol.Set(&v)
 }
-
 // SetProtocolNil sets the value for Protocol to be an explicit nil
 func (o *StandAloneProfileSecurityGroupForDetailsDto) SetProtocolNil() {
 	o.Protocol.Set(nil)
@@ -260,7 +258,6 @@ func (o *StandAloneProfileSecurityGroupForDetailsDto) HasRemoteIpPrefix() bool {
 func (o *StandAloneProfileSecurityGroupForDetailsDto) SetRemoteIpPrefix(v string) {
 	o.RemoteIpPrefix.Set(&v)
 }
-
 // SetRemoteIpPrefixNil sets the value for RemoteIpPrefix to be an explicit nil
 func (o *StandAloneProfileSecurityGroupForDetailsDto) SetRemoteIpPrefixNil() {
 	o.RemoteIpPrefix.Set(nil)
@@ -304,7 +301,7 @@ func (o *StandAloneProfileSecurityGroupForDetailsDto) SetIsRdpPortEnabled(v bool
 }
 
 func (o StandAloneProfileSecurityGroupForDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -372,3 +369,5 @@ func (v *NullableStandAloneProfileSecurityGroupForDetailsDto) UnmarshalJSON(src 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

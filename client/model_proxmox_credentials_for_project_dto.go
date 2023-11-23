@@ -20,12 +20,12 @@ var _ MappedNullable = &ProxmoxCredentialsForProjectDto{}
 
 // ProxmoxCredentialsForProjectDto struct for ProxmoxCredentialsForProjectDto
 type ProxmoxCredentialsForProjectDto struct {
-	TokenId         NullableString          `json:"tokenId,omitempty"`
-	TokenSecret     NullableString          `json:"tokenSecret,omitempty"`
-	Url             NullableString          `json:"url,omitempty"`
-	Password        NullableString          `json:"password,omitempty"`
-	Storage         NullableString          `json:"storage,omitempty"`
-	VmTemplateName  NullableString          `json:"vmTemplateName,omitempty"`
+	TokenId NullableString `json:"tokenId,omitempty"`
+	TokenSecret NullableString `json:"tokenSecret,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Password NullableString `json:"password,omitempty"`
+	Storage NullableString `json:"storage,omitempty"`
+	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
 	ProxmoxNetworks []ProxmoxNetworkListDto `json:"proxmoxNetworks,omitempty"`
 }
 
@@ -78,7 +78,6 @@ func (o *ProxmoxCredentialsForProjectDto) HasTokenId() bool {
 func (o *ProxmoxCredentialsForProjectDto) SetTokenId(v string) {
 	o.TokenId.Set(&v)
 }
-
 // SetTokenIdNil sets the value for TokenId to be an explicit nil
 func (o *ProxmoxCredentialsForProjectDto) SetTokenIdNil() {
 	o.TokenId.Set(nil)
@@ -121,7 +120,6 @@ func (o *ProxmoxCredentialsForProjectDto) HasTokenSecret() bool {
 func (o *ProxmoxCredentialsForProjectDto) SetTokenSecret(v string) {
 	o.TokenSecret.Set(&v)
 }
-
 // SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
 func (o *ProxmoxCredentialsForProjectDto) SetTokenSecretNil() {
 	o.TokenSecret.Set(nil)
@@ -164,7 +162,6 @@ func (o *ProxmoxCredentialsForProjectDto) HasUrl() bool {
 func (o *ProxmoxCredentialsForProjectDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *ProxmoxCredentialsForProjectDto) SetUrlNil() {
 	o.Url.Set(nil)
@@ -207,7 +204,6 @@ func (o *ProxmoxCredentialsForProjectDto) HasPassword() bool {
 func (o *ProxmoxCredentialsForProjectDto) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *ProxmoxCredentialsForProjectDto) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -250,7 +246,6 @@ func (o *ProxmoxCredentialsForProjectDto) HasStorage() bool {
 func (o *ProxmoxCredentialsForProjectDto) SetStorage(v string) {
 	o.Storage.Set(&v)
 }
-
 // SetStorageNil sets the value for Storage to be an explicit nil
 func (o *ProxmoxCredentialsForProjectDto) SetStorageNil() {
 	o.Storage.Set(nil)
@@ -293,7 +288,6 @@ func (o *ProxmoxCredentialsForProjectDto) HasVmTemplateName() bool {
 func (o *ProxmoxCredentialsForProjectDto) SetVmTemplateName(v string) {
 	o.VmTemplateName.Set(&v)
 }
-
 // SetVmTemplateNameNil sets the value for VmTemplateName to be an explicit nil
 func (o *ProxmoxCredentialsForProjectDto) SetVmTemplateNameNil() {
 	o.VmTemplateName.Set(nil)
@@ -338,7 +332,7 @@ func (o *ProxmoxCredentialsForProjectDto) SetProxmoxNetworks(v []ProxmoxNetworkL
 }
 
 func (o ProxmoxCredentialsForProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -406,3 +400,5 @@ func (v *NullableProxmoxCredentialsForProjectDto) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

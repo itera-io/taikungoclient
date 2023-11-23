@@ -20,11 +20,11 @@ var _ MappedNullable = &AzureCredentialsForProjectDto{}
 
 // AzureCredentialsForProjectDto struct for AzureCredentialsForProjectDto
 type AzureCredentialsForProjectDto struct {
-	AzureClientId       NullableString `json:"azureClientId,omitempty"`
-	AzureClientSecret   NullableString `json:"azureClientSecret,omitempty"`
+	AzureClientId NullableString `json:"azureClientId,omitempty"`
+	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
 	AzureSubscriptionId NullableString `json:"azureSubscriptionId,omitempty"`
-	AzureTenantId       NullableString `json:"azureTenantId,omitempty"`
-	AzureLocation       NullableString `json:"azureLocation,omitempty"`
+	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
+	AzureLocation NullableString `json:"azureLocation,omitempty"`
 }
 
 // NewAzureCredentialsForProjectDto instantiates a new AzureCredentialsForProjectDto object
@@ -76,7 +76,6 @@ func (o *AzureCredentialsForProjectDto) HasAzureClientId() bool {
 func (o *AzureCredentialsForProjectDto) SetAzureClientId(v string) {
 	o.AzureClientId.Set(&v)
 }
-
 // SetAzureClientIdNil sets the value for AzureClientId to be an explicit nil
 func (o *AzureCredentialsForProjectDto) SetAzureClientIdNil() {
 	o.AzureClientId.Set(nil)
@@ -119,7 +118,6 @@ func (o *AzureCredentialsForProjectDto) HasAzureClientSecret() bool {
 func (o *AzureCredentialsForProjectDto) SetAzureClientSecret(v string) {
 	o.AzureClientSecret.Set(&v)
 }
-
 // SetAzureClientSecretNil sets the value for AzureClientSecret to be an explicit nil
 func (o *AzureCredentialsForProjectDto) SetAzureClientSecretNil() {
 	o.AzureClientSecret.Set(nil)
@@ -162,7 +160,6 @@ func (o *AzureCredentialsForProjectDto) HasAzureSubscriptionId() bool {
 func (o *AzureCredentialsForProjectDto) SetAzureSubscriptionId(v string) {
 	o.AzureSubscriptionId.Set(&v)
 }
-
 // SetAzureSubscriptionIdNil sets the value for AzureSubscriptionId to be an explicit nil
 func (o *AzureCredentialsForProjectDto) SetAzureSubscriptionIdNil() {
 	o.AzureSubscriptionId.Set(nil)
@@ -205,7 +202,6 @@ func (o *AzureCredentialsForProjectDto) HasAzureTenantId() bool {
 func (o *AzureCredentialsForProjectDto) SetAzureTenantId(v string) {
 	o.AzureTenantId.Set(&v)
 }
-
 // SetAzureTenantIdNil sets the value for AzureTenantId to be an explicit nil
 func (o *AzureCredentialsForProjectDto) SetAzureTenantIdNil() {
 	o.AzureTenantId.Set(nil)
@@ -248,7 +244,6 @@ func (o *AzureCredentialsForProjectDto) HasAzureLocation() bool {
 func (o *AzureCredentialsForProjectDto) SetAzureLocation(v string) {
 	o.AzureLocation.Set(&v)
 }
-
 // SetAzureLocationNil sets the value for AzureLocation to be an explicit nil
 func (o *AzureCredentialsForProjectDto) SetAzureLocationNil() {
 	o.AzureLocation.Set(nil)
@@ -260,7 +255,7 @@ func (o *AzureCredentialsForProjectDto) UnsetAzureLocation() {
 }
 
 func (o AzureCredentialsForProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -322,3 +317,5 @@ func (v *NullableAzureCredentialsForProjectDto) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

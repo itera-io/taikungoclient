@@ -20,9 +20,9 @@ var _ MappedNullable = &PatchCrdCommand{}
 
 // PatchCrdCommand struct for PatchCrdCommand
 type PatchCrdCommand struct {
-	ProjectId *int32         `json:"projectId,omitempty"`
-	Yaml      NullableString `json:"yaml,omitempty"`
-	Name      NullableString `json:"name,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Yaml NullableString `json:"yaml,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 }
 
 // NewPatchCrdCommand instantiates a new PatchCrdCommand object
@@ -106,7 +106,6 @@ func (o *PatchCrdCommand) HasYaml() bool {
 func (o *PatchCrdCommand) SetYaml(v string) {
 	o.Yaml.Set(&v)
 }
-
 // SetYamlNil sets the value for Yaml to be an explicit nil
 func (o *PatchCrdCommand) SetYamlNil() {
 	o.Yaml.Set(nil)
@@ -149,7 +148,6 @@ func (o *PatchCrdCommand) HasName() bool {
 func (o *PatchCrdCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *PatchCrdCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -161,7 +159,7 @@ func (o *PatchCrdCommand) UnsetName() {
 }
 
 func (o PatchCrdCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullablePatchCrdCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

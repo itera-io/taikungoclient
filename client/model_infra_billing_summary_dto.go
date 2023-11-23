@@ -20,10 +20,10 @@ var _ MappedNullable = &InfraBillingSummaryDto{}
 
 // InfraBillingSummaryDto struct for InfraBillingSummaryDto
 type InfraBillingSummaryDto struct {
-	InfraProductId   *int32         `json:"infraProductId,omitempty"`
+	InfraProductId *int32 `json:"infraProductId,omitempty"`
 	InfraProductName NullableString `json:"infraProductName,omitempty"`
-	Intervals        []DateInterval `json:"intervals,omitempty"`
-	TotalPrice       *float64       `json:"totalPrice,omitempty"`
+	Intervals []DateInterval `json:"intervals,omitempty"`
+	TotalPrice *float64 `json:"totalPrice,omitempty"`
 }
 
 // NewInfraBillingSummaryDto instantiates a new InfraBillingSummaryDto object
@@ -107,7 +107,6 @@ func (o *InfraBillingSummaryDto) HasInfraProductName() bool {
 func (o *InfraBillingSummaryDto) SetInfraProductName(v string) {
 	o.InfraProductName.Set(&v)
 }
-
 // SetInfraProductNameNil sets the value for InfraProductName to be an explicit nil
 func (o *InfraBillingSummaryDto) SetInfraProductNameNil() {
 	o.InfraProductName.Set(nil)
@@ -184,7 +183,7 @@ func (o *InfraBillingSummaryDto) SetTotalPrice(v float64) {
 }
 
 func (o InfraBillingSummaryDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -243,3 +242,5 @@ func (v *NullableInfraBillingSummaryDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,12 +20,12 @@ var _ MappedNullable = &PvcDto{}
 
 // PvcDto struct for PvcDto
 type PvcDto struct {
-	MetadataName     NullableString `json:"metadataName,omitempty"`
-	Phase            NullableString `json:"phase,omitempty"`
-	Size             NullableString `json:"size,omitempty"`
-	Namespace        NullableString `json:"namespace,omitempty"`
+	MetadataName NullableString `json:"metadataName,omitempty"`
+	Phase NullableString `json:"phase,omitempty"`
+	Size NullableString `json:"size,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
 	StorageClassName NullableString `json:"storageClassName,omitempty"`
-	Age              NullableString `json:"age,omitempty"`
+	Age NullableString `json:"age,omitempty"`
 }
 
 // NewPvcDto instantiates a new PvcDto object
@@ -77,7 +77,6 @@ func (o *PvcDto) HasMetadataName() bool {
 func (o *PvcDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *PvcDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -120,7 +119,6 @@ func (o *PvcDto) HasPhase() bool {
 func (o *PvcDto) SetPhase(v string) {
 	o.Phase.Set(&v)
 }
-
 // SetPhaseNil sets the value for Phase to be an explicit nil
 func (o *PvcDto) SetPhaseNil() {
 	o.Phase.Set(nil)
@@ -163,7 +161,6 @@ func (o *PvcDto) HasSize() bool {
 func (o *PvcDto) SetSize(v string) {
 	o.Size.Set(&v)
 }
-
 // SetSizeNil sets the value for Size to be an explicit nil
 func (o *PvcDto) SetSizeNil() {
 	o.Size.Set(nil)
@@ -206,7 +203,6 @@ func (o *PvcDto) HasNamespace() bool {
 func (o *PvcDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *PvcDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -249,7 +245,6 @@ func (o *PvcDto) HasStorageClassName() bool {
 func (o *PvcDto) SetStorageClassName(v string) {
 	o.StorageClassName.Set(&v)
 }
-
 // SetStorageClassNameNil sets the value for StorageClassName to be an explicit nil
 func (o *PvcDto) SetStorageClassNameNil() {
 	o.StorageClassName.Set(nil)
@@ -292,7 +287,6 @@ func (o *PvcDto) HasAge() bool {
 func (o *PvcDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-
 // SetAgeNil sets the value for Age to be an explicit nil
 func (o *PvcDto) SetAgeNil() {
 	o.Age.Set(nil)
@@ -304,7 +298,7 @@ func (o *PvcDto) UnsetAge() {
 }
 
 func (o PvcDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -369,3 +363,5 @@ func (v *NullablePvcDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

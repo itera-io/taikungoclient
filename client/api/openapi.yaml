@@ -9578,6 +9578,49 @@ paths:
       summary: Fetch azure flavor prices
       tags:
       - Cron Job Service
+  /api/v1/cronjob/fetch-azure-flavor-prices-with-euro:
+    post:
+      operationId: cronjob-fetch-azure-flavor-prices-with-euro
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FetchAzureFlavorEuroPricesCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch azure flavor prices with euro
+      tags:
+      - Cron Job Service
   /api/v1/cronjob/fetch-artifact-organizations:
     post:
       operationId: cronjob-fetch-artifact-organizations
@@ -20039,7 +20082,7 @@ paths:
           description: Internal Server Error
       summary: Retrieve operation credentials by organization Id
       tags:
-      - Operation Credentials
+      - Operation credentials
     post:
       operationId: opscredentials-create
       requestBody:
@@ -26248,24 +26291,27 @@ paths:
       summary: Bind rules to organizations
       tags:
       - Prometheus Organizations
-  /api/v1/prometheusrules/edit/{id}:
-    put:
-      operationId: prometheusrules-update
+  /api/v1/prometheusrules/details:
+    get:
+      operationId: prometheusrules-details
       parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
         schema:
           format: int32
           type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RuleForUpdateDto'
+        style: form
       responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CommonDropdownIsBoundDto'
+                type: array
+          description: OK
         "400":
           content:
             application/json:
@@ -26296,51 +26342,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Edit prometheus rule
+      summary: Retrieve all prometheus rules with detailed info
       tags:
-      - Prometheus Rules
-  /api/v1/prometheusrules/bind/organizations:
-    post:
-      operationId: prometheusrules-bind-organizations
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BindPrometheusOrganizationsCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Bind organizations to prometheus rule
-      tags:
-      - Prometheus Rules
+      - Prometheus rules
   /api/v1/prometheusrules:
     get:
       operationId: prometheusrules-list
@@ -26444,7 +26448,7 @@ paths:
           description: Internal Server Error
       summary: Retrieve a list of prometheus rules
       tags:
-      - Prometheus Rules
+      - Prometheus rules
     post:
       operationId: prometheusrules-create
       requestBody:
@@ -26492,27 +26496,15 @@ paths:
       summary: Add prometheus rule
       tags:
       - Prometheus Rules
-  /api/v1/prometheusrules/details:
-    get:
-      operationId: prometheusrules-details
-      parameters:
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
+  /api/v1/prometheusrules/bind/organizations:
+    post:
+      operationId: prometheusrules-bind-organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BindPrometheusOrganizationsCommand'
       responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/CommonDropdownIsBoundDto'
-                type: array
-          description: OK
         "400":
           content:
             application/json:
@@ -26543,7 +26535,58 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Retrieve all prometheus rules with detailed info
+      summary: Bind organizations to prometheus rule
+      tags:
+      - Prometheus Rules
+  /api/v1/prometheusrules/edit/{id}:
+    put:
+      operationId: prometheusrules-update
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuleForUpdateDto'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Edit prometheus rule
       tags:
       - Prometheus Rules
   /api/v1/prometheusrules/{id}:
@@ -31933,7 +31976,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PrivateSubscriptionList'
+                $ref: '#/components/schemas/List'
           description: OK
         "400":
           content:
@@ -34713,7 +34756,7 @@ components:
     AccessProfilesForProjectListDto:
       additionalProperties: false
       example:
-        organizationId: 7
+        organizationId: 9
         allowedHosts:
         - accessProfileName: accessProfileName
           ipAddress: ipAddress
@@ -34735,22 +34778,22 @@ components:
         - address: address
           id: 5
         name: name
-        id: 2
+        id: 7
         dnsServers:
         - address: address
           id: 1
         - address: address
           id: 1
-        revision: 9
+        revision: 3
         sshUsers:
         - sshPublicKey: sshPublicKey
           isDeleted: true
           name: name
-          id: 3
+          id: 2
         - sshPublicKey: sshPublicKey
           isDeleted: true
           name: name
-          id: 3
+          id: 2
       properties:
         id:
           format: int32
@@ -40447,7 +40490,6 @@ components:
       example:
         organizationId: 0
         proxmoxStorage: null
-        wasmEnabled: true
         octaviaEnabled: true
         name: name
         exposeNodePortOnBastion: true
@@ -40476,8 +40518,6 @@ components:
         proxmoxStorage:
           $ref: '#/components/schemas/ProxmoxStorage'
         nvidiaGpuOperatorEnabled:
-          type: boolean
-        wasmEnabled:
           type: boolean
       type: object
     CreateNtpServerCommand:
@@ -44032,6 +44072,9 @@ components:
           format: int32
           type: integer
       type: object
+    FetchAzureFlavorEuroPricesCommand:
+      additionalProperties: false
+      type: object
     FetchAzureFlavorPricesCommand:
       additionalProperties: false
       type: object
@@ -45696,68 +45739,6 @@ components:
           nullable: true
           type: string
       type: object
-    KubernetesAlertDtoForPoller:
-      additionalProperties: false
-      example:
-        severity: severity
-        lastModifiedBy: lastModifiedBy
-        description: description
-        title: title
-        endAt: endAt
-        silenceReason: silenceReason
-        labels: ""
-        isSolved: true
-        isSilenced: true
-        fingerprint: fingerprint
-        startsAt: startsAt
-        id: 7
-        projectName: projectName
-        projectId: 1
-        status: status
-      properties:
-        id:
-          format: int32
-          type: integer
-        labels:
-          nullable: true
-        description:
-          nullable: true
-          type: string
-        title:
-          nullable: true
-          type: string
-        severity:
-          nullable: true
-          type: string
-        fingerprint:
-          nullable: true
-          type: string
-        status:
-          nullable: true
-          type: string
-        startsAt:
-          nullable: true
-          type: string
-        endAt:
-          nullable: true
-          type: string
-        isSolved:
-          type: boolean
-        projectId:
-          format: int32
-          type: integer
-        projectName:
-          nullable: true
-          type: string
-        isSilenced:
-          type: boolean
-        silenceReason:
-          nullable: true
-          type: string
-        lastModifiedBy:
-          nullable: true
-          type: string
-      type: object
     KubernetesAlertList:
       additionalProperties: false
       example:
@@ -46098,14 +46079,13 @@ components:
         organizationName: organizationName
         exposeNodePortOnBastion: true
         taikunLBEnabled: true
-        organizationId: 4
+        organizationId: 7
         proxmoxStorage: proxmoxStorage
-        wasmEnabled: true
         octaviaEnabled: true
         isLocked: true
         name: name
         allowSchedulingOnMaster: true
-        id: 2
+        id: 4
         nvidiaGpuOperatorEnabled: true
         uniqueClusterName: true
         cni: cni
@@ -46143,8 +46123,6 @@ components:
           type: string
         nvidiaGpuOperatorEnabled:
           type: boolean
-        wasmEnabled:
-          type: boolean
       type: object
     KubernetesProfilesList:
       additionalProperties: false
@@ -46162,7 +46140,6 @@ components:
           organizationId: 6
           createdAt: createdAt
           proxmoxStorage: proxmoxStorage
-          wasmEnabled: true
           createdBy: createdBy
           octaviaEnabled: true
           isLocked: true
@@ -46185,7 +46162,6 @@ components:
           organizationId: 6
           createdAt: createdAt
           proxmoxStorage: proxmoxStorage
-          wasmEnabled: true
           createdBy: createdBy
           octaviaEnabled: true
           isLocked: true
@@ -46222,7 +46198,6 @@ components:
         organizationId: 6
         createdAt: createdAt
         proxmoxStorage: proxmoxStorage
-        wasmEnabled: true
         createdBy: createdBy
         octaviaEnabled: true
         isLocked: true
@@ -46283,8 +46258,6 @@ components:
           nullable: true
           type: string
         nvidiaGpuOperatorEnabled:
-          type: boolean
-        wasmEnabled:
           type: boolean
       type: object
     KubernetesProfilesLockManagerCommand:
@@ -46464,6 +46437,9 @@ components:
         paymentClientSecret:
           nullable: true
           type: string
+      type: object
+    List:
+      additionalProperties: false
       type: object
     ListAllBackupStorageLocations:
       additionalProperties: false
@@ -46748,93 +46724,6 @@ components:
           nullable: true
           type: string
       type: object
-    ListForPartnersDto:
-      additionalProperties: false
-      example:
-        serverLimit: 1
-        yearlyPrice: 7.061401241503109
-        isDeprecated: true
-        trialDays: 2
-        cloudCredentialLimit: 5
-        exceededCloudCredential: true
-        exceededUser: true
-        description: description
-        monthlyPrice: 2.3021358869347655
-        isActive: true
-        isDemo: true
-        isYearly: true
-        projectLimit: 6
-        partner:
-          name: name
-          link: link
-          logo: logo
-          id: 3
-        exceededProject: true
-        tcuPrice: 9.301444243932576
-        name: name
-        exceededServers: true
-        isEnterprise: true
-        currency: currency
-        id: 0
-        userLimit: 5
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        projectLimit:
-          format: int32
-          type: integer
-        serverLimit:
-          format: int32
-          type: integer
-        userLimit:
-          format: int32
-          type: integer
-        cloudCredentialLimit:
-          format: int32
-          type: integer
-        monthlyPrice:
-          format: double
-          type: number
-        yearlyPrice:
-          format: double
-          type: number
-        tcuPrice:
-          format: double
-          type: number
-        isDeprecated:
-          type: boolean
-        currency:
-          nullable: true
-          type: string
-        isEnterprise:
-          type: boolean
-        partner:
-          $ref: '#/components/schemas/PartnerDetailsForSubscription'
-        exceededUser:
-          type: boolean
-        exceededProject:
-          type: boolean
-        exceededCloudCredential:
-          type: boolean
-        exceededServers:
-          type: boolean
-        isActive:
-          type: boolean
-        isYearly:
-          type: boolean
-        trialDays:
-          format: int32
-          type: integer
-        description:
-          nullable: true
-          type: string
-        isDemo:
-          type: boolean
-      type: object
     LockProjectAppCommand:
       additionalProperties: false
       example:
@@ -47004,8 +46893,12 @@ components:
         password: password
         alertManagerUrl: alertManagerUrl
         prometheusUrl: prometheusUrl
+        id: 2
         username: username
       properties:
+        id:
+          format: int32
+          type: integer
         username:
           nullable: true
           type: string
@@ -49200,27 +49093,6 @@ components:
           nullable: true
           type: string
       type: object
-    PartnerDetailsForSubscription:
-      additionalProperties: false
-      example:
-        name: name
-        link: link
-        logo: logo
-        id: 3
-      properties:
-        name:
-          nullable: true
-          type: string
-        logo:
-          nullable: true
-          type: string
-        link:
-          nullable: true
-          type: string
-        id:
-          format: int32
-          type: integer
-      type: object
     PartnerDetailsForUserDto:
       additionalProperties: false
       example:
@@ -49841,80 +49713,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    PrivateSubscriptionList:
-      additionalProperties: false
-      example:
-        isEligibleToSwitch: true
-        activeSubscriptionStatus: activeSubscriptionStatus
-        data:
-        - serverLimit: 1
-          yearlyPrice: 7.061401241503109
-          isDeprecated: true
-          trialDays: 2
-          cloudCredentialLimit: 5
-          exceededCloudCredential: true
-          exceededUser: true
-          description: description
-          monthlyPrice: 2.3021358869347655
-          isActive: true
-          isDemo: true
-          isYearly: true
-          projectLimit: 6
-          partner:
-            name: name
-            link: link
-            logo: logo
-            id: 3
-          exceededProject: true
-          tcuPrice: 9.301444243932576
-          name: name
-          exceededServers: true
-          isEnterprise: true
-          currency: currency
-          id: 0
-          userLimit: 5
-        - serverLimit: 1
-          yearlyPrice: 7.061401241503109
-          isDeprecated: true
-          trialDays: 2
-          cloudCredentialLimit: 5
-          exceededCloudCredential: true
-          exceededUser: true
-          description: description
-          monthlyPrice: 2.3021358869347655
-          isActive: true
-          isDemo: true
-          isYearly: true
-          projectLimit: 6
-          partner:
-            name: name
-            link: link
-            logo: logo
-            id: 3
-          exceededProject: true
-          tcuPrice: 9.301444243932576
-          name: name
-          exceededServers: true
-          isEnterprise: true
-          currency: currency
-          id: 0
-          userLimit: 5
-        totalCount: 4
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/ListForPartnersDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-        isEligibleToSwitch:
-          type: boolean
-        activeSubscriptionStatus:
-          nullable: true
-          type: string
       type: object
     ProblemDetails:
       additionalProperties: {}
@@ -50968,9 +50766,9 @@ components:
         isOpaEnabled: true
         privateIp: privateIp
         projectRevision:
-          accessProfileRevision: 4
-          cloudCredentialRevision: 9
-          opaProfileRevision: 5
+          accessProfileRevision: 1
+          cloudCredentialRevision: 5
+          opaProfileRevision: 4
         opaProfile:
           projects:
           - name: name
@@ -51006,8 +50804,8 @@ components:
         taikunLB:
           flavor: flavor
           privateKey: privateKey
-          routerIdEndRange: 1
-          routerIdStartRange: 7
+          routerIdEndRange: 7
+          routerIdStartRange: 6
           publicKey: publicKey
         cloudType: cloudType
         isLocked: true
@@ -51048,7 +50846,7 @@ components:
           privateIp: privateIp
           publicIp: publicIp
         accessProfile:
-          organizationId: 7
+          organizationId: 9
           allowedHosts:
           - accessProfileName: accessProfileName
             ipAddress: ipAddress
@@ -51070,24 +50868,24 @@ components:
           - address: address
             id: 5
           name: name
-          id: 2
+          id: 7
           dnsServers:
           - address: address
             id: 1
           - address: address
             id: 1
-          revision: 9
+          revision: 3
           sshUsers:
           - sshPublicKey: sshPublicKey
             isDeleted: true
             name: name
-            id: 3
+            id: 2
           - sshPublicKey: sshPublicKey
             isDeleted: true
             name: name
-            id: 3
+            id: 2
         tanzuReleaseVersion: tanzuReleaseVersion
-        workersCount: 6
+        workersCount: 1
         nfsDiskSize: 1
         cidr: cidr
         taikunPrivateSSHKey: taikunPrivateSSHKey
@@ -51111,19 +50909,19 @@ components:
           password: password
           alertManagerUrl: alertManagerUrl
           prometheusUrl: prometheusUrl
+          id: 2
           username: username
         kubernetesProfiles:
           organizationName: organizationName
           exposeNodePortOnBastion: true
           taikunLBEnabled: true
-          organizationId: 4
+          organizationId: 7
           proxmoxStorage: proxmoxStorage
-          wasmEnabled: true
           octaviaEnabled: true
           isLocked: true
           name: name
           allowSchedulingOnMaster: true
-          id: 2
+          id: 4
           nvidiaGpuOperatorEnabled: true
           uniqueClusterName: true
           cni: cni
@@ -51143,9 +50941,9 @@ components:
           isSilenced: true
           fingerprint: fingerprint
           startsAt: startsAt
-          id: 7
+          id: 0
           projectName: projectName
-          projectId: 1
+          projectId: 6
           status: status
         - severity: severity
           lastModifiedBy: lastModifiedBy
@@ -51158,9 +50956,9 @@ components:
           isSilenced: true
           fingerprint: fingerprint
           startsAt: startsAt
-          id: 7
+          id: 0
           projectName: projectName
-          projectId: 1
+          projectId: 6
           status: status
         partnerId: 5
       properties:
@@ -51262,7 +51060,7 @@ components:
           $ref: '#/components/schemas/OpaProfileListDto'
         kubernetesAlerts:
           items:
-            $ref: '#/components/schemas/KubernetesAlertDtoForPoller'
+            $ref: '#/components/schemas/KubernetesAlertDto'
           nullable: true
           type: array
         isDeleteCluster:
@@ -51407,7 +51205,7 @@ components:
         organizationId: 1
         createdAt: createdAt
         accessProfiles:
-          organizationId: 7
+          organizationId: 9
           allowedHosts:
           - accessProfileName: accessProfileName
             ipAddress: ipAddress
@@ -51429,22 +51227,22 @@ components:
           - address: address
             id: 5
           name: name
-          id: 2
+          id: 7
           dnsServers:
           - address: address
             id: 1
           - address: address
             id: 1
-          revision: 9
+          revision: 3
           sshUsers:
           - sshPublicKey: sshPublicKey
             isDeleted: true
             name: name
-            id: 3
+            id: 2
           - sshPublicKey: sshPublicKey
             isDeleted: true
             name: name
-            id: 3
+            id: 2
         cloudType: cloudType
         isLocked: true
         jobUrl: jobUrl
@@ -51964,6 +51762,7 @@ components:
           password: password
           alertManagerUrl: alertManagerUrl
           prometheusUrl: prometheusUrl
+          id: 2
           username: username
         isKubernetes: true
         isLocked: true
@@ -51982,9 +51781,9 @@ components:
           isSilenced: true
           fingerprint: fingerprint
           startsAt: startsAt
-          id: 7
+          id: 0
           projectName: projectName
-          projectId: 1
+          projectId: 6
           status: status
         - severity: severity
           lastModifiedBy: lastModifiedBy
@@ -51997,9 +51796,9 @@ components:
           isSilenced: true
           fingerprint: fingerprint
           startsAt: startsAt
-          id: 7
+          id: 0
           projectName: projectName
-          projectId: 1
+          projectId: 6
           status: status
         id: 0
         hasKubeConfigFile: true
@@ -52036,7 +51835,7 @@ components:
           $ref: '#/components/schemas/MonitoringCredentialsListDto'
         kubernetesAlerts:
           items:
-            $ref: '#/components/schemas/KubernetesAlertDtoForPoller'
+            $ref: '#/components/schemas/KubernetesAlertDto'
           nullable: true
           type: array
       type: object
@@ -52051,9 +51850,9 @@ components:
           isOpaEnabled: true
           privateIp: privateIp
           projectRevision:
-            accessProfileRevision: 4
-            cloudCredentialRevision: 9
-            opaProfileRevision: 5
+            accessProfileRevision: 1
+            cloudCredentialRevision: 5
+            opaProfileRevision: 4
           opaProfile:
             projects:
             - name: name
@@ -52089,8 +51888,8 @@ components:
           taikunLB:
             flavor: flavor
             privateKey: privateKey
-            routerIdEndRange: 1
-            routerIdStartRange: 7
+            routerIdEndRange: 7
+            routerIdStartRange: 6
             publicKey: publicKey
           cloudType: cloudType
           isLocked: true
@@ -52131,7 +51930,7 @@ components:
             privateIp: privateIp
             publicIp: publicIp
           accessProfile:
-            organizationId: 7
+            organizationId: 9
             allowedHosts:
             - accessProfileName: accessProfileName
               ipAddress: ipAddress
@@ -52153,24 +51952,24 @@ components:
             - address: address
               id: 5
             name: name
-            id: 2
+            id: 7
             dnsServers:
             - address: address
               id: 1
             - address: address
               id: 1
-            revision: 9
+            revision: 3
             sshUsers:
             - sshPublicKey: sshPublicKey
               isDeleted: true
               name: name
-              id: 3
+              id: 2
             - sshPublicKey: sshPublicKey
               isDeleted: true
               name: name
-              id: 3
+              id: 2
           tanzuReleaseVersion: tanzuReleaseVersion
-          workersCount: 6
+          workersCount: 1
           nfsDiskSize: 1
           cidr: cidr
           taikunPrivateSSHKey: taikunPrivateSSHKey
@@ -52194,19 +51993,19 @@ components:
             password: password
             alertManagerUrl: alertManagerUrl
             prometheusUrl: prometheusUrl
+            id: 2
             username: username
           kubernetesProfiles:
             organizationName: organizationName
             exposeNodePortOnBastion: true
             taikunLBEnabled: true
-            organizationId: 4
+            organizationId: 7
             proxmoxStorage: proxmoxStorage
-            wasmEnabled: true
             octaviaEnabled: true
             isLocked: true
             name: name
             allowSchedulingOnMaster: true
-            id: 2
+            id: 4
             nvidiaGpuOperatorEnabled: true
             uniqueClusterName: true
             cni: cni
@@ -52226,9 +52025,9 @@ components:
             isSilenced: true
             fingerprint: fingerprint
             startsAt: startsAt
-            id: 7
+            id: 0
             projectName: projectName
-            projectId: 1
+            projectId: 6
             status: status
           - severity: severity
             lastModifiedBy: lastModifiedBy
@@ -52241,9 +52040,9 @@ components:
             isSilenced: true
             fingerprint: fingerprint
             startsAt: startsAt
-            id: 7
+            id: 0
             projectName: projectName
-            projectId: 1
+            projectId: 6
             status: status
           partnerId: 5
         - flavors:
@@ -52253,9 +52052,9 @@ components:
           isOpaEnabled: true
           privateIp: privateIp
           projectRevision:
-            accessProfileRevision: 4
-            cloudCredentialRevision: 9
-            opaProfileRevision: 5
+            accessProfileRevision: 1
+            cloudCredentialRevision: 5
+            opaProfileRevision: 4
           opaProfile:
             projects:
             - name: name
@@ -52291,8 +52090,8 @@ components:
           taikunLB:
             flavor: flavor
             privateKey: privateKey
-            routerIdEndRange: 1
-            routerIdStartRange: 7
+            routerIdEndRange: 7
+            routerIdStartRange: 6
             publicKey: publicKey
           cloudType: cloudType
           isLocked: true
@@ -52333,7 +52132,7 @@ components:
             privateIp: privateIp
             publicIp: publicIp
           accessProfile:
-            organizationId: 7
+            organizationId: 9
             allowedHosts:
             - accessProfileName: accessProfileName
               ipAddress: ipAddress
@@ -52355,24 +52154,24 @@ components:
             - address: address
               id: 5
             name: name
-            id: 2
+            id: 7
             dnsServers:
             - address: address
               id: 1
             - address: address
               id: 1
-            revision: 9
+            revision: 3
             sshUsers:
             - sshPublicKey: sshPublicKey
               isDeleted: true
               name: name
-              id: 3
+              id: 2
             - sshPublicKey: sshPublicKey
               isDeleted: true
               name: name
-              id: 3
+              id: 2
           tanzuReleaseVersion: tanzuReleaseVersion
-          workersCount: 6
+          workersCount: 1
           nfsDiskSize: 1
           cidr: cidr
           taikunPrivateSSHKey: taikunPrivateSSHKey
@@ -52396,19 +52195,19 @@ components:
             password: password
             alertManagerUrl: alertManagerUrl
             prometheusUrl: prometheusUrl
+            id: 2
             username: username
           kubernetesProfiles:
             organizationName: organizationName
             exposeNodePortOnBastion: true
             taikunLBEnabled: true
-            organizationId: 4
+            organizationId: 7
             proxmoxStorage: proxmoxStorage
-            wasmEnabled: true
             octaviaEnabled: true
             isLocked: true
             name: name
             allowSchedulingOnMaster: true
-            id: 2
+            id: 4
             nvidiaGpuOperatorEnabled: true
             uniqueClusterName: true
             cni: cni
@@ -52428,9 +52227,9 @@ components:
             isSilenced: true
             fingerprint: fingerprint
             startsAt: startsAt
-            id: 7
+            id: 0
             projectName: projectName
-            projectId: 1
+            projectId: 6
             status: status
           - severity: severity
             lastModifiedBy: lastModifiedBy
@@ -52443,9 +52242,9 @@ components:
             isSilenced: true
             fingerprint: fingerprint
             startsAt: startsAt
-            id: 7
+            id: 0
             projectName: projectName
-            projectId: 1
+            projectId: 6
             status: status
           partnerId: 5
         totalCount: 0
@@ -52559,9 +52358,9 @@ components:
     ProjectRevisionDto:
       additionalProperties: false
       example:
-        accessProfileRevision: 4
-        cloudCredentialRevision: 9
-        opaProfileRevision: 5
+        accessProfileRevision: 1
+        cloudCredentialRevision: 5
+        opaProfileRevision: 4
       properties:
         accessProfileRevision:
           format: int32
@@ -53197,7 +52996,7 @@ components:
     PrometheusLabelUpdateDto:
       additionalProperties: false
       example:
-        id: 1
+        id: 6
         label: label
         value: value
       properties:
@@ -53252,10 +53051,10 @@ components:
     PrometheusOrganizationDiscountDto:
       additionalProperties: false
       example:
-        globalDiscountRate: 5.962133916683182
-        ruleDiscountRate: 1.4658129805029452
+        globalDiscountRate: 5.637376656633329
+        ruleDiscountRate: 5.962133916683182
         name: name
-        id: 6
+        id: 1
       properties:
         id:
           format: int32
@@ -53279,20 +53078,20 @@ components:
         type: type
         url: url
         boundOrganizations:
-        - globalDiscountRate: 5.962133916683182
-          ruleDiscountRate: 1.4658129805029452
+        - globalDiscountRate: 5.637376656633329
+          ruleDiscountRate: 5.962133916683182
           name: name
-          id: 6
-        - globalDiscountRate: 5.962133916683182
-          ruleDiscountRate: 1.4658129805029452
+          id: 1
+        - globalDiscountRate: 5.637376656633329
+          ruleDiscountRate: 5.962133916683182
           name: name
-          id: 6
+          id: 1
         billingStartDate: billingStartDate
         labels:
-        - id: 1
+        - id: 6
           label: label
           value: value
-        - id: 1
+        - id: 6
           label: label
           value: value
         operationCredential:
@@ -53327,7 +53126,7 @@ components:
           email: email
           vatNumber: vatNumber
         createdBy: createdBy
-        price: 5.637376656633329
+        price: 2.3021358869347655
         name: name
         id: 0
         lastModified: lastModified
@@ -53396,20 +53195,20 @@ components:
           type: type
           url: url
           boundOrganizations:
-          - globalDiscountRate: 5.962133916683182
-            ruleDiscountRate: 1.4658129805029452
+          - globalDiscountRate: 5.637376656633329
+            ruleDiscountRate: 5.962133916683182
             name: name
-            id: 6
-          - globalDiscountRate: 5.962133916683182
-            ruleDiscountRate: 1.4658129805029452
+            id: 1
+          - globalDiscountRate: 5.637376656633329
+            ruleDiscountRate: 5.962133916683182
             name: name
-            id: 6
+            id: 1
           billingStartDate: billingStartDate
           labels:
-          - id: 1
+          - id: 6
             label: label
             value: value
-          - id: 1
+          - id: 6
             label: label
             value: value
           operationCredential:
@@ -53444,7 +53243,7 @@ components:
             email: email
             vatNumber: vatNumber
           createdBy: createdBy
-          price: 5.637376656633329
+          price: 2.3021358869347655
           name: name
           id: 0
           lastModified: lastModified
@@ -53454,20 +53253,20 @@ components:
           type: type
           url: url
           boundOrganizations:
-          - globalDiscountRate: 5.962133916683182
-            ruleDiscountRate: 1.4658129805029452
+          - globalDiscountRate: 5.637376656633329
+            ruleDiscountRate: 5.962133916683182
             name: name
-            id: 6
-          - globalDiscountRate: 5.962133916683182
-            ruleDiscountRate: 1.4658129805029452
+            id: 1
+          - globalDiscountRate: 5.637376656633329
+            ruleDiscountRate: 5.962133916683182
             name: name
-            id: 6
+            id: 1
           billingStartDate: billingStartDate
           labels:
-          - id: 1
+          - id: 6
             label: label
             value: value
-          - id: 1
+          - id: 6
             label: label
             value: value
           operationCredential:
@@ -53502,11 +53301,11 @@ components:
             email: email
             vatNumber: vatNumber
           createdBy: createdBy
-          price: 5.637376656633329
+          price: 2.3021358869347655
           name: name
           id: 0
           lastModified: lastModified
-        totalCount: 2
+        totalCount: 7
       properties:
         data:
           items:
@@ -54601,13 +54400,13 @@ components:
     RuleForUpdateDto:
       additionalProperties: false
       example:
-        organizationId: 5
+        organizationId: 1
         metricName: metricName
         labelsToUpdate:
-        - id: 1
+        - id: 6
           label: label
           value: value
-        - id: 1
+        - id: 6
           label: label
           value: value
         price: 0.8008281904610115
@@ -54616,7 +54415,7 @@ components:
         labelsToDelete:
         - id: 6
         - id: 6
-        operationCredentialId: 2
+        operationCredentialId: 5
         type: null
         labelsToAdd:
         - label: label
@@ -55210,7 +55009,6 @@ components:
         autoscalingGroup: autoscalingGroup
         diskSize: 6
         replicaCount: 2
-        wasmEnabled: true
         hypervisor: hypervisor
         name: name
         kubernetesNodeLabels:
@@ -55242,8 +55040,6 @@ components:
           nullable: true
           type: number
         spotInstance:
-          type: boolean
-        wasmEnabled:
           type: boolean
         autoscalingGroup:
           nullable: true
@@ -56122,7 +55918,7 @@ components:
         sshPublicKey: sshPublicKey
         isDeleted: true
         name: name
-        id: 3
+        id: 2
       properties:
         id:
           format: int32
@@ -57978,8 +57774,8 @@ components:
       example:
         flavor: flavor
         privateKey: privateKey
-        routerIdEndRange: 1
-        routerIdStartRange: 7
+        routerIdEndRange: 7
+        routerIdStartRange: 6
         publicKey: publicKey
       properties:
         flavor:

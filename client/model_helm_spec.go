@@ -20,13 +20,13 @@ var _ MappedNullable = &HelmSpec{}
 
 // HelmSpec struct for HelmSpec
 type HelmSpec struct {
-	Interval         NullableString `json:"interval,omitempty"`
-	ReleaseName      NullableString `json:"releaseName,omitempty"`
-	Url              NullableString `json:"url,omitempty"`
-	TargetNamespace  NullableString `json:"targetNamespace,omitempty"`
+	Interval NullableString `json:"interval,omitempty"`
+	ReleaseName NullableString `json:"releaseName,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	TargetNamespace NullableString `json:"targetNamespace,omitempty"`
 	StorageNamespace NullableString `json:"storageNamespace,omitempty"`
-	Chart            *Chart         `json:"chart,omitempty"`
-	Values           *JsonNode      `json:"values,omitempty"`
+	Chart *Chart `json:"chart,omitempty"`
+	Values *JsonNode `json:"values,omitempty"`
 }
 
 // NewHelmSpec instantiates a new HelmSpec object
@@ -78,7 +78,6 @@ func (o *HelmSpec) HasInterval() bool {
 func (o *HelmSpec) SetInterval(v string) {
 	o.Interval.Set(&v)
 }
-
 // SetIntervalNil sets the value for Interval to be an explicit nil
 func (o *HelmSpec) SetIntervalNil() {
 	o.Interval.Set(nil)
@@ -121,7 +120,6 @@ func (o *HelmSpec) HasReleaseName() bool {
 func (o *HelmSpec) SetReleaseName(v string) {
 	o.ReleaseName.Set(&v)
 }
-
 // SetReleaseNameNil sets the value for ReleaseName to be an explicit nil
 func (o *HelmSpec) SetReleaseNameNil() {
 	o.ReleaseName.Set(nil)
@@ -164,7 +162,6 @@ func (o *HelmSpec) HasUrl() bool {
 func (o *HelmSpec) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *HelmSpec) SetUrlNil() {
 	o.Url.Set(nil)
@@ -207,7 +204,6 @@ func (o *HelmSpec) HasTargetNamespace() bool {
 func (o *HelmSpec) SetTargetNamespace(v string) {
 	o.TargetNamespace.Set(&v)
 }
-
 // SetTargetNamespaceNil sets the value for TargetNamespace to be an explicit nil
 func (o *HelmSpec) SetTargetNamespaceNil() {
 	o.TargetNamespace.Set(nil)
@@ -250,7 +246,6 @@ func (o *HelmSpec) HasStorageNamespace() bool {
 func (o *HelmSpec) SetStorageNamespace(v string) {
 	o.StorageNamespace.Set(&v)
 }
-
 // SetStorageNamespaceNil sets the value for StorageNamespace to be an explicit nil
 func (o *HelmSpec) SetStorageNamespaceNil() {
 	o.StorageNamespace.Set(nil)
@@ -326,7 +321,7 @@ func (o *HelmSpec) SetValues(v JsonNode) {
 }
 
 func (o HelmSpec) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -394,3 +389,5 @@ func (v *NullableHelmSpec) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

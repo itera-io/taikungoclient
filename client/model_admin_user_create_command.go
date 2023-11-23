@@ -20,11 +20,11 @@ var _ MappedNullable = &AdminUserCreateCommand{}
 
 // AdminUserCreateCommand struct for AdminUserCreateCommand
 type AdminUserCreateCommand struct {
-	Email          NullableString `json:"email,omitempty"`
-	Username       NullableString `json:"username,omitempty"`
-	Password       NullableString `json:"password,omitempty"`
-	Role           *UserRole      `json:"role,omitempty"`
-	OrganizationId NullableInt32  `json:"organizationId,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Password NullableString `json:"password,omitempty"`
+	Role *UserRole `json:"role,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
 
 // NewAdminUserCreateCommand instantiates a new AdminUserCreateCommand object
@@ -76,7 +76,6 @@ func (o *AdminUserCreateCommand) HasEmail() bool {
 func (o *AdminUserCreateCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *AdminUserCreateCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -119,7 +118,6 @@ func (o *AdminUserCreateCommand) HasUsername() bool {
 func (o *AdminUserCreateCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *AdminUserCreateCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -162,7 +160,6 @@ func (o *AdminUserCreateCommand) HasPassword() bool {
 func (o *AdminUserCreateCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *AdminUserCreateCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -237,7 +234,6 @@ func (o *AdminUserCreateCommand) HasOrganizationId() bool {
 func (o *AdminUserCreateCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *AdminUserCreateCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -249,7 +245,7 @@ func (o *AdminUserCreateCommand) UnsetOrganizationId() {
 }
 
 func (o AdminUserCreateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -311,3 +307,5 @@ func (v *NullableAdminUserCreateCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

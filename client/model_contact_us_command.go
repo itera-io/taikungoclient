@@ -20,10 +20,10 @@ var _ MappedNullable = &ContactUsCommand{}
 
 // ContactUsCommand struct for ContactUsCommand
 type ContactUsCommand struct {
-	Name          NullableString `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	BusinessEmail NullableString `json:"businessEmail,omitempty"`
-	CompanyName   NullableString `json:"companyName,omitempty"`
-	Comment       NullableString `json:"comment,omitempty"`
+	CompanyName NullableString `json:"companyName,omitempty"`
+	Comment NullableString `json:"comment,omitempty"`
 }
 
 // NewContactUsCommand instantiates a new ContactUsCommand object
@@ -75,7 +75,6 @@ func (o *ContactUsCommand) HasName() bool {
 func (o *ContactUsCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ContactUsCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -118,7 +117,6 @@ func (o *ContactUsCommand) HasBusinessEmail() bool {
 func (o *ContactUsCommand) SetBusinessEmail(v string) {
 	o.BusinessEmail.Set(&v)
 }
-
 // SetBusinessEmailNil sets the value for BusinessEmail to be an explicit nil
 func (o *ContactUsCommand) SetBusinessEmailNil() {
 	o.BusinessEmail.Set(nil)
@@ -161,7 +159,6 @@ func (o *ContactUsCommand) HasCompanyName() bool {
 func (o *ContactUsCommand) SetCompanyName(v string) {
 	o.CompanyName.Set(&v)
 }
-
 // SetCompanyNameNil sets the value for CompanyName to be an explicit nil
 func (o *ContactUsCommand) SetCompanyNameNil() {
 	o.CompanyName.Set(nil)
@@ -204,7 +201,6 @@ func (o *ContactUsCommand) HasComment() bool {
 func (o *ContactUsCommand) SetComment(v string) {
 	o.Comment.Set(&v)
 }
-
 // SetCommentNil sets the value for Comment to be an explicit nil
 func (o *ContactUsCommand) SetCommentNil() {
 	o.Comment.Set(nil)
@@ -216,7 +212,7 @@ func (o *ContactUsCommand) UnsetComment() {
 }
 
 func (o ContactUsCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -275,3 +271,5 @@ func (v *NullableContactUsCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

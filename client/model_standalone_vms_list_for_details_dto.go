@@ -20,31 +20,31 @@ var _ MappedNullable = &StandaloneVmsListForDetailsDto{}
 
 // StandaloneVmsListForDetailsDto struct for StandaloneVmsListForDetailsDto
 type StandaloneVmsListForDetailsDto struct {
-	Id                  *int32                          `json:"id,omitempty"`
-	Name                NullableString                  `json:"name,omitempty"`
-	ImageName           NullableString                  `json:"imageName,omitempty"`
-	ImageId             NullableString                  `json:"imageId,omitempty"`
-	Status              NullableString                  `json:"status,omitempty"`
-	CloudInit           NullableString                  `json:"cloudInit,omitempty"`
-	VolumeType          NullableString                  `json:"volumeType,omitempty"`
-	VolumeSize          *int64                          `json:"volumeSize,omitempty"`
-	CreatedAt           NullableString                  `json:"createdAt,omitempty"`
-	CreatedBy           NullableString                  `json:"createdBy,omitempty"`
-	LastModified        NullableString                  `json:"lastModified,omitempty"`
-	LastModifiedBy      NullableString                  `json:"lastModifiedBy,omitempty"`
-	SshPublicKey        NullableString                  `json:"sshPublicKey,omitempty"`
-	CurrentFlavor       NullableString                  `json:"currentFlavor,omitempty"`
-	TargetFlavor        NullableString                  `json:"targetFlavor,omitempty"`
-	PublicIpEnabled     *bool                           `json:"publicIpEnabled,omitempty"`
-	PublicIp            NullableString                  `json:"publicIp,omitempty"`
-	IpAddress           NullableString                  `json:"ipAddress,omitempty"`
-	SpotPrice           NullableString                  `json:"spotPrice,omitempty"`
-	SpotInstance        *bool                           `json:"spotInstance,omitempty"`
-	ActionButtons       *StandaloneVisibilityDto        `json:"actionButtons,omitempty"`
-	IsWindows           *bool                           `json:"isWindows,omitempty"`
-	Disks               []StandAloneVmDiskForDetailsDto `json:"disks,omitempty"`
-	StandAloneMetaDatas []StandAloneMetaDataDtoForVm    `json:"standAloneMetaDatas,omitempty"`
-	Profile             *StandAloneProfileForDetailsDto `json:"profile,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ImageName NullableString `json:"imageName,omitempty"`
+	ImageId NullableString `json:"imageId,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	CloudInit NullableString `json:"cloudInit,omitempty"`
+	VolumeType NullableString `json:"volumeType,omitempty"`
+	VolumeSize *int64 `json:"volumeSize,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
+	CurrentFlavor NullableString `json:"currentFlavor,omitempty"`
+	TargetFlavor NullableString `json:"targetFlavor,omitempty"`
+	PublicIpEnabled *bool `json:"publicIpEnabled,omitempty"`
+	PublicIp NullableString `json:"publicIp,omitempty"`
+	IpAddress NullableString `json:"ipAddress,omitempty"`
+	SpotPrice NullableString `json:"spotPrice,omitempty"`
+	SpotInstance *bool `json:"spotInstance,omitempty"`
+	ActionButtons *StandaloneVisibilityDto `json:"actionButtons,omitempty"`
+	IsWindows *bool `json:"isWindows,omitempty"`
+	Disks []StandAloneVmDiskForDetailsDto `json:"disks,omitempty"`
+	StandAloneMetaDatas []StandAloneMetaDataDtoForVm `json:"standAloneMetaDatas,omitempty"`
+	Profile *StandAloneProfileForDetailsDto `json:"profile,omitempty"`
 }
 
 // NewStandaloneVmsListForDetailsDto instantiates a new StandaloneVmsListForDetailsDto object
@@ -128,7 +128,6 @@ func (o *StandaloneVmsListForDetailsDto) HasName() bool {
 func (o *StandaloneVmsListForDetailsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -171,7 +170,6 @@ func (o *StandaloneVmsListForDetailsDto) HasImageName() bool {
 func (o *StandaloneVmsListForDetailsDto) SetImageName(v string) {
 	o.ImageName.Set(&v)
 }
-
 // SetImageNameNil sets the value for ImageName to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetImageNameNil() {
 	o.ImageName.Set(nil)
@@ -214,7 +212,6 @@ func (o *StandaloneVmsListForDetailsDto) HasImageId() bool {
 func (o *StandaloneVmsListForDetailsDto) SetImageId(v string) {
 	o.ImageId.Set(&v)
 }
-
 // SetImageIdNil sets the value for ImageId to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetImageIdNil() {
 	o.ImageId.Set(nil)
@@ -257,7 +254,6 @@ func (o *StandaloneVmsListForDetailsDto) HasStatus() bool {
 func (o *StandaloneVmsListForDetailsDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -300,7 +296,6 @@ func (o *StandaloneVmsListForDetailsDto) HasCloudInit() bool {
 func (o *StandaloneVmsListForDetailsDto) SetCloudInit(v string) {
 	o.CloudInit.Set(&v)
 }
-
 // SetCloudInitNil sets the value for CloudInit to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetCloudInitNil() {
 	o.CloudInit.Set(nil)
@@ -343,7 +338,6 @@ func (o *StandaloneVmsListForDetailsDto) HasVolumeType() bool {
 func (o *StandaloneVmsListForDetailsDto) SetVolumeType(v string) {
 	o.VolumeType.Set(&v)
 }
-
 // SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetVolumeTypeNil() {
 	o.VolumeType.Set(nil)
@@ -418,7 +412,6 @@ func (o *StandaloneVmsListForDetailsDto) HasCreatedAt() bool {
 func (o *StandaloneVmsListForDetailsDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -461,7 +454,6 @@ func (o *StandaloneVmsListForDetailsDto) HasCreatedBy() bool {
 func (o *StandaloneVmsListForDetailsDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -504,7 +496,6 @@ func (o *StandaloneVmsListForDetailsDto) HasLastModified() bool {
 func (o *StandaloneVmsListForDetailsDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
@@ -547,7 +538,6 @@ func (o *StandaloneVmsListForDetailsDto) HasLastModifiedBy() bool {
 func (o *StandaloneVmsListForDetailsDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
@@ -590,7 +580,6 @@ func (o *StandaloneVmsListForDetailsDto) HasSshPublicKey() bool {
 func (o *StandaloneVmsListForDetailsDto) SetSshPublicKey(v string) {
 	o.SshPublicKey.Set(&v)
 }
-
 // SetSshPublicKeyNil sets the value for SshPublicKey to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetSshPublicKeyNil() {
 	o.SshPublicKey.Set(nil)
@@ -633,7 +622,6 @@ func (o *StandaloneVmsListForDetailsDto) HasCurrentFlavor() bool {
 func (o *StandaloneVmsListForDetailsDto) SetCurrentFlavor(v string) {
 	o.CurrentFlavor.Set(&v)
 }
-
 // SetCurrentFlavorNil sets the value for CurrentFlavor to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetCurrentFlavorNil() {
 	o.CurrentFlavor.Set(nil)
@@ -676,7 +664,6 @@ func (o *StandaloneVmsListForDetailsDto) HasTargetFlavor() bool {
 func (o *StandaloneVmsListForDetailsDto) SetTargetFlavor(v string) {
 	o.TargetFlavor.Set(&v)
 }
-
 // SetTargetFlavorNil sets the value for TargetFlavor to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetTargetFlavorNil() {
 	o.TargetFlavor.Set(nil)
@@ -751,7 +738,6 @@ func (o *StandaloneVmsListForDetailsDto) HasPublicIp() bool {
 func (o *StandaloneVmsListForDetailsDto) SetPublicIp(v string) {
 	o.PublicIp.Set(&v)
 }
-
 // SetPublicIpNil sets the value for PublicIp to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetPublicIpNil() {
 	o.PublicIp.Set(nil)
@@ -794,7 +780,6 @@ func (o *StandaloneVmsListForDetailsDto) HasIpAddress() bool {
 func (o *StandaloneVmsListForDetailsDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
-
 // SetIpAddressNil sets the value for IpAddress to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetIpAddressNil() {
 	o.IpAddress.Set(nil)
@@ -837,7 +822,6 @@ func (o *StandaloneVmsListForDetailsDto) HasSpotPrice() bool {
 func (o *StandaloneVmsListForDetailsDto) SetSpotPrice(v string) {
 	o.SpotPrice.Set(&v)
 }
-
 // SetSpotPriceNil sets the value for SpotPrice to be an explicit nil
 func (o *StandaloneVmsListForDetailsDto) SetSpotPriceNil() {
 	o.SpotPrice.Set(nil)
@@ -1043,7 +1027,7 @@ func (o *StandaloneVmsListForDetailsDto) SetProfile(v StandAloneProfileForDetail
 }
 
 func (o StandaloneVmsListForDetailsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1165,3 +1149,5 @@ func (v *NullableStandaloneVmsListForDetailsDto) UnmarshalJSON(src []byte) error
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

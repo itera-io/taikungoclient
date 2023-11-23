@@ -21,7 +21,7 @@ var _ MappedNullable = &BecomePartnerCommand{}
 // BecomePartnerCommand struct for BecomePartnerCommand
 type BecomePartnerCommand struct {
 	FullName NullableString `json:"fullName,omitempty"`
-	Email    NullableString `json:"email,omitempty"`
+	Email NullableString `json:"email,omitempty"`
 }
 
 // NewBecomePartnerCommand instantiates a new BecomePartnerCommand object
@@ -73,7 +73,6 @@ func (o *BecomePartnerCommand) HasFullName() bool {
 func (o *BecomePartnerCommand) SetFullName(v string) {
 	o.FullName.Set(&v)
 }
-
 // SetFullNameNil sets the value for FullName to be an explicit nil
 func (o *BecomePartnerCommand) SetFullNameNil() {
 	o.FullName.Set(nil)
@@ -116,7 +115,6 @@ func (o *BecomePartnerCommand) HasEmail() bool {
 func (o *BecomePartnerCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-
 // SetEmailNil sets the value for Email to be an explicit nil
 func (o *BecomePartnerCommand) SetEmailNil() {
 	o.Email.Set(nil)
@@ -128,7 +126,7 @@ func (o *BecomePartnerCommand) UnsetEmail() {
 }
 
 func (o BecomePartnerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableBecomePartnerCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

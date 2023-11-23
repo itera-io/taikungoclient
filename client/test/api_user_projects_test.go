@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_UserProjectsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_UserProjectsAPIService(t *testing.T) {
 
 	t.Run("Test UserProjectsAPIService UserprojectsBindProjects", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.UserProjectsAPI.UserprojectsBindProjects(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_UserProjectsAPIService(t *testing.T) {
 
 	t.Run("Test UserProjectsAPIService UserprojectsBindUsers", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.UserProjectsAPI.UserprojectsBindUsers(context.Background()).Execute()
 
@@ -46,7 +46,7 @@ func Test_taikuncore_UserProjectsAPIService(t *testing.T) {
 
 	t.Run("Test UserProjectsAPIService UserprojectsProjectListByUser", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.UserProjectsAPI.UserprojectsProjectListByUser(context.Background()).Execute()
 
@@ -58,7 +58,7 @@ func Test_taikuncore_UserProjectsAPIService(t *testing.T) {
 
 	t.Run("Test UserProjectsAPIService UserprojectsUserListByProject", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 

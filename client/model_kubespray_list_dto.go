@@ -20,10 +20,10 @@ var _ MappedNullable = &KubesprayListDto{}
 
 // KubesprayListDto struct for KubesprayListDto
 type KubesprayListDto struct {
-	Id                *int32         `json:"id,omitempty"`
-	Version           NullableString `json:"version,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Version NullableString `json:"version,omitempty"`
 	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
-	IsDeprecated      *bool          `json:"isDeprecated,omitempty"`
+	IsDeprecated *bool `json:"isDeprecated,omitempty"`
 }
 
 // NewKubesprayListDto instantiates a new KubesprayListDto object
@@ -107,7 +107,6 @@ func (o *KubesprayListDto) HasVersion() bool {
 func (o *KubesprayListDto) SetVersion(v string) {
 	o.Version.Set(&v)
 }
-
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *KubesprayListDto) SetVersionNil() {
 	o.Version.Set(nil)
@@ -150,7 +149,6 @@ func (o *KubesprayListDto) HasKubernetesVersion() bool {
 func (o *KubesprayListDto) SetKubernetesVersion(v string) {
 	o.KubernetesVersion.Set(&v)
 }
-
 // SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
 func (o *KubesprayListDto) SetKubernetesVersionNil() {
 	o.KubernetesVersion.Set(nil)
@@ -194,7 +192,7 @@ func (o *KubesprayListDto) SetIsDeprecated(v bool) {
 }
 
 func (o KubesprayListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -253,3 +251,5 @@ func (v *NullableKubesprayListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

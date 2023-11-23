@@ -21,12 +21,12 @@ type CloudType string
 
 // List of CloudType
 const (
-	CLOUDTYPE_AWS       CloudType = "AWS"
-	CLOUDTYPE_AZURE     CloudType = "AZURE"
-	CLOUDTYPE_GOOGLE    CloudType = "GOOGLE"
+	CLOUDTYPE_AWS CloudType = "AWS"
+	CLOUDTYPE_AZURE CloudType = "AZURE"
+	CLOUDTYPE_GOOGLE CloudType = "GOOGLE"
 	CLOUDTYPE_OPENSTACK CloudType = "OPENSTACK"
-	CLOUDTYPE_PROXMOX   CloudType = "PROXMOX"
-	CLOUDTYPE_TANZU     CloudType = "TANZU"
+	CLOUDTYPE_PROXMOX CloudType = "PROXMOX"
+	CLOUDTYPE_TANZU CloudType = "TANZU"
 	CLOUDTYPE_OPENSHIFT CloudType = "OPENSHIFT"
 )
 
@@ -119,3 +119,4 @@ func (v *NullableCloudType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

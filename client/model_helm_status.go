@@ -20,10 +20,10 @@ var _ MappedNullable = &HelmStatus{}
 
 // HelmStatus struct for HelmStatus
 type HelmStatus struct {
-	Conditions         []Condition    `json:"conditions,omitempty"`
-	Failures           *int64         `json:"failures,omitempty"`
-	HelmChart          NullableString `json:"helmChart,omitempty"`
-	ObservedGeneration *int64         `json:"observedGeneration,omitempty"`
+	Conditions []Condition `json:"conditions,omitempty"`
+	Failures *int64 `json:"failures,omitempty"`
+	HelmChart NullableString `json:"helmChart,omitempty"`
+	ObservedGeneration *int64 `json:"observedGeneration,omitempty"`
 }
 
 // NewHelmStatus instantiates a new HelmStatus object
@@ -140,7 +140,6 @@ func (o *HelmStatus) HasHelmChart() bool {
 func (o *HelmStatus) SetHelmChart(v string) {
 	o.HelmChart.Set(&v)
 }
-
 // SetHelmChartNil sets the value for HelmChart to be an explicit nil
 func (o *HelmStatus) SetHelmChartNil() {
 	o.HelmChart.Set(nil)
@@ -184,7 +183,7 @@ func (o *HelmStatus) SetObservedGeneration(v int64) {
 }
 
 func (o HelmStatus) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -243,3 +242,5 @@ func (v *NullableHelmStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_ProjectAppsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_ProjectAppsAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAppsAPIService ProjectappAutosync", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ProjectAppsAPI.ProjectappAutosync(context.Background()).Execute()
 
@@ -35,7 +35,7 @@ func Test_taikuncore_ProjectAppsAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAppsAPIService ProjectappDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectAppId int32
 
@@ -48,7 +48,7 @@ func Test_taikuncore_ProjectAppsAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAppsAPIService ProjectappDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -62,7 +62,7 @@ func Test_taikuncore_ProjectAppsAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAppsAPIService ProjectappInstall", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ProjectAppsAPI.ProjectappInstall(context.Background()).Execute()
 
@@ -74,7 +74,7 @@ func Test_taikuncore_ProjectAppsAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAppsAPIService ProjectappList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ProjectAppsAPI.ProjectappList(context.Background()).Execute()
 
@@ -86,7 +86,7 @@ func Test_taikuncore_ProjectAppsAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAppsAPIService ProjectappLockManager", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ProjectAppsAPI.ProjectappLockManager(context.Background()).Execute()
 
@@ -97,7 +97,7 @@ func Test_taikuncore_ProjectAppsAPIService(t *testing.T) {
 
 	t.Run("Test ProjectAppsAPIService ProjectappSync", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ProjectAppsAPI.ProjectappSync(context.Background()).Execute()
 

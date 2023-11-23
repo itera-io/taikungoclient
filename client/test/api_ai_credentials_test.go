@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_AiCredentialsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_AiCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test AiCredentialsAPIService AiCredentialCreate", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AiCredentialsAPI.AiCredentialCreate(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_AiCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test AiCredentialsAPIService AiCredentialDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
@@ -49,7 +49,7 @@ func Test_taikuncore_AiCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test AiCredentialsAPIService AiCredentialDropdown", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AiCredentialsAPI.AiCredentialDropdown(context.Background()).Execute()
 
@@ -61,7 +61,7 @@ func Test_taikuncore_AiCredentialsAPIService(t *testing.T) {
 
 	t.Run("Test AiCredentialsAPIService AiCredentialList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.AiCredentialsAPI.AiCredentialList(context.Background()).Execute()
 

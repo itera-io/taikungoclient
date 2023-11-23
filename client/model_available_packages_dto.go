@@ -20,22 +20,22 @@ var _ MappedNullable = &AvailablePackagesDto{}
 
 // AvailablePackagesDto struct for AvailablePackagesDto
 type AvailablePackagesDto struct {
-	PackageId              NullableString         `json:"packageId,omitempty"`
-	CatalogAppId           NullableInt32          `json:"catalogAppId,omitempty"`
-	InstalledInstanceCount NullableInt32          `json:"installedInstanceCount,omitempty"`
-	Name                   NullableString         `json:"name,omitempty"`
-	NormalizedName         NullableString         `json:"normalizedName,omitempty"`
-	LogoImageId            NullableString         `json:"logoImageId,omitempty"`
-	Stars                  *int64                 `json:"stars,omitempty"`
-	Description            NullableString         `json:"description,omitempty"`
-	Version                NullableString         `json:"version,omitempty"`
-	AppVersion             NullableString         `json:"appVersion,omitempty"`
-	Deprecated             *bool                  `json:"deprecated,omitempty"`
-	Signed                 *bool                  `json:"signed,omitempty"`
-	IsLocked               *bool                  `json:"isLocked,omitempty"`
-	SecurityReportSummary  *SecurityReportSummary `json:"securityReportSummary,omitempty"`
-	Ts                     NullableString         `json:"ts,omitempty"`
-	Repository             *Repository            `json:"repository,omitempty"`
+	PackageId NullableString `json:"packageId,omitempty"`
+	CatalogAppId NullableInt32 `json:"catalogAppId,omitempty"`
+	InstalledInstanceCount NullableInt32 `json:"installedInstanceCount,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	NormalizedName NullableString `json:"normalizedName,omitempty"`
+	LogoImageId NullableString `json:"logoImageId,omitempty"`
+	Stars *int64 `json:"stars,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	Version NullableString `json:"version,omitempty"`
+	AppVersion NullableString `json:"appVersion,omitempty"`
+	Deprecated *bool `json:"deprecated,omitempty"`
+	Signed *bool `json:"signed,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	SecurityReportSummary *SecurityReportSummary `json:"securityReportSummary,omitempty"`
+	Ts NullableString `json:"ts,omitempty"`
+	Repository *Repository `json:"repository,omitempty"`
 }
 
 // NewAvailablePackagesDto instantiates a new AvailablePackagesDto object
@@ -87,7 +87,6 @@ func (o *AvailablePackagesDto) HasPackageId() bool {
 func (o *AvailablePackagesDto) SetPackageId(v string) {
 	o.PackageId.Set(&v)
 }
-
 // SetPackageIdNil sets the value for PackageId to be an explicit nil
 func (o *AvailablePackagesDto) SetPackageIdNil() {
 	o.PackageId.Set(nil)
@@ -130,7 +129,6 @@ func (o *AvailablePackagesDto) HasCatalogAppId() bool {
 func (o *AvailablePackagesDto) SetCatalogAppId(v int32) {
 	o.CatalogAppId.Set(&v)
 }
-
 // SetCatalogAppIdNil sets the value for CatalogAppId to be an explicit nil
 func (o *AvailablePackagesDto) SetCatalogAppIdNil() {
 	o.CatalogAppId.Set(nil)
@@ -173,7 +171,6 @@ func (o *AvailablePackagesDto) HasInstalledInstanceCount() bool {
 func (o *AvailablePackagesDto) SetInstalledInstanceCount(v int32) {
 	o.InstalledInstanceCount.Set(&v)
 }
-
 // SetInstalledInstanceCountNil sets the value for InstalledInstanceCount to be an explicit nil
 func (o *AvailablePackagesDto) SetInstalledInstanceCountNil() {
 	o.InstalledInstanceCount.Set(nil)
@@ -216,7 +213,6 @@ func (o *AvailablePackagesDto) HasName() bool {
 func (o *AvailablePackagesDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AvailablePackagesDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -259,7 +255,6 @@ func (o *AvailablePackagesDto) HasNormalizedName() bool {
 func (o *AvailablePackagesDto) SetNormalizedName(v string) {
 	o.NormalizedName.Set(&v)
 }
-
 // SetNormalizedNameNil sets the value for NormalizedName to be an explicit nil
 func (o *AvailablePackagesDto) SetNormalizedNameNil() {
 	o.NormalizedName.Set(nil)
@@ -302,7 +297,6 @@ func (o *AvailablePackagesDto) HasLogoImageId() bool {
 func (o *AvailablePackagesDto) SetLogoImageId(v string) {
 	o.LogoImageId.Set(&v)
 }
-
 // SetLogoImageIdNil sets the value for LogoImageId to be an explicit nil
 func (o *AvailablePackagesDto) SetLogoImageIdNil() {
 	o.LogoImageId.Set(nil)
@@ -377,7 +371,6 @@ func (o *AvailablePackagesDto) HasDescription() bool {
 func (o *AvailablePackagesDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *AvailablePackagesDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -420,7 +413,6 @@ func (o *AvailablePackagesDto) HasVersion() bool {
 func (o *AvailablePackagesDto) SetVersion(v string) {
 	o.Version.Set(&v)
 }
-
 // SetVersionNil sets the value for Version to be an explicit nil
 func (o *AvailablePackagesDto) SetVersionNil() {
 	o.Version.Set(nil)
@@ -463,7 +455,6 @@ func (o *AvailablePackagesDto) HasAppVersion() bool {
 func (o *AvailablePackagesDto) SetAppVersion(v string) {
 	o.AppVersion.Set(&v)
 }
-
 // SetAppVersionNil sets the value for AppVersion to be an explicit nil
 func (o *AvailablePackagesDto) SetAppVersionNil() {
 	o.AppVersion.Set(nil)
@@ -634,7 +625,6 @@ func (o *AvailablePackagesDto) HasTs() bool {
 func (o *AvailablePackagesDto) SetTs(v string) {
 	o.Ts.Set(&v)
 }
-
 // SetTsNil sets the value for Ts to be an explicit nil
 func (o *AvailablePackagesDto) SetTsNil() {
 	o.Ts.Set(nil)
@@ -678,7 +668,7 @@ func (o *AvailablePackagesDto) SetRepository(v Repository) {
 }
 
 func (o AvailablePackagesDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -773,3 +763,5 @@ func (v *NullableAvailablePackagesDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

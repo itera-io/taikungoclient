@@ -20,11 +20,11 @@ var _ MappedNullable = &StandAloneVmDiskDto{}
 
 // StandAloneVmDiskDto struct for StandAloneVmDiskDto
 type StandAloneVmDiskDto struct {
-	Name       NullableString `json:"name,omitempty"`
-	Size       *int64         `json:"size,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Size *int64 `json:"size,omitempty"`
 	VolumeType NullableString `json:"volumeType,omitempty"`
 	DeviceName NullableString `json:"deviceName,omitempty"`
-	LunId      NullableInt32  `json:"lunId,omitempty"`
+	LunId NullableInt32 `json:"lunId,omitempty"`
 }
 
 // NewStandAloneVmDiskDto instantiates a new StandAloneVmDiskDto object
@@ -76,7 +76,6 @@ func (o *StandAloneVmDiskDto) HasName() bool {
 func (o *StandAloneVmDiskDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandAloneVmDiskDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -151,7 +150,6 @@ func (o *StandAloneVmDiskDto) HasVolumeType() bool {
 func (o *StandAloneVmDiskDto) SetVolumeType(v string) {
 	o.VolumeType.Set(&v)
 }
-
 // SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
 func (o *StandAloneVmDiskDto) SetVolumeTypeNil() {
 	o.VolumeType.Set(nil)
@@ -194,7 +192,6 @@ func (o *StandAloneVmDiskDto) HasDeviceName() bool {
 func (o *StandAloneVmDiskDto) SetDeviceName(v string) {
 	o.DeviceName.Set(&v)
 }
-
 // SetDeviceNameNil sets the value for DeviceName to be an explicit nil
 func (o *StandAloneVmDiskDto) SetDeviceNameNil() {
 	o.DeviceName.Set(nil)
@@ -237,7 +234,6 @@ func (o *StandAloneVmDiskDto) HasLunId() bool {
 func (o *StandAloneVmDiskDto) SetLunId(v int32) {
 	o.LunId.Set(&v)
 }
-
 // SetLunIdNil sets the value for LunId to be an explicit nil
 func (o *StandAloneVmDiskDto) SetLunIdNil() {
 	o.LunId.Set(nil)
@@ -249,7 +245,7 @@ func (o *StandAloneVmDiskDto) UnsetLunId() {
 }
 
 func (o StandAloneVmDiskDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -311,3 +307,5 @@ func (v *NullableStandAloneVmDiskDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,11 +20,11 @@ var _ MappedNullable = &CheckTanzuCommand{}
 
 // CheckTanzuCommand struct for CheckTanzuCommand
 type CheckTanzuCommand struct {
-	Username   NullableString `json:"username,omitempty"`
-	Url        NullableString `json:"url,omitempty"`
-	Password   NullableString `json:"password,omitempty"`
-	Namespace  NullableString `json:"namespace,omitempty"`
-	Port       NullableInt32  `json:"port,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Password NullableString `json:"password,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Port NullableInt32 `json:"port,omitempty"`
 	VolumeType NullableString `json:"volumeType,omitempty"`
 }
 
@@ -77,7 +77,6 @@ func (o *CheckTanzuCommand) HasUsername() bool {
 func (o *CheckTanzuCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *CheckTanzuCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -120,7 +119,6 @@ func (o *CheckTanzuCommand) HasUrl() bool {
 func (o *CheckTanzuCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *CheckTanzuCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -163,7 +161,6 @@ func (o *CheckTanzuCommand) HasPassword() bool {
 func (o *CheckTanzuCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *CheckTanzuCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -206,7 +203,6 @@ func (o *CheckTanzuCommand) HasNamespace() bool {
 func (o *CheckTanzuCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *CheckTanzuCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -249,7 +245,6 @@ func (o *CheckTanzuCommand) HasPort() bool {
 func (o *CheckTanzuCommand) SetPort(v int32) {
 	o.Port.Set(&v)
 }
-
 // SetPortNil sets the value for Port to be an explicit nil
 func (o *CheckTanzuCommand) SetPortNil() {
 	o.Port.Set(nil)
@@ -292,7 +287,6 @@ func (o *CheckTanzuCommand) HasVolumeType() bool {
 func (o *CheckTanzuCommand) SetVolumeType(v string) {
 	o.VolumeType.Set(&v)
 }
-
 // SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
 func (o *CheckTanzuCommand) SetVolumeTypeNil() {
 	o.VolumeType.Set(nil)
@@ -304,7 +298,7 @@ func (o *CheckTanzuCommand) UnsetVolumeType() {
 }
 
 func (o CheckTanzuCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -369,3 +363,5 @@ func (v *NullableCheckTanzuCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

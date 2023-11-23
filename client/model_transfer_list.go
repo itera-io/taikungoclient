@@ -20,7 +20,7 @@ var _ MappedNullable = &TransferList{}
 
 // TransferList struct for TransferList
 type TransferList struct {
-	UserId   NullableString `json:"userId,omitempty"`
+	UserId NullableString `json:"userId,omitempty"`
 	UserName NullableString `json:"userName,omitempty"`
 }
 
@@ -73,7 +73,6 @@ func (o *TransferList) HasUserId() bool {
 func (o *TransferList) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
-
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *TransferList) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -116,7 +115,6 @@ func (o *TransferList) HasUserName() bool {
 func (o *TransferList) SetUserName(v string) {
 	o.UserName.Set(&v)
 }
-
 // SetUserNameNil sets the value for UserName to be an explicit nil
 func (o *TransferList) SetUserNameNil() {
 	o.UserName.Set(nil)
@@ -128,7 +126,7 @@ func (o *TransferList) UnsetUserName() {
 }
 
 func (o TransferList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableTransferList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

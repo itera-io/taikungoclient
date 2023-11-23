@@ -72,7 +72,6 @@ func (o *OpenTicketCommand) HasTicketId() bool {
 func (o *OpenTicketCommand) SetTicketId(v string) {
 	o.TicketId.Set(&v)
 }
-
 // SetTicketIdNil sets the value for TicketId to be an explicit nil
 func (o *OpenTicketCommand) SetTicketIdNil() {
 	o.TicketId.Set(nil)
@@ -84,7 +83,7 @@ func (o *OpenTicketCommand) UnsetTicketId() {
 }
 
 func (o OpenTicketCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -134,3 +133,5 @@ func (v *NullableOpenTicketCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

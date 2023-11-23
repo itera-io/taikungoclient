@@ -20,23 +20,23 @@ var _ MappedNullable = &ProjectForUpdateDto{}
 
 // ProjectForUpdateDto struct for ProjectForUpdateDto
 type ProjectForUpdateDto struct {
-	KubeConfig                 NullableString `json:"kubeConfig,omitempty"`
-	KubesprayCurrentVersion    NullableString `json:"kubesprayCurrentVersion,omitempty"`
-	AccessIp                   NullableString `json:"accessIp,omitempty"`
-	ImageName                  NullableString `json:"imageName,omitempty"`
-	MonitoringIp               NullableString `json:"monitoringIp,omitempty"`
+	KubeConfig NullableString `json:"kubeConfig,omitempty"`
+	KubesprayCurrentVersion NullableString `json:"kubesprayCurrentVersion,omitempty"`
+	AccessIp NullableString `json:"accessIp,omitempty"`
+	ImageName NullableString `json:"imageName,omitempty"`
+	MonitoringIp NullableString `json:"monitoringIp,omitempty"`
 	TanzuReleaseCurrentVersion NullableString `json:"tanzuReleaseCurrentVersion,omitempty"`
-	Status                     *ProjectStatus `json:"status,omitempty"`
-	Health                     *ProjectHealth `json:"health,omitempty"`
-	IsBackupEnabled            NullableBool   `json:"isBackupEnabled,omitempty"`
-	IsMonitoringEnabled        NullableBool   `json:"isMonitoringEnabled,omitempty"`
-	IsOpaEnabled               NullableBool   `json:"isOpaEnabled,omitempty"`
-	IsAiEnabled                NullableBool   `json:"isAiEnabled,omitempty"`
-	IsAutoUpgrade              NullableBool   `json:"isAutoUpgrade,omitempty"`
-	AppEnabled                 NullableBool   `json:"appEnabled,omitempty"`
-	IsKubevapEnabled           NullableBool   `json:"isKubevapEnabled,omitempty"`
-	KubernetesCurrentVersion   NullableString `json:"kubernetesCurrentVersion,omitempty"`
-	FailureReason              NullableString `json:"failureReason,omitempty"`
+	Status *ProjectStatus `json:"status,omitempty"`
+	Health *ProjectHealth `json:"health,omitempty"`
+	IsBackupEnabled NullableBool `json:"isBackupEnabled,omitempty"`
+	IsMonitoringEnabled NullableBool `json:"isMonitoringEnabled,omitempty"`
+	IsOpaEnabled NullableBool `json:"isOpaEnabled,omitempty"`
+	IsAiEnabled NullableBool `json:"isAiEnabled,omitempty"`
+	IsAutoUpgrade NullableBool `json:"isAutoUpgrade,omitempty"`
+	AppEnabled NullableBool `json:"appEnabled,omitempty"`
+	IsKubevapEnabled NullableBool `json:"isKubevapEnabled,omitempty"`
+	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion,omitempty"`
+	FailureReason NullableString `json:"failureReason,omitempty"`
 }
 
 // NewProjectForUpdateDto instantiates a new ProjectForUpdateDto object
@@ -88,7 +88,6 @@ func (o *ProjectForUpdateDto) HasKubeConfig() bool {
 func (o *ProjectForUpdateDto) SetKubeConfig(v string) {
 	o.KubeConfig.Set(&v)
 }
-
 // SetKubeConfigNil sets the value for KubeConfig to be an explicit nil
 func (o *ProjectForUpdateDto) SetKubeConfigNil() {
 	o.KubeConfig.Set(nil)
@@ -131,7 +130,6 @@ func (o *ProjectForUpdateDto) HasKubesprayCurrentVersion() bool {
 func (o *ProjectForUpdateDto) SetKubesprayCurrentVersion(v string) {
 	o.KubesprayCurrentVersion.Set(&v)
 }
-
 // SetKubesprayCurrentVersionNil sets the value for KubesprayCurrentVersion to be an explicit nil
 func (o *ProjectForUpdateDto) SetKubesprayCurrentVersionNil() {
 	o.KubesprayCurrentVersion.Set(nil)
@@ -174,7 +172,6 @@ func (o *ProjectForUpdateDto) HasAccessIp() bool {
 func (o *ProjectForUpdateDto) SetAccessIp(v string) {
 	o.AccessIp.Set(&v)
 }
-
 // SetAccessIpNil sets the value for AccessIp to be an explicit nil
 func (o *ProjectForUpdateDto) SetAccessIpNil() {
 	o.AccessIp.Set(nil)
@@ -217,7 +214,6 @@ func (o *ProjectForUpdateDto) HasImageName() bool {
 func (o *ProjectForUpdateDto) SetImageName(v string) {
 	o.ImageName.Set(&v)
 }
-
 // SetImageNameNil sets the value for ImageName to be an explicit nil
 func (o *ProjectForUpdateDto) SetImageNameNil() {
 	o.ImageName.Set(nil)
@@ -260,7 +256,6 @@ func (o *ProjectForUpdateDto) HasMonitoringIp() bool {
 func (o *ProjectForUpdateDto) SetMonitoringIp(v string) {
 	o.MonitoringIp.Set(&v)
 }
-
 // SetMonitoringIpNil sets the value for MonitoringIp to be an explicit nil
 func (o *ProjectForUpdateDto) SetMonitoringIpNil() {
 	o.MonitoringIp.Set(nil)
@@ -303,7 +298,6 @@ func (o *ProjectForUpdateDto) HasTanzuReleaseCurrentVersion() bool {
 func (o *ProjectForUpdateDto) SetTanzuReleaseCurrentVersion(v string) {
 	o.TanzuReleaseCurrentVersion.Set(&v)
 }
-
 // SetTanzuReleaseCurrentVersionNil sets the value for TanzuReleaseCurrentVersion to be an explicit nil
 func (o *ProjectForUpdateDto) SetTanzuReleaseCurrentVersionNil() {
 	o.TanzuReleaseCurrentVersion.Set(nil)
@@ -410,7 +404,6 @@ func (o *ProjectForUpdateDto) HasIsBackupEnabled() bool {
 func (o *ProjectForUpdateDto) SetIsBackupEnabled(v bool) {
 	o.IsBackupEnabled.Set(&v)
 }
-
 // SetIsBackupEnabledNil sets the value for IsBackupEnabled to be an explicit nil
 func (o *ProjectForUpdateDto) SetIsBackupEnabledNil() {
 	o.IsBackupEnabled.Set(nil)
@@ -453,7 +446,6 @@ func (o *ProjectForUpdateDto) HasIsMonitoringEnabled() bool {
 func (o *ProjectForUpdateDto) SetIsMonitoringEnabled(v bool) {
 	o.IsMonitoringEnabled.Set(&v)
 }
-
 // SetIsMonitoringEnabledNil sets the value for IsMonitoringEnabled to be an explicit nil
 func (o *ProjectForUpdateDto) SetIsMonitoringEnabledNil() {
 	o.IsMonitoringEnabled.Set(nil)
@@ -496,7 +488,6 @@ func (o *ProjectForUpdateDto) HasIsOpaEnabled() bool {
 func (o *ProjectForUpdateDto) SetIsOpaEnabled(v bool) {
 	o.IsOpaEnabled.Set(&v)
 }
-
 // SetIsOpaEnabledNil sets the value for IsOpaEnabled to be an explicit nil
 func (o *ProjectForUpdateDto) SetIsOpaEnabledNil() {
 	o.IsOpaEnabled.Set(nil)
@@ -539,7 +530,6 @@ func (o *ProjectForUpdateDto) HasIsAiEnabled() bool {
 func (o *ProjectForUpdateDto) SetIsAiEnabled(v bool) {
 	o.IsAiEnabled.Set(&v)
 }
-
 // SetIsAiEnabledNil sets the value for IsAiEnabled to be an explicit nil
 func (o *ProjectForUpdateDto) SetIsAiEnabledNil() {
 	o.IsAiEnabled.Set(nil)
@@ -582,7 +572,6 @@ func (o *ProjectForUpdateDto) HasIsAutoUpgrade() bool {
 func (o *ProjectForUpdateDto) SetIsAutoUpgrade(v bool) {
 	o.IsAutoUpgrade.Set(&v)
 }
-
 // SetIsAutoUpgradeNil sets the value for IsAutoUpgrade to be an explicit nil
 func (o *ProjectForUpdateDto) SetIsAutoUpgradeNil() {
 	o.IsAutoUpgrade.Set(nil)
@@ -625,7 +614,6 @@ func (o *ProjectForUpdateDto) HasAppEnabled() bool {
 func (o *ProjectForUpdateDto) SetAppEnabled(v bool) {
 	o.AppEnabled.Set(&v)
 }
-
 // SetAppEnabledNil sets the value for AppEnabled to be an explicit nil
 func (o *ProjectForUpdateDto) SetAppEnabledNil() {
 	o.AppEnabled.Set(nil)
@@ -668,7 +656,6 @@ func (o *ProjectForUpdateDto) HasIsKubevapEnabled() bool {
 func (o *ProjectForUpdateDto) SetIsKubevapEnabled(v bool) {
 	o.IsKubevapEnabled.Set(&v)
 }
-
 // SetIsKubevapEnabledNil sets the value for IsKubevapEnabled to be an explicit nil
 func (o *ProjectForUpdateDto) SetIsKubevapEnabledNil() {
 	o.IsKubevapEnabled.Set(nil)
@@ -711,7 +698,6 @@ func (o *ProjectForUpdateDto) HasKubernetesCurrentVersion() bool {
 func (o *ProjectForUpdateDto) SetKubernetesCurrentVersion(v string) {
 	o.KubernetesCurrentVersion.Set(&v)
 }
-
 // SetKubernetesCurrentVersionNil sets the value for KubernetesCurrentVersion to be an explicit nil
 func (o *ProjectForUpdateDto) SetKubernetesCurrentVersionNil() {
 	o.KubernetesCurrentVersion.Set(nil)
@@ -754,7 +740,6 @@ func (o *ProjectForUpdateDto) HasFailureReason() bool {
 func (o *ProjectForUpdateDto) SetFailureReason(v string) {
 	o.FailureReason.Set(&v)
 }
-
 // SetFailureReasonNil sets the value for FailureReason to be an explicit nil
 func (o *ProjectForUpdateDto) SetFailureReasonNil() {
 	o.FailureReason.Set(nil)
@@ -766,7 +751,7 @@ func (o *ProjectForUpdateDto) UnsetFailureReason() {
 }
 
 func (o ProjectForUpdateDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -864,3 +849,5 @@ func (v *NullableProjectForUpdateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

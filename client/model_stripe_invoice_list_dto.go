@@ -21,13 +21,13 @@ var _ MappedNullable = &StripeInvoiceListDto{}
 
 // StripeInvoiceListDto struct for StripeInvoiceListDto
 type StripeInvoiceListDto struct {
-	Id            NullableString `json:"id,omitempty"`
+	Id NullableString `json:"id,omitempty"`
 	InvoiceStatus NullableString `json:"invoiceStatus,omitempty"`
-	ChargeStatus  NullableString `json:"chargeStatus,omitempty"`
-	ChargeReason  NullableString `json:"chargeReason,omitempty"`
-	Price         *float64       `json:"price,omitempty"`
-	StartDate     *time.Time     `json:"startDate,omitempty"`
-	EndDate       *time.Time     `json:"endDate,omitempty"`
+	ChargeStatus NullableString `json:"chargeStatus,omitempty"`
+	ChargeReason NullableString `json:"chargeReason,omitempty"`
+	Price *float64 `json:"price,omitempty"`
+	StartDate *time.Time `json:"startDate,omitempty"`
+	EndDate *time.Time `json:"endDate,omitempty"`
 }
 
 // NewStripeInvoiceListDto instantiates a new StripeInvoiceListDto object
@@ -79,7 +79,6 @@ func (o *StripeInvoiceListDto) HasId() bool {
 func (o *StripeInvoiceListDto) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *StripeInvoiceListDto) SetIdNil() {
 	o.Id.Set(nil)
@@ -122,7 +121,6 @@ func (o *StripeInvoiceListDto) HasInvoiceStatus() bool {
 func (o *StripeInvoiceListDto) SetInvoiceStatus(v string) {
 	o.InvoiceStatus.Set(&v)
 }
-
 // SetInvoiceStatusNil sets the value for InvoiceStatus to be an explicit nil
 func (o *StripeInvoiceListDto) SetInvoiceStatusNil() {
 	o.InvoiceStatus.Set(nil)
@@ -165,7 +163,6 @@ func (o *StripeInvoiceListDto) HasChargeStatus() bool {
 func (o *StripeInvoiceListDto) SetChargeStatus(v string) {
 	o.ChargeStatus.Set(&v)
 }
-
 // SetChargeStatusNil sets the value for ChargeStatus to be an explicit nil
 func (o *StripeInvoiceListDto) SetChargeStatusNil() {
 	o.ChargeStatus.Set(nil)
@@ -208,7 +205,6 @@ func (o *StripeInvoiceListDto) HasChargeReason() bool {
 func (o *StripeInvoiceListDto) SetChargeReason(v string) {
 	o.ChargeReason.Set(&v)
 }
-
 // SetChargeReasonNil sets the value for ChargeReason to be an explicit nil
 func (o *StripeInvoiceListDto) SetChargeReasonNil() {
 	o.ChargeReason.Set(nil)
@@ -316,7 +312,7 @@ func (o *StripeInvoiceListDto) SetEndDate(v time.Time) {
 }
 
 func (o StripeInvoiceListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -384,3 +380,5 @@ func (v *NullableStripeInvoiceListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

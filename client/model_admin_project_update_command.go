@@ -20,9 +20,9 @@ var _ MappedNullable = &AdminProjectUpdateCommand{}
 
 // AdminProjectUpdateCommand struct for AdminProjectUpdateCommand
 type AdminProjectUpdateCommand struct {
-	Id                       *int32         `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion,omitempty"`
-	KubesprayCurrentVersion  NullableString `json:"kubesprayCurrentVersion,omitempty"`
+	KubesprayCurrentVersion NullableString `json:"kubesprayCurrentVersion,omitempty"`
 }
 
 // NewAdminProjectUpdateCommand instantiates a new AdminProjectUpdateCommand object
@@ -106,7 +106,6 @@ func (o *AdminProjectUpdateCommand) HasKubernetesCurrentVersion() bool {
 func (o *AdminProjectUpdateCommand) SetKubernetesCurrentVersion(v string) {
 	o.KubernetesCurrentVersion.Set(&v)
 }
-
 // SetKubernetesCurrentVersionNil sets the value for KubernetesCurrentVersion to be an explicit nil
 func (o *AdminProjectUpdateCommand) SetKubernetesCurrentVersionNil() {
 	o.KubernetesCurrentVersion.Set(nil)
@@ -149,7 +148,6 @@ func (o *AdminProjectUpdateCommand) HasKubesprayCurrentVersion() bool {
 func (o *AdminProjectUpdateCommand) SetKubesprayCurrentVersion(v string) {
 	o.KubesprayCurrentVersion.Set(&v)
 }
-
 // SetKubesprayCurrentVersionNil sets the value for KubesprayCurrentVersion to be an explicit nil
 func (o *AdminProjectUpdateCommand) SetKubesprayCurrentVersionNil() {
 	o.KubesprayCurrentVersion.Set(nil)
@@ -161,7 +159,7 @@ func (o *AdminProjectUpdateCommand) UnsetKubesprayCurrentVersion() {
 }
 
 func (o AdminProjectUpdateCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullableAdminProjectUpdateCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

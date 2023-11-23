@@ -21,7 +21,7 @@ var _ MappedNullable = &MakeCsmCommand{}
 // MakeCsmCommand struct for MakeCsmCommand
 type MakeCsmCommand struct {
 	UserId NullableString `json:"userId,omitempty"`
-	Mode   NullableString `json:"mode,omitempty"`
+	Mode NullableString `json:"mode,omitempty"`
 }
 
 // NewMakeCsmCommand instantiates a new MakeCsmCommand object
@@ -73,7 +73,6 @@ func (o *MakeCsmCommand) HasUserId() bool {
 func (o *MakeCsmCommand) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
-
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *MakeCsmCommand) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -116,7 +115,6 @@ func (o *MakeCsmCommand) HasMode() bool {
 func (o *MakeCsmCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
-
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *MakeCsmCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -128,7 +126,7 @@ func (o *MakeCsmCommand) UnsetMode() {
 }
 
 func (o MakeCsmCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableMakeCsmCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

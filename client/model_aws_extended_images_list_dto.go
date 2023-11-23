@@ -20,13 +20,13 @@ var _ MappedNullable = &AwsExtendedImagesListDto{}
 
 // AwsExtendedImagesListDto struct for AwsExtendedImagesListDto
 type AwsExtendedImagesListDto struct {
-	Id              NullableString `json:"id,omitempty"`
-	Name            NullableString `json:"name,omitempty"`
-	Description     NullableString `json:"description,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	PlatformDetails NullableString `json:"platformDetails,omitempty"`
-	OwnerId         NullableString `json:"ownerId,omitempty"`
-	OwnerAlias      NullableString `json:"ownerAlias,omitempty"`
-	Logo            NullableString `json:"logo,omitempty"`
+	OwnerId NullableString `json:"ownerId,omitempty"`
+	OwnerAlias NullableString `json:"ownerAlias,omitempty"`
+	Logo NullableString `json:"logo,omitempty"`
 }
 
 // NewAwsExtendedImagesListDto instantiates a new AwsExtendedImagesListDto object
@@ -78,7 +78,6 @@ func (o *AwsExtendedImagesListDto) HasId() bool {
 func (o *AwsExtendedImagesListDto) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *AwsExtendedImagesListDto) SetIdNil() {
 	o.Id.Set(nil)
@@ -121,7 +120,6 @@ func (o *AwsExtendedImagesListDto) HasName() bool {
 func (o *AwsExtendedImagesListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AwsExtendedImagesListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -164,7 +162,6 @@ func (o *AwsExtendedImagesListDto) HasDescription() bool {
 func (o *AwsExtendedImagesListDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *AwsExtendedImagesListDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -207,7 +204,6 @@ func (o *AwsExtendedImagesListDto) HasPlatformDetails() bool {
 func (o *AwsExtendedImagesListDto) SetPlatformDetails(v string) {
 	o.PlatformDetails.Set(&v)
 }
-
 // SetPlatformDetailsNil sets the value for PlatformDetails to be an explicit nil
 func (o *AwsExtendedImagesListDto) SetPlatformDetailsNil() {
 	o.PlatformDetails.Set(nil)
@@ -250,7 +246,6 @@ func (o *AwsExtendedImagesListDto) HasOwnerId() bool {
 func (o *AwsExtendedImagesListDto) SetOwnerId(v string) {
 	o.OwnerId.Set(&v)
 }
-
 // SetOwnerIdNil sets the value for OwnerId to be an explicit nil
 func (o *AwsExtendedImagesListDto) SetOwnerIdNil() {
 	o.OwnerId.Set(nil)
@@ -293,7 +288,6 @@ func (o *AwsExtendedImagesListDto) HasOwnerAlias() bool {
 func (o *AwsExtendedImagesListDto) SetOwnerAlias(v string) {
 	o.OwnerAlias.Set(&v)
 }
-
 // SetOwnerAliasNil sets the value for OwnerAlias to be an explicit nil
 func (o *AwsExtendedImagesListDto) SetOwnerAliasNil() {
 	o.OwnerAlias.Set(nil)
@@ -336,7 +330,6 @@ func (o *AwsExtendedImagesListDto) HasLogo() bool {
 func (o *AwsExtendedImagesListDto) SetLogo(v string) {
 	o.Logo.Set(&v)
 }
-
 // SetLogoNil sets the value for Logo to be an explicit nil
 func (o *AwsExtendedImagesListDto) SetLogoNil() {
 	o.Logo.Set(nil)
@@ -348,7 +341,7 @@ func (o *AwsExtendedImagesListDto) UnsetLogo() {
 }
 
 func (o AwsExtendedImagesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -416,3 +409,5 @@ func (v *NullableAwsExtendedImagesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

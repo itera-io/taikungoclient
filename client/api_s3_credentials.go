@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // S3CredentialsAPIService S3CredentialsAPI service
 type S3CredentialsAPIService service
 
 type ApiS3credentialsCreateRequest struct {
-	ctx                            context.Context
-	ApiService                     *S3CredentialsAPIService
+	ctx context.Context
+	ApiService *S3CredentialsAPIService
 	backupCredentialsCreateCommand *BackupCredentialsCreateCommand
 }
 
@@ -41,25 +42,24 @@ func (r ApiS3credentialsCreateRequest) Execute() (*ApiResponse, *http.Response, 
 /*
 S3credentialsCreate Add s3 credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiS3credentialsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiS3credentialsCreateRequest
 */
 func (a *S3CredentialsAPIService) S3credentialsCreate(ctx context.Context) ApiS3credentialsCreateRequest {
 	return ApiS3credentialsCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return ApiResponse
+//  @return ApiResponse
 func (a *S3CredentialsAPIService) S3credentialsCreateExecute(r ApiS3credentialsCreateRequest) (*ApiResponse, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ApiResponse
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ApiResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "S3CredentialsAPIService.S3credentialsCreate")
@@ -138,8 +138,8 @@ func (a *S3CredentialsAPIService) S3credentialsCreateExecute(r ApiS3credentialsC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -149,8 +149,8 @@ func (a *S3CredentialsAPIService) S3credentialsCreateExecute(r ApiS3credentialsC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -160,8 +160,8 @@ func (a *S3CredentialsAPIService) S3credentialsCreateExecute(r ApiS3credentialsC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -171,8 +171,8 @@ func (a *S3CredentialsAPIService) S3credentialsCreateExecute(r ApiS3credentialsC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -182,8 +182,8 @@ func (a *S3CredentialsAPIService) S3credentialsCreateExecute(r ApiS3credentialsC
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -201,9 +201,9 @@ func (a *S3CredentialsAPIService) S3credentialsCreateExecute(r ApiS3credentialsC
 }
 
 type ApiS3credentialsDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *S3CredentialsAPIService
-	id         int32
+	id int32
 }
 
 func (r ApiS3credentialsDeleteRequest) Execute() (*http.Response, error) {
@@ -213,24 +213,24 @@ func (r ApiS3credentialsDeleteRequest) Execute() (*http.Response, error) {
 /*
 S3credentialsDelete Delete s3 credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiS3credentialsDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiS3credentialsDeleteRequest
 */
 func (a *S3CredentialsAPIService) S3credentialsDelete(ctx context.Context, id int32) ApiS3credentialsDeleteRequest {
 	return ApiS3credentialsDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *S3CredentialsAPIService) S3credentialsDeleteExecute(r ApiS3credentialsDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "S3CredentialsAPIService.S3credentialsDelete")
@@ -305,8 +305,8 @@ func (a *S3CredentialsAPIService) S3credentialsDeleteExecute(r ApiS3credentialsD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -316,8 +316,8 @@ func (a *S3CredentialsAPIService) S3credentialsDeleteExecute(r ApiS3credentialsD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -327,8 +327,8 @@ func (a *S3CredentialsAPIService) S3credentialsDeleteExecute(r ApiS3credentialsD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -338,8 +338,8 @@ func (a *S3CredentialsAPIService) S3credentialsDeleteExecute(r ApiS3credentialsD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -349,8 +349,8 @@ func (a *S3CredentialsAPIService) S3credentialsDeleteExecute(r ApiS3credentialsD
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -359,10 +359,10 @@ func (a *S3CredentialsAPIService) S3credentialsDeleteExecute(r ApiS3credentialsD
 }
 
 type ApiS3credentialsDropdownRequest struct {
-	ctx            context.Context
-	ApiService     *S3CredentialsAPIService
+	ctx context.Context
+	ApiService *S3CredentialsAPIService
 	organizationId *int32
-	search         *string
+	search *string
 }
 
 func (r ApiS3credentialsDropdownRequest) OrganizationId(organizationId int32) ApiS3credentialsDropdownRequest {
@@ -382,25 +382,24 @@ func (r ApiS3credentialsDropdownRequest) Execute() ([]BackupCredentialsForOrgani
 /*
 S3credentialsDropdown Retrieve all S3 credentials for organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiS3credentialsDropdownRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiS3credentialsDropdownRequest
 */
 func (a *S3CredentialsAPIService) S3credentialsDropdown(ctx context.Context) ApiS3credentialsDropdownRequest {
 	return ApiS3credentialsDropdownRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []BackupCredentialsForOrganizationEntity
+//  @return []BackupCredentialsForOrganizationEntity
 func (a *S3CredentialsAPIService) S3credentialsDropdownExecute(r ApiS3credentialsDropdownRequest) ([]BackupCredentialsForOrganizationEntity, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []BackupCredentialsForOrganizationEntity
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []BackupCredentialsForOrganizationEntity
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "S3CredentialsAPIService.S3credentialsDropdown")
@@ -480,8 +479,8 @@ func (a *S3CredentialsAPIService) S3credentialsDropdownExecute(r ApiS3credential
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -491,8 +490,8 @@ func (a *S3CredentialsAPIService) S3credentialsDropdownExecute(r ApiS3credential
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -502,8 +501,8 @@ func (a *S3CredentialsAPIService) S3credentialsDropdownExecute(r ApiS3credential
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -513,8 +512,8 @@ func (a *S3CredentialsAPIService) S3credentialsDropdownExecute(r ApiS3credential
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -524,8 +523,8 @@ func (a *S3CredentialsAPIService) S3credentialsDropdownExecute(r ApiS3credential
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -543,16 +542,16 @@ func (a *S3CredentialsAPIService) S3credentialsDropdownExecute(r ApiS3credential
 }
 
 type ApiS3credentialsListRequest struct {
-	ctx            context.Context
-	ApiService     *S3CredentialsAPIService
-	limit          *int32
-	offset         *int32
+	ctx context.Context
+	ApiService *S3CredentialsAPIService
+	limit *int32
+	offset *int32
 	organizationId *int32
-	search         *string
-	searchId       *string
-	id             *int32
-	sortBy         *string
-	sortDirection  *string
+	search *string
+	searchId *string
+	id *int32
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiS3credentialsListRequest) Limit(limit int32) ApiS3credentialsListRequest {
@@ -602,25 +601,24 @@ func (r ApiS3credentialsListRequest) Execute() (*BackupCredentials, *http.Respon
 /*
 S3credentialsList Retrieve all S3 credentials
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiS3credentialsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiS3credentialsListRequest
 */
 func (a *S3CredentialsAPIService) S3credentialsList(ctx context.Context) ApiS3credentialsListRequest {
 	return ApiS3credentialsListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return BackupCredentials
+//  @return BackupCredentials
 func (a *S3CredentialsAPIService) S3credentialsListExecute(r ApiS3credentialsListRequest) (*BackupCredentials, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *BackupCredentials
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *BackupCredentials
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "S3CredentialsAPIService.S3credentialsList")
@@ -718,8 +716,8 @@ func (a *S3CredentialsAPIService) S3credentialsListExecute(r ApiS3credentialsLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -729,8 +727,8 @@ func (a *S3CredentialsAPIService) S3credentialsListExecute(r ApiS3credentialsLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -740,8 +738,8 @@ func (a *S3CredentialsAPIService) S3credentialsListExecute(r ApiS3credentialsLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -751,8 +749,8 @@ func (a *S3CredentialsAPIService) S3credentialsListExecute(r ApiS3credentialsLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -762,8 +760,8 @@ func (a *S3CredentialsAPIService) S3credentialsListExecute(r ApiS3credentialsLis
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -781,8 +779,8 @@ func (a *S3CredentialsAPIService) S3credentialsListExecute(r ApiS3credentialsLis
 }
 
 type ApiS3credentialsLockManagementRequest struct {
-	ctx                      context.Context
-	ApiService               *S3CredentialsAPIService
+	ctx context.Context
+	ApiService *S3CredentialsAPIService
 	backupLockManagerCommand *BackupLockManagerCommand
 }
 
@@ -798,22 +796,22 @@ func (r ApiS3credentialsLockManagementRequest) Execute() (*http.Response, error)
 /*
 S3credentialsLockManagement Lock/unlock s3 credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiS3credentialsLockManagementRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiS3credentialsLockManagementRequest
 */
 func (a *S3CredentialsAPIService) S3credentialsLockManagement(ctx context.Context) ApiS3credentialsLockManagementRequest {
 	return ApiS3credentialsLockManagementRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *S3CredentialsAPIService) S3credentialsLockManagementExecute(r ApiS3credentialsLockManagementRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "S3CredentialsAPIService.S3credentialsLockManagement")
@@ -892,8 +890,8 @@ func (a *S3CredentialsAPIService) S3credentialsLockManagementExecute(r ApiS3cred
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -903,8 +901,8 @@ func (a *S3CredentialsAPIService) S3credentialsLockManagementExecute(r ApiS3cred
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -914,8 +912,8 @@ func (a *S3CredentialsAPIService) S3credentialsLockManagementExecute(r ApiS3cred
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -925,8 +923,8 @@ func (a *S3CredentialsAPIService) S3credentialsLockManagementExecute(r ApiS3cred
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -936,8 +934,8 @@ func (a *S3CredentialsAPIService) S3credentialsLockManagementExecute(r ApiS3cred
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -946,8 +944,8 @@ func (a *S3CredentialsAPIService) S3credentialsLockManagementExecute(r ApiS3cred
 }
 
 type ApiS3credentialsMakeDeafultRequest struct {
-	ctx                      context.Context
-	ApiService               *S3CredentialsAPIService
+	ctx context.Context
+	ApiService *S3CredentialsAPIService
 	backupMakeDefaultCommand *BackupMakeDefaultCommand
 }
 
@@ -963,22 +961,22 @@ func (r ApiS3credentialsMakeDeafultRequest) Execute() (*http.Response, error) {
 /*
 S3credentialsMakeDeafult Make default s3 credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiS3credentialsMakeDeafultRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiS3credentialsMakeDeafultRequest
 */
 func (a *S3CredentialsAPIService) S3credentialsMakeDeafult(ctx context.Context) ApiS3credentialsMakeDeafultRequest {
 	return ApiS3credentialsMakeDeafultRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *S3CredentialsAPIService) S3credentialsMakeDeafultExecute(r ApiS3credentialsMakeDeafultRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "S3CredentialsAPIService.S3credentialsMakeDeafult")
@@ -1057,8 +1055,8 @@ func (a *S3CredentialsAPIService) S3credentialsMakeDeafultExecute(r ApiS3credent
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1068,8 +1066,8 @@ func (a *S3CredentialsAPIService) S3credentialsMakeDeafultExecute(r ApiS3credent
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1079,8 +1077,8 @@ func (a *S3CredentialsAPIService) S3credentialsMakeDeafultExecute(r ApiS3credent
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1090,8 +1088,8 @@ func (a *S3CredentialsAPIService) S3credentialsMakeDeafultExecute(r ApiS3credent
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1101,8 +1099,8 @@ func (a *S3CredentialsAPIService) S3credentialsMakeDeafultExecute(r ApiS3credent
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -1111,8 +1109,8 @@ func (a *S3CredentialsAPIService) S3credentialsMakeDeafultExecute(r ApiS3credent
 }
 
 type ApiS3credentialsUpdateRequest struct {
-	ctx                            context.Context
-	ApiService                     *S3CredentialsAPIService
+	ctx context.Context
+	ApiService *S3CredentialsAPIService
 	backupCredentialsUpdateCommand *BackupCredentialsUpdateCommand
 }
 
@@ -1128,22 +1126,22 @@ func (r ApiS3credentialsUpdateRequest) Execute() (*http.Response, error) {
 /*
 S3credentialsUpdate Update s3 credential
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiS3credentialsUpdateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiS3credentialsUpdateRequest
 */
 func (a *S3CredentialsAPIService) S3credentialsUpdate(ctx context.Context) ApiS3credentialsUpdateRequest {
 	return ApiS3credentialsUpdateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *S3CredentialsAPIService) S3credentialsUpdateExecute(r ApiS3credentialsUpdateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPut
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "S3CredentialsAPIService.S3credentialsUpdate")
@@ -1219,8 +1217,8 @@ func (a *S3CredentialsAPIService) S3credentialsUpdateExecute(r ApiS3credentialsU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -1230,8 +1228,8 @@ func (a *S3CredentialsAPIService) S3credentialsUpdateExecute(r ApiS3credentialsU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -1241,8 +1239,8 @@ func (a *S3CredentialsAPIService) S3credentialsUpdateExecute(r ApiS3credentialsU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -1252,8 +1250,8 @@ func (a *S3CredentialsAPIService) S3credentialsUpdateExecute(r ApiS3credentialsU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -1263,8 +1261,8 @@ func (a *S3CredentialsAPIService) S3credentialsUpdateExecute(r ApiS3credentialsU
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}

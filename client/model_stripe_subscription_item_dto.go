@@ -21,8 +21,8 @@ var _ MappedNullable = &StripeSubscriptionItemDto{}
 // StripeSubscriptionItemDto struct for StripeSubscriptionItemDto
 type StripeSubscriptionItemDto struct {
 	SubscriptionItemId NullableString `json:"subscriptionItemId,omitempty"`
-	PriceId            NullableString `json:"priceId,omitempty"`
-	ProductId          NullableString `json:"productId,omitempty"`
+	PriceId NullableString `json:"priceId,omitempty"`
+	ProductId NullableString `json:"productId,omitempty"`
 }
 
 // NewStripeSubscriptionItemDto instantiates a new StripeSubscriptionItemDto object
@@ -74,7 +74,6 @@ func (o *StripeSubscriptionItemDto) HasSubscriptionItemId() bool {
 func (o *StripeSubscriptionItemDto) SetSubscriptionItemId(v string) {
 	o.SubscriptionItemId.Set(&v)
 }
-
 // SetSubscriptionItemIdNil sets the value for SubscriptionItemId to be an explicit nil
 func (o *StripeSubscriptionItemDto) SetSubscriptionItemIdNil() {
 	o.SubscriptionItemId.Set(nil)
@@ -117,7 +116,6 @@ func (o *StripeSubscriptionItemDto) HasPriceId() bool {
 func (o *StripeSubscriptionItemDto) SetPriceId(v string) {
 	o.PriceId.Set(&v)
 }
-
 // SetPriceIdNil sets the value for PriceId to be an explicit nil
 func (o *StripeSubscriptionItemDto) SetPriceIdNil() {
 	o.PriceId.Set(nil)
@@ -160,7 +158,6 @@ func (o *StripeSubscriptionItemDto) HasProductId() bool {
 func (o *StripeSubscriptionItemDto) SetProductId(v string) {
 	o.ProductId.Set(&v)
 }
-
 // SetProductIdNil sets the value for ProductId to be an explicit nil
 func (o *StripeSubscriptionItemDto) SetProductIdNil() {
 	o.ProductId.Set(nil)
@@ -172,7 +169,7 @@ func (o *StripeSubscriptionItemDto) UnsetProductId() {
 }
 
 func (o StripeSubscriptionItemDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableStripeSubscriptionItemDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

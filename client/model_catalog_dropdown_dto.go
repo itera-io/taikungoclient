@@ -20,9 +20,9 @@ var _ MappedNullable = &CatalogDropdownDto{}
 
 // CatalogDropdownDto struct for CatalogDropdownDto
 type CatalogDropdownDto struct {
-	Id         *int32         `json:"id,omitempty"`
-	Name       NullableString `json:"name,omitempty"`
-	PackageIds []string       `json:"packageIds,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	PackageIds []string `json:"packageIds,omitempty"`
 }
 
 // NewCatalogDropdownDto instantiates a new CatalogDropdownDto object
@@ -106,7 +106,6 @@ func (o *CatalogDropdownDto) HasName() bool {
 func (o *CatalogDropdownDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CatalogDropdownDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -151,7 +150,7 @@ func (o *CatalogDropdownDto) SetPackageIds(v []string) {
 }
 
 func (o CatalogDropdownDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -207,3 +206,5 @@ func (v *NullableCatalogDropdownDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

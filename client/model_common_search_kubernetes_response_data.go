@@ -20,11 +20,11 @@ var _ MappedNullable = &CommonSearchKubernetesResponseData{}
 
 // CommonSearchKubernetesResponseData struct for CommonSearchKubernetesResponseData
 type CommonSearchKubernetesResponseData struct {
-	MetadataName     NullableString `json:"metadataName,omitempty"`
-	Namespace        NullableString `json:"namespace,omitempty"`
-	ProjectId        *int32         `json:"projectId,omitempty"`
-	ProjectName      NullableString `json:"projectName,omitempty"`
-	OrganizationId   *int32         `json:"organizationId,omitempty"`
+	MetadataName NullableString `json:"metadataName,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 }
 
@@ -77,7 +77,6 @@ func (o *CommonSearchKubernetesResponseData) HasMetadataName() bool {
 func (o *CommonSearchKubernetesResponseData) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *CommonSearchKubernetesResponseData) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -120,7 +119,6 @@ func (o *CommonSearchKubernetesResponseData) HasNamespace() bool {
 func (o *CommonSearchKubernetesResponseData) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *CommonSearchKubernetesResponseData) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -195,7 +193,6 @@ func (o *CommonSearchKubernetesResponseData) HasProjectName() bool {
 func (o *CommonSearchKubernetesResponseData) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *CommonSearchKubernetesResponseData) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -270,7 +267,6 @@ func (o *CommonSearchKubernetesResponseData) HasOrganizationName() bool {
 func (o *CommonSearchKubernetesResponseData) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *CommonSearchKubernetesResponseData) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -282,7 +278,7 @@ func (o *CommonSearchKubernetesResponseData) UnsetOrganizationName() {
 }
 
 func (o CommonSearchKubernetesResponseData) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -347,3 +343,5 @@ func (v *NullableCommonSearchKubernetesResponseData) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

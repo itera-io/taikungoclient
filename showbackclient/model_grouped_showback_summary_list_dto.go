@@ -20,10 +20,10 @@ var _ MappedNullable = &GroupedShowbackSummaryListDto{}
 
 // GroupedShowbackSummaryListDto struct for GroupedShowbackSummaryListDto
 type GroupedShowbackSummaryListDto struct {
-	RuleId     *int32                               `json:"ruleId,omitempty"`
-	RuleName   NullableString                       `json:"ruleName,omitempty"`
-	TotalPrice *float64                             `json:"totalPrice,omitempty"`
-	Projects   []GroupedProjectForShowbackSummary   `json:"projects,omitempty"`
+	RuleId *int32 `json:"ruleId,omitempty"`
+	RuleName NullableString `json:"ruleName,omitempty"`
+	TotalPrice *float64 `json:"totalPrice,omitempty"`
+	Projects []GroupedProjectForShowbackSummary `json:"projects,omitempty"`
 	Credential *GroupedCredentialForShowbackSummary `json:"credential,omitempty"`
 }
 
@@ -108,7 +108,6 @@ func (o *GroupedShowbackSummaryListDto) HasRuleName() bool {
 func (o *GroupedShowbackSummaryListDto) SetRuleName(v string) {
 	o.RuleName.Set(&v)
 }
-
 // SetRuleNameNil sets the value for RuleName to be an explicit nil
 func (o *GroupedShowbackSummaryListDto) SetRuleNameNil() {
 	o.RuleName.Set(nil)
@@ -217,7 +216,7 @@ func (o *GroupedShowbackSummaryListDto) SetCredential(v GroupedCredentialForShow
 }
 
 func (o GroupedShowbackSummaryListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -279,3 +278,5 @@ func (v *NullableGroupedShowbackSummaryListDto) UnmarshalJSON(src []byte) error 
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

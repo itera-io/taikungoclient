@@ -20,15 +20,15 @@ var _ MappedNullable = &CreateTanzuCommand{}
 
 // CreateTanzuCommand struct for CreateTanzuCommand
 type CreateTanzuCommand struct {
-	OrganizationId NullableInt32  `json:"organizationId,omitempty"`
-	Name           NullableString `json:"name,omitempty"`
-	Username       NullableString `json:"username,omitempty"`
-	Url            NullableString `json:"url,omitempty"`
-	Password       NullableString `json:"password,omitempty"`
-	VolumeType     NullableString `json:"volumeType,omitempty"`
-	Namespace      NullableString `json:"namespace,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Password NullableString `json:"password,omitempty"`
+	VolumeType NullableString `json:"volumeType,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
 	TanzuContinent NullableString `json:"tanzuContinent,omitempty"`
-	Port           NullableInt32  `json:"port,omitempty"`
+	Port NullableInt32 `json:"port,omitempty"`
 }
 
 // NewCreateTanzuCommand instantiates a new CreateTanzuCommand object
@@ -80,7 +80,6 @@ func (o *CreateTanzuCommand) HasOrganizationId() bool {
 func (o *CreateTanzuCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateTanzuCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -123,7 +122,6 @@ func (o *CreateTanzuCommand) HasName() bool {
 func (o *CreateTanzuCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateTanzuCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -166,7 +164,6 @@ func (o *CreateTanzuCommand) HasUsername() bool {
 func (o *CreateTanzuCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-
 // SetUsernameNil sets the value for Username to be an explicit nil
 func (o *CreateTanzuCommand) SetUsernameNil() {
 	o.Username.Set(nil)
@@ -209,7 +206,6 @@ func (o *CreateTanzuCommand) HasUrl() bool {
 func (o *CreateTanzuCommand) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-
 // SetUrlNil sets the value for Url to be an explicit nil
 func (o *CreateTanzuCommand) SetUrlNil() {
 	o.Url.Set(nil)
@@ -252,7 +248,6 @@ func (o *CreateTanzuCommand) HasPassword() bool {
 func (o *CreateTanzuCommand) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-
 // SetPasswordNil sets the value for Password to be an explicit nil
 func (o *CreateTanzuCommand) SetPasswordNil() {
 	o.Password.Set(nil)
@@ -295,7 +290,6 @@ func (o *CreateTanzuCommand) HasVolumeType() bool {
 func (o *CreateTanzuCommand) SetVolumeType(v string) {
 	o.VolumeType.Set(&v)
 }
-
 // SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
 func (o *CreateTanzuCommand) SetVolumeTypeNil() {
 	o.VolumeType.Set(nil)
@@ -338,7 +332,6 @@ func (o *CreateTanzuCommand) HasNamespace() bool {
 func (o *CreateTanzuCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *CreateTanzuCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -381,7 +374,6 @@ func (o *CreateTanzuCommand) HasTanzuContinent() bool {
 func (o *CreateTanzuCommand) SetTanzuContinent(v string) {
 	o.TanzuContinent.Set(&v)
 }
-
 // SetTanzuContinentNil sets the value for TanzuContinent to be an explicit nil
 func (o *CreateTanzuCommand) SetTanzuContinentNil() {
 	o.TanzuContinent.Set(nil)
@@ -424,7 +416,6 @@ func (o *CreateTanzuCommand) HasPort() bool {
 func (o *CreateTanzuCommand) SetPort(v int32) {
 	o.Port.Set(&v)
 }
-
 // SetPortNil sets the value for Port to be an explicit nil
 func (o *CreateTanzuCommand) SetPortNil() {
 	o.Port.Set(nil)
@@ -436,7 +427,7 @@ func (o *CreateTanzuCommand) UnsetPort() {
 }
 
 func (o CreateTanzuCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -510,3 +501,5 @@ func (v *NullableCreateTanzuCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

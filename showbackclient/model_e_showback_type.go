@@ -21,7 +21,7 @@ type EShowbackType string
 
 // List of EShowbackType
 const (
-	ESHOWBACKTYPE_GENERAL  EShowbackType = "General"
+	ESHOWBACKTYPE_GENERAL EShowbackType = "General"
 	ESHOWBACKTYPE_EXTERNAL EShowbackType = "External"
 )
 
@@ -109,3 +109,4 @@ func (v *NullableEShowbackType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

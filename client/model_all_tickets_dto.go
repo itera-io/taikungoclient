@@ -20,20 +20,20 @@ var _ MappedNullable = &AllTicketsDto{}
 
 // AllTicketsDto struct for AllTicketsDto
 type AllTicketsDto struct {
-	Id                NullableString `json:"id,omitempty"`
-	Name              NullableString `json:"name,omitempty"`
-	Status            NullableString `json:"status,omitempty"`
-	CreatedAt         NullableString `json:"createdAt,omitempty"`
-	OrganizationId    *int32         `json:"organizationId,omitempty"`
-	OrganizationName  NullableString `json:"organizationName,omitempty"`
-	CreatedBy         NullableString `json:"createdBy,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
 	CurrentStatusDate NullableString `json:"currentStatusDate,omitempty"`
-	LastModifier      NullableString `json:"lastModifier,omitempty"`
-	Number            *int32         `json:"number,omitempty"`
-	PartnerLogo       NullableString `json:"partnerLogo,omitempty"`
-	Description       NullableString `json:"description,omitempty"`
-	PartnerName       NullableString `json:"partnerName,omitempty"`
-	UserId            NullableString `json:"userId,omitempty"`
+	LastModifier NullableString `json:"lastModifier,omitempty"`
+	Number *int32 `json:"number,omitempty"`
+	PartnerLogo NullableString `json:"partnerLogo,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	PartnerName NullableString `json:"partnerName,omitempty"`
+	UserId NullableString `json:"userId,omitempty"`
 }
 
 // NewAllTicketsDto instantiates a new AllTicketsDto object
@@ -85,7 +85,6 @@ func (o *AllTicketsDto) HasId() bool {
 func (o *AllTicketsDto) SetId(v string) {
 	o.Id.Set(&v)
 }
-
 // SetIdNil sets the value for Id to be an explicit nil
 func (o *AllTicketsDto) SetIdNil() {
 	o.Id.Set(nil)
@@ -128,7 +127,6 @@ func (o *AllTicketsDto) HasName() bool {
 func (o *AllTicketsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AllTicketsDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -171,7 +169,6 @@ func (o *AllTicketsDto) HasStatus() bool {
 func (o *AllTicketsDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *AllTicketsDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -214,7 +211,6 @@ func (o *AllTicketsDto) HasCreatedAt() bool {
 func (o *AllTicketsDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *AllTicketsDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -289,7 +285,6 @@ func (o *AllTicketsDto) HasOrganizationName() bool {
 func (o *AllTicketsDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *AllTicketsDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -332,7 +327,6 @@ func (o *AllTicketsDto) HasCreatedBy() bool {
 func (o *AllTicketsDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *AllTicketsDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -375,7 +369,6 @@ func (o *AllTicketsDto) HasCurrentStatusDate() bool {
 func (o *AllTicketsDto) SetCurrentStatusDate(v string) {
 	o.CurrentStatusDate.Set(&v)
 }
-
 // SetCurrentStatusDateNil sets the value for CurrentStatusDate to be an explicit nil
 func (o *AllTicketsDto) SetCurrentStatusDateNil() {
 	o.CurrentStatusDate.Set(nil)
@@ -418,7 +411,6 @@ func (o *AllTicketsDto) HasLastModifier() bool {
 func (o *AllTicketsDto) SetLastModifier(v string) {
 	o.LastModifier.Set(&v)
 }
-
 // SetLastModifierNil sets the value for LastModifier to be an explicit nil
 func (o *AllTicketsDto) SetLastModifierNil() {
 	o.LastModifier.Set(nil)
@@ -493,7 +485,6 @@ func (o *AllTicketsDto) HasPartnerLogo() bool {
 func (o *AllTicketsDto) SetPartnerLogo(v string) {
 	o.PartnerLogo.Set(&v)
 }
-
 // SetPartnerLogoNil sets the value for PartnerLogo to be an explicit nil
 func (o *AllTicketsDto) SetPartnerLogoNil() {
 	o.PartnerLogo.Set(nil)
@@ -536,7 +527,6 @@ func (o *AllTicketsDto) HasDescription() bool {
 func (o *AllTicketsDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-
 // SetDescriptionNil sets the value for Description to be an explicit nil
 func (o *AllTicketsDto) SetDescriptionNil() {
 	o.Description.Set(nil)
@@ -579,7 +569,6 @@ func (o *AllTicketsDto) HasPartnerName() bool {
 func (o *AllTicketsDto) SetPartnerName(v string) {
 	o.PartnerName.Set(&v)
 }
-
 // SetPartnerNameNil sets the value for PartnerName to be an explicit nil
 func (o *AllTicketsDto) SetPartnerNameNil() {
 	o.PartnerName.Set(nil)
@@ -622,7 +611,6 @@ func (o *AllTicketsDto) HasUserId() bool {
 func (o *AllTicketsDto) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
-
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *AllTicketsDto) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -634,7 +622,7 @@ func (o *AllTicketsDto) UnsetUserId() {
 }
 
 func (o AllTicketsDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -723,3 +711,5 @@ func (v *NullableAllTicketsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

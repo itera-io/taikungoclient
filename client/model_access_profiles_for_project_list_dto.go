@@ -20,16 +20,16 @@ var _ MappedNullable = &AccessProfilesForProjectListDto{}
 
 // AccessProfilesForProjectListDto struct for AccessProfilesForProjectListDto
 type AccessProfilesForProjectListDto struct {
-	Id               *int32               `json:"id,omitempty"`
-	Name             NullableString       `json:"name,omitempty"`
-	HttpProxy        NullableString       `json:"httpProxy,omitempty"`
-	OrganizationId   NullableInt32        `json:"organizationId,omitempty"`
-	OrganizationName NullableString       `json:"organizationName,omitempty"`
-	Revision         *int32               `json:"revision,omitempty"`
-	SshUsers         []SshUserListDto     `json:"sshUsers,omitempty"`
-	DnsServers       []DnsServerListDto   `json:"dnsServers,omitempty"`
-	NtpServers       []NtpServerListDto   `json:"ntpServers,omitempty"`
-	AllowedHosts     []AllowedHostListDto `json:"allowedHosts,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	HttpProxy NullableString `json:"httpProxy,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	Revision *int32 `json:"revision,omitempty"`
+	SshUsers []SshUserListDto `json:"sshUsers,omitempty"`
+	DnsServers []DnsServerListDto `json:"dnsServers,omitempty"`
+	NtpServers []NtpServerListDto `json:"ntpServers,omitempty"`
+	AllowedHosts []AllowedHostListDto `json:"allowedHosts,omitempty"`
 }
 
 // NewAccessProfilesForProjectListDto instantiates a new AccessProfilesForProjectListDto object
@@ -113,7 +113,6 @@ func (o *AccessProfilesForProjectListDto) HasName() bool {
 func (o *AccessProfilesForProjectListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *AccessProfilesForProjectListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -156,7 +155,6 @@ func (o *AccessProfilesForProjectListDto) HasHttpProxy() bool {
 func (o *AccessProfilesForProjectListDto) SetHttpProxy(v string) {
 	o.HttpProxy.Set(&v)
 }
-
 // SetHttpProxyNil sets the value for HttpProxy to be an explicit nil
 func (o *AccessProfilesForProjectListDto) SetHttpProxyNil() {
 	o.HttpProxy.Set(nil)
@@ -199,7 +197,6 @@ func (o *AccessProfilesForProjectListDto) HasOrganizationId() bool {
 func (o *AccessProfilesForProjectListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *AccessProfilesForProjectListDto) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -242,7 +239,6 @@ func (o *AccessProfilesForProjectListDto) HasOrganizationName() bool {
 func (o *AccessProfilesForProjectListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *AccessProfilesForProjectListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -418,7 +414,7 @@ func (o *AccessProfilesForProjectListDto) SetAllowedHosts(v []AllowedHostListDto
 }
 
 func (o AccessProfilesForProjectListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -495,3 +491,5 @@ func (v *NullableAccessProfilesForProjectListDto) UnmarshalJSON(src []byte) erro
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -20,9 +20,9 @@ var _ MappedNullable = &SshUsersListDto{}
 
 // SshUsersListDto struct for SshUsersListDto
 type SshUsersListDto struct {
-	Id                *int32         `json:"id,omitempty"`
-	Name              NullableString `json:"name,omitempty"`
-	SshPublicKey      NullableString `json:"sshPublicKey,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
 	AccessProfileName NullableString `json:"accessProfileName,omitempty"`
 }
 
@@ -107,7 +107,6 @@ func (o *SshUsersListDto) HasName() bool {
 func (o *SshUsersListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *SshUsersListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -150,7 +149,6 @@ func (o *SshUsersListDto) HasSshPublicKey() bool {
 func (o *SshUsersListDto) SetSshPublicKey(v string) {
 	o.SshPublicKey.Set(&v)
 }
-
 // SetSshPublicKeyNil sets the value for SshPublicKey to be an explicit nil
 func (o *SshUsersListDto) SetSshPublicKeyNil() {
 	o.SshPublicKey.Set(nil)
@@ -193,7 +191,6 @@ func (o *SshUsersListDto) HasAccessProfileName() bool {
 func (o *SshUsersListDto) SetAccessProfileName(v string) {
 	o.AccessProfileName.Set(&v)
 }
-
 // SetAccessProfileNameNil sets the value for AccessProfileName to be an explicit nil
 func (o *SshUsersListDto) SetAccessProfileNameNil() {
 	o.AccessProfileName.Set(nil)
@@ -205,7 +202,7 @@ func (o *SshUsersListDto) UnsetAccessProfileName() {
 }
 
 func (o SshUsersListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -264,3 +261,5 @@ func (v *NullableSshUsersListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

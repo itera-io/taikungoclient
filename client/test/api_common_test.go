@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_CommonAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_CommonAPIService(t *testing.T) {
 
 	t.Run("Test CommonAPIService CommonCountries", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CommonAPI.CommonCountries(context.Background()).Execute()
 
@@ -36,7 +36,7 @@ func Test_taikuncore_CommonAPIService(t *testing.T) {
 
 	t.Run("Test CommonAPIService CommonEnumValues", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CommonAPI.CommonEnumValues(context.Background()).Execute()
 
@@ -48,7 +48,7 @@ func Test_taikuncore_CommonAPIService(t *testing.T) {
 
 	t.Run("Test CommonAPIService CommonIpRangeCount", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CommonAPI.CommonIpRangeCount(context.Background()).Execute()
 
@@ -60,7 +60,7 @@ func Test_taikuncore_CommonAPIService(t *testing.T) {
 
 	t.Run("Test CommonAPIService CommonIpRangeList", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.CommonAPI.CommonIpRangeList(context.Background()).Execute()
 
@@ -72,7 +72,7 @@ func Test_taikuncore_CommonAPIService(t *testing.T) {
 
 	t.Run("Test CommonAPIService CommonSortingElements", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var type_ string
 

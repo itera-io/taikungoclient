@@ -20,35 +20,35 @@ var _ MappedNullable = &ServerChartDto{}
 
 // ServerChartDto struct for ServerChartDto
 type ServerChartDto struct {
-	Aws                 []ServerCommonRecordDto `json:"aws,omitempty"`
-	Azure               []ServerCommonRecordDto `json:"azure,omitempty"`
-	Openstack           []ServerCommonRecordDto `json:"openstack,omitempty"`
-	Google              []ServerCommonRecordDto `json:"google,omitempty"`
-	Tanzu               []ServerCommonRecordDto `json:"tanzu,omitempty"`
-	Proxmox             []ServerCommonRecordDto `json:"proxmox,omitempty"`
-	Openshift           []ServerCommonRecordDto `json:"openshift,omitempty"`
-	Failed              []ServerCommonRecordDto `json:"failed,omitempty"`
-	Succeeded           []ServerCommonRecordDto `json:"succeeded,omitempty"`
-	Waiting             []ServerCommonRecordDto `json:"waiting,omitempty"`
-	Updating            []ServerCommonRecordDto `json:"updating,omitempty"`
-	Deleting            []ServerCommonRecordDto `json:"deleting,omitempty"`
-	Purging             []ServerCommonRecordDto `json:"purging,omitempty"`
-	TotalCount          *int32                  `json:"totalCount,omitempty"`
-	TotalCpu            *int32                  `json:"totalCpu,omitempty"`
-	TotalRam            *int64                  `json:"totalRam,omitempty"`
-	TotalDiskSize       *int64                  `json:"totalDiskSize,omitempty"`
-	TotalFailedCount    *int32                  `json:"totalFailedCount,omitempty"`
-	TotalSucceededCount *int32                  `json:"totalSucceededCount,omitempty"`
-	TotalUpdatingCount  *int32                  `json:"totalUpdatingCount,omitempty"`
-	TotalPendingCount   *int32                  `json:"totalPendingCount,omitempty"`
-	TotalAwsCount       *int32                  `json:"totalAwsCount,omitempty"`
-	TotalAzureCount     *int32                  `json:"totalAzureCount,omitempty"`
-	TotalOpenstackCount *int32                  `json:"totalOpenstackCount,omitempty"`
-	TotalGoogleCount    *int32                  `json:"totalGoogleCount,omitempty"`
-	TotalTanzuCount     *int32                  `json:"totalTanzuCount,omitempty"`
-	TotalOpenshiftCount *int32                  `json:"totalOpenshiftCount,omitempty"`
-	TotalProxmoxCount   *int32                  `json:"totalProxmoxCount,omitempty"`
-	UsedResources       []UserResourceChartDto  `json:"usedResources,omitempty"`
+	Aws []ServerCommonRecordDto `json:"aws,omitempty"`
+	Azure []ServerCommonRecordDto `json:"azure,omitempty"`
+	Openstack []ServerCommonRecordDto `json:"openstack,omitempty"`
+	Google []ServerCommonRecordDto `json:"google,omitempty"`
+	Tanzu []ServerCommonRecordDto `json:"tanzu,omitempty"`
+	Proxmox []ServerCommonRecordDto `json:"proxmox,omitempty"`
+	Openshift []ServerCommonRecordDto `json:"openshift,omitempty"`
+	Failed []ServerCommonRecordDto `json:"failed,omitempty"`
+	Succeeded []ServerCommonRecordDto `json:"succeeded,omitempty"`
+	Waiting []ServerCommonRecordDto `json:"waiting,omitempty"`
+	Updating []ServerCommonRecordDto `json:"updating,omitempty"`
+	Deleting []ServerCommonRecordDto `json:"deleting,omitempty"`
+	Purging []ServerCommonRecordDto `json:"purging,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
+	TotalCpu *int32 `json:"totalCpu,omitempty"`
+	TotalRam *int64 `json:"totalRam,omitempty"`
+	TotalDiskSize *int64 `json:"totalDiskSize,omitempty"`
+	TotalFailedCount *int32 `json:"totalFailedCount,omitempty"`
+	TotalSucceededCount *int32 `json:"totalSucceededCount,omitempty"`
+	TotalUpdatingCount *int32 `json:"totalUpdatingCount,omitempty"`
+	TotalPendingCount *int32 `json:"totalPendingCount,omitempty"`
+	TotalAwsCount *int32 `json:"totalAwsCount,omitempty"`
+	TotalAzureCount *int32 `json:"totalAzureCount,omitempty"`
+	TotalOpenstackCount *int32 `json:"totalOpenstackCount,omitempty"`
+	TotalGoogleCount *int32 `json:"totalGoogleCount,omitempty"`
+	TotalTanzuCount *int32 `json:"totalTanzuCount,omitempty"`
+	TotalOpenshiftCount *int32 `json:"totalOpenshiftCount,omitempty"`
+	TotalProxmoxCount *int32 `json:"totalProxmoxCount,omitempty"`
+	UsedResources []UserResourceChartDto `json:"usedResources,omitempty"`
 }
 
 // NewServerChartDto instantiates a new ServerChartDto object
@@ -1011,7 +1011,7 @@ func (o *ServerChartDto) SetUsedResources(v []UserResourceChartDto) {
 }
 
 func (o ServerChartDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -1145,3 +1145,5 @@ func (v *NullableServerChartDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -21,7 +21,7 @@ type CloudRole string
 
 // List of CloudRole
 const (
-	CLOUDROLE_BASTION    CloudRole = "Bastion"
+	CLOUDROLE_BASTION CloudRole = "Bastion"
 	CLOUDROLE_KUBEMASTER CloudRole = "Kubemaster"
 	CLOUDROLE_KUBEWORKER CloudRole = "Kubeworker"
 	CLOUDROLE_ALL_IN_ONE CloudRole = "AllInOne"
@@ -113,3 +113,4 @@ func (v *NullableCloudRole) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

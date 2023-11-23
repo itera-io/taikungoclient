@@ -20,9 +20,9 @@ var _ MappedNullable = &ShowbackProjectsListDto{}
 
 // ShowbackProjectsListDto struct for ShowbackProjectsListDto
 type ShowbackProjectsListDto struct {
-	Id                 *int32         `json:"id,omitempty"`
-	Name               NullableString `json:"name,omitempty"`
-	MonitoringUrl      NullableString `json:"monitoringUrl,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	MonitoringUrl NullableString `json:"monitoringUrl,omitempty"`
 	MonitoringUsername NullableString `json:"monitoringUsername,omitempty"`
 	MonitoringPassword NullableString `json:"monitoringPassword,omitempty"`
 }
@@ -108,7 +108,6 @@ func (o *ShowbackProjectsListDto) HasName() bool {
 func (o *ShowbackProjectsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ShowbackProjectsListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -151,7 +150,6 @@ func (o *ShowbackProjectsListDto) HasMonitoringUrl() bool {
 func (o *ShowbackProjectsListDto) SetMonitoringUrl(v string) {
 	o.MonitoringUrl.Set(&v)
 }
-
 // SetMonitoringUrlNil sets the value for MonitoringUrl to be an explicit nil
 func (o *ShowbackProjectsListDto) SetMonitoringUrlNil() {
 	o.MonitoringUrl.Set(nil)
@@ -194,7 +192,6 @@ func (o *ShowbackProjectsListDto) HasMonitoringUsername() bool {
 func (o *ShowbackProjectsListDto) SetMonitoringUsername(v string) {
 	o.MonitoringUsername.Set(&v)
 }
-
 // SetMonitoringUsernameNil sets the value for MonitoringUsername to be an explicit nil
 func (o *ShowbackProjectsListDto) SetMonitoringUsernameNil() {
 	o.MonitoringUsername.Set(nil)
@@ -237,7 +234,6 @@ func (o *ShowbackProjectsListDto) HasMonitoringPassword() bool {
 func (o *ShowbackProjectsListDto) SetMonitoringPassword(v string) {
 	o.MonitoringPassword.Set(&v)
 }
-
 // SetMonitoringPasswordNil sets the value for MonitoringPassword to be an explicit nil
 func (o *ShowbackProjectsListDto) SetMonitoringPasswordNil() {
 	o.MonitoringPassword.Set(nil)
@@ -249,7 +245,7 @@ func (o *ShowbackProjectsListDto) UnsetMonitoringPassword() {
 }
 
 func (o ShowbackProjectsListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -311,3 +307,5 @@ func (v *NullableShowbackProjectsListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

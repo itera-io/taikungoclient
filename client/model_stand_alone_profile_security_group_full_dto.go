@@ -20,13 +20,13 @@ var _ MappedNullable = &StandAloneProfileSecurityGroupFullDto{}
 
 // StandAloneProfileSecurityGroupFullDto struct for StandAloneProfileSecurityGroupFullDto
 type StandAloneProfileSecurityGroupFullDto struct {
-	Id             *int32         `json:"id,omitempty"`
-	Name           NullableString `json:"name,omitempty"`
-	Protocol       NullableString `json:"protocol,omitempty"`
-	PortMinRange   *int32         `json:"portMinRange,omitempty"`
-	PortMaxRange   *int32         `json:"portMaxRange,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Protocol NullableString `json:"protocol,omitempty"`
+	PortMinRange *int32 `json:"portMinRange,omitempty"`
+	PortMaxRange *int32 `json:"portMaxRange,omitempty"`
 	RemoteIpPrefix NullableString `json:"remoteIpPrefix,omitempty"`
-	Priority       NullableInt32  `json:"priority,omitempty"`
+	Priority NullableInt32 `json:"priority,omitempty"`
 }
 
 // NewStandAloneProfileSecurityGroupFullDto instantiates a new StandAloneProfileSecurityGroupFullDto object
@@ -110,7 +110,6 @@ func (o *StandAloneProfileSecurityGroupFullDto) HasName() bool {
 func (o *StandAloneProfileSecurityGroupFullDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandAloneProfileSecurityGroupFullDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -153,7 +152,6 @@ func (o *StandAloneProfileSecurityGroupFullDto) HasProtocol() bool {
 func (o *StandAloneProfileSecurityGroupFullDto) SetProtocol(v string) {
 	o.Protocol.Set(&v)
 }
-
 // SetProtocolNil sets the value for Protocol to be an explicit nil
 func (o *StandAloneProfileSecurityGroupFullDto) SetProtocolNil() {
 	o.Protocol.Set(nil)
@@ -260,7 +258,6 @@ func (o *StandAloneProfileSecurityGroupFullDto) HasRemoteIpPrefix() bool {
 func (o *StandAloneProfileSecurityGroupFullDto) SetRemoteIpPrefix(v string) {
 	o.RemoteIpPrefix.Set(&v)
 }
-
 // SetRemoteIpPrefixNil sets the value for RemoteIpPrefix to be an explicit nil
 func (o *StandAloneProfileSecurityGroupFullDto) SetRemoteIpPrefixNil() {
 	o.RemoteIpPrefix.Set(nil)
@@ -303,7 +300,6 @@ func (o *StandAloneProfileSecurityGroupFullDto) HasPriority() bool {
 func (o *StandAloneProfileSecurityGroupFullDto) SetPriority(v int32) {
 	o.Priority.Set(&v)
 }
-
 // SetPriorityNil sets the value for Priority to be an explicit nil
 func (o *StandAloneProfileSecurityGroupFullDto) SetPriorityNil() {
 	o.Priority.Set(nil)
@@ -315,7 +311,7 @@ func (o *StandAloneProfileSecurityGroupFullDto) UnsetPriority() {
 }
 
 func (o StandAloneProfileSecurityGroupFullDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -383,3 +379,5 @@ func (v *NullableStandAloneProfileSecurityGroupFullDto) UnmarshalJSON(src []byte
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

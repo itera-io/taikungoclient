@@ -21,7 +21,7 @@ var _ MappedNullable = &EditArticleCommand{}
 // EditArticleCommand struct for EditArticleCommand
 type EditArticleCommand struct {
 	MessageId NullableString `json:"messageId,omitempty"`
-	Body      NullableString `json:"body,omitempty"`
+	Body NullableString `json:"body,omitempty"`
 }
 
 // NewEditArticleCommand instantiates a new EditArticleCommand object
@@ -73,7 +73,6 @@ func (o *EditArticleCommand) HasMessageId() bool {
 func (o *EditArticleCommand) SetMessageId(v string) {
 	o.MessageId.Set(&v)
 }
-
 // SetMessageIdNil sets the value for MessageId to be an explicit nil
 func (o *EditArticleCommand) SetMessageIdNil() {
 	o.MessageId.Set(nil)
@@ -116,7 +115,6 @@ func (o *EditArticleCommand) HasBody() bool {
 func (o *EditArticleCommand) SetBody(v string) {
 	o.Body.Set(&v)
 }
-
 // SetBodyNil sets the value for Body to be an explicit nil
 func (o *EditArticleCommand) SetBodyNil() {
 	o.Body.Set(nil)
@@ -128,7 +126,7 @@ func (o *EditArticleCommand) UnsetBody() {
 }
 
 func (o EditArticleCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableEditArticleCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

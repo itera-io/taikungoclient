@@ -20,8 +20,8 @@ var _ MappedNullable = &GroupedShowbackSummariesByProjectDto{}
 
 // GroupedShowbackSummariesByProjectDto struct for GroupedShowbackSummariesByProjectDto
 type GroupedShowbackSummariesByProjectDto struct {
-	ProjectName NullableString  `json:"projectName,omitempty"`
-	TotalPrice  NullableFloat64 `json:"totalPrice,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	TotalPrice NullableFloat64 `json:"totalPrice,omitempty"`
 }
 
 // NewGroupedShowbackSummariesByProjectDto instantiates a new GroupedShowbackSummariesByProjectDto object
@@ -73,7 +73,6 @@ func (o *GroupedShowbackSummariesByProjectDto) HasProjectName() bool {
 func (o *GroupedShowbackSummariesByProjectDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *GroupedShowbackSummariesByProjectDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -116,7 +115,6 @@ func (o *GroupedShowbackSummariesByProjectDto) HasTotalPrice() bool {
 func (o *GroupedShowbackSummariesByProjectDto) SetTotalPrice(v float64) {
 	o.TotalPrice.Set(&v)
 }
-
 // SetTotalPriceNil sets the value for TotalPrice to be an explicit nil
 func (o *GroupedShowbackSummariesByProjectDto) SetTotalPriceNil() {
 	o.TotalPrice.Set(nil)
@@ -128,7 +126,7 @@ func (o *GroupedShowbackSummariesByProjectDto) UnsetTotalPrice() {
 }
 
 func (o GroupedShowbackSummariesByProjectDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -181,3 +179,5 @@ func (v *NullableGroupedShowbackSummariesByProjectDto) UnmarshalJSON(src []byte)
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

@@ -19,12 +19,13 @@ import (
 	"net/url"
 )
 
+
 // PrometheusBillingsAPIService PrometheusBillingsAPI service
 type PrometheusBillingsAPIService service
 
 type ApiPrometheusbillingsCreateRequest struct {
-	ctx                            context.Context
-	ApiService                     *PrometheusBillingsAPIService
+	ctx context.Context
+	ApiService *PrometheusBillingsAPIService
 	prometheusBillingCreateCommand *PrometheusBillingCreateCommand
 }
 
@@ -40,22 +41,22 @@ func (r ApiPrometheusbillingsCreateRequest) Execute() (*http.Response, error) {
 /*
 PrometheusbillingsCreate Add prometheus billing
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPrometheusbillingsCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPrometheusbillingsCreateRequest
 */
 func (a *PrometheusBillingsAPIService) PrometheusbillingsCreate(ctx context.Context) ApiPrometheusbillingsCreateRequest {
 	return ApiPrometheusbillingsCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *PrometheusBillingsAPIService) PrometheusbillingsCreateExecute(r ApiPrometheusbillingsCreateRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrometheusBillingsAPIService.PrometheusbillingsCreate")
@@ -134,8 +135,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsCreateExecute(r ApiProm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -145,8 +146,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsCreateExecute(r ApiProm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -156,8 +157,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsCreateExecute(r ApiProm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -167,8 +168,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsCreateExecute(r ApiProm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -178,8 +179,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsCreateExecute(r ApiProm
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -188,12 +189,12 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsCreateExecute(r ApiProm
 }
 
 type ApiPrometheusbillingsExportCsvRequest struct {
-	ctx            context.Context
-	ApiService     *PrometheusBillingsAPIService
+	ctx context.Context
+	ApiService *PrometheusBillingsAPIService
 	isEmailEnabled *bool
 	organizationId *int32
-	startDate      *string
-	endDate        *string
+	startDate *string
+	endDate *string
 }
 
 func (r ApiPrometheusbillingsExportCsvRequest) IsEmailEnabled(isEmailEnabled bool) ApiPrometheusbillingsExportCsvRequest {
@@ -223,25 +224,24 @@ func (r ApiPrometheusbillingsExportCsvRequest) Execute() (*CsvExporter, *http.Re
 /*
 PrometheusbillingsExportCsv Export Csv
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPrometheusbillingsExportCsvRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPrometheusbillingsExportCsvRequest
 */
 func (a *PrometheusBillingsAPIService) PrometheusbillingsExportCsv(ctx context.Context) ApiPrometheusbillingsExportCsvRequest {
 	return ApiPrometheusbillingsExportCsvRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return CsvExporter
+//  @return CsvExporter
 func (a *PrometheusBillingsAPIService) PrometheusbillingsExportCsvExecute(r ApiPrometheusbillingsExportCsvRequest) (*CsvExporter, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *CsvExporter
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CsvExporter
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrometheusBillingsAPIService.PrometheusbillingsExportCsv")
@@ -328,8 +328,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsExportCsvExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -339,8 +339,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsExportCsvExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -350,8 +350,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsExportCsvExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -361,8 +361,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsExportCsvExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -372,8 +372,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsExportCsvExecute(r ApiP
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -391,8 +391,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsExportCsvExecute(r ApiP
 }
 
 type ApiPrometheusbillingsGroupedListRequest struct {
-	ctx            context.Context
-	ApiService     *PrometheusBillingsAPIService
+	ctx context.Context
+	ApiService *PrometheusBillingsAPIService
 	organizationId *int32
 	periodDuration *string
 }
@@ -414,25 +414,24 @@ func (r ApiPrometheusbillingsGroupedListRequest) Execute() (interface{}, *http.R
 /*
 PrometheusbillingsGroupedList Retrieve a list of grouped prometheus billing
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPrometheusbillingsGroupedListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPrometheusbillingsGroupedListRequest
 */
 func (a *PrometheusBillingsAPIService) PrometheusbillingsGroupedList(ctx context.Context) ApiPrometheusbillingsGroupedListRequest {
 	return ApiPrometheusbillingsGroupedListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return interface{}
+//  @return interface{}
 func (a *PrometheusBillingsAPIService) PrometheusbillingsGroupedListExecute(r ApiPrometheusbillingsGroupedListRequest) (interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue interface{}
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrometheusBillingsAPIService.PrometheusbillingsGroupedList")
@@ -512,8 +511,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsGroupedListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -523,8 +522,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsGroupedListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -534,8 +533,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsGroupedListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -545,8 +544,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsGroupedListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -556,8 +555,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsGroupedListExecute(r Ap
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -575,14 +574,14 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsGroupedListExecute(r Ap
 }
 
 type ApiPrometheusbillingsListRequest struct {
-	ctx            context.Context
-	ApiService     *PrometheusBillingsAPIService
-	limit          *int32
-	offset         *int32
-	sortBy         *string
-	sortDirection  *string
-	startDate      *string
-	endDate        *string
+	ctx context.Context
+	ApiService *PrometheusBillingsAPIService
+	limit *int32
+	offset *int32
+	sortBy *string
+	sortDirection *string
+	startDate *string
+	endDate *string
 	organizationId *int32
 }
 
@@ -628,25 +627,24 @@ func (r ApiPrometheusbillingsListRequest) Execute() (*PrometheusBillingInfo, *ht
 /*
 PrometheusbillingsList Retrieve all prometheus billing
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPrometheusbillingsListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPrometheusbillingsListRequest
 */
 func (a *PrometheusBillingsAPIService) PrometheusbillingsList(ctx context.Context) ApiPrometheusbillingsListRequest {
 	return ApiPrometheusbillingsListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return PrometheusBillingInfo
+//  @return PrometheusBillingInfo
 func (a *PrometheusBillingsAPIService) PrometheusbillingsListExecute(r ApiPrometheusbillingsListRequest) (*PrometheusBillingInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *PrometheusBillingInfo
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PrometheusBillingInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PrometheusBillingsAPIService.PrometheusbillingsList")
@@ -741,8 +739,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsListExecute(r ApiPromet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -752,8 +750,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsListExecute(r ApiPromet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -763,8 +761,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsListExecute(r ApiPromet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -774,8 +772,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsListExecute(r ApiPromet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -785,8 +783,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsListExecute(r ApiPromet
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

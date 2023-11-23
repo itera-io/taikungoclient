@@ -22,8 +22,8 @@ type SecurityGroupProtocol string
 // List of SecurityGroupProtocol
 const (
 	SECURITYGROUPPROTOCOL_ICMP SecurityGroupProtocol = "ICMP"
-	SECURITYGROUPPROTOCOL_TCP  SecurityGroupProtocol = "TCP"
-	SECURITYGROUPPROTOCOL_UDP  SecurityGroupProtocol = "UDP"
+	SECURITYGROUPPROTOCOL_TCP SecurityGroupProtocol = "TCP"
+	SECURITYGROUPPROTOCOL_UDP SecurityGroupProtocol = "UDP"
 )
 
 // All allowed values of SecurityGroupProtocol enum
@@ -111,3 +111,4 @@ func (v *NullableSecurityGroupProtocol) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+

@@ -20,8 +20,8 @@ var _ MappedNullable = &AppRepositoryList{}
 
 // AppRepositoryList struct for AppRepositoryList
 type AppRepositoryList struct {
-	Data       []ArtifactRepositoryDto `json:"data,omitempty"`
-	TotalCount *int32                  `json:"totalCount,omitempty"`
+	Data []ArtifactRepositoryDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewAppRepositoryList instantiates a new AppRepositoryList object
@@ -107,7 +107,7 @@ func (o *AppRepositoryList) SetTotalCount(v int32) {
 }
 
 func (o AppRepositoryList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableAppRepositoryList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

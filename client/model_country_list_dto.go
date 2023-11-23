@@ -21,7 +21,7 @@ var _ MappedNullable = &CountryListDto{}
 // CountryListDto struct for CountryListDto
 type CountryListDto struct {
 	Name NullableString `json:"name,omitempty"`
-	IsEu *bool          `json:"isEu,omitempty"`
+	IsEu *bool `json:"isEu,omitempty"`
 }
 
 // NewCountryListDto instantiates a new CountryListDto object
@@ -73,7 +73,6 @@ func (o *CountryListDto) HasName() bool {
 func (o *CountryListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CountryListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -117,7 +116,7 @@ func (o *CountryListDto) SetIsEu(v bool) {
 }
 
 func (o CountryListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableCountryListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

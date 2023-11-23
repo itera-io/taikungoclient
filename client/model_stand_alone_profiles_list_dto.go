@@ -20,15 +20,15 @@ var _ MappedNullable = &StandAloneProfilesListDto{}
 
 // StandAloneProfilesListDto struct for StandAloneProfilesListDto
 type StandAloneProfilesListDto struct {
-	Id               *int32                       `json:"id,omitempty"`
-	Name             NullableString               `json:"name,omitempty"`
-	PublicKey        NullableString               `json:"publicKey,omitempty"`
-	IsLocked         *bool                        `json:"isLocked,omitempty"`
-	StandaloneVms    []StandAloneVmSmallDetailDto `json:"standaloneVms,omitempty"`
-	OrganizationId   *int32                       `json:"organizationId,omitempty"`
-	OrganizationName NullableString               `json:"organizationName,omitempty"`
-	PartnerLogo      NullableString               `json:"partnerLogo,omitempty"`
-	CreatedAt        NullableString               `json:"createdAt,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	PublicKey NullableString `json:"publicKey,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	StandaloneVms []StandAloneVmSmallDetailDto `json:"standaloneVms,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	PartnerLogo NullableString `json:"partnerLogo,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
 }
 
 // NewStandAloneProfilesListDto instantiates a new StandAloneProfilesListDto object
@@ -112,7 +112,6 @@ func (o *StandAloneProfilesListDto) HasName() bool {
 func (o *StandAloneProfilesListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *StandAloneProfilesListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -155,7 +154,6 @@ func (o *StandAloneProfilesListDto) HasPublicKey() bool {
 func (o *StandAloneProfilesListDto) SetPublicKey(v string) {
 	o.PublicKey.Set(&v)
 }
-
 // SetPublicKeyNil sets the value for PublicKey to be an explicit nil
 func (o *StandAloneProfilesListDto) SetPublicKeyNil() {
 	o.PublicKey.Set(nil)
@@ -295,7 +293,6 @@ func (o *StandAloneProfilesListDto) HasOrganizationName() bool {
 func (o *StandAloneProfilesListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *StandAloneProfilesListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -338,7 +335,6 @@ func (o *StandAloneProfilesListDto) HasPartnerLogo() bool {
 func (o *StandAloneProfilesListDto) SetPartnerLogo(v string) {
 	o.PartnerLogo.Set(&v)
 }
-
 // SetPartnerLogoNil sets the value for PartnerLogo to be an explicit nil
 func (o *StandAloneProfilesListDto) SetPartnerLogoNil() {
 	o.PartnerLogo.Set(nil)
@@ -381,7 +377,6 @@ func (o *StandAloneProfilesListDto) HasCreatedAt() bool {
 func (o *StandAloneProfilesListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *StandAloneProfilesListDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -393,7 +388,7 @@ func (o *StandAloneProfilesListDto) UnsetCreatedAt() {
 }
 
 func (o StandAloneProfilesListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -467,3 +462,5 @@ func (v *NullableStandAloneProfilesListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

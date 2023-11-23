@@ -21,62 +21,62 @@ var _ MappedNullable = &ProjectForListDto{}
 
 // ProjectForListDto struct for ProjectForListDto
 type ProjectForListDto struct {
-	Id                                *int32                             `json:"id,omitempty"`
-	Name                              NullableString                     `json:"name,omitempty"`
-	ImageName                         NullableString                     `json:"imageName,omitempty"`
-	Token                             NullableString                     `json:"token,omitempty"`
-	IsKubernetes                      *bool                              `json:"isKubernetes,omitempty"`
-	IsLocked                          *bool                              `json:"isLocked,omitempty"`
-	IsBackupEnabled                   *bool                              `json:"isBackupEnabled,omitempty"`
-	IsMonitoringEnabled               *bool                              `json:"isMonitoringEnabled,omitempty"`
-	IsOpaEnabled                      *bool                              `json:"isOpaEnabled,omitempty"`
-	IsAutoUpgrade                     *bool                              `json:"isAutoUpgrade,omitempty"`
-	AiEnabled                         *bool                              `json:"aiEnabled,omitempty"`
-	S3BucketName                      NullableString                     `json:"s3BucketName,omitempty"`
-	HasKubeConfigFile                 *bool                              `json:"hasKubeConfigFile,omitempty"`
-	HasSelectedFlavors                *bool                              `json:"hasSelectedFlavors,omitempty"`
-	QuotaId                           *int32                             `json:"quotaId,omitempty"`
-	CloudCredentialName               NullableString                     `json:"cloudCredentialName,omitempty"`
-	CloudCredentialId                 NullableInt32                      `json:"cloudCredentialId,omitempty"`
-	OrganizationName                  NullableString                     `json:"organizationName,omitempty"`
-	OrganizationId                    *int32                             `json:"organizationId,omitempty"`
-	PartnerId                         NullableInt32                      `json:"partnerId,omitempty"`
-	Status                            NullableString                     `json:"status,omitempty"`
-	Health                            NullableString                     `json:"health,omitempty"`
-	AccessIp                          NullableString                     `json:"accessIp,omitempty"`
-	CloudType                         NullableString                     `json:"cloudType,omitempty"`
-	KubesprayCurrentVersion           NullableString                     `json:"kubesprayCurrentVersion,omitempty"`
-	KubesprayTargetVersion            NullableString                     `json:"kubesprayTargetVersion,omitempty"`
-	KubernetesCurrentVersion          NullableString                     `json:"kubernetesCurrentVersion,omitempty"`
-	KubernetesTargetVersion           NullableString                     `json:"kubernetesTargetVersion,omitempty"`
-	UpdatedAt                         NullableTime                       `json:"updatedAt,omitempty"`
-	MonitoringCredential              *MonitoringCredentialsListDto      `json:"monitoringCredential,omitempty"`
-	IsAutoscalingEnabled              *bool                              `json:"isAutoscalingEnabled,omitempty"`
-	Flavors                           []string                           `json:"flavors,omitempty"`
-	AccessProfile                     *AccessProfilesForProjectListDto   `json:"accessProfile,omitempty"`
-	KubernetesProfiles                *KubernetesProfilesLisForPollerDto `json:"kubernetesProfiles,omitempty"`
-	OpaProfile                        *OpaProfileListDto                 `json:"opaProfile,omitempty"`
-	KubernetesAlerts                  []KubernetesAlertDtoForPoller      `json:"kubernetesAlerts,omitempty"`
-	IsDeleteCluster                   *bool                              `json:"isDeleteCluster,omitempty"`
-	TaikunPrivateSSHKey               NullableString                     `json:"taikunPrivateSSHKey,omitempty"`
-	TaikunPublicSSHKey                NullableString                     `json:"taikunPublicSSHKey,omitempty"`
-	GoogleProjectId                   NullableString                     `json:"googleProjectId,omitempty"`
-	Cidr                              NullableString                     `json:"cidr,omitempty"`
-	NetMask                           NullableInt32                      `json:"netMask,omitempty"`
-	PrivateIp                         NullableString                     `json:"privateIp,omitempty"`
-	PublicIp                          NullableString                     `json:"publicIp,omitempty"`
-	IsKubevapEnabled                  *bool                              `json:"isKubevapEnabled,omitempty"`
-	TanzuReleaseVersion               NullableString                     `json:"tanzuReleaseVersion,omitempty"`
-	NfsDiskSize                       *int32                             `json:"nfsDiskSize,omitempty"`
-	KubevapEnabeledKubernetesVersions []string                           `json:"kubevapEnabeledKubernetesVersions,omitempty"`
-	AwsProjectAZSubnets               []AwsProjectAZSubnetDto            `json:"awsProjectAZSubnets,omitempty"`
-	AvailabilityZones                 []string                           `json:"availabilityZones,omitempty"`
-	WorkersCount                      *int32                             `json:"workersCount,omitempty"`
-	TaikunLB                          *TaikunLbDto                       `json:"taikunLB,omitempty"`
-	S3Credential                      *S3CredentialForProjectDto         `json:"s3Credential,omitempty"`
-	ProjectRevision                   *ProjectRevisionDto                `json:"projectRevision,omitempty"`
-	ProjectActionDto                  *ProjectActionDto                  `json:"projectActionDto,omitempty"`
-	AiCredential                      *AiCredentialDto                   `json:"aiCredential,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ImageName NullableString `json:"imageName,omitempty"`
+	Token NullableString `json:"token,omitempty"`
+	IsKubernetes *bool `json:"isKubernetes,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	IsBackupEnabled *bool `json:"isBackupEnabled,omitempty"`
+	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
+	IsOpaEnabled *bool `json:"isOpaEnabled,omitempty"`
+	IsAutoUpgrade *bool `json:"isAutoUpgrade,omitempty"`
+	AiEnabled *bool `json:"aiEnabled,omitempty"`
+	S3BucketName NullableString `json:"s3BucketName,omitempty"`
+	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
+	HasSelectedFlavors *bool `json:"hasSelectedFlavors,omitempty"`
+	QuotaId *int32 `json:"quotaId,omitempty"`
+	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
+	CloudCredentialId NullableInt32 `json:"cloudCredentialId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	PartnerId NullableInt32 `json:"partnerId,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Health NullableString `json:"health,omitempty"`
+	AccessIp NullableString `json:"accessIp,omitempty"`
+	CloudType NullableString `json:"cloudType,omitempty"`
+	KubesprayCurrentVersion NullableString `json:"kubesprayCurrentVersion,omitempty"`
+	KubesprayTargetVersion NullableString `json:"kubesprayTargetVersion,omitempty"`
+	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion,omitempty"`
+	KubernetesTargetVersion NullableString `json:"kubernetesTargetVersion,omitempty"`
+	UpdatedAt NullableTime `json:"updatedAt,omitempty"`
+	MonitoringCredential *MonitoringCredentialsListDto `json:"monitoringCredential,omitempty"`
+	IsAutoscalingEnabled *bool `json:"isAutoscalingEnabled,omitempty"`
+	Flavors []string `json:"flavors,omitempty"`
+	AccessProfile *AccessProfilesForProjectListDto `json:"accessProfile,omitempty"`
+	KubernetesProfiles *KubernetesProfilesLisForPollerDto `json:"kubernetesProfiles,omitempty"`
+	OpaProfile *OpaProfileListDto `json:"opaProfile,omitempty"`
+	KubernetesAlerts []KubernetesAlertDto `json:"kubernetesAlerts,omitempty"`
+	IsDeleteCluster *bool `json:"isDeleteCluster,omitempty"`
+	TaikunPrivateSSHKey NullableString `json:"taikunPrivateSSHKey,omitempty"`
+	TaikunPublicSSHKey NullableString `json:"taikunPublicSSHKey,omitempty"`
+	GoogleProjectId NullableString `json:"googleProjectId,omitempty"`
+	Cidr NullableString `json:"cidr,omitempty"`
+	NetMask NullableInt32 `json:"netMask,omitempty"`
+	PrivateIp NullableString `json:"privateIp,omitempty"`
+	PublicIp NullableString `json:"publicIp,omitempty"`
+	IsKubevapEnabled *bool `json:"isKubevapEnabled,omitempty"`
+	TanzuReleaseVersion NullableString `json:"tanzuReleaseVersion,omitempty"`
+	NfsDiskSize *int32 `json:"nfsDiskSize,omitempty"`
+	KubevapEnabeledKubernetesVersions []string `json:"kubevapEnabeledKubernetesVersions,omitempty"`
+	AwsProjectAZSubnets []AwsProjectAZSubnetDto `json:"awsProjectAZSubnets,omitempty"`
+	AvailabilityZones []string `json:"availabilityZones,omitempty"`
+	WorkersCount *int32 `json:"workersCount,omitempty"`
+	TaikunLB *TaikunLbDto `json:"taikunLB,omitempty"`
+	S3Credential *S3CredentialForProjectDto `json:"s3Credential,omitempty"`
+	ProjectRevision *ProjectRevisionDto `json:"projectRevision,omitempty"`
+	ProjectActionDto *ProjectActionDto `json:"projectActionDto,omitempty"`
+	AiCredential *AiCredentialDto `json:"aiCredential,omitempty"`
 }
 
 // NewProjectForListDto instantiates a new ProjectForListDto object
@@ -160,7 +160,6 @@ func (o *ProjectForListDto) HasName() bool {
 func (o *ProjectForListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectForListDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -203,7 +202,6 @@ func (o *ProjectForListDto) HasImageName() bool {
 func (o *ProjectForListDto) SetImageName(v string) {
 	o.ImageName.Set(&v)
 }
-
 // SetImageNameNil sets the value for ImageName to be an explicit nil
 func (o *ProjectForListDto) SetImageNameNil() {
 	o.ImageName.Set(nil)
@@ -246,7 +244,6 @@ func (o *ProjectForListDto) HasToken() bool {
 func (o *ProjectForListDto) SetToken(v string) {
 	o.Token.Set(&v)
 }
-
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *ProjectForListDto) SetTokenNil() {
 	o.Token.Set(nil)
@@ -513,7 +510,6 @@ func (o *ProjectForListDto) HasS3BucketName() bool {
 func (o *ProjectForListDto) SetS3BucketName(v string) {
 	o.S3BucketName.Set(&v)
 }
-
 // SetS3BucketNameNil sets the value for S3BucketName to be an explicit nil
 func (o *ProjectForListDto) SetS3BucketNameNil() {
 	o.S3BucketName.Set(nil)
@@ -652,7 +648,6 @@ func (o *ProjectForListDto) HasCloudCredentialName() bool {
 func (o *ProjectForListDto) SetCloudCredentialName(v string) {
 	o.CloudCredentialName.Set(&v)
 }
-
 // SetCloudCredentialNameNil sets the value for CloudCredentialName to be an explicit nil
 func (o *ProjectForListDto) SetCloudCredentialNameNil() {
 	o.CloudCredentialName.Set(nil)
@@ -695,7 +690,6 @@ func (o *ProjectForListDto) HasCloudCredentialId() bool {
 func (o *ProjectForListDto) SetCloudCredentialId(v int32) {
 	o.CloudCredentialId.Set(&v)
 }
-
 // SetCloudCredentialIdNil sets the value for CloudCredentialId to be an explicit nil
 func (o *ProjectForListDto) SetCloudCredentialIdNil() {
 	o.CloudCredentialId.Set(nil)
@@ -738,7 +732,6 @@ func (o *ProjectForListDto) HasOrganizationName() bool {
 func (o *ProjectForListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
 func (o *ProjectForListDto) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
@@ -813,7 +806,6 @@ func (o *ProjectForListDto) HasPartnerId() bool {
 func (o *ProjectForListDto) SetPartnerId(v int32) {
 	o.PartnerId.Set(&v)
 }
-
 // SetPartnerIdNil sets the value for PartnerId to be an explicit nil
 func (o *ProjectForListDto) SetPartnerIdNil() {
 	o.PartnerId.Set(nil)
@@ -856,7 +848,6 @@ func (o *ProjectForListDto) HasStatus() bool {
 func (o *ProjectForListDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *ProjectForListDto) SetStatusNil() {
 	o.Status.Set(nil)
@@ -899,7 +890,6 @@ func (o *ProjectForListDto) HasHealth() bool {
 func (o *ProjectForListDto) SetHealth(v string) {
 	o.Health.Set(&v)
 }
-
 // SetHealthNil sets the value for Health to be an explicit nil
 func (o *ProjectForListDto) SetHealthNil() {
 	o.Health.Set(nil)
@@ -942,7 +932,6 @@ func (o *ProjectForListDto) HasAccessIp() bool {
 func (o *ProjectForListDto) SetAccessIp(v string) {
 	o.AccessIp.Set(&v)
 }
-
 // SetAccessIpNil sets the value for AccessIp to be an explicit nil
 func (o *ProjectForListDto) SetAccessIpNil() {
 	o.AccessIp.Set(nil)
@@ -985,7 +974,6 @@ func (o *ProjectForListDto) HasCloudType() bool {
 func (o *ProjectForListDto) SetCloudType(v string) {
 	o.CloudType.Set(&v)
 }
-
 // SetCloudTypeNil sets the value for CloudType to be an explicit nil
 func (o *ProjectForListDto) SetCloudTypeNil() {
 	o.CloudType.Set(nil)
@@ -1028,7 +1016,6 @@ func (o *ProjectForListDto) HasKubesprayCurrentVersion() bool {
 func (o *ProjectForListDto) SetKubesprayCurrentVersion(v string) {
 	o.KubesprayCurrentVersion.Set(&v)
 }
-
 // SetKubesprayCurrentVersionNil sets the value for KubesprayCurrentVersion to be an explicit nil
 func (o *ProjectForListDto) SetKubesprayCurrentVersionNil() {
 	o.KubesprayCurrentVersion.Set(nil)
@@ -1071,7 +1058,6 @@ func (o *ProjectForListDto) HasKubesprayTargetVersion() bool {
 func (o *ProjectForListDto) SetKubesprayTargetVersion(v string) {
 	o.KubesprayTargetVersion.Set(&v)
 }
-
 // SetKubesprayTargetVersionNil sets the value for KubesprayTargetVersion to be an explicit nil
 func (o *ProjectForListDto) SetKubesprayTargetVersionNil() {
 	o.KubesprayTargetVersion.Set(nil)
@@ -1114,7 +1100,6 @@ func (o *ProjectForListDto) HasKubernetesCurrentVersion() bool {
 func (o *ProjectForListDto) SetKubernetesCurrentVersion(v string) {
 	o.KubernetesCurrentVersion.Set(&v)
 }
-
 // SetKubernetesCurrentVersionNil sets the value for KubernetesCurrentVersion to be an explicit nil
 func (o *ProjectForListDto) SetKubernetesCurrentVersionNil() {
 	o.KubernetesCurrentVersion.Set(nil)
@@ -1157,7 +1142,6 @@ func (o *ProjectForListDto) HasKubernetesTargetVersion() bool {
 func (o *ProjectForListDto) SetKubernetesTargetVersion(v string) {
 	o.KubernetesTargetVersion.Set(&v)
 }
-
 // SetKubernetesTargetVersionNil sets the value for KubernetesTargetVersion to be an explicit nil
 func (o *ProjectForListDto) SetKubernetesTargetVersionNil() {
 	o.KubernetesTargetVersion.Set(nil)
@@ -1200,7 +1184,6 @@ func (o *ProjectForListDto) HasUpdatedAt() bool {
 func (o *ProjectForListDto) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt.Set(&v)
 }
-
 // SetUpdatedAtNil sets the value for UpdatedAt to be an explicit nil
 func (o *ProjectForListDto) SetUpdatedAtNil() {
 	o.UpdatedAt.Set(nil)
@@ -1405,9 +1388,9 @@ func (o *ProjectForListDto) SetOpaProfile(v OpaProfileListDto) {
 }
 
 // GetKubernetesAlerts returns the KubernetesAlerts field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectForListDto) GetKubernetesAlerts() []KubernetesAlertDtoForPoller {
+func (o *ProjectForListDto) GetKubernetesAlerts() []KubernetesAlertDto {
 	if o == nil {
-		var ret []KubernetesAlertDtoForPoller
+		var ret []KubernetesAlertDto
 		return ret
 	}
 	return o.KubernetesAlerts
@@ -1416,7 +1399,7 @@ func (o *ProjectForListDto) GetKubernetesAlerts() []KubernetesAlertDtoForPoller 
 // GetKubernetesAlertsOk returns a tuple with the KubernetesAlerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectForListDto) GetKubernetesAlertsOk() ([]KubernetesAlertDtoForPoller, bool) {
+func (o *ProjectForListDto) GetKubernetesAlertsOk() ([]KubernetesAlertDto, bool) {
 	if o == nil || IsNil(o.KubernetesAlerts) {
 		return nil, false
 	}
@@ -1432,8 +1415,8 @@ func (o *ProjectForListDto) HasKubernetesAlerts() bool {
 	return false
 }
 
-// SetKubernetesAlerts gets a reference to the given []KubernetesAlertDtoForPoller and assigns it to the KubernetesAlerts field.
-func (o *ProjectForListDto) SetKubernetesAlerts(v []KubernetesAlertDtoForPoller) {
+// SetKubernetesAlerts gets a reference to the given []KubernetesAlertDto and assigns it to the KubernetesAlerts field.
+func (o *ProjectForListDto) SetKubernetesAlerts(v []KubernetesAlertDto) {
 	o.KubernetesAlerts = v
 }
 
@@ -1501,7 +1484,6 @@ func (o *ProjectForListDto) HasTaikunPrivateSSHKey() bool {
 func (o *ProjectForListDto) SetTaikunPrivateSSHKey(v string) {
 	o.TaikunPrivateSSHKey.Set(&v)
 }
-
 // SetTaikunPrivateSSHKeyNil sets the value for TaikunPrivateSSHKey to be an explicit nil
 func (o *ProjectForListDto) SetTaikunPrivateSSHKeyNil() {
 	o.TaikunPrivateSSHKey.Set(nil)
@@ -1544,7 +1526,6 @@ func (o *ProjectForListDto) HasTaikunPublicSSHKey() bool {
 func (o *ProjectForListDto) SetTaikunPublicSSHKey(v string) {
 	o.TaikunPublicSSHKey.Set(&v)
 }
-
 // SetTaikunPublicSSHKeyNil sets the value for TaikunPublicSSHKey to be an explicit nil
 func (o *ProjectForListDto) SetTaikunPublicSSHKeyNil() {
 	o.TaikunPublicSSHKey.Set(nil)
@@ -1587,7 +1568,6 @@ func (o *ProjectForListDto) HasGoogleProjectId() bool {
 func (o *ProjectForListDto) SetGoogleProjectId(v string) {
 	o.GoogleProjectId.Set(&v)
 }
-
 // SetGoogleProjectIdNil sets the value for GoogleProjectId to be an explicit nil
 func (o *ProjectForListDto) SetGoogleProjectIdNil() {
 	o.GoogleProjectId.Set(nil)
@@ -1630,7 +1610,6 @@ func (o *ProjectForListDto) HasCidr() bool {
 func (o *ProjectForListDto) SetCidr(v string) {
 	o.Cidr.Set(&v)
 }
-
 // SetCidrNil sets the value for Cidr to be an explicit nil
 func (o *ProjectForListDto) SetCidrNil() {
 	o.Cidr.Set(nil)
@@ -1673,7 +1652,6 @@ func (o *ProjectForListDto) HasNetMask() bool {
 func (o *ProjectForListDto) SetNetMask(v int32) {
 	o.NetMask.Set(&v)
 }
-
 // SetNetMaskNil sets the value for NetMask to be an explicit nil
 func (o *ProjectForListDto) SetNetMaskNil() {
 	o.NetMask.Set(nil)
@@ -1716,7 +1694,6 @@ func (o *ProjectForListDto) HasPrivateIp() bool {
 func (o *ProjectForListDto) SetPrivateIp(v string) {
 	o.PrivateIp.Set(&v)
 }
-
 // SetPrivateIpNil sets the value for PrivateIp to be an explicit nil
 func (o *ProjectForListDto) SetPrivateIpNil() {
 	o.PrivateIp.Set(nil)
@@ -1759,7 +1736,6 @@ func (o *ProjectForListDto) HasPublicIp() bool {
 func (o *ProjectForListDto) SetPublicIp(v string) {
 	o.PublicIp.Set(&v)
 }
-
 // SetPublicIpNil sets the value for PublicIp to be an explicit nil
 func (o *ProjectForListDto) SetPublicIpNil() {
 	o.PublicIp.Set(nil)
@@ -1834,7 +1810,6 @@ func (o *ProjectForListDto) HasTanzuReleaseVersion() bool {
 func (o *ProjectForListDto) SetTanzuReleaseVersion(v string) {
 	o.TanzuReleaseVersion.Set(&v)
 }
-
 // SetTanzuReleaseVersionNil sets the value for TanzuReleaseVersion to be an explicit nil
 func (o *ProjectForListDto) SetTanzuReleaseVersionNil() {
 	o.TanzuReleaseVersion.Set(nil)
@@ -2169,7 +2144,7 @@ func (o *ProjectForListDto) SetAiCredential(v AiCredentialDto) {
 }
 
 func (o ProjectForListDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -2384,3 +2359,5 @@ func (v *NullableProjectForListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

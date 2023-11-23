@@ -20,14 +20,14 @@ var _ MappedNullable = &CreateAzureCloudCommand{}
 
 // CreateAzureCloudCommand struct for CreateAzureCloudCommand
 type CreateAzureCloudCommand struct {
-	Name                NullableString `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	AzureSubscriptionId NullableString `json:"azureSubscriptionId,omitempty"`
-	AzureClientId       NullableString `json:"azureClientId,omitempty"`
-	AzureClientSecret   NullableString `json:"azureClientSecret,omitempty"`
-	AzureTenantId       NullableString `json:"azureTenantId,omitempty"`
-	AzureLocation       NullableString `json:"azureLocation,omitempty"`
-	AzCount             *int32         `json:"azCount,omitempty"`
-	OrganizationId      NullableInt32  `json:"organizationId,omitempty"`
+	AzureClientId NullableString `json:"azureClientId,omitempty"`
+	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
+	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
+	AzureLocation NullableString `json:"azureLocation,omitempty"`
+	AzCount *int32 `json:"azCount,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
 
 // NewCreateAzureCloudCommand instantiates a new CreateAzureCloudCommand object
@@ -79,7 +79,6 @@ func (o *CreateAzureCloudCommand) HasName() bool {
 func (o *CreateAzureCloudCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *CreateAzureCloudCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -122,7 +121,6 @@ func (o *CreateAzureCloudCommand) HasAzureSubscriptionId() bool {
 func (o *CreateAzureCloudCommand) SetAzureSubscriptionId(v string) {
 	o.AzureSubscriptionId.Set(&v)
 }
-
 // SetAzureSubscriptionIdNil sets the value for AzureSubscriptionId to be an explicit nil
 func (o *CreateAzureCloudCommand) SetAzureSubscriptionIdNil() {
 	o.AzureSubscriptionId.Set(nil)
@@ -165,7 +163,6 @@ func (o *CreateAzureCloudCommand) HasAzureClientId() bool {
 func (o *CreateAzureCloudCommand) SetAzureClientId(v string) {
 	o.AzureClientId.Set(&v)
 }
-
 // SetAzureClientIdNil sets the value for AzureClientId to be an explicit nil
 func (o *CreateAzureCloudCommand) SetAzureClientIdNil() {
 	o.AzureClientId.Set(nil)
@@ -208,7 +205,6 @@ func (o *CreateAzureCloudCommand) HasAzureClientSecret() bool {
 func (o *CreateAzureCloudCommand) SetAzureClientSecret(v string) {
 	o.AzureClientSecret.Set(&v)
 }
-
 // SetAzureClientSecretNil sets the value for AzureClientSecret to be an explicit nil
 func (o *CreateAzureCloudCommand) SetAzureClientSecretNil() {
 	o.AzureClientSecret.Set(nil)
@@ -251,7 +247,6 @@ func (o *CreateAzureCloudCommand) HasAzureTenantId() bool {
 func (o *CreateAzureCloudCommand) SetAzureTenantId(v string) {
 	o.AzureTenantId.Set(&v)
 }
-
 // SetAzureTenantIdNil sets the value for AzureTenantId to be an explicit nil
 func (o *CreateAzureCloudCommand) SetAzureTenantIdNil() {
 	o.AzureTenantId.Set(nil)
@@ -294,7 +289,6 @@ func (o *CreateAzureCloudCommand) HasAzureLocation() bool {
 func (o *CreateAzureCloudCommand) SetAzureLocation(v string) {
 	o.AzureLocation.Set(&v)
 }
-
 // SetAzureLocationNil sets the value for AzureLocation to be an explicit nil
 func (o *CreateAzureCloudCommand) SetAzureLocationNil() {
 	o.AzureLocation.Set(nil)
@@ -369,7 +363,6 @@ func (o *CreateAzureCloudCommand) HasOrganizationId() bool {
 func (o *CreateAzureCloudCommand) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-
 // SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
 func (o *CreateAzureCloudCommand) SetOrganizationIdNil() {
 	o.OrganizationId.Set(nil)
@@ -381,7 +374,7 @@ func (o *CreateAzureCloudCommand) UnsetOrganizationId() {
 }
 
 func (o CreateAzureCloudCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -452,3 +445,5 @@ func (v *NullableCreateAzureCloudCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

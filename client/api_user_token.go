@@ -20,20 +20,21 @@ import (
 	"strings"
 )
 
+
 // UserTokenAPIService UserTokenAPI service
 type UserTokenAPIService service
 
 type ApiUsertokenAvailableEndpointsRequest struct {
-	ctx           context.Context
-	ApiService    *UserTokenAPIService
-	limit         *int32
-	offset        *int32
-	sortBy        *string
+	ctx context.Context
+	ApiService *UserTokenAPIService
+	limit *int32
+	offset *int32
+	sortBy *string
 	sortDirection *string
-	search        *string
-	id            *string
-	isAdd         *bool
-	isReadonly    *bool
+	search *string
+	id *string
+	isAdd *bool
+	isReadonly *bool
 }
 
 func (r ApiUsertokenAvailableEndpointsRequest) Limit(limit int32) ApiUsertokenAvailableEndpointsRequest {
@@ -83,25 +84,24 @@ func (r ApiUsertokenAvailableEndpointsRequest) Execute() (*AvailableEndpointsLis
 /*
 UsertokenAvailableEndpoints Get available endpoint list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUsertokenAvailableEndpointsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUsertokenAvailableEndpointsRequest
 */
 func (a *UserTokenAPIService) UsertokenAvailableEndpoints(ctx context.Context) ApiUsertokenAvailableEndpointsRequest {
 	return ApiUsertokenAvailableEndpointsRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return AvailableEndpointsList
+//  @return AvailableEndpointsList
 func (a *UserTokenAPIService) UsertokenAvailableEndpointsExecute(r ApiUsertokenAvailableEndpointsRequest) (*AvailableEndpointsList, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *AvailableEndpointsList
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *AvailableEndpointsList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserTokenAPIService.UsertokenAvailableEndpoints")
@@ -199,8 +199,8 @@ func (a *UserTokenAPIService) UsertokenAvailableEndpointsExecute(r ApiUsertokenA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -210,8 +210,8 @@ func (a *UserTokenAPIService) UsertokenAvailableEndpointsExecute(r ApiUsertokenA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -221,8 +221,8 @@ func (a *UserTokenAPIService) UsertokenAvailableEndpointsExecute(r ApiUsertokenA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -232,8 +232,8 @@ func (a *UserTokenAPIService) UsertokenAvailableEndpointsExecute(r ApiUsertokenA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -243,8 +243,8 @@ func (a *UserTokenAPIService) UsertokenAvailableEndpointsExecute(r ApiUsertokenA
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -262,8 +262,8 @@ func (a *UserTokenAPIService) UsertokenAvailableEndpointsExecute(r ApiUsertokenA
 }
 
 type ApiUsertokenBindUnbindRequest struct {
-	ctx                              context.Context
-	ApiService                       *UserTokenAPIService
+	ctx context.Context
+	ApiService *UserTokenAPIService
 	bindUnbindEndpointToTokenCommand *BindUnbindEndpointToTokenCommand
 }
 
@@ -279,22 +279,22 @@ func (r ApiUsertokenBindUnbindRequest) Execute() (*http.Response, error) {
 /*
 UsertokenBindUnbind Bind and unbind endpoints
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUsertokenBindUnbindRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUsertokenBindUnbindRequest
 */
 func (a *UserTokenAPIService) UsertokenBindUnbind(ctx context.Context) ApiUsertokenBindUnbindRequest {
 	return ApiUsertokenBindUnbindRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *UserTokenAPIService) UsertokenBindUnbindExecute(r ApiUsertokenBindUnbindRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserTokenAPIService.UsertokenBindUnbind")
@@ -370,8 +370,8 @@ func (a *UserTokenAPIService) UsertokenBindUnbindExecute(r ApiUsertokenBindUnbin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -381,8 +381,8 @@ func (a *UserTokenAPIService) UsertokenBindUnbindExecute(r ApiUsertokenBindUnbin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -392,8 +392,8 @@ func (a *UserTokenAPIService) UsertokenBindUnbindExecute(r ApiUsertokenBindUnbin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -403,8 +403,8 @@ func (a *UserTokenAPIService) UsertokenBindUnbindExecute(r ApiUsertokenBindUnbin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -414,8 +414,8 @@ func (a *UserTokenAPIService) UsertokenBindUnbindExecute(r ApiUsertokenBindUnbin
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -424,8 +424,8 @@ func (a *UserTokenAPIService) UsertokenBindUnbindExecute(r ApiUsertokenBindUnbin
 }
 
 type ApiUsertokenCreateRequest struct {
-	ctx                    context.Context
-	ApiService             *UserTokenAPIService
+	ctx context.Context
+	ApiService *UserTokenAPIService
 	userTokenCreateCommand *UserTokenCreateCommand
 }
 
@@ -441,25 +441,24 @@ func (r ApiUsertokenCreateRequest) Execute() (*UserTokenCreateDto, *http.Respons
 /*
 UsertokenCreate Create a new user token
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUsertokenCreateRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUsertokenCreateRequest
 */
 func (a *UserTokenAPIService) UsertokenCreate(ctx context.Context) ApiUsertokenCreateRequest {
 	return ApiUsertokenCreateRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return UserTokenCreateDto
+//  @return UserTokenCreateDto
 func (a *UserTokenAPIService) UsertokenCreateExecute(r ApiUsertokenCreateRequest) (*UserTokenCreateDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *UserTokenCreateDto
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *UserTokenCreateDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserTokenAPIService.UsertokenCreate")
@@ -538,8 +537,8 @@ func (a *UserTokenAPIService) UsertokenCreateExecute(r ApiUsertokenCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -549,8 +548,8 @@ func (a *UserTokenAPIService) UsertokenCreateExecute(r ApiUsertokenCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -560,8 +559,8 @@ func (a *UserTokenAPIService) UsertokenCreateExecute(r ApiUsertokenCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -571,8 +570,8 @@ func (a *UserTokenAPIService) UsertokenCreateExecute(r ApiUsertokenCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -582,8 +581,8 @@ func (a *UserTokenAPIService) UsertokenCreateExecute(r ApiUsertokenCreateRequest
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
@@ -601,9 +600,9 @@ func (a *UserTokenAPIService) UsertokenCreateExecute(r ApiUsertokenCreateRequest
 }
 
 type ApiUsertokenDeleteRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserTokenAPIService
-	id         string
+	id string
 }
 
 func (r ApiUsertokenDeleteRequest) Execute() (*http.Response, error) {
@@ -613,24 +612,24 @@ func (r ApiUsertokenDeleteRequest) Execute() (*http.Response, error) {
 /*
 UsertokenDelete Method for UsertokenDelete
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param id
-	@return ApiUsertokenDeleteRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiUsertokenDeleteRequest
 */
 func (a *UserTokenAPIService) UsertokenDelete(ctx context.Context, id string) ApiUsertokenDeleteRequest {
 	return ApiUsertokenDeleteRequest{
 		ApiService: a,
-		ctx:        ctx,
-		id:         id,
+		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
 func (a *UserTokenAPIService) UsertokenDeleteExecute(r ApiUsertokenDeleteRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodDelete
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserTokenAPIService.UsertokenDelete")
@@ -705,8 +704,8 @@ func (a *UserTokenAPIService) UsertokenDeleteExecute(r ApiUsertokenDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -716,8 +715,8 @@ func (a *UserTokenAPIService) UsertokenDeleteExecute(r ApiUsertokenDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -727,8 +726,8 @@ func (a *UserTokenAPIService) UsertokenDeleteExecute(r ApiUsertokenDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -738,8 +737,8 @@ func (a *UserTokenAPIService) UsertokenDeleteExecute(r ApiUsertokenDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -749,8 +748,8 @@ func (a *UserTokenAPIService) UsertokenDeleteExecute(r ApiUsertokenDeleteRequest
 				newErr.error = err.Error()
 				return localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarHTTPResponse, newErr
 	}
@@ -759,7 +758,7 @@ func (a *UserTokenAPIService) UsertokenDeleteExecute(r ApiUsertokenDeleteRequest
 }
 
 type ApiUsertokenListRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *UserTokenAPIService
 }
 
@@ -770,25 +769,24 @@ func (r ApiUsertokenListRequest) Execute() ([]UserTokensListDto, *http.Response,
 /*
 UsertokenList Get user token list
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiUsertokenListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiUsertokenListRequest
 */
 func (a *UserTokenAPIService) UsertokenList(ctx context.Context) ApiUsertokenListRequest {
 	return ApiUsertokenListRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []UserTokensListDto
+//  @return []UserTokensListDto
 func (a *UserTokenAPIService) UsertokenListExecute(r ApiUsertokenListRequest) ([]UserTokensListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []UserTokensListDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []UserTokensListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UserTokenAPIService.UsertokenList")
@@ -862,8 +860,8 @@ func (a *UserTokenAPIService) UsertokenListExecute(r ApiUsertokenListRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -873,8 +871,8 @@ func (a *UserTokenAPIService) UsertokenListExecute(r ApiUsertokenListRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -884,8 +882,8 @@ func (a *UserTokenAPIService) UsertokenListExecute(r ApiUsertokenListRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -895,8 +893,8 @@ func (a *UserTokenAPIService) UsertokenListExecute(r ApiUsertokenListRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -906,8 +904,8 @@ func (a *UserTokenAPIService) UsertokenListExecute(r ApiUsertokenListRequest) ([
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

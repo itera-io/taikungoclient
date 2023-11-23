@@ -20,8 +20,8 @@ var _ MappedNullable = &HelmMetadata{}
 
 // HelmMetadata struct for HelmMetadata
 type HelmMetadata struct {
-	Name              NullableString `json:"name,omitempty"`
-	Namespace         NullableString `json:"namespace,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
 	CreationTimestamp NullableString `json:"creationTimestamp,omitempty"`
 }
 
@@ -74,7 +74,6 @@ func (o *HelmMetadata) HasName() bool {
 func (o *HelmMetadata) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *HelmMetadata) SetNameNil() {
 	o.Name.Set(nil)
@@ -117,7 +116,6 @@ func (o *HelmMetadata) HasNamespace() bool {
 func (o *HelmMetadata) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *HelmMetadata) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -160,7 +158,6 @@ func (o *HelmMetadata) HasCreationTimestamp() bool {
 func (o *HelmMetadata) SetCreationTimestamp(v string) {
 	o.CreationTimestamp.Set(&v)
 }
-
 // SetCreationTimestampNil sets the value for CreationTimestamp to be an explicit nil
 func (o *HelmMetadata) SetCreationTimestampNil() {
 	o.CreationTimestamp.Set(nil)
@@ -172,7 +169,7 @@ func (o *HelmMetadata) UnsetCreationTimestamp() {
 }
 
 func (o HelmMetadata) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableHelmMetadata) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

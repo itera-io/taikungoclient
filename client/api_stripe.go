@@ -20,12 +20,13 @@ import (
 	"strings"
 )
 
+
 // StripeAPIService StripeAPI service
 type StripeAPIService service
 
 type ApiStripeSubscriptionItemListRequest struct {
-	ctx            context.Context
-	ApiService     *StripeAPIService
+	ctx context.Context
+	ApiService *StripeAPIService
 	subscriptionId string
 }
 
@@ -36,27 +37,26 @@ func (r ApiStripeSubscriptionItemListRequest) Execute() ([]StripeSubscriptionIte
 /*
 StripeSubscriptionItemList Method for StripeSubscriptionItemList
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param subscriptionId
-	@return ApiStripeSubscriptionItemListRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param subscriptionId
+ @return ApiStripeSubscriptionItemListRequest
 */
 func (a *StripeAPIService) StripeSubscriptionItemList(ctx context.Context, subscriptionId string) ApiStripeSubscriptionItemListRequest {
 	return ApiStripeSubscriptionItemListRequest{
-		ApiService:     a,
-		ctx:            ctx,
+		ApiService: a,
+		ctx: ctx,
 		subscriptionId: subscriptionId,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []StripeSubscriptionItemDto
+//  @return []StripeSubscriptionItemDto
 func (a *StripeAPIService) StripeSubscriptionItemListExecute(r ApiStripeSubscriptionItemListRequest) ([]StripeSubscriptionItemDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []StripeSubscriptionItemDto
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []StripeSubscriptionItemDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StripeAPIService.StripeSubscriptionItemList")
@@ -131,8 +131,8 @@ func (a *StripeAPIService) StripeSubscriptionItemListExecute(r ApiStripeSubscrip
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
@@ -142,8 +142,8 @@ func (a *StripeAPIService) StripeSubscriptionItemListExecute(r ApiStripeSubscrip
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
@@ -153,8 +153,8 @@ func (a *StripeAPIService) StripeSubscriptionItemListExecute(r ApiStripeSubscrip
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
@@ -164,8 +164,8 @@ func (a *StripeAPIService) StripeSubscriptionItemListExecute(r ApiStripeSubscrip
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
@@ -175,8 +175,8 @@ func (a *StripeAPIService) StripeSubscriptionItemListExecute(r ApiStripeSubscrip
 				newErr.error = err.Error()
 				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
-			newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-			newErr.model = v
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
 		}
 		return localVarReturnValue, localVarHTTPResponse, newErr
 	}

@@ -20,8 +20,8 @@ var _ MappedNullable = &StsSearchList{}
 
 // StsSearchList struct for StsSearchList
 type StsSearchList struct {
-	Data       []CommonSearchKubernetesResponseData `json:"data,omitempty"`
-	TotalCount *int32                               `json:"totalCount,omitempty"`
+	Data []CommonSearchKubernetesResponseData `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewStsSearchList instantiates a new StsSearchList object
@@ -107,7 +107,7 @@ func (o *StsSearchList) SetTotalCount(v int32) {
 }
 
 func (o StsSearchList) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableStsSearchList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

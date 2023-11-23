@@ -20,10 +20,10 @@ var _ MappedNullable = &ServerTemplateDto{}
 
 // ServerTemplateDto struct for ServerTemplateDto
 type ServerTemplateDto struct {
-	Role     *CloudRole     `json:"role,omitempty"`
-	Flavor   NullableString `json:"flavor,omitempty"`
-	DiskSize *float64       `json:"diskSize,omitempty"`
-	Count    *int32         `json:"count,omitempty"`
+	Role *CloudRole `json:"role,omitempty"`
+	Flavor NullableString `json:"flavor,omitempty"`
+	DiskSize *float64 `json:"diskSize,omitempty"`
+	Count *int32 `json:"count,omitempty"`
 }
 
 // NewServerTemplateDto instantiates a new ServerTemplateDto object
@@ -107,7 +107,6 @@ func (o *ServerTemplateDto) HasFlavor() bool {
 func (o *ServerTemplateDto) SetFlavor(v string) {
 	o.Flavor.Set(&v)
 }
-
 // SetFlavorNil sets the value for Flavor to be an explicit nil
 func (o *ServerTemplateDto) SetFlavorNil() {
 	o.Flavor.Set(nil)
@@ -183,7 +182,7 @@ func (o *ServerTemplateDto) SetCount(v int32) {
 }
 
 func (o ServerTemplateDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -242,3 +241,5 @@ func (v *NullableServerTemplateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

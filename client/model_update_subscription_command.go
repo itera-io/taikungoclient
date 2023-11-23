@@ -20,16 +20,16 @@ var _ MappedNullable = &UpdateSubscriptionCommand{}
 
 // UpdateSubscriptionCommand struct for UpdateSubscriptionCommand
 type UpdateSubscriptionCommand struct {
-	Id                   *int32         `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
-	ProjectLimit         *int32         `json:"projectLimit,omitempty"`
-	ServerLimit          *int32         `json:"serverLimit,omitempty"`
-	UserLimit            *int32         `json:"userLimit,omitempty"`
-	CloudCredentialLimit *int32         `json:"cloudCredentialLimit,omitempty"`
-	MonthlyPrice         *float64       `json:"monthlyPrice,omitempty"`
-	YearlyPrice          *float64       `json:"yearlyPrice,omitempty"`
-	TcuPrice             *float64       `json:"tcuPrice,omitempty"`
-	TrialDays            *int32         `json:"trialDays,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ProjectLimit *int32 `json:"projectLimit,omitempty"`
+	ServerLimit *int32 `json:"serverLimit,omitempty"`
+	UserLimit *int32 `json:"userLimit,omitempty"`
+	CloudCredentialLimit *int32 `json:"cloudCredentialLimit,omitempty"`
+	MonthlyPrice *float64 `json:"monthlyPrice,omitempty"`
+	YearlyPrice *float64 `json:"yearlyPrice,omitempty"`
+	TcuPrice *float64 `json:"tcuPrice,omitempty"`
+	TrialDays *int32 `json:"trialDays,omitempty"`
 }
 
 // NewUpdateSubscriptionCommand instantiates a new UpdateSubscriptionCommand object
@@ -113,7 +113,6 @@ func (o *UpdateSubscriptionCommand) HasName() bool {
 func (o *UpdateSubscriptionCommand) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *UpdateSubscriptionCommand) SetNameNil() {
 	o.Name.Set(nil)
@@ -381,7 +380,7 @@ func (o *UpdateSubscriptionCommand) SetTrialDays(v int32) {
 }
 
 func (o UpdateSubscriptionCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -458,3 +457,5 @@ func (v *NullableUpdateSubscriptionCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

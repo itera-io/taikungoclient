@@ -20,22 +20,22 @@ var _ MappedNullable = &KubeConfigForUserDto{}
 
 // KubeConfigForUserDto struct for KubeConfigForUserDto
 type KubeConfigForUserDto struct {
-	Id                     *int32         `json:"id,omitempty"`
-	UserId                 NullableString `json:"userId,omitempty"`
-	DisplayName            NullableString `json:"displayName,omitempty"`
-	ProjectId              *int32         `json:"projectId,omitempty"`
-	OrganizationId         *int32         `json:"organizationId,omitempty"`
-	ProjectName            NullableString `json:"projectName,omitempty"`
-	IsAccessibleForAll     *bool          `json:"isAccessibleForAll,omitempty"`
-	IsAccessibleForManager *bool          `json:"isAccessibleForManager,omitempty"`
-	KubeConfigRoleName     NullableString `json:"kubeConfigRoleName,omitempty"`
-	CreatedBy              NullableString `json:"createdBy,omitempty"`
-	CreatedAt              NullableString `json:"createdAt,omitempty"`
-	Namespace              NullableString `json:"namespace,omitempty"`
-	ExpirationDate         NullableString `json:"expirationDate,omitempty"`
-	CanDownload            *bool          `json:"canDownload,omitempty"`
-	CanAccessTerminal      *bool          `json:"canAccessTerminal,omitempty"`
-	CanDelete              *bool          `json:"canDelete,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	UserId NullableString `json:"userId,omitempty"`
+	DisplayName NullableString `json:"displayName,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
+	IsAccessibleForAll *bool `json:"isAccessibleForAll,omitempty"`
+	IsAccessibleForManager *bool `json:"isAccessibleForManager,omitempty"`
+	KubeConfigRoleName NullableString `json:"kubeConfigRoleName,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	ExpirationDate NullableString `json:"expirationDate,omitempty"`
+	CanDownload *bool `json:"canDownload,omitempty"`
+	CanAccessTerminal *bool `json:"canAccessTerminal,omitempty"`
+	CanDelete *bool `json:"canDelete,omitempty"`
 }
 
 // NewKubeConfigForUserDto instantiates a new KubeConfigForUserDto object
@@ -119,7 +119,6 @@ func (o *KubeConfigForUserDto) HasUserId() bool {
 func (o *KubeConfigForUserDto) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
-
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *KubeConfigForUserDto) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -162,7 +161,6 @@ func (o *KubeConfigForUserDto) HasDisplayName() bool {
 func (o *KubeConfigForUserDto) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
-
 // SetDisplayNameNil sets the value for DisplayName to be an explicit nil
 func (o *KubeConfigForUserDto) SetDisplayNameNil() {
 	o.DisplayName.Set(nil)
@@ -269,7 +267,6 @@ func (o *KubeConfigForUserDto) HasProjectName() bool {
 func (o *KubeConfigForUserDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
-
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
 func (o *KubeConfigForUserDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
@@ -376,7 +373,6 @@ func (o *KubeConfigForUserDto) HasKubeConfigRoleName() bool {
 func (o *KubeConfigForUserDto) SetKubeConfigRoleName(v string) {
 	o.KubeConfigRoleName.Set(&v)
 }
-
 // SetKubeConfigRoleNameNil sets the value for KubeConfigRoleName to be an explicit nil
 func (o *KubeConfigForUserDto) SetKubeConfigRoleNameNil() {
 	o.KubeConfigRoleName.Set(nil)
@@ -419,7 +415,6 @@ func (o *KubeConfigForUserDto) HasCreatedBy() bool {
 func (o *KubeConfigForUserDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
 func (o *KubeConfigForUserDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
@@ -462,7 +457,6 @@ func (o *KubeConfigForUserDto) HasCreatedAt() bool {
 func (o *KubeConfigForUserDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-
 // SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
 func (o *KubeConfigForUserDto) SetCreatedAtNil() {
 	o.CreatedAt.Set(nil)
@@ -505,7 +499,6 @@ func (o *KubeConfigForUserDto) HasNamespace() bool {
 func (o *KubeConfigForUserDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *KubeConfigForUserDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -548,7 +541,6 @@ func (o *KubeConfigForUserDto) HasExpirationDate() bool {
 func (o *KubeConfigForUserDto) SetExpirationDate(v string) {
 	o.ExpirationDate.Set(&v)
 }
-
 // SetExpirationDateNil sets the value for ExpirationDate to be an explicit nil
 func (o *KubeConfigForUserDto) SetExpirationDateNil() {
 	o.ExpirationDate.Set(nil)
@@ -656,7 +648,7 @@ func (o *KubeConfigForUserDto) SetCanDelete(v bool) {
 }
 
 func (o KubeConfigForUserDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -751,3 +743,5 @@ func (v *NullableKubeConfigForUserDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

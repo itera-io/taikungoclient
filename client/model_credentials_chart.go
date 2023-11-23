@@ -20,16 +20,16 @@ var _ MappedNullable = &CredentialsChart{}
 
 // CredentialsChart struct for CredentialsChart
 type CredentialsChart struct {
-	Amazon              []AmazonCredentialsListDto    `json:"amazon,omitempty"`
-	Openstack           []OpenstackCredentialsListDto `json:"openstack,omitempty"`
-	Azure               []AzureCredentialsListDto     `json:"azure,omitempty"`
-	Google              []GoogleCredentialsListDto    `json:"google,omitempty"`
-	Tanzu               []TanzuCredentialsListDto     `json:"tanzu,omitempty"`
-	TotalCountOpenstack *int32                        `json:"totalCountOpenstack,omitempty"`
-	TotalCountAws       *int32                        `json:"totalCountAws,omitempty"`
-	TotalCountAzure     *int32                        `json:"totalCountAzure,omitempty"`
-	TotalCountGoogle    *int32                        `json:"totalCountGoogle,omitempty"`
-	TotalCountTanzu     *int32                        `json:"totalCountTanzu,omitempty"`
+	Amazon []AmazonCredentialsListDto `json:"amazon,omitempty"`
+	Openstack []OpenstackCredentialsListDto `json:"openstack,omitempty"`
+	Azure []AzureCredentialsListDto `json:"azure,omitempty"`
+	Google []GoogleCredentialsListDto `json:"google,omitempty"`
+	Tanzu []TanzuCredentialsListDto `json:"tanzu,omitempty"`
+	TotalCountOpenstack *int32 `json:"totalCountOpenstack,omitempty"`
+	TotalCountAws *int32 `json:"totalCountAws,omitempty"`
+	TotalCountAzure *int32 `json:"totalCountAzure,omitempty"`
+	TotalCountGoogle *int32 `json:"totalCountGoogle,omitempty"`
+	TotalCountTanzu *int32 `json:"totalCountTanzu,omitempty"`
 }
 
 // NewCredentialsChart instantiates a new CredentialsChart object
@@ -375,7 +375,7 @@ func (o *CredentialsChart) SetTotalCountTanzu(v int32) {
 }
 
 func (o CredentialsChart) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -452,3 +452,5 @@ func (v *NullableCredentialsChart) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

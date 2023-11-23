@@ -11,10 +11,10 @@ package taikuncore
 
 import (
 	"context"
-	openapiclient "github.com/itera-io/taikungoclient/client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"
+	openapiclient "github.com/itera-io/taikungoclient/client"
 )
 
 func Test_taikuncore_ProjectInfracostsAPIService(t *testing.T) {
@@ -24,7 +24,7 @@ func Test_taikuncore_ProjectInfracostsAPIService(t *testing.T) {
 
 	t.Run("Test ProjectInfracostsAPIService ProjectinfracostsDelete", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -37,7 +37,7 @@ func Test_taikuncore_ProjectInfracostsAPIService(t *testing.T) {
 
 	t.Run("Test ProjectInfracostsAPIService ProjectinfracostsDetails", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
@@ -51,7 +51,7 @@ func Test_taikuncore_ProjectInfracostsAPIService(t *testing.T) {
 
 	t.Run("Test ProjectInfracostsAPIService ProjectinfracostsUpsert", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 

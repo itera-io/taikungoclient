@@ -20,7 +20,7 @@ var _ MappedNullable = &ShowbackRuleEntityDto{}
 
 // ShowbackRuleEntityDto struct for ShowbackRuleEntityDto
 type ShowbackRuleEntityDto struct {
-	Id   *int32         `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 }
 
@@ -105,7 +105,6 @@ func (o *ShowbackRuleEntityDto) HasName() bool {
 func (o *ShowbackRuleEntityDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ShowbackRuleEntityDto) SetNameNil() {
 	o.Name.Set(nil)
@@ -117,7 +116,7 @@ func (o *ShowbackRuleEntityDto) UnsetName() {
 }
 
 func (o ShowbackRuleEntityDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableShowbackRuleEntityDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

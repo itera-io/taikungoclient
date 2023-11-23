@@ -20,8 +20,8 @@ var _ MappedNullable = &BindFlavorToProjectCommand{}
 
 // BindFlavorToProjectCommand struct for BindFlavorToProjectCommand
 type BindFlavorToProjectCommand struct {
-	ProjectId *int32   `json:"projectId,omitempty"`
-	Flavors   []string `json:"flavors,omitempty"`
+	ProjectId *int32 `json:"projectId,omitempty"`
+	Flavors []string `json:"flavors,omitempty"`
 }
 
 // NewBindFlavorToProjectCommand instantiates a new BindFlavorToProjectCommand object
@@ -107,7 +107,7 @@ func (o *BindFlavorToProjectCommand) SetFlavors(v []string) {
 }
 
 func (o BindFlavorToProjectCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullableBindFlavorToProjectCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

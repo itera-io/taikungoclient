@@ -21,8 +21,8 @@ var _ MappedNullable = &SecretDto{}
 // SecretDto struct for SecretDto
 type SecretDto struct {
 	MetadataName NullableString `json:"metadataName,omitempty"`
-	Namespace    NullableString `json:"namespace,omitempty"`
-	Age          NullableString `json:"age,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Age NullableString `json:"age,omitempty"`
 }
 
 // NewSecretDto instantiates a new SecretDto object
@@ -74,7 +74,6 @@ func (o *SecretDto) HasMetadataName() bool {
 func (o *SecretDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-
 // SetMetadataNameNil sets the value for MetadataName to be an explicit nil
 func (o *SecretDto) SetMetadataNameNil() {
 	o.MetadataName.Set(nil)
@@ -117,7 +116,6 @@ func (o *SecretDto) HasNamespace() bool {
 func (o *SecretDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
 func (o *SecretDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
@@ -160,7 +158,6 @@ func (o *SecretDto) HasAge() bool {
 func (o *SecretDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-
 // SetAgeNil sets the value for Age to be an explicit nil
 func (o *SecretDto) SetAgeNil() {
 	o.Age.Set(nil)
@@ -172,7 +169,7 @@ func (o *SecretDto) UnsetAge() {
 }
 
 func (o SecretDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -228,3 +225,5 @@ func (v *NullableSecretDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

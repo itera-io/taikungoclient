@@ -20,18 +20,18 @@ var _ MappedNullable = &ProjectListForAlert{}
 
 // ProjectListForAlert struct for ProjectListForAlert
 type ProjectListForAlert struct {
-	Id                   *int32                        `json:"id,omitempty"`
-	Name                 NullableString                `json:"name,omitempty"`
-	Token                NullableString                `json:"token,omitempty"`
-	Status               NullableString                `json:"status,omitempty"`
-	OrganizationId       *int32                        `json:"organizationId,omitempty"`
-	Health               NullableString                `json:"health,omitempty"`
-	IsKubernetes         *bool                         `json:"isKubernetes,omitempty"`
-	IsLocked             *bool                         `json:"isLocked,omitempty"`
-	IsMonitoringEnabled  *bool                         `json:"isMonitoringEnabled,omitempty"`
-	HasKubeConfigFile    *bool                         `json:"hasKubeConfigFile,omitempty"`
+	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Token NullableString `json:"token,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	OrganizationId *int32 `json:"organizationId,omitempty"`
+	Health NullableString `json:"health,omitempty"`
+	IsKubernetes *bool `json:"isKubernetes,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
+	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
 	MonitoringCredential *MonitoringCredentialsListDto `json:"monitoringCredential,omitempty"`
-	KubernetesAlerts     []KubernetesAlertDtoForPoller `json:"kubernetesAlerts,omitempty"`
+	KubernetesAlerts []KubernetesAlertDto `json:"kubernetesAlerts,omitempty"`
 }
 
 // NewProjectListForAlert instantiates a new ProjectListForAlert object
@@ -115,7 +115,6 @@ func (o *ProjectListForAlert) HasName() bool {
 func (o *ProjectListForAlert) SetName(v string) {
 	o.Name.Set(&v)
 }
-
 // SetNameNil sets the value for Name to be an explicit nil
 func (o *ProjectListForAlert) SetNameNil() {
 	o.Name.Set(nil)
@@ -158,7 +157,6 @@ func (o *ProjectListForAlert) HasToken() bool {
 func (o *ProjectListForAlert) SetToken(v string) {
 	o.Token.Set(&v)
 }
-
 // SetTokenNil sets the value for Token to be an explicit nil
 func (o *ProjectListForAlert) SetTokenNil() {
 	o.Token.Set(nil)
@@ -201,7 +199,6 @@ func (o *ProjectListForAlert) HasStatus() bool {
 func (o *ProjectListForAlert) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
 // SetStatusNil sets the value for Status to be an explicit nil
 func (o *ProjectListForAlert) SetStatusNil() {
 	o.Status.Set(nil)
@@ -276,7 +273,6 @@ func (o *ProjectListForAlert) HasHealth() bool {
 func (o *ProjectListForAlert) SetHealth(v string) {
 	o.Health.Set(&v)
 }
-
 // SetHealthNil sets the value for Health to be an explicit nil
 func (o *ProjectListForAlert) SetHealthNil() {
 	o.Health.Set(nil)
@@ -448,9 +444,9 @@ func (o *ProjectListForAlert) SetMonitoringCredential(v MonitoringCredentialsLis
 }
 
 // GetKubernetesAlerts returns the KubernetesAlerts field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectListForAlert) GetKubernetesAlerts() []KubernetesAlertDtoForPoller {
+func (o *ProjectListForAlert) GetKubernetesAlerts() []KubernetesAlertDto {
 	if o == nil {
-		var ret []KubernetesAlertDtoForPoller
+		var ret []KubernetesAlertDto
 		return ret
 	}
 	return o.KubernetesAlerts
@@ -459,7 +455,7 @@ func (o *ProjectListForAlert) GetKubernetesAlerts() []KubernetesAlertDtoForPolle
 // GetKubernetesAlertsOk returns a tuple with the KubernetesAlerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectListForAlert) GetKubernetesAlertsOk() ([]KubernetesAlertDtoForPoller, bool) {
+func (o *ProjectListForAlert) GetKubernetesAlertsOk() ([]KubernetesAlertDto, bool) {
 	if o == nil || IsNil(o.KubernetesAlerts) {
 		return nil, false
 	}
@@ -475,13 +471,13 @@ func (o *ProjectListForAlert) HasKubernetesAlerts() bool {
 	return false
 }
 
-// SetKubernetesAlerts gets a reference to the given []KubernetesAlertDtoForPoller and assigns it to the KubernetesAlerts field.
-func (o *ProjectListForAlert) SetKubernetesAlerts(v []KubernetesAlertDtoForPoller) {
+// SetKubernetesAlerts gets a reference to the given []KubernetesAlertDto and assigns it to the KubernetesAlerts field.
+func (o *ProjectListForAlert) SetKubernetesAlerts(v []KubernetesAlertDto) {
 	o.KubernetesAlerts = v
 }
 
 func (o ProjectListForAlert) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -564,3 +560,5 @@ func (v *NullableProjectListForAlert) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

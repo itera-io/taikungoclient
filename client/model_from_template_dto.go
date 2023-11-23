@@ -20,9 +20,9 @@ var _ MappedNullable = &FromTemplateDto{}
 
 // FromTemplateDto struct for FromTemplateDto
 type FromTemplateDto struct {
-	AutoTrigger *bool          `json:"autoTrigger,omitempty"`
-	UserId      NullableString `json:"userId,omitempty"`
-	UserName    NullableString `json:"userName,omitempty"`
+	AutoTrigger *bool `json:"autoTrigger,omitempty"`
+	UserId NullableString `json:"userId,omitempty"`
+	UserName NullableString `json:"userName,omitempty"`
 }
 
 // NewFromTemplateDto instantiates a new FromTemplateDto object
@@ -106,7 +106,6 @@ func (o *FromTemplateDto) HasUserId() bool {
 func (o *FromTemplateDto) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
-
 // SetUserIdNil sets the value for UserId to be an explicit nil
 func (o *FromTemplateDto) SetUserIdNil() {
 	o.UserId.Set(nil)
@@ -149,7 +148,6 @@ func (o *FromTemplateDto) HasUserName() bool {
 func (o *FromTemplateDto) SetUserName(v string) {
 	o.UserName.Set(&v)
 }
-
 // SetUserNameNil sets the value for UserName to be an explicit nil
 func (o *FromTemplateDto) SetUserNameNil() {
 	o.UserName.Set(nil)
@@ -161,7 +159,7 @@ func (o *FromTemplateDto) UnsetUserName() {
 }
 
 func (o FromTemplateDto) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -217,3 +215,5 @@ func (v *NullableFromTemplateDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

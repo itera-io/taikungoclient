@@ -20,7 +20,7 @@ var _ MappedNullable = &AlertingProfilesLockManagerCommand{}
 
 // AlertingProfilesLockManagerCommand struct for AlertingProfilesLockManagerCommand
 type AlertingProfilesLockManagerCommand struct {
-	Id   *int32         `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	Mode NullableString `json:"mode,omitempty"`
 }
 
@@ -105,7 +105,6 @@ func (o *AlertingProfilesLockManagerCommand) HasMode() bool {
 func (o *AlertingProfilesLockManagerCommand) SetMode(v string) {
 	o.Mode.Set(&v)
 }
-
 // SetModeNil sets the value for Mode to be an explicit nil
 func (o *AlertingProfilesLockManagerCommand) SetModeNil() {
 	o.Mode.Set(nil)
@@ -117,7 +116,7 @@ func (o *AlertingProfilesLockManagerCommand) UnsetMode() {
 }
 
 func (o AlertingProfilesLockManagerCommand) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -170,3 +169,5 @@ func (v *NullableAlertingProfilesLockManagerCommand) UnmarshalJSON(src []byte) e
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

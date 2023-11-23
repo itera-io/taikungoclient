@@ -20,8 +20,8 @@ var _ MappedNullable = &PodDisruptions{}
 
 // PodDisruptions struct for PodDisruptions
 type PodDisruptions struct {
-	Data       []PodDisruptionDto `json:"data,omitempty"`
-	TotalCount *int32             `json:"totalCount,omitempty"`
+	Data []PodDisruptionDto `json:"data,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
 // NewPodDisruptions instantiates a new PodDisruptions object
@@ -107,7 +107,7 @@ func (o *PodDisruptions) SetTotalCount(v int32) {
 }
 
 func (o PodDisruptions) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
 	}
@@ -160,3 +160,5 @@ func (v *NullablePodDisruptions) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+
