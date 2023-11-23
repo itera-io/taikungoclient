@@ -48721,40 +48721,38 @@ components:
       additionalProperties: false
       example:
         data:
-        - organizationName: organizationName
+        - organizationId: 6
+          isDefault: true
+          organizationName: organizationName
+          createdBy: createdBy
+          isLocked: true
           lastModifiedBy: lastModifiedBy
+          name: name
           prometheusUrl: prometheusUrl
+          prometheusUsername: prometheusUsername
           rules:
           - prometheusRuleName: prometheusRuleName
             prometheusRuleId: 1
           - prometheusRuleName: prometheusRuleName
             prometheusRuleId: 1
-          organizationId: 6
-          isDefault: true
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          prometheusUsername: prometheusUsername
           id: 0
           lastModified: lastModified
-          prometheusPassword: prometheusPassword
-        - organizationName: organizationName
+        - organizationId: 6
+          isDefault: true
+          organizationName: organizationName
+          createdBy: createdBy
+          isLocked: true
           lastModifiedBy: lastModifiedBy
+          name: name
           prometheusUrl: prometheusUrl
+          prometheusUsername: prometheusUsername
           rules:
           - prometheusRuleName: prometheusRuleName
             prometheusRuleId: 1
           - prometheusRuleName: prometheusRuleName
             prometheusRuleId: 1
-          organizationId: 6
-          isDefault: true
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          prometheusUsername: prometheusUsername
           id: 0
           lastModified: lastModified
-          prometheusPassword: prometheusPassword
         totalCount: 5
       properties:
         data:
@@ -48812,23 +48810,22 @@ components:
     OperationCredentialsListDto:
       additionalProperties: false
       example:
+        organizationId: 6
+        isDefault: true
         organizationName: organizationName
+        createdBy: createdBy
+        isLocked: true
         lastModifiedBy: lastModifiedBy
+        name: name
         prometheusUrl: prometheusUrl
+        prometheusUsername: prometheusUsername
         rules:
         - prometheusRuleName: prometheusRuleName
           prometheusRuleId: 1
         - prometheusRuleName: prometheusRuleName
           prometheusRuleId: 1
-        organizationId: 6
-        isDefault: true
-        createdBy: createdBy
-        isLocked: true
-        name: name
-        prometheusUsername: prometheusUsername
         id: 0
         lastModified: lastModified
-        prometheusPassword: prometheusPassword
       properties:
         id:
           format: int32
@@ -48837,9 +48834,6 @@ components:
           nullable: true
           type: string
         prometheusUsername:
-          nullable: true
-          type: string
-        prometheusPassword:
           nullable: true
           type: string
         prometheusUrl:
