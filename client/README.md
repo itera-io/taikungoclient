@@ -1499,6 +1499,8 @@ Class | Method | HTTP request | Description
  - [VerifyWebhookCommand](docs/VerifyWebhookCommand.md)
  - [VmConsoleScreenshotCommand](docs/VmConsoleScreenshotCommand.md)
  - [VmTemplateListCommand](docs/VmTemplateListCommand.md)
+ - [VsphereCredentialsForProjectDto](docs/VsphereCredentialsForProjectDto.md)
+ - [VsphereNetworkListDto](docs/VsphereNetworkListDto.md)
  - [WebhookHeaderDto](docs/WebhookHeaderDto.md)
  - [WhiteListDomainCreateCommand](docs/WhiteListDomainCreateCommand.md)
  - [WhiteListDomainCreateDto](docs/WhiteListDomainCreateDto.md)

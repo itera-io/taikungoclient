@@ -944,6 +944,8 @@ docs/VerifySlackCredentialsCommand.md
 docs/VerifyWebhookCommand.md
 docs/VmConsoleScreenshotCommand.md
 docs/VmTemplateListCommand.md
+docs/VsphereCredentialsForProjectDto.md
+docs/VsphereNetworkListDto.md
 docs/WebhookHeaderDto.md
 docs/WhiteListDomainCreateCommand.md
 docs/WhiteListDomainCreateDto.md
@@ -1740,6 +1742,8 @@ model_verify_slack_credentials_command.go
 model_verify_webhook_command.go
 model_vm_console_screenshot_command.go
 model_vm_template_list_command.go
+model_vsphere_credentials_for_project_dto.go
+model_vsphere_network_list_dto.go
 model_webhook_header_dto.go
 model_white_list_domain_create_command.go
 model_white_list_domain_create_dto.go

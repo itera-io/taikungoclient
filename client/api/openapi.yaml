@@ -41920,13 +41920,49 @@ components:
     CredentialsForProjectList:
       additionalProperties: false
       example:
-        cloudType: null
         cloudCredentialRevision: 0
         openshift:
           storageClass: storageClass
           baseDomain: baseDomain
           kubeConfig: kubeConfig
           pullSecret: pullSecret
+        google:
+          zone: zone
+          billingAccountId: billingAccountId
+          region: region
+          config: config
+          folderId: folderId
+        tanzu:
+          volumeType: volumeType
+          password: password
+          port: 6
+          namespace: namespace
+          url: url
+          username: username
+        requiresVPN: true
+        vsphere:
+          password: password
+          drsEnabled: true
+          datastore: datastore
+          datacenter: datacenter
+          vmTemplateName: vmTemplateName
+          vsphereNetworks:
+          - endAllocationRange: endAllocationRange
+            netMask: 5
+            ipAddress: ipAddress
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+          - endAllocationRange: endAllocationRange
+            netMask: 5
+            ipAddress: ipAddress
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+          url: url
+          username: username
+          resourcePool: resourcePool
+        cloudType: null
         openstack:
           openStackUrl: openStackUrl
           applicationCredEnabled: true
@@ -41941,26 +41977,12 @@ components:
           openStackRegion: openStackRegion
           openStackImportNetwork: true
           openStackPublicNetwork: openStackPublicNetwork
-        google:
-          zone: zone
-          billingAccountId: billingAccountId
-          region: region
-          config: config
-          folderId: folderId
         billingEnabled: true
         continentName: continentName
         aws:
           awsRegion: awsRegion
           awsAccessKeyId: awsAccessKeyId
           awsSecretAccessKey: awsSecretAccessKey
-        tanzu:
-          volumeType: volumeType
-          password: password
-          port: 6
-          namespace: namespace
-          url: url
-          username: username
-        requiresVPN: true
         proxmox:
           password: password
           tokenId: tokenId
@@ -42014,6 +42036,8 @@ components:
           $ref: '#/components/schemas/TanzuCredentialsForProjectDto'
         proxmox:
           $ref: '#/components/schemas/ProxmoxCredentialsForProjectDto'
+        vsphere:
+          $ref: '#/components/schemas/VsphereCredentialsForProjectDto'
         openshift:
           $ref: '#/components/schemas/OpenshiftCredentialForProjectDto'
       type: object
@@ -60038,6 +60062,88 @@ components:
         tokenSecret:
           nullable: true
           type: string
+      type: object
+    VsphereCredentialsForProjectDto:
+      additionalProperties: false
+      example:
+        password: password
+        drsEnabled: true
+        datastore: datastore
+        datacenter: datacenter
+        vmTemplateName: vmTemplateName
+        vsphereNetworks:
+        - endAllocationRange: endAllocationRange
+          netMask: 5
+          ipAddress: ipAddress
+          isPrivate: true
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+        - endAllocationRange: endAllocationRange
+          netMask: 5
+          ipAddress: ipAddress
+          isPrivate: true
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+        url: url
+        username: username
+        resourcePool: resourcePool
+      properties:
+        username:
+          nullable: true
+          type: string
+        url:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenter:
+          nullable: true
+          type: string
+        datastore:
+          nullable: true
+          type: string
+        resourcePool:
+          nullable: true
+          type: string
+        drsEnabled:
+          type: boolean
+        vmTemplateName:
+          nullable: true
+          type: string
+        vsphereNetworks:
+          items:
+            $ref: '#/components/schemas/VsphereNetworkListDto'
+          nullable: true
+          type: array
+      type: object
+    VsphereNetworkListDto:
+      additionalProperties: false
+      example:
+        endAllocationRange: endAllocationRange
+        netMask: 5
+        ipAddress: ipAddress
+        isPrivate: true
+        beginAllocationRange: beginAllocationRange
+        gateway: gateway
+      properties:
+        gateway:
+          nullable: true
+          type: string
+        ipAddress:
+          nullable: true
+          type: string
+        netMask:
+          format: int32
+          type: integer
+        beginAllocationRange:
+          nullable: true
+          type: string
+        endAllocationRange:
+          nullable: true
+          type: string
+        isPrivate:
+          type: boolean
       type: object
     WebhookHeaderDto:
       additionalProperties: false
