@@ -79,6 +79,7 @@ api_user_group.go
 api_user_projects.go
 api_user_token.go
 api_users.go
+api_vsphere_cloud_credential.go
 client.go
 configuration.go
 docs/AWSCloudCredentialAPI.md
@@ -324,6 +325,8 @@ docs/CreateTanzuCommand.md
 docs/CreateTicketCommand.md
 docs/CreateUserCommand.md
 docs/CreateUserGroupCommand.md
+docs/CreateVsphereCommand.md
+docs/CreateVsphereNetworkDto.md
 docs/CredentialChartDto.md
 docs/CredentialMakeDefaultCommand.md
 docs/CredentialsChart.md
@@ -338,6 +341,10 @@ docs/DaemonSetSearchCommand.md
 docs/DaemonSetSearchList.md
 docs/DaemonSets.md
 docs/DashboardChart.md
+docs/DatacenterListCommand.md
+docs/DatacenterSummary.md
+docs/DatastoreListCommand.md
+docs/DatastoreSummary.md
 docs/DateFilter.md
 docs/DateInterval.md
 docs/DeleteAlertCommand.md
@@ -449,6 +456,7 @@ docs/HelmReleasesList.md
 docs/HelmSpec.md
 docs/HelmStatus.md
 docs/HypervisorListCommand.md
+docs/HypervisorSummary.md
 docs/ImageByIdCommand.md
 docs/ImagesAPI.md
 docs/ImportBackupStorageLocationCommand.md
@@ -535,8 +543,10 @@ docs/MakeOwnerCommand.md
 docs/Metadata.md
 docs/MonitoringCredentialsListDto.md
 docs/MonitoringOperationsCommand.md
+docs/NetworkListCommand.md
 docs/NetworkPolicies.md
 docs/NetworkPolicyDto.md
+docs/NetworkSummary.md
 docs/NodeCommand.md
 docs/NodeDto.md
 docs/NodeSearchResponseData.md
@@ -757,6 +767,8 @@ docs/ResetServerStatusCommand.md
 docs/ResetStandAloneVmDiskStatusCommand.md
 docs/ResetStandAloneVmStatusCommand.md
 docs/Resource.md
+docs/ResourcePoolListCommand.md
+docs/ResourcePoolSummary.md
 docs/RestartDaemonSetCommand.md
 docs/RestartDeploymentCommand.md
 docs/RestartStsCommand.md
@@ -944,8 +956,14 @@ docs/VerifySlackCredentialsCommand.md
 docs/VerifyWebhookCommand.md
 docs/VmConsoleScreenshotCommand.md
 docs/VmTemplateListCommand.md
+docs/VmTemplateSummary.md
+docs/VsphereCloudCredentialAPI.md
 docs/VsphereCredentialsForProjectDto.md
+docs/VsphereHypervisorListCommand.md
+docs/VsphereList.md
+docs/VsphereListDto.md
 docs/VsphereNetworkListDto.md
+docs/VsphereVmTemplateListCommand.md
 docs/WebhookHeaderDto.md
 docs/WhiteListDomainCreateCommand.md
 docs/WhiteListDomainCreateDto.md
@@ -1179,6 +1197,8 @@ model_create_tanzu_command.go
 model_create_ticket_command.go
 model_create_user_command.go
 model_create_user_group_command.go
+model_create_vsphere_command.go
+model_create_vsphere_network_dto.go
 model_credential_chart_dto.go
 model_credential_make_default_command.go
 model_credentials_chart.go
@@ -1192,6 +1212,10 @@ model_daemon_set_search_command.go
 model_daemon_set_search_list.go
 model_daemon_sets.go
 model_dashboard_chart.go
+model_datacenter_list_command.go
+model_datacenter_summary.go
+model_datastore_list_command.go
+model_datastore_summary.go
 model_date_filter.go
 model_date_interval.go
 model_delete_alert_command.go
@@ -1300,6 +1324,7 @@ model_helm_releases_list.go
 model_helm_spec.go
 model_helm_status.go
 model_hypervisor_list_command.go
+model_hypervisor_summary.go
 model_image_by_id_command.go
 model_import_backup_storage_location_command.go
 model_import_repo_command.go
@@ -1376,8 +1401,10 @@ model_make_owner_command.go
 model_metadata.go
 model_monitoring_credentials_list_dto.go
 model_monitoring_operations_command.go
+model_network_list_command.go
 model_network_policies.go
 model_network_policy_dto.go
+model_network_summary.go
 model_node_command.go
 model_node_dto.go
 model_node_search_response_data.go
@@ -1573,6 +1600,8 @@ model_reset_server_status_command.go
 model_reset_stand_alone_vm_disk_status_command.go
 model_reset_stand_alone_vm_status_command.go
 model_resource.go
+model_resource_pool_list_command.go
+model_resource_pool_summary.go
 model_restart_daemon_set_command.go
 model_restart_deployment_command.go
 model_restart_sts_command.go
@@ -1742,8 +1771,13 @@ model_verify_slack_credentials_command.go
 model_verify_webhook_command.go
 model_vm_console_screenshot_command.go
 model_vm_template_list_command.go
+model_vm_template_summary.go
 model_vsphere_credentials_for_project_dto.go
+model_vsphere_hypervisor_list_command.go
+model_vsphere_list.go
+model_vsphere_list_dto.go
 model_vsphere_network_list_dto.go
+model_vsphere_vm_template_list_command.go
 model_webhook_header_dto.go
 model_white_list_domain_create_command.go
 model_white_list_domain_create_dto.go
@@ -1827,4 +1861,5 @@ test/api_user_group_test.go
 test/api_user_projects_test.go
 test/api_user_token_test.go
 test/api_users_test.go
+test/api_vsphere_cloud_credential_test.go
 utils.go

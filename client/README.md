@@ -708,6 +708,14 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**UsersUpdateUser**](docs/UsersAPI.md#usersupdateuser) | **Post** /api/v1/users/update | Update user
 *UsersAPI* | [**UsersUserInfo**](docs/UsersAPI.md#usersuserinfo) | **Get** /api/v1/users/userinfo | Retrieve user info
 *UsersAPI* | [**UsersVerifyEmail**](docs/UsersAPI.md#usersverifyemail) | **Post** /api/v1/users/verifyemail | Verify user email
+*VsphereCloudCredentialAPI* | [**VsphereCreate**](docs/VsphereCloudCredentialAPI.md#vspherecreate) | **Post** /api/v1/vsphere/create | Add Vsphere credentials
+*VsphereCloudCredentialAPI* | [**VsphereDatacenterList**](docs/VsphereCloudCredentialAPI.md#vspheredatacenterlist) | **Post** /api/v1/vsphere/datacenter-list | Fetch Vsphere datacenter list
+*VsphereCloudCredentialAPI* | [**VsphereDatastoreList**](docs/VsphereCloudCredentialAPI.md#vspheredatastorelist) | **Post** /api/v1/vsphere/datastore-list | Fetch Vsphere datastore list
+*VsphereCloudCredentialAPI* | [**VsphereHypervisorList**](docs/VsphereCloudCredentialAPI.md#vspherehypervisorlist) | **Post** /api/v1/vsphere/hypervisor-list | Fetch Vsphere hypervisor list
+*VsphereCloudCredentialAPI* | [**VsphereList**](docs/VsphereCloudCredentialAPI.md#vspherelist) | **Get** /api/v1/vsphere/list | Retrieve list of vsphere cloud credentials
+*VsphereCloudCredentialAPI* | [**VsphereNetworkList**](docs/VsphereCloudCredentialAPI.md#vspherenetworklist) | **Post** /api/v1/vsphere/network-list | Fetch Vsphere network list
+*VsphereCloudCredentialAPI* | [**VsphereResourcePoolList**](docs/VsphereCloudCredentialAPI.md#vsphereresourcepoollist) | **Post** /api/v1/vsphere/resource-pool-list | Fetch Vsphere resource pool list
+*VsphereCloudCredentialAPI* | [**VsphereVmTemplateList**](docs/VsphereCloudCredentialAPI.md#vspherevmtemplatelist) | **Post** /api/v1/vsphere/vm-template-list | Fetch Vsphere vm template list
 
 
 ## Documentation For Models
@@ -936,6 +944,8 @@ Class | Method | HTTP request | Description
  - [CreateTicketCommand](docs/CreateTicketCommand.md)
  - [CreateUserCommand](docs/CreateUserCommand.md)
  - [CreateUserGroupCommand](docs/CreateUserGroupCommand.md)
+ - [CreateVsphereCommand](docs/CreateVsphereCommand.md)
+ - [CreateVsphereNetworkDto](docs/CreateVsphereNetworkDto.md)
  - [CredentialChartDto](docs/CredentialChartDto.md)
  - [CredentialMakeDefaultCommand](docs/CredentialMakeDefaultCommand.md)
  - [CredentialsChart](docs/CredentialsChart.md)
@@ -949,6 +959,10 @@ Class | Method | HTTP request | Description
  - [DaemonSetSearchList](docs/DaemonSetSearchList.md)
  - [DaemonSets](docs/DaemonSets.md)
  - [DashboardChart](docs/DashboardChart.md)
+ - [DatacenterListCommand](docs/DatacenterListCommand.md)
+ - [DatacenterSummary](docs/DatacenterSummary.md)
+ - [DatastoreListCommand](docs/DatastoreListCommand.md)
+ - [DatastoreSummary](docs/DatastoreSummary.md)
  - [DateFilter](docs/DateFilter.md)
  - [DateInterval](docs/DateInterval.md)
  - [DeleteAlertCommand](docs/DeleteAlertCommand.md)
@@ -1057,6 +1071,7 @@ Class | Method | HTTP request | Description
  - [HelmSpec](docs/HelmSpec.md)
  - [HelmStatus](docs/HelmStatus.md)
  - [HypervisorListCommand](docs/HypervisorListCommand.md)
+ - [HypervisorSummary](docs/HypervisorSummary.md)
  - [ImageByIdCommand](docs/ImageByIdCommand.md)
  - [ImportBackupStorageLocationCommand](docs/ImportBackupStorageLocationCommand.md)
  - [ImportRepoCommand](docs/ImportRepoCommand.md)
@@ -1133,8 +1148,10 @@ Class | Method | HTTP request | Description
  - [Metadata](docs/Metadata.md)
  - [MonitoringCredentialsListDto](docs/MonitoringCredentialsListDto.md)
  - [MonitoringOperationsCommand](docs/MonitoringOperationsCommand.md)
+ - [NetworkListCommand](docs/NetworkListCommand.md)
  - [NetworkPolicies](docs/NetworkPolicies.md)
  - [NetworkPolicyDto](docs/NetworkPolicyDto.md)
+ - [NetworkSummary](docs/NetworkSummary.md)
  - [NodeCommand](docs/NodeCommand.md)
  - [NodeDto](docs/NodeDto.md)
  - [NodeSearchResponseData](docs/NodeSearchResponseData.md)
@@ -1330,6 +1347,8 @@ Class | Method | HTTP request | Description
  - [ResetStandAloneVmDiskStatusCommand](docs/ResetStandAloneVmDiskStatusCommand.md)
  - [ResetStandAloneVmStatusCommand](docs/ResetStandAloneVmStatusCommand.md)
  - [Resource](docs/Resource.md)
+ - [ResourcePoolListCommand](docs/ResourcePoolListCommand.md)
+ - [ResourcePoolSummary](docs/ResourcePoolSummary.md)
  - [RestartDaemonSetCommand](docs/RestartDaemonSetCommand.md)
  - [RestartDeploymentCommand](docs/RestartDeploymentCommand.md)
  - [RestartStsCommand](docs/RestartStsCommand.md)
@@ -1499,8 +1518,13 @@ Class | Method | HTTP request | Description
  - [VerifyWebhookCommand](docs/VerifyWebhookCommand.md)
  - [VmConsoleScreenshotCommand](docs/VmConsoleScreenshotCommand.md)
  - [VmTemplateListCommand](docs/VmTemplateListCommand.md)
+ - [VmTemplateSummary](docs/VmTemplateSummary.md)
  - [VsphereCredentialsForProjectDto](docs/VsphereCredentialsForProjectDto.md)
+ - [VsphereHypervisorListCommand](docs/VsphereHypervisorListCommand.md)
+ - [VsphereList](docs/VsphereList.md)
+ - [VsphereListDto](docs/VsphereListDto.md)
  - [VsphereNetworkListDto](docs/VsphereNetworkListDto.md)
+ - [VsphereVmTemplateListCommand](docs/VsphereVmTemplateListCommand.md)
  - [WebhookHeaderDto](docs/WebhookHeaderDto.md)
  - [WhiteListDomainCreateCommand](docs/WhiteListDomainCreateCommand.md)
  - [WhiteListDomainCreateDto](docs/WhiteListDomainCreateDto.md)

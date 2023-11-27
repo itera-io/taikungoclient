@@ -34846,6 +34846,464 @@ paths:
           description: Server Error
       tags:
       - Users
+  /api/v1/vsphere/create:
+    post:
+      operationId: vsphere-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVsphereCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Add Vsphere credentials
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/datacenter-list:
+    post:
+      operationId: vsphere-datacenter-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatacenterListCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DatacenterSummary'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch Vsphere datacenter list
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/datastore-list:
+    post:
+      operationId: vsphere-datastore-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatastoreListCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DatastoreSummary'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch Vsphere datastore list
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/hypervisor-list:
+    post:
+      operationId: vsphere-hypervisor-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VsphereHypervisorListCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/HypervisorSummary'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch Vsphere hypervisor list
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/network-list:
+    post:
+      operationId: vsphere-network-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkListCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/NetworkSummary'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch Vsphere network list
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/resource-pool-list:
+    post:
+      operationId: vsphere-resource-pool-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourcePoolListCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ResourcePoolSummary'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch Vsphere resource pool list
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/vm-template-list:
+    post:
+      operationId: vsphere-vm-template-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VsphereVmTemplateListCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/VmTemplateSummary'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch Vsphere vm template list
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/list:
+    get:
+      operationId: vsphere-list
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VsphereList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve list of vsphere cloud credentials
+      tags:
+      - Vsphere cloud credential
 components:
   schemas:
     AcceptOfferCommand:
@@ -41215,8 +41673,6 @@ components:
         size: 6
         standaloneVmId: 0
         name: name
-        lunId: 1
-        deviceName: deviceName
       properties:
         standaloneVmId:
           format: int32
@@ -41230,13 +41686,6 @@ components:
         volumeType:
           nullable: true
           type: string
-        deviceName:
-          nullable: true
-          type: string
-        lunId:
-          format: int32
-          nullable: true
-          type: integer
       type: object
     CreateStandAloneVmCommand:
       additionalProperties: false
@@ -41515,6 +41964,104 @@ components:
             type: string
           nullable: true
           type: array
+      type: object
+    CreateVsphereCommand:
+      additionalProperties: false
+      example:
+        continent: continent
+        drsEnabled: true
+        privateNetwork:
+          endAllocationRange: endAllocationRange
+          netMask: 6
+          ipAddress: ipAddress
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+        datastore: datastore
+        datacenter: datacenter
+        url: url
+        publicNetwork:
+          endAllocationRange: endAllocationRange
+          netMask: 6
+          ipAddress: ipAddress
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+        organizationId: 0
+        password: password
+        name: name
+        hypervisors:
+        - hypervisors
+        - hypervisors
+        vmTemplateName: vmTemplateName
+        username: username
+        resourcePool: resourcePool
+      properties:
+        name:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        url:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenter:
+          nullable: true
+          type: string
+        datastore:
+          nullable: true
+          type: string
+        resourcePool:
+          nullable: true
+          type: string
+        drsEnabled:
+          type: boolean
+        vmTemplateName:
+          nullable: true
+          type: string
+        continent:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        hypervisors:
+          items:
+            type: string
+          nullable: true
+          type: array
+        publicNetwork:
+          $ref: '#/components/schemas/CreateVsphereNetworkDto'
+        privateNetwork:
+          $ref: '#/components/schemas/CreateVsphereNetworkDto'
+      type: object
+    CreateVsphereNetworkDto:
+      additionalProperties: false
+      example:
+        endAllocationRange: endAllocationRange
+        netMask: 6
+        ipAddress: ipAddress
+        beginAllocationRange: beginAllocationRange
+        gateway: gateway
+      properties:
+        gateway:
+          nullable: true
+          type: string
+        ipAddress:
+          nullable: true
+          type: string
+        netMask:
+          format: int32
+          type: integer
+        beginAllocationRange:
+          nullable: true
+          type: string
+        endAllocationRange:
+          nullable: true
+          type: string
       type: object
     CredentialChartDto:
       additionalProperties: false
@@ -42581,6 +43128,78 @@ components:
           $ref: '#/components/schemas/ServerChartDto'
         standAloneVms:
           $ref: '#/components/schemas/ServerChartDto'
+      type: object
+    DatacenterListCommand:
+      additionalProperties: false
+      example:
+        password: password
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+      type: object
+    DatacenterSummary:
+      additionalProperties: false
+      example:
+        name: name
+        datacenter: datacenter
+      properties:
+        datacenter:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+      type: object
+    DatastoreListCommand:
+      additionalProperties: false
+      example:
+        password: password
+        datacenter: datacenter
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenter:
+          nullable: true
+          type: string
+      type: object
+    DatastoreSummary:
+      additionalProperties: false
+      example:
+        datastore: datastore
+        name: name
+        type: type
+        capacity: 0
+      properties:
+        capacity:
+          format: int32
+          type: integer
+        datastore:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
       type: object
     DateFilter:
       enum:
@@ -45018,6 +45637,27 @@ components:
           nullable: true
           type: integer
       type: object
+    HypervisorSummary:
+      additionalProperties: false
+      example:
+        powerState: powerState
+        connectionState: connectionState
+        name: name
+        host: host
+      properties:
+        connectionState:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        host:
+          nullable: true
+          type: string
+        powerState:
+          nullable: true
+          type: string
+      type: object
     IResult:
       additionalProperties: false
       type: object
@@ -47232,6 +47872,27 @@ components:
           format: int32
           type: integer
       type: object
+    NetworkListCommand:
+      additionalProperties: false
+      example:
+        password: password
+        datacenter: datacenter
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenter:
+          nullable: true
+          type: string
+      type: object
     NetworkPolicies:
       additionalProperties: false
       example:
@@ -47278,6 +47939,23 @@ components:
           nullable: true
           type: string
         age:
+          nullable: true
+          type: string
+      type: object
+    NetworkSummary:
+      additionalProperties: false
+      example:
+        name: name
+        type: type
+        network: network
+      properties:
+        network:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        type:
           nullable: true
           type: string
       type: object
@@ -54750,6 +55428,40 @@ components:
           nullable: true
           type: array
       type: object
+    ResourcePoolListCommand:
+      additionalProperties: false
+      example:
+        password: password
+        datacenter: datacenter
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenter:
+          nullable: true
+          type: string
+      type: object
+    ResourcePoolSummary:
+      additionalProperties: false
+      example:
+        name: name
+        resourcePool: resourcePool
+      properties:
+        name:
+          nullable: true
+          type: string
+        resourcePool:
+          nullable: true
+          type: string
+      type: object
     RestartDaemonSetCommand:
       additionalProperties: false
       example:
@@ -60063,6 +60775,27 @@ components:
           nullable: true
           type: string
       type: object
+    VmTemplateSummary:
+      additionalProperties: false
+      example:
+        memory_size_MiB: 6
+        vm: vm
+        name: name
+        cpuCount: 0
+      properties:
+        cpuCount:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        vm:
+          nullable: true
+          type: string
+        memory_size_MiB:
+          format: int32
+          type: integer
+      type: object
     VsphereCredentialsForProjectDto:
       additionalProperties: false
       example:
@@ -60117,6 +60850,219 @@ components:
           nullable: true
           type: array
       type: object
+    VsphereHypervisorListCommand:
+      additionalProperties: false
+      example:
+        password: password
+        datacenter: datacenter
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenter:
+          nullable: true
+          type: string
+      type: object
+    VsphereList:
+      additionalProperties: false
+      example:
+        data:
+        - projectCount: 6
+          projects:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          organizationName: organizationName
+          lastModifiedBy: lastModifiedBy
+          url: url
+          organizationId: 1
+          createdAt: createdAt
+          isDefault: true
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          hypervisors:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          id: 0
+          lastModified: lastModified
+          continentName: continentName
+          vmTemplateName: vmTemplateName
+          vsphereNetworks:
+          - endAllocationRange: endAllocationRange
+            netMask: 5
+            ipAddress: ipAddress
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+          - endAllocationRange: endAllocationRange
+            netMask: 5
+            ipAddress: ipAddress
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+          username: username
+        - projectCount: 6
+          projects:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          organizationName: organizationName
+          lastModifiedBy: lastModifiedBy
+          url: url
+          organizationId: 1
+          createdAt: createdAt
+          isDefault: true
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          hypervisors:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          id: 0
+          lastModified: lastModified
+          continentName: continentName
+          vmTemplateName: vmTemplateName
+          vsphereNetworks:
+          - endAllocationRange: endAllocationRange
+            netMask: 5
+            ipAddress: ipAddress
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+          - endAllocationRange: endAllocationRange
+            netMask: 5
+            ipAddress: ipAddress
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+          username: username
+        totalCount: 5
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/VsphereListDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
+    VsphereListDto:
+      additionalProperties: false
+      example:
+        projectCount: 6
+        projects:
+        - name: name
+          id: 0
+        - name: name
+          id: 0
+        organizationName: organizationName
+        lastModifiedBy: lastModifiedBy
+        url: url
+        organizationId: 1
+        createdAt: createdAt
+        isDefault: true
+        createdBy: createdBy
+        isLocked: true
+        name: name
+        hypervisors:
+        - name: name
+          id: 0
+        - name: name
+          id: 0
+        id: 0
+        lastModified: lastModified
+        continentName: continentName
+        vmTemplateName: vmTemplateName
+        vsphereNetworks:
+        - endAllocationRange: endAllocationRange
+          netMask: 5
+          ipAddress: ipAddress
+          isPrivate: true
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+        - endAllocationRange: endAllocationRange
+          netMask: 5
+          ipAddress: ipAddress
+          isPrivate: true
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+        username: username
+      properties:
+        id:
+          format: int32
+          type: integer
+        projectCount:
+          format: int32
+          type: integer
+        isLocked:
+          type: boolean
+        name:
+          nullable: true
+          type: string
+        projects:
+          items:
+            $ref: '#/components/schemas/CommonDropdownDto'
+          nullable: true
+          type: array
+        createdBy:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        isDefault:
+          type: boolean
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        continentName:
+          nullable: true
+          type: string
+        hypervisors:
+          items:
+            $ref: '#/components/schemas/CommonDropdownDto'
+          nullable: true
+          type: array
+        username:
+          nullable: true
+          type: string
+        url:
+          nullable: true
+          type: string
+        vmTemplateName:
+          nullable: true
+          type: string
+        vsphereNetworks:
+          items:
+            $ref: '#/components/schemas/VsphereNetworkListDto'
+          nullable: true
+          type: array
+      type: object
     VsphereNetworkListDto:
       additionalProperties: false
       example:
@@ -60144,6 +61090,27 @@ components:
           type: string
         isPrivate:
           type: boolean
+      type: object
+    VsphereVmTemplateListCommand:
+      additionalProperties: false
+      example:
+        password: password
+        datacenter: datacenter
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenter:
+          nullable: true
+          type: string
       type: object
     WebhookHeaderDto:
       additionalProperties: false

@@ -24,8 +24,6 @@ type CreateStandAloneDiskCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	Size *int64 `json:"size,omitempty"`
 	VolumeType NullableString `json:"volumeType,omitempty"`
-	DeviceName NullableString `json:"deviceName,omitempty"`
-	LunId NullableInt32 `json:"lunId,omitempty"`
 }
 
 // NewCreateStandAloneDiskCommand instantiates a new CreateStandAloneDiskCommand object
@@ -193,90 +191,6 @@ func (o *CreateStandAloneDiskCommand) UnsetVolumeType() {
 	o.VolumeType.Unset()
 }
 
-// GetDeviceName returns the DeviceName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateStandAloneDiskCommand) GetDeviceName() string {
-	if o == nil || IsNil(o.DeviceName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.DeviceName.Get()
-}
-
-// GetDeviceNameOk returns a tuple with the DeviceName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateStandAloneDiskCommand) GetDeviceNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.DeviceName.Get(), o.DeviceName.IsSet()
-}
-
-// HasDeviceName returns a boolean if a field has been set.
-func (o *CreateStandAloneDiskCommand) HasDeviceName() bool {
-	if o != nil && o.DeviceName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDeviceName gets a reference to the given NullableString and assigns it to the DeviceName field.
-func (o *CreateStandAloneDiskCommand) SetDeviceName(v string) {
-	o.DeviceName.Set(&v)
-}
-// SetDeviceNameNil sets the value for DeviceName to be an explicit nil
-func (o *CreateStandAloneDiskCommand) SetDeviceNameNil() {
-	o.DeviceName.Set(nil)
-}
-
-// UnsetDeviceName ensures that no value is present for DeviceName, not even an explicit nil
-func (o *CreateStandAloneDiskCommand) UnsetDeviceName() {
-	o.DeviceName.Unset()
-}
-
-// GetLunId returns the LunId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateStandAloneDiskCommand) GetLunId() int32 {
-	if o == nil || IsNil(o.LunId.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.LunId.Get()
-}
-
-// GetLunIdOk returns a tuple with the LunId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateStandAloneDiskCommand) GetLunIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.LunId.Get(), o.LunId.IsSet()
-}
-
-// HasLunId returns a boolean if a field has been set.
-func (o *CreateStandAloneDiskCommand) HasLunId() bool {
-	if o != nil && o.LunId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLunId gets a reference to the given NullableInt32 and assigns it to the LunId field.
-func (o *CreateStandAloneDiskCommand) SetLunId(v int32) {
-	o.LunId.Set(&v)
-}
-// SetLunIdNil sets the value for LunId to be an explicit nil
-func (o *CreateStandAloneDiskCommand) SetLunIdNil() {
-	o.LunId.Set(nil)
-}
-
-// UnsetLunId ensures that no value is present for LunId, not even an explicit nil
-func (o *CreateStandAloneDiskCommand) UnsetLunId() {
-	o.LunId.Unset()
-}
-
 func (o CreateStandAloneDiskCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -298,12 +212,6 @@ func (o CreateStandAloneDiskCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.VolumeType.IsSet() {
 		toSerialize["volumeType"] = o.VolumeType.Get()
-	}
-	if o.DeviceName.IsSet() {
-		toSerialize["deviceName"] = o.DeviceName.Get()
-	}
-	if o.LunId.IsSet() {
-		toSerialize["lunId"] = o.LunId.Get()
 	}
 	return toSerialize, nil
 }
