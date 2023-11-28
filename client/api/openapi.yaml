@@ -7655,6 +7655,49 @@ paths:
       summary: Make cloud credentials default
       tags:
       - Cloud credential
+  /api/v1/cloudcredentials/network/ip-addresses:
+    post:
+      operationId: cloudcredentials-update-ip-addresses
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUsedIpAddressesCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Update cloud credential's allocated ip addresses
+      tags:
+      - Cloud credential
   /api/v1/cloudcredentials/flavors/{cloudId}:
     get:
       operationId: cloudcredentials-all-flavors
@@ -35149,6 +35192,48 @@ paths:
       summary: Fetch Vsphere resource pool list
       tags:
       - Vsphere cloud credential
+  /api/v1/vsphere/update:
+    post:
+      operationId: vsphere-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVsphereCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Update Vsphere credentials
+      tags:
+      - Vsphere cloud credential
   /api/v1/vsphere/vm-template-list:
     post:
       operationId: vsphere-vm-template-list
@@ -60127,6 +60212,27 @@ components:
           type: integer
         isBound:
           type: boolean
+      type: object
+    UpdateVsphereCommand:
+      additionalProperties: false
+      example:
+        password: password
+        name: name
+        id: 0
+        username: username
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
       type: object
     UserDetails:
       additionalProperties: false

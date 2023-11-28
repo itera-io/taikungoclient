@@ -929,6 +929,7 @@ docs/UpdateUserCommand.md
 docs/UpdateUserGroupDto.md
 docs/UpdateUserProjectDto.md
 docs/UpdateUserProjectGroupDto.md
+docs/UpdateVsphereCommand.md
 docs/UserDetails.md
 docs/UserDto.md
 docs/UserExistCommand.md
@@ -1748,6 +1749,7 @@ model_update_user_command.go
 model_update_user_group_dto.go
 model_update_user_project_dto.go
 model_update_user_project_group_dto.go
+model_update_vsphere_command.go
 model_user_details.go
 model_user_dto.go
 model_user_exist_command.go

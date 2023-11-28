@@ -230,6 +230,7 @@ Class | Method | HTTP request | Description
 *CloudCredentialAPI* | [**CloudcredentialsLockManager**](docs/CloudCredentialAPI.md#cloudcredentialslockmanager) | **Post** /api/v1/cloudcredentials/lockmanager | Lock/Unlock cloud credential
 *CloudCredentialAPI* | [**CloudcredentialsMakeDefault**](docs/CloudCredentialAPI.md#cloudcredentialsmakedefault) | **Post** /api/v1/cloudcredentials/makedefault | Make cloud credentials default
 *CloudCredentialAPI* | [**CloudcredentialsOrgList**](docs/CloudCredentialAPI.md#cloudcredentialsorglist) | **Get** /api/v1/cloudcredentials | Retrieve a list of cloud credentials by organization Id
+*CloudCredentialAPI* | [**CloudcredentialsUpdateIpAddresses**](docs/CloudCredentialAPI.md#cloudcredentialsupdateipaddresses) | **Post** /api/v1/cloudcredentials/network/ip-addresses | Update cloud credential&#39;s allocated ip addresses
 *CommonAPI* | [**CommonCountries**](docs/CommonAPI.md#commoncountries) | **Get** /api/v1/common/countries | Retrieve country list
 *CommonAPI* | [**CommonEnumValues**](docs/CommonAPI.md#commonenumvalues) | **Get** /api/v1/common/enumvalues | Retrieve enum values
 *CommonAPI* | [**CommonIpRangeCount**](docs/CommonAPI.md#commoniprangecount) | **Post** /api/v1/common/ip-range-count | Retrieve ip address range count
@@ -715,6 +716,7 @@ Class | Method | HTTP request | Description
 *VsphereCloudCredentialAPI* | [**VsphereList**](docs/VsphereCloudCredentialAPI.md#vspherelist) | **Get** /api/v1/vsphere/list | Retrieve list of vsphere cloud credentials
 *VsphereCloudCredentialAPI* | [**VsphereNetworkList**](docs/VsphereCloudCredentialAPI.md#vspherenetworklist) | **Post** /api/v1/vsphere/network-list | Fetch Vsphere network list
 *VsphereCloudCredentialAPI* | [**VsphereResourcePoolList**](docs/VsphereCloudCredentialAPI.md#vsphereresourcepoollist) | **Post** /api/v1/vsphere/resource-pool-list | Fetch Vsphere resource pool list
+*VsphereCloudCredentialAPI* | [**VsphereUpdate**](docs/VsphereCloudCredentialAPI.md#vsphereupdate) | **Post** /api/v1/vsphere/update | Update Vsphere credentials
 *VsphereCloudCredentialAPI* | [**VsphereVmTemplateList**](docs/VsphereCloudCredentialAPI.md#vspherevmtemplatelist) | **Post** /api/v1/vsphere/vm-template-list | Fetch Vsphere vm template list
 
 
@@ -1495,6 +1497,7 @@ Class | Method | HTTP request | Description
  - [UpdateUserGroupDto](docs/UpdateUserGroupDto.md)
  - [UpdateUserProjectDto](docs/UpdateUserProjectDto.md)
  - [UpdateUserProjectGroupDto](docs/UpdateUserProjectGroupDto.md)
+ - [UpdateVsphereCommand](docs/UpdateVsphereCommand.md)
  - [UserDetails](docs/UserDetails.md)
  - [UserDto](docs/UserDto.md)
  - [UserExistCommand](docs/UserExistCommand.md)
