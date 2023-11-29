@@ -284,6 +284,7 @@ Class | Method | HTTP request | Description
 *FlavorsAPI* | [**FlavorsSelectedFlavorsForProject**](docs/FlavorsAPI.md#flavorsselectedflavorsforproject) | **Get** /api/v1/flavors/projects/list | Retrieve selected flavors for project
 *FlavorsAPI* | [**FlavorsTanzuFlavors**](docs/FlavorsAPI.md#flavorstanzuflavors) | **Get** /api/v1/flavors/tanzu/{cloudId} | Retrieve tanzu flavors
 *FlavorsAPI* | [**FlavorsUnbindFromProject**](docs/FlavorsAPI.md#flavorsunbindfromproject) | **Post** /api/v1/flavors/unbind | Unbind flavors from project
+*FlavorsAPI* | [**FlavorsVsphereFlavors**](docs/FlavorsAPI.md#flavorsvsphereflavors) | **Get** /api/v1/flavors/vsphere/{cloudId} | Retrieve vsphere flavors
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | 
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | 
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
@@ -305,6 +306,7 @@ Class | Method | HTTP request | Description
 *ImagesAPI* | [**ImagesSelectedImagesForProject**](docs/ImagesAPI.md#imagesselectedimagesforproject) | **Get** /api/v1/images/projects/list | Retrieve selected images for projects
 *ImagesAPI* | [**ImagesTanzuImages**](docs/ImagesAPI.md#imagestanzuimages) | **Get** /api/v1/images/tanzu/{cloudId} | Retrieve tanzu images
 *ImagesAPI* | [**ImagesUnbindImagesFromProject**](docs/ImagesAPI.md#imagesunbindimagesfromproject) | **Post** /api/v1/images/unbind | Unbind images from project
+*ImagesAPI* | [**ImagesVsphereImages**](docs/ImagesAPI.md#imagesvsphereimages) | **Get** /api/v1/images/vsphere/{cloudId} | Retrieve vsphere images
 *InfraAPI* | [**InfraCreate**](docs/InfraAPI.md#infracreate) | **Post** /api/v1/infra/create | Create infra product
 *InfraAPI* | [**InfraDetails**](docs/InfraAPI.md#infradetails) | **Get** /api/v1/infra/details | Retrieve infra details
 *InfraAPI* | [**InfraOrganizationsList**](docs/InfraAPI.md#infraorganizationslist) | **Get** /api/v1/infra/organizations-list | Retrieve infra products list
@@ -717,6 +719,7 @@ Class | Method | HTTP request | Description
 *VsphereCloudCredentialAPI* | [**VsphereNetworkList**](docs/VsphereCloudCredentialAPI.md#vspherenetworklist) | **Post** /api/v1/vsphere/network-list | Fetch Vsphere network list
 *VsphereCloudCredentialAPI* | [**VsphereResourcePoolList**](docs/VsphereCloudCredentialAPI.md#vsphereresourcepoollist) | **Post** /api/v1/vsphere/resource-pool-list | Fetch Vsphere resource pool list
 *VsphereCloudCredentialAPI* | [**VsphereUpdate**](docs/VsphereCloudCredentialAPI.md#vsphereupdate) | **Post** /api/v1/vsphere/update | Update Vsphere credentials
+*VsphereCloudCredentialAPI* | [**VsphereUpdateVsphereHypervisors**](docs/VsphereCloudCredentialAPI.md#vsphereupdatevspherehypervisors) | **Post** /api/v1/vsphere/hypervisors | Update Vsphere credentials
 *VsphereCloudCredentialAPI* | [**VsphereVmTemplateList**](docs/VsphereCloudCredentialAPI.md#vspherevmtemplatelist) | **Post** /api/v1/vsphere/vm-template-list | Fetch Vsphere vm template list
 
 
@@ -1498,6 +1501,7 @@ Class | Method | HTTP request | Description
  - [UpdateUserProjectDto](docs/UpdateUserProjectDto.md)
  - [UpdateUserProjectGroupDto](docs/UpdateUserProjectGroupDto.md)
  - [UpdateVsphereCommand](docs/UpdateVsphereCommand.md)
+ - [UpdateVsphereHypervisorsCommand](docs/UpdateVsphereHypervisorsCommand.md)
  - [UserDetails](docs/UserDetails.md)
  - [UserDto](docs/UserDto.md)
  - [UserExistCommand](docs/UserExistCommand.md)
@@ -1523,7 +1527,10 @@ Class | Method | HTTP request | Description
  - [VmTemplateListCommand](docs/VmTemplateListCommand.md)
  - [VmTemplateSummary](docs/VmTemplateSummary.md)
  - [VsphereCredentialsForProjectDto](docs/VsphereCredentialsForProjectDto.md)
+ - [VsphereFlavorData](docs/VsphereFlavorData.md)
+ - [VsphereFlavorList](docs/VsphereFlavorList.md)
  - [VsphereHypervisorListCommand](docs/VsphereHypervisorListCommand.md)
+ - [VsphereImageList](docs/VsphereImageList.md)
  - [VsphereList](docs/VsphereList.md)
  - [VsphereListDto](docs/VsphereListDto.md)
  - [VsphereNetworkListDto](docs/VsphereNetworkListDto.md)

@@ -11121,6 +11121,127 @@ paths:
       summary: Retrieve tanzu flavors
       tags:
       - Flavors
+  /api/v1/flavors/vsphere/{cloudId}:
+    get:
+      operationId: flavors-vsphere-flavors
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: StartRam
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: EndRam
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: StartCpu
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: EndCpu
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VsphereFlavorList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve vsphere flavors
+      tags:
+      - Flavors
   /api/v1/googlecloud/billing-accounts:
     post:
       operationId: googlecloud-billing-account-list
@@ -12642,6 +12763,95 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve tanzu images
+      tags:
+      - Images
+  /api/v1/images/vsphere/{cloudId}:
+    get:
+      operationId: images-vsphere-images
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VsphereImageList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve vsphere images
       tags:
       - Images
   /api/v1/infra/create:
@@ -35200,6 +35410,48 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateVsphereCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Update Vsphere credentials
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/hypervisors:
+    post:
+      operationId: vsphere-update-vsphere-hypervisors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVsphereHypervisorsCommand'
       responses:
         "400":
           content:
@@ -60234,6 +60486,23 @@ components:
           nullable: true
           type: string
       type: object
+    UpdateVsphereHypervisorsCommand:
+      additionalProperties: false
+      example:
+        hypervisors:
+        - hypervisors
+        - hypervisors
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        hypervisors:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     UserDetails:
       additionalProperties: false
       example:
@@ -60956,6 +61225,44 @@ components:
           nullable: true
           type: array
       type: object
+    VsphereFlavorData:
+      additionalProperties: false
+      example:
+        name: name
+        cpu: 0
+        ram: 6
+      properties:
+        name:
+          nullable: true
+          type: string
+        cpu:
+          format: int32
+          type: integer
+        ram:
+          format: int64
+          type: integer
+      type: object
+    VsphereFlavorList:
+      additionalProperties: false
+      example:
+        data:
+        - name: name
+          cpu: 0
+          ram: 6
+        - name: name
+          cpu: 0
+          ram: 6
+        totalCount: 1
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/VsphereFlavorData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     VsphereHypervisorListCommand:
       additionalProperties: false
       example:
@@ -60976,6 +61283,25 @@ components:
         datacenter:
           nullable: true
           type: string
+      type: object
+    VsphereImageList:
+      additionalProperties: false
+      example:
+        data:
+        - name: name
+          id: id
+        - name: name
+          id: id
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
       type: object
     VsphereList:
       additionalProperties: false

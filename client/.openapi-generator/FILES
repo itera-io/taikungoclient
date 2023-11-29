@@ -930,6 +930,7 @@ docs/UpdateUserGroupDto.md
 docs/UpdateUserProjectDto.md
 docs/UpdateUserProjectGroupDto.md
 docs/UpdateVsphereCommand.md
+docs/UpdateVsphereHypervisorsCommand.md
 docs/UserDetails.md
 docs/UserDto.md
 docs/UserExistCommand.md
@@ -960,7 +961,10 @@ docs/VmTemplateListCommand.md
 docs/VmTemplateSummary.md
 docs/VsphereCloudCredentialAPI.md
 docs/VsphereCredentialsForProjectDto.md
+docs/VsphereFlavorData.md
+docs/VsphereFlavorList.md
 docs/VsphereHypervisorListCommand.md
+docs/VsphereImageList.md
 docs/VsphereList.md
 docs/VsphereListDto.md
 docs/VsphereNetworkListDto.md
@@ -1750,6 +1754,7 @@ model_update_user_group_dto.go
 model_update_user_project_dto.go
 model_update_user_project_group_dto.go
 model_update_vsphere_command.go
+model_update_vsphere_hypervisors_command.go
 model_user_details.go
 model_user_dto.go
 model_user_exist_command.go
@@ -1775,7 +1780,10 @@ model_vm_console_screenshot_command.go
 model_vm_template_list_command.go
 model_vm_template_summary.go
 model_vsphere_credentials_for_project_dto.go
+model_vsphere_flavor_data.go
+model_vsphere_flavor_list.go
 model_vsphere_hypervisor_list_command.go
+model_vsphere_image_list.go
 model_vsphere_list.go
 model_vsphere_list_dto.go
 model_vsphere_network_list_dto.go
