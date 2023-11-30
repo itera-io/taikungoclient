@@ -877,6 +877,7 @@ docs/SubscriptionAPI.md
 docs/SyncProjectAppCommand.md
 docs/TaikunLBAPI.md
 docs/TaikunLbDto.md
+docs/TaikunLbResponseDto.md
 docs/TanzuAPI.md
 docs/TanzuCredentialsForProjectDto.md
 docs/TanzuCredentialsList.md
@@ -1703,6 +1704,7 @@ model_subnet.go
 model_subresource.go
 model_sync_project_app_command.go
 model_taikun_lb_dto.go
+model_taikun_lb_response_dto.go
 model_tanzu_credentials_for_project_dto.go
 model_tanzu_credentials_list.go
 model_tanzu_credentials_list_dto.go

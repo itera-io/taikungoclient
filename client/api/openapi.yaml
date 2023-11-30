@@ -32427,6 +32427,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateGenericTaikunLbDto'
       responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaikunLbResponseDto'
+          description: OK
         "400":
           content:
             application/json:
@@ -32458,6 +32464,57 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Create Taikun LB
+      tags:
+      - Taikun LB
+  /api/v1/taikun-lb/delete/{projectId}:
+    post:
+      operationId: taikun-lb-delete-taikun-lb
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGenericTaikunLbDto'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete Taikun LB
       tags:
       - Taikun LB
   /api/v1/tanzu/create:
@@ -59358,6 +59415,35 @@ components:
           format: int32
           nullable: true
           type: integer
+      type: object
+    TaikunLbResponseDto:
+      additionalProperties: false
+      example:
+        privateIpFirst: privateIpFirst
+        virtualRouterId: virtualRouterId
+        publicIp: publicIp
+        virtualLbIpSecond: virtualLbIpSecond
+        privateIpSecond: privateIpSecond
+        virtualLbIpFirst: virtualLbIpFirst
+      properties:
+        publicIp:
+          nullable: true
+          type: string
+        virtualLbIpFirst:
+          nullable: true
+          type: string
+        virtualLbIpSecond:
+          nullable: true
+          type: string
+        privateIpFirst:
+          nullable: true
+          type: string
+        privateIpSecond:
+          nullable: true
+          type: string
+        virtualRouterId:
+          nullable: true
+          type: string
       type: object
     TanzuCredentialsForProjectDto:
       additionalProperties: false
