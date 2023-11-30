@@ -3406,57 +3406,6 @@ paths:
       summary: Add Aws credentials
       tags:
       - AWS cloud credential
-  /api/v1/aws/device-names:
-    post:
-      operationId: aws-device-names
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AwsBlockDeviceMappingsCommand'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  type: string
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Aws device name list
-      tags:
-      - AWS cloud credential
   /api/v1/aws/regions:
     post:
       operationId: aws-regionlist
@@ -35444,7 +35393,7 @@ paths:
       summary: Update Vsphere credentials
       tags:
       - Vsphere cloud credential
-  /api/v1/vsphere/hypervisors:
+  /api/v1/vsphere/update/hypervisors:
     post:
       operationId: vsphere-update-vsphere-hypervisors
       requestBody:
@@ -37608,19 +37557,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    AwsBlockDeviceMappingsCommand:
-      additionalProperties: false
-      example:
-        imageId: imageId
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        imageId:
-          nullable: true
-          type: string
       type: object
     AwsCommonImages:
       additionalProperties: false
@@ -43520,17 +43456,21 @@ components:
     DatastoreSummary:
       additionalProperties: false
       example:
+        freeSpace: 6
         datastore: datastore
         name: name
         type: type
         capacity: 0
       properties:
         capacity:
-          format: int32
+          format: int64
           type: integer
         datastore:
           nullable: true
           type: string
+        freeSpace:
+          format: int64
+          type: integer
         name:
           nullable: true
           type: string

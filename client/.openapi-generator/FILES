@@ -155,7 +155,6 @@ docs/AvailableEndpointsList.md
 docs/AvailablePackageDetailsDto.md
 docs/AvailablePackagesDto.md
 docs/AvailablePackagesList.md
-docs/AwsBlockDeviceMappingsCommand.md
 docs/AwsCommonImages.md
 docs/AwsCredentialList.md
 docs/AwsCredentialsForProjectDto.md
@@ -1040,7 +1039,6 @@ model_available_endpoints_list.go
 model_available_package_details_dto.go
 model_available_packages_dto.go
 model_available_packages_list.go
-model_aws_block_device_mappings_command.go
 model_aws_common_images.go
 model_aws_credential_list.go
 model_aws_credentials_for_project_dto.go

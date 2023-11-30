@@ -20,8 +20,9 @@ var _ MappedNullable = &DatastoreSummary{}
 
 // DatastoreSummary struct for DatastoreSummary
 type DatastoreSummary struct {
-	Capacity *int32 `json:"capacity,omitempty"`
+	Capacity *int64 `json:"capacity,omitempty"`
 	Datastore NullableString `json:"datastore,omitempty"`
+	FreeSpace *int64 `json:"freeSpace,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Type NullableString `json:"type,omitempty"`
 }
@@ -44,9 +45,9 @@ func NewDatastoreSummaryWithDefaults() *DatastoreSummary {
 }
 
 // GetCapacity returns the Capacity field value if set, zero value otherwise.
-func (o *DatastoreSummary) GetCapacity() int32 {
+func (o *DatastoreSummary) GetCapacity() int64 {
 	if o == nil || IsNil(o.Capacity) {
-		var ret int32
+		var ret int64
 		return ret
 	}
 	return *o.Capacity
@@ -54,7 +55,7 @@ func (o *DatastoreSummary) GetCapacity() int32 {
 
 // GetCapacityOk returns a tuple with the Capacity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatastoreSummary) GetCapacityOk() (*int32, bool) {
+func (o *DatastoreSummary) GetCapacityOk() (*int64, bool) {
 	if o == nil || IsNil(o.Capacity) {
 		return nil, false
 	}
@@ -70,8 +71,8 @@ func (o *DatastoreSummary) HasCapacity() bool {
 	return false
 }
 
-// SetCapacity gets a reference to the given int32 and assigns it to the Capacity field.
-func (o *DatastoreSummary) SetCapacity(v int32) {
+// SetCapacity gets a reference to the given int64 and assigns it to the Capacity field.
+func (o *DatastoreSummary) SetCapacity(v int64) {
 	o.Capacity = &v
 }
 
@@ -115,6 +116,38 @@ func (o *DatastoreSummary) SetDatastoreNil() {
 // UnsetDatastore ensures that no value is present for Datastore, not even an explicit nil
 func (o *DatastoreSummary) UnsetDatastore() {
 	o.Datastore.Unset()
+}
+
+// GetFreeSpace returns the FreeSpace field value if set, zero value otherwise.
+func (o *DatastoreSummary) GetFreeSpace() int64 {
+	if o == nil || IsNil(o.FreeSpace) {
+		var ret int64
+		return ret
+	}
+	return *o.FreeSpace
+}
+
+// GetFreeSpaceOk returns a tuple with the FreeSpace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatastoreSummary) GetFreeSpaceOk() (*int64, bool) {
+	if o == nil || IsNil(o.FreeSpace) {
+		return nil, false
+	}
+	return o.FreeSpace, true
+}
+
+// HasFreeSpace returns a boolean if a field has been set.
+func (o *DatastoreSummary) HasFreeSpace() bool {
+	if o != nil && !IsNil(o.FreeSpace) {
+		return true
+	}
+
+	return false
+}
+
+// SetFreeSpace gets a reference to the given int64 and assigns it to the FreeSpace field.
+func (o *DatastoreSummary) SetFreeSpace(v int64) {
+	o.FreeSpace = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -216,6 +249,9 @@ func (o DatastoreSummary) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Datastore.IsSet() {
 		toSerialize["datastore"] = o.Datastore.Get()
+	}
+	if !IsNil(o.FreeSpace) {
+		toSerialize["freeSpace"] = o.FreeSpace
 	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()

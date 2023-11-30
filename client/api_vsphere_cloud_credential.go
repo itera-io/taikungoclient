@@ -1516,7 +1516,7 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateVsphereHypervisorsExecut
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/vsphere/hypervisors"
+	localVarPath := localBasePath + "/api/v1/vsphere/update/hypervisors"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
