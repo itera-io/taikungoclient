@@ -20,6 +20,7 @@ var _ MappedNullable = &VsphereNetworkListDto{}
 
 // VsphereNetworkListDto struct for VsphereNetworkListDto
 type VsphereNetworkListDto struct {
+	Name NullableString `json:"name,omitempty"`
 	Gateway NullableString `json:"gateway,omitempty"`
 	IpAddress NullableString `json:"ipAddress,omitempty"`
 	NetMask *int32 `json:"netMask,omitempty"`
@@ -43,6 +44,48 @@ func NewVsphereNetworkListDto() *VsphereNetworkListDto {
 func NewVsphereNetworkListDtoWithDefaults() *VsphereNetworkListDto {
 	this := VsphereNetworkListDto{}
 	return &this
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VsphereNetworkListDto) GetName() string {
+	if o == nil || IsNil(o.Name.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Name.Get()
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VsphereNetworkListDto) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Name.Get(), o.Name.IsSet()
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *VsphereNetworkListDto) HasName() bool {
+	if o != nil && o.Name.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
+func (o *VsphereNetworkListDto) SetName(v string) {
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *VsphereNetworkListDto) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *VsphereNetworkListDto) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetGateway returns the Gateway field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -287,6 +330,9 @@ func (o VsphereNetworkListDto) MarshalJSON() ([]byte, error) {
 
 func (o VsphereNetworkListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
+	}
 	if o.Gateway.IsSet() {
 		toSerialize["gateway"] = o.Gateway.Get()
 	}

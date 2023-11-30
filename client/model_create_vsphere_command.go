@@ -24,9 +24,9 @@ type CreateVsphereCommand struct {
 	Username NullableString `json:"username,omitempty"`
 	Url NullableString `json:"url,omitempty"`
 	Password NullableString `json:"password,omitempty"`
-	Datacenter NullableString `json:"datacenter,omitempty"`
-	Datastore NullableString `json:"datastore,omitempty"`
-	ResourcePool NullableString `json:"resourcePool,omitempty"`
+	DatacenterName NullableString `json:"datacenterName,omitempty"`
+	DatastoreName NullableString `json:"datastoreName,omitempty"`
+	ResourcePoolName NullableString `json:"resourcePoolName,omitempty"`
 	DrsEnabled *bool `json:"drsEnabled,omitempty"`
 	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
 	Continent NullableString `json:"continent,omitempty"`
@@ -221,130 +221,130 @@ func (o *CreateVsphereCommand) UnsetPassword() {
 	o.Password.Unset()
 }
 
-// GetDatacenter returns the Datacenter field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateVsphereCommand) GetDatacenter() string {
-	if o == nil || IsNil(o.Datacenter.Get()) {
+// GetDatacenterName returns the DatacenterName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateVsphereCommand) GetDatacenterName() string {
+	if o == nil || IsNil(o.DatacenterName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Datacenter.Get()
+	return *o.DatacenterName.Get()
 }
 
-// GetDatacenterOk returns a tuple with the Datacenter field value if set, nil otherwise
+// GetDatacenterNameOk returns a tuple with the DatacenterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateVsphereCommand) GetDatacenterOk() (*string, bool) {
+func (o *CreateVsphereCommand) GetDatacenterNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Datacenter.Get(), o.Datacenter.IsSet()
+	return o.DatacenterName.Get(), o.DatacenterName.IsSet()
 }
 
-// HasDatacenter returns a boolean if a field has been set.
-func (o *CreateVsphereCommand) HasDatacenter() bool {
-	if o != nil && o.Datacenter.IsSet() {
+// HasDatacenterName returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasDatacenterName() bool {
+	if o != nil && o.DatacenterName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDatacenter gets a reference to the given NullableString and assigns it to the Datacenter field.
-func (o *CreateVsphereCommand) SetDatacenter(v string) {
-	o.Datacenter.Set(&v)
+// SetDatacenterName gets a reference to the given NullableString and assigns it to the DatacenterName field.
+func (o *CreateVsphereCommand) SetDatacenterName(v string) {
+	o.DatacenterName.Set(&v)
 }
-// SetDatacenterNil sets the value for Datacenter to be an explicit nil
-func (o *CreateVsphereCommand) SetDatacenterNil() {
-	o.Datacenter.Set(nil)
-}
-
-// UnsetDatacenter ensures that no value is present for Datacenter, not even an explicit nil
-func (o *CreateVsphereCommand) UnsetDatacenter() {
-	o.Datacenter.Unset()
+// SetDatacenterNameNil sets the value for DatacenterName to be an explicit nil
+func (o *CreateVsphereCommand) SetDatacenterNameNil() {
+	o.DatacenterName.Set(nil)
 }
 
-// GetDatastore returns the Datastore field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateVsphereCommand) GetDatastore() string {
-	if o == nil || IsNil(o.Datastore.Get()) {
+// UnsetDatacenterName ensures that no value is present for DatacenterName, not even an explicit nil
+func (o *CreateVsphereCommand) UnsetDatacenterName() {
+	o.DatacenterName.Unset()
+}
+
+// GetDatastoreName returns the DatastoreName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateVsphereCommand) GetDatastoreName() string {
+	if o == nil || IsNil(o.DatastoreName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Datastore.Get()
+	return *o.DatastoreName.Get()
 }
 
-// GetDatastoreOk returns a tuple with the Datastore field value if set, nil otherwise
+// GetDatastoreNameOk returns a tuple with the DatastoreName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateVsphereCommand) GetDatastoreOk() (*string, bool) {
+func (o *CreateVsphereCommand) GetDatastoreNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Datastore.Get(), o.Datastore.IsSet()
+	return o.DatastoreName.Get(), o.DatastoreName.IsSet()
 }
 
-// HasDatastore returns a boolean if a field has been set.
-func (o *CreateVsphereCommand) HasDatastore() bool {
-	if o != nil && o.Datastore.IsSet() {
+// HasDatastoreName returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasDatastoreName() bool {
+	if o != nil && o.DatastoreName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDatastore gets a reference to the given NullableString and assigns it to the Datastore field.
-func (o *CreateVsphereCommand) SetDatastore(v string) {
-	o.Datastore.Set(&v)
+// SetDatastoreName gets a reference to the given NullableString and assigns it to the DatastoreName field.
+func (o *CreateVsphereCommand) SetDatastoreName(v string) {
+	o.DatastoreName.Set(&v)
 }
-// SetDatastoreNil sets the value for Datastore to be an explicit nil
-func (o *CreateVsphereCommand) SetDatastoreNil() {
-	o.Datastore.Set(nil)
-}
-
-// UnsetDatastore ensures that no value is present for Datastore, not even an explicit nil
-func (o *CreateVsphereCommand) UnsetDatastore() {
-	o.Datastore.Unset()
+// SetDatastoreNameNil sets the value for DatastoreName to be an explicit nil
+func (o *CreateVsphereCommand) SetDatastoreNameNil() {
+	o.DatastoreName.Set(nil)
 }
 
-// GetResourcePool returns the ResourcePool field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CreateVsphereCommand) GetResourcePool() string {
-	if o == nil || IsNil(o.ResourcePool.Get()) {
+// UnsetDatastoreName ensures that no value is present for DatastoreName, not even an explicit nil
+func (o *CreateVsphereCommand) UnsetDatastoreName() {
+	o.DatastoreName.Unset()
+}
+
+// GetResourcePoolName returns the ResourcePoolName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateVsphereCommand) GetResourcePoolName() string {
+	if o == nil || IsNil(o.ResourcePoolName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ResourcePool.Get()
+	return *o.ResourcePoolName.Get()
 }
 
-// GetResourcePoolOk returns a tuple with the ResourcePool field value if set, nil otherwise
+// GetResourcePoolNameOk returns a tuple with the ResourcePoolName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CreateVsphereCommand) GetResourcePoolOk() (*string, bool) {
+func (o *CreateVsphereCommand) GetResourcePoolNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ResourcePool.Get(), o.ResourcePool.IsSet()
+	return o.ResourcePoolName.Get(), o.ResourcePoolName.IsSet()
 }
 
-// HasResourcePool returns a boolean if a field has been set.
-func (o *CreateVsphereCommand) HasResourcePool() bool {
-	if o != nil && o.ResourcePool.IsSet() {
+// HasResourcePoolName returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasResourcePoolName() bool {
+	if o != nil && o.ResourcePoolName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetResourcePool gets a reference to the given NullableString and assigns it to the ResourcePool field.
-func (o *CreateVsphereCommand) SetResourcePool(v string) {
-	o.ResourcePool.Set(&v)
+// SetResourcePoolName gets a reference to the given NullableString and assigns it to the ResourcePoolName field.
+func (o *CreateVsphereCommand) SetResourcePoolName(v string) {
+	o.ResourcePoolName.Set(&v)
 }
-// SetResourcePoolNil sets the value for ResourcePool to be an explicit nil
-func (o *CreateVsphereCommand) SetResourcePoolNil() {
-	o.ResourcePool.Set(nil)
+// SetResourcePoolNameNil sets the value for ResourcePoolName to be an explicit nil
+func (o *CreateVsphereCommand) SetResourcePoolNameNil() {
+	o.ResourcePoolName.Set(nil)
 }
 
-// UnsetResourcePool ensures that no value is present for ResourcePool, not even an explicit nil
-func (o *CreateVsphereCommand) UnsetResourcePool() {
-	o.ResourcePool.Unset()
+// UnsetResourcePoolName ensures that no value is present for ResourcePoolName, not even an explicit nil
+func (o *CreateVsphereCommand) UnsetResourcePoolName() {
+	o.ResourcePoolName.Unset()
 }
 
 // GetDrsEnabled returns the DrsEnabled field value if set, zero value otherwise.
@@ -624,14 +624,14 @@ func (o CreateVsphereCommand) ToMap() (map[string]interface{}, error) {
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
-	if o.Datacenter.IsSet() {
-		toSerialize["datacenter"] = o.Datacenter.Get()
+	if o.DatacenterName.IsSet() {
+		toSerialize["datacenterName"] = o.DatacenterName.Get()
 	}
-	if o.Datastore.IsSet() {
-		toSerialize["datastore"] = o.Datastore.Get()
+	if o.DatastoreName.IsSet() {
+		toSerialize["datastoreName"] = o.DatastoreName.Get()
 	}
-	if o.ResourcePool.IsSet() {
-		toSerialize["resourcePool"] = o.ResourcePool.Get()
+	if o.ResourcePoolName.IsSet() {
+		toSerialize["resourcePoolName"] = o.ResourcePoolName.Get()
 	}
 	if !IsNil(o.DrsEnabled) {
 		toSerialize["drsEnabled"] = o.DrsEnabled

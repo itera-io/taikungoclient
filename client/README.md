@@ -659,6 +659,7 @@ Class | Method | HTTP request | Description
 *SubscriptionAPI* | [**SubscriptionPublic**](docs/SubscriptionAPI.md#subscriptionpublic) | **Get** /api/v1/subscription/public | Retrieve subscription for organization bound
 *SubscriptionAPI* | [**SubscriptionSubscription**](docs/SubscriptionAPI.md#subscriptionsubscription) | **Post** /api/v1/subscription/create | Add new subscription package
 *SubscriptionAPI* | [**SubscriptionUpdate**](docs/SubscriptionAPI.md#subscriptionupdate) | **Post** /api/v1/subscription/update | Update subscription
+*TaikunLBAPI* | [**TaikunLbCreateTaikunLb**](docs/TaikunLBAPI.md#taikunlbcreatetaikunlb) | **Post** /api/v1/taikun-lb/create/{projectId} | Create Taikun LB
 *TanzuAPI* | [**TanzuCreate**](docs/TanzuAPI.md#tanzucreate) | **Post** /api/v1/tanzu/create | Create tanzu credentials
 *TanzuAPI* | [**TanzuKubernetesVersions**](docs/TanzuAPI.md#tanzukubernetesversions) | **Get** /api/v1/tanzu/kubernetes-versions/{cloudId} | Tanzu available k8s version list
 *TanzuAPI* | [**TanzuList**](docs/TanzuAPI.md#tanzulist) | **Get** /api/v1/tanzu/list | Retrieve list of tanzu cloud credentials
@@ -923,6 +924,7 @@ Class | Method | HTTP request | Description
  - [CreateCatalogAppCommand](docs/CreateCatalogAppCommand.md)
  - [CreateCatalogCommand](docs/CreateCatalogCommand.md)
  - [CreateDnsServerCommand](docs/CreateDnsServerCommand.md)
+ - [CreateGenericTaikunLbDto](docs/CreateGenericTaikunLbDto.md)
  - [CreateInfraProductCommand](docs/CreateInfraProductCommand.md)
  - [CreateInvoiceCommand](docs/CreateInvoiceCommand.md)
  - [CreateKubeConfigCommand](docs/CreateKubeConfigCommand.md)

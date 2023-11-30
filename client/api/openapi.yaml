@@ -32409,6 +32409,57 @@ paths:
       summary: Retrieve subscription for organization bound
       tags:
       - Subscription
+  /api/v1/taikun-lb/create/{projectId}:
+    post:
+      operationId: taikun-lb-create-taikun-lb
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGenericTaikunLbDto'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Create Taikun LB
+      tags:
+      - Taikun LB
   /api/v1/tanzu/create:
     post:
       operationId: tanzu-create
@@ -41257,6 +41308,19 @@ components:
           format: int32
           type: integer
       type: object
+    CreateGenericTaikunLbDto:
+      additionalProperties: false
+      example:
+        svcNamespace: svcNamespace
+        svcName: svcName
+      properties:
+        svcName:
+          nullable: true
+          type: string
+        svcNamespace:
+          nullable: true
+          type: string
+      type: object
     CreateInfraProductCommand:
       additionalProperties: false
       example:
@@ -42242,19 +42306,22 @@ components:
       additionalProperties: false
       example:
         continent: continent
+        datacenterName: datacenterName
         drsEnabled: true
         privateNetwork:
           endAllocationRange: endAllocationRange
           netMask: 6
+          name: name
           ipAddress: ipAddress
           beginAllocationRange: beginAllocationRange
           gateway: gateway
-        datastore: datastore
-        datacenter: datacenter
+        datastoreName: datastoreName
+        resourcePoolName: resourcePoolName
         url: url
         publicNetwork:
           endAllocationRange: endAllocationRange
           netMask: 6
+          name: name
           ipAddress: ipAddress
           beginAllocationRange: beginAllocationRange
           gateway: gateway
@@ -42266,7 +42333,6 @@ components:
         - hypervisors
         vmTemplateName: vmTemplateName
         username: username
-        resourcePool: resourcePool
       properties:
         name:
           nullable: true
@@ -42280,13 +42346,13 @@ components:
         password:
           nullable: true
           type: string
-        datacenter:
+        datacenterName:
           nullable: true
           type: string
-        datastore:
+        datastoreName:
           nullable: true
           type: string
-        resourcePool:
+        resourcePoolName:
           nullable: true
           type: string
         drsEnabled:
@@ -42316,10 +42382,14 @@ components:
       example:
         endAllocationRange: endAllocationRange
         netMask: 6
+        name: name
         ipAddress: ipAddress
         beginAllocationRange: beginAllocationRange
         gateway: gateway
       properties:
+        name:
+          nullable: true
+          type: string
         gateway:
           nullable: true
           type: string
@@ -42769,12 +42839,14 @@ components:
           vsphereNetworks:
           - endAllocationRange: endAllocationRange
             netMask: 5
+            name: name
             ipAddress: ipAddress
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
           - endAllocationRange: endAllocationRange
             netMask: 5
+            name: name
             ipAddress: ipAddress
             isPrivate: true
             beginAllocationRange: beginAllocationRange
@@ -61122,12 +61194,14 @@ components:
         vsphereNetworks:
         - endAllocationRange: endAllocationRange
           netMask: 5
+          name: name
           ipAddress: ipAddress
           isPrivate: true
           beginAllocationRange: beginAllocationRange
           gateway: gateway
         - endAllocationRange: endAllocationRange
           netMask: 5
+          name: name
           ipAddress: ipAddress
           isPrivate: true
           beginAllocationRange: beginAllocationRange
@@ -61274,12 +61348,14 @@ components:
           vsphereNetworks:
           - endAllocationRange: endAllocationRange
             netMask: 5
+            name: name
             ipAddress: ipAddress
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
           - endAllocationRange: endAllocationRange
             netMask: 5
+            name: name
             ipAddress: ipAddress
             isPrivate: true
             beginAllocationRange: beginAllocationRange
@@ -61312,12 +61388,14 @@ components:
           vsphereNetworks:
           - endAllocationRange: endAllocationRange
             netMask: 5
+            name: name
             ipAddress: ipAddress
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
           - endAllocationRange: endAllocationRange
             netMask: 5
+            name: name
             ipAddress: ipAddress
             isPrivate: true
             beginAllocationRange: beginAllocationRange
@@ -61364,12 +61442,14 @@ components:
         vsphereNetworks:
         - endAllocationRange: endAllocationRange
           netMask: 5
+          name: name
           ipAddress: ipAddress
           isPrivate: true
           beginAllocationRange: beginAllocationRange
           gateway: gateway
         - endAllocationRange: endAllocationRange
           netMask: 5
+          name: name
           ipAddress: ipAddress
           isPrivate: true
           beginAllocationRange: beginAllocationRange
@@ -61440,11 +61520,15 @@ components:
       example:
         endAllocationRange: endAllocationRange
         netMask: 5
+        name: name
         ipAddress: ipAddress
         isPrivate: true
         beginAllocationRange: beginAllocationRange
         gateway: gateway
       properties:
+        name:
+          nullable: true
+          type: string
         gateway:
           nullable: true
           type: string

@@ -73,6 +73,7 @@ api_standalone_profile.go
 api_standalone_vm_disks.go
 api_stripe.go
 api_subscription.go
+api_taikun_lb.go
 api_tanzu.go
 api_ticket.go
 api_user_group.go
@@ -300,6 +301,7 @@ docs/CreateBillingSummaryCommand.md
 docs/CreateCatalogAppCommand.md
 docs/CreateCatalogCommand.md
 docs/CreateDnsServerCommand.md
+docs/CreateGenericTaikunLbDto.md
 docs/CreateInfraProductCommand.md
 docs/CreateInvoiceCommand.md
 docs/CreateKubeConfigCommand.md
@@ -873,6 +875,7 @@ docs/Subnet.md
 docs/Subresource.md
 docs/SubscriptionAPI.md
 docs/SyncProjectAppCommand.md
+docs/TaikunLBAPI.md
 docs/TaikunLbDto.md
 docs/TanzuAPI.md
 docs/TanzuCredentialsForProjectDto.md
@@ -1176,6 +1179,7 @@ model_create_billing_summary_command.go
 model_create_catalog_app_command.go
 model_create_catalog_command.go
 model_create_dns_server_command.go
+model_create_generic_taikun_lb_dto.go
 model_create_infra_product_command.go
 model_create_invoice_command.go
 model_create_kube_config_command.go
@@ -1863,6 +1867,7 @@ test/api_standalone_test.go
 test/api_standalone_vm_disks_test.go
 test/api_stripe_test.go
 test/api_subscription_test.go
+test/api_taikun_lb_test.go
 test/api_tanzu_test.go
 test/api_ticket_test.go
 test/api_user_group_test.go

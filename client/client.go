@@ -190,6 +190,8 @@ type APIClient struct {
 
 	SubscriptionAPI *SubscriptionAPIService
 
+	TaikunLBAPI *TaikunLBAPIService
+
 	TanzuAPI *TanzuAPIService
 
 	TicketAPI *TicketAPIService
@@ -291,6 +293,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.StandaloneVMDisksAPI = (*StandaloneVMDisksAPIService)(&c.common)
 	c.StripeAPI = (*StripeAPIService)(&c.common)
 	c.SubscriptionAPI = (*SubscriptionAPIService)(&c.common)
+	c.TaikunLBAPI = (*TaikunLBAPIService)(&c.common)
 	c.TanzuAPI = (*TanzuAPIService)(&c.common)
 	c.TicketAPI = (*TicketAPIService)(&c.common)
 	c.UserGroupAPI = (*UserGroupAPIService)(&c.common)
