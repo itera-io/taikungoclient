@@ -9183,49 +9183,6 @@ paths:
       summary: Delete expired alerts
       tags:
       - Cron Job Service
-  /api/v1/cronjob/events:
-    post:
-      operationId: cronjob-delete-expired-events
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeleteExpiredEventsCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Delete expired events
-      tags:
-      - Cron Job Service
   /api/v1/cronjob/history-logs:
     post:
       operationId: cronjob-delete-expired-history-logs
@@ -43667,9 +43624,6 @@ components:
           type: string
       type: object
     DeleteExpiredAlertsCommand:
-      additionalProperties: false
-      type: object
-    DeleteExpiredEventsCommand:
       additionalProperties: false
       type: object
     DeleteExpiredHistoryLogsCommand:

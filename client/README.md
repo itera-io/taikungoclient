@@ -240,7 +240,6 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobCancelExpiredSubscriptions**](docs/CronJobServiceAPI.md#cronjobcancelexpiredsubscriptions) | **Post** /api/v1/cronjob/cancel-expired-subscriptions | Cancel expired subscriptions
 *CronJobServiceAPI* | [**CronjobCreateKeyPool**](docs/CronJobServiceAPI.md#cronjobcreatekeypool) | **Post** /api/v1/cronjob/create-key-pool | Create key pool
 *CronJobServiceAPI* | [**CronjobDeleteExpiredAlerts**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredalerts) | **Post** /api/v1/cronjob/alerts | Delete expired alerts
-*CronJobServiceAPI* | [**CronjobDeleteExpiredEvents**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredevents) | **Post** /api/v1/cronjob/events | Delete expired events
 *CronJobServiceAPI* | [**CronjobDeleteExpiredHistoryLogs**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredhistorylogs) | **Post** /api/v1/cronjob/history-logs | Delete expired history logs
 *CronJobServiceAPI* | [**CronjobDeleteExpiredOrgs**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredorgs) | **Post** /api/v1/cronjob/delete-expired-organizations | Delete registration expired organizations
 *CronJobServiceAPI* | [**CronjobDeleteExpiredRefreshTokens**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredrefreshtokens) | **Post** /api/v1/cronjob/refresh-tokens | Delete expired refresh tokens
