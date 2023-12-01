@@ -70,7 +70,7 @@ func (c *Client) GetToken() string {
 // Transport wrapper
 func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	// This is not a /auth/login or /auth/refresh request
-	if strings.ContainsAny(req.URL.Path, "/api/v1/taikun-lb") {
+	if strings.Contains(req.URL.Path, "/api/v1/taikun-lb") {
 		req.Header.Set("Authorization", "Bearer "+c.Client.token)
 	} else if req.URL.Path != "/api/v1/auth/login" && req.URL.Path != "/api/v1/auth/refresh" {
 		if c.Client.token == "" { // We do not have a token, get a lock
