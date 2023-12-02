@@ -243,7 +243,6 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobDeleteExpiredHistoryLogs**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredhistorylogs) | **Post** /api/v1/cronjob/history-logs | Delete expired history logs
 *CronJobServiceAPI* | [**CronjobDeleteExpiredOrgs**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredorgs) | **Post** /api/v1/cronjob/delete-expired-organizations | Delete registration expired organizations
 *CronJobServiceAPI* | [**CronjobDeleteExpiredRefreshTokens**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredrefreshtokens) | **Post** /api/v1/cronjob/refresh-tokens | Delete expired refresh tokens
-*CronJobServiceAPI* | [**CronjobDeleteExpiredRequests**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredrequests) | **Post** /api/v1/cronjob/taikun-requests | Delete expired requests
 *CronJobServiceAPI* | [**CronjobDeleteExpiredServers**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredservers) | **Post** /api/v1/cronjob/delete-expired-servers | Delete expired servers
 *CronJobServiceAPI* | [**CronjobDeleteImportedBackupLocation**](docs/CronJobServiceAPI.md#cronjobdeleteimportedbackuplocation) | **Post** /api/v1/cronjob/backup-locations | Delete imported backup locations
 *CronJobServiceAPI* | [**CronjobDeleteKubeConfigs**](docs/CronJobServiceAPI.md#cronjobdeletekubeconfigs) | **Post** /api/v1/cronjob/delete-kube-configs | Remove deleted user&#39;s kube config
@@ -660,6 +659,7 @@ Class | Method | HTTP request | Description
 *SubscriptionAPI* | [**SubscriptionUpdate**](docs/SubscriptionAPI.md#subscriptionupdate) | **Post** /api/v1/subscription/update | Update subscription
 *TaikunLBAPI* | [**TaikunLbCreateTaikunLb**](docs/TaikunLBAPI.md#taikunlbcreatetaikunlb) | **Post** /api/v1/taikun-lb/create/{projectId} | Create Taikun LB
 *TaikunLBAPI* | [**TaikunLbDeleteTaikunLb**](docs/TaikunLBAPI.md#taikunlbdeletetaikunlb) | **Post** /api/v1/taikun-lb/delete/{projectId} | Delete Taikun LB
+*TaikunLBAPI* | [**TaikunLbListTaikunLb**](docs/TaikunLBAPI.md#taikunlblisttaikunlb) | **Get** /api/v1/taikun-lb/list/{projectId} | Retrieve taikun lbs for project
 *TanzuAPI* | [**TanzuCreate**](docs/TanzuAPI.md#tanzucreate) | **Post** /api/v1/tanzu/create | Create tanzu credentials
 *TanzuAPI* | [**TanzuKubernetesVersions**](docs/TanzuAPI.md#tanzukubernetesversions) | **Get** /api/v1/tanzu/kubernetes-versions/{cloudId} | Tanzu available k8s version list
 *TanzuAPI* | [**TanzuList**](docs/TanzuAPI.md#tanzulist) | **Get** /api/v1/tanzu/list | Retrieve list of tanzu cloud credentials
@@ -1448,6 +1448,7 @@ Class | Method | HTTP request | Description
  - [Subresource](docs/Subresource.md)
  - [SyncProjectAppCommand](docs/SyncProjectAppCommand.md)
  - [TaikunLbDto](docs/TaikunLbDto.md)
+ - [TaikunLbListDto](docs/TaikunLbListDto.md)
  - [TaikunLbResponseDto](docs/TaikunLbResponseDto.md)
  - [TanzuCredentialsForProjectDto](docs/TanzuCredentialsForProjectDto.md)
  - [TanzuCredentialsList](docs/TanzuCredentialsList.md)

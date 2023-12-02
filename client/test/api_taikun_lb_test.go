@@ -49,4 +49,18 @@ func Test_taikuncore_TaikunLBAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test TaikunLBAPIService TaikunLbListTaikunLb", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId int32
+
+		resp, httpRes, err := apiClient.TaikunLBAPI.TaikunLbListTaikunLb(context.Background(), projectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

@@ -9269,49 +9269,6 @@ paths:
       summary: Delete expired refresh tokens
       tags:
       - Cron Job Service
-  /api/v1/cronjob/taikun-requests:
-    post:
-      operationId: cronjob-delete-expired-requests
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeleteRequestsCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Delete expired requests
-      tags:
-      - Cron Job Service
   /api/v1/cronjob/delete-expired-servers:
     post:
       operationId: cronjob-delete-expired-servers
@@ -32474,6 +32431,74 @@ paths:
       summary: Delete Taikun LB
       tags:
       - Taikun LB
+  /api/v1/taikun-lb/list/{projectId}:
+    get:
+      operationId: taikun-lb-list-taikun-lb
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: SvcName
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SvcNameSpace
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/TaikunLbListDto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve taikun lbs for project
+      tags:
+      - Taikun LB
   /api/v1/tanzu/create:
     post:
       operationId: tanzu-create
@@ -43705,9 +43730,6 @@ components:
         repoName:
           nullable: true
           type: string
-      type: object
-    DeleteRequestsCommand:
-      additionalProperties: false
       type: object
     DeleteRestoreCommand:
       additionalProperties: false
@@ -59369,6 +59391,47 @@ components:
           format: int32
           nullable: true
           type: integer
+      type: object
+    TaikunLbListDto:
+      additionalProperties: false
+      example:
+        privateIpFirst: privateIpFirst
+        virtualRouterId: virtualRouterId
+        svcNamespace: svcNamespace
+        publicIp: publicIp
+        svcName: svcName
+        projectName: projectName
+        virtualLbIpSecond: virtualLbIpSecond
+        privateIpSecond: privateIpSecond
+        virtualLbIpFirst: virtualLbIpFirst
+      properties:
+        publicIp:
+          nullable: true
+          type: string
+        virtualLbIpFirst:
+          nullable: true
+          type: string
+        virtualLbIpSecond:
+          nullable: true
+          type: string
+        privateIpFirst:
+          nullable: true
+          type: string
+        privateIpSecond:
+          nullable: true
+          type: string
+        virtualRouterId:
+          nullable: true
+          type: string
+        svcName:
+          nullable: true
+          type: string
+        svcNamespace:
+          nullable: true
+          type: string
+        projectName:
+          nullable: true
+          type: string
       type: object
     TaikunLbResponseDto:
       additionalProperties: false
