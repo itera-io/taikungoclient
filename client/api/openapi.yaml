@@ -37844,6 +37844,13 @@ components:
     AwsImagesPostList:
       additionalProperties: false
       example:
+        images:
+          names:
+          - names
+          - names
+          ids:
+          - ids
+          - ids
         data:
         - ownerAlias: ownerAlias
           name: name
@@ -37869,6 +37876,8 @@ components:
         totalCount:
           format: int32
           type: integer
+        images:
+          $ref: '#/components/schemas/BoundImagesForProjectDto'
       type: object
     AwsImagesPostListCommand:
       additionalProperties: false
@@ -37882,6 +37891,7 @@ components:
         owners:
         - owners
         - owners
+        projectId: 5
         latest: true
       properties:
         cloudId:
@@ -37911,6 +37921,10 @@ components:
             type: string
           nullable: true
           type: array
+        projectId:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     AwsOwnerDetails:
       additionalProperties: false
@@ -39379,6 +39393,27 @@ components:
           type: string
         cloudType:
           $ref: '#/components/schemas/CloudType'
+      type: object
+    BoundImagesForProjectDto:
+      additionalProperties: false
+      example:
+        names:
+        - names
+        - names
+        ids:
+        - ids
+        - ids
+      properties:
+        names:
+          items:
+            type: string
+          nullable: true
+          type: array
+        ids:
+          items:
+            type: string
+          nullable: true
+          type: array
       type: object
     BoundImagesForProjectsList:
       additionalProperties: false
@@ -59396,9 +59431,11 @@ components:
       additionalProperties: false
       example:
         privateIpFirst: privateIpFirst
+        hypervisorSecond: hypervisorSecond
         virtualRouterId: virtualRouterId
         svcNamespace: svcNamespace
         publicIp: publicIp
+        hypervisorFirst: hypervisorFirst
         svcName: svcName
         projectName: projectName
         virtualLbIpSecond: virtualLbIpSecond
@@ -59423,6 +59460,12 @@ components:
         virtualRouterId:
           nullable: true
           type: string
+        hypervisorFirst:
+          nullable: true
+          type: string
+        hypervisorSecond:
+          nullable: true
+          type: string
         svcName:
           nullable: true
           type: string
@@ -59437,8 +59480,10 @@ components:
       additionalProperties: false
       example:
         privateIpFirst: privateIpFirst
+        hypervisorSecond: hypervisorSecond
         virtualRouterId: virtualRouterId
         publicIp: publicIp
+        hypervisorFirst: hypervisorFirst
         virtualLbIpSecond: virtualLbIpSecond
         privateIpSecond: privateIpSecond
         virtualLbIpFirst: virtualLbIpFirst
@@ -59459,6 +59504,12 @@ components:
           nullable: true
           type: string
         virtualRouterId:
+          nullable: true
+          type: string
+        hypervisorFirst:
+          nullable: true
+          type: string
+        hypervisorSecond:
           nullable: true
           type: string
       type: object
@@ -60340,42 +60391,37 @@ components:
     UpdateStandAloneVmCommand:
       additionalProperties: false
       example:
-        instanceId: instanceId
-        disks:
-        - name: name
-          id: id
-          deviceName: deviceName
-        - name: name
-          id: id
-          deviceName: deviceName
-        ipAddress: ipAddress
-        flavorId: flavorId
-        publicIp: publicIp
-        id: 0
-        revision: 6
+        standaloneVms:
+        - instanceId: instanceId
+          disks:
+          - name: name
+            id: id
+            deviceName: deviceName
+          - name: name
+            id: id
+            deviceName: deviceName
+          ipAddress: ipAddress
+          flavorId: flavorId
+          publicIp: publicIp
+          id: 0
+          revision: 6
+        - instanceId: instanceId
+          disks:
+          - name: name
+            id: id
+            deviceName: deviceName
+          - name: name
+            id: id
+            deviceName: deviceName
+          ipAddress: ipAddress
+          flavorId: flavorId
+          publicIp: publicIp
+          id: 0
+          revision: 6
       properties:
-        id:
-          format: int32
-          type: integer
-        ipAddress:
-          nullable: true
-          type: string
-        publicIp:
-          nullable: true
-          type: string
-        instanceId:
-          nullable: true
-          type: string
-        flavorId:
-          nullable: true
-          type: string
-        revision:
-          format: int32
-          nullable: true
-          type: integer
-        disks:
+        standaloneVms:
           items:
-            $ref: '#/components/schemas/UpdateStandAloneVmDiskDto'
+            $ref: '#/components/schemas/UpdateStandaloneVmDto'
           nullable: true
           type: array
       type: object
@@ -60434,6 +60480,48 @@ components:
         size:
           format: int64
           type: integer
+      type: object
+    UpdateStandaloneVmDto:
+      additionalProperties: false
+      example:
+        instanceId: instanceId
+        disks:
+        - name: name
+          id: id
+          deviceName: deviceName
+        - name: name
+          id: id
+          deviceName: deviceName
+        ipAddress: ipAddress
+        flavorId: flavorId
+        publicIp: publicIp
+        id: 0
+        revision: 6
+      properties:
+        id:
+          format: int32
+          type: integer
+        ipAddress:
+          nullable: true
+          type: string
+        publicIp:
+          nullable: true
+          type: string
+        instanceId:
+          nullable: true
+          type: string
+        flavorId:
+          nullable: true
+          type: string
+        revision:
+          format: int32
+          nullable: true
+          type: integer
+        disks:
+          items:
+            $ref: '#/components/schemas/UpdateStandAloneVmDiskDto'
+          nullable: true
+          type: array
       type: object
     UpdateSubscriptionCommand:
       additionalProperties: false

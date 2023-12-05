@@ -223,6 +223,7 @@ docs/BindUserGroupsToProjectGroupCommand.md
 docs/BindUsersCommand.md
 docs/BoundFlavorsForProjectsList.md
 docs/BoundFlavorsForProjectsListDto.md
+docs/BoundImagesForProjectDto.md
 docs/BoundImagesForProjectsList.md
 docs/BoundImagesForProjectsListDto.md
 docs/BridgeListCommand.md
@@ -926,6 +927,7 @@ docs/UpdateStandAloneVmDiskDto.md
 docs/UpdateStandAloneVmFlavorCommand.md
 docs/UpdateStandaloneVmDiskCommand.md
 docs/UpdateStandaloneVmDiskSizeCommand.md
+docs/UpdateStandaloneVmDto.md
 docs/UpdateSubscriptionCommand.md
 docs/UpdateTanzuCommand.md
 docs/UpdateUsedIpAddressesCommand.md
@@ -1108,6 +1110,7 @@ model_bind_user_groups_to_project_group_command.go
 model_bind_users_command.go
 model_bound_flavors_for_projects_list.go
 model_bound_flavors_for_projects_list_dto.go
+model_bound_images_for_project_dto.go
 model_bound_images_for_projects_list.go
 model_bound_images_for_projects_list_dto.go
 model_bridge_list_command.go
@@ -1752,6 +1755,7 @@ model_update_stand_alone_vm_disk_dto.go
 model_update_stand_alone_vm_flavor_command.go
 model_update_standalone_vm_disk_command.go
 model_update_standalone_vm_disk_size_command.go
+model_update_standalone_vm_dto.go
 model_update_subscription_command.go
 model_update_tanzu_command.go
 model_update_used_ip_addresses_command.go

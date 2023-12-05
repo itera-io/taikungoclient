@@ -22,6 +22,7 @@ var _ MappedNullable = &AwsImagesPostList{}
 type AwsImagesPostList struct {
 	Data []AwsExtendedImagesListDto `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
+	Images *BoundImagesForProjectDto `json:"images,omitempty"`
 }
 
 // NewAwsImagesPostList instantiates a new AwsImagesPostList object
@@ -106,6 +107,38 @@ func (o *AwsImagesPostList) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 
+// GetImages returns the Images field value if set, zero value otherwise.
+func (o *AwsImagesPostList) GetImages() BoundImagesForProjectDto {
+	if o == nil || IsNil(o.Images) {
+		var ret BoundImagesForProjectDto
+		return ret
+	}
+	return *o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AwsImagesPostList) GetImagesOk() (*BoundImagesForProjectDto, bool) {
+	if o == nil || IsNil(o.Images) {
+		return nil, false
+	}
+	return o.Images, true
+}
+
+// HasImages returns a boolean if a field has been set.
+func (o *AwsImagesPostList) HasImages() bool {
+	if o != nil && !IsNil(o.Images) {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given BoundImagesForProjectDto and assigns it to the Images field.
+func (o *AwsImagesPostList) SetImages(v BoundImagesForProjectDto) {
+	o.Images = &v
+}
+
 func (o AwsImagesPostList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -121,6 +154,9 @@ func (o AwsImagesPostList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
+	}
+	if !IsNil(o.Images) {
+		toSerialize["images"] = o.Images
 	}
 	return toSerialize, nil
 }

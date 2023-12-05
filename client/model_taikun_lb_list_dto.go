@@ -26,6 +26,8 @@ type TaikunLbListDto struct {
 	PrivateIpFirst NullableString `json:"privateIpFirst,omitempty"`
 	PrivateIpSecond NullableString `json:"privateIpSecond,omitempty"`
 	VirtualRouterId NullableString `json:"virtualRouterId,omitempty"`
+	HypervisorFirst NullableString `json:"hypervisorFirst,omitempty"`
+	HypervisorSecond NullableString `json:"hypervisorSecond,omitempty"`
 	SvcName NullableString `json:"svcName,omitempty"`
 	SvcNamespace NullableString `json:"svcNamespace,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
@@ -300,6 +302,90 @@ func (o *TaikunLbListDto) UnsetVirtualRouterId() {
 	o.VirtualRouterId.Unset()
 }
 
+// GetHypervisorFirst returns the HypervisorFirst field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TaikunLbListDto) GetHypervisorFirst() string {
+	if o == nil || IsNil(o.HypervisorFirst.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.HypervisorFirst.Get()
+}
+
+// GetHypervisorFirstOk returns a tuple with the HypervisorFirst field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TaikunLbListDto) GetHypervisorFirstOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.HypervisorFirst.Get(), o.HypervisorFirst.IsSet()
+}
+
+// HasHypervisorFirst returns a boolean if a field has been set.
+func (o *TaikunLbListDto) HasHypervisorFirst() bool {
+	if o != nil && o.HypervisorFirst.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisorFirst gets a reference to the given NullableString and assigns it to the HypervisorFirst field.
+func (o *TaikunLbListDto) SetHypervisorFirst(v string) {
+	o.HypervisorFirst.Set(&v)
+}
+// SetHypervisorFirstNil sets the value for HypervisorFirst to be an explicit nil
+func (o *TaikunLbListDto) SetHypervisorFirstNil() {
+	o.HypervisorFirst.Set(nil)
+}
+
+// UnsetHypervisorFirst ensures that no value is present for HypervisorFirst, not even an explicit nil
+func (o *TaikunLbListDto) UnsetHypervisorFirst() {
+	o.HypervisorFirst.Unset()
+}
+
+// GetHypervisorSecond returns the HypervisorSecond field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TaikunLbListDto) GetHypervisorSecond() string {
+	if o == nil || IsNil(o.HypervisorSecond.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.HypervisorSecond.Get()
+}
+
+// GetHypervisorSecondOk returns a tuple with the HypervisorSecond field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TaikunLbListDto) GetHypervisorSecondOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.HypervisorSecond.Get(), o.HypervisorSecond.IsSet()
+}
+
+// HasHypervisorSecond returns a boolean if a field has been set.
+func (o *TaikunLbListDto) HasHypervisorSecond() bool {
+	if o != nil && o.HypervisorSecond.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisorSecond gets a reference to the given NullableString and assigns it to the HypervisorSecond field.
+func (o *TaikunLbListDto) SetHypervisorSecond(v string) {
+	o.HypervisorSecond.Set(&v)
+}
+// SetHypervisorSecondNil sets the value for HypervisorSecond to be an explicit nil
+func (o *TaikunLbListDto) SetHypervisorSecondNil() {
+	o.HypervisorSecond.Set(nil)
+}
+
+// UnsetHypervisorSecond ensures that no value is present for HypervisorSecond, not even an explicit nil
+func (o *TaikunLbListDto) UnsetHypervisorSecond() {
+	o.HypervisorSecond.Unset()
+}
+
 // GetSvcName returns the SvcName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TaikunLbListDto) GetSvcName() string {
 	if o == nil || IsNil(o.SvcName.Get()) {
@@ -453,6 +539,12 @@ func (o TaikunLbListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.VirtualRouterId.IsSet() {
 		toSerialize["virtualRouterId"] = o.VirtualRouterId.Get()
+	}
+	if o.HypervisorFirst.IsSet() {
+		toSerialize["hypervisorFirst"] = o.HypervisorFirst.Get()
+	}
+	if o.HypervisorSecond.IsSet() {
+		toSerialize["hypervisorSecond"] = o.HypervisorSecond.Get()
 	}
 	if o.SvcName.IsSet() {
 		toSerialize["svcName"] = o.SvcName.Get()

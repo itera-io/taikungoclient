@@ -26,6 +26,8 @@ type TaikunLbResponseDto struct {
 	PrivateIpFirst NullableString `json:"privateIpFirst,omitempty"`
 	PrivateIpSecond NullableString `json:"privateIpSecond,omitempty"`
 	VirtualRouterId NullableString `json:"virtualRouterId,omitempty"`
+	HypervisorFirst NullableString `json:"hypervisorFirst,omitempty"`
+	HypervisorSecond NullableString `json:"hypervisorSecond,omitempty"`
 }
 
 // NewTaikunLbResponseDto instantiates a new TaikunLbResponseDto object
@@ -297,6 +299,90 @@ func (o *TaikunLbResponseDto) UnsetVirtualRouterId() {
 	o.VirtualRouterId.Unset()
 }
 
+// GetHypervisorFirst returns the HypervisorFirst field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TaikunLbResponseDto) GetHypervisorFirst() string {
+	if o == nil || IsNil(o.HypervisorFirst.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.HypervisorFirst.Get()
+}
+
+// GetHypervisorFirstOk returns a tuple with the HypervisorFirst field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TaikunLbResponseDto) GetHypervisorFirstOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.HypervisorFirst.Get(), o.HypervisorFirst.IsSet()
+}
+
+// HasHypervisorFirst returns a boolean if a field has been set.
+func (o *TaikunLbResponseDto) HasHypervisorFirst() bool {
+	if o != nil && o.HypervisorFirst.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisorFirst gets a reference to the given NullableString and assigns it to the HypervisorFirst field.
+func (o *TaikunLbResponseDto) SetHypervisorFirst(v string) {
+	o.HypervisorFirst.Set(&v)
+}
+// SetHypervisorFirstNil sets the value for HypervisorFirst to be an explicit nil
+func (o *TaikunLbResponseDto) SetHypervisorFirstNil() {
+	o.HypervisorFirst.Set(nil)
+}
+
+// UnsetHypervisorFirst ensures that no value is present for HypervisorFirst, not even an explicit nil
+func (o *TaikunLbResponseDto) UnsetHypervisorFirst() {
+	o.HypervisorFirst.Unset()
+}
+
+// GetHypervisorSecond returns the HypervisorSecond field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TaikunLbResponseDto) GetHypervisorSecond() string {
+	if o == nil || IsNil(o.HypervisorSecond.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.HypervisorSecond.Get()
+}
+
+// GetHypervisorSecondOk returns a tuple with the HypervisorSecond field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TaikunLbResponseDto) GetHypervisorSecondOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.HypervisorSecond.Get(), o.HypervisorSecond.IsSet()
+}
+
+// HasHypervisorSecond returns a boolean if a field has been set.
+func (o *TaikunLbResponseDto) HasHypervisorSecond() bool {
+	if o != nil && o.HypervisorSecond.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisorSecond gets a reference to the given NullableString and assigns it to the HypervisorSecond field.
+func (o *TaikunLbResponseDto) SetHypervisorSecond(v string) {
+	o.HypervisorSecond.Set(&v)
+}
+// SetHypervisorSecondNil sets the value for HypervisorSecond to be an explicit nil
+func (o *TaikunLbResponseDto) SetHypervisorSecondNil() {
+	o.HypervisorSecond.Set(nil)
+}
+
+// UnsetHypervisorSecond ensures that no value is present for HypervisorSecond, not even an explicit nil
+func (o *TaikunLbResponseDto) UnsetHypervisorSecond() {
+	o.HypervisorSecond.Unset()
+}
+
 func (o TaikunLbResponseDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -324,6 +410,12 @@ func (o TaikunLbResponseDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.VirtualRouterId.IsSet() {
 		toSerialize["virtualRouterId"] = o.VirtualRouterId.Get()
+	}
+	if o.HypervisorFirst.IsSet() {
+		toSerialize["hypervisorFirst"] = o.HypervisorFirst.Get()
+	}
+	if o.HypervisorSecond.IsSet() {
+		toSerialize["hypervisorSecond"] = o.HypervisorSecond.Get()
 	}
 	return toSerialize, nil
 }
