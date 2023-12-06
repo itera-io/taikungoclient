@@ -385,7 +385,7 @@ func (r ApiTaikunLbListTaikunLbRequest) SvcNameSpace(svcNameSpace string) ApiTai
 	return r
 }
 
-func (r ApiTaikunLbListTaikunLbRequest) Execute() ([]TaikunLbListDto, *http.Response, error) {
+func (r ApiTaikunLbListTaikunLbRequest) Execute() ([]TaikunLbResponseDto, *http.Response, error) {
 	return r.ApiService.TaikunLbListTaikunLbExecute(r)
 }
 
@@ -405,13 +405,13 @@ func (a *TaikunLBAPIService) TaikunLbListTaikunLb(ctx context.Context, projectId
 }
 
 // Execute executes the request
-//  @return []TaikunLbListDto
-func (a *TaikunLBAPIService) TaikunLbListTaikunLbExecute(r ApiTaikunLbListTaikunLbRequest) ([]TaikunLbListDto, *http.Response, error) {
+//  @return []TaikunLbResponseDto
+func (a *TaikunLBAPIService) TaikunLbListTaikunLbExecute(r ApiTaikunLbListTaikunLbRequest) ([]TaikunLbResponseDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []TaikunLbListDto
+		localVarReturnValue  []TaikunLbResponseDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TaikunLBAPIService.TaikunLbListTaikunLb")

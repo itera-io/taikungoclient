@@ -1459,7 +1459,6 @@ Class | Method | HTTP request | Description
  - [Subresource](docs/Subresource.md)
  - [SyncProjectAppCommand](docs/SyncProjectAppCommand.md)
  - [TaikunLbDto](docs/TaikunLbDto.md)
- - [TaikunLbListDto](docs/TaikunLbListDto.md)
  - [TaikunLbResponseDto](docs/TaikunLbResponseDto.md)
  - [TanzuCredentialsForProjectDto](docs/TanzuCredentialsForProjectDto.md)
  - [TanzuCredentialsList](docs/TanzuCredentialsList.md)

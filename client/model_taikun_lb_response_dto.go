@@ -28,6 +28,9 @@ type TaikunLbResponseDto struct {
 	VirtualRouterId NullableString `json:"virtualRouterId,omitempty"`
 	HypervisorFirst NullableString `json:"hypervisorFirst,omitempty"`
 	HypervisorSecond NullableString `json:"hypervisorSecond,omitempty"`
+	SvcName NullableString `json:"svcName,omitempty"`
+	SvcNamespace NullableString `json:"svcNamespace,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
 }
 
 // NewTaikunLbResponseDto instantiates a new TaikunLbResponseDto object
@@ -383,6 +386,132 @@ func (o *TaikunLbResponseDto) UnsetHypervisorSecond() {
 	o.HypervisorSecond.Unset()
 }
 
+// GetSvcName returns the SvcName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TaikunLbResponseDto) GetSvcName() string {
+	if o == nil || IsNil(o.SvcName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SvcName.Get()
+}
+
+// GetSvcNameOk returns a tuple with the SvcName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TaikunLbResponseDto) GetSvcNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SvcName.Get(), o.SvcName.IsSet()
+}
+
+// HasSvcName returns a boolean if a field has been set.
+func (o *TaikunLbResponseDto) HasSvcName() bool {
+	if o != nil && o.SvcName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSvcName gets a reference to the given NullableString and assigns it to the SvcName field.
+func (o *TaikunLbResponseDto) SetSvcName(v string) {
+	o.SvcName.Set(&v)
+}
+// SetSvcNameNil sets the value for SvcName to be an explicit nil
+func (o *TaikunLbResponseDto) SetSvcNameNil() {
+	o.SvcName.Set(nil)
+}
+
+// UnsetSvcName ensures that no value is present for SvcName, not even an explicit nil
+func (o *TaikunLbResponseDto) UnsetSvcName() {
+	o.SvcName.Unset()
+}
+
+// GetSvcNamespace returns the SvcNamespace field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TaikunLbResponseDto) GetSvcNamespace() string {
+	if o == nil || IsNil(o.SvcNamespace.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SvcNamespace.Get()
+}
+
+// GetSvcNamespaceOk returns a tuple with the SvcNamespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TaikunLbResponseDto) GetSvcNamespaceOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SvcNamespace.Get(), o.SvcNamespace.IsSet()
+}
+
+// HasSvcNamespace returns a boolean if a field has been set.
+func (o *TaikunLbResponseDto) HasSvcNamespace() bool {
+	if o != nil && o.SvcNamespace.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSvcNamespace gets a reference to the given NullableString and assigns it to the SvcNamespace field.
+func (o *TaikunLbResponseDto) SetSvcNamespace(v string) {
+	o.SvcNamespace.Set(&v)
+}
+// SetSvcNamespaceNil sets the value for SvcNamespace to be an explicit nil
+func (o *TaikunLbResponseDto) SetSvcNamespaceNil() {
+	o.SvcNamespace.Set(nil)
+}
+
+// UnsetSvcNamespace ensures that no value is present for SvcNamespace, not even an explicit nil
+func (o *TaikunLbResponseDto) UnsetSvcNamespace() {
+	o.SvcNamespace.Unset()
+}
+
+// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TaikunLbResponseDto) GetProjectName() string {
+	if o == nil || IsNil(o.ProjectName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ProjectName.Get()
+}
+
+// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TaikunLbResponseDto) GetProjectNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ProjectName.Get(), o.ProjectName.IsSet()
+}
+
+// HasProjectName returns a boolean if a field has been set.
+func (o *TaikunLbResponseDto) HasProjectName() bool {
+	if o != nil && o.ProjectName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
+func (o *TaikunLbResponseDto) SetProjectName(v string) {
+	o.ProjectName.Set(&v)
+}
+// SetProjectNameNil sets the value for ProjectName to be an explicit nil
+func (o *TaikunLbResponseDto) SetProjectNameNil() {
+	o.ProjectName.Set(nil)
+}
+
+// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
+func (o *TaikunLbResponseDto) UnsetProjectName() {
+	o.ProjectName.Unset()
+}
+
 func (o TaikunLbResponseDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -416,6 +545,15 @@ func (o TaikunLbResponseDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.HypervisorSecond.IsSet() {
 		toSerialize["hypervisorSecond"] = o.HypervisorSecond.Get()
+	}
+	if o.SvcName.IsSet() {
+		toSerialize["svcName"] = o.SvcName.Get()
+	}
+	if o.SvcNamespace.IsSet() {
+		toSerialize["svcNamespace"] = o.SvcNamespace.Get()
+	}
+	if o.ProjectName.IsSet() {
+		toSerialize["projectName"] = o.ProjectName.Get()
 	}
 	return toSerialize, nil
 }

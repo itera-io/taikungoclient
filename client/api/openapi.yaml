@@ -32826,7 +32826,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/TaikunLbListDto'
+                  $ref: '#/components/schemas/TaikunLbResponseDto'
                 type: array
           description: OK
         "400":
@@ -42960,12 +42960,13 @@ components:
     CredentialChartDto:
       additionalProperties: false
       example:
+        vsphere: 7
         openshift: 4
         openstack: 7
         google: 9
         aws: 5
         tanzu: 3
-        totalCount: 7
+        totalCount: 1
         proxmox: 2
         azure: 2
       properties:
@@ -42988,6 +42989,9 @@ components:
           format: int32
           type: integer
         openshift:
+          format: int32
+          type: integer
+        vsphere:
           format: int32
           type: integer
         totalCount:
@@ -43649,7 +43653,7 @@ components:
             name: name
             id: 1
         servers:
-          totalOpenshiftCount: 3
+          totalOpenshiftCount: 6
           waiting:
           - names:
             - names
@@ -43672,7 +43676,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalGoogleCount: 9
+          totalGoogleCount: 6
           tanzu:
           - names:
             - names
@@ -43696,8 +43700,9 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalCpu: 1
-          totalAzureCount: 6
+          totalCpu: 6
+          totalAzureCount: 8
+          totalVsphereCount: 2
           proxmox:
           - names:
             - names
@@ -43720,8 +43725,8 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalUpdatingCount: 5
-          totalDiskSize: 7
+          totalUpdatingCount: 9
+          totalDiskSize: 1
           google:
           - names:
             - names
@@ -43744,28 +43749,28 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalRam: 6
-          totalSucceededCount: 4
-          totalOpenstackCount: 8
+          totalRam: 7
+          totalSucceededCount: 5
+          totalOpenstackCount: 9
           totalPendingCount: 9
           usedResources:
-          - diskSize: 2
-            maxRam: 5
+          - diskSize: 6
+            maxRam: 3
             cpu: 6
-            maxCpu: 6
+            maxCpu: 3
             projectName: projectName
-            maxDiskSize: 3
-            projectId: 1
-            ram: 6
-          - diskSize: 2
-            maxRam: 5
+            maxDiskSize: 7
+            projectId: 6
+            ram: 5
+          - diskSize: 6
+            maxRam: 3
             cpu: 6
-            maxCpu: 6
+            maxCpu: 3
             projectName: projectName
-            maxDiskSize: 3
-            projectId: 1
-            ram: 6
-          totalProxmoxCount: 6
+            maxDiskSize: 7
+            projectId: 6
+            ram: 5
+          totalProxmoxCount: 1
           deleting:
           - names:
             - names
@@ -43777,7 +43782,18 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalFailedCount: 1
+          totalFailedCount: 4
+          vsphere:
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
           openstack:
           - names:
             - names
@@ -43789,8 +43805,8 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalAwsCount: 9
-          totalTanzuCount: 6
+          totalAwsCount: 6
+          totalTanzuCount: 3
           aws:
           - names:
             - names
@@ -43825,7 +43841,7 @@ components:
             projectName: projectName
             projectId: 1
         standAloneVms:
-          totalOpenshiftCount: 3
+          totalOpenshiftCount: 6
           waiting:
           - names:
             - names
@@ -43848,7 +43864,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalGoogleCount: 9
+          totalGoogleCount: 6
           tanzu:
           - names:
             - names
@@ -43872,8 +43888,9 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalCpu: 1
-          totalAzureCount: 6
+          totalCpu: 6
+          totalAzureCount: 8
+          totalVsphereCount: 2
           proxmox:
           - names:
             - names
@@ -43896,8 +43913,8 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalUpdatingCount: 5
-          totalDiskSize: 7
+          totalUpdatingCount: 9
+          totalDiskSize: 1
           google:
           - names:
             - names
@@ -43920,28 +43937,28 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalRam: 6
-          totalSucceededCount: 4
-          totalOpenstackCount: 8
+          totalRam: 7
+          totalSucceededCount: 5
+          totalOpenstackCount: 9
           totalPendingCount: 9
           usedResources:
-          - diskSize: 2
-            maxRam: 5
+          - diskSize: 6
+            maxRam: 3
             cpu: 6
-            maxCpu: 6
+            maxCpu: 3
             projectName: projectName
-            maxDiskSize: 3
-            projectId: 1
-            ram: 6
-          - diskSize: 2
-            maxRam: 5
+            maxDiskSize: 7
+            projectId: 6
+            ram: 5
+          - diskSize: 6
+            maxRam: 3
             cpu: 6
-            maxCpu: 6
+            maxCpu: 3
             projectName: projectName
-            maxDiskSize: 3
-            projectId: 1
-            ram: 6
-          totalProxmoxCount: 6
+            maxDiskSize: 7
+            projectId: 6
+            ram: 5
+          totalProxmoxCount: 1
           deleting:
           - names:
             - names
@@ -43953,7 +43970,18 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalFailedCount: 1
+          totalFailedCount: 4
+          vsphere:
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
           openstack:
           - names:
             - names
@@ -43965,8 +43993,8 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalAwsCount: 9
-          totalTanzuCount: 6
+          totalAwsCount: 6
+          totalTanzuCount: 3
           aws:
           - names:
             - names
@@ -44005,12 +44033,13 @@ components:
           id: 0
           users: 6
         cloudCredentials:
+          vsphere: 7
           openshift: 4
           openstack: 7
           google: 9
           aws: 5
           tanzu: 3
-          totalCount: 7
+          totalCount: 1
           proxmox: 2
           azure: 2
       properties:
@@ -56768,7 +56797,7 @@ components:
     ServerChartDto:
       additionalProperties: false
       example:
-        totalOpenshiftCount: 3
+        totalOpenshiftCount: 6
         waiting:
         - names:
           - names
@@ -56791,7 +56820,7 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalGoogleCount: 9
+        totalGoogleCount: 6
         tanzu:
         - names:
           - names
@@ -56815,8 +56844,9 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalCpu: 1
-        totalAzureCount: 6
+        totalCpu: 6
+        totalAzureCount: 8
+        totalVsphereCount: 2
         proxmox:
         - names:
           - names
@@ -56839,8 +56869,8 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalUpdatingCount: 5
-        totalDiskSize: 7
+        totalUpdatingCount: 9
+        totalDiskSize: 1
         google:
         - names:
           - names
@@ -56863,28 +56893,28 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalRam: 6
-        totalSucceededCount: 4
-        totalOpenstackCount: 8
+        totalRam: 7
+        totalSucceededCount: 5
+        totalOpenstackCount: 9
         totalPendingCount: 9
         usedResources:
-        - diskSize: 2
-          maxRam: 5
+        - diskSize: 6
+          maxRam: 3
           cpu: 6
-          maxCpu: 6
+          maxCpu: 3
           projectName: projectName
-          maxDiskSize: 3
-          projectId: 1
-          ram: 6
-        - diskSize: 2
-          maxRam: 5
+          maxDiskSize: 7
+          projectId: 6
+          ram: 5
+        - diskSize: 6
+          maxRam: 3
           cpu: 6
-          maxCpu: 6
+          maxCpu: 3
           projectName: projectName
-          maxDiskSize: 3
-          projectId: 1
-          ram: 6
-        totalProxmoxCount: 6
+          maxDiskSize: 7
+          projectId: 6
+          ram: 5
+        totalProxmoxCount: 1
         deleting:
         - names:
           - names
@@ -56896,7 +56926,18 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalFailedCount: 1
+        totalFailedCount: 4
+        vsphere:
+        - names:
+          - names
+          - names
+          projectName: projectName
+          projectId: 1
+        - names:
+          - names
+          - names
+          projectName: projectName
+          projectId: 1
         openstack:
         - names:
           - names
@@ -56908,8 +56949,8 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalAwsCount: 9
-        totalTanzuCount: 6
+        totalAwsCount: 6
+        totalTanzuCount: 3
         aws:
         - names:
           - names
@@ -56970,6 +57011,11 @@ components:
           nullable: true
           type: array
         proxmox:
+          items:
+            $ref: '#/components/schemas/ServerCommonRecordDto'
+          nullable: true
+          type: array
+        vsphere:
           items:
             $ref: '#/components/schemas/ServerCommonRecordDto'
           nullable: true
@@ -57052,6 +57098,9 @@ components:
           format: int32
           type: integer
         totalProxmoxCount:
+          format: int32
+          type: integer
+        totalVsphereCount:
           format: int32
           type: integer
         usedResources:
@@ -59894,7 +59943,7 @@ components:
           nullable: true
           type: integer
       type: object
-    TaikunLbListDto:
+    TaikunLbResponseDto:
       additionalProperties: false
       example:
         privateIpFirst: privateIpFirst
@@ -59940,43 +59989,6 @@ components:
           nullable: true
           type: string
         projectName:
-          nullable: true
-          type: string
-      type: object
-    TaikunLbResponseDto:
-      additionalProperties: false
-      example:
-        privateIpFirst: privateIpFirst
-        hypervisorSecond: hypervisorSecond
-        virtualRouterId: virtualRouterId
-        publicIp: publicIp
-        hypervisorFirst: hypervisorFirst
-        virtualLbIpSecond: virtualLbIpSecond
-        privateIpSecond: privateIpSecond
-        virtualLbIpFirst: virtualLbIpFirst
-      properties:
-        publicIp:
-          nullable: true
-          type: string
-        virtualLbIpFirst:
-          nullable: true
-          type: string
-        virtualLbIpSecond:
-          nullable: true
-          type: string
-        privateIpFirst:
-          nullable: true
-          type: string
-        privateIpSecond:
-          nullable: true
-          type: string
-        virtualRouterId:
-          nullable: true
-          type: string
-        hypervisorFirst:
-          nullable: true
-          type: string
-        hypervisorSecond:
           nullable: true
           type: string
       type: object
@@ -61490,14 +61502,14 @@ components:
     UserResourceChartDto:
       additionalProperties: false
       example:
-        diskSize: 2
-        maxRam: 5
+        diskSize: 6
+        maxRam: 3
         cpu: 6
-        maxCpu: 6
+        maxCpu: 3
         projectName: projectName
-        maxDiskSize: 3
-        projectId: 1
-        ram: 6
+        maxDiskSize: 7
+        projectId: 6
+        ram: 5
       properties:
         projectName:
           nullable: true

@@ -27,6 +27,7 @@ type CredentialChartDto struct {
 	Tanzu *int32 `json:"tanzu,omitempty"`
 	Proxmox *int32 `json:"proxmox,omitempty"`
 	Openshift *int32 `json:"openshift,omitempty"`
+	Vsphere *int32 `json:"vsphere,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
@@ -271,6 +272,38 @@ func (o *CredentialChartDto) SetOpenshift(v int32) {
 	o.Openshift = &v
 }
 
+// GetVsphere returns the Vsphere field value if set, zero value otherwise.
+func (o *CredentialChartDto) GetVsphere() int32 {
+	if o == nil || IsNil(o.Vsphere) {
+		var ret int32
+		return ret
+	}
+	return *o.Vsphere
+}
+
+// GetVsphereOk returns a tuple with the Vsphere field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialChartDto) GetVsphereOk() (*int32, bool) {
+	if o == nil || IsNil(o.Vsphere) {
+		return nil, false
+	}
+	return o.Vsphere, true
+}
+
+// HasVsphere returns a boolean if a field has been set.
+func (o *CredentialChartDto) HasVsphere() bool {
+	if o != nil && !IsNil(o.Vsphere) {
+		return true
+	}
+
+	return false
+}
+
+// SetVsphere gets a reference to the given int32 and assigns it to the Vsphere field.
+func (o *CredentialChartDto) SetVsphere(v int32) {
+	o.Vsphere = &v
+}
+
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
 func (o *CredentialChartDto) GetTotalCount() int32 {
 	if o == nil || IsNil(o.TotalCount) {
@@ -333,6 +366,9 @@ func (o CredentialChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Openshift) {
 		toSerialize["openshift"] = o.Openshift
+	}
+	if !IsNil(o.Vsphere) {
+		toSerialize["vsphere"] = o.Vsphere
 	}
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
