@@ -11736,6 +11736,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
         name: Latest
         required: false
         schema:
@@ -11783,6 +11791,7 @@ paths:
       - Images
   /api/v1/images/aws/common/{cloudId}:
     get:
+      deprecated: true
       operationId: images-aws-common-images
       parameters:
       - explode: false
@@ -11801,7 +11810,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/AwsOwnerDetails'
                 type: array
-          description: OK
+          description: Success
         "400":
           content:
             application/json:
@@ -11831,12 +11840,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Commonly used aws images
+          description: Server Error
       tags:
       - Images
   /api/v1/images/azure/common/{cloudId}:
     get:
+      deprecated: true
       operationId: images-azure-common-images
       parameters:
       - explode: false
@@ -11855,7 +11864,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/AzurePublisherDetails'
                 type: array
-          description: OK
+          description: Success
         "400":
           content:
             application/json:
@@ -11885,12 +11894,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Commonly used azure images
+          description: Server Error
       tags:
       - Images
   /api/v1/images/google/common/{cloudId}:
     get:
+      deprecated: true
       operationId: images-common-google-images
       parameters:
       - explode: false
@@ -11909,7 +11918,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/GoogleOwnerDetails'
                 type: array
-          description: OK
+          description: Success
         "400":
           content:
             application/json:
@@ -11939,8 +11948,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Commonly used google images
+          description: Server Error
       tags:
       - Images
   /api/v1/images/projects/list:
@@ -12110,6 +12118,14 @@ paths:
         schema:
           type: boolean
         style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -12147,6 +12163,313 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Server Error
+      tags:
+      - Images
+  /api/v1/images/new/aws/common/{cloudId}:
+    get:
+      operationId: images-new-aws-common-images
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AwsCommonImageDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Commonly used aws images
+      tags:
+      - Images
+  /api/v1/images/new/azure/common/{cloudId}:
+    get:
+      operationId: images-new-azure-common-images
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AzureCommonImageDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Commonly used azure images
+      tags:
+      - Images
+  /api/v1/images/new/google/common/{cloudId}:
+    get:
+      operationId: images-new-common-google-images
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoogleCommonImageDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Commonly used google images
+      tags:
+      - Images
+  /api/v1/images/new/aws/personal/{cloudId}:
+    get:
+      operationId: images-new-aws-personal-images
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalImageDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Aws personal images
+      tags:
+      - Images
+  /api/v1/images/new/azure/personal/{cloudId}:
+    get:
+      operationId: images-new-azure-personal-images
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalImageDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Azure personal images
       tags:
       - Images
   /api/v1/images/openshift/{cloudId}:
@@ -12197,6 +12520,14 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -12289,6 +12620,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
         name: Personal
         required: false
         schema:
@@ -12337,6 +12676,7 @@ paths:
       - Images
   /api/v1/images/aws/personal/{cloudId}:
     get:
+      deprecated: true
       operationId: images-aws-personal-images
       parameters:
       - explode: false
@@ -12362,7 +12702,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
-          description: OK
+          description: Success
         "400":
           content:
             application/json:
@@ -12392,12 +12732,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Aws personal images
+          description: Server Error
       tags:
       - Images
   /api/v1/images/azure/personal/{cloudId}:
     get:
+      deprecated: true
       operationId: images-azure-personal-images
       parameters:
       - explode: false
@@ -12416,7 +12756,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
-          description: OK
+          description: Success
         "400":
           content:
             application/json:
@@ -12446,8 +12786,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Azure personal images
+          description: Server Error
       tags:
       - Images
   /api/v1/images/proxmox/{cloudId}:
@@ -12498,6 +12837,14 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -12588,6 +12935,14 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -12676,6 +13031,14 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -35525,6 +35888,49 @@ paths:
       summary: Update Vsphere credentials
       tags:
       - Vsphere cloud credential
+  /api/v1/vsphere/validate:
+    post:
+      operationId: vsphere-validate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateVsphereCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Validate Vsphere credentials
+      tags:
+      - Vsphere cloud credential
   /api/v1/vsphere/vm-template-list:
     post:
       operationId: vsphere-vm-template-list
@@ -37648,6 +38054,38 @@ components:
           format: int32
           type: integer
       type: object
+    AwsCommonImageDto:
+      additionalProperties: false
+      example:
+        images:
+          names:
+          - names
+          - names
+          ids:
+          - ids
+          - ids
+        data:
+        - image:
+            displayName: displayName
+            name: name
+            id: id
+          ownerName: ownerName
+          ownerId: ownerId
+        - image:
+            displayName: displayName
+            name: name
+            id: id
+          ownerName: ownerName
+          ownerId: ownerId
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/AwsOwnerDetails'
+          nullable: true
+          type: array
+        images:
+          $ref: '#/components/schemas/BoundImagesForProjectDto'
+      type: object
     AwsCommonImages:
       additionalProperties: false
       example:
@@ -38009,6 +38447,36 @@ components:
           format: int32
           type: integer
       type: object
+    AzureCommonImageDto:
+      additionalProperties: false
+      example:
+        images:
+          names:
+          - names
+          - names
+          ids:
+          - ids
+          - ids
+        data:
+        - image:
+            displayName: displayName
+            name: name
+            id: id
+          publisher: publisher
+        - image:
+            displayName: displayName
+            name: name
+            id: id
+          publisher: publisher
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/AzurePublisherDetails'
+          nullable: true
+          type: array
+        images:
+          $ref: '#/components/schemas/BoundImagesForProjectDto'
+      type: object
     AzureCommonImages:
       additionalProperties: false
       example:
@@ -38283,6 +38751,13 @@ components:
     AzureImageList:
       additionalProperties: false
       example:
+        images:
+          names:
+          - names
+          - names
+          ids:
+          - ids
+          - ids
         data:
         - name: name
           id: id
@@ -38298,6 +38773,8 @@ components:
         totalCount:
           format: int32
           type: integer
+        images:
+          $ref: '#/components/schemas/BoundImagesForProjectDto'
       type: object
     AzureLocationsCommand:
       additionalProperties: false
@@ -45464,6 +45941,34 @@ components:
           nullable: true
           type: string
       type: object
+    GoogleCommonImageDto:
+      additionalProperties: false
+      example:
+        images:
+          names:
+          - names
+          - names
+          ids:
+          - ids
+          - ids
+        data:
+        - owner: owner
+          image:
+            displayName: displayName
+            name: name
+        - owner: owner
+          image:
+            displayName: displayName
+            name: name
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/GoogleOwnerDetails'
+          nullable: true
+          type: array
+        images:
+          $ref: '#/components/schemas/BoundImagesForProjectDto'
+      type: object
     GoogleCommonImages:
       additionalProperties: false
       example:
@@ -45722,6 +46227,13 @@ components:
     GoogleImageList:
       additionalProperties: false
       example:
+        images:
+          names:
+          - names
+          - names
+          ids:
+          - ids
+          - ids
         data:
         - name: name
           id: id
@@ -45737,6 +46249,8 @@ components:
         totalCount:
           format: int32
           type: integer
+        images:
+          $ref: '#/components/schemas/BoundImagesForProjectDto'
       type: object
     GoogleOwnerDetails:
       additionalProperties: false
@@ -46968,9 +47482,9 @@ components:
         isSilenced: true
         fingerprint: fingerprint
         startsAt: startsAt
-        id: 7
+        id: 1
         projectName: projectName
-        projectId: 1
+        projectId: 5
         status: status
       properties:
         id:
@@ -49093,6 +49607,13 @@ components:
     OpenshiftImageList:
       additionalProperties: false
       example:
+        images:
+          names:
+          - names
+          - names
+          ids:
+          - ids
+          - ids
         data:
         - pvcName: pvcName
           name: name
@@ -49116,6 +49637,8 @@ components:
         totalCount:
           format: int32
           type: integer
+        images:
+          $ref: '#/components/schemas/BoundImagesForProjectDto'
       type: object
     OpenshiftImagesData:
       additionalProperties: false
@@ -49597,6 +50120,13 @@ components:
     OpenstackImageList:
       additionalProperties: false
       example:
+        images:
+          names:
+          - names
+          - names
+          ids:
+          - ids
+          - ids
         data:
         - name: name
           id: id
@@ -49612,6 +50142,8 @@ components:
         totalCount:
           format: int32
           type: integer
+        images:
+          $ref: '#/components/schemas/BoundImagesForProjectDto'
       type: object
     OpenstackNetworkDto:
       additionalProperties: false
@@ -50979,6 +51511,30 @@ components:
     PaymentWebhookCommand:
       additionalProperties: false
       type: object
+    PersonalImageDto:
+      additionalProperties: false
+      example:
+        images:
+          names:
+          - names
+          - names
+          ids:
+          - ids
+          - ids
+        data:
+        - name: name
+          id: id
+        - name: name
+          id: id
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
+          nullable: true
+          type: array
+        images:
+          $ref: '#/components/schemas/BoundImagesForProjectDto'
+      type: object
     PodDisruptionDto:
       additionalProperties: false
       example:
@@ -52334,9 +52890,9 @@ components:
         isOpaEnabled: true
         privateIp: privateIp
         projectRevision:
-          accessProfileRevision: 4
-          cloudCredentialRevision: 9
-          opaProfileRevision: 5
+          accessProfileRevision: 7
+          cloudCredentialRevision: 4
+          opaProfileRevision: 1
         opaProfile:
           projects:
           - name: name
@@ -52372,8 +52928,8 @@ components:
         taikunLB:
           flavor: flavor
           privateKey: privateKey
-          routerIdEndRange: 1
-          routerIdStartRange: 7
+          routerIdEndRange: 6
+          routerIdStartRange: 1
           publicKey: publicKey
         cloudType: cloudType
         isLocked: true
@@ -52453,7 +53009,7 @@ components:
             name: name
             id: 3
         tanzuReleaseVersion: tanzuReleaseVersion
-        workersCount: 6
+        workersCount: 1
         nfsDiskSize: 1
         cidr: cidr
         taikunPrivateSSHKey: taikunPrivateSSHKey
@@ -52464,7 +53020,7 @@ components:
           s3AccessKeyId: s3AccessKeyId
           s3Region: s3Region
         kubernetesTargetVersion: kubernetesTargetVersion
-        netMask: 1
+        netMask: 7
         aiEnabled: true
         isMonitoringEnabled: true
         health: health
@@ -52497,37 +53053,6 @@ components:
         - kubevapEnabeledKubernetesVersions
         - kubevapEnabeledKubernetesVersions
         isBackupEnabled: true
-        kubernetesAlerts:
-        - severity: severity
-          lastModifiedBy: lastModifiedBy
-          description: description
-          title: title
-          endAt: endAt
-          silenceReason: silenceReason
-          labels: ""
-          isSolved: true
-          isSilenced: true
-          fingerprint: fingerprint
-          startsAt: startsAt
-          id: 7
-          projectName: projectName
-          projectId: 1
-          status: status
-        - severity: severity
-          lastModifiedBy: lastModifiedBy
-          description: description
-          title: title
-          endAt: endAt
-          silenceReason: silenceReason
-          labels: ""
-          isSolved: true
-          isSilenced: true
-          fingerprint: fingerprint
-          startsAt: startsAt
-          id: 7
-          projectName: projectName
-          projectId: 1
-          status: status
         partnerId: 5
       properties:
         id:
@@ -52626,11 +53151,6 @@ components:
           $ref: '#/components/schemas/KubernetesProfilesLisForPollerDto'
         opaProfile:
           $ref: '#/components/schemas/OpaProfileListDto'
-        kubernetesAlerts:
-          items:
-            $ref: '#/components/schemas/KubernetesAlertDtoForPoller'
-          nullable: true
-          type: array
         isDeleteCluster:
           type: boolean
         taikunPrivateSSHKey:
@@ -53351,9 +53871,9 @@ components:
           isSilenced: true
           fingerprint: fingerprint
           startsAt: startsAt
-          id: 7
+          id: 1
           projectName: projectName
-          projectId: 1
+          projectId: 5
           status: status
         - severity: severity
           lastModifiedBy: lastModifiedBy
@@ -53366,9 +53886,9 @@ components:
           isSilenced: true
           fingerprint: fingerprint
           startsAt: startsAt
-          id: 7
+          id: 1
           projectName: projectName
-          projectId: 1
+          projectId: 5
           status: status
         id: 0
         hasKubeConfigFile: true
@@ -53420,9 +53940,9 @@ components:
           isOpaEnabled: true
           privateIp: privateIp
           projectRevision:
-            accessProfileRevision: 4
-            cloudCredentialRevision: 9
-            opaProfileRevision: 5
+            accessProfileRevision: 7
+            cloudCredentialRevision: 4
+            opaProfileRevision: 1
           opaProfile:
             projects:
             - name: name
@@ -53458,8 +53978,8 @@ components:
           taikunLB:
             flavor: flavor
             privateKey: privateKey
-            routerIdEndRange: 1
-            routerIdStartRange: 7
+            routerIdEndRange: 6
+            routerIdStartRange: 1
             publicKey: publicKey
           cloudType: cloudType
           isLocked: true
@@ -53539,7 +54059,7 @@ components:
               name: name
               id: 3
           tanzuReleaseVersion: tanzuReleaseVersion
-          workersCount: 6
+          workersCount: 1
           nfsDiskSize: 1
           cidr: cidr
           taikunPrivateSSHKey: taikunPrivateSSHKey
@@ -53550,7 +54070,7 @@ components:
             s3AccessKeyId: s3AccessKeyId
             s3Region: s3Region
           kubernetesTargetVersion: kubernetesTargetVersion
-          netMask: 1
+          netMask: 7
           aiEnabled: true
           isMonitoringEnabled: true
           health: health
@@ -53583,37 +54103,6 @@ components:
           - kubevapEnabeledKubernetesVersions
           - kubevapEnabeledKubernetesVersions
           isBackupEnabled: true
-          kubernetesAlerts:
-          - severity: severity
-            lastModifiedBy: lastModifiedBy
-            description: description
-            title: title
-            endAt: endAt
-            silenceReason: silenceReason
-            labels: ""
-            isSolved: true
-            isSilenced: true
-            fingerprint: fingerprint
-            startsAt: startsAt
-            id: 7
-            projectName: projectName
-            projectId: 1
-            status: status
-          - severity: severity
-            lastModifiedBy: lastModifiedBy
-            description: description
-            title: title
-            endAt: endAt
-            silenceReason: silenceReason
-            labels: ""
-            isSolved: true
-            isSilenced: true
-            fingerprint: fingerprint
-            startsAt: startsAt
-            id: 7
-            projectName: projectName
-            projectId: 1
-            status: status
           partnerId: 5
         - flavors:
           - flavors
@@ -53622,9 +54111,9 @@ components:
           isOpaEnabled: true
           privateIp: privateIp
           projectRevision:
-            accessProfileRevision: 4
-            cloudCredentialRevision: 9
-            opaProfileRevision: 5
+            accessProfileRevision: 7
+            cloudCredentialRevision: 4
+            opaProfileRevision: 1
           opaProfile:
             projects:
             - name: name
@@ -53660,8 +54149,8 @@ components:
           taikunLB:
             flavor: flavor
             privateKey: privateKey
-            routerIdEndRange: 1
-            routerIdStartRange: 7
+            routerIdEndRange: 6
+            routerIdStartRange: 1
             publicKey: publicKey
           cloudType: cloudType
           isLocked: true
@@ -53741,7 +54230,7 @@ components:
               name: name
               id: 3
           tanzuReleaseVersion: tanzuReleaseVersion
-          workersCount: 6
+          workersCount: 1
           nfsDiskSize: 1
           cidr: cidr
           taikunPrivateSSHKey: taikunPrivateSSHKey
@@ -53752,7 +54241,7 @@ components:
             s3AccessKeyId: s3AccessKeyId
             s3Region: s3Region
           kubernetesTargetVersion: kubernetesTargetVersion
-          netMask: 1
+          netMask: 7
           aiEnabled: true
           isMonitoringEnabled: true
           health: health
@@ -53785,37 +54274,6 @@ components:
           - kubevapEnabeledKubernetesVersions
           - kubevapEnabeledKubernetesVersions
           isBackupEnabled: true
-          kubernetesAlerts:
-          - severity: severity
-            lastModifiedBy: lastModifiedBy
-            description: description
-            title: title
-            endAt: endAt
-            silenceReason: silenceReason
-            labels: ""
-            isSolved: true
-            isSilenced: true
-            fingerprint: fingerprint
-            startsAt: startsAt
-            id: 7
-            projectName: projectName
-            projectId: 1
-            status: status
-          - severity: severity
-            lastModifiedBy: lastModifiedBy
-            description: description
-            title: title
-            endAt: endAt
-            silenceReason: silenceReason
-            labels: ""
-            isSolved: true
-            isSilenced: true
-            fingerprint: fingerprint
-            startsAt: startsAt
-            id: 7
-            projectName: projectName
-            projectId: 1
-            status: status
           partnerId: 5
         totalCount: 0
       properties:
@@ -53941,9 +54399,9 @@ components:
     ProjectRevisionDto:
       additionalProperties: false
       example:
-        accessProfileRevision: 4
-        cloudCredentialRevision: 9
-        opaProfileRevision: 5
+        accessProfileRevision: 7
+        cloudCredentialRevision: 4
+        opaProfileRevision: 1
       properties:
         accessProfileRevision:
           format: int32
@@ -55085,6 +55543,13 @@ components:
     ProxmoxImageList:
       additionalProperties: false
       example:
+        images:
+          names:
+          - names
+          - names
+          ids:
+          - ids
+          - ids
         data:
         - name: name
           id: id
@@ -55100,6 +55565,8 @@ components:
         totalCount:
           format: int32
           type: integer
+        images:
+          $ref: '#/components/schemas/BoundImagesForProjectDto'
       type: object
     ProxmoxList:
       additionalProperties: false
@@ -59405,8 +59872,8 @@ components:
       example:
         flavor: flavor
         privateKey: privateKey
-        routerIdEndRange: 1
-        routerIdStartRange: 7
+        routerIdEndRange: 6
+        routerIdStartRange: 1
         publicKey: publicKey
       properties:
         flavor:
@@ -59725,6 +60192,13 @@ components:
     TanzuImageList:
       additionalProperties: false
       example:
+        images:
+          names:
+          - names
+          - names
+          ids:
+          - ids
+          - ids
         data:
         - createdAt: 2000-01-23T04:56:07.000+00:00
           imageId: imageId
@@ -59746,6 +60220,8 @@ components:
         totalCount:
           format: int32
           type: integer
+        images:
+          $ref: '#/components/schemas/BoundImagesForProjectDto'
       type: object
     TanzuImagesListDto:
       additionalProperties: false
@@ -61284,6 +61760,23 @@ components:
           nullable: true
           type: string
       type: object
+    ValidateVsphereCommand:
+      additionalProperties: false
+      example:
+        password: password
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+      type: object
     VerifyEmailCommand:
       additionalProperties: false
       example:
@@ -61492,6 +61985,13 @@ components:
     VsphereImageList:
       additionalProperties: false
       example:
+        images:
+          names:
+          - names
+          - names
+          ids:
+          - ids
+          - ids
         data:
         - name: name
           id: id
@@ -61507,6 +62007,8 @@ components:
         totalCount:
           format: int32
           type: integer
+        images:
+          $ref: '#/components/schemas/BoundImagesForProjectDto'
       type: object
     VsphereList:
       additionalProperties: false

@@ -287,16 +287,21 @@ Class | Method | HTTP request | Description
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
 *GoogleAPI* | [**GooglecloudRegionList**](docs/GoogleAPI.md#googlecloudregionlist) | **Post** /api/v1/googlecloud/regions | 
 *GoogleAPI* | [**GooglecloudZoneList**](docs/GoogleAPI.md#googlecloudzonelist) | **Post** /api/v1/googlecloud/zones/{region} | 
-*ImagesAPI* | [**ImagesAwsCommonImages**](docs/ImagesAPI.md#imagesawscommonimages) | **Get** /api/v1/images/aws/common/{cloudId} | Commonly used aws images
+*ImagesAPI* | [**ImagesAwsCommonImages**](docs/ImagesAPI.md#imagesawscommonimages) | **Get** /api/v1/images/aws/common/{cloudId} | 
 *ImagesAPI* | [**ImagesAwsImagesList**](docs/ImagesAPI.md#imagesawsimageslist) | **Post** /api/v1/images/aws | Retrieve aws images
-*ImagesAPI* | [**ImagesAwsPersonalImages**](docs/ImagesAPI.md#imagesawspersonalimages) | **Get** /api/v1/images/aws/personal/{cloudId} | Aws personal images
-*ImagesAPI* | [**ImagesAzureCommonImages**](docs/ImagesAPI.md#imagesazurecommonimages) | **Get** /api/v1/images/azure/common/{cloudId} | Commonly used azure images
+*ImagesAPI* | [**ImagesAwsPersonalImages**](docs/ImagesAPI.md#imagesawspersonalimages) | **Get** /api/v1/images/aws/personal/{cloudId} | 
+*ImagesAPI* | [**ImagesAzureCommonImages**](docs/ImagesAPI.md#imagesazurecommonimages) | **Get** /api/v1/images/azure/common/{cloudId} | 
 *ImagesAPI* | [**ImagesAzureImages**](docs/ImagesAPI.md#imagesazureimages) | **Get** /api/v1/images/azure/{cloudId}/{publisherName}/{offer}/{sku} | 
-*ImagesAPI* | [**ImagesAzurePersonalImages**](docs/ImagesAPI.md#imagesazurepersonalimages) | **Get** /api/v1/images/azure/personal/{cloudId} | Azure personal images
+*ImagesAPI* | [**ImagesAzurePersonalImages**](docs/ImagesAPI.md#imagesazurepersonalimages) | **Get** /api/v1/images/azure/personal/{cloudId} | 
 *ImagesAPI* | [**ImagesBindImagesToProject**](docs/ImagesAPI.md#imagesbindimagestoproject) | **Post** /api/v1/images/bind | Bind images to project
-*ImagesAPI* | [**ImagesCommonGoogleImages**](docs/ImagesAPI.md#imagescommongoogleimages) | **Get** /api/v1/images/google/common/{cloudId} | Commonly used google images
+*ImagesAPI* | [**ImagesCommonGoogleImages**](docs/ImagesAPI.md#imagescommongoogleimages) | **Get** /api/v1/images/google/common/{cloudId} | 
 *ImagesAPI* | [**ImagesGoogleImages**](docs/ImagesAPI.md#imagesgoogleimages) | **Get** /api/v1/images/google/{cloudId}/{type} | 
 *ImagesAPI* | [**ImagesImageDetails**](docs/ImagesAPI.md#imagesimagedetails) | **Post** /api/v1/images/details | Get image details
+*ImagesAPI* | [**ImagesNewAwsCommonImages**](docs/ImagesAPI.md#imagesnewawscommonimages) | **Get** /api/v1/images/new/aws/common/{cloudId} | Commonly used aws images
+*ImagesAPI* | [**ImagesNewAwsPersonalImages**](docs/ImagesAPI.md#imagesnewawspersonalimages) | **Get** /api/v1/images/new/aws/personal/{cloudId} | Aws personal images
+*ImagesAPI* | [**ImagesNewAzureCommonImages**](docs/ImagesAPI.md#imagesnewazurecommonimages) | **Get** /api/v1/images/new/azure/common/{cloudId} | Commonly used azure images
+*ImagesAPI* | [**ImagesNewAzurePersonalImages**](docs/ImagesAPI.md#imagesnewazurepersonalimages) | **Get** /api/v1/images/new/azure/personal/{cloudId} | Azure personal images
+*ImagesAPI* | [**ImagesNewCommonGoogleImages**](docs/ImagesAPI.md#imagesnewcommongoogleimages) | **Get** /api/v1/images/new/google/common/{cloudId} | Commonly used google images
 *ImagesAPI* | [**ImagesOpenshiftImages**](docs/ImagesAPI.md#imagesopenshiftimages) | **Get** /api/v1/images/openshift/{cloudId} | Retrieve openshift images
 *ImagesAPI* | [**ImagesOpenstackImages**](docs/ImagesAPI.md#imagesopenstackimages) | **Get** /api/v1/images/openstack/{cloudId} | Retrieve openstack images
 *ImagesAPI* | [**ImagesProxmoxImages**](docs/ImagesAPI.md#imagesproxmoximages) | **Get** /api/v1/images/proxmox/{cloudId} | Retrieve proxmox images
@@ -720,6 +725,7 @@ Class | Method | HTTP request | Description
 *VsphereCloudCredentialAPI* | [**VsphereResourcePoolList**](docs/VsphereCloudCredentialAPI.md#vsphereresourcepoollist) | **Post** /api/v1/vsphere/resource-pool-list | Fetch Vsphere resource pool list
 *VsphereCloudCredentialAPI* | [**VsphereUpdate**](docs/VsphereCloudCredentialAPI.md#vsphereupdate) | **Post** /api/v1/vsphere/update | Update Vsphere credentials
 *VsphereCloudCredentialAPI* | [**VsphereUpdateVsphereHypervisors**](docs/VsphereCloudCredentialAPI.md#vsphereupdatevspherehypervisors) | **Post** /api/v1/vsphere/update/hypervisors | Update Vsphere credentials
+*VsphereCloudCredentialAPI* | [**VsphereValidate**](docs/VsphereCloudCredentialAPI.md#vspherevalidate) | **Post** /api/v1/vsphere/validate | Validate Vsphere credentials
 *VsphereCloudCredentialAPI* | [**VsphereVmTemplateList**](docs/VsphereCloudCredentialAPI.md#vspherevmtemplatelist) | **Post** /api/v1/vsphere/vm-template-list | Fetch Vsphere vm template list
 
 
@@ -787,6 +793,7 @@ Class | Method | HTTP request | Description
  - [AvailablePackageDetailsDto](docs/AvailablePackageDetailsDto.md)
  - [AvailablePackagesDto](docs/AvailablePackagesDto.md)
  - [AvailablePackagesList](docs/AvailablePackagesList.md)
+ - [AwsCommonImageDto](docs/AwsCommonImageDto.md)
  - [AwsCommonImages](docs/AwsCommonImages.md)
  - [AwsCredentialList](docs/AwsCredentialList.md)
  - [AwsCredentialsForProjectDto](docs/AwsCredentialsForProjectDto.md)
@@ -800,6 +807,7 @@ Class | Method | HTTP request | Description
  - [AwsRegionDto](docs/AwsRegionDto.md)
  - [AwsValidateOwnerCommand](docs/AwsValidateOwnerCommand.md)
  - [AzResult](docs/AzResult.md)
+ - [AzureCommonImageDto](docs/AzureCommonImageDto.md)
  - [AzureCommonImages](docs/AzureCommonImages.md)
  - [AzureCredentialList](docs/AzureCredentialList.md)
  - [AzureCredentialsForProjectDto](docs/AzureCredentialsForProjectDto.md)
@@ -1061,6 +1069,7 @@ Class | Method | HTTP request | Description
  - [GetProjectOperationCommand](docs/GetProjectOperationCommand.md)
  - [GetToken](docs/GetToken.md)
  - [GiveAccessToPartnerCommand](docs/GiveAccessToPartnerCommand.md)
+ - [GoogleCommonImageDto](docs/GoogleCommonImageDto.md)
  - [GoogleCommonImages](docs/GoogleCommonImages.md)
  - [GoogleCredentialForProjectDto](docs/GoogleCredentialForProjectDto.md)
  - [GoogleCredentialList](docs/GoogleCredentialList.md)
@@ -1244,6 +1253,7 @@ Class | Method | HTTP request | Description
  - [PatchSecretCommand](docs/PatchSecretCommand.md)
  - [PatchStsCommand](docs/PatchStsCommand.md)
  - [PayInvoiceCommand](docs/PayInvoiceCommand.md)
+ - [PersonalImageDto](docs/PersonalImageDto.md)
  - [PodDisruptionDto](docs/PodDisruptionDto.md)
  - [PodDisruptions](docs/PodDisruptions.md)
  - [PodDto](docs/PodDto.md)
@@ -1524,6 +1534,7 @@ Class | Method | HTTP request | Description
  - [UsersSearchCommand](docs/UsersSearchCommand.md)
  - [UsersSearchList](docs/UsersSearchList.md)
  - [UsersSearchResponseData](docs/UsersSearchResponseData.md)
+ - [ValidateVsphereCommand](docs/ValidateVsphereCommand.md)
  - [VerifyEmailCommand](docs/VerifyEmailCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)
  - [VerifyWebhookCommand](docs/VerifyWebhookCommand.md)

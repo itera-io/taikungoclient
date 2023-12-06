@@ -128,6 +128,17 @@ func Test_taikuncore_VsphereCloudCredentialAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test VsphereCloudCredentialAPIService VsphereValidate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.VsphereCloudCredentialAPI.VsphereValidate(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test VsphereCloudCredentialAPIService VsphereVmTemplateList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

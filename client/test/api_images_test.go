@@ -159,6 +159,76 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ImagesAPIService ImagesNewAwsCommonImages", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var cloudId int32
+
+		resp, httpRes, err := apiClient.ImagesAPI.ImagesNewAwsCommonImages(context.Background(), cloudId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ImagesAPIService ImagesNewAwsPersonalImages", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var cloudId int32
+
+		resp, httpRes, err := apiClient.ImagesAPI.ImagesNewAwsPersonalImages(context.Background(), cloudId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ImagesAPIService ImagesNewAzureCommonImages", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var cloudId int32
+
+		resp, httpRes, err := apiClient.ImagesAPI.ImagesNewAzureCommonImages(context.Background(), cloudId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ImagesAPIService ImagesNewAzurePersonalImages", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var cloudId int32
+
+		resp, httpRes, err := apiClient.ImagesAPI.ImagesNewAzurePersonalImages(context.Background(), cloudId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ImagesAPIService ImagesNewCommonGoogleImages", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var cloudId int32
+
+		resp, httpRes, err := apiClient.ImagesAPI.ImagesNewCommonGoogleImages(context.Background(), cloudId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ImagesAPIService ImagesOpenshiftImages", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

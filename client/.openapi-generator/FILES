@@ -156,6 +156,7 @@ docs/AvailableEndpointsList.md
 docs/AvailablePackageDetailsDto.md
 docs/AvailablePackagesDto.md
 docs/AvailablePackagesList.md
+docs/AwsCommonImageDto.md
 docs/AwsCommonImages.md
 docs/AwsCredentialList.md
 docs/AwsCredentialsForProjectDto.md
@@ -170,6 +171,7 @@ docs/AwsRegionDto.md
 docs/AwsValidateOwnerCommand.md
 docs/AzResult.md
 docs/AzureCloudCredentialAPI.md
+docs/AzureCommonImageDto.md
 docs/AzureCommonImages.md
 docs/AzureCredentialList.md
 docs/AzureCredentialsForProjectDto.md
@@ -442,6 +444,7 @@ docs/GetProjectOperationCommand.md
 docs/GetToken.md
 docs/GiveAccessToPartnerCommand.md
 docs/GoogleAPI.md
+docs/GoogleCommonImageDto.md
 docs/GoogleCommonImages.md
 docs/GoogleCredentialForProjectDto.md
 docs/GoogleCredentialList.md
@@ -646,6 +649,7 @@ docs/PatchSecretCommand.md
 docs/PatchStsCommand.md
 docs/PayInvoiceCommand.md
 docs/PaymentsAPI.md
+docs/PersonalImageDto.md
 docs/PodDisruptionDto.md
 docs/PodDisruptions.md
 docs/PodDto.md
@@ -959,6 +963,7 @@ docs/UsersList.md
 docs/UsersSearchCommand.md
 docs/UsersSearchList.md
 docs/UsersSearchResponseData.md
+docs/ValidateVsphereCommand.md
 docs/VerifyEmailCommand.md
 docs/VerifySlackCredentialsCommand.md
 docs/VerifyWebhookCommand.md
@@ -1046,6 +1051,7 @@ model_available_endpoints_list.go
 model_available_package_details_dto.go
 model_available_packages_dto.go
 model_available_packages_list.go
+model_aws_common_image_dto.go
 model_aws_common_images.go
 model_aws_credential_list.go
 model_aws_credentials_for_project_dto.go
@@ -1059,6 +1065,7 @@ model_aws_project_az_subnet_dto.go
 model_aws_region_dto.go
 model_aws_validate_owner_command.go
 model_az_result.go
+model_azure_common_image_dto.go
 model_azure_common_images.go
 model_azure_credential_list.go
 model_azure_credentials_for_project_dto.go
@@ -1320,6 +1327,7 @@ model_get_catalog_app_value_command.go
 model_get_project_operation_command.go
 model_get_token.go
 model_give_access_to_partner_command.go
+model_google_common_image_dto.go
 model_google_common_images.go
 model_google_credential_for_project_dto.go
 model_google_credential_list.go
@@ -1503,6 +1511,7 @@ model_patch_pvc_command.go
 model_patch_secret_command.go
 model_patch_sts_command.go
 model_pay_invoice_command.go
+model_personal_image_dto.go
 model_pod_disruption_dto.go
 model_pod_disruptions.go
 model_pod_dto.go
@@ -1783,6 +1792,7 @@ model_users_list.go
 model_users_search_command.go
 model_users_search_list.go
 model_users_search_response_data.go
+model_validate_vsphere_command.go
 model_verify_email_command.go
 model_verify_slack_credentials_command.go
 model_verify_webhook_command.go
