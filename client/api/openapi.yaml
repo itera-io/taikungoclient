@@ -62034,10 +62034,12 @@ components:
             id: 0
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
+          datacenter: datacenter
           url: url
           organizationId: 1
           createdAt: createdAt
           isDefault: true
+          password: password
           createdBy: createdBy
           isLocked: true
           name: name
@@ -62074,10 +62076,12 @@ components:
             id: 0
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
+          datacenter: datacenter
           url: url
           organizationId: 1
           createdAt: createdAt
           isDefault: true
+          password: password
           createdBy: createdBy
           isLocked: true
           name: name
@@ -62128,10 +62132,12 @@ components:
           id: 0
         organizationName: organizationName
         lastModifiedBy: lastModifiedBy
+        datacenter: datacenter
         url: url
         organizationId: 1
         createdAt: createdAt
         isDefault: true
+        password: password
         createdBy: createdBy
         isLocked: true
         name: name
@@ -62209,6 +62215,12 @@ components:
           nullable: true
           type: string
         url:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenter:
           nullable: true
           type: string
         vmTemplateName:
