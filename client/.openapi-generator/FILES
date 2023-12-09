@@ -963,6 +963,7 @@ docs/UsersSearchCommand.md
 docs/UsersSearchList.md
 docs/UsersSearchResponseData.md
 docs/ValidateVsphereCommand.md
+docs/ValidateVsphereHypervisorsCommand.md
 docs/VerifyEmailCommand.md
 docs/VerifySlackCredentialsCommand.md
 docs/VerifyWebhookCommand.md
@@ -1791,6 +1792,7 @@ model_users_search_command.go
 model_users_search_list.go
 model_users_search_response_data.go
 model_validate_vsphere_command.go
+model_validate_vsphere_hypervisors_command.go
 model_verify_email_command.go
 model_verify_slack_credentials_command.go
 model_verify_webhook_command.go

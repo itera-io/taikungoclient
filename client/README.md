@@ -726,6 +726,7 @@ Class | Method | HTTP request | Description
 *VsphereCloudCredentialAPI* | [**VsphereUpdate**](docs/VsphereCloudCredentialAPI.md#vsphereupdate) | **Post** /api/v1/vsphere/update | Update Vsphere credentials
 *VsphereCloudCredentialAPI* | [**VsphereUpdateVsphereHypervisors**](docs/VsphereCloudCredentialAPI.md#vsphereupdatevspherehypervisors) | **Post** /api/v1/vsphere/update/hypervisors | Update Vsphere credentials
 *VsphereCloudCredentialAPI* | [**VsphereValidate**](docs/VsphereCloudCredentialAPI.md#vspherevalidate) | **Post** /api/v1/vsphere/validate | Validate Vsphere credentials
+*VsphereCloudCredentialAPI* | [**VsphereValidateVsphereHypervisors**](docs/VsphereCloudCredentialAPI.md#vspherevalidatevspherehypervisors) | **Post** /api/v1/vsphere/validate/hypervisors | Validate vSphere hypervisors
 *VsphereCloudCredentialAPI* | [**VsphereVmTemplateList**](docs/VsphereCloudCredentialAPI.md#vspherevmtemplatelist) | **Post** /api/v1/vsphere/vm-template-list | Fetch Vsphere vm template list
 
 
@@ -1534,6 +1535,7 @@ Class | Method | HTTP request | Description
  - [UsersSearchList](docs/UsersSearchList.md)
  - [UsersSearchResponseData](docs/UsersSearchResponseData.md)
  - [ValidateVsphereCommand](docs/ValidateVsphereCommand.md)
+ - [ValidateVsphereHypervisorsCommand](docs/ValidateVsphereHypervisorsCommand.md)
  - [VerifyEmailCommand](docs/VerifyEmailCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)
  - [VerifyWebhookCommand](docs/VerifyWebhookCommand.md)

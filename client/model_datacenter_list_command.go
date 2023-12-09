@@ -23,6 +23,7 @@ type DatacenterListCommand struct {
 	Url NullableString `json:"url,omitempty"`
 	Username NullableString `json:"username,omitempty"`
 	Password NullableString `json:"password,omitempty"`
+	DatacenterName NullableString `json:"datacenterName,omitempty"`
 }
 
 // NewDatacenterListCommand instantiates a new DatacenterListCommand object
@@ -168,6 +169,48 @@ func (o *DatacenterListCommand) UnsetPassword() {
 	o.Password.Unset()
 }
 
+// GetDatacenterName returns the DatacenterName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DatacenterListCommand) GetDatacenterName() string {
+	if o == nil || IsNil(o.DatacenterName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DatacenterName.Get()
+}
+
+// GetDatacenterNameOk returns a tuple with the DatacenterName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DatacenterListCommand) GetDatacenterNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DatacenterName.Get(), o.DatacenterName.IsSet()
+}
+
+// HasDatacenterName returns a boolean if a field has been set.
+func (o *DatacenterListCommand) HasDatacenterName() bool {
+	if o != nil && o.DatacenterName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDatacenterName gets a reference to the given NullableString and assigns it to the DatacenterName field.
+func (o *DatacenterListCommand) SetDatacenterName(v string) {
+	o.DatacenterName.Set(&v)
+}
+// SetDatacenterNameNil sets the value for DatacenterName to be an explicit nil
+func (o *DatacenterListCommand) SetDatacenterNameNil() {
+	o.DatacenterName.Set(nil)
+}
+
+// UnsetDatacenterName ensures that no value is present for DatacenterName, not even an explicit nil
+func (o *DatacenterListCommand) UnsetDatacenterName() {
+	o.DatacenterName.Unset()
+}
+
 func (o DatacenterListCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -186,6 +229,9 @@ func (o DatacenterListCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
+	}
+	if o.DatacenterName.IsSet() {
+		toSerialize["datacenterName"] = o.DatacenterName.Get()
 	}
 	return toSerialize, nil
 }

@@ -35931,6 +35931,48 @@ paths:
       summary: Validate Vsphere credentials
       tags:
       - Vsphere cloud credential
+  /api/v1/vsphere/validate/hypervisors:
+    post:
+      operationId: vsphere-validate-vsphere-hypervisors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateVsphereHypervisorsCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Validate vSphere hypervisors
+      tags:
+      - Vsphere cloud credential
   /api/v1/vsphere/vm-template-list:
     post:
       operationId: vsphere-vm-template-list
@@ -44058,6 +44100,7 @@ components:
       additionalProperties: false
       example:
         password: password
+        datacenterName: datacenterName
         url: url
         username: username
       properties:
@@ -44068,6 +44111,9 @@ components:
           nullable: true
           type: string
         password:
+          nullable: true
+          type: string
+        datacenterName:
           nullable: true
           type: string
       type: object
@@ -52563,6 +52609,7 @@ components:
         allowFullSpotKubernetes: true
         projectName: projectName
         projectId: 7
+        drsEnabled: true
         accessProfileId: 1
         maxSize: 7
         autoscalingGroupName: autoscalingGroupName
@@ -52788,6 +52835,9 @@ components:
           type: array
         proxmoxStorage:
           $ref: '#/components/schemas/ProxmoxStorage'
+        drsEnabled:
+          nullable: true
+          type: boolean
       type: object
     ProjectDetailsForVmsDto:
       additionalProperties: false
@@ -57669,6 +57719,7 @@ components:
           allowFullSpotKubernetes: true
           projectName: projectName
           projectId: 7
+          drsEnabled: true
           accessProfileId: 1
           maxSize: 7
           autoscalingGroupName: autoscalingGroupName
@@ -61788,6 +61839,23 @@ components:
         password:
           nullable: true
           type: string
+      type: object
+    ValidateVsphereHypervisorsCommand:
+      additionalProperties: false
+      example:
+        hypervisors:
+        - hypervisors
+        - hypervisors
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        hypervisors:
+          items:
+            type: string
+          nullable: true
+          type: array
       type: object
     VerifyEmailCommand:
       additionalProperties: false

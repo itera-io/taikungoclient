@@ -87,6 +87,7 @@ type ProjectDetailsForServersDto struct {
 	AvailabilityZones []string `json:"availabilityZones,omitempty"`
 	Hypervisors []string `json:"hypervisors,omitempty"`
 	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
+	DrsEnabled NullableBool `json:"drsEnabled,omitempty"`
 }
 
 // NewProjectDetailsForServersDto instantiates a new ProjectDetailsForServersDto object
@@ -2482,6 +2483,48 @@ func (o *ProjectDetailsForServersDto) SetProxmoxStorage(v ProxmoxStorage) {
 	o.ProxmoxStorage = &v
 }
 
+// GetDrsEnabled returns the DrsEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectDetailsForServersDto) GetDrsEnabled() bool {
+	if o == nil || IsNil(o.DrsEnabled.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.DrsEnabled.Get()
+}
+
+// GetDrsEnabledOk returns a tuple with the DrsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectDetailsForServersDto) GetDrsEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DrsEnabled.Get(), o.DrsEnabled.IsSet()
+}
+
+// HasDrsEnabled returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasDrsEnabled() bool {
+	if o != nil && o.DrsEnabled.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDrsEnabled gets a reference to the given NullableBool and assigns it to the DrsEnabled field.
+func (o *ProjectDetailsForServersDto) SetDrsEnabled(v bool) {
+	o.DrsEnabled.Set(&v)
+}
+// SetDrsEnabledNil sets the value for DrsEnabled to be an explicit nil
+func (o *ProjectDetailsForServersDto) SetDrsEnabledNil() {
+	o.DrsEnabled.Set(nil)
+}
+
+// UnsetDrsEnabled ensures that no value is present for DrsEnabled, not even an explicit nil
+func (o *ProjectDetailsForServersDto) UnsetDrsEnabled() {
+	o.DrsEnabled.Unset()
+}
+
 func (o ProjectDetailsForServersDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -2692,6 +2735,9 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProxmoxStorage) {
 		toSerialize["proxmoxStorage"] = o.ProxmoxStorage
+	}
+	if o.DrsEnabled.IsSet() {
+		toSerialize["drsEnabled"] = o.DrsEnabled.Get()
 	}
 	return toSerialize, nil
 }
