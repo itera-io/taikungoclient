@@ -37966,6 +37966,7 @@ components:
         installedInstanceCount: 5
         isLocked: true
         name: name
+        isAdded: true
         normalizedName: normalizedName
         securityReportSummary:
           high: 7
@@ -38020,6 +38021,9 @@ components:
           type: string
         repository:
           $ref: '#/components/schemas/Repository'
+        isAdded:
+          nullable: true
+          type: boolean
       type: object
     AvailablePackagesList:
       additionalProperties: false
@@ -38047,6 +38051,7 @@ components:
           installedInstanceCount: 5
           isLocked: true
           name: name
+          isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
             high: 7
@@ -38077,6 +38082,7 @@ components:
           installedInstanceCount: 5
           isLocked: true
           name: name
+          isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
             high: 7
@@ -40469,6 +40475,7 @@ components:
             installedInstanceCount: 5
             isLocked: true
             name: name
+            isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
               high: 7
@@ -40499,6 +40506,7 @@ components:
             installedInstanceCount: 5
             isLocked: true
             name: name
+            isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
               high: 7
@@ -40543,6 +40551,7 @@ components:
             installedInstanceCount: 5
             isLocked: true
             name: name
+            isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
               high: 7
@@ -40573,6 +40582,7 @@ components:
             installedInstanceCount: 5
             isLocked: true
             name: name
+            isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
               high: 7
@@ -40631,6 +40641,7 @@ components:
           installedInstanceCount: 5
           isLocked: true
           name: name
+          isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
             high: 7
@@ -40661,6 +40672,7 @@ components:
           installedInstanceCount: 5
           isLocked: true
           name: name
+          isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
             high: 7
