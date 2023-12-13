@@ -23,7 +23,7 @@ type DatastoreListCommand struct {
 	Url NullableString `json:"url,omitempty"`
 	Username NullableString `json:"username,omitempty"`
 	Password NullableString `json:"password,omitempty"`
-	Datacenter NullableString `json:"datacenter,omitempty"`
+	DatacenterId NullableString `json:"datacenterId,omitempty"`
 }
 
 // NewDatastoreListCommand instantiates a new DatastoreListCommand object
@@ -169,46 +169,46 @@ func (o *DatastoreListCommand) UnsetPassword() {
 	o.Password.Unset()
 }
 
-// GetDatacenter returns the Datacenter field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *DatastoreListCommand) GetDatacenter() string {
-	if o == nil || IsNil(o.Datacenter.Get()) {
+// GetDatacenterId returns the DatacenterId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DatastoreListCommand) GetDatacenterId() string {
+	if o == nil || IsNil(o.DatacenterId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Datacenter.Get()
+	return *o.DatacenterId.Get()
 }
 
-// GetDatacenterOk returns a tuple with the Datacenter field value if set, nil otherwise
+// GetDatacenterIdOk returns a tuple with the DatacenterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DatastoreListCommand) GetDatacenterOk() (*string, bool) {
+func (o *DatastoreListCommand) GetDatacenterIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Datacenter.Get(), o.Datacenter.IsSet()
+	return o.DatacenterId.Get(), o.DatacenterId.IsSet()
 }
 
-// HasDatacenter returns a boolean if a field has been set.
-func (o *DatastoreListCommand) HasDatacenter() bool {
-	if o != nil && o.Datacenter.IsSet() {
+// HasDatacenterId returns a boolean if a field has been set.
+func (o *DatastoreListCommand) HasDatacenterId() bool {
+	if o != nil && o.DatacenterId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDatacenter gets a reference to the given NullableString and assigns it to the Datacenter field.
-func (o *DatastoreListCommand) SetDatacenter(v string) {
-	o.Datacenter.Set(&v)
+// SetDatacenterId gets a reference to the given NullableString and assigns it to the DatacenterId field.
+func (o *DatastoreListCommand) SetDatacenterId(v string) {
+	o.DatacenterId.Set(&v)
 }
-// SetDatacenterNil sets the value for Datacenter to be an explicit nil
-func (o *DatastoreListCommand) SetDatacenterNil() {
-	o.Datacenter.Set(nil)
+// SetDatacenterIdNil sets the value for DatacenterId to be an explicit nil
+func (o *DatastoreListCommand) SetDatacenterIdNil() {
+	o.DatacenterId.Set(nil)
 }
 
-// UnsetDatacenter ensures that no value is present for Datacenter, not even an explicit nil
-func (o *DatastoreListCommand) UnsetDatacenter() {
-	o.Datacenter.Unset()
+// UnsetDatacenterId ensures that no value is present for DatacenterId, not even an explicit nil
+func (o *DatastoreListCommand) UnsetDatacenterId() {
+	o.DatacenterId.Unset()
 }
 
 func (o DatastoreListCommand) MarshalJSON() ([]byte, error) {
@@ -230,8 +230,8 @@ func (o DatastoreListCommand) ToMap() (map[string]interface{}, error) {
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
-	if o.Datacenter.IsSet() {
-		toSerialize["datacenter"] = o.Datacenter.Get()
+	if o.DatacenterId.IsSet() {
+		toSerialize["datacenterId"] = o.DatacenterId.Get()
 	}
 	return toSerialize, nil
 }

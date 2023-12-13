@@ -24,6 +24,7 @@ type CreateVsphereCommand struct {
 	Username NullableString `json:"username,omitempty"`
 	Url NullableString `json:"url,omitempty"`
 	Password NullableString `json:"password,omitempty"`
+	DatacenterId NullableString `json:"datacenterId,omitempty"`
 	DatacenterName NullableString `json:"datacenterName,omitempty"`
 	DatastoreName NullableString `json:"datastoreName,omitempty"`
 	ResourcePoolName NullableString `json:"resourcePoolName,omitempty"`
@@ -219,6 +220,48 @@ func (o *CreateVsphereCommand) SetPasswordNil() {
 // UnsetPassword ensures that no value is present for Password, not even an explicit nil
 func (o *CreateVsphereCommand) UnsetPassword() {
 	o.Password.Unset()
+}
+
+// GetDatacenterId returns the DatacenterId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateVsphereCommand) GetDatacenterId() string {
+	if o == nil || IsNil(o.DatacenterId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DatacenterId.Get()
+}
+
+// GetDatacenterIdOk returns a tuple with the DatacenterId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateVsphereCommand) GetDatacenterIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DatacenterId.Get(), o.DatacenterId.IsSet()
+}
+
+// HasDatacenterId returns a boolean if a field has been set.
+func (o *CreateVsphereCommand) HasDatacenterId() bool {
+	if o != nil && o.DatacenterId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDatacenterId gets a reference to the given NullableString and assigns it to the DatacenterId field.
+func (o *CreateVsphereCommand) SetDatacenterId(v string) {
+	o.DatacenterId.Set(&v)
+}
+// SetDatacenterIdNil sets the value for DatacenterId to be an explicit nil
+func (o *CreateVsphereCommand) SetDatacenterIdNil() {
+	o.DatacenterId.Set(nil)
+}
+
+// UnsetDatacenterId ensures that no value is present for DatacenterId, not even an explicit nil
+func (o *CreateVsphereCommand) UnsetDatacenterId() {
+	o.DatacenterId.Unset()
 }
 
 // GetDatacenterName returns the DatacenterName field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -623,6 +666,9 @@ func (o CreateVsphereCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
+	}
+	if o.DatacenterId.IsSet() {
+		toSerialize["datacenterId"] = o.DatacenterId.Get()
 	}
 	if o.DatacenterName.IsSet() {
 		toSerialize["datacenterName"] = o.DatacenterName.Get()

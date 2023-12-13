@@ -1087,6 +1087,7 @@ Class | Method | HTTP request | Description
  - [HelmSpec](docs/HelmSpec.md)
  - [HelmStatus](docs/HelmStatus.md)
  - [HypervisorListCommand](docs/HypervisorListCommand.md)
+ - [HypervisorListDto](docs/HypervisorListDto.md)
  - [HypervisorSummary](docs/HypervisorSummary.md)
  - [ImageByIdCommand](docs/ImageByIdCommand.md)
  - [ImportBackupStorageLocationCommand](docs/ImportBackupStorageLocationCommand.md)

@@ -35854,6 +35854,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateVsphereHypervisorsCommand'
+        required: true
       responses:
         "400":
           content:
@@ -42920,6 +42921,7 @@ components:
           ipAddress: ipAddress
           beginAllocationRange: beginAllocationRange
           gateway: gateway
+        datacenterId: datacenterId
         datastoreName: datastoreName
         resourcePoolName: resourcePoolName
         url: url
@@ -42949,6 +42951,9 @@ components:
           nullable: true
           type: string
         password:
+          nullable: true
+          type: string
+        datacenterId:
           nullable: true
           type: string
         datacenterName:
@@ -43441,9 +43446,10 @@ components:
         requiresVPN: true
         vsphere:
           password: password
+          datacenterName: datacenterName
           drsEnabled: true
           datastore: datastore
-          datacenter: datacenter
+          datacenterId: datacenterId
           vmTemplateName: vmTemplateName
           vsphereNetworks:
           - endAllocationRange: endAllocationRange
@@ -44146,7 +44152,7 @@ components:
       additionalProperties: false
       example:
         password: password
-        datacenter: datacenter
+        datacenterId: datacenterId
         url: url
         username: username
       properties:
@@ -44159,7 +44165,7 @@ components:
         password:
           nullable: true
           type: string
-        datacenter:
+        datacenterId:
           nullable: true
           type: string
       type: object
@@ -46655,6 +46661,19 @@ components:
           nullable: true
           type: integer
       type: object
+    HypervisorListDto:
+      additionalProperties: false
+      example:
+        host: host
+        name: name
+      properties:
+        host:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+      type: object
     HypervisorSummary:
       additionalProperties: false
       example:
@@ -48894,7 +48913,7 @@ components:
       additionalProperties: false
       example:
         password: password
-        datacenter: datacenter
+        datacenterId: datacenterId
         url: url
         username: username
       properties:
@@ -48907,7 +48926,7 @@ components:
         password:
           nullable: true
           type: string
-        datacenter:
+        datacenterId:
           nullable: true
           type: string
       type: object
@@ -56407,7 +56426,7 @@ components:
       additionalProperties: false
       example:
         password: password
-        datacenter: datacenter
+        datacenterId: datacenterId
         url: url
         username: username
       properties:
@@ -56420,7 +56439,7 @@ components:
         password:
           nullable: true
           type: string
-        datacenter:
+        datacenterId:
           nullable: true
           type: string
       type: object
@@ -61244,8 +61263,10 @@ components:
       additionalProperties: false
       example:
         hypervisors:
-        - hypervisors
-        - hypervisors
+        - host: host
+          name: name
+        - host: host
+          name: name
         id: 0
       properties:
         id:
@@ -61253,7 +61274,7 @@ components:
           type: integer
         hypervisors:
           items:
-            type: string
+            $ref: '#/components/schemas/HypervisorListDto'
           nullable: true
           type: array
       type: object
@@ -61856,8 +61877,10 @@ components:
       additionalProperties: false
       example:
         hypervisors:
-        - hypervisors
-        - hypervisors
+        - host: host
+          name: name
+        - host: host
+          name: name
         id: 0
       properties:
         id:
@@ -61865,7 +61888,7 @@ components:
           type: integer
         hypervisors:
           items:
-            type: string
+            $ref: '#/components/schemas/HypervisorListDto'
           nullable: true
           type: array
       type: object
@@ -61963,9 +61986,10 @@ components:
       additionalProperties: false
       example:
         password: password
+        datacenterName: datacenterName
         drsEnabled: true
         datastore: datastore
-        datacenter: datacenter
+        datacenterId: datacenterId
         vmTemplateName: vmTemplateName
         vsphereNetworks:
         - endAllocationRange: endAllocationRange
@@ -61995,7 +62019,10 @@ components:
         password:
           nullable: true
           type: string
-        datacenter:
+        datacenterId:
+          nullable: true
+          type: string
+        datacenterName:
           nullable: true
           type: string
         datastore:
@@ -62057,7 +62084,7 @@ components:
       additionalProperties: false
       example:
         password: password
-        datacenter: datacenter
+        datacenterId: datacenterId
         url: url
         username: username
       properties:
@@ -62070,7 +62097,7 @@ components:
         password:
           nullable: true
           type: string
-        datacenter:
+        datacenterId:
           nullable: true
           type: string
       type: object
@@ -62113,8 +62140,9 @@ components:
           - name: name
             id: 0
           organizationName: organizationName
+          datacenterName: datacenterName
           lastModifiedBy: lastModifiedBy
-          datacenter: datacenter
+          datacenterId: datacenterId
           url: url
           organizationId: 1
           createdAt: createdAt
@@ -62155,8 +62183,9 @@ components:
           - name: name
             id: 0
           organizationName: organizationName
+          datacenterName: datacenterName
           lastModifiedBy: lastModifiedBy
-          datacenter: datacenter
+          datacenterId: datacenterId
           url: url
           organizationId: 1
           createdAt: createdAt
@@ -62211,8 +62240,9 @@ components:
         - name: name
           id: 0
         organizationName: organizationName
+        datacenterName: datacenterName
         lastModifiedBy: lastModifiedBy
-        datacenter: datacenter
+        datacenterId: datacenterId
         url: url
         organizationId: 1
         createdAt: createdAt
@@ -62300,7 +62330,10 @@ components:
         password:
           nullable: true
           type: string
-        datacenter:
+        datacenterId:
+          nullable: true
+          type: string
+        datacenterName:
           nullable: true
           type: string
         vmTemplateName:
@@ -62348,7 +62381,7 @@ components:
       additionalProperties: false
       example:
         password: password
-        datacenter: datacenter
+        datacenterId: datacenterId
         url: url
         username: username
       properties:
@@ -62361,7 +62394,7 @@ components:
         password:
           nullable: true
           type: string
-        datacenter:
+        datacenterId:
           nullable: true
           type: string
       type: object

@@ -461,6 +461,7 @@ docs/HelmReleasesList.md
 docs/HelmSpec.md
 docs/HelmStatus.md
 docs/HypervisorListCommand.md
+docs/HypervisorListDto.md
 docs/HypervisorSummary.md
 docs/ImageByIdCommand.md
 docs/ImagesAPI.md
@@ -1344,6 +1345,7 @@ model_helm_releases_list.go
 model_helm_spec.go
 model_helm_status.go
 model_hypervisor_list_command.go
+model_hypervisor_list_dto.go
 model_hypervisor_summary.go
 model_image_by_id_command.go
 model_import_backup_storage_location_command.go

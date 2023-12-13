@@ -37,7 +37,8 @@ type VsphereListDto struct {
 	Username NullableString `json:"username,omitempty"`
 	Url NullableString `json:"url,omitempty"`
 	Password NullableString `json:"password,omitempty"`
-	Datacenter NullableString `json:"datacenter,omitempty"`
+	DatacenterId NullableString `json:"datacenterId,omitempty"`
+	DatacenterName NullableString `json:"datacenterName,omitempty"`
 	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
 	VsphereNetworks []VsphereNetworkListDto `json:"vsphereNetworks,omitempty"`
 }
@@ -705,46 +706,88 @@ func (o *VsphereListDto) UnsetPassword() {
 	o.Password.Unset()
 }
 
-// GetDatacenter returns the Datacenter field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VsphereListDto) GetDatacenter() string {
-	if o == nil || IsNil(o.Datacenter.Get()) {
+// GetDatacenterId returns the DatacenterId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VsphereListDto) GetDatacenterId() string {
+	if o == nil || IsNil(o.DatacenterId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Datacenter.Get()
+	return *o.DatacenterId.Get()
 }
 
-// GetDatacenterOk returns a tuple with the Datacenter field value if set, nil otherwise
+// GetDatacenterIdOk returns a tuple with the DatacenterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VsphereListDto) GetDatacenterOk() (*string, bool) {
+func (o *VsphereListDto) GetDatacenterIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Datacenter.Get(), o.Datacenter.IsSet()
+	return o.DatacenterId.Get(), o.DatacenterId.IsSet()
 }
 
-// HasDatacenter returns a boolean if a field has been set.
-func (o *VsphereListDto) HasDatacenter() bool {
-	if o != nil && o.Datacenter.IsSet() {
+// HasDatacenterId returns a boolean if a field has been set.
+func (o *VsphereListDto) HasDatacenterId() bool {
+	if o != nil && o.DatacenterId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDatacenter gets a reference to the given NullableString and assigns it to the Datacenter field.
-func (o *VsphereListDto) SetDatacenter(v string) {
-	o.Datacenter.Set(&v)
+// SetDatacenterId gets a reference to the given NullableString and assigns it to the DatacenterId field.
+func (o *VsphereListDto) SetDatacenterId(v string) {
+	o.DatacenterId.Set(&v)
 }
-// SetDatacenterNil sets the value for Datacenter to be an explicit nil
-func (o *VsphereListDto) SetDatacenterNil() {
-	o.Datacenter.Set(nil)
+// SetDatacenterIdNil sets the value for DatacenterId to be an explicit nil
+func (o *VsphereListDto) SetDatacenterIdNil() {
+	o.DatacenterId.Set(nil)
 }
 
-// UnsetDatacenter ensures that no value is present for Datacenter, not even an explicit nil
-func (o *VsphereListDto) UnsetDatacenter() {
-	o.Datacenter.Unset()
+// UnsetDatacenterId ensures that no value is present for DatacenterId, not even an explicit nil
+func (o *VsphereListDto) UnsetDatacenterId() {
+	o.DatacenterId.Unset()
+}
+
+// GetDatacenterName returns the DatacenterName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VsphereListDto) GetDatacenterName() string {
+	if o == nil || IsNil(o.DatacenterName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DatacenterName.Get()
+}
+
+// GetDatacenterNameOk returns a tuple with the DatacenterName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VsphereListDto) GetDatacenterNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DatacenterName.Get(), o.DatacenterName.IsSet()
+}
+
+// HasDatacenterName returns a boolean if a field has been set.
+func (o *VsphereListDto) HasDatacenterName() bool {
+	if o != nil && o.DatacenterName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDatacenterName gets a reference to the given NullableString and assigns it to the DatacenterName field.
+func (o *VsphereListDto) SetDatacenterName(v string) {
+	o.DatacenterName.Set(&v)
+}
+// SetDatacenterNameNil sets the value for DatacenterName to be an explicit nil
+func (o *VsphereListDto) SetDatacenterNameNil() {
+	o.DatacenterName.Set(nil)
+}
+
+// UnsetDatacenterName ensures that no value is present for DatacenterName, not even an explicit nil
+func (o *VsphereListDto) UnsetDatacenterName() {
+	o.DatacenterName.Unset()
 }
 
 // GetVmTemplateName returns the VmTemplateName field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -883,8 +926,11 @@ func (o VsphereListDto) ToMap() (map[string]interface{}, error) {
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
-	if o.Datacenter.IsSet() {
-		toSerialize["datacenter"] = o.Datacenter.Get()
+	if o.DatacenterId.IsSet() {
+		toSerialize["datacenterId"] = o.DatacenterId.Get()
+	}
+	if o.DatacenterName.IsSet() {
+		toSerialize["datacenterName"] = o.DatacenterName.Get()
 	}
 	if o.VmTemplateName.IsSet() {
 		toSerialize["vmTemplateName"] = o.VmTemplateName.Get()

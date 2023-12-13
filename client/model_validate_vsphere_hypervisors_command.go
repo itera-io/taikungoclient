@@ -21,7 +21,7 @@ var _ MappedNullable = &ValidateVsphereHypervisorsCommand{}
 // ValidateVsphereHypervisorsCommand struct for ValidateVsphereHypervisorsCommand
 type ValidateVsphereHypervisorsCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	Hypervisors []string `json:"hypervisors,omitempty"`
+	Hypervisors []HypervisorListDto `json:"hypervisors,omitempty"`
 }
 
 // NewValidateVsphereHypervisorsCommand instantiates a new ValidateVsphereHypervisorsCommand object
@@ -74,9 +74,9 @@ func (o *ValidateVsphereHypervisorsCommand) SetId(v int32) {
 }
 
 // GetHypervisors returns the Hypervisors field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ValidateVsphereHypervisorsCommand) GetHypervisors() []string {
+func (o *ValidateVsphereHypervisorsCommand) GetHypervisors() []HypervisorListDto {
 	if o == nil {
-		var ret []string
+		var ret []HypervisorListDto
 		return ret
 	}
 	return o.Hypervisors
@@ -85,7 +85,7 @@ func (o *ValidateVsphereHypervisorsCommand) GetHypervisors() []string {
 // GetHypervisorsOk returns a tuple with the Hypervisors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ValidateVsphereHypervisorsCommand) GetHypervisorsOk() ([]string, bool) {
+func (o *ValidateVsphereHypervisorsCommand) GetHypervisorsOk() ([]HypervisorListDto, bool) {
 	if o == nil || IsNil(o.Hypervisors) {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *ValidateVsphereHypervisorsCommand) HasHypervisors() bool {
 	return false
 }
 
-// SetHypervisors gets a reference to the given []string and assigns it to the Hypervisors field.
-func (o *ValidateVsphereHypervisorsCommand) SetHypervisors(v []string) {
+// SetHypervisors gets a reference to the given []HypervisorListDto and assigns it to the Hypervisors field.
+func (o *ValidateVsphereHypervisorsCommand) SetHypervisors(v []HypervisorListDto) {
 	o.Hypervisors = v
 }
 

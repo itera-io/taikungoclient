@@ -23,7 +23,7 @@ type VsphereHypervisorListCommand struct {
 	Url NullableString `json:"url,omitempty"`
 	Username NullableString `json:"username,omitempty"`
 	Password NullableString `json:"password,omitempty"`
-	Datacenter NullableString `json:"datacenter,omitempty"`
+	DatacenterId NullableString `json:"datacenterId,omitempty"`
 }
 
 // NewVsphereHypervisorListCommand instantiates a new VsphereHypervisorListCommand object
@@ -169,46 +169,46 @@ func (o *VsphereHypervisorListCommand) UnsetPassword() {
 	o.Password.Unset()
 }
 
-// GetDatacenter returns the Datacenter field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VsphereHypervisorListCommand) GetDatacenter() string {
-	if o == nil || IsNil(o.Datacenter.Get()) {
+// GetDatacenterId returns the DatacenterId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VsphereHypervisorListCommand) GetDatacenterId() string {
+	if o == nil || IsNil(o.DatacenterId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Datacenter.Get()
+	return *o.DatacenterId.Get()
 }
 
-// GetDatacenterOk returns a tuple with the Datacenter field value if set, nil otherwise
+// GetDatacenterIdOk returns a tuple with the DatacenterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VsphereHypervisorListCommand) GetDatacenterOk() (*string, bool) {
+func (o *VsphereHypervisorListCommand) GetDatacenterIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Datacenter.Get(), o.Datacenter.IsSet()
+	return o.DatacenterId.Get(), o.DatacenterId.IsSet()
 }
 
-// HasDatacenter returns a boolean if a field has been set.
-func (o *VsphereHypervisorListCommand) HasDatacenter() bool {
-	if o != nil && o.Datacenter.IsSet() {
+// HasDatacenterId returns a boolean if a field has been set.
+func (o *VsphereHypervisorListCommand) HasDatacenterId() bool {
+	if o != nil && o.DatacenterId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDatacenter gets a reference to the given NullableString and assigns it to the Datacenter field.
-func (o *VsphereHypervisorListCommand) SetDatacenter(v string) {
-	o.Datacenter.Set(&v)
+// SetDatacenterId gets a reference to the given NullableString and assigns it to the DatacenterId field.
+func (o *VsphereHypervisorListCommand) SetDatacenterId(v string) {
+	o.DatacenterId.Set(&v)
 }
-// SetDatacenterNil sets the value for Datacenter to be an explicit nil
-func (o *VsphereHypervisorListCommand) SetDatacenterNil() {
-	o.Datacenter.Set(nil)
+// SetDatacenterIdNil sets the value for DatacenterId to be an explicit nil
+func (o *VsphereHypervisorListCommand) SetDatacenterIdNil() {
+	o.DatacenterId.Set(nil)
 }
 
-// UnsetDatacenter ensures that no value is present for Datacenter, not even an explicit nil
-func (o *VsphereHypervisorListCommand) UnsetDatacenter() {
-	o.Datacenter.Unset()
+// UnsetDatacenterId ensures that no value is present for DatacenterId, not even an explicit nil
+func (o *VsphereHypervisorListCommand) UnsetDatacenterId() {
+	o.DatacenterId.Unset()
 }
 
 func (o VsphereHypervisorListCommand) MarshalJSON() ([]byte, error) {
@@ -230,8 +230,8 @@ func (o VsphereHypervisorListCommand) ToMap() (map[string]interface{}, error) {
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
-	if o.Datacenter.IsSet() {
-		toSerialize["datacenter"] = o.Datacenter.Get()
+	if o.DatacenterId.IsSet() {
+		toSerialize["datacenterId"] = o.DatacenterId.Get()
 	}
 	return toSerialize, nil
 }
