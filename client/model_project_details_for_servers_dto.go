@@ -85,7 +85,7 @@ type ProjectDetailsForServersDto struct {
 	HasNfsServer *bool `json:"hasNfsServer,omitempty"`
 	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
 	AvailabilityZones []string `json:"availabilityZones,omitempty"`
-	Hypervisors []string `json:"hypervisors,omitempty"`
+	Hypervisors []CommonStringBasedDropdownDto `json:"hypervisors,omitempty"`
 	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
 	DrsEnabled NullableBool `json:"drsEnabled,omitempty"`
 }
@@ -2419,9 +2419,9 @@ func (o *ProjectDetailsForServersDto) SetAvailabilityZones(v []string) {
 }
 
 // GetHypervisors returns the Hypervisors field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectDetailsForServersDto) GetHypervisors() []string {
+func (o *ProjectDetailsForServersDto) GetHypervisors() []CommonStringBasedDropdownDto {
 	if o == nil {
-		var ret []string
+		var ret []CommonStringBasedDropdownDto
 		return ret
 	}
 	return o.Hypervisors
@@ -2430,7 +2430,7 @@ func (o *ProjectDetailsForServersDto) GetHypervisors() []string {
 // GetHypervisorsOk returns a tuple with the Hypervisors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectDetailsForServersDto) GetHypervisorsOk() ([]string, bool) {
+func (o *ProjectDetailsForServersDto) GetHypervisorsOk() ([]CommonStringBasedDropdownDto, bool) {
 	if o == nil || IsNil(o.Hypervisors) {
 		return nil, false
 	}
@@ -2446,8 +2446,8 @@ func (o *ProjectDetailsForServersDto) HasHypervisors() bool {
 	return false
 }
 
-// SetHypervisors gets a reference to the given []string and assigns it to the Hypervisors field.
-func (o *ProjectDetailsForServersDto) SetHypervisors(v []string) {
+// SetHypervisors gets a reference to the given []CommonStringBasedDropdownDto and assigns it to the Hypervisors field.
+func (o *ProjectDetailsForServersDto) SetHypervisors(v []CommonStringBasedDropdownDto) {
 	o.Hypervisors = v
 }
 

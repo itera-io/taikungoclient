@@ -33,7 +33,7 @@ type VsphereListDto struct {
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	ContinentName NullableString `json:"continentName,omitempty"`
-	Hypervisors []CommonDropdownDto `json:"hypervisors,omitempty"`
+	Hypervisors []CommonStringBasedDropdownDto `json:"hypervisors,omitempty"`
 	Username NullableString `json:"username,omitempty"`
 	Url NullableString `json:"url,omitempty"`
 	Password NullableString `json:"password,omitempty"`
@@ -548,9 +548,9 @@ func (o *VsphereListDto) UnsetContinentName() {
 }
 
 // GetHypervisors returns the Hypervisors field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VsphereListDto) GetHypervisors() []CommonDropdownDto {
+func (o *VsphereListDto) GetHypervisors() []CommonStringBasedDropdownDto {
 	if o == nil {
-		var ret []CommonDropdownDto
+		var ret []CommonStringBasedDropdownDto
 		return ret
 	}
 	return o.Hypervisors
@@ -559,7 +559,7 @@ func (o *VsphereListDto) GetHypervisors() []CommonDropdownDto {
 // GetHypervisorsOk returns a tuple with the Hypervisors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VsphereListDto) GetHypervisorsOk() ([]CommonDropdownDto, bool) {
+func (o *VsphereListDto) GetHypervisorsOk() ([]CommonStringBasedDropdownDto, bool) {
 	if o == nil || IsNil(o.Hypervisors) {
 		return nil, false
 	}
@@ -575,8 +575,8 @@ func (o *VsphereListDto) HasHypervisors() bool {
 	return false
 }
 
-// SetHypervisors gets a reference to the given []CommonDropdownDto and assigns it to the Hypervisors field.
-func (o *VsphereListDto) SetHypervisors(v []CommonDropdownDto) {
+// SetHypervisors gets a reference to the given []CommonStringBasedDropdownDto and assigns it to the Hypervisors field.
+func (o *VsphereListDto) SetHypervisors(v []CommonStringBasedDropdownDto) {
 	o.Hypervisors = v
 }
 

@@ -11495,7 +11495,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AwsImagesPostList'
+                $ref: '#/components/schemas/PublicImageList'
           description: OK
         "400":
           content:
@@ -11755,7 +11755,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AzureImageList'
+                $ref: '#/components/schemas/PublicImageList'
           description: Success
         "400":
           content:
@@ -11791,7 +11791,6 @@ paths:
       - Images
   /api/v1/images/aws/common/{cloudId}:
     get:
-      deprecated: true
       operationId: images-aws-common-images
       parameters:
       - explode: false
@@ -11802,15 +11801,23 @@ paths:
           format: int32
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/AwsOwnerDetails'
+                  $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -11840,12 +11847,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Commonly used aws images
       tags:
       - Images
   /api/v1/images/azure/common/{cloudId}:
     get:
-      deprecated: true
       operationId: images-azure-common-images
       parameters:
       - explode: false
@@ -11856,15 +11863,23 @@ paths:
           format: int32
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/AzurePublisherDetails'
+                  $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -11894,12 +11909,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Commonly used azure images
       tags:
       - Images
   /api/v1/images/google/common/{cloudId}:
     get:
-      deprecated: true
       operationId: images-common-google-images
       parameters:
       - explode: false
@@ -11910,15 +11925,23 @@ paths:
           format: int32
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/GoogleOwnerDetails'
+                  $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -11948,7 +11971,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Commonly used google images
       tags:
       - Images
   /api/v1/images/projects/list:
@@ -12131,7 +12155,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleImageList'
+                $ref: '#/components/schemas/PublicImageList'
           description: Success
         "400":
           content:
@@ -12163,313 +12187,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Server Error
-      tags:
-      - Images
-  /api/v1/images/new/aws/common/{cloudId}:
-    get:
-      operationId: images-new-aws-common-images
-      parameters:
-      - explode: false
-        in: path
-        name: cloudId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: ProjectId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AwsCommonImageDto'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Commonly used aws images
-      tags:
-      - Images
-  /api/v1/images/new/azure/common/{cloudId}:
-    get:
-      operationId: images-new-azure-common-images
-      parameters:
-      - explode: false
-        in: path
-        name: cloudId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: ProjectId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AzureCommonImageDto'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Commonly used azure images
-      tags:
-      - Images
-  /api/v1/images/new/google/common/{cloudId}:
-    get:
-      operationId: images-new-common-google-images
-      parameters:
-      - explode: false
-        in: path
-        name: cloudId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: ProjectId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GoogleCommonImageDto'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Commonly used google images
-      tags:
-      - Images
-  /api/v1/images/new/aws/personal/{cloudId}:
-    get:
-      operationId: images-new-aws-personal-images
-      parameters:
-      - explode: false
-        in: path
-        name: cloudId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: ProjectId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PersonalImageDto'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Aws personal images
-      tags:
-      - Images
-  /api/v1/images/new/azure/personal/{cloudId}:
-    get:
-      operationId: images-new-azure-personal-images
-      parameters:
-      - explode: false
-        in: path
-        name: cloudId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: ProjectId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PersonalImageDto'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Azure personal images
       tags:
       - Images
   /api/v1/images/openshift/{cloudId}:
@@ -12534,7 +12251,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OpenshiftImageList'
+                $ref: '#/components/schemas/PublicImageList'
           description: OK
         "400":
           content:
@@ -12639,7 +12356,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OpenstackImageList'
+                $ref: '#/components/schemas/PublicImageList'
           description: OK
         "400":
           content:
@@ -12676,7 +12393,6 @@ paths:
       - Images
   /api/v1/images/aws/personal/{cloudId}:
     get:
-      deprecated: true
       operationId: images-aws-personal-images
       parameters:
       - explode: false
@@ -12694,6 +12410,14 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -12702,7 +12426,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -12732,12 +12456,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Aws personal images
       tags:
       - Images
   /api/v1/images/azure/personal/{cloudId}:
     get:
-      deprecated: true
       operationId: images-azure-personal-images
       parameters:
       - explode: false
@@ -12748,6 +12472,14 @@ paths:
           format: int32
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -12756,7 +12488,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -12786,7 +12518,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Azure personal images
       tags:
       - Images
   /api/v1/images/proxmox/{cloudId}:
@@ -12851,7 +12584,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProxmoxImageList'
+                $ref: '#/components/schemas/PublicImageList'
           description: OK
         "400":
           content:
@@ -12948,7 +12681,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TanzuImageList'
+                $ref: '#/components/schemas/PublicImageList'
           description: OK
         "400":
           content:
@@ -13045,7 +12778,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VsphereImageList'
+                $ref: '#/components/schemas/PublicImageList'
           description: OK
         "400":
           content:
@@ -38103,55 +37836,6 @@ components:
           format: int32
           type: integer
       type: object
-    AwsCommonImageDto:
-      additionalProperties: false
-      example:
-        images:
-          names:
-          - names
-          - names
-          ids:
-          - ids
-          - ids
-        data:
-        - image:
-            displayName: displayName
-            name: name
-            id: id
-          ownerName: ownerName
-          ownerId: ownerId
-        - image:
-            displayName: displayName
-            name: name
-            id: id
-          ownerName: ownerName
-          ownerId: ownerId
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/AwsOwnerDetails'
-          nullable: true
-          type: array
-        images:
-          $ref: '#/components/schemas/BoundImagesForProjectDto'
-      type: object
-    AwsCommonImages:
-      additionalProperties: false
-      example:
-        displayName: displayName
-        name: name
-        id: id
-      properties:
-        name:
-          nullable: true
-          type: string
-        id:
-          nullable: true
-          type: string
-        displayName:
-          nullable: true
-          type: string
-      type: object
     AwsCredentialList:
       additionalProperties: false
       example:
@@ -38228,39 +37912,6 @@ components:
           nullable: true
           type: string
       type: object
-    AwsExtendedImagesListDto:
-      additionalProperties: false
-      example:
-        ownerAlias: ownerAlias
-        name: name
-        description: description
-        platformDetails: platformDetails
-        logo: logo
-        id: id
-        ownerId: ownerId
-      properties:
-        id:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-        description:
-          nullable: true
-          type: string
-        platformDetails:
-          nullable: true
-          type: string
-        ownerId:
-          nullable: true
-          type: string
-        ownerAlias:
-          nullable: true
-          type: string
-        logo:
-          nullable: true
-          type: string
-      type: object
     AwsFlavorList:
       additionalProperties: false
       example:
@@ -38328,44 +37979,6 @@ components:
           nullable: true
           type: string
       type: object
-    AwsImagesPostList:
-      additionalProperties: false
-      example:
-        images:
-          names:
-          - names
-          - names
-          ids:
-          - ids
-          - ids
-        data:
-        - ownerAlias: ownerAlias
-          name: name
-          description: description
-          platformDetails: platformDetails
-          logo: logo
-          id: id
-          ownerId: ownerId
-        - ownerAlias: ownerAlias
-          name: name
-          description: description
-          platformDetails: platformDetails
-          logo: logo
-          id: id
-          ownerId: ownerId
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/AwsExtendedImagesListDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-        images:
-          $ref: '#/components/schemas/BoundImagesForProjectDto'
-      type: object
     AwsImagesPostListCommand:
       additionalProperties: false
       example:
@@ -38412,25 +38025,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      type: object
-    AwsOwnerDetails:
-      additionalProperties: false
-      example:
-        image:
-          displayName: displayName
-          name: name
-          id: id
-        ownerName: ownerName
-        ownerId: ownerId
-      properties:
-        ownerId:
-          nullable: true
-          type: string
-        ownerName:
-          nullable: true
-          type: string
-        image:
-          $ref: '#/components/schemas/AwsCommonImages'
       type: object
     AwsProjectAZSubnetDto:
       additionalProperties: false
@@ -38495,53 +38089,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    AzureCommonImageDto:
-      additionalProperties: false
-      example:
-        images:
-          names:
-          - names
-          - names
-          ids:
-          - ids
-          - ids
-        data:
-        - image:
-            displayName: displayName
-            name: name
-            id: id
-          publisher: publisher
-        - image:
-            displayName: displayName
-            name: name
-            id: id
-          publisher: publisher
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/AzurePublisherDetails'
-          nullable: true
-          type: array
-        images:
-          $ref: '#/components/schemas/BoundImagesForProjectDto'
-      type: object
-    AzureCommonImages:
-      additionalProperties: false
-      example:
-        displayName: displayName
-        name: name
-        id: id
-      properties:
-        name:
-          nullable: true
-          type: string
-        id:
-          nullable: true
-          type: string
-        displayName:
-          nullable: true
-          type: string
       type: object
     AzureCredentialList:
       additionalProperties: false
@@ -38797,34 +38344,6 @@ components:
           nullable: true
           type: number
       type: object
-    AzureImageList:
-      additionalProperties: false
-      example:
-        images:
-          names:
-          - names
-          - names
-          ids:
-          - ids
-          - ids
-        data:
-        - name: name
-          id: id
-        - name: name
-          id: id
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-        images:
-          $ref: '#/components/schemas/BoundImagesForProjectDto'
-      type: object
     AzureLocationsCommand:
       additionalProperties: false
       example:
@@ -38862,21 +38381,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    AzurePublisherDetails:
-      additionalProperties: false
-      example:
-        image:
-          displayName: displayName
-          name: name
-          id: id
-        publisher: publisher
-      properties:
-        publisher:
-          nullable: true
-          type: string
-        image:
-          $ref: '#/components/schemas/AzureCommonImages'
       type: object
     AzurePublishersList:
       additionalProperties: false
@@ -39919,27 +39423,6 @@ components:
           type: string
         cloudType:
           $ref: '#/components/schemas/CloudType'
-      type: object
-    BoundImagesForProjectDto:
-      additionalProperties: false
-      example:
-        names:
-        - names
-        - names
-        ids:
-        - ids
-        - ids
-      properties:
-        names:
-          items:
-            type: string
-          nullable: true
-          type: array
-        ids:
-          items:
-            type: string
-          nullable: true
-          type: array
       type: object
     BoundImagesForProjectsList:
       additionalProperties: false
@@ -46034,47 +45517,6 @@ components:
           nullable: true
           type: string
       type: object
-    GoogleCommonImageDto:
-      additionalProperties: false
-      example:
-        images:
-          names:
-          - names
-          - names
-          ids:
-          - ids
-          - ids
-        data:
-        - owner: owner
-          image:
-            displayName: displayName
-            name: name
-        - owner: owner
-          image:
-            displayName: displayName
-            name: name
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/GoogleOwnerDetails'
-          nullable: true
-          type: array
-        images:
-          $ref: '#/components/schemas/BoundImagesForProjectDto'
-      type: object
-    GoogleCommonImages:
-      additionalProperties: false
-      example:
-        displayName: displayName
-        name: name
-      properties:
-        name:
-          nullable: true
-          type: string
-        displayName:
-          nullable: true
-          type: string
-      type: object
     GoogleCredentialForProjectDto:
       additionalProperties: false
       example:
@@ -46316,48 +45758,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    GoogleImageList:
-      additionalProperties: false
-      example:
-        images:
-          names:
-          - names
-          - names
-          ids:
-          - ids
-          - ids
-        data:
-        - name: name
-          id: id
-        - name: name
-          id: id
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-        images:
-          $ref: '#/components/schemas/BoundImagesForProjectDto'
-      type: object
-    GoogleOwnerDetails:
-      additionalProperties: false
-      example:
-        owner: owner
-        image:
-          displayName: displayName
-          name: name
-      properties:
-        owner:
-          nullable: true
-          type: string
-        image:
-          $ref: '#/components/schemas/GoogleCommonImages'
       type: object
     GroupedBillingInfo:
       additionalProperties: false
@@ -49710,71 +49110,6 @@ components:
           format: int32
           type: integer
       type: object
-    OpenshiftImageList:
-      additionalProperties: false
-      example:
-        images:
-          names:
-          - names
-          - names
-          ids:
-          - ids
-          - ids
-        data:
-        - pvcName: pvcName
-          name: name
-          creationTimestamp: 2000-01-23T04:56:07.000+00:00
-          pvcCapacity: pvcCapacity
-          type: type
-          status: status
-        - pvcName: pvcName
-          name: name
-          creationTimestamp: 2000-01-23T04:56:07.000+00:00
-          pvcCapacity: pvcCapacity
-          type: type
-          status: status
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/OpenshiftImagesData'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-        images:
-          $ref: '#/components/schemas/BoundImagesForProjectDto'
-      type: object
-    OpenshiftImagesData:
-      additionalProperties: false
-      example:
-        pvcName: pvcName
-        name: name
-        creationTimestamp: 2000-01-23T04:56:07.000+00:00
-        pvcCapacity: pvcCapacity
-        type: type
-        status: status
-      properties:
-        name:
-          nullable: true
-          type: string
-        pvcName:
-          nullable: true
-          type: string
-        pvcCapacity:
-          nullable: true
-          type: string
-        type:
-          nullable: true
-          type: string
-        status:
-          nullable: true
-          type: string
-        creationTimestamp:
-          format: date-time
-          type: string
-      type: object
     OpenshiftList:
       additionalProperties: false
       example:
@@ -50222,34 +49557,6 @@ components:
         description:
           nullable: true
           type: string
-      type: object
-    OpenstackImageList:
-      additionalProperties: false
-      example:
-        images:
-          names:
-          - names
-          - names
-          ids:
-          - ids
-          - ids
-        data:
-        - name: name
-          id: id
-        - name: name
-          id: id
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-        images:
-          $ref: '#/components/schemas/BoundImagesForProjectDto'
       type: object
     OpenstackNetworkDto:
       additionalProperties: false
@@ -51617,30 +50924,6 @@ components:
     PaymentWebhookCommand:
       additionalProperties: false
       type: object
-    PersonalImageDto:
-      additionalProperties: false
-      example:
-        images:
-          names:
-          - names
-          - names
-          ids:
-          - ids
-          - ids
-        data:
-        - name: name
-          id: id
-        - name: name
-          id: id
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
-          nullable: true
-          type: array
-        images:
-          $ref: '#/components/schemas/BoundImagesForProjectDto'
-      type: object
     PodDisruptionDto:
       additionalProperties: false
       example:
@@ -52668,8 +51951,10 @@ components:
         cloudName: cloudName
         isBackupEnabled: true
         hypervisors:
-        - hypervisors
-        - hypervisors
+        - name: name
+          id: id
+        - name: name
+          id: id
         certificationExpiredAt: certificationExpiredAt
         isMaintenanceModeEnabled: true
       properties:
@@ -52861,7 +52146,7 @@ components:
           type: array
         hypervisors:
           items:
-            type: string
+            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
           nullable: true
           type: array
         proxmoxStorage:
@@ -52890,8 +52175,10 @@ components:
         isLocked: true
         allowFullSpotKubernetes: true
         hypervisors:
-        - hypervisors
-        - hypervisors
+        - name: name
+          id: id
+        - name: name
+          id: id
         totalHourlyCost: 7.457744773683766
         projectName: projectName
         projectCloudRevision: 1
@@ -52956,7 +52243,7 @@ components:
           type: array
         hypervisors:
           items:
-            type: string
+            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
           nullable: true
           type: array
       type: object
@@ -55650,34 +54937,6 @@ components:
         usedByServer:
           type: boolean
       type: object
-    ProxmoxImageList:
-      additionalProperties: false
-      example:
-        images:
-          names:
-          - names
-          - names
-          ids:
-          - ids
-          - ids
-        data:
-        - name: name
-          id: id
-        - name: name
-          id: id
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-        images:
-          $ref: '#/components/schemas/BoundImagesForProjectDto'
-      type: object
     ProxmoxList:
       additionalProperties: false
       example:
@@ -55925,6 +55184,25 @@ components:
       - NFS
       - OpenEBS
       type: string
+    PublicImageList:
+      additionalProperties: false
+      example:
+        data:
+        - name: name
+          id: id
+        - name: name
+          id: id
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     PurgeCommand:
       additionalProperties: false
       example:
@@ -57778,8 +57056,10 @@ components:
           cloudName: cloudName
           isBackupEnabled: true
           hypervisors:
-          - hypervisors
-          - hypervisors
+          - name: name
+            id: id
+          - name: name
+            id: id
           certificationExpiredAt: certificationExpiredAt
           isMaintenanceModeEnabled: true
       properties:
@@ -58998,8 +58278,10 @@ components:
           isLocked: true
           allowFullSpotKubernetes: true
           hypervisors:
-          - hypervisors
-          - hypervisors
+          - name: name
+            id: id
+          - name: name
+            id: id
           totalHourlyCost: 7.457744773683766
           projectName: projectName
           projectCloudRevision: 1
@@ -60282,64 +59564,6 @@ components:
         ram:
           format: int64
           type: integer
-      type: object
-    TanzuImageList:
-      additionalProperties: false
-      example:
-        images:
-          names:
-          - names
-          - names
-          ids:
-          - ids
-          - ids
-        data:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          imageId: imageId
-          name: name
-          details: ""
-          type: type
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          imageId: imageId
-          name: name
-          details: ""
-          type: type
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/TanzuImagesListDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-        images:
-          $ref: '#/components/schemas/BoundImagesForProjectDto'
-      type: object
-    TanzuImagesListDto:
-      additionalProperties: false
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        imageId: imageId
-        name: name
-        details: ""
-        type: type
-      properties:
-        imageId:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        type:
-          nullable: true
-          type: string
-        details:
-          nullable: true
       type: object
     TanzuStorageListCommand:
       additionalProperties: false
@@ -62101,34 +61325,6 @@ components:
           nullable: true
           type: string
       type: object
-    VsphereImageList:
-      additionalProperties: false
-      example:
-        images:
-          names:
-          - names
-          - names
-          ids:
-          - ids
-          - ids
-        data:
-        - name: name
-          id: id
-        - name: name
-          id: id
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-        images:
-          $ref: '#/components/schemas/BoundImagesForProjectDto'
-      type: object
     VsphereList:
       additionalProperties: false
       example:
@@ -62153,9 +61349,9 @@ components:
           name: name
           hypervisors:
           - name: name
-            id: 0
+            id: id
           - name: name
-            id: 0
+            id: id
           id: 0
           lastModified: lastModified
           continentName: continentName
@@ -62196,9 +61392,9 @@ components:
           name: name
           hypervisors:
           - name: name
-            id: 0
+            id: id
           - name: name
-            id: 0
+            id: id
           id: 0
           lastModified: lastModified
           continentName: continentName
@@ -62253,9 +61449,9 @@ components:
         name: name
         hypervisors:
         - name: name
-          id: 0
+          id: id
         - name: name
-          id: 0
+          id: id
         id: 0
         lastModified: lastModified
         continentName: continentName
@@ -62318,7 +61514,7 @@ components:
           type: string
         hypervisors:
           items:
-            $ref: '#/components/schemas/CommonDropdownDto'
+            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
           nullable: true
           type: array
         username:

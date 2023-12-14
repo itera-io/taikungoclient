@@ -287,21 +287,16 @@ Class | Method | HTTP request | Description
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
 *GoogleAPI* | [**GooglecloudRegionList**](docs/GoogleAPI.md#googlecloudregionlist) | **Post** /api/v1/googlecloud/regions | 
 *GoogleAPI* | [**GooglecloudZoneList**](docs/GoogleAPI.md#googlecloudzonelist) | **Post** /api/v1/googlecloud/zones/{region} | 
-*ImagesAPI* | [**ImagesAwsCommonImages**](docs/ImagesAPI.md#imagesawscommonimages) | **Get** /api/v1/images/aws/common/{cloudId} | 
+*ImagesAPI* | [**ImagesAwsCommonImages**](docs/ImagesAPI.md#imagesawscommonimages) | **Get** /api/v1/images/aws/common/{cloudId} | Commonly used aws images
 *ImagesAPI* | [**ImagesAwsImagesList**](docs/ImagesAPI.md#imagesawsimageslist) | **Post** /api/v1/images/aws | Retrieve aws images
-*ImagesAPI* | [**ImagesAwsPersonalImages**](docs/ImagesAPI.md#imagesawspersonalimages) | **Get** /api/v1/images/aws/personal/{cloudId} | 
-*ImagesAPI* | [**ImagesAzureCommonImages**](docs/ImagesAPI.md#imagesazurecommonimages) | **Get** /api/v1/images/azure/common/{cloudId} | 
+*ImagesAPI* | [**ImagesAwsPersonalImages**](docs/ImagesAPI.md#imagesawspersonalimages) | **Get** /api/v1/images/aws/personal/{cloudId} | Aws personal images
+*ImagesAPI* | [**ImagesAzureCommonImages**](docs/ImagesAPI.md#imagesazurecommonimages) | **Get** /api/v1/images/azure/common/{cloudId} | Commonly used azure images
 *ImagesAPI* | [**ImagesAzureImages**](docs/ImagesAPI.md#imagesazureimages) | **Get** /api/v1/images/azure/{cloudId}/{publisherName}/{offer}/{sku} | 
-*ImagesAPI* | [**ImagesAzurePersonalImages**](docs/ImagesAPI.md#imagesazurepersonalimages) | **Get** /api/v1/images/azure/personal/{cloudId} | 
+*ImagesAPI* | [**ImagesAzurePersonalImages**](docs/ImagesAPI.md#imagesazurepersonalimages) | **Get** /api/v1/images/azure/personal/{cloudId} | Azure personal images
 *ImagesAPI* | [**ImagesBindImagesToProject**](docs/ImagesAPI.md#imagesbindimagestoproject) | **Post** /api/v1/images/bind | Bind images to project
-*ImagesAPI* | [**ImagesCommonGoogleImages**](docs/ImagesAPI.md#imagescommongoogleimages) | **Get** /api/v1/images/google/common/{cloudId} | 
+*ImagesAPI* | [**ImagesCommonGoogleImages**](docs/ImagesAPI.md#imagescommongoogleimages) | **Get** /api/v1/images/google/common/{cloudId} | Commonly used google images
 *ImagesAPI* | [**ImagesGoogleImages**](docs/ImagesAPI.md#imagesgoogleimages) | **Get** /api/v1/images/google/{cloudId}/{type} | 
 *ImagesAPI* | [**ImagesImageDetails**](docs/ImagesAPI.md#imagesimagedetails) | **Post** /api/v1/images/details | Get image details
-*ImagesAPI* | [**ImagesNewAwsCommonImages**](docs/ImagesAPI.md#imagesnewawscommonimages) | **Get** /api/v1/images/new/aws/common/{cloudId} | Commonly used aws images
-*ImagesAPI* | [**ImagesNewAwsPersonalImages**](docs/ImagesAPI.md#imagesnewawspersonalimages) | **Get** /api/v1/images/new/aws/personal/{cloudId} | Aws personal images
-*ImagesAPI* | [**ImagesNewAzureCommonImages**](docs/ImagesAPI.md#imagesnewazurecommonimages) | **Get** /api/v1/images/new/azure/common/{cloudId} | Commonly used azure images
-*ImagesAPI* | [**ImagesNewAzurePersonalImages**](docs/ImagesAPI.md#imagesnewazurepersonalimages) | **Get** /api/v1/images/new/azure/personal/{cloudId} | Azure personal images
-*ImagesAPI* | [**ImagesNewCommonGoogleImages**](docs/ImagesAPI.md#imagesnewcommongoogleimages) | **Get** /api/v1/images/new/google/common/{cloudId} | Commonly used google images
 *ImagesAPI* | [**ImagesOpenshiftImages**](docs/ImagesAPI.md#imagesopenshiftimages) | **Get** /api/v1/images/openshift/{cloudId} | Retrieve openshift images
 *ImagesAPI* | [**ImagesOpenstackImages**](docs/ImagesAPI.md#imagesopenstackimages) | **Get** /api/v1/images/openstack/{cloudId} | Retrieve openstack images
 *ImagesAPI* | [**ImagesProxmoxImages**](docs/ImagesAPI.md#imagesproxmoximages) | **Get** /api/v1/images/proxmox/{cloudId} | Retrieve proxmox images
@@ -794,32 +789,23 @@ Class | Method | HTTP request | Description
  - [AvailablePackageDetailsDto](docs/AvailablePackageDetailsDto.md)
  - [AvailablePackagesDto](docs/AvailablePackagesDto.md)
  - [AvailablePackagesList](docs/AvailablePackagesList.md)
- - [AwsCommonImageDto](docs/AwsCommonImageDto.md)
- - [AwsCommonImages](docs/AwsCommonImages.md)
  - [AwsCredentialList](docs/AwsCredentialList.md)
  - [AwsCredentialsForProjectDto](docs/AwsCredentialsForProjectDto.md)
- - [AwsExtendedImagesListDto](docs/AwsExtendedImagesListDto.md)
  - [AwsFlavorList](docs/AwsFlavorList.md)
  - [AwsFlavorListDto](docs/AwsFlavorListDto.md)
- - [AwsImagesPostList](docs/AwsImagesPostList.md)
  - [AwsImagesPostListCommand](docs/AwsImagesPostListCommand.md)
- - [AwsOwnerDetails](docs/AwsOwnerDetails.md)
  - [AwsProjectAZSubnetDto](docs/AwsProjectAZSubnetDto.md)
  - [AwsRegionDto](docs/AwsRegionDto.md)
  - [AwsValidateOwnerCommand](docs/AwsValidateOwnerCommand.md)
  - [AzResult](docs/AzResult.md)
- - [AzureCommonImageDto](docs/AzureCommonImageDto.md)
- - [AzureCommonImages](docs/AzureCommonImages.md)
  - [AzureCredentialList](docs/AzureCredentialList.md)
  - [AzureCredentialsForProjectDto](docs/AzureCredentialsForProjectDto.md)
  - [AzureCredentialsListDto](docs/AzureCredentialsListDto.md)
  - [AzureDashboardCommand](docs/AzureDashboardCommand.md)
  - [AzureFlavorList](docs/AzureFlavorList.md)
  - [AzureFlavorsWithPriceDto](docs/AzureFlavorsWithPriceDto.md)
- - [AzureImageList](docs/AzureImageList.md)
  - [AzureLocationsCommand](docs/AzureLocationsCommand.md)
  - [AzureOffersList](docs/AzureOffersList.md)
- - [AzurePublisherDetails](docs/AzurePublisherDetails.md)
  - [AzurePublishersList](docs/AzurePublishersList.md)
  - [AzureQuotaListRecordDto](docs/AzureQuotaListRecordDto.md)
  - [AzureSkusList](docs/AzureSkusList.md)
@@ -860,7 +846,6 @@ Class | Method | HTTP request | Description
  - [BindUsersCommand](docs/BindUsersCommand.md)
  - [BoundFlavorsForProjectsList](docs/BoundFlavorsForProjectsList.md)
  - [BoundFlavorsForProjectsListDto](docs/BoundFlavorsForProjectsListDto.md)
- - [BoundImagesForProjectDto](docs/BoundImagesForProjectDto.md)
  - [BoundImagesForProjectsList](docs/BoundImagesForProjectsList.md)
  - [BoundImagesForProjectsListDto](docs/BoundImagesForProjectsListDto.md)
  - [BridgeListCommand](docs/BridgeListCommand.md)
@@ -1070,15 +1055,11 @@ Class | Method | HTTP request | Description
  - [GetProjectOperationCommand](docs/GetProjectOperationCommand.md)
  - [GetToken](docs/GetToken.md)
  - [GiveAccessToPartnerCommand](docs/GiveAccessToPartnerCommand.md)
- - [GoogleCommonImageDto](docs/GoogleCommonImageDto.md)
- - [GoogleCommonImages](docs/GoogleCommonImages.md)
  - [GoogleCredentialForProjectDto](docs/GoogleCredentialForProjectDto.md)
  - [GoogleCredentialList](docs/GoogleCredentialList.md)
  - [GoogleCredentialsListDto](docs/GoogleCredentialsListDto.md)
  - [GoogleFlavorDto](docs/GoogleFlavorDto.md)
  - [GoogleFlavorList](docs/GoogleFlavorList.md)
- - [GoogleImageList](docs/GoogleImageList.md)
- - [GoogleOwnerDetails](docs/GoogleOwnerDetails.md)
  - [GroupedBillingInfo](docs/GroupedBillingInfo.md)
  - [GroupedBillings](docs/GroupedBillings.md)
  - [HelmMetadata](docs/HelmMetadata.md)
@@ -1198,8 +1179,6 @@ Class | Method | HTTP request | Description
  - [OpenshiftCredentialForProjectDto](docs/OpenshiftCredentialForProjectDto.md)
  - [OpenshiftFlavorData](docs/OpenshiftFlavorData.md)
  - [OpenshiftFlavorList](docs/OpenshiftFlavorList.md)
- - [OpenshiftImageList](docs/OpenshiftImageList.md)
- - [OpenshiftImagesData](docs/OpenshiftImagesData.md)
  - [OpenshiftList](docs/OpenshiftList.md)
  - [OpenshiftListDto](docs/OpenshiftListDto.md)
  - [OpenstackComputeQuotaDto](docs/OpenstackComputeQuotaDto.md)
@@ -1208,7 +1187,6 @@ Class | Method | HTTP request | Description
  - [OpenstackCredentialsListDto](docs/OpenstackCredentialsListDto.md)
  - [OpenstackFlavorList](docs/OpenstackFlavorList.md)
  - [OpenstackFlavorListDto](docs/OpenstackFlavorListDto.md)
- - [OpenstackImageList](docs/OpenstackImageList.md)
  - [OpenstackNetworkDto](docs/OpenstackNetworkDto.md)
  - [OpenstackQuotaList](docs/OpenstackQuotaList.md)
  - [OpenstackQuotasCommand](docs/OpenstackQuotasCommand.md)
@@ -1255,7 +1233,6 @@ Class | Method | HTTP request | Description
  - [PatchSecretCommand](docs/PatchSecretCommand.md)
  - [PatchStsCommand](docs/PatchStsCommand.md)
  - [PayInvoiceCommand](docs/PayInvoiceCommand.md)
- - [PersonalImageDto](docs/PersonalImageDto.md)
  - [PodDisruptionDto](docs/PodDisruptionDto.md)
  - [PodDisruptions](docs/PodDisruptions.md)
  - [PodDto](docs/PodDto.md)
@@ -1337,12 +1314,12 @@ Class | Method | HTTP request | Description
  - [ProxmoxFlavorData](docs/ProxmoxFlavorData.md)
  - [ProxmoxFlavorList](docs/ProxmoxFlavorList.md)
  - [ProxmoxHypervisorDto](docs/ProxmoxHypervisorDto.md)
- - [ProxmoxImageList](docs/ProxmoxImageList.md)
  - [ProxmoxList](docs/ProxmoxList.md)
  - [ProxmoxListDto](docs/ProxmoxListDto.md)
  - [ProxmoxNetworkListDto](docs/ProxmoxNetworkListDto.md)
  - [ProxmoxRole](docs/ProxmoxRole.md)
  - [ProxmoxStorage](docs/ProxmoxStorage.md)
+ - [PublicImageList](docs/PublicImageList.md)
  - [PurgeCommand](docs/PurgeCommand.md)
  - [PurgeStandAloneCommand](docs/PurgeStandAloneCommand.md)
  - [PurgeStandAloneVmDiskCommand](docs/PurgeStandAloneVmDiskCommand.md)
@@ -1467,8 +1444,6 @@ Class | Method | HTTP request | Description
  - [TanzuCredentialsListDto](docs/TanzuCredentialsListDto.md)
  - [TanzuFlavorList](docs/TanzuFlavorList.md)
  - [TanzuFlavorsListDto](docs/TanzuFlavorsListDto.md)
- - [TanzuImageList](docs/TanzuImageList.md)
- - [TanzuImagesListDto](docs/TanzuImagesListDto.md)
  - [TanzuStorageListCommand](docs/TanzuStorageListCommand.md)
  - [TicketPriority](docs/TicketPriority.md)
  - [ToggleDemoModeCommand](docs/ToggleDemoModeCommand.md)
@@ -1547,7 +1522,6 @@ Class | Method | HTTP request | Description
  - [VsphereFlavorData](docs/VsphereFlavorData.md)
  - [VsphereFlavorList](docs/VsphereFlavorList.md)
  - [VsphereHypervisorListCommand](docs/VsphereHypervisorListCommand.md)
- - [VsphereImageList](docs/VsphereImageList.md)
  - [VsphereList](docs/VsphereList.md)
  - [VsphereListDto](docs/VsphereListDto.md)
  - [VsphereNetworkListDto](docs/VsphereNetworkListDto.md)
