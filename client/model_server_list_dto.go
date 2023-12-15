@@ -53,6 +53,7 @@ type ServerListDto struct {
 	OpenshiftFlavor NullableString `json:"openshiftFlavor,omitempty"`
 	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
 	Hypervisor NullableString `json:"hypervisor,omitempty"`
+	HypervisorId NullableString `json:"hypervisorId,omitempty"`
 	ProxmoxRole *ProxmoxRole `json:"proxmoxRole,omitempty"`
 	ProxmoxExtraDiskSize *int32 `json:"proxmoxExtraDiskSize,omitempty"`
 	ActionButtons *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
@@ -1364,6 +1365,48 @@ func (o *ServerListDto) UnsetHypervisor() {
 	o.Hypervisor.Unset()
 }
 
+// GetHypervisorId returns the HypervisorId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerListDto) GetHypervisorId() string {
+	if o == nil || IsNil(o.HypervisorId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.HypervisorId.Get()
+}
+
+// GetHypervisorIdOk returns a tuple with the HypervisorId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerListDto) GetHypervisorIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.HypervisorId.Get(), o.HypervisorId.IsSet()
+}
+
+// HasHypervisorId returns a boolean if a field has been set.
+func (o *ServerListDto) HasHypervisorId() bool {
+	if o != nil && o.HypervisorId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisorId gets a reference to the given NullableString and assigns it to the HypervisorId field.
+func (o *ServerListDto) SetHypervisorId(v string) {
+	o.HypervisorId.Set(&v)
+}
+// SetHypervisorIdNil sets the value for HypervisorId to be an explicit nil
+func (o *ServerListDto) SetHypervisorIdNil() {
+	o.HypervisorId.Set(nil)
+}
+
+// UnsetHypervisorId ensures that no value is present for HypervisorId, not even an explicit nil
+func (o *ServerListDto) UnsetHypervisorId() {
+	o.HypervisorId.Unset()
+}
+
 // GetProxmoxRole returns the ProxmoxRole field value if set, zero value otherwise.
 func (o *ServerListDto) GetProxmoxRole() ProxmoxRole {
 	if o == nil || IsNil(o.ProxmoxRole) {
@@ -1675,6 +1718,9 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Hypervisor.IsSet() {
 		toSerialize["hypervisor"] = o.Hypervisor.Get()
+	}
+	if o.HypervisorId.IsSet() {
+		toSerialize["hypervisorId"] = o.HypervisorId.Get()
 	}
 	if !IsNil(o.ProxmoxRole) {
 		toSerialize["proxmoxRole"] = o.ProxmoxRole

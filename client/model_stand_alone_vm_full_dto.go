@@ -44,6 +44,7 @@ type StandAloneVmFullDto struct {
 	Password NullableString `json:"password,omitempty"`
 	SpotPrice NullableString `json:"spotPrice,omitempty"`
 	Hypervisor NullableString `json:"hypervisor,omitempty"`
+	HypervisorId NullableString `json:"hypervisorId,omitempty"`
 	SpotInstance *bool `json:"spotInstance,omitempty"`
 	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
 }
@@ -974,6 +975,48 @@ func (o *StandAloneVmFullDto) UnsetHypervisor() {
 	o.Hypervisor.Unset()
 }
 
+// GetHypervisorId returns the HypervisorId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *StandAloneVmFullDto) GetHypervisorId() string {
+	if o == nil || IsNil(o.HypervisorId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.HypervisorId.Get()
+}
+
+// GetHypervisorIdOk returns a tuple with the HypervisorId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StandAloneVmFullDto) GetHypervisorIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.HypervisorId.Get(), o.HypervisorId.IsSet()
+}
+
+// HasHypervisorId returns a boolean if a field has been set.
+func (o *StandAloneVmFullDto) HasHypervisorId() bool {
+	if o != nil && o.HypervisorId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisorId gets a reference to the given NullableString and assigns it to the HypervisorId field.
+func (o *StandAloneVmFullDto) SetHypervisorId(v string) {
+	o.HypervisorId.Set(&v)
+}
+// SetHypervisorIdNil sets the value for HypervisorId to be an explicit nil
+func (o *StandAloneVmFullDto) SetHypervisorIdNil() {
+	o.HypervisorId.Set(nil)
+}
+
+// UnsetHypervisorId ensures that no value is present for HypervisorId, not even an explicit nil
+func (o *StandAloneVmFullDto) UnsetHypervisorId() {
+	o.HypervisorId.Unset()
+}
+
 // GetSpotInstance returns the SpotInstance field value if set, zero value otherwise.
 func (o *StandAloneVmFullDto) GetSpotInstance() bool {
 	if o == nil || IsNil(o.SpotInstance) {
@@ -1129,6 +1172,9 @@ func (o StandAloneVmFullDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Hypervisor.IsSet() {
 		toSerialize["hypervisor"] = o.Hypervisor.Get()
+	}
+	if o.HypervisorId.IsSet() {
+		toSerialize["hypervisorId"] = o.HypervisorId.Get()
 	}
 	if !IsNil(o.SpotInstance) {
 		toSerialize["spotInstance"] = o.SpotInstance

@@ -9670,9 +9670,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Address: 8.8.8.8
             schema:
               $ref: '#/components/schemas/DnsNtpAddressEditDto'
-        required: true
       responses:
         "400":
           content:
@@ -9713,9 +9714,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Address: 8.8.8.8
+              AccessProfileId: 1
             schema:
               $ref: '#/components/schemas/CreateDnsServerCommand'
-        required: true
       responses:
         "200":
           content:
@@ -9779,6 +9782,10 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Address: 8.8.8.8
+                AccessProfileName: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/DnsServersListDto'
@@ -18734,9 +18741,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Address: 8.8.8.8
             schema:
               $ref: '#/components/schemas/DnsNtpAddressEditDto'
-        required: true
       responses:
         "400":
           content:
@@ -35399,7 +35407,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/HypervisorSummary'
+                  $ref: '#/components/schemas/ProxmoxHypervisorDto'
                 type: array
           description: OK
         "400":
@@ -35663,48 +35671,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Validate Vsphere credentials
-      tags:
-      - Vsphere cloud credential
-  /api/v1/vsphere/validate/hypervisors:
-    post:
-      operationId: vsphere-validate-vsphere-hypervisors
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ValidateVsphereHypervisorsCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Validate vSphere hypervisors
       tags:
       - Vsphere cloud credential
   /api/v1/vsphere/vm-template-list:
@@ -46061,40 +46027,6 @@ components:
           nullable: true
           type: integer
       type: object
-    HypervisorListDto:
-      additionalProperties: false
-      example:
-        host: host
-        name: name
-      properties:
-        host:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-      type: object
-    HypervisorSummary:
-      additionalProperties: false
-      example:
-        powerState: powerState
-        connectionState: connectionState
-        name: name
-        host: host
-      properties:
-        connectionState:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-        host:
-          nullable: true
-          type: string
-        powerState:
-          nullable: true
-          type: string
-      type: object
     IResult:
       additionalProperties: false
       type: object
@@ -48665,6 +48597,7 @@ components:
           - ingressWhitelist
           - ingressWhitelist
           revision: 6
+          forcePodResource: true
           organizationId: 1
           forbidHttpIngress: true
           allowedRepo:
@@ -48692,6 +48625,7 @@ components:
           - ingressWhitelist
           - ingressWhitelist
           revision: 6
+          forcePodResource: true
           organizationId: 1
           forbidHttpIngress: true
           allowedRepo:
@@ -48733,6 +48667,7 @@ components:
         - ingressWhitelist
         - ingressWhitelist
         revision: 6
+        forcePodResource: true
         organizationId: 1
         forbidHttpIngress: true
         allowedRepo:
@@ -48762,6 +48697,8 @@ components:
         uniqueIngresses:
           type: boolean
         uniqueServiceSelector:
+          type: boolean
+        forcePodResource:
           type: boolean
         allowedRepo:
           items:
@@ -51909,6 +51846,7 @@ components:
         accessIp: accessIp
         organizationName: organizationName
         hasSelectedFlavors: true
+        isDrsEnabled: true
         cpuLimit: 7
         quotaId: 1
         vmUsedCpu: 6
@@ -51923,7 +51861,6 @@ components:
         allowFullSpotKubernetes: true
         projectName: projectName
         projectId: 7
-        drsEnabled: true
         accessProfileId: 1
         maxSize: 7
         autoscalingGroupName: autoscalingGroupName
@@ -51951,10 +51888,8 @@ components:
         cloudName: cloudName
         isBackupEnabled: true
         hypervisors:
-        - name: name
-          id: id
-        - name: name
-          id: id
+        - hypervisors
+        - hypervisors
         certificationExpiredAt: certificationExpiredAt
         isMaintenanceModeEnabled: true
       properties:
@@ -52146,20 +52081,21 @@ components:
           type: array
         hypervisors:
           items:
-            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
+            type: string
           nullable: true
           type: array
         proxmoxStorage:
           $ref: '#/components/schemas/ProxmoxStorage'
-        drsEnabled:
-          nullable: true
+        isDrsEnabled:
           type: boolean
       type: object
     ProjectDetailsForVmsDto:
       additionalProperties: false
       example:
+        isProjectMaintenanceModeEnabled: true
         organizationName: organizationName
         hasSelectedFlavors: true
+        isDrsEnabled: true
         allowSpotVMs: true
         cloudCredentialRevision: 1
         availabilityZones:
@@ -52175,10 +52111,8 @@ components:
         isLocked: true
         allowFullSpotKubernetes: true
         hypervisors:
-        - name: name
-          id: id
-        - name: name
-          id: id
+        - hypervisors
+        - hypervisors
         totalHourlyCost: 7.457744773683766
         projectName: projectName
         projectCloudRevision: 1
@@ -52210,10 +52144,14 @@ components:
           type: integer
         isLocked:
           type: boolean
+        isProjectMaintenanceModeEnabled:
+          type: boolean
         hasSelectedFlavors:
           nullable: true
           type: boolean
         isMaintenanceModeEnabled:
+          type: boolean
+        isDrsEnabled:
           type: boolean
         projectCloudRevision:
           format: int32
@@ -52243,7 +52181,7 @@ components:
           type: array
         hypervisors:
           items:
-            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
+            type: string
           nullable: true
           type: array
       type: object
@@ -52305,6 +52243,7 @@ components:
           - ingressWhitelist
           - ingressWhitelist
           revision: 6
+          forcePodResource: true
           organizationId: 1
           forbidHttpIngress: true
           allowedRepo:
@@ -52782,6 +52721,7 @@ components:
           ipAddress: ipAddress
           cpu: 5
           publicIp: publicIp
+          hypervisorId: hypervisorId
           revision: 5
           cloudInit: cloudInit
           name: name
@@ -52841,6 +52781,7 @@ components:
           ipAddress: ipAddress
           cpu: 5
           publicIp: publicIp
+          hypervisorId: hypervisorId
           revision: 5
           cloudInit: cloudInit
           name: name
@@ -53355,6 +53296,7 @@ components:
             - ingressWhitelist
             - ingressWhitelist
             revision: 6
+            forcePodResource: true
             organizationId: 1
             forbidHttpIngress: true
             allowedRepo:
@@ -53526,6 +53468,7 @@ components:
             - ingressWhitelist
             - ingressWhitelist
             revision: 6
+            forcePodResource: true
             organizationId: 1
             forbidHttpIngress: true
             allowedRepo:
@@ -56601,6 +56544,7 @@ components:
         lastModifiedBy: lastModifiedBy
         ipAddress: ipAddress
         cpu: 5
+        hypervisorId: hypervisorId
         wasmEnabled: true
         createdBy: createdBy
         azureVmSize: azureVmSize
@@ -56705,6 +56649,9 @@ components:
           nullable: true
           type: string
         hypervisor:
+          nullable: true
+          type: string
+        hypervisorId:
           nullable: true
           type: string
         proxmoxRole:
@@ -56824,6 +56771,7 @@ components:
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
+          hypervisorId: hypervisorId
           wasmEnabled: true
           createdBy: createdBy
           azureVmSize: azureVmSize
@@ -56870,6 +56818,7 @@ components:
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
+          hypervisorId: hypervisorId
           wasmEnabled: true
           createdBy: createdBy
           azureVmSize: azureVmSize
@@ -56931,6 +56880,7 @@ components:
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
+          hypervisorId: hypervisorId
           wasmEnabled: true
           createdBy: createdBy
           azureVmSize: azureVmSize
@@ -56977,6 +56927,7 @@ components:
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
+          hypervisorId: hypervisorId
           wasmEnabled: true
           createdBy: createdBy
           azureVmSize: azureVmSize
@@ -57014,6 +56965,7 @@ components:
           accessIp: accessIp
           organizationName: organizationName
           hasSelectedFlavors: true
+          isDrsEnabled: true
           cpuLimit: 7
           quotaId: 1
           vmUsedCpu: 6
@@ -57028,7 +56980,6 @@ components:
           allowFullSpotKubernetes: true
           projectName: projectName
           projectId: 7
-          drsEnabled: true
           accessProfileId: 1
           maxSize: 7
           autoscalingGroupName: autoscalingGroupName
@@ -57056,10 +57007,8 @@ components:
           cloudName: cloudName
           isBackupEnabled: true
           hypervisors:
-          - name: name
-            id: id
-          - name: name
-            id: id
+          - hypervisors
+          - hypervisors
           certificationExpiredAt: certificationExpiredAt
           isMaintenanceModeEnabled: true
       properties:
@@ -57997,6 +57946,7 @@ components:
         ipAddress: ipAddress
         cpu: 5
         publicIp: publicIp
+        hypervisorId: hypervisorId
         revision: 5
         cloudInit: cloudInit
         name: name
@@ -58091,6 +58041,9 @@ components:
           nullable: true
           type: string
         hypervisor:
+          nullable: true
+          type: string
+        hypervisorId:
           nullable: true
           type: string
         spotInstance:
@@ -58261,8 +58214,10 @@ components:
           lastModified: lastModified
           status: status
         project:
+          isProjectMaintenanceModeEnabled: true
           organizationName: organizationName
           hasSelectedFlavors: true
+          isDrsEnabled: true
           allowSpotVMs: true
           cloudCredentialRevision: 1
           availabilityZones:
@@ -58278,10 +58233,8 @@ components:
           isLocked: true
           allowFullSpotKubernetes: true
           hypervisors:
-          - name: name
-            id: id
-          - name: name
-            id: id
+          - hypervisors
+          - hypervisors
           totalHourlyCost: 7.457744773683766
           projectName: projectName
           projectCloudRevision: 1
@@ -58821,6 +58774,7 @@ components:
           ipAddress: ipAddress
           cpu: 5
           publicIp: publicIp
+          hypervisorId: hypervisorId
           revision: 5
           cloudInit: cloudInit
           name: name
@@ -58880,6 +58834,7 @@ components:
           ipAddress: ipAddress
           cpu: 5
           publicIp: publicIp
+          hypervisorId: hypervisorId
           revision: 5
           cloudInit: cloudInit
           name: name
@@ -60487,10 +60442,8 @@ components:
       additionalProperties: false
       example:
         hypervisors:
-        - host: host
-          name: name
-        - host: host
-          name: name
+        - hypervisors
+        - hypervisors
         id: 0
       properties:
         id:
@@ -60498,7 +60451,7 @@ components:
           type: integer
         hypervisors:
           items:
-            $ref: '#/components/schemas/HypervisorListDto'
+            type: string
           nullable: true
           type: array
       type: object
@@ -61097,25 +61050,6 @@ components:
           nullable: true
           type: string
       type: object
-    ValidateVsphereHypervisorsCommand:
-      additionalProperties: false
-      example:
-        hypervisors:
-        - host: host
-          name: name
-        - host: host
-          name: name
-        id: 0
-      properties:
-        id:
-          format: int32
-          type: integer
-        hypervisors:
-          items:
-            $ref: '#/components/schemas/HypervisorListDto'
-          nullable: true
-          type: array
-      type: object
     VerifyEmailCommand:
       additionalProperties: false
       example:
@@ -61308,6 +61242,7 @@ components:
       additionalProperties: false
       example:
         password: password
+        cloudId: 0
         datacenterId: datacenterId
         url: url
         username: username
@@ -61324,6 +61259,10 @@ components:
         datacenterId:
           nullable: true
           type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     VsphereList:
       additionalProperties: false

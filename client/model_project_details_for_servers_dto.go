@@ -85,9 +85,9 @@ type ProjectDetailsForServersDto struct {
 	HasNfsServer *bool `json:"hasNfsServer,omitempty"`
 	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
 	AvailabilityZones []string `json:"availabilityZones,omitempty"`
-	Hypervisors []CommonStringBasedDropdownDto `json:"hypervisors,omitempty"`
+	Hypervisors []string `json:"hypervisors,omitempty"`
 	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
-	DrsEnabled NullableBool `json:"drsEnabled,omitempty"`
+	IsDrsEnabled *bool `json:"isDrsEnabled,omitempty"`
 }
 
 // NewProjectDetailsForServersDto instantiates a new ProjectDetailsForServersDto object
@@ -2419,9 +2419,9 @@ func (o *ProjectDetailsForServersDto) SetAvailabilityZones(v []string) {
 }
 
 // GetHypervisors returns the Hypervisors field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectDetailsForServersDto) GetHypervisors() []CommonStringBasedDropdownDto {
+func (o *ProjectDetailsForServersDto) GetHypervisors() []string {
 	if o == nil {
-		var ret []CommonStringBasedDropdownDto
+		var ret []string
 		return ret
 	}
 	return o.Hypervisors
@@ -2430,7 +2430,7 @@ func (o *ProjectDetailsForServersDto) GetHypervisors() []CommonStringBasedDropdo
 // GetHypervisorsOk returns a tuple with the Hypervisors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectDetailsForServersDto) GetHypervisorsOk() ([]CommonStringBasedDropdownDto, bool) {
+func (o *ProjectDetailsForServersDto) GetHypervisorsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Hypervisors) {
 		return nil, false
 	}
@@ -2446,8 +2446,8 @@ func (o *ProjectDetailsForServersDto) HasHypervisors() bool {
 	return false
 }
 
-// SetHypervisors gets a reference to the given []CommonStringBasedDropdownDto and assigns it to the Hypervisors field.
-func (o *ProjectDetailsForServersDto) SetHypervisors(v []CommonStringBasedDropdownDto) {
+// SetHypervisors gets a reference to the given []string and assigns it to the Hypervisors field.
+func (o *ProjectDetailsForServersDto) SetHypervisors(v []string) {
 	o.Hypervisors = v
 }
 
@@ -2483,46 +2483,36 @@ func (o *ProjectDetailsForServersDto) SetProxmoxStorage(v ProxmoxStorage) {
 	o.ProxmoxStorage = &v
 }
 
-// GetDrsEnabled returns the DrsEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectDetailsForServersDto) GetDrsEnabled() bool {
-	if o == nil || IsNil(o.DrsEnabled.Get()) {
+// GetIsDrsEnabled returns the IsDrsEnabled field value if set, zero value otherwise.
+func (o *ProjectDetailsForServersDto) GetIsDrsEnabled() bool {
+	if o == nil || IsNil(o.IsDrsEnabled) {
 		var ret bool
 		return ret
 	}
-	return *o.DrsEnabled.Get()
+	return *o.IsDrsEnabled
 }
 
-// GetDrsEnabledOk returns a tuple with the DrsEnabled field value if set, nil otherwise
+// GetIsDrsEnabledOk returns a tuple with the IsDrsEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectDetailsForServersDto) GetDrsEnabledOk() (*bool, bool) {
-	if o == nil {
+func (o *ProjectDetailsForServersDto) GetIsDrsEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDrsEnabled) {
 		return nil, false
 	}
-	return o.DrsEnabled.Get(), o.DrsEnabled.IsSet()
+	return o.IsDrsEnabled, true
 }
 
-// HasDrsEnabled returns a boolean if a field has been set.
-func (o *ProjectDetailsForServersDto) HasDrsEnabled() bool {
-	if o != nil && o.DrsEnabled.IsSet() {
+// HasIsDrsEnabled returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasIsDrsEnabled() bool {
+	if o != nil && !IsNil(o.IsDrsEnabled) {
 		return true
 	}
 
 	return false
 }
 
-// SetDrsEnabled gets a reference to the given NullableBool and assigns it to the DrsEnabled field.
-func (o *ProjectDetailsForServersDto) SetDrsEnabled(v bool) {
-	o.DrsEnabled.Set(&v)
-}
-// SetDrsEnabledNil sets the value for DrsEnabled to be an explicit nil
-func (o *ProjectDetailsForServersDto) SetDrsEnabledNil() {
-	o.DrsEnabled.Set(nil)
-}
-
-// UnsetDrsEnabled ensures that no value is present for DrsEnabled, not even an explicit nil
-func (o *ProjectDetailsForServersDto) UnsetDrsEnabled() {
-	o.DrsEnabled.Unset()
+// SetIsDrsEnabled gets a reference to the given bool and assigns it to the IsDrsEnabled field.
+func (o *ProjectDetailsForServersDto) SetIsDrsEnabled(v bool) {
+	o.IsDrsEnabled = &v
 }
 
 func (o ProjectDetailsForServersDto) MarshalJSON() ([]byte, error) {
@@ -2736,8 +2726,8 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProxmoxStorage) {
 		toSerialize["proxmoxStorage"] = o.ProxmoxStorage
 	}
-	if o.DrsEnabled.IsSet() {
-		toSerialize["drsEnabled"] = o.DrsEnabled.Get()
+	if !IsNil(o.IsDrsEnabled) {
+		toSerialize["isDrsEnabled"] = o.IsDrsEnabled
 	}
 	return toSerialize, nil
 }

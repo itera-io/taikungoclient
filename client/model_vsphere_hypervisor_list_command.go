@@ -24,6 +24,7 @@ type VsphereHypervisorListCommand struct {
 	Username NullableString `json:"username,omitempty"`
 	Password NullableString `json:"password,omitempty"`
 	DatacenterId NullableString `json:"datacenterId,omitempty"`
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
 }
 
 // NewVsphereHypervisorListCommand instantiates a new VsphereHypervisorListCommand object
@@ -211,6 +212,48 @@ func (o *VsphereHypervisorListCommand) UnsetDatacenterId() {
 	o.DatacenterId.Unset()
 }
 
+// GetCloudId returns the CloudId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VsphereHypervisorListCommand) GetCloudId() int32 {
+	if o == nil || IsNil(o.CloudId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CloudId.Get()
+}
+
+// GetCloudIdOk returns a tuple with the CloudId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VsphereHypervisorListCommand) GetCloudIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CloudId.Get(), o.CloudId.IsSet()
+}
+
+// HasCloudId returns a boolean if a field has been set.
+func (o *VsphereHypervisorListCommand) HasCloudId() bool {
+	if o != nil && o.CloudId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudId gets a reference to the given NullableInt32 and assigns it to the CloudId field.
+func (o *VsphereHypervisorListCommand) SetCloudId(v int32) {
+	o.CloudId.Set(&v)
+}
+// SetCloudIdNil sets the value for CloudId to be an explicit nil
+func (o *VsphereHypervisorListCommand) SetCloudIdNil() {
+	o.CloudId.Set(nil)
+}
+
+// UnsetCloudId ensures that no value is present for CloudId, not even an explicit nil
+func (o *VsphereHypervisorListCommand) UnsetCloudId() {
+	o.CloudId.Unset()
+}
+
 func (o VsphereHypervisorListCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -232,6 +275,9 @@ func (o VsphereHypervisorListCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.DatacenterId.IsSet() {
 		toSerialize["datacenterId"] = o.DatacenterId.Get()
+	}
+	if o.CloudId.IsSet() {
+		toSerialize["cloudId"] = o.CloudId.Get()
 	}
 	return toSerialize, nil
 }

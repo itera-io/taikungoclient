@@ -408,9 +408,6 @@ func (a *NtpServersAPIService) NtpserversEditExecute(r ApiNtpserversEditRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.dnsNtpAddressEditDto == nil {
-		return nil, reportError("dnsNtpAddressEditDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

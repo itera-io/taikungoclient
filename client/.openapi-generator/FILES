@@ -447,8 +447,6 @@ docs/HelmReleasesList.md
 docs/HelmSpec.md
 docs/HelmStatus.md
 docs/HypervisorListCommand.md
-docs/HypervisorListDto.md
-docs/HypervisorSummary.md
 docs/ImageByIdCommand.md
 docs/ImagesAPI.md
 docs/ImportBackupStorageLocationCommand.md
@@ -944,7 +942,6 @@ docs/UsersSearchCommand.md
 docs/UsersSearchList.md
 docs/UsersSearchResponseData.md
 docs/ValidateVsphereCommand.md
-docs/ValidateVsphereHypervisorsCommand.md
 docs/VerifyEmailCommand.md
 docs/VerifySlackCredentialsCommand.md
 docs/VerifyWebhookCommand.md
@@ -1310,8 +1307,6 @@ model_helm_releases_list.go
 model_helm_spec.go
 model_helm_status.go
 model_hypervisor_list_command.go
-model_hypervisor_list_dto.go
-model_hypervisor_summary.go
 model_image_by_id_command.go
 model_import_backup_storage_location_command.go
 model_import_repo_command.go
@@ -1753,7 +1748,6 @@ model_users_search_command.go
 model_users_search_list.go
 model_users_search_response_data.go
 model_validate_vsphere_command.go
-model_validate_vsphere_hypervisors_command.go
 model_verify_email_command.go
 model_verify_slack_credentials_command.go
 model_verify_webhook_command.go

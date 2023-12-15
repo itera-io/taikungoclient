@@ -29,8 +29,10 @@ type ProjectDetailsForVmsDto struct {
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
+	IsProjectMaintenanceModeEnabled *bool `json:"isProjectMaintenanceModeEnabled,omitempty"`
 	HasSelectedFlavors NullableBool `json:"hasSelectedFlavors,omitempty"`
 	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
+	IsDrsEnabled *bool `json:"isDrsEnabled,omitempty"`
 	ProjectCloudRevision NullableInt32 `json:"projectCloudRevision,omitempty"`
 	CloudCredentialRevision NullableInt32 `json:"cloudCredentialRevision,omitempty"`
 	AllowFullSpotKubernetes *bool `json:"allowFullSpotKubernetes,omitempty"`
@@ -39,7 +41,7 @@ type ProjectDetailsForVmsDto struct {
 	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice,omitempty"`
 	TotalHourlyCost *float64 `json:"totalHourlyCost,omitempty"`
 	AvailabilityZones []string `json:"availabilityZones,omitempty"`
-	Hypervisors []CommonStringBasedDropdownDto `json:"hypervisors,omitempty"`
+	Hypervisors []string `json:"hypervisors,omitempty"`
 }
 
 // NewProjectDetailsForVmsDto instantiates a new ProjectDetailsForVmsDto object
@@ -387,6 +389,38 @@ func (o *ProjectDetailsForVmsDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
+// GetIsProjectMaintenanceModeEnabled returns the IsProjectMaintenanceModeEnabled field value if set, zero value otherwise.
+func (o *ProjectDetailsForVmsDto) GetIsProjectMaintenanceModeEnabled() bool {
+	if o == nil || IsNil(o.IsProjectMaintenanceModeEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsProjectMaintenanceModeEnabled
+}
+
+// GetIsProjectMaintenanceModeEnabledOk returns a tuple with the IsProjectMaintenanceModeEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDetailsForVmsDto) GetIsProjectMaintenanceModeEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsProjectMaintenanceModeEnabled) {
+		return nil, false
+	}
+	return o.IsProjectMaintenanceModeEnabled, true
+}
+
+// HasIsProjectMaintenanceModeEnabled returns a boolean if a field has been set.
+func (o *ProjectDetailsForVmsDto) HasIsProjectMaintenanceModeEnabled() bool {
+	if o != nil && !IsNil(o.IsProjectMaintenanceModeEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsProjectMaintenanceModeEnabled gets a reference to the given bool and assigns it to the IsProjectMaintenanceModeEnabled field.
+func (o *ProjectDetailsForVmsDto) SetIsProjectMaintenanceModeEnabled(v bool) {
+	o.IsProjectMaintenanceModeEnabled = &v
+}
+
 // GetHasSelectedFlavors returns the HasSelectedFlavors field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectDetailsForVmsDto) GetHasSelectedFlavors() bool {
 	if o == nil || IsNil(o.HasSelectedFlavors.Get()) {
@@ -459,6 +493,38 @@ func (o *ProjectDetailsForVmsDto) HasIsMaintenanceModeEnabled() bool {
 // SetIsMaintenanceModeEnabled gets a reference to the given bool and assigns it to the IsMaintenanceModeEnabled field.
 func (o *ProjectDetailsForVmsDto) SetIsMaintenanceModeEnabled(v bool) {
 	o.IsMaintenanceModeEnabled = &v
+}
+
+// GetIsDrsEnabled returns the IsDrsEnabled field value if set, zero value otherwise.
+func (o *ProjectDetailsForVmsDto) GetIsDrsEnabled() bool {
+	if o == nil || IsNil(o.IsDrsEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDrsEnabled
+}
+
+// GetIsDrsEnabledOk returns a tuple with the IsDrsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDetailsForVmsDto) GetIsDrsEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDrsEnabled) {
+		return nil, false
+	}
+	return o.IsDrsEnabled, true
+}
+
+// HasIsDrsEnabled returns a boolean if a field has been set.
+func (o *ProjectDetailsForVmsDto) HasIsDrsEnabled() bool {
+	if o != nil && !IsNil(o.IsDrsEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDrsEnabled gets a reference to the given bool and assigns it to the IsDrsEnabled field.
+func (o *ProjectDetailsForVmsDto) SetIsDrsEnabled(v bool) {
+	o.IsDrsEnabled = &v
 }
 
 // GetProjectCloudRevision returns the ProjectCloudRevision field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -749,9 +815,9 @@ func (o *ProjectDetailsForVmsDto) SetAvailabilityZones(v []string) {
 }
 
 // GetHypervisors returns the Hypervisors field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectDetailsForVmsDto) GetHypervisors() []CommonStringBasedDropdownDto {
+func (o *ProjectDetailsForVmsDto) GetHypervisors() []string {
 	if o == nil {
-		var ret []CommonStringBasedDropdownDto
+		var ret []string
 		return ret
 	}
 	return o.Hypervisors
@@ -760,7 +826,7 @@ func (o *ProjectDetailsForVmsDto) GetHypervisors() []CommonStringBasedDropdownDt
 // GetHypervisorsOk returns a tuple with the Hypervisors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectDetailsForVmsDto) GetHypervisorsOk() ([]CommonStringBasedDropdownDto, bool) {
+func (o *ProjectDetailsForVmsDto) GetHypervisorsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Hypervisors) {
 		return nil, false
 	}
@@ -776,8 +842,8 @@ func (o *ProjectDetailsForVmsDto) HasHypervisors() bool {
 	return false
 }
 
-// SetHypervisors gets a reference to the given []CommonStringBasedDropdownDto and assigns it to the Hypervisors field.
-func (o *ProjectDetailsForVmsDto) SetHypervisors(v []CommonStringBasedDropdownDto) {
+// SetHypervisors gets a reference to the given []string and assigns it to the Hypervisors field.
+func (o *ProjectDetailsForVmsDto) SetHypervisors(v []string) {
 	o.Hypervisors = v
 }
 
@@ -818,11 +884,17 @@ func (o ProjectDetailsForVmsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
+	if !IsNil(o.IsProjectMaintenanceModeEnabled) {
+		toSerialize["isProjectMaintenanceModeEnabled"] = o.IsProjectMaintenanceModeEnabled
+	}
 	if o.HasSelectedFlavors.IsSet() {
 		toSerialize["hasSelectedFlavors"] = o.HasSelectedFlavors.Get()
 	}
 	if !IsNil(o.IsMaintenanceModeEnabled) {
 		toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
+	}
+	if !IsNil(o.IsDrsEnabled) {
+		toSerialize["isDrsEnabled"] = o.IsDrsEnabled
 	}
 	if o.ProjectCloudRevision.IsSet() {
 		toSerialize["projectCloudRevision"] = o.ProjectCloudRevision.Get()
