@@ -20,6 +20,7 @@ var _ MappedNullable = &TaikunLbResponseDto{}
 
 // TaikunLbResponseDto struct for TaikunLbResponseDto
 type TaikunLbResponseDto struct {
+	Id *int32 `json:"id,omitempty"`
 	PublicIp NullableString `json:"publicIp,omitempty"`
 	VirtualLbIpFirst NullableString `json:"virtualLbIpFirst,omitempty"`
 	VirtualLbIpSecond NullableString `json:"virtualLbIpSecond,omitempty"`
@@ -48,6 +49,38 @@ func NewTaikunLbResponseDto() *TaikunLbResponseDto {
 func NewTaikunLbResponseDtoWithDefaults() *TaikunLbResponseDto {
 	this := TaikunLbResponseDto{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *TaikunLbResponseDto) GetId() int32 {
+	if o == nil || IsNil(o.Id) {
+		var ret int32
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TaikunLbResponseDto) GetIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *TaikunLbResponseDto) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given int32 and assigns it to the Id field.
+func (o *TaikunLbResponseDto) SetId(v int32) {
+	o.Id = &v
 }
 
 // GetPublicIp returns the PublicIp field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -522,6 +555,9 @@ func (o TaikunLbResponseDto) MarshalJSON() ([]byte, error) {
 
 func (o TaikunLbResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	if o.PublicIp.IsSet() {
 		toSerialize["publicIp"] = o.PublicIp.Get()
 	}
