@@ -69,9 +69,6 @@ func (a *AiManagementAPIService) AiManagementDisableExecute(r ApiAiManagementDis
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.disableAiCommand == nil {
-		return nil, reportError("disableAiCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -234,9 +231,6 @@ func (a *AiManagementAPIService) AiManagementEnableExecute(r ApiAiManagementEnab
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.enableAiCommand == nil {
-		return nil, reportError("enableAiCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

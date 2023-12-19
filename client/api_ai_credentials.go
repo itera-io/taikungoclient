@@ -72,9 +72,6 @@ func (a *AiCredentialsAPIService) AiCredentialCreateExecute(r ApiAiCredentialCre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createAiCredentialCommand == nil {
-		return localVarReturnValue, nil, reportError("createAiCredentialCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -544,24 +541,14 @@ func (a *AiCredentialsAPIService) AiCredentialDropdownExecute(r ApiAiCredentialD
 type ApiAiCredentialListRequest struct {
 	ctx context.Context
 	ApiService *AiCredentialsAPIService
-	limit *int32
-	offset *int32
 	organizationId *int32
 	search *string
 	searchId *string
 	id *int32
 	sortBy *string
 	sortDirection *string
-}
-
-func (r ApiAiCredentialListRequest) Limit(limit int32) ApiAiCredentialListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiAiCredentialListRequest) Offset(offset int32) ApiAiCredentialListRequest {
-	r.offset = &offset
-	return r
+	limit *int32
+	offset *int32
 }
 
 func (r ApiAiCredentialListRequest) OrganizationId(organizationId int32) ApiAiCredentialListRequest {
@@ -594,12 +581,26 @@ func (r ApiAiCredentialListRequest) SortDirection(sortDirection string) ApiAiCre
 	return r
 }
 
+func (r ApiAiCredentialListRequest) Limit(limit int32) ApiAiCredentialListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiAiCredentialListRequest) Offset(offset int32) ApiAiCredentialListRequest {
+	r.offset = &offset
+	return r
+}
+
 func (r ApiAiCredentialListRequest) Execute() (*AiCredentials, *http.Response, error) {
 	return r.ApiService.AiCredentialListExecute(r)
 }
 
 /*
 AiCredentialList Retrieve all AI credentials
+
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAiCredentialListRequest
@@ -632,12 +633,6 @@ func (a *AiCredentialsAPIService) AiCredentialListExecute(r ApiAiCredentialListR
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
-	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
 	}
@@ -655,6 +650,18 @@ func (a *AiCredentialsAPIService) AiCredentialListExecute(r ApiAiCredentialListR
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

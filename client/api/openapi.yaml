@@ -246,24 +246,12 @@ paths:
       - Access Profiles
   /api/v1/accessprofiles:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
       operationId: accessprofiles-list
       parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: OrganizationId
@@ -305,6 +293,24 @@ paths:
         name: Id
         required: false
         schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
           format: int32
           type: integer
         style: form
@@ -1186,9 +1192,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Name: taikun
+              ApiKey: sk-xxxxxxxxx
+              OrganizationId: null
             schema:
               $ref: '#/components/schemas/CreateAiCredentialCommand'
-        required: true
       responses:
         "200":
           content:
@@ -1252,6 +1261,12 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Url: null
+                Name: taikun
+                Type: Taikun
+                IsDefault: false
               schema:
                 items:
                   $ref: '#/components/schemas/AiCredentialsForOrganizationEntity'
@@ -1292,24 +1307,12 @@ paths:
       - Ai Credentials
   /api/v1/ai-credential/list:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
       operationId: ai-credential-list
       parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: OrganizationId
@@ -1354,10 +1357,41 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                Data:
+                - Id: 1
+                  Url: null
+                  Name: taikun
+                  Type: Taikun
+                  OrganizationId: 1
+                  OrganizationName: taikun
+                  Projects:
+                  - Id: 1
+                    Name: taikun
+                  IsDefault: false
+                TotalCount: 0
               schema:
                 $ref: '#/components/schemas/AiCredentials'
           description: OK
@@ -1446,9 +1480,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              ProjectId: 1
             schema:
               $ref: '#/components/schemas/DisableAiCommand'
-        required: true
       responses:
         "400":
           content:
@@ -1489,9 +1524,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              ProjectId: 1
+              AiCredentialId: 1
             schema:
               $ref: '#/components/schemas/EnableAiCommand'
-        required: true
       responses:
         "400":
           content:
@@ -1620,6 +1657,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Id: 1
+              Url: https://www.google.com
+              Token: Only if no microsoft teams type
+              AlertingIntegrationType: Opsgenie
+              AlertingProfileId: 1
             schema:
               $ref: '#/components/schemas/EditAlertingIntegrationCommand'
       responses:
@@ -1662,9 +1705,13 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Url: https://www.google.com
+              Token: Only if no microsoft teams type
+              AlertingIntegrationType: Opsgenie
+              AlertingProfileId: 1
             schema:
               $ref: '#/components/schemas/CreateAlertingIntegrationCommand'
-        required: true
       responses:
         "200":
           content:
@@ -1728,6 +1775,12 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Url: https://www.google.com
+                Token: Only if no microsoft teams type
+                AlertingIntegrationType: Opsgenie
+                AlertingProfileName: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/AlertingIntegrationsListDto'
@@ -36702,7 +36755,6 @@ components:
             id: 0
           - name: name
             id: 0
-          apiKey: apiKey
           organizationName: organizationName
           name: name
           id: 0
@@ -36715,7 +36767,6 @@ components:
             id: 0
           - name: name
             id: 0
-          apiKey: apiKey
           organizationName: organizationName
           name: name
           id: 0
@@ -36736,7 +36787,6 @@ components:
       additionalProperties: false
       example:
         isDefault: true
-        apiKey: apiKey
         name: name
         id: 0
         type: null
@@ -36749,9 +36799,6 @@ components:
           nullable: true
           type: string
         name:
-          nullable: true
-          type: string
-        apiKey:
           nullable: true
           type: string
         type:
@@ -36769,7 +36816,6 @@ components:
           id: 0
         - name: name
           id: 0
-        apiKey: apiKey
         organizationName: organizationName
         name: name
         id: 0
@@ -36783,9 +36829,6 @@ components:
           nullable: true
           type: string
         name:
-          nullable: true
-          type: string
-        apiKey:
           nullable: true
           type: string
         type:
