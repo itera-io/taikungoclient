@@ -1880,6 +1880,8 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+            - Email: taikun@taikun.cloud
             schema:
               items:
                 $ref: '#/components/schemas/AlertingEmailDto'
@@ -1933,6 +1935,13 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+            - Id: 1
+              Url: https://www.google.com
+              Headers:
+              - Id: 1
+                Key: taikun
+                Value: taikun
             schema:
               items:
                 $ref: '#/components/schemas/AlertingWebhookDto'
@@ -2020,6 +2029,24 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Name: taikun
+              SlackConfigurationId: null
+              OrganizationId: null
+              Emails:
+              - Email: taikun@taikun.cloud
+              Webhooks:
+              - Id: 1
+                Url: https://www.google.com
+                Headers:
+                - Id: 1
+                  Key: taikun
+                  Value: taikun
+              AlertingIntegrations:
+              - Url: https://www.google.com
+                Token: Only if no microsoft teams type
+                AlertingIntegrationType: Opsgenie
+              Reminder: Daily
             schema:
               $ref: '#/components/schemas/CreateAlertingProfileCommand'
       responses:
@@ -2111,6 +2138,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Id: 1
+              Name: taikun
+              SlackConfigurationId: null
+              OrganizationId: null
+              Reminder: Daily
             schema:
               $ref: '#/components/schemas/UpdateAlertingProfileCommand'
       responses:
@@ -2159,9 +2192,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Id: 1
+              Mode: lock|unlock
             schema:
               $ref: '#/components/schemas/AlertingProfilesLockManagerCommand'
-        required: true
       responses:
         "400":
           content:
@@ -2202,6 +2237,8 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Url: https://www.google.com
             schema:
               $ref: '#/components/schemas/VerifyWebhookCommand'
       responses:
@@ -2304,27 +2341,15 @@ paths:
       - Alerting Profiles
   /api/v1/alertingprofiles:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
       operationId: alertingprofiles-list
       parameters:
       - explode: true
         in: query
         name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
         required: false
         schema:
           format: int32
@@ -2366,10 +2391,47 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                Data:
+                - Id: 1
+                  Name: taikun
+                  OrganizationId: null
+                  OrganizationName: taikun
+                  SlackConfigurationId: null
+                  SlackConfigurationName: null
+                  IsLocked: false
+                  Emails:
+                  - Email: taikun@taikun.cloud
+                  Webhooks: null
+                  Projects: null
+                  CreatedBy: taikun
+                  LastModified: 2023-11-21T12:09:23Z
+                  LastModifiedBy: taikun
+                  Reminder: "0"
+                  CreatedAt: 2023-11-21T12:09:23Z
+                TotalCount: 0
               schema:
                 $ref: '#/components/schemas/AlertingProfilesList'
           description: OK
@@ -35875,7 +35937,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/VmTemplateSummary'
+                  $ref: '#/components/schemas/VsphereVmTemplateData'
                 type: array
           description: OK
         "400":
@@ -61300,27 +61362,6 @@ components:
           nullable: true
           type: string
       type: object
-    VmTemplateSummary:
-      additionalProperties: false
-      example:
-        memory_size_MiB: 6
-        vm: vm
-        name: name
-        cpuCount: 0
-      properties:
-        cpuCount:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        vm:
-          nullable: true
-          type: string
-        memory_size_MiB:
-          format: int32
-          type: integer
-      type: object
     VsphereCredentialsForProjectDto:
       additionalProperties: false
       example:
@@ -61692,6 +61733,23 @@ components:
           type: string
         isPrivate:
           type: boolean
+      type: object
+    VsphereVmTemplateData:
+      additionalProperties: false
+      example:
+        size: 0
+        name: name
+        uuid: uuid
+      properties:
+        name:
+          nullable: true
+          type: string
+        size:
+          format: int32
+          type: integer
+        uuid:
+          nullable: true
+          type: string
       type: object
     VsphereVmTemplateListCommand:
       additionalProperties: false

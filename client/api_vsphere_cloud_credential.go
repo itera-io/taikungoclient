@@ -1816,7 +1816,7 @@ func (r ApiVsphereVmTemplateListRequest) VsphereVmTemplateListCommand(vsphereVmT
 	return r
 }
 
-func (r ApiVsphereVmTemplateListRequest) Execute() ([]VmTemplateSummary, *http.Response, error) {
+func (r ApiVsphereVmTemplateListRequest) Execute() ([]VsphereVmTemplateData, *http.Response, error) {
 	return r.ApiService.VsphereVmTemplateListExecute(r)
 }
 
@@ -1834,13 +1834,13 @@ func (a *VsphereCloudCredentialAPIService) VsphereVmTemplateList(ctx context.Con
 }
 
 // Execute executes the request
-//  @return []VmTemplateSummary
-func (a *VsphereCloudCredentialAPIService) VsphereVmTemplateListExecute(r ApiVsphereVmTemplateListRequest) ([]VmTemplateSummary, *http.Response, error) {
+//  @return []VsphereVmTemplateData
+func (a *VsphereCloudCredentialAPIService) VsphereVmTemplateListExecute(r ApiVsphereVmTemplateListRequest) ([]VsphereVmTemplateData, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []VmTemplateSummary
+		localVarReturnValue  []VsphereVmTemplateData
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VsphereCloudCredentialAPIService.VsphereVmTemplateList")

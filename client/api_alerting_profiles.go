@@ -1377,27 +1377,17 @@ type ApiAlertingprofilesListRequest struct {
 	ctx context.Context
 	ApiService *AlertingProfilesAPIService
 	organizationId *int32
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	id *int32
 	searchId *string
+	limit *int32
+	offset *int32
 }
 
 func (r ApiAlertingprofilesListRequest) OrganizationId(organizationId int32) ApiAlertingprofilesListRequest {
 	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiAlertingprofilesListRequest) Limit(limit int32) ApiAlertingprofilesListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiAlertingprofilesListRequest) Offset(offset int32) ApiAlertingprofilesListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -1426,12 +1416,26 @@ func (r ApiAlertingprofilesListRequest) SearchId(searchId string) ApiAlertingpro
 	return r
 }
 
+func (r ApiAlertingprofilesListRequest) Limit(limit int32) ApiAlertingprofilesListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiAlertingprofilesListRequest) Offset(offset int32) ApiAlertingprofilesListRequest {
+	r.offset = &offset
+	return r
+}
+
 func (r ApiAlertingprofilesListRequest) Execute() (*AlertingProfilesList, *http.Response, error) {
 	return r.ApiService.AlertingprofilesListExecute(r)
 }
 
 /*
 AlertingprofilesList Retrieve all Alerting profiles
+
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAlertingprofilesListRequest
@@ -1467,12 +1471,6 @@ func (a *AlertingProfilesAPIService) AlertingprofilesListExecute(r ApiAlertingpr
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
 	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
 	}
@@ -1487,6 +1485,18 @@ func (a *AlertingProfilesAPIService) AlertingprofilesListExecute(r ApiAlertingpr
 	}
 	if r.searchId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1656,9 +1666,6 @@ func (a *AlertingProfilesAPIService) AlertingprofilesLockManagerExecute(r ApiAle
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.alertingProfilesLockManagerCommand == nil {
-		return nil, reportError("alertingProfilesLockManagerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
