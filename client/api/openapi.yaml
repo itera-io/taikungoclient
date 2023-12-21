@@ -58340,6 +58340,7 @@ components:
           volumeSize: 6
           createdAt: createdAt
           spotInstance: true
+          hypervisor: hypervisor
           isWindows: true
           id: 0
           imageName: imageName
@@ -58366,6 +58367,7 @@ components:
             publicKey: publicKey
           ipAddress: ipAddress
           publicIp: publicIp
+          hypervisorId: hypervisorId
           standAloneMetaDatas:
           - id: 2
             value: value
@@ -58412,6 +58414,7 @@ components:
           volumeSize: 6
           createdAt: createdAt
           spotInstance: true
+          hypervisor: hypervisor
           isWindows: true
           id: 0
           imageName: imageName
@@ -58438,6 +58441,7 @@ components:
             publicKey: publicKey
           ipAddress: ipAddress
           publicIp: publicIp
+          hypervisorId: hypervisorId
           standAloneMetaDatas:
           - id: 2
             value: value
@@ -58859,6 +58863,7 @@ components:
         volumeSize: 6
         createdAt: createdAt
         spotInstance: true
+        hypervisor: hypervisor
         isWindows: true
         id: 0
         imageName: imageName
@@ -58885,6 +58890,7 @@ components:
           publicKey: publicKey
         ipAddress: ipAddress
         publicIp: publicIp
+        hypervisorId: hypervisorId
         standAloneMetaDatas:
         - id: 2
           value: value
@@ -58948,6 +58954,12 @@ components:
         publicIpEnabled:
           type: boolean
         publicIp:
+          nullable: true
+          type: string
+        hypervisor:
+          nullable: true
+          type: string
+        hypervisorId:
           nullable: true
           type: string
         ipAddress:
