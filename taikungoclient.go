@@ -70,7 +70,9 @@ func (c *Client) GetToken() string {
 // Transport wrapper
 func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 	// This is not a /auth/login or /auth/refresh request
-	if req.URL.Path != "/api/v1/auth/login" && req.URL.Path != "/api/v1/auth/refresh" {
+	if strings.Contains(req.URL.Path, "/api/v1/taikun-lb") {
+		req.Header.Set("Authorization", "Bearer "+c.Client.token)
+	} else if req.URL.Path != "/api/v1/auth/login" && req.URL.Path != "/api/v1/auth/refresh" {
 		if c.Client.token == "" { // We do not have a token, get a lock
 			c.mu.Lock()
 			defer c.mu.Unlock()
@@ -168,6 +170,40 @@ func CreateError(resp *http.Response, err error) error {
 		HTTPStatusCode: resp.StatusCode,
 		Message:        fmt.Sprintf("%s", string(body)),
 	}
+}
+
+// NewClientFromToken is a helper function not intended to be used by the user.
+// It returns a client based on the token provided.
+func NewClientFromToken(token string, apiHost string) *Client {
+
+	// Create a configuration object for the Taikun Web API
+	cfg := taikuncore.NewConfiguration()
+	cfg.Host = apiHost
+	cfg.Scheme = "https"
+
+	// Create a configuration object for the Taikun Showback service
+	cfg2 := taikunshowback.NewConfiguration()
+	cfg2.Host = apiHost
+	cfg2.Scheme = "https"
+
+	// Actually create the new client
+	client := &Client{
+		token: token,
+	}
+
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+	clientTransport := &customTransport{
+		Transport: tr,
+		Client:    client,
+	}
+	cfg.HTTPClient = &http.Client{Transport: clientTransport}
+	cfg2.HTTPClient = &http.Client{Transport: clientTransport}
+	client.Client = taikuncore.NewAPIClient(cfg)
+	client.ShowbackClient = taikunshowback.NewAPIClient(cfg2)
+
+	return client
 }
 
 // NewClientFromCredentials is a helper function not intended to be used by the user.
