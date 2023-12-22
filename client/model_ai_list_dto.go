@@ -15,36 +15,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the AwsImagesPostList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AwsImagesPostList{}
+// checks if the AiListDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AiListDto{}
 
-// AwsImagesPostList struct for AwsImagesPostList
-type AwsImagesPostList struct {
-	Data []AwsExtendedImagesListDto `json:"data,omitempty"`
+// AiListDto struct for AiListDto
+type AiListDto struct {
+	Data interface{} `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
-// NewAwsImagesPostList instantiates a new AwsImagesPostList object
+// NewAiListDto instantiates a new AiListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAwsImagesPostList() *AwsImagesPostList {
-	this := AwsImagesPostList{}
+func NewAiListDto() *AiListDto {
+	this := AiListDto{}
 	return &this
 }
 
-// NewAwsImagesPostListWithDefaults instantiates a new AwsImagesPostList object
+// NewAiListDtoWithDefaults instantiates a new AiListDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAwsImagesPostListWithDefaults() *AwsImagesPostList {
-	this := AwsImagesPostList{}
+func NewAiListDtoWithDefaults() *AiListDto {
+	this := AiListDto{}
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AwsImagesPostList) GetData() []AwsExtendedImagesListDto {
+func (o *AiListDto) GetData() interface{} {
 	if o == nil {
-		var ret []AwsExtendedImagesListDto
+		var ret interface{}
 		return ret
 	}
 	return o.Data
@@ -53,15 +53,15 @@ func (o *AwsImagesPostList) GetData() []AwsExtendedImagesListDto {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AwsImagesPostList) GetDataOk() ([]AwsExtendedImagesListDto, bool) {
+func (o *AiListDto) GetDataOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
-	return o.Data, true
+	return &o.Data, true
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *AwsImagesPostList) HasData() bool {
+func (o *AiListDto) HasData() bool {
 	if o != nil && IsNil(o.Data) {
 		return true
 	}
@@ -69,13 +69,13 @@ func (o *AwsImagesPostList) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []AwsExtendedImagesListDto and assigns it to the Data field.
-func (o *AwsImagesPostList) SetData(v []AwsExtendedImagesListDto) {
+// SetData gets a reference to the given interface{} and assigns it to the Data field.
+func (o *AiListDto) SetData(v interface{}) {
 	o.Data = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *AwsImagesPostList) GetTotalCount() int32 {
+func (o *AiListDto) GetTotalCount() int32 {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int32
 		return ret
@@ -85,7 +85,7 @@ func (o *AwsImagesPostList) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AwsImagesPostList) GetTotalCountOk() (*int32, bool) {
+func (o *AiListDto) GetTotalCountOk() (*int32, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *AwsImagesPostList) GetTotalCountOk() (*int32, bool) {
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *AwsImagesPostList) HasTotalCount() bool {
+func (o *AiListDto) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -102,11 +102,11 @@ func (o *AwsImagesPostList) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
-func (o *AwsImagesPostList) SetTotalCount(v int32) {
+func (o *AiListDto) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 
-func (o AwsImagesPostList) MarshalJSON() ([]byte, error) {
+func (o AiListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -114,7 +114,7 @@ func (o AwsImagesPostList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AwsImagesPostList) ToMap() (map[string]interface{}, error) {
+func (o AiListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -125,38 +125,38 @@ func (o AwsImagesPostList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableAwsImagesPostList struct {
-	value *AwsImagesPostList
+type NullableAiListDto struct {
+	value *AiListDto
 	isSet bool
 }
 
-func (v NullableAwsImagesPostList) Get() *AwsImagesPostList {
+func (v NullableAiListDto) Get() *AiListDto {
 	return v.value
 }
 
-func (v *NullableAwsImagesPostList) Set(val *AwsImagesPostList) {
+func (v *NullableAiListDto) Set(val *AiListDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAwsImagesPostList) IsSet() bool {
+func (v NullableAiListDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAwsImagesPostList) Unset() {
+func (v *NullableAiListDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAwsImagesPostList(val *AwsImagesPostList) *NullableAwsImagesPostList {
-	return &NullableAwsImagesPostList{value: val, isSet: true}
+func NewNullableAiListDto(val *AiListDto) *NullableAiListDto {
+	return &NullableAiListDto{value: val, isSet: true}
 }
 
-func (v NullableAwsImagesPostList) MarshalJSON() ([]byte, error) {
+func (v NullableAiListDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAwsImagesPostList) UnmarshalJSON(src []byte) error {
+func (v *NullableAiListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

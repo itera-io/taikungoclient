@@ -26,6 +26,7 @@ type ServerChartDto struct {
 	Google []ServerCommonRecordDto `json:"google,omitempty"`
 	Tanzu []ServerCommonRecordDto `json:"tanzu,omitempty"`
 	Proxmox []ServerCommonRecordDto `json:"proxmox,omitempty"`
+	Vsphere []ServerCommonRecordDto `json:"vsphere,omitempty"`
 	Openshift []ServerCommonRecordDto `json:"openshift,omitempty"`
 	Failed []ServerCommonRecordDto `json:"failed,omitempty"`
 	Succeeded []ServerCommonRecordDto `json:"succeeded,omitempty"`
@@ -48,6 +49,7 @@ type ServerChartDto struct {
 	TotalTanzuCount *int32 `json:"totalTanzuCount,omitempty"`
 	TotalOpenshiftCount *int32 `json:"totalOpenshiftCount,omitempty"`
 	TotalProxmoxCount *int32 `json:"totalProxmoxCount,omitempty"`
+	TotalVsphereCount *int32 `json:"totalVsphereCount,omitempty"`
 	UsedResources []UserResourceChartDto `json:"usedResources,omitempty"`
 }
 
@@ -264,6 +266,39 @@ func (o *ServerChartDto) HasProxmox() bool {
 // SetProxmox gets a reference to the given []ServerCommonRecordDto and assigns it to the Proxmox field.
 func (o *ServerChartDto) SetProxmox(v []ServerCommonRecordDto) {
 	o.Proxmox = v
+}
+
+// GetVsphere returns the Vsphere field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerChartDto) GetVsphere() []ServerCommonRecordDto {
+	if o == nil {
+		var ret []ServerCommonRecordDto
+		return ret
+	}
+	return o.Vsphere
+}
+
+// GetVsphereOk returns a tuple with the Vsphere field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerChartDto) GetVsphereOk() ([]ServerCommonRecordDto, bool) {
+	if o == nil || IsNil(o.Vsphere) {
+		return nil, false
+	}
+	return o.Vsphere, true
+}
+
+// HasVsphere returns a boolean if a field has been set.
+func (o *ServerChartDto) HasVsphere() bool {
+	if o != nil && IsNil(o.Vsphere) {
+		return true
+	}
+
+	return false
+}
+
+// SetVsphere gets a reference to the given []ServerCommonRecordDto and assigns it to the Vsphere field.
+func (o *ServerChartDto) SetVsphere(v []ServerCommonRecordDto) {
+	o.Vsphere = v
 }
 
 // GetOpenshift returns the Openshift field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -977,6 +1012,38 @@ func (o *ServerChartDto) SetTotalProxmoxCount(v int32) {
 	o.TotalProxmoxCount = &v
 }
 
+// GetTotalVsphereCount returns the TotalVsphereCount field value if set, zero value otherwise.
+func (o *ServerChartDto) GetTotalVsphereCount() int32 {
+	if o == nil || IsNil(o.TotalVsphereCount) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalVsphereCount
+}
+
+// GetTotalVsphereCountOk returns a tuple with the TotalVsphereCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerChartDto) GetTotalVsphereCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalVsphereCount) {
+		return nil, false
+	}
+	return o.TotalVsphereCount, true
+}
+
+// HasTotalVsphereCount returns a boolean if a field has been set.
+func (o *ServerChartDto) HasTotalVsphereCount() bool {
+	if o != nil && !IsNil(o.TotalVsphereCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalVsphereCount gets a reference to the given int32 and assigns it to the TotalVsphereCount field.
+func (o *ServerChartDto) SetTotalVsphereCount(v int32) {
+	o.TotalVsphereCount = &v
+}
+
 // GetUsedResources returns the UsedResources field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServerChartDto) GetUsedResources() []UserResourceChartDto {
 	if o == nil {
@@ -1037,6 +1104,9 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Proxmox != nil {
 		toSerialize["proxmox"] = o.Proxmox
+	}
+	if o.Vsphere != nil {
+		toSerialize["vsphere"] = o.Vsphere
 	}
 	if o.Openshift != nil {
 		toSerialize["openshift"] = o.Openshift
@@ -1103,6 +1173,9 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalProxmoxCount) {
 		toSerialize["totalProxmoxCount"] = o.TotalProxmoxCount
+	}
+	if !IsNil(o.TotalVsphereCount) {
+		toSerialize["totalVsphereCount"] = o.TotalVsphereCount
 	}
 	if o.UsedResources != nil {
 		toSerialize["usedResources"] = o.UsedResources

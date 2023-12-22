@@ -154,4 +154,18 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test FlavorsAPIService FlavorsVsphereFlavors", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var cloudId int32
+
+		resp, httpRes, err := apiClient.FlavorsAPI.FlavorsVsphereFlavors(context.Background(), cloudId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

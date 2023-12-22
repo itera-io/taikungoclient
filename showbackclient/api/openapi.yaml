@@ -1625,39 +1625,37 @@ components:
       additionalProperties: false
       example:
         data:
-        - organizationName: organizationName
+        - organizationId: 6
+          createdAt: createdAt
+          organizationName: organizationName
+          createdBy: createdBy
+          isLocked: true
           lastModifiedBy: lastModifiedBy
+          name: name
           rules:
           - name: name
             id: 1
           - name: name
             id: 1
-          url: url
-          organizationId: 6
-          createdAt: createdAt
-          password: password
-          createdBy: createdBy
-          isLocked: true
-          name: name
           id: 0
           lastModified: lastModified
+          url: url
           username: username
-        - organizationName: organizationName
+        - organizationId: 6
+          createdAt: createdAt
+          organizationName: organizationName
+          createdBy: createdBy
+          isLocked: true
           lastModifiedBy: lastModifiedBy
+          name: name
           rules:
           - name: name
             id: 1
           - name: name
             id: 1
-          url: url
-          organizationId: 6
-          createdAt: createdAt
-          password: password
-          createdBy: createdBy
-          isLocked: true
-          name: name
           id: 0
           lastModified: lastModified
+          url: url
           username: username
         totalCount: 5
       properties:
@@ -1673,22 +1671,21 @@ components:
     ShowbackCredentialsListDto:
       additionalProperties: false
       example:
+        organizationId: 6
+        createdAt: createdAt
         organizationName: organizationName
+        createdBy: createdBy
+        isLocked: true
         lastModifiedBy: lastModifiedBy
+        name: name
         rules:
         - name: name
           id: 1
         - name: name
           id: 1
-        url: url
-        organizationId: 6
-        createdAt: createdAt
-        password: password
-        createdBy: createdBy
-        isLocked: true
-        name: name
         id: 0
         lastModified: lastModified
+        url: url
         username: username
       properties:
         id:
@@ -1704,9 +1701,6 @@ components:
           nullable: true
           type: string
         username:
-          nullable: true
-          type: string
-        password:
           nullable: true
           type: string
         isLocked:

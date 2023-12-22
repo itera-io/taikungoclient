@@ -23,7 +23,6 @@ type AiCredentialsListDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Url NullableString `json:"url,omitempty"`
 	Name NullableString `json:"name,omitempty"`
-	ApiKey NullableString `json:"apiKey,omitempty"`
 	Type *AiType `json:"type,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
@@ -162,48 +161,6 @@ func (o *AiCredentialsListDto) SetNameNil() {
 // UnsetName ensures that no value is present for Name, not even an explicit nil
 func (o *AiCredentialsListDto) UnsetName() {
 	o.Name.Unset()
-}
-
-// GetApiKey returns the ApiKey field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AiCredentialsListDto) GetApiKey() string {
-	if o == nil || IsNil(o.ApiKey.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ApiKey.Get()
-}
-
-// GetApiKeyOk returns a tuple with the ApiKey field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AiCredentialsListDto) GetApiKeyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ApiKey.Get(), o.ApiKey.IsSet()
-}
-
-// HasApiKey returns a boolean if a field has been set.
-func (o *AiCredentialsListDto) HasApiKey() bool {
-	if o != nil && o.ApiKey.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetApiKey gets a reference to the given NullableString and assigns it to the ApiKey field.
-func (o *AiCredentialsListDto) SetApiKey(v string) {
-	o.ApiKey.Set(&v)
-}
-// SetApiKeyNil sets the value for ApiKey to be an explicit nil
-func (o *AiCredentialsListDto) SetApiKeyNil() {
-	o.ApiKey.Set(nil)
-}
-
-// UnsetApiKey ensures that no value is present for ApiKey, not even an explicit nil
-func (o *AiCredentialsListDto) UnsetApiKey() {
-	o.ApiKey.Unset()
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -405,9 +362,6 @@ func (o AiCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
-	}
-	if o.ApiKey.IsSet() {
-		toSerialize["apiKey"] = o.ApiKey.Get()
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type

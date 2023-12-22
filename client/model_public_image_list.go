@@ -15,36 +15,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the TanzuImageList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TanzuImageList{}
+// checks if the PublicImageList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &PublicImageList{}
 
-// TanzuImageList struct for TanzuImageList
-type TanzuImageList struct {
-	Data []TanzuImagesListDto `json:"data,omitempty"`
+// PublicImageList struct for PublicImageList
+type PublicImageList struct {
+	Data []CommonStringBasedDropdownDto `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
-// NewTanzuImageList instantiates a new TanzuImageList object
+// NewPublicImageList instantiates a new PublicImageList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTanzuImageList() *TanzuImageList {
-	this := TanzuImageList{}
+func NewPublicImageList() *PublicImageList {
+	this := PublicImageList{}
 	return &this
 }
 
-// NewTanzuImageListWithDefaults instantiates a new TanzuImageList object
+// NewPublicImageListWithDefaults instantiates a new PublicImageList object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTanzuImageListWithDefaults() *TanzuImageList {
-	this := TanzuImageList{}
+func NewPublicImageListWithDefaults() *PublicImageList {
+	this := PublicImageList{}
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TanzuImageList) GetData() []TanzuImagesListDto {
+func (o *PublicImageList) GetData() []CommonStringBasedDropdownDto {
 	if o == nil {
-		var ret []TanzuImagesListDto
+		var ret []CommonStringBasedDropdownDto
 		return ret
 	}
 	return o.Data
@@ -53,7 +53,7 @@ func (o *TanzuImageList) GetData() []TanzuImagesListDto {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TanzuImageList) GetDataOk() ([]TanzuImagesListDto, bool) {
+func (o *PublicImageList) GetDataOk() ([]CommonStringBasedDropdownDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *TanzuImageList) GetDataOk() ([]TanzuImagesListDto, bool) {
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *TanzuImageList) HasData() bool {
+func (o *PublicImageList) HasData() bool {
 	if o != nil && IsNil(o.Data) {
 		return true
 	}
@@ -69,13 +69,13 @@ func (o *TanzuImageList) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []TanzuImagesListDto and assigns it to the Data field.
-func (o *TanzuImageList) SetData(v []TanzuImagesListDto) {
+// SetData gets a reference to the given []CommonStringBasedDropdownDto and assigns it to the Data field.
+func (o *PublicImageList) SetData(v []CommonStringBasedDropdownDto) {
 	o.Data = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *TanzuImageList) GetTotalCount() int32 {
+func (o *PublicImageList) GetTotalCount() int32 {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int32
 		return ret
@@ -85,7 +85,7 @@ func (o *TanzuImageList) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TanzuImageList) GetTotalCountOk() (*int32, bool) {
+func (o *PublicImageList) GetTotalCountOk() (*int32, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *TanzuImageList) GetTotalCountOk() (*int32, bool) {
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *TanzuImageList) HasTotalCount() bool {
+func (o *PublicImageList) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -102,11 +102,11 @@ func (o *TanzuImageList) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
-func (o *TanzuImageList) SetTotalCount(v int32) {
+func (o *PublicImageList) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 
-func (o TanzuImageList) MarshalJSON() ([]byte, error) {
+func (o PublicImageList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -114,7 +114,7 @@ func (o TanzuImageList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o TanzuImageList) ToMap() (map[string]interface{}, error) {
+func (o PublicImageList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -125,38 +125,38 @@ func (o TanzuImageList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableTanzuImageList struct {
-	value *TanzuImageList
+type NullablePublicImageList struct {
+	value *PublicImageList
 	isSet bool
 }
 
-func (v NullableTanzuImageList) Get() *TanzuImageList {
+func (v NullablePublicImageList) Get() *PublicImageList {
 	return v.value
 }
 
-func (v *NullableTanzuImageList) Set(val *TanzuImageList) {
+func (v *NullablePublicImageList) Set(val *PublicImageList) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTanzuImageList) IsSet() bool {
+func (v NullablePublicImageList) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTanzuImageList) Unset() {
+func (v *NullablePublicImageList) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTanzuImageList(val *TanzuImageList) *NullableTanzuImageList {
-	return &NullableTanzuImageList{value: val, isSet: true}
+func NewNullablePublicImageList(val *PublicImageList) *NullablePublicImageList {
+	return &NullablePublicImageList{value: val, isSet: true}
 }
 
-func (v NullableTanzuImageList) MarshalJSON() ([]byte, error) {
+func (v NullablePublicImageList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTanzuImageList) UnmarshalJSON(src []byte) error {
+func (v *NullablePublicImageList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

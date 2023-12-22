@@ -21,6 +21,7 @@ type CloudType string
 
 // List of CloudType
 const (
+	CLOUDTYPE_NONE CloudType = "NONE"
 	CLOUDTYPE_AWS CloudType = "AWS"
 	CLOUDTYPE_AZURE CloudType = "AZURE"
 	CLOUDTYPE_GOOGLE CloudType = "GOOGLE"
@@ -28,10 +29,12 @@ const (
 	CLOUDTYPE_PROXMOX CloudType = "PROXMOX"
 	CLOUDTYPE_TANZU CloudType = "TANZU"
 	CLOUDTYPE_OPENSHIFT CloudType = "OPENSHIFT"
+	CLOUDTYPE_VSPHERE CloudType = "VSPHERE"
 )
 
 // All allowed values of CloudType enum
 var AllowedCloudTypeEnumValues = []CloudType{
+	"NONE",
 	"AWS",
 	"AZURE",
 	"GOOGLE",
@@ -39,6 +42,7 @@ var AllowedCloudTypeEnumValues = []CloudType{
 	"PROXMOX",
 	"TANZU",
 	"OPENSHIFT",
+	"VSPHERE",
 }
 
 func (v *CloudType) UnmarshalJSON(src []byte) error {

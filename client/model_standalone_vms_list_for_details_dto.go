@@ -37,6 +37,8 @@ type StandaloneVmsListForDetailsDto struct {
 	TargetFlavor NullableString `json:"targetFlavor,omitempty"`
 	PublicIpEnabled *bool `json:"publicIpEnabled,omitempty"`
 	PublicIp NullableString `json:"publicIp,omitempty"`
+	Hypervisor NullableString `json:"hypervisor,omitempty"`
+	HypervisorId NullableString `json:"hypervisorId,omitempty"`
 	IpAddress NullableString `json:"ipAddress,omitempty"`
 	SpotPrice NullableString `json:"spotPrice,omitempty"`
 	SpotInstance *bool `json:"spotInstance,omitempty"`
@@ -748,6 +750,90 @@ func (o *StandaloneVmsListForDetailsDto) UnsetPublicIp() {
 	o.PublicIp.Unset()
 }
 
+// GetHypervisor returns the Hypervisor field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *StandaloneVmsListForDetailsDto) GetHypervisor() string {
+	if o == nil || IsNil(o.Hypervisor.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Hypervisor.Get()
+}
+
+// GetHypervisorOk returns a tuple with the Hypervisor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StandaloneVmsListForDetailsDto) GetHypervisorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Hypervisor.Get(), o.Hypervisor.IsSet()
+}
+
+// HasHypervisor returns a boolean if a field has been set.
+func (o *StandaloneVmsListForDetailsDto) HasHypervisor() bool {
+	if o != nil && o.Hypervisor.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisor gets a reference to the given NullableString and assigns it to the Hypervisor field.
+func (o *StandaloneVmsListForDetailsDto) SetHypervisor(v string) {
+	o.Hypervisor.Set(&v)
+}
+// SetHypervisorNil sets the value for Hypervisor to be an explicit nil
+func (o *StandaloneVmsListForDetailsDto) SetHypervisorNil() {
+	o.Hypervisor.Set(nil)
+}
+
+// UnsetHypervisor ensures that no value is present for Hypervisor, not even an explicit nil
+func (o *StandaloneVmsListForDetailsDto) UnsetHypervisor() {
+	o.Hypervisor.Unset()
+}
+
+// GetHypervisorId returns the HypervisorId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *StandaloneVmsListForDetailsDto) GetHypervisorId() string {
+	if o == nil || IsNil(o.HypervisorId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.HypervisorId.Get()
+}
+
+// GetHypervisorIdOk returns a tuple with the HypervisorId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StandaloneVmsListForDetailsDto) GetHypervisorIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.HypervisorId.Get(), o.HypervisorId.IsSet()
+}
+
+// HasHypervisorId returns a boolean if a field has been set.
+func (o *StandaloneVmsListForDetailsDto) HasHypervisorId() bool {
+	if o != nil && o.HypervisorId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHypervisorId gets a reference to the given NullableString and assigns it to the HypervisorId field.
+func (o *StandaloneVmsListForDetailsDto) SetHypervisorId(v string) {
+	o.HypervisorId.Set(&v)
+}
+// SetHypervisorIdNil sets the value for HypervisorId to be an explicit nil
+func (o *StandaloneVmsListForDetailsDto) SetHypervisorIdNil() {
+	o.HypervisorId.Set(nil)
+}
+
+// UnsetHypervisorId ensures that no value is present for HypervisorId, not even an explicit nil
+func (o *StandaloneVmsListForDetailsDto) UnsetHypervisorId() {
+	o.HypervisorId.Unset()
+}
+
 // GetIpAddress returns the IpAddress field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StandaloneVmsListForDetailsDto) GetIpAddress() string {
 	if o == nil || IsNil(o.IpAddress.Get()) {
@@ -1086,6 +1172,12 @@ func (o StandaloneVmsListForDetailsDto) ToMap() (map[string]interface{}, error) 
 	}
 	if o.PublicIp.IsSet() {
 		toSerialize["publicIp"] = o.PublicIp.Get()
+	}
+	if o.Hypervisor.IsSet() {
+		toSerialize["hypervisor"] = o.Hypervisor.Get()
+	}
+	if o.HypervisorId.IsSet() {
+		toSerialize["hypervisorId"] = o.HypervisorId.Get()
 	}
 	if o.IpAddress.IsSet() {
 		toSerialize["ipAddress"] = o.IpAddress.Get()

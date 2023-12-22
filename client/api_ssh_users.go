@@ -72,9 +72,6 @@ func (a *SshUsersAPIService) SshusersCreateExecute(r ApiSshusersCreateRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createSshUserCommand == nil {
-		return localVarReturnValue, nil, reportError("createSshUserCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

@@ -27,6 +27,7 @@ type OpaProfileListDto struct {
 	RequireProbe *bool `json:"requireProbe,omitempty"`
 	UniqueIngresses *bool `json:"uniqueIngresses,omitempty"`
 	UniqueServiceSelector *bool `json:"uniqueServiceSelector,omitempty"`
+	ForcePodResource *bool `json:"forcePodResource,omitempty"`
 	AllowedRepo []string `json:"allowedRepo,omitempty"`
 	ForbidSpecificTags []string `json:"forbidSpecificTags,omitempty"`
 	IngressWhitelist []string `json:"ingressWhitelist,omitempty"`
@@ -288,6 +289,38 @@ func (o *OpaProfileListDto) HasUniqueServiceSelector() bool {
 // SetUniqueServiceSelector gets a reference to the given bool and assigns it to the UniqueServiceSelector field.
 func (o *OpaProfileListDto) SetUniqueServiceSelector(v bool) {
 	o.UniqueServiceSelector = &v
+}
+
+// GetForcePodResource returns the ForcePodResource field value if set, zero value otherwise.
+func (o *OpaProfileListDto) GetForcePodResource() bool {
+	if o == nil || IsNil(o.ForcePodResource) {
+		var ret bool
+		return ret
+	}
+	return *o.ForcePodResource
+}
+
+// GetForcePodResourceOk returns a tuple with the ForcePodResource field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpaProfileListDto) GetForcePodResourceOk() (*bool, bool) {
+	if o == nil || IsNil(o.ForcePodResource) {
+		return nil, false
+	}
+	return o.ForcePodResource, true
+}
+
+// HasForcePodResource returns a boolean if a field has been set.
+func (o *OpaProfileListDto) HasForcePodResource() bool {
+	if o != nil && !IsNil(o.ForcePodResource) {
+		return true
+	}
+
+	return false
+}
+
+// SetForcePodResource gets a reference to the given bool and assigns it to the ForcePodResource field.
+func (o *OpaProfileListDto) SetForcePodResource(v bool) {
+	o.ForcePodResource = &v
 }
 
 // GetAllowedRepo returns the AllowedRepo field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -664,6 +697,9 @@ func (o OpaProfileListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.UniqueServiceSelector) {
 		toSerialize["uniqueServiceSelector"] = o.UniqueServiceSelector
+	}
+	if !IsNil(o.ForcePodResource) {
+		toSerialize["forcePodResource"] = o.ForcePodResource
 	}
 	if o.AllowedRepo != nil {
 		toSerialize["allowedRepo"] = o.AllowedRepo

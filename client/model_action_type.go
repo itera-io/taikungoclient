@@ -83,6 +83,7 @@ const (
 	ACTIONTYPE_STARTED_ENABLE_AI ActionType = "StartedEnableAi"
 	ACTIONTYPE_DISABLED_AI ActionType = "DisabledAi"
 	ACTIONTYPE_STARTED_DISABLE_AI ActionType = "StartedDisableAi"
+	ACTIONTYPE_ENABLE_DISABLE_MAINTENANCE_MODE ActionType = "EnableDisableMaintenanceMode"
 )
 
 // All allowed values of ActionType enum
@@ -149,6 +150,7 @@ var AllowedActionTypeEnumValues = []ActionType{
 	"StartedEnableAi",
 	"DisabledAi",
 	"StartedDisableAi",
+	"EnableDisableMaintenanceMode",
 }
 
 func (v *ActionType) UnmarshalJSON(src []byte) error {

@@ -28,6 +28,7 @@ type AwsImagesPostListCommand struct {
 	Search NullableString `json:"search,omitempty"`
 	Latest *bool `json:"latest,omitempty"`
 	Owners []string `json:"owners,omitempty"`
+	ProjectId NullableInt32 `json:"projectId,omitempty"`
 }
 
 // NewAwsImagesPostListCommand instantiates a new AwsImagesPostListCommand object
@@ -354,6 +355,48 @@ func (o *AwsImagesPostListCommand) SetOwners(v []string) {
 	o.Owners = v
 }
 
+// GetProjectId returns the ProjectId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AwsImagesPostListCommand) GetProjectId() int32 {
+	if o == nil || IsNil(o.ProjectId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.ProjectId.Get()
+}
+
+// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AwsImagesPostListCommand) GetProjectIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ProjectId.Get(), o.ProjectId.IsSet()
+}
+
+// HasProjectId returns a boolean if a field has been set.
+func (o *AwsImagesPostListCommand) HasProjectId() bool {
+	if o != nil && o.ProjectId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectId gets a reference to the given NullableInt32 and assigns it to the ProjectId field.
+func (o *AwsImagesPostListCommand) SetProjectId(v int32) {
+	o.ProjectId.Set(&v)
+}
+// SetProjectIdNil sets the value for ProjectId to be an explicit nil
+func (o *AwsImagesPostListCommand) SetProjectIdNil() {
+	o.ProjectId.Set(nil)
+}
+
+// UnsetProjectId ensures that no value is present for ProjectId, not even an explicit nil
+func (o *AwsImagesPostListCommand) UnsetProjectId() {
+	o.ProjectId.Unset()
+}
+
 func (o AwsImagesPostListCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -387,6 +430,9 @@ func (o AwsImagesPostListCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Owners != nil {
 		toSerialize["owners"] = o.Owners
+	}
+	if o.ProjectId.IsSet() {
+		toSerialize["projectId"] = o.ProjectId.Get()
 	}
 	return toSerialize, nil
 }

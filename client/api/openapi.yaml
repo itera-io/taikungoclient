@@ -27,6 +27,9 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Name: taikun
+              HttpProxy: http://185.185.185.22
             schema:
               $ref: '#/components/schemas/UpdateAccessProfileDto'
       responses:
@@ -69,6 +72,27 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Name: taikun
+              HttpProxy: http://185.185.185.22
+              OrganizationId: null
+              SshUsers:
+              - Name: taikun
+                SshPublicKey: |-
+                  ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU
+                  GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3
+                  Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XA
+                  t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En
+                  mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx
+                  NrRFi9wrf+M7Q== taikun@taikun.local
+              DnsServers:
+              - Address: 8.8.8.8
+              NtpServers:
+              - Address: 8.8.8.8
+              AllowedHosts:
+              - Description: taikun
+                IpAddress: 8.8.8.8
+                MaskBits: 24
             schema:
               $ref: '#/components/schemas/CreateAccessProfileCommand'
       responses:
@@ -117,6 +141,9 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Id: 1
+              Mode: lock|unlock
             schema:
               $ref: '#/components/schemas/AccessProfilesLockManagementCommand'
       responses:
@@ -176,6 +203,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -216,24 +246,12 @@ paths:
       - Access Profiles
   /api/v1/accessprofiles:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
       operationId: accessprofiles-list
       parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: OrganizationId
@@ -278,10 +296,57 @@ paths:
           format: int32
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                Data:
+                - Id: 1
+                  Name: taikun
+                  HttpProxy: http://185.185.185.22
+                  OrganizationId: null
+                  OrganizationName: taikun
+                  IsLocked: false
+                  DnsServers:
+                  - Id: 1
+                    Address: 8.8.8.8
+                  NtpServers:
+                  - Id: 1
+                    Address: 8.8.8.8
+                  AllowedHosts:
+                  - Id: 1
+                    Description: taikun
+                    IpAddress: 8.8.8.8
+                    MaskBits: 24
+                    AccessProfileId: 1
+                    AccessProfileName: taikun
+                  Projects:
+                  - Id: 1
+                    Name: taikun
+                  CreatedBy: taikun
+                  LastModified: 2023-11-21T12:09:23Z
+                  LastModifiedBy: taikun
+                  CreatedAt: 2023-11-21T12:09:23Z
+                TotalCount: 0
               schema:
                 $ref: '#/components/schemas/AccessProfilesList'
           description: OK
@@ -370,9 +435,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Name: taikun
+              ApiKey: sk-xxxxxxxxx
+              OrganizationId: null
             schema:
               $ref: '#/components/schemas/CreateAiCredentialCommand'
-        required: true
       responses:
         "200":
           content:
@@ -436,6 +504,12 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Url: null
+                Name: taikun
+                Type: Taikun
+                IsDefault: false
               schema:
                 items:
                   $ref: '#/components/schemas/AiCredentialsForOrganizationEntity'
@@ -476,24 +550,12 @@ paths:
       - Ai Credentials
   /api/v1/ai-credential/list:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
       operationId: ai-credential-list
       parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: OrganizationId
@@ -538,10 +600,41 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                Data:
+                - Id: 1
+                  Url: null
+                  Name: taikun
+                  Type: Taikun
+                  OrganizationId: 1
+                  OrganizationName: taikun
+                  Projects:
+                  - Id: 1
+                    Name: taikun
+                  IsDefault: false
+                TotalCount: 0
               schema:
                 $ref: '#/components/schemas/AiCredentials'
           description: OK
@@ -630,9 +723,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              ProjectId: 1
             schema:
               $ref: '#/components/schemas/DisableAiCommand'
-        required: true
       responses:
         "400":
           content:
@@ -673,9 +767,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              ProjectId: 1
+              AiCredentialId: 1
             schema:
               $ref: '#/components/schemas/EnableAiCommand'
-        required: true
       responses:
         "400":
           content:
@@ -804,6 +900,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Id: 1
+              Url: https://www.google.com
+              Token: Only if no microsoft teams type
+              AlertingIntegrationType: Opsgenie
+              AlertingProfileId: 1
             schema:
               $ref: '#/components/schemas/EditAlertingIntegrationCommand'
       responses:
@@ -846,9 +948,13 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Url: https://www.google.com
+              Token: Only if no microsoft teams type
+              AlertingIntegrationType: Opsgenie
+              AlertingProfileId: 1
             schema:
               $ref: '#/components/schemas/CreateAlertingIntegrationCommand'
-        required: true
       responses:
         "200":
           content:
@@ -912,6 +1018,12 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Url: https://www.google.com
+                Token: Only if no microsoft teams type
+                AlertingIntegrationType: Opsgenie
+                AlertingProfileName: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/AlertingIntegrationsListDto'
@@ -1011,6 +1123,8 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+            - Email: taikun@taikun.cloud
             schema:
               items:
                 $ref: '#/components/schemas/AlertingEmailDto'
@@ -1064,6 +1178,13 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+            - Id: 1
+              Url: https://www.google.com
+              Headers:
+              - Id: 1
+                Key: taikun
+                Value: taikun
             schema:
               items:
                 $ref: '#/components/schemas/AlertingWebhookDto'
@@ -1151,6 +1272,24 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Name: taikun
+              SlackConfigurationId: null
+              OrganizationId: null
+              Emails:
+              - Email: taikun@taikun.cloud
+              Webhooks:
+              - Id: 1
+                Url: https://www.google.com
+                Headers:
+                - Id: 1
+                  Key: taikun
+                  Value: taikun
+              AlertingIntegrations:
+              - Url: https://www.google.com
+                Token: Only if no microsoft teams type
+                AlertingIntegrationType: Opsgenie
+              Reminder: Daily
             schema:
               $ref: '#/components/schemas/CreateAlertingProfileCommand'
       responses:
@@ -1242,6 +1381,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Id: 1
+              Name: taikun
+              SlackConfigurationId: null
+              OrganizationId: null
+              Reminder: Daily
             schema:
               $ref: '#/components/schemas/UpdateAlertingProfileCommand'
       responses:
@@ -1290,9 +1435,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Id: 1
+              Mode: lock|unlock
             schema:
               $ref: '#/components/schemas/AlertingProfilesLockManagerCommand'
-        required: true
       responses:
         "400":
           content:
@@ -1350,6 +1497,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -1390,27 +1540,15 @@ paths:
       - Alerting Profiles
   /api/v1/alertingprofiles:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
       operationId: alertingprofiles-list
       parameters:
       - explode: true
         in: query
         name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
         required: false
         schema:
           format: int32
@@ -1452,10 +1590,47 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                Data:
+                - Id: 1
+                  Name: taikun
+                  OrganizationId: null
+                  OrganizationName: taikun
+                  SlackConfigurationId: null
+                  SlackConfigurationName: null
+                  IsLocked: false
+                  Emails:
+                  - Email: taikun@taikun.cloud
+                  Webhooks: null
+                  Projects: null
+                  CreatedBy: taikun
+                  LastModified: 2023-11-21T12:09:23Z
+                  LastModifiedBy: taikun
+                  Reminder: "0"
+                  CreatedAt: 2023-11-21T12:09:23Z
+                TotalCount: 0
               schema:
                 $ref: '#/components/schemas/AlertingProfilesList'
           description: OK
@@ -1553,9 +1728,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Description: taikun
+              IpAddress: 8.8.8.8
+              MaskBits: 24
             schema:
               $ref: '#/components/schemas/EditAllowedHostDto'
-        required: true
       responses:
         "400":
           content:
@@ -1596,6 +1774,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              AccessProfileId: 1
+              Description: taikun
+              IpAddress: 8.8.8.8
+              MaskBits: 24
             schema:
               $ref: '#/components/schemas/CreateAllowedHostCommand'
       responses:
@@ -1691,6 +1874,15 @@ paths:
         "200":
           content:
             application/json:
+              example:
+                Data:
+                - Id: 1
+                  Description: taikun
+                  IpAddress: null
+                  MaskBits: 24
+                  AccessProfileId: 1
+                  AccessProfileName: taikun
+                TotalCount: 0
               schema:
                 $ref: '#/components/schemas/AllowedHostList'
           description: OK
@@ -2575,57 +2767,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Add Aws credentials
-      tags:
-      - AWS cloud credential
-  /api/v1/aws/device-names:
-    post:
-      operationId: aws-device-names
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AwsBlockDeviceMappingsCommand'
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  type: string
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Aws device name list
       tags:
       - AWS cloud credential
   /api/v1/aws/regions:
@@ -6972,9 +7113,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Address: 8.8.8.8
             schema:
               $ref: '#/components/schemas/DnsNtpAddressEditDto'
-        required: true
       responses:
         "400":
           content:
@@ -7015,9 +7157,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Address: 8.8.8.8
+              AccessProfileId: 1
             schema:
               $ref: '#/components/schemas/CreateDnsServerCommand'
-        required: true
       responses:
         "200":
           content:
@@ -7081,6 +7225,10 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Address: 8.8.8.8
+                AccessProfileName: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/DnsServersListDto'
@@ -8211,6 +8359,127 @@ paths:
       summary: Retrieve tanzu flavors
       tags:
       - Flavors
+  /api/v1/flavors/vsphere/{cloudId}:
+    get:
+      operationId: flavors-vsphere-flavors
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: StartRam
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: EndRam
+        required: false
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: StartCpu
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: EndCpu
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VsphereFlavorList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve vsphere flavors
+      tags:
+      - Flavors
   /api/v1/googlecloud/billing-accounts:
     post:
       operationId: googlecloud-billing-account-list
@@ -8601,7 +8870,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AwsImagesPostList'
+                $ref: '#/components/schemas/PublicImageList'
           description: OK
         "400":
           content:
@@ -8690,7 +8959,7 @@ paths:
       responses:
         "200":
           content:
-            application/json:
+            text/plain:
               schema:
                 type: string
           description: OK
@@ -8842,6 +9111,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
         name: Latest
         required: false
         schema:
@@ -8853,7 +9130,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AzureImageList'
+                $ref: '#/components/schemas/PublicImageList'
           description: Success
         "400":
           content:
@@ -8899,13 +9176,21 @@ paths:
           format: int32
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/AwsOwnerDetails'
+                  $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
           description: OK
         "400":
@@ -8953,13 +9238,21 @@ paths:
           format: int32
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/AzurePublisherDetails'
+                  $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
           description: OK
         "400":
@@ -9007,13 +9300,21 @@ paths:
           format: int32
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/GoogleOwnerDetails'
+                  $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
           description: OK
         "400":
@@ -9216,12 +9517,20 @@ paths:
         schema:
           type: boolean
         style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GoogleImageList'
+                $ref: '#/components/schemas/PublicImageList'
           description: Success
         "400":
           content:
@@ -9253,6 +9562,103 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Server Error
+      tags:
+      - Images
+  /api/v1/images/openshift/{cloudId}:
+    get:
+      operationId: images-openshift-images
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicImageList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve openshift images
       tags:
       - Images
   /api/v1/images/openstack/{cloudId}:
@@ -9306,6 +9712,14 @@ paths:
         style: form
       - explode: true
         in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
         name: Personal
         required: false
         schema:
@@ -9317,7 +9731,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OpenstackImageList'
+                $ref: '#/components/schemas/PublicImageList'
           description: OK
         "400":
           content:
@@ -9370,6 +9784,14 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -9425,6 +9847,14 @@ paths:
           format: int32
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -9516,12 +9946,20 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProxmoxImageList'
+                $ref: '#/components/schemas/PublicImageList'
           description: OK
         "400":
           content:
@@ -9605,12 +10043,20 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/TanzuImageList'
+                $ref: '#/components/schemas/PublicImageList'
           description: OK
         "400":
           content:
@@ -9643,6 +10089,103 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve tanzu images
+      tags:
+      - Images
+  /api/v1/images/vsphere/{cloudId}:
+    get:
+      operationId: images-vsphere-images
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicImageList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve vsphere images
       tags:
       - Images
   /api/v1/infra/details:
@@ -13820,6 +14363,14 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: CloudId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -14366,9 +14917,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Address: 8.8.8.8
             schema:
               $ref: '#/components/schemas/DnsNtpAddressEditDto'
-        required: true
       responses:
         "400":
           content:
@@ -14409,9 +14961,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Address: 8.8.8.8
+              AccessProfileId: 1
             schema:
               $ref: '#/components/schemas/CreateNtpServerCommand'
-        required: true
       responses:
         "200":
           content:
@@ -14475,6 +15029,10 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Address: 8.8.8.8
+                AccessProfileName: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/NtpServersListDto'
@@ -15937,7 +16495,7 @@ paths:
           description: Internal Server Error
       summary: Retrieve operation credentials by organization Id
       tags:
-      - Operation credentials
+      - Operation Credentials
     post:
       operationId: opscredentials-create
       requestBody:
@@ -17953,6 +18511,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -19060,6 +19621,49 @@ paths:
       summary: Retrieve loki logs
       tags:
       - Projects
+  /api/v1/projects/maintenance-manager:
+    post:
+      operationId: projects-maintenance-manager
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectMaintenanceModeCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable/disable project's maintenance mode
+      tags:
+      - Projects
   /api/v1/projects/monitoring:
     post:
       operationId: projects-monitoring
@@ -19345,7 +19949,8 @@ paths:
         "200":
           content:
             application/json:
-              schema: {}
+              schema:
+                $ref: '#/components/schemas/AiListDto'
           description: OK
         "400":
           content:
@@ -19797,6 +20402,99 @@ paths:
       summary: Bind rules to organizations
       tags:
       - Prometheus Organizations
+  /api/v1/prometheusrules/edit/{id}:
+    put:
+      operationId: prometheusrules-update
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RuleForUpdateDto'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Edit prometheus rule
+      tags:
+      - Prometheus Rules
+  /api/v1/prometheusrules/bind/organizations:
+    post:
+      operationId: prometheusrules-bind-organizations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BindPrometheusOrganizationsCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Bind organizations to prometheus rule
+      tags:
+      - Prometheus Rules
   /api/v1/prometheusrules:
     get:
       operationId: prometheusrules-list
@@ -19900,7 +20598,7 @@ paths:
           description: Internal Server Error
       summary: Retrieve a list of prometheus rules
       tags:
-      - Prometheus rules
+      - Prometheus Rules
     post:
       operationId: prometheusrules-create
       requestBody:
@@ -19946,99 +20644,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Add prometheus rule
-      tags:
-      - Prometheus Rules
-  /api/v1/prometheusrules/bind/organizations:
-    post:
-      operationId: prometheusrules-bind-organizations
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BindPrometheusOrganizationsCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Bind organizations to prometheus rule
-      tags:
-      - Prometheus Rules
-  /api/v1/prometheusrules/edit/{id}:
-    put:
-      operationId: prometheusrules-update
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RuleForUpdateDto'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Edit prometheus rule
       tags:
       - Prometheus Rules
   /api/v1/prometheusrules/{id}:
@@ -20385,6 +20990,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -22905,6 +23513,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -23046,9 +23657,18 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Name: taikun
+              SshPublicKey: |-
+                ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU
+                GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3
+                Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XA
+                t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En
+                mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx
+                NrRFi9wrf+M7Q== taikun@taikun.local
+              AccessProfileId: 1
             schema:
               $ref: '#/components/schemas/CreateSshUserCommand'
-        required: true
       responses:
         "200":
           content:
@@ -23138,6 +23758,17 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Id: 1
+              Name: taikun
+              SshPublicKey: |-
+                ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU
+                GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3
+                Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XA
+                t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En
+                mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx
+                NrRFi9wrf+M7Q== taikun@taikun.local
+              AccessProfileId: 1
             schema:
               $ref: '#/components/schemas/EditSshUserCommand'
       responses:
@@ -23197,6 +23828,17 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Name: taikun
+                SshPublicKey: |-
+                  ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU
+                  GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3
+                  Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XA
+                  t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En
+                  mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx
+                  NrRFi9wrf+M7Q== taikun@taikun.local
+                AccessProfileName: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/SshUsersListDto'
@@ -24367,6 +25009,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -25753,6 +26398,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -25987,6 +26635,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: 1
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -26641,6 +27292,592 @@ paths:
           description: Server Error
       tags:
       - Users
+  /api/v1/vsphere/create:
+    post:
+      operationId: vsphere-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVsphereCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Add Vsphere credentials
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/datacenter-list:
+    post:
+      operationId: vsphere-datacenter-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatacenterListCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DatacenterSummary'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch Vsphere datacenter list
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/datastore-list:
+    post:
+      operationId: vsphere-datastore-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatastoreListCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DatastoreSummary'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch Vsphere datastore list
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/hypervisor-list:
+    post:
+      operationId: vsphere-hypervisor-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VsphereHypervisorListCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ProxmoxHypervisorDto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch Vsphere hypervisor list
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/network-list:
+    post:
+      operationId: vsphere-network-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkListCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/NetworkSummary'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch Vsphere network list
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/resource-pool-list:
+    post:
+      operationId: vsphere-resource-pool-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResourcePoolListCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ResourcePoolSummary'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch Vsphere resource pool list
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/update:
+    post:
+      operationId: vsphere-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVsphereCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Update Vsphere credentials
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/update/hypervisors:
+    post:
+      operationId: vsphere-update-vsphere-hypervisors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVsphereHypervisorsCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Update Vsphere credentials
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/validate:
+    post:
+      operationId: vsphere-validate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ValidateVsphereCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Validate Vsphere credentials
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/vm-template-list:
+    post:
+      operationId: vsphere-vm-template-list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VsphereVmTemplateListCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/VsphereVmTemplateData'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch Vsphere vm template list
+      tags:
+      - Vsphere cloud credential
+  /api/v1/vsphere/list:
+    get:
+      operationId: vsphere-list
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VsphereList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve list of vsphere cloud credentials
+      tags:
+      - Vsphere cloud credential
 components:
   schemas:
     AccessProfilesList:
@@ -26952,6 +28189,7 @@ components:
       - StartedEnableAi
       - DisabledAi
       - StartedDisableAi
+      - EnableDisableMaintenanceMode
       type: string
     AiCredentials:
       additionalProperties: false
@@ -26964,7 +28202,6 @@ components:
             id: 0
           - name: name
             id: 0
-          apiKey: apiKey
           organizationName: organizationName
           name: name
           id: 0
@@ -26977,7 +28214,6 @@ components:
             id: 0
           - name: name
             id: 0
-          apiKey: apiKey
           organizationName: organizationName
           name: name
           id: 0
@@ -26998,7 +28234,6 @@ components:
       additionalProperties: false
       example:
         isDefault: true
-        apiKey: apiKey
         name: name
         id: 0
         type: null
@@ -27011,9 +28246,6 @@ components:
           nullable: true
           type: string
         name:
-          nullable: true
-          type: string
-        apiKey:
           nullable: true
           type: string
         type:
@@ -27031,7 +28263,6 @@ components:
           id: 0
         - name: name
           id: 0
-        apiKey: apiKey
         organizationName: organizationName
         name: name
         id: 0
@@ -27045,9 +28276,6 @@ components:
           nullable: true
           type: string
         name:
-          nullable: true
-          type: string
-        apiKey:
           nullable: true
           type: string
         type:
@@ -27066,6 +28294,18 @@ components:
           type: array
         isDefault:
           type: boolean
+      type: object
+    AiListDto:
+      additionalProperties: false
+      example:
+        data: ""
+        totalCount: 0
+      properties:
+        data:
+          nullable: true
+        totalCount:
+          format: int32
+          type: integer
       type: object
     AiType:
       enum:
@@ -28016,6 +29256,7 @@ components:
         installedInstanceCount: 5
         isLocked: true
         name: name
+        isAdded: true
         normalizedName: normalizedName
         securityReportSummary:
           high: 7
@@ -28070,6 +29311,9 @@ components:
           type: string
         repository:
           $ref: '#/components/schemas/Repository'
+        isAdded:
+          nullable: true
+          type: boolean
       type: object
     AvailablePackagesList:
       additionalProperties: false
@@ -28097,6 +29341,7 @@ components:
           installedInstanceCount: 5
           isLocked: true
           name: name
+          isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
             high: 7
@@ -28127,6 +29372,7 @@ components:
           installedInstanceCount: 5
           isLocked: true
           name: name
+          isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
             high: 7
@@ -28145,36 +29391,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    AwsBlockDeviceMappingsCommand:
-      additionalProperties: false
-      example:
-        imageId: imageId
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        imageId:
-          nullable: true
-          type: string
-      type: object
-    AwsCommonImages:
-      additionalProperties: false
-      example:
-        displayName: displayName
-        name: name
-        id: id
-      properties:
-        name:
-          nullable: true
-          type: string
-        id:
-          nullable: true
-          type: string
-        displayName:
-          nullable: true
-          type: string
       type: object
     AwsCredentialList:
       additionalProperties: false
@@ -28234,39 +29450,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    AwsExtendedImagesListDto:
-      additionalProperties: false
-      example:
-        ownerAlias: ownerAlias
-        name: name
-        description: description
-        platformDetails: platformDetails
-        logo: logo
-        id: id
-        ownerId: ownerId
-      properties:
-        id:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-        description:
-          nullable: true
-          type: string
-        platformDetails:
-          nullable: true
-          type: string
-        ownerId:
-          nullable: true
-          type: string
-        ownerAlias:
-          nullable: true
-          type: string
-        logo:
-          nullable: true
-          type: string
       type: object
     AwsFlavorList:
       additionalProperties: false
@@ -28335,35 +29518,6 @@ components:
           nullable: true
           type: string
       type: object
-    AwsImagesPostList:
-      additionalProperties: false
-      example:
-        data:
-        - ownerAlias: ownerAlias
-          name: name
-          description: description
-          platformDetails: platformDetails
-          logo: logo
-          id: id
-          ownerId: ownerId
-        - ownerAlias: ownerAlias
-          name: name
-          description: description
-          platformDetails: platformDetails
-          logo: logo
-          id: id
-          ownerId: ownerId
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/AwsExtendedImagesListDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      type: object
     AwsImagesPostListCommand:
       additionalProperties: false
       example:
@@ -28376,6 +29530,7 @@ components:
         owners:
         - owners
         - owners
+        projectId: 5
         latest: true
       properties:
         cloudId:
@@ -28405,25 +29560,10 @@ components:
             type: string
           nullable: true
           type: array
-      type: object
-    AwsOwnerDetails:
-      additionalProperties: false
-      example:
-        image:
-          displayName: displayName
-          name: name
-          id: id
-        ownerName: ownerName
-        ownerId: ownerId
-      properties:
-        ownerId:
+        projectId:
+          format: int32
           nullable: true
-          type: string
-        ownerName:
-          nullable: true
-          type: string
-        image:
-          $ref: '#/components/schemas/AwsCommonImages'
+          type: integer
       type: object
     AwsRegionDto:
       additionalProperties: false
@@ -28471,23 +29611,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    AzureCommonImages:
-      additionalProperties: false
-      example:
-        displayName: displayName
-        name: name
-        id: id
-      properties:
-        name:
-          nullable: true
-          type: string
-        id:
-          nullable: true
-          type: string
-        displayName:
-          nullable: true
-          type: string
       type: object
     AzureCredentialList:
       additionalProperties: false
@@ -28718,25 +29841,6 @@ components:
           nullable: true
           type: number
       type: object
-    AzureImageList:
-      additionalProperties: false
-      example:
-        data:
-        - name: name
-          id: id
-        - name: name
-          id: id
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      type: object
     AzureLocationsCommand:
       additionalProperties: false
       example:
@@ -28774,21 +29878,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    AzurePublisherDetails:
-      additionalProperties: false
-      example:
-        image:
-          displayName: displayName
-          name: name
-          id: id
-        publisher: publisher
-      properties:
-        publisher:
-          nullable: true
-          type: string
-        image:
-          $ref: '#/components/schemas/AzureCommonImages'
       type: object
     AzurePublishersList:
       additionalProperties: false
@@ -29622,10 +30711,12 @@ components:
           isTanzu: true
           windowsPrice: windowsPrice
           isAws: true
+          isVsphere: true
           isOpenshift: true
           maxDataDiskCount: 5
           windowsSpotPrice: windowsSpotPrice
           isOpenstack: true
+          cloudType: null
           existsLinuxSpotPrice: true
           name: name
           id: 0
@@ -29642,10 +30733,12 @@ components:
           isTanzu: true
           windowsPrice: windowsPrice
           isAws: true
+          isVsphere: true
           isOpenshift: true
           maxDataDiskCount: 5
           windowsSpotPrice: windowsSpotPrice
           isOpenstack: true
+          cloudType: null
           existsLinuxSpotPrice: true
           name: name
           id: 0
@@ -29676,10 +30769,12 @@ components:
         isTanzu: true
         windowsPrice: windowsPrice
         isAws: true
+        isVsphere: true
         isOpenshift: true
         maxDataDiskCount: 5
         windowsSpotPrice: windowsSpotPrice
         isOpenstack: true
+        cloudType: null
         existsLinuxSpotPrice: true
         name: name
         id: 0
@@ -29721,6 +30816,8 @@ components:
           type: boolean
         isOpenshift:
           type: boolean
+        isVsphere:
+          type: boolean
         projectName:
           nullable: true
           type: string
@@ -29744,6 +30841,8 @@ components:
         windowsPrice:
           nullable: true
           type: string
+        cloudType:
+          $ref: '#/components/schemas/CloudType'
       type: object
     BoundImagesForProjectsList:
       additionalProperties: false
@@ -29752,6 +30851,7 @@ components:
         - imageId: imageId
           size: 1.4658129805029452
           isOpenstack: true
+          cloudType: null
           cloudId: 5
           name: name
           isWindows: true
@@ -29763,6 +30863,7 @@ components:
         - imageId: imageId
           size: 1.4658129805029452
           isOpenstack: true
+          cloudType: null
           cloudId: 5
           name: name
           isWindows: true
@@ -29788,6 +30889,7 @@ components:
         imageId: imageId
         size: 1.4658129805029452
         isOpenstack: true
+        cloudType: null
         cloudId: 5
         name: name
         isWindows: true
@@ -29829,6 +30931,8 @@ components:
           type: integer
         isWindows:
           type: boolean
+        cloudType:
+          $ref: '#/components/schemas/CloudType'
       type: object
     BridgeListCommand:
       additionalProperties: false
@@ -30243,6 +31347,7 @@ components:
             installedInstanceCount: 5
             isLocked: true
             name: name
+            isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
               high: 7
@@ -30273,6 +31378,7 @@ components:
             installedInstanceCount: 5
             isLocked: true
             name: name
+            isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
               high: 7
@@ -30317,6 +31423,7 @@ components:
             installedInstanceCount: 5
             isLocked: true
             name: name
+            isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
               high: 7
@@ -30347,6 +31454,7 @@ components:
             installedInstanceCount: 5
             isLocked: true
             name: name
+            isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
               high: 7
@@ -30405,6 +31513,7 @@ components:
           installedInstanceCount: 5
           isLocked: true
           name: name
+          isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
             high: 7
@@ -30435,6 +31544,7 @@ components:
           installedInstanceCount: 5
           isLocked: true
           name: name
+          isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
             high: 7
@@ -30816,6 +31926,7 @@ components:
       type: string
     CloudType:
       enum:
+      - NONE
       - AWS
       - AZURE
       - GOOGLE
@@ -30823,6 +31934,7 @@ components:
       - PROXMOX
       - TANZU
       - OPENSHIFT
+      - VSPHERE
       type: string
     CommitStandAloneVmCommand:
       additionalProperties: false
@@ -31460,6 +32572,7 @@ components:
       example:
         organizationId: 0
         proxmoxStorage: null
+        wasmEnabled: true
         octaviaEnabled: true
         name: name
         exposeNodePortOnBastion: true
@@ -31488,6 +32601,8 @@ components:
         proxmoxStorage:
           $ref: '#/components/schemas/ProxmoxStorage'
         nvidiaGpuOperatorEnabled:
+          type: boolean
+        wasmEnabled:
           type: boolean
       type: object
     CreateNtpServerCommand:
@@ -32054,8 +33169,6 @@ components:
         size: 6
         standaloneVmId: 0
         name: name
-        lunId: 1
-        deviceName: deviceName
       properties:
         standaloneVmId:
           format: int32
@@ -32069,13 +33182,6 @@ components:
         volumeType:
           nullable: true
           type: string
-        deviceName:
-          nullable: true
-          type: string
-        lunId:
-          format: int32
-          nullable: true
-          type: integer
       type: object
     CreateStandAloneVmCommand:
       additionalProperties: false
@@ -32282,15 +33388,124 @@ components:
           nullable: true
           type: array
       type: object
+    CreateVsphereCommand:
+      additionalProperties: false
+      example:
+        continent: continent
+        datacenterName: datacenterName
+        drsEnabled: true
+        privateNetwork:
+          endAllocationRange: endAllocationRange
+          netMask: 6
+          name: name
+          ipAddress: ipAddress
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+        datacenterId: datacenterId
+        datastoreName: datastoreName
+        resourcePoolName: resourcePoolName
+        url: url
+        publicNetwork:
+          endAllocationRange: endAllocationRange
+          netMask: 6
+          name: name
+          ipAddress: ipAddress
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+        organizationId: 0
+        password: password
+        name: name
+        hypervisors:
+        - hypervisors
+        - hypervisors
+        vmTemplateName: vmTemplateName
+        username: username
+      properties:
+        name:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        url:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenterId:
+          nullable: true
+          type: string
+        datacenterName:
+          nullable: true
+          type: string
+        datastoreName:
+          nullable: true
+          type: string
+        resourcePoolName:
+          nullable: true
+          type: string
+        drsEnabled:
+          type: boolean
+        vmTemplateName:
+          nullable: true
+          type: string
+        continent:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        hypervisors:
+          items:
+            type: string
+          nullable: true
+          type: array
+        publicNetwork:
+          $ref: '#/components/schemas/CreateVsphereNetworkDto'
+        privateNetwork:
+          $ref: '#/components/schemas/CreateVsphereNetworkDto'
+      type: object
+    CreateVsphereNetworkDto:
+      additionalProperties: false
+      example:
+        endAllocationRange: endAllocationRange
+        netMask: 6
+        name: name
+        ipAddress: ipAddress
+        beginAllocationRange: beginAllocationRange
+        gateway: gateway
+      properties:
+        name:
+          nullable: true
+          type: string
+        gateway:
+          nullable: true
+          type: string
+        ipAddress:
+          nullable: true
+          type: string
+        netMask:
+          format: int32
+          type: integer
+        beginAllocationRange:
+          nullable: true
+          type: string
+        endAllocationRange:
+          nullable: true
+          type: string
+      type: object
     CredentialChartDto:
       additionalProperties: false
       example:
+        vsphere: 7
         openshift: 4
         openstack: 7
         google: 9
         aws: 5
         tanzu: 3
-        totalCount: 7
+        totalCount: 1
         proxmox: 2
         azure: 2
       properties:
@@ -32313,6 +33528,9 @@ components:
           format: int32
           type: integer
         openshift:
+          format: int32
+          type: integer
+        vsphere:
           format: int32
           type: integer
         totalCount:
@@ -32748,7 +33966,7 @@ components:
             name: name
             id: 1
         servers:
-          totalOpenshiftCount: 3
+          totalOpenshiftCount: 6
           waiting:
           - names:
             - names
@@ -32771,7 +33989,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalGoogleCount: 9
+          totalGoogleCount: 6
           tanzu:
           - names:
             - names
@@ -32795,8 +34013,9 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalCpu: 1
-          totalAzureCount: 6
+          totalCpu: 6
+          totalAzureCount: 8
+          totalVsphereCount: 2
           proxmox:
           - names:
             - names
@@ -32819,8 +34038,8 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalUpdatingCount: 5
-          totalDiskSize: 7
+          totalUpdatingCount: 9
+          totalDiskSize: 1
           google:
           - names:
             - names
@@ -32843,28 +34062,28 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalRam: 6
-          totalSucceededCount: 4
-          totalOpenstackCount: 8
+          totalRam: 7
+          totalSucceededCount: 5
+          totalOpenstackCount: 9
           totalPendingCount: 9
           usedResources:
-          - diskSize: 2
-            maxRam: 5
+          - diskSize: 6
+            maxRam: 3
             cpu: 6
-            maxCpu: 6
+            maxCpu: 3
             projectName: projectName
-            maxDiskSize: 3
-            projectId: 1
-            ram: 6
-          - diskSize: 2
-            maxRam: 5
+            maxDiskSize: 7
+            projectId: 6
+            ram: 5
+          - diskSize: 6
+            maxRam: 3
             cpu: 6
-            maxCpu: 6
+            maxCpu: 3
             projectName: projectName
-            maxDiskSize: 3
-            projectId: 1
-            ram: 6
-          totalProxmoxCount: 6
+            maxDiskSize: 7
+            projectId: 6
+            ram: 5
+          totalProxmoxCount: 1
           deleting:
           - names:
             - names
@@ -32876,7 +34095,18 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalFailedCount: 1
+          totalFailedCount: 4
+          vsphere:
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
           openstack:
           - names:
             - names
@@ -32888,8 +34118,8 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalAwsCount: 9
-          totalTanzuCount: 6
+          totalAwsCount: 6
+          totalTanzuCount: 3
           aws:
           - names:
             - names
@@ -32924,7 +34154,7 @@ components:
             projectName: projectName
             projectId: 1
         standAloneVms:
-          totalOpenshiftCount: 3
+          totalOpenshiftCount: 6
           waiting:
           - names:
             - names
@@ -32947,7 +34177,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalGoogleCount: 9
+          totalGoogleCount: 6
           tanzu:
           - names:
             - names
@@ -32971,8 +34201,9 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalCpu: 1
-          totalAzureCount: 6
+          totalCpu: 6
+          totalAzureCount: 8
+          totalVsphereCount: 2
           proxmox:
           - names:
             - names
@@ -32995,8 +34226,8 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalUpdatingCount: 5
-          totalDiskSize: 7
+          totalUpdatingCount: 9
+          totalDiskSize: 1
           google:
           - names:
             - names
@@ -33019,28 +34250,28 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalRam: 6
-          totalSucceededCount: 4
-          totalOpenstackCount: 8
+          totalRam: 7
+          totalSucceededCount: 5
+          totalOpenstackCount: 9
           totalPendingCount: 9
           usedResources:
-          - diskSize: 2
-            maxRam: 5
+          - diskSize: 6
+            maxRam: 3
             cpu: 6
-            maxCpu: 6
+            maxCpu: 3
             projectName: projectName
-            maxDiskSize: 3
-            projectId: 1
-            ram: 6
-          - diskSize: 2
-            maxRam: 5
+            maxDiskSize: 7
+            projectId: 6
+            ram: 5
+          - diskSize: 6
+            maxRam: 3
             cpu: 6
-            maxCpu: 6
+            maxCpu: 3
             projectName: projectName
-            maxDiskSize: 3
-            projectId: 1
-            ram: 6
-          totalProxmoxCount: 6
+            maxDiskSize: 7
+            projectId: 6
+            ram: 5
+          totalProxmoxCount: 1
           deleting:
           - names:
             - names
@@ -33052,7 +34283,18 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalFailedCount: 1
+          totalFailedCount: 4
+          vsphere:
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
           openstack:
           - names:
             - names
@@ -33064,8 +34306,8 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalAwsCount: 9
-          totalTanzuCount: 6
+          totalAwsCount: 6
+          totalTanzuCount: 3
           aws:
           - names:
             - names
@@ -33104,12 +34346,13 @@ components:
           id: 0
           users: 6
         cloudCredentials:
+          vsphere: 7
           openshift: 4
           openstack: 7
           google: 9
           aws: 5
           tanzu: 3
-          totalCount: 7
+          totalCount: 1
           proxmox: 2
           azure: 2
       properties:
@@ -33123,6 +34366,86 @@ components:
           $ref: '#/components/schemas/ServerChartDto'
         standAloneVms:
           $ref: '#/components/schemas/ServerChartDto'
+      type: object
+    DatacenterListCommand:
+      additionalProperties: false
+      example:
+        password: password
+        datacenterName: datacenterName
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenterName:
+          nullable: true
+          type: string
+      type: object
+    DatacenterSummary:
+      additionalProperties: false
+      example:
+        name: name
+        datacenter: datacenter
+      properties:
+        datacenter:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+      type: object
+    DatastoreListCommand:
+      additionalProperties: false
+      example:
+        password: password
+        datacenterId: datacenterId
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenterId:
+          nullable: true
+          type: string
+      type: object
+    DatastoreSummary:
+      additionalProperties: false
+      example:
+        freeSpace: 6
+        datastore: datastore
+        name: name
+        type: type
+        capacity: 0
+      properties:
+        capacity:
+          format: int64
+          type: integer
+        datastore:
+          nullable: true
+          type: string
+        freeSpace:
+          format: int64
+          type: integer
+        name:
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
       type: object
     DateFilter:
       enum:
@@ -34554,19 +35877,6 @@ components:
           nullable: true
           type: string
       type: object
-    GoogleCommonImages:
-      additionalProperties: false
-      example:
-        displayName: displayName
-        name: name
-      properties:
-        name:
-          nullable: true
-          type: string
-        displayName:
-          nullable: true
-          type: string
-      type: object
     GoogleCredentialList:
       additionalProperties: false
       example:
@@ -34783,39 +36093,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    GoogleImageList:
-      additionalProperties: false
-      example:
-        data:
-        - name: name
-          id: id
-        - name: name
-          id: id
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      type: object
-    GoogleOwnerDetails:
-      additionalProperties: false
-      example:
-        owner: owner
-        image:
-          displayName: displayName
-          name: name
-      properties:
-        owner:
-          nullable: true
-          type: string
-        image:
-          $ref: '#/components/schemas/GoogleCommonImages'
       type: object
     GroupedBillingInfo:
       additionalProperties: false
@@ -35493,6 +36770,7 @@ components:
         canDownload: true
         canDelete: true
         id: 0
+        partnerId: 5
         projectName: projectName
         projectId: 6
         kubeConfigRoleName: kubeConfigRoleName
@@ -35511,6 +36789,9 @@ components:
           format: int32
           type: integer
         organizationId:
+          format: int32
+          type: integer
+        partnerId:
           format: int32
           type: integer
         projectName:
@@ -35558,6 +36839,7 @@ components:
           canDownload: true
           canDelete: true
           id: 0
+          partnerId: 5
           projectName: projectName
           projectId: 6
           kubeConfigRoleName: kubeConfigRoleName
@@ -35574,6 +36856,7 @@ components:
           canDownload: true
           canDelete: true
           id: 0
+          partnerId: 5
           projectName: projectName
           projectId: 6
           kubeConfigRoleName: kubeConfigRoleName
@@ -35996,6 +37279,7 @@ components:
           organizationId: 6
           createdAt: createdAt
           proxmoxStorage: proxmoxStorage
+          wasmEnabled: true
           createdBy: createdBy
           octaviaEnabled: true
           isLocked: true
@@ -36018,6 +37302,7 @@ components:
           organizationId: 6
           createdAt: createdAt
           proxmoxStorage: proxmoxStorage
+          wasmEnabled: true
           createdBy: createdBy
           octaviaEnabled: true
           isLocked: true
@@ -36054,6 +37339,7 @@ components:
         organizationId: 6
         createdAt: createdAt
         proxmoxStorage: proxmoxStorage
+        wasmEnabled: true
         createdBy: createdBy
         octaviaEnabled: true
         isLocked: true
@@ -36114,6 +37400,8 @@ components:
           nullable: true
           type: string
         nvidiaGpuOperatorEnabled:
+          type: boolean
+        wasmEnabled:
           type: boolean
       type: object
     KubernetesProfilesLockManagerCommand:
@@ -36564,6 +37852,27 @@ components:
           format: int32
           type: integer
       type: object
+    NetworkListCommand:
+      additionalProperties: false
+      example:
+        password: password
+        datacenterId: datacenterId
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenterId:
+          nullable: true
+          type: string
+      type: object
     NetworkPolicies:
       additionalProperties: false
       example:
@@ -36610,6 +37919,23 @@ components:
           nullable: true
           type: string
         age:
+          nullable: true
+          type: string
+      type: object
+    NetworkSummary:
+      additionalProperties: false
+      example:
+        name: name
+        type: type
+        network: network
+      properties:
+        network:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        type:
           nullable: true
           type: string
       type: object
@@ -36842,6 +38168,7 @@ components:
           - ingressWhitelist
           - ingressWhitelist
           revision: 6
+          forcePodResource: true
           organizationId: 1
           forbidHttpIngress: true
           allowedRepo:
@@ -36869,6 +38196,7 @@ components:
           - ingressWhitelist
           - ingressWhitelist
           revision: 6
+          forcePodResource: true
           organizationId: 1
           forbidHttpIngress: true
           allowedRepo:
@@ -36910,6 +38238,7 @@ components:
         - ingressWhitelist
         - ingressWhitelist
         revision: 6
+        forcePodResource: true
         organizationId: 1
         forbidHttpIngress: true
         allowedRepo:
@@ -36939,6 +38268,8 @@ components:
         uniqueIngresses:
           type: boolean
         uniqueServiceSelector:
+          type: boolean
+        forcePodResource:
           type: boolean
         allowedRepo:
           items:
@@ -37650,25 +38981,6 @@ components:
           nullable: true
           type: string
       type: object
-    OpenstackImageList:
-      additionalProperties: false
-      example:
-        data:
-        - name: name
-          id: id
-        - name: name
-          id: id
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      type: object
     OpenstackNetworkDto:
       additionalProperties: false
       example:
@@ -37896,40 +39208,38 @@ components:
       additionalProperties: false
       example:
         data:
-        - organizationName: organizationName
+        - organizationId: 6
+          isDefault: true
+          organizationName: organizationName
+          createdBy: createdBy
+          isLocked: true
           lastModifiedBy: lastModifiedBy
+          name: name
           prometheusUrl: prometheusUrl
+          prometheusUsername: prometheusUsername
           rules:
           - prometheusRuleName: prometheusRuleName
             prometheusRuleId: 1
           - prometheusRuleName: prometheusRuleName
             prometheusRuleId: 1
-          organizationId: 6
-          isDefault: true
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          prometheusUsername: prometheusUsername
           id: 0
           lastModified: lastModified
-          prometheusPassword: prometheusPassword
-        - organizationName: organizationName
+        - organizationId: 6
+          isDefault: true
+          organizationName: organizationName
+          createdBy: createdBy
+          isLocked: true
           lastModifiedBy: lastModifiedBy
+          name: name
           prometheusUrl: prometheusUrl
+          prometheusUsername: prometheusUsername
           rules:
           - prometheusRuleName: prometheusRuleName
             prometheusRuleId: 1
           - prometheusRuleName: prometheusRuleName
             prometheusRuleId: 1
-          organizationId: 6
-          isDefault: true
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          prometheusUsername: prometheusUsername
           id: 0
           lastModified: lastModified
-          prometheusPassword: prometheusPassword
         totalCount: 5
       properties:
         data:
@@ -37987,23 +39297,22 @@ components:
     OperationCredentialsListDto:
       additionalProperties: false
       example:
+        organizationId: 6
+        isDefault: true
         organizationName: organizationName
+        createdBy: createdBy
+        isLocked: true
         lastModifiedBy: lastModifiedBy
+        name: name
         prometheusUrl: prometheusUrl
+        prometheusUsername: prometheusUsername
         rules:
         - prometheusRuleName: prometheusRuleName
           prometheusRuleId: 1
         - prometheusRuleName: prometheusRuleName
           prometheusRuleId: 1
-        organizationId: 6
-        isDefault: true
-        createdBy: createdBy
-        isLocked: true
-        name: name
-        prometheusUsername: prometheusUsername
         id: 0
         lastModified: lastModified
-        prometheusPassword: prometheusPassword
       properties:
         id:
           format: int32
@@ -38012,9 +39321,6 @@ components:
           nullable: true
           type: string
         prometheusUsername:
-          nullable: true
-          type: string
-        prometheusPassword:
           nullable: true
           type: string
         prometheusUrl:
@@ -38403,9 +39709,9 @@ components:
       example:
         whiteListDomains:
         - name: name
-          id: 9
+          id: 7
         - name: name
-          id: 9
+          id: 7
         country: country
         address: address
         city: city
@@ -38421,7 +39727,7 @@ components:
           id: 0
         logo: logo
         requiredUserApproval: true
-        id: 7
+        id: 2
         allowRegistration: true
         email: email
         vatNumber: vatNumber
@@ -39075,6 +40381,11 @@ components:
           - reasons
           - reasons
           enable: true
+        disableMaintenanceMode:
+          reasons:
+          - reasons
+          - reasons
+          enable: true
         commit:
           reasons:
           - reasons
@@ -39091,6 +40402,11 @@ components:
           - reasons
           enable: true
         disableAi:
+          reasons:
+          - reasons
+          - reasons
+          enable: true
+        enableMaintenanceMode:
           reasons:
           - reasons
           - reasons
@@ -39230,6 +40546,10 @@ components:
         disableAi:
           $ref: '#/components/schemas/ProjectButtonStatusDto'
         aiAssistant:
+          $ref: '#/components/schemas/ProjectButtonStatusDto'
+        enableMaintenanceMode:
+          $ref: '#/components/schemas/ProjectButtonStatusDto'
+        disableMaintenanceMode:
           $ref: '#/components/schemas/ProjectButtonStatusDto'
       type: object
     ProjectAppDetailsDto:
@@ -39682,6 +41002,7 @@ components:
         accessIp: accessIp
         organizationName: organizationName
         hasSelectedFlavors: true
+        isDrsEnabled: true
         cpuLimit: 7
         quotaId: 1
         vmUsedCpu: 6
@@ -39707,6 +41028,7 @@ components:
         ramLimit: 1
         opaProfileName: opaProfileName
         s3CredentialId: 6
+        isProjectMaintenanceModeEnabled: true
         isDeprecated: true
         allowSpotVMs: true
         vmCpuLimit: 6
@@ -39718,6 +41040,7 @@ components:
         hasKubeConfigFile: true
         projectStatus: null
         alertingProfileId: 6
+        wasmEnabled: true
         cloudName: cloudName
         isBackupEnabled: true
         hypervisors:
@@ -39786,6 +41109,8 @@ components:
         hasSelectedFlavors:
           type: boolean
         isMaintenanceModeEnabled:
+          type: boolean
+        isProjectMaintenanceModeEnabled:
           type: boolean
         isDeprecated:
           type: boolean
@@ -39903,6 +41228,8 @@ components:
           type: boolean
         hasNfsServer:
           type: boolean
+        wasmEnabled:
+          type: boolean
         availabilityZones:
           items:
             type: string
@@ -39915,12 +41242,16 @@ components:
           type: array
         proxmoxStorage:
           $ref: '#/components/schemas/ProxmoxStorage'
+        isDrsEnabled:
+          type: boolean
       type: object
     ProjectDetailsForVmsDto:
       additionalProperties: false
       example:
+        isProjectMaintenanceModeEnabled: true
         organizationName: organizationName
         hasSelectedFlavors: true
+        isDrsEnabled: true
         allowSpotVMs: true
         cloudCredentialRevision: 1
         availabilityZones:
@@ -39969,10 +41300,14 @@ components:
           type: integer
         isLocked:
           type: boolean
+        isProjectMaintenanceModeEnabled:
+          type: boolean
         hasSelectedFlavors:
           nullable: true
           type: boolean
         isMaintenanceModeEnabled:
+          type: boolean
+        isDrsEnabled:
           type: boolean
         projectCloudRevision:
           format: int32
@@ -40184,6 +41519,7 @@ components:
         kubernetesCurrentVersion: kubernetesCurrentVersion
         allowFullSpotKubernetes: true
         lastModified: lastModified
+        isMaintenanceModeEnabled: true
         status: status
       properties:
         id:
@@ -40197,6 +41533,8 @@ components:
         isLocked:
           type: boolean
         hasKubeConfigFile:
+          type: boolean
+        isMaintenanceModeEnabled:
           type: boolean
         cloudCredentialName:
           nullable: true
@@ -40317,6 +41655,19 @@ components:
           type: boolean
       type: object
     ProjectLockManagerCommand:
+      additionalProperties: false
+      example:
+        mode: mode
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        mode:
+          nullable: true
+          type: string
+      type: object
+    ProjectMaintenanceModeCommand:
       additionalProperties: false
       example:
         mode: mode
@@ -40558,6 +41909,7 @@ components:
           kubernetesCurrentVersion: kubernetesCurrentVersion
           allowFullSpotKubernetes: true
           lastModified: lastModified
+          isMaintenanceModeEnabled: true
           status: status
         - boundUsers:
           - userName: userName
@@ -40598,6 +41950,7 @@ components:
           kubernetesCurrentVersion: kubernetesCurrentVersion
           allowFullSpotKubernetes: true
           lastModified: lastModified
+          isMaintenanceModeEnabled: true
           status: status
         totalCount: 3
       properties:
@@ -40893,7 +42246,7 @@ components:
     PrometheusLabelUpdateDto:
       additionalProperties: false
       example:
-        id: 6
+        id: 1
         label: label
         value: value
       properties:
@@ -40948,10 +42301,10 @@ components:
     PrometheusOrganizationDiscountDto:
       additionalProperties: false
       example:
-        globalDiscountRate: 5.637376656633329
-        ruleDiscountRate: 5.962133916683182
+        globalDiscountRate: 5.962133916683182
+        ruleDiscountRate: 1.4658129805029452
         name: name
-        id: 1
+        id: 6
       properties:
         id:
           format: int32
@@ -40975,20 +42328,20 @@ components:
         type: type
         url: url
         boundOrganizations:
-        - globalDiscountRate: 5.637376656633329
-          ruleDiscountRate: 5.962133916683182
+        - globalDiscountRate: 5.962133916683182
+          ruleDiscountRate: 1.4658129805029452
           name: name
-          id: 1
-        - globalDiscountRate: 5.637376656633329
-          ruleDiscountRate: 5.962133916683182
+          id: 6
+        - globalDiscountRate: 5.962133916683182
+          ruleDiscountRate: 1.4658129805029452
           name: name
-          id: 1
+          id: 6
         billingStartDate: billingStartDate
         labels:
-        - id: 6
+        - id: 1
           label: label
           value: value
-        - id: 6
+        - id: 1
           label: label
           value: value
         operationCredential:
@@ -41000,9 +42353,9 @@ components:
         partner:
           whiteListDomains:
           - name: name
-            id: 9
+            id: 7
           - name: name
-            id: 9
+            id: 7
           country: country
           address: address
           city: city
@@ -41018,12 +42371,12 @@ components:
             id: 0
           logo: logo
           requiredUserApproval: true
-          id: 7
+          id: 2
           allowRegistration: true
           email: email
           vatNumber: vatNumber
         createdBy: createdBy
-        price: 2.3021358869347655
+        price: 5.637376656633329
         name: name
         id: 0
         lastModified: lastModified
@@ -41092,20 +42445,20 @@ components:
           type: type
           url: url
           boundOrganizations:
-          - globalDiscountRate: 5.637376656633329
-            ruleDiscountRate: 5.962133916683182
+          - globalDiscountRate: 5.962133916683182
+            ruleDiscountRate: 1.4658129805029452
             name: name
-            id: 1
-          - globalDiscountRate: 5.637376656633329
-            ruleDiscountRate: 5.962133916683182
+            id: 6
+          - globalDiscountRate: 5.962133916683182
+            ruleDiscountRate: 1.4658129805029452
             name: name
-            id: 1
+            id: 6
           billingStartDate: billingStartDate
           labels:
-          - id: 6
+          - id: 1
             label: label
             value: value
-          - id: 6
+          - id: 1
             label: label
             value: value
           operationCredential:
@@ -41117,9 +42470,9 @@ components:
           partner:
             whiteListDomains:
             - name: name
-              id: 9
+              id: 7
             - name: name
-              id: 9
+              id: 7
             country: country
             address: address
             city: city
@@ -41135,12 +42488,12 @@ components:
               id: 0
             logo: logo
             requiredUserApproval: true
-            id: 7
+            id: 2
             allowRegistration: true
             email: email
             vatNumber: vatNumber
           createdBy: createdBy
-          price: 2.3021358869347655
+          price: 5.637376656633329
           name: name
           id: 0
           lastModified: lastModified
@@ -41150,20 +42503,20 @@ components:
           type: type
           url: url
           boundOrganizations:
-          - globalDiscountRate: 5.637376656633329
-            ruleDiscountRate: 5.962133916683182
+          - globalDiscountRate: 5.962133916683182
+            ruleDiscountRate: 1.4658129805029452
             name: name
-            id: 1
-          - globalDiscountRate: 5.637376656633329
-            ruleDiscountRate: 5.962133916683182
+            id: 6
+          - globalDiscountRate: 5.962133916683182
+            ruleDiscountRate: 1.4658129805029452
             name: name
-            id: 1
+            id: 6
           billingStartDate: billingStartDate
           labels:
-          - id: 6
+          - id: 1
             label: label
             value: value
-          - id: 6
+          - id: 1
             label: label
             value: value
           operationCredential:
@@ -41175,9 +42528,9 @@ components:
           partner:
             whiteListDomains:
             - name: name
-              id: 9
+              id: 7
             - name: name
-              id: 9
+              id: 7
             country: country
             address: address
             city: city
@@ -41193,16 +42546,16 @@ components:
               id: 0
             logo: logo
             requiredUserApproval: true
-            id: 7
+            id: 2
             allowRegistration: true
             email: email
             vatNumber: vatNumber
           createdBy: createdBy
-          price: 2.3021358869347655
+          price: 5.637376656633329
           name: name
           id: 0
           lastModified: lastModified
-        totalCount: 3
+        totalCount: 9
       properties:
         data:
           items:
@@ -41344,25 +42697,6 @@ components:
           type: boolean
         usedByServer:
           type: boolean
-      type: object
-    ProxmoxImageList:
-      additionalProperties: false
-      example:
-        data:
-        - name: name
-          id: id
-        - name: name
-          id: id
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
       type: object
     ProxmoxList:
       additionalProperties: false
@@ -41611,6 +42945,25 @@ components:
       - NFS
       - OpenEBS
       type: string
+    PublicImageList:
+      additionalProperties: false
+      example:
+        data:
+        - name: name
+          id: id
+        - name: name
+          id: id
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     PvcDto:
       additionalProperties: false
       example:
@@ -42001,6 +43354,40 @@ components:
           nullable: true
           type: array
       type: object
+    ResourcePoolListCommand:
+      additionalProperties: false
+      example:
+        password: password
+        datacenterId: datacenterId
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenterId:
+          nullable: true
+          type: string
+      type: object
+    ResourcePoolSummary:
+      additionalProperties: false
+      example:
+        name: name
+        resourcePool: resourcePool
+      properties:
+        name:
+          nullable: true
+          type: string
+        resourcePool:
+          nullable: true
+          type: string
+      type: object
     RestartDaemonSetCommand:
       additionalProperties: false
       example:
@@ -42141,13 +43528,13 @@ components:
     RuleForUpdateDto:
       additionalProperties: false
       example:
-        organizationId: 1
+        organizationId: 5
         metricName: metricName
         labelsToUpdate:
-        - id: 6
+        - id: 1
           label: label
           value: value
-        - id: 6
+        - id: 1
           label: label
           value: value
         price: 0.8008281904610115
@@ -42156,7 +43543,7 @@ components:
         labelsToDelete:
         - id: 6
         - id: 6
-        operationCredentialId: 5
+        operationCredentialId: 2
         type: null
         labelsToAdd:
         - label: label
@@ -42399,7 +43786,7 @@ components:
     ServerChartDto:
       additionalProperties: false
       example:
-        totalOpenshiftCount: 3
+        totalOpenshiftCount: 6
         waiting:
         - names:
           - names
@@ -42422,7 +43809,7 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalGoogleCount: 9
+        totalGoogleCount: 6
         tanzu:
         - names:
           - names
@@ -42446,8 +43833,9 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalCpu: 1
-        totalAzureCount: 6
+        totalCpu: 6
+        totalAzureCount: 8
+        totalVsphereCount: 2
         proxmox:
         - names:
           - names
@@ -42470,8 +43858,8 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalUpdatingCount: 5
-        totalDiskSize: 7
+        totalUpdatingCount: 9
+        totalDiskSize: 1
         google:
         - names:
           - names
@@ -42494,28 +43882,28 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalRam: 6
-        totalSucceededCount: 4
-        totalOpenstackCount: 8
+        totalRam: 7
+        totalSucceededCount: 5
+        totalOpenstackCount: 9
         totalPendingCount: 9
         usedResources:
-        - diskSize: 2
-          maxRam: 5
+        - diskSize: 6
+          maxRam: 3
           cpu: 6
-          maxCpu: 6
+          maxCpu: 3
           projectName: projectName
-          maxDiskSize: 3
-          projectId: 1
-          ram: 6
-        - diskSize: 2
-          maxRam: 5
+          maxDiskSize: 7
+          projectId: 6
+          ram: 5
+        - diskSize: 6
+          maxRam: 3
           cpu: 6
-          maxCpu: 6
+          maxCpu: 3
           projectName: projectName
-          maxDiskSize: 3
-          projectId: 1
-          ram: 6
-        totalProxmoxCount: 6
+          maxDiskSize: 7
+          projectId: 6
+          ram: 5
+        totalProxmoxCount: 1
         deleting:
         - names:
           - names
@@ -42527,7 +43915,18 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalFailedCount: 1
+        totalFailedCount: 4
+        vsphere:
+        - names:
+          - names
+          - names
+          projectName: projectName
+          projectId: 1
+        - names:
+          - names
+          - names
+          projectName: projectName
+          projectId: 1
         openstack:
         - names:
           - names
@@ -42539,8 +43938,8 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalAwsCount: 9
-        totalTanzuCount: 6
+        totalAwsCount: 6
+        totalTanzuCount: 3
         aws:
         - names:
           - names
@@ -42601,6 +44000,11 @@ components:
           nullable: true
           type: array
         proxmox:
+          items:
+            $ref: '#/components/schemas/ServerCommonRecordDto'
+          nullable: true
+          type: array
+        vsphere:
           items:
             $ref: '#/components/schemas/ServerCommonRecordDto'
           nullable: true
@@ -42685,6 +44089,9 @@ components:
         totalProxmoxCount:
           format: int32
           type: integer
+        totalVsphereCount:
+          format: int32
+          type: integer
         usedResources:
           items:
             $ref: '#/components/schemas/UserResourceChartDto'
@@ -42726,6 +44133,7 @@ components:
         autoscalingGroup: autoscalingGroup
         diskSize: 6
         replicaCount: 2
+        wasmEnabled: true
         hypervisor: hypervisor
         name: name
         kubernetesNodeLabels:
@@ -42757,6 +44165,8 @@ components:
           nullable: true
           type: number
         spotInstance:
+          type: boolean
+        wasmEnabled:
           type: boolean
         autoscalingGroup:
           nullable: true
@@ -42821,6 +44231,8 @@ components:
         lastModifiedBy: lastModifiedBy
         ipAddress: ipAddress
         cpu: 5
+        hypervisorId: hypervisorId
+        wasmEnabled: true
         createdBy: createdBy
         azureVmSize: azureVmSize
         providerID: providerID
@@ -42926,6 +44338,9 @@ components:
         hypervisor:
           nullable: true
           type: string
+        hypervisorId:
+          nullable: true
+          type: string
         proxmoxRole:
           $ref: '#/components/schemas/ProxmoxRole'
         proxmoxExtraDiskSize:
@@ -42942,6 +44357,8 @@ components:
           format: int32
           nullable: true
           type: integer
+        wasmEnabled:
+          type: boolean
       type: object
     ServerTemplateDto:
       additionalProperties: false
@@ -43003,6 +44420,8 @@ components:
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
+          hypervisorId: hypervisorId
+          wasmEnabled: true
           createdBy: createdBy
           azureVmSize: azureVmSize
           providerID: providerID
@@ -43048,6 +44467,8 @@ components:
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
+          hypervisorId: hypervisorId
+          wasmEnabled: true
           createdBy: createdBy
           azureVmSize: azureVmSize
           providerID: providerID
@@ -43108,6 +44529,8 @@ components:
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
+          hypervisorId: hypervisorId
+          wasmEnabled: true
           createdBy: createdBy
           azureVmSize: azureVmSize
           providerID: providerID
@@ -43153,6 +44576,8 @@ components:
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
+          hypervisorId: hypervisorId
+          wasmEnabled: true
           createdBy: createdBy
           azureVmSize: azureVmSize
           providerID: providerID
@@ -43189,6 +44614,7 @@ components:
           accessIp: accessIp
           organizationName: organizationName
           hasSelectedFlavors: true
+          isDrsEnabled: true
           cpuLimit: 7
           quotaId: 1
           vmUsedCpu: 6
@@ -43214,6 +44640,7 @@ components:
           ramLimit: 1
           opaProfileName: opaProfileName
           s3CredentialId: 6
+          isProjectMaintenanceModeEnabled: true
           isDeprecated: true
           allowSpotVMs: true
           vmCpuLimit: 6
@@ -43225,6 +44652,7 @@ components:
           hasKubeConfigFile: true
           projectStatus: null
           alertingProfileId: 6
+          wasmEnabled: true
           cloudName: cloudName
           isBackupEnabled: true
           hypervisors:
@@ -44051,6 +45479,7 @@ components:
           volumeSize: 6
           createdAt: createdAt
           spotInstance: true
+          hypervisor: hypervisor
           isWindows: true
           id: 0
           imageName: imageName
@@ -44077,6 +45506,7 @@ components:
             publicKey: publicKey
           ipAddress: ipAddress
           publicIp: publicIp
+          hypervisorId: hypervisorId
           standAloneMetaDatas:
           - id: 2
             value: value
@@ -44123,6 +45553,7 @@ components:
           volumeSize: 6
           createdAt: createdAt
           spotInstance: true
+          hypervisor: hypervisor
           isWindows: true
           id: 0
           imageName: imageName
@@ -44149,6 +45580,7 @@ components:
             publicKey: publicKey
           ipAddress: ipAddress
           publicIp: publicIp
+          hypervisorId: hypervisorId
           standAloneMetaDatas:
           - id: 2
             value: value
@@ -44164,8 +45596,10 @@ components:
           lastModified: lastModified
           status: status
         project:
+          isProjectMaintenanceModeEnabled: true
           organizationName: organizationName
           hasSelectedFlavors: true
+          isDrsEnabled: true
           allowSpotVMs: true
           cloudCredentialRevision: 1
           availabilityZones:
@@ -44555,6 +45989,7 @@ components:
         volumeSize: 6
         createdAt: createdAt
         spotInstance: true
+        hypervisor: hypervisor
         isWindows: true
         id: 0
         imageName: imageName
@@ -44581,6 +46016,7 @@ components:
           publicKey: publicKey
         ipAddress: ipAddress
         publicIp: publicIp
+        hypervisorId: hypervisorId
         standAloneMetaDatas:
         - id: 2
           value: value
@@ -44644,6 +46080,12 @@ components:
         publicIpEnabled:
           type: boolean
         publicIp:
+          nullable: true
+          type: string
+        hypervisor:
+          nullable: true
+          type: string
+        hypervisorId:
           nullable: true
           type: string
         ipAddress:
@@ -45120,55 +46562,6 @@ components:
         ram:
           format: int64
           type: integer
-      type: object
-    TanzuImageList:
-      additionalProperties: false
-      example:
-        data:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          imageId: imageId
-          name: name
-          details: ""
-          type: type
-        - createdAt: 2000-01-23T04:56:07.000+00:00
-          imageId: imageId
-          name: name
-          details: ""
-          type: type
-        totalCount: 0
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/TanzuImagesListDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      type: object
-    TanzuImagesListDto:
-      additionalProperties: false
-      example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
-        imageId: imageId
-        name: name
-        details: ""
-        type: type
-      properties:
-        imageId:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        type:
-          nullable: true
-          type: string
-        details:
-          nullable: true
       type: object
     TanzuStorageListCommand:
       additionalProperties: false
@@ -45672,6 +47065,44 @@ components:
         isBound:
           type: boolean
       type: object
+    UpdateVsphereCommand:
+      additionalProperties: false
+      example:
+        password: password
+        name: name
+        id: 0
+        username: username
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+      type: object
+    UpdateVsphereHypervisorsCommand:
+      additionalProperties: false
+      example:
+        hypervisors:
+        - hypervisors
+        - hypervisors
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        hypervisors:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     UserDetails:
       additionalProperties: false
       example:
@@ -45967,14 +47398,14 @@ components:
     UserResourceChartDto:
       additionalProperties: false
       example:
-        diskSize: 2
-        maxRam: 5
+        diskSize: 6
+        maxRam: 3
         cpu: 6
-        maxCpu: 6
+        maxCpu: 3
         projectName: projectName
-        maxDiskSize: 3
-        projectId: 1
-        ram: 6
+        maxDiskSize: 7
+        projectId: 6
+        ram: 5
       properties:
         projectName:
           nullable: true
@@ -46237,6 +47668,23 @@ components:
           nullable: true
           type: string
       type: object
+    ValidateVsphereCommand:
+      additionalProperties: false
+      example:
+        password: password
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+      type: object
     VerifySlackCredentialsCommand:
       additionalProperties: false
       example:
@@ -46285,6 +47733,356 @@ components:
           nullable: true
           type: string
       type: object
+    VsphereFlavorData:
+      additionalProperties: false
+      example:
+        name: name
+        cpu: 0
+        ram: 6
+      properties:
+        name:
+          nullable: true
+          type: string
+        cpu:
+          format: int32
+          type: integer
+        ram:
+          format: int64
+          type: integer
+      type: object
+    VsphereFlavorList:
+      additionalProperties: false
+      example:
+        data:
+        - name: name
+          cpu: 0
+          ram: 6
+        - name: name
+          cpu: 0
+          ram: 6
+        totalCount: 1
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/VsphereFlavorData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
+    VsphereHypervisorListCommand:
+      additionalProperties: false
+      example:
+        password: password
+        cloudId: 0
+        datacenterId: datacenterId
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenterId:
+          nullable: true
+          type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    VsphereList:
+      additionalProperties: false
+      example:
+        data:
+        - projectCount: 6
+          projects:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          organizationName: organizationName
+          datacenterName: datacenterName
+          lastModifiedBy: lastModifiedBy
+          datacenterId: datacenterId
+          url: url
+          organizationId: 1
+          createdAt: createdAt
+          isDefault: true
+          password: password
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          hypervisors:
+          - name: name
+            id: id
+          - name: name
+            id: id
+          id: 0
+          lastModified: lastModified
+          continentName: continentName
+          vmTemplateName: vmTemplateName
+          vsphereNetworks:
+          - endAllocationRange: endAllocationRange
+            netMask: 5
+            name: name
+            ipAddress: ipAddress
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+          - endAllocationRange: endAllocationRange
+            netMask: 5
+            name: name
+            ipAddress: ipAddress
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+          username: username
+        - projectCount: 6
+          projects:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          organizationName: organizationName
+          datacenterName: datacenterName
+          lastModifiedBy: lastModifiedBy
+          datacenterId: datacenterId
+          url: url
+          organizationId: 1
+          createdAt: createdAt
+          isDefault: true
+          password: password
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          hypervisors:
+          - name: name
+            id: id
+          - name: name
+            id: id
+          id: 0
+          lastModified: lastModified
+          continentName: continentName
+          vmTemplateName: vmTemplateName
+          vsphereNetworks:
+          - endAllocationRange: endAllocationRange
+            netMask: 5
+            name: name
+            ipAddress: ipAddress
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+          - endAllocationRange: endAllocationRange
+            netMask: 5
+            name: name
+            ipAddress: ipAddress
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+          username: username
+        totalCount: 5
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/VsphereListDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
+    VsphereListDto:
+      additionalProperties: false
+      example:
+        projectCount: 6
+        projects:
+        - name: name
+          id: 0
+        - name: name
+          id: 0
+        organizationName: organizationName
+        datacenterName: datacenterName
+        lastModifiedBy: lastModifiedBy
+        datacenterId: datacenterId
+        url: url
+        organizationId: 1
+        createdAt: createdAt
+        isDefault: true
+        password: password
+        createdBy: createdBy
+        isLocked: true
+        name: name
+        hypervisors:
+        - name: name
+          id: id
+        - name: name
+          id: id
+        id: 0
+        lastModified: lastModified
+        continentName: continentName
+        vmTemplateName: vmTemplateName
+        vsphereNetworks:
+        - endAllocationRange: endAllocationRange
+          netMask: 5
+          name: name
+          ipAddress: ipAddress
+          isPrivate: true
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+        - endAllocationRange: endAllocationRange
+          netMask: 5
+          name: name
+          ipAddress: ipAddress
+          isPrivate: true
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+        username: username
+      properties:
+        id:
+          format: int32
+          type: integer
+        projectCount:
+          format: int32
+          type: integer
+        isLocked:
+          type: boolean
+        name:
+          nullable: true
+          type: string
+        projects:
+          items:
+            $ref: '#/components/schemas/CommonDropdownDto'
+          nullable: true
+          type: array
+        createdBy:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        isDefault:
+          type: boolean
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        continentName:
+          nullable: true
+          type: string
+        hypervisors:
+          items:
+            $ref: '#/components/schemas/CommonStringBasedDropdownDto'
+          nullable: true
+          type: array
+        username:
+          nullable: true
+          type: string
+        url:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenterId:
+          nullable: true
+          type: string
+        datacenterName:
+          nullable: true
+          type: string
+        vmTemplateName:
+          nullable: true
+          type: string
+        vsphereNetworks:
+          items:
+            $ref: '#/components/schemas/VsphereNetworkListDto'
+          nullable: true
+          type: array
+      type: object
+    VsphereNetworkListDto:
+      additionalProperties: false
+      example:
+        endAllocationRange: endAllocationRange
+        netMask: 5
+        name: name
+        ipAddress: ipAddress
+        isPrivate: true
+        beginAllocationRange: beginAllocationRange
+        gateway: gateway
+      properties:
+        name:
+          nullable: true
+          type: string
+        gateway:
+          nullable: true
+          type: string
+        ipAddress:
+          nullable: true
+          type: string
+        netMask:
+          format: int32
+          type: integer
+        beginAllocationRange:
+          nullable: true
+          type: string
+        endAllocationRange:
+          nullable: true
+          type: string
+        isPrivate:
+          type: boolean
+      type: object
+    VsphereVmTemplateData:
+      additionalProperties: false
+      example:
+        size: 0
+        name: name
+        uuid: uuid
+      properties:
+        name:
+          nullable: true
+          type: string
+        size:
+          format: int32
+          type: integer
+        uuid:
+          nullable: true
+          type: string
+      type: object
+    VsphereVmTemplateListCommand:
+      additionalProperties: false
+      example:
+        password: password
+        datacenterId: datacenterId
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
+        datacenterId:
+          nullable: true
+          type: string
+      type: object
     WebhookHeaderDto:
       additionalProperties: false
       example:
@@ -46306,7 +48104,7 @@ components:
       additionalProperties: false
       example:
         name: name
-        id: 9
+        id: 7
       properties:
         id:
           format: int32

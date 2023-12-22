@@ -15,36 +15,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the OpenstackImageList type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OpenstackImageList{}
+// checks if the VsphereList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VsphereList{}
 
-// OpenstackImageList struct for OpenstackImageList
-type OpenstackImageList struct {
-	Data []CommonStringBasedDropdownDto `json:"data,omitempty"`
+// VsphereList struct for VsphereList
+type VsphereList struct {
+	Data []VsphereListDto `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
-// NewOpenstackImageList instantiates a new OpenstackImageList object
+// NewVsphereList instantiates a new VsphereList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpenstackImageList() *OpenstackImageList {
-	this := OpenstackImageList{}
+func NewVsphereList() *VsphereList {
+	this := VsphereList{}
 	return &this
 }
 
-// NewOpenstackImageListWithDefaults instantiates a new OpenstackImageList object
+// NewVsphereListWithDefaults instantiates a new VsphereList object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewOpenstackImageListWithDefaults() *OpenstackImageList {
-	this := OpenstackImageList{}
+func NewVsphereListWithDefaults() *VsphereList {
+	this := VsphereList{}
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OpenstackImageList) GetData() []CommonStringBasedDropdownDto {
+func (o *VsphereList) GetData() []VsphereListDto {
 	if o == nil {
-		var ret []CommonStringBasedDropdownDto
+		var ret []VsphereListDto
 		return ret
 	}
 	return o.Data
@@ -53,7 +53,7 @@ func (o *OpenstackImageList) GetData() []CommonStringBasedDropdownDto {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OpenstackImageList) GetDataOk() ([]CommonStringBasedDropdownDto, bool) {
+func (o *VsphereList) GetDataOk() ([]VsphereListDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *OpenstackImageList) GetDataOk() ([]CommonStringBasedDropdownDto, bool) 
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *OpenstackImageList) HasData() bool {
+func (o *VsphereList) HasData() bool {
 	if o != nil && IsNil(o.Data) {
 		return true
 	}
@@ -69,13 +69,13 @@ func (o *OpenstackImageList) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []CommonStringBasedDropdownDto and assigns it to the Data field.
-func (o *OpenstackImageList) SetData(v []CommonStringBasedDropdownDto) {
+// SetData gets a reference to the given []VsphereListDto and assigns it to the Data field.
+func (o *VsphereList) SetData(v []VsphereListDto) {
 	o.Data = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *OpenstackImageList) GetTotalCount() int32 {
+func (o *VsphereList) GetTotalCount() int32 {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int32
 		return ret
@@ -85,7 +85,7 @@ func (o *OpenstackImageList) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OpenstackImageList) GetTotalCountOk() (*int32, bool) {
+func (o *VsphereList) GetTotalCountOk() (*int32, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *OpenstackImageList) GetTotalCountOk() (*int32, bool) {
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *OpenstackImageList) HasTotalCount() bool {
+func (o *VsphereList) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -102,11 +102,11 @@ func (o *OpenstackImageList) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
-func (o *OpenstackImageList) SetTotalCount(v int32) {
+func (o *VsphereList) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 
-func (o OpenstackImageList) MarshalJSON() ([]byte, error) {
+func (o VsphereList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -114,7 +114,7 @@ func (o OpenstackImageList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o OpenstackImageList) ToMap() (map[string]interface{}, error) {
+func (o VsphereList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -125,38 +125,38 @@ func (o OpenstackImageList) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableOpenstackImageList struct {
-	value *OpenstackImageList
+type NullableVsphereList struct {
+	value *VsphereList
 	isSet bool
 }
 
-func (v NullableOpenstackImageList) Get() *OpenstackImageList {
+func (v NullableVsphereList) Get() *VsphereList {
 	return v.value
 }
 
-func (v *NullableOpenstackImageList) Set(val *OpenstackImageList) {
+func (v *NullableVsphereList) Set(val *VsphereList) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableOpenstackImageList) IsSet() bool {
+func (v NullableVsphereList) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableOpenstackImageList) Unset() {
+func (v *NullableVsphereList) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableOpenstackImageList(val *OpenstackImageList) *NullableOpenstackImageList {
-	return &NullableOpenstackImageList{value: val, isSet: true}
+func NewNullableVsphereList(val *VsphereList) *NullableVsphereList {
+	return &NullableVsphereList{value: val, isSet: true}
 }
 
-func (v NullableOpenstackImageList) MarshalJSON() ([]byte, error) {
+func (v NullableVsphereList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableOpenstackImageList) UnmarshalJSON(src []byte) error {
+func (v *NullableVsphereList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

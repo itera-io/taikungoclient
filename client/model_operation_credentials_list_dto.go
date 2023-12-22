@@ -23,7 +23,6 @@ type OperationCredentialsListDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	PrometheusUsername NullableString `json:"prometheusUsername,omitempty"`
-	PrometheusPassword NullableString `json:"prometheusPassword,omitempty"`
 	PrometheusUrl NullableString `json:"prometheusUrl,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
@@ -166,48 +165,6 @@ func (o *OperationCredentialsListDto) SetPrometheusUsernameNil() {
 // UnsetPrometheusUsername ensures that no value is present for PrometheusUsername, not even an explicit nil
 func (o *OperationCredentialsListDto) UnsetPrometheusUsername() {
 	o.PrometheusUsername.Unset()
-}
-
-// GetPrometheusPassword returns the PrometheusPassword field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OperationCredentialsListDto) GetPrometheusPassword() string {
-	if o == nil || IsNil(o.PrometheusPassword.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.PrometheusPassword.Get()
-}
-
-// GetPrometheusPasswordOk returns a tuple with the PrometheusPassword field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OperationCredentialsListDto) GetPrometheusPasswordOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.PrometheusPassword.Get(), o.PrometheusPassword.IsSet()
-}
-
-// HasPrometheusPassword returns a boolean if a field has been set.
-func (o *OperationCredentialsListDto) HasPrometheusPassword() bool {
-	if o != nil && o.PrometheusPassword.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPrometheusPassword gets a reference to the given NullableString and assigns it to the PrometheusPassword field.
-func (o *OperationCredentialsListDto) SetPrometheusPassword(v string) {
-	o.PrometheusPassword.Set(&v)
-}
-// SetPrometheusPasswordNil sets the value for PrometheusPassword to be an explicit nil
-func (o *OperationCredentialsListDto) SetPrometheusPasswordNil() {
-	o.PrometheusPassword.Set(nil)
-}
-
-// UnsetPrometheusPassword ensures that no value is present for PrometheusPassword, not even an explicit nil
-func (o *OperationCredentialsListDto) UnsetPrometheusPassword() {
-	o.PrometheusPassword.Unset()
 }
 
 // GetPrometheusUrl returns the PrometheusUrl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -577,9 +534,6 @@ func (o OperationCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.PrometheusUsername.IsSet() {
 		toSerialize["prometheusUsername"] = o.PrometheusUsername.Get()
-	}
-	if o.PrometheusPassword.IsSet() {
-		toSerialize["prometheusPassword"] = o.PrometheusPassword.Get()
 	}
 	if o.PrometheusUrl.IsSet() {
 		toSerialize["prometheusUrl"] = o.PrometheusUrl.Get()

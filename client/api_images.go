@@ -28,9 +28,15 @@ type ApiImagesAwsCommonImagesRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
 	cloudId int32
+	projectId *int32
 }
 
-func (r ApiImagesAwsCommonImagesRequest) Execute() ([]AwsOwnerDetails, *http.Response, error) {
+func (r ApiImagesAwsCommonImagesRequest) ProjectId(projectId int32) ApiImagesAwsCommonImagesRequest {
+	r.projectId = &projectId
+	return r
+}
+
+func (r ApiImagesAwsCommonImagesRequest) Execute() ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	return r.ApiService.ImagesAwsCommonImagesExecute(r)
 }
 
@@ -50,13 +56,13 @@ func (a *ImagesAPIService) ImagesAwsCommonImages(ctx context.Context, cloudId in
 }
 
 // Execute executes the request
-//  @return []AwsOwnerDetails
-func (a *ImagesAPIService) ImagesAwsCommonImagesExecute(r ApiImagesAwsCommonImagesRequest) ([]AwsOwnerDetails, *http.Response, error) {
+//  @return []CommonStringBasedDropdownDto
+func (a *ImagesAPIService) ImagesAwsCommonImagesExecute(r ApiImagesAwsCommonImagesRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []AwsOwnerDetails
+		localVarReturnValue  []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesAwsCommonImages")
@@ -71,6 +77,9 @@ func (a *ImagesAPIService) ImagesAwsCommonImagesExecute(r ApiImagesAwsCommonImag
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -204,7 +213,7 @@ func (r ApiImagesAwsImagesListRequest) AwsImagesPostListCommand(awsImagesPostLis
 	return r
 }
 
-func (r ApiImagesAwsImagesListRequest) Execute() (*AwsImagesPostList, *http.Response, error) {
+func (r ApiImagesAwsImagesListRequest) Execute() (*PublicImageList, *http.Response, error) {
 	return r.ApiService.ImagesAwsImagesListExecute(r)
 }
 
@@ -222,13 +231,13 @@ func (a *ImagesAPIService) ImagesAwsImagesList(ctx context.Context) ApiImagesAws
 }
 
 // Execute executes the request
-//  @return AwsImagesPostList
-func (a *ImagesAPIService) ImagesAwsImagesListExecute(r ApiImagesAwsImagesListRequest) (*AwsImagesPostList, *http.Response, error) {
+//  @return PublicImageList
+func (a *ImagesAPIService) ImagesAwsImagesListExecute(r ApiImagesAwsImagesListRequest) (*PublicImageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AwsImagesPostList
+		localVarReturnValue  *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesAwsImagesList")
@@ -374,10 +383,16 @@ type ApiImagesAwsPersonalImagesRequest struct {
 	ApiService *ImagesAPIService
 	cloudId int32
 	search *string
+	projectId *int32
 }
 
 func (r ApiImagesAwsPersonalImagesRequest) Search(search string) ApiImagesAwsPersonalImagesRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiImagesAwsPersonalImagesRequest) ProjectId(projectId int32) ApiImagesAwsPersonalImagesRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -424,6 +439,9 @@ func (a *ImagesAPIService) ImagesAwsPersonalImagesExecute(r ApiImagesAwsPersonal
 
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -551,9 +569,15 @@ type ApiImagesAzureCommonImagesRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
 	cloudId int32
+	projectId *int32
 }
 
-func (r ApiImagesAzureCommonImagesRequest) Execute() ([]AzurePublisherDetails, *http.Response, error) {
+func (r ApiImagesAzureCommonImagesRequest) ProjectId(projectId int32) ApiImagesAzureCommonImagesRequest {
+	r.projectId = &projectId
+	return r
+}
+
+func (r ApiImagesAzureCommonImagesRequest) Execute() ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	return r.ApiService.ImagesAzureCommonImagesExecute(r)
 }
 
@@ -573,13 +597,13 @@ func (a *ImagesAPIService) ImagesAzureCommonImages(ctx context.Context, cloudId 
 }
 
 // Execute executes the request
-//  @return []AzurePublisherDetails
-func (a *ImagesAPIService) ImagesAzureCommonImagesExecute(r ApiImagesAzureCommonImagesRequest) ([]AzurePublisherDetails, *http.Response, error) {
+//  @return []CommonStringBasedDropdownDto
+func (a *ImagesAPIService) ImagesAzureCommonImagesExecute(r ApiImagesAzureCommonImagesRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []AzurePublisherDetails
+		localVarReturnValue  []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesAzureCommonImages")
@@ -594,6 +618,9 @@ func (a *ImagesAPIService) ImagesAzureCommonImagesExecute(r ApiImagesAzureCommon
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -728,6 +755,7 @@ type ApiImagesAzureImagesRequest struct {
 	sortBy *string
 	sortDirection *string
 	search *string
+	projectId *int32
 	latest *bool
 }
 
@@ -756,12 +784,17 @@ func (r ApiImagesAzureImagesRequest) Search(search string) ApiImagesAzureImagesR
 	return r
 }
 
+func (r ApiImagesAzureImagesRequest) ProjectId(projectId int32) ApiImagesAzureImagesRequest {
+	r.projectId = &projectId
+	return r
+}
+
 func (r ApiImagesAzureImagesRequest) Latest(latest bool) ApiImagesAzureImagesRequest {
 	r.latest = &latest
 	return r
 }
 
-func (r ApiImagesAzureImagesRequest) Execute() (*AzureImageList, *http.Response, error) {
+func (r ApiImagesAzureImagesRequest) Execute() (*PublicImageList, *http.Response, error) {
 	return r.ApiService.ImagesAzureImagesExecute(r)
 }
 
@@ -787,13 +820,13 @@ func (a *ImagesAPIService) ImagesAzureImages(ctx context.Context, cloudId int32,
 }
 
 // Execute executes the request
-//  @return AzureImageList
-func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesRequest) (*AzureImageList, *http.Response, error) {
+//  @return PublicImageList
+func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesRequest) (*PublicImageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *AzureImageList
+		localVarReturnValue  *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesAzureImages")
@@ -825,6 +858,9 @@ func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesReques
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
 	}
 	if r.latest != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Latest", r.latest, "")
@@ -958,6 +994,12 @@ type ApiImagesAzurePersonalImagesRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
 	cloudId int32
+	projectId *int32
+}
+
+func (r ApiImagesAzurePersonalImagesRequest) ProjectId(projectId int32) ApiImagesAzurePersonalImagesRequest {
+	r.projectId = &projectId
+	return r
 }
 
 func (r ApiImagesAzurePersonalImagesRequest) Execute() ([]CommonStringBasedDropdownDto, *http.Response, error) {
@@ -1001,6 +1043,9 @@ func (a *ImagesAPIService) ImagesAzurePersonalImagesExecute(r ApiImagesAzurePers
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1289,9 +1334,15 @@ type ApiImagesCommonGoogleImagesRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
 	cloudId int32
+	projectId *int32
 }
 
-func (r ApiImagesCommonGoogleImagesRequest) Execute() ([]GoogleOwnerDetails, *http.Response, error) {
+func (r ApiImagesCommonGoogleImagesRequest) ProjectId(projectId int32) ApiImagesCommonGoogleImagesRequest {
+	r.projectId = &projectId
+	return r
+}
+
+func (r ApiImagesCommonGoogleImagesRequest) Execute() ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	return r.ApiService.ImagesCommonGoogleImagesExecute(r)
 }
 
@@ -1311,13 +1362,13 @@ func (a *ImagesAPIService) ImagesCommonGoogleImages(ctx context.Context, cloudId
 }
 
 // Execute executes the request
-//  @return []GoogleOwnerDetails
-func (a *ImagesAPIService) ImagesCommonGoogleImagesExecute(r ApiImagesCommonGoogleImagesRequest) ([]GoogleOwnerDetails, *http.Response, error) {
+//  @return []CommonStringBasedDropdownDto
+func (a *ImagesAPIService) ImagesCommonGoogleImagesExecute(r ApiImagesCommonGoogleImagesRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []GoogleOwnerDetails
+		localVarReturnValue  []CommonStringBasedDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesCommonGoogleImages")
@@ -1332,6 +1383,9 @@ func (a *ImagesAPIService) ImagesCommonGoogleImagesExecute(r ApiImagesCommonGoog
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1465,6 +1519,7 @@ type ApiImagesGoogleImagesRequest struct {
 	sortBy *string
 	sortDirection *string
 	search *string
+	projectId *int32
 }
 
 func (r ApiImagesGoogleImagesRequest) Latest(latest bool) ApiImagesGoogleImagesRequest {
@@ -1497,7 +1552,12 @@ func (r ApiImagesGoogleImagesRequest) Search(search string) ApiImagesGoogleImage
 	return r
 }
 
-func (r ApiImagesGoogleImagesRequest) Execute() (*GoogleImageList, *http.Response, error) {
+func (r ApiImagesGoogleImagesRequest) ProjectId(projectId int32) ApiImagesGoogleImagesRequest {
+	r.projectId = &projectId
+	return r
+}
+
+func (r ApiImagesGoogleImagesRequest) Execute() (*PublicImageList, *http.Response, error) {
 	return r.ApiService.ImagesGoogleImagesExecute(r)
 }
 
@@ -1519,13 +1579,13 @@ func (a *ImagesAPIService) ImagesGoogleImages(ctx context.Context, cloudId int32
 }
 
 // Execute executes the request
-//  @return GoogleImageList
-func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequest) (*GoogleImageList, *http.Response, error) {
+//  @return PublicImageList
+func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequest) (*PublicImageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GoogleImageList
+		localVarReturnValue  *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesGoogleImages")
@@ -1560,6 +1620,9 @@ func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequ
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
 	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "Latest", r.latest, "")
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1744,7 +1807,7 @@ func (a *ImagesAPIService) ImagesImageDetailsExecute(r ApiImagesImageDetailsRequ
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1753,6 +1816,229 @@ func (a *ImagesAPIService) ImagesImageDetailsExecute(r ApiImagesImageDetailsRequ
 	}
 	// body params
 	localVarPostBody = r.imageByIdCommand
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiImagesOpenshiftImagesRequest struct {
+	ctx context.Context
+	ApiService *ImagesAPIService
+	cloudId int32
+	limit *int32
+	offset *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	projectId *int32
+}
+
+func (r ApiImagesOpenshiftImagesRequest) Limit(limit int32) ApiImagesOpenshiftImagesRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiImagesOpenshiftImagesRequest) Offset(offset int32) ApiImagesOpenshiftImagesRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiImagesOpenshiftImagesRequest) SortBy(sortBy string) ApiImagesOpenshiftImagesRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiImagesOpenshiftImagesRequest) SortDirection(sortDirection string) ApiImagesOpenshiftImagesRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiImagesOpenshiftImagesRequest) Search(search string) ApiImagesOpenshiftImagesRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiImagesOpenshiftImagesRequest) ProjectId(projectId int32) ApiImagesOpenshiftImagesRequest {
+	r.projectId = &projectId
+	return r
+}
+
+func (r ApiImagesOpenshiftImagesRequest) Execute() (*PublicImageList, *http.Response, error) {
+	return r.ApiService.ImagesOpenshiftImagesExecute(r)
+}
+
+/*
+ImagesOpenshiftImages Retrieve openshift images
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param cloudId
+ @return ApiImagesOpenshiftImagesRequest
+*/
+func (a *ImagesAPIService) ImagesOpenshiftImages(ctx context.Context, cloudId int32) ApiImagesOpenshiftImagesRequest {
+	return ApiImagesOpenshiftImagesRequest{
+		ApiService: a,
+		ctx: ctx,
+		cloudId: cloudId,
+	}
+}
+
+// Execute executes the request
+//  @return PublicImageList
+func (a *ImagesAPIService) ImagesOpenshiftImagesExecute(r ApiImagesOpenshiftImagesRequest) (*PublicImageList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PublicImageList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesOpenshiftImages")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/images/openshift/{cloudId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudId"+"}", url.PathEscape(parameterValueToString(r.cloudId, "cloudId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1867,6 +2153,7 @@ type ApiImagesOpenstackImagesRequest struct {
 	sortBy *string
 	sortDirection *string
 	search *string
+	projectId *int32
 	personal *bool
 }
 
@@ -1895,12 +2182,17 @@ func (r ApiImagesOpenstackImagesRequest) Search(search string) ApiImagesOpenstac
 	return r
 }
 
+func (r ApiImagesOpenstackImagesRequest) ProjectId(projectId int32) ApiImagesOpenstackImagesRequest {
+	r.projectId = &projectId
+	return r
+}
+
 func (r ApiImagesOpenstackImagesRequest) Personal(personal bool) ApiImagesOpenstackImagesRequest {
 	r.personal = &personal
 	return r
 }
 
-func (r ApiImagesOpenstackImagesRequest) Execute() (*OpenstackImageList, *http.Response, error) {
+func (r ApiImagesOpenstackImagesRequest) Execute() (*PublicImageList, *http.Response, error) {
 	return r.ApiService.ImagesOpenstackImagesExecute(r)
 }
 
@@ -1920,13 +2212,13 @@ func (a *ImagesAPIService) ImagesOpenstackImages(ctx context.Context, cloudId in
 }
 
 // Execute executes the request
-//  @return OpenstackImageList
-func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImagesRequest) (*OpenstackImageList, *http.Response, error) {
+//  @return PublicImageList
+func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImagesRequest) (*PublicImageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OpenstackImageList
+		localVarReturnValue  *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesOpenstackImages")
@@ -1955,6 +2247,9 @@ func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImag
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
 	}
 	if r.personal != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Personal", r.personal, "")
@@ -2093,6 +2388,7 @@ type ApiImagesProxmoxImagesRequest struct {
 	sortBy *string
 	sortDirection *string
 	search *string
+	projectId *int32
 }
 
 func (r ApiImagesProxmoxImagesRequest) Limit(limit int32) ApiImagesProxmoxImagesRequest {
@@ -2120,7 +2416,12 @@ func (r ApiImagesProxmoxImagesRequest) Search(search string) ApiImagesProxmoxIma
 	return r
 }
 
-func (r ApiImagesProxmoxImagesRequest) Execute() (*ProxmoxImageList, *http.Response, error) {
+func (r ApiImagesProxmoxImagesRequest) ProjectId(projectId int32) ApiImagesProxmoxImagesRequest {
+	r.projectId = &projectId
+	return r
+}
+
+func (r ApiImagesProxmoxImagesRequest) Execute() (*PublicImageList, *http.Response, error) {
 	return r.ApiService.ImagesProxmoxImagesExecute(r)
 }
 
@@ -2140,13 +2441,13 @@ func (a *ImagesAPIService) ImagesProxmoxImages(ctx context.Context, cloudId int3
 }
 
 // Execute executes the request
-//  @return ProxmoxImageList
-func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRequest) (*ProxmoxImageList, *http.Response, error) {
+//  @return PublicImageList
+func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRequest) (*PublicImageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ProxmoxImageList
+		localVarReturnValue  *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesProxmoxImages")
@@ -2175,6 +2476,9 @@ func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRe
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2544,6 +2848,7 @@ type ApiImagesTanzuImagesRequest struct {
 	sortBy *string
 	sortDirection *string
 	search *string
+	projectId *int32
 }
 
 func (r ApiImagesTanzuImagesRequest) Limit(limit int32) ApiImagesTanzuImagesRequest {
@@ -2571,7 +2876,12 @@ func (r ApiImagesTanzuImagesRequest) Search(search string) ApiImagesTanzuImagesR
 	return r
 }
 
-func (r ApiImagesTanzuImagesRequest) Execute() (*TanzuImageList, *http.Response, error) {
+func (r ApiImagesTanzuImagesRequest) ProjectId(projectId int32) ApiImagesTanzuImagesRequest {
+	r.projectId = &projectId
+	return r
+}
+
+func (r ApiImagesTanzuImagesRequest) Execute() (*PublicImageList, *http.Response, error) {
 	return r.ApiService.ImagesTanzuImagesExecute(r)
 }
 
@@ -2591,13 +2901,13 @@ func (a *ImagesAPIService) ImagesTanzuImages(ctx context.Context, cloudId int32)
 }
 
 // Execute executes the request
-//  @return TanzuImageList
-func (a *ImagesAPIService) ImagesTanzuImagesExecute(r ApiImagesTanzuImagesRequest) (*TanzuImageList, *http.Response, error) {
+//  @return PublicImageList
+func (a *ImagesAPIService) ImagesTanzuImagesExecute(r ApiImagesTanzuImagesRequest) (*PublicImageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *TanzuImageList
+		localVarReturnValue  *PublicImageList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesTanzuImages")
@@ -2626,6 +2936,9 @@ func (a *ImagesAPIService) ImagesTanzuImagesExecute(r ApiImagesTanzuImagesReques
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2912,4 +3225,227 @@ func (a *ImagesAPIService) ImagesUnbindImagesFromProjectExecute(r ApiImagesUnbin
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type ApiImagesVsphereImagesRequest struct {
+	ctx context.Context
+	ApiService *ImagesAPIService
+	cloudId int32
+	limit *int32
+	offset *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	projectId *int32
+}
+
+func (r ApiImagesVsphereImagesRequest) Limit(limit int32) ApiImagesVsphereImagesRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiImagesVsphereImagesRequest) Offset(offset int32) ApiImagesVsphereImagesRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiImagesVsphereImagesRequest) SortBy(sortBy string) ApiImagesVsphereImagesRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiImagesVsphereImagesRequest) SortDirection(sortDirection string) ApiImagesVsphereImagesRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiImagesVsphereImagesRequest) Search(search string) ApiImagesVsphereImagesRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiImagesVsphereImagesRequest) ProjectId(projectId int32) ApiImagesVsphereImagesRequest {
+	r.projectId = &projectId
+	return r
+}
+
+func (r ApiImagesVsphereImagesRequest) Execute() (*PublicImageList, *http.Response, error) {
+	return r.ApiService.ImagesVsphereImagesExecute(r)
+}
+
+/*
+ImagesVsphereImages Retrieve vsphere images
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param cloudId
+ @return ApiImagesVsphereImagesRequest
+*/
+func (a *ImagesAPIService) ImagesVsphereImages(ctx context.Context, cloudId int32) ApiImagesVsphereImagesRequest {
+	return ApiImagesVsphereImagesRequest{
+		ApiService: a,
+		ctx: ctx,
+		cloudId: cloudId,
+	}
+}
+
+// Execute executes the request
+//  @return PublicImageList
+func (a *ImagesAPIService) ImagesVsphereImagesExecute(r ApiImagesVsphereImagesRequest) (*PublicImageList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PublicImageList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesVsphereImages")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/images/vsphere/{cloudId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudId"+"}", url.PathEscape(parameterValueToString(r.cloudId, "cloudId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }

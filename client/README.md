@@ -79,7 +79,6 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AWSCloudCredentialAPI* | [**AwsCreate**](docs/AWSCloudCredentialAPI.md#awscreate) | **Post** /api/v1/aws/create | Add Aws credentials
-*AWSCloudCredentialAPI* | [**AwsDeviceNames**](docs/AWSCloudCredentialAPI.md#awsdevicenames) | **Post** /api/v1/aws/device-names | Aws device name list
 *AWSCloudCredentialAPI* | [**AwsList**](docs/AWSCloudCredentialAPI.md#awslist) | **Get** /api/v1/aws/list | Retrieve list of aws cloud credentials
 *AWSCloudCredentialAPI* | [**AwsOwners**](docs/AWSCloudCredentialAPI.md#awsowners) | **Get** /api/v1/aws/owners | Retrieve aws verified owner list
 *AWSCloudCredentialAPI* | [**AwsRegionlist**](docs/AWSCloudCredentialAPI.md#awsregionlist) | **Post** /api/v1/aws/regions | Retrieve aws regions list
@@ -218,6 +217,7 @@ Class | Method | HTTP request | Description
 *FlavorsAPI* | [**FlavorsSelectedFlavorsForProject**](docs/FlavorsAPI.md#flavorsselectedflavorsforproject) | **Get** /api/v1/flavors/projects/list | Retrieve selected flavors for project
 *FlavorsAPI* | [**FlavorsTanzuFlavors**](docs/FlavorsAPI.md#flavorstanzuflavors) | **Get** /api/v1/flavors/tanzu/{cloudId} | Retrieve tanzu flavors
 *FlavorsAPI* | [**FlavorsUnbindFromProject**](docs/FlavorsAPI.md#flavorsunbindfromproject) | **Post** /api/v1/flavors/unbind | Unbind flavors from project
+*FlavorsAPI* | [**FlavorsVsphereFlavors**](docs/FlavorsAPI.md#flavorsvsphereflavors) | **Get** /api/v1/flavors/vsphere/{cloudId} | Retrieve vsphere flavors
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | 
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | 
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
@@ -233,11 +233,13 @@ Class | Method | HTTP request | Description
 *ImagesAPI* | [**ImagesCommonGoogleImages**](docs/ImagesAPI.md#imagescommongoogleimages) | **Get** /api/v1/images/google/common/{cloudId} | Commonly used google images
 *ImagesAPI* | [**ImagesGoogleImages**](docs/ImagesAPI.md#imagesgoogleimages) | **Get** /api/v1/images/google/{cloudId}/{type} | 
 *ImagesAPI* | [**ImagesImageDetails**](docs/ImagesAPI.md#imagesimagedetails) | **Post** /api/v1/images/details | Get image details
+*ImagesAPI* | [**ImagesOpenshiftImages**](docs/ImagesAPI.md#imagesopenshiftimages) | **Get** /api/v1/images/openshift/{cloudId} | Retrieve openshift images
 *ImagesAPI* | [**ImagesOpenstackImages**](docs/ImagesAPI.md#imagesopenstackimages) | **Get** /api/v1/images/openstack/{cloudId} | Retrieve openstack images
 *ImagesAPI* | [**ImagesProxmoxImages**](docs/ImagesAPI.md#imagesproxmoximages) | **Get** /api/v1/images/proxmox/{cloudId} | Retrieve proxmox images
 *ImagesAPI* | [**ImagesSelectedImagesForProject**](docs/ImagesAPI.md#imagesselectedimagesforproject) | **Get** /api/v1/images/projects/list | Retrieve selected images for projects
 *ImagesAPI* | [**ImagesTanzuImages**](docs/ImagesAPI.md#imagestanzuimages) | **Get** /api/v1/images/tanzu/{cloudId} | Retrieve tanzu images
 *ImagesAPI* | [**ImagesUnbindImagesFromProject**](docs/ImagesAPI.md#imagesunbindimagesfromproject) | **Post** /api/v1/images/unbind | Unbind images from project
+*ImagesAPI* | [**ImagesVsphereImages**](docs/ImagesAPI.md#imagesvsphereimages) | **Get** /api/v1/images/vsphere/{cloudId} | Retrieve vsphere images
 *InfraAPI* | [**InfraDetails**](docs/InfraAPI.md#infradetails) | **Get** /api/v1/infra/details | Retrieve infra details
 *InfraAPI* | [**InfraProductList**](docs/InfraAPI.md#infraproductlist) | **Get** /api/v1/infra/list | Retrieve infra products list
 *InfraBillingSummaryAPI* | [**InfraBillingSummaryList**](docs/InfraBillingSummaryAPI.md#infrabillingsummarylist) | **Post** /api/v1/infra-billing-summary/list | Retrieve infra billing info
@@ -400,6 +402,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsList**](docs/ProjectsAPI.md#projectslist) | **Get** /api/v1/projects | Retrieve all projects
 *ProjectsAPI* | [**ProjectsLockManager**](docs/ProjectsAPI.md#projectslockmanager) | **Post** /api/v1/projects/lockmanager | Lock/Unlock project
 *ProjectsAPI* | [**ProjectsLokiLogs**](docs/ProjectsAPI.md#projectslokilogs) | **Post** /api/v1/projects/lokilogs | Retrieve loki logs
+*ProjectsAPI* | [**ProjectsMaintenanceManager**](docs/ProjectsAPI.md#projectsmaintenancemanager) | **Post** /api/v1/projects/maintenance-manager | Enable/disable project&#39;s maintenance mode
 *ProjectsAPI* | [**ProjectsMonitoring**](docs/ProjectsAPI.md#projectsmonitoring) | **Post** /api/v1/projects/monitoring | Monitoring operations enable/disable
 *ProjectsAPI* | [**ProjectsPrometheusMetrics**](docs/ProjectsAPI.md#projectsprometheusmetrics) | **Post** /api/v1/projects/prometheusmetrics | Prometheus metrics data project
 *ProjectsAPI* | [**ProjectsRepair**](docs/ProjectsAPI.md#projectsrepair) | **Post** /api/v1/projects/repair/{projectId} | Repair project by Id
@@ -540,6 +543,17 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**UsersList**](docs/UsersAPI.md#userslist) | **Get** /api/v1/users | Retrieve all users
 *UsersAPI* | [**UsersUpdateUser**](docs/UsersAPI.md#usersupdateuser) | **Post** /api/v1/users/update | Update user
 *UsersAPI* | [**UsersUserInfo**](docs/UsersAPI.md#usersuserinfo) | **Get** /api/v1/users/userinfo | Retrieve user info
+*VsphereCloudCredentialAPI* | [**VsphereCreate**](docs/VsphereCloudCredentialAPI.md#vspherecreate) | **Post** /api/v1/vsphere/create | Add Vsphere credentials
+*VsphereCloudCredentialAPI* | [**VsphereDatacenterList**](docs/VsphereCloudCredentialAPI.md#vspheredatacenterlist) | **Post** /api/v1/vsphere/datacenter-list | Fetch Vsphere datacenter list
+*VsphereCloudCredentialAPI* | [**VsphereDatastoreList**](docs/VsphereCloudCredentialAPI.md#vspheredatastorelist) | **Post** /api/v1/vsphere/datastore-list | Fetch Vsphere datastore list
+*VsphereCloudCredentialAPI* | [**VsphereHypervisorList**](docs/VsphereCloudCredentialAPI.md#vspherehypervisorlist) | **Post** /api/v1/vsphere/hypervisor-list | Fetch Vsphere hypervisor list
+*VsphereCloudCredentialAPI* | [**VsphereList**](docs/VsphereCloudCredentialAPI.md#vspherelist) | **Get** /api/v1/vsphere/list | Retrieve list of vsphere cloud credentials
+*VsphereCloudCredentialAPI* | [**VsphereNetworkList**](docs/VsphereCloudCredentialAPI.md#vspherenetworklist) | **Post** /api/v1/vsphere/network-list | Fetch Vsphere network list
+*VsphereCloudCredentialAPI* | [**VsphereResourcePoolList**](docs/VsphereCloudCredentialAPI.md#vsphereresourcepoollist) | **Post** /api/v1/vsphere/resource-pool-list | Fetch Vsphere resource pool list
+*VsphereCloudCredentialAPI* | [**VsphereUpdate**](docs/VsphereCloudCredentialAPI.md#vsphereupdate) | **Post** /api/v1/vsphere/update | Update Vsphere credentials
+*VsphereCloudCredentialAPI* | [**VsphereUpdateVsphereHypervisors**](docs/VsphereCloudCredentialAPI.md#vsphereupdatevspherehypervisors) | **Post** /api/v1/vsphere/update/hypervisors | Update Vsphere credentials
+*VsphereCloudCredentialAPI* | [**VsphereValidate**](docs/VsphereCloudCredentialAPI.md#vspherevalidate) | **Post** /api/v1/vsphere/validate | Validate Vsphere credentials
+*VsphereCloudCredentialAPI* | [**VsphereVmTemplateList**](docs/VsphereCloudCredentialAPI.md#vspherevmtemplatelist) | **Post** /api/v1/vsphere/vm-template-list | Fetch Vsphere vm template list
 
 
 ## Documentation For Models
@@ -554,6 +568,7 @@ Class | Method | HTTP request | Description
  - [AiCredentials](docs/AiCredentials.md)
  - [AiCredentialsForOrganizationEntity](docs/AiCredentialsForOrganizationEntity.md)
  - [AiCredentialsListDto](docs/AiCredentialsListDto.md)
+ - [AiListDto](docs/AiListDto.md)
  - [AiType](docs/AiType.md)
  - [AlertingEmailDto](docs/AlertingEmailDto.md)
  - [AlertingIntegrationDto](docs/AlertingIntegrationDto.md)
@@ -585,28 +600,20 @@ Class | Method | HTTP request | Description
  - [AvailablePackageDetailsDto](docs/AvailablePackageDetailsDto.md)
  - [AvailablePackagesDto](docs/AvailablePackagesDto.md)
  - [AvailablePackagesList](docs/AvailablePackagesList.md)
- - [AwsBlockDeviceMappingsCommand](docs/AwsBlockDeviceMappingsCommand.md)
- - [AwsCommonImages](docs/AwsCommonImages.md)
  - [AwsCredentialList](docs/AwsCredentialList.md)
- - [AwsExtendedImagesListDto](docs/AwsExtendedImagesListDto.md)
  - [AwsFlavorList](docs/AwsFlavorList.md)
  - [AwsFlavorListDto](docs/AwsFlavorListDto.md)
- - [AwsImagesPostList](docs/AwsImagesPostList.md)
  - [AwsImagesPostListCommand](docs/AwsImagesPostListCommand.md)
- - [AwsOwnerDetails](docs/AwsOwnerDetails.md)
  - [AwsRegionDto](docs/AwsRegionDto.md)
  - [AwsValidateOwnerCommand](docs/AwsValidateOwnerCommand.md)
  - [AzResult](docs/AzResult.md)
- - [AzureCommonImages](docs/AzureCommonImages.md)
  - [AzureCredentialList](docs/AzureCredentialList.md)
  - [AzureCredentialsListDto](docs/AzureCredentialsListDto.md)
  - [AzureDashboardCommand](docs/AzureDashboardCommand.md)
  - [AzureFlavorList](docs/AzureFlavorList.md)
  - [AzureFlavorsWithPriceDto](docs/AzureFlavorsWithPriceDto.md)
- - [AzureImageList](docs/AzureImageList.md)
  - [AzureLocationsCommand](docs/AzureLocationsCommand.md)
  - [AzureOffersList](docs/AzureOffersList.md)
- - [AzurePublisherDetails](docs/AzurePublisherDetails.md)
  - [AzurePublishersList](docs/AzurePublishersList.md)
  - [AzureQuotaListRecordDto](docs/AzureQuotaListRecordDto.md)
  - [AzureSkusList](docs/AzureSkusList.md)
@@ -720,6 +727,8 @@ Class | Method | HTTP request | Description
  - [CreateTicketCommand](docs/CreateTicketCommand.md)
  - [CreateUserCommand](docs/CreateUserCommand.md)
  - [CreateUserGroupCommand](docs/CreateUserGroupCommand.md)
+ - [CreateVsphereCommand](docs/CreateVsphereCommand.md)
+ - [CreateVsphereNetworkDto](docs/CreateVsphereNetworkDto.md)
  - [CredentialChartDto](docs/CredentialChartDto.md)
  - [CredentialMakeDefaultCommand](docs/CredentialMakeDefaultCommand.md)
  - [CredentialsChart](docs/CredentialsChart.md)
@@ -728,6 +737,10 @@ Class | Method | HTTP request | Description
  - [DaemonSetSearchCommand](docs/DaemonSetSearchCommand.md)
  - [DaemonSetSearchList](docs/DaemonSetSearchList.md)
  - [DashboardChart](docs/DashboardChart.md)
+ - [DatacenterListCommand](docs/DatacenterListCommand.md)
+ - [DatacenterSummary](docs/DatacenterSummary.md)
+ - [DatastoreListCommand](docs/DatastoreListCommand.md)
+ - [DatastoreSummary](docs/DatastoreSummary.md)
  - [DateFilter](docs/DateFilter.md)
  - [DateInterval](docs/DateInterval.md)
  - [DeleteAlertCommand](docs/DeleteAlertCommand.md)
@@ -809,13 +822,10 @@ Class | Method | HTTP request | Description
  - [GetCatalogAppValueCommand](docs/GetCatalogAppValueCommand.md)
  - [GetToken](docs/GetToken.md)
  - [GiveAccessToPartnerCommand](docs/GiveAccessToPartnerCommand.md)
- - [GoogleCommonImages](docs/GoogleCommonImages.md)
  - [GoogleCredentialList](docs/GoogleCredentialList.md)
  - [GoogleCredentialsListDto](docs/GoogleCredentialsListDto.md)
  - [GoogleFlavorDto](docs/GoogleFlavorDto.md)
  - [GoogleFlavorList](docs/GoogleFlavorList.md)
- - [GoogleImageList](docs/GoogleImageList.md)
- - [GoogleOwnerDetails](docs/GoogleOwnerDetails.md)
  - [GroupedBillingInfo](docs/GroupedBillingInfo.md)
  - [GroupedBillings](docs/GroupedBillings.md)
  - [HelmMetadata](docs/HelmMetadata.md)
@@ -875,8 +885,10 @@ Class | Method | HTTP request | Description
  - [LokiResponseDto](docs/LokiResponseDto.md)
  - [Metadata](docs/Metadata.md)
  - [MonitoringOperationsCommand](docs/MonitoringOperationsCommand.md)
+ - [NetworkListCommand](docs/NetworkListCommand.md)
  - [NetworkPolicies](docs/NetworkPolicies.md)
  - [NetworkPolicyDto](docs/NetworkPolicyDto.md)
+ - [NetworkSummary](docs/NetworkSummary.md)
  - [NodeDto](docs/NodeDto.md)
  - [NodeSearchResponseData](docs/NodeSearchResponseData.md)
  - [NodesSearchCommand](docs/NodesSearchCommand.md)
@@ -908,7 +920,6 @@ Class | Method | HTTP request | Description
  - [OpenstackCredentialsListDto](docs/OpenstackCredentialsListDto.md)
  - [OpenstackFlavorList](docs/OpenstackFlavorList.md)
  - [OpenstackFlavorListDto](docs/OpenstackFlavorListDto.md)
- - [OpenstackImageList](docs/OpenstackImageList.md)
  - [OpenstackNetworkDto](docs/OpenstackNetworkDto.md)
  - [OpenstackQuotaList](docs/OpenstackQuotaList.md)
  - [OpenstackQuotasCommand](docs/OpenstackQuotasCommand.md)
@@ -979,6 +990,7 @@ Class | Method | HTTP request | Description
  - [ProjectListDto](docs/ProjectListDto.md)
  - [ProjectListForProjectGroupDto](docs/ProjectListForProjectGroupDto.md)
  - [ProjectLockManagerCommand](docs/ProjectLockManagerCommand.md)
+ - [ProjectMaintenanceModeCommand](docs/ProjectMaintenanceModeCommand.md)
  - [ProjectQuotaList](docs/ProjectQuotaList.md)
  - [ProjectQuotaListDto](docs/ProjectQuotaListDto.md)
  - [ProjectStatus](docs/ProjectStatus.md)
@@ -1011,12 +1023,12 @@ Class | Method | HTTP request | Description
  - [ProxmoxFlavorData](docs/ProxmoxFlavorData.md)
  - [ProxmoxFlavorList](docs/ProxmoxFlavorList.md)
  - [ProxmoxHypervisorDto](docs/ProxmoxHypervisorDto.md)
- - [ProxmoxImageList](docs/ProxmoxImageList.md)
  - [ProxmoxList](docs/ProxmoxList.md)
  - [ProxmoxListDto](docs/ProxmoxListDto.md)
  - [ProxmoxNetworkListDto](docs/ProxmoxNetworkListDto.md)
  - [ProxmoxRole](docs/ProxmoxRole.md)
  - [ProxmoxStorage](docs/ProxmoxStorage.md)
+ - [PublicImageList](docs/PublicImageList.md)
  - [PvcDto](docs/PvcDto.md)
  - [PvcSearchCommand](docs/PvcSearchCommand.md)
  - [PvcSearchList](docs/PvcSearchList.md)
@@ -1032,6 +1044,8 @@ Class | Method | HTTP request | Description
  - [ResetServerStatusCommand](docs/ResetServerStatusCommand.md)
  - [ResetStandAloneVmDiskStatusCommand](docs/ResetStandAloneVmDiskStatusCommand.md)
  - [Resource](docs/Resource.md)
+ - [ResourcePoolListCommand](docs/ResourcePoolListCommand.md)
+ - [ResourcePoolSummary](docs/ResourcePoolSummary.md)
  - [RestartDaemonSetCommand](docs/RestartDaemonSetCommand.md)
  - [RestartDeploymentCommand](docs/RestartDeploymentCommand.md)
  - [RestartStsCommand](docs/RestartStsCommand.md)
@@ -1116,8 +1130,6 @@ Class | Method | HTTP request | Description
  - [TanzuCredentialsListDto](docs/TanzuCredentialsListDto.md)
  - [TanzuFlavorList](docs/TanzuFlavorList.md)
  - [TanzuFlavorsListDto](docs/TanzuFlavorsListDto.md)
- - [TanzuImageList](docs/TanzuImageList.md)
- - [TanzuImagesListDto](docs/TanzuImagesListDto.md)
  - [TanzuStorageListCommand](docs/TanzuStorageListCommand.md)
  - [TicketPriority](docs/TicketPriority.md)
  - [ToggleKeycloakCommand](docs/ToggleKeycloakCommand.md)
@@ -1145,6 +1157,8 @@ Class | Method | HTTP request | Description
  - [UpdateUserGroupDto](docs/UpdateUserGroupDto.md)
  - [UpdateUserProjectDto](docs/UpdateUserProjectDto.md)
  - [UpdateUserProjectGroupDto](docs/UpdateUserProjectGroupDto.md)
+ - [UpdateVsphereCommand](docs/UpdateVsphereCommand.md)
+ - [UpdateVsphereHypervisorsCommand](docs/UpdateVsphereHypervisorsCommand.md)
  - [UserDetails](docs/UserDetails.md)
  - [UserDto](docs/UserDto.md)
  - [UserForListDto](docs/UserForListDto.md)
@@ -1162,9 +1176,18 @@ Class | Method | HTTP request | Description
  - [UsersSearchCommand](docs/UsersSearchCommand.md)
  - [UsersSearchList](docs/UsersSearchList.md)
  - [UsersSearchResponseData](docs/UsersSearchResponseData.md)
+ - [ValidateVsphereCommand](docs/ValidateVsphereCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)
  - [VmConsoleScreenshotCommand](docs/VmConsoleScreenshotCommand.md)
  - [VmTemplateListCommand](docs/VmTemplateListCommand.md)
+ - [VsphereFlavorData](docs/VsphereFlavorData.md)
+ - [VsphereFlavorList](docs/VsphereFlavorList.md)
+ - [VsphereHypervisorListCommand](docs/VsphereHypervisorListCommand.md)
+ - [VsphereList](docs/VsphereList.md)
+ - [VsphereListDto](docs/VsphereListDto.md)
+ - [VsphereNetworkListDto](docs/VsphereNetworkListDto.md)
+ - [VsphereVmTemplateData](docs/VsphereVmTemplateData.md)
+ - [VsphereVmTemplateListCommand](docs/VsphereVmTemplateListCommand.md)
  - [WebhookHeaderDto](docs/WebhookHeaderDto.md)
  - [WhiteListDomainDto](docs/WhiteListDomainDto.md)
  - [YamlValidatorCommand](docs/YamlValidatorCommand.md)
