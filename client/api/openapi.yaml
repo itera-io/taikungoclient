@@ -52942,18 +52942,20 @@ components:
           ram: 1
           standAloneVmDisks:
           - volumeType: volumeType
-            size: 1
+            targetSize: 1
             name: name
             lunId: lunId
             id: 7
             deviceName: deviceName
+            currentSize: 1
             status: status
           - volumeType: volumeType
-            size: 1
+            targetSize: 1
             name: name
             lunId: lunId
             id: 7
             deviceName: deviceName
+            currentSize: 1
             status: status
           imageId: imageId
           imageName: imageName
@@ -53002,18 +53004,20 @@ components:
           ram: 1
           standAloneVmDisks:
           - volumeType: volumeType
-            size: 1
+            targetSize: 1
             name: name
             lunId: lunId
             id: 7
             deviceName: deviceName
+            currentSize: 1
             status: status
           - volumeType: volumeType
-            size: 1
+            targetSize: 1
             name: name
             lunId: lunId
             id: 7
             deviceName: deviceName
+            currentSize: 1
             status: status
           imageId: imageId
           imageName: imageName
@@ -58110,11 +58114,12 @@ components:
       additionalProperties: false
       example:
         volumeType: volumeType
-        size: 1
+        targetSize: 1
         name: name
         lunId: lunId
         id: 7
         deviceName: deviceName
+        currentSize: 1
         status: status
       properties:
         id:
@@ -58123,7 +58128,10 @@ components:
         name:
           nullable: true
           type: string
-        size:
+        targetSize:
+          format: int64
+          type: integer
+        currentSize:
           format: int64
           type: integer
         volumeType:
@@ -58167,18 +58175,20 @@ components:
         ram: 1
         standAloneVmDisks:
         - volumeType: volumeType
-          size: 1
+          targetSize: 1
           name: name
           lunId: lunId
           id: 7
           deviceName: deviceName
+          currentSize: 1
           status: status
         - volumeType: volumeType
-          size: 1
+          targetSize: 1
           name: name
           lunId: lunId
           id: 7
           deviceName: deviceName
+          currentSize: 1
           status: status
         imageId: imageId
         imageName: imageName
@@ -59007,18 +59017,20 @@ components:
           ram: 1
           standAloneVmDisks:
           - volumeType: volumeType
-            size: 1
+            targetSize: 1
             name: name
             lunId: lunId
             id: 7
             deviceName: deviceName
+            currentSize: 1
             status: status
           - volumeType: volumeType
-            size: 1
+            targetSize: 1
             name: name
             lunId: lunId
             id: 7
             deviceName: deviceName
+            currentSize: 1
             status: status
           imageId: imageId
           imageName: imageName
@@ -59067,18 +59079,20 @@ components:
           ram: 1
           standAloneVmDisks:
           - volumeType: volumeType
-            size: 1
+            targetSize: 1
             name: name
             lunId: lunId
             id: 7
             deviceName: deviceName
+            currentSize: 1
             status: status
           - volumeType: volumeType
-            size: 1
+            targetSize: 1
             name: name
             lunId: lunId
             id: 7
             deviceName: deviceName
+            currentSize: 1
             status: status
           imageId: imageId
           imageName: imageName

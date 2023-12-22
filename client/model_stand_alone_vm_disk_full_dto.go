@@ -22,7 +22,8 @@ var _ MappedNullable = &StandAloneVmDiskFullDto{}
 type StandAloneVmDiskFullDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
-	Size *int64 `json:"size,omitempty"`
+	TargetSize *int64 `json:"targetSize,omitempty"`
+	CurrentSize *int64 `json:"currentSize,omitempty"`
 	VolumeType NullableString `json:"volumeType,omitempty"`
 	DeviceName NullableString `json:"deviceName,omitempty"`
 	LunId NullableString `json:"lunId,omitempty"`
@@ -120,36 +121,68 @@ func (o *StandAloneVmDiskFullDto) UnsetName() {
 	o.Name.Unset()
 }
 
-// GetSize returns the Size field value if set, zero value otherwise.
-func (o *StandAloneVmDiskFullDto) GetSize() int64 {
-	if o == nil || IsNil(o.Size) {
+// GetTargetSize returns the TargetSize field value if set, zero value otherwise.
+func (o *StandAloneVmDiskFullDto) GetTargetSize() int64 {
+	if o == nil || IsNil(o.TargetSize) {
 		var ret int64
 		return ret
 	}
-	return *o.Size
+	return *o.TargetSize
 }
 
-// GetSizeOk returns a tuple with the Size field value if set, nil otherwise
+// GetTargetSizeOk returns a tuple with the TargetSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *StandAloneVmDiskFullDto) GetSizeOk() (*int64, bool) {
-	if o == nil || IsNil(o.Size) {
+func (o *StandAloneVmDiskFullDto) GetTargetSizeOk() (*int64, bool) {
+	if o == nil || IsNil(o.TargetSize) {
 		return nil, false
 	}
-	return o.Size, true
+	return o.TargetSize, true
 }
 
-// HasSize returns a boolean if a field has been set.
-func (o *StandAloneVmDiskFullDto) HasSize() bool {
-	if o != nil && !IsNil(o.Size) {
+// HasTargetSize returns a boolean if a field has been set.
+func (o *StandAloneVmDiskFullDto) HasTargetSize() bool {
+	if o != nil && !IsNil(o.TargetSize) {
 		return true
 	}
 
 	return false
 }
 
-// SetSize gets a reference to the given int64 and assigns it to the Size field.
-func (o *StandAloneVmDiskFullDto) SetSize(v int64) {
-	o.Size = &v
+// SetTargetSize gets a reference to the given int64 and assigns it to the TargetSize field.
+func (o *StandAloneVmDiskFullDto) SetTargetSize(v int64) {
+	o.TargetSize = &v
+}
+
+// GetCurrentSize returns the CurrentSize field value if set, zero value otherwise.
+func (o *StandAloneVmDiskFullDto) GetCurrentSize() int64 {
+	if o == nil || IsNil(o.CurrentSize) {
+		var ret int64
+		return ret
+	}
+	return *o.CurrentSize
+}
+
+// GetCurrentSizeOk returns a tuple with the CurrentSize field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StandAloneVmDiskFullDto) GetCurrentSizeOk() (*int64, bool) {
+	if o == nil || IsNil(o.CurrentSize) {
+		return nil, false
+	}
+	return o.CurrentSize, true
+}
+
+// HasCurrentSize returns a boolean if a field has been set.
+func (o *StandAloneVmDiskFullDto) HasCurrentSize() bool {
+	if o != nil && !IsNil(o.CurrentSize) {
+		return true
+	}
+
+	return false
+}
+
+// SetCurrentSize gets a reference to the given int64 and assigns it to the CurrentSize field.
+func (o *StandAloneVmDiskFullDto) SetCurrentSize(v int64) {
+	o.CurrentSize = &v
 }
 
 // GetVolumeType returns the VolumeType field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -336,8 +369,11 @@ func (o StandAloneVmDiskFullDto) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Size) {
-		toSerialize["size"] = o.Size
+	if !IsNil(o.TargetSize) {
+		toSerialize["targetSize"] = o.TargetSize
+	}
+	if !IsNil(o.CurrentSize) {
+		toSerialize["currentSize"] = o.CurrentSize
 	}
 	if o.VolumeType.IsSet() {
 		toSerialize["volumeType"] = o.VolumeType.Get()
