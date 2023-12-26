@@ -3125,6 +3125,8 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Email: taikun@taikun.cloud
             schema:
               $ref: '#/components/schemas/ForgotPasswordCommand'
       responses:
@@ -3167,9 +3169,14 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Email: taikun@taikun.cloud
+              Password: P@ssw0rd!
+              Mode: token|autoscaling|keycloak
+              AccessKey: X9BZGP8TSTB7D4K6N9U8
+              SecretKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
             schema:
               $ref: '#/components/schemas/LoginCommand'
-        required: true
       responses:
         "200":
           content:
@@ -3216,6 +3223,9 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.xxxxxx
+              RefreshToken: n2aofltwxksszt-hthvimg
             schema:
               $ref: '#/components/schemas/RefreshTokenCommand'
       responses:
@@ -3264,6 +3274,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.xxxxxx
+              Email: taikun@taikun.cloud
+              NewPassword: P@ssw0rd!
             schema:
               $ref: '#/components/schemas/ResetPasswordCommand'
       responses:
@@ -3306,9 +3320,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              OrganizationName: taikun.cloud a.s.
+              Username: taikun
+              Email: taikun@taikun.cloud
             schema:
               $ref: '#/components/schemas/TryForFreeCommand'
-        required: true
       responses:
         "200":
           description: OK

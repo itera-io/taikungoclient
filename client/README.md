@@ -14,20 +14,20 @@ For more information, please visit [http://taikun.cloud/](http://taikun.cloud/)
 
 Install the following dependencies:
 
-```shell
+```sh
 go get github.com/stretchr/testify/assert
 go get golang.org/x/net/context
 ```
 
 Put the package under your project folder and add the following in import:
 
-```golang
+```go
 import taikuncore "github.com/itera-io/taikungoclient/client"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
 
-```golang
+```go
 os.Setenv("HTTP_PROXY", "http://proxy_name:proxy_port")
 ```
 
@@ -39,7 +39,7 @@ Default configuration comes with `Servers` field that contains server objects as
 
 For using other server than the one defined on index 0 set context value `taikuncore.ContextServerIndex` of type `int`.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), taikuncore.ContextServerIndex, 1)
 ```
 
@@ -47,7 +47,7 @@ ctx := context.WithValue(context.Background(), taikuncore.ContextServerIndex, 1)
 
 Templated server URL is formatted using default variables from configuration or from context value `taikuncore.ContextServerVariables` of type `map[string]string`.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), taikuncore.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
@@ -61,7 +61,7 @@ Each operation can use different server URL defined using `OperationServers` map
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `taikuncore.ContextOperationServerIndices` and `taikuncore.ContextOperationServerVariables` context maps.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), taikuncore.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
@@ -1544,7 +1544,7 @@ Note, each API key must be added to a map of `map[string]APIKey` where the key i
 
 Example
 
-```golang
+```go
 auth := context.WithValue(
 		context.Background(),
 		taikuncore.ContextAPIKeys,
