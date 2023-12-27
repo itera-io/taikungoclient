@@ -3338,9 +3338,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              ProjectId: 1
             schema:
               $ref: '#/components/schemas/DisableAutoscalingCommand'
-        required: true
       responses:
         "400":
           content:
@@ -3381,9 +3382,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              ProjectId: 1
+              MinSize: 1
+              MaxSize: 1
             schema:
               $ref: '#/components/schemas/EditAutoscalingCommand'
-        required: true
       responses:
         "400":
           content:
@@ -3424,9 +3428,16 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Id: 1
+              AutoscalingGroupName: taikun
+              MinSize: 1
+              MaxSize: 1
+              DiskSize: 30
+              Flavor: m1.medium
+              SpotEnabled: false
             schema:
               $ref: '#/components/schemas/EnableAutoscalingCommand'
-        required: true
       responses:
         "400":
           content:
@@ -3467,9 +3478,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              ProjectId: 1
             schema:
               $ref: '#/components/schemas/AutoscalingSyncCommand'
-        required: true
       responses:
         "200":
           description: OK
@@ -3482,9 +3494,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              CloudId: 1
+              Owners:
+              - amazon
             schema:
               $ref: '#/components/schemas/AwsValidateOwnerCommand'
-        required: true
       responses:
         "400":
           content:
@@ -3525,13 +3540,21 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Region: us
+              AwsAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              AwsSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              CloudId: 1
             schema:
               $ref: '#/components/schemas/AmazonAvailabilityZonesCommand'
-        required: true
       responses:
         "200":
           content:
             application/json:
+              example:
+                Data:
+                - eu-west-1a
+                TotalCount: 1
               schema:
                 $ref: '#/components/schemas/AzResult'
           description: OK
@@ -3574,9 +3597,15 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Name: taikun
+              AwsSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              AwsAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              AzCount: 1
+              AwsRegion: us
+              OrganizationId: 1
             schema:
               $ref: '#/components/schemas/CreateAwsCloudCommand'
-        required: true
       responses:
         "200":
           content:
@@ -3623,13 +3652,18 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              AwsAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              AwsSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
             schema:
               $ref: '#/components/schemas/RegionListCommand'
-        required: true
       responses:
         "200":
           content:
             application/json:
+              example:
+              - Name: taikun
+                Region: us
               schema:
                 items:
                   $ref: '#/components/schemas/AwsRegionDto'
@@ -3674,9 +3708,13 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Id: 1
+              Name: taikun
+              AwsSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              AwsAccessKeyId: X9BZGP8TSTB7D4K6N9U8
             schema:
               $ref: '#/components/schemas/UpdateAwsCommand'
-        required: true
       responses:
         "400":
           content:
@@ -3718,6 +3756,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: "1"
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -3758,24 +3799,12 @@ paths:
       - AWS cloud credential
   /api/v1/aws/list:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
       operationId: aws-list
       parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: OrganizationId
@@ -3820,10 +3849,49 @@ paths:
           format: int32
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                Data:
+                - Id: 1
+                  ProjectCount: 1
+                  IsLocked: false
+                  Name: taikun
+                  Region: null
+                  AvailabilityZones: null
+                  AvailabilityZonesCount: 0
+                  Projects:
+                  - Id: 1
+                    Name: taikun
+                  CreatedBy: taikun
+                  LastModified: 2023-11-21T12:09:23Z
+                  LastModifiedBy: taikun
+                  IsDefault: false
+                  OrganizationId: 1
+                  OrganizationName: taikun.cloud a.s.
+                  CreatedAt: 2023-11-21T12:09:23Z
+                  ContinentName: Europe
+                TotalCount: 1
               schema:
                 $ref: '#/components/schemas/AwsCredentialList'
           description: OK
@@ -4023,6 +4091,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: "1"
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -4116,6 +4187,10 @@ paths:
         "200":
           content:
             application/json:
+              example:
+                Data:
+                - eu-west-1a
+                TotalCount: 1
               schema:
                 $ref: '#/components/schemas/AzResult'
           description: OK
@@ -11338,6 +11413,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: "1"
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -11560,6 +11638,10 @@ paths:
         "200":
           content:
             application/json:
+              example:
+                Data:
+                - eu-west-1a
+                TotalCount: 1
               schema:
                 $ref: '#/components/schemas/AzResult'
           description: Success
@@ -12031,6 +12113,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: "1"
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -12093,6 +12178,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: "1"
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -12155,6 +12243,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: "1"
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -12640,6 +12731,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: "1"
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -12702,6 +12796,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: "1"
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -20017,6 +20114,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: "1"
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -20068,6 +20168,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: "1"
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -34409,6 +34512,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - Id: "1"
+                Name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -38298,12 +38404,12 @@ components:
     AzResult:
       additionalProperties: false
       example:
-        list:
-        - list
-        - list
+        data:
+        - data
+        - data
         totalCount: 0
       properties:
-        list:
+        data:
           items:
             type: string
           nullable: true
