@@ -3934,6 +3934,15 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Name: taikun
+              AzureSubscriptionId: 8fc9a50d-d38d-4954-bec6-f1a82a88fd7a
+              AzureClientId: 10b66731-3ab9-4f50-be3c-c355c83b6c7m
+              AzureClientSecret: i1T8Q~Kzore4p61zGD3MZWWh1R~VmnrjlOWBsaxm
+              AzureTenantId: 8e15c4c4-8226-4a29-8ffc-9b4004bf3f4m
+              AzureLocation: Europe
+              AzCount: 1
+              OrganizationId: 1
             schema:
               $ref: '#/components/schemas/CreateAzureCloudCommand'
       responses:
@@ -3982,9 +3991,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              CloudId: 1
+              FilterBy: taikun
             schema:
               $ref: '#/components/schemas/AzureDashboardCommand'
-        required: true
       responses:
         "200":
           content:
@@ -4084,9 +4095,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              ClientId: 10b66731-3ab9-4f50-be3c-c355c83b6c7m
+              ClientSecret: i1T8Q~Kzore4p61zGD3MZWWh1R~VmnrjlOWBsaxm
+              TenantId: 8e15c4c4-8226-4a29-8ffc-9b4004bf3f4m
             schema:
               $ref: '#/components/schemas/AzureSubscriptionListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -4138,6 +4152,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              Id: 1
+              Name: taikun
+              AzureClientSecret: i1T8Q~Kzore4p61zGD3MZWWh1R~VmnrjlOWBsaxm
+              AzureClientId: 10b66731-3ab9-4f50-be3c-c355c83b6c7m
             schema:
               $ref: '#/components/schemas/UpdateAzureCommand'
       responses:

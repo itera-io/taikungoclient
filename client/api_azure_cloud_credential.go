@@ -245,9 +245,6 @@ func (a *AzureCloudCredentialAPIService) AzureDashboardExecute(r ApiAzureDashboa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.azureDashboardCommand == nil {
-		return localVarReturnValue, nil, reportError("azureDashboardCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1488,9 +1485,6 @@ func (a *AzureCloudCredentialAPIService) AzureSubscriptionsExecute(r ApiAzureSub
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.azureSubscriptionListCommand == nil {
-		return localVarReturnValue, nil, reportError("azureSubscriptionListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
