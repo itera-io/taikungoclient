@@ -258,7 +258,7 @@ AwsList Retrieve list of aws cloud credentials
 
 <div style='font-family: Arial, sans-serif;'>
                         <h2 style='color: #4A90E2;'>Description</h2>
-                        <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
+                        <ul><li><b>SortBy</b> - Options: <i>amazonRegion</i>, <i>organizationName</i>, <i>createdAt</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAwsListRequest

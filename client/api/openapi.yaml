@@ -3802,7 +3802,7 @@ paths:
       description: |-
         <div style='font-family: Arial, sans-serif;'>
                                 <h2 style='color: #4A90E2;'>Description</h2>
-                                <ul><li><b>SortBy</b> - Options: <i>createdAt</i>, <i>name</i>, <i>organizationName</i></li><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i></li><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></li></ul></div>
+                                <ul><li><b>SortBy</b> - Options: <i>amazonRegion</i>, <i>organizationName</i>, <i>createdAt</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></ul></div>
       operationId: aws-list
       parameters:
       - explode: true
@@ -3987,13 +3987,14 @@ paths:
       - Azure cloud credential
   /api/v1/azure/quota/list:
     post:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>FilterBy</b> - Options: <i>cpu</i>, <i>storage</i>, <i>gallery</i>, <i>general</i></ul></div>
       operationId: azure-dashboard
       requestBody:
         content:
           application/json:
-            example:
-              CloudId: 1
-              FilterBy: taikun
             schema:
               $ref: '#/components/schemas/AzureDashboardCommand'
       responses:
@@ -4248,24 +4249,12 @@ paths:
       - Azure cloud credential
   /api/v1/azure/list:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>azureLocation</i>, <i>organizationName</i>, <i>createdAt</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></ul></div>
       operationId: azure-list
       parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: OrganizationId
@@ -4310,10 +4299,51 @@ paths:
           format: int32
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                Data:
+                - Id: 1
+                  ProjectCount: 1
+                  IsLocked: false
+                  Name: taikun
+                  TenantId: 8e15c4c4-8226-4a29-8ffc-9b4004bf3f4m
+                  Location: 8e15c4c4-8226-4a29-8ffc-9b4004bf3f4m
+                  AvailabilityZones:
+                  - eu-west-1a
+                  AvailabilityZonesCount: 1
+                  Projects:
+                  - Id: 1
+                    Name: taikun
+                  CreatedBy: taikun
+                  CreatedAt: 2023-11-21T12:09:23Z
+                  LastModified: 2023-11-21T12:09:23Z
+                  LastModifiedBy: taikun
+                  IsDefault: false
+                  OrganizationId: 1
+                  OrganizationName: taikun.cloud a.s.
+                  ContinentName: Europe
+                TotalCount: 1
               schema:
                 $ref: '#/components/schemas/AzureCredentialList'
           description: OK
