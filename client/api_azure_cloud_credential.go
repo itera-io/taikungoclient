@@ -669,9 +669,6 @@ func (a *AzureCloudCredentialAPIService) AzureLocationsExecute(r ApiAzureLocatio
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.azureLocationsCommand == nil {
-		return localVarReturnValue, nil, reportError("azureLocationsCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -802,21 +799,11 @@ type ApiAzureOffersRequest struct {
 	ApiService *AzureCloudCredentialAPIService
 	cloudId int32
 	publisher string
-	offset *int32
-	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-}
-
-func (r ApiAzureOffersRequest) Offset(offset int32) ApiAzureOffersRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiAzureOffersRequest) Limit(limit int32) ApiAzureOffersRequest {
-	r.limit = &limit
-	return r
+	limit *int32
+	offset *int32
 }
 
 func (r ApiAzureOffersRequest) SortBy(sortBy string) ApiAzureOffersRequest {
@@ -831,6 +818,16 @@ func (r ApiAzureOffersRequest) SortDirection(sortDirection string) ApiAzureOffer
 
 func (r ApiAzureOffersRequest) Search(search string) ApiAzureOffersRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiAzureOffersRequest) Limit(limit int32) ApiAzureOffersRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiAzureOffersRequest) Offset(offset int32) ApiAzureOffersRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -878,12 +875,6 @@ func (a *AzureCloudCredentialAPIService) AzureOffersExecute(r ApiAzureOffersRequ
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
 	}
@@ -892,6 +883,18 @@ func (a *AzureCloudCredentialAPIService) AzureOffersExecute(r ApiAzureOffersRequ
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1019,21 +1022,11 @@ type ApiAzurePublishersRequest struct {
 	ctx context.Context
 	ApiService *AzureCloudCredentialAPIService
 	cloudId int32
-	offset *int32
-	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-}
-
-func (r ApiAzurePublishersRequest) Offset(offset int32) ApiAzurePublishersRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiAzurePublishersRequest) Limit(limit int32) ApiAzurePublishersRequest {
-	r.limit = &limit
-	return r
+	limit *int32
+	offset *int32
 }
 
 func (r ApiAzurePublishersRequest) SortBy(sortBy string) ApiAzurePublishersRequest {
@@ -1051,12 +1044,26 @@ func (r ApiAzurePublishersRequest) Search(search string) ApiAzurePublishersReque
 	return r
 }
 
+func (r ApiAzurePublishersRequest) Limit(limit int32) ApiAzurePublishersRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiAzurePublishersRequest) Offset(offset int32) ApiAzurePublishersRequest {
+	r.offset = &offset
+	return r
+}
+
 func (r ApiAzurePublishersRequest) Execute() (*AzurePublishersList, *http.Response, error) {
 	return r.ApiService.AzurePublishersExecute(r)
 }
 
 /*
 AzurePublishers List Azure publishers list
+
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>SortBy</b> - Options: <i>name</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>azurePublisher</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param cloudId
@@ -1092,12 +1099,6 @@ func (a *AzureCloudCredentialAPIService) AzurePublishersExecute(r ApiAzurePublis
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
 	}
@@ -1106,6 +1107,18 @@ func (a *AzureCloudCredentialAPIService) AzurePublishersExecute(r ApiAzurePublis
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1235,21 +1248,11 @@ type ApiAzureSkusRequest struct {
 	cloudId int32
 	publisher string
 	offer string
-	offset *int32
-	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-}
-
-func (r ApiAzureSkusRequest) Offset(offset int32) ApiAzureSkusRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiAzureSkusRequest) Limit(limit int32) ApiAzureSkusRequest {
-	r.limit = &limit
-	return r
+	limit *int32
+	offset *int32
 }
 
 func (r ApiAzureSkusRequest) SortBy(sortBy string) ApiAzureSkusRequest {
@@ -1264,6 +1267,16 @@ func (r ApiAzureSkusRequest) SortDirection(sortDirection string) ApiAzureSkusReq
 
 func (r ApiAzureSkusRequest) Search(search string) ApiAzureSkusRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiAzureSkusRequest) Limit(limit int32) ApiAzureSkusRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiAzureSkusRequest) Offset(offset int32) ApiAzureSkusRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -1314,12 +1327,6 @@ func (a *AzureCloudCredentialAPIService) AzureSkusExecute(r ApiAzureSkusRequest)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
-	}
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
 	}
@@ -1328,6 +1335,18 @@ func (a *AzureCloudCredentialAPIService) AzureSkusExecute(r ApiAzureSkusRequest)
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1834,9 +1853,6 @@ func (a *AzureCloudCredentialAPIService) AzureZonesExecute(r ApiAzureZonesReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.azureZonesCommand == nil {
-		return localVarReturnValue, nil, reportError("azureZonesCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
