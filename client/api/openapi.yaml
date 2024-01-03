@@ -28,8 +28,8 @@ paths:
         content:
           application/json:
             example:
-              Name: taikun
-              HttpProxy: http://185.185.185.22
+              name: taikun
+              httpProxy: http://185.185.185.22
             schema:
               $ref: '#/components/schemas/UpdateAccessProfileDto'
       responses:
@@ -73,26 +73,26 @@ paths:
         content:
           application/json:
             example:
-              Name: taikun
-              HttpProxy: http://185.185.185.22
-              OrganizationId: null
-              SshUsers:
-              - Name: taikun
-                SshPublicKey: |-
+              name: taikun
+              httpProxy: http://185.185.185.22
+              organizationId: null
+              sshUsers:
+              - name: taikun
+                sshPublicKey: |-
                   ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU
                   GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3
                   Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XA
                   t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En
                   mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx
                   NrRFi9wrf+M7Q== taikun@taikun.local
-              DnsServers:
-              - Address: 8.8.8.8
-              NtpServers:
-              - Address: 8.8.8.8
-              AllowedHosts:
-              - Description: taikun
-                IpAddress: 8.8.8.8
-                MaskBits: 24
+              dnsServers:
+              - address: 8.8.8.8
+              ntpServers:
+              - address: 8.8.8.8
+              allowedHosts:
+              - description: taikun
+                ipAddress: 8.8.8.8
+                maskBits: 24
             schema:
               $ref: '#/components/schemas/CreateAccessProfileCommand'
       responses:
@@ -142,8 +142,8 @@ paths:
         content:
           application/json:
             example:
-              Id: 1
-              Mode: lock|unlock
+              id: 1
+              mode: lock|unlock
             schema:
               $ref: '#/components/schemas/AccessProfilesLockManagementCommand'
       responses:
@@ -204,8 +204,8 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Name: taikun
+              - id: 1
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -319,34 +319,34 @@ paths:
           content:
             application/json:
               example:
-                Data:
-                - Id: 1
-                  Name: taikun
-                  HttpProxy: http://185.185.185.22
-                  OrganizationId: null
-                  OrganizationName: taikun
-                  IsLocked: false
-                  DnsServers:
-                  - Id: 1
-                    Address: 8.8.8.8
-                  NtpServers:
-                  - Id: 1
-                    Address: 8.8.8.8
-                  AllowedHosts:
-                  - Id: 1
-                    Description: taikun
-                    IpAddress: 8.8.8.8
-                    MaskBits: 24
-                    AccessProfileId: 1
-                    AccessProfileName: taikun
-                  Projects:
-                  - Id: 1
-                    Name: taikun
-                  CreatedBy: taikun
-                  LastModified: 2023-11-21T12:09:23Z
-                  LastModifiedBy: taikun
-                  CreatedAt: 2023-11-21T12:09:23Z
-                TotalCount: 0
+                data:
+                - id: 1
+                  name: taikun
+                  httpProxy: http://185.185.185.22
+                  organizationId: null
+                  organizationName: taikun
+                  isLocked: false
+                  dnsServers:
+                  - id: 1
+                    address: 8.8.8.8
+                  ntpServers:
+                  - id: 1
+                    address: 8.8.8.8
+                  allowedHosts:
+                  - id: 1
+                    description: taikun
+                    ipAddress: 8.8.8.8
+                    maskBits: 24
+                    accessProfileId: 1
+                    accessProfileName: taikun
+                  projects:
+                  - id: 1
+                    name: taikun
+                  createdBy: taikun
+                  lastModified: 2023-11-21T12:09:23Z
+                  lastModifiedBy: taikun
+                  createdAt: 2023-11-21T12:09:23Z
+                totalCount: 0
               schema:
                 $ref: '#/components/schemas/AccessProfilesList'
           description: OK
@@ -436,9 +436,9 @@ paths:
         content:
           application/json:
             example:
-              Name: taikun
-              ApiKey: sk-xxxxxxxxx
-              OrganizationId: null
+              name: taikun
+              apiKey: sk-xxxxxxxxx
+              organizationId: null
             schema:
               $ref: '#/components/schemas/CreateAiCredentialCommand'
       responses:
@@ -505,11 +505,11 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Url: null
-                Name: taikun
-                Type: Taikun
-                IsDefault: false
+              - id: 1
+                url: null
+                name: taikun
+                type: Taikun
+                isDefault: false
               schema:
                 items:
                   $ref: '#/components/schemas/AiCredentialsForOrganizationEntity'
@@ -623,18 +623,18 @@ paths:
           content:
             application/json:
               example:
-                Data:
-                - Id: 1
-                  Url: null
-                  Name: taikun
-                  Type: Taikun
-                  OrganizationId: 1
-                  OrganizationName: taikun
-                  Projects:
-                  - Id: 1
-                    Name: taikun
-                  IsDefault: false
-                TotalCount: 0
+                data:
+                - id: 1
+                  url: null
+                  name: taikun
+                  type: Taikun
+                  organizationId: 1
+                  organizationName: taikun
+                  projects:
+                  - id: 1
+                    name: taikun
+                  isDefault: false
+                totalCount: 0
               schema:
                 $ref: '#/components/schemas/AiCredentials'
           description: OK
@@ -724,7 +724,7 @@ paths:
         content:
           application/json:
             example:
-              ProjectId: 1
+              projectId: 1
             schema:
               $ref: '#/components/schemas/DisableAiCommand'
       responses:
@@ -768,8 +768,8 @@ paths:
         content:
           application/json:
             example:
-              ProjectId: 1
-              AiCredentialId: 1
+              projectId: 1
+              aiCredentialId: 1
             schema:
               $ref: '#/components/schemas/EnableAiCommand'
       responses:
@@ -901,11 +901,11 @@ paths:
         content:
           application/json:
             example:
-              Id: 1
-              Url: https://www.google.com
-              Token: Only if no microsoft teams type
-              AlertingIntegrationType: Opsgenie
-              AlertingProfileId: 1
+              id: 1
+              url: https://www.google.com
+              token: Only if no microsoft teams type
+              alertingIntegrationType: Opsgenie
+              alertingProfileId: 1
             schema:
               $ref: '#/components/schemas/EditAlertingIntegrationCommand'
       responses:
@@ -949,10 +949,10 @@ paths:
         content:
           application/json:
             example:
-              Url: https://www.google.com
-              Token: Only if no microsoft teams type
-              AlertingIntegrationType: Opsgenie
-              AlertingProfileId: 1
+              url: https://www.google.com
+              token: Only if no microsoft teams type
+              alertingIntegrationType: Opsgenie
+              alertingProfileId: 1
             schema:
               $ref: '#/components/schemas/CreateAlertingIntegrationCommand'
       responses:
@@ -1019,11 +1019,11 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Url: https://www.google.com
-                Token: Only if no microsoft teams type
-                AlertingIntegrationType: Opsgenie
-                AlertingProfileName: taikun
+              - id: 1
+                url: https://www.google.com
+                token: Only if no microsoft teams type
+                alertingIntegrationType: Opsgenie
+                alertingProfileName: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/AlertingIntegrationsListDto'
@@ -1124,7 +1124,7 @@ paths:
         content:
           application/json:
             example:
-            - Email: taikun@taikun.cloud
+            - email: taikun@taikun.cloud
             schema:
               items:
                 $ref: '#/components/schemas/AlertingEmailDto'
@@ -1179,12 +1179,12 @@ paths:
         content:
           application/json:
             example:
-            - Id: 1
-              Url: https://www.google.com
-              Headers:
-              - Id: 1
-                Key: taikun
-                Value: taikun
+            - id: 1
+              url: https://www.google.com
+              headers:
+              - id: 1
+                key: taikun
+                value: taikun
             schema:
               items:
                 $ref: '#/components/schemas/AlertingWebhookDto'
@@ -1273,23 +1273,23 @@ paths:
         content:
           application/json:
             example:
-              Name: taikun
-              SlackConfigurationId: null
-              OrganizationId: null
-              Emails:
-              - Email: taikun@taikun.cloud
-              Webhooks:
-              - Id: 1
-                Url: https://www.google.com
-                Headers:
-                - Id: 1
-                  Key: taikun
-                  Value: taikun
-              AlertingIntegrations:
-              - Url: https://www.google.com
-                Token: Only if no microsoft teams type
-                AlertingIntegrationType: Opsgenie
-              Reminder: Daily
+              name: taikun
+              slackConfigurationId: null
+              organizationId: null
+              emails:
+              - email: taikun@taikun.cloud
+              webhooks:
+              - id: 1
+                url: https://www.google.com
+                headers:
+                - id: 1
+                  key: taikun
+                  value: taikun
+              alertingIntegrations:
+              - url: https://www.google.com
+                token: Only if no microsoft teams type
+                alertingIntegrationType: Opsgenie
+              reminder: Daily
             schema:
               $ref: '#/components/schemas/CreateAlertingProfileCommand'
       responses:
@@ -1382,11 +1382,11 @@ paths:
         content:
           application/json:
             example:
-              Id: 1
-              Name: taikun
-              SlackConfigurationId: null
-              OrganizationId: null
-              Reminder: Daily
+              id: 1
+              name: taikun
+              slackConfigurationId: null
+              organizationId: null
+              reminder: Daily
             schema:
               $ref: '#/components/schemas/UpdateAlertingProfileCommand'
       responses:
@@ -1436,8 +1436,8 @@ paths:
         content:
           application/json:
             example:
-              Id: 1
-              Mode: lock|unlock
+              id: 1
+              mode: lock|unlock
             schema:
               $ref: '#/components/schemas/AlertingProfilesLockManagerCommand'
       responses:
@@ -1498,8 +1498,8 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Name: taikun
+              - id: 1
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -1613,24 +1613,24 @@ paths:
           content:
             application/json:
               example:
-                Data:
-                - Id: 1
-                  Name: taikun
-                  OrganizationId: null
-                  OrganizationName: taikun
-                  SlackConfigurationId: null
-                  SlackConfigurationName: null
-                  IsLocked: false
-                  Emails:
-                  - Email: taikun@taikun.cloud
-                  Webhooks: null
-                  Projects: null
-                  CreatedBy: taikun
-                  LastModified: 2023-11-21T12:09:23Z
-                  LastModifiedBy: taikun
-                  Reminder: "0"
-                  CreatedAt: 2023-11-21T12:09:23Z
-                TotalCount: 0
+                data:
+                - id: 1
+                  name: taikun
+                  organizationId: null
+                  organizationName: taikun
+                  slackConfigurationId: null
+                  slackConfigurationName: null
+                  isLocked: false
+                  emails:
+                  - email: taikun@taikun.cloud
+                  webhooks: null
+                  projects: null
+                  createdBy: taikun
+                  lastModified: 2023-11-21T12:09:23Z
+                  lastModifiedBy: taikun
+                  reminder: "0"
+                  createdAt: 2023-11-21T12:09:23Z
+                totalCount: 0
               schema:
                 $ref: '#/components/schemas/AlertingProfilesList'
           description: OK
@@ -1729,9 +1729,9 @@ paths:
         content:
           application/json:
             example:
-              Description: taikun
-              IpAddress: 8.8.8.8
-              MaskBits: 24
+              description: taikun
+              ipAddress: 8.8.8.8
+              maskBits: 24
             schema:
               $ref: '#/components/schemas/EditAllowedHostDto'
       responses:
@@ -1775,10 +1775,10 @@ paths:
         content:
           application/json:
             example:
-              AccessProfileId: 1
-              Description: taikun
-              IpAddress: 8.8.8.8
-              MaskBits: 24
+              accessProfileId: 1
+              description: taikun
+              ipAddress: 8.8.8.8
+              maskBits: 24
             schema:
               $ref: '#/components/schemas/CreateAllowedHostCommand'
       responses:
@@ -1875,14 +1875,14 @@ paths:
           content:
             application/json:
               example:
-                Data:
-                - Id: 1
-                  Description: taikun
-                  IpAddress: null
-                  MaskBits: 24
-                  AccessProfileId: 1
-                  AccessProfileName: taikun
-                TotalCount: 0
+                data:
+                - id: 1
+                  description: taikun
+                  ipAddress: null
+                  maskBits: 24
+                  accessProfileId: 1
+                  accessProfileName: taikun
+                totalCount: 0
               schema:
                 $ref: '#/components/schemas/AllowedHostList'
           description: OK
@@ -2324,6 +2324,8 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              email: taikun@taikun.cloud
             schema:
               $ref: '#/components/schemas/ForgotPasswordCommand'
       responses:
@@ -2366,9 +2368,14 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              email: taikun@taikun.cloud
+              password: P@ssw0rd!
+              mode: token|autoscaling|keycloak
+              accessKey: X9BZGP8TSTB7D4K6N9U8
+              secretKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
             schema:
               $ref: '#/components/schemas/LoginCommand'
-        required: true
       responses:
         "200":
           content:
@@ -2415,6 +2422,9 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.xxxxxx
+              refreshToken: n2aofltwxksszt-hthvimg
             schema:
               $ref: '#/components/schemas/RefreshTokenCommand'
       responses:
@@ -2463,6 +2473,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.xxxxxx
+              email: taikun@taikun.cloud
+              newPassword: P@ssw0rd!
             schema:
               $ref: '#/components/schemas/ResetPasswordCommand'
       responses:
@@ -2505,9 +2519,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              projectId: 1
             schema:
               $ref: '#/components/schemas/DisableAutoscalingCommand'
-        required: true
       responses:
         "400":
           content:
@@ -2548,9 +2563,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              projectId: 1
+              minSize: 1
+              maxSize: 1
             schema:
               $ref: '#/components/schemas/EditAutoscalingCommand'
-        required: true
       responses:
         "400":
           content:
@@ -2591,9 +2609,16 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              id: 1
+              autoscalingGroupName: taikun
+              minSize: 1
+              maxSize: 1
+              diskSize: 30
+              flavor: m1.medium
+              spotEnabled: false
             schema:
               $ref: '#/components/schemas/EnableAutoscalingCommand'
-        required: true
       responses:
         "400":
           content:
@@ -2634,9 +2659,12 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              cloudId: 1
+              owners:
+              - amazon
             schema:
               $ref: '#/components/schemas/AwsValidateOwnerCommand'
-        required: true
       responses:
         "400":
           content:
@@ -2677,13 +2705,21 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              region: ap-south-1
+              awsAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              awsSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              cloudId: 1
             schema:
               $ref: '#/components/schemas/AmazonAvailabilityZonesCommand'
-        required: true
       responses:
         "200":
           content:
             application/json:
+              example:
+                data:
+                - eu-west-1a
+                totalCount: 1
               schema:
                 $ref: '#/components/schemas/AzResult'
           description: OK
@@ -2726,9 +2762,15 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              name: taikun
+              awsSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              awsAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              azCount: 1
+              awsRegion: ap-south-1
+              organizationId: 1
             schema:
               $ref: '#/components/schemas/CreateAwsCloudCommand'
-        required: true
       responses:
         "200":
           content:
@@ -2775,13 +2817,18 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              awsAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              awsSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
             schema:
               $ref: '#/components/schemas/RegionListCommand'
-        required: true
       responses:
         "200":
           content:
             application/json:
+              example:
+              - name: taikun
+                region: ap-south-1
               schema:
                 items:
                   $ref: '#/components/schemas/AwsRegionDto'
@@ -2826,9 +2873,13 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              id: 1
+              name: taikun
+              awsSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              awsAccessKeyId: X9BZGP8TSTB7D4K6N9U8
             schema:
               $ref: '#/components/schemas/UpdateAwsCommand'
-        required: true
       responses:
         "400":
           content:
@@ -2870,6 +2921,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - id: "1"
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -2910,24 +2964,12 @@ paths:
       - AWS cloud credential
   /api/v1/aws/list:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>amazonRegion</i>, <i>organizationName</i>, <i>createdAt</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></ul></div>
       operationId: aws-list
       parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: OrganizationId
@@ -2972,10 +3014,49 @@ paths:
           format: int32
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                data:
+                - id: 1
+                  projectCount: 1
+                  isLocked: false
+                  name: taikun
+                  region: null
+                  availabilityZones: null
+                  availabilityZonesCount: 0
+                  projects:
+                  - id: 1
+                    name: taikun
+                  createdBy: taikun
+                  lastModified: 2023-11-21T12:09:23Z
+                  lastModifiedBy: taikun
+                  isDefault: false
+                  organizationId: 1
+                  organizationName: taikun.cloud a.s.
+                  createdAt: 2023-11-21T12:09:23Z
+                  continentName: Europe
+                totalCount: 1
               schema:
                 $ref: '#/components/schemas/AwsCredentialList'
           description: OK
@@ -3018,6 +3099,15 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              name: taikun
+              azureSubscriptionId: 8fc9a50d-d38d-4954-bec6-f1a82a88fd7a
+              azureClientId: 10b66731-3ab9-4f50-be3c-c355c83b6c7m
+              azureClientSecret: i1T8Q~Kzore4p61zGD3MZWWh1R~VmnrjlOWBsaxm
+              azureTenantId: 8e15c4c4-8226-4a29-8ffc-9b4004bf3f4m
+              azureLocation: Europe
+              azCount: 1
+              organizationId: 1
             schema:
               $ref: '#/components/schemas/CreateAzureCloudCommand'
       responses:
@@ -3062,13 +3152,16 @@ paths:
       - Azure cloud credential
   /api/v1/azure/quota/list:
     post:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>FilterBy</b> - Options: <i>cpu</i>, <i>storage</i>, <i>gallery</i>, <i>general</i></ul></div>
       operationId: azure-dashboard
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/AzureDashboardCommand'
-        required: true
       responses:
         "200":
           content:
@@ -3117,9 +3210,13 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              azureSubscriptionId: 8fc9a50d-d38d-4954-bec6-f1a82a88fd7a
+              azureClientId: 10b66731-3ab9-4f50-be3c-c355c83b6c7m
+              azureClientSecret: i1T8Q~Kzore4p61zGD3MZWWh1R~VmnrjlOWBsaxm
+              azureTenantId: 8e15c4c4-8226-4a29-8ffc-9b4004bf3f4m
             schema:
               $ref: '#/components/schemas/AzureLocationsCommand'
-        required: true
       responses:
         "200":
           content:
@@ -3168,13 +3265,19 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              clientId: 10b66731-3ab9-4f50-be3c-c355c83b6c7m
+              clientSecret: i1T8Q~Kzore4p61zGD3MZWWh1R~VmnrjlOWBsaxm
+              tenantId: 8e15c4c4-8226-4a29-8ffc-9b4004bf3f4m
             schema:
               $ref: '#/components/schemas/AzureSubscriptionListCommand'
-        required: true
       responses:
         "200":
           content:
             application/json:
+              example:
+              - id: "1"
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -3219,6 +3322,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              id: 1
+              name: taikun
+              azureClientSecret: i1T8Q~Kzore4p61zGD3MZWWh1R~VmnrjlOWBsaxm
+              azureClientId: 10b66731-3ab9-4f50-be3c-c355c83b6c7m
             schema:
               $ref: '#/components/schemas/UpdateAzureCommand'
       responses:
@@ -3261,13 +3369,23 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              azureSubscriptionId: 8fc9a50d-d38d-4954-bec6-f1a82a88fd7a
+              azureClientId: 10b66731-3ab9-4f50-be3c-c355c83b6c7m
+              azureClientSecret: i1T8Q~Kzore4p61zGD3MZWWh1R~VmnrjlOWBsaxm
+              azureTenantId: 8e15c4c4-8226-4a29-8ffc-9b4004bf3f4m
+              azureLocation: 8e15c4c4-8226-4a29-8ffc-9b4004bf3f4m
+              cloudId: 1
             schema:
               $ref: '#/components/schemas/AzureZonesCommand'
-        required: true
       responses:
         "200":
           content:
             application/json:
+              example:
+                data:
+                - eu-west-1a
+                totalCount: 1
               schema:
                 $ref: '#/components/schemas/AzResult'
           description: OK
@@ -3306,24 +3424,12 @@ paths:
       - Azure cloud credential
   /api/v1/azure/list:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>azureLocation</i>, <i>organizationName</i>, <i>createdAt</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></ul></div>
       operationId: azure-list
       parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: OrganizationId
@@ -3368,10 +3474,51 @@ paths:
           format: int32
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                data:
+                - id: 1
+                  projectCount: 1
+                  isLocked: false
+                  name: taikun
+                  tenantId: 8e15c4c4-8226-4a29-8ffc-9b4004bf3f4m
+                  location: 8e15c4c4-8226-4a29-8ffc-9b4004bf3f4m
+                  availabilityZones:
+                  - eu-west-1a
+                  availabilityZonesCount: 1
+                  projects:
+                  - id: 1
+                    name: taikun
+                  createdBy: taikun
+                  createdAt: 2023-11-21T12:09:23Z
+                  lastModified: 2023-11-21T12:09:23Z
+                  lastModifiedBy: taikun
+                  isDefault: false
+                  organizationId: 1
+                  organizationName: taikun.cloud a.s.
+                  continentName: Europe
+                totalCount: 1
               schema:
                 $ref: '#/components/schemas/AzureCredentialList'
           description: OK
@@ -3429,22 +3576,6 @@ paths:
         style: simple
       - explode: true
         in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -3463,6 +3594,24 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -3505,6 +3654,10 @@ paths:
       - Azure cloud credential
   /api/v1/azure/publishers/{cloudId}:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>name</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>azurePublisher</i></ul></div>
       operationId: azure-publishers
       parameters:
       - explode: false
@@ -3515,22 +3668,6 @@ paths:
           format: int32
           type: integer
         style: simple
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: SortBy
@@ -3551,6 +3688,24 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -3620,22 +3775,6 @@ paths:
         style: simple
       - explode: true
         in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
         name: SortBy
         required: false
         schema:
@@ -3654,6 +3793,24 @@ paths:
         required: false
         schema:
           type: string
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -7114,7 +7271,7 @@ paths:
         content:
           application/json:
             example:
-              Address: 8.8.8.8
+              address: 8.8.8.8
             schema:
               $ref: '#/components/schemas/DnsNtpAddressEditDto'
       responses:
@@ -7158,8 +7315,8 @@ paths:
         content:
           application/json:
             example:
-              Address: 8.8.8.8
-              AccessProfileId: 1
+              address: 8.8.8.8
+              accessProfileId: 1
             schema:
               $ref: '#/components/schemas/CreateDnsServerCommand'
       responses:
@@ -7226,9 +7383,9 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Address: 8.8.8.8
-                AccessProfileName: taikun
+              - id: 1
+                address: 8.8.8.8
+                accessProfileName: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/DnsServersListDto'
@@ -8495,6 +8652,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - id: "1"
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -8717,6 +8877,10 @@ paths:
         "200":
           content:
             application/json:
+              example:
+                data:
+                - eu-west-1a
+                totalCount: 1
               schema:
                 $ref: '#/components/schemas/AzResult'
           description: Success
@@ -9188,6 +9352,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - id: "1"
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -9250,6 +9417,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - id: "1"
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -9312,6 +9482,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - id: "1"
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -9797,6 +9970,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - id: "1"
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -9859,6 +10035,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - id: "1"
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -14918,7 +15097,7 @@ paths:
         content:
           application/json:
             example:
-              Address: 8.8.8.8
+              address: 8.8.8.8
             schema:
               $ref: '#/components/schemas/DnsNtpAddressEditDto'
       responses:
@@ -14962,8 +15141,8 @@ paths:
         content:
           application/json:
             example:
-              Address: 8.8.8.8
-              AccessProfileId: 1
+              address: 8.8.8.8
+              accessProfileId: 1
             schema:
               $ref: '#/components/schemas/CreateNtpServerCommand'
       responses:
@@ -15030,9 +15209,9 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Address: 8.8.8.8
-                AccessProfileName: taikun
+              - id: 1
+                address: 8.8.8.8
+                accessProfileName: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/NtpServersListDto'
@@ -15939,6 +16118,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - id: "1"
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -15990,6 +16172,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - id: "1"
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -18512,8 +18697,8 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Name: taikun
+              - id: 1
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -20991,8 +21176,8 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Name: taikun
+              - id: 1
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -21137,6 +21322,10 @@ paths:
       - Proxmox cloud credential
   /api/v1/s3credentials:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>Search</b> - Options: <i>name</i></ul></div>
       operationId: s3credentials-dropdown
       parameters:
       - explode: true
@@ -21158,6 +21347,11 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - backupCredentialId: 1
+                name: taikun
+                isDefault: false
+                isInfra: false
               schema:
                 items:
                   $ref: '#/components/schemas/BackupCredentialsForOrganizationEntity'
@@ -21201,9 +21395,15 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              s3Name: taikun
+              s3AccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              s3SecretKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              s3Endpoint: ec2.ap-south-1.amazonaws.com
+              s3Region: ap-south-1
+              organizationId: 1
             schema:
               $ref: '#/components/schemas/BackupCredentialsCreateCommand'
-        required: true
       responses:
         "200":
           content:
@@ -21249,6 +21449,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              id: 1
+              s3Name: taikun
+              s3AccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              s3SecretKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
             schema:
               $ref: '#/components/schemas/BackupCredentialsUpdateCommand'
       responses:
@@ -21291,9 +21496,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              id: 1
+              mode: lock|unlock
             schema:
               $ref: '#/components/schemas/BackupLockManagerCommand'
-        required: true
       responses:
         "400":
           content:
@@ -21334,9 +21541,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              id: 1
             schema:
               $ref: '#/components/schemas/BackupMakeDefaultCommand'
-        required: true
       responses:
         "400":
           content:
@@ -21373,24 +21581,12 @@ paths:
       - S3 Credentials
   /api/v1/s3credentials/list:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>name</i>, <i>url</i>, <i>region</i>, <i>organizationName</i>, <i>createdAt</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></ul></div>
       operationId: s3credentials-list
       parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: OrganizationId
@@ -21435,10 +21631,48 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                data:
+                - id: 1
+                  s3Name: taikun
+                  s3AccessKeyId: X9BZGP8TSTB7D4K6N9U8
+                  s3Endpoint: ec2.ap-south-1.amazonaws.com
+                  s3Region: ap-south-1
+                  organizationId: 1
+                  organizationName: taikun.cloud a.s.
+                  projects:
+                  - id: 1
+                    name: taikun
+                  isLocked: false
+                  createdBy: taikun
+                  lastModified: 2023-11-21T12:09:23Z
+                  lastModifiedBy: taikun
+                  createdAt: 2023-11-21T12:09:23Z
+                  isDefault: false
+                  isInfra: false
+                totalCount: 1
               schema:
                 $ref: '#/components/schemas/BackupCredentials'
           description: OK
@@ -23514,8 +23748,8 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Name: taikun
+              - id: 1
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -23658,15 +23892,15 @@ paths:
         content:
           application/json:
             example:
-              Name: taikun
-              SshPublicKey: |-
+              name: taikun
+              sshPublicKey: |-
                 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU
                 GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3
                 Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XA
                 t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En
                 mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx
                 NrRFi9wrf+M7Q== taikun@taikun.local
-              AccessProfileId: 1
+              accessProfileId: 1
             schema:
               $ref: '#/components/schemas/CreateSshUserCommand'
       responses:
@@ -23759,16 +23993,16 @@ paths:
         content:
           application/json:
             example:
-              Id: 1
-              Name: taikun
-              SshPublicKey: |-
+              id: 1
+              name: taikun
+              sshPublicKey: |-
                 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU
                 GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3
                 Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XA
                 t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En
                 mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx
                 NrRFi9wrf+M7Q== taikun@taikun.local
-              AccessProfileId: 1
+              accessProfileId: 1
             schema:
               $ref: '#/components/schemas/EditSshUserCommand'
       responses:
@@ -23829,16 +24063,16 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Name: taikun
-                SshPublicKey: |-
+              - id: 1
+                name: taikun
+                sshPublicKey: |-
                   ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU
                   GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3
                   Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XA
                   t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En
                   mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx
                   NrRFi9wrf+M7Q== taikun@taikun.local
-                AccessProfileName: taikun
+                accessProfileName: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/SshUsersListDto'
@@ -25010,8 +25244,8 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Name: taikun
+              - id: 1
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -26399,8 +26633,8 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Name: taikun
+              - id: 1
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -26636,8 +26870,8 @@ paths:
           content:
             application/json:
               example:
-              - Id: 1
-                Name: taikun
+              - id: 1
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonDropdownDto'
@@ -26692,6 +26926,9 @@ paths:
         "200":
           content:
             application/json:
+              example:
+              - id: "1"
+                name: taikun
               schema:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
@@ -29598,12 +29835,12 @@ components:
     AzResult:
       additionalProperties: false
       example:
-        list:
-        - list
-        - list
+        data:
+        - data
+        - data
         totalCount: 0
       properties:
-        list:
+        data:
           items:
             type: string
           nullable: true
@@ -31649,16 +31886,12 @@ components:
       additionalProperties: false
       example:
         awsAccessKeyId: awsAccessKeyId
-        region: region
         awsSecretAccessKey: awsSecretAccessKey
       properties:
         awsAccessKeyId:
           nullable: true
           type: string
         awsSecretAccessKey:
-          nullable: true
-          type: string
-        region:
           nullable: true
           type: string
       type: object

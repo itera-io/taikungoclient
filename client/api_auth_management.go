@@ -233,9 +233,6 @@ func (a *AuthManagementAPIService) AuthLoginExecute(r ApiAuthLoginRequest) (*Get
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.loginCommand == nil {
-		return localVarReturnValue, nil, reportError("loginCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

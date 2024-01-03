@@ -20,7 +20,7 @@ var _ MappedNullable = &AzResult{}
 
 // AzResult struct for AzResult
 type AzResult struct {
-	List []string `json:"list,omitempty"`
+	Data []string `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
@@ -41,37 +41,37 @@ func NewAzResultWithDefaults() *AzResult {
 	return &this
 }
 
-// GetList returns the List field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AzResult) GetList() []string {
+// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AzResult) GetData() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
-	return o.List
+	return o.Data
 }
 
-// GetListOk returns a tuple with the List field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AzResult) GetListOk() ([]string, bool) {
-	if o == nil || IsNil(o.List) {
+func (o *AzResult) GetDataOk() ([]string, bool) {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
-	return o.List, true
+	return o.Data, true
 }
 
-// HasList returns a boolean if a field has been set.
-func (o *AzResult) HasList() bool {
-	if o != nil && IsNil(o.List) {
+// HasData returns a boolean if a field has been set.
+func (o *AzResult) HasData() bool {
+	if o != nil && IsNil(o.Data) {
 		return true
 	}
 
 	return false
 }
 
-// SetList gets a reference to the given []string and assigns it to the List field.
-func (o *AzResult) SetList(v []string) {
-	o.List = v
+// SetData gets a reference to the given []string and assigns it to the Data field.
+func (o *AzResult) SetData(v []string) {
+	o.Data = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
@@ -116,8 +116,8 @@ func (o AzResult) MarshalJSON() ([]byte, error) {
 
 func (o AzResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.List != nil {
-		toSerialize["list"] = o.List
+	if o.Data != nil {
+		toSerialize["data"] = o.Data
 	}
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
