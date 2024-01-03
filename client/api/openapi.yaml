@@ -40737,16 +40737,12 @@ components:
       additionalProperties: false
       example:
         awsAccessKeyId: awsAccessKeyId
-        region: region
         awsSecretAccessKey: awsSecretAccessKey
       properties:
         awsAccessKeyId:
           nullable: true
           type: string
         awsSecretAccessKey:
-          nullable: true
-          type: string
-        region:
           nullable: true
           type: string
       type: object

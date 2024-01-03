@@ -22,7 +22,6 @@ var _ MappedNullable = &CheckAwsCommand{}
 type CheckAwsCommand struct {
 	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
-	Region NullableString `json:"region,omitempty"`
 }
 
 // NewCheckAwsCommand instantiates a new CheckAwsCommand object
@@ -126,48 +125,6 @@ func (o *CheckAwsCommand) UnsetAwsSecretAccessKey() {
 	o.AwsSecretAccessKey.Unset()
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CheckAwsCommand) GetRegion() string {
-	if o == nil || IsNil(o.Region.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Region.Get()
-}
-
-// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CheckAwsCommand) GetRegionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Region.Get(), o.Region.IsSet()
-}
-
-// HasRegion returns a boolean if a field has been set.
-func (o *CheckAwsCommand) HasRegion() bool {
-	if o != nil && o.Region.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRegion gets a reference to the given NullableString and assigns it to the Region field.
-func (o *CheckAwsCommand) SetRegion(v string) {
-	o.Region.Set(&v)
-}
-// SetRegionNil sets the value for Region to be an explicit nil
-func (o *CheckAwsCommand) SetRegionNil() {
-	o.Region.Set(nil)
-}
-
-// UnsetRegion ensures that no value is present for Region, not even an explicit nil
-func (o *CheckAwsCommand) UnsetRegion() {
-	o.Region.Unset()
-}
-
 func (o CheckAwsCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -183,9 +140,6 @@ func (o CheckAwsCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AwsSecretAccessKey.IsSet() {
 		toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey.Get()
-	}
-	if o.Region.IsSet() {
-		toSerialize["region"] = o.Region.Get()
 	}
 	return toSerialize, nil
 }
