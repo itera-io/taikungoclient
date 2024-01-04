@@ -23,7 +23,7 @@ type GoogleFlavorDto struct {
 	Name NullableString `json:"name,omitempty"`
 	Cpu NullableInt32 `json:"cpu,omitempty"`
 	Ram NullableInt64 `json:"ram,omitempty"`
-	Description interface{} `json:"description,omitempty"`
+	Description *MachineType `json:"description,omitempty"`
 	LinuxPrice NullableString `json:"linuxPrice,omitempty"`
 	WindowsPrice NullableString `json:"windowsPrice,omitempty"`
 	LinuxSpotPrice NullableString `json:"linuxSpotPrice,omitempty"`
@@ -173,37 +173,36 @@ func (o *GoogleFlavorDto) UnsetRam() {
 	o.Ram.Unset()
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GoogleFlavorDto) GetDescription() interface{} {
-	if o == nil {
-		var ret interface{}
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *GoogleFlavorDto) GetDescription() MachineType {
+	if o == nil || IsNil(o.Description) {
+		var ret MachineType
 		return ret
 	}
-	return o.Description
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GoogleFlavorDto) GetDescriptionOk() (*interface{}, bool) {
+func (o *GoogleFlavorDto) GetDescriptionOk() (*MachineType, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *GoogleFlavorDto) HasDescription() bool {
-	if o != nil && IsNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given interface{} and assigns it to the Description field.
-func (o *GoogleFlavorDto) SetDescription(v interface{}) {
-	o.Description = v
+// SetDescription gets a reference to the given MachineType and assigns it to the Description field.
+func (o *GoogleFlavorDto) SetDescription(v MachineType) {
+	o.Description = &v
 }
 
 // GetLinuxPrice returns the LinuxPrice field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -393,7 +392,7 @@ func (o GoogleFlavorDto) ToMap() (map[string]interface{}, error) {
 	if o.Ram.IsSet() {
 		toSerialize["ram"] = o.Ram.Get()
 	}
-	if o.Description != nil {
+	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	if o.LinuxPrice.IsSet() {

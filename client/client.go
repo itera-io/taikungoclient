@@ -84,6 +84,8 @@ type APIClient struct {
 
 	CloudCredentialAPI *CloudCredentialAPIService
 
+	CommonAPI *CommonAPIService
+
 	DnsServersAPI *DnsServersAPIService
 
 	FlavorsAPI *FlavorsAPIService
@@ -218,6 +220,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CatalogAppAPI = (*CatalogAppAPIService)(&c.common)
 	c.CheckerAPI = (*CheckerAPIService)(&c.common)
 	c.CloudCredentialAPI = (*CloudCredentialAPIService)(&c.common)
+	c.CommonAPI = (*CommonAPIService)(&c.common)
 	c.DnsServersAPI = (*DnsServersAPIService)(&c.common)
 	c.FlavorsAPI = (*FlavorsAPIService)(&c.common)
 	c.GoogleAPI = (*GoogleAPIService)(&c.common)

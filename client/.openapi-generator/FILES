@@ -20,6 +20,7 @@ api_catalog.go
 api_catalog_app.go
 api_checker.go
 api_cloud_credential.go
+api_common.go
 api_dns_servers.go
 api_flavors.go
 api_google.go
@@ -73,6 +74,7 @@ api_vsphere_cloud_credential.go
 client.go
 configuration.go
 docs/AWSCloudCredentialAPI.md
+docs/AcceleratorsData.md
 docs/AccessProfilesAPI.md
 docs/AccessProfilesList.md
 docs/AccessProfilesListDto.md
@@ -215,6 +217,7 @@ docs/CloudRole.md
 docs/CloudStatus.md
 docs/CloudType.md
 docs/CommitStandAloneVmCommand.md
+docs/CommonAPI.md
 docs/CommonDropdownDto.md
 docs/CommonExtendedDropdownDto.md
 docs/CommonSearchKubernetesResponseData.md
@@ -295,6 +298,7 @@ docs/DeploymentDto.md
 docs/DeploymentSearchCommand.md
 docs/DeploymentSearchList.md
 docs/Deployments.md
+docs/DeprecationStatus.md
 docs/DescribeConfigMapCommand.md
 docs/DescribeCrdCommand.md
 docs/DescribeCronJobCommand.md
@@ -425,6 +429,7 @@ docs/ListCatalogAppAvailableVersionsCommand.md
 docs/LockProjectAppCommand.md
 docs/LoginCommand.md
 docs/LokiResponseDto.md
+docs/MachineType.md
 docs/Metadata.md
 docs/MonitoringOperationsCommand.md
 docs/NetworkListCommand.md
@@ -617,6 +622,7 @@ docs/RestoreBackupCommand.md
 docs/RuleCreateCommand.md
 docs/RuleForUpdateDto.md
 docs/S3CredentialsAPI.md
+docs/ScratchDisksData.md
 docs/SearchAPI.md
 docs/SecretDto.md
 docs/SecretSearchCommand.md
@@ -775,6 +781,7 @@ docs/YamlValidatorCommand.md
 git_push.sh
 go.mod
 go.sum
+model_accelerators_data.go
 model_access_profiles_list.go
 model_access_profiles_list_dto.go
 model_access_profiles_lock_management_command.go
@@ -981,6 +988,7 @@ model_deployment_dto.go
 model_deployment_search_command.go
 model_deployment_search_list.go
 model_deployments.go
+model_deprecation_status.go
 model_describe_config_map_command.go
 model_describe_crd_command.go
 model_describe_cron_job_command.go
@@ -1100,6 +1108,7 @@ model_list_catalog_app_available_versions_command.go
 model_lock_project_app_command.go
 model_login_command.go
 model_loki_response_dto.go
+model_machine_type.go
 model_metadata.go
 model_monitoring_operations_command.go
 model_network_list_command.go
@@ -1269,6 +1278,7 @@ model_restart_sts_command.go
 model_restore_backup_command.go
 model_rule_create_command.go
 model_rule_for_update_dto.go
+model_scratch_disks_data.go
 model_secret_dto.go
 model_secret_search_command.go
 model_secret_search_list.go
@@ -1426,6 +1436,7 @@ test/api_catalog_app_test.go
 test/api_catalog_test.go
 test/api_checker_test.go
 test/api_cloud_credential_test.go
+test/api_common_test.go
 test/api_dns_servers_test.go
 test/api_flavors_test.go
 test/api_google_test.go

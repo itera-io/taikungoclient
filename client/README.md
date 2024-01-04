@@ -203,6 +203,7 @@ Class | Method | HTTP request | Description
 *CloudCredentialAPI* | [**CloudcredentialsLockManager**](docs/CloudCredentialAPI.md#cloudcredentialslockmanager) | **Post** /api/v1/cloudcredentials/lockmanager | Lock/Unlock cloud credential
 *CloudCredentialAPI* | [**CloudcredentialsMakeDefault**](docs/CloudCredentialAPI.md#cloudcredentialsmakedefault) | **Post** /api/v1/cloudcredentials/makedefault | Make cloud credentials default
 *CloudCredentialAPI* | [**CloudcredentialsOrgList**](docs/CloudCredentialAPI.md#cloudcredentialsorglist) | **Get** /api/v1/cloudcredentials | Retrieve a list of cloud credentials by organization Id
+*CommonAPI* | [**CommonSortingElements**](docs/CommonAPI.md#commonsortingelements) | **Get** /api/v1/common/sorting-elements/{type} | 
 *DnsServersAPI* | [**DnsserversCreate**](docs/DnsServersAPI.md#dnsserverscreate) | **Post** /api/v1/dnsservers/create | Create dns servers for access profile
 *DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete dns server
 *DnsServersAPI* | [**DnsserversEdit**](docs/DnsServersAPI.md#dnsserversedit) | **Put** /api/v1/dnsservers/edit/{id} | Edit dns server
@@ -558,6 +559,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AcceleratorsData](docs/AcceleratorsData.md)
  - [AccessProfilesList](docs/AccessProfilesList.md)
  - [AccessProfilesListDto](docs/AccessProfilesListDto.md)
  - [AccessProfilesLockManagementCommand](docs/AccessProfilesLockManagementCommand.md)
@@ -764,6 +766,7 @@ Class | Method | HTTP request | Description
  - [DeploymentSearchCommand](docs/DeploymentSearchCommand.md)
  - [DeploymentSearchList](docs/DeploymentSearchList.md)
  - [Deployments](docs/Deployments.md)
+ - [DeprecationStatus](docs/DeprecationStatus.md)
  - [DescribeConfigMapCommand](docs/DescribeConfigMapCommand.md)
  - [DescribeCrdCommand](docs/DescribeCrdCommand.md)
  - [DescribeCronJobCommand](docs/DescribeCronJobCommand.md)
@@ -883,6 +886,7 @@ Class | Method | HTTP request | Description
  - [LockProjectAppCommand](docs/LockProjectAppCommand.md)
  - [LoginCommand](docs/LoginCommand.md)
  - [LokiResponseDto](docs/LokiResponseDto.md)
+ - [MachineType](docs/MachineType.md)
  - [Metadata](docs/Metadata.md)
  - [MonitoringOperationsCommand](docs/MonitoringOperationsCommand.md)
  - [NetworkListCommand](docs/NetworkListCommand.md)
@@ -1052,6 +1056,7 @@ Class | Method | HTTP request | Description
  - [RestoreBackupCommand](docs/RestoreBackupCommand.md)
  - [RuleCreateCommand](docs/RuleCreateCommand.md)
  - [RuleForUpdateDto](docs/RuleForUpdateDto.md)
+ - [ScratchDisksData](docs/ScratchDisksData.md)
  - [SecretDto](docs/SecretDto.md)
  - [SecretSearchCommand](docs/SecretSearchCommand.md)
  - [SecretSearchList](docs/SecretSearchList.md)
