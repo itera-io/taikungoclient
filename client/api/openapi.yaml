@@ -46135,14 +46135,14 @@ components:
     GoogleFlavorDto:
       additionalProperties: false
       example:
-        windowsSpotPrice: windowsSpotPrice
+        windowsSpotPrice: 2.3021358869347655
         name: name
         cpu: 0
         description: ""
-        windowsPrice: windowsPrice
-        linuxPrice: linuxPrice
+        windowsPrice: 5.962133916683182
+        linuxPrice: 1.4658129805029452
         ram: 6
-        linuxSpotPrice: linuxSpotPrice
+        linuxSpotPrice: 5.637376656633329
       properties:
         name:
           nullable: true
@@ -46158,39 +46158,43 @@ components:
         description:
           nullable: true
         linuxPrice:
+          format: double
           nullable: true
-          type: string
+          type: number
         windowsPrice:
+          format: double
           nullable: true
-          type: string
+          type: number
         linuxSpotPrice:
+          format: double
           nullable: true
-          type: string
+          type: number
         windowsSpotPrice:
+          format: double
           nullable: true
-          type: string
+          type: number
       type: object
     GoogleFlavorList:
       additionalProperties: false
       example:
         data:
-        - windowsSpotPrice: windowsSpotPrice
+        - windowsSpotPrice: 2.3021358869347655
           name: name
           cpu: 0
           description: ""
-          windowsPrice: windowsPrice
-          linuxPrice: linuxPrice
+          windowsPrice: 5.962133916683182
+          linuxPrice: 1.4658129805029452
           ram: 6
-          linuxSpotPrice: linuxSpotPrice
-        - windowsSpotPrice: windowsSpotPrice
+          linuxSpotPrice: 5.637376656633329
+        - windowsSpotPrice: 2.3021358869347655
           name: name
           cpu: 0
           description: ""
-          windowsPrice: windowsPrice
-          linuxPrice: linuxPrice
+          windowsPrice: 5.962133916683182
+          linuxPrice: 1.4658129805029452
           ram: 6
-          linuxSpotPrice: linuxSpotPrice
-        totalCount: 1
+          linuxSpotPrice: 5.637376656633329
+        totalCount: 7
       properties:
         data:
           items:
