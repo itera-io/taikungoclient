@@ -203,6 +203,7 @@ Class | Method | HTTP request | Description
 *CloudCredentialAPI* | [**CloudcredentialsLockManager**](docs/CloudCredentialAPI.md#cloudcredentialslockmanager) | **Post** /api/v1/cloudcredentials/lockmanager | Lock/Unlock cloud credential
 *CloudCredentialAPI* | [**CloudcredentialsMakeDefault**](docs/CloudCredentialAPI.md#cloudcredentialsmakedefault) | **Post** /api/v1/cloudcredentials/makedefault | Make cloud credentials default
 *CloudCredentialAPI* | [**CloudcredentialsOrgList**](docs/CloudCredentialAPI.md#cloudcredentialsorglist) | **Get** /api/v1/cloudcredentials | Retrieve a list of cloud credentials by organization Id
+*CommonAPI* | [**CommonCountries**](docs/CommonAPI.md#commoncountries) | **Get** /api/v1/common/countries | Retrieve country list
 *CommonAPI* | [**CommonSortingElements**](docs/CommonAPI.md#commonsortingelements) | **Get** /api/v1/common/sorting-elements/{type} | 
 *DnsServersAPI* | [**DnsserversCreate**](docs/DnsServersAPI.md#dnsserverscreate) | **Post** /api/v1/dnsservers/create | Create dns servers for access profile
 *DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete dns server
@@ -317,6 +318,7 @@ Class | Method | HTTP request | Description
 *KubernetesProfilesAPI* | [**KubernetesprofilesLockManager**](docs/KubernetesProfilesAPI.md#kubernetesprofileslockmanager) | **Post** /api/v1/kubernetesprofiles/lockmanager | Kubernetes profile lock/unlock
 *NotificationsAPI* | [**NotificationsExportCsv**](docs/NotificationsAPI.md#notificationsexportcsv) | **Get** /api/v1/notifications/download | Export Csv
 *NotificationsAPI* | [**NotificationsList**](docs/NotificationsAPI.md#notificationslist) | **Get** /api/v1/notifications/list | Retrieve all notifications
+*NotificationsAPI* | [**NotificationsOperationMessages**](docs/NotificationsAPI.md#notificationsoperationmessages) | **Post** /api/v1/notifications/operations | Get project operations
 *NtpServersAPI* | [**NtpserversCreate**](docs/NtpServersAPI.md#ntpserverscreate) | **Post** /api/v1/ntpservers/create | Create access profile ntp server
 *NtpServersAPI* | [**NtpserversDelete**](docs/NtpServersAPI.md#ntpserversdelete) | **Delete** /api/v1/ntpservers/{id} | Delete access profile ntp server
 *NtpServersAPI* | [**NtpserversEdit**](docs/NtpServersAPI.md#ntpserversedit) | **Put** /api/v1/ntpservers/edit/{id} | Edit access profile ntp server
@@ -698,6 +700,7 @@ Class | Method | HTTP request | Description
  - [ConfigMaps](docs/ConfigMaps.md)
  - [ConsoleScreenshotCommand](docs/ConsoleScreenshotCommand.md)
  - [CostComponent](docs/CostComponent.md)
+ - [CountryListDto](docs/CountryListDto.md)
  - [CreateAccessProfileCommand](docs/CreateAccessProfileCommand.md)
  - [CreateAiCredentialCommand](docs/CreateAiCredentialCommand.md)
  - [CreateAlertingIntegrationCommand](docs/CreateAlertingIntegrationCommand.md)
@@ -822,6 +825,7 @@ Class | Method | HTTP request | Description
  - [FullSpotOperationCommand](docs/FullSpotOperationCommand.md)
  - [GetCatalogAppValueAutocompleteCommand](docs/GetCatalogAppValueAutocompleteCommand.md)
  - [GetCatalogAppValueCommand](docs/GetCatalogAppValueCommand.md)
+ - [GetProjectOperationCommand](docs/GetProjectOperationCommand.md)
  - [GetToken](docs/GetToken.md)
  - [GiveAccessToPartnerCommand](docs/GiveAccessToPartnerCommand.md)
  - [GoogleCredentialList](docs/GoogleCredentialList.md)

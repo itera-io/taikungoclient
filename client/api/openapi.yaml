@@ -7238,6 +7238,29 @@ paths:
       summary: Remove cloud credential by cloud Id
       tags:
       - Cloud credential
+  /api/v1/common/countries:
+    get:
+      operationId: common-countries
+      parameters:
+      - explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CountryListDto'
+                type: array
+          description: OK
+      summary: Retrieve country list
+      tags:
+      - Common
   /api/v1/common/sorting-elements/{type}:
     get:
       operationId: common-sorting-elements
@@ -14838,6 +14861,54 @@ paths:
       summary: Delete kubernetes profile
       tags:
       - Kubernetes profiles
+  /api/v1/notifications/operations:
+    post:
+      operationId: notifications-operation-messages
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetProjectOperationCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema: {}
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Get project operations
+      tags:
+      - Notifications
   /api/v1/notifications/download:
     get:
       operationId: notifications-export-csv
@@ -32425,6 +32496,18 @@ components:
           nullable: true
           type: string
       type: object
+    CountryListDto:
+      additionalProperties: false
+      example:
+        name: name
+        isEu: true
+      properties:
+        name:
+          nullable: true
+          type: string
+        isEu:
+          type: boolean
+      type: object
     CreateAccessProfileCommand:
       additionalProperties: false
       example:
@@ -36085,6 +36168,15 @@ components:
         version:
           nullable: true
           type: string
+      type: object
+    GetProjectOperationCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
       type: object
     GetToken:
       additionalProperties: false

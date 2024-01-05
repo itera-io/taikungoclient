@@ -230,6 +230,7 @@ docs/ConfigMapSearchList.md
 docs/ConfigMaps.md
 docs/ConsoleScreenshotCommand.md
 docs/CostComponent.md
+docs/CountryListDto.md
 docs/CreateAccessProfileCommand.md
 docs/CreateAiCredentialCommand.md
 docs/CreateAlertingIntegrationCommand.md
@@ -356,6 +357,7 @@ docs/FromTemplateDto.md
 docs/FullSpotOperationCommand.md
 docs/GetCatalogAppValueAutocompleteCommand.md
 docs/GetCatalogAppValueCommand.md
+docs/GetProjectOperationCommand.md
 docs/GetToken.md
 docs/GiveAccessToPartnerCommand.md
 docs/GoogleAPI.md
@@ -919,6 +921,7 @@ model_config_map_search_list.go
 model_config_maps.go
 model_console_screenshot_command.go
 model_cost_component.go
+model_country_list_dto.go
 model_create_access_profile_command.go
 model_create_ai_credential_command.go
 model_create_alerting_integration_command.go
@@ -1043,6 +1046,7 @@ model_from_template_dto.go
 model_full_spot_operation_command.go
 model_get_catalog_app_value_autocomplete_command.go
 model_get_catalog_app_value_command.go
+model_get_project_operation_command.go
 model_get_token.go
 model_give_access_to_partner_command.go
 model_google_credential_list.go
