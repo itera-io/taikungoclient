@@ -179,7 +179,7 @@ Class | Method | HTTP request | Description
 *BackupPolicyAPI* | [**BackupRestoreBackup**](docs/BackupPolicyAPI.md#backuprestorebackup) | **Post** /api/v1/backup/restore | Restore backup
 *BillingAPI* | [**BillingCreate**](docs/BillingAPI.md#billingcreate) | **Post** /api/v1/billing/create | Add billing summary
 *BillingAPI* | [**BillingExportCsv**](docs/BillingAPI.md#billingexportcsv) | **Get** /api/v1/billing/export | Export Csv
-*BillingAPI* | [**BillingGroupedList**](docs/BillingAPI.md#billinggroupedlist) | **Get** /api/v1/billing/grouped | Retrieve a grouped list of billing summaries
+*BillingAPI* | [**BillingGroupedList**](docs/BillingAPI.md#billinggroupedlist) | **Post** /api/v1/billing/grouped | Retrieve a grouped list of billing summaries
 *BillingAPI* | [**BillingList**](docs/BillingAPI.md#billinglist) | **Get** /api/v1/billing | Retrieve billing info
 *CatalogAPI* | [**CatalogBindProject**](docs/CatalogAPI.md#catalogbindproject) | **Post** /api/v1/catalog/bind-project | Bind projects to catalog
 *CatalogAPI* | [**CatalogCreate**](docs/CatalogAPI.md#catalogcreate) | **Post** /api/v1/catalog/create | Create catalog
@@ -544,7 +544,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsVisibility**](docs/ProjectsAPI.md#projectsvisibility) | **Get** /api/v1/projects/visibility/{projectId} | Visibility of project actions
 *PrometheusBillingsAPI* | [**PrometheusbillingsCreate**](docs/PrometheusBillingsAPI.md#prometheusbillingscreate) | **Post** /api/v1/prometheusbillings | Add prometheus billing
 *PrometheusBillingsAPI* | [**PrometheusbillingsExportCsv**](docs/PrometheusBillingsAPI.md#prometheusbillingsexportcsv) | **Get** /api/v1/prometheusbillings/export | Export Csv
-*PrometheusBillingsAPI* | [**PrometheusbillingsGroupedList**](docs/PrometheusBillingsAPI.md#prometheusbillingsgroupedlist) | **Get** /api/v1/prometheusbillings/grouped | Retrieve a list of grouped prometheus billing
+*PrometheusBillingsAPI* | [**PrometheusbillingsGroupedList**](docs/PrometheusBillingsAPI.md#prometheusbillingsgroupedlist) | **Post** /api/v1/prometheusbillings/grouped | Retrieve a list of grouped prometheus billing
 *PrometheusBillingsAPI* | [**PrometheusbillingsList**](docs/PrometheusBillingsAPI.md#prometheusbillingslist) | **Get** /api/v1/prometheusbillings | Retrieve all prometheus billing
 *PrometheusOrganizationsAPI* | [**PrometheusorganizationsBindRules**](docs/PrometheusOrganizationsAPI.md#prometheusorganizationsbindrules) | **Post** /api/v1/prometheusorganizations/bind/rules | Bind rules to organizations
 *PrometheusRulesAPI* | [**PrometheusrulesBindOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesbindorganizations) | **Post** /api/v1/prometheusrules/bind/organizations | Bind organizations to prometheus rule
@@ -826,6 +826,7 @@ Class | Method | HTTP request | Description
  - [BillingCredentialsSearchList](docs/BillingCredentialsSearchList.md)
  - [BillingInfo](docs/BillingInfo.md)
  - [BillingInfoDto](docs/BillingInfoDto.md)
+ - [BillingPeriod](docs/BillingPeriod.md)
  - [BillingSummaryDto](docs/BillingSummaryDto.md)
  - [BindAppRepositoryCommand](docs/BindAppRepositoryCommand.md)
  - [BindFlavorToProjectCommand](docs/BindFlavorToProjectCommand.md)
@@ -1060,7 +1061,9 @@ Class | Method | HTTP request | Description
  - [GoogleFlavorDto](docs/GoogleFlavorDto.md)
  - [GoogleFlavorList](docs/GoogleFlavorList.md)
  - [GroupedBillingInfo](docs/GroupedBillingInfo.md)
+ - [GroupedBillingListQuery](docs/GroupedBillingListQuery.md)
  - [GroupedBillings](docs/GroupedBillings.md)
+ - [GroupedPrometheusBillingListQuery](docs/GroupedPrometheusBillingListQuery.md)
  - [HelmMetadata](docs/HelmMetadata.md)
  - [HelmReleaseDto](docs/HelmReleaseDto.md)
  - [HelmReleasesList](docs/HelmReleasesList.md)

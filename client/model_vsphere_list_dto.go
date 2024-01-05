@@ -39,6 +39,7 @@ type VsphereListDto struct {
 	Password NullableString `json:"password,omitempty"`
 	DatacenterId NullableString `json:"datacenterId,omitempty"`
 	DatacenterName NullableString `json:"datacenterName,omitempty"`
+	Datastore NullableString `json:"datastore,omitempty"`
 	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
 	VsphereNetworks []VsphereNetworkListDto `json:"vsphereNetworks,omitempty"`
 }
@@ -790,6 +791,48 @@ func (o *VsphereListDto) UnsetDatacenterName() {
 	o.DatacenterName.Unset()
 }
 
+// GetDatastore returns the Datastore field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VsphereListDto) GetDatastore() string {
+	if o == nil || IsNil(o.Datastore.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Datastore.Get()
+}
+
+// GetDatastoreOk returns a tuple with the Datastore field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VsphereListDto) GetDatastoreOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Datastore.Get(), o.Datastore.IsSet()
+}
+
+// HasDatastore returns a boolean if a field has been set.
+func (o *VsphereListDto) HasDatastore() bool {
+	if o != nil && o.Datastore.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDatastore gets a reference to the given NullableString and assigns it to the Datastore field.
+func (o *VsphereListDto) SetDatastore(v string) {
+	o.Datastore.Set(&v)
+}
+// SetDatastoreNil sets the value for Datastore to be an explicit nil
+func (o *VsphereListDto) SetDatastoreNil() {
+	o.Datastore.Set(nil)
+}
+
+// UnsetDatastore ensures that no value is present for Datastore, not even an explicit nil
+func (o *VsphereListDto) UnsetDatastore() {
+	o.Datastore.Unset()
+}
+
 // GetVmTemplateName returns the VmTemplateName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VsphereListDto) GetVmTemplateName() string {
 	if o == nil || IsNil(o.VmTemplateName.Get()) {
@@ -931,6 +974,9 @@ func (o VsphereListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.DatacenterName.IsSet() {
 		toSerialize["datacenterName"] = o.DatacenterName.Get()
+	}
+	if o.Datastore.IsSet() {
+		toSerialize["datastore"] = o.Datastore.Get()
 	}
 	if o.VmTemplateName.IsSet() {
 		toSerialize["vmTemplateName"] = o.VmTemplateName.Get()

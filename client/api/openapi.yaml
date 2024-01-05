@@ -5914,31 +5914,14 @@ paths:
       tags:
       - Billing
   /api/v1/billing/grouped:
-    get:
+    post:
       operationId: billing-grouped-list
-      parameters:
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: PeriodDuration
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: IsDeleted
-        required: false
-        schema:
-          type: boolean
-        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupedBillingListQuery'
+        required: true
       responses:
         "200":
           content:
@@ -26902,24 +26885,14 @@ paths:
       tags:
       - Prometheus Billings
   /api/v1/prometheusbillings/grouped:
-    get:
+    post:
       operationId: prometheusbillings-grouped-list
-      parameters:
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: PeriodDuration
-        required: false
-        schema:
-          type: string
-        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupedPrometheusBillingListQuery'
+        required: true
       responses:
         "200":
           content:
@@ -39358,6 +39331,13 @@ components:
           nullable: true
           type: string
       type: object
+    BillingPeriod:
+      enum:
+      - none
+      - daily
+      - mothly
+      - yearly
+      type: string
     BillingSummaryDto:
       additionalProperties: false
       example:
@@ -46228,6 +46208,23 @@ components:
           nullable: true
           type: string
       type: object
+    GroupedBillingListQuery:
+      additionalProperties: false
+      example:
+        organizationId: 0
+        periodDuration: null
+        isDeleted: true
+      properties:
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        periodDuration:
+          $ref: '#/components/schemas/BillingPeriod'
+        isDeleted:
+          nullable: true
+          type: boolean
+      type: object
     GroupedBillings:
       additionalProperties: false
       example:
@@ -46240,6 +46237,19 @@ components:
         tcu:
           format: int64
           type: integer
+      type: object
+    GroupedPrometheusBillingListQuery:
+      additionalProperties: false
+      example:
+        organizationId: 0
+        periodDuration: null
+      properties:
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        periodDuration:
+          $ref: '#/components/schemas/BillingPeriod'
       type: object
     HelmMetadata:
       additionalProperties: false
@@ -61765,6 +61775,7 @@ components:
             id: 0
           organizationName: organizationName
           datacenterName: datacenterName
+          datastore: datastore
           lastModifiedBy: lastModifiedBy
           datacenterId: datacenterId
           url: url
@@ -61808,6 +61819,7 @@ components:
             id: 0
           organizationName: organizationName
           datacenterName: datacenterName
+          datastore: datastore
           lastModifiedBy: lastModifiedBy
           datacenterId: datacenterId
           url: url
@@ -61865,6 +61877,7 @@ components:
           id: 0
         organizationName: organizationName
         datacenterName: datacenterName
+        datastore: datastore
         lastModifiedBy: lastModifiedBy
         datacenterId: datacenterId
         url: url
@@ -61958,6 +61971,9 @@ components:
           nullable: true
           type: string
         datacenterName:
+          nullable: true
+          type: string
+        datastore:
           nullable: true
           type: string
         vmTemplateName:

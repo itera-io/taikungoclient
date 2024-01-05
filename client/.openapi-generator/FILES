@@ -197,6 +197,7 @@ docs/BillingCredentialsSearchCommand.md
 docs/BillingCredentialsSearchList.md
 docs/BillingInfo.md
 docs/BillingInfoDto.md
+docs/BillingPeriod.md
 docs/BillingSummaryDto.md
 docs/BindAppRepositoryCommand.md
 docs/BindFlavorToProjectCommand.md
@@ -440,7 +441,9 @@ docs/GoogleCredentialsListDto.md
 docs/GoogleFlavorDto.md
 docs/GoogleFlavorList.md
 docs/GroupedBillingInfo.md
+docs/GroupedBillingListQuery.md
 docs/GroupedBillings.md
+docs/GroupedPrometheusBillingListQuery.md
 docs/HelmMetadata.md
 docs/HelmReleaseDto.md
 docs/HelmReleasesList.md
@@ -1066,6 +1069,7 @@ model_billing_credentials_search_command.go
 model_billing_credentials_search_list.go
 model_billing_info.go
 model_billing_info_dto.go
+model_billing_period.go
 model_billing_summary_dto.go
 model_bind_app_repository_command.go
 model_bind_flavor_to_project_command.go
@@ -1300,7 +1304,9 @@ model_google_credentials_list_dto.go
 model_google_flavor_dto.go
 model_google_flavor_list.go
 model_grouped_billing_info.go
+model_grouped_billing_list_query.go
 model_grouped_billings.go
+model_grouped_prometheus_billing_list_query.go
 model_helm_metadata.go
 model_helm_release_dto.go
 model_helm_releases_list.go
