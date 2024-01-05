@@ -559,7 +559,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [AcceleratorsData](docs/AcceleratorsData.md)
  - [AccessProfilesList](docs/AccessProfilesList.md)
  - [AccessProfilesListDto](docs/AccessProfilesListDto.md)
  - [AccessProfilesLockManagementCommand](docs/AccessProfilesLockManagementCommand.md)
@@ -766,7 +765,6 @@ Class | Method | HTTP request | Description
  - [DeploymentSearchCommand](docs/DeploymentSearchCommand.md)
  - [DeploymentSearchList](docs/DeploymentSearchList.md)
  - [Deployments](docs/Deployments.md)
- - [DeprecationStatus](docs/DeprecationStatus.md)
  - [DescribeConfigMapCommand](docs/DescribeConfigMapCommand.md)
  - [DescribeCrdCommand](docs/DescribeCrdCommand.md)
  - [DescribeCronJobCommand](docs/DescribeCronJobCommand.md)
@@ -886,7 +884,6 @@ Class | Method | HTTP request | Description
  - [LockProjectAppCommand](docs/LockProjectAppCommand.md)
  - [LoginCommand](docs/LoginCommand.md)
  - [LokiResponseDto](docs/LokiResponseDto.md)
- - [MachineType](docs/MachineType.md)
  - [Metadata](docs/Metadata.md)
  - [MonitoringOperationsCommand](docs/MonitoringOperationsCommand.md)
  - [NetworkListCommand](docs/NetworkListCommand.md)
@@ -1056,7 +1053,6 @@ Class | Method | HTTP request | Description
  - [RestoreBackupCommand](docs/RestoreBackupCommand.md)
  - [RuleCreateCommand](docs/RuleCreateCommand.md)
  - [RuleForUpdateDto](docs/RuleForUpdateDto.md)
- - [ScratchDisksData](docs/ScratchDisksData.md)
  - [SecretDto](docs/SecretDto.md)
  - [SecretSearchCommand](docs/SecretSearchCommand.md)
  - [SecretSearchList](docs/SecretSearchList.md)

@@ -28139,20 +28139,6 @@ paths:
       - Vsphere cloud credential
 components:
   schemas:
-    AcceleratorsData:
-      additionalProperties: false
-      example:
-        guestAcceleratorCount: 1
-        guestAcceleratorType: guestAcceleratorType
-      properties:
-        guestAcceleratorCount:
-          format: int32
-          nullable: true
-          type: integer
-        guestAcceleratorType:
-          nullable: true
-          type: string
-      type: object
     AccessProfilesList:
       additionalProperties: false
       example:
@@ -35047,35 +35033,6 @@ components:
           format: int32
           type: integer
       type: object
-    DeprecationStatus:
-      additionalProperties: false
-      example:
-        deleted: deleted
-        deprecated: deprecated
-        obsolete: obsolete
-        eTag: eTag
-        state: state
-        replacement: replacement
-      properties:
-        deleted:
-          nullable: true
-          type: string
-        deprecated:
-          nullable: true
-          type: string
-        obsolete:
-          nullable: true
-          type: string
-        replacement:
-          nullable: true
-          type: string
-        state:
-          nullable: true
-          type: string
-        eTag:
-          nullable: true
-          type: string
-      type: object
     DescribeConfigMapCommand:
       additionalProperties: false
       example:
@@ -36326,43 +36283,14 @@ components:
     GoogleFlavorDto:
       additionalProperties: false
       example:
-        windowsSpotPrice: windowsSpotPrice
+        windowsSpotPrice: 2.3021358869347655
         name: name
         cpu: 0
-        description:
-          isSharedCpu: true
-          guestCpus: 5
-          scratchDisks:
-          - diskGb: 2
-          - diskGb: 2
-          kind: kind
-          deprecated:
-            deleted: deleted
-            deprecated: deprecated
-            obsolete: obsolete
-            eTag: eTag
-            state: state
-            replacement: replacement
-          description: description
-          selfLink: selfLink
-          memoryMb: 3
-          maximumPersistentDisks: 7
-          maximumPersistentDisksSizeGb: 9
-          zone: zone
-          creationTimestamp: creationTimestamp
-          name: name
-          accelerators:
-          - guestAcceleratorCount: 1
-            guestAcceleratorType: guestAcceleratorType
-          - guestAcceleratorCount: 1
-            guestAcceleratorType: guestAcceleratorType
-          eTag: eTag
-          id: 5
-          imageSpaceGb: 2
-        windowsPrice: windowsPrice
-        linuxPrice: linuxPrice
+        description: ""
+        windowsPrice: 5.962133916683182
+        linuxPrice: 1.4658129805029452
         ram: 6
-        linuxSpotPrice: linuxSpotPrice
+        linuxSpotPrice: 5.637376656633329
       properties:
         name:
           nullable: true
@@ -36376,99 +36304,45 @@ components:
           nullable: true
           type: integer
         description:
-          $ref: '#/components/schemas/MachineType'
+          nullable: true
         linuxPrice:
+          format: double
           nullable: true
-          type: string
+          type: number
         windowsPrice:
+          format: double
           nullable: true
-          type: string
+          type: number
         linuxSpotPrice:
+          format: double
           nullable: true
-          type: string
+          type: number
         windowsSpotPrice:
+          format: double
           nullable: true
-          type: string
+          type: number
       type: object
     GoogleFlavorList:
       additionalProperties: false
       example:
         data:
-        - windowsSpotPrice: windowsSpotPrice
+        - windowsSpotPrice: 2.3021358869347655
           name: name
           cpu: 0
-          description:
-            isSharedCpu: true
-            guestCpus: 5
-            scratchDisks:
-            - diskGb: 2
-            - diskGb: 2
-            kind: kind
-            deprecated:
-              deleted: deleted
-              deprecated: deprecated
-              obsolete: obsolete
-              eTag: eTag
-              state: state
-              replacement: replacement
-            description: description
-            selfLink: selfLink
-            memoryMb: 3
-            maximumPersistentDisks: 7
-            maximumPersistentDisksSizeGb: 9
-            zone: zone
-            creationTimestamp: creationTimestamp
-            name: name
-            accelerators:
-            - guestAcceleratorCount: 1
-              guestAcceleratorType: guestAcceleratorType
-            - guestAcceleratorCount: 1
-              guestAcceleratorType: guestAcceleratorType
-            eTag: eTag
-            id: 5
-            imageSpaceGb: 2
-          windowsPrice: windowsPrice
-          linuxPrice: linuxPrice
+          description: ""
+          windowsPrice: 5.962133916683182
+          linuxPrice: 1.4658129805029452
           ram: 6
-          linuxSpotPrice: linuxSpotPrice
-        - windowsSpotPrice: windowsSpotPrice
+          linuxSpotPrice: 5.637376656633329
+        - windowsSpotPrice: 2.3021358869347655
           name: name
           cpu: 0
-          description:
-            isSharedCpu: true
-            guestCpus: 5
-            scratchDisks:
-            - diskGb: 2
-            - diskGb: 2
-            kind: kind
-            deprecated:
-              deleted: deleted
-              deprecated: deprecated
-              obsolete: obsolete
-              eTag: eTag
-              state: state
-              replacement: replacement
-            description: description
-            selfLink: selfLink
-            memoryMb: 3
-            maximumPersistentDisks: 7
-            maximumPersistentDisksSizeGb: 9
-            zone: zone
-            creationTimestamp: creationTimestamp
-            name: name
-            accelerators:
-            - guestAcceleratorCount: 1
-              guestAcceleratorType: guestAcceleratorType
-            - guestAcceleratorCount: 1
-              guestAcceleratorType: guestAcceleratorType
-            eTag: eTag
-            id: 5
-            imageSpaceGb: 2
-          windowsPrice: windowsPrice
-          linuxPrice: linuxPrice
+          description: ""
+          windowsPrice: 5.962133916683182
+          linuxPrice: 1.4658129805029452
           ram: 6
-          linuxSpotPrice: linuxSpotPrice
-        totalCount: 4
+          linuxSpotPrice: 5.637376656633329
+        totalCount: 7
       properties:
         data:
           items:
@@ -38178,100 +38052,6 @@ components:
           type: string
         canDownload:
           type: boolean
-      type: object
-    MachineType:
-      additionalProperties: false
-      example:
-        isSharedCpu: true
-        guestCpus: 5
-        scratchDisks:
-        - diskGb: 2
-        - diskGb: 2
-        kind: kind
-        deprecated:
-          deleted: deleted
-          deprecated: deprecated
-          obsolete: obsolete
-          eTag: eTag
-          state: state
-          replacement: replacement
-        description: description
-        selfLink: selfLink
-        memoryMb: 3
-        maximumPersistentDisks: 7
-        maximumPersistentDisksSizeGb: 9
-        zone: zone
-        creationTimestamp: creationTimestamp
-        name: name
-        accelerators:
-        - guestAcceleratorCount: 1
-          guestAcceleratorType: guestAcceleratorType
-        - guestAcceleratorCount: 1
-          guestAcceleratorType: guestAcceleratorType
-        eTag: eTag
-        id: 5
-        imageSpaceGb: 2
-      properties:
-        accelerators:
-          items:
-            $ref: '#/components/schemas/AcceleratorsData'
-          nullable: true
-          type: array
-        creationTimestamp:
-          nullable: true
-          type: string
-        deprecated:
-          $ref: '#/components/schemas/DeprecationStatus'
-        description:
-          nullable: true
-          type: string
-        guestCpus:
-          format: int32
-          nullable: true
-          type: integer
-        id:
-          format: int64
-          nullable: true
-          type: integer
-        imageSpaceGb:
-          format: int32
-          nullable: true
-          type: integer
-        isSharedCpu:
-          nullable: true
-          type: boolean
-        kind:
-          nullable: true
-          type: string
-        maximumPersistentDisks:
-          format: int32
-          nullable: true
-          type: integer
-        maximumPersistentDisksSizeGb:
-          format: int64
-          nullable: true
-          type: integer
-        memoryMb:
-          format: int32
-          nullable: true
-          type: integer
-        name:
-          nullable: true
-          type: string
-        scratchDisks:
-          items:
-            $ref: '#/components/schemas/ScratchDisksData'
-          nullable: true
-          type: array
-        selfLink:
-          nullable: true
-          type: string
-        zone:
-          nullable: true
-          type: string
-        eTag:
-          nullable: true
-          type: string
       type: object
     Metadata:
       additionalProperties: false
@@ -44066,16 +43846,6 @@ components:
           nullable: true
           type: integer
         operationCredentialId:
-          format: int32
-          nullable: true
-          type: integer
-      type: object
-    ScratchDisksData:
-      additionalProperties: false
-      example:
-        diskGb: 2
-      properties:
-        diskGb:
           format: int32
           nullable: true
           type: integer
