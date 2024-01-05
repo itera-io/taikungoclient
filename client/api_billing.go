@@ -237,23 +237,11 @@ func (a *BillingAPIService) BillingExportCsvExecute(r ApiBillingExportCsvRequest
 type ApiBillingGroupedListRequest struct {
 	ctx context.Context
 	ApiService *BillingAPIService
-	organizationId *int32
-	periodDuration *string
-	isDeleted *bool
+	groupedBillingListQuery *GroupedBillingListQuery
 }
 
-func (r ApiBillingGroupedListRequest) OrganizationId(organizationId int32) ApiBillingGroupedListRequest {
-	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiBillingGroupedListRequest) PeriodDuration(periodDuration string) ApiBillingGroupedListRequest {
-	r.periodDuration = &periodDuration
-	return r
-}
-
-func (r ApiBillingGroupedListRequest) IsDeleted(isDeleted bool) ApiBillingGroupedListRequest {
-	r.isDeleted = &isDeleted
+func (r ApiBillingGroupedListRequest) GroupedBillingListQuery(groupedBillingListQuery GroupedBillingListQuery) ApiBillingGroupedListRequest {
+	r.groupedBillingListQuery = &groupedBillingListQuery
 	return r
 }
 
@@ -278,7 +266,7 @@ func (a *BillingAPIService) BillingGroupedList(ctx context.Context) ApiBillingGr
 //  @return []GroupedBillingInfo
 func (a *BillingAPIService) BillingGroupedListExecute(r ApiBillingGroupedListRequest) ([]GroupedBillingInfo, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 		localVarReturnValue  []GroupedBillingInfo
@@ -294,18 +282,12 @@ func (a *BillingAPIService) BillingGroupedListExecute(r ApiBillingGroupedListReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.groupedBillingListQuery == nil {
+		return localVarReturnValue, nil, reportError("groupedBillingListQuery is required and must be specified")
+	}
 
-	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
-	}
-	if r.periodDuration != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "PeriodDuration", r.periodDuration, "")
-	}
-	if r.isDeleted != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "")
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -321,6 +303,8 @@ func (a *BillingAPIService) BillingGroupedListExecute(r ApiBillingGroupedListReq
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.groupedBillingListQuery
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

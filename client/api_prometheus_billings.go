@@ -393,17 +393,11 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsExportCsvExecute(r ApiP
 type ApiPrometheusbillingsGroupedListRequest struct {
 	ctx context.Context
 	ApiService *PrometheusBillingsAPIService
-	organizationId *int32
-	periodDuration *string
+	groupedPrometheusBillingListQuery *GroupedPrometheusBillingListQuery
 }
 
-func (r ApiPrometheusbillingsGroupedListRequest) OrganizationId(organizationId int32) ApiPrometheusbillingsGroupedListRequest {
-	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiPrometheusbillingsGroupedListRequest) PeriodDuration(periodDuration string) ApiPrometheusbillingsGroupedListRequest {
-	r.periodDuration = &periodDuration
+func (r ApiPrometheusbillingsGroupedListRequest) GroupedPrometheusBillingListQuery(groupedPrometheusBillingListQuery GroupedPrometheusBillingListQuery) ApiPrometheusbillingsGroupedListRequest {
+	r.groupedPrometheusBillingListQuery = &groupedPrometheusBillingListQuery
 	return r
 }
 
@@ -428,7 +422,7 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsGroupedList(ctx context
 //  @return interface{}
 func (a *PrometheusBillingsAPIService) PrometheusbillingsGroupedListExecute(r ApiPrometheusbillingsGroupedListRequest) (interface{}, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 		localVarReturnValue  interface{}
@@ -444,15 +438,12 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsGroupedListExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.groupedPrometheusBillingListQuery == nil {
+		return localVarReturnValue, nil, reportError("groupedPrometheusBillingListQuery is required and must be specified")
+	}
 
-	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
-	}
-	if r.periodDuration != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "PeriodDuration", r.periodDuration, "")
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -468,6 +459,8 @@ func (a *PrometheusBillingsAPIService) PrometheusbillingsGroupedListExecute(r Ap
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.groupedPrometheusBillingListQuery
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
