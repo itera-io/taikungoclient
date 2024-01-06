@@ -30703,7 +30703,7 @@ components:
       enum:
       - none
       - daily
-      - mothly
+      - monthly
       - yearly
       type: string
     BillingSummaryDto:
@@ -48168,6 +48168,7 @@ components:
             id: 0
           - name: name
             id: 0
+          drsEnabled: true
           organizationName: organizationName
           datacenterName: datacenterName
           datastore: datastore
@@ -48212,6 +48213,7 @@ components:
             id: 0
           - name: name
             id: 0
+          drsEnabled: true
           organizationName: organizationName
           datacenterName: datacenterName
           datastore: datastore
@@ -48270,6 +48272,7 @@ components:
           id: 0
         - name: name
           id: 0
+        drsEnabled: true
         organizationName: organizationName
         datacenterName: datacenterName
         datastore: datastore
@@ -48338,6 +48341,8 @@ components:
           nullable: true
           type: string
         isDefault:
+          type: boolean
+        drsEnabled:
           type: boolean
         organizationId:
           format: int32

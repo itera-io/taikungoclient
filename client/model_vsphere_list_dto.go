@@ -30,6 +30,7 @@ type VsphereListDto struct {
 	LastModified NullableString `json:"lastModified,omitempty"`
 	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
+	DrsEnabled *bool `json:"drsEnabled,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	ContinentName NullableString `json:"continentName,omitempty"`
@@ -430,6 +431,38 @@ func (o *VsphereListDto) HasIsDefault() bool {
 // SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
 func (o *VsphereListDto) SetIsDefault(v bool) {
 	o.IsDefault = &v
+}
+
+// GetDrsEnabled returns the DrsEnabled field value if set, zero value otherwise.
+func (o *VsphereListDto) GetDrsEnabled() bool {
+	if o == nil || IsNil(o.DrsEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.DrsEnabled
+}
+
+// GetDrsEnabledOk returns a tuple with the DrsEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VsphereListDto) GetDrsEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.DrsEnabled) {
+		return nil, false
+	}
+	return o.DrsEnabled, true
+}
+
+// HasDrsEnabled returns a boolean if a field has been set.
+func (o *VsphereListDto) HasDrsEnabled() bool {
+	if o != nil && !IsNil(o.DrsEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetDrsEnabled gets a reference to the given bool and assigns it to the DrsEnabled field.
+func (o *VsphereListDto) SetDrsEnabled(v bool) {
+	o.DrsEnabled = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
@@ -947,6 +980,9 @@ func (o VsphereListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
+	}
+	if !IsNil(o.DrsEnabled) {
+		toSerialize["drsEnabled"] = o.DrsEnabled
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
