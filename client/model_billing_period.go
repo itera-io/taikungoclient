@@ -23,7 +23,7 @@ type BillingPeriod string
 const (
 	BILLINGPERIOD_NONE BillingPeriod = "none"
 	BILLINGPERIOD_DAILY BillingPeriod = "daily"
-	BILLINGPERIOD_MOTHLY BillingPeriod = "mothly"
+	BILLINGPERIOD_MONTHLY BillingPeriod = "monthly"
 	BILLINGPERIOD_YEARLY BillingPeriod = "yearly"
 )
 
@@ -31,7 +31,7 @@ const (
 var AllowedBillingPeriodEnumValues = []BillingPeriod{
 	"none",
 	"daily",
-	"mothly",
+	"monthly",
 	"yearly",
 }
 

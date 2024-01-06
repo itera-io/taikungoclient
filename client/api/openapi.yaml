@@ -39335,7 +39335,7 @@ components:
       enum:
       - none
       - daily
-      - mothly
+      - monthly
       - yearly
       type: string
     BillingSummaryDto:
@@ -50535,7 +50535,9 @@ components:
     OrganizationDropdownDto:
       additionalProperties: false
       example:
+        discountRate: 6.027456183070403
         isInfra: true
+        isBound: true
         name: name
         id: 0
       properties:
@@ -50547,6 +50549,11 @@ components:
           type: string
         isInfra:
           type: boolean
+        isBound:
+          type: boolean
+        discountRate:
+          format: double
+          type: number
       type: object
     OrganizationDto:
       additionalProperties: false
@@ -61773,6 +61780,7 @@ components:
             id: 0
           - name: name
             id: 0
+          drsEnabled: true
           organizationName: organizationName
           datacenterName: datacenterName
           datastore: datastore
@@ -61817,6 +61825,7 @@ components:
             id: 0
           - name: name
             id: 0
+          drsEnabled: true
           organizationName: organizationName
           datacenterName: datacenterName
           datastore: datastore
@@ -61875,6 +61884,7 @@ components:
           id: 0
         - name: name
           id: 0
+        drsEnabled: true
         organizationName: organizationName
         datacenterName: datacenterName
         datastore: datastore
@@ -61943,6 +61953,8 @@ components:
           nullable: true
           type: string
         isDefault:
+          type: boolean
+        drsEnabled:
           type: boolean
         organizationId:
           format: int32
