@@ -748,6 +748,7 @@ docs/RebootStandAloneVmCommand.md
 docs/RefreshTokenCommand.md
 docs/RegionListCommand.md
 docs/RemindUsersByAlertingProfileCommand.md
+docs/RemoveOwnerCommand.md
 docs/RepairStandAloneVmCommand.md
 docs/ReplyTicketCommand.md
 docs/Repository.md
@@ -1576,6 +1577,7 @@ model_reboot_stand_alone_vm_command.go
 model_refresh_token_command.go
 model_region_list_command.go
 model_remind_users_by_alerting_profile_command.go
+model_remove_owner_command.go
 model_repair_stand_alone_vm_command.go
 model_reply_ticket_command.go
 model_repository.go

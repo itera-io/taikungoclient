@@ -97,9 +97,10 @@ Class | Method | HTTP request | Description
 *AdminAPI* | [**AdminDeleteOrg**](docs/AdminAPI.md#admindeleteorg) | **Post** /api/v1/admin/organizations/delete | Delete organization
 *AdminAPI* | [**AdminKeycloakList**](docs/AdminAPI.md#adminkeycloaklist) | **Get** /api/v1/admin/keycloak/list | Keycloak list for admin
 *AdminAPI* | [**AdminMakeCsm**](docs/AdminAPI.md#adminmakecsm) | **Post** /api/v1/admin/users/make/csm | User csm update for admin
-*AdminAPI* | [**AdminMakeOwner**](docs/AdminAPI.md#adminmakeowner) | **Post** /api/v1/admin/users/make/owner | User choose owner for admin
+*AdminAPI* | [**AdminMakeOwner**](docs/AdminAPI.md#adminmakeowner) | **Post** /api/v1/admin/users/make/owner | Make owner
 *AdminAPI* | [**AdminOrganizations**](docs/AdminAPI.md#adminorganizations) | **Get** /api/v1/admin/organizations/list |  Organizations for admin
 *AdminAPI* | [**AdminProjectList**](docs/AdminAPI.md#adminprojectlist) | **Get** /api/v1/admin/projects/list | Projects for admin
+*AdminAPI* | [**AdminRemoveOwner**](docs/AdminAPI.md#adminremoveowner) | **Post** /api/v1/admin/users/remove/owner | Remove owner
 *AdminAPI* | [**AdminUpdateProject**](docs/AdminAPI.md#adminupdateproject) | **Post** /api/v1/admin/projects/update/version | Projects update for admin
 *AdminAPI* | [**AdminUpdateProjectKube**](docs/AdminAPI.md#adminupdateprojectkube) | **Post** /api/v1/admin/projects/update/kubeconfig | Projects update kube for admin
 *AdminAPI* | [**AdminUpdateUser**](docs/AdminAPI.md#adminupdateuser) | **Post** /api/v1/admin/users/update/password | User password update for admin
@@ -1333,6 +1334,7 @@ Class | Method | HTTP request | Description
  - [RefreshTokenCommand](docs/RefreshTokenCommand.md)
  - [RegionListCommand](docs/RegionListCommand.md)
  - [RemindUsersByAlertingProfileCommand](docs/RemindUsersByAlertingProfileCommand.md)
+ - [RemoveOwnerCommand](docs/RemoveOwnerCommand.md)
  - [RepairStandAloneVmCommand](docs/RepairStandAloneVmCommand.md)
  - [ReplyTicketCommand](docs/ReplyTicketCommand.md)
  - [Repository](docs/Repository.md)

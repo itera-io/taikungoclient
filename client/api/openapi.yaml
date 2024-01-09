@@ -683,7 +683,50 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: User choose owner for admin
+      summary: Make owner
+      tags:
+      - Admin
+  /api/v1/admin/users/remove/owner:
+    post:
+      operationId: admin-remove-owner
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RemoveOwnerCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Remove owner
       tags:
       - Admin
   /api/v1/admin/projects/update/kubeconfig:
@@ -55874,6 +55917,15 @@ components:
       properties:
         reminder:
           $ref: '#/components/schemas/AlertingReminder'
+      type: object
+    RemoveOwnerCommand:
+      additionalProperties: false
+      example:
+        userId: userId
+      properties:
+        userId:
+          nullable: true
+          type: string
       type: object
     RepairStandAloneVmCommand:
       additionalProperties: false
