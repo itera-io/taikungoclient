@@ -1200,6 +1200,7 @@ Class | Method | HTTP request | Description
  - [OperationCredentialsForOrganizationEntity](docs/OperationCredentialsForOrganizationEntity.md)
  - [OperationCredentialsListDto](docs/OperationCredentialsListDto.md)
  - [OperationCredentialsMakeDefaultCommand](docs/OperationCredentialsMakeDefaultCommand.md)
+ - [OperationDto](docs/OperationDto.md)
  - [OrganizationCreateCommand](docs/OrganizationCreateCommand.md)
  - [OrganizationDetailsDto](docs/OrganizationDetailsDto.md)
  - [OrganizationDropdownDto](docs/OrganizationDropdownDto.md)

@@ -4735,9 +4735,10 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              projectId: 1
             schema:
               $ref: '#/components/schemas/ClearProjectBackupCommand'
-        required: true
       responses:
         "400":
           content:
@@ -4778,6 +4779,13 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              name: taikun
+              includeNamespaces:
+              - taikun.cloud/backup
+              cronPeriod: 0 0 12 * * ?
+              projectId: 1
+              retentionPeriod: 720h
             schema:
               $ref: '#/components/schemas/CreateBackupPolicyCommand'
       responses:
@@ -4863,9 +4871,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              projectId: 1
+              storageLocation: taikun
             schema:
               $ref: '#/components/schemas/DeleteBackupStorageLocationCommand'
-        required: true
       responses:
         "400":
           content:
@@ -4906,9 +4916,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              projectId: 1
+              name: taikun
             schema:
               $ref: '#/components/schemas/DeleteRestoreCommand'
-        required: true
       responses:
         "400":
           content:
@@ -4949,9 +4961,11 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              projectId: 1
+              name: taikun
             schema:
               $ref: '#/components/schemas/DeleteScheduleCommand'
-        required: true
       responses:
         "400":
           content:
@@ -5121,6 +5135,14 @@ paths:
       requestBody:
         content:
           application/json:
+            example:
+              projectId: 1
+              backupName: test-20240109144001
+              restoreName: taikun
+              includeNamespaces:
+              - taikun.cloud/backup
+              excludeNamespaces:
+              - taikun.cloud/backup
             schema:
               $ref: '#/components/schemas/RestoreBackupCommand'
       responses:
@@ -5180,6 +5202,11 @@ paths:
         "200":
           content:
             application/json:
+              example:
+                includedNamespace:
+                - taikun.cloud/backup
+                excludedNamespace:
+                - taikun.cloud/backup
               schema:
                 $ref: '#/components/schemas/BackupDto'
           description: Success
@@ -5391,6 +5418,10 @@ paths:
       - Backup policy
   /api/v1/backup/location/{projectId}:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
       operationId: backup-list-all-backup-storages
       parameters:
       - explode: false
@@ -5401,22 +5432,6 @@ paths:
           format: int32
           type: integer
         style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: SortBy
@@ -5438,10 +5453,41 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                data:
+                - metadataName: default
+                  provider: taikun
+                  namespace: velero
+                  lastValidated: 2024-01-10T13:56:49.3711201Z
+                  createdAt: 2024-01-10T13:56:49.3711201Z
+                  accessMode: default
+                  phase: Available
+                  backupCredentialId: 1
+                totalCount: 1
+                projects:
+                - 1
               schema:
                 $ref: '#/components/schemas/ListAllBackupStorageLocations'
           description: OK
@@ -5480,6 +5526,10 @@ paths:
       - Backup policy
   /api/v1/backup/schedules/{projectId}:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
       operationId: backup-list-all-schedules
       parameters:
       - explode: false
@@ -5490,22 +5540,6 @@ paths:
           format: int32
           type: integer
         style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: SortBy
@@ -5527,10 +5561,45 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                data:
+                - status:
+                    lastBackup: 2024-01-10T13:56:49.3711201Z
+                    phase: Available
+                  metadataName: default
+                  namespace: velero
+                  createdAt: 2024-01-10T13:56:49.3711201Z
+                  schedule: 0 0 12 * * ?
+                  ttl: 720h
+                  lastBackup: 2024-01-10T13:56:49.3711201Z
+                  phase: Available
+                  excludedNamespaces:
+                  - taikun.cloud/backup
+                  includedNamespaces:
+                  - taikun.cloud/backup
+                totalCount: 1
               schema:
                 $ref: '#/components/schemas/ListAllSchedules'
           description: OK
@@ -5569,6 +5638,10 @@ paths:
       - Backup policy
   /api/v1/backup/backups/{projectId}:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
       operationId: backup-list-all-backups
       parameters:
       - explode: false
@@ -5579,22 +5652,6 @@ paths:
           format: int32
           type: integer
         style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: SortBy
@@ -5616,10 +5673,38 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                data:
+                - metadataName: default
+                  createdAt: 2024-01-10T13:56:49.3711201Z
+                  expiration: 2024-01-10T13:56:49.3711201Z
+                  scheduleName: taikun
+                  namespace: velero
+                  location: storage-location
+                  phase: Available
+                totalCount: 1
               schema:
                 $ref: '#/components/schemas/ListAllBackups'
           description: OK
@@ -5658,6 +5743,10 @@ paths:
       - Backup policy
   /api/v1/backup/delete-requests/{projectId}:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
       operationId: backup-list-all-delete-backup-requests
       parameters:
       - explode: false
@@ -5668,22 +5757,6 @@ paths:
           format: int32
           type: integer
         style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: SortBy
@@ -5705,10 +5778,36 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                data:
+                - metadataName: default
+                  createdAt: 2024-01-10T13:56:49.3711201Z
+                  backupName: test-20240109144001
+                  namespace: velero
+                  phase: Available
+                totalCount: 1
               schema:
                 $ref: '#/components/schemas/ListAllDeleteBackupRequests'
           description: OK
@@ -5747,6 +5846,10 @@ paths:
       - Backup policy
   /api/v1/backup/restores/{projectId}:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
       operationId: backup-list-all-restores
       parameters:
       - explode: false
@@ -5757,22 +5860,6 @@ paths:
           format: int32
           type: integer
         style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: true
         in: query
         name: SortBy
@@ -5794,10 +5881,44 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+                data:
+                - metadataName: default
+                  backupName: test-20240109144001
+                  scheduleName: taikun
+                  namespace: velero
+                  excludeNamespaces:
+                  - taikun.cloud/backup
+                  includeNamespaces:
+                  - taikun.cloud/backup
+                  completionDateTime: 2024-01-10T13:56:49.3711201+00:00
+                  startTimeStamp: 2024-01-10T13:56:49.3711201+00:00
+                  createdAt: 2024-01-10T13:56:49.3711201Z
+                  warnings: 1
+                  phase: Available
+                totalCount: 1
               schema:
                 $ref: '#/components/schemas/ListAllRestores'
           description: OK
@@ -18803,7 +18924,8 @@ paths:
         "200":
           content:
             application/json:
-              schema: {}
+              schema:
+                $ref: '#/components/schemas/OperationDto'
           description: OK
         "400":
           content:
@@ -41775,12 +41897,12 @@ components:
         cronPeriod:
           nullable: true
           type: string
-        retentionPeriod:
-          nullable: true
-          type: string
         projectId:
           format: int32
           type: integer
+        retentionPeriod:
+          nullable: true
+          type: string
       type: object
     CreateBillingSummaryCommand:
       additionalProperties: false
@@ -50407,6 +50529,23 @@ components:
         id:
           format: int32
           type: integer
+      type: object
+    OperationDto:
+      additionalProperties: false
+      example:
+        estimatedTime: estimatedTime
+        projectId: 0
+        operation: operation
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        operation:
+          nullable: true
+          type: string
+        estimatedTime:
+          nullable: true
+          type: string
       type: object
     OrganizationCreateCommand:
       additionalProperties: false
