@@ -14874,7 +14874,8 @@ paths:
         "200":
           content:
             application/json:
-              schema: {}
+              schema:
+                $ref: '#/components/schemas/OperationDto'
           description: OK
         "400":
           content:
@@ -39721,6 +39722,23 @@ components:
         id:
           format: int32
           type: integer
+      type: object
+    OperationDto:
+      additionalProperties: false
+      example:
+        estimatedTime: estimatedTime
+        projectId: 0
+        operation: operation
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        operation:
+          nullable: true
+          type: string
+        estimatedTime:
+          nullable: true
+          type: string
       type: object
     OrganizationCreateCommand:
       additionalProperties: false

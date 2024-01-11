@@ -563,7 +563,7 @@ func (r ApiNotificationsOperationMessagesRequest) GetProjectOperationCommand(get
 	return r
 }
 
-func (r ApiNotificationsOperationMessagesRequest) Execute() (interface{}, *http.Response, error) {
+func (r ApiNotificationsOperationMessagesRequest) Execute() (*OperationDto, *http.Response, error) {
 	return r.ApiService.NotificationsOperationMessagesExecute(r)
 }
 
@@ -581,13 +581,13 @@ func (a *NotificationsAPIService) NotificationsOperationMessages(ctx context.Con
 }
 
 // Execute executes the request
-//  @return interface{}
-func (a *NotificationsAPIService) NotificationsOperationMessagesExecute(r ApiNotificationsOperationMessagesRequest) (interface{}, *http.Response, error) {
+//  @return OperationDto
+func (a *NotificationsAPIService) NotificationsOperationMessagesExecute(r ApiNotificationsOperationMessagesRequest) (*OperationDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  interface{}
+		localVarReturnValue  *OperationDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "NotificationsAPIService.NotificationsOperationMessages")
