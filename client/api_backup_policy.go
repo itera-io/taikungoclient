@@ -570,9 +570,6 @@ func (a *BackupPolicyAPIService) BackupDeleteBackupLocationExecute(r ApiBackupDe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.deleteBackupStorageLocationCommand == nil {
-		return nil, reportError("deleteBackupStorageLocationCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -735,9 +732,6 @@ func (a *BackupPolicyAPIService) BackupDeleteRestoreExecute(r ApiBackupDeleteRes
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.deleteRestoreCommand == nil {
-		return nil, reportError("deleteRestoreCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -900,9 +894,6 @@ func (a *BackupPolicyAPIService) BackupDeleteScheduleExecute(r ApiBackupDeleteSc
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.deleteScheduleCommand == nil {
-		return nil, reportError("deleteScheduleCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2037,21 +2028,11 @@ type ApiBackupListAllBackupStoragesRequest struct {
 	ctx context.Context
 	ApiService *BackupPolicyAPIService
 	projectId int32
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-}
-
-func (r ApiBackupListAllBackupStoragesRequest) Limit(limit int32) ApiBackupListAllBackupStoragesRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiBackupListAllBackupStoragesRequest) Offset(offset int32) ApiBackupListAllBackupStoragesRequest {
-	r.offset = &offset
-	return r
+	limit *int32
+	offset *int32
 }
 
 func (r ApiBackupListAllBackupStoragesRequest) SortBy(sortBy string) ApiBackupListAllBackupStoragesRequest {
@@ -2069,12 +2050,26 @@ func (r ApiBackupListAllBackupStoragesRequest) Search(search string) ApiBackupLi
 	return r
 }
 
+func (r ApiBackupListAllBackupStoragesRequest) Limit(limit int32) ApiBackupListAllBackupStoragesRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiBackupListAllBackupStoragesRequest) Offset(offset int32) ApiBackupListAllBackupStoragesRequest {
+	r.offset = &offset
+	return r
+}
+
 func (r ApiBackupListAllBackupStoragesRequest) Execute() (*ListAllBackupStorageLocations, *http.Response, error) {
 	return r.ApiService.BackupListAllBackupStoragesExecute(r)
 }
 
 /*
 BackupListAllBackupStorages List all backup locations
+
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId
@@ -2110,12 +2105,6 @@ func (a *BackupPolicyAPIService) BackupListAllBackupStoragesExecute(r ApiBackupL
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
 	}
@@ -2124,6 +2113,18 @@ func (a *BackupPolicyAPIService) BackupListAllBackupStoragesExecute(r ApiBackupL
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2251,21 +2252,11 @@ type ApiBackupListAllBackupsRequest struct {
 	ctx context.Context
 	ApiService *BackupPolicyAPIService
 	projectId int32
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-}
-
-func (r ApiBackupListAllBackupsRequest) Limit(limit int32) ApiBackupListAllBackupsRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiBackupListAllBackupsRequest) Offset(offset int32) ApiBackupListAllBackupsRequest {
-	r.offset = &offset
-	return r
+	limit *int32
+	offset *int32
 }
 
 func (r ApiBackupListAllBackupsRequest) SortBy(sortBy string) ApiBackupListAllBackupsRequest {
@@ -2283,12 +2274,26 @@ func (r ApiBackupListAllBackupsRequest) Search(search string) ApiBackupListAllBa
 	return r
 }
 
+func (r ApiBackupListAllBackupsRequest) Limit(limit int32) ApiBackupListAllBackupsRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiBackupListAllBackupsRequest) Offset(offset int32) ApiBackupListAllBackupsRequest {
+	r.offset = &offset
+	return r
+}
+
 func (r ApiBackupListAllBackupsRequest) Execute() (*ListAllBackups, *http.Response, error) {
 	return r.ApiService.BackupListAllBackupsExecute(r)
 }
 
 /*
 BackupListAllBackups List all backups
+
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId
@@ -2324,12 +2329,6 @@ func (a *BackupPolicyAPIService) BackupListAllBackupsExecute(r ApiBackupListAllB
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
 	}
@@ -2338,6 +2337,18 @@ func (a *BackupPolicyAPIService) BackupListAllBackupsExecute(r ApiBackupListAllB
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2465,21 +2476,11 @@ type ApiBackupListAllDeleteBackupRequestsRequest struct {
 	ctx context.Context
 	ApiService *BackupPolicyAPIService
 	projectId int32
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-}
-
-func (r ApiBackupListAllDeleteBackupRequestsRequest) Limit(limit int32) ApiBackupListAllDeleteBackupRequestsRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiBackupListAllDeleteBackupRequestsRequest) Offset(offset int32) ApiBackupListAllDeleteBackupRequestsRequest {
-	r.offset = &offset
-	return r
+	limit *int32
+	offset *int32
 }
 
 func (r ApiBackupListAllDeleteBackupRequestsRequest) SortBy(sortBy string) ApiBackupListAllDeleteBackupRequestsRequest {
@@ -2497,12 +2498,26 @@ func (r ApiBackupListAllDeleteBackupRequestsRequest) Search(search string) ApiBa
 	return r
 }
 
+func (r ApiBackupListAllDeleteBackupRequestsRequest) Limit(limit int32) ApiBackupListAllDeleteBackupRequestsRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiBackupListAllDeleteBackupRequestsRequest) Offset(offset int32) ApiBackupListAllDeleteBackupRequestsRequest {
+	r.offset = &offset
+	return r
+}
+
 func (r ApiBackupListAllDeleteBackupRequestsRequest) Execute() (*ListAllDeleteBackupRequests, *http.Response, error) {
 	return r.ApiService.BackupListAllDeleteBackupRequestsExecute(r)
 }
 
 /*
 BackupListAllDeleteBackupRequests List all delete backup requests
+
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId
@@ -2538,12 +2553,6 @@ func (a *BackupPolicyAPIService) BackupListAllDeleteBackupRequestsExecute(r ApiB
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
 	}
@@ -2552,6 +2561,18 @@ func (a *BackupPolicyAPIService) BackupListAllDeleteBackupRequestsExecute(r ApiB
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2679,21 +2700,11 @@ type ApiBackupListAllRestoresRequest struct {
 	ctx context.Context
 	ApiService *BackupPolicyAPIService
 	projectId int32
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-}
-
-func (r ApiBackupListAllRestoresRequest) Limit(limit int32) ApiBackupListAllRestoresRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiBackupListAllRestoresRequest) Offset(offset int32) ApiBackupListAllRestoresRequest {
-	r.offset = &offset
-	return r
+	limit *int32
+	offset *int32
 }
 
 func (r ApiBackupListAllRestoresRequest) SortBy(sortBy string) ApiBackupListAllRestoresRequest {
@@ -2711,12 +2722,26 @@ func (r ApiBackupListAllRestoresRequest) Search(search string) ApiBackupListAllR
 	return r
 }
 
+func (r ApiBackupListAllRestoresRequest) Limit(limit int32) ApiBackupListAllRestoresRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiBackupListAllRestoresRequest) Offset(offset int32) ApiBackupListAllRestoresRequest {
+	r.offset = &offset
+	return r
+}
+
 func (r ApiBackupListAllRestoresRequest) Execute() (*ListAllRestores, *http.Response, error) {
 	return r.ApiService.BackupListAllRestoresExecute(r)
 }
 
 /*
 BackupListAllRestores List all restores
+
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId
@@ -2752,12 +2777,6 @@ func (a *BackupPolicyAPIService) BackupListAllRestoresExecute(r ApiBackupListAll
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
 	}
@@ -2766,6 +2785,18 @@ func (a *BackupPolicyAPIService) BackupListAllRestoresExecute(r ApiBackupListAll
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2893,21 +2924,11 @@ type ApiBackupListAllSchedulesRequest struct {
 	ctx context.Context
 	ApiService *BackupPolicyAPIService
 	projectId int32
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-}
-
-func (r ApiBackupListAllSchedulesRequest) Limit(limit int32) ApiBackupListAllSchedulesRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiBackupListAllSchedulesRequest) Offset(offset int32) ApiBackupListAllSchedulesRequest {
-	r.offset = &offset
-	return r
+	limit *int32
+	offset *int32
 }
 
 func (r ApiBackupListAllSchedulesRequest) SortBy(sortBy string) ApiBackupListAllSchedulesRequest {
@@ -2925,12 +2946,26 @@ func (r ApiBackupListAllSchedulesRequest) Search(search string) ApiBackupListAll
 	return r
 }
 
+func (r ApiBackupListAllSchedulesRequest) Limit(limit int32) ApiBackupListAllSchedulesRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiBackupListAllSchedulesRequest) Offset(offset int32) ApiBackupListAllSchedulesRequest {
+	r.offset = &offset
+	return r
+}
+
 func (r ApiBackupListAllSchedulesRequest) Execute() (*ListAllSchedules, *http.Response, error) {
 	return r.ApiService.BackupListAllSchedulesExecute(r)
 }
 
 /*
 BackupListAllSchedules List all schedules
+
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>Search</b> - Options: <i>metadataName</i>, <i>namespace</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId
@@ -2966,12 +3001,6 @@ func (a *BackupPolicyAPIService) BackupListAllSchedulesExecute(r ApiBackupListAl
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
-	}
 	if r.sortBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
 	}
@@ -2980,6 +3009,18 @@ func (a *BackupPolicyAPIService) BackupListAllSchedulesExecute(r ApiBackupListAl
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
