@@ -282,6 +282,8 @@ docs/ConsoleScreenshotCommand.md
 docs/ContactUsCommand.md
 docs/CostComponent.md
 docs/CountryListDto.md
+docs/CrdListDto.md
+docs/Crds.md
 docs/CreateAccessProfileCommand.md
 docs/CreateAiCredentialCommand.md
 docs/CreateAlertDto.md
@@ -501,6 +503,7 @@ docs/KubernetesEventCreateDto.md
 docs/KubernetesJobDto.md
 docs/KubernetesJobList.md
 docs/KubernetesNodeLabelsDto.md
+docs/KubernetesNodeListDto.md
 docs/KubernetesOverviewDto.md
 docs/KubernetesPodLogsCommand.md
 docs/KubernetesProfilesAPI.md
@@ -1151,6 +1154,8 @@ model_console_screenshot_command.go
 model_contact_us_command.go
 model_cost_component.go
 model_country_list_dto.go
+model_crd_list_dto.go
+model_crds.go
 model_create_access_profile_command.go
 model_create_ai_credential_command.go
 model_create_alert_dto.go
@@ -1358,6 +1363,7 @@ model_kubernetes_event_create_dto.go
 model_kubernetes_job_dto.go
 model_kubernetes_job_list.go
 model_kubernetes_node_labels_dto.go
+model_kubernetes_node_list_dto.go
 model_kubernetes_overview_dto.go
 model_kubernetes_pod_logs_command.go
 model_kubernetes_profiles_entity.go

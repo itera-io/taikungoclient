@@ -5480,8 +5480,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-01-11T14:14:11.0662312Z
-                  createdAt: 2024-01-11T14:14:11.0662312Z
+                  lastValidated: 2024-01-12T15:00:33.4063691Z
+                  createdAt: 2024-01-12T15:00:33.4063691Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5586,14 +5586,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-01-11T14:14:11.0662312Z
+                    lastBackup: 2024-01-12T15:00:33.4063691Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-01-11T14:14:11.0662312Z
+                  createdAt: 2024-01-12T15:00:33.4063691Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-01-11T14:14:11.0662312Z
+                  lastBackup: 2024-01-12T15:00:33.4063691Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5698,8 +5698,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-11T14:14:11.0662312Z
-                  expiration: 2024-01-11T14:14:11.0662312Z
+                  createdAt: 2024-01-12T15:00:33.4063691Z
+                  expiration: 2024-01-12T15:00:33.4063691Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5803,7 +5803,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-11T14:14:11.0662312Z
+                  createdAt: 2024-01-12T15:00:33.4063691Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5913,9 +5913,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-01-11T14:14:11.0662312+00:00
-                  startTimeStamp: 2024-01-11T14:14:11.0662312+00:00
-                  createdAt: 2024-01-11T14:14:11.0662312Z
+                  completionDateTime: 2024-01-12T15:00:33.4063691+00:00
+                  startTimeStamp: 2024-01-12T15:00:33.4063691+00:00
+                  createdAt: 2024-01-12T15:00:33.4063691Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -15683,7 +15683,8 @@ paths:
         "200":
           content:
             application/json:
-              schema: {}
+              schema:
+                $ref: '#/components/schemas/Crds'
           description: OK
         "400":
           content:
@@ -16730,7 +16731,10 @@ paths:
         "200":
           content:
             application/json:
-              schema: {}
+              schema:
+                items:
+                  $ref: '#/components/schemas/KubernetesNodeListDto'
+                type: array
           description: OK
         "400":
           content:
@@ -41595,6 +41599,61 @@ components:
         isEu:
           type: boolean
       type: object
+    CrdListDto:
+      additionalProperties: false
+      example:
+        listKind: listKind
+        metadataName: metadataName
+        specNameKind: specNameKind
+        age: age
+        group: group
+        labels: ""
+      properties:
+        metadataName:
+          nullable: true
+          type: string
+        specNameKind:
+          nullable: true
+          type: string
+        listKind:
+          nullable: true
+          type: string
+        group:
+          nullable: true
+          type: string
+        labels:
+          nullable: true
+        age:
+          nullable: true
+          type: string
+      type: object
+    Crds:
+      additionalProperties: false
+      example:
+        data:
+        - listKind: listKind
+          metadataName: metadataName
+          specNameKind: specNameKind
+          age: age
+          group: group
+          labels: ""
+        - listKind: listKind
+          metadataName: metadataName
+          specNameKind: specNameKind
+          age: age
+          group: group
+          labels: ""
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CrdListDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     CreateAccessProfileCommand:
       additionalProperties: false
       example:
@@ -47883,6 +47942,47 @@ components:
           nullable: true
           type: string
       type: object
+    KubernetesNodeListDto:
+      additionalProperties: false
+      example:
+        reason:
+        - reason
+        - reason
+        metadataName: metadataName
+        type:
+        - type
+        - type
+        message:
+        - message
+        - message
+        status:
+        - status
+        - status
+      properties:
+        metadataName:
+          nullable: true
+          type: string
+        type:
+          items:
+            type: string
+          nullable: true
+          type: array
+        status:
+          items:
+            type: string
+          nullable: true
+          type: array
+        reason:
+          items:
+            type: string
+          nullable: true
+          type: array
+        message:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     KubernetesOverviewDto:
       additionalProperties: false
       example:
@@ -52784,6 +52884,7 @@ components:
         maxSpotPrice: 6.84685269835264
         organizationId: 1
         projectStatus: null
+        expiredAt: expiredAt
         cloudType: null
         cloudName: cloudName
         cloudId: 7
@@ -52863,6 +52964,9 @@ components:
             type: string
           nullable: true
           type: array
+        expiredAt:
+          nullable: true
+          type: string
       type: object
     ProjectDto:
       additionalProperties: false
@@ -58929,6 +59033,7 @@ components:
           maxSpotPrice: 6.84685269835264
           organizationId: 1
           projectStatus: null
+          expiredAt: expiredAt
           cloudType: null
           cloudName: cloudName
           cloudId: 7
