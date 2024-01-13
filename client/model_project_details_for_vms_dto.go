@@ -42,6 +42,7 @@ type ProjectDetailsForVmsDto struct {
 	TotalHourlyCost *float64 `json:"totalHourlyCost,omitempty"`
 	AvailabilityZones []string `json:"availabilityZones,omitempty"`
 	Hypervisors []string `json:"hypervisors,omitempty"`
+	ExpiredAt NullableString `json:"expiredAt,omitempty"`
 }
 
 // NewProjectDetailsForVmsDto instantiates a new ProjectDetailsForVmsDto object
@@ -847,6 +848,48 @@ func (o *ProjectDetailsForVmsDto) SetHypervisors(v []string) {
 	o.Hypervisors = v
 }
 
+// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectDetailsForVmsDto) GetExpiredAt() string {
+	if o == nil || IsNil(o.ExpiredAt.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ExpiredAt.Get()
+}
+
+// GetExpiredAtOk returns a tuple with the ExpiredAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectDetailsForVmsDto) GetExpiredAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExpiredAt.Get(), o.ExpiredAt.IsSet()
+}
+
+// HasExpiredAt returns a boolean if a field has been set.
+func (o *ProjectDetailsForVmsDto) HasExpiredAt() bool {
+	if o != nil && o.ExpiredAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiredAt gets a reference to the given NullableString and assigns it to the ExpiredAt field.
+func (o *ProjectDetailsForVmsDto) SetExpiredAt(v string) {
+	o.ExpiredAt.Set(&v)
+}
+// SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
+func (o *ProjectDetailsForVmsDto) SetExpiredAtNil() {
+	o.ExpiredAt.Set(nil)
+}
+
+// UnsetExpiredAt ensures that no value is present for ExpiredAt, not even an explicit nil
+func (o *ProjectDetailsForVmsDto) UnsetExpiredAt() {
+	o.ExpiredAt.Unset()
+}
+
 func (o ProjectDetailsForVmsDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -922,6 +965,9 @@ func (o ProjectDetailsForVmsDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Hypervisors != nil {
 		toSerialize["hypervisors"] = o.Hypervisors
+	}
+	if o.ExpiredAt.IsSet() {
+		toSerialize["expiredAt"] = o.ExpiredAt.Get()
 	}
 	return toSerialize, nil
 }

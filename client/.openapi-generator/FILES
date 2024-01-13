@@ -231,6 +231,8 @@ docs/ConfigMaps.md
 docs/ConsoleScreenshotCommand.md
 docs/CostComponent.md
 docs/CountryListDto.md
+docs/CrdListDto.md
+docs/Crds.md
 docs/CreateAccessProfileCommand.md
 docs/CreateAiCredentialCommand.md
 docs/CreateAlertingIntegrationCommand.md
@@ -412,6 +414,7 @@ docs/KubernetesDashboardDto.md
 docs/KubernetesJobDto.md
 docs/KubernetesJobList.md
 docs/KubernetesNodeLabelsDto.md
+docs/KubernetesNodeListDto.md
 docs/KubernetesOverviewDto.md
 docs/KubernetesPodLogsCommand.md
 docs/KubernetesProfilesAPI.md
@@ -923,6 +926,8 @@ model_config_maps.go
 model_console_screenshot_command.go
 model_cost_component.go
 model_country_list_dto.go
+model_crd_list_dto.go
+model_crds.go
 model_create_access_profile_command.go
 model_create_ai_credential_command.go
 model_create_alerting_integration_command.go
@@ -1094,6 +1099,7 @@ model_kubernetes_dashboard_dto.go
 model_kubernetes_job_dto.go
 model_kubernetes_job_list.go
 model_kubernetes_node_labels_dto.go
+model_kubernetes_node_list_dto.go
 model_kubernetes_overview_dto.go
 model_kubernetes_pod_logs_command.go
 model_kubernetes_profiles_entity.go

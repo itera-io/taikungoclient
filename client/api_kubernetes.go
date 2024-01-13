@@ -545,7 +545,7 @@ func (r ApiKubernetesCrdListRequest) FilterBy(filterBy string) ApiKubernetesCrdL
 	return r
 }
 
-func (r ApiKubernetesCrdListRequest) Execute() (interface{}, *http.Response, error) {
+func (r ApiKubernetesCrdListRequest) Execute() (*Crds, *http.Response, error) {
 	return r.ApiService.KubernetesCrdListExecute(r)
 }
 
@@ -565,13 +565,13 @@ func (a *KubernetesAPIService) KubernetesCrdList(ctx context.Context, projectId 
 }
 
 // Execute executes the request
-//  @return interface{}
-func (a *KubernetesAPIService) KubernetesCrdListExecute(r ApiKubernetesCrdListRequest) (interface{}, *http.Response, error) {
+//  @return Crds
+func (a *KubernetesAPIService) KubernetesCrdListExecute(r ApiKubernetesCrdListRequest) (*Crds, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  interface{}
+		localVarReturnValue  *Crds
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesCrdList")
@@ -5624,7 +5624,7 @@ func (r ApiKubernetesNodeListRequest) SearchId(searchId string) ApiKubernetesNod
 	return r
 }
 
-func (r ApiKubernetesNodeListRequest) Execute() (interface{}, *http.Response, error) {
+func (r ApiKubernetesNodeListRequest) Execute() ([]KubernetesNodeListDto, *http.Response, error) {
 	return r.ApiService.KubernetesNodeListExecute(r)
 }
 
@@ -5644,13 +5644,13 @@ func (a *KubernetesAPIService) KubernetesNodeList(ctx context.Context, projectId
 }
 
 // Execute executes the request
-//  @return interface{}
-func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeListRequest) (interface{}, *http.Response, error) {
+//  @return []KubernetesNodeListDto
+func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeListRequest) ([]KubernetesNodeListDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  interface{}
+		localVarReturnValue  []KubernetesNodeListDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesNodeList")
