@@ -20,7 +20,6 @@ var _ MappedNullable = &MonitoringCredentialsListDto{}
 
 // MonitoringCredentialsListDto struct for MonitoringCredentialsListDto
 type MonitoringCredentialsListDto struct {
-	Id *int32 `json:"id,omitempty"`
 	Username NullableString `json:"username,omitempty"`
 	Password NullableString `json:"password,omitempty"`
 	PrometheusUrl NullableString `json:"prometheusUrl,omitempty"`
@@ -43,38 +42,6 @@ func NewMonitoringCredentialsListDto() *MonitoringCredentialsListDto {
 func NewMonitoringCredentialsListDtoWithDefaults() *MonitoringCredentialsListDto {
 	this := MonitoringCredentialsListDto{}
 	return &this
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *MonitoringCredentialsListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
-		var ret int32
-		return ret
-	}
-	return *o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *MonitoringCredentialsListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
-		return nil, false
-	}
-	return o.Id, true
-}
-
-// HasId returns a boolean if a field has been set.
-func (o *MonitoringCredentialsListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *MonitoringCredentialsListDto) SetId(v int32) {
-	o.Id = &v
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -297,9 +264,6 @@ func (o MonitoringCredentialsListDto) MarshalJSON() ([]byte, error) {
 
 func (o MonitoringCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
 	if o.Username.IsSet() {
 		toSerialize["username"] = o.Username.Get()
 	}

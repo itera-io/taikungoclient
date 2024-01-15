@@ -190,6 +190,8 @@ type APIClient struct {
 
 	SubscriptionAPI *SubscriptionAPIService
 
+	TaikunLBAPI *TaikunLBAPIService
+
 	TanzuAPI *TanzuAPIService
 
 	TicketAPI *TicketAPIService
@@ -201,6 +203,8 @@ type APIClient struct {
 	UserTokenAPI *UserTokenAPIService
 
 	UsersAPI *UsersAPIService
+
+	VsphereCloudCredentialAPI *VsphereCloudCredentialAPIService
 }
 
 type service struct {
@@ -289,12 +293,14 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.StandaloneVMDisksAPI = (*StandaloneVMDisksAPIService)(&c.common)
 	c.StripeAPI = (*StripeAPIService)(&c.common)
 	c.SubscriptionAPI = (*SubscriptionAPIService)(&c.common)
+	c.TaikunLBAPI = (*TaikunLBAPIService)(&c.common)
 	c.TanzuAPI = (*TanzuAPIService)(&c.common)
 	c.TicketAPI = (*TicketAPIService)(&c.common)
 	c.UserGroupAPI = (*UserGroupAPIService)(&c.common)
 	c.UserProjectsAPI = (*UserProjectsAPIService)(&c.common)
 	c.UserTokenAPI = (*UserTokenAPIService)(&c.common)
 	c.UsersAPI = (*UsersAPIService)(&c.common)
+	c.VsphereCloudCredentialAPI = (*VsphereCloudCredentialAPIService)(&c.common)
 
 	return c
 }

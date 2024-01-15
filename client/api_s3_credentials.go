@@ -72,9 +72,6 @@ func (a *S3CredentialsAPIService) S3credentialsCreateExecute(r ApiS3credentialsC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.backupCredentialsCreateCommand == nil {
-		return localVarReturnValue, nil, reportError("backupCredentialsCreateCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -382,6 +379,10 @@ func (r ApiS3credentialsDropdownRequest) Execute() ([]BackupCredentialsForOrgani
 /*
 S3credentialsDropdown Retrieve all S3 credentials for organization
 
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>Search</b> - Options: <i>name</i></ul></div>
+
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiS3credentialsDropdownRequest
 */
@@ -544,24 +545,14 @@ func (a *S3CredentialsAPIService) S3credentialsDropdownExecute(r ApiS3credential
 type ApiS3credentialsListRequest struct {
 	ctx context.Context
 	ApiService *S3CredentialsAPIService
-	limit *int32
-	offset *int32
 	organizationId *int32
 	search *string
 	searchId *string
 	id *int32
 	sortBy *string
 	sortDirection *string
-}
-
-func (r ApiS3credentialsListRequest) Limit(limit int32) ApiS3credentialsListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiS3credentialsListRequest) Offset(offset int32) ApiS3credentialsListRequest {
-	r.offset = &offset
-	return r
+	limit *int32
+	offset *int32
 }
 
 func (r ApiS3credentialsListRequest) OrganizationId(organizationId int32) ApiS3credentialsListRequest {
@@ -594,12 +585,26 @@ func (r ApiS3credentialsListRequest) SortDirection(sortDirection string) ApiS3cr
 	return r
 }
 
+func (r ApiS3credentialsListRequest) Limit(limit int32) ApiS3credentialsListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiS3credentialsListRequest) Offset(offset int32) ApiS3credentialsListRequest {
+	r.offset = &offset
+	return r
+}
+
 func (r ApiS3credentialsListRequest) Execute() (*BackupCredentials, *http.Response, error) {
 	return r.ApiService.S3credentialsListExecute(r)
 }
 
 /*
 S3credentialsList Retrieve all S3 credentials
+
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>SortBy</b> - Options: <i>name</i>, <i>url</i>, <i>region</i>, <i>organizationName</i>, <i>createdAt</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiS3credentialsListRequest
@@ -632,12 +637,6 @@ func (a *S3CredentialsAPIService) S3credentialsListExecute(r ApiS3credentialsLis
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
-	}
-	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
-	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
 	}
@@ -655,6 +654,18 @@ func (a *S3CredentialsAPIService) S3credentialsListExecute(r ApiS3credentialsLis
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	} else {
+		var defaultValue int32 = 50
+		r.limit = &defaultValue
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -824,9 +835,6 @@ func (a *S3CredentialsAPIService) S3credentialsLockManagementExecute(r ApiS3cred
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.backupLockManagerCommand == nil {
-		return nil, reportError("backupLockManagerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -989,9 +997,6 @@ func (a *S3CredentialsAPIService) S3credentialsMakeDeafultExecute(r ApiS3credent
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.backupMakeDefaultCommand == nil {
-		return nil, reportError("backupMakeDefaultCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

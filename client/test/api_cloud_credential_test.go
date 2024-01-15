@@ -131,4 +131,15 @@ func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test CloudCredentialAPIService CloudcredentialsUpdateIpAddresses", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.CloudCredentialAPI.CloudcredentialsUpdateIpAddresses(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

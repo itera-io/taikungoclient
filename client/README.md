@@ -14,20 +14,20 @@ For more information, please visit [http://taikun.cloud/](http://taikun.cloud/)
 
 Install the following dependencies:
 
-```shell
+```sh
 go get github.com/stretchr/testify/assert
 go get golang.org/x/net/context
 ```
 
 Put the package under your project folder and add the following in import:
 
-```golang
+```go
 import taikuncore "github.com/itera-io/taikungoclient/client"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
 
-```golang
+```go
 os.Setenv("HTTP_PROXY", "http://proxy_name:proxy_port")
 ```
 
@@ -39,7 +39,7 @@ Default configuration comes with `Servers` field that contains server objects as
 
 For using other server than the one defined on index 0 set context value `taikuncore.ContextServerIndex` of type `int`.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), taikuncore.ContextServerIndex, 1)
 ```
 
@@ -47,7 +47,7 @@ ctx := context.WithValue(context.Background(), taikuncore.ContextServerIndex, 1)
 
 Templated server URL is formatted using default variables from configuration or from context value `taikuncore.ContextServerVariables` of type `map[string]string`.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), taikuncore.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
@@ -61,7 +61,7 @@ Each operation can use different server URL defined using `OperationServers` map
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `taikuncore.ContextOperationServerIndices` and `taikuncore.ContextOperationServerVariables` context maps.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), taikuncore.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
@@ -79,7 +79,6 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AWSCloudCredentialAPI* | [**AwsCreate**](docs/AWSCloudCredentialAPI.md#awscreate) | **Post** /api/v1/aws/create | Add Aws credentials
-*AWSCloudCredentialAPI* | [**AwsDeviceNames**](docs/AWSCloudCredentialAPI.md#awsdevicenames) | **Post** /api/v1/aws/device-names | Aws device name list
 *AWSCloudCredentialAPI* | [**AwsList**](docs/AWSCloudCredentialAPI.md#awslist) | **Get** /api/v1/aws/list | Retrieve list of aws cloud credentials
 *AWSCloudCredentialAPI* | [**AwsOwners**](docs/AWSCloudCredentialAPI.md#awsowners) | **Get** /api/v1/aws/owners | Retrieve aws verified owner list
 *AWSCloudCredentialAPI* | [**AwsRegionlist**](docs/AWSCloudCredentialAPI.md#awsregionlist) | **Post** /api/v1/aws/regions | Retrieve aws regions list
@@ -98,9 +97,10 @@ Class | Method | HTTP request | Description
 *AdminAPI* | [**AdminDeleteOrg**](docs/AdminAPI.md#admindeleteorg) | **Post** /api/v1/admin/organizations/delete | Delete organization
 *AdminAPI* | [**AdminKeycloakList**](docs/AdminAPI.md#adminkeycloaklist) | **Get** /api/v1/admin/keycloak/list | Keycloak list for admin
 *AdminAPI* | [**AdminMakeCsm**](docs/AdminAPI.md#adminmakecsm) | **Post** /api/v1/admin/users/make/csm | User csm update for admin
-*AdminAPI* | [**AdminMakeOwner**](docs/AdminAPI.md#adminmakeowner) | **Post** /api/v1/admin/users/make/owner | User choose owner for admin
+*AdminAPI* | [**AdminMakeOwner**](docs/AdminAPI.md#adminmakeowner) | **Post** /api/v1/admin/users/make/owner | Make owner
 *AdminAPI* | [**AdminOrganizations**](docs/AdminAPI.md#adminorganizations) | **Get** /api/v1/admin/organizations/list |  Organizations for admin
 *AdminAPI* | [**AdminProjectList**](docs/AdminAPI.md#adminprojectlist) | **Get** /api/v1/admin/projects/list | Projects for admin
+*AdminAPI* | [**AdminRemoveOwner**](docs/AdminAPI.md#adminremoveowner) | **Post** /api/v1/admin/users/remove/owner | Remove owner
 *AdminAPI* | [**AdminUpdateProject**](docs/AdminAPI.md#adminupdateproject) | **Post** /api/v1/admin/projects/update/version | Projects update for admin
 *AdminAPI* | [**AdminUpdateProjectKube**](docs/AdminAPI.md#adminupdateprojectkube) | **Post** /api/v1/admin/projects/update/kubeconfig | Projects update kube for admin
 *AdminAPI* | [**AdminUpdateUser**](docs/AdminAPI.md#adminupdateuser) | **Post** /api/v1/admin/users/update/password | User password update for admin
@@ -180,7 +180,7 @@ Class | Method | HTTP request | Description
 *BackupPolicyAPI* | [**BackupRestoreBackup**](docs/BackupPolicyAPI.md#backuprestorebackup) | **Post** /api/v1/backup/restore | Restore backup
 *BillingAPI* | [**BillingCreate**](docs/BillingAPI.md#billingcreate) | **Post** /api/v1/billing/create | Add billing summary
 *BillingAPI* | [**BillingExportCsv**](docs/BillingAPI.md#billingexportcsv) | **Get** /api/v1/billing/export | Export Csv
-*BillingAPI* | [**BillingGroupedList**](docs/BillingAPI.md#billinggroupedlist) | **Get** /api/v1/billing/grouped | Retrieve a grouped list of billing summaries
+*BillingAPI* | [**BillingGroupedList**](docs/BillingAPI.md#billinggroupedlist) | **Post** /api/v1/billing/grouped | Retrieve a grouped list of billing summaries
 *BillingAPI* | [**BillingList**](docs/BillingAPI.md#billinglist) | **Get** /api/v1/billing | Retrieve billing info
 *CatalogAPI* | [**CatalogBindProject**](docs/CatalogAPI.md#catalogbindproject) | **Post** /api/v1/catalog/bind-project | Bind projects to catalog
 *CatalogAPI* | [**CatalogCreate**](docs/CatalogAPI.md#catalogcreate) | **Post** /api/v1/catalog/create | Create catalog
@@ -230,6 +230,7 @@ Class | Method | HTTP request | Description
 *CloudCredentialAPI* | [**CloudcredentialsLockManager**](docs/CloudCredentialAPI.md#cloudcredentialslockmanager) | **Post** /api/v1/cloudcredentials/lockmanager | Lock/Unlock cloud credential
 *CloudCredentialAPI* | [**CloudcredentialsMakeDefault**](docs/CloudCredentialAPI.md#cloudcredentialsmakedefault) | **Post** /api/v1/cloudcredentials/makedefault | Make cloud credentials default
 *CloudCredentialAPI* | [**CloudcredentialsOrgList**](docs/CloudCredentialAPI.md#cloudcredentialsorglist) | **Get** /api/v1/cloudcredentials | Retrieve a list of cloud credentials by organization Id
+*CloudCredentialAPI* | [**CloudcredentialsUpdateIpAddresses**](docs/CloudCredentialAPI.md#cloudcredentialsupdateipaddresses) | **Post** /api/v1/cloudcredentials/network/ip-addresses | Update cloud credential&#39;s allocated ip addresses
 *CommonAPI* | [**CommonCountries**](docs/CommonAPI.md#commoncountries) | **Get** /api/v1/common/countries | Retrieve country list
 *CommonAPI* | [**CommonEnumValues**](docs/CommonAPI.md#commonenumvalues) | **Get** /api/v1/common/enumvalues | Retrieve enum values
 *CommonAPI* | [**CommonIpRangeCount**](docs/CommonAPI.md#commoniprangecount) | **Post** /api/v1/common/ip-range-count | Retrieve ip address range count
@@ -240,11 +241,9 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobCancelExpiredSubscriptions**](docs/CronJobServiceAPI.md#cronjobcancelexpiredsubscriptions) | **Post** /api/v1/cronjob/cancel-expired-subscriptions | Cancel expired subscriptions
 *CronJobServiceAPI* | [**CronjobCreateKeyPool**](docs/CronJobServiceAPI.md#cronjobcreatekeypool) | **Post** /api/v1/cronjob/create-key-pool | Create key pool
 *CronJobServiceAPI* | [**CronjobDeleteExpiredAlerts**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredalerts) | **Post** /api/v1/cronjob/alerts | Delete expired alerts
-*CronJobServiceAPI* | [**CronjobDeleteExpiredEvents**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredevents) | **Post** /api/v1/cronjob/events | Delete expired events
 *CronJobServiceAPI* | [**CronjobDeleteExpiredHistoryLogs**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredhistorylogs) | **Post** /api/v1/cronjob/history-logs | Delete expired history logs
 *CronJobServiceAPI* | [**CronjobDeleteExpiredOrgs**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredorgs) | **Post** /api/v1/cronjob/delete-expired-organizations | Delete registration expired organizations
 *CronJobServiceAPI* | [**CronjobDeleteExpiredRefreshTokens**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredrefreshtokens) | **Post** /api/v1/cronjob/refresh-tokens | Delete expired refresh tokens
-*CronJobServiceAPI* | [**CronjobDeleteExpiredRequests**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredrequests) | **Post** /api/v1/cronjob/taikun-requests | Delete expired requests
 *CronJobServiceAPI* | [**CronjobDeleteExpiredServers**](docs/CronJobServiceAPI.md#cronjobdeleteexpiredservers) | **Post** /api/v1/cronjob/delete-expired-servers | Delete expired servers
 *CronJobServiceAPI* | [**CronjobDeleteImportedBackupLocation**](docs/CronJobServiceAPI.md#cronjobdeleteimportedbackuplocation) | **Post** /api/v1/cronjob/backup-locations | Delete imported backup locations
 *CronJobServiceAPI* | [**CronjobDeleteKubeConfigs**](docs/CronJobServiceAPI.md#cronjobdeletekubeconfigs) | **Post** /api/v1/cronjob/delete-kube-configs | Remove deleted user&#39;s kube config
@@ -253,7 +252,6 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobEmailForProjectExpiration**](docs/CronJobServiceAPI.md#cronjobemailforprojectexpiration) | **Post** /api/v1/cronjob/project-expiration | Send email to the users about project expiration
 *CronJobServiceAPI* | [**CronjobFetchArtifactOrganizations**](docs/CronJobServiceAPI.md#cronjobfetchartifactorganizations) | **Post** /api/v1/cronjob/fetch-artifact-organizations | Fetch artifact hub organizations
 *CronJobServiceAPI* | [**CronjobFetchAzureFlavorPrices**](docs/CronJobServiceAPI.md#cronjobfetchazureflavorprices) | **Post** /api/v1/cronjob/fetch-azure-flavor-prices | Fetch azure flavor prices
-*CronJobServiceAPI* | [**CronjobFetchAzureFlavorPricesWithEuro**](docs/CronJobServiceAPI.md#cronjobfetchazureflavorpriceswitheuro) | **Post** /api/v1/cronjob/fetch-azure-flavor-prices-with-euro | Fetch azure flavor prices with euro
 *CronJobServiceAPI* | [**CronjobFetchK8sAlertData**](docs/CronJobServiceAPI.md#cronjobfetchk8salertdata) | **Post** /api/v1/cronjob/fetch-k8s-alert-data | Fetch k8s alert data
 *CronJobServiceAPI* | [**CronjobFetchK8sOverviewData**](docs/CronJobServiceAPI.md#cronjobfetchk8soverviewdata) | **Post** /api/v1/cronjob/fetch-k8s-overview-data | Fetch k8s overview data
 *CronJobServiceAPI* | [**CronjobFetchOrganizationDetails**](docs/CronJobServiceAPI.md#cronjobfetchorganizationdetails) | **Post** /api/v1/cronjob/fetch-organization-details | Fetch organization details
@@ -284,6 +282,7 @@ Class | Method | HTTP request | Description
 *FlavorsAPI* | [**FlavorsSelectedFlavorsForProject**](docs/FlavorsAPI.md#flavorsselectedflavorsforproject) | **Get** /api/v1/flavors/projects/list | Retrieve selected flavors for project
 *FlavorsAPI* | [**FlavorsTanzuFlavors**](docs/FlavorsAPI.md#flavorstanzuflavors) | **Get** /api/v1/flavors/tanzu/{cloudId} | Retrieve tanzu flavors
 *FlavorsAPI* | [**FlavorsUnbindFromProject**](docs/FlavorsAPI.md#flavorsunbindfromproject) | **Post** /api/v1/flavors/unbind | Unbind flavors from project
+*FlavorsAPI* | [**FlavorsVsphereFlavors**](docs/FlavorsAPI.md#flavorsvsphereflavors) | **Get** /api/v1/flavors/vsphere/{cloudId} | Retrieve vsphere flavors
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | 
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | 
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
@@ -299,11 +298,13 @@ Class | Method | HTTP request | Description
 *ImagesAPI* | [**ImagesCommonGoogleImages**](docs/ImagesAPI.md#imagescommongoogleimages) | **Get** /api/v1/images/google/common/{cloudId} | Commonly used google images
 *ImagesAPI* | [**ImagesGoogleImages**](docs/ImagesAPI.md#imagesgoogleimages) | **Get** /api/v1/images/google/{cloudId}/{type} | 
 *ImagesAPI* | [**ImagesImageDetails**](docs/ImagesAPI.md#imagesimagedetails) | **Post** /api/v1/images/details | Get image details
+*ImagesAPI* | [**ImagesOpenshiftImages**](docs/ImagesAPI.md#imagesopenshiftimages) | **Get** /api/v1/images/openshift/{cloudId} | Retrieve openshift images
 *ImagesAPI* | [**ImagesOpenstackImages**](docs/ImagesAPI.md#imagesopenstackimages) | **Get** /api/v1/images/openstack/{cloudId} | Retrieve openstack images
 *ImagesAPI* | [**ImagesProxmoxImages**](docs/ImagesAPI.md#imagesproxmoximages) | **Get** /api/v1/images/proxmox/{cloudId} | Retrieve proxmox images
 *ImagesAPI* | [**ImagesSelectedImagesForProject**](docs/ImagesAPI.md#imagesselectedimagesforproject) | **Get** /api/v1/images/projects/list | Retrieve selected images for projects
 *ImagesAPI* | [**ImagesTanzuImages**](docs/ImagesAPI.md#imagestanzuimages) | **Get** /api/v1/images/tanzu/{cloudId} | Retrieve tanzu images
 *ImagesAPI* | [**ImagesUnbindImagesFromProject**](docs/ImagesAPI.md#imagesunbindimagesfromproject) | **Post** /api/v1/images/unbind | Unbind images from project
+*ImagesAPI* | [**ImagesVsphereImages**](docs/ImagesAPI.md#imagesvsphereimages) | **Get** /api/v1/images/vsphere/{cloudId} | Retrieve vsphere images
 *InfraAPI* | [**InfraCreate**](docs/InfraAPI.md#infracreate) | **Post** /api/v1/infra/create | Create infra product
 *InfraAPI* | [**InfraDetails**](docs/InfraAPI.md#infradetails) | **Get** /api/v1/infra/details | Retrieve infra details
 *InfraAPI* | [**InfraOrganizationsList**](docs/InfraAPI.md#infraorganizationslist) | **Get** /api/v1/infra/organizations-list | Retrieve infra products list
@@ -530,6 +531,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsList**](docs/ProjectsAPI.md#projectslist) | **Get** /api/v1/projects | Retrieve all projects
 *ProjectsAPI* | [**ProjectsLockManager**](docs/ProjectsAPI.md#projectslockmanager) | **Post** /api/v1/projects/lockmanager | Lock/Unlock project
 *ProjectsAPI* | [**ProjectsLokiLogs**](docs/ProjectsAPI.md#projectslokilogs) | **Post** /api/v1/projects/lokilogs | Retrieve loki logs
+*ProjectsAPI* | [**ProjectsMaintenanceManager**](docs/ProjectsAPI.md#projectsmaintenancemanager) | **Post** /api/v1/projects/maintenance-manager | Enable/disable project&#39;s maintenance mode
 *ProjectsAPI* | [**ProjectsMonitoring**](docs/ProjectsAPI.md#projectsmonitoring) | **Post** /api/v1/projects/monitoring | Monitoring operations enable/disable
 *ProjectsAPI* | [**ProjectsMonitoringAlerts**](docs/ProjectsAPI.md#projectsmonitoringalerts) | **Post** /api/v1/projects/monitoringalerts | Monitoring alerts for project
 *ProjectsAPI* | [**ProjectsPrometheusMetrics**](docs/ProjectsAPI.md#projectsprometheusmetrics) | **Post** /api/v1/projects/prometheusmetrics | Prometheus metrics data project
@@ -543,7 +545,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsVisibility**](docs/ProjectsAPI.md#projectsvisibility) | **Get** /api/v1/projects/visibility/{projectId} | Visibility of project actions
 *PrometheusBillingsAPI* | [**PrometheusbillingsCreate**](docs/PrometheusBillingsAPI.md#prometheusbillingscreate) | **Post** /api/v1/prometheusbillings | Add prometheus billing
 *PrometheusBillingsAPI* | [**PrometheusbillingsExportCsv**](docs/PrometheusBillingsAPI.md#prometheusbillingsexportcsv) | **Get** /api/v1/prometheusbillings/export | Export Csv
-*PrometheusBillingsAPI* | [**PrometheusbillingsGroupedList**](docs/PrometheusBillingsAPI.md#prometheusbillingsgroupedlist) | **Get** /api/v1/prometheusbillings/grouped | Retrieve a list of grouped prometheus billing
+*PrometheusBillingsAPI* | [**PrometheusbillingsGroupedList**](docs/PrometheusBillingsAPI.md#prometheusbillingsgroupedlist) | **Post** /api/v1/prometheusbillings/grouped | Retrieve a list of grouped prometheus billing
 *PrometheusBillingsAPI* | [**PrometheusbillingsList**](docs/PrometheusBillingsAPI.md#prometheusbillingslist) | **Get** /api/v1/prometheusbillings | Retrieve all prometheus billing
 *PrometheusOrganizationsAPI* | [**PrometheusorganizationsBindRules**](docs/PrometheusOrganizationsAPI.md#prometheusorganizationsbindrules) | **Post** /api/v1/prometheusorganizations/bind/rules | Bind rules to organizations
 *PrometheusRulesAPI* | [**PrometheusrulesBindOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesbindorganizations) | **Post** /api/v1/prometheusrules/bind/organizations | Bind organizations to prometheus rule
@@ -656,6 +658,9 @@ Class | Method | HTTP request | Description
 *SubscriptionAPI* | [**SubscriptionPublic**](docs/SubscriptionAPI.md#subscriptionpublic) | **Get** /api/v1/subscription/public | Retrieve subscription for organization bound
 *SubscriptionAPI* | [**SubscriptionSubscription**](docs/SubscriptionAPI.md#subscriptionsubscription) | **Post** /api/v1/subscription/create | Add new subscription package
 *SubscriptionAPI* | [**SubscriptionUpdate**](docs/SubscriptionAPI.md#subscriptionupdate) | **Post** /api/v1/subscription/update | Update subscription
+*TaikunLBAPI* | [**TaikunLbCreateTaikunLb**](docs/TaikunLBAPI.md#taikunlbcreatetaikunlb) | **Post** /api/v1/taikun-lb/create/{projectId} | Create Taikun LB
+*TaikunLBAPI* | [**TaikunLbDeleteTaikunLb**](docs/TaikunLBAPI.md#taikunlbdeletetaikunlb) | **Post** /api/v1/taikun-lb/delete/{projectId} | Delete Taikun LB
+*TaikunLBAPI* | [**TaikunLbListTaikunLb**](docs/TaikunLBAPI.md#taikunlblisttaikunlb) | **Get** /api/v1/taikun-lb/list/{projectId} | Retrieve taikun lbs for project
 *TanzuAPI* | [**TanzuCreate**](docs/TanzuAPI.md#tanzucreate) | **Post** /api/v1/tanzu/create | Create tanzu credentials
 *TanzuAPI* | [**TanzuKubernetesVersions**](docs/TanzuAPI.md#tanzukubernetesversions) | **Get** /api/v1/tanzu/kubernetes-versions/{cloudId} | Tanzu available k8s version list
 *TanzuAPI* | [**TanzuList**](docs/TanzuAPI.md#tanzulist) | **Get** /api/v1/tanzu/list | Retrieve list of tanzu cloud credentials
@@ -707,6 +712,17 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**UsersUpdateUser**](docs/UsersAPI.md#usersupdateuser) | **Post** /api/v1/users/update | Update user
 *UsersAPI* | [**UsersUserInfo**](docs/UsersAPI.md#usersuserinfo) | **Get** /api/v1/users/userinfo | Retrieve user info
 *UsersAPI* | [**UsersVerifyEmail**](docs/UsersAPI.md#usersverifyemail) | **Post** /api/v1/users/verifyemail | Verify user email
+*VsphereCloudCredentialAPI* | [**VsphereCreate**](docs/VsphereCloudCredentialAPI.md#vspherecreate) | **Post** /api/v1/vsphere/create | Add Vsphere credentials
+*VsphereCloudCredentialAPI* | [**VsphereDatacenterList**](docs/VsphereCloudCredentialAPI.md#vspheredatacenterlist) | **Post** /api/v1/vsphere/datacenter-list | Fetch Vsphere datacenter list
+*VsphereCloudCredentialAPI* | [**VsphereDatastoreList**](docs/VsphereCloudCredentialAPI.md#vspheredatastorelist) | **Post** /api/v1/vsphere/datastore-list | Fetch Vsphere datastore list
+*VsphereCloudCredentialAPI* | [**VsphereHypervisorList**](docs/VsphereCloudCredentialAPI.md#vspherehypervisorlist) | **Post** /api/v1/vsphere/hypervisor-list | Fetch Vsphere hypervisor list
+*VsphereCloudCredentialAPI* | [**VsphereList**](docs/VsphereCloudCredentialAPI.md#vspherelist) | **Get** /api/v1/vsphere/list | Retrieve list of vsphere cloud credentials
+*VsphereCloudCredentialAPI* | [**VsphereNetworkList**](docs/VsphereCloudCredentialAPI.md#vspherenetworklist) | **Post** /api/v1/vsphere/network-list | Fetch Vsphere network list
+*VsphereCloudCredentialAPI* | [**VsphereResourcePoolList**](docs/VsphereCloudCredentialAPI.md#vsphereresourcepoollist) | **Post** /api/v1/vsphere/resource-pool-list | Fetch Vsphere resource pool list
+*VsphereCloudCredentialAPI* | [**VsphereUpdate**](docs/VsphereCloudCredentialAPI.md#vsphereupdate) | **Post** /api/v1/vsphere/update | Update Vsphere credentials
+*VsphereCloudCredentialAPI* | [**VsphereUpdateVsphereHypervisors**](docs/VsphereCloudCredentialAPI.md#vsphereupdatevspherehypervisors) | **Post** /api/v1/vsphere/update/hypervisors | Update Vsphere credentials
+*VsphereCloudCredentialAPI* | [**VsphereValidate**](docs/VsphereCloudCredentialAPI.md#vspherevalidate) | **Post** /api/v1/vsphere/validate | Validate Vsphere credentials
+*VsphereCloudCredentialAPI* | [**VsphereVmTemplateList**](docs/VsphereCloudCredentialAPI.md#vspherevmtemplatelist) | **Post** /api/v1/vsphere/vm-template-list | Fetch Vsphere vm template list
 
 
 ## Documentation For Models
@@ -738,6 +754,7 @@ Class | Method | HTTP request | Description
  - [AiCredentials](docs/AiCredentials.md)
  - [AiCredentialsForOrganizationEntity](docs/AiCredentialsForOrganizationEntity.md)
  - [AiCredentialsListDto](docs/AiCredentialsListDto.md)
+ - [AiListDto](docs/AiListDto.md)
  - [AiType](docs/AiType.md)
  - [AlertingEmailDto](docs/AlertingEmailDto.md)
  - [AlertingIntegrationDto](docs/AlertingIntegrationDto.md)
@@ -772,31 +789,23 @@ Class | Method | HTTP request | Description
  - [AvailablePackageDetailsDto](docs/AvailablePackageDetailsDto.md)
  - [AvailablePackagesDto](docs/AvailablePackagesDto.md)
  - [AvailablePackagesList](docs/AvailablePackagesList.md)
- - [AwsBlockDeviceMappingsCommand](docs/AwsBlockDeviceMappingsCommand.md)
- - [AwsCommonImages](docs/AwsCommonImages.md)
  - [AwsCredentialList](docs/AwsCredentialList.md)
  - [AwsCredentialsForProjectDto](docs/AwsCredentialsForProjectDto.md)
- - [AwsExtendedImagesListDto](docs/AwsExtendedImagesListDto.md)
  - [AwsFlavorList](docs/AwsFlavorList.md)
  - [AwsFlavorListDto](docs/AwsFlavorListDto.md)
- - [AwsImagesPostList](docs/AwsImagesPostList.md)
  - [AwsImagesPostListCommand](docs/AwsImagesPostListCommand.md)
- - [AwsOwnerDetails](docs/AwsOwnerDetails.md)
  - [AwsProjectAZSubnetDto](docs/AwsProjectAZSubnetDto.md)
  - [AwsRegionDto](docs/AwsRegionDto.md)
  - [AwsValidateOwnerCommand](docs/AwsValidateOwnerCommand.md)
  - [AzResult](docs/AzResult.md)
- - [AzureCommonImages](docs/AzureCommonImages.md)
  - [AzureCredentialList](docs/AzureCredentialList.md)
  - [AzureCredentialsForProjectDto](docs/AzureCredentialsForProjectDto.md)
  - [AzureCredentialsListDto](docs/AzureCredentialsListDto.md)
  - [AzureDashboardCommand](docs/AzureDashboardCommand.md)
  - [AzureFlavorList](docs/AzureFlavorList.md)
  - [AzureFlavorsWithPriceDto](docs/AzureFlavorsWithPriceDto.md)
- - [AzureImageList](docs/AzureImageList.md)
  - [AzureLocationsCommand](docs/AzureLocationsCommand.md)
  - [AzureOffersList](docs/AzureOffersList.md)
- - [AzurePublisherDetails](docs/AzurePublisherDetails.md)
  - [AzurePublishersList](docs/AzurePublishersList.md)
  - [AzureQuotaListRecordDto](docs/AzureQuotaListRecordDto.md)
  - [AzureSkusList](docs/AzureSkusList.md)
@@ -818,6 +827,7 @@ Class | Method | HTTP request | Description
  - [BillingCredentialsSearchList](docs/BillingCredentialsSearchList.md)
  - [BillingInfo](docs/BillingInfo.md)
  - [BillingInfoDto](docs/BillingInfoDto.md)
+ - [BillingPeriod](docs/BillingPeriod.md)
  - [BillingSummaryDto](docs/BillingSummaryDto.md)
  - [BindAppRepositoryCommand](docs/BindAppRepositoryCommand.md)
  - [BindFlavorToProjectCommand](docs/BindFlavorToProjectCommand.md)
@@ -910,6 +920,7 @@ Class | Method | HTTP request | Description
  - [CreateCatalogAppCommand](docs/CreateCatalogAppCommand.md)
  - [CreateCatalogCommand](docs/CreateCatalogCommand.md)
  - [CreateDnsServerCommand](docs/CreateDnsServerCommand.md)
+ - [CreateGenericTaikunLbDto](docs/CreateGenericTaikunLbDto.md)
  - [CreateInfraProductCommand](docs/CreateInfraProductCommand.md)
  - [CreateInvoiceCommand](docs/CreateInvoiceCommand.md)
  - [CreateKubeConfigCommand](docs/CreateKubeConfigCommand.md)
@@ -934,6 +945,8 @@ Class | Method | HTTP request | Description
  - [CreateTicketCommand](docs/CreateTicketCommand.md)
  - [CreateUserCommand](docs/CreateUserCommand.md)
  - [CreateUserGroupCommand](docs/CreateUserGroupCommand.md)
+ - [CreateVsphereCommand](docs/CreateVsphereCommand.md)
+ - [CreateVsphereNetworkDto](docs/CreateVsphereNetworkDto.md)
  - [CredentialChartDto](docs/CredentialChartDto.md)
  - [CredentialMakeDefaultCommand](docs/CredentialMakeDefaultCommand.md)
  - [CredentialsChart](docs/CredentialsChart.md)
@@ -947,6 +960,10 @@ Class | Method | HTTP request | Description
  - [DaemonSetSearchList](docs/DaemonSetSearchList.md)
  - [DaemonSets](docs/DaemonSets.md)
  - [DashboardChart](docs/DashboardChart.md)
+ - [DatacenterListCommand](docs/DatacenterListCommand.md)
+ - [DatacenterSummary](docs/DatacenterSummary.md)
+ - [DatastoreListCommand](docs/DatastoreListCommand.md)
+ - [DatastoreSummary](docs/DatastoreSummary.md)
  - [DateFilter](docs/DateFilter.md)
  - [DateInterval](docs/DateInterval.md)
  - [DeleteAlertCommand](docs/DeleteAlertCommand.md)
@@ -1039,16 +1056,15 @@ Class | Method | HTTP request | Description
  - [GetProjectOperationCommand](docs/GetProjectOperationCommand.md)
  - [GetToken](docs/GetToken.md)
  - [GiveAccessToPartnerCommand](docs/GiveAccessToPartnerCommand.md)
- - [GoogleCommonImages](docs/GoogleCommonImages.md)
  - [GoogleCredentialForProjectDto](docs/GoogleCredentialForProjectDto.md)
  - [GoogleCredentialList](docs/GoogleCredentialList.md)
  - [GoogleCredentialsListDto](docs/GoogleCredentialsListDto.md)
  - [GoogleFlavorDto](docs/GoogleFlavorDto.md)
  - [GoogleFlavorList](docs/GoogleFlavorList.md)
- - [GoogleImageList](docs/GoogleImageList.md)
- - [GoogleOwnerDetails](docs/GoogleOwnerDetails.md)
  - [GroupedBillingInfo](docs/GroupedBillingInfo.md)
+ - [GroupedBillingListQuery](docs/GroupedBillingListQuery.md)
  - [GroupedBillings](docs/GroupedBillings.md)
+ - [GroupedPrometheusBillingListQuery](docs/GroupedPrometheusBillingListQuery.md)
  - [HelmMetadata](docs/HelmMetadata.md)
  - [HelmReleaseDto](docs/HelmReleaseDto.md)
  - [HelmReleasesList](docs/HelmReleasesList.md)
@@ -1088,6 +1104,7 @@ Class | Method | HTTP request | Description
  - [KubeConfigRoleResponse](docs/KubeConfigRoleResponse.md)
  - [KubernetesAlertCreateDto](docs/KubernetesAlertCreateDto.md)
  - [KubernetesAlertDto](docs/KubernetesAlertDto.md)
+ - [KubernetesAlertDtoForPoller](docs/KubernetesAlertDtoForPoller.md)
  - [KubernetesAlertList](docs/KubernetesAlertList.md)
  - [KubernetesCliCommand](docs/KubernetesCliCommand.md)
  - [KubernetesCronJobDto](docs/KubernetesCronJobDto.md)
@@ -1121,6 +1138,7 @@ Class | Method | HTTP request | Description
  - [ListCatalogAppAvailableVersionsCommand](docs/ListCatalogAppAvailableVersionsCommand.md)
  - [ListForLandingPageDto](docs/ListForLandingPageDto.md)
  - [ListForOrganizationEditDto](docs/ListForOrganizationEditDto.md)
+ - [ListForPartnersDto](docs/ListForPartnersDto.md)
  - [LockProjectAppCommand](docs/LockProjectAppCommand.md)
  - [LoginCommand](docs/LoginCommand.md)
  - [LokiResponseDto](docs/LokiResponseDto.md)
@@ -1129,8 +1147,10 @@ Class | Method | HTTP request | Description
  - [Metadata](docs/Metadata.md)
  - [MonitoringCredentialsListDto](docs/MonitoringCredentialsListDto.md)
  - [MonitoringOperationsCommand](docs/MonitoringOperationsCommand.md)
+ - [NetworkListCommand](docs/NetworkListCommand.md)
  - [NetworkPolicies](docs/NetworkPolicies.md)
  - [NetworkPolicyDto](docs/NetworkPolicyDto.md)
+ - [NetworkSummary](docs/NetworkSummary.md)
  - [NodeCommand](docs/NodeCommand.md)
  - [NodeDto](docs/NodeDto.md)
  - [NodeSearchResponseData](docs/NodeSearchResponseData.md)
@@ -1168,7 +1188,6 @@ Class | Method | HTTP request | Description
  - [OpenstackCredentialsListDto](docs/OpenstackCredentialsListDto.md)
  - [OpenstackFlavorList](docs/OpenstackFlavorList.md)
  - [OpenstackFlavorListDto](docs/OpenstackFlavorListDto.md)
- - [OpenstackImageList](docs/OpenstackImageList.md)
  - [OpenstackNetworkDto](docs/OpenstackNetworkDto.md)
  - [OpenstackQuotaList](docs/OpenstackQuotaList.md)
  - [OpenstackQuotasCommand](docs/OpenstackQuotasCommand.md)
@@ -1181,6 +1200,7 @@ Class | Method | HTTP request | Description
  - [OperationCredentialsForOrganizationEntity](docs/OperationCredentialsForOrganizationEntity.md)
  - [OperationCredentialsListDto](docs/OperationCredentialsListDto.md)
  - [OperationCredentialsMakeDefaultCommand](docs/OperationCredentialsMakeDefaultCommand.md)
+ - [OperationDto](docs/OperationDto.md)
  - [OrganizationCreateCommand](docs/OrganizationCreateCommand.md)
  - [OrganizationDetailsDto](docs/OrganizationDetailsDto.md)
  - [OrganizationDropdownDto](docs/OrganizationDropdownDto.md)
@@ -1195,6 +1215,7 @@ Class | Method | HTTP request | Description
  - [Parameter](docs/Parameter.md)
  - [PartnerDetailsDto](docs/PartnerDetailsDto.md)
  - [PartnerDetailsForOrganizationsDto](docs/PartnerDetailsForOrganizationsDto.md)
+ - [PartnerDetailsForSubscription](docs/PartnerDetailsForSubscription.md)
  - [PartnerDetailsForUserDto](docs/PartnerDetailsForUserDto.md)
  - [PartnerEntity](docs/PartnerEntity.md)
  - [PartnerRecordDto](docs/PartnerRecordDto.md)
@@ -1221,6 +1242,7 @@ Class | Method | HTTP request | Description
  - [Pods](docs/Pods.md)
  - [PodsSearchCommand](docs/PodsSearchCommand.md)
  - [PodsSearchList](docs/PodsSearchList.md)
+ - [PrivateSubscriptionList](docs/PrivateSubscriptionList.md)
  - [ProblemDetails](docs/ProblemDetails.md)
  - [ProjectActionDto](docs/ProjectActionDto.md)
  - [ProjectActionUpdateDto](docs/ProjectActionUpdateDto.md)
@@ -1254,6 +1276,7 @@ Class | Method | HTTP request | Description
  - [ProjectListForPoller](docs/ProjectListForPoller.md)
  - [ProjectListForProjectGroupDto](docs/ProjectListForProjectGroupDto.md)
  - [ProjectLockManagerCommand](docs/ProjectLockManagerCommand.md)
+ - [ProjectMaintenanceModeCommand](docs/ProjectMaintenanceModeCommand.md)
  - [ProjectQuotaList](docs/ProjectQuotaList.md)
  - [ProjectQuotaListDto](docs/ProjectQuotaListDto.md)
  - [ProjectRevisionDto](docs/ProjectRevisionDto.md)
@@ -1293,12 +1316,12 @@ Class | Method | HTTP request | Description
  - [ProxmoxFlavorData](docs/ProxmoxFlavorData.md)
  - [ProxmoxFlavorList](docs/ProxmoxFlavorList.md)
  - [ProxmoxHypervisorDto](docs/ProxmoxHypervisorDto.md)
- - [ProxmoxImageList](docs/ProxmoxImageList.md)
  - [ProxmoxList](docs/ProxmoxList.md)
  - [ProxmoxListDto](docs/ProxmoxListDto.md)
  - [ProxmoxNetworkListDto](docs/ProxmoxNetworkListDto.md)
  - [ProxmoxRole](docs/ProxmoxRole.md)
  - [ProxmoxStorage](docs/ProxmoxStorage.md)
+ - [PublicImageList](docs/PublicImageList.md)
  - [PurgeCommand](docs/PurgeCommand.md)
  - [PurgeStandAloneCommand](docs/PurgeStandAloneCommand.md)
  - [PurgeStandAloneVmDiskCommand](docs/PurgeStandAloneVmDiskCommand.md)
@@ -1312,6 +1335,7 @@ Class | Method | HTTP request | Description
  - [RefreshTokenCommand](docs/RefreshTokenCommand.md)
  - [RegionListCommand](docs/RegionListCommand.md)
  - [RemindUsersByAlertingProfileCommand](docs/RemindUsersByAlertingProfileCommand.md)
+ - [RemoveOwnerCommand](docs/RemoveOwnerCommand.md)
  - [RepairStandAloneVmCommand](docs/RepairStandAloneVmCommand.md)
  - [ReplyTicketCommand](docs/ReplyTicketCommand.md)
  - [Repository](docs/Repository.md)
@@ -1321,6 +1345,8 @@ Class | Method | HTTP request | Description
  - [ResetStandAloneVmDiskStatusCommand](docs/ResetStandAloneVmDiskStatusCommand.md)
  - [ResetStandAloneVmStatusCommand](docs/ResetStandAloneVmStatusCommand.md)
  - [Resource](docs/Resource.md)
+ - [ResourcePoolListCommand](docs/ResourcePoolListCommand.md)
+ - [ResourcePoolSummary](docs/ResourcePoolSummary.md)
  - [RestartDaemonSetCommand](docs/RestartDaemonSetCommand.md)
  - [RestartDeploymentCommand](docs/RestartDeploymentCommand.md)
  - [RestartStsCommand](docs/RestartStsCommand.md)
@@ -1415,13 +1441,12 @@ Class | Method | HTTP request | Description
  - [Subresource](docs/Subresource.md)
  - [SyncProjectAppCommand](docs/SyncProjectAppCommand.md)
  - [TaikunLbDto](docs/TaikunLbDto.md)
+ - [TaikunLbResponseDto](docs/TaikunLbResponseDto.md)
  - [TanzuCredentialsForProjectDto](docs/TanzuCredentialsForProjectDto.md)
  - [TanzuCredentialsList](docs/TanzuCredentialsList.md)
  - [TanzuCredentialsListDto](docs/TanzuCredentialsListDto.md)
  - [TanzuFlavorList](docs/TanzuFlavorList.md)
  - [TanzuFlavorsListDto](docs/TanzuFlavorsListDto.md)
- - [TanzuImageList](docs/TanzuImageList.md)
- - [TanzuImagesListDto](docs/TanzuImagesListDto.md)
  - [TanzuStorageListCommand](docs/TanzuStorageListCommand.md)
  - [TicketPriority](docs/TicketPriority.md)
  - [ToggleDemoModeCommand](docs/ToggleDemoModeCommand.md)
@@ -1460,6 +1485,7 @@ Class | Method | HTTP request | Description
  - [UpdateStandAloneVmFlavorCommand](docs/UpdateStandAloneVmFlavorCommand.md)
  - [UpdateStandaloneVmDiskCommand](docs/UpdateStandaloneVmDiskCommand.md)
  - [UpdateStandaloneVmDiskSizeCommand](docs/UpdateStandaloneVmDiskSizeCommand.md)
+ - [UpdateStandaloneVmDto](docs/UpdateStandaloneVmDto.md)
  - [UpdateSubscriptionCommand](docs/UpdateSubscriptionCommand.md)
  - [UpdateTanzuCommand](docs/UpdateTanzuCommand.md)
  - [UpdateUsedIpAddressesCommand](docs/UpdateUsedIpAddressesCommand.md)
@@ -1467,6 +1493,8 @@ Class | Method | HTTP request | Description
  - [UpdateUserGroupDto](docs/UpdateUserGroupDto.md)
  - [UpdateUserProjectDto](docs/UpdateUserProjectDto.md)
  - [UpdateUserProjectGroupDto](docs/UpdateUserProjectGroupDto.md)
+ - [UpdateVsphereCommand](docs/UpdateVsphereCommand.md)
+ - [UpdateVsphereHypervisorsCommand](docs/UpdateVsphereHypervisorsCommand.md)
  - [UserDetails](docs/UserDetails.md)
  - [UserDto](docs/UserDto.md)
  - [UserExistCommand](docs/UserExistCommand.md)
@@ -1485,11 +1513,21 @@ Class | Method | HTTP request | Description
  - [UsersSearchCommand](docs/UsersSearchCommand.md)
  - [UsersSearchList](docs/UsersSearchList.md)
  - [UsersSearchResponseData](docs/UsersSearchResponseData.md)
+ - [ValidateVsphereCommand](docs/ValidateVsphereCommand.md)
  - [VerifyEmailCommand](docs/VerifyEmailCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)
  - [VerifyWebhookCommand](docs/VerifyWebhookCommand.md)
  - [VmConsoleScreenshotCommand](docs/VmConsoleScreenshotCommand.md)
  - [VmTemplateListCommand](docs/VmTemplateListCommand.md)
+ - [VsphereCredentialsForProjectDto](docs/VsphereCredentialsForProjectDto.md)
+ - [VsphereFlavorData](docs/VsphereFlavorData.md)
+ - [VsphereFlavorList](docs/VsphereFlavorList.md)
+ - [VsphereHypervisorListCommand](docs/VsphereHypervisorListCommand.md)
+ - [VsphereList](docs/VsphereList.md)
+ - [VsphereListDto](docs/VsphereListDto.md)
+ - [VsphereNetworkListDto](docs/VsphereNetworkListDto.md)
+ - [VsphereVmTemplateData](docs/VsphereVmTemplateData.md)
+ - [VsphereVmTemplateListCommand](docs/VsphereVmTemplateListCommand.md)
  - [WebhookHeaderDto](docs/WebhookHeaderDto.md)
  - [WhiteListDomainCreateCommand](docs/WhiteListDomainCreateCommand.md)
  - [WhiteListDomainCreateDto](docs/WhiteListDomainCreateDto.md)
@@ -1512,7 +1550,7 @@ Note, each API key must be added to a map of `map[string]APIKey` where the key i
 
 Example
 
-```golang
+```go
 auth := context.WithValue(
 		context.Background(),
 		taikuncore.ContextAPIKeys,

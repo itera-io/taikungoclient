@@ -31,6 +31,7 @@ type CredentialsForProjectList struct {
 	Google *GoogleCredentialForProjectDto `json:"google,omitempty"`
 	Tanzu *TanzuCredentialsForProjectDto `json:"tanzu,omitempty"`
 	Proxmox *ProxmoxCredentialsForProjectDto `json:"proxmox,omitempty"`
+	Vsphere *VsphereCredentialsForProjectDto `json:"vsphere,omitempty"`
 	Openshift *OpenshiftCredentialForProjectDto `json:"openshift,omitempty"`
 }
 
@@ -413,6 +414,38 @@ func (o *CredentialsForProjectList) SetProxmox(v ProxmoxCredentialsForProjectDto
 	o.Proxmox = &v
 }
 
+// GetVsphere returns the Vsphere field value if set, zero value otherwise.
+func (o *CredentialsForProjectList) GetVsphere() VsphereCredentialsForProjectDto {
+	if o == nil || IsNil(o.Vsphere) {
+		var ret VsphereCredentialsForProjectDto
+		return ret
+	}
+	return *o.Vsphere
+}
+
+// GetVsphereOk returns a tuple with the Vsphere field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialsForProjectList) GetVsphereOk() (*VsphereCredentialsForProjectDto, bool) {
+	if o == nil || IsNil(o.Vsphere) {
+		return nil, false
+	}
+	return o.Vsphere, true
+}
+
+// HasVsphere returns a boolean if a field has been set.
+func (o *CredentialsForProjectList) HasVsphere() bool {
+	if o != nil && !IsNil(o.Vsphere) {
+		return true
+	}
+
+	return false
+}
+
+// SetVsphere gets a reference to the given VsphereCredentialsForProjectDto and assigns it to the Vsphere field.
+func (o *CredentialsForProjectList) SetVsphere(v VsphereCredentialsForProjectDto) {
+	o.Vsphere = &v
+}
+
 // GetOpenshift returns the Openshift field value if set, zero value otherwise.
 func (o *CredentialsForProjectList) GetOpenshift() OpenshiftCredentialForProjectDto {
 	if o == nil || IsNil(o.Openshift) {
@@ -487,6 +520,9 @@ func (o CredentialsForProjectList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Proxmox) {
 		toSerialize["proxmox"] = o.Proxmox
+	}
+	if !IsNil(o.Vsphere) {
+		toSerialize["vsphere"] = o.Vsphere
 	}
 	if !IsNil(o.Openshift) {
 		toSerialize["openshift"] = o.Openshift

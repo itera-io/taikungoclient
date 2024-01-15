@@ -29,6 +29,7 @@ type CreateKubernetesProfileCommand struct {
 	UniqueClusterName *bool `json:"uniqueClusterName,omitempty"`
 	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
 	NvidiaGpuOperatorEnabled *bool `json:"nvidiaGpuOperatorEnabled,omitempty"`
+	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
 }
 
 // NewCreateKubernetesProfileCommand instantiates a new CreateKubernetesProfileCommand object
@@ -356,6 +357,38 @@ func (o *CreateKubernetesProfileCommand) SetNvidiaGpuOperatorEnabled(v bool) {
 	o.NvidiaGpuOperatorEnabled = &v
 }
 
+// GetWasmEnabled returns the WasmEnabled field value if set, zero value otherwise.
+func (o *CreateKubernetesProfileCommand) GetWasmEnabled() bool {
+	if o == nil || IsNil(o.WasmEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.WasmEnabled
+}
+
+// GetWasmEnabledOk returns a tuple with the WasmEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateKubernetesProfileCommand) GetWasmEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.WasmEnabled) {
+		return nil, false
+	}
+	return o.WasmEnabled, true
+}
+
+// HasWasmEnabled returns a boolean if a field has been set.
+func (o *CreateKubernetesProfileCommand) HasWasmEnabled() bool {
+	if o != nil && !IsNil(o.WasmEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetWasmEnabled gets a reference to the given bool and assigns it to the WasmEnabled field.
+func (o *CreateKubernetesProfileCommand) SetWasmEnabled(v bool) {
+	o.WasmEnabled = &v
+}
+
 func (o CreateKubernetesProfileCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -392,6 +425,9 @@ func (o CreateKubernetesProfileCommand) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.NvidiaGpuOperatorEnabled) {
 		toSerialize["nvidiaGpuOperatorEnabled"] = o.NvidiaGpuOperatorEnabled
+	}
+	if !IsNil(o.WasmEnabled) {
+		toSerialize["wasmEnabled"] = o.WasmEnabled
 	}
 	return toSerialize, nil
 }

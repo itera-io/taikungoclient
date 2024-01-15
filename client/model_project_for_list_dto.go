@@ -56,7 +56,6 @@ type ProjectForListDto struct {
 	AccessProfile *AccessProfilesForProjectListDto `json:"accessProfile,omitempty"`
 	KubernetesProfiles *KubernetesProfilesLisForPollerDto `json:"kubernetesProfiles,omitempty"`
 	OpaProfile *OpaProfileListDto `json:"opaProfile,omitempty"`
-	KubernetesAlerts []KubernetesAlertDto `json:"kubernetesAlerts,omitempty"`
 	IsDeleteCluster *bool `json:"isDeleteCluster,omitempty"`
 	TaikunPrivateSSHKey NullableString `json:"taikunPrivateSSHKey,omitempty"`
 	TaikunPublicSSHKey NullableString `json:"taikunPublicSSHKey,omitempty"`
@@ -1387,39 +1386,6 @@ func (o *ProjectForListDto) SetOpaProfile(v OpaProfileListDto) {
 	o.OpaProfile = &v
 }
 
-// GetKubernetesAlerts returns the KubernetesAlerts field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectForListDto) GetKubernetesAlerts() []KubernetesAlertDto {
-	if o == nil {
-		var ret []KubernetesAlertDto
-		return ret
-	}
-	return o.KubernetesAlerts
-}
-
-// GetKubernetesAlertsOk returns a tuple with the KubernetesAlerts field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectForListDto) GetKubernetesAlertsOk() ([]KubernetesAlertDto, bool) {
-	if o == nil || IsNil(o.KubernetesAlerts) {
-		return nil, false
-	}
-	return o.KubernetesAlerts, true
-}
-
-// HasKubernetesAlerts returns a boolean if a field has been set.
-func (o *ProjectForListDto) HasKubernetesAlerts() bool {
-	if o != nil && IsNil(o.KubernetesAlerts) {
-		return true
-	}
-
-	return false
-}
-
-// SetKubernetesAlerts gets a reference to the given []KubernetesAlertDto and assigns it to the KubernetesAlerts field.
-func (o *ProjectForListDto) SetKubernetesAlerts(v []KubernetesAlertDto) {
-	o.KubernetesAlerts = v
-}
-
 // GetIsDeleteCluster returns the IsDeleteCluster field value if set, zero value otherwise.
 func (o *ProjectForListDto) GetIsDeleteCluster() bool {
 	if o == nil || IsNil(o.IsDeleteCluster) {
@@ -2257,9 +2223,6 @@ func (o ProjectForListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OpaProfile) {
 		toSerialize["opaProfile"] = o.OpaProfile
-	}
-	if o.KubernetesAlerts != nil {
-		toSerialize["kubernetesAlerts"] = o.KubernetesAlerts
 	}
 	if !IsNil(o.IsDeleteCluster) {
 		toSerialize["isDeleteCluster"] = o.IsDeleteCluster

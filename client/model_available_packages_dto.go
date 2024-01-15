@@ -36,6 +36,7 @@ type AvailablePackagesDto struct {
 	SecurityReportSummary *SecurityReportSummary `json:"securityReportSummary,omitempty"`
 	Ts NullableString `json:"ts,omitempty"`
 	Repository *Repository `json:"repository,omitempty"`
+	IsAdded NullableBool `json:"isAdded,omitempty"`
 }
 
 // NewAvailablePackagesDto instantiates a new AvailablePackagesDto object
@@ -667,6 +668,48 @@ func (o *AvailablePackagesDto) SetRepository(v Repository) {
 	o.Repository = &v
 }
 
+// GetIsAdded returns the IsAdded field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AvailablePackagesDto) GetIsAdded() bool {
+	if o == nil || IsNil(o.IsAdded.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IsAdded.Get()
+}
+
+// GetIsAddedOk returns a tuple with the IsAdded field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AvailablePackagesDto) GetIsAddedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsAdded.Get(), o.IsAdded.IsSet()
+}
+
+// HasIsAdded returns a boolean if a field has been set.
+func (o *AvailablePackagesDto) HasIsAdded() bool {
+	if o != nil && o.IsAdded.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAdded gets a reference to the given NullableBool and assigns it to the IsAdded field.
+func (o *AvailablePackagesDto) SetIsAdded(v bool) {
+	o.IsAdded.Set(&v)
+}
+// SetIsAddedNil sets the value for IsAdded to be an explicit nil
+func (o *AvailablePackagesDto) SetIsAddedNil() {
+	o.IsAdded.Set(nil)
+}
+
+// UnsetIsAdded ensures that no value is present for IsAdded, not even an explicit nil
+func (o *AvailablePackagesDto) UnsetIsAdded() {
+	o.IsAdded.Unset()
+}
+
 func (o AvailablePackagesDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -724,6 +767,9 @@ func (o AvailablePackagesDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Repository) {
 		toSerialize["repository"] = o.Repository
+	}
+	if o.IsAdded.IsSet() {
+		toSerialize["isAdded"] = o.IsAdded.Get()
 	}
 	return toSerialize, nil
 }

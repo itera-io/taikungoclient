@@ -363,6 +363,7 @@ type ApiKubernetesprofilesDropdownRequest struct {
 	ApiService *KubernetesProfilesAPIService
 	organizationId *int32
 	search *string
+	cloudId *int32
 }
 
 func (r ApiKubernetesprofilesDropdownRequest) OrganizationId(organizationId int32) ApiKubernetesprofilesDropdownRequest {
@@ -372,6 +373,11 @@ func (r ApiKubernetesprofilesDropdownRequest) OrganizationId(organizationId int3
 
 func (r ApiKubernetesprofilesDropdownRequest) Search(search string) ApiKubernetesprofilesDropdownRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiKubernetesprofilesDropdownRequest) CloudId(cloudId int32) ApiKubernetesprofilesDropdownRequest {
+	r.cloudId = &cloudId
 	return r
 }
 
@@ -418,6 +424,9 @@ func (a *KubernetesProfilesAPIService) KubernetesprofilesDropdownExecute(r ApiKu
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.cloudId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "CloudId", r.cloudId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -31,6 +31,7 @@ type BoundImagesForProjectsListDto struct {
 	ImageId NullableString `json:"imageId,omitempty"`
 	CloudId NullableInt32 `json:"cloudId,omitempty"`
 	IsWindows *bool `json:"isWindows,omitempty"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
 }
 
 // NewBoundImagesForProjectsListDto instantiates a new BoundImagesForProjectsListDto object
@@ -462,6 +463,38 @@ func (o *BoundImagesForProjectsListDto) SetIsWindows(v bool) {
 	o.IsWindows = &v
 }
 
+// GetCloudType returns the CloudType field value if set, zero value otherwise.
+func (o *BoundImagesForProjectsListDto) GetCloudType() CloudType {
+	if o == nil || IsNil(o.CloudType) {
+		var ret CloudType
+		return ret
+	}
+	return *o.CloudType
+}
+
+// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BoundImagesForProjectsListDto) GetCloudTypeOk() (*CloudType, bool) {
+	if o == nil || IsNil(o.CloudType) {
+		return nil, false
+	}
+	return o.CloudType, true
+}
+
+// HasCloudType returns a boolean if a field has been set.
+func (o *BoundImagesForProjectsListDto) HasCloudType() bool {
+	if o != nil && !IsNil(o.CloudType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
+func (o *BoundImagesForProjectsListDto) SetCloudType(v CloudType) {
+	o.CloudType = &v
+}
+
 func (o BoundImagesForProjectsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -504,6 +537,9 @@ func (o BoundImagesForProjectsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsWindows) {
 		toSerialize["isWindows"] = o.IsWindows
+	}
+	if !IsNil(o.CloudType) {
+		toSerialize["cloudType"] = o.CloudType
 	}
 	return toSerialize, nil
 }

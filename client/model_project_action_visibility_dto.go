@@ -45,6 +45,8 @@ type ProjectActionVisibilityDto struct {
 	EnableAi *ProjectButtonStatusDto `json:"enableAi,omitempty"`
 	DisableAi *ProjectButtonStatusDto `json:"disableAi,omitempty"`
 	AiAssistant *ProjectButtonStatusDto `json:"aiAssistant,omitempty"`
+	EnableMaintenanceMode *ProjectButtonStatusDto `json:"enableMaintenanceMode,omitempty"`
+	DisableMaintenanceMode *ProjectButtonStatusDto `json:"disableMaintenanceMode,omitempty"`
 }
 
 // NewProjectActionVisibilityDto instantiates a new ProjectActionVisibilityDto object
@@ -864,6 +866,70 @@ func (o *ProjectActionVisibilityDto) SetAiAssistant(v ProjectButtonStatusDto) {
 	o.AiAssistant = &v
 }
 
+// GetEnableMaintenanceMode returns the EnableMaintenanceMode field value if set, zero value otherwise.
+func (o *ProjectActionVisibilityDto) GetEnableMaintenanceMode() ProjectButtonStatusDto {
+	if o == nil || IsNil(o.EnableMaintenanceMode) {
+		var ret ProjectButtonStatusDto
+		return ret
+	}
+	return *o.EnableMaintenanceMode
+}
+
+// GetEnableMaintenanceModeOk returns a tuple with the EnableMaintenanceMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectActionVisibilityDto) GetEnableMaintenanceModeOk() (*ProjectButtonStatusDto, bool) {
+	if o == nil || IsNil(o.EnableMaintenanceMode) {
+		return nil, false
+	}
+	return o.EnableMaintenanceMode, true
+}
+
+// HasEnableMaintenanceMode returns a boolean if a field has been set.
+func (o *ProjectActionVisibilityDto) HasEnableMaintenanceMode() bool {
+	if o != nil && !IsNil(o.EnableMaintenanceMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableMaintenanceMode gets a reference to the given ProjectButtonStatusDto and assigns it to the EnableMaintenanceMode field.
+func (o *ProjectActionVisibilityDto) SetEnableMaintenanceMode(v ProjectButtonStatusDto) {
+	o.EnableMaintenanceMode = &v
+}
+
+// GetDisableMaintenanceMode returns the DisableMaintenanceMode field value if set, zero value otherwise.
+func (o *ProjectActionVisibilityDto) GetDisableMaintenanceMode() ProjectButtonStatusDto {
+	if o == nil || IsNil(o.DisableMaintenanceMode) {
+		var ret ProjectButtonStatusDto
+		return ret
+	}
+	return *o.DisableMaintenanceMode
+}
+
+// GetDisableMaintenanceModeOk returns a tuple with the DisableMaintenanceMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectActionVisibilityDto) GetDisableMaintenanceModeOk() (*ProjectButtonStatusDto, bool) {
+	if o == nil || IsNil(o.DisableMaintenanceMode) {
+		return nil, false
+	}
+	return o.DisableMaintenanceMode, true
+}
+
+// HasDisableMaintenanceMode returns a boolean if a field has been set.
+func (o *ProjectActionVisibilityDto) HasDisableMaintenanceMode() bool {
+	if o != nil && !IsNil(o.DisableMaintenanceMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetDisableMaintenanceMode gets a reference to the given ProjectButtonStatusDto and assigns it to the DisableMaintenanceMode field.
+func (o *ProjectActionVisibilityDto) SetDisableMaintenanceMode(v ProjectButtonStatusDto) {
+	o.DisableMaintenanceMode = &v
+}
+
 func (o ProjectActionVisibilityDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -948,6 +1014,12 @@ func (o ProjectActionVisibilityDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AiAssistant) {
 		toSerialize["aiAssistant"] = o.AiAssistant
+	}
+	if !IsNil(o.EnableMaintenanceMode) {
+		toSerialize["enableMaintenanceMode"] = o.EnableMaintenanceMode
+	}
+	if !IsNil(o.DisableMaintenanceMode) {
+		toSerialize["disableMaintenanceMode"] = o.DisableMaintenanceMode
 	}
 	return toSerialize, nil
 }

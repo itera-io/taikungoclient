@@ -405,9 +405,6 @@ func (a *AllowedHostAPIService) AllowedhostEditExecute(r ApiAllowedhostEditReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.editAllowedHostDto == nil {
-		return nil, reportError("editAllowedHostDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

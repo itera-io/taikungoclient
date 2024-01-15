@@ -265,6 +265,17 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectsAPIService ProjectsMaintenanceManager", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ProjectsAPI.ProjectsMaintenanceManager(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectsAPIService ProjectsMonitoring", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

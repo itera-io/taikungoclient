@@ -23,8 +23,8 @@ type CreateBackupPolicyCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	IncludeNamespaces []string `json:"includeNamespaces,omitempty"`
 	CronPeriod NullableString `json:"cronPeriod,omitempty"`
-	RetentionPeriod NullableString `json:"retentionPeriod,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
+	RetentionPeriod NullableString `json:"retentionPeriod,omitempty"`
 }
 
 // NewCreateBackupPolicyCommand instantiates a new CreateBackupPolicyCommand object
@@ -161,6 +161,38 @@ func (o *CreateBackupPolicyCommand) UnsetCronPeriod() {
 	o.CronPeriod.Unset()
 }
 
+// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+func (o *CreateBackupPolicyCommand) GetProjectId() int32 {
+	if o == nil || IsNil(o.ProjectId) {
+		var ret int32
+		return ret
+	}
+	return *o.ProjectId
+}
+
+// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateBackupPolicyCommand) GetProjectIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.ProjectId) {
+		return nil, false
+	}
+	return o.ProjectId, true
+}
+
+// HasProjectId returns a boolean if a field has been set.
+func (o *CreateBackupPolicyCommand) HasProjectId() bool {
+	if o != nil && !IsNil(o.ProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
+func (o *CreateBackupPolicyCommand) SetProjectId(v int32) {
+	o.ProjectId = &v
+}
+
 // GetRetentionPeriod returns the RetentionPeriod field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateBackupPolicyCommand) GetRetentionPeriod() string {
 	if o == nil || IsNil(o.RetentionPeriod.Get()) {
@@ -203,38 +235,6 @@ func (o *CreateBackupPolicyCommand) UnsetRetentionPeriod() {
 	o.RetentionPeriod.Unset()
 }
 
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
-func (o *CreateBackupPolicyCommand) GetProjectId() int32 {
-	if o == nil || IsNil(o.ProjectId) {
-		var ret int32
-		return ret
-	}
-	return *o.ProjectId
-}
-
-// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateBackupPolicyCommand) GetProjectIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProjectId) {
-		return nil, false
-	}
-	return o.ProjectId, true
-}
-
-// HasProjectId returns a boolean if a field has been set.
-func (o *CreateBackupPolicyCommand) HasProjectId() bool {
-	if o != nil && !IsNil(o.ProjectId) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
-func (o *CreateBackupPolicyCommand) SetProjectId(v int32) {
-	o.ProjectId = &v
-}
-
 func (o CreateBackupPolicyCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -254,11 +254,11 @@ func (o CreateBackupPolicyCommand) ToMap() (map[string]interface{}, error) {
 	if o.CronPeriod.IsSet() {
 		toSerialize["cronPeriod"] = o.CronPeriod.Get()
 	}
-	if o.RetentionPeriod.IsSet() {
-		toSerialize["retentionPeriod"] = o.RetentionPeriod.Get()
-	}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
+	}
+	if o.RetentionPeriod.IsSet() {
+		toSerialize["retentionPeriod"] = o.RetentionPeriod.Get()
 	}
 	return toSerialize, nil
 }
