@@ -5480,8 +5480,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-01-16T00:02:45.7565373Z
-                  createdAt: 2024-01-16T00:02:45.7565373Z
+                  lastValidated: 2024-01-17T00:02:33.4416708Z
+                  createdAt: 2024-01-17T00:02:33.4416708Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5586,14 +5586,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-01-16T00:02:45.7565373Z
+                    lastBackup: 2024-01-17T00:02:33.4416708Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-01-16T00:02:45.7565373Z
+                  createdAt: 2024-01-17T00:02:33.4416708Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-01-16T00:02:45.7565373Z
+                  lastBackup: 2024-01-17T00:02:33.4416708Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5698,8 +5698,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-16T00:02:45.7565373Z
-                  expiration: 2024-01-16T00:02:45.7565373Z
+                  createdAt: 2024-01-17T00:02:33.4416708Z
+                  expiration: 2024-01-17T00:02:33.4416708Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5803,7 +5803,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-16T00:02:45.7565373Z
+                  createdAt: 2024-01-17T00:02:33.4416708Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5913,9 +5913,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-01-16T00:02:45.7565373+00:00
-                  startTimeStamp: 2024-01-16T00:02:45.7565373+00:00
-                  createdAt: 2024-01-16T00:02:45.7565373Z
+                  completionDateTime: 2024-01-17T00:02:33.4416708+00:00
+                  startTimeStamp: 2024-01-17T00:02:33.4416708+00:00
+                  createdAt: 2024-01-17T00:02:33.4416708Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -51988,136 +51988,163 @@ components:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableFullSpot:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableSpotVm:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableOpa:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableMaintenanceMode:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         commit:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableSpotVm:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableBackup:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableAi:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableMaintenanceMode:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         detachAlertingProfile:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableOpa:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         lock:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableAutoscaler:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableAutoscaler:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         unlock:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         upgrade:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         aiAssistant:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         vmRepair:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableFullSpot:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         attachAlertingProfile:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableAi:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         monitoring:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableSpotWorker:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableSpotWorker:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         vmCommit:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableBackup:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
       properties:
         commit:
@@ -52466,6 +52493,7 @@ components:
         reasons:
         - reasons
         - reasons
+        hidden: true
         enable: true
       properties:
         enable:
@@ -52475,6 +52503,8 @@ components:
             type: string
           nullable: true
           type: array
+        hidden:
+          type: boolean
       type: object
     ProjectChartDto:
       additionalProperties: false
@@ -53816,8 +53846,26 @@ components:
           userId: userId
         - userName: userName
           userId: userId
+        deleteButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        lockButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         totalServersCount: 5
         certificateExpiredAt: certificateExpiredAt
+        resetProjectStatusButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         organizationId: 6
         createdAt: createdAt
         expiredAt: expiredAt
@@ -53827,12 +53875,24 @@ components:
         isLocked: true
         id: 0
         totalHourlyCost: 9.301444243932576
+        setExpirationDateButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         kubesprayTargetVersion: kubesprayTargetVersion
         isAutoscalingEnabled: true
         isKubernetes: true
         organizationName: organizationName
         alertsCount: 1
         allowSpotVMs: true
+        unlockButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         kubernetesTargetVersion: kubernetesTargetVersion
         lastModifiedBy: lastModifiedBy
         aiEnabled: true
@@ -53843,6 +53903,12 @@ components:
         allowSpotWorkers: true
         maxSpotPrice: 7.061401241503109
         hasKubeConfigFile: true
+        kubeInfoButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         deleteOnExpiration: true
         createdBy: createdBy
         name: name
@@ -53955,6 +54021,18 @@ components:
           type: boolean
         aiEnabled:
           type: boolean
+        lockButton:
+          $ref: '#/components/schemas/ProjectButtonStatusDto'
+        unlockButton:
+          $ref: '#/components/schemas/ProjectButtonStatusDto'
+        deleteButton:
+          $ref: '#/components/schemas/ProjectButtonStatusDto'
+        kubeInfoButton:
+          $ref: '#/components/schemas/ProjectButtonStatusDto'
+        setExpirationDateButton:
+          $ref: '#/components/schemas/ProjectButtonStatusDto'
+        resetProjectStatusButton:
+          $ref: '#/components/schemas/ProjectButtonStatusDto'
       type: object
     ProjectListDto:
       additionalProperties: false
@@ -54786,8 +54864,26 @@ components:
             userId: userId
           - userName: userName
             userId: userId
+          deleteButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           totalServersCount: 5
           certificateExpiredAt: certificateExpiredAt
+          resetProjectStatusButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           organizationId: 6
           createdAt: createdAt
           expiredAt: expiredAt
@@ -54797,12 +54893,24 @@ components:
           isLocked: true
           id: 0
           totalHourlyCost: 9.301444243932576
+          setExpirationDateButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           kubesprayTargetVersion: kubesprayTargetVersion
           isAutoscalingEnabled: true
           isKubernetes: true
           organizationName: organizationName
           alertsCount: 1
           allowSpotVMs: true
+          unlockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           kubernetesTargetVersion: kubernetesTargetVersion
           lastModifiedBy: lastModifiedBy
           aiEnabled: true
@@ -54813,6 +54921,12 @@ components:
           allowSpotWorkers: true
           maxSpotPrice: 7.061401241503109
           hasKubeConfigFile: true
+          kubeInfoButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           deleteOnExpiration: true
           createdBy: createdBy
           name: name
@@ -54827,8 +54941,26 @@ components:
             userId: userId
           - userName: userName
             userId: userId
+          deleteButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           totalServersCount: 5
           certificateExpiredAt: certificateExpiredAt
+          resetProjectStatusButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           organizationId: 6
           createdAt: createdAt
           expiredAt: expiredAt
@@ -54838,12 +54970,24 @@ components:
           isLocked: true
           id: 0
           totalHourlyCost: 9.301444243932576
+          setExpirationDateButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           kubesprayTargetVersion: kubesprayTargetVersion
           isAutoscalingEnabled: true
           isKubernetes: true
           organizationName: organizationName
           alertsCount: 1
           allowSpotVMs: true
+          unlockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           kubernetesTargetVersion: kubernetesTargetVersion
           lastModifiedBy: lastModifiedBy
           aiEnabled: true
@@ -54854,6 +54998,12 @@ components:
           allowSpotWorkers: true
           maxSpotPrice: 7.061401241503109
           hasKubeConfigFile: true
+          kubeInfoButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           deleteOnExpiration: true
           createdBy: createdBy
           name: name

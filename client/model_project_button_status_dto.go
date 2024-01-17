@@ -22,6 +22,7 @@ var _ MappedNullable = &ProjectButtonStatusDto{}
 type ProjectButtonStatusDto struct {
 	Enable *bool `json:"enable,omitempty"`
 	Reasons []string `json:"reasons,omitempty"`
+	Hidden *bool `json:"hidden,omitempty"`
 }
 
 // NewProjectButtonStatusDto instantiates a new ProjectButtonStatusDto object
@@ -106,6 +107,38 @@ func (o *ProjectButtonStatusDto) SetReasons(v []string) {
 	o.Reasons = v
 }
 
+// GetHidden returns the Hidden field value if set, zero value otherwise.
+func (o *ProjectButtonStatusDto) GetHidden() bool {
+	if o == nil || IsNil(o.Hidden) {
+		var ret bool
+		return ret
+	}
+	return *o.Hidden
+}
+
+// GetHiddenOk returns a tuple with the Hidden field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectButtonStatusDto) GetHiddenOk() (*bool, bool) {
+	if o == nil || IsNil(o.Hidden) {
+		return nil, false
+	}
+	return o.Hidden, true
+}
+
+// HasHidden returns a boolean if a field has been set.
+func (o *ProjectButtonStatusDto) HasHidden() bool {
+	if o != nil && !IsNil(o.Hidden) {
+		return true
+	}
+
+	return false
+}
+
+// SetHidden gets a reference to the given bool and assigns it to the Hidden field.
+func (o *ProjectButtonStatusDto) SetHidden(v bool) {
+	o.Hidden = &v
+}
+
 func (o ProjectButtonStatusDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -121,6 +154,9 @@ func (o ProjectButtonStatusDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Reasons != nil {
 		toSerialize["reasons"] = o.Reasons
+	}
+	if !IsNil(o.Hidden) {
+		toSerialize["hidden"] = o.Hidden
 	}
 	return toSerialize, nil
 }

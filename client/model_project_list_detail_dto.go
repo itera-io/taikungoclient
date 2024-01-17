@@ -57,6 +57,12 @@ type ProjectListDetailDto struct {
 	TotalHourlyCost *float64 `json:"totalHourlyCost,omitempty"`
 	IsAutoscalingEnabled *bool `json:"isAutoscalingEnabled,omitempty"`
 	AiEnabled *bool `json:"aiEnabled,omitempty"`
+	LockButton *ProjectButtonStatusDto `json:"lockButton,omitempty"`
+	UnlockButton *ProjectButtonStatusDto `json:"unlockButton,omitempty"`
+	DeleteButton *ProjectButtonStatusDto `json:"deleteButton,omitempty"`
+	KubeInfoButton *ProjectButtonStatusDto `json:"kubeInfoButton,omitempty"`
+	SetExpirationDateButton *ProjectButtonStatusDto `json:"setExpirationDateButton,omitempty"`
+	ResetProjectStatusButton *ProjectButtonStatusDto `json:"resetProjectStatusButton,omitempty"`
 }
 
 // NewProjectListDetailDto instantiates a new ProjectListDetailDto object
@@ -1431,6 +1437,198 @@ func (o *ProjectListDetailDto) SetAiEnabled(v bool) {
 	o.AiEnabled = &v
 }
 
+// GetLockButton returns the LockButton field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetLockButton() ProjectButtonStatusDto {
+	if o == nil || IsNil(o.LockButton) {
+		var ret ProjectButtonStatusDto
+		return ret
+	}
+	return *o.LockButton
+}
+
+// GetLockButtonOk returns a tuple with the LockButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetLockButtonOk() (*ProjectButtonStatusDto, bool) {
+	if o == nil || IsNil(o.LockButton) {
+		return nil, false
+	}
+	return o.LockButton, true
+}
+
+// HasLockButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasLockButton() bool {
+	if o != nil && !IsNil(o.LockButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockButton gets a reference to the given ProjectButtonStatusDto and assigns it to the LockButton field.
+func (o *ProjectListDetailDto) SetLockButton(v ProjectButtonStatusDto) {
+	o.LockButton = &v
+}
+
+// GetUnlockButton returns the UnlockButton field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetUnlockButton() ProjectButtonStatusDto {
+	if o == nil || IsNil(o.UnlockButton) {
+		var ret ProjectButtonStatusDto
+		return ret
+	}
+	return *o.UnlockButton
+}
+
+// GetUnlockButtonOk returns a tuple with the UnlockButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetUnlockButtonOk() (*ProjectButtonStatusDto, bool) {
+	if o == nil || IsNil(o.UnlockButton) {
+		return nil, false
+	}
+	return o.UnlockButton, true
+}
+
+// HasUnlockButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasUnlockButton() bool {
+	if o != nil && !IsNil(o.UnlockButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnlockButton gets a reference to the given ProjectButtonStatusDto and assigns it to the UnlockButton field.
+func (o *ProjectListDetailDto) SetUnlockButton(v ProjectButtonStatusDto) {
+	o.UnlockButton = &v
+}
+
+// GetDeleteButton returns the DeleteButton field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetDeleteButton() ProjectButtonStatusDto {
+	if o == nil || IsNil(o.DeleteButton) {
+		var ret ProjectButtonStatusDto
+		return ret
+	}
+	return *o.DeleteButton
+}
+
+// GetDeleteButtonOk returns a tuple with the DeleteButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetDeleteButtonOk() (*ProjectButtonStatusDto, bool) {
+	if o == nil || IsNil(o.DeleteButton) {
+		return nil, false
+	}
+	return o.DeleteButton, true
+}
+
+// HasDeleteButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasDeleteButton() bool {
+	if o != nil && !IsNil(o.DeleteButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteButton gets a reference to the given ProjectButtonStatusDto and assigns it to the DeleteButton field.
+func (o *ProjectListDetailDto) SetDeleteButton(v ProjectButtonStatusDto) {
+	o.DeleteButton = &v
+}
+
+// GetKubeInfoButton returns the KubeInfoButton field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetKubeInfoButton() ProjectButtonStatusDto {
+	if o == nil || IsNil(o.KubeInfoButton) {
+		var ret ProjectButtonStatusDto
+		return ret
+	}
+	return *o.KubeInfoButton
+}
+
+// GetKubeInfoButtonOk returns a tuple with the KubeInfoButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetKubeInfoButtonOk() (*ProjectButtonStatusDto, bool) {
+	if o == nil || IsNil(o.KubeInfoButton) {
+		return nil, false
+	}
+	return o.KubeInfoButton, true
+}
+
+// HasKubeInfoButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasKubeInfoButton() bool {
+	if o != nil && !IsNil(o.KubeInfoButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeInfoButton gets a reference to the given ProjectButtonStatusDto and assigns it to the KubeInfoButton field.
+func (o *ProjectListDetailDto) SetKubeInfoButton(v ProjectButtonStatusDto) {
+	o.KubeInfoButton = &v
+}
+
+// GetSetExpirationDateButton returns the SetExpirationDateButton field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetSetExpirationDateButton() ProjectButtonStatusDto {
+	if o == nil || IsNil(o.SetExpirationDateButton) {
+		var ret ProjectButtonStatusDto
+		return ret
+	}
+	return *o.SetExpirationDateButton
+}
+
+// GetSetExpirationDateButtonOk returns a tuple with the SetExpirationDateButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetSetExpirationDateButtonOk() (*ProjectButtonStatusDto, bool) {
+	if o == nil || IsNil(o.SetExpirationDateButton) {
+		return nil, false
+	}
+	return o.SetExpirationDateButton, true
+}
+
+// HasSetExpirationDateButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasSetExpirationDateButton() bool {
+	if o != nil && !IsNil(o.SetExpirationDateButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetSetExpirationDateButton gets a reference to the given ProjectButtonStatusDto and assigns it to the SetExpirationDateButton field.
+func (o *ProjectListDetailDto) SetSetExpirationDateButton(v ProjectButtonStatusDto) {
+	o.SetExpirationDateButton = &v
+}
+
+// GetResetProjectStatusButton returns the ResetProjectStatusButton field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetResetProjectStatusButton() ProjectButtonStatusDto {
+	if o == nil || IsNil(o.ResetProjectStatusButton) {
+		var ret ProjectButtonStatusDto
+		return ret
+	}
+	return *o.ResetProjectStatusButton
+}
+
+// GetResetProjectStatusButtonOk returns a tuple with the ResetProjectStatusButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetResetProjectStatusButtonOk() (*ProjectButtonStatusDto, bool) {
+	if o == nil || IsNil(o.ResetProjectStatusButton) {
+		return nil, false
+	}
+	return o.ResetProjectStatusButton, true
+}
+
+// HasResetProjectStatusButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasResetProjectStatusButton() bool {
+	if o != nil && !IsNil(o.ResetProjectStatusButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetResetProjectStatusButton gets a reference to the given ProjectButtonStatusDto and assigns it to the ResetProjectStatusButton field.
+func (o *ProjectListDetailDto) SetResetProjectStatusButton(v ProjectButtonStatusDto) {
+	o.ResetProjectStatusButton = &v
+}
+
 func (o ProjectListDetailDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1551,6 +1749,24 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AiEnabled) {
 		toSerialize["aiEnabled"] = o.AiEnabled
+	}
+	if !IsNil(o.LockButton) {
+		toSerialize["lockButton"] = o.LockButton
+	}
+	if !IsNil(o.UnlockButton) {
+		toSerialize["unlockButton"] = o.UnlockButton
+	}
+	if !IsNil(o.DeleteButton) {
+		toSerialize["deleteButton"] = o.DeleteButton
+	}
+	if !IsNil(o.KubeInfoButton) {
+		toSerialize["kubeInfoButton"] = o.KubeInfoButton
+	}
+	if !IsNil(o.SetExpirationDateButton) {
+		toSerialize["setExpirationDateButton"] = o.SetExpirationDateButton
+	}
+	if !IsNil(o.ResetProjectStatusButton) {
+		toSerialize["resetProjectStatusButton"] = o.ResetProjectStatusButton
 	}
 	return toSerialize, nil
 }
