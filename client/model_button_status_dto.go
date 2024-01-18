@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the ProjectButtonStatusDto type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ProjectButtonStatusDto{}
+// checks if the ButtonStatusDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ButtonStatusDto{}
 
-// ProjectButtonStatusDto struct for ProjectButtonStatusDto
-type ProjectButtonStatusDto struct {
+// ButtonStatusDto struct for ButtonStatusDto
+type ButtonStatusDto struct {
 	Enable *bool `json:"enable,omitempty"`
 	Reasons []string `json:"reasons,omitempty"`
 	Hidden *bool `json:"hidden,omitempty"`
 }
 
-// NewProjectButtonStatusDto instantiates a new ProjectButtonStatusDto object
+// NewButtonStatusDto instantiates a new ButtonStatusDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectButtonStatusDto() *ProjectButtonStatusDto {
-	this := ProjectButtonStatusDto{}
+func NewButtonStatusDto() *ButtonStatusDto {
+	this := ButtonStatusDto{}
 	return &this
 }
 
-// NewProjectButtonStatusDtoWithDefaults instantiates a new ProjectButtonStatusDto object
+// NewButtonStatusDtoWithDefaults instantiates a new ButtonStatusDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewProjectButtonStatusDtoWithDefaults() *ProjectButtonStatusDto {
-	this := ProjectButtonStatusDto{}
+func NewButtonStatusDtoWithDefaults() *ButtonStatusDto {
+	this := ButtonStatusDto{}
 	return &this
 }
 
 // GetEnable returns the Enable field value if set, zero value otherwise.
-func (o *ProjectButtonStatusDto) GetEnable() bool {
+func (o *ButtonStatusDto) GetEnable() bool {
 	if o == nil || IsNil(o.Enable) {
 		var ret bool
 		return ret
@@ -53,7 +53,7 @@ func (o *ProjectButtonStatusDto) GetEnable() bool {
 
 // GetEnableOk returns a tuple with the Enable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectButtonStatusDto) GetEnableOk() (*bool, bool) {
+func (o *ButtonStatusDto) GetEnableOk() (*bool, bool) {
 	if o == nil || IsNil(o.Enable) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *ProjectButtonStatusDto) GetEnableOk() (*bool, bool) {
 }
 
 // HasEnable returns a boolean if a field has been set.
-func (o *ProjectButtonStatusDto) HasEnable() bool {
+func (o *ButtonStatusDto) HasEnable() bool {
 	if o != nil && !IsNil(o.Enable) {
 		return true
 	}
@@ -70,12 +70,12 @@ func (o *ProjectButtonStatusDto) HasEnable() bool {
 }
 
 // SetEnable gets a reference to the given bool and assigns it to the Enable field.
-func (o *ProjectButtonStatusDto) SetEnable(v bool) {
+func (o *ButtonStatusDto) SetEnable(v bool) {
 	o.Enable = &v
 }
 
 // GetReasons returns the Reasons field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectButtonStatusDto) GetReasons() []string {
+func (o *ButtonStatusDto) GetReasons() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -86,7 +86,7 @@ func (o *ProjectButtonStatusDto) GetReasons() []string {
 // GetReasonsOk returns a tuple with the Reasons field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectButtonStatusDto) GetReasonsOk() ([]string, bool) {
+func (o *ButtonStatusDto) GetReasonsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Reasons) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *ProjectButtonStatusDto) GetReasonsOk() ([]string, bool) {
 }
 
 // HasReasons returns a boolean if a field has been set.
-func (o *ProjectButtonStatusDto) HasReasons() bool {
+func (o *ButtonStatusDto) HasReasons() bool {
 	if o != nil && IsNil(o.Reasons) {
 		return true
 	}
@@ -103,12 +103,12 @@ func (o *ProjectButtonStatusDto) HasReasons() bool {
 }
 
 // SetReasons gets a reference to the given []string and assigns it to the Reasons field.
-func (o *ProjectButtonStatusDto) SetReasons(v []string) {
+func (o *ButtonStatusDto) SetReasons(v []string) {
 	o.Reasons = v
 }
 
 // GetHidden returns the Hidden field value if set, zero value otherwise.
-func (o *ProjectButtonStatusDto) GetHidden() bool {
+func (o *ButtonStatusDto) GetHidden() bool {
 	if o == nil || IsNil(o.Hidden) {
 		var ret bool
 		return ret
@@ -118,7 +118,7 @@ func (o *ProjectButtonStatusDto) GetHidden() bool {
 
 // GetHiddenOk returns a tuple with the Hidden field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectButtonStatusDto) GetHiddenOk() (*bool, bool) {
+func (o *ButtonStatusDto) GetHiddenOk() (*bool, bool) {
 	if o == nil || IsNil(o.Hidden) {
 		return nil, false
 	}
@@ -126,7 +126,7 @@ func (o *ProjectButtonStatusDto) GetHiddenOk() (*bool, bool) {
 }
 
 // HasHidden returns a boolean if a field has been set.
-func (o *ProjectButtonStatusDto) HasHidden() bool {
+func (o *ButtonStatusDto) HasHidden() bool {
 	if o != nil && !IsNil(o.Hidden) {
 		return true
 	}
@@ -135,11 +135,11 @@ func (o *ProjectButtonStatusDto) HasHidden() bool {
 }
 
 // SetHidden gets a reference to the given bool and assigns it to the Hidden field.
-func (o *ProjectButtonStatusDto) SetHidden(v bool) {
+func (o *ButtonStatusDto) SetHidden(v bool) {
 	o.Hidden = &v
 }
 
-func (o ProjectButtonStatusDto) MarshalJSON() ([]byte, error) {
+func (o ButtonStatusDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -147,7 +147,7 @@ func (o ProjectButtonStatusDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ProjectButtonStatusDto) ToMap() (map[string]interface{}, error) {
+func (o ButtonStatusDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Enable) {
 		toSerialize["enable"] = o.Enable
@@ -161,38 +161,38 @@ func (o ProjectButtonStatusDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableProjectButtonStatusDto struct {
-	value *ProjectButtonStatusDto
+type NullableButtonStatusDto struct {
+	value *ButtonStatusDto
 	isSet bool
 }
 
-func (v NullableProjectButtonStatusDto) Get() *ProjectButtonStatusDto {
+func (v NullableButtonStatusDto) Get() *ButtonStatusDto {
 	return v.value
 }
 
-func (v *NullableProjectButtonStatusDto) Set(val *ProjectButtonStatusDto) {
+func (v *NullableButtonStatusDto) Set(val *ButtonStatusDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableProjectButtonStatusDto) IsSet() bool {
+func (v NullableButtonStatusDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableProjectButtonStatusDto) Unset() {
+func (v *NullableButtonStatusDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableProjectButtonStatusDto(val *ProjectButtonStatusDto) *NullableProjectButtonStatusDto {
-	return &NullableProjectButtonStatusDto{value: val, isSet: true}
+func NewNullableButtonStatusDto(val *ButtonStatusDto) *NullableButtonStatusDto {
+	return &NullableButtonStatusDto{value: val, isSet: true}
 }
 
-func (v NullableProjectButtonStatusDto) MarshalJSON() ([]byte, error) {
+func (v NullableButtonStatusDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableProjectButtonStatusDto) UnmarshalJSON(src []byte) error {
+func (v *NullableButtonStatusDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

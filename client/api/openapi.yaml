@@ -5480,8 +5480,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-01-17T00:02:33.4416708Z
-                  createdAt: 2024-01-17T00:02:33.4416708Z
+                  lastValidated: 2024-01-18T00:02:33.8931703Z
+                  createdAt: 2024-01-18T00:02:33.8931703Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5586,14 +5586,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-01-17T00:02:33.4416708Z
+                    lastBackup: 2024-01-18T00:02:33.8931703Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-01-17T00:02:33.4416708Z
+                  createdAt: 2024-01-18T00:02:33.8931703Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-01-17T00:02:33.4416708Z
+                  lastBackup: 2024-01-18T00:02:33.8931703Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5698,8 +5698,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-17T00:02:33.4416708Z
-                  expiration: 2024-01-17T00:02:33.4416708Z
+                  createdAt: 2024-01-18T00:02:33.8931703Z
+                  expiration: 2024-01-18T00:02:33.8931703Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5803,7 +5803,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-17T00:02:33.4416708Z
+                  createdAt: 2024-01-18T00:02:33.8931703Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5913,9 +5913,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-01-17T00:02:33.4416708+00:00
-                  startTimeStamp: 2024-01-17T00:02:33.4416708+00:00
-                  createdAt: 2024-01-17T00:02:33.4416708Z
+                  completionDateTime: 2024-01-18T00:02:33.8931703+00:00
+                  startTimeStamp: 2024-01-18T00:02:33.8931703+00:00
+                  createdAt: 2024-01-18T00:02:33.8931703Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -14664,8 +14664,9 @@ paths:
       responses:
         "200":
           content:
-            application/json:
-              schema: {}
+            text/plain:
+              schema:
+                type: string
           description: OK
         "400":
           content:
@@ -25898,7 +25899,8 @@ paths:
         "200":
           content:
             application/json:
-              schema: {}
+              schema:
+                $ref: '#/components/schemas/ProjectMonitoringAlertsDto'
           description: OK
         "400":
           content:
@@ -37310,6 +37312,340 @@ components:
       - Taikun
       - OpenAi
       type: string
+    Alert:
+      additionalProperties: false
+      example:
+        activeAt: 2000-01-23T04:56:07.000+00:00
+        annotations:
+          description: description
+          title: title
+        state: state
+        value: value
+        labels:
+          container: container
+          severity: severity
+          instance: instance
+          pod: pod
+          alertname: alertname
+          daemonset: daemonset
+          node: node
+          condition: condition
+          endpoint: endpoint
+          service: service
+          namespace: namespace
+          job: job
+          status: status
+      properties:
+        labels:
+          $ref: '#/components/schemas/AlertLabels'
+        annotations:
+          $ref: '#/components/schemas/Annotations'
+        state:
+          nullable: true
+          type: string
+        activeAt:
+          format: date-time
+          type: string
+        value:
+          nullable: true
+          type: string
+      type: object
+    AlertData:
+      additionalProperties: false
+      example:
+        groups:
+        - lastEvaluation: 2000-01-23T04:56:07.000+00:00
+          file: file
+          name: name
+          rules:
+          - duration: 0
+            alerts:
+            - activeAt: 2000-01-23T04:56:07.000+00:00
+              annotations:
+                description: description
+                title: title
+              state: state
+              value: value
+              labels:
+                container: container
+                severity: severity
+                instance: instance
+                pod: pod
+                alertname: alertname
+                daemonset: daemonset
+                node: node
+                condition: condition
+                endpoint: endpoint
+                service: service
+                namespace: namespace
+                job: job
+                status: status
+            - activeAt: 2000-01-23T04:56:07.000+00:00
+              annotations:
+                description: description
+                title: title
+              state: state
+              value: value
+              labels:
+                container: container
+                severity: severity
+                instance: instance
+                pod: pod
+                alertname: alertname
+                daemonset: daemonset
+                node: node
+                condition: condition
+                endpoint: endpoint
+                service: service
+                namespace: namespace
+                job: job
+                status: status
+            lastEvaluation: 2000-01-23T04:56:07.000+00:00
+            query: query
+            name: name
+            annotations:
+              description: description
+              title: title
+            health: health
+            state: state
+            evaluationTime: 6.027456183070403
+            type: type
+            labels:
+              severity: severity
+          - duration: 0
+            alerts:
+            - activeAt: 2000-01-23T04:56:07.000+00:00
+              annotations:
+                description: description
+                title: title
+              state: state
+              value: value
+              labels:
+                container: container
+                severity: severity
+                instance: instance
+                pod: pod
+                alertname: alertname
+                daemonset: daemonset
+                node: node
+                condition: condition
+                endpoint: endpoint
+                service: service
+                namespace: namespace
+                job: job
+                status: status
+            - activeAt: 2000-01-23T04:56:07.000+00:00
+              annotations:
+                description: description
+                title: title
+              state: state
+              value: value
+              labels:
+                container: container
+                severity: severity
+                instance: instance
+                pod: pod
+                alertname: alertname
+                daemonset: daemonset
+                node: node
+                condition: condition
+                endpoint: endpoint
+                service: service
+                namespace: namespace
+                job: job
+                status: status
+            lastEvaluation: 2000-01-23T04:56:07.000+00:00
+            query: query
+            name: name
+            annotations:
+              description: description
+              title: title
+            health: health
+            state: state
+            evaluationTime: 6.027456183070403
+            type: type
+            labels:
+              severity: severity
+          interval: 1
+          evaluationTime: 5.962133916683182
+        - lastEvaluation: 2000-01-23T04:56:07.000+00:00
+          file: file
+          name: name
+          rules:
+          - duration: 0
+            alerts:
+            - activeAt: 2000-01-23T04:56:07.000+00:00
+              annotations:
+                description: description
+                title: title
+              state: state
+              value: value
+              labels:
+                container: container
+                severity: severity
+                instance: instance
+                pod: pod
+                alertname: alertname
+                daemonset: daemonset
+                node: node
+                condition: condition
+                endpoint: endpoint
+                service: service
+                namespace: namespace
+                job: job
+                status: status
+            - activeAt: 2000-01-23T04:56:07.000+00:00
+              annotations:
+                description: description
+                title: title
+              state: state
+              value: value
+              labels:
+                container: container
+                severity: severity
+                instance: instance
+                pod: pod
+                alertname: alertname
+                daemonset: daemonset
+                node: node
+                condition: condition
+                endpoint: endpoint
+                service: service
+                namespace: namespace
+                job: job
+                status: status
+            lastEvaluation: 2000-01-23T04:56:07.000+00:00
+            query: query
+            name: name
+            annotations:
+              description: description
+              title: title
+            health: health
+            state: state
+            evaluationTime: 6.027456183070403
+            type: type
+            labels:
+              severity: severity
+          - duration: 0
+            alerts:
+            - activeAt: 2000-01-23T04:56:07.000+00:00
+              annotations:
+                description: description
+                title: title
+              state: state
+              value: value
+              labels:
+                container: container
+                severity: severity
+                instance: instance
+                pod: pod
+                alertname: alertname
+                daemonset: daemonset
+                node: node
+                condition: condition
+                endpoint: endpoint
+                service: service
+                namespace: namespace
+                job: job
+                status: status
+            - activeAt: 2000-01-23T04:56:07.000+00:00
+              annotations:
+                description: description
+                title: title
+              state: state
+              value: value
+              labels:
+                container: container
+                severity: severity
+                instance: instance
+                pod: pod
+                alertname: alertname
+                daemonset: daemonset
+                node: node
+                condition: condition
+                endpoint: endpoint
+                service: service
+                namespace: namespace
+                job: job
+                status: status
+            lastEvaluation: 2000-01-23T04:56:07.000+00:00
+            query: query
+            name: name
+            annotations:
+              description: description
+              title: title
+            health: health
+            state: state
+            evaluationTime: 6.027456183070403
+            type: type
+            labels:
+              severity: severity
+          interval: 1
+          evaluationTime: 5.962133916683182
+      properties:
+        groups:
+          items:
+            $ref: '#/components/schemas/Group'
+          nullable: true
+          type: array
+      type: object
+    AlertLabels:
+      additionalProperties: false
+      example:
+        container: container
+        severity: severity
+        instance: instance
+        pod: pod
+        alertname: alertname
+        daemonset: daemonset
+        node: node
+        condition: condition
+        endpoint: endpoint
+        service: service
+        namespace: namespace
+        job: job
+        status: status
+      properties:
+        alertname:
+          nullable: true
+          type: string
+        condition:
+          nullable: true
+          type: string
+        container:
+          nullable: true
+          type: string
+        endpoint:
+          nullable: true
+          type: string
+        instance:
+          nullable: true
+          type: string
+        job:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        node:
+          nullable: true
+          type: string
+        pod:
+          nullable: true
+          type: string
+        service:
+          nullable: true
+          type: string
+        severity:
+          nullable: true
+          type: string
+        status:
+          nullable: true
+          type: string
+        daemonset:
+          nullable: true
+          type: string
+      type: object
     AlertingEmailDto:
       additionalProperties: false
       example:
@@ -39880,17 +40216,10 @@ components:
       additionalProperties: false
       example:
         data:
-        - isGoogle: true
-          cpu: 6
-          isProxmox: true
-          isTanzu: true
+        - cpu: 6
           windowsPrice: windowsPrice
-          isAws: true
-          isVsphere: true
-          isOpenshift: true
           maxDataDiskCount: 5
           windowsSpotPrice: windowsSpotPrice
-          isOpenstack: true
           cloudType: null
           existsLinuxSpotPrice: true
           name: name
@@ -39898,21 +40227,13 @@ components:
           projectName: projectName
           linuxPrice: linuxPrice
           projectId: 5
-          isAzure: true
           ram: 1
           existsWindowsSpotPrice: true
           linuxSpotPrice: linuxSpotPrice
-        - isGoogle: true
-          cpu: 6
-          isProxmox: true
-          isTanzu: true
+        - cpu: 6
           windowsPrice: windowsPrice
-          isAws: true
-          isVsphere: true
-          isOpenshift: true
           maxDataDiskCount: 5
           windowsSpotPrice: windowsSpotPrice
-          isOpenstack: true
           cloudType: null
           existsLinuxSpotPrice: true
           name: name
@@ -39920,7 +40241,6 @@ components:
           projectName: projectName
           linuxPrice: linuxPrice
           projectId: 5
-          isAzure: true
           ram: 1
           existsWindowsSpotPrice: true
           linuxSpotPrice: linuxSpotPrice
@@ -39938,17 +40258,10 @@ components:
     BoundFlavorsForProjectsListDto:
       additionalProperties: false
       example:
-        isGoogle: true
         cpu: 6
-        isProxmox: true
-        isTanzu: true
         windowsPrice: windowsPrice
-        isAws: true
-        isVsphere: true
-        isOpenshift: true
         maxDataDiskCount: 5
         windowsSpotPrice: windowsSpotPrice
-        isOpenstack: true
         cloudType: null
         existsLinuxSpotPrice: true
         name: name
@@ -39956,7 +40269,6 @@ components:
         projectName: projectName
         linuxPrice: linuxPrice
         projectId: 5
-        isAzure: true
         ram: 1
         existsWindowsSpotPrice: true
         linuxSpotPrice: linuxSpotPrice
@@ -39977,22 +40289,6 @@ components:
           format: int32
           nullable: true
           type: integer
-        isAzure:
-          type: boolean
-        isAws:
-          type: boolean
-        isOpenstack:
-          type: boolean
-        isGoogle:
-          type: boolean
-        isProxmox:
-          type: boolean
-        isTanzu:
-          type: boolean
-        isOpenshift:
-          type: boolean
-        isVsphere:
-          type: boolean
         projectName:
           nullable: true
           type: string
@@ -40025,7 +40321,6 @@ components:
         data:
         - imageId: imageId
           size: 1.4658129805029452
-          isOpenstack: true
           cloudType: null
           cloudId: 5
           name: name
@@ -40033,11 +40328,8 @@ components:
           id: 0
           projectName: projectName
           projectId: 6
-          isAzure: true
-          isAws: true
         - imageId: imageId
           size: 1.4658129805029452
-          isOpenstack: true
           cloudType: null
           cloudId: 5
           name: name
@@ -40045,8 +40337,6 @@ components:
           id: 0
           projectName: projectName
           projectId: 6
-          isAzure: true
-          isAws: true
         totalCount: 5
       properties:
         data:
@@ -40063,7 +40353,6 @@ components:
       example:
         imageId: imageId
         size: 1.4658129805029452
-        isOpenstack: true
         cloudType: null
         cloudId: 5
         name: name
@@ -40071,8 +40360,6 @@ components:
         id: 0
         projectName: projectName
         projectId: 6
-        isAzure: true
-        isAws: true
       properties:
         id:
           format: int32
@@ -40084,12 +40371,6 @@ components:
           format: int32
           nullable: true
           type: integer
-        isAzure:
-          type: boolean
-        isAws:
-          type: boolean
-        isOpenstack:
-          type: boolean
         projectName:
           nullable: true
           type: string
@@ -40129,6 +40410,25 @@ components:
         hypervisor:
           nullable: true
           type: string
+      type: object
+    ButtonStatusDto:
+      additionalProperties: false
+      example:
+        reasons:
+        - reasons
+        - reasons
+        hidden: true
+        enable: true
+      properties:
+        enable:
+          type: boolean
+        reasons:
+          items:
+            type: string
+          nullable: true
+          type: array
+        hidden:
+          type: boolean
       type: object
     CBackupDto:
       additionalProperties: false
@@ -46409,6 +46709,145 @@ components:
           format: int32
           type: integer
       type: object
+    Group:
+      additionalProperties: false
+      example:
+        lastEvaluation: 2000-01-23T04:56:07.000+00:00
+        file: file
+        name: name
+        rules:
+        - duration: 0
+          alerts:
+          - activeAt: 2000-01-23T04:56:07.000+00:00
+            annotations:
+              description: description
+              title: title
+            state: state
+            value: value
+            labels:
+              container: container
+              severity: severity
+              instance: instance
+              pod: pod
+              alertname: alertname
+              daemonset: daemonset
+              node: node
+              condition: condition
+              endpoint: endpoint
+              service: service
+              namespace: namespace
+              job: job
+              status: status
+          - activeAt: 2000-01-23T04:56:07.000+00:00
+            annotations:
+              description: description
+              title: title
+            state: state
+            value: value
+            labels:
+              container: container
+              severity: severity
+              instance: instance
+              pod: pod
+              alertname: alertname
+              daemonset: daemonset
+              node: node
+              condition: condition
+              endpoint: endpoint
+              service: service
+              namespace: namespace
+              job: job
+              status: status
+          lastEvaluation: 2000-01-23T04:56:07.000+00:00
+          query: query
+          name: name
+          annotations:
+            description: description
+            title: title
+          health: health
+          state: state
+          evaluationTime: 6.027456183070403
+          type: type
+          labels:
+            severity: severity
+        - duration: 0
+          alerts:
+          - activeAt: 2000-01-23T04:56:07.000+00:00
+            annotations:
+              description: description
+              title: title
+            state: state
+            value: value
+            labels:
+              container: container
+              severity: severity
+              instance: instance
+              pod: pod
+              alertname: alertname
+              daemonset: daemonset
+              node: node
+              condition: condition
+              endpoint: endpoint
+              service: service
+              namespace: namespace
+              job: job
+              status: status
+          - activeAt: 2000-01-23T04:56:07.000+00:00
+            annotations:
+              description: description
+              title: title
+            state: state
+            value: value
+            labels:
+              container: container
+              severity: severity
+              instance: instance
+              pod: pod
+              alertname: alertname
+              daemonset: daemonset
+              node: node
+              condition: condition
+              endpoint: endpoint
+              service: service
+              namespace: namespace
+              job: job
+              status: status
+          lastEvaluation: 2000-01-23T04:56:07.000+00:00
+          query: query
+          name: name
+          annotations:
+            description: description
+            title: title
+          health: health
+          state: state
+          evaluationTime: 6.027456183070403
+          type: type
+          labels:
+            severity: severity
+        interval: 1
+        evaluationTime: 5.962133916683182
+      properties:
+        name:
+          nullable: true
+          type: string
+        file:
+          nullable: true
+          type: string
+        rules:
+          items:
+            $ref: '#/components/schemas/Rule'
+          nullable: true
+          type: array
+        interval:
+          format: int64
+          type: integer
+        evaluationTime:
+          format: double
+          type: number
+        lastEvaluation:
+          format: date-time
+          type: string
+      type: object
     GroupedBillingInfo:
       additionalProperties: false
       example:
@@ -47547,7 +47986,7 @@ components:
         labels:
           nullable: true
         annotations:
-          $ref: '#/components/schemas/Annotations'
+          $ref: '#/components/schemas/KubernetesAnnotations'
         startsAt:
           format: date-time
           type: string
@@ -47726,6 +48165,19 @@ components:
         totalCount:
           format: int32
           type: integer
+      type: object
+    KubernetesAnnotations:
+      additionalProperties: false
+      example:
+        description: description
+        title: title
+      properties:
+        description:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
       type: object
     KubernetesCliCommand:
       additionalProperties: false
@@ -52148,59 +52600,59 @@ components:
           enable: true
       properties:
         commit:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         repair:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         upgrade:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         monitoring:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableBackup:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableBackup:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableOpa:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableOpa:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableAutoscaler:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableAutoscaler:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         vmRepair:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         vmCommit:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         lock:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         unlock:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableSpotWorker:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableSpotWorker:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableFullSpot:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableFullSpot:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableSpotVm:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableSpotVm:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         attachAlertingProfile:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         detachAlertingProfile:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableAi:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableAi:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         aiAssistant:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableMaintenanceMode:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableMaintenanceMode:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
       type: object
     ProjectAppDetailsDto:
       additionalProperties: false
@@ -52486,25 +52938,6 @@ components:
         value:
           nullable: true
           type: string
-      type: object
-    ProjectButtonStatusDto:
-      additionalProperties: false
-      example:
-        reasons:
-        - reasons
-        - reasons
-        hidden: true
-        enable: true
-      properties:
-        enable:
-          type: boolean
-        reasons:
-          items:
-            type: string
-          nullable: true
-          type: array
-        hidden:
-          type: boolean
       type: object
     ProjectChartDto:
       additionalProperties: false
@@ -53860,18 +54293,12 @@ components:
           enable: true
         totalServersCount: 5
         certificateExpiredAt: certificateExpiredAt
-        resetProjectStatusButton:
-          reasons:
-          - reasons
-          - reasons
-          hidden: true
-          enable: true
         organizationId: 6
         createdAt: createdAt
         expiredAt: expiredAt
         projectAction: true
         totalStandaloneVmsCount: 5
-        cloudType: cloudType
+        cloudType: null
         isLocked: true
         id: 0
         totalHourlyCost: 9.301444243932576
@@ -53916,6 +54343,12 @@ components:
         kubernetesCurrentVersion: kubernetesCurrentVersion
         allowFullSpotKubernetes: true
         lastModified: lastModified
+        resetStatusButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         isMaintenanceModeEnabled: true
         status: status
       properties:
@@ -53949,8 +54382,7 @@ components:
           nullable: true
           type: string
         cloudType:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/CloudType'
         kubesprayCurrentVersion:
           nullable: true
           type: string
@@ -54022,17 +54454,17 @@ components:
         aiEnabled:
           type: boolean
         lockButton:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         unlockButton:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         deleteButton:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         kubeInfoButton:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         setExpirationDateButton:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
-        resetProjectStatusButton:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
+        resetStatusButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
       type: object
     ProjectListDto:
       additionalProperties: false
@@ -54533,6 +54965,247 @@ components:
           nullable: true
           type: string
       type: object
+    ProjectMonitoringAlertsDto:
+      additionalProperties: false
+      example:
+        data:
+          groups:
+          - lastEvaluation: 2000-01-23T04:56:07.000+00:00
+            file: file
+            name: name
+            rules:
+            - duration: 0
+              alerts:
+              - activeAt: 2000-01-23T04:56:07.000+00:00
+                annotations:
+                  description: description
+                  title: title
+                state: state
+                value: value
+                labels:
+                  container: container
+                  severity: severity
+                  instance: instance
+                  pod: pod
+                  alertname: alertname
+                  daemonset: daemonset
+                  node: node
+                  condition: condition
+                  endpoint: endpoint
+                  service: service
+                  namespace: namespace
+                  job: job
+                  status: status
+              - activeAt: 2000-01-23T04:56:07.000+00:00
+                annotations:
+                  description: description
+                  title: title
+                state: state
+                value: value
+                labels:
+                  container: container
+                  severity: severity
+                  instance: instance
+                  pod: pod
+                  alertname: alertname
+                  daemonset: daemonset
+                  node: node
+                  condition: condition
+                  endpoint: endpoint
+                  service: service
+                  namespace: namespace
+                  job: job
+                  status: status
+              lastEvaluation: 2000-01-23T04:56:07.000+00:00
+              query: query
+              name: name
+              annotations:
+                description: description
+                title: title
+              health: health
+              state: state
+              evaluationTime: 6.027456183070403
+              type: type
+              labels:
+                severity: severity
+            - duration: 0
+              alerts:
+              - activeAt: 2000-01-23T04:56:07.000+00:00
+                annotations:
+                  description: description
+                  title: title
+                state: state
+                value: value
+                labels:
+                  container: container
+                  severity: severity
+                  instance: instance
+                  pod: pod
+                  alertname: alertname
+                  daemonset: daemonset
+                  node: node
+                  condition: condition
+                  endpoint: endpoint
+                  service: service
+                  namespace: namespace
+                  job: job
+                  status: status
+              - activeAt: 2000-01-23T04:56:07.000+00:00
+                annotations:
+                  description: description
+                  title: title
+                state: state
+                value: value
+                labels:
+                  container: container
+                  severity: severity
+                  instance: instance
+                  pod: pod
+                  alertname: alertname
+                  daemonset: daemonset
+                  node: node
+                  condition: condition
+                  endpoint: endpoint
+                  service: service
+                  namespace: namespace
+                  job: job
+                  status: status
+              lastEvaluation: 2000-01-23T04:56:07.000+00:00
+              query: query
+              name: name
+              annotations:
+                description: description
+                title: title
+              health: health
+              state: state
+              evaluationTime: 6.027456183070403
+              type: type
+              labels:
+                severity: severity
+            interval: 1
+            evaluationTime: 5.962133916683182
+          - lastEvaluation: 2000-01-23T04:56:07.000+00:00
+            file: file
+            name: name
+            rules:
+            - duration: 0
+              alerts:
+              - activeAt: 2000-01-23T04:56:07.000+00:00
+                annotations:
+                  description: description
+                  title: title
+                state: state
+                value: value
+                labels:
+                  container: container
+                  severity: severity
+                  instance: instance
+                  pod: pod
+                  alertname: alertname
+                  daemonset: daemonset
+                  node: node
+                  condition: condition
+                  endpoint: endpoint
+                  service: service
+                  namespace: namespace
+                  job: job
+                  status: status
+              - activeAt: 2000-01-23T04:56:07.000+00:00
+                annotations:
+                  description: description
+                  title: title
+                state: state
+                value: value
+                labels:
+                  container: container
+                  severity: severity
+                  instance: instance
+                  pod: pod
+                  alertname: alertname
+                  daemonset: daemonset
+                  node: node
+                  condition: condition
+                  endpoint: endpoint
+                  service: service
+                  namespace: namespace
+                  job: job
+                  status: status
+              lastEvaluation: 2000-01-23T04:56:07.000+00:00
+              query: query
+              name: name
+              annotations:
+                description: description
+                title: title
+              health: health
+              state: state
+              evaluationTime: 6.027456183070403
+              type: type
+              labels:
+                severity: severity
+            - duration: 0
+              alerts:
+              - activeAt: 2000-01-23T04:56:07.000+00:00
+                annotations:
+                  description: description
+                  title: title
+                state: state
+                value: value
+                labels:
+                  container: container
+                  severity: severity
+                  instance: instance
+                  pod: pod
+                  alertname: alertname
+                  daemonset: daemonset
+                  node: node
+                  condition: condition
+                  endpoint: endpoint
+                  service: service
+                  namespace: namespace
+                  job: job
+                  status: status
+              - activeAt: 2000-01-23T04:56:07.000+00:00
+                annotations:
+                  description: description
+                  title: title
+                state: state
+                value: value
+                labels:
+                  container: container
+                  severity: severity
+                  instance: instance
+                  pod: pod
+                  alertname: alertname
+                  daemonset: daemonset
+                  node: node
+                  condition: condition
+                  endpoint: endpoint
+                  service: service
+                  namespace: namespace
+                  job: job
+                  status: status
+              lastEvaluation: 2000-01-23T04:56:07.000+00:00
+              query: query
+              name: name
+              annotations:
+                description: description
+                title: title
+              health: health
+              state: state
+              evaluationTime: 6.027456183070403
+              type: type
+              labels:
+                severity: severity
+            interval: 1
+            evaluationTime: 5.962133916683182
+        status: status
+      properties:
+        status:
+          nullable: true
+          type: string
+        data:
+          $ref: '#/components/schemas/AlertData'
+      type: object
     ProjectQuotaList:
       additionalProperties: false
       example:
@@ -54878,18 +55551,12 @@ components:
             enable: true
           totalServersCount: 5
           certificateExpiredAt: certificateExpiredAt
-          resetProjectStatusButton:
-            reasons:
-            - reasons
-            - reasons
-            hidden: true
-            enable: true
           organizationId: 6
           createdAt: createdAt
           expiredAt: expiredAt
           projectAction: true
           totalStandaloneVmsCount: 5
-          cloudType: cloudType
+          cloudType: null
           isLocked: true
           id: 0
           totalHourlyCost: 9.301444243932576
@@ -54934,6 +55601,12 @@ components:
           kubernetesCurrentVersion: kubernetesCurrentVersion
           allowFullSpotKubernetes: true
           lastModified: lastModified
+          resetStatusButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           isMaintenanceModeEnabled: true
           status: status
         - boundUsers:
@@ -54955,18 +55628,12 @@ components:
             enable: true
           totalServersCount: 5
           certificateExpiredAt: certificateExpiredAt
-          resetProjectStatusButton:
-            reasons:
-            - reasons
-            - reasons
-            hidden: true
-            enable: true
           organizationId: 6
           createdAt: createdAt
           expiredAt: expiredAt
           projectAction: true
           totalStandaloneVmsCount: 5
-          cloudType: cloudType
+          cloudType: null
           isLocked: true
           id: 0
           totalHourlyCost: 9.301444243932576
@@ -55011,6 +55678,12 @@ components:
           kubernetesCurrentVersion: kubernetesCurrentVersion
           allowFullSpotKubernetes: true
           lastModified: lastModified
+          resetStatusButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           isMaintenanceModeEnabled: true
           status: status
         totalCount: 3
@@ -56707,6 +57380,98 @@ components:
           nullable: true
           type: array
       type: object
+    Rule:
+      additionalProperties: false
+      example:
+        duration: 0
+        alerts:
+        - activeAt: 2000-01-23T04:56:07.000+00:00
+          annotations:
+            description: description
+            title: title
+          state: state
+          value: value
+          labels:
+            container: container
+            severity: severity
+            instance: instance
+            pod: pod
+            alertname: alertname
+            daemonset: daemonset
+            node: node
+            condition: condition
+            endpoint: endpoint
+            service: service
+            namespace: namespace
+            job: job
+            status: status
+        - activeAt: 2000-01-23T04:56:07.000+00:00
+          annotations:
+            description: description
+            title: title
+          state: state
+          value: value
+          labels:
+            container: container
+            severity: severity
+            instance: instance
+            pod: pod
+            alertname: alertname
+            daemonset: daemonset
+            node: node
+            condition: condition
+            endpoint: endpoint
+            service: service
+            namespace: namespace
+            job: job
+            status: status
+        lastEvaluation: 2000-01-23T04:56:07.000+00:00
+        query: query
+        name: name
+        annotations:
+          description: description
+          title: title
+        health: health
+        state: state
+        evaluationTime: 6.027456183070403
+        type: type
+        labels:
+          severity: severity
+      properties:
+        state:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        query:
+          nullable: true
+          type: string
+        duration:
+          format: int64
+          type: integer
+        labels:
+          $ref: '#/components/schemas/RuleLabels'
+        annotations:
+          $ref: '#/components/schemas/Annotations'
+        alerts:
+          items:
+            $ref: '#/components/schemas/Alert'
+          nullable: true
+          type: array
+        health:
+          nullable: true
+          type: string
+        evaluationTime:
+          format: double
+          type: number
+        lastEvaluation:
+          format: date-time
+          type: string
+        type:
+          nullable: true
+          type: string
+      type: object
     RuleCreateCommand:
       additionalProperties: false
       example:
@@ -56825,6 +57590,15 @@ components:
           format: int32
           nullable: true
           type: integer
+      type: object
+    RuleLabels:
+      additionalProperties: false
+      example:
+        severity: severity
+      properties:
+        severity:
+          nullable: true
+          type: string
       type: object
     S3CredentialForProjectDto:
       additionalProperties: false

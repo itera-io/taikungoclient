@@ -117,6 +117,9 @@ docs/AiCredentialsListDto.md
 docs/AiListDto.md
 docs/AiManagementAPI.md
 docs/AiType.md
+docs/Alert.md
+docs/AlertData.md
+docs/AlertLabels.md
 docs/AlertingEmailDto.md
 docs/AlertingIntegrationDto.md
 docs/AlertingIntegrationType.md
@@ -220,6 +223,7 @@ docs/BoundFlavorsForProjectsListDto.md
 docs/BoundImagesForProjectsList.md
 docs/BoundImagesForProjectsListDto.md
 docs/BridgeListCommand.md
+docs/ButtonStatusDto.md
 docs/CBackupDto.md
 docs/CDeleteBackupRequestDto.md
 docs/CRestoreDto.md
@@ -442,6 +446,7 @@ docs/GoogleCredentialList.md
 docs/GoogleCredentialsListDto.md
 docs/GoogleFlavorDto.md
 docs/GoogleFlavorList.md
+docs/Group.md
 docs/GroupedBillingInfo.md
 docs/GroupedBillingListQuery.md
 docs/GroupedBillings.md
@@ -495,6 +500,7 @@ docs/KubernetesAlertCreateDto.md
 docs/KubernetesAlertDto.md
 docs/KubernetesAlertDtoForPoller.md
 docs/KubernetesAlertList.md
+docs/KubernetesAnnotations.md
 docs/KubernetesCliCommand.md
 docs/KubernetesCronJobDto.md
 docs/KubernetesCronJobsList.md
@@ -660,7 +666,6 @@ docs/ProjectAppParamDto.md
 docs/ProjectAppParamsAPI.md
 docs/ProjectAppParamsDto.md
 docs/ProjectAppsAPI.md
-docs/ProjectButtonStatusDto.md
 docs/ProjectChartDto.md
 docs/ProjectCommonRecordDto.md
 docs/ProjectDetailsErrorListDto.md
@@ -686,6 +691,7 @@ docs/ProjectListForPoller.md
 docs/ProjectListForProjectGroupDto.md
 docs/ProjectLockManagerCommand.md
 docs/ProjectMaintenanceModeCommand.md
+docs/ProjectMonitoringAlertsDto.md
 docs/ProjectQuotaList.md
 docs/ProjectQuotaListDto.md
 docs/ProjectQuotasAPI.md
@@ -768,8 +774,10 @@ docs/RestartDaemonSetCommand.md
 docs/RestartDeploymentCommand.md
 docs/RestartStsCommand.md
 docs/RestoreBackupCommand.md
+docs/Rule.md
 docs/RuleCreateCommand.md
 docs/RuleForUpdateDto.md
+docs/RuleLabels.md
 docs/S3CredentialForProjectDto.md
 docs/S3CredentialsAPI.md
 docs/SearchAPI.md
@@ -1003,6 +1011,9 @@ model_ai_credentials_for_organization_entity.go
 model_ai_credentials_list_dto.go
 model_ai_list_dto.go
 model_ai_type.go
+model_alert.go
+model_alert_data.go
+model_alert_labels.go
 model_alerting_email_dto.go
 model_alerting_integration_dto.go
 model_alerting_integration_type.go
@@ -1097,6 +1108,7 @@ model_bound_flavors_for_projects_list_dto.go
 model_bound_images_for_projects_list.go
 model_bound_images_for_projects_list_dto.go
 model_bridge_list_command.go
+model_button_status_dto.go
 model_c_backup_dto.go
 model_c_delete_backup_request_dto.go
 model_c_restore_dto.go
@@ -1310,6 +1322,7 @@ model_google_credential_list.go
 model_google_credentials_list_dto.go
 model_google_flavor_dto.go
 model_google_flavor_list.go
+model_group.go
 model_grouped_billing_info.go
 model_grouped_billing_list_query.go
 model_grouped_billings.go
@@ -1355,6 +1368,7 @@ model_kubernetes_alert_create_dto.go
 model_kubernetes_alert_dto.go
 model_kubernetes_alert_dto_for_poller.go
 model_kubernetes_alert_list.go
+model_kubernetes_annotations.go
 model_kubernetes_cli_command.go
 model_kubernetes_cron_job_dto.go
 model_kubernetes_cron_jobs_list.go
@@ -1503,7 +1517,6 @@ model_project_app_list.go
 model_project_app_list_dto.go
 model_project_app_param_dto.go
 model_project_app_params_dto.go
-model_project_button_status_dto.go
 model_project_chart_dto.go
 model_project_common_record_dto.go
 model_project_details_error_list_dto.go
@@ -1527,6 +1540,7 @@ model_project_list_for_poller.go
 model_project_list_for_project_group_dto.go
 model_project_lock_manager_command.go
 model_project_maintenance_mode_command.go
+model_project_monitoring_alerts_dto.go
 model_project_quota_list.go
 model_project_quota_list_dto.go
 model_project_revision_dto.go
@@ -1601,8 +1615,10 @@ model_restart_daemon_set_command.go
 model_restart_deployment_command.go
 model_restart_sts_command.go
 model_restore_backup_command.go
+model_rule.go
 model_rule_create_command.go
 model_rule_for_update_dto.go
+model_rule_labels.go
 model_s3_credential_for_project_dto.go
 model_secret_dto.go
 model_secret_search_command.go

@@ -23,9 +23,6 @@ type BoundImagesForProjectsListDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	ProjectId NullableInt32 `json:"projectId,omitempty"`
-	IsAzure *bool `json:"isAzure,omitempty"`
-	IsAws *bool `json:"isAws,omitempty"`
-	IsOpenstack *bool `json:"isOpenstack,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
 	Size NullableFloat64 `json:"size,omitempty"`
 	ImageId NullableString `json:"imageId,omitempty"`
@@ -165,102 +162,6 @@ func (o *BoundImagesForProjectsListDto) SetProjectIdNil() {
 // UnsetProjectId ensures that no value is present for ProjectId, not even an explicit nil
 func (o *BoundImagesForProjectsListDto) UnsetProjectId() {
 	o.ProjectId.Unset()
-}
-
-// GetIsAzure returns the IsAzure field value if set, zero value otherwise.
-func (o *BoundImagesForProjectsListDto) GetIsAzure() bool {
-	if o == nil || IsNil(o.IsAzure) {
-		var ret bool
-		return ret
-	}
-	return *o.IsAzure
-}
-
-// GetIsAzureOk returns a tuple with the IsAzure field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BoundImagesForProjectsListDto) GetIsAzureOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsAzure) {
-		return nil, false
-	}
-	return o.IsAzure, true
-}
-
-// HasIsAzure returns a boolean if a field has been set.
-func (o *BoundImagesForProjectsListDto) HasIsAzure() bool {
-	if o != nil && !IsNil(o.IsAzure) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsAzure gets a reference to the given bool and assigns it to the IsAzure field.
-func (o *BoundImagesForProjectsListDto) SetIsAzure(v bool) {
-	o.IsAzure = &v
-}
-
-// GetIsAws returns the IsAws field value if set, zero value otherwise.
-func (o *BoundImagesForProjectsListDto) GetIsAws() bool {
-	if o == nil || IsNil(o.IsAws) {
-		var ret bool
-		return ret
-	}
-	return *o.IsAws
-}
-
-// GetIsAwsOk returns a tuple with the IsAws field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BoundImagesForProjectsListDto) GetIsAwsOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsAws) {
-		return nil, false
-	}
-	return o.IsAws, true
-}
-
-// HasIsAws returns a boolean if a field has been set.
-func (o *BoundImagesForProjectsListDto) HasIsAws() bool {
-	if o != nil && !IsNil(o.IsAws) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsAws gets a reference to the given bool and assigns it to the IsAws field.
-func (o *BoundImagesForProjectsListDto) SetIsAws(v bool) {
-	o.IsAws = &v
-}
-
-// GetIsOpenstack returns the IsOpenstack field value if set, zero value otherwise.
-func (o *BoundImagesForProjectsListDto) GetIsOpenstack() bool {
-	if o == nil || IsNil(o.IsOpenstack) {
-		var ret bool
-		return ret
-	}
-	return *o.IsOpenstack
-}
-
-// GetIsOpenstackOk returns a tuple with the IsOpenstack field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *BoundImagesForProjectsListDto) GetIsOpenstackOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsOpenstack) {
-		return nil, false
-	}
-	return o.IsOpenstack, true
-}
-
-// HasIsOpenstack returns a boolean if a field has been set.
-func (o *BoundImagesForProjectsListDto) HasIsOpenstack() bool {
-	if o != nil && !IsNil(o.IsOpenstack) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsOpenstack gets a reference to the given bool and assigns it to the IsOpenstack field.
-func (o *BoundImagesForProjectsListDto) SetIsOpenstack(v bool) {
-	o.IsOpenstack = &v
 }
 
 // GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -513,15 +414,6 @@ func (o BoundImagesForProjectsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ProjectId.IsSet() {
 		toSerialize["projectId"] = o.ProjectId.Get()
-	}
-	if !IsNil(o.IsAzure) {
-		toSerialize["isAzure"] = o.IsAzure
-	}
-	if !IsNil(o.IsAws) {
-		toSerialize["isAws"] = o.IsAws
-	}
-	if !IsNil(o.IsOpenstack) {
-		toSerialize["isOpenstack"] = o.IsOpenstack
 	}
 	if o.ProjectName.IsSet() {
 		toSerialize["projectName"] = o.ProjectName.Get()

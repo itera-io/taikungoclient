@@ -23,7 +23,7 @@ var _ MappedNullable = &KubernetesAlertCreateDto{}
 type KubernetesAlertCreateDto struct {
 	Status NullableString `json:"status,omitempty"`
 	Labels interface{} `json:"labels,omitempty"`
-	Annotations *Annotations `json:"annotations,omitempty"`
+	Annotations *KubernetesAnnotations `json:"annotations,omitempty"`
 	StartsAt *time.Time `json:"startsAt,omitempty"`
 	EndsAt *time.Time `json:"endsAt,omitempty"`
 	Fingerprint NullableString `json:"fingerprint,omitempty"`
@@ -122,9 +122,9 @@ func (o *KubernetesAlertCreateDto) SetLabels(v interface{}) {
 }
 
 // GetAnnotations returns the Annotations field value if set, zero value otherwise.
-func (o *KubernetesAlertCreateDto) GetAnnotations() Annotations {
+func (o *KubernetesAlertCreateDto) GetAnnotations() KubernetesAnnotations {
 	if o == nil || IsNil(o.Annotations) {
-		var ret Annotations
+		var ret KubernetesAnnotations
 		return ret
 	}
 	return *o.Annotations
@@ -132,7 +132,7 @@ func (o *KubernetesAlertCreateDto) GetAnnotations() Annotations {
 
 // GetAnnotationsOk returns a tuple with the Annotations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KubernetesAlertCreateDto) GetAnnotationsOk() (*Annotations, bool) {
+func (o *KubernetesAlertCreateDto) GetAnnotationsOk() (*KubernetesAnnotations, bool) {
 	if o == nil || IsNil(o.Annotations) {
 		return nil, false
 	}
@@ -148,8 +148,8 @@ func (o *KubernetesAlertCreateDto) HasAnnotations() bool {
 	return false
 }
 
-// SetAnnotations gets a reference to the given Annotations and assigns it to the Annotations field.
-func (o *KubernetesAlertCreateDto) SetAnnotations(v Annotations) {
+// SetAnnotations gets a reference to the given KubernetesAnnotations and assigns it to the Annotations field.
+func (o *KubernetesAlertCreateDto) SetAnnotations(v KubernetesAnnotations) {
 	o.Annotations = &v
 }
 

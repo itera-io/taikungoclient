@@ -3924,7 +3924,7 @@ func (r ApiProjectsMonitoringAlertsRequest) ProjectsMonitoringAlertsCommand(proj
 	return r
 }
 
-func (r ApiProjectsMonitoringAlertsRequest) Execute() (interface{}, *http.Response, error) {
+func (r ApiProjectsMonitoringAlertsRequest) Execute() (*ProjectMonitoringAlertsDto, *http.Response, error) {
 	return r.ApiService.ProjectsMonitoringAlertsExecute(r)
 }
 
@@ -3942,13 +3942,13 @@ func (a *ProjectsAPIService) ProjectsMonitoringAlerts(ctx context.Context) ApiPr
 }
 
 // Execute executes the request
-//  @return interface{}
-func (a *ProjectsAPIService) ProjectsMonitoringAlertsExecute(r ApiProjectsMonitoringAlertsRequest) (interface{}, *http.Response, error) {
+//  @return ProjectMonitoringAlertsDto
+func (a *ProjectsAPIService) ProjectsMonitoringAlertsExecute(r ApiProjectsMonitoringAlertsRequest) (*ProjectMonitoringAlertsDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  interface{}
+		localVarReturnValue  *ProjectMonitoringAlertsDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ProjectsMonitoringAlerts")

@@ -9512,7 +9512,7 @@ func (r ApiKubernetesPodLogsRequest) KubernetesPodLogsCommand(kubernetesPodLogsC
 	return r
 }
 
-func (r ApiKubernetesPodLogsRequest) Execute() (interface{}, *http.Response, error) {
+func (r ApiKubernetesPodLogsRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.KubernetesPodLogsExecute(r)
 }
 
@@ -9530,13 +9530,13 @@ func (a *KubernetesAPIService) KubernetesPodLogs(ctx context.Context) ApiKuberne
 }
 
 // Execute executes the request
-//  @return interface{}
-func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRequest) (interface{}, *http.Response, error) {
+//  @return string
+func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  interface{}
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesPodLogs")
@@ -9563,7 +9563,7 @@ func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
