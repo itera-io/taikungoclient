@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -366,8 +367,8 @@ type ApiKubernetesAlertListRequest struct {
 	sortDirection *string
 	search *string
 	type_ *string
-	startDate *string
-	endDate *string
+	startDate *time.Time
+	endDate *time.Time
 }
 
 func (r ApiKubernetesAlertListRequest) Limit(limit int32) ApiKubernetesAlertListRequest {
@@ -400,12 +401,12 @@ func (r ApiKubernetesAlertListRequest) Type_(type_ string) ApiKubernetesAlertLis
 	return r
 }
 
-func (r ApiKubernetesAlertListRequest) StartDate(startDate string) ApiKubernetesAlertListRequest {
+func (r ApiKubernetesAlertListRequest) StartDate(startDate time.Time) ApiKubernetesAlertListRequest {
 	r.startDate = &startDate
 	return r
 }
 
-func (r ApiKubernetesAlertListRequest) EndDate(endDate string) ApiKubernetesAlertListRequest {
+func (r ApiKubernetesAlertListRequest) EndDate(endDate time.Time) ApiKubernetesAlertListRequest {
 	r.endDate = &endDate
 	return r
 }

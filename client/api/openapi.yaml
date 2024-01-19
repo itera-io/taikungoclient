@@ -5480,8 +5480,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-01-18T00:02:33.8931703Z
-                  createdAt: 2024-01-18T00:02:33.8931703Z
+                  lastValidated: 2024-01-19T00:02:40.2939178Z
+                  createdAt: 2024-01-19T00:02:40.2939178Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5586,14 +5586,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-01-18T00:02:33.8931703Z
+                    lastBackup: 2024-01-19T00:02:40.2939178Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-01-18T00:02:33.8931703Z
+                  createdAt: 2024-01-19T00:02:40.2939178Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-01-18T00:02:33.8931703Z
+                  lastBackup: 2024-01-19T00:02:40.2939178Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5698,8 +5698,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-18T00:02:33.8931703Z
-                  expiration: 2024-01-18T00:02:33.8931703Z
+                  createdAt: 2024-01-19T00:02:40.2939178Z
+                  expiration: 2024-01-19T00:02:40.2939178Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5803,7 +5803,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-18T00:02:33.8931703Z
+                  createdAt: 2024-01-19T00:02:40.2939178Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5913,9 +5913,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-01-18T00:02:33.8931703+00:00
-                  startTimeStamp: 2024-01-18T00:02:33.8931703+00:00
-                  createdAt: 2024-01-18T00:02:33.8931703Z
+                  completionDateTime: 2024-01-19T00:02:40.2939178+00:00
+                  startTimeStamp: 2024-01-19T00:02:40.2939178+00:00
+                  createdAt: 2024-01-19T00:02:40.2939178Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -6014,6 +6014,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -6021,6 +6022,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -6167,6 +6169,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -6174,6 +6177,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -7184,18 +7188,18 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/CheckKubeConfigCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CheckKubeConfigCommand'
       responses:
         "200":
           content:
             application/json:
               schema:
                 type: boolean
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -7225,7 +7229,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Check kube config
       tags:
       - Checker
   /api/v1/checker/ntp:
@@ -7756,18 +7761,18 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/CheckGoogleCloudCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CheckGoogleCloudCommand'
       responses:
         "200":
           content:
             application/json:
               schema:
                 type: boolean
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -7797,7 +7802,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Check google credentials
       tags:
       - Checker
   /api/v1/checker/openstack:
@@ -11620,11 +11626,11 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/GoogleBillingAccountListCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GoogleBillingAccountListCommand'
       responses:
         "200":
           content:
@@ -11636,7 +11642,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -11666,79 +11672,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve google billing accounts list
       tags:
       - Google
   /api/v1/googlecloud/create:
     post:
       operationId: googlecloud-create
-      parameters:
-      - explode: true
-        in: query
-        name: Name
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: ImportProject
-        required: true
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: FolderId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: BillingAccountId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: AzCount
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Region
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/CreateGoogleCredentialCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateGoogleCredentialCommand'
       responses:
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -11768,7 +11723,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Create google cloud credential
       tags:
       - Google
   /api/v1/googlecloud/regions:
@@ -11777,11 +11733,11 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              file:
-                style: form
             schema:
-              $ref: '#/components/schemas/googlecloud_region_list_request'
+              $ref: '#/components/schemas/GoogleRegionListCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GoogleRegionListCommand'
       responses:
         "200":
           content:
@@ -11790,7 +11746,7 @@ paths:
                 items:
                   type: string
                 type: array
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -11820,36 +11776,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve google region list
       tags:
       - Google
-  /api/v1/googlecloud/zones/{region}:
+  /api/v1/googlecloud/zones:
     post:
       operationId: googlecloud-zone-list
-      parameters:
-      - explode: false
-        in: path
-        name: region
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: true
-        in: query
-        name: cloudId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       requestBody:
         content:
           multipart/form-data:
             encoding:
-              config:
+              command:
                 style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/googlecloud_zone_list_request'
+          application/x-www-form-urlencoded:
+            encoding:
+              command:
+                style: form
+            schema:
+              $ref: '#/components/schemas/googlecloud_zone_list_request'
       responses:
         "200":
           content:
@@ -13706,6 +13653,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -13713,6 +13661,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -16503,6 +16452,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -16510,6 +16460,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -19031,6 +18982,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -19038,6 +18990,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -19163,6 +19116,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -19170,6 +19124,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -20036,11 +19991,11 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/OpenshiftPullSecretCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OpenshiftPullSecretCommand'
       responses:
         "400":
           content:
@@ -20071,7 +20026,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Validate openshift pull secret
       tags:
       - Openshift
   /api/v1/openshift/storage-class:
@@ -20080,11 +20036,11 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/OpenshiftStorageListCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OpenshiftStorageListCommand'
       responses:
         "200":
           content:
@@ -20093,7 +20049,7 @@ paths:
                 items:
                   type: string
                 type: array
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -20123,7 +20079,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Get openshift storage class list
       tags:
       - Openshift
   /api/v1/openshift/validate:
@@ -20132,11 +20089,11 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/OpenshiftValidateCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OpenshiftValidateCommand'
       responses:
         "400":
           content:
@@ -20167,7 +20124,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Validate openshift kube config file
       tags:
       - Openshift
   /api/v1/openshift/list:
@@ -22420,101 +22378,14 @@ paths:
   /api/v1/partner/create:
     post:
       operationId: partner-create
-      parameters:
-      - explode: true
-        in: query
-        name: AllowRegistration
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: RequiredUserApproval
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: PaymentEnabled
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: Name
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Domain
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Link
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Phone
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Email
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Country
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: City
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: VatNumber
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Address
-        required: false
-        schema:
-          type: string
-        style: form
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              logo:
-                style: form
-              backgroundImage:
-                style: form
             schema:
-              $ref: '#/components/schemas/partner_create_request'
+              $ref: '#/components/schemas/CreatePartnerCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreatePartnerCommand'
       responses:
         "400":
           content:
@@ -22545,7 +22416,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Add a partner
       tags:
       - Partners
   /api/v1/partner/delete/whitelist/domain:
@@ -22590,112 +22462,17 @@ paths:
       summary: Delete white list domain
       tags:
       - Partners
-  /api/v1/partner/update/{id}:
+  /api/v1/partner/update:
     put:
       operationId: partner-update
-      parameters:
-      - explode: false
-        in: path
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Name
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Domain
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Link
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Phone
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Email
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Country
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: City
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: VatNumber
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Address
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: AllowRegistration
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: RequiredUserApproval
-        required: false
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: PaymentEnabled
-        required: false
-        schema:
-          type: boolean
-        style: form
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              logo:
-                style: form
-              backgroundImage:
-                style: form
             schema:
-              $ref: '#/components/schemas/partner_create_request'
+              $ref: '#/components/schemas/UpdatePartnerCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UpdatePartnerCommand'
       responses:
         "400":
           content:
@@ -22726,7 +22503,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Edit partner's data by Id
       tags:
       - Partners
   /api/v1/partner/details:
@@ -24785,14 +24563,16 @@ paths:
         name: StartRam
         required: false
         schema:
-          type: string
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
         name: EndRam
         required: false
         schema:
-          type: string
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
@@ -25466,6 +25246,7 @@ paths:
         name: UpdatedAt
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -26619,6 +26400,7 @@ paths:
         name: UpdatedAt
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -26883,6 +26665,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -26890,6 +26673,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -26999,6 +26783,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -27006,6 +26791,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -31658,28 +31444,14 @@ paths:
   /api/v1/standaloneactions/password:
     post:
       operationId: standaloneactions-windows-instance-password
-      parameters:
-      - explode: true
-        in: query
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: key
-        required: false
-        schema:
-          type: string
-        style: form
       requestBody:
         content:
           multipart/form-data:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/WindowsInstancePasswordCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WindowsInstancePasswordCommand'
       responses:
         "200":
           content:
@@ -34075,6 +33847,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -34082,6 +33855,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -41221,6 +40995,22 @@ components:
           format: int32
           type: integer
       type: object
+    CheckGoogleCloudCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+      type: object
+    CheckKubeConfigCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+      type: object
     CheckOpenstackCommand:
       additionalProperties: false
       example:
@@ -42356,6 +42146,35 @@ components:
           nullable: true
           type: string
       type: object
+    CreateGoogleCredentialCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        importProject:
+          type: boolean
+        folderId:
+          nullable: true
+          type: string
+        billingAccountId:
+          nullable: true
+          type: string
+        azCount:
+          format: int32
+          type: integer
+        region:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
     CreateInfraProductCommand:
       additionalProperties: false
       example:
@@ -42616,6 +42435,54 @@ components:
           type: boolean
         isAdmin:
           type: boolean
+      type: object
+    CreatePartnerCommand:
+      additionalProperties: false
+      properties:
+        logo:
+          format: binary
+          nullable: true
+          type: string
+        backgroundImage:
+          format: binary
+          nullable: true
+          type: string
+        allowRegistration:
+          nullable: true
+          type: boolean
+        requiredUserApproval:
+          nullable: true
+          type: boolean
+        paymentEnabled:
+          nullable: true
+          type: boolean
+        name:
+          nullable: true
+          type: string
+        domain:
+          nullable: true
+          type: string
+        link:
+          nullable: true
+          type: string
+        phone:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+        country:
+          nullable: true
+          type: string
+        city:
+          nullable: true
+          type: string
+        vatNumber:
+          nullable: true
+          type: string
+        address:
+          nullable: true
+          type: string
       type: object
     CreateProjectAppCommand:
       additionalProperties: false
@@ -46237,14 +46104,34 @@ components:
           nullable: true
           type: string
       type: object
+    ExceededQuotaDto:
+      additionalProperties: false
+      example:
+        cloudId: 0
+        name: name
+      properties:
+        cloudId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+      type: object
     ExceededQuotaList:
       additionalProperties: false
       example:
-        data: ""
-        totalCount: 0
+        data:
+        - cloudId: 0
+          name: name
+        - cloudId: 0
+          name: name
+        totalCount: 6
       properties:
         data:
+          items:
+            $ref: '#/components/schemas/ExceededQuotaDto'
           nullable: true
+          type: array
         totalCount:
           format: int32
           type: integer
@@ -46460,6 +46347,14 @@ components:
         mode: mode
       properties:
         mode:
+          nullable: true
+          type: string
+      type: object
+    GoogleBillingAccountListCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
           nullable: true
           type: string
       type: object
@@ -46707,6 +46602,29 @@ components:
           type: array
         totalCount:
           format: int32
+          type: integer
+      type: object
+    GoogleRegionListCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+      type: object
+    GoogleZoneListCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+        region:
+          nullable: true
+          type: string
+        cloudId:
+          format: int32
+          nullable: true
           type: integer
       type: object
     Group:
@@ -50373,6 +50291,30 @@ components:
           nullable: true
           type: string
         continentName:
+          nullable: true
+          type: string
+      type: object
+    OpenshiftPullSecretCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+      type: object
+    OpenshiftStorageListCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+      type: object
+    OpenshiftValidateCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
           nullable: true
           type: string
       type: object
@@ -61706,6 +61648,57 @@ components:
         isYearly:
           type: boolean
       type: object
+    UpdatePartnerCommand:
+      additionalProperties: false
+      properties:
+        id:
+          format: int32
+          type: integer
+        logo:
+          format: binary
+          nullable: true
+          type: string
+        backgroundImage:
+          format: binary
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        domain:
+          nullable: true
+          type: string
+        link:
+          nullable: true
+          type: string
+        phone:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+        country:
+          nullable: true
+          type: string
+        city:
+          nullable: true
+          type: string
+        vatNumber:
+          nullable: true
+          type: string
+        address:
+          nullable: true
+          type: string
+        allowRegistration:
+          nullable: true
+          type: boolean
+        requiredUserApproval:
+          nullable: true
+          type: boolean
+        paymentEnabled:
+          nullable: true
+          type: boolean
+      type: object
     UpdatePaymentIdCommand:
       additionalProperties: false
       example:
@@ -63353,6 +63346,20 @@ components:
           nullable: true
           type: string
       type: object
+    WindowsInstancePasswordCommand:
+      additionalProperties: false
+      properties:
+        id:
+          format: int32
+          type: integer
+        key:
+          nullable: true
+          type: string
+        config:
+          format: binary
+          nullable: true
+          type: string
+      type: object
     YamlValidatorCommand:
       additionalProperties: false
       example:
@@ -63362,26 +63369,10 @@ components:
           nullable: true
           type: string
       type: object
-    checker_kube_config_request:
+    googlecloud_zone_list_request:
       properties:
-        config:
-          format: binary
-          type: string
-      type: object
-    googlecloud_region_list_request:
-      properties:
-        file:
-          format: binary
-          type: string
-      type: object
-    partner_create_request:
-      properties:
-        logo:
-          format: binary
-          type: string
-        backgroundImage:
-          format: binary
-          type: string
+        command:
+          $ref: '#/components/schemas/GoogleZoneListCommand'
       type: object
   securitySchemes:
     Bearer:

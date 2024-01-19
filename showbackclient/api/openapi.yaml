@@ -799,6 +799,7 @@ paths:
         name: FromDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -806,6 +807,7 @@ paths:
         name: ToDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -872,6 +874,7 @@ paths:
         name: FromDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -879,6 +882,7 @@ paths:
         name: ToDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -952,6 +956,7 @@ paths:
         name: FromDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -959,6 +964,7 @@ paths:
         name: ToDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -1018,6 +1024,7 @@ paths:
         name: FromDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -1025,6 +1032,7 @@ paths:
         name: ToDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       responses:

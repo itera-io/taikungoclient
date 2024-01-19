@@ -140,9 +140,7 @@ func Test_taikuncore_PartnersAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var id int32
-
-		httpRes, err := apiClient.PartnersAPI.PartnerUpdate(context.Background(), id).Execute()
+		httpRes, err := apiClient.PartnersAPI.PartnerUpdate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

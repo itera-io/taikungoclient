@@ -17,6 +17,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"time"
 )
 
 
@@ -190,8 +191,8 @@ type ApiBillingExportCsvRequest struct {
 	ApiService *BillingAPIService
 	isEmailEnabled *bool
 	organizationId *int32
-	startDate *string
-	endDate *string
+	startDate *time.Time
+	endDate *time.Time
 	isDeleted *bool
 }
 
@@ -205,12 +206,12 @@ func (r ApiBillingExportCsvRequest) OrganizationId(organizationId int32) ApiBill
 	return r
 }
 
-func (r ApiBillingExportCsvRequest) StartDate(startDate string) ApiBillingExportCsvRequest {
+func (r ApiBillingExportCsvRequest) StartDate(startDate time.Time) ApiBillingExportCsvRequest {
 	r.startDate = &startDate
 	return r
 }
 
-func (r ApiBillingExportCsvRequest) EndDate(endDate string) ApiBillingExportCsvRequest {
+func (r ApiBillingExportCsvRequest) EndDate(endDate time.Time) ApiBillingExportCsvRequest {
 	r.endDate = &endDate
 	return r
 }
@@ -579,8 +580,8 @@ type ApiBillingListRequest struct {
 	offset *int32
 	sortBy *string
 	sortDirection *string
-	startDate *string
-	endDate *string
+	startDate *time.Time
+	endDate *time.Time
 	organizationId *int32
 	isDeleted *bool
 	projectId *int32
@@ -606,12 +607,12 @@ func (r ApiBillingListRequest) SortDirection(sortDirection string) ApiBillingLis
 	return r
 }
 
-func (r ApiBillingListRequest) StartDate(startDate string) ApiBillingListRequest {
+func (r ApiBillingListRequest) StartDate(startDate time.Time) ApiBillingListRequest {
 	r.startDate = &startDate
 	return r
 }
 
-func (r ApiBillingListRequest) EndDate(endDate string) ApiBillingListRequest {
+func (r ApiBillingListRequest) EndDate(endDate time.Time) ApiBillingListRequest {
 	r.endDate = &endDate
 	return r
 }

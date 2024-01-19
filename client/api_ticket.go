@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -1172,8 +1173,8 @@ type ApiTicketListRequest struct {
 	offset *int32
 	organizationId *int32
 	search *string
-	startDate *string
-	endDate *string
+	startDate *time.Time
+	endDate *time.Time
 	ticketId *string
 }
 
@@ -1197,12 +1198,12 @@ func (r ApiTicketListRequest) Search(search string) ApiTicketListRequest {
 	return r
 }
 
-func (r ApiTicketListRequest) StartDate(startDate string) ApiTicketListRequest {
+func (r ApiTicketListRequest) StartDate(startDate time.Time) ApiTicketListRequest {
 	r.startDate = &startDate
 	return r
 }
 
-func (r ApiTicketListRequest) EndDate(endDate string) ApiTicketListRequest {
+func (r ApiTicketListRequest) EndDate(endDate time.Time) ApiTicketListRequest {
 	r.endDate = &endDate
 	return r
 }

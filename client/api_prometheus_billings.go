@@ -17,6 +17,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"time"
 )
 
 
@@ -193,8 +194,8 @@ type ApiPrometheusbillingsExportCsvRequest struct {
 	ApiService *PrometheusBillingsAPIService
 	isEmailEnabled *bool
 	organizationId *int32
-	startDate *string
-	endDate *string
+	startDate *time.Time
+	endDate *time.Time
 }
 
 func (r ApiPrometheusbillingsExportCsvRequest) IsEmailEnabled(isEmailEnabled bool) ApiPrometheusbillingsExportCsvRequest {
@@ -207,12 +208,12 @@ func (r ApiPrometheusbillingsExportCsvRequest) OrganizationId(organizationId int
 	return r
 }
 
-func (r ApiPrometheusbillingsExportCsvRequest) StartDate(startDate string) ApiPrometheusbillingsExportCsvRequest {
+func (r ApiPrometheusbillingsExportCsvRequest) StartDate(startDate time.Time) ApiPrometheusbillingsExportCsvRequest {
 	r.startDate = &startDate
 	return r
 }
 
-func (r ApiPrometheusbillingsExportCsvRequest) EndDate(endDate string) ApiPrometheusbillingsExportCsvRequest {
+func (r ApiPrometheusbillingsExportCsvRequest) EndDate(endDate time.Time) ApiPrometheusbillingsExportCsvRequest {
 	r.endDate = &endDate
 	return r
 }
@@ -573,8 +574,8 @@ type ApiPrometheusbillingsListRequest struct {
 	offset *int32
 	sortBy *string
 	sortDirection *string
-	startDate *string
-	endDate *string
+	startDate *time.Time
+	endDate *time.Time
 	organizationId *int32
 }
 
@@ -598,12 +599,12 @@ func (r ApiPrometheusbillingsListRequest) SortDirection(sortDirection string) Ap
 	return r
 }
 
-func (r ApiPrometheusbillingsListRequest) StartDate(startDate string) ApiPrometheusbillingsListRequest {
+func (r ApiPrometheusbillingsListRequest) StartDate(startDate time.Time) ApiPrometheusbillingsListRequest {
 	r.startDate = &startDate
 	return r
 }
 
-func (r ApiPrometheusbillingsListRequest) EndDate(endDate string) ApiPrometheusbillingsListRequest {
+func (r ApiPrometheusbillingsListRequest) EndDate(endDate time.Time) ApiPrometheusbillingsListRequest {
 	r.endDate = &endDate
 	return r
 }

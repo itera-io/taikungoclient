@@ -17,6 +17,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"time"
 )
 
 
@@ -28,8 +29,8 @@ type ApiShowbacksummariesByLabelRequest struct {
 	ApiService *ShowbackSummariesAPIService
 	organizationId *int32
 	isDeleted *bool
-	fromDate *string
-	toDate *string
+	fromDate *time.Time
+	toDate *time.Time
 }
 
 func (r ApiShowbacksummariesByLabelRequest) OrganizationId(organizationId int32) ApiShowbacksummariesByLabelRequest {
@@ -42,12 +43,12 @@ func (r ApiShowbacksummariesByLabelRequest) IsDeleted(isDeleted bool) ApiShowbac
 	return r
 }
 
-func (r ApiShowbacksummariesByLabelRequest) FromDate(fromDate string) ApiShowbacksummariesByLabelRequest {
+func (r ApiShowbacksummariesByLabelRequest) FromDate(fromDate time.Time) ApiShowbacksummariesByLabelRequest {
 	r.fromDate = &fromDate
 	return r
 }
 
-func (r ApiShowbacksummariesByLabelRequest) ToDate(toDate string) ApiShowbacksummariesByLabelRequest {
+func (r ApiShowbacksummariesByLabelRequest) ToDate(toDate time.Time) ApiShowbacksummariesByLabelRequest {
 	r.toDate = &toDate
 	return r
 }
@@ -229,8 +230,8 @@ type ApiShowbacksummariesByProjectRequest struct {
 	ApiService *ShowbackSummariesAPIService
 	organizationId *int32
 	isDeleted *bool
-	fromDate *string
-	toDate *string
+	fromDate *time.Time
+	toDate *time.Time
 }
 
 func (r ApiShowbacksummariesByProjectRequest) OrganizationId(organizationId int32) ApiShowbacksummariesByProjectRequest {
@@ -243,12 +244,12 @@ func (r ApiShowbacksummariesByProjectRequest) IsDeleted(isDeleted bool) ApiShowb
 	return r
 }
 
-func (r ApiShowbacksummariesByProjectRequest) FromDate(fromDate string) ApiShowbacksummariesByProjectRequest {
+func (r ApiShowbacksummariesByProjectRequest) FromDate(fromDate time.Time) ApiShowbacksummariesByProjectRequest {
 	r.fromDate = &fromDate
 	return r
 }
 
-func (r ApiShowbacksummariesByProjectRequest) ToDate(toDate string) ApiShowbacksummariesByProjectRequest {
+func (r ApiShowbacksummariesByProjectRequest) ToDate(toDate time.Time) ApiShowbacksummariesByProjectRequest {
 	r.toDate = &toDate
 	return r
 }
@@ -778,8 +779,8 @@ type ApiShowbacksummariesGroupedRequest struct {
 	ctx context.Context
 	ApiService *ShowbackSummariesAPIService
 	organizationId *int32
-	fromDate *string
-	toDate *string
+	fromDate *time.Time
+	toDate *time.Time
 }
 
 func (r ApiShowbacksummariesGroupedRequest) OrganizationId(organizationId int32) ApiShowbacksummariesGroupedRequest {
@@ -787,12 +788,12 @@ func (r ApiShowbacksummariesGroupedRequest) OrganizationId(organizationId int32)
 	return r
 }
 
-func (r ApiShowbacksummariesGroupedRequest) FromDate(fromDate string) ApiShowbacksummariesGroupedRequest {
+func (r ApiShowbacksummariesGroupedRequest) FromDate(fromDate time.Time) ApiShowbacksummariesGroupedRequest {
 	r.fromDate = &fromDate
 	return r
 }
 
-func (r ApiShowbacksummariesGroupedRequest) ToDate(toDate string) ApiShowbacksummariesGroupedRequest {
+func (r ApiShowbacksummariesGroupedRequest) ToDate(toDate time.Time) ApiShowbacksummariesGroupedRequest {
 	r.toDate = &toDate
 	return r
 }
@@ -972,8 +973,8 @@ type ApiShowbacksummariesGroupedListRequest struct {
 	organizationId *int32
 	periodDuration *string
 	isDeleted *bool
-	fromDate *string
-	toDate *string
+	fromDate *time.Time
+	toDate *time.Time
 }
 
 func (r ApiShowbacksummariesGroupedListRequest) OrganizationId(organizationId int32) ApiShowbacksummariesGroupedListRequest {
@@ -991,12 +992,12 @@ func (r ApiShowbacksummariesGroupedListRequest) IsDeleted(isDeleted bool) ApiSho
 	return r
 }
 
-func (r ApiShowbacksummariesGroupedListRequest) FromDate(fromDate string) ApiShowbacksummariesGroupedListRequest {
+func (r ApiShowbacksummariesGroupedListRequest) FromDate(fromDate time.Time) ApiShowbacksummariesGroupedListRequest {
 	r.fromDate = &fromDate
 	return r
 }
 
-func (r ApiShowbacksummariesGroupedListRequest) ToDate(toDate string) ApiShowbacksummariesGroupedListRequest {
+func (r ApiShowbacksummariesGroupedListRequest) ToDate(toDate time.Time) ApiShowbacksummariesGroupedListRequest {
 	r.toDate = &toDate
 	return r
 }

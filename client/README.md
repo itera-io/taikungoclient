@@ -204,9 +204,9 @@ Class | Method | HTTP request | Description
 *CheckerAPI* | [**CheckerCron**](docs/CheckerAPI.md#checkercron) | **Post** /api/v1/checker/cron | Check valid cron job format
 *CheckerAPI* | [**CheckerDns**](docs/CheckerAPI.md#checkerdns) | **Post** /api/v1/checker/dns | Check valid dns format
 *CheckerAPI* | [**CheckerDuplicateName**](docs/CheckerAPI.md#checkerduplicatename) | **Post** /api/v1/checker/duplicate | Duplicate name
-*CheckerAPI* | [**CheckerGoogle**](docs/CheckerAPI.md#checkergoogle) | **Post** /api/v1/checker/google | 
+*CheckerAPI* | [**CheckerGoogle**](docs/CheckerAPI.md#checkergoogle) | **Post** /api/v1/checker/google | Check google credentials
 *CheckerAPI* | [**CheckerKeycloak**](docs/CheckerAPI.md#checkerkeycloak) | **Post** /api/v1/checker/keycloak | Check keycloak credential
-*CheckerAPI* | [**CheckerKubeConfig**](docs/CheckerAPI.md#checkerkubeconfig) | **Post** /api/v1/checker/kube-config | 
+*CheckerAPI* | [**CheckerKubeConfig**](docs/CheckerAPI.md#checkerkubeconfig) | **Post** /api/v1/checker/kube-config | Check kube config
 *CheckerAPI* | [**CheckerNode**](docs/CheckerAPI.md#checkernode) | **Post** /api/v1/checker/node | Duplicate server name checker
 *CheckerAPI* | [**CheckerNtp**](docs/CheckerAPI.md#checkerntp) | **Post** /api/v1/checker/ntp | Check valid ntp format
 *CheckerAPI* | [**CheckerOpenAi**](docs/CheckerAPI.md#checkeropenai) | **Post** /api/v1/checker/openai | Check open-ai token
@@ -283,11 +283,11 @@ Class | Method | HTTP request | Description
 *FlavorsAPI* | [**FlavorsTanzuFlavors**](docs/FlavorsAPI.md#flavorstanzuflavors) | **Get** /api/v1/flavors/tanzu/{cloudId} | Retrieve tanzu flavors
 *FlavorsAPI* | [**FlavorsUnbindFromProject**](docs/FlavorsAPI.md#flavorsunbindfromproject) | **Post** /api/v1/flavors/unbind | Unbind flavors from project
 *FlavorsAPI* | [**FlavorsVsphereFlavors**](docs/FlavorsAPI.md#flavorsvsphereflavors) | **Get** /api/v1/flavors/vsphere/{cloudId} | Retrieve vsphere flavors
-*GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | 
-*GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | 
+*GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
+*GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | Create google cloud credential
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
-*GoogleAPI* | [**GooglecloudRegionList**](docs/GoogleAPI.md#googlecloudregionlist) | **Post** /api/v1/googlecloud/regions | 
-*GoogleAPI* | [**GooglecloudZoneList**](docs/GoogleAPI.md#googlecloudzonelist) | **Post** /api/v1/googlecloud/zones/{region} | 
+*GoogleAPI* | [**GooglecloudRegionList**](docs/GoogleAPI.md#googlecloudregionlist) | **Post** /api/v1/googlecloud/regions | Retrieve google region list
+*GoogleAPI* | [**GooglecloudZoneList**](docs/GoogleAPI.md#googlecloudzonelist) | **Post** /api/v1/googlecloud/zones | 
 *ImagesAPI* | [**ImagesAwsCommonImages**](docs/ImagesAPI.md#imagesawscommonimages) | **Get** /api/v1/images/aws/common/{cloudId} | Commonly used aws images
 *ImagesAPI* | [**ImagesAwsImagesList**](docs/ImagesAPI.md#imagesawsimageslist) | **Post** /api/v1/images/aws | Retrieve aws images
 *ImagesAPI* | [**ImagesAwsPersonalImages**](docs/ImagesAPI.md#imagesawspersonalimages) | **Get** /api/v1/images/aws/personal/{cloudId} | Aws personal images
@@ -420,9 +420,9 @@ Class | Method | HTTP request | Description
 *OpaProfilesAPI* | [**OpaprofilesUpdate**](docs/OpaProfilesAPI.md#opaprofilesupdate) | **Put** /api/v1/opaprofiles | Update policy profile
 *OpenshiftAPI* | [**OpenshiftCreate**](docs/OpenshiftAPI.md#openshiftcreate) | **Post** /api/v1/openshift/create | Add Openshift cloud credential
 *OpenshiftAPI* | [**OpenshiftList**](docs/OpenshiftAPI.md#openshiftlist) | **Get** /api/v1/openshift/list | Retrieve all operation credentials
-*OpenshiftAPI* | [**OpenshiftPullSecret**](docs/OpenshiftAPI.md#openshiftpullsecret) | **Post** /api/v1/openshift/pull-secret | 
-*OpenshiftAPI* | [**OpenshiftStorageClass**](docs/OpenshiftAPI.md#openshiftstorageclass) | **Post** /api/v1/openshift/storage-class | 
-*OpenshiftAPI* | [**OpenshiftValidate**](docs/OpenshiftAPI.md#openshiftvalidate) | **Post** /api/v1/openshift/validate | 
+*OpenshiftAPI* | [**OpenshiftPullSecret**](docs/OpenshiftAPI.md#openshiftpullsecret) | **Post** /api/v1/openshift/pull-secret | Validate openshift pull secret
+*OpenshiftAPI* | [**OpenshiftStorageClass**](docs/OpenshiftAPI.md#openshiftstorageclass) | **Post** /api/v1/openshift/storage-class | Get openshift storage class list
+*OpenshiftAPI* | [**OpenshiftValidate**](docs/OpenshiftAPI.md#openshiftvalidate) | **Post** /api/v1/openshift/validate | Validate openshift kube config file
 *OpenstackCloudCredentialAPI* | [**OpenstackCreate**](docs/OpenstackCloudCredentialAPI.md#openstackcreate) | **Post** /api/v1/openstack/create | Add Openstack credentials
 *OpenstackCloudCredentialAPI* | [**OpenstackList**](docs/OpenstackCloudCredentialAPI.md#openstacklist) | **Get** /api/v1/openstack/list | Retrieve list of openstack cloud credentials
 *OpenstackCloudCredentialAPI* | [**OpenstackNetworks**](docs/OpenstackCloudCredentialAPI.md#openstacknetworks) | **Post** /api/v1/openstack/networks | Openstack network list
@@ -463,13 +463,13 @@ Class | Method | HTTP request | Description
 *PartnersAPI* | [**PartnerBecomeAPartner**](docs/PartnersAPI.md#partnerbecomeapartner) | **Post** /api/v1/partner/become-a-partner | Become a partner
 *PartnersAPI* | [**PartnerBindOrganizations**](docs/PartnersAPI.md#partnerbindorganizations) | **Post** /api/v1/partner/bindorganizations | Bind organizations to a partner
 *PartnersAPI* | [**PartnerContactUs**](docs/PartnersAPI.md#partnercontactus) | **Post** /api/v1/partner/contact-us | Contact with us
-*PartnersAPI* | [**PartnerCreate**](docs/PartnersAPI.md#partnercreate) | **Post** /api/v1/partner/create | 
+*PartnersAPI* | [**PartnerCreate**](docs/PartnersAPI.md#partnercreate) | **Post** /api/v1/partner/create | Add a partner
 *PartnersAPI* | [**PartnerDeleteWhitelistDomain**](docs/PartnersAPI.md#partnerdeletewhitelistdomain) | **Post** /api/v1/partner/delete/whitelist/domain | Delete white list domain
 *PartnersAPI* | [**PartnerDetails**](docs/PartnersAPI.md#partnerdetails) | **Get** /api/v1/partner/details | Details of partners
 *PartnersAPI* | [**PartnerDropdown**](docs/PartnersAPI.md#partnerdropdown) | **Get** /api/v1/partner/list | Get partners dropdown
 *PartnersAPI* | [**PartnerInfo**](docs/PartnersAPI.md#partnerinfo) | **Get** /api/v1/partner/info | Get partner&#39;s registration info
 *PartnersAPI* | [**PartnerList**](docs/PartnersAPI.md#partnerlist) | **Get** /api/v1/partner | Get partners
-*PartnersAPI* | [**PartnerUpdate**](docs/PartnersAPI.md#partnerupdate) | **Put** /api/v1/partner/update/{id} | 
+*PartnersAPI* | [**PartnerUpdate**](docs/PartnersAPI.md#partnerupdate) | **Put** /api/v1/partner/update | Edit partner&#39;s data by Id
 *PaymentsAPI* | [**PaymentBillingInfo**](docs/PaymentsAPI.md#paymentbillinginfo) | **Get** /api/v1/payment/billing-info | Get billing info for organization
 *PaymentsAPI* | [**PaymentCardinfo**](docs/PaymentsAPI.md#paymentcardinfo) | **Get** /api/v1/payment/cardinfo | Get card information
 *PaymentsAPI* | [**PaymentClear**](docs/PaymentsAPI.md#paymentclear) | **Post** /api/v1/payment/clear | Clear payment
@@ -1046,6 +1046,7 @@ Class | Method | HTTP request | Description
  - [EndpointElements](docs/EndpointElements.md)
  - [EnumList](docs/EnumList.md)
  - [EstimatedInfracost](docs/EstimatedInfracost.md)
+ - [ExceededQuotaDto](docs/ExceededQuotaDto.md)
  - [ExceededQuotaList](docs/ExceededQuotaList.md)
  - [ExportKubeConfigCommand](docs/ExportKubeConfigCommand.md)
  - [Filter](docs/Filter.md)
@@ -1067,6 +1068,7 @@ Class | Method | HTTP request | Description
  - [GoogleCredentialsListDto](docs/GoogleCredentialsListDto.md)
  - [GoogleFlavorDto](docs/GoogleFlavorDto.md)
  - [GoogleFlavorList](docs/GoogleFlavorList.md)
+ - [GoogleZoneListCommand](docs/GoogleZoneListCommand.md)
  - [Group](docs/Group.md)
  - [GroupedBillingInfo](docs/GroupedBillingInfo.md)
  - [GroupedBillingListQuery](docs/GroupedBillingListQuery.md)

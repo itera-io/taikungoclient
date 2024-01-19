@@ -423,6 +423,7 @@ docs/EnableGatekeeperCommand.md
 docs/EndpointElements.md
 docs/EnumList.md
 docs/EstimatedInfracost.md
+docs/ExceededQuotaDto.md
 docs/ExceededQuotaList.md
 docs/ExportKubeConfigCommand.md
 docs/Filter.md
@@ -446,6 +447,7 @@ docs/GoogleCredentialList.md
 docs/GoogleCredentialsListDto.md
 docs/GoogleFlavorDto.md
 docs/GoogleFlavorList.md
+docs/GoogleZoneListCommand.md
 docs/Group.md
 docs/GroupedBillingInfo.md
 docs/GroupedBillingListQuery.md
@@ -1301,6 +1303,7 @@ model_enable_gatekeeper_command.go
 model_endpoint_elements.go
 model_enum_list.go
 model_estimated_infracost.go
+model_exceeded_quota_dto.go
 model_exceeded_quota_list.go
 model_export_kube_config_command.go
 model_filter.go
@@ -1322,6 +1325,7 @@ model_google_credential_list.go
 model_google_credentials_list_dto.go
 model_google_flavor_dto.go
 model_google_flavor_list.go
+model_google_zone_list_command.go
 model_group.go
 model_grouped_billing_info.go
 model_grouped_billing_list_query.go

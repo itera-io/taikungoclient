@@ -1372,7 +1372,7 @@ func (r ApiCheckerGoogleRequest) Execute() (bool, *http.Response, error) {
 }
 
 /*
-CheckerGoogle Method for CheckerGoogle
+CheckerGoogle Check google credentials
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCheckerGoogleRequest
@@ -1406,7 +1406,7 @@ func (a *CheckerAPIService) CheckerGoogleExecute(r ApiCheckerGoogleRequest) (boo
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
+	localVarHTTPContentTypes := []string{"multipart/form-data", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1723,7 +1723,7 @@ func (r ApiCheckerKubeConfigRequest) Execute() (bool, *http.Response, error) {
 }
 
 /*
-CheckerKubeConfig Method for CheckerKubeConfig
+CheckerKubeConfig Check kube config
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiCheckerKubeConfigRequest
@@ -1757,7 +1757,7 @@ func (a *CheckerAPIService) CheckerKubeConfigExecute(r ApiCheckerKubeConfigReque
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
+	localVarHTTPContentTypes := []string{"multipart/form-data", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)

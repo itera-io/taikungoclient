@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -2797,7 +2798,7 @@ type ApiProjectsForPollerRequest struct {
 	limit *int32
 	offset *int32
 	search *string
-	updatedAt *string
+	updatedAt *time.Time
 }
 
 func (r ApiProjectsForPollerRequest) Limit(limit int32) ApiProjectsForPollerRequest {
@@ -2815,7 +2816,7 @@ func (r ApiProjectsForPollerRequest) Search(search string) ApiProjectsForPollerR
 	return r
 }
 
-func (r ApiProjectsForPollerRequest) UpdatedAt(updatedAt string) ApiProjectsForPollerRequest {
+func (r ApiProjectsForPollerRequest) UpdatedAt(updatedAt time.Time) ApiProjectsForPollerRequest {
 	r.updatedAt = &updatedAt
 	return r
 }
@@ -3001,7 +3002,7 @@ type ApiProjectsListRequest struct {
 	sortBy *string
 	sortDirection *string
 	search *string
-	updatedAt *string
+	updatedAt *time.Time
 	searchId *string
 	id *int32
 	backupCredentialId *int32
@@ -3038,7 +3039,7 @@ func (r ApiProjectsListRequest) Search(search string) ApiProjectsListRequest {
 	return r
 }
 
-func (r ApiProjectsListRequest) UpdatedAt(updatedAt string) ApiProjectsListRequest {
+func (r ApiProjectsListRequest) UpdatedAt(updatedAt time.Time) ApiProjectsListRequest {
 	r.updatedAt = &updatedAt
 	return r
 }
