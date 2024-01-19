@@ -447,7 +447,6 @@ docs/GoogleCredentialList.md
 docs/GoogleCredentialsListDto.md
 docs/GoogleFlavorDto.md
 docs/GoogleFlavorList.md
-docs/GoogleZoneListCommand.md
 docs/Group.md
 docs/GroupedBillingInfo.md
 docs/GroupedBillingListQuery.md
@@ -1325,7 +1324,6 @@ model_google_credential_list.go
 model_google_credentials_list_dto.go
 model_google_flavor_dto.go
 model_google_flavor_list.go
-model_google_zone_list_command.go
 model_group.go
 model_grouped_billing_info.go
 model_grouped_billing_list_query.go

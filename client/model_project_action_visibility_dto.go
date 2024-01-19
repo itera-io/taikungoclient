@@ -47,6 +47,8 @@ type ProjectActionVisibilityDto struct {
 	AiAssistant *ButtonStatusDto `json:"aiAssistant,omitempty"`
 	EnableMaintenanceMode *ButtonStatusDto `json:"enableMaintenanceMode,omitempty"`
 	DisableMaintenanceMode *ButtonStatusDto `json:"disableMaintenanceMode,omitempty"`
+	AddServer *ButtonStatusDto `json:"addServer,omitempty"`
+	AddVm *ButtonStatusDto `json:"addVm,omitempty"`
 }
 
 // NewProjectActionVisibilityDto instantiates a new ProjectActionVisibilityDto object
@@ -930,6 +932,70 @@ func (o *ProjectActionVisibilityDto) SetDisableMaintenanceMode(v ButtonStatusDto
 	o.DisableMaintenanceMode = &v
 }
 
+// GetAddServer returns the AddServer field value if set, zero value otherwise.
+func (o *ProjectActionVisibilityDto) GetAddServer() ButtonStatusDto {
+	if o == nil || IsNil(o.AddServer) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.AddServer
+}
+
+// GetAddServerOk returns a tuple with the AddServer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectActionVisibilityDto) GetAddServerOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.AddServer) {
+		return nil, false
+	}
+	return o.AddServer, true
+}
+
+// HasAddServer returns a boolean if a field has been set.
+func (o *ProjectActionVisibilityDto) HasAddServer() bool {
+	if o != nil && !IsNil(o.AddServer) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddServer gets a reference to the given ButtonStatusDto and assigns it to the AddServer field.
+func (o *ProjectActionVisibilityDto) SetAddServer(v ButtonStatusDto) {
+	o.AddServer = &v
+}
+
+// GetAddVm returns the AddVm field value if set, zero value otherwise.
+func (o *ProjectActionVisibilityDto) GetAddVm() ButtonStatusDto {
+	if o == nil || IsNil(o.AddVm) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.AddVm
+}
+
+// GetAddVmOk returns a tuple with the AddVm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectActionVisibilityDto) GetAddVmOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.AddVm) {
+		return nil, false
+	}
+	return o.AddVm, true
+}
+
+// HasAddVm returns a boolean if a field has been set.
+func (o *ProjectActionVisibilityDto) HasAddVm() bool {
+	if o != nil && !IsNil(o.AddVm) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddVm gets a reference to the given ButtonStatusDto and assigns it to the AddVm field.
+func (o *ProjectActionVisibilityDto) SetAddVm(v ButtonStatusDto) {
+	o.AddVm = &v
+}
+
 func (o ProjectActionVisibilityDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1020,6 +1086,12 @@ func (o ProjectActionVisibilityDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DisableMaintenanceMode) {
 		toSerialize["disableMaintenanceMode"] = o.DisableMaintenanceMode
+	}
+	if !IsNil(o.AddServer) {
+		toSerialize["addServer"] = o.AddServer
+	}
+	if !IsNil(o.AddVm) {
+		toSerialize["addVm"] = o.AddVm
 	}
 	return toSerialize, nil
 }

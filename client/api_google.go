@@ -885,11 +885,23 @@ func (a *GoogleAPIService) GooglecloudRegionListExecute(r ApiGooglecloudRegionLi
 type ApiGooglecloudZoneListRequest struct {
 	ctx context.Context
 	ApiService *GoogleAPIService
-	command *GoogleZoneListCommand
+	config *os.File
+	region *string
+	cloudId *int32
 }
 
-func (r ApiGooglecloudZoneListRequest) Command(command GoogleZoneListCommand) ApiGooglecloudZoneListRequest {
-	r.command = &command
+func (r ApiGooglecloudZoneListRequest) Config(config *os.File) ApiGooglecloudZoneListRequest {
+	r.config = config
+	return r
+}
+
+func (r ApiGooglecloudZoneListRequest) Region(region string) ApiGooglecloudZoneListRequest {
+	r.region = &region
+	return r
+}
+
+func (r ApiGooglecloudZoneListRequest) CloudId(cloudId int32) ApiGooglecloudZoneListRequest {
+	r.cloudId = &cloudId
 	return r
 }
 
@@ -898,7 +910,7 @@ func (r ApiGooglecloudZoneListRequest) Execute() (*AzResult, *http.Response, err
 }
 
 /*
-GooglecloudZoneList Method for GooglecloudZoneList
+GooglecloudZoneList Google zones list
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiGooglecloudZoneListRequest
@@ -948,12 +960,26 @@ func (a *GoogleAPIService) GooglecloudZoneListExecute(r ApiGooglecloudZoneListRe
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.command != nil {
-		paramJson, err := parameterToJson(*r.command)
-		if err != nil {
-			return localVarReturnValue, nil, err
-		}
-		localVarFormParams.Add("command", paramJson)
+	var configLocalVarFormFileName string
+	var configLocalVarFileName     string
+	var configLocalVarFileBytes    []byte
+
+	configLocalVarFormFileName = "config"
+	configLocalVarFile := r.config
+
+	if configLocalVarFile != nil {
+		fbs, _ := io.ReadAll(configLocalVarFile)
+
+		configLocalVarFileBytes = fbs
+		configLocalVarFileName = configLocalVarFile.Name()
+		configLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
+	}
+	if r.region != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "")
+	}
+	if r.cloudId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "cloudId", r.cloudId, "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication

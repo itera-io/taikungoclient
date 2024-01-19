@@ -5480,8 +5480,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-01-19T09:05:52.496216Z
-                  createdAt: 2024-01-19T09:05:52.496216Z
+                  lastValidated: 2024-01-19T10:38:54.1267662Z
+                  createdAt: 2024-01-19T10:38:54.1267662Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5586,14 +5586,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-01-19T09:05:52.496216Z
+                    lastBackup: 2024-01-19T10:38:54.1267662Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-01-19T09:05:52.496216Z
+                  createdAt: 2024-01-19T10:38:54.1267662Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-01-19T09:05:52.496216Z
+                  lastBackup: 2024-01-19T10:38:54.1267662Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5698,8 +5698,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-19T09:05:52.496216Z
-                  expiration: 2024-01-19T09:05:52.496216Z
+                  createdAt: 2024-01-19T10:38:54.1267662Z
+                  expiration: 2024-01-19T10:38:54.1267662Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5803,7 +5803,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-19T09:05:52.496216Z
+                  createdAt: 2024-01-19T10:38:54.1267662Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5913,9 +5913,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-01-19T09:05:52.496216+00:00
-                  startTimeStamp: 2024-01-19T09:05:52.496216+00:00
-                  createdAt: 2024-01-19T09:05:52.496216Z
+                  completionDateTime: 2024-01-19T10:38:54.1267662+00:00
+                  startTimeStamp: 2024-01-19T10:38:54.1267662+00:00
+                  createdAt: 2024-01-19T10:38:54.1267662Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -11786,17 +11786,11 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              command:
-                style: form
             schema:
-              $ref: '#/components/schemas/googlecloud_zone_list_request'
+              $ref: '#/components/schemas/GoogleZoneListCommand'
           application/x-www-form-urlencoded:
-            encoding:
-              command:
-                style: form
             schema:
-              $ref: '#/components/schemas/googlecloud_zone_list_request'
+              $ref: '#/components/schemas/GoogleZoneListCommand'
       responses:
         "200":
           content:
@@ -11807,7 +11801,7 @@ paths:
                 totalCount: 1
               schema:
                 $ref: '#/components/schemas/AzResult'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -11837,7 +11831,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Google zones list
       tags:
       - Google
   /api/v1/googlecloud/list:
@@ -52534,6 +52529,18 @@ components:
           - reasons
           hidden: true
           enable: true
+        addServer:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        addVm:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         enableBackup:
           reasons:
           - reasons
@@ -52594,6 +52601,10 @@ components:
         enableMaintenanceMode:
           $ref: '#/components/schemas/ButtonStatusDto'
         disableMaintenanceMode:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        addServer:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        addVm:
           $ref: '#/components/schemas/ButtonStatusDto'
       type: object
     ProjectAppDetailsDto:
@@ -63368,11 +63379,6 @@ components:
         yaml:
           nullable: true
           type: string
-      type: object
-    googlecloud_zone_list_request:
-      properties:
-        command:
-          $ref: '#/components/schemas/GoogleZoneListCommand'
       type: object
   securitySchemes:
     Bearer:
