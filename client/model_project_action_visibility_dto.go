@@ -45,8 +45,7 @@ type ProjectActionVisibilityDto struct {
 	EnableAi *ButtonStatusDto `json:"enableAi,omitempty"`
 	DisableAi *ButtonStatusDto `json:"disableAi,omitempty"`
 	AiAssistant *ButtonStatusDto `json:"aiAssistant,omitempty"`
-	EnableMaintenanceMode *ButtonStatusDto `json:"enableMaintenanceMode,omitempty"`
-	DisableMaintenanceMode *ButtonStatusDto `json:"disableMaintenanceMode,omitempty"`
+	ProjectMaintenanceMode *ButtonStatusDto `json:"projectMaintenanceMode,omitempty"`
 	AddServer *ButtonStatusDto `json:"addServer,omitempty"`
 	AddVm *ButtonStatusDto `json:"addVm,omitempty"`
 }
@@ -868,68 +867,36 @@ func (o *ProjectActionVisibilityDto) SetAiAssistant(v ButtonStatusDto) {
 	o.AiAssistant = &v
 }
 
-// GetEnableMaintenanceMode returns the EnableMaintenanceMode field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetEnableMaintenanceMode() ButtonStatusDto {
-	if o == nil || IsNil(o.EnableMaintenanceMode) {
+// GetProjectMaintenanceMode returns the ProjectMaintenanceMode field value if set, zero value otherwise.
+func (o *ProjectActionVisibilityDto) GetProjectMaintenanceMode() ButtonStatusDto {
+	if o == nil || IsNil(o.ProjectMaintenanceMode) {
 		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.EnableMaintenanceMode
+	return *o.ProjectMaintenanceMode
 }
 
-// GetEnableMaintenanceModeOk returns a tuple with the EnableMaintenanceMode field value if set, nil otherwise
+// GetProjectMaintenanceModeOk returns a tuple with the ProjectMaintenanceMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetEnableMaintenanceModeOk() (*ButtonStatusDto, bool) {
-	if o == nil || IsNil(o.EnableMaintenanceMode) {
+func (o *ProjectActionVisibilityDto) GetProjectMaintenanceModeOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.ProjectMaintenanceMode) {
 		return nil, false
 	}
-	return o.EnableMaintenanceMode, true
+	return o.ProjectMaintenanceMode, true
 }
 
-// HasEnableMaintenanceMode returns a boolean if a field has been set.
-func (o *ProjectActionVisibilityDto) HasEnableMaintenanceMode() bool {
-	if o != nil && !IsNil(o.EnableMaintenanceMode) {
+// HasProjectMaintenanceMode returns a boolean if a field has been set.
+func (o *ProjectActionVisibilityDto) HasProjectMaintenanceMode() bool {
+	if o != nil && !IsNil(o.ProjectMaintenanceMode) {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableMaintenanceMode gets a reference to the given ButtonStatusDto and assigns it to the EnableMaintenanceMode field.
-func (o *ProjectActionVisibilityDto) SetEnableMaintenanceMode(v ButtonStatusDto) {
-	o.EnableMaintenanceMode = &v
-}
-
-// GetDisableMaintenanceMode returns the DisableMaintenanceMode field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetDisableMaintenanceMode() ButtonStatusDto {
-	if o == nil || IsNil(o.DisableMaintenanceMode) {
-		var ret ButtonStatusDto
-		return ret
-	}
-	return *o.DisableMaintenanceMode
-}
-
-// GetDisableMaintenanceModeOk returns a tuple with the DisableMaintenanceMode field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetDisableMaintenanceModeOk() (*ButtonStatusDto, bool) {
-	if o == nil || IsNil(o.DisableMaintenanceMode) {
-		return nil, false
-	}
-	return o.DisableMaintenanceMode, true
-}
-
-// HasDisableMaintenanceMode returns a boolean if a field has been set.
-func (o *ProjectActionVisibilityDto) HasDisableMaintenanceMode() bool {
-	if o != nil && !IsNil(o.DisableMaintenanceMode) {
-		return true
-	}
-
-	return false
-}
-
-// SetDisableMaintenanceMode gets a reference to the given ButtonStatusDto and assigns it to the DisableMaintenanceMode field.
-func (o *ProjectActionVisibilityDto) SetDisableMaintenanceMode(v ButtonStatusDto) {
-	o.DisableMaintenanceMode = &v
+// SetProjectMaintenanceMode gets a reference to the given ButtonStatusDto and assigns it to the ProjectMaintenanceMode field.
+func (o *ProjectActionVisibilityDto) SetProjectMaintenanceMode(v ButtonStatusDto) {
+	o.ProjectMaintenanceMode = &v
 }
 
 // GetAddServer returns the AddServer field value if set, zero value otherwise.
@@ -1081,11 +1048,8 @@ func (o ProjectActionVisibilityDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AiAssistant) {
 		toSerialize["aiAssistant"] = o.AiAssistant
 	}
-	if !IsNil(o.EnableMaintenanceMode) {
-		toSerialize["enableMaintenanceMode"] = o.EnableMaintenanceMode
-	}
-	if !IsNil(o.DisableMaintenanceMode) {
-		toSerialize["disableMaintenanceMode"] = o.DisableMaintenanceMode
+	if !IsNil(o.ProjectMaintenanceMode) {
+		toSerialize["projectMaintenanceMode"] = o.ProjectMaintenanceMode
 	}
 	if !IsNil(o.AddServer) {
 		toSerialize["addServer"] = o.AddServer
