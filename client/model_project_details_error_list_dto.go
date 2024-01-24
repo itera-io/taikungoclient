@@ -22,6 +22,7 @@ var _ MappedNullable = &ProjectDetailsErrorListDto{}
 type ProjectDetailsErrorListDto struct {
 	Type *ProjectDetailsErrorType `json:"type,omitempty"`
 	Message []string `json:"message,omitempty"`
+	Kind *ProjectType `json:"kind,omitempty"`
 }
 
 // NewProjectDetailsErrorListDto instantiates a new ProjectDetailsErrorListDto object
@@ -106,6 +107,38 @@ func (o *ProjectDetailsErrorListDto) SetMessage(v []string) {
 	o.Message = v
 }
 
+// GetKind returns the Kind field value if set, zero value otherwise.
+func (o *ProjectDetailsErrorListDto) GetKind() ProjectType {
+	if o == nil || IsNil(o.Kind) {
+		var ret ProjectType
+		return ret
+	}
+	return *o.Kind
+}
+
+// GetKindOk returns a tuple with the Kind field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDetailsErrorListDto) GetKindOk() (*ProjectType, bool) {
+	if o == nil || IsNil(o.Kind) {
+		return nil, false
+	}
+	return o.Kind, true
+}
+
+// HasKind returns a boolean if a field has been set.
+func (o *ProjectDetailsErrorListDto) HasKind() bool {
+	if o != nil && !IsNil(o.Kind) {
+		return true
+	}
+
+	return false
+}
+
+// SetKind gets a reference to the given ProjectType and assigns it to the Kind field.
+func (o *ProjectDetailsErrorListDto) SetKind(v ProjectType) {
+	o.Kind = &v
+}
+
 func (o ProjectDetailsErrorListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -121,6 +154,9 @@ func (o ProjectDetailsErrorListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Message != nil {
 		toSerialize["message"] = o.Message
+	}
+	if !IsNil(o.Kind) {
+		toSerialize["kind"] = o.Kind
 	}
 	return toSerialize, nil
 }

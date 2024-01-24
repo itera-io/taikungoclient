@@ -659,6 +659,7 @@ docs/ProjectActionDto.md
 docs/ProjectActionUpdateDto.md
 docs/ProjectActionVisibilityDto.md
 docs/ProjectActionsAPI.md
+docs/ProjectAlertsQuery.md
 docs/ProjectAppDetailsDto.md
 docs/ProjectAppDto.md
 docs/ProjectAppList.md
@@ -1513,6 +1514,7 @@ model_problem_details.go
 model_project_action_dto.go
 model_project_action_update_dto.go
 model_project_action_visibility_dto.go
+model_project_alerts_query.go
 model_project_app_details_dto.go
 model_project_app_dto.go
 model_project_app_list.go
