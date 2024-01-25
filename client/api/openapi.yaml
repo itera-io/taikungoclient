@@ -3476,7 +3476,7 @@ paths:
               autoscalingGroupName: taikun
               minSize: 1
               maxSize: 1
-              diskSize: 30
+              diskSize: 32212254720
               flavor: m1.medium
               spotEnabled: false
             schema:
@@ -5480,8 +5480,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-01-24T00:02:44.6942954Z
-                  createdAt: 2024-01-24T00:02:44.6942954Z
+                  lastValidated: 2024-01-25T00:02:46.0214063Z
+                  createdAt: 2024-01-25T00:02:46.0214063Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5586,14 +5586,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-01-24T00:02:44.6942954Z
+                    lastBackup: 2024-01-25T00:02:46.0214063Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-01-24T00:02:44.6942954Z
+                  createdAt: 2024-01-25T00:02:46.0214063Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-01-24T00:02:44.6942954Z
+                  lastBackup: 2024-01-25T00:02:46.0214063Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5698,8 +5698,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-24T00:02:44.6942954Z
-                  expiration: 2024-01-24T00:02:44.6942954Z
+                  createdAt: 2024-01-25T00:02:46.0214063Z
+                  expiration: 2024-01-25T00:02:46.0214063Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5803,7 +5803,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-24T00:02:44.6942954Z
+                  createdAt: 2024-01-25T00:02:46.0214063Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5913,9 +5913,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-01-24T00:02:44.6942954+00:00
-                  startTimeStamp: 2024-01-24T00:02:44.6942954+00:00
-                  createdAt: 2024-01-24T00:02:44.6942954Z
+                  completionDateTime: 2024-01-25T00:02:46.0214063+00:00
+                  startTimeStamp: 2024-01-25T00:02:46.0214063+00:00
+                  createdAt: 2024-01-25T00:02:46.0214063Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
