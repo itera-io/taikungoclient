@@ -494,6 +494,7 @@ Class | Method | HTTP request | Description
 *ProjectAppsAPI* | [**ProjectappList**](docs/ProjectAppsAPI.md#projectapplist) | **Get** /api/v1/projectapp/list | Retrieve all project apps according to current organization
 *ProjectAppsAPI* | [**ProjectappLockManager**](docs/ProjectAppsAPI.md#projectapplockmanager) | **Post** /api/v1/projectapp/lockmanager | Lock/Unlock project app
 *ProjectAppsAPI* | [**ProjectappSync**](docs/ProjectAppsAPI.md#projectappsync) | **Post** /api/v1/projectapp/sync | Sync an application
+*ProjectAppsAPI* | [**ProjectappUpdate**](docs/ProjectAppsAPI.md#projectappupdate) | **Post** /api/v1/projectapp/update | Update project app
 *ProjectGroupsAPI* | [**ProjectgroupsBind**](docs/ProjectGroupsAPI.md#projectgroupsbind) | **Post** /api/v1/projectgroups/bind | Bind User groups
 *ProjectGroupsAPI* | [**ProjectgroupsCreate**](docs/ProjectGroupsAPI.md#projectgroupscreate) | **Post** /api/v1/projectgroups/create | Add Project groups
 *ProjectGroupsAPI* | [**ProjectgroupsDelete**](docs/ProjectGroupsAPI.md#projectgroupsdelete) | **Delete** /api/v1/projectgroups | Remove Project group(s)
@@ -1485,6 +1486,7 @@ Class | Method | HTTP request | Description
  - [UpdateOrganizationCommand](docs/UpdateOrganizationCommand.md)
  - [UpdateOrganizationSubscriptionCommand](docs/UpdateOrganizationSubscriptionCommand.md)
  - [UpdatePaymentIdCommand](docs/UpdatePaymentIdCommand.md)
+ - [UpdateProjectAppCommand](docs/UpdateProjectAppCommand.md)
  - [UpdateProjectGroupDto](docs/UpdateProjectGroupDto.md)
  - [UpdateProjectUserDto](docs/UpdateProjectUserDto.md)
  - [UpdateProjectUserGroupDto](docs/UpdateProjectUserGroupDto.md)

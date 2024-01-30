@@ -914,6 +914,7 @@ docs/UpdateOpenStackCommand.md
 docs/UpdateOrganizationCommand.md
 docs/UpdateOrganizationSubscriptionCommand.md
 docs/UpdatePaymentIdCommand.md
+docs/UpdateProjectAppCommand.md
 docs/UpdateProjectGroupDto.md
 docs/UpdateProjectUserDto.md
 docs/UpdateProjectUserGroupDto.md
@@ -1742,6 +1743,7 @@ model_update_open_stack_command.go
 model_update_organization_command.go
 model_update_organization_subscription_command.go
 model_update_payment_id_command.go
+model_update_project_app_command.go
 model_update_project_group_dto.go
 model_update_project_user_dto.go
 model_update_project_user_group_dto.go

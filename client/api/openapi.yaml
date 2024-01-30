@@ -5480,8 +5480,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-01-29T00:02:46.3031794Z
-                  createdAt: 2024-01-29T00:02:46.3031794Z
+                  lastValidated: 2024-01-30T00:02:44.4269506Z
+                  createdAt: 2024-01-30T00:02:44.4269506Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5586,14 +5586,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-01-29T00:02:46.3031794Z
+                    lastBackup: 2024-01-30T00:02:44.4269506Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-01-29T00:02:46.3031794Z
+                  createdAt: 2024-01-30T00:02:44.4269506Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-01-29T00:02:46.3031794Z
+                  lastBackup: 2024-01-30T00:02:44.4269506Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5698,8 +5698,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-29T00:02:46.3031794Z
-                  expiration: 2024-01-29T00:02:46.3031794Z
+                  createdAt: 2024-01-30T00:02:44.4269506Z
+                  expiration: 2024-01-30T00:02:44.4269506Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5803,7 +5803,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-01-29T00:02:46.3031794Z
+                  createdAt: 2024-01-30T00:02:44.4269506Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5913,9 +5913,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-01-29T00:02:46.3031794+00:00
-                  startTimeStamp: 2024-01-29T00:02:46.3031794+00:00
-                  createdAt: 2024-01-29T00:02:46.3031794Z
+                  completionDateTime: 2024-01-30T00:02:44.4269506+00:00
+                  startTimeStamp: 2024-01-30T00:02:44.4269506+00:00
+                  createdAt: 2024-01-30T00:02:44.4269506Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -23724,6 +23724,49 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Sync an application
+      tags:
+      - Project apps
+  /api/v1/projectapp/update:
+    post:
+      operationId: projectapp-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectAppCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Update project app
       tags:
       - Project apps
   /api/v1/projectapp/{id}:
@@ -61724,6 +61767,19 @@ components:
           nullable: true
           type: string
         paymentIntentId:
+          nullable: true
+          type: string
+      type: object
+    UpdateProjectAppCommand:
+      additionalProperties: false
+      example:
+        projectAppId: 0
+        status: status
+      properties:
+        projectAppId:
+          format: int32
+          type: integer
+        status:
           nullable: true
           type: string
       type: object
