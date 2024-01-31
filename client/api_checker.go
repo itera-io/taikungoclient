@@ -3902,9 +3902,6 @@ func (a *CheckerAPIService) CheckerUserExecute(r ApiCheckerUserRequest) (*http.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.userExistCommand == nil {
-		return nil, reportError("userExistCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

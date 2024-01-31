@@ -232,9 +232,6 @@ func (a *PartnersAPIService) PartnerBecomeAPartnerExecute(r ApiPartnerBecomeAPar
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.becomePartnerCommand == nil {
-		return nil, reportError("becomePartnerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -559,9 +556,6 @@ func (a *PartnersAPIService) PartnerContactUsExecute(r ApiPartnerContactUsReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.contactUsCommand == nil {
-		return nil, reportError("contactUsCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
