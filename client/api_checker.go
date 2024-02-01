@@ -71,9 +71,6 @@ func (a *CheckerAPIService) CheckerArtifactExecute(r ApiCheckerArtifactRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.artifactUrlCheckerCommand == nil {
-		return nil, reportError("artifactUrlCheckerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
