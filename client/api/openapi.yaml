@@ -3206,6 +3206,43 @@ paths:
       summary: Generate reset password token if you forgot password
       tags:
       - Auth management
+  /api/v1/auth/google:
+    get:
+      operationId: auth-google
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Consent to Google
+      tags:
+      - Auth management
   /api/v1/auth/login:
     post:
       operationId: auth-login
@@ -3218,6 +3255,7 @@ paths:
               mode: token|autoscaling|keycloak
               accessKey: X9BZGP8TSTB7D4K6N9U8
               secretKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              local: false
             schema:
               $ref: '#/components/schemas/LoginCommand'
       responses:
@@ -5480,8 +5518,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-02-01T00:03:11.0472407Z
-                  createdAt: 2024-02-01T00:03:11.0472407Z
+                  lastValidated: 2024-02-02T00:02:26.017727Z
+                  createdAt: 2024-02-02T00:02:26.017727Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5586,14 +5624,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-02-01T00:03:11.0472407Z
+                    lastBackup: 2024-02-02T00:02:26.017727Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-02-01T00:03:11.0472407Z
+                  createdAt: 2024-02-02T00:02:26.017727Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-02-01T00:03:11.0472407Z
+                  lastBackup: 2024-02-02T00:02:26.017727Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5698,8 +5736,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-01T00:03:11.0472407Z
-                  expiration: 2024-02-01T00:03:11.0472407Z
+                  createdAt: 2024-02-02T00:02:26.017727Z
+                  expiration: 2024-02-02T00:02:26.017727Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5803,7 +5841,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-01T00:03:11.0472407Z
+                  createdAt: 2024-02-02T00:02:26.017727Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5913,9 +5951,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-02-01T00:03:11.0472407+00:00
-                  startTimeStamp: 2024-02-01T00:03:11.0472407+00:00
-                  createdAt: 2024-02-01T00:03:11.0472407Z
+                  completionDateTime: 2024-02-02T00:02:26.017727+00:00
+                  startTimeStamp: 2024-02-02T00:02:26.017727+00:00
+                  createdAt: 2024-02-02T00:02:26.017727Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -46358,6 +46396,7 @@ components:
       additionalProperties: false
       example:
         refreshTokenExpireTime: 2000-01-23T04:56:07.000+00:00
+        returnUrl: returnUrl
         token: token
         refreshToken: refreshToken
       properties:
@@ -46369,6 +46408,9 @@ components:
           type: string
         refreshTokenExpireTime:
           format: date-time
+          type: string
+        returnUrl:
+          nullable: true
           type: string
       type: object
     GiveAccessToPartnerCommand:
@@ -49221,6 +49263,7 @@ components:
         secretKey: secretKey
         accessKey: accessKey
         email: email
+        local: true
       properties:
         email:
           nullable: true
@@ -49237,6 +49280,8 @@ components:
         secretKey:
           nullable: true
           type: string
+        local:
+          type: boolean
       type: object
     LokiResponseDto:
       additionalProperties: false

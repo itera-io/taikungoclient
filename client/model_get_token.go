@@ -24,6 +24,7 @@ type GetToken struct {
 	Token NullableString `json:"token,omitempty"`
 	RefreshToken NullableString `json:"refreshToken,omitempty"`
 	RefreshTokenExpireTime *time.Time `json:"refreshTokenExpireTime,omitempty"`
+	ReturnUrl NullableString `json:"returnUrl,omitempty"`
 }
 
 // NewGetToken instantiates a new GetToken object
@@ -159,6 +160,48 @@ func (o *GetToken) SetRefreshTokenExpireTime(v time.Time) {
 	o.RefreshTokenExpireTime = &v
 }
 
+// GetReturnUrl returns the ReturnUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetToken) GetReturnUrl() string {
+	if o == nil || IsNil(o.ReturnUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ReturnUrl.Get()
+}
+
+// GetReturnUrlOk returns a tuple with the ReturnUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetToken) GetReturnUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ReturnUrl.Get(), o.ReturnUrl.IsSet()
+}
+
+// HasReturnUrl returns a boolean if a field has been set.
+func (o *GetToken) HasReturnUrl() bool {
+	if o != nil && o.ReturnUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetReturnUrl gets a reference to the given NullableString and assigns it to the ReturnUrl field.
+func (o *GetToken) SetReturnUrl(v string) {
+	o.ReturnUrl.Set(&v)
+}
+// SetReturnUrlNil sets the value for ReturnUrl to be an explicit nil
+func (o *GetToken) SetReturnUrlNil() {
+	o.ReturnUrl.Set(nil)
+}
+
+// UnsetReturnUrl ensures that no value is present for ReturnUrl, not even an explicit nil
+func (o *GetToken) UnsetReturnUrl() {
+	o.ReturnUrl.Unset()
+}
+
 func (o GetToken) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -177,6 +220,9 @@ func (o GetToken) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RefreshTokenExpireTime) {
 		toSerialize["refreshTokenExpireTime"] = o.RefreshTokenExpireTime
+	}
+	if o.ReturnUrl.IsSet() {
+		toSerialize["returnUrl"] = o.ReturnUrl.Get()
 	}
 	return toSerialize, nil
 }

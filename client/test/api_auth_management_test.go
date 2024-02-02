@@ -33,6 +33,17 @@ func Test_taikuncore_AuthManagementAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AuthManagementAPIService AuthGoogle", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.AuthManagementAPI.AuthGoogle(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AuthManagementAPIService AuthLogin", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
