@@ -708,6 +708,7 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**UsersExportCsv**](docs/UsersAPI.md#usersexportcsv) | **Get** /api/v1/users/export | Export Csv
 *UsersAPI* | [**UsersForceToResetPassword**](docs/UsersAPI.md#usersforcetoresetpassword) | **Post** /api/v1/users/force-to-reset | Force to reset password
 *UsersAPI* | [**UsersList**](docs/UsersAPI.md#userslist) | **Get** /api/v1/users | Retrieve all users
+*UsersAPI* | [**UsersToggle2faMode**](docs/UsersAPI.md#userstoggle2famode) | **Post** /api/v1/users/toggle-2fa | Toggle 2FA mode
 *UsersAPI* | [**UsersToggleDemoMode**](docs/UsersAPI.md#userstoggledemomode) | **Post** /api/v1/users/toggle-demo-mode | Toggle demo mode
 *UsersAPI* | [**UsersToggleMaintenanceMode**](docs/UsersAPI.md#userstogglemaintenancemode) | **Post** /api/v1/users/togglemaintenancemode | Toggle maintenance mode
 *UsersAPI* | [**UsersToggleNotificationMode**](docs/UsersAPI.md#userstogglenotificationmode) | **Post** /api/v1/users/togglenotificationmode | Toggle notification mode
@@ -1468,6 +1469,7 @@ Class | Method | HTTP request | Description
  - [ToggleKeycloakCommand](docs/ToggleKeycloakCommand.md)
  - [ToggleMaintenanceModeCommand](docs/ToggleMaintenanceModeCommand.md)
  - [ToggleNotificationModeCommand](docs/ToggleNotificationModeCommand.md)
+ - [ToggleTwoFactorAuthenticationCommand](docs/ToggleTwoFactorAuthenticationCommand.md)
  - [TransferList](docs/TransferList.md)
  - [TransferTicketCommand](docs/TransferTicketCommand.md)
  - [TryForFreeCommand](docs/TryForFreeCommand.md)

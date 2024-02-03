@@ -5518,8 +5518,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-02-02T00:02:26.017727Z
-                  createdAt: 2024-02-02T00:02:26.017727Z
+                  lastValidated: 2024-02-03T00:02:29.4359145Z
+                  createdAt: 2024-02-03T00:02:29.4359145Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5624,14 +5624,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-02-02T00:02:26.017727Z
+                    lastBackup: 2024-02-03T00:02:29.4359145Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-02-02T00:02:26.017727Z
+                  createdAt: 2024-02-03T00:02:29.4359145Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-02-02T00:02:26.017727Z
+                  lastBackup: 2024-02-03T00:02:29.4359145Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5736,8 +5736,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-02T00:02:26.017727Z
-                  expiration: 2024-02-02T00:02:26.017727Z
+                  createdAt: 2024-02-03T00:02:29.4359145Z
+                  expiration: 2024-02-03T00:02:29.4359145Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5841,7 +5841,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-02T00:02:26.017727Z
+                  createdAt: 2024-02-03T00:02:29.4359145Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5951,9 +5951,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-02-02T00:02:26.017727+00:00
-                  startTimeStamp: 2024-02-02T00:02:26.017727+00:00
-                  createdAt: 2024-02-02T00:02:26.017727Z
+                  completionDateTime: 2024-02-03T00:02:29.4359145+00:00
+                  startTimeStamp: 2024-02-03T00:02:29.4359145+00:00
+                  createdAt: 2024-02-03T00:02:29.4359145Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -35330,6 +35330,49 @@ paths:
       summary: Toggle notification mode
       tags:
       - Users
+  /api/v1/users/toggle-2fa:
+    post:
+      operationId: users-toggle-2fa-mode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToggleTwoFactorAuthenticationCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Toggle 2FA mode
+      tags:
+      - Users
   /api/v1/users/update:
     post:
       operationId: users-update-user
@@ -46396,7 +46439,7 @@ components:
       additionalProperties: false
       example:
         refreshTokenExpireTime: 2000-01-23T04:56:07.000+00:00
-        returnUrl: returnUrl
+        tempToken: tempToken
         token: token
         refreshToken: refreshToken
       properties:
@@ -46409,7 +46452,7 @@ components:
         refreshTokenExpireTime:
           format: date-time
           type: string
-        returnUrl:
+        tempToken:
           nullable: true
           type: string
       type: object
@@ -61375,6 +61418,15 @@ components:
           nullable: true
           type: string
       type: object
+    ToggleTwoFactorAuthenticationCommand:
+      additionalProperties: false
+      example:
+        mode: mode
+      properties:
+        mode:
+          nullable: true
+          type: string
+      type: object
     TransferList:
       additionalProperties: false
       example:
@@ -62328,6 +62380,7 @@ components:
           id: id
           email: email
           owner: true
+          is2FAEnabled: true
           organizationName: organizationName
           hasRepo: true
           hasPaymentMethod: true
@@ -62406,6 +62459,7 @@ components:
         id: id
         email: email
         owner: true
+        is2FAEnabled: true
         organizationName: organizationName
         hasRepo: true
         hasPaymentMethod: true
@@ -62473,6 +62527,8 @@ components:
         demoModeEnabled:
           type: boolean
         isNewOrganization:
+          type: boolean
+        is2FAEnabled:
           type: boolean
         lastLoginAt:
           nullable: true
@@ -62754,6 +62810,7 @@ components:
           id: id
           email: email
           owner: true
+          is2FAEnabled: true
           organizationName: organizationName
           hasRepo: true
           hasPaymentMethod: true
@@ -62787,6 +62844,7 @@ components:
           id: id
           email: email
           owner: true
+          is2FAEnabled: true
           organizationName: organizationName
           hasRepo: true
           hasPaymentMethod: true

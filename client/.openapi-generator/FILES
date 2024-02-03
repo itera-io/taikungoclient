@@ -895,6 +895,7 @@ docs/ToggleDemoModeCommand.md
 docs/ToggleKeycloakCommand.md
 docs/ToggleMaintenanceModeCommand.md
 docs/ToggleNotificationModeCommand.md
+docs/ToggleTwoFactorAuthenticationCommand.md
 docs/TransferList.md
 docs/TransferTicketCommand.md
 docs/TryForFreeCommand.md
@@ -1724,6 +1725,7 @@ model_toggle_demo_mode_command.go
 model_toggle_keycloak_command.go
 model_toggle_maintenance_mode_command.go
 model_toggle_notification_mode_command.go
+model_toggle_two_factor_authentication_command.go
 model_transfer_list.go
 model_transfer_ticket_command.go
 model_try_for_free_command.go

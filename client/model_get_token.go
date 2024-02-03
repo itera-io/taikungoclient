@@ -24,7 +24,7 @@ type GetToken struct {
 	Token NullableString `json:"token,omitempty"`
 	RefreshToken NullableString `json:"refreshToken,omitempty"`
 	RefreshTokenExpireTime *time.Time `json:"refreshTokenExpireTime,omitempty"`
-	ReturnUrl NullableString `json:"returnUrl,omitempty"`
+	TempToken NullableString `json:"tempToken,omitempty"`
 }
 
 // NewGetToken instantiates a new GetToken object
@@ -160,46 +160,46 @@ func (o *GetToken) SetRefreshTokenExpireTime(v time.Time) {
 	o.RefreshTokenExpireTime = &v
 }
 
-// GetReturnUrl returns the ReturnUrl field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetToken) GetReturnUrl() string {
-	if o == nil || IsNil(o.ReturnUrl.Get()) {
+// GetTempToken returns the TempToken field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetToken) GetTempToken() string {
+	if o == nil || IsNil(o.TempToken.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ReturnUrl.Get()
+	return *o.TempToken.Get()
 }
 
-// GetReturnUrlOk returns a tuple with the ReturnUrl field value if set, nil otherwise
+// GetTempTokenOk returns a tuple with the TempToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetToken) GetReturnUrlOk() (*string, bool) {
+func (o *GetToken) GetTempTokenOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ReturnUrl.Get(), o.ReturnUrl.IsSet()
+	return o.TempToken.Get(), o.TempToken.IsSet()
 }
 
-// HasReturnUrl returns a boolean if a field has been set.
-func (o *GetToken) HasReturnUrl() bool {
-	if o != nil && o.ReturnUrl.IsSet() {
+// HasTempToken returns a boolean if a field has been set.
+func (o *GetToken) HasTempToken() bool {
+	if o != nil && o.TempToken.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReturnUrl gets a reference to the given NullableString and assigns it to the ReturnUrl field.
-func (o *GetToken) SetReturnUrl(v string) {
-	o.ReturnUrl.Set(&v)
+// SetTempToken gets a reference to the given NullableString and assigns it to the TempToken field.
+func (o *GetToken) SetTempToken(v string) {
+	o.TempToken.Set(&v)
 }
-// SetReturnUrlNil sets the value for ReturnUrl to be an explicit nil
-func (o *GetToken) SetReturnUrlNil() {
-	o.ReturnUrl.Set(nil)
+// SetTempTokenNil sets the value for TempToken to be an explicit nil
+func (o *GetToken) SetTempTokenNil() {
+	o.TempToken.Set(nil)
 }
 
-// UnsetReturnUrl ensures that no value is present for ReturnUrl, not even an explicit nil
-func (o *GetToken) UnsetReturnUrl() {
-	o.ReturnUrl.Unset()
+// UnsetTempToken ensures that no value is present for TempToken, not even an explicit nil
+func (o *GetToken) UnsetTempToken() {
+	o.TempToken.Unset()
 }
 
 func (o GetToken) MarshalJSON() ([]byte, error) {
@@ -221,8 +221,8 @@ func (o GetToken) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RefreshTokenExpireTime) {
 		toSerialize["refreshTokenExpireTime"] = o.RefreshTokenExpireTime
 	}
-	if o.ReturnUrl.IsSet() {
-		toSerialize["returnUrl"] = o.ReturnUrl.Get()
+	if o.TempToken.IsSet() {
+		toSerialize["tempToken"] = o.TempToken.Get()
 	}
 	return toSerialize, nil
 }
