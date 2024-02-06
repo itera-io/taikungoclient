@@ -82,6 +82,7 @@ type ProjectDetailsForServersDto struct {
 	Flavor NullableString `json:"flavor,omitempty"`
 	SpotEnabled NullableBool `json:"spotEnabled,omitempty"`
 	IsAutoscalingEnabled *bool `json:"isAutoscalingEnabled,omitempty"`
+	IsAutoscalingSpotEnabled *bool `json:"isAutoscalingSpotEnabled,omitempty"`
 	HasNfsServer *bool `json:"hasNfsServer,omitempty"`
 	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
 	AvailabilityZones []string `json:"availabilityZones,omitempty"`
@@ -2321,6 +2322,38 @@ func (o *ProjectDetailsForServersDto) SetIsAutoscalingEnabled(v bool) {
 	o.IsAutoscalingEnabled = &v
 }
 
+// GetIsAutoscalingSpotEnabled returns the IsAutoscalingSpotEnabled field value if set, zero value otherwise.
+func (o *ProjectDetailsForServersDto) GetIsAutoscalingSpotEnabled() bool {
+	if o == nil || IsNil(o.IsAutoscalingSpotEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsAutoscalingSpotEnabled
+}
+
+// GetIsAutoscalingSpotEnabledOk returns a tuple with the IsAutoscalingSpotEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDetailsForServersDto) GetIsAutoscalingSpotEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsAutoscalingSpotEnabled) {
+		return nil, false
+	}
+	return o.IsAutoscalingSpotEnabled, true
+}
+
+// HasIsAutoscalingSpotEnabled returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasIsAutoscalingSpotEnabled() bool {
+	if o != nil && !IsNil(o.IsAutoscalingSpotEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAutoscalingSpotEnabled gets a reference to the given bool and assigns it to the IsAutoscalingSpotEnabled field.
+func (o *ProjectDetailsForServersDto) SetIsAutoscalingSpotEnabled(v bool) {
+	o.IsAutoscalingSpotEnabled = &v
+}
+
 // GetHasNfsServer returns the HasNfsServer field value if set, zero value otherwise.
 func (o *ProjectDetailsForServersDto) GetHasNfsServer() bool {
 	if o == nil || IsNil(o.HasNfsServer) {
@@ -2710,6 +2743,9 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsAutoscalingEnabled) {
 		toSerialize["isAutoscalingEnabled"] = o.IsAutoscalingEnabled
+	}
+	if !IsNil(o.IsAutoscalingSpotEnabled) {
+		toSerialize["isAutoscalingSpotEnabled"] = o.IsAutoscalingSpotEnabled
 	}
 	if !IsNil(o.HasNfsServer) {
 		toSerialize["hasNfsServer"] = o.HasNfsServer

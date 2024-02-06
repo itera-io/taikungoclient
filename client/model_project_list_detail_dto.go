@@ -56,6 +56,7 @@ type ProjectListDetailDto struct {
 	HasExpirationWarning *bool `json:"hasExpirationWarning,omitempty"`
 	TotalHourlyCost *float64 `json:"totalHourlyCost,omitempty"`
 	IsAutoscalingEnabled *bool `json:"isAutoscalingEnabled,omitempty"`
+	IsAutoscalingSpotEnabled *bool `json:"isAutoscalingSpotEnabled,omitempty"`
 	AiEnabled *bool `json:"aiEnabled,omitempty"`
 	LockButton *ButtonStatusDto `json:"lockButton,omitempty"`
 	UnlockButton *ButtonStatusDto `json:"unlockButton,omitempty"`
@@ -1395,6 +1396,38 @@ func (o *ProjectListDetailDto) SetIsAutoscalingEnabled(v bool) {
 	o.IsAutoscalingEnabled = &v
 }
 
+// GetIsAutoscalingSpotEnabled returns the IsAutoscalingSpotEnabled field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetIsAutoscalingSpotEnabled() bool {
+	if o == nil || IsNil(o.IsAutoscalingSpotEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsAutoscalingSpotEnabled
+}
+
+// GetIsAutoscalingSpotEnabledOk returns a tuple with the IsAutoscalingSpotEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetIsAutoscalingSpotEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsAutoscalingSpotEnabled) {
+		return nil, false
+	}
+	return o.IsAutoscalingSpotEnabled, true
+}
+
+// HasIsAutoscalingSpotEnabled returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasIsAutoscalingSpotEnabled() bool {
+	if o != nil && !IsNil(o.IsAutoscalingSpotEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAutoscalingSpotEnabled gets a reference to the given bool and assigns it to the IsAutoscalingSpotEnabled field.
+func (o *ProjectListDetailDto) SetIsAutoscalingSpotEnabled(v bool) {
+	o.IsAutoscalingSpotEnabled = &v
+}
+
 // GetAiEnabled returns the AiEnabled field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetAiEnabled() bool {
 	if o == nil || IsNil(o.AiEnabled) {
@@ -1736,6 +1769,9 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsAutoscalingEnabled) {
 		toSerialize["isAutoscalingEnabled"] = o.IsAutoscalingEnabled
+	}
+	if !IsNil(o.IsAutoscalingSpotEnabled) {
+		toSerialize["isAutoscalingSpotEnabled"] = o.IsAutoscalingSpotEnabled
 	}
 	if !IsNil(o.AiEnabled) {
 		toSerialize["aiEnabled"] = o.AiEnabled
