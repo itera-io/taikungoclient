@@ -149,17 +149,6 @@ func Test_taikuncore_UsersAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UsersAPIService UsersToggleDemoMode", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.UsersAPI.UsersToggleDemoMode(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test UsersAPIService UsersToggleMaintenanceMode", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

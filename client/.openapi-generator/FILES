@@ -891,7 +891,6 @@ docs/TanzuFlavorsListDto.md
 docs/TanzuStorageListCommand.md
 docs/TicketAPI.md
 docs/TicketPriority.md
-docs/ToggleDemoModeCommand.md
 docs/ToggleKeycloakCommand.md
 docs/ToggleMaintenanceModeCommand.md
 docs/ToggleNotificationModeCommand.md
@@ -964,6 +963,7 @@ docs/UsersSearchResponseData.md
 docs/ValidateVsphereCommand.md
 docs/VerifyEmailCommand.md
 docs/VerifySlackCredentialsCommand.md
+docs/VerifyTwoFactorTokenCommand.md
 docs/VerifyWebhookCommand.md
 docs/VmConsoleScreenshotCommand.md
 docs/VmTemplateListCommand.md
@@ -1721,7 +1721,6 @@ model_tanzu_flavor_list.go
 model_tanzu_flavors_list_dto.go
 model_tanzu_storage_list_command.go
 model_ticket_priority.go
-model_toggle_demo_mode_command.go
 model_toggle_keycloak_command.go
 model_toggle_maintenance_mode_command.go
 model_toggle_notification_mode_command.go
@@ -1790,6 +1789,7 @@ model_users_search_response_data.go
 model_validate_vsphere_command.go
 model_verify_email_command.go
 model_verify_slack_credentials_command.go
+model_verify_two_factor_token_command.go
 model_verify_webhook_command.go
 model_vm_console_screenshot_command.go
 model_vm_template_list_command.go

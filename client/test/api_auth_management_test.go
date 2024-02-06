@@ -90,4 +90,15 @@ func Test_taikuncore_AuthManagementAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AuthManagementAPIService AuthVerify2fa", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.AuthManagementAPI.AuthVerify2fa(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

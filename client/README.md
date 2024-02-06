@@ -146,6 +146,7 @@ Class | Method | HTTP request | Description
 *AuthManagementAPI* | [**AuthRefresh**](docs/AuthManagementAPI.md#authrefresh) | **Post** /api/v1/auth/refresh | Refresh bearer token that generated automatically by API
 *AuthManagementAPI* | [**AuthResetPassword**](docs/AuthManagementAPI.md#authresetpassword) | **Post** /api/v1/auth/resetpassword | Reset password
 *AuthManagementAPI* | [**AuthTrial**](docs/AuthManagementAPI.md#authtrial) | **Post** /api/v1/auth/trial | Try free
+*AuthManagementAPI* | [**AuthVerify2fa**](docs/AuthManagementAPI.md#authverify2fa) | **Post** /api/v1/auth/verify-2fa | Verify 2FA
 *AutoscalingAPI* | [**AutoscalingDisable**](docs/AutoscalingAPI.md#autoscalingdisable) | **Post** /api/v1/autoscaling/disable | Disable autoscaling
 *AutoscalingAPI* | [**AutoscalingEdit**](docs/AutoscalingAPI.md#autoscalingedit) | **Post** /api/v1/autoscaling/edit | Edit autoscaling
 *AutoscalingAPI* | [**AutoscalingEnable**](docs/AutoscalingAPI.md#autoscalingenable) | **Post** /api/v1/autoscaling/enable | Enable autoscaling
@@ -709,7 +710,6 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**UsersForceToResetPassword**](docs/UsersAPI.md#usersforcetoresetpassword) | **Post** /api/v1/users/force-to-reset | Force to reset password
 *UsersAPI* | [**UsersList**](docs/UsersAPI.md#userslist) | **Get** /api/v1/users | Retrieve all users
 *UsersAPI* | [**UsersToggle2faMode**](docs/UsersAPI.md#userstoggle2famode) | **Post** /api/v1/users/toggle-2fa | Toggle 2FA mode
-*UsersAPI* | [**UsersToggleDemoMode**](docs/UsersAPI.md#userstoggledemomode) | **Post** /api/v1/users/toggle-demo-mode | Toggle demo mode
 *UsersAPI* | [**UsersToggleMaintenanceMode**](docs/UsersAPI.md#userstogglemaintenancemode) | **Post** /api/v1/users/togglemaintenancemode | Toggle maintenance mode
 *UsersAPI* | [**UsersToggleNotificationMode**](docs/UsersAPI.md#userstogglenotificationmode) | **Post** /api/v1/users/togglenotificationmode | Toggle notification mode
 *UsersAPI* | [**UsersUpdateUser**](docs/UsersAPI.md#usersupdateuser) | **Post** /api/v1/users/update | Update user
@@ -1465,7 +1465,6 @@ Class | Method | HTTP request | Description
  - [TanzuFlavorsListDto](docs/TanzuFlavorsListDto.md)
  - [TanzuStorageListCommand](docs/TanzuStorageListCommand.md)
  - [TicketPriority](docs/TicketPriority.md)
- - [ToggleDemoModeCommand](docs/ToggleDemoModeCommand.md)
  - [ToggleKeycloakCommand](docs/ToggleKeycloakCommand.md)
  - [ToggleMaintenanceModeCommand](docs/ToggleMaintenanceModeCommand.md)
  - [ToggleNotificationModeCommand](docs/ToggleNotificationModeCommand.md)
@@ -1534,6 +1533,7 @@ Class | Method | HTTP request | Description
  - [ValidateVsphereCommand](docs/ValidateVsphereCommand.md)
  - [VerifyEmailCommand](docs/VerifyEmailCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)
+ - [VerifyTwoFactorTokenCommand](docs/VerifyTwoFactorTokenCommand.md)
  - [VerifyWebhookCommand](docs/VerifyWebhookCommand.md)
  - [VmConsoleScreenshotCommand](docs/VmConsoleScreenshotCommand.md)
  - [VmTemplateListCommand](docs/VmTemplateListCommand.md)

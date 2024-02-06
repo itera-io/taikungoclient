@@ -3413,6 +3413,49 @@ paths:
       summary: Try free
       tags:
       - Auth management
+  /api/v1/auth/verify-2fa:
+    post:
+      operationId: auth-verify-2fa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyTwoFactorTokenCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Verify 2FA
+      tags:
+      - Auth management
   /api/v1/autoscaling/disable:
     post:
       operationId: autoscaling-disable
@@ -5518,8 +5561,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-02-05T00:02:57.2094036Z
-                  createdAt: 2024-02-05T00:02:57.2094036Z
+                  lastValidated: 2024-02-06T00:02:46.6346042Z
+                  createdAt: 2024-02-06T00:02:46.6346042Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5624,14 +5667,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-02-05T00:02:57.2094036Z
+                    lastBackup: 2024-02-06T00:02:46.6346042Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-02-05T00:02:57.2094036Z
+                  createdAt: 2024-02-06T00:02:46.6346042Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-02-05T00:02:57.2094036Z
+                  lastBackup: 2024-02-06T00:02:46.6346042Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5736,8 +5779,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-05T00:02:57.2094036Z
-                  expiration: 2024-02-05T00:02:57.2094036Z
+                  createdAt: 2024-02-06T00:02:46.6346042Z
+                  expiration: 2024-02-06T00:02:46.6346042Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5841,7 +5884,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-05T00:02:57.2094036Z
+                  createdAt: 2024-02-06T00:02:46.6346042Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5951,9 +5994,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-02-05T00:02:57.2094036+00:00
-                  startTimeStamp: 2024-02-05T00:02:57.2094036+00:00
-                  createdAt: 2024-02-05T00:02:57.2094036Z
+                  completionDateTime: 2024-02-06T00:02:46.6346042+00:00
+                  startTimeStamp: 2024-02-06T00:02:46.6346042+00:00
+                  createdAt: 2024-02-06T00:02:46.6346042Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -35201,49 +35244,6 @@ paths:
       summary: Force to reset password
       tags:
       - Users
-  /api/v1/users/toggle-demo-mode:
-    post:
-      operationId: users-toggle-demo-mode
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ToggleDemoModeCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Toggle demo mode
-      tags:
-      - Users
   /api/v1/users/togglemaintenancemode:
     post:
       operationId: users-toggle-maintenance-mode
@@ -61382,15 +61382,6 @@ components:
       - Medium
       - High
       type: string
-    ToggleDemoModeCommand:
-      additionalProperties: false
-      example:
-        mode: mode
-      properties:
-        mode:
-          nullable: true
-          type: string
-      type: object
     ToggleKeycloakCommand:
       additionalProperties: false
       example:
@@ -62397,17 +62388,12 @@ components:
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
-        demoOrganization: 5
         isMaintenanceModeEnabled: true
       properties:
         data:
           $ref: '#/components/schemas/UserForListDto'
         isMaintenanceModeEnabled:
           type: boolean
-        demoOrganization:
-          format: int32
-          nullable: true
-          type: integer
         trialDays:
           format: int32
           nullable: true
@@ -62985,6 +62971,19 @@ components:
           nullable: true
           type: string
         channel:
+          nullable: true
+          type: string
+      type: object
+    VerifyTwoFactorTokenCommand:
+      additionalProperties: false
+      example:
+        code: code
+        twoFactorTempKey: twoFactorTempKey
+      properties:
+        twoFactorTempKey:
+          nullable: true
+          type: string
+        code:
           nullable: true
           type: string
       type: object
