@@ -89,6 +89,7 @@ type ProjectDetailsForServersDto struct {
 	Hypervisors []string `json:"hypervisors,omitempty"`
 	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
 	IsDrsEnabled *bool `json:"isDrsEnabled,omitempty"`
+	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice,omitempty"`
 }
 
 // NewProjectDetailsForServersDto instantiates a new ProjectDetailsForServersDto object
@@ -2548,6 +2549,48 @@ func (o *ProjectDetailsForServersDto) SetIsDrsEnabled(v bool) {
 	o.IsDrsEnabled = &v
 }
 
+// GetMaxSpotPrice returns the MaxSpotPrice field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectDetailsForServersDto) GetMaxSpotPrice() float64 {
+	if o == nil || IsNil(o.MaxSpotPrice.Get()) {
+		var ret float64
+		return ret
+	}
+	return *o.MaxSpotPrice.Get()
+}
+
+// GetMaxSpotPriceOk returns a tuple with the MaxSpotPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectDetailsForServersDto) GetMaxSpotPriceOk() (*float64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MaxSpotPrice.Get(), o.MaxSpotPrice.IsSet()
+}
+
+// HasMaxSpotPrice returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasMaxSpotPrice() bool {
+	if o != nil && o.MaxSpotPrice.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxSpotPrice gets a reference to the given NullableFloat64 and assigns it to the MaxSpotPrice field.
+func (o *ProjectDetailsForServersDto) SetMaxSpotPrice(v float64) {
+	o.MaxSpotPrice.Set(&v)
+}
+// SetMaxSpotPriceNil sets the value for MaxSpotPrice to be an explicit nil
+func (o *ProjectDetailsForServersDto) SetMaxSpotPriceNil() {
+	o.MaxSpotPrice.Set(nil)
+}
+
+// UnsetMaxSpotPrice ensures that no value is present for MaxSpotPrice, not even an explicit nil
+func (o *ProjectDetailsForServersDto) UnsetMaxSpotPrice() {
+	o.MaxSpotPrice.Unset()
+}
+
 func (o ProjectDetailsForServersDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -2764,6 +2807,9 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsDrsEnabled) {
 		toSerialize["isDrsEnabled"] = o.IsDrsEnabled
+	}
+	if o.MaxSpotPrice.IsSet() {
+		toSerialize["maxSpotPrice"] = o.MaxSpotPrice.Get()
 	}
 	return toSerialize, nil
 }
