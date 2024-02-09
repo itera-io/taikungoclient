@@ -1585,6 +1585,12 @@ components:
       type: object
     ProblemDetails:
       additionalProperties: {}
+      example:
+        instance: instance
+        detail: detail
+        type: type
+        title: title
+        status: 1
       properties:
         type:
           nullable: true

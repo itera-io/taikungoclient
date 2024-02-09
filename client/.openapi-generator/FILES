@@ -621,6 +621,7 @@ docs/OrganizationsList.md
 docs/PackageAPI.md
 docs/PackageAutocompleteDto.md
 docs/Parameter.md
+docs/ParameterType.md
 docs/PartnerDetailsDto.md
 docs/PartnerDetailsForOrganizationsDto.md
 docs/PartnerDetailsForSubscription.md
@@ -1482,6 +1483,7 @@ model_organization_subscription_dto.go
 model_organizations_list.go
 model_package_autocomplete_dto.go
 model_parameter.go
+model_parameter_type.go
 model_partner_details_dto.go
 model_partner_details_for_organizations_dto.go
 model_partner_details_for_subscription.go

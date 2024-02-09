@@ -1226,6 +1226,7 @@ Class | Method | HTTP request | Description
  - [OrganizationsList](docs/OrganizationsList.md)
  - [PackageAutocompleteDto](docs/PackageAutocompleteDto.md)
  - [Parameter](docs/Parameter.md)
+ - [ParameterType](docs/ParameterType.md)
  - [PartnerDetailsDto](docs/PartnerDetailsDto.md)
  - [PartnerDetailsForOrganizationsDto](docs/PartnerDetailsForOrganizationsDto.md)
  - [PartnerDetailsForSubscription](docs/PartnerDetailsForSubscription.md)
