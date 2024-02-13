@@ -5569,8 +5569,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-02-12T14:26:23.5102164Z
-                  createdAt: 2024-02-12T14:26:23.5102164Z
+                  lastValidated: 2024-02-13T11:30:21.0091323Z
+                  createdAt: 2024-02-13T11:30:21.0091323Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5675,14 +5675,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-02-12T14:26:23.5102164Z
+                    lastBackup: 2024-02-13T11:30:21.0091323Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-02-12T14:26:23.5102164Z
+                  createdAt: 2024-02-13T11:30:21.0091323Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-02-12T14:26:23.5102164Z
+                  lastBackup: 2024-02-13T11:30:21.0091323Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5787,8 +5787,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-12T14:26:23.5102164Z
-                  expiration: 2024-02-12T14:26:23.5102164Z
+                  createdAt: 2024-02-13T11:30:21.0091323Z
+                  expiration: 2024-02-13T11:30:21.0091323Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5892,7 +5892,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-12T14:26:23.5102164Z
+                  createdAt: 2024-02-13T11:30:21.0091323Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6002,9 +6002,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-02-12T14:26:23.5102164+00:00
-                  startTimeStamp: 2024-02-12T14:26:23.5102164+00:00
-                  createdAt: 2024-02-12T14:26:23.5102164Z
+                  completionDateTime: 2024-02-13T11:30:21.0091323+00:00
+                  startTimeStamp: 2024-02-13T11:30:21.0091323+00:00
+                  createdAt: 2024-02-13T11:30:21.0091323Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -53209,25 +53209,25 @@ components:
       additionalProperties: false
       example:
         spotEnabled: true
-        alertsTotalCount: 3
+        alertsTotalCount: 2
         isOpaEnabled: true
-        opaProfileId: 6
+        opaProfileId: 3
         availabilityZones:
         - availabilityZones
         - availabilityZones
-        organizationId: 6
-        diskSize: 0.8851374739011653
+        organizationId: 7
+        diskSize: 7.058770351582356
         usedRam: 9
         cloudType: null
         cloudId: 1
         isLocked: true
         accessProfileName: accessProfileName
-        kubernetesProfileId: 2
-        minSize: 3
-        bastion: 4
-        worker: 2
-        usedCpu: 5
-        vmVolumeSizeLimit: 9
+        kubernetesProfileId: 6
+        minSize: 7
+        bastion: 7
+        worker: 4
+        usedCpu: 9
+        vmVolumeSizeLimit: 6
         isAutoscalingSpotEnabled: true
         isAutoscalingEnabled: true
         isAutoUpgrade: true
@@ -53236,40 +53236,40 @@ components:
         organizationName: organizationName
         hasSelectedFlavors: true
         isDrsEnabled: true
-        cpuLimit: 7
-        quotaId: 1
-        vmUsedCpu: 6
+        cpuLimit: 1
+        quotaId: 6
+        vmUsedCpu: 3
         allowSpotWorkers: true
-        maxSpotPrice: 7.058770351582356
-        vmRamLimit: 8
+        maxSpotPrice: 6.519180951018382
+        vmRamLimit: 9
         flavor: flavor
-        vmUsedRam: 3
+        vmUsedRam: 6
         proxmoxStorage: null
-        usedDiskSize: 9
-        vmUsedVolumeSize: 6
+        usedDiskSize: 6
+        vmUsedVolumeSize: 1
         kubernetesCurrentVersion: kubernetesCurrentVersion
         allowFullSpotKubernetes: true
         projectName: projectName
-        projectId: 7
-        accessProfileId: 1
-        maxSize: 7
+        projectId: 1
+        accessProfileId: 2
+        maxSize: 0
         autoscalingGroupName: autoscalingGroupName
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
         hasNfsServer: true
         projectHealth: null
-        totalHourlyCost: 3.353193347011243
-        ramLimit: 1
+        totalHourlyCost: 3.0937452626664474
+        ramLimit: 4
         opaProfileName: opaProfileName
-        s3CredentialId: 6
+        s3CredentialId: 5
         isProjectMaintenanceModeEnabled: true
         isDeprecated: true
         allowSpotVMs: true
-        vmCpuLimit: 6
-        aiCredentialId: 5
+        vmCpuLimit: 8
+        aiCredentialId: 6
         aiEnabled: true
         isMonitoringEnabled: true
-        diskSizeLimit: 4
+        diskSizeLimit: 5
         masterReady: 1
         hasKubeConfigFile: true
         projectStatus: null
@@ -53493,27 +53493,27 @@ components:
         hasSelectedFlavors: true
         isDrsEnabled: true
         allowSpotVMs: true
-        cloudCredentialRevision: 1
+        cloudCredentialRevision: 6
         availabilityZones:
         - availabilityZones
         - availabilityZones
         allowSpotWorkers: true
-        maxSpotPrice: 6.84685269835264
+        maxSpotPrice: 7.457744773683766
         organizationId: 1
         projectStatus: null
         expiredAt: expiredAt
         cloudType: null
         cloudName: cloudName
-        cloudId: 7
+        cloudId: 1
         isLocked: true
         allowFullSpotKubernetes: true
         hypervisors:
         - hypervisors
         - hypervisors
-        totalHourlyCost: 7.457744773683766
+        totalHourlyCost: 1.1730742509559433
         projectName: projectName
         projectCloudRevision: 1
-        projectId: 4
+        projectId: 7
         isMaintenanceModeEnabled: true
       properties:
         projectStatus:
@@ -58396,9 +58396,9 @@ components:
       additionalProperties: false
       example:
         proxmoxFlavor: proxmoxFlavor
-        proxmoxExtraDiskSize: 7
+        proxmoxExtraDiskSize: 9
         role: null
-        spotPrice: spotPrice
+        spotPrice: 7.061401241503109
         openshiftFlavor: openshiftFlavor
         awsHostName: awsHostName
         actionButtons:
@@ -58413,7 +58413,7 @@ components:
         spotInstance: true
         autoscalingGroup: autoscalingGroup
         diskSize: 5
-        replicaCount: 9
+        replicaCount: 3
         kubernetesHealth: kubernetesHealth
         googleMachineType: googleMachineType
         cloudType: null
@@ -58514,8 +58514,8 @@ components:
           nullable: true
           type: string
         spotPrice:
-          nullable: true
-          type: string
+          format: double
+          type: number
         spotInstance:
           type: boolean
         shutOff:
@@ -58623,9 +58623,9 @@ components:
       example:
         data:
         - proxmoxFlavor: proxmoxFlavor
-          proxmoxExtraDiskSize: 7
+          proxmoxExtraDiskSize: 9
           role: null
-          spotPrice: spotPrice
+          spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
           awsHostName: awsHostName
           actionButtons:
@@ -58640,7 +58640,7 @@ components:
           spotInstance: true
           autoscalingGroup: autoscalingGroup
           diskSize: 5
-          replicaCount: 9
+          replicaCount: 3
           kubernetesHealth: kubernetesHealth
           googleMachineType: googleMachineType
           cloudType: null
@@ -58670,9 +58670,9 @@ components:
           projectId: 1
           status: status
         - proxmoxFlavor: proxmoxFlavor
-          proxmoxExtraDiskSize: 7
+          proxmoxExtraDiskSize: 9
           role: null
-          spotPrice: spotPrice
+          spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
           awsHostName: awsHostName
           actionButtons:
@@ -58687,7 +58687,7 @@ components:
           spotInstance: true
           autoscalingGroup: autoscalingGroup
           diskSize: 5
-          replicaCount: 9
+          replicaCount: 3
           kubernetesHealth: kubernetesHealth
           googleMachineType: googleMachineType
           cloudType: null
@@ -58732,9 +58732,9 @@ components:
       example:
         data:
         - proxmoxFlavor: proxmoxFlavor
-          proxmoxExtraDiskSize: 7
+          proxmoxExtraDiskSize: 9
           role: null
-          spotPrice: spotPrice
+          spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
           awsHostName: awsHostName
           actionButtons:
@@ -58749,7 +58749,7 @@ components:
           spotInstance: true
           autoscalingGroup: autoscalingGroup
           diskSize: 5
-          replicaCount: 9
+          replicaCount: 3
           kubernetesHealth: kubernetesHealth
           googleMachineType: googleMachineType
           cloudType: null
@@ -58779,9 +58779,9 @@ components:
           projectId: 1
           status: status
         - proxmoxFlavor: proxmoxFlavor
-          proxmoxExtraDiskSize: 7
+          proxmoxExtraDiskSize: 9
           role: null
-          spotPrice: spotPrice
+          spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
           awsHostName: awsHostName
           actionButtons:
@@ -58796,7 +58796,7 @@ components:
           spotInstance: true
           autoscalingGroup: autoscalingGroup
           diskSize: 5
-          replicaCount: 9
+          replicaCount: 3
           kubernetesHealth: kubernetesHealth
           googleMachineType: googleMachineType
           cloudType: null
@@ -58827,25 +58827,25 @@ components:
           status: status
         project:
           spotEnabled: true
-          alertsTotalCount: 3
+          alertsTotalCount: 2
           isOpaEnabled: true
-          opaProfileId: 6
+          opaProfileId: 3
           availabilityZones:
           - availabilityZones
           - availabilityZones
-          organizationId: 6
-          diskSize: 0.8851374739011653
+          organizationId: 7
+          diskSize: 7.058770351582356
           usedRam: 9
           cloudType: null
           cloudId: 1
           isLocked: true
           accessProfileName: accessProfileName
-          kubernetesProfileId: 2
-          minSize: 3
-          bastion: 4
-          worker: 2
-          usedCpu: 5
-          vmVolumeSizeLimit: 9
+          kubernetesProfileId: 6
+          minSize: 7
+          bastion: 7
+          worker: 4
+          usedCpu: 9
+          vmVolumeSizeLimit: 6
           isAutoscalingSpotEnabled: true
           isAutoscalingEnabled: true
           isAutoUpgrade: true
@@ -58854,40 +58854,40 @@ components:
           organizationName: organizationName
           hasSelectedFlavors: true
           isDrsEnabled: true
-          cpuLimit: 7
-          quotaId: 1
-          vmUsedCpu: 6
+          cpuLimit: 1
+          quotaId: 6
+          vmUsedCpu: 3
           allowSpotWorkers: true
-          maxSpotPrice: 7.058770351582356
-          vmRamLimit: 8
+          maxSpotPrice: 6.519180951018382
+          vmRamLimit: 9
           flavor: flavor
-          vmUsedRam: 3
+          vmUsedRam: 6
           proxmoxStorage: null
-          usedDiskSize: 9
-          vmUsedVolumeSize: 6
+          usedDiskSize: 6
+          vmUsedVolumeSize: 1
           kubernetesCurrentVersion: kubernetesCurrentVersion
           allowFullSpotKubernetes: true
           projectName: projectName
-          projectId: 7
-          accessProfileId: 1
-          maxSize: 7
+          projectId: 1
+          accessProfileId: 2
+          maxSize: 0
           autoscalingGroupName: autoscalingGroupName
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           hasNfsServer: true
           projectHealth: null
-          totalHourlyCost: 3.353193347011243
-          ramLimit: 1
+          totalHourlyCost: 3.0937452626664474
+          ramLimit: 4
           opaProfileName: opaProfileName
-          s3CredentialId: 6
+          s3CredentialId: 5
           isProjectMaintenanceModeEnabled: true
           isDeprecated: true
           allowSpotVMs: true
-          vmCpuLimit: 6
-          aiCredentialId: 5
+          vmCpuLimit: 8
+          aiCredentialId: 6
           aiEnabled: true
           isMonitoringEnabled: true
-          diskSizeLimit: 4
+          diskSizeLimit: 5
           masterReady: 1
           hasKubeConfigFile: true
           projectStatus: null
@@ -59316,7 +59316,7 @@ components:
     StandAloneMetaDataDtoForVm:
       additionalProperties: false
       example:
-        id: 2
+        id: 7
         value: value
         key: key
       properties:
@@ -59371,19 +59371,19 @@ components:
         securityGroups:
         - protocol: protocol
           name: name
-          id: 9
-          portMinRange: 3
-          portMaxRange: 2
+          id: 3
+          portMinRange: 2
+          portMaxRange: 4
           isRdpPortEnabled: true
           remoteIpPrefix: remoteIpPrefix
         - protocol: protocol
           name: name
-          id: 9
-          portMinRange: 3
-          portMaxRange: 2
+          id: 3
+          portMinRange: 2
+          portMaxRange: 4
           isRdpPortEnabled: true
           remoteIpPrefix: remoteIpPrefix
-        id: 7
+        id: 9
         publicKey: publicKey
       properties:
         id:
@@ -59484,9 +59484,9 @@ components:
       example:
         protocol: protocol
         name: name
-        id: 9
-        portMinRange: 3
-        portMaxRange: 2
+        id: 3
+        portMinRange: 2
+        portMaxRange: 4
         isRdpPortEnabled: true
         remoteIpPrefix: remoteIpPrefix
       properties:
@@ -59723,10 +59723,10 @@ components:
       additionalProperties: false
       example:
         volumeType: volumeType
-        targetSize: 5
+        targetSize: 2
         name: name
         lunId: lunId
-        id: 1
+        id: 5
         deviceName: deviceName
         currentSize: 5
         status: status
@@ -59966,21 +59966,21 @@ components:
         data:
         - volumeType: volumeType
           sshPublicKey: sshPublicKey
-          spotPrice: spotPrice
+          spotPrice: 1.4658129805029452
           disks:
           - volumeType: volumeType
-            targetSize: 5
+            targetSize: 2
             name: name
             lunId: lunId
-            id: 1
+            id: 5
             deviceName: deviceName
             currentSize: 5
             status: status
           - volumeType: volumeType
-            targetSize: 5
+            targetSize: 2
             name: name
             lunId: lunId
-            id: 1
+            id: 5
             deviceName: deviceName
             currentSize: 5
             status: status
@@ -60007,28 +60007,28 @@ components:
             securityGroups:
             - protocol: protocol
               name: name
-              id: 9
-              portMinRange: 3
-              portMaxRange: 2
+              id: 3
+              portMinRange: 2
+              portMaxRange: 4
               isRdpPortEnabled: true
               remoteIpPrefix: remoteIpPrefix
             - protocol: protocol
               name: name
-              id: 9
-              portMinRange: 3
-              portMaxRange: 2
+              id: 3
+              portMinRange: 2
+              portMaxRange: 4
               isRdpPortEnabled: true
               remoteIpPrefix: remoteIpPrefix
-            id: 7
+            id: 9
             publicKey: publicKey
           ipAddress: ipAddress
           publicIp: publicIp
           hypervisorId: hypervisorId
           standAloneMetaDatas:
-          - id: 2
+          - id: 7
             value: value
             key: key
-          - id: 2
+          - id: 7
             value: value
             key: key
           targetFlavor: targetFlavor
@@ -60040,21 +60040,21 @@ components:
           status: status
         - volumeType: volumeType
           sshPublicKey: sshPublicKey
-          spotPrice: spotPrice
+          spotPrice: 1.4658129805029452
           disks:
           - volumeType: volumeType
-            targetSize: 5
+            targetSize: 2
             name: name
             lunId: lunId
-            id: 1
+            id: 5
             deviceName: deviceName
             currentSize: 5
             status: status
           - volumeType: volumeType
-            targetSize: 5
+            targetSize: 2
             name: name
             lunId: lunId
-            id: 1
+            id: 5
             deviceName: deviceName
             currentSize: 5
             status: status
@@ -60081,28 +60081,28 @@ components:
             securityGroups:
             - protocol: protocol
               name: name
-              id: 9
-              portMinRange: 3
-              portMaxRange: 2
+              id: 3
+              portMinRange: 2
+              portMaxRange: 4
               isRdpPortEnabled: true
               remoteIpPrefix: remoteIpPrefix
             - protocol: protocol
               name: name
-              id: 9
-              portMinRange: 3
-              portMaxRange: 2
+              id: 3
+              portMinRange: 2
+              portMaxRange: 4
               isRdpPortEnabled: true
               remoteIpPrefix: remoteIpPrefix
-            id: 7
+            id: 9
             publicKey: publicKey
           ipAddress: ipAddress
           publicIp: publicIp
           hypervisorId: hypervisorId
           standAloneMetaDatas:
-          - id: 2
+          - id: 7
             value: value
             key: key
-          - id: 2
+          - id: 7
             value: value
             key: key
           targetFlavor: targetFlavor
@@ -60118,27 +60118,27 @@ components:
           hasSelectedFlavors: true
           isDrsEnabled: true
           allowSpotVMs: true
-          cloudCredentialRevision: 1
+          cloudCredentialRevision: 6
           availabilityZones:
           - availabilityZones
           - availabilityZones
           allowSpotWorkers: true
-          maxSpotPrice: 6.84685269835264
+          maxSpotPrice: 7.457744773683766
           organizationId: 1
           projectStatus: null
           expiredAt: expiredAt
           cloudType: null
           cloudName: cloudName
-          cloudId: 7
+          cloudId: 1
           isLocked: true
           allowFullSpotKubernetes: true
           hypervisors:
           - hypervisors
           - hypervisors
-          totalHourlyCost: 7.457744773683766
+          totalHourlyCost: 1.1730742509559433
           projectName: projectName
           projectCloudRevision: 1
-          projectId: 4
+          projectId: 7
           isMaintenanceModeEnabled: true
       properties:
         data:
@@ -60490,21 +60490,21 @@ components:
       example:
         volumeType: volumeType
         sshPublicKey: sshPublicKey
-        spotPrice: spotPrice
+        spotPrice: 1.4658129805029452
         disks:
         - volumeType: volumeType
-          targetSize: 5
+          targetSize: 2
           name: name
           lunId: lunId
-          id: 1
+          id: 5
           deviceName: deviceName
           currentSize: 5
           status: status
         - volumeType: volumeType
-          targetSize: 5
+          targetSize: 2
           name: name
           lunId: lunId
-          id: 1
+          id: 5
           deviceName: deviceName
           currentSize: 5
           status: status
@@ -60531,28 +60531,28 @@ components:
           securityGroups:
           - protocol: protocol
             name: name
-            id: 9
-            portMinRange: 3
-            portMaxRange: 2
+            id: 3
+            portMinRange: 2
+            portMaxRange: 4
             isRdpPortEnabled: true
             remoteIpPrefix: remoteIpPrefix
           - protocol: protocol
             name: name
-            id: 9
-            portMinRange: 3
-            portMaxRange: 2
+            id: 3
+            portMinRange: 2
+            portMaxRange: 4
             isRdpPortEnabled: true
             remoteIpPrefix: remoteIpPrefix
-          id: 7
+          id: 9
           publicKey: publicKey
         ipAddress: ipAddress
         publicIp: publicIp
         hypervisorId: hypervisorId
         standAloneMetaDatas:
-        - id: 2
+        - id: 7
           value: value
           key: key
-        - id: 2
+        - id: 7
           value: value
           key: key
         targetFlavor: targetFlavor
@@ -60623,8 +60623,8 @@ components:
           nullable: true
           type: string
         spotPrice:
-          nullable: true
-          type: string
+          format: double
+          type: number
         spotInstance:
           type: boolean
         actionButtons:

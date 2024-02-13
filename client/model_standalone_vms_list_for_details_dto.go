@@ -40,7 +40,7 @@ type StandaloneVmsListForDetailsDto struct {
 	Hypervisor NullableString `json:"hypervisor,omitempty"`
 	HypervisorId NullableString `json:"hypervisorId,omitempty"`
 	IpAddress NullableString `json:"ipAddress,omitempty"`
-	SpotPrice NullableString `json:"spotPrice,omitempty"`
+	SpotPrice *float64 `json:"spotPrice,omitempty"`
 	SpotInstance *bool `json:"spotInstance,omitempty"`
 	ActionButtons *StandaloneVisibilityDto `json:"actionButtons,omitempty"`
 	IsWindows *bool `json:"isWindows,omitempty"`
@@ -876,46 +876,36 @@ func (o *StandaloneVmsListForDetailsDto) UnsetIpAddress() {
 	o.IpAddress.Unset()
 }
 
-// GetSpotPrice returns the SpotPrice field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *StandaloneVmsListForDetailsDto) GetSpotPrice() string {
-	if o == nil || IsNil(o.SpotPrice.Get()) {
-		var ret string
+// GetSpotPrice returns the SpotPrice field value if set, zero value otherwise.
+func (o *StandaloneVmsListForDetailsDto) GetSpotPrice() float64 {
+	if o == nil || IsNil(o.SpotPrice) {
+		var ret float64
 		return ret
 	}
-	return *o.SpotPrice.Get()
+	return *o.SpotPrice
 }
 
 // GetSpotPriceOk returns a tuple with the SpotPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StandaloneVmsListForDetailsDto) GetSpotPriceOk() (*string, bool) {
-	if o == nil {
+func (o *StandaloneVmsListForDetailsDto) GetSpotPriceOk() (*float64, bool) {
+	if o == nil || IsNil(o.SpotPrice) {
 		return nil, false
 	}
-	return o.SpotPrice.Get(), o.SpotPrice.IsSet()
+	return o.SpotPrice, true
 }
 
 // HasSpotPrice returns a boolean if a field has been set.
 func (o *StandaloneVmsListForDetailsDto) HasSpotPrice() bool {
-	if o != nil && o.SpotPrice.IsSet() {
+	if o != nil && !IsNil(o.SpotPrice) {
 		return true
 	}
 
 	return false
 }
 
-// SetSpotPrice gets a reference to the given NullableString and assigns it to the SpotPrice field.
-func (o *StandaloneVmsListForDetailsDto) SetSpotPrice(v string) {
-	o.SpotPrice.Set(&v)
-}
-// SetSpotPriceNil sets the value for SpotPrice to be an explicit nil
-func (o *StandaloneVmsListForDetailsDto) SetSpotPriceNil() {
-	o.SpotPrice.Set(nil)
-}
-
-// UnsetSpotPrice ensures that no value is present for SpotPrice, not even an explicit nil
-func (o *StandaloneVmsListForDetailsDto) UnsetSpotPrice() {
-	o.SpotPrice.Unset()
+// SetSpotPrice gets a reference to the given float64 and assigns it to the SpotPrice field.
+func (o *StandaloneVmsListForDetailsDto) SetSpotPrice(v float64) {
+	o.SpotPrice = &v
 }
 
 // GetSpotInstance returns the SpotInstance field value if set, zero value otherwise.
@@ -1182,8 +1172,8 @@ func (o StandaloneVmsListForDetailsDto) ToMap() (map[string]interface{}, error) 
 	if o.IpAddress.IsSet() {
 		toSerialize["ipAddress"] = o.IpAddress.Get()
 	}
-	if o.SpotPrice.IsSet() {
-		toSerialize["spotPrice"] = o.SpotPrice.Get()
+	if !IsNil(o.SpotPrice) {
+		toSerialize["spotPrice"] = o.SpotPrice
 	}
 	if !IsNil(o.SpotInstance) {
 		toSerialize["spotInstance"] = o.SpotInstance
