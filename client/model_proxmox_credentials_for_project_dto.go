@@ -27,6 +27,7 @@ type ProxmoxCredentialsForProjectDto struct {
 	Storage NullableString `json:"storage,omitempty"`
 	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
 	ProxmoxNetworks []ProxmoxNetworkListDto `json:"proxmoxNetworks,omitempty"`
+	IgnoreSsl *bool `json:"ignoreSsl,omitempty"`
 }
 
 // NewProxmoxCredentialsForProjectDto instantiates a new ProxmoxCredentialsForProjectDto object
@@ -331,6 +332,38 @@ func (o *ProxmoxCredentialsForProjectDto) SetProxmoxNetworks(v []ProxmoxNetworkL
 	o.ProxmoxNetworks = v
 }
 
+// GetIgnoreSsl returns the IgnoreSsl field value if set, zero value otherwise.
+func (o *ProxmoxCredentialsForProjectDto) GetIgnoreSsl() bool {
+	if o == nil || IsNil(o.IgnoreSsl) {
+		var ret bool
+		return ret
+	}
+	return *o.IgnoreSsl
+}
+
+// GetIgnoreSslOk returns a tuple with the IgnoreSsl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProxmoxCredentialsForProjectDto) GetIgnoreSslOk() (*bool, bool) {
+	if o == nil || IsNil(o.IgnoreSsl) {
+		return nil, false
+	}
+	return o.IgnoreSsl, true
+}
+
+// HasIgnoreSsl returns a boolean if a field has been set.
+func (o *ProxmoxCredentialsForProjectDto) HasIgnoreSsl() bool {
+	if o != nil && !IsNil(o.IgnoreSsl) {
+		return true
+	}
+
+	return false
+}
+
+// SetIgnoreSsl gets a reference to the given bool and assigns it to the IgnoreSsl field.
+func (o *ProxmoxCredentialsForProjectDto) SetIgnoreSsl(v bool) {
+	o.IgnoreSsl = &v
+}
+
 func (o ProxmoxCredentialsForProjectDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -361,6 +394,9 @@ func (o ProxmoxCredentialsForProjectDto) ToMap() (map[string]interface{}, error)
 	}
 	if o.ProxmoxNetworks != nil {
 		toSerialize["proxmoxNetworks"] = o.ProxmoxNetworks
+	}
+	if !IsNil(o.IgnoreSsl) {
+		toSerialize["ignoreSsl"] = o.IgnoreSsl
 	}
 	return toSerialize, nil
 }

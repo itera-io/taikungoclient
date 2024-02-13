@@ -36,6 +36,7 @@ type CreateOpenstackCloudCommand struct {
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
 	IsAdmin *bool `json:"isAdmin,omitempty"`
+	SkipTlsFlag *bool `json:"skipTlsFlag,omitempty"`
 }
 
 // NewCreateOpenstackCloudCommand instantiates a new CreateOpenstackCloudCommand object
@@ -697,6 +698,38 @@ func (o *CreateOpenstackCloudCommand) SetIsAdmin(v bool) {
 	o.IsAdmin = &v
 }
 
+// GetSkipTlsFlag returns the SkipTlsFlag field value if set, zero value otherwise.
+func (o *CreateOpenstackCloudCommand) GetSkipTlsFlag() bool {
+	if o == nil || IsNil(o.SkipTlsFlag) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipTlsFlag
+}
+
+// GetSkipTlsFlagOk returns a tuple with the SkipTlsFlag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateOpenstackCloudCommand) GetSkipTlsFlagOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipTlsFlag) {
+		return nil, false
+	}
+	return o.SkipTlsFlag, true
+}
+
+// HasSkipTlsFlag returns a boolean if a field has been set.
+func (o *CreateOpenstackCloudCommand) HasSkipTlsFlag() bool {
+	if o != nil && !IsNil(o.SkipTlsFlag) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipTlsFlag gets a reference to the given bool and assigns it to the SkipTlsFlag field.
+func (o *CreateOpenstackCloudCommand) SetSkipTlsFlag(v bool) {
+	o.SkipTlsFlag = &v
+}
+
 func (o CreateOpenstackCloudCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -754,6 +787,9 @@ func (o CreateOpenstackCloudCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsAdmin) {
 		toSerialize["isAdmin"] = o.IsAdmin
+	}
+	if !IsNil(o.SkipTlsFlag) {
+		toSerialize["skipTlsFlag"] = o.SkipTlsFlag
 	}
 	return toSerialize, nil
 }

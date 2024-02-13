@@ -5569,8 +5569,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-02-12T00:02:54.203933Z
-                  createdAt: 2024-02-12T00:02:54.203933Z
+                  lastValidated: 2024-02-12T14:26:23.5102164Z
+                  createdAt: 2024-02-12T14:26:23.5102164Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5675,14 +5675,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-02-12T00:02:54.203933Z
+                    lastBackup: 2024-02-12T14:26:23.5102164Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-02-12T00:02:54.203933Z
+                  createdAt: 2024-02-12T14:26:23.5102164Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-02-12T00:02:54.203933Z
+                  lastBackup: 2024-02-12T14:26:23.5102164Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5787,8 +5787,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-12T00:02:54.203933Z
-                  expiration: 2024-02-12T00:02:54.203933Z
+                  createdAt: 2024-02-12T14:26:23.5102164Z
+                  expiration: 2024-02-12T14:26:23.5102164Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5892,7 +5892,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-12T00:02:54.203933Z
+                  createdAt: 2024-02-12T14:26:23.5102164Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6002,9 +6002,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-02-12T00:02:54.203933+00:00
-                  startTimeStamp: 2024-02-12T00:02:54.203933+00:00
-                  createdAt: 2024-02-12T00:02:54.203933Z
+                  completionDateTime: 2024-02-12T14:26:23.5102164+00:00
+                  startTimeStamp: 2024-02-12T14:26:23.5102164+00:00
+                  createdAt: 2024-02-12T14:26:23.5102164Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -42503,6 +42503,7 @@ components:
         openStackDomain: openStackDomain
         openStackInternalSubnetId: openStackInternalSubnetId
         name: name
+        skipTlsFlag: true
         openStackAvailabilityZone: openStackAvailabilityZone
         openStackRegion: openStackRegion
         openStackImportNetwork: true
@@ -42553,6 +42554,8 @@ components:
         applicationCredEnabled:
           type: boolean
         isAdmin:
+          type: boolean
+        skipTlsFlag:
           type: boolean
       type: object
     CreatePartnerCommand:
@@ -42875,6 +42878,7 @@ components:
           beginAllocationRange: beginAllocationRange
           gateway: gateway
         name: name
+        skipTlsFlag: true
         hypervisors:
         - hypervisors
         - hypervisors
@@ -42924,6 +42928,8 @@ components:
           $ref: '#/components/schemas/CreateProxmoxNetworkDto'
         privateNetwork:
           $ref: '#/components/schemas/CreateProxmoxNetworkDto'
+        skipTlsFlag:
+          type: boolean
       type: object
     CreateProxmoxNetworkDto:
       additionalProperties: false
@@ -43350,6 +43356,7 @@ components:
         organizationId: 0
         password: password
         name: name
+        skipTlsFlag: true
         hypervisors:
         - hypervisors
         - hypervisors
@@ -43401,6 +43408,8 @@ components:
           $ref: '#/components/schemas/CreateVsphereNetworkDto'
         privateNetwork:
           $ref: '#/components/schemas/CreateVsphereNetworkDto'
+        skipTlsFlag:
+          type: boolean
       type: object
     CreateVsphereNetworkDto:
       additionalProperties: false
@@ -43546,6 +43555,7 @@ components:
           organizationId: 1
           createdAt: createdAt
           isLocked: true
+          skipTlsFlag: true
           id: 0
           organizationName: organizationName
           isInfra: true
@@ -43577,6 +43587,7 @@ components:
           organizationId: 1
           createdAt: createdAt
           isLocked: true
+          skipTlsFlag: true
           id: 0
           organizationName: organizationName
           isInfra: true
@@ -43881,6 +43892,7 @@ components:
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
+          ignoreSsl: true
           url: url
           username: username
           resourcePool: resourcePool
@@ -43892,6 +43904,7 @@ components:
           openStackUser: openStackUser
           openStackVolumeType: openStackVolumeType
           openStackProject: openStackProject
+          ignoreSsl: true
           openStackTenantId: openStackTenantId
           openStackDomain: openStackDomain
           openStackInternalSubnetId: openStackInternalSubnetId
@@ -43925,6 +43938,7 @@ components:
             gateway: gateway
           storage: storage
           vmTemplateName: vmTemplateName
+          ignoreSsl: true
           tokenSecret: tokenSecret
           url: url
         azure:
@@ -50503,6 +50517,7 @@ components:
           organizationId: 1
           createdAt: createdAt
           isLocked: true
+          skipTlsFlag: true
           id: 0
           organizationName: organizationName
           isInfra: true
@@ -50534,6 +50549,7 @@ components:
           organizationId: 1
           createdAt: createdAt
           isLocked: true
+          skipTlsFlag: true
           id: 0
           organizationName: organizationName
           isInfra: true
@@ -50571,6 +50587,7 @@ components:
         openStackUser: openStackUser
         openStackVolumeType: openStackVolumeType
         openStackProject: openStackProject
+        ignoreSsl: true
         openStackTenantId: openStackTenantId
         openStackDomain: openStackDomain
         openStackInternalSubnetId: openStackInternalSubnetId
@@ -50616,6 +50633,8 @@ components:
           type: string
         applicationCredEnabled:
           type: boolean
+        ignoreSsl:
+          type: boolean
       type: object
     OpenstackCredentialsListDto:
       additionalProperties: false
@@ -50634,6 +50653,7 @@ components:
         organizationId: 1
         createdAt: createdAt
         isLocked: true
+        skipTlsFlag: true
         id: 0
         organizationName: organizationName
         isInfra: true
@@ -50728,6 +50748,8 @@ components:
         isInfra:
           type: boolean
         applicationCredEnabled:
+          type: boolean
+        skipTlsFlag:
           type: boolean
       type: object
     OpenstackFlavorList:
@@ -56547,6 +56569,7 @@ components:
           gateway: gateway
         storage: storage
         vmTemplateName: vmTemplateName
+        ignoreSsl: true
         tokenSecret: tokenSecret
         url: url
       properties:
@@ -56573,6 +56596,8 @@ components:
             $ref: '#/components/schemas/ProxmoxNetworkListDto'
           nullable: true
           type: array
+        ignoreSsl:
+          type: boolean
       type: object
     ProxmoxFlavorData:
       additionalProperties: false
@@ -56663,6 +56688,7 @@ components:
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
+          skipTlsFlag: true
           hypervisors:
           - name: name
             id: 0
@@ -56704,6 +56730,7 @@ components:
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
+          skipTlsFlag: true
           hypervisors:
           - name: name
             id: 0
@@ -56759,6 +56786,7 @@ components:
           isPrivate: true
           beginAllocationRange: beginAllocationRange
           gateway: gateway
+        skipTlsFlag: true
         hypervisors:
         - name: name
           id: 0
@@ -56830,6 +56858,8 @@ components:
             $ref: '#/components/schemas/ProxmoxNetworkListDto'
           nullable: true
           type: array
+        skipTlsFlag:
+          type: boolean
       type: object
     ProxmoxNetworkListDto:
       additionalProperties: false
@@ -63107,6 +63137,7 @@ components:
           isPrivate: true
           beginAllocationRange: beginAllocationRange
           gateway: gateway
+        ignoreSsl: true
         url: url
         username: username
         resourcePool: resourcePool
@@ -63142,6 +63173,8 @@ components:
             $ref: '#/components/schemas/VsphereNetworkListDto'
           nullable: true
           type: array
+        ignoreSsl:
+          type: boolean
       type: object
     VsphereFlavorData:
       additionalProperties: false
@@ -63231,6 +63264,7 @@ components:
           createdBy: createdBy
           isLocked: true
           name: name
+          skipTlsFlag: true
           hypervisors:
           - name: name
             id: id
@@ -63276,6 +63310,7 @@ components:
           createdBy: createdBy
           isLocked: true
           name: name
+          skipTlsFlag: true
           hypervisors:
           - name: name
             id: id
@@ -63335,6 +63370,7 @@ components:
         createdBy: createdBy
         isLocked: true
         name: name
+        skipTlsFlag: true
         hypervisors:
         - name: name
           id: id
@@ -63433,6 +63469,8 @@ components:
             $ref: '#/components/schemas/VsphereNetworkListDto'
           nullable: true
           type: array
+        skipTlsFlag:
+          type: boolean
       type: object
     VsphereNetworkListDto:
       additionalProperties: false

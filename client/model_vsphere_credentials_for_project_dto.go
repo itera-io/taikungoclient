@@ -30,6 +30,7 @@ type VsphereCredentialsForProjectDto struct {
 	DrsEnabled *bool `json:"drsEnabled,omitempty"`
 	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
 	VsphereNetworks []VsphereNetworkListDto `json:"vsphereNetworks,omitempty"`
+	IgnoreSsl *bool `json:"ignoreSsl,omitempty"`
 }
 
 // NewVsphereCredentialsForProjectDto instantiates a new VsphereCredentialsForProjectDto object
@@ -450,6 +451,38 @@ func (o *VsphereCredentialsForProjectDto) SetVsphereNetworks(v []VsphereNetworkL
 	o.VsphereNetworks = v
 }
 
+// GetIgnoreSsl returns the IgnoreSsl field value if set, zero value otherwise.
+func (o *VsphereCredentialsForProjectDto) GetIgnoreSsl() bool {
+	if o == nil || IsNil(o.IgnoreSsl) {
+		var ret bool
+		return ret
+	}
+	return *o.IgnoreSsl
+}
+
+// GetIgnoreSslOk returns a tuple with the IgnoreSsl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VsphereCredentialsForProjectDto) GetIgnoreSslOk() (*bool, bool) {
+	if o == nil || IsNil(o.IgnoreSsl) {
+		return nil, false
+	}
+	return o.IgnoreSsl, true
+}
+
+// HasIgnoreSsl returns a boolean if a field has been set.
+func (o *VsphereCredentialsForProjectDto) HasIgnoreSsl() bool {
+	if o != nil && !IsNil(o.IgnoreSsl) {
+		return true
+	}
+
+	return false
+}
+
+// SetIgnoreSsl gets a reference to the given bool and assigns it to the IgnoreSsl field.
+func (o *VsphereCredentialsForProjectDto) SetIgnoreSsl(v bool) {
+	o.IgnoreSsl = &v
+}
+
 func (o VsphereCredentialsForProjectDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -489,6 +522,9 @@ func (o VsphereCredentialsForProjectDto) ToMap() (map[string]interface{}, error)
 	}
 	if o.VsphereNetworks != nil {
 		toSerialize["vsphereNetworks"] = o.VsphereNetworks
+	}
+	if !IsNil(o.IgnoreSsl) {
+		toSerialize["ignoreSsl"] = o.IgnoreSsl
 	}
 	return toSerialize, nil
 }
