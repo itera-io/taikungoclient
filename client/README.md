@@ -260,7 +260,6 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobKubeConfigCleaner**](docs/CronJobServiceAPI.md#cronjobkubeconfigcleaner) | **Post** /api/v1/cronjob/kube-config-cleaner | Clean kube config
 *CronJobServiceAPI* | [**CronjobPurgeExpiredProjects**](docs/CronJobServiceAPI.md#cronjobpurgeexpiredprojects) | **Post** /api/v1/cronjob/purge-expired-projects | Purge expired projects
 *CronJobServiceAPI* | [**CronjobRemindUsersByAlertingProfile**](docs/CronJobServiceAPI.md#cronjobremindusersbyalertingprofile) | **Post** /api/v1/cronjob/remind-users-by-alerting-profile | Remind users by alerting profile
-*CronJobServiceAPI* | [**CronjobSyncAppProxy**](docs/CronJobServiceAPI.md#cronjobsyncappproxy) | **Post** /api/v1/cronjob/sync-app-proxy | Sync app proxy command 
 *CronJobServiceAPI* | [**CronjobSyncBackupCredentials**](docs/CronJobServiceAPI.md#cronjobsyncbackupcredentials) | **Post** /api/v1/cronjob/sync-backup-credentials | Sync backup credentials
 *CronJobServiceAPI* | [**CronjobSyncOpaProfiles**](docs/CronJobServiceAPI.md#cronjobsyncopaprofiles) | **Post** /api/v1/cronjob/sync-opa-profiles | Sync opa profiles
 *CronJobServiceAPI* | [**CronjobSyncOrganizations**](docs/CronJobServiceAPI.md#cronjobsyncorganizations) | **Post** /api/v1/cronjob/sync-organizations | Sync organizations
