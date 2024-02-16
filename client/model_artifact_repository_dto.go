@@ -30,7 +30,6 @@ type ArtifactRepositoryDto struct {
 	Official *bool `json:"official,omitempty"`
 	IsBound *bool `json:"isBound,omitempty"`
 	HasCatalogApp *bool `json:"hasCatalogApp,omitempty"`
-	TrueUrl NullableString `json:"trueUrl,omitempty"`
 }
 
 // NewArtifactRepositoryDto instantiates a new ArtifactRepositoryDto object
@@ -420,48 +419,6 @@ func (o *ArtifactRepositoryDto) SetHasCatalogApp(v bool) {
 	o.HasCatalogApp = &v
 }
 
-// GetTrueUrl returns the TrueUrl field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ArtifactRepositoryDto) GetTrueUrl() string {
-	if o == nil || IsNil(o.TrueUrl.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.TrueUrl.Get()
-}
-
-// GetTrueUrlOk returns a tuple with the TrueUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ArtifactRepositoryDto) GetTrueUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TrueUrl.Get(), o.TrueUrl.IsSet()
-}
-
-// HasTrueUrl returns a boolean if a field has been set.
-func (o *ArtifactRepositoryDto) HasTrueUrl() bool {
-	if o != nil && o.TrueUrl.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTrueUrl gets a reference to the given NullableString and assigns it to the TrueUrl field.
-func (o *ArtifactRepositoryDto) SetTrueUrl(v string) {
-	o.TrueUrl.Set(&v)
-}
-// SetTrueUrlNil sets the value for TrueUrl to be an explicit nil
-func (o *ArtifactRepositoryDto) SetTrueUrlNil() {
-	o.TrueUrl.Set(nil)
-}
-
-// UnsetTrueUrl ensures that no value is present for TrueUrl, not even an explicit nil
-func (o *ArtifactRepositoryDto) UnsetTrueUrl() {
-	o.TrueUrl.Unset()
-}
-
 func (o ArtifactRepositoryDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -501,9 +458,6 @@ func (o ArtifactRepositoryDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HasCatalogApp) {
 		toSerialize["hasCatalogApp"] = o.HasCatalogApp
-	}
-	if o.TrueUrl.IsSet() {
-		toSerialize["trueUrl"] = o.TrueUrl.Get()
 	}
 	return toSerialize, nil
 }

@@ -207,6 +207,7 @@ Class | Method | HTTP request | Description
 *CheckerAPI* | [**CheckerDns**](docs/CheckerAPI.md#checkerdns) | **Post** /api/v1/checker/dns | Check valid dns format
 *CheckerAPI* | [**CheckerDuplicateName**](docs/CheckerAPI.md#checkerduplicatename) | **Post** /api/v1/checker/duplicate | Duplicate name
 *CheckerAPI* | [**CheckerGoogle**](docs/CheckerAPI.md#checkergoogle) | **Post** /api/v1/checker/google | Check google credentials
+*CheckerAPI* | [**CheckerHelm**](docs/CheckerAPI.md#checkerhelm) | **Post** /api/v1/checker/helm | Check helm credential
 *CheckerAPI* | [**CheckerKeycloak**](docs/CheckerAPI.md#checkerkeycloak) | **Post** /api/v1/checker/keycloak | Check keycloak credential
 *CheckerAPI* | [**CheckerKubeConfig**](docs/CheckerAPI.md#checkerkubeconfig) | **Post** /api/v1/checker/kube-config | Check kube config
 *CheckerAPI* | [**CheckerNode**](docs/CheckerAPI.md#checkernode) | **Post** /api/v1/checker/node | Duplicate server name checker
@@ -1075,6 +1076,7 @@ Class | Method | HTTP request | Description
  - [GroupedBillingListQuery](docs/GroupedBillingListQuery.md)
  - [GroupedBillings](docs/GroupedBillings.md)
  - [GroupedPrometheusBillingListQuery](docs/GroupedPrometheusBillingListQuery.md)
+ - [HelmCredentialCommand](docs/HelmCredentialCommand.md)
  - [HelmMetadata](docs/HelmMetadata.md)
  - [HelmReleaseDto](docs/HelmReleaseDto.md)
  - [HelmReleasesList](docs/HelmReleasesList.md)

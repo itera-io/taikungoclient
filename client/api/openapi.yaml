@@ -3073,7 +3073,7 @@ paths:
       - explode: true
         in: query
         name: IsPrivate
-        required: true
+        required: false
         schema:
           type: boolean
         style: form
@@ -5569,8 +5569,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-02-15T00:02:44.0247493Z
-                  createdAt: 2024-02-15T00:02:44.0247493Z
+                  lastValidated: 2024-02-16T00:02:44.6152456Z
+                  createdAt: 2024-02-16T00:02:44.6152456Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5675,14 +5675,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-02-15T00:02:44.0247493Z
+                    lastBackup: 2024-02-16T00:02:44.6152456Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-02-15T00:02:44.0247493Z
+                  createdAt: 2024-02-16T00:02:44.6152456Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-02-15T00:02:44.0247493Z
+                  lastBackup: 2024-02-16T00:02:44.6152456Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5787,8 +5787,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-15T00:02:44.0247493Z
-                  expiration: 2024-02-15T00:02:44.0247493Z
+                  createdAt: 2024-02-16T00:02:44.6152456Z
+                  expiration: 2024-02-16T00:02:44.6152456Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5892,7 +5892,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-15T00:02:44.0247493Z
+                  createdAt: 2024-02-16T00:02:44.6152456Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6002,9 +6002,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-02-15T00:02:44.0247493+00:00
-                  startTimeStamp: 2024-02-15T00:02:44.0247493+00:00
-                  createdAt: 2024-02-15T00:02:44.0247493Z
+                  completionDateTime: 2024-02-16T00:02:44.6152456+00:00
+                  startTimeStamp: 2024-02-16T00:02:44.6152456+00:00
+                  createdAt: 2024-02-16T00:02:44.6152456Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -7225,6 +7225,48 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Check valid dns format
+      tags:
+      - Checker
+  /api/v1/checker/helm:
+    post:
+      operationId: checker-helm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelmCredentialCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Check helm credential
       tags:
       - Checker
   /api/v1/checker/keycloak:
@@ -38137,7 +38179,6 @@ components:
           name: name
           official: true
           disabled: true
-          trueUrl: trueUrl
           hasCatalogApp: true
           verifiedPublisher: true
           url: url
@@ -38148,7 +38189,6 @@ components:
           name: name
           official: true
           disabled: true
-          trueUrl: trueUrl
           hasCatalogApp: true
           verifiedPublisher: true
           url: url
@@ -38237,7 +38277,6 @@ components:
         name: name
         official: true
         disabled: true
-        trueUrl: trueUrl
         hasCatalogApp: true
         verifiedPublisher: true
         url: url
@@ -38267,9 +38306,6 @@ components:
           type: boolean
         hasCatalogApp:
           type: boolean
-        trueUrl:
-          nullable: true
-          type: string
       type: object
     ArtifactUrlCheckerCommand:
       additionalProperties: false
@@ -46929,6 +46965,23 @@ components:
           type: integer
         periodDuration:
           $ref: '#/components/schemas/BillingPeriod'
+      type: object
+    HelmCredentialCommand:
+      additionalProperties: false
+      example:
+        password: password
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
       type: object
     HelmMetadata:
       additionalProperties: false

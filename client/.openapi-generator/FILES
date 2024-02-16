@@ -452,6 +452,7 @@ docs/GroupedBillingInfo.md
 docs/GroupedBillingListQuery.md
 docs/GroupedBillings.md
 docs/GroupedPrometheusBillingListQuery.md
+docs/HelmCredentialCommand.md
 docs/HelmMetadata.md
 docs/HelmReleaseDto.md
 docs/HelmReleasesList.md
@@ -1333,6 +1334,7 @@ model_grouped_billing_info.go
 model_grouped_billing_list_query.go
 model_grouped_billings.go
 model_grouped_prometheus_billing_list_query.go
+model_helm_credential_command.go
 model_helm_metadata.go
 model_helm_release_dto.go
 model_helm_releases_list.go

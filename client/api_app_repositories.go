@@ -26,18 +26,13 @@ type AppRepositoriesAPIService service
 type ApiRepositoryAvailableListRequest struct {
 	ctx context.Context
 	ApiService *AppRepositoriesAPIService
-	isPrivate *bool
 	offset *int32
 	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	id *string
-}
-
-func (r ApiRepositoryAvailableListRequest) IsPrivate(isPrivate bool) ApiRepositoryAvailableListRequest {
-	r.isPrivate = &isPrivate
-	return r
+	isPrivate *bool
 }
 
 func (r ApiRepositoryAvailableListRequest) Offset(offset int32) ApiRepositoryAvailableListRequest {
@@ -67,6 +62,11 @@ func (r ApiRepositoryAvailableListRequest) Search(search string) ApiRepositoryAv
 
 func (r ApiRepositoryAvailableListRequest) Id(id string) ApiRepositoryAvailableListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiRepositoryAvailableListRequest) IsPrivate(isPrivate bool) ApiRepositoryAvailableListRequest {
+	r.isPrivate = &isPrivate
 	return r
 }
 
@@ -107,9 +107,6 @@ func (a *AppRepositoriesAPIService) RepositoryAvailableListExecute(r ApiReposito
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.isPrivate == nil {
-		return localVarReturnValue, nil, reportError("isPrivate is required and must be specified")
-	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
@@ -129,7 +126,9 @@ func (a *AppRepositoriesAPIService) RepositoryAvailableListExecute(r ApiReposito
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "IsPrivate", r.isPrivate, "")
+	if r.isPrivate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsPrivate", r.isPrivate, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
