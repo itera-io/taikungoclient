@@ -1269,6 +1269,7 @@ Class | Method | HTTP request | Description
  - [ProjectAppListDto](docs/ProjectAppListDto.md)
  - [ProjectAppParamDto](docs/ProjectAppParamDto.md)
  - [ProjectAppParamsDto](docs/ProjectAppParamsDto.md)
+ - [ProjectCatalogDto](docs/ProjectCatalogDto.md)
  - [ProjectChartDto](docs/ProjectChartDto.md)
  - [ProjectCommonRecordDto](docs/ProjectCommonRecordDto.md)
  - [ProjectDetailsErrorListDto](docs/ProjectDetailsErrorListDto.md)

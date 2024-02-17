@@ -26,6 +26,7 @@ type Repository struct {
 	Official *bool `json:"official,omitempty"`
 	RepositoryId NullableString `json:"repositoryId,omitempty"`
 	ScannerDisabled *bool `json:"scannerDisabled,omitempty"`
+	IsPrivate *bool `json:"isPrivate,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
 	OrganizationDisplayName NullableString `json:"organizationDisplayName,omitempty"`
@@ -270,6 +271,38 @@ func (o *Repository) SetScannerDisabled(v bool) {
 	o.ScannerDisabled = &v
 }
 
+// GetIsPrivate returns the IsPrivate field value if set, zero value otherwise.
+func (o *Repository) GetIsPrivate() bool {
+	if o == nil || IsNil(o.IsPrivate) {
+		var ret bool
+		return ret
+	}
+	return *o.IsPrivate
+}
+
+// GetIsPrivateOk returns a tuple with the IsPrivate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Repository) GetIsPrivateOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsPrivate) {
+		return nil, false
+	}
+	return o.IsPrivate, true
+}
+
+// HasIsPrivate returns a boolean if a field has been set.
+func (o *Repository) HasIsPrivate() bool {
+	if o != nil && !IsNil(o.IsPrivate) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsPrivate gets a reference to the given bool and assigns it to the IsPrivate field.
+func (o *Repository) SetIsPrivate(v bool) {
+	o.IsPrivate = &v
+}
+
 // GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Repository) GetOrganizationName() string {
 	if o == nil || IsNil(o.OrganizationName.Get()) {
@@ -413,6 +446,9 @@ func (o Repository) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ScannerDisabled) {
 		toSerialize["scannerDisabled"] = o.ScannerDisabled
+	}
+	if !IsNil(o.IsPrivate) {
+		toSerialize["isPrivate"] = o.IsPrivate
 	}
 	if o.OrganizationName.IsSet() {
 		toSerialize["organizationName"] = o.OrganizationName.Get()

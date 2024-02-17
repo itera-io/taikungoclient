@@ -26,7 +26,7 @@ type CatalogListDto struct {
 	IsLocked *bool `json:"isLocked,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	PackageIds []string `json:"packageIds,omitempty"`
-	BoundProjects []CommonDropdownDto `json:"boundProjects,omitempty"`
+	BoundProjects []ProjectCatalogDto `json:"boundProjects,omitempty"`
 	BoundApplications []AvailablePackagesDto `json:"boundApplications,omitempty"`
 }
 
@@ -261,9 +261,9 @@ func (o *CatalogListDto) SetPackageIds(v []string) {
 }
 
 // GetBoundProjects returns the BoundProjects field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogListDto) GetBoundProjects() []CommonDropdownDto {
+func (o *CatalogListDto) GetBoundProjects() []ProjectCatalogDto {
 	if o == nil {
-		var ret []CommonDropdownDto
+		var ret []ProjectCatalogDto
 		return ret
 	}
 	return o.BoundProjects
@@ -272,7 +272,7 @@ func (o *CatalogListDto) GetBoundProjects() []CommonDropdownDto {
 // GetBoundProjectsOk returns a tuple with the BoundProjects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogListDto) GetBoundProjectsOk() ([]CommonDropdownDto, bool) {
+func (o *CatalogListDto) GetBoundProjectsOk() ([]ProjectCatalogDto, bool) {
 	if o == nil || IsNil(o.BoundProjects) {
 		return nil, false
 	}
@@ -288,8 +288,8 @@ func (o *CatalogListDto) HasBoundProjects() bool {
 	return false
 }
 
-// SetBoundProjects gets a reference to the given []CommonDropdownDto and assigns it to the BoundProjects field.
-func (o *CatalogListDto) SetBoundProjects(v []CommonDropdownDto) {
+// SetBoundProjects gets a reference to the given []ProjectCatalogDto and assigns it to the BoundProjects field.
+func (o *CatalogListDto) SetBoundProjects(v []ProjectCatalogDto) {
 	o.BoundProjects = v
 }
 
