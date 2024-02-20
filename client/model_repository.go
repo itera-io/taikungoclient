@@ -26,7 +26,7 @@ type Repository struct {
 	Official *bool `json:"official,omitempty"`
 	RepositoryId NullableString `json:"repositoryId,omitempty"`
 	ScannerDisabled *bool `json:"scannerDisabled,omitempty"`
-	IsPrivate *bool `json:"isPrivate,omitempty"`
+	IsImported *bool `json:"isImported,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
 	OrganizationDisplayName NullableString `json:"organizationDisplayName,omitempty"`
@@ -271,36 +271,36 @@ func (o *Repository) SetScannerDisabled(v bool) {
 	o.ScannerDisabled = &v
 }
 
-// GetIsPrivate returns the IsPrivate field value if set, zero value otherwise.
-func (o *Repository) GetIsPrivate() bool {
-	if o == nil || IsNil(o.IsPrivate) {
+// GetIsImported returns the IsImported field value if set, zero value otherwise.
+func (o *Repository) GetIsImported() bool {
+	if o == nil || IsNil(o.IsImported) {
 		var ret bool
 		return ret
 	}
-	return *o.IsPrivate
+	return *o.IsImported
 }
 
-// GetIsPrivateOk returns a tuple with the IsPrivate field value if set, nil otherwise
+// GetIsImportedOk returns a tuple with the IsImported field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Repository) GetIsPrivateOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsPrivate) {
+func (o *Repository) GetIsImportedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsImported) {
 		return nil, false
 	}
-	return o.IsPrivate, true
+	return o.IsImported, true
 }
 
-// HasIsPrivate returns a boolean if a field has been set.
-func (o *Repository) HasIsPrivate() bool {
-	if o != nil && !IsNil(o.IsPrivate) {
+// HasIsImported returns a boolean if a field has been set.
+func (o *Repository) HasIsImported() bool {
+	if o != nil && !IsNil(o.IsImported) {
 		return true
 	}
 
 	return false
 }
 
-// SetIsPrivate gets a reference to the given bool and assigns it to the IsPrivate field.
-func (o *Repository) SetIsPrivate(v bool) {
-	o.IsPrivate = &v
+// SetIsImported gets a reference to the given bool and assigns it to the IsImported field.
+func (o *Repository) SetIsImported(v bool) {
+	o.IsImported = &v
 }
 
 // GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -447,8 +447,8 @@ func (o Repository) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ScannerDisabled) {
 		toSerialize["scannerDisabled"] = o.ScannerDisabled
 	}
-	if !IsNil(o.IsPrivate) {
-		toSerialize["isPrivate"] = o.IsPrivate
+	if !IsNil(o.IsImported) {
+		toSerialize["isImported"] = o.IsImported
 	}
 	if o.OrganizationName.IsSet() {
 		toSerialize["organizationName"] = o.OrganizationName.Get()
