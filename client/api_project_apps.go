@@ -698,6 +698,7 @@ type ApiProjectappListRequest struct {
 	sortDirection *string
 	search *string
 	id *int32
+	projectId *int32
 }
 
 func (r ApiProjectappListRequest) Offset(offset int32) ApiProjectappListRequest {
@@ -727,6 +728,11 @@ func (r ApiProjectappListRequest) Search(search string) ApiProjectappListRequest
 
 func (r ApiProjectappListRequest) Id(id int32) ApiProjectappListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiProjectappListRequest) ProjectId(projectId int32) ApiProjectappListRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -785,6 +791,9 @@ func (a *ProjectAppsAPIService) ProjectappListExecute(r ApiProjectappListRequest
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

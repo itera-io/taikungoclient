@@ -24,7 +24,6 @@ type ImportRepoCommand struct {
 	Password NullableString `json:"password,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Url NullableString `json:"url,omitempty"`
-	DisplayName NullableString `json:"displayName,omitempty"`
 }
 
 // NewImportRepoCommand instantiates a new ImportRepoCommand object
@@ -212,48 +211,6 @@ func (o *ImportRepoCommand) UnsetUrl() {
 	o.Url.Unset()
 }
 
-// GetDisplayName returns the DisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ImportRepoCommand) GetDisplayName() string {
-	if o == nil || IsNil(o.DisplayName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.DisplayName.Get()
-}
-
-// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ImportRepoCommand) GetDisplayNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.DisplayName.Get(), o.DisplayName.IsSet()
-}
-
-// HasDisplayName returns a boolean if a field has been set.
-func (o *ImportRepoCommand) HasDisplayName() bool {
-	if o != nil && o.DisplayName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDisplayName gets a reference to the given NullableString and assigns it to the DisplayName field.
-func (o *ImportRepoCommand) SetDisplayName(v string) {
-	o.DisplayName.Set(&v)
-}
-// SetDisplayNameNil sets the value for DisplayName to be an explicit nil
-func (o *ImportRepoCommand) SetDisplayNameNil() {
-	o.DisplayName.Set(nil)
-}
-
-// UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
-func (o *ImportRepoCommand) UnsetDisplayName() {
-	o.DisplayName.Unset()
-}
-
 func (o ImportRepoCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -275,9 +232,6 @@ func (o ImportRepoCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Url.IsSet() {
 		toSerialize["url"] = o.Url.Get()
-	}
-	if o.DisplayName.IsSet() {
-		toSerialize["displayName"] = o.DisplayName.Get()
 	}
 	return toSerialize, nil
 }
