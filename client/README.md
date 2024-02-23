@@ -136,7 +136,6 @@ Class | Method | HTTP request | Description
 *AppRepositoriesAPI* | [**RepositoryAvailableList**](docs/AppRepositoriesAPI.md#repositoryavailablelist) | **Get** /api/v1/repository/available | Retrieve available repositories
 *AppRepositoriesAPI* | [**RepositoryBind**](docs/AppRepositoriesAPI.md#repositorybind) | **Post** /api/v1/repository/bind | Bind repo to organization
 *AppRepositoriesAPI* | [**RepositoryDelete**](docs/AppRepositoriesAPI.md#repositorydelete) | **Post** /api/v1/repository/delete | Delete repo from organization
-*AppRepositoriesAPI* | [**RepositoryDisable**](docs/AppRepositoriesAPI.md#repositorydisable) | **Post** /api/v1/repository/disable | Disable repo from organization
 *AppRepositoriesAPI* | [**RepositoryImport**](docs/AppRepositoriesAPI.md#repositoryimport) | **Post** /api/v1/repository/import | Import repo to artifact
 *AppRepositoriesAPI* | [**RepositoryRecommendedList**](docs/AppRepositoriesAPI.md#repositoryrecommendedlist) | **Get** /api/v1/repository/recommended | Retrieve taikun recommended repositories
 *AppRepositoriesAPI* | [**RepositoryUnbind**](docs/AppRepositoriesAPI.md#repositoryunbind) | **Post** /api/v1/repository/unbind | Unbind repo from organization
@@ -1018,7 +1017,6 @@ Class | Method | HTTP request | Description
  - [DisableAutoscalingCommand](docs/DisableAutoscalingCommand.md)
  - [DisableBackupCommand](docs/DisableBackupCommand.md)
  - [DisableGatekeeperCommand](docs/DisableGatekeeperCommand.md)
- - [DisableRepoCommand](docs/DisableRepoCommand.md)
  - [DisableUserCommand](docs/DisableUserCommand.md)
  - [DnsCommand](docs/DnsCommand.md)
  - [DnsNtpAddressEditDto](docs/DnsNtpAddressEditDto.md)

@@ -391,7 +391,6 @@ docs/DisableAiCommand.md
 docs/DisableAutoscalingCommand.md
 docs/DisableBackupCommand.md
 docs/DisableGatekeeperCommand.md
-docs/DisableRepoCommand.md
 docs/DisableUserCommand.md
 docs/DnsCommand.md
 docs/DnsNtpAddressEditDto.md
@@ -1277,7 +1276,6 @@ model_disable_ai_command.go
 model_disable_autoscaling_command.go
 model_disable_backup_command.go
 model_disable_gatekeeper_command.go
-model_disable_repo_command.go
 model_disable_user_command.go
 model_dns_command.go
 model_dns_ntp_address_edit_dto.go
