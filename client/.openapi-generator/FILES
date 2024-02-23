@@ -403,6 +403,7 @@ docs/DocumentationsList.md
 docs/DownloadInvoiceCommand.md
 docs/DownloadKubeConfigCommand.md
 docs/DuplicateNameCheckerCommand.md
+docs/EInstanceStatus.md
 docs/EditAlertingIntegrationCommand.md
 docs/EditAllowedHostDto.md
 docs/EditArticleCommand.md
@@ -473,6 +474,8 @@ docs/IngressDto.md
 docs/IngressSearchCommand.md
 docs/IngressSearchList.md
 docs/Ingresses.md
+docs/InstanceAppListDto.md
+docs/InteractiveShellDto.md
 docs/InteractiveShellSendCommand.md
 docs/InvoiceDto.md
 docs/InvoiceListDto.md
@@ -664,7 +667,6 @@ docs/ProjectAlertsQuery.md
 docs/ProjectAppDetailsDto.md
 docs/ProjectAppDto.md
 docs/ProjectAppList.md
-docs/ProjectAppListDto.md
 docs/ProjectAppParamDto.md
 docs/ProjectAppParamsAPI.md
 docs/ProjectAppParamsDto.md
@@ -1287,6 +1289,7 @@ model_documentations_list.go
 model_download_invoice_command.go
 model_download_kube_config_command.go
 model_duplicate_name_checker_command.go
+model_e_instance_status.go
 model_edit_alerting_integration_command.go
 model_edit_allowed_host_dto.go
 model_edit_article_command.go
@@ -1352,6 +1355,8 @@ model_ingress_dto.go
 model_ingress_search_command.go
 model_ingress_search_list.go
 model_ingresses.go
+model_instance_app_list_dto.go
+model_interactive_shell_dto.go
 model_interactive_shell_send_command.go
 model_invoice_dto.go
 model_invoice_list_dto.go
@@ -1523,7 +1528,6 @@ model_project_alerts_query.go
 model_project_app_details_dto.go
 model_project_app_dto.go
 model_project_app_list.go
-model_project_app_list_dto.go
 model_project_app_param_dto.go
 model_project_app_params_dto.go
 model_project_catalog_dto.go

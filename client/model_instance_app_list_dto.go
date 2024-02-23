@@ -15,15 +15,15 @@ import (
 	"encoding/json"
 )
 
-// checks if the ProjectAppListDto type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ProjectAppListDto{}
+// checks if the InstanceAppListDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &InstanceAppListDto{}
 
-// ProjectAppListDto struct for ProjectAppListDto
-type ProjectAppListDto struct {
+// InstanceAppListDto struct for InstanceAppListDto
+type InstanceAppListDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
-	Status NullableString `json:"status,omitempty"`
+	Status *EInstanceStatus `json:"status,omitempty"`
 	Version NullableString `json:"version,omitempty"`
 	CatalogId *int32 `json:"catalogId,omitempty"`
 	CatalogName NullableString `json:"catalogName,omitempty"`
@@ -40,25 +40,25 @@ type ProjectAppListDto struct {
 	ProjectName NullableString `json:"projectName,omitempty"`
 }
 
-// NewProjectAppListDto instantiates a new ProjectAppListDto object
+// NewInstanceAppListDto instantiates a new InstanceAppListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectAppListDto() *ProjectAppListDto {
-	this := ProjectAppListDto{}
+func NewInstanceAppListDto() *InstanceAppListDto {
+	this := InstanceAppListDto{}
 	return &this
 }
 
-// NewProjectAppListDtoWithDefaults instantiates a new ProjectAppListDto object
+// NewInstanceAppListDtoWithDefaults instantiates a new InstanceAppListDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewProjectAppListDtoWithDefaults() *ProjectAppListDto {
-	this := ProjectAppListDto{}
+func NewInstanceAppListDtoWithDefaults() *InstanceAppListDto {
+	this := InstanceAppListDto{}
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ProjectAppListDto) GetId() int32 {
+func (o *InstanceAppListDto) GetId() int32 {
 	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
@@ -68,7 +68,7 @@ func (o *ProjectAppListDto) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectAppListDto) GetIdOk() (*int32, bool) {
+func (o *InstanceAppListDto) GetIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -76,7 +76,7 @@ func (o *ProjectAppListDto) GetIdOk() (*int32, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasId() bool {
+func (o *InstanceAppListDto) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -85,12 +85,12 @@ func (o *ProjectAppListDto) HasId() bool {
 }
 
 // SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *ProjectAppListDto) SetId(v int32) {
+func (o *InstanceAppListDto) SetId(v int32) {
 	o.Id = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetName() string {
+func (o *InstanceAppListDto) GetName() string {
 	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
@@ -101,7 +101,7 @@ func (o *ProjectAppListDto) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetNameOk() (*string, bool) {
+func (o *InstanceAppListDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -109,7 +109,7 @@ func (o *ProjectAppListDto) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasName() bool {
+func (o *InstanceAppListDto) HasName() bool {
 	if o != nil && o.Name.IsSet() {
 		return true
 	}
@@ -118,21 +118,21 @@ func (o *ProjectAppListDto) HasName() bool {
 }
 
 // SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *ProjectAppListDto) SetName(v string) {
+func (o *InstanceAppListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
 // SetNameNil sets the value for Name to be an explicit nil
-func (o *ProjectAppListDto) SetNameNil() {
+func (o *InstanceAppListDto) SetNameNil() {
 	o.Name.Set(nil)
 }
 
 // UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ProjectAppListDto) UnsetName() {
+func (o *InstanceAppListDto) UnsetName() {
 	o.Name.Unset()
 }
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetNamespace() string {
+func (o *InstanceAppListDto) GetNamespace() string {
 	if o == nil || IsNil(o.Namespace.Get()) {
 		var ret string
 		return ret
@@ -143,7 +143,7 @@ func (o *ProjectAppListDto) GetNamespace() string {
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetNamespaceOk() (*string, bool) {
+func (o *InstanceAppListDto) GetNamespaceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -151,7 +151,7 @@ func (o *ProjectAppListDto) GetNamespaceOk() (*string, bool) {
 }
 
 // HasNamespace returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasNamespace() bool {
+func (o *InstanceAppListDto) HasNamespace() bool {
 	if o != nil && o.Namespace.IsSet() {
 		return true
 	}
@@ -160,63 +160,53 @@ func (o *ProjectAppListDto) HasNamespace() bool {
 }
 
 // SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
-func (o *ProjectAppListDto) SetNamespace(v string) {
+func (o *InstanceAppListDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *ProjectAppListDto) SetNamespaceNil() {
+func (o *InstanceAppListDto) SetNamespaceNil() {
 	o.Namespace.Set(nil)
 }
 
 // UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *ProjectAppListDto) UnsetNamespace() {
+func (o *InstanceAppListDto) UnsetNamespace() {
 	o.Namespace.Unset()
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
-		var ret string
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *InstanceAppListDto) GetStatus() EInstanceStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret EInstanceStatus
 		return ret
 	}
-	return *o.Status.Get()
+	return *o.Status
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+func (o *InstanceAppListDto) GetStatusOk() (*EInstanceStatus, bool) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return o.Status.Get(), o.Status.IsSet()
+	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
+func (o *InstanceAppListDto) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
-func (o *ProjectAppListDto) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *ProjectAppListDto) SetStatusNil() {
-	o.Status.Set(nil)
-}
-
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *ProjectAppListDto) UnsetStatus() {
-	o.Status.Unset()
+// SetStatus gets a reference to the given EInstanceStatus and assigns it to the Status field.
+func (o *InstanceAppListDto) SetStatus(v EInstanceStatus) {
+	o.Status = &v
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetVersion() string {
+func (o *InstanceAppListDto) GetVersion() string {
 	if o == nil || IsNil(o.Version.Get()) {
 		var ret string
 		return ret
@@ -227,7 +217,7 @@ func (o *ProjectAppListDto) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetVersionOk() (*string, bool) {
+func (o *InstanceAppListDto) GetVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -235,7 +225,7 @@ func (o *ProjectAppListDto) GetVersionOk() (*string, bool) {
 }
 
 // HasVersion returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasVersion() bool {
+func (o *InstanceAppListDto) HasVersion() bool {
 	if o != nil && o.Version.IsSet() {
 		return true
 	}
@@ -244,21 +234,21 @@ func (o *ProjectAppListDto) HasVersion() bool {
 }
 
 // SetVersion gets a reference to the given NullableString and assigns it to the Version field.
-func (o *ProjectAppListDto) SetVersion(v string) {
+func (o *InstanceAppListDto) SetVersion(v string) {
 	o.Version.Set(&v)
 }
 // SetVersionNil sets the value for Version to be an explicit nil
-func (o *ProjectAppListDto) SetVersionNil() {
+func (o *InstanceAppListDto) SetVersionNil() {
 	o.Version.Set(nil)
 }
 
 // UnsetVersion ensures that no value is present for Version, not even an explicit nil
-func (o *ProjectAppListDto) UnsetVersion() {
+func (o *InstanceAppListDto) UnsetVersion() {
 	o.Version.Unset()
 }
 
 // GetCatalogId returns the CatalogId field value if set, zero value otherwise.
-func (o *ProjectAppListDto) GetCatalogId() int32 {
+func (o *InstanceAppListDto) GetCatalogId() int32 {
 	if o == nil || IsNil(o.CatalogId) {
 		var ret int32
 		return ret
@@ -268,7 +258,7 @@ func (o *ProjectAppListDto) GetCatalogId() int32 {
 
 // GetCatalogIdOk returns a tuple with the CatalogId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectAppListDto) GetCatalogIdOk() (*int32, bool) {
+func (o *InstanceAppListDto) GetCatalogIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.CatalogId) {
 		return nil, false
 	}
@@ -276,7 +266,7 @@ func (o *ProjectAppListDto) GetCatalogIdOk() (*int32, bool) {
 }
 
 // HasCatalogId returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasCatalogId() bool {
+func (o *InstanceAppListDto) HasCatalogId() bool {
 	if o != nil && !IsNil(o.CatalogId) {
 		return true
 	}
@@ -285,12 +275,12 @@ func (o *ProjectAppListDto) HasCatalogId() bool {
 }
 
 // SetCatalogId gets a reference to the given int32 and assigns it to the CatalogId field.
-func (o *ProjectAppListDto) SetCatalogId(v int32) {
+func (o *InstanceAppListDto) SetCatalogId(v int32) {
 	o.CatalogId = &v
 }
 
 // GetCatalogName returns the CatalogName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetCatalogName() string {
+func (o *InstanceAppListDto) GetCatalogName() string {
 	if o == nil || IsNil(o.CatalogName.Get()) {
 		var ret string
 		return ret
@@ -301,7 +291,7 @@ func (o *ProjectAppListDto) GetCatalogName() string {
 // GetCatalogNameOk returns a tuple with the CatalogName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetCatalogNameOk() (*string, bool) {
+func (o *InstanceAppListDto) GetCatalogNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -309,7 +299,7 @@ func (o *ProjectAppListDto) GetCatalogNameOk() (*string, bool) {
 }
 
 // HasCatalogName returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasCatalogName() bool {
+func (o *InstanceAppListDto) HasCatalogName() bool {
 	if o != nil && o.CatalogName.IsSet() {
 		return true
 	}
@@ -318,21 +308,21 @@ func (o *ProjectAppListDto) HasCatalogName() bool {
 }
 
 // SetCatalogName gets a reference to the given NullableString and assigns it to the CatalogName field.
-func (o *ProjectAppListDto) SetCatalogName(v string) {
+func (o *InstanceAppListDto) SetCatalogName(v string) {
 	o.CatalogName.Set(&v)
 }
 // SetCatalogNameNil sets the value for CatalogName to be an explicit nil
-func (o *ProjectAppListDto) SetCatalogNameNil() {
+func (o *InstanceAppListDto) SetCatalogNameNil() {
 	o.CatalogName.Set(nil)
 }
 
 // UnsetCatalogName ensures that no value is present for CatalogName, not even an explicit nil
-func (o *ProjectAppListDto) UnsetCatalogName() {
+func (o *InstanceAppListDto) UnsetCatalogName() {
 	o.CatalogName.Unset()
 }
 
 // GetCatalogAppName returns the CatalogAppName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetCatalogAppName() string {
+func (o *InstanceAppListDto) GetCatalogAppName() string {
 	if o == nil || IsNil(o.CatalogAppName.Get()) {
 		var ret string
 		return ret
@@ -343,7 +333,7 @@ func (o *ProjectAppListDto) GetCatalogAppName() string {
 // GetCatalogAppNameOk returns a tuple with the CatalogAppName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetCatalogAppNameOk() (*string, bool) {
+func (o *InstanceAppListDto) GetCatalogAppNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -351,7 +341,7 @@ func (o *ProjectAppListDto) GetCatalogAppNameOk() (*string, bool) {
 }
 
 // HasCatalogAppName returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasCatalogAppName() bool {
+func (o *InstanceAppListDto) HasCatalogAppName() bool {
 	if o != nil && o.CatalogAppName.IsSet() {
 		return true
 	}
@@ -360,21 +350,21 @@ func (o *ProjectAppListDto) HasCatalogAppName() bool {
 }
 
 // SetCatalogAppName gets a reference to the given NullableString and assigns it to the CatalogAppName field.
-func (o *ProjectAppListDto) SetCatalogAppName(v string) {
+func (o *InstanceAppListDto) SetCatalogAppName(v string) {
 	o.CatalogAppName.Set(&v)
 }
 // SetCatalogAppNameNil sets the value for CatalogAppName to be an explicit nil
-func (o *ProjectAppListDto) SetCatalogAppNameNil() {
+func (o *InstanceAppListDto) SetCatalogAppNameNil() {
 	o.CatalogAppName.Set(nil)
 }
 
 // UnsetCatalogAppName ensures that no value is present for CatalogAppName, not even an explicit nil
-func (o *ProjectAppListDto) UnsetCatalogAppName() {
+func (o *InstanceAppListDto) UnsetCatalogAppName() {
 	o.CatalogAppName.Unset()
 }
 
 // GetCatalogAppId returns the CatalogAppId field value if set, zero value otherwise.
-func (o *ProjectAppListDto) GetCatalogAppId() int32 {
+func (o *InstanceAppListDto) GetCatalogAppId() int32 {
 	if o == nil || IsNil(o.CatalogAppId) {
 		var ret int32
 		return ret
@@ -384,7 +374,7 @@ func (o *ProjectAppListDto) GetCatalogAppId() int32 {
 
 // GetCatalogAppIdOk returns a tuple with the CatalogAppId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectAppListDto) GetCatalogAppIdOk() (*int32, bool) {
+func (o *InstanceAppListDto) GetCatalogAppIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.CatalogAppId) {
 		return nil, false
 	}
@@ -392,7 +382,7 @@ func (o *ProjectAppListDto) GetCatalogAppIdOk() (*int32, bool) {
 }
 
 // HasCatalogAppId returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasCatalogAppId() bool {
+func (o *InstanceAppListDto) HasCatalogAppId() bool {
 	if o != nil && !IsNil(o.CatalogAppId) {
 		return true
 	}
@@ -401,12 +391,12 @@ func (o *ProjectAppListDto) HasCatalogAppId() bool {
 }
 
 // SetCatalogAppId gets a reference to the given int32 and assigns it to the CatalogAppId field.
-func (o *ProjectAppListDto) SetCatalogAppId(v int32) {
+func (o *InstanceAppListDto) SetCatalogAppId(v int32) {
 	o.CatalogAppId = &v
 }
 
 // GetAppRepoName returns the AppRepoName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetAppRepoName() string {
+func (o *InstanceAppListDto) GetAppRepoName() string {
 	if o == nil || IsNil(o.AppRepoName.Get()) {
 		var ret string
 		return ret
@@ -417,7 +407,7 @@ func (o *ProjectAppListDto) GetAppRepoName() string {
 // GetAppRepoNameOk returns a tuple with the AppRepoName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetAppRepoNameOk() (*string, bool) {
+func (o *InstanceAppListDto) GetAppRepoNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -425,7 +415,7 @@ func (o *ProjectAppListDto) GetAppRepoNameOk() (*string, bool) {
 }
 
 // HasAppRepoName returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasAppRepoName() bool {
+func (o *InstanceAppListDto) HasAppRepoName() bool {
 	if o != nil && o.AppRepoName.IsSet() {
 		return true
 	}
@@ -434,21 +424,21 @@ func (o *ProjectAppListDto) HasAppRepoName() bool {
 }
 
 // SetAppRepoName gets a reference to the given NullableString and assigns it to the AppRepoName field.
-func (o *ProjectAppListDto) SetAppRepoName(v string) {
+func (o *InstanceAppListDto) SetAppRepoName(v string) {
 	o.AppRepoName.Set(&v)
 }
 // SetAppRepoNameNil sets the value for AppRepoName to be an explicit nil
-func (o *ProjectAppListDto) SetAppRepoNameNil() {
+func (o *InstanceAppListDto) SetAppRepoNameNil() {
 	o.AppRepoName.Set(nil)
 }
 
 // UnsetAppRepoName ensures that no value is present for AppRepoName, not even an explicit nil
-func (o *ProjectAppListDto) UnsetAppRepoName() {
+func (o *InstanceAppListDto) UnsetAppRepoName() {
 	o.AppRepoName.Unset()
 }
 
 // GetLogo returns the Logo field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetLogo() string {
+func (o *InstanceAppListDto) GetLogo() string {
 	if o == nil || IsNil(o.Logo.Get()) {
 		var ret string
 		return ret
@@ -459,7 +449,7 @@ func (o *ProjectAppListDto) GetLogo() string {
 // GetLogoOk returns a tuple with the Logo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetLogoOk() (*string, bool) {
+func (o *InstanceAppListDto) GetLogoOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -467,7 +457,7 @@ func (o *ProjectAppListDto) GetLogoOk() (*string, bool) {
 }
 
 // HasLogo returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasLogo() bool {
+func (o *InstanceAppListDto) HasLogo() bool {
 	if o != nil && o.Logo.IsSet() {
 		return true
 	}
@@ -476,21 +466,21 @@ func (o *ProjectAppListDto) HasLogo() bool {
 }
 
 // SetLogo gets a reference to the given NullableString and assigns it to the Logo field.
-func (o *ProjectAppListDto) SetLogo(v string) {
+func (o *InstanceAppListDto) SetLogo(v string) {
 	o.Logo.Set(&v)
 }
 // SetLogoNil sets the value for Logo to be an explicit nil
-func (o *ProjectAppListDto) SetLogoNil() {
+func (o *InstanceAppListDto) SetLogoNil() {
 	o.Logo.Set(nil)
 }
 
 // UnsetLogo ensures that no value is present for Logo, not even an explicit nil
-func (o *ProjectAppListDto) UnsetLogo() {
+func (o *InstanceAppListDto) UnsetLogo() {
 	o.Logo.Unset()
 }
 
 // GetAutoSync returns the AutoSync field value if set, zero value otherwise.
-func (o *ProjectAppListDto) GetAutoSync() bool {
+func (o *InstanceAppListDto) GetAutoSync() bool {
 	if o == nil || IsNil(o.AutoSync) {
 		var ret bool
 		return ret
@@ -500,7 +490,7 @@ func (o *ProjectAppListDto) GetAutoSync() bool {
 
 // GetAutoSyncOk returns a tuple with the AutoSync field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectAppListDto) GetAutoSyncOk() (*bool, bool) {
+func (o *InstanceAppListDto) GetAutoSyncOk() (*bool, bool) {
 	if o == nil || IsNil(o.AutoSync) {
 		return nil, false
 	}
@@ -508,7 +498,7 @@ func (o *ProjectAppListDto) GetAutoSyncOk() (*bool, bool) {
 }
 
 // HasAutoSync returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasAutoSync() bool {
+func (o *InstanceAppListDto) HasAutoSync() bool {
 	if o != nil && !IsNil(o.AutoSync) {
 		return true
 	}
@@ -517,12 +507,12 @@ func (o *ProjectAppListDto) HasAutoSync() bool {
 }
 
 // SetAutoSync gets a reference to the given bool and assigns it to the AutoSync field.
-func (o *ProjectAppListDto) SetAutoSync(v bool) {
+func (o *InstanceAppListDto) SetAutoSync(v bool) {
 	o.AutoSync = &v
 }
 
 // GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetCreated() string {
+func (o *InstanceAppListDto) GetCreated() string {
 	if o == nil || IsNil(o.Created.Get()) {
 		var ret string
 		return ret
@@ -533,7 +523,7 @@ func (o *ProjectAppListDto) GetCreated() string {
 // GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetCreatedOk() (*string, bool) {
+func (o *InstanceAppListDto) GetCreatedOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -541,7 +531,7 @@ func (o *ProjectAppListDto) GetCreatedOk() (*string, bool) {
 }
 
 // HasCreated returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasCreated() bool {
+func (o *InstanceAppListDto) HasCreated() bool {
 	if o != nil && o.Created.IsSet() {
 		return true
 	}
@@ -550,21 +540,21 @@ func (o *ProjectAppListDto) HasCreated() bool {
 }
 
 // SetCreated gets a reference to the given NullableString and assigns it to the Created field.
-func (o *ProjectAppListDto) SetCreated(v string) {
+func (o *InstanceAppListDto) SetCreated(v string) {
 	o.Created.Set(&v)
 }
 // SetCreatedNil sets the value for Created to be an explicit nil
-func (o *ProjectAppListDto) SetCreatedNil() {
+func (o *InstanceAppListDto) SetCreatedNil() {
 	o.Created.Set(nil)
 }
 
 // UnsetCreated ensures that no value is present for Created, not even an explicit nil
-func (o *ProjectAppListDto) UnsetCreated() {
+func (o *InstanceAppListDto) UnsetCreated() {
 	o.Created.Unset()
 }
 
 // GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetCreatedBy() string {
+func (o *InstanceAppListDto) GetCreatedBy() string {
 	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
@@ -575,7 +565,7 @@ func (o *ProjectAppListDto) GetCreatedBy() string {
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetCreatedByOk() (*string, bool) {
+func (o *InstanceAppListDto) GetCreatedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -583,7 +573,7 @@ func (o *ProjectAppListDto) GetCreatedByOk() (*string, bool) {
 }
 
 // HasCreatedBy returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasCreatedBy() bool {
+func (o *InstanceAppListDto) HasCreatedBy() bool {
 	if o != nil && o.CreatedBy.IsSet() {
 		return true
 	}
@@ -592,21 +582,21 @@ func (o *ProjectAppListDto) HasCreatedBy() bool {
 }
 
 // SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
-func (o *ProjectAppListDto) SetCreatedBy(v string) {
+func (o *InstanceAppListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
 // SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *ProjectAppListDto) SetCreatedByNil() {
+func (o *InstanceAppListDto) SetCreatedByNil() {
 	o.CreatedBy.Set(nil)
 }
 
 // UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *ProjectAppListDto) UnsetCreatedBy() {
+func (o *InstanceAppListDto) UnsetCreatedBy() {
 	o.CreatedBy.Unset()
 }
 
 // GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetLastModified() string {
+func (o *InstanceAppListDto) GetLastModified() string {
 	if o == nil || IsNil(o.LastModified.Get()) {
 		var ret string
 		return ret
@@ -617,7 +607,7 @@ func (o *ProjectAppListDto) GetLastModified() string {
 // GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetLastModifiedOk() (*string, bool) {
+func (o *InstanceAppListDto) GetLastModifiedOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -625,7 +615,7 @@ func (o *ProjectAppListDto) GetLastModifiedOk() (*string, bool) {
 }
 
 // HasLastModified returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasLastModified() bool {
+func (o *InstanceAppListDto) HasLastModified() bool {
 	if o != nil && o.LastModified.IsSet() {
 		return true
 	}
@@ -634,21 +624,21 @@ func (o *ProjectAppListDto) HasLastModified() bool {
 }
 
 // SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
-func (o *ProjectAppListDto) SetLastModified(v string) {
+func (o *InstanceAppListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
 // SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *ProjectAppListDto) SetLastModifiedNil() {
+func (o *InstanceAppListDto) SetLastModifiedNil() {
 	o.LastModified.Set(nil)
 }
 
 // UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *ProjectAppListDto) UnsetLastModified() {
+func (o *InstanceAppListDto) UnsetLastModified() {
 	o.LastModified.Unset()
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetLastModifiedBy() string {
+func (o *InstanceAppListDto) GetLastModifiedBy() string {
 	if o == nil || IsNil(o.LastModifiedBy.Get()) {
 		var ret string
 		return ret
@@ -659,7 +649,7 @@ func (o *ProjectAppListDto) GetLastModifiedBy() string {
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *InstanceAppListDto) GetLastModifiedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -667,7 +657,7 @@ func (o *ProjectAppListDto) GetLastModifiedByOk() (*string, bool) {
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasLastModifiedBy() bool {
+func (o *InstanceAppListDto) HasLastModifiedBy() bool {
 	if o != nil && o.LastModifiedBy.IsSet() {
 		return true
 	}
@@ -676,21 +666,21 @@ func (o *ProjectAppListDto) HasLastModifiedBy() bool {
 }
 
 // SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
-func (o *ProjectAppListDto) SetLastModifiedBy(v string) {
+func (o *InstanceAppListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
 // SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *ProjectAppListDto) SetLastModifiedByNil() {
+func (o *InstanceAppListDto) SetLastModifiedByNil() {
 	o.LastModifiedBy.Set(nil)
 }
 
 // UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *ProjectAppListDto) UnsetLastModifiedBy() {
+func (o *InstanceAppListDto) UnsetLastModifiedBy() {
 	o.LastModifiedBy.Unset()
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
-func (o *ProjectAppListDto) GetProjectId() int32 {
+func (o *InstanceAppListDto) GetProjectId() int32 {
 	if o == nil || IsNil(o.ProjectId) {
 		var ret int32
 		return ret
@@ -700,7 +690,7 @@ func (o *ProjectAppListDto) GetProjectId() int32 {
 
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectAppListDto) GetProjectIdOk() (*int32, bool) {
+func (o *InstanceAppListDto) GetProjectIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
@@ -708,7 +698,7 @@ func (o *ProjectAppListDto) GetProjectIdOk() (*int32, bool) {
 }
 
 // HasProjectId returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasProjectId() bool {
+func (o *InstanceAppListDto) HasProjectId() bool {
 	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
@@ -717,12 +707,12 @@ func (o *ProjectAppListDto) HasProjectId() bool {
 }
 
 // SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
-func (o *ProjectAppListDto) SetProjectId(v int32) {
+func (o *InstanceAppListDto) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
 // GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppListDto) GetProjectName() string {
+func (o *InstanceAppListDto) GetProjectName() string {
 	if o == nil || IsNil(o.ProjectName.Get()) {
 		var ret string
 		return ret
@@ -733,7 +723,7 @@ func (o *ProjectAppListDto) GetProjectName() string {
 // GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppListDto) GetProjectNameOk() (*string, bool) {
+func (o *InstanceAppListDto) GetProjectNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -741,7 +731,7 @@ func (o *ProjectAppListDto) GetProjectNameOk() (*string, bool) {
 }
 
 // HasProjectName returns a boolean if a field has been set.
-func (o *ProjectAppListDto) HasProjectName() bool {
+func (o *InstanceAppListDto) HasProjectName() bool {
 	if o != nil && o.ProjectName.IsSet() {
 		return true
 	}
@@ -750,20 +740,20 @@ func (o *ProjectAppListDto) HasProjectName() bool {
 }
 
 // SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
-func (o *ProjectAppListDto) SetProjectName(v string) {
+func (o *InstanceAppListDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
 }
 // SetProjectNameNil sets the value for ProjectName to be an explicit nil
-func (o *ProjectAppListDto) SetProjectNameNil() {
+func (o *InstanceAppListDto) SetProjectNameNil() {
 	o.ProjectName.Set(nil)
 }
 
 // UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
-func (o *ProjectAppListDto) UnsetProjectName() {
+func (o *InstanceAppListDto) UnsetProjectName() {
 	o.ProjectName.Unset()
 }
 
-func (o ProjectAppListDto) MarshalJSON() ([]byte, error) {
+func (o InstanceAppListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -771,7 +761,7 @@ func (o ProjectAppListDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ProjectAppListDto) ToMap() (map[string]interface{}, error) {
+func (o InstanceAppListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -782,8 +772,8 @@ func (o ProjectAppListDto) ToMap() (map[string]interface{}, error) {
 	if o.Namespace.IsSet() {
 		toSerialize["namespace"] = o.Namespace.Get()
 	}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	if o.Version.IsSet() {
 		toSerialize["version"] = o.Version.Get()
@@ -830,38 +820,38 @@ func (o ProjectAppListDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableProjectAppListDto struct {
-	value *ProjectAppListDto
+type NullableInstanceAppListDto struct {
+	value *InstanceAppListDto
 	isSet bool
 }
 
-func (v NullableProjectAppListDto) Get() *ProjectAppListDto {
+func (v NullableInstanceAppListDto) Get() *InstanceAppListDto {
 	return v.value
 }
 
-func (v *NullableProjectAppListDto) Set(val *ProjectAppListDto) {
+func (v *NullableInstanceAppListDto) Set(val *InstanceAppListDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableProjectAppListDto) IsSet() bool {
+func (v NullableInstanceAppListDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableProjectAppListDto) Unset() {
+func (v *NullableInstanceAppListDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableProjectAppListDto(val *ProjectAppListDto) *NullableProjectAppListDto {
-	return &NullableProjectAppListDto{value: val, isSet: true}
+func NewNullableInstanceAppListDto(val *InstanceAppListDto) *NullableInstanceAppListDto {
+	return &NullableInstanceAppListDto{value: val, isSet: true}
 }
 
-func (v NullableProjectAppListDto) MarshalJSON() ([]byte, error) {
+func (v NullableInstanceAppListDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableProjectAppListDto) UnmarshalJSON(src []byte) error {
+func (v *NullableInstanceAppListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -5526,8 +5526,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-02-23T00:02:41.6340891Z
-                  createdAt: 2024-02-23T00:02:41.6340891Z
+                  lastValidated: 2024-02-23T12:37:07.8579459Z
+                  createdAt: 2024-02-23T12:37:07.8579459Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5632,14 +5632,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-02-23T00:02:41.6340891Z
+                    lastBackup: 2024-02-23T12:37:07.8579459Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-02-23T00:02:41.6340891Z
+                  createdAt: 2024-02-23T12:37:07.8579459Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-02-23T00:02:41.6340891Z
+                  lastBackup: 2024-02-23T12:37:07.8579459Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5744,8 +5744,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-23T00:02:41.6340891Z
-                  expiration: 2024-02-23T00:02:41.6340891Z
+                  createdAt: 2024-02-23T12:37:07.8579459Z
+                  expiration: 2024-02-23T12:37:07.8579459Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5849,7 +5849,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-23T00:02:41.6340891Z
+                  createdAt: 2024-02-23T12:37:07.8579459Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5959,9 +5959,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-02-23T00:02:41.6340891+00:00
-                  startTimeStamp: 2024-02-23T00:02:41.6340891+00:00
-                  createdAt: 2024-02-23T00:02:41.6340891Z
+                  completionDateTime: 2024-02-23T12:37:07.8579459+00:00
+                  startTimeStamp: 2024-02-23T12:37:07.8579459+00:00
+                  createdAt: 2024-02-23T12:37:07.8579459Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -6742,6 +6742,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateCatalogAppCommand'
       responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogAppDetailsDto'
+          description: OK
         "400":
           content:
             application/json:
@@ -14306,9 +14312,9 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/InteractiveShellDto'
           description: OK
         "400":
           content:
@@ -45484,6 +45490,16 @@ components:
           nullable: true
           type: string
       type: object
+    EInstanceStatus:
+      enum:
+      - None
+      - Installing
+      - Uninstalling
+      - Ready
+      - Failed
+      - NotReady
+      - Failure
+      type: string
     EditAlertingIntegrationCommand:
       additionalProperties: false
       example:
@@ -47542,6 +47558,94 @@ components:
         totalCount:
           format: int32
           type: integer
+      type: object
+    InstanceAppListDto:
+      additionalProperties: false
+      example:
+        catalogAppName: catalogAppName
+        created: created
+        lastModifiedBy: lastModifiedBy
+        autoSync: true
+        version: version
+        catalogAppId: 1
+        catalogName: catalogName
+        appRepoName: appRepoName
+        catalogId: 6
+        createdBy: createdBy
+        name: name
+        namespace: namespace
+        logo: logo
+        id: 0
+        lastModified: lastModified
+        projectName: projectName
+        projectId: 5
+        status: null
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        status:
+          $ref: '#/components/schemas/EInstanceStatus'
+        version:
+          nullable: true
+          type: string
+        catalogId:
+          format: int32
+          type: integer
+        catalogName:
+          nullable: true
+          type: string
+        catalogAppName:
+          nullable: true
+          type: string
+        catalogAppId:
+          format: int32
+          type: integer
+        appRepoName:
+          nullable: true
+          type: string
+        logo:
+          nullable: true
+          type: string
+        autoSync:
+          type: boolean
+        created:
+          nullable: true
+          type: string
+        createdBy:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        projectId:
+          format: int32
+          type: integer
+        projectName:
+          nullable: true
+          type: string
+      type: object
+    InteractiveShellDto:
+      additionalProperties: false
+      example:
+        adminKubeConfig: adminKubeConfig
+        kubeConfig: kubeConfig
+      properties:
+        kubeConfig:
+          nullable: true
+          type: string
+        adminKubeConfig:
+          nullable: true
+          type: string
       type: object
     InteractiveShellSendCommand:
       additionalProperties: false
@@ -52982,7 +53086,7 @@ components:
           lastModified: lastModified
           projectName: projectName
           projectId: 5
-          status: status
+          status: null
         - catalogAppName: catalogAppName
           created: created
           lastModifiedBy: lastModifiedBy
@@ -53000,93 +53104,17 @@ components:
           lastModified: lastModified
           projectName: projectName
           projectId: 5
-          status: status
+          status: null
         totalCount: 5
       properties:
         data:
           items:
-            $ref: '#/components/schemas/ProjectAppListDto'
+            $ref: '#/components/schemas/InstanceAppListDto'
           nullable: true
           type: array
         totalCount:
           format: int32
           type: integer
-      type: object
-    ProjectAppListDto:
-      additionalProperties: false
-      example:
-        catalogAppName: catalogAppName
-        created: created
-        lastModifiedBy: lastModifiedBy
-        autoSync: true
-        version: version
-        catalogAppId: 1
-        catalogName: catalogName
-        appRepoName: appRepoName
-        catalogId: 6
-        createdBy: createdBy
-        name: name
-        namespace: namespace
-        logo: logo
-        id: 0
-        lastModified: lastModified
-        projectName: projectName
-        projectId: 5
-        status: status
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        namespace:
-          nullable: true
-          type: string
-        status:
-          nullable: true
-          type: string
-        version:
-          nullable: true
-          type: string
-        catalogId:
-          format: int32
-          type: integer
-        catalogName:
-          nullable: true
-          type: string
-        catalogAppName:
-          nullable: true
-          type: string
-        catalogAppId:
-          format: int32
-          type: integer
-        appRepoName:
-          nullable: true
-          type: string
-        logo:
-          nullable: true
-          type: string
-        autoSync:
-          type: boolean
-        created:
-          nullable: true
-          type: string
-        createdBy:
-          nullable: true
-          type: string
-        lastModified:
-          nullable: true
-          type: string
-        lastModifiedBy:
-          nullable: true
-          type: string
-        projectId:
-          format: int32
-          type: integer
-        projectName:
-          nullable: true
-          type: string
       type: object
     ProjectAppParamDto:
       additionalProperties: false
