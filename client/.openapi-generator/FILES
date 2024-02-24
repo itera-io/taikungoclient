@@ -467,6 +467,7 @@ docs/IngressDto.md
 docs/IngressSearchCommand.md
 docs/IngressSearchList.md
 docs/Ingresses.md
+docs/InteractiveShellDto.md
 docs/InteractiveShellSendCommand.md
 docs/InvoiceDto.md
 docs/InvoiceListDto.md
@@ -1332,6 +1333,7 @@ model_ingress_dto.go
 model_ingress_search_command.go
 model_ingress_search_list.go
 model_ingresses.go
+model_interactive_shell_dto.go
 model_interactive_shell_send_command.go
 model_invoice_dto.go
 model_invoice_list_dto.go

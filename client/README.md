@@ -1085,6 +1085,7 @@ Class | Method | HTTP request | Description
  - [IngressSearchCommand](docs/IngressSearchCommand.md)
  - [IngressSearchList](docs/IngressSearchList.md)
  - [Ingresses](docs/Ingresses.md)
+ - [InteractiveShellDto](docs/InteractiveShellDto.md)
  - [InteractiveShellSendCommand](docs/InteractiveShellSendCommand.md)
  - [InvoiceDto](docs/InvoiceDto.md)
  - [InvoiceListDto](docs/InvoiceListDto.md)

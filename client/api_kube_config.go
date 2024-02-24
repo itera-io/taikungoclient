@@ -889,7 +889,7 @@ func (r ApiKubeconfigInteractiveShellRequest) KubeConfigInteractiveShellCommand(
 	return r
 }
 
-func (r ApiKubeconfigInteractiveShellRequest) Execute() (string, *http.Response, error) {
+func (r ApiKubeconfigInteractiveShellRequest) Execute() (*InteractiveShellDto, *http.Response, error) {
 	return r.ApiService.KubeconfigInteractiveShellExecute(r)
 }
 
@@ -907,13 +907,13 @@ func (a *KubeConfigAPIService) KubeconfigInteractiveShell(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return string
-func (a *KubeConfigAPIService) KubeconfigInteractiveShellExecute(r ApiKubeconfigInteractiveShellRequest) (string, *http.Response, error) {
+//  @return InteractiveShellDto
+func (a *KubeConfigAPIService) KubeconfigInteractiveShellExecute(r ApiKubeconfigInteractiveShellRequest) (*InteractiveShellDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  string
+		localVarReturnValue  *InteractiveShellDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubeConfigAPIService.KubeconfigInteractiveShell")
@@ -940,7 +940,7 @@ func (a *KubeConfigAPIService) KubeconfigInteractiveShellExecute(r ApiKubeconfig
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
