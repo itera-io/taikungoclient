@@ -743,6 +743,12 @@ func (a *AppRepositoriesAPIService) RepositoryImportExecute(r ApiRepositoryImpor
 type ApiRepositoryRecommendedListRequest struct {
 	ctx context.Context
 	ApiService *AppRepositoriesAPIService
+	isTaikun *bool
+}
+
+func (r ApiRepositoryRecommendedListRequest) IsTaikun(isTaikun bool) ApiRepositoryRecommendedListRequest {
+	r.isTaikun = &isTaikun
+	return r
 }
 
 func (r ApiRepositoryRecommendedListRequest) Execute() ([]ArtifactRepositoryDto, *http.Response, error) {
@@ -783,6 +789,9 @@ func (a *AppRepositoriesAPIService) RepositoryRecommendedListExecute(r ApiReposi
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.isTaikun != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsTaikun", r.isTaikun, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

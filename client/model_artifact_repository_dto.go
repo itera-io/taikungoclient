@@ -29,6 +29,7 @@ type ArtifactRepositoryDto struct {
 	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
 	Official *bool `json:"official,omitempty"`
 	IsBound *bool `json:"isBound,omitempty"`
+	IsTaikun *bool `json:"isTaikun,omitempty"`
 	HasCatalogApp *bool `json:"hasCatalogApp,omitempty"`
 }
 
@@ -387,6 +388,38 @@ func (o *ArtifactRepositoryDto) SetIsBound(v bool) {
 	o.IsBound = &v
 }
 
+// GetIsTaikun returns the IsTaikun field value if set, zero value otherwise.
+func (o *ArtifactRepositoryDto) GetIsTaikun() bool {
+	if o == nil || IsNil(o.IsTaikun) {
+		var ret bool
+		return ret
+	}
+	return *o.IsTaikun
+}
+
+// GetIsTaikunOk returns a tuple with the IsTaikun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ArtifactRepositoryDto) GetIsTaikunOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsTaikun) {
+		return nil, false
+	}
+	return o.IsTaikun, true
+}
+
+// HasIsTaikun returns a boolean if a field has been set.
+func (o *ArtifactRepositoryDto) HasIsTaikun() bool {
+	if o != nil && !IsNil(o.IsTaikun) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsTaikun gets a reference to the given bool and assigns it to the IsTaikun field.
+func (o *ArtifactRepositoryDto) SetIsTaikun(v bool) {
+	o.IsTaikun = &v
+}
+
 // GetHasCatalogApp returns the HasCatalogApp field value if set, zero value otherwise.
 func (o *ArtifactRepositoryDto) GetHasCatalogApp() bool {
 	if o == nil || IsNil(o.HasCatalogApp) {
@@ -455,6 +488,9 @@ func (o ArtifactRepositoryDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsBound) {
 		toSerialize["isBound"] = o.IsBound
+	}
+	if !IsNil(o.IsTaikun) {
+		toSerialize["isTaikun"] = o.IsTaikun
 	}
 	if !IsNil(o.HasCatalogApp) {
 		toSerialize["hasCatalogApp"] = o.HasCatalogApp

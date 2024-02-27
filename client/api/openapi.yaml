@@ -3077,6 +3077,14 @@ paths:
   /api/v1/repository/recommended:
     get:
       operationId: repository-recommended-list
+      parameters:
+      - explode: true
+        in: query
+        name: IsTaikun
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -5526,8 +5534,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-02-23T14:49:38.8518431Z
-                  createdAt: 2024-02-23T14:49:38.8518431Z
+                  lastValidated: 2024-02-27T00:02:46.6304649Z
+                  createdAt: 2024-02-27T00:02:46.6304649Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5632,14 +5640,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-02-23T14:49:38.8518431Z
+                    lastBackup: 2024-02-27T00:02:46.6304649Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-02-23T14:49:38.8518431Z
+                  createdAt: 2024-02-27T00:02:46.6304649Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-02-23T14:49:38.8518431Z
+                  lastBackup: 2024-02-27T00:02:46.6304649Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5744,8 +5752,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-23T14:49:38.8518431Z
-                  expiration: 2024-02-23T14:49:38.8518431Z
+                  createdAt: 2024-02-27T00:02:46.6304649Z
+                  expiration: 2024-02-27T00:02:46.6304649Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5849,7 +5857,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-23T14:49:38.8518431Z
+                  createdAt: 2024-02-27T00:02:46.6304649Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5959,9 +5967,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-02-23T14:49:38.8518431+00:00
-                  startTimeStamp: 2024-02-23T14:49:38.8518431+00:00
-                  createdAt: 2024-02-23T14:49:38.8518431Z
+                  completionDateTime: 2024-02-27T00:02:46.6304649+00:00
+                  startTimeStamp: 2024-02-27T00:02:46.6304649+00:00
+                  createdAt: 2024-02-27T00:02:46.6304649Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -38152,6 +38160,7 @@ components:
         data:
         - organizationName: organizationName
           isBound: true
+          isTaikun: true
           displayName: displayName
           repositoryId: repositoryId
           name: name
@@ -38162,6 +38171,7 @@ components:
           url: url
         - organizationName: organizationName
           isBound: true
+          isTaikun: true
           displayName: displayName
           repositoryId: repositoryId
           name: name
@@ -38250,6 +38260,7 @@ components:
       example:
         organizationName: organizationName
         isBound: true
+        isTaikun: true
         displayName: displayName
         repositoryId: repositoryId
         name: name
@@ -38281,6 +38292,8 @@ components:
         official:
           type: boolean
         isBound:
+          type: boolean
+        isTaikun:
           type: boolean
         hasCatalogApp:
           type: boolean
@@ -40532,19 +40545,21 @@ components:
         - isLocked: true
           name: name
           namespace: namespace
+          autoSync: true
           id: 5
           projectName: projectName
           projectId: 5
           version: version
-          status: status
+          status: null
         - isLocked: true
           name: name
           namespace: namespace
+          autoSync: true
           id: 5
           projectName: projectName
           projectId: 5
           version: version
-          status: status
+          status: null
         id: 0
         logoId: logoId
       properties:
@@ -53035,11 +53050,12 @@ components:
         isLocked: true
         name: name
         namespace: namespace
+        autoSync: true
         id: 5
         projectName: projectName
         projectId: 5
         version: version
-        status: status
+        status: null
       properties:
         id:
           format: int32
@@ -53062,8 +53078,9 @@ components:
         isLocked:
           type: boolean
         status:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/EInstanceStatus'
+        autoSync:
+          type: boolean
       type: object
     ProjectAppList:
       additionalProperties: false
