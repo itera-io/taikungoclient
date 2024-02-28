@@ -24,6 +24,7 @@ type CatalogListDto struct {
 	Name NullableString `json:"name,omitempty"`
 	Description NullableString `json:"description,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	PackageIds []string `json:"packageIds,omitempty"`
 	BoundProjects []ProjectCatalogDto `json:"boundProjects,omitempty"`
@@ -195,6 +196,38 @@ func (o *CatalogListDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *CatalogListDto) GetIsDefault() bool {
+	if o == nil || IsNil(o.IsDefault) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogListDto) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDefault) {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *CatalogListDto) HasIsDefault() bool {
+	if o != nil && !IsNil(o.IsDefault) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *CatalogListDto) SetIsDefault(v bool) {
+	o.IsDefault = &v
+}
+
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
 func (o *CatalogListDto) GetOrganizationId() int32 {
 	if o == nil || IsNil(o.OrganizationId) {
@@ -347,6 +380,9 @@ func (o CatalogListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
+	}
+	if !IsNil(o.IsDefault) {
+		toSerialize["isDefault"] = o.IsDefault
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId

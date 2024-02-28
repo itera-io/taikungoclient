@@ -190,6 +190,7 @@ Class | Method | HTTP request | Description
 *CatalogAPI* | [**CatalogEdit**](docs/CatalogAPI.md#catalogedit) | **Put** /api/v1/catalog/edit | Edit catalog
 *CatalogAPI* | [**CatalogList**](docs/CatalogAPI.md#cataloglist) | **Get** /api/v1/catalog | Catalog list for organization
 *CatalogAPI* | [**CatalogLock**](docs/CatalogAPI.md#cataloglock) | **Post** /api/v1/catalog/lockmanager | Lock catalog
+*CatalogAPI* | [**CatalogMakeDefault**](docs/CatalogAPI.md#catalogmakedefault) | **Post** /api/v1/catalog/makedefault | Make catalog default
 *CatalogAppAPI* | [**CatalogAppCreate**](docs/CatalogAppAPI.md#catalogappcreate) | **Post** /api/v1/catalog-app/create | Create catalog app
 *CatalogAppAPI* | [**CatalogAppDelete**](docs/CatalogAppAPI.md#catalogappdelete) | **Delete** /api/v1/catalog-app/{id} | Delete catalog app
 *CatalogAppAPI* | [**CatalogAppDetails**](docs/CatalogAppAPI.md#catalogappdetails) | **Get** /api/v1/catalog-app/{catalogAppId} | Catalog App details
@@ -869,6 +870,7 @@ Class | Method | HTTP request | Description
  - [CatalogList](docs/CatalogList.md)
  - [CatalogListDto](docs/CatalogListDto.md)
  - [CatalogLockManagementCommand](docs/CatalogLockManagementCommand.md)
+ - [CatalogMakeDefaultCommand](docs/CatalogMakeDefaultCommand.md)
  - [ChangeCardCommand](docs/ChangeCardCommand.md)
  - [ChangePasswordCommand](docs/ChangePasswordCommand.md)
  - [Chart](docs/Chart.md)
@@ -1125,6 +1127,7 @@ Class | Method | HTTP request | Description
  - [KubernetesCronJobsList](docs/KubernetesCronJobsList.md)
  - [KubernetesDashboardDto](docs/KubernetesDashboardDto.md)
  - [KubernetesEventCreateDto](docs/KubernetesEventCreateDto.md)
+ - [KubernetesInteractiveShellDto](docs/KubernetesInteractiveShellDto.md)
  - [KubernetesJobDto](docs/KubernetesJobDto.md)
  - [KubernetesJobList](docs/KubernetesJobList.md)
  - [KubernetesNodeLabelsDto](docs/KubernetesNodeLabelsDto.md)

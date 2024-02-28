@@ -5903,7 +5903,7 @@ func (r ApiKubernetesInteractiveShellRequest) InteractiveShellSendCommand(intera
 	return r
 }
 
-func (r ApiKubernetesInteractiveShellRequest) Execute() (string, *http.Response, error) {
+func (r ApiKubernetesInteractiveShellRequest) Execute() (*KubernetesInteractiveShellDto, *http.Response, error) {
 	return r.ApiService.KubernetesInteractiveShellExecute(r)
 }
 
@@ -5921,13 +5921,13 @@ func (a *KubernetesAPIService) KubernetesInteractiveShell(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return string
-func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetesInteractiveShellRequest) (string, *http.Response, error) {
+//  @return KubernetesInteractiveShellDto
+func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetesInteractiveShellRequest) (*KubernetesInteractiveShellDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  string
+		localVarReturnValue  *KubernetesInteractiveShellDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesInteractiveShell")
@@ -5954,7 +5954,7 @@ func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetes
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

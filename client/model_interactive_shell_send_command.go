@@ -22,6 +22,7 @@ var _ MappedNullable = &InteractiveShellSendCommand{}
 type InteractiveShellSendCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Token NullableString `json:"token,omitempty"`
+	InstanceId NullableInt32 `json:"instanceId,omitempty"`
 }
 
 // NewInteractiveShellSendCommand instantiates a new InteractiveShellSendCommand object
@@ -115,6 +116,48 @@ func (o *InteractiveShellSendCommand) UnsetToken() {
 	o.Token.Unset()
 }
 
+// GetInstanceId returns the InstanceId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InteractiveShellSendCommand) GetInstanceId() int32 {
+	if o == nil || IsNil(o.InstanceId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.InstanceId.Get()
+}
+
+// GetInstanceIdOk returns a tuple with the InstanceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InteractiveShellSendCommand) GetInstanceIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InstanceId.Get(), o.InstanceId.IsSet()
+}
+
+// HasInstanceId returns a boolean if a field has been set.
+func (o *InteractiveShellSendCommand) HasInstanceId() bool {
+	if o != nil && o.InstanceId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceId gets a reference to the given NullableInt32 and assigns it to the InstanceId field.
+func (o *InteractiveShellSendCommand) SetInstanceId(v int32) {
+	o.InstanceId.Set(&v)
+}
+// SetInstanceIdNil sets the value for InstanceId to be an explicit nil
+func (o *InteractiveShellSendCommand) SetInstanceIdNil() {
+	o.InstanceId.Set(nil)
+}
+
+// UnsetInstanceId ensures that no value is present for InstanceId, not even an explicit nil
+func (o *InteractiveShellSendCommand) UnsetInstanceId() {
+	o.InstanceId.Unset()
+}
+
 func (o InteractiveShellSendCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -130,6 +173,9 @@ func (o InteractiveShellSendCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Token.IsSet() {
 		toSerialize["token"] = o.Token.Get()
+	}
+	if o.InstanceId.IsSet() {
+		toSerialize["instanceId"] = o.InstanceId.Get()
 	}
 	return toSerialize, nil
 }
