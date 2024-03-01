@@ -49,6 +49,7 @@ type ServerListDto struct {
 	ShutOff *bool `json:"shutOff,omitempty"`
 	AutoscalingGroup NullableString `json:"autoscalingGroup,omitempty"`
 	ProviderID NullableString `json:"providerID,omitempty"`
+	InstanceId NullableString `json:"instanceId,omitempty"`
 	AwsHostName NullableString `json:"awsHostName,omitempty"`
 	OpenshiftFlavor NullableString `json:"openshiftFlavor,omitempty"`
 	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
@@ -1187,6 +1188,48 @@ func (o *ServerListDto) UnsetProviderID() {
 	o.ProviderID.Unset()
 }
 
+// GetInstanceId returns the InstanceId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerListDto) GetInstanceId() string {
+	if o == nil || IsNil(o.InstanceId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.InstanceId.Get()
+}
+
+// GetInstanceIdOk returns a tuple with the InstanceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerListDto) GetInstanceIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InstanceId.Get(), o.InstanceId.IsSet()
+}
+
+// HasInstanceId returns a boolean if a field has been set.
+func (o *ServerListDto) HasInstanceId() bool {
+	if o != nil && o.InstanceId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceId gets a reference to the given NullableString and assigns it to the InstanceId field.
+func (o *ServerListDto) SetInstanceId(v string) {
+	o.InstanceId.Set(&v)
+}
+// SetInstanceIdNil sets the value for InstanceId to be an explicit nil
+func (o *ServerListDto) SetInstanceIdNil() {
+	o.InstanceId.Set(nil)
+}
+
+// UnsetInstanceId ensures that no value is present for InstanceId, not even an explicit nil
+func (o *ServerListDto) UnsetInstanceId() {
+	o.InstanceId.Unset()
+}
+
 // GetAwsHostName returns the AwsHostName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServerListDto) GetAwsHostName() string {
 	if o == nil || IsNil(o.AwsHostName.Get()) {
@@ -1696,6 +1739,9 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ProviderID.IsSet() {
 		toSerialize["providerID"] = o.ProviderID.Get()
+	}
+	if o.InstanceId.IsSet() {
+		toSerialize["instanceId"] = o.InstanceId.Get()
 	}
 	if o.AwsHostName.IsSet() {
 		toSerialize["awsHostName"] = o.AwsHostName.Get()

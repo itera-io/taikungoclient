@@ -37,6 +37,8 @@ type ProjectAppDetailsDto struct {
 	HelmResult NullableString `json:"helmResult,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 	HasJsonSchema *bool `json:"hasJsonSchema,omitempty"`
+	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
+	PackageId NullableString `json:"packageId,omitempty"`
 	ProjectAppParams []ProjectAppParamDto `json:"projectAppParams,omitempty"`
 }
 
@@ -721,6 +723,80 @@ func (o *ProjectAppDetailsDto) SetHasJsonSchema(v bool) {
 	o.HasJsonSchema = &v
 }
 
+// GetCatalogAppId returns the CatalogAppId field value if set, zero value otherwise.
+func (o *ProjectAppDetailsDto) GetCatalogAppId() int32 {
+	if o == nil || IsNil(o.CatalogAppId) {
+		var ret int32
+		return ret
+	}
+	return *o.CatalogAppId
+}
+
+// GetCatalogAppIdOk returns a tuple with the CatalogAppId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectAppDetailsDto) GetCatalogAppIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.CatalogAppId) {
+		return nil, false
+	}
+	return o.CatalogAppId, true
+}
+
+// HasCatalogAppId returns a boolean if a field has been set.
+func (o *ProjectAppDetailsDto) HasCatalogAppId() bool {
+	if o != nil && !IsNil(o.CatalogAppId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCatalogAppId gets a reference to the given int32 and assigns it to the CatalogAppId field.
+func (o *ProjectAppDetailsDto) SetCatalogAppId(v int32) {
+	o.CatalogAppId = &v
+}
+
+// GetPackageId returns the PackageId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectAppDetailsDto) GetPackageId() string {
+	if o == nil || IsNil(o.PackageId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PackageId.Get()
+}
+
+// GetPackageIdOk returns a tuple with the PackageId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectAppDetailsDto) GetPackageIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PackageId.Get(), o.PackageId.IsSet()
+}
+
+// HasPackageId returns a boolean if a field has been set.
+func (o *ProjectAppDetailsDto) HasPackageId() bool {
+	if o != nil && o.PackageId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPackageId gets a reference to the given NullableString and assigns it to the PackageId field.
+func (o *ProjectAppDetailsDto) SetPackageId(v string) {
+	o.PackageId.Set(&v)
+}
+// SetPackageIdNil sets the value for PackageId to be an explicit nil
+func (o *ProjectAppDetailsDto) SetPackageIdNil() {
+	o.PackageId.Set(nil)
+}
+
+// UnsetPackageId ensures that no value is present for PackageId, not even an explicit nil
+func (o *ProjectAppDetailsDto) UnsetPackageId() {
+	o.PackageId.Unset()
+}
+
 // GetProjectAppParams returns the ProjectAppParams field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectAppDetailsDto) GetProjectAppParams() []ProjectAppParamDto {
 	if o == nil {
@@ -814,6 +890,12 @@ func (o ProjectAppDetailsDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HasJsonSchema) {
 		toSerialize["hasJsonSchema"] = o.HasJsonSchema
+	}
+	if !IsNil(o.CatalogAppId) {
+		toSerialize["catalogAppId"] = o.CatalogAppId
+	}
+	if o.PackageId.IsSet() {
+		toSerialize["packageId"] = o.PackageId.Get()
 	}
 	if o.ProjectAppParams != nil {
 		toSerialize["projectAppParams"] = o.ProjectAppParams

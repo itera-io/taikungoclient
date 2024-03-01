@@ -46,6 +46,7 @@ type StandAloneVmFullDto struct {
 	Hypervisor NullableString `json:"hypervisor,omitempty"`
 	HypervisorId NullableString `json:"hypervisorId,omitempty"`
 	SpotInstance *bool `json:"spotInstance,omitempty"`
+	InstanceId NullableString `json:"instanceId,omitempty"`
 	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
 }
 
@@ -1049,6 +1050,48 @@ func (o *StandAloneVmFullDto) SetSpotInstance(v bool) {
 	o.SpotInstance = &v
 }
 
+// GetInstanceId returns the InstanceId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *StandAloneVmFullDto) GetInstanceId() string {
+	if o == nil || IsNil(o.InstanceId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.InstanceId.Get()
+}
+
+// GetInstanceIdOk returns a tuple with the InstanceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StandAloneVmFullDto) GetInstanceIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InstanceId.Get(), o.InstanceId.IsSet()
+}
+
+// HasInstanceId returns a boolean if a field has been set.
+func (o *StandAloneVmFullDto) HasInstanceId() bool {
+	if o != nil && o.InstanceId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceId gets a reference to the given NullableString and assigns it to the InstanceId field.
+func (o *StandAloneVmFullDto) SetInstanceId(v string) {
+	o.InstanceId.Set(&v)
+}
+// SetInstanceIdNil sets the value for InstanceId to be an explicit nil
+func (o *StandAloneVmFullDto) SetInstanceIdNil() {
+	o.InstanceId.Set(nil)
+}
+
+// UnsetInstanceId ensures that no value is present for InstanceId, not even an explicit nil
+func (o *StandAloneVmFullDto) UnsetInstanceId() {
+	o.InstanceId.Unset()
+}
+
 // GetAvailabilityZone returns the AvailabilityZone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StandAloneVmFullDto) GetAvailabilityZone() string {
 	if o == nil || IsNil(o.AvailabilityZone.Get()) {
@@ -1178,6 +1221,9 @@ func (o StandAloneVmFullDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SpotInstance) {
 		toSerialize["spotInstance"] = o.SpotInstance
+	}
+	if o.InstanceId.IsSet() {
+		toSerialize["instanceId"] = o.InstanceId.Get()
 	}
 	if o.AvailabilityZone.IsSet() {
 		toSerialize["availabilityZone"] = o.AvailabilityZone.Get()

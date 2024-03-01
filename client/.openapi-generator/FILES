@@ -427,6 +427,7 @@ docs/EstimatedInfracost.md
 docs/ExceededQuotaDto.md
 docs/ExceededQuotaList.md
 docs/ExportKubeConfigCommand.md
+docs/ExtendTrialPeriodCommand.md
 docs/Filter.md
 docs/FilteringElementDto.md
 docs/FinalPriceCommand.md
@@ -1315,6 +1316,7 @@ model_estimated_infracost.go
 model_exceeded_quota_dto.go
 model_exceeded_quota_list.go
 model_export_kube_config_command.go
+model_extend_trial_period_command.go
 model_filter.go
 model_filtering_element_dto.go
 model_final_price_command.go

@@ -600,6 +600,49 @@ paths:
       summary: Delete organization
       tags:
       - Admin
+  /api/v1/admin/organizations/extend/trial:
+    post:
+      operationId: admin-extend-trial-period
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtendTrialPeriodCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Extend trial period
+      tags:
+      - Admin
   /api/v1/admin/users/make/csm:
     post:
       operationId: admin-make-csm
@@ -2977,6 +3020,51 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Unbind repo from organization
+      tags:
+      - App repositories
+  /api/v1/repository/list:
+    get:
+      operationId: repository-list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve repo names
       tags:
       - App repositories
   /api/v1/repository/available:
@@ -5534,8 +5622,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-02-29T00:02:41.8308189Z
-                  createdAt: 2024-02-29T00:02:41.8308189Z
+                  lastValidated: 2024-03-01T00:03:03.5230426Z
+                  createdAt: 2024-03-01T00:03:03.5230426Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5640,14 +5728,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-02-29T00:02:41.8308189Z
+                    lastBackup: 2024-03-01T00:03:03.5230426Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-02-29T00:02:41.8308189Z
+                  createdAt: 2024-03-01T00:03:03.5230426Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-02-29T00:02:41.8308189Z
+                  lastBackup: 2024-03-01T00:03:03.5230426Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5752,8 +5840,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-29T00:02:41.8308189Z
-                  expiration: 2024-02-29T00:02:41.8308189Z
+                  createdAt: 2024-03-01T00:03:03.5230426Z
+                  expiration: 2024-03-01T00:03:03.5230426Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5857,7 +5945,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-02-29T00:02:41.8308189Z
+                  createdAt: 2024-03-01T00:03:03.5230426Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5967,9 +6055,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-02-29T00:02:41.8308189+00:00
-                  startTimeStamp: 2024-02-29T00:02:41.8308189+00:00
-                  createdAt: 2024-02-29T00:02:41.8308189Z
+                  completionDateTime: 2024-03-01T00:03:03.5230426+00:00
+                  startTimeStamp: 2024-03-01T00:03:03.5230426+00:00
+                  createdAt: 2024-03-01T00:03:03.5230426Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -9703,49 +9791,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Fetch k8s overview data
-      tags:
-      - Cron Job Service
-  /api/v1/cronjob/kube-config-cleaner:
-    post:
-      operationId: cronjob-kube-config-cleaner
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/KubeConfigCleanerCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Clean kube config
       tags:
       - Cron Job Service
   /api/v1/cronjob/cancel-expired-subscriptions:
@@ -46397,6 +46442,19 @@ components:
           format: int32
           type: integer
       type: object
+    ExtendTrialPeriodCommand:
+      additionalProperties: false
+      example:
+        organizationId: 0
+        days: 6
+      properties:
+        organizationId:
+          format: int32
+          type: integer
+        days:
+          format: int32
+          type: integer
+      type: object
     FetchAzureFlavorPricesCommand:
       additionalProperties: false
       type: object
@@ -48077,9 +48135,6 @@ components:
           type: string
         enabled:
           type: boolean
-      type: object
-    KubeConfigCleanerCommand:
-      additionalProperties: false
       type: object
     KubeConfigForUserDto:
       additionalProperties: false
@@ -53059,8 +53114,10 @@ components:
           isEditableAfterInstallation: true
         catalogAppName: catalogAppName
         values: values
+        packageId: packageId
         autoSync: true
         version: version
+        catalogAppId: 5
         catalogName: catalogName
         appRepoName: appRepoName
         catalogId: 6
@@ -53124,6 +53181,12 @@ components:
           type: integer
         hasJsonSchema:
           type: boolean
+        catalogAppId:
+          format: int32
+          type: integer
+        packageId:
+          nullable: true
+          type: string
         projectAppParams:
           items:
             $ref: '#/components/schemas/ProjectAppParamDto'
@@ -54301,6 +54364,7 @@ components:
           shutOff: true
           spotInstance: true
           password: password
+          instanceId: instanceId
           hypervisor: hypervisor
           isWindows: true
           id: 0
@@ -54363,6 +54427,7 @@ components:
           shutOff: true
           spotInstance: true
           password: password
+          instanceId: instanceId
           hypervisor: hypervisor
           isWindows: true
           id: 0
@@ -58633,6 +58698,7 @@ components:
         diskSize: 5
         replicaCount: 3
         kubernetesHealth: kubernetesHealth
+        instanceId: instanceId
         googleMachineType: googleMachineType
         cloudType: null
         hypervisor: hypervisor
@@ -58742,6 +58808,9 @@ components:
           nullable: true
           type: string
         providerID:
+          nullable: true
+          type: string
+        instanceId:
           nullable: true
           type: string
         awsHostName:
@@ -58860,6 +58929,7 @@ components:
           diskSize: 5
           replicaCount: 3
           kubernetesHealth: kubernetesHealth
+          instanceId: instanceId
           googleMachineType: googleMachineType
           cloudType: null
           hypervisor: hypervisor
@@ -58907,6 +58977,7 @@ components:
           diskSize: 5
           replicaCount: 3
           kubernetesHealth: kubernetesHealth
+          instanceId: instanceId
           googleMachineType: googleMachineType
           cloudType: null
           hypervisor: hypervisor
@@ -58969,6 +59040,7 @@ components:
           diskSize: 5
           replicaCount: 3
           kubernetesHealth: kubernetesHealth
+          instanceId: instanceId
           googleMachineType: googleMachineType
           cloudType: null
           hypervisor: hypervisor
@@ -59016,6 +59088,7 @@ components:
           diskSize: 5
           replicaCount: 3
           kubernetesHealth: kubernetesHealth
+          instanceId: instanceId
           googleMachineType: googleMachineType
           cloudType: null
           hypervisor: hypervisor
@@ -60033,6 +60106,7 @@ components:
         shutOff: true
         spotInstance: true
         password: password
+        instanceId: instanceId
         hypervisor: hypervisor
         isWindows: true
         id: 0
@@ -60161,6 +60235,9 @@ components:
           type: string
         spotInstance:
           type: boolean
+        instanceId:
+          nullable: true
+          type: string
         availabilityZone:
           nullable: true
           type: string
@@ -60876,6 +60953,7 @@ components:
           shutOff: true
           spotInstance: true
           password: password
+          instanceId: instanceId
           hypervisor: hypervisor
           isWindows: true
           id: 0
@@ -60938,6 +61016,7 @@ components:
           shutOff: true
           spotInstance: true
           password: password
+          instanceId: instanceId
           hypervisor: hypervisor
           isWindows: true
           id: 0
