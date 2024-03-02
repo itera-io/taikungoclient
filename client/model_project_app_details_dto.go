@@ -39,6 +39,7 @@ type ProjectAppDetailsDto struct {
 	HasJsonSchema *bool `json:"hasJsonSchema,omitempty"`
 	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
 	PackageId NullableString `json:"packageId,omitempty"`
+	Logs NullableString `json:"logs,omitempty"`
 	ProjectAppParams []ProjectAppParamDto `json:"projectAppParams,omitempty"`
 }
 
@@ -797,6 +798,48 @@ func (o *ProjectAppDetailsDto) UnsetPackageId() {
 	o.PackageId.Unset()
 }
 
+// GetLogs returns the Logs field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectAppDetailsDto) GetLogs() string {
+	if o == nil || IsNil(o.Logs.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Logs.Get()
+}
+
+// GetLogsOk returns a tuple with the Logs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectAppDetailsDto) GetLogsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Logs.Get(), o.Logs.IsSet()
+}
+
+// HasLogs returns a boolean if a field has been set.
+func (o *ProjectAppDetailsDto) HasLogs() bool {
+	if o != nil && o.Logs.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLogs gets a reference to the given NullableString and assigns it to the Logs field.
+func (o *ProjectAppDetailsDto) SetLogs(v string) {
+	o.Logs.Set(&v)
+}
+// SetLogsNil sets the value for Logs to be an explicit nil
+func (o *ProjectAppDetailsDto) SetLogsNil() {
+	o.Logs.Set(nil)
+}
+
+// UnsetLogs ensures that no value is present for Logs, not even an explicit nil
+func (o *ProjectAppDetailsDto) UnsetLogs() {
+	o.Logs.Unset()
+}
+
 // GetProjectAppParams returns the ProjectAppParams field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectAppDetailsDto) GetProjectAppParams() []ProjectAppParamDto {
 	if o == nil {
@@ -896,6 +939,9 @@ func (o ProjectAppDetailsDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.PackageId.IsSet() {
 		toSerialize["packageId"] = o.PackageId.Get()
+	}
+	if o.Logs.IsSet() {
+		toSerialize["logs"] = o.Logs.Get()
 	}
 	if o.ProjectAppParams != nil {
 		toSerialize["projectAppParams"] = o.ProjectAppParams

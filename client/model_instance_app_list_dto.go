@@ -38,6 +38,7 @@ type InstanceAppListDto struct {
 	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 	ProjectName NullableString `json:"projectName,omitempty"`
+	Logs NullableString `json:"logs,omitempty"`
 }
 
 // NewInstanceAppListDto instantiates a new InstanceAppListDto object
@@ -753,6 +754,48 @@ func (o *InstanceAppListDto) UnsetProjectName() {
 	o.ProjectName.Unset()
 }
 
+// GetLogs returns the Logs field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *InstanceAppListDto) GetLogs() string {
+	if o == nil || IsNil(o.Logs.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Logs.Get()
+}
+
+// GetLogsOk returns a tuple with the Logs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *InstanceAppListDto) GetLogsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Logs.Get(), o.Logs.IsSet()
+}
+
+// HasLogs returns a boolean if a field has been set.
+func (o *InstanceAppListDto) HasLogs() bool {
+	if o != nil && o.Logs.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLogs gets a reference to the given NullableString and assigns it to the Logs field.
+func (o *InstanceAppListDto) SetLogs(v string) {
+	o.Logs.Set(&v)
+}
+// SetLogsNil sets the value for Logs to be an explicit nil
+func (o *InstanceAppListDto) SetLogsNil() {
+	o.Logs.Set(nil)
+}
+
+// UnsetLogs ensures that no value is present for Logs, not even an explicit nil
+func (o *InstanceAppListDto) UnsetLogs() {
+	o.Logs.Unset()
+}
+
 func (o InstanceAppListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -816,6 +859,9 @@ func (o InstanceAppListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ProjectName.IsSet() {
 		toSerialize["projectName"] = o.ProjectName.Get()
+	}
+	if o.Logs.IsSet() {
+		toSerialize["logs"] = o.Logs.Get()
 	}
 	return toSerialize, nil
 }
