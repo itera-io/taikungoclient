@@ -232,6 +232,8 @@ docs/CardInformationDto.md
 docs/CatalogAPI.md
 docs/CatalogAppAPI.md
 docs/CatalogAppDetailsDto.md
+docs/CatalogAppList.md
+docs/CatalogAppListDto.md
 docs/CatalogAppLockManagement.md
 docs/CatalogAppParamsDetailsDto.md
 docs/CatalogAppParamsDto.md
@@ -1126,6 +1128,8 @@ model_c_restore_dto.go
 model_c_schedule_dto.go
 model_card_information_dto.go
 model_catalog_app_details_dto.go
+model_catalog_app_list.go
+model_catalog_app_list_dto.go
 model_catalog_app_lock_management.go
 model_catalog_app_params_details_dto.go
 model_catalog_app_params_dto.go

@@ -198,6 +198,7 @@ Class | Method | HTTP request | Description
 *CatalogAppAPI* | [**CatalogAppDetails**](docs/CatalogAppAPI.md#catalogappdetails) | **Get** /api/v1/catalog-app/{catalogAppId} | Catalog App details
 *CatalogAppAPI* | [**CatalogAppEditParams**](docs/CatalogAppAPI.md#catalogappeditparams) | **Put** /api/v1/catalog-app/edit/params | Edit catalog app params
 *CatalogAppAPI* | [**CatalogAppEditVersion**](docs/CatalogAppAPI.md#catalogappeditversion) | **Put** /api/v1/catalog-app/edit/version | Edit catalog app version
+*CatalogAppAPI* | [**CatalogAppList**](docs/CatalogAppAPI.md#catalogapplist) | **Get** /api/v1/catalog-app/list | Catalog App list
 *CatalogAppAPI* | [**CatalogAppLockManager**](docs/CatalogAppAPI.md#catalogapplockmanager) | **Post** /api/v1/catalog-app/lockmanager | Lock catalog app
 *CatalogAppAPI* | [**CatalogAppParamDetails**](docs/CatalogAppAPI.md#catalogappparamdetails) | **Get** /api/v1/catalog-app/params/{catalogAppId} | Catalog App param details
 *CheckerAPI* | [**CheckerArtifact**](docs/CheckerAPI.md#checkerartifact) | **Post** /api/v1/checker/artifact | Check artifact url
@@ -864,6 +865,8 @@ Class | Method | HTTP request | Description
  - [CScheduleDto](docs/CScheduleDto.md)
  - [CardInformationDto](docs/CardInformationDto.md)
  - [CatalogAppDetailsDto](docs/CatalogAppDetailsDto.md)
+ - [CatalogAppList](docs/CatalogAppList.md)
+ - [CatalogAppListDto](docs/CatalogAppListDto.md)
  - [CatalogAppLockManagement](docs/CatalogAppLockManagement.md)
  - [CatalogAppParamsDetailsDto](docs/CatalogAppParamsDetailsDto.md)
  - [CatalogAppParamsDto](docs/CatalogAppParamsDto.md)
