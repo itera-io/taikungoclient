@@ -23,7 +23,7 @@ type ProjectAppDetailsDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Namespace NullableString `json:"namespace,omitempty"`
-	Status NullableString `json:"status,omitempty"`
+	Status *EInstanceStatus `json:"status,omitempty"`
 	Version NullableString `json:"version,omitempty"`
 	CatalogId *int32 `json:"catalogId,omitempty"`
 	CatalogName NullableString `json:"catalogName,omitempty"`
@@ -176,46 +176,36 @@ func (o *ProjectAppDetailsDto) UnsetNamespace() {
 	o.Namespace.Unset()
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppDetailsDto) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
-		var ret string
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ProjectAppDetailsDto) GetStatus() EInstanceStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret EInstanceStatus
 		return ret
 	}
-	return *o.Status.Get()
+	return *o.Status
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppDetailsDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+func (o *ProjectAppDetailsDto) GetStatusOk() (*EInstanceStatus, bool) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return o.Status.Get(), o.Status.IsSet()
+	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ProjectAppDetailsDto) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
-func (o *ProjectAppDetailsDto) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *ProjectAppDetailsDto) SetStatusNil() {
-	o.Status.Set(nil)
-}
-
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *ProjectAppDetailsDto) UnsetStatus() {
-	o.Status.Unset()
+// SetStatus gets a reference to the given EInstanceStatus and assigns it to the Status field.
+func (o *ProjectAppDetailsDto) SetStatus(v EInstanceStatus) {
+	o.Status = &v
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -892,8 +882,8 @@ func (o ProjectAppDetailsDto) ToMap() (map[string]interface{}, error) {
 	if o.Namespace.IsSet() {
 		toSerialize["namespace"] = o.Namespace.Get()
 	}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	if o.Version.IsSet() {
 		toSerialize["version"] = o.Version.Get()
