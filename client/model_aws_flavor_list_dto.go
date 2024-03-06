@@ -28,6 +28,7 @@ type AwsFlavorListDto struct {
 	WindowsPrice NullableString `json:"windowsPrice,omitempty"`
 	WindowsSpotPrice NullableString `json:"windowsSpotPrice,omitempty"`
 	LinuxSpotPrice NullableString `json:"linuxSpotPrice,omitempty"`
+	Zones []string `json:"zones,omitempty"`
 }
 
 // NewAwsFlavorListDto instantiates a new AwsFlavorListDto object
@@ -354,6 +355,39 @@ func (o *AwsFlavorListDto) UnsetLinuxSpotPrice() {
 	o.LinuxSpotPrice.Unset()
 }
 
+// GetZones returns the Zones field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AwsFlavorListDto) GetZones() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.Zones
+}
+
+// GetZonesOk returns a tuple with the Zones field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AwsFlavorListDto) GetZonesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Zones) {
+		return nil, false
+	}
+	return o.Zones, true
+}
+
+// HasZones returns a boolean if a field has been set.
+func (o *AwsFlavorListDto) HasZones() bool {
+	if o != nil && IsNil(o.Zones) {
+		return true
+	}
+
+	return false
+}
+
+// SetZones gets a reference to the given []string and assigns it to the Zones field.
+func (o *AwsFlavorListDto) SetZones(v []string) {
+	o.Zones = v
+}
+
 func (o AwsFlavorListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -387,6 +421,9 @@ func (o AwsFlavorListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.LinuxSpotPrice.IsSet() {
 		toSerialize["linuxSpotPrice"] = o.LinuxSpotPrice.Get()
+	}
+	if o.Zones != nil {
+		toSerialize["zones"] = o.Zones
 	}
 	return toSerialize, nil
 }
