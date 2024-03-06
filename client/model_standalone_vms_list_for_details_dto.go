@@ -42,6 +42,7 @@ type StandaloneVmsListForDetailsDto struct {
 	IpAddress NullableString `json:"ipAddress,omitempty"`
 	SpotPrice *float64 `json:"spotPrice,omitempty"`
 	SpotInstance *bool `json:"spotInstance,omitempty"`
+	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
 	ActionButtons *StandaloneVisibilityDto `json:"actionButtons,omitempty"`
 	IsWindows *bool `json:"isWindows,omitempty"`
 	Disks []StandAloneVmDiskForDetailsDto `json:"disks,omitempty"`
@@ -940,6 +941,48 @@ func (o *StandaloneVmsListForDetailsDto) SetSpotInstance(v bool) {
 	o.SpotInstance = &v
 }
 
+// GetAvailabilityZone returns the AvailabilityZone field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *StandaloneVmsListForDetailsDto) GetAvailabilityZone() string {
+	if o == nil || IsNil(o.AvailabilityZone.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AvailabilityZone.Get()
+}
+
+// GetAvailabilityZoneOk returns a tuple with the AvailabilityZone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StandaloneVmsListForDetailsDto) GetAvailabilityZoneOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AvailabilityZone.Get(), o.AvailabilityZone.IsSet()
+}
+
+// HasAvailabilityZone returns a boolean if a field has been set.
+func (o *StandaloneVmsListForDetailsDto) HasAvailabilityZone() bool {
+	if o != nil && o.AvailabilityZone.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAvailabilityZone gets a reference to the given NullableString and assigns it to the AvailabilityZone field.
+func (o *StandaloneVmsListForDetailsDto) SetAvailabilityZone(v string) {
+	o.AvailabilityZone.Set(&v)
+}
+// SetAvailabilityZoneNil sets the value for AvailabilityZone to be an explicit nil
+func (o *StandaloneVmsListForDetailsDto) SetAvailabilityZoneNil() {
+	o.AvailabilityZone.Set(nil)
+}
+
+// UnsetAvailabilityZone ensures that no value is present for AvailabilityZone, not even an explicit nil
+func (o *StandaloneVmsListForDetailsDto) UnsetAvailabilityZone() {
+	o.AvailabilityZone.Unset()
+}
+
 // GetActionButtons returns the ActionButtons field value if set, zero value otherwise.
 func (o *StandaloneVmsListForDetailsDto) GetActionButtons() StandaloneVisibilityDto {
 	if o == nil || IsNil(o.ActionButtons) {
@@ -1177,6 +1220,9 @@ func (o StandaloneVmsListForDetailsDto) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.SpotInstance) {
 		toSerialize["spotInstance"] = o.SpotInstance
+	}
+	if o.AvailabilityZone.IsSet() {
+		toSerialize["availabilityZone"] = o.AvailabilityZone.Get()
 	}
 	if !IsNil(o.ActionButtons) {
 		toSerialize["actionButtons"] = o.ActionButtons
