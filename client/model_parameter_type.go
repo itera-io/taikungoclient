@@ -27,6 +27,7 @@ const (
 	PARAMETERTYPE_INTEGER ParameterType = "Integer"
 	PARAMETERTYPE_OBJECT ParameterType = "Object"
 	PARAMETERTYPE_ARRAY ParameterType = "Array"
+	PARAMETERTYPE_MULTILINE ParameterType = "Multiline"
 )
 
 // All allowed values of ParameterType enum
@@ -37,6 +38,7 @@ var AllowedParameterTypeEnumValues = []ParameterType{
 	"Integer",
 	"Object",
 	"Array",
+	"Multiline",
 }
 
 func (v *ParameterType) UnmarshalJSON(src []byte) error {
