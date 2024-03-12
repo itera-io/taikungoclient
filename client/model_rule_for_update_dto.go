@@ -228,7 +228,7 @@ func (o *RuleForUpdateDto) GetLabelsToAddOk() ([]PrometheusLabelListDto, bool) {
 
 // HasLabelsToAdd returns a boolean if a field has been set.
 func (o *RuleForUpdateDto) HasLabelsToAdd() bool {
-	if o != nil && IsNil(o.LabelsToAdd) {
+	if o != nil && !IsNil(o.LabelsToAdd) {
 		return true
 	}
 
@@ -261,7 +261,7 @@ func (o *RuleForUpdateDto) GetLabelsToDeleteOk() ([]PrometheusLabelDeleteDto, bo
 
 // HasLabelsToDelete returns a boolean if a field has been set.
 func (o *RuleForUpdateDto) HasLabelsToDelete() bool {
-	if o != nil && IsNil(o.LabelsToDelete) {
+	if o != nil && !IsNil(o.LabelsToDelete) {
 		return true
 	}
 
@@ -294,7 +294,7 @@ func (o *RuleForUpdateDto) GetLabelsToUpdateOk() ([]PrometheusLabelUpdateDto, bo
 
 // HasLabelsToUpdate returns a boolean if a field has been set.
 func (o *RuleForUpdateDto) HasLabelsToUpdate() bool {
-	if o != nil && IsNil(o.LabelsToUpdate) {
+	if o != nil && !IsNil(o.LabelsToUpdate) {
 		return true
 	}
 

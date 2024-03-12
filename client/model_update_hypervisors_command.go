@@ -94,7 +94,7 @@ func (o *UpdateHypervisorsCommand) GetHypervisorsOk() ([]string, bool) {
 
 // HasHypervisors returns a boolean if a field has been set.
 func (o *UpdateHypervisorsCommand) HasHypervisors() bool {
-	if o != nil && IsNil(o.Hypervisors) {
+	if o != nil && !IsNil(o.Hypervisors) {
 		return true
 	}
 

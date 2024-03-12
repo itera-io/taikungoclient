@@ -309,7 +309,7 @@ func (o *UpdateStandaloneVmDto) GetDisksOk() ([]UpdateStandAloneVmDiskDto, bool)
 
 // HasDisks returns a boolean if a field has been set.
 func (o *UpdateStandaloneVmDto) HasDisks() bool {
-	if o != nil && IsNil(o.Disks) {
+	if o != nil && !IsNil(o.Disks) {
 		return true
 	}
 

@@ -346,7 +346,7 @@ func (o *OperationCredentialsListDto) GetRulesOk() ([]SimplePrometheusEntity, bo
 
 // HasRules returns a boolean if a field has been set.
 func (o *OperationCredentialsListDto) HasRules() bool {
-	if o != nil && IsNil(o.Rules) {
+	if o != nil && !IsNil(o.Rules) {
 		return true
 	}
 

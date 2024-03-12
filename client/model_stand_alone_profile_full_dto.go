@@ -213,7 +213,7 @@ func (o *StandAloneProfileFullDto) GetStandAloneProfileSecurityGroupsOk() ([]Sta
 
 // HasStandAloneProfileSecurityGroups returns a boolean if a field has been set.
 func (o *StandAloneProfileFullDto) HasStandAloneProfileSecurityGroups() bool {
-	if o != nil && IsNil(o.StandAloneProfileSecurityGroups) {
+	if o != nil && !IsNil(o.StandAloneProfileSecurityGroups) {
 		return true
 	}
 

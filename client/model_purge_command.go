@@ -94,7 +94,7 @@ func (o *PurgeCommand) GetServerIdsOk() ([]int32, bool) {
 
 // HasServerIds returns a boolean if a field has been set.
 func (o *PurgeCommand) HasServerIds() bool {
-	if o != nil && IsNil(o.ServerIds) {
+	if o != nil && !IsNil(o.ServerIds) {
 		return true
 	}
 

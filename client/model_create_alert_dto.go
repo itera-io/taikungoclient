@@ -62,7 +62,7 @@ func (o *CreateAlertDto) GetAlertsOk() ([]KubernetesAlertCreateDto, bool) {
 
 // HasAlerts returns a boolean if a field has been set.
 func (o *CreateAlertDto) HasAlerts() bool {
-	if o != nil && IsNil(o.Alerts) {
+	if o != nil && !IsNil(o.Alerts) {
 		return true
 	}
 

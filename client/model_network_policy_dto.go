@@ -106,7 +106,7 @@ func (o *NetworkPolicyDto) GetPodSelectorOk() (*map[string]string, bool) {
 
 // HasPodSelector returns a boolean if a field has been set.
 func (o *NetworkPolicyDto) HasPodSelector() bool {
-	if o != nil && IsNil(o.PodSelector) {
+	if o != nil && !IsNil(o.PodSelector) {
 		return true
 	}
 

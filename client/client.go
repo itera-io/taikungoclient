@@ -205,6 +205,8 @@ type APIClient struct {
 	UsersAPI *UsersAPIService
 
 	VsphereCloudCredentialAPI *VsphereCloudCredentialAPIService
+
+	ZadaraCloudCredentialAPI *ZadaraCloudCredentialAPIService
 }
 
 type service struct {
@@ -301,6 +303,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UserTokenAPI = (*UserTokenAPIService)(&c.common)
 	c.UsersAPI = (*UsersAPIService)(&c.common)
 	c.VsphereCloudCredentialAPI = (*VsphereCloudCredentialAPIService)(&c.common)
+	c.ZadaraCloudCredentialAPI = (*ZadaraCloudCredentialAPIService)(&c.common)
 
 	return c
 }

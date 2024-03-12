@@ -193,7 +193,7 @@ func (o *CreateAlertingProfileCommand) GetEmailsOk() ([]AlertingEmailDto, bool) 
 
 // HasEmails returns a boolean if a field has been set.
 func (o *CreateAlertingProfileCommand) HasEmails() bool {
-	if o != nil && IsNil(o.Emails) {
+	if o != nil && !IsNil(o.Emails) {
 		return true
 	}
 
@@ -226,7 +226,7 @@ func (o *CreateAlertingProfileCommand) GetWebhooksOk() ([]AlertingWebhookDto, bo
 
 // HasWebhooks returns a boolean if a field has been set.
 func (o *CreateAlertingProfileCommand) HasWebhooks() bool {
-	if o != nil && IsNil(o.Webhooks) {
+	if o != nil && !IsNil(o.Webhooks) {
 		return true
 	}
 
@@ -259,7 +259,7 @@ func (o *CreateAlertingProfileCommand) GetAlertingIntegrationsOk() ([]AlertingIn
 
 // HasAlertingIntegrations returns a boolean if a field has been set.
 func (o *CreateAlertingProfileCommand) HasAlertingIntegrations() bool {
-	if o != nil && IsNil(o.AlertingIntegrations) {
+	if o != nil && !IsNil(o.AlertingIntegrations) {
 		return true
 	}
 

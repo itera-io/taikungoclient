@@ -223,7 +223,7 @@ func (o *CreateCatalogAppCommand) GetParametersOk() ([]CatalogAppParamsDto, bool
 
 // HasParameters returns a boolean if a field has been set.
 func (o *CreateCatalogAppCommand) HasParameters() bool {
-	if o != nil && IsNil(o.Parameters) {
+	if o != nil && !IsNil(o.Parameters) {
 		return true
 	}
 

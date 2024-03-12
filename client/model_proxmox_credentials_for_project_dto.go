@@ -320,7 +320,7 @@ func (o *ProxmoxCredentialsForProjectDto) GetProxmoxNetworksOk() ([]ProxmoxNetwo
 
 // HasProxmoxNetworks returns a boolean if a field has been set.
 func (o *ProxmoxCredentialsForProjectDto) HasProxmoxNetworks() bool {
-	if o != nil && IsNil(o.ProxmoxNetworks) {
+	if o != nil && !IsNil(o.ProxmoxNetworks) {
 		return true
 	}
 

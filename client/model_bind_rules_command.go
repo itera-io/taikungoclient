@@ -62,7 +62,7 @@ func (o *BindRulesCommand) GetRulesOk() ([]BindRulesToOrganizationDto, bool) {
 
 // HasRules returns a boolean if a field has been set.
 func (o *BindRulesCommand) HasRules() bool {
-	if o != nil && IsNil(o.Rules) {
+	if o != nil && !IsNil(o.Rules) {
 		return true
 	}
 

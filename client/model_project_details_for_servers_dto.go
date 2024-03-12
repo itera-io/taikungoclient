@@ -2440,7 +2440,7 @@ func (o *ProjectDetailsForServersDto) GetAvailabilityZonesOk() ([]string, bool) 
 
 // HasAvailabilityZones returns a boolean if a field has been set.
 func (o *ProjectDetailsForServersDto) HasAvailabilityZones() bool {
-	if o != nil && IsNil(o.AvailabilityZones) {
+	if o != nil && !IsNil(o.AvailabilityZones) {
 		return true
 	}
 
@@ -2473,7 +2473,7 @@ func (o *ProjectDetailsForServersDto) GetHypervisorsOk() ([]string, bool) {
 
 // HasHypervisors returns a boolean if a field has been set.
 func (o *ProjectDetailsForServersDto) HasHypervisors() bool {
-	if o != nil && IsNil(o.Hypervisors) {
+	if o != nil && !IsNil(o.Hypervisors) {
 		return true
 	}
 

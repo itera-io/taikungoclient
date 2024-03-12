@@ -61,7 +61,7 @@ func (o *ChatCompletionsCommand) GetMessagesOk() (*interface{}, bool) {
 
 // HasMessages returns a boolean if a field has been set.
 func (o *ChatCompletionsCommand) HasMessages() bool {
-	if o != nil && IsNil(o.Messages) {
+	if o != nil && !IsNil(o.Messages) {
 		return true
 	}
 

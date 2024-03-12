@@ -307,7 +307,7 @@ func (o *OpenshiftListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 
 // HasProjects returns a boolean if a field has been set.
 func (o *OpenshiftListDto) HasProjects() bool {
-	if o != nil && IsNil(o.Projects) {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 

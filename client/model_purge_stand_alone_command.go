@@ -94,7 +94,7 @@ func (o *PurgeStandAloneCommand) GetVmIdsOk() ([]int32, bool) {
 
 // HasVmIds returns a boolean if a field has been set.
 func (o *PurgeStandAloneCommand) HasVmIds() bool {
-	if o != nil && IsNil(o.VmIds) {
+	if o != nil && !IsNil(o.VmIds) {
 		return true
 	}
 

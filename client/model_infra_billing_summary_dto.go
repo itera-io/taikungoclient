@@ -138,7 +138,7 @@ func (o *InfraBillingSummaryDto) GetIntervalsOk() ([]DateInterval, bool) {
 
 // HasIntervals returns a boolean if a field has been set.
 func (o *InfraBillingSummaryDto) HasIntervals() bool {
-	if o != nil && IsNil(o.Intervals) {
+	if o != nil && !IsNil(o.Intervals) {
 		return true
 	}
 

@@ -62,7 +62,7 @@ func (o *BindOrganizationsCommand) GetOrganizationsOk() ([]OrganizationDto, bool
 
 // HasOrganizations returns a boolean if a field has been set.
 func (o *BindOrganizationsCommand) HasOrganizations() bool {
-	if o != nil && IsNil(o.Organizations) {
+	if o != nil && !IsNil(o.Organizations) {
 		return true
 	}
 

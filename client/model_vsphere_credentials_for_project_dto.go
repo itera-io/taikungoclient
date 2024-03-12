@@ -439,7 +439,7 @@ func (o *VsphereCredentialsForProjectDto) GetVsphereNetworksOk() ([]VsphereNetwo
 
 // HasVsphereNetworks returns a boolean if a field has been set.
 func (o *VsphereCredentialsForProjectDto) HasVsphereNetworks() bool {
-	if o != nil && IsNil(o.VsphereNetworks) {
+	if o != nil && !IsNil(o.VsphereNetworks) {
 		return true
 	}
 

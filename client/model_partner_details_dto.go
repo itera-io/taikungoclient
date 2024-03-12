@@ -624,7 +624,7 @@ func (o *PartnerDetailsDto) GetOrganizationsOk() ([]CommonDropdownDto, bool) {
 
 // HasOrganizations returns a boolean if a field has been set.
 func (o *PartnerDetailsDto) HasOrganizations() bool {
-	if o != nil && IsNil(o.Organizations) {
+	if o != nil && !IsNil(o.Organizations) {
 		return true
 	}
 
@@ -657,7 +657,7 @@ func (o *PartnerDetailsDto) GetWhiteListDomainsOk() ([]WhiteListDomainDto, bool)
 
 // HasWhiteListDomains returns a boolean if a field has been set.
 func (o *PartnerDetailsDto) HasWhiteListDomains() bool {
-	if o != nil && IsNil(o.WhiteListDomains) {
+	if o != nil && !IsNil(o.WhiteListDomains) {
 		return true
 	}
 

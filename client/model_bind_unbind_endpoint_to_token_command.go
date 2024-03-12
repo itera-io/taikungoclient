@@ -105,7 +105,7 @@ func (o *BindUnbindEndpointToTokenCommand) GetEndpointsOk() ([]AvailableEndpoint
 
 // HasEndpoints returns a boolean if a field has been set.
 func (o *BindUnbindEndpointToTokenCommand) HasEndpoints() bool {
-	if o != nil && IsNil(o.Endpoints) {
+	if o != nil && !IsNil(o.Endpoints) {
 		return true
 	}
 

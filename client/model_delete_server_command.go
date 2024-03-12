@@ -95,7 +95,7 @@ func (o *DeleteServerCommand) GetServerIdsOk() ([]int32, bool) {
 
 // HasServerIds returns a boolean if a field has been set.
 func (o *DeleteServerCommand) HasServerIds() bool {
-	if o != nil && IsNil(o.ServerIds) {
+	if o != nil && !IsNil(o.ServerIds) {
 		return true
 	}
 

@@ -193,7 +193,7 @@ func (o *CreateAccessProfileCommand) GetSshUsersOk() ([]SshUserCreateDto, bool) 
 
 // HasSshUsers returns a boolean if a field has been set.
 func (o *CreateAccessProfileCommand) HasSshUsers() bool {
-	if o != nil && IsNil(o.SshUsers) {
+	if o != nil && !IsNil(o.SshUsers) {
 		return true
 	}
 
@@ -226,7 +226,7 @@ func (o *CreateAccessProfileCommand) GetDnsServersOk() ([]DnsServerCreateDto, bo
 
 // HasDnsServers returns a boolean if a field has been set.
 func (o *CreateAccessProfileCommand) HasDnsServers() bool {
-	if o != nil && IsNil(o.DnsServers) {
+	if o != nil && !IsNil(o.DnsServers) {
 		return true
 	}
 
@@ -259,7 +259,7 @@ func (o *CreateAccessProfileCommand) GetNtpServersOk() ([]NtpServerCreateDto, bo
 
 // HasNtpServers returns a boolean if a field has been set.
 func (o *CreateAccessProfileCommand) HasNtpServers() bool {
-	if o != nil && IsNil(o.NtpServers) {
+	if o != nil && !IsNil(o.NtpServers) {
 		return true
 	}
 
@@ -292,7 +292,7 @@ func (o *CreateAccessProfileCommand) GetAllowedHostsOk() ([]AllowedHostCreateDto
 
 // HasAllowedHosts returns a boolean if a field has been set.
 func (o *CreateAccessProfileCommand) HasAllowedHosts() bool {
-	if o != nil && IsNil(o.AllowedHosts) {
+	if o != nil && !IsNil(o.AllowedHosts) {
 		return true
 	}
 

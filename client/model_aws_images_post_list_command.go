@@ -343,7 +343,7 @@ func (o *AwsImagesPostListCommand) GetOwnersOk() ([]string, bool) {
 
 // HasOwners returns a boolean if a field has been set.
 func (o *AwsImagesPostListCommand) HasOwners() bool {
-	if o != nil && IsNil(o.Owners) {
+	if o != nil && !IsNil(o.Owners) {
 		return true
 	}
 

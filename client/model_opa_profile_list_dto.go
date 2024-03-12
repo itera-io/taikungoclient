@@ -344,7 +344,7 @@ func (o *OpaProfileListDto) GetAllowedRepoOk() ([]string, bool) {
 
 // HasAllowedRepo returns a boolean if a field has been set.
 func (o *OpaProfileListDto) HasAllowedRepo() bool {
-	if o != nil && IsNil(o.AllowedRepo) {
+	if o != nil && !IsNil(o.AllowedRepo) {
 		return true
 	}
 
@@ -377,7 +377,7 @@ func (o *OpaProfileListDto) GetForbidSpecificTagsOk() ([]string, bool) {
 
 // HasForbidSpecificTags returns a boolean if a field has been set.
 func (o *OpaProfileListDto) HasForbidSpecificTags() bool {
-	if o != nil && IsNil(o.ForbidSpecificTags) {
+	if o != nil && !IsNil(o.ForbidSpecificTags) {
 		return true
 	}
 
@@ -410,7 +410,7 @@ func (o *OpaProfileListDto) GetIngressWhitelistOk() ([]string, bool) {
 
 // HasIngressWhitelist returns a boolean if a field has been set.
 func (o *OpaProfileListDto) HasIngressWhitelist() bool {
-	if o != nil && IsNil(o.IngressWhitelist) {
+	if o != nil && !IsNil(o.IngressWhitelist) {
 		return true
 	}
 
@@ -655,7 +655,7 @@ func (o *OpaProfileListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 
 // HasProjects returns a boolean if a field has been set.
 func (o *OpaProfileListDto) HasProjects() bool {
-	if o != nil && IsNil(o.Projects) {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 

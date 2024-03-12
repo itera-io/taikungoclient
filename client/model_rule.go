@@ -294,7 +294,7 @@ func (o *Rule) GetAlertsOk() ([]Alert, bool) {
 
 // HasAlerts returns a boolean if a field has been set.
 func (o *Rule) HasAlerts() bool {
-	if o != nil && IsNil(o.Alerts) {
+	if o != nil && !IsNil(o.Alerts) {
 		return true
 	}
 

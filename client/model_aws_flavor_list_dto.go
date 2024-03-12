@@ -175,7 +175,7 @@ func (o *AwsFlavorListDto) GetDescriptionOk() (*interface{}, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AwsFlavorListDto) HasDescription() bool {
-	if o != nil && IsNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -376,7 +376,7 @@ func (o *AwsFlavorListDto) GetZonesOk() ([]string, bool) {
 
 // HasZones returns a boolean if a field has been set.
 func (o *AwsFlavorListDto) HasZones() bool {
-	if o != nil && IsNil(o.Zones) {
+	if o != nil && !IsNil(o.Zones) {
 		return true
 	}
 

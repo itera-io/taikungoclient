@@ -924,7 +924,7 @@ func (o *UserForListDto) GetBoundProjectsOk() ([]ProjectDto, bool) {
 
 // HasBoundProjects returns a boolean if a field has been set.
 func (o *UserForListDto) HasBoundProjects() bool {
-	if o != nil && IsNil(o.BoundProjects) {
+	if o != nil && !IsNil(o.BoundProjects) {
 		return true
 	}
 

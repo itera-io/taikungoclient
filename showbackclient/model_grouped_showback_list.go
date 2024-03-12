@@ -63,7 +63,7 @@ func (o *GroupedShowbackList) GetProjectsOk() ([]GroupedShowbackSummaryInfos, bo
 
 // HasProjects returns a boolean if a field has been set.
 func (o *GroupedShowbackList) HasProjects() bool {
-	if o != nil && IsNil(o.Projects) {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 
@@ -96,7 +96,7 @@ func (o *GroupedShowbackList) GetCredentialsOk() ([]GroupedShowbackSummaryInfos,
 
 // HasCredentials returns a boolean if a field has been set.
 func (o *GroupedShowbackList) HasCredentials() bool {
-	if o != nil && IsNil(o.Credentials) {
+	if o != nil && !IsNil(o.Credentials) {
 		return true
 	}
 
@@ -129,7 +129,7 @@ func (o *GroupedShowbackList) GetByLabelValuesOk() ([]GroupedShowbackSummaryInfo
 
 // HasByLabelValues returns a boolean if a field has been set.
 func (o *GroupedShowbackList) HasByLabelValues() bool {
-	if o != nil && IsNil(o.ByLabelValues) {
+	if o != nil && !IsNil(o.ByLabelValues) {
 		return true
 	}
 

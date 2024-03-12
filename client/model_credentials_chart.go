@@ -70,7 +70,7 @@ func (o *CredentialsChart) GetAmazonOk() ([]AmazonCredentialsListDto, bool) {
 
 // HasAmazon returns a boolean if a field has been set.
 func (o *CredentialsChart) HasAmazon() bool {
-	if o != nil && IsNil(o.Amazon) {
+	if o != nil && !IsNil(o.Amazon) {
 		return true
 	}
 
@@ -103,7 +103,7 @@ func (o *CredentialsChart) GetOpenstackOk() ([]OpenstackCredentialsListDto, bool
 
 // HasOpenstack returns a boolean if a field has been set.
 func (o *CredentialsChart) HasOpenstack() bool {
-	if o != nil && IsNil(o.Openstack) {
+	if o != nil && !IsNil(o.Openstack) {
 		return true
 	}
 
@@ -136,7 +136,7 @@ func (o *CredentialsChart) GetAzureOk() ([]AzureCredentialsListDto, bool) {
 
 // HasAzure returns a boolean if a field has been set.
 func (o *CredentialsChart) HasAzure() bool {
-	if o != nil && IsNil(o.Azure) {
+	if o != nil && !IsNil(o.Azure) {
 		return true
 	}
 
@@ -169,7 +169,7 @@ func (o *CredentialsChart) GetGoogleOk() ([]GoogleCredentialsListDto, bool) {
 
 // HasGoogle returns a boolean if a field has been set.
 func (o *CredentialsChart) HasGoogle() bool {
-	if o != nil && IsNil(o.Google) {
+	if o != nil && !IsNil(o.Google) {
 		return true
 	}
 
@@ -202,7 +202,7 @@ func (o *CredentialsChart) GetTanzuOk() ([]TanzuCredentialsListDto, bool) {
 
 // HasTanzu returns a boolean if a field has been set.
 func (o *CredentialsChart) HasTanzu() bool {
-	if o != nil && IsNil(o.Tanzu) {
+	if o != nil && !IsNil(o.Tanzu) {
 		return true
 	}
 

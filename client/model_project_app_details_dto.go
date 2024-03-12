@@ -851,7 +851,7 @@ func (o *ProjectAppDetailsDto) GetProjectAppParamsOk() ([]ProjectAppParamDto, bo
 
 // HasProjectAppParams returns a boolean if a field has been set.
 func (o *ProjectAppDetailsDto) HasProjectAppParams() bool {
-	if o != nil && IsNil(o.ProjectAppParams) {
+	if o != nil && !IsNil(o.ProjectAppParams) {
 		return true
 	}
 

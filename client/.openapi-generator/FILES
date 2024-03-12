@@ -81,6 +81,7 @@ api_user_projects.go
 api_user_token.go
 api_users.go
 api_vsphere_cloud_credential.go
+api_zadara_cloud_credential.go
 client.go
 configuration.go
 docs/AWSCloudCredentialAPI.md
@@ -331,6 +332,7 @@ docs/CreateUserCommand.md
 docs/CreateUserGroupCommand.md
 docs/CreateVsphereCommand.md
 docs/CreateVsphereNetworkDto.md
+docs/CreateZadaraCloudCommand.md
 docs/CredentialChartDto.md
 docs/CredentialMakeDefaultCommand.md
 docs/CredentialsChart.md
@@ -992,6 +994,12 @@ docs/WhiteListDomainCreateDto.md
 docs/WhiteListDomainDeleteCommand.md
 docs/WhiteListDomainDto.md
 docs/YamlValidatorCommand.md
+docs/ZadaraAvailabilityZonesCommand.md
+docs/ZadaraCloudCredentialAPI.md
+docs/ZadaraCredentialList.md
+docs/ZadaraCredentialsForProjectDto.md
+docs/ZadaraCredentialsListDto.md
+docs/ZadaraRegionListCommand.md
 git_push.sh
 go.mod
 go.sum
@@ -1224,6 +1232,7 @@ model_create_user_command.go
 model_create_user_group_command.go
 model_create_vsphere_command.go
 model_create_vsphere_network_dto.go
+model_create_zadara_cloud_command.go
 model_credential_chart_dto.go
 model_credential_make_default_command.go
 model_credentials_chart.go
@@ -1826,6 +1835,11 @@ model_white_list_domain_create_dto.go
 model_white_list_domain_delete_command.go
 model_white_list_domain_dto.go
 model_yaml_validator_command.go
+model_zadara_availability_zones_command.go
+model_zadara_credential_list.go
+model_zadara_credentials_for_project_dto.go
+model_zadara_credentials_list_dto.go
+model_zadara_region_list_command.go
 response.go
 test/api_access_profiles_test.go
 test/api_admin_test.go
@@ -1905,4 +1919,5 @@ test/api_user_projects_test.go
 test/api_user_token_test.go
 test/api_users_test.go
 test/api_vsphere_cloud_credential_test.go
+test/api_zadara_cloud_credential_test.go
 utils.go

@@ -181,7 +181,7 @@ func (o *RestoreBackupCommand) GetIncludeNamespacesOk() ([]string, bool) {
 
 // HasIncludeNamespaces returns a boolean if a field has been set.
 func (o *RestoreBackupCommand) HasIncludeNamespaces() bool {
-	if o != nil && IsNil(o.IncludeNamespaces) {
+	if o != nil && !IsNil(o.IncludeNamespaces) {
 		return true
 	}
 
@@ -214,7 +214,7 @@ func (o *RestoreBackupCommand) GetExcludeNamespacesOk() ([]string, bool) {
 
 // HasExcludeNamespaces returns a boolean if a field has been set.
 func (o *RestoreBackupCommand) HasExcludeNamespaces() bool {
-	if o != nil && IsNil(o.ExcludeNamespaces) {
+	if o != nil && !IsNil(o.ExcludeNamespaces) {
 		return true
 	}
 

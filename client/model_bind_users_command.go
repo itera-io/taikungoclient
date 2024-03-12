@@ -62,7 +62,7 @@ func (o *BindUsersCommand) GetUsersOk() ([]UpdateProjectUserDto, bool) {
 
 // HasUsers returns a boolean if a field has been set.
 func (o *BindUsersCommand) HasUsers() bool {
-	if o != nil && IsNil(o.Users) {
+	if o != nil && !IsNil(o.Users) {
 		return true
 	}
 

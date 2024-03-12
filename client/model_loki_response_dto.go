@@ -101,7 +101,7 @@ func (o *LokiResponseDto) GetParametersOk() ([]Parameter, bool) {
 
 // HasParameters returns a boolean if a field has been set.
 func (o *LokiResponseDto) HasParameters() bool {
-	if o != nil && IsNil(o.Parameters) {
+	if o != nil && !IsNil(o.Parameters) {
 		return true
 	}
 
@@ -134,7 +134,7 @@ func (o *LokiResponseDto) GetFiltersOk() ([]Filter, bool) {
 
 // HasFilters returns a boolean if a field has been set.
 func (o *LokiResponseDto) HasFilters() bool {
-	if o != nil && IsNil(o.Filters) {
+	if o != nil && !IsNil(o.Filters) {
 		return true
 	}
 

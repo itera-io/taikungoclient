@@ -62,7 +62,7 @@ func (o *OpenshiftFlavorList) GetDataOk() ([]OpenshiftFlavorData, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *OpenshiftFlavorList) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

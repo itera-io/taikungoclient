@@ -61,7 +61,7 @@ func (o *UpdateServerCommand) GetServersOk() ([]ServerUpdateDto, bool) {
 
 // HasServers returns a boolean if a field has been set.
 func (o *UpdateServerCommand) HasServers() bool {
-	if o != nil && IsNil(o.Servers) {
+	if o != nil && !IsNil(o.Servers) {
 		return true
 	}
 

@@ -62,7 +62,7 @@ func (o *ShowbackProjectsList) GetDataOk() ([]ShowbackProjectsListDto, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *ShowbackProjectsList) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

@@ -352,7 +352,7 @@ func (o *PodListDto) GetContainerOk() ([]string, bool) {
 
 // HasContainer returns a boolean if a field has been set.
 func (o *PodListDto) HasContainer() bool {
-	if o != nil && IsNil(o.Container) {
+	if o != nil && !IsNil(o.Container) {
 		return true
 	}
 

@@ -62,7 +62,7 @@ func (o *BillingCredentialsSearchList) GetDataOk() ([]CommonSearchResponseData, 
 
 // HasData returns a boolean if a field has been set.
 func (o *BillingCredentialsSearchList) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

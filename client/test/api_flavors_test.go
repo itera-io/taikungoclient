@@ -180,4 +180,18 @@ func Test_taikuncore_FlavorsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test FlavorsAPIService FlavorsZadaraInstanceTypes", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var cloudId int32
+
+		resp, httpRes, err := apiClient.FlavorsAPI.FlavorsZadaraInstanceTypes(context.Background(), cloudId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

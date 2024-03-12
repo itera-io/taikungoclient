@@ -5622,8 +5622,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-03-11T00:02:47.8124443Z
-                  createdAt: 2024-03-11T00:02:47.8124443Z
+                  lastValidated: 2024-03-12T00:02:43.2093467Z
+                  createdAt: 2024-03-12T00:02:43.2093467Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5728,14 +5728,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-03-11T00:02:47.8124443Z
+                    lastBackup: 2024-03-12T00:02:43.2093467Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-03-11T00:02:47.8124443Z
+                  createdAt: 2024-03-12T00:02:43.2093467Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-03-11T00:02:47.8124443Z
+                  lastBackup: 2024-03-12T00:02:43.2093467Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5840,8 +5840,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-03-11T00:02:47.8124443Z
-                  expiration: 2024-03-11T00:02:47.8124443Z
+                  createdAt: 2024-03-12T00:02:43.2093467Z
+                  expiration: 2024-03-12T00:02:43.2093467Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5945,7 +5945,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-03-11T00:02:47.8124443Z
+                  createdAt: 2024-03-12T00:02:43.2093467Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6055,9 +6055,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-03-11T00:02:47.8124443+00:00
-                  startTimeStamp: 2024-03-11T00:02:47.8124443+00:00
-                  createdAt: 2024-03-11T00:02:47.8124443Z
+                  completionDateTime: 2024-03-12T00:02:43.2093467+00:00
+                  startTimeStamp: 2024-03-12T00:02:43.2093467+00:00
+                  createdAt: 2024-03-12T00:02:43.2093467Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -11840,6 +11840,126 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve vsphere flavors
+      tags:
+      - Flavors
+  /api/v1/flavors/zadara/{cloudId}:
+    get:
+      operationId: flavors-zadara-instance-types
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: StartRam
+        required: false
+        schema:
+          format: double
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: EndRam
+        required: false
+        schema:
+          format: double
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: StartCpu
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: EndCpu
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AwsFlavorList'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Server Error
       tags:
       - Flavors
   /api/v1/googlecloud/billing-accounts:
@@ -36518,6 +36638,307 @@ paths:
       summary: Retrieve list of vsphere cloud credentials
       tags:
       - Vsphere cloud credential
+  /api/v1/zadara/create:
+    post:
+      operationId: zadara-create
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: taikun
+              zadaraUrl: https://www.google.com
+              zadaraSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              zadaraAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              zadaraRegion: ap-south-1
+              organizationId: 1
+              azCount: 1
+            schema:
+              $ref: '#/components/schemas/CreateZadaraCloudCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Add Zadara credentials
+      tags:
+      - Zadara cloud credential
+  /api/v1/zadara/regions:
+    post:
+      operationId: zadara-regionlist
+      requestBody:
+        content:
+          application/json:
+            example:
+              url: https://www.google.com
+              zadaraAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              zadaraSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+            schema:
+              $ref: '#/components/schemas/ZadaraRegionListCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - name: taikun
+                region: ap-south-1
+              schema:
+                items:
+                  $ref: '#/components/schemas/AwsRegionDto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve zadara regions list
+      tags:
+      - Zadara cloud credential
+  /api/v1/zadara/zones:
+    post:
+      operationId: zadara-zonelist
+      requestBody:
+        content:
+          application/json:
+            example:
+              url: https://www.google.com
+              zadaraAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              zadaraSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              cloudId: 1
+            schema:
+              $ref: '#/components/schemas/ZadaraAvailabilityZonesCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                data:
+                - eu-west-1a
+                totalCount: 1
+              schema:
+                $ref: '#/components/schemas/AzResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve zadara zone list
+      tags:
+      - Zadara cloud credential
+  /api/v1/zadara/list:
+    get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>zadaraRegion</i>, <i>organizationName</i>, <i>createdAt</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></ul></div>
+      operationId: zadara-list
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                data:
+                - id: 1
+                  projectCount: 1
+                  isLocked: false
+                  name: taikun
+                  region: null
+                  availabilityZones: null
+                  availabilityZonesCount: 0
+                  projects:
+                  - id: 1
+                    name: taikun
+                  createdBy: taikun
+                  lastModified: 2023-11-21T12:09:23Z
+                  lastModifiedBy: taikun
+                  isDefault: false
+                  organizationId: 1
+                  organizationName: taikun.cloud a.s.
+                  createdAt: 2023-11-21T12:09:23Z
+                  continentName: Europe
+                totalCount: 1
+              schema:
+                $ref: '#/components/schemas/ZadaraCredentialList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve list of Zadara cloud credentials
+      tags:
+      - Zadara cloud credential
 components:
   schemas:
     AcceptOfferCommand:
@@ -43780,10 +44201,45 @@ components:
           nullable: true
           type: string
       type: object
+    CreateZadaraCloudCommand:
+      additionalProperties: false
+      example:
+        organizationId: 0
+        zadaraAccessKeyId: zadaraAccessKeyId
+        azCount: 6
+        name: name
+        zadaraRegion: zadaraRegion
+        zadaraUrl: zadaraUrl
+        zadaraSecretAccessKey: zadaraSecretAccessKey
+      properties:
+        name:
+          nullable: true
+          type: string
+        zadaraUrl:
+          nullable: true
+          type: string
+        zadaraSecretAccessKey:
+          nullable: true
+          type: string
+        zadaraAccessKeyId:
+          nullable: true
+          type: string
+        zadaraRegion:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        azCount:
+          format: int32
+          type: integer
+      type: object
     CredentialChartDto:
       additionalProperties: false
       example:
         vsphere: 7
+        zadara: 1
         openshift: 4
         openstack: 7
         google: 9
@@ -43815,6 +44271,9 @@ components:
           format: int32
           type: integer
         vsphere:
+          format: int32
+          type: integer
+        zadara:
           format: int32
           type: integer
         totalCount:
@@ -44191,6 +44650,13 @@ components:
       additionalProperties: false
       example:
         cloudCredentialRevision: 0
+        zadara:
+          accessKeyId: accessKeyId
+          secretAccessKey: secretAccessKey
+          volumeType: volumeType
+          accountId: accountId
+          region: region
+          url: url
         openshift:
           storageClass: storageClass
           baseDomain: baseDomain
@@ -44320,6 +44786,8 @@ components:
           $ref: '#/components/schemas/VsphereCredentialsForProjectDto'
         openshift:
           $ref: '#/components/schemas/OpenshiftCredentialForProjectDto'
+        zadara:
+          $ref: '#/components/schemas/ZadaraCredentialsForProjectDto'
       type: object
     CronJobCommand:
       additionalProperties: false
@@ -44486,7 +44954,7 @@ components:
             name: name
             id: 1
         servers:
-          totalOpenshiftCount: 6
+          totalOpenshiftCount: 1
           waiting:
           - names:
             - names
@@ -44509,7 +44977,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalGoogleCount: 6
+          totalGoogleCount: 3
           tanzu:
           - names:
             - names
@@ -44521,7 +44989,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalCount: 1
+          totalCount: 6
           updating:
           - names:
             - names
@@ -44533,9 +45001,10 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalCpu: 6
-          totalAzureCount: 8
-          totalVsphereCount: 2
+          totalCpu: 7
+          totalZadaraCount: 6
+          totalAzureCount: 9
+          totalVsphereCount: 6
           proxmox:
           - names:
             - names
@@ -44559,7 +45028,18 @@ components:
             projectName: projectName
             projectId: 1
           totalUpdatingCount: 9
-          totalDiskSize: 1
+          totalDiskSize: 4
+          zadara:
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
           google:
           - names:
             - names
@@ -44582,28 +45062,28 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalRam: 7
-          totalSucceededCount: 5
-          totalOpenstackCount: 9
-          totalPendingCount: 9
+          totalRam: 1
+          totalSucceededCount: 9
+          totalOpenstackCount: 6
+          totalPendingCount: 6
           usedResources:
           - diskSize: 6
-            maxRam: 3
-            cpu: 6
-            maxCpu: 3
+            maxRam: 7
+            cpu: 3
+            maxCpu: 0
             projectName: projectName
             maxDiskSize: 7
-            projectId: 6
-            ram: 5
+            projectId: 5
+            ram: 3
           - diskSize: 6
-            maxRam: 3
-            cpu: 6
-            maxCpu: 3
+            maxRam: 7
+            cpu: 3
+            maxCpu: 0
             projectName: projectName
             maxDiskSize: 7
-            projectId: 6
-            ram: 5
-          totalProxmoxCount: 1
+            projectId: 5
+            ram: 3
+          totalProxmoxCount: 2
           deleting:
           - names:
             - names
@@ -44615,7 +45095,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalFailedCount: 4
+          totalFailedCount: 5
           vsphere:
           - names:
             - names
@@ -44638,8 +45118,8 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalAwsCount: 6
-          totalTanzuCount: 3
+          totalAwsCount: 8
+          totalTanzuCount: 6
           aws:
           - names:
             - names
@@ -44674,7 +45154,7 @@ components:
             projectName: projectName
             projectId: 1
         standAloneVms:
-          totalOpenshiftCount: 6
+          totalOpenshiftCount: 1
           waiting:
           - names:
             - names
@@ -44697,7 +45177,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalGoogleCount: 6
+          totalGoogleCount: 3
           tanzu:
           - names:
             - names
@@ -44709,7 +45189,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalCount: 1
+          totalCount: 6
           updating:
           - names:
             - names
@@ -44721,9 +45201,10 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalCpu: 6
-          totalAzureCount: 8
-          totalVsphereCount: 2
+          totalCpu: 7
+          totalZadaraCount: 6
+          totalAzureCount: 9
+          totalVsphereCount: 6
           proxmox:
           - names:
             - names
@@ -44747,7 +45228,18 @@ components:
             projectName: projectName
             projectId: 1
           totalUpdatingCount: 9
-          totalDiskSize: 1
+          totalDiskSize: 4
+          zadara:
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
           google:
           - names:
             - names
@@ -44770,28 +45262,28 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalRam: 7
-          totalSucceededCount: 5
-          totalOpenstackCount: 9
-          totalPendingCount: 9
+          totalRam: 1
+          totalSucceededCount: 9
+          totalOpenstackCount: 6
+          totalPendingCount: 6
           usedResources:
           - diskSize: 6
-            maxRam: 3
-            cpu: 6
-            maxCpu: 3
+            maxRam: 7
+            cpu: 3
+            maxCpu: 0
             projectName: projectName
             maxDiskSize: 7
-            projectId: 6
-            ram: 5
+            projectId: 5
+            ram: 3
           - diskSize: 6
-            maxRam: 3
-            cpu: 6
-            maxCpu: 3
+            maxRam: 7
+            cpu: 3
+            maxCpu: 0
             projectName: projectName
             maxDiskSize: 7
-            projectId: 6
-            ram: 5
-          totalProxmoxCount: 1
+            projectId: 5
+            ram: 3
+          totalProxmoxCount: 2
           deleting:
           - names:
             - names
@@ -44803,7 +45295,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalFailedCount: 4
+          totalFailedCount: 5
           vsphere:
           - names:
             - names
@@ -44826,8 +45318,8 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalAwsCount: 6
-          totalTanzuCount: 3
+          totalAwsCount: 8
+          totalTanzuCount: 6
           aws:
           - names:
             - names
@@ -44867,6 +45359,7 @@ components:
           users: 6
         cloudCredentials:
           vsphere: 7
+          zadara: 1
           openshift: 4
           openstack: 7
           google: 9
@@ -58464,7 +58957,7 @@ components:
     ServerChartDto:
       additionalProperties: false
       example:
-        totalOpenshiftCount: 6
+        totalOpenshiftCount: 1
         waiting:
         - names:
           - names
@@ -58487,7 +58980,7 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalGoogleCount: 6
+        totalGoogleCount: 3
         tanzu:
         - names:
           - names
@@ -58499,7 +58992,7 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalCount: 1
+        totalCount: 6
         updating:
         - names:
           - names
@@ -58511,9 +59004,10 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalCpu: 6
-        totalAzureCount: 8
-        totalVsphereCount: 2
+        totalCpu: 7
+        totalZadaraCount: 6
+        totalAzureCount: 9
+        totalVsphereCount: 6
         proxmox:
         - names:
           - names
@@ -58537,7 +59031,18 @@ components:
           projectName: projectName
           projectId: 1
         totalUpdatingCount: 9
-        totalDiskSize: 1
+        totalDiskSize: 4
+        zadara:
+        - names:
+          - names
+          - names
+          projectName: projectName
+          projectId: 1
+        - names:
+          - names
+          - names
+          projectName: projectName
+          projectId: 1
         google:
         - names:
           - names
@@ -58560,28 +59065,28 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalRam: 7
-        totalSucceededCount: 5
-        totalOpenstackCount: 9
-        totalPendingCount: 9
+        totalRam: 1
+        totalSucceededCount: 9
+        totalOpenstackCount: 6
+        totalPendingCount: 6
         usedResources:
         - diskSize: 6
-          maxRam: 3
-          cpu: 6
-          maxCpu: 3
+          maxRam: 7
+          cpu: 3
+          maxCpu: 0
           projectName: projectName
           maxDiskSize: 7
-          projectId: 6
-          ram: 5
+          projectId: 5
+          ram: 3
         - diskSize: 6
-          maxRam: 3
-          cpu: 6
-          maxCpu: 3
+          maxRam: 7
+          cpu: 3
+          maxCpu: 0
           projectName: projectName
           maxDiskSize: 7
-          projectId: 6
-          ram: 5
-        totalProxmoxCount: 1
+          projectId: 5
+          ram: 3
+        totalProxmoxCount: 2
         deleting:
         - names:
           - names
@@ -58593,7 +59098,7 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalFailedCount: 4
+        totalFailedCount: 5
         vsphere:
         - names:
           - names
@@ -58616,8 +59121,8 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalAwsCount: 6
-        totalTanzuCount: 3
+        totalAwsCount: 8
+        totalTanzuCount: 6
         aws:
         - names:
           - names
@@ -58683,6 +59188,11 @@ components:
           nullable: true
           type: array
         vsphere:
+          items:
+            $ref: '#/components/schemas/ServerCommonRecordDto'
+          nullable: true
+          type: array
+        zadara:
           items:
             $ref: '#/components/schemas/ServerCommonRecordDto'
           nullable: true
@@ -58768,6 +59278,9 @@ components:
           format: int32
           type: integer
         totalVsphereCount:
+          format: int32
+          type: integer
+        totalZadaraCount:
           format: int32
           type: integer
         usedResources:
@@ -63238,13 +63751,13 @@ components:
       additionalProperties: false
       example:
         diskSize: 6
-        maxRam: 3
-        cpu: 6
-        maxCpu: 3
+        maxRam: 7
+        cpu: 3
+        maxCpu: 0
         projectName: projectName
         maxDiskSize: 7
-        projectId: 6
-        ram: 5
+        projectId: 5
+        ram: 3
       properties:
         projectName:
           nullable: true
@@ -64134,6 +64647,210 @@ components:
         yaml: yaml
       properties:
         yaml:
+          nullable: true
+          type: string
+      type: object
+    ZadaraAvailabilityZonesCommand:
+      additionalProperties: false
+      example:
+        zadaraAccessKeyId: zadaraAccessKeyId
+        cloudId: 0
+        zadaraSecretAccessKey: zadaraSecretAccessKey
+        url: url
+      properties:
+        url:
+          nullable: true
+          type: string
+        zadaraAccessKeyId:
+          nullable: true
+          type: string
+        zadaraSecretAccessKey:
+          nullable: true
+          type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    ZadaraCredentialList:
+      additionalProperties: false
+      example:
+        data:
+        - projectCount: 6
+          projects:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          organizationName: organizationName
+          lastModifiedBy: lastModifiedBy
+          availabilityZones:
+          - availabilityZones
+          - availabilityZones
+          organizationId: 5
+          createdAt: createdAt
+          isDefault: true
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          availabilityZonesCount: 1
+          id: 0
+          lastModified: lastModified
+          region: region
+          continentName: continentName
+        - projectCount: 6
+          projects:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          organizationName: organizationName
+          lastModifiedBy: lastModifiedBy
+          availabilityZones:
+          - availabilityZones
+          - availabilityZones
+          organizationId: 5
+          createdAt: createdAt
+          isDefault: true
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          availabilityZonesCount: 1
+          id: 0
+          lastModified: lastModified
+          region: region
+          continentName: continentName
+        totalCount: 5
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ZadaraCredentialsListDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
+    ZadaraCredentialsForProjectDto:
+      additionalProperties: false
+      example:
+        accessKeyId: accessKeyId
+        secretAccessKey: secretAccessKey
+        volumeType: volumeType
+        accountId: accountId
+        region: region
+        url: url
+      properties:
+        url:
+          nullable: true
+          type: string
+        volumeType:
+          nullable: true
+          type: string
+        accessKeyId:
+          nullable: true
+          type: string
+        secretAccessKey:
+          nullable: true
+          type: string
+        region:
+          nullable: true
+          type: string
+        accountId:
+          nullable: true
+          type: string
+      type: object
+    ZadaraCredentialsListDto:
+      additionalProperties: false
+      example:
+        projectCount: 6
+        projects:
+        - name: name
+          id: 0
+        - name: name
+          id: 0
+        organizationName: organizationName
+        lastModifiedBy: lastModifiedBy
+        availabilityZones:
+        - availabilityZones
+        - availabilityZones
+        organizationId: 5
+        createdAt: createdAt
+        isDefault: true
+        createdBy: createdBy
+        isLocked: true
+        name: name
+        availabilityZonesCount: 1
+        id: 0
+        lastModified: lastModified
+        region: region
+        continentName: continentName
+      properties:
+        id:
+          format: int32
+          type: integer
+        projectCount:
+          format: int32
+          type: integer
+        isLocked:
+          type: boolean
+        name:
+          nullable: true
+          type: string
+        region:
+          nullable: true
+          type: string
+        availabilityZones:
+          items:
+            type: string
+          nullable: true
+          type: array
+        availabilityZonesCount:
+          format: int32
+          type: integer
+        projects:
+          items:
+            $ref: '#/components/schemas/CommonDropdownDto'
+          nullable: true
+          type: array
+        createdBy:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        isDefault:
+          type: boolean
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        continentName:
+          nullable: true
+          type: string
+      type: object
+    ZadaraRegionListCommand:
+      additionalProperties: false
+      example:
+        zadaraAccessKeyId: zadaraAccessKeyId
+        zadaraSecretAccessKey: zadaraSecretAccessKey
+        url: url
+      properties:
+        url:
+          nullable: true
+          type: string
+        zadaraAccessKeyId:
+          nullable: true
+          type: string
+        zadaraSecretAccessKey:
           nullable: true
           type: string
       type: object

@@ -196,7 +196,7 @@ func (o *KubernetesEventCreateDto) GetMetadataOk() (*interface{}, bool) {
 
 // HasMetadata returns a boolean if a field has been set.
 func (o *KubernetesEventCreateDto) HasMetadata() bool {
-	if o != nil && IsNil(o.Metadata) {
+	if o != nil && !IsNil(o.Metadata) {
 		return true
 	}
 
@@ -229,7 +229,7 @@ func (o *KubernetesEventCreateDto) GetSourceOk() (*interface{}, bool) {
 
 // HasSource returns a boolean if a field has been set.
 func (o *KubernetesEventCreateDto) HasSource() bool {
-	if o != nil && IsNil(o.Source) {
+	if o != nil && !IsNil(o.Source) {
 		return true
 	}
 
@@ -262,7 +262,7 @@ func (o *KubernetesEventCreateDto) GetInvolvedObjectOk() (*interface{}, bool) {
 
 // HasInvolvedObject returns a boolean if a field has been set.
 func (o *KubernetesEventCreateDto) HasInvolvedObject() bool {
-	if o != nil && IsNil(o.InvolvedObject) {
+	if o != nil && !IsNil(o.InvolvedObject) {
 		return true
 	}
 

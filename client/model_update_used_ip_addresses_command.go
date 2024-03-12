@@ -61,7 +61,7 @@ func (o *UpdateUsedIpAddressesCommand) GetIpAddressOk() ([]string, bool) {
 
 // HasIpAddress returns a boolean if a field has been set.
 func (o *UpdateUsedIpAddressesCommand) HasIpAddress() bool {
-	if o != nil && IsNil(o.IpAddress) {
+	if o != nil && !IsNil(o.IpAddress) {
 		return true
 	}
 

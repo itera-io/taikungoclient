@@ -624,7 +624,7 @@ func (o *AvailablePackageDetailsDto) GetBoundCatalogsOk() ([]CommonDropdownDto, 
 
 // HasBoundCatalogs returns a boolean if a field has been set.
 func (o *AvailablePackageDetailsDto) HasBoundCatalogs() bool {
-	if o != nil && IsNil(o.BoundCatalogs) {
+	if o != nil && !IsNil(o.BoundCatalogs) {
 		return true
 	}
 

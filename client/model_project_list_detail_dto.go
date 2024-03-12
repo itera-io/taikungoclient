@@ -844,7 +844,7 @@ func (o *ProjectListDetailDto) GetBoundUsersOk() ([]UserDto, bool) {
 
 // HasBoundUsers returns a boolean if a field has been set.
 func (o *ProjectListDetailDto) HasBoundUsers() bool {
-	if o != nil && IsNil(o.BoundUsers) {
+	if o != nil && !IsNil(o.BoundUsers) {
 		return true
 	}
 

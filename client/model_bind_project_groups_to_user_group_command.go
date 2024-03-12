@@ -63,7 +63,7 @@ func (o *BindProjectGroupsToUserGroupCommand) GetProjectGroupsOk() ([]UpdateUser
 
 // HasProjectGroups returns a boolean if a field has been set.
 func (o *BindProjectGroupsToUserGroupCommand) HasProjectGroups() bool {
-	if o != nil && IsNil(o.ProjectGroups) {
+	if o != nil && !IsNil(o.ProjectGroups) {
 		return true
 	}
 

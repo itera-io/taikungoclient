@@ -628,7 +628,7 @@ func (o *CreateProjectCommand) GetFlavorsOk() ([]string, bool) {
 
 // HasFlavors returns a boolean if a field has been set.
 func (o *CreateProjectCommand) HasFlavors() bool {
-	if o != nil && IsNil(o.Flavors) {
+	if o != nil && !IsNil(o.Flavors) {
 		return true
 	}
 
@@ -661,7 +661,7 @@ func (o *CreateProjectCommand) GetUsersOk() ([]string, bool) {
 
 // HasUsers returns a boolean if a field has been set.
 func (o *CreateProjectCommand) HasUsers() bool {
-	if o != nil && IsNil(o.Users) {
+	if o != nil && !IsNil(o.Users) {
 		return true
 	}
 
@@ -1508,7 +1508,7 @@ func (o *CreateProjectCommand) GetServerTemplatesOk() ([]ServerTemplateDto, bool
 
 // HasServerTemplates returns a boolean if a field has been set.
 func (o *CreateProjectCommand) HasServerTemplates() bool {
-	if o != nil && IsNil(o.ServerTemplates) {
+	if o != nil && !IsNil(o.ServerTemplates) {
 		return true
 	}
 

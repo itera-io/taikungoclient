@@ -305,7 +305,7 @@ func (o *CreateOpaProfileCommand) GetAllowedRepoOk() ([]string, bool) {
 
 // HasAllowedRepo returns a boolean if a field has been set.
 func (o *CreateOpaProfileCommand) HasAllowedRepo() bool {
-	if o != nil && IsNil(o.AllowedRepo) {
+	if o != nil && !IsNil(o.AllowedRepo) {
 		return true
 	}
 
@@ -338,7 +338,7 @@ func (o *CreateOpaProfileCommand) GetForbidSpecificTagsOk() ([]string, bool) {
 
 // HasForbidSpecificTags returns a boolean if a field has been set.
 func (o *CreateOpaProfileCommand) HasForbidSpecificTags() bool {
-	if o != nil && IsNil(o.ForbidSpecificTags) {
+	if o != nil && !IsNil(o.ForbidSpecificTags) {
 		return true
 	}
 
@@ -371,7 +371,7 @@ func (o *CreateOpaProfileCommand) GetIngressWhitelistOk() ([]string, bool) {
 
 // HasIngressWhitelist returns a boolean if a field has been set.
 func (o *CreateOpaProfileCommand) HasIngressWhitelist() bool {
-	if o != nil && IsNil(o.IngressWhitelist) {
+	if o != nil && !IsNil(o.IngressWhitelist) {
 		return true
 	}
 

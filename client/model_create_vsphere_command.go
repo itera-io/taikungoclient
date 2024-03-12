@@ -570,7 +570,7 @@ func (o *CreateVsphereCommand) GetHypervisorsOk() ([]string, bool) {
 
 // HasHypervisors returns a boolean if a field has been set.
 func (o *CreateVsphereCommand) HasHypervisors() bool {
-	if o != nil && IsNil(o.Hypervisors) {
+	if o != nil && !IsNil(o.Hypervisors) {
 		return true
 	}
 

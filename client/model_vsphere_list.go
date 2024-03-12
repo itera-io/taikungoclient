@@ -62,7 +62,7 @@ func (o *VsphereList) GetDataOk() ([]VsphereListDto, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *VsphereList) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
