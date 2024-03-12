@@ -91,7 +91,7 @@ func (o *ServerChartDto) GetAwsOk() ([]ServerCommonRecordDto, bool) {
 
 // HasAws returns a boolean if a field has been set.
 func (o *ServerChartDto) HasAws() bool {
-	if o != nil && IsNil(o.Aws) {
+	if o != nil && !IsNil(o.Aws) {
 		return true
 	}
 
@@ -124,7 +124,7 @@ func (o *ServerChartDto) GetAzureOk() ([]ServerCommonRecordDto, bool) {
 
 // HasAzure returns a boolean if a field has been set.
 func (o *ServerChartDto) HasAzure() bool {
-	if o != nil && IsNil(o.Azure) {
+	if o != nil && !IsNil(o.Azure) {
 		return true
 	}
 
@@ -157,7 +157,7 @@ func (o *ServerChartDto) GetOpenstackOk() ([]ServerCommonRecordDto, bool) {
 
 // HasOpenstack returns a boolean if a field has been set.
 func (o *ServerChartDto) HasOpenstack() bool {
-	if o != nil && IsNil(o.Openstack) {
+	if o != nil && !IsNil(o.Openstack) {
 		return true
 	}
 
@@ -190,7 +190,7 @@ func (o *ServerChartDto) GetGoogleOk() ([]ServerCommonRecordDto, bool) {
 
 // HasGoogle returns a boolean if a field has been set.
 func (o *ServerChartDto) HasGoogle() bool {
-	if o != nil && IsNil(o.Google) {
+	if o != nil && !IsNil(o.Google) {
 		return true
 	}
 
@@ -223,7 +223,7 @@ func (o *ServerChartDto) GetTanzuOk() ([]ServerCommonRecordDto, bool) {
 
 // HasTanzu returns a boolean if a field has been set.
 func (o *ServerChartDto) HasTanzu() bool {
-	if o != nil && IsNil(o.Tanzu) {
+	if o != nil && !IsNil(o.Tanzu) {
 		return true
 	}
 
@@ -256,7 +256,7 @@ func (o *ServerChartDto) GetProxmoxOk() ([]ServerCommonRecordDto, bool) {
 
 // HasProxmox returns a boolean if a field has been set.
 func (o *ServerChartDto) HasProxmox() bool {
-	if o != nil && IsNil(o.Proxmox) {
+	if o != nil && !IsNil(o.Proxmox) {
 		return true
 	}
 
@@ -289,7 +289,7 @@ func (o *ServerChartDto) GetVsphereOk() ([]ServerCommonRecordDto, bool) {
 
 // HasVsphere returns a boolean if a field has been set.
 func (o *ServerChartDto) HasVsphere() bool {
-	if o != nil && IsNil(o.Vsphere) {
+	if o != nil && !IsNil(o.Vsphere) {
 		return true
 	}
 
@@ -322,7 +322,7 @@ func (o *ServerChartDto) GetOpenshiftOk() ([]ServerCommonRecordDto, bool) {
 
 // HasOpenshift returns a boolean if a field has been set.
 func (o *ServerChartDto) HasOpenshift() bool {
-	if o != nil && IsNil(o.Openshift) {
+	if o != nil && !IsNil(o.Openshift) {
 		return true
 	}
 
@@ -355,7 +355,7 @@ func (o *ServerChartDto) GetFailedOk() ([]ServerCommonRecordDto, bool) {
 
 // HasFailed returns a boolean if a field has been set.
 func (o *ServerChartDto) HasFailed() bool {
-	if o != nil && IsNil(o.Failed) {
+	if o != nil && !IsNil(o.Failed) {
 		return true
 	}
 
@@ -388,7 +388,7 @@ func (o *ServerChartDto) GetSucceededOk() ([]ServerCommonRecordDto, bool) {
 
 // HasSucceeded returns a boolean if a field has been set.
 func (o *ServerChartDto) HasSucceeded() bool {
-	if o != nil && IsNil(o.Succeeded) {
+	if o != nil && !IsNil(o.Succeeded) {
 		return true
 	}
 
@@ -421,7 +421,7 @@ func (o *ServerChartDto) GetWaitingOk() ([]ServerCommonRecordDto, bool) {
 
 // HasWaiting returns a boolean if a field has been set.
 func (o *ServerChartDto) HasWaiting() bool {
-	if o != nil && IsNil(o.Waiting) {
+	if o != nil && !IsNil(o.Waiting) {
 		return true
 	}
 
@@ -454,7 +454,7 @@ func (o *ServerChartDto) GetUpdatingOk() ([]ServerCommonRecordDto, bool) {
 
 // HasUpdating returns a boolean if a field has been set.
 func (o *ServerChartDto) HasUpdating() bool {
-	if o != nil && IsNil(o.Updating) {
+	if o != nil && !IsNil(o.Updating) {
 		return true
 	}
 
@@ -487,7 +487,7 @@ func (o *ServerChartDto) GetDeletingOk() ([]ServerCommonRecordDto, bool) {
 
 // HasDeleting returns a boolean if a field has been set.
 func (o *ServerChartDto) HasDeleting() bool {
-	if o != nil && IsNil(o.Deleting) {
+	if o != nil && !IsNil(o.Deleting) {
 		return true
 	}
 
@@ -520,7 +520,7 @@ func (o *ServerChartDto) GetPurgingOk() ([]ServerCommonRecordDto, bool) {
 
 // HasPurging returns a boolean if a field has been set.
 func (o *ServerChartDto) HasPurging() bool {
-	if o != nil && IsNil(o.Purging) {
+	if o != nil && !IsNil(o.Purging) {
 		return true
 	}
 
@@ -1065,7 +1065,7 @@ func (o *ServerChartDto) GetUsedResourcesOk() ([]UserResourceChartDto, bool) {
 
 // HasUsedResources returns a boolean if a field has been set.
 func (o *ServerChartDto) HasUsedResources() bool {
-	if o != nil && IsNil(o.UsedResources) {
+	if o != nil && !IsNil(o.UsedResources) {
 		return true
 	}
 

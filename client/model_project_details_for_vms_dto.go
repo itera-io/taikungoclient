@@ -803,7 +803,7 @@ func (o *ProjectDetailsForVmsDto) GetAvailabilityZonesOk() ([]string, bool) {
 
 // HasAvailabilityZones returns a boolean if a field has been set.
 func (o *ProjectDetailsForVmsDto) HasAvailabilityZones() bool {
-	if o != nil && IsNil(o.AvailabilityZones) {
+	if o != nil && !IsNil(o.AvailabilityZones) {
 		return true
 	}
 
@@ -836,7 +836,7 @@ func (o *ProjectDetailsForVmsDto) GetHypervisorsOk() ([]string, bool) {
 
 // HasHypervisors returns a boolean if a field has been set.
 func (o *ProjectDetailsForVmsDto) HasHypervisors() bool {
-	if o != nil && IsNil(o.Hypervisors) {
+	if o != nil && !IsNil(o.Hypervisors) {
 		return true
 	}
 

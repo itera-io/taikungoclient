@@ -94,7 +94,7 @@ func (o *ProjectDetailsErrorListDto) GetMessageOk() ([]string, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *ProjectDetailsErrorListDto) HasMessage() bool {
-	if o != nil && IsNil(o.Message) {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 

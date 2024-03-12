@@ -94,7 +94,7 @@ func (o *DeleteStandAloneVmDiskCommand) GetVmDiskIdsOk() ([]int32, bool) {
 
 // HasVmDiskIds returns a boolean if a field has been set.
 func (o *DeleteStandAloneVmDiskCommand) HasVmDiskIds() bool {
-	if o != nil && IsNil(o.VmDiskIds) {
+	if o != nil && !IsNil(o.VmDiskIds) {
 		return true
 	}
 

@@ -213,7 +213,7 @@ func (o *ApiResponse) GetResultOk() (*interface{}, bool) {
 
 // HasResult returns a boolean if a field has been set.
 func (o *ApiResponse) HasResult() bool {
-	if o != nil && IsNil(o.Result) {
+	if o != nil && !IsNil(o.Result) {
 		return true
 	}
 

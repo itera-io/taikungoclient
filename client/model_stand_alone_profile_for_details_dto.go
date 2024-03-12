@@ -180,7 +180,7 @@ func (o *StandAloneProfileForDetailsDto) GetSecurityGroupsOk() ([]StandAloneProf
 
 // HasSecurityGroups returns a boolean if a field has been set.
 func (o *StandAloneProfileForDetailsDto) HasSecurityGroups() bool {
-	if o != nil && IsNil(o.SecurityGroups) {
+	if o != nil && !IsNil(o.SecurityGroups) {
 		return true
 	}
 

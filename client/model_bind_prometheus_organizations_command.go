@@ -62,7 +62,7 @@ func (o *BindPrometheusOrganizationsCommand) GetOrganizationsOk() ([]BindOrganiz
 
 // HasOrganizations returns a boolean if a field has been set.
 func (o *BindPrometheusOrganizationsCommand) HasOrganizations() bool {
-	if o != nil && IsNil(o.Organizations) {
+	if o != nil && !IsNil(o.Organizations) {
 		return true
 	}
 

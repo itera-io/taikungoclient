@@ -61,7 +61,7 @@ func (o *BindAppRepositoryCommand) GetFilteringElementsOk() ([]FilteringElementD
 
 // HasFilteringElements returns a boolean if a field has been set.
 func (o *BindAppRepositoryCommand) HasFilteringElements() bool {
-	if o != nil && IsNil(o.FilteringElements) {
+	if o != nil && !IsNil(o.FilteringElements) {
 		return true
 	}
 

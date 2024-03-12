@@ -137,7 +137,7 @@ func (o *CatalogDropdownDto) GetPackageIdsOk() ([]string, bool) {
 
 // HasPackageIds returns a boolean if a field has been set.
 func (o *CatalogDropdownDto) HasPackageIds() bool {
-	if o != nil && IsNil(o.PackageIds) {
+	if o != nil && !IsNil(o.PackageIds) {
 		return true
 	}
 

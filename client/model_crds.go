@@ -62,7 +62,7 @@ func (o *Crds) GetDataOk() ([]CrdListDto, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *Crds) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

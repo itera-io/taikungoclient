@@ -217,7 +217,7 @@ func (o *StandAloneProfilesListDto) GetStandaloneVmsOk() ([]StandAloneVmSmallDet
 
 // HasStandaloneVms returns a boolean if a field has been set.
 func (o *StandAloneProfilesListDto) HasStandaloneVms() bool {
-	if o != nil && IsNil(o.StandaloneVms) {
+	if o != nil && !IsNil(o.StandaloneVms) {
 		return true
 	}
 

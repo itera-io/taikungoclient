@@ -233,7 +233,7 @@ func (o *ServiceDto) GetIpOk() (*interface{}, bool) {
 
 // HasIp returns a boolean if a field has been set.
 func (o *ServiceDto) HasIp() bool {
-	if o != nil && IsNil(o.Ip) {
+	if o != nil && !IsNil(o.Ip) {
 		return true
 	}
 

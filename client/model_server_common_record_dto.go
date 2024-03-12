@@ -137,7 +137,7 @@ func (o *ServerCommonRecordDto) GetNamesOk() ([]string, bool) {
 
 // HasNames returns a boolean if a field has been set.
 func (o *ServerCommonRecordDto) HasNames() bool {
-	if o != nil && IsNil(o.Names) {
+	if o != nil && !IsNil(o.Names) {
 		return true
 	}
 

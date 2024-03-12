@@ -221,7 +221,7 @@ func (o *VsphereListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 
 // HasProjects returns a boolean if a field has been set.
 func (o *VsphereListDto) HasProjects() bool {
-	if o != nil && IsNil(o.Projects) {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 
@@ -602,7 +602,7 @@ func (o *VsphereListDto) GetHypervisorsOk() ([]CommonStringBasedDropdownDto, boo
 
 // HasHypervisors returns a boolean if a field has been set.
 func (o *VsphereListDto) HasHypervisors() bool {
-	if o != nil && IsNil(o.Hypervisors) {
+	if o != nil && !IsNil(o.Hypervisors) {
 		return true
 	}
 
@@ -929,7 +929,7 @@ func (o *VsphereListDto) GetVsphereNetworksOk() ([]VsphereNetworkListDto, bool) 
 
 // HasVsphereNetworks returns a boolean if a field has been set.
 func (o *VsphereListDto) HasVsphereNetworks() bool {
-	if o != nil && IsNil(o.VsphereNetworks) {
+	if o != nil && !IsNil(o.VsphereNetworks) {
 		return true
 	}
 

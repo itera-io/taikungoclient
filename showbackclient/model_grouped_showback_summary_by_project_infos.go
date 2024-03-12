@@ -64,7 +64,7 @@ func (o *GroupedShowbackSummaryByProjectInfos) GetDataOk() ([]GroupedShowbackSum
 
 // HasData returns a boolean if a field has been set.
 func (o *GroupedShowbackSummaryByProjectInfos) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

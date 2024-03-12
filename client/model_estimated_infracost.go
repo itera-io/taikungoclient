@@ -63,7 +63,7 @@ func (o *EstimatedInfracost) GetResourcesOk() ([]Resource, bool) {
 
 // HasResources returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasResources() bool {
-	if o != nil && IsNil(o.Resources) {
+	if o != nil && !IsNil(o.Resources) {
 		return true
 	}
 

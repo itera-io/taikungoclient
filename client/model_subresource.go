@@ -223,7 +223,7 @@ func (o *Subresource) GetCostComponentsOk() ([]CostComponent, bool) {
 
 // HasCostComponents returns a boolean if a field has been set.
 func (o *Subresource) HasCostComponents() bool {
-	if o != nil && IsNil(o.CostComponents) {
+	if o != nil && !IsNil(o.CostComponents) {
 		return true
 	}
 

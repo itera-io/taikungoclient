@@ -150,7 +150,7 @@ func (o *PodDisruptionDto) GetMinAvailableOk() (*interface{}, bool) {
 
 // HasMinAvailable returns a boolean if a field has been set.
 func (o *PodDisruptionDto) HasMinAvailable() bool {
-	if o != nil && IsNil(o.MinAvailable) {
+	if o != nil && !IsNil(o.MinAvailable) {
 		return true
 	}
 
@@ -183,7 +183,7 @@ func (o *PodDisruptionDto) GetMaxAvailableOk() (*interface{}, bool) {
 
 // HasMaxAvailable returns a boolean if a field has been set.
 func (o *PodDisruptionDto) HasMaxAvailable() bool {
-	if o != nil && IsNil(o.MaxAvailable) {
+	if o != nil && !IsNil(o.MaxAvailable) {
 		return true
 	}
 
@@ -216,7 +216,7 @@ func (o *PodDisruptionDto) GetAllowedDisruptionsOk() (*interface{}, bool) {
 
 // HasAllowedDisruptions returns a boolean if a field has been set.
 func (o *PodDisruptionDto) HasAllowedDisruptions() bool {
-	if o != nil && IsNil(o.AllowedDisruptions) {
+	if o != nil && !IsNil(o.AllowedDisruptions) {
 		return true
 	}
 

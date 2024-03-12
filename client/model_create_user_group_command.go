@@ -147,7 +147,7 @@ func (o *CreateUserGroupCommand) GetUserIdsOk() ([]string, bool) {
 
 // HasUserIds returns a boolean if a field has been set.
 func (o *CreateUserGroupCommand) HasUserIds() bool {
-	if o != nil && IsNil(o.UserIds) {
+	if o != nil && !IsNil(o.UserIds) {
 		return true
 	}
 

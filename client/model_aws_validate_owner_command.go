@@ -94,7 +94,7 @@ func (o *AwsValidateOwnerCommand) GetOwnersOk() ([]string, bool) {
 
 // HasOwners returns a boolean if a field has been set.
 func (o *AwsValidateOwnerCommand) HasOwners() bool {
-	if o != nil && IsNil(o.Owners) {
+	if o != nil && !IsNil(o.Owners) {
 		return true
 	}
 

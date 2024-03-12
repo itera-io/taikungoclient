@@ -174,7 +174,7 @@ func (o *AwsFlavorListDto) GetDescriptionOk() (*interface{}, bool) {
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AwsFlavorListDto) HasDescription() bool {
-	if o != nil && IsNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 

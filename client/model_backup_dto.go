@@ -62,7 +62,7 @@ func (o *BackupDto) GetIncludedNamespaceOk() ([]string, bool) {
 
 // HasIncludedNamespace returns a boolean if a field has been set.
 func (o *BackupDto) HasIncludedNamespace() bool {
-	if o != nil && IsNil(o.IncludedNamespace) {
+	if o != nil && !IsNil(o.IncludedNamespace) {
 		return true
 	}
 
@@ -95,7 +95,7 @@ func (o *BackupDto) GetExcludedNamespaceOk() ([]string, bool) {
 
 // HasExcludedNamespace returns a boolean if a field has been set.
 func (o *BackupDto) HasExcludedNamespace() bool {
-	if o != nil && IsNil(o.ExcludedNamespace) {
+	if o != nil && !IsNil(o.ExcludedNamespace) {
 		return true
 	}
 

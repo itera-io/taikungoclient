@@ -62,7 +62,7 @@ func (o *BackupCredentials) GetDataOk() ([]BackupCredentialsListDto, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *BackupCredentials) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

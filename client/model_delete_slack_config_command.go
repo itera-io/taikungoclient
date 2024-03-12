@@ -61,7 +61,7 @@ func (o *DeleteSlackConfigCommand) GetIdsOk() ([]int32, bool) {
 
 // HasIds returns a boolean if a field has been set.
 func (o *DeleteSlackConfigCommand) HasIds() bool {
-	if o != nil && IsNil(o.Ids) {
+	if o != nil && !IsNil(o.Ids) {
 		return true
 	}
 

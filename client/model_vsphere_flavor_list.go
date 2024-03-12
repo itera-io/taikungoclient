@@ -62,7 +62,7 @@ func (o *VsphereFlavorList) GetDataOk() ([]VsphereFlavorData, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *VsphereFlavorList) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

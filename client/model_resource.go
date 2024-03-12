@@ -224,7 +224,7 @@ func (o *Resource) GetCostComponentsOk() ([]CostComponent, bool) {
 
 // HasCostComponents returns a boolean if a field has been set.
 func (o *Resource) HasCostComponents() bool {
-	if o != nil && IsNil(o.CostComponents) {
+	if o != nil && !IsNil(o.CostComponents) {
 		return true
 	}
 
@@ -257,7 +257,7 @@ func (o *Resource) GetSubresourcesOk() ([]Subresource, bool) {
 
 // HasSubresources returns a boolean if a field has been set.
 func (o *Resource) HasSubresources() bool {
-	if o != nil && IsNil(o.Subresources) {
+	if o != nil && !IsNil(o.Subresources) {
 		return true
 	}
 

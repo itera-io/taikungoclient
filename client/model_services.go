@@ -62,7 +62,7 @@ func (o *Services) GetDataOk() ([]ServiceDto, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *Services) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

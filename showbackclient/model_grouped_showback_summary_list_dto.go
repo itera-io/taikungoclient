@@ -171,7 +171,7 @@ func (o *GroupedShowbackSummaryListDto) GetProjectsOk() ([]GroupedProjectForShow
 
 // HasProjects returns a boolean if a field has been set.
 func (o *GroupedShowbackSummaryListDto) HasProjects() bool {
-	if o != nil && IsNil(o.Projects) {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 

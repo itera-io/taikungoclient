@@ -289,7 +289,7 @@ func (o *CreateProjectAppCommand) GetParametersOk() ([]ProjectAppParamsDto, bool
 
 // HasParameters returns a boolean if a field has been set.
 func (o *CreateProjectAppCommand) HasParameters() bool {
-	if o != nil && IsNil(o.Parameters) {
+	if o != nil && !IsNil(o.Parameters) {
 		return true
 	}
 

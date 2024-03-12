@@ -469,7 +469,7 @@ func (o *CatalogAppDetailsDto) GetProjectAppsOk() ([]ProjectAppDto, bool) {
 
 // HasProjectApps returns a boolean if a field has been set.
 func (o *CatalogAppDetailsDto) HasProjectApps() bool {
-	if o != nil && IsNil(o.ProjectApps) {
+	if o != nil && !IsNil(o.ProjectApps) {
 		return true
 	}
 

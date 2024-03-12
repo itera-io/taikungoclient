@@ -104,7 +104,7 @@ func (o *PrometheusDashboardListDto) GetDataOk() ([]PrometheusDashboardDto, bool
 
 // HasData returns a boolean if a field has been set.
 func (o *PrometheusDashboardListDto) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

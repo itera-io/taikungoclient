@@ -973,7 +973,7 @@ func (o *OrganizationDetailsDto) GetBoundRulesOk() ([]PrometheusEntity, bool) {
 
 // HasBoundRules returns a boolean if a field has been set.
 func (o *OrganizationDetailsDto) HasBoundRules() bool {
-	if o != nil && IsNil(o.BoundRules) {
+	if o != nil && !IsNil(o.BoundRules) {
 		return true
 	}
 

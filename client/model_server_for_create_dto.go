@@ -584,7 +584,7 @@ func (o *ServerForCreateDto) GetKubernetesNodeLabelsOk() ([]KubernetesNodeLabels
 
 // HasKubernetesNodeLabels returns a boolean if a field has been set.
 func (o *ServerForCreateDto) HasKubernetesNodeLabels() bool {
-	if o != nil && IsNil(o.KubernetesNodeLabels) {
+	if o != nil && !IsNil(o.KubernetesNodeLabels) {
 		return true
 	}
 
