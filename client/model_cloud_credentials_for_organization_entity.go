@@ -97,7 +97,7 @@ func (o *CloudCredentialsForOrganizationEntity) GetProjectsOk() ([]CommonDropdow
 
 // HasProjects returns a boolean if a field has been set.
 func (o *CloudCredentialsForOrganizationEntity) HasProjects() bool {
-	if o != nil && IsNil(o.Projects) {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 

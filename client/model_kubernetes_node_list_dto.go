@@ -107,7 +107,7 @@ func (o *KubernetesNodeListDto) GetTypeOk() ([]string, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *KubernetesNodeListDto) HasType() bool {
-	if o != nil && IsNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -140,7 +140,7 @@ func (o *KubernetesNodeListDto) GetStatusOk() ([]string, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *KubernetesNodeListDto) HasStatus() bool {
-	if o != nil && IsNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -173,7 +173,7 @@ func (o *KubernetesNodeListDto) GetReasonOk() ([]string, bool) {
 
 // HasReason returns a boolean if a field has been set.
 func (o *KubernetesNodeListDto) HasReason() bool {
-	if o != nil && IsNil(o.Reason) {
+	if o != nil && !IsNil(o.Reason) {
 		return true
 	}
 
@@ -206,7 +206,7 @@ func (o *KubernetesNodeListDto) GetMessageOk() ([]string, bool) {
 
 // HasMessage returns a boolean if a field has been set.
 func (o *KubernetesNodeListDto) HasMessage() bool {
-	if o != nil && IsNil(o.Message) {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 

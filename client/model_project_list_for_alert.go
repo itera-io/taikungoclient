@@ -464,7 +464,7 @@ func (o *ProjectListForAlert) GetKubernetesAlertsOk() ([]KubernetesAlertDtoForPo
 
 // HasKubernetesAlerts returns a boolean if a field has been set.
 func (o *ProjectListForAlert) HasKubernetesAlerts() bool {
-	if o != nil && IsNil(o.KubernetesAlerts) {
+	if o != nil && !IsNil(o.KubernetesAlerts) {
 		return true
 	}
 

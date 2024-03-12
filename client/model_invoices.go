@@ -62,7 +62,7 @@ func (o *Invoices) GetDataOk() ([]InvoiceListDto, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *Invoices) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

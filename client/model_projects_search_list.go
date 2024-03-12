@@ -62,7 +62,7 @@ func (o *ProjectsSearchList) GetDataOk() ([]CommonSearchResponseData, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *ProjectsSearchList) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

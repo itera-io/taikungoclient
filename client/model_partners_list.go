@@ -62,7 +62,7 @@ func (o *PartnersList) GetDataOk() ([]PartnerDetailsDto, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *PartnersList) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

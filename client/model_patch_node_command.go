@@ -137,7 +137,7 @@ func (o *PatchNodeCommand) GetParametersOk() ([]PatchNodeLabelsDto, bool) {
 
 // HasParameters returns a boolean if a field has been set.
 func (o *PatchNodeCommand) HasParameters() bool {
-	if o != nil && IsNil(o.Parameters) {
+	if o != nil && !IsNil(o.Parameters) {
 		return true
 	}
 

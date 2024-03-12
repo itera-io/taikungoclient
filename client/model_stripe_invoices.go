@@ -61,7 +61,7 @@ func (o *StripeInvoices) GetDataOk() ([]StripeInvoiceListDto, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *StripeInvoices) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

@@ -64,7 +64,7 @@ func (o *HelmStatus) GetConditionsOk() ([]Condition, bool) {
 
 // HasConditions returns a boolean if a field has been set.
 func (o *HelmStatus) HasConditions() bool {
-	if o != nil && IsNil(o.Conditions) {
+	if o != nil && !IsNil(o.Conditions) {
 		return true
 	}
 

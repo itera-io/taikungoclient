@@ -61,7 +61,7 @@ func (o *GroupedShowbackByProjectList) GetByProjectsOk() ([]GroupedShowbackSumma
 
 // HasByProjects returns a boolean if a field has been set.
 func (o *GroupedShowbackByProjectList) HasByProjects() bool {
-	if o != nil && IsNil(o.ByProjects) {
+	if o != nil && !IsNil(o.ByProjects) {
 		return true
 	}
 

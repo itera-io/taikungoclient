@@ -62,7 +62,7 @@ func (o *ServiceSearchList) GetDataOk() ([]CommonSearchKubernetesResponseData, b
 
 // HasData returns a boolean if a field has been set.
 func (o *ServiceSearchList) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

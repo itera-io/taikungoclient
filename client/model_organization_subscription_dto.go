@@ -409,7 +409,7 @@ func (o *OrganizationSubscriptionDto) GetInvoicesOk() ([]InvoiceDto, bool) {
 
 // HasInvoices returns a boolean if a field has been set.
 func (o *OrganizationSubscriptionDto) HasInvoices() bool {
-	if o != nil && IsNil(o.Invoices) {
+	if o != nil && !IsNil(o.Invoices) {
 		return true
 	}
 

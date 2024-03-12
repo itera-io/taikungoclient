@@ -62,7 +62,7 @@ func (o *WhiteListDomainCreateCommand) GetWhiteListDomainsOk() ([]WhiteListDomai
 
 // HasWhiteListDomains returns a boolean if a field has been set.
 func (o *WhiteListDomainCreateCommand) HasWhiteListDomains() bool {
-	if o != nil && IsNil(o.WhiteListDomains) {
+	if o != nil && !IsNil(o.WhiteListDomains) {
 		return true
 	}
 

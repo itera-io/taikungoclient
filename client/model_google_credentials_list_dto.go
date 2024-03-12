@@ -152,7 +152,7 @@ func (o *GoogleCredentialsListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 
 // HasProjects returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasProjects() bool {
-	if o != nil && IsNil(o.Projects) {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 
@@ -469,7 +469,7 @@ func (o *GoogleCredentialsListDto) GetZonesOk() ([]string, bool) {
 
 // HasZones returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasZones() bool {
-	if o != nil && IsNil(o.Zones) {
+	if o != nil && !IsNil(o.Zones) {
 		return true
 	}
 

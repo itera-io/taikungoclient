@@ -407,7 +407,7 @@ func (o *CreateProxmoxCommand) GetHypervisorsOk() ([]string, bool) {
 
 // HasHypervisors returns a boolean if a field has been set.
 func (o *CreateProxmoxCommand) HasHypervisors() bool {
-	if o != nil && IsNil(o.Hypervisors) {
+	if o != nil && !IsNil(o.Hypervisors) {
 		return true
 	}
 

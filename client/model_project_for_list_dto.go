@@ -1278,7 +1278,7 @@ func (o *ProjectForListDto) GetFlavorsOk() ([]string, bool) {
 
 // HasFlavors returns a boolean if a field has been set.
 func (o *ProjectForListDto) HasFlavors() bool {
-	if o != nil && IsNil(o.Flavors) {
+	if o != nil && !IsNil(o.Flavors) {
 		return true
 	}
 
@@ -1839,7 +1839,7 @@ func (o *ProjectForListDto) GetKubevapEnabeledKubernetesVersionsOk() ([]string, 
 
 // HasKubevapEnabeledKubernetesVersions returns a boolean if a field has been set.
 func (o *ProjectForListDto) HasKubevapEnabeledKubernetesVersions() bool {
-	if o != nil && IsNil(o.KubevapEnabeledKubernetesVersions) {
+	if o != nil && !IsNil(o.KubevapEnabeledKubernetesVersions) {
 		return true
 	}
 
@@ -1872,7 +1872,7 @@ func (o *ProjectForListDto) GetAwsProjectAZSubnetsOk() ([]AwsProjectAZSubnetDto,
 
 // HasAwsProjectAZSubnets returns a boolean if a field has been set.
 func (o *ProjectForListDto) HasAwsProjectAZSubnets() bool {
-	if o != nil && IsNil(o.AwsProjectAZSubnets) {
+	if o != nil && !IsNil(o.AwsProjectAZSubnets) {
 		return true
 	}
 
@@ -1905,7 +1905,7 @@ func (o *ProjectForListDto) GetAvailabilityZonesOk() ([]string, bool) {
 
 // HasAvailabilityZones returns a boolean if a field has been set.
 func (o *ProjectForListDto) HasAvailabilityZones() bool {
-	if o != nil && IsNil(o.AvailabilityZones) {
+	if o != nil && !IsNil(o.AvailabilityZones) {
 		return true
 	}
 

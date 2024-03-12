@@ -61,7 +61,7 @@ func (o *DeleteUserGroupCommand) GetUserGroupIdsOk() ([]int32, bool) {
 
 // HasUserGroupIds returns a boolean if a field has been set.
 func (o *DeleteUserGroupCommand) HasUserGroupIds() bool {
-	if o != nil && IsNil(o.UserGroupIds) {
+	if o != nil && !IsNil(o.UserGroupIds) {
 		return true
 	}
 

@@ -302,7 +302,7 @@ func (o *AccessProfilesForProjectListDto) GetSshUsersOk() ([]SshUserListDto, boo
 
 // HasSshUsers returns a boolean if a field has been set.
 func (o *AccessProfilesForProjectListDto) HasSshUsers() bool {
-	if o != nil && IsNil(o.SshUsers) {
+	if o != nil && !IsNil(o.SshUsers) {
 		return true
 	}
 
@@ -335,7 +335,7 @@ func (o *AccessProfilesForProjectListDto) GetDnsServersOk() ([]DnsServerListDto,
 
 // HasDnsServers returns a boolean if a field has been set.
 func (o *AccessProfilesForProjectListDto) HasDnsServers() bool {
-	if o != nil && IsNil(o.DnsServers) {
+	if o != nil && !IsNil(o.DnsServers) {
 		return true
 	}
 
@@ -368,7 +368,7 @@ func (o *AccessProfilesForProjectListDto) GetNtpServersOk() ([]NtpServerListDto,
 
 // HasNtpServers returns a boolean if a field has been set.
 func (o *AccessProfilesForProjectListDto) HasNtpServers() bool {
-	if o != nil && IsNil(o.NtpServers) {
+	if o != nil && !IsNil(o.NtpServers) {
 		return true
 	}
 
@@ -401,7 +401,7 @@ func (o *AccessProfilesForProjectListDto) GetAllowedHostsOk() ([]AllowedHostList
 
 // HasAllowedHosts returns a boolean if a field has been set.
 func (o *AccessProfilesForProjectListDto) HasAllowedHosts() bool {
-	if o != nil && IsNil(o.AllowedHosts) {
+	if o != nil && !IsNil(o.AllowedHosts) {
 		return true
 	}
 

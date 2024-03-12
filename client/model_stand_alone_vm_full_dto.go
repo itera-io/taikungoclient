@@ -795,7 +795,7 @@ func (o *StandAloneVmFullDto) GetStandAloneVmDisksOk() ([]StandAloneVmDiskFullDt
 
 // HasStandAloneVmDisks returns a boolean if a field has been set.
 func (o *StandAloneVmFullDto) HasStandAloneVmDisks() bool {
-	if o != nil && IsNil(o.StandAloneVmDisks) {
+	if o != nil && !IsNil(o.StandAloneVmDisks) {
 		return true
 	}
 

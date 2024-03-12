@@ -61,7 +61,7 @@ func (o *GroupedShowbackByLabelList) GetByLabelValuesOk() ([]GroupedShowbackSumm
 
 // HasByLabelValues returns a boolean if a field has been set.
 func (o *GroupedShowbackByLabelList) HasByLabelValues() bool {
-	if o != nil && IsNil(o.ByLabelValues) {
+	if o != nil && !IsNil(o.ByLabelValues) {
 		return true
 	}
 

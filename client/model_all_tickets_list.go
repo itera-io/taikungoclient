@@ -62,7 +62,7 @@ func (o *AllTicketsList) GetDataOk() ([]AllTicketsDto, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *AllTicketsList) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

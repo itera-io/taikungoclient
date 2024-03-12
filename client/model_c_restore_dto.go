@@ -240,7 +240,7 @@ func (o *CRestoreDto) GetExcludeNamespacesOk() ([]string, bool) {
 
 // HasExcludeNamespaces returns a boolean if a field has been set.
 func (o *CRestoreDto) HasExcludeNamespaces() bool {
-	if o != nil && IsNil(o.ExcludeNamespaces) {
+	if o != nil && !IsNil(o.ExcludeNamespaces) {
 		return true
 	}
 
@@ -273,7 +273,7 @@ func (o *CRestoreDto) GetIncludeNamespacesOk() ([]string, bool) {
 
 // HasIncludeNamespaces returns a boolean if a field has been set.
 func (o *CRestoreDto) HasIncludeNamespaces() bool {
-	if o != nil && IsNil(o.IncludeNamespaces) {
+	if o != nil && !IsNil(o.IncludeNamespaces) {
 		return true
 	}
 

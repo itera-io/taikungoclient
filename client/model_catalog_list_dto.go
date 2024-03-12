@@ -248,7 +248,7 @@ func (o *CatalogListDto) GetPackageIdsOk() ([]string, bool) {
 
 // HasPackageIds returns a boolean if a field has been set.
 func (o *CatalogListDto) HasPackageIds() bool {
-	if o != nil && IsNil(o.PackageIds) {
+	if o != nil && !IsNil(o.PackageIds) {
 		return true
 	}
 
@@ -281,7 +281,7 @@ func (o *CatalogListDto) GetBoundProjectsOk() ([]CommonDropdownDto, bool) {
 
 // HasBoundProjects returns a boolean if a field has been set.
 func (o *CatalogListDto) HasBoundProjects() bool {
-	if o != nil && IsNil(o.BoundProjects) {
+	if o != nil && !IsNil(o.BoundProjects) {
 		return true
 	}
 
@@ -314,7 +314,7 @@ func (o *CatalogListDto) GetBoundApplicationsOk() ([]AvailablePackagesDto, bool)
 
 // HasBoundApplications returns a boolean if a field has been set.
 func (o *CatalogListDto) HasBoundApplications() bool {
-	if o != nil && IsNil(o.BoundApplications) {
+	if o != nil && !IsNil(o.BoundApplications) {
 		return true
 	}
 

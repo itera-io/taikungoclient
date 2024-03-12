@@ -182,7 +182,7 @@ func (o *UserTokenCreateCommand) GetEndpointsOk() ([]AvailableEndpointData, bool
 
 // HasEndpoints returns a boolean if a field has been set.
 func (o *UserTokenCreateCommand) HasEndpoints() bool {
-	if o != nil && IsNil(o.Endpoints) {
+	if o != nil && !IsNil(o.Endpoints) {
 		return true
 	}
 

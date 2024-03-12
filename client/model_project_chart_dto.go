@@ -67,7 +67,7 @@ func (o *ProjectChartDto) GetSucceededOk() ([]ProjectCommonRecordDto, bool) {
 
 // HasSucceeded returns a boolean if a field has been set.
 func (o *ProjectChartDto) HasSucceeded() bool {
-	if o != nil && IsNil(o.Succeeded) {
+	if o != nil && !IsNil(o.Succeeded) {
 		return true
 	}
 
@@ -100,7 +100,7 @@ func (o *ProjectChartDto) GetPendingOk() ([]ProjectCommonRecordDto, bool) {
 
 // HasPending returns a boolean if a field has been set.
 func (o *ProjectChartDto) HasPending() bool {
-	if o != nil && IsNil(o.Pending) {
+	if o != nil && !IsNil(o.Pending) {
 		return true
 	}
 
@@ -133,7 +133,7 @@ func (o *ProjectChartDto) GetUpdatingOk() ([]ProjectCommonRecordDto, bool) {
 
 // HasUpdating returns a boolean if a field has been set.
 func (o *ProjectChartDto) HasUpdating() bool {
-	if o != nil && IsNil(o.Updating) {
+	if o != nil && !IsNil(o.Updating) {
 		return true
 	}
 
@@ -198,7 +198,7 @@ func (o *ProjectChartDto) GetFailedOk() ([]ProjectCommonRecordDto, bool) {
 
 // HasFailed returns a boolean if a field has been set.
 func (o *ProjectChartDto) HasFailed() bool {
-	if o != nil && IsNil(o.Failed) {
+	if o != nil && !IsNil(o.Failed) {
 		return true
 	}
 
@@ -231,7 +231,7 @@ func (o *ProjectChartDto) GetPurgingOk() ([]ProjectCommonRecordDto, bool) {
 
 // HasPurging returns a boolean if a field has been set.
 func (o *ProjectChartDto) HasPurging() bool {
-	if o != nil && IsNil(o.Purging) {
+	if o != nil && !IsNil(o.Purging) {
 		return true
 	}
 
@@ -264,7 +264,7 @@ func (o *ProjectChartDto) GetDeletingOk() ([]ProjectCommonRecordDto, bool) {
 
 // HasDeleting returns a boolean if a field has been set.
 func (o *ProjectChartDto) HasDeleting() bool {
-	if o != nil && IsNil(o.Deleting) {
+	if o != nil && !IsNil(o.Deleting) {
 		return true
 	}
 

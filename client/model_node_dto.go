@@ -65,7 +65,7 @@ func (o *NodeDto) GetMetadataNameOk() (*interface{}, bool) {
 
 // HasMetadataName returns a boolean if a field has been set.
 func (o *NodeDto) HasMetadataName() bool {
-	if o != nil && IsNil(o.MetadataName) {
+	if o != nil && !IsNil(o.MetadataName) {
 		return true
 	}
 
@@ -98,7 +98,7 @@ func (o *NodeDto) GetKubeletReadyOk() (*interface{}, bool) {
 
 // HasKubeletReady returns a boolean if a field has been set.
 func (o *NodeDto) HasKubeletReady() bool {
-	if o != nil && IsNil(o.KubeletReady) {
+	if o != nil && !IsNil(o.KubeletReady) {
 		return true
 	}
 
@@ -131,7 +131,7 @@ func (o *NodeDto) GetKubeletSufficientOk() (*interface{}, bool) {
 
 // HasKubeletSufficient returns a boolean if a field has been set.
 func (o *NodeDto) HasKubeletSufficient() bool {
-	if o != nil && IsNil(o.KubeletSufficient) {
+	if o != nil && !IsNil(o.KubeletSufficient) {
 		return true
 	}
 
@@ -164,7 +164,7 @@ func (o *NodeDto) GetKubeletDiskPressureOk() (*interface{}, bool) {
 
 // HasKubeletDiskPressure returns a boolean if a field has been set.
 func (o *NodeDto) HasKubeletDiskPressure() bool {
-	if o != nil && IsNil(o.KubeletDiskPressure) {
+	if o != nil && !IsNil(o.KubeletDiskPressure) {
 		return true
 	}
 
@@ -197,7 +197,7 @@ func (o *NodeDto) GetKubeletMemoryOk() (*interface{}, bool) {
 
 // HasKubeletMemory returns a boolean if a field has been set.
 func (o *NodeDto) HasKubeletMemory() bool {
-	if o != nil && IsNil(o.KubeletMemory) {
+	if o != nil && !IsNil(o.KubeletMemory) {
 		return true
 	}
 

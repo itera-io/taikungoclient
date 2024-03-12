@@ -397,7 +397,7 @@ func (o *CScheduleDto) GetExcludedNamespacesOk() ([]string, bool) {
 
 // HasExcludedNamespaces returns a boolean if a field has been set.
 func (o *CScheduleDto) HasExcludedNamespaces() bool {
-	if o != nil && IsNil(o.ExcludedNamespaces) {
+	if o != nil && !IsNil(o.ExcludedNamespaces) {
 		return true
 	}
 
@@ -430,7 +430,7 @@ func (o *CScheduleDto) GetIncludedNamespacesOk() ([]string, bool) {
 
 // HasIncludedNamespaces returns a boolean if a field has been set.
 func (o *CScheduleDto) HasIncludedNamespaces() bool {
-	if o != nil && IsNil(o.IncludedNamespaces) {
+	if o != nil && !IsNil(o.IncludedNamespaces) {
 		return true
 	}
 

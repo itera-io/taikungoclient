@@ -62,7 +62,7 @@ func (o *ListAllDeleteBackupRequests) GetDataOk() ([]CDeleteBackupRequestDto, bo
 
 // HasData returns a boolean if a field has been set.
 func (o *ListAllDeleteBackupRequests) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

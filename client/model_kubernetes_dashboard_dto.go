@@ -62,7 +62,7 @@ func (o *KubernetesDashboardDto) GetPodsOk() ([]PodDto, bool) {
 
 // HasPods returns a boolean if a field has been set.
 func (o *KubernetesDashboardDto) HasPods() bool {
-	if o != nil && IsNil(o.Pods) {
+	if o != nil && !IsNil(o.Pods) {
 		return true
 	}
 
@@ -95,7 +95,7 @@ func (o *KubernetesDashboardDto) GetNodesOk() ([]NodeDto, bool) {
 
 // HasNodes returns a boolean if a field has been set.
 func (o *KubernetesDashboardDto) HasNodes() bool {
-	if o != nil && IsNil(o.Nodes) {
+	if o != nil && !IsNil(o.Nodes) {
 		return true
 	}
 

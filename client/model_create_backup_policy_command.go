@@ -107,7 +107,7 @@ func (o *CreateBackupPolicyCommand) GetIncludeNamespacesOk() ([]string, bool) {
 
 // HasIncludeNamespaces returns a boolean if a field has been set.
 func (o *CreateBackupPolicyCommand) HasIncludeNamespaces() bool {
-	if o != nil && IsNil(o.IncludeNamespaces) {
+	if o != nil && !IsNil(o.IncludeNamespaces) {
 		return true
 	}
 

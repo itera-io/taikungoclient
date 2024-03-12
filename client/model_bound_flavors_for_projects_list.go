@@ -62,7 +62,7 @@ func (o *BoundFlavorsForProjectsList) GetDataOk() ([]BoundFlavorsForProjectsList
 
 // HasData returns a boolean if a field has been set.
 func (o *BoundFlavorsForProjectsList) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

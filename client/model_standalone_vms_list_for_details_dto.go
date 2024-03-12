@@ -1035,7 +1035,7 @@ func (o *StandaloneVmsListForDetailsDto) GetDisksOk() ([]StandAloneVmDiskForDeta
 
 // HasDisks returns a boolean if a field has been set.
 func (o *StandaloneVmsListForDetailsDto) HasDisks() bool {
-	if o != nil && IsNil(o.Disks) {
+	if o != nil && !IsNil(o.Disks) {
 		return true
 	}
 
@@ -1068,7 +1068,7 @@ func (o *StandaloneVmsListForDetailsDto) GetStandAloneMetaDatasOk() ([]StandAlon
 
 // HasStandAloneMetaDatas returns a boolean if a field has been set.
 func (o *StandaloneVmsListForDetailsDto) HasStandAloneMetaDatas() bool {
-	if o != nil && IsNil(o.StandAloneMetaDatas) {
+	if o != nil && !IsNil(o.StandAloneMetaDatas) {
 		return true
 	}
 

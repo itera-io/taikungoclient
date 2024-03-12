@@ -94,7 +94,7 @@ func (o *ProjectButtonStatusDto) GetReasonsOk() ([]string, bool) {
 
 // HasReasons returns a boolean if a field has been set.
 func (o *ProjectButtonStatusDto) HasReasons() bool {
-	if o != nil && IsNil(o.Reasons) {
+	if o != nil && !IsNil(o.Reasons) {
 		return true
 	}
 

@@ -63,7 +63,7 @@ func (o *ListAllBackupStorageLocations) GetDataOk() ([]BackupStorageLocationDto,
 
 // HasData returns a boolean if a field has been set.
 func (o *ListAllBackupStorageLocations) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 
@@ -128,7 +128,7 @@ func (o *ListAllBackupStorageLocations) GetProjectsOk() ([]int32, bool) {
 
 // HasProjects returns a boolean if a field has been set.
 func (o *ListAllBackupStorageLocations) HasProjects() bool {
-	if o != nil && IsNil(o.Projects) {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 

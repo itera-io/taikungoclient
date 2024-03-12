@@ -140,7 +140,7 @@ func (o *ProjectWithFlavorsAndImagesDto) GetFlavorsOk() ([]string, bool) {
 
 // HasFlavors returns a boolean if a field has been set.
 func (o *ProjectWithFlavorsAndImagesDto) HasFlavors() bool {
-	if o != nil && IsNil(o.Flavors) {
+	if o != nil && !IsNil(o.Flavors) {
 		return true
 	}
 
@@ -173,7 +173,7 @@ func (o *ProjectWithFlavorsAndImagesDto) GetImagesOk() ([]string, bool) {
 
 // HasImages returns a boolean if a field has been set.
 func (o *ProjectWithFlavorsAndImagesDto) HasImages() bool {
-	if o != nil && IsNil(o.Images) {
+	if o != nil && !IsNil(o.Images) {
 		return true
 	}
 
@@ -206,7 +206,7 @@ func (o *ProjectWithFlavorsAndImagesDto) GetImageNamesOk() ([]string, bool) {
 
 // HasImageNames returns a boolean if a field has been set.
 func (o *ProjectWithFlavorsAndImagesDto) HasImageNames() bool {
-	if o != nil && IsNil(o.ImageNames) {
+	if o != nil && !IsNil(o.ImageNames) {
 		return true
 	}
 

@@ -95,7 +95,7 @@ func (o *ResetStandAloneVmDiskStatusCommand) GetDiskIdsOk() ([]int32, bool) {
 
 // HasDiskIds returns a boolean if a field has been set.
 func (o *ResetStandAloneVmDiskStatusCommand) HasDiskIds() bool {
-	if o != nil && IsNil(o.DiskIds) {
+	if o != nil && !IsNil(o.DiskIds) {
 		return true
 	}
 

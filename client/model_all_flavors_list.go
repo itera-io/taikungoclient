@@ -63,7 +63,7 @@ func (o *AllFlavorsList) GetDataOk() ([]FlavorsListDto, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *AllFlavorsList) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

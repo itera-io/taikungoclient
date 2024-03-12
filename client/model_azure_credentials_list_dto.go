@@ -299,7 +299,7 @@ func (o *AzureCredentialsListDto) GetAvailabilityZonesOk() ([]string, bool) {
 
 // HasAvailabilityZones returns a boolean if a field has been set.
 func (o *AzureCredentialsListDto) HasAvailabilityZones() bool {
-	if o != nil && IsNil(o.AvailabilityZones) {
+	if o != nil && !IsNil(o.AvailabilityZones) {
 		return true
 	}
 
@@ -364,7 +364,7 @@ func (o *AzureCredentialsListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 
 // HasProjects returns a boolean if a field has been set.
 func (o *AzureCredentialsListDto) HasProjects() bool {
-	if o != nil && IsNil(o.Projects) {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 

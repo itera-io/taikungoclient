@@ -147,7 +147,7 @@ func (o *CreateProjectGroupCommand) GetProjectIdsOk() ([]int32, bool) {
 
 // HasProjectIds returns a boolean if a field has been set.
 func (o *CreateProjectGroupCommand) HasProjectIds() bool {
-	if o != nil && IsNil(o.ProjectIds) {
+	if o != nil && !IsNil(o.ProjectIds) {
 		return true
 	}
 

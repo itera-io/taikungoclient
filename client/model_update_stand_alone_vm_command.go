@@ -61,7 +61,7 @@ func (o *UpdateStandAloneVmCommand) GetStandaloneVmsOk() ([]UpdateStandaloneVmDt
 
 // HasStandaloneVms returns a boolean if a field has been set.
 func (o *UpdateStandAloneVmCommand) HasStandaloneVms() bool {
-	if o != nil && IsNil(o.StandaloneVms) {
+	if o != nil && !IsNil(o.StandaloneVms) {
 		return true
 	}
 

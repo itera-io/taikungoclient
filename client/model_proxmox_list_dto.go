@@ -217,7 +217,7 @@ func (o *ProxmoxListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 
 // HasProjects returns a boolean if a field has been set.
 func (o *ProxmoxListDto) HasProjects() bool {
-	if o != nil && IsNil(o.Projects) {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 
@@ -566,7 +566,7 @@ func (o *ProxmoxListDto) GetHypervisorsOk() ([]CommonDropdownDto, bool) {
 
 // HasHypervisors returns a boolean if a field has been set.
 func (o *ProxmoxListDto) HasHypervisors() bool {
-	if o != nil && IsNil(o.Hypervisors) {
+	if o != nil && !IsNil(o.Hypervisors) {
 		return true
 	}
 
@@ -767,7 +767,7 @@ func (o *ProxmoxListDto) GetProxmoxNetworksOk() ([]ProxmoxNetworkListDto, bool) 
 
 // HasProxmoxNetworks returns a boolean if a field has been set.
 func (o *ProxmoxListDto) HasProxmoxNetworks() bool {
-	if o != nil && IsNil(o.ProxmoxNetworks) {
+	if o != nil && !IsNil(o.ProxmoxNetworks) {
 		return true
 	}
 

@@ -86,7 +86,7 @@ func (o *EnumList) GetCloudTypesOk() ([]CommonDropdownDto, bool) {
 
 // HasCloudTypes returns a boolean if a field has been set.
 func (o *EnumList) HasCloudTypes() bool {
-	if o != nil && IsNil(o.CloudTypes) {
+	if o != nil && !IsNil(o.CloudTypes) {
 		return true
 	}
 
@@ -119,7 +119,7 @@ func (o *EnumList) GetProjectStatusesOk() ([]CommonDropdownDto, bool) {
 
 // HasProjectStatuses returns a boolean if a field has been set.
 func (o *EnumList) HasProjectStatuses() bool {
-	if o != nil && IsNil(o.ProjectStatuses) {
+	if o != nil && !IsNil(o.ProjectStatuses) {
 		return true
 	}
 
@@ -152,7 +152,7 @@ func (o *EnumList) GetServerRolesOk() ([]CommonDropdownDto, bool) {
 
 // HasServerRoles returns a boolean if a field has been set.
 func (o *EnumList) HasServerRoles() bool {
-	if o != nil && IsNil(o.ServerRoles) {
+	if o != nil && !IsNil(o.ServerRoles) {
 		return true
 	}
 
@@ -185,7 +185,7 @@ func (o *EnumList) GetServerStatusesOk() ([]CommonDropdownDto, bool) {
 
 // HasServerStatuses returns a boolean if a field has been set.
 func (o *EnumList) HasServerStatuses() bool {
-	if o != nil && IsNil(o.ServerStatuses) {
+	if o != nil && !IsNil(o.ServerStatuses) {
 		return true
 	}
 
@@ -218,7 +218,7 @@ func (o *EnumList) GetUserRolesOk() ([]CommonDropdownDto, bool) {
 
 // HasUserRoles returns a boolean if a field has been set.
 func (o *EnumList) HasUserRoles() bool {
-	if o != nil && IsNil(o.UserRoles) {
+	if o != nil && !IsNil(o.UserRoles) {
 		return true
 	}
 
@@ -251,7 +251,7 @@ func (o *EnumList) GetSecurityGroupRulesOk() ([]CommonDropdownDto, bool) {
 
 // HasSecurityGroupRules returns a boolean if a field has been set.
 func (o *EnumList) HasSecurityGroupRules() bool {
-	if o != nil && IsNil(o.SecurityGroupRules) {
+	if o != nil && !IsNil(o.SecurityGroupRules) {
 		return true
 	}
 
@@ -284,7 +284,7 @@ func (o *EnumList) GetPrometheusTypesOk() ([]CommonDropdownDto, bool) {
 
 // HasPrometheusTypes returns a boolean if a field has been set.
 func (o *EnumList) HasPrometheusTypes() bool {
-	if o != nil && IsNil(o.PrometheusTypes) {
+	if o != nil && !IsNil(o.PrometheusTypes) {
 		return true
 	}
 
@@ -317,7 +317,7 @@ func (o *EnumList) GetAuditLogsOk() ([]CommonDropdownDto, bool) {
 
 // HasAuditLogs returns a boolean if a field has been set.
 func (o *EnumList) HasAuditLogs() bool {
-	if o != nil && IsNil(o.AuditLogs) {
+	if o != nil && !IsNil(o.AuditLogs) {
 		return true
 	}
 
@@ -350,7 +350,7 @@ func (o *EnumList) GetRebootOptionsOk() ([]CommonDropdownDto, bool) {
 
 // HasRebootOptions returns a boolean if a field has been set.
 func (o *EnumList) HasRebootOptions() bool {
-	if o != nil && IsNil(o.RebootOptions) {
+	if o != nil && !IsNil(o.RebootOptions) {
 		return true
 	}
 
@@ -383,7 +383,7 @@ func (o *EnumList) GetAvailabilityOk() ([]CommonAvailabilityDto, bool) {
 
 // HasAvailability returns a boolean if a field has been set.
 func (o *EnumList) HasAvailability() bool {
-	if o != nil && IsNil(o.Availability) {
+	if o != nil && !IsNil(o.Availability) {
 		return true
 	}
 
@@ -416,7 +416,7 @@ func (o *EnumList) GetSlackTypesOk() ([]CommonDropdownDto, bool) {
 
 // HasSlackTypes returns a boolean if a field has been set.
 func (o *EnumList) HasSlackTypes() bool {
-	if o != nil && IsNil(o.SlackTypes) {
+	if o != nil && !IsNil(o.SlackTypes) {
 		return true
 	}
 
@@ -449,7 +449,7 @@ func (o *EnumList) GetRequestLogsOk() ([]CommonDropdownDto, bool) {
 
 // HasRequestLogs returns a boolean if a field has been set.
 func (o *EnumList) HasRequestLogs() bool {
-	if o != nil && IsNil(o.RequestLogs) {
+	if o != nil && !IsNil(o.RequestLogs) {
 		return true
 	}
 
@@ -482,7 +482,7 @@ func (o *EnumList) GetAzureQuotasOk() ([]CommonDropdownDto, bool) {
 
 // HasAzureQuotas returns a boolean if a field has been set.
 func (o *EnumList) HasAzureQuotas() bool {
-	if o != nil && IsNil(o.AzureQuotas) {
+	if o != nil && !IsNil(o.AzureQuotas) {
 		return true
 	}
 
@@ -515,7 +515,7 @@ func (o *EnumList) GetShowbackKindsOk() ([]CommonDropdownDto, bool) {
 
 // HasShowbackKinds returns a boolean if a field has been set.
 func (o *EnumList) HasShowbackKinds() bool {
-	if o != nil && IsNil(o.ShowbackKinds) {
+	if o != nil && !IsNil(o.ShowbackKinds) {
 		return true
 	}
 
@@ -548,7 +548,7 @@ func (o *EnumList) GetAlertTypesOk() ([]CommonDropdownDto, bool) {
 
 // HasAlertTypes returns a boolean if a field has been set.
 func (o *EnumList) HasAlertTypes() bool {
-	if o != nil && IsNil(o.AlertTypes) {
+	if o != nil && !IsNil(o.AlertTypes) {
 		return true
 	}
 
@@ -581,7 +581,7 @@ func (o *EnumList) GetReminderTypesOk() ([]CommonDropdownDto, bool) {
 
 // HasReminderTypes returns a boolean if a field has been set.
 func (o *EnumList) HasReminderTypes() bool {
-	if o != nil && IsNil(o.ReminderTypes) {
+	if o != nil && !IsNil(o.ReminderTypes) {
 		return true
 	}
 
@@ -614,7 +614,7 @@ func (o *EnumList) GetAwsPlatformsOk() ([]CommonStringBasedDropdownDto, bool) {
 
 // HasAwsPlatforms returns a boolean if a field has been set.
 func (o *EnumList) HasAwsPlatforms() bool {
-	if o != nil && IsNil(o.AwsPlatforms) {
+	if o != nil && !IsNil(o.AwsPlatforms) {
 		return true
 	}
 
@@ -647,7 +647,7 @@ func (o *EnumList) GetCronPeriodsOk() ([]CommonStringBasedDropdownDto, bool) {
 
 // HasCronPeriods returns a boolean if a field has been set.
 func (o *EnumList) HasCronPeriods() bool {
-	if o != nil && IsNil(o.CronPeriods) {
+	if o != nil && !IsNil(o.CronPeriods) {
 		return true
 	}
 
@@ -680,7 +680,7 @@ func (o *EnumList) GetValidityPeriodsOk() ([]CommonDropdownDto, bool) {
 
 // HasValidityPeriods returns a boolean if a field has been set.
 func (o *EnumList) HasValidityPeriods() bool {
-	if o != nil && IsNil(o.ValidityPeriods) {
+	if o != nil && !IsNil(o.ValidityPeriods) {
 		return true
 	}
 
@@ -713,7 +713,7 @@ func (o *EnumList) GetAlertingIntegrationTypesOk() ([]CommonDropdownDto, bool) {
 
 // HasAlertingIntegrationTypes returns a boolean if a field has been set.
 func (o *EnumList) HasAlertingIntegrationTypes() bool {
-	if o != nil && IsNil(o.AlertingIntegrationTypes) {
+	if o != nil && !IsNil(o.AlertingIntegrationTypes) {
 		return true
 	}
 
@@ -746,7 +746,7 @@ func (o *EnumList) GetGoogleImageTypesOk() ([]CommonDropdownDto, bool) {
 
 // HasGoogleImageTypes returns a boolean if a field has been set.
 func (o *EnumList) HasGoogleImageTypes() bool {
-	if o != nil && IsNil(o.GoogleImageTypes) {
+	if o != nil && !IsNil(o.GoogleImageTypes) {
 		return true
 	}
 
@@ -779,7 +779,7 @@ func (o *EnumList) GetStandaloneVmStatusesOk() ([]CommonDropdownDto, bool) {
 
 // HasStandaloneVmStatuses returns a boolean if a field has been set.
 func (o *EnumList) HasStandaloneVmStatuses() bool {
-	if o != nil && IsNil(o.StandaloneVmStatuses) {
+	if o != nil && !IsNil(o.StandaloneVmStatuses) {
 		return true
 	}
 
@@ -812,7 +812,7 @@ func (o *EnumList) GetOpenstackContinentsOk() ([]CommonStringBasedDropdownDto, b
 
 // HasOpenstackContinents returns a boolean if a field has been set.
 func (o *EnumList) HasOpenstackContinents() bool {
-	if o != nil && IsNil(o.OpenstackContinents) {
+	if o != nil && !IsNil(o.OpenstackContinents) {
 		return true
 	}
 
@@ -845,7 +845,7 @@ func (o *EnumList) GetRetentionPeriodsOk() ([]CommonStringBasedDropdownDto, bool
 
 // HasRetentionPeriods returns a boolean if a field has been set.
 func (o *EnumList) HasRetentionPeriods() bool {
-	if o != nil && IsNil(o.RetentionPeriods) {
+	if o != nil && !IsNil(o.RetentionPeriods) {
 		return true
 	}
 
@@ -878,7 +878,7 @@ func (o *EnumList) GetTicketPrioritiesOk() ([]CommonDropdownDto, bool) {
 
 // HasTicketPriorities returns a boolean if a field has been set.
 func (o *EnumList) HasTicketPriorities() bool {
-	if o != nil && IsNil(o.TicketPriorities) {
+	if o != nil && !IsNil(o.TicketPriorities) {
 		return true
 	}
 
@@ -911,7 +911,7 @@ func (o *EnumList) GetProxmoxRolesOk() ([]CommonDropdownDto, bool) {
 
 // HasProxmoxRoles returns a boolean if a field has been set.
 func (o *EnumList) HasProxmoxRoles() bool {
-	if o != nil && IsNil(o.ProxmoxRoles) {
+	if o != nil && !IsNil(o.ProxmoxRoles) {
 		return true
 	}
 

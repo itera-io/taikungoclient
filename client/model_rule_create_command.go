@@ -153,7 +153,7 @@ func (o *RuleCreateCommand) GetLabelsOk() ([]PrometheusLabelListDto, bool) {
 
 // HasLabels returns a boolean if a field has been set.
 func (o *RuleCreateCommand) HasLabels() bool {
-	if o != nil && IsNil(o.Labels) {
+	if o != nil && !IsNil(o.Labels) {
 		return true
 	}
 
@@ -324,7 +324,7 @@ func (o *RuleCreateCommand) GetOrganizationIdOk() ([]int32, bool) {
 
 // HasOrganizationId returns a boolean if a field has been set.
 func (o *RuleCreateCommand) HasOrganizationId() bool {
-	if o != nil && IsNil(o.OrganizationId) {
+	if o != nil && !IsNil(o.OrganizationId) {
 		return true
 	}
 

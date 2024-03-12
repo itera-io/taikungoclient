@@ -62,7 +62,7 @@ func (o *StandaloneVmsListForPoller) GetDataOk() ([]StandAloneVmFullDto, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *StandaloneVmsListForPoller) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

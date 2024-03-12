@@ -62,7 +62,7 @@ func (o *Kubesprays) GetDataOk() ([]KubesprayListDto, bool) {
 
 // HasData returns a boolean if a field has been set.
 func (o *Kubesprays) HasData() bool {
-	if o != nil && IsNil(o.Data) {
+	if o != nil && !IsNil(o.Data) {
 		return true
 	}
 

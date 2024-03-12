@@ -1043,7 +1043,7 @@ func (o *ProjectFullListDto) GetStandaloneVmsOk() ([]StandAloneVmFullDto, bool) 
 
 // HasStandaloneVms returns a boolean if a field has been set.
 func (o *ProjectFullListDto) HasStandaloneVms() bool {
-	if o != nil && IsNil(o.StandaloneVms) {
+	if o != nil && !IsNil(o.StandaloneVms) {
 		return true
 	}
 

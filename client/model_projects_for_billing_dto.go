@@ -302,7 +302,7 @@ func (o *ProjectsForBillingDto) GetServersOk() ([]ServersForBillingDto, bool) {
 
 // HasServers returns a boolean if a field has been set.
 func (o *ProjectsForBillingDto) HasServers() bool {
-	if o != nil && IsNil(o.Servers) {
+	if o != nil && !IsNil(o.Servers) {
 		return true
 	}
 
@@ -335,7 +335,7 @@ func (o *ProjectsForBillingDto) GetStandaloneVmsOk() ([]StandaloneVmsForBillingD
 
 // HasStandaloneVms returns a boolean if a field has been set.
 func (o *ProjectsForBillingDto) HasStandaloneVms() bool {
-	if o != nil && IsNil(o.StandaloneVms) {
+	if o != nil && !IsNil(o.StandaloneVms) {
 		return true
 	}
 

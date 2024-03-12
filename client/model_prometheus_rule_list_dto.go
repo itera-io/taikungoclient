@@ -319,7 +319,7 @@ func (o *PrometheusRuleListDto) GetLabelsOk() ([]PrometheusLabelUpdateDto, bool)
 
 // HasLabels returns a boolean if a field has been set.
 func (o *PrometheusRuleListDto) HasLabels() bool {
-	if o != nil && IsNil(o.Labels) {
+	if o != nil && !IsNil(o.Labels) {
 		return true
 	}
 
@@ -352,7 +352,7 @@ func (o *PrometheusRuleListDto) GetBoundOrganizationsOk() ([]PrometheusOrganizat
 
 // HasBoundOrganizations returns a boolean if a field has been set.
 func (o *PrometheusRuleListDto) HasBoundOrganizations() bool {
-	if o != nil && IsNil(o.BoundOrganizations) {
+	if o != nil && !IsNil(o.BoundOrganizations) {
 		return true
 	}
 

@@ -690,7 +690,7 @@ func (o *CreateStandAloneVmCommand) GetStandAloneVmDisksOk() ([]StandAloneVmDisk
 
 // HasStandAloneVmDisks returns a boolean if a field has been set.
 func (o *CreateStandAloneVmCommand) HasStandAloneVmDisks() bool {
-	if o != nil && IsNil(o.StandAloneVmDisks) {
+	if o != nil && !IsNil(o.StandAloneVmDisks) {
 		return true
 	}
 
@@ -723,7 +723,7 @@ func (o *CreateStandAloneVmCommand) GetStandAloneMetaDatasOk() ([]StandAloneMeta
 
 // HasStandAloneMetaDatas returns a boolean if a field has been set.
 func (o *CreateStandAloneVmCommand) HasStandAloneMetaDatas() bool {
-	if o != nil && IsNil(o.StandAloneMetaDatas) {
+	if o != nil && !IsNil(o.StandAloneMetaDatas) {
 		return true
 	}
 

@@ -107,7 +107,7 @@ func (o *KubernetesAlertDtoForPoller) GetLabelsOk() (*interface{}, bool) {
 
 // HasLabels returns a boolean if a field has been set.
 func (o *KubernetesAlertDtoForPoller) HasLabels() bool {
-	if o != nil && IsNil(o.Labels) {
+	if o != nil && !IsNil(o.Labels) {
 		return true
 	}
 

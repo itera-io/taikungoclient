@@ -214,7 +214,7 @@ func (o *ProjectGroupDetailsListDto) GetProjectsOk() ([]ProjectListDto, bool) {
 
 // HasProjects returns a boolean if a field has been set.
 func (o *ProjectGroupDetailsListDto) HasProjects() bool {
-	if o != nil && IsNil(o.Projects) {
+	if o != nil && !IsNil(o.Projects) {
 		return true
 	}
 
@@ -247,7 +247,7 @@ func (o *ProjectGroupDetailsListDto) GetUserGroupsOk() ([]UserGroupEntityListDto
 
 // HasUserGroups returns a boolean if a field has been set.
 func (o *ProjectGroupDetailsListDto) HasUserGroups() bool {
-	if o != nil && IsNil(o.UserGroups) {
+	if o != nil && !IsNil(o.UserGroups) {
 		return true
 	}
 

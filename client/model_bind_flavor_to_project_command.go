@@ -94,7 +94,7 @@ func (o *BindFlavorToProjectCommand) GetFlavorsOk() ([]string, bool) {
 
 // HasFlavors returns a boolean if a field has been set.
 func (o *BindFlavorToProjectCommand) HasFlavors() bool {
-	if o != nil && IsNil(o.Flavors) {
+	if o != nil && !IsNil(o.Flavors) {
 		return true
 	}
 

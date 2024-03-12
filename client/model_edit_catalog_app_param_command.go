@@ -94,7 +94,7 @@ func (o *EditCatalogAppParamCommand) GetParametersOk() ([]CatalogAppParamsDto, b
 
 // HasParameters returns a boolean if a field has been set.
 func (o *EditCatalogAppParamCommand) HasParameters() bool {
-	if o != nil && IsNil(o.Parameters) {
+	if o != nil && !IsNil(o.Parameters) {
 		return true
 	}
 

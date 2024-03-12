@@ -137,7 +137,7 @@ func (o *AlertingWebhookDto) GetHeadersOk() ([]WebhookHeaderDto, bool) {
 
 // HasHeaders returns a boolean if a field has been set.
 func (o *AlertingWebhookDto) HasHeaders() bool {
-	if o != nil && IsNil(o.Headers) {
+	if o != nil && !IsNil(o.Headers) {
 		return true
 	}
 

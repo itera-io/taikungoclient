@@ -95,7 +95,7 @@ func (o *ResetStandAloneVmStatusCommand) GetVmIdsOk() ([]int32, bool) {
 
 // HasVmIds returns a boolean if a field has been set.
 func (o *ResetStandAloneVmStatusCommand) HasVmIds() bool {
-	if o != nil && IsNil(o.VmIds) {
+	if o != nil && !IsNil(o.VmIds) {
 		return true
 	}
 
