@@ -228,6 +228,7 @@ Class | Method | HTTP request | Description
 *CheckerAPI* | [**CheckerTanzu**](docs/CheckerAPI.md#checkertanzu) | **Post** /api/v1/checker/tanzu | Check tanzu credential
 *CheckerAPI* | [**CheckerUser**](docs/CheckerAPI.md#checkeruser) | **Post** /api/v1/checker/user | Check duplicate username
 *CheckerAPI* | [**CheckerYaml**](docs/CheckerAPI.md#checkeryaml) | **Post** /api/v1/checker/yaml | Check yaml file
+*CheckerAPI* | [**CheckerZadara**](docs/CheckerAPI.md#checkerzadara) | **Post** /api/v1/checker/zadara | Check zadara credential
 *CloudCredentialAPI* | [**CloudcredentialsAllFlavors**](docs/CloudCredentialAPI.md#cloudcredentialsallflavors) | **Get** /api/v1/cloudcredentials/flavors/{cloudId} | 
 *CloudCredentialAPI* | [**CloudcredentialsDashboardList**](docs/CloudCredentialAPI.md#cloudcredentialsdashboardlist) | **Get** /api/v1/cloudcredentials/list | Retrieve all cloud credentials
 *CloudCredentialAPI* | [**CloudcredentialsDelete**](docs/CloudCredentialAPI.md#cloudcredentialsdelete) | **Delete** /api/v1/cloudcredentials/{cloudId} | Remove cloud credential by cloud Id
@@ -311,6 +312,8 @@ Class | Method | HTTP request | Description
 *ImagesAPI* | [**ImagesTanzuImages**](docs/ImagesAPI.md#imagestanzuimages) | **Get** /api/v1/images/tanzu/{cloudId} | Retrieve tanzu images
 *ImagesAPI* | [**ImagesUnbindImagesFromProject**](docs/ImagesAPI.md#imagesunbindimagesfromproject) | **Post** /api/v1/images/unbind | Unbind images from project
 *ImagesAPI* | [**ImagesVsphereImages**](docs/ImagesAPI.md#imagesvsphereimages) | **Get** /api/v1/images/vsphere/{cloudId} | Retrieve vsphere images
+*ImagesAPI* | [**ImagesZadaraImagesList**](docs/ImagesAPI.md#imageszadaraimageslist) | **Post** /api/v1/images/zadara/{cloudId} | Retrieve zadara images
+*ImagesAPI* | [**ImagesZadaraPersonalImages**](docs/ImagesAPI.md#imageszadarapersonalimages) | **Get** /api/v1/images/zadara/personal/{cloudId} | Zadara personal images
 *InfraAPI* | [**InfraCreate**](docs/InfraAPI.md#infracreate) | **Post** /api/v1/infra/create | Create infra product
 *InfraAPI* | [**InfraDetails**](docs/InfraAPI.md#infradetails) | **Get** /api/v1/infra/details | Retrieve infra details
 *InfraAPI* | [**InfraOrganizationsList**](docs/InfraAPI.md#infraorganizationslist) | **Get** /api/v1/infra/organizations-list | Retrieve infra products list
@@ -733,6 +736,7 @@ Class | Method | HTTP request | Description
 *ZadaraCloudCredentialAPI* | [**ZadaraCreate**](docs/ZadaraCloudCredentialAPI.md#zadaracreate) | **Post** /api/v1/zadara/create | Add Zadara credentials
 *ZadaraCloudCredentialAPI* | [**ZadaraList**](docs/ZadaraCloudCredentialAPI.md#zadaralist) | **Get** /api/v1/zadara/list | Retrieve list of Zadara cloud credentials
 *ZadaraCloudCredentialAPI* | [**ZadaraRegionlist**](docs/ZadaraCloudCredentialAPI.md#zadararegionlist) | **Post** /api/v1/zadara/regions | Retrieve zadara regions list
+*ZadaraCloudCredentialAPI* | [**ZadaraVolumeTypeList**](docs/ZadaraCloudCredentialAPI.md#zadaravolumetypelist) | **Get** /api/v1/zadara/volume-types | Retrieve volume type list
 *ZadaraCloudCredentialAPI* | [**ZadaraZonelist**](docs/ZadaraCloudCredentialAPI.md#zadarazonelist) | **Post** /api/v1/zadara/zones | Retrieve zadara zone list
 
 
@@ -893,6 +897,7 @@ Class | Method | HTTP request | Description
  - [CheckPrometheusCommand](docs/CheckPrometheusCommand.md)
  - [CheckS3Command](docs/CheckS3Command.md)
  - [CheckTanzuCommand](docs/CheckTanzuCommand.md)
+ - [CheckZadaraCommand](docs/CheckZadaraCommand.md)
  - [CidrCommand](docs/CidrCommand.md)
  - [ClearProjectBackupCommand](docs/ClearProjectBackupCommand.md)
  - [CloseTicketCommand](docs/CloseTicketCommand.md)

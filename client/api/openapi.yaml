@@ -5622,8 +5622,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-03-12T00:02:43.2093467Z
-                  createdAt: 2024-03-12T00:02:43.2093467Z
+                  lastValidated: 2024-03-13T00:02:45.7232037Z
+                  createdAt: 2024-03-13T00:02:45.7232037Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5728,14 +5728,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-03-12T00:02:43.2093467Z
+                    lastBackup: 2024-03-13T00:02:45.7232037Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-03-12T00:02:43.2093467Z
+                  createdAt: 2024-03-13T00:02:45.7232037Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-03-12T00:02:43.2093467Z
+                  lastBackup: 2024-03-13T00:02:45.7232037Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5840,8 +5840,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-03-12T00:02:43.2093467Z
-                  expiration: 2024-03-12T00:02:43.2093467Z
+                  createdAt: 2024-03-13T00:02:45.7232037Z
+                  expiration: 2024-03-13T00:02:45.7232037Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5945,7 +5945,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-03-12T00:02:43.2093467Z
+                  createdAt: 2024-03-13T00:02:45.7232037Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6055,9 +6055,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-03-12T00:02:43.2093467+00:00
-                  startTimeStamp: 2024-03-12T00:02:43.2093467+00:00
-                  createdAt: 2024-03-12T00:02:43.2093467Z
+                  completionDateTime: 2024-03-13T00:02:45.7232037+00:00
+                  startTimeStamp: 2024-03-13T00:02:45.7232037+00:00
+                  createdAt: 2024-03-13T00:02:45.7232037Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -8332,6 +8332,49 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Check tanzu credential
+      tags:
+      - Checker
+  /api/v1/checker/zadara:
+    post:
+      operationId: checker-zadara
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckZadaraCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Check zadara credential
       tags:
       - Checker
   /api/v1/cloudcredentials/lockmanager:
@@ -13337,6 +13380,78 @@ paths:
       summary: Azure personal images
       tags:
       - Images
+  /api/v1/images/zadara/personal/{cloudId}:
+    get:
+      operationId: images-zadara-personal-images
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: "1"
+                name: taikun
+              schema:
+                items:
+                  $ref: '#/components/schemas/CommonStringBasedDropdownDto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Zadara personal images
+      tags:
+      - Images
   /api/v1/images/proxmox/{cloudId}:
     get:
       operationId: images-proxmox-images
@@ -13626,6 +13741,110 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve vsphere images
+      tags:
+      - Images
+  /api/v1/images/zadara/{cloudId}:
+    post:
+      operationId: images-zadara-images-list
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Latest
+        required: true
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicImageList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve zadara images
       tags:
       - Images
   /api/v1/infra/create:
@@ -36652,6 +36871,8 @@ paths:
               zadaraRegion: ap-south-1
               organizationId: 1
               azCount: 1
+              zadaraContinent: Europe
+              zadaraVolumeType: taikun
             schema:
               $ref: '#/components/schemas/CreateZadaraCloudCommand'
       responses:
@@ -36937,6 +37158,51 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve list of Zadara cloud credentials
+      tags:
+      - Zadara cloud credential
+  /api/v1/zadara/volume-types:
+    get:
+      operationId: zadara-volume-type-list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve volume type list
       tags:
       - Zadara cloud credential
 components:
@@ -41967,6 +42233,23 @@ components:
           nullable: true
           type: string
       type: object
+    CheckZadaraCommand:
+      additionalProperties: false
+      example:
+        zadaraAccessKeyId: zadaraAccessKeyId
+        zadaraSecretAccessKey: zadaraSecretAccessKey
+        zadaraUrl: zadaraUrl
+      properties:
+        zadaraSecretAccessKey:
+          nullable: true
+          type: string
+        zadaraAccessKeyId:
+          nullable: true
+          type: string
+        zadaraUrl:
+          nullable: true
+          type: string
+      type: object
     CidrCommand:
       additionalProperties: false
       example:
@@ -44208,9 +44491,11 @@ components:
         zadaraAccessKeyId: zadaraAccessKeyId
         azCount: 6
         name: name
+        zadaraContinent: zadaraContinent
         zadaraRegion: zadaraRegion
         zadaraUrl: zadaraUrl
         zadaraSecretAccessKey: zadaraSecretAccessKey
+        zadaraVolumeType: zadaraVolumeType
       properties:
         name:
           nullable: true
@@ -44234,6 +44519,12 @@ components:
         azCount:
           format: int32
           type: integer
+        zadaraContinent:
+          nullable: true
+          type: string
+        zadaraVolumeType:
+          nullable: true
+          type: string
       type: object
     CredentialChartDto:
       additionalProperties: false
