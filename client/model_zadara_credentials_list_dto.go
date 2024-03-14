@@ -36,6 +36,8 @@ type ZadaraCredentialsListDto struct {
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	CreatedAt NullableString `json:"createdAt,omitempty"`
 	ContinentName NullableString `json:"continentName,omitempty"`
+	ZadaraApiUrl NullableString `json:"zadaraApiUrl,omitempty"`
+	ZadaraVolumeType NullableString `json:"zadaraVolumeType,omitempty"`
 }
 
 // NewZadaraCredentialsListDto instantiates a new ZadaraCredentialsListDto object
@@ -649,6 +651,90 @@ func (o *ZadaraCredentialsListDto) UnsetContinentName() {
 	o.ContinentName.Unset()
 }
 
+// GetZadaraApiUrl returns the ZadaraApiUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ZadaraCredentialsListDto) GetZadaraApiUrl() string {
+	if o == nil || IsNil(o.ZadaraApiUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ZadaraApiUrl.Get()
+}
+
+// GetZadaraApiUrlOk returns a tuple with the ZadaraApiUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ZadaraCredentialsListDto) GetZadaraApiUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ZadaraApiUrl.Get(), o.ZadaraApiUrl.IsSet()
+}
+
+// HasZadaraApiUrl returns a boolean if a field has been set.
+func (o *ZadaraCredentialsListDto) HasZadaraApiUrl() bool {
+	if o != nil && o.ZadaraApiUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetZadaraApiUrl gets a reference to the given NullableString and assigns it to the ZadaraApiUrl field.
+func (o *ZadaraCredentialsListDto) SetZadaraApiUrl(v string) {
+	o.ZadaraApiUrl.Set(&v)
+}
+// SetZadaraApiUrlNil sets the value for ZadaraApiUrl to be an explicit nil
+func (o *ZadaraCredentialsListDto) SetZadaraApiUrlNil() {
+	o.ZadaraApiUrl.Set(nil)
+}
+
+// UnsetZadaraApiUrl ensures that no value is present for ZadaraApiUrl, not even an explicit nil
+func (o *ZadaraCredentialsListDto) UnsetZadaraApiUrl() {
+	o.ZadaraApiUrl.Unset()
+}
+
+// GetZadaraVolumeType returns the ZadaraVolumeType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ZadaraCredentialsListDto) GetZadaraVolumeType() string {
+	if o == nil || IsNil(o.ZadaraVolumeType.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ZadaraVolumeType.Get()
+}
+
+// GetZadaraVolumeTypeOk returns a tuple with the ZadaraVolumeType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ZadaraCredentialsListDto) GetZadaraVolumeTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ZadaraVolumeType.Get(), o.ZadaraVolumeType.IsSet()
+}
+
+// HasZadaraVolumeType returns a boolean if a field has been set.
+func (o *ZadaraCredentialsListDto) HasZadaraVolumeType() bool {
+	if o != nil && o.ZadaraVolumeType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetZadaraVolumeType gets a reference to the given NullableString and assigns it to the ZadaraVolumeType field.
+func (o *ZadaraCredentialsListDto) SetZadaraVolumeType(v string) {
+	o.ZadaraVolumeType.Set(&v)
+}
+// SetZadaraVolumeTypeNil sets the value for ZadaraVolumeType to be an explicit nil
+func (o *ZadaraCredentialsListDto) SetZadaraVolumeTypeNil() {
+	o.ZadaraVolumeType.Set(nil)
+}
+
+// UnsetZadaraVolumeType ensures that no value is present for ZadaraVolumeType, not even an explicit nil
+func (o *ZadaraCredentialsListDto) UnsetZadaraVolumeType() {
+	o.ZadaraVolumeType.Unset()
+}
+
 func (o ZadaraCredentialsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -706,6 +792,12 @@ func (o ZadaraCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ContinentName.IsSet() {
 		toSerialize["continentName"] = o.ContinentName.Get()
+	}
+	if o.ZadaraApiUrl.IsSet() {
+		toSerialize["zadaraApiUrl"] = o.ZadaraApiUrl.Get()
+	}
+	if o.ZadaraVolumeType.IsSet() {
+		toSerialize["zadaraVolumeType"] = o.ZadaraVolumeType.Get()
 	}
 	return toSerialize, nil
 }
