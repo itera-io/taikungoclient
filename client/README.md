@@ -736,6 +736,7 @@ Class | Method | HTTP request | Description
 *ZadaraCloudCredentialAPI* | [**ZadaraCreate**](docs/ZadaraCloudCredentialAPI.md#zadaracreate) | **Post** /api/v1/zadara/create | Add Zadara credentials
 *ZadaraCloudCredentialAPI* | [**ZadaraList**](docs/ZadaraCloudCredentialAPI.md#zadaralist) | **Get** /api/v1/zadara/list | Retrieve list of Zadara cloud credentials
 *ZadaraCloudCredentialAPI* | [**ZadaraRegionlist**](docs/ZadaraCloudCredentialAPI.md#zadararegionlist) | **Post** /api/v1/zadara/regions | Retrieve zadara regions list
+*ZadaraCloudCredentialAPI* | [**ZadaraUpdate**](docs/ZadaraCloudCredentialAPI.md#zadaraupdate) | **Post** /api/v1/zadara/update | Update zadara cloud credential
 *ZadaraCloudCredentialAPI* | [**ZadaraVolumeTypeList**](docs/ZadaraCloudCredentialAPI.md#zadaravolumetypelist) | **Get** /api/v1/zadara/volume-types | Retrieve volume type list
 *ZadaraCloudCredentialAPI* | [**ZadaraZonelist**](docs/ZadaraCloudCredentialAPI.md#zadarazonelist) | **Post** /api/v1/zadara/zones | Retrieve zadara zone list
 
@@ -1535,6 +1536,7 @@ Class | Method | HTTP request | Description
  - [UpdateUserProjectGroupDto](docs/UpdateUserProjectGroupDto.md)
  - [UpdateVsphereCommand](docs/UpdateVsphereCommand.md)
  - [UpdateVsphereHypervisorsCommand](docs/UpdateVsphereHypervisorsCommand.md)
+ - [UpdateZadaraCommand](docs/UpdateZadaraCommand.md)
  - [UserDetails](docs/UserDetails.md)
  - [UserDto](docs/UserDto.md)
  - [UserExistCommand](docs/UserExistCommand.md)

@@ -58,6 +58,17 @@ func Test_taikuncore_ZadaraCloudCredentialAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ZadaraCloudCredentialAPIService ZadaraUpdate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ZadaraCloudCredentialAPI.ZadaraUpdate(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ZadaraCloudCredentialAPIService ZadaraVolumeTypeList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
