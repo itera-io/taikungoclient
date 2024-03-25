@@ -25,6 +25,15 @@ java -jar openapi-generator-cli.jar generate -i ./"$FILE_WEB" \
 rm ./client/go.mod
 rm ./client/go.sum
 
+# Substitute one occuency of 'w.CreateFormFile' to send Content-Type: application/json (accepted in API)
+# instead of Content-Type: application/octet-stream (rejected in Taikun API)
+# This makes uploading files (like GCP import project json) through TaikunGoCLient work.
+# The echo needs to escape backquotes used to escape other backquotes - hence the backquote hell.
+# Import inputs missing dependencies
+sed -i "s/part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))/\/\/ Custom replace to make Content-Type application\/json - fixes GCP json upload\n				h := make(textproto.MIMEHeader)\n				h.Set(\"Content-Disposition\",fmt.Sprintf(\`form-data; name=\"%s\"; filename=\"%s\"\`,escapeQuotes(formFile.formFileName),escapeQuotes(filepath.Base(formFile.fileName))))\n				h.Set(\"Content-Type\", \"application\/json\")\n				part, err := w.CreatePart(h)\n\n				\/\/ Old version\n				\/\/ part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))/" ./client/client.go
+echo -e "\nfunc escapeQuotes(s string) string {\n  var quoteEscaper = strings.NewReplacer(\"\\\\\\\", \"\\\\\\\\\\\\\\\", \`\"\`, \"\\\\\\\\\\\"\")\n  return quoteEscaper.Replace(s)\n}" >> ./client/client.go
+sed -i "s/import (/import (\n	\"net\/textproto\"/" ./client/client.go
+
 # Generate showback client
 java -jar openapi-generator-cli.jar generate -i ./"$FILE_SHOWBACK" \
 -g go \
