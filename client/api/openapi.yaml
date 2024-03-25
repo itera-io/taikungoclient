@@ -5622,8 +5622,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-03-19T12:01:30.4457682Z
-                  createdAt: 2024-03-19T12:01:30.4457682Z
+                  lastValidated: 2024-03-25T08:40:39.6636063Z
+                  createdAt: 2024-03-25T08:40:39.6636063Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5728,14 +5728,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-03-19T12:01:30.4457682Z
+                    lastBackup: 2024-03-25T08:40:39.6636063Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-03-19T12:01:30.4457682Z
+                  createdAt: 2024-03-25T08:40:39.6636063Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-03-19T12:01:30.4457682Z
+                  lastBackup: 2024-03-25T08:40:39.6636063Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5840,8 +5840,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-03-19T12:01:30.4457682Z
-                  expiration: 2024-03-19T12:01:30.4457682Z
+                  createdAt: 2024-03-25T08:40:39.6636063Z
+                  expiration: 2024-03-25T08:40:39.6636063Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5945,7 +5945,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-03-19T12:01:30.4457682Z
+                  createdAt: 2024-03-25T08:40:39.6636063Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6055,9 +6055,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-03-19T12:01:30.4457682+00:00
-                  startTimeStamp: 2024-03-19T12:01:30.4457682+00:00
-                  createdAt: 2024-03-19T12:01:30.4457682Z
+                  completionDateTime: 2024-03-25T08:40:39.6636063+00:00
+                  startTimeStamp: 2024-03-25T08:40:39.6636063+00:00
+                  createdAt: 2024-03-25T08:40:39.6636063Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -7499,9 +7499,6 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/CheckKubeConfigCommand'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/CheckKubeConfigCommand'
       responses:
         "200":
           content:
@@ -8069,9 +8066,6 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/CheckGoogleCloudCommand'
-          application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/CheckGoogleCloudCommand'
       responses:
@@ -12021,9 +12015,6 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/GoogleBillingAccountListCommand'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/GoogleBillingAccountListCommand'
       responses:
         "200":
           content:
@@ -12077,9 +12068,6 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/CreateGoogleCredentialCommand'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/CreateGoogleCredentialCommand'
       responses:
         "200":
           content:
@@ -12126,9 +12114,6 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/GoogleRegionListCommand'
-          application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/GoogleRegionListCommand'
       responses:
@@ -12179,9 +12164,6 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/GoogleZoneListCommand'
-          application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/GoogleZoneListCommand'
       responses:
@@ -20556,9 +20538,6 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/OpenshiftPullSecretCommand'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/OpenshiftPullSecretCommand'
       responses:
         "400":
           content:
@@ -20599,9 +20578,6 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/OpenshiftStorageListCommand'
-          application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/OpenshiftStorageListCommand'
       responses:
@@ -20652,9 +20628,6 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/OpenshiftValidateCommand'
-          application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/OpenshiftValidateCommand'
       responses:
@@ -22958,9 +22931,6 @@ paths:
           multipart/form-data:
             schema:
               $ref: '#/components/schemas/CreatePartnerCommand'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/CreatePartnerCommand'
       responses:
         "400":
           content:
@@ -23043,9 +23013,6 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/UpdatePartnerCommand'
-          application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/UpdatePartnerCommand'
       responses:
@@ -32077,9 +32044,6 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/WindowsInstancePasswordCommand'
-          application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/WindowsInstancePasswordCommand'
       responses:
@@ -59739,6 +59703,7 @@ components:
         role: null
         spotPrice: 7.061401241503109
         openshiftFlavor: openshiftFlavor
+        vsphereFlavor: vsphereFlavor
         awsHostName: awsHostName
         actionButtons:
           reboot: true
@@ -59884,6 +59849,9 @@ components:
         hypervisorId:
           nullable: true
           type: string
+        vsphereFlavor:
+          nullable: true
+          type: string
         proxmoxRole:
           $ref: '#/components/schemas/ProxmoxRole'
         proxmoxExtraDiskSize:
@@ -59970,6 +59938,7 @@ components:
           role: null
           spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
+          vsphereFlavor: vsphereFlavor
           awsHostName: awsHostName
           actionButtons:
             reboot: true
@@ -60018,6 +59987,7 @@ components:
           role: null
           spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
+          vsphereFlavor: vsphereFlavor
           awsHostName: awsHostName
           actionButtons:
             reboot: true
@@ -60081,6 +60051,7 @@ components:
           role: null
           spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
+          vsphereFlavor: vsphereFlavor
           awsHostName: awsHostName
           actionButtons:
             reboot: true
@@ -60129,6 +60100,7 @@ components:
           role: null
           spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
+          vsphereFlavor: vsphereFlavor
           awsHostName: awsHostName
           actionButtons:
             reboot: true

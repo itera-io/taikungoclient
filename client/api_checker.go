@@ -1403,7 +1403,7 @@ func (a *CheckerAPIService) CheckerGoogleExecute(r ApiCheckerGoogleRequest) (boo
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data", "application/x-www-form-urlencoded"}
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1916,7 +1916,7 @@ func (a *CheckerAPIService) CheckerKubeConfigExecute(r ApiCheckerKubeConfigReque
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data", "application/x-www-form-urlencoded"}
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
