@@ -25,6 +25,11 @@ java -jar openapi-generator-cli.jar generate -i ./"$FILE_WEB" \
 rm ./client/go.mod
 rm ./client/go.sum
 
+# Substitute one occuency of 'w.CreateFormFile' to send Content-Type: application/json (accepted in API)
+# instead of Content-Type: application/octet-stream (rejected in Taikun API)
+# This makes uploading files (like GCP import project json) through TaikunGoCLient work.
+sed -i "s/part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))/\/\/ Custom replace to make Content-Type application\/json - fixes GCP json upload\nh := make(textproto.MIMEHeader)\nh.Set(\"Content-Disposition\",fmt.Sprintf(\`form-data; name=\"%s\"; filename=\"%s\"\`,escapeQuotes(formFile.formFileName),escapeQuotes(filepath.Base(formFile.fileName))))\nh.Set(\"Content-Type\", \"application\/json\")\npart, err := w.CreatePart(h)\n\n\/\/ Old version\n\/\/ part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))/s" ./client/client.go
+
 # Generate showback client
 java -jar openapi-generator-cli.jar generate -i ./"$FILE_SHOWBACK" \
 -g go \
