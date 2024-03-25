@@ -12,6 +12,7 @@ Contact: noreply@taikun.cloud
 package taikuncore
 
 import (
+	"net/textproto"
 	"bytes"
 	"context"
 	"encoding/json"
@@ -558,13 +559,13 @@ func (c *APIClient) prepareRequest(
 			if len(formFile.fileBytes) > 0 && formFile.fileName != "" {
 				w.Boundary()
 				// Custom replace to make Content-Type application/json - fixes GCP json upload
-h := make(textproto.MIMEHeader)
-h.Set("Content-Disposition",fmt.Sprintf(`form-data; name="%s"; filename="%s"`,escapeQuotes(formFile.formFileName),escapeQuotes(filepath.Base(formFile.fileName))))
-h.Set("Content-Type", "application/json")
-part, err := w.CreatePart(h)
+				h := make(textproto.MIMEHeader)
+				h.Set("Content-Disposition",fmt.Sprintf(`form-data; name="%s"; filename="%s"`,escapeQuotes(formFile.formFileName),escapeQuotes(filepath.Base(formFile.fileName))))
+				h.Set("Content-Type", "application/json")
+				part, err := w.CreatePart(h)
 
-// Old version
-// part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
+				// Old version
+				// part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
 				if err != nil {
 						return nil, err
 				}
