@@ -31,7 +31,7 @@ type ProjectListDetailDto struct {
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	Status NullableString `json:"status,omitempty"`
 	Health NullableString `json:"health,omitempty"`
-	CloudType NullableString `json:"cloudType,omitempty"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
 	KubesprayCurrentVersion NullableString `json:"kubesprayCurrentVersion,omitempty"`
 	KubesprayTargetVersion NullableString `json:"kubesprayTargetVersion,omitempty"`
 	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion,omitempty"`
@@ -56,7 +56,14 @@ type ProjectListDetailDto struct {
 	HasExpirationWarning *bool `json:"hasExpirationWarning,omitempty"`
 	TotalHourlyCost *float64 `json:"totalHourlyCost,omitempty"`
 	IsAutoscalingEnabled *bool `json:"isAutoscalingEnabled,omitempty"`
+	IsAutoscalingSpotEnabled *bool `json:"isAutoscalingSpotEnabled,omitempty"`
 	AiEnabled *bool `json:"aiEnabled,omitempty"`
+	LockButton *ButtonStatusDto `json:"lockButton,omitempty"`
+	UnlockButton *ButtonStatusDto `json:"unlockButton,omitempty"`
+	DeleteButton *ButtonStatusDto `json:"deleteButton,omitempty"`
+	KubeInfoButton *ButtonStatusDto `json:"kubeInfoButton,omitempty"`
+	SetExpirationDateButton *ButtonStatusDto `json:"setExpirationDateButton,omitempty"`
+	ResetStatusButton *ButtonStatusDto `json:"resetStatusButton,omitempty"`
 }
 
 // NewProjectListDetailDto instantiates a new ProjectListDetailDto object
@@ -478,46 +485,36 @@ func (o *ProjectListDetailDto) UnsetHealth() {
 	o.Health.Unset()
 }
 
-// GetCloudType returns the CloudType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectListDetailDto) GetCloudType() string {
-	if o == nil || IsNil(o.CloudType.Get()) {
-		var ret string
+// GetCloudType returns the CloudType field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetCloudType() CloudType {
+	if o == nil || IsNil(o.CloudType) {
+		var ret CloudType
 		return ret
 	}
-	return *o.CloudType.Get()
+	return *o.CloudType
 }
 
 // GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectListDetailDto) GetCloudTypeOk() (*string, bool) {
-	if o == nil {
+func (o *ProjectListDetailDto) GetCloudTypeOk() (*CloudType, bool) {
+	if o == nil || IsNil(o.CloudType) {
 		return nil, false
 	}
-	return o.CloudType.Get(), o.CloudType.IsSet()
+	return o.CloudType, true
 }
 
 // HasCloudType returns a boolean if a field has been set.
 func (o *ProjectListDetailDto) HasCloudType() bool {
-	if o != nil && o.CloudType.IsSet() {
+	if o != nil && !IsNil(o.CloudType) {
 		return true
 	}
 
 	return false
 }
 
-// SetCloudType gets a reference to the given NullableString and assigns it to the CloudType field.
-func (o *ProjectListDetailDto) SetCloudType(v string) {
-	o.CloudType.Set(&v)
-}
-// SetCloudTypeNil sets the value for CloudType to be an explicit nil
-func (o *ProjectListDetailDto) SetCloudTypeNil() {
-	o.CloudType.Set(nil)
-}
-
-// UnsetCloudType ensures that no value is present for CloudType, not even an explicit nil
-func (o *ProjectListDetailDto) UnsetCloudType() {
-	o.CloudType.Unset()
+// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
+func (o *ProjectListDetailDto) SetCloudType(v CloudType) {
+	o.CloudType = &v
 }
 
 // GetKubesprayCurrentVersion returns the KubesprayCurrentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1399,6 +1396,38 @@ func (o *ProjectListDetailDto) SetIsAutoscalingEnabled(v bool) {
 	o.IsAutoscalingEnabled = &v
 }
 
+// GetIsAutoscalingSpotEnabled returns the IsAutoscalingSpotEnabled field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetIsAutoscalingSpotEnabled() bool {
+	if o == nil || IsNil(o.IsAutoscalingSpotEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsAutoscalingSpotEnabled
+}
+
+// GetIsAutoscalingSpotEnabledOk returns a tuple with the IsAutoscalingSpotEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetIsAutoscalingSpotEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsAutoscalingSpotEnabled) {
+		return nil, false
+	}
+	return o.IsAutoscalingSpotEnabled, true
+}
+
+// HasIsAutoscalingSpotEnabled returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasIsAutoscalingSpotEnabled() bool {
+	if o != nil && !IsNil(o.IsAutoscalingSpotEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAutoscalingSpotEnabled gets a reference to the given bool and assigns it to the IsAutoscalingSpotEnabled field.
+func (o *ProjectListDetailDto) SetIsAutoscalingSpotEnabled(v bool) {
+	o.IsAutoscalingSpotEnabled = &v
+}
+
 // GetAiEnabled returns the AiEnabled field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetAiEnabled() bool {
 	if o == nil || IsNil(o.AiEnabled) {
@@ -1429,6 +1458,198 @@ func (o *ProjectListDetailDto) HasAiEnabled() bool {
 // SetAiEnabled gets a reference to the given bool and assigns it to the AiEnabled field.
 func (o *ProjectListDetailDto) SetAiEnabled(v bool) {
 	o.AiEnabled = &v
+}
+
+// GetLockButton returns the LockButton field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetLockButton() ButtonStatusDto {
+	if o == nil || IsNil(o.LockButton) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.LockButton
+}
+
+// GetLockButtonOk returns a tuple with the LockButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetLockButtonOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.LockButton) {
+		return nil, false
+	}
+	return o.LockButton, true
+}
+
+// HasLockButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasLockButton() bool {
+	if o != nil && !IsNil(o.LockButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockButton gets a reference to the given ButtonStatusDto and assigns it to the LockButton field.
+func (o *ProjectListDetailDto) SetLockButton(v ButtonStatusDto) {
+	o.LockButton = &v
+}
+
+// GetUnlockButton returns the UnlockButton field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetUnlockButton() ButtonStatusDto {
+	if o == nil || IsNil(o.UnlockButton) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.UnlockButton
+}
+
+// GetUnlockButtonOk returns a tuple with the UnlockButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetUnlockButtonOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.UnlockButton) {
+		return nil, false
+	}
+	return o.UnlockButton, true
+}
+
+// HasUnlockButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasUnlockButton() bool {
+	if o != nil && !IsNil(o.UnlockButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnlockButton gets a reference to the given ButtonStatusDto and assigns it to the UnlockButton field.
+func (o *ProjectListDetailDto) SetUnlockButton(v ButtonStatusDto) {
+	o.UnlockButton = &v
+}
+
+// GetDeleteButton returns the DeleteButton field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetDeleteButton() ButtonStatusDto {
+	if o == nil || IsNil(o.DeleteButton) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.DeleteButton
+}
+
+// GetDeleteButtonOk returns a tuple with the DeleteButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetDeleteButtonOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.DeleteButton) {
+		return nil, false
+	}
+	return o.DeleteButton, true
+}
+
+// HasDeleteButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasDeleteButton() bool {
+	if o != nil && !IsNil(o.DeleteButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteButton gets a reference to the given ButtonStatusDto and assigns it to the DeleteButton field.
+func (o *ProjectListDetailDto) SetDeleteButton(v ButtonStatusDto) {
+	o.DeleteButton = &v
+}
+
+// GetKubeInfoButton returns the KubeInfoButton field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetKubeInfoButton() ButtonStatusDto {
+	if o == nil || IsNil(o.KubeInfoButton) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.KubeInfoButton
+}
+
+// GetKubeInfoButtonOk returns a tuple with the KubeInfoButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetKubeInfoButtonOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.KubeInfoButton) {
+		return nil, false
+	}
+	return o.KubeInfoButton, true
+}
+
+// HasKubeInfoButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasKubeInfoButton() bool {
+	if o != nil && !IsNil(o.KubeInfoButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeInfoButton gets a reference to the given ButtonStatusDto and assigns it to the KubeInfoButton field.
+func (o *ProjectListDetailDto) SetKubeInfoButton(v ButtonStatusDto) {
+	o.KubeInfoButton = &v
+}
+
+// GetSetExpirationDateButton returns the SetExpirationDateButton field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetSetExpirationDateButton() ButtonStatusDto {
+	if o == nil || IsNil(o.SetExpirationDateButton) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.SetExpirationDateButton
+}
+
+// GetSetExpirationDateButtonOk returns a tuple with the SetExpirationDateButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetSetExpirationDateButtonOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.SetExpirationDateButton) {
+		return nil, false
+	}
+	return o.SetExpirationDateButton, true
+}
+
+// HasSetExpirationDateButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasSetExpirationDateButton() bool {
+	if o != nil && !IsNil(o.SetExpirationDateButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetSetExpirationDateButton gets a reference to the given ButtonStatusDto and assigns it to the SetExpirationDateButton field.
+func (o *ProjectListDetailDto) SetSetExpirationDateButton(v ButtonStatusDto) {
+	o.SetExpirationDateButton = &v
+}
+
+// GetResetStatusButton returns the ResetStatusButton field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetResetStatusButton() ButtonStatusDto {
+	if o == nil || IsNil(o.ResetStatusButton) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.ResetStatusButton
+}
+
+// GetResetStatusButtonOk returns a tuple with the ResetStatusButton field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetResetStatusButtonOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.ResetStatusButton) {
+		return nil, false
+	}
+	return o.ResetStatusButton, true
+}
+
+// HasResetStatusButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasResetStatusButton() bool {
+	if o != nil && !IsNil(o.ResetStatusButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetResetStatusButton gets a reference to the given ButtonStatusDto and assigns it to the ResetStatusButton field.
+func (o *ProjectListDetailDto) SetResetStatusButton(v ButtonStatusDto) {
+	o.ResetStatusButton = &v
 }
 
 func (o ProjectListDetailDto) MarshalJSON() ([]byte, error) {
@@ -1474,8 +1695,8 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	if o.Health.IsSet() {
 		toSerialize["health"] = o.Health.Get()
 	}
-	if o.CloudType.IsSet() {
-		toSerialize["cloudType"] = o.CloudType.Get()
+	if !IsNil(o.CloudType) {
+		toSerialize["cloudType"] = o.CloudType
 	}
 	if o.KubesprayCurrentVersion.IsSet() {
 		toSerialize["kubesprayCurrentVersion"] = o.KubesprayCurrentVersion.Get()
@@ -1549,8 +1770,29 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsAutoscalingEnabled) {
 		toSerialize["isAutoscalingEnabled"] = o.IsAutoscalingEnabled
 	}
+	if !IsNil(o.IsAutoscalingSpotEnabled) {
+		toSerialize["isAutoscalingSpotEnabled"] = o.IsAutoscalingSpotEnabled
+	}
 	if !IsNil(o.AiEnabled) {
 		toSerialize["aiEnabled"] = o.AiEnabled
+	}
+	if !IsNil(o.LockButton) {
+		toSerialize["lockButton"] = o.LockButton
+	}
+	if !IsNil(o.UnlockButton) {
+		toSerialize["unlockButton"] = o.UnlockButton
+	}
+	if !IsNil(o.DeleteButton) {
+		toSerialize["deleteButton"] = o.DeleteButton
+	}
+	if !IsNil(o.KubeInfoButton) {
+		toSerialize["kubeInfoButton"] = o.KubeInfoButton
+	}
+	if !IsNil(o.SetExpirationDateButton) {
+		toSerialize["setExpirationDateButton"] = o.SetExpirationDateButton
+	}
+	if !IsNil(o.ResetStatusButton) {
+		toSerialize["resetStatusButton"] = o.ResetStatusButton
 	}
 	return toSerialize, nil
 }

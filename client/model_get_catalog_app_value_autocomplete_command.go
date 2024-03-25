@@ -23,6 +23,7 @@ type GetCatalogAppValueAutocompleteCommand struct {
 	PackageId NullableString `json:"packageId,omitempty"`
 	Version NullableString `json:"version,omitempty"`
 	CatalogAppId NullableInt32 `json:"catalogAppId,omitempty"`
+	IsQuestion NullableBool `json:"isQuestion,omitempty"`
 }
 
 // NewGetCatalogAppValueAutocompleteCommand instantiates a new GetCatalogAppValueAutocompleteCommand object
@@ -168,6 +169,48 @@ func (o *GetCatalogAppValueAutocompleteCommand) UnsetCatalogAppId() {
 	o.CatalogAppId.Unset()
 }
 
+// GetIsQuestion returns the IsQuestion field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetCatalogAppValueAutocompleteCommand) GetIsQuestion() bool {
+	if o == nil || IsNil(o.IsQuestion.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IsQuestion.Get()
+}
+
+// GetIsQuestionOk returns a tuple with the IsQuestion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetCatalogAppValueAutocompleteCommand) GetIsQuestionOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsQuestion.Get(), o.IsQuestion.IsSet()
+}
+
+// HasIsQuestion returns a boolean if a field has been set.
+func (o *GetCatalogAppValueAutocompleteCommand) HasIsQuestion() bool {
+	if o != nil && o.IsQuestion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsQuestion gets a reference to the given NullableBool and assigns it to the IsQuestion field.
+func (o *GetCatalogAppValueAutocompleteCommand) SetIsQuestion(v bool) {
+	o.IsQuestion.Set(&v)
+}
+// SetIsQuestionNil sets the value for IsQuestion to be an explicit nil
+func (o *GetCatalogAppValueAutocompleteCommand) SetIsQuestionNil() {
+	o.IsQuestion.Set(nil)
+}
+
+// UnsetIsQuestion ensures that no value is present for IsQuestion, not even an explicit nil
+func (o *GetCatalogAppValueAutocompleteCommand) UnsetIsQuestion() {
+	o.IsQuestion.Unset()
+}
+
 func (o GetCatalogAppValueAutocompleteCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -186,6 +229,9 @@ func (o GetCatalogAppValueAutocompleteCommand) ToMap() (map[string]interface{}, 
 	}
 	if o.CatalogAppId.IsSet() {
 		toSerialize["catalogAppId"] = o.CatalogAppId.Get()
+	}
+	if o.IsQuestion.IsSet() {
+		toSerialize["isQuestion"] = o.IsQuestion.Get()
 	}
 	return toSerialize, nil
 }

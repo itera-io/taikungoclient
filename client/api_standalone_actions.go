@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"os"
 )
 
 
@@ -1368,6 +1369,7 @@ type ApiStandaloneactionsWindowsInstancePasswordRequest struct {
 	ApiService *StandaloneActionsAPIService
 	id *int32
 	key *string
+	config *os.File
 }
 
 func (r ApiStandaloneactionsWindowsInstancePasswordRequest) Id(id int32) ApiStandaloneactionsWindowsInstancePasswordRequest {
@@ -1377,6 +1379,11 @@ func (r ApiStandaloneactionsWindowsInstancePasswordRequest) Id(id int32) ApiStan
 
 func (r ApiStandaloneactionsWindowsInstancePasswordRequest) Key(key string) ApiStandaloneactionsWindowsInstancePasswordRequest {
 	r.key = &key
+	return r
+}
+
+func (r ApiStandaloneactionsWindowsInstancePasswordRequest) Config(config *os.File) ApiStandaloneactionsWindowsInstancePasswordRequest {
+	r.config = config
 	return r
 }
 
@@ -1417,16 +1424,9 @@ func (a *StandaloneActionsAPIService) StandaloneactionsWindowsInstancePasswordEx
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.id == nil {
-		return localVarReturnValue, nil, reportError("id is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "id", r.id, "")
-	if r.key != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "")
-	}
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"multipart/form-data"}
+	localVarHTTPContentTypes := []string{"multipart/form-data", "application/x-www-form-urlencoded"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -1441,6 +1441,27 @@ func (a *StandaloneActionsAPIService) StandaloneactionsWindowsInstancePasswordEx
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "id", r.id, "")
+	}
+	if r.key != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "key", r.key, "")
+	}
+	var configLocalVarFormFileName string
+	var configLocalVarFileName     string
+	var configLocalVarFileBytes    []byte
+
+	configLocalVarFormFileName = "config"
+	configLocalVarFile := r.config
+
+	if configLocalVarFile != nil {
+		fbs, _ := io.ReadAll(configLocalVarFile)
+
+		configLocalVarFileBytes = fbs
+		configLocalVarFileName = configLocalVarFile.Name()
+		configLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
 	}
 	if r.ctx != nil {
 		// API Key Authentication

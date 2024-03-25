@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -196,7 +197,12 @@ func (a *ProjectsAPIService) ProjectsAiAnalyzerExecute(r ApiProjectsAiAnalyzerRe
 type ApiProjectsAlertsRequest struct {
 	ctx context.Context
 	ApiService *ProjectsAPIService
-	projectId int32
+	projectAlertsQuery *ProjectAlertsQuery
+}
+
+func (r ApiProjectsAlertsRequest) ProjectAlertsQuery(projectAlertsQuery ProjectAlertsQuery) ApiProjectsAlertsRequest {
+	r.projectAlertsQuery = &projectAlertsQuery
+	return r
 }
 
 func (r ApiProjectsAlertsRequest) Execute() ([]ProjectDetailsErrorListDto, *http.Response, error) {
@@ -207,14 +213,12 @@ func (r ApiProjectsAlertsRequest) Execute() ([]ProjectDetailsErrorListDto, *http
 ProjectsAlerts Project alerts
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
  @return ApiProjectsAlertsRequest
 */
-func (a *ProjectsAPIService) ProjectsAlerts(ctx context.Context, projectId int32) ApiProjectsAlertsRequest {
+func (a *ProjectsAPIService) ProjectsAlerts(ctx context.Context) ApiProjectsAlertsRequest {
 	return ApiProjectsAlertsRequest{
 		ApiService: a,
 		ctx: ctx,
-		projectId: projectId,
 	}
 }
 
@@ -222,7 +226,7 @@ func (a *ProjectsAPIService) ProjectsAlerts(ctx context.Context, projectId int32
 //  @return []ProjectDetailsErrorListDto
 func (a *ProjectsAPIService) ProjectsAlertsExecute(r ApiProjectsAlertsRequest) ([]ProjectDetailsErrorListDto, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
+		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 		localVarReturnValue  []ProjectDetailsErrorListDto
@@ -233,15 +237,17 @@ func (a *ProjectsAPIService) ProjectsAlertsExecute(r ApiProjectsAlertsRequest) (
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/projects/alerts/{projectId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
+	localVarPath := localBasePath + "/api/v1/projects/alerts"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.projectAlertsQuery == nil {
+		return localVarReturnValue, nil, reportError("projectAlertsQuery is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -257,6 +263,8 @@ func (a *ProjectsAPIService) ProjectsAlertsExecute(r ApiProjectsAlertsRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.projectAlertsQuery
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1197,7 +1205,7 @@ type ApiProjectsListRequest struct {
 	sortBy *string
 	sortDirection *string
 	search *string
-	updatedAt *string
+	updatedAt *time.Time
 	searchId *string
 	id *int32
 	backupCredentialId *int32
@@ -1234,7 +1242,7 @@ func (r ApiProjectsListRequest) Search(search string) ApiProjectsListRequest {
 	return r
 }
 
-func (r ApiProjectsListRequest) UpdatedAt(updatedAt string) ApiProjectsListRequest {
+func (r ApiProjectsListRequest) UpdatedAt(updatedAt time.Time) ApiProjectsListRequest {
 	r.updatedAt = &updatedAt
 	return r
 }

@@ -47,6 +47,7 @@ type OpenstackCredentialsListDto struct {
 	IsAdmin *bool `json:"isAdmin,omitempty"`
 	IsInfra *bool `json:"isInfra,omitempty"`
 	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
+	SkipTlsFlag *bool `json:"skipTlsFlag,omitempty"`
 }
 
 // NewOpenstackCredentialsListDto instantiates a new OpenstackCredentialsListDto object
@@ -1101,6 +1102,38 @@ func (o *OpenstackCredentialsListDto) SetApplicationCredEnabled(v bool) {
 	o.ApplicationCredEnabled = &v
 }
 
+// GetSkipTlsFlag returns the SkipTlsFlag field value if set, zero value otherwise.
+func (o *OpenstackCredentialsListDto) GetSkipTlsFlag() bool {
+	if o == nil || IsNil(o.SkipTlsFlag) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipTlsFlag
+}
+
+// GetSkipTlsFlagOk returns a tuple with the SkipTlsFlag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenstackCredentialsListDto) GetSkipTlsFlagOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipTlsFlag) {
+		return nil, false
+	}
+	return o.SkipTlsFlag, true
+}
+
+// HasSkipTlsFlag returns a boolean if a field has been set.
+func (o *OpenstackCredentialsListDto) HasSkipTlsFlag() bool {
+	if o != nil && !IsNil(o.SkipTlsFlag) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipTlsFlag gets a reference to the given bool and assigns it to the SkipTlsFlag field.
+func (o *OpenstackCredentialsListDto) SetSkipTlsFlag(v bool) {
+	o.SkipTlsFlag = &v
+}
+
 func (o OpenstackCredentialsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1191,6 +1224,9 @@ func (o OpenstackCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ApplicationCredEnabled) {
 		toSerialize["applicationCredEnabled"] = o.ApplicationCredEnabled
+	}
+	if !IsNil(o.SkipTlsFlag) {
+		toSerialize["skipTlsFlag"] = o.SkipTlsFlag
 	}
 	return toSerialize, nil
 }

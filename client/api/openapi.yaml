@@ -2050,49 +2050,6 @@ paths:
       summary: Delete repo from organization
       tags:
       - App repositories
-  /api/v1/repository/disable:
-    post:
-      operationId: repository-disable
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DisableRepoCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Disable repo from organization
-      tags:
-      - App repositories
   /api/v1/repository/import:
     post:
       operationId: repository-import
@@ -2178,6 +2135,51 @@ paths:
       summary: Unbind repo from organization
       tags:
       - App repositories
+  /api/v1/repository/list:
+    get:
+      operationId: repository-list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve repo names
+      tags:
+      - App repositories
   /api/v1/repository/available:
     get:
       operationId: repository-available-list
@@ -2229,7 +2231,7 @@ paths:
       - explode: true
         in: query
         name: IsPrivate
-        required: true
+        required: false
         schema:
           type: boolean
         style: form
@@ -2276,6 +2278,14 @@ paths:
   /api/v1/repository/recommended:
     get:
       operationId: repository-recommended-list
+      parameters:
+      - explode: true
+        in: query
+        name: IsTaikun
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -2374,6 +2384,7 @@ paths:
               mode: token|autoscaling|keycloak
               accessKey: X9BZGP8TSTB7D4K6N9U8
               secretKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              local: false
             schema:
               $ref: '#/components/schemas/LoginCommand'
       responses:
@@ -2614,7 +2625,7 @@ paths:
               autoscalingGroupName: taikun
               minSize: 1
               maxSize: 1
-              diskSize: 30
+              diskSize: 32212254720
               flavor: m1.medium
               spotEnabled: false
             schema:
@@ -4558,8 +4569,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-03-12T00:13:56.3037153Z
-                  createdAt: 2024-03-12T00:13:56.3037153Z
+                  lastValidated: 2024-03-25T00:15:17.0696001Z
+                  createdAt: 2024-03-25T00:15:17.0696001Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -4664,14 +4675,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-03-12T00:13:56.3037153Z
+                    lastBackup: 2024-03-25T00:15:17.0696001Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-03-12T00:13:56.3037153Z
+                  createdAt: 2024-03-25T00:15:17.0696001Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-03-12T00:13:56.3037153Z
+                  lastBackup: 2024-03-25T00:15:17.0696001Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -4776,8 +4787,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-03-12T00:13:56.3037153Z
-                  expiration: 2024-03-12T00:13:56.3037153Z
+                  createdAt: 2024-03-25T00:15:17.0696001Z
+                  expiration: 2024-03-25T00:15:17.0696001Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -4881,7 +4892,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-03-12T00:13:56.3037153Z
+                  createdAt: 2024-03-25T00:15:17.0696001Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -4991,9 +5002,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-03-12T00:13:56.3037153+00:00
-                  startTimeStamp: 2024-03-12T00:13:56.3037153+00:00
-                  createdAt: 2024-03-12T00:13:56.3037153Z
+                  completionDateTime: 2024-03-25T00:15:17.0696001+00:00
+                  startTimeStamp: 2024-03-25T00:15:17.0696001+00:00
+                  createdAt: 2024-03-25T00:15:17.0696001Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -5050,6 +5061,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -5057,6 +5069,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -5203,6 +5216,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -5210,6 +5224,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -5444,6 +5459,49 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Lock catalog
+      tags:
+      - Catalog
+  /api/v1/catalog/makedefault:
+    post:
+      operationId: catalog-make-default
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CatalogMakeDefaultCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Make catalog default
       tags:
       - Catalog
   /api/v1/catalog/list:
@@ -5728,6 +5786,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateCatalogAppCommand'
       responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogAppDetailsDto'
+          description: OK
         "400":
           content:
             application/json:
@@ -5854,6 +5918,83 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Catalog App details
+      tags:
+      - Catalog app
+  /api/v1/catalog-app/list:
+    get:
+      operationId: catalog-app-list
+      parameters:
+      - explode: true
+        in: query
+        name: CatalogId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogAppList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Catalog App list
       tags:
       - Catalog app
   /api/v1/catalog-app/params/{catalogAppId}:
@@ -6007,7 +6148,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ArtifactUrlCheckerCommand'
-        required: true
       responses:
         "400":
           content:
@@ -6171,6 +6311,48 @@ paths:
       summary: Check valid dns format
       tags:
       - Checker
+  /api/v1/checker/helm:
+    post:
+      operationId: checker-helm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelmCredentialCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Check helm credential
+      tags:
+      - Checker
   /api/v1/checker/keycloak:
     post:
       operationId: checker-keycloak
@@ -6220,18 +6402,18 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/CheckKubeConfigCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CheckKubeConfigCommand'
       responses:
         "200":
           content:
             application/json:
               schema:
                 type: boolean
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -6261,7 +6443,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Check kube config
       tags:
       - Checker
   /api/v1/checker/ntp:
@@ -6663,18 +6846,18 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/CheckGoogleCloudCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CheckGoogleCloudCommand'
       responses:
         "200":
           content:
             application/json:
               schema:
                 type: boolean
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -6704,7 +6887,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Check google credentials
       tags:
       - Checker
   /api/v1/checker/openstack:
@@ -6925,6 +7109,49 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Check tanzu credential
+      tags:
+      - Checker
+  /api/v1/checker/zadara:
+    post:
+      operationId: checker-zadara
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckZadaraCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Check zadara credential
       tags:
       - Checker
   /api/v1/cloudcredentials/lockmanager:
@@ -7165,6 +7392,14 @@ paths:
         required: false
         schema:
           type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -8785,17 +9020,137 @@ paths:
       summary: Retrieve vsphere flavors
       tags:
       - Flavors
+  /api/v1/flavors/zadara/{cloudId}:
+    get:
+      operationId: flavors-zadara-instance-types
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: StartRam
+        required: false
+        schema:
+          format: double
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: EndRam
+        required: false
+        schema:
+          format: double
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: StartCpu
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: EndCpu
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AwsFlavorList'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Server Error
+      tags:
+      - Flavors
   /api/v1/googlecloud/billing-accounts:
     post:
       operationId: googlecloud-billing-account-list
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/GoogleBillingAccountListCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GoogleBillingAccountListCommand'
       responses:
         "200":
           content:
@@ -8807,7 +9162,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -8837,79 +9192,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve google billing accounts list
       tags:
       - Google
   /api/v1/googlecloud/create:
     post:
       operationId: googlecloud-create
-      parameters:
-      - explode: true
-        in: query
-        name: Name
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: ImportProject
-        required: true
-        schema:
-          type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: FolderId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: BillingAccountId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: AzCount
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Region
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/CreateGoogleCredentialCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateGoogleCredentialCommand'
       responses:
         "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -8939,7 +9243,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Create google cloud credential
       tags:
       - Google
   /api/v1/googlecloud/regions:
@@ -8948,11 +9253,11 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              file:
-                style: form
             schema:
-              $ref: '#/components/schemas/googlecloud_region_list_request'
+              $ref: '#/components/schemas/GoogleRegionListCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GoogleRegionListCommand'
       responses:
         "200":
           content:
@@ -8961,7 +9266,7 @@ paths:
                 items:
                   type: string
                 type: array
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -8991,36 +9296,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve google region list
       tags:
       - Google
-  /api/v1/googlecloud/zones/{region}:
+  /api/v1/googlecloud/zones:
     post:
       operationId: googlecloud-zone-list
-      parameters:
-      - explode: false
-        in: path
-        name: region
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: true
-        in: query
-        name: cloudId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/GoogleZoneListCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GoogleZoneListCommand'
       responses:
         "200":
           content:
@@ -9031,7 +9321,7 @@ paths:
                 totalCount: 1
               schema:
                 $ref: '#/components/schemas/AzResult'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -9061,7 +9351,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Google zones list
       tags:
       - Google
   /api/v1/googlecloud/list:
@@ -10224,6 +10515,78 @@ paths:
       summary: Azure personal images
       tags:
       - Images
+  /api/v1/images/zadara/personal/{cloudId}:
+    get:
+      operationId: images-zadara-personal-images
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: "1"
+                name: taikun
+              schema:
+                items:
+                  $ref: '#/components/schemas/CommonStringBasedDropdownDto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Zadara personal images
+      tags:
+      - Images
   /api/v1/images/proxmox/{cloudId}:
     get:
       operationId: images-proxmox-images
@@ -10513,6 +10876,110 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve vsphere images
+      tags:
+      - Images
+  /api/v1/images/zadara/{cloudId}:
+    post:
+      operationId: images-zadara-images-list
+      parameters:
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Latest
+        required: true
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicImageList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve zadara images
       tags:
       - Images
   /api/v1/infra/details:
@@ -11080,9 +11547,9 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
+            application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/InteractiveShellDto'
           description: OK
         "400":
           content:
@@ -11223,8 +11690,9 @@ paths:
       responses:
         "200":
           content:
-            application/json:
-              schema: {}
+            text/plain:
+              schema:
+                type: string
           description: OK
         "400":
           content:
@@ -12806,6 +13274,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -12813,6 +13282,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       responses:
@@ -15057,6 +15527,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -15064,6 +15535,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -15189,6 +15661,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -15196,6 +15669,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -15978,7 +16452,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OpenshiftCreateCommand'
-        required: true
       responses:
         "400":
           content:
@@ -16019,11 +16492,11 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/OpenshiftPullSecretCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OpenshiftPullSecretCommand'
       responses:
         "400":
           content:
@@ -16054,7 +16527,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Validate openshift pull secret
       tags:
       - Openshift
   /api/v1/openshift/storage-class:
@@ -16063,11 +16537,11 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/OpenshiftStorageListCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OpenshiftStorageListCommand'
       responses:
         "200":
           content:
@@ -16076,7 +16550,7 @@ paths:
                 items:
                   type: string
                 type: array
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -16106,7 +16580,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Get openshift storage class list
       tags:
       - Openshift
   /api/v1/openshift/validate:
@@ -16115,11 +16590,11 @@ paths:
       requestBody:
         content:
           multipart/form-data:
-            encoding:
-              config:
-                style: form
             schema:
-              $ref: '#/components/schemas/checker_kube_config_request'
+              $ref: '#/components/schemas/OpenshiftValidateCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OpenshiftValidateCommand'
       responses:
         "400":
           content:
@@ -16150,7 +16625,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Validate openshift kube config file
       tags:
       - Openshift
   /api/v1/openshift/list:
@@ -17799,6 +18275,20 @@ paths:
           format: int32
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: IsPrivate
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: FilterBy
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -18550,6 +19040,14 @@ paths:
           format: int32
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: ProjectId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -19185,14 +19683,16 @@ paths:
         name: StartRam
         required: false
         schema:
-          type: string
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
         name: EndRam
         required: false
         schema:
-          type: string
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
@@ -19630,6 +20130,7 @@ paths:
         name: UpdatedAt
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -20423,18 +20924,15 @@ paths:
       summary: Visibility of project actions
       tags:
       - Projects
-  /api/v1/projects/alerts/{projectId}:
-    get:
+  /api/v1/projects/alerts:
+    post:
       operationId: projects-alerts
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectAlertsQuery'
         required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
       responses:
         "200":
           content:
@@ -20516,6 +21014,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -20523,6 +21022,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -20632,6 +21132,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -20639,6 +21140,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -24853,28 +25355,14 @@ paths:
   /api/v1/standaloneactions/password:
     post:
       operationId: standaloneactions-windows-instance-password
-      parameters:
-      - explode: true
-        in: query
-        name: id
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: key
-        required: false
-        schema:
-          type: string
-        style: form
       requestBody:
         content:
           multipart/form-data:
             schema:
-              format: binary
-              type: string
+              $ref: '#/components/schemas/WindowsInstancePasswordCommand'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WindowsInstancePasswordCommand'
       responses:
         "200":
           content:
@@ -26418,6 +26906,7 @@ paths:
         name: StartDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -26425,6 +26914,7 @@ paths:
         name: EndDate
         required: false
         schema:
+          format: date-time
           type: string
         style: form
       - explode: true
@@ -28306,6 +28796,403 @@ paths:
       summary: Retrieve list of vsphere cloud credentials
       tags:
       - Vsphere cloud credential
+  /api/v1/zadara/create:
+    post:
+      operationId: zadara-create
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: taikun
+              zadaraUrl: https://www.google.com
+              zadaraSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              zadaraAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              zadaraRegion: ap-south-1
+              organizationId: 1
+              azCount: 1
+              zadaraContinent: Europe
+              zadaraVolumeType: taikun
+            schema:
+              $ref: '#/components/schemas/CreateZadaraCloudCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Add Zadara credentials
+      tags:
+      - Zadara cloud credential
+  /api/v1/zadara/regions:
+    post:
+      operationId: zadara-regionlist
+      requestBody:
+        content:
+          application/json:
+            example:
+              url: https://www.google.com
+              zadaraAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              zadaraSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+            schema:
+              $ref: '#/components/schemas/ZadaraRegionListCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - name: taikun
+                region: ap-south-1
+              schema:
+                items:
+                  $ref: '#/components/schemas/AwsRegionDto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve zadara regions list
+      tags:
+      - Zadara cloud credential
+  /api/v1/zadara/update:
+    post:
+      operationId: zadara-update
+      requestBody:
+        content:
+          application/json:
+            example:
+              id: 1
+              name: taikun
+              zadaraSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              zadaraAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+            schema:
+              $ref: '#/components/schemas/UpdateZadaraCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Update zadara cloud credential
+      tags:
+      - Zadara cloud credential
+  /api/v1/zadara/zones:
+    post:
+      operationId: zadara-zonelist
+      requestBody:
+        content:
+          application/json:
+            example:
+              url: https://www.google.com
+              zadaraAccessKeyId: X9BZGP8TSTB7D4K6N9U8
+              zadaraSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              cloudId: 1
+            schema:
+              $ref: '#/components/schemas/ZadaraAvailabilityZonesCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                data:
+                - eu-west-1a
+                totalCount: 1
+              schema:
+                $ref: '#/components/schemas/AzResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve zadara zone list
+      tags:
+      - Zadara cloud credential
+  /api/v1/zadara/list:
+    get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>zadaraRegion</i>, <i>organizationName</i>, <i>createdAt</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>name</i>, <i>organizationName</i></ul></div>
+      operationId: zadara-list
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 50
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                data:
+                - id: 1
+                  projectCount: 1
+                  isLocked: false
+                  name: taikun
+                  region: null
+                  availabilityZones: null
+                  availabilityZonesCount: 0
+                  projects:
+                  - id: 1
+                    name: taikun
+                  createdBy: taikun
+                  lastModified: 2023-11-21T12:09:23Z
+                  lastModifiedBy: taikun
+                  isDefault: false
+                  organizationId: 1
+                  organizationName: taikun.cloud a.s.
+                  createdAt: 2023-11-21T12:09:23Z
+                  continentName: Europe
+                  zadaraApiUrl: null
+                  zadaraVolumeType: null
+                totalCount: 1
+              schema:
+                $ref: '#/components/schemas/ZadaraCredentialList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve list of Zadara cloud credentials
+      tags:
+      - Zadara cloud credential
+  /api/v1/zadara/volume-types:
+    get:
+      operationId: zadara-volume-type-list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve volume type list
+      tags:
+      - Zadara cloud credential
 components:
   schemas:
     AccessProfilesList:
@@ -28618,6 +29505,7 @@ components:
       - DisabledAi
       - StartedDisableAi
       - EnableDisableMaintenanceMode
+      - UpdateVmFlavor
       type: string
     AiCredentials:
       additionalProperties: false
@@ -29363,23 +30251,23 @@ components:
         data:
         - organizationName: organizationName
           isBound: true
+          isTaikun: true
           displayName: displayName
           repositoryId: repositoryId
           name: name
           official: true
           disabled: true
-          trueUrl: trueUrl
           hasCatalogApp: true
           verifiedPublisher: true
           url: url
         - organizationName: organizationName
           isBound: true
+          isTaikun: true
           displayName: displayName
           repositoryId: repositoryId
           name: name
           official: true
           disabled: true
-          trueUrl: trueUrl
           hasCatalogApp: true
           verifiedPublisher: true
           url: url
@@ -29454,12 +30342,12 @@ components:
       example:
         organizationName: organizationName
         isBound: true
+        isTaikun: true
         displayName: displayName
         repositoryId: repositoryId
         name: name
         official: true
         disabled: true
-        trueUrl: trueUrl
         hasCatalogApp: true
         verifiedPublisher: true
         url: url
@@ -29487,11 +30375,10 @@ components:
           type: boolean
         isBound:
           type: boolean
+        isTaikun:
+          type: boolean
         hasCatalogApp:
           type: boolean
-        trueUrl:
-          nullable: true
-          type: string
       type: object
     ArtifactUrlCheckerCommand:
       additionalProperties: false
@@ -29668,18 +30555,19 @@ components:
         packageId: packageId
         description: description
         signed: true
-        stars: 5
+        stars: 2
         repository:
           scannerDisabled: true
+          isImported: true
           organizationName: organizationName
           organizationDisplayName: organizationDisplayName
-          kind: 4
+          kind: 7
           name: name
           repositoryId: repositoryId
           official: true
           verifiedPublisher: true
           url: url
-        catalogAppId: 1
+        catalogAppId: 5
         version: version
         installedInstanceCount: 5
         isLocked: true
@@ -29687,11 +30575,11 @@ components:
         isAdded: true
         normalizedName: normalizedName
         securityReportSummary:
-          high: 7
-          critical: 2
-          low: 2
-          medium: 9
-          unknown: 3
+          high: 9
+          critical: 4
+          low: 7
+          medium: 3
+          unknown: 2
         ts: ts
       properties:
         packageId:
@@ -29753,18 +30641,19 @@ components:
           packageId: packageId
           description: description
           signed: true
-          stars: 5
+          stars: 2
           repository:
             scannerDisabled: true
+            isImported: true
             organizationName: organizationName
             organizationDisplayName: organizationDisplayName
-            kind: 4
+            kind: 7
             name: name
             repositoryId: repositoryId
             official: true
             verifiedPublisher: true
             url: url
-          catalogAppId: 1
+          catalogAppId: 5
           version: version
           installedInstanceCount: 5
           isLocked: true
@@ -29772,11 +30661,11 @@ components:
           isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
-            high: 7
-            critical: 2
-            low: 2
-            medium: 9
-            unknown: 3
+            high: 9
+            critical: 4
+            low: 7
+            medium: 3
+            unknown: 2
           ts: ts
         - appVersion: appVersion
           logoImageId: logoImageId
@@ -29784,18 +30673,19 @@ components:
           packageId: packageId
           description: description
           signed: true
-          stars: 5
+          stars: 2
           repository:
             scannerDisabled: true
+            isImported: true
             organizationName: organizationName
             organizationDisplayName: organizationDisplayName
-            kind: 4
+            kind: 7
             name: name
             repositoryId: repositoryId
             official: true
             verifiedPublisher: true
             url: url
-          catalogAppId: 1
+          catalogAppId: 5
           version: version
           installedInstanceCount: 5
           isLocked: true
@@ -29803,11 +30693,11 @@ components:
           isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
-            high: 7
-            critical: 2
-            low: 2
-            medium: 9
-            unknown: 3
+            high: 9
+            critical: 4
+            low: 7
+            medium: 3
+            unknown: 2
           ts: ts
         totalCount: 0
       properties:
@@ -29889,6 +30779,9 @@ components:
           description: ""
           windowsPrice: windowsPrice
           linuxPrice: linuxPrice
+          zones:
+          - zones
+          - zones
           ram: 0
           linuxSpotPrice: linuxSpotPrice
         - windowsSpotPrice: windowsSpotPrice
@@ -29897,6 +30790,9 @@ components:
           description: ""
           windowsPrice: windowsPrice
           linuxPrice: linuxPrice
+          zones:
+          - zones
+          - zones
           ram: 0
           linuxSpotPrice: linuxSpotPrice
         totalCount: 1
@@ -29919,6 +30815,9 @@ components:
         description: ""
         windowsPrice: windowsPrice
         linuxPrice: linuxPrice
+        zones:
+        - zones
+        - zones
         ram: 0
         linuxSpotPrice: linuxSpotPrice
       properties:
@@ -29945,6 +30844,11 @@ components:
         linuxSpotPrice:
           nullable: true
           type: string
+        zones:
+          items:
+            type: string
+          nullable: true
+          type: array
       type: object
     AwsImagesPostListCommand:
       additionalProperties: false
@@ -31140,17 +32044,10 @@ components:
       additionalProperties: false
       example:
         data:
-        - isGoogle: true
-          cpu: 6
-          isProxmox: true
-          isTanzu: true
+        - cpu: 6
           windowsPrice: windowsPrice
-          isAws: true
-          isVsphere: true
-          isOpenshift: true
           maxDataDiskCount: 5
           windowsSpotPrice: windowsSpotPrice
-          isOpenstack: true
           cloudType: null
           existsLinuxSpotPrice: true
           name: name
@@ -31158,21 +32055,13 @@ components:
           projectName: projectName
           linuxPrice: linuxPrice
           projectId: 5
-          isAzure: true
           ram: 1
           existsWindowsSpotPrice: true
           linuxSpotPrice: linuxSpotPrice
-        - isGoogle: true
-          cpu: 6
-          isProxmox: true
-          isTanzu: true
+        - cpu: 6
           windowsPrice: windowsPrice
-          isAws: true
-          isVsphere: true
-          isOpenshift: true
           maxDataDiskCount: 5
           windowsSpotPrice: windowsSpotPrice
-          isOpenstack: true
           cloudType: null
           existsLinuxSpotPrice: true
           name: name
@@ -31180,7 +32069,6 @@ components:
           projectName: projectName
           linuxPrice: linuxPrice
           projectId: 5
-          isAzure: true
           ram: 1
           existsWindowsSpotPrice: true
           linuxSpotPrice: linuxSpotPrice
@@ -31198,17 +32086,10 @@ components:
     BoundFlavorsForProjectsListDto:
       additionalProperties: false
       example:
-        isGoogle: true
         cpu: 6
-        isProxmox: true
-        isTanzu: true
         windowsPrice: windowsPrice
-        isAws: true
-        isVsphere: true
-        isOpenshift: true
         maxDataDiskCount: 5
         windowsSpotPrice: windowsSpotPrice
-        isOpenstack: true
         cloudType: null
         existsLinuxSpotPrice: true
         name: name
@@ -31216,7 +32097,6 @@ components:
         projectName: projectName
         linuxPrice: linuxPrice
         projectId: 5
-        isAzure: true
         ram: 1
         existsWindowsSpotPrice: true
         linuxSpotPrice: linuxSpotPrice
@@ -31237,22 +32117,6 @@ components:
           format: int32
           nullable: true
           type: integer
-        isAzure:
-          type: boolean
-        isAws:
-          type: boolean
-        isOpenstack:
-          type: boolean
-        isGoogle:
-          type: boolean
-        isProxmox:
-          type: boolean
-        isTanzu:
-          type: boolean
-        isOpenshift:
-          type: boolean
-        isVsphere:
-          type: boolean
         projectName:
           nullable: true
           type: string
@@ -31285,7 +32149,6 @@ components:
         data:
         - imageId: imageId
           size: 1.4658129805029452
-          isOpenstack: true
           cloudType: null
           cloudId: 5
           name: name
@@ -31293,11 +32156,8 @@ components:
           id: 0
           projectName: projectName
           projectId: 6
-          isAzure: true
-          isAws: true
         - imageId: imageId
           size: 1.4658129805029452
-          isOpenstack: true
           cloudType: null
           cloudId: 5
           name: name
@@ -31305,8 +32165,6 @@ components:
           id: 0
           projectName: projectName
           projectId: 6
-          isAzure: true
-          isAws: true
         totalCount: 5
       properties:
         data:
@@ -31323,7 +32181,6 @@ components:
       example:
         imageId: imageId
         size: 1.4658129805029452
-        isOpenstack: true
         cloudType: null
         cloudId: 5
         name: name
@@ -31331,8 +32188,6 @@ components:
         id: 0
         projectName: projectName
         projectId: 6
-        isAzure: true
-        isAws: true
       properties:
         id:
           format: int32
@@ -31344,12 +32199,6 @@ components:
           format: int32
           nullable: true
           type: integer
-        isAzure:
-          type: boolean
-        isAws:
-          type: boolean
-        isOpenstack:
-          type: boolean
         projectName:
           nullable: true
           type: string
@@ -31389,6 +32238,25 @@ components:
         hypervisor:
           nullable: true
           type: string
+      type: object
+    ButtonStatusDto:
+      additionalProperties: false
+      example:
+        reasons:
+        - reasons
+        - reasons
+        hidden: true
+        enable: true
+      properties:
+        enable:
+          type: boolean
+        reasons:
+          items:
+            type: string
+          nullable: true
+          type: array
+        hidden:
+          type: boolean
       type: object
     CBackupDto:
       additionalProperties: false
@@ -31593,19 +32461,21 @@ components:
         - isLocked: true
           name: name
           namespace: namespace
+          autoSync: true
           id: 5
           projectName: projectName
           projectId: 5
           version: version
-          status: status
+          status: null
         - isLocked: true
           name: name
           namespace: namespace
+          autoSync: true
           id: 5
           projectName: projectName
           projectId: 5
           version: version
-          status: status
+          status: null
         id: 0
         logoId: logoId
       properties:
@@ -31663,6 +32533,85 @@ components:
         official:
           type: boolean
         hasJsonSchema:
+          type: boolean
+      type: object
+    CatalogAppList:
+      additionalProperties: false
+      example:
+        data:
+        - catalogName: catalogName
+          repoId: 6
+          catalogId: 1
+          repoName: repoName
+          isLocked: true
+          name: name
+          packageId: packageId
+          logo: logo
+          id: 0
+          version: version
+        - catalogName: catalogName
+          repoId: 6
+          catalogId: 1
+          repoName: repoName
+          isLocked: true
+          name: name
+          packageId: packageId
+          logo: logo
+          id: 0
+          version: version
+        totalCount: 5
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CatalogAppListDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
+    CatalogAppListDto:
+      additionalProperties: false
+      example:
+        catalogName: catalogName
+        repoId: 6
+        catalogId: 1
+        repoName: repoName
+        isLocked: true
+        name: name
+        packageId: packageId
+        logo: logo
+        id: 0
+        version: version
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        repoId:
+          format: int32
+          type: integer
+        repoName:
+          nullable: true
+          type: string
+        catalogId:
+          format: int32
+          type: integer
+        catalogName:
+          nullable: true
+          type: string
+        packageId:
+          nullable: true
+          type: string
+        version:
+          nullable: true
+          type: string
+        logo:
+          nullable: true
+          type: string
+        isLocked:
           type: boolean
       type: object
     CatalogAppLockManagement:
@@ -31736,6 +32685,7 @@ components:
     CatalogDropdownDto:
       additionalProperties: false
       example:
+        isDefault: true
         name: name
         id: 0
         packageIds:
@@ -31753,6 +32703,8 @@ components:
             type: string
           nullable: true
           type: array
+        isDefault:
+          type: boolean
       type: object
     CatalogList:
       additionalProperties: false
@@ -31766,18 +32718,19 @@ components:
             packageId: packageId
             description: description
             signed: true
-            stars: 5
+            stars: 2
             repository:
               scannerDisabled: true
+              isImported: true
               organizationName: organizationName
               organizationDisplayName: organizationDisplayName
-              kind: 4
+              kind: 7
               name: name
               repositoryId: repositoryId
               official: true
               verifiedPublisher: true
               url: url
-            catalogAppId: 1
+            catalogAppId: 5
             version: version
             installedInstanceCount: 5
             isLocked: true
@@ -31785,11 +32738,11 @@ components:
             isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
-              high: 7
-              critical: 2
-              low: 2
-              medium: 9
-              unknown: 3
+              high: 9
+              critical: 4
+              low: 7
+              medium: 3
+              unknown: 2
             ts: ts
           - appVersion: appVersion
             logoImageId: logoImageId
@@ -31797,18 +32750,19 @@ components:
             packageId: packageId
             description: description
             signed: true
-            stars: 5
+            stars: 2
             repository:
               scannerDisabled: true
+              isImported: true
               organizationName: organizationName
               organizationDisplayName: organizationDisplayName
-              kind: 4
+              kind: 7
               name: name
               repositoryId: repositoryId
               official: true
               verifiedPublisher: true
               url: url
-            catalogAppId: 1
+            catalogAppId: 5
             version: version
             installedInstanceCount: 5
             isLocked: true
@@ -31816,20 +32770,33 @@ components:
             isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
-              high: 7
-              critical: 2
-              low: 2
-              medium: 9
-              unknown: 3
+              high: 9
+              critical: 4
+              low: 7
+              medium: 3
+              unknown: 2
             ts: ts
+          isDefault: true
           isLocked: true
           name: name
           description: description
           boundProjects:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
+          - cloudType: null
+            isLocked: true
+            name: name
+            health: null
+            id: 1
+            maintenanceModeEnabled: true
+            kubernetesVersion: kubernetesVersion
+            status: null
+          - cloudType: null
+            isLocked: true
+            name: name
+            health: null
+            id: 1
+            maintenanceModeEnabled: true
+            kubernetesVersion: kubernetesVersion
+            status: null
           id: 0
           packageIds:
           - packageIds
@@ -31842,18 +32809,19 @@ components:
             packageId: packageId
             description: description
             signed: true
-            stars: 5
+            stars: 2
             repository:
               scannerDisabled: true
+              isImported: true
               organizationName: organizationName
               organizationDisplayName: organizationDisplayName
-              kind: 4
+              kind: 7
               name: name
               repositoryId: repositoryId
               official: true
               verifiedPublisher: true
               url: url
-            catalogAppId: 1
+            catalogAppId: 5
             version: version
             installedInstanceCount: 5
             isLocked: true
@@ -31861,11 +32829,11 @@ components:
             isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
-              high: 7
-              critical: 2
-              low: 2
-              medium: 9
-              unknown: 3
+              high: 9
+              critical: 4
+              low: 7
+              medium: 3
+              unknown: 2
             ts: ts
           - appVersion: appVersion
             logoImageId: logoImageId
@@ -31873,18 +32841,19 @@ components:
             packageId: packageId
             description: description
             signed: true
-            stars: 5
+            stars: 2
             repository:
               scannerDisabled: true
+              isImported: true
               organizationName: organizationName
               organizationDisplayName: organizationDisplayName
-              kind: 4
+              kind: 7
               name: name
               repositoryId: repositoryId
               official: true
               verifiedPublisher: true
               url: url
-            catalogAppId: 1
+            catalogAppId: 5
             version: version
             installedInstanceCount: 5
             isLocked: true
@@ -31892,25 +32861,38 @@ components:
             isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
-              high: 7
-              critical: 2
-              low: 2
-              medium: 9
-              unknown: 3
+              high: 9
+              critical: 4
+              low: 7
+              medium: 3
+              unknown: 2
             ts: ts
+          isDefault: true
           isLocked: true
           name: name
           description: description
           boundProjects:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
+          - cloudType: null
+            isLocked: true
+            name: name
+            health: null
+            id: 1
+            maintenanceModeEnabled: true
+            kubernetesVersion: kubernetesVersion
+            status: null
+          - cloudType: null
+            isLocked: true
+            name: name
+            health: null
+            id: 1
+            maintenanceModeEnabled: true
+            kubernetesVersion: kubernetesVersion
+            status: null
           id: 0
           packageIds:
           - packageIds
           - packageIds
-        totalCount: 7
+        totalCount: 1
       properties:
         data:
           items:
@@ -31932,18 +32914,19 @@ components:
           packageId: packageId
           description: description
           signed: true
-          stars: 5
+          stars: 2
           repository:
             scannerDisabled: true
+            isImported: true
             organizationName: organizationName
             organizationDisplayName: organizationDisplayName
-            kind: 4
+            kind: 7
             name: name
             repositoryId: repositoryId
             official: true
             verifiedPublisher: true
             url: url
-          catalogAppId: 1
+          catalogAppId: 5
           version: version
           installedInstanceCount: 5
           isLocked: true
@@ -31951,11 +32934,11 @@ components:
           isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
-            high: 7
-            critical: 2
-            low: 2
-            medium: 9
-            unknown: 3
+            high: 9
+            critical: 4
+            low: 7
+            medium: 3
+            unknown: 2
           ts: ts
         - appVersion: appVersion
           logoImageId: logoImageId
@@ -31963,18 +32946,19 @@ components:
           packageId: packageId
           description: description
           signed: true
-          stars: 5
+          stars: 2
           repository:
             scannerDisabled: true
+            isImported: true
             organizationName: organizationName
             organizationDisplayName: organizationDisplayName
-            kind: 4
+            kind: 7
             name: name
             repositoryId: repositoryId
             official: true
             verifiedPublisher: true
             url: url
-          catalogAppId: 1
+          catalogAppId: 5
           version: version
           installedInstanceCount: 5
           isLocked: true
@@ -31982,20 +32966,33 @@ components:
           isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
-            high: 7
-            critical: 2
-            low: 2
-            medium: 9
-            unknown: 3
+            high: 9
+            critical: 4
+            low: 7
+            medium: 3
+            unknown: 2
           ts: ts
+        isDefault: true
         isLocked: true
         name: name
         description: description
         boundProjects:
-        - name: name
-          id: 0
-        - name: name
-          id: 0
+        - cloudType: null
+          isLocked: true
+          name: name
+          health: null
+          id: 1
+          maintenanceModeEnabled: true
+          kubernetesVersion: kubernetesVersion
+          status: null
+        - cloudType: null
+          isLocked: true
+          name: name
+          health: null
+          id: 1
+          maintenanceModeEnabled: true
+          kubernetesVersion: kubernetesVersion
+          status: null
         id: 0
         packageIds:
         - packageIds
@@ -32012,6 +33009,8 @@ components:
           type: string
         isLocked:
           type: boolean
+        isDefault:
+          type: boolean
         organizationId:
           format: int32
           type: integer
@@ -32022,7 +33021,7 @@ components:
           type: array
         boundProjects:
           items:
-            $ref: '#/components/schemas/CommonDropdownDto'
+            $ref: '#/components/schemas/ProjectCatalogDto'
           nullable: true
           type: array
         boundApplications:
@@ -32043,6 +33042,15 @@ components:
         mode:
           nullable: true
           type: string
+      type: object
+    CatalogMakeDefaultCommand:
+      additionalProperties: false
+      example:
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
       type: object
     Chart:
       additionalProperties: false
@@ -32118,6 +33126,22 @@ components:
         cloudId:
           format: int32
           type: integer
+      type: object
+    CheckGoogleCloudCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+      type: object
+    CheckKubeConfigCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
       type: object
     CheckOpenstackCommand:
       additionalProperties: false
@@ -32212,6 +33236,23 @@ components:
           nullable: true
           type: integer
         volumeType:
+          nullable: true
+          type: string
+      type: object
+    CheckZadaraCommand:
+      additionalProperties: false
+      example:
+        zadaraAccessKeyId: zadaraAccessKeyId
+        zadaraSecretAccessKey: zadaraSecretAccessKey
+        zadaraUrl: zadaraUrl
+      properties:
+        zadaraSecretAccessKey:
+          nullable: true
+          type: string
+        zadaraAccessKeyId:
+          nullable: true
+          type: string
+        zadaraUrl:
           nullable: true
           type: string
       type: object
@@ -32366,6 +33407,7 @@ components:
       - TANZU
       - OPENSHIFT
       - VSPHERE
+      - ZADARA
       type: string
     CommitStandAloneVmCommand:
       additionalProperties: false
@@ -33029,6 +34071,35 @@ components:
           format: int32
           type: integer
       type: object
+    CreateGoogleCredentialCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        importProject:
+          type: boolean
+        folderId:
+          nullable: true
+          type: string
+        billingAccountId:
+          nullable: true
+          type: string
+        azCount:
+          format: int32
+          type: integer
+        region:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
     CreateKubeConfigCommand:
       additionalProperties: false
       example:
@@ -33187,6 +34258,7 @@ components:
         openStackDomain: openStackDomain
         openStackInternalSubnetId: openStackInternalSubnetId
         name: name
+        skipTlsFlag: true
         openStackAvailabilityZone: openStackAvailabilityZone
         openStackRegion: openStackRegion
         openStackImportNetwork: true
@@ -33237,6 +34309,8 @@ components:
         applicationCredEnabled:
           type: boolean
         isAdmin:
+          type: boolean
+        skipTlsFlag:
           type: boolean
       type: object
     CreateProjectAppCommand:
@@ -33511,6 +34585,7 @@ components:
           beginAllocationRange: beginAllocationRange
           gateway: gateway
         name: name
+        skipTlsFlag: true
         hypervisors:
         - hypervisors
         - hypervisors
@@ -33560,6 +34635,8 @@ components:
           $ref: '#/components/schemas/CreateProxmoxNetworkDto'
         privateNetwork:
           $ref: '#/components/schemas/CreateProxmoxNetworkDto'
+        skipTlsFlag:
+          type: boolean
       type: object
     CreateProxmoxNetworkDto:
       additionalProperties: false
@@ -33913,6 +34990,7 @@ components:
         organizationId: 0
         password: password
         name: name
+        skipTlsFlag: true
         hypervisors:
         - hypervisors
         - hypervisors
@@ -33964,6 +35042,8 @@ components:
           $ref: '#/components/schemas/CreateVsphereNetworkDto'
         privateNetwork:
           $ref: '#/components/schemas/CreateVsphereNetworkDto'
+        skipTlsFlag:
+          type: boolean
       type: object
     CreateVsphereNetworkDto:
       additionalProperties: false
@@ -33994,10 +35074,53 @@ components:
           nullable: true
           type: string
       type: object
+    CreateZadaraCloudCommand:
+      additionalProperties: false
+      example:
+        organizationId: 0
+        zadaraAccessKeyId: zadaraAccessKeyId
+        azCount: 6
+        name: name
+        zadaraContinent: zadaraContinent
+        zadaraRegion: zadaraRegion
+        zadaraUrl: zadaraUrl
+        zadaraSecretAccessKey: zadaraSecretAccessKey
+        zadaraVolumeType: zadaraVolumeType
+      properties:
+        name:
+          nullable: true
+          type: string
+        zadaraUrl:
+          nullable: true
+          type: string
+        zadaraSecretAccessKey:
+          nullable: true
+          type: string
+        zadaraAccessKeyId:
+          nullable: true
+          type: string
+        zadaraRegion:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        azCount:
+          format: int32
+          type: integer
+        zadaraContinent:
+          nullable: true
+          type: string
+        zadaraVolumeType:
+          nullable: true
+          type: string
+      type: object
     CredentialChartDto:
       additionalProperties: false
       example:
         vsphere: 7
+        zadara: 1
         openshift: 4
         openstack: 7
         google: 9
@@ -34029,6 +35152,9 @@ components:
           format: int32
           type: integer
         vsphere:
+          format: int32
+          type: integer
+        zadara:
           format: int32
           type: integer
         totalCount:
@@ -34109,6 +35235,7 @@ components:
           organizationId: 1
           createdAt: createdAt
           isLocked: true
+          skipTlsFlag: true
           id: 0
           organizationName: organizationName
           isInfra: true
@@ -34140,6 +35267,7 @@ components:
           organizationId: 1
           createdAt: createdAt
           isLocked: true
+          skipTlsFlag: true
           id: 0
           organizationName: organizationName
           isInfra: true
@@ -34464,7 +35592,7 @@ components:
             name: name
             id: 1
         servers:
-          totalOpenshiftCount: 6
+          totalOpenshiftCount: 1
           waiting:
           - names:
             - names
@@ -34487,7 +35615,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalGoogleCount: 6
+          totalGoogleCount: 3
           tanzu:
           - names:
             - names
@@ -34499,7 +35627,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalCount: 1
+          totalCount: 6
           updating:
           - names:
             - names
@@ -34511,9 +35639,10 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalCpu: 6
-          totalAzureCount: 8
-          totalVsphereCount: 2
+          totalCpu: 7
+          totalZadaraCount: 6
+          totalAzureCount: 9
+          totalVsphereCount: 6
           proxmox:
           - names:
             - names
@@ -34537,7 +35666,18 @@ components:
             projectName: projectName
             projectId: 1
           totalUpdatingCount: 9
-          totalDiskSize: 1
+          totalDiskSize: 4
+          zadara:
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
           google:
           - names:
             - names
@@ -34560,28 +35700,28 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalRam: 7
-          totalSucceededCount: 5
-          totalOpenstackCount: 9
-          totalPendingCount: 9
+          totalRam: 1
+          totalSucceededCount: 9
+          totalOpenstackCount: 6
+          totalPendingCount: 6
           usedResources:
           - diskSize: 6
-            maxRam: 3
-            cpu: 6
-            maxCpu: 3
+            maxRam: 7
+            cpu: 3
+            maxCpu: 0
             projectName: projectName
             maxDiskSize: 7
-            projectId: 6
-            ram: 5
+            projectId: 5
+            ram: 3
           - diskSize: 6
-            maxRam: 3
-            cpu: 6
-            maxCpu: 3
+            maxRam: 7
+            cpu: 3
+            maxCpu: 0
             projectName: projectName
             maxDiskSize: 7
-            projectId: 6
-            ram: 5
-          totalProxmoxCount: 1
+            projectId: 5
+            ram: 3
+          totalProxmoxCount: 2
           deleting:
           - names:
             - names
@@ -34593,7 +35733,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalFailedCount: 4
+          totalFailedCount: 5
           vsphere:
           - names:
             - names
@@ -34616,8 +35756,8 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalAwsCount: 6
-          totalTanzuCount: 3
+          totalAwsCount: 8
+          totalTanzuCount: 6
           aws:
           - names:
             - names
@@ -34652,7 +35792,7 @@ components:
             projectName: projectName
             projectId: 1
         standAloneVms:
-          totalOpenshiftCount: 6
+          totalOpenshiftCount: 1
           waiting:
           - names:
             - names
@@ -34675,7 +35815,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalGoogleCount: 6
+          totalGoogleCount: 3
           tanzu:
           - names:
             - names
@@ -34687,7 +35827,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalCount: 1
+          totalCount: 6
           updating:
           - names:
             - names
@@ -34699,9 +35839,10 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalCpu: 6
-          totalAzureCount: 8
-          totalVsphereCount: 2
+          totalCpu: 7
+          totalZadaraCount: 6
+          totalAzureCount: 9
+          totalVsphereCount: 6
           proxmox:
           - names:
             - names
@@ -34725,7 +35866,18 @@ components:
             projectName: projectName
             projectId: 1
           totalUpdatingCount: 9
-          totalDiskSize: 1
+          totalDiskSize: 4
+          zadara:
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 1
           google:
           - names:
             - names
@@ -34748,28 +35900,28 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalRam: 7
-          totalSucceededCount: 5
-          totalOpenstackCount: 9
-          totalPendingCount: 9
+          totalRam: 1
+          totalSucceededCount: 9
+          totalOpenstackCount: 6
+          totalPendingCount: 6
           usedResources:
           - diskSize: 6
-            maxRam: 3
-            cpu: 6
-            maxCpu: 3
+            maxRam: 7
+            cpu: 3
+            maxCpu: 0
             projectName: projectName
             maxDiskSize: 7
-            projectId: 6
-            ram: 5
+            projectId: 5
+            ram: 3
           - diskSize: 6
-            maxRam: 3
-            cpu: 6
-            maxCpu: 3
+            maxRam: 7
+            cpu: 3
+            maxCpu: 0
             projectName: projectName
             maxDiskSize: 7
-            projectId: 6
-            ram: 5
-          totalProxmoxCount: 1
+            projectId: 5
+            ram: 3
+          totalProxmoxCount: 2
           deleting:
           - names:
             - names
@@ -34781,7 +35933,7 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalFailedCount: 4
+          totalFailedCount: 5
           vsphere:
           - names:
             - names
@@ -34804,8 +35956,8 @@ components:
             - names
             projectName: projectName
             projectId: 1
-          totalAwsCount: 6
-          totalTanzuCount: 3
+          totalAwsCount: 8
+          totalTanzuCount: 6
           aws:
           - names:
             - names
@@ -34845,6 +35997,7 @@ components:
           users: 6
         cloudCredentials:
           vsphere: 7
+          zadara: 1
           openshift: 4
           openstack: 7
           google: 9
@@ -35572,15 +36725,6 @@ components:
           format: int32
           type: integer
       type: object
-    DisableRepoCommand:
-      additionalProperties: false
-      example:
-        repoName: repoName
-      properties:
-        repoName:
-          nullable: true
-          type: string
-      type: object
     DnsCommand:
       additionalProperties: false
       example:
@@ -35713,6 +36857,16 @@ components:
           nullable: true
           type: string
       type: object
+    EInstanceStatus:
+      enum:
+      - None
+      - Installing
+      - Uninstalling
+      - Ready
+      - Failed
+      - NotReady
+      - Failure
+      type: string
     EditAlertingIntegrationCommand:
       additionalProperties: false
       example:
@@ -36322,6 +37476,7 @@ components:
       additionalProperties: false
       example:
         packageId: packageId
+        isQuestion: true
         version: version
         catalogAppId: 0
       properties:
@@ -36335,6 +37490,9 @@ components:
           format: int32
           nullable: true
           type: integer
+        isQuestion:
+          nullable: true
+          type: boolean
       type: object
     GetCatalogAppValueCommand:
       additionalProperties: false
@@ -36362,6 +37520,7 @@ components:
       additionalProperties: false
       example:
         refreshTokenExpireTime: 2000-01-23T04:56:07.000+00:00
+        tempToken: tempToken
         token: token
         refreshToken: refreshToken
       properties:
@@ -36374,6 +37533,9 @@ components:
         refreshTokenExpireTime:
           format: date-time
           type: string
+        tempToken:
+          nullable: true
+          type: string
       type: object
     GiveAccessToPartnerCommand:
       additionalProperties: false
@@ -36381,6 +37543,14 @@ components:
         mode: mode
       properties:
         mode:
+          nullable: true
+          type: string
+      type: object
+    GoogleBillingAccountListCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
           nullable: true
           type: string
       type: object
@@ -36605,6 +37775,29 @@ components:
           format: int32
           type: integer
       type: object
+    GoogleRegionListCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+      type: object
+    GoogleZoneListCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+        region:
+          nullable: true
+          type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
     GroupedBillingInfo:
       additionalProperties: false
       example:
@@ -36670,6 +37863,23 @@ components:
           type: integer
         periodDuration:
           $ref: '#/components/schemas/BillingPeriod'
+      type: object
+    HelmCredentialCommand:
+      additionalProperties: false
+      example:
+        password: password
+        url: url
+        username: username
+      properties:
+        url:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
       type: object
     HelmMetadata:
       additionalProperties: false
@@ -36966,17 +38176,21 @@ components:
     ImportRepoCommand:
       additionalProperties: false
       example:
-        displayName: displayName
+        password: password
         name: name
         url: url
+        username: username
       properties:
+        username:
+          nullable: true
+          type: string
+        password:
+          nullable: true
+          type: string
         name:
           nullable: true
           type: string
         url:
-          nullable: true
-          type: string
-        displayName:
           nullable: true
           type: string
       type: object
@@ -37140,6 +38354,98 @@ components:
         totalCount:
           format: int32
           type: integer
+      type: object
+    InstanceAppListDto:
+      additionalProperties: false
+      example:
+        catalogAppName: catalogAppName
+        created: created
+        lastModifiedBy: lastModifiedBy
+        autoSync: true
+        version: version
+        catalogAppId: 1
+        catalogName: catalogName
+        appRepoName: appRepoName
+        catalogId: 6
+        createdBy: createdBy
+        name: name
+        namespace: namespace
+        logo: logo
+        id: 0
+        lastModified: lastModified
+        projectName: projectName
+        projectId: 5
+        logs: logs
+        status: null
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        status:
+          $ref: '#/components/schemas/EInstanceStatus'
+        version:
+          nullable: true
+          type: string
+        catalogId:
+          format: int32
+          type: integer
+        catalogName:
+          nullable: true
+          type: string
+        catalogAppName:
+          nullable: true
+          type: string
+        catalogAppId:
+          format: int32
+          type: integer
+        appRepoName:
+          nullable: true
+          type: string
+        logo:
+          nullable: true
+          type: string
+        autoSync:
+          type: boolean
+        created:
+          nullable: true
+          type: string
+        createdBy:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        projectId:
+          format: int32
+          type: integer
+        projectName:
+          nullable: true
+          type: string
+        logs:
+          nullable: true
+          type: string
+      type: object
+    InteractiveShellDto:
+      additionalProperties: false
+      example:
+        adminKubeConfig: adminKubeConfig
+        kubeConfig: kubeConfig
+      properties:
+        kubeConfig:
+          nullable: true
+          type: string
+        adminKubeConfig:
+          nullable: true
+          type: string
       type: object
     JsonNode:
       additionalProperties: false
@@ -38306,6 +39612,7 @@ components:
         secretKey: secretKey
         accessKey: accessKey
         email: email
+        local: true
       properties:
         email:
           nullable: true
@@ -38322,6 +39629,8 @@ components:
         secretKey:
           nullable: true
           type: string
+        local:
+          type: boolean
       type: object
     LokiResponseDto:
       additionalProperties: false
@@ -39292,6 +40601,30 @@ components:
           nullable: true
           type: string
       type: object
+    OpenshiftPullSecretCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+      type: object
+    OpenshiftStorageListCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+      type: object
+    OpenshiftValidateCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+      type: object
     OpenstackComputeQuotaDto:
       additionalProperties: false
       example:
@@ -39347,6 +40680,7 @@ components:
           organizationId: 1
           createdAt: createdAt
           isLocked: true
+          skipTlsFlag: true
           id: 0
           organizationName: organizationName
           isInfra: true
@@ -39378,6 +40712,7 @@ components:
           organizationId: 1
           createdAt: createdAt
           isLocked: true
+          skipTlsFlag: true
           id: 0
           organizationName: organizationName
           isInfra: true
@@ -39423,6 +40758,7 @@ components:
         organizationId: 1
         createdAt: createdAt
         isLocked: true
+        skipTlsFlag: true
         id: 0
         organizationName: organizationName
         isInfra: true
@@ -39517,6 +40853,8 @@ components:
         isInfra:
           type: boolean
         applicationCredEnabled:
+          type: boolean
+        skipTlsFlag:
           type: boolean
       type: object
     OpenstackFlavorList:
@@ -40276,6 +41614,12 @@ components:
     PackageAutocompleteDto:
       additionalProperties: false
       example:
+        options:
+        - options
+        - options
+        description: description
+        isQuestion: true
+        type: null
         value: value
         key: key
       properties:
@@ -40285,6 +41629,18 @@ components:
         value:
           nullable: true
           type: string
+        description:
+          nullable: true
+          type: string
+        type:
+          $ref: '#/components/schemas/ParameterType'
+        isQuestion:
+          type: boolean
+        options:
+          items:
+            type: string
+          nullable: true
+          type: array
       type: object
     Parameter:
       additionalProperties: false
@@ -40303,6 +41659,16 @@ components:
           nullable: true
           type: string
       type: object
+    ParameterType:
+      enum:
+      - Unknown
+      - String
+      - Boolean
+      - Integer
+      - Object
+      - Array
+      - Multiline
+      type: string
     PartnerDetailsDto:
       additionalProperties: false
       example:
@@ -40970,192 +42336,239 @@ components:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableFullSpot:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableSpotVm:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableOpa:
           reasons:
           - reasons
           - reasons
-          enable: true
-        disableMaintenanceMode:
-          reasons:
-          - reasons
-          - reasons
+          hidden: true
           enable: true
         commit:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableSpotVm:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableBackup:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableAi:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
-        enableMaintenanceMode:
+        projectMaintenanceMode:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         detachAlertingProfile:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableOpa:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         lock:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableAutoscaler:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableAutoscaler:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         unlock:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         upgrade:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         aiAssistant:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         vmRepair:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableFullSpot:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         attachAlertingProfile:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableAi:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         monitoring:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         enableSpotWorker:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         disableSpotWorker:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
         vmCommit:
           reasons:
           - reasons
           - reasons
+          hidden: true
+          enable: true
+        addServer:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        addVm:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
           enable: true
         enableBackup:
           reasons:
           - reasons
           - reasons
+          hidden: true
           enable: true
       properties:
         commit:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         repair:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         upgrade:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         monitoring:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableBackup:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableBackup:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableOpa:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableOpa:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableAutoscaler:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableAutoscaler:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         vmRepair:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         vmCommit:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         lock:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         unlock:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableSpotWorker:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableSpotWorker:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableFullSpot:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableFullSpot:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableSpotVm:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableSpotVm:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         attachAlertingProfile:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         detachAlertingProfile:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         enableAi:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         disableAi:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
         aiAssistant:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
-        enableMaintenanceMode:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
-        disableMaintenanceMode:
-          $ref: '#/components/schemas/ProjectButtonStatusDto'
+          $ref: '#/components/schemas/ButtonStatusDto'
+        projectMaintenanceMode:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        addServer:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        addVm:
+          $ref: '#/components/schemas/ButtonStatusDto'
+      type: object
+    ProjectAlertsQuery:
+      additionalProperties: false
+      example:
+        mode: null
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        mode:
+          $ref: '#/components/schemas/ProjectType'
       type: object
     ProjectAppDetailsDto:
       additionalProperties: false
@@ -41173,8 +42586,10 @@ components:
           isEditableAfterInstallation: true
         catalogAppName: catalogAppName
         values: values
+        packageId: packageId
         autoSync: true
         version: version
+        catalogAppId: 5
         catalogName: catalogName
         appRepoName: appRepoName
         catalogId: 6
@@ -41187,7 +42602,8 @@ components:
         id: 0
         projectName: projectName
         projectId: 1
-        status: status
+        logs: logs
+        status: null
       properties:
         id:
           format: int32
@@ -41199,8 +42615,7 @@ components:
           nullable: true
           type: string
         status:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/EInstanceStatus'
         version:
           nullable: true
           type: string
@@ -41238,6 +42653,15 @@ components:
           type: integer
         hasJsonSchema:
           type: boolean
+        catalogAppId:
+          format: int32
+          type: integer
+        packageId:
+          nullable: true
+          type: string
+        logs:
+          nullable: true
+          type: string
         projectAppParams:
           items:
             $ref: '#/components/schemas/ProjectAppParamDto'
@@ -41250,11 +42674,12 @@ components:
         isLocked: true
         name: name
         namespace: namespace
+        autoSync: true
         id: 5
         projectName: projectName
         projectId: 5
         version: version
-        status: status
+        status: null
       properties:
         id:
           format: int32
@@ -41277,8 +42702,9 @@ components:
         isLocked:
           type: boolean
         status:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/EInstanceStatus'
+        autoSync:
+          type: boolean
       type: object
     ProjectAppList:
       additionalProperties: false
@@ -41301,7 +42727,8 @@ components:
           lastModified: lastModified
           projectName: projectName
           projectId: 5
-          status: status
+          logs: logs
+          status: null
         - catalogAppName: catalogAppName
           created: created
           lastModifiedBy: lastModifiedBy
@@ -41319,93 +42746,18 @@ components:
           lastModified: lastModified
           projectName: projectName
           projectId: 5
-          status: status
+          logs: logs
+          status: null
         totalCount: 5
       properties:
         data:
           items:
-            $ref: '#/components/schemas/ProjectAppListDto'
+            $ref: '#/components/schemas/InstanceAppListDto'
           nullable: true
           type: array
         totalCount:
           format: int32
           type: integer
-      type: object
-    ProjectAppListDto:
-      additionalProperties: false
-      example:
-        catalogAppName: catalogAppName
-        created: created
-        lastModifiedBy: lastModifiedBy
-        autoSync: true
-        version: version
-        catalogAppId: 1
-        catalogName: catalogName
-        appRepoName: appRepoName
-        catalogId: 6
-        createdBy: createdBy
-        name: name
-        namespace: namespace
-        logo: logo
-        id: 0
-        lastModified: lastModified
-        projectName: projectName
-        projectId: 5
-        status: status
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        namespace:
-          nullable: true
-          type: string
-        status:
-          nullable: true
-          type: string
-        version:
-          nullable: true
-          type: string
-        catalogId:
-          format: int32
-          type: integer
-        catalogName:
-          nullable: true
-          type: string
-        catalogAppName:
-          nullable: true
-          type: string
-        catalogAppId:
-          format: int32
-          type: integer
-        appRepoName:
-          nullable: true
-          type: string
-        logo:
-          nullable: true
-          type: string
-        autoSync:
-          type: boolean
-        created:
-          nullable: true
-          type: string
-        createdBy:
-          nullable: true
-          type: string
-        lastModified:
-          nullable: true
-          type: string
-        lastModifiedBy:
-          nullable: true
-          type: string
-        projectId:
-          format: int32
-          type: integer
-        projectName:
-          nullable: true
-          type: string
       type: object
     ProjectAppParamDto:
       additionalProperties: false
@@ -41442,21 +42794,37 @@ components:
           nullable: true
           type: string
       type: object
-    ProjectButtonStatusDto:
+    ProjectCatalogDto:
       additionalProperties: false
       example:
-        reasons:
-        - reasons
-        - reasons
-        enable: true
+        cloudType: null
+        isLocked: true
+        name: name
+        health: null
+        id: 1
+        maintenanceModeEnabled: true
+        kubernetesVersion: kubernetesVersion
+        status: null
       properties:
-        enable:
-          type: boolean
-        reasons:
-          items:
-            type: string
+        id:
+          format: int32
+          type: integer
+        name:
           nullable: true
-          type: array
+          type: string
+        kubernetesVersion:
+          nullable: true
+          type: string
+        isLocked:
+          type: boolean
+        maintenanceModeEnabled:
+          type: boolean
+        cloudType:
+          $ref: '#/components/schemas/CloudType'
+        status:
+          $ref: '#/components/schemas/ProjectStatus'
+        health:
+          $ref: '#/components/schemas/ProjectHealth'
       type: object
     ProjectChartDto:
       additionalProperties: false
@@ -41559,6 +42927,7 @@ components:
     ProjectDetailsErrorListDto:
       additionalProperties: false
       example:
+        kind: null
         type: null
         message:
         - message
@@ -41571,6 +42940,8 @@ components:
             type: string
           nullable: true
           type: array
+        kind:
+          $ref: '#/components/schemas/ProjectType'
       type: object
     ProjectDetailsErrorType:
       enum:
@@ -41582,25 +42953,26 @@ components:
       additionalProperties: false
       example:
         spotEnabled: true
-        alertsTotalCount: 3
+        alertsTotalCount: 2
         isOpaEnabled: true
-        opaProfileId: 6
+        opaProfileId: 3
         availabilityZones:
         - availabilityZones
         - availabilityZones
-        organizationId: 6
-        diskSize: 0.8851374739011653
+        organizationId: 7
+        diskSize: 7.058770351582356
         usedRam: 9
         cloudType: null
         cloudId: 1
         isLocked: true
         accessProfileName: accessProfileName
-        kubernetesProfileId: 2
-        minSize: 3
-        bastion: 4
-        worker: 2
-        usedCpu: 5
-        vmVolumeSizeLimit: 9
+        kubernetesProfileId: 6
+        minSize: 7
+        bastion: 7
+        worker: 4
+        usedCpu: 9
+        vmVolumeSizeLimit: 6
+        isAutoscalingSpotEnabled: true
         isAutoscalingEnabled: true
         isAutoUpgrade: true
         kubernetesProfileName: kubernetesProfileName
@@ -41608,39 +42980,40 @@ components:
         organizationName: organizationName
         hasSelectedFlavors: true
         isDrsEnabled: true
-        cpuLimit: 7
-        quotaId: 1
-        vmUsedCpu: 6
+        cpuLimit: 1
+        quotaId: 6
+        vmUsedCpu: 3
         allowSpotWorkers: true
-        vmRamLimit: 8
+        maxSpotPrice: 6.519180951018382
+        vmRamLimit: 9
         flavor: flavor
-        vmUsedRam: 3
+        vmUsedRam: 6
         proxmoxStorage: null
-        usedDiskSize: 9
-        vmUsedVolumeSize: 6
+        usedDiskSize: 6
+        vmUsedVolumeSize: 1
         kubernetesCurrentVersion: kubernetesCurrentVersion
         allowFullSpotKubernetes: true
         projectName: projectName
-        projectId: 7
-        accessProfileId: 1
-        maxSize: 7
+        projectId: 1
+        accessProfileId: 2
+        maxSize: 0
         autoscalingGroupName: autoscalingGroupName
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
         hasNfsServer: true
         projectHealth: null
-        totalHourlyCost: 3.353193347011243
-        ramLimit: 1
+        totalHourlyCost: 3.0937452626664474
+        ramLimit: 4
         opaProfileName: opaProfileName
-        s3CredentialId: 6
+        s3CredentialId: 5
         isProjectMaintenanceModeEnabled: true
         isDeprecated: true
         allowSpotVMs: true
-        vmCpuLimit: 6
-        aiCredentialId: 5
+        vmCpuLimit: 8
+        aiCredentialId: 6
         aiEnabled: true
         isMonitoringEnabled: true
-        diskSizeLimit: 4
+        diskSizeLimit: 5
         masterReady: 1
         hasKubeConfigFile: true
         projectStatus: null
@@ -41831,6 +43204,8 @@ components:
           type: boolean
         isAutoscalingEnabled:
           type: boolean
+        isAutoscalingSpotEnabled:
+          type: boolean
         hasNfsServer:
           type: boolean
         wasmEnabled:
@@ -41849,6 +43224,10 @@ components:
           $ref: '#/components/schemas/ProxmoxStorage'
         isDrsEnabled:
           type: boolean
+        maxSpotPrice:
+          format: double
+          nullable: true
+          type: number
       type: object
     ProjectDetailsForVmsDto:
       additionalProperties: false
@@ -41858,27 +43237,27 @@ components:
         hasSelectedFlavors: true
         isDrsEnabled: true
         allowSpotVMs: true
-        cloudCredentialRevision: 1
+        cloudCredentialRevision: 6
         availabilityZones:
         - availabilityZones
         - availabilityZones
         allowSpotWorkers: true
-        maxSpotPrice: 6.84685269835264
+        maxSpotPrice: 7.457744773683766
         organizationId: 1
         projectStatus: null
         expiredAt: expiredAt
         cloudType: null
         cloudName: cloudName
-        cloudId: 7
+        cloudId: 1
         isLocked: true
         allowFullSpotKubernetes: true
         hypervisors:
         - hypervisors
         - hypervisors
-        totalHourlyCost: 7.457744773683766
+        totalHourlyCost: 1.1730742509559433
         projectName: projectName
         projectCloudRevision: 1
-        projectId: 4
+        projectId: 7
         isMaintenanceModeEnabled: true
       properties:
         projectStatus:
@@ -42094,6 +43473,18 @@ components:
           userId: userId
         - userName: userName
           userId: userId
+        deleteButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        lockButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         totalServersCount: 5
         certificateExpiredAt: certificateExpiredAt
         organizationId: 6
@@ -42101,16 +43492,29 @@ components:
         expiredAt: expiredAt
         projectAction: true
         totalStandaloneVmsCount: 5
-        cloudType: cloudType
+        cloudType: null
         isLocked: true
         id: 0
         totalHourlyCost: 9.301444243932576
+        setExpirationDateButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        isAutoscalingSpotEnabled: true
         kubesprayTargetVersion: kubesprayTargetVersion
         isAutoscalingEnabled: true
         isKubernetes: true
         organizationName: organizationName
         alertsCount: 1
         allowSpotVMs: true
+        unlockButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         kubernetesTargetVersion: kubernetesTargetVersion
         lastModifiedBy: lastModifiedBy
         aiEnabled: true
@@ -42121,6 +43525,12 @@ components:
         allowSpotWorkers: true
         maxSpotPrice: 7.061401241503109
         hasKubeConfigFile: true
+        kubeInfoButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         deleteOnExpiration: true
         createdBy: createdBy
         name: name
@@ -42128,6 +43538,12 @@ components:
         kubernetesCurrentVersion: kubernetesCurrentVersion
         allowFullSpotKubernetes: true
         lastModified: lastModified
+        resetStatusButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         isMaintenanceModeEnabled: true
         status: status
       properties:
@@ -42161,8 +43577,7 @@ components:
           nullable: true
           type: string
         cloudType:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/CloudType'
         kubesprayCurrentVersion:
           nullable: true
           type: string
@@ -42231,8 +43646,22 @@ components:
           type: number
         isAutoscalingEnabled:
           type: boolean
+        isAutoscalingSpotEnabled:
+          type: boolean
         aiEnabled:
           type: boolean
+        lockButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        unlockButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        deleteButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        kubeInfoButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        setExpirationDateButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        resetStatusButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
       type: object
     ProjectListDto:
       additionalProperties: false
@@ -42475,6 +43904,11 @@ components:
           nullable: true
           type: integer
       type: object
+    ProjectType:
+      enum:
+      - K8S
+      - VM
+      type: string
     ProjectsList:
       additionalProperties: false
       example:
@@ -42484,6 +43918,18 @@ components:
             userId: userId
           - userName: userName
             userId: userId
+          deleteButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           totalServersCount: 5
           certificateExpiredAt: certificateExpiredAt
           organizationId: 6
@@ -42491,16 +43937,29 @@ components:
           expiredAt: expiredAt
           projectAction: true
           totalStandaloneVmsCount: 5
-          cloudType: cloudType
+          cloudType: null
           isLocked: true
           id: 0
           totalHourlyCost: 9.301444243932576
+          setExpirationDateButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          isAutoscalingSpotEnabled: true
           kubesprayTargetVersion: kubesprayTargetVersion
           isAutoscalingEnabled: true
           isKubernetes: true
           organizationName: organizationName
           alertsCount: 1
           allowSpotVMs: true
+          unlockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           kubernetesTargetVersion: kubernetesTargetVersion
           lastModifiedBy: lastModifiedBy
           aiEnabled: true
@@ -42511,6 +43970,12 @@ components:
           allowSpotWorkers: true
           maxSpotPrice: 7.061401241503109
           hasKubeConfigFile: true
+          kubeInfoButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           deleteOnExpiration: true
           createdBy: createdBy
           name: name
@@ -42518,6 +43983,12 @@ components:
           kubernetesCurrentVersion: kubernetesCurrentVersion
           allowFullSpotKubernetes: true
           lastModified: lastModified
+          resetStatusButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           isMaintenanceModeEnabled: true
           status: status
         - boundUsers:
@@ -42525,6 +43996,18 @@ components:
             userId: userId
           - userName: userName
             userId: userId
+          deleteButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           totalServersCount: 5
           certificateExpiredAt: certificateExpiredAt
           organizationId: 6
@@ -42532,16 +44015,29 @@ components:
           expiredAt: expiredAt
           projectAction: true
           totalStandaloneVmsCount: 5
-          cloudType: cloudType
+          cloudType: null
           isLocked: true
           id: 0
           totalHourlyCost: 9.301444243932576
+          setExpirationDateButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          isAutoscalingSpotEnabled: true
           kubesprayTargetVersion: kubesprayTargetVersion
           isAutoscalingEnabled: true
           isKubernetes: true
           organizationName: organizationName
           alertsCount: 1
           allowSpotVMs: true
+          unlockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           kubernetesTargetVersion: kubernetesTargetVersion
           lastModifiedBy: lastModifiedBy
           aiEnabled: true
@@ -42552,6 +44048,12 @@ components:
           allowSpotWorkers: true
           maxSpotPrice: 7.061401241503109
           hasKubeConfigFile: true
+          kubeInfoButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           deleteOnExpiration: true
           createdBy: createdBy
           name: name
@@ -42559,6 +44061,12 @@ components:
           kubernetesCurrentVersion: kubernetesCurrentVersion
           allowFullSpotKubernetes: true
           lastModified: lastModified
+          resetStatusButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           isMaintenanceModeEnabled: true
           status: status
         totalCount: 3
@@ -43336,6 +44844,7 @@ components:
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
+            isVirtualLbNetwork: true
           - endAllocationRange: endAllocationRange
             netMask: 5
             ipAddress: ipAddress
@@ -43343,6 +44852,8 @@ components:
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
+            isVirtualLbNetwork: true
+          skipTlsFlag: true
           hypervisors:
           - name: name
             id: 0
@@ -43377,6 +44888,7 @@ components:
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
+            isVirtualLbNetwork: true
           - endAllocationRange: endAllocationRange
             netMask: 5
             ipAddress: ipAddress
@@ -43384,6 +44896,8 @@ components:
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
+            isVirtualLbNetwork: true
+          skipTlsFlag: true
           hypervisors:
           - name: name
             id: 0
@@ -43432,6 +44946,7 @@ components:
           isPrivate: true
           beginAllocationRange: beginAllocationRange
           gateway: gateway
+          isVirtualLbNetwork: true
         - endAllocationRange: endAllocationRange
           netMask: 5
           ipAddress: ipAddress
@@ -43439,6 +44954,8 @@ components:
           isPrivate: true
           beginAllocationRange: beginAllocationRange
           gateway: gateway
+          isVirtualLbNetwork: true
+        skipTlsFlag: true
         hypervisors:
         - name: name
           id: 0
@@ -43510,6 +45027,8 @@ components:
             $ref: '#/components/schemas/ProxmoxNetworkListDto'
           nullable: true
           type: array
+        skipTlsFlag:
+          type: boolean
       type: object
     ProxmoxNetworkListDto:
       additionalProperties: false
@@ -43521,6 +45040,7 @@ components:
         isPrivate: true
         beginAllocationRange: beginAllocationRange
         gateway: gateway
+        isVirtualLbNetwork: true
       properties:
         bridge:
           nullable: true
@@ -43541,6 +45061,8 @@ components:
           nullable: true
           type: string
         isPrivate:
+          type: boolean
+        isVirtualLbNetwork:
           type: boolean
       type: object
     ProxmoxRole:
@@ -43753,9 +45275,10 @@ components:
       additionalProperties: false
       example:
         scannerDisabled: true
+        isImported: true
         organizationName: organizationName
         organizationDisplayName: organizationDisplayName
-        kind: 4
+        kind: 7
         name: name
         repositoryId: repositoryId
         official: true
@@ -43777,6 +45300,8 @@ components:
           nullable: true
           type: string
         scannerDisabled:
+          type: boolean
+        isImported:
           type: boolean
         organizationName:
           nullable: true
@@ -44326,11 +45851,11 @@ components:
     SecurityReportSummary:
       additionalProperties: false
       example:
-        high: 7
-        critical: 2
-        low: 2
-        medium: 9
-        unknown: 3
+        high: 9
+        critical: 4
+        low: 7
+        medium: 3
+        unknown: 2
       properties:
         low:
           format: int64
@@ -44395,7 +45920,7 @@ components:
     ServerChartDto:
       additionalProperties: false
       example:
-        totalOpenshiftCount: 6
+        totalOpenshiftCount: 1
         waiting:
         - names:
           - names
@@ -44418,7 +45943,7 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalGoogleCount: 6
+        totalGoogleCount: 3
         tanzu:
         - names:
           - names
@@ -44430,7 +45955,7 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalCount: 1
+        totalCount: 6
         updating:
         - names:
           - names
@@ -44442,9 +45967,10 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalCpu: 6
-        totalAzureCount: 8
-        totalVsphereCount: 2
+        totalCpu: 7
+        totalZadaraCount: 6
+        totalAzureCount: 9
+        totalVsphereCount: 6
         proxmox:
         - names:
           - names
@@ -44468,7 +45994,18 @@ components:
           projectName: projectName
           projectId: 1
         totalUpdatingCount: 9
-        totalDiskSize: 1
+        totalDiskSize: 4
+        zadara:
+        - names:
+          - names
+          - names
+          projectName: projectName
+          projectId: 1
+        - names:
+          - names
+          - names
+          projectName: projectName
+          projectId: 1
         google:
         - names:
           - names
@@ -44491,28 +46028,28 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalRam: 7
-        totalSucceededCount: 5
-        totalOpenstackCount: 9
-        totalPendingCount: 9
+        totalRam: 1
+        totalSucceededCount: 9
+        totalOpenstackCount: 6
+        totalPendingCount: 6
         usedResources:
         - diskSize: 6
-          maxRam: 3
-          cpu: 6
-          maxCpu: 3
+          maxRam: 7
+          cpu: 3
+          maxCpu: 0
           projectName: projectName
           maxDiskSize: 7
-          projectId: 6
-          ram: 5
+          projectId: 5
+          ram: 3
         - diskSize: 6
-          maxRam: 3
-          cpu: 6
-          maxCpu: 3
+          maxRam: 7
+          cpu: 3
+          maxCpu: 0
           projectName: projectName
           maxDiskSize: 7
-          projectId: 6
-          ram: 5
-        totalProxmoxCount: 1
+          projectId: 5
+          ram: 3
+        totalProxmoxCount: 2
         deleting:
         - names:
           - names
@@ -44524,7 +46061,7 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalFailedCount: 4
+        totalFailedCount: 5
         vsphere:
         - names:
           - names
@@ -44547,8 +46084,8 @@ components:
           - names
           projectName: projectName
           projectId: 1
-        totalAwsCount: 6
-        totalTanzuCount: 3
+        totalAwsCount: 8
+        totalTanzuCount: 6
         aws:
         - names:
           - names
@@ -44614,6 +46151,11 @@ components:
           nullable: true
           type: array
         vsphere:
+          items:
+            $ref: '#/components/schemas/ServerCommonRecordDto'
+          nullable: true
+          type: array
+        zadara:
           items:
             $ref: '#/components/schemas/ServerCommonRecordDto'
           nullable: true
@@ -44699,6 +46241,9 @@ components:
           format: int32
           type: integer
         totalVsphereCount:
+          format: int32
+          type: integer
+        totalZadaraCount:
           format: int32
           type: integer
         usedResources:
@@ -44805,9 +46350,9 @@ components:
       additionalProperties: false
       example:
         proxmoxFlavor: proxmoxFlavor
-        proxmoxExtraDiskSize: 7
+        proxmoxExtraDiskSize: 9
         role: null
-        spotPrice: spotPrice
+        spotPrice: 7.061401241503109
         openshiftFlavor: openshiftFlavor
         awsHostName: awsHostName
         actionButtons:
@@ -44822,8 +46367,9 @@ components:
         spotInstance: true
         autoscalingGroup: autoscalingGroup
         diskSize: 5
-        replicaCount: 9
+        replicaCount: 3
         kubernetesHealth: kubernetesHealth
+        instanceId: instanceId
         googleMachineType: googleMachineType
         cloudType: null
         hypervisor: hypervisor
@@ -44923,8 +46469,8 @@ components:
           nullable: true
           type: string
         spotPrice:
-          nullable: true
-          type: string
+          format: double
+          type: number
         spotInstance:
           type: boolean
         shutOff:
@@ -44933,6 +46479,9 @@ components:
           nullable: true
           type: string
         providerID:
+          nullable: true
+          type: string
+        instanceId:
           nullable: true
           type: string
         awsHostName:
@@ -44994,9 +46543,9 @@ components:
       example:
         data:
         - proxmoxFlavor: proxmoxFlavor
-          proxmoxExtraDiskSize: 7
+          proxmoxExtraDiskSize: 9
           role: null
-          spotPrice: spotPrice
+          spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
           awsHostName: awsHostName
           actionButtons:
@@ -45011,8 +46560,9 @@ components:
           spotInstance: true
           autoscalingGroup: autoscalingGroup
           diskSize: 5
-          replicaCount: 9
+          replicaCount: 3
           kubernetesHealth: kubernetesHealth
+          instanceId: instanceId
           googleMachineType: googleMachineType
           cloudType: null
           hypervisor: hypervisor
@@ -45041,9 +46591,9 @@ components:
           projectId: 1
           status: status
         - proxmoxFlavor: proxmoxFlavor
-          proxmoxExtraDiskSize: 7
+          proxmoxExtraDiskSize: 9
           role: null
-          spotPrice: spotPrice
+          spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
           awsHostName: awsHostName
           actionButtons:
@@ -45058,8 +46608,9 @@ components:
           spotInstance: true
           autoscalingGroup: autoscalingGroup
           diskSize: 5
-          replicaCount: 9
+          replicaCount: 3
           kubernetesHealth: kubernetesHealth
+          instanceId: instanceId
           googleMachineType: googleMachineType
           cloudType: null
           hypervisor: hypervisor
@@ -45103,9 +46654,9 @@ components:
       example:
         data:
         - proxmoxFlavor: proxmoxFlavor
-          proxmoxExtraDiskSize: 7
+          proxmoxExtraDiskSize: 9
           role: null
-          spotPrice: spotPrice
+          spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
           awsHostName: awsHostName
           actionButtons:
@@ -45120,8 +46671,9 @@ components:
           spotInstance: true
           autoscalingGroup: autoscalingGroup
           diskSize: 5
-          replicaCount: 9
+          replicaCount: 3
           kubernetesHealth: kubernetesHealth
+          instanceId: instanceId
           googleMachineType: googleMachineType
           cloudType: null
           hypervisor: hypervisor
@@ -45150,9 +46702,9 @@ components:
           projectId: 1
           status: status
         - proxmoxFlavor: proxmoxFlavor
-          proxmoxExtraDiskSize: 7
+          proxmoxExtraDiskSize: 9
           role: null
-          spotPrice: spotPrice
+          spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
           awsHostName: awsHostName
           actionButtons:
@@ -45167,8 +46719,9 @@ components:
           spotInstance: true
           autoscalingGroup: autoscalingGroup
           diskSize: 5
-          replicaCount: 9
+          replicaCount: 3
           kubernetesHealth: kubernetesHealth
+          instanceId: instanceId
           googleMachineType: googleMachineType
           cloudType: null
           hypervisor: hypervisor
@@ -45198,25 +46751,26 @@ components:
           status: status
         project:
           spotEnabled: true
-          alertsTotalCount: 3
+          alertsTotalCount: 2
           isOpaEnabled: true
-          opaProfileId: 6
+          opaProfileId: 3
           availabilityZones:
           - availabilityZones
           - availabilityZones
-          organizationId: 6
-          diskSize: 0.8851374739011653
+          organizationId: 7
+          diskSize: 7.058770351582356
           usedRam: 9
           cloudType: null
           cloudId: 1
           isLocked: true
           accessProfileName: accessProfileName
-          kubernetesProfileId: 2
-          minSize: 3
-          bastion: 4
-          worker: 2
-          usedCpu: 5
-          vmVolumeSizeLimit: 9
+          kubernetesProfileId: 6
+          minSize: 7
+          bastion: 7
+          worker: 4
+          usedCpu: 9
+          vmVolumeSizeLimit: 6
+          isAutoscalingSpotEnabled: true
           isAutoscalingEnabled: true
           isAutoUpgrade: true
           kubernetesProfileName: kubernetesProfileName
@@ -45224,39 +46778,40 @@ components:
           organizationName: organizationName
           hasSelectedFlavors: true
           isDrsEnabled: true
-          cpuLimit: 7
-          quotaId: 1
-          vmUsedCpu: 6
+          cpuLimit: 1
+          quotaId: 6
+          vmUsedCpu: 3
           allowSpotWorkers: true
-          vmRamLimit: 8
+          maxSpotPrice: 6.519180951018382
+          vmRamLimit: 9
           flavor: flavor
-          vmUsedRam: 3
+          vmUsedRam: 6
           proxmoxStorage: null
-          usedDiskSize: 9
-          vmUsedVolumeSize: 6
+          usedDiskSize: 6
+          vmUsedVolumeSize: 1
           kubernetesCurrentVersion: kubernetesCurrentVersion
           allowFullSpotKubernetes: true
           projectName: projectName
-          projectId: 7
-          accessProfileId: 1
-          maxSize: 7
+          projectId: 1
+          accessProfileId: 2
+          maxSize: 0
           autoscalingGroupName: autoscalingGroupName
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           hasNfsServer: true
           projectHealth: null
-          totalHourlyCost: 3.353193347011243
-          ramLimit: 1
+          totalHourlyCost: 3.0937452626664474
+          ramLimit: 4
           opaProfileName: opaProfileName
-          s3CredentialId: 6
+          s3CredentialId: 5
           isProjectMaintenanceModeEnabled: true
           isDeprecated: true
           allowSpotVMs: true
-          vmCpuLimit: 6
-          aiCredentialId: 5
+          vmCpuLimit: 8
+          aiCredentialId: 6
           aiEnabled: true
           isMonitoringEnabled: true
-          diskSizeLimit: 4
+          diskSizeLimit: 5
           masterReady: 1
           hasKubeConfigFile: true
           projectStatus: null
@@ -45665,7 +47220,7 @@ components:
     StandAloneMetaDataDtoForVm:
       additionalProperties: false
       example:
-        id: 2
+        id: 7
         value: value
         key: key
       properties:
@@ -45720,19 +47275,19 @@ components:
         securityGroups:
         - protocol: protocol
           name: name
-          id: 9
-          portMinRange: 3
-          portMaxRange: 2
+          id: 3
+          portMinRange: 2
+          portMaxRange: 4
           isRdpPortEnabled: true
           remoteIpPrefix: remoteIpPrefix
         - protocol: protocol
           name: name
-          id: 9
-          portMinRange: 3
-          portMaxRange: 2
+          id: 3
+          portMinRange: 2
+          portMaxRange: 4
           isRdpPortEnabled: true
           remoteIpPrefix: remoteIpPrefix
-        id: 7
+        id: 9
         publicKey: publicKey
       properties:
         id:
@@ -45792,9 +47347,9 @@ components:
       example:
         protocol: protocol
         name: name
-        id: 9
-        portMinRange: 3
-        portMaxRange: 2
+        id: 3
+        portMinRange: 2
+        portMaxRange: 4
         isRdpPortEnabled: true
         remoteIpPrefix: remoteIpPrefix
       properties:
@@ -45997,10 +47552,10 @@ components:
       additionalProperties: false
       example:
         volumeType: volumeType
-        targetSize: 5
+        targetSize: 2
         name: name
         lunId: lunId
-        id: 1
+        id: 5
         deviceName: deviceName
         currentSize: 5
         status: status
@@ -46058,21 +47613,21 @@ components:
         data:
         - volumeType: volumeType
           sshPublicKey: sshPublicKey
-          spotPrice: spotPrice
+          spotPrice: 1.4658129805029452
           disks:
           - volumeType: volumeType
-            targetSize: 5
+            targetSize: 2
             name: name
             lunId: lunId
-            id: 1
+            id: 5
             deviceName: deviceName
             currentSize: 5
             status: status
           - volumeType: volumeType
-            targetSize: 5
+            targetSize: 2
             name: name
             lunId: lunId
-            id: 1
+            id: 5
             deviceName: deviceName
             currentSize: 5
             status: status
@@ -46085,6 +47640,7 @@ components:
             unshelve: true
             showStatus: true
             shelve: true
+          availabilityZone: availabilityZone
           volumeSize: 6
           createdAt: createdAt
           spotInstance: true
@@ -46099,28 +47655,28 @@ components:
             securityGroups:
             - protocol: protocol
               name: name
-              id: 9
-              portMinRange: 3
-              portMaxRange: 2
+              id: 3
+              portMinRange: 2
+              portMaxRange: 4
               isRdpPortEnabled: true
               remoteIpPrefix: remoteIpPrefix
             - protocol: protocol
               name: name
-              id: 9
-              portMinRange: 3
-              portMaxRange: 2
+              id: 3
+              portMinRange: 2
+              portMaxRange: 4
               isRdpPortEnabled: true
               remoteIpPrefix: remoteIpPrefix
-            id: 7
+            id: 9
             publicKey: publicKey
           ipAddress: ipAddress
           publicIp: publicIp
           hypervisorId: hypervisorId
           standAloneMetaDatas:
-          - id: 2
+          - id: 7
             value: value
             key: key
-          - id: 2
+          - id: 7
             value: value
             key: key
           targetFlavor: targetFlavor
@@ -46132,21 +47688,21 @@ components:
           status: status
         - volumeType: volumeType
           sshPublicKey: sshPublicKey
-          spotPrice: spotPrice
+          spotPrice: 1.4658129805029452
           disks:
           - volumeType: volumeType
-            targetSize: 5
+            targetSize: 2
             name: name
             lunId: lunId
-            id: 1
+            id: 5
             deviceName: deviceName
             currentSize: 5
             status: status
           - volumeType: volumeType
-            targetSize: 5
+            targetSize: 2
             name: name
             lunId: lunId
-            id: 1
+            id: 5
             deviceName: deviceName
             currentSize: 5
             status: status
@@ -46159,6 +47715,7 @@ components:
             unshelve: true
             showStatus: true
             shelve: true
+          availabilityZone: availabilityZone
           volumeSize: 6
           createdAt: createdAt
           spotInstance: true
@@ -46173,28 +47730,28 @@ components:
             securityGroups:
             - protocol: protocol
               name: name
-              id: 9
-              portMinRange: 3
-              portMaxRange: 2
+              id: 3
+              portMinRange: 2
+              portMaxRange: 4
               isRdpPortEnabled: true
               remoteIpPrefix: remoteIpPrefix
             - protocol: protocol
               name: name
-              id: 9
-              portMinRange: 3
-              portMaxRange: 2
+              id: 3
+              portMinRange: 2
+              portMaxRange: 4
               isRdpPortEnabled: true
               remoteIpPrefix: remoteIpPrefix
-            id: 7
+            id: 9
             publicKey: publicKey
           ipAddress: ipAddress
           publicIp: publicIp
           hypervisorId: hypervisorId
           standAloneMetaDatas:
-          - id: 2
+          - id: 7
             value: value
             key: key
-          - id: 2
+          - id: 7
             value: value
             key: key
           targetFlavor: targetFlavor
@@ -46210,27 +47767,27 @@ components:
           hasSelectedFlavors: true
           isDrsEnabled: true
           allowSpotVMs: true
-          cloudCredentialRevision: 1
+          cloudCredentialRevision: 6
           availabilityZones:
           - availabilityZones
           - availabilityZones
           allowSpotWorkers: true
-          maxSpotPrice: 6.84685269835264
+          maxSpotPrice: 7.457744773683766
           organizationId: 1
           projectStatus: null
           expiredAt: expiredAt
           cloudType: null
           cloudName: cloudName
-          cloudId: 7
+          cloudId: 1
           isLocked: true
           allowFullSpotKubernetes: true
           hypervisors:
           - hypervisors
           - hypervisors
-          totalHourlyCost: 7.457744773683766
+          totalHourlyCost: 1.1730742509559433
           projectName: projectName
           projectCloudRevision: 1
-          projectId: 4
+          projectId: 7
           isMaintenanceModeEnabled: true
       properties:
         data:
@@ -46569,21 +48126,21 @@ components:
       example:
         volumeType: volumeType
         sshPublicKey: sshPublicKey
-        spotPrice: spotPrice
+        spotPrice: 1.4658129805029452
         disks:
         - volumeType: volumeType
-          targetSize: 5
+          targetSize: 2
           name: name
           lunId: lunId
-          id: 1
+          id: 5
           deviceName: deviceName
           currentSize: 5
           status: status
         - volumeType: volumeType
-          targetSize: 5
+          targetSize: 2
           name: name
           lunId: lunId
-          id: 1
+          id: 5
           deviceName: deviceName
           currentSize: 5
           status: status
@@ -46596,6 +48153,7 @@ components:
           unshelve: true
           showStatus: true
           shelve: true
+        availabilityZone: availabilityZone
         volumeSize: 6
         createdAt: createdAt
         spotInstance: true
@@ -46610,28 +48168,28 @@ components:
           securityGroups:
           - protocol: protocol
             name: name
-            id: 9
-            portMinRange: 3
-            portMaxRange: 2
+            id: 3
+            portMinRange: 2
+            portMaxRange: 4
             isRdpPortEnabled: true
             remoteIpPrefix: remoteIpPrefix
           - protocol: protocol
             name: name
-            id: 9
-            portMinRange: 3
-            portMaxRange: 2
+            id: 3
+            portMinRange: 2
+            portMaxRange: 4
             isRdpPortEnabled: true
             remoteIpPrefix: remoteIpPrefix
-          id: 7
+          id: 9
           publicKey: publicKey
         ipAddress: ipAddress
         publicIp: publicIp
         hypervisorId: hypervisorId
         standAloneMetaDatas:
-        - id: 2
+        - id: 7
           value: value
           key: key
-        - id: 2
+        - id: 7
           value: value
           key: key
         targetFlavor: targetFlavor
@@ -46702,10 +48260,13 @@ components:
           nullable: true
           type: string
         spotPrice:
-          nullable: true
-          type: string
+          format: double
+          type: number
         spotInstance:
           type: boolean
+        availabilityZone:
+          nullable: true
+          type: string
         actionButtons:
           $ref: '#/components/schemas/StandaloneVisibilityDto'
         isWindows:
@@ -47713,6 +49274,27 @@ components:
           nullable: true
           type: array
       type: object
+    UpdateZadaraCommand:
+      additionalProperties: false
+      example:
+        zadaraAccessKeyId: zadaraAccessKeyId
+        name: name
+        id: 0
+        zadaraSecretAccessKey: zadaraSecretAccessKey
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        zadaraSecretAccessKey:
+          nullable: true
+          type: string
+        zadaraAccessKeyId:
+          nullable: true
+          type: string
+      type: object
     UserDetails:
       additionalProperties: false
       example:
@@ -47735,6 +49317,7 @@ components:
           id: id
           email: email
           owner: true
+          is2FAEnabled: true
           organizationName: organizationName
           hasRepo: true
           hasPaymentMethod: true
@@ -47747,21 +49330,15 @@ components:
             link: link
             logo: logo
             id: 1
-          demoModeEnabled: true
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
-        demoOrganization: 5
         isMaintenanceModeEnabled: true
       properties:
         data:
           $ref: '#/components/schemas/UserForListDto'
         isMaintenanceModeEnabled:
           type: boolean
-        demoOrganization:
-          format: int32
-          nullable: true
-          type: integer
         trialDays:
           format: int32
           nullable: true
@@ -47800,6 +49377,7 @@ components:
         id: id
         email: email
         owner: true
+        is2FAEnabled: true
         organizationName: organizationName
         hasRepo: true
         hasPaymentMethod: true
@@ -47812,7 +49390,6 @@ components:
           link: link
           logo: logo
           id: 1
-        demoModeEnabled: true
         isEmailNotificationEnabled: true
         username: username
         isEmailConfirmed: true
@@ -47864,9 +49441,9 @@ components:
           type: boolean
         hasRepo:
           type: boolean
-        demoModeEnabled:
-          type: boolean
         isNewOrganization:
+          type: boolean
+        is2FAEnabled:
           type: boolean
         lastLoginAt:
           nullable: true
@@ -48009,13 +49586,13 @@ components:
       additionalProperties: false
       example:
         diskSize: 6
-        maxRam: 3
-        cpu: 6
-        maxCpu: 3
+        maxRam: 7
+        cpu: 3
+        maxCpu: 0
         projectName: projectName
         maxDiskSize: 7
-        projectId: 6
-        ram: 5
+        projectId: 5
+        ram: 3
       properties:
         projectName:
           nullable: true
@@ -48148,6 +49725,7 @@ components:
           id: id
           email: email
           owner: true
+          is2FAEnabled: true
           organizationName: organizationName
           hasRepo: true
           hasPaymentMethod: true
@@ -48160,7 +49738,6 @@ components:
             link: link
             logo: logo
             id: 1
-          demoModeEnabled: true
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
@@ -48181,6 +49758,7 @@ components:
           id: id
           email: email
           owner: true
+          is2FAEnabled: true
           organizationName: organizationName
           hasRepo: true
           hasPaymentMethod: true
@@ -48193,7 +49771,6 @@ components:
             link: link
             logo: logo
             id: 1
-          demoModeEnabled: true
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
@@ -48431,6 +50008,7 @@ components:
           createdBy: createdBy
           isLocked: true
           name: name
+          skipTlsFlag: true
           hypervisors:
           - name: name
             id: id
@@ -48448,6 +50026,7 @@ components:
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
+            isVirtualLbNetwork: true
           - endAllocationRange: endAllocationRange
             netMask: 5
             name: name
@@ -48455,6 +50034,7 @@ components:
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
+            isVirtualLbNetwork: true
           username: username
         - projectCount: 6
           projects:
@@ -48476,6 +50056,7 @@ components:
           createdBy: createdBy
           isLocked: true
           name: name
+          skipTlsFlag: true
           hypervisors:
           - name: name
             id: id
@@ -48493,6 +50074,7 @@ components:
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
+            isVirtualLbNetwork: true
           - endAllocationRange: endAllocationRange
             netMask: 5
             name: name
@@ -48500,6 +50082,7 @@ components:
             isPrivate: true
             beginAllocationRange: beginAllocationRange
             gateway: gateway
+            isVirtualLbNetwork: true
           username: username
         totalCount: 5
       properties:
@@ -48535,6 +50118,7 @@ components:
         createdBy: createdBy
         isLocked: true
         name: name
+        skipTlsFlag: true
         hypervisors:
         - name: name
           id: id
@@ -48552,6 +50136,7 @@ components:
           isPrivate: true
           beginAllocationRange: beginAllocationRange
           gateway: gateway
+          isVirtualLbNetwork: true
         - endAllocationRange: endAllocationRange
           netMask: 5
           name: name
@@ -48559,6 +50144,7 @@ components:
           isPrivate: true
           beginAllocationRange: beginAllocationRange
           gateway: gateway
+          isVirtualLbNetwork: true
         username: username
       properties:
         id:
@@ -48633,6 +50219,8 @@ components:
             $ref: '#/components/schemas/VsphereNetworkListDto'
           nullable: true
           type: array
+        skipTlsFlag:
+          type: boolean
       type: object
     VsphereNetworkListDto:
       additionalProperties: false
@@ -48644,6 +50232,7 @@ components:
         isPrivate: true
         beginAllocationRange: beginAllocationRange
         gateway: gateway
+        isVirtualLbNetwork: true
       properties:
         name:
           nullable: true
@@ -48664,6 +50253,8 @@ components:
           nullable: true
           type: string
         isPrivate:
+          type: boolean
+        isVirtualLbNetwork:
           type: boolean
       type: object
     VsphereVmTemplateData:
@@ -48734,6 +50325,20 @@ components:
           nullable: true
           type: string
       type: object
+    WindowsInstancePasswordCommand:
+      additionalProperties: false
+      properties:
+        id:
+          format: int32
+          type: integer
+        key:
+          nullable: true
+          type: string
+        config:
+          format: binary
+          nullable: true
+          type: string
+      type: object
     YamlValidatorCommand:
       additionalProperties: false
       example:
@@ -48743,16 +50348,191 @@ components:
           nullable: true
           type: string
       type: object
-    checker_kube_config_request:
+    ZadaraAvailabilityZonesCommand:
+      additionalProperties: false
+      example:
+        zadaraAccessKeyId: zadaraAccessKeyId
+        cloudId: 0
+        zadaraSecretAccessKey: zadaraSecretAccessKey
+        url: url
       properties:
-        config:
-          format: binary
+        url:
+          nullable: true
+          type: string
+        zadaraAccessKeyId:
+          nullable: true
+          type: string
+        zadaraSecretAccessKey:
+          nullable: true
+          type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
+    ZadaraCredentialList:
+      additionalProperties: false
+      example:
+        data:
+        - projectCount: 6
+          projects:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          organizationName: organizationName
+          lastModifiedBy: lastModifiedBy
+          availabilityZones:
+          - availabilityZones
+          - availabilityZones
+          organizationId: 5
+          createdAt: createdAt
+          isDefault: true
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          availabilityZonesCount: 1
+          id: 0
+          lastModified: lastModified
+          region: region
+          continentName: continentName
+          zadaraVolumeType: zadaraVolumeType
+          zadaraApiUrl: zadaraApiUrl
+        - projectCount: 6
+          projects:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          organizationName: organizationName
+          lastModifiedBy: lastModifiedBy
+          availabilityZones:
+          - availabilityZones
+          - availabilityZones
+          organizationId: 5
+          createdAt: createdAt
+          isDefault: true
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          availabilityZonesCount: 1
+          id: 0
+          lastModified: lastModified
+          region: region
+          continentName: continentName
+          zadaraVolumeType: zadaraVolumeType
+          zadaraApiUrl: zadaraApiUrl
+        totalCount: 5
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ZadaraCredentialsListDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
+    ZadaraCredentialsListDto:
+      additionalProperties: false
+      example:
+        projectCount: 6
+        projects:
+        - name: name
+          id: 0
+        - name: name
+          id: 0
+        organizationName: organizationName
+        lastModifiedBy: lastModifiedBy
+        availabilityZones:
+        - availabilityZones
+        - availabilityZones
+        organizationId: 5
+        createdAt: createdAt
+        isDefault: true
+        createdBy: createdBy
+        isLocked: true
+        name: name
+        availabilityZonesCount: 1
+        id: 0
+        lastModified: lastModified
+        region: region
+        continentName: continentName
+        zadaraVolumeType: zadaraVolumeType
+        zadaraApiUrl: zadaraApiUrl
+      properties:
+        id:
+          format: int32
+          type: integer
+        projectCount:
+          format: int32
+          type: integer
+        isLocked:
+          type: boolean
+        name:
+          nullable: true
+          type: string
+        region:
+          nullable: true
+          type: string
+        availabilityZones:
+          items:
+            type: string
+          nullable: true
+          type: array
+        availabilityZonesCount:
+          format: int32
+          type: integer
+        projects:
+          items:
+            $ref: '#/components/schemas/CommonDropdownDto'
+          nullable: true
+          type: array
+        createdBy:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        isDefault:
+          type: boolean
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        continentName:
+          nullable: true
+          type: string
+        zadaraApiUrl:
+          nullable: true
+          type: string
+        zadaraVolumeType:
+          nullable: true
           type: string
       type: object
-    googlecloud_region_list_request:
+    ZadaraRegionListCommand:
+      additionalProperties: false
+      example:
+        zadaraAccessKeyId: zadaraAccessKeyId
+        zadaraSecretAccessKey: zadaraSecretAccessKey
+        url: url
       properties:
-        file:
-          format: binary
+        url:
+          nullable: true
+          type: string
+        zadaraAccessKeyId:
+          nullable: true
+          type: string
+        zadaraSecretAccessKey:
+          nullable: true
           type: string
       type: object
   securitySchemes:

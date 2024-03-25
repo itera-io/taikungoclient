@@ -71,6 +71,7 @@ api_user_projects.go
 api_user_token.go
 api_users.go
 api_vsphere_cloud_credential.go
+api_zadara_cloud_credential.go
 client.go
 configuration.go
 docs/AWSCloudCredentialAPI.md
@@ -182,6 +183,7 @@ docs/BoundFlavorsForProjectsListDto.md
 docs/BoundImagesForProjectsList.md
 docs/BoundImagesForProjectsListDto.md
 docs/BridgeListCommand.md
+docs/ButtonStatusDto.md
 docs/CBackupDto.md
 docs/CDeleteBackupRequestDto.md
 docs/CRestoreDto.md
@@ -189,6 +191,8 @@ docs/CScheduleDto.md
 docs/CatalogAPI.md
 docs/CatalogAppAPI.md
 docs/CatalogAppDetailsDto.md
+docs/CatalogAppList.md
+docs/CatalogAppListDto.md
 docs/CatalogAppLockManagement.md
 docs/CatalogAppParamsDetailsDto.md
 docs/CatalogAppParamsDto.md
@@ -196,6 +200,7 @@ docs/CatalogDropdownDto.md
 docs/CatalogList.md
 docs/CatalogListDto.md
 docs/CatalogLockManagementCommand.md
+docs/CatalogMakeDefaultCommand.md
 docs/Chart.md
 docs/ChartSpec.md
 docs/CheckAwsCommand.md
@@ -205,6 +210,7 @@ docs/CheckOpenstackCommand.md
 docs/CheckPrometheusCommand.md
 docs/CheckS3Command.md
 docs/CheckTanzuCommand.md
+docs/CheckZadaraCommand.md
 docs/CheckerAPI.md
 docs/CidrCommand.md
 docs/CloudCredentialAPI.md
@@ -266,6 +272,7 @@ docs/CreateUserCommand.md
 docs/CreateUserGroupCommand.md
 docs/CreateVsphereCommand.md
 docs/CreateVsphereNetworkDto.md
+docs/CreateZadaraCloudCommand.md
 docs/CredentialChartDto.md
 docs/CredentialMakeDefaultCommand.md
 docs/CredentialsChart.md
@@ -321,7 +328,6 @@ docs/DisableAiCommand.md
 docs/DisableAutoscalingCommand.md
 docs/DisableBackupCommand.md
 docs/DisableGatekeeperCommand.md
-docs/DisableRepoCommand.md
 docs/DnsCommand.md
 docs/DnsNtpAddressEditDto.md
 docs/DnsServerCreateDto.md
@@ -332,6 +338,7 @@ docs/DocumentationData.md
 docs/DocumentationsList.md
 docs/DownloadKubeConfigCommand.md
 docs/DuplicateNameCheckerCommand.md
+docs/EInstanceStatus.md
 docs/EditAlertingIntegrationCommand.md
 docs/EditAllowedHostDto.md
 docs/EditArticleCommand.md
@@ -371,6 +378,7 @@ docs/GroupedBillingInfo.md
 docs/GroupedBillingListQuery.md
 docs/GroupedBillings.md
 docs/GroupedPrometheusBillingListQuery.md
+docs/HelmCredentialCommand.md
 docs/HelmMetadata.md
 docs/HelmReleaseDto.md
 docs/HelmReleasesList.md
@@ -390,6 +398,8 @@ docs/IngressDto.md
 docs/IngressSearchCommand.md
 docs/IngressSearchList.md
 docs/Ingresses.md
+docs/InstanceAppListDto.md
+docs/InteractiveShellDto.md
 docs/JsonNode.md
 docs/JsonNodeOptions.md
 docs/KeycloakAPI.md
@@ -501,6 +511,7 @@ docs/OrganizationsList.md
 docs/PackageAPI.md
 docs/PackageAutocompleteDto.md
 docs/Parameter.md
+docs/ParameterType.md
 docs/PartnerDetailsDto.md
 docs/PartnerDetailsForOrganizationsDto.md
 docs/PartnerDetailsForUserDto.md
@@ -531,15 +542,15 @@ docs/ProblemDetails.md
 docs/ProjectActionUpdateDto.md
 docs/ProjectActionVisibilityDto.md
 docs/ProjectActionsAPI.md
+docs/ProjectAlertsQuery.md
 docs/ProjectAppDetailsDto.md
 docs/ProjectAppDto.md
 docs/ProjectAppList.md
-docs/ProjectAppListDto.md
 docs/ProjectAppParamDto.md
 docs/ProjectAppParamsAPI.md
 docs/ProjectAppParamsDto.md
 docs/ProjectAppsAPI.md
-docs/ProjectButtonStatusDto.md
+docs/ProjectCatalogDto.md
 docs/ProjectChartDto.md
 docs/ProjectCommonRecordDto.md
 docs/ProjectDetailsErrorListDto.md
@@ -567,6 +578,7 @@ docs/ProjectTemplateDropdownListDto.md
 docs/ProjectTemplateList.md
 docs/ProjectTemplateListDto.md
 docs/ProjectTemplatesAPI.md
+docs/ProjectType.md
 docs/ProjectsAPI.md
 docs/ProjectsList.md
 docs/ProjectsSearchCommand.md
@@ -746,6 +758,7 @@ docs/UpdateUserProjectDto.md
 docs/UpdateUserProjectGroupDto.md
 docs/UpdateVsphereCommand.md
 docs/UpdateVsphereHypervisorsCommand.md
+docs/UpdateZadaraCommand.md
 docs/UserDetails.md
 docs/UserDto.md
 docs/UserForListDto.md
@@ -783,6 +796,11 @@ docs/VsphereVmTemplateListCommand.md
 docs/WebhookHeaderDto.md
 docs/WhiteListDomainDto.md
 docs/YamlValidatorCommand.md
+docs/ZadaraAvailabilityZonesCommand.md
+docs/ZadaraCloudCredentialAPI.md
+docs/ZadaraCredentialList.md
+docs/ZadaraCredentialsListDto.md
+docs/ZadaraRegionListCommand.md
 git_push.sh
 go.mod
 go.sum
@@ -882,11 +900,14 @@ model_bound_flavors_for_projects_list_dto.go
 model_bound_images_for_projects_list.go
 model_bound_images_for_projects_list_dto.go
 model_bridge_list_command.go
+model_button_status_dto.go
 model_c_backup_dto.go
 model_c_delete_backup_request_dto.go
 model_c_restore_dto.go
 model_c_schedule_dto.go
 model_catalog_app_details_dto.go
+model_catalog_app_list.go
+model_catalog_app_list_dto.go
 model_catalog_app_lock_management.go
 model_catalog_app_params_details_dto.go
 model_catalog_app_params_dto.go
@@ -894,6 +915,7 @@ model_catalog_dropdown_dto.go
 model_catalog_list.go
 model_catalog_list_dto.go
 model_catalog_lock_management_command.go
+model_catalog_make_default_command.go
 model_chart.go
 model_chart_spec.go
 model_check_aws_command.go
@@ -903,6 +925,7 @@ model_check_openstack_command.go
 model_check_prometheus_command.go
 model_check_s3_command.go
 model_check_tanzu_command.go
+model_check_zadara_command.go
 model_cidr_command.go
 model_cloud_credentials_for_organization_entity.go
 model_cloud_credentials_response_data.go
@@ -961,6 +984,7 @@ model_create_user_command.go
 model_create_user_group_command.go
 model_create_vsphere_command.go
 model_create_vsphere_network_dto.go
+model_create_zadara_cloud_command.go
 model_credential_chart_dto.go
 model_credential_make_default_command.go
 model_credentials_chart.go
@@ -1016,7 +1040,6 @@ model_disable_ai_command.go
 model_disable_autoscaling_command.go
 model_disable_backup_command.go
 model_disable_gatekeeper_command.go
-model_disable_repo_command.go
 model_dns_command.go
 model_dns_ntp_address_edit_dto.go
 model_dns_server_create_dto.go
@@ -1026,6 +1049,7 @@ model_documentation_data.go
 model_documentations_list.go
 model_download_kube_config_command.go
 model_duplicate_name_checker_command.go
+model_e_instance_status.go
 model_edit_alerting_integration_command.go
 model_edit_allowed_host_dto.go
 model_edit_article_command.go
@@ -1063,6 +1087,7 @@ model_grouped_billing_info.go
 model_grouped_billing_list_query.go
 model_grouped_billings.go
 model_grouped_prometheus_billing_list_query.go
+model_helm_credential_command.go
 model_helm_metadata.go
 model_helm_release_dto.go
 model_helm_releases_list.go
@@ -1079,6 +1104,8 @@ model_ingress_dto.go
 model_ingress_search_command.go
 model_ingress_search_list.go
 model_ingresses.go
+model_instance_app_list_dto.go
+model_interactive_shell_dto.go
 model_json_node.go
 model_json_node_options.go
 model_keycloak_checker_command.go
@@ -1177,6 +1204,7 @@ model_organization_search_list.go
 model_organizations_list.go
 model_package_autocomplete_dto.go
 model_parameter.go
+model_parameter_type.go
 model_partner_details_dto.go
 model_partner_details_for_organizations_dto.go
 model_partner_details_for_user_dto.go
@@ -1204,13 +1232,13 @@ model_pods_search_list.go
 model_problem_details.go
 model_project_action_update_dto.go
 model_project_action_visibility_dto.go
+model_project_alerts_query.go
 model_project_app_details_dto.go
 model_project_app_dto.go
 model_project_app_list.go
-model_project_app_list_dto.go
 model_project_app_param_dto.go
 model_project_app_params_dto.go
-model_project_button_status_dto.go
+model_project_catalog_dto.go
 model_project_chart_dto.go
 model_project_common_record_dto.go
 model_project_details_error_list_dto.go
@@ -1234,6 +1262,7 @@ model_project_status.go
 model_project_template_dropdown_list_dto.go
 model_project_template_list.go
 model_project_template_list_dto.go
+model_project_type.go
 model_projects_list.go
 model_projects_search_command.go
 model_projects_search_list.go
@@ -1396,6 +1425,7 @@ model_update_user_project_dto.go
 model_update_user_project_group_dto.go
 model_update_vsphere_command.go
 model_update_vsphere_hypervisors_command.go
+model_update_zadara_command.go
 model_user_details.go
 model_user_dto.go
 model_user_for_list_dto.go
@@ -1428,6 +1458,10 @@ model_vsphere_vm_template_list_command.go
 model_webhook_header_dto.go
 model_white_list_domain_dto.go
 model_yaml_validator_command.go
+model_zadara_availability_zones_command.go
+model_zadara_credential_list.go
+model_zadara_credentials_list_dto.go
+model_zadara_region_list_command.go
 response.go
 test/api_access_profiles_test.go
 test/api_ai_credentials_test.go
@@ -1497,4 +1531,5 @@ test/api_user_projects_test.go
 test/api_user_token_test.go
 test/api_users_test.go
 test/api_vsphere_cloud_credential_test.go
+test/api_zadara_cloud_credential_test.go
 utils.go

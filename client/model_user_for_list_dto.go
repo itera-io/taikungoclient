@@ -40,8 +40,8 @@ type UserForListDto struct {
 	Owner *bool `json:"owner,omitempty"`
 	IsReadOnly *bool `json:"isReadOnly,omitempty"`
 	HasRepo *bool `json:"hasRepo,omitempty"`
-	DemoModeEnabled *bool `json:"demoModeEnabled,omitempty"`
 	IsNewOrganization *bool `json:"isNewOrganization,omitempty"`
+	Is2FAEnabled *bool `json:"is2FAEnabled,omitempty"`
 	LastLoginAt NullableString `json:"lastLoginAt,omitempty"`
 	BoundProjects []ProjectDto `json:"boundProjects,omitempty"`
 	Partner *PartnerDetailsForUserDto `json:"partner,omitempty"`
@@ -764,38 +764,6 @@ func (o *UserForListDto) SetHasRepo(v bool) {
 	o.HasRepo = &v
 }
 
-// GetDemoModeEnabled returns the DemoModeEnabled field value if set, zero value otherwise.
-func (o *UserForListDto) GetDemoModeEnabled() bool {
-	if o == nil || IsNil(o.DemoModeEnabled) {
-		var ret bool
-		return ret
-	}
-	return *o.DemoModeEnabled
-}
-
-// GetDemoModeEnabledOk returns a tuple with the DemoModeEnabled field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *UserForListDto) GetDemoModeEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.DemoModeEnabled) {
-		return nil, false
-	}
-	return o.DemoModeEnabled, true
-}
-
-// HasDemoModeEnabled returns a boolean if a field has been set.
-func (o *UserForListDto) HasDemoModeEnabled() bool {
-	if o != nil && !IsNil(o.DemoModeEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetDemoModeEnabled gets a reference to the given bool and assigns it to the DemoModeEnabled field.
-func (o *UserForListDto) SetDemoModeEnabled(v bool) {
-	o.DemoModeEnabled = &v
-}
-
 // GetIsNewOrganization returns the IsNewOrganization field value if set, zero value otherwise.
 func (o *UserForListDto) GetIsNewOrganization() bool {
 	if o == nil || IsNil(o.IsNewOrganization) {
@@ -826,6 +794,38 @@ func (o *UserForListDto) HasIsNewOrganization() bool {
 // SetIsNewOrganization gets a reference to the given bool and assigns it to the IsNewOrganization field.
 func (o *UserForListDto) SetIsNewOrganization(v bool) {
 	o.IsNewOrganization = &v
+}
+
+// GetIs2FAEnabled returns the Is2FAEnabled field value if set, zero value otherwise.
+func (o *UserForListDto) GetIs2FAEnabled() bool {
+	if o == nil || IsNil(o.Is2FAEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.Is2FAEnabled
+}
+
+// GetIs2FAEnabledOk returns a tuple with the Is2FAEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *UserForListDto) GetIs2FAEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.Is2FAEnabled) {
+		return nil, false
+	}
+	return o.Is2FAEnabled, true
+}
+
+// HasIs2FAEnabled returns a boolean if a field has been set.
+func (o *UserForListDto) HasIs2FAEnabled() bool {
+	if o != nil && !IsNil(o.Is2FAEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIs2FAEnabled gets a reference to the given bool and assigns it to the Is2FAEnabled field.
+func (o *UserForListDto) SetIs2FAEnabled(v bool) {
+	o.Is2FAEnabled = &v
 }
 
 // GetLastLoginAt returns the LastLoginAt field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1005,11 +1005,11 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasRepo) {
 		toSerialize["hasRepo"] = o.HasRepo
 	}
-	if !IsNil(o.DemoModeEnabled) {
-		toSerialize["demoModeEnabled"] = o.DemoModeEnabled
-	}
 	if !IsNil(o.IsNewOrganization) {
 		toSerialize["isNewOrganization"] = o.IsNewOrganization
+	}
+	if !IsNil(o.Is2FAEnabled) {
+		toSerialize["is2FAEnabled"] = o.Is2FAEnabled
 	}
 	if o.LastLoginAt.IsSet() {
 		toSerialize["lastLoginAt"] = o.LastLoginAt.Get()

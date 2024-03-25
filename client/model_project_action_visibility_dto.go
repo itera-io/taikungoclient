@@ -20,33 +20,34 @@ var _ MappedNullable = &ProjectActionVisibilityDto{}
 
 // ProjectActionVisibilityDto struct for ProjectActionVisibilityDto
 type ProjectActionVisibilityDto struct {
-	Commit *ProjectButtonStatusDto `json:"commit,omitempty"`
-	Repair *ProjectButtonStatusDto `json:"repair,omitempty"`
-	Upgrade *ProjectButtonStatusDto `json:"upgrade,omitempty"`
-	Monitoring *ProjectButtonStatusDto `json:"monitoring,omitempty"`
-	EnableBackup *ProjectButtonStatusDto `json:"enableBackup,omitempty"`
-	DisableBackup *ProjectButtonStatusDto `json:"disableBackup,omitempty"`
-	EnableOpa *ProjectButtonStatusDto `json:"enableOpa,omitempty"`
-	DisableOpa *ProjectButtonStatusDto `json:"disableOpa,omitempty"`
-	EnableAutoscaler *ProjectButtonStatusDto `json:"enableAutoscaler,omitempty"`
-	DisableAutoscaler *ProjectButtonStatusDto `json:"disableAutoscaler,omitempty"`
-	VmRepair *ProjectButtonStatusDto `json:"vmRepair,omitempty"`
-	VmCommit *ProjectButtonStatusDto `json:"vmCommit,omitempty"`
-	Lock *ProjectButtonStatusDto `json:"lock,omitempty"`
-	Unlock *ProjectButtonStatusDto `json:"unlock,omitempty"`
-	EnableSpotWorker *ProjectButtonStatusDto `json:"enableSpotWorker,omitempty"`
-	DisableSpotWorker *ProjectButtonStatusDto `json:"disableSpotWorker,omitempty"`
-	EnableFullSpot *ProjectButtonStatusDto `json:"enableFullSpot,omitempty"`
-	DisableFullSpot *ProjectButtonStatusDto `json:"disableFullSpot,omitempty"`
-	EnableSpotVm *ProjectButtonStatusDto `json:"enableSpotVm,omitempty"`
-	DisableSpotVm *ProjectButtonStatusDto `json:"disableSpotVm,omitempty"`
-	AttachAlertingProfile *ProjectButtonStatusDto `json:"attachAlertingProfile,omitempty"`
-	DetachAlertingProfile *ProjectButtonStatusDto `json:"detachAlertingProfile,omitempty"`
-	EnableAi *ProjectButtonStatusDto `json:"enableAi,omitempty"`
-	DisableAi *ProjectButtonStatusDto `json:"disableAi,omitempty"`
-	AiAssistant *ProjectButtonStatusDto `json:"aiAssistant,omitempty"`
-	EnableMaintenanceMode *ProjectButtonStatusDto `json:"enableMaintenanceMode,omitempty"`
-	DisableMaintenanceMode *ProjectButtonStatusDto `json:"disableMaintenanceMode,omitempty"`
+	Commit *ButtonStatusDto `json:"commit,omitempty"`
+	Repair *ButtonStatusDto `json:"repair,omitempty"`
+	Upgrade *ButtonStatusDto `json:"upgrade,omitempty"`
+	Monitoring *ButtonStatusDto `json:"monitoring,omitempty"`
+	EnableBackup *ButtonStatusDto `json:"enableBackup,omitempty"`
+	DisableBackup *ButtonStatusDto `json:"disableBackup,omitempty"`
+	EnableOpa *ButtonStatusDto `json:"enableOpa,omitempty"`
+	DisableOpa *ButtonStatusDto `json:"disableOpa,omitempty"`
+	EnableAutoscaler *ButtonStatusDto `json:"enableAutoscaler,omitempty"`
+	DisableAutoscaler *ButtonStatusDto `json:"disableAutoscaler,omitempty"`
+	VmRepair *ButtonStatusDto `json:"vmRepair,omitempty"`
+	VmCommit *ButtonStatusDto `json:"vmCommit,omitempty"`
+	Lock *ButtonStatusDto `json:"lock,omitempty"`
+	Unlock *ButtonStatusDto `json:"unlock,omitempty"`
+	EnableSpotWorker *ButtonStatusDto `json:"enableSpotWorker,omitempty"`
+	DisableSpotWorker *ButtonStatusDto `json:"disableSpotWorker,omitempty"`
+	EnableFullSpot *ButtonStatusDto `json:"enableFullSpot,omitempty"`
+	DisableFullSpot *ButtonStatusDto `json:"disableFullSpot,omitempty"`
+	EnableSpotVm *ButtonStatusDto `json:"enableSpotVm,omitempty"`
+	DisableSpotVm *ButtonStatusDto `json:"disableSpotVm,omitempty"`
+	AttachAlertingProfile *ButtonStatusDto `json:"attachAlertingProfile,omitempty"`
+	DetachAlertingProfile *ButtonStatusDto `json:"detachAlertingProfile,omitempty"`
+	EnableAi *ButtonStatusDto `json:"enableAi,omitempty"`
+	DisableAi *ButtonStatusDto `json:"disableAi,omitempty"`
+	AiAssistant *ButtonStatusDto `json:"aiAssistant,omitempty"`
+	ProjectMaintenanceMode *ButtonStatusDto `json:"projectMaintenanceMode,omitempty"`
+	AddServer *ButtonStatusDto `json:"addServer,omitempty"`
+	AddVm *ButtonStatusDto `json:"addVm,omitempty"`
 }
 
 // NewProjectActionVisibilityDto instantiates a new ProjectActionVisibilityDto object
@@ -67,9 +68,9 @@ func NewProjectActionVisibilityDtoWithDefaults() *ProjectActionVisibilityDto {
 }
 
 // GetCommit returns the Commit field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetCommit() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetCommit() ButtonStatusDto {
 	if o == nil || IsNil(o.Commit) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.Commit
@@ -77,7 +78,7 @@ func (o *ProjectActionVisibilityDto) GetCommit() ProjectButtonStatusDto {
 
 // GetCommitOk returns a tuple with the Commit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetCommitOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetCommitOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.Commit) {
 		return nil, false
 	}
@@ -93,15 +94,15 @@ func (o *ProjectActionVisibilityDto) HasCommit() bool {
 	return false
 }
 
-// SetCommit gets a reference to the given ProjectButtonStatusDto and assigns it to the Commit field.
-func (o *ProjectActionVisibilityDto) SetCommit(v ProjectButtonStatusDto) {
+// SetCommit gets a reference to the given ButtonStatusDto and assigns it to the Commit field.
+func (o *ProjectActionVisibilityDto) SetCommit(v ButtonStatusDto) {
 	o.Commit = &v
 }
 
 // GetRepair returns the Repair field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetRepair() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetRepair() ButtonStatusDto {
 	if o == nil || IsNil(o.Repair) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.Repair
@@ -109,7 +110,7 @@ func (o *ProjectActionVisibilityDto) GetRepair() ProjectButtonStatusDto {
 
 // GetRepairOk returns a tuple with the Repair field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetRepairOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetRepairOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.Repair) {
 		return nil, false
 	}
@@ -125,15 +126,15 @@ func (o *ProjectActionVisibilityDto) HasRepair() bool {
 	return false
 }
 
-// SetRepair gets a reference to the given ProjectButtonStatusDto and assigns it to the Repair field.
-func (o *ProjectActionVisibilityDto) SetRepair(v ProjectButtonStatusDto) {
+// SetRepair gets a reference to the given ButtonStatusDto and assigns it to the Repair field.
+func (o *ProjectActionVisibilityDto) SetRepair(v ButtonStatusDto) {
 	o.Repair = &v
 }
 
 // GetUpgrade returns the Upgrade field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetUpgrade() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetUpgrade() ButtonStatusDto {
 	if o == nil || IsNil(o.Upgrade) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.Upgrade
@@ -141,7 +142,7 @@ func (o *ProjectActionVisibilityDto) GetUpgrade() ProjectButtonStatusDto {
 
 // GetUpgradeOk returns a tuple with the Upgrade field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetUpgradeOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetUpgradeOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.Upgrade) {
 		return nil, false
 	}
@@ -157,15 +158,15 @@ func (o *ProjectActionVisibilityDto) HasUpgrade() bool {
 	return false
 }
 
-// SetUpgrade gets a reference to the given ProjectButtonStatusDto and assigns it to the Upgrade field.
-func (o *ProjectActionVisibilityDto) SetUpgrade(v ProjectButtonStatusDto) {
+// SetUpgrade gets a reference to the given ButtonStatusDto and assigns it to the Upgrade field.
+func (o *ProjectActionVisibilityDto) SetUpgrade(v ButtonStatusDto) {
 	o.Upgrade = &v
 }
 
 // GetMonitoring returns the Monitoring field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetMonitoring() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetMonitoring() ButtonStatusDto {
 	if o == nil || IsNil(o.Monitoring) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.Monitoring
@@ -173,7 +174,7 @@ func (o *ProjectActionVisibilityDto) GetMonitoring() ProjectButtonStatusDto {
 
 // GetMonitoringOk returns a tuple with the Monitoring field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetMonitoringOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetMonitoringOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.Monitoring) {
 		return nil, false
 	}
@@ -189,15 +190,15 @@ func (o *ProjectActionVisibilityDto) HasMonitoring() bool {
 	return false
 }
 
-// SetMonitoring gets a reference to the given ProjectButtonStatusDto and assigns it to the Monitoring field.
-func (o *ProjectActionVisibilityDto) SetMonitoring(v ProjectButtonStatusDto) {
+// SetMonitoring gets a reference to the given ButtonStatusDto and assigns it to the Monitoring field.
+func (o *ProjectActionVisibilityDto) SetMonitoring(v ButtonStatusDto) {
 	o.Monitoring = &v
 }
 
 // GetEnableBackup returns the EnableBackup field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetEnableBackup() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetEnableBackup() ButtonStatusDto {
 	if o == nil || IsNil(o.EnableBackup) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.EnableBackup
@@ -205,7 +206,7 @@ func (o *ProjectActionVisibilityDto) GetEnableBackup() ProjectButtonStatusDto {
 
 // GetEnableBackupOk returns a tuple with the EnableBackup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetEnableBackupOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetEnableBackupOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.EnableBackup) {
 		return nil, false
 	}
@@ -221,15 +222,15 @@ func (o *ProjectActionVisibilityDto) HasEnableBackup() bool {
 	return false
 }
 
-// SetEnableBackup gets a reference to the given ProjectButtonStatusDto and assigns it to the EnableBackup field.
-func (o *ProjectActionVisibilityDto) SetEnableBackup(v ProjectButtonStatusDto) {
+// SetEnableBackup gets a reference to the given ButtonStatusDto and assigns it to the EnableBackup field.
+func (o *ProjectActionVisibilityDto) SetEnableBackup(v ButtonStatusDto) {
 	o.EnableBackup = &v
 }
 
 // GetDisableBackup returns the DisableBackup field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetDisableBackup() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetDisableBackup() ButtonStatusDto {
 	if o == nil || IsNil(o.DisableBackup) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.DisableBackup
@@ -237,7 +238,7 @@ func (o *ProjectActionVisibilityDto) GetDisableBackup() ProjectButtonStatusDto {
 
 // GetDisableBackupOk returns a tuple with the DisableBackup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetDisableBackupOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetDisableBackupOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.DisableBackup) {
 		return nil, false
 	}
@@ -253,15 +254,15 @@ func (o *ProjectActionVisibilityDto) HasDisableBackup() bool {
 	return false
 }
 
-// SetDisableBackup gets a reference to the given ProjectButtonStatusDto and assigns it to the DisableBackup field.
-func (o *ProjectActionVisibilityDto) SetDisableBackup(v ProjectButtonStatusDto) {
+// SetDisableBackup gets a reference to the given ButtonStatusDto and assigns it to the DisableBackup field.
+func (o *ProjectActionVisibilityDto) SetDisableBackup(v ButtonStatusDto) {
 	o.DisableBackup = &v
 }
 
 // GetEnableOpa returns the EnableOpa field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetEnableOpa() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetEnableOpa() ButtonStatusDto {
 	if o == nil || IsNil(o.EnableOpa) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.EnableOpa
@@ -269,7 +270,7 @@ func (o *ProjectActionVisibilityDto) GetEnableOpa() ProjectButtonStatusDto {
 
 // GetEnableOpaOk returns a tuple with the EnableOpa field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetEnableOpaOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetEnableOpaOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.EnableOpa) {
 		return nil, false
 	}
@@ -285,15 +286,15 @@ func (o *ProjectActionVisibilityDto) HasEnableOpa() bool {
 	return false
 }
 
-// SetEnableOpa gets a reference to the given ProjectButtonStatusDto and assigns it to the EnableOpa field.
-func (o *ProjectActionVisibilityDto) SetEnableOpa(v ProjectButtonStatusDto) {
+// SetEnableOpa gets a reference to the given ButtonStatusDto and assigns it to the EnableOpa field.
+func (o *ProjectActionVisibilityDto) SetEnableOpa(v ButtonStatusDto) {
 	o.EnableOpa = &v
 }
 
 // GetDisableOpa returns the DisableOpa field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetDisableOpa() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetDisableOpa() ButtonStatusDto {
 	if o == nil || IsNil(o.DisableOpa) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.DisableOpa
@@ -301,7 +302,7 @@ func (o *ProjectActionVisibilityDto) GetDisableOpa() ProjectButtonStatusDto {
 
 // GetDisableOpaOk returns a tuple with the DisableOpa field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetDisableOpaOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetDisableOpaOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.DisableOpa) {
 		return nil, false
 	}
@@ -317,15 +318,15 @@ func (o *ProjectActionVisibilityDto) HasDisableOpa() bool {
 	return false
 }
 
-// SetDisableOpa gets a reference to the given ProjectButtonStatusDto and assigns it to the DisableOpa field.
-func (o *ProjectActionVisibilityDto) SetDisableOpa(v ProjectButtonStatusDto) {
+// SetDisableOpa gets a reference to the given ButtonStatusDto and assigns it to the DisableOpa field.
+func (o *ProjectActionVisibilityDto) SetDisableOpa(v ButtonStatusDto) {
 	o.DisableOpa = &v
 }
 
 // GetEnableAutoscaler returns the EnableAutoscaler field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetEnableAutoscaler() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetEnableAutoscaler() ButtonStatusDto {
 	if o == nil || IsNil(o.EnableAutoscaler) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.EnableAutoscaler
@@ -333,7 +334,7 @@ func (o *ProjectActionVisibilityDto) GetEnableAutoscaler() ProjectButtonStatusDt
 
 // GetEnableAutoscalerOk returns a tuple with the EnableAutoscaler field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetEnableAutoscalerOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetEnableAutoscalerOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.EnableAutoscaler) {
 		return nil, false
 	}
@@ -349,15 +350,15 @@ func (o *ProjectActionVisibilityDto) HasEnableAutoscaler() bool {
 	return false
 }
 
-// SetEnableAutoscaler gets a reference to the given ProjectButtonStatusDto and assigns it to the EnableAutoscaler field.
-func (o *ProjectActionVisibilityDto) SetEnableAutoscaler(v ProjectButtonStatusDto) {
+// SetEnableAutoscaler gets a reference to the given ButtonStatusDto and assigns it to the EnableAutoscaler field.
+func (o *ProjectActionVisibilityDto) SetEnableAutoscaler(v ButtonStatusDto) {
 	o.EnableAutoscaler = &v
 }
 
 // GetDisableAutoscaler returns the DisableAutoscaler field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetDisableAutoscaler() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetDisableAutoscaler() ButtonStatusDto {
 	if o == nil || IsNil(o.DisableAutoscaler) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.DisableAutoscaler
@@ -365,7 +366,7 @@ func (o *ProjectActionVisibilityDto) GetDisableAutoscaler() ProjectButtonStatusD
 
 // GetDisableAutoscalerOk returns a tuple with the DisableAutoscaler field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetDisableAutoscalerOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetDisableAutoscalerOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.DisableAutoscaler) {
 		return nil, false
 	}
@@ -381,15 +382,15 @@ func (o *ProjectActionVisibilityDto) HasDisableAutoscaler() bool {
 	return false
 }
 
-// SetDisableAutoscaler gets a reference to the given ProjectButtonStatusDto and assigns it to the DisableAutoscaler field.
-func (o *ProjectActionVisibilityDto) SetDisableAutoscaler(v ProjectButtonStatusDto) {
+// SetDisableAutoscaler gets a reference to the given ButtonStatusDto and assigns it to the DisableAutoscaler field.
+func (o *ProjectActionVisibilityDto) SetDisableAutoscaler(v ButtonStatusDto) {
 	o.DisableAutoscaler = &v
 }
 
 // GetVmRepair returns the VmRepair field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetVmRepair() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetVmRepair() ButtonStatusDto {
 	if o == nil || IsNil(o.VmRepair) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.VmRepair
@@ -397,7 +398,7 @@ func (o *ProjectActionVisibilityDto) GetVmRepair() ProjectButtonStatusDto {
 
 // GetVmRepairOk returns a tuple with the VmRepair field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetVmRepairOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetVmRepairOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.VmRepair) {
 		return nil, false
 	}
@@ -413,15 +414,15 @@ func (o *ProjectActionVisibilityDto) HasVmRepair() bool {
 	return false
 }
 
-// SetVmRepair gets a reference to the given ProjectButtonStatusDto and assigns it to the VmRepair field.
-func (o *ProjectActionVisibilityDto) SetVmRepair(v ProjectButtonStatusDto) {
+// SetVmRepair gets a reference to the given ButtonStatusDto and assigns it to the VmRepair field.
+func (o *ProjectActionVisibilityDto) SetVmRepair(v ButtonStatusDto) {
 	o.VmRepair = &v
 }
 
 // GetVmCommit returns the VmCommit field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetVmCommit() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetVmCommit() ButtonStatusDto {
 	if o == nil || IsNil(o.VmCommit) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.VmCommit
@@ -429,7 +430,7 @@ func (o *ProjectActionVisibilityDto) GetVmCommit() ProjectButtonStatusDto {
 
 // GetVmCommitOk returns a tuple with the VmCommit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetVmCommitOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetVmCommitOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.VmCommit) {
 		return nil, false
 	}
@@ -445,15 +446,15 @@ func (o *ProjectActionVisibilityDto) HasVmCommit() bool {
 	return false
 }
 
-// SetVmCommit gets a reference to the given ProjectButtonStatusDto and assigns it to the VmCommit field.
-func (o *ProjectActionVisibilityDto) SetVmCommit(v ProjectButtonStatusDto) {
+// SetVmCommit gets a reference to the given ButtonStatusDto and assigns it to the VmCommit field.
+func (o *ProjectActionVisibilityDto) SetVmCommit(v ButtonStatusDto) {
 	o.VmCommit = &v
 }
 
 // GetLock returns the Lock field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetLock() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetLock() ButtonStatusDto {
 	if o == nil || IsNil(o.Lock) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.Lock
@@ -461,7 +462,7 @@ func (o *ProjectActionVisibilityDto) GetLock() ProjectButtonStatusDto {
 
 // GetLockOk returns a tuple with the Lock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetLockOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetLockOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.Lock) {
 		return nil, false
 	}
@@ -477,15 +478,15 @@ func (o *ProjectActionVisibilityDto) HasLock() bool {
 	return false
 }
 
-// SetLock gets a reference to the given ProjectButtonStatusDto and assigns it to the Lock field.
-func (o *ProjectActionVisibilityDto) SetLock(v ProjectButtonStatusDto) {
+// SetLock gets a reference to the given ButtonStatusDto and assigns it to the Lock field.
+func (o *ProjectActionVisibilityDto) SetLock(v ButtonStatusDto) {
 	o.Lock = &v
 }
 
 // GetUnlock returns the Unlock field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetUnlock() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetUnlock() ButtonStatusDto {
 	if o == nil || IsNil(o.Unlock) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.Unlock
@@ -493,7 +494,7 @@ func (o *ProjectActionVisibilityDto) GetUnlock() ProjectButtonStatusDto {
 
 // GetUnlockOk returns a tuple with the Unlock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetUnlockOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetUnlockOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.Unlock) {
 		return nil, false
 	}
@@ -509,15 +510,15 @@ func (o *ProjectActionVisibilityDto) HasUnlock() bool {
 	return false
 }
 
-// SetUnlock gets a reference to the given ProjectButtonStatusDto and assigns it to the Unlock field.
-func (o *ProjectActionVisibilityDto) SetUnlock(v ProjectButtonStatusDto) {
+// SetUnlock gets a reference to the given ButtonStatusDto and assigns it to the Unlock field.
+func (o *ProjectActionVisibilityDto) SetUnlock(v ButtonStatusDto) {
 	o.Unlock = &v
 }
 
 // GetEnableSpotWorker returns the EnableSpotWorker field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetEnableSpotWorker() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetEnableSpotWorker() ButtonStatusDto {
 	if o == nil || IsNil(o.EnableSpotWorker) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.EnableSpotWorker
@@ -525,7 +526,7 @@ func (o *ProjectActionVisibilityDto) GetEnableSpotWorker() ProjectButtonStatusDt
 
 // GetEnableSpotWorkerOk returns a tuple with the EnableSpotWorker field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetEnableSpotWorkerOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetEnableSpotWorkerOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.EnableSpotWorker) {
 		return nil, false
 	}
@@ -541,15 +542,15 @@ func (o *ProjectActionVisibilityDto) HasEnableSpotWorker() bool {
 	return false
 }
 
-// SetEnableSpotWorker gets a reference to the given ProjectButtonStatusDto and assigns it to the EnableSpotWorker field.
-func (o *ProjectActionVisibilityDto) SetEnableSpotWorker(v ProjectButtonStatusDto) {
+// SetEnableSpotWorker gets a reference to the given ButtonStatusDto and assigns it to the EnableSpotWorker field.
+func (o *ProjectActionVisibilityDto) SetEnableSpotWorker(v ButtonStatusDto) {
 	o.EnableSpotWorker = &v
 }
 
 // GetDisableSpotWorker returns the DisableSpotWorker field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetDisableSpotWorker() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetDisableSpotWorker() ButtonStatusDto {
 	if o == nil || IsNil(o.DisableSpotWorker) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.DisableSpotWorker
@@ -557,7 +558,7 @@ func (o *ProjectActionVisibilityDto) GetDisableSpotWorker() ProjectButtonStatusD
 
 // GetDisableSpotWorkerOk returns a tuple with the DisableSpotWorker field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetDisableSpotWorkerOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetDisableSpotWorkerOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.DisableSpotWorker) {
 		return nil, false
 	}
@@ -573,15 +574,15 @@ func (o *ProjectActionVisibilityDto) HasDisableSpotWorker() bool {
 	return false
 }
 
-// SetDisableSpotWorker gets a reference to the given ProjectButtonStatusDto and assigns it to the DisableSpotWorker field.
-func (o *ProjectActionVisibilityDto) SetDisableSpotWorker(v ProjectButtonStatusDto) {
+// SetDisableSpotWorker gets a reference to the given ButtonStatusDto and assigns it to the DisableSpotWorker field.
+func (o *ProjectActionVisibilityDto) SetDisableSpotWorker(v ButtonStatusDto) {
 	o.DisableSpotWorker = &v
 }
 
 // GetEnableFullSpot returns the EnableFullSpot field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetEnableFullSpot() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetEnableFullSpot() ButtonStatusDto {
 	if o == nil || IsNil(o.EnableFullSpot) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.EnableFullSpot
@@ -589,7 +590,7 @@ func (o *ProjectActionVisibilityDto) GetEnableFullSpot() ProjectButtonStatusDto 
 
 // GetEnableFullSpotOk returns a tuple with the EnableFullSpot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetEnableFullSpotOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetEnableFullSpotOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.EnableFullSpot) {
 		return nil, false
 	}
@@ -605,15 +606,15 @@ func (o *ProjectActionVisibilityDto) HasEnableFullSpot() bool {
 	return false
 }
 
-// SetEnableFullSpot gets a reference to the given ProjectButtonStatusDto and assigns it to the EnableFullSpot field.
-func (o *ProjectActionVisibilityDto) SetEnableFullSpot(v ProjectButtonStatusDto) {
+// SetEnableFullSpot gets a reference to the given ButtonStatusDto and assigns it to the EnableFullSpot field.
+func (o *ProjectActionVisibilityDto) SetEnableFullSpot(v ButtonStatusDto) {
 	o.EnableFullSpot = &v
 }
 
 // GetDisableFullSpot returns the DisableFullSpot field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetDisableFullSpot() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetDisableFullSpot() ButtonStatusDto {
 	if o == nil || IsNil(o.DisableFullSpot) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.DisableFullSpot
@@ -621,7 +622,7 @@ func (o *ProjectActionVisibilityDto) GetDisableFullSpot() ProjectButtonStatusDto
 
 // GetDisableFullSpotOk returns a tuple with the DisableFullSpot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetDisableFullSpotOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetDisableFullSpotOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.DisableFullSpot) {
 		return nil, false
 	}
@@ -637,15 +638,15 @@ func (o *ProjectActionVisibilityDto) HasDisableFullSpot() bool {
 	return false
 }
 
-// SetDisableFullSpot gets a reference to the given ProjectButtonStatusDto and assigns it to the DisableFullSpot field.
-func (o *ProjectActionVisibilityDto) SetDisableFullSpot(v ProjectButtonStatusDto) {
+// SetDisableFullSpot gets a reference to the given ButtonStatusDto and assigns it to the DisableFullSpot field.
+func (o *ProjectActionVisibilityDto) SetDisableFullSpot(v ButtonStatusDto) {
 	o.DisableFullSpot = &v
 }
 
 // GetEnableSpotVm returns the EnableSpotVm field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetEnableSpotVm() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetEnableSpotVm() ButtonStatusDto {
 	if o == nil || IsNil(o.EnableSpotVm) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.EnableSpotVm
@@ -653,7 +654,7 @@ func (o *ProjectActionVisibilityDto) GetEnableSpotVm() ProjectButtonStatusDto {
 
 // GetEnableSpotVmOk returns a tuple with the EnableSpotVm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetEnableSpotVmOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetEnableSpotVmOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.EnableSpotVm) {
 		return nil, false
 	}
@@ -669,15 +670,15 @@ func (o *ProjectActionVisibilityDto) HasEnableSpotVm() bool {
 	return false
 }
 
-// SetEnableSpotVm gets a reference to the given ProjectButtonStatusDto and assigns it to the EnableSpotVm field.
-func (o *ProjectActionVisibilityDto) SetEnableSpotVm(v ProjectButtonStatusDto) {
+// SetEnableSpotVm gets a reference to the given ButtonStatusDto and assigns it to the EnableSpotVm field.
+func (o *ProjectActionVisibilityDto) SetEnableSpotVm(v ButtonStatusDto) {
 	o.EnableSpotVm = &v
 }
 
 // GetDisableSpotVm returns the DisableSpotVm field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetDisableSpotVm() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetDisableSpotVm() ButtonStatusDto {
 	if o == nil || IsNil(o.DisableSpotVm) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.DisableSpotVm
@@ -685,7 +686,7 @@ func (o *ProjectActionVisibilityDto) GetDisableSpotVm() ProjectButtonStatusDto {
 
 // GetDisableSpotVmOk returns a tuple with the DisableSpotVm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetDisableSpotVmOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetDisableSpotVmOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.DisableSpotVm) {
 		return nil, false
 	}
@@ -701,15 +702,15 @@ func (o *ProjectActionVisibilityDto) HasDisableSpotVm() bool {
 	return false
 }
 
-// SetDisableSpotVm gets a reference to the given ProjectButtonStatusDto and assigns it to the DisableSpotVm field.
-func (o *ProjectActionVisibilityDto) SetDisableSpotVm(v ProjectButtonStatusDto) {
+// SetDisableSpotVm gets a reference to the given ButtonStatusDto and assigns it to the DisableSpotVm field.
+func (o *ProjectActionVisibilityDto) SetDisableSpotVm(v ButtonStatusDto) {
 	o.DisableSpotVm = &v
 }
 
 // GetAttachAlertingProfile returns the AttachAlertingProfile field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetAttachAlertingProfile() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetAttachAlertingProfile() ButtonStatusDto {
 	if o == nil || IsNil(o.AttachAlertingProfile) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.AttachAlertingProfile
@@ -717,7 +718,7 @@ func (o *ProjectActionVisibilityDto) GetAttachAlertingProfile() ProjectButtonSta
 
 // GetAttachAlertingProfileOk returns a tuple with the AttachAlertingProfile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetAttachAlertingProfileOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetAttachAlertingProfileOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.AttachAlertingProfile) {
 		return nil, false
 	}
@@ -733,15 +734,15 @@ func (o *ProjectActionVisibilityDto) HasAttachAlertingProfile() bool {
 	return false
 }
 
-// SetAttachAlertingProfile gets a reference to the given ProjectButtonStatusDto and assigns it to the AttachAlertingProfile field.
-func (o *ProjectActionVisibilityDto) SetAttachAlertingProfile(v ProjectButtonStatusDto) {
+// SetAttachAlertingProfile gets a reference to the given ButtonStatusDto and assigns it to the AttachAlertingProfile field.
+func (o *ProjectActionVisibilityDto) SetAttachAlertingProfile(v ButtonStatusDto) {
 	o.AttachAlertingProfile = &v
 }
 
 // GetDetachAlertingProfile returns the DetachAlertingProfile field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetDetachAlertingProfile() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetDetachAlertingProfile() ButtonStatusDto {
 	if o == nil || IsNil(o.DetachAlertingProfile) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.DetachAlertingProfile
@@ -749,7 +750,7 @@ func (o *ProjectActionVisibilityDto) GetDetachAlertingProfile() ProjectButtonSta
 
 // GetDetachAlertingProfileOk returns a tuple with the DetachAlertingProfile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetDetachAlertingProfileOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetDetachAlertingProfileOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.DetachAlertingProfile) {
 		return nil, false
 	}
@@ -765,15 +766,15 @@ func (o *ProjectActionVisibilityDto) HasDetachAlertingProfile() bool {
 	return false
 }
 
-// SetDetachAlertingProfile gets a reference to the given ProjectButtonStatusDto and assigns it to the DetachAlertingProfile field.
-func (o *ProjectActionVisibilityDto) SetDetachAlertingProfile(v ProjectButtonStatusDto) {
+// SetDetachAlertingProfile gets a reference to the given ButtonStatusDto and assigns it to the DetachAlertingProfile field.
+func (o *ProjectActionVisibilityDto) SetDetachAlertingProfile(v ButtonStatusDto) {
 	o.DetachAlertingProfile = &v
 }
 
 // GetEnableAi returns the EnableAi field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetEnableAi() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetEnableAi() ButtonStatusDto {
 	if o == nil || IsNil(o.EnableAi) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.EnableAi
@@ -781,7 +782,7 @@ func (o *ProjectActionVisibilityDto) GetEnableAi() ProjectButtonStatusDto {
 
 // GetEnableAiOk returns a tuple with the EnableAi field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetEnableAiOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetEnableAiOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.EnableAi) {
 		return nil, false
 	}
@@ -797,15 +798,15 @@ func (o *ProjectActionVisibilityDto) HasEnableAi() bool {
 	return false
 }
 
-// SetEnableAi gets a reference to the given ProjectButtonStatusDto and assigns it to the EnableAi field.
-func (o *ProjectActionVisibilityDto) SetEnableAi(v ProjectButtonStatusDto) {
+// SetEnableAi gets a reference to the given ButtonStatusDto and assigns it to the EnableAi field.
+func (o *ProjectActionVisibilityDto) SetEnableAi(v ButtonStatusDto) {
 	o.EnableAi = &v
 }
 
 // GetDisableAi returns the DisableAi field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetDisableAi() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetDisableAi() ButtonStatusDto {
 	if o == nil || IsNil(o.DisableAi) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.DisableAi
@@ -813,7 +814,7 @@ func (o *ProjectActionVisibilityDto) GetDisableAi() ProjectButtonStatusDto {
 
 // GetDisableAiOk returns a tuple with the DisableAi field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetDisableAiOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetDisableAiOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.DisableAi) {
 		return nil, false
 	}
@@ -829,15 +830,15 @@ func (o *ProjectActionVisibilityDto) HasDisableAi() bool {
 	return false
 }
 
-// SetDisableAi gets a reference to the given ProjectButtonStatusDto and assigns it to the DisableAi field.
-func (o *ProjectActionVisibilityDto) SetDisableAi(v ProjectButtonStatusDto) {
+// SetDisableAi gets a reference to the given ButtonStatusDto and assigns it to the DisableAi field.
+func (o *ProjectActionVisibilityDto) SetDisableAi(v ButtonStatusDto) {
 	o.DisableAi = &v
 }
 
 // GetAiAssistant returns the AiAssistant field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetAiAssistant() ProjectButtonStatusDto {
+func (o *ProjectActionVisibilityDto) GetAiAssistant() ButtonStatusDto {
 	if o == nil || IsNil(o.AiAssistant) {
-		var ret ProjectButtonStatusDto
+		var ret ButtonStatusDto
 		return ret
 	}
 	return *o.AiAssistant
@@ -845,7 +846,7 @@ func (o *ProjectActionVisibilityDto) GetAiAssistant() ProjectButtonStatusDto {
 
 // GetAiAssistantOk returns a tuple with the AiAssistant field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetAiAssistantOk() (*ProjectButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetAiAssistantOk() (*ButtonStatusDto, bool) {
 	if o == nil || IsNil(o.AiAssistant) {
 		return nil, false
 	}
@@ -861,73 +862,105 @@ func (o *ProjectActionVisibilityDto) HasAiAssistant() bool {
 	return false
 }
 
-// SetAiAssistant gets a reference to the given ProjectButtonStatusDto and assigns it to the AiAssistant field.
-func (o *ProjectActionVisibilityDto) SetAiAssistant(v ProjectButtonStatusDto) {
+// SetAiAssistant gets a reference to the given ButtonStatusDto and assigns it to the AiAssistant field.
+func (o *ProjectActionVisibilityDto) SetAiAssistant(v ButtonStatusDto) {
 	o.AiAssistant = &v
 }
 
-// GetEnableMaintenanceMode returns the EnableMaintenanceMode field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetEnableMaintenanceMode() ProjectButtonStatusDto {
-	if o == nil || IsNil(o.EnableMaintenanceMode) {
-		var ret ProjectButtonStatusDto
+// GetProjectMaintenanceMode returns the ProjectMaintenanceMode field value if set, zero value otherwise.
+func (o *ProjectActionVisibilityDto) GetProjectMaintenanceMode() ButtonStatusDto {
+	if o == nil || IsNil(o.ProjectMaintenanceMode) {
+		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.EnableMaintenanceMode
+	return *o.ProjectMaintenanceMode
 }
 
-// GetEnableMaintenanceModeOk returns a tuple with the EnableMaintenanceMode field value if set, nil otherwise
+// GetProjectMaintenanceModeOk returns a tuple with the ProjectMaintenanceMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetEnableMaintenanceModeOk() (*ProjectButtonStatusDto, bool) {
-	if o == nil || IsNil(o.EnableMaintenanceMode) {
+func (o *ProjectActionVisibilityDto) GetProjectMaintenanceModeOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.ProjectMaintenanceMode) {
 		return nil, false
 	}
-	return o.EnableMaintenanceMode, true
+	return o.ProjectMaintenanceMode, true
 }
 
-// HasEnableMaintenanceMode returns a boolean if a field has been set.
-func (o *ProjectActionVisibilityDto) HasEnableMaintenanceMode() bool {
-	if o != nil && !IsNil(o.EnableMaintenanceMode) {
+// HasProjectMaintenanceMode returns a boolean if a field has been set.
+func (o *ProjectActionVisibilityDto) HasProjectMaintenanceMode() bool {
+	if o != nil && !IsNil(o.ProjectMaintenanceMode) {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableMaintenanceMode gets a reference to the given ProjectButtonStatusDto and assigns it to the EnableMaintenanceMode field.
-func (o *ProjectActionVisibilityDto) SetEnableMaintenanceMode(v ProjectButtonStatusDto) {
-	o.EnableMaintenanceMode = &v
+// SetProjectMaintenanceMode gets a reference to the given ButtonStatusDto and assigns it to the ProjectMaintenanceMode field.
+func (o *ProjectActionVisibilityDto) SetProjectMaintenanceMode(v ButtonStatusDto) {
+	o.ProjectMaintenanceMode = &v
 }
 
-// GetDisableMaintenanceMode returns the DisableMaintenanceMode field value if set, zero value otherwise.
-func (o *ProjectActionVisibilityDto) GetDisableMaintenanceMode() ProjectButtonStatusDto {
-	if o == nil || IsNil(o.DisableMaintenanceMode) {
-		var ret ProjectButtonStatusDto
+// GetAddServer returns the AddServer field value if set, zero value otherwise.
+func (o *ProjectActionVisibilityDto) GetAddServer() ButtonStatusDto {
+	if o == nil || IsNil(o.AddServer) {
+		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.DisableMaintenanceMode
+	return *o.AddServer
 }
 
-// GetDisableMaintenanceModeOk returns a tuple with the DisableMaintenanceMode field value if set, nil otherwise
+// GetAddServerOk returns a tuple with the AddServer field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetDisableMaintenanceModeOk() (*ProjectButtonStatusDto, bool) {
-	if o == nil || IsNil(o.DisableMaintenanceMode) {
+func (o *ProjectActionVisibilityDto) GetAddServerOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.AddServer) {
 		return nil, false
 	}
-	return o.DisableMaintenanceMode, true
+	return o.AddServer, true
 }
 
-// HasDisableMaintenanceMode returns a boolean if a field has been set.
-func (o *ProjectActionVisibilityDto) HasDisableMaintenanceMode() bool {
-	if o != nil && !IsNil(o.DisableMaintenanceMode) {
+// HasAddServer returns a boolean if a field has been set.
+func (o *ProjectActionVisibilityDto) HasAddServer() bool {
+	if o != nil && !IsNil(o.AddServer) {
 		return true
 	}
 
 	return false
 }
 
-// SetDisableMaintenanceMode gets a reference to the given ProjectButtonStatusDto and assigns it to the DisableMaintenanceMode field.
-func (o *ProjectActionVisibilityDto) SetDisableMaintenanceMode(v ProjectButtonStatusDto) {
-	o.DisableMaintenanceMode = &v
+// SetAddServer gets a reference to the given ButtonStatusDto and assigns it to the AddServer field.
+func (o *ProjectActionVisibilityDto) SetAddServer(v ButtonStatusDto) {
+	o.AddServer = &v
+}
+
+// GetAddVm returns the AddVm field value if set, zero value otherwise.
+func (o *ProjectActionVisibilityDto) GetAddVm() ButtonStatusDto {
+	if o == nil || IsNil(o.AddVm) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.AddVm
+}
+
+// GetAddVmOk returns a tuple with the AddVm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectActionVisibilityDto) GetAddVmOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.AddVm) {
+		return nil, false
+	}
+	return o.AddVm, true
+}
+
+// HasAddVm returns a boolean if a field has been set.
+func (o *ProjectActionVisibilityDto) HasAddVm() bool {
+	if o != nil && !IsNil(o.AddVm) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddVm gets a reference to the given ButtonStatusDto and assigns it to the AddVm field.
+func (o *ProjectActionVisibilityDto) SetAddVm(v ButtonStatusDto) {
+	o.AddVm = &v
 }
 
 func (o ProjectActionVisibilityDto) MarshalJSON() ([]byte, error) {
@@ -1015,11 +1048,14 @@ func (o ProjectActionVisibilityDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AiAssistant) {
 		toSerialize["aiAssistant"] = o.AiAssistant
 	}
-	if !IsNil(o.EnableMaintenanceMode) {
-		toSerialize["enableMaintenanceMode"] = o.EnableMaintenanceMode
+	if !IsNil(o.ProjectMaintenanceMode) {
+		toSerialize["projectMaintenanceMode"] = o.ProjectMaintenanceMode
 	}
-	if !IsNil(o.DisableMaintenanceMode) {
-		toSerialize["disableMaintenanceMode"] = o.DisableMaintenanceMode
+	if !IsNil(o.AddServer) {
+		toSerialize["addServer"] = o.AddServer
+	}
+	if !IsNil(o.AddVm) {
+		toSerialize["addVm"] = o.AddVm
 	}
 	return toSerialize, nil
 }

@@ -20,7 +20,7 @@ var _ MappedNullable = &ProjectAppList{}
 
 // ProjectAppList struct for ProjectAppList
 type ProjectAppList struct {
-	Data []ProjectAppListDto `json:"data,omitempty"`
+	Data []InstanceAppListDto `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
@@ -42,9 +42,9 @@ func NewProjectAppListWithDefaults() *ProjectAppList {
 }
 
 // GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppList) GetData() []ProjectAppListDto {
+func (o *ProjectAppList) GetData() []InstanceAppListDto {
 	if o == nil {
-		var ret []ProjectAppListDto
+		var ret []InstanceAppListDto
 		return ret
 	}
 	return o.Data
@@ -53,7 +53,7 @@ func (o *ProjectAppList) GetData() []ProjectAppListDto {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppList) GetDataOk() ([]ProjectAppListDto, bool) {
+func (o *ProjectAppList) GetDataOk() ([]InstanceAppListDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *ProjectAppList) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []ProjectAppListDto and assigns it to the Data field.
-func (o *ProjectAppList) SetData(v []ProjectAppListDto) {
+// SetData gets a reference to the given []InstanceAppListDto and assigns it to the Data field.
+func (o *ProjectAppList) SetData(v []InstanceAppListDto) {
 	o.Data = v
 }
 

@@ -31,8 +31,8 @@ type ApiProjectquotasListRequest struct {
 	sortBy *string
 	sortDirection *string
 	search *string
-	startRam *string
-	endRam *string
+	startRam *float64
+	endRam *float64
 	startDiskSize *int64
 	endDiskSize *int64
 	startCpu *int32
@@ -66,12 +66,12 @@ func (r ApiProjectquotasListRequest) Search(search string) ApiProjectquotasListR
 	return r
 }
 
-func (r ApiProjectquotasListRequest) StartRam(startRam string) ApiProjectquotasListRequest {
+func (r ApiProjectquotasListRequest) StartRam(startRam float64) ApiProjectquotasListRequest {
 	r.startRam = &startRam
 	return r
 }
 
-func (r ApiProjectquotasListRequest) EndRam(endRam string) ApiProjectquotasListRequest {
+func (r ApiProjectquotasListRequest) EndRam(endRam float64) ApiProjectquotasListRequest {
 	r.endRam = &endRam
 	return r
 }

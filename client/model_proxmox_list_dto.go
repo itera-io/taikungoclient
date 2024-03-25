@@ -39,6 +39,7 @@ type ProxmoxListDto struct {
 	Storage NullableString `json:"storage,omitempty"`
 	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
 	ProxmoxNetworks []ProxmoxNetworkListDto `json:"proxmoxNetworks,omitempty"`
+	SkipTlsFlag *bool `json:"skipTlsFlag,omitempty"`
 }
 
 // NewProxmoxListDto instantiates a new ProxmoxListDto object
@@ -779,6 +780,38 @@ func (o *ProxmoxListDto) SetProxmoxNetworks(v []ProxmoxNetworkListDto) {
 	o.ProxmoxNetworks = v
 }
 
+// GetSkipTlsFlag returns the SkipTlsFlag field value if set, zero value otherwise.
+func (o *ProxmoxListDto) GetSkipTlsFlag() bool {
+	if o == nil || IsNil(o.SkipTlsFlag) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipTlsFlag
+}
+
+// GetSkipTlsFlagOk returns a tuple with the SkipTlsFlag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProxmoxListDto) GetSkipTlsFlagOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipTlsFlag) {
+		return nil, false
+	}
+	return o.SkipTlsFlag, true
+}
+
+// HasSkipTlsFlag returns a boolean if a field has been set.
+func (o *ProxmoxListDto) HasSkipTlsFlag() bool {
+	if o != nil && !IsNil(o.SkipTlsFlag) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipTlsFlag gets a reference to the given bool and assigns it to the SkipTlsFlag field.
+func (o *ProxmoxListDto) SetSkipTlsFlag(v bool) {
+	o.SkipTlsFlag = &v
+}
+
 func (o ProxmoxListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -845,6 +878,9 @@ func (o ProxmoxListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ProxmoxNetworks != nil {
 		toSerialize["proxmoxNetworks"] = o.ProxmoxNetworks
+	}
+	if !IsNil(o.SkipTlsFlag) {
+		toSerialize["skipTlsFlag"] = o.SkipTlsFlag
 	}
 	return toSerialize, nil
 }

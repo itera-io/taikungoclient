@@ -43,6 +43,7 @@ type VsphereListDto struct {
 	Datastore NullableString `json:"datastore,omitempty"`
 	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
 	VsphereNetworks []VsphereNetworkListDto `json:"vsphereNetworks,omitempty"`
+	SkipTlsFlag *bool `json:"skipTlsFlag,omitempty"`
 }
 
 // NewVsphereListDto instantiates a new VsphereListDto object
@@ -941,6 +942,38 @@ func (o *VsphereListDto) SetVsphereNetworks(v []VsphereNetworkListDto) {
 	o.VsphereNetworks = v
 }
 
+// GetSkipTlsFlag returns the SkipTlsFlag field value if set, zero value otherwise.
+func (o *VsphereListDto) GetSkipTlsFlag() bool {
+	if o == nil || IsNil(o.SkipTlsFlag) {
+		var ret bool
+		return ret
+	}
+	return *o.SkipTlsFlag
+}
+
+// GetSkipTlsFlagOk returns a tuple with the SkipTlsFlag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VsphereListDto) GetSkipTlsFlagOk() (*bool, bool) {
+	if o == nil || IsNil(o.SkipTlsFlag) {
+		return nil, false
+	}
+	return o.SkipTlsFlag, true
+}
+
+// HasSkipTlsFlag returns a boolean if a field has been set.
+func (o *VsphereListDto) HasSkipTlsFlag() bool {
+	if o != nil && !IsNil(o.SkipTlsFlag) {
+		return true
+	}
+
+	return false
+}
+
+// SetSkipTlsFlag gets a reference to the given bool and assigns it to the SkipTlsFlag field.
+func (o *VsphereListDto) SetSkipTlsFlag(v bool) {
+	o.SkipTlsFlag = &v
+}
+
 func (o VsphereListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1019,6 +1052,9 @@ func (o VsphereListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.VsphereNetworks != nil {
 		toSerialize["vsphereNetworks"] = o.VsphereNetworks
+	}
+	if !IsNil(o.SkipTlsFlag) {
+		toSerialize["skipTlsFlag"] = o.SkipTlsFlag
 	}
 	return toSerialize, nil
 }

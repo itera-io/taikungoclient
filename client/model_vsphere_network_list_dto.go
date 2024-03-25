@@ -27,6 +27,7 @@ type VsphereNetworkListDto struct {
 	BeginAllocationRange NullableString `json:"beginAllocationRange,omitempty"`
 	EndAllocationRange NullableString `json:"endAllocationRange,omitempty"`
 	IsPrivate *bool `json:"isPrivate,omitempty"`
+	IsVirtualLbNetwork *bool `json:"isVirtualLbNetwork,omitempty"`
 }
 
 // NewVsphereNetworkListDto instantiates a new VsphereNetworkListDto object
@@ -320,6 +321,38 @@ func (o *VsphereNetworkListDto) SetIsPrivate(v bool) {
 	o.IsPrivate = &v
 }
 
+// GetIsVirtualLbNetwork returns the IsVirtualLbNetwork field value if set, zero value otherwise.
+func (o *VsphereNetworkListDto) GetIsVirtualLbNetwork() bool {
+	if o == nil || IsNil(o.IsVirtualLbNetwork) {
+		var ret bool
+		return ret
+	}
+	return *o.IsVirtualLbNetwork
+}
+
+// GetIsVirtualLbNetworkOk returns a tuple with the IsVirtualLbNetwork field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VsphereNetworkListDto) GetIsVirtualLbNetworkOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsVirtualLbNetwork) {
+		return nil, false
+	}
+	return o.IsVirtualLbNetwork, true
+}
+
+// HasIsVirtualLbNetwork returns a boolean if a field has been set.
+func (o *VsphereNetworkListDto) HasIsVirtualLbNetwork() bool {
+	if o != nil && !IsNil(o.IsVirtualLbNetwork) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsVirtualLbNetwork gets a reference to the given bool and assigns it to the IsVirtualLbNetwork field.
+func (o *VsphereNetworkListDto) SetIsVirtualLbNetwork(v bool) {
+	o.IsVirtualLbNetwork = &v
+}
+
 func (o VsphereNetworkListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -350,6 +383,9 @@ func (o VsphereNetworkListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsPrivate) {
 		toSerialize["isPrivate"] = o.IsPrivate
+	}
+	if !IsNil(o.IsVirtualLbNetwork) {
+		toSerialize["isVirtualLbNetwork"] = o.IsVirtualLbNetwork
 	}
 	return toSerialize, nil
 }

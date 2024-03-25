@@ -1006,6 +1006,7 @@ type ApiCloudcredentialsOrgListRequest struct {
 	organizationId *int32
 	search *string
 	isInfra *bool
+	id *int32
 }
 
 func (r ApiCloudcredentialsOrgListRequest) IsAdmin(isAdmin bool) ApiCloudcredentialsOrgListRequest {
@@ -1025,6 +1026,11 @@ func (r ApiCloudcredentialsOrgListRequest) Search(search string) ApiCloudcredent
 
 func (r ApiCloudcredentialsOrgListRequest) IsInfra(isInfra bool) ApiCloudcredentialsOrgListRequest {
 	r.isInfra = &isInfra
+	return r
+}
+
+func (r ApiCloudcredentialsOrgListRequest) Id(id int32) ApiCloudcredentialsOrgListRequest {
+	r.id = &id
 	return r
 }
 
@@ -1078,6 +1084,9 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 	parameterAddToHeaderOrQuery(localVarQueryParams, "IsAdmin", r.isAdmin, "")
 	if r.isInfra != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "")
+	}
+	if r.id != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

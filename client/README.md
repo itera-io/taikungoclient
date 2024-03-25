@@ -120,8 +120,8 @@ Class | Method | HTTP request | Description
 *AppRepositoriesAPI* | [**RepositoryAvailableList**](docs/AppRepositoriesAPI.md#repositoryavailablelist) | **Get** /api/v1/repository/available | Retrieve available repositories
 *AppRepositoriesAPI* | [**RepositoryBind**](docs/AppRepositoriesAPI.md#repositorybind) | **Post** /api/v1/repository/bind | Bind repo to organization
 *AppRepositoriesAPI* | [**RepositoryDelete**](docs/AppRepositoriesAPI.md#repositorydelete) | **Post** /api/v1/repository/delete | Delete repo from organization
-*AppRepositoriesAPI* | [**RepositoryDisable**](docs/AppRepositoriesAPI.md#repositorydisable) | **Post** /api/v1/repository/disable | Disable repo from organization
 *AppRepositoriesAPI* | [**RepositoryImport**](docs/AppRepositoriesAPI.md#repositoryimport) | **Post** /api/v1/repository/import | Import repo to artifact
+*AppRepositoriesAPI* | [**RepositoryList**](docs/AppRepositoriesAPI.md#repositorylist) | **Get** /api/v1/repository/list | Retrieve repo names
 *AppRepositoriesAPI* | [**RepositoryRecommendedList**](docs/AppRepositoriesAPI.md#repositoryrecommendedlist) | **Get** /api/v1/repository/recommended | Retrieve taikun recommended repositories
 *AppRepositoriesAPI* | [**RepositoryUnbind**](docs/AppRepositoriesAPI.md#repositoryunbind) | **Post** /api/v1/repository/unbind | Unbind repo from organization
 *AuthManagementAPI* | [**AuthForgotPassword**](docs/AuthManagementAPI.md#authforgotpassword) | **Post** /api/v1/auth/forgotpassword | Generate reset password token if you forgot password
@@ -169,11 +169,13 @@ Class | Method | HTTP request | Description
 *CatalogAPI* | [**CatalogEdit**](docs/CatalogAPI.md#catalogedit) | **Put** /api/v1/catalog/edit | Edit catalog
 *CatalogAPI* | [**CatalogList**](docs/CatalogAPI.md#cataloglist) | **Get** /api/v1/catalog | Catalog list for organization
 *CatalogAPI* | [**CatalogLock**](docs/CatalogAPI.md#cataloglock) | **Post** /api/v1/catalog/lockmanager | Lock catalog
+*CatalogAPI* | [**CatalogMakeDefault**](docs/CatalogAPI.md#catalogmakedefault) | **Post** /api/v1/catalog/makedefault | Make catalog default
 *CatalogAppAPI* | [**CatalogAppCreate**](docs/CatalogAppAPI.md#catalogappcreate) | **Post** /api/v1/catalog-app/create | Create catalog app
 *CatalogAppAPI* | [**CatalogAppDelete**](docs/CatalogAppAPI.md#catalogappdelete) | **Delete** /api/v1/catalog-app/{id} | Delete catalog app
 *CatalogAppAPI* | [**CatalogAppDetails**](docs/CatalogAppAPI.md#catalogappdetails) | **Get** /api/v1/catalog-app/{catalogAppId} | Catalog App details
 *CatalogAppAPI* | [**CatalogAppEditParams**](docs/CatalogAppAPI.md#catalogappeditparams) | **Put** /api/v1/catalog-app/edit/params | Edit catalog app params
 *CatalogAppAPI* | [**CatalogAppEditVersion**](docs/CatalogAppAPI.md#catalogappeditversion) | **Put** /api/v1/catalog-app/edit/version | Edit catalog app version
+*CatalogAppAPI* | [**CatalogAppList**](docs/CatalogAppAPI.md#catalogapplist) | **Get** /api/v1/catalog-app/list | Catalog App list
 *CatalogAppAPI* | [**CatalogAppLockManager**](docs/CatalogAppAPI.md#catalogapplockmanager) | **Post** /api/v1/catalog-app/lockmanager | Lock catalog app
 *CatalogAppAPI* | [**CatalogAppParamDetails**](docs/CatalogAppAPI.md#catalogappparamdetails) | **Get** /api/v1/catalog-app/params/{catalogAppId} | Catalog App param details
 *CheckerAPI* | [**CheckerArtifact**](docs/CheckerAPI.md#checkerartifact) | **Post** /api/v1/checker/artifact | Check artifact url
@@ -184,9 +186,10 @@ Class | Method | HTTP request | Description
 *CheckerAPI* | [**CheckerCron**](docs/CheckerAPI.md#checkercron) | **Post** /api/v1/checker/cron | Check valid cron job format
 *CheckerAPI* | [**CheckerDns**](docs/CheckerAPI.md#checkerdns) | **Post** /api/v1/checker/dns | Check valid dns format
 *CheckerAPI* | [**CheckerDuplicateName**](docs/CheckerAPI.md#checkerduplicatename) | **Post** /api/v1/checker/duplicate | Duplicate name
-*CheckerAPI* | [**CheckerGoogle**](docs/CheckerAPI.md#checkergoogle) | **Post** /api/v1/checker/google | 
+*CheckerAPI* | [**CheckerGoogle**](docs/CheckerAPI.md#checkergoogle) | **Post** /api/v1/checker/google | Check google credentials
+*CheckerAPI* | [**CheckerHelm**](docs/CheckerAPI.md#checkerhelm) | **Post** /api/v1/checker/helm | Check helm credential
 *CheckerAPI* | [**CheckerKeycloak**](docs/CheckerAPI.md#checkerkeycloak) | **Post** /api/v1/checker/keycloak | Check keycloak credential
-*CheckerAPI* | [**CheckerKubeConfig**](docs/CheckerAPI.md#checkerkubeconfig) | **Post** /api/v1/checker/kube-config | 
+*CheckerAPI* | [**CheckerKubeConfig**](docs/CheckerAPI.md#checkerkubeconfig) | **Post** /api/v1/checker/kube-config | Check kube config
 *CheckerAPI* | [**CheckerNtp**](docs/CheckerAPI.md#checkerntp) | **Post** /api/v1/checker/ntp | Check valid ntp format
 *CheckerAPI* | [**CheckerOpenAi**](docs/CheckerAPI.md#checkeropenai) | **Post** /api/v1/checker/openai | Check open-ai token
 *CheckerAPI* | [**CheckerOpenstack**](docs/CheckerAPI.md#checkeropenstack) | **Post** /api/v1/checker/openstack | Check openstack credential
@@ -198,6 +201,7 @@ Class | Method | HTTP request | Description
 *CheckerAPI* | [**CheckerSsh**](docs/CheckerAPI.md#checkerssh) | **Post** /api/v1/checker/ssh | Check valid ssh key format
 *CheckerAPI* | [**CheckerTanzu**](docs/CheckerAPI.md#checkertanzu) | **Post** /api/v1/checker/tanzu | Check tanzu credential
 *CheckerAPI* | [**CheckerYaml**](docs/CheckerAPI.md#checkeryaml) | **Post** /api/v1/checker/yaml | Check yaml file
+*CheckerAPI* | [**CheckerZadara**](docs/CheckerAPI.md#checkerzadara) | **Post** /api/v1/checker/zadara | Check zadara credential
 *CloudCredentialAPI* | [**CloudcredentialsAllFlavors**](docs/CloudCredentialAPI.md#cloudcredentialsallflavors) | **Get** /api/v1/cloudcredentials/flavors/{cloudId} | 
 *CloudCredentialAPI* | [**CloudcredentialsDashboardList**](docs/CloudCredentialAPI.md#cloudcredentialsdashboardlist) | **Get** /api/v1/cloudcredentials/list | Retrieve all cloud credentials
 *CloudCredentialAPI* | [**CloudcredentialsDelete**](docs/CloudCredentialAPI.md#cloudcredentialsdelete) | **Delete** /api/v1/cloudcredentials/{cloudId} | Remove cloud credential by cloud Id
@@ -221,11 +225,12 @@ Class | Method | HTTP request | Description
 *FlavorsAPI* | [**FlavorsTanzuFlavors**](docs/FlavorsAPI.md#flavorstanzuflavors) | **Get** /api/v1/flavors/tanzu/{cloudId} | Retrieve tanzu flavors
 *FlavorsAPI* | [**FlavorsUnbindFromProject**](docs/FlavorsAPI.md#flavorsunbindfromproject) | **Post** /api/v1/flavors/unbind | Unbind flavors from project
 *FlavorsAPI* | [**FlavorsVsphereFlavors**](docs/FlavorsAPI.md#flavorsvsphereflavors) | **Get** /api/v1/flavors/vsphere/{cloudId} | Retrieve vsphere flavors
-*GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | 
-*GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | 
+*FlavorsAPI* | [**FlavorsZadaraInstanceTypes**](docs/FlavorsAPI.md#flavorszadarainstancetypes) | **Get** /api/v1/flavors/zadara/{cloudId} | 
+*GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
+*GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | Create google cloud credential
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
-*GoogleAPI* | [**GooglecloudRegionList**](docs/GoogleAPI.md#googlecloudregionlist) | **Post** /api/v1/googlecloud/regions | 
-*GoogleAPI* | [**GooglecloudZoneList**](docs/GoogleAPI.md#googlecloudzonelist) | **Post** /api/v1/googlecloud/zones/{region} | 
+*GoogleAPI* | [**GooglecloudRegionList**](docs/GoogleAPI.md#googlecloudregionlist) | **Post** /api/v1/googlecloud/regions | Retrieve google region list
+*GoogleAPI* | [**GooglecloudZoneList**](docs/GoogleAPI.md#googlecloudzonelist) | **Post** /api/v1/googlecloud/zones | Google zones list
 *ImagesAPI* | [**ImagesAwsCommonImages**](docs/ImagesAPI.md#imagesawscommonimages) | **Get** /api/v1/images/aws/common/{cloudId} | Commonly used aws images
 *ImagesAPI* | [**ImagesAwsImagesList**](docs/ImagesAPI.md#imagesawsimageslist) | **Post** /api/v1/images/aws | Retrieve aws images
 *ImagesAPI* | [**ImagesAwsPersonalImages**](docs/ImagesAPI.md#imagesawspersonalimages) | **Get** /api/v1/images/aws/personal/{cloudId} | Aws personal images
@@ -243,6 +248,8 @@ Class | Method | HTTP request | Description
 *ImagesAPI* | [**ImagesTanzuImages**](docs/ImagesAPI.md#imagestanzuimages) | **Get** /api/v1/images/tanzu/{cloudId} | Retrieve tanzu images
 *ImagesAPI* | [**ImagesUnbindImagesFromProject**](docs/ImagesAPI.md#imagesunbindimagesfromproject) | **Post** /api/v1/images/unbind | Unbind images from project
 *ImagesAPI* | [**ImagesVsphereImages**](docs/ImagesAPI.md#imagesvsphereimages) | **Get** /api/v1/images/vsphere/{cloudId} | Retrieve vsphere images
+*ImagesAPI* | [**ImagesZadaraImagesList**](docs/ImagesAPI.md#imageszadaraimageslist) | **Post** /api/v1/images/zadara/{cloudId} | Retrieve zadara images
+*ImagesAPI* | [**ImagesZadaraPersonalImages**](docs/ImagesAPI.md#imageszadarapersonalimages) | **Get** /api/v1/images/zadara/personal/{cloudId} | Zadara personal images
 *InfraAPI* | [**InfraDetails**](docs/InfraAPI.md#infradetails) | **Get** /api/v1/infra/details | Retrieve infra details
 *InfraAPI* | [**InfraProductList**](docs/InfraAPI.md#infraproductlist) | **Get** /api/v1/infra/list | Retrieve infra products list
 *InfraBillingSummaryAPI* | [**InfraBillingSummaryList**](docs/InfraBillingSummaryAPI.md#infrabillingsummarylist) | **Post** /api/v1/infra-billing-summary/list | Retrieve infra billing info
@@ -335,9 +342,9 @@ Class | Method | HTTP request | Description
 *OpaProfilesAPI* | [**OpaprofilesUpdate**](docs/OpaProfilesAPI.md#opaprofilesupdate) | **Put** /api/v1/opaprofiles | Update policy profile
 *OpenshiftAPI* | [**OpenshiftCreate**](docs/OpenshiftAPI.md#openshiftcreate) | **Post** /api/v1/openshift/create | Add Openshift cloud credential
 *OpenshiftAPI* | [**OpenshiftList**](docs/OpenshiftAPI.md#openshiftlist) | **Get** /api/v1/openshift/list | Retrieve all operation credentials
-*OpenshiftAPI* | [**OpenshiftPullSecret**](docs/OpenshiftAPI.md#openshiftpullsecret) | **Post** /api/v1/openshift/pull-secret | 
-*OpenshiftAPI* | [**OpenshiftStorageClass**](docs/OpenshiftAPI.md#openshiftstorageclass) | **Post** /api/v1/openshift/storage-class | 
-*OpenshiftAPI* | [**OpenshiftValidate**](docs/OpenshiftAPI.md#openshiftvalidate) | **Post** /api/v1/openshift/validate | 
+*OpenshiftAPI* | [**OpenshiftPullSecret**](docs/OpenshiftAPI.md#openshiftpullsecret) | **Post** /api/v1/openshift/pull-secret | Validate openshift pull secret
+*OpenshiftAPI* | [**OpenshiftStorageClass**](docs/OpenshiftAPI.md#openshiftstorageclass) | **Post** /api/v1/openshift/storage-class | Get openshift storage class list
+*OpenshiftAPI* | [**OpenshiftValidate**](docs/OpenshiftAPI.md#openshiftvalidate) | **Post** /api/v1/openshift/validate | Validate openshift kube config file
 *OpenstackCloudCredentialAPI* | [**OpenstackCreate**](docs/OpenstackCloudCredentialAPI.md#openstackcreate) | **Post** /api/v1/openstack/create | Add Openstack credentials
 *OpenstackCloudCredentialAPI* | [**OpenstackList**](docs/OpenstackCloudCredentialAPI.md#openstacklist) | **Get** /api/v1/openstack/list | Retrieve list of openstack cloud credentials
 *OpenstackCloudCredentialAPI* | [**OpenstackNetworks**](docs/OpenstackCloudCredentialAPI.md#openstacknetworks) | **Post** /api/v1/openstack/networks | Openstack network list
@@ -397,7 +404,7 @@ Class | Method | HTTP request | Description
 *ProjectTemplatesAPI* | [**ProjecttemplateDropdown**](docs/ProjectTemplatesAPI.md#projecttemplatedropdown) | **Get** /api/v1/projecttemplate/list | Retrieve project template by organization Id
 *ProjectTemplatesAPI* | [**ProjecttemplateList**](docs/ProjectTemplatesAPI.md#projecttemplatelist) | **Get** /api/v1/projecttemplate | Retrieve all project templates
 *ProjectsAPI* | [**ProjectsAiAnalyzer**](docs/ProjectsAPI.md#projectsaianalyzer) | **Get** /api/v1/projects/ai-analyze/{projectId} | Analyze cluster by AI model
-*ProjectsAPI* | [**ProjectsAlerts**](docs/ProjectsAPI.md#projectsalerts) | **Get** /api/v1/projects/alerts/{projectId} | Project alerts
+*ProjectsAPI* | [**ProjectsAlerts**](docs/ProjectsAPI.md#projectsalerts) | **Post** /api/v1/projects/alerts | Project alerts
 *ProjectsAPI* | [**ProjectsCommit**](docs/ProjectsAPI.md#projectscommit) | **Post** /api/v1/projects/commit/{projectId} | Commit changes for the given project. The changes will then be applied and the project will be updated. The project must be in the READY state.
 *ProjectsAPI* | [**ProjectsCreate**](docs/ProjectsAPI.md#projectscreate) | **Post** /api/v1/projects | Create a new project
 *ProjectsAPI* | [**ProjectsDelete**](docs/ProjectsAPI.md#projectsdelete) | **Post** /api/v1/projects/delete | Delete the project. The project must be empty (no server) and in READY state
@@ -558,6 +565,12 @@ Class | Method | HTTP request | Description
 *VsphereCloudCredentialAPI* | [**VsphereUpdateVsphereHypervisors**](docs/VsphereCloudCredentialAPI.md#vsphereupdatevspherehypervisors) | **Post** /api/v1/vsphere/update/hypervisors | Update Vsphere credentials
 *VsphereCloudCredentialAPI* | [**VsphereValidate**](docs/VsphereCloudCredentialAPI.md#vspherevalidate) | **Post** /api/v1/vsphere/validate | Validate Vsphere credentials
 *VsphereCloudCredentialAPI* | [**VsphereVmTemplateList**](docs/VsphereCloudCredentialAPI.md#vspherevmtemplatelist) | **Post** /api/v1/vsphere/vm-template-list | Fetch Vsphere vm template list
+*ZadaraCloudCredentialAPI* | [**ZadaraCreate**](docs/ZadaraCloudCredentialAPI.md#zadaracreate) | **Post** /api/v1/zadara/create | Add Zadara credentials
+*ZadaraCloudCredentialAPI* | [**ZadaraList**](docs/ZadaraCloudCredentialAPI.md#zadaralist) | **Get** /api/v1/zadara/list | Retrieve list of Zadara cloud credentials
+*ZadaraCloudCredentialAPI* | [**ZadaraRegionlist**](docs/ZadaraCloudCredentialAPI.md#zadararegionlist) | **Post** /api/v1/zadara/regions | Retrieve zadara regions list
+*ZadaraCloudCredentialAPI* | [**ZadaraUpdate**](docs/ZadaraCloudCredentialAPI.md#zadaraupdate) | **Post** /api/v1/zadara/update | Update zadara cloud credential
+*ZadaraCloudCredentialAPI* | [**ZadaraVolumeTypeList**](docs/ZadaraCloudCredentialAPI.md#zadaravolumetypelist) | **Get** /api/v1/zadara/volume-types | Retrieve volume type list
+*ZadaraCloudCredentialAPI* | [**ZadaraZonelist**](docs/ZadaraCloudCredentialAPI.md#zadarazonelist) | **Post** /api/v1/zadara/zones | Retrieve zadara zone list
 
 
 ## Documentation For Models
@@ -658,11 +671,14 @@ Class | Method | HTTP request | Description
  - [BoundImagesForProjectsList](docs/BoundImagesForProjectsList.md)
  - [BoundImagesForProjectsListDto](docs/BoundImagesForProjectsListDto.md)
  - [BridgeListCommand](docs/BridgeListCommand.md)
+ - [ButtonStatusDto](docs/ButtonStatusDto.md)
  - [CBackupDto](docs/CBackupDto.md)
  - [CDeleteBackupRequestDto](docs/CDeleteBackupRequestDto.md)
  - [CRestoreDto](docs/CRestoreDto.md)
  - [CScheduleDto](docs/CScheduleDto.md)
  - [CatalogAppDetailsDto](docs/CatalogAppDetailsDto.md)
+ - [CatalogAppList](docs/CatalogAppList.md)
+ - [CatalogAppListDto](docs/CatalogAppListDto.md)
  - [CatalogAppLockManagement](docs/CatalogAppLockManagement.md)
  - [CatalogAppParamsDetailsDto](docs/CatalogAppParamsDetailsDto.md)
  - [CatalogAppParamsDto](docs/CatalogAppParamsDto.md)
@@ -670,6 +686,7 @@ Class | Method | HTTP request | Description
  - [CatalogList](docs/CatalogList.md)
  - [CatalogListDto](docs/CatalogListDto.md)
  - [CatalogLockManagementCommand](docs/CatalogLockManagementCommand.md)
+ - [CatalogMakeDefaultCommand](docs/CatalogMakeDefaultCommand.md)
  - [Chart](docs/Chart.md)
  - [ChartSpec](docs/ChartSpec.md)
  - [CheckAwsCommand](docs/CheckAwsCommand.md)
@@ -679,6 +696,7 @@ Class | Method | HTTP request | Description
  - [CheckPrometheusCommand](docs/CheckPrometheusCommand.md)
  - [CheckS3Command](docs/CheckS3Command.md)
  - [CheckTanzuCommand](docs/CheckTanzuCommand.md)
+ - [CheckZadaraCommand](docs/CheckZadaraCommand.md)
  - [CidrCommand](docs/CidrCommand.md)
  - [CloudCredentialsForOrganizationEntity](docs/CloudCredentialsForOrganizationEntity.md)
  - [CloudCredentialsResponseData](docs/CloudCredentialsResponseData.md)
@@ -737,6 +755,7 @@ Class | Method | HTTP request | Description
  - [CreateUserGroupCommand](docs/CreateUserGroupCommand.md)
  - [CreateVsphereCommand](docs/CreateVsphereCommand.md)
  - [CreateVsphereNetworkDto](docs/CreateVsphereNetworkDto.md)
+ - [CreateZadaraCloudCommand](docs/CreateZadaraCloudCommand.md)
  - [CredentialChartDto](docs/CredentialChartDto.md)
  - [CredentialMakeDefaultCommand](docs/CredentialMakeDefaultCommand.md)
  - [CredentialsChart](docs/CredentialsChart.md)
@@ -792,7 +811,6 @@ Class | Method | HTTP request | Description
  - [DisableAutoscalingCommand](docs/DisableAutoscalingCommand.md)
  - [DisableBackupCommand](docs/DisableBackupCommand.md)
  - [DisableGatekeeperCommand](docs/DisableGatekeeperCommand.md)
- - [DisableRepoCommand](docs/DisableRepoCommand.md)
  - [DnsCommand](docs/DnsCommand.md)
  - [DnsNtpAddressEditDto](docs/DnsNtpAddressEditDto.md)
  - [DnsServerCreateDto](docs/DnsServerCreateDto.md)
@@ -802,6 +820,7 @@ Class | Method | HTTP request | Description
  - [DocumentationsList](docs/DocumentationsList.md)
  - [DownloadKubeConfigCommand](docs/DownloadKubeConfigCommand.md)
  - [DuplicateNameCheckerCommand](docs/DuplicateNameCheckerCommand.md)
+ - [EInstanceStatus](docs/EInstanceStatus.md)
  - [EditAlertingIntegrationCommand](docs/EditAlertingIntegrationCommand.md)
  - [EditAllowedHostDto](docs/EditAllowedHostDto.md)
  - [EditArticleCommand](docs/EditArticleCommand.md)
@@ -839,6 +858,7 @@ Class | Method | HTTP request | Description
  - [GroupedBillingListQuery](docs/GroupedBillingListQuery.md)
  - [GroupedBillings](docs/GroupedBillings.md)
  - [GroupedPrometheusBillingListQuery](docs/GroupedPrometheusBillingListQuery.md)
+ - [HelmCredentialCommand](docs/HelmCredentialCommand.md)
  - [HelmMetadata](docs/HelmMetadata.md)
  - [HelmReleaseDto](docs/HelmReleaseDto.md)
  - [HelmReleasesList](docs/HelmReleasesList.md)
@@ -855,6 +875,8 @@ Class | Method | HTTP request | Description
  - [IngressSearchCommand](docs/IngressSearchCommand.md)
  - [IngressSearchList](docs/IngressSearchList.md)
  - [Ingresses](docs/Ingresses.md)
+ - [InstanceAppListDto](docs/InstanceAppListDto.md)
+ - [InteractiveShellDto](docs/InteractiveShellDto.md)
  - [JsonNode](docs/JsonNode.md)
  - [JsonNodeOptions](docs/JsonNodeOptions.md)
  - [KeycloakCheckerCommand](docs/KeycloakCheckerCommand.md)
@@ -953,6 +975,7 @@ Class | Method | HTTP request | Description
  - [OrganizationsList](docs/OrganizationsList.md)
  - [PackageAutocompleteDto](docs/PackageAutocompleteDto.md)
  - [Parameter](docs/Parameter.md)
+ - [ParameterType](docs/ParameterType.md)
  - [PartnerDetailsDto](docs/PartnerDetailsDto.md)
  - [PartnerDetailsForOrganizationsDto](docs/PartnerDetailsForOrganizationsDto.md)
  - [PartnerDetailsForUserDto](docs/PartnerDetailsForUserDto.md)
@@ -980,13 +1003,13 @@ Class | Method | HTTP request | Description
  - [ProblemDetails](docs/ProblemDetails.md)
  - [ProjectActionUpdateDto](docs/ProjectActionUpdateDto.md)
  - [ProjectActionVisibilityDto](docs/ProjectActionVisibilityDto.md)
+ - [ProjectAlertsQuery](docs/ProjectAlertsQuery.md)
  - [ProjectAppDetailsDto](docs/ProjectAppDetailsDto.md)
  - [ProjectAppDto](docs/ProjectAppDto.md)
  - [ProjectAppList](docs/ProjectAppList.md)
- - [ProjectAppListDto](docs/ProjectAppListDto.md)
  - [ProjectAppParamDto](docs/ProjectAppParamDto.md)
  - [ProjectAppParamsDto](docs/ProjectAppParamsDto.md)
- - [ProjectButtonStatusDto](docs/ProjectButtonStatusDto.md)
+ - [ProjectCatalogDto](docs/ProjectCatalogDto.md)
  - [ProjectChartDto](docs/ProjectChartDto.md)
  - [ProjectCommonRecordDto](docs/ProjectCommonRecordDto.md)
  - [ProjectDetailsErrorListDto](docs/ProjectDetailsErrorListDto.md)
@@ -1010,6 +1033,7 @@ Class | Method | HTTP request | Description
  - [ProjectTemplateDropdownListDto](docs/ProjectTemplateDropdownListDto.md)
  - [ProjectTemplateList](docs/ProjectTemplateList.md)
  - [ProjectTemplateListDto](docs/ProjectTemplateListDto.md)
+ - [ProjectType](docs/ProjectType.md)
  - [ProjectsList](docs/ProjectsList.md)
  - [ProjectsSearchCommand](docs/ProjectsSearchCommand.md)
  - [ProjectsSearchList](docs/ProjectsSearchList.md)
@@ -1172,6 +1196,7 @@ Class | Method | HTTP request | Description
  - [UpdateUserProjectGroupDto](docs/UpdateUserProjectGroupDto.md)
  - [UpdateVsphereCommand](docs/UpdateVsphereCommand.md)
  - [UpdateVsphereHypervisorsCommand](docs/UpdateVsphereHypervisorsCommand.md)
+ - [UpdateZadaraCommand](docs/UpdateZadaraCommand.md)
  - [UserDetails](docs/UserDetails.md)
  - [UserDto](docs/UserDto.md)
  - [UserForListDto](docs/UserForListDto.md)
@@ -1204,6 +1229,10 @@ Class | Method | HTTP request | Description
  - [WebhookHeaderDto](docs/WebhookHeaderDto.md)
  - [WhiteListDomainDto](docs/WhiteListDomainDto.md)
  - [YamlValidatorCommand](docs/YamlValidatorCommand.md)
+ - [ZadaraAvailabilityZonesCommand](docs/ZadaraAvailabilityZonesCommand.md)
+ - [ZadaraCredentialList](docs/ZadaraCredentialList.md)
+ - [ZadaraCredentialsListDto](docs/ZadaraCredentialsListDto.md)
+ - [ZadaraRegionListCommand](docs/ZadaraRegionListCommand.md)
 
 
 ## Documentation For Authorization

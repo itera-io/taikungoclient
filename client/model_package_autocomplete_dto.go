@@ -22,6 +22,10 @@ var _ MappedNullable = &PackageAutocompleteDto{}
 type PackageAutocompleteDto struct {
 	Key NullableString `json:"key,omitempty"`
 	Value NullableString `json:"value,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	Type *ParameterType `json:"type,omitempty"`
+	IsQuestion *bool `json:"isQuestion,omitempty"`
+	Options []string `json:"options,omitempty"`
 }
 
 // NewPackageAutocompleteDto instantiates a new PackageAutocompleteDto object
@@ -125,6 +129,145 @@ func (o *PackageAutocompleteDto) UnsetValue() {
 	o.Value.Unset()
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PackageAutocompleteDto) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PackageAutocompleteDto) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *PackageAutocompleteDto) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *PackageAutocompleteDto) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *PackageAutocompleteDto) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *PackageAutocompleteDto) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *PackageAutocompleteDto) GetType() ParameterType {
+	if o == nil || IsNil(o.Type) {
+		var ret ParameterType
+		return ret
+	}
+	return *o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PackageAutocompleteDto) GetTypeOk() (*ParameterType, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *PackageAutocompleteDto) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given ParameterType and assigns it to the Type field.
+func (o *PackageAutocompleteDto) SetType(v ParameterType) {
+	o.Type = &v
+}
+
+// GetIsQuestion returns the IsQuestion field value if set, zero value otherwise.
+func (o *PackageAutocompleteDto) GetIsQuestion() bool {
+	if o == nil || IsNil(o.IsQuestion) {
+		var ret bool
+		return ret
+	}
+	return *o.IsQuestion
+}
+
+// GetIsQuestionOk returns a tuple with the IsQuestion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PackageAutocompleteDto) GetIsQuestionOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsQuestion) {
+		return nil, false
+	}
+	return o.IsQuestion, true
+}
+
+// HasIsQuestion returns a boolean if a field has been set.
+func (o *PackageAutocompleteDto) HasIsQuestion() bool {
+	if o != nil && !IsNil(o.IsQuestion) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsQuestion gets a reference to the given bool and assigns it to the IsQuestion field.
+func (o *PackageAutocompleteDto) SetIsQuestion(v bool) {
+	o.IsQuestion = &v
+}
+
+// GetOptions returns the Options field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PackageAutocompleteDto) GetOptions() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.Options
+}
+
+// GetOptionsOk returns a tuple with the Options field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PackageAutocompleteDto) GetOptionsOk() ([]string, bool) {
+	if o == nil || IsNil(o.Options) {
+		return nil, false
+	}
+	return o.Options, true
+}
+
+// HasOptions returns a boolean if a field has been set.
+func (o *PackageAutocompleteDto) HasOptions() bool {
+	if o != nil && !IsNil(o.Options) {
+		return true
+	}
+
+	return false
+}
+
+// SetOptions gets a reference to the given []string and assigns it to the Options field.
+func (o *PackageAutocompleteDto) SetOptions(v []string) {
+	o.Options = v
+}
+
 func (o PackageAutocompleteDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -140,6 +283,18 @@ func (o PackageAutocompleteDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
+	}
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
+	}
+	if !IsNil(o.IsQuestion) {
+		toSerialize["isQuestion"] = o.IsQuestion
+	}
+	if o.Options != nil {
+		toSerialize["options"] = o.Options
 	}
 	return toSerialize, nil
 }

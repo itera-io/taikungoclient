@@ -44,11 +44,12 @@ type ServerListDto struct {
 	CreatedBy NullableString `json:"createdBy,omitempty"`
 	LastModified NullableString `json:"lastModified,omitempty"`
 	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
-	SpotPrice NullableString `json:"spotPrice,omitempty"`
+	SpotPrice *float64 `json:"spotPrice,omitempty"`
 	SpotInstance *bool `json:"spotInstance,omitempty"`
 	ShutOff *bool `json:"shutOff,omitempty"`
 	AutoscalingGroup NullableString `json:"autoscalingGroup,omitempty"`
 	ProviderID NullableString `json:"providerID,omitempty"`
+	InstanceId NullableString `json:"instanceId,omitempty"`
 	AwsHostName NullableString `json:"awsHostName,omitempty"`
 	OpenshiftFlavor NullableString `json:"openshiftFlavor,omitempty"`
 	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
@@ -1007,46 +1008,36 @@ func (o *ServerListDto) UnsetLastModifiedBy() {
 	o.LastModifiedBy.Unset()
 }
 
-// GetSpotPrice returns the SpotPrice field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetSpotPrice() string {
-	if o == nil || IsNil(o.SpotPrice.Get()) {
-		var ret string
+// GetSpotPrice returns the SpotPrice field value if set, zero value otherwise.
+func (o *ServerListDto) GetSpotPrice() float64 {
+	if o == nil || IsNil(o.SpotPrice) {
+		var ret float64
 		return ret
 	}
-	return *o.SpotPrice.Get()
+	return *o.SpotPrice
 }
 
 // GetSpotPriceOk returns a tuple with the SpotPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetSpotPriceOk() (*string, bool) {
-	if o == nil {
+func (o *ServerListDto) GetSpotPriceOk() (*float64, bool) {
+	if o == nil || IsNil(o.SpotPrice) {
 		return nil, false
 	}
-	return o.SpotPrice.Get(), o.SpotPrice.IsSet()
+	return o.SpotPrice, true
 }
 
 // HasSpotPrice returns a boolean if a field has been set.
 func (o *ServerListDto) HasSpotPrice() bool {
-	if o != nil && o.SpotPrice.IsSet() {
+	if o != nil && !IsNil(o.SpotPrice) {
 		return true
 	}
 
 	return false
 }
 
-// SetSpotPrice gets a reference to the given NullableString and assigns it to the SpotPrice field.
-func (o *ServerListDto) SetSpotPrice(v string) {
-	o.SpotPrice.Set(&v)
-}
-// SetSpotPriceNil sets the value for SpotPrice to be an explicit nil
-func (o *ServerListDto) SetSpotPriceNil() {
-	o.SpotPrice.Set(nil)
-}
-
-// UnsetSpotPrice ensures that no value is present for SpotPrice, not even an explicit nil
-func (o *ServerListDto) UnsetSpotPrice() {
-	o.SpotPrice.Unset()
+// SetSpotPrice gets a reference to the given float64 and assigns it to the SpotPrice field.
+func (o *ServerListDto) SetSpotPrice(v float64) {
+	o.SpotPrice = &v
 }
 
 // GetSpotInstance returns the SpotInstance field value if set, zero value otherwise.
@@ -1195,6 +1186,48 @@ func (o *ServerListDto) SetProviderIDNil() {
 // UnsetProviderID ensures that no value is present for ProviderID, not even an explicit nil
 func (o *ServerListDto) UnsetProviderID() {
 	o.ProviderID.Unset()
+}
+
+// GetInstanceId returns the InstanceId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerListDto) GetInstanceId() string {
+	if o == nil || IsNil(o.InstanceId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.InstanceId.Get()
+}
+
+// GetInstanceIdOk returns a tuple with the InstanceId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerListDto) GetInstanceIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InstanceId.Get(), o.InstanceId.IsSet()
+}
+
+// HasInstanceId returns a boolean if a field has been set.
+func (o *ServerListDto) HasInstanceId() bool {
+	if o != nil && o.InstanceId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstanceId gets a reference to the given NullableString and assigns it to the InstanceId field.
+func (o *ServerListDto) SetInstanceId(v string) {
+	o.InstanceId.Set(&v)
+}
+// SetInstanceIdNil sets the value for InstanceId to be an explicit nil
+func (o *ServerListDto) SetInstanceIdNil() {
+	o.InstanceId.Set(nil)
+}
+
+// UnsetInstanceId ensures that no value is present for InstanceId, not even an explicit nil
+func (o *ServerListDto) UnsetInstanceId() {
+	o.InstanceId.Unset()
 }
 
 // GetAwsHostName returns the AwsHostName field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1692,8 +1725,8 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	if o.LastModifiedBy.IsSet() {
 		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
 	}
-	if o.SpotPrice.IsSet() {
-		toSerialize["spotPrice"] = o.SpotPrice.Get()
+	if !IsNil(o.SpotPrice) {
+		toSerialize["spotPrice"] = o.SpotPrice
 	}
 	if !IsNil(o.SpotInstance) {
 		toSerialize["spotInstance"] = o.SpotInstance
@@ -1706,6 +1739,9 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ProviderID.IsSet() {
 		toSerialize["providerID"] = o.ProviderID.Get()
+	}
+	if o.InstanceId.IsSet() {
+		toSerialize["instanceId"] = o.InstanceId.Get()
 	}
 	if o.AwsHostName.IsSet() {
 		toSerialize["awsHostName"] = o.AwsHostName.Get()

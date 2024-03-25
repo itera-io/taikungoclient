@@ -207,6 +207,8 @@ type ApiPackageListRequest struct {
 	search *string
 	id *string
 	catalogId *int32
+	isPrivate *bool
+	filterBy *string
 }
 
 func (r ApiPackageListRequest) Offset(offset int32) ApiPackageListRequest {
@@ -241,6 +243,16 @@ func (r ApiPackageListRequest) Id(id string) ApiPackageListRequest {
 
 func (r ApiPackageListRequest) CatalogId(catalogId int32) ApiPackageListRequest {
 	r.catalogId = &catalogId
+	return r
+}
+
+func (r ApiPackageListRequest) IsPrivate(isPrivate bool) ApiPackageListRequest {
+	r.isPrivate = &isPrivate
+	return r
+}
+
+func (r ApiPackageListRequest) FilterBy(filterBy string) ApiPackageListRequest {
+	r.filterBy = &filterBy
 	return r
 }
 
@@ -302,6 +314,12 @@ func (a *PackageAPIService) PackageListExecute(r ApiPackageListRequest) (*Availa
 	}
 	if r.catalogId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "CatalogId", r.catalogId, "")
+	}
+	if r.isPrivate != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsPrivate", r.isPrivate, "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
