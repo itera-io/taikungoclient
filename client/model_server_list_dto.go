@@ -55,6 +55,7 @@ type ServerListDto struct {
 	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
 	Hypervisor NullableString `json:"hypervisor,omitempty"`
 	HypervisorId NullableString `json:"hypervisorId,omitempty"`
+	VsphereFlavor NullableString `json:"vsphereFlavor,omitempty"`
 	ProxmoxRole *ProxmoxRole `json:"proxmoxRole,omitempty"`
 	ProxmoxExtraDiskSize *int32 `json:"proxmoxExtraDiskSize,omitempty"`
 	ActionButtons *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
@@ -1440,6 +1441,48 @@ func (o *ServerListDto) UnsetHypervisorId() {
 	o.HypervisorId.Unset()
 }
 
+// GetVsphereFlavor returns the VsphereFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerListDto) GetVsphereFlavor() string {
+	if o == nil || IsNil(o.VsphereFlavor.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.VsphereFlavor.Get()
+}
+
+// GetVsphereFlavorOk returns a tuple with the VsphereFlavor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerListDto) GetVsphereFlavorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VsphereFlavor.Get(), o.VsphereFlavor.IsSet()
+}
+
+// HasVsphereFlavor returns a boolean if a field has been set.
+func (o *ServerListDto) HasVsphereFlavor() bool {
+	if o != nil && o.VsphereFlavor.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVsphereFlavor gets a reference to the given NullableString and assigns it to the VsphereFlavor field.
+func (o *ServerListDto) SetVsphereFlavor(v string) {
+	o.VsphereFlavor.Set(&v)
+}
+// SetVsphereFlavorNil sets the value for VsphereFlavor to be an explicit nil
+func (o *ServerListDto) SetVsphereFlavorNil() {
+	o.VsphereFlavor.Set(nil)
+}
+
+// UnsetVsphereFlavor ensures that no value is present for VsphereFlavor, not even an explicit nil
+func (o *ServerListDto) UnsetVsphereFlavor() {
+	o.VsphereFlavor.Unset()
+}
+
 // GetProxmoxRole returns the ProxmoxRole field value if set, zero value otherwise.
 func (o *ServerListDto) GetProxmoxRole() ProxmoxRole {
 	if o == nil || IsNil(o.ProxmoxRole) {
@@ -1757,6 +1800,9 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.HypervisorId.IsSet() {
 		toSerialize["hypervisorId"] = o.HypervisorId.Get()
+	}
+	if o.VsphereFlavor.IsSet() {
+		toSerialize["vsphereFlavor"] = o.VsphereFlavor.Get()
 	}
 	if !IsNil(o.ProxmoxRole) {
 		toSerialize["proxmoxRole"] = o.ProxmoxRole
