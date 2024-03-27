@@ -6639,6 +6639,12 @@ type ApiKubernetesNamespaceListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	installation *bool
+}
+
+func (r ApiKubernetesNamespaceListRequest) Installation(installation bool) ApiKubernetesNamespaceListRequest {
+	r.installation = &installation
+	return r
 }
 
 func (r ApiKubernetesNamespaceListRequest) Execute() ([]string, *http.Response, error) {
@@ -6682,6 +6688,9 @@ func (a *KubernetesAPIService) KubernetesNamespaceListExecute(r ApiKubernetesNam
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.installation != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Installation", r.installation, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -5622,8 +5622,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-03-25T14:29:35.3696737Z
-                  createdAt: 2024-03-25T14:29:35.3696737Z
+                  lastValidated: 2024-03-27T00:02:41.9881588Z
+                  createdAt: 2024-03-27T00:02:41.9881588Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5728,14 +5728,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-03-25T14:29:35.3696737Z
+                    lastBackup: 2024-03-27T00:02:41.9881588Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-03-25T14:29:35.3696737Z
+                  createdAt: 2024-03-27T00:02:41.9881588Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-03-25T14:29:35.3696737Z
+                  lastBackup: 2024-03-27T00:02:41.9881588Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5840,8 +5840,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-03-25T14:29:35.3696737Z
-                  expiration: 2024-03-25T14:29:35.3696737Z
+                  createdAt: 2024-03-27T00:02:41.9881588Z
+                  expiration: 2024-03-27T00:02:41.9881588Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5945,7 +5945,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-03-25T14:29:35.3696737Z
+                  createdAt: 2024-03-27T00:02:41.9881588Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6055,9 +6055,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-03-25T14:29:35.3696737+00:00
-                  startTimeStamp: 2024-03-25T14:29:35.3696737+00:00
-                  createdAt: 2024-03-25T14:29:35.3696737Z
+                  completionDateTime: 2024-03-27T00:02:41.9881588+00:00
+                  startTimeStamp: 2024-03-27T00:02:41.9881588+00:00
+                  createdAt: 2024-03-27T00:02:41.9881588Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -17061,6 +17061,13 @@ paths:
           format: int32
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: Installation
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -39372,13 +39379,13 @@ components:
         packageId: packageId
         description: description
         signed: true
-        stars: 2
+        stars: 7
         repository:
           scannerDisabled: true
           isImported: true
           organizationName: organizationName
           organizationDisplayName: organizationDisplayName
-          kind: 7
+          kind: 1
           name: name
           repositoryId: repositoryId
           official: true
@@ -39386,22 +39393,26 @@ components:
           url: url
         catalogAppId: 5
         version: version
-        installedInstanceCount: 5
+        catalogId: 5
+        installedInstanceCount: 2
         isLocked: true
         name: name
         isAdded: true
         normalizedName: normalizedName
         securityReportSummary:
-          high: 9
-          critical: 4
-          low: 7
-          medium: 3
-          unknown: 2
+          high: 3
+          critical: 7
+          low: 9
+          medium: 2
+          unknown: 4
         ts: ts
       properties:
         packageId:
           nullable: true
           type: string
+        catalogId:
+          format: int32
+          type: integer
         catalogAppId:
           format: int32
           nullable: true
@@ -39458,13 +39469,13 @@ components:
           packageId: packageId
           description: description
           signed: true
-          stars: 2
+          stars: 7
           repository:
             scannerDisabled: true
             isImported: true
             organizationName: organizationName
             organizationDisplayName: organizationDisplayName
-            kind: 7
+            kind: 1
             name: name
             repositoryId: repositoryId
             official: true
@@ -39472,17 +39483,18 @@ components:
             url: url
           catalogAppId: 5
           version: version
-          installedInstanceCount: 5
+          catalogId: 5
+          installedInstanceCount: 2
           isLocked: true
           name: name
           isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
-            high: 9
-            critical: 4
-            low: 7
-            medium: 3
-            unknown: 2
+            high: 3
+            critical: 7
+            low: 9
+            medium: 2
+            unknown: 4
           ts: ts
         - appVersion: appVersion
           logoImageId: logoImageId
@@ -39490,13 +39502,13 @@ components:
           packageId: packageId
           description: description
           signed: true
-          stars: 2
+          stars: 7
           repository:
             scannerDisabled: true
             isImported: true
             organizationName: organizationName
             organizationDisplayName: organizationDisplayName
-            kind: 7
+            kind: 1
             name: name
             repositoryId: repositoryId
             official: true
@@ -39504,17 +39516,18 @@ components:
             url: url
           catalogAppId: 5
           version: version
-          installedInstanceCount: 5
+          catalogId: 5
+          installedInstanceCount: 2
           isLocked: true
           name: name
           isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
-            high: 9
-            critical: 4
-            low: 7
-            medium: 3
-            unknown: 2
+            high: 3
+            critical: 7
+            low: 9
+            medium: 2
+            unknown: 4
           ts: ts
         totalCount: 0
       properties:
@@ -41703,13 +41716,13 @@ components:
             packageId: packageId
             description: description
             signed: true
-            stars: 2
+            stars: 7
             repository:
               scannerDisabled: true
               isImported: true
               organizationName: organizationName
               organizationDisplayName: organizationDisplayName
-              kind: 7
+              kind: 1
               name: name
               repositoryId: repositoryId
               official: true
@@ -41717,17 +41730,18 @@ components:
               url: url
             catalogAppId: 5
             version: version
-            installedInstanceCount: 5
+            catalogId: 5
+            installedInstanceCount: 2
             isLocked: true
             name: name
             isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
-              high: 9
-              critical: 4
-              low: 7
-              medium: 3
-              unknown: 2
+              high: 3
+              critical: 7
+              low: 9
+              medium: 2
+              unknown: 4
             ts: ts
           - appVersion: appVersion
             logoImageId: logoImageId
@@ -41735,13 +41749,13 @@ components:
             packageId: packageId
             description: description
             signed: true
-            stars: 2
+            stars: 7
             repository:
               scannerDisabled: true
               isImported: true
               organizationName: organizationName
               organizationDisplayName: organizationDisplayName
-              kind: 7
+              kind: 1
               name: name
               repositoryId: repositoryId
               official: true
@@ -41749,17 +41763,18 @@ components:
               url: url
             catalogAppId: 5
             version: version
-            installedInstanceCount: 5
+            catalogId: 5
+            installedInstanceCount: 2
             isLocked: true
             name: name
             isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
-              high: 9
-              critical: 4
-              low: 7
-              medium: 3
-              unknown: 2
+              high: 3
+              critical: 7
+              low: 9
+              medium: 2
+              unknown: 4
             ts: ts
           isDefault: true
           isLocked: true
@@ -41794,13 +41809,13 @@ components:
             packageId: packageId
             description: description
             signed: true
-            stars: 2
+            stars: 7
             repository:
               scannerDisabled: true
               isImported: true
               organizationName: organizationName
               organizationDisplayName: organizationDisplayName
-              kind: 7
+              kind: 1
               name: name
               repositoryId: repositoryId
               official: true
@@ -41808,17 +41823,18 @@ components:
               url: url
             catalogAppId: 5
             version: version
-            installedInstanceCount: 5
+            catalogId: 5
+            installedInstanceCount: 2
             isLocked: true
             name: name
             isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
-              high: 9
-              critical: 4
-              low: 7
-              medium: 3
-              unknown: 2
+              high: 3
+              critical: 7
+              low: 9
+              medium: 2
+              unknown: 4
             ts: ts
           - appVersion: appVersion
             logoImageId: logoImageId
@@ -41826,13 +41842,13 @@ components:
             packageId: packageId
             description: description
             signed: true
-            stars: 2
+            stars: 7
             repository:
               scannerDisabled: true
               isImported: true
               organizationName: organizationName
               organizationDisplayName: organizationDisplayName
-              kind: 7
+              kind: 1
               name: name
               repositoryId: repositoryId
               official: true
@@ -41840,17 +41856,18 @@ components:
               url: url
             catalogAppId: 5
             version: version
-            installedInstanceCount: 5
+            catalogId: 5
+            installedInstanceCount: 2
             isLocked: true
             name: name
             isAdded: true
             normalizedName: normalizedName
             securityReportSummary:
-              high: 9
-              critical: 4
-              low: 7
-              medium: 3
-              unknown: 2
+              high: 3
+              critical: 7
+              low: 9
+              medium: 2
+              unknown: 4
             ts: ts
           isDefault: true
           isLocked: true
@@ -41899,13 +41916,13 @@ components:
           packageId: packageId
           description: description
           signed: true
-          stars: 2
+          stars: 7
           repository:
             scannerDisabled: true
             isImported: true
             organizationName: organizationName
             organizationDisplayName: organizationDisplayName
-            kind: 7
+            kind: 1
             name: name
             repositoryId: repositoryId
             official: true
@@ -41913,17 +41930,18 @@ components:
             url: url
           catalogAppId: 5
           version: version
-          installedInstanceCount: 5
+          catalogId: 5
+          installedInstanceCount: 2
           isLocked: true
           name: name
           isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
-            high: 9
-            critical: 4
-            low: 7
-            medium: 3
-            unknown: 2
+            high: 3
+            critical: 7
+            low: 9
+            medium: 2
+            unknown: 4
           ts: ts
         - appVersion: appVersion
           logoImageId: logoImageId
@@ -41931,13 +41949,13 @@ components:
           packageId: packageId
           description: description
           signed: true
-          stars: 2
+          stars: 7
           repository:
             scannerDisabled: true
             isImported: true
             organizationName: organizationName
             organizationDisplayName: organizationDisplayName
-            kind: 7
+            kind: 1
             name: name
             repositoryId: repositoryId
             official: true
@@ -41945,17 +41963,18 @@ components:
             url: url
           catalogAppId: 5
           version: version
-          installedInstanceCount: 5
+          catalogId: 5
+          installedInstanceCount: 2
           isLocked: true
           name: name
           isAdded: true
           normalizedName: normalizedName
           securityReportSummary:
-            high: 9
-            critical: 4
-            low: 7
-            medium: 3
-            unknown: 2
+            high: 3
+            critical: 7
+            low: 9
+            medium: 2
+            unknown: 4
           ts: ts
         isDefault: true
         isLocked: true
@@ -58469,7 +58488,7 @@ components:
         isImported: true
         organizationName: organizationName
         organizationDisplayName: organizationDisplayName
-        kind: 7
+        kind: 1
         name: name
         repositoryId: repositoryId
         official: true
@@ -59197,11 +59216,11 @@ components:
     SecurityReportSummary:
       additionalProperties: false
       example:
-        high: 9
-        critical: 4
-        low: 7
-        medium: 3
-        unknown: 2
+        high: 3
+        critical: 7
+        low: 9
+        medium: 2
+        unknown: 4
       properties:
         low:
           format: int64
