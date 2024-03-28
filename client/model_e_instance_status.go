@@ -25,7 +25,6 @@ const (
 	EINSTANCESTATUS_INSTALLING EInstanceStatus = "Installing"
 	EINSTANCESTATUS_UNINSTALLING EInstanceStatus = "Uninstalling"
 	EINSTANCESTATUS_READY EInstanceStatus = "Ready"
-	EINSTANCESTATUS_FAILED EInstanceStatus = "Failed"
 	EINSTANCESTATUS_NOT_READY EInstanceStatus = "NotReady"
 	EINSTANCESTATUS_FAILURE EInstanceStatus = "Failure"
 )
@@ -36,7 +35,6 @@ var AllowedEInstanceStatusEnumValues = []EInstanceStatus{
 	"Installing",
 	"Uninstalling",
 	"Ready",
-	"Failed",
 	"NotReady",
 	"Failure",
 }

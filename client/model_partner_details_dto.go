@@ -27,6 +27,7 @@ type PartnerDetailsDto struct {
 	Country NullableString `json:"country,omitempty"`
 	City NullableString `json:"city,omitempty"`
 	VatNumber NullableString `json:"vatNumber,omitempty"`
+	BackgroundImageUrl NullableString `json:"backgroundImageUrl,omitempty"`
 	Address NullableString `json:"address,omitempty"`
 	Logo NullableString `json:"logo,omitempty"`
 	Phone NullableString `json:"phone,omitempty"`
@@ -337,6 +338,48 @@ func (o *PartnerDetailsDto) SetVatNumberNil() {
 // UnsetVatNumber ensures that no value is present for VatNumber, not even an explicit nil
 func (o *PartnerDetailsDto) UnsetVatNumber() {
 	o.VatNumber.Unset()
+}
+
+// GetBackgroundImageUrl returns the BackgroundImageUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PartnerDetailsDto) GetBackgroundImageUrl() string {
+	if o == nil || IsNil(o.BackgroundImageUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.BackgroundImageUrl.Get()
+}
+
+// GetBackgroundImageUrlOk returns a tuple with the BackgroundImageUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PartnerDetailsDto) GetBackgroundImageUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BackgroundImageUrl.Get(), o.BackgroundImageUrl.IsSet()
+}
+
+// HasBackgroundImageUrl returns a boolean if a field has been set.
+func (o *PartnerDetailsDto) HasBackgroundImageUrl() bool {
+	if o != nil && o.BackgroundImageUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBackgroundImageUrl gets a reference to the given NullableString and assigns it to the BackgroundImageUrl field.
+func (o *PartnerDetailsDto) SetBackgroundImageUrl(v string) {
+	o.BackgroundImageUrl.Set(&v)
+}
+// SetBackgroundImageUrlNil sets the value for BackgroundImageUrl to be an explicit nil
+func (o *PartnerDetailsDto) SetBackgroundImageUrlNil() {
+	o.BackgroundImageUrl.Set(nil)
+}
+
+// UnsetBackgroundImageUrl ensures that no value is present for BackgroundImageUrl, not even an explicit nil
+func (o *PartnerDetailsDto) UnsetBackgroundImageUrl() {
+	o.BackgroundImageUrl.Unset()
 }
 
 // GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -699,6 +742,9 @@ func (o PartnerDetailsDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.VatNumber.IsSet() {
 		toSerialize["vatNumber"] = o.VatNumber.Get()
+	}
+	if o.BackgroundImageUrl.IsSet() {
+		toSerialize["backgroundImageUrl"] = o.BackgroundImageUrl.Get()
 	}
 	if o.Address.IsSet() {
 		toSerialize["address"] = o.Address.Get()

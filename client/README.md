@@ -504,6 +504,7 @@ Class | Method | HTTP request | Description
 *ProjectAppsAPI* | [**ProjectappLockManager**](docs/ProjectAppsAPI.md#projectapplockmanager) | **Post** /api/v1/projectapp/lockmanager | Lock/Unlock project app
 *ProjectAppsAPI* | [**ProjectappSync**](docs/ProjectAppsAPI.md#projectappsync) | **Post** /api/v1/projectapp/sync | Sync an application
 *ProjectAppsAPI* | [**ProjectappUpdate**](docs/ProjectAppsAPI.md#projectappupdate) | **Post** /api/v1/projectapp/update | Update project app
+*ProjectAppsAPI* | [**ProjectappUpdateExtraValues**](docs/ProjectAppsAPI.md#projectappupdateextravalues) | **Post** /api/v1/projectapp/update-extra-values | Update extra values
 *ProjectGroupsAPI* | [**ProjectgroupsBind**](docs/ProjectGroupsAPI.md#projectgroupsbind) | **Post** /api/v1/projectgroups/bind | Bind User groups
 *ProjectGroupsAPI* | [**ProjectgroupsCreate**](docs/ProjectGroupsAPI.md#projectgroupscreate) | **Post** /api/v1/projectgroups/create | Add Project groups
 *ProjectGroupsAPI* | [**ProjectgroupsDelete**](docs/ProjectGroupsAPI.md#projectgroupsdelete) | **Delete** /api/v1/projectgroups | Remove Project group(s)
@@ -1055,6 +1056,7 @@ Class | Method | HTTP request | Description
  - [EditCatalogAppParamCommand](docs/EditCatalogAppParamCommand.md)
  - [EditCatalogAppVersionCommand](docs/EditCatalogAppVersionCommand.md)
  - [EditCatalogCommand](docs/EditCatalogCommand.md)
+ - [EditProjectAppExtraValuesCommand](docs/EditProjectAppExtraValuesCommand.md)
  - [EditProjectAppParamsDto](docs/EditProjectAppParamsDto.md)
  - [EditSecurityGroupCommand](docs/EditSecurityGroupCommand.md)
  - [EditSshUserCommand](docs/EditSshUserCommand.md)

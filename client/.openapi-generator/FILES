@@ -417,6 +417,7 @@ docs/EditAutoscalingCommand.md
 docs/EditCatalogAppParamCommand.md
 docs/EditCatalogAppVersionCommand.md
 docs/EditCatalogCommand.md
+docs/EditProjectAppExtraValuesCommand.md
 docs/EditProjectAppParamsDto.md
 docs/EditSecurityGroupCommand.md
 docs/EditSshUserCommand.md
@@ -1317,6 +1318,7 @@ model_edit_autoscaling_command.go
 model_edit_catalog_app_param_command.go
 model_edit_catalog_app_version_command.go
 model_edit_catalog_command.go
+model_edit_project_app_extra_values_command.go
 model_edit_project_app_params_dto.go
 model_edit_security_group_command.go
 model_edit_ssh_user_command.go
