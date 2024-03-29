@@ -389,10 +389,11 @@ Class | Method | HTTP request | Description
 *ProjectAppsAPI* | [**ProjectappList**](docs/ProjectAppsAPI.md#projectapplist) | **Get** /api/v1/projectapp/list | Retrieve all project apps according to current organization
 *ProjectAppsAPI* | [**ProjectappLockManager**](docs/ProjectAppsAPI.md#projectapplockmanager) | **Post** /api/v1/projectapp/lockmanager | Lock/Unlock project app
 *ProjectAppsAPI* | [**ProjectappSync**](docs/ProjectAppsAPI.md#projectappsync) | **Post** /api/v1/projectapp/sync | Sync an application
-*ProjectGroupsAPI* | [**ProjectgroupsBind**](docs/ProjectGroupsAPI.md#projectgroupsbind) | **Post** /api/v1/projectgroups/bind | Bind User groups
+*ProjectAppsAPI* | [**ProjectappUpdateExtraValues**](docs/ProjectAppsAPI.md#projectappupdateextravalues) | **Post** /api/v1/projectapp/update-extra-values | Update extra values
+*ProjectGroupsAPI* | [**ProjectgroupsBindProject**](docs/ProjectGroupsAPI.md#projectgroupsbindproject) | **Post** /api/v1/projectgroups/bind-project | Bind Projects to group
+*ProjectGroupsAPI* | [**ProjectgroupsBindUserGroup**](docs/ProjectGroupsAPI.md#projectgroupsbindusergroup) | **Post** /api/v1/projectgroups/bind-user-group | Bind User groups
 *ProjectGroupsAPI* | [**ProjectgroupsCreate**](docs/ProjectGroupsAPI.md#projectgroupscreate) | **Post** /api/v1/projectgroups/create | Add Project groups
 *ProjectGroupsAPI* | [**ProjectgroupsDelete**](docs/ProjectGroupsAPI.md#projectgroupsdelete) | **Delete** /api/v1/projectgroups | Remove Project group(s)
-*ProjectGroupsAPI* | [**ProjectgroupsEdit**](docs/ProjectGroupsAPI.md#projectgroupsedit) | **Put** /api/v1/projectgroups/update/{projectGroupId} | Update project groups
 *ProjectGroupsAPI* | [**ProjectgroupsList**](docs/ProjectGroupsAPI.md#projectgroupslist) | **Get** /api/v1/projectgroups/list | Retrieve list of Project groups
 *ProjectGroupsAPI* | [**ProjectgroupsListByUserId**](docs/ProjectGroupsAPI.md#projectgroupslistbyuserid) | **Get** /api/v1/projectgroups/list/{userGroupId} | Retrieve list of Project groups by user group id for dropdown
 *ProjectGroupsAPI* | [**ProjectgroupsProjectList**](docs/ProjectGroupsAPI.md#projectgroupsprojectlist) | **Get** /api/v1/projectgroups/{projectGroupId}/projects | Retrieve list of projects by project group id
@@ -660,6 +661,7 @@ Class | Method | HTTP request | Description
  - [BindProjectGroupsToUserGroupCommand](docs/BindProjectGroupsToUserGroupCommand.md)
  - [BindProjectsCommand](docs/BindProjectsCommand.md)
  - [BindProjectsToCatalogCommand](docs/BindProjectsToCatalogCommand.md)
+ - [BindProjectsToProjectGroupCommand](docs/BindProjectsToProjectGroupCommand.md)
  - [BindPrometheusOrganizationsCommand](docs/BindPrometheusOrganizationsCommand.md)
  - [BindRulesCommand](docs/BindRulesCommand.md)
  - [BindRulesToOrganizationDto](docs/BindRulesToOrganizationDto.md)
@@ -828,6 +830,7 @@ Class | Method | HTTP request | Description
  - [EditCatalogAppParamCommand](docs/EditCatalogAppParamCommand.md)
  - [EditCatalogAppVersionCommand](docs/EditCatalogAppVersionCommand.md)
  - [EditCatalogCommand](docs/EditCatalogCommand.md)
+ - [EditProjectAppExtraValuesCommand](docs/EditProjectAppExtraValuesCommand.md)
  - [EditProjectAppParamsDto](docs/EditProjectAppParamsDto.md)
  - [EditSecurityGroupCommand](docs/EditSecurityGroupCommand.md)
  - [EditSshUserCommand](docs/EditSshUserCommand.md)
@@ -1181,7 +1184,6 @@ Class | Method | HTTP request | Description
  - [UpdateHypervisorsCommand](docs/UpdateHypervisorsCommand.md)
  - [UpdateOpenStackCommand](docs/UpdateOpenStackCommand.md)
  - [UpdateOrganizationCommand](docs/UpdateOrganizationCommand.md)
- - [UpdateProjectGroupDto](docs/UpdateProjectGroupDto.md)
  - [UpdateProjectUserDto](docs/UpdateProjectUserDto.md)
  - [UpdateProjectUserGroupDto](docs/UpdateProjectUserGroupDto.md)
  - [UpdateProxmoxCommand](docs/UpdateProxmoxCommand.md)

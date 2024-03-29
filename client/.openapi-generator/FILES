@@ -172,6 +172,7 @@ docs/BindOrganizationsToRuleDto.md
 docs/BindProjectGroupsToUserGroupCommand.md
 docs/BindProjectsCommand.md
 docs/BindProjectsToCatalogCommand.md
+docs/BindProjectsToProjectGroupCommand.md
 docs/BindPrometheusOrganizationsCommand.md
 docs/BindRulesCommand.md
 docs/BindRulesToOrganizationDto.md
@@ -346,6 +347,7 @@ docs/EditAutoscalingCommand.md
 docs/EditCatalogAppParamCommand.md
 docs/EditCatalogAppVersionCommand.md
 docs/EditCatalogCommand.md
+docs/EditProjectAppExtraValuesCommand.md
 docs/EditProjectAppParamsDto.md
 docs/EditSecurityGroupCommand.md
 docs/EditSshUserCommand.md
@@ -743,7 +745,6 @@ docs/UpdateCatalogDto.md
 docs/UpdateHypervisorsCommand.md
 docs/UpdateOpenStackCommand.md
 docs/UpdateOrganizationCommand.md
-docs/UpdateProjectGroupDto.md
 docs/UpdateProjectUserDto.md
 docs/UpdateProjectUserGroupDto.md
 docs/UpdateProxmoxCommand.md
@@ -889,6 +890,7 @@ model_bind_organizations_to_rule_dto.go
 model_bind_project_groups_to_user_group_command.go
 model_bind_projects_command.go
 model_bind_projects_to_catalog_command.go
+model_bind_projects_to_project_group_command.go
 model_bind_prometheus_organizations_command.go
 model_bind_rules_command.go
 model_bind_rules_to_organization_dto.go
@@ -1057,6 +1059,7 @@ model_edit_autoscaling_command.go
 model_edit_catalog_app_param_command.go
 model_edit_catalog_app_version_command.go
 model_edit_catalog_command.go
+model_edit_project_app_extra_values_command.go
 model_edit_project_app_params_dto.go
 model_edit_security_group_command.go
 model_edit_ssh_user_command.go
@@ -1410,7 +1413,6 @@ model_update_catalog_dto.go
 model_update_hypervisors_command.go
 model_update_open_stack_command.go
 model_update_organization_command.go
-model_update_project_group_dto.go
 model_update_project_user_dto.go
 model_update_project_user_group_dto.go
 model_update_proxmox_command.go
