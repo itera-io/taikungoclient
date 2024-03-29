@@ -211,6 +211,7 @@ docs/BindOrganizationsToRuleDto.md
 docs/BindProjectGroupsToUserGroupCommand.md
 docs/BindProjectsCommand.md
 docs/BindProjectsToCatalogCommand.md
+docs/BindProjectsToProjectGroupCommand.md
 docs/BindPrometheusOrganizationsCommand.md
 docs/BindRulesCommand.md
 docs/BindRulesToOrganizationDto.md
@@ -928,7 +929,6 @@ docs/UpdateOrganizationCommand.md
 docs/UpdateOrganizationSubscriptionCommand.md
 docs/UpdatePaymentIdCommand.md
 docs/UpdateProjectAppCommand.md
-docs/UpdateProjectGroupDto.md
 docs/UpdateProjectUserDto.md
 docs/UpdateProjectUserGroupDto.md
 docs/UpdateProxmoxCommand.md
@@ -1119,6 +1119,7 @@ model_bind_organizations_to_rule_dto.go
 model_bind_project_groups_to_user_group_command.go
 model_bind_projects_command.go
 model_bind_projects_to_catalog_command.go
+model_bind_projects_to_project_group_command.go
 model_bind_prometheus_organizations_command.go
 model_bind_rules_command.go
 model_bind_rules_to_organization_dto.go
@@ -1777,7 +1778,6 @@ model_update_organization_command.go
 model_update_organization_subscription_command.go
 model_update_payment_id_command.go
 model_update_project_app_command.go
-model_update_project_group_dto.go
 model_update_project_user_dto.go
 model_update_project_user_group_dto.go
 model_update_proxmox_command.go
