@@ -20,9 +20,8 @@ var _ MappedNullable = &BindUserGroupsToProjectGroupCommand{}
 
 // BindUserGroupsToProjectGroupCommand struct for BindUserGroupsToProjectGroupCommand
 type BindUserGroupsToProjectGroupCommand struct {
-	UserGroups []UpdateProjectUserGroupDto `json:"userGroups,omitempty"`
+	UserGroups []int32 `json:"userGroups,omitempty"`
 	ProjectGroupId *int32 `json:"projectGroupId,omitempty"`
-	ProjectGroupName NullableString `json:"projectGroupName,omitempty"`
 }
 
 // NewBindUserGroupsToProjectGroupCommand instantiates a new BindUserGroupsToProjectGroupCommand object
@@ -43,9 +42,9 @@ func NewBindUserGroupsToProjectGroupCommandWithDefaults() *BindUserGroupsToProje
 }
 
 // GetUserGroups returns the UserGroups field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BindUserGroupsToProjectGroupCommand) GetUserGroups() []UpdateProjectUserGroupDto {
+func (o *BindUserGroupsToProjectGroupCommand) GetUserGroups() []int32 {
 	if o == nil {
-		var ret []UpdateProjectUserGroupDto
+		var ret []int32
 		return ret
 	}
 	return o.UserGroups
@@ -54,7 +53,7 @@ func (o *BindUserGroupsToProjectGroupCommand) GetUserGroups() []UpdateProjectUse
 // GetUserGroupsOk returns a tuple with the UserGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BindUserGroupsToProjectGroupCommand) GetUserGroupsOk() ([]UpdateProjectUserGroupDto, bool) {
+func (o *BindUserGroupsToProjectGroupCommand) GetUserGroupsOk() ([]int32, bool) {
 	if o == nil || IsNil(o.UserGroups) {
 		return nil, false
 	}
@@ -70,8 +69,8 @@ func (o *BindUserGroupsToProjectGroupCommand) HasUserGroups() bool {
 	return false
 }
 
-// SetUserGroups gets a reference to the given []UpdateProjectUserGroupDto and assigns it to the UserGroups field.
-func (o *BindUserGroupsToProjectGroupCommand) SetUserGroups(v []UpdateProjectUserGroupDto) {
+// SetUserGroups gets a reference to the given []int32 and assigns it to the UserGroups field.
+func (o *BindUserGroupsToProjectGroupCommand) SetUserGroups(v []int32) {
 	o.UserGroups = v
 }
 
@@ -107,48 +106,6 @@ func (o *BindUserGroupsToProjectGroupCommand) SetProjectGroupId(v int32) {
 	o.ProjectGroupId = &v
 }
 
-// GetProjectGroupName returns the ProjectGroupName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BindUserGroupsToProjectGroupCommand) GetProjectGroupName() string {
-	if o == nil || IsNil(o.ProjectGroupName.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ProjectGroupName.Get()
-}
-
-// GetProjectGroupNameOk returns a tuple with the ProjectGroupName field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BindUserGroupsToProjectGroupCommand) GetProjectGroupNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ProjectGroupName.Get(), o.ProjectGroupName.IsSet()
-}
-
-// HasProjectGroupName returns a boolean if a field has been set.
-func (o *BindUserGroupsToProjectGroupCommand) HasProjectGroupName() bool {
-	if o != nil && o.ProjectGroupName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectGroupName gets a reference to the given NullableString and assigns it to the ProjectGroupName field.
-func (o *BindUserGroupsToProjectGroupCommand) SetProjectGroupName(v string) {
-	o.ProjectGroupName.Set(&v)
-}
-// SetProjectGroupNameNil sets the value for ProjectGroupName to be an explicit nil
-func (o *BindUserGroupsToProjectGroupCommand) SetProjectGroupNameNil() {
-	o.ProjectGroupName.Set(nil)
-}
-
-// UnsetProjectGroupName ensures that no value is present for ProjectGroupName, not even an explicit nil
-func (o *BindUserGroupsToProjectGroupCommand) UnsetProjectGroupName() {
-	o.ProjectGroupName.Unset()
-}
-
 func (o BindUserGroupsToProjectGroupCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -164,9 +121,6 @@ func (o BindUserGroupsToProjectGroupCommand) ToMap() (map[string]interface{}, er
 	}
 	if !IsNil(o.ProjectGroupId) {
 		toSerialize["projectGroupId"] = o.ProjectGroupId
-	}
-	if o.ProjectGroupName.IsSet() {
-		toSerialize["projectGroupName"] = o.ProjectGroupName.Get()
 	}
 	return toSerialize, nil
 }

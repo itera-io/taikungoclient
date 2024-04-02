@@ -1517,7 +1517,6 @@ Class | Method | HTTP request | Description
  - [UpdatePaymentIdCommand](docs/UpdatePaymentIdCommand.md)
  - [UpdateProjectAppCommand](docs/UpdateProjectAppCommand.md)
  - [UpdateProjectUserDto](docs/UpdateProjectUserDto.md)
- - [UpdateProjectUserGroupDto](docs/UpdateProjectUserGroupDto.md)
  - [UpdateProxmoxCommand](docs/UpdateProxmoxCommand.md)
  - [UpdateQuotaCommand](docs/UpdateQuotaCommand.md)
  - [UpdateServerCommand](docs/UpdateServerCommand.md)

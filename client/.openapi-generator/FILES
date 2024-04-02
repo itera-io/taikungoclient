@@ -930,7 +930,6 @@ docs/UpdateOrganizationSubscriptionCommand.md
 docs/UpdatePaymentIdCommand.md
 docs/UpdateProjectAppCommand.md
 docs/UpdateProjectUserDto.md
-docs/UpdateProjectUserGroupDto.md
 docs/UpdateProxmoxCommand.md
 docs/UpdateQuotaCommand.md
 docs/UpdateServerCommand.md
@@ -1779,7 +1778,6 @@ model_update_organization_subscription_command.go
 model_update_payment_id_command.go
 model_update_project_app_command.go
 model_update_project_user_dto.go
-model_update_project_user_group_dto.go
 model_update_proxmox_command.go
 model_update_quota_command.go
 model_update_server_command.go
