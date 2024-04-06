@@ -914,6 +914,7 @@ docs/TransferTicketCommand.md
 docs/TryForFreeCommand.md
 docs/UnbindAppRepositoryCommand.md
 docs/UnbindFlavorFromProjectCommand.md
+docs/UnbindProjectFromProjectGroupCommand.md
 docs/UnshelveStandaloneVmCommand.md
 docs/UpdateAccessProfileDto.md
 docs/UpdateAlertingProfileCommand.md
@@ -1762,6 +1763,7 @@ model_transfer_ticket_command.go
 model_try_for_free_command.go
 model_unbind_app_repository_command.go
 model_unbind_flavor_from_project_command.go
+model_unbind_project_from_project_group_command.go
 model_unshelve_standalone_vm_command.go
 model_update_access_profile_dto.go
 model_update_alerting_profile_command.go

@@ -107,4 +107,15 @@ func Test_taikuncore_ProjectGroupsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectGroupsAPIService ProjectgroupsUnbindProject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ProjectGroupsAPI.ProjectgroupsUnbindProject(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

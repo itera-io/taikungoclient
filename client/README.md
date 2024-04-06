@@ -512,6 +512,7 @@ Class | Method | HTTP request | Description
 *ProjectGroupsAPI* | [**ProjectgroupsList**](docs/ProjectGroupsAPI.md#projectgroupslist) | **Get** /api/v1/projectgroups/list | Retrieve list of Project groups
 *ProjectGroupsAPI* | [**ProjectgroupsListByUserId**](docs/ProjectGroupsAPI.md#projectgroupslistbyuserid) | **Get** /api/v1/projectgroups/list/{userGroupId} | Retrieve list of Project groups by user group id for dropdown
 *ProjectGroupsAPI* | [**ProjectgroupsProjectList**](docs/ProjectGroupsAPI.md#projectgroupsprojectlist) | **Get** /api/v1/projectgroups/{projectGroupId}/projects | Retrieve list of projects by project group id
+*ProjectGroupsAPI* | [**ProjectgroupsUnbindProject**](docs/ProjectGroupsAPI.md#projectgroupsunbindproject) | **Post** /api/v1/projectgroups/unbind-project | Unbind Projects from group
 *ProjectInfracostsAPI* | [**ProjectinfracostsDelete**](docs/ProjectInfracostsAPI.md#projectinfracostsdelete) | **Delete** /api/v1/projectinfracosts/{projectId} | Delete the project infracost
 *ProjectInfracostsAPI* | [**ProjectinfracostsDetails**](docs/ProjectInfracostsAPI.md#projectinfracostsdetails) | **Get** /api/v1/projectinfracosts/{projectId} | Project Infracost details
 *ProjectInfracostsAPI* | [**ProjectinfracostsUpsert**](docs/ProjectInfracostsAPI.md#projectinfracostsupsert) | **Post** /api/v1/projectinfracosts/upsert/{projectId} | Upsert project infracost by ProjectId
@@ -1501,6 +1502,7 @@ Class | Method | HTTP request | Description
  - [TryForFreeCommand](docs/TryForFreeCommand.md)
  - [UnbindAppRepositoryCommand](docs/UnbindAppRepositoryCommand.md)
  - [UnbindFlavorFromProjectCommand](docs/UnbindFlavorFromProjectCommand.md)
+ - [UnbindProjectFromProjectGroupCommand](docs/UnbindProjectFromProjectGroupCommand.md)
  - [UnshelveStandaloneVmCommand](docs/UnshelveStandaloneVmCommand.md)
  - [UpdateAccessProfileDto](docs/UpdateAccessProfileDto.md)
  - [UpdateAlertingProfileCommand](docs/UpdateAlertingProfileCommand.md)
