@@ -22,6 +22,7 @@ var _ MappedNullable = &KubeConfigForUserList{}
 type KubeConfigForUserList struct {
 	Data []KubeConfigForUserDto `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
+	CanAdd *ButtonStatusDto `json:"canAdd,omitempty"`
 }
 
 // NewKubeConfigForUserList instantiates a new KubeConfigForUserList object
@@ -106,6 +107,38 @@ func (o *KubeConfigForUserList) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 
+// GetCanAdd returns the CanAdd field value if set, zero value otherwise.
+func (o *KubeConfigForUserList) GetCanAdd() ButtonStatusDto {
+	if o == nil || IsNil(o.CanAdd) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.CanAdd
+}
+
+// GetCanAddOk returns a tuple with the CanAdd field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KubeConfigForUserList) GetCanAddOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.CanAdd) {
+		return nil, false
+	}
+	return o.CanAdd, true
+}
+
+// HasCanAdd returns a boolean if a field has been set.
+func (o *KubeConfigForUserList) HasCanAdd() bool {
+	if o != nil && !IsNil(o.CanAdd) {
+		return true
+	}
+
+	return false
+}
+
+// SetCanAdd gets a reference to the given ButtonStatusDto and assigns it to the CanAdd field.
+func (o *KubeConfigForUserList) SetCanAdd(v ButtonStatusDto) {
+	o.CanAdd = &v
+}
+
 func (o KubeConfigForUserList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -121,6 +154,9 @@ func (o KubeConfigForUserList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
+	}
+	if !IsNil(o.CanAdd) {
+		toSerialize["canAdd"] = o.CanAdd
 	}
 	return toSerialize, nil
 }
