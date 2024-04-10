@@ -70,9 +70,6 @@ func (a *UsersAPIService) UsersChangePasswordExecute(r ApiUsersChangePasswordReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.changePasswordCommand == nil {
-		return nil, reportError("changePasswordCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1018,6 +1015,7 @@ type ApiUsersDropdownRequest struct {
 	organizationId *int32
 	search *string
 	projectId *int32
+	filterBy *string
 }
 
 func (r ApiUsersDropdownRequest) OrganizationId(organizationId int32) ApiUsersDropdownRequest {
@@ -1032,6 +1030,11 @@ func (r ApiUsersDropdownRequest) Search(search string) ApiUsersDropdownRequest {
 
 func (r ApiUsersDropdownRequest) ProjectId(projectId int32) ApiUsersDropdownRequest {
 	r.projectId = &projectId
+	return r
+}
+
+func (r ApiUsersDropdownRequest) FilterBy(filterBy string) ApiUsersDropdownRequest {
+	r.filterBy = &filterBy
 	return r
 }
 
@@ -1081,6 +1084,9 @@ func (a *UsersAPIService) UsersDropdownExecute(r ApiUsersDropdownRequest) ([]Com
 	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1545,6 +1551,7 @@ type ApiUsersListRequest struct {
 	search *string
 	searchId *string
 	id *string
+	filterBy *string
 }
 
 func (r ApiUsersListRequest) Limit(limit int32) ApiUsersListRequest {
@@ -1584,6 +1591,11 @@ func (r ApiUsersListRequest) SearchId(searchId string) ApiUsersListRequest {
 
 func (r ApiUsersListRequest) Id(id string) ApiUsersListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiUsersListRequest) FilterBy(filterBy string) ApiUsersListRequest {
+	r.filterBy = &filterBy
 	return r
 }
 
@@ -1648,6 +1660,9 @@ func (a *UsersAPIService) UsersListExecute(r ApiUsersListRequest) (*UsersList, *
 	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

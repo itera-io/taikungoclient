@@ -952,7 +952,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AdminUsersUpdatePasswordCommand'
-        required: true
       responses:
         "400":
           content:
@@ -5622,8 +5621,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-04-10T00:02:40.7866283Z
-                  createdAt: 2024-04-10T00:02:40.7866283Z
+                  lastValidated: 2024-04-10T13:18:26.433466Z
+                  createdAt: 2024-04-10T13:18:26.433466Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5728,14 +5727,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-04-10T00:02:40.7866283Z
+                    lastBackup: 2024-04-10T13:18:26.433466Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-04-10T00:02:40.7866283Z
+                  createdAt: 2024-04-10T13:18:26.433466Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-04-10T00:02:40.7866283Z
+                  lastBackup: 2024-04-10T13:18:26.433466Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5840,8 +5839,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-04-10T00:02:40.7866283Z
-                  expiration: 2024-04-10T00:02:40.7866283Z
+                  createdAt: 2024-04-10T13:18:26.433466Z
+                  expiration: 2024-04-10T13:18:26.433466Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5945,7 +5944,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-04-10T00:02:40.7866283Z
+                  createdAt: 2024-04-10T13:18:26.433466Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6055,9 +6054,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-04-10T00:02:40.7866283+00:00
-                  startTimeStamp: 2024-04-10T00:02:40.7866283+00:00
-                  createdAt: 2024-04-10T00:02:40.7866283Z
+                  completionDateTime: 2024-04-10T13:18:26.433466+00:00
+                  startTimeStamp: 2024-04-10T13:18:26.433466+00:00
+                  createdAt: 2024-04-10T13:18:26.433466Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -24909,21 +24908,16 @@ paths:
           format: int32
           type: integer
         style: simple
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+              - id: 1
+                name: taikun
               schema:
                 items:
-                  $ref: '#/components/schemas/ProjectListForProjectGroupDto'
+                  $ref: '#/components/schemas/CommonDropdownDto'
                 type: array
           description: OK
         "400":
@@ -26964,14 +26958,6 @@ paths:
         required: false
         schema:
           type: boolean
-        style: form
-      - explode: true
-        in: query
-        name: ProjectGroupId
-        required: false
-        schema:
-          format: int32
-          type: integer
         style: form
       responses:
         "200":
@@ -35565,7 +35551,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ChangePasswordCommand'
-        required: true
       responses:
         "400":
           content:
@@ -36103,6 +36088,13 @@ paths:
           format: int32
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: FilterBy
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -36247,6 +36239,13 @@ paths:
       - explode: true
         in: query
         name: Id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: FilterBy
         required: false
         schema:
           type: string
@@ -56491,22 +56490,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    ProjectListForProjectGroupDto:
-      additionalProperties: false
-      example:
-        isSelected: true
-        projectName: projectName
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        projectName:
-          nullable: true
-          type: string
-        isSelected:
-          type: boolean
       type: object
     ProjectLockManagerCommand:
       additionalProperties: false

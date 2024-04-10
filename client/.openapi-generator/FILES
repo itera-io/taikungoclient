@@ -704,7 +704,6 @@ docs/ProjectListDetailDto.md
 docs/ProjectListDto.md
 docs/ProjectListForAlert.md
 docs/ProjectListForPoller.md
-docs/ProjectListForProjectGroupDto.md
 docs/ProjectLockManagerCommand.md
 docs/ProjectMaintenanceModeCommand.md
 docs/ProjectMonitoringAlertsDto.md
@@ -1576,7 +1575,6 @@ model_project_list_detail_dto.go
 model_project_list_dto.go
 model_project_list_for_alert.go
 model_project_list_for_poller.go
-model_project_list_for_project_group_dto.go
 model_project_lock_manager_command.go
 model_project_maintenance_mode_command.go
 model_project_monitoring_alerts_dto.go

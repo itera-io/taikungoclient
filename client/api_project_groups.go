@@ -1096,15 +1096,9 @@ type ApiProjectgroupsProjectListRequest struct {
 	ctx context.Context
 	ApiService *ProjectGroupsAPIService
 	projectGroupId int32
-	organizationId *int32
 }
 
-func (r ApiProjectgroupsProjectListRequest) OrganizationId(organizationId int32) ApiProjectgroupsProjectListRequest {
-	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiProjectgroupsProjectListRequest) Execute() ([]ProjectListForProjectGroupDto, *http.Response, error) {
+func (r ApiProjectgroupsProjectListRequest) Execute() ([]CommonDropdownDto, *http.Response, error) {
 	return r.ApiService.ProjectgroupsProjectListExecute(r)
 }
 
@@ -1124,13 +1118,13 @@ func (a *ProjectGroupsAPIService) ProjectgroupsProjectList(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return []ProjectListForProjectGroupDto
-func (a *ProjectGroupsAPIService) ProjectgroupsProjectListExecute(r ApiProjectgroupsProjectListRequest) ([]ProjectListForProjectGroupDto, *http.Response, error) {
+//  @return []CommonDropdownDto
+func (a *ProjectGroupsAPIService) ProjectgroupsProjectListExecute(r ApiProjectgroupsProjectListRequest) ([]CommonDropdownDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ProjectListForProjectGroupDto
+		localVarReturnValue  []CommonDropdownDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectGroupsAPIService.ProjectgroupsProjectList")
@@ -1144,11 +1138,7 @@ func (a *ProjectGroupsAPIService) ProjectgroupsProjectListExecute(r ApiProjectgr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.organizationId == nil {
-		return localVarReturnValue, nil, reportError("organizationId is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

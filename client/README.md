@@ -1315,7 +1315,6 @@ Class | Method | HTTP request | Description
  - [ProjectListDto](docs/ProjectListDto.md)
  - [ProjectListForAlert](docs/ProjectListForAlert.md)
  - [ProjectListForPoller](docs/ProjectListForPoller.md)
- - [ProjectListForProjectGroupDto](docs/ProjectListForProjectGroupDto.md)
  - [ProjectLockManagerCommand](docs/ProjectLockManagerCommand.md)
  - [ProjectMaintenanceModeCommand](docs/ProjectMaintenanceModeCommand.md)
  - [ProjectMonitoringAlertsDto](docs/ProjectMonitoringAlertsDto.md)
