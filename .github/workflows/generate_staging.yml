@@ -15,7 +15,7 @@ jobs:
     uses: itera-io/taikungoclient/.github/workflows/generate.yml@staging
     with:
       branch: staging
-      force: ${{ inputs.force == 'true' }}
+      force: ${{ inputs.force }}
     secrets:
       url: ${{ secrets.SWAGGER_STAGING_URL }}
       showback_url: ${{ secrets.SHOWBACK_SWAGGER_STAGING_URL }}
