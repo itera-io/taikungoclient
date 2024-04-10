@@ -33,6 +33,7 @@ type CredentialsForProjectList struct {
 	Proxmox *ProxmoxCredentialsForProjectDto `json:"proxmox,omitempty"`
 	Vsphere *VsphereCredentialsForProjectDto `json:"vsphere,omitempty"`
 	Openshift *OpenshiftCredentialForProjectDto `json:"openshift,omitempty"`
+	Zadara *ZadaraCredentialsForProjectDto `json:"zadara,omitempty"`
 }
 
 // NewCredentialsForProjectList instantiates a new CredentialsForProjectList object
@@ -478,6 +479,38 @@ func (o *CredentialsForProjectList) SetOpenshift(v OpenshiftCredentialForProject
 	o.Openshift = &v
 }
 
+// GetZadara returns the Zadara field value if set, zero value otherwise.
+func (o *CredentialsForProjectList) GetZadara() ZadaraCredentialsForProjectDto {
+	if o == nil || IsNil(o.Zadara) {
+		var ret ZadaraCredentialsForProjectDto
+		return ret
+	}
+	return *o.Zadara
+}
+
+// GetZadaraOk returns a tuple with the Zadara field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialsForProjectList) GetZadaraOk() (*ZadaraCredentialsForProjectDto, bool) {
+	if o == nil || IsNil(o.Zadara) {
+		return nil, false
+	}
+	return o.Zadara, true
+}
+
+// HasZadara returns a boolean if a field has been set.
+func (o *CredentialsForProjectList) HasZadara() bool {
+	if o != nil && !IsNil(o.Zadara) {
+		return true
+	}
+
+	return false
+}
+
+// SetZadara gets a reference to the given ZadaraCredentialsForProjectDto and assigns it to the Zadara field.
+func (o *CredentialsForProjectList) SetZadara(v ZadaraCredentialsForProjectDto) {
+	o.Zadara = &v
+}
+
 func (o CredentialsForProjectList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -526,6 +559,9 @@ func (o CredentialsForProjectList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Openshift) {
 		toSerialize["openshift"] = o.Openshift
+	}
+	if !IsNil(o.Zadara) {
+		toSerialize["zadara"] = o.Zadara
 	}
 	return toSerialize, nil
 }

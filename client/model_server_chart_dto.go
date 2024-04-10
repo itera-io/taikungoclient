@@ -27,6 +27,7 @@ type ServerChartDto struct {
 	Tanzu []ServerCommonRecordDto `json:"tanzu,omitempty"`
 	Proxmox []ServerCommonRecordDto `json:"proxmox,omitempty"`
 	Vsphere []ServerCommonRecordDto `json:"vsphere,omitempty"`
+	Zadara []ServerCommonRecordDto `json:"zadara,omitempty"`
 	Openshift []ServerCommonRecordDto `json:"openshift,omitempty"`
 	Failed []ServerCommonRecordDto `json:"failed,omitempty"`
 	Succeeded []ServerCommonRecordDto `json:"succeeded,omitempty"`
@@ -50,6 +51,7 @@ type ServerChartDto struct {
 	TotalOpenshiftCount *int32 `json:"totalOpenshiftCount,omitempty"`
 	TotalProxmoxCount *int32 `json:"totalProxmoxCount,omitempty"`
 	TotalVsphereCount *int32 `json:"totalVsphereCount,omitempty"`
+	TotalZadaraCount *int32 `json:"totalZadaraCount,omitempty"`
 	UsedResources []UserResourceChartDto `json:"usedResources,omitempty"`
 }
 
@@ -299,6 +301,39 @@ func (o *ServerChartDto) HasVsphere() bool {
 // SetVsphere gets a reference to the given []ServerCommonRecordDto and assigns it to the Vsphere field.
 func (o *ServerChartDto) SetVsphere(v []ServerCommonRecordDto) {
 	o.Vsphere = v
+}
+
+// GetZadara returns the Zadara field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerChartDto) GetZadara() []ServerCommonRecordDto {
+	if o == nil {
+		var ret []ServerCommonRecordDto
+		return ret
+	}
+	return o.Zadara
+}
+
+// GetZadaraOk returns a tuple with the Zadara field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerChartDto) GetZadaraOk() ([]ServerCommonRecordDto, bool) {
+	if o == nil || IsNil(o.Zadara) {
+		return nil, false
+	}
+	return o.Zadara, true
+}
+
+// HasZadara returns a boolean if a field has been set.
+func (o *ServerChartDto) HasZadara() bool {
+	if o != nil && !IsNil(o.Zadara) {
+		return true
+	}
+
+	return false
+}
+
+// SetZadara gets a reference to the given []ServerCommonRecordDto and assigns it to the Zadara field.
+func (o *ServerChartDto) SetZadara(v []ServerCommonRecordDto) {
+	o.Zadara = v
 }
 
 // GetOpenshift returns the Openshift field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1044,6 +1079,38 @@ func (o *ServerChartDto) SetTotalVsphereCount(v int32) {
 	o.TotalVsphereCount = &v
 }
 
+// GetTotalZadaraCount returns the TotalZadaraCount field value if set, zero value otherwise.
+func (o *ServerChartDto) GetTotalZadaraCount() int32 {
+	if o == nil || IsNil(o.TotalZadaraCount) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalZadaraCount
+}
+
+// GetTotalZadaraCountOk returns a tuple with the TotalZadaraCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerChartDto) GetTotalZadaraCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalZadaraCount) {
+		return nil, false
+	}
+	return o.TotalZadaraCount, true
+}
+
+// HasTotalZadaraCount returns a boolean if a field has been set.
+func (o *ServerChartDto) HasTotalZadaraCount() bool {
+	if o != nil && !IsNil(o.TotalZadaraCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalZadaraCount gets a reference to the given int32 and assigns it to the TotalZadaraCount field.
+func (o *ServerChartDto) SetTotalZadaraCount(v int32) {
+	o.TotalZadaraCount = &v
+}
+
 // GetUsedResources returns the UsedResources field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServerChartDto) GetUsedResources() []UserResourceChartDto {
 	if o == nil {
@@ -1107,6 +1174,9 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Vsphere != nil {
 		toSerialize["vsphere"] = o.Vsphere
+	}
+	if o.Zadara != nil {
+		toSerialize["zadara"] = o.Zadara
 	}
 	if o.Openshift != nil {
 		toSerialize["openshift"] = o.Openshift
@@ -1176,6 +1246,9 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalVsphereCount) {
 		toSerialize["totalVsphereCount"] = o.TotalVsphereCount
+	}
+	if !IsNil(o.TotalZadaraCount) {
+		toSerialize["totalZadaraCount"] = o.TotalZadaraCount
 	}
 	if o.UsedResources != nil {
 		toSerialize["usedResources"] = o.UsedResources

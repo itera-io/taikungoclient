@@ -70,9 +70,6 @@ func (a *OpenshiftAPIService) OpenshiftCreateExecute(r ApiOpenshiftCreateRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openshiftCreateCommand == nil {
-		return nil, reportError("openshiftCreateCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -442,7 +439,7 @@ func (r ApiOpenshiftPullSecretRequest) Execute() (*http.Response, error) {
 }
 
 /*
-OpenshiftPullSecret Method for OpenshiftPullSecret
+OpenshiftPullSecret Validate openshift pull secret
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiOpenshiftPullSecretRequest
@@ -617,7 +614,7 @@ func (r ApiOpenshiftStorageClassRequest) Execute() ([]string, *http.Response, er
 }
 
 /*
-OpenshiftStorageClass Method for OpenshiftStorageClass
+OpenshiftStorageClass Get openshift storage class list
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiOpenshiftStorageClassRequest
@@ -803,7 +800,7 @@ func (r ApiOpenshiftValidateRequest) Execute() (*http.Response, error) {
 }
 
 /*
-OpenshiftValidate Method for OpenshiftValidate
+OpenshiftValidate Validate openshift kube config file
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiOpenshiftValidateRequest

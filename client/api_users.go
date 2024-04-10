@@ -235,9 +235,6 @@ func (a *UsersAPIService) UsersConfirmEmailExecute(r ApiUsersConfirmEmailRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.confirmEmailCommand == nil {
-		return nil, reportError("confirmEmailCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1774,54 +1771,54 @@ func (a *UsersAPIService) UsersListExecute(r ApiUsersListRequest) (*UsersList, *
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUsersToggleDemoModeRequest struct {
+type ApiUsersToggle2faModeRequest struct {
 	ctx context.Context
 	ApiService *UsersAPIService
-	toggleDemoModeCommand *ToggleDemoModeCommand
+	toggleTwoFactorAuthenticationCommand *ToggleTwoFactorAuthenticationCommand
 }
 
-func (r ApiUsersToggleDemoModeRequest) ToggleDemoModeCommand(toggleDemoModeCommand ToggleDemoModeCommand) ApiUsersToggleDemoModeRequest {
-	r.toggleDemoModeCommand = &toggleDemoModeCommand
+func (r ApiUsersToggle2faModeRequest) ToggleTwoFactorAuthenticationCommand(toggleTwoFactorAuthenticationCommand ToggleTwoFactorAuthenticationCommand) ApiUsersToggle2faModeRequest {
+	r.toggleTwoFactorAuthenticationCommand = &toggleTwoFactorAuthenticationCommand
 	return r
 }
 
-func (r ApiUsersToggleDemoModeRequest) Execute() (*http.Response, error) {
-	return r.ApiService.UsersToggleDemoModeExecute(r)
+func (r ApiUsersToggle2faModeRequest) Execute() (*http.Response, error) {
+	return r.ApiService.UsersToggle2faModeExecute(r)
 }
 
 /*
-UsersToggleDemoMode Toggle demo mode
+UsersToggle2faMode Toggle 2FA mode
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUsersToggleDemoModeRequest
+ @return ApiUsersToggle2faModeRequest
 */
-func (a *UsersAPIService) UsersToggleDemoMode(ctx context.Context) ApiUsersToggleDemoModeRequest {
-	return ApiUsersToggleDemoModeRequest{
+func (a *UsersAPIService) UsersToggle2faMode(ctx context.Context) ApiUsersToggle2faModeRequest {
+	return ApiUsersToggle2faModeRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *UsersAPIService) UsersToggleDemoModeExecute(r ApiUsersToggleDemoModeRequest) (*http.Response, error) {
+func (a *UsersAPIService) UsersToggle2faModeExecute(r ApiUsersToggle2faModeRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersToggleDemoMode")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UsersAPIService.UsersToggle2faMode")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/users/toggle-demo-mode"
+	localVarPath := localBasePath + "/api/v1/users/toggle-2fa"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.toggleDemoModeCommand == nil {
-		return nil, reportError("toggleDemoModeCommand is required and must be specified")
+	if r.toggleTwoFactorAuthenticationCommand == nil {
+		return nil, reportError("toggleTwoFactorAuthenticationCommand is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -1842,7 +1839,7 @@ func (a *UsersAPIService) UsersToggleDemoModeExecute(r ApiUsersToggleDemoModeReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.toggleDemoModeCommand
+	localVarPostBody = r.toggleTwoFactorAuthenticationCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

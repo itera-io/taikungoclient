@@ -21,6 +21,7 @@ var _ MappedNullable = &AvailablePackagesDto{}
 // AvailablePackagesDto struct for AvailablePackagesDto
 type AvailablePackagesDto struct {
 	PackageId NullableString `json:"packageId,omitempty"`
+	CatalogId *int32 `json:"catalogId,omitempty"`
 	CatalogAppId NullableInt32 `json:"catalogAppId,omitempty"`
 	InstalledInstanceCount NullableInt32 `json:"installedInstanceCount,omitempty"`
 	Name NullableString `json:"name,omitempty"`
@@ -96,6 +97,38 @@ func (o *AvailablePackagesDto) SetPackageIdNil() {
 // UnsetPackageId ensures that no value is present for PackageId, not even an explicit nil
 func (o *AvailablePackagesDto) UnsetPackageId() {
 	o.PackageId.Unset()
+}
+
+// GetCatalogId returns the CatalogId field value if set, zero value otherwise.
+func (o *AvailablePackagesDto) GetCatalogId() int32 {
+	if o == nil || IsNil(o.CatalogId) {
+		var ret int32
+		return ret
+	}
+	return *o.CatalogId
+}
+
+// GetCatalogIdOk returns a tuple with the CatalogId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AvailablePackagesDto) GetCatalogIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.CatalogId) {
+		return nil, false
+	}
+	return o.CatalogId, true
+}
+
+// HasCatalogId returns a boolean if a field has been set.
+func (o *AvailablePackagesDto) HasCatalogId() bool {
+	if o != nil && !IsNil(o.CatalogId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCatalogId gets a reference to the given int32 and assigns it to the CatalogId field.
+func (o *AvailablePackagesDto) SetCatalogId(v int32) {
+	o.CatalogId = &v
 }
 
 // GetCatalogAppId returns the CatalogAppId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -722,6 +755,9 @@ func (o AvailablePackagesDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.PackageId.IsSet() {
 		toSerialize["packageId"] = o.PackageId.Get()
+	}
+	if !IsNil(o.CatalogId) {
+		toSerialize["catalogId"] = o.CatalogId
 	}
 	if o.CatalogAppId.IsSet() {
 		toSerialize["catalogAppId"] = o.CatalogAppId.Get()

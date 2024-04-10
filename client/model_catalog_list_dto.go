@@ -24,9 +24,10 @@ type CatalogListDto struct {
 	Name NullableString `json:"name,omitempty"`
 	Description NullableString `json:"description,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	PackageIds []string `json:"packageIds,omitempty"`
-	BoundProjects []CommonDropdownDto `json:"boundProjects,omitempty"`
+	BoundProjects []ProjectCatalogDto `json:"boundProjects,omitempty"`
 	BoundApplications []AvailablePackagesDto `json:"boundApplications,omitempty"`
 }
 
@@ -195,6 +196,38 @@ func (o *CatalogListDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *CatalogListDto) GetIsDefault() bool {
+	if o == nil || IsNil(o.IsDefault) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogListDto) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDefault) {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *CatalogListDto) HasIsDefault() bool {
+	if o != nil && !IsNil(o.IsDefault) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *CatalogListDto) SetIsDefault(v bool) {
+	o.IsDefault = &v
+}
+
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
 func (o *CatalogListDto) GetOrganizationId() int32 {
 	if o == nil || IsNil(o.OrganizationId) {
@@ -261,9 +294,9 @@ func (o *CatalogListDto) SetPackageIds(v []string) {
 }
 
 // GetBoundProjects returns the BoundProjects field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogListDto) GetBoundProjects() []CommonDropdownDto {
+func (o *CatalogListDto) GetBoundProjects() []ProjectCatalogDto {
 	if o == nil {
-		var ret []CommonDropdownDto
+		var ret []ProjectCatalogDto
 		return ret
 	}
 	return o.BoundProjects
@@ -272,7 +305,7 @@ func (o *CatalogListDto) GetBoundProjects() []CommonDropdownDto {
 // GetBoundProjectsOk returns a tuple with the BoundProjects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogListDto) GetBoundProjectsOk() ([]CommonDropdownDto, bool) {
+func (o *CatalogListDto) GetBoundProjectsOk() ([]ProjectCatalogDto, bool) {
 	if o == nil || IsNil(o.BoundProjects) {
 		return nil, false
 	}
@@ -288,8 +321,8 @@ func (o *CatalogListDto) HasBoundProjects() bool {
 	return false
 }
 
-// SetBoundProjects gets a reference to the given []CommonDropdownDto and assigns it to the BoundProjects field.
-func (o *CatalogListDto) SetBoundProjects(v []CommonDropdownDto) {
+// SetBoundProjects gets a reference to the given []ProjectCatalogDto and assigns it to the BoundProjects field.
+func (o *CatalogListDto) SetBoundProjects(v []ProjectCatalogDto) {
 	o.BoundProjects = v
 }
 
@@ -347,6 +380,9 @@ func (o CatalogListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
+	}
+	if !IsNil(o.IsDefault) {
+		toSerialize["isDefault"] = o.IsDefault
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId

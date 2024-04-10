@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -366,8 +367,8 @@ type ApiKubernetesAlertListRequest struct {
 	sortDirection *string
 	search *string
 	type_ *string
-	startDate *string
-	endDate *string
+	startDate *time.Time
+	endDate *time.Time
 }
 
 func (r ApiKubernetesAlertListRequest) Limit(limit int32) ApiKubernetesAlertListRequest {
@@ -400,12 +401,12 @@ func (r ApiKubernetesAlertListRequest) Type_(type_ string) ApiKubernetesAlertLis
 	return r
 }
 
-func (r ApiKubernetesAlertListRequest) StartDate(startDate string) ApiKubernetesAlertListRequest {
+func (r ApiKubernetesAlertListRequest) StartDate(startDate time.Time) ApiKubernetesAlertListRequest {
 	r.startDate = &startDate
 	return r
 }
 
-func (r ApiKubernetesAlertListRequest) EndDate(endDate string) ApiKubernetesAlertListRequest {
+func (r ApiKubernetesAlertListRequest) EndDate(endDate time.Time) ApiKubernetesAlertListRequest {
 	r.endDate = &endDate
 	return r
 }
@@ -5902,7 +5903,7 @@ func (r ApiKubernetesInteractiveShellRequest) InteractiveShellSendCommand(intera
 	return r
 }
 
-func (r ApiKubernetesInteractiveShellRequest) Execute() (string, *http.Response, error) {
+func (r ApiKubernetesInteractiveShellRequest) Execute() (*KubernetesInteractiveShellDto, *http.Response, error) {
 	return r.ApiService.KubernetesInteractiveShellExecute(r)
 }
 
@@ -5920,13 +5921,13 @@ func (a *KubernetesAPIService) KubernetesInteractiveShell(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return string
-func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetesInteractiveShellRequest) (string, *http.Response, error) {
+//  @return KubernetesInteractiveShellDto
+func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetesInteractiveShellRequest) (*KubernetesInteractiveShellDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  string
+		localVarReturnValue  *KubernetesInteractiveShellDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesInteractiveShell")
@@ -5953,7 +5954,7 @@ func (a *KubernetesAPIService) KubernetesInteractiveShellExecute(r ApiKubernetes
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -6638,6 +6639,12 @@ type ApiKubernetesNamespaceListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	installation *bool
+}
+
+func (r ApiKubernetesNamespaceListRequest) Installation(installation bool) ApiKubernetesNamespaceListRequest {
+	r.installation = &installation
+	return r
 }
 
 func (r ApiKubernetesNamespaceListRequest) Execute() ([]string, *http.Response, error) {
@@ -6681,6 +6688,9 @@ func (a *KubernetesAPIService) KubernetesNamespaceListExecute(r ApiKubernetesNam
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.installation != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Installation", r.installation, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -9512,7 +9522,7 @@ func (r ApiKubernetesPodLogsRequest) KubernetesPodLogsCommand(kubernetesPodLogsC
 	return r
 }
 
-func (r ApiKubernetesPodLogsRequest) Execute() (interface{}, *http.Response, error) {
+func (r ApiKubernetesPodLogsRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.KubernetesPodLogsExecute(r)
 }
 
@@ -9530,13 +9540,13 @@ func (a *KubernetesAPIService) KubernetesPodLogs(ctx context.Context) ApiKuberne
 }
 
 // Execute executes the request
-//  @return interface{}
-func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRequest) (interface{}, *http.Response, error) {
+//  @return string
+func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  interface{}
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesPodLogs")
@@ -9563,7 +9573,7 @@ func (a *KubernetesAPIService) KubernetesPodLogsExecute(r ApiKubernetesPodLogsRe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
+	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

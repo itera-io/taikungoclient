@@ -23,6 +23,7 @@ type CatalogDropdownDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	PackageIds []string `json:"packageIds,omitempty"`
+	IsDefault *bool `json:"isDefault,omitempty"`
 }
 
 // NewCatalogDropdownDto instantiates a new CatalogDropdownDto object
@@ -149,6 +150,38 @@ func (o *CatalogDropdownDto) SetPackageIds(v []string) {
 	o.PackageIds = v
 }
 
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *CatalogDropdownDto) GetIsDefault() bool {
+	if o == nil || IsNil(o.IsDefault) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogDropdownDto) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDefault) {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *CatalogDropdownDto) HasIsDefault() bool {
+	if o != nil && !IsNil(o.IsDefault) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *CatalogDropdownDto) SetIsDefault(v bool) {
+	o.IsDefault = &v
+}
+
 func (o CatalogDropdownDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -167,6 +200,9 @@ func (o CatalogDropdownDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.PackageIds != nil {
 		toSerialize["packageIds"] = o.PackageIds
+	}
+	if !IsNil(o.IsDefault) {
+		toSerialize["isDefault"] = o.IsDefault
 	}
 	return toSerialize, nil
 }

@@ -27,7 +27,8 @@ type ProjectAppDto struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Version NullableString `json:"version,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
-	Status NullableString `json:"status,omitempty"`
+	Status *EInstanceStatus `json:"status,omitempty"`
+	AutoSync *bool `json:"autoSync,omitempty"`
 }
 
 // NewProjectAppDto instantiates a new ProjectAppDto object
@@ -311,46 +312,68 @@ func (o *ProjectAppDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectAppDto) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
-		var ret string
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ProjectAppDto) GetStatus() EInstanceStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret EInstanceStatus
 		return ret
 	}
-	return *o.Status.Get()
+	return *o.Status
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectAppDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+func (o *ProjectAppDto) GetStatusOk() (*EInstanceStatus, bool) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return o.Status.Get(), o.Status.IsSet()
+	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ProjectAppDto) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
-func (o *ProjectAppDto) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *ProjectAppDto) SetStatusNil() {
-	o.Status.Set(nil)
+// SetStatus gets a reference to the given EInstanceStatus and assigns it to the Status field.
+func (o *ProjectAppDto) SetStatus(v EInstanceStatus) {
+	o.Status = &v
 }
 
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *ProjectAppDto) UnsetStatus() {
-	o.Status.Unset()
+// GetAutoSync returns the AutoSync field value if set, zero value otherwise.
+func (o *ProjectAppDto) GetAutoSync() bool {
+	if o == nil || IsNil(o.AutoSync) {
+		var ret bool
+		return ret
+	}
+	return *o.AutoSync
+}
+
+// GetAutoSyncOk returns a tuple with the AutoSync field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectAppDto) GetAutoSyncOk() (*bool, bool) {
+	if o == nil || IsNil(o.AutoSync) {
+		return nil, false
+	}
+	return o.AutoSync, true
+}
+
+// HasAutoSync returns a boolean if a field has been set.
+func (o *ProjectAppDto) HasAutoSync() bool {
+	if o != nil && !IsNil(o.AutoSync) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoSync gets a reference to the given bool and assigns it to the AutoSync field.
+func (o *ProjectAppDto) SetAutoSync(v bool) {
+	o.AutoSync = &v
 }
 
 func (o ProjectAppDto) MarshalJSON() ([]byte, error) {
@@ -384,8 +407,11 @@ func (o ProjectAppDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.AutoSync) {
+		toSerialize["autoSync"] = o.AutoSync
 	}
 	return toSerialize, nil
 }

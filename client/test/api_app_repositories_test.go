@@ -56,17 +56,6 @@ func Test_taikuncore_AppRepositoriesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AppRepositoriesAPIService RepositoryDisable", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.AppRepositoriesAPI.RepositoryDisable(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test AppRepositoriesAPIService RepositoryImport", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -74,6 +63,18 @@ func Test_taikuncore_AppRepositoriesAPIService(t *testing.T) {
 		httpRes, err := apiClient.AppRepositoriesAPI.RepositoryImport(context.Background()).Execute()
 
 		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AppRepositoriesAPIService RepositoryList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AppRepositoriesAPI.RepositoryList(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

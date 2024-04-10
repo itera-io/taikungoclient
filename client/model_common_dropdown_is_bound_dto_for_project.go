@@ -24,6 +24,12 @@ type CommonDropdownIsBoundDtoForProject struct {
 	Name NullableString `json:"name,omitempty"`
 	IsBound *bool `json:"isBound,omitempty"`
 	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
+	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
+	IsLocked *bool `json:"isLocked,omitempty"`
+	MaintenanceModeEnabled *bool `json:"maintenanceModeEnabled,omitempty"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
+	Status *ProjectStatus `json:"status,omitempty"`
+	Health *ProjectHealth `json:"health,omitempty"`
 }
 
 // NewCommonDropdownIsBoundDtoForProject instantiates a new CommonDropdownIsBoundDtoForProject object
@@ -181,6 +187,208 @@ func (o *CommonDropdownIsBoundDtoForProject) SetHasKubeConfigFile(v bool) {
 	o.HasKubeConfigFile = &v
 }
 
+// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CommonDropdownIsBoundDtoForProject) GetKubernetesVersion() string {
+	if o == nil || IsNil(o.KubernetesVersion.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.KubernetesVersion.Get()
+}
+
+// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CommonDropdownIsBoundDtoForProject) GetKubernetesVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.KubernetesVersion.Get(), o.KubernetesVersion.IsSet()
+}
+
+// HasKubernetesVersion returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasKubernetesVersion() bool {
+	if o != nil && o.KubernetesVersion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetKubernetesVersion gets a reference to the given NullableString and assigns it to the KubernetesVersion field.
+func (o *CommonDropdownIsBoundDtoForProject) SetKubernetesVersion(v string) {
+	o.KubernetesVersion.Set(&v)
+}
+// SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
+func (o *CommonDropdownIsBoundDtoForProject) SetKubernetesVersionNil() {
+	o.KubernetesVersion.Set(nil)
+}
+
+// UnsetKubernetesVersion ensures that no value is present for KubernetesVersion, not even an explicit nil
+func (o *CommonDropdownIsBoundDtoForProject) UnsetKubernetesVersion() {
+	o.KubernetesVersion.Unset()
+}
+
+// GetIsLocked returns the IsLocked field value if set, zero value otherwise.
+func (o *CommonDropdownIsBoundDtoForProject) GetIsLocked() bool {
+	if o == nil || IsNil(o.IsLocked) {
+		var ret bool
+		return ret
+	}
+	return *o.IsLocked
+}
+
+// GetIsLockedOk returns a tuple with the IsLocked field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonDropdownIsBoundDtoForProject) GetIsLockedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsLocked) {
+		return nil, false
+	}
+	return o.IsLocked, true
+}
+
+// HasIsLocked returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasIsLocked() bool {
+	if o != nil && !IsNil(o.IsLocked) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsLocked gets a reference to the given bool and assigns it to the IsLocked field.
+func (o *CommonDropdownIsBoundDtoForProject) SetIsLocked(v bool) {
+	o.IsLocked = &v
+}
+
+// GetMaintenanceModeEnabled returns the MaintenanceModeEnabled field value if set, zero value otherwise.
+func (o *CommonDropdownIsBoundDtoForProject) GetMaintenanceModeEnabled() bool {
+	if o == nil || IsNil(o.MaintenanceModeEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.MaintenanceModeEnabled
+}
+
+// GetMaintenanceModeEnabledOk returns a tuple with the MaintenanceModeEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonDropdownIsBoundDtoForProject) GetMaintenanceModeEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.MaintenanceModeEnabled) {
+		return nil, false
+	}
+	return o.MaintenanceModeEnabled, true
+}
+
+// HasMaintenanceModeEnabled returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasMaintenanceModeEnabled() bool {
+	if o != nil && !IsNil(o.MaintenanceModeEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaintenanceModeEnabled gets a reference to the given bool and assigns it to the MaintenanceModeEnabled field.
+func (o *CommonDropdownIsBoundDtoForProject) SetMaintenanceModeEnabled(v bool) {
+	o.MaintenanceModeEnabled = &v
+}
+
+// GetCloudType returns the CloudType field value if set, zero value otherwise.
+func (o *CommonDropdownIsBoundDtoForProject) GetCloudType() CloudType {
+	if o == nil || IsNil(o.CloudType) {
+		var ret CloudType
+		return ret
+	}
+	return *o.CloudType
+}
+
+// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonDropdownIsBoundDtoForProject) GetCloudTypeOk() (*CloudType, bool) {
+	if o == nil || IsNil(o.CloudType) {
+		return nil, false
+	}
+	return o.CloudType, true
+}
+
+// HasCloudType returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasCloudType() bool {
+	if o != nil && !IsNil(o.CloudType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
+func (o *CommonDropdownIsBoundDtoForProject) SetCloudType(v CloudType) {
+	o.CloudType = &v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *CommonDropdownIsBoundDtoForProject) GetStatus() ProjectStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret ProjectStatus
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonDropdownIsBoundDtoForProject) GetStatusOk() (*ProjectStatus, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given ProjectStatus and assigns it to the Status field.
+func (o *CommonDropdownIsBoundDtoForProject) SetStatus(v ProjectStatus) {
+	o.Status = &v
+}
+
+// GetHealth returns the Health field value if set, zero value otherwise.
+func (o *CommonDropdownIsBoundDtoForProject) GetHealth() ProjectHealth {
+	if o == nil || IsNil(o.Health) {
+		var ret ProjectHealth
+		return ret
+	}
+	return *o.Health
+}
+
+// GetHealthOk returns a tuple with the Health field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonDropdownIsBoundDtoForProject) GetHealthOk() (*ProjectHealth, bool) {
+	if o == nil || IsNil(o.Health) {
+		return nil, false
+	}
+	return o.Health, true
+}
+
+// HasHealth returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasHealth() bool {
+	if o != nil && !IsNil(o.Health) {
+		return true
+	}
+
+	return false
+}
+
+// SetHealth gets a reference to the given ProjectHealth and assigns it to the Health field.
+func (o *CommonDropdownIsBoundDtoForProject) SetHealth(v ProjectHealth) {
+	o.Health = &v
+}
+
 func (o CommonDropdownIsBoundDtoForProject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -202,6 +410,24 @@ func (o CommonDropdownIsBoundDtoForProject) ToMap() (map[string]interface{}, err
 	}
 	if !IsNil(o.HasKubeConfigFile) {
 		toSerialize["hasKubeConfigFile"] = o.HasKubeConfigFile
+	}
+	if o.KubernetesVersion.IsSet() {
+		toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
+	}
+	if !IsNil(o.IsLocked) {
+		toSerialize["isLocked"] = o.IsLocked
+	}
+	if !IsNil(o.MaintenanceModeEnabled) {
+		toSerialize["maintenanceModeEnabled"] = o.MaintenanceModeEnabled
+	}
+	if !IsNil(o.CloudType) {
+		toSerialize["cloudType"] = o.CloudType
+	}
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Health) {
+		toSerialize["health"] = o.Health
 	}
 	return toSerialize, nil
 }

@@ -22,7 +22,6 @@ var _ MappedNullable = &UserDetails{}
 type UserDetails struct {
 	Data *UserForListDto `json:"data,omitempty"`
 	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
-	DemoOrganization NullableInt32 `json:"demoOrganization,omitempty"`
 	TrialDays NullableInt32 `json:"trialDays,omitempty"`
 }
 
@@ -107,48 +106,6 @@ func (o *UserDetails) SetIsMaintenanceModeEnabled(v bool) {
 	o.IsMaintenanceModeEnabled = &v
 }
 
-// GetDemoOrganization returns the DemoOrganization field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *UserDetails) GetDemoOrganization() int32 {
-	if o == nil || IsNil(o.DemoOrganization.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.DemoOrganization.Get()
-}
-
-// GetDemoOrganizationOk returns a tuple with the DemoOrganization field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *UserDetails) GetDemoOrganizationOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.DemoOrganization.Get(), o.DemoOrganization.IsSet()
-}
-
-// HasDemoOrganization returns a boolean if a field has been set.
-func (o *UserDetails) HasDemoOrganization() bool {
-	if o != nil && o.DemoOrganization.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDemoOrganization gets a reference to the given NullableInt32 and assigns it to the DemoOrganization field.
-func (o *UserDetails) SetDemoOrganization(v int32) {
-	o.DemoOrganization.Set(&v)
-}
-// SetDemoOrganizationNil sets the value for DemoOrganization to be an explicit nil
-func (o *UserDetails) SetDemoOrganizationNil() {
-	o.DemoOrganization.Set(nil)
-}
-
-// UnsetDemoOrganization ensures that no value is present for DemoOrganization, not even an explicit nil
-func (o *UserDetails) UnsetDemoOrganization() {
-	o.DemoOrganization.Unset()
-}
-
 // GetTrialDays returns the TrialDays field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserDetails) GetTrialDays() int32 {
 	if o == nil || IsNil(o.TrialDays.Get()) {
@@ -206,9 +163,6 @@ func (o UserDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsMaintenanceModeEnabled) {
 		toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
-	}
-	if o.DemoOrganization.IsSet() {
-		toSerialize["demoOrganization"] = o.DemoOrganization.Get()
 	}
 	if o.TrialDays.IsSet() {
 		toSerialize["trialDays"] = o.TrialDays.Get()

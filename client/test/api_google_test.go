@@ -74,9 +74,7 @@ func Test_taikuncore_GoogleAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var region string
-
-		resp, httpRes, err := apiClient.GoogleAPI.GooglecloudZoneList(context.Background(), region).Execute()
+		resp, httpRes, err := apiClient.GoogleAPI.GooglecloudZoneList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

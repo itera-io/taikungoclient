@@ -17,6 +17,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"time"
 )
 
 
@@ -191,8 +192,8 @@ type ApiNotificationsExportCsvRequest struct {
 	isEmailEnabled *bool
 	sortBy *string
 	sortDirection *string
-	startDate *string
-	endDate *string
+	startDate *time.Time
+	endDate *time.Time
 	organizationId *int32
 	filterBy *string
 	projectId *int32
@@ -215,12 +216,12 @@ func (r ApiNotificationsExportCsvRequest) SortDirection(sortDirection string) Ap
 	return r
 }
 
-func (r ApiNotificationsExportCsvRequest) StartDate(startDate string) ApiNotificationsExportCsvRequest {
+func (r ApiNotificationsExportCsvRequest) StartDate(startDate time.Time) ApiNotificationsExportCsvRequest {
 	r.startDate = &startDate
 	return r
 }
 
-func (r ApiNotificationsExportCsvRequest) EndDate(endDate string) ApiNotificationsExportCsvRequest {
+func (r ApiNotificationsExportCsvRequest) EndDate(endDate time.Time) ApiNotificationsExportCsvRequest {
 	r.endDate = &endDate
 	return r
 }
@@ -448,8 +449,8 @@ type ApiNotificationsListRequest struct {
 	offset *int32
 	sortBy *string
 	sortDirection *string
-	startDate *string
-	endDate *string
+	startDate *time.Time
+	endDate *time.Time
 	organizationId *int32
 	filterBy *string
 	projectId *int32
@@ -478,12 +479,12 @@ func (r ApiNotificationsListRequest) SortDirection(sortDirection string) ApiNoti
 	return r
 }
 
-func (r ApiNotificationsListRequest) StartDate(startDate string) ApiNotificationsListRequest {
+func (r ApiNotificationsListRequest) StartDate(startDate time.Time) ApiNotificationsListRequest {
 	r.startDate = &startDate
 	return r
 }
 
-func (r ApiNotificationsListRequest) EndDate(endDate string) ApiNotificationsListRequest {
+func (r ApiNotificationsListRequest) EndDate(endDate time.Time) ApiNotificationsListRequest {
 	r.endDate = &endDate
 	return r
 }

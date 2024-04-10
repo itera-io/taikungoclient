@@ -25,6 +25,7 @@ type LoginCommand struct {
 	Mode NullableString `json:"mode,omitempty"`
 	AccessKey NullableString `json:"accessKey,omitempty"`
 	SecretKey NullableString `json:"secretKey,omitempty"`
+	Local *bool `json:"local,omitempty"`
 }
 
 // NewLoginCommand instantiates a new LoginCommand object
@@ -254,6 +255,38 @@ func (o *LoginCommand) UnsetSecretKey() {
 	o.SecretKey.Unset()
 }
 
+// GetLocal returns the Local field value if set, zero value otherwise.
+func (o *LoginCommand) GetLocal() bool {
+	if o == nil || IsNil(o.Local) {
+		var ret bool
+		return ret
+	}
+	return *o.Local
+}
+
+// GetLocalOk returns a tuple with the Local field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LoginCommand) GetLocalOk() (*bool, bool) {
+	if o == nil || IsNil(o.Local) {
+		return nil, false
+	}
+	return o.Local, true
+}
+
+// HasLocal returns a boolean if a field has been set.
+func (o *LoginCommand) HasLocal() bool {
+	if o != nil && !IsNil(o.Local) {
+		return true
+	}
+
+	return false
+}
+
+// SetLocal gets a reference to the given bool and assigns it to the Local field.
+func (o *LoginCommand) SetLocal(v bool) {
+	o.Local = &v
+}
+
 func (o LoginCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -278,6 +311,9 @@ func (o LoginCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.SecretKey.IsSet() {
 		toSerialize["secretKey"] = o.SecretKey.Get()
+	}
+	if !IsNil(o.Local) {
+		toSerialize["local"] = o.Local
 	}
 	return toSerialize, nil
 }

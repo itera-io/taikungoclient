@@ -82,12 +82,14 @@ type ProjectDetailsForServersDto struct {
 	Flavor NullableString `json:"flavor,omitempty"`
 	SpotEnabled NullableBool `json:"spotEnabled,omitempty"`
 	IsAutoscalingEnabled *bool `json:"isAutoscalingEnabled,omitempty"`
+	IsAutoscalingSpotEnabled *bool `json:"isAutoscalingSpotEnabled,omitempty"`
 	HasNfsServer *bool `json:"hasNfsServer,omitempty"`
 	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
 	AvailabilityZones []string `json:"availabilityZones,omitempty"`
 	Hypervisors []string `json:"hypervisors,omitempty"`
 	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
 	IsDrsEnabled *bool `json:"isDrsEnabled,omitempty"`
+	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice,omitempty"`
 }
 
 // NewProjectDetailsForServersDto instantiates a new ProjectDetailsForServersDto object
@@ -2321,6 +2323,38 @@ func (o *ProjectDetailsForServersDto) SetIsAutoscalingEnabled(v bool) {
 	o.IsAutoscalingEnabled = &v
 }
 
+// GetIsAutoscalingSpotEnabled returns the IsAutoscalingSpotEnabled field value if set, zero value otherwise.
+func (o *ProjectDetailsForServersDto) GetIsAutoscalingSpotEnabled() bool {
+	if o == nil || IsNil(o.IsAutoscalingSpotEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsAutoscalingSpotEnabled
+}
+
+// GetIsAutoscalingSpotEnabledOk returns a tuple with the IsAutoscalingSpotEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDetailsForServersDto) GetIsAutoscalingSpotEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsAutoscalingSpotEnabled) {
+		return nil, false
+	}
+	return o.IsAutoscalingSpotEnabled, true
+}
+
+// HasIsAutoscalingSpotEnabled returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasIsAutoscalingSpotEnabled() bool {
+	if o != nil && !IsNil(o.IsAutoscalingSpotEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsAutoscalingSpotEnabled gets a reference to the given bool and assigns it to the IsAutoscalingSpotEnabled field.
+func (o *ProjectDetailsForServersDto) SetIsAutoscalingSpotEnabled(v bool) {
+	o.IsAutoscalingSpotEnabled = &v
+}
+
 // GetHasNfsServer returns the HasNfsServer field value if set, zero value otherwise.
 func (o *ProjectDetailsForServersDto) GetHasNfsServer() bool {
 	if o == nil || IsNil(o.HasNfsServer) {
@@ -2513,6 +2547,48 @@ func (o *ProjectDetailsForServersDto) HasIsDrsEnabled() bool {
 // SetIsDrsEnabled gets a reference to the given bool and assigns it to the IsDrsEnabled field.
 func (o *ProjectDetailsForServersDto) SetIsDrsEnabled(v bool) {
 	o.IsDrsEnabled = &v
+}
+
+// GetMaxSpotPrice returns the MaxSpotPrice field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectDetailsForServersDto) GetMaxSpotPrice() float64 {
+	if o == nil || IsNil(o.MaxSpotPrice.Get()) {
+		var ret float64
+		return ret
+	}
+	return *o.MaxSpotPrice.Get()
+}
+
+// GetMaxSpotPriceOk returns a tuple with the MaxSpotPrice field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectDetailsForServersDto) GetMaxSpotPriceOk() (*float64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MaxSpotPrice.Get(), o.MaxSpotPrice.IsSet()
+}
+
+// HasMaxSpotPrice returns a boolean if a field has been set.
+func (o *ProjectDetailsForServersDto) HasMaxSpotPrice() bool {
+	if o != nil && o.MaxSpotPrice.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxSpotPrice gets a reference to the given NullableFloat64 and assigns it to the MaxSpotPrice field.
+func (o *ProjectDetailsForServersDto) SetMaxSpotPrice(v float64) {
+	o.MaxSpotPrice.Set(&v)
+}
+// SetMaxSpotPriceNil sets the value for MaxSpotPrice to be an explicit nil
+func (o *ProjectDetailsForServersDto) SetMaxSpotPriceNil() {
+	o.MaxSpotPrice.Set(nil)
+}
+
+// UnsetMaxSpotPrice ensures that no value is present for MaxSpotPrice, not even an explicit nil
+func (o *ProjectDetailsForServersDto) UnsetMaxSpotPrice() {
+	o.MaxSpotPrice.Unset()
 }
 
 func (o ProjectDetailsForServersDto) MarshalJSON() ([]byte, error) {
@@ -2711,6 +2787,9 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsAutoscalingEnabled) {
 		toSerialize["isAutoscalingEnabled"] = o.IsAutoscalingEnabled
 	}
+	if !IsNil(o.IsAutoscalingSpotEnabled) {
+		toSerialize["isAutoscalingSpotEnabled"] = o.IsAutoscalingSpotEnabled
+	}
 	if !IsNil(o.HasNfsServer) {
 		toSerialize["hasNfsServer"] = o.HasNfsServer
 	}
@@ -2728,6 +2807,9 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsDrsEnabled) {
 		toSerialize["isDrsEnabled"] = o.IsDrsEnabled
+	}
+	if o.MaxSpotPrice.IsSet() {
+		toSerialize["maxSpotPrice"] = o.MaxSpotPrice.Get()
 	}
 	return toSerialize, nil
 }

@@ -252,4 +252,32 @@ func Test_taikuncore_ImagesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ImagesAPIService ImagesZadaraImagesList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var cloudId int32
+
+		resp, httpRes, err := apiClient.ImagesAPI.ImagesZadaraImagesList(context.Background(), cloudId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ImagesAPIService ImagesZadaraPersonalImages", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var cloudId int32
+
+		resp, httpRes, err := apiClient.ImagesAPI.ImagesZadaraPersonalImages(context.Background(), cloudId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

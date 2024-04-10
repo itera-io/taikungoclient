@@ -20,7 +20,7 @@ var _ MappedNullable = &ExceededQuotaList{}
 
 // ExceededQuotaList struct for ExceededQuotaList
 type ExceededQuotaList struct {
-	Data interface{} `json:"data,omitempty"`
+	Data []ExceededQuotaDto `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
@@ -42,9 +42,9 @@ func NewExceededQuotaListWithDefaults() *ExceededQuotaList {
 }
 
 // GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ExceededQuotaList) GetData() interface{} {
+func (o *ExceededQuotaList) GetData() []ExceededQuotaDto {
 	if o == nil {
-		var ret interface{}
+		var ret []ExceededQuotaDto
 		return ret
 	}
 	return o.Data
@@ -53,11 +53,11 @@ func (o *ExceededQuotaList) GetData() interface{} {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ExceededQuotaList) GetDataOk() (*interface{}, bool) {
+func (o *ExceededQuotaList) GetDataOk() ([]ExceededQuotaDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
-	return &o.Data, true
+	return o.Data, true
 }
 
 // HasData returns a boolean if a field has been set.
@@ -69,8 +69,8 @@ func (o *ExceededQuotaList) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given interface{} and assigns it to the Data field.
-func (o *ExceededQuotaList) SetData(v interface{}) {
+// SetData gets a reference to the given []ExceededQuotaDto and assigns it to the Data field.
+func (o *ExceededQuotaList) SetData(v []ExceededQuotaDto) {
 	o.Data = v
 }
 

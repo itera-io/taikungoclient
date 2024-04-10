@@ -29,8 +29,8 @@ type ArtifactRepositoryDto struct {
 	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
 	Official *bool `json:"official,omitempty"`
 	IsBound *bool `json:"isBound,omitempty"`
+	IsTaikun *bool `json:"isTaikun,omitempty"`
 	HasCatalogApp *bool `json:"hasCatalogApp,omitempty"`
-	TrueUrl NullableString `json:"trueUrl,omitempty"`
 }
 
 // NewArtifactRepositoryDto instantiates a new ArtifactRepositoryDto object
@@ -388,6 +388,38 @@ func (o *ArtifactRepositoryDto) SetIsBound(v bool) {
 	o.IsBound = &v
 }
 
+// GetIsTaikun returns the IsTaikun field value if set, zero value otherwise.
+func (o *ArtifactRepositoryDto) GetIsTaikun() bool {
+	if o == nil || IsNil(o.IsTaikun) {
+		var ret bool
+		return ret
+	}
+	return *o.IsTaikun
+}
+
+// GetIsTaikunOk returns a tuple with the IsTaikun field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ArtifactRepositoryDto) GetIsTaikunOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsTaikun) {
+		return nil, false
+	}
+	return o.IsTaikun, true
+}
+
+// HasIsTaikun returns a boolean if a field has been set.
+func (o *ArtifactRepositoryDto) HasIsTaikun() bool {
+	if o != nil && !IsNil(o.IsTaikun) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsTaikun gets a reference to the given bool and assigns it to the IsTaikun field.
+func (o *ArtifactRepositoryDto) SetIsTaikun(v bool) {
+	o.IsTaikun = &v
+}
+
 // GetHasCatalogApp returns the HasCatalogApp field value if set, zero value otherwise.
 func (o *ArtifactRepositoryDto) GetHasCatalogApp() bool {
 	if o == nil || IsNil(o.HasCatalogApp) {
@@ -418,48 +450,6 @@ func (o *ArtifactRepositoryDto) HasHasCatalogApp() bool {
 // SetHasCatalogApp gets a reference to the given bool and assigns it to the HasCatalogApp field.
 func (o *ArtifactRepositoryDto) SetHasCatalogApp(v bool) {
 	o.HasCatalogApp = &v
-}
-
-// GetTrueUrl returns the TrueUrl field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ArtifactRepositoryDto) GetTrueUrl() string {
-	if o == nil || IsNil(o.TrueUrl.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.TrueUrl.Get()
-}
-
-// GetTrueUrlOk returns a tuple with the TrueUrl field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ArtifactRepositoryDto) GetTrueUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TrueUrl.Get(), o.TrueUrl.IsSet()
-}
-
-// HasTrueUrl returns a boolean if a field has been set.
-func (o *ArtifactRepositoryDto) HasTrueUrl() bool {
-	if o != nil && o.TrueUrl.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTrueUrl gets a reference to the given NullableString and assigns it to the TrueUrl field.
-func (o *ArtifactRepositoryDto) SetTrueUrl(v string) {
-	o.TrueUrl.Set(&v)
-}
-// SetTrueUrlNil sets the value for TrueUrl to be an explicit nil
-func (o *ArtifactRepositoryDto) SetTrueUrlNil() {
-	o.TrueUrl.Set(nil)
-}
-
-// UnsetTrueUrl ensures that no value is present for TrueUrl, not even an explicit nil
-func (o *ArtifactRepositoryDto) UnsetTrueUrl() {
-	o.TrueUrl.Unset()
 }
 
 func (o ArtifactRepositoryDto) MarshalJSON() ([]byte, error) {
@@ -499,11 +489,11 @@ func (o ArtifactRepositoryDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsBound) {
 		toSerialize["isBound"] = o.IsBound
 	}
+	if !IsNil(o.IsTaikun) {
+		toSerialize["isTaikun"] = o.IsTaikun
+	}
 	if !IsNil(o.HasCatalogApp) {
 		toSerialize["hasCatalogApp"] = o.HasCatalogApp
-	}
-	if o.TrueUrl.IsSet() {
-		toSerialize["trueUrl"] = o.TrueUrl.Get()
 	}
 	return toSerialize, nil
 }

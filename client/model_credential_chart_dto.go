@@ -28,6 +28,7 @@ type CredentialChartDto struct {
 	Proxmox *int32 `json:"proxmox,omitempty"`
 	Openshift *int32 `json:"openshift,omitempty"`
 	Vsphere *int32 `json:"vsphere,omitempty"`
+	Zadara *int32 `json:"zadara,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
@@ -304,6 +305,38 @@ func (o *CredentialChartDto) SetVsphere(v int32) {
 	o.Vsphere = &v
 }
 
+// GetZadara returns the Zadara field value if set, zero value otherwise.
+func (o *CredentialChartDto) GetZadara() int32 {
+	if o == nil || IsNil(o.Zadara) {
+		var ret int32
+		return ret
+	}
+	return *o.Zadara
+}
+
+// GetZadaraOk returns a tuple with the Zadara field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialChartDto) GetZadaraOk() (*int32, bool) {
+	if o == nil || IsNil(o.Zadara) {
+		return nil, false
+	}
+	return o.Zadara, true
+}
+
+// HasZadara returns a boolean if a field has been set.
+func (o *CredentialChartDto) HasZadara() bool {
+	if o != nil && !IsNil(o.Zadara) {
+		return true
+	}
+
+	return false
+}
+
+// SetZadara gets a reference to the given int32 and assigns it to the Zadara field.
+func (o *CredentialChartDto) SetZadara(v int32) {
+	o.Zadara = &v
+}
+
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
 func (o *CredentialChartDto) GetTotalCount() int32 {
 	if o == nil || IsNil(o.TotalCount) {
@@ -369,6 +402,9 @@ func (o CredentialChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Vsphere) {
 		toSerialize["vsphere"] = o.Vsphere
+	}
+	if !IsNil(o.Zadara) {
+		toSerialize["zadara"] = o.Zadara
 	}
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount

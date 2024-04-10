@@ -24,48 +24,213 @@ import (
 // ProjectGroupsAPIService ProjectGroupsAPI service
 type ProjectGroupsAPIService service
 
-type ApiProjectgroupsBindRequest struct {
+type ApiProjectgroupsBindProjectRequest struct {
 	ctx context.Context
 	ApiService *ProjectGroupsAPIService
-	bindUserGroupsToProjectGroupCommand *BindUserGroupsToProjectGroupCommand
+	bindProjectsToProjectGroupCommand *BindProjectsToProjectGroupCommand
 }
 
-func (r ApiProjectgroupsBindRequest) BindUserGroupsToProjectGroupCommand(bindUserGroupsToProjectGroupCommand BindUserGroupsToProjectGroupCommand) ApiProjectgroupsBindRequest {
-	r.bindUserGroupsToProjectGroupCommand = &bindUserGroupsToProjectGroupCommand
+func (r ApiProjectgroupsBindProjectRequest) BindProjectsToProjectGroupCommand(bindProjectsToProjectGroupCommand BindProjectsToProjectGroupCommand) ApiProjectgroupsBindProjectRequest {
+	r.bindProjectsToProjectGroupCommand = &bindProjectsToProjectGroupCommand
 	return r
 }
 
-func (r ApiProjectgroupsBindRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ProjectgroupsBindExecute(r)
+func (r ApiProjectgroupsBindProjectRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProjectgroupsBindProjectExecute(r)
 }
 
 /*
-ProjectgroupsBind Bind User groups
+ProjectgroupsBindProject Bind Projects to group
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProjectgroupsBindRequest
+ @return ApiProjectgroupsBindProjectRequest
 */
-func (a *ProjectGroupsAPIService) ProjectgroupsBind(ctx context.Context) ApiProjectgroupsBindRequest {
-	return ApiProjectgroupsBindRequest{
+func (a *ProjectGroupsAPIService) ProjectgroupsBindProject(ctx context.Context) ApiProjectgroupsBindProjectRequest {
+	return ApiProjectgroupsBindProjectRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *ProjectGroupsAPIService) ProjectgroupsBindExecute(r ApiProjectgroupsBindRequest) (*http.Response, error) {
+func (a *ProjectGroupsAPIService) ProjectgroupsBindProjectExecute(r ApiProjectgroupsBindProjectRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectGroupsAPIService.ProjectgroupsBind")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectGroupsAPIService.ProjectgroupsBindProject")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/projectgroups/bind"
+	localVarPath := localBasePath + "/api/v1/projectgroups/bind-project"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.bindProjectsToProjectGroupCommand == nil {
+		return nil, reportError("bindProjectsToProjectGroupCommand is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.bindProjectsToProjectGroupCommand
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiProjectgroupsBindUserGroupRequest struct {
+	ctx context.Context
+	ApiService *ProjectGroupsAPIService
+	bindUserGroupsToProjectGroupCommand *BindUserGroupsToProjectGroupCommand
+}
+
+func (r ApiProjectgroupsBindUserGroupRequest) BindUserGroupsToProjectGroupCommand(bindUserGroupsToProjectGroupCommand BindUserGroupsToProjectGroupCommand) ApiProjectgroupsBindUserGroupRequest {
+	r.bindUserGroupsToProjectGroupCommand = &bindUserGroupsToProjectGroupCommand
+	return r
+}
+
+func (r ApiProjectgroupsBindUserGroupRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProjectgroupsBindUserGroupExecute(r)
+}
+
+/*
+ProjectgroupsBindUserGroup Bind User groups
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectgroupsBindUserGroupRequest
+*/
+func (a *ProjectGroupsAPIService) ProjectgroupsBindUserGroup(ctx context.Context) ApiProjectgroupsBindUserGroupRequest {
+	return ApiProjectgroupsBindUserGroupRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *ProjectGroupsAPIService) ProjectgroupsBindUserGroupExecute(r ApiProjectgroupsBindUserGroupRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectGroupsAPIService.ProjectgroupsBindUserGroup")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/projectgroups/bind-user-group"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -425,172 +590,6 @@ func (a *ProjectGroupsAPIService) ProjectgroupsDeleteExecute(r ApiProjectgroupsD
 	}
 	// body params
 	localVarPostBody = r.requestBody
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["Bearer"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
-type ApiProjectgroupsEditRequest struct {
-	ctx context.Context
-	ApiService *ProjectGroupsAPIService
-	projectGroupId int32
-	updateProjectGroupDto *UpdateProjectGroupDto
-}
-
-func (r ApiProjectgroupsEditRequest) UpdateProjectGroupDto(updateProjectGroupDto UpdateProjectGroupDto) ApiProjectgroupsEditRequest {
-	r.updateProjectGroupDto = &updateProjectGroupDto
-	return r
-}
-
-func (r ApiProjectgroupsEditRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ProjectgroupsEditExecute(r)
-}
-
-/*
-ProjectgroupsEdit Update project groups
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectGroupId
- @return ApiProjectgroupsEditRequest
-*/
-func (a *ProjectGroupsAPIService) ProjectgroupsEdit(ctx context.Context, projectGroupId int32) ApiProjectgroupsEditRequest {
-	return ApiProjectgroupsEditRequest{
-		ApiService: a,
-		ctx: ctx,
-		projectGroupId: projectGroupId,
-	}
-}
-
-// Execute executes the request
-func (a *ProjectGroupsAPIService) ProjectgroupsEditExecute(r ApiProjectgroupsEditRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPut
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectGroupsAPIService.ProjectgroupsEdit")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/projectgroups/update/{projectGroupId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectGroupId"+"}", url.PathEscape(parameterValueToString(r.projectGroupId, "projectGroupId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.updateProjectGroupDto
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

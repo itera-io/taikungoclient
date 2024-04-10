@@ -22,13 +22,13 @@ type ProjectType string
 // List of ProjectType
 const (
 	PROJECTTYPE_K8_S ProjectType = "K8S"
-	PROJECTTYPE_VIRT ProjectType = "VIRT"
+	PROJECTTYPE_VM ProjectType = "VM"
 )
 
 // All allowed values of ProjectType enum
 var AllowedProjectTypeEnumValues = []ProjectType{
 	"K8S",
-	"VIRT",
+	"VM",
 }
 
 func (v *ProjectType) UnmarshalJSON(src []byte) error {

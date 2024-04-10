@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
 
@@ -378,8 +379,8 @@ type ApiInvoicesListRequest struct {
 	ApiService *InvoicesAPIService
 	offset *int32
 	limit *int32
-	startDate *string
-	endDate *string
+	startDate *time.Time
+	endDate *time.Time
 	search *string
 	filterBy *string
 	sortBy *string
@@ -398,12 +399,12 @@ func (r ApiInvoicesListRequest) Limit(limit int32) ApiInvoicesListRequest {
 	return r
 }
 
-func (r ApiInvoicesListRequest) StartDate(startDate string) ApiInvoicesListRequest {
+func (r ApiInvoicesListRequest) StartDate(startDate time.Time) ApiInvoicesListRequest {
 	r.startDate = &startDate
 	return r
 }
 
-func (r ApiInvoicesListRequest) EndDate(endDate string) ApiInvoicesListRequest {
+func (r ApiInvoicesListRequest) EndDate(endDate time.Time) ApiInvoicesListRequest {
 	r.endDate = &endDate
 	return r
 }

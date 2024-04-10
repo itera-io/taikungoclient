@@ -3449,3 +3449,423 @@ func (a *ImagesAPIService) ImagesVsphereImagesExecute(r ApiImagesVsphereImagesRe
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+type ApiImagesZadaraImagesListRequest struct {
+	ctx context.Context
+	ApiService *ImagesAPIService
+	cloudId int32
+	latest *bool
+	limit *int32
+	offset *int32
+	sortBy *string
+	sortDirection *string
+	search *string
+	projectId *int32
+}
+
+func (r ApiImagesZadaraImagesListRequest) Latest(latest bool) ApiImagesZadaraImagesListRequest {
+	r.latest = &latest
+	return r
+}
+
+func (r ApiImagesZadaraImagesListRequest) Limit(limit int32) ApiImagesZadaraImagesListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiImagesZadaraImagesListRequest) Offset(offset int32) ApiImagesZadaraImagesListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiImagesZadaraImagesListRequest) SortBy(sortBy string) ApiImagesZadaraImagesListRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiImagesZadaraImagesListRequest) SortDirection(sortDirection string) ApiImagesZadaraImagesListRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiImagesZadaraImagesListRequest) Search(search string) ApiImagesZadaraImagesListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiImagesZadaraImagesListRequest) ProjectId(projectId int32) ApiImagesZadaraImagesListRequest {
+	r.projectId = &projectId
+	return r
+}
+
+func (r ApiImagesZadaraImagesListRequest) Execute() (*PublicImageList, *http.Response, error) {
+	return r.ApiService.ImagesZadaraImagesListExecute(r)
+}
+
+/*
+ImagesZadaraImagesList Retrieve zadara images
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param cloudId
+ @return ApiImagesZadaraImagesListRequest
+*/
+func (a *ImagesAPIService) ImagesZadaraImagesList(ctx context.Context, cloudId int32) ApiImagesZadaraImagesListRequest {
+	return ApiImagesZadaraImagesListRequest{
+		ApiService: a,
+		ctx: ctx,
+		cloudId: cloudId,
+	}
+}
+
+// Execute executes the request
+//  @return PublicImageList
+func (a *ImagesAPIService) ImagesZadaraImagesListExecute(r ApiImagesZadaraImagesListRequest) (*PublicImageList, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *PublicImageList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesZadaraImagesList")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/images/zadara/{cloudId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudId"+"}", url.PathEscape(parameterValueToString(r.cloudId, "cloudId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.latest == nil {
+		return localVarReturnValue, nil, reportError("latest is required and must be specified")
+	}
+
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Latest", r.latest, "")
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiImagesZadaraPersonalImagesRequest struct {
+	ctx context.Context
+	ApiService *ImagesAPIService
+	cloudId int32
+	search *string
+	projectId *int32
+}
+
+func (r ApiImagesZadaraPersonalImagesRequest) Search(search string) ApiImagesZadaraPersonalImagesRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiImagesZadaraPersonalImagesRequest) ProjectId(projectId int32) ApiImagesZadaraPersonalImagesRequest {
+	r.projectId = &projectId
+	return r
+}
+
+func (r ApiImagesZadaraPersonalImagesRequest) Execute() ([]CommonStringBasedDropdownDto, *http.Response, error) {
+	return r.ApiService.ImagesZadaraPersonalImagesExecute(r)
+}
+
+/*
+ImagesZadaraPersonalImages Zadara personal images
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param cloudId
+ @return ApiImagesZadaraPersonalImagesRequest
+*/
+func (a *ImagesAPIService) ImagesZadaraPersonalImages(ctx context.Context, cloudId int32) ApiImagesZadaraPersonalImagesRequest {
+	return ApiImagesZadaraPersonalImagesRequest{
+		ApiService: a,
+		ctx: ctx,
+		cloudId: cloudId,
+	}
+}
+
+// Execute executes the request
+//  @return []CommonStringBasedDropdownDto
+func (a *ImagesAPIService) ImagesZadaraPersonalImagesExecute(r ApiImagesZadaraPersonalImagesRequest) ([]CommonStringBasedDropdownDto, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []CommonStringBasedDropdownDto
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ImagesAPIService.ImagesZadaraPersonalImages")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/images/zadara/personal/{cloudId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"cloudId"+"}", url.PathEscape(parameterValueToString(r.cloudId, "cloudId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}

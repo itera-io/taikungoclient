@@ -33,6 +33,7 @@ type OpenstackCredentialsForProjectDto struct {
 	OpenStackImportNetwork *bool `json:"openStackImportNetwork,omitempty"`
 	OpenStackInternalSubnetId NullableString `json:"openStackInternalSubnetId,omitempty"`
 	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
+	IgnoreSsl *bool `json:"ignoreSsl,omitempty"`
 }
 
 // NewOpenstackCredentialsForProjectDto instantiates a new OpenstackCredentialsForProjectDto object
@@ -578,6 +579,38 @@ func (o *OpenstackCredentialsForProjectDto) SetApplicationCredEnabled(v bool) {
 	o.ApplicationCredEnabled = &v
 }
 
+// GetIgnoreSsl returns the IgnoreSsl field value if set, zero value otherwise.
+func (o *OpenstackCredentialsForProjectDto) GetIgnoreSsl() bool {
+	if o == nil || IsNil(o.IgnoreSsl) {
+		var ret bool
+		return ret
+	}
+	return *o.IgnoreSsl
+}
+
+// GetIgnoreSslOk returns a tuple with the IgnoreSsl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OpenstackCredentialsForProjectDto) GetIgnoreSslOk() (*bool, bool) {
+	if o == nil || IsNil(o.IgnoreSsl) {
+		return nil, false
+	}
+	return o.IgnoreSsl, true
+}
+
+// HasIgnoreSsl returns a boolean if a field has been set.
+func (o *OpenstackCredentialsForProjectDto) HasIgnoreSsl() bool {
+	if o != nil && !IsNil(o.IgnoreSsl) {
+		return true
+	}
+
+	return false
+}
+
+// SetIgnoreSsl gets a reference to the given bool and assigns it to the IgnoreSsl field.
+func (o *OpenstackCredentialsForProjectDto) SetIgnoreSsl(v bool) {
+	o.IgnoreSsl = &v
+}
+
 func (o OpenstackCredentialsForProjectDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -626,6 +659,9 @@ func (o OpenstackCredentialsForProjectDto) ToMap() (map[string]interface{}, erro
 	}
 	if !IsNil(o.ApplicationCredEnabled) {
 		toSerialize["applicationCredEnabled"] = o.ApplicationCredEnabled
+	}
+	if !IsNil(o.IgnoreSsl) {
+		toSerialize["ignoreSsl"] = o.IgnoreSsl
 	}
 	return toSerialize, nil
 }
