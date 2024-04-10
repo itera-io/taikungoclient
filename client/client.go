@@ -12,6 +12,7 @@ Contact: noreply@taikun.cloud
 package taikuncore
 
 import (
+	"net/textproto"
 	"bytes"
 	"context"
 	"encoding/json"
@@ -557,7 +558,14 @@ func (c *APIClient) prepareRequest(
 		for _, formFile := range formFiles {
 			if len(formFile.fileBytes) > 0 && formFile.fileName != "" {
 				w.Boundary()
-				part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
+				// Custom replace to make Content-Type application/json - fixes GCP json upload
+				h := make(textproto.MIMEHeader)
+				h.Set("Content-Disposition",fmt.Sprintf(`form-data; name="%s"; filename="%s"`,escapeQuotes(formFile.formFileName),escapeQuotes(filepath.Base(formFile.fileName))))
+				h.Set("Content-Type", "application/json")
+				part, err := w.CreatePart(h)
+
+				// Old version
+				// part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
 				if err != nil {
 						return nil, err
 				}
@@ -892,4 +900,9 @@ func formatErrorMessage(status string, v interface{}) string {
 	}
 
 	return strings.TrimSpace(fmt.Sprintf("%s %s", status, str))
+}
+
+func escapeQuotes(s string) string {
+  var quoteEscaper = strings.NewReplacer("\\", "\\\\", `"`, "\\\"")
+  return quoteEscaper.Replace(s)
 }
