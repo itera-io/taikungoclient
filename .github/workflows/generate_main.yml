@@ -15,7 +15,7 @@ jobs:
     uses: itera-io/taikungoclient/.github/workflows/generate.yml@main
     with:
       branch: main
-      force: ${{ inputs.force }}
+      force: ${{ inputs.force == true }}
     secrets:
       url: ${{ secrets.SWAGGER_URL }}
       showback_url: ${{ secrets.SHOWBACK_SWAGGER_URL }}
