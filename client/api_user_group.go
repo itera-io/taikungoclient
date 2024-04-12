@@ -801,7 +801,7 @@ func (a *UserGroupAPIService) UsergroupsListByProjectGroupIdExecute(r ApiUsergro
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/usergroups/list-by-project-group-id/{projectGroupId}"
+	localVarPath := localBasePath + "/api/v1/usergroups/list/{projectGroupId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"projectGroupId"+"}", url.PathEscape(parameterValueToString(r.projectGroupId, "projectGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

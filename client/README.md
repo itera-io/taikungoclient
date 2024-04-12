@@ -696,7 +696,7 @@ Class | Method | HTTP request | Description
 *UserGroupAPI* | [**UsergroupsCreate**](docs/UserGroupAPI.md#usergroupscreate) | **Post** /api/v1/usergroups/create | Add user groups
 *UserGroupAPI* | [**UsergroupsDelete**](docs/UserGroupAPI.md#usergroupsdelete) | **Delete** /api/v1/usergroups | Remove user group(s)
 *UserGroupAPI* | [**UsergroupsList**](docs/UserGroupAPI.md#usergroupslist) | **Get** /api/v1/usergroups/list | Retrieve list of user groups
-*UserGroupAPI* | [**UsergroupsListByProjectGroupId**](docs/UserGroupAPI.md#usergroupslistbyprojectgroupid) | **Get** /api/v1/usergroups/list-by-project-group-id/{projectGroupId} | Dropdown list
+*UserGroupAPI* | [**UsergroupsListByProjectGroupId**](docs/UserGroupAPI.md#usergroupslistbyprojectgroupid) | **Get** /api/v1/usergroups/list/{projectGroupId} | Dropdown list
 *UserGroupAPI* | [**UsergroupsUpdate**](docs/UserGroupAPI.md#usergroupsupdate) | **Put** /api/v1/usergroups/update/{userGroupId} | Update user groups
 *UserGroupAPI* | [**UsergroupsUserGroupUsers**](docs/UserGroupAPI.md#usergroupsusergroupusers) | **Get** /api/v1/usergroups/users/{userGroupId} | Dropdown list
 *UserProjectsAPI* | [**UserprojectsBindProjects**](docs/UserProjectsAPI.md#userprojectsbindprojects) | **Post** /api/v1/userprojects/bindprojects | Bind projects to user
