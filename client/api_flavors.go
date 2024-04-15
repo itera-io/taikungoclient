@@ -1143,8 +1143,8 @@ type ApiFlavorsOpenshiftFlavorsRequest struct {
 	cloudId int32
 	limit *int32
 	offset *int32
-	startRam *int64
-	endRam *int64
+	startRam *float64
+	endRam *float64
 	startCpu *int32
 	endCpu *int32
 	search *string
@@ -1162,12 +1162,12 @@ func (r ApiFlavorsOpenshiftFlavorsRequest) Offset(offset int32) ApiFlavorsOpensh
 	return r
 }
 
-func (r ApiFlavorsOpenshiftFlavorsRequest) StartRam(startRam int64) ApiFlavorsOpenshiftFlavorsRequest {
+func (r ApiFlavorsOpenshiftFlavorsRequest) StartRam(startRam float64) ApiFlavorsOpenshiftFlavorsRequest {
 	r.startRam = &startRam
 	return r
 }
 
-func (r ApiFlavorsOpenshiftFlavorsRequest) EndRam(endRam int64) ApiFlavorsOpenshiftFlavorsRequest {
+func (r ApiFlavorsOpenshiftFlavorsRequest) EndRam(endRam float64) ApiFlavorsOpenshiftFlavorsRequest {
 	r.endRam = &endRam
 	return r
 }
@@ -1643,8 +1643,8 @@ type ApiFlavorsProxmoxFlavorsRequest struct {
 	cloudId int32
 	limit *int32
 	offset *int32
-	startRam *int64
-	endRam *int64
+	startRam *float64
+	endRam *float64
 	startCpu *int32
 	endCpu *int32
 	search *string
@@ -1662,12 +1662,12 @@ func (r ApiFlavorsProxmoxFlavorsRequest) Offset(offset int32) ApiFlavorsProxmoxF
 	return r
 }
 
-func (r ApiFlavorsProxmoxFlavorsRequest) StartRam(startRam int64) ApiFlavorsProxmoxFlavorsRequest {
+func (r ApiFlavorsProxmoxFlavorsRequest) StartRam(startRam float64) ApiFlavorsProxmoxFlavorsRequest {
 	r.startRam = &startRam
 	return r
 }
 
-func (r ApiFlavorsProxmoxFlavorsRequest) EndRam(endRam int64) ApiFlavorsProxmoxFlavorsRequest {
+func (r ApiFlavorsProxmoxFlavorsRequest) EndRam(endRam float64) ApiFlavorsProxmoxFlavorsRequest {
 	r.endRam = &endRam
 	return r
 }
@@ -2148,8 +2148,8 @@ type ApiFlavorsTanzuFlavorsRequest struct {
 	cloudId int32
 	limit *int32
 	offset *int32
-	startRam *int64
-	endRam *int64
+	startRam *float64
+	endRam *float64
 	startCpu *int32
 	endCpu *int32
 	search *string
@@ -2167,12 +2167,12 @@ func (r ApiFlavorsTanzuFlavorsRequest) Offset(offset int32) ApiFlavorsTanzuFlavo
 	return r
 }
 
-func (r ApiFlavorsTanzuFlavorsRequest) StartRam(startRam int64) ApiFlavorsTanzuFlavorsRequest {
+func (r ApiFlavorsTanzuFlavorsRequest) StartRam(startRam float64) ApiFlavorsTanzuFlavorsRequest {
 	r.startRam = &startRam
 	return r
 }
 
-func (r ApiFlavorsTanzuFlavorsRequest) EndRam(endRam int64) ApiFlavorsTanzuFlavorsRequest {
+func (r ApiFlavorsTanzuFlavorsRequest) EndRam(endRam float64) ApiFlavorsTanzuFlavorsRequest {
 	r.endRam = &endRam
 	return r
 }
@@ -2563,8 +2563,8 @@ type ApiFlavorsVsphereFlavorsRequest struct {
 	cloudId int32
 	limit *int32
 	offset *int32
-	startRam *int64
-	endRam *int64
+	startRam *float64
+	endRam *float64
 	startCpu *int32
 	endCpu *int32
 	search *string
@@ -2582,12 +2582,12 @@ func (r ApiFlavorsVsphereFlavorsRequest) Offset(offset int32) ApiFlavorsVsphereF
 	return r
 }
 
-func (r ApiFlavorsVsphereFlavorsRequest) StartRam(startRam int64) ApiFlavorsVsphereFlavorsRequest {
+func (r ApiFlavorsVsphereFlavorsRequest) StartRam(startRam float64) ApiFlavorsVsphereFlavorsRequest {
 	r.startRam = &startRam
 	return r
 }
 
-func (r ApiFlavorsVsphereFlavorsRequest) EndRam(endRam int64) ApiFlavorsVsphereFlavorsRequest {
+func (r ApiFlavorsVsphereFlavorsRequest) EndRam(endRam float64) ApiFlavorsVsphereFlavorsRequest {
 	r.endRam = &endRam
 	return r
 }

@@ -5621,8 +5621,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-04-15T12:09:58.946079Z
-                  createdAt: 2024-04-15T12:09:58.946079Z
+                  lastValidated: 2024-04-15T14:14:02.9566309Z
+                  createdAt: 2024-04-15T14:14:02.9566309Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5727,14 +5727,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-04-15T12:09:58.946079Z
+                    lastBackup: 2024-04-15T14:14:02.9566309Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-04-15T12:09:58.946079Z
+                  createdAt: 2024-04-15T14:14:02.9566309Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-04-15T12:09:58.946079Z
+                  lastBackup: 2024-04-15T14:14:02.9566309Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5839,8 +5839,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-04-15T12:09:58.946079Z
-                  expiration: 2024-04-15T12:09:58.946079Z
+                  createdAt: 2024-04-15T14:14:02.9566309Z
+                  expiration: 2024-04-15T14:14:02.9566309Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5944,7 +5944,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-04-15T12:09:58.946079Z
+                  createdAt: 2024-04-15T14:14:02.9566309Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6054,9 +6054,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-04-15T12:09:58.946079+00:00
-                  startTimeStamp: 2024-04-15T12:09:58.946079+00:00
-                  createdAt: 2024-04-15T12:09:58.946079Z
+                  completionDateTime: 2024-04-15T14:14:02.9566309+00:00
+                  startTimeStamp: 2024-04-15T14:14:02.9566309+00:00
+                  createdAt: 2024-04-15T14:14:02.9566309Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -11315,16 +11315,16 @@ paths:
         name: StartRam
         required: false
         schema:
-          format: int64
-          type: integer
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
         name: EndRam
         required: false
         schema:
-          format: int64
-          type: integer
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
@@ -11556,16 +11556,16 @@ paths:
         name: StartRam
         required: false
         schema:
-          format: int64
-          type: integer
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
         name: EndRam
         required: false
         schema:
-          format: int64
-          type: integer
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
@@ -11677,16 +11677,16 @@ paths:
         name: StartRam
         required: false
         schema:
-          format: int64
-          type: integer
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
         name: EndRam
         required: false
         schema:
-          format: int64
-          type: integer
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
@@ -11798,16 +11798,16 @@ paths:
         name: StartRam
         required: false
         schema:
-          format: int64
-          type: integer
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
         name: EndRam
         required: false
         schema:
-          format: int64
-          type: integer
+          format: double
+          type: number
         style: form
       - explode: true
         in: query
@@ -38842,12 +38842,12 @@ components:
           name: name
           cpu: 6
           description: ""
-          ram: 0
+          ram: 0.8008281904610115
         - maxDataDiskCount: 1.4658129805029452
           name: name
           cpu: 6
           description: ""
-          ram: 0
+          ram: 0.8008281904610115
         cloudType: cloudType
         totalCount: 5
       properties:
@@ -39756,7 +39756,7 @@ components:
           zones:
           - zones
           - zones
-          ram: 0
+          ram: 0.8008281904610115
           linuxSpotPrice: linuxSpotPrice
         - windowsSpotPrice: windowsSpotPrice
           name: name
@@ -39767,7 +39767,7 @@ components:
           zones:
           - zones
           - zones
-          ram: 0
+          ram: 0.8008281904610115
           linuxSpotPrice: linuxSpotPrice
         totalCount: 1
       properties:
@@ -39792,12 +39792,12 @@ components:
         zones:
         - zones
         - zones
-        ram: 0
+        ram: 0.8008281904610115
         linuxSpotPrice: linuxSpotPrice
       properties:
         ram:
-          format: int64
-          type: integer
+          format: double
+          type: number
         cpu:
           format: int32
           type: integer
@@ -40127,7 +40127,7 @@ components:
           windowsPrice: windowsPrice
           linuxPrice: linuxPrice
           linuxSpotPrice: linuxSpotPrice
-          ram: 6
+          ram: 6.027456183070403
         - maxDataDiskCount: 1.4658129805029452
           windowsSpotPrice: windowsSpotPrice
           name: name
@@ -40136,7 +40136,7 @@ components:
           windowsPrice: windowsPrice
           linuxPrice: linuxPrice
           linuxSpotPrice: linuxSpotPrice
-          ram: 6
+          ram: 6.027456183070403
         totalCount: 5
       properties:
         data:
@@ -40159,7 +40159,7 @@ components:
         windowsPrice: windowsPrice
         linuxPrice: linuxPrice
         linuxSpotPrice: linuxSpotPrice
-        ram: 6
+        ram: 6.027456183070403
       properties:
         name:
           nullable: true
@@ -40180,8 +40180,8 @@ components:
           format: int32
           type: integer
         ram:
-          format: int64
-          type: integer
+          format: double
+          type: number
         description:
           nullable: true
         maxDataDiskCount:
@@ -41161,7 +41161,7 @@ components:
           projectName: projectName
           linuxPrice: linuxPrice
           projectId: 5
-          ram: 1
+          ram: 1.4658129805029452
           existsWindowsSpotPrice: true
           linuxSpotPrice: linuxSpotPrice
         - cpu: 6
@@ -41175,7 +41175,7 @@ components:
           projectName: projectName
           linuxPrice: linuxPrice
           projectId: 5
-          ram: 1
+          ram: 1.4658129805029452
           existsWindowsSpotPrice: true
           linuxSpotPrice: linuxSpotPrice
         totalCount: 2
@@ -41203,7 +41203,7 @@ components:
         projectName: projectName
         linuxPrice: linuxPrice
         projectId: 5
-        ram: 1
+        ram: 1.4658129805029452
         existsWindowsSpotPrice: true
         linuxSpotPrice: linuxSpotPrice
       properties:
@@ -41217,8 +41217,8 @@ components:
           format: int32
           type: integer
         ram:
-          format: int64
-          type: integer
+          format: double
+          type: number
         projectId:
           format: int32
           nullable: true
@@ -47686,11 +47686,11 @@ components:
         name: name
         cpu: 6
         description: ""
-        ram: 0
+        ram: 0.8008281904610115
       properties:
         ram:
-          format: int64
-          type: integer
+          format: double
+          type: number
         cpu:
           format: int32
           type: integer
@@ -48015,7 +48015,7 @@ components:
         description: ""
         windowsPrice: 5.962133916683182
         linuxPrice: 1.4658129805029452
-        ram: 6
+        ram: 6.027456183070403
         linuxSpotPrice: 5.637376656633329
       properties:
         name:
@@ -48026,9 +48026,9 @@ components:
           nullable: true
           type: integer
         ram:
-          format: int64
+          format: double
           nullable: true
-          type: integer
+          type: number
         description:
           nullable: true
         linuxPrice:
@@ -48058,7 +48058,7 @@ components:
           description: ""
           windowsPrice: 5.962133916683182
           linuxPrice: 1.4658129805029452
-          ram: 6
+          ram: 6.027456183070403
           linuxSpotPrice: 5.637376656633329
         - windowsSpotPrice: 2.3021358869347655
           name: name
@@ -48066,7 +48066,7 @@ components:
           description: ""
           windowsPrice: 5.962133916683182
           linuxPrice: 1.4658129805029452
-          ram: 6
+          ram: 6.027456183070403
           linuxSpotPrice: 5.637376656633329
         totalCount: 7
       properties:
@@ -51753,7 +51753,7 @@ components:
       example:
         name: name
         cpu: 0
-        ram: 6
+        ram: 6.027456183070403
       properties:
         name:
           nullable: true
@@ -51762,8 +51762,8 @@ components:
           format: int32
           type: integer
         ram:
-          format: int64
-          type: integer
+          format: double
+          type: number
       type: object
     OpenshiftFlavorList:
       additionalProperties: false
@@ -51771,10 +51771,10 @@ components:
         data:
         - name: name
           cpu: 0
-          ram: 6
+          ram: 6.027456183070403
         - name: name
           cpu: 0
-          ram: 6
+          ram: 6.027456183070403
         totalCount: 1
       properties:
         data:
@@ -52229,11 +52229,11 @@ components:
         - name: name
           cpu: 6
           description: description
-          ram: 0
+          ram: 0.8008281904610115
         - name: name
           cpu: 6
           description: description
-          ram: 0
+          ram: 0.8008281904610115
         totalCount: 1
       properties:
         data:
@@ -52251,11 +52251,11 @@ components:
         name: name
         cpu: 6
         description: description
-        ram: 0
+        ram: 0.8008281904610115
       properties:
         ram:
-          format: int64
-          type: integer
+          format: double
+          type: number
         cpu:
           format: int64
           type: integer
@@ -58047,7 +58047,7 @@ components:
       example:
         name: name
         cpu: 0
-        ram: 6
+        ram: 6.027456183070403
       properties:
         name:
           nullable: true
@@ -58056,8 +58056,8 @@ components:
           format: int32
           type: integer
         ram:
-          format: int64
-          type: integer
+          format: double
+          type: number
       type: object
     ProxmoxFlavorList:
       additionalProperties: false
@@ -58065,10 +58065,10 @@ components:
         data:
         - name: name
           cpu: 0
-          ram: 6
+          ram: 6.027456183070403
         - name: name
           cpu: 0
-          ram: 6
+          ram: 6.027456183070403
         totalCount: 1
       properties:
         data:
@@ -62904,10 +62904,10 @@ components:
         data:
         - name: name
           cpu: 0
-          ram: 6
+          ram: 6.027456183070403
         - name: name
           cpu: 0
-          ram: 6
+          ram: 6.027456183070403
         totalCount: 1
       properties:
         data:
@@ -62924,7 +62924,7 @@ components:
       example:
         name: name
         cpu: 0
-        ram: 6
+        ram: 6.027456183070403
       properties:
         name:
           nullable: true
@@ -62933,8 +62933,8 @@ components:
           format: int32
           type: integer
         ram:
-          format: int64
-          type: integer
+          format: double
+          type: number
       type: object
     TanzuStorageListCommand:
       additionalProperties: false
@@ -64704,7 +64704,7 @@ components:
       example:
         name: name
         cpu: 0
-        ram: 6
+        ram: 6.027456183070403
       properties:
         name:
           nullable: true
@@ -64713,8 +64713,8 @@ components:
           format: int32
           type: integer
         ram:
-          format: int64
-          type: integer
+          format: double
+          type: number
       type: object
     VsphereFlavorList:
       additionalProperties: false
@@ -64722,10 +64722,10 @@ components:
         data:
         - name: name
           cpu: 0
-          ram: 6
+          ram: 6.027456183070403
         - name: name
           cpu: 0
-          ram: 6
+          ram: 6.027456183070403
         totalCount: 1
       properties:
         data:
