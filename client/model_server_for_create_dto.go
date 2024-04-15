@@ -23,7 +23,7 @@ type ServerForCreateDto struct {
 	Name NullableString `json:"name,omitempty"`
 	Role *CloudRole `json:"role,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
-	DiskSize *int64 `json:"diskSize,omitempty"`
+	DiskSize *float64 `json:"diskSize,omitempty"`
 	Flavor NullableString `json:"flavor,omitempty"`
 	Count *int32 `json:"count,omitempty"`
 	SpotPrice NullableFloat64 `json:"spotPrice,omitempty"`
@@ -162,9 +162,9 @@ func (o *ServerForCreateDto) SetProjectId(v int32) {
 }
 
 // GetDiskSize returns the DiskSize field value if set, zero value otherwise.
-func (o *ServerForCreateDto) GetDiskSize() int64 {
+func (o *ServerForCreateDto) GetDiskSize() float64 {
 	if o == nil || IsNil(o.DiskSize) {
-		var ret int64
+		var ret float64
 		return ret
 	}
 	return *o.DiskSize
@@ -172,7 +172,7 @@ func (o *ServerForCreateDto) GetDiskSize() int64 {
 
 // GetDiskSizeOk returns a tuple with the DiskSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerForCreateDto) GetDiskSizeOk() (*int64, bool) {
+func (o *ServerForCreateDto) GetDiskSizeOk() (*float64, bool) {
 	if o == nil || IsNil(o.DiskSize) {
 		return nil, false
 	}
@@ -188,8 +188,8 @@ func (o *ServerForCreateDto) HasDiskSize() bool {
 	return false
 }
 
-// SetDiskSize gets a reference to the given int64 and assigns it to the DiskSize field.
-func (o *ServerForCreateDto) SetDiskSize(v int64) {
+// SetDiskSize gets a reference to the given float64 and assigns it to the DiskSize field.
+func (o *ServerForCreateDto) SetDiskSize(v float64) {
 	o.DiskSize = &v
 }
 

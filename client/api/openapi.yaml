@@ -5621,8 +5621,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-04-15T14:14:02.9566309Z
-                  createdAt: 2024-04-15T14:14:02.9566309Z
+                  lastValidated: 2024-04-15T15:05:46.067853Z
+                  createdAt: 2024-04-15T15:05:46.067853Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5727,14 +5727,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-04-15T14:14:02.9566309Z
+                    lastBackup: 2024-04-15T15:05:46.067853Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-04-15T14:14:02.9566309Z
+                  createdAt: 2024-04-15T15:05:46.067853Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-04-15T14:14:02.9566309Z
+                  lastBackup: 2024-04-15T15:05:46.067853Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5839,8 +5839,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-04-15T14:14:02.9566309Z
-                  expiration: 2024-04-15T14:14:02.9566309Z
+                  createdAt: 2024-04-15T15:05:46.067853Z
+                  expiration: 2024-04-15T15:05:46.067853Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5944,7 +5944,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-04-15T14:14:02.9566309Z
+                  createdAt: 2024-04-15T15:05:46.067853Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6054,9 +6054,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-04-15T14:14:02.9566309+00:00
-                  startTimeStamp: 2024-04-15T14:14:02.9566309+00:00
-                  createdAt: 2024-04-15T14:14:02.9566309Z
+                  completionDateTime: 2024-04-15T15:05:46.067853+00:00
+                  startTimeStamp: 2024-04-15T15:05:46.067853+00:00
+                  createdAt: 2024-04-15T15:05:46.067853Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -59806,7 +59806,7 @@ components:
         flavor: flavor
         spotInstance: true
         autoscalingGroup: autoscalingGroup
-        diskSize: 6
+        diskSize: 6.027456183070403
         replicaCount: 2
         wasmEnabled: true
         hypervisor: hypervisor
@@ -59827,8 +59827,8 @@ components:
           format: int32
           type: integer
         diskSize:
-          format: int64
-          type: integer
+          format: double
+          type: number
         flavor:
           nullable: true
           type: string
@@ -63534,12 +63534,12 @@ components:
     UpdateQuotaCommand:
       additionalProperties: false
       example:
-        serverRam: 1
+        serverRam: 1.4658129805029452
         vmCpu: 5
-        serverDiskSize: 5
-        vmRam: 2
+        serverDiskSize: 5.962133916683182
+        vmRam: 2.3021358869347655
         quotaId: 0
-        vmVolumeSize: 7
+        vmVolumeSize: 7.061401241503109
         serverCpu: 6
       properties:
         quotaId:
@@ -63549,20 +63549,20 @@ components:
           format: int64
           type: integer
         serverRam:
-          format: int64
-          type: integer
+          format: double
+          type: number
         serverDiskSize:
-          format: int64
-          type: integer
+          format: double
+          type: number
         vmCpu:
           format: int64
           type: integer
         vmRam:
-          format: int64
-          type: integer
+          format: double
+          type: number
         vmVolumeSize:
-          format: int64
-          type: integer
+          format: double
+          type: number
       type: object
     UpdateServerCommand:
       additionalProperties: false
