@@ -5621,8 +5621,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-04-15T15:05:46.067853Z
-                  createdAt: 2024-04-15T15:05:46.067853Z
+                  lastValidated: 2024-04-16T00:02:50.2083988Z
+                  createdAt: 2024-04-16T00:02:50.2083988Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5727,14 +5727,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-04-15T15:05:46.067853Z
+                    lastBackup: 2024-04-16T00:02:50.2083988Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-04-15T15:05:46.067853Z
+                  createdAt: 2024-04-16T00:02:50.2083988Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-04-15T15:05:46.067853Z
+                  lastBackup: 2024-04-16T00:02:50.2083988Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5839,8 +5839,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-04-15T15:05:46.067853Z
-                  expiration: 2024-04-15T15:05:46.067853Z
+                  createdAt: 2024-04-16T00:02:50.2083988Z
+                  expiration: 2024-04-16T00:02:50.2083988Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5944,7 +5944,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-04-15T15:05:46.067853Z
+                  createdAt: 2024-04-16T00:02:50.2083988Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6054,9 +6054,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-04-15T15:05:46.067853+00:00
-                  startTimeStamp: 2024-04-15T15:05:46.067853+00:00
-                  createdAt: 2024-04-15T15:05:46.067853Z
+                  completionDateTime: 2024-04-16T00:02:50.2083988+00:00
+                  startTimeStamp: 2024-04-16T00:02:50.2083988+00:00
+                  createdAt: 2024-04-16T00:02:50.2083988Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -56805,19 +56805,19 @@ components:
       additionalProperties: false
       example:
         data:
-        - serverRam: 6
+        - serverRam: 6.027456183070403
           vmCpu: 5
-          serverDiskSize: 1
-          vmRam: 5
-          vmVolumeSize: 2
+          serverDiskSize: 1.4658129805029452
+          vmRam: 5.637376656633329
+          vmVolumeSize: 2.3021358869347655
           projectName: projectName
           projectId: 7
           serverCpu: 0
-        - serverRam: 6
+        - serverRam: 6.027456183070403
           vmCpu: 5
-          serverDiskSize: 1
-          vmRam: 5
-          vmVolumeSize: 2
+          serverDiskSize: 1.4658129805029452
+          vmRam: 5.637376656633329
+          vmVolumeSize: 2.3021358869347655
           projectName: projectName
           projectId: 7
           serverCpu: 0
@@ -56835,11 +56835,11 @@ components:
     ProjectQuotaListDto:
       additionalProperties: false
       example:
-        serverRam: 6
+        serverRam: 6.027456183070403
         vmCpu: 5
-        serverDiskSize: 1
-        vmRam: 5
-        vmVolumeSize: 2
+        serverDiskSize: 1.4658129805029452
+        vmRam: 5.637376656633329
+        vmVolumeSize: 2.3021358869347655
         projectName: projectName
         projectId: 7
         serverCpu: 0
@@ -56848,20 +56848,20 @@ components:
           format: int64
           type: integer
         serverRam:
-          format: int64
-          type: integer
+          format: double
+          type: number
         serverDiskSize:
-          format: int64
-          type: integer
+          format: double
+          type: number
         vmCpu:
           format: int64
           type: integer
         vmRam:
-          format: int64
-          type: integer
+          format: double
+          type: number
         vmVolumeSize:
-          format: int64
-          type: integer
+          format: double
+          type: number
         projectId:
           format: int32
           type: integer
@@ -59888,7 +59888,7 @@ components:
         createdAt: createdAt
         spotInstance: true
         autoscalingGroup: autoscalingGroup
-        diskSize: 5
+        diskSize: 5.962133916683182
         replicaCount: 3
         kubernetesHealth: kubernetesHealth
         instanceId: instanceId
@@ -59901,7 +59901,7 @@ components:
           key: key
         - value: value
           key: key
-        ram: 2
+        ram: 2.3021358869347655
         tanzuFlavor: tanzuFlavor
         organizationName: organizationName
         awsInstanceType: awsInstanceType
@@ -59942,8 +59942,8 @@ components:
           nullable: true
           type: string
         diskSize:
-          format: int64
-          type: integer
+          format: double
+          type: number
         kubernetesHealth:
           nullable: true
           type: string
@@ -59960,8 +59960,8 @@ components:
           format: int32
           type: integer
         ram:
-          format: int64
-          type: integer
+          format: double
+          type: number
         role:
           $ref: '#/components/schemas/CloudRole'
         status:
@@ -60123,7 +60123,7 @@ components:
           createdAt: createdAt
           spotInstance: true
           autoscalingGroup: autoscalingGroup
-          diskSize: 5
+          diskSize: 5.962133916683182
           replicaCount: 3
           kubernetesHealth: kubernetesHealth
           instanceId: instanceId
@@ -60136,7 +60136,7 @@ components:
             key: key
           - value: value
             key: key
-          ram: 2
+          ram: 2.3021358869347655
           tanzuFlavor: tanzuFlavor
           organizationName: organizationName
           awsInstanceType: awsInstanceType
@@ -60172,7 +60172,7 @@ components:
           createdAt: createdAt
           spotInstance: true
           autoscalingGroup: autoscalingGroup
-          diskSize: 5
+          diskSize: 5.962133916683182
           replicaCount: 3
           kubernetesHealth: kubernetesHealth
           instanceId: instanceId
@@ -60185,7 +60185,7 @@ components:
             key: key
           - value: value
             key: key
-          ram: 2
+          ram: 2.3021358869347655
           tanzuFlavor: tanzuFlavor
           organizationName: organizationName
           awsInstanceType: awsInstanceType
@@ -60236,7 +60236,7 @@ components:
           createdAt: createdAt
           spotInstance: true
           autoscalingGroup: autoscalingGroup
-          diskSize: 5
+          diskSize: 5.962133916683182
           replicaCount: 3
           kubernetesHealth: kubernetesHealth
           instanceId: instanceId
@@ -60249,7 +60249,7 @@ components:
             key: key
           - value: value
             key: key
-          ram: 2
+          ram: 2.3021358869347655
           tanzuFlavor: tanzuFlavor
           organizationName: organizationName
           awsInstanceType: awsInstanceType
@@ -60285,7 +60285,7 @@ components:
           createdAt: createdAt
           spotInstance: true
           autoscalingGroup: autoscalingGroup
-          diskSize: 5
+          diskSize: 5.962133916683182
           replicaCount: 3
           kubernetesHealth: kubernetesHealth
           instanceId: instanceId
@@ -60298,7 +60298,7 @@ components:
             key: key
           - value: value
             key: key
-          ram: 2
+          ram: 2.3021358869347655
           tanzuFlavor: tanzuFlavor
           organizationName: organizationName
           awsInstanceType: awsInstanceType
