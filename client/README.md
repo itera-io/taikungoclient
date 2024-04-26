@@ -700,6 +700,8 @@ Class | Method | HTTP request | Description
 *UserGroupAPI* | [**UsergroupsListByProjectGroupId**](docs/UserGroupAPI.md#usergroupslistbyprojectgroupid) | **Get** /api/v1/usergroups/list/{projectGroupId} | Dropdown list
 *UserGroupAPI* | [**UsergroupsUpdate**](docs/UserGroupAPI.md#usergroupsupdate) | **Put** /api/v1/usergroups/update/{userGroupId} | Update user groups
 *UserGroupAPI* | [**UsergroupsUserGroupUsers**](docs/UserGroupAPI.md#usergroupsusergroupusers) | **Get** /api/v1/usergroups/users/{userGroupId} | Dropdown list
+*UserGroupsAPI* | [**UsergroupsBindUser**](docs/UserGroupsAPI.md#usergroupsbinduser) | **Post** /api/v1/usergroups/bind-user | Bind Users to group
+*UserGroupsAPI* | [**UsergroupsUnbindUser**](docs/UserGroupsAPI.md#usergroupsunbinduser) | **Post** /api/v1/usergroups/unbind-user | Unbind Users from group
 *UserProjectsAPI* | [**UserprojectsBindProjects**](docs/UserProjectsAPI.md#userprojectsbindprojects) | **Post** /api/v1/userprojects/bindprojects | Bind projects to user
 *UserProjectsAPI* | [**UserprojectsBindUsers**](docs/UserProjectsAPI.md#userprojectsbindusers) | **Post** /api/v1/userprojects/bindusers | Bind users to project
 *UserProjectsAPI* | [**UserprojectsProjectListByUser**](docs/UserProjectsAPI.md#userprojectsprojectlistbyuser) | **Get** /api/v1/userprojects/projects/list | Projects list for user
@@ -868,6 +870,7 @@ Class | Method | HTTP request | Description
  - [BindUnbindEndpointToTokenCommand](docs/BindUnbindEndpointToTokenCommand.md)
  - [BindUserGroupsToProjectGroupCommand](docs/BindUserGroupsToProjectGroupCommand.md)
  - [BindUsersCommand](docs/BindUsersCommand.md)
+ - [BindUsersToUserGroupCommand](docs/BindUsersToUserGroupCommand.md)
  - [BoundFlavorsForProjectsList](docs/BoundFlavorsForProjectsList.md)
  - [BoundFlavorsForProjectsListDto](docs/BoundFlavorsForProjectsListDto.md)
  - [BoundImagesForProjectsList](docs/BoundImagesForProjectsList.md)
@@ -1503,6 +1506,7 @@ Class | Method | HTTP request | Description
  - [UnbindAppRepositoryCommand](docs/UnbindAppRepositoryCommand.md)
  - [UnbindFlavorFromProjectCommand](docs/UnbindFlavorFromProjectCommand.md)
  - [UnbindProjectFromProjectGroupCommand](docs/UnbindProjectFromProjectGroupCommand.md)
+ - [UnbindUserFromUserGroupCommand](docs/UnbindUserFromUserGroupCommand.md)
  - [UnbindUserGroupFromProjectGroupCommand](docs/UnbindUserGroupFromProjectGroupCommand.md)
  - [UnshelveStandaloneVmCommand](docs/UnshelveStandaloneVmCommand.md)
  - [UpdateAccessProfileDto](docs/UpdateAccessProfileDto.md)

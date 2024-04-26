@@ -77,6 +77,7 @@ api_taikun_lb.go
 api_tanzu.go
 api_ticket.go
 api_user_group.go
+api_user_groups.go
 api_user_projects.go
 api_user_token.go
 api_users.go
@@ -220,6 +221,7 @@ docs/BindSubscriptionResponseDto.md
 docs/BindUnbindEndpointToTokenCommand.md
 docs/BindUserGroupsToProjectGroupCommand.md
 docs/BindUsersCommand.md
+docs/BindUsersToUserGroupCommand.md
 docs/BoundFlavorsForProjectsList.md
 docs/BoundFlavorsForProjectsListDto.md
 docs/BoundImagesForProjectsList.md
@@ -914,6 +916,7 @@ docs/TryForFreeCommand.md
 docs/UnbindAppRepositoryCommand.md
 docs/UnbindFlavorFromProjectCommand.md
 docs/UnbindProjectFromProjectGroupCommand.md
+docs/UnbindUserFromUserGroupCommand.md
 docs/UnbindUserGroupFromProjectGroupCommand.md
 docs/UnshelveStandaloneVmCommand.md
 docs/UpdateAccessProfileDto.md
@@ -960,6 +963,7 @@ docs/UserGroupAPI.md
 docs/UserGroupDetailsListDto.md
 docs/UserGroupEntityListDto.md
 docs/UserGroupList.md
+docs/UserGroupsAPI.md
 docs/UserListDto.md
 docs/UserListForUserGroupDto.md
 docs/UserProjectsAPI.md
@@ -1128,6 +1132,7 @@ model_bind_subscription_response_dto.go
 model_bind_unbind_endpoint_to_token_command.go
 model_bind_user_groups_to_project_group_command.go
 model_bind_users_command.go
+model_bind_users_to_user_group_command.go
 model_bound_flavors_for_projects_list.go
 model_bound_flavors_for_projects_list_dto.go
 model_bound_images_for_projects_list.go
@@ -1763,6 +1768,7 @@ model_try_for_free_command.go
 model_unbind_app_repository_command.go
 model_unbind_flavor_from_project_command.go
 model_unbind_project_from_project_group_command.go
+model_unbind_user_from_user_group_command.go
 model_unbind_user_group_from_project_group_command.go
 model_unshelve_standalone_vm_command.go
 model_update_access_profile_dto.go
@@ -1921,6 +1927,7 @@ test/api_taikun_lb_test.go
 test/api_tanzu_test.go
 test/api_ticket_test.go
 test/api_user_group_test.go
+test/api_user_groups_test.go
 test/api_user_projects_test.go
 test/api_user_token_test.go
 test/api_users_test.go

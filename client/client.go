@@ -199,6 +199,8 @@ type APIClient struct {
 
 	UserGroupAPI *UserGroupAPIService
 
+	UserGroupsAPI *UserGroupsAPIService
+
 	UserProjectsAPI *UserProjectsAPIService
 
 	UserTokenAPI *UserTokenAPIService
@@ -300,6 +302,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TanzuAPI = (*TanzuAPIService)(&c.common)
 	c.TicketAPI = (*TicketAPIService)(&c.common)
 	c.UserGroupAPI = (*UserGroupAPIService)(&c.common)
+	c.UserGroupsAPI = (*UserGroupsAPIService)(&c.common)
 	c.UserProjectsAPI = (*UserProjectsAPIService)(&c.common)
 	c.UserTokenAPI = (*UserTokenAPIService)(&c.common)
 	c.UsersAPI = (*UsersAPIService)(&c.common)
