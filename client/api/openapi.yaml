@@ -5621,8 +5621,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-04-29T00:02:39.3690629Z
-                  createdAt: 2024-04-29T00:02:39.3690629Z
+                  lastValidated: 2024-04-30T00:02:46.9487002Z
+                  createdAt: 2024-04-30T00:02:46.9487002Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5727,14 +5727,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-04-29T00:02:39.3690629Z
+                    lastBackup: 2024-04-30T00:02:46.9487002Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-04-29T00:02:39.3690629Z
+                  createdAt: 2024-04-30T00:02:46.9487002Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-04-29T00:02:39.3690629Z
+                  lastBackup: 2024-04-30T00:02:46.9487002Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5839,8 +5839,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-04-29T00:02:39.3690629Z
-                  expiration: 2024-04-29T00:02:39.3690629Z
+                  createdAt: 2024-04-30T00:02:46.9487002Z
+                  expiration: 2024-04-30T00:02:46.9487002Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5944,7 +5944,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-04-29T00:02:39.3690629Z
+                  createdAt: 2024-04-30T00:02:46.9487002Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6054,9 +6054,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-04-29T00:02:39.3690629+00:00
-                  startTimeStamp: 2024-04-29T00:02:39.3690629+00:00
-                  createdAt: 2024-04-29T00:02:39.3690629Z
+                  completionDateTime: 2024-04-30T00:02:46.9487002+00:00
+                  startTimeStamp: 2024-04-30T00:02:46.9487002+00:00
+                  createdAt: 2024-04-30T00:02:46.9487002Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -34801,6 +34801,49 @@ paths:
       summary: Bind project groups
       tags:
       - User group
+  /api/v1/usergroups/bind-user:
+    post:
+      operationId: usergroups-bind-user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BindUsersToUserGroupCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Bind Users to group
+      tags:
+      - User group
   /api/v1/usergroups/create:
     post:
       operationId: usergroups-create
@@ -34847,6 +34890,48 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Add user groups
+      tags:
+      - User group
+  /api/v1/usergroups/unbind-user:
+    post:
+      operationId: usergroups-unbind-user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnbindUserFromUserGroupCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Unbind Users from group
       tags:
       - User group
   /api/v1/usergroups/list:
@@ -35010,7 +35095,7 @@ paths:
       summary: Dropdown list
       tags:
       - User group
-  /api/v1/usergroups/users/{userGroupId}:
+  /api/v1/usergroups/{userGroupId}/users:
     get:
       operationId: usergroups-user-group-users
       parameters:
@@ -35022,21 +35107,16 @@ paths:
           format: int32
           type: integer
         style: simple
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: form
       responses:
         "200":
           content:
             application/json:
+              example:
+              - id: "1"
+                name: taikun
               schema:
                 items:
-                  $ref: '#/components/schemas/UserListForUserGroupDto'
+                  $ref: '#/components/schemas/CommonStringBasedDropdownDto'
                 type: array
           description: OK
         "400":
@@ -35069,7 +35149,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Dropdown list
+      summary: Retrieve list of users by user group id
       tags:
       - User group
   /api/v1/usergroups:
@@ -35115,91 +35195,6 @@ paths:
       summary: Remove user group(s)
       tags:
       - User group
-  /api/v1/usergroups/bind-user:
-    post:
-      operationId: usergroups-bind-user
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BindUsersToUserGroupCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Bind Users to group
-      tags:
-      - User groups
-  /api/v1/usergroups/unbind-user:
-    post:
-      operationId: usergroups-unbind-user
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UnbindUserFromUserGroupCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Unbind Users from group
-      tags:
-      - User groups
   /api/v1/userprojects/bindprojects:
     post:
       operationId: userprojects-bind-projects
@@ -64364,22 +64359,6 @@ components:
         name:
           nullable: true
           type: string
-      type: object
-    UserListForUserGroupDto:
-      additionalProperties: false
-      example:
-        isSelected: true
-        userName: userName
-        userId: userId
-      properties:
-        userId:
-          nullable: true
-          type: string
-        userName:
-          nullable: true
-          type: string
-        isSelected:
-          type: boolean
       type: object
     UserResourceChartDto:
       additionalProperties: false

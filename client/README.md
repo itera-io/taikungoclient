@@ -694,14 +694,14 @@ Class | Method | HTTP request | Description
 *TicketAPI* | [**TicketTransfer**](docs/TicketAPI.md#tickettransfer) | **Post** /api/v1/ticket/transfer | Transfer ticket
 *TicketAPI* | [**TicketTransferList**](docs/TicketAPI.md#tickettransferlist) | **Get** /api/v1/ticket/transfer/list | Retrieve organization managers
 *UserGroupAPI* | [**UsergroupsBindProjectsGroup**](docs/UserGroupAPI.md#usergroupsbindprojectsgroup) | **Post** /api/v1/usergroups/bind-project-groups | Bind project groups
+*UserGroupAPI* | [**UsergroupsBindUser**](docs/UserGroupAPI.md#usergroupsbinduser) | **Post** /api/v1/usergroups/bind-user | Bind Users to group
 *UserGroupAPI* | [**UsergroupsCreate**](docs/UserGroupAPI.md#usergroupscreate) | **Post** /api/v1/usergroups/create | Add user groups
 *UserGroupAPI* | [**UsergroupsDelete**](docs/UserGroupAPI.md#usergroupsdelete) | **Delete** /api/v1/usergroups | Remove user group(s)
 *UserGroupAPI* | [**UsergroupsList**](docs/UserGroupAPI.md#usergroupslist) | **Get** /api/v1/usergroups/list | Retrieve list of user groups
 *UserGroupAPI* | [**UsergroupsListByProjectGroupId**](docs/UserGroupAPI.md#usergroupslistbyprojectgroupid) | **Get** /api/v1/usergroups/list/{projectGroupId} | Dropdown list
+*UserGroupAPI* | [**UsergroupsUnbindUser**](docs/UserGroupAPI.md#usergroupsunbinduser) | **Post** /api/v1/usergroups/unbind-user | Unbind Users from group
 *UserGroupAPI* | [**UsergroupsUpdate**](docs/UserGroupAPI.md#usergroupsupdate) | **Put** /api/v1/usergroups/update/{userGroupId} | Update user groups
-*UserGroupAPI* | [**UsergroupsUserGroupUsers**](docs/UserGroupAPI.md#usergroupsusergroupusers) | **Get** /api/v1/usergroups/users/{userGroupId} | Dropdown list
-*UserGroupsAPI* | [**UsergroupsBindUser**](docs/UserGroupsAPI.md#usergroupsbinduser) | **Post** /api/v1/usergroups/bind-user | Bind Users to group
-*UserGroupsAPI* | [**UsergroupsUnbindUser**](docs/UserGroupsAPI.md#usergroupsunbinduser) | **Post** /api/v1/usergroups/unbind-user | Unbind Users from group
+*UserGroupAPI* | [**UsergroupsUserGroupUsers**](docs/UserGroupAPI.md#usergroupsusergroupusers) | **Get** /api/v1/usergroups/{userGroupId}/users | Retrieve list of users by user group id
 *UserProjectsAPI* | [**UserprojectsBindProjects**](docs/UserProjectsAPI.md#userprojectsbindprojects) | **Post** /api/v1/userprojects/bindprojects | Bind projects to user
 *UserProjectsAPI* | [**UserprojectsBindUsers**](docs/UserProjectsAPI.md#userprojectsbindusers) | **Post** /api/v1/userprojects/bindusers | Bind users to project
 *UserProjectsAPI* | [**UserprojectsProjectListByUser**](docs/UserProjectsAPI.md#userprojectsprojectlistbyuser) | **Get** /api/v1/userprojects/projects/list | Projects list for user
@@ -1553,7 +1553,6 @@ Class | Method | HTTP request | Description
  - [UserGroupEntityListDto](docs/UserGroupEntityListDto.md)
  - [UserGroupList](docs/UserGroupList.md)
  - [UserListDto](docs/UserListDto.md)
- - [UserListForUserGroupDto](docs/UserListForUserGroupDto.md)
  - [UserResourceChartDto](docs/UserResourceChartDto.md)
  - [UserRole](docs/UserRole.md)
  - [UserTokenCreateCommand](docs/UserTokenCreateCommand.md)

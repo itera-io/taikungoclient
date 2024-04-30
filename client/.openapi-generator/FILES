@@ -77,7 +77,6 @@ api_taikun_lb.go
 api_tanzu.go
 api_ticket.go
 api_user_group.go
-api_user_groups.go
 api_user_projects.go
 api_user_token.go
 api_users.go
@@ -963,9 +962,7 @@ docs/UserGroupAPI.md
 docs/UserGroupDetailsListDto.md
 docs/UserGroupEntityListDto.md
 docs/UserGroupList.md
-docs/UserGroupsAPI.md
 docs/UserListDto.md
-docs/UserListForUserGroupDto.md
 docs/UserProjectsAPI.md
 docs/UserResourceChartDto.md
 docs/UserRole.md
@@ -1815,7 +1812,6 @@ model_user_group_details_list_dto.go
 model_user_group_entity_list_dto.go
 model_user_group_list.go
 model_user_list_dto.go
-model_user_list_for_user_group_dto.go
 model_user_resource_chart_dto.go
 model_user_role.go
 model_user_token_create_command.go
@@ -1927,7 +1923,6 @@ test/api_taikun_lb_test.go
 test/api_tanzu_test.go
 test/api_ticket_test.go
 test/api_user_group_test.go
-test/api_user_groups_test.go
 test/api_user_projects_test.go
 test/api_user_token_test.go
 test/api_users_test.go
