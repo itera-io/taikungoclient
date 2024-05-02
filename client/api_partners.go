@@ -689,6 +689,8 @@ type ApiPartnerCreateRequest struct {
 	city *string
 	vatNumber *string
 	address *string
+	partnerColorSettings *PartnerColorSettingsCreateDto
+	partnerImageSettings *PartnerImageSettingsCreateDto
 }
 
 func (r ApiPartnerCreateRequest) Logo(logo *os.File) ApiPartnerCreateRequest {
@@ -758,6 +760,16 @@ func (r ApiPartnerCreateRequest) VatNumber(vatNumber string) ApiPartnerCreateReq
 
 func (r ApiPartnerCreateRequest) Address(address string) ApiPartnerCreateRequest {
 	r.address = &address
+	return r
+}
+
+func (r ApiPartnerCreateRequest) PartnerColorSettings(partnerColorSettings PartnerColorSettingsCreateDto) ApiPartnerCreateRequest {
+	r.partnerColorSettings = &partnerColorSettings
+	return r
+}
+
+func (r ApiPartnerCreateRequest) PartnerImageSettings(partnerImageSettings PartnerImageSettingsCreateDto) ApiPartnerCreateRequest {
+	r.partnerImageSettings = &partnerImageSettings
 	return r
 }
 
@@ -879,6 +891,20 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 	}
 	if r.address != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "address", r.address, "")
+	}
+	if r.partnerColorSettings != nil {
+		paramJson, err := parameterToJson(*r.partnerColorSettings)
+		if err != nil {
+			return nil, err
+		}
+		localVarFormParams.Add("partnerColorSettings", paramJson)
+	}
+	if r.partnerImageSettings != nil {
+		paramJson, err := parameterToJson(*r.partnerImageSettings)
+		if err != nil {
+			return nil, err
+		}
+		localVarFormParams.Add("partnerImageSettings", paramJson)
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -1897,6 +1923,8 @@ type ApiPartnerUpdateRequest struct {
 	allowRegistration *bool
 	requiredUserApproval *bool
 	paymentEnabled *bool
+	partnerColorSettings *PartnerColorSettingsUpdateDto
+	partnerImageSettings *PartnerImageSettingsUpdateDto
 }
 
 func (r ApiPartnerUpdateRequest) Id(id int32) ApiPartnerUpdateRequest {
@@ -1971,6 +1999,16 @@ func (r ApiPartnerUpdateRequest) RequiredUserApproval(requiredUserApproval bool)
 
 func (r ApiPartnerUpdateRequest) PaymentEnabled(paymentEnabled bool) ApiPartnerUpdateRequest {
 	r.paymentEnabled = &paymentEnabled
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) PartnerColorSettings(partnerColorSettings PartnerColorSettingsUpdateDto) ApiPartnerUpdateRequest {
+	r.partnerColorSettings = &partnerColorSettings
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) PartnerImageSettings(partnerImageSettings PartnerImageSettingsUpdateDto) ApiPartnerUpdateRequest {
+	r.partnerImageSettings = &partnerImageSettings
 	return r
 }
 
@@ -2095,6 +2133,20 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 	}
 	if r.paymentEnabled != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "paymentEnabled", r.paymentEnabled, "")
+	}
+	if r.partnerColorSettings != nil {
+		paramJson, err := parameterToJson(*r.partnerColorSettings)
+		if err != nil {
+			return nil, err
+		}
+		localVarFormParams.Add("partnerColorSettings", paramJson)
+	}
+	if r.partnerImageSettings != nil {
+		paramJson, err := parameterToJson(*r.partnerImageSettings)
+		if err != nil {
+			return nil, err
+		}
+		localVarFormParams.Add("partnerImageSettings", paramJson)
 	}
 	if r.ctx != nil {
 		// API Key Authentication
