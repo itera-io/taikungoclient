@@ -5621,8 +5621,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-05-02T00:02:53.4664876Z
-                  createdAt: 2024-05-02T00:02:53.4664876Z
+                  lastValidated: 2024-05-03T00:03:06.9572049Z
+                  createdAt: 2024-05-03T00:03:06.9572049Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5727,14 +5727,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-05-02T00:02:53.4664876Z
+                    lastBackup: 2024-05-03T00:03:06.9572049Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-05-02T00:02:53.4664876Z
+                  createdAt: 2024-05-03T00:03:06.9572049Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-05-02T00:02:53.4664876Z
+                  lastBackup: 2024-05-03T00:03:06.9572049Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5839,8 +5839,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-05-02T00:02:53.4664876Z
-                  expiration: 2024-05-02T00:02:53.4664876Z
+                  createdAt: 2024-05-03T00:03:06.9572049Z
+                  expiration: 2024-05-03T00:03:06.9572049Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5944,7 +5944,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-05-02T00:02:53.4664876Z
+                  createdAt: 2024-05-03T00:03:06.9572049Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6054,9 +6054,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-05-02T00:02:53.4664876+00:00
-                  startTimeStamp: 2024-05-02T00:02:53.4664876+00:00
-                  createdAt: 2024-05-02T00:02:53.4664876Z
+                  completionDateTime: 2024-05-03T00:03:06.9572049+00:00
+                  startTimeStamp: 2024-05-03T00:03:06.9572049+00:00
+                  createdAt: 2024-05-03T00:03:06.9572049Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -34892,6 +34892,49 @@ paths:
       summary: Add user groups
       tags:
       - User group
+  /api/v1/projectgroups/unbind-project-group:
+    post:
+      operationId: projectgroups-unbind-project-group
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnbindProjectGroupFromUserGroupCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Unbind project group from user group
+      tags:
+      - User group
   /api/v1/usergroups/unbind-user:
     post:
       operationId: usergroups-unbind-user
@@ -40968,23 +41011,18 @@ components:
       example:
         userGroupId: 6
         projectGroups:
-        - isBound: true
-          projectGroupId: 0
-        - isBound: true
-          projectGroupId: 0
-        userGroupName: userGroupName
+        - 0
+        - 0
       properties:
         projectGroups:
           items:
-            $ref: '#/components/schemas/UpdateUserProjectGroupDto'
+            format: int32
+            type: integer
           nullable: true
           type: array
         userGroupId:
           format: int32
           type: integer
-        userGroupName:
-          nullable: true
-          type: string
       type: object
     BindProjectsCommand:
       additionalProperties: false
@@ -63402,6 +63440,24 @@ components:
           nullable: true
           type: array
       type: object
+    UnbindProjectGroupFromUserGroupCommand:
+      additionalProperties: false
+      example:
+        userGroupId: 0
+        projectGroupIds:
+        - 6
+        - 6
+      properties:
+        userGroupId:
+          format: int32
+          type: integer
+        projectGroupIds:
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
+      type: object
     UnbindUserFromUserGroupCommand:
       additionalProperties: false
       example:
@@ -64216,18 +64272,6 @@ components:
         name:
           nullable: true
           type: string
-        isBound:
-          type: boolean
-      type: object
-    UpdateUserProjectGroupDto:
-      additionalProperties: false
-      example:
-        isBound: true
-        projectGroupId: 0
-      properties:
-        projectGroupId:
-          format: int32
-          type: integer
         isBound:
           type: boolean
       type: object

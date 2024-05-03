@@ -921,6 +921,7 @@ docs/TryForFreeCommand.md
 docs/UnbindAppRepositoryCommand.md
 docs/UnbindFlavorFromProjectCommand.md
 docs/UnbindProjectFromProjectGroupCommand.md
+docs/UnbindProjectGroupFromUserGroupCommand.md
 docs/UnbindUserFromUserGroupCommand.md
 docs/UnbindUserGroupFromProjectGroupCommand.md
 docs/UnshelveStandaloneVmCommand.md
@@ -956,7 +957,6 @@ docs/UpdateUsedIpAddressesCommand.md
 docs/UpdateUserCommand.md
 docs/UpdateUserGroupDto.md
 docs/UpdateUserProjectDto.md
-docs/UpdateUserProjectGroupDto.md
 docs/UpdateVsphereCommand.md
 docs/UpdateVsphereHypervisorsCommand.md
 docs/UpdateZadaraCommand.md
@@ -1777,6 +1777,7 @@ model_try_for_free_command.go
 model_unbind_app_repository_command.go
 model_unbind_flavor_from_project_command.go
 model_unbind_project_from_project_group_command.go
+model_unbind_project_group_from_user_group_command.go
 model_unbind_user_from_user_group_command.go
 model_unbind_user_group_from_project_group_command.go
 model_unshelve_standalone_vm_command.go
@@ -1812,7 +1813,6 @@ model_update_used_ip_addresses_command.go
 model_update_user_command.go
 model_update_user_group_dto.go
 model_update_user_project_dto.go
-model_update_user_project_group_dto.go
 model_update_vsphere_command.go
 model_update_vsphere_hypervisors_command.go
 model_update_zadara_command.go

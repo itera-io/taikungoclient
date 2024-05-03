@@ -22,6 +22,17 @@ func Test_taikuncore_UserGroupAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test UserGroupAPIService ProjectgroupsUnbindProjectGroup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.UserGroupAPI.ProjectgroupsUnbindProjectGroup(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test UserGroupAPIService UsergroupsBindProjectsGroup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
