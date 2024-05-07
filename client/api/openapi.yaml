@@ -5621,8 +5621,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-05-03T00:03:06.9572049Z
-                  createdAt: 2024-05-03T00:03:06.9572049Z
+                  lastValidated: 2024-05-07T00:02:42.148259Z
+                  createdAt: 2024-05-07T00:02:42.148259Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5727,14 +5727,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-05-03T00:03:06.9572049Z
+                    lastBackup: 2024-05-07T00:02:42.148259Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-05-03T00:03:06.9572049Z
+                  createdAt: 2024-05-07T00:02:42.148259Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-05-03T00:03:06.9572049Z
+                  lastBackup: 2024-05-07T00:02:42.148259Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5839,8 +5839,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-05-03T00:03:06.9572049Z
-                  expiration: 2024-05-03T00:03:06.9572049Z
+                  createdAt: 2024-05-07T00:02:42.148259Z
+                  expiration: 2024-05-07T00:02:42.148259Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5944,7 +5944,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-05-03T00:03:06.9572049Z
+                  createdAt: 2024-05-07T00:02:42.148259Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6054,9 +6054,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-05-03T00:03:06.9572049+00:00
-                  startTimeStamp: 2024-05-03T00:03:06.9572049+00:00
-                  createdAt: 2024-05-03T00:03:06.9572049Z
+                  completionDateTime: 2024-05-07T00:02:42.148259+00:00
+                  startTimeStamp: 2024-05-07T00:02:42.148259+00:00
+                  createdAt: 2024-05-07T00:02:42.148259Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -43964,10 +43964,38 @@ components:
         address:
           nullable: true
           type: string
-        partnerColorSettings:
-          $ref: '#/components/schemas/PartnerColorSettingsCreateDto'
-        partnerImageSettings:
-          $ref: '#/components/schemas/PartnerImageSettingsCreateDto'
+        bg:
+          nullable: true
+          type: string
+        bgCollapsedSubItem:
+          nullable: true
+          type: string
+        itemText:
+          nullable: true
+          type: string
+        itemBg:
+          nullable: true
+          type: string
+        itemBgHover:
+          nullable: true
+          type: string
+        itemTextActive:
+          nullable: true
+          type: string
+        itemBgActive:
+          nullable: true
+          type: string
+        itemBgActiveHover:
+          nullable: true
+          type: string
+        expanded:
+          format: binary
+          nullable: true
+          type: string
+        collapsed:
+          format: binary
+          nullable: true
+          type: string
       type: object
     CreateProjectAppCommand:
       additionalProperties: false
@@ -53287,34 +53315,6 @@ components:
       - Array
       - Multiline
       type: string
-    PartnerColorSettingsCreateDto:
-      additionalProperties: false
-      properties:
-        bg:
-          nullable: true
-          type: string
-        bgCollapsedSubItem:
-          nullable: true
-          type: string
-        itemText:
-          nullable: true
-          type: string
-        itemBg:
-          nullable: true
-          type: string
-        itemBgHover:
-          nullable: true
-          type: string
-        itemTextActive:
-          nullable: true
-          type: string
-        itemBgActive:
-          nullable: true
-          type: string
-        itemBgActiveHover:
-          nullable: true
-          type: string
-      type: object
     PartnerColorSettingsDto:
       additionalProperties: false
       example:
@@ -53326,34 +53326,6 @@ components:
         bgCollapsedSubItem: bgCollapsedSubItem
         itemTextActive: itemTextActive
         itemText: itemText
-      properties:
-        bg:
-          nullable: true
-          type: string
-        bgCollapsedSubItem:
-          nullable: true
-          type: string
-        itemText:
-          nullable: true
-          type: string
-        itemBg:
-          nullable: true
-          type: string
-        itemBgHover:
-          nullable: true
-          type: string
-        itemTextActive:
-          nullable: true
-          type: string
-        itemBgActive:
-          nullable: true
-          type: string
-        itemBgActiveHover:
-          nullable: true
-          type: string
-      type: object
-    PartnerColorSettingsUpdateDto:
-      additionalProperties: false
       properties:
         bg:
           nullable: true
@@ -53558,18 +53530,6 @@ components:
           nullable: true
           type: string
       type: object
-    PartnerImageSettingsCreateDto:
-      additionalProperties: false
-      properties:
-        expanded:
-          format: binary
-          nullable: true
-          type: string
-        collapsed:
-          format: binary
-          nullable: true
-          type: string
-      type: object
     PartnerImageSettingsDto:
       additionalProperties: false
       example:
@@ -53583,36 +53543,40 @@ components:
           nullable: true
           type: string
       type: object
-    PartnerImageSettingsUpdateDto:
-      additionalProperties: false
-      properties:
-        expanded:
-          format: binary
-          nullable: true
-          type: string
-        collapsed:
-          format: binary
-          nullable: true
-          type: string
-      type: object
     PartnerRecordDto:
       additionalProperties: false
       example:
-        imageUrl: imageUrl
+        partnerColorSettings:
+          itemBgActive: itemBgActive
+          itemBgActiveHover: itemBgActiveHover
+          bg: bg
+          itemBg: itemBg
+          itemBgHover: itemBgHover
+          bgCollapsedSubItem: bgCollapsedSubItem
+          itemTextActive: itemTextActive
+          itemText: itemText
+        partnerImageSettings:
+          expanded: expanded
+          collapsed: collapsed
         id: 0
         allowRegistration: true
         paymentEnabled: true
+        backgroundImageUrl: backgroundImageUrl
       properties:
-        imageUrl:
-          nullable: true
-          type: string
         id:
           format: int32
           type: integer
+        backgroundImageUrl:
+          nullable: true
+          type: string
         paymentEnabled:
           type: boolean
         allowRegistration:
           type: boolean
+        partnerColorSettings:
+          $ref: '#/components/schemas/PartnerColorSettingsDto'
+        partnerImageSettings:
+          $ref: '#/components/schemas/PartnerImageSettingsDto'
       type: object
     PartnersList:
       additionalProperties: false
@@ -63841,10 +63805,38 @@ components:
         paymentEnabled:
           nullable: true
           type: boolean
-        partnerColorSettings:
-          $ref: '#/components/schemas/PartnerColorSettingsUpdateDto'
-        partnerImageSettings:
-          $ref: '#/components/schemas/PartnerImageSettingsUpdateDto'
+        bg:
+          nullable: true
+          type: string
+        bgCollapsedSubItem:
+          nullable: true
+          type: string
+        itemText:
+          nullable: true
+          type: string
+        itemBg:
+          nullable: true
+          type: string
+        itemBgHover:
+          nullable: true
+          type: string
+        itemTextActive:
+          nullable: true
+          type: string
+        itemBgActive:
+          nullable: true
+          type: string
+        itemBgActiveHover:
+          nullable: true
+          type: string
+        expanded:
+          format: binary
+          nullable: true
+          type: string
+        collapsed:
+          format: binary
+          nullable: true
+          type: string
       type: object
     UpdatePaymentIdCommand:
       additionalProperties: false

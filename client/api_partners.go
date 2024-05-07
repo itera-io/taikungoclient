@@ -689,8 +689,16 @@ type ApiPartnerCreateRequest struct {
 	city *string
 	vatNumber *string
 	address *string
-	partnerColorSettings *PartnerColorSettingsCreateDto
-	partnerImageSettings *PartnerImageSettingsCreateDto
+	bg *string
+	bgCollapsedSubItem *string
+	itemText *string
+	itemBg *string
+	itemBgHover *string
+	itemTextActive *string
+	itemBgActive *string
+	itemBgActiveHover *string
+	expanded *os.File
+	collapsed *os.File
 }
 
 func (r ApiPartnerCreateRequest) Logo(logo *os.File) ApiPartnerCreateRequest {
@@ -763,13 +771,53 @@ func (r ApiPartnerCreateRequest) Address(address string) ApiPartnerCreateRequest
 	return r
 }
 
-func (r ApiPartnerCreateRequest) PartnerColorSettings(partnerColorSettings PartnerColorSettingsCreateDto) ApiPartnerCreateRequest {
-	r.partnerColorSettings = &partnerColorSettings
+func (r ApiPartnerCreateRequest) Bg(bg string) ApiPartnerCreateRequest {
+	r.bg = &bg
 	return r
 }
 
-func (r ApiPartnerCreateRequest) PartnerImageSettings(partnerImageSettings PartnerImageSettingsCreateDto) ApiPartnerCreateRequest {
-	r.partnerImageSettings = &partnerImageSettings
+func (r ApiPartnerCreateRequest) BgCollapsedSubItem(bgCollapsedSubItem string) ApiPartnerCreateRequest {
+	r.bgCollapsedSubItem = &bgCollapsedSubItem
+	return r
+}
+
+func (r ApiPartnerCreateRequest) ItemText(itemText string) ApiPartnerCreateRequest {
+	r.itemText = &itemText
+	return r
+}
+
+func (r ApiPartnerCreateRequest) ItemBg(itemBg string) ApiPartnerCreateRequest {
+	r.itemBg = &itemBg
+	return r
+}
+
+func (r ApiPartnerCreateRequest) ItemBgHover(itemBgHover string) ApiPartnerCreateRequest {
+	r.itemBgHover = &itemBgHover
+	return r
+}
+
+func (r ApiPartnerCreateRequest) ItemTextActive(itemTextActive string) ApiPartnerCreateRequest {
+	r.itemTextActive = &itemTextActive
+	return r
+}
+
+func (r ApiPartnerCreateRequest) ItemBgActive(itemBgActive string) ApiPartnerCreateRequest {
+	r.itemBgActive = &itemBgActive
+	return r
+}
+
+func (r ApiPartnerCreateRequest) ItemBgActiveHover(itemBgActiveHover string) ApiPartnerCreateRequest {
+	r.itemBgActiveHover = &itemBgActiveHover
+	return r
+}
+
+func (r ApiPartnerCreateRequest) Expanded(expanded *os.File) ApiPartnerCreateRequest {
+	r.expanded = expanded
+	return r
+}
+
+func (r ApiPartnerCreateRequest) Collapsed(collapsed *os.File) ApiPartnerCreateRequest {
+	r.collapsed = collapsed
 	return r
 }
 
@@ -892,19 +940,59 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 	if r.address != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "address", r.address, "")
 	}
-	if r.partnerColorSettings != nil {
-		paramJson, err := parameterToJson(*r.partnerColorSettings)
-		if err != nil {
-			return nil, err
-		}
-		localVarFormParams.Add("partnerColorSettings", paramJson)
+	if r.bg != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "bg", r.bg, "")
 	}
-	if r.partnerImageSettings != nil {
-		paramJson, err := parameterToJson(*r.partnerImageSettings)
-		if err != nil {
-			return nil, err
-		}
-		localVarFormParams.Add("partnerImageSettings", paramJson)
+	if r.bgCollapsedSubItem != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "bgCollapsedSubItem", r.bgCollapsedSubItem, "")
+	}
+	if r.itemText != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemText", r.itemText, "")
+	}
+	if r.itemBg != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBg", r.itemBg, "")
+	}
+	if r.itemBgHover != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgHover", r.itemBgHover, "")
+	}
+	if r.itemTextActive != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemTextActive", r.itemTextActive, "")
+	}
+	if r.itemBgActive != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActive", r.itemBgActive, "")
+	}
+	if r.itemBgActiveHover != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActiveHover", r.itemBgActiveHover, "")
+	}
+	var expandedLocalVarFormFileName string
+	var expandedLocalVarFileName     string
+	var expandedLocalVarFileBytes    []byte
+
+	expandedLocalVarFormFileName = "expanded"
+	expandedLocalVarFile := r.expanded
+
+	if expandedLocalVarFile != nil {
+		fbs, _ := io.ReadAll(expandedLocalVarFile)
+
+		expandedLocalVarFileBytes = fbs
+		expandedLocalVarFileName = expandedLocalVarFile.Name()
+		expandedLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: expandedLocalVarFileBytes, fileName: expandedLocalVarFileName, formFileName: expandedLocalVarFormFileName})
+	}
+	var collapsedLocalVarFormFileName string
+	var collapsedLocalVarFileName     string
+	var collapsedLocalVarFileBytes    []byte
+
+	collapsedLocalVarFormFileName = "collapsed"
+	collapsedLocalVarFile := r.collapsed
+
+	if collapsedLocalVarFile != nil {
+		fbs, _ := io.ReadAll(collapsedLocalVarFile)
+
+		collapsedLocalVarFileBytes = fbs
+		collapsedLocalVarFileName = collapsedLocalVarFile.Name()
+		collapsedLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: collapsedLocalVarFileBytes, fileName: collapsedLocalVarFileName, formFileName: collapsedLocalVarFormFileName})
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -1923,8 +2011,16 @@ type ApiPartnerUpdateRequest struct {
 	allowRegistration *bool
 	requiredUserApproval *bool
 	paymentEnabled *bool
-	partnerColorSettings *PartnerColorSettingsUpdateDto
-	partnerImageSettings *PartnerImageSettingsUpdateDto
+	bg *string
+	bgCollapsedSubItem *string
+	itemText *string
+	itemBg *string
+	itemBgHover *string
+	itemTextActive *string
+	itemBgActive *string
+	itemBgActiveHover *string
+	expanded *os.File
+	collapsed *os.File
 }
 
 func (r ApiPartnerUpdateRequest) Id(id int32) ApiPartnerUpdateRequest {
@@ -2002,13 +2098,53 @@ func (r ApiPartnerUpdateRequest) PaymentEnabled(paymentEnabled bool) ApiPartnerU
 	return r
 }
 
-func (r ApiPartnerUpdateRequest) PartnerColorSettings(partnerColorSettings PartnerColorSettingsUpdateDto) ApiPartnerUpdateRequest {
-	r.partnerColorSettings = &partnerColorSettings
+func (r ApiPartnerUpdateRequest) Bg(bg string) ApiPartnerUpdateRequest {
+	r.bg = &bg
 	return r
 }
 
-func (r ApiPartnerUpdateRequest) PartnerImageSettings(partnerImageSettings PartnerImageSettingsUpdateDto) ApiPartnerUpdateRequest {
-	r.partnerImageSettings = &partnerImageSettings
+func (r ApiPartnerUpdateRequest) BgCollapsedSubItem(bgCollapsedSubItem string) ApiPartnerUpdateRequest {
+	r.bgCollapsedSubItem = &bgCollapsedSubItem
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) ItemText(itemText string) ApiPartnerUpdateRequest {
+	r.itemText = &itemText
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) ItemBg(itemBg string) ApiPartnerUpdateRequest {
+	r.itemBg = &itemBg
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) ItemBgHover(itemBgHover string) ApiPartnerUpdateRequest {
+	r.itemBgHover = &itemBgHover
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) ItemTextActive(itemTextActive string) ApiPartnerUpdateRequest {
+	r.itemTextActive = &itemTextActive
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) ItemBgActive(itemBgActive string) ApiPartnerUpdateRequest {
+	r.itemBgActive = &itemBgActive
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) ItemBgActiveHover(itemBgActiveHover string) ApiPartnerUpdateRequest {
+	r.itemBgActiveHover = &itemBgActiveHover
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) Expanded(expanded *os.File) ApiPartnerUpdateRequest {
+	r.expanded = expanded
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) Collapsed(collapsed *os.File) ApiPartnerUpdateRequest {
+	r.collapsed = collapsed
 	return r
 }
 
@@ -2134,19 +2270,59 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 	if r.paymentEnabled != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "paymentEnabled", r.paymentEnabled, "")
 	}
-	if r.partnerColorSettings != nil {
-		paramJson, err := parameterToJson(*r.partnerColorSettings)
-		if err != nil {
-			return nil, err
-		}
-		localVarFormParams.Add("partnerColorSettings", paramJson)
+	if r.bg != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "bg", r.bg, "")
 	}
-	if r.partnerImageSettings != nil {
-		paramJson, err := parameterToJson(*r.partnerImageSettings)
-		if err != nil {
-			return nil, err
-		}
-		localVarFormParams.Add("partnerImageSettings", paramJson)
+	if r.bgCollapsedSubItem != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "bgCollapsedSubItem", r.bgCollapsedSubItem, "")
+	}
+	if r.itemText != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemText", r.itemText, "")
+	}
+	if r.itemBg != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBg", r.itemBg, "")
+	}
+	if r.itemBgHover != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgHover", r.itemBgHover, "")
+	}
+	if r.itemTextActive != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemTextActive", r.itemTextActive, "")
+	}
+	if r.itemBgActive != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActive", r.itemBgActive, "")
+	}
+	if r.itemBgActiveHover != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActiveHover", r.itemBgActiveHover, "")
+	}
+	var expandedLocalVarFormFileName string
+	var expandedLocalVarFileName     string
+	var expandedLocalVarFileBytes    []byte
+
+	expandedLocalVarFormFileName = "expanded"
+	expandedLocalVarFile := r.expanded
+
+	if expandedLocalVarFile != nil {
+		fbs, _ := io.ReadAll(expandedLocalVarFile)
+
+		expandedLocalVarFileBytes = fbs
+		expandedLocalVarFileName = expandedLocalVarFile.Name()
+		expandedLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: expandedLocalVarFileBytes, fileName: expandedLocalVarFileName, formFileName: expandedLocalVarFormFileName})
+	}
+	var collapsedLocalVarFormFileName string
+	var collapsedLocalVarFileName     string
+	var collapsedLocalVarFileBytes    []byte
+
+	collapsedLocalVarFormFileName = "collapsed"
+	collapsedLocalVarFile := r.collapsed
+
+	if collapsedLocalVarFile != nil {
+		fbs, _ := io.ReadAll(collapsedLocalVarFile)
+
+		collapsedLocalVarFileBytes = fbs
+		collapsedLocalVarFileName = collapsedLocalVarFile.Name()
+		collapsedLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: collapsedLocalVarFileBytes, fileName: collapsedLocalVarFileName, formFileName: collapsedLocalVarFormFileName})
 	}
 	if r.ctx != nil {
 		// API Key Authentication
