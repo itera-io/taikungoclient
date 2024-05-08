@@ -21,6 +21,7 @@ var _ MappedNullable = &PartnerRecordDto{}
 // PartnerRecordDto struct for PartnerRecordDto
 type PartnerRecordDto struct {
 	Id *int32 `json:"id,omitempty"`
+	LogoUrl NullableString `json:"logoUrl,omitempty"`
 	BackgroundImageUrl NullableString `json:"backgroundImageUrl,omitempty"`
 	PaymentEnabled *bool `json:"paymentEnabled,omitempty"`
 	AllowRegistration *bool `json:"allowRegistration,omitempty"`
@@ -75,6 +76,48 @@ func (o *PartnerRecordDto) HasId() bool {
 // SetId gets a reference to the given int32 and assigns it to the Id field.
 func (o *PartnerRecordDto) SetId(v int32) {
 	o.Id = &v
+}
+
+// GetLogoUrl returns the LogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PartnerRecordDto) GetLogoUrl() string {
+	if o == nil || IsNil(o.LogoUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LogoUrl.Get()
+}
+
+// GetLogoUrlOk returns a tuple with the LogoUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PartnerRecordDto) GetLogoUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LogoUrl.Get(), o.LogoUrl.IsSet()
+}
+
+// HasLogoUrl returns a boolean if a field has been set.
+func (o *PartnerRecordDto) HasLogoUrl() bool {
+	if o != nil && o.LogoUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLogoUrl gets a reference to the given NullableString and assigns it to the LogoUrl field.
+func (o *PartnerRecordDto) SetLogoUrl(v string) {
+	o.LogoUrl.Set(&v)
+}
+// SetLogoUrlNil sets the value for LogoUrl to be an explicit nil
+func (o *PartnerRecordDto) SetLogoUrlNil() {
+	o.LogoUrl.Set(nil)
+}
+
+// UnsetLogoUrl ensures that no value is present for LogoUrl, not even an explicit nil
+func (o *PartnerRecordDto) UnsetLogoUrl() {
+	o.LogoUrl.Unset()
 }
 
 // GetBackgroundImageUrl returns the BackgroundImageUrl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -259,6 +302,9 @@ func (o PartnerRecordDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if o.LogoUrl.IsSet() {
+		toSerialize["logoUrl"] = o.LogoUrl.Get()
 	}
 	if o.BackgroundImageUrl.IsSet() {
 		toSerialize["backgroundImageUrl"] = o.BackgroundImageUrl.Get()
