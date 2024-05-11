@@ -44,6 +44,7 @@ const (
 	PROJECTSTATUS_UPDATING ProjectStatus = "Updating"
 	PROJECTSTATUS_UPGRADING ProjectStatus = "Upgrading"
 	PROJECTSTATUS_UPDATING_CREDENTIALS ProjectStatus = "UpdatingCredentials"
+	PROJECTSTATUS_UNINSTALL_VIRTUAL_CLUSTER ProjectStatus = "UninstallVirtualCluster"
 )
 
 // All allowed values of ProjectStatus enum
@@ -71,6 +72,7 @@ var AllowedProjectStatusEnumValues = []ProjectStatus{
 	"Updating",
 	"Upgrading",
 	"UpdatingCredentials",
+	"UninstallVirtualCluster",
 }
 
 func (v *ProjectStatus) UnmarshalJSON(src []byte) error {

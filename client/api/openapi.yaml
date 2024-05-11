@@ -5621,8 +5621,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-05-10T00:02:56.0379705Z
-                  createdAt: 2024-05-10T00:02:56.0379705Z
+                  lastValidated: 2024-05-11T00:03:12.3207227Z
+                  createdAt: 2024-05-11T00:03:12.3207227Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5727,14 +5727,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-05-10T00:02:56.0379705Z
+                    lastBackup: 2024-05-11T00:03:12.3207227Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-05-10T00:02:56.0379705Z
+                  createdAt: 2024-05-11T00:03:12.3207227Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-05-10T00:02:56.0379705Z
+                  lastBackup: 2024-05-11T00:03:12.3207227Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5839,8 +5839,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-05-10T00:02:56.0379705Z
-                  expiration: 2024-05-10T00:02:56.0379705Z
+                  createdAt: 2024-05-11T00:03:12.3207227Z
+                  expiration: 2024-05-11T00:03:12.3207227Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5944,7 +5944,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-05-10T00:02:56.0379705Z
+                  createdAt: 2024-05-11T00:03:12.3207227Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6054,9 +6054,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-05-10T00:02:56.0379705+00:00
-                  startTimeStamp: 2024-05-10T00:02:56.0379705+00:00
-                  createdAt: 2024-05-10T00:02:56.0379705Z
+                  completionDateTime: 2024-05-11T00:03:12.3207227+00:00
+                  startTimeStamp: 2024-05-11T00:03:12.3207227+00:00
+                  createdAt: 2024-05-11T00:03:12.3207227Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -36500,6 +36500,134 @@ paths:
           description: Server Error
       tags:
       - Users
+  /api/v1/virtual-cluster/create:
+    post:
+      operationId: virtual-cluster-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVirtualClusterCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Create virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/delete:
+    post:
+      operationId: virtual-cluster-delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteVirtualClusterCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/update:
+    post:
+      operationId: virtual-cluster-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateVirtualClusterCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Update virtual cluster
+      tags:
+      - Virtual Cluster
   /api/v1/vsphere/create:
     post:
       operationId: vsphere-create
@@ -37881,6 +38009,7 @@ components:
       - StartedDisableAi
       - EnableDisableMaintenanceMode
       - UpdateVmFlavor
+      - DeleteVirtualCluster
       type: string
     AdminAddBalanceCommand:
       additionalProperties: false
@@ -44720,6 +44849,19 @@ components:
           nullable: true
           type: array
       type: object
+    CreateVirtualClusterCommand:
+      additionalProperties: false
+      example:
+        name: name
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+      type: object
     CreateVsphereCommand:
       additionalProperties: false
       example:
@@ -46377,6 +46519,15 @@ components:
             type: integer
           nullable: true
           type: array
+      type: object
+    DeleteVirtualClusterCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
       type: object
     DeleteWholeProjectCommand:
       additionalProperties: false
@@ -57208,6 +57359,7 @@ components:
       - Updating
       - Upgrading
       - UpdatingCredentials
+      - UninstallVirtualCluster
       type: string
     ProjectTemplateDropdownListDto:
       additionalProperties: false
@@ -64270,6 +64422,19 @@ components:
           type: string
         isBound:
           type: boolean
+      type: object
+    UpdateVirtualClusterCommand:
+      additionalProperties: false
+      example:
+        projectToken: projectToken
+        status: status
+      properties:
+        projectToken:
+          nullable: true
+          type: string
+        status:
+          nullable: true
+          type: string
       type: object
     UpdateVsphereCommand:
       additionalProperties: false

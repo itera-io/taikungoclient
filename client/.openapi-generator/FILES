@@ -80,6 +80,7 @@ api_user_group.go
 api_user_projects.go
 api_user_token.go
 api_users.go
+api_virtual_cluster.go
 api_vsphere_cloud_credential.go
 api_zadara_cloud_credential.go
 client.go
@@ -333,6 +334,7 @@ docs/CreateTanzuCommand.md
 docs/CreateTicketCommand.md
 docs/CreateUserCommand.md
 docs/CreateUserGroupCommand.md
+docs/CreateVirtualClusterCommand.md
 docs/CreateVsphereCommand.md
 docs/CreateVsphereNetworkDto.md
 docs/CreateZadaraCloudCommand.md
@@ -374,6 +376,7 @@ docs/DeleteStandAloneVmCommand.md
 docs/DeleteStandAloneVmDiskCommand.md
 docs/DeleteSubscriptionCommand.md
 docs/DeleteUserGroupCommand.md
+docs/DeleteVirtualClusterCommand.md
 docs/DeleteWholeProjectCommand.md
 docs/DeploymentDto.md
 docs/DeploymentSearchCommand.md
@@ -953,6 +956,7 @@ docs/UpdateUsedIpAddressesCommand.md
 docs/UpdateUserCommand.md
 docs/UpdateUserGroupDto.md
 docs/UpdateUserProjectDto.md
+docs/UpdateVirtualClusterCommand.md
 docs/UpdateVsphereCommand.md
 docs/UpdateVsphereHypervisorsCommand.md
 docs/UpdateZadaraCommand.md
@@ -982,6 +986,7 @@ docs/VerifyEmailCommand.md
 docs/VerifySlackCredentialsCommand.md
 docs/VerifyTwoFactorTokenCommand.md
 docs/VerifyWebhookCommand.md
+docs/VirtualClusterAPI.md
 docs/VmConsoleScreenshotCommand.md
 docs/VmTemplateListCommand.md
 docs/VsphereCloudCredentialAPI.md
@@ -1239,6 +1244,7 @@ model_create_tanzu_command.go
 model_create_ticket_command.go
 model_create_user_command.go
 model_create_user_group_command.go
+model_create_virtual_cluster_command.go
 model_create_vsphere_command.go
 model_create_vsphere_network_dto.go
 model_create_zadara_cloud_command.go
@@ -1279,6 +1285,7 @@ model_delete_stand_alone_vm_command.go
 model_delete_stand_alone_vm_disk_command.go
 model_delete_subscription_command.go
 model_delete_user_group_command.go
+model_delete_virtual_cluster_command.go
 model_delete_whole_project_command.go
 model_deployment_dto.go
 model_deployment_search_command.go
@@ -1805,6 +1812,7 @@ model_update_used_ip_addresses_command.go
 model_update_user_command.go
 model_update_user_group_dto.go
 model_update_user_project_dto.go
+model_update_virtual_cluster_command.go
 model_update_vsphere_command.go
 model_update_vsphere_hypervisors_command.go
 model_update_zadara_command.go
@@ -1930,6 +1938,7 @@ test/api_user_group_test.go
 test/api_user_projects_test.go
 test/api_user_token_test.go
 test/api_users_test.go
+test/api_virtual_cluster_test.go
 test/api_vsphere_cloud_credential_test.go
 test/api_zadara_cloud_credential_test.go
 utils.go

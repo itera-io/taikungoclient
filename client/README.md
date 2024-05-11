@@ -728,6 +728,9 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**UsersUpdateUser**](docs/UsersAPI.md#usersupdateuser) | **Post** /api/v1/users/update | Update user
 *UsersAPI* | [**UsersUserInfo**](docs/UsersAPI.md#usersuserinfo) | **Get** /api/v1/users/userinfo | Retrieve user info
 *UsersAPI* | [**UsersVerifyEmail**](docs/UsersAPI.md#usersverifyemail) | **Post** /api/v1/users/verifyemail | Verify user email
+*VirtualClusterAPI* | [**VirtualClusterCreate**](docs/VirtualClusterAPI.md#virtualclustercreate) | **Post** /api/v1/virtual-cluster/create | Create virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterDelete**](docs/VirtualClusterAPI.md#virtualclusterdelete) | **Post** /api/v1/virtual-cluster/delete | Delete virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterUpdate**](docs/VirtualClusterAPI.md#virtualclusterupdate) | **Post** /api/v1/virtual-cluster/update | Update virtual cluster
 *VsphereCloudCredentialAPI* | [**VsphereCreate**](docs/VsphereCloudCredentialAPI.md#vspherecreate) | **Post** /api/v1/vsphere/create | Add Vsphere credentials
 *VsphereCloudCredentialAPI* | [**VsphereDatacenterList**](docs/VsphereCloudCredentialAPI.md#vspheredatacenterlist) | **Post** /api/v1/vsphere/datacenter-list | Fetch Vsphere datacenter list
 *VsphereCloudCredentialAPI* | [**VsphereDatastoreList**](docs/VsphereCloudCredentialAPI.md#vspheredatastorelist) | **Post** /api/v1/vsphere/datastore-list | Fetch Vsphere datastore list
@@ -979,6 +982,7 @@ Class | Method | HTTP request | Description
  - [CreateTicketCommand](docs/CreateTicketCommand.md)
  - [CreateUserCommand](docs/CreateUserCommand.md)
  - [CreateUserGroupCommand](docs/CreateUserGroupCommand.md)
+ - [CreateVirtualClusterCommand](docs/CreateVirtualClusterCommand.md)
  - [CreateVsphereCommand](docs/CreateVsphereCommand.md)
  - [CreateVsphereNetworkDto](docs/CreateVsphereNetworkDto.md)
  - [CreateZadaraCloudCommand](docs/CreateZadaraCloudCommand.md)
@@ -1019,6 +1023,7 @@ Class | Method | HTTP request | Description
  - [DeleteStandAloneVmDiskCommand](docs/DeleteStandAloneVmDiskCommand.md)
  - [DeleteSubscriptionCommand](docs/DeleteSubscriptionCommand.md)
  - [DeleteUserGroupCommand](docs/DeleteUserGroupCommand.md)
+ - [DeleteVirtualClusterCommand](docs/DeleteVirtualClusterCommand.md)
  - [DeleteWholeProjectCommand](docs/DeleteWholeProjectCommand.md)
  - [DeploymentDto](docs/DeploymentDto.md)
  - [DeploymentSearchCommand](docs/DeploymentSearchCommand.md)
@@ -1545,6 +1550,7 @@ Class | Method | HTTP request | Description
  - [UpdateUserCommand](docs/UpdateUserCommand.md)
  - [UpdateUserGroupDto](docs/UpdateUserGroupDto.md)
  - [UpdateUserProjectDto](docs/UpdateUserProjectDto.md)
+ - [UpdateVirtualClusterCommand](docs/UpdateVirtualClusterCommand.md)
  - [UpdateVsphereCommand](docs/UpdateVsphereCommand.md)
  - [UpdateVsphereHypervisorsCommand](docs/UpdateVsphereHypervisorsCommand.md)
  - [UpdateZadaraCommand](docs/UpdateZadaraCommand.md)
