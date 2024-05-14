@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the CreateVirtualClusterCommand type satisfies the MappedNullable interface at compile time
@@ -22,6 +23,8 @@ var _ MappedNullable = &CreateVirtualClusterCommand{}
 type CreateVirtualClusterCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	ExpiredAt NullableTime `json:"expiredAt,omitempty"`
+	DeleteOnExpiration *bool `json:"deleteOnExpiration,omitempty"`
 }
 
 // NewCreateVirtualClusterCommand instantiates a new CreateVirtualClusterCommand object
@@ -115,6 +118,80 @@ func (o *CreateVirtualClusterCommand) UnsetName() {
 	o.Name.Unset()
 }
 
+// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateVirtualClusterCommand) GetExpiredAt() time.Time {
+	if o == nil || IsNil(o.ExpiredAt.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.ExpiredAt.Get()
+}
+
+// GetExpiredAtOk returns a tuple with the ExpiredAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateVirtualClusterCommand) GetExpiredAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExpiredAt.Get(), o.ExpiredAt.IsSet()
+}
+
+// HasExpiredAt returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasExpiredAt() bool {
+	if o != nil && o.ExpiredAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiredAt gets a reference to the given NullableTime and assigns it to the ExpiredAt field.
+func (o *CreateVirtualClusterCommand) SetExpiredAt(v time.Time) {
+	o.ExpiredAt.Set(&v)
+}
+// SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
+func (o *CreateVirtualClusterCommand) SetExpiredAtNil() {
+	o.ExpiredAt.Set(nil)
+}
+
+// UnsetExpiredAt ensures that no value is present for ExpiredAt, not even an explicit nil
+func (o *CreateVirtualClusterCommand) UnsetExpiredAt() {
+	o.ExpiredAt.Unset()
+}
+
+// GetDeleteOnExpiration returns the DeleteOnExpiration field value if set, zero value otherwise.
+func (o *CreateVirtualClusterCommand) GetDeleteOnExpiration() bool {
+	if o == nil || IsNil(o.DeleteOnExpiration) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteOnExpiration
+}
+
+// GetDeleteOnExpirationOk returns a tuple with the DeleteOnExpiration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVirtualClusterCommand) GetDeleteOnExpirationOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteOnExpiration) {
+		return nil, false
+	}
+	return o.DeleteOnExpiration, true
+}
+
+// HasDeleteOnExpiration returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasDeleteOnExpiration() bool {
+	if o != nil && !IsNil(o.DeleteOnExpiration) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteOnExpiration gets a reference to the given bool and assigns it to the DeleteOnExpiration field.
+func (o *CreateVirtualClusterCommand) SetDeleteOnExpiration(v bool) {
+	o.DeleteOnExpiration = &v
+}
+
 func (o CreateVirtualClusterCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -130,6 +207,12 @@ func (o CreateVirtualClusterCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
+	}
+	if o.ExpiredAt.IsSet() {
+		toSerialize["expiredAt"] = o.ExpiredAt.Get()
+	}
+	if !IsNil(o.DeleteOnExpiration) {
+		toSerialize["deleteOnExpiration"] = o.DeleteOnExpiration
 	}
 	return toSerialize, nil
 }
