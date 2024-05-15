@@ -24,6 +24,7 @@ type ProjectListDetailDto struct {
 	Name NullableString `json:"name,omitempty"`
 	IsKubernetes *bool `json:"isKubernetes,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
+	IsVirtualCluster *bool `json:"isVirtualCluster,omitempty"`
 	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
 	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
 	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
@@ -58,6 +59,9 @@ type ProjectListDetailDto struct {
 	IsAutoscalingEnabled *bool `json:"isAutoscalingEnabled,omitempty"`
 	IsAutoscalingSpotEnabled *bool `json:"isAutoscalingSpotEnabled,omitempty"`
 	AiEnabled *bool `json:"aiEnabled,omitempty"`
+	AnyServer *bool `json:"anyServer,omitempty"`
+	AnyVm *bool `json:"anyVm,omitempty"`
+	AllUsers []string `json:"allUsers,omitempty"`
 	LockButton *ButtonStatusDto `json:"lockButton,omitempty"`
 	UnlockButton *ButtonStatusDto `json:"unlockButton,omitempty"`
 	DeleteButton *ButtonStatusDto `json:"deleteButton,omitempty"`
@@ -219,6 +223,38 @@ func (o *ProjectListDetailDto) HasIsLocked() bool {
 // SetIsLocked gets a reference to the given bool and assigns it to the IsLocked field.
 func (o *ProjectListDetailDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
+}
+
+// GetIsVirtualCluster returns the IsVirtualCluster field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetIsVirtualCluster() bool {
+	if o == nil || IsNil(o.IsVirtualCluster) {
+		var ret bool
+		return ret
+	}
+	return *o.IsVirtualCluster
+}
+
+// GetIsVirtualClusterOk returns a tuple with the IsVirtualCluster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetIsVirtualClusterOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsVirtualCluster) {
+		return nil, false
+	}
+	return o.IsVirtualCluster, true
+}
+
+// HasIsVirtualCluster returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasIsVirtualCluster() bool {
+	if o != nil && !IsNil(o.IsVirtualCluster) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsVirtualCluster gets a reference to the given bool and assigns it to the IsVirtualCluster field.
+func (o *ProjectListDetailDto) SetIsVirtualCluster(v bool) {
+	o.IsVirtualCluster = &v
 }
 
 // GetHasKubeConfigFile returns the HasKubeConfigFile field value if set, zero value otherwise.
@@ -1460,6 +1496,103 @@ func (o *ProjectListDetailDto) SetAiEnabled(v bool) {
 	o.AiEnabled = &v
 }
 
+// GetAnyServer returns the AnyServer field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetAnyServer() bool {
+	if o == nil || IsNil(o.AnyServer) {
+		var ret bool
+		return ret
+	}
+	return *o.AnyServer
+}
+
+// GetAnyServerOk returns a tuple with the AnyServer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetAnyServerOk() (*bool, bool) {
+	if o == nil || IsNil(o.AnyServer) {
+		return nil, false
+	}
+	return o.AnyServer, true
+}
+
+// HasAnyServer returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasAnyServer() bool {
+	if o != nil && !IsNil(o.AnyServer) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnyServer gets a reference to the given bool and assigns it to the AnyServer field.
+func (o *ProjectListDetailDto) SetAnyServer(v bool) {
+	o.AnyServer = &v
+}
+
+// GetAnyVm returns the AnyVm field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetAnyVm() bool {
+	if o == nil || IsNil(o.AnyVm) {
+		var ret bool
+		return ret
+	}
+	return *o.AnyVm
+}
+
+// GetAnyVmOk returns a tuple with the AnyVm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetAnyVmOk() (*bool, bool) {
+	if o == nil || IsNil(o.AnyVm) {
+		return nil, false
+	}
+	return o.AnyVm, true
+}
+
+// HasAnyVm returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasAnyVm() bool {
+	if o != nil && !IsNil(o.AnyVm) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnyVm gets a reference to the given bool and assigns it to the AnyVm field.
+func (o *ProjectListDetailDto) SetAnyVm(v bool) {
+	o.AnyVm = &v
+}
+
+// GetAllUsers returns the AllUsers field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectListDetailDto) GetAllUsers() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.AllUsers
+}
+
+// GetAllUsersOk returns a tuple with the AllUsers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectListDetailDto) GetAllUsersOk() ([]string, bool) {
+	if o == nil || IsNil(o.AllUsers) {
+		return nil, false
+	}
+	return o.AllUsers, true
+}
+
+// HasAllUsers returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasAllUsers() bool {
+	if o != nil && !IsNil(o.AllUsers) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllUsers gets a reference to the given []string and assigns it to the AllUsers field.
+func (o *ProjectListDetailDto) SetAllUsers(v []string) {
+	o.AllUsers = v
+}
+
 // GetLockButton returns the LockButton field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetLockButton() ButtonStatusDto {
 	if o == nil || IsNil(o.LockButton) {
@@ -1674,6 +1807,9 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
+	if !IsNil(o.IsVirtualCluster) {
+		toSerialize["isVirtualCluster"] = o.IsVirtualCluster
+	}
 	if !IsNil(o.HasKubeConfigFile) {
 		toSerialize["hasKubeConfigFile"] = o.HasKubeConfigFile
 	}
@@ -1775,6 +1911,15 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AiEnabled) {
 		toSerialize["aiEnabled"] = o.AiEnabled
+	}
+	if !IsNil(o.AnyServer) {
+		toSerialize["anyServer"] = o.AnyServer
+	}
+	if !IsNil(o.AnyVm) {
+		toSerialize["anyVm"] = o.AnyVm
+	}
+	if o.AllUsers != nil {
+		toSerialize["allUsers"] = o.AllUsers
 	}
 	if !IsNil(o.LockButton) {
 		toSerialize["lockButton"] = o.LockButton
