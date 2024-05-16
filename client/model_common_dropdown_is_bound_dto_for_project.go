@@ -27,6 +27,7 @@ type CommonDropdownIsBoundDtoForProject struct {
 	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	MaintenanceModeEnabled *bool `json:"maintenanceModeEnabled,omitempty"`
+	IsVirtualCluster *bool `json:"isVirtualCluster,omitempty"`
 	CloudType *CloudType `json:"cloudType,omitempty"`
 	Status *ProjectStatus `json:"status,omitempty"`
 	Health *ProjectHealth `json:"health,omitempty"`
@@ -293,6 +294,38 @@ func (o *CommonDropdownIsBoundDtoForProject) SetMaintenanceModeEnabled(v bool) {
 	o.MaintenanceModeEnabled = &v
 }
 
+// GetIsVirtualCluster returns the IsVirtualCluster field value if set, zero value otherwise.
+func (o *CommonDropdownIsBoundDtoForProject) GetIsVirtualCluster() bool {
+	if o == nil || IsNil(o.IsVirtualCluster) {
+		var ret bool
+		return ret
+	}
+	return *o.IsVirtualCluster
+}
+
+// GetIsVirtualClusterOk returns a tuple with the IsVirtualCluster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonDropdownIsBoundDtoForProject) GetIsVirtualClusterOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsVirtualCluster) {
+		return nil, false
+	}
+	return o.IsVirtualCluster, true
+}
+
+// HasIsVirtualCluster returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasIsVirtualCluster() bool {
+	if o != nil && !IsNil(o.IsVirtualCluster) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsVirtualCluster gets a reference to the given bool and assigns it to the IsVirtualCluster field.
+func (o *CommonDropdownIsBoundDtoForProject) SetIsVirtualCluster(v bool) {
+	o.IsVirtualCluster = &v
+}
+
 // GetCloudType returns the CloudType field value if set, zero value otherwise.
 func (o *CommonDropdownIsBoundDtoForProject) GetCloudType() CloudType {
 	if o == nil || IsNil(o.CloudType) {
@@ -419,6 +452,9 @@ func (o CommonDropdownIsBoundDtoForProject) ToMap() (map[string]interface{}, err
 	}
 	if !IsNil(o.MaintenanceModeEnabled) {
 		toSerialize["maintenanceModeEnabled"] = o.MaintenanceModeEnabled
+	}
+	if !IsNil(o.IsVirtualCluster) {
+		toSerialize["isVirtualCluster"] = o.IsVirtualCluster
 	}
 	if !IsNil(o.CloudType) {
 		toSerialize["cloudType"] = o.CloudType
