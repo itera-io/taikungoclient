@@ -4576,6 +4576,10 @@ paths:
       - Azure cloud credential
   /api/v1/azure/offers/{cloudId}/{publisher}:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>name</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>azureOffer</i></ul></div>
       operationId: azure-offers
       parameters:
       - explode: false
@@ -4638,7 +4642,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AzureOffersList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -4668,7 +4672,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: List Azure offer list by publisher
       tags:
       - Azure cloud credential
   /api/v1/azure/publishers/{cloudId}:
@@ -4768,6 +4773,10 @@ paths:
       - Azure cloud credential
   /api/v1/azure/skus/{cloudId}/{publisher}/{offer}:
     get:
+      description: |-
+        <div style='font-family: Arial, sans-serif;'>
+                                <h2 style='color: #4A90E2;'>Description</h2>
+                                <ul><li><b>SortBy</b> - Options: <i>name</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>azureSku</i></ul></div>
       operationId: azure-skus
       parameters:
       - explode: false
@@ -4837,7 +4846,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AzureSkusList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -4867,7 +4876,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: List Azure skus list by publisher and offer
       tags:
       - Azure cloud credential
   /api/v1/backup/clear/project:
@@ -5350,7 +5360,7 @@ paths:
                 - taikun.cloud/backup
               schema:
                 $ref: '#/components/schemas/BackupDto'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -5380,7 +5390,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Get backup info by name
       tags:
       - Backup policy
   /api/v1/backup/describe/backup/{projectId}/{name}:
@@ -5408,7 +5419,7 @@ paths:
             text/plain:
               schema:
                 type: string
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -5438,7 +5449,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Get backup info by name
       tags:
       - Backup policy
   /api/v1/backup/describe/restore/{projectId}/{name}:
@@ -5466,7 +5478,7 @@ paths:
             text/plain:
               schema:
                 type: string
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -5496,7 +5508,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Get restore info by name
       tags:
       - Backup policy
   /api/v1/backup/describe/schedule/{projectId}/{name}:
@@ -5524,7 +5537,7 @@ paths:
             text/plain:
               schema:
                 type: string
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -5554,7 +5567,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Get schedule info by name
       tags:
       - Backup policy
   /api/v1/backup/location/{projectId}:
@@ -5621,8 +5635,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-05-17T00:02:49.3346267Z
-                  createdAt: 2024-05-17T00:02:49.3346267Z
+                  lastValidated: 2024-05-18T00:03:01.6908297Z
+                  createdAt: 2024-05-18T00:03:01.6908297Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5727,14 +5741,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-05-17T00:02:49.3346267Z
+                    lastBackup: 2024-05-18T00:03:01.6908297Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-05-17T00:02:49.3346267Z
+                  createdAt: 2024-05-18T00:03:01.6908297Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-05-17T00:02:49.3346267Z
+                  lastBackup: 2024-05-18T00:03:01.6908297Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5839,8 +5853,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-05-17T00:02:49.3346267Z
-                  expiration: 2024-05-17T00:02:49.3346267Z
+                  createdAt: 2024-05-18T00:03:01.6908297Z
+                  expiration: 2024-05-18T00:03:01.6908297Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5944,7 +5958,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-05-17T00:02:49.3346267Z
+                  createdAt: 2024-05-18T00:03:01.6908297Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6054,9 +6068,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-05-17T00:02:49.3346267+00:00
-                  startTimeStamp: 2024-05-17T00:02:49.3346267+00:00
-                  createdAt: 2024-05-17T00:02:49.3346267Z
+                  completionDateTime: 2024-05-18T00:03:01.6908297+00:00
+                  startTimeStamp: 2024-05-18T00:03:01.6908297+00:00
+                  createdAt: 2024-05-18T00:03:01.6908297Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -8586,7 +8600,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AllFlavorsList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -8616,7 +8630,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve all flavors
       tags:
       - Cloud credential
   /api/v1/cloudcredentials:
@@ -9180,7 +9195,8 @@ paths:
                 items:
                   type: string
                 type: array
-          description: Success
+          description: OK
+      summary: Retrieve sorting values
       tags:
       - Common
   /api/v1/cronjob/remind-users-by-alerting-profile:
@@ -10816,7 +10832,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AwsFlavorList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -10846,7 +10862,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve awz instance types
       tags:
       - Flavors
   /api/v1/flavors/azure/{cloudId}:
@@ -10936,7 +10953,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AzureFlavorList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -10966,7 +10983,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve azure vm sizes
       tags:
       - Flavors
   /api/v1/flavors/credentials/dropdown/list:
@@ -11249,7 +11267,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GoogleFlavorList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -11279,7 +11297,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve google machine types
       tags:
       - Flavors
   /api/v1/flavors/openshift/{cloudId}:
@@ -11490,7 +11509,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OpenstackFlavorList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -11520,7 +11539,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve openstack flavors
       tags:
       - Flavors
   /api/v1/flavors/proxmox/{cloudId}:
@@ -11973,7 +11993,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AwsFlavorList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -12003,7 +12023,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve zadara instance types
       tags:
       - Flavors
   /api/v1/googlecloud/billing-accounts:
@@ -12588,7 +12609,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublicImageList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -12618,7 +12639,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve azure images
       tags:
       - Images
   /api/v1/images/aws/common/{cloudId}:
@@ -12997,7 +13019,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublicImageList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -13027,7 +13049,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve google images
       tags:
       - Images
   /api/v1/images/openshift/{cloudId}:
@@ -15300,7 +15323,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Kill the pod
       tags:
       - Kubernetes
   /api/v1/kubernetes/restart/daemonset:
@@ -22618,7 +22642,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AvailablePackageDetailsDto'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -22648,7 +22672,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Available helm package details
       tags:
       - Package
   /api/v1/package/list:
@@ -23679,7 +23704,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StripeInvoices'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -23709,7 +23734,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Get required stripe invoices by stripe subscription id
       tags:
       - Payments
   /api/v1/predefinedqueries/prometheus/dashboard/create:
@@ -30707,7 +30733,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServersList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -30737,7 +30763,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve all servers
       tags:
       - Servers
   /api/v1/servers/status/{serverId}:
@@ -31957,7 +31984,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StandaloneVmsList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -31987,7 +32014,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve all vms
       tags:
       - Standalone
   /api/v1/standalone/forpoller:
@@ -33151,7 +33179,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/StripeSubscriptionItemDto'
                 type: array
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -33181,7 +33209,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Get subscription item list
       tags:
       - Stripe
   /api/v1/subscription/bind:
@@ -34435,7 +34464,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArticleList'
-          description: Success
+          description: OK
         "400":
           content:
             application/json:
@@ -34465,7 +34494,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Retrieve articles of ticket
       tags:
       - Ticket
   /api/v1/ticket/transfer/list:
@@ -34661,7 +34691,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Delete ticket
       tags:
       - Ticket
   /api/v1/ticket/delete/message/{messageId}:
@@ -34705,7 +34736,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Delete ticket message
       tags:
       - Ticket
   /api/v1/usergroups/update/{userGroupId}:
@@ -35706,7 +35738,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Delete user token
       tags:
       - User token
   /api/v1/users/changepassword:
@@ -36497,7 +36530,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-          description: Server Error
+          description: Internal Server Error
+      summary: Delete user
       tags:
       - Users
   /api/v1/virtual-cluster/create:
@@ -36626,6 +36660,110 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Update virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/{parentProjectId}:
+    get:
+      operationId: virtual-cluster-list
+      parameters:
+      - explode: false
+        in: path
+        name: parentProjectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VClusterList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve all vCluster by given project
       tags:
       - Virtual Cluster
   /api/v1/vsphere/create:
@@ -65091,6 +65229,127 @@ components:
         email:
           nullable: true
           type: string
+      type: object
+    VClusterList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationName: organizationName
+          alertsCount: 1
+          lastModifiedBy: lastModifiedBy
+          health: null
+          hasKubeConfigFile: true
+          organizationId: 6
+          createdAt: createdAt
+          expiredAt: expiredAt
+          deleteOnExpiration: true
+          createdBy: createdBy
+          cloudType: null
+          isLocked: true
+          name: name
+          id: 0
+          lastModified: lastModified
+          isMaintenanceModeEnabled: true
+          kubernetesVersion: kubernetesVersion
+          status: null
+        - organizationName: organizationName
+          alertsCount: 1
+          lastModifiedBy: lastModifiedBy
+          health: null
+          hasKubeConfigFile: true
+          organizationId: 6
+          createdAt: createdAt
+          expiredAt: expiredAt
+          deleteOnExpiration: true
+          createdBy: createdBy
+          cloudType: null
+          isLocked: true
+          name: name
+          id: 0
+          lastModified: lastModified
+          isMaintenanceModeEnabled: true
+          kubernetesVersion: kubernetesVersion
+          status: null
+        totalCount: 5
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/VClusterListDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
+    VClusterListDto:
+      additionalProperties: false
+      example:
+        organizationName: organizationName
+        alertsCount: 1
+        lastModifiedBy: lastModifiedBy
+        health: null
+        hasKubeConfigFile: true
+        organizationId: 6
+        createdAt: createdAt
+        expiredAt: expiredAt
+        deleteOnExpiration: true
+        createdBy: createdBy
+        cloudType: null
+        isLocked: true
+        name: name
+        id: 0
+        lastModified: lastModified
+        isMaintenanceModeEnabled: true
+        kubernetesVersion: kubernetesVersion
+        status: null
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        isLocked:
+          type: boolean
+        hasKubeConfigFile:
+          type: boolean
+        isMaintenanceModeEnabled:
+          type: boolean
+        organizationName:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          type: integer
+        kubernetesVersion:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        createdBy:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        alertsCount:
+          format: int32
+          type: integer
+        expiredAt:
+          nullable: true
+          type: string
+        deleteOnExpiration:
+          type: boolean
+        cloudType:
+          $ref: '#/components/schemas/CloudType'
+        status:
+          $ref: '#/components/schemas/ProjectStatus'
+        health:
+          $ref: '#/components/schemas/ProjectHealth'
       type: object
     ValidateVsphereCommand:
       additionalProperties: false

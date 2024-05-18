@@ -532,7 +532,7 @@ func (r ApiUsersDeleteRequest) Execute() (*http.Response, error) {
 }
 
 /*
-UsersDelete Method for UsersDelete
+UsersDelete Delete user
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id

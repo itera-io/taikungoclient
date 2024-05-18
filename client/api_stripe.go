@@ -35,7 +35,7 @@ func (r ApiStripeSubscriptionItemListRequest) Execute() ([]StripeSubscriptionIte
 }
 
 /*
-StripeSubscriptionItemList Method for StripeSubscriptionItemList
+StripeSubscriptionItemList Get subscription item list
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param subscriptionId

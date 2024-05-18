@@ -1180,7 +1180,7 @@ func (r ApiStandaloneListRequest) Execute() (*StandaloneVmsList, *http.Response,
 }
 
 /*
-StandaloneList Method for StandaloneList
+StandaloneList Retrieve all vms
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiStandaloneListRequest

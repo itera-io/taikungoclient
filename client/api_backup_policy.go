@@ -36,7 +36,7 @@ func (r ApiBackupByNameRequest) Execute() (*BackupDto, *http.Response, error) {
 }
 
 /*
-BackupByName Method for BackupByName
+BackupByName Get backup info by name
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId
@@ -1184,7 +1184,7 @@ func (r ApiBackupDescribeBackupRequest) Execute() (string, *http.Response, error
 }
 
 /*
-BackupDescribeBackup Method for BackupDescribeBackup
+BackupDescribeBackup Get backup info by name
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId
@@ -1357,7 +1357,7 @@ func (r ApiBackupDescribeRestoreRequest) Execute() (string, *http.Response, erro
 }
 
 /*
-BackupDescribeRestore Method for BackupDescribeRestore
+BackupDescribeRestore Get restore info by name
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId
@@ -1530,7 +1530,7 @@ func (r ApiBackupDescribeScheduleRequest) Execute() (string, *http.Response, err
 }
 
 /*
-BackupDescribeSchedule Method for BackupDescribeSchedule
+BackupDescribeSchedule Get schedule info by name
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId

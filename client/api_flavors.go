@@ -89,7 +89,7 @@ func (r ApiFlavorsAwsInstanceTypesRequest) Execute() (*AwsFlavorList, *http.Resp
 }
 
 /*
-FlavorsAwsInstanceTypes Method for FlavorsAwsInstanceTypes
+FlavorsAwsInstanceTypes Retrieve awz instance types
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param cloudId
@@ -339,7 +339,7 @@ func (r ApiFlavorsAzureVmSizesRequest) Execute() (*AzureFlavorList, *http.Respon
 }
 
 /*
-FlavorsAzureVmSizes Method for FlavorsAzureVmSizes
+FlavorsAzureVmSizes Retrieve azure vm sizes
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param cloudId
@@ -952,7 +952,7 @@ func (r ApiFlavorsGoogleMachineTypesRequest) Execute() (*GoogleFlavorList, *http
 }
 
 /*
-FlavorsGoogleMachineTypes Method for FlavorsGoogleMachineTypes
+FlavorsGoogleMachineTypes Retrieve google machine types
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param cloudId
@@ -1452,7 +1452,7 @@ func (r ApiFlavorsOpenstackFlavorsRequest) Execute() (*OpenstackFlavorList, *htt
 }
 
 /*
-FlavorsOpenstackFlavors Method for FlavorsOpenstackFlavors
+FlavorsOpenstackFlavors Retrieve openstack flavors
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param cloudId
@@ -2872,7 +2872,7 @@ func (r ApiFlavorsZadaraInstanceTypesRequest) Execute() (*AwsFlavorList, *http.R
 }
 
 /*
-FlavorsZadaraInstanceTypes Method for FlavorsZadaraInstanceTypes
+FlavorsZadaraInstanceTypes Retrieve zadara instance types
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param cloudId

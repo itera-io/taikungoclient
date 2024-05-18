@@ -840,7 +840,7 @@ func (r ApiServersListRequest) Execute() (*ServersList, *http.Response, error) {
 }
 
 /*
-ServersList Method for ServersList
+ServersList Retrieve all servers
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiServersListRequest

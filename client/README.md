@@ -157,22 +157,22 @@ Class | Method | HTTP request | Description
 *AzureCloudCredentialAPI* | [**AzureDashboard**](docs/AzureCloudCredentialAPI.md#azuredashboard) | **Post** /api/v1/azure/quota/list | Fetch Azure quota list
 *AzureCloudCredentialAPI* | [**AzureList**](docs/AzureCloudCredentialAPI.md#azurelist) | **Get** /api/v1/azure/list | Retrieve list of azure cloud credentials
 *AzureCloudCredentialAPI* | [**AzureLocations**](docs/AzureCloudCredentialAPI.md#azurelocations) | **Post** /api/v1/azure/locations | Fetch Azure location list
-*AzureCloudCredentialAPI* | [**AzureOffers**](docs/AzureCloudCredentialAPI.md#azureoffers) | **Get** /api/v1/azure/offers/{cloudId}/{publisher} | 
+*AzureCloudCredentialAPI* | [**AzureOffers**](docs/AzureCloudCredentialAPI.md#azureoffers) | **Get** /api/v1/azure/offers/{cloudId}/{publisher} | List Azure offer list by publisher
 *AzureCloudCredentialAPI* | [**AzurePublishers**](docs/AzureCloudCredentialAPI.md#azurepublishers) | **Get** /api/v1/azure/publishers/{cloudId} | List Azure publishers list
-*AzureCloudCredentialAPI* | [**AzureSkus**](docs/AzureCloudCredentialAPI.md#azureskus) | **Get** /api/v1/azure/skus/{cloudId}/{publisher}/{offer} | 
+*AzureCloudCredentialAPI* | [**AzureSkus**](docs/AzureCloudCredentialAPI.md#azureskus) | **Get** /api/v1/azure/skus/{cloudId}/{publisher}/{offer} | List Azure skus list by publisher and offer
 *AzureCloudCredentialAPI* | [**AzureSubscriptions**](docs/AzureCloudCredentialAPI.md#azuresubscriptions) | **Post** /api/v1/azure/subscriptions | Azure subscriptions list
 *AzureCloudCredentialAPI* | [**AzureUpdate**](docs/AzureCloudCredentialAPI.md#azureupdate) | **Post** /api/v1/azure/update | Update Azure credentials
 *AzureCloudCredentialAPI* | [**AzureZones**](docs/AzureCloudCredentialAPI.md#azurezones) | **Post** /api/v1/azure/zones | Fetch Azure zone list
-*BackupPolicyAPI* | [**BackupByName**](docs/BackupPolicyAPI.md#backupbyname) | **Get** /api/v1/backup/{projectId}/{name} | 
+*BackupPolicyAPI* | [**BackupByName**](docs/BackupPolicyAPI.md#backupbyname) | **Get** /api/v1/backup/{projectId}/{name} | Get backup info by name
 *BackupPolicyAPI* | [**BackupClearProject**](docs/BackupPolicyAPI.md#backupclearproject) | **Post** /api/v1/backup/clear/project | Delete unfinished backup for project
 *BackupPolicyAPI* | [**BackupCreate**](docs/BackupPolicyAPI.md#backupcreate) | **Post** /api/v1/backup/create | Add backup policy
 *BackupPolicyAPI* | [**BackupDeleteBackup**](docs/BackupPolicyAPI.md#backupdeletebackup) | **Post** /api/v1/backup/delete/backup | Remove policy backup
 *BackupPolicyAPI* | [**BackupDeleteBackupLocation**](docs/BackupPolicyAPI.md#backupdeletebackuplocation) | **Post** /api/v1/backup/delete/location | Remove backup location from project
 *BackupPolicyAPI* | [**BackupDeleteRestore**](docs/BackupPolicyAPI.md#backupdeleterestore) | **Post** /api/v1/backup/delete/restore | Remove policy restore
 *BackupPolicyAPI* | [**BackupDeleteSchedule**](docs/BackupPolicyAPI.md#backupdeleteschedule) | **Post** /api/v1/backup/delete/schedule | Remove policy schedule
-*BackupPolicyAPI* | [**BackupDescribeBackup**](docs/BackupPolicyAPI.md#backupdescribebackup) | **Get** /api/v1/backup/describe/backup/{projectId}/{name} | 
-*BackupPolicyAPI* | [**BackupDescribeRestore**](docs/BackupPolicyAPI.md#backupdescriberestore) | **Get** /api/v1/backup/describe/restore/{projectId}/{name} | 
-*BackupPolicyAPI* | [**BackupDescribeSchedule**](docs/BackupPolicyAPI.md#backupdescribeschedule) | **Get** /api/v1/backup/describe/schedule/{projectId}/{name} | 
+*BackupPolicyAPI* | [**BackupDescribeBackup**](docs/BackupPolicyAPI.md#backupdescribebackup) | **Get** /api/v1/backup/describe/backup/{projectId}/{name} | Get backup info by name
+*BackupPolicyAPI* | [**BackupDescribeRestore**](docs/BackupPolicyAPI.md#backupdescriberestore) | **Get** /api/v1/backup/describe/restore/{projectId}/{name} | Get restore info by name
+*BackupPolicyAPI* | [**BackupDescribeSchedule**](docs/BackupPolicyAPI.md#backupdescribeschedule) | **Get** /api/v1/backup/describe/schedule/{projectId}/{name} | Get schedule info by name
 *BackupPolicyAPI* | [**BackupDisableBackup**](docs/BackupPolicyAPI.md#backupdisablebackup) | **Post** /api/v1/backup/disablebackup | Disable backup by the projectId
 *BackupPolicyAPI* | [**BackupEnableBackup**](docs/BackupPolicyAPI.md#backupenablebackup) | **Post** /api/v1/backup/enablebackup | Enable backup by the projectId
 *BackupPolicyAPI* | [**BackupImportBackupStorage**](docs/BackupPolicyAPI.md#backupimportbackupstorage) | **Post** /api/v1/backup/location | Import backup storage from source project to target project
@@ -229,7 +229,7 @@ Class | Method | HTTP request | Description
 *CheckerAPI* | [**CheckerUser**](docs/CheckerAPI.md#checkeruser) | **Post** /api/v1/checker/user | Check duplicate username
 *CheckerAPI* | [**CheckerYaml**](docs/CheckerAPI.md#checkeryaml) | **Post** /api/v1/checker/yaml | Check yaml file
 *CheckerAPI* | [**CheckerZadara**](docs/CheckerAPI.md#checkerzadara) | **Post** /api/v1/checker/zadara | Check zadara credential
-*CloudCredentialAPI* | [**CloudcredentialsAllFlavors**](docs/CloudCredentialAPI.md#cloudcredentialsallflavors) | **Get** /api/v1/cloudcredentials/flavors/{cloudId} | 
+*CloudCredentialAPI* | [**CloudcredentialsAllFlavors**](docs/CloudCredentialAPI.md#cloudcredentialsallflavors) | **Get** /api/v1/cloudcredentials/flavors/{cloudId} | Retrieve all flavors
 *CloudCredentialAPI* | [**CloudcredentialsDashboardList**](docs/CloudCredentialAPI.md#cloudcredentialsdashboardlist) | **Get** /api/v1/cloudcredentials/list | Retrieve all cloud credentials
 *CloudCredentialAPI* | [**CloudcredentialsDelete**](docs/CloudCredentialAPI.md#cloudcredentialsdelete) | **Delete** /api/v1/cloudcredentials/{cloudId} | Remove cloud credential by cloud Id
 *CloudCredentialAPI* | [**CloudcredentialsExceeded**](docs/CloudCredentialAPI.md#cloudcredentialsexceeded) | **Get** /api/v1/cloudcredentials/exceeded-quotas | Retrieve cloud credentials exceeded quotas
@@ -243,7 +243,7 @@ Class | Method | HTTP request | Description
 *CommonAPI* | [**CommonEnumValues**](docs/CommonAPI.md#commonenumvalues) | **Get** /api/v1/common/enumvalues | Retrieve enum values
 *CommonAPI* | [**CommonIpRangeCount**](docs/CommonAPI.md#commoniprangecount) | **Post** /api/v1/common/ip-range-count | Retrieve ip address range count
 *CommonAPI* | [**CommonIpRangeList**](docs/CommonAPI.md#commoniprangelist) | **Post** /api/v1/common/ip-range-list | Retrieve ip address range list
-*CommonAPI* | [**CommonSortingElements**](docs/CommonAPI.md#commonsortingelements) | **Get** /api/v1/common/sorting-elements/{type} | 
+*CommonAPI* | [**CommonSortingElements**](docs/CommonAPI.md#commonsortingelements) | **Get** /api/v1/common/sorting-elements/{type} | Retrieve sorting values
 *CronJobServiceAPI* | [**CronjobAutoUpgradeProjects**](docs/CronJobServiceAPI.md#cronjobautoupgradeprojects) | **Post** /api/v1/cronjob/auto-upgrade-projects | Upgrade projects that auto-upgrade option enabled
 *CronJobServiceAPI* | [**CronjobBlockOrganization**](docs/CronJobServiceAPI.md#cronjobblockorganization) | **Post** /api/v1/cronjob/block-organization | Block organization
 *CronJobServiceAPI* | [**CronjobCancelExpiredSubscriptions**](docs/CronJobServiceAPI.md#cronjobcancelexpiredsubscriptions) | **Post** /api/v1/cronjob/cancel-expired-subscriptions | Cancel expired subscriptions
@@ -277,19 +277,19 @@ Class | Method | HTTP request | Description
 *DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete dns server
 *DnsServersAPI* | [**DnsserversEdit**](docs/DnsServersAPI.md#dnsserversedit) | **Put** /api/v1/dnsservers/edit/{id} | Edit dns server
 *DnsServersAPI* | [**DnsserversList**](docs/DnsServersAPI.md#dnsserverslist) | **Get** /api/v1/dnsservers/{accessProfileId} | List dn servers by profile id
-*FlavorsAPI* | [**FlavorsAwsInstanceTypes**](docs/FlavorsAPI.md#flavorsawsinstancetypes) | **Get** /api/v1/flavors/aws/{cloudId} | 
-*FlavorsAPI* | [**FlavorsAzureVmSizes**](docs/FlavorsAPI.md#flavorsazurevmsizes) | **Get** /api/v1/flavors/azure/{cloudId} | 
+*FlavorsAPI* | [**FlavorsAwsInstanceTypes**](docs/FlavorsAPI.md#flavorsawsinstancetypes) | **Get** /api/v1/flavors/aws/{cloudId} | Retrieve awz instance types
+*FlavorsAPI* | [**FlavorsAzureVmSizes**](docs/FlavorsAPI.md#flavorsazurevmsizes) | **Get** /api/v1/flavors/azure/{cloudId} | Retrieve azure vm sizes
 *FlavorsAPI* | [**FlavorsBindToProject**](docs/FlavorsAPI.md#flavorsbindtoproject) | **Post** /api/v1/flavors/bind | Bind flavors to project
 *FlavorsAPI* | [**FlavorsDropdownFlavors**](docs/FlavorsAPI.md#flavorsdropdownflavors) | **Get** /api/v1/flavors/credentials/dropdown/list | Retrieve cloud credentials dropdown list
-*FlavorsAPI* | [**FlavorsGoogleMachineTypes**](docs/FlavorsAPI.md#flavorsgooglemachinetypes) | **Get** /api/v1/flavors/google/{cloudId} | 
+*FlavorsAPI* | [**FlavorsGoogleMachineTypes**](docs/FlavorsAPI.md#flavorsgooglemachinetypes) | **Get** /api/v1/flavors/google/{cloudId} | Retrieve google machine types
 *FlavorsAPI* | [**FlavorsOpenshiftFlavors**](docs/FlavorsAPI.md#flavorsopenshiftflavors) | **Get** /api/v1/flavors/openshift/{cloudId} | Retrieve openshift flavors
-*FlavorsAPI* | [**FlavorsOpenstackFlavors**](docs/FlavorsAPI.md#flavorsopenstackflavors) | **Get** /api/v1/flavors/openstack/{cloudId} | 
+*FlavorsAPI* | [**FlavorsOpenstackFlavors**](docs/FlavorsAPI.md#flavorsopenstackflavors) | **Get** /api/v1/flavors/openstack/{cloudId} | Retrieve openstack flavors
 *FlavorsAPI* | [**FlavorsProxmoxFlavors**](docs/FlavorsAPI.md#flavorsproxmoxflavors) | **Get** /api/v1/flavors/proxmox/{cloudId} | Retrieve proxmox flavors
 *FlavorsAPI* | [**FlavorsSelectedFlavorsForProject**](docs/FlavorsAPI.md#flavorsselectedflavorsforproject) | **Get** /api/v1/flavors/projects/list | Retrieve selected flavors for project
 *FlavorsAPI* | [**FlavorsTanzuFlavors**](docs/FlavorsAPI.md#flavorstanzuflavors) | **Get** /api/v1/flavors/tanzu/{cloudId} | Retrieve tanzu flavors
 *FlavorsAPI* | [**FlavorsUnbindFromProject**](docs/FlavorsAPI.md#flavorsunbindfromproject) | **Post** /api/v1/flavors/unbind | Unbind flavors from project
 *FlavorsAPI* | [**FlavorsVsphereFlavors**](docs/FlavorsAPI.md#flavorsvsphereflavors) | **Get** /api/v1/flavors/vsphere/{cloudId} | Retrieve vsphere flavors
-*FlavorsAPI* | [**FlavorsZadaraInstanceTypes**](docs/FlavorsAPI.md#flavorszadarainstancetypes) | **Get** /api/v1/flavors/zadara/{cloudId} | 
+*FlavorsAPI* | [**FlavorsZadaraInstanceTypes**](docs/FlavorsAPI.md#flavorszadarainstancetypes) | **Get** /api/v1/flavors/zadara/{cloudId} | Retrieve zadara instance types
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | Create google cloud credential
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
@@ -299,11 +299,11 @@ Class | Method | HTTP request | Description
 *ImagesAPI* | [**ImagesAwsImagesList**](docs/ImagesAPI.md#imagesawsimageslist) | **Post** /api/v1/images/aws | Retrieve aws images
 *ImagesAPI* | [**ImagesAwsPersonalImages**](docs/ImagesAPI.md#imagesawspersonalimages) | **Get** /api/v1/images/aws/personal/{cloudId} | Aws personal images
 *ImagesAPI* | [**ImagesAzureCommonImages**](docs/ImagesAPI.md#imagesazurecommonimages) | **Get** /api/v1/images/azure/common/{cloudId} | Commonly used azure images
-*ImagesAPI* | [**ImagesAzureImages**](docs/ImagesAPI.md#imagesazureimages) | **Get** /api/v1/images/azure/{cloudId}/{publisherName}/{offer}/{sku} | 
+*ImagesAPI* | [**ImagesAzureImages**](docs/ImagesAPI.md#imagesazureimages) | **Get** /api/v1/images/azure/{cloudId}/{publisherName}/{offer}/{sku} | Retrieve azure images
 *ImagesAPI* | [**ImagesAzurePersonalImages**](docs/ImagesAPI.md#imagesazurepersonalimages) | **Get** /api/v1/images/azure/personal/{cloudId} | Azure personal images
 *ImagesAPI* | [**ImagesBindImagesToProject**](docs/ImagesAPI.md#imagesbindimagestoproject) | **Post** /api/v1/images/bind | Bind images to project
 *ImagesAPI* | [**ImagesCommonGoogleImages**](docs/ImagesAPI.md#imagescommongoogleimages) | **Get** /api/v1/images/google/common/{cloudId} | Commonly used google images
-*ImagesAPI* | [**ImagesGoogleImages**](docs/ImagesAPI.md#imagesgoogleimages) | **Get** /api/v1/images/google/{cloudId}/{type} | 
+*ImagesAPI* | [**ImagesGoogleImages**](docs/ImagesAPI.md#imagesgoogleimages) | **Get** /api/v1/images/google/{cloudId}/{type} | Retrieve google images
 *ImagesAPI* | [**ImagesImageDetails**](docs/ImagesAPI.md#imagesimagedetails) | **Post** /api/v1/images/details | Get image details
 *ImagesAPI* | [**ImagesOpenshiftImages**](docs/ImagesAPI.md#imagesopenshiftimages) | **Get** /api/v1/images/openshift/{cloudId} | Retrieve openshift images
 *ImagesAPI* | [**ImagesOpenstackImages**](docs/ImagesAPI.md#imagesopenstackimages) | **Get** /api/v1/images/openstack/{cloudId} | Retrieve openstack images
@@ -369,7 +369,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesIngressList**](docs/KubernetesAPI.md#kubernetesingresslist) | **Get** /api/v1/kubernetes/{projectId}/ingress | Retrieve a list of k8s ingress for all namespaces
 *KubernetesAPI* | [**KubernetesInteractiveShell**](docs/KubernetesAPI.md#kubernetesinteractiveshell) | **Post** /api/v1/kubernetes/interactive-shell | Produce interactive shell command
 *KubernetesAPI* | [**KubernetesJobsList**](docs/KubernetesAPI.md#kubernetesjobslist) | **Get** /api/v1/kubernetes/{projectId}/jobs | Retrieve a list of k8s jobs for all namespaces
-*KubernetesAPI* | [**KubernetesKillPod**](docs/KubernetesAPI.md#kuberneteskillpod) | **Post** /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace} | 
+*KubernetesAPI* | [**KubernetesKillPod**](docs/KubernetesAPI.md#kuberneteskillpod) | **Post** /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace} | Kill the pod
 *KubernetesAPI* | [**KubernetesKubeConfig**](docs/KubernetesAPI.md#kuberneteskubeconfig) | **Get** /api/v1/kubernetes/{projectId}/kubeconfig | Retrieve kube config file
 *KubernetesAPI* | [**KubernetesNamespaceList**](docs/KubernetesAPI.md#kubernetesnamespacelist) | **Get** /api/v1/kubernetes/{projectId}/namespaces | Retrieve kube config file
 *KubernetesAPI* | [**KubernetesNetworkPolicyList**](docs/KubernetesAPI.md#kubernetesnetworkpolicylist) | **Get** /api/v1/kubernetes/{projectId}/network-policies | Retrieve a list of k8s network-policies for all namespaces
@@ -463,7 +463,7 @@ Class | Method | HTTP request | Description
 *OrganizationsAPI* | [**OrganizationsToggle**](docs/OrganizationsAPI.md#organizationstoggle) | **Post** /api/v1/organizations/toggle/keycloak | Toggle keycloak login option
 *OrganizationsAPI* | [**OrganizationsUpdate**](docs/OrganizationsAPI.md#organizationsupdate) | **Post** /api/v1/organizations/update | Update organization by Id
 *OrganizationsAPI* | [**OrganizationsUpdatePayment**](docs/OrganizationsAPI.md#organizationsupdatepayment) | **Post** /api/v1/organizations/updatepaymentmethod | Update organization payment Id
-*PackageAPI* | [**PackageDetails**](docs/PackageAPI.md#packagedetails) | **Get** /api/v1/package/{repoName}/{packageName} | 
+*PackageAPI* | [**PackageDetails**](docs/PackageAPI.md#packagedetails) | **Get** /api/v1/package/{repoName}/{packageName} | Available helm package details
 *PackageAPI* | [**PackageList**](docs/PackageAPI.md#packagelist) | **Get** /api/v1/package/list | Retrieve all available packages
 *PackageAPI* | [**PackageValue**](docs/PackageAPI.md#packagevalue) | **Post** /api/v1/package/value | Get yaml based value
 *PackageAPI* | [**PackageValueAutocomplete**](docs/PackageAPI.md#packagevalueautocomplete) | **Post** /api/v1/package/value-autocomplete | Get autocomplete dictionary
@@ -484,7 +484,7 @@ Class | Method | HTTP request | Description
 *PaymentsAPI* | [**PaymentClear**](docs/PaymentsAPI.md#paymentclear) | **Post** /api/v1/payment/clear | Clear payment
 *PaymentsAPI* | [**PaymentCreateCustomer**](docs/PaymentsAPI.md#paymentcreatecustomer) | **Post** /api/v1/payment/createcustomer | Create customer
 *PaymentsAPI* | [**PaymentFinalPrice**](docs/PaymentsAPI.md#paymentfinalprice) | **Post** /api/v1/payment/finalprice | Fetch final price
-*PaymentsAPI* | [**PaymentGetStripeInvoices**](docs/PaymentsAPI.md#paymentgetstripeinvoices) | **Get** /api/v1/payment/stripeinvoices/{subscriptionId} | 
+*PaymentsAPI* | [**PaymentGetStripeInvoices**](docs/PaymentsAPI.md#paymentgetstripeinvoices) | **Get** /api/v1/payment/stripeinvoices/{subscriptionId} | Get required stripe invoices by stripe subscription id
 *PaymentsAPI* | [**PaymentPay**](docs/PaymentsAPI.md#paymentpay) | **Post** /api/v1/payment/pay | Pay invoice
 *PaymentsAPI* | [**PaymentUpdateCard**](docs/PaymentsAPI.md#paymentupdatecard) | **Post** /api/v1/payment/updatecard | Update payment card
 *PaymentsAPI* | [**PaymentWebhook**](docs/PaymentsAPI.md#paymentwebhook) | **Post** /api/v1/payment/webhook | Listen to payment webhook
@@ -613,7 +613,7 @@ Class | Method | HTTP request | Description
 *ServersAPI* | [**ServersCreate**](docs/ServersAPI.md#serverscreate) | **Post** /api/v1/servers/create | Create a new server in the given project.
 *ServersAPI* | [**ServersDelete**](docs/ServersAPI.md#serversdelete) | **Post** /api/v1/servers/delete | Delete server by project id
 *ServersAPI* | [**ServersDetails**](docs/ServersAPI.md#serversdetails) | **Get** /api/v1/servers/{projectId} | Retrieve all servers by given project
-*ServersAPI* | [**ServersList**](docs/ServersAPI.md#serverslist) | **Get** /api/v1/servers | 
+*ServersAPI* | [**ServersList**](docs/ServersAPI.md#serverslist) | **Get** /api/v1/servers | Retrieve all servers
 *ServersAPI* | [**ServersReboot**](docs/ServersAPI.md#serversreboot) | **Post** /api/v1/servers/reboot | Reboot server
 *ServersAPI* | [**ServersReset**](docs/ServersAPI.md#serversreset) | **Post** /api/v1/servers/reset | Update server(s) status(es)
 *ServersAPI* | [**ServersStatus**](docs/ServersAPI.md#serversstatus) | **Get** /api/v1/servers/status/{serverId} | Show server status
@@ -635,7 +635,7 @@ Class | Method | HTTP request | Description
 *StandaloneAPI* | [**StandaloneDetails**](docs/StandaloneAPI.md#standalonedetails) | **Get** /api/v1/standalone/{projectId} | Retrieve a list of standalone vm with detailed info
 *StandaloneAPI* | [**StandaloneForPoller**](docs/StandaloneAPI.md#standaloneforpoller) | **Get** /api/v1/standalone/forpoller | List all StandaloneVms for poller
 *StandaloneAPI* | [**StandaloneIpManagement**](docs/StandaloneAPI.md#standaloneipmanagement) | **Post** /api/v1/standalone/ip/management | Enable/Disable stand alone public ip
-*StandaloneAPI* | [**StandaloneList**](docs/StandaloneAPI.md#standalonelist) | **Get** /api/v1/standalone | 
+*StandaloneAPI* | [**StandaloneList**](docs/StandaloneAPI.md#standalonelist) | **Get** /api/v1/standalone | Retrieve all vms
 *StandaloneAPI* | [**StandaloneProjectDetails**](docs/StandaloneAPI.md#standaloneprojectdetails) | **Get** /api/v1/standalone/project/{projectId} | Retrieve details of the project by Id
 *StandaloneAPI* | [**StandalonePurge**](docs/StandaloneAPI.md#standalonepurge) | **Post** /api/v1/standalone/purge | Purge vm
 *StandaloneAPI* | [**StandaloneRepair**](docs/StandaloneAPI.md#standalonerepair) | **Post** /api/v1/standalone/repair | Repair vm
@@ -663,7 +663,7 @@ Class | Method | HTTP request | Description
 *StandaloneVMDisksAPI* | [**StandalonevmdisksReset**](docs/StandaloneVMDisksAPI.md#standalonevmdisksreset) | **Post** /api/v1/standalonevmdisks/reset | Update status of disk
 *StandaloneVMDisksAPI* | [**StandalonevmdisksUpdate**](docs/StandaloneVMDisksAPI.md#standalonevmdisksupdate) | **Post** /api/v1/standalonevmdisks/update | Update disk
 *StandaloneVMDisksAPI* | [**StandalonevmdisksUpdateSize**](docs/StandaloneVMDisksAPI.md#standalonevmdisksupdatesize) | **Post** /api/v1/standalonevmdisks/update-size | Update disk size
-*StripeAPI* | [**StripeSubscriptionItemList**](docs/StripeAPI.md#stripesubscriptionitemlist) | **Get** /api/v1/stripe/{subscriptionId} | 
+*StripeAPI* | [**StripeSubscriptionItemList**](docs/StripeAPI.md#stripesubscriptionitemlist) | **Get** /api/v1/stripe/{subscriptionId} | Get subscription item list
 *SubscriptionAPI* | [**SubscriptionBind**](docs/SubscriptionAPI.md#subscriptionbind) | **Post** /api/v1/subscription/bind | Bind subscription
 *SubscriptionAPI* | [**SubscriptionBoundList**](docs/SubscriptionAPI.md#subscriptionboundlist) | **Get** /api/v1/subscription/boundlist | Retrieve subscription for organization bound
 *SubscriptionAPI* | [**SubscriptionDelete**](docs/SubscriptionAPI.md#subscriptiondelete) | **Post** /api/v1/subscription/delete | Delete subscription package
@@ -682,12 +682,12 @@ Class | Method | HTTP request | Description
 *TicketAPI* | [**TicketArchive**](docs/TicketAPI.md#ticketarchive) | **Post** /api/v1/ticket/archive | Archive ticket
 *TicketAPI* | [**TicketClose**](docs/TicketAPI.md#ticketclose) | **Post** /api/v1/ticket/close | Close ticket
 *TicketAPI* | [**TicketCreate**](docs/TicketAPI.md#ticketcreate) | **Post** /api/v1/ticket/create | Create ticket
-*TicketAPI* | [**TicketDelete**](docs/TicketAPI.md#ticketdelete) | **Delete** /api/v1/ticket/delete/{ticketId} | 
-*TicketAPI* | [**TicketDeleteMessage**](docs/TicketAPI.md#ticketdeletemessage) | **Delete** /api/v1/ticket/delete/message/{messageId} | 
+*TicketAPI* | [**TicketDelete**](docs/TicketAPI.md#ticketdelete) | **Delete** /api/v1/ticket/delete/{ticketId} | Delete ticket
+*TicketAPI* | [**TicketDeleteMessage**](docs/TicketAPI.md#ticketdeletemessage) | **Delete** /api/v1/ticket/delete/message/{messageId} | Delete ticket message
 *TicketAPI* | [**TicketEdit**](docs/TicketAPI.md#ticketedit) | **Post** /api/v1/ticket/edit | Edit ticket
 *TicketAPI* | [**TicketEditMessage**](docs/TicketAPI.md#ticketeditmessage) | **Post** /api/v1/ticket/edit/message | Edit ticket message
 *TicketAPI* | [**TicketList**](docs/TicketAPI.md#ticketlist) | **Get** /api/v1/ticket/list | Retrieve list of tickets
-*TicketAPI* | [**TicketMessages**](docs/TicketAPI.md#ticketmessages) | **Get** /api/v1/ticket/{ticketId}/messages | 
+*TicketAPI* | [**TicketMessages**](docs/TicketAPI.md#ticketmessages) | **Get** /api/v1/ticket/{ticketId}/messages | Retrieve articles of ticket
 *TicketAPI* | [**TicketOpen**](docs/TicketAPI.md#ticketopen) | **Post** /api/v1/ticket/open | Open ticket
 *TicketAPI* | [**TicketReply**](docs/TicketAPI.md#ticketreply) | **Post** /api/v1/ticket/reply | Reply message
 *TicketAPI* | [**TicketSetPriority**](docs/TicketAPI.md#ticketsetpriority) | **Post** /api/v1/ticket/set-priority | Set priority
@@ -710,12 +710,12 @@ Class | Method | HTTP request | Description
 *UserTokenAPI* | [**UsertokenAvailableEndpoints**](docs/UserTokenAPI.md#usertokenavailableendpoints) | **Get** /api/v1/usertoken/available-endpoints | Get available endpoint list
 *UserTokenAPI* | [**UsertokenBindUnbind**](docs/UserTokenAPI.md#usertokenbindunbind) | **Post** /api/v1/usertoken/bind-unbind | Bind and unbind endpoints
 *UserTokenAPI* | [**UsertokenCreate**](docs/UserTokenAPI.md#usertokencreate) | **Post** /api/v1/usertoken/create | Create a new user token
-*UserTokenAPI* | [**UsertokenDelete**](docs/UserTokenAPI.md#usertokendelete) | **Delete** /api/v1/usertoken/delete/{id} | 
+*UserTokenAPI* | [**UsertokenDelete**](docs/UserTokenAPI.md#usertokendelete) | **Delete** /api/v1/usertoken/delete/{id} | Delete user token
 *UserTokenAPI* | [**UsertokenList**](docs/UserTokenAPI.md#usertokenlist) | **Get** /api/v1/usertoken/list | Get user token list
 *UsersAPI* | [**UsersChangePassword**](docs/UsersAPI.md#userschangepassword) | **Post** /api/v1/users/changepassword | Change user password
 *UsersAPI* | [**UsersConfirmEmail**](docs/UsersAPI.md#usersconfirmemail) | **Post** /api/v1/users/confirmemail | Confirm user email
 *UsersAPI* | [**UsersCreate**](docs/UsersAPI.md#userscreate) | **Post** /api/v1/users/create | Create user
-*UsersAPI* | [**UsersDelete**](docs/UsersAPI.md#usersdelete) | **Delete** /api/v1/users/{id} | 
+*UsersAPI* | [**UsersDelete**](docs/UsersAPI.md#usersdelete) | **Delete** /api/v1/users/{id} | Delete user
 *UsersAPI* | [**UsersDeleteMyAccount**](docs/UsersAPI.md#usersdeletemyaccount) | **Post** /api/v1/users/delete | Delete my account
 *UsersAPI* | [**UsersDisable**](docs/UsersAPI.md#usersdisable) | **Post** /api/v1/users/disable | Disable user
 *UsersAPI* | [**UsersDropdown**](docs/UsersAPI.md#usersdropdown) | **Get** /api/v1/users/list | Retrieve users as dropdown
@@ -730,6 +730,7 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**UsersVerifyEmail**](docs/UsersAPI.md#usersverifyemail) | **Post** /api/v1/users/verifyemail | Verify user email
 *VirtualClusterAPI* | [**VirtualClusterCreate**](docs/VirtualClusterAPI.md#virtualclustercreate) | **Post** /api/v1/virtual-cluster/create | Create virtual cluster
 *VirtualClusterAPI* | [**VirtualClusterDelete**](docs/VirtualClusterAPI.md#virtualclusterdelete) | **Post** /api/v1/virtual-cluster/delete | Delete virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterList**](docs/VirtualClusterAPI.md#virtualclusterlist) | **Get** /api/v1/virtual-cluster/{parentProjectId} | Retrieve all vCluster by given project
 *VirtualClusterAPI* | [**VirtualClusterUpdate**](docs/VirtualClusterAPI.md#virtualclusterupdate) | **Post** /api/v1/virtual-cluster/update | Update virtual cluster
 *VsphereCloudCredentialAPI* | [**VsphereCreate**](docs/VsphereCloudCredentialAPI.md#vspherecreate) | **Post** /api/v1/vsphere/create | Add Vsphere credentials
 *VsphereCloudCredentialAPI* | [**VsphereDatacenterList**](docs/VsphereCloudCredentialAPI.md#vspheredatacenterlist) | **Post** /api/v1/vsphere/datacenter-list | Fetch Vsphere datacenter list
@@ -1571,6 +1572,8 @@ Class | Method | HTTP request | Description
  - [UsersSearchCommand](docs/UsersSearchCommand.md)
  - [UsersSearchList](docs/UsersSearchList.md)
  - [UsersSearchResponseData](docs/UsersSearchResponseData.md)
+ - [VClusterList](docs/VClusterList.md)
+ - [VClusterListDto](docs/VClusterListDto.md)
  - [ValidateVsphereCommand](docs/ValidateVsphereCommand.md)
  - [VerifyEmailCommand](docs/VerifyEmailCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)

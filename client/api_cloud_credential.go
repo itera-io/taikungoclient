@@ -89,7 +89,7 @@ func (r ApiCloudcredentialsAllFlavorsRequest) Execute() (*AllFlavorsList, *http.
 }
 
 /*
-CloudcredentialsAllFlavors Method for CloudcredentialsAllFlavors
+CloudcredentialsAllFlavors Retrieve all flavors
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param cloudId
