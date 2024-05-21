@@ -1136,10 +1136,10 @@ components:
         globalAlertLimit: 1
         metricName: metricName
         byLabel: byLabel
-        kind: null
+        kind: General
         price: 0.8008281904610115
         name: name
-        type: null
+        type: Count
         showbackCredentialId: 5
         labels:
         - label: label
@@ -1972,11 +1972,11 @@ components:
         globalAlertLimit: 5
         metricName: metricName
         byLabel: byLabel
-        kind: null
+        kind: General
         price: 6.027456183070403
         name: name
         id: 0
-        type: null
+        type: Count
         labels:
         - label: label
           value: value
