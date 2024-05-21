@@ -5622,8 +5622,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-05-16T02:09:58.9764787Z
-                  createdAt: 2024-05-16T02:09:58.9764787Z
+                  lastValidated: 2024-05-15T21:25:59.4832741Z
+                  createdAt: 2024-05-15T21:25:59.4832741Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5728,14 +5728,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-05-16T02:09:58.9764787Z
+                    lastBackup: 2024-05-15T21:25:59.4832741Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-05-16T02:09:58.9764787Z
+                  createdAt: 2024-05-15T21:25:59.4832741Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-05-16T02:09:58.9764787Z
+                  lastBackup: 2024-05-15T21:25:59.4832741Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5840,8 +5840,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-05-16T02:09:58.9764787Z
-                  expiration: 2024-05-16T02:09:58.9764787Z
+                  createdAt: 2024-05-15T21:25:59.4832741Z
+                  expiration: 2024-05-15T21:25:59.4832741Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5945,7 +5945,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-05-16T02:09:58.9764787Z
+                  createdAt: 2024-05-15T21:25:59.4832741Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6055,9 +6055,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-05-16T02:09:58.9764787+00:00
-                  startTimeStamp: 2024-05-16T02:09:58.9764787+00:00
-                  createdAt: 2024-05-16T02:09:58.9764787Z
+                  completionDateTime: 2024-05-15T21:25:59.4832741+00:00
+                  startTimeStamp: 2024-05-15T21:25:59.4832741+00:00
+                  createdAt: 2024-05-15T21:25:59.4832741Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -37779,7 +37779,7 @@ components:
         data:
         - createdAt: createdAt
           organizationName: organizationName
-          cloudType: null
+          cloudType: NONE
           isLocked: true
           tcu: 1
           name: name
@@ -37790,7 +37790,7 @@ components:
           status: status
         - createdAt: createdAt
           organizationName: organizationName
-          cloudType: null
+          cloudType: NONE
           isLocked: true
           tcu: 1
           name: name
@@ -37815,7 +37815,7 @@ components:
       example:
         createdAt: createdAt
         organizationName: organizationName
-        cloudType: null
+        cloudType: NONE
         isLocked: true
         tcu: 1
         name: name
@@ -37880,7 +37880,7 @@ components:
       example:
         organizationId: 0
         password: password
-        role: null
+        role: Admin
         email: email
         username: username
       properties:
@@ -37991,7 +37991,7 @@ components:
       example:
         apiKey: apiKey
         name: name
-        type: null
+        type: Taikun
         url: url
       properties:
         url:
@@ -38020,7 +38020,7 @@ components:
           organizationName: organizationName
           name: name
           id: 0
-          type: null
+          type: Taikun
           url: url
         - organizationId: 6
           isDefault: true
@@ -38032,7 +38032,7 @@ components:
           organizationName: organizationName
           name: name
           id: 0
-          type: null
+          type: Taikun
           url: url
         totalCount: 1
       properties:
@@ -38051,7 +38051,7 @@ components:
         isDefault: true
         name: name
         id: 0
-        type: null
+        type: Taikun
         url: url
       properties:
         id:
@@ -38081,7 +38081,7 @@ components:
         organizationName: organizationName
         name: name
         id: 0
-        type: null
+        type: Taikun
         url: url
       properties:
         id:
@@ -38475,7 +38475,7 @@ components:
       example:
         url: url
         token: token
-        alertingIntegrationType: null
+        alertingIntegrationType: Opsgenie
       properties:
         url:
           nullable: true
@@ -38500,7 +38500,7 @@ components:
         id: 0
         url: url
         token: token
-        alertingIntegrationType: null
+        alertingIntegrationType: Opsgenie
       properties:
         id:
           format: int32
@@ -38528,7 +38528,7 @@ components:
           - name: name
             id: 0
           organizationName: organizationName
-          reminder: null
+          reminder: HalfHour
           slackConfigurationName: slackConfigurationName
           lastModifiedBy: lastModifiedBy
           organizationId: 6
@@ -38567,7 +38567,7 @@ components:
           - name: name
             id: 0
           organizationName: organizationName
-          reminder: null
+          reminder: HalfHour
           slackConfigurationName: slackConfigurationName
           lastModifiedBy: lastModifiedBy
           organizationId: 6
@@ -38620,7 +38620,7 @@ components:
         - name: name
           id: 0
         organizationName: organizationName
-        reminder: null
+        reminder: HalfHour
         slackConfigurationName: slackConfigurationName
         lastModifiedBy: lastModifiedBy
         organizationId: 6
@@ -41075,7 +41075,7 @@ components:
           windowsPrice: windowsPrice
           maxDataDiskCount: 5
           windowsSpotPrice: windowsSpotPrice
-          cloudType: null
+          cloudType: NONE
           existsLinuxSpotPrice: true
           name: name
           id: 0
@@ -41089,7 +41089,7 @@ components:
           windowsPrice: windowsPrice
           maxDataDiskCount: 5
           windowsSpotPrice: windowsSpotPrice
-          cloudType: null
+          cloudType: NONE
           existsLinuxSpotPrice: true
           name: name
           id: 0
@@ -41117,7 +41117,7 @@ components:
         windowsPrice: windowsPrice
         maxDataDiskCount: 5
         windowsSpotPrice: windowsSpotPrice
-        cloudType: null
+        cloudType: NONE
         existsLinuxSpotPrice: true
         name: name
         id: 0
@@ -41176,7 +41176,7 @@ components:
         data:
         - imageId: imageId
           size: 1.4658129805029452
-          cloudType: null
+          cloudType: NONE
           cloudId: 5
           name: name
           isWindows: true
@@ -41185,7 +41185,7 @@ components:
           projectId: 6
         - imageId: imageId
           size: 1.4658129805029452
-          cloudType: null
+          cloudType: NONE
           cloudId: 5
           name: name
           isWindows: true
@@ -41208,7 +41208,7 @@ components:
       example:
         imageId: imageId
         size: 1.4658129805029452
-        cloudType: null
+        cloudType: NONE
         cloudId: 5
         name: name
         isWindows: true
@@ -41525,7 +41525,7 @@ components:
           projectName: projectName
           projectId: 5
           version: version
-          status: null
+          status: None
         - isLocked: true
           name: name
           namespace: namespace
@@ -41534,7 +41534,7 @@ components:
           projectName: projectName
           projectId: 5
           version: version
-          status: null
+          status: None
         id: 0
         logoId: logoId
       properties:
@@ -41842,22 +41842,22 @@ components:
           name: name
           description: description
           boundProjects:
-          - cloudType: null
+          - cloudType: NONE
             isLocked: true
             name: name
-            health: null
+            health: "Null"
             id: 1
             maintenanceModeEnabled: true
             kubernetesVersion: kubernetesVersion
-            status: null
-          - cloudType: null
+            status: "Null"
+          - cloudType: NONE
             isLocked: true
             name: name
-            health: null
+            health: "Null"
             id: 1
             maintenanceModeEnabled: true
             kubernetesVersion: kubernetesVersion
-            status: null
+            status: "Null"
           id: 0
           packageIds:
           - packageIds
@@ -41935,22 +41935,22 @@ components:
           name: name
           description: description
           boundProjects:
-          - cloudType: null
+          - cloudType: NONE
             isLocked: true
             name: name
-            health: null
+            health: "Null"
             id: 1
             maintenanceModeEnabled: true
             kubernetesVersion: kubernetesVersion
-            status: null
-          - cloudType: null
+            status: "Null"
+          - cloudType: NONE
             isLocked: true
             name: name
-            health: null
+            health: "Null"
             id: 1
             maintenanceModeEnabled: true
             kubernetesVersion: kubernetesVersion
-            status: null
+            status: "Null"
           id: 0
           packageIds:
           - packageIds
@@ -42042,22 +42042,22 @@ components:
         name: name
         description: description
         boundProjects:
-        - cloudType: null
+        - cloudType: NONE
           isLocked: true
           name: name
-          health: null
+          health: "Null"
           id: 1
           maintenanceModeEnabled: true
           kubernetesVersion: kubernetesVersion
-          status: null
-        - cloudType: null
+          status: "Null"
+        - cloudType: NONE
           isLocked: true
           name: name
-          health: null
+          health: "Null"
           id: 1
           maintenanceModeEnabled: true
           kubernetesVersion: kubernetesVersion
-          status: null
+          status: "Null"
         id: 0
         packageIds:
         - packageIds
@@ -42437,7 +42437,7 @@ components:
           id: 0
         - name: name
           id: 0
-        cloudType: null
+        cloudType: NONE
         fullName: fullName
         id: 0
       properties:
@@ -42626,15 +42626,15 @@ components:
       additionalProperties: false
       example:
         isBound: true
-        cloudType: null
+        cloudType: NONE
         isLocked: true
         name: name
-        health: null
+        health: "Null"
         id: 0
         maintenanceModeEnabled: true
         hasKubeConfigFile: true
         kubernetesVersion: kubernetesVersion
-        status: null
+        status: "Null"
       properties:
         id:
           format: int32
@@ -42869,7 +42869,7 @@ components:
     ConfirmEmailCommand:
       additionalProperties: false
       example:
-        mode: null
+        mode: Confirm
         newEmail: newEmail
       properties:
         newEmail:
@@ -43119,7 +43119,7 @@ components:
         alertingProfileId: 0
         url: url
         token: token
-        alertingIntegrationType: null
+        alertingIntegrationType: Opsgenie
       properties:
         url:
           nullable: true
@@ -43141,7 +43141,7 @@ components:
         - email: email
         - email: email
         slackConfigurationId: 0
-        reminder: null
+        reminder: HalfHour
         webhooks:
         - headers:
           - id: 6
@@ -43165,10 +43165,10 @@ components:
         alertingIntegrations:
         - url: url
           token: token
-          alertingIntegrationType: null
+          alertingIntegrationType: Opsgenie
         - url: url
           token: token
-          alertingIntegrationType: null
+          alertingIntegrationType: Opsgenie
       properties:
         name:
           nullable: true
@@ -43530,7 +43530,7 @@ components:
       additionalProperties: false
       example:
         organizationId: 0
-        proxmoxStorage: null
+        proxmoxStorage: NFS
         wasmEnabled: true
         octaviaEnabled: true
         name: name
@@ -43840,11 +43840,11 @@ components:
         serverTemplates:
         - flavor: flavor
           diskSize: 6.84685269835264
-          role: null
+          role: Bastion
           count: 7
         - flavor: flavor
           diskSize: 6.84685269835264
-          role: null
+          role: Bastion
           count: 7
       properties:
         name:
@@ -44108,7 +44108,7 @@ components:
     CreateSecurityGroupCommand:
       additionalProperties: false
       example:
-        protocol: null
+        protocol: ICMP
         name: name
         standAloneProfileId: 1
         portMinRange: 0
@@ -44140,7 +44140,7 @@ components:
         name: name
         channel: channel
         url: url
-        slackType: null
+        slackType: Alert
       properties:
         organizationId:
           format: int32
@@ -44412,7 +44412,7 @@ components:
         organizationId: 0
         name: name
         description: description
-        priority: null
+        priority: Low
       properties:
         name:
           nullable: true
@@ -44431,7 +44431,7 @@ components:
       additionalProperties: false
       example:
         organizationId: 0
-        role: null
+        role: Admin
         displayName: displayName
         email: email
         username: username
@@ -45096,7 +45096,7 @@ components:
           url: url
           username: username
           resourcePool: resourcePool
-        cloudType: null
+        cloudType: NONE
         openstack:
           openStackUrl: openStackUrl
           applicationCredEnabled: true
@@ -46700,7 +46700,7 @@ components:
         id: 0
         url: url
         token: token
-        alertingIntegrationType: null
+        alertingIntegrationType: Opsgenie
       properties:
         id:
           format: int32
@@ -48189,7 +48189,7 @@ components:
       additionalProperties: false
       example:
         organizationId: 0
-        periodDuration: null
+        periodDuration: none
         isDeleted: true
       properties:
         organizationId:
@@ -48219,7 +48219,7 @@ components:
       additionalProperties: false
       example:
         organizationId: 0
-        periodDuration: null
+        periodDuration: none
       properties:
         organizationId:
           format: int32
@@ -48565,7 +48565,7 @@ components:
       additionalProperties: false
       example:
         organizationId: 0
-        filter: null
+        filter: Monthly
       properties:
         organizationId:
           format: int32
@@ -48799,7 +48799,7 @@ components:
         projectName: projectName
         projectId: 5
         logs: logs
-        status: null
+        status: None
       properties:
         id:
           format: int32
@@ -51087,18 +51087,18 @@ components:
       example:
         data:
         - createdAt: createdAt
-          actionStatus: null
+          actionStatus: succeeded
           isDeleted: true
           actionMessage: actionMessage
-          category: null
+          category: StartAddServer
           projectName: projectName
           projectId: 0
           username: username
         - createdAt: createdAt
-          actionStatus: null
+          actionStatus: succeeded
           isDeleted: true
           actionMessage: actionMessage
-          category: null
+          category: StartAddServer
           projectName: projectName
           projectId: 0
           username: username
@@ -51117,10 +51117,10 @@ components:
       additionalProperties: false
       example:
         createdAt: createdAt
-        actionStatus: null
+        actionStatus: succeeded
         isDeleted: true
         actionMessage: actionMessage
-        category: null
+        category: StartAddServer
         projectName: projectName
         projectId: 0
         username: username
@@ -51150,9 +51150,9 @@ components:
     NotificationSendCommand:
       additionalProperties: false
       example:
-        actionType: null
-        actionStatus: null
-        projectType: null
+        actionType: StartAddServer
+        actionStatus: succeeded
+        projectType: K8S
         projectId: 0
       properties:
         projectId:
@@ -53011,7 +53011,7 @@ components:
         - options
         description: description
         isQuestion: true
-        type: null
+        type: Unknown
         value: value
         key: key
       properties:
@@ -54182,7 +54182,7 @@ components:
     ProjectAlertsQuery:
       additionalProperties: false
       example:
-        mode: null
+        mode: K8S
         projectId: 0
       properties:
         projectId:
@@ -54224,7 +54224,7 @@ components:
         projectName: projectName
         projectId: 1
         logs: logs
-        status: null
+        status: None
       properties:
         id:
           format: int32
@@ -54300,7 +54300,7 @@ components:
         projectName: projectName
         projectId: 5
         version: version
-        status: null
+        status: None
       properties:
         id:
           format: int32
@@ -54349,7 +54349,7 @@ components:
           projectName: projectName
           projectId: 5
           logs: logs
-          status: null
+          status: None
         - catalogAppName: catalogAppName
           created: created
           lastModifiedBy: lastModifiedBy
@@ -54368,7 +54368,7 @@ components:
           projectName: projectName
           projectId: 5
           logs: logs
-          status: null
+          status: None
         totalCount: 5
       properties:
         data:
@@ -54418,14 +54418,14 @@ components:
     ProjectCatalogDto:
       additionalProperties: false
       example:
-        cloudType: null
+        cloudType: NONE
         isLocked: true
         name: name
-        health: null
+        health: "Null"
         id: 1
         maintenanceModeEnabled: true
         kubernetesVersion: kubernetesVersion
-        status: null
+        status: "Null"
       properties:
         id:
           format: int32
@@ -54548,8 +54548,8 @@ components:
     ProjectDetailsErrorListDto:
       additionalProperties: false
       example:
-        kind: null
-        type: null
+        kind: K8S
+        type: danger
         message:
         - message
         - message
@@ -54609,7 +54609,7 @@ components:
         vmRamLimit: 9
         flavor: flavor
         vmUsedRam: 6
-        proxmoxStorage: null
+        proxmoxStorage: NFS
         usedDiskSize: 6
         vmUsedVolumeSize: 1
         kubernetesCurrentVersion: kubernetesCurrentVersion
@@ -54622,7 +54622,7 @@ components:
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
         hasNfsServer: true
-        projectHealth: null
+        projectHealth: "Null"
         totalHourlyCost: 3.0937452626664474
         ramLimit: 4
         opaProfileName: opaProfileName
@@ -54637,7 +54637,7 @@ components:
         diskSizeLimit: 5
         masterReady: 1
         hasKubeConfigFile: true
-        projectStatus: null
+        projectStatus: "Null"
         alertingProfileId: 6
         wasmEnabled: true
         cloudName: cloudName
@@ -54865,9 +54865,9 @@ components:
         allowSpotWorkers: true
         maxSpotPrice: 7.457744773683766
         organizationId: 1
-        projectStatus: null
+        projectStatus: "Null"
         expiredAt: expiredAt
-        cloudType: null
+        cloudType: NONE
         cloudName: cloudName
         cloudId: 1
         isLocked: true
@@ -55051,7 +55051,7 @@ components:
         aiCredential:
           apiKey: apiKey
           name: name
-          type: null
+          type: Taikun
           url: url
         projectActionDto:
           estimatedTime: estimatedTime
@@ -55325,14 +55325,14 @@ components:
         accessIp: accessIp
         isOpaEnabled: true
         kubeConfig: kubeConfig
-        health: null
+        health: "Null"
         isMonitoringEnabled: true
         kubesprayCurrentVersion: kubesprayCurrentVersion
         appEnabled: true
         failureReason: failureReason
         isBackupEnabled: true
         kubernetesCurrentVersion: kubernetesCurrentVersion
-        status: null
+        status: "Null"
       properties:
         kubeConfig:
           nullable: true
@@ -55819,7 +55819,7 @@ components:
         expiredAt: expiredAt
         projectAction: true
         totalStandaloneVmsCount: 5
-        cloudType: null
+        cloudType: NONE
         isLocked: true
         id: 0
         totalHourlyCost: 9.301444243932576
@@ -56160,7 +56160,7 @@ components:
           aiCredential:
             apiKey: apiKey
             name: name
-            type: null
+            type: Taikun
             url: url
           projectActionDto:
             estimatedTime: estimatedTime
@@ -56332,7 +56332,7 @@ components:
           aiCredential:
             apiKey: apiKey
             name: name
-            type: null
+            type: Taikun
             url: url
           projectActionDto:
             estimatedTime: estimatedTime
@@ -57080,7 +57080,7 @@ components:
           expiredAt: expiredAt
           projectAction: true
           totalStandaloneVmsCount: 5
-          cloudType: null
+          cloudType: NONE
           isLocked: true
           id: 0
           totalHourlyCost: 9.301444243932576
@@ -57158,7 +57158,7 @@ components:
           expiredAt: expiredAt
           projectAction: true
           totalStandaloneVmsCount: 5
-          cloudType: null
+          cloudType: NONE
           isLocked: true
           id: 0
           totalHourlyCost: 9.301444243932576
@@ -58527,7 +58527,7 @@ components:
     RemindUsersByAlertingProfileCommand:
       additionalProperties: false
       example:
-        reminder: null
+        reminder: HalfHour
       properties:
         reminder:
           $ref: '#/components/schemas/AlertingReminder'
@@ -58625,7 +58625,7 @@ components:
       additionalProperties: false
       example:
         projectId: 0
-        status: null
+        status: "Null"
       properties:
         projectId:
           format: int32
@@ -58640,7 +58640,7 @@ components:
         serverIds:
         - 6
         - 6
-        status: null
+        status: Deleting
       properties:
         projectId:
           format: int32
@@ -58661,7 +58661,7 @@ components:
         diskIds:
         - 6
         - 6
-        status: null
+        status: Deleting
       properties:
         standAloneVmId:
           format: int32
@@ -58682,7 +58682,7 @@ components:
         - 6
         - 6
         projectId: 0
-        status: null
+        status: Deleting
       properties:
         projectId:
           format: int32
@@ -59035,7 +59035,7 @@ components:
         name: name
         operationCredentialId: 1
         partnerId: 6
-        type: null
+        type: Count
         labels:
         - label: label
           value: value
@@ -59095,7 +59095,7 @@ components:
         - id: 6
         - id: 6
         operationCredentialId: 2
-        type: null
+        type: Count
         labelsToAdd:
         - label: label
           value: value
@@ -59727,11 +59727,11 @@ components:
       additionalProperties: false
       example:
         proxmoxExtraDiskSize: 5
-        role: null
+        role: Bastion
         spotPrice: 5.962133916683182
         count: 1
         availabilityZone: availabilityZone
-        proxmoxRole: null
+        proxmoxRole: NONE
         flavor: flavor
         spotInstance: true
         autoscalingGroup: autoscalingGroup
@@ -59801,7 +59801,7 @@ components:
       example:
         proxmoxFlavor: proxmoxFlavor
         proxmoxExtraDiskSize: 9
-        role: null
+        role: Bastion
         spotPrice: 7.061401241503109
         openshiftFlavor: openshiftFlavor
         vsphereFlavor: vsphereFlavor
@@ -59811,7 +59811,7 @@ components:
           console: true
           status: true
         availabilityZone: availabilityZone
-        proxmoxRole: null
+        proxmoxRole: NONE
         organizationId: 6
         shutOff: true
         createdAt: createdAt
@@ -59822,7 +59822,7 @@ components:
         kubernetesHealth: kubernetesHealth
         instanceId: instanceId
         googleMachineType: googleMachineType
-        cloudType: null
+        cloudType: NONE
         hypervisor: hypervisor
         id: 0
         kubernetesNodeLabels:
@@ -59977,7 +59977,7 @@ components:
       example:
         flavor: flavor
         diskSize: 6.84685269835264
-        role: null
+        role: Bastion
         count: 7
       properties:
         role:
@@ -60036,7 +60036,7 @@ components:
         data:
         - proxmoxFlavor: proxmoxFlavor
           proxmoxExtraDiskSize: 9
-          role: null
+          role: Bastion
           spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
           vsphereFlavor: vsphereFlavor
@@ -60046,7 +60046,7 @@ components:
             console: true
             status: true
           availabilityZone: availabilityZone
-          proxmoxRole: null
+          proxmoxRole: NONE
           organizationId: 6
           shutOff: true
           createdAt: createdAt
@@ -60057,7 +60057,7 @@ components:
           kubernetesHealth: kubernetesHealth
           instanceId: instanceId
           googleMachineType: googleMachineType
-          cloudType: null
+          cloudType: NONE
           hypervisor: hypervisor
           id: 0
           kubernetesNodeLabels:
@@ -60085,7 +60085,7 @@ components:
           status: status
         - proxmoxFlavor: proxmoxFlavor
           proxmoxExtraDiskSize: 9
-          role: null
+          role: Bastion
           spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
           vsphereFlavor: vsphereFlavor
@@ -60095,7 +60095,7 @@ components:
             console: true
             status: true
           availabilityZone: availabilityZone
-          proxmoxRole: null
+          proxmoxRole: NONE
           organizationId: 6
           shutOff: true
           createdAt: createdAt
@@ -60106,7 +60106,7 @@ components:
           kubernetesHealth: kubernetesHealth
           instanceId: instanceId
           googleMachineType: googleMachineType
-          cloudType: null
+          cloudType: NONE
           hypervisor: hypervisor
           id: 0
           kubernetesNodeLabels:
@@ -60149,7 +60149,7 @@ components:
         data:
         - proxmoxFlavor: proxmoxFlavor
           proxmoxExtraDiskSize: 9
-          role: null
+          role: Bastion
           spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
           vsphereFlavor: vsphereFlavor
@@ -60159,7 +60159,7 @@ components:
             console: true
             status: true
           availabilityZone: availabilityZone
-          proxmoxRole: null
+          proxmoxRole: NONE
           organizationId: 6
           shutOff: true
           createdAt: createdAt
@@ -60170,7 +60170,7 @@ components:
           kubernetesHealth: kubernetesHealth
           instanceId: instanceId
           googleMachineType: googleMachineType
-          cloudType: null
+          cloudType: NONE
           hypervisor: hypervisor
           id: 0
           kubernetesNodeLabels:
@@ -60198,7 +60198,7 @@ components:
           status: status
         - proxmoxFlavor: proxmoxFlavor
           proxmoxExtraDiskSize: 9
-          role: null
+          role: Bastion
           spotPrice: 7.061401241503109
           openshiftFlavor: openshiftFlavor
           vsphereFlavor: vsphereFlavor
@@ -60208,7 +60208,7 @@ components:
             console: true
             status: true
           availabilityZone: availabilityZone
-          proxmoxRole: null
+          proxmoxRole: NONE
           organizationId: 6
           shutOff: true
           createdAt: createdAt
@@ -60219,7 +60219,7 @@ components:
           kubernetesHealth: kubernetesHealth
           instanceId: instanceId
           googleMachineType: googleMachineType
-          cloudType: null
+          cloudType: NONE
           hypervisor: hypervisor
           id: 0
           kubernetesNodeLabels:
@@ -60282,7 +60282,7 @@ components:
           vmRamLimit: 9
           flavor: flavor
           vmUsedRam: 6
-          proxmoxStorage: null
+          proxmoxStorage: NFS
           usedDiskSize: 6
           vmUsedVolumeSize: 1
           kubernetesCurrentVersion: kubernetesCurrentVersion
@@ -60295,7 +60295,7 @@ components:
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           hasNfsServer: true
-          projectHealth: null
+          projectHealth: "Null"
           totalHourlyCost: 3.0937452626664474
           ramLimit: 4
           opaProfileName: opaProfileName
@@ -60310,7 +60310,7 @@ components:
           diskSizeLimit: 5
           masterReady: 1
           hasKubeConfigFile: true
-          projectStatus: null
+          projectStatus: "Null"
           alertingProfileId: 6
           wasmEnabled: true
           cloudName: cloudName
@@ -60504,7 +60504,7 @@ components:
       additionalProperties: false
       example:
         id: id
-        priority: null
+        priority: Low
       properties:
         id:
           nullable: true
@@ -60560,7 +60560,7 @@ components:
         channel: channel
         id: 0
         url: url
-        slackType: null
+        slackType: Alert
       properties:
         id:
           format: int32
@@ -60594,14 +60594,14 @@ components:
           channel: channel
           id: 0
           url: url
-          slackType: null
+          slackType: Alert
         - organizationId: 6
           organizationName: organizationName
           name: name
           channel: channel
           id: 0
           url: url
-          slackType: null
+          slackType: Alert
         totalCount: 1
       properties:
         data:
@@ -60756,12 +60756,12 @@ components:
         organizationId: 1
         name: name
         securityGroups:
-        - protocol: null
+        - protocol: ICMP
           name: name
           portMinRange: 0
           portMaxRange: 6
           remoteIpPrefix: remoteIpPrefix
-        - protocol: null
+        - protocol: ICMP
           name: name
           portMinRange: 0
           portMaxRange: 6
@@ -60878,7 +60878,7 @@ components:
     StandAloneProfileSecurityGroupDto:
       additionalProperties: false
       example:
-        protocol: null
+        protocol: ICMP
         name: name
         portMinRange: 0
         portMaxRange: 6
@@ -61551,9 +61551,9 @@ components:
           allowSpotWorkers: true
           maxSpotPrice: 7.457744773683766
           organizationId: 1
-          projectStatus: null
+          projectStatus: "Null"
           expiredAt: expiredAt
-          cloudType: null
+          cloudType: NONE
           cloudName: cloudName
           cloudId: 1
           isLocked: true
@@ -61710,7 +61710,7 @@ components:
         organizationId: 1
         createdAt: createdAt
         createdBy: createdBy
-        cloudType: null
+        cloudType: NONE
         name: name
         isWindows: true
         id: 0
@@ -61736,7 +61736,7 @@ components:
           id: 9
           revision: 3
         ram: 5
-        status: null
+        status: Deleting
       properties:
         id:
           format: int32
@@ -61833,7 +61833,7 @@ components:
           organizationId: 1
           createdAt: createdAt
           createdBy: createdBy
-          cloudType: null
+          cloudType: NONE
           name: name
           isWindows: true
           id: 0
@@ -61859,7 +61859,7 @@ components:
             id: 9
             revision: 3
           ram: 5
-          status: null
+          status: Deleting
         - volumeType: volumeType
           imageName: imageName
           organizationName: organizationName
@@ -61873,7 +61873,7 @@ components:
           organizationId: 1
           createdAt: createdAt
           createdBy: createdBy
-          cloudType: null
+          cloudType: NONE
           name: name
           isWindows: true
           id: 0
@@ -61899,7 +61899,7 @@ components:
             id: 9
             revision: 3
           ram: 5
-          status: null
+          status: Deleting
         totalCount: 1
       properties:
         data:
@@ -63033,7 +63033,7 @@ components:
       example:
         organizationId: 1
         slackConfigurationId: 6
-        reminder: null
+        reminder: HalfHour
         name: name
         id: 0
       properties:
@@ -63111,7 +63111,7 @@ components:
     UpdateHealthStatusCommand:
       additionalProperties: false
       example:
-        health: null
+        health: "Null"
         projectId: 0
       properties:
         projectId:
@@ -63510,7 +63510,7 @@ components:
         name: name
         channel: channel
         url: url
-        slackType: null
+        slackType: Alert
       properties:
         organizationId:
           format: int32
@@ -63741,7 +63741,7 @@ components:
     UpdateUserCommand:
       additionalProperties: false
       example:
-        role: null
+        role: Admin
         isApprovedByPartner: true
         displayName: displayName
         disable: true
@@ -63872,7 +63872,7 @@ components:
       example:
         trialDays: 5
         data:
-          role: null
+          role: Admin
           displayName: displayName
           hasCustomerId: true
           boundProjects:
@@ -63945,7 +63945,7 @@ components:
     UserForListDto:
       additionalProperties: false
       example:
-        role: null
+        role: Admin
         displayName: displayName
         hasCustomerId: true
         boundProjects:
@@ -64293,7 +64293,7 @@ components:
       additionalProperties: false
       example:
         data:
-        - role: null
+        - role: Admin
           displayName: displayName
           hasCustomerId: true
           boundProjects:
@@ -64326,7 +64326,7 @@ components:
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
-        - role: null
+        - role: Admin
           displayName: displayName
           hasCustomerId: true
           boundProjects:
@@ -64460,7 +64460,7 @@ components:
     VerifyEmailCommand:
       additionalProperties: false
       example:
-        mode: null
+        mode: Confirm
         token: token
       properties:
         token:
