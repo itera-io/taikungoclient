@@ -35,6 +35,7 @@ type VClusterListDto struct {
 	AlertsCount *int32 `json:"alertsCount,omitempty"`
 	ExpiredAt NullableString `json:"expiredAt,omitempty"`
 	DeleteOnExpiration *bool `json:"deleteOnExpiration,omitempty"`
+	Logs NullableString `json:"logs,omitempty"`
 	CloudType *CloudType `json:"cloudType,omitempty"`
 	Status *ProjectStatus `json:"status,omitempty"`
 	Health *ProjectHealth `json:"health,omitempty"`
@@ -617,6 +618,48 @@ func (o *VClusterListDto) SetDeleteOnExpiration(v bool) {
 	o.DeleteOnExpiration = &v
 }
 
+// GetLogs returns the Logs field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VClusterListDto) GetLogs() string {
+	if o == nil || IsNil(o.Logs.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Logs.Get()
+}
+
+// GetLogsOk returns a tuple with the Logs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VClusterListDto) GetLogsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Logs.Get(), o.Logs.IsSet()
+}
+
+// HasLogs returns a boolean if a field has been set.
+func (o *VClusterListDto) HasLogs() bool {
+	if o != nil && o.Logs.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLogs gets a reference to the given NullableString and assigns it to the Logs field.
+func (o *VClusterListDto) SetLogs(v string) {
+	o.Logs.Set(&v)
+}
+// SetLogsNil sets the value for Logs to be an explicit nil
+func (o *VClusterListDto) SetLogsNil() {
+	o.Logs.Set(nil)
+}
+
+// UnsetLogs ensures that no value is present for Logs, not even an explicit nil
+func (o *VClusterListDto) UnsetLogs() {
+	o.Logs.Unset()
+}
+
 // GetCloudType returns the CloudType field value if set, zero value otherwise.
 func (o *VClusterListDto) GetCloudType() CloudType {
 	if o == nil || IsNil(o.CloudType) {
@@ -767,6 +810,9 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DeleteOnExpiration) {
 		toSerialize["deleteOnExpiration"] = o.DeleteOnExpiration
+	}
+	if o.Logs.IsSet() {
+		toSerialize["logs"] = o.Logs.Get()
 	}
 	if !IsNil(o.CloudType) {
 		toSerialize["cloudType"] = o.CloudType

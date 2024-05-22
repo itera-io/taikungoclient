@@ -69,4 +69,18 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test VirtualClusterAPIService VirtualClusterVisibility", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var parentProjectId int32
+
+		resp, httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterVisibility(context.Background(), parentProjectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }
