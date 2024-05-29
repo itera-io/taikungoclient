@@ -93,6 +93,8 @@ type APIClient struct {
 
 	DnsServersAPI *DnsServersAPIService
 
+	ExecutorsAPI *ExecutorsAPIService
+
 	FlavorsAPI *FlavorsAPIService
 
 	GoogleAPI *GoogleAPIService
@@ -249,6 +251,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CommonAPI = (*CommonAPIService)(&c.common)
 	c.CronJobServiceAPI = (*CronJobServiceAPIService)(&c.common)
 	c.DnsServersAPI = (*DnsServersAPIService)(&c.common)
+	c.ExecutorsAPI = (*ExecutorsAPIService)(&c.common)
 	c.FlavorsAPI = (*FlavorsAPIService)(&c.common)
 	c.GoogleAPI = (*GoogleAPIService)(&c.common)
 	c.ImagesAPI = (*ImagesAPIService)(&c.common)

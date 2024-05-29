@@ -24,6 +24,7 @@ api_cloud_credential.go
 api_common.go
 api_cron_job_service.go
 api_dns_servers.go
+api_executors.go
 api_flavors.go
 api_google.go
 api_images.go
@@ -309,6 +310,7 @@ docs/CreateBillingSummaryCommand.md
 docs/CreateCatalogAppCommand.md
 docs/CreateCatalogCommand.md
 docs/CreateDnsServerCommand.md
+docs/CreateExecutorCommand.md
 docs/CreateGenericTaikunLbDto.md
 docs/CreateInfraProductCommand.md
 docs/CreateInvoiceCommand.md
@@ -361,6 +363,7 @@ docs/DateInterval.md
 docs/DeleteAlertCommand.md
 docs/DeleteBackupCommand.md
 docs/DeleteBackupStorageLocationCommand.md
+docs/DeleteExecutorCommand.md
 docs/DeleteImageFromProjectCommand.md
 docs/DeleteKubeConfigByProjectIdCommand.md
 docs/DeleteKubeConfigCommand.md
@@ -437,6 +440,7 @@ docs/EnumList.md
 docs/EstimatedInfracost.md
 docs/ExceededQuotaDto.md
 docs/ExceededQuotaList.md
+docs/ExecutorsAPI.md
 docs/ExportKubeConfigCommand.md
 docs/ExtendTrialPeriodCommand.md
 docs/Filter.md
@@ -910,6 +914,7 @@ docs/TanzuFlavorsListDto.md
 docs/TanzuStorageListCommand.md
 docs/TicketAPI.md
 docs/TicketPriority.md
+docs/ToggleExecutorCommand.md
 docs/ToggleKeycloakCommand.md
 docs/ToggleMaintenanceModeCommand.md
 docs/ToggleNotificationModeCommand.md
@@ -1222,6 +1227,7 @@ model_create_billing_summary_command.go
 model_create_catalog_app_command.go
 model_create_catalog_command.go
 model_create_dns_server_command.go
+model_create_executor_command.go
 model_create_generic_taikun_lb_dto.go
 model_create_infra_product_command.go
 model_create_invoice_command.go
@@ -1273,6 +1279,7 @@ model_date_interval.go
 model_delete_alert_command.go
 model_delete_backup_command.go
 model_delete_backup_storage_location_command.go
+model_delete_executor_command.go
 model_delete_image_from_project_command.go
 model_delete_kube_config_by_project_id_command.go
 model_delete_kube_config_command.go
@@ -1769,6 +1776,7 @@ model_tanzu_flavor_list.go
 model_tanzu_flavors_list_dto.go
 model_tanzu_storage_list_command.go
 model_ticket_priority.go
+model_toggle_executor_command.go
 model_toggle_keycloak_command.go
 model_toggle_maintenance_mode_command.go
 model_toggle_notification_mode_command.go
@@ -1888,6 +1896,7 @@ test/api_cloud_credential_test.go
 test/api_common_test.go
 test/api_cron_job_service_test.go
 test/api_dns_servers_test.go
+test/api_executors_test.go
 test/api_flavors_test.go
 test/api_google_test.go
 test/api_images_test.go
