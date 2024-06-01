@@ -76,6 +76,7 @@ api_stripe.go
 api_subscription.go
 api_taikun_lb.go
 api_tanzu.go
+api_tekton.go
 api_ticket.go
 api_user_group.go
 api_user_projects.go
@@ -912,6 +913,8 @@ docs/TanzuCredentialsListDto.md
 docs/TanzuFlavorList.md
 docs/TanzuFlavorsListDto.md
 docs/TanzuStorageListCommand.md
+docs/TektonAPI.md
+docs/TektonCommitCommand.md
 docs/TicketAPI.md
 docs/TicketPriority.md
 docs/ToggleExecutorCommand.md
@@ -1775,6 +1778,7 @@ model_tanzu_credentials_list_dto.go
 model_tanzu_flavor_list.go
 model_tanzu_flavors_list_dto.go
 model_tanzu_storage_list_command.go
+model_tekton_commit_command.go
 model_ticket_priority.go
 model_toggle_executor_command.go
 model_toggle_keycloak_command.go
@@ -1948,6 +1952,7 @@ test/api_stripe_test.go
 test/api_subscription_test.go
 test/api_taikun_lb_test.go
 test/api_tanzu_test.go
+test/api_tekton_test.go
 test/api_ticket_test.go
 test/api_user_group_test.go
 test/api_user_projects_test.go

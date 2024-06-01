@@ -197,6 +197,8 @@ type APIClient struct {
 
 	TanzuAPI *TanzuAPIService
 
+	TektonAPI *TektonAPIService
+
 	TicketAPI *TicketAPIService
 
 	UserGroupAPI *UserGroupAPIService
@@ -303,6 +305,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.SubscriptionAPI = (*SubscriptionAPIService)(&c.common)
 	c.TaikunLBAPI = (*TaikunLBAPIService)(&c.common)
 	c.TanzuAPI = (*TanzuAPIService)(&c.common)
+	c.TektonAPI = (*TektonAPIService)(&c.common)
 	c.TicketAPI = (*TicketAPIService)(&c.common)
 	c.UserGroupAPI = (*UserGroupAPIService)(&c.common)
 	c.UserProjectsAPI = (*UserProjectsAPIService)(&c.common)

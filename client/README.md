@@ -682,6 +682,7 @@ Class | Method | HTTP request | Description
 *TanzuAPI* | [**TanzuList**](docs/TanzuAPI.md#tanzulist) | **Get** /api/v1/tanzu/list | Retrieve list of tanzu cloud credentials
 *TanzuAPI* | [**TanzuStorageList**](docs/TanzuAPI.md#tanzustoragelist) | **Post** /api/v1/tanzu/storage-list | Tanzu storage list
 *TanzuAPI* | [**TanzuUpdate**](docs/TanzuAPI.md#tanzuupdate) | **Post** /api/v1/tanzu/update | Update tanzu credentials
+*TektonAPI* | [**TektonCommit**](docs/TektonAPI.md#tektoncommit) | **Post** /api/v1/tekton/commit | Commit
 *TicketAPI* | [**TicketArchive**](docs/TicketAPI.md#ticketarchive) | **Post** /api/v1/ticket/archive | Archive ticket
 *TicketAPI* | [**TicketClose**](docs/TicketAPI.md#ticketclose) | **Post** /api/v1/ticket/close | Close ticket
 *TicketAPI* | [**TicketCreate**](docs/TicketAPI.md#ticketcreate) | **Post** /api/v1/ticket/create | Create ticket
@@ -1510,6 +1511,7 @@ Class | Method | HTTP request | Description
  - [TanzuFlavorList](docs/TanzuFlavorList.md)
  - [TanzuFlavorsListDto](docs/TanzuFlavorsListDto.md)
  - [TanzuStorageListCommand](docs/TanzuStorageListCommand.md)
+ - [TektonCommitCommand](docs/TektonCommitCommand.md)
  - [TicketPriority](docs/TicketPriority.md)
  - [ToggleExecutorCommand](docs/ToggleExecutorCommand.md)
  - [ToggleKeycloakCommand](docs/ToggleKeycloakCommand.md)
