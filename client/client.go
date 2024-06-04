@@ -149,6 +149,8 @@ type APIClient struct {
 
 	ProjectAppsAPI *ProjectAppsAPIService
 
+	ProjectDeploymentAPI *ProjectDeploymentAPIService
+
 	ProjectGroupsAPI *ProjectGroupsAPIService
 
 	ProjectInfracostsAPI *ProjectInfracostsAPIService
@@ -281,6 +283,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectActionsAPI = (*ProjectActionsAPIService)(&c.common)
 	c.ProjectAppParamsAPI = (*ProjectAppParamsAPIService)(&c.common)
 	c.ProjectAppsAPI = (*ProjectAppsAPIService)(&c.common)
+	c.ProjectDeploymentAPI = (*ProjectDeploymentAPIService)(&c.common)
 	c.ProjectGroupsAPI = (*ProjectGroupsAPIService)(&c.common)
 	c.ProjectInfracostsAPI = (*ProjectInfracostsAPIService)(&c.common)
 	c.ProjectQuotasAPI = (*ProjectQuotasAPIService)(&c.common)

@@ -52,6 +52,7 @@ api_pre_defined_queries.go
 api_project_actions.go
 api_project_app_params.go
 api_project_apps.go
+api_project_deployment.go
 api_project_groups.go
 api_project_infracosts.go
 api_project_quotas.go
@@ -695,6 +696,7 @@ docs/ProjectAppsAPI.md
 docs/ProjectCatalogDto.md
 docs/ProjectChartDto.md
 docs/ProjectCommonRecordDto.md
+docs/ProjectDeploymentAPI.md
 docs/ProjectDetailsErrorListDto.md
 docs/ProjectDetailsErrorType.md
 docs/ProjectDetailsForServersDto.md
@@ -952,6 +954,7 @@ docs/UpdateQuotaCommand.md
 docs/UpdateServerCommand.md
 docs/UpdateServerHealthDto.md
 docs/UpdateSlackConfigurationDto.md
+docs/UpdateStageCommand.md
 docs/UpdateStandAloneVmCommand.md
 docs/UpdateStandAloneVmDiskDto.md
 docs/UpdateStandAloneVmFlavorCommand.md
@@ -1815,6 +1818,7 @@ model_update_quota_command.go
 model_update_server_command.go
 model_update_server_health_dto.go
 model_update_slack_configuration_dto.go
+model_update_stage_command.go
 model_update_stand_alone_vm_command.go
 model_update_stand_alone_vm_disk_dto.go
 model_update_stand_alone_vm_flavor_command.go
@@ -1928,6 +1932,7 @@ test/api_pre_defined_queries_test.go
 test/api_project_actions_test.go
 test/api_project_app_params_test.go
 test/api_project_apps_test.go
+test/api_project_deployment_test.go
 test/api_project_groups_test.go
 test/api_project_infracosts_test.go
 test/api_project_quotas_test.go
