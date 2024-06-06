@@ -508,6 +508,7 @@ Class | Method | HTTP request | Description
 *ProjectAppsAPI* | [**ProjectappSync**](docs/ProjectAppsAPI.md#projectappsync) | **Post** /api/v1/projectapp/sync | Sync an application
 *ProjectAppsAPI* | [**ProjectappUpdate**](docs/ProjectAppsAPI.md#projectappupdate) | **Post** /api/v1/projectapp/update | Update project app
 *ProjectAppsAPI* | [**ProjectappUpdateExtraValues**](docs/ProjectAppsAPI.md#projectappupdateextravalues) | **Post** /api/v1/projectapp/update-extra-values | Update extra values
+*ProjectDeploymentAPI* | [**ProjectDeploymentCommitCompleted**](docs/ProjectDeploymentAPI.md#projectdeploymentcommitcompleted) | **Post** /api/v1/project-deployment/commit-completed | Update stage of project
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpdate**](docs/ProjectDeploymentAPI.md#projectdeploymentupdate) | **Post** /api/v1/project-deployment/update | Update stage of project
 *ProjectGroupsAPI* | [**ProjectgroupsBindProject**](docs/ProjectGroupsAPI.md#projectgroupsbindproject) | **Post** /api/v1/projectgroups/bind-project | Bind Projects to group
 *ProjectGroupsAPI* | [**ProjectgroupsBindUserGroup**](docs/ProjectGroupsAPI.md#projectgroupsbindusergroup) | **Post** /api/v1/projectgroups/bind-user-group | Bind User groups
@@ -929,6 +930,7 @@ Class | Method | HTTP request | Description
  - [CloudRole](docs/CloudRole.md)
  - [CloudStatus](docs/CloudStatus.md)
  - [CloudType](docs/CloudType.md)
+ - [CommitCompletedCommand](docs/CommitCompletedCommand.md)
  - [CommitStandAloneVmCommand](docs/CommitStandAloneVmCommand.md)
  - [CommonAvailabilityDto](docs/CommonAvailabilityDto.md)
  - [CommonDropdownDto](docs/CommonDropdownDto.md)

@@ -276,6 +276,7 @@ docs/CloudLockManagerCommand.md
 docs/CloudRole.md
 docs/CloudStatus.md
 docs/CloudType.md
+docs/CommitCompletedCommand.md
 docs/CommitStandAloneVmCommand.md
 docs/CommonAPI.md
 docs/CommonAvailabilityDto.md
@@ -1198,6 +1199,7 @@ model_cloud_lock_manager_command.go
 model_cloud_role.go
 model_cloud_status.go
 model_cloud_type.go
+model_commit_completed_command.go
 model_commit_stand_alone_vm_command.go
 model_common_availability_dto.go
 model_common_dropdown_dto.go
