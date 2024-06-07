@@ -15,34 +15,34 @@ import (
 	"encoding/json"
 )
 
-// checks if the CommitCompletedCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CommitCompletedCommand{}
+// checks if the DeploymentCompletedCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentCompletedCommand{}
 
-// CommitCompletedCommand struct for CommitCompletedCommand
-type CommitCompletedCommand struct {
+// DeploymentCompletedCommand struct for DeploymentCompletedCommand
+type DeploymentCompletedCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Result NullableString `json:"result,omitempty"`
 }
 
-// NewCommitCompletedCommand instantiates a new CommitCompletedCommand object
+// NewDeploymentCompletedCommand instantiates a new DeploymentCompletedCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCommitCompletedCommand() *CommitCompletedCommand {
-	this := CommitCompletedCommand{}
+func NewDeploymentCompletedCommand() *DeploymentCompletedCommand {
+	this := DeploymentCompletedCommand{}
 	return &this
 }
 
-// NewCommitCompletedCommandWithDefaults instantiates a new CommitCompletedCommand object
+// NewDeploymentCompletedCommandWithDefaults instantiates a new DeploymentCompletedCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCommitCompletedCommandWithDefaults() *CommitCompletedCommand {
-	this := CommitCompletedCommand{}
+func NewDeploymentCompletedCommandWithDefaults() *DeploymentCompletedCommand {
+	this := DeploymentCompletedCommand{}
 	return &this
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
-func (o *CommitCompletedCommand) GetProjectId() int32 {
+func (o *DeploymentCompletedCommand) GetProjectId() int32 {
 	if o == nil || IsNil(o.ProjectId) {
 		var ret int32
 		return ret
@@ -52,7 +52,7 @@ func (o *CommitCompletedCommand) GetProjectId() int32 {
 
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CommitCompletedCommand) GetProjectIdOk() (*int32, bool) {
+func (o *DeploymentCompletedCommand) GetProjectIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *CommitCompletedCommand) GetProjectIdOk() (*int32, bool) {
 }
 
 // HasProjectId returns a boolean if a field has been set.
-func (o *CommitCompletedCommand) HasProjectId() bool {
+func (o *DeploymentCompletedCommand) HasProjectId() bool {
 	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
@@ -69,12 +69,12 @@ func (o *CommitCompletedCommand) HasProjectId() bool {
 }
 
 // SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
-func (o *CommitCompletedCommand) SetProjectId(v int32) {
+func (o *DeploymentCompletedCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
 // GetResult returns the Result field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CommitCompletedCommand) GetResult() string {
+func (o *DeploymentCompletedCommand) GetResult() string {
 	if o == nil || IsNil(o.Result.Get()) {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *CommitCompletedCommand) GetResult() string {
 // GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CommitCompletedCommand) GetResultOk() (*string, bool) {
+func (o *DeploymentCompletedCommand) GetResultOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *CommitCompletedCommand) GetResultOk() (*string, bool) {
 }
 
 // HasResult returns a boolean if a field has been set.
-func (o *CommitCompletedCommand) HasResult() bool {
+func (o *DeploymentCompletedCommand) HasResult() bool {
 	if o != nil && o.Result.IsSet() {
 		return true
 	}
@@ -102,20 +102,20 @@ func (o *CommitCompletedCommand) HasResult() bool {
 }
 
 // SetResult gets a reference to the given NullableString and assigns it to the Result field.
-func (o *CommitCompletedCommand) SetResult(v string) {
+func (o *DeploymentCompletedCommand) SetResult(v string) {
 	o.Result.Set(&v)
 }
 // SetResultNil sets the value for Result to be an explicit nil
-func (o *CommitCompletedCommand) SetResultNil() {
+func (o *DeploymentCompletedCommand) SetResultNil() {
 	o.Result.Set(nil)
 }
 
 // UnsetResult ensures that no value is present for Result, not even an explicit nil
-func (o *CommitCompletedCommand) UnsetResult() {
+func (o *DeploymentCompletedCommand) UnsetResult() {
 	o.Result.Unset()
 }
 
-func (o CommitCompletedCommand) MarshalJSON() ([]byte, error) {
+func (o DeploymentCompletedCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -123,7 +123,7 @@ func (o CommitCompletedCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CommitCompletedCommand) ToMap() (map[string]interface{}, error) {
+func (o DeploymentCompletedCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
@@ -134,38 +134,38 @@ func (o CommitCompletedCommand) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableCommitCompletedCommand struct {
-	value *CommitCompletedCommand
+type NullableDeploymentCompletedCommand struct {
+	value *DeploymentCompletedCommand
 	isSet bool
 }
 
-func (v NullableCommitCompletedCommand) Get() *CommitCompletedCommand {
+func (v NullableDeploymentCompletedCommand) Get() *DeploymentCompletedCommand {
 	return v.value
 }
 
-func (v *NullableCommitCompletedCommand) Set(val *CommitCompletedCommand) {
+func (v *NullableDeploymentCompletedCommand) Set(val *DeploymentCompletedCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCommitCompletedCommand) IsSet() bool {
+func (v NullableDeploymentCompletedCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCommitCompletedCommand) Unset() {
+func (v *NullableDeploymentCompletedCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCommitCompletedCommand(val *CommitCompletedCommand) *NullableCommitCompletedCommand {
-	return &NullableCommitCompletedCommand{value: val, isSet: true}
+func NewNullableDeploymentCompletedCommand(val *DeploymentCompletedCommand) *NullableDeploymentCompletedCommand {
+	return &NullableDeploymentCompletedCommand{value: val, isSet: true}
 }
 
-func (v NullableCommitCompletedCommand) MarshalJSON() ([]byte, error) {
+func (v NullableDeploymentCompletedCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCommitCompletedCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableDeploymentCompletedCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

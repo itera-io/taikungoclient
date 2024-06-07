@@ -23,48 +23,48 @@ import (
 // ProjectDeploymentAPIService ProjectDeploymentAPI service
 type ProjectDeploymentAPIService service
 
-type ApiProjectDeploymentCommitCompletedRequest struct {
+type ApiProjectDeploymentCompletedRequest struct {
 	ctx context.Context
 	ApiService *ProjectDeploymentAPIService
-	commitCompletedCommand *CommitCompletedCommand
+	deploymentCompletedCommand *DeploymentCompletedCommand
 }
 
-func (r ApiProjectDeploymentCommitCompletedRequest) CommitCompletedCommand(commitCompletedCommand CommitCompletedCommand) ApiProjectDeploymentCommitCompletedRequest {
-	r.commitCompletedCommand = &commitCompletedCommand
+func (r ApiProjectDeploymentCompletedRequest) DeploymentCompletedCommand(deploymentCompletedCommand DeploymentCompletedCommand) ApiProjectDeploymentCompletedRequest {
+	r.deploymentCompletedCommand = &deploymentCompletedCommand
 	return r
 }
 
-func (r ApiProjectDeploymentCommitCompletedRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ProjectDeploymentCommitCompletedExecute(r)
+func (r ApiProjectDeploymentCompletedRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProjectDeploymentCompletedExecute(r)
 }
 
 /*
-ProjectDeploymentCommitCompleted Update stage of project
+ProjectDeploymentCompleted Update stage of project
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProjectDeploymentCommitCompletedRequest
+ @return ApiProjectDeploymentCompletedRequest
 */
-func (a *ProjectDeploymentAPIService) ProjectDeploymentCommitCompleted(ctx context.Context) ApiProjectDeploymentCommitCompletedRequest {
-	return ApiProjectDeploymentCommitCompletedRequest{
+func (a *ProjectDeploymentAPIService) ProjectDeploymentCompleted(ctx context.Context) ApiProjectDeploymentCompletedRequest {
+	return ApiProjectDeploymentCompletedRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *ProjectDeploymentAPIService) ProjectDeploymentCommitCompletedExecute(r ApiProjectDeploymentCommitCompletedRequest) (*http.Response, error) {
+func (a *ProjectDeploymentAPIService) ProjectDeploymentCompletedExecute(r ApiProjectDeploymentCompletedRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentAPIService.ProjectDeploymentCommitCompleted")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentAPIService.ProjectDeploymentCompleted")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/project-deployment/commit-completed"
+	localVarPath := localBasePath + "/api/v1/project-deployment/completed"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -88,7 +88,7 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentCommitCompletedExecute(r 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.commitCompletedCommand
+	localVarPostBody = r.deploymentCompletedCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

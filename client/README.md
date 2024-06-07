@@ -508,7 +508,7 @@ Class | Method | HTTP request | Description
 *ProjectAppsAPI* | [**ProjectappSync**](docs/ProjectAppsAPI.md#projectappsync) | **Post** /api/v1/projectapp/sync | Sync an application
 *ProjectAppsAPI* | [**ProjectappUpdate**](docs/ProjectAppsAPI.md#projectappupdate) | **Post** /api/v1/projectapp/update | Update project app
 *ProjectAppsAPI* | [**ProjectappUpdateExtraValues**](docs/ProjectAppsAPI.md#projectappupdateextravalues) | **Post** /api/v1/projectapp/update-extra-values | Update extra values
-*ProjectDeploymentAPI* | [**ProjectDeploymentCommitCompleted**](docs/ProjectDeploymentAPI.md#projectdeploymentcommitcompleted) | **Post** /api/v1/project-deployment/commit-completed | Update stage of project
+*ProjectDeploymentAPI* | [**ProjectDeploymentCompleted**](docs/ProjectDeploymentAPI.md#projectdeploymentcompleted) | **Post** /api/v1/project-deployment/completed | Update stage of project
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpdate**](docs/ProjectDeploymentAPI.md#projectdeploymentupdate) | **Post** /api/v1/project-deployment/update | Update stage of project
 *ProjectGroupsAPI* | [**ProjectgroupsBindProject**](docs/ProjectGroupsAPI.md#projectgroupsbindproject) | **Post** /api/v1/projectgroups/bind-project | Bind Projects to group
 *ProjectGroupsAPI* | [**ProjectgroupsBindUserGroup**](docs/ProjectGroupsAPI.md#projectgroupsbindusergroup) | **Post** /api/v1/projectgroups/bind-user-group | Bind User groups
@@ -685,6 +685,7 @@ Class | Method | HTTP request | Description
 *TanzuAPI* | [**TanzuStorageList**](docs/TanzuAPI.md#tanzustoragelist) | **Post** /api/v1/tanzu/storage-list | Tanzu storage list
 *TanzuAPI* | [**TanzuUpdate**](docs/TanzuAPI.md#tanzuupdate) | **Post** /api/v1/tanzu/update | Update tanzu credentials
 *TektonAPI* | [**TektonCommit**](docs/TektonAPI.md#tektoncommit) | **Post** /api/v1/tekton/commit | Commit
+*TektonAPI* | [**TektonDelete**](docs/TektonAPI.md#tektondelete) | **Post** /api/v1/tekton/delete | Delete
 *TicketAPI* | [**TicketArchive**](docs/TicketAPI.md#ticketarchive) | **Post** /api/v1/ticket/archive | Archive ticket
 *TicketAPI* | [**TicketClose**](docs/TicketAPI.md#ticketclose) | **Post** /api/v1/ticket/close | Close ticket
 *TicketAPI* | [**TicketCreate**](docs/TicketAPI.md#ticketcreate) | **Post** /api/v1/ticket/create | Create ticket
@@ -930,7 +931,6 @@ Class | Method | HTTP request | Description
  - [CloudRole](docs/CloudRole.md)
  - [CloudStatus](docs/CloudStatus.md)
  - [CloudType](docs/CloudType.md)
- - [CommitCompletedCommand](docs/CommitCompletedCommand.md)
  - [CommitStandAloneVmCommand](docs/CommitStandAloneVmCommand.md)
  - [CommonAvailabilityDto](docs/CommonAvailabilityDto.md)
  - [CommonDropdownDto](docs/CommonDropdownDto.md)
@@ -1036,6 +1036,7 @@ Class | Method | HTTP request | Description
  - [DeleteUserGroupCommand](docs/DeleteUserGroupCommand.md)
  - [DeleteVirtualClusterCommand](docs/DeleteVirtualClusterCommand.md)
  - [DeleteWholeProjectCommand](docs/DeleteWholeProjectCommand.md)
+ - [DeploymentCompletedCommand](docs/DeploymentCompletedCommand.md)
  - [DeploymentDto](docs/DeploymentDto.md)
  - [DeploymentSearchCommand](docs/DeploymentSearchCommand.md)
  - [DeploymentSearchList](docs/DeploymentSearchList.md)
@@ -1515,6 +1516,7 @@ Class | Method | HTTP request | Description
  - [TanzuFlavorsListDto](docs/TanzuFlavorsListDto.md)
  - [TanzuStorageListCommand](docs/TanzuStorageListCommand.md)
  - [TektonCommitCommand](docs/TektonCommitCommand.md)
+ - [TektonDeleteServersCommand](docs/TektonDeleteServersCommand.md)
  - [TicketPriority](docs/TicketPriority.md)
  - [ToggleExecutorCommand](docs/ToggleExecutorCommand.md)
  - [ToggleKeycloakCommand](docs/ToggleKeycloakCommand.md)

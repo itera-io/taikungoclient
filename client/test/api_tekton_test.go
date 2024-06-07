@@ -33,4 +33,15 @@ func Test_taikuncore_TektonAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test TektonAPIService TektonDelete", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.TektonAPI.TektonDelete(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }
