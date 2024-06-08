@@ -5635,8 +5635,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-06-07T00:02:55.5794478Z
-                  createdAt: 2024-06-07T00:02:55.5794478Z
+                  lastValidated: 2024-06-08T00:02:54.3321965Z
+                  createdAt: 2024-06-08T00:02:54.3321965Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5741,14 +5741,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-06-07T00:02:55.5794478Z
+                    lastBackup: 2024-06-08T00:02:54.3321965Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-06-07T00:02:55.5794478Z
+                  createdAt: 2024-06-08T00:02:54.3321965Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-06-07T00:02:55.5794478Z
+                  lastBackup: 2024-06-08T00:02:54.3321965Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5853,8 +5853,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-06-07T00:02:55.5794478Z
-                  expiration: 2024-06-07T00:02:55.5794478Z
+                  createdAt: 2024-06-08T00:02:54.3321965Z
+                  expiration: 2024-06-08T00:02:54.3321965Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5958,7 +5958,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-06-07T00:02:55.5794478Z
+                  createdAt: 2024-06-08T00:02:54.3321965Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6068,9 +6068,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-06-07T00:02:55.5794478+00:00
-                  startTimeStamp: 2024-06-07T00:02:55.5794478+00:00
-                  createdAt: 2024-06-07T00:02:55.5794478Z
+                  completionDateTime: 2024-06-08T00:02:54.3321965+00:00
+                  startTimeStamp: 2024-06-08T00:02:54.3321965+00:00
+                  createdAt: 2024-06-08T00:02:54.3321965Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -24727,6 +24727,48 @@ paths:
       summary: Uninstall application
       tags:
       - Project apps
+  /api/v1/project-deployment/commit:
+    post:
+      operationId: project-deployment-commit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectDeploymentCommitCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Commit
+      tags:
+      - Project deployment
   /api/v1/project-deployment/completed:
     post:
       operationId: project-deployment-completed
@@ -24766,7 +24808,93 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Update stage of project
+      summary: Update project fields
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/delete:
+    post:
+      operationId: project-deployment-delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectDeploymentDeleteServersCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/monitoring:
+    post:
+      operationId: project-deployment-monitoring
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentMonitoringCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Monitoring
       tags:
       - Project deployment
   /api/v1/project-deployment/update:
@@ -34269,91 +34397,6 @@ paths:
       summary: Retrieve list of tanzu cloud credentials
       tags:
       - Tanzu
-  /api/v1/tekton/commit:
-    post:
-      operationId: tekton-commit
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TektonCommitCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Commit
-      tags:
-      - Tekton
-  /api/v1/tekton/delete:
-    post:
-      operationId: tekton-delete
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TektonDeleteServersCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Delete
-      tags:
-      - Tekton
   /api/v1/ticket/archive:
     post:
       operationId: ticket-archive
@@ -47195,6 +47238,15 @@ components:
           nullable: true
           type: string
       type: object
+    DeploymentMonitoringCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
     DeploymentSearchCommand:
       additionalProperties: false
       example:
@@ -55696,6 +55748,36 @@ components:
           nullable: true
           type: string
       type: object
+    ProjectDeploymentCommitCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    ProjectDeploymentDeleteServersCommand:
+      additionalProperties: false
+      example:
+        forceDeleteVClusters: true
+        projectId: 0
+        serverIds:
+        - 6
+        - 6
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        serverIds:
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
+        forceDeleteVClusters:
+          type: boolean
+      type: object
     ProjectDetailsErrorListDto:
       additionalProperties: false
       example:
@@ -64091,36 +64173,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      type: object
-    TektonCommitCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-      type: object
-    TektonDeleteServersCommand:
-      additionalProperties: false
-      example:
-        forceDeleteVClusters: true
-        projectId: 0
-        serverIds:
-        - 6
-        - 6
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        serverIds:
-          items:
-            format: int32
-            type: integer
-          nullable: true
-          type: array
-        forceDeleteVClusters:
-          type: boolean
       type: object
     TicketPriority:
       enum:

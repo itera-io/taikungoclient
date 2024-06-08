@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the TektonDeleteServersCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TektonDeleteServersCommand{}
+// checks if the ProjectDeploymentDeleteServersCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProjectDeploymentDeleteServersCommand{}
 
-// TektonDeleteServersCommand struct for TektonDeleteServersCommand
-type TektonDeleteServersCommand struct {
+// ProjectDeploymentDeleteServersCommand struct for ProjectDeploymentDeleteServersCommand
+type ProjectDeploymentDeleteServersCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	ServerIds []int32 `json:"serverIds,omitempty"`
 	ForceDeleteVClusters *bool `json:"forceDeleteVClusters,omitempty"`
 }
 
-// NewTektonDeleteServersCommand instantiates a new TektonDeleteServersCommand object
+// NewProjectDeploymentDeleteServersCommand instantiates a new ProjectDeploymentDeleteServersCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTektonDeleteServersCommand() *TektonDeleteServersCommand {
-	this := TektonDeleteServersCommand{}
+func NewProjectDeploymentDeleteServersCommand() *ProjectDeploymentDeleteServersCommand {
+	this := ProjectDeploymentDeleteServersCommand{}
 	return &this
 }
 
-// NewTektonDeleteServersCommandWithDefaults instantiates a new TektonDeleteServersCommand object
+// NewProjectDeploymentDeleteServersCommandWithDefaults instantiates a new ProjectDeploymentDeleteServersCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTektonDeleteServersCommandWithDefaults() *TektonDeleteServersCommand {
-	this := TektonDeleteServersCommand{}
+func NewProjectDeploymentDeleteServersCommandWithDefaults() *ProjectDeploymentDeleteServersCommand {
+	this := ProjectDeploymentDeleteServersCommand{}
 	return &this
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
-func (o *TektonDeleteServersCommand) GetProjectId() int32 {
+func (o *ProjectDeploymentDeleteServersCommand) GetProjectId() int32 {
 	if o == nil || IsNil(o.ProjectId) {
 		var ret int32
 		return ret
@@ -53,7 +53,7 @@ func (o *TektonDeleteServersCommand) GetProjectId() int32 {
 
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TektonDeleteServersCommand) GetProjectIdOk() (*int32, bool) {
+func (o *ProjectDeploymentDeleteServersCommand) GetProjectIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *TektonDeleteServersCommand) GetProjectIdOk() (*int32, bool) {
 }
 
 // HasProjectId returns a boolean if a field has been set.
-func (o *TektonDeleteServersCommand) HasProjectId() bool {
+func (o *ProjectDeploymentDeleteServersCommand) HasProjectId() bool {
 	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
@@ -70,12 +70,12 @@ func (o *TektonDeleteServersCommand) HasProjectId() bool {
 }
 
 // SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
-func (o *TektonDeleteServersCommand) SetProjectId(v int32) {
+func (o *ProjectDeploymentDeleteServersCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
 // GetServerIds returns the ServerIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TektonDeleteServersCommand) GetServerIds() []int32 {
+func (o *ProjectDeploymentDeleteServersCommand) GetServerIds() []int32 {
 	if o == nil {
 		var ret []int32
 		return ret
@@ -86,7 +86,7 @@ func (o *TektonDeleteServersCommand) GetServerIds() []int32 {
 // GetServerIdsOk returns a tuple with the ServerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TektonDeleteServersCommand) GetServerIdsOk() ([]int32, bool) {
+func (o *ProjectDeploymentDeleteServersCommand) GetServerIdsOk() ([]int32, bool) {
 	if o == nil || IsNil(o.ServerIds) {
 		return nil, false
 	}
@@ -94,7 +94,7 @@ func (o *TektonDeleteServersCommand) GetServerIdsOk() ([]int32, bool) {
 }
 
 // HasServerIds returns a boolean if a field has been set.
-func (o *TektonDeleteServersCommand) HasServerIds() bool {
+func (o *ProjectDeploymentDeleteServersCommand) HasServerIds() bool {
 	if o != nil && !IsNil(o.ServerIds) {
 		return true
 	}
@@ -103,12 +103,12 @@ func (o *TektonDeleteServersCommand) HasServerIds() bool {
 }
 
 // SetServerIds gets a reference to the given []int32 and assigns it to the ServerIds field.
-func (o *TektonDeleteServersCommand) SetServerIds(v []int32) {
+func (o *ProjectDeploymentDeleteServersCommand) SetServerIds(v []int32) {
 	o.ServerIds = v
 }
 
 // GetForceDeleteVClusters returns the ForceDeleteVClusters field value if set, zero value otherwise.
-func (o *TektonDeleteServersCommand) GetForceDeleteVClusters() bool {
+func (o *ProjectDeploymentDeleteServersCommand) GetForceDeleteVClusters() bool {
 	if o == nil || IsNil(o.ForceDeleteVClusters) {
 		var ret bool
 		return ret
@@ -118,7 +118,7 @@ func (o *TektonDeleteServersCommand) GetForceDeleteVClusters() bool {
 
 // GetForceDeleteVClustersOk returns a tuple with the ForceDeleteVClusters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TektonDeleteServersCommand) GetForceDeleteVClustersOk() (*bool, bool) {
+func (o *ProjectDeploymentDeleteServersCommand) GetForceDeleteVClustersOk() (*bool, bool) {
 	if o == nil || IsNil(o.ForceDeleteVClusters) {
 		return nil, false
 	}
@@ -126,7 +126,7 @@ func (o *TektonDeleteServersCommand) GetForceDeleteVClustersOk() (*bool, bool) {
 }
 
 // HasForceDeleteVClusters returns a boolean if a field has been set.
-func (o *TektonDeleteServersCommand) HasForceDeleteVClusters() bool {
+func (o *ProjectDeploymentDeleteServersCommand) HasForceDeleteVClusters() bool {
 	if o != nil && !IsNil(o.ForceDeleteVClusters) {
 		return true
 	}
@@ -135,11 +135,11 @@ func (o *TektonDeleteServersCommand) HasForceDeleteVClusters() bool {
 }
 
 // SetForceDeleteVClusters gets a reference to the given bool and assigns it to the ForceDeleteVClusters field.
-func (o *TektonDeleteServersCommand) SetForceDeleteVClusters(v bool) {
+func (o *ProjectDeploymentDeleteServersCommand) SetForceDeleteVClusters(v bool) {
 	o.ForceDeleteVClusters = &v
 }
 
-func (o TektonDeleteServersCommand) MarshalJSON() ([]byte, error) {
+func (o ProjectDeploymentDeleteServersCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -147,7 +147,7 @@ func (o TektonDeleteServersCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o TektonDeleteServersCommand) ToMap() (map[string]interface{}, error) {
+func (o ProjectDeploymentDeleteServersCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
@@ -161,38 +161,38 @@ func (o TektonDeleteServersCommand) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableTektonDeleteServersCommand struct {
-	value *TektonDeleteServersCommand
+type NullableProjectDeploymentDeleteServersCommand struct {
+	value *ProjectDeploymentDeleteServersCommand
 	isSet bool
 }
 
-func (v NullableTektonDeleteServersCommand) Get() *TektonDeleteServersCommand {
+func (v NullableProjectDeploymentDeleteServersCommand) Get() *ProjectDeploymentDeleteServersCommand {
 	return v.value
 }
 
-func (v *NullableTektonDeleteServersCommand) Set(val *TektonDeleteServersCommand) {
+func (v *NullableProjectDeploymentDeleteServersCommand) Set(val *ProjectDeploymentDeleteServersCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTektonDeleteServersCommand) IsSet() bool {
+func (v NullableProjectDeploymentDeleteServersCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTektonDeleteServersCommand) Unset() {
+func (v *NullableProjectDeploymentDeleteServersCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTektonDeleteServersCommand(val *TektonDeleteServersCommand) *NullableTektonDeleteServersCommand {
-	return &NullableTektonDeleteServersCommand{value: val, isSet: true}
+func NewNullableProjectDeploymentDeleteServersCommand(val *ProjectDeploymentDeleteServersCommand) *NullableProjectDeploymentDeleteServersCommand {
+	return &NullableProjectDeploymentDeleteServersCommand{value: val, isSet: true}
 }
 
-func (v NullableTektonDeleteServersCommand) MarshalJSON() ([]byte, error) {
+func (v NullableProjectDeploymentDeleteServersCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTektonDeleteServersCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableProjectDeploymentDeleteServersCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

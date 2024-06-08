@@ -15,33 +15,33 @@ import (
 	"encoding/json"
 )
 
-// checks if the TektonCommitCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TektonCommitCommand{}
+// checks if the DeploymentMonitoringCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentMonitoringCommand{}
 
-// TektonCommitCommand struct for TektonCommitCommand
-type TektonCommitCommand struct {
+// DeploymentMonitoringCommand struct for DeploymentMonitoringCommand
+type DeploymentMonitoringCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 }
 
-// NewTektonCommitCommand instantiates a new TektonCommitCommand object
+// NewDeploymentMonitoringCommand instantiates a new DeploymentMonitoringCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTektonCommitCommand() *TektonCommitCommand {
-	this := TektonCommitCommand{}
+func NewDeploymentMonitoringCommand() *DeploymentMonitoringCommand {
+	this := DeploymentMonitoringCommand{}
 	return &this
 }
 
-// NewTektonCommitCommandWithDefaults instantiates a new TektonCommitCommand object
+// NewDeploymentMonitoringCommandWithDefaults instantiates a new DeploymentMonitoringCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTektonCommitCommandWithDefaults() *TektonCommitCommand {
-	this := TektonCommitCommand{}
+func NewDeploymentMonitoringCommandWithDefaults() *DeploymentMonitoringCommand {
+	this := DeploymentMonitoringCommand{}
 	return &this
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
-func (o *TektonCommitCommand) GetProjectId() int32 {
+func (o *DeploymentMonitoringCommand) GetProjectId() int32 {
 	if o == nil || IsNil(o.ProjectId) {
 		var ret int32
 		return ret
@@ -51,7 +51,7 @@ func (o *TektonCommitCommand) GetProjectId() int32 {
 
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TektonCommitCommand) GetProjectIdOk() (*int32, bool) {
+func (o *DeploymentMonitoringCommand) GetProjectIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *TektonCommitCommand) GetProjectIdOk() (*int32, bool) {
 }
 
 // HasProjectId returns a boolean if a field has been set.
-func (o *TektonCommitCommand) HasProjectId() bool {
+func (o *DeploymentMonitoringCommand) HasProjectId() bool {
 	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
@@ -68,11 +68,11 @@ func (o *TektonCommitCommand) HasProjectId() bool {
 }
 
 // SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
-func (o *TektonCommitCommand) SetProjectId(v int32) {
+func (o *DeploymentMonitoringCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-func (o TektonCommitCommand) MarshalJSON() ([]byte, error) {
+func (o DeploymentMonitoringCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -80,7 +80,7 @@ func (o TektonCommitCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o TektonCommitCommand) ToMap() (map[string]interface{}, error) {
+func (o DeploymentMonitoringCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
@@ -88,38 +88,38 @@ func (o TektonCommitCommand) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableTektonCommitCommand struct {
-	value *TektonCommitCommand
+type NullableDeploymentMonitoringCommand struct {
+	value *DeploymentMonitoringCommand
 	isSet bool
 }
 
-func (v NullableTektonCommitCommand) Get() *TektonCommitCommand {
+func (v NullableDeploymentMonitoringCommand) Get() *DeploymentMonitoringCommand {
 	return v.value
 }
 
-func (v *NullableTektonCommitCommand) Set(val *TektonCommitCommand) {
+func (v *NullableDeploymentMonitoringCommand) Set(val *DeploymentMonitoringCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTektonCommitCommand) IsSet() bool {
+func (v NullableDeploymentMonitoringCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTektonCommitCommand) Unset() {
+func (v *NullableDeploymentMonitoringCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTektonCommitCommand(val *TektonCommitCommand) *NullableTektonCommitCommand {
-	return &NullableTektonCommitCommand{value: val, isSet: true}
+func NewNullableDeploymentMonitoringCommand(val *DeploymentMonitoringCommand) *NullableDeploymentMonitoringCommand {
+	return &NullableDeploymentMonitoringCommand{value: val, isSet: true}
 }
 
-func (v NullableTektonCommitCommand) MarshalJSON() ([]byte, error) {
+func (v NullableDeploymentMonitoringCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTektonCommitCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableDeploymentMonitoringCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
