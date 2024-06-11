@@ -511,6 +511,7 @@ Class | Method | HTTP request | Description
 *ProjectDeploymentAPI* | [**ProjectDeploymentCommit**](docs/ProjectDeploymentAPI.md#projectdeploymentcommit) | **Post** /api/v1/project-deployment/commit | Commit
 *ProjectDeploymentAPI* | [**ProjectDeploymentCompleted**](docs/ProjectDeploymentAPI.md#projectdeploymentcompleted) | **Post** /api/v1/project-deployment/completed | Update project fields
 *ProjectDeploymentAPI* | [**ProjectDeploymentDelete**](docs/ProjectDeploymentAPI.md#projectdeploymentdelete) | **Post** /api/v1/project-deployment/delete | Delete
+*ProjectDeploymentAPI* | [**ProjectDeploymentEnableBackup**](docs/ProjectDeploymentAPI.md#projectdeploymentenablebackup) | **Post** /api/v1/project-deployment/enable-backup | Enable backup
 *ProjectDeploymentAPI* | [**ProjectDeploymentMonitoring**](docs/ProjectDeploymentAPI.md#projectdeploymentmonitoring) | **Post** /api/v1/project-deployment/monitoring | Monitoring
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpdate**](docs/ProjectDeploymentAPI.md#projectdeploymentupdate) | **Post** /api/v1/project-deployment/update | Update stage of project
 *ProjectGroupsAPI* | [**ProjectgroupsBindProject**](docs/ProjectGroupsAPI.md#projectgroupsbindproject) | **Post** /api/v1/projectgroups/bind-project | Bind Projects to group
@@ -1039,6 +1040,7 @@ Class | Method | HTTP request | Description
  - [DeleteWholeProjectCommand](docs/DeleteWholeProjectCommand.md)
  - [DeploymentCompletedCommand](docs/DeploymentCompletedCommand.md)
  - [DeploymentDto](docs/DeploymentDto.md)
+ - [DeploymentEnableBackupCommand](docs/DeploymentEnableBackupCommand.md)
  - [DeploymentMonitoringCommand](docs/DeploymentMonitoringCommand.md)
  - [DeploymentSearchCommand](docs/DeploymentSearchCommand.md)
  - [DeploymentSearchList](docs/DeploymentSearchList.md)
