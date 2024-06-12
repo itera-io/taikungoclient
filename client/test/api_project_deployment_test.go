@@ -55,6 +55,28 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentDisableBackup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentDisableBackup(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentEnableAi", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentEnableAi(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentEnableBackup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

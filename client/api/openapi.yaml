@@ -5635,8 +5635,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-06-11T00:02:49.2000229Z
-                  createdAt: 2024-06-11T00:02:49.2000229Z
+                  lastValidated: 2024-06-12T00:02:51.4227381Z
+                  createdAt: 2024-06-12T00:02:51.4227381Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5741,14 +5741,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-06-11T00:02:49.2000229Z
+                    lastBackup: 2024-06-12T00:02:51.4227381Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-06-11T00:02:49.2000229Z
+                  createdAt: 2024-06-12T00:02:51.4227381Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-06-11T00:02:49.2000229Z
+                  lastBackup: 2024-06-12T00:02:51.4227381Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5853,8 +5853,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-06-11T00:02:49.2000229Z
-                  expiration: 2024-06-11T00:02:49.2000229Z
+                  createdAt: 2024-06-12T00:02:51.4227381Z
+                  expiration: 2024-06-12T00:02:51.4227381Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5958,7 +5958,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-06-11T00:02:49.2000229Z
+                  createdAt: 2024-06-12T00:02:51.4227381Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6068,9 +6068,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-06-11T00:02:49.2000229+00:00
-                  startTimeStamp: 2024-06-11T00:02:49.2000229+00:00
-                  createdAt: 2024-06-11T00:02:49.2000229Z
+                  completionDateTime: 2024-06-12T00:02:51.4227381+00:00
+                  startTimeStamp: 2024-06-12T00:02:51.4227381+00:00
+                  createdAt: 2024-06-12T00:02:51.4227381Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -24852,6 +24852,92 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Delete
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/disable-backup:
+    post:
+      operationId: project-deployment-disable-backup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentDisableBackupCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable backup
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/enable-ai:
+    post:
+      operationId: project-deployment-enable-ai
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentEnableAiCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable ai
       tags:
       - Project deployment
   /api/v1/project-deployment/enable-backup:
@@ -47260,6 +47346,15 @@ components:
           nullable: true
           type: string
       type: object
+    DeploymentDisableBackupCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
     DeploymentDto:
       additionalProperties: false
       example:
@@ -47280,6 +47375,19 @@ components:
         age:
           nullable: true
           type: string
+      type: object
+    DeploymentEnableAiCommand:
+      additionalProperties: false
+      example:
+        aiCredentialId: 6
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        aiCredentialId:
+          format: int32
+          type: integer
       type: object
     DeploymentEnableBackupCommand:
       additionalProperties: false

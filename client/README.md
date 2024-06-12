@@ -511,6 +511,8 @@ Class | Method | HTTP request | Description
 *ProjectDeploymentAPI* | [**ProjectDeploymentCommit**](docs/ProjectDeploymentAPI.md#projectdeploymentcommit) | **Post** /api/v1/project-deployment/commit | Commit
 *ProjectDeploymentAPI* | [**ProjectDeploymentCompleted**](docs/ProjectDeploymentAPI.md#projectdeploymentcompleted) | **Post** /api/v1/project-deployment/completed | Update project fields
 *ProjectDeploymentAPI* | [**ProjectDeploymentDelete**](docs/ProjectDeploymentAPI.md#projectdeploymentdelete) | **Post** /api/v1/project-deployment/delete | Delete
+*ProjectDeploymentAPI* | [**ProjectDeploymentDisableBackup**](docs/ProjectDeploymentAPI.md#projectdeploymentdisablebackup) | **Post** /api/v1/project-deployment/disable-backup | Disable backup
+*ProjectDeploymentAPI* | [**ProjectDeploymentEnableAi**](docs/ProjectDeploymentAPI.md#projectdeploymentenableai) | **Post** /api/v1/project-deployment/enable-ai | Enable ai
 *ProjectDeploymentAPI* | [**ProjectDeploymentEnableBackup**](docs/ProjectDeploymentAPI.md#projectdeploymentenablebackup) | **Post** /api/v1/project-deployment/enable-backup | Enable backup
 *ProjectDeploymentAPI* | [**ProjectDeploymentMonitoring**](docs/ProjectDeploymentAPI.md#projectdeploymentmonitoring) | **Post** /api/v1/project-deployment/monitoring | Monitoring
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpdate**](docs/ProjectDeploymentAPI.md#projectdeploymentupdate) | **Post** /api/v1/project-deployment/update | Update stage of project
@@ -1039,7 +1041,9 @@ Class | Method | HTTP request | Description
  - [DeleteVirtualClusterCommand](docs/DeleteVirtualClusterCommand.md)
  - [DeleteWholeProjectCommand](docs/DeleteWholeProjectCommand.md)
  - [DeploymentCompletedCommand](docs/DeploymentCompletedCommand.md)
+ - [DeploymentDisableBackupCommand](docs/DeploymentDisableBackupCommand.md)
  - [DeploymentDto](docs/DeploymentDto.md)
+ - [DeploymentEnableAiCommand](docs/DeploymentEnableAiCommand.md)
  - [DeploymentEnableBackupCommand](docs/DeploymentEnableBackupCommand.md)
  - [DeploymentMonitoringCommand](docs/DeploymentMonitoringCommand.md)
  - [DeploymentSearchCommand](docs/DeploymentSearchCommand.md)
