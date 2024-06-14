@@ -33,6 +33,17 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentCommitVm", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentCommitVm(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentCompleted", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -126,6 +137,17 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentMonitoring(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentPurgeKubernetes", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentPurgeKubernetes(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

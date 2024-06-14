@@ -25,6 +25,7 @@ type CreateVirtualClusterCommand struct {
 	Name NullableString `json:"name,omitempty"`
 	ExpiredAt NullableTime `json:"expiredAt,omitempty"`
 	DeleteOnExpiration *bool `json:"deleteOnExpiration,omitempty"`
+	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
 }
 
 // NewCreateVirtualClusterCommand instantiates a new CreateVirtualClusterCommand object
@@ -192,6 +193,48 @@ func (o *CreateVirtualClusterCommand) SetDeleteOnExpiration(v bool) {
 	o.DeleteOnExpiration = &v
 }
 
+// GetAlertingProfileId returns the AlertingProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateVirtualClusterCommand) GetAlertingProfileId() int32 {
+	if o == nil || IsNil(o.AlertingProfileId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AlertingProfileId.Get()
+}
+
+// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateVirtualClusterCommand) GetAlertingProfileIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AlertingProfileId.Get(), o.AlertingProfileId.IsSet()
+}
+
+// HasAlertingProfileId returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasAlertingProfileId() bool {
+	if o != nil && o.AlertingProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertingProfileId gets a reference to the given NullableInt32 and assigns it to the AlertingProfileId field.
+func (o *CreateVirtualClusterCommand) SetAlertingProfileId(v int32) {
+	o.AlertingProfileId.Set(&v)
+}
+// SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
+func (o *CreateVirtualClusterCommand) SetAlertingProfileIdNil() {
+	o.AlertingProfileId.Set(nil)
+}
+
+// UnsetAlertingProfileId ensures that no value is present for AlertingProfileId, not even an explicit nil
+func (o *CreateVirtualClusterCommand) UnsetAlertingProfileId() {
+	o.AlertingProfileId.Unset()
+}
+
 func (o CreateVirtualClusterCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -213,6 +256,9 @@ func (o CreateVirtualClusterCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DeleteOnExpiration) {
 		toSerialize["deleteOnExpiration"] = o.DeleteOnExpiration
+	}
+	if o.AlertingProfileId.IsSet() {
+		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	}
 	return toSerialize, nil
 }

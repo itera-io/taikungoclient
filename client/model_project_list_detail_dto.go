@@ -30,8 +30,8 @@ type ProjectListDetailDto struct {
 	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	Status NullableString `json:"status,omitempty"`
-	Health NullableString `json:"health,omitempty"`
+	Status *ProjectStatus `json:"status,omitempty"`
+	Health *ProjectHealth `json:"health,omitempty"`
 	CloudType *CloudType `json:"cloudType,omitempty"`
 	KubesprayCurrentVersion NullableString `json:"kubesprayCurrentVersion,omitempty"`
 	KubesprayTargetVersion NullableString `json:"kubesprayTargetVersion,omitempty"`
@@ -437,88 +437,68 @@ func (o *ProjectListDetailDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectListDetailDto) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
-		var ret string
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetStatus() ProjectStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret ProjectStatus
 		return ret
 	}
-	return *o.Status.Get()
+	return *o.Status
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectListDetailDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+func (o *ProjectListDetailDto) GetStatusOk() (*ProjectStatus, bool) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return o.Status.Get(), o.Status.IsSet()
+	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ProjectListDetailDto) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
-func (o *ProjectListDetailDto) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *ProjectListDetailDto) SetStatusNil() {
-	o.Status.Set(nil)
+// SetStatus gets a reference to the given ProjectStatus and assigns it to the Status field.
+func (o *ProjectListDetailDto) SetStatus(v ProjectStatus) {
+	o.Status = &v
 }
 
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *ProjectListDetailDto) UnsetStatus() {
-	o.Status.Unset()
-}
-
-// GetHealth returns the Health field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectListDetailDto) GetHealth() string {
-	if o == nil || IsNil(o.Health.Get()) {
-		var ret string
+// GetHealth returns the Health field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetHealth() ProjectHealth {
+	if o == nil || IsNil(o.Health) {
+		var ret ProjectHealth
 		return ret
 	}
-	return *o.Health.Get()
+	return *o.Health
 }
 
 // GetHealthOk returns a tuple with the Health field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectListDetailDto) GetHealthOk() (*string, bool) {
-	if o == nil {
+func (o *ProjectListDetailDto) GetHealthOk() (*ProjectHealth, bool) {
+	if o == nil || IsNil(o.Health) {
 		return nil, false
 	}
-	return o.Health.Get(), o.Health.IsSet()
+	return o.Health, true
 }
 
 // HasHealth returns a boolean if a field has been set.
 func (o *ProjectListDetailDto) HasHealth() bool {
-	if o != nil && o.Health.IsSet() {
+	if o != nil && !IsNil(o.Health) {
 		return true
 	}
 
 	return false
 }
 
-// SetHealth gets a reference to the given NullableString and assigns it to the Health field.
-func (o *ProjectListDetailDto) SetHealth(v string) {
-	o.Health.Set(&v)
-}
-// SetHealthNil sets the value for Health to be an explicit nil
-func (o *ProjectListDetailDto) SetHealthNil() {
-	o.Health.Set(nil)
-}
-
-// UnsetHealth ensures that no value is present for Health, not even an explicit nil
-func (o *ProjectListDetailDto) UnsetHealth() {
-	o.Health.Unset()
+// SetHealth gets a reference to the given ProjectHealth and assigns it to the Health field.
+func (o *ProjectListDetailDto) SetHealth(v ProjectHealth) {
+	o.Health = &v
 }
 
 // GetCloudType returns the CloudType field value if set, zero value otherwise.
@@ -1825,11 +1805,11 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
-	if o.Health.IsSet() {
-		toSerialize["health"] = o.Health.Get()
+	if !IsNil(o.Health) {
+		toSerialize["health"] = o.Health
 	}
 	if !IsNil(o.CloudType) {
 		toSerialize["cloudType"] = o.CloudType

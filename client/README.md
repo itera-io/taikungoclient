@@ -509,6 +509,7 @@ Class | Method | HTTP request | Description
 *ProjectAppsAPI* | [**ProjectappUpdate**](docs/ProjectAppsAPI.md#projectappupdate) | **Post** /api/v1/projectapp/update | Update project app
 *ProjectAppsAPI* | [**ProjectappUpdateExtraValues**](docs/ProjectAppsAPI.md#projectappupdateextravalues) | **Post** /api/v1/projectapp/update-extra-values | Update extra values
 *ProjectDeploymentAPI* | [**ProjectDeploymentCommit**](docs/ProjectDeploymentAPI.md#projectdeploymentcommit) | **Post** /api/v1/project-deployment/commit | Commit
+*ProjectDeploymentAPI* | [**ProjectDeploymentCommitVm**](docs/ProjectDeploymentAPI.md#projectdeploymentcommitvm) | **Post** /api/v1/project-deployment/commit-vm | Commit
 *ProjectDeploymentAPI* | [**ProjectDeploymentCompleted**](docs/ProjectDeploymentAPI.md#projectdeploymentcompleted) | **Post** /api/v1/project-deployment/completed | Update project fields
 *ProjectDeploymentAPI* | [**ProjectDeploymentDelete**](docs/ProjectDeploymentAPI.md#projectdeploymentdelete) | **Post** /api/v1/project-deployment/delete | Delete
 *ProjectDeploymentAPI* | [**ProjectDeploymentDisableAi**](docs/ProjectDeploymentAPI.md#projectdeploymentdisableai) | **Post** /api/v1/project-deployment/disable-ai | Disable ai
@@ -518,6 +519,7 @@ Class | Method | HTTP request | Description
 *ProjectDeploymentAPI* | [**ProjectDeploymentEnableBackup**](docs/ProjectDeploymentAPI.md#projectdeploymentenablebackup) | **Post** /api/v1/project-deployment/enable-backup | Enable backup
 *ProjectDeploymentAPI* | [**ProjectDeploymentEnableOpa**](docs/ProjectDeploymentAPI.md#projectdeploymentenableopa) | **Post** /api/v1/project-deployment/enable-opa | Enable opa
 *ProjectDeploymentAPI* | [**ProjectDeploymentMonitoring**](docs/ProjectDeploymentAPI.md#projectdeploymentmonitoring) | **Post** /api/v1/project-deployment/monitoring | Monitoring
+*ProjectDeploymentAPI* | [**ProjectDeploymentPurgeKubernetes**](docs/ProjectDeploymentAPI.md#projectdeploymentpurgekubernetes) | **Post** /api/v1/project-deployment/purge-kubernetes | Purge kubernetes
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpdate**](docs/ProjectDeploymentAPI.md#projectdeploymentupdate) | **Post** /api/v1/project-deployment/update | Update stage of project
 *ProjectGroupsAPI* | [**ProjectgroupsBindProject**](docs/ProjectGroupsAPI.md#projectgroupsbindproject) | **Post** /api/v1/projectgroups/bind-project | Bind Projects to group
 *ProjectGroupsAPI* | [**ProjectgroupsBindUserGroup**](docs/ProjectGroupsAPI.md#projectgroupsbindusergroup) | **Post** /api/v1/projectgroups/bind-user-group | Bind User groups
@@ -1043,6 +1045,7 @@ Class | Method | HTTP request | Description
  - [DeleteUserGroupCommand](docs/DeleteUserGroupCommand.md)
  - [DeleteVirtualClusterCommand](docs/DeleteVirtualClusterCommand.md)
  - [DeleteWholeProjectCommand](docs/DeleteWholeProjectCommand.md)
+ - [DeploymentCommitVmCommand](docs/DeploymentCommitVmCommand.md)
  - [DeploymentCompletedCommand](docs/DeploymentCompletedCommand.md)
  - [DeploymentDisableAiCommand](docs/DeploymentDisableAiCommand.md)
  - [DeploymentDisableBackupCommand](docs/DeploymentDisableBackupCommand.md)
