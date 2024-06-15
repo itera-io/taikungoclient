@@ -62,6 +62,7 @@ type ProjectListDetailDto struct {
 	AnyServer *bool `json:"anyServer,omitempty"`
 	AnyVm *bool `json:"anyVm,omitempty"`
 	AllUsers []string `json:"allUsers,omitempty"`
+	ParentProjectId NullableInt32 `json:"parentProjectId,omitempty"`
 	LockButton *ButtonStatusDto `json:"lockButton,omitempty"`
 	UnlockButton *ButtonStatusDto `json:"unlockButton,omitempty"`
 	DeleteButton *ButtonStatusDto `json:"deleteButton,omitempty"`
@@ -1573,6 +1574,48 @@ func (o *ProjectListDetailDto) SetAllUsers(v []string) {
 	o.AllUsers = v
 }
 
+// GetParentProjectId returns the ParentProjectId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectListDetailDto) GetParentProjectId() int32 {
+	if o == nil || IsNil(o.ParentProjectId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.ParentProjectId.Get()
+}
+
+// GetParentProjectIdOk returns a tuple with the ParentProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectListDetailDto) GetParentProjectIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ParentProjectId.Get(), o.ParentProjectId.IsSet()
+}
+
+// HasParentProjectId returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasParentProjectId() bool {
+	if o != nil && o.ParentProjectId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParentProjectId gets a reference to the given NullableInt32 and assigns it to the ParentProjectId field.
+func (o *ProjectListDetailDto) SetParentProjectId(v int32) {
+	o.ParentProjectId.Set(&v)
+}
+// SetParentProjectIdNil sets the value for ParentProjectId to be an explicit nil
+func (o *ProjectListDetailDto) SetParentProjectIdNil() {
+	o.ParentProjectId.Set(nil)
+}
+
+// UnsetParentProjectId ensures that no value is present for ParentProjectId, not even an explicit nil
+func (o *ProjectListDetailDto) UnsetParentProjectId() {
+	o.ParentProjectId.Unset()
+}
+
 // GetLockButton returns the LockButton field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetLockButton() ButtonStatusDto {
 	if o == nil || IsNil(o.LockButton) {
@@ -1900,6 +1943,9 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AllUsers != nil {
 		toSerialize["allUsers"] = o.AllUsers
+	}
+	if o.ParentProjectId.IsSet() {
+		toSerialize["parentProjectId"] = o.ParentProjectId.Get()
 	}
 	if !IsNil(o.LockButton) {
 		toSerialize["lockButton"] = o.LockButton
