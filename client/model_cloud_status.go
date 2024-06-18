@@ -30,6 +30,7 @@ const (
 	CLOUDSTATUS_READY CloudStatus = "Ready"
 	CLOUDSTATUS_UPDATING CloudStatus = "Updating"
 	CLOUDSTATUS_UPGRADING CloudStatus = "Upgrading"
+	CLOUDSTATUS_REPAIRING CloudStatus = "Repairing"
 )
 
 // All allowed values of CloudStatus enum
@@ -43,6 +44,7 @@ var AllowedCloudStatusEnumValues = []CloudStatus{
 	"Ready",
 	"Updating",
 	"Upgrading",
+	"Repairing",
 }
 
 func (v *CloudStatus) UnmarshalJSON(src []byte) error {

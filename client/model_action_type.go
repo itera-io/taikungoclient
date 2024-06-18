@@ -90,6 +90,14 @@ const (
 	ACTIONTYPE_START_PURGE_SERVERS ActionType = "StartPurgeServers"
 	ACTIONTYPE_START_PURGE_VMS ActionType = "StartPurgeVms"
 	ACTIONTYPE_START_COMMIT_VM_CHANGES ActionType = "StartCommitVmChanges"
+	ACTIONTYPE_START_REPAIR_SERVERS ActionType = "StartRepairServers"
+	ACTIONTYPE_START_REPAIR_VMS ActionType = "StartRepairVms"
+	ACTIONTYPE_NONE ActionType = "None"
+	ACTIONTYPE_COMMIT_VM_CHANGES ActionType = "CommitVmChanges"
+	ACTIONTYPE_REPAIR_SERVERS ActionType = "RepairServers"
+	ACTIONTYPE_REPAIR_VMS ActionType = "RepairVms"
+	ACTIONTYPE_SCALE_UP_SERVERS ActionType = "ScaleUpServers"
+	ACTIONTYPE_SCALE_UP_VMS ActionType = "ScaleUpVms"
 )
 
 // All allowed values of ActionType enum
@@ -163,6 +171,14 @@ var AllowedActionTypeEnumValues = []ActionType{
 	"StartPurgeServers",
 	"StartPurgeVms",
 	"StartCommitVmChanges",
+	"StartRepairServers",
+	"StartRepairVms",
+	"None",
+	"CommitVmChanges",
+	"RepairServers",
+	"RepairVms",
+	"ScaleUpServers",
+	"ScaleUpVms",
 }
 
 func (v *ActionType) UnmarshalJSON(src []byte) error {

@@ -99,6 +99,17 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentDisableMonitoring", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentDisableMonitoring(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentDisableOpa", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -132,6 +143,17 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentEnableMonitoring", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentEnableMonitoring(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentEnableOpa", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -143,11 +165,22 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentMonitoring", func(t *testing.T) {
+	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentRepair", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentMonitoring(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentRepair(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentRepairVm", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentRepairVm(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

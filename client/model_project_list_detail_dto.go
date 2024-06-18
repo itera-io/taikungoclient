@@ -63,6 +63,8 @@ type ProjectListDetailDto struct {
 	AnyVm *bool `json:"anyVm,omitempty"`
 	AllUsers []string `json:"allUsers,omitempty"`
 	ParentProjectId NullableInt32 `json:"parentProjectId,omitempty"`
+	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
+	OpaProfileId NullableInt32 `json:"opaProfileId,omitempty"`
 	LockButton *ButtonStatusDto `json:"lockButton,omitempty"`
 	UnlockButton *ButtonStatusDto `json:"unlockButton,omitempty"`
 	DeleteButton *ButtonStatusDto `json:"deleteButton,omitempty"`
@@ -1616,6 +1618,90 @@ func (o *ProjectListDetailDto) UnsetParentProjectId() {
 	o.ParentProjectId.Unset()
 }
 
+// GetAlertingProfileId returns the AlertingProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectListDetailDto) GetAlertingProfileId() int32 {
+	if o == nil || IsNil(o.AlertingProfileId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AlertingProfileId.Get()
+}
+
+// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectListDetailDto) GetAlertingProfileIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AlertingProfileId.Get(), o.AlertingProfileId.IsSet()
+}
+
+// HasAlertingProfileId returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasAlertingProfileId() bool {
+	if o != nil && o.AlertingProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertingProfileId gets a reference to the given NullableInt32 and assigns it to the AlertingProfileId field.
+func (o *ProjectListDetailDto) SetAlertingProfileId(v int32) {
+	o.AlertingProfileId.Set(&v)
+}
+// SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
+func (o *ProjectListDetailDto) SetAlertingProfileIdNil() {
+	o.AlertingProfileId.Set(nil)
+}
+
+// UnsetAlertingProfileId ensures that no value is present for AlertingProfileId, not even an explicit nil
+func (o *ProjectListDetailDto) UnsetAlertingProfileId() {
+	o.AlertingProfileId.Unset()
+}
+
+// GetOpaProfileId returns the OpaProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectListDetailDto) GetOpaProfileId() int32 {
+	if o == nil || IsNil(o.OpaProfileId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.OpaProfileId.Get()
+}
+
+// GetOpaProfileIdOk returns a tuple with the OpaProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectListDetailDto) GetOpaProfileIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OpaProfileId.Get(), o.OpaProfileId.IsSet()
+}
+
+// HasOpaProfileId returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasOpaProfileId() bool {
+	if o != nil && o.OpaProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOpaProfileId gets a reference to the given NullableInt32 and assigns it to the OpaProfileId field.
+func (o *ProjectListDetailDto) SetOpaProfileId(v int32) {
+	o.OpaProfileId.Set(&v)
+}
+// SetOpaProfileIdNil sets the value for OpaProfileId to be an explicit nil
+func (o *ProjectListDetailDto) SetOpaProfileIdNil() {
+	o.OpaProfileId.Set(nil)
+}
+
+// UnsetOpaProfileId ensures that no value is present for OpaProfileId, not even an explicit nil
+func (o *ProjectListDetailDto) UnsetOpaProfileId() {
+	o.OpaProfileId.Unset()
+}
+
 // GetLockButton returns the LockButton field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetLockButton() ButtonStatusDto {
 	if o == nil || IsNil(o.LockButton) {
@@ -1946,6 +2032,12 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ParentProjectId.IsSet() {
 		toSerialize["parentProjectId"] = o.ParentProjectId.Get()
+	}
+	if o.AlertingProfileId.IsSet() {
+		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
+	}
+	if o.OpaProfileId.IsSet() {
+		toSerialize["opaProfileId"] = o.OpaProfileId.Get()
 	}
 	if !IsNil(o.LockButton) {
 		toSerialize["lockButton"] = o.LockButton

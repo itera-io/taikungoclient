@@ -386,11 +386,12 @@ docs/DeploymentCommitVmCommand.md
 docs/DeploymentCompletedCommand.md
 docs/DeploymentDisableAiCommand.md
 docs/DeploymentDisableBackupCommand.md
+docs/DeploymentDisableMonitoringCommand.md
 docs/DeploymentDisableOpaCommand.md
 docs/DeploymentDto.md
 docs/DeploymentEnableAiCommand.md
 docs/DeploymentEnableBackupCommand.md
-docs/DeploymentMonitoringCommand.md
+docs/DeploymentEnableMonitoringCommand.md
 docs/DeploymentOpaEnableCommand.md
 docs/DeploymentSearchCommand.md
 docs/DeploymentSearchList.md
@@ -708,6 +709,7 @@ docs/ProjectDeploymentAPI.md
 docs/ProjectDeploymentCommitCommand.md
 docs/ProjectDeploymentDeleteServersCommand.md
 docs/ProjectDeploymentDeleteVmsCommand.md
+docs/ProjectDeploymentRepairCommand.md
 docs/ProjectDetailsErrorListDto.md
 docs/ProjectDetailsErrorType.md
 docs/ProjectDetailsForServersDto.md
@@ -1316,11 +1318,12 @@ model_deployment_commit_vm_command.go
 model_deployment_completed_command.go
 model_deployment_disable_ai_command.go
 model_deployment_disable_backup_command.go
+model_deployment_disable_monitoring_command.go
 model_deployment_disable_opa_command.go
 model_deployment_dto.go
 model_deployment_enable_ai_command.go
 model_deployment_enable_backup_command.go
-model_deployment_monitoring_command.go
+model_deployment_enable_monitoring_command.go
 model_deployment_opa_enable_command.go
 model_deployment_search_command.go
 model_deployment_search_list.go
@@ -1608,6 +1611,7 @@ model_project_common_record_dto.go
 model_project_deployment_commit_command.go
 model_project_deployment_delete_servers_command.go
 model_project_deployment_delete_vms_command.go
+model_project_deployment_repair_command.go
 model_project_details_error_list_dto.go
 model_project_details_error_type.go
 model_project_details_for_servers_dto.go

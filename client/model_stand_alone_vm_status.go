@@ -27,6 +27,7 @@ const (
 	STANDALONEVMSTATUS_PENDING_DELETE StandAloneVmStatus = "PendingDelete"
 	STANDALONEVMSTATUS_READY StandAloneVmStatus = "Ready"
 	STANDALONEVMSTATUS_UPDATING StandAloneVmStatus = "Updating"
+	STANDALONEVMSTATUS_REPAIRING StandAloneVmStatus = "Repairing"
 )
 
 // All allowed values of StandAloneVmStatus enum
@@ -37,6 +38,7 @@ var AllowedStandAloneVmStatusEnumValues = []StandAloneVmStatus{
 	"PendingDelete",
 	"Ready",
 	"Updating",
+	"Repairing",
 }
 
 func (v *StandAloneVmStatus) UnmarshalJSON(src []byte) error {

@@ -515,11 +515,14 @@ Class | Method | HTTP request | Description
 *ProjectDeploymentAPI* | [**ProjectDeploymentDeleteVms**](docs/ProjectDeploymentAPI.md#projectdeploymentdeletevms) | **Post** /api/v1/project-deployment/delete-vms | Delete vms
 *ProjectDeploymentAPI* | [**ProjectDeploymentDisableAi**](docs/ProjectDeploymentAPI.md#projectdeploymentdisableai) | **Post** /api/v1/project-deployment/disable-ai | Disable ai
 *ProjectDeploymentAPI* | [**ProjectDeploymentDisableBackup**](docs/ProjectDeploymentAPI.md#projectdeploymentdisablebackup) | **Post** /api/v1/project-deployment/disable-backup | Disable backup
+*ProjectDeploymentAPI* | [**ProjectDeploymentDisableMonitoring**](docs/ProjectDeploymentAPI.md#projectdeploymentdisablemonitoring) | **Post** /api/v1/project-deployment/disable-monitoring | Disable monitoring
 *ProjectDeploymentAPI* | [**ProjectDeploymentDisableOpa**](docs/ProjectDeploymentAPI.md#projectdeploymentdisableopa) | **Post** /api/v1/project-deployment/disable-opa | Disable opa
 *ProjectDeploymentAPI* | [**ProjectDeploymentEnableAi**](docs/ProjectDeploymentAPI.md#projectdeploymentenableai) | **Post** /api/v1/project-deployment/enable-ai | Enable ai
 *ProjectDeploymentAPI* | [**ProjectDeploymentEnableBackup**](docs/ProjectDeploymentAPI.md#projectdeploymentenablebackup) | **Post** /api/v1/project-deployment/enable-backup | Enable backup
+*ProjectDeploymentAPI* | [**ProjectDeploymentEnableMonitoring**](docs/ProjectDeploymentAPI.md#projectdeploymentenablemonitoring) | **Post** /api/v1/project-deployment/enable-monitoring | Enable monitoring
 *ProjectDeploymentAPI* | [**ProjectDeploymentEnableOpa**](docs/ProjectDeploymentAPI.md#projectdeploymentenableopa) | **Post** /api/v1/project-deployment/enable-opa | Enable opa
-*ProjectDeploymentAPI* | [**ProjectDeploymentMonitoring**](docs/ProjectDeploymentAPI.md#projectdeploymentmonitoring) | **Post** /api/v1/project-deployment/monitoring | Monitoring
+*ProjectDeploymentAPI* | [**ProjectDeploymentRepair**](docs/ProjectDeploymentAPI.md#projectdeploymentrepair) | **Post** /api/v1/project-deployment/repair | Repair
+*ProjectDeploymentAPI* | [**ProjectDeploymentRepairVm**](docs/ProjectDeploymentAPI.md#projectdeploymentrepairvm) | **Post** /api/v1/project-deployment/repair-vm | Repair Vm
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpdate**](docs/ProjectDeploymentAPI.md#projectdeploymentupdate) | **Post** /api/v1/project-deployment/update | Update stage of project
 *ProjectGroupsAPI* | [**ProjectgroupsBindProject**](docs/ProjectGroupsAPI.md#projectgroupsbindproject) | **Post** /api/v1/projectgroups/bind-project | Bind Projects to group
 *ProjectGroupsAPI* | [**ProjectgroupsBindUserGroup**](docs/ProjectGroupsAPI.md#projectgroupsbindusergroup) | **Post** /api/v1/projectgroups/bind-user-group | Bind User groups
@@ -1049,11 +1052,12 @@ Class | Method | HTTP request | Description
  - [DeploymentCompletedCommand](docs/DeploymentCompletedCommand.md)
  - [DeploymentDisableAiCommand](docs/DeploymentDisableAiCommand.md)
  - [DeploymentDisableBackupCommand](docs/DeploymentDisableBackupCommand.md)
+ - [DeploymentDisableMonitoringCommand](docs/DeploymentDisableMonitoringCommand.md)
  - [DeploymentDisableOpaCommand](docs/DeploymentDisableOpaCommand.md)
  - [DeploymentDto](docs/DeploymentDto.md)
  - [DeploymentEnableAiCommand](docs/DeploymentEnableAiCommand.md)
  - [DeploymentEnableBackupCommand](docs/DeploymentEnableBackupCommand.md)
- - [DeploymentMonitoringCommand](docs/DeploymentMonitoringCommand.md)
+ - [DeploymentEnableMonitoringCommand](docs/DeploymentEnableMonitoringCommand.md)
  - [DeploymentOpaEnableCommand](docs/DeploymentOpaEnableCommand.md)
  - [DeploymentSearchCommand](docs/DeploymentSearchCommand.md)
  - [DeploymentSearchList](docs/DeploymentSearchList.md)
@@ -1341,6 +1345,7 @@ Class | Method | HTTP request | Description
  - [ProjectDeploymentCommitCommand](docs/ProjectDeploymentCommitCommand.md)
  - [ProjectDeploymentDeleteServersCommand](docs/ProjectDeploymentDeleteServersCommand.md)
  - [ProjectDeploymentDeleteVmsCommand](docs/ProjectDeploymentDeleteVmsCommand.md)
+ - [ProjectDeploymentRepairCommand](docs/ProjectDeploymentRepairCommand.md)
  - [ProjectDetailsErrorListDto](docs/ProjectDetailsErrorListDto.md)
  - [ProjectDetailsErrorType](docs/ProjectDetailsErrorType.md)
  - [ProjectDetailsForServersDto](docs/ProjectDetailsForServersDto.md)
