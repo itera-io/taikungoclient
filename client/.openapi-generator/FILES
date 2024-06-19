@@ -710,6 +710,7 @@ docs/ProjectDeploymentCommitCommand.md
 docs/ProjectDeploymentDeleteServersCommand.md
 docs/ProjectDeploymentDeleteVmsCommand.md
 docs/ProjectDeploymentRepairCommand.md
+docs/ProjectDeploymentRepairVmCommand.md
 docs/ProjectDetailsErrorListDto.md
 docs/ProjectDetailsErrorType.md
 docs/ProjectDetailsForServersDto.md
@@ -1612,6 +1613,7 @@ model_project_deployment_commit_command.go
 model_project_deployment_delete_servers_command.go
 model_project_deployment_delete_vms_command.go
 model_project_deployment_repair_command.go
+model_project_deployment_repair_vm_command.go
 model_project_details_error_list_dto.go
 model_project_details_error_type.go
 model_project_details_for_servers_dto.go

@@ -2330,11 +2330,11 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentRepairExecute(r ApiProjec
 type ApiProjectDeploymentRepairVmRequest struct {
 	ctx context.Context
 	ApiService *ProjectDeploymentAPIService
-	projectDeploymentRepairCommand *ProjectDeploymentRepairCommand
+	projectDeploymentRepairVmCommand *ProjectDeploymentRepairVmCommand
 }
 
-func (r ApiProjectDeploymentRepairVmRequest) ProjectDeploymentRepairCommand(projectDeploymentRepairCommand ProjectDeploymentRepairCommand) ApiProjectDeploymentRepairVmRequest {
-	r.projectDeploymentRepairCommand = &projectDeploymentRepairCommand
+func (r ApiProjectDeploymentRepairVmRequest) ProjectDeploymentRepairVmCommand(projectDeploymentRepairVmCommand ProjectDeploymentRepairVmCommand) ApiProjectDeploymentRepairVmRequest {
+	r.projectDeploymentRepairVmCommand = &projectDeploymentRepairVmCommand
 	return r
 }
 
@@ -2373,8 +2373,8 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentRepairVmExecute(r ApiProj
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.projectDeploymentRepairCommand == nil {
-		return nil, reportError("projectDeploymentRepairCommand is required and must be specified")
+	if r.projectDeploymentRepairVmCommand == nil {
+		return nil, reportError("projectDeploymentRepairVmCommand is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -2395,7 +2395,7 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentRepairVmExecute(r ApiProj
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.projectDeploymentRepairCommand
+	localVarPostBody = r.projectDeploymentRepairVmCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -1346,6 +1346,7 @@ Class | Method | HTTP request | Description
  - [ProjectDeploymentDeleteServersCommand](docs/ProjectDeploymentDeleteServersCommand.md)
  - [ProjectDeploymentDeleteVmsCommand](docs/ProjectDeploymentDeleteVmsCommand.md)
  - [ProjectDeploymentRepairCommand](docs/ProjectDeploymentRepairCommand.md)
+ - [ProjectDeploymentRepairVmCommand](docs/ProjectDeploymentRepairVmCommand.md)
  - [ProjectDetailsErrorListDto](docs/ProjectDetailsErrorListDto.md)
  - [ProjectDetailsErrorType](docs/ProjectDetailsErrorType.md)
  - [ProjectDetailsForServersDto](docs/ProjectDetailsForServersDto.md)
