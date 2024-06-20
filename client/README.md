@@ -1125,7 +1125,6 @@ Class | Method | HTTP request | Description
  - [FlavorsListDto](docs/FlavorsListDto.md)
  - [ForceToResetPasswordCommand](docs/ForceToResetPasswordCommand.md)
  - [ForgotPasswordCommand](docs/ForgotPasswordCommand.md)
- - [FromTemplateDto](docs/FromTemplateDto.md)
  - [FullSpotOperationCommand](docs/FullSpotOperationCommand.md)
  - [GetCatalogAppValueAutocompleteCommand](docs/GetCatalogAppValueAutocompleteCommand.md)
  - [GetCatalogAppValueCommand](docs/GetCatalogAppValueCommand.md)

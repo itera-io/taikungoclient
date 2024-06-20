@@ -462,7 +462,6 @@ docs/FlavorsAPI.md
 docs/FlavorsListDto.md
 docs/ForceToResetPasswordCommand.md
 docs/ForgotPasswordCommand.md
-docs/FromTemplateDto.md
 docs/FullSpotOperationCommand.md
 docs/GetCatalogAppValueAutocompleteCommand.md
 docs/GetCatalogAppValueCommand.md
@@ -1392,7 +1391,6 @@ model_final_price_dto.go
 model_flavors_list_dto.go
 model_force_to_reset_password_command.go
 model_forgot_password_command.go
-model_from_template_dto.go
 model_full_spot_operation_command.go
 model_get_catalog_app_value_autocomplete_command.go
 model_get_catalog_app_value_command.go

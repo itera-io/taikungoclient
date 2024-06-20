@@ -58,7 +58,6 @@ type CreateProjectCommand struct {
 	NetMask NullableInt32 `json:"netMask,omitempty"`
 	SaveAsTemplate *bool `json:"saveAsTemplate,omitempty"`
 	TemplateName NullableString `json:"templateName,omitempty"`
-	FromTemplate *FromTemplateDto `json:"fromTemplate,omitempty"`
 	ServerTemplates []ServerTemplateDto `json:"serverTemplates,omitempty"`
 }
 
@@ -1455,38 +1454,6 @@ func (o *CreateProjectCommand) UnsetTemplateName() {
 	o.TemplateName.Unset()
 }
 
-// GetFromTemplate returns the FromTemplate field value if set, zero value otherwise.
-func (o *CreateProjectCommand) GetFromTemplate() FromTemplateDto {
-	if o == nil || IsNil(o.FromTemplate) {
-		var ret FromTemplateDto
-		return ret
-	}
-	return *o.FromTemplate
-}
-
-// GetFromTemplateOk returns a tuple with the FromTemplate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *CreateProjectCommand) GetFromTemplateOk() (*FromTemplateDto, bool) {
-	if o == nil || IsNil(o.FromTemplate) {
-		return nil, false
-	}
-	return o.FromTemplate, true
-}
-
-// HasFromTemplate returns a boolean if a field has been set.
-func (o *CreateProjectCommand) HasFromTemplate() bool {
-	if o != nil && !IsNil(o.FromTemplate) {
-		return true
-	}
-
-	return false
-}
-
-// SetFromTemplate gets a reference to the given FromTemplateDto and assigns it to the FromTemplate field.
-func (o *CreateProjectCommand) SetFromTemplate(v FromTemplateDto) {
-	o.FromTemplate = &v
-}
-
 // GetServerTemplates returns the ServerTemplates field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectCommand) GetServerTemplates() []ServerTemplateDto {
 	if o == nil {
@@ -1640,9 +1607,6 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.TemplateName.IsSet() {
 		toSerialize["templateName"] = o.TemplateName.Get()
-	}
-	if !IsNil(o.FromTemplate) {
-		toSerialize["fromTemplate"] = o.FromTemplate
 	}
 	if o.ServerTemplates != nil {
 		toSerialize["serverTemplates"] = o.ServerTemplates
