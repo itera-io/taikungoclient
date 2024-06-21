@@ -270,7 +270,6 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobSyncOrganizations**](docs/CronJobServiceAPI.md#cronjobsyncorganizations) | **Post** /api/v1/cronjob/sync-organizations | Sync organizations
 *CronJobServiceAPI* | [**CronjobSyncProjectApps**](docs/CronJobServiceAPI.md#cronjobsyncprojectapps) | **Post** /api/v1/cronjob/sync-project-apps | Sync project apps
 *CronJobServiceAPI* | [**CronjobSyncProjects**](docs/CronJobServiceAPI.md#cronjobsyncprojects) | **Post** /api/v1/cronjob/sync-projects | Sync projects
-*CronJobServiceAPI* | [**CronjobTriggerTemplates**](docs/CronJobServiceAPI.md#cronjobtriggertemplates) | **Post** /api/v1/cronjob/trigger-templates | Trigger scheduled templates
 *CronJobServiceAPI* | [**CronjobUpdateProjectAppStatus**](docs/CronJobServiceAPI.md#cronjobupdateprojectappstatus) | **Post** /api/v1/cronjob/update-project-app-status | Update project app status
 *CronJobServiceAPI* | [**CronjobUpdateProjectQuotaMessage**](docs/CronJobServiceAPI.md#cronjobupdateprojectquotamessage) | **Post** /api/v1/cronjob/update-project-quota-message | Update project quota message
 *DnsServersAPI* | [**DnsserversCreate**](docs/DnsServersAPI.md#dnsserverscreate) | **Post** /api/v1/dnsservers/create | Create dns servers for access profile
@@ -539,10 +538,10 @@ Class | Method | HTTP request | Description
 *ProjectQuotasAPI* | [**ProjectquotasList**](docs/ProjectQuotasAPI.md#projectquotaslist) | **Get** /api/v1/projectquotas | Retrieve all project quotas
 *ProjectQuotasAPI* | [**ProjectquotasUpdate**](docs/ProjectQuotasAPI.md#projectquotasupdate) | **Post** /api/v1/projectquotas/update | Edit project quota
 *ProjectRevisionsAPI* | [**ProjectrevisionsEdit**](docs/ProjectRevisionsAPI.md#projectrevisionsedit) | **Put** /api/v1/projectrevisions/edit/{projectId} | Update project revision by ProjectId for poller
-*ProjectTemplatesAPI* | [**ProjecttemplateCreate**](docs/ProjectTemplatesAPI.md#projecttemplatecreate) | **Post** /api/v1/projecttemplate/create | Create project from template
-*ProjectTemplatesAPI* | [**ProjecttemplateDelete**](docs/ProjectTemplatesAPI.md#projecttemplatedelete) | **Delete** /api/v1/projecttemplate/{id} | Delete project template by Id
-*ProjectTemplatesAPI* | [**ProjecttemplateDropdown**](docs/ProjectTemplatesAPI.md#projecttemplatedropdown) | **Get** /api/v1/projecttemplate/list | Retrieve project template by organization Id
-*ProjectTemplatesAPI* | [**ProjecttemplateList**](docs/ProjectTemplatesAPI.md#projecttemplatelist) | **Get** /api/v1/projecttemplate | Retrieve all project templates
+*ProjectTemplatesAPI* | [**ProjectTemplatesCreate**](docs/ProjectTemplatesAPI.md#projecttemplatescreate) | **Post** /api/v1/project-templates/create | Create project from template
+*ProjectTemplatesAPI* | [**ProjectTemplatesDelete**](docs/ProjectTemplatesAPI.md#projecttemplatesdelete) | **Delete** /api/v1/project-templates/{id} | Delete project template by Id
+*ProjectTemplatesAPI* | [**ProjectTemplatesDropdown**](docs/ProjectTemplatesAPI.md#projecttemplatesdropdown) | **Get** /api/v1/project-templates/list | Retrieve project template by organization Id
+*ProjectTemplatesAPI* | [**ProjectTemplatesList**](docs/ProjectTemplatesAPI.md#projecttemplateslist) | **Get** /api/v1/project-templates | Retrieve all project templates
 *ProjectsAPI* | [**ProjectsAiAnalyzer**](docs/ProjectsAPI.md#projectsaianalyzer) | **Get** /api/v1/projects/ai-analyze/{projectId} | Analyze cluster by AI model
 *ProjectsAPI* | [**ProjectsAlerts**](docs/ProjectsAPI.md#projectsalerts) | **Post** /api/v1/projects/alerts | Project alerts
 *ProjectsAPI* | [**ProjectsChatCompletions**](docs/ProjectsAPI.md#projectschatcompletions) | **Post** /api/v1/projects/chat/completions | AI Chat completions

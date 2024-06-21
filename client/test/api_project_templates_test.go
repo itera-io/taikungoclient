@@ -22,35 +22,35 @@ func Test_taikuncore_ProjectTemplatesAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ProjectTemplatesAPIService ProjecttemplateCreate", func(t *testing.T) {
+	t.Run("Test ProjectTemplatesAPIService ProjectTemplatesCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.ProjectTemplatesAPI.ProjecttemplateCreate(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectTemplatesAPI.ProjectTemplatesCreate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ProjectTemplatesAPIService ProjecttemplateDelete", func(t *testing.T) {
+	t.Run("Test ProjectTemplatesAPIService ProjectTemplatesDelete", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var id int32
 
-		httpRes, err := apiClient.ProjectTemplatesAPI.ProjecttemplateDelete(context.Background(), id).Execute()
+		httpRes, err := apiClient.ProjectTemplatesAPI.ProjectTemplatesDelete(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ProjectTemplatesAPIService ProjecttemplateDropdown", func(t *testing.T) {
+	t.Run("Test ProjectTemplatesAPIService ProjectTemplatesDropdown", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectTemplatesAPI.ProjecttemplateDropdown(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ProjectTemplatesAPI.ProjectTemplatesDropdown(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -58,11 +58,11 @@ func Test_taikuncore_ProjectTemplatesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectTemplatesAPIService ProjecttemplateList", func(t *testing.T) {
+	t.Run("Test ProjectTemplatesAPIService ProjectTemplatesList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectTemplatesAPI.ProjecttemplateList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ProjectTemplatesAPI.ProjectTemplatesList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

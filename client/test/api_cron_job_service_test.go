@@ -308,17 +308,6 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CronJobServiceAPIService CronjobTriggerTemplates", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.CronJobServiceAPI.CronjobTriggerTemplates(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CronJobServiceAPIService CronjobUpdateProjectAppStatus", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
