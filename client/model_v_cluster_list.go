@@ -22,6 +22,7 @@ var _ MappedNullable = &VClusterList{}
 type VClusterList struct {
 	Data []VClusterListDto `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
+	Project *ProjectDetailsForVmsDto `json:"project,omitempty"`
 }
 
 // NewVClusterList instantiates a new VClusterList object
@@ -106,6 +107,38 @@ func (o *VClusterList) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 
+// GetProject returns the Project field value if set, zero value otherwise.
+func (o *VClusterList) GetProject() ProjectDetailsForVmsDto {
+	if o == nil || IsNil(o.Project) {
+		var ret ProjectDetailsForVmsDto
+		return ret
+	}
+	return *o.Project
+}
+
+// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VClusterList) GetProjectOk() (*ProjectDetailsForVmsDto, bool) {
+	if o == nil || IsNil(o.Project) {
+		return nil, false
+	}
+	return o.Project, true
+}
+
+// HasProject returns a boolean if a field has been set.
+func (o *VClusterList) HasProject() bool {
+	if o != nil && !IsNil(o.Project) {
+		return true
+	}
+
+	return false
+}
+
+// SetProject gets a reference to the given ProjectDetailsForVmsDto and assigns it to the Project field.
+func (o *VClusterList) SetProject(v ProjectDetailsForVmsDto) {
+	o.Project = &v
+}
+
 func (o VClusterList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -121,6 +154,9 @@ func (o VClusterList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
+	}
+	if !IsNil(o.Project) {
+		toSerialize["project"] = o.Project
 	}
 	return toSerialize, nil
 }

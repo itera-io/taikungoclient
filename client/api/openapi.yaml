@@ -5641,8 +5641,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-06-24T00:03:48.1960147Z
-                  createdAt: 2024-06-24T00:03:48.1960147Z
+                  lastValidated: 2024-06-24T17:21:29.1179371Z
+                  createdAt: 2024-06-24T17:21:29.1179371Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5747,14 +5747,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-06-24T00:03:48.1960147Z
+                    lastBackup: 2024-06-24T17:21:29.1179371Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-06-24T00:03:48.1960147Z
+                  createdAt: 2024-06-24T17:21:29.1179371Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-06-24T00:03:48.1960147Z
+                  lastBackup: 2024-06-24T17:21:29.1179371Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5859,8 +5859,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-06-24T00:03:48.1960147Z
-                  expiration: 2024-06-24T00:03:48.1960147Z
+                  createdAt: 2024-06-24T17:21:29.1179371Z
+                  expiration: 2024-06-24T17:21:29.1179371Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5964,7 +5964,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-06-24T00:03:48.1960147Z
+                  createdAt: 2024-06-24T17:21:29.1179371Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6074,9 +6074,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-06-24T00:03:48.1960147+00:00
-                  startTimeStamp: 2024-06-24T00:03:48.1960147+00:00
-                  createdAt: 2024-06-24T00:03:48.1960147Z
+                  completionDateTime: 2024-06-24T17:21:29.1179371+00:00
+                  startTimeStamp: 2024-06-24T17:21:29.1179371+00:00
+                  createdAt: 2024-06-24T17:21:29.1179371Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -66459,6 +66459,34 @@ components:
           isMaintenanceModeEnabled: true
           kubernetesVersion: kubernetesVersion
           status: "Null"
+        project:
+          isProjectMaintenanceModeEnabled: true
+          organizationName: organizationName
+          hasSelectedFlavors: true
+          isDrsEnabled: true
+          allowSpotVMs: true
+          cloudCredentialRevision: 6
+          availabilityZones:
+          - availabilityZones
+          - availabilityZones
+          allowSpotWorkers: true
+          maxSpotPrice: 7.457744773683766
+          organizationId: 1
+          projectStatus: "Null"
+          expiredAt: expiredAt
+          cloudType: NONE
+          cloudName: cloudName
+          cloudId: 1
+          isLocked: true
+          allowFullSpotKubernetes: true
+          hypervisors:
+          - hypervisors
+          - hypervisors
+          totalHourlyCost: 1.1730742509559433
+          projectName: projectName
+          projectCloudRevision: 1
+          projectId: 7
+          isMaintenanceModeEnabled: true
         totalCount: 5
       properties:
         data:
@@ -66469,6 +66497,8 @@ components:
         totalCount:
           format: int32
           type: integer
+        project:
+          $ref: '#/components/schemas/ProjectDetailsForVmsDto'
       type: object
     VClusterListDto:
       additionalProperties: false
