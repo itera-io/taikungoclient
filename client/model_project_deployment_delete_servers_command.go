@@ -22,6 +22,7 @@ var _ MappedNullable = &ProjectDeploymentDeleteServersCommand{}
 type ProjectDeploymentDeleteServersCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	ServerIds []int32 `json:"serverIds,omitempty"`
+	ForceDeleteVClusters *bool `json:"forceDeleteVClusters,omitempty"`
 }
 
 // NewProjectDeploymentDeleteServersCommand instantiates a new ProjectDeploymentDeleteServersCommand object
@@ -106,6 +107,38 @@ func (o *ProjectDeploymentDeleteServersCommand) SetServerIds(v []int32) {
 	o.ServerIds = v
 }
 
+// GetForceDeleteVClusters returns the ForceDeleteVClusters field value if set, zero value otherwise.
+func (o *ProjectDeploymentDeleteServersCommand) GetForceDeleteVClusters() bool {
+	if o == nil || IsNil(o.ForceDeleteVClusters) {
+		var ret bool
+		return ret
+	}
+	return *o.ForceDeleteVClusters
+}
+
+// GetForceDeleteVClustersOk returns a tuple with the ForceDeleteVClusters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDeploymentDeleteServersCommand) GetForceDeleteVClustersOk() (*bool, bool) {
+	if o == nil || IsNil(o.ForceDeleteVClusters) {
+		return nil, false
+	}
+	return o.ForceDeleteVClusters, true
+}
+
+// HasForceDeleteVClusters returns a boolean if a field has been set.
+func (o *ProjectDeploymentDeleteServersCommand) HasForceDeleteVClusters() bool {
+	if o != nil && !IsNil(o.ForceDeleteVClusters) {
+		return true
+	}
+
+	return false
+}
+
+// SetForceDeleteVClusters gets a reference to the given bool and assigns it to the ForceDeleteVClusters field.
+func (o *ProjectDeploymentDeleteServersCommand) SetForceDeleteVClusters(v bool) {
+	o.ForceDeleteVClusters = &v
+}
+
 func (o ProjectDeploymentDeleteServersCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -121,6 +154,9 @@ func (o ProjectDeploymentDeleteServersCommand) ToMap() (map[string]interface{}, 
 	}
 	if o.ServerIds != nil {
 		toSerialize["serverIds"] = o.ServerIds
+	}
+	if !IsNil(o.ForceDeleteVClusters) {
+		toSerialize["forceDeleteVClusters"] = o.ForceDeleteVClusters
 	}
 	return toSerialize, nil
 }

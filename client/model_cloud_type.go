@@ -23,6 +23,7 @@ type CloudType string
 const (
 	CLOUDTYPE_NONE CloudType = "NONE"
 	CLOUDTYPE_AWS CloudType = "AWS"
+	CLOUDTYPE_ZEDEDA CloudType = "ZEDEDA"
 	CLOUDTYPE_AZURE CloudType = "AZURE"
 	CLOUDTYPE_GOOGLE CloudType = "GOOGLE"
 	CLOUDTYPE_OPENSTACK CloudType = "OPENSTACK"
@@ -37,6 +38,7 @@ const (
 var AllowedCloudTypeEnumValues = []CloudType{
 	"NONE",
 	"AWS",
+	"ZEDEDA",
 	"AZURE",
 	"GOOGLE",
 	"OPENSTACK",

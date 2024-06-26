@@ -5641,8 +5641,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-06-24T17:21:29.1179371Z
-                  createdAt: 2024-06-24T17:21:29.1179371Z
+                  lastValidated: 2024-06-25T17:18:17.5915976Z
+                  createdAt: 2024-06-25T17:18:17.5915976Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5747,14 +5747,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-06-24T17:21:29.1179371Z
+                    lastBackup: 2024-06-25T17:18:17.5915976Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-06-24T17:21:29.1179371Z
+                  createdAt: 2024-06-25T17:18:17.5915976Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-06-24T17:21:29.1179371Z
+                  lastBackup: 2024-06-25T17:18:17.5915976Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5859,8 +5859,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-06-24T17:21:29.1179371Z
-                  expiration: 2024-06-24T17:21:29.1179371Z
+                  createdAt: 2024-06-25T17:18:17.5915976Z
+                  expiration: 2024-06-25T17:18:17.5915976Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5964,7 +5964,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-06-24T17:21:29.1179371Z
+                  createdAt: 2024-06-25T17:18:17.5915976Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6074,9 +6074,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-06-24T17:21:29.1179371+00:00
-                  startTimeStamp: 2024-06-24T17:21:29.1179371+00:00
-                  createdAt: 2024-06-24T17:21:29.1179371Z
+                  completionDateTime: 2024-06-25T17:18:17.5915976+00:00
+                  startTimeStamp: 2024-06-25T17:18:17.5915976+00:00
+                  createdAt: 2024-06-25T17:18:17.5915976Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -43978,6 +43978,7 @@ components:
       enum:
       - NONE
       - AWS
+      - ZEDEDA
       - AZURE
       - GOOGLE
       - OPENSTACK
@@ -46129,6 +46130,7 @@ components:
       additionalProperties: false
       example:
         vsphere: 7
+        zededa: 1
         zadara: 1
         openshift: 4
         openstack: 7
@@ -46164,6 +46166,9 @@ components:
           format: int32
           type: integer
         zadara:
+          format: int32
+          type: integer
+        zededa:
           format: int32
           type: integer
         totalCount:
@@ -46844,411 +46849,436 @@ components:
             name: name
             id: 1
         servers:
-          totalOpenshiftCount: 1
+          totalOpenshiftCount: 2
+          zededa:
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 6
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 6
           waiting:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           openshift:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalGoogleCount: 3
+            projectId: 6
+          totalGoogleCount: 6
           tanzu:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalCount: 6
+            projectId: 6
+          totalCount: 7
           updating:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalCpu: 7
-          totalZadaraCount: 6
-          totalAzureCount: 9
+            projectId: 6
+          totalCpu: 1
+          totalZadaraCount: 5
+          totalAzureCount: 6
           totalVsphereCount: 6
+          totalZededaCount: 6
           proxmox:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           azure:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalUpdatingCount: 9
-          totalDiskSize: 4
+            projectId: 6
+          totalUpdatingCount: 6
+          totalDiskSize: 5
           zadara:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           google:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           failed:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalRam: 1
+            projectId: 6
+          totalRam: 4
           totalSucceededCount: 9
-          totalOpenstackCount: 6
-          totalPendingCount: 6
+          totalOpenstackCount: 3
+          totalPendingCount: 8
           usedResources:
-          - diskSize: 6
+          - diskSize: 3
             maxRam: 7
-            cpu: 3
-            maxCpu: 0
+            cpu: 0
+            maxCpu: 6
             projectName: projectName
-            maxDiskSize: 7
-            projectId: 5
-            ram: 3
-          - diskSize: 6
+            maxDiskSize: 0
+            projectId: 3
+            ram: 7
+          - diskSize: 3
             maxRam: 7
-            cpu: 3
-            maxCpu: 0
+            cpu: 0
+            maxCpu: 6
             projectName: projectName
-            maxDiskSize: 7
-            projectId: 5
-            ram: 3
-          totalProxmoxCount: 2
+            maxDiskSize: 0
+            projectId: 3
+            ram: 7
+          totalProxmoxCount: 6
           deleting:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalFailedCount: 5
+            projectId: 6
+          totalFailedCount: 9
           vsphere:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           openstack:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalAwsCount: 8
-          totalTanzuCount: 6
+            projectId: 6
+          totalAwsCount: 9
+          totalTanzuCount: 1
           aws:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           succeeded:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           purging:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
         standAloneVms:
-          totalOpenshiftCount: 1
+          totalOpenshiftCount: 2
+          zededa:
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 6
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 6
           waiting:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           openshift:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalGoogleCount: 3
+            projectId: 6
+          totalGoogleCount: 6
           tanzu:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalCount: 6
+            projectId: 6
+          totalCount: 7
           updating:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalCpu: 7
-          totalZadaraCount: 6
-          totalAzureCount: 9
+            projectId: 6
+          totalCpu: 1
+          totalZadaraCount: 5
+          totalAzureCount: 6
           totalVsphereCount: 6
+          totalZededaCount: 6
           proxmox:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           azure:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalUpdatingCount: 9
-          totalDiskSize: 4
+            projectId: 6
+          totalUpdatingCount: 6
+          totalDiskSize: 5
           zadara:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           google:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           failed:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalRam: 1
+            projectId: 6
+          totalRam: 4
           totalSucceededCount: 9
-          totalOpenstackCount: 6
-          totalPendingCount: 6
+          totalOpenstackCount: 3
+          totalPendingCount: 8
           usedResources:
-          - diskSize: 6
+          - diskSize: 3
             maxRam: 7
-            cpu: 3
-            maxCpu: 0
+            cpu: 0
+            maxCpu: 6
             projectName: projectName
-            maxDiskSize: 7
-            projectId: 5
-            ram: 3
-          - diskSize: 6
+            maxDiskSize: 0
+            projectId: 3
+            ram: 7
+          - diskSize: 3
             maxRam: 7
-            cpu: 3
-            maxCpu: 0
+            cpu: 0
+            maxCpu: 6
             projectName: projectName
-            maxDiskSize: 7
-            projectId: 5
-            ram: 3
-          totalProxmoxCount: 2
+            maxDiskSize: 0
+            projectId: 3
+            ram: 7
+          totalProxmoxCount: 6
           deleting:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalFailedCount: 5
+            projectId: 6
+          totalFailedCount: 9
           vsphere:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           openstack:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
-          totalAwsCount: 8
-          totalTanzuCount: 6
+            projectId: 6
+          totalAwsCount: 9
+          totalTanzuCount: 1
           aws:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           succeeded:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           purging:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 1
+            projectId: 6
         organization:
           name: name
           id: 0
           users: 6
         cloudCredentials:
           vsphere: 7
+          zededa: 1
           zadara: 1
           openshift: 4
           openstack: 7
@@ -56281,6 +56311,7 @@ components:
     ProjectDeploymentDeleteServersCommand:
       additionalProperties: false
       example:
+        forceDeleteVClusters: true
         projectId: 0
         serverIds:
         - 6
@@ -56295,6 +56326,8 @@ components:
             type: integer
           nullable: true
           type: array
+        forceDeleteVClusters:
+          type: boolean
       type: object
     ProjectDeploymentDeleteVmsCommand:
       additionalProperties: false
@@ -61227,205 +61260,217 @@ components:
     ServerChartDto:
       additionalProperties: false
       example:
-        totalOpenshiftCount: 1
+        totalOpenshiftCount: 2
+        zededa:
+        - names:
+          - names
+          - names
+          projectName: projectName
+          projectId: 6
+        - names:
+          - names
+          - names
+          projectName: projectName
+          projectId: 6
         waiting:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         openshift:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
-        totalGoogleCount: 3
+          projectId: 6
+        totalGoogleCount: 6
         tanzu:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
-        totalCount: 6
+          projectId: 6
+        totalCount: 7
         updating:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
-        totalCpu: 7
-        totalZadaraCount: 6
-        totalAzureCount: 9
+          projectId: 6
+        totalCpu: 1
+        totalZadaraCount: 5
+        totalAzureCount: 6
         totalVsphereCount: 6
+        totalZededaCount: 6
         proxmox:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         azure:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
-        totalUpdatingCount: 9
-        totalDiskSize: 4
+          projectId: 6
+        totalUpdatingCount: 6
+        totalDiskSize: 5
         zadara:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         google:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         failed:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
-        totalRam: 1
+          projectId: 6
+        totalRam: 4
         totalSucceededCount: 9
-        totalOpenstackCount: 6
-        totalPendingCount: 6
+        totalOpenstackCount: 3
+        totalPendingCount: 8
         usedResources:
-        - diskSize: 6
+        - diskSize: 3
           maxRam: 7
-          cpu: 3
-          maxCpu: 0
+          cpu: 0
+          maxCpu: 6
           projectName: projectName
-          maxDiskSize: 7
-          projectId: 5
-          ram: 3
-        - diskSize: 6
+          maxDiskSize: 0
+          projectId: 3
+          ram: 7
+        - diskSize: 3
           maxRam: 7
-          cpu: 3
-          maxCpu: 0
+          cpu: 0
+          maxCpu: 6
           projectName: projectName
-          maxDiskSize: 7
-          projectId: 5
-          ram: 3
-        totalProxmoxCount: 2
+          maxDiskSize: 0
+          projectId: 3
+          ram: 7
+        totalProxmoxCount: 6
         deleting:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
-        totalFailedCount: 5
+          projectId: 6
+        totalFailedCount: 9
         vsphere:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         openstack:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
-        totalAwsCount: 8
-        totalTanzuCount: 6
+          projectId: 6
+        totalAwsCount: 9
+        totalTanzuCount: 1
         aws:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         succeeded:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         purging:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 1
+          projectId: 6
       properties:
         aws:
           items:
@@ -61468,6 +61513,11 @@ components:
           nullable: true
           type: array
         openshift:
+          items:
+            $ref: '#/components/schemas/ServerCommonRecordDto'
+          nullable: true
+          type: array
+        zededa:
           items:
             $ref: '#/components/schemas/ServerCommonRecordDto'
           nullable: true
@@ -61553,6 +61603,9 @@ components:
         totalZadaraCount:
           format: int32
           type: integer
+        totalZededaCount:
+          format: int32
+          type: integer
         usedResources:
           items:
             $ref: '#/components/schemas/UserResourceChartDto'
@@ -61566,7 +61619,7 @@ components:
         - names
         - names
         projectName: projectName
-        projectId: 1
+        projectId: 6
       properties:
         projectId:
           format: int32
@@ -66128,14 +66181,14 @@ components:
     UserResourceChartDto:
       additionalProperties: false
       example:
-        diskSize: 6
+        diskSize: 3
         maxRam: 7
-        cpu: 3
-        maxCpu: 0
+        cpu: 0
+        maxCpu: 6
         projectName: projectName
-        maxDiskSize: 7
-        projectId: 5
-        ram: 3
+        maxDiskSize: 0
+        projectId: 3
+        ram: 7
       properties:
         projectName:
           nullable: true
@@ -66421,43 +66474,121 @@ components:
       additionalProperties: false
       example:
         data:
-        - organizationName: organizationName
-          alertsCount: 1
-          lastModifiedBy: lastModifiedBy
-          health: "Null"
-          hasKubeConfigFile: true
+        - deleteButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           organizationId: 6
           createdAt: createdAt
           expiredAt: expiredAt
-          deleteOnExpiration: true
-          createdBy: createdBy
+          alertingProfileName: alertingProfileName
           cloudType: NONE
           isLocked: true
-          name: name
           id: 0
-          lastModified: lastModified
+          setExpirationDateButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           logs: logs
-          isMaintenanceModeEnabled: true
           kubernetesVersion: kubernetesVersion
+          organizationName: organizationName
+          accessIp: accessIp
+          alertsCount: 1
+          unlockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lastModifiedBy: lastModifiedBy
+          health: "Null"
+          hasKubeConfigFile: true
+          kubeInfoButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          deleteOnExpiration: true
+          alertingProfileId: 5
+          createdBy: createdBy
+          name: name
+          lastModified: lastModified
+          resetStatusButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          isMaintenanceModeEnabled: true
           status: "Null"
-        - organizationName: organizationName
-          alertsCount: 1
-          lastModifiedBy: lastModifiedBy
-          health: "Null"
-          hasKubeConfigFile: true
+        - deleteButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           organizationId: 6
           createdAt: createdAt
           expiredAt: expiredAt
-          deleteOnExpiration: true
-          createdBy: createdBy
+          alertingProfileName: alertingProfileName
           cloudType: NONE
           isLocked: true
-          name: name
           id: 0
-          lastModified: lastModified
+          setExpirationDateButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
           logs: logs
-          isMaintenanceModeEnabled: true
           kubernetesVersion: kubernetesVersion
+          organizationName: organizationName
+          accessIp: accessIp
+          alertsCount: 1
+          unlockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lastModifiedBy: lastModifiedBy
+          health: "Null"
+          hasKubeConfigFile: true
+          kubeInfoButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          deleteOnExpiration: true
+          alertingProfileId: 5
+          createdBy: createdBy
+          name: name
+          lastModified: lastModified
+          resetStatusButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          isMaintenanceModeEnabled: true
           status: "Null"
         project:
           isProjectMaintenanceModeEnabled: true
@@ -66503,24 +66634,63 @@ components:
     VClusterListDto:
       additionalProperties: false
       example:
-        organizationName: organizationName
-        alertsCount: 1
-        lastModifiedBy: lastModifiedBy
-        health: "Null"
-        hasKubeConfigFile: true
+        deleteButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        lockButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         organizationId: 6
         createdAt: createdAt
         expiredAt: expiredAt
-        deleteOnExpiration: true
-        createdBy: createdBy
+        alertingProfileName: alertingProfileName
         cloudType: NONE
         isLocked: true
-        name: name
         id: 0
-        lastModified: lastModified
+        setExpirationDateButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         logs: logs
-        isMaintenanceModeEnabled: true
         kubernetesVersion: kubernetesVersion
+        organizationName: organizationName
+        accessIp: accessIp
+        alertsCount: 1
+        unlockButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        lastModifiedBy: lastModifiedBy
+        health: "Null"
+        hasKubeConfigFile: true
+        kubeInfoButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        deleteOnExpiration: true
+        alertingProfileId: 5
+        createdBy: createdBy
+        name: name
+        lastModified: lastModified
+        resetStatusButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        isMaintenanceModeEnabled: true
         status: "Null"
       properties:
         id:
@@ -66567,12 +66737,34 @@ components:
         logs:
           nullable: true
           type: string
+        alertingProfileId:
+          format: int32
+          nullable: true
+          type: integer
+        alertingProfileName:
+          nullable: true
+          type: string
+        accessIp:
+          nullable: true
+          type: string
         cloudType:
           $ref: '#/components/schemas/CloudType'
         status:
           $ref: '#/components/schemas/ProjectStatus'
         health:
           $ref: '#/components/schemas/ProjectHealth'
+        lockButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        unlockButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        deleteButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        kubeInfoButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        setExpirationDateButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        resetStatusButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
       type: object
     ValidateVsphereCommand:
       additionalProperties: false

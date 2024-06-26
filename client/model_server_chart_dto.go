@@ -29,6 +29,7 @@ type ServerChartDto struct {
 	Vsphere []ServerCommonRecordDto `json:"vsphere,omitempty"`
 	Zadara []ServerCommonRecordDto `json:"zadara,omitempty"`
 	Openshift []ServerCommonRecordDto `json:"openshift,omitempty"`
+	Zededa []ServerCommonRecordDto `json:"zededa,omitempty"`
 	Failed []ServerCommonRecordDto `json:"failed,omitempty"`
 	Succeeded []ServerCommonRecordDto `json:"succeeded,omitempty"`
 	Waiting []ServerCommonRecordDto `json:"waiting,omitempty"`
@@ -52,6 +53,7 @@ type ServerChartDto struct {
 	TotalProxmoxCount *int32 `json:"totalProxmoxCount,omitempty"`
 	TotalVsphereCount *int32 `json:"totalVsphereCount,omitempty"`
 	TotalZadaraCount *int32 `json:"totalZadaraCount,omitempty"`
+	TotalZededaCount *int32 `json:"totalZededaCount,omitempty"`
 	UsedResources []UserResourceChartDto `json:"usedResources,omitempty"`
 }
 
@@ -367,6 +369,39 @@ func (o *ServerChartDto) HasOpenshift() bool {
 // SetOpenshift gets a reference to the given []ServerCommonRecordDto and assigns it to the Openshift field.
 func (o *ServerChartDto) SetOpenshift(v []ServerCommonRecordDto) {
 	o.Openshift = v
+}
+
+// GetZededa returns the Zededa field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerChartDto) GetZededa() []ServerCommonRecordDto {
+	if o == nil {
+		var ret []ServerCommonRecordDto
+		return ret
+	}
+	return o.Zededa
+}
+
+// GetZededaOk returns a tuple with the Zededa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerChartDto) GetZededaOk() ([]ServerCommonRecordDto, bool) {
+	if o == nil || IsNil(o.Zededa) {
+		return nil, false
+	}
+	return o.Zededa, true
+}
+
+// HasZededa returns a boolean if a field has been set.
+func (o *ServerChartDto) HasZededa() bool {
+	if o != nil && !IsNil(o.Zededa) {
+		return true
+	}
+
+	return false
+}
+
+// SetZededa gets a reference to the given []ServerCommonRecordDto and assigns it to the Zededa field.
+func (o *ServerChartDto) SetZededa(v []ServerCommonRecordDto) {
+	o.Zededa = v
 }
 
 // GetFailed returns the Failed field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1111,6 +1146,38 @@ func (o *ServerChartDto) SetTotalZadaraCount(v int32) {
 	o.TotalZadaraCount = &v
 }
 
+// GetTotalZededaCount returns the TotalZededaCount field value if set, zero value otherwise.
+func (o *ServerChartDto) GetTotalZededaCount() int32 {
+	if o == nil || IsNil(o.TotalZededaCount) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalZededaCount
+}
+
+// GetTotalZededaCountOk returns a tuple with the TotalZededaCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerChartDto) GetTotalZededaCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalZededaCount) {
+		return nil, false
+	}
+	return o.TotalZededaCount, true
+}
+
+// HasTotalZededaCount returns a boolean if a field has been set.
+func (o *ServerChartDto) HasTotalZededaCount() bool {
+	if o != nil && !IsNil(o.TotalZededaCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalZededaCount gets a reference to the given int32 and assigns it to the TotalZededaCount field.
+func (o *ServerChartDto) SetTotalZededaCount(v int32) {
+	o.TotalZededaCount = &v
+}
+
 // GetUsedResources returns the UsedResources field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServerChartDto) GetUsedResources() []UserResourceChartDto {
 	if o == nil {
@@ -1181,6 +1248,9 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	if o.Openshift != nil {
 		toSerialize["openshift"] = o.Openshift
 	}
+	if o.Zededa != nil {
+		toSerialize["zededa"] = o.Zededa
+	}
 	if o.Failed != nil {
 		toSerialize["failed"] = o.Failed
 	}
@@ -1249,6 +1319,9 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalZadaraCount) {
 		toSerialize["totalZadaraCount"] = o.TotalZadaraCount
+	}
+	if !IsNil(o.TotalZededaCount) {
+		toSerialize["totalZededaCount"] = o.TotalZededaCount
 	}
 	if o.UsedResources != nil {
 		toSerialize["usedResources"] = o.UsedResources
