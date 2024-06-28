@@ -5635,8 +5635,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-06-26T14:43:17.7690371Z
-                  createdAt: 2024-06-26T14:43:17.7690371Z
+                  lastValidated: 2024-06-28T00:02:49.988311Z
+                  createdAt: 2024-06-28T00:02:49.988311Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5741,14 +5741,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-06-26T14:43:17.7690371Z
+                    lastBackup: 2024-06-28T00:02:49.988311Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-06-26T14:43:17.7690371Z
+                  createdAt: 2024-06-28T00:02:49.988311Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-06-26T14:43:17.7690371Z
+                  lastBackup: 2024-06-28T00:02:49.988311Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5853,8 +5853,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-06-26T14:43:17.7690371Z
-                  expiration: 2024-06-26T14:43:17.7690371Z
+                  createdAt: 2024-06-28T00:02:49.988311Z
+                  expiration: 2024-06-28T00:02:49.988311Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5958,7 +5958,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-06-26T14:43:17.7690371Z
+                  createdAt: 2024-06-28T00:02:49.988311Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6068,9 +6068,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-06-26T14:43:17.7690371+00:00
-                  startTimeStamp: 2024-06-26T14:43:17.7690371+00:00
-                  createdAt: 2024-06-26T14:43:17.7690371Z
+                  completionDateTime: 2024-06-28T00:02:49.988311+00:00
+                  startTimeStamp: 2024-06-28T00:02:49.988311+00:00
+                  createdAt: 2024-06-28T00:02:49.988311Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -38584,6 +38584,48 @@ paths:
       summary: Retrieve volume type list
       tags:
       - Zadara cloud credential
+  /api/v1/zededa/create:
+    post:
+      operationId: zededa-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateZededaCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Create zededa cloud credential
+      tags:
+      - Zededa
 components:
   schemas:
     AcceptOfferCommand:
@@ -43255,6 +43297,7 @@ components:
             name: name
             health: "Null"
             id: 1
+            isVirtualCluster: true
             maintenanceModeEnabled: true
             kubernetesVersion: kubernetesVersion
             status: "Null"
@@ -43263,6 +43306,7 @@ components:
             name: name
             health: "Null"
             id: 1
+            isVirtualCluster: true
             maintenanceModeEnabled: true
             kubernetesVersion: kubernetesVersion
             status: "Null"
@@ -43348,6 +43392,7 @@ components:
             name: name
             health: "Null"
             id: 1
+            isVirtualCluster: true
             maintenanceModeEnabled: true
             kubernetesVersion: kubernetesVersion
             status: "Null"
@@ -43356,6 +43401,7 @@ components:
             name: name
             health: "Null"
             id: 1
+            isVirtualCluster: true
             maintenanceModeEnabled: true
             kubernetesVersion: kubernetesVersion
             status: "Null"
@@ -43455,6 +43501,7 @@ components:
           name: name
           health: "Null"
           id: 1
+          isVirtualCluster: true
           maintenanceModeEnabled: true
           kubernetesVersion: kubernetesVersion
           status: "Null"
@@ -43463,6 +43510,7 @@ components:
           name: name
           health: "Null"
           id: 1
+          isVirtualCluster: true
           maintenanceModeEnabled: true
           kubernetesVersion: kubernetesVersion
           status: "Null"
@@ -46117,6 +46165,98 @@ components:
           nullable: true
           type: string
         zadaraVolumeType:
+          nullable: true
+          type: string
+      type: object
+    CreateZededaCommand:
+      additionalProperties: false
+      example:
+        continent: continent
+        organizationId: 0
+        apiToken: apiToken
+        apiUrl: apiUrl
+        privateNetwork:
+          vlanId: 1
+          endAllocationRange: endAllocationRange
+          netMask: 6
+          ipAddress: ipAddress
+          interface: interface
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+        name: name
+        project: project
+        edgeNodes:
+        - edgeNodes
+        - edgeNodes
+        publicNetwork:
+          vlanId: 1
+          endAllocationRange: endAllocationRange
+          netMask: 6
+          ipAddress: ipAddress
+          interface: interface
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+      properties:
+        name:
+          nullable: true
+          type: string
+        apiToken:
+          nullable: true
+          type: string
+        apiUrl:
+          nullable: true
+          type: string
+        project:
+          nullable: true
+          type: string
+        continent:
+          nullable: true
+          type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+        edgeNodes:
+          items:
+            type: string
+          nullable: true
+          type: array
+        publicNetwork:
+          $ref: '#/components/schemas/CreateZededaNetworkDto'
+        privateNetwork:
+          $ref: '#/components/schemas/CreateZededaNetworkDto'
+      type: object
+    CreateZededaNetworkDto:
+      additionalProperties: false
+      example:
+        vlanId: 1
+        endAllocationRange: endAllocationRange
+        netMask: 6
+        ipAddress: ipAddress
+        interface: interface
+        beginAllocationRange: beginAllocationRange
+        gateway: gateway
+      properties:
+        interface:
+          nullable: true
+          type: string
+        gateway:
+          nullable: true
+          type: string
+        ipAddress:
+          nullable: true
+          type: string
+        netMask:
+          format: int32
+          type: integer
+        vlanId:
+          format: int32
+          nullable: true
+          type: integer
+        beginAllocationRange:
+          nullable: true
+          type: string
+        endAllocationRange:
           nullable: true
           type: string
       type: object
@@ -56171,6 +56311,7 @@ components:
         name: name
         health: "Null"
         id: 1
+        isVirtualCluster: true
         maintenanceModeEnabled: true
         kubernetesVersion: kubernetesVersion
         status: "Null"
@@ -56187,6 +56328,8 @@ components:
         isLocked:
           type: boolean
         maintenanceModeEnabled:
+          type: boolean
+        isVirtualCluster:
           type: boolean
         cloudType:
           $ref: '#/components/schemas/CloudType'
@@ -56306,6 +56449,7 @@ components:
       additionalProperties: false
       example:
         forceDeleteVClusters: true
+        deleteAutoscalingServers: true
         projectId: 0
         serverIds:
         - 6
@@ -56321,6 +56465,8 @@ components:
           nullable: true
           type: array
         forceDeleteVClusters:
+          type: boolean
+        deleteAutoscalingServers:
           type: boolean
       type: object
     ProjectDeploymentDeleteVmsCommand:

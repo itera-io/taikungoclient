@@ -768,6 +768,7 @@ Class | Method | HTTP request | Description
 *ZadaraCloudCredentialAPI* | [**ZadaraUpdate**](docs/ZadaraCloudCredentialAPI.md#zadaraupdate) | **Post** /api/v1/zadara/update | Update zadara cloud credential
 *ZadaraCloudCredentialAPI* | [**ZadaraVolumeTypeList**](docs/ZadaraCloudCredentialAPI.md#zadaravolumetypelist) | **Get** /api/v1/zadara/volume-types | Retrieve volume type list
 *ZadaraCloudCredentialAPI* | [**ZadaraZonelist**](docs/ZadaraCloudCredentialAPI.md#zadarazonelist) | **Post** /api/v1/zadara/zones | Retrieve zadara zone list
+*ZededaAPI* | [**ZededaCreate**](docs/ZededaAPI.md#zededacreate) | **Post** /api/v1/zededa/create | Create zededa cloud credential
 
 
 ## Documentation For Models
@@ -1007,6 +1008,8 @@ Class | Method | HTTP request | Description
  - [CreateVsphereCommand](docs/CreateVsphereCommand.md)
  - [CreateVsphereNetworkDto](docs/CreateVsphereNetworkDto.md)
  - [CreateZadaraCloudCommand](docs/CreateZadaraCloudCommand.md)
+ - [CreateZededaCommand](docs/CreateZededaCommand.md)
+ - [CreateZededaNetworkDto](docs/CreateZededaNetworkDto.md)
  - [CredentialChartDto](docs/CredentialChartDto.md)
  - [CredentialMakeDefaultCommand](docs/CredentialMakeDefaultCommand.md)
  - [CredentialsChart](docs/CredentialsChart.md)

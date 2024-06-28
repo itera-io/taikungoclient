@@ -23,6 +23,7 @@ type ProjectDeploymentDeleteServersCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	ServerIds []int32 `json:"serverIds,omitempty"`
 	ForceDeleteVClusters *bool `json:"forceDeleteVClusters,omitempty"`
+	DeleteAutoscalingServers *bool `json:"deleteAutoscalingServers,omitempty"`
 }
 
 // NewProjectDeploymentDeleteServersCommand instantiates a new ProjectDeploymentDeleteServersCommand object
@@ -139,6 +140,38 @@ func (o *ProjectDeploymentDeleteServersCommand) SetForceDeleteVClusters(v bool) 
 	o.ForceDeleteVClusters = &v
 }
 
+// GetDeleteAutoscalingServers returns the DeleteAutoscalingServers field value if set, zero value otherwise.
+func (o *ProjectDeploymentDeleteServersCommand) GetDeleteAutoscalingServers() bool {
+	if o == nil || IsNil(o.DeleteAutoscalingServers) {
+		var ret bool
+		return ret
+	}
+	return *o.DeleteAutoscalingServers
+}
+
+// GetDeleteAutoscalingServersOk returns a tuple with the DeleteAutoscalingServers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectDeploymentDeleteServersCommand) GetDeleteAutoscalingServersOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeleteAutoscalingServers) {
+		return nil, false
+	}
+	return o.DeleteAutoscalingServers, true
+}
+
+// HasDeleteAutoscalingServers returns a boolean if a field has been set.
+func (o *ProjectDeploymentDeleteServersCommand) HasDeleteAutoscalingServers() bool {
+	if o != nil && !IsNil(o.DeleteAutoscalingServers) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteAutoscalingServers gets a reference to the given bool and assigns it to the DeleteAutoscalingServers field.
+func (o *ProjectDeploymentDeleteServersCommand) SetDeleteAutoscalingServers(v bool) {
+	o.DeleteAutoscalingServers = &v
+}
+
 func (o ProjectDeploymentDeleteServersCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -157,6 +190,9 @@ func (o ProjectDeploymentDeleteServersCommand) ToMap() (map[string]interface{}, 
 	}
 	if !IsNil(o.ForceDeleteVClusters) {
 		toSerialize["forceDeleteVClusters"] = o.ForceDeleteVClusters
+	}
+	if !IsNil(o.DeleteAutoscalingServers) {
+		toSerialize["deleteAutoscalingServers"] = o.DeleteAutoscalingServers
 	}
 	return toSerialize, nil
 }

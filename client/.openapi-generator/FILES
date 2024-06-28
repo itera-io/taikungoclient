@@ -85,6 +85,7 @@ api_users.go
 api_virtual_cluster.go
 api_vsphere_cloud_credential.go
 api_zadara_cloud_credential.go
+api_zededa.go
 client.go
 configuration.go
 docs/AWSCloudCredentialAPI.md
@@ -341,6 +342,8 @@ docs/CreateVirtualClusterCommand.md
 docs/CreateVsphereCommand.md
 docs/CreateVsphereNetworkDto.md
 docs/CreateZadaraCloudCommand.md
+docs/CreateZededaCommand.md
+docs/CreateZededaNetworkDto.md
 docs/CredentialChartDto.md
 docs/CredentialMakeDefaultCommand.md
 docs/CredentialsChart.md
@@ -1036,6 +1039,7 @@ docs/ZadaraCredentialList.md
 docs/ZadaraCredentialsForProjectDto.md
 docs/ZadaraCredentialsListDto.md
 docs/ZadaraRegionListCommand.md
+docs/ZededaAPI.md
 git_push.sh
 go.mod
 go.sum
@@ -1274,6 +1278,8 @@ model_create_virtual_cluster_command.go
 model_create_vsphere_command.go
 model_create_vsphere_network_dto.go
 model_create_zadara_cloud_command.go
+model_create_zededa_command.go
+model_create_zededa_network_dto.go
 model_credential_chart_dto.go
 model_credential_make_default_command.go
 model_credentials_chart.go
@@ -1989,4 +1995,5 @@ test/api_users_test.go
 test/api_virtual_cluster_test.go
 test/api_vsphere_cloud_credential_test.go
 test/api_zadara_cloud_credential_test.go
+test/api_zededa_test.go
 utils.go
