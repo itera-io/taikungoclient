@@ -49,7 +49,6 @@ api_package.go
 api_partners.go
 api_payments.go
 api_pre_defined_queries.go
-api_project_actions.go
 api_project_app_params.go
 api_project_apps.go
 api_project_deployment.go
@@ -693,9 +692,7 @@ docs/PreDefinedQueriesAPI.md
 docs/PrivateSubscriptionList.md
 docs/ProblemDetails.md
 docs/ProjectActionDto.md
-docs/ProjectActionUpdateDto.md
 docs/ProjectActionVisibilityDto.md
-docs/ProjectActionsAPI.md
 docs/ProjectAlertsQuery.md
 docs/ProjectAppDetailsDto.md
 docs/ProjectAppDto.md
@@ -1040,6 +1037,9 @@ docs/ZadaraCredentialsForProjectDto.md
 docs/ZadaraCredentialsListDto.md
 docs/ZadaraRegionListCommand.md
 docs/ZededaAPI.md
+docs/ZededaEdgeNodesCommand.md
+docs/ZededaInterfaceCommand.md
+docs/ZededaProjectsCommand.md
 git_push.sh
 go.mod
 go.sum
@@ -1602,7 +1602,6 @@ model_pods_search_list.go
 model_private_subscription_list.go
 model_problem_details.go
 model_project_action_dto.go
-model_project_action_update_dto.go
 model_project_action_visibility_dto.go
 model_project_alerts_query.go
 model_project_app_details_dto.go
@@ -1912,6 +1911,9 @@ model_zadara_credential_list.go
 model_zadara_credentials_for_project_dto.go
 model_zadara_credentials_list_dto.go
 model_zadara_region_list_command.go
+model_zededa_edge_nodes_command.go
+model_zededa_interface_command.go
+model_zededa_projects_command.go
 response.go
 test/api_access_profiles_test.go
 test/api_admin_test.go
@@ -1959,7 +1961,6 @@ test/api_package_test.go
 test/api_partners_test.go
 test/api_payments_test.go
 test/api_pre_defined_queries_test.go
-test/api_project_actions_test.go
 test/api_project_app_params_test.go
 test/api_project_apps_test.go
 test/api_project_deployment_test.go

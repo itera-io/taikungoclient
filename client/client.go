@@ -143,8 +143,6 @@ type APIClient struct {
 
 	PreDefinedQueriesAPI *PreDefinedQueriesAPIService
 
-	ProjectActionsAPI *ProjectActionsAPIService
-
 	ProjectAppParamsAPI *ProjectAppParamsAPIService
 
 	ProjectAppsAPI *ProjectAppsAPIService
@@ -280,7 +278,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PartnersAPI = (*PartnersAPIService)(&c.common)
 	c.PaymentsAPI = (*PaymentsAPIService)(&c.common)
 	c.PreDefinedQueriesAPI = (*PreDefinedQueriesAPIService)(&c.common)
-	c.ProjectActionsAPI = (*ProjectActionsAPIService)(&c.common)
 	c.ProjectAppParamsAPI = (*ProjectAppParamsAPIService)(&c.common)
 	c.ProjectAppsAPI = (*ProjectAppsAPIService)(&c.common)
 	c.ProjectDeploymentAPI = (*ProjectDeploymentAPIService)(&c.common)

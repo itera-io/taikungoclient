@@ -22,6 +22,7 @@ var _ MappedNullable = &VClusterListDto{}
 type VClusterListDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
+	IsVirtualCluster *bool `json:"isVirtualCluster,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
 	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
@@ -139,6 +140,38 @@ func (o *VClusterListDto) SetNameNil() {
 // UnsetName ensures that no value is present for Name, not even an explicit nil
 func (o *VClusterListDto) UnsetName() {
 	o.Name.Unset()
+}
+
+// GetIsVirtualCluster returns the IsVirtualCluster field value if set, zero value otherwise.
+func (o *VClusterListDto) GetIsVirtualCluster() bool {
+	if o == nil || IsNil(o.IsVirtualCluster) {
+		var ret bool
+		return ret
+	}
+	return *o.IsVirtualCluster
+}
+
+// GetIsVirtualClusterOk returns a tuple with the IsVirtualCluster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VClusterListDto) GetIsVirtualClusterOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsVirtualCluster) {
+		return nil, false
+	}
+	return o.IsVirtualCluster, true
+}
+
+// HasIsVirtualCluster returns a boolean if a field has been set.
+func (o *VClusterListDto) HasIsVirtualCluster() bool {
+	if o != nil && !IsNil(o.IsVirtualCluster) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsVirtualCluster gets a reference to the given bool and assigns it to the IsVirtualCluster field.
+func (o *VClusterListDto) SetIsVirtualCluster(v bool) {
+	o.IsVirtualCluster = &v
 }
 
 // GetIsLocked returns the IsLocked field value if set, zero value otherwise.
@@ -1098,6 +1131,9 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
+	}
+	if !IsNil(o.IsVirtualCluster) {
+		toSerialize["isVirtualCluster"] = o.IsVirtualCluster
 	}
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked

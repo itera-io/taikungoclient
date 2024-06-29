@@ -495,8 +495,6 @@ Class | Method | HTTP request | Description
 *PreDefinedQueriesAPI* | [**PredefinedqueriesList**](docs/PreDefinedQueriesAPI.md#predefinedquerieslist) | **Get** /api/v1/predefinedqueries/prometheus/dashboard/list/{projectId} | Get list of pre defined organization prometheus dashboard elements
 *PreDefinedQueriesAPI* | [**PredefinedqueriesPrometheusDashboardCommon**](docs/PreDefinedQueriesAPI.md#predefinedqueriesprometheusdashboardcommon) | **Get** /api/v1/predefinedqueries/prometheus/dashboard/common/{projectId} | et list of pre defined common prometheus dashboard elements
 *PreDefinedQueriesAPI* | [**PredefinedqueriesUpdate**](docs/PreDefinedQueriesAPI.md#predefinedqueriesupdate) | **Post** /api/v1/predefinedqueries/prometheus/dashboard/update | Update prometheus dashboard pre defined query
-*ProjectActionsAPI* | [**ProjectactionsDelete**](docs/ProjectActionsAPI.md#projectactionsdelete) | **Delete** /api/v1/projectactions/{projectId} | Delete the project action
-*ProjectActionsAPI* | [**ProjectactionsEdit**](docs/ProjectActionsAPI.md#projectactionsedit) | **Put** /api/v1/projectactions/edit/{projectId} | Update project action by projectId
 *ProjectAppParamsAPI* | [**ProjectappparamEdit**](docs/ProjectAppParamsAPI.md#projectappparamedit) | **Put** /api/v1/projectappparam/edit/{projectAppId} | Edit project app params
 *ProjectAppsAPI* | [**ProjectappAutosync**](docs/ProjectAppsAPI.md#projectappautosync) | **Post** /api/v1/projectapp/autosync | AutoSync management
 *ProjectAppsAPI* | [**ProjectappDelete**](docs/ProjectAppsAPI.md#projectappdelete) | **Delete** /api/v1/projectapp/uninstall/{projectAppId} | Uninstall application
@@ -769,6 +767,9 @@ Class | Method | HTTP request | Description
 *ZadaraCloudCredentialAPI* | [**ZadaraVolumeTypeList**](docs/ZadaraCloudCredentialAPI.md#zadaravolumetypelist) | **Get** /api/v1/zadara/volume-types | Retrieve volume type list
 *ZadaraCloudCredentialAPI* | [**ZadaraZonelist**](docs/ZadaraCloudCredentialAPI.md#zadarazonelist) | **Post** /api/v1/zadara/zones | Retrieve zadara zone list
 *ZededaAPI* | [**ZededaCreate**](docs/ZededaAPI.md#zededacreate) | **Post** /api/v1/zededa/create | Create zededa cloud credential
+*ZededaAPI* | [**ZededaEdgeNodes**](docs/ZededaAPI.md#zededaedgenodes) | **Post** /api/v1/zededa/edge-nodes | Fetch edge nodes for zededa cloud credential
+*ZededaAPI* | [**ZededaInterfaces**](docs/ZededaAPI.md#zededainterfaces) | **Post** /api/v1/zededa/interfaces | Fetch interfaces for zededa cloud credential
+*ZededaAPI* | [**ZededaProjects**](docs/ZededaAPI.md#zededaprojects) | **Post** /api/v1/zededa/projects | Fetch projects for zededa cloud credential
 
 
 ## Documentation For Models
@@ -1332,7 +1333,6 @@ Class | Method | HTTP request | Description
  - [PrivateSubscriptionList](docs/PrivateSubscriptionList.md)
  - [ProblemDetails](docs/ProblemDetails.md)
  - [ProjectActionDto](docs/ProjectActionDto.md)
- - [ProjectActionUpdateDto](docs/ProjectActionUpdateDto.md)
  - [ProjectActionVisibilityDto](docs/ProjectActionVisibilityDto.md)
  - [ProjectAlertsQuery](docs/ProjectAlertsQuery.md)
  - [ProjectAppDetailsDto](docs/ProjectAppDetailsDto.md)
@@ -1642,6 +1642,9 @@ Class | Method | HTTP request | Description
  - [ZadaraCredentialsForProjectDto](docs/ZadaraCredentialsForProjectDto.md)
  - [ZadaraCredentialsListDto](docs/ZadaraCredentialsListDto.md)
  - [ZadaraRegionListCommand](docs/ZadaraRegionListCommand.md)
+ - [ZededaEdgeNodesCommand](docs/ZededaEdgeNodesCommand.md)
+ - [ZededaInterfaceCommand](docs/ZededaInterfaceCommand.md)
+ - [ZededaProjectsCommand](docs/ZededaProjectsCommand.md)
 
 
 ## Documentation For Authorization

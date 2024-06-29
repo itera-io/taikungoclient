@@ -5635,8 +5635,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-06-28T00:02:49.988311Z
-                  createdAt: 2024-06-28T00:02:49.988311Z
+                  lastValidated: 2024-06-29T00:02:44.7154512Z
+                  createdAt: 2024-06-29T00:02:44.7154512Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5741,14 +5741,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-06-28T00:02:49.988311Z
+                    lastBackup: 2024-06-29T00:02:44.7154512Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-06-28T00:02:49.988311Z
+                  createdAt: 2024-06-29T00:02:44.7154512Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-06-28T00:02:49.988311Z
+                  lastBackup: 2024-06-29T00:02:44.7154512Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5853,8 +5853,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-06-28T00:02:49.988311Z
-                  expiration: 2024-06-28T00:02:49.988311Z
+                  createdAt: 2024-06-29T00:02:44.7154512Z
+                  expiration: 2024-06-29T00:02:44.7154512Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5958,7 +5958,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-06-28T00:02:49.988311Z
+                  createdAt: 2024-06-29T00:02:44.7154512Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6068,9 +6068,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-06-28T00:02:49.988311+00:00
-                  startTimeStamp: 2024-06-28T00:02:49.988311+00:00
-                  createdAt: 2024-06-28T00:02:49.988311Z
+                  completionDateTime: 2024-06-29T00:02:44.7154512+00:00
+                  startTimeStamp: 2024-06-29T00:02:44.7154512+00:00
+                  createdAt: 2024-06-29T00:02:44.7154512Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -24076,103 +24076,6 @@ paths:
       summary: Delete prometheus dashboard pre defined query
       tags:
       - Pre-defined queries
-  /api/v1/projectactions/edit/{projectId}:
-    put:
-      operationId: projectactions-edit
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProjectActionUpdateDto'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Update project action by projectId
-      tags:
-      - Project actions
-  /api/v1/projectactions/{projectId}:
-    delete:
-      operationId: projectactions-delete
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Delete the project action
-      tags:
-      - Project actions
   /api/v1/projectappparam/edit/{projectAppId}:
     put:
       operationId: projectappparam-edit
@@ -38624,6 +38527,162 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Create zededa cloud credential
+      tags:
+      - Zededa
+  /api/v1/zededa/edge-nodes:
+    post:
+      operationId: zededa-edge-nodes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZededaEdgeNodesCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: "1"
+                name: taikun
+              schema:
+                items:
+                  $ref: '#/components/schemas/CommonStringBasedDropdownDto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch edge nodes for zededa cloud credential
+      tags:
+      - Zededa
+  /api/v1/zededa/interfaces:
+    post:
+      operationId: zededa-interfaces
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZededaInterfaceCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch interfaces for zededa cloud credential
+      tags:
+      - Zededa
+  /api/v1/zededa/projects:
+    post:
+      operationId: zededa-projects
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZededaProjectsCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - id: "1"
+                name: taikun
+              schema:
+                items:
+                  $ref: '#/components/schemas/CommonStringBasedDropdownDto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Fetch projects for zededa cloud credential
       tags:
       - Zededa
 components:
@@ -55821,23 +55880,6 @@ components:
           nullable: true
           type: string
       type: object
-    ProjectActionUpdateDto:
-      additionalProperties: false
-      example:
-        estimatedTime: estimatedTime
-        jobUrl: jobUrl
-        operation: operation
-      properties:
-        operation:
-          nullable: true
-          type: string
-        jobUrl:
-          nullable: true
-          type: string
-        estimatedTime:
-          nullable: true
-          type: string
-      type: object
     ProjectActionVisibilityDto:
       additionalProperties: false
       example:
@@ -66652,6 +66694,7 @@ components:
             enable: true
           lastModifiedBy: lastModifiedBy
           health: "Null"
+          isVirtualCluster: true
           hasKubeConfigFile: true
           kubeInfoButton:
             reasons:
@@ -66710,6 +66753,7 @@ components:
             enable: true
           lastModifiedBy: lastModifiedBy
           health: "Null"
+          isVirtualCluster: true
           hasKubeConfigFile: true
           kubeInfoButton:
             reasons:
@@ -66812,6 +66856,7 @@ components:
           enable: true
         lastModifiedBy: lastModifiedBy
         health: "Null"
+        isVirtualCluster: true
         hasKubeConfigFile: true
         kubeInfoButton:
           reasons:
@@ -66839,6 +66884,8 @@ components:
         name:
           nullable: true
           type: string
+        isVirtualCluster:
+          type: boolean
         isLocked:
           type: boolean
         hasKubeConfigFile:
@@ -67747,6 +67794,57 @@ components:
           nullable: true
           type: string
         zadaraSecretAccessKey:
+          nullable: true
+          type: string
+      type: object
+    ZededaEdgeNodesCommand:
+      additionalProperties: false
+      example:
+        apiToken: apiToken
+        apiUrl: apiUrl
+        project: project
+      properties:
+        apiUrl:
+          nullable: true
+          type: string
+        apiToken:
+          nullable: true
+          type: string
+        project:
+          nullable: true
+          type: string
+      type: object
+    ZededaInterfaceCommand:
+      additionalProperties: false
+      example:
+        edgeNode: edgeNode
+        apiToken: apiToken
+        apiUrl: apiUrl
+        project: project
+      properties:
+        apiUrl:
+          nullable: true
+          type: string
+        apiToken:
+          nullable: true
+          type: string
+        project:
+          nullable: true
+          type: string
+        edgeNode:
+          nullable: true
+          type: string
+      type: object
+    ZededaProjectsCommand:
+      additionalProperties: false
+      example:
+        apiToken: apiToken
+        apiUrl: apiUrl
+      properties:
+        apiUrl:
+          nullable: true
+          type: string
+        apiToken:
           nullable: true
           type: string
       type: object
