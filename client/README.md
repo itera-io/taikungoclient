@@ -543,10 +543,8 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsAiAnalyzer**](docs/ProjectsAPI.md#projectsaianalyzer) | **Get** /api/v1/projects/ai-analyze/{projectId} | Analyze cluster by AI model
 *ProjectsAPI* | [**ProjectsAlerts**](docs/ProjectsAPI.md#projectsalerts) | **Post** /api/v1/projects/alerts | Project alerts
 *ProjectsAPI* | [**ProjectsChatCompletions**](docs/ProjectsAPI.md#projectschatcompletions) | **Post** /api/v1/projects/chat/completions | AI Chat completions
-*ProjectsAPI* | [**ProjectsCommit**](docs/ProjectsAPI.md#projectscommit) | **Post** /api/v1/projects/commit/{projectId} | Commit changes for the given project. The changes will then be applied and the project will be updated. The project must be in the READY state.
 *ProjectsAPI* | [**ProjectsCreate**](docs/ProjectsAPI.md#projectscreate) | **Post** /api/v1/projects | Create a new project
 *ProjectsAPI* | [**ProjectsDelete**](docs/ProjectsAPI.md#projectsdelete) | **Post** /api/v1/projects/delete | Delete the project. The project must be empty (no server) and in READY state
-*ProjectsAPI* | [**ProjectsDeleteWholeProject**](docs/ProjectsAPI.md#projectsdeletewholeproject) | **Post** /api/v1/projects/deletewholeproject | Delete whole project by project Id
 *ProjectsAPI* | [**ProjectsDescribe**](docs/ProjectsAPI.md#projectsdescribe) | **Get** /api/v1/projects/describe/{projectId} | Describe project by Id
 *ProjectsAPI* | [**ProjectsDetails**](docs/ProjectsAPI.md#projectsdetails) | **Get** /api/v1/projects/{projectId} | Retrieve details of the project by Id
 *ProjectsAPI* | [**ProjectsDropdown**](docs/ProjectsAPI.md#projectsdropdown) | **Get** /api/v1/projects/list | Retrieve list of projects for dropdown
@@ -561,12 +559,8 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsLockManager**](docs/ProjectsAPI.md#projectslockmanager) | **Post** /api/v1/projects/lockmanager | Lock/Unlock project
 *ProjectsAPI* | [**ProjectsLokiLogs**](docs/ProjectsAPI.md#projectslokilogs) | **Post** /api/v1/projects/lokilogs | Retrieve loki logs
 *ProjectsAPI* | [**ProjectsMaintenanceManager**](docs/ProjectsAPI.md#projectsmaintenancemanager) | **Post** /api/v1/projects/maintenance-manager | Enable/disable project&#39;s maintenance mode
-*ProjectsAPI* | [**ProjectsMonitoring**](docs/ProjectsAPI.md#projectsmonitoring) | **Post** /api/v1/projects/monitoring | Monitoring operations enable/disable
 *ProjectsAPI* | [**ProjectsMonitoringAlerts**](docs/ProjectsAPI.md#projectsmonitoringalerts) | **Post** /api/v1/projects/monitoringalerts | Monitoring alerts for project
 *ProjectsAPI* | [**ProjectsPrometheusMetrics**](docs/ProjectsAPI.md#projectsprometheusmetrics) | **Post** /api/v1/projects/prometheusmetrics | Prometheus metrics data project
-*ProjectsAPI* | [**ProjectsPurge**](docs/ProjectsAPI.md#projectspurge) | **Post** /api/v1/projects/purge | Purge a list of servers from project by project Id
-*ProjectsAPI* | [**ProjectsPurgeWholeProject**](docs/ProjectsAPI.md#projectspurgewholeproject) | **Post** /api/v1/projects/purgewholeproject | Purge a whole project by project Id
-*ProjectsAPI* | [**ProjectsRepair**](docs/ProjectsAPI.md#projectsrepair) | **Post** /api/v1/projects/repair/{projectId} | Repair project by Id
 *ProjectsAPI* | [**ProjectsToggleFullSpot**](docs/ProjectsAPI.md#projectstogglefullspot) | **Post** /api/v1/projects/toggle-full-spot | Full spot operations enable/disable
 *ProjectsAPI* | [**ProjectsToggleSpotVms**](docs/ProjectsAPI.md#projectstogglespotvms) | **Post** /api/v1/projects/toggle-spot-vms | Spot vm(s) operations enable/disable
 *ProjectsAPI* | [**ProjectsToggleSpotWorkers**](docs/ProjectsAPI.md#projectstogglespotworkers) | **Post** /api/v1/projects/toggle-spot-workers | Spot worker(s) operations enable/disable
@@ -627,13 +621,11 @@ Class | Method | HTTP request | Description
 *SecurityGroupAPI* | [**SecuritygroupList**](docs/SecurityGroupAPI.md#securitygrouplist) | **Get** /api/v1/securitygroup/list/{standAloneProfileId} | List stand alone security group by profile id
 *ServersAPI* | [**ServersConsole**](docs/ServersAPI.md#serversconsole) | **Post** /api/v1/servers/console | Console screenshot or terminal access for server
 *ServersAPI* | [**ServersCreate**](docs/ServersAPI.md#serverscreate) | **Post** /api/v1/servers/create | Create a new server in the given project.
-*ServersAPI* | [**ServersDelete**](docs/ServersAPI.md#serversdelete) | **Post** /api/v1/servers/delete | Delete server by project id
 *ServersAPI* | [**ServersDetails**](docs/ServersAPI.md#serversdetails) | **Get** /api/v1/servers/{projectId} | Retrieve all servers by given project
 *ServersAPI* | [**ServersList**](docs/ServersAPI.md#serverslist) | **Get** /api/v1/servers | Retrieve all servers
 *ServersAPI* | [**ServersReboot**](docs/ServersAPI.md#serversreboot) | **Post** /api/v1/servers/reboot | Reboot server
 *ServersAPI* | [**ServersReset**](docs/ServersAPI.md#serversreset) | **Post** /api/v1/servers/reset | Update server(s) status(es)
 *ServersAPI* | [**ServersStatus**](docs/ServersAPI.md#serversstatus) | **Get** /api/v1/servers/status/{serverId} | Show server status
-*ServersAPI* | [**ServersUpdate**](docs/ServersAPI.md#serversupdate) | **Post** /api/v1/servers/update | Update server
 *ServersAPI* | [**ServersUpdateByProjectId**](docs/ServersAPI.md#serversupdatebyprojectid) | **Put** /api/v1/servers/update/{projectId} | Update server by projectId
 *SlackAPI* | [**SlackCreate**](docs/SlackAPI.md#slackcreate) | **Post** /api/v1/slack/create | Create slack configuration
 *SlackAPI* | [**SlackDeleteMultiple**](docs/SlackAPI.md#slackdeletemultiple) | **Post** /api/v1/slack/delete-multiple | Delete slack configuration(s)
@@ -645,18 +637,13 @@ Class | Method | HTTP request | Description
 *SshUsersAPI* | [**SshusersDelete**](docs/SshUsersAPI.md#sshusersdelete) | **Post** /api/v1/sshusers/delete | Delete access profile ssh user
 *SshUsersAPI* | [**SshusersEdit**](docs/SshUsersAPI.md#sshusersedit) | **Post** /api/v1/sshusers/edit | Edit access profile ssh user
 *SshUsersAPI* | [**SshusersList**](docs/SshUsersAPI.md#sshuserslist) | **Get** /api/v1/sshusers/list/{accessProfileId} | List ssh user by access profile id
-*StandaloneAPI* | [**StandaloneCommit**](docs/StandaloneAPI.md#standalonecommit) | **Post** /api/v1/standalone/commit | Commit vm
 *StandaloneAPI* | [**StandaloneCreate**](docs/StandaloneAPI.md#standalonecreate) | **Post** /api/v1/standalone/create | Create a new vm in the given project.
-*StandaloneAPI* | [**StandaloneDelete**](docs/StandaloneAPI.md#standalonedelete) | **Post** /api/v1/standalone/delete | Delete vm
 *StandaloneAPI* | [**StandaloneDetails**](docs/StandaloneAPI.md#standalonedetails) | **Get** /api/v1/standalone/{projectId} | Retrieve a list of standalone vm with detailed info
 *StandaloneAPI* | [**StandaloneForPoller**](docs/StandaloneAPI.md#standaloneforpoller) | **Get** /api/v1/standalone/forpoller | List all StandaloneVms for poller
 *StandaloneAPI* | [**StandaloneIpManagement**](docs/StandaloneAPI.md#standaloneipmanagement) | **Post** /api/v1/standalone/ip/management | Enable/Disable stand alone public ip
 *StandaloneAPI* | [**StandaloneList**](docs/StandaloneAPI.md#standalonelist) | **Get** /api/v1/standalone | Retrieve all vms
 *StandaloneAPI* | [**StandaloneProjectDetails**](docs/StandaloneAPI.md#standaloneprojectdetails) | **Get** /api/v1/standalone/project/{projectId} | Retrieve details of the project by Id
-*StandaloneAPI* | [**StandalonePurge**](docs/StandaloneAPI.md#standalonepurge) | **Post** /api/v1/standalone/purge | Purge vm
-*StandaloneAPI* | [**StandaloneRepair**](docs/StandaloneAPI.md#standalonerepair) | **Post** /api/v1/standalone/repair | Repair vm
 *StandaloneAPI* | [**StandaloneReset**](docs/StandaloneAPI.md#standalonereset) | **Post** /api/v1/standalone/reset | Reset vm status
-*StandaloneAPI* | [**StandaloneUpdate**](docs/StandaloneAPI.md#standaloneupdate) | **Post** /api/v1/standalone/update | Update vm
 *StandaloneAPI* | [**StandaloneUpdateFlavor**](docs/StandaloneAPI.md#standaloneupdateflavor) | **Post** /api/v1/standalone/update/flavor | Update standalone vm flavor
 *StandaloneActionsAPI* | [**StandaloneactionsConsole**](docs/StandaloneActionsAPI.md#standaloneactionsconsole) | **Post** /api/v1/standaloneactions/console | Console screenshot or terminal for vm
 *StandaloneActionsAPI* | [**StandaloneactionsDownloadRdp**](docs/StandaloneActionsAPI.md#standaloneactionsdownloadrdp) | **Get** /api/v1/standaloneactions/download/rdp/{id} | Download RDP file
@@ -944,7 +931,6 @@ Class | Method | HTTP request | Description
  - [CloudRole](docs/CloudRole.md)
  - [CloudStatus](docs/CloudStatus.md)
  - [CloudType](docs/CloudType.md)
- - [CommitStandAloneVmCommand](docs/CommitStandAloneVmCommand.md)
  - [CommonAvailabilityDto](docs/CommonAvailabilityDto.md)
  - [CommonDropdownDto](docs/CommonDropdownDto.md)
  - [CommonDropdownIsBoundDto](docs/CommonDropdownIsBoundDto.md)
@@ -1041,16 +1027,13 @@ Class | Method | HTTP request | Description
  - [DeleteRepositoryCommand](docs/DeleteRepositoryCommand.md)
  - [DeleteRestoreCommand](docs/DeleteRestoreCommand.md)
  - [DeleteScheduleCommand](docs/DeleteScheduleCommand.md)
- - [DeleteServerCommand](docs/DeleteServerCommand.md)
  - [DeleteSlackConfigCommand](docs/DeleteSlackConfigCommand.md)
  - [DeleteSshUserCommand](docs/DeleteSshUserCommand.md)
  - [DeleteStandAloneProfileCommand](docs/DeleteStandAloneProfileCommand.md)
- - [DeleteStandAloneVmCommand](docs/DeleteStandAloneVmCommand.md)
  - [DeleteStandAloneVmDiskCommand](docs/DeleteStandAloneVmDiskCommand.md)
  - [DeleteSubscriptionCommand](docs/DeleteSubscriptionCommand.md)
  - [DeleteUserGroupCommand](docs/DeleteUserGroupCommand.md)
  - [DeleteVirtualClusterCommand](docs/DeleteVirtualClusterCommand.md)
- - [DeleteWholeProjectCommand](docs/DeleteWholeProjectCommand.md)
  - [DeploymentCommitVmCommand](docs/DeploymentCommitVmCommand.md)
  - [DeploymentCompletedCommand](docs/DeploymentCompletedCommand.md)
  - [DeploymentDisableAiCommand](docs/DeploymentDisableAiCommand.md)
@@ -1231,7 +1214,6 @@ Class | Method | HTTP request | Description
  - [MakeOwnerCommand](docs/MakeOwnerCommand.md)
  - [Metadata](docs/Metadata.md)
  - [MonitoringCredentialsListDto](docs/MonitoringCredentialsListDto.md)
- - [MonitoringOperationsCommand](docs/MonitoringOperationsCommand.md)
  - [NetworkListCommand](docs/NetworkListCommand.md)
  - [NetworkPolicies](docs/NetworkPolicies.md)
  - [NetworkPolicyDto](docs/NetworkPolicyDto.md)
@@ -1414,10 +1396,7 @@ Class | Method | HTTP request | Description
  - [ProxmoxRole](docs/ProxmoxRole.md)
  - [ProxmoxStorage](docs/ProxmoxStorage.md)
  - [PublicImageList](docs/PublicImageList.md)
- - [PurgeCommand](docs/PurgeCommand.md)
- - [PurgeStandAloneCommand](docs/PurgeStandAloneCommand.md)
  - [PurgeStandAloneVmDiskCommand](docs/PurgeStandAloneVmDiskCommand.md)
- - [PurgeWholeProjectCommand](docs/PurgeWholeProjectCommand.md)
  - [PvcDto](docs/PvcDto.md)
  - [PvcSearchCommand](docs/PvcSearchCommand.md)
  - [PvcSearchList](docs/PvcSearchList.md)
@@ -1428,7 +1407,6 @@ Class | Method | HTTP request | Description
  - [RegionListCommand](docs/RegionListCommand.md)
  - [RemindUsersByAlertingProfileCommand](docs/RemindUsersByAlertingProfileCommand.md)
  - [RemoveOwnerCommand](docs/RemoveOwnerCommand.md)
- - [RepairStandAloneVmCommand](docs/RepairStandAloneVmCommand.md)
  - [ReplyTicketCommand](docs/ReplyTicketCommand.md)
  - [Repository](docs/Repository.md)
  - [ResetPasswordCommand](docs/ResetPasswordCommand.md)
@@ -1462,7 +1440,6 @@ Class | Method | HTTP request | Description
  - [ServerForCreateDto](docs/ServerForCreateDto.md)
  - [ServerListDto](docs/ServerListDto.md)
  - [ServerTemplateDto](docs/ServerTemplateDto.md)
- - [ServerUpdateDto](docs/ServerUpdateDto.md)
  - [ServersForBillingDto](docs/ServersForBillingDto.md)
  - [ServersList](docs/ServersList.md)
  - [ServersListForDetails](docs/ServersListForDetails.md)
@@ -1575,16 +1552,12 @@ Class | Method | HTTP request | Description
  - [UpdateProjectUserDto](docs/UpdateProjectUserDto.md)
  - [UpdateProxmoxCommand](docs/UpdateProxmoxCommand.md)
  - [UpdateQuotaCommand](docs/UpdateQuotaCommand.md)
- - [UpdateServerCommand](docs/UpdateServerCommand.md)
  - [UpdateServerHealthDto](docs/UpdateServerHealthDto.md)
  - [UpdateSlackConfigurationDto](docs/UpdateSlackConfigurationDto.md)
  - [UpdateStageCommand](docs/UpdateStageCommand.md)
- - [UpdateStandAloneVmCommand](docs/UpdateStandAloneVmCommand.md)
- - [UpdateStandAloneVmDiskDto](docs/UpdateStandAloneVmDiskDto.md)
  - [UpdateStandAloneVmFlavorCommand](docs/UpdateStandAloneVmFlavorCommand.md)
  - [UpdateStandaloneVmDiskCommand](docs/UpdateStandaloneVmDiskCommand.md)
  - [UpdateStandaloneVmDiskSizeCommand](docs/UpdateStandaloneVmDiskSizeCommand.md)
- - [UpdateStandaloneVmDto](docs/UpdateStandaloneVmDto.md)
  - [UpdateSubscriptionCommand](docs/UpdateSubscriptionCommand.md)
  - [UpdateTanzuCommand](docs/UpdateTanzuCommand.md)
  - [UpdateUsedIpAddressesCommand](docs/UpdateUsedIpAddressesCommand.md)

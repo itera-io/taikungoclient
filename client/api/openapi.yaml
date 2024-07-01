@@ -5635,8 +5635,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-07-01T00:03:26.2849926Z
-                  createdAt: 2024-07-01T00:03:26.2849926Z
+                  lastValidated: 2024-07-01T13:23:37.1662285Z
+                  createdAt: 2024-07-01T13:23:37.1662285Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5741,14 +5741,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-07-01T00:03:26.2849926Z
+                    lastBackup: 2024-07-01T13:23:37.1662285Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-07-01T00:03:26.2849926Z
+                  createdAt: 2024-07-01T13:23:37.1662285Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-07-01T00:03:26.2849926Z
+                  lastBackup: 2024-07-01T13:23:37.1662285Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5853,8 +5853,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-01T00:03:26.2849926Z
-                  expiration: 2024-07-01T00:03:26.2849926Z
+                  createdAt: 2024-07-01T13:23:37.1662285Z
+                  expiration: 2024-07-01T13:23:37.1662285Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5958,7 +5958,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-01T00:03:26.2849926Z
+                  createdAt: 2024-07-01T13:23:37.1662285Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6068,9 +6068,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-07-01T00:03:26.2849926+00:00
-                  startTimeStamp: 2024-07-01T00:03:26.2849926+00:00
-                  createdAt: 2024-07-01T00:03:26.2849926Z
+                  completionDateTime: 2024-07-01T13:23:37.1662285+00:00
+                  startTimeStamp: 2024-07-01T13:23:37.1662285+00:00
+                  createdAt: 2024-07-01T13:23:37.1662285Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -26571,53 +26571,6 @@ paths:
       summary: AI Chat completions
       tags:
       - Projects
-  /api/v1/projects/commit/{projectId}:
-    post:
-      operationId: projects-commit
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Commit changes for the given project. The changes will then be applied
-        and the project will be updated. The project must be in the READY state.
-      tags:
-      - Projects
   /api/v1/projects:
     get:
       operationId: projects-list
@@ -26834,49 +26787,6 @@ paths:
           description: Internal Server Error
       summary: Delete the project. The project must be empty (no server) and in READY
         state
-      tags:
-      - Projects
-  /api/v1/projects/deletewholeproject:
-    post:
-      operationId: projects-delete-whole-project
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeleteWholeProjectCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Delete whole project by project Id
       tags:
       - Projects
   /api/v1/projects/extend/lifetime:
@@ -27142,49 +27052,6 @@ paths:
       summary: Monitoring alerts for project
       tags:
       - Projects
-  /api/v1/projects/monitoring:
-    post:
-      operationId: projects-monitoring
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MonitoringOperationsCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Monitoring operations enable/disable
-      tags:
-      - Projects
   /api/v1/projects/prometheusmetrics:
     post:
       operationId: projects-prometheus-metrics
@@ -27230,138 +27097,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Prometheus metrics data project
-      tags:
-      - Projects
-  /api/v1/projects/purge:
-    post:
-      operationId: projects-purge
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PurgeCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Purge a list of servers from project by project Id
-      tags:
-      - Projects
-  /api/v1/projects/purgewholeproject:
-    post:
-      operationId: projects-purge-whole-project
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PurgeWholeProjectCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Purge a whole project by project Id
-      tags:
-      - Projects
-  /api/v1/projects/repair/{projectId}:
-    post:
-      operationId: projects-repair
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Repair project by Id
       tags:
       - Projects
   /api/v1/projects/toggle-spot-vms:
@@ -31043,49 +30778,6 @@ paths:
       summary: Create a new server in the given project.
       tags:
       - Servers
-  /api/v1/servers/delete:
-    post:
-      operationId: servers-delete
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeleteServerCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Delete server by project id
-      tags:
-      - Servers
   /api/v1/servers/reboot:
     post:
       operationId: servers-reboot
@@ -31169,48 +30861,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Update server(s) status(es)
-      tags:
-      - Servers
-  /api/v1/servers/update:
-    post:
-      operationId: servers-update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateServerCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Update server
       tags:
       - Servers
   /api/v1/servers/{projectId}:
@@ -32078,49 +31728,6 @@ paths:
       summary: List ssh user by access profile id
       tags:
       - Ssh Users
-  /api/v1/standalone/commit:
-    post:
-      operationId: standalone-commit
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CommitStandAloneVmCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Commit vm
-      tags:
-      - Standalone
   /api/v1/standalone/create:
     post:
       operationId: standalone-create
@@ -32169,48 +31776,6 @@ paths:
       summary: Create a new vm in the given project.
       tags:
       - Standalone
-  /api/v1/standalone/delete:
-    post:
-      operationId: standalone-delete
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeleteStandAloneVmCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Delete vm
-      tags:
-      - Standalone
   /api/v1/standalone/ip/management:
     post:
       operationId: standalone-ip-management
@@ -32253,90 +31818,6 @@ paths:
       summary: Enable/Disable stand alone public ip
       tags:
       - Standalone
-  /api/v1/standalone/purge:
-    post:
-      operationId: standalone-purge
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PurgeStandAloneCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Purge vm
-      tags:
-      - Standalone
-  /api/v1/standalone/repair:
-    post:
-      operationId: standalone-repair
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RepairStandAloneVmCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Repair vm
-      tags:
-      - Standalone
   /api/v1/standalone/reset:
     post:
       operationId: standalone-reset
@@ -32377,48 +31858,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Reset vm status
-      tags:
-      - Standalone
-  /api/v1/standalone/update:
-    post:
-      operationId: standalone-update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateStandAloneVmCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Update vm
       tags:
       - Standalone
   /api/v1/standalone/update/flavor:
@@ -44079,7 +43518,6 @@ components:
       enum:
       - NONE
       - AWS
-      - ZEDEDA
       - AZURE
       - GOOGLE
       - OPENSTACK
@@ -44088,16 +43526,8 @@ components:
       - OPENSHIFT
       - VSPHERE
       - ZADARA
+      - ZEDEDA
       type: string
-    CommitStandAloneVmCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-      type: object
     CommonAvailabilityDto:
       additionalProperties: false
       example:
@@ -46052,9 +45482,11 @@ components:
       additionalProperties: false
       example:
         expiredAt: 2000-01-23T04:56:07.000+00:00
+        exposeHostname: exposeHostname
         deleteOnExpiration: true
         alertingProfileId: 6
         name: name
+        exposeWithIngress: true
         projectId: 0
       properties:
         projectId:
@@ -46073,6 +45505,11 @@ components:
           format: int32
           nullable: true
           type: integer
+        exposeWithIngress:
+          type: boolean
+        exposeHostname:
+          nullable: true
+          type: string
       type: object
     CreateVsphereCommand:
       additionalProperties: false
@@ -47750,27 +47187,6 @@ components:
           nullable: true
           type: string
       type: object
-    DeleteServerCommand:
-      additionalProperties: false
-      example:
-        deleteAutoscalingServers: true
-        projectId: 0
-        serverIds:
-        - 6
-        - 6
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        serverIds:
-          items:
-            format: int32
-            type: integer
-          nullable: true
-          type: array
-        deleteAutoscalingServers:
-          type: boolean
-      type: object
     DeleteSlackConfigCommand:
       additionalProperties: false
       example:
@@ -47802,24 +47218,6 @@ components:
         id:
           format: int32
           type: integer
-      type: object
-    DeleteStandAloneVmCommand:
-      additionalProperties: false
-      example:
-        vmIds:
-        - 6
-        - 6
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        vmIds:
-          items:
-            format: int32
-            type: integer
-          nullable: true
-          type: array
       type: object
     DeleteStandAloneVmDiskCommand:
       additionalProperties: false
@@ -47863,15 +47261,6 @@ components:
           type: array
       type: object
     DeleteVirtualClusterCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-      type: object
-    DeleteWholeProjectCommand:
       additionalProperties: false
       example:
         projectId: 0
@@ -52720,15 +52109,6 @@ components:
         alertManagerUrl:
           nullable: true
           type: string
-      type: object
-    MonitoringOperationsCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
       type: object
     NetworkListCommand:
       additionalProperties: false
@@ -58867,10 +58247,6 @@ components:
       - Failure
       - FailedUpgrade
       - Pending
-      - PendingDelete
-      - PendingPurge
-      - PendingUpdateCredentials
-      - PendingUpgrade
       - Purging
       - Ready
       - Updating
@@ -60376,44 +59752,8 @@ components:
           format: int32
           type: integer
       type: object
-    PurgeCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-        serverIds:
-        - 6
-        - 6
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        serverIds:
-          items:
-            format: int32
-            type: integer
-          nullable: true
-          type: array
-      type: object
     PurgeExpiredProjectsCommand:
       additionalProperties: false
-      type: object
-    PurgeStandAloneCommand:
-      additionalProperties: false
-      example:
-        vmIds:
-        - 6
-        - 6
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        vmIds:
-          items:
-            format: int32
-            type: integer
-          nullable: true
-          type: array
       type: object
     PurgeStandAloneVmDiskCommand:
       additionalProperties: false
@@ -60432,15 +59772,6 @@ components:
             type: integer
           nullable: true
           type: array
-      type: object
-    PurgeWholeProjectCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
       type: object
     PvcDto:
       additionalProperties: false
@@ -60612,15 +59943,6 @@ components:
         userId:
           nullable: true
           type: string
-      type: object
-    RepairStandAloneVmCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
       type: object
     ReplyTicketCommand:
       additionalProperties: false
@@ -62083,31 +61405,6 @@ components:
         count:
           format: int32
           type: integer
-      type: object
-    ServerUpdateDto:
-      additionalProperties: false
-      example:
-        instanceId: instanceId
-        providerId: providerId
-        awsHostName: awsHostName
-        ip: ip
-        id: 0
-      properties:
-        id:
-          format: int32
-          type: integer
-        ip:
-          nullable: true
-          type: string
-        instanceId:
-          nullable: true
-          type: string
-        providerId:
-          nullable: true
-          type: string
-        awsHostName:
-          nullable: true
-          type: string
       type: object
     ServersForBillingDto:
       additionalProperties: false
@@ -65664,27 +64961,6 @@ components:
           format: double
           type: number
       type: object
-    UpdateServerCommand:
-      additionalProperties: false
-      example:
-        servers:
-        - instanceId: instanceId
-          providerId: providerId
-          awsHostName: awsHostName
-          ip: ip
-          id: 0
-        - instanceId: instanceId
-          providerId: providerId
-          awsHostName: awsHostName
-          ip: ip
-          id: 0
-      properties:
-        servers:
-          items:
-            $ref: '#/components/schemas/ServerUpdateDto'
-          nullable: true
-          type: array
-      type: object
     UpdateServerHealthDto:
       additionalProperties: false
       example:
@@ -65736,60 +65012,6 @@ components:
           nullable: true
           type: string
       type: object
-    UpdateStandAloneVmCommand:
-      additionalProperties: false
-      example:
-        standaloneVms:
-        - instanceId: instanceId
-          disks:
-          - name: name
-            id: id
-            deviceName: deviceName
-          - name: name
-            id: id
-            deviceName: deviceName
-          ipAddress: ipAddress
-          flavorId: flavorId
-          publicIp: publicIp
-          id: 0
-          revision: 6
-        - instanceId: instanceId
-          disks:
-          - name: name
-            id: id
-            deviceName: deviceName
-          - name: name
-            id: id
-            deviceName: deviceName
-          ipAddress: ipAddress
-          flavorId: flavorId
-          publicIp: publicIp
-          id: 0
-          revision: 6
-      properties:
-        standaloneVms:
-          items:
-            $ref: '#/components/schemas/UpdateStandaloneVmDto'
-          nullable: true
-          type: array
-      type: object
-    UpdateStandAloneVmDiskDto:
-      additionalProperties: false
-      example:
-        name: name
-        id: id
-        deviceName: deviceName
-      properties:
-        name:
-          nullable: true
-          type: string
-        deviceName:
-          nullable: true
-          type: string
-        id:
-          nullable: true
-          type: string
-      type: object
     UpdateStandAloneVmFlavorCommand:
       additionalProperties: false
       example:
@@ -65828,48 +65050,6 @@ components:
         size:
           format: int64
           type: integer
-      type: object
-    UpdateStandaloneVmDto:
-      additionalProperties: false
-      example:
-        instanceId: instanceId
-        disks:
-        - name: name
-          id: id
-          deviceName: deviceName
-        - name: name
-          id: id
-          deviceName: deviceName
-        ipAddress: ipAddress
-        flavorId: flavorId
-        publicIp: publicIp
-        id: 0
-        revision: 6
-      properties:
-        id:
-          format: int32
-          type: integer
-        ipAddress:
-          nullable: true
-          type: string
-        publicIp:
-          nullable: true
-          type: string
-        instanceId:
-          nullable: true
-          type: string
-        flavorId:
-          nullable: true
-          type: string
-        revision:
-          format: int32
-          nullable: true
-          type: integer
-        disks:
-          items:
-            $ref: '#/components/schemas/UpdateStandAloneVmDiskDto'
-          nullable: true
-          type: array
       type: object
     UpdateSubscriptionCommand:
       additionalProperties: false

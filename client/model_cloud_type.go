@@ -23,7 +23,6 @@ type CloudType string
 const (
 	CLOUDTYPE_NONE CloudType = "NONE"
 	CLOUDTYPE_AWS CloudType = "AWS"
-	CLOUDTYPE_ZEDEDA CloudType = "ZEDEDA"
 	CLOUDTYPE_AZURE CloudType = "AZURE"
 	CLOUDTYPE_GOOGLE CloudType = "GOOGLE"
 	CLOUDTYPE_OPENSTACK CloudType = "OPENSTACK"
@@ -32,13 +31,13 @@ const (
 	CLOUDTYPE_OPENSHIFT CloudType = "OPENSHIFT"
 	CLOUDTYPE_VSPHERE CloudType = "VSPHERE"
 	CLOUDTYPE_ZADARA CloudType = "ZADARA"
+	CLOUDTYPE_ZEDEDA CloudType = "ZEDEDA"
 )
 
 // All allowed values of CloudType enum
 var AllowedCloudTypeEnumValues = []CloudType{
 	"NONE",
 	"AWS",
-	"ZEDEDA",
 	"AZURE",
 	"GOOGLE",
 	"OPENSTACK",
@@ -47,6 +46,7 @@ var AllowedCloudTypeEnumValues = []CloudType{
 	"OPENSHIFT",
 	"VSPHERE",
 	"ZADARA",
+	"ZEDEDA",
 }
 
 func (v *CloudType) UnmarshalJSON(src []byte) error {

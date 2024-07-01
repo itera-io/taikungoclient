@@ -35,10 +35,6 @@ const (
 	PROJECTSTATUS_FAILURE ProjectStatus = "Failure"
 	PROJECTSTATUS_FAILED_UPGRADE ProjectStatus = "FailedUpgrade"
 	PROJECTSTATUS_PENDING ProjectStatus = "Pending"
-	PROJECTSTATUS_PENDING_DELETE ProjectStatus = "PendingDelete"
-	PROJECTSTATUS_PENDING_PURGE ProjectStatus = "PendingPurge"
-	PROJECTSTATUS_PENDING_UPDATE_CREDENTIALS ProjectStatus = "PendingUpdateCredentials"
-	PROJECTSTATUS_PENDING_UPGRADE ProjectStatus = "PendingUpgrade"
 	PROJECTSTATUS_PURGING ProjectStatus = "Purging"
 	PROJECTSTATUS_READY ProjectStatus = "Ready"
 	PROJECTSTATUS_UPDATING ProjectStatus = "Updating"
@@ -64,10 +60,6 @@ var AllowedProjectStatusEnumValues = []ProjectStatus{
 	"Failure",
 	"FailedUpgrade",
 	"Pending",
-	"PendingDelete",
-	"PendingPurge",
-	"PendingUpdateCredentials",
-	"PendingUpgrade",
 	"Purging",
 	"Ready",
 	"Updating",

@@ -22,17 +22,6 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test StandaloneAPIService StandaloneCommit", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.StandaloneAPI.StandaloneCommit(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test StandaloneAPIService StandaloneCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -41,17 +30,6 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test StandaloneAPIService StandaloneDelete", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.StandaloneAPI.StandaloneDelete(context.Background()).Execute()
-
-		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -119,44 +97,11 @@ func Test_taikuncore_StandaloneAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test StandaloneAPIService StandalonePurge", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.StandaloneAPI.StandalonePurge(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test StandaloneAPIService StandaloneRepair", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.StandaloneAPI.StandaloneRepair(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test StandaloneAPIService StandaloneReset", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.StandaloneAPI.StandaloneReset(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test StandaloneAPIService StandaloneUpdate", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.StandaloneAPI.StandaloneUpdate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

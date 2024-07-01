@@ -26,6 +26,8 @@ type CreateVirtualClusterCommand struct {
 	ExpiredAt NullableTime `json:"expiredAt,omitempty"`
 	DeleteOnExpiration *bool `json:"deleteOnExpiration,omitempty"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
+	ExposeWithIngress *bool `json:"exposeWithIngress,omitempty"`
+	ExposeHostname NullableString `json:"exposeHostname,omitempty"`
 }
 
 // NewCreateVirtualClusterCommand instantiates a new CreateVirtualClusterCommand object
@@ -235,6 +237,80 @@ func (o *CreateVirtualClusterCommand) UnsetAlertingProfileId() {
 	o.AlertingProfileId.Unset()
 }
 
+// GetExposeWithIngress returns the ExposeWithIngress field value if set, zero value otherwise.
+func (o *CreateVirtualClusterCommand) GetExposeWithIngress() bool {
+	if o == nil || IsNil(o.ExposeWithIngress) {
+		var ret bool
+		return ret
+	}
+	return *o.ExposeWithIngress
+}
+
+// GetExposeWithIngressOk returns a tuple with the ExposeWithIngress field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateVirtualClusterCommand) GetExposeWithIngressOk() (*bool, bool) {
+	if o == nil || IsNil(o.ExposeWithIngress) {
+		return nil, false
+	}
+	return o.ExposeWithIngress, true
+}
+
+// HasExposeWithIngress returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasExposeWithIngress() bool {
+	if o != nil && !IsNil(o.ExposeWithIngress) {
+		return true
+	}
+
+	return false
+}
+
+// SetExposeWithIngress gets a reference to the given bool and assigns it to the ExposeWithIngress field.
+func (o *CreateVirtualClusterCommand) SetExposeWithIngress(v bool) {
+	o.ExposeWithIngress = &v
+}
+
+// GetExposeHostname returns the ExposeHostname field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateVirtualClusterCommand) GetExposeHostname() string {
+	if o == nil || IsNil(o.ExposeHostname.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ExposeHostname.Get()
+}
+
+// GetExposeHostnameOk returns a tuple with the ExposeHostname field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateVirtualClusterCommand) GetExposeHostnameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExposeHostname.Get(), o.ExposeHostname.IsSet()
+}
+
+// HasExposeHostname returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasExposeHostname() bool {
+	if o != nil && o.ExposeHostname.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExposeHostname gets a reference to the given NullableString and assigns it to the ExposeHostname field.
+func (o *CreateVirtualClusterCommand) SetExposeHostname(v string) {
+	o.ExposeHostname.Set(&v)
+}
+// SetExposeHostnameNil sets the value for ExposeHostname to be an explicit nil
+func (o *CreateVirtualClusterCommand) SetExposeHostnameNil() {
+	o.ExposeHostname.Set(nil)
+}
+
+// UnsetExposeHostname ensures that no value is present for ExposeHostname, not even an explicit nil
+func (o *CreateVirtualClusterCommand) UnsetExposeHostname() {
+	o.ExposeHostname.Unset()
+}
+
 func (o CreateVirtualClusterCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -259,6 +335,12 @@ func (o CreateVirtualClusterCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AlertingProfileId.IsSet() {
 		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
+	}
+	if !IsNil(o.ExposeWithIngress) {
+		toSerialize["exposeWithIngress"] = o.ExposeWithIngress
+	}
+	if o.ExposeHostname.IsSet() {
+		toSerialize["exposeHostname"] = o.ExposeHostname.Get()
 	}
 	return toSerialize, nil
 }

@@ -60,19 +60,6 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectsAPIService ProjectsCommit", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var projectId int32
-
-		httpRes, err := apiClient.ProjectsAPI.ProjectsCommit(context.Background(), projectId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ProjectsAPIService ProjectsCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -90,17 +77,6 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ProjectsAPI.ProjectsDelete(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectsAPIService ProjectsDeleteWholeProject", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.ProjectsAPI.ProjectsDeleteWholeProject(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -274,17 +250,6 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectsAPIService ProjectsMonitoring", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.ProjectsAPI.ProjectsMonitoring(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ProjectsAPIService ProjectsMonitoringAlerts", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -305,41 +270,6 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectsAPIService ProjectsPurge", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.ProjectsAPI.ProjectsPurge(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectsAPIService ProjectsPurgeWholeProject", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.ProjectsAPI.ProjectsPurgeWholeProject(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectsAPIService ProjectsRepair", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var projectId int32
-
-		httpRes, err := apiClient.ProjectsAPI.ProjectsRepair(context.Background(), projectId).Execute()
-
-		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
