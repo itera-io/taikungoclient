@@ -6,7 +6,6 @@ api/openapi.yaml
 api_access_profiles.go
 api_admin.go
 api_ai_credentials.go
-api_ai_management.go
 api_alerting_integrations.go
 api_alerting_profiles.go
 api_allowed_host.go
@@ -119,7 +118,6 @@ docs/AiCredentialsAPI.md
 docs/AiCredentialsForOrganizationEntity.md
 docs/AiCredentialsListDto.md
 docs/AiListDto.md
-docs/AiManagementAPI.md
 docs/AiType.md
 docs/Alert.md
 docs/AlertData.md
@@ -410,10 +408,7 @@ docs/DescribeSecretCommand.md
 docs/DescribeServiceCommand.md
 docs/DescribeStorageClassCommand.md
 docs/DescribeStsCommand.md
-docs/DisableAiCommand.md
 docs/DisableAutoscalingCommand.md
-docs/DisableBackupCommand.md
-docs/DisableGatekeeperCommand.md
 docs/DisableUserCommand.md
 docs/DnsCommand.md
 docs/DnsNtpAddressEditDto.md
@@ -440,10 +435,7 @@ docs/EditSecurityGroupCommand.md
 docs/EditSshUserCommand.md
 docs/EditTicketCommand.md
 docs/EmailMode.md
-docs/EnableAiCommand.md
 docs/EnableAutoscalingCommand.md
-docs/EnableBackupCommand.md
-docs/EnableGatekeeperCommand.md
 docs/EndpointElements.md
 docs/EnumList.md
 docs/EstimatedInfracost.md
@@ -1332,10 +1324,7 @@ model_describe_secret_command.go
 model_describe_service_command.go
 model_describe_storage_class_command.go
 model_describe_sts_command.go
-model_disable_ai_command.go
 model_disable_autoscaling_command.go
-model_disable_backup_command.go
-model_disable_gatekeeper_command.go
 model_disable_user_command.go
 model_dns_command.go
 model_dns_ntp_address_edit_dto.go
@@ -1361,10 +1350,7 @@ model_edit_security_group_command.go
 model_edit_ssh_user_command.go
 model_edit_ticket_command.go
 model_email_mode.go
-model_enable_ai_command.go
 model_enable_autoscaling_command.go
-model_enable_backup_command.go
-model_enable_gatekeeper_command.go
 model_endpoint_elements.go
 model_enum_list.go
 model_estimated_infracost.go
@@ -1890,7 +1876,6 @@ response.go
 test/api_access_profiles_test.go
 test/api_admin_test.go
 test/api_ai_credentials_test.go
-test/api_ai_management_test.go
 test/api_alerting_integrations_test.go
 test/api_alerting_profiles_test.go
 test/api_allowed_host_test.go

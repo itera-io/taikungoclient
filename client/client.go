@@ -59,8 +59,6 @@ type APIClient struct {
 
 	AiCredentialsAPI *AiCredentialsAPIService
 
-	AiManagementAPI *AiManagementAPIService
-
 	AlertingIntegrationsAPI *AlertingIntegrationsAPIService
 
 	AlertingProfilesAPI *AlertingProfilesAPIService
@@ -236,7 +234,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
 	c.AdminAPI = (*AdminAPIService)(&c.common)
 	c.AiCredentialsAPI = (*AiCredentialsAPIService)(&c.common)
-	c.AiManagementAPI = (*AiManagementAPIService)(&c.common)
 	c.AlertingIntegrationsAPI = (*AlertingIntegrationsAPIService)(&c.common)
 	c.AlertingProfilesAPI = (*AlertingProfilesAPIService)(&c.common)
 	c.AllowedHostAPI = (*AllowedHostAPIService)(&c.common)

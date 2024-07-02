@@ -113,8 +113,6 @@ Class | Method | HTTP request | Description
 *AiCredentialsAPI* | [**AiCredentialDelete**](docs/AiCredentialsAPI.md#aicredentialdelete) | **Delete** /api/v1/ai-credential/{id} | Remove ai credential
 *AiCredentialsAPI* | [**AiCredentialDropdown**](docs/AiCredentialsAPI.md#aicredentialdropdown) | **Get** /api/v1/ai-credential | Retrieve all AI credentials for organization
 *AiCredentialsAPI* | [**AiCredentialList**](docs/AiCredentialsAPI.md#aicredentiallist) | **Get** /api/v1/ai-credential/list | Retrieve all AI credentials
-*AiManagementAPI* | [**AiManagementDisable**](docs/AiManagementAPI.md#aimanagementdisable) | **Post** /api/v1/ai-management/disable | Disable ai
-*AiManagementAPI* | [**AiManagementEnable**](docs/AiManagementAPI.md#aimanagementenable) | **Post** /api/v1/ai-management/enable | Enable ai
 *AlertingIntegrationsAPI* | [**AlertingintegrationsCreate**](docs/AlertingIntegrationsAPI.md#alertingintegrationscreate) | **Post** /api/v1/alertingintegrations/create | Create alerting profile alerting integration
 *AlertingIntegrationsAPI* | [**AlertingintegrationsDelete**](docs/AlertingIntegrationsAPI.md#alertingintegrationsdelete) | **Delete** /api/v1/alertingintegrations/{id} | Delete alerting profile alerting integration
 *AlertingIntegrationsAPI* | [**AlertingintegrationsEdit**](docs/AlertingIntegrationsAPI.md#alertingintegrationsedit) | **Put** /api/v1/alertingintegrations/edit | Edit alerting profile alerting integration
@@ -173,8 +171,6 @@ Class | Method | HTTP request | Description
 *BackupPolicyAPI* | [**BackupDescribeBackup**](docs/BackupPolicyAPI.md#backupdescribebackup) | **Get** /api/v1/backup/describe/backup/{projectId}/{name} | Get backup info by name
 *BackupPolicyAPI* | [**BackupDescribeRestore**](docs/BackupPolicyAPI.md#backupdescriberestore) | **Get** /api/v1/backup/describe/restore/{projectId}/{name} | Get restore info by name
 *BackupPolicyAPI* | [**BackupDescribeSchedule**](docs/BackupPolicyAPI.md#backupdescribeschedule) | **Get** /api/v1/backup/describe/schedule/{projectId}/{name} | Get schedule info by name
-*BackupPolicyAPI* | [**BackupDisableBackup**](docs/BackupPolicyAPI.md#backupdisablebackup) | **Post** /api/v1/backup/disablebackup | Disable backup by the projectId
-*BackupPolicyAPI* | [**BackupEnableBackup**](docs/BackupPolicyAPI.md#backupenablebackup) | **Post** /api/v1/backup/enablebackup | Enable backup by the projectId
 *BackupPolicyAPI* | [**BackupImportBackupStorage**](docs/BackupPolicyAPI.md#backupimportbackupstorage) | **Post** /api/v1/backup/location | Import backup storage from source project to target project
 *BackupPolicyAPI* | [**BackupListAllBackupStorages**](docs/BackupPolicyAPI.md#backuplistallbackupstorages) | **Get** /api/v1/backup/location/{projectId} | List all backup locations
 *BackupPolicyAPI* | [**BackupListAllBackups**](docs/BackupPolicyAPI.md#backuplistallbackups) | **Get** /api/v1/backup/backups/{projectId} | List all backups
@@ -421,9 +417,7 @@ Class | Method | HTTP request | Description
 *NtpServersAPI* | [**NtpserversList**](docs/NtpServersAPI.md#ntpserverslist) | **Get** /api/v1/ntpservers/list/{accessProfileId} | List ntp server by access profile id
 *OpaProfilesAPI* | [**OpaprofilesCreate**](docs/OpaProfilesAPI.md#opaprofilescreate) | **Post** /api/v1/opaprofiles/create | Add policy profile
 *OpaProfilesAPI* | [**OpaprofilesDelete**](docs/OpaProfilesAPI.md#opaprofilesdelete) | **Delete** /api/v1/opaprofiles/{id} | Remove Opa profile by Id
-*OpaProfilesAPI* | [**OpaprofilesDisableGatekeeper**](docs/OpaProfilesAPI.md#opaprofilesdisablegatekeeper) | **Post** /api/v1/opaprofiles/disablegatekeeper | Disable Gatekeeper by the projectId
 *OpaProfilesAPI* | [**OpaprofilesDropdown**](docs/OpaProfilesAPI.md#opaprofilesdropdown) | **Get** /api/v1/opaprofiles/list | Retrieve policy profiles for organization
-*OpaProfilesAPI* | [**OpaprofilesEnableGatekeeper**](docs/OpaProfilesAPI.md#opaprofilesenablegatekeeper) | **Post** /api/v1/opaprofiles/enablegatekeeper | Enable Gatekeeper by the projectId
 *OpaProfilesAPI* | [**OpaprofilesList**](docs/OpaProfilesAPI.md#opaprofileslist) | **Get** /api/v1/opaprofiles | Retrieve all policy profiles
 *OpaProfilesAPI* | [**OpaprofilesLockManager**](docs/OpaProfilesAPI.md#opaprofileslockmanager) | **Post** /api/v1/opaprofiles/lockmanager | Lock/Unlock policy profile
 *OpaProfilesAPI* | [**OpaprofilesMakeDefault**](docs/OpaProfilesAPI.md#opaprofilesmakedefault) | **Post** /api/v1/opaprofiles/make-default | Choose default policy profile
@@ -1064,10 +1058,7 @@ Class | Method | HTTP request | Description
  - [DescribeServiceCommand](docs/DescribeServiceCommand.md)
  - [DescribeStorageClassCommand](docs/DescribeStorageClassCommand.md)
  - [DescribeStsCommand](docs/DescribeStsCommand.md)
- - [DisableAiCommand](docs/DisableAiCommand.md)
  - [DisableAutoscalingCommand](docs/DisableAutoscalingCommand.md)
- - [DisableBackupCommand](docs/DisableBackupCommand.md)
- - [DisableGatekeeperCommand](docs/DisableGatekeeperCommand.md)
  - [DisableUserCommand](docs/DisableUserCommand.md)
  - [DnsCommand](docs/DnsCommand.md)
  - [DnsNtpAddressEditDto](docs/DnsNtpAddressEditDto.md)
@@ -1093,10 +1084,7 @@ Class | Method | HTTP request | Description
  - [EditSshUserCommand](docs/EditSshUserCommand.md)
  - [EditTicketCommand](docs/EditTicketCommand.md)
  - [EmailMode](docs/EmailMode.md)
- - [EnableAiCommand](docs/EnableAiCommand.md)
  - [EnableAutoscalingCommand](docs/EnableAutoscalingCommand.md)
- - [EnableBackupCommand](docs/EnableBackupCommand.md)
- - [EnableGatekeeperCommand](docs/EnableGatekeeperCommand.md)
  - [EndpointElements](docs/EndpointElements.md)
  - [EnumList](docs/EnumList.md)
  - [EstimatedInfracost](docs/EstimatedInfracost.md)

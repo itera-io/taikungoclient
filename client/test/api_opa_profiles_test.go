@@ -47,17 +47,6 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test OpaProfilesAPIService OpaprofilesDisableGatekeeper", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesDisableGatekeeper(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test OpaProfilesAPIService OpaprofilesDropdown", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -66,17 +55,6 @@ func Test_taikuncore_OpaProfilesAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test OpaProfilesAPIService OpaprofilesEnableGatekeeper", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.OpaProfilesAPI.OpaprofilesEnableGatekeeper(context.Background()).Execute()
-
-		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

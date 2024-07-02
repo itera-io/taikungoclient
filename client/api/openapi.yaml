@@ -1559,95 +1559,6 @@ paths:
       summary: Remove ai credential
       tags:
       - Ai Credentials
-  /api/v1/ai-management/disable:
-    post:
-      operationId: ai-management-disable
-      requestBody:
-        content:
-          application/json:
-            example:
-              projectId: 1
-            schema:
-              $ref: '#/components/schemas/DisableAiCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Disable ai
-      tags:
-      - Ai Management
-  /api/v1/ai-management/enable:
-    post:
-      operationId: ai-management-enable
-      requestBody:
-        content:
-          application/json:
-            example:
-              projectId: 1
-              aiCredentialId: 1
-            schema:
-              $ref: '#/components/schemas/EnableAiCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Enable ai
-      tags:
-      - Ai Management
   /api/v1/documentation:
     get:
       operationId: documentation-list
@@ -5151,92 +5062,6 @@ paths:
       summary: Remove policy schedule
       tags:
       - Backup policy
-  /api/v1/backup/disablebackup:
-    post:
-      operationId: backup-disable-backup
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DisableBackupCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Disable backup by the projectId
-      tags:
-      - Backup policy
-  /api/v1/backup/enablebackup:
-    post:
-      operationId: backup-enable-backup
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EnableBackupCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Enable backup by the projectId
-      tags:
-      - Backup policy
   /api/v1/backup/location:
     post:
       operationId: backup-import-backup-storage
@@ -5635,8 +5460,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-07-01T13:23:37.1662285Z
-                  createdAt: 2024-07-01T13:23:37.1662285Z
+                  lastValidated: 2024-07-02T00:03:06.0011397Z
+                  createdAt: 2024-07-02T00:03:06.0011397Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5741,14 +5566,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-07-01T13:23:37.1662285Z
+                    lastBackup: 2024-07-02T00:03:06.0011397Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-07-01T13:23:37.1662285Z
+                  createdAt: 2024-07-02T00:03:06.0011397Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-07-01T13:23:37.1662285Z
+                  lastBackup: 2024-07-02T00:03:06.0011397Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5853,8 +5678,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-01T13:23:37.1662285Z
-                  expiration: 2024-07-01T13:23:37.1662285Z
+                  createdAt: 2024-07-02T00:03:06.0011397Z
+                  expiration: 2024-07-02T00:03:06.0011397Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5958,7 +5783,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-01T13:23:37.1662285Z
+                  createdAt: 2024-07-02T00:03:06.0011397Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6068,9 +5893,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-07-01T13:23:37.1662285+00:00
-                  startTimeStamp: 2024-07-01T13:23:37.1662285+00:00
-                  createdAt: 2024-07-01T13:23:37.1662285Z
+                  completionDateTime: 2024-07-02T00:03:06.0011397+00:00
+                  startTimeStamp: 2024-07-02T00:03:06.0011397+00:00
+                  createdAt: 2024-07-02T00:03:06.0011397Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -20292,92 +20117,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Add policy profile
-      tags:
-      - Opa Profiles
-  /api/v1/opaprofiles/disablegatekeeper:
-    post:
-      operationId: opaprofiles-disable-gatekeeper
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DisableGatekeeperCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Disable Gatekeeper by the projectId
-      tags:
-      - Opa Profiles
-  /api/v1/opaprofiles/enablegatekeeper:
-    post:
-      operationId: opaprofiles-enable-gatekeeper
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/EnableGatekeeperCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Enable Gatekeeper by the projectId
       tags:
       - Opa Profiles
   /api/v1/opaprofiles/lockmanager:
@@ -47725,34 +47464,7 @@ components:
           nullable: true
           type: string
       type: object
-    DisableAiCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-      type: object
     DisableAutoscalingCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-      type: object
-    DisableBackupCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-      type: object
-    DisableGatekeeperCommand:
       additionalProperties: false
       example:
         projectId: 0
@@ -48151,19 +47863,6 @@ components:
       - Confirm
       - Change
       type: string
-    EnableAiCommand:
-      additionalProperties: false
-      example:
-        aiCredentialId: 6
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        aiCredentialId:
-          format: int32
-          type: integer
-      type: object
     EnableAutoscalingCommand:
       additionalProperties: false
       example:
@@ -48195,32 +47894,6 @@ components:
           type: string
         spotEnabled:
           type: boolean
-      type: object
-    EnableBackupCommand:
-      additionalProperties: false
-      example:
-        s3CredentialId: 6
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        s3CredentialId:
-          format: int32
-          type: integer
-      type: object
-    EnableGatekeeperCommand:
-      additionalProperties: false
-      example:
-        opaProfileId: 6
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        opaProfileId:
-          format: int32
-          type: integer
       type: object
     EndpointElements:
       additionalProperties: false
