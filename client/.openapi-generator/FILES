@@ -1015,6 +1015,7 @@ docs/ZadaraCredentialsForProjectDto.md
 docs/ZadaraCredentialsListDto.md
 docs/ZadaraRegionListCommand.md
 docs/ZededaAPI.md
+docs/ZededaCheckerCommand.md
 docs/ZededaEdgeNodesCommand.md
 docs/ZededaInterfaceCommand.md
 docs/ZededaProjectsCommand.md
@@ -1869,6 +1870,7 @@ model_zadara_credential_list.go
 model_zadara_credentials_for_project_dto.go
 model_zadara_credentials_list_dto.go
 model_zadara_region_list_command.go
+model_zededa_checker_command.go
 model_zededa_edge_nodes_command.go
 model_zededa_interface_command.go
 model_zededa_projects_command.go

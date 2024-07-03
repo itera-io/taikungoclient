@@ -5460,8 +5460,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-07-02T00:03:06.0011397Z
-                  createdAt: 2024-07-02T00:03:06.0011397Z
+                  lastValidated: 2024-07-03T00:02:59.7027355Z
+                  createdAt: 2024-07-03T00:02:59.7027355Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5566,14 +5566,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-07-02T00:03:06.0011397Z
+                    lastBackup: 2024-07-03T00:02:59.7027355Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-07-02T00:03:06.0011397Z
+                  createdAt: 2024-07-03T00:02:59.7027355Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-07-02T00:03:06.0011397Z
+                  lastBackup: 2024-07-03T00:02:59.7027355Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5678,8 +5678,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-02T00:03:06.0011397Z
-                  expiration: 2024-07-02T00:03:06.0011397Z
+                  createdAt: 2024-07-03T00:02:59.7027355Z
+                  expiration: 2024-07-03T00:02:59.7027355Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5783,7 +5783,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-02T00:03:06.0011397Z
+                  createdAt: 2024-07-03T00:02:59.7027355Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5893,9 +5893,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-07-02T00:03:06.0011397+00:00
-                  startTimeStamp: 2024-07-02T00:03:06.0011397+00:00
-                  createdAt: 2024-07-02T00:03:06.0011397Z
+                  completionDateTime: 2024-07-03T00:02:59.7027355+00:00
+                  startTimeStamp: 2024-07-03T00:02:59.7027355+00:00
+                  createdAt: 2024-07-03T00:02:59.7027355Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -8221,6 +8221,49 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Check zadara credential
+      tags:
+      - Checker
+  /api/v1/checker/zededa:
+    post:
+      operationId: checker-zededa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ZededaCheckerCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Check zededa credential
       tags:
       - Checker
   /api/v1/cloudcredentials/lockmanager:
@@ -43246,8 +43289,6 @@ components:
       - Failure
       - FailedUpgrade
       - Waiting
-      - PendingDelete
-      - PendingUpgrade
       - Ready
       - Updating
       - Upgrading
@@ -66647,6 +66688,19 @@ components:
           nullable: true
           type: string
         zadaraSecretAccessKey:
+          nullable: true
+          type: string
+      type: object
+    ZededaCheckerCommand:
+      additionalProperties: false
+      example:
+        url: url
+        token: token
+      properties:
+        url:
+          nullable: true
+          type: string
+        token:
           nullable: true
           type: string
       type: object

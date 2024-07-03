@@ -25,8 +25,6 @@ const (
 	CLOUDSTATUS_FAILURE CloudStatus = "Failure"
 	CLOUDSTATUS_FAILED_UPGRADE CloudStatus = "FailedUpgrade"
 	CLOUDSTATUS_WAITING CloudStatus = "Waiting"
-	CLOUDSTATUS_PENDING_DELETE CloudStatus = "PendingDelete"
-	CLOUDSTATUS_PENDING_UPGRADE CloudStatus = "PendingUpgrade"
 	CLOUDSTATUS_READY CloudStatus = "Ready"
 	CLOUDSTATUS_UPDATING CloudStatus = "Updating"
 	CLOUDSTATUS_UPGRADING CloudStatus = "Upgrading"
@@ -39,8 +37,6 @@ var AllowedCloudStatusEnumValues = []CloudStatus{
 	"Failure",
 	"FailedUpgrade",
 	"Waiting",
-	"PendingDelete",
-	"PendingUpgrade",
 	"Ready",
 	"Updating",
 	"Upgrading",
