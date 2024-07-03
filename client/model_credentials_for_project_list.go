@@ -34,6 +34,7 @@ type CredentialsForProjectList struct {
 	Vsphere *VsphereCredentialsForProjectDto `json:"vsphere,omitempty"`
 	Openshift *OpenshiftCredentialForProjectDto `json:"openshift,omitempty"`
 	Zadara *ZadaraCredentialsForProjectDto `json:"zadara,omitempty"`
+	Zededa *ZededaCredentialsForProjectDto `json:"zededa,omitempty"`
 }
 
 // NewCredentialsForProjectList instantiates a new CredentialsForProjectList object
@@ -511,6 +512,38 @@ func (o *CredentialsForProjectList) SetZadara(v ZadaraCredentialsForProjectDto) 
 	o.Zadara = &v
 }
 
+// GetZededa returns the Zededa field value if set, zero value otherwise.
+func (o *CredentialsForProjectList) GetZededa() ZededaCredentialsForProjectDto {
+	if o == nil || IsNil(o.Zededa) {
+		var ret ZededaCredentialsForProjectDto
+		return ret
+	}
+	return *o.Zededa
+}
+
+// GetZededaOk returns a tuple with the Zededa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialsForProjectList) GetZededaOk() (*ZededaCredentialsForProjectDto, bool) {
+	if o == nil || IsNil(o.Zededa) {
+		return nil, false
+	}
+	return o.Zededa, true
+}
+
+// HasZededa returns a boolean if a field has been set.
+func (o *CredentialsForProjectList) HasZededa() bool {
+	if o != nil && !IsNil(o.Zededa) {
+		return true
+	}
+
+	return false
+}
+
+// SetZededa gets a reference to the given ZededaCredentialsForProjectDto and assigns it to the Zededa field.
+func (o *CredentialsForProjectList) SetZededa(v ZededaCredentialsForProjectDto) {
+	o.Zededa = &v
+}
+
 func (o CredentialsForProjectList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -562,6 +595,9 @@ func (o CredentialsForProjectList) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Zadara) {
 		toSerialize["zadara"] = o.Zadara
+	}
+	if !IsNil(o.Zededa) {
+		toSerialize["zededa"] = o.Zededa
 	}
 	return toSerialize, nil
 }

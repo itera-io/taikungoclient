@@ -83,7 +83,7 @@ api_users.go
 api_virtual_cluster.go
 api_vsphere_cloud_credential.go
 api_zadara_cloud_credential.go
-api_zededa.go
+api_zededa_cloud_credential.go
 client.go
 configuration.go
 docs/AWSCloudCredentialAPI.md
@@ -932,6 +932,7 @@ docs/UpdateAlertingProfileCommand.md
 docs/UpdateAwsCommand.md
 docs/UpdateAzureCommand.md
 docs/UpdateCatalogDto.md
+docs/UpdateEdgeNodesCommand.md
 docs/UpdateHealthStatusCommand.md
 docs/UpdateHypervisorsCommand.md
 docs/UpdateInvoiceDto.md
@@ -1014,10 +1015,14 @@ docs/ZadaraCredentialList.md
 docs/ZadaraCredentialsForProjectDto.md
 docs/ZadaraCredentialsListDto.md
 docs/ZadaraRegionListCommand.md
-docs/ZededaAPI.md
 docs/ZededaCheckerCommand.md
+docs/ZededaCloudCredentialAPI.md
+docs/ZededaCredentialsForProjectDto.md
 docs/ZededaEdgeNodesCommand.md
 docs/ZededaInterfaceCommand.md
+docs/ZededaList.md
+docs/ZededaListDto.md
+docs/ZededaNetworkListDto.md
 docs/ZededaProjectsCommand.md
 git_push.sh
 go.mod
@@ -1795,6 +1800,7 @@ model_update_alerting_profile_command.go
 model_update_aws_command.go
 model_update_azure_command.go
 model_update_catalog_dto.go
+model_update_edge_nodes_command.go
 model_update_health_status_command.go
 model_update_hypervisors_command.go
 model_update_invoice_dto.go
@@ -1871,8 +1877,12 @@ model_zadara_credentials_for_project_dto.go
 model_zadara_credentials_list_dto.go
 model_zadara_region_list_command.go
 model_zededa_checker_command.go
+model_zededa_credentials_for_project_dto.go
 model_zededa_edge_nodes_command.go
 model_zededa_interface_command.go
+model_zededa_list.go
+model_zededa_list_dto.go
+model_zededa_network_list_dto.go
 model_zededa_projects_command.go
 response.go
 test/api_access_profiles_test.go
@@ -1955,5 +1965,5 @@ test/api_users_test.go
 test/api_virtual_cluster_test.go
 test/api_vsphere_cloud_credential_test.go
 test/api_zadara_cloud_credential_test.go
-test/api_zededa_test.go
+test/api_zededa_cloud_credential_test.go
 utils.go

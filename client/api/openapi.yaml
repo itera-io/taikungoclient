@@ -5460,8 +5460,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-07-03T00:02:59.7027355Z
-                  createdAt: 2024-07-03T00:02:59.7027355Z
+                  lastValidated: 2024-07-03T09:47:30.8775096Z
+                  createdAt: 2024-07-03T09:47:30.8775096Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5566,14 +5566,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-07-03T00:02:59.7027355Z
+                    lastBackup: 2024-07-03T09:47:30.8775096Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-07-03T00:02:59.7027355Z
+                  createdAt: 2024-07-03T09:47:30.8775096Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-07-03T00:02:59.7027355Z
+                  lastBackup: 2024-07-03T09:47:30.8775096Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5678,8 +5678,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-03T00:02:59.7027355Z
-                  expiration: 2024-07-03T00:02:59.7027355Z
+                  createdAt: 2024-07-03T09:47:30.8775096Z
+                  expiration: 2024-07-03T09:47:30.8775096Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5783,7 +5783,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-03T00:02:59.7027355Z
+                  createdAt: 2024-07-03T09:47:30.8775096Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5893,9 +5893,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-07-03T00:02:59.7027355+00:00
-                  startTimeStamp: 2024-07-03T00:02:59.7027355+00:00
-                  createdAt: 2024-07-03T00:02:59.7027355Z
+                  completionDateTime: 2024-07-03T09:47:30.8775096+00:00
+                  startTimeStamp: 2024-07-03T09:47:30.8775096+00:00
+                  createdAt: 2024-07-03T09:47:30.8775096Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -37717,6 +37717,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateZededaCommand'
       responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: OK
         "400":
           content:
             application/json:
@@ -37747,9 +37753,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Create zededa cloud credential
+      summary: Add Zededa credentials
       tags:
-      - Zededa
+      - Zededa cloud credential
   /api/v1/zededa/edge-nodes:
     post:
       operationId: zededa-edge-nodes
@@ -37802,7 +37808,7 @@ paths:
           description: Internal Server Error
       summary: Fetch edge nodes for zededa cloud credential
       tags:
-      - Zededa
+      - Zededa cloud credential
   /api/v1/zededa/interfaces:
     post:
       operationId: zededa-interfaces
@@ -37852,7 +37858,7 @@ paths:
           description: Internal Server Error
       summary: Fetch interfaces for zededa cloud credential
       tags:
-      - Zededa
+      - Zededa cloud credential
   /api/v1/zededa/projects:
     post:
       operationId: zededa-projects
@@ -37905,7 +37911,153 @@ paths:
           description: Internal Server Error
       summary: Fetch projects for zededa cloud credential
       tags:
-      - Zededa
+      - Zededa cloud credential
+  /api/v1/zededa/update/edge-nodes:
+    post:
+      operationId: zededa-update-edge-nodes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEdgeNodesCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Update zededa credentials
+      tags:
+      - Zededa cloud credential
+  /api/v1/zededa/list:
+    get:
+      operationId: zededa-list
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZededaList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve list of Zededa cloud credentials
+      tags:
+      - Zededa cloud credential
 components:
   schemas:
     AcceptOfferCommand:
@@ -45954,6 +46106,30 @@ components:
     CredentialsForProjectList:
       additionalProperties: false
       example:
+        zededa:
+          apiToken: apiToken
+          apiUrl: apiUrl
+          project: project
+          zededaNetworks:
+          - endAllocationRange: endAllocationRange
+            vlanId: 2
+            netMask: 5
+            ipAddress: ipAddress
+            bridge: bridge
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+            isVirtualLbNetwork: true
+          - endAllocationRange: endAllocationRange
+            vlanId: 2
+            netMask: 5
+            ipAddress: ipAddress
+            bridge: bridge
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+            isVirtualLbNetwork: true
+          projectId: projectId
         cloudCredentialRevision: 0
         zadara:
           accessKeyId: accessKeyId
@@ -46093,6 +46269,8 @@ components:
           $ref: '#/components/schemas/OpenshiftCredentialForProjectDto'
         zadara:
           $ref: '#/components/schemas/ZadaraCredentialsForProjectDto'
+        zededa:
+          $ref: '#/components/schemas/ZededaCredentialsForProjectDto'
       type: object
     CronJobCommand:
       additionalProperties: false
@@ -64294,6 +64472,23 @@ components:
         isBound:
           type: boolean
       type: object
+    UpdateEdgeNodesCommand:
+      additionalProperties: false
+      example:
+        id: 0
+        edgeNodes:
+        - edgeNodes
+        - edgeNodes
+      properties:
+        id:
+          format: int32
+          type: integer
+        edgeNodes:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     UpdateHealthStatusCommand:
       additionalProperties: false
       example:
@@ -66704,6 +66899,51 @@ components:
           nullable: true
           type: string
       type: object
+    ZededaCredentialsForProjectDto:
+      additionalProperties: false
+      example:
+        apiToken: apiToken
+        apiUrl: apiUrl
+        project: project
+        zededaNetworks:
+        - endAllocationRange: endAllocationRange
+          vlanId: 2
+          netMask: 5
+          ipAddress: ipAddress
+          bridge: bridge
+          isPrivate: true
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+          isVirtualLbNetwork: true
+        - endAllocationRange: endAllocationRange
+          vlanId: 2
+          netMask: 5
+          ipAddress: ipAddress
+          bridge: bridge
+          isPrivate: true
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+          isVirtualLbNetwork: true
+        projectId: projectId
+      properties:
+        apiToken:
+          nullable: true
+          type: string
+        apiUrl:
+          nullable: true
+          type: string
+        project:
+          nullable: true
+          type: string
+        projectId:
+          nullable: true
+          type: string
+        zededaNetworks:
+          items:
+            $ref: '#/components/schemas/ZededaNetworkListDto'
+          nullable: true
+          type: array
+      type: object
     ZededaEdgeNodesCommand:
       additionalProperties: false
       example:
@@ -66741,6 +66981,262 @@ components:
         edgeNode:
           nullable: true
           type: string
+      type: object
+    ZededaList:
+      additionalProperties: false
+      example:
+        data:
+        - projectCount: 6
+          projects:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          organizationName: organizationName
+          lastModifiedBy: lastModifiedBy
+          project: project
+          zededaNetworks:
+          - endAllocationRange: endAllocationRange
+            vlanId: 2
+            netMask: 5
+            ipAddress: ipAddress
+            bridge: bridge
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+            isVirtualLbNetwork: true
+          - endAllocationRange: endAllocationRange
+            vlanId: 2
+            netMask: 5
+            ipAddress: ipAddress
+            bridge: bridge
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+            isVirtualLbNetwork: true
+          organizationId: 1
+          createdAt: createdAt
+          isDefault: true
+          apiToken: apiToken
+          apiUrl: apiUrl
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          id: 0
+          lastModified: lastModified
+          edgeNodes:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          continentName: continentName
+          projectId: projectId
+        - projectCount: 6
+          projects:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          organizationName: organizationName
+          lastModifiedBy: lastModifiedBy
+          project: project
+          zededaNetworks:
+          - endAllocationRange: endAllocationRange
+            vlanId: 2
+            netMask: 5
+            ipAddress: ipAddress
+            bridge: bridge
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+            isVirtualLbNetwork: true
+          - endAllocationRange: endAllocationRange
+            vlanId: 2
+            netMask: 5
+            ipAddress: ipAddress
+            bridge: bridge
+            isPrivate: true
+            beginAllocationRange: beginAllocationRange
+            gateway: gateway
+            isVirtualLbNetwork: true
+          organizationId: 1
+          createdAt: createdAt
+          isDefault: true
+          apiToken: apiToken
+          apiUrl: apiUrl
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          id: 0
+          lastModified: lastModified
+          edgeNodes:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          continentName: continentName
+          projectId: projectId
+        totalCount: 5
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ZededaListDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
+    ZededaListDto:
+      additionalProperties: false
+      example:
+        projectCount: 6
+        projects:
+        - name: name
+          id: 0
+        - name: name
+          id: 0
+        organizationName: organizationName
+        lastModifiedBy: lastModifiedBy
+        project: project
+        zededaNetworks:
+        - endAllocationRange: endAllocationRange
+          vlanId: 2
+          netMask: 5
+          ipAddress: ipAddress
+          bridge: bridge
+          isPrivate: true
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+          isVirtualLbNetwork: true
+        - endAllocationRange: endAllocationRange
+          vlanId: 2
+          netMask: 5
+          ipAddress: ipAddress
+          bridge: bridge
+          isPrivate: true
+          beginAllocationRange: beginAllocationRange
+          gateway: gateway
+          isVirtualLbNetwork: true
+        organizationId: 1
+        createdAt: createdAt
+        isDefault: true
+        apiToken: apiToken
+        apiUrl: apiUrl
+        createdBy: createdBy
+        isLocked: true
+        name: name
+        id: 0
+        lastModified: lastModified
+        edgeNodes:
+        - name: name
+          id: 0
+        - name: name
+          id: 0
+        continentName: continentName
+        projectId: projectId
+      properties:
+        id:
+          format: int32
+          type: integer
+        projectCount:
+          format: int32
+          type: integer
+        isLocked:
+          type: boolean
+        name:
+          nullable: true
+          type: string
+        projects:
+          items:
+            $ref: '#/components/schemas/CommonDropdownDto'
+          nullable: true
+          type: array
+        createdBy:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        isDefault:
+          type: boolean
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        continentName:
+          nullable: true
+          type: string
+        edgeNodes:
+          items:
+            $ref: '#/components/schemas/CommonDropdownDto'
+          nullable: true
+          type: array
+        apiToken:
+          nullable: true
+          type: string
+        apiUrl:
+          nullable: true
+          type: string
+        project:
+          nullable: true
+          type: string
+        projectId:
+          nullable: true
+          type: string
+        zededaNetworks:
+          items:
+            $ref: '#/components/schemas/ZededaNetworkListDto'
+          nullable: true
+          type: array
+      type: object
+    ZededaNetworkListDto:
+      additionalProperties: false
+      example:
+        endAllocationRange: endAllocationRange
+        vlanId: 2
+        netMask: 5
+        ipAddress: ipAddress
+        bridge: bridge
+        isPrivate: true
+        beginAllocationRange: beginAllocationRange
+        gateway: gateway
+        isVirtualLbNetwork: true
+      properties:
+        bridge:
+          nullable: true
+          type: string
+        gateway:
+          nullable: true
+          type: string
+        ipAddress:
+          nullable: true
+          type: string
+        netMask:
+          format: int32
+          type: integer
+        beginAllocationRange:
+          nullable: true
+          type: string
+        endAllocationRange:
+          nullable: true
+          type: string
+        isPrivate:
+          type: boolean
+        isVirtualLbNetwork:
+          type: boolean
+        vlanId:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     ZededaProjectsCommand:
       additionalProperties: false

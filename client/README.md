@@ -748,10 +748,12 @@ Class | Method | HTTP request | Description
 *ZadaraCloudCredentialAPI* | [**ZadaraUpdate**](docs/ZadaraCloudCredentialAPI.md#zadaraupdate) | **Post** /api/v1/zadara/update | Update zadara cloud credential
 *ZadaraCloudCredentialAPI* | [**ZadaraVolumeTypeList**](docs/ZadaraCloudCredentialAPI.md#zadaravolumetypelist) | **Get** /api/v1/zadara/volume-types | Retrieve volume type list
 *ZadaraCloudCredentialAPI* | [**ZadaraZonelist**](docs/ZadaraCloudCredentialAPI.md#zadarazonelist) | **Post** /api/v1/zadara/zones | Retrieve zadara zone list
-*ZededaAPI* | [**ZededaCreate**](docs/ZededaAPI.md#zededacreate) | **Post** /api/v1/zededa/create | Create zededa cloud credential
-*ZededaAPI* | [**ZededaEdgeNodes**](docs/ZededaAPI.md#zededaedgenodes) | **Post** /api/v1/zededa/edge-nodes | Fetch edge nodes for zededa cloud credential
-*ZededaAPI* | [**ZededaInterfaces**](docs/ZededaAPI.md#zededainterfaces) | **Post** /api/v1/zededa/interfaces | Fetch interfaces for zededa cloud credential
-*ZededaAPI* | [**ZededaProjects**](docs/ZededaAPI.md#zededaprojects) | **Post** /api/v1/zededa/projects | Fetch projects for zededa cloud credential
+*ZededaCloudCredentialAPI* | [**ZededaCreate**](docs/ZededaCloudCredentialAPI.md#zededacreate) | **Post** /api/v1/zededa/create | Add Zededa credentials
+*ZededaCloudCredentialAPI* | [**ZededaEdgeNodes**](docs/ZededaCloudCredentialAPI.md#zededaedgenodes) | **Post** /api/v1/zededa/edge-nodes | Fetch edge nodes for zededa cloud credential
+*ZededaCloudCredentialAPI* | [**ZededaInterfaces**](docs/ZededaCloudCredentialAPI.md#zededainterfaces) | **Post** /api/v1/zededa/interfaces | Fetch interfaces for zededa cloud credential
+*ZededaCloudCredentialAPI* | [**ZededaList**](docs/ZededaCloudCredentialAPI.md#zededalist) | **Get** /api/v1/zededa/list | Retrieve list of Zededa cloud credentials
+*ZededaCloudCredentialAPI* | [**ZededaProjects**](docs/ZededaCloudCredentialAPI.md#zededaprojects) | **Post** /api/v1/zededa/projects | Fetch projects for zededa cloud credential
+*ZededaCloudCredentialAPI* | [**ZededaUpdateEdgeNodes**](docs/ZededaCloudCredentialAPI.md#zededaupdateedgenodes) | **Post** /api/v1/zededa/update/edge-nodes | Update zededa credentials
 
 
 ## Documentation For Models
@@ -1529,6 +1531,7 @@ Class | Method | HTTP request | Description
  - [UpdateAwsCommand](docs/UpdateAwsCommand.md)
  - [UpdateAzureCommand](docs/UpdateAzureCommand.md)
  - [UpdateCatalogDto](docs/UpdateCatalogDto.md)
+ - [UpdateEdgeNodesCommand](docs/UpdateEdgeNodesCommand.md)
  - [UpdateHealthStatusCommand](docs/UpdateHealthStatusCommand.md)
  - [UpdateHypervisorsCommand](docs/UpdateHypervisorsCommand.md)
  - [UpdateInvoiceDto](docs/UpdateInvoiceDto.md)
@@ -1605,8 +1608,12 @@ Class | Method | HTTP request | Description
  - [ZadaraCredentialsListDto](docs/ZadaraCredentialsListDto.md)
  - [ZadaraRegionListCommand](docs/ZadaraRegionListCommand.md)
  - [ZededaCheckerCommand](docs/ZededaCheckerCommand.md)
+ - [ZededaCredentialsForProjectDto](docs/ZededaCredentialsForProjectDto.md)
  - [ZededaEdgeNodesCommand](docs/ZededaEdgeNodesCommand.md)
  - [ZededaInterfaceCommand](docs/ZededaInterfaceCommand.md)
+ - [ZededaList](docs/ZededaList.md)
+ - [ZededaListDto](docs/ZededaListDto.md)
+ - [ZededaNetworkListDto](docs/ZededaNetworkListDto.md)
  - [ZededaProjectsCommand](docs/ZededaProjectsCommand.md)
 
 
