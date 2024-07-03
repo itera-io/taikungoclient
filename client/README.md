@@ -543,7 +543,6 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsDescribe**](docs/ProjectsAPI.md#projectsdescribe) | **Get** /api/v1/projects/describe/{projectId} | Describe project by Id
 *ProjectsAPI* | [**ProjectsDetails**](docs/ProjectsAPI.md#projectsdetails) | **Get** /api/v1/projects/{projectId} | Retrieve details of the project by Id
 *ProjectsAPI* | [**ProjectsDropdown**](docs/ProjectsAPI.md#projectsdropdown) | **Get** /api/v1/projects/list | Retrieve list of projects for dropdown
-*ProjectsAPI* | [**ProjectsEdit**](docs/ProjectsAPI.md#projectsedit) | **Put** /api/v1/projects/edit/{projectId} | Update project by Id for poller
 *ProjectsAPI* | [**ProjectsEditHealth**](docs/ProjectsAPI.md#projectsedithealth) | **Put** /api/v1/projects/edit/health | Update health status of the project by Id
 *ProjectsAPI* | [**ProjectsEditStatus**](docs/ProjectsAPI.md#projectseditstatus) | **Put** /api/v1/projects/edit/status | Change the project status for the given project. Only available for admin.
 *ProjectsAPI* | [**ProjectsExtendLifetime**](docs/ProjectsAPI.md#projectsextendlifetime) | **Post** /api/v1/projects/extend/lifetime | Extend life time of project
@@ -1328,7 +1327,6 @@ Class | Method | HTTP request | Description
  - [ProjectDto](docs/ProjectDto.md)
  - [ProjectExtendLifeTimeCommand](docs/ProjectExtendLifeTimeCommand.md)
  - [ProjectForListDto](docs/ProjectForListDto.md)
- - [ProjectForUpdateDto](docs/ProjectForUpdateDto.md)
  - [ProjectFullListDto](docs/ProjectFullListDto.md)
  - [ProjectGroupDetailsListDto](docs/ProjectGroupDetailsListDto.md)
  - [ProjectGroupEntityListDto](docs/ProjectGroupEntityListDto.md)

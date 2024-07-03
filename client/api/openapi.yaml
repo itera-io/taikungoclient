@@ -5460,8 +5460,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-07-03T09:47:30.8775096Z
-                  createdAt: 2024-07-03T09:47:30.8775096Z
+                  lastValidated: 2024-07-03T11:56:58.6648758Z
+                  createdAt: 2024-07-03T11:56:58.6648758Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5566,14 +5566,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-07-03T09:47:30.8775096Z
+                    lastBackup: 2024-07-03T11:56:58.6648758Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-07-03T09:47:30.8775096Z
+                  createdAt: 2024-07-03T11:56:58.6648758Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-07-03T09:47:30.8775096Z
+                  lastBackup: 2024-07-03T11:56:58.6648758Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5678,8 +5678,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-03T09:47:30.8775096Z
-                  expiration: 2024-07-03T09:47:30.8775096Z
+                  createdAt: 2024-07-03T11:56:58.6648758Z
+                  expiration: 2024-07-03T11:56:58.6648758Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5783,7 +5783,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-03T09:47:30.8775096Z
+                  createdAt: 2024-07-03T11:56:58.6648758Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5893,9 +5893,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-07-03T09:47:30.8775096+00:00
-                  startTimeStamp: 2024-07-03T09:47:30.8775096+00:00
-                  createdAt: 2024-07-03T09:47:30.8775096Z
+                  completionDateTime: 2024-07-03T11:56:58.6648758+00:00
+                  startTimeStamp: 2024-07-03T11:56:58.6648758+00:00
+                  createdAt: 2024-07-03T11:56:58.6648758Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -26168,57 +26168,6 @@ paths:
       summary: Delete project template by Id
       tags:
       - Project templates
-  /api/v1/projects/edit/{projectId}:
-    put:
-      operationId: projects-edit
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProjectForUpdateDto'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Update project by Id for poller
-      tags:
-      - Projects
   /api/v1/projects/edit/health:
     put:
       operationId: projects-edit-health
@@ -45418,7 +45367,6 @@ components:
         deleteOnExpiration: true
         alertingProfileId: 6
         name: name
-        exposeWithIngress: true
         projectId: 0
       properties:
         projectId:
@@ -45437,8 +45385,6 @@ components:
           format: int32
           nullable: true
           type: integer
-        exposeWithIngress:
-          type: boolean
         exposeHostname:
           nullable: true
           type: string
@@ -56587,77 +56533,6 @@ components:
         aiCredential:
           $ref: '#/components/schemas/AiCredentialDto'
       type: object
-    ProjectForUpdateDto:
-      additionalProperties: false
-      example:
-        isAiEnabled: true
-        isAutoUpgrade: true
-        tanzuReleaseCurrentVersion: tanzuReleaseCurrentVersion
-        imageName: imageName
-        monitoringIp: monitoringIp
-        isKubevapEnabled: true
-        accessIp: accessIp
-        isOpaEnabled: true
-        kubeConfig: kubeConfig
-        health: "Null"
-        isMonitoringEnabled: true
-        kubesprayCurrentVersion: kubesprayCurrentVersion
-        appEnabled: true
-        failureReason: failureReason
-        isBackupEnabled: true
-        kubernetesCurrentVersion: kubernetesCurrentVersion
-        status: "Null"
-      properties:
-        kubeConfig:
-          nullable: true
-          type: string
-        kubesprayCurrentVersion:
-          nullable: true
-          type: string
-        accessIp:
-          nullable: true
-          type: string
-        imageName:
-          nullable: true
-          type: string
-        monitoringIp:
-          nullable: true
-          type: string
-        tanzuReleaseCurrentVersion:
-          nullable: true
-          type: string
-        status:
-          $ref: '#/components/schemas/ProjectStatus'
-        health:
-          $ref: '#/components/schemas/ProjectHealth'
-        isBackupEnabled:
-          nullable: true
-          type: boolean
-        isMonitoringEnabled:
-          nullable: true
-          type: boolean
-        isOpaEnabled:
-          nullable: true
-          type: boolean
-        isAiEnabled:
-          nullable: true
-          type: boolean
-        isAutoUpgrade:
-          nullable: true
-          type: boolean
-        appEnabled:
-          nullable: true
-          type: boolean
-        isKubevapEnabled:
-          nullable: true
-          type: boolean
-        kubernetesCurrentVersion:
-          nullable: true
-          type: string
-        failureReason:
-          nullable: true
-          type: string
-      type: object
     ProjectFullListDto:
       additionalProperties: false
       example:
@@ -65770,7 +65645,6 @@ components:
             - reasons
             hidden: true
             enable: true
-          logs: logs
           kubernetesVersion: kubernetesVersion
           organizationName: organizationName
           accessIp: accessIp
@@ -65829,7 +65703,6 @@ components:
             - reasons
             hidden: true
             enable: true
-          logs: logs
           kubernetesVersion: kubernetesVersion
           organizationName: organizationName
           accessIp: accessIp
@@ -65932,7 +65805,6 @@ components:
           - reasons
           hidden: true
           enable: true
-        logs: logs
         kubernetesVersion: kubernetesVersion
         organizationName: organizationName
         accessIp: accessIp
@@ -66010,9 +65882,6 @@ components:
           type: string
         deleteOnExpiration:
           type: boolean
-        logs:
-          nullable: true
-          type: string
         alertingProfileId:
           format: int32
           nullable: true

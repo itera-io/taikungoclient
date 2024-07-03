@@ -704,7 +704,6 @@ docs/ProjectDetailsForVmsDto.md
 docs/ProjectDto.md
 docs/ProjectExtendLifeTimeCommand.md
 docs/ProjectForListDto.md
-docs/ProjectForUpdateDto.md
 docs/ProjectFullListDto.md
 docs/ProjectGroupDetailsListDto.md
 docs/ProjectGroupEntityListDto.md
@@ -1597,7 +1596,6 @@ model_project_details_for_vms_dto.go
 model_project_dto.go
 model_project_extend_life_time_command.go
 model_project_for_list_dto.go
-model_project_for_update_dto.go
 model_project_full_list_dto.go
 model_project_group_details_list_dto.go
 model_project_group_entity_list_dto.go
