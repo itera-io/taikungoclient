@@ -956,7 +956,6 @@ docs/UpdateUsedIpAddressesCommand.md
 docs/UpdateUserCommand.md
 docs/UpdateUserGroupDto.md
 docs/UpdateUserProjectDto.md
-docs/UpdateVirtualClusterCommand.md
 docs/UpdateVsphereCommand.md
 docs/UpdateVsphereHypervisorsCommand.md
 docs/UpdateZadaraCommand.md
@@ -1823,7 +1822,6 @@ model_update_used_ip_addresses_command.go
 model_update_user_command.go
 model_update_user_group_dto.go
 model_update_user_project_dto.go
-model_update_virtual_cluster_command.go
 model_update_vsphere_command.go
 model_update_vsphere_hypervisors_command.go
 model_update_zadara_command.go

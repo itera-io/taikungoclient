@@ -58,17 +58,6 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test VirtualClusterAPIService VirtualClusterUpdate", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterUpdate(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test VirtualClusterAPIService VirtualClusterVisibility", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
