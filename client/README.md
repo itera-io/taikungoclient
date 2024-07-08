@@ -162,7 +162,6 @@ Class | Method | HTTP request | Description
 *AzureCloudCredentialAPI* | [**AzureUpdate**](docs/AzureCloudCredentialAPI.md#azureupdate) | **Post** /api/v1/azure/update | Update Azure credentials
 *AzureCloudCredentialAPI* | [**AzureZones**](docs/AzureCloudCredentialAPI.md#azurezones) | **Post** /api/v1/azure/zones | Fetch Azure zone list
 *BackupPolicyAPI* | [**BackupByName**](docs/BackupPolicyAPI.md#backupbyname) | **Get** /api/v1/backup/{projectId}/{name} | Get backup info by name
-*BackupPolicyAPI* | [**BackupClearProject**](docs/BackupPolicyAPI.md#backupclearproject) | **Post** /api/v1/backup/clear/project | Delete unfinished backup for project
 *BackupPolicyAPI* | [**BackupCreate**](docs/BackupPolicyAPI.md#backupcreate) | **Post** /api/v1/backup/create | Add backup policy
 *BackupPolicyAPI* | [**BackupDeleteBackup**](docs/BackupPolicyAPI.md#backupdeletebackup) | **Post** /api/v1/backup/delete/backup | Remove policy backup
 *BackupPolicyAPI* | [**BackupDeleteBackupLocation**](docs/BackupPolicyAPI.md#backupdeletebackuplocation) | **Post** /api/v1/backup/delete/location | Remove backup location from project
@@ -227,10 +226,8 @@ Class | Method | HTTP request | Description
 *CheckerAPI* | [**CheckerZadara**](docs/CheckerAPI.md#checkerzadara) | **Post** /api/v1/checker/zadara | Check zadara credential
 *CheckerAPI* | [**CheckerZededa**](docs/CheckerAPI.md#checkerzededa) | **Post** /api/v1/checker/zededa | Check zededa credential
 *CloudCredentialAPI* | [**CloudcredentialsAllFlavors**](docs/CloudCredentialAPI.md#cloudcredentialsallflavors) | **Get** /api/v1/cloudcredentials/flavors/{cloudId} | Retrieve all flavors
-*CloudCredentialAPI* | [**CloudcredentialsDashboardList**](docs/CloudCredentialAPI.md#cloudcredentialsdashboardlist) | **Get** /api/v1/cloudcredentials/list | Retrieve all cloud credentials
 *CloudCredentialAPI* | [**CloudcredentialsDelete**](docs/CloudCredentialAPI.md#cloudcredentialsdelete) | **Delete** /api/v1/cloudcredentials/{cloudId} | Remove cloud credential by cloud Id
 *CloudCredentialAPI* | [**CloudcredentialsExceeded**](docs/CloudCredentialAPI.md#cloudcredentialsexceeded) | **Get** /api/v1/cloudcredentials/exceeded-quotas | Retrieve cloud credentials exceeded quotas
-*CloudCredentialAPI* | [**CloudcredentialsForCli**](docs/CloudCredentialAPI.md#cloudcredentialsforcli) | **Get** /api/v1/cloudcredentials/cli | Retrieve cloud credentials for CLI
 *CloudCredentialAPI* | [**CloudcredentialsForProject**](docs/CloudCredentialAPI.md#cloudcredentialsforproject) | **Get** /api/v1/cloudcredentials/details | Retrieve cloud credential details by cloud Id
 *CloudCredentialAPI* | [**CloudcredentialsLockManager**](docs/CloudCredentialAPI.md#cloudcredentialslockmanager) | **Post** /api/v1/cloudcredentials/lockmanager | Lock/Unlock cloud credential
 *CloudCredentialAPI* | [**CloudcredentialsMakeDefault**](docs/CloudCredentialAPI.md#cloudcredentialsmakedefault) | **Post** /api/v1/cloudcredentials/makedefault | Make cloud credentials default
@@ -289,6 +286,7 @@ Class | Method | HTTP request | Description
 *FlavorsAPI* | [**FlavorsUnbindFromProject**](docs/FlavorsAPI.md#flavorsunbindfromproject) | **Post** /api/v1/flavors/unbind | Unbind flavors from project
 *FlavorsAPI* | [**FlavorsVsphereFlavors**](docs/FlavorsAPI.md#flavorsvsphereflavors) | **Get** /api/v1/flavors/vsphere/{cloudId} | Retrieve vsphere flavors
 *FlavorsAPI* | [**FlavorsZadaraInstanceTypes**](docs/FlavorsAPI.md#flavorszadarainstancetypes) | **Get** /api/v1/flavors/zadara/{cloudId} | Retrieve zadara instance types
+*FlavorsAPI* | [**FlavorsZededaFlavors**](docs/FlavorsAPI.md#flavorszededaflavors) | **Get** /api/v1/flavors/zededa/{cloudId} | Retrieve zededa flavors
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | Create google cloud credential
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
@@ -916,7 +914,6 @@ Class | Method | HTTP request | Description
  - [CheckTanzuCommand](docs/CheckTanzuCommand.md)
  - [CheckZadaraCommand](docs/CheckZadaraCommand.md)
  - [CidrCommand](docs/CidrCommand.md)
- - [ClearProjectBackupCommand](docs/ClearProjectBackupCommand.md)
  - [CloseTicketCommand](docs/CloseTicketCommand.md)
  - [CloudCredentialsDropdownRecordDto](docs/CloudCredentialsDropdownRecordDto.md)
  - [CloudCredentialsForOrganizationEntity](docs/CloudCredentialsForOrganizationEntity.md)
@@ -995,9 +992,6 @@ Class | Method | HTTP request | Description
  - [CreateZededaNetworkDto](docs/CreateZededaNetworkDto.md)
  - [CredentialChartDto](docs/CredentialChartDto.md)
  - [CredentialMakeDefaultCommand](docs/CredentialMakeDefaultCommand.md)
- - [CredentialsChart](docs/CredentialsChart.md)
- - [CredentialsForCli](docs/CredentialsForCli.md)
- - [CredentialsForCliDto](docs/CredentialsForCliDto.md)
  - [CredentialsForProjectList](docs/CredentialsForProjectList.md)
  - [CronJobCommand](docs/CronJobCommand.md)
  - [CsvExporter](docs/CsvExporter.md)
@@ -1607,6 +1601,7 @@ Class | Method | HTTP request | Description
  - [ZededaCheckerCommand](docs/ZededaCheckerCommand.md)
  - [ZededaCredentialsForProjectDto](docs/ZededaCredentialsForProjectDto.md)
  - [ZededaEdgeNodesCommand](docs/ZededaEdgeNodesCommand.md)
+ - [ZededaFlavorList](docs/ZededaFlavorList.md)
  - [ZededaInterfaceCommand](docs/ZededaInterfaceCommand.md)
  - [ZededaList](docs/ZededaList.md)
  - [ZededaListDto](docs/ZededaListDto.md)

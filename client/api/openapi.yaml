@@ -4791,50 +4791,6 @@ paths:
       summary: List Azure skus list by publisher and offer
       tags:
       - Azure cloud credential
-  /api/v1/backup/clear/project:
-    post:
-      operationId: backup-clear-project
-      requestBody:
-        content:
-          application/json:
-            example:
-              projectId: 1
-            schema:
-              $ref: '#/components/schemas/ClearProjectBackupCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Delete unfinished backup for project
-      tags:
-      - Backup policy
   /api/v1/backup/create:
     post:
       operationId: backup-create
@@ -5460,8 +5416,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-07-08T00:03:03.1024155Z
-                  createdAt: 2024-07-08T00:03:03.1024155Z
+                  lastValidated: 2024-07-08T10:43:45.5846145Z
+                  createdAt: 2024-07-08T10:43:45.5846145Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5566,14 +5522,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-07-08T00:03:03.1024155Z
+                    lastBackup: 2024-07-08T10:43:45.5846145Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-07-08T00:03:03.1024155Z
+                  createdAt: 2024-07-08T10:43:45.5846145Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-07-08T00:03:03.1024155Z
+                  lastBackup: 2024-07-08T10:43:45.5846145Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5678,8 +5634,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-08T00:03:03.1024155Z
-                  expiration: 2024-07-08T00:03:03.1024155Z
+                  createdAt: 2024-07-08T10:43:45.5846145Z
+                  expiration: 2024-07-08T10:43:45.5846145Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5783,7 +5739,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-08T00:03:03.1024155Z
+                  createdAt: 2024-07-08T10:43:45.5846145Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5893,9 +5849,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-07-08T00:03:03.1024155+00:00
-                  startTimeStamp: 2024-07-08T00:03:03.1024155+00:00
-                  createdAt: 2024-07-08T00:03:03.1024155Z
+                  completionDateTime: 2024-07-08T10:43:45.5846145+00:00
+                  startTimeStamp: 2024-07-08T10:43:45.5846145+00:00
+                  createdAt: 2024-07-08T10:43:45.5846145Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -8599,110 +8555,6 @@ paths:
       summary: Retrieve a list of cloud credentials by organization Id
       tags:
       - Cloud credential
-  /api/v1/cloudcredentials/list:
-    get:
-      operationId: cloudcredentials-dashboard-list
-      parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SearchId
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: Id
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CredentialsChart'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve all cloud credentials
-      tags:
-      - Cloud credential
   /api/v1/cloudcredentials/exceeded-quotas:
     get:
       operationId: cloudcredentials-exceeded
@@ -8753,74 +8605,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve cloud credentials exceeded quotas
-      tags:
-      - Cloud credential
-  /api/v1/cloudcredentials/cli:
-    get:
-      operationId: cloudcredentials-for-cli
-      parameters:
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Offset
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CredentialsForCli'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve cloud credentials for CLI
       tags:
       - Cloud credential
   /api/v1/cloudcredentials/details:
@@ -11991,6 +11775,127 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve zadara instance types
+      tags:
+      - Flavors
+  /api/v1/flavors/zededa/{cloudId}:
+    get:
+      operationId: flavors-zededa-flavors
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: false
+        in: path
+        name: cloudId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: StartRam
+        required: false
+        schema:
+          format: double
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: EndRam
+        required: false
+        schema:
+          format: double
+          type: number
+        style: form
+      - explode: true
+        in: query
+        name: StartCpu
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: EndCpu
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ZededaFlavorList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve zededa flavors
       tags:
       - Flavors
   /api/v1/googlecloud/billing-accounts:
@@ -43211,15 +43116,6 @@ components:
     ClearCanceledPaymentMethodCommand:
       additionalProperties: false
       type: object
-    ClearProjectBackupCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-      type: object
     CloseTicketCommand:
       additionalProperties: false
       example:
@@ -45702,363 +45598,6 @@ components:
         id:
           format: int32
           type: integer
-      type: object
-    CredentialsChart:
-      additionalProperties: false
-      example:
-        amazon:
-        - projectCount: 6
-          projects:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
-          organizationName: organizationName
-          lastModifiedBy: lastModifiedBy
-          availabilityZones:
-          - availabilityZones
-          - availabilityZones
-          organizationId: 5
-          createdAt: createdAt
-          isDefault: true
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          availabilityZonesCount: 1
-          id: 0
-          lastModified: lastModified
-          region: region
-          continentName: continentName
-        - projectCount: 6
-          projects:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
-          organizationName: organizationName
-          lastModifiedBy: lastModifiedBy
-          availabilityZones:
-          - availabilityZones
-          - availabilityZones
-          organizationId: 5
-          createdAt: createdAt
-          isDefault: true
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          availabilityZonesCount: 1
-          id: 0
-          lastModified: lastModified
-          region: region
-          continentName: continentName
-        totalCountOpenstack: 4
-        totalCountAws: 7
-        openstack:
-        - volumeType: volumeType
-          projectCount: 6
-          projects:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
-          applicationCredEnabled: true
-          project: project
-          availabilityZone: availabilityZone
-          publicNetwork: publicNetwork
-          organizationId: 1
-          createdAt: createdAt
-          isLocked: true
-          skipTlsFlag: true
-          id: 0
-          organizationName: organizationName
-          isInfra: true
-          internalSubnetId: internalSubnetId
-          lastModifiedBy: lastModifiedBy
-          importNetwork: true
-          isAdmin: true
-          url: url
-          isDefault: true
-          createdBy: createdBy
-          domain: domain
-          name: name
-          tenantId: tenantId
-          lastModified: lastModified
-          region: region
-          continentName: continentName
-          user: user
-        - volumeType: volumeType
-          projectCount: 6
-          projects:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
-          applicationCredEnabled: true
-          project: project
-          availabilityZone: availabilityZone
-          publicNetwork: publicNetwork
-          organizationId: 1
-          createdAt: createdAt
-          isLocked: true
-          skipTlsFlag: true
-          id: 0
-          organizationName: organizationName
-          isInfra: true
-          internalSubnetId: internalSubnetId
-          lastModifiedBy: lastModifiedBy
-          importNetwork: true
-          isAdmin: true
-          url: url
-          isDefault: true
-          createdBy: createdBy
-          domain: domain
-          name: name
-          tenantId: tenantId
-          lastModified: lastModified
-          region: region
-          continentName: continentName
-          user: user
-        google:
-        - projects:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
-          organizationName: organizationName
-          partnerName: partnerName
-          partnerLogo: partnerLogo
-          billingAccountId: billingAccountId
-          zones:
-          - zones
-          - zones
-          folderId: folderId
-          organizationId: 5
-          createdAt: createdAt
-          isDefault: true
-          isLocked: true
-          name: name
-          availabilityZonesCount: 2
-          billingAccountName: billingAccountName
-          id: 5
-          region: region
-          continentName: continentName
-          projectId: projectId
-        - projects:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
-          organizationName: organizationName
-          partnerName: partnerName
-          partnerLogo: partnerLogo
-          billingAccountId: billingAccountId
-          zones:
-          - zones
-          - zones
-          folderId: folderId
-          organizationId: 5
-          createdAt: createdAt
-          isDefault: true
-          isLocked: true
-          name: name
-          availabilityZonesCount: 2
-          billingAccountName: billingAccountName
-          id: 5
-          region: region
-          continentName: continentName
-          projectId: projectId
-        totalCountTanzu: 1
-        tanzu:
-        - volumeType: volumeType
-          projectCount: 9
-          projects:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
-          organizationName: organizationName
-          lastModifiedBy: lastModifiedBy
-          url: url
-          organizationId: 2
-          createdAt: createdAt
-          isDefault: true
-          port: 3
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          namespace: namespace
-          id: 7
-          lastModified: lastModified
-          continentName: continentName
-          username: username
-        - volumeType: volumeType
-          projectCount: 9
-          projects:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
-          organizationName: organizationName
-          lastModifiedBy: lastModifiedBy
-          url: url
-          organizationId: 2
-          createdAt: createdAt
-          isDefault: true
-          port: 3
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          namespace: namespace
-          id: 7
-          lastModified: lastModified
-          continentName: continentName
-          username: username
-        totalCountGoogle: 1
-        azure:
-        - projectCount: 6
-          projects:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
-          organizationName: organizationName
-          lastModifiedBy: lastModifiedBy
-          availabilityZones:
-          - availabilityZones
-          - availabilityZones
-          organizationId: 5
-          createdAt: createdAt
-          isDefault: true
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          tenantId: tenantId
-          availabilityZonesCount: 1
-          location: location
-          id: 0
-          lastModified: lastModified
-          continentName: continentName
-        - projectCount: 6
-          projects:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
-          organizationName: organizationName
-          lastModifiedBy: lastModifiedBy
-          availabilityZones:
-          - availabilityZones
-          - availabilityZones
-          organizationId: 5
-          createdAt: createdAt
-          isDefault: true
-          createdBy: createdBy
-          isLocked: true
-          name: name
-          tenantId: tenantId
-          availabilityZonesCount: 1
-          location: location
-          id: 0
-          lastModified: lastModified
-          continentName: continentName
-        totalCountAzure: 1
-      properties:
-        amazon:
-          items:
-            $ref: '#/components/schemas/AmazonCredentialsListDto'
-          nullable: true
-          type: array
-        openstack:
-          items:
-            $ref: '#/components/schemas/OpenstackCredentialsListDto'
-          nullable: true
-          type: array
-        azure:
-          items:
-            $ref: '#/components/schemas/AzureCredentialsListDto'
-          nullable: true
-          type: array
-        google:
-          items:
-            $ref: '#/components/schemas/GoogleCredentialsListDto'
-          nullable: true
-          type: array
-        tanzu:
-          items:
-            $ref: '#/components/schemas/TanzuCredentialsListDto'
-          nullable: true
-          type: array
-        totalCountOpenstack:
-          format: int32
-          type: integer
-        totalCountAws:
-          format: int32
-          type: integer
-        totalCountAzure:
-          format: int32
-          type: integer
-        totalCountGoogle:
-          format: int32
-          type: integer
-        totalCountTanzu:
-          format: int32
-          type: integer
-      type: object
-    CredentialsForCli:
-      additionalProperties: false
-      example:
-        data:
-        - organizationId: 6
-          organizationName: organizationName
-          partnerName: partnerName
-          cloudType: cloudType
-          id: 0
-          cloudCredentialName: cloudCredentialName
-        - organizationId: 6
-          organizationName: organizationName
-          partnerName: partnerName
-          cloudType: cloudType
-          id: 0
-          cloudCredentialName: cloudCredentialName
-        totalCount: 1
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/CredentialsForCliDto'
-          nullable: true
-          type: array
-        totalCount:
-          format: int32
-          type: integer
-      type: object
-    CredentialsForCliDto:
-      additionalProperties: false
-      example:
-        organizationId: 6
-        organizationName: organizationName
-        partnerName: partnerName
-        cloudType: cloudType
-        id: 0
-        cloudCredentialName: cloudCredentialName
-      properties:
-        id:
-          format: int32
-          type: integer
-        cloudCredentialName:
-          nullable: true
-          type: string
-        cloudType:
-          nullable: true
-          type: string
-        organizationId:
-          format: int32
-          type: integer
-        organizationName:
-          nullable: true
-          type: string
-        partnerName:
-          nullable: true
-          type: string
       type: object
     CredentialsForProjectList:
       additionalProperties: false
@@ -48863,14 +48402,14 @@ components:
           - zones
           - zones
           folderId: folderId
-          organizationId: 5
+          organizationId: 6
           createdAt: createdAt
           isDefault: true
           isLocked: true
           name: name
-          availabilityZonesCount: 2
+          availabilityZonesCount: 1
           billingAccountName: billingAccountName
-          id: 5
+          id: 0
           region: region
           continentName: continentName
           projectId: projectId
@@ -48887,18 +48426,18 @@ components:
           - zones
           - zones
           folderId: folderId
-          organizationId: 5
+          organizationId: 6
           createdAt: createdAt
           isDefault: true
           isLocked: true
           name: name
-          availabilityZonesCount: 2
+          availabilityZonesCount: 1
           billingAccountName: billingAccountName
-          id: 5
+          id: 0
           region: region
           continentName: continentName
           projectId: projectId
-        totalCount: 0
+        totalCount: 5
       properties:
         data:
           items:
@@ -48925,14 +48464,14 @@ components:
         - zones
         - zones
         folderId: folderId
-        organizationId: 5
+        organizationId: 6
         createdAt: createdAt
         isDefault: true
         isLocked: true
         name: name
-        availabilityZonesCount: 2
+        availabilityZonesCount: 1
         billingAccountName: billingAccountName
-        id: 5
+        id: 0
         region: region
         continentName: continentName
         projectId: projectId
@@ -53016,7 +52555,7 @@ components:
           region: region
           continentName: continentName
           user: user
-        totalCount: 0
+        totalCount: 5
       properties:
         data:
           items:
@@ -63860,7 +63399,7 @@ components:
       example:
         data:
         - volumeType: volumeType
-          projectCount: 9
+          projectCount: 6
           projects:
           - name: name
             id: 0
@@ -63869,20 +63408,20 @@ components:
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
           url: url
-          organizationId: 2
+          organizationId: 5
           createdAt: createdAt
           isDefault: true
-          port: 3
+          port: 1
           createdBy: createdBy
           isLocked: true
           name: name
           namespace: namespace
-          id: 7
+          id: 0
           lastModified: lastModified
           continentName: continentName
           username: username
         - volumeType: volumeType
-          projectCount: 9
+          projectCount: 6
           projects:
           - name: name
             id: 0
@@ -63891,19 +63430,19 @@ components:
           organizationName: organizationName
           lastModifiedBy: lastModifiedBy
           url: url
-          organizationId: 2
+          organizationId: 5
           createdAt: createdAt
           isDefault: true
-          port: 3
+          port: 1
           createdBy: createdBy
           isLocked: true
           name: name
           namespace: namespace
-          id: 7
+          id: 0
           lastModified: lastModified
           continentName: continentName
           username: username
-        totalCount: 0
+        totalCount: 5
       properties:
         data:
           items:
@@ -63918,7 +63457,7 @@ components:
       additionalProperties: false
       example:
         volumeType: volumeType
-        projectCount: 9
+        projectCount: 6
         projects:
         - name: name
           id: 0
@@ -63927,15 +63466,15 @@ components:
         organizationName: organizationName
         lastModifiedBy: lastModifiedBy
         url: url
-        organizationId: 2
+        organizationId: 5
         createdAt: createdAt
         isDefault: true
-        port: 3
+        port: 1
         createdBy: createdBy
         isLocked: true
         name: name
         namespace: namespace
-        id: 7
+        id: 0
         lastModified: lastModified
         continentName: continentName
         username: username
@@ -66827,6 +66366,27 @@ components:
         project:
           nullable: true
           type: string
+      type: object
+    ZededaFlavorList:
+      additionalProperties: false
+      example:
+        data:
+        - name: name
+          cpu: 0
+          ram: 6.027456183070403
+        - name: name
+          cpu: 0
+          ram: 6.027456183070403
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ProxmoxFlavorData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
       type: object
     ZededaInterfaceCommand:
       additionalProperties: false

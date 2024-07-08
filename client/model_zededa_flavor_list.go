@@ -15,36 +15,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the CredentialsForCli type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &CredentialsForCli{}
+// checks if the ZededaFlavorList type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ZededaFlavorList{}
 
-// CredentialsForCli struct for CredentialsForCli
-type CredentialsForCli struct {
-	Data []CredentialsForCliDto `json:"data,omitempty"`
+// ZededaFlavorList struct for ZededaFlavorList
+type ZededaFlavorList struct {
+	Data []ProxmoxFlavorData `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
-// NewCredentialsForCli instantiates a new CredentialsForCli object
+// NewZededaFlavorList instantiates a new ZededaFlavorList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCredentialsForCli() *CredentialsForCli {
-	this := CredentialsForCli{}
+func NewZededaFlavorList() *ZededaFlavorList {
+	this := ZededaFlavorList{}
 	return &this
 }
 
-// NewCredentialsForCliWithDefaults instantiates a new CredentialsForCli object
+// NewZededaFlavorListWithDefaults instantiates a new ZededaFlavorList object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCredentialsForCliWithDefaults() *CredentialsForCli {
-	this := CredentialsForCli{}
+func NewZededaFlavorListWithDefaults() *ZededaFlavorList {
+	this := ZededaFlavorList{}
 	return &this
 }
 
 // GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CredentialsForCli) GetData() []CredentialsForCliDto {
+func (o *ZededaFlavorList) GetData() []ProxmoxFlavorData {
 	if o == nil {
-		var ret []CredentialsForCliDto
+		var ret []ProxmoxFlavorData
 		return ret
 	}
 	return o.Data
@@ -53,7 +53,7 @@ func (o *CredentialsForCli) GetData() []CredentialsForCliDto {
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CredentialsForCli) GetDataOk() ([]CredentialsForCliDto, bool) {
+func (o *ZededaFlavorList) GetDataOk() ([]ProxmoxFlavorData, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *CredentialsForCli) GetDataOk() ([]CredentialsForCliDto, bool) {
 }
 
 // HasData returns a boolean if a field has been set.
-func (o *CredentialsForCli) HasData() bool {
+func (o *ZededaFlavorList) HasData() bool {
 	if o != nil && !IsNil(o.Data) {
 		return true
 	}
@@ -69,13 +69,13 @@ func (o *CredentialsForCli) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []CredentialsForCliDto and assigns it to the Data field.
-func (o *CredentialsForCli) SetData(v []CredentialsForCliDto) {
+// SetData gets a reference to the given []ProxmoxFlavorData and assigns it to the Data field.
+func (o *ZededaFlavorList) SetData(v []ProxmoxFlavorData) {
 	o.Data = v
 }
 
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
-func (o *CredentialsForCli) GetTotalCount() int32 {
+func (o *ZededaFlavorList) GetTotalCount() int32 {
 	if o == nil || IsNil(o.TotalCount) {
 		var ret int32
 		return ret
@@ -85,7 +85,7 @@ func (o *CredentialsForCli) GetTotalCount() int32 {
 
 // GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CredentialsForCli) GetTotalCountOk() (*int32, bool) {
+func (o *ZededaFlavorList) GetTotalCountOk() (*int32, bool) {
 	if o == nil || IsNil(o.TotalCount) {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *CredentialsForCli) GetTotalCountOk() (*int32, bool) {
 }
 
 // HasTotalCount returns a boolean if a field has been set.
-func (o *CredentialsForCli) HasTotalCount() bool {
+func (o *ZededaFlavorList) HasTotalCount() bool {
 	if o != nil && !IsNil(o.TotalCount) {
 		return true
 	}
@@ -102,11 +102,11 @@ func (o *CredentialsForCli) HasTotalCount() bool {
 }
 
 // SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
-func (o *CredentialsForCli) SetTotalCount(v int32) {
+func (o *ZededaFlavorList) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 
-func (o CredentialsForCli) MarshalJSON() ([]byte, error) {
+func (o ZededaFlavorList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -114,7 +114,7 @@ func (o CredentialsForCli) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o CredentialsForCli) ToMap() (map[string]interface{}, error) {
+func (o ZededaFlavorList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
@@ -125,38 +125,38 @@ func (o CredentialsForCli) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableCredentialsForCli struct {
-	value *CredentialsForCli
+type NullableZededaFlavorList struct {
+	value *ZededaFlavorList
 	isSet bool
 }
 
-func (v NullableCredentialsForCli) Get() *CredentialsForCli {
+func (v NullableZededaFlavorList) Get() *ZededaFlavorList {
 	return v.value
 }
 
-func (v *NullableCredentialsForCli) Set(val *CredentialsForCli) {
+func (v *NullableZededaFlavorList) Set(val *ZededaFlavorList) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCredentialsForCli) IsSet() bool {
+func (v NullableZededaFlavorList) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCredentialsForCli) Unset() {
+func (v *NullableZededaFlavorList) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCredentialsForCli(val *CredentialsForCli) *NullableCredentialsForCli {
-	return &NullableCredentialsForCli{value: val, isSet: true}
+func NewNullableZededaFlavorList(val *ZededaFlavorList) *NullableZededaFlavorList {
+	return &NullableZededaFlavorList{value: val, isSet: true}
 }
 
-func (v NullableCredentialsForCli) MarshalJSON() ([]byte, error) {
+func (v NullableZededaFlavorList) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCredentialsForCli) UnmarshalJSON(src []byte) error {
+func (v *NullableZededaFlavorList) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

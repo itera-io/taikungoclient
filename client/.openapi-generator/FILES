@@ -261,7 +261,6 @@ docs/CheckTanzuCommand.md
 docs/CheckZadaraCommand.md
 docs/CheckerAPI.md
 docs/CidrCommand.md
-docs/ClearProjectBackupCommand.md
 docs/CloseTicketCommand.md
 docs/CloudCredentialAPI.md
 docs/CloudCredentialsDropdownRecordDto.md
@@ -342,9 +341,6 @@ docs/CreateZededaCommand.md
 docs/CreateZededaNetworkDto.md
 docs/CredentialChartDto.md
 docs/CredentialMakeDefaultCommand.md
-docs/CredentialsChart.md
-docs/CredentialsForCli.md
-docs/CredentialsForCliDto.md
 docs/CredentialsForProjectList.md
 docs/CronJobCommand.md
 docs/CronJobServiceAPI.md
@@ -1017,6 +1013,7 @@ docs/ZededaCheckerCommand.md
 docs/ZededaCloudCredentialAPI.md
 docs/ZededaCredentialsForProjectDto.md
 docs/ZededaEdgeNodesCommand.md
+docs/ZededaFlavorList.md
 docs/ZededaInterfaceCommand.md
 docs/ZededaList.md
 docs/ZededaListDto.md
@@ -1184,7 +1181,6 @@ model_check_s3_command.go
 model_check_tanzu_command.go
 model_check_zadara_command.go
 model_cidr_command.go
-model_clear_project_backup_command.go
 model_close_ticket_command.go
 model_cloud_credentials_dropdown_record_dto.go
 model_cloud_credentials_for_organization_entity.go
@@ -1263,9 +1259,6 @@ model_create_zededa_command.go
 model_create_zededa_network_dto.go
 model_credential_chart_dto.go
 model_credential_make_default_command.go
-model_credentials_chart.go
-model_credentials_for_cli.go
-model_credentials_for_cli_dto.go
 model_credentials_for_project_list.go
 model_cron_job_command.go
 model_csv_exporter.go
@@ -1875,6 +1868,7 @@ model_zadara_region_list_command.go
 model_zededa_checker_command.go
 model_zededa_credentials_for_project_dto.go
 model_zededa_edge_nodes_command.go
+model_zededa_flavor_list.go
 model_zededa_interface_command.go
 model_zededa_list.go
 model_zededa_list_dto.go
