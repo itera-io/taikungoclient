@@ -5416,8 +5416,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-07-08T10:43:45.5846145Z
-                  createdAt: 2024-07-08T10:43:45.5846145Z
+                  lastValidated: 2024-07-08T14:15:01.1445561Z
+                  createdAt: 2024-07-08T14:15:01.1445561Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5522,14 +5522,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-07-08T10:43:45.5846145Z
+                    lastBackup: 2024-07-08T14:15:01.1445561Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-07-08T10:43:45.5846145Z
+                  createdAt: 2024-07-08T14:15:01.1445561Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-07-08T10:43:45.5846145Z
+                  lastBackup: 2024-07-08T14:15:01.1445561Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5634,8 +5634,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-08T10:43:45.5846145Z
-                  expiration: 2024-07-08T10:43:45.5846145Z
+                  createdAt: 2024-07-08T14:15:01.1445561Z
+                  expiration: 2024-07-08T14:15:01.1445561Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5739,7 +5739,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-08T10:43:45.5846145Z
+                  createdAt: 2024-07-08T14:15:01.1445561Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5849,9 +5849,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-07-08T10:43:45.5846145+00:00
-                  startTimeStamp: 2024-07-08T10:43:45.5846145+00:00
-                  createdAt: 2024-07-08T10:43:45.5846145Z
+                  completionDateTime: 2024-07-08T14:15:01.1445561+00:00
+                  startTimeStamp: 2024-07-08T14:15:01.1445561+00:00
+                  createdAt: 2024-07-08T14:15:01.1445561Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -8605,58 +8605,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve cloud credentials exceeded quotas
-      tags:
-      - Cloud credential
-  /api/v1/cloudcredentials/details:
-    get:
-      operationId: cloudcredentials-for-project
-      parameters:
-      - explode: true
-        in: query
-        name: CloudId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CredentialsForProjectList'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve cloud credential details by cloud Id
       tags:
       - Cloud credential
   /api/v1/cloudcredentials/{cloudId}:
@@ -24959,6 +24907,53 @@ paths:
       summary: Update stage of project
       tags:
       - Project deployment
+  /api/v1/project-deployment/upgrade/{projectId}:
+    post:
+      operationId: project-deployment-upgrade
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Upgrade the project's Kubernetes to the next available version. Project
+        must be READY.
+      tags:
+      - Project deployment
   /api/v1/projectgroups/bind-project:
     post:
       operationId: projectgroups-bind-project
@@ -26819,53 +26814,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Spot worker(s) operations enable/disable
-      tags:
-      - Projects
-  /api/v1/projects/upgrade/{projectId}:
-    post:
-      operationId: projects-upgrade
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Upgrade the project's Kubernetes to the next available version. Project
-        must be READY.
       tags:
       - Projects
   /api/v1/projects/ai-analyze/{projectId}:
@@ -40302,23 +40250,6 @@ components:
           format: int32
           type: integer
       type: object
-    AwsCredentialsForProjectDto:
-      additionalProperties: false
-      example:
-        awsRegion: awsRegion
-        awsAccessKeyId: awsAccessKeyId
-        awsSecretAccessKey: awsSecretAccessKey
-      properties:
-        awsAccessKeyId:
-          nullable: true
-          type: string
-        awsSecretAccessKey:
-          nullable: true
-          type: string
-        awsRegion:
-          nullable: true
-          type: string
-      type: object
     AwsFlavorList:
       additionalProperties: false
       example:
@@ -40571,31 +40502,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    AzureCredentialsForProjectDto:
-      additionalProperties: false
-      example:
-        azureClientSecret: azureClientSecret
-        azureClientId: azureClientId
-        azureLocation: azureLocation
-        azureTenantId: azureTenantId
-        azureSubscriptionId: azureSubscriptionId
-      properties:
-        azureClientId:
-          nullable: true
-          type: string
-        azureClientSecret:
-          nullable: true
-          type: string
-        azureSubscriptionId:
-          nullable: true
-          type: string
-        azureTenantId:
-          nullable: true
-          type: string
-        azureLocation:
-          nullable: true
-          type: string
       type: object
     AzureCredentialsListDto:
       additionalProperties: false
@@ -45599,175 +45505,6 @@ components:
           format: int32
           type: integer
       type: object
-    CredentialsForProjectList:
-      additionalProperties: false
-      example:
-        zededa:
-          apiToken: apiToken
-          apiUrl: apiUrl
-          project: project
-          zededaNetworks:
-          - endAllocationRange: endAllocationRange
-            vlanId: 2
-            netMask: 5
-            ipAddress: ipAddress
-            bridge: bridge
-            isPrivate: true
-            beginAllocationRange: beginAllocationRange
-            gateway: gateway
-            isVirtualLbNetwork: true
-          - endAllocationRange: endAllocationRange
-            vlanId: 2
-            netMask: 5
-            ipAddress: ipAddress
-            bridge: bridge
-            isPrivate: true
-            beginAllocationRange: beginAllocationRange
-            gateway: gateway
-            isVirtualLbNetwork: true
-          projectId: projectId
-        cloudCredentialRevision: 0
-        zadara:
-          accessKeyId: accessKeyId
-          secretAccessKey: secretAccessKey
-          volumeType: volumeType
-          accountId: accountId
-          region: region
-          url: url
-        openshift:
-          storageClass: storageClass
-          baseDomain: baseDomain
-          kubeConfig: kubeConfig
-          pullSecret: pullSecret
-        google:
-          zone: zone
-          billingAccountId: billingAccountId
-          region: region
-          config: config
-          folderId: folderId
-        tanzu:
-          volumeType: volumeType
-          password: password
-          port: 6
-          namespace: namespace
-          url: url
-          username: username
-        requiresVPN: true
-        vsphere:
-          password: password
-          datacenterName: datacenterName
-          drsEnabled: true
-          datastore: datastore
-          datacenterId: datacenterId
-          vmTemplateName: vmTemplateName
-          vsphereNetworks:
-          - endAllocationRange: endAllocationRange
-            netMask: 5
-            name: name
-            ipAddress: ipAddress
-            isPrivate: true
-            beginAllocationRange: beginAllocationRange
-            gateway: gateway
-            isVirtualLbNetwork: true
-          - endAllocationRange: endAllocationRange
-            netMask: 5
-            name: name
-            ipAddress: ipAddress
-            isPrivate: true
-            beginAllocationRange: beginAllocationRange
-            gateway: gateway
-            isVirtualLbNetwork: true
-          ignoreSsl: true
-          url: url
-          username: username
-          resourcePool: resourcePool
-        cloudType: NONE
-        openstack:
-          openStackUrl: openStackUrl
-          applicationCredEnabled: true
-          openStackPassword: openStackPassword
-          openStackUser: openStackUser
-          openStackVolumeType: openStackVolumeType
-          openStackProject: openStackProject
-          ignoreSsl: true
-          openStackTenantId: openStackTenantId
-          openStackDomain: openStackDomain
-          openStackInternalSubnetId: openStackInternalSubnetId
-          openStackAvailabilityZone: openStackAvailabilityZone
-          openStackRegion: openStackRegion
-          openStackImportNetwork: true
-          openStackPublicNetwork: openStackPublicNetwork
-        billingEnabled: true
-        continentName: continentName
-        aws:
-          awsRegion: awsRegion
-          awsAccessKeyId: awsAccessKeyId
-          awsSecretAccessKey: awsSecretAccessKey
-        proxmox:
-          password: password
-          tokenId: tokenId
-          proxmoxNetworks:
-          - endAllocationRange: endAllocationRange
-            netMask: 1
-            ipAddress: ipAddress
-            bridge: bridge
-            isPrivate: true
-            beginAllocationRange: beginAllocationRange
-            gateway: gateway
-            isVirtualLbNetwork: true
-          - endAllocationRange: endAllocationRange
-            netMask: 1
-            ipAddress: ipAddress
-            bridge: bridge
-            isPrivate: true
-            beginAllocationRange: beginAllocationRange
-            gateway: gateway
-            isVirtualLbNetwork: true
-          storage: storage
-          vmTemplateName: vmTemplateName
-          ignoreSsl: true
-          tokenSecret: tokenSecret
-          url: url
-        azure:
-          azureClientSecret: azureClientSecret
-          azureClientId: azureClientId
-          azureLocation: azureLocation
-          azureTenantId: azureTenantId
-          azureSubscriptionId: azureSubscriptionId
-      properties:
-        cloudType:
-          $ref: '#/components/schemas/CloudType'
-        cloudCredentialRevision:
-          format: int32
-          type: integer
-        billingEnabled:
-          type: boolean
-        continentName:
-          nullable: true
-          type: string
-        requiresVPN:
-          type: boolean
-        openstack:
-          $ref: '#/components/schemas/OpenstackCredentialsForProjectDto'
-        azure:
-          $ref: '#/components/schemas/AzureCredentialsForProjectDto'
-        aws:
-          $ref: '#/components/schemas/AwsCredentialsForProjectDto'
-        google:
-          $ref: '#/components/schemas/GoogleCredentialForProjectDto'
-        tanzu:
-          $ref: '#/components/schemas/TanzuCredentialsForProjectDto'
-        proxmox:
-          $ref: '#/components/schemas/ProxmoxCredentialsForProjectDto'
-        vsphere:
-          $ref: '#/components/schemas/VsphereCredentialsForProjectDto'
-        openshift:
-          $ref: '#/components/schemas/OpenshiftCredentialForProjectDto'
-        zadara:
-          $ref: '#/components/schemas/ZadaraCredentialsForProjectDto'
-        zededa:
-          $ref: '#/components/schemas/ZededaCredentialsForProjectDto'
-      type: object
     CronJobCommand:
       additionalProperties: false
       example:
@@ -48357,31 +48094,6 @@ components:
       properties:
         config:
           format: binary
-          nullable: true
-          type: string
-      type: object
-    GoogleCredentialForProjectDto:
-      additionalProperties: false
-      example:
-        zone: zone
-        billingAccountId: billingAccountId
-        region: region
-        config: config
-        folderId: folderId
-      properties:
-        config:
-          nullable: true
-          type: string
-        folderId:
-          nullable: true
-          type: string
-        billingAccountId:
-          nullable: true
-          type: string
-        zone:
-          nullable: true
-          type: string
-        region:
           nullable: true
           type: string
       type: object
@@ -52245,27 +51957,6 @@ components:
           nullable: true
           type: integer
       type: object
-    OpenshiftCredentialForProjectDto:
-      additionalProperties: false
-      example:
-        storageClass: storageClass
-        baseDomain: baseDomain
-        kubeConfig: kubeConfig
-        pullSecret: pullSecret
-      properties:
-        kubeConfig:
-          nullable: true
-          type: string
-        pullSecret:
-          nullable: true
-          type: string
-        storageClass:
-          nullable: true
-          type: string
-        baseDomain:
-          nullable: true
-          type: string
-      type: object
     OpenshiftFlavorData:
       additionalProperties: false
       example:
@@ -52565,64 +52256,6 @@ components:
         totalCount:
           format: int32
           type: integer
-      type: object
-    OpenstackCredentialsForProjectDto:
-      additionalProperties: false
-      example:
-        openStackUrl: openStackUrl
-        applicationCredEnabled: true
-        openStackPassword: openStackPassword
-        openStackUser: openStackUser
-        openStackVolumeType: openStackVolumeType
-        openStackProject: openStackProject
-        ignoreSsl: true
-        openStackTenantId: openStackTenantId
-        openStackDomain: openStackDomain
-        openStackInternalSubnetId: openStackInternalSubnetId
-        openStackAvailabilityZone: openStackAvailabilityZone
-        openStackRegion: openStackRegion
-        openStackImportNetwork: true
-        openStackPublicNetwork: openStackPublicNetwork
-      properties:
-        openStackUser:
-          nullable: true
-          type: string
-        openStackDomain:
-          nullable: true
-          type: string
-        openStackPassword:
-          nullable: true
-          type: string
-        openStackProject:
-          nullable: true
-          type: string
-        openStackRegion:
-          nullable: true
-          type: string
-        openStackUrl:
-          nullable: true
-          type: string
-        openStackPublicNetwork:
-          nullable: true
-          type: string
-        openStackAvailabilityZone:
-          nullable: true
-          type: string
-        openStackVolumeType:
-          nullable: true
-          type: string
-        openStackTenantId:
-          nullable: true
-          type: string
-        openStackImportNetwork:
-          type: boolean
-        openStackInternalSubnetId:
-          nullable: true
-          type: string
-        applicationCredEnabled:
-          type: boolean
-        ignoreSsl:
-          type: boolean
       type: object
     OpenstackCredentialsListDto:
       additionalProperties: false
@@ -58682,60 +58315,6 @@ components:
           nullable: true
           type: string
       type: object
-    ProxmoxCredentialsForProjectDto:
-      additionalProperties: false
-      example:
-        password: password
-        tokenId: tokenId
-        proxmoxNetworks:
-        - endAllocationRange: endAllocationRange
-          netMask: 1
-          ipAddress: ipAddress
-          bridge: bridge
-          isPrivate: true
-          beginAllocationRange: beginAllocationRange
-          gateway: gateway
-          isVirtualLbNetwork: true
-        - endAllocationRange: endAllocationRange
-          netMask: 1
-          ipAddress: ipAddress
-          bridge: bridge
-          isPrivate: true
-          beginAllocationRange: beginAllocationRange
-          gateway: gateway
-          isVirtualLbNetwork: true
-        storage: storage
-        vmTemplateName: vmTemplateName
-        ignoreSsl: true
-        tokenSecret: tokenSecret
-        url: url
-      properties:
-        tokenId:
-          nullable: true
-          type: string
-        tokenSecret:
-          nullable: true
-          type: string
-        url:
-          nullable: true
-          type: string
-        password:
-          nullable: true
-          type: string
-        storage:
-          nullable: true
-          type: string
-        vmTemplateName:
-          nullable: true
-          type: string
-        proxmoxNetworks:
-          items:
-            $ref: '#/components/schemas/ProxmoxNetworkListDto'
-          nullable: true
-          type: array
-        ignoreSsl:
-          type: boolean
-      type: object
     ProxmoxFlavorData:
       additionalProperties: false
       example:
@@ -58812,7 +58391,7 @@ components:
           name: name
           proxmoxNetworks:
           - endAllocationRange: endAllocationRange
-            netMask: 1
+            netMask: 5
             ipAddress: ipAddress
             bridge: bridge
             isPrivate: true
@@ -58820,7 +58399,7 @@ components:
             gateway: gateway
             isVirtualLbNetwork: true
           - endAllocationRange: endAllocationRange
-            netMask: 1
+            netMask: 5
             ipAddress: ipAddress
             bridge: bridge
             isPrivate: true
@@ -58856,7 +58435,7 @@ components:
           name: name
           proxmoxNetworks:
           - endAllocationRange: endAllocationRange
-            netMask: 1
+            netMask: 5
             ipAddress: ipAddress
             bridge: bridge
             isPrivate: true
@@ -58864,7 +58443,7 @@ components:
             gateway: gateway
             isVirtualLbNetwork: true
           - endAllocationRange: endAllocationRange
-            netMask: 1
+            netMask: 5
             ipAddress: ipAddress
             bridge: bridge
             isPrivate: true
@@ -58914,7 +58493,7 @@ components:
         name: name
         proxmoxNetworks:
         - endAllocationRange: endAllocationRange
-          netMask: 1
+          netMask: 5
           ipAddress: ipAddress
           bridge: bridge
           isPrivate: true
@@ -58922,7 +58501,7 @@ components:
           gateway: gateway
           isVirtualLbNetwork: true
         - endAllocationRange: endAllocationRange
-          netMask: 1
+          netMask: 5
           ipAddress: ipAddress
           bridge: bridge
           isPrivate: true
@@ -59008,7 +58587,7 @@ components:
       additionalProperties: false
       example:
         endAllocationRange: endAllocationRange
-        netMask: 1
+        netMask: 5
         ipAddress: ipAddress
         bridge: bridge
         isPrivate: true
@@ -63364,36 +62943,6 @@ components:
           nullable: true
           type: string
       type: object
-    TanzuCredentialsForProjectDto:
-      additionalProperties: false
-      example:
-        volumeType: volumeType
-        password: password
-        port: 6
-        namespace: namespace
-        url: url
-        username: username
-      properties:
-        username:
-          nullable: true
-          type: string
-        url:
-          nullable: true
-          type: string
-        password:
-          nullable: true
-          type: string
-        volumeType:
-          nullable: true
-          type: string
-        namespace:
-          nullable: true
-          type: string
-        port:
-          format: int32
-          nullable: true
-          type: integer
-      type: object
     TanzuCredentialsList:
       additionalProperties: false
       example:
@@ -65547,71 +65096,6 @@ components:
           nullable: true
           type: string
       type: object
-    VsphereCredentialsForProjectDto:
-      additionalProperties: false
-      example:
-        password: password
-        datacenterName: datacenterName
-        drsEnabled: true
-        datastore: datastore
-        datacenterId: datacenterId
-        vmTemplateName: vmTemplateName
-        vsphereNetworks:
-        - endAllocationRange: endAllocationRange
-          netMask: 5
-          name: name
-          ipAddress: ipAddress
-          isPrivate: true
-          beginAllocationRange: beginAllocationRange
-          gateway: gateway
-          isVirtualLbNetwork: true
-        - endAllocationRange: endAllocationRange
-          netMask: 5
-          name: name
-          ipAddress: ipAddress
-          isPrivate: true
-          beginAllocationRange: beginAllocationRange
-          gateway: gateway
-          isVirtualLbNetwork: true
-        ignoreSsl: true
-        url: url
-        username: username
-        resourcePool: resourcePool
-      properties:
-        username:
-          nullable: true
-          type: string
-        url:
-          nullable: true
-          type: string
-        password:
-          nullable: true
-          type: string
-        datacenterId:
-          nullable: true
-          type: string
-        datacenterName:
-          nullable: true
-          type: string
-        datastore:
-          nullable: true
-          type: string
-        resourcePool:
-          nullable: true
-          type: string
-        drsEnabled:
-          type: boolean
-        vmTemplateName:
-          nullable: true
-          type: string
-        vsphereNetworks:
-          items:
-            $ref: '#/components/schemas/VsphereNetworkListDto'
-          nullable: true
-          type: array
-        ignoreSsl:
-          type: boolean
-      type: object
     VsphereFlavorData:
       additionalProperties: false
       example:
@@ -66161,35 +65645,6 @@ components:
           format: int32
           type: integer
       type: object
-    ZadaraCredentialsForProjectDto:
-      additionalProperties: false
-      example:
-        accessKeyId: accessKeyId
-        secretAccessKey: secretAccessKey
-        volumeType: volumeType
-        accountId: accountId
-        region: region
-        url: url
-      properties:
-        url:
-          nullable: true
-          type: string
-        volumeType:
-          nullable: true
-          type: string
-        accessKeyId:
-          nullable: true
-          type: string
-        secretAccessKey:
-          nullable: true
-          type: string
-        region:
-          nullable: true
-          type: string
-        accountId:
-          nullable: true
-          type: string
-      type: object
     ZadaraCredentialsListDto:
       additionalProperties: false
       example:
@@ -66305,51 +65760,6 @@ components:
           nullable: true
           type: string
       type: object
-    ZededaCredentialsForProjectDto:
-      additionalProperties: false
-      example:
-        apiToken: apiToken
-        apiUrl: apiUrl
-        project: project
-        zededaNetworks:
-        - endAllocationRange: endAllocationRange
-          vlanId: 2
-          netMask: 5
-          ipAddress: ipAddress
-          bridge: bridge
-          isPrivate: true
-          beginAllocationRange: beginAllocationRange
-          gateway: gateway
-          isVirtualLbNetwork: true
-        - endAllocationRange: endAllocationRange
-          vlanId: 2
-          netMask: 5
-          ipAddress: ipAddress
-          bridge: bridge
-          isPrivate: true
-          beginAllocationRange: beginAllocationRange
-          gateway: gateway
-          isVirtualLbNetwork: true
-        projectId: projectId
-      properties:
-        apiToken:
-          nullable: true
-          type: string
-        apiUrl:
-          nullable: true
-          type: string
-        project:
-          nullable: true
-          type: string
-        projectId:
-          nullable: true
-          type: string
-        zededaNetworks:
-          items:
-            $ref: '#/components/schemas/ZededaNetworkListDto'
-          nullable: true
-          type: array
-      type: object
     ZededaEdgeNodesCommand:
       additionalProperties: false
       example:
@@ -66424,7 +65834,7 @@ components:
           project: project
           zededaNetworks:
           - endAllocationRange: endAllocationRange
-            vlanId: 2
+            vlanId: 5
             netMask: 5
             ipAddress: ipAddress
             bridge: bridge
@@ -66433,7 +65843,7 @@ components:
             gateway: gateway
             isVirtualLbNetwork: true
           - endAllocationRange: endAllocationRange
-            vlanId: 2
+            vlanId: 5
             netMask: 5
             ipAddress: ipAddress
             bridge: bridge
@@ -66469,7 +65879,7 @@ components:
           project: project
           zededaNetworks:
           - endAllocationRange: endAllocationRange
-            vlanId: 2
+            vlanId: 5
             netMask: 5
             ipAddress: ipAddress
             bridge: bridge
@@ -66478,7 +65888,7 @@ components:
             gateway: gateway
             isVirtualLbNetwork: true
           - endAllocationRange: endAllocationRange
-            vlanId: 2
+            vlanId: 5
             netMask: 5
             ipAddress: ipAddress
             bridge: bridge
@@ -66503,7 +65913,7 @@ components:
             id: 0
           continentName: continentName
           projectId: projectId
-        totalCount: 5
+        totalCount: 2
       properties:
         data:
           items:
@@ -66528,7 +65938,7 @@ components:
         project: project
         zededaNetworks:
         - endAllocationRange: endAllocationRange
-          vlanId: 2
+          vlanId: 5
           netMask: 5
           ipAddress: ipAddress
           bridge: bridge
@@ -66537,7 +65947,7 @@ components:
           gateway: gateway
           isVirtualLbNetwork: true
         - endAllocationRange: endAllocationRange
-          vlanId: 2
+          vlanId: 5
           netMask: 5
           ipAddress: ipAddress
           bridge: bridge
@@ -66629,7 +66039,7 @@ components:
       additionalProperties: false
       example:
         endAllocationRange: endAllocationRange
-        vlanId: 2
+        vlanId: 5
         netMask: 5
         ipAddress: ipAddress
         bridge: bridge

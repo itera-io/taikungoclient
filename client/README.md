@@ -228,7 +228,6 @@ Class | Method | HTTP request | Description
 *CloudCredentialAPI* | [**CloudcredentialsAllFlavors**](docs/CloudCredentialAPI.md#cloudcredentialsallflavors) | **Get** /api/v1/cloudcredentials/flavors/{cloudId} | Retrieve all flavors
 *CloudCredentialAPI* | [**CloudcredentialsDelete**](docs/CloudCredentialAPI.md#cloudcredentialsdelete) | **Delete** /api/v1/cloudcredentials/{cloudId} | Remove cloud credential by cloud Id
 *CloudCredentialAPI* | [**CloudcredentialsExceeded**](docs/CloudCredentialAPI.md#cloudcredentialsexceeded) | **Get** /api/v1/cloudcredentials/exceeded-quotas | Retrieve cloud credentials exceeded quotas
-*CloudCredentialAPI* | [**CloudcredentialsForProject**](docs/CloudCredentialAPI.md#cloudcredentialsforproject) | **Get** /api/v1/cloudcredentials/details | Retrieve cloud credential details by cloud Id
 *CloudCredentialAPI* | [**CloudcredentialsLockManager**](docs/CloudCredentialAPI.md#cloudcredentialslockmanager) | **Post** /api/v1/cloudcredentials/lockmanager | Lock/Unlock cloud credential
 *CloudCredentialAPI* | [**CloudcredentialsMakeDefault**](docs/CloudCredentialAPI.md#cloudcredentialsmakedefault) | **Post** /api/v1/cloudcredentials/makedefault | Make cloud credentials default
 *CloudCredentialAPI* | [**CloudcredentialsOrgList**](docs/CloudCredentialAPI.md#cloudcredentialsorglist) | **Get** /api/v1/cloudcredentials | Retrieve a list of cloud credentials by organization Id
@@ -514,6 +513,7 @@ Class | Method | HTTP request | Description
 *ProjectDeploymentAPI* | [**ProjectDeploymentRepair**](docs/ProjectDeploymentAPI.md#projectdeploymentrepair) | **Post** /api/v1/project-deployment/repair | Repair
 *ProjectDeploymentAPI* | [**ProjectDeploymentRepairVm**](docs/ProjectDeploymentAPI.md#projectdeploymentrepairvm) | **Post** /api/v1/project-deployment/repair-vm | Repair Vm
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpdate**](docs/ProjectDeploymentAPI.md#projectdeploymentupdate) | **Post** /api/v1/project-deployment/update | Update stage of project
+*ProjectDeploymentAPI* | [**ProjectDeploymentUpgrade**](docs/ProjectDeploymentAPI.md#projectdeploymentupgrade) | **Post** /api/v1/project-deployment/upgrade/{projectId} | Upgrade the project&#39;s Kubernetes to the next available version. Project must be READY.
 *ProjectGroupsAPI* | [**ProjectgroupsBindProject**](docs/ProjectGroupsAPI.md#projectgroupsbindproject) | **Post** /api/v1/projectgroups/bind-project | Bind Projects to group
 *ProjectGroupsAPI* | [**ProjectgroupsBindUserGroup**](docs/ProjectGroupsAPI.md#projectgroupsbindusergroup) | **Post** /api/v1/projectgroups/bind-user-group | Bind User groups
 *ProjectGroupsAPI* | [**ProjectgroupsCreate**](docs/ProjectGroupsAPI.md#projectgroupscreate) | **Post** /api/v1/projectgroups/create | Add Project groups
@@ -556,7 +556,6 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsToggleFullSpot**](docs/ProjectsAPI.md#projectstogglefullspot) | **Post** /api/v1/projects/toggle-full-spot | Full spot operations enable/disable
 *ProjectsAPI* | [**ProjectsToggleSpotVms**](docs/ProjectsAPI.md#projectstogglespotvms) | **Post** /api/v1/projects/toggle-spot-vms | Spot vm(s) operations enable/disable
 *ProjectsAPI* | [**ProjectsToggleSpotWorkers**](docs/ProjectsAPI.md#projectstogglespotworkers) | **Post** /api/v1/projects/toggle-spot-workers | Spot worker(s) operations enable/disable
-*ProjectsAPI* | [**ProjectsUpgrade**](docs/ProjectsAPI.md#projectsupgrade) | **Post** /api/v1/projects/upgrade/{projectId} | Upgrade the project&#39;s Kubernetes to the next available version. Project must be READY.
 *ProjectsAPI* | [**ProjectsVisibility**](docs/ProjectsAPI.md#projectsvisibility) | **Get** /api/v1/projects/visibility/{projectId} | Visibility of project actions
 *PrometheusBillingsAPI* | [**PrometheusbillingsCreate**](docs/PrometheusBillingsAPI.md#prometheusbillingscreate) | **Post** /api/v1/prometheusbillings | Add prometheus billing
 *PrometheusBillingsAPI* | [**PrometheusbillingsExportCsv**](docs/PrometheusBillingsAPI.md#prometheusbillingsexportcsv) | **Get** /api/v1/prometheusbillings/export | Export Csv
@@ -821,7 +820,6 @@ Class | Method | HTTP request | Description
  - [AvailablePackagesDto](docs/AvailablePackagesDto.md)
  - [AvailablePackagesList](docs/AvailablePackagesList.md)
  - [AwsCredentialList](docs/AwsCredentialList.md)
- - [AwsCredentialsForProjectDto](docs/AwsCredentialsForProjectDto.md)
  - [AwsFlavorList](docs/AwsFlavorList.md)
  - [AwsFlavorListDto](docs/AwsFlavorListDto.md)
  - [AwsImagesPostListCommand](docs/AwsImagesPostListCommand.md)
@@ -830,7 +828,6 @@ Class | Method | HTTP request | Description
  - [AwsValidateOwnerCommand](docs/AwsValidateOwnerCommand.md)
  - [AzResult](docs/AzResult.md)
  - [AzureCredentialList](docs/AzureCredentialList.md)
- - [AzureCredentialsForProjectDto](docs/AzureCredentialsForProjectDto.md)
  - [AzureCredentialsListDto](docs/AzureCredentialsListDto.md)
  - [AzureDashboardCommand](docs/AzureDashboardCommand.md)
  - [AzureFlavorList](docs/AzureFlavorList.md)
@@ -992,7 +989,6 @@ Class | Method | HTTP request | Description
  - [CreateZededaNetworkDto](docs/CreateZededaNetworkDto.md)
  - [CredentialChartDto](docs/CredentialChartDto.md)
  - [CredentialMakeDefaultCommand](docs/CredentialMakeDefaultCommand.md)
- - [CredentialsForProjectList](docs/CredentialsForProjectList.md)
  - [CronJobCommand](docs/CronJobCommand.md)
  - [CsvExporter](docs/CsvExporter.md)
  - [DaemonSetDto](docs/DaemonSetDto.md)
@@ -1101,7 +1097,6 @@ Class | Method | HTTP request | Description
  - [GetProjectOperationCommand](docs/GetProjectOperationCommand.md)
  - [GetToken](docs/GetToken.md)
  - [GiveAccessToPartnerCommand](docs/GiveAccessToPartnerCommand.md)
- - [GoogleCredentialForProjectDto](docs/GoogleCredentialForProjectDto.md)
  - [GoogleCredentialList](docs/GoogleCredentialList.md)
  - [GoogleCredentialsListDto](docs/GoogleCredentialsListDto.md)
  - [GoogleFlavorDto](docs/GoogleFlavorDto.md)
@@ -1228,14 +1223,12 @@ Class | Method | HTTP request | Description
  - [OpenStackZoneListQuery](docs/OpenStackZoneListQuery.md)
  - [OpenTicketCommand](docs/OpenTicketCommand.md)
  - [OpenshiftCreateCommand](docs/OpenshiftCreateCommand.md)
- - [OpenshiftCredentialForProjectDto](docs/OpenshiftCredentialForProjectDto.md)
  - [OpenshiftFlavorData](docs/OpenshiftFlavorData.md)
  - [OpenshiftFlavorList](docs/OpenshiftFlavorList.md)
  - [OpenshiftList](docs/OpenshiftList.md)
  - [OpenshiftListDto](docs/OpenshiftListDto.md)
  - [OpenstackComputeQuotaDto](docs/OpenstackComputeQuotaDto.md)
  - [OpenstackCredentialList](docs/OpenstackCredentialList.md)
- - [OpenstackCredentialsForProjectDto](docs/OpenstackCredentialsForProjectDto.md)
  - [OpenstackCredentialsListDto](docs/OpenstackCredentialsListDto.md)
  - [OpenstackFlavorList](docs/OpenstackFlavorList.md)
  - [OpenstackFlavorListDto](docs/OpenstackFlavorListDto.md)
@@ -1369,7 +1362,6 @@ Class | Method | HTTP request | Description
  - [PrometheusRulesSearchResponseData](docs/PrometheusRulesSearchResponseData.md)
  - [PrometheusType](docs/PrometheusType.md)
  - [ProxmoxCheckerCommand](docs/ProxmoxCheckerCommand.md)
- - [ProxmoxCredentialsForProjectDto](docs/ProxmoxCredentialsForProjectDto.md)
  - [ProxmoxFlavorData](docs/ProxmoxFlavorData.md)
  - [ProxmoxFlavorList](docs/ProxmoxFlavorList.md)
  - [ProxmoxHypervisorDto](docs/ProxmoxHypervisorDto.md)
@@ -1496,7 +1488,6 @@ Class | Method | HTTP request | Description
  - [SyncProjectAppCommand](docs/SyncProjectAppCommand.md)
  - [TaikunLbDto](docs/TaikunLbDto.md)
  - [TaikunLbResponseDto](docs/TaikunLbResponseDto.md)
- - [TanzuCredentialsForProjectDto](docs/TanzuCredentialsForProjectDto.md)
  - [TanzuCredentialsList](docs/TanzuCredentialsList.md)
  - [TanzuCredentialsListDto](docs/TanzuCredentialsListDto.md)
  - [TanzuFlavorList](docs/TanzuFlavorList.md)
@@ -1578,7 +1569,6 @@ Class | Method | HTTP request | Description
  - [VerifyWebhookCommand](docs/VerifyWebhookCommand.md)
  - [VmConsoleScreenshotCommand](docs/VmConsoleScreenshotCommand.md)
  - [VmTemplateListCommand](docs/VmTemplateListCommand.md)
- - [VsphereCredentialsForProjectDto](docs/VsphereCredentialsForProjectDto.md)
  - [VsphereFlavorData](docs/VsphereFlavorData.md)
  - [VsphereFlavorList](docs/VsphereFlavorList.md)
  - [VsphereHypervisorListCommand](docs/VsphereHypervisorListCommand.md)
@@ -1595,11 +1585,9 @@ Class | Method | HTTP request | Description
  - [YamlValidatorCommand](docs/YamlValidatorCommand.md)
  - [ZadaraAvailabilityZonesCommand](docs/ZadaraAvailabilityZonesCommand.md)
  - [ZadaraCredentialList](docs/ZadaraCredentialList.md)
- - [ZadaraCredentialsForProjectDto](docs/ZadaraCredentialsForProjectDto.md)
  - [ZadaraCredentialsListDto](docs/ZadaraCredentialsListDto.md)
  - [ZadaraRegionListCommand](docs/ZadaraRegionListCommand.md)
  - [ZededaCheckerCommand](docs/ZededaCheckerCommand.md)
- - [ZededaCredentialsForProjectDto](docs/ZededaCredentialsForProjectDto.md)
  - [ZededaEdgeNodesCommand](docs/ZededaEdgeNodesCommand.md)
  - [ZededaFlavorList](docs/ZededaFlavorList.md)
  - [ZededaInterfaceCommand](docs/ZededaInterfaceCommand.md)

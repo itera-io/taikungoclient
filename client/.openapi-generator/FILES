@@ -162,7 +162,6 @@ docs/AvailablePackageDetailsDto.md
 docs/AvailablePackagesDto.md
 docs/AvailablePackagesList.md
 docs/AwsCredentialList.md
-docs/AwsCredentialsForProjectDto.md
 docs/AwsFlavorList.md
 docs/AwsFlavorListDto.md
 docs/AwsImagesPostListCommand.md
@@ -172,7 +171,6 @@ docs/AwsValidateOwnerCommand.md
 docs/AzResult.md
 docs/AzureCloudCredentialAPI.md
 docs/AzureCredentialList.md
-docs/AzureCredentialsForProjectDto.md
 docs/AzureCredentialsListDto.md
 docs/AzureDashboardCommand.md
 docs/AzureFlavorList.md
@@ -341,7 +339,6 @@ docs/CreateZededaCommand.md
 docs/CreateZededaNetworkDto.md
 docs/CredentialChartDto.md
 docs/CredentialMakeDefaultCommand.md
-docs/CredentialsForProjectList.md
 docs/CronJobCommand.md
 docs/CronJobServiceAPI.md
 docs/CsvExporter.md
@@ -455,7 +452,6 @@ docs/GetProjectOperationCommand.md
 docs/GetToken.md
 docs/GiveAccessToPartnerCommand.md
 docs/GoogleAPI.md
-docs/GoogleCredentialForProjectDto.md
 docs/GoogleCredentialList.md
 docs/GoogleCredentialsListDto.md
 docs/GoogleFlavorDto.md
@@ -596,7 +592,6 @@ docs/OpenStackZoneListQuery.md
 docs/OpenTicketCommand.md
 docs/OpenshiftAPI.md
 docs/OpenshiftCreateCommand.md
-docs/OpenshiftCredentialForProjectDto.md
 docs/OpenshiftFlavorData.md
 docs/OpenshiftFlavorList.md
 docs/OpenshiftList.md
@@ -604,7 +599,6 @@ docs/OpenshiftListDto.md
 docs/OpenstackCloudCredentialAPI.md
 docs/OpenstackComputeQuotaDto.md
 docs/OpenstackCredentialList.md
-docs/OpenstackCredentialsForProjectDto.md
 docs/OpenstackCredentialsListDto.md
 docs/OpenstackFlavorList.md
 docs/OpenstackFlavorListDto.md
@@ -758,7 +752,6 @@ docs/PrometheusRulesSearchResponseData.md
 docs/PrometheusType.md
 docs/ProxmoxCheckerCommand.md
 docs/ProxmoxCloudCredentialAPI.md
-docs/ProxmoxCredentialsForProjectDto.md
 docs/ProxmoxFlavorData.md
 docs/ProxmoxFlavorList.md
 docs/ProxmoxHypervisorDto.md
@@ -899,7 +892,6 @@ docs/TaikunLBAPI.md
 docs/TaikunLbDto.md
 docs/TaikunLbResponseDto.md
 docs/TanzuAPI.md
-docs/TanzuCredentialsForProjectDto.md
 docs/TanzuCredentialsList.md
 docs/TanzuCredentialsListDto.md
 docs/TanzuFlavorList.md
@@ -988,7 +980,6 @@ docs/VirtualClusterAPI.md
 docs/VmConsoleScreenshotCommand.md
 docs/VmTemplateListCommand.md
 docs/VsphereCloudCredentialAPI.md
-docs/VsphereCredentialsForProjectDto.md
 docs/VsphereFlavorData.md
 docs/VsphereFlavorList.md
 docs/VsphereHypervisorListCommand.md
@@ -1006,12 +997,10 @@ docs/YamlValidatorCommand.md
 docs/ZadaraAvailabilityZonesCommand.md
 docs/ZadaraCloudCredentialAPI.md
 docs/ZadaraCredentialList.md
-docs/ZadaraCredentialsForProjectDto.md
 docs/ZadaraCredentialsListDto.md
 docs/ZadaraRegionListCommand.md
 docs/ZededaCheckerCommand.md
 docs/ZededaCloudCredentialAPI.md
-docs/ZededaCredentialsForProjectDto.md
 docs/ZededaEdgeNodesCommand.md
 docs/ZededaFlavorList.md
 docs/ZededaInterfaceCommand.md
@@ -1088,7 +1077,6 @@ model_available_package_details_dto.go
 model_available_packages_dto.go
 model_available_packages_list.go
 model_aws_credential_list.go
-model_aws_credentials_for_project_dto.go
 model_aws_flavor_list.go
 model_aws_flavor_list_dto.go
 model_aws_images_post_list_command.go
@@ -1097,7 +1085,6 @@ model_aws_region_dto.go
 model_aws_validate_owner_command.go
 model_az_result.go
 model_azure_credential_list.go
-model_azure_credentials_for_project_dto.go
 model_azure_credentials_list_dto.go
 model_azure_dashboard_command.go
 model_azure_flavor_list.go
@@ -1259,7 +1246,6 @@ model_create_zededa_command.go
 model_create_zededa_network_dto.go
 model_credential_chart_dto.go
 model_credential_make_default_command.go
-model_credentials_for_project_list.go
 model_cron_job_command.go
 model_csv_exporter.go
 model_daemon_set_dto.go
@@ -1368,7 +1354,6 @@ model_get_catalog_app_value_command.go
 model_get_project_operation_command.go
 model_get_token.go
 model_give_access_to_partner_command.go
-model_google_credential_for_project_dto.go
 model_google_credential_list.go
 model_google_credentials_list_dto.go
 model_google_flavor_dto.go
@@ -1495,14 +1480,12 @@ model_open_stack_region_list_query.go
 model_open_stack_zone_list_query.go
 model_open_ticket_command.go
 model_openshift_create_command.go
-model_openshift_credential_for_project_dto.go
 model_openshift_flavor_data.go
 model_openshift_flavor_list.go
 model_openshift_list.go
 model_openshift_list_dto.go
 model_openstack_compute_quota_dto.go
 model_openstack_credential_list.go
-model_openstack_credentials_for_project_dto.go
 model_openstack_credentials_list_dto.go
 model_openstack_flavor_list.go
 model_openstack_flavor_list_dto.go
@@ -1636,7 +1619,6 @@ model_prometheus_rules_search_list.go
 model_prometheus_rules_search_response_data.go
 model_prometheus_type.go
 model_proxmox_checker_command.go
-model_proxmox_credentials_for_project_dto.go
 model_proxmox_flavor_data.go
 model_proxmox_flavor_list.go
 model_proxmox_hypervisor_dto.go
@@ -1763,7 +1745,6 @@ model_subresource.go
 model_sync_project_app_command.go
 model_taikun_lb_dto.go
 model_taikun_lb_response_dto.go
-model_tanzu_credentials_for_project_dto.go
 model_tanzu_credentials_list.go
 model_tanzu_credentials_list_dto.go
 model_tanzu_flavor_list.go
@@ -1845,7 +1826,6 @@ model_verify_two_factor_token_command.go
 model_verify_webhook_command.go
 model_vm_console_screenshot_command.go
 model_vm_template_list_command.go
-model_vsphere_credentials_for_project_dto.go
 model_vsphere_flavor_data.go
 model_vsphere_flavor_list.go
 model_vsphere_hypervisor_list_command.go
@@ -1862,11 +1842,9 @@ model_white_list_domain_dto.go
 model_yaml_validator_command.go
 model_zadara_availability_zones_command.go
 model_zadara_credential_list.go
-model_zadara_credentials_for_project_dto.go
 model_zadara_credentials_list_dto.go
 model_zadara_region_list_command.go
 model_zededa_checker_command.go
-model_zededa_credentials_for_project_dto.go
 model_zededa_edge_nodes_command.go
 model_zededa_flavor_list.go
 model_zededa_interface_command.go

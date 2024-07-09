@@ -61,18 +61,6 @@ func Test_taikuncore_CloudCredentialAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CloudCredentialAPIService CloudcredentialsForProject", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.CloudCredentialAPI.CloudcredentialsForProject(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CloudCredentialAPIService CloudcredentialsLockManager", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
