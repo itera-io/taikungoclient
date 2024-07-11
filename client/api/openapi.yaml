@@ -5416,8 +5416,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-07-11T00:03:01.9915121Z
-                  createdAt: 2024-07-11T00:03:01.9915121Z
+                  lastValidated: 2024-07-11T11:49:51.7360918Z
+                  createdAt: 2024-07-11T11:49:51.7360918Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5522,14 +5522,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-07-11T00:03:01.9915121Z
+                    lastBackup: 2024-07-11T11:49:51.7360918Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-07-11T00:03:01.9915121Z
+                  createdAt: 2024-07-11T11:49:51.7360918Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-07-11T00:03:01.9915121Z
+                  lastBackup: 2024-07-11T11:49:51.7360918Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5634,8 +5634,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-11T00:03:01.9915121Z
-                  expiration: 2024-07-11T00:03:01.9915121Z
+                  createdAt: 2024-07-11T11:49:51.7360918Z
+                  expiration: 2024-07-11T11:49:51.7360918Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5739,7 +5739,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-11T00:03:01.9915121Z
+                  createdAt: 2024-07-11T11:49:51.7360918Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5849,9 +5849,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-07-11T00:03:01.9915121+00:00
-                  startTimeStamp: 2024-07-11T00:03:01.9915121+00:00
-                  createdAt: 2024-07-11T00:03:01.9915121Z
+                  completionDateTime: 2024-07-11T11:49:51.7360918+00:00
+                  startTimeStamp: 2024-07-11T11:49:51.7360918+00:00
+                  createdAt: 2024-07-11T11:49:51.7360918Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -49758,6 +49758,7 @@ components:
         severity: severity
         lastModifiedBy: lastModifiedBy
         description: description
+        isMonitoringEnabled: true
         title: title
         endAt: endAt
         silenceReason: silenceReason
@@ -49813,6 +49814,8 @@ components:
         lastModifiedBy:
           nullable: true
           type: string
+        isMonitoringEnabled:
+          type: boolean
       type: object
     KubernetesAlertDtoForPoller:
       additionalProperties: false
@@ -49883,6 +49886,7 @@ components:
         - severity: severity
           lastModifiedBy: lastModifiedBy
           description: description
+          isMonitoringEnabled: true
           title: title
           endAt: endAt
           silenceReason: silenceReason
@@ -49898,6 +49902,7 @@ components:
         - severity: severity
           lastModifiedBy: lastModifiedBy
           description: description
+          isMonitoringEnabled: true
           title: title
           endAt: endAt
           silenceReason: silenceReason
@@ -56190,6 +56195,7 @@ components:
         kubernetesTargetVersion: kubernetesTargetVersion
         lastModifiedBy: lastModifiedBy
         aiEnabled: true
+        isMonitoringEnabled: true
         health: "Null"
         kubesprayCurrentVersion: kubesprayCurrentVersion
         hasKubeConfigFile: true
@@ -56222,6 +56228,8 @@ components:
         isLocked:
           type: boolean
         isVirtualCluster:
+          type: boolean
+        isMonitoringEnabled:
           type: boolean
         hasKubeConfigFile:
           type: boolean
@@ -57463,6 +57471,7 @@ components:
           kubernetesTargetVersion: kubernetesTargetVersion
           lastModifiedBy: lastModifiedBy
           aiEnabled: true
+          isMonitoringEnabled: true
           health: "Null"
           kubesprayCurrentVersion: kubesprayCurrentVersion
           hasKubeConfigFile: true
@@ -57550,6 +57559,7 @@ components:
           kubernetesTargetVersion: kubernetesTargetVersion
           lastModifiedBy: lastModifiedBy
           aiEnabled: true
+          isMonitoringEnabled: true
           health: "Null"
           kubesprayCurrentVersion: kubesprayCurrentVersion
           hasKubeConfigFile: true
@@ -58624,6 +58634,7 @@ components:
       enum:
       - NFS
       - OpenEBS
+      - Longhorn
       type: string
     PublicImageList:
       additionalProperties: false

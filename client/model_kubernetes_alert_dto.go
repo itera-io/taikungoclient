@@ -35,6 +35,7 @@ type KubernetesAlertDto struct {
 	IsSilenced *bool `json:"isSilenced,omitempty"`
 	SilenceReason NullableString `json:"silenceReason,omitempty"`
 	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
 }
 
 // NewKubernetesAlertDto instantiates a new KubernetesAlertDto object
@@ -635,6 +636,38 @@ func (o *KubernetesAlertDto) UnsetLastModifiedBy() {
 	o.LastModifiedBy.Unset()
 }
 
+// GetIsMonitoringEnabled returns the IsMonitoringEnabled field value if set, zero value otherwise.
+func (o *KubernetesAlertDto) GetIsMonitoringEnabled() bool {
+	if o == nil || IsNil(o.IsMonitoringEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsMonitoringEnabled
+}
+
+// GetIsMonitoringEnabledOk returns a tuple with the IsMonitoringEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KubernetesAlertDto) GetIsMonitoringEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsMonitoringEnabled) {
+		return nil, false
+	}
+	return o.IsMonitoringEnabled, true
+}
+
+// HasIsMonitoringEnabled returns a boolean if a field has been set.
+func (o *KubernetesAlertDto) HasIsMonitoringEnabled() bool {
+	if o != nil && !IsNil(o.IsMonitoringEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsMonitoringEnabled gets a reference to the given bool and assigns it to the IsMonitoringEnabled field.
+func (o *KubernetesAlertDto) SetIsMonitoringEnabled(v bool) {
+	o.IsMonitoringEnabled = &v
+}
+
 func (o KubernetesAlertDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -689,6 +722,9 @@ func (o KubernetesAlertDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.LastModifiedBy.IsSet() {
 		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	}
+	if !IsNil(o.IsMonitoringEnabled) {
+		toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
 	}
 	return toSerialize, nil
 }

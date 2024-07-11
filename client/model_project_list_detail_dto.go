@@ -25,6 +25,7 @@ type ProjectListDetailDto struct {
 	IsKubernetes *bool `json:"isKubernetes,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	IsVirtualCluster *bool `json:"isVirtualCluster,omitempty"`
+	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
 	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
 	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
 	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
@@ -258,6 +259,38 @@ func (o *ProjectListDetailDto) HasIsVirtualCluster() bool {
 // SetIsVirtualCluster gets a reference to the given bool and assigns it to the IsVirtualCluster field.
 func (o *ProjectListDetailDto) SetIsVirtualCluster(v bool) {
 	o.IsVirtualCluster = &v
+}
+
+// GetIsMonitoringEnabled returns the IsMonitoringEnabled field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetIsMonitoringEnabled() bool {
+	if o == nil || IsNil(o.IsMonitoringEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsMonitoringEnabled
+}
+
+// GetIsMonitoringEnabledOk returns a tuple with the IsMonitoringEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetIsMonitoringEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsMonitoringEnabled) {
+		return nil, false
+	}
+	return o.IsMonitoringEnabled, true
+}
+
+// HasIsMonitoringEnabled returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasIsMonitoringEnabled() bool {
+	if o != nil && !IsNil(o.IsMonitoringEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsMonitoringEnabled gets a reference to the given bool and assigns it to the IsMonitoringEnabled field.
+func (o *ProjectListDetailDto) SetIsMonitoringEnabled(v bool) {
+	o.IsMonitoringEnabled = &v
 }
 
 // GetHasKubeConfigFile returns the HasKubeConfigFile field value if set, zero value otherwise.
@@ -1918,6 +1951,9 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsVirtualCluster) {
 		toSerialize["isVirtualCluster"] = o.IsVirtualCluster
+	}
+	if !IsNil(o.IsMonitoringEnabled) {
+		toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
 	}
 	if !IsNil(o.HasKubeConfigFile) {
 		toSerialize["hasKubeConfigFile"] = o.HasKubeConfigFile
