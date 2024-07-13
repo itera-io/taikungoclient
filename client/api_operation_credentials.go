@@ -1114,7 +1114,7 @@ type ApiOpscredentialsMetricNamesRequest struct {
 	id int32
 }
 
-func (r ApiOpscredentialsMetricNamesRequest) Execute() (interface{}, *http.Response, error) {
+func (r ApiOpscredentialsMetricNamesRequest) Execute() ([]string, *http.Response, error) {
 	return r.ApiService.OpscredentialsMetricNamesExecute(r)
 }
 
@@ -1134,13 +1134,13 @@ func (a *OperationCredentialsAPIService) OpscredentialsMetricNames(ctx context.C
 }
 
 // Execute executes the request
-//  @return interface{}
-func (a *OperationCredentialsAPIService) OpscredentialsMetricNamesExecute(r ApiOpscredentialsMetricNamesRequest) (interface{}, *http.Response, error) {
+//  @return []string
+func (a *OperationCredentialsAPIService) OpscredentialsMetricNamesExecute(r ApiOpscredentialsMetricNamesRequest) ([]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  interface{}
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OperationCredentialsAPIService.OpscredentialsMetricNames")
