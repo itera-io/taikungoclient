@@ -263,6 +263,7 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobSyncOrganizations**](docs/CronJobServiceAPI.md#cronjobsyncorganizations) | **Post** /api/v1/cronjob/sync-organizations | Sync organizations
 *CronJobServiceAPI* | [**CronjobSyncProjectApps**](docs/CronJobServiceAPI.md#cronjobsyncprojectapps) | **Post** /api/v1/cronjob/sync-project-apps | Sync project apps
 *CronJobServiceAPI* | [**CronjobSyncProjects**](docs/CronJobServiceAPI.md#cronjobsyncprojects) | **Post** /api/v1/cronjob/sync-projects | Sync projects
+*CronJobServiceAPI* | [**CronjobTektonPipelines**](docs/CronJobServiceAPI.md#cronjobtektonpipelines) | **Post** /api/v1/cronjob/tekton-pipelines | Tekton pipelines
 *CronJobServiceAPI* | [**CronjobUpdateProjectAppStatus**](docs/CronJobServiceAPI.md#cronjobupdateprojectappstatus) | **Post** /api/v1/cronjob/update-project-app-status | Update project app status
 *CronJobServiceAPI* | [**CronjobUpdateProjectQuotaMessage**](docs/CronJobServiceAPI.md#cronjobupdateprojectquotamessage) | **Post** /api/v1/cronjob/update-project-quota-message | Update project quota message
 *DnsServersAPI* | [**DnsserversCreate**](docs/DnsServersAPI.md#dnsserverscreate) | **Post** /api/v1/dnsservers/create | Create dns servers for access profile

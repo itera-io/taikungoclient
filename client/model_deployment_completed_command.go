@@ -22,6 +22,7 @@ var _ MappedNullable = &DeploymentCompletedCommand{}
 type DeploymentCompletedCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Result NullableString `json:"result,omitempty"`
+	FromCronJob *bool `json:"fromCronJob,omitempty"`
 }
 
 // NewDeploymentCompletedCommand instantiates a new DeploymentCompletedCommand object
@@ -115,6 +116,38 @@ func (o *DeploymentCompletedCommand) UnsetResult() {
 	o.Result.Unset()
 }
 
+// GetFromCronJob returns the FromCronJob field value if set, zero value otherwise.
+func (o *DeploymentCompletedCommand) GetFromCronJob() bool {
+	if o == nil || IsNil(o.FromCronJob) {
+		var ret bool
+		return ret
+	}
+	return *o.FromCronJob
+}
+
+// GetFromCronJobOk returns a tuple with the FromCronJob field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentCompletedCommand) GetFromCronJobOk() (*bool, bool) {
+	if o == nil || IsNil(o.FromCronJob) {
+		return nil, false
+	}
+	return o.FromCronJob, true
+}
+
+// HasFromCronJob returns a boolean if a field has been set.
+func (o *DeploymentCompletedCommand) HasFromCronJob() bool {
+	if o != nil && !IsNil(o.FromCronJob) {
+		return true
+	}
+
+	return false
+}
+
+// SetFromCronJob gets a reference to the given bool and assigns it to the FromCronJob field.
+func (o *DeploymentCompletedCommand) SetFromCronJob(v bool) {
+	o.FromCronJob = &v
+}
+
 func (o DeploymentCompletedCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -130,6 +163,9 @@ func (o DeploymentCompletedCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Result.IsSet() {
 		toSerialize["result"] = o.Result.Get()
+	}
+	if !IsNil(o.FromCronJob) {
+		toSerialize["fromCronJob"] = o.FromCronJob
 	}
 	return toSerialize, nil
 }
