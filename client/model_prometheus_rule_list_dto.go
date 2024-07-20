@@ -26,7 +26,7 @@ type PrometheusRuleListDto struct {
 	UserName NullableString `json:"userName,omitempty"`
 	Url NullableString `json:"url,omitempty"`
 	MetricName NullableString `json:"metricName,omitempty"`
-	Labels []PrometheusLabelUpdateDto `json:"labels,omitempty"`
+	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
 	BoundOrganizations []PrometheusOrganizationDiscountDto `json:"boundOrganizations,omitempty"`
 	Type *PrometheusType `json:"type,omitempty"`
 	Price *float64 `json:"price,omitempty"`
@@ -299,9 +299,9 @@ func (o *PrometheusRuleListDto) UnsetMetricName() {
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PrometheusRuleListDto) GetLabels() []PrometheusLabelUpdateDto {
+func (o *PrometheusRuleListDto) GetLabels() []PrometheusLabelListDto {
 	if o == nil {
-		var ret []PrometheusLabelUpdateDto
+		var ret []PrometheusLabelListDto
 		return ret
 	}
 	return o.Labels
@@ -310,7 +310,7 @@ func (o *PrometheusRuleListDto) GetLabels() []PrometheusLabelUpdateDto {
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PrometheusRuleListDto) GetLabelsOk() ([]PrometheusLabelUpdateDto, bool) {
+func (o *PrometheusRuleListDto) GetLabelsOk() ([]PrometheusLabelListDto, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
@@ -326,8 +326,8 @@ func (o *PrometheusRuleListDto) HasLabels() bool {
 	return false
 }
 
-// SetLabels gets a reference to the given []PrometheusLabelUpdateDto and assigns it to the Labels field.
-func (o *PrometheusRuleListDto) SetLabels(v []PrometheusLabelUpdateDto) {
+// SetLabels gets a reference to the given []PrometheusLabelListDto and assigns it to the Labels field.
+func (o *PrometheusRuleListDto) SetLabels(v []PrometheusLabelListDto) {
 	o.Labels = v
 }
 

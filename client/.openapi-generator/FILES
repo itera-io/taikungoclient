@@ -737,9 +737,7 @@ docs/PrometheusDashboardDto.md
 docs/PrometheusDashboardListDto.md
 docs/PrometheusDashboardUpdateCommand.md
 docs/PrometheusEntity.md
-docs/PrometheusLabelDeleteDto.md
 docs/PrometheusLabelListDto.md
-docs/PrometheusLabelUpdateDto.md
 docs/PrometheusMetricsCommand.md
 docs/PrometheusOrganizationDiscountDto.md
 docs/PrometheusOrganizationsAPI.md
@@ -1607,9 +1605,7 @@ model_prometheus_dashboard_dto.go
 model_prometheus_dashboard_list_dto.go
 model_prometheus_dashboard_update_command.go
 model_prometheus_entity.go
-model_prometheus_label_delete_dto.go
 model_prometheus_label_list_dto.go
-model_prometheus_label_update_dto.go
 model_prometheus_metrics_command.go
 model_prometheus_organization_discount_dto.go
 model_prometheus_rule_list_dto.go

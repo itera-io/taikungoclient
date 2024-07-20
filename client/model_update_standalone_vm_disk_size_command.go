@@ -21,7 +21,7 @@ var _ MappedNullable = &UpdateStandaloneVmDiskSizeCommand{}
 // UpdateStandaloneVmDiskSizeCommand struct for UpdateStandaloneVmDiskSizeCommand
 type UpdateStandaloneVmDiskSizeCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	Size *int64 `json:"size,omitempty"`
+	Size *int32 `json:"size,omitempty"`
 }
 
 // NewUpdateStandaloneVmDiskSizeCommand instantiates a new UpdateStandaloneVmDiskSizeCommand object
@@ -74,9 +74,9 @@ func (o *UpdateStandaloneVmDiskSizeCommand) SetId(v int32) {
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *UpdateStandaloneVmDiskSizeCommand) GetSize() int64 {
+func (o *UpdateStandaloneVmDiskSizeCommand) GetSize() int32 {
 	if o == nil || IsNil(o.Size) {
-		var ret int64
+		var ret int32
 		return ret
 	}
 	return *o.Size
@@ -84,7 +84,7 @@ func (o *UpdateStandaloneVmDiskSizeCommand) GetSize() int64 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateStandaloneVmDiskSizeCommand) GetSizeOk() (*int64, bool) {
+func (o *UpdateStandaloneVmDiskSizeCommand) GetSizeOk() (*int32, bool) {
 	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
@@ -100,8 +100,8 @@ func (o *UpdateStandaloneVmDiskSizeCommand) HasSize() bool {
 	return false
 }
 
-// SetSize gets a reference to the given int64 and assigns it to the Size field.
-func (o *UpdateStandaloneVmDiskSizeCommand) SetSize(v int64) {
+// SetSize gets a reference to the given int32 and assigns it to the Size field.
+func (o *UpdateStandaloneVmDiskSizeCommand) SetSize(v int32) {
 	o.Size = &v
 }
 

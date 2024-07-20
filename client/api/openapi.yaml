@@ -5416,8 +5416,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-07-19T00:04:20.0028692Z
-                  createdAt: 2024-07-19T00:04:20.0028692Z
+                  lastValidated: 2024-07-19T15:38:17.2784462Z
+                  createdAt: 2024-07-19T15:38:17.2784462Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5522,14 +5522,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-07-19T00:04:20.0028692Z
+                    lastBackup: 2024-07-19T15:38:17.2784462Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-07-19T00:04:20.0028692Z
+                  createdAt: 2024-07-19T15:38:17.2784462Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-07-19T00:04:20.0028692Z
+                  lastBackup: 2024-07-19T15:38:17.2784462Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5634,8 +5634,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-19T00:04:20.0028692Z
-                  expiration: 2024-07-19T00:04:20.0028692Z
+                  createdAt: 2024-07-19T15:38:17.2784462Z
+                  expiration: 2024-07-19T15:38:17.2784462Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5739,7 +5739,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-19T00:04:20.0028692Z
+                  createdAt: 2024-07-19T15:38:17.2784462Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5849,9 +5849,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-07-19T00:04:20.0028692+00:00
-                  startTimeStamp: 2024-07-19T00:04:20.0028692+00:00
-                  createdAt: 2024-07-19T00:04:20.0028692Z
+                  completionDateTime: 2024-07-19T15:38:17.2784462+00:00
+                  startTimeStamp: 2024-07-19T15:38:17.2784462+00:00
+                  createdAt: 2024-07-19T15:38:17.2784462Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -57905,38 +57905,12 @@ components:
           format: double
           type: number
       type: object
-    PrometheusLabelDeleteDto:
-      additionalProperties: false
-      example:
-        id: 6
-      properties:
-        id:
-          format: int32
-          type: integer
-      type: object
     PrometheusLabelListDto:
       additionalProperties: false
       example:
         label: label
         value: value
       properties:
-        label:
-          nullable: true
-          type: string
-        value:
-          nullable: true
-          type: string
-      type: object
-    PrometheusLabelUpdateDto:
-      additionalProperties: false
-      example:
-        id: 1
-        label: label
-        value: value
-      properties:
-        id:
-          format: int32
-          type: integer
         label:
           nullable: true
           type: string
@@ -58022,11 +57996,9 @@ components:
           id: 6
         billingStartDate: billingStartDate
         labels:
-        - id: 1
-          label: label
+        - label: label
           value: value
-        - id: 1
-          label: label
+        - label: label
           value: value
         operationCredential:
           isDefault: true
@@ -58098,7 +58070,7 @@ components:
           type: string
         labels:
           items:
-            $ref: '#/components/schemas/PrometheusLabelUpdateDto'
+            $ref: '#/components/schemas/PrometheusLabelListDto'
           nullable: true
           type: array
         boundOrganizations:
@@ -58151,11 +58123,9 @@ components:
             id: 6
           billingStartDate: billingStartDate
           labels:
-          - id: 1
-            label: label
+          - label: label
             value: value
-          - id: 1
-            label: label
+          - label: label
             value: value
           operationCredential:
             isDefault: true
@@ -58222,11 +58192,9 @@ components:
             id: 6
           billingStartDate: billingStartDate
           labels:
-          - id: 1
-            label: label
+          - label: label
             value: value
-          - id: 1
-            label: label
+          - label: label
             value: value
           operationCredential:
             isDefault: true
@@ -59422,24 +59390,14 @@ components:
     RuleForUpdateDto:
       additionalProperties: false
       example:
-        organizationId: 5
+        organizationId: 6
         metricName: metricName
-        labelsToUpdate:
-        - id: 1
-          label: label
-          value: value
-        - id: 1
-          label: label
-          value: value
         price: 0.8008281904610115
-        ruleDiscountRate: 5
+        ruleDiscountRate: 1
         name: name
-        labelsToDelete:
-        - id: 6
-        - id: 6
-        operationCredentialId: 2
+        operationCredentialId: 5
         type: Count
-        labelsToAdd:
+        labels:
         - label: label
           value: value
         - label: label
@@ -59457,19 +59415,9 @@ components:
           format: double
           nullable: true
           type: number
-        labelsToAdd:
+        labels:
           items:
             $ref: '#/components/schemas/PrometheusLabelListDto'
-          nullable: true
-          type: array
-        labelsToDelete:
-          items:
-            $ref: '#/components/schemas/PrometheusLabelDeleteDto'
-          nullable: true
-          type: array
-        labelsToUpdate:
-          items:
-            $ref: '#/components/schemas/PrometheusLabelUpdateDto'
           nullable: true
           type: array
         organizationId:
@@ -63987,7 +63935,7 @@ components:
           format: int32
           type: integer
         size:
-          format: int64
+          format: int32
           type: integer
       type: object
     UpdateSubscriptionCommand:
