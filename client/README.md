@@ -181,6 +181,7 @@ Class | Method | HTTP request | Description
 *BillingAPI* | [**BillingExportCsv**](docs/BillingAPI.md#billingexportcsv) | **Get** /api/v1/billing/export | Export Csv
 *BillingAPI* | [**BillingGroupedList**](docs/BillingAPI.md#billinggroupedlist) | **Post** /api/v1/billing/grouped | Retrieve a grouped list of billing summaries
 *BillingAPI* | [**BillingList**](docs/BillingAPI.md#billinglist) | **Get** /api/v1/billing | Retrieve billing info
+*CatalogAPI* | [**CatalogAddProject**](docs/CatalogAPI.md#catalogaddproject) | **Post** /api/v1/catalog/add-project | Add projects to catalog
 *CatalogAPI* | [**CatalogBindProject**](docs/CatalogAPI.md#catalogbindproject) | **Post** /api/v1/catalog/bind-project | Bind projects to catalog
 *CatalogAPI* | [**CatalogCreate**](docs/CatalogAPI.md#catalogcreate) | **Post** /api/v1/catalog/create | Create catalog
 *CatalogAPI* | [**CatalogDelete**](docs/CatalogAPI.md#catalogdelete) | **Delete** /api/v1/catalog/{id} | Delete catalog
@@ -763,6 +764,7 @@ Class | Method | HTTP request | Description
  - [AccessProfilesSearchList](docs/AccessProfilesSearchList.md)
  - [ActionStatus](docs/ActionStatus.md)
  - [ActionType](docs/ActionType.md)
+ - [AddProjectsToCatalogCommand](docs/AddProjectsToCatalogCommand.md)
  - [AdminAddBalanceCommand](docs/AdminAddBalanceCommand.md)
  - [AdminBillingOperationCommand](docs/AdminBillingOperationCommand.md)
  - [AdminOrganizationsDeleteCommand](docs/AdminOrganizationsDeleteCommand.md)

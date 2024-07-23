@@ -5416,8 +5416,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-07-19T15:38:17.2784462Z
-                  createdAt: 2024-07-19T15:38:17.2784462Z
+                  lastValidated: 2024-07-23T00:02:55.8291778Z
+                  createdAt: 2024-07-23T00:02:55.8291778Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5522,14 +5522,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-07-19T15:38:17.2784462Z
+                    lastBackup: 2024-07-23T00:02:55.8291778Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-07-19T15:38:17.2784462Z
+                  createdAt: 2024-07-23T00:02:55.8291778Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-07-19T15:38:17.2784462Z
+                  lastBackup: 2024-07-23T00:02:55.8291778Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5634,8 +5634,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-19T15:38:17.2784462Z
-                  expiration: 2024-07-19T15:38:17.2784462Z
+                  createdAt: 2024-07-23T00:02:55.8291778Z
+                  expiration: 2024-07-23T00:02:55.8291778Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5739,7 +5739,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-19T15:38:17.2784462Z
+                  createdAt: 2024-07-23T00:02:55.8291778Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5849,9 +5849,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-07-19T15:38:17.2784462+00:00
-                  startTimeStamp: 2024-07-19T15:38:17.2784462+00:00
-                  createdAt: 2024-07-19T15:38:17.2784462Z
+                  completionDateTime: 2024-07-23T00:02:55.8291778+00:00
+                  startTimeStamp: 2024-07-23T00:02:55.8291778+00:00
+                  createdAt: 2024-07-23T00:02:55.8291778Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -6220,6 +6220,48 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Edit catalog
+      tags:
+      - Catalog
+  /api/v1/catalog/add-project:
+    post:
+      operationId: catalog-add-project
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddProjectsToCatalogCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Add projects to catalog
       tags:
       - Catalog
   /api/v1/catalog/bind-project:
@@ -38328,6 +38370,24 @@ components:
       - StartAddingVCluster
       - AddingVCluster
       type: string
+    AddProjectsToCatalogCommand:
+      additionalProperties: false
+      example:
+        projects:
+        - 0
+        - 0
+        catalogId: 6
+      properties:
+        projects:
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
+        catalogId:
+          format: int32
+          type: integer
+      type: object
     AdminAddBalanceCommand:
       additionalProperties: false
       example:
@@ -59390,12 +59450,10 @@ components:
     RuleForUpdateDto:
       additionalProperties: false
       example:
-        organizationId: 6
         metricName: metricName
         price: 0.8008281904610115
-        ruleDiscountRate: 1
         name: name
-        operationCredentialId: 5
+        operationCredentialId: 6
         type: Count
         labels:
         - label: label
@@ -59420,14 +59478,6 @@ components:
             $ref: '#/components/schemas/PrometheusLabelListDto'
           nullable: true
           type: array
-        organizationId:
-          format: int32
-          nullable: true
-          type: integer
-        ruleDiscountRate:
-          format: int32
-          nullable: true
-          type: integer
         operationCredentialId:
           format: int32
           nullable: true

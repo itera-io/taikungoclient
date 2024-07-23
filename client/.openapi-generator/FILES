@@ -96,6 +96,7 @@ docs/AccessProfilesSearchCommand.md
 docs/AccessProfilesSearchList.md
 docs/ActionStatus.md
 docs/ActionType.md
+docs/AddProjectsToCatalogCommand.md
 docs/AdminAPI.md
 docs/AdminAddBalanceCommand.md
 docs/AdminBillingOperationCommand.md
@@ -1017,6 +1018,7 @@ model_access_profiles_search_command.go
 model_access_profiles_search_list.go
 model_action_status.go
 model_action_type.go
+model_add_projects_to_catalog_command.go
 model_admin_add_balance_command.go
 model_admin_billing_operation_command.go
 model_admin_organizations_delete_command.go

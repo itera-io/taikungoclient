@@ -25,8 +25,6 @@ type RuleForUpdateDto struct {
 	Type *PrometheusType `json:"type,omitempty"`
 	Price NullableFloat64 `json:"price,omitempty"`
 	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	RuleDiscountRate NullableInt32 `json:"ruleDiscountRate,omitempty"`
 	OperationCredentialId NullableInt32 `json:"operationCredentialId,omitempty"`
 }
 
@@ -238,90 +236,6 @@ func (o *RuleForUpdateDto) SetLabels(v []PrometheusLabelListDto) {
 	o.Labels = v
 }
 
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RuleForUpdateDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.OrganizationId.Get()
-}
-
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RuleForUpdateDto) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
-}
-
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *RuleForUpdateDto) HasOrganizationId() bool {
-	if o != nil && o.OrganizationId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
-func (o *RuleForUpdateDto) SetOrganizationId(v int32) {
-	o.OrganizationId.Set(&v)
-}
-// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
-func (o *RuleForUpdateDto) SetOrganizationIdNil() {
-	o.OrganizationId.Set(nil)
-}
-
-// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
-func (o *RuleForUpdateDto) UnsetOrganizationId() {
-	o.OrganizationId.Unset()
-}
-
-// GetRuleDiscountRate returns the RuleDiscountRate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RuleForUpdateDto) GetRuleDiscountRate() int32 {
-	if o == nil || IsNil(o.RuleDiscountRate.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.RuleDiscountRate.Get()
-}
-
-// GetRuleDiscountRateOk returns a tuple with the RuleDiscountRate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RuleForUpdateDto) GetRuleDiscountRateOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.RuleDiscountRate.Get(), o.RuleDiscountRate.IsSet()
-}
-
-// HasRuleDiscountRate returns a boolean if a field has been set.
-func (o *RuleForUpdateDto) HasRuleDiscountRate() bool {
-	if o != nil && o.RuleDiscountRate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRuleDiscountRate gets a reference to the given NullableInt32 and assigns it to the RuleDiscountRate field.
-func (o *RuleForUpdateDto) SetRuleDiscountRate(v int32) {
-	o.RuleDiscountRate.Set(&v)
-}
-// SetRuleDiscountRateNil sets the value for RuleDiscountRate to be an explicit nil
-func (o *RuleForUpdateDto) SetRuleDiscountRateNil() {
-	o.RuleDiscountRate.Set(nil)
-}
-
-// UnsetRuleDiscountRate ensures that no value is present for RuleDiscountRate, not even an explicit nil
-func (o *RuleForUpdateDto) UnsetRuleDiscountRate() {
-	o.RuleDiscountRate.Unset()
-}
-
 // GetOperationCredentialId returns the OperationCredentialId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RuleForUpdateDto) GetOperationCredentialId() int32 {
 	if o == nil || IsNil(o.OperationCredentialId.Get()) {
@@ -388,12 +302,6 @@ func (o RuleForUpdateDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Labels != nil {
 		toSerialize["labels"] = o.Labels
-	}
-	if o.OrganizationId.IsSet() {
-		toSerialize["organizationId"] = o.OrganizationId.Get()
-	}
-	if o.RuleDiscountRate.IsSet() {
-		toSerialize["ruleDiscountRate"] = o.RuleDiscountRate.Get()
 	}
 	if o.OperationCredentialId.IsSet() {
 		toSerialize["operationCredentialId"] = o.OperationCredentialId.Get()
