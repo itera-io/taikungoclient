@@ -96,6 +96,8 @@ docs/AccessProfilesSearchCommand.md
 docs/AccessProfilesSearchList.md
 docs/ActionStatus.md
 docs/ActionType.md
+docs/AddOrganizationsToRuleDto.md
+docs/AddPrometheusRulesToOrganizationDto.md
 docs/AdminAPI.md
 docs/AdminAddBalanceCommand.md
 docs/AdminBillingOperationCommand.md
@@ -360,6 +362,7 @@ docs/DeleteExecutorCommand.md
 docs/DeleteImageFromProjectCommand.md
 docs/DeleteKubeConfigByProjectIdCommand.md
 docs/DeleteKubeConfigCommand.md
+docs/DeleteOrganizationsDto.md
 docs/DeleteProjectCommand.md
 docs/DeleteRepositoryCommand.md
 docs/DeleteRestoreCommand.md
@@ -1017,6 +1020,8 @@ model_access_profiles_search_command.go
 model_access_profiles_search_list.go
 model_action_status.go
 model_action_type.go
+model_add_organizations_to_rule_dto.go
+model_add_prometheus_rules_to_organization_dto.go
 model_admin_add_balance_command.go
 model_admin_billing_operation_command.go
 model_admin_organizations_delete_command.go
@@ -1264,6 +1269,7 @@ model_delete_executor_command.go
 model_delete_image_from_project_command.go
 model_delete_kube_config_by_project_id_command.go
 model_delete_kube_config_command.go
+model_delete_organizations_dto.go
 model_delete_project_command.go
 model_delete_repository_command.go
 model_delete_restore_command.go

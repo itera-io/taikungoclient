@@ -5416,8 +5416,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-07-23T12:27:50.5192554Z
-                  createdAt: 2024-07-23T12:27:50.5192554Z
+                  lastValidated: 2024-07-24T17:07:05.735558Z
+                  createdAt: 2024-07-24T17:07:05.735558Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5522,14 +5522,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-07-23T12:27:50.5192554Z
+                    lastBackup: 2024-07-24T17:07:05.735558Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-07-23T12:27:50.5192554Z
+                  createdAt: 2024-07-24T17:07:05.735558Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-07-23T12:27:50.5192554Z
+                  lastBackup: 2024-07-24T17:07:05.735558Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5634,8 +5634,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-23T12:27:50.5192554Z
-                  expiration: 2024-07-23T12:27:50.5192554Z
+                  createdAt: 2024-07-24T17:07:05.735558Z
+                  expiration: 2024-07-24T17:07:05.735558Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5739,7 +5739,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-23T12:27:50.5192554Z
+                  createdAt: 2024-07-24T17:07:05.735558Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5849,9 +5849,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-07-23T12:27:50.5192554+00:00
-                  startTimeStamp: 2024-07-23T12:27:50.5192554+00:00
-                  createdAt: 2024-07-23T12:27:50.5192554Z
+                  completionDateTime: 2024-07-24T17:07:05.735558+00:00
+                  startTimeStamp: 2024-07-24T17:07:05.735558+00:00
+                  createdAt: 2024-07-24T17:07:05.735558Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -21780,6 +21780,59 @@ paths:
       summary: Accept discount offer
       tags:
       - Organizations
+  /api/v1/organizations/{id}/prometheusrules:
+    post:
+      operationId: organizations-add-prometheusrules
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/AddPrometheusRulesToOrganizationDto'
+              type: array
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Add prometheus rule to organization
+      tags:
+      - Organizations
   /api/v1/organizations:
     get:
       operationId: organizations-list
@@ -27832,6 +27885,111 @@ paths:
       summary: Bind rules to organizations
       tags:
       - Prometheus Organizations
+  /api/v1/prometheusrules/{id}/organizations:
+    post:
+      operationId: prometheusrules-add-organizations
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/AddOrganizationsToRuleDto'
+              type: array
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Add organizations to prometheus rule
+      tags:
+      - Prometheus Rules
+    put:
+      operationId: prometheusrules-delete-organizations
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/DeleteOrganizationsDto'
+              type: array
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete organizations from prometheus rule
+      tags:
+      - Prometheus Rules
   /api/v1/prometheusrules/edit/{id}:
     put:
       operationId: prometheusrules-update
@@ -38435,6 +38593,37 @@ components:
       - StartAddingVCluster
       - AddingVCluster
       type: string
+    AddOrganizationsToRuleDto:
+      additionalProperties: false
+      example:
+        organizationId: 0
+        ruleDiscountRate: 6.027456183070403
+      properties:
+        organizationId:
+          format: int32
+          type: integer
+        ruleDiscountRate:
+          format: double
+          nullable: true
+          type: number
+      type: object
+    AddPrometheusRulesToOrganizationDto:
+      additionalProperties: false
+      example:
+        discountRate: 6.027456183070403
+        isBound: true
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        discountRate:
+          format: double
+          nullable: true
+          type: number
+        isBound:
+          type: boolean
+      type: object
     AdminAddBalanceCommand:
       additionalProperties: false
       example:
@@ -46470,6 +46659,20 @@ components:
       type: object
     DeleteMyAccountCommand:
       additionalProperties: false
+      type: object
+    DeleteOrganizationsDto:
+      additionalProperties: false
+      example:
+        organizationId: 0
+        ruleDiscountRate: 6.027456183070403
+      properties:
+        organizationId:
+          format: int32
+          type: integer
+        ruleDiscountRate:
+          format: double
+          nullable: true
+          type: number
       type: object
     DeleteProjectCommand:
       additionalProperties: false

@@ -44,6 +44,19 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrganizationsAPIService OrganizationsAddPrometheusrules", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		httpRes, err := apiClient.OrganizationsAPI.OrganizationsAddPrometheusrules(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationsAPIService OrganizationsCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

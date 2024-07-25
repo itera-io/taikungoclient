@@ -450,6 +450,7 @@ Class | Method | HTTP request | Description
 *OrganizationSubscriptionsAPI* | [**OrganizationsubcriptionsUpdate**](docs/OrganizationSubscriptionsAPI.md#organizationsubcriptionsupdate) | **Post** /api/v1/organizationsubcriptions/update | Update subscription
 *OrganizationsAPI* | [**OrganizationsAcceptOffer**](docs/OrganizationsAPI.md#organizationsacceptoffer) | **Post** /api/v1/organizations/accept-offer | Accept discount offer
 *OrganizationsAPI* | [**OrganizationsAccessForPartner**](docs/OrganizationsAPI.md#organizationsaccessforpartner) | **Post** /api/v1/organizations/access-for partner | Give access to partner
+*OrganizationsAPI* | [**OrganizationsAddPrometheusrules**](docs/OrganizationsAPI.md#organizationsaddprometheusrules) | **Post** /api/v1/organizations/{id}/prometheusrules | Add prometheus rule to organization
 *OrganizationsAPI* | [**OrganizationsCreate**](docs/OrganizationsAPI.md#organizationscreate) | **Post** /api/v1/organizations | Add a new organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDelete**](docs/OrganizationsAPI.md#organizationsdelete) | **Delete** /api/v1/organizations/{id} | Delete the specified organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDetawils**](docs/OrganizationsAPI.md#organizationsdetawils) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
@@ -565,9 +566,11 @@ Class | Method | HTTP request | Description
 *PrometheusBillingsAPI* | [**PrometheusbillingsGroupedList**](docs/PrometheusBillingsAPI.md#prometheusbillingsgroupedlist) | **Post** /api/v1/prometheusbillings/grouped | Retrieve a list of grouped prometheus billing
 *PrometheusBillingsAPI* | [**PrometheusbillingsList**](docs/PrometheusBillingsAPI.md#prometheusbillingslist) | **Get** /api/v1/prometheusbillings | Retrieve all prometheus billing
 *PrometheusOrganizationsAPI* | [**PrometheusorganizationsBindRules**](docs/PrometheusOrganizationsAPI.md#prometheusorganizationsbindrules) | **Post** /api/v1/prometheusorganizations/bind/rules | Bind rules to organizations
+*PrometheusRulesAPI* | [**PrometheusrulesAddOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesaddorganizations) | **Post** /api/v1/prometheusrules/{id}/organizations | Add organizations to prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesBindOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesbindorganizations) | **Post** /api/v1/prometheusrules/bind/organizations | Bind organizations to prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesCreate**](docs/PrometheusRulesAPI.md#prometheusrulescreate) | **Post** /api/v1/prometheusrules | Add prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesDelete**](docs/PrometheusRulesAPI.md#prometheusrulesdelete) | **Delete** /api/v1/prometheusrules/{id} | Remove prometheus rule
+*PrometheusRulesAPI* | [**PrometheusrulesDeleteOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesdeleteorganizations) | **Put** /api/v1/prometheusrules/{id}/organizations | Delete organizations from prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesDetails**](docs/PrometheusRulesAPI.md#prometheusrulesdetails) | **Get** /api/v1/prometheusrules/details | Retrieve all prometheus rules with detailed info
 *PrometheusRulesAPI* | [**PrometheusrulesList**](docs/PrometheusRulesAPI.md#prometheusruleslist) | **Get** /api/v1/prometheusrules | Retrieve a list of prometheus rules
 *PrometheusRulesAPI* | [**PrometheusrulesUpdate**](docs/PrometheusRulesAPI.md#prometheusrulesupdate) | **Put** /api/v1/prometheusrules/edit/{id} | Edit prometheus rule
@@ -765,6 +768,8 @@ Class | Method | HTTP request | Description
  - [AccessProfilesSearchList](docs/AccessProfilesSearchList.md)
  - [ActionStatus](docs/ActionStatus.md)
  - [ActionType](docs/ActionType.md)
+ - [AddOrganizationsToRuleDto](docs/AddOrganizationsToRuleDto.md)
+ - [AddPrometheusRulesToOrganizationDto](docs/AddPrometheusRulesToOrganizationDto.md)
  - [AdminAddBalanceCommand](docs/AdminAddBalanceCommand.md)
  - [AdminBillingOperationCommand](docs/AdminBillingOperationCommand.md)
  - [AdminOrganizationsDeleteCommand](docs/AdminOrganizationsDeleteCommand.md)
@@ -1012,6 +1017,7 @@ Class | Method | HTTP request | Description
  - [DeleteImageFromProjectCommand](docs/DeleteImageFromProjectCommand.md)
  - [DeleteKubeConfigByProjectIdCommand](docs/DeleteKubeConfigByProjectIdCommand.md)
  - [DeleteKubeConfigCommand](docs/DeleteKubeConfigCommand.md)
+ - [DeleteOrganizationsDto](docs/DeleteOrganizationsDto.md)
  - [DeleteProjectCommand](docs/DeleteProjectCommand.md)
  - [DeleteRepositoryCommand](docs/DeleteRepositoryCommand.md)
  - [DeleteRestoreCommand](docs/DeleteRestoreCommand.md)
