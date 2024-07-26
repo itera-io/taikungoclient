@@ -450,9 +450,10 @@ Class | Method | HTTP request | Description
 *OrganizationSubscriptionsAPI* | [**OrganizationsubcriptionsUpdate**](docs/OrganizationSubscriptionsAPI.md#organizationsubcriptionsupdate) | **Post** /api/v1/organizationsubcriptions/update | Update subscription
 *OrganizationsAPI* | [**OrganizationsAcceptOffer**](docs/OrganizationsAPI.md#organizationsacceptoffer) | **Post** /api/v1/organizations/accept-offer | Accept discount offer
 *OrganizationsAPI* | [**OrganizationsAccessForPartner**](docs/OrganizationsAPI.md#organizationsaccessforpartner) | **Post** /api/v1/organizations/access-for partner | Give access to partner
-*OrganizationsAPI* | [**OrganizationsAddPrometheusrules**](docs/OrganizationsAPI.md#organizationsaddprometheusrules) | **Post** /api/v1/organizations/{id}/prometheusrules | Add prometheus rule to organization
+*OrganizationsAPI* | [**OrganizationsAddPrometheusrules**](docs/OrganizationsAPI.md#organizationsaddprometheusrules) | **Post** /api/v1/organizations/{id}/prometheusrules | Add prometheus rule(s) to organization
 *OrganizationsAPI* | [**OrganizationsCreate**](docs/OrganizationsAPI.md#organizationscreate) | **Post** /api/v1/organizations | Add a new organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDelete**](docs/OrganizationsAPI.md#organizationsdelete) | **Delete** /api/v1/organizations/{id} | Delete the specified organization. Only available for admins.
+*OrganizationsAPI* | [**OrganizationsDeletePrometheusrules**](docs/OrganizationsAPI.md#organizationsdeleteprometheusrules) | **Put** /api/v1/organizations/{id}/prometheusrules | Delete prometheus rule(s) from organization
 *OrganizationsAPI* | [**OrganizationsDetawils**](docs/OrganizationsAPI.md#organizationsdetawils) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
 *OrganizationsAPI* | [**OrganizationsExportCsv**](docs/OrganizationsAPI.md#organizationsexportcsv) | **Get** /api/v1/organizations/export | Export Csv file
 *OrganizationsAPI* | [**OrganizationsLeave**](docs/OrganizationsAPI.md#organizationsleave) | **Post** /api/v1/organizations/leave | Leave taikun
@@ -466,11 +467,13 @@ Class | Method | HTTP request | Description
 *PackageAPI* | [**PackageValue**](docs/PackageAPI.md#packagevalue) | **Post** /api/v1/package/value | Get yaml based value
 *PackageAPI* | [**PackageValueAutocomplete**](docs/PackageAPI.md#packagevalueautocomplete) | **Post** /api/v1/package/value-autocomplete | Get autocomplete dictionary
 *PackageAPI* | [**PackageVersions**](docs/PackageAPI.md#packageversions) | **Post** /api/v1/package/versions | Get available versions
+*PartnersAPI* | [**PartnerAddOrganizations**](docs/PartnersAPI.md#partneraddorganizations) | **Post** /api/v1/partner/{id}/organizations | Add organizations to a partner
 *PartnersAPI* | [**PartnerAddWhitelistDomain**](docs/PartnersAPI.md#partneraddwhitelistdomain) | **Post** /api/v1/partner/add/whitelist/domain | Add white list domain
 *PartnersAPI* | [**PartnerBecomeAPartner**](docs/PartnersAPI.md#partnerbecomeapartner) | **Post** /api/v1/partner/become-a-partner | Become a partner
 *PartnersAPI* | [**PartnerBindOrganizations**](docs/PartnersAPI.md#partnerbindorganizations) | **Post** /api/v1/partner/bindorganizations | Bind organizations to a partner
 *PartnersAPI* | [**PartnerContactUs**](docs/PartnersAPI.md#partnercontactus) | **Post** /api/v1/partner/contact-us | Contact with us
 *PartnersAPI* | [**PartnerCreate**](docs/PartnersAPI.md#partnercreate) | **Post** /api/v1/partner/create | Add a partner
+*PartnersAPI* | [**PartnerDeleteOrganizations**](docs/PartnersAPI.md#partnerdeleteorganizations) | **Put** /api/v1/partner/{id}/organizations | Delete organizations from a partner
 *PartnersAPI* | [**PartnerDeleteWhitelistDomain**](docs/PartnersAPI.md#partnerdeletewhitelistdomain) | **Post** /api/v1/partner/delete/whitelist/domain | Delete white list domain
 *PartnersAPI* | [**PartnerDetails**](docs/PartnersAPI.md#partnerdetails) | **Get** /api/v1/partner/details | Details of partners
 *PartnersAPI* | [**PartnerDropdown**](docs/PartnersAPI.md#partnerdropdown) | **Get** /api/v1/partner/list | Get partners dropdown
@@ -1019,6 +1022,7 @@ Class | Method | HTTP request | Description
  - [DeleteKubeConfigCommand](docs/DeleteKubeConfigCommand.md)
  - [DeleteOrganizationsDto](docs/DeleteOrganizationsDto.md)
  - [DeleteProjectCommand](docs/DeleteProjectCommand.md)
+ - [DeletePrometheusRulesFromOrganizationDto](docs/DeletePrometheusRulesFromOrganizationDto.md)
  - [DeleteRepositoryCommand](docs/DeleteRepositoryCommand.md)
  - [DeleteRestoreCommand](docs/DeleteRestoreCommand.md)
  - [DeleteScheduleCommand](docs/DeleteScheduleCommand.md)

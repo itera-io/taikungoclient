@@ -5416,8 +5416,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-07-24T17:07:05.735558Z
-                  createdAt: 2024-07-24T17:07:05.735558Z
+                  lastValidated: 2024-07-26T00:02:51.6634524Z
+                  createdAt: 2024-07-26T00:02:51.6634524Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5522,14 +5522,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-07-24T17:07:05.735558Z
+                    lastBackup: 2024-07-26T00:02:51.6634524Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-07-24T17:07:05.735558Z
+                  createdAt: 2024-07-26T00:02:51.6634524Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-07-24T17:07:05.735558Z
+                  lastBackup: 2024-07-26T00:02:51.6634524Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5634,8 +5634,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-24T17:07:05.735558Z
-                  expiration: 2024-07-24T17:07:05.735558Z
+                  createdAt: 2024-07-26T00:02:51.6634524Z
+                  expiration: 2024-07-26T00:02:51.6634524Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5739,7 +5739,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-07-24T17:07:05.735558Z
+                  createdAt: 2024-07-26T00:02:51.6634524Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5849,9 +5849,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-07-24T17:07:05.735558+00:00
-                  startTimeStamp: 2024-07-24T17:07:05.735558+00:00
-                  createdAt: 2024-07-24T17:07:05.735558Z
+                  completionDateTime: 2024-07-26T00:02:51.6634524+00:00
+                  startTimeStamp: 2024-07-26T00:02:51.6634524+00:00
+                  createdAt: 2024-07-26T00:02:51.6634524Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -21737,49 +21737,6 @@ paths:
       summary: Retrieve all organization subscriptions
       tags:
       - Organization Subscriptions
-  /api/v1/organizations/accept-offer:
-    post:
-      operationId: organizations-accept-offer
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/AcceptOfferCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Accept discount offer
-      tags:
-      - Organizations
   /api/v1/organizations/{id}/prometheusrules:
     post:
       operationId: organizations-add-prometheusrules
@@ -21830,7 +21787,102 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Add prometheus rule to organization
+      summary: Add prometheus rule(s) to organization
+      tags:
+      - Organizations
+    put:
+      operationId: organizations-delete-prometheusrules
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/DeletePrometheusRulesFromOrganizationDto'
+              type: array
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete prometheus rule(s) from organization
+      tags:
+      - Organizations
+  /api/v1/organizations/accept-offer:
+    post:
+      operationId: organizations-accept-offer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AcceptOfferCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Accept discount offer
       tags:
       - Organizations
   /api/v1/organizations:
@@ -22724,6 +22776,113 @@ paths:
       summary: Retrieve all available packages
       tags:
       - Package
+  /api/v1/partner/{id}/organizations:
+    post:
+      operationId: partner-add-organizations
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                format: int32
+                type: integer
+              type: array
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Add organizations to a partner
+      tags:
+      - Partners
+    put:
+      operationId: partner-delete-organizations
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              items:
+                format: int32
+                type: integer
+              type: array
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete organizations from a partner
+      tags:
+      - Partners
   /api/v1/partner/add/whitelist/domain:
     post:
       operationId: partner-add/whitelist/domain
@@ -46684,6 +46843,23 @@ components:
           format: int32
           type: integer
         isForceDelete:
+          type: boolean
+      type: object
+    DeletePrometheusRulesFromOrganizationDto:
+      additionalProperties: false
+      example:
+        discountRate: 6.027456183070403
+        isBound: true
+        id: 0
+      properties:
+        id:
+          format: int32
+          type: integer
+        discountRate:
+          format: double
+          nullable: true
+          type: number
+        isBound:
           type: boolean
       type: object
     DeleteRedundantProjectActionsCommand:

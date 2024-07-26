@@ -364,6 +364,7 @@ docs/DeleteKubeConfigByProjectIdCommand.md
 docs/DeleteKubeConfigCommand.md
 docs/DeleteOrganizationsDto.md
 docs/DeleteProjectCommand.md
+docs/DeletePrometheusRulesFromOrganizationDto.md
 docs/DeleteRepositoryCommand.md
 docs/DeleteRestoreCommand.md
 docs/DeleteScheduleCommand.md
@@ -1271,6 +1272,7 @@ model_delete_kube_config_by_project_id_command.go
 model_delete_kube_config_command.go
 model_delete_organizations_dto.go
 model_delete_project_command.go
+model_delete_prometheus_rules_from_organization_dto.go
 model_delete_repository_command.go
 model_delete_restore_command.go
 model_delete_schedule_command.go
