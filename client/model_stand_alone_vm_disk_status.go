@@ -24,7 +24,6 @@ const (
 	STANDALONEVMDISKSTATUS_DELETING StandAloneVmDiskStatus = "Deleting"
 	STANDALONEVMDISKSTATUS_FAILURE StandAloneVmDiskStatus = "Failure"
 	STANDALONEVMDISKSTATUS_WAITING StandAloneVmDiskStatus = "Waiting"
-	STANDALONEVMDISKSTATUS_PENDING_DELETE StandAloneVmDiskStatus = "PendingDelete"
 	STANDALONEVMDISKSTATUS_READY StandAloneVmDiskStatus = "Ready"
 	STANDALONEVMDISKSTATUS_UPDATING StandAloneVmDiskStatus = "Updating"
 	STANDALONEVMDISKSTATUS_REPAIRING StandAloneVmDiskStatus = "Repairing"
@@ -35,7 +34,6 @@ var AllowedStandAloneVmDiskStatusEnumValues = []StandAloneVmDiskStatus{
 	"Deleting",
 	"Failure",
 	"Waiting",
-	"PendingDelete",
 	"Ready",
 	"Updating",
 	"Repairing",

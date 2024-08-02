@@ -153,8 +153,6 @@ type APIClient struct {
 
 	ProjectQuotasAPI *ProjectQuotasAPIService
 
-	ProjectRevisionsAPI *ProjectRevisionsAPIService
-
 	ProjectTemplatesAPI *ProjectTemplatesAPIService
 
 	ProjectsAPI *ProjectsAPIService
@@ -281,7 +279,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectGroupsAPI = (*ProjectGroupsAPIService)(&c.common)
 	c.ProjectInfracostsAPI = (*ProjectInfracostsAPIService)(&c.common)
 	c.ProjectQuotasAPI = (*ProjectQuotasAPIService)(&c.common)
-	c.ProjectRevisionsAPI = (*ProjectRevisionsAPIService)(&c.common)
 	c.ProjectTemplatesAPI = (*ProjectTemplatesAPIService)(&c.common)
 	c.ProjectsAPI = (*ProjectsAPIService)(&c.common)
 	c.PrometheusBillingsAPI = (*PrometheusBillingsAPIService)(&c.common)

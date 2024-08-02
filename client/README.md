@@ -508,6 +508,7 @@ Class | Method | HTTP request | Description
 *ProjectDeploymentAPI* | [**ProjectDeploymentCommitVm**](docs/ProjectDeploymentAPI.md#projectdeploymentcommitvm) | **Post** /api/v1/project-deployment/commit-vm | Commit
 *ProjectDeploymentAPI* | [**ProjectDeploymentCompleted**](docs/ProjectDeploymentAPI.md#projectdeploymentcompleted) | **Post** /api/v1/project-deployment/completed | Update project fields
 *ProjectDeploymentAPI* | [**ProjectDeploymentDelete**](docs/ProjectDeploymentAPI.md#projectdeploymentdelete) | **Post** /api/v1/project-deployment/delete | Delete
+*ProjectDeploymentAPI* | [**ProjectDeploymentDeleteVmDisks**](docs/ProjectDeploymentAPI.md#projectdeploymentdeletevmdisks) | **Post** /api/v1/project-deployment/delete-vm-disks | Delete vm disks
 *ProjectDeploymentAPI* | [**ProjectDeploymentDeleteVms**](docs/ProjectDeploymentAPI.md#projectdeploymentdeletevms) | **Post** /api/v1/project-deployment/delete-vms | Delete vms
 *ProjectDeploymentAPI* | [**ProjectDeploymentDisableAi**](docs/ProjectDeploymentAPI.md#projectdeploymentdisableai) | **Post** /api/v1/project-deployment/disable-ai | Disable ai
 *ProjectDeploymentAPI* | [**ProjectDeploymentDisableBackup**](docs/ProjectDeploymentAPI.md#projectdeploymentdisablebackup) | **Post** /api/v1/project-deployment/disable-backup | Disable backup
@@ -535,7 +536,6 @@ Class | Method | HTTP request | Description
 *ProjectInfracostsAPI* | [**ProjectinfracostsUpsert**](docs/ProjectInfracostsAPI.md#projectinfracostsupsert) | **Post** /api/v1/projectinfracosts/upsert/{projectId} | Upsert project infracost by ProjectId
 *ProjectQuotasAPI* | [**ProjectquotasList**](docs/ProjectQuotasAPI.md#projectquotaslist) | **Get** /api/v1/projectquotas | Retrieve all project quotas
 *ProjectQuotasAPI* | [**ProjectquotasUpdate**](docs/ProjectQuotasAPI.md#projectquotasupdate) | **Post** /api/v1/projectquotas/update | Edit project quota
-*ProjectRevisionsAPI* | [**ProjectrevisionsEdit**](docs/ProjectRevisionsAPI.md#projectrevisionsedit) | **Put** /api/v1/projectrevisions/edit/{projectId} | Update project revision by ProjectId for poller
 *ProjectTemplatesAPI* | [**ProjectTemplatesCreate**](docs/ProjectTemplatesAPI.md#projecttemplatescreate) | **Post** /api/v1/project-templates/create | Create project from template
 *ProjectTemplatesAPI* | [**ProjectTemplatesDelete**](docs/ProjectTemplatesAPI.md#projecttemplatesdelete) | **Delete** /api/v1/project-templates/{id} | Delete project template by Id
 *ProjectTemplatesAPI* | [**ProjectTemplatesDropdown**](docs/ProjectTemplatesAPI.md#projecttemplatesdropdown) | **Get** /api/v1/project-templates/list | Retrieve project template by organization Id
@@ -1035,6 +1035,7 @@ Class | Method | HTTP request | Description
  - [DeleteSubscriptionCommand](docs/DeleteSubscriptionCommand.md)
  - [DeleteUserGroupCommand](docs/DeleteUserGroupCommand.md)
  - [DeleteVirtualClusterCommand](docs/DeleteVirtualClusterCommand.md)
+ - [DeleteVmDiskCommand](docs/DeleteVmDiskCommand.md)
  - [DeploymentCommitVmCommand](docs/DeploymentCommitVmCommand.md)
  - [DeploymentCompletedCommand](docs/DeploymentCompletedCommand.md)
  - [DeploymentDisableAiCommand](docs/DeploymentDisableAiCommand.md)
@@ -1345,7 +1346,6 @@ Class | Method | HTTP request | Description
  - [ProjectQuotaList](docs/ProjectQuotaList.md)
  - [ProjectQuotaListDto](docs/ProjectQuotaListDto.md)
  - [ProjectRevisionDto](docs/ProjectRevisionDto.md)
- - [ProjectRevisionUpdateDto](docs/ProjectRevisionUpdateDto.md)
  - [ProjectStatus](docs/ProjectStatus.md)
  - [ProjectTemplateDropdownListDto](docs/ProjectTemplateDropdownListDto.md)
  - [ProjectTemplateList](docs/ProjectTemplateList.md)
