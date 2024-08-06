@@ -20,7 +20,8 @@ var _ MappedNullable = &JsonNodeOptions{}
 
 // JsonNodeOptions struct for JsonNodeOptions
 type JsonNodeOptions struct {
-	PropertyNameCaseInsensitive *bool `json:"propertyNameCaseInsensitive,omitempty"`
+	HasValue *bool `json:"hasValue,omitempty"`
+	Value *JsonNodeOptions `json:"value,omitempty"`
 }
 
 // NewJsonNodeOptions instantiates a new JsonNodeOptions object
@@ -40,36 +41,68 @@ func NewJsonNodeOptionsWithDefaults() *JsonNodeOptions {
 	return &this
 }
 
-// GetPropertyNameCaseInsensitive returns the PropertyNameCaseInsensitive field value if set, zero value otherwise.
-func (o *JsonNodeOptions) GetPropertyNameCaseInsensitive() bool {
-	if o == nil || IsNil(o.PropertyNameCaseInsensitive) {
+// GetHasValue returns the HasValue field value if set, zero value otherwise.
+func (o *JsonNodeOptions) GetHasValue() bool {
+	if o == nil || IsNil(o.HasValue) {
 		var ret bool
 		return ret
 	}
-	return *o.PropertyNameCaseInsensitive
+	return *o.HasValue
 }
 
-// GetPropertyNameCaseInsensitiveOk returns a tuple with the PropertyNameCaseInsensitive field value if set, nil otherwise
+// GetHasValueOk returns a tuple with the HasValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JsonNodeOptions) GetPropertyNameCaseInsensitiveOk() (*bool, bool) {
-	if o == nil || IsNil(o.PropertyNameCaseInsensitive) {
+func (o *JsonNodeOptions) GetHasValueOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasValue) {
 		return nil, false
 	}
-	return o.PropertyNameCaseInsensitive, true
+	return o.HasValue, true
 }
 
-// HasPropertyNameCaseInsensitive returns a boolean if a field has been set.
-func (o *JsonNodeOptions) HasPropertyNameCaseInsensitive() bool {
-	if o != nil && !IsNil(o.PropertyNameCaseInsensitive) {
+// HasHasValue returns a boolean if a field has been set.
+func (o *JsonNodeOptions) HasHasValue() bool {
+	if o != nil && !IsNil(o.HasValue) {
 		return true
 	}
 
 	return false
 }
 
-// SetPropertyNameCaseInsensitive gets a reference to the given bool and assigns it to the PropertyNameCaseInsensitive field.
-func (o *JsonNodeOptions) SetPropertyNameCaseInsensitive(v bool) {
-	o.PropertyNameCaseInsensitive = &v
+// SetHasValue gets a reference to the given bool and assigns it to the HasValue field.
+func (o *JsonNodeOptions) SetHasValue(v bool) {
+	o.HasValue = &v
+}
+
+// GetValue returns the Value field value if set, zero value otherwise.
+func (o *JsonNodeOptions) GetValue() JsonNodeOptions {
+	if o == nil || IsNil(o.Value) {
+		var ret JsonNodeOptions
+		return ret
+	}
+	return *o.Value
+}
+
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JsonNodeOptions) GetValueOk() (*JsonNodeOptions, bool) {
+	if o == nil || IsNil(o.Value) {
+		return nil, false
+	}
+	return o.Value, true
+}
+
+// HasValue returns a boolean if a field has been set.
+func (o *JsonNodeOptions) HasValue() bool {
+	if o != nil && !IsNil(o.Value) {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given JsonNodeOptions and assigns it to the Value field.
+func (o *JsonNodeOptions) SetValue(v JsonNodeOptions) {
+	o.Value = &v
 }
 
 func (o JsonNodeOptions) MarshalJSON() ([]byte, error) {
@@ -82,8 +115,11 @@ func (o JsonNodeOptions) MarshalJSON() ([]byte, error) {
 
 func (o JsonNodeOptions) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.PropertyNameCaseInsensitive) {
-		toSerialize["propertyNameCaseInsensitive"] = o.PropertyNameCaseInsensitive
+	if !IsNil(o.HasValue) {
+		toSerialize["hasValue"] = o.HasValue
+	}
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
 	}
 	return toSerialize, nil
 }

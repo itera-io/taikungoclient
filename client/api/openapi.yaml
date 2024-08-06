@@ -5416,8 +5416,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-08-05T00:03:00.3941277Z
-                  createdAt: 2024-08-05T00:03:00.3941277Z
+                  lastValidated: 2024-08-06T00:03:03.0785844Z
+                  createdAt: 2024-08-06T00:03:03.0785844Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5522,14 +5522,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-08-05T00:03:00.3941277Z
+                    lastBackup: 2024-08-06T00:03:03.0785844Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-08-05T00:03:00.3941277Z
+                  createdAt: 2024-08-06T00:03:03.0785844Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-08-05T00:03:00.3941277Z
+                  lastBackup: 2024-08-06T00:03:03.0785844Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5634,8 +5634,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-08-05T00:03:00.3941277Z
-                  expiration: 2024-08-05T00:03:00.3941277Z
+                  createdAt: 2024-08-06T00:03:03.0785844Z
+                  expiration: 2024-08-06T00:03:03.0785844Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5739,7 +5739,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-08-05T00:03:00.3941277Z
+                  createdAt: 2024-08-06T00:03:03.0785844Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5849,9 +5849,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-08-05T00:03:00.3941277+00:00
-                  startTimeStamp: 2024-08-05T00:03:00.3941277+00:00
-                  createdAt: 2024-08-05T00:03:00.3941277Z
+                  completionDateTime: 2024-08-06T00:03:03.0785844+00:00
+                  startTimeStamp: 2024-08-06T00:03:03.0785844+00:00
+                  createdAt: 2024-08-06T00:03:03.0785844Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -49317,7 +49317,8 @@ components:
             parent: null
             root: null
             options:
-              propertyNameCaseInsensitive: true
+              hasValue: true
+              value: null
           storageNamespace: storageNamespace
           interval: interval
           chart:
@@ -49375,7 +49376,8 @@ components:
               parent: null
               root: null
               options:
-                propertyNameCaseInsensitive: true
+                hasValue: true
+                value: null
             storageNamespace: storageNamespace
             interval: interval
             chart:
@@ -49415,7 +49417,8 @@ components:
               parent: null
               root: null
               options:
-                propertyNameCaseInsensitive: true
+                hasValue: true
+                value: null
             storageNamespace: storageNamespace
             interval: interval
             chart:
@@ -49462,7 +49465,8 @@ components:
           parent: null
           root: null
           options:
-            propertyNameCaseInsensitive: true
+            hasValue: true
+            value: null
         storageNamespace: storageNamespace
         interval: interval
         chart:
@@ -50112,7 +50116,8 @@ components:
         parent: null
         root: null
         options:
-          propertyNameCaseInsensitive: true
+          hasValue: true
+          value: null
       properties:
         options:
           $ref: '#/components/schemas/JsonNodeOptions'
@@ -50124,10 +50129,14 @@ components:
     JsonNodeOptions:
       additionalProperties: false
       example:
-        propertyNameCaseInsensitive: true
+        hasValue: true
+        value: null
       properties:
-        propertyNameCaseInsensitive:
+        hasValue:
+          readOnly: true
           type: boolean
+        value:
+          $ref: '#/components/schemas/JsonNodeOptions'
       type: object
     KeycloakCheckerCommand:
       additionalProperties: false
