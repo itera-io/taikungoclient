@@ -5416,8 +5416,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-08-06T14:39:00.3691119Z
-                  createdAt: 2024-08-06T14:39:00.3691119Z
+                  lastValidated: 2024-08-07T00:03:02.9569668Z
+                  createdAt: 2024-08-07T00:03:02.9569668Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5522,14 +5522,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-08-06T14:39:00.3691119Z
+                    lastBackup: 2024-08-07T00:03:02.9569668Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-08-06T14:39:00.3691119Z
+                  createdAt: 2024-08-07T00:03:02.9569668Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-08-06T14:39:00.3691119Z
+                  lastBackup: 2024-08-07T00:03:02.9569668Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5634,8 +5634,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-08-06T14:39:00.3691119Z
-                  expiration: 2024-08-06T14:39:00.3691119Z
+                  createdAt: 2024-08-07T00:03:02.9569668Z
+                  expiration: 2024-08-07T00:03:02.9569668Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5739,7 +5739,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-08-06T14:39:00.3691119Z
+                  createdAt: 2024-08-07T00:03:02.9569668Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5849,9 +5849,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-08-06T14:39:00.3691119+00:00
-                  startTimeStamp: 2024-08-06T14:39:00.3691119+00:00
-                  createdAt: 2024-08-06T14:39:00.3691119Z
+                  completionDateTime: 2024-08-07T00:03:02.9569668+00:00
+                  startTimeStamp: 2024-08-07T00:03:02.9569668+00:00
+                  createdAt: 2024-08-07T00:03:02.9569668Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -6327,48 +6327,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Edit catalog
-      tags:
-      - Catalog
-  /api/v1/catalog/bind-project:
-    post:
-      operationId: catalog-bind-project
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BindProjectsToCatalogCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Bind projects to catalog
       tags:
       - Catalog
   /api/v1/catalog/create:
@@ -28099,48 +28057,6 @@ paths:
       summary: Retrieve a list of grouped prometheus billing
       tags:
       - Prometheus Billings
-  /api/v1/prometheusorganizations/bind/rules:
-    post:
-      operationId: prometheusorganizations-bind-rules
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BindRulesCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Bind rules to organizations
-      tags:
-      - Prometheus Organizations
   /api/v1/prometheusrules/{id}/organizations:
     post:
       operationId: prometheusrules-add-organizations
@@ -28296,48 +28212,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Edit prometheus rule
-      tags:
-      - Prometheus Rules
-  /api/v1/prometheusrules/bind/organizations:
-    post:
-      operationId: prometheusrules-bind-organizations
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BindPrometheusOrganizationsCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Bind organizations to prometheus rule
       tags:
       - Prometheus Rules
   /api/v1/prometheusrules:
@@ -42044,27 +41918,6 @@ components:
           nullable: true
           type: integer
       type: object
-    BindOrganizationsToRuleDto:
-      additionalProperties: false
-      example:
-        organizationId: 0
-        organizationName: organizationName
-        isBound: true
-        ruleDiscountRate: 6.027456183070403
-      properties:
-        organizationId:
-          format: int32
-          type: integer
-        organizationName:
-          nullable: true
-          type: string
-        ruleDiscountRate:
-          format: double
-          nullable: true
-          type: number
-        isBound:
-          type: boolean
-      type: object
     BindProjectGroupsToUserGroupCommand:
       additionalProperties: false
       example:
@@ -42108,25 +41961,6 @@ components:
           nullable: true
           type: string
       type: object
-    BindProjectsToCatalogCommand:
-      additionalProperties: false
-      example:
-        projects:
-        - isBound: true
-          projectId: 0
-        - isBound: true
-          projectId: 0
-        catalogId: 6
-      properties:
-        projects:
-          items:
-            $ref: '#/components/schemas/UpdateCatalogDto'
-          nullable: true
-          type: array
-        catalogId:
-          format: int32
-          type: integer
-      type: object
     BindProjectsToProjectGroupCommand:
       additionalProperties: false
       example:
@@ -42144,73 +41978,6 @@ components:
             type: integer
           nullable: true
           type: array
-      type: object
-    BindPrometheusOrganizationsCommand:
-      additionalProperties: false
-      example:
-        organizations:
-        - organizationId: 0
-          organizationName: organizationName
-          isBound: true
-          ruleDiscountRate: 6.027456183070403
-        - organizationId: 0
-          organizationName: organizationName
-          isBound: true
-          ruleDiscountRate: 6.027456183070403
-        prometheusRuleId: 1
-      properties:
-        organizations:
-          items:
-            $ref: '#/components/schemas/BindOrganizationsToRuleDto'
-          nullable: true
-          type: array
-        prometheusRuleId:
-          format: int32
-          type: integer
-      type: object
-    BindRulesCommand:
-      additionalProperties: false
-      example:
-        organizationId: 1
-        rules:
-        - discountRate: 6.027456183070403
-          isBound: true
-          name: name
-          id: 0
-        - discountRate: 6.027456183070403
-          isBound: true
-          name: name
-          id: 0
-      properties:
-        rules:
-          items:
-            $ref: '#/components/schemas/BindRulesToOrganizationDto'
-          nullable: true
-          type: array
-        organizationId:
-          format: int32
-          type: integer
-      type: object
-    BindRulesToOrganizationDto:
-      additionalProperties: false
-      example:
-        discountRate: 6.027456183070403
-        isBound: true
-        name: name
-        id: 0
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        discountRate:
-          format: double
-          nullable: true
-          type: number
-        isBound:
-          type: boolean
       type: object
     BindSubscriptionCommand:
       additionalProperties: false
@@ -64086,18 +63853,6 @@ components:
         azureClientId:
           nullable: true
           type: string
-      type: object
-    UpdateCatalogDto:
-      additionalProperties: false
-      example:
-        isBound: true
-        projectId: 0
-      properties:
-        projectId:
-          format: int32
-          type: integer
-        isBound:
-          type: boolean
       type: object
     UpdateEdgeNodesCommand:
       additionalProperties: false

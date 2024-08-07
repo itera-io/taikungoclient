@@ -35,17 +35,6 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test PrometheusRulesAPIService PrometheusrulesBindOrganizations", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesBindOrganizations(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test PrometheusRulesAPIService PrometheusrulesCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

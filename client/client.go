@@ -159,8 +159,6 @@ type APIClient struct {
 
 	PrometheusBillingsAPI *PrometheusBillingsAPIService
 
-	PrometheusOrganizationsAPI *PrometheusOrganizationsAPIService
-
 	PrometheusRulesAPI *PrometheusRulesAPIService
 
 	ProxmoxCloudCredentialAPI *ProxmoxCloudCredentialAPIService
@@ -282,7 +280,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectTemplatesAPI = (*ProjectTemplatesAPIService)(&c.common)
 	c.ProjectsAPI = (*ProjectsAPIService)(&c.common)
 	c.PrometheusBillingsAPI = (*PrometheusBillingsAPIService)(&c.common)
-	c.PrometheusOrganizationsAPI = (*PrometheusOrganizationsAPIService)(&c.common)
 	c.PrometheusRulesAPI = (*PrometheusRulesAPIService)(&c.common)
 	c.ProxmoxCloudCredentialAPI = (*ProxmoxCloudCredentialAPIService)(&c.common)
 	c.S3CredentialsAPI = (*S3CredentialsAPIService)(&c.common)

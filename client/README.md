@@ -182,7 +182,6 @@ Class | Method | HTTP request | Description
 *BillingAPI* | [**BillingGroupedList**](docs/BillingAPI.md#billinggroupedlist) | **Post** /api/v1/billing/grouped | Retrieve a grouped list of billing summaries
 *BillingAPI* | [**BillingList**](docs/BillingAPI.md#billinglist) | **Get** /api/v1/billing | Retrieve billing info
 *CatalogAPI* | [**CatalogAddProject**](docs/CatalogAPI.md#catalogaddproject) | **Post** /api/v1/catalog/{id}/projects | Add projects to catalog
-*CatalogAPI* | [**CatalogBindProject**](docs/CatalogAPI.md#catalogbindproject) | **Post** /api/v1/catalog/bind-project | Bind projects to catalog
 *CatalogAPI* | [**CatalogCreate**](docs/CatalogAPI.md#catalogcreate) | **Post** /api/v1/catalog/create | Create catalog
 *CatalogAPI* | [**CatalogDelete**](docs/CatalogAPI.md#catalogdelete) | **Delete** /api/v1/catalog/{id} | Delete catalog
 *CatalogAPI* | [**CatalogDeleteProject**](docs/CatalogAPI.md#catalogdeleteproject) | **Put** /api/v1/catalog/{id}/projects | Delete projects from catalog
@@ -570,9 +569,7 @@ Class | Method | HTTP request | Description
 *PrometheusBillingsAPI* | [**PrometheusbillingsExportCsv**](docs/PrometheusBillingsAPI.md#prometheusbillingsexportcsv) | **Get** /api/v1/prometheusbillings/export | Export Csv
 *PrometheusBillingsAPI* | [**PrometheusbillingsGroupedList**](docs/PrometheusBillingsAPI.md#prometheusbillingsgroupedlist) | **Post** /api/v1/prometheusbillings/grouped | Retrieve a list of grouped prometheus billing
 *PrometheusBillingsAPI* | [**PrometheusbillingsList**](docs/PrometheusBillingsAPI.md#prometheusbillingslist) | **Get** /api/v1/prometheusbillings | Retrieve all prometheus billing
-*PrometheusOrganizationsAPI* | [**PrometheusorganizationsBindRules**](docs/PrometheusOrganizationsAPI.md#prometheusorganizationsbindrules) | **Post** /api/v1/prometheusorganizations/bind/rules | Bind rules to organizations
 *PrometheusRulesAPI* | [**PrometheusrulesAddOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesaddorganizations) | **Post** /api/v1/prometheusrules/{id}/organizations | Add organizations to prometheus rule
-*PrometheusRulesAPI* | [**PrometheusrulesBindOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesbindorganizations) | **Post** /api/v1/prometheusrules/bind/organizations | Bind organizations to prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesCreate**](docs/PrometheusRulesAPI.md#prometheusrulescreate) | **Post** /api/v1/prometheusrules | Add prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesDelete**](docs/PrometheusRulesAPI.md#prometheusrulesdelete) | **Delete** /api/v1/prometheusrules/{id} | Remove prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesDeleteOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesdeleteorganizations) | **Put** /api/v1/prometheusrules/{id}/organizations | Delete organizations from prometheus rule
@@ -876,14 +873,9 @@ Class | Method | HTTP request | Description
  - [BindFlavorToProjectCommand](docs/BindFlavorToProjectCommand.md)
  - [BindImageToProjectCommand](docs/BindImageToProjectCommand.md)
  - [BindOrganizationsCommand](docs/BindOrganizationsCommand.md)
- - [BindOrganizationsToRuleDto](docs/BindOrganizationsToRuleDto.md)
  - [BindProjectGroupsToUserGroupCommand](docs/BindProjectGroupsToUserGroupCommand.md)
  - [BindProjectsCommand](docs/BindProjectsCommand.md)
- - [BindProjectsToCatalogCommand](docs/BindProjectsToCatalogCommand.md)
  - [BindProjectsToProjectGroupCommand](docs/BindProjectsToProjectGroupCommand.md)
- - [BindPrometheusOrganizationsCommand](docs/BindPrometheusOrganizationsCommand.md)
- - [BindRulesCommand](docs/BindRulesCommand.md)
- - [BindRulesToOrganizationDto](docs/BindRulesToOrganizationDto.md)
  - [BindSubscriptionCommand](docs/BindSubscriptionCommand.md)
  - [BindSubscriptionResponseDto](docs/BindSubscriptionResponseDto.md)
  - [BindUnbindEndpointToTokenCommand](docs/BindUnbindEndpointToTokenCommand.md)
@@ -1526,7 +1518,6 @@ Class | Method | HTTP request | Description
  - [UpdateAlertingProfileCommand](docs/UpdateAlertingProfileCommand.md)
  - [UpdateAwsCommand](docs/UpdateAwsCommand.md)
  - [UpdateAzureCommand](docs/UpdateAzureCommand.md)
- - [UpdateCatalogDto](docs/UpdateCatalogDto.md)
  - [UpdateEdgeNodesCommand](docs/UpdateEdgeNodesCommand.md)
  - [UpdateHealthStatusCommand](docs/UpdateHealthStatusCommand.md)
  - [UpdateHypervisorsCommand](docs/UpdateHypervisorsCommand.md)

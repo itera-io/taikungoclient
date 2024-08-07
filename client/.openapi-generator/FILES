@@ -57,7 +57,6 @@ api_project_quotas.go
 api_project_templates.go
 api_projects.go
 api_prometheus_billings.go
-api_prometheus_organizations.go
 api_prometheus_rules.go
 api_proxmox_cloud_credential.go
 api_s3_credentials.go
@@ -207,14 +206,9 @@ docs/BindAppRepositoryCommand.md
 docs/BindFlavorToProjectCommand.md
 docs/BindImageToProjectCommand.md
 docs/BindOrganizationsCommand.md
-docs/BindOrganizationsToRuleDto.md
 docs/BindProjectGroupsToUserGroupCommand.md
 docs/BindProjectsCommand.md
-docs/BindProjectsToCatalogCommand.md
 docs/BindProjectsToProjectGroupCommand.md
-docs/BindPrometheusOrganizationsCommand.md
-docs/BindRulesCommand.md
-docs/BindRulesToOrganizationDto.md
 docs/BindSubscriptionCommand.md
 docs/BindSubscriptionResponseDto.md
 docs/BindUnbindEndpointToTokenCommand.md
@@ -740,7 +734,6 @@ docs/PrometheusEntity.md
 docs/PrometheusLabelListDto.md
 docs/PrometheusMetricsCommand.md
 docs/PrometheusOrganizationDiscountDto.md
-docs/PrometheusOrganizationsAPI.md
 docs/PrometheusRuleListDto.md
 docs/PrometheusRulesAPI.md
 docs/PrometheusRulesList.md
@@ -916,7 +909,6 @@ docs/UpdateAccessProfileDto.md
 docs/UpdateAlertingProfileCommand.md
 docs/UpdateAwsCommand.md
 docs/UpdateAzureCommand.md
-docs/UpdateCatalogDto.md
 docs/UpdateEdgeNodesCommand.md
 docs/UpdateHealthStatusCommand.md
 docs/UpdateHypervisorsCommand.md
@@ -1118,14 +1110,9 @@ model_bind_app_repository_command.go
 model_bind_flavor_to_project_command.go
 model_bind_image_to_project_command.go
 model_bind_organizations_command.go
-model_bind_organizations_to_rule_dto.go
 model_bind_project_groups_to_user_group_command.go
 model_bind_projects_command.go
-model_bind_projects_to_catalog_command.go
 model_bind_projects_to_project_group_command.go
-model_bind_prometheus_organizations_command.go
-model_bind_rules_command.go
-model_bind_rules_to_organization_dto.go
 model_bind_subscription_command.go
 model_bind_subscription_response_dto.go
 model_bind_unbind_endpoint_to_token_command.go
@@ -1768,7 +1755,6 @@ model_update_access_profile_dto.go
 model_update_alerting_profile_command.go
 model_update_aws_command.go
 model_update_azure_command.go
-model_update_catalog_dto.go
 model_update_edge_nodes_command.go
 model_update_health_status_command.go
 model_update_hypervisors_command.go
@@ -1905,7 +1891,6 @@ test/api_project_quotas_test.go
 test/api_project_templates_test.go
 test/api_projects_test.go
 test/api_prometheus_billings_test.go
-test/api_prometheus_organizations_test.go
 test/api_prometheus_rules_test.go
 test/api_proxmox_cloud_credential_test.go
 test/api_s3_credentials_test.go

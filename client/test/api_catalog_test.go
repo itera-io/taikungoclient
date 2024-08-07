@@ -35,17 +35,6 @@ func Test_taikuncore_CatalogAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CatalogAPIService CatalogBindProject", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.CatalogAPI.CatalogBindProject(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CatalogAPIService CatalogCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
