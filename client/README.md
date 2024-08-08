@@ -469,7 +469,6 @@ Class | Method | HTTP request | Description
 *PartnersAPI* | [**PartnerAddOrganizations**](docs/PartnersAPI.md#partneraddorganizations) | **Post** /api/v1/partner/{id}/organizations | Add organizations to a partner
 *PartnersAPI* | [**PartnerAddWhitelistDomain**](docs/PartnersAPI.md#partneraddwhitelistdomain) | **Post** /api/v1/partner/add/whitelist/domain | Add white list domain
 *PartnersAPI* | [**PartnerBecomeAPartner**](docs/PartnersAPI.md#partnerbecomeapartner) | **Post** /api/v1/partner/become-a-partner | Become a partner
-*PartnersAPI* | [**PartnerBindOrganizations**](docs/PartnersAPI.md#partnerbindorganizations) | **Post** /api/v1/partner/bindorganizations | Bind organizations to a partner
 *PartnersAPI* | [**PartnerContactUs**](docs/PartnersAPI.md#partnercontactus) | **Post** /api/v1/partner/contact-us | Contact with us
 *PartnersAPI* | [**PartnerCreate**](docs/PartnersAPI.md#partnercreate) | **Post** /api/v1/partner/create | Add a partner
 *PartnersAPI* | [**PartnerDeleteOrganizations**](docs/PartnersAPI.md#partnerdeleteorganizations) | **Put** /api/v1/partner/{id}/organizations | Delete organizations from a partner
@@ -660,10 +659,6 @@ Class | Method | HTTP request | Description
 *StandaloneProfileAPI* | [**StandaloneprofileList**](docs/StandaloneProfileAPI.md#standaloneprofilelist) | **Get** /api/v1/standaloneprofile | Retrieve all standalone profiles
 *StandaloneProfileAPI* | [**StandaloneprofileLockManagement**](docs/StandaloneProfileAPI.md#standaloneprofilelockmanagement) | **Post** /api/v1/standaloneprofile/lockmanager | Lock/unlock standalone profile.
 *StandaloneVMDisksAPI* | [**StandalonevmdisksCreate**](docs/StandaloneVMDisksAPI.md#standalonevmdiskscreate) | **Post** /api/v1/standalonevmdisks/create | Add disk for standalone vm
-*StandaloneVMDisksAPI* | [**StandalonevmdisksDelete**](docs/StandaloneVMDisksAPI.md#standalonevmdisksdelete) | **Post** /api/v1/standalonevmdisks/delete | Remove disk from standalone vm
-*StandaloneVMDisksAPI* | [**StandalonevmdisksPurge**](docs/StandaloneVMDisksAPI.md#standalonevmdiskspurge) | **Post** /api/v1/standalonevmdisks/purge | Purge vm disks
-*StandaloneVMDisksAPI* | [**StandalonevmdisksReset**](docs/StandaloneVMDisksAPI.md#standalonevmdisksreset) | **Post** /api/v1/standalonevmdisks/reset | Update status of disk
-*StandaloneVMDisksAPI* | [**StandalonevmdisksUpdate**](docs/StandaloneVMDisksAPI.md#standalonevmdisksupdate) | **Post** /api/v1/standalonevmdisks/update | Update disk
 *StandaloneVMDisksAPI* | [**StandalonevmdisksUpdateSize**](docs/StandaloneVMDisksAPI.md#standalonevmdisksupdatesize) | **Post** /api/v1/standalonevmdisks/update-size | Update disk size
 *StripeAPI* | [**StripeSubscriptionItemList**](docs/StripeAPI.md#stripesubscriptionitemlist) | **Get** /api/v1/stripe/{subscriptionId} | Get subscription item list
 *SubscriptionAPI* | [**SubscriptionBind**](docs/SubscriptionAPI.md#subscriptionbind) | **Post** /api/v1/subscription/bind | Bind subscription
@@ -705,8 +700,6 @@ Class | Method | HTTP request | Description
 *UserGroupAPI* | [**UsergroupsUnbindUser**](docs/UserGroupAPI.md#usergroupsunbinduser) | **Post** /api/v1/usergroups/unbind-user | Unbind Users from group
 *UserGroupAPI* | [**UsergroupsUpdate**](docs/UserGroupAPI.md#usergroupsupdate) | **Put** /api/v1/usergroups/update/{userGroupId} | Update user groups
 *UserGroupAPI* | [**UsergroupsUserGroupUsers**](docs/UserGroupAPI.md#usergroupsusergroupusers) | **Get** /api/v1/usergroups/{userGroupId}/users | Retrieve list of users by user group id
-*UserProjectsAPI* | [**UserprojectsBindProjects**](docs/UserProjectsAPI.md#userprojectsbindprojects) | **Post** /api/v1/userprojects/bindprojects | Bind projects to user
-*UserProjectsAPI* | [**UserprojectsBindUsers**](docs/UserProjectsAPI.md#userprojectsbindusers) | **Post** /api/v1/userprojects/bindusers | Bind users to project
 *UserProjectsAPI* | [**UserprojectsProjectListByUser**](docs/UserProjectsAPI.md#userprojectsprojectlistbyuser) | **Get** /api/v1/userprojects/projects/list | Projects list for user
 *UserProjectsAPI* | [**UserprojectsUserListByProject**](docs/UserProjectsAPI.md#userprojectsuserlistbyproject) | **Get** /api/v1/userprojects/users/list/{projectId} | Users list by project id
 *UserTokenAPI* | [**UsertokenAvailableEndpoints**](docs/UserTokenAPI.md#usertokenavailableendpoints) | **Get** /api/v1/usertoken/available-endpoints | Get available endpoint list
@@ -872,15 +865,12 @@ Class | Method | HTTP request | Description
  - [BindAppRepositoryCommand](docs/BindAppRepositoryCommand.md)
  - [BindFlavorToProjectCommand](docs/BindFlavorToProjectCommand.md)
  - [BindImageToProjectCommand](docs/BindImageToProjectCommand.md)
- - [BindOrganizationsCommand](docs/BindOrganizationsCommand.md)
  - [BindProjectGroupsToUserGroupCommand](docs/BindProjectGroupsToUserGroupCommand.md)
- - [BindProjectsCommand](docs/BindProjectsCommand.md)
  - [BindProjectsToProjectGroupCommand](docs/BindProjectsToProjectGroupCommand.md)
  - [BindSubscriptionCommand](docs/BindSubscriptionCommand.md)
  - [BindSubscriptionResponseDto](docs/BindSubscriptionResponseDto.md)
  - [BindUnbindEndpointToTokenCommand](docs/BindUnbindEndpointToTokenCommand.md)
  - [BindUserGroupsToProjectGroupCommand](docs/BindUserGroupsToProjectGroupCommand.md)
- - [BindUsersCommand](docs/BindUsersCommand.md)
  - [BindUsersToUserGroupCommand](docs/BindUsersToUserGroupCommand.md)
  - [BoundFlavorsForProjectsList](docs/BoundFlavorsForProjectsList.md)
  - [BoundFlavorsForProjectsListDto](docs/BoundFlavorsForProjectsListDto.md)
@@ -906,8 +896,6 @@ Class | Method | HTTP request | Description
  - [CatalogMakeDefaultCommand](docs/CatalogMakeDefaultCommand.md)
  - [ChangeCardCommand](docs/ChangeCardCommand.md)
  - [ChangePasswordCommand](docs/ChangePasswordCommand.md)
- - [Chart](docs/Chart.md)
- - [ChartSpec](docs/ChartSpec.md)
  - [ChatCompletionsCommand](docs/ChatCompletionsCommand.md)
  - [CheckAwsCommand](docs/CheckAwsCommand.md)
  - [CheckAzureCommand](docs/CheckAzureCommand.md)
@@ -937,7 +925,6 @@ Class | Method | HTTP request | Description
  - [CommonSearchResponseData](docs/CommonSearchResponseData.md)
  - [CommonStringBasedDropdownDto](docs/CommonStringBasedDropdownDto.md)
  - [CommonStringDropdownIsBoundDto](docs/CommonStringDropdownIsBoundDto.md)
- - [Condition](docs/Condition.md)
  - [ConfigMapDto](docs/ConfigMapDto.md)
  - [ConfigMapSearchCommand](docs/ConfigMapSearchCommand.md)
  - [ConfigMapSearchList](docs/ConfigMapSearchList.md)
@@ -1023,7 +1010,6 @@ Class | Method | HTTP request | Description
  - [DeleteSlackConfigCommand](docs/DeleteSlackConfigCommand.md)
  - [DeleteSshUserCommand](docs/DeleteSshUserCommand.md)
  - [DeleteStandAloneProfileCommand](docs/DeleteStandAloneProfileCommand.md)
- - [DeleteStandAloneVmDiskCommand](docs/DeleteStandAloneVmDiskCommand.md)
  - [DeleteSubscriptionCommand](docs/DeleteSubscriptionCommand.md)
  - [DeleteUserGroupCommand](docs/DeleteUserGroupCommand.md)
  - [DeleteVirtualClusterCommand](docs/DeleteVirtualClusterCommand.md)
@@ -1114,11 +1100,15 @@ Class | Method | HTTP request | Description
  - [GroupedBillingListQuery](docs/GroupedBillingListQuery.md)
  - [GroupedBillings](docs/GroupedBillings.md)
  - [GroupedPrometheusBillingListQuery](docs/GroupedPrometheusBillingListQuery.md)
+ - [HelmCondition](docs/HelmCondition.md)
  - [HelmCredentialCommand](docs/HelmCredentialCommand.md)
- - [HelmMetadata](docs/HelmMetadata.md)
+ - [HelmReleaseChart](docs/HelmReleaseChart.md)
+ - [HelmReleaseChartSpec](docs/HelmReleaseChartSpec.md)
  - [HelmReleaseDto](docs/HelmReleaseDto.md)
+ - [HelmReleaseMetaData](docs/HelmReleaseMetaData.md)
+ - [HelmReleaseSourceRef](docs/HelmReleaseSourceRef.md)
+ - [HelmReleaseSpec](docs/HelmReleaseSpec.md)
  - [HelmReleasesList](docs/HelmReleasesList.md)
- - [HelmSpec](docs/HelmSpec.md)
  - [HelmStatus](docs/HelmStatus.md)
  - [HypervisorListCommand](docs/HypervisorListCommand.md)
  - [ImageByIdCommand](docs/ImageByIdCommand.md)
@@ -1141,8 +1131,6 @@ Class | Method | HTTP request | Description
  - [Invoices](docs/Invoices.md)
  - [IpAddressRangeCountCommand](docs/IpAddressRangeCountCommand.md)
  - [IpAddressRangeListCommand](docs/IpAddressRangeListCommand.md)
- - [JsonNode](docs/JsonNode.md)
- - [JsonNodeOptions](docs/JsonNodeOptions.md)
  - [KeycloakCheckerCommand](docs/KeycloakCheckerCommand.md)
  - [KeycloakCreateCommand](docs/KeycloakCreateCommand.md)
  - [KeycloakDeleteCommand](docs/KeycloakDeleteCommand.md)
@@ -1256,7 +1244,6 @@ Class | Method | HTTP request | Description
  - [OrganizationCreateCommand](docs/OrganizationCreateCommand.md)
  - [OrganizationDetailsDto](docs/OrganizationDetailsDto.md)
  - [OrganizationDropdownDto](docs/OrganizationDropdownDto.md)
- - [OrganizationDto](docs/OrganizationDto.md)
  - [OrganizationEntityForDashboard](docs/OrganizationEntityForDashboard.md)
  - [OrganizationNameCheckerCommand](docs/OrganizationNameCheckerCommand.md)
  - [OrganizationSearchCommand](docs/OrganizationSearchCommand.md)
@@ -1299,7 +1286,6 @@ Class | Method | HTTP request | Description
  - [PodsSearchList](docs/PodsSearchList.md)
  - [PrivateSubscriptionList](docs/PrivateSubscriptionList.md)
  - [ProblemDetails](docs/ProblemDetails.md)
- - [ProjectActionDto](docs/ProjectActionDto.md)
  - [ProjectActionVisibilityDto](docs/ProjectActionVisibilityDto.md)
  - [ProjectAlertsQuery](docs/ProjectAlertsQuery.md)
  - [ProjectAppDetailsDto](docs/ProjectAppDetailsDto.md)
@@ -1337,7 +1323,6 @@ Class | Method | HTTP request | Description
  - [ProjectMonitoringAlertsDto](docs/ProjectMonitoringAlertsDto.md)
  - [ProjectQuotaList](docs/ProjectQuotaList.md)
  - [ProjectQuotaListDto](docs/ProjectQuotaListDto.md)
- - [ProjectRevisionDto](docs/ProjectRevisionDto.md)
  - [ProjectStatus](docs/ProjectStatus.md)
  - [ProjectTemplateDropdownListDto](docs/ProjectTemplateDropdownListDto.md)
  - [ProjectTemplateList](docs/ProjectTemplateList.md)
@@ -1376,7 +1361,6 @@ Class | Method | HTTP request | Description
  - [ProxmoxRole](docs/ProxmoxRole.md)
  - [ProxmoxStorage](docs/ProxmoxStorage.md)
  - [PublicImageList](docs/PublicImageList.md)
- - [PurgeStandAloneVmDiskCommand](docs/PurgeStandAloneVmDiskCommand.md)
  - [PvcDto](docs/PvcDto.md)
  - [PvcSearchCommand](docs/PvcSearchCommand.md)
  - [PvcSearchList](docs/PvcSearchList.md)
@@ -1392,7 +1376,6 @@ Class | Method | HTTP request | Description
  - [ResetPasswordCommand](docs/ResetPasswordCommand.md)
  - [ResetProjectStatusCommand](docs/ResetProjectStatusCommand.md)
  - [ResetServerStatusCommand](docs/ResetServerStatusCommand.md)
- - [ResetStandAloneVmDiskStatusCommand](docs/ResetStandAloneVmDiskStatusCommand.md)
  - [ResetStandAloneVmStatusCommand](docs/ResetStandAloneVmStatusCommand.md)
  - [Resource](docs/Resource.md)
  - [ResourcePoolListCommand](docs/ResourcePoolListCommand.md)
@@ -1437,7 +1420,6 @@ Class | Method | HTTP request | Description
  - [SlackConfigurationDto](docs/SlackConfigurationDto.md)
  - [SlackConfigurationList](docs/SlackConfigurationList.md)
  - [SlackType](docs/SlackType.md)
- - [SourceRef](docs/SourceRef.md)
  - [SpotVmOperationCommand](docs/SpotVmOperationCommand.md)
  - [SpotWorkerOperationCommand](docs/SpotWorkerOperationCommand.md)
  - [SshKeyCommand](docs/SshKeyCommand.md)
@@ -1528,21 +1510,18 @@ Class | Method | HTTP request | Description
  - [UpdateOrganizationSubscriptionCommand](docs/UpdateOrganizationSubscriptionCommand.md)
  - [UpdatePaymentIdCommand](docs/UpdatePaymentIdCommand.md)
  - [UpdateProjectAppCommand](docs/UpdateProjectAppCommand.md)
- - [UpdateProjectUserDto](docs/UpdateProjectUserDto.md)
  - [UpdateProxmoxCommand](docs/UpdateProxmoxCommand.md)
  - [UpdateQuotaCommand](docs/UpdateQuotaCommand.md)
  - [UpdateServerHealthDto](docs/UpdateServerHealthDto.md)
  - [UpdateSlackConfigurationDto](docs/UpdateSlackConfigurationDto.md)
  - [UpdateStageCommand](docs/UpdateStageCommand.md)
  - [UpdateStandAloneVmFlavorCommand](docs/UpdateStandAloneVmFlavorCommand.md)
- - [UpdateStandaloneVmDiskCommand](docs/UpdateStandaloneVmDiskCommand.md)
  - [UpdateStandaloneVmDiskSizeCommand](docs/UpdateStandaloneVmDiskSizeCommand.md)
  - [UpdateSubscriptionCommand](docs/UpdateSubscriptionCommand.md)
  - [UpdateTanzuCommand](docs/UpdateTanzuCommand.md)
  - [UpdateUsedIpAddressesCommand](docs/UpdateUsedIpAddressesCommand.md)
  - [UpdateUserCommand](docs/UpdateUserCommand.md)
  - [UpdateUserGroupDto](docs/UpdateUserGroupDto.md)
- - [UpdateUserProjectDto](docs/UpdateUserProjectDto.md)
  - [UpdateVsphereCommand](docs/UpdateVsphereCommand.md)
  - [UpdateVsphereHypervisorsCommand](docs/UpdateVsphereHypervisorsCommand.md)
  - [UpdateZadaraCommand](docs/UpdateZadaraCommand.md)

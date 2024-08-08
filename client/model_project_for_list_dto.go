@@ -73,8 +73,6 @@ type ProjectForListDto struct {
 	WorkersCount *int32 `json:"workersCount,omitempty"`
 	TaikunLB *TaikunLbDto `json:"taikunLB,omitempty"`
 	S3Credential *S3CredentialForProjectDto `json:"s3Credential,omitempty"`
-	ProjectRevision *ProjectRevisionDto `json:"projectRevision,omitempty"`
-	ProjectActionDto *ProjectActionDto `json:"projectActionDto,omitempty"`
 	AiCredential *AiCredentialDto `json:"aiCredential,omitempty"`
 }
 
@@ -2013,70 +2011,6 @@ func (o *ProjectForListDto) SetS3Credential(v S3CredentialForProjectDto) {
 	o.S3Credential = &v
 }
 
-// GetProjectRevision returns the ProjectRevision field value if set, zero value otherwise.
-func (o *ProjectForListDto) GetProjectRevision() ProjectRevisionDto {
-	if o == nil || IsNil(o.ProjectRevision) {
-		var ret ProjectRevisionDto
-		return ret
-	}
-	return *o.ProjectRevision
-}
-
-// GetProjectRevisionOk returns a tuple with the ProjectRevision field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProjectForListDto) GetProjectRevisionOk() (*ProjectRevisionDto, bool) {
-	if o == nil || IsNil(o.ProjectRevision) {
-		return nil, false
-	}
-	return o.ProjectRevision, true
-}
-
-// HasProjectRevision returns a boolean if a field has been set.
-func (o *ProjectForListDto) HasProjectRevision() bool {
-	if o != nil && !IsNil(o.ProjectRevision) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectRevision gets a reference to the given ProjectRevisionDto and assigns it to the ProjectRevision field.
-func (o *ProjectForListDto) SetProjectRevision(v ProjectRevisionDto) {
-	o.ProjectRevision = &v
-}
-
-// GetProjectActionDto returns the ProjectActionDto field value if set, zero value otherwise.
-func (o *ProjectForListDto) GetProjectActionDto() ProjectActionDto {
-	if o == nil || IsNil(o.ProjectActionDto) {
-		var ret ProjectActionDto
-		return ret
-	}
-	return *o.ProjectActionDto
-}
-
-// GetProjectActionDtoOk returns a tuple with the ProjectActionDto field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProjectForListDto) GetProjectActionDtoOk() (*ProjectActionDto, bool) {
-	if o == nil || IsNil(o.ProjectActionDto) {
-		return nil, false
-	}
-	return o.ProjectActionDto, true
-}
-
-// HasProjectActionDto returns a boolean if a field has been set.
-func (o *ProjectForListDto) HasProjectActionDto() bool {
-	if o != nil && !IsNil(o.ProjectActionDto) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectActionDto gets a reference to the given ProjectActionDto and assigns it to the ProjectActionDto field.
-func (o *ProjectForListDto) SetProjectActionDto(v ProjectActionDto) {
-	o.ProjectActionDto = &v
-}
-
 // GetAiCredential returns the AiCredential field value if set, zero value otherwise.
 func (o *ProjectForListDto) GetAiCredential() AiCredentialDto {
 	if o == nil || IsNil(o.AiCredential) {
@@ -2274,12 +2208,6 @@ func (o ProjectForListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.S3Credential) {
 		toSerialize["s3Credential"] = o.S3Credential
-	}
-	if !IsNil(o.ProjectRevision) {
-		toSerialize["projectRevision"] = o.ProjectRevision
-	}
-	if !IsNil(o.ProjectActionDto) {
-		toSerialize["projectActionDto"] = o.ProjectActionDto
 	}
 	if !IsNil(o.AiCredential) {
 		toSerialize["aiCredential"] = o.AiCredential

@@ -15,36 +15,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the ChartSpec type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ChartSpec{}
+// checks if the HelmReleaseChartSpec type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HelmReleaseChartSpec{}
 
-// ChartSpec struct for ChartSpec
-type ChartSpec struct {
+// HelmReleaseChartSpec struct for HelmReleaseChartSpec
+type HelmReleaseChartSpec struct {
 	Chart NullableString `json:"chart,omitempty"`
 	Version NullableString `json:"version,omitempty"`
-	SourceRef *SourceRef `json:"sourceRef,omitempty"`
-	Interval NullableString `json:"interval,omitempty"`
+	SourceRef *HelmReleaseSourceRef `json:"sourceRef,omitempty"`
 }
 
-// NewChartSpec instantiates a new ChartSpec object
+// NewHelmReleaseChartSpec instantiates a new HelmReleaseChartSpec object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChartSpec() *ChartSpec {
-	this := ChartSpec{}
+func NewHelmReleaseChartSpec() *HelmReleaseChartSpec {
+	this := HelmReleaseChartSpec{}
 	return &this
 }
 
-// NewChartSpecWithDefaults instantiates a new ChartSpec object
+// NewHelmReleaseChartSpecWithDefaults instantiates a new HelmReleaseChartSpec object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewChartSpecWithDefaults() *ChartSpec {
-	this := ChartSpec{}
+func NewHelmReleaseChartSpecWithDefaults() *HelmReleaseChartSpec {
+	this := HelmReleaseChartSpec{}
 	return &this
 }
 
 // GetChart returns the Chart field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ChartSpec) GetChart() string {
+func (o *HelmReleaseChartSpec) GetChart() string {
 	if o == nil || IsNil(o.Chart.Get()) {
 		var ret string
 		return ret
@@ -55,7 +54,7 @@ func (o *ChartSpec) GetChart() string {
 // GetChartOk returns a tuple with the Chart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChartSpec) GetChartOk() (*string, bool) {
+func (o *HelmReleaseChartSpec) GetChartOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -63,7 +62,7 @@ func (o *ChartSpec) GetChartOk() (*string, bool) {
 }
 
 // HasChart returns a boolean if a field has been set.
-func (o *ChartSpec) HasChart() bool {
+func (o *HelmReleaseChartSpec) HasChart() bool {
 	if o != nil && o.Chart.IsSet() {
 		return true
 	}
@@ -72,21 +71,21 @@ func (o *ChartSpec) HasChart() bool {
 }
 
 // SetChart gets a reference to the given NullableString and assigns it to the Chart field.
-func (o *ChartSpec) SetChart(v string) {
+func (o *HelmReleaseChartSpec) SetChart(v string) {
 	o.Chart.Set(&v)
 }
 // SetChartNil sets the value for Chart to be an explicit nil
-func (o *ChartSpec) SetChartNil() {
+func (o *HelmReleaseChartSpec) SetChartNil() {
 	o.Chart.Set(nil)
 }
 
 // UnsetChart ensures that no value is present for Chart, not even an explicit nil
-func (o *ChartSpec) UnsetChart() {
+func (o *HelmReleaseChartSpec) UnsetChart() {
 	o.Chart.Unset()
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ChartSpec) GetVersion() string {
+func (o *HelmReleaseChartSpec) GetVersion() string {
 	if o == nil || IsNil(o.Version.Get()) {
 		var ret string
 		return ret
@@ -97,7 +96,7 @@ func (o *ChartSpec) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChartSpec) GetVersionOk() (*string, bool) {
+func (o *HelmReleaseChartSpec) GetVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -105,7 +104,7 @@ func (o *ChartSpec) GetVersionOk() (*string, bool) {
 }
 
 // HasVersion returns a boolean if a field has been set.
-func (o *ChartSpec) HasVersion() bool {
+func (o *HelmReleaseChartSpec) HasVersion() bool {
 	if o != nil && o.Version.IsSet() {
 		return true
 	}
@@ -114,23 +113,23 @@ func (o *ChartSpec) HasVersion() bool {
 }
 
 // SetVersion gets a reference to the given NullableString and assigns it to the Version field.
-func (o *ChartSpec) SetVersion(v string) {
+func (o *HelmReleaseChartSpec) SetVersion(v string) {
 	o.Version.Set(&v)
 }
 // SetVersionNil sets the value for Version to be an explicit nil
-func (o *ChartSpec) SetVersionNil() {
+func (o *HelmReleaseChartSpec) SetVersionNil() {
 	o.Version.Set(nil)
 }
 
 // UnsetVersion ensures that no value is present for Version, not even an explicit nil
-func (o *ChartSpec) UnsetVersion() {
+func (o *HelmReleaseChartSpec) UnsetVersion() {
 	o.Version.Unset()
 }
 
 // GetSourceRef returns the SourceRef field value if set, zero value otherwise.
-func (o *ChartSpec) GetSourceRef() SourceRef {
+func (o *HelmReleaseChartSpec) GetSourceRef() HelmReleaseSourceRef {
 	if o == nil || IsNil(o.SourceRef) {
-		var ret SourceRef
+		var ret HelmReleaseSourceRef
 		return ret
 	}
 	return *o.SourceRef
@@ -138,7 +137,7 @@ func (o *ChartSpec) GetSourceRef() SourceRef {
 
 // GetSourceRefOk returns a tuple with the SourceRef field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ChartSpec) GetSourceRefOk() (*SourceRef, bool) {
+func (o *HelmReleaseChartSpec) GetSourceRefOk() (*HelmReleaseSourceRef, bool) {
 	if o == nil || IsNil(o.SourceRef) {
 		return nil, false
 	}
@@ -146,7 +145,7 @@ func (o *ChartSpec) GetSourceRefOk() (*SourceRef, bool) {
 }
 
 // HasSourceRef returns a boolean if a field has been set.
-func (o *ChartSpec) HasSourceRef() bool {
+func (o *HelmReleaseChartSpec) HasSourceRef() bool {
 	if o != nil && !IsNil(o.SourceRef) {
 		return true
 	}
@@ -154,54 +153,12 @@ func (o *ChartSpec) HasSourceRef() bool {
 	return false
 }
 
-// SetSourceRef gets a reference to the given SourceRef and assigns it to the SourceRef field.
-func (o *ChartSpec) SetSourceRef(v SourceRef) {
+// SetSourceRef gets a reference to the given HelmReleaseSourceRef and assigns it to the SourceRef field.
+func (o *HelmReleaseChartSpec) SetSourceRef(v HelmReleaseSourceRef) {
 	o.SourceRef = &v
 }
 
-// GetInterval returns the Interval field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ChartSpec) GetInterval() string {
-	if o == nil || IsNil(o.Interval.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Interval.Get()
-}
-
-// GetIntervalOk returns a tuple with the Interval field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ChartSpec) GetIntervalOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Interval.Get(), o.Interval.IsSet()
-}
-
-// HasInterval returns a boolean if a field has been set.
-func (o *ChartSpec) HasInterval() bool {
-	if o != nil && o.Interval.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetInterval gets a reference to the given NullableString and assigns it to the Interval field.
-func (o *ChartSpec) SetInterval(v string) {
-	o.Interval.Set(&v)
-}
-// SetIntervalNil sets the value for Interval to be an explicit nil
-func (o *ChartSpec) SetIntervalNil() {
-	o.Interval.Set(nil)
-}
-
-// UnsetInterval ensures that no value is present for Interval, not even an explicit nil
-func (o *ChartSpec) UnsetInterval() {
-	o.Interval.Unset()
-}
-
-func (o ChartSpec) MarshalJSON() ([]byte, error) {
+func (o HelmReleaseChartSpec) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -209,7 +166,7 @@ func (o ChartSpec) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ChartSpec) ToMap() (map[string]interface{}, error) {
+func (o HelmReleaseChartSpec) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Chart.IsSet() {
 		toSerialize["chart"] = o.Chart.Get()
@@ -220,44 +177,41 @@ func (o ChartSpec) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SourceRef) {
 		toSerialize["sourceRef"] = o.SourceRef
 	}
-	if o.Interval.IsSet() {
-		toSerialize["interval"] = o.Interval.Get()
-	}
 	return toSerialize, nil
 }
 
-type NullableChartSpec struct {
-	value *ChartSpec
+type NullableHelmReleaseChartSpec struct {
+	value *HelmReleaseChartSpec
 	isSet bool
 }
 
-func (v NullableChartSpec) Get() *ChartSpec {
+func (v NullableHelmReleaseChartSpec) Get() *HelmReleaseChartSpec {
 	return v.value
 }
 
-func (v *NullableChartSpec) Set(val *ChartSpec) {
+func (v *NullableHelmReleaseChartSpec) Set(val *HelmReleaseChartSpec) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableChartSpec) IsSet() bool {
+func (v NullableHelmReleaseChartSpec) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableChartSpec) Unset() {
+func (v *NullableHelmReleaseChartSpec) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableChartSpec(val *ChartSpec) *NullableChartSpec {
-	return &NullableChartSpec{value: val, isSet: true}
+func NewNullableHelmReleaseChartSpec(val *HelmReleaseChartSpec) *NullableHelmReleaseChartSpec {
+	return &NullableHelmReleaseChartSpec{value: val, isSet: true}
 }
 
-func (v NullableChartSpec) MarshalJSON() ([]byte, error) {
+func (v NullableHelmReleaseChartSpec) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableChartSpec) UnmarshalJSON(src []byte) error {
+func (v *NullableHelmReleaseChartSpec) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

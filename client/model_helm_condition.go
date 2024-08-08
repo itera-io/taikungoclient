@@ -13,82 +13,38 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
 )
 
-// checks if the Condition type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Condition{}
+// checks if the HelmCondition type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HelmCondition{}
 
-// Condition struct for Condition
-type Condition struct {
-	LastTransitionTime NullableTime `json:"lastTransitionTime,omitempty"`
+// HelmCondition struct for HelmCondition
+type HelmCondition struct {
 	Message NullableString `json:"message,omitempty"`
 	Reason NullableString `json:"reason,omitempty"`
 	Status NullableString `json:"status,omitempty"`
 	Type NullableString `json:"type,omitempty"`
 }
 
-// NewCondition instantiates a new Condition object
+// NewHelmCondition instantiates a new HelmCondition object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCondition() *Condition {
-	this := Condition{}
+func NewHelmCondition() *HelmCondition {
+	this := HelmCondition{}
 	return &this
 }
 
-// NewConditionWithDefaults instantiates a new Condition object
+// NewHelmConditionWithDefaults instantiates a new HelmCondition object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewConditionWithDefaults() *Condition {
-	this := Condition{}
+func NewHelmConditionWithDefaults() *HelmCondition {
+	this := HelmCondition{}
 	return &this
-}
-
-// GetLastTransitionTime returns the LastTransitionTime field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Condition) GetLastTransitionTime() time.Time {
-	if o == nil || IsNil(o.LastTransitionTime.Get()) {
-		var ret time.Time
-		return ret
-	}
-	return *o.LastTransitionTime.Get()
-}
-
-// GetLastTransitionTimeOk returns a tuple with the LastTransitionTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Condition) GetLastTransitionTimeOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.LastTransitionTime.Get(), o.LastTransitionTime.IsSet()
-}
-
-// HasLastTransitionTime returns a boolean if a field has been set.
-func (o *Condition) HasLastTransitionTime() bool {
-	if o != nil && o.LastTransitionTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastTransitionTime gets a reference to the given NullableTime and assigns it to the LastTransitionTime field.
-func (o *Condition) SetLastTransitionTime(v time.Time) {
-	o.LastTransitionTime.Set(&v)
-}
-// SetLastTransitionTimeNil sets the value for LastTransitionTime to be an explicit nil
-func (o *Condition) SetLastTransitionTimeNil() {
-	o.LastTransitionTime.Set(nil)
-}
-
-// UnsetLastTransitionTime ensures that no value is present for LastTransitionTime, not even an explicit nil
-func (o *Condition) UnsetLastTransitionTime() {
-	o.LastTransitionTime.Unset()
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Condition) GetMessage() string {
+func (o *HelmCondition) GetMessage() string {
 	if o == nil || IsNil(o.Message.Get()) {
 		var ret string
 		return ret
@@ -99,7 +55,7 @@ func (o *Condition) GetMessage() string {
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Condition) GetMessageOk() (*string, bool) {
+func (o *HelmCondition) GetMessageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -107,7 +63,7 @@ func (o *Condition) GetMessageOk() (*string, bool) {
 }
 
 // HasMessage returns a boolean if a field has been set.
-func (o *Condition) HasMessage() bool {
+func (o *HelmCondition) HasMessage() bool {
 	if o != nil && o.Message.IsSet() {
 		return true
 	}
@@ -116,21 +72,21 @@ func (o *Condition) HasMessage() bool {
 }
 
 // SetMessage gets a reference to the given NullableString and assigns it to the Message field.
-func (o *Condition) SetMessage(v string) {
+func (o *HelmCondition) SetMessage(v string) {
 	o.Message.Set(&v)
 }
 // SetMessageNil sets the value for Message to be an explicit nil
-func (o *Condition) SetMessageNil() {
+func (o *HelmCondition) SetMessageNil() {
 	o.Message.Set(nil)
 }
 
 // UnsetMessage ensures that no value is present for Message, not even an explicit nil
-func (o *Condition) UnsetMessage() {
+func (o *HelmCondition) UnsetMessage() {
 	o.Message.Unset()
 }
 
 // GetReason returns the Reason field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Condition) GetReason() string {
+func (o *HelmCondition) GetReason() string {
 	if o == nil || IsNil(o.Reason.Get()) {
 		var ret string
 		return ret
@@ -141,7 +97,7 @@ func (o *Condition) GetReason() string {
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Condition) GetReasonOk() (*string, bool) {
+func (o *HelmCondition) GetReasonOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -149,7 +105,7 @@ func (o *Condition) GetReasonOk() (*string, bool) {
 }
 
 // HasReason returns a boolean if a field has been set.
-func (o *Condition) HasReason() bool {
+func (o *HelmCondition) HasReason() bool {
 	if o != nil && o.Reason.IsSet() {
 		return true
 	}
@@ -158,21 +114,21 @@ func (o *Condition) HasReason() bool {
 }
 
 // SetReason gets a reference to the given NullableString and assigns it to the Reason field.
-func (o *Condition) SetReason(v string) {
+func (o *HelmCondition) SetReason(v string) {
 	o.Reason.Set(&v)
 }
 // SetReasonNil sets the value for Reason to be an explicit nil
-func (o *Condition) SetReasonNil() {
+func (o *HelmCondition) SetReasonNil() {
 	o.Reason.Set(nil)
 }
 
 // UnsetReason ensures that no value is present for Reason, not even an explicit nil
-func (o *Condition) UnsetReason() {
+func (o *HelmCondition) UnsetReason() {
 	o.Reason.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Condition) GetStatus() string {
+func (o *HelmCondition) GetStatus() string {
 	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
@@ -183,7 +139,7 @@ func (o *Condition) GetStatus() string {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Condition) GetStatusOk() (*string, bool) {
+func (o *HelmCondition) GetStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -191,7 +147,7 @@ func (o *Condition) GetStatusOk() (*string, bool) {
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *Condition) HasStatus() bool {
+func (o *HelmCondition) HasStatus() bool {
 	if o != nil && o.Status.IsSet() {
 		return true
 	}
@@ -200,21 +156,21 @@ func (o *Condition) HasStatus() bool {
 }
 
 // SetStatus gets a reference to the given NullableString and assigns it to the Status field.
-func (o *Condition) SetStatus(v string) {
+func (o *HelmCondition) SetStatus(v string) {
 	o.Status.Set(&v)
 }
 // SetStatusNil sets the value for Status to be an explicit nil
-func (o *Condition) SetStatusNil() {
+func (o *HelmCondition) SetStatusNil() {
 	o.Status.Set(nil)
 }
 
 // UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *Condition) UnsetStatus() {
+func (o *HelmCondition) UnsetStatus() {
 	o.Status.Unset()
 }
 
 // GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Condition) GetType() string {
+func (o *HelmCondition) GetType() string {
 	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
@@ -225,7 +181,7 @@ func (o *Condition) GetType() string {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Condition) GetTypeOk() (*string, bool) {
+func (o *HelmCondition) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -233,7 +189,7 @@ func (o *Condition) GetTypeOk() (*string, bool) {
 }
 
 // HasType returns a boolean if a field has been set.
-func (o *Condition) HasType() bool {
+func (o *HelmCondition) HasType() bool {
 	if o != nil && o.Type.IsSet() {
 		return true
 	}
@@ -242,20 +198,20 @@ func (o *Condition) HasType() bool {
 }
 
 // SetType gets a reference to the given NullableString and assigns it to the Type field.
-func (o *Condition) SetType(v string) {
+func (o *HelmCondition) SetType(v string) {
 	o.Type.Set(&v)
 }
 // SetTypeNil sets the value for Type to be an explicit nil
-func (o *Condition) SetTypeNil() {
+func (o *HelmCondition) SetTypeNil() {
 	o.Type.Set(nil)
 }
 
 // UnsetType ensures that no value is present for Type, not even an explicit nil
-func (o *Condition) UnsetType() {
+func (o *HelmCondition) UnsetType() {
 	o.Type.Unset()
 }
 
-func (o Condition) MarshalJSON() ([]byte, error) {
+func (o HelmCondition) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -263,11 +219,8 @@ func (o Condition) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Condition) ToMap() (map[string]interface{}, error) {
+func (o HelmCondition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.LastTransitionTime.IsSet() {
-		toSerialize["lastTransitionTime"] = o.LastTransitionTime.Get()
-	}
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
 	}
@@ -283,38 +236,38 @@ func (o Condition) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableCondition struct {
-	value *Condition
+type NullableHelmCondition struct {
+	value *HelmCondition
 	isSet bool
 }
 
-func (v NullableCondition) Get() *Condition {
+func (v NullableHelmCondition) Get() *HelmCondition {
 	return v.value
 }
 
-func (v *NullableCondition) Set(val *Condition) {
+func (v *NullableHelmCondition) Set(val *HelmCondition) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCondition) IsSet() bool {
+func (v NullableHelmCondition) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCondition) Unset() {
+func (v *NullableHelmCondition) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCondition(val *Condition) *NullableCondition {
-	return &NullableCondition{value: val, isSet: true}
+func NewNullableHelmCondition(val *HelmCondition) *NullableHelmCondition {
+	return &NullableHelmCondition{value: val, isSet: true}
 }
 
-func (v NullableCondition) MarshalJSON() ([]byte, error) {
+func (v NullableHelmCondition) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCondition) UnmarshalJSON(src []byte) error {
+func (v *NullableHelmCondition) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

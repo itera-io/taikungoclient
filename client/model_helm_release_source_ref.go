@@ -15,34 +15,34 @@ import (
 	"encoding/json"
 )
 
-// checks if the SourceRef type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SourceRef{}
+// checks if the HelmReleaseSourceRef type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HelmReleaseSourceRef{}
 
-// SourceRef struct for SourceRef
-type SourceRef struct {
+// HelmReleaseSourceRef struct for HelmReleaseSourceRef
+type HelmReleaseSourceRef struct {
 	Kind NullableString `json:"kind,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 }
 
-// NewSourceRef instantiates a new SourceRef object
+// NewHelmReleaseSourceRef instantiates a new HelmReleaseSourceRef object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSourceRef() *SourceRef {
-	this := SourceRef{}
+func NewHelmReleaseSourceRef() *HelmReleaseSourceRef {
+	this := HelmReleaseSourceRef{}
 	return &this
 }
 
-// NewSourceRefWithDefaults instantiates a new SourceRef object
+// NewHelmReleaseSourceRefWithDefaults instantiates a new HelmReleaseSourceRef object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSourceRefWithDefaults() *SourceRef {
-	this := SourceRef{}
+func NewHelmReleaseSourceRefWithDefaults() *HelmReleaseSourceRef {
+	this := HelmReleaseSourceRef{}
 	return &this
 }
 
 // GetKind returns the Kind field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SourceRef) GetKind() string {
+func (o *HelmReleaseSourceRef) GetKind() string {
 	if o == nil || IsNil(o.Kind.Get()) {
 		var ret string
 		return ret
@@ -53,7 +53,7 @@ func (o *SourceRef) GetKind() string {
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SourceRef) GetKindOk() (*string, bool) {
+func (o *HelmReleaseSourceRef) GetKindOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -61,7 +61,7 @@ func (o *SourceRef) GetKindOk() (*string, bool) {
 }
 
 // HasKind returns a boolean if a field has been set.
-func (o *SourceRef) HasKind() bool {
+func (o *HelmReleaseSourceRef) HasKind() bool {
 	if o != nil && o.Kind.IsSet() {
 		return true
 	}
@@ -70,21 +70,21 @@ func (o *SourceRef) HasKind() bool {
 }
 
 // SetKind gets a reference to the given NullableString and assigns it to the Kind field.
-func (o *SourceRef) SetKind(v string) {
+func (o *HelmReleaseSourceRef) SetKind(v string) {
 	o.Kind.Set(&v)
 }
 // SetKindNil sets the value for Kind to be an explicit nil
-func (o *SourceRef) SetKindNil() {
+func (o *HelmReleaseSourceRef) SetKindNil() {
 	o.Kind.Set(nil)
 }
 
 // UnsetKind ensures that no value is present for Kind, not even an explicit nil
-func (o *SourceRef) UnsetKind() {
+func (o *HelmReleaseSourceRef) UnsetKind() {
 	o.Kind.Unset()
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SourceRef) GetName() string {
+func (o *HelmReleaseSourceRef) GetName() string {
 	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
@@ -95,7 +95,7 @@ func (o *SourceRef) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SourceRef) GetNameOk() (*string, bool) {
+func (o *HelmReleaseSourceRef) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -103,7 +103,7 @@ func (o *SourceRef) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *SourceRef) HasName() bool {
+func (o *HelmReleaseSourceRef) HasName() bool {
 	if o != nil && o.Name.IsSet() {
 		return true
 	}
@@ -112,20 +112,20 @@ func (o *SourceRef) HasName() bool {
 }
 
 // SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *SourceRef) SetName(v string) {
+func (o *HelmReleaseSourceRef) SetName(v string) {
 	o.Name.Set(&v)
 }
 // SetNameNil sets the value for Name to be an explicit nil
-func (o *SourceRef) SetNameNil() {
+func (o *HelmReleaseSourceRef) SetNameNil() {
 	o.Name.Set(nil)
 }
 
 // UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *SourceRef) UnsetName() {
+func (o *HelmReleaseSourceRef) UnsetName() {
 	o.Name.Unset()
 }
 
-func (o SourceRef) MarshalJSON() ([]byte, error) {
+func (o HelmReleaseSourceRef) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -133,7 +133,7 @@ func (o SourceRef) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SourceRef) ToMap() (map[string]interface{}, error) {
+func (o HelmReleaseSourceRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Kind.IsSet() {
 		toSerialize["kind"] = o.Kind.Get()
@@ -144,38 +144,38 @@ func (o SourceRef) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableSourceRef struct {
-	value *SourceRef
+type NullableHelmReleaseSourceRef struct {
+	value *HelmReleaseSourceRef
 	isSet bool
 }
 
-func (v NullableSourceRef) Get() *SourceRef {
+func (v NullableHelmReleaseSourceRef) Get() *HelmReleaseSourceRef {
 	return v.value
 }
 
-func (v *NullableSourceRef) Set(val *SourceRef) {
+func (v *NullableHelmReleaseSourceRef) Set(val *HelmReleaseSourceRef) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSourceRef) IsSet() bool {
+func (v NullableHelmReleaseSourceRef) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSourceRef) Unset() {
+func (v *NullableHelmReleaseSourceRef) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSourceRef(val *SourceRef) *NullableSourceRef {
-	return &NullableSourceRef{value: val, isSet: true}
+func NewNullableHelmReleaseSourceRef(val *HelmReleaseSourceRef) *NullableHelmReleaseSourceRef {
+	return &NullableHelmReleaseSourceRef{value: val, isSet: true}
 }
 
-func (v NullableSourceRef) MarshalJSON() ([]byte, error) {
+func (v NullableHelmReleaseSourceRef) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSourceRef) UnmarshalJSON(src []byte) error {
+func (v *NullableHelmReleaseSourceRef) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

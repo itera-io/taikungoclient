@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the Chart type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &Chart{}
+// checks if the HelmReleaseChart type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &HelmReleaseChart{}
 
-// Chart struct for Chart
-type Chart struct {
-	Spec *ChartSpec `json:"spec,omitempty"`
+// HelmReleaseChart struct for HelmReleaseChart
+type HelmReleaseChart struct {
+	Spec *HelmReleaseChartSpec `json:"spec,omitempty"`
 }
 
-// NewChart instantiates a new Chart object
+// NewHelmReleaseChart instantiates a new HelmReleaseChart object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChart() *Chart {
-	this := Chart{}
+func NewHelmReleaseChart() *HelmReleaseChart {
+	this := HelmReleaseChart{}
 	return &this
 }
 
-// NewChartWithDefaults instantiates a new Chart object
+// NewHelmReleaseChartWithDefaults instantiates a new HelmReleaseChart object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewChartWithDefaults() *Chart {
-	this := Chart{}
+func NewHelmReleaseChartWithDefaults() *HelmReleaseChart {
+	this := HelmReleaseChart{}
 	return &this
 }
 
 // GetSpec returns the Spec field value if set, zero value otherwise.
-func (o *Chart) GetSpec() ChartSpec {
+func (o *HelmReleaseChart) GetSpec() HelmReleaseChartSpec {
 	if o == nil || IsNil(o.Spec) {
-		var ret ChartSpec
+		var ret HelmReleaseChartSpec
 		return ret
 	}
 	return *o.Spec
@@ -51,7 +51,7 @@ func (o *Chart) GetSpec() ChartSpec {
 
 // GetSpecOk returns a tuple with the Spec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Chart) GetSpecOk() (*ChartSpec, bool) {
+func (o *HelmReleaseChart) GetSpecOk() (*HelmReleaseChartSpec, bool) {
 	if o == nil || IsNil(o.Spec) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *Chart) GetSpecOk() (*ChartSpec, bool) {
 }
 
 // HasSpec returns a boolean if a field has been set.
-func (o *Chart) HasSpec() bool {
+func (o *HelmReleaseChart) HasSpec() bool {
 	if o != nil && !IsNil(o.Spec) {
 		return true
 	}
@@ -67,12 +67,12 @@ func (o *Chart) HasSpec() bool {
 	return false
 }
 
-// SetSpec gets a reference to the given ChartSpec and assigns it to the Spec field.
-func (o *Chart) SetSpec(v ChartSpec) {
+// SetSpec gets a reference to the given HelmReleaseChartSpec and assigns it to the Spec field.
+func (o *HelmReleaseChart) SetSpec(v HelmReleaseChartSpec) {
 	o.Spec = &v
 }
 
-func (o Chart) MarshalJSON() ([]byte, error) {
+func (o HelmReleaseChart) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -80,7 +80,7 @@ func (o Chart) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o Chart) ToMap() (map[string]interface{}, error) {
+func (o HelmReleaseChart) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Spec) {
 		toSerialize["spec"] = o.Spec
@@ -88,38 +88,38 @@ func (o Chart) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableChart struct {
-	value *Chart
+type NullableHelmReleaseChart struct {
+	value *HelmReleaseChart
 	isSet bool
 }
 
-func (v NullableChart) Get() *Chart {
+func (v NullableHelmReleaseChart) Get() *HelmReleaseChart {
 	return v.value
 }
 
-func (v *NullableChart) Set(val *Chart) {
+func (v *NullableHelmReleaseChart) Set(val *HelmReleaseChart) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableChart) IsSet() bool {
+func (v NullableHelmReleaseChart) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableChart) Unset() {
+func (v *NullableHelmReleaseChart) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableChart(val *Chart) *NullableChart {
-	return &NullableChart{value: val, isSet: true}
+func NewNullableHelmReleaseChart(val *HelmReleaseChart) *NullableHelmReleaseChart {
+	return &NullableHelmReleaseChart{value: val, isSet: true}
 }
 
-func (v NullableChart) MarshalJSON() ([]byte, error) {
+func (v NullableHelmReleaseChart) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableChart) UnmarshalJSON(src []byte) error {
+func (v *NullableHelmReleaseChart) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

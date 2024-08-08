@@ -22,8 +22,8 @@ var _ MappedNullable = &HelmReleaseDto{}
 type HelmReleaseDto struct {
 	ApiVersion NullableString `json:"apiVersion,omitempty"`
 	Kind NullableString `json:"kind,omitempty"`
-	Metadata *HelmMetadata `json:"metadata,omitempty"`
-	Spec *HelmSpec `json:"spec,omitempty"`
+	Metadata *HelmReleaseMetaData `json:"metadata,omitempty"`
+	Spec *HelmReleaseSpec `json:"spec,omitempty"`
 	Status *HelmStatus `json:"status,omitempty"`
 }
 
@@ -129,9 +129,9 @@ func (o *HelmReleaseDto) UnsetKind() {
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *HelmReleaseDto) GetMetadata() HelmMetadata {
+func (o *HelmReleaseDto) GetMetadata() HelmReleaseMetaData {
 	if o == nil || IsNil(o.Metadata) {
-		var ret HelmMetadata
+		var ret HelmReleaseMetaData
 		return ret
 	}
 	return *o.Metadata
@@ -139,7 +139,7 @@ func (o *HelmReleaseDto) GetMetadata() HelmMetadata {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmReleaseDto) GetMetadataOk() (*HelmMetadata, bool) {
+func (o *HelmReleaseDto) GetMetadataOk() (*HelmReleaseMetaData, bool) {
 	if o == nil || IsNil(o.Metadata) {
 		return nil, false
 	}
@@ -155,15 +155,15 @@ func (o *HelmReleaseDto) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given HelmMetadata and assigns it to the Metadata field.
-func (o *HelmReleaseDto) SetMetadata(v HelmMetadata) {
+// SetMetadata gets a reference to the given HelmReleaseMetaData and assigns it to the Metadata field.
+func (o *HelmReleaseDto) SetMetadata(v HelmReleaseMetaData) {
 	o.Metadata = &v
 }
 
 // GetSpec returns the Spec field value if set, zero value otherwise.
-func (o *HelmReleaseDto) GetSpec() HelmSpec {
+func (o *HelmReleaseDto) GetSpec() HelmReleaseSpec {
 	if o == nil || IsNil(o.Spec) {
-		var ret HelmSpec
+		var ret HelmReleaseSpec
 		return ret
 	}
 	return *o.Spec
@@ -171,7 +171,7 @@ func (o *HelmReleaseDto) GetSpec() HelmSpec {
 
 // GetSpecOk returns a tuple with the Spec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmReleaseDto) GetSpecOk() (*HelmSpec, bool) {
+func (o *HelmReleaseDto) GetSpecOk() (*HelmReleaseSpec, bool) {
 	if o == nil || IsNil(o.Spec) {
 		return nil, false
 	}
@@ -187,8 +187,8 @@ func (o *HelmReleaseDto) HasSpec() bool {
 	return false
 }
 
-// SetSpec gets a reference to the given HelmSpec and assigns it to the Spec field.
-func (o *HelmReleaseDto) SetSpec(v HelmSpec) {
+// SetSpec gets a reference to the given HelmReleaseSpec and assigns it to the Spec field.
+func (o *HelmReleaseDto) SetSpec(v HelmReleaseSpec) {
 	o.Spec = &v
 }
 

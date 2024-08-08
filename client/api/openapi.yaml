@@ -5416,8 +5416,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-08-07T00:03:02.9569668Z
-                  createdAt: 2024-08-07T00:03:02.9569668Z
+                  lastValidated: 2024-08-08T00:02:48.4226402Z
+                  createdAt: 2024-08-08T00:02:48.4226402Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5522,14 +5522,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-08-07T00:03:02.9569668Z
+                    lastBackup: 2024-08-08T00:02:48.4226402Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-08-07T00:03:02.9569668Z
+                  createdAt: 2024-08-08T00:02:48.4226402Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-08-07T00:03:02.9569668Z
+                  lastBackup: 2024-08-08T00:02:48.4226402Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5634,8 +5634,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-08-07T00:03:02.9569668Z
-                  expiration: 2024-08-07T00:03:02.9569668Z
+                  createdAt: 2024-08-08T00:02:48.4226402Z
+                  expiration: 2024-08-08T00:02:48.4226402Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5739,7 +5739,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-08-07T00:03:02.9569668Z
+                  createdAt: 2024-08-08T00:02:48.4226402Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5849,9 +5849,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-08-07T00:03:02.9569668+00:00
-                  startTimeStamp: 2024-08-07T00:03:02.9569668+00:00
-                  createdAt: 2024-08-07T00:03:02.9569668Z
+                  completionDateTime: 2024-08-08T00:02:48.4226402+00:00
+                  startTimeStamp: 2024-08-08T00:02:48.4226402+00:00
+                  createdAt: 2024-08-08T00:02:48.4226402Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -22926,48 +22926,6 @@ paths:
       summary: Become a partner
       tags:
       - Partners
-  /api/v1/partner/bindorganizations:
-    post:
-      operationId: partner-bind-organizations
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BindOrganizationsCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Bind organizations to a partner
-      tags:
-      - Partners
   /api/v1/partner/contact-us:
     post:
       operationId: partner-contact-us
@@ -33097,177 +33055,6 @@ paths:
       summary: Add disk for standalone vm
       tags:
       - Standalone VM disks
-  /api/v1/standalonevmdisks/delete:
-    post:
-      operationId: standalonevmdisks-delete
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeleteStandAloneVmDiskCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Remove disk from standalone vm
-      tags:
-      - Standalone VM disks
-  /api/v1/standalonevmdisks/purge:
-    post:
-      operationId: standalonevmdisks-purge
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PurgeStandAloneVmDiskCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Purge vm disks
-      tags:
-      - Standalone VM disks
-  /api/v1/standalonevmdisks/reset:
-    post:
-      operationId: standalonevmdisks-reset
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ResetStandAloneVmDiskStatusCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Update status of disk
-      tags:
-      - Standalone VM disks
-  /api/v1/standalonevmdisks/update:
-    post:
-      operationId: standalonevmdisks-update
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateStandaloneVmDiskCommand'
-        required: true
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Update disk
-      tags:
-      - Standalone VM disks
   /api/v1/standalonevmdisks/update-size:
     post:
       operationId: standalonevmdisks-update-size
@@ -35420,90 +35207,6 @@ paths:
       summary: Remove user group(s)
       tags:
       - User group
-  /api/v1/userprojects/bindprojects:
-    post:
-      operationId: userprojects-bind-projects
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BindProjectsCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Bind projects to user
-      tags:
-      - User projects
-  /api/v1/userprojects/bindusers:
-    post:
-      operationId: userprojects-bind-users
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BindUsersCommand'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Bind users to project
-      tags:
-      - User projects
   /api/v1/userprojects/projects/list:
     get:
       operationId: userprojects-project-list-by-user
@@ -41898,26 +41601,6 @@ components:
           nullable: true
           type: array
       type: object
-    BindOrganizationsCommand:
-      additionalProperties: false
-      example:
-        organizations:
-        - organizationId: 0
-          isBound: true
-        - organizationId: 0
-          isBound: true
-        partnerId: 6
-      properties:
-        organizations:
-          items:
-            $ref: '#/components/schemas/OrganizationDto'
-          nullable: true
-          type: array
-        partnerId:
-          format: int32
-          nullable: true
-          type: integer
-      type: object
     BindProjectGroupsToUserGroupCommand:
       additionalProperties: false
       example:
@@ -41935,31 +41618,6 @@ components:
         userGroupId:
           format: int32
           type: integer
-      type: object
-    BindProjectsCommand:
-      additionalProperties: false
-      example:
-        projects:
-        - isBound: true
-          name: name
-          id: 0
-        - isBound: true
-          name: name
-          id: 0
-        userName: userName
-        userId: userId
-      properties:
-        projects:
-          items:
-            $ref: '#/components/schemas/UpdateUserProjectDto'
-          nullable: true
-          type: array
-        userId:
-          nullable: true
-          type: string
-        userName:
-          nullable: true
-          type: string
       type: object
     BindProjectsToProjectGroupCommand:
       additionalProperties: false
@@ -42063,27 +41721,6 @@ components:
           nullable: true
           type: array
         projectGroupId:
-          format: int32
-          type: integer
-      type: object
-    BindUsersCommand:
-      additionalProperties: false
-      example:
-        projectId: 0
-        users:
-        - isBound: true
-          name: name
-          id: id
-        - isBound: true
-          name: name
-          id: id
-      properties:
-        users:
-          items:
-            $ref: '#/components/schemas/UpdateProjectUserDto'
-          nullable: true
-          type: array
-        projectId:
           format: int32
           type: integer
       type: object
@@ -43265,42 +42902,6 @@ components:
           nullable: true
           type: string
       type: object
-    Chart:
-      additionalProperties: false
-      example:
-        spec:
-          interval: interval
-          sourceRef:
-            kind: kind
-            name: name
-          chart: chart
-          version: version
-      properties:
-        spec:
-          $ref: '#/components/schemas/ChartSpec'
-      type: object
-    ChartSpec:
-      additionalProperties: false
-      example:
-        interval: interval
-        sourceRef:
-          kind: kind
-          name: name
-        chart: chart
-        version: version
-      properties:
-        chart:
-          nullable: true
-          type: string
-        version:
-          nullable: true
-          type: string
-        sourceRef:
-          $ref: '#/components/schemas/SourceRef'
-        interval:
-          nullable: true
-          type: string
-      type: object
     ChatCompletionsCommand:
       additionalProperties: false
       example:
@@ -43871,32 +43472,6 @@ components:
           type: string
         isBound:
           type: boolean
-      type: object
-    Condition:
-      additionalProperties: false
-      example:
-        reason: reason
-        lastTransitionTime: 2000-01-23T04:56:07.000+00:00
-        message: message
-        type: type
-        status: status
-      properties:
-        lastTransitionTime:
-          format: date-time
-          nullable: true
-          type: string
-        message:
-          nullable: true
-          type: string
-        reason:
-          nullable: true
-          type: string
-        status:
-          nullable: true
-          type: string
-        type:
-          nullable: true
-          type: string
       type: object
     ConfigMapDto:
       additionalProperties: false
@@ -46877,24 +46452,6 @@ components:
           format: int32
           type: integer
       type: object
-    DeleteStandAloneVmDiskCommand:
-      additionalProperties: false
-      example:
-        vmDiskIds:
-        - 6
-        - 6
-        standaloneVmId: 0
-      properties:
-        standaloneVmId:
-          format: int32
-          type: integer
-        vmDiskIds:
-          items:
-            format: int32
-            type: integer
-          nullable: true
-          type: array
-      type: object
     DeleteSubscriptionCommand:
       additionalProperties: false
       example:
@@ -49034,6 +48591,27 @@ components:
         periodDuration:
           $ref: '#/components/schemas/BillingPeriod'
       type: object
+    HelmCondition:
+      additionalProperties: false
+      example:
+        reason: reason
+        message: message
+        type: type
+        status: status
+      properties:
+        message:
+          nullable: true
+          type: string
+        reason:
+          nullable: true
+          type: string
+        status:
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+      type: object
     HelmCredentialCommand:
       additionalProperties: false
       example:
@@ -49051,67 +48629,66 @@ components:
           nullable: true
           type: string
       type: object
-    HelmMetadata:
+    HelmReleaseChart:
       additionalProperties: false
       example:
-        name: name
-        namespace: namespace
-        creationTimestamp: creationTimestamp
+        spec:
+          sourceRef:
+            kind: kind
+            name: name
+          chart: chart
+          version: version
       properties:
-        name:
+        spec:
+          $ref: '#/components/schemas/HelmReleaseChartSpec'
+      type: object
+    HelmReleaseChartSpec:
+      additionalProperties: false
+      example:
+        sourceRef:
+          kind: kind
+          name: name
+        chart: chart
+        version: version
+      properties:
+        chart:
           nullable: true
           type: string
-        namespace:
+        version:
           nullable: true
           type: string
-        creationTimestamp:
-          nullable: true
-          type: string
+        sourceRef:
+          $ref: '#/components/schemas/HelmReleaseSourceRef'
       type: object
     HelmReleaseDto:
       additionalProperties: false
       example:
         metadata:
+          creationTimestamp: creationTimestamp
           name: name
           namespace: namespace
-          creationTimestamp: creationTimestamp
         apiVersion: apiVersion
         kind: kind
         spec:
           targetNamespace: targetNamespace
-          releaseName: releaseName
-          values:
-            parent: null
-            root: null
-            options:
-              hasValue: true
-              value: null
-          storageNamespace: storageNamespace
-          interval: interval
           chart:
             spec:
-              interval: interval
               sourceRef:
                 kind: kind
                 name: name
               chart: chart
               version: version
-          url: url
         status:
           failures: 0
-          helmChart: helmChart
           conditions:
           - reason: reason
-            lastTransitionTime: 2000-01-23T04:56:07.000+00:00
             message: message
             type: type
             status: status
           - reason: reason
-            lastTransitionTime: 2000-01-23T04:56:07.000+00:00
             message: message
             type: type
             status: status
-          observedGeneration: 6
       properties:
         apiVersion:
           nullable: true
@@ -49120,99 +48697,117 @@ components:
           nullable: true
           type: string
         metadata:
-          $ref: '#/components/schemas/HelmMetadata'
+          $ref: '#/components/schemas/HelmReleaseMetaData'
         spec:
-          $ref: '#/components/schemas/HelmSpec'
+          $ref: '#/components/schemas/HelmReleaseSpec'
         status:
           $ref: '#/components/schemas/HelmStatus'
+      type: object
+    HelmReleaseMetaData:
+      additionalProperties: false
+      example:
+        creationTimestamp: creationTimestamp
+        name: name
+        namespace: namespace
+      properties:
+        creationTimestamp:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+      type: object
+    HelmReleaseSourceRef:
+      additionalProperties: false
+      example:
+        kind: kind
+        name: name
+      properties:
+        kind:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+      type: object
+    HelmReleaseSpec:
+      additionalProperties: false
+      example:
+        targetNamespace: targetNamespace
+        chart:
+          spec:
+            sourceRef:
+              kind: kind
+              name: name
+            chart: chart
+            version: version
+      properties:
+        targetNamespace:
+          nullable: true
+          type: string
+        chart:
+          $ref: '#/components/schemas/HelmReleaseChart'
       type: object
     HelmReleasesList:
       additionalProperties: false
       example:
         data:
         - metadata:
+            creationTimestamp: creationTimestamp
             name: name
             namespace: namespace
-            creationTimestamp: creationTimestamp
           apiVersion: apiVersion
           kind: kind
           spec:
             targetNamespace: targetNamespace
-            releaseName: releaseName
-            values:
-              parent: null
-              root: null
-              options:
-                hasValue: true
-                value: null
-            storageNamespace: storageNamespace
-            interval: interval
             chart:
               spec:
-                interval: interval
                 sourceRef:
                   kind: kind
                   name: name
                 chart: chart
                 version: version
-            url: url
           status:
             failures: 0
-            helmChart: helmChart
             conditions:
             - reason: reason
-              lastTransitionTime: 2000-01-23T04:56:07.000+00:00
               message: message
               type: type
               status: status
             - reason: reason
-              lastTransitionTime: 2000-01-23T04:56:07.000+00:00
               message: message
               type: type
               status: status
-            observedGeneration: 6
         - metadata:
+            creationTimestamp: creationTimestamp
             name: name
             namespace: namespace
-            creationTimestamp: creationTimestamp
           apiVersion: apiVersion
           kind: kind
           spec:
             targetNamespace: targetNamespace
-            releaseName: releaseName
-            values:
-              parent: null
-              root: null
-              options:
-                hasValue: true
-                value: null
-            storageNamespace: storageNamespace
-            interval: interval
             chart:
               spec:
-                interval: interval
                 sourceRef:
                   kind: kind
                   name: name
                 chart: chart
                 version: version
-            url: url
           status:
             failures: 0
-            helmChart: helmChart
             conditions:
             - reason: reason
-              lastTransitionTime: 2000-01-23T04:56:07.000+00:00
               message: message
               type: type
               status: status
             - reason: reason
-              lastTransitionTime: 2000-01-23T04:56:07.000+00:00
               message: message
               type: type
               status: status
-            observedGeneration: 6
-        totalCount: 1
+        totalCount: 6
       properties:
         data:
           items:
@@ -49223,79 +48818,26 @@ components:
           format: int32
           type: integer
       type: object
-    HelmSpec:
-      additionalProperties: false
-      example:
-        targetNamespace: targetNamespace
-        releaseName: releaseName
-        values:
-          parent: null
-          root: null
-          options:
-            hasValue: true
-            value: null
-        storageNamespace: storageNamespace
-        interval: interval
-        chart:
-          spec:
-            interval: interval
-            sourceRef:
-              kind: kind
-              name: name
-            chart: chart
-            version: version
-        url: url
-      properties:
-        interval:
-          nullable: true
-          type: string
-        releaseName:
-          nullable: true
-          type: string
-        url:
-          nullable: true
-          type: string
-        targetNamespace:
-          nullable: true
-          type: string
-        storageNamespace:
-          nullable: true
-          type: string
-        chart:
-          $ref: '#/components/schemas/Chart'
-        values:
-          $ref: '#/components/schemas/JsonNode'
-      type: object
     HelmStatus:
       additionalProperties: false
       example:
         failures: 0
-        helmChart: helmChart
         conditions:
         - reason: reason
-          lastTransitionTime: 2000-01-23T04:56:07.000+00:00
           message: message
           type: type
           status: status
         - reason: reason
-          lastTransitionTime: 2000-01-23T04:56:07.000+00:00
           message: message
           type: type
           status: status
-        observedGeneration: 6
       properties:
         conditions:
           items:
-            $ref: '#/components/schemas/Condition'
+            $ref: '#/components/schemas/HelmCondition'
           nullable: true
           type: array
         failures:
-          format: int64
-          type: integer
-        helmChart:
-          nullable: true
-          type: string
-        observedGeneration:
           format: int64
           type: integer
       type: object
@@ -49876,34 +49418,6 @@ components:
         gateway:
           nullable: true
           type: string
-      type: object
-    JsonNode:
-      additionalProperties: false
-      example:
-        parent: null
-        root: null
-        options:
-          hasValue: true
-          value: null
-      properties:
-        options:
-          $ref: '#/components/schemas/JsonNodeOptions'
-        parent:
-          $ref: '#/components/schemas/JsonNode'
-        root:
-          $ref: '#/components/schemas/JsonNode'
-      type: object
-    JsonNodeOptions:
-      additionalProperties: false
-      example:
-        hasValue: true
-        value: null
-      properties:
-        hasValue:
-          readOnly: true
-          type: boolean
-        value:
-          $ref: '#/components/schemas/JsonNodeOptions'
       type: object
     KeycloakCheckerCommand:
       additionalProperties: false
@@ -53501,18 +53015,6 @@ components:
           format: double
           type: number
       type: object
-    OrganizationDto:
-      additionalProperties: false
-      example:
-        organizationId: 0
-        isBound: true
-      properties:
-        organizationId:
-          format: int32
-          type: integer
-        isBound:
-          type: boolean
-      type: object
     OrganizationEntityForDashboard:
       additionalProperties: false
       example:
@@ -54757,27 +54259,6 @@ components:
           nullable: true
           type: string
       type: object
-    ProjectActionDto:
-      additionalProperties: false
-      example:
-        estimatedTime: estimatedTime
-        jobUrl: jobUrl
-        topicName: topicName
-        operation: operation
-      properties:
-        operation:
-          nullable: true
-          type: string
-        jobUrl:
-          nullable: true
-          type: string
-        topicName:
-          nullable: true
-          type: string
-        estimatedTime:
-          nullable: true
-          type: string
-      type: object
     ProjectActionVisibilityDto:
       additionalProperties: false
       example:
@@ -55889,10 +55370,6 @@ components:
         isKubevapEnabled: true
         isOpaEnabled: true
         privateIp: privateIp
-        projectRevision:
-          accessProfileRevision: 7
-          cloudCredentialRevision: 4
-          opaProfileRevision: 1
         opaProfile:
           projects:
           - name: name
@@ -55953,11 +55430,6 @@ components:
           name: name
           type: Taikun
           url: url
-        projectActionDto:
-          estimatedTime: estimatedTime
-          jobUrl: jobUrl
-          topicName: topicName
-          operation: operation
         name: name
         cloudCredentialId: 1
         kubernetesCurrentVersion: kubernetesCurrentVersion
@@ -56206,10 +55678,6 @@ components:
           $ref: '#/components/schemas/TaikunLbDto'
         s3Credential:
           $ref: '#/components/schemas/S3CredentialForProjectDto'
-        projectRevision:
-          $ref: '#/components/schemas/ProjectRevisionDto'
-        projectActionDto:
-          $ref: '#/components/schemas/ProjectActionDto'
         aiCredential:
           $ref: '#/components/schemas/AiCredentialDto'
       type: object
@@ -56960,10 +56428,6 @@ components:
           isKubevapEnabled: true
           isOpaEnabled: true
           privateIp: privateIp
-          projectRevision:
-            accessProfileRevision: 7
-            cloudCredentialRevision: 4
-            opaProfileRevision: 1
           opaProfile:
             projects:
             - name: name
@@ -57024,11 +56488,6 @@ components:
             name: name
             type: Taikun
             url: url
-          projectActionDto:
-            estimatedTime: estimatedTime
-            jobUrl: jobUrl
-            topicName: topicName
-            operation: operation
           name: name
           cloudCredentialId: 1
           kubernetesCurrentVersion: kubernetesCurrentVersion
@@ -57132,10 +56591,6 @@ components:
           isKubevapEnabled: true
           isOpaEnabled: true
           privateIp: privateIp
-          projectRevision:
-            accessProfileRevision: 7
-            cloudCredentialRevision: 4
-            opaProfileRevision: 1
           opaProfile:
             projects:
             - name: name
@@ -57196,11 +56651,6 @@ components:
             name: name
             type: Taikun
             url: url
-          projectActionDto:
-            estimatedTime: estimatedTime
-            jobUrl: jobUrl
-            topicName: topicName
-            operation: operation
           name: name
           cloudCredentialId: 1
           kubernetesCurrentVersion: kubernetesCurrentVersion
@@ -57643,23 +57093,6 @@ components:
         projectName:
           nullable: true
           type: string
-      type: object
-    ProjectRevisionDto:
-      additionalProperties: false
-      example:
-        accessProfileRevision: 7
-        cloudCredentialRevision: 4
-        opaProfileRevision: 1
-      properties:
-        accessProfileRevision:
-          format: int32
-          type: integer
-        opaProfileRevision:
-          format: int32
-          type: integer
-        cloudCredentialRevision:
-          format: int32
-          type: integer
       type: object
     ProjectStatus:
       enum:
@@ -59101,24 +58534,6 @@ components:
     PurgeExpiredProjectsCommand:
       additionalProperties: false
       type: object
-    PurgeStandAloneVmDiskCommand:
-      additionalProperties: false
-      example:
-        vmDiskIds:
-        - 6
-        - 6
-        standaloneVmId: 0
-      properties:
-        standaloneVmId:
-          format: int32
-          type: integer
-        vmDiskIds:
-          items:
-            format: int32
-            type: integer
-          nullable: true
-          type: array
-      type: object
     PvcDto:
       additionalProperties: false
       example:
@@ -59393,27 +58808,6 @@ components:
           type: array
         status:
           $ref: '#/components/schemas/CloudStatus'
-      type: object
-    ResetStandAloneVmDiskStatusCommand:
-      additionalProperties: false
-      example:
-        standAloneVmId: 0
-        diskIds:
-        - 6
-        - 6
-        status: Deleting
-      properties:
-        standAloneVmId:
-          format: int32
-          type: integer
-        diskIds:
-          items:
-            format: int32
-            type: integer
-          nullable: true
-          type: array
-        status:
-          $ref: '#/components/schemas/StandAloneVmDiskStatus'
       type: object
     ResetStandAloneVmStatusCommand:
       additionalProperties: false
@@ -61323,19 +60717,6 @@ components:
       - Alert
       - General
       type: string
-    SourceRef:
-      additionalProperties: false
-      example:
-        kind: kind
-        name: name
-      properties:
-        kind:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-      type: object
     SpotVmOperationCommand:
       additionalProperties: false
       example:
@@ -64182,22 +63563,6 @@ components:
     UpdateProjectQuotaMessageCommand:
       additionalProperties: false
       type: object
-    UpdateProjectUserDto:
-      additionalProperties: false
-      example:
-        isBound: true
-        name: name
-        id: id
-      properties:
-        id:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-        isBound:
-          type: boolean
-      type: object
     UpdateProxmoxCommand:
       additionalProperties: false
       example:
@@ -64315,19 +63680,6 @@ components:
         flavor:
           nullable: true
           type: string
-      type: object
-    UpdateStandaloneVmDiskCommand:
-      additionalProperties: false
-      example:
-        size: 6
-        id: 0
-      properties:
-        id:
-          format: int32
-          type: integer
-        size:
-          format: int64
-          type: integer
       type: object
     UpdateStandaloneVmDiskSizeCommand:
       additionalProperties: false
@@ -64458,22 +63810,6 @@ components:
         name:
           nullable: true
           type: string
-      type: object
-    UpdateUserProjectDto:
-      additionalProperties: false
-      example:
-        isBound: true
-        name: name
-        id: 0
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        isBound:
-          type: boolean
       type: object
     UpdateVsphereCommand:
       additionalProperties: false
