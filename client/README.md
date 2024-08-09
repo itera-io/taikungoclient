@@ -546,14 +546,12 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsDelete**](docs/ProjectsAPI.md#projectsdelete) | **Post** /api/v1/projects/delete | Delete the project. The project must be empty (no server) and in READY state
 *ProjectsAPI* | [**ProjectsDeleteProjectUsers**](docs/ProjectsAPI.md#projectsdeleteprojectusers) | **Put** /api/v1/projects/{id}/users | Delete users from project
 *ProjectsAPI* | [**ProjectsDescribe**](docs/ProjectsAPI.md#projectsdescribe) | **Get** /api/v1/projects/describe/{projectId} | Describe project by Id
-*ProjectsAPI* | [**ProjectsDetails**](docs/ProjectsAPI.md#projectsdetails) | **Get** /api/v1/projects/{projectId} | Retrieve details of the project by Id
 *ProjectsAPI* | [**ProjectsDropdown**](docs/ProjectsAPI.md#projectsdropdown) | **Get** /api/v1/projects/list | Retrieve list of projects for dropdown
 *ProjectsAPI* | [**ProjectsEditHealth**](docs/ProjectsAPI.md#projectsedithealth) | **Put** /api/v1/projects/edit/health | Update health status of the project by Id
 *ProjectsAPI* | [**ProjectsEditStatus**](docs/ProjectsAPI.md#projectseditstatus) | **Put** /api/v1/projects/edit/status | Change the project status for the given project. Only available for admin.
 *ProjectsAPI* | [**ProjectsExtendLifetime**](docs/ProjectsAPI.md#projectsextendlifetime) | **Post** /api/v1/projects/extend/lifetime | Extend life time of project
 *ProjectsAPI* | [**ProjectsForAlerting**](docs/ProjectsAPI.md#projectsforalerting) | **Get** /api/v1/projects/foralerting | Retrieve a list of projects for alert poller. Only available for admins.
 *ProjectsAPI* | [**ProjectsForBilling**](docs/ProjectsAPI.md#projectsforbilling) | **Get** /api/v1/projects/forbilling | Retrieve a list of projects for billing
-*ProjectsAPI* | [**ProjectsForPoller**](docs/ProjectsAPI.md#projectsforpoller) | **Get** /api/v1/projects/forpoller | Retrieve a list of projects for poller. Only available for admins.
 *ProjectsAPI* | [**ProjectsList**](docs/ProjectsAPI.md#projectslist) | **Get** /api/v1/projects | Retrieve all projects
 *ProjectsAPI* | [**ProjectsLockManager**](docs/ProjectsAPI.md#projectslockmanager) | **Post** /api/v1/projects/lockmanager | Lock/Unlock project
 *ProjectsAPI* | [**ProjectsLokiLogs**](docs/ProjectsAPI.md#projectslokilogs) | **Post** /api/v1/projects/lokilogs | Retrieve loki logs
@@ -637,10 +635,8 @@ Class | Method | HTTP request | Description
 *SshUsersAPI* | [**SshusersList**](docs/SshUsersAPI.md#sshuserslist) | **Get** /api/v1/sshusers/list/{accessProfileId} | List ssh user by access profile id
 *StandaloneAPI* | [**StandaloneCreate**](docs/StandaloneAPI.md#standalonecreate) | **Post** /api/v1/standalone/create | Create a new vm in the given project.
 *StandaloneAPI* | [**StandaloneDetails**](docs/StandaloneAPI.md#standalonedetails) | **Get** /api/v1/standalone/{projectId} | Retrieve a list of standalone vm with detailed info
-*StandaloneAPI* | [**StandaloneForPoller**](docs/StandaloneAPI.md#standaloneforpoller) | **Get** /api/v1/standalone/forpoller | List all StandaloneVms for poller
 *StandaloneAPI* | [**StandaloneIpManagement**](docs/StandaloneAPI.md#standaloneipmanagement) | **Post** /api/v1/standalone/ip/management | Enable/Disable stand alone public ip
 *StandaloneAPI* | [**StandaloneList**](docs/StandaloneAPI.md#standalonelist) | **Get** /api/v1/standalone | Retrieve all vms
-*StandaloneAPI* | [**StandaloneProjectDetails**](docs/StandaloneAPI.md#standaloneprojectdetails) | **Get** /api/v1/standalone/project/{projectId} | Retrieve details of the project by Id
 *StandaloneAPI* | [**StandaloneReset**](docs/StandaloneAPI.md#standalonereset) | **Post** /api/v1/standalone/reset | Reset vm status
 *StandaloneAPI* | [**StandaloneUpdateFlavor**](docs/StandaloneAPI.md#standaloneupdateflavor) | **Post** /api/v1/standalone/update/flavor | Update standalone vm flavor
 *StandaloneActionsAPI* | [**StandaloneactionsConsole**](docs/StandaloneActionsAPI.md#standaloneactionsconsole) | **Post** /api/v1/standaloneactions/console | Console screenshot or terminal for vm
@@ -757,7 +753,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [AccessProfilesForProjectListDto](docs/AccessProfilesForProjectListDto.md)
  - [AccessProfilesList](docs/AccessProfilesList.md)
  - [AccessProfilesListDto](docs/AccessProfilesListDto.md)
  - [AccessProfilesLockManagementCommand](docs/AccessProfilesLockManagementCommand.md)
@@ -782,7 +777,6 @@ Class | Method | HTTP request | Description
  - [AdminUsersResponseData](docs/AdminUsersResponseData.md)
  - [AdminUsersUpdateEmailCommand](docs/AdminUsersUpdateEmailCommand.md)
  - [AdminUsersUpdatePasswordCommand](docs/AdminUsersUpdatePasswordCommand.md)
- - [AiCredentialDto](docs/AiCredentialDto.md)
  - [AiCredentials](docs/AiCredentials.md)
  - [AiCredentialsForOrganizationEntity](docs/AiCredentialsForOrganizationEntity.md)
  - [AiCredentialsListDto](docs/AiCredentialsListDto.md)
@@ -828,7 +822,6 @@ Class | Method | HTTP request | Description
  - [AwsFlavorList](docs/AwsFlavorList.md)
  - [AwsFlavorListDto](docs/AwsFlavorListDto.md)
  - [AwsImagesPostListCommand](docs/AwsImagesPostListCommand.md)
- - [AwsProjectAZSubnetDto](docs/AwsProjectAZSubnetDto.md)
  - [AwsRegionDto](docs/AwsRegionDto.md)
  - [AwsValidateOwnerCommand](docs/AwsValidateOwnerCommand.md)
  - [AzResult](docs/AzResult.md)
@@ -1160,7 +1153,6 @@ Class | Method | HTTP request | Description
  - [KubernetesOverviewDto](docs/KubernetesOverviewDto.md)
  - [KubernetesPodLogsCommand](docs/KubernetesPodLogsCommand.md)
  - [KubernetesProfilesEntity](docs/KubernetesProfilesEntity.md)
- - [KubernetesProfilesLisForPollerDto](docs/KubernetesProfilesLisForPollerDto.md)
  - [KubernetesProfilesList](docs/KubernetesProfilesList.md)
  - [KubernetesProfilesListDto](docs/KubernetesProfilesListDto.md)
  - [KubernetesProfilesLockManagerCommand](docs/KubernetesProfilesLockManagerCommand.md)
@@ -1307,8 +1299,6 @@ Class | Method | HTTP request | Description
  - [ProjectDetailsForVmsDto](docs/ProjectDetailsForVmsDto.md)
  - [ProjectDto](docs/ProjectDto.md)
  - [ProjectExtendLifeTimeCommand](docs/ProjectExtendLifeTimeCommand.md)
- - [ProjectForListDto](docs/ProjectForListDto.md)
- - [ProjectFullListDto](docs/ProjectFullListDto.md)
  - [ProjectGroupDetailsListDto](docs/ProjectGroupDetailsListDto.md)
  - [ProjectGroupEntityListDto](docs/ProjectGroupEntityListDto.md)
  - [ProjectGroupList](docs/ProjectGroupList.md)
@@ -1317,7 +1307,6 @@ Class | Method | HTTP request | Description
  - [ProjectListDetailDto](docs/ProjectListDetailDto.md)
  - [ProjectListDto](docs/ProjectListDto.md)
  - [ProjectListForAlert](docs/ProjectListForAlert.md)
- - [ProjectListForPoller](docs/ProjectListForPoller.md)
  - [ProjectLockManagerCommand](docs/ProjectLockManagerCommand.md)
  - [ProjectMaintenanceModeCommand](docs/ProjectMaintenanceModeCommand.md)
  - [ProjectMonitoringAlertsDto](docs/ProjectMonitoringAlertsDto.md)
@@ -1388,7 +1377,6 @@ Class | Method | HTTP request | Description
  - [RuleCreateCommand](docs/RuleCreateCommand.md)
  - [RuleForUpdateDto](docs/RuleForUpdateDto.md)
  - [RuleLabels](docs/RuleLabels.md)
- - [S3CredentialForProjectDto](docs/S3CredentialForProjectDto.md)
  - [SecretDto](docs/SecretDto.md)
  - [SecretSearchCommand](docs/SecretSearchCommand.md)
  - [SecretSearchList](docs/SecretSearchList.md)
@@ -1424,17 +1412,14 @@ Class | Method | HTTP request | Description
  - [SpotWorkerOperationCommand](docs/SpotWorkerOperationCommand.md)
  - [SshKeyCommand](docs/SshKeyCommand.md)
  - [SshUserCreateDto](docs/SshUserCreateDto.md)
- - [SshUserListDto](docs/SshUserListDto.md)
  - [SshUsersListDto](docs/SshUsersListDto.md)
  - [StandAloneMetaDataDto](docs/StandAloneMetaDataDto.md)
  - [StandAloneMetaDataDtoForVm](docs/StandAloneMetaDataDtoForVm.md)
  - [StandAloneProfileCreateCommand](docs/StandAloneProfileCreateCommand.md)
  - [StandAloneProfileForDetailsDto](docs/StandAloneProfileForDetailsDto.md)
- - [StandAloneProfileFullDto](docs/StandAloneProfileFullDto.md)
  - [StandAloneProfileLockManagementCommand](docs/StandAloneProfileLockManagementCommand.md)
  - [StandAloneProfileSecurityGroupDto](docs/StandAloneProfileSecurityGroupDto.md)
  - [StandAloneProfileSecurityGroupForDetailsDto](docs/StandAloneProfileSecurityGroupForDetailsDto.md)
- - [StandAloneProfileSecurityGroupFullDto](docs/StandAloneProfileSecurityGroupFullDto.md)
  - [StandAloneProfileUpdateCommand](docs/StandAloneProfileUpdateCommand.md)
  - [StandAloneProfiles](docs/StandAloneProfiles.md)
  - [StandAloneProfilesListDto](docs/StandAloneProfilesListDto.md)
@@ -1442,9 +1427,7 @@ Class | Method | HTTP request | Description
  - [StandAloneProfilesSearchList](docs/StandAloneProfilesSearchList.md)
  - [StandAloneVmDiskDto](docs/StandAloneVmDiskDto.md)
  - [StandAloneVmDiskForDetailsDto](docs/StandAloneVmDiskForDetailsDto.md)
- - [StandAloneVmDiskFullDto](docs/StandAloneVmDiskFullDto.md)
  - [StandAloneVmDiskStatus](docs/StandAloneVmDiskStatus.md)
- - [StandAloneVmFullDto](docs/StandAloneVmFullDto.md)
  - [StandAloneVmIpManagementCommand](docs/StandAloneVmIpManagementCommand.md)
  - [StandAloneVmListForDetails](docs/StandAloneVmListForDetails.md)
  - [StandAloneVmSmallDetailDto](docs/StandAloneVmSmallDetailDto.md)
@@ -1456,7 +1439,6 @@ Class | Method | HTTP request | Description
  - [StandaloneVmsForBillingDto](docs/StandaloneVmsForBillingDto.md)
  - [StandaloneVmsList](docs/StandaloneVmsList.md)
  - [StandaloneVmsListForDetailsDto](docs/StandaloneVmsListForDetailsDto.md)
- - [StandaloneVmsListForPoller](docs/StandaloneVmsListForPoller.md)
  - [StartStandaloneVmCommand](docs/StartStandaloneVmCommand.md)
  - [Status](docs/Status.md)
  - [StopStandaloneVmCommand](docs/StopStandaloneVmCommand.md)
@@ -1473,7 +1455,6 @@ Class | Method | HTTP request | Description
  - [Subnet](docs/Subnet.md)
  - [Subresource](docs/Subresource.md)
  - [SyncProjectAppCommand](docs/SyncProjectAppCommand.md)
- - [TaikunLbDto](docs/TaikunLbDto.md)
  - [TaikunLbResponseDto](docs/TaikunLbResponseDto.md)
  - [TanzuCredentialsList](docs/TanzuCredentialsList.md)
  - [TanzuCredentialsListDto](docs/TanzuCredentialsListDto.md)

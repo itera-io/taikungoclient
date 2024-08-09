@@ -86,7 +86,6 @@ client.go
 configuration.go
 docs/AWSCloudCredentialAPI.md
 docs/AccessProfilesAPI.md
-docs/AccessProfilesForProjectListDto.md
 docs/AccessProfilesList.md
 docs/AccessProfilesListDto.md
 docs/AccessProfilesLockManagementCommand.md
@@ -112,7 +111,6 @@ docs/AdminUsersList.md
 docs/AdminUsersResponseData.md
 docs/AdminUsersUpdateEmailCommand.md
 docs/AdminUsersUpdatePasswordCommand.md
-docs/AiCredentialDto.md
 docs/AiCredentials.md
 docs/AiCredentialsAPI.md
 docs/AiCredentialsForOrganizationEntity.md
@@ -165,7 +163,6 @@ docs/AwsCredentialList.md
 docs/AwsFlavorList.md
 docs/AwsFlavorListDto.md
 docs/AwsImagesPostListCommand.md
-docs/AwsProjectAZSubnetDto.md
 docs/AwsRegionDto.md
 docs/AwsValidateOwnerCommand.md
 docs/AzResult.md
@@ -519,7 +516,6 @@ docs/KubernetesOverviewDto.md
 docs/KubernetesPodLogsCommand.md
 docs/KubernetesProfilesAPI.md
 docs/KubernetesProfilesEntity.md
-docs/KubernetesProfilesLisForPollerDto.md
 docs/KubernetesProfilesList.md
 docs/KubernetesProfilesListDto.md
 docs/KubernetesProfilesLockManagerCommand.md
@@ -682,8 +678,6 @@ docs/ProjectDetailsForServersDto.md
 docs/ProjectDetailsForVmsDto.md
 docs/ProjectDto.md
 docs/ProjectExtendLifeTimeCommand.md
-docs/ProjectForListDto.md
-docs/ProjectFullListDto.md
 docs/ProjectGroupDetailsListDto.md
 docs/ProjectGroupEntityListDto.md
 docs/ProjectGroupList.md
@@ -694,7 +688,6 @@ docs/ProjectInfracostsAPI.md
 docs/ProjectListDetailDto.md
 docs/ProjectListDto.md
 docs/ProjectListForAlert.md
-docs/ProjectListForPoller.md
 docs/ProjectLockManagerCommand.md
 docs/ProjectMaintenanceModeCommand.md
 docs/ProjectMonitoringAlertsDto.md
@@ -771,7 +764,6 @@ docs/Rule.md
 docs/RuleCreateCommand.md
 docs/RuleForUpdateDto.md
 docs/RuleLabels.md
-docs/S3CredentialForProjectDto.md
 docs/S3CredentialsAPI.md
 docs/SearchAPI.md
 docs/SecretDto.md
@@ -812,18 +804,15 @@ docs/SpotVmOperationCommand.md
 docs/SpotWorkerOperationCommand.md
 docs/SshKeyCommand.md
 docs/SshUserCreateDto.md
-docs/SshUserListDto.md
 docs/SshUsersAPI.md
 docs/SshUsersListDto.md
 docs/StandAloneMetaDataDto.md
 docs/StandAloneMetaDataDtoForVm.md
 docs/StandAloneProfileCreateCommand.md
 docs/StandAloneProfileForDetailsDto.md
-docs/StandAloneProfileFullDto.md
 docs/StandAloneProfileLockManagementCommand.md
 docs/StandAloneProfileSecurityGroupDto.md
 docs/StandAloneProfileSecurityGroupForDetailsDto.md
-docs/StandAloneProfileSecurityGroupFullDto.md
 docs/StandAloneProfileUpdateCommand.md
 docs/StandAloneProfiles.md
 docs/StandAloneProfilesListDto.md
@@ -831,9 +820,7 @@ docs/StandAloneProfilesSearchCommand.md
 docs/StandAloneProfilesSearchList.md
 docs/StandAloneVmDiskDto.md
 docs/StandAloneVmDiskForDetailsDto.md
-docs/StandAloneVmDiskFullDto.md
 docs/StandAloneVmDiskStatus.md
-docs/StandAloneVmFullDto.md
 docs/StandAloneVmIpManagementCommand.md
 docs/StandAloneVmListForDetails.md
 docs/StandAloneVmSmallDetailDto.md
@@ -849,7 +836,6 @@ docs/StandaloneVmListDto.md
 docs/StandaloneVmsForBillingDto.md
 docs/StandaloneVmsList.md
 docs/StandaloneVmsListForDetailsDto.md
-docs/StandaloneVmsListForPoller.md
 docs/StartStandaloneVmCommand.md
 docs/Status.md
 docs/StopStandaloneVmCommand.md
@@ -869,7 +855,6 @@ docs/Subresource.md
 docs/SubscriptionAPI.md
 docs/SyncProjectAppCommand.md
 docs/TaikunLBAPI.md
-docs/TaikunLbDto.md
 docs/TaikunLbResponseDto.md
 docs/TanzuAPI.md
 docs/TanzuCredentialsList.md
@@ -987,7 +972,6 @@ docs/ZededaProjectsCommand.md
 git_push.sh
 go.mod
 go.sum
-model_access_profiles_for_project_list_dto.go
 model_access_profiles_list.go
 model_access_profiles_list_dto.go
 model_access_profiles_lock_management_command.go
@@ -1012,7 +996,6 @@ model_admin_users_list.go
 model_admin_users_response_data.go
 model_admin_users_update_email_command.go
 model_admin_users_update_password_command.go
-model_ai_credential_dto.go
 model_ai_credentials.go
 model_ai_credentials_for_organization_entity.go
 model_ai_credentials_list_dto.go
@@ -1058,7 +1041,6 @@ model_aws_credential_list.go
 model_aws_flavor_list.go
 model_aws_flavor_list_dto.go
 model_aws_images_post_list_command.go
-model_aws_project_az_subnet_dto.go
 model_aws_region_dto.go
 model_aws_validate_owner_command.go
 model_az_result.go
@@ -1390,7 +1372,6 @@ model_kubernetes_node_list_dto.go
 model_kubernetes_overview_dto.go
 model_kubernetes_pod_logs_command.go
 model_kubernetes_profiles_entity.go
-model_kubernetes_profiles_lis_for_poller_dto.go
 model_kubernetes_profiles_list.go
 model_kubernetes_profiles_list_dto.go
 model_kubernetes_profiles_lock_manager_command.go
@@ -1537,8 +1518,6 @@ model_project_details_for_servers_dto.go
 model_project_details_for_vms_dto.go
 model_project_dto.go
 model_project_extend_life_time_command.go
-model_project_for_list_dto.go
-model_project_full_list_dto.go
 model_project_group_details_list_dto.go
 model_project_group_entity_list_dto.go
 model_project_group_list.go
@@ -1547,7 +1526,6 @@ model_project_infracost_upsert_dto.go
 model_project_list_detail_dto.go
 model_project_list_dto.go
 model_project_list_for_alert.go
-model_project_list_for_poller.go
 model_project_lock_manager_command.go
 model_project_maintenance_mode_command.go
 model_project_monitoring_alerts_dto.go
@@ -1618,7 +1596,6 @@ model_rule.go
 model_rule_create_command.go
 model_rule_for_update_dto.go
 model_rule_labels.go
-model_s3_credential_for_project_dto.go
 model_secret_dto.go
 model_secret_search_command.go
 model_secret_search_list.go
@@ -1654,17 +1631,14 @@ model_spot_vm_operation_command.go
 model_spot_worker_operation_command.go
 model_ssh_key_command.go
 model_ssh_user_create_dto.go
-model_ssh_user_list_dto.go
 model_ssh_users_list_dto.go
 model_stand_alone_meta_data_dto.go
 model_stand_alone_meta_data_dto_for_vm.go
 model_stand_alone_profile_create_command.go
 model_stand_alone_profile_for_details_dto.go
-model_stand_alone_profile_full_dto.go
 model_stand_alone_profile_lock_management_command.go
 model_stand_alone_profile_security_group_dto.go
 model_stand_alone_profile_security_group_for_details_dto.go
-model_stand_alone_profile_security_group_full_dto.go
 model_stand_alone_profile_update_command.go
 model_stand_alone_profiles.go
 model_stand_alone_profiles_list_dto.go
@@ -1672,9 +1646,7 @@ model_stand_alone_profiles_search_command.go
 model_stand_alone_profiles_search_list.go
 model_stand_alone_vm_disk_dto.go
 model_stand_alone_vm_disk_for_details_dto.go
-model_stand_alone_vm_disk_full_dto.go
 model_stand_alone_vm_disk_status.go
-model_stand_alone_vm_full_dto.go
 model_stand_alone_vm_ip_management_command.go
 model_stand_alone_vm_list_for_details.go
 model_stand_alone_vm_small_detail_dto.go
@@ -1686,7 +1658,6 @@ model_standalone_vm_list_dto.go
 model_standalone_vms_for_billing_dto.go
 model_standalone_vms_list.go
 model_standalone_vms_list_for_details_dto.go
-model_standalone_vms_list_for_poller.go
 model_start_standalone_vm_command.go
 model_status.go
 model_stop_standalone_vm_command.go
@@ -1703,7 +1674,6 @@ model_sts_search_list.go
 model_subnet.go
 model_subresource.go
 model_sync_project_app_command.go
-model_taikun_lb_dto.go
 model_taikun_lb_response_dto.go
 model_tanzu_credentials_list.go
 model_tanzu_credentials_list_dto.go

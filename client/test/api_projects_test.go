@@ -123,20 +123,6 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectsAPIService ProjectsDetails", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var projectId int32
-
-		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsDetails(context.Background(), projectId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ProjectsAPIService ProjectsDropdown", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -199,18 +185,6 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsForBilling(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectsAPIService ProjectsForPoller", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsForPoller(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
