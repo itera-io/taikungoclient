@@ -20,9 +20,13 @@ var _ MappedNullable = &VClusterActionVisibilityDto{}
 
 // VClusterActionVisibilityDto struct for VClusterActionVisibilityDto
 type VClusterActionVisibilityDto struct {
-	Enable *bool `json:"enable,omitempty"`
-	Reasons []string `json:"reasons,omitempty"`
-	Hidden *bool `json:"hidden,omitempty"`
+	AttachAlertingProfile *ButtonStatusDto `json:"attachAlertingProfile,omitempty"`
+	DetachAlertingProfile *ButtonStatusDto `json:"detachAlertingProfile,omitempty"`
+	ProjectMaintenanceMode *ButtonStatusDto `json:"projectMaintenanceMode,omitempty"`
+	Lock *ButtonStatusDto `json:"lock,omitempty"`
+	Unlock *ButtonStatusDto `json:"unlock,omitempty"`
+	AddVCluster *ButtonStatusDto `json:"addVCluster,omitempty"`
+	DeleteVCluster *ButtonStatusDto `json:"deleteVCluster,omitempty"`
 }
 
 // NewVClusterActionVisibilityDto instantiates a new VClusterActionVisibilityDto object
@@ -42,101 +46,228 @@ func NewVClusterActionVisibilityDtoWithDefaults() *VClusterActionVisibilityDto {
 	return &this
 }
 
-// GetEnable returns the Enable field value if set, zero value otherwise.
-func (o *VClusterActionVisibilityDto) GetEnable() bool {
-	if o == nil || IsNil(o.Enable) {
-		var ret bool
+// GetAttachAlertingProfile returns the AttachAlertingProfile field value if set, zero value otherwise.
+func (o *VClusterActionVisibilityDto) GetAttachAlertingProfile() ButtonStatusDto {
+	if o == nil || IsNil(o.AttachAlertingProfile) {
+		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.Enable
+	return *o.AttachAlertingProfile
 }
 
-// GetEnableOk returns a tuple with the Enable field value if set, nil otherwise
+// GetAttachAlertingProfileOk returns a tuple with the AttachAlertingProfile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VClusterActionVisibilityDto) GetEnableOk() (*bool, bool) {
-	if o == nil || IsNil(o.Enable) {
+func (o *VClusterActionVisibilityDto) GetAttachAlertingProfileOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.AttachAlertingProfile) {
 		return nil, false
 	}
-	return o.Enable, true
+	return o.AttachAlertingProfile, true
 }
 
-// HasEnable returns a boolean if a field has been set.
-func (o *VClusterActionVisibilityDto) HasEnable() bool {
-	if o != nil && !IsNil(o.Enable) {
+// HasAttachAlertingProfile returns a boolean if a field has been set.
+func (o *VClusterActionVisibilityDto) HasAttachAlertingProfile() bool {
+	if o != nil && !IsNil(o.AttachAlertingProfile) {
 		return true
 	}
 
 	return false
 }
 
-// SetEnable gets a reference to the given bool and assigns it to the Enable field.
-func (o *VClusterActionVisibilityDto) SetEnable(v bool) {
-	o.Enable = &v
+// SetAttachAlertingProfile gets a reference to the given ButtonStatusDto and assigns it to the AttachAlertingProfile field.
+func (o *VClusterActionVisibilityDto) SetAttachAlertingProfile(v ButtonStatusDto) {
+	o.AttachAlertingProfile = &v
 }
 
-// GetReasons returns the Reasons field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VClusterActionVisibilityDto) GetReasons() []string {
-	if o == nil {
-		var ret []string
+// GetDetachAlertingProfile returns the DetachAlertingProfile field value if set, zero value otherwise.
+func (o *VClusterActionVisibilityDto) GetDetachAlertingProfile() ButtonStatusDto {
+	if o == nil || IsNil(o.DetachAlertingProfile) {
+		var ret ButtonStatusDto
 		return ret
 	}
-	return o.Reasons
+	return *o.DetachAlertingProfile
 }
 
-// GetReasonsOk returns a tuple with the Reasons field value if set, nil otherwise
+// GetDetachAlertingProfileOk returns a tuple with the DetachAlertingProfile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VClusterActionVisibilityDto) GetReasonsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Reasons) {
+func (o *VClusterActionVisibilityDto) GetDetachAlertingProfileOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.DetachAlertingProfile) {
 		return nil, false
 	}
-	return o.Reasons, true
+	return o.DetachAlertingProfile, true
 }
 
-// HasReasons returns a boolean if a field has been set.
-func (o *VClusterActionVisibilityDto) HasReasons() bool {
-	if o != nil && !IsNil(o.Reasons) {
+// HasDetachAlertingProfile returns a boolean if a field has been set.
+func (o *VClusterActionVisibilityDto) HasDetachAlertingProfile() bool {
+	if o != nil && !IsNil(o.DetachAlertingProfile) {
 		return true
 	}
 
 	return false
 }
 
-// SetReasons gets a reference to the given []string and assigns it to the Reasons field.
-func (o *VClusterActionVisibilityDto) SetReasons(v []string) {
-	o.Reasons = v
+// SetDetachAlertingProfile gets a reference to the given ButtonStatusDto and assigns it to the DetachAlertingProfile field.
+func (o *VClusterActionVisibilityDto) SetDetachAlertingProfile(v ButtonStatusDto) {
+	o.DetachAlertingProfile = &v
 }
 
-// GetHidden returns the Hidden field value if set, zero value otherwise.
-func (o *VClusterActionVisibilityDto) GetHidden() bool {
-	if o == nil || IsNil(o.Hidden) {
-		var ret bool
+// GetProjectMaintenanceMode returns the ProjectMaintenanceMode field value if set, zero value otherwise.
+func (o *VClusterActionVisibilityDto) GetProjectMaintenanceMode() ButtonStatusDto {
+	if o == nil || IsNil(o.ProjectMaintenanceMode) {
+		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.Hidden
+	return *o.ProjectMaintenanceMode
 }
 
-// GetHiddenOk returns a tuple with the Hidden field value if set, nil otherwise
+// GetProjectMaintenanceModeOk returns a tuple with the ProjectMaintenanceMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VClusterActionVisibilityDto) GetHiddenOk() (*bool, bool) {
-	if o == nil || IsNil(o.Hidden) {
+func (o *VClusterActionVisibilityDto) GetProjectMaintenanceModeOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.ProjectMaintenanceMode) {
 		return nil, false
 	}
-	return o.Hidden, true
+	return o.ProjectMaintenanceMode, true
 }
 
-// HasHidden returns a boolean if a field has been set.
-func (o *VClusterActionVisibilityDto) HasHidden() bool {
-	if o != nil && !IsNil(o.Hidden) {
+// HasProjectMaintenanceMode returns a boolean if a field has been set.
+func (o *VClusterActionVisibilityDto) HasProjectMaintenanceMode() bool {
+	if o != nil && !IsNil(o.ProjectMaintenanceMode) {
 		return true
 	}
 
 	return false
 }
 
-// SetHidden gets a reference to the given bool and assigns it to the Hidden field.
-func (o *VClusterActionVisibilityDto) SetHidden(v bool) {
-	o.Hidden = &v
+// SetProjectMaintenanceMode gets a reference to the given ButtonStatusDto and assigns it to the ProjectMaintenanceMode field.
+func (o *VClusterActionVisibilityDto) SetProjectMaintenanceMode(v ButtonStatusDto) {
+	o.ProjectMaintenanceMode = &v
+}
+
+// GetLock returns the Lock field value if set, zero value otherwise.
+func (o *VClusterActionVisibilityDto) GetLock() ButtonStatusDto {
+	if o == nil || IsNil(o.Lock) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.Lock
+}
+
+// GetLockOk returns a tuple with the Lock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VClusterActionVisibilityDto) GetLockOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.Lock) {
+		return nil, false
+	}
+	return o.Lock, true
+}
+
+// HasLock returns a boolean if a field has been set.
+func (o *VClusterActionVisibilityDto) HasLock() bool {
+	if o != nil && !IsNil(o.Lock) {
+		return true
+	}
+
+	return false
+}
+
+// SetLock gets a reference to the given ButtonStatusDto and assigns it to the Lock field.
+func (o *VClusterActionVisibilityDto) SetLock(v ButtonStatusDto) {
+	o.Lock = &v
+}
+
+// GetUnlock returns the Unlock field value if set, zero value otherwise.
+func (o *VClusterActionVisibilityDto) GetUnlock() ButtonStatusDto {
+	if o == nil || IsNil(o.Unlock) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.Unlock
+}
+
+// GetUnlockOk returns a tuple with the Unlock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VClusterActionVisibilityDto) GetUnlockOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.Unlock) {
+		return nil, false
+	}
+	return o.Unlock, true
+}
+
+// HasUnlock returns a boolean if a field has been set.
+func (o *VClusterActionVisibilityDto) HasUnlock() bool {
+	if o != nil && !IsNil(o.Unlock) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnlock gets a reference to the given ButtonStatusDto and assigns it to the Unlock field.
+func (o *VClusterActionVisibilityDto) SetUnlock(v ButtonStatusDto) {
+	o.Unlock = &v
+}
+
+// GetAddVCluster returns the AddVCluster field value if set, zero value otherwise.
+func (o *VClusterActionVisibilityDto) GetAddVCluster() ButtonStatusDto {
+	if o == nil || IsNil(o.AddVCluster) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.AddVCluster
+}
+
+// GetAddVClusterOk returns a tuple with the AddVCluster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VClusterActionVisibilityDto) GetAddVClusterOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.AddVCluster) {
+		return nil, false
+	}
+	return o.AddVCluster, true
+}
+
+// HasAddVCluster returns a boolean if a field has been set.
+func (o *VClusterActionVisibilityDto) HasAddVCluster() bool {
+	if o != nil && !IsNil(o.AddVCluster) {
+		return true
+	}
+
+	return false
+}
+
+// SetAddVCluster gets a reference to the given ButtonStatusDto and assigns it to the AddVCluster field.
+func (o *VClusterActionVisibilityDto) SetAddVCluster(v ButtonStatusDto) {
+	o.AddVCluster = &v
+}
+
+// GetDeleteVCluster returns the DeleteVCluster field value if set, zero value otherwise.
+func (o *VClusterActionVisibilityDto) GetDeleteVCluster() ButtonStatusDto {
+	if o == nil || IsNil(o.DeleteVCluster) {
+		var ret ButtonStatusDto
+		return ret
+	}
+	return *o.DeleteVCluster
+}
+
+// GetDeleteVClusterOk returns a tuple with the DeleteVCluster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VClusterActionVisibilityDto) GetDeleteVClusterOk() (*ButtonStatusDto, bool) {
+	if o == nil || IsNil(o.DeleteVCluster) {
+		return nil, false
+	}
+	return o.DeleteVCluster, true
+}
+
+// HasDeleteVCluster returns a boolean if a field has been set.
+func (o *VClusterActionVisibilityDto) HasDeleteVCluster() bool {
+	if o != nil && !IsNil(o.DeleteVCluster) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteVCluster gets a reference to the given ButtonStatusDto and assigns it to the DeleteVCluster field.
+func (o *VClusterActionVisibilityDto) SetDeleteVCluster(v ButtonStatusDto) {
+	o.DeleteVCluster = &v
 }
 
 func (o VClusterActionVisibilityDto) MarshalJSON() ([]byte, error) {
@@ -149,14 +280,26 @@ func (o VClusterActionVisibilityDto) MarshalJSON() ([]byte, error) {
 
 func (o VClusterActionVisibilityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Enable) {
-		toSerialize["enable"] = o.Enable
+	if !IsNil(o.AttachAlertingProfile) {
+		toSerialize["attachAlertingProfile"] = o.AttachAlertingProfile
 	}
-	if o.Reasons != nil {
-		toSerialize["reasons"] = o.Reasons
+	if !IsNil(o.DetachAlertingProfile) {
+		toSerialize["detachAlertingProfile"] = o.DetachAlertingProfile
 	}
-	if !IsNil(o.Hidden) {
-		toSerialize["hidden"] = o.Hidden
+	if !IsNil(o.ProjectMaintenanceMode) {
+		toSerialize["projectMaintenanceMode"] = o.ProjectMaintenanceMode
+	}
+	if !IsNil(o.Lock) {
+		toSerialize["lock"] = o.Lock
+	}
+	if !IsNil(o.Unlock) {
+		toSerialize["unlock"] = o.Unlock
+	}
+	if !IsNil(o.AddVCluster) {
+		toSerialize["addVCluster"] = o.AddVCluster
+	}
+	if !IsNil(o.DeleteVCluster) {
+		toSerialize["deleteVCluster"] = o.DeleteVCluster
 	}
 	return toSerialize, nil
 }
