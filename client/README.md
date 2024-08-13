@@ -725,7 +725,7 @@ Class | Method | HTTP request | Description
 *VirtualClusterAPI* | [**VirtualClusterDelete**](docs/VirtualClusterAPI.md#virtualclusterdelete) | **Post** /api/v1/virtual-cluster/delete | Delete virtual cluster
 *VirtualClusterAPI* | [**VirtualClusterList**](docs/VirtualClusterAPI.md#virtualclusterlist) | **Get** /api/v1/virtual-cluster/{parentProjectId} | Retrieve all vCluster by given project
 *VirtualClusterAPI* | [**VirtualClusterQuota**](docs/VirtualClusterAPI.md#virtualclusterquota) | **Get** /api/v1/virtual-cluster/quota/{projectId} | Retrieve vcluster quota details
-*VirtualClusterAPI* | [**VirtualClusterVisibility**](docs/VirtualClusterAPI.md#virtualclustervisibility) | **Get** /api/v1/virtual-cluster/visibility/{parentProjectId} | Create button condition visibility
+*VirtualClusterAPI* | [**VirtualClusterVisibility**](docs/VirtualClusterAPI.md#virtualclustervisibility) | **Get** /api/v1/virtual-cluster/visibility/{projectId} | Create button condition visibility
 *VsphereCloudCredentialAPI* | [**VsphereCreate**](docs/VsphereCloudCredentialAPI.md#vspherecreate) | **Post** /api/v1/vsphere/create | Add Vsphere credentials
 *VsphereCloudCredentialAPI* | [**VsphereDatacenterList**](docs/VsphereCloudCredentialAPI.md#vspheredatacenterlist) | **Post** /api/v1/vsphere/datacenter-list | Fetch Vsphere datacenter list
 *VsphereCloudCredentialAPI* | [**VsphereDatastoreList**](docs/VsphereCloudCredentialAPI.md#vspheredatastorelist) | **Post** /api/v1/vsphere/datastore-list | Fetch Vsphere datastore list

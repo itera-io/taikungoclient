@@ -755,7 +755,7 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaExecute(r ApiVirtualCluste
 type ApiVirtualClusterVisibilityRequest struct {
 	ctx context.Context
 	ApiService *VirtualClusterAPIService
-	parentProjectId int32
+	projectId int32
 }
 
 func (r ApiVirtualClusterVisibilityRequest) Execute() (*VClusterActionVisibilityDto, *http.Response, error) {
@@ -766,14 +766,14 @@ func (r ApiVirtualClusterVisibilityRequest) Execute() (*VClusterActionVisibility
 VirtualClusterVisibility Create button condition visibility
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param parentProjectId
+ @param projectId
  @return ApiVirtualClusterVisibilityRequest
 */
-func (a *VirtualClusterAPIService) VirtualClusterVisibility(ctx context.Context, parentProjectId int32) ApiVirtualClusterVisibilityRequest {
+func (a *VirtualClusterAPIService) VirtualClusterVisibility(ctx context.Context, projectId int32) ApiVirtualClusterVisibilityRequest {
 	return ApiVirtualClusterVisibilityRequest{
 		ApiService: a,
 		ctx: ctx,
-		parentProjectId: parentProjectId,
+		projectId: projectId,
 	}
 }
 
@@ -792,8 +792,8 @@ func (a *VirtualClusterAPIService) VirtualClusterVisibilityExecute(r ApiVirtualC
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/virtual-cluster/visibility/{parentProjectId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"parentProjectId"+"}", url.PathEscape(parameterValueToString(r.parentProjectId, "parentProjectId")), -1)
+	localVarPath := localBasePath + "/api/v1/virtual-cluster/visibility/{projectId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
