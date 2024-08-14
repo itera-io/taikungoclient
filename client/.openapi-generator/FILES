@@ -663,6 +663,7 @@ docs/ProjectAppParamDto.md
 docs/ProjectAppParamsAPI.md
 docs/ProjectAppParamsDto.md
 docs/ProjectAppsAPI.md
+docs/ProjectCanAddVClusterDto.md
 docs/ProjectCatalogDto.md
 docs/ProjectChartDto.md
 docs/ProjectCommonRecordDto.md
@@ -1504,6 +1505,7 @@ model_project_app_dto.go
 model_project_app_list.go
 model_project_app_param_dto.go
 model_project_app_params_dto.go
+model_project_can_add_v_cluster_dto.go
 model_project_catalog_dto.go
 model_project_chart_dto.go
 model_project_common_record_dto.go

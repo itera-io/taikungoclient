@@ -21,7 +21,6 @@ var _ MappedNullable = &ProjectChartDto{}
 // ProjectChartDto struct for ProjectChartDto
 type ProjectChartDto struct {
 	Succeeded []ProjectCommonRecordDto `json:"succeeded,omitempty"`
-	Pending []ProjectCommonRecordDto `json:"pending,omitempty"`
 	Updating []ProjectCommonRecordDto `json:"updating,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
 	Failed []ProjectCommonRecordDto `json:"failed,omitempty"`
@@ -77,39 +76,6 @@ func (o *ProjectChartDto) HasSucceeded() bool {
 // SetSucceeded gets a reference to the given []ProjectCommonRecordDto and assigns it to the Succeeded field.
 func (o *ProjectChartDto) SetSucceeded(v []ProjectCommonRecordDto) {
 	o.Succeeded = v
-}
-
-// GetPending returns the Pending field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectChartDto) GetPending() []ProjectCommonRecordDto {
-	if o == nil {
-		var ret []ProjectCommonRecordDto
-		return ret
-	}
-	return o.Pending
-}
-
-// GetPendingOk returns a tuple with the Pending field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectChartDto) GetPendingOk() ([]ProjectCommonRecordDto, bool) {
-	if o == nil || IsNil(o.Pending) {
-		return nil, false
-	}
-	return o.Pending, true
-}
-
-// HasPending returns a boolean if a field has been set.
-func (o *ProjectChartDto) HasPending() bool {
-	if o != nil && !IsNil(o.Pending) {
-		return true
-	}
-
-	return false
-}
-
-// SetPending gets a reference to the given []ProjectCommonRecordDto and assigns it to the Pending field.
-func (o *ProjectChartDto) SetPending(v []ProjectCommonRecordDto) {
-	o.Pending = v
 }
 
 // GetUpdating returns the Updating field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -288,9 +254,6 @@ func (o ProjectChartDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Succeeded != nil {
 		toSerialize["succeeded"] = o.Succeeded
-	}
-	if o.Pending != nil {
-		toSerialize["pending"] = o.Pending
 	}
 	if o.Updating != nil {
 		toSerialize["updating"] = o.Updating

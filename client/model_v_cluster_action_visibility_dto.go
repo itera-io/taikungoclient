@@ -25,8 +25,6 @@ type VClusterActionVisibilityDto struct {
 	ProjectMaintenanceMode *ButtonStatusDto `json:"projectMaintenanceMode,omitempty"`
 	Lock *ButtonStatusDto `json:"lock,omitempty"`
 	Unlock *ButtonStatusDto `json:"unlock,omitempty"`
-	AddVCluster *ButtonStatusDto `json:"addVCluster,omitempty"`
-	DeleteVCluster *ButtonStatusDto `json:"deleteVCluster,omitempty"`
 }
 
 // NewVClusterActionVisibilityDto instantiates a new VClusterActionVisibilityDto object
@@ -206,70 +204,6 @@ func (o *VClusterActionVisibilityDto) SetUnlock(v ButtonStatusDto) {
 	o.Unlock = &v
 }
 
-// GetAddVCluster returns the AddVCluster field value if set, zero value otherwise.
-func (o *VClusterActionVisibilityDto) GetAddVCluster() ButtonStatusDto {
-	if o == nil || IsNil(o.AddVCluster) {
-		var ret ButtonStatusDto
-		return ret
-	}
-	return *o.AddVCluster
-}
-
-// GetAddVClusterOk returns a tuple with the AddVCluster field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VClusterActionVisibilityDto) GetAddVClusterOk() (*ButtonStatusDto, bool) {
-	if o == nil || IsNil(o.AddVCluster) {
-		return nil, false
-	}
-	return o.AddVCluster, true
-}
-
-// HasAddVCluster returns a boolean if a field has been set.
-func (o *VClusterActionVisibilityDto) HasAddVCluster() bool {
-	if o != nil && !IsNil(o.AddVCluster) {
-		return true
-	}
-
-	return false
-}
-
-// SetAddVCluster gets a reference to the given ButtonStatusDto and assigns it to the AddVCluster field.
-func (o *VClusterActionVisibilityDto) SetAddVCluster(v ButtonStatusDto) {
-	o.AddVCluster = &v
-}
-
-// GetDeleteVCluster returns the DeleteVCluster field value if set, zero value otherwise.
-func (o *VClusterActionVisibilityDto) GetDeleteVCluster() ButtonStatusDto {
-	if o == nil || IsNil(o.DeleteVCluster) {
-		var ret ButtonStatusDto
-		return ret
-	}
-	return *o.DeleteVCluster
-}
-
-// GetDeleteVClusterOk returns a tuple with the DeleteVCluster field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VClusterActionVisibilityDto) GetDeleteVClusterOk() (*ButtonStatusDto, bool) {
-	if o == nil || IsNil(o.DeleteVCluster) {
-		return nil, false
-	}
-	return o.DeleteVCluster, true
-}
-
-// HasDeleteVCluster returns a boolean if a field has been set.
-func (o *VClusterActionVisibilityDto) HasDeleteVCluster() bool {
-	if o != nil && !IsNil(o.DeleteVCluster) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeleteVCluster gets a reference to the given ButtonStatusDto and assigns it to the DeleteVCluster field.
-func (o *VClusterActionVisibilityDto) SetDeleteVCluster(v ButtonStatusDto) {
-	o.DeleteVCluster = &v
-}
-
 func (o VClusterActionVisibilityDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -294,12 +228,6 @@ func (o VClusterActionVisibilityDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Unlock) {
 		toSerialize["unlock"] = o.Unlock
-	}
-	if !IsNil(o.AddVCluster) {
-		toSerialize["addVCluster"] = o.AddVCluster
-	}
-	if !IsNil(o.DeleteVCluster) {
-		toSerialize["deleteVCluster"] = o.DeleteVCluster
 	}
 	return toSerialize, nil
 }

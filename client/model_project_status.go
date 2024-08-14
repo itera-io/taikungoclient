@@ -34,7 +34,6 @@ const (
 	PROJECTSTATUS_ENABLE_GATEKEEPER ProjectStatus = "EnableGatekeeper"
 	PROJECTSTATUS_FAILURE ProjectStatus = "Failure"
 	PROJECTSTATUS_FAILED_UPGRADE ProjectStatus = "FailedUpgrade"
-	PROJECTSTATUS_PENDING ProjectStatus = "Pending"
 	PROJECTSTATUS_PURGING ProjectStatus = "Purging"
 	PROJECTSTATUS_READY ProjectStatus = "Ready"
 	PROJECTSTATUS_UPDATING ProjectStatus = "Updating"
@@ -59,7 +58,6 @@ var AllowedProjectStatusEnumValues = []ProjectStatus{
 	"EnableGatekeeper",
 	"Failure",
 	"FailedUpgrade",
-	"Pending",
 	"Purging",
 	"Ready",
 	"Updating",

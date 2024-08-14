@@ -541,6 +541,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsAddProjectUsers**](docs/ProjectsAPI.md#projectsaddprojectusers) | **Post** /api/v1/projects/{id}/users | Add users to project
 *ProjectsAPI* | [**ProjectsAiAnalyzer**](docs/ProjectsAPI.md#projectsaianalyzer) | **Get** /api/v1/projects/ai-analyze/{projectId} | Analyze cluster by AI model
 *ProjectsAPI* | [**ProjectsAlerts**](docs/ProjectsAPI.md#projectsalerts) | **Post** /api/v1/projects/alerts | Project alerts
+*ProjectsAPI* | [**ProjectsCanAddVcluster**](docs/ProjectsAPI.md#projectscanaddvcluster) | **Get** /api/v1/projects/can-add-vcluster/{projectId} | Visibility of adding vcluster
 *ProjectsAPI* | [**ProjectsChatCompletions**](docs/ProjectsAPI.md#projectschatcompletions) | **Post** /api/v1/projects/chat/completions | AI Chat completions
 *ProjectsAPI* | [**ProjectsCreate**](docs/ProjectsAPI.md#projectscreate) | **Post** /api/v1/projects | Create a new project
 *ProjectsAPI* | [**ProjectsDelete**](docs/ProjectsAPI.md#projectsdelete) | **Post** /api/v1/projects/delete | Delete the project. The project must be empty (no server) and in READY state
@@ -1285,6 +1286,7 @@ Class | Method | HTTP request | Description
  - [ProjectAppList](docs/ProjectAppList.md)
  - [ProjectAppParamDto](docs/ProjectAppParamDto.md)
  - [ProjectAppParamsDto](docs/ProjectAppParamsDto.md)
+ - [ProjectCanAddVClusterDto](docs/ProjectCanAddVClusterDto.md)
  - [ProjectCatalogDto](docs/ProjectCatalogDto.md)
  - [ProjectChartDto](docs/ProjectChartDto.md)
  - [ProjectCommonRecordDto](docs/ProjectCommonRecordDto.md)
