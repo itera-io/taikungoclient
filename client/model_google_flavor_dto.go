@@ -22,7 +22,7 @@ var _ MappedNullable = &GoogleFlavorDto{}
 type GoogleFlavorDto struct {
 	Name NullableString `json:"name,omitempty"`
 	Cpu NullableInt32 `json:"cpu,omitempty"`
-	Ram NullableInt64 `json:"ram,omitempty"`
+	Ram NullableFloat64 `json:"ram,omitempty"`
 	Description interface{} `json:"description,omitempty"`
 	LinuxPrice NullableFloat64 `json:"linuxPrice,omitempty"`
 	WindowsPrice NullableFloat64 `json:"windowsPrice,omitempty"`
@@ -132,9 +132,9 @@ func (o *GoogleFlavorDto) UnsetCpu() {
 }
 
 // GetRam returns the Ram field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GoogleFlavorDto) GetRam() int64 {
+func (o *GoogleFlavorDto) GetRam() float64 {
 	if o == nil || IsNil(o.Ram.Get()) {
-		var ret int64
+		var ret float64
 		return ret
 	}
 	return *o.Ram.Get()
@@ -143,7 +143,7 @@ func (o *GoogleFlavorDto) GetRam() int64 {
 // GetRamOk returns a tuple with the Ram field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GoogleFlavorDto) GetRamOk() (*int64, bool) {
+func (o *GoogleFlavorDto) GetRamOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -159,8 +159,8 @@ func (o *GoogleFlavorDto) HasRam() bool {
 	return false
 }
 
-// SetRam gets a reference to the given NullableInt64 and assigns it to the Ram field.
-func (o *GoogleFlavorDto) SetRam(v int64) {
+// SetRam gets a reference to the given NullableFloat64 and assigns it to the Ram field.
+func (o *GoogleFlavorDto) SetRam(v float64) {
 	o.Ram.Set(&v)
 }
 // SetRamNil sets the value for Ram to be an explicit nil

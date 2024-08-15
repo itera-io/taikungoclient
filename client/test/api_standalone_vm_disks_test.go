@@ -34,28 +34,6 @@ func Test_taikuncore_StandaloneVMDisksAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test StandaloneVMDisksAPIService StandalonevmdisksDelete", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.StandaloneVMDisksAPI.StandalonevmdisksDelete(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test StandaloneVMDisksAPIService StandalonevmdisksReset", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.StandaloneVMDisksAPI.StandalonevmdisksReset(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test StandaloneVMDisksAPIService StandalonevmdisksUpdateSize", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

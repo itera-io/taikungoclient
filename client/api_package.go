@@ -36,7 +36,7 @@ func (r ApiPackageDetailsRequest) Execute() (*AvailablePackageDetailsDto, *http.
 }
 
 /*
-PackageDetails Method for PackageDetails
+PackageDetails Available helm package details
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param repoName

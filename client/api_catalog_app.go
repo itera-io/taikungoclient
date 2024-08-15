@@ -856,6 +856,8 @@ type ApiCatalogAppListRequest struct {
 	ApiService *CatalogAppAPIService
 	catalogId *int32
 	search *string
+	sortBy *string
+	sortDirection *string
 	offset *int32
 	limit *int32
 }
@@ -867,6 +869,16 @@ func (r ApiCatalogAppListRequest) CatalogId(catalogId int32) ApiCatalogAppListRe
 
 func (r ApiCatalogAppListRequest) Search(search string) ApiCatalogAppListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiCatalogAppListRequest) SortBy(sortBy string) ApiCatalogAppListRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiCatalogAppListRequest) SortDirection(sortDirection string) ApiCatalogAppListRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -923,6 +935,12 @@ func (a *CatalogAppAPIService) CatalogAppListExecute(r ApiCatalogAppListRequest)
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
 	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")

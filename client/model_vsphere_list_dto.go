@@ -31,13 +31,13 @@ type VsphereListDto struct {
 	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 	DrsEnabled *bool `json:"drsEnabled,omitempty"`
+	ResourcePool NullableString `json:"resourcePool,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	ContinentName NullableString `json:"continentName,omitempty"`
 	Hypervisors []CommonStringBasedDropdownDto `json:"hypervisors,omitempty"`
 	Username NullableString `json:"username,omitempty"`
 	Url NullableString `json:"url,omitempty"`
-	Password NullableString `json:"password,omitempty"`
 	DatacenterId NullableString `json:"datacenterId,omitempty"`
 	DatacenterName NullableString `json:"datacenterName,omitempty"`
 	Datastore NullableString `json:"datastore,omitempty"`
@@ -466,6 +466,48 @@ func (o *VsphereListDto) SetDrsEnabled(v bool) {
 	o.DrsEnabled = &v
 }
 
+// GetResourcePool returns the ResourcePool field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VsphereListDto) GetResourcePool() string {
+	if o == nil || IsNil(o.ResourcePool.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ResourcePool.Get()
+}
+
+// GetResourcePoolOk returns a tuple with the ResourcePool field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VsphereListDto) GetResourcePoolOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ResourcePool.Get(), o.ResourcePool.IsSet()
+}
+
+// HasResourcePool returns a boolean if a field has been set.
+func (o *VsphereListDto) HasResourcePool() bool {
+	if o != nil && o.ResourcePool.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetResourcePool gets a reference to the given NullableString and assigns it to the ResourcePool field.
+func (o *VsphereListDto) SetResourcePool(v string) {
+	o.ResourcePool.Set(&v)
+}
+// SetResourcePoolNil sets the value for ResourcePool to be an explicit nil
+func (o *VsphereListDto) SetResourcePoolNil() {
+	o.ResourcePool.Set(nil)
+}
+
+// UnsetResourcePool ensures that no value is present for ResourcePool, not even an explicit nil
+func (o *VsphereListDto) UnsetResourcePool() {
+	o.ResourcePool.Unset()
+}
+
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
 func (o *VsphereListDto) GetOrganizationId() int32 {
 	if o == nil || IsNil(o.OrganizationId) {
@@ -697,48 +739,6 @@ func (o *VsphereListDto) SetUrlNil() {
 // UnsetUrl ensures that no value is present for Url, not even an explicit nil
 func (o *VsphereListDto) UnsetUrl() {
 	o.Url.Unset()
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VsphereListDto) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Password.Get()
-}
-
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VsphereListDto) GetPasswordOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Password.Get(), o.Password.IsSet()
-}
-
-// HasPassword returns a boolean if a field has been set.
-func (o *VsphereListDto) HasPassword() bool {
-	if o != nil && o.Password.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
-func (o *VsphereListDto) SetPassword(v string) {
-	o.Password.Set(&v)
-}
-// SetPasswordNil sets the value for Password to be an explicit nil
-func (o *VsphereListDto) SetPasswordNil() {
-	o.Password.Set(nil)
-}
-
-// UnsetPassword ensures that no value is present for Password, not even an explicit nil
-func (o *VsphereListDto) UnsetPassword() {
-	o.Password.Unset()
 }
 
 // GetDatacenterId returns the DatacenterId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1017,6 +1017,9 @@ func (o VsphereListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DrsEnabled) {
 		toSerialize["drsEnabled"] = o.DrsEnabled
 	}
+	if o.ResourcePool.IsSet() {
+		toSerialize["resourcePool"] = o.ResourcePool.Get()
+	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
@@ -1034,9 +1037,6 @@ func (o VsphereListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Url.IsSet() {
 		toSerialize["url"] = o.Url.Get()
-	}
-	if o.Password.IsSet() {
-		toSerialize["password"] = o.Password.Get()
 	}
 	if o.DatacenterId.IsSet() {
 		toSerialize["datacenterId"] = o.DatacenterId.Get()

@@ -155,7 +155,7 @@ func (r ApiCommonSortingElementsRequest) Execute() ([]string, *http.Response, er
 }
 
 /*
-CommonSortingElements Method for CommonSortingElements
+CommonSortingElements Retrieve sorting values
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param type_

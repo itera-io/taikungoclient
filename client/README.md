@@ -96,8 +96,6 @@ Class | Method | HTTP request | Description
 *AiCredentialsAPI* | [**AiCredentialDelete**](docs/AiCredentialsAPI.md#aicredentialdelete) | **Delete** /api/v1/ai-credential/{id} | Remove ai credential
 *AiCredentialsAPI* | [**AiCredentialDropdown**](docs/AiCredentialsAPI.md#aicredentialdropdown) | **Get** /api/v1/ai-credential | Retrieve all AI credentials for organization
 *AiCredentialsAPI* | [**AiCredentialList**](docs/AiCredentialsAPI.md#aicredentiallist) | **Get** /api/v1/ai-credential/list | Retrieve all AI credentials
-*AiManagementAPI* | [**AiManagementDisable**](docs/AiManagementAPI.md#aimanagementdisable) | **Post** /api/v1/ai-management/disable | Disable ai
-*AiManagementAPI* | [**AiManagementEnable**](docs/AiManagementAPI.md#aimanagementenable) | **Post** /api/v1/ai-management/enable | Enable ai
 *AlertingIntegrationsAPI* | [**AlertingintegrationsCreate**](docs/AlertingIntegrationsAPI.md#alertingintegrationscreate) | **Post** /api/v1/alertingintegrations/create | Create alerting profile alerting integration
 *AlertingIntegrationsAPI* | [**AlertingintegrationsDelete**](docs/AlertingIntegrationsAPI.md#alertingintegrationsdelete) | **Delete** /api/v1/alertingintegrations/{id} | Delete alerting profile alerting integration
 *AlertingIntegrationsAPI* | [**AlertingintegrationsEdit**](docs/AlertingIntegrationsAPI.md#alertingintegrationsedit) | **Put** /api/v1/alertingintegrations/edit | Edit alerting profile alerting integration
@@ -135,23 +133,21 @@ Class | Method | HTTP request | Description
 *AzureCloudCredentialAPI* | [**AzureDashboard**](docs/AzureCloudCredentialAPI.md#azuredashboard) | **Post** /api/v1/azure/quota/list | Fetch Azure quota list
 *AzureCloudCredentialAPI* | [**AzureList**](docs/AzureCloudCredentialAPI.md#azurelist) | **Get** /api/v1/azure/list | Retrieve list of azure cloud credentials
 *AzureCloudCredentialAPI* | [**AzureLocations**](docs/AzureCloudCredentialAPI.md#azurelocations) | **Post** /api/v1/azure/locations | Fetch Azure location list
-*AzureCloudCredentialAPI* | [**AzureOffers**](docs/AzureCloudCredentialAPI.md#azureoffers) | **Get** /api/v1/azure/offers/{cloudId}/{publisher} | 
+*AzureCloudCredentialAPI* | [**AzureOffers**](docs/AzureCloudCredentialAPI.md#azureoffers) | **Get** /api/v1/azure/offers/{cloudId}/{publisher} | List Azure offer list by publisher
 *AzureCloudCredentialAPI* | [**AzurePublishers**](docs/AzureCloudCredentialAPI.md#azurepublishers) | **Get** /api/v1/azure/publishers/{cloudId} | List Azure publishers list
-*AzureCloudCredentialAPI* | [**AzureSkus**](docs/AzureCloudCredentialAPI.md#azureskus) | **Get** /api/v1/azure/skus/{cloudId}/{publisher}/{offer} | 
+*AzureCloudCredentialAPI* | [**AzureSkus**](docs/AzureCloudCredentialAPI.md#azureskus) | **Get** /api/v1/azure/skus/{cloudId}/{publisher}/{offer} | List Azure skus list by publisher and offer
 *AzureCloudCredentialAPI* | [**AzureSubscriptions**](docs/AzureCloudCredentialAPI.md#azuresubscriptions) | **Post** /api/v1/azure/subscriptions | Azure subscriptions list
 *AzureCloudCredentialAPI* | [**AzureUpdate**](docs/AzureCloudCredentialAPI.md#azureupdate) | **Post** /api/v1/azure/update | Update Azure credentials
 *AzureCloudCredentialAPI* | [**AzureZones**](docs/AzureCloudCredentialAPI.md#azurezones) | **Post** /api/v1/azure/zones | Fetch Azure zone list
-*BackupPolicyAPI* | [**BackupByName**](docs/BackupPolicyAPI.md#backupbyname) | **Get** /api/v1/backup/{projectId}/{name} | 
+*BackupPolicyAPI* | [**BackupByName**](docs/BackupPolicyAPI.md#backupbyname) | **Get** /api/v1/backup/{projectId}/{name} | Get backup info by name
 *BackupPolicyAPI* | [**BackupCreate**](docs/BackupPolicyAPI.md#backupcreate) | **Post** /api/v1/backup/create | Add backup policy
 *BackupPolicyAPI* | [**BackupDeleteBackup**](docs/BackupPolicyAPI.md#backupdeletebackup) | **Post** /api/v1/backup/delete/backup | Remove policy backup
 *BackupPolicyAPI* | [**BackupDeleteBackupLocation**](docs/BackupPolicyAPI.md#backupdeletebackuplocation) | **Post** /api/v1/backup/delete/location | Remove backup location from project
 *BackupPolicyAPI* | [**BackupDeleteRestore**](docs/BackupPolicyAPI.md#backupdeleterestore) | **Post** /api/v1/backup/delete/restore | Remove policy restore
 *BackupPolicyAPI* | [**BackupDeleteSchedule**](docs/BackupPolicyAPI.md#backupdeleteschedule) | **Post** /api/v1/backup/delete/schedule | Remove policy schedule
-*BackupPolicyAPI* | [**BackupDescribeBackup**](docs/BackupPolicyAPI.md#backupdescribebackup) | **Get** /api/v1/backup/describe/backup/{projectId}/{name} | 
-*BackupPolicyAPI* | [**BackupDescribeRestore**](docs/BackupPolicyAPI.md#backupdescriberestore) | **Get** /api/v1/backup/describe/restore/{projectId}/{name} | 
-*BackupPolicyAPI* | [**BackupDescribeSchedule**](docs/BackupPolicyAPI.md#backupdescribeschedule) | **Get** /api/v1/backup/describe/schedule/{projectId}/{name} | 
-*BackupPolicyAPI* | [**BackupDisableBackup**](docs/BackupPolicyAPI.md#backupdisablebackup) | **Post** /api/v1/backup/disablebackup | Disable backup by the projectId
-*BackupPolicyAPI* | [**BackupEnableBackup**](docs/BackupPolicyAPI.md#backupenablebackup) | **Post** /api/v1/backup/enablebackup | Enable backup by the projectId
+*BackupPolicyAPI* | [**BackupDescribeBackup**](docs/BackupPolicyAPI.md#backupdescribebackup) | **Get** /api/v1/backup/describe/backup/{projectId}/{name} | Get backup info by name
+*BackupPolicyAPI* | [**BackupDescribeRestore**](docs/BackupPolicyAPI.md#backupdescriberestore) | **Get** /api/v1/backup/describe/restore/{projectId}/{name} | Get restore info by name
+*BackupPolicyAPI* | [**BackupDescribeSchedule**](docs/BackupPolicyAPI.md#backupdescribeschedule) | **Get** /api/v1/backup/describe/schedule/{projectId}/{name} | Get schedule info by name
 *BackupPolicyAPI* | [**BackupImportBackupStorage**](docs/BackupPolicyAPI.md#backupimportbackupstorage) | **Post** /api/v1/backup/location | Import backup storage from source project to target project
 *BackupPolicyAPI* | [**BackupListAllBackupStorages**](docs/BackupPolicyAPI.md#backuplistallbackupstorages) | **Get** /api/v1/backup/location/{projectId} | List all backup locations
 *BackupPolicyAPI* | [**BackupListAllBackups**](docs/BackupPolicyAPI.md#backuplistallbackups) | **Get** /api/v1/backup/backups/{projectId} | List all backups
@@ -162,9 +158,10 @@ Class | Method | HTTP request | Description
 *BillingAPI* | [**BillingExportCsv**](docs/BillingAPI.md#billingexportcsv) | **Get** /api/v1/billing/export | Export Csv
 *BillingAPI* | [**BillingGroupedList**](docs/BillingAPI.md#billinggroupedlist) | **Post** /api/v1/billing/grouped | Retrieve a grouped list of billing summaries
 *BillingAPI* | [**BillingList**](docs/BillingAPI.md#billinglist) | **Get** /api/v1/billing | Retrieve billing info
-*CatalogAPI* | [**CatalogBindProject**](docs/CatalogAPI.md#catalogbindproject) | **Post** /api/v1/catalog/bind-project | Bind projects to catalog
+*CatalogAPI* | [**CatalogAddProject**](docs/CatalogAPI.md#catalogaddproject) | **Post** /api/v1/catalog/{id}/projects | Add projects to catalog
 *CatalogAPI* | [**CatalogCreate**](docs/CatalogAPI.md#catalogcreate) | **Post** /api/v1/catalog/create | Create catalog
 *CatalogAPI* | [**CatalogDelete**](docs/CatalogAPI.md#catalogdelete) | **Delete** /api/v1/catalog/{id} | Delete catalog
+*CatalogAPI* | [**CatalogDeleteProject**](docs/CatalogAPI.md#catalogdeleteproject) | **Put** /api/v1/catalog/{id}/projects | Delete projects from catalog
 *CatalogAPI* | [**CatalogDropdown**](docs/CatalogAPI.md#catalogdropdown) | **Get** /api/v1/catalog/list | Catalog dropdown list for organization
 *CatalogAPI* | [**CatalogEdit**](docs/CatalogAPI.md#catalogedit) | **Put** /api/v1/catalog/edit | Edit catalog
 *CatalogAPI* | [**CatalogList**](docs/CatalogAPI.md#cataloglist) | **Get** /api/v1/catalog | Catalog list for organization
@@ -202,30 +199,31 @@ Class | Method | HTTP request | Description
 *CheckerAPI* | [**CheckerTanzu**](docs/CheckerAPI.md#checkertanzu) | **Post** /api/v1/checker/tanzu | Check tanzu credential
 *CheckerAPI* | [**CheckerYaml**](docs/CheckerAPI.md#checkeryaml) | **Post** /api/v1/checker/yaml | Check yaml file
 *CheckerAPI* | [**CheckerZadara**](docs/CheckerAPI.md#checkerzadara) | **Post** /api/v1/checker/zadara | Check zadara credential
-*CloudCredentialAPI* | [**CloudcredentialsAllFlavors**](docs/CloudCredentialAPI.md#cloudcredentialsallflavors) | **Get** /api/v1/cloudcredentials/flavors/{cloudId} | 
-*CloudCredentialAPI* | [**CloudcredentialsDashboardList**](docs/CloudCredentialAPI.md#cloudcredentialsdashboardlist) | **Get** /api/v1/cloudcredentials/list | Retrieve all cloud credentials
+*CheckerAPI* | [**CheckerZededa**](docs/CheckerAPI.md#checkerzededa) | **Post** /api/v1/checker/zededa | Check zededa credential
+*CloudCredentialAPI* | [**CloudcredentialsAllFlavors**](docs/CloudCredentialAPI.md#cloudcredentialsallflavors) | **Get** /api/v1/cloudcredentials/flavors/{cloudId} | Retrieve all flavors
 *CloudCredentialAPI* | [**CloudcredentialsDelete**](docs/CloudCredentialAPI.md#cloudcredentialsdelete) | **Delete** /api/v1/cloudcredentials/{cloudId} | Remove cloud credential by cloud Id
 *CloudCredentialAPI* | [**CloudcredentialsLockManager**](docs/CloudCredentialAPI.md#cloudcredentialslockmanager) | **Post** /api/v1/cloudcredentials/lockmanager | Lock/Unlock cloud credential
 *CloudCredentialAPI* | [**CloudcredentialsMakeDefault**](docs/CloudCredentialAPI.md#cloudcredentialsmakedefault) | **Post** /api/v1/cloudcredentials/makedefault | Make cloud credentials default
 *CloudCredentialAPI* | [**CloudcredentialsOrgList**](docs/CloudCredentialAPI.md#cloudcredentialsorglist) | **Get** /api/v1/cloudcredentials | Retrieve a list of cloud credentials by organization Id
 *CommonAPI* | [**CommonCountries**](docs/CommonAPI.md#commoncountries) | **Get** /api/v1/common/countries | Retrieve country list
-*CommonAPI* | [**CommonSortingElements**](docs/CommonAPI.md#commonsortingelements) | **Get** /api/v1/common/sorting-elements/{type} | 
+*CommonAPI* | [**CommonSortingElements**](docs/CommonAPI.md#commonsortingelements) | **Get** /api/v1/common/sorting-elements/{type} | Retrieve sorting values
 *DnsServersAPI* | [**DnsserversCreate**](docs/DnsServersAPI.md#dnsserverscreate) | **Post** /api/v1/dnsservers/create | Create dns servers for access profile
 *DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete dns server
 *DnsServersAPI* | [**DnsserversEdit**](docs/DnsServersAPI.md#dnsserversedit) | **Put** /api/v1/dnsservers/edit/{id} | Edit dns server
 *DnsServersAPI* | [**DnsserversList**](docs/DnsServersAPI.md#dnsserverslist) | **Get** /api/v1/dnsservers/{accessProfileId} | List dn servers by profile id
-*FlavorsAPI* | [**FlavorsAwsInstanceTypes**](docs/FlavorsAPI.md#flavorsawsinstancetypes) | **Get** /api/v1/flavors/aws/{cloudId} | 
-*FlavorsAPI* | [**FlavorsAzureVmSizes**](docs/FlavorsAPI.md#flavorsazurevmsizes) | **Get** /api/v1/flavors/azure/{cloudId} | 
+*FlavorsAPI* | [**FlavorsAwsInstanceTypes**](docs/FlavorsAPI.md#flavorsawsinstancetypes) | **Get** /api/v1/flavors/aws/{cloudId} | Retrieve awz instance types
+*FlavorsAPI* | [**FlavorsAzureVmSizes**](docs/FlavorsAPI.md#flavorsazurevmsizes) | **Get** /api/v1/flavors/azure/{cloudId} | Retrieve azure vm sizes
 *FlavorsAPI* | [**FlavorsBindToProject**](docs/FlavorsAPI.md#flavorsbindtoproject) | **Post** /api/v1/flavors/bind | Bind flavors to project
-*FlavorsAPI* | [**FlavorsGoogleMachineTypes**](docs/FlavorsAPI.md#flavorsgooglemachinetypes) | **Get** /api/v1/flavors/google/{cloudId} | 
+*FlavorsAPI* | [**FlavorsGoogleMachineTypes**](docs/FlavorsAPI.md#flavorsgooglemachinetypes) | **Get** /api/v1/flavors/google/{cloudId} | Retrieve google machine types
 *FlavorsAPI* | [**FlavorsOpenshiftFlavors**](docs/FlavorsAPI.md#flavorsopenshiftflavors) | **Get** /api/v1/flavors/openshift/{cloudId} | Retrieve openshift flavors
-*FlavorsAPI* | [**FlavorsOpenstackFlavors**](docs/FlavorsAPI.md#flavorsopenstackflavors) | **Get** /api/v1/flavors/openstack/{cloudId} | 
+*FlavorsAPI* | [**FlavorsOpenstackFlavors**](docs/FlavorsAPI.md#flavorsopenstackflavors) | **Get** /api/v1/flavors/openstack/{cloudId} | Retrieve openstack flavors
 *FlavorsAPI* | [**FlavorsProxmoxFlavors**](docs/FlavorsAPI.md#flavorsproxmoxflavors) | **Get** /api/v1/flavors/proxmox/{cloudId} | Retrieve proxmox flavors
 *FlavorsAPI* | [**FlavorsSelectedFlavorsForProject**](docs/FlavorsAPI.md#flavorsselectedflavorsforproject) | **Get** /api/v1/flavors/projects/list | Retrieve selected flavors for project
 *FlavorsAPI* | [**FlavorsTanzuFlavors**](docs/FlavorsAPI.md#flavorstanzuflavors) | **Get** /api/v1/flavors/tanzu/{cloudId} | Retrieve tanzu flavors
 *FlavorsAPI* | [**FlavorsUnbindFromProject**](docs/FlavorsAPI.md#flavorsunbindfromproject) | **Post** /api/v1/flavors/unbind | Unbind flavors from project
 *FlavorsAPI* | [**FlavorsVsphereFlavors**](docs/FlavorsAPI.md#flavorsvsphereflavors) | **Get** /api/v1/flavors/vsphere/{cloudId} | Retrieve vsphere flavors
-*FlavorsAPI* | [**FlavorsZadaraInstanceTypes**](docs/FlavorsAPI.md#flavorszadarainstancetypes) | **Get** /api/v1/flavors/zadara/{cloudId} | 
+*FlavorsAPI* | [**FlavorsZadaraInstanceTypes**](docs/FlavorsAPI.md#flavorszadarainstancetypes) | **Get** /api/v1/flavors/zadara/{cloudId} | Retrieve zadara instance types
+*FlavorsAPI* | [**FlavorsZededaFlavors**](docs/FlavorsAPI.md#flavorszededaflavors) | **Get** /api/v1/flavors/zededa/{cloudId} | Retrieve zededa flavors
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | Create google cloud credential
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
@@ -235,11 +233,11 @@ Class | Method | HTTP request | Description
 *ImagesAPI* | [**ImagesAwsImagesList**](docs/ImagesAPI.md#imagesawsimageslist) | **Post** /api/v1/images/aws | Retrieve aws images
 *ImagesAPI* | [**ImagesAwsPersonalImages**](docs/ImagesAPI.md#imagesawspersonalimages) | **Get** /api/v1/images/aws/personal/{cloudId} | Aws personal images
 *ImagesAPI* | [**ImagesAzureCommonImages**](docs/ImagesAPI.md#imagesazurecommonimages) | **Get** /api/v1/images/azure/common/{cloudId} | Commonly used azure images
-*ImagesAPI* | [**ImagesAzureImages**](docs/ImagesAPI.md#imagesazureimages) | **Get** /api/v1/images/azure/{cloudId}/{publisherName}/{offer}/{sku} | 
+*ImagesAPI* | [**ImagesAzureImages**](docs/ImagesAPI.md#imagesazureimages) | **Get** /api/v1/images/azure/{cloudId}/{publisherName}/{offer}/{sku} | Retrieve azure images
 *ImagesAPI* | [**ImagesAzurePersonalImages**](docs/ImagesAPI.md#imagesazurepersonalimages) | **Get** /api/v1/images/azure/personal/{cloudId} | Azure personal images
 *ImagesAPI* | [**ImagesBindImagesToProject**](docs/ImagesAPI.md#imagesbindimagestoproject) | **Post** /api/v1/images/bind | Bind images to project
 *ImagesAPI* | [**ImagesCommonGoogleImages**](docs/ImagesAPI.md#imagescommongoogleimages) | **Get** /api/v1/images/google/common/{cloudId} | Commonly used google images
-*ImagesAPI* | [**ImagesGoogleImages**](docs/ImagesAPI.md#imagesgoogleimages) | **Get** /api/v1/images/google/{cloudId}/{type} | 
+*ImagesAPI* | [**ImagesGoogleImages**](docs/ImagesAPI.md#imagesgoogleimages) | **Get** /api/v1/images/google/{cloudId}/{type} | Retrieve google images
 *ImagesAPI* | [**ImagesImageDetails**](docs/ImagesAPI.md#imagesimagedetails) | **Post** /api/v1/images/details | Get image details
 *ImagesAPI* | [**ImagesOpenshiftImages**](docs/ImagesAPI.md#imagesopenshiftimages) | **Get** /api/v1/images/openshift/{cloudId} | Retrieve openshift images
 *ImagesAPI* | [**ImagesOpenstackImages**](docs/ImagesAPI.md#imagesopenstackimages) | **Get** /api/v1/images/openstack/{cloudId} | Retrieve openstack images
@@ -291,7 +289,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesHelmReleaseList**](docs/KubernetesAPI.md#kuberneteshelmreleaselist) | **Get** /api/v1/kubernetes/{projectId}/helmreleases | Retrieve a list of k8s helm releases for all namespaces
 *KubernetesAPI* | [**KubernetesIngressList**](docs/KubernetesAPI.md#kubernetesingresslist) | **Get** /api/v1/kubernetes/{projectId}/ingress | Retrieve a list of k8s ingress for all namespaces
 *KubernetesAPI* | [**KubernetesJobsList**](docs/KubernetesAPI.md#kubernetesjobslist) | **Get** /api/v1/kubernetes/{projectId}/jobs | Retrieve a list of k8s jobs for all namespaces
-*KubernetesAPI* | [**KubernetesKillPod**](docs/KubernetesAPI.md#kuberneteskillpod) | **Post** /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace} | 
+*KubernetesAPI* | [**KubernetesKillPod**](docs/KubernetesAPI.md#kuberneteskillpod) | **Post** /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace} | Kill the pod
 *KubernetesAPI* | [**KubernetesNetworkPolicyList**](docs/KubernetesAPI.md#kubernetesnetworkpolicylist) | **Get** /api/v1/kubernetes/{projectId}/network-policies | Retrieve a list of k8s network-policies for all namespaces
 *KubernetesAPI* | [**KubernetesNodeList**](docs/KubernetesAPI.md#kubernetesnodelist) | **Get** /api/v1/kubernetes/{projectId}/node | Retrieve a list of k8s node
 *KubernetesAPI* | [**KubernetesOverview**](docs/KubernetesAPI.md#kubernetesoverview) | **Get** /api/v1/kubernetes/overview | Overview kubernetes nodes and pods by organization id
@@ -333,9 +331,7 @@ Class | Method | HTTP request | Description
 *NtpServersAPI* | [**NtpserversList**](docs/NtpServersAPI.md#ntpserverslist) | **Get** /api/v1/ntpservers/list/{accessProfileId} | List ntp server by access profile id
 *OpaProfilesAPI* | [**OpaprofilesCreate**](docs/OpaProfilesAPI.md#opaprofilescreate) | **Post** /api/v1/opaprofiles/create | Add policy profile
 *OpaProfilesAPI* | [**OpaprofilesDelete**](docs/OpaProfilesAPI.md#opaprofilesdelete) | **Delete** /api/v1/opaprofiles/{id} | Remove Opa profile by Id
-*OpaProfilesAPI* | [**OpaprofilesDisableGatekeeper**](docs/OpaProfilesAPI.md#opaprofilesdisablegatekeeper) | **Post** /api/v1/opaprofiles/disablegatekeeper | Disable Gatekeeper by the projectId
 *OpaProfilesAPI* | [**OpaprofilesDropdown**](docs/OpaProfilesAPI.md#opaprofilesdropdown) | **Get** /api/v1/opaprofiles/list | Retrieve policy profiles for organization
-*OpaProfilesAPI* | [**OpaprofilesEnableGatekeeper**](docs/OpaProfilesAPI.md#opaprofilesenablegatekeeper) | **Post** /api/v1/opaprofiles/enablegatekeeper | Enable Gatekeeper by the projectId
 *OpaProfilesAPI* | [**OpaprofilesList**](docs/OpaProfilesAPI.md#opaprofileslist) | **Get** /api/v1/opaprofiles | Retrieve all policy profiles
 *OpaProfilesAPI* | [**OpaprofilesLockManager**](docs/OpaProfilesAPI.md#opaprofileslockmanager) | **Post** /api/v1/opaprofiles/lockmanager | Lock/Unlock policy profile
 *OpaProfilesAPI* | [**OpaprofilesMakeDefault**](docs/OpaProfilesAPI.md#opaprofilesmakedefault) | **Post** /api/v1/opaprofiles/make-default | Choose default policy profile
@@ -362,13 +358,15 @@ Class | Method | HTTP request | Description
 *OperationCredentialsAPI* | [**OpscredentialsLockManager**](docs/OperationCredentialsAPI.md#opscredentialslockmanager) | **Post** /api/v1/opscredentials/lockmanager | Lock/Unlock operation credential
 *OperationCredentialsAPI* | [**OpscredentialsMakeDefault**](docs/OperationCredentialsAPI.md#opscredentialsmakedefault) | **Post** /api/v1/opscredentials/makedefault | Choose default operation credential
 *OrganizationsAPI* | [**OrganizationsAccessForPartner**](docs/OrganizationsAPI.md#organizationsaccessforpartner) | **Post** /api/v1/organizations/access-for partner | Give access to partner
+*OrganizationsAPI* | [**OrganizationsAddPrometheusrules**](docs/OrganizationsAPI.md#organizationsaddprometheusrules) | **Post** /api/v1/organizations/{id}/prometheusrules | Add prometheus rule(s) to organization
 *OrganizationsAPI* | [**OrganizationsCreate**](docs/OrganizationsAPI.md#organizationscreate) | **Post** /api/v1/organizations | Add a new organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDelete**](docs/OrganizationsAPI.md#organizationsdelete) | **Delete** /api/v1/organizations/{id} | Delete the specified organization. Only available for admins.
+*OrganizationsAPI* | [**OrganizationsDeletePrometheusrules**](docs/OrganizationsAPI.md#organizationsdeleteprometheusrules) | **Put** /api/v1/organizations/{id}/prometheusrules | Delete prometheus rule(s) from organization
 *OrganizationsAPI* | [**OrganizationsDetawils**](docs/OrganizationsAPI.md#organizationsdetawils) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
 *OrganizationsAPI* | [**OrganizationsList**](docs/OrganizationsAPI.md#organizationslist) | **Get** /api/v1/organizations | Retrieve all organizations
 *OrganizationsAPI* | [**OrganizationsToggle**](docs/OrganizationsAPI.md#organizationstoggle) | **Post** /api/v1/organizations/toggle/keycloak | Toggle keycloak login option
 *OrganizationsAPI* | [**OrganizationsUpdate**](docs/OrganizationsAPI.md#organizationsupdate) | **Post** /api/v1/organizations/update | Update organization by Id
-*PackageAPI* | [**PackageDetails**](docs/PackageAPI.md#packagedetails) | **Get** /api/v1/package/{repoName}/{packageName} | 
+*PackageAPI* | [**PackageDetails**](docs/PackageAPI.md#packagedetails) | **Get** /api/v1/package/{repoName}/{packageName} | Available helm package details
 *PackageAPI* | [**PackageList**](docs/PackageAPI.md#packagelist) | **Get** /api/v1/package/list | Retrieve all available packages
 *PackageAPI* | [**PackageValue**](docs/PackageAPI.md#packagevalue) | **Post** /api/v1/package/value | Get yaml based value
 *PackageAPI* | [**PackageValueAutocomplete**](docs/PackageAPI.md#packagevalueautocomplete) | **Post** /api/v1/package/value-autocomplete | Get autocomplete dictionary
@@ -379,8 +377,6 @@ Class | Method | HTTP request | Description
 *PreDefinedQueriesAPI* | [**PredefinedqueriesList**](docs/PreDefinedQueriesAPI.md#predefinedquerieslist) | **Get** /api/v1/predefinedqueries/prometheus/dashboard/list/{projectId} | Get list of pre defined organization prometheus dashboard elements
 *PreDefinedQueriesAPI* | [**PredefinedqueriesPrometheusDashboardCommon**](docs/PreDefinedQueriesAPI.md#predefinedqueriesprometheusdashboardcommon) | **Get** /api/v1/predefinedqueries/prometheus/dashboard/common/{projectId} | et list of pre defined common prometheus dashboard elements
 *PreDefinedQueriesAPI* | [**PredefinedqueriesUpdate**](docs/PreDefinedQueriesAPI.md#predefinedqueriesupdate) | **Post** /api/v1/predefinedqueries/prometheus/dashboard/update | Update prometheus dashboard pre defined query
-*ProjectActionsAPI* | [**ProjectactionsDelete**](docs/ProjectActionsAPI.md#projectactionsdelete) | **Delete** /api/v1/projectactions/{projectId} | Delete the project action
-*ProjectActionsAPI* | [**ProjectactionsEdit**](docs/ProjectActionsAPI.md#projectactionsedit) | **Put** /api/v1/projectactions/edit/{projectId} | Update project action by projectId
 *ProjectAppParamsAPI* | [**ProjectappparamEdit**](docs/ProjectAppParamsAPI.md#projectappparamedit) | **Put** /api/v1/projectappparam/edit/{projectAppId} | Edit project app params
 *ProjectAppsAPI* | [**ProjectappAutosync**](docs/ProjectAppsAPI.md#projectappautosync) | **Post** /api/v1/projectapp/autosync | AutoSync management
 *ProjectAppsAPI* | [**ProjectappDelete**](docs/ProjectAppsAPI.md#projectappdelete) | **Delete** /api/v1/projectapp/uninstall/{projectAppId} | Uninstall application
@@ -397,40 +393,40 @@ Class | Method | HTTP request | Description
 *ProjectGroupsAPI* | [**ProjectgroupsList**](docs/ProjectGroupsAPI.md#projectgroupslist) | **Get** /api/v1/projectgroups/list | Retrieve list of Project groups
 *ProjectGroupsAPI* | [**ProjectgroupsListByUserId**](docs/ProjectGroupsAPI.md#projectgroupslistbyuserid) | **Get** /api/v1/projectgroups/list/{userGroupId} | Retrieve list of Project groups by user group id for dropdown
 *ProjectGroupsAPI* | [**ProjectgroupsProjectList**](docs/ProjectGroupsAPI.md#projectgroupsprojectlist) | **Get** /api/v1/projectgroups/{projectGroupId}/projects | Retrieve list of projects by project group id
+*ProjectGroupsAPI* | [**ProjectgroupsUnbindProject**](docs/ProjectGroupsAPI.md#projectgroupsunbindproject) | **Post** /api/v1/projectgroups/unbind-project | Unbind Projects from group
+*ProjectGroupsAPI* | [**ProjectgroupsUnbindUserGroup**](docs/ProjectGroupsAPI.md#projectgroupsunbindusergroup) | **Post** /api/v1/projectgroups/unbind-user-group | Unbind user group from project group
 *ProjectInfracostsAPI* | [**ProjectinfracostsDetails**](docs/ProjectInfracostsAPI.md#projectinfracostsdetails) | **Get** /api/v1/projectinfracosts/{projectId} | Project Infracost details
 *ProjectQuotasAPI* | [**ProjectquotasList**](docs/ProjectQuotasAPI.md#projectquotaslist) | **Get** /api/v1/projectquotas | Retrieve all project quotas
 *ProjectQuotasAPI* | [**ProjectquotasUpdate**](docs/ProjectQuotasAPI.md#projectquotasupdate) | **Post** /api/v1/projectquotas/update | Edit project quota
-*ProjectTemplatesAPI* | [**ProjecttemplateCreate**](docs/ProjectTemplatesAPI.md#projecttemplatecreate) | **Post** /api/v1/projecttemplate/create | Create project from template
-*ProjectTemplatesAPI* | [**ProjecttemplateDelete**](docs/ProjectTemplatesAPI.md#projecttemplatedelete) | **Delete** /api/v1/projecttemplate/{id} | Delete project template by Id
-*ProjectTemplatesAPI* | [**ProjecttemplateDropdown**](docs/ProjectTemplatesAPI.md#projecttemplatedropdown) | **Get** /api/v1/projecttemplate/list | Retrieve project template by organization Id
-*ProjectTemplatesAPI* | [**ProjecttemplateList**](docs/ProjectTemplatesAPI.md#projecttemplatelist) | **Get** /api/v1/projecttemplate | Retrieve all project templates
+*ProjectTemplatesAPI* | [**ProjectTemplatesCreate**](docs/ProjectTemplatesAPI.md#projecttemplatescreate) | **Post** /api/v1/project-templates/create | Create project from template
+*ProjectTemplatesAPI* | [**ProjectTemplatesDelete**](docs/ProjectTemplatesAPI.md#projecttemplatesdelete) | **Delete** /api/v1/project-templates/{id} | Delete project template by Id
+*ProjectTemplatesAPI* | [**ProjectTemplatesDropdown**](docs/ProjectTemplatesAPI.md#projecttemplatesdropdown) | **Get** /api/v1/project-templates/list | Retrieve project template by organization Id
+*ProjectTemplatesAPI* | [**ProjectTemplatesList**](docs/ProjectTemplatesAPI.md#projecttemplateslist) | **Get** /api/v1/project-templates | Retrieve all project templates
+*ProjectsAPI* | [**ProjectsAddProjectUsers**](docs/ProjectsAPI.md#projectsaddprojectusers) | **Post** /api/v1/projects/{id}/users | Add users to project
 *ProjectsAPI* | [**ProjectsAiAnalyzer**](docs/ProjectsAPI.md#projectsaianalyzer) | **Get** /api/v1/projects/ai-analyze/{projectId} | Analyze cluster by AI model
 *ProjectsAPI* | [**ProjectsAlerts**](docs/ProjectsAPI.md#projectsalerts) | **Post** /api/v1/projects/alerts | Project alerts
-*ProjectsAPI* | [**ProjectsCommit**](docs/ProjectsAPI.md#projectscommit) | **Post** /api/v1/projects/commit/{projectId} | Commit changes for the given project. The changes will then be applied and the project will be updated. The project must be in the READY state.
+*ProjectsAPI* | [**ProjectsCanAddVcluster**](docs/ProjectsAPI.md#projectscanaddvcluster) | **Get** /api/v1/projects/can-add-vcluster/{projectId} | Visibility of adding vcluster
 *ProjectsAPI* | [**ProjectsCreate**](docs/ProjectsAPI.md#projectscreate) | **Post** /api/v1/projects | Create a new project
 *ProjectsAPI* | [**ProjectsDelete**](docs/ProjectsAPI.md#projectsdelete) | **Post** /api/v1/projects/delete | Delete the project. The project must be empty (no server) and in READY state
-*ProjectsAPI* | [**ProjectsDeleteWholeProject**](docs/ProjectsAPI.md#projectsdeletewholeproject) | **Post** /api/v1/projects/deletewholeproject | Delete whole project by project Id
+*ProjectsAPI* | [**ProjectsDeleteProjectUsers**](docs/ProjectsAPI.md#projectsdeleteprojectusers) | **Put** /api/v1/projects/{id}/users | Delete users from project
 *ProjectsAPI* | [**ProjectsExtendLifetime**](docs/ProjectsAPI.md#projectsextendlifetime) | **Post** /api/v1/projects/extend/lifetime | Extend life time of project
 *ProjectsAPI* | [**ProjectsList**](docs/ProjectsAPI.md#projectslist) | **Get** /api/v1/projects | Retrieve all projects
 *ProjectsAPI* | [**ProjectsLockManager**](docs/ProjectsAPI.md#projectslockmanager) | **Post** /api/v1/projects/lockmanager | Lock/Unlock project
 *ProjectsAPI* | [**ProjectsLokiLogs**](docs/ProjectsAPI.md#projectslokilogs) | **Post** /api/v1/projects/lokilogs | Retrieve loki logs
 *ProjectsAPI* | [**ProjectsMaintenanceManager**](docs/ProjectsAPI.md#projectsmaintenancemanager) | **Post** /api/v1/projects/maintenance-manager | Enable/disable project&#39;s maintenance mode
-*ProjectsAPI* | [**ProjectsMonitoring**](docs/ProjectsAPI.md#projectsmonitoring) | **Post** /api/v1/projects/monitoring | Monitoring operations enable/disable
 *ProjectsAPI* | [**ProjectsPrometheusMetrics**](docs/ProjectsAPI.md#projectsprometheusmetrics) | **Post** /api/v1/projects/prometheusmetrics | Prometheus metrics data project
-*ProjectsAPI* | [**ProjectsRepair**](docs/ProjectsAPI.md#projectsrepair) | **Post** /api/v1/projects/repair/{projectId} | Repair project by Id
 *ProjectsAPI* | [**ProjectsToggleFullSpot**](docs/ProjectsAPI.md#projectstogglefullspot) | **Post** /api/v1/projects/toggle-full-spot | Full spot operations enable/disable
 *ProjectsAPI* | [**ProjectsToggleSpotVms**](docs/ProjectsAPI.md#projectstogglespotvms) | **Post** /api/v1/projects/toggle-spot-vms | Spot vm(s) operations enable/disable
 *ProjectsAPI* | [**ProjectsToggleSpotWorkers**](docs/ProjectsAPI.md#projectstogglespotworkers) | **Post** /api/v1/projects/toggle-spot-workers | Spot worker(s) operations enable/disable
-*ProjectsAPI* | [**ProjectsUpgrade**](docs/ProjectsAPI.md#projectsupgrade) | **Post** /api/v1/projects/upgrade/{projectId} | Upgrade the project&#39;s Kubernetes to the next available version. Project must be READY.
 *ProjectsAPI* | [**ProjectsVisibility**](docs/ProjectsAPI.md#projectsvisibility) | **Get** /api/v1/projects/visibility/{projectId} | Visibility of project actions
 *PrometheusBillingsAPI* | [**PrometheusbillingsCreate**](docs/PrometheusBillingsAPI.md#prometheusbillingscreate) | **Post** /api/v1/prometheusbillings | Add prometheus billing
 *PrometheusBillingsAPI* | [**PrometheusbillingsExportCsv**](docs/PrometheusBillingsAPI.md#prometheusbillingsexportcsv) | **Get** /api/v1/prometheusbillings/export | Export Csv
 *PrometheusBillingsAPI* | [**PrometheusbillingsGroupedList**](docs/PrometheusBillingsAPI.md#prometheusbillingsgroupedlist) | **Post** /api/v1/prometheusbillings/grouped | Retrieve a list of grouped prometheus billing
 *PrometheusBillingsAPI* | [**PrometheusbillingsList**](docs/PrometheusBillingsAPI.md#prometheusbillingslist) | **Get** /api/v1/prometheusbillings | Retrieve all prometheus billing
-*PrometheusOrganizationsAPI* | [**PrometheusorganizationsBindRules**](docs/PrometheusOrganizationsAPI.md#prometheusorganizationsbindrules) | **Post** /api/v1/prometheusorganizations/bind/rules | Bind rules to organizations
-*PrometheusRulesAPI* | [**PrometheusrulesBindOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesbindorganizations) | **Post** /api/v1/prometheusrules/bind/organizations | Bind organizations to prometheus rule
+*PrometheusRulesAPI* | [**PrometheusrulesAddOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesaddorganizations) | **Post** /api/v1/prometheusrules/{id}/organizations | Add organizations to prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesCreate**](docs/PrometheusRulesAPI.md#prometheusrulescreate) | **Post** /api/v1/prometheusrules | Add prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesDelete**](docs/PrometheusRulesAPI.md#prometheusrulesdelete) | **Delete** /api/v1/prometheusrules/{id} | Remove prometheus rule
+*PrometheusRulesAPI* | [**PrometheusrulesDeleteOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesdeleteorganizations) | **Put** /api/v1/prometheusrules/{id}/organizations | Delete organizations from prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesList**](docs/PrometheusRulesAPI.md#prometheusruleslist) | **Get** /api/v1/prometheusrules | Retrieve a list of prometheus rules
 *PrometheusRulesAPI* | [**PrometheusrulesUpdate**](docs/PrometheusRulesAPI.md#prometheusrulesupdate) | **Put** /api/v1/prometheusrules/edit/{id} | Edit prometheus rule
 *ProxmoxCloudCredentialAPI* | [**ProxmoxBridgeList**](docs/ProxmoxCloudCredentialAPI.md#proxmoxbridgelist) | **Post** /api/v1/proxmox/bridge-list | Fetch proxmox bridge list
@@ -476,9 +472,8 @@ Class | Method | HTTP request | Description
 *SecurityGroupAPI* | [**SecuritygroupList**](docs/SecurityGroupAPI.md#securitygrouplist) | **Get** /api/v1/securitygroup/list/{standAloneProfileId} | List stand alone security group by profile id
 *ServersAPI* | [**ServersConsole**](docs/ServersAPI.md#serversconsole) | **Post** /api/v1/servers/console | Console screenshot or terminal access for server
 *ServersAPI* | [**ServersCreate**](docs/ServersAPI.md#serverscreate) | **Post** /api/v1/servers/create | Create a new server in the given project.
-*ServersAPI* | [**ServersDelete**](docs/ServersAPI.md#serversdelete) | **Post** /api/v1/servers/delete | Delete server by project id
 *ServersAPI* | [**ServersDetails**](docs/ServersAPI.md#serversdetails) | **Get** /api/v1/servers/{projectId} | Retrieve all servers by given project
-*ServersAPI* | [**ServersList**](docs/ServersAPI.md#serverslist) | **Get** /api/v1/servers | 
+*ServersAPI* | [**ServersList**](docs/ServersAPI.md#serverslist) | **Get** /api/v1/servers | Retrieve all servers
 *ServersAPI* | [**ServersReboot**](docs/ServersAPI.md#serversreboot) | **Post** /api/v1/servers/reboot | Reboot server
 *ServersAPI* | [**ServersReset**](docs/ServersAPI.md#serversreset) | **Post** /api/v1/servers/reset | Update server(s) status(es)
 *ServersAPI* | [**ServersStatus**](docs/ServersAPI.md#serversstatus) | **Get** /api/v1/servers/status/{serverId} | Show server status
@@ -492,13 +487,10 @@ Class | Method | HTTP request | Description
 *SshUsersAPI* | [**SshusersDelete**](docs/SshUsersAPI.md#sshusersdelete) | **Post** /api/v1/sshusers/delete | Delete access profile ssh user
 *SshUsersAPI* | [**SshusersEdit**](docs/SshUsersAPI.md#sshusersedit) | **Post** /api/v1/sshusers/edit | Edit access profile ssh user
 *SshUsersAPI* | [**SshusersList**](docs/SshUsersAPI.md#sshuserslist) | **Get** /api/v1/sshusers/list/{accessProfileId} | List ssh user by access profile id
-*StandaloneAPI* | [**StandaloneCommit**](docs/StandaloneAPI.md#standalonecommit) | **Post** /api/v1/standalone/commit | Commit vm
 *StandaloneAPI* | [**StandaloneCreate**](docs/StandaloneAPI.md#standalonecreate) | **Post** /api/v1/standalone/create | Create a new vm in the given project.
-*StandaloneAPI* | [**StandaloneDelete**](docs/StandaloneAPI.md#standalonedelete) | **Post** /api/v1/standalone/delete | Delete vm
 *StandaloneAPI* | [**StandaloneDetails**](docs/StandaloneAPI.md#standalonedetails) | **Get** /api/v1/standalone/{projectId} | Retrieve a list of standalone vm with detailed info
 *StandaloneAPI* | [**StandaloneIpManagement**](docs/StandaloneAPI.md#standaloneipmanagement) | **Post** /api/v1/standalone/ip/management | Enable/Disable stand alone public ip
-*StandaloneAPI* | [**StandaloneList**](docs/StandaloneAPI.md#standalonelist) | **Get** /api/v1/standalone | 
-*StandaloneAPI* | [**StandaloneRepair**](docs/StandaloneAPI.md#standalonerepair) | **Post** /api/v1/standalone/repair | Repair vm
+*StandaloneAPI* | [**StandaloneList**](docs/StandaloneAPI.md#standalonelist) | **Get** /api/v1/standalone | Retrieve all vms
 *StandaloneAPI* | [**StandaloneUpdateFlavor**](docs/StandaloneAPI.md#standaloneupdateflavor) | **Post** /api/v1/standalone/update/flavor | Update standalone vm flavor
 *StandaloneActionsAPI* | [**StandaloneactionsConsole**](docs/StandaloneActionsAPI.md#standaloneactionsconsole) | **Post** /api/v1/standaloneactions/console | Console screenshot or terminal for vm
 *StandaloneActionsAPI* | [**StandaloneactionsDownloadRdp**](docs/StandaloneActionsAPI.md#standaloneactionsdownloadrdp) | **Get** /api/v1/standaloneactions/download/rdp/{id} | Download RDP file
@@ -516,8 +508,6 @@ Class | Method | HTTP request | Description
 *StandaloneProfileAPI* | [**StandaloneprofileList**](docs/StandaloneProfileAPI.md#standaloneprofilelist) | **Get** /api/v1/standaloneprofile | Retrieve all standalone profiles
 *StandaloneProfileAPI* | [**StandaloneprofileLockManagement**](docs/StandaloneProfileAPI.md#standaloneprofilelockmanagement) | **Post** /api/v1/standaloneprofile/lockmanager | Lock/unlock standalone profile.
 *StandaloneVMDisksAPI* | [**StandalonevmdisksCreate**](docs/StandaloneVMDisksAPI.md#standalonevmdiskscreate) | **Post** /api/v1/standalonevmdisks/create | Add disk for standalone vm
-*StandaloneVMDisksAPI* | [**StandalonevmdisksDelete**](docs/StandaloneVMDisksAPI.md#standalonevmdisksdelete) | **Post** /api/v1/standalonevmdisks/delete | Remove disk from standalone vm
-*StandaloneVMDisksAPI* | [**StandalonevmdisksReset**](docs/StandaloneVMDisksAPI.md#standalonevmdisksreset) | **Post** /api/v1/standalonevmdisks/reset | Update status of disk
 *StandaloneVMDisksAPI* | [**StandalonevmdisksUpdateSize**](docs/StandaloneVMDisksAPI.md#standalonevmdisksupdatesize) | **Post** /api/v1/standalonevmdisks/update-size | Update disk size
 *TanzuAPI* | [**TanzuCreate**](docs/TanzuAPI.md#tanzucreate) | **Post** /api/v1/tanzu/create | Create tanzu credentials
 *TanzuAPI* | [**TanzuKubernetesVersions**](docs/TanzuAPI.md#tanzukubernetesversions) | **Get** /api/v1/tanzu/kubernetes-versions/{cloudId} | Tanzu available k8s version list
@@ -525,36 +515,44 @@ Class | Method | HTTP request | Description
 *TanzuAPI* | [**TanzuStorageList**](docs/TanzuAPI.md#tanzustoragelist) | **Post** /api/v1/tanzu/storage-list | Tanzu storage list
 *TanzuAPI* | [**TanzuUpdate**](docs/TanzuAPI.md#tanzuupdate) | **Post** /api/v1/tanzu/update | Update tanzu credentials
 *TicketAPI* | [**TicketCreate**](docs/TicketAPI.md#ticketcreate) | **Post** /api/v1/ticket/create | Create ticket
-*TicketAPI* | [**TicketDelete**](docs/TicketAPI.md#ticketdelete) | **Delete** /api/v1/ticket/delete/{ticketId} | 
-*TicketAPI* | [**TicketDeleteMessage**](docs/TicketAPI.md#ticketdeletemessage) | **Delete** /api/v1/ticket/delete/message/{messageId} | 
+*TicketAPI* | [**TicketDelete**](docs/TicketAPI.md#ticketdelete) | **Delete** /api/v1/ticket/delete/{ticketId} | Delete ticket
+*TicketAPI* | [**TicketDeleteMessage**](docs/TicketAPI.md#ticketdeletemessage) | **Delete** /api/v1/ticket/delete/message/{messageId} | Delete ticket message
 *TicketAPI* | [**TicketEdit**](docs/TicketAPI.md#ticketedit) | **Post** /api/v1/ticket/edit | Edit ticket
 *TicketAPI* | [**TicketEditMessage**](docs/TicketAPI.md#ticketeditmessage) | **Post** /api/v1/ticket/edit/message | Edit ticket message
 *TicketAPI* | [**TicketList**](docs/TicketAPI.md#ticketlist) | **Get** /api/v1/ticket/list | Retrieve list of tickets
-*TicketAPI* | [**TicketMessages**](docs/TicketAPI.md#ticketmessages) | **Get** /api/v1/ticket/{ticketId}/messages | 
+*TicketAPI* | [**TicketMessages**](docs/TicketAPI.md#ticketmessages) | **Get** /api/v1/ticket/{ticketId}/messages | Retrieve articles of ticket
 *TicketAPI* | [**TicketOpen**](docs/TicketAPI.md#ticketopen) | **Post** /api/v1/ticket/open | Open ticket
 *TicketAPI* | [**TicketReply**](docs/TicketAPI.md#ticketreply) | **Post** /api/v1/ticket/reply | Reply message
 *TicketAPI* | [**TicketSetPriority**](docs/TicketAPI.md#ticketsetpriority) | **Post** /api/v1/ticket/set-priority | Set priority
+*UserGroupAPI* | [**ProjectgroupsUnbindProjectGroup**](docs/UserGroupAPI.md#projectgroupsunbindprojectgroup) | **Post** /api/v1/projectgroups/unbind-project-group | Unbind project group from user group
 *UserGroupAPI* | [**UsergroupsBindProjectsGroup**](docs/UserGroupAPI.md#usergroupsbindprojectsgroup) | **Post** /api/v1/usergroups/bind-project-groups | Bind project groups
+*UserGroupAPI* | [**UsergroupsBindUser**](docs/UserGroupAPI.md#usergroupsbinduser) | **Post** /api/v1/usergroups/bind-user | Bind Users to group
 *UserGroupAPI* | [**UsergroupsCreate**](docs/UserGroupAPI.md#usergroupscreate) | **Post** /api/v1/usergroups/create | Add user groups
 *UserGroupAPI* | [**UsergroupsDelete**](docs/UserGroupAPI.md#usergroupsdelete) | **Delete** /api/v1/usergroups | Remove user group(s)
 *UserGroupAPI* | [**UsergroupsList**](docs/UserGroupAPI.md#usergroupslist) | **Get** /api/v1/usergroups/list | Retrieve list of user groups
-*UserGroupAPI* | [**UsergroupsListByProjectGroupId**](docs/UserGroupAPI.md#usergroupslistbyprojectgroupid) | **Get** /api/v1/usergroups/list-by-project-group-id/{projectGroupId} | Dropdown list
+*UserGroupAPI* | [**UsergroupsListByProjectGroupId**](docs/UserGroupAPI.md#usergroupslistbyprojectgroupid) | **Get** /api/v1/usergroups/list/{projectGroupId} | Dropdown list
+*UserGroupAPI* | [**UsergroupsUnbindUser**](docs/UserGroupAPI.md#usergroupsunbinduser) | **Post** /api/v1/usergroups/unbind-user | Unbind Users from group
 *UserGroupAPI* | [**UsergroupsUpdate**](docs/UserGroupAPI.md#usergroupsupdate) | **Put** /api/v1/usergroups/update/{userGroupId} | Update user groups
-*UserGroupAPI* | [**UsergroupsUserGroupUsers**](docs/UserGroupAPI.md#usergroupsusergroupusers) | **Get** /api/v1/usergroups/users/{userGroupId} | Dropdown list
-*UserProjectsAPI* | [**UserprojectsBindProjects**](docs/UserProjectsAPI.md#userprojectsbindprojects) | **Post** /api/v1/userprojects/bindprojects | Bind projects to user
-*UserProjectsAPI* | [**UserprojectsBindUsers**](docs/UserProjectsAPI.md#userprojectsbindusers) | **Post** /api/v1/userprojects/bindusers | Bind users to project
+*UserGroupAPI* | [**UsergroupsUserGroupUsers**](docs/UserGroupAPI.md#usergroupsusergroupusers) | **Get** /api/v1/usergroups/{userGroupId}/users | Retrieve list of users by user group id
 *UserProjectsAPI* | [**UserprojectsProjectListByUser**](docs/UserProjectsAPI.md#userprojectsprojectlistbyuser) | **Get** /api/v1/userprojects/projects/list | Projects list for user
 *UserProjectsAPI* | [**UserprojectsUserListByProject**](docs/UserProjectsAPI.md#userprojectsuserlistbyproject) | **Get** /api/v1/userprojects/users/list/{projectId} | Users list by project id
 *UserTokenAPI* | [**UsertokenAvailableEndpoints**](docs/UserTokenAPI.md#usertokenavailableendpoints) | **Get** /api/v1/usertoken/available-endpoints | Get available endpoint list
 *UserTokenAPI* | [**UsertokenBindUnbind**](docs/UserTokenAPI.md#usertokenbindunbind) | **Post** /api/v1/usertoken/bind-unbind | Bind and unbind endpoints
 *UserTokenAPI* | [**UsertokenCreate**](docs/UserTokenAPI.md#usertokencreate) | **Post** /api/v1/usertoken/create | Create a new user token
-*UserTokenAPI* | [**UsertokenDelete**](docs/UserTokenAPI.md#usertokendelete) | **Delete** /api/v1/usertoken/delete/{id} | 
+*UserTokenAPI* | [**UsertokenDelete**](docs/UserTokenAPI.md#usertokendelete) | **Delete** /api/v1/usertoken/delete/{id} | Delete user token
 *UserTokenAPI* | [**UsertokenList**](docs/UserTokenAPI.md#usertokenlist) | **Get** /api/v1/usertoken/list | Get user token list
+*UsersAPI* | [**UsersAddUserProjects**](docs/UsersAPI.md#usersadduserprojects) | **Post** /api/v1/users/{id}/projects | Add projects to user
 *UsersAPI* | [**UsersCreate**](docs/UsersAPI.md#userscreate) | **Post** /api/v1/users/create | Create user
-*UsersAPI* | [**UsersDelete**](docs/UsersAPI.md#usersdelete) | **Delete** /api/v1/users/{id} | 
+*UsersAPI* | [**UsersDelete**](docs/UsersAPI.md#usersdelete) | **Delete** /api/v1/users/{id} | Delete user
+*UsersAPI* | [**UsersDeleteUserProjects**](docs/UsersAPI.md#usersdeleteuserprojects) | **Put** /api/v1/users/{id}/projects | Delete projects from user
 *UsersAPI* | [**UsersList**](docs/UsersAPI.md#userslist) | **Get** /api/v1/users | Retrieve all users
 *UsersAPI* | [**UsersUpdateUser**](docs/UsersAPI.md#usersupdateuser) | **Post** /api/v1/users/update | Update user
 *UsersAPI* | [**UsersUserInfo**](docs/UsersAPI.md#usersuserinfo) | **Get** /api/v1/users/userinfo | Retrieve user info
+*VirtualClusterAPI* | [**VirtualClusterCreate**](docs/VirtualClusterAPI.md#virtualclustercreate) | **Post** /api/v1/virtual-cluster/create | Create virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterDelete**](docs/VirtualClusterAPI.md#virtualclusterdelete) | **Post** /api/v1/virtual-cluster/delete | Delete virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterList**](docs/VirtualClusterAPI.md#virtualclusterlist) | **Get** /api/v1/virtual-cluster/{parentProjectId} | Retrieve all vCluster by given project
+*VirtualClusterAPI* | [**VirtualClusterQuota**](docs/VirtualClusterAPI.md#virtualclusterquota) | **Get** /api/v1/virtual-cluster/quota/{projectId} | Retrieve vcluster quota details
+*VirtualClusterAPI* | [**VirtualClusterVisibility**](docs/VirtualClusterAPI.md#virtualclustervisibility) | **Get** /api/v1/virtual-cluster/visibility/{projectId} | Create button condition visibility
 *VsphereCloudCredentialAPI* | [**VsphereCreate**](docs/VsphereCloudCredentialAPI.md#vspherecreate) | **Post** /api/v1/vsphere/create | Add Vsphere credentials
 *VsphereCloudCredentialAPI* | [**VsphereDatacenterList**](docs/VsphereCloudCredentialAPI.md#vspheredatacenterlist) | **Post** /api/v1/vsphere/datacenter-list | Fetch Vsphere datacenter list
 *VsphereCloudCredentialAPI* | [**VsphereDatastoreList**](docs/VsphereCloudCredentialAPI.md#vspheredatastorelist) | **Post** /api/v1/vsphere/datastore-list | Fetch Vsphere datastore list
@@ -572,6 +570,12 @@ Class | Method | HTTP request | Description
 *ZadaraCloudCredentialAPI* | [**ZadaraUpdate**](docs/ZadaraCloudCredentialAPI.md#zadaraupdate) | **Post** /api/v1/zadara/update | Update zadara cloud credential
 *ZadaraCloudCredentialAPI* | [**ZadaraVolumeTypeList**](docs/ZadaraCloudCredentialAPI.md#zadaravolumetypelist) | **Get** /api/v1/zadara/volume-types | Retrieve volume type list
 *ZadaraCloudCredentialAPI* | [**ZadaraZonelist**](docs/ZadaraCloudCredentialAPI.md#zadarazonelist) | **Post** /api/v1/zadara/zones | Retrieve zadara zone list
+*ZededaCloudCredentialAPI* | [**ZededaCreate**](docs/ZededaCloudCredentialAPI.md#zededacreate) | **Post** /api/v1/zededa/create | Add Zededa credentials
+*ZededaCloudCredentialAPI* | [**ZededaEdgeNodes**](docs/ZededaCloudCredentialAPI.md#zededaedgenodes) | **Post** /api/v1/zededa/edge-nodes | Fetch edge nodes for zededa cloud credential
+*ZededaCloudCredentialAPI* | [**ZededaInterfaces**](docs/ZededaCloudCredentialAPI.md#zededainterfaces) | **Post** /api/v1/zededa/interfaces | Fetch interfaces for zededa cloud credential
+*ZededaCloudCredentialAPI* | [**ZededaList**](docs/ZededaCloudCredentialAPI.md#zededalist) | **Get** /api/v1/zededa/list | Retrieve list of Zededa cloud credentials
+*ZededaCloudCredentialAPI* | [**ZededaProjects**](docs/ZededaCloudCredentialAPI.md#zededaprojects) | **Post** /api/v1/zededa/projects | Fetch projects for zededa cloud credential
+*ZededaCloudCredentialAPI* | [**ZededaUpdateEdgeNodes**](docs/ZededaCloudCredentialAPI.md#zededaupdateedgenodes) | **Post** /api/v1/zededa/update/edge-nodes | Update zededa credentials
 
 
 ## Documentation For Models
@@ -583,6 +587,8 @@ Class | Method | HTTP request | Description
  - [AccessProfilesSearchList](docs/AccessProfilesSearchList.md)
  - [ActionStatus](docs/ActionStatus.md)
  - [ActionType](docs/ActionType.md)
+ - [AddOrganizationsToRuleDto](docs/AddOrganizationsToRuleDto.md)
+ - [AddPrometheusRulesToOrganizationDto](docs/AddPrometheusRulesToOrganizationDto.md)
  - [AiCredentials](docs/AiCredentials.md)
  - [AiCredentialsForOrganizationEntity](docs/AiCredentialsForOrganizationEntity.md)
  - [AiCredentialsListDto](docs/AiCredentialsListDto.md)
@@ -657,17 +663,11 @@ Class | Method | HTTP request | Description
  - [BindAppRepositoryCommand](docs/BindAppRepositoryCommand.md)
  - [BindFlavorToProjectCommand](docs/BindFlavorToProjectCommand.md)
  - [BindImageToProjectCommand](docs/BindImageToProjectCommand.md)
- - [BindOrganizationsToRuleDto](docs/BindOrganizationsToRuleDto.md)
  - [BindProjectGroupsToUserGroupCommand](docs/BindProjectGroupsToUserGroupCommand.md)
- - [BindProjectsCommand](docs/BindProjectsCommand.md)
- - [BindProjectsToCatalogCommand](docs/BindProjectsToCatalogCommand.md)
  - [BindProjectsToProjectGroupCommand](docs/BindProjectsToProjectGroupCommand.md)
- - [BindPrometheusOrganizationsCommand](docs/BindPrometheusOrganizationsCommand.md)
- - [BindRulesCommand](docs/BindRulesCommand.md)
- - [BindRulesToOrganizationDto](docs/BindRulesToOrganizationDto.md)
  - [BindUnbindEndpointToTokenCommand](docs/BindUnbindEndpointToTokenCommand.md)
  - [BindUserGroupsToProjectGroupCommand](docs/BindUserGroupsToProjectGroupCommand.md)
- - [BindUsersCommand](docs/BindUsersCommand.md)
+ - [BindUsersToUserGroupCommand](docs/BindUsersToUserGroupCommand.md)
  - [BoundFlavorsForProjectsList](docs/BoundFlavorsForProjectsList.md)
  - [BoundFlavorsForProjectsListDto](docs/BoundFlavorsForProjectsListDto.md)
  - [BoundImagesForProjectsList](docs/BoundImagesForProjectsList.md)
@@ -689,8 +689,6 @@ Class | Method | HTTP request | Description
  - [CatalogListDto](docs/CatalogListDto.md)
  - [CatalogLockManagementCommand](docs/CatalogLockManagementCommand.md)
  - [CatalogMakeDefaultCommand](docs/CatalogMakeDefaultCommand.md)
- - [Chart](docs/Chart.md)
- - [ChartSpec](docs/ChartSpec.md)
  - [CheckAwsCommand](docs/CheckAwsCommand.md)
  - [CheckAzureCommand](docs/CheckAzureCommand.md)
  - [CheckAzureCpuQuotaCommand](docs/CheckAzureCpuQuotaCommand.md)
@@ -708,13 +706,11 @@ Class | Method | HTTP request | Description
  - [CloudRole](docs/CloudRole.md)
  - [CloudStatus](docs/CloudStatus.md)
  - [CloudType](docs/CloudType.md)
- - [CommitStandAloneVmCommand](docs/CommitStandAloneVmCommand.md)
  - [CommonDropdownDto](docs/CommonDropdownDto.md)
  - [CommonExtendedDropdownDto](docs/CommonExtendedDropdownDto.md)
  - [CommonSearchKubernetesResponseData](docs/CommonSearchKubernetesResponseData.md)
  - [CommonSearchResponseData](docs/CommonSearchResponseData.md)
  - [CommonStringBasedDropdownDto](docs/CommonStringBasedDropdownDto.md)
- - [Condition](docs/Condition.md)
  - [ConfigMapDto](docs/ConfigMapDto.md)
  - [ConfigMapSearchCommand](docs/ConfigMapSearchCommand.md)
  - [ConfigMapSearchList](docs/ConfigMapSearchList.md)
@@ -755,12 +751,14 @@ Class | Method | HTTP request | Description
  - [CreateTicketCommand](docs/CreateTicketCommand.md)
  - [CreateUserCommand](docs/CreateUserCommand.md)
  - [CreateUserGroupCommand](docs/CreateUserGroupCommand.md)
+ - [CreateVirtualClusterCommand](docs/CreateVirtualClusterCommand.md)
  - [CreateVsphereCommand](docs/CreateVsphereCommand.md)
  - [CreateVsphereNetworkDto](docs/CreateVsphereNetworkDto.md)
  - [CreateZadaraCloudCommand](docs/CreateZadaraCloudCommand.md)
+ - [CreateZededaCommand](docs/CreateZededaCommand.md)
+ - [CreateZededaNetworkDto](docs/CreateZededaNetworkDto.md)
  - [CredentialChartDto](docs/CredentialChartDto.md)
  - [CredentialMakeDefaultCommand](docs/CredentialMakeDefaultCommand.md)
- - [CredentialsChart](docs/CredentialsChart.md)
  - [CronJobCommand](docs/CronJobCommand.md)
  - [CsvExporter](docs/CsvExporter.md)
  - [DaemonSetSearchCommand](docs/DaemonSetSearchCommand.md)
@@ -781,14 +779,11 @@ Class | Method | HTTP request | Description
  - [DeleteRepositoryCommand](docs/DeleteRepositoryCommand.md)
  - [DeleteRestoreCommand](docs/DeleteRestoreCommand.md)
  - [DeleteScheduleCommand](docs/DeleteScheduleCommand.md)
- - [DeleteServerCommand](docs/DeleteServerCommand.md)
  - [DeleteSlackConfigCommand](docs/DeleteSlackConfigCommand.md)
  - [DeleteSshUserCommand](docs/DeleteSshUserCommand.md)
  - [DeleteStandAloneProfileCommand](docs/DeleteStandAloneProfileCommand.md)
- - [DeleteStandAloneVmCommand](docs/DeleteStandAloneVmCommand.md)
- - [DeleteStandAloneVmDiskCommand](docs/DeleteStandAloneVmDiskCommand.md)
  - [DeleteUserGroupCommand](docs/DeleteUserGroupCommand.md)
- - [DeleteWholeProjectCommand](docs/DeleteWholeProjectCommand.md)
+ - [DeleteVirtualClusterCommand](docs/DeleteVirtualClusterCommand.md)
  - [DeploymentDto](docs/DeploymentDto.md)
  - [DeploymentSearchCommand](docs/DeploymentSearchCommand.md)
  - [DeploymentSearchList](docs/DeploymentSearchList.md)
@@ -809,10 +804,7 @@ Class | Method | HTTP request | Description
  - [DescribeServiceCommand](docs/DescribeServiceCommand.md)
  - [DescribeStorageClassCommand](docs/DescribeStorageClassCommand.md)
  - [DescribeStsCommand](docs/DescribeStsCommand.md)
- - [DisableAiCommand](docs/DisableAiCommand.md)
  - [DisableAutoscalingCommand](docs/DisableAutoscalingCommand.md)
- - [DisableBackupCommand](docs/DisableBackupCommand.md)
- - [DisableGatekeeperCommand](docs/DisableGatekeeperCommand.md)
  - [DnsCommand](docs/DnsCommand.md)
  - [DnsNtpAddressEditDto](docs/DnsNtpAddressEditDto.md)
  - [DnsServerCreateDto](docs/DnsServerCreateDto.md)
@@ -835,10 +827,7 @@ Class | Method | HTTP request | Description
  - [EditSecurityGroupCommand](docs/EditSecurityGroupCommand.md)
  - [EditSshUserCommand](docs/EditSshUserCommand.md)
  - [EditTicketCommand](docs/EditTicketCommand.md)
- - [EnableAiCommand](docs/EnableAiCommand.md)
  - [EnableAutoscalingCommand](docs/EnableAutoscalingCommand.md)
- - [EnableBackupCommand](docs/EnableBackupCommand.md)
- - [EnableGatekeeperCommand](docs/EnableGatekeeperCommand.md)
  - [EndpointElements](docs/EndpointElements.md)
  - [EstimatedInfracost](docs/EstimatedInfracost.md)
  - [ExportKubeConfigCommand](docs/ExportKubeConfigCommand.md)
@@ -846,7 +835,6 @@ Class | Method | HTTP request | Description
  - [FilteringElementDto](docs/FilteringElementDto.md)
  - [FlavorsListDto](docs/FlavorsListDto.md)
  - [ForgotPasswordCommand](docs/ForgotPasswordCommand.md)
- - [FromTemplateDto](docs/FromTemplateDto.md)
  - [FullSpotOperationCommand](docs/FullSpotOperationCommand.md)
  - [GetCatalogAppValueAutocompleteCommand](docs/GetCatalogAppValueAutocompleteCommand.md)
  - [GetCatalogAppValueCommand](docs/GetCatalogAppValueCommand.md)
@@ -861,11 +849,15 @@ Class | Method | HTTP request | Description
  - [GroupedBillingListQuery](docs/GroupedBillingListQuery.md)
  - [GroupedBillings](docs/GroupedBillings.md)
  - [GroupedPrometheusBillingListQuery](docs/GroupedPrometheusBillingListQuery.md)
+ - [HelmCondition](docs/HelmCondition.md)
  - [HelmCredentialCommand](docs/HelmCredentialCommand.md)
- - [HelmMetadata](docs/HelmMetadata.md)
+ - [HelmReleaseChart](docs/HelmReleaseChart.md)
+ - [HelmReleaseChartSpec](docs/HelmReleaseChartSpec.md)
  - [HelmReleaseDto](docs/HelmReleaseDto.md)
+ - [HelmReleaseMetaData](docs/HelmReleaseMetaData.md)
+ - [HelmReleaseSourceRef](docs/HelmReleaseSourceRef.md)
+ - [HelmReleaseSpec](docs/HelmReleaseSpec.md)
  - [HelmReleasesList](docs/HelmReleasesList.md)
- - [HelmSpec](docs/HelmSpec.md)
  - [HelmStatus](docs/HelmStatus.md)
  - [HypervisorListCommand](docs/HypervisorListCommand.md)
  - [ImageByIdCommand](docs/ImageByIdCommand.md)
@@ -880,8 +872,6 @@ Class | Method | HTTP request | Description
  - [Ingresses](docs/Ingresses.md)
  - [InstanceAppListDto](docs/InstanceAppListDto.md)
  - [InteractiveShellDto](docs/InteractiveShellDto.md)
- - [JsonNode](docs/JsonNode.md)
- - [JsonNodeOptions](docs/JsonNodeOptions.md)
  - [KeycloakCheckerCommand](docs/KeycloakCheckerCommand.md)
  - [KeycloakCreateCommand](docs/KeycloakCreateCommand.md)
  - [KeycloakDeleteCommand](docs/KeycloakDeleteCommand.md)
@@ -921,7 +911,6 @@ Class | Method | HTTP request | Description
  - [LoginCommand](docs/LoginCommand.md)
  - [LokiResponseDto](docs/LokiResponseDto.md)
  - [Metadata](docs/Metadata.md)
- - [MonitoringOperationsCommand](docs/MonitoringOperationsCommand.md)
  - [NetworkListCommand](docs/NetworkListCommand.md)
  - [NetworkPolicies](docs/NetworkPolicies.md)
  - [NetworkPolicyDto](docs/NetworkPolicyDto.md)
@@ -979,9 +968,11 @@ Class | Method | HTTP request | Description
  - [PackageAutocompleteDto](docs/PackageAutocompleteDto.md)
  - [Parameter](docs/Parameter.md)
  - [ParameterType](docs/ParameterType.md)
+ - [PartnerColorSettingsDto](docs/PartnerColorSettingsDto.md)
  - [PartnerDetailsDto](docs/PartnerDetailsDto.md)
  - [PartnerDetailsForOrganizationsDto](docs/PartnerDetailsForOrganizationsDto.md)
  - [PartnerDetailsForUserDto](docs/PartnerDetailsForUserDto.md)
+ - [PartnerImageSettingsDto](docs/PartnerImageSettingsDto.md)
  - [PartnersSearchCommand](docs/PartnersSearchCommand.md)
  - [PartnersSearchList](docs/PartnersSearchList.md)
  - [PartnersSearchResponseData](docs/PartnersSearchResponseData.md)
@@ -1004,7 +995,6 @@ Class | Method | HTTP request | Description
  - [PodsSearchCommand](docs/PodsSearchCommand.md)
  - [PodsSearchList](docs/PodsSearchList.md)
  - [ProblemDetails](docs/ProblemDetails.md)
- - [ProjectActionUpdateDto](docs/ProjectActionUpdateDto.md)
  - [ProjectActionVisibilityDto](docs/ProjectActionVisibilityDto.md)
  - [ProjectAlertsQuery](docs/ProjectAlertsQuery.md)
  - [ProjectAppDetailsDto](docs/ProjectAppDetailsDto.md)
@@ -1012,6 +1002,7 @@ Class | Method | HTTP request | Description
  - [ProjectAppList](docs/ProjectAppList.md)
  - [ProjectAppParamDto](docs/ProjectAppParamDto.md)
  - [ProjectAppParamsDto](docs/ProjectAppParamsDto.md)
+ - [ProjectCanAddVClusterDto](docs/ProjectCanAddVClusterDto.md)
  - [ProjectCatalogDto](docs/ProjectCatalogDto.md)
  - [ProjectChartDto](docs/ProjectChartDto.md)
  - [ProjectCommonRecordDto](docs/ProjectCommonRecordDto.md)
@@ -1027,7 +1018,6 @@ Class | Method | HTTP request | Description
  - [ProjectHealth](docs/ProjectHealth.md)
  - [ProjectListDetailDto](docs/ProjectListDetailDto.md)
  - [ProjectListDto](docs/ProjectListDto.md)
- - [ProjectListForProjectGroupDto](docs/ProjectListForProjectGroupDto.md)
  - [ProjectLockManagerCommand](docs/ProjectLockManagerCommand.md)
  - [ProjectMaintenanceModeCommand](docs/ProjectMaintenanceModeCommand.md)
  - [ProjectQuotaList](docs/ProjectQuotaList.md)
@@ -1048,9 +1038,7 @@ Class | Method | HTTP request | Description
  - [PrometheusDashboardListDto](docs/PrometheusDashboardListDto.md)
  - [PrometheusDashboardUpdateCommand](docs/PrometheusDashboardUpdateCommand.md)
  - [PrometheusEntity](docs/PrometheusEntity.md)
- - [PrometheusLabelDeleteDto](docs/PrometheusLabelDeleteDto.md)
  - [PrometheusLabelListDto](docs/PrometheusLabelListDto.md)
- - [PrometheusLabelUpdateDto](docs/PrometheusLabelUpdateDto.md)
  - [PrometheusMetricsCommand](docs/PrometheusMetricsCommand.md)
  - [PrometheusOrganizationDiscountDto](docs/PrometheusOrganizationDiscountDto.md)
  - [PrometheusRuleListDto](docs/PrometheusRuleListDto.md)
@@ -1077,12 +1065,10 @@ Class | Method | HTTP request | Description
  - [RebootStandAloneVmCommand](docs/RebootStandAloneVmCommand.md)
  - [RefreshTokenCommand](docs/RefreshTokenCommand.md)
  - [RegionListCommand](docs/RegionListCommand.md)
- - [RepairStandAloneVmCommand](docs/RepairStandAloneVmCommand.md)
  - [ReplyTicketCommand](docs/ReplyTicketCommand.md)
  - [Repository](docs/Repository.md)
  - [ResetPasswordCommand](docs/ResetPasswordCommand.md)
  - [ResetServerStatusCommand](docs/ResetServerStatusCommand.md)
- - [ResetStandAloneVmDiskStatusCommand](docs/ResetStandAloneVmDiskStatusCommand.md)
  - [Resource](docs/Resource.md)
  - [ResourcePoolListCommand](docs/ResourcePoolListCommand.md)
  - [ResourcePoolSummary](docs/ResourcePoolSummary.md)
@@ -1122,7 +1108,6 @@ Class | Method | HTTP request | Description
  - [SlackConfigurationDto](docs/SlackConfigurationDto.md)
  - [SlackConfigurationList](docs/SlackConfigurationList.md)
  - [SlackType](docs/SlackType.md)
- - [SourceRef](docs/SourceRef.md)
  - [SpotVmOperationCommand](docs/SpotVmOperationCommand.md)
  - [SpotWorkerOperationCommand](docs/SpotWorkerOperationCommand.md)
  - [SshKeyCommand](docs/SshKeyCommand.md)
@@ -1175,17 +1160,19 @@ Class | Method | HTTP request | Description
  - [ToggleKeycloakCommand](docs/ToggleKeycloakCommand.md)
  - [UnbindAppRepositoryCommand](docs/UnbindAppRepositoryCommand.md)
  - [UnbindFlavorFromProjectCommand](docs/UnbindFlavorFromProjectCommand.md)
+ - [UnbindProjectFromProjectGroupCommand](docs/UnbindProjectFromProjectGroupCommand.md)
+ - [UnbindProjectGroupFromUserGroupCommand](docs/UnbindProjectGroupFromUserGroupCommand.md)
+ - [UnbindUserFromUserGroupCommand](docs/UnbindUserFromUserGroupCommand.md)
+ - [UnbindUserGroupFromProjectGroupCommand](docs/UnbindUserGroupFromProjectGroupCommand.md)
  - [UnshelveStandaloneVmCommand](docs/UnshelveStandaloneVmCommand.md)
  - [UpdateAccessProfileDto](docs/UpdateAccessProfileDto.md)
  - [UpdateAlertingProfileCommand](docs/UpdateAlertingProfileCommand.md)
  - [UpdateAwsCommand](docs/UpdateAwsCommand.md)
  - [UpdateAzureCommand](docs/UpdateAzureCommand.md)
- - [UpdateCatalogDto](docs/UpdateCatalogDto.md)
+ - [UpdateEdgeNodesCommand](docs/UpdateEdgeNodesCommand.md)
  - [UpdateHypervisorsCommand](docs/UpdateHypervisorsCommand.md)
  - [UpdateOpenStackCommand](docs/UpdateOpenStackCommand.md)
  - [UpdateOrganizationCommand](docs/UpdateOrganizationCommand.md)
- - [UpdateProjectUserDto](docs/UpdateProjectUserDto.md)
- - [UpdateProjectUserGroupDto](docs/UpdateProjectUserGroupDto.md)
  - [UpdateProxmoxCommand](docs/UpdateProxmoxCommand.md)
  - [UpdateQuotaCommand](docs/UpdateQuotaCommand.md)
  - [UpdateSlackConfigurationDto](docs/UpdateSlackConfigurationDto.md)
@@ -1194,8 +1181,6 @@ Class | Method | HTTP request | Description
  - [UpdateTanzuCommand](docs/UpdateTanzuCommand.md)
  - [UpdateUserCommand](docs/UpdateUserCommand.md)
  - [UpdateUserGroupDto](docs/UpdateUserGroupDto.md)
- - [UpdateUserProjectDto](docs/UpdateUserProjectDto.md)
- - [UpdateUserProjectGroupDto](docs/UpdateUserProjectGroupDto.md)
  - [UpdateVsphereCommand](docs/UpdateVsphereCommand.md)
  - [UpdateVsphereHypervisorsCommand](docs/UpdateVsphereHypervisorsCommand.md)
  - [UpdateZadaraCommand](docs/UpdateZadaraCommand.md)
@@ -1206,7 +1191,6 @@ Class | Method | HTTP request | Description
  - [UserGroupEntityListDto](docs/UserGroupEntityListDto.md)
  - [UserGroupList](docs/UserGroupList.md)
  - [UserListDto](docs/UserListDto.md)
- - [UserListForUserGroupDto](docs/UserListForUserGroupDto.md)
  - [UserResourceChartDto](docs/UserResourceChartDto.md)
  - [UserRole](docs/UserRole.md)
  - [UserTokenCreateCommand](docs/UserTokenCreateCommand.md)
@@ -1216,6 +1200,9 @@ Class | Method | HTTP request | Description
  - [UsersSearchCommand](docs/UsersSearchCommand.md)
  - [UsersSearchList](docs/UsersSearchList.md)
  - [UsersSearchResponseData](docs/UsersSearchResponseData.md)
+ - [VClusterActionVisibilityDto](docs/VClusterActionVisibilityDto.md)
+ - [VClusterList](docs/VClusterList.md)
+ - [VClusterListDto](docs/VClusterListDto.md)
  - [ValidateVsphereCommand](docs/ValidateVsphereCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)
  - [VmConsoleScreenshotCommand](docs/VmConsoleScreenshotCommand.md)
@@ -1235,6 +1222,14 @@ Class | Method | HTTP request | Description
  - [ZadaraCredentialList](docs/ZadaraCredentialList.md)
  - [ZadaraCredentialsListDto](docs/ZadaraCredentialsListDto.md)
  - [ZadaraRegionListCommand](docs/ZadaraRegionListCommand.md)
+ - [ZededaCheckerCommand](docs/ZededaCheckerCommand.md)
+ - [ZededaEdgeNodesCommand](docs/ZededaEdgeNodesCommand.md)
+ - [ZededaFlavorList](docs/ZededaFlavorList.md)
+ - [ZededaInterfaceCommand](docs/ZededaInterfaceCommand.md)
+ - [ZededaList](docs/ZededaList.md)
+ - [ZededaListDto](docs/ZededaListDto.md)
+ - [ZededaNetworkListDto](docs/ZededaNetworkListDto.md)
+ - [ZededaProjectsCommand](docs/ZededaProjectsCommand.md)
 
 
 ## Documentation For Authorization

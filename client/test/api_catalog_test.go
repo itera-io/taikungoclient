@@ -22,11 +22,13 @@ func Test_taikuncore_CatalogAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test CatalogAPIService CatalogBindProject", func(t *testing.T) {
+	t.Run("Test CatalogAPIService CatalogAddProject", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CatalogAPI.CatalogBindProject(context.Background()).Execute()
+		var id int32
+
+		httpRes, err := apiClient.CatalogAPI.CatalogAddProject(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -51,6 +53,19 @@ func Test_taikuncore_CatalogAPIService(t *testing.T) {
 		var id int32
 
 		httpRes, err := apiClient.CatalogAPI.CatalogDelete(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CatalogAPIService CatalogDeleteProject", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		httpRes, err := apiClient.CatalogAPI.CatalogDeleteProject(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

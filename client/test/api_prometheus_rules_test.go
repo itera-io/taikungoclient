@@ -22,11 +22,13 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test PrometheusRulesAPIService PrometheusrulesBindOrganizations", func(t *testing.T) {
+	t.Run("Test PrometheusRulesAPIService PrometheusrulesAddOrganizations", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesBindOrganizations(context.Background()).Execute()
+		var id int32
+
+		httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesAddOrganizations(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -52,6 +54,19 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 		var id int32
 
 		httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesDelete(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PrometheusRulesAPIService PrometheusrulesDeleteOrganizations", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesDeleteOrganizations(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

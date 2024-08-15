@@ -37,6 +37,8 @@ type PartnerDetailsDto struct {
 	RequiredUserApproval *bool `json:"requiredUserApproval,omitempty"`
 	Organizations []CommonDropdownDto `json:"organizations,omitempty"`
 	WhiteListDomains []WhiteListDomainDto `json:"whiteListDomains,omitempty"`
+	PartnerColorSettings *PartnerColorSettingsDto `json:"partnerColorSettings,omitempty"`
+	PartnerImageSettings *PartnerImageSettingsDto `json:"partnerImageSettings,omitempty"`
 }
 
 // NewPartnerDetailsDto instantiates a new PartnerDetailsDto object
@@ -712,6 +714,70 @@ func (o *PartnerDetailsDto) SetWhiteListDomains(v []WhiteListDomainDto) {
 	o.WhiteListDomains = v
 }
 
+// GetPartnerColorSettings returns the PartnerColorSettings field value if set, zero value otherwise.
+func (o *PartnerDetailsDto) GetPartnerColorSettings() PartnerColorSettingsDto {
+	if o == nil || IsNil(o.PartnerColorSettings) {
+		var ret PartnerColorSettingsDto
+		return ret
+	}
+	return *o.PartnerColorSettings
+}
+
+// GetPartnerColorSettingsOk returns a tuple with the PartnerColorSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PartnerDetailsDto) GetPartnerColorSettingsOk() (*PartnerColorSettingsDto, bool) {
+	if o == nil || IsNil(o.PartnerColorSettings) {
+		return nil, false
+	}
+	return o.PartnerColorSettings, true
+}
+
+// HasPartnerColorSettings returns a boolean if a field has been set.
+func (o *PartnerDetailsDto) HasPartnerColorSettings() bool {
+	if o != nil && !IsNil(o.PartnerColorSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerColorSettings gets a reference to the given PartnerColorSettingsDto and assigns it to the PartnerColorSettings field.
+func (o *PartnerDetailsDto) SetPartnerColorSettings(v PartnerColorSettingsDto) {
+	o.PartnerColorSettings = &v
+}
+
+// GetPartnerImageSettings returns the PartnerImageSettings field value if set, zero value otherwise.
+func (o *PartnerDetailsDto) GetPartnerImageSettings() PartnerImageSettingsDto {
+	if o == nil || IsNil(o.PartnerImageSettings) {
+		var ret PartnerImageSettingsDto
+		return ret
+	}
+	return *o.PartnerImageSettings
+}
+
+// GetPartnerImageSettingsOk returns a tuple with the PartnerImageSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PartnerDetailsDto) GetPartnerImageSettingsOk() (*PartnerImageSettingsDto, bool) {
+	if o == nil || IsNil(o.PartnerImageSettings) {
+		return nil, false
+	}
+	return o.PartnerImageSettings, true
+}
+
+// HasPartnerImageSettings returns a boolean if a field has been set.
+func (o *PartnerDetailsDto) HasPartnerImageSettings() bool {
+	if o != nil && !IsNil(o.PartnerImageSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerImageSettings gets a reference to the given PartnerImageSettingsDto and assigns it to the PartnerImageSettings field.
+func (o *PartnerDetailsDto) SetPartnerImageSettings(v PartnerImageSettingsDto) {
+	o.PartnerImageSettings = &v
+}
+
 func (o PartnerDetailsDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -772,6 +838,12 @@ func (o PartnerDetailsDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.WhiteListDomains != nil {
 		toSerialize["whiteListDomains"] = o.WhiteListDomains
+	}
+	if !IsNil(o.PartnerColorSettings) {
+		toSerialize["partnerColorSettings"] = o.PartnerColorSettings
+	}
+	if !IsNil(o.PartnerImageSettings) {
+		toSerialize["partnerImageSettings"] = o.PartnerImageSettings
 	}
 	return toSerialize, nil
 }

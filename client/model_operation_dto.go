@@ -22,7 +22,6 @@ var _ MappedNullable = &OperationDto{}
 type OperationDto struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Operation NullableString `json:"operation,omitempty"`
-	EstimatedTime NullableString `json:"estimatedTime,omitempty"`
 }
 
 // NewOperationDto instantiates a new OperationDto object
@@ -116,48 +115,6 @@ func (o *OperationDto) UnsetOperation() {
 	o.Operation.Unset()
 }
 
-// GetEstimatedTime returns the EstimatedTime field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OperationDto) GetEstimatedTime() string {
-	if o == nil || IsNil(o.EstimatedTime.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.EstimatedTime.Get()
-}
-
-// GetEstimatedTimeOk returns a tuple with the EstimatedTime field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OperationDto) GetEstimatedTimeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.EstimatedTime.Get(), o.EstimatedTime.IsSet()
-}
-
-// HasEstimatedTime returns a boolean if a field has been set.
-func (o *OperationDto) HasEstimatedTime() bool {
-	if o != nil && o.EstimatedTime.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEstimatedTime gets a reference to the given NullableString and assigns it to the EstimatedTime field.
-func (o *OperationDto) SetEstimatedTime(v string) {
-	o.EstimatedTime.Set(&v)
-}
-// SetEstimatedTimeNil sets the value for EstimatedTime to be an explicit nil
-func (o *OperationDto) SetEstimatedTimeNil() {
-	o.EstimatedTime.Set(nil)
-}
-
-// UnsetEstimatedTime ensures that no value is present for EstimatedTime, not even an explicit nil
-func (o *OperationDto) UnsetEstimatedTime() {
-	o.EstimatedTime.Unset()
-}
-
 func (o OperationDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -173,9 +130,6 @@ func (o OperationDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Operation.IsSet() {
 		toSerialize["operation"] = o.Operation.Get()
-	}
-	if o.EstimatedTime.IsSet() {
-		toSerialize["estimatedTime"] = o.EstimatedTime.Get()
 	}
 	return toSerialize, nil
 }

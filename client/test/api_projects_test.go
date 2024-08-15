@@ -22,6 +22,19 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test ProjectsAPIService ProjectsAddProjectUsers", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var id int32
+
+		httpRes, err := apiClient.ProjectsAPI.ProjectsAddProjectUsers(context.Background(), id).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectsAPIService ProjectsAiAnalyzer", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -48,15 +61,16 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectsAPIService ProjectsCommit", func(t *testing.T) {
+	t.Run("Test ProjectsAPIService ProjectsCanAddVcluster", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var projectId int32
 
-		httpRes, err := apiClient.ProjectsAPI.ProjectsCommit(context.Background(), projectId).Execute()
+		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsCanAddVcluster(context.Background(), projectId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -84,11 +98,13 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectsAPIService ProjectsDeleteWholeProject", func(t *testing.T) {
+	t.Run("Test ProjectsAPIService ProjectsDeleteProjectUsers", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.ProjectsAPI.ProjectsDeleteWholeProject(context.Background()).Execute()
+		var id int32
+
+		httpRes, err := apiClient.ProjectsAPI.ProjectsDeleteProjectUsers(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -151,17 +167,6 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ProjectsAPIService ProjectsMonitoring", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.ProjectsAPI.ProjectsMonitoring(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ProjectsAPIService ProjectsPrometheusMetrics", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -170,19 +175,6 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectsAPIService ProjectsRepair", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var projectId int32
-
-		httpRes, err := apiClient.ProjectsAPI.ProjectsRepair(context.Background(), projectId).Execute()
-
-		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -214,19 +206,6 @@ func Test_taikuncore_ProjectsAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ProjectsAPI.ProjectsToggleSpotWorkers(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ProjectsAPIService ProjectsUpgrade", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var projectId int32
-
-		httpRes, err := apiClient.ProjectsAPI.ProjectsUpgrade(context.Background(), projectId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

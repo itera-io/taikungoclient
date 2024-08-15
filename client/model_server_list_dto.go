@@ -27,13 +27,13 @@ type ServerListDto struct {
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 	IpAddress NullableString `json:"ipAddress,omitempty"`
-	DiskSize *int64 `json:"diskSize,omitempty"`
+	DiskSize *float64 `json:"diskSize,omitempty"`
 	KubernetesHealth NullableString `json:"kubernetesHealth,omitempty"`
 	GoogleMachineType NullableString `json:"googleMachineType,omitempty"`
 	TanzuFlavor NullableString `json:"tanzuFlavor,omitempty"`
 	ProxmoxFlavor NullableString `json:"proxmoxFlavor,omitempty"`
 	Cpu *int32 `json:"cpu,omitempty"`
-	Ram *int64 `json:"ram,omitempty"`
+	Ram *float64 `json:"ram,omitempty"`
 	Role *CloudRole `json:"role,omitempty"`
 	Status NullableString `json:"status,omitempty"`
 	CreatedAt NullableString `json:"createdAt,omitempty"`
@@ -346,9 +346,9 @@ func (o *ServerListDto) UnsetIpAddress() {
 }
 
 // GetDiskSize returns the DiskSize field value if set, zero value otherwise.
-func (o *ServerListDto) GetDiskSize() int64 {
+func (o *ServerListDto) GetDiskSize() float64 {
 	if o == nil || IsNil(o.DiskSize) {
-		var ret int64
+		var ret float64
 		return ret
 	}
 	return *o.DiskSize
@@ -356,7 +356,7 @@ func (o *ServerListDto) GetDiskSize() int64 {
 
 // GetDiskSizeOk returns a tuple with the DiskSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerListDto) GetDiskSizeOk() (*int64, bool) {
+func (o *ServerListDto) GetDiskSizeOk() (*float64, bool) {
 	if o == nil || IsNil(o.DiskSize) {
 		return nil, false
 	}
@@ -372,8 +372,8 @@ func (o *ServerListDto) HasDiskSize() bool {
 	return false
 }
 
-// SetDiskSize gets a reference to the given int64 and assigns it to the DiskSize field.
-func (o *ServerListDto) SetDiskSize(v int64) {
+// SetDiskSize gets a reference to the given float64 and assigns it to the DiskSize field.
+func (o *ServerListDto) SetDiskSize(v float64) {
 	o.DiskSize = &v
 }
 
@@ -578,9 +578,9 @@ func (o *ServerListDto) SetCpu(v int32) {
 }
 
 // GetRam returns the Ram field value if set, zero value otherwise.
-func (o *ServerListDto) GetRam() int64 {
+func (o *ServerListDto) GetRam() float64 {
 	if o == nil || IsNil(o.Ram) {
-		var ret int64
+		var ret float64
 		return ret
 	}
 	return *o.Ram
@@ -588,7 +588,7 @@ func (o *ServerListDto) GetRam() int64 {
 
 // GetRamOk returns a tuple with the Ram field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerListDto) GetRamOk() (*int64, bool) {
+func (o *ServerListDto) GetRamOk() (*float64, bool) {
 	if o == nil || IsNil(o.Ram) {
 		return nil, false
 	}
@@ -604,8 +604,8 @@ func (o *ServerListDto) HasRam() bool {
 	return false
 }
 
-// SetRam gets a reference to the given int64 and assigns it to the Ram field.
-func (o *ServerListDto) SetRam(v int64) {
+// SetRam gets a reference to the given float64 and assigns it to the Ram field.
+func (o *ServerListDto) SetRam(v float64) {
 	o.Ram = &v
 }
 

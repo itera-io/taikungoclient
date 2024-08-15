@@ -26,9 +26,9 @@ type PrometheusRuleListDto struct {
 	UserName NullableString `json:"userName,omitempty"`
 	Url NullableString `json:"url,omitempty"`
 	MetricName NullableString `json:"metricName,omitempty"`
-	Labels []PrometheusLabelUpdateDto `json:"labels,omitempty"`
+	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
 	BoundOrganizations []PrometheusOrganizationDiscountDto `json:"boundOrganizations,omitempty"`
-	Type NullableString `json:"type,omitempty"`
+	Type *PrometheusType `json:"type,omitempty"`
 	Price *float64 `json:"price,omitempty"`
 	BillingStartDate NullableString `json:"billingStartDate,omitempty"`
 	CreatedAt NullableString `json:"createdAt,omitempty"`
@@ -299,9 +299,9 @@ func (o *PrometheusRuleListDto) UnsetMetricName() {
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PrometheusRuleListDto) GetLabels() []PrometheusLabelUpdateDto {
+func (o *PrometheusRuleListDto) GetLabels() []PrometheusLabelListDto {
 	if o == nil {
-		var ret []PrometheusLabelUpdateDto
+		var ret []PrometheusLabelListDto
 		return ret
 	}
 	return o.Labels
@@ -310,7 +310,7 @@ func (o *PrometheusRuleListDto) GetLabels() []PrometheusLabelUpdateDto {
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PrometheusRuleListDto) GetLabelsOk() ([]PrometheusLabelUpdateDto, bool) {
+func (o *PrometheusRuleListDto) GetLabelsOk() ([]PrometheusLabelListDto, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
@@ -326,8 +326,8 @@ func (o *PrometheusRuleListDto) HasLabels() bool {
 	return false
 }
 
-// SetLabels gets a reference to the given []PrometheusLabelUpdateDto and assigns it to the Labels field.
-func (o *PrometheusRuleListDto) SetLabels(v []PrometheusLabelUpdateDto) {
+// SetLabels gets a reference to the given []PrometheusLabelListDto and assigns it to the Labels field.
+func (o *PrometheusRuleListDto) SetLabels(v []PrometheusLabelListDto) {
 	o.Labels = v
 }
 
@@ -364,46 +364,36 @@ func (o *PrometheusRuleListDto) SetBoundOrganizations(v []PrometheusOrganization
 	o.BoundOrganizations = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PrometheusRuleListDto) GetType() string {
-	if o == nil || IsNil(o.Type.Get()) {
-		var ret string
+// GetType returns the Type field value if set, zero value otherwise.
+func (o *PrometheusRuleListDto) GetType() PrometheusType {
+	if o == nil || IsNil(o.Type) {
+		var ret PrometheusType
 		return ret
 	}
-	return *o.Type.Get()
+	return *o.Type
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PrometheusRuleListDto) GetTypeOk() (*string, bool) {
-	if o == nil {
+func (o *PrometheusRuleListDto) GetTypeOk() (*PrometheusType, bool) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return o.Type.Get(), o.Type.IsSet()
+	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *PrometheusRuleListDto) HasType() bool {
-	if o != nil && o.Type.IsSet() {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given NullableString and assigns it to the Type field.
-func (o *PrometheusRuleListDto) SetType(v string) {
-	o.Type.Set(&v)
-}
-// SetTypeNil sets the value for Type to be an explicit nil
-func (o *PrometheusRuleListDto) SetTypeNil() {
-	o.Type.Set(nil)
-}
-
-// UnsetType ensures that no value is present for Type, not even an explicit nil
-func (o *PrometheusRuleListDto) UnsetType() {
-	o.Type.Unset()
+// SetType gets a reference to the given PrometheusType and assigns it to the Type field.
+func (o *PrometheusRuleListDto) SetType(v PrometheusType) {
+	o.Type = &v
 }
 
 // GetPrice returns the Price field value if set, zero value otherwise.
@@ -746,8 +736,8 @@ func (o PrometheusRuleListDto) ToMap() (map[string]interface{}, error) {
 	if o.BoundOrganizations != nil {
 		toSerialize["boundOrganizations"] = o.BoundOrganizations
 	}
-	if o.Type.IsSet() {
-		toSerialize["type"] = o.Type.Get()
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price

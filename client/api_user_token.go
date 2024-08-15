@@ -610,7 +610,7 @@ func (r ApiUsertokenDeleteRequest) Execute() (*http.Response, error) {
 }
 
 /*
-UsertokenDelete Method for UsertokenDelete
+UsertokenDelete Delete user token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id

@@ -57,8 +57,6 @@ type APIClient struct {
 
 	AiCredentialsAPI *AiCredentialsAPIService
 
-	AiManagementAPI *AiManagementAPIService
-
 	AlertingIntegrationsAPI *AlertingIntegrationsAPIService
 
 	AlertingProfilesAPI *AlertingProfilesAPIService
@@ -129,8 +127,6 @@ type APIClient struct {
 
 	PreDefinedQueriesAPI *PreDefinedQueriesAPIService
 
-	ProjectActionsAPI *ProjectActionsAPIService
-
 	ProjectAppParamsAPI *ProjectAppParamsAPIService
 
 	ProjectAppsAPI *ProjectAppsAPIService
@@ -146,8 +142,6 @@ type APIClient struct {
 	ProjectsAPI *ProjectsAPIService
 
 	PrometheusBillingsAPI *PrometheusBillingsAPIService
-
-	PrometheusOrganizationsAPI *PrometheusOrganizationsAPIService
 
 	PrometheusRulesAPI *PrometheusRulesAPIService
 
@@ -185,9 +179,13 @@ type APIClient struct {
 
 	UsersAPI *UsersAPIService
 
+	VirtualClusterAPI *VirtualClusterAPIService
+
 	VsphereCloudCredentialAPI *VsphereCloudCredentialAPIService
 
 	ZadaraCloudCredentialAPI *ZadaraCloudCredentialAPIService
+
+	ZededaCloudCredentialAPI *ZededaCloudCredentialAPIService
 }
 
 type service struct {
@@ -209,7 +207,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AWSCloudCredentialAPI = (*AWSCloudCredentialAPIService)(&c.common)
 	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
 	c.AiCredentialsAPI = (*AiCredentialsAPIService)(&c.common)
-	c.AiManagementAPI = (*AiManagementAPIService)(&c.common)
 	c.AlertingIntegrationsAPI = (*AlertingIntegrationsAPIService)(&c.common)
 	c.AlertingProfilesAPI = (*AlertingProfilesAPIService)(&c.common)
 	c.AllowedHostAPI = (*AllowedHostAPIService)(&c.common)
@@ -245,7 +242,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PackageAPI = (*PackageAPIService)(&c.common)
 	c.PaymentsAPI = (*PaymentsAPIService)(&c.common)
 	c.PreDefinedQueriesAPI = (*PreDefinedQueriesAPIService)(&c.common)
-	c.ProjectActionsAPI = (*ProjectActionsAPIService)(&c.common)
 	c.ProjectAppParamsAPI = (*ProjectAppParamsAPIService)(&c.common)
 	c.ProjectAppsAPI = (*ProjectAppsAPIService)(&c.common)
 	c.ProjectGroupsAPI = (*ProjectGroupsAPIService)(&c.common)
@@ -254,7 +250,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectTemplatesAPI = (*ProjectTemplatesAPIService)(&c.common)
 	c.ProjectsAPI = (*ProjectsAPIService)(&c.common)
 	c.PrometheusBillingsAPI = (*PrometheusBillingsAPIService)(&c.common)
-	c.PrometheusOrganizationsAPI = (*PrometheusOrganizationsAPIService)(&c.common)
 	c.PrometheusRulesAPI = (*PrometheusRulesAPIService)(&c.common)
 	c.ProxmoxCloudCredentialAPI = (*ProxmoxCloudCredentialAPIService)(&c.common)
 	c.S3CredentialsAPI = (*S3CredentialsAPIService)(&c.common)
@@ -273,8 +268,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UserProjectsAPI = (*UserProjectsAPIService)(&c.common)
 	c.UserTokenAPI = (*UserTokenAPIService)(&c.common)
 	c.UsersAPI = (*UsersAPIService)(&c.common)
+	c.VirtualClusterAPI = (*VirtualClusterAPIService)(&c.common)
 	c.VsphereCloudCredentialAPI = (*VsphereCloudCredentialAPIService)(&c.common)
 	c.ZadaraCloudCredentialAPI = (*ZadaraCloudCredentialAPIService)(&c.common)
+	c.ZededaCloudCredentialAPI = (*ZededaCloudCredentialAPIService)(&c.common)
 
 	return c
 }

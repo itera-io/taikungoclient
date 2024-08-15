@@ -24,11 +24,7 @@ type RuleForUpdateDto struct {
 	MetricName NullableString `json:"metricName,omitempty"`
 	Type *PrometheusType `json:"type,omitempty"`
 	Price NullableFloat64 `json:"price,omitempty"`
-	LabelsToAdd []PrometheusLabelListDto `json:"labelsToAdd,omitempty"`
-	LabelsToDelete []PrometheusLabelDeleteDto `json:"labelsToDelete,omitempty"`
-	LabelsToUpdate []PrometheusLabelUpdateDto `json:"labelsToUpdate,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	RuleDiscountRate NullableInt32 `json:"ruleDiscountRate,omitempty"`
+	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
 	OperationCredentialId NullableInt32 `json:"operationCredentialId,omitempty"`
 }
 
@@ -207,187 +203,37 @@ func (o *RuleForUpdateDto) UnsetPrice() {
 	o.Price.Unset()
 }
 
-// GetLabelsToAdd returns the LabelsToAdd field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RuleForUpdateDto) GetLabelsToAdd() []PrometheusLabelListDto {
+// GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RuleForUpdateDto) GetLabels() []PrometheusLabelListDto {
 	if o == nil {
 		var ret []PrometheusLabelListDto
 		return ret
 	}
-	return o.LabelsToAdd
+	return o.Labels
 }
 
-// GetLabelsToAddOk returns a tuple with the LabelsToAdd field value if set, nil otherwise
+// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RuleForUpdateDto) GetLabelsToAddOk() ([]PrometheusLabelListDto, bool) {
-	if o == nil || IsNil(o.LabelsToAdd) {
+func (o *RuleForUpdateDto) GetLabelsOk() ([]PrometheusLabelListDto, bool) {
+	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
-	return o.LabelsToAdd, true
+	return o.Labels, true
 }
 
-// HasLabelsToAdd returns a boolean if a field has been set.
-func (o *RuleForUpdateDto) HasLabelsToAdd() bool {
-	if o != nil && !IsNil(o.LabelsToAdd) {
+// HasLabels returns a boolean if a field has been set.
+func (o *RuleForUpdateDto) HasLabels() bool {
+	if o != nil && !IsNil(o.Labels) {
 		return true
 	}
 
 	return false
 }
 
-// SetLabelsToAdd gets a reference to the given []PrometheusLabelListDto and assigns it to the LabelsToAdd field.
-func (o *RuleForUpdateDto) SetLabelsToAdd(v []PrometheusLabelListDto) {
-	o.LabelsToAdd = v
-}
-
-// GetLabelsToDelete returns the LabelsToDelete field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RuleForUpdateDto) GetLabelsToDelete() []PrometheusLabelDeleteDto {
-	if o == nil {
-		var ret []PrometheusLabelDeleteDto
-		return ret
-	}
-	return o.LabelsToDelete
-}
-
-// GetLabelsToDeleteOk returns a tuple with the LabelsToDelete field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RuleForUpdateDto) GetLabelsToDeleteOk() ([]PrometheusLabelDeleteDto, bool) {
-	if o == nil || IsNil(o.LabelsToDelete) {
-		return nil, false
-	}
-	return o.LabelsToDelete, true
-}
-
-// HasLabelsToDelete returns a boolean if a field has been set.
-func (o *RuleForUpdateDto) HasLabelsToDelete() bool {
-	if o != nil && !IsNil(o.LabelsToDelete) {
-		return true
-	}
-
-	return false
-}
-
-// SetLabelsToDelete gets a reference to the given []PrometheusLabelDeleteDto and assigns it to the LabelsToDelete field.
-func (o *RuleForUpdateDto) SetLabelsToDelete(v []PrometheusLabelDeleteDto) {
-	o.LabelsToDelete = v
-}
-
-// GetLabelsToUpdate returns the LabelsToUpdate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RuleForUpdateDto) GetLabelsToUpdate() []PrometheusLabelUpdateDto {
-	if o == nil {
-		var ret []PrometheusLabelUpdateDto
-		return ret
-	}
-	return o.LabelsToUpdate
-}
-
-// GetLabelsToUpdateOk returns a tuple with the LabelsToUpdate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RuleForUpdateDto) GetLabelsToUpdateOk() ([]PrometheusLabelUpdateDto, bool) {
-	if o == nil || IsNil(o.LabelsToUpdate) {
-		return nil, false
-	}
-	return o.LabelsToUpdate, true
-}
-
-// HasLabelsToUpdate returns a boolean if a field has been set.
-func (o *RuleForUpdateDto) HasLabelsToUpdate() bool {
-	if o != nil && !IsNil(o.LabelsToUpdate) {
-		return true
-	}
-
-	return false
-}
-
-// SetLabelsToUpdate gets a reference to the given []PrometheusLabelUpdateDto and assigns it to the LabelsToUpdate field.
-func (o *RuleForUpdateDto) SetLabelsToUpdate(v []PrometheusLabelUpdateDto) {
-	o.LabelsToUpdate = v
-}
-
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RuleForUpdateDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.OrganizationId.Get()
-}
-
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RuleForUpdateDto) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
-}
-
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *RuleForUpdateDto) HasOrganizationId() bool {
-	if o != nil && o.OrganizationId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
-func (o *RuleForUpdateDto) SetOrganizationId(v int32) {
-	o.OrganizationId.Set(&v)
-}
-// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
-func (o *RuleForUpdateDto) SetOrganizationIdNil() {
-	o.OrganizationId.Set(nil)
-}
-
-// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
-func (o *RuleForUpdateDto) UnsetOrganizationId() {
-	o.OrganizationId.Unset()
-}
-
-// GetRuleDiscountRate returns the RuleDiscountRate field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *RuleForUpdateDto) GetRuleDiscountRate() int32 {
-	if o == nil || IsNil(o.RuleDiscountRate.Get()) {
-		var ret int32
-		return ret
-	}
-	return *o.RuleDiscountRate.Get()
-}
-
-// GetRuleDiscountRateOk returns a tuple with the RuleDiscountRate field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *RuleForUpdateDto) GetRuleDiscountRateOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.RuleDiscountRate.Get(), o.RuleDiscountRate.IsSet()
-}
-
-// HasRuleDiscountRate returns a boolean if a field has been set.
-func (o *RuleForUpdateDto) HasRuleDiscountRate() bool {
-	if o != nil && o.RuleDiscountRate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRuleDiscountRate gets a reference to the given NullableInt32 and assigns it to the RuleDiscountRate field.
-func (o *RuleForUpdateDto) SetRuleDiscountRate(v int32) {
-	o.RuleDiscountRate.Set(&v)
-}
-// SetRuleDiscountRateNil sets the value for RuleDiscountRate to be an explicit nil
-func (o *RuleForUpdateDto) SetRuleDiscountRateNil() {
-	o.RuleDiscountRate.Set(nil)
-}
-
-// UnsetRuleDiscountRate ensures that no value is present for RuleDiscountRate, not even an explicit nil
-func (o *RuleForUpdateDto) UnsetRuleDiscountRate() {
-	o.RuleDiscountRate.Unset()
+// SetLabels gets a reference to the given []PrometheusLabelListDto and assigns it to the Labels field.
+func (o *RuleForUpdateDto) SetLabels(v []PrometheusLabelListDto) {
+	o.Labels = v
 }
 
 // GetOperationCredentialId returns the OperationCredentialId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -454,20 +300,8 @@ func (o RuleForUpdateDto) ToMap() (map[string]interface{}, error) {
 	if o.Price.IsSet() {
 		toSerialize["price"] = o.Price.Get()
 	}
-	if o.LabelsToAdd != nil {
-		toSerialize["labelsToAdd"] = o.LabelsToAdd
-	}
-	if o.LabelsToDelete != nil {
-		toSerialize["labelsToDelete"] = o.LabelsToDelete
-	}
-	if o.LabelsToUpdate != nil {
-		toSerialize["labelsToUpdate"] = o.LabelsToUpdate
-	}
-	if o.OrganizationId.IsSet() {
-		toSerialize["organizationId"] = o.OrganizationId.Get()
-	}
-	if o.RuleDiscountRate.IsSet() {
-		toSerialize["ruleDiscountRate"] = o.RuleDiscountRate.Get()
+	if o.Labels != nil {
+		toSerialize["labels"] = o.Labels
 	}
 	if o.OperationCredentialId.IsSet() {
 		toSerialize["operationCredentialId"] = o.OperationCredentialId.Get()

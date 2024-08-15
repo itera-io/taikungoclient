@@ -24,48 +24,52 @@ import (
 // CatalogAPIService CatalogAPI service
 type CatalogAPIService service
 
-type ApiCatalogBindProjectRequest struct {
+type ApiCatalogAddProjectRequest struct {
 	ctx context.Context
 	ApiService *CatalogAPIService
-	bindProjectsToCatalogCommand *BindProjectsToCatalogCommand
+	id int32
+	requestBody *[]int32
 }
 
-func (r ApiCatalogBindProjectRequest) BindProjectsToCatalogCommand(bindProjectsToCatalogCommand BindProjectsToCatalogCommand) ApiCatalogBindProjectRequest {
-	r.bindProjectsToCatalogCommand = &bindProjectsToCatalogCommand
+func (r ApiCatalogAddProjectRequest) RequestBody(requestBody []int32) ApiCatalogAddProjectRequest {
+	r.requestBody = &requestBody
 	return r
 }
 
-func (r ApiCatalogBindProjectRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CatalogBindProjectExecute(r)
+func (r ApiCatalogAddProjectRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CatalogAddProjectExecute(r)
 }
 
 /*
-CatalogBindProject Bind projects to catalog
+CatalogAddProject Add projects to catalog
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCatalogBindProjectRequest
+ @param id
+ @return ApiCatalogAddProjectRequest
 */
-func (a *CatalogAPIService) CatalogBindProject(ctx context.Context) ApiCatalogBindProjectRequest {
-	return ApiCatalogBindProjectRequest{
+func (a *CatalogAPIService) CatalogAddProject(ctx context.Context, id int32) ApiCatalogAddProjectRequest {
+	return ApiCatalogAddProjectRequest{
 		ApiService: a,
 		ctx: ctx,
+		id: id,
 	}
 }
 
 // Execute executes the request
-func (a *CatalogAPIService) CatalogBindProjectExecute(r ApiCatalogBindProjectRequest) (*http.Response, error) {
+func (a *CatalogAPIService) CatalogAddProjectExecute(r ApiCatalogAddProjectRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogAPIService.CatalogBindProject")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogAPIService.CatalogAddProject")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/catalog/bind-project"
+	localVarPath := localBasePath + "/api/v1/catalog/{id}/projects"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -89,7 +93,7 @@ func (a *CatalogAPIService) CatalogBindProjectExecute(r ApiCatalogBindProjectReq
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.bindProjectsToCatalogCommand
+	localVarPostBody = r.requestBody
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -413,6 +417,172 @@ func (a *CatalogAPIService) CatalogDeleteExecute(r ApiCatalogDeleteRequest) (*ht
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiCatalogDeleteProjectRequest struct {
+	ctx context.Context
+	ApiService *CatalogAPIService
+	id int32
+	requestBody *[]int32
+}
+
+func (r ApiCatalogDeleteProjectRequest) RequestBody(requestBody []int32) ApiCatalogDeleteProjectRequest {
+	r.requestBody = &requestBody
+	return r
+}
+
+func (r ApiCatalogDeleteProjectRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CatalogDeleteProjectExecute(r)
+}
+
+/*
+CatalogDeleteProject Delete projects from catalog
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiCatalogDeleteProjectRequest
+*/
+func (a *CatalogAPIService) CatalogDeleteProject(ctx context.Context, id int32) ApiCatalogDeleteProjectRequest {
+	return ApiCatalogDeleteProjectRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *CatalogAPIService) CatalogDeleteProjectExecute(r ApiCatalogDeleteProjectRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CatalogAPIService.CatalogDeleteProject")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/catalog/{id}/projects"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.requestBody
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

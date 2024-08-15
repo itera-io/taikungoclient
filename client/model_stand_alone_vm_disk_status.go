@@ -24,9 +24,9 @@ const (
 	STANDALONEVMDISKSTATUS_DELETING StandAloneVmDiskStatus = "Deleting"
 	STANDALONEVMDISKSTATUS_FAILURE StandAloneVmDiskStatus = "Failure"
 	STANDALONEVMDISKSTATUS_WAITING StandAloneVmDiskStatus = "Waiting"
-	STANDALONEVMDISKSTATUS_PENDING_DELETE StandAloneVmDiskStatus = "PendingDelete"
 	STANDALONEVMDISKSTATUS_READY StandAloneVmDiskStatus = "Ready"
 	STANDALONEVMDISKSTATUS_UPDATING StandAloneVmDiskStatus = "Updating"
+	STANDALONEVMDISKSTATUS_REPAIRING StandAloneVmDiskStatus = "Repairing"
 )
 
 // All allowed values of StandAloneVmDiskStatus enum
@@ -34,9 +34,9 @@ var AllowedStandAloneVmDiskStatusEnumValues = []StandAloneVmDiskStatus{
 	"Deleting",
 	"Failure",
 	"Waiting",
-	"PendingDelete",
 	"Ready",
 	"Updating",
+	"Repairing",
 }
 
 func (v *StandAloneVmDiskStatus) UnmarshalJSON(src []byte) error {

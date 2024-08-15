@@ -201,7 +201,7 @@ func (r ApiTicketDeleteRequest) Execute() (*http.Response, error) {
 }
 
 /*
-TicketDelete Method for TicketDelete
+TicketDelete Delete ticket
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param ticketId
@@ -359,7 +359,7 @@ func (r ApiTicketDeleteMessageRequest) Execute() (*http.Response, error) {
 }
 
 /*
-TicketDeleteMessage Method for TicketDeleteMessage
+TicketDeleteMessage Delete ticket message
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param messageId
@@ -1087,7 +1087,7 @@ func (r ApiTicketMessagesRequest) Execute() (*ArticleList, *http.Response, error
 }
 
 /*
-TicketMessages Method for TicketMessages
+TicketMessages Retrieve articles of ticket
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param ticketId

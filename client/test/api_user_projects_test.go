@@ -22,28 +22,6 @@ func Test_taikuncore_UserProjectsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test UserProjectsAPIService UserprojectsBindProjects", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.UserProjectsAPI.UserprojectsBindProjects(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test UserProjectsAPIService UserprojectsBindUsers", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.UserProjectsAPI.UserprojectsBindUsers(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test UserProjectsAPIService UserprojectsProjectListByUser", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
