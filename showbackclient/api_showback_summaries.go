@@ -92,16 +92,16 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByLabelExecute(r ApiShowb
 	localVarFormParams := url.Values{}
 
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.isDeleted != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "form", "")
 	}
 	if r.fromDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FromDate", r.fromDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FromDate", r.fromDate, "form", "")
 	}
 	if r.toDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ToDate", r.toDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ToDate", r.toDate, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -293,16 +293,16 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesByProjectExecute(r ApiSho
 	localVarFormParams := url.Values{}
 
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.isDeleted != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "form", "")
 	}
 	if r.fromDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FromDate", r.fromDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FromDate", r.fromDate, "form", "")
 	}
 	if r.toDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ToDate", r.toDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ToDate", r.toDate, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -650,9 +650,9 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesExportCsvExecute(r ApiSho
 	}
 
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "IsEmailEnabled", r.isEmailEnabled, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "IsEmailEnabled", r.isEmailEnabled, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -837,13 +837,13 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedExecute(r ApiShowb
 	localVarFormParams := url.Values{}
 
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.fromDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FromDate", r.fromDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FromDate", r.fromDate, "form", "")
 	}
 	if r.toDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ToDate", r.toDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ToDate", r.toDate, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1041,19 +1041,19 @@ func (a *ShowbackSummariesAPIService) ShowbacksummariesGroupedListExecute(r ApiS
 	localVarFormParams := url.Values{}
 
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.periodDuration != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "PeriodDuration", r.periodDuration, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "PeriodDuration", r.periodDuration, "form", "")
 	}
 	if r.isDeleted != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "form", "")
 	}
 	if r.fromDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FromDate", r.fromDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FromDate", r.fromDate, "form", "")
 	}
 	if r.toDate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ToDate", r.toDate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ToDate", r.toDate, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

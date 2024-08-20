@@ -334,25 +334,25 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
 	}
 	if r.importProject != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "importProject", r.importProject, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "importProject", r.importProject, "", "")
 	}
 	if r.folderId != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "folderId", r.folderId, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "folderId", r.folderId, "", "")
 	}
 	if r.billingAccountId != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "billingAccountId", r.billingAccountId, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "billingAccountId", r.billingAccountId, "", "")
 	}
 	if r.azCount != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "azCount", r.azCount, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "azCount", r.azCount, "", "")
 	}
 	if r.region != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "", "")
 	}
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "organizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "organizationId", r.organizationId, "", "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
@@ -551,28 +551,28 @@ func (a *GoogleAPIService) GooglecloudListExecute(r ApiGooglecloudListRequest) (
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	}
 	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -976,10 +976,10 @@ func (a *GoogleAPIService) GooglecloudZoneListExecute(r ApiGooglecloudZoneListRe
 		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
 	}
 	if r.region != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "", "")
 	}
 	if r.cloudId != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "cloudId", r.cloudId, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "cloudId", r.cloudId, "", "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
