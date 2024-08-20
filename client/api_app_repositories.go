@@ -109,25 +109,25 @@ func (a *AppRepositoriesAPIService) RepositoryAvailableListExecute(r ApiReposito
 	localVarFormParams := url.Values{}
 
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
 	if r.isPrivate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsPrivate", r.isPrivate, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsPrivate", r.isPrivate, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -955,7 +955,7 @@ func (a *AppRepositoriesAPIService) RepositoryRecommendedListExecute(r ApiReposi
 	localVarFormParams := url.Values{}
 
 	if r.isTaikun != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsTaikun", r.isTaikun, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsTaikun", r.isTaikun, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

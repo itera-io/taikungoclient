@@ -1443,10 +1443,10 @@ func (a *StandaloneActionsAPIService) StandaloneactionsWindowsInstancePasswordEx
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "id", r.id, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "id", r.id, "", "")
 	}
 	if r.key != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "key", r.key, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "key", r.key, "", "")
 	}
 	var configLocalVarFormFileName string
 	var configLocalVarFileName     string

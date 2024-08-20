@@ -910,64 +910,64 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 		formFiles = append(formFiles, formFile{fileBytes: backgroundImageLocalVarFileBytes, fileName: backgroundImageLocalVarFileName, formFileName: backgroundImageLocalVarFormFileName})
 	}
 	if r.allowRegistration != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "allowRegistration", r.allowRegistration, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "allowRegistration", r.allowRegistration, "", "")
 	}
 	if r.requiredUserApproval != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "requiredUserApproval", r.requiredUserApproval, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "requiredUserApproval", r.requiredUserApproval, "", "")
 	}
 	if r.paymentEnabled != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "paymentEnabled", r.paymentEnabled, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "paymentEnabled", r.paymentEnabled, "", "")
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
 	}
 	if r.domain != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "domain", r.domain, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "domain", r.domain, "", "")
 	}
 	if r.link != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "link", r.link, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "link", r.link, "", "")
 	}
 	if r.phone != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "phone", r.phone, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "phone", r.phone, "", "")
 	}
 	if r.email != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "email", r.email, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "email", r.email, "", "")
 	}
 	if r.country != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "country", r.country, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "country", r.country, "", "")
 	}
 	if r.city != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "city", r.city, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "city", r.city, "", "")
 	}
 	if r.vatNumber != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "vatNumber", r.vatNumber, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "vatNumber", r.vatNumber, "", "")
 	}
 	if r.address != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "address", r.address, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "address", r.address, "", "")
 	}
 	if r.bg != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "bg", r.bg, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "bg", r.bg, "", "")
 	}
 	if r.bgCollapsedSubItem != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "bgCollapsedSubItem", r.bgCollapsedSubItem, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "bgCollapsedSubItem", r.bgCollapsedSubItem, "", "")
 	}
 	if r.itemText != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "itemText", r.itemText, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemText", r.itemText, "", "")
 	}
 	if r.itemBg != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "itemBg", r.itemBg, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBg", r.itemBg, "", "")
 	}
 	if r.itemBgHover != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgHover", r.itemBgHover, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgHover", r.itemBgHover, "", "")
 	}
 	if r.itemTextActive != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "itemTextActive", r.itemTextActive, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemTextActive", r.itemTextActive, "", "")
 	}
 	if r.itemBgActive != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActive", r.itemBgActive, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActive", r.itemBgActive, "", "")
 	}
 	if r.itemBgActiveHover != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActiveHover", r.itemBgActiveHover, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActiveHover", r.itemBgActiveHover, "", "")
 	}
 	var expandedLocalVarFormFileName string
 	var expandedLocalVarFileName     string
@@ -1638,7 +1638,7 @@ func (a *PartnersAPIService) PartnerDropdownExecute(r ApiPartnerDropdownRequest)
 	localVarFormParams := url.Values{}
 
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1812,7 +1812,7 @@ func (a *PartnersAPIService) PartnerInfoExecute(r ApiPartnerInfoRequest) (*Partn
 	localVarFormParams := url.Values{}
 
 	if r.domain != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Domain", r.domain, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Domain", r.domain, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2022,25 +2022,25 @@ func (a *PartnersAPIService) PartnerListExecute(r ApiPartnerListRequest) (*Partn
 	localVarFormParams := url.Values{}
 
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2373,7 +2373,7 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "id", r.id, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "id", r.id, "", "")
 	}
 	var logoLocalVarFormFileName string
 	var logoLocalVarFileName     string
@@ -2406,64 +2406,64 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 		formFiles = append(formFiles, formFile{fileBytes: backgroundImageLocalVarFileBytes, fileName: backgroundImageLocalVarFileName, formFileName: backgroundImageLocalVarFormFileName})
 	}
 	if r.name != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
 	}
 	if r.domain != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "domain", r.domain, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "domain", r.domain, "", "")
 	}
 	if r.link != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "link", r.link, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "link", r.link, "", "")
 	}
 	if r.phone != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "phone", r.phone, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "phone", r.phone, "", "")
 	}
 	if r.email != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "email", r.email, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "email", r.email, "", "")
 	}
 	if r.country != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "country", r.country, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "country", r.country, "", "")
 	}
 	if r.city != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "city", r.city, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "city", r.city, "", "")
 	}
 	if r.vatNumber != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "vatNumber", r.vatNumber, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "vatNumber", r.vatNumber, "", "")
 	}
 	if r.address != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "address", r.address, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "address", r.address, "", "")
 	}
 	if r.allowRegistration != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "allowRegistration", r.allowRegistration, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "allowRegistration", r.allowRegistration, "", "")
 	}
 	if r.requiredUserApproval != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "requiredUserApproval", r.requiredUserApproval, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "requiredUserApproval", r.requiredUserApproval, "", "")
 	}
 	if r.paymentEnabled != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "paymentEnabled", r.paymentEnabled, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "paymentEnabled", r.paymentEnabled, "", "")
 	}
 	if r.bg != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "bg", r.bg, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "bg", r.bg, "", "")
 	}
 	if r.bgCollapsedSubItem != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "bgCollapsedSubItem", r.bgCollapsedSubItem, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "bgCollapsedSubItem", r.bgCollapsedSubItem, "", "")
 	}
 	if r.itemText != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "itemText", r.itemText, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemText", r.itemText, "", "")
 	}
 	if r.itemBg != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "itemBg", r.itemBg, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBg", r.itemBg, "", "")
 	}
 	if r.itemBgHover != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgHover", r.itemBgHover, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgHover", r.itemBgHover, "", "")
 	}
 	if r.itemTextActive != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "itemTextActive", r.itemTextActive, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemTextActive", r.itemTextActive, "", "")
 	}
 	if r.itemBgActive != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActive", r.itemBgActive, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActive", r.itemBgActive, "", "")
 	}
 	if r.itemBgActiveHover != nil {
-		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActiveHover", r.itemBgActiveHover, "")
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActiveHover", r.itemBgActiveHover, "", "")
 	}
 	var expandedLocalVarFormFileName string
 	var expandedLocalVarFileName     string

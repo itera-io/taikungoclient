@@ -1067,7 +1067,7 @@ func (a *OrganizationsAPIService) OrganizationsDetawilsExecute(r ApiOrganization
 	localVarFormParams := url.Values{}
 
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1618,25 +1618,25 @@ func (a *OrganizationsAPIService) OrganizationsListExecute(r ApiOrganizationsLis
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	}
 	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1822,13 +1822,13 @@ func (a *OrganizationsAPIService) OrganizationsOrganizationListExecute(r ApiOrga
 	localVarFormParams := url.Values{}
 
 	if r.partnerId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "PartnerId", r.partnerId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "PartnerId", r.partnerId, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.isInfra != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

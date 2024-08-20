@@ -684,7 +684,6 @@ docs/ProjectGroupEntityListDto.md
 docs/ProjectGroupList.md
 docs/ProjectGroupsAPI.md
 docs/ProjectHealth.md
-docs/ProjectInfracostUpsertDto.md
 docs/ProjectInfracostsAPI.md
 docs/ProjectListDetailDto.md
 docs/ProjectListDto.md
@@ -1524,7 +1523,6 @@ model_project_group_details_list_dto.go
 model_project_group_entity_list_dto.go
 model_project_group_list.go
 model_project_health.go
-model_project_infracost_upsert_dto.go
 model_project_list_detail_dto.go
 model_project_list_dto.go
 model_project_list_for_alert.go

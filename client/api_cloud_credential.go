@@ -126,31 +126,31 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.startRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
 	if r.endRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "form", "")
 	}
 	if r.startCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "form", "")
 	}
 	if r.endCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -482,7 +482,7 @@ func (a *CloudCredentialAPIService) CloudcredentialsExceededExecute(r ApiCloudcr
 	localVarFormParams := url.Values{}
 
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1013,17 +1013,17 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 	}
 
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "IsAdmin", r.isAdmin, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "IsAdmin", r.isAdmin, "form", "")
 	if r.isInfra != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "form", "")
 	}
 	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

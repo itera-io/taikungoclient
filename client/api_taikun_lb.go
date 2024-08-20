@@ -427,10 +427,10 @@ func (a *TaikunLBAPIService) TaikunLbListTaikunLbExecute(r ApiTaikunLbListTaikun
 	localVarFormParams := url.Values{}
 
 	if r.svcName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SvcName", r.svcName, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SvcName", r.svcName, "form", "")
 	}
 	if r.svcNameSpace != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SvcNameSpace", r.svcNameSpace, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SvcNameSpace", r.svcNameSpace, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

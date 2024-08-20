@@ -1442,7 +1442,7 @@ func (a *ProjectsAPIService) ProjectsDescribeExecute(r ApiProjectsDescribeReques
 		return localVarReturnValue, nil, reportError("isYaml is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "isYaml", r.isYaml, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "isYaml", r.isYaml, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1651,25 +1651,25 @@ func (a *ProjectsAPIService) ProjectsDropdownExecute(r ApiProjectsDropdownReques
 	localVarFormParams := url.Values{}
 
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.catalogId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "CatalogId", r.catalogId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "CatalogId", r.catalogId, "form", "")
 	}
 	if r.healthy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Healthy", r.healthy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Healthy", r.healthy, "form", "")
 	}
 	if r.userId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "UserId", r.userId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "UserId", r.userId, "form", "")
 	}
 	if r.ready != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Ready", r.ready, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Ready", r.ready, "form", "")
 	}
 	if r.isBoundToCatalog != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsBoundToCatalog", r.isBoundToCatalog, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsBoundToCatalog", r.isBoundToCatalog, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2353,16 +2353,16 @@ func (a *ProjectsAPIService) ProjectsForAlertingExecute(r ApiProjectsForAlerting
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Status", r.status, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Status", r.status, "form", "")
 	}
 	if r.projectId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2761,37 +2761,37 @@ func (a *ProjectsAPIService) ProjectsListExecute(r ApiProjectsListRequest) (*Pro
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.updatedAt != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "UpdatedAt", r.updatedAt, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "UpdatedAt", r.updatedAt, "form", "")
 	}
 	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	}
 	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
 	if r.backupCredentialId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "BackupCredentialId", r.backupCredentialId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "BackupCredentialId", r.backupCredentialId, "form", "")
 	}
 	if r.healthy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Healthy", r.healthy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Healthy", r.healthy, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

@@ -5416,8 +5416,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-08-16T12:49:29.0092002Z
-                  createdAt: 2024-08-16T12:49:29.0092002Z
+                  lastValidated: 2024-08-20T00:03:03.8307082Z
+                  createdAt: 2024-08-20T00:03:03.8307082Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5522,14 +5522,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-08-16T12:49:29.0092002Z
+                    lastBackup: 2024-08-20T00:03:03.8307082Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-08-16T12:49:29.0092002Z
+                  createdAt: 2024-08-20T00:03:03.8307082Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-08-16T12:49:29.0092002Z
+                  lastBackup: 2024-08-20T00:03:03.8307082Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5634,8 +5634,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-08-16T12:49:29.0092002Z
-                  expiration: 2024-08-16T12:49:29.0092002Z
+                  createdAt: 2024-08-20T00:03:03.8307082Z
+                  expiration: 2024-08-20T00:03:03.8307082Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5739,7 +5739,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-08-16T12:49:29.0092002Z
+                  createdAt: 2024-08-20T00:03:03.8307082Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5849,9 +5849,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-08-16T12:49:29.0092002+00:00
-                  startTimeStamp: 2024-08-16T12:49:29.0092002+00:00
-                  createdAt: 2024-08-16T12:49:29.0092002Z
+                  completionDateTime: 2024-08-20T00:03:03.8307082+00:00
+                  startTimeStamp: 2024-08-20T00:03:03.8307082+00:00
+                  createdAt: 2024-08-20T00:03:03.8307082Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -25758,103 +25758,7 @@ paths:
       summary: Remove Project group(s)
       tags:
       - Project groups
-  /api/v1/projectinfracosts/upsert/{projectId}:
-    post:
-      operationId: projectinfracosts-upsert
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProjectInfracostUpsertDto'
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Upsert project infracost by ProjectId
-      tags:
-      - Project infracosts
   /api/v1/projectinfracosts/{projectId}:
-    delete:
-      operationId: projectinfracosts-delete
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Delete the project infracost
-      tags:
-      - Project infracosts
     get:
       operationId: projectinfracosts-details
       parameters:
@@ -55093,15 +54997,6 @@ components:
       - Unknown
       - Warning
       type: string
-    ProjectInfracostUpsertDto:
-      additionalProperties: false
-      example:
-        details: details
-      properties:
-        details:
-          nullable: true
-          type: string
-      type: object
     ProjectListDetailDto:
       additionalProperties: false
       example:
