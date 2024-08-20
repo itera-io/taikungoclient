@@ -239,7 +239,7 @@ func (a *PaymentsAPIService) PaymentCardinfoExecute(r ApiPaymentCardinfoRequest)
 	localVarFormParams := url.Values{}
 
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

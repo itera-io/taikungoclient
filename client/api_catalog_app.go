@@ -919,19 +919,19 @@ func (a *CatalogAppAPIService) CatalogAppListExecute(r ApiCatalogAppListRequest)
 	localVarFormParams := url.Values{}
 
 	if r.catalogId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "CatalogId", r.catalogId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "CatalogId", r.catalogId, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	} else {
 		var defaultValue int32 = 0
 		r.offset = &defaultValue
 	}
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	} else {
 		var defaultValue int32 = 50
 		r.limit = &defaultValue

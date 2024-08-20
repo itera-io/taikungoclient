@@ -126,31 +126,31 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.startRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
 	if r.endRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "form", "")
 	}
 	if r.startCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "form", "")
 	}
 	if r.endCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -376,31 +376,31 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.startRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
 	if r.endRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "form", "")
 	}
 	if r.startCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "form", "")
 	}
 	if r.endCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -754,16 +754,16 @@ func (a *FlavorsAPIService) FlavorsDropdownFlavorsExecute(r ApiFlavorsDropdownFl
 	localVarFormParams := url.Values{}
 
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.filterBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.isInfra != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -989,31 +989,31 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.startRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
 	if r.endRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "form", "")
 	}
 	if r.startCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "form", "")
 	}
 	if r.endCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1239,31 +1239,31 @@ func (a *FlavorsAPIService) FlavorsOpenshiftFlavorsExecute(r ApiFlavorsOpenshift
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.startRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
 	if r.endRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "form", "")
 	}
 	if r.startCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "form", "")
 	}
 	if r.endCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1489,31 +1489,31 @@ func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstack
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.startRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
 	if r.endRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "form", "")
 	}
 	if r.startCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "form", "")
 	}
 	if r.endCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1739,31 +1739,31 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.startRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
 	if r.endRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "form", "")
 	}
 	if r.startCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "form", "")
 	}
 	if r.endCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1991,34 +1991,34 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.projectId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.filterBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
 	}
 	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	if r.flavorName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FlavorName", r.flavorName, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FlavorName", r.flavorName, "form", "")
 	}
 	if r.withPrice != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "WithPrice", r.withPrice, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "WithPrice", r.withPrice, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2244,31 +2244,31 @@ func (a *FlavorsAPIService) FlavorsTanzuFlavorsExecute(r ApiFlavorsTanzuFlavorsR
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.startRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
 	if r.endRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "form", "")
 	}
 	if r.startCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "form", "")
 	}
 	if r.endCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2659,31 +2659,31 @@ func (a *FlavorsAPIService) FlavorsVsphereFlavorsExecute(r ApiFlavorsVsphereFlav
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.startRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
 	if r.endRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "form", "")
 	}
 	if r.startCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "form", "")
 	}
 	if r.endCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2909,31 +2909,31 @@ func (a *FlavorsAPIService) FlavorsZadaraInstanceTypesExecute(r ApiFlavorsZadara
 	localVarFormParams := url.Values{}
 
 	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
 	if r.offset != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
 	if r.startRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
 	if r.endRam != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndRam", r.endRam, "form", "")
 	}
 	if r.startCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "StartCpu", r.startCpu, "form", "")
 	}
 	if r.endCpu != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
 	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
 	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
 	}
 	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
