@@ -25,6 +25,7 @@ type ShowbackCredentialsListDto struct {
 	Url NullableString `json:"url,omitempty"`
 	CreatedAt NullableString `json:"createdAt,omitempty"`
 	Username NullableString `json:"username,omitempty"`
+	Password NullableString `json:"password,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
@@ -249,6 +250,48 @@ func (o *ShowbackCredentialsListDto) SetUsernameNil() {
 // UnsetUsername ensures that no value is present for Username, not even an explicit nil
 func (o *ShowbackCredentialsListDto) UnsetUsername() {
 	o.Username.Unset()
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ShowbackCredentialsListDto) GetPassword() string {
+	if o == nil || IsNil(o.Password.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Password.Get()
+}
+
+// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ShowbackCredentialsListDto) GetPasswordOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Password.Get(), o.Password.IsSet()
+}
+
+// HasPassword returns a boolean if a field has been set.
+func (o *ShowbackCredentialsListDto) HasPassword() bool {
+	if o != nil && o.Password.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
+func (o *ShowbackCredentialsListDto) SetPassword(v string) {
+	o.Password.Set(&v)
+}
+// SetPasswordNil sets the value for Password to be an explicit nil
+func (o *ShowbackCredentialsListDto) SetPasswordNil() {
+	o.Password.Set(nil)
+}
+
+// UnsetPassword ensures that no value is present for Password, not even an explicit nil
+func (o *ShowbackCredentialsListDto) UnsetPassword() {
+	o.Password.Unset()
 }
 
 // GetIsLocked returns the IsLocked field value if set, zero value otherwise.
@@ -540,6 +583,9 @@ func (o ShowbackCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Username.IsSet() {
 		toSerialize["username"] = o.Username.Get()
+	}
+	if o.Password.IsSet() {
+		toSerialize["password"] = o.Password.Get()
 	}
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
