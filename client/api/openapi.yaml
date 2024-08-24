@@ -4408,8 +4408,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-08-21T00:16:31.1300854Z
-                  createdAt: 2024-08-21T00:16:31.1300854Z
+                  lastValidated: 2024-08-24T00:15:57.5354408Z
+                  createdAt: 2024-08-24T00:15:57.5354408Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -4514,14 +4514,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-08-21T00:16:31.1300854Z
+                    lastBackup: 2024-08-24T00:15:57.5354408Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-08-21T00:16:31.1300854Z
+                  createdAt: 2024-08-24T00:15:57.5354408Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-08-21T00:16:31.1300854Z
+                  lastBackup: 2024-08-24T00:15:57.5354408Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -4626,8 +4626,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-08-21T00:16:31.1300854Z
-                  expiration: 2024-08-21T00:16:31.1300854Z
+                  createdAt: 2024-08-24T00:15:57.5354408Z
+                  expiration: 2024-08-24T00:15:57.5354408Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -4731,7 +4731,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-08-21T00:16:31.1300854Z
+                  createdAt: 2024-08-24T00:15:57.5354408Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -4841,9 +4841,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-08-21T00:16:31.1300854+00:00
-                  startTimeStamp: 2024-08-21T00:16:31.1300854+00:00
-                  createdAt: 2024-08-21T00:16:31.1300854Z
+                  completionDateTime: 2024-08-24T00:15:57.5354408+00:00
+                  startTimeStamp: 2024-08-24T00:15:57.5354408+00:00
+                  createdAt: 2024-08-24T00:15:57.5354408Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -41782,141 +41782,6 @@ components:
       - Array
       - Multiline
       type: string
-    PartnerColorSettingsDto:
-      additionalProperties: false
-      example:
-        itemBgActive: itemBgActive
-        itemBgActiveHover: itemBgActiveHover
-        bg: bg
-        itemBg: itemBg
-        itemBgHover: itemBgHover
-        bgCollapsedSubItem: bgCollapsedSubItem
-        itemTextActive: itemTextActive
-        itemText: itemText
-      properties:
-        bg:
-          nullable: true
-          type: string
-        bgCollapsedSubItem:
-          nullable: true
-          type: string
-        itemText:
-          nullable: true
-          type: string
-        itemBg:
-          nullable: true
-          type: string
-        itemBgHover:
-          nullable: true
-          type: string
-        itemTextActive:
-          nullable: true
-          type: string
-        itemBgActive:
-          nullable: true
-          type: string
-        itemBgActiveHover:
-          nullable: true
-          type: string
-      type: object
-    PartnerDetailsDto:
-      additionalProperties: false
-      example:
-        whiteListDomains:
-        - name: name
-          id: 7
-        - name: name
-          id: 7
-        country: country
-        address: address
-        city: city
-        link: link
-        partnerImageSettings:
-          expanded: expanded
-          collapsed: collapsed
-        paymentEnabled: true
-        phone: phone
-        domain: domain
-        partnerColorSettings:
-          itemBgActive: itemBgActive
-          itemBgActiveHover: itemBgActiveHover
-          bg: bg
-          itemBg: itemBg
-          itemBgHover: itemBgHover
-          bgCollapsedSubItem: bgCollapsedSubItem
-          itemTextActive: itemTextActive
-          itemText: itemText
-        name: name
-        organizations:
-        - name: name
-          id: 0
-        - name: name
-          id: 0
-        logo: logo
-        requiredUserApproval: true
-        id: 2
-        allowRegistration: true
-        email: email
-        vatNumber: vatNumber
-        backgroundImageUrl: backgroundImageUrl
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-        link:
-          nullable: true
-          type: string
-        domain:
-          nullable: true
-          type: string
-        country:
-          nullable: true
-          type: string
-        city:
-          nullable: true
-          type: string
-        vatNumber:
-          nullable: true
-          type: string
-        backgroundImageUrl:
-          nullable: true
-          type: string
-        address:
-          nullable: true
-          type: string
-        logo:
-          nullable: true
-          type: string
-        phone:
-          nullable: true
-          type: string
-        email:
-          nullable: true
-          type: string
-        paymentEnabled:
-          type: boolean
-        allowRegistration:
-          type: boolean
-        requiredUserApproval:
-          type: boolean
-        organizations:
-          items:
-            $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
-          type: array
-        whiteListDomains:
-          items:
-            $ref: '#/components/schemas/WhiteListDomainDto'
-          nullable: true
-          type: array
-        partnerColorSettings:
-          $ref: '#/components/schemas/PartnerColorSettingsDto'
-        partnerImageSettings:
-          $ref: '#/components/schemas/PartnerImageSettingsDto'
-      type: object
     PartnerDetailsForOrganizationsDto:
       additionalProperties: false
       example:
@@ -41962,19 +41827,6 @@ components:
         id:
           format: int32
           type: integer
-      type: object
-    PartnerImageSettingsDto:
-      additionalProperties: false
-      example:
-        expanded: expanded
-        collapsed: collapsed
-      properties:
-        expanded:
-          nullable: true
-          type: string
-        collapsed:
-          nullable: true
-          type: string
       type: object
     PartnersSearchCommand:
       additionalProperties: false
@@ -44644,43 +44496,8 @@ components:
         createdAt: createdAt
         password: password
         partner:
-          whiteListDomains:
-          - name: name
-            id: 7
-          - name: name
-            id: 7
-          country: country
-          address: address
-          city: city
-          link: link
-          partnerImageSettings:
-            expanded: expanded
-            collapsed: collapsed
-          paymentEnabled: true
-          phone: phone
-          domain: domain
-          partnerColorSettings:
-            itemBgActive: itemBgActive
-            itemBgActiveHover: itemBgActiveHover
-            bg: bg
-            itemBg: itemBg
-            itemBgHover: itemBgHover
-            bgCollapsedSubItem: bgCollapsedSubItem
-            itemTextActive: itemTextActive
-            itemText: itemText
           name: name
-          organizations:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
-          logo: logo
-          requiredUserApproval: true
-          id: 2
-          allowRegistration: true
-          email: email
-          vatNumber: vatNumber
-          backgroundImageUrl: backgroundImageUrl
+          id: 0
         createdBy: createdBy
         price: 5.637376656633329
         name: name
@@ -44727,7 +44544,7 @@ components:
           nullable: true
           type: string
         partner:
-          $ref: '#/components/schemas/PartnerDetailsDto'
+          $ref: '#/components/schemas/CommonDropdownDto'
         operationCredential:
           $ref: '#/components/schemas/OperationCredentialsForOrganizationEntity'
         createdBy:
@@ -44771,43 +44588,8 @@ components:
           createdAt: createdAt
           password: password
           partner:
-            whiteListDomains:
-            - name: name
-              id: 7
-            - name: name
-              id: 7
-            country: country
-            address: address
-            city: city
-            link: link
-            partnerImageSettings:
-              expanded: expanded
-              collapsed: collapsed
-            paymentEnabled: true
-            phone: phone
-            domain: domain
-            partnerColorSettings:
-              itemBgActive: itemBgActive
-              itemBgActiveHover: itemBgActiveHover
-              bg: bg
-              itemBg: itemBg
-              itemBgHover: itemBgHover
-              bgCollapsedSubItem: bgCollapsedSubItem
-              itemTextActive: itemTextActive
-              itemText: itemText
             name: name
-            organizations:
-            - name: name
-              id: 0
-            - name: name
-              id: 0
-            logo: logo
-            requiredUserApproval: true
-            id: 2
-            allowRegistration: true
-            email: email
-            vatNumber: vatNumber
-            backgroundImageUrl: backgroundImageUrl
+            id: 0
           createdBy: createdBy
           price: 5.637376656633329
           name: name
@@ -44840,49 +44622,14 @@ components:
           createdAt: createdAt
           password: password
           partner:
-            whiteListDomains:
-            - name: name
-              id: 7
-            - name: name
-              id: 7
-            country: country
-            address: address
-            city: city
-            link: link
-            partnerImageSettings:
-              expanded: expanded
-              collapsed: collapsed
-            paymentEnabled: true
-            phone: phone
-            domain: domain
-            partnerColorSettings:
-              itemBgActive: itemBgActive
-              itemBgActiveHover: itemBgActiveHover
-              bg: bg
-              itemBg: itemBg
-              itemBgHover: itemBgHover
-              bgCollapsedSubItem: bgCollapsedSubItem
-              itemTextActive: itemTextActive
-              itemText: itemText
             name: name
-            organizations:
-            - name: name
-              id: 0
-            - name: name
-              id: 0
-            logo: logo
-            requiredUserApproval: true
-            id: 2
-            allowRegistration: true
-            email: email
-            vatNumber: vatNumber
-            backgroundImageUrl: backgroundImageUrl
+            id: 0
           createdBy: createdBy
           price: 5.637376656633329
           name: name
           id: 0
           lastModified: lastModified
-        totalCount: 9
+        totalCount: 2
       properties:
         data:
           items:
@@ -50800,19 +50547,6 @@ components:
           nullable: true
           type: string
         value:
-          nullable: true
-          type: string
-      type: object
-    WhiteListDomainDto:
-      additionalProperties: false
-      example:
-        name: name
-        id: 7
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
           nullable: true
           type: string
       type: object

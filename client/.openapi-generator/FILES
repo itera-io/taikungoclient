@@ -497,11 +497,8 @@ docs/PackageAPI.md
 docs/PackageAutocompleteDto.md
 docs/Parameter.md
 docs/ParameterType.md
-docs/PartnerColorSettingsDto.md
-docs/PartnerDetailsDto.md
 docs/PartnerDetailsForOrganizationsDto.md
 docs/PartnerDetailsForUserDto.md
-docs/PartnerImageSettingsDto.md
 docs/PartnersSearchCommand.md
 docs/PartnersSearchList.md
 docs/PartnersSearchResponseData.md
@@ -775,7 +772,6 @@ docs/VsphereNetworkListDto.md
 docs/VsphereVmTemplateData.md
 docs/VsphereVmTemplateListCommand.md
 docs/WebhookHeaderDto.md
-docs/WhiteListDomainDto.md
 docs/YamlValidatorCommand.md
 docs/ZadaraAvailabilityZonesCommand.md
 docs/ZadaraCloudCredentialAPI.md
@@ -1182,11 +1178,8 @@ model_organizations_list.go
 model_package_autocomplete_dto.go
 model_parameter.go
 model_parameter_type.go
-model_partner_color_settings_dto.go
-model_partner_details_dto.go
 model_partner_details_for_organizations_dto.go
 model_partner_details_for_user_dto.go
-model_partner_image_settings_dto.go
 model_partners_search_command.go
 model_partners_search_list.go
 model_partners_search_response_data.go
@@ -1430,7 +1423,6 @@ model_vsphere_network_list_dto.go
 model_vsphere_vm_template_data.go
 model_vsphere_vm_template_list_command.go
 model_webhook_header_dto.go
-model_white_list_domain_dto.go
 model_yaml_validator_command.go
 model_zadara_availability_zones_command.go
 model_zadara_credential_list.go

@@ -32,7 +32,7 @@ type PrometheusRuleListDto struct {
 	Price *float64 `json:"price,omitempty"`
 	BillingStartDate NullableString `json:"billingStartDate,omitempty"`
 	CreatedAt NullableString `json:"createdAt,omitempty"`
-	Partner *PartnerDetailsDto `json:"partner,omitempty"`
+	Partner *CommonDropdownDto `json:"partner,omitempty"`
 	OperationCredential *OperationCredentialsForOrganizationEntity `json:"operationCredential,omitempty"`
 	CreatedBy NullableString `json:"createdBy,omitempty"`
 	LastModified NullableString `json:"lastModified,omitempty"`
@@ -513,9 +513,9 @@ func (o *PrometheusRuleListDto) UnsetCreatedAt() {
 }
 
 // GetPartner returns the Partner field value if set, zero value otherwise.
-func (o *PrometheusRuleListDto) GetPartner() PartnerDetailsDto {
+func (o *PrometheusRuleListDto) GetPartner() CommonDropdownDto {
 	if o == nil || IsNil(o.Partner) {
-		var ret PartnerDetailsDto
+		var ret CommonDropdownDto
 		return ret
 	}
 	return *o.Partner
@@ -523,7 +523,7 @@ func (o *PrometheusRuleListDto) GetPartner() PartnerDetailsDto {
 
 // GetPartnerOk returns a tuple with the Partner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *PrometheusRuleListDto) GetPartnerOk() (*PartnerDetailsDto, bool) {
+func (o *PrometheusRuleListDto) GetPartnerOk() (*CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.Partner) {
 		return nil, false
 	}
@@ -539,8 +539,8 @@ func (o *PrometheusRuleListDto) HasPartner() bool {
 	return false
 }
 
-// SetPartner gets a reference to the given PartnerDetailsDto and assigns it to the Partner field.
-func (o *PrometheusRuleListDto) SetPartner(v PartnerDetailsDto) {
+// SetPartner gets a reference to the given CommonDropdownDto and assigns it to the Partner field.
+func (o *PrometheusRuleListDto) SetPartner(v CommonDropdownDto) {
 	o.Partner = &v
 }
 
