@@ -213,6 +213,7 @@ docs/BoundFlavorsForProjectsList.md
 docs/BoundFlavorsForProjectsListDto.md
 docs/BoundImagesForProjectsList.md
 docs/BoundImagesForProjectsListDto.md
+docs/Breakdown.md
 docs/BridgeListCommand.md
 docs/ButtonStatusDto.md
 docs/CBackupDto.md
@@ -387,6 +388,7 @@ docs/DescribeSecretCommand.md
 docs/DescribeServiceCommand.md
 docs/DescribeStorageClassCommand.md
 docs/DescribeStsCommand.md
+docs/Diff.md
 docs/DisableAutoscalingCommand.md
 docs/DisableUserCommand.md
 docs/DnsCommand.md
@@ -684,12 +686,14 @@ docs/ProjectGroupEntityListDto.md
 docs/ProjectGroupList.md
 docs/ProjectGroupsAPI.md
 docs/ProjectHealth.md
+docs/ProjectInfracost.md
 docs/ProjectInfracostsAPI.md
 docs/ProjectListDetailDto.md
 docs/ProjectListDto.md
 docs/ProjectListForAlert.md
 docs/ProjectLockManagerCommand.md
 docs/ProjectMaintenanceModeCommand.md
+docs/ProjectMetadata.md
 docs/ProjectMonitoringAlertsDto.md
 docs/ProjectQuotaList.md
 docs/ProjectQuotaListDto.md
@@ -726,6 +730,7 @@ docs/PrometheusRulesSearchCommand.md
 docs/PrometheusRulesSearchList.md
 docs/PrometheusRulesSearchResponseData.md
 docs/PrometheusType.md
+docs/Provider.md
 docs/ProxmoxCheckerCommand.md
 docs/ProxmoxCloudCredentialAPI.md
 docs/ProxmoxFlavorData.md
@@ -853,6 +858,7 @@ docs/StsSearchList.md
 docs/Subnet.md
 docs/Subresource.md
 docs/SubscriptionAPI.md
+docs/Summary.md
 docs/SyncProjectAppCommand.md
 docs/TaikunLBAPI.md
 docs/TaikunLbResponseDto.md
@@ -1088,6 +1094,7 @@ model_bound_flavors_for_projects_list.go
 model_bound_flavors_for_projects_list_dto.go
 model_bound_images_for_projects_list.go
 model_bound_images_for_projects_list_dto.go
+model_breakdown.go
 model_bridge_list_command.go
 model_button_status_dto.go
 model_c_backup_dto.go
@@ -1256,6 +1263,7 @@ model_describe_secret_command.go
 model_describe_service_command.go
 model_describe_storage_class_command.go
 model_describe_sts_command.go
+model_diff.go
 model_disable_autoscaling_command.go
 model_disable_user_command.go
 model_dns_command.go
@@ -1523,11 +1531,13 @@ model_project_group_details_list_dto.go
 model_project_group_entity_list_dto.go
 model_project_group_list.go
 model_project_health.go
+model_project_infracost.go
 model_project_list_detail_dto.go
 model_project_list_dto.go
 model_project_list_for_alert.go
 model_project_lock_manager_command.go
 model_project_maintenance_mode_command.go
+model_project_metadata.go
 model_project_monitoring_alerts_dto.go
 model_project_quota_list.go
 model_project_quota_list_dto.go
@@ -1559,6 +1569,7 @@ model_prometheus_rules_search_command.go
 model_prometheus_rules_search_list.go
 model_prometheus_rules_search_response_data.go
 model_prometheus_type.go
+model_provider.go
 model_proxmox_checker_command.go
 model_proxmox_flavor_data.go
 model_proxmox_flavor_list.go
@@ -1673,6 +1684,7 @@ model_sts_search_command.go
 model_sts_search_list.go
 model_subnet.go
 model_subresource.go
+model_summary.go
 model_sync_project_app_command.go
 model_taikun_lb_response_dto.go
 model_tanzu_credentials_list.go

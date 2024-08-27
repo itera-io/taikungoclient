@@ -21,7 +21,7 @@ var _ MappedNullable = &Subresource{}
 // Subresource struct for Subresource
 type Subresource struct {
 	Name NullableString `json:"name,omitempty"`
-	Metadata *Metadata `json:"metadata,omitempty"`
+	Metadata map[string]interface{} `json:"metadata,omitempty"`
 	HourlyCost NullableString `json:"hourlyCost,omitempty"`
 	MonthlyCost NullableString `json:"monthlyCost,omitempty"`
 	CostComponents []CostComponent `json:"costComponents,omitempty"`
@@ -86,20 +86,21 @@ func (o *Subresource) UnsetName() {
 	o.Name.Unset()
 }
 
-// GetMetadata returns the Metadata field value if set, zero value otherwise.
-func (o *Subresource) GetMetadata() Metadata {
-	if o == nil || IsNil(o.Metadata) {
-		var ret Metadata
+// GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Subresource) GetMetadata() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
 		return ret
 	}
-	return *o.Metadata
+	return o.Metadata
 }
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Subresource) GetMetadataOk() (*Metadata, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Subresource) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
-		return nil, false
+		return map[string]interface{}{}, false
 	}
 	return o.Metadata, true
 }
@@ -113,9 +114,9 @@ func (o *Subresource) HasMetadata() bool {
 	return false
 }
 
-// SetMetadata gets a reference to the given Metadata and assigns it to the Metadata field.
-func (o *Subresource) SetMetadata(v Metadata) {
-	o.Metadata = &v
+// SetMetadata gets a reference to the given map[string]interface{} and assigns it to the Metadata field.
+func (o *Subresource) SetMetadata(v map[string]interface{}) {
+	o.Metadata = v
 }
 
 // GetHourlyCost returns the HourlyCost field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -248,7 +249,7 @@ func (o Subresource) ToMap() (map[string]interface{}, error) {
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Metadata) {
+	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata
 	}
 	if o.HourlyCost.IsSet() {

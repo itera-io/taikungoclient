@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // checks if the Metadata type satisfies the MappedNullable interface at compile time
@@ -26,12 +25,10 @@ type Metadata struct {
 	VcsCommitSha NullableString `json:"vcsCommitSha,omitempty"`
 	VcsCommitAuthorName NullableString `json:"vcsCommitAuthorName,omitempty"`
 	VcsCommitAuthorEmail NullableString `json:"vcsCommitAuthorEmail,omitempty"`
-	VcsCommitTimestamp *time.Time `json:"vcsCommitTimestamp,omitempty"`
+	VcsCommitTimestamp NullableString `json:"vcsCommitTimestamp,omitempty"`
 	VcsCommitMessage NullableString `json:"vcsCommitMessage,omitempty"`
 	VcsRepositoryUrl NullableString `json:"vcsRepositoryUrl,omitempty"`
-	Path NullableString `json:"path,omitempty"`
-	Type NullableString `json:"type,omitempty"`
-	VcsSubPath NullableString `json:"vcsSubPath,omitempty"`
+	UsageApiEnabled *bool `json:"usageApiEnabled,omitempty"`
 }
 
 // NewMetadata instantiates a new Metadata object
@@ -261,36 +258,46 @@ func (o *Metadata) UnsetVcsCommitAuthorEmail() {
 	o.VcsCommitAuthorEmail.Unset()
 }
 
-// GetVcsCommitTimestamp returns the VcsCommitTimestamp field value if set, zero value otherwise.
-func (o *Metadata) GetVcsCommitTimestamp() time.Time {
-	if o == nil || IsNil(o.VcsCommitTimestamp) {
-		var ret time.Time
+// GetVcsCommitTimestamp returns the VcsCommitTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Metadata) GetVcsCommitTimestamp() string {
+	if o == nil || IsNil(o.VcsCommitTimestamp.Get()) {
+		var ret string
 		return ret
 	}
-	return *o.VcsCommitTimestamp
+	return *o.VcsCommitTimestamp.Get()
 }
 
 // GetVcsCommitTimestampOk returns a tuple with the VcsCommitTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Metadata) GetVcsCommitTimestampOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.VcsCommitTimestamp) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Metadata) GetVcsCommitTimestampOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.VcsCommitTimestamp, true
+	return o.VcsCommitTimestamp.Get(), o.VcsCommitTimestamp.IsSet()
 }
 
 // HasVcsCommitTimestamp returns a boolean if a field has been set.
 func (o *Metadata) HasVcsCommitTimestamp() bool {
-	if o != nil && !IsNil(o.VcsCommitTimestamp) {
+	if o != nil && o.VcsCommitTimestamp.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetVcsCommitTimestamp gets a reference to the given time.Time and assigns it to the VcsCommitTimestamp field.
-func (o *Metadata) SetVcsCommitTimestamp(v time.Time) {
-	o.VcsCommitTimestamp = &v
+// SetVcsCommitTimestamp gets a reference to the given NullableString and assigns it to the VcsCommitTimestamp field.
+func (o *Metadata) SetVcsCommitTimestamp(v string) {
+	o.VcsCommitTimestamp.Set(&v)
+}
+// SetVcsCommitTimestampNil sets the value for VcsCommitTimestamp to be an explicit nil
+func (o *Metadata) SetVcsCommitTimestampNil() {
+	o.VcsCommitTimestamp.Set(nil)
+}
+
+// UnsetVcsCommitTimestamp ensures that no value is present for VcsCommitTimestamp, not even an explicit nil
+func (o *Metadata) UnsetVcsCommitTimestamp() {
+	o.VcsCommitTimestamp.Unset()
 }
 
 // GetVcsCommitMessage returns the VcsCommitMessage field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -377,130 +384,36 @@ func (o *Metadata) UnsetVcsRepositoryUrl() {
 	o.VcsRepositoryUrl.Unset()
 }
 
-// GetPath returns the Path field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Metadata) GetPath() string {
-	if o == nil || IsNil(o.Path.Get()) {
-		var ret string
+// GetUsageApiEnabled returns the UsageApiEnabled field value if set, zero value otherwise.
+func (o *Metadata) GetUsageApiEnabled() bool {
+	if o == nil || IsNil(o.UsageApiEnabled) {
+		var ret bool
 		return ret
 	}
-	return *o.Path.Get()
+	return *o.UsageApiEnabled
 }
 
-// GetPathOk returns a tuple with the Path field value if set, nil otherwise
+// GetUsageApiEnabledOk returns a tuple with the UsageApiEnabled field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Metadata) GetPathOk() (*string, bool) {
-	if o == nil {
+func (o *Metadata) GetUsageApiEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.UsageApiEnabled) {
 		return nil, false
 	}
-	return o.Path.Get(), o.Path.IsSet()
+	return o.UsageApiEnabled, true
 }
 
-// HasPath returns a boolean if a field has been set.
-func (o *Metadata) HasPath() bool {
-	if o != nil && o.Path.IsSet() {
+// HasUsageApiEnabled returns a boolean if a field has been set.
+func (o *Metadata) HasUsageApiEnabled() bool {
+	if o != nil && !IsNil(o.UsageApiEnabled) {
 		return true
 	}
 
 	return false
 }
 
-// SetPath gets a reference to the given NullableString and assigns it to the Path field.
-func (o *Metadata) SetPath(v string) {
-	o.Path.Set(&v)
-}
-// SetPathNil sets the value for Path to be an explicit nil
-func (o *Metadata) SetPathNil() {
-	o.Path.Set(nil)
-}
-
-// UnsetPath ensures that no value is present for Path, not even an explicit nil
-func (o *Metadata) UnsetPath() {
-	o.Path.Unset()
-}
-
-// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Metadata) GetType() string {
-	if o == nil || IsNil(o.Type.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Type.Get()
-}
-
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Metadata) GetTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Type.Get(), o.Type.IsSet()
-}
-
-// HasType returns a boolean if a field has been set.
-func (o *Metadata) HasType() bool {
-	if o != nil && o.Type.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given NullableString and assigns it to the Type field.
-func (o *Metadata) SetType(v string) {
-	o.Type.Set(&v)
-}
-// SetTypeNil sets the value for Type to be an explicit nil
-func (o *Metadata) SetTypeNil() {
-	o.Type.Set(nil)
-}
-
-// UnsetType ensures that no value is present for Type, not even an explicit nil
-func (o *Metadata) UnsetType() {
-	o.Type.Unset()
-}
-
-// GetVcsSubPath returns the VcsSubPath field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Metadata) GetVcsSubPath() string {
-	if o == nil || IsNil(o.VcsSubPath.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.VcsSubPath.Get()
-}
-
-// GetVcsSubPathOk returns a tuple with the VcsSubPath field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Metadata) GetVcsSubPathOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.VcsSubPath.Get(), o.VcsSubPath.IsSet()
-}
-
-// HasVcsSubPath returns a boolean if a field has been set.
-func (o *Metadata) HasVcsSubPath() bool {
-	if o != nil && o.VcsSubPath.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetVcsSubPath gets a reference to the given NullableString and assigns it to the VcsSubPath field.
-func (o *Metadata) SetVcsSubPath(v string) {
-	o.VcsSubPath.Set(&v)
-}
-// SetVcsSubPathNil sets the value for VcsSubPath to be an explicit nil
-func (o *Metadata) SetVcsSubPathNil() {
-	o.VcsSubPath.Set(nil)
-}
-
-// UnsetVcsSubPath ensures that no value is present for VcsSubPath, not even an explicit nil
-func (o *Metadata) UnsetVcsSubPath() {
-	o.VcsSubPath.Unset()
+// SetUsageApiEnabled gets a reference to the given bool and assigns it to the UsageApiEnabled field.
+func (o *Metadata) SetUsageApiEnabled(v bool) {
+	o.UsageApiEnabled = &v
 }
 
 func (o Metadata) MarshalJSON() ([]byte, error) {
@@ -528,8 +441,8 @@ func (o Metadata) ToMap() (map[string]interface{}, error) {
 	if o.VcsCommitAuthorEmail.IsSet() {
 		toSerialize["vcsCommitAuthorEmail"] = o.VcsCommitAuthorEmail.Get()
 	}
-	if !IsNil(o.VcsCommitTimestamp) {
-		toSerialize["vcsCommitTimestamp"] = o.VcsCommitTimestamp
+	if o.VcsCommitTimestamp.IsSet() {
+		toSerialize["vcsCommitTimestamp"] = o.VcsCommitTimestamp.Get()
 	}
 	if o.VcsCommitMessage.IsSet() {
 		toSerialize["vcsCommitMessage"] = o.VcsCommitMessage.Get()
@@ -537,14 +450,8 @@ func (o Metadata) ToMap() (map[string]interface{}, error) {
 	if o.VcsRepositoryUrl.IsSet() {
 		toSerialize["vcsRepositoryUrl"] = o.VcsRepositoryUrl.Get()
 	}
-	if o.Path.IsSet() {
-		toSerialize["path"] = o.Path.Get()
-	}
-	if o.Type.IsSet() {
-		toSerialize["type"] = o.Type.Get()
-	}
-	if o.VcsSubPath.IsSet() {
-		toSerialize["vcsSubPath"] = o.VcsSubPath.Get()
+	if !IsNil(o.UsageApiEnabled) {
+		toSerialize["usageApiEnabled"] = o.UsageApiEnabled
 	}
 	return toSerialize, nil
 }

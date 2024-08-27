@@ -5416,8 +5416,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-08-25T00:03:20.4200246Z
-                  createdAt: 2024-08-25T00:03:20.4200246Z
+                  lastValidated: 2024-08-27T00:02:58.5279278Z
+                  createdAt: 2024-08-27T00:02:58.5279278Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5522,14 +5522,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-08-25T00:03:20.4200246Z
+                    lastBackup: 2024-08-27T00:02:58.5279278Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-08-25T00:03:20.4200246Z
+                  createdAt: 2024-08-27T00:02:58.5279278Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-08-25T00:03:20.4200246Z
+                  lastBackup: 2024-08-27T00:02:58.5279278Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5634,8 +5634,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-08-25T00:03:20.4200246Z
-                  expiration: 2024-08-25T00:03:20.4200246Z
+                  createdAt: 2024-08-27T00:02:58.5279278Z
+                  expiration: 2024-08-27T00:02:58.5279278Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5739,7 +5739,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-08-25T00:03:20.4200246Z
+                  createdAt: 2024-08-27T00:02:58.5279278Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5849,9 +5849,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-08-25T00:03:20.4200246+00:00
-                  startTimeStamp: 2024-08-25T00:03:20.4200246+00:00
-                  createdAt: 2024-08-25T00:03:20.4200246Z
+                  completionDateTime: 2024-08-27T00:02:58.5279278+00:00
+                  startTimeStamp: 2024-08-27T00:02:58.5279278+00:00
+                  createdAt: 2024-08-27T00:02:58.5279278Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -41512,6 +41512,183 @@ components:
         cloudType:
           $ref: '#/components/schemas/CloudType'
       type: object
+    Breakdown:
+      additionalProperties: false
+      example:
+        totalMonthlyCost: totalMonthlyCost
+        resources:
+        - metadata:
+            key: ""
+          monthlyUsageCost: monthlyUsageCost
+          name: name
+          hourlyCost: hourlyCost
+          subresources:
+          - metadata:
+              key: ""
+            name: name
+            hourlyCost: hourlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+          - metadata:
+              key: ""
+            name: name
+            hourlyCost: hourlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+          costComponents:
+          - unit: unit
+            hourlyQuantity: hourlyQuantity
+            price: price
+            name: name
+            hourlyCost: hourlyCost
+            monthlyQuantity: monthlyQuantity
+            usageBased: true
+            priceNotFound: true
+            monthlyCost: monthlyCost
+          - unit: unit
+            hourlyQuantity: hourlyQuantity
+            price: price
+            name: name
+            hourlyCost: hourlyCost
+            monthlyQuantity: monthlyQuantity
+            usageBased: true
+            priceNotFound: true
+            monthlyCost: monthlyCost
+          monthlyCost: monthlyCost
+          resourceType: resourceType
+          tags:
+            key: tags
+        - metadata:
+            key: ""
+          monthlyUsageCost: monthlyUsageCost
+          name: name
+          hourlyCost: hourlyCost
+          subresources:
+          - metadata:
+              key: ""
+            name: name
+            hourlyCost: hourlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+          - metadata:
+              key: ""
+            name: name
+            hourlyCost: hourlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+          costComponents:
+          - unit: unit
+            hourlyQuantity: hourlyQuantity
+            price: price
+            name: name
+            hourlyCost: hourlyCost
+            monthlyQuantity: monthlyQuantity
+            usageBased: true
+            priceNotFound: true
+            monthlyCost: monthlyCost
+          - unit: unit
+            hourlyQuantity: hourlyQuantity
+            price: price
+            name: name
+            hourlyCost: hourlyCost
+            monthlyQuantity: monthlyQuantity
+            usageBased: true
+            priceNotFound: true
+            monthlyCost: monthlyCost
+          monthlyCost: monthlyCost
+          resourceType: resourceType
+          tags:
+            key: tags
+        totalHourlyCost: totalHourlyCost
+        totalMonthlyUsageCost: totalMonthlyUsageCost
+      properties:
+        resources:
+          items:
+            $ref: '#/components/schemas/Resource'
+          nullable: true
+          type: array
+        totalHourlyCost:
+          nullable: true
+          type: string
+        totalMonthlyCost:
+          nullable: true
+          type: string
+        totalMonthlyUsageCost:
+          nullable: true
+          type: string
+      type: object
     BridgeListCommand:
       additionalProperties: false
       example:
@@ -43198,6 +43375,8 @@ components:
         name: name
         hourlyCost: hourlyCost
         monthlyQuantity: monthlyQuantity
+        usageBased: true
+        priceNotFound: true
         monthlyCost: monthlyCost
       properties:
         name:
@@ -43221,6 +43400,11 @@ components:
         monthlyCost:
           nullable: true
           type: string
+        priceNotFound:
+          type: boolean
+        usageBased:
+          nullable: true
+          type: boolean
       type: object
     CountryListDto:
       additionalProperties: false
@@ -46544,6 +46728,183 @@ components:
           nullable: true
           type: string
       type: object
+    Diff:
+      additionalProperties: false
+      example:
+        totalMonthlyCost: totalMonthlyCost
+        resources:
+        - metadata:
+            key: ""
+          monthlyUsageCost: monthlyUsageCost
+          name: name
+          hourlyCost: hourlyCost
+          subresources:
+          - metadata:
+              key: ""
+            name: name
+            hourlyCost: hourlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+          - metadata:
+              key: ""
+            name: name
+            hourlyCost: hourlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+          costComponents:
+          - unit: unit
+            hourlyQuantity: hourlyQuantity
+            price: price
+            name: name
+            hourlyCost: hourlyCost
+            monthlyQuantity: monthlyQuantity
+            usageBased: true
+            priceNotFound: true
+            monthlyCost: monthlyCost
+          - unit: unit
+            hourlyQuantity: hourlyQuantity
+            price: price
+            name: name
+            hourlyCost: hourlyCost
+            monthlyQuantity: monthlyQuantity
+            usageBased: true
+            priceNotFound: true
+            monthlyCost: monthlyCost
+          monthlyCost: monthlyCost
+          resourceType: resourceType
+          tags:
+            key: tags
+        - metadata:
+            key: ""
+          monthlyUsageCost: monthlyUsageCost
+          name: name
+          hourlyCost: hourlyCost
+          subresources:
+          - metadata:
+              key: ""
+            name: name
+            hourlyCost: hourlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+          - metadata:
+              key: ""
+            name: name
+            hourlyCost: hourlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+          costComponents:
+          - unit: unit
+            hourlyQuantity: hourlyQuantity
+            price: price
+            name: name
+            hourlyCost: hourlyCost
+            monthlyQuantity: monthlyQuantity
+            usageBased: true
+            priceNotFound: true
+            monthlyCost: monthlyCost
+          - unit: unit
+            hourlyQuantity: hourlyQuantity
+            price: price
+            name: name
+            hourlyCost: hourlyCost
+            monthlyQuantity: monthlyQuantity
+            usageBased: true
+            priceNotFound: true
+            monthlyCost: monthlyCost
+          monthlyCost: monthlyCost
+          resourceType: resourceType
+          tags:
+            key: tags
+        totalHourlyCost: totalHourlyCost
+        totalMonthlyUsageCost: totalMonthlyUsageCost
+      properties:
+        resources:
+          items:
+            $ref: '#/components/schemas/Resource'
+          nullable: true
+          type: array
+        totalHourlyCost:
+          nullable: true
+          type: string
+        totalMonthlyCost:
+          nullable: true
+          type: string
+        totalMonthlyUsageCost:
+          nullable: true
+          type: string
+      type: object
     DisableAutoscalingCommand:
       additionalProperties: false
       example:
@@ -47268,195 +47629,1043 @@ components:
     EstimatedInfracost:
       additionalProperties: false
       example:
+        timeGenerated: timeGenerated
+        summary:
+          totalUnsupportedResources: 1
+          totalUsageBasedResources: 5
+          totalNoPriceResources: 5
+          noPriceResourceCounts:
+            key: 7
+          totalDetectedResources: 0
+          totalSupportedResources: 6
+          unsupportedResourceCounts:
+            key: 2
+        diffTotalHourlyCost: diffTotalHourlyCost
+        metadata:
+          vcsCommitTimestamp: vcsCommitTimestamp
+          usageApiEnabled: true
+          vcsCommitMessage: vcsCommitMessage
+          vcsBranch: vcsBranch
+          vcsCommitAuthorName: vcsCommitAuthorName
+          infracostCommand: infracostCommand
+          vcsCommitSha: vcsCommitSha
+          vcsRepositoryUrl: vcsRepositoryUrl
+          vcsCommitAuthorEmail: vcsCommitAuthorEmail
+        projects:
+        - pastBreakdown:
+            totalMonthlyCost: totalMonthlyCost
+            resources:
+            - metadata:
+                key: ""
+              monthlyUsageCost: monthlyUsageCost
+              name: name
+              hourlyCost: hourlyCost
+              subresources:
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+              resourceType: resourceType
+              tags:
+                key: tags
+            - metadata:
+                key: ""
+              monthlyUsageCost: monthlyUsageCost
+              name: name
+              hourlyCost: hourlyCost
+              subresources:
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+              resourceType: resourceType
+              tags:
+                key: tags
+            totalHourlyCost: totalHourlyCost
+            totalMonthlyUsageCost: totalMonthlyUsageCost
+          summary:
+            totalUnsupportedResources: 1
+            totalUsageBasedResources: 5
+            totalNoPriceResources: 5
+            noPriceResourceCounts:
+              key: 7
+            totalDetectedResources: 0
+            totalSupportedResources: 6
+            unsupportedResourceCounts:
+              key: 2
+          metadata:
+            vcsSubPath: vcsSubPath
+            path: path
+            type: type
+            providers:
+            - name: name
+            - name: name
+          displayName: displayName
+          breakdown:
+            totalMonthlyCost: totalMonthlyCost
+            resources:
+            - metadata:
+                key: ""
+              monthlyUsageCost: monthlyUsageCost
+              name: name
+              hourlyCost: hourlyCost
+              subresources:
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+              resourceType: resourceType
+              tags:
+                key: tags
+            - metadata:
+                key: ""
+              monthlyUsageCost: monthlyUsageCost
+              name: name
+              hourlyCost: hourlyCost
+              subresources:
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+              resourceType: resourceType
+              tags:
+                key: tags
+            totalHourlyCost: totalHourlyCost
+            totalMonthlyUsageCost: totalMonthlyUsageCost
+          name: name
+          diff:
+            totalMonthlyCost: totalMonthlyCost
+            resources:
+            - metadata:
+                key: ""
+              monthlyUsageCost: monthlyUsageCost
+              name: name
+              hourlyCost: hourlyCost
+              subresources:
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+              resourceType: resourceType
+              tags:
+                key: tags
+            - metadata:
+                key: ""
+              monthlyUsageCost: monthlyUsageCost
+              name: name
+              hourlyCost: hourlyCost
+              subresources:
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+              resourceType: resourceType
+              tags:
+                key: tags
+            totalHourlyCost: totalHourlyCost
+            totalMonthlyUsageCost: totalMonthlyUsageCost
+        - pastBreakdown:
+            totalMonthlyCost: totalMonthlyCost
+            resources:
+            - metadata:
+                key: ""
+              monthlyUsageCost: monthlyUsageCost
+              name: name
+              hourlyCost: hourlyCost
+              subresources:
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+              resourceType: resourceType
+              tags:
+                key: tags
+            - metadata:
+                key: ""
+              monthlyUsageCost: monthlyUsageCost
+              name: name
+              hourlyCost: hourlyCost
+              subresources:
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+              resourceType: resourceType
+              tags:
+                key: tags
+            totalHourlyCost: totalHourlyCost
+            totalMonthlyUsageCost: totalMonthlyUsageCost
+          summary:
+            totalUnsupportedResources: 1
+            totalUsageBasedResources: 5
+            totalNoPriceResources: 5
+            noPriceResourceCounts:
+              key: 7
+            totalDetectedResources: 0
+            totalSupportedResources: 6
+            unsupportedResourceCounts:
+              key: 2
+          metadata:
+            vcsSubPath: vcsSubPath
+            path: path
+            type: type
+            providers:
+            - name: name
+            - name: name
+          displayName: displayName
+          breakdown:
+            totalMonthlyCost: totalMonthlyCost
+            resources:
+            - metadata:
+                key: ""
+              monthlyUsageCost: monthlyUsageCost
+              name: name
+              hourlyCost: hourlyCost
+              subresources:
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+              resourceType: resourceType
+              tags:
+                key: tags
+            - metadata:
+                key: ""
+              monthlyUsageCost: monthlyUsageCost
+              name: name
+              hourlyCost: hourlyCost
+              subresources:
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+              resourceType: resourceType
+              tags:
+                key: tags
+            totalHourlyCost: totalHourlyCost
+            totalMonthlyUsageCost: totalMonthlyUsageCost
+          name: name
+          diff:
+            totalMonthlyCost: totalMonthlyCost
+            resources:
+            - metadata:
+                key: ""
+              monthlyUsageCost: monthlyUsageCost
+              name: name
+              hourlyCost: hourlyCost
+              subresources:
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+              resourceType: resourceType
+              tags:
+                key: tags
+            - metadata:
+                key: ""
+              monthlyUsageCost: monthlyUsageCost
+              name: name
+              hourlyCost: hourlyCost
+              subresources:
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              - metadata:
+                  key: ""
+                name: name
+                hourlyCost: hourlyCost
+                costComponents:
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                - unit: unit
+                  hourlyQuantity: hourlyQuantity
+                  price: price
+                  name: name
+                  hourlyCost: hourlyCost
+                  monthlyQuantity: monthlyQuantity
+                  usageBased: true
+                  priceNotFound: true
+                  monthlyCost: monthlyCost
+                monthlyCost: monthlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+              resourceType: resourceType
+              tags:
+                key: tags
+            totalHourlyCost: totalHourlyCost
+            totalMonthlyUsageCost: totalMonthlyUsageCost
+        pastTotalMonthlyUsageCost: pastTotalMonthlyUsageCost
+        diffTotalMonthlyUsageCost: diffTotalMonthlyUsageCost
+        pastTotalMonthlyCost: pastTotalMonthlyCost
+        version: version
+        pastTotalHourlyCost: pastTotalHourlyCost
         totalMonthlyCost: totalMonthlyCost
-        resources:
-        - metadata:
-            vcsSubPath: vcsSubPath
-            path: path
-            vcsCommitTimestamp: 2000-01-23T04:56:07.000+00:00
-            vcsCommitMessage: vcsCommitMessage
-            vcsBranch: vcsBranch
-            vcsCommitAuthorName: vcsCommitAuthorName
-            type: type
-            infracostCommand: infracostCommand
-            vcsCommitSha: vcsCommitSha
-            vcsRepositoryUrl: vcsRepositoryUrl
-            vcsCommitAuthorEmail: vcsCommitAuthorEmail
-          name: name
-          hourlyCost: hourlyCost
-          subresources:
-          - metadata:
-              vcsSubPath: vcsSubPath
-              path: path
-              vcsCommitTimestamp: 2000-01-23T04:56:07.000+00:00
-              vcsCommitMessage: vcsCommitMessage
-              vcsBranch: vcsBranch
-              vcsCommitAuthorName: vcsCommitAuthorName
-              type: type
-              infracostCommand: infracostCommand
-              vcsCommitSha: vcsCommitSha
-              vcsRepositoryUrl: vcsRepositoryUrl
-              vcsCommitAuthorEmail: vcsCommitAuthorEmail
-            name: name
-            hourlyCost: hourlyCost
-            costComponents:
-            - unit: unit
-              hourlyQuantity: hourlyQuantity
-              price: price
-              name: name
-              hourlyCost: hourlyCost
-              monthlyQuantity: monthlyQuantity
-              monthlyCost: monthlyCost
-            - unit: unit
-              hourlyQuantity: hourlyQuantity
-              price: price
-              name: name
-              hourlyCost: hourlyCost
-              monthlyQuantity: monthlyQuantity
-              monthlyCost: monthlyCost
-            monthlyCost: monthlyCost
-          - metadata:
-              vcsSubPath: vcsSubPath
-              path: path
-              vcsCommitTimestamp: 2000-01-23T04:56:07.000+00:00
-              vcsCommitMessage: vcsCommitMessage
-              vcsBranch: vcsBranch
-              vcsCommitAuthorName: vcsCommitAuthorName
-              type: type
-              infracostCommand: infracostCommand
-              vcsCommitSha: vcsCommitSha
-              vcsRepositoryUrl: vcsRepositoryUrl
-              vcsCommitAuthorEmail: vcsCommitAuthorEmail
-            name: name
-            hourlyCost: hourlyCost
-            costComponents:
-            - unit: unit
-              hourlyQuantity: hourlyQuantity
-              price: price
-              name: name
-              hourlyCost: hourlyCost
-              monthlyQuantity: monthlyQuantity
-              monthlyCost: monthlyCost
-            - unit: unit
-              hourlyQuantity: hourlyQuantity
-              price: price
-              name: name
-              hourlyCost: hourlyCost
-              monthlyQuantity: monthlyQuantity
-              monthlyCost: monthlyCost
-            monthlyCost: monthlyCost
-          costComponents:
-          - unit: unit
-            hourlyQuantity: hourlyQuantity
-            price: price
-            name: name
-            hourlyCost: hourlyCost
-            monthlyQuantity: monthlyQuantity
-            monthlyCost: monthlyCost
-          - unit: unit
-            hourlyQuantity: hourlyQuantity
-            price: price
-            name: name
-            hourlyCost: hourlyCost
-            monthlyQuantity: monthlyQuantity
-            monthlyCost: monthlyCost
-          monthlyCost: monthlyCost
-        - metadata:
-            vcsSubPath: vcsSubPath
-            path: path
-            vcsCommitTimestamp: 2000-01-23T04:56:07.000+00:00
-            vcsCommitMessage: vcsCommitMessage
-            vcsBranch: vcsBranch
-            vcsCommitAuthorName: vcsCommitAuthorName
-            type: type
-            infracostCommand: infracostCommand
-            vcsCommitSha: vcsCommitSha
-            vcsRepositoryUrl: vcsRepositoryUrl
-            vcsCommitAuthorEmail: vcsCommitAuthorEmail
-          name: name
-          hourlyCost: hourlyCost
-          subresources:
-          - metadata:
-              vcsSubPath: vcsSubPath
-              path: path
-              vcsCommitTimestamp: 2000-01-23T04:56:07.000+00:00
-              vcsCommitMessage: vcsCommitMessage
-              vcsBranch: vcsBranch
-              vcsCommitAuthorName: vcsCommitAuthorName
-              type: type
-              infracostCommand: infracostCommand
-              vcsCommitSha: vcsCommitSha
-              vcsRepositoryUrl: vcsRepositoryUrl
-              vcsCommitAuthorEmail: vcsCommitAuthorEmail
-            name: name
-            hourlyCost: hourlyCost
-            costComponents:
-            - unit: unit
-              hourlyQuantity: hourlyQuantity
-              price: price
-              name: name
-              hourlyCost: hourlyCost
-              monthlyQuantity: monthlyQuantity
-              monthlyCost: monthlyCost
-            - unit: unit
-              hourlyQuantity: hourlyQuantity
-              price: price
-              name: name
-              hourlyCost: hourlyCost
-              monthlyQuantity: monthlyQuantity
-              monthlyCost: monthlyCost
-            monthlyCost: monthlyCost
-          - metadata:
-              vcsSubPath: vcsSubPath
-              path: path
-              vcsCommitTimestamp: 2000-01-23T04:56:07.000+00:00
-              vcsCommitMessage: vcsCommitMessage
-              vcsBranch: vcsBranch
-              vcsCommitAuthorName: vcsCommitAuthorName
-              type: type
-              infracostCommand: infracostCommand
-              vcsCommitSha: vcsCommitSha
-              vcsRepositoryUrl: vcsRepositoryUrl
-              vcsCommitAuthorEmail: vcsCommitAuthorEmail
-            name: name
-            hourlyCost: hourlyCost
-            costComponents:
-            - unit: unit
-              hourlyQuantity: hourlyQuantity
-              price: price
-              name: name
-              hourlyCost: hourlyCost
-              monthlyQuantity: monthlyQuantity
-              monthlyCost: monthlyCost
-            - unit: unit
-              hourlyQuantity: hourlyQuantity
-              price: price
-              name: name
-              hourlyCost: hourlyCost
-              monthlyQuantity: monthlyQuantity
-              monthlyCost: monthlyCost
-            monthlyCost: monthlyCost
-          costComponents:
-          - unit: unit
-            hourlyQuantity: hourlyQuantity
-            price: price
-            name: name
-            hourlyCost: hourlyCost
-            monthlyQuantity: monthlyQuantity
-            monthlyCost: monthlyCost
-          - unit: unit
-            hourlyQuantity: hourlyQuantity
-            price: price
-            name: name
-            hourlyCost: hourlyCost
-            monthlyQuantity: monthlyQuantity
-            monthlyCost: monthlyCost
-          monthlyCost: monthlyCost
+        diffTotalMonthlyCost: diffTotalMonthlyCost
+        currency: currency
         totalHourlyCost: totalHourlyCost
+        totalMonthlyUsageCost: totalMonthlyUsageCost
       properties:
-        resources:
+        version:
+          nullable: true
+          type: string
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        currency:
+          nullable: true
+          type: string
+        projects:
           items:
-            $ref: '#/components/schemas/Resource'
+            $ref: '#/components/schemas/ProjectInfracost'
           nullable: true
           type: array
         totalHourlyCost:
@@ -47465,6 +48674,32 @@ components:
         totalMonthlyCost:
           nullable: true
           type: string
+        totalMonthlyUsageCost:
+          nullable: true
+          type: string
+        pastTotalHourlyCost:
+          nullable: true
+          type: string
+        pastTotalMonthlyCost:
+          nullable: true
+          type: string
+        pastTotalMonthlyUsageCost:
+          nullable: true
+          type: string
+        diffTotalHourlyCost:
+          nullable: true
+          type: string
+        diffTotalMonthlyCost:
+          nullable: true
+          type: string
+        diffTotalMonthlyUsageCost:
+          nullable: true
+          type: string
+        timeGenerated:
+          nullable: true
+          type: string
+        summary:
+          $ref: '#/components/schemas/Summary'
       type: object
     ExceededQuotaDto:
       additionalProperties: false
@@ -50683,13 +51918,11 @@ components:
     Metadata:
       additionalProperties: false
       example:
-        vcsSubPath: vcsSubPath
-        path: path
-        vcsCommitTimestamp: 2000-01-23T04:56:07.000+00:00
+        vcsCommitTimestamp: vcsCommitTimestamp
+        usageApiEnabled: true
         vcsCommitMessage: vcsCommitMessage
         vcsBranch: vcsBranch
         vcsCommitAuthorName: vcsCommitAuthorName
-        type: type
         infracostCommand: infracostCommand
         vcsCommitSha: vcsCommitSha
         vcsRepositoryUrl: vcsRepositoryUrl
@@ -50711,7 +51944,7 @@ components:
           nullable: true
           type: string
         vcsCommitTimestamp:
-          format: date-time
+          nullable: true
           type: string
         vcsCommitMessage:
           nullable: true
@@ -50719,15 +51952,8 @@ components:
         vcsRepositoryUrl:
           nullable: true
           type: string
-        path:
-          nullable: true
-          type: string
-        type:
-          nullable: true
-          type: string
-        vcsSubPath:
-          nullable: true
-          type: string
+        usageApiEnabled:
+          type: boolean
       type: object
     MonitoringCredentialsListDto:
       additionalProperties: false
@@ -54997,6 +56223,523 @@ components:
       - Unknown
       - Warning
       type: string
+    ProjectInfracost:
+      additionalProperties: false
+      example:
+        pastBreakdown:
+          totalMonthlyCost: totalMonthlyCost
+          resources:
+          - metadata:
+              key: ""
+            monthlyUsageCost: monthlyUsageCost
+            name: name
+            hourlyCost: hourlyCost
+            subresources:
+            - metadata:
+                key: ""
+              name: name
+              hourlyCost: hourlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+            - metadata:
+                key: ""
+              name: name
+              hourlyCost: hourlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+            resourceType: resourceType
+            tags:
+              key: tags
+          - metadata:
+              key: ""
+            monthlyUsageCost: monthlyUsageCost
+            name: name
+            hourlyCost: hourlyCost
+            subresources:
+            - metadata:
+                key: ""
+              name: name
+              hourlyCost: hourlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+            - metadata:
+                key: ""
+              name: name
+              hourlyCost: hourlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+            resourceType: resourceType
+            tags:
+              key: tags
+          totalHourlyCost: totalHourlyCost
+          totalMonthlyUsageCost: totalMonthlyUsageCost
+        summary:
+          totalUnsupportedResources: 1
+          totalUsageBasedResources: 5
+          totalNoPriceResources: 5
+          noPriceResourceCounts:
+            key: 7
+          totalDetectedResources: 0
+          totalSupportedResources: 6
+          unsupportedResourceCounts:
+            key: 2
+        metadata:
+          vcsSubPath: vcsSubPath
+          path: path
+          type: type
+          providers:
+          - name: name
+          - name: name
+        displayName: displayName
+        breakdown:
+          totalMonthlyCost: totalMonthlyCost
+          resources:
+          - metadata:
+              key: ""
+            monthlyUsageCost: monthlyUsageCost
+            name: name
+            hourlyCost: hourlyCost
+            subresources:
+            - metadata:
+                key: ""
+              name: name
+              hourlyCost: hourlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+            - metadata:
+                key: ""
+              name: name
+              hourlyCost: hourlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+            resourceType: resourceType
+            tags:
+              key: tags
+          - metadata:
+              key: ""
+            monthlyUsageCost: monthlyUsageCost
+            name: name
+            hourlyCost: hourlyCost
+            subresources:
+            - metadata:
+                key: ""
+              name: name
+              hourlyCost: hourlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+            - metadata:
+                key: ""
+              name: name
+              hourlyCost: hourlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+            resourceType: resourceType
+            tags:
+              key: tags
+          totalHourlyCost: totalHourlyCost
+          totalMonthlyUsageCost: totalMonthlyUsageCost
+        name: name
+        diff:
+          totalMonthlyCost: totalMonthlyCost
+          resources:
+          - metadata:
+              key: ""
+            monthlyUsageCost: monthlyUsageCost
+            name: name
+            hourlyCost: hourlyCost
+            subresources:
+            - metadata:
+                key: ""
+              name: name
+              hourlyCost: hourlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+            - metadata:
+                key: ""
+              name: name
+              hourlyCost: hourlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+            resourceType: resourceType
+            tags:
+              key: tags
+          - metadata:
+              key: ""
+            monthlyUsageCost: monthlyUsageCost
+            name: name
+            hourlyCost: hourlyCost
+            subresources:
+            - metadata:
+                key: ""
+              name: name
+              hourlyCost: hourlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+            - metadata:
+                key: ""
+              name: name
+              hourlyCost: hourlyCost
+              costComponents:
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              - unit: unit
+                hourlyQuantity: hourlyQuantity
+                price: price
+                name: name
+                hourlyCost: hourlyCost
+                monthlyQuantity: monthlyQuantity
+                usageBased: true
+                priceNotFound: true
+                monthlyCost: monthlyCost
+              monthlyCost: monthlyCost
+            costComponents:
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            - unit: unit
+              hourlyQuantity: hourlyQuantity
+              price: price
+              name: name
+              hourlyCost: hourlyCost
+              monthlyQuantity: monthlyQuantity
+              usageBased: true
+              priceNotFound: true
+              monthlyCost: monthlyCost
+            monthlyCost: monthlyCost
+            resourceType: resourceType
+            tags:
+              key: tags
+          totalHourlyCost: totalHourlyCost
+          totalMonthlyUsageCost: totalMonthlyUsageCost
+      properties:
+        name:
+          nullable: true
+          type: string
+        displayName:
+          nullable: true
+          type: string
+        metadata:
+          $ref: '#/components/schemas/ProjectMetadata'
+        pastBreakdown:
+          $ref: '#/components/schemas/Breakdown'
+        breakdown:
+          $ref: '#/components/schemas/Breakdown'
+        diff:
+          $ref: '#/components/schemas/Diff'
+        summary:
+          $ref: '#/components/schemas/Summary'
+      type: object
     ProjectListDetailDto:
       additionalProperties: false
       example:
@@ -55351,6 +57094,31 @@ components:
         mode:
           nullable: true
           type: string
+      type: object
+    ProjectMetadata:
+      additionalProperties: false
+      example:
+        vcsSubPath: vcsSubPath
+        path: path
+        type: type
+        providers:
+        - name: name
+        - name: name
+      properties:
+        path:
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+        vcsSubPath:
+          nullable: true
+          type: string
+        providers:
+          items:
+            $ref: '#/components/schemas/Provider'
+          nullable: true
+          type: array
       type: object
     ProjectMonitoringAlertsDto:
       additionalProperties: false
@@ -56641,6 +58409,15 @@ components:
       - Count
       - Sum
       type: string
+    Provider:
+      additionalProperties: false
+      example:
+        name: name
+      properties:
+        name:
+          nullable: true
+          type: string
+      type: object
     ProxmoxCheckerCommand:
       additionalProperties: false
       example:
@@ -57295,32 +59072,13 @@ components:
       additionalProperties: false
       example:
         metadata:
-          vcsSubPath: vcsSubPath
-          path: path
-          vcsCommitTimestamp: 2000-01-23T04:56:07.000+00:00
-          vcsCommitMessage: vcsCommitMessage
-          vcsBranch: vcsBranch
-          vcsCommitAuthorName: vcsCommitAuthorName
-          type: type
-          infracostCommand: infracostCommand
-          vcsCommitSha: vcsCommitSha
-          vcsRepositoryUrl: vcsRepositoryUrl
-          vcsCommitAuthorEmail: vcsCommitAuthorEmail
+          key: ""
+        monthlyUsageCost: monthlyUsageCost
         name: name
         hourlyCost: hourlyCost
         subresources:
         - metadata:
-            vcsSubPath: vcsSubPath
-            path: path
-            vcsCommitTimestamp: 2000-01-23T04:56:07.000+00:00
-            vcsCommitMessage: vcsCommitMessage
-            vcsBranch: vcsBranch
-            vcsCommitAuthorName: vcsCommitAuthorName
-            type: type
-            infracostCommand: infracostCommand
-            vcsCommitSha: vcsCommitSha
-            vcsRepositoryUrl: vcsRepositoryUrl
-            vcsCommitAuthorEmail: vcsCommitAuthorEmail
+            key: ""
           name: name
           hourlyCost: hourlyCost
           costComponents:
@@ -57330,6 +59088,8 @@ components:
             name: name
             hourlyCost: hourlyCost
             monthlyQuantity: monthlyQuantity
+            usageBased: true
+            priceNotFound: true
             monthlyCost: monthlyCost
           - unit: unit
             hourlyQuantity: hourlyQuantity
@@ -57337,20 +59097,12 @@ components:
             name: name
             hourlyCost: hourlyCost
             monthlyQuantity: monthlyQuantity
+            usageBased: true
+            priceNotFound: true
             monthlyCost: monthlyCost
           monthlyCost: monthlyCost
         - metadata:
-            vcsSubPath: vcsSubPath
-            path: path
-            vcsCommitTimestamp: 2000-01-23T04:56:07.000+00:00
-            vcsCommitMessage: vcsCommitMessage
-            vcsBranch: vcsBranch
-            vcsCommitAuthorName: vcsCommitAuthorName
-            type: type
-            infracostCommand: infracostCommand
-            vcsCommitSha: vcsCommitSha
-            vcsRepositoryUrl: vcsRepositoryUrl
-            vcsCommitAuthorEmail: vcsCommitAuthorEmail
+            key: ""
           name: name
           hourlyCost: hourlyCost
           costComponents:
@@ -57360,6 +59112,8 @@ components:
             name: name
             hourlyCost: hourlyCost
             monthlyQuantity: monthlyQuantity
+            usageBased: true
+            priceNotFound: true
             monthlyCost: monthlyCost
           - unit: unit
             hourlyQuantity: hourlyQuantity
@@ -57367,6 +59121,8 @@ components:
             name: name
             hourlyCost: hourlyCost
             monthlyQuantity: monthlyQuantity
+            usageBased: true
+            priceNotFound: true
             monthlyCost: monthlyCost
           monthlyCost: monthlyCost
         costComponents:
@@ -57376,6 +59132,8 @@ components:
           name: name
           hourlyCost: hourlyCost
           monthlyQuantity: monthlyQuantity
+          usageBased: true
+          priceNotFound: true
           monthlyCost: monthlyCost
         - unit: unit
           hourlyQuantity: hourlyQuantity
@@ -57383,18 +59141,38 @@ components:
           name: name
           hourlyCost: hourlyCost
           monthlyQuantity: monthlyQuantity
+          usageBased: true
+          priceNotFound: true
           monthlyCost: monthlyCost
         monthlyCost: monthlyCost
+        resourceType: resourceType
+        tags:
+          key: tags
       properties:
         name:
           nullable: true
           type: string
+        resourceType:
+          nullable: true
+          type: string
+        tags:
+          additionalProperties:
+            nullable: true
+            type: string
+          nullable: true
+          type: object
         metadata:
-          $ref: '#/components/schemas/Metadata'
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
         hourlyCost:
           nullable: true
           type: string
         monthlyCost:
+          nullable: true
+          type: string
+        monthlyUsageCost:
           nullable: true
           type: string
         costComponents:
@@ -60608,17 +62386,7 @@ components:
       additionalProperties: false
       example:
         metadata:
-          vcsSubPath: vcsSubPath
-          path: path
-          vcsCommitTimestamp: 2000-01-23T04:56:07.000+00:00
-          vcsCommitMessage: vcsCommitMessage
-          vcsBranch: vcsBranch
-          vcsCommitAuthorName: vcsCommitAuthorName
-          type: type
-          infracostCommand: infracostCommand
-          vcsCommitSha: vcsCommitSha
-          vcsRepositoryUrl: vcsRepositoryUrl
-          vcsCommitAuthorEmail: vcsCommitAuthorEmail
+          key: ""
         name: name
         hourlyCost: hourlyCost
         costComponents:
@@ -60628,6 +62396,8 @@ components:
           name: name
           hourlyCost: hourlyCost
           monthlyQuantity: monthlyQuantity
+          usageBased: true
+          priceNotFound: true
           monthlyCost: monthlyCost
         - unit: unit
           hourlyQuantity: hourlyQuantity
@@ -60635,6 +62405,8 @@ components:
           name: name
           hourlyCost: hourlyCost
           monthlyQuantity: monthlyQuantity
+          usageBased: true
+          priceNotFound: true
           monthlyCost: monthlyCost
         monthlyCost: monthlyCost
       properties:
@@ -60642,7 +62414,10 @@ components:
           nullable: true
           type: string
         metadata:
-          $ref: '#/components/schemas/Metadata'
+          additionalProperties:
+            nullable: true
+          nullable: true
+          type: object
         hourlyCost:
           nullable: true
           type: string
@@ -60654,6 +62429,49 @@ components:
             $ref: '#/components/schemas/CostComponent'
           nullable: true
           type: array
+      type: object
+    Summary:
+      additionalProperties: false
+      example:
+        totalUnsupportedResources: 1
+        totalUsageBasedResources: 5
+        totalNoPriceResources: 5
+        noPriceResourceCounts:
+          key: 7
+        totalDetectedResources: 0
+        totalSupportedResources: 6
+        unsupportedResourceCounts:
+          key: 2
+      properties:
+        totalDetectedResources:
+          format: int32
+          type: integer
+        totalSupportedResources:
+          format: int32
+          type: integer
+        totalUnsupportedResources:
+          format: int32
+          type: integer
+        totalUsageBasedResources:
+          format: int32
+          type: integer
+        totalNoPriceResources:
+          format: int32
+          type: integer
+        unsupportedResourceCounts:
+          additionalProperties:
+            format: int32
+            nullable: true
+            type: integer
+          nullable: true
+          type: object
+        noPriceResourceCounts:
+          additionalProperties:
+            format: int32
+            nullable: true
+            type: integer
+          nullable: true
+          type: object
       type: object
     SyncBackupCredentialsCommand:
       additionalProperties: false
