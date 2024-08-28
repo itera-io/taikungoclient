@@ -27,6 +27,8 @@ type CostComponent struct {
 	Price NullableString `json:"price,omitempty"`
 	HourlyCost NullableString `json:"hourlyCost,omitempty"`
 	MonthlyCost NullableString `json:"monthlyCost,omitempty"`
+	PriceNotFound *bool `json:"priceNotFound,omitempty"`
+	UsageBased NullableBool `json:"usageBased,omitempty"`
 }
 
 // NewCostComponent instantiates a new CostComponent object
@@ -340,6 +342,80 @@ func (o *CostComponent) UnsetMonthlyCost() {
 	o.MonthlyCost.Unset()
 }
 
+// GetPriceNotFound returns the PriceNotFound field value if set, zero value otherwise.
+func (o *CostComponent) GetPriceNotFound() bool {
+	if o == nil || IsNil(o.PriceNotFound) {
+		var ret bool
+		return ret
+	}
+	return *o.PriceNotFound
+}
+
+// GetPriceNotFoundOk returns a tuple with the PriceNotFound field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CostComponent) GetPriceNotFoundOk() (*bool, bool) {
+	if o == nil || IsNil(o.PriceNotFound) {
+		return nil, false
+	}
+	return o.PriceNotFound, true
+}
+
+// HasPriceNotFound returns a boolean if a field has been set.
+func (o *CostComponent) HasPriceNotFound() bool {
+	if o != nil && !IsNil(o.PriceNotFound) {
+		return true
+	}
+
+	return false
+}
+
+// SetPriceNotFound gets a reference to the given bool and assigns it to the PriceNotFound field.
+func (o *CostComponent) SetPriceNotFound(v bool) {
+	o.PriceNotFound = &v
+}
+
+// GetUsageBased returns the UsageBased field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CostComponent) GetUsageBased() bool {
+	if o == nil || IsNil(o.UsageBased.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.UsageBased.Get()
+}
+
+// GetUsageBasedOk returns a tuple with the UsageBased field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CostComponent) GetUsageBasedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UsageBased.Get(), o.UsageBased.IsSet()
+}
+
+// HasUsageBased returns a boolean if a field has been set.
+func (o *CostComponent) HasUsageBased() bool {
+	if o != nil && o.UsageBased.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUsageBased gets a reference to the given NullableBool and assigns it to the UsageBased field.
+func (o *CostComponent) SetUsageBased(v bool) {
+	o.UsageBased.Set(&v)
+}
+// SetUsageBasedNil sets the value for UsageBased to be an explicit nil
+func (o *CostComponent) SetUsageBasedNil() {
+	o.UsageBased.Set(nil)
+}
+
+// UnsetUsageBased ensures that no value is present for UsageBased, not even an explicit nil
+func (o *CostComponent) UnsetUsageBased() {
+	o.UsageBased.Unset()
+}
+
 func (o CostComponent) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -370,6 +446,12 @@ func (o CostComponent) ToMap() (map[string]interface{}, error) {
 	}
 	if o.MonthlyCost.IsSet() {
 		toSerialize["monthlyCost"] = o.MonthlyCost.Get()
+	}
+	if !IsNil(o.PriceNotFound) {
+		toSerialize["priceNotFound"] = o.PriceNotFound
+	}
+	if o.UsageBased.IsSet() {
+		toSerialize["usageBased"] = o.UsageBased.Get()
 	}
 	return toSerialize, nil
 }
