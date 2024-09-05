@@ -22,7 +22,7 @@ var _ MappedNullable = &VsphereFlavorData{}
 type VsphereFlavorData struct {
 	Name NullableString `json:"name,omitempty"`
 	Cpu *int32 `json:"cpu,omitempty"`
-	Ram *int64 `json:"ram,omitempty"`
+	Ram *float64 `json:"ram,omitempty"`
 }
 
 // NewVsphereFlavorData instantiates a new VsphereFlavorData object
@@ -117,9 +117,9 @@ func (o *VsphereFlavorData) SetCpu(v int32) {
 }
 
 // GetRam returns the Ram field value if set, zero value otherwise.
-func (o *VsphereFlavorData) GetRam() int64 {
+func (o *VsphereFlavorData) GetRam() float64 {
 	if o == nil || IsNil(o.Ram) {
-		var ret int64
+		var ret float64
 		return ret
 	}
 	return *o.Ram
@@ -127,7 +127,7 @@ func (o *VsphereFlavorData) GetRam() int64 {
 
 // GetRamOk returns a tuple with the Ram field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VsphereFlavorData) GetRamOk() (*int64, bool) {
+func (o *VsphereFlavorData) GetRamOk() (*float64, bool) {
 	if o == nil || IsNil(o.Ram) {
 		return nil, false
 	}
@@ -143,8 +143,8 @@ func (o *VsphereFlavorData) HasRam() bool {
 	return false
 }
 
-// SetRam gets a reference to the given int64 and assigns it to the Ram field.
-func (o *VsphereFlavorData) SetRam(v int64) {
+// SetRam gets a reference to the given float64 and assigns it to the Ram field.
+func (o *VsphereFlavorData) SetRam(v float64) {
 	o.Ram = &v
 }
 

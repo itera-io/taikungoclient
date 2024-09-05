@@ -59,8 +59,6 @@ type APIClient struct {
 
 	AiCredentialsAPI *AiCredentialsAPIService
 
-	AiManagementAPI *AiManagementAPIService
-
 	AlertingIntegrationsAPI *AlertingIntegrationsAPIService
 
 	AlertingProfilesAPI *AlertingProfilesAPIService
@@ -92,6 +90,8 @@ type APIClient struct {
 	CronJobServiceAPI *CronJobServiceAPIService
 
 	DnsServersAPI *DnsServersAPIService
+
+	ExecutorsAPI *ExecutorsAPIService
 
 	FlavorsAPI *FlavorsAPIService
 
@@ -141,11 +141,11 @@ type APIClient struct {
 
 	PreDefinedQueriesAPI *PreDefinedQueriesAPIService
 
-	ProjectActionsAPI *ProjectActionsAPIService
-
 	ProjectAppParamsAPI *ProjectAppParamsAPIService
 
 	ProjectAppsAPI *ProjectAppsAPIService
+
+	ProjectDeploymentAPI *ProjectDeploymentAPIService
 
 	ProjectGroupsAPI *ProjectGroupsAPIService
 
@@ -153,15 +153,11 @@ type APIClient struct {
 
 	ProjectQuotasAPI *ProjectQuotasAPIService
 
-	ProjectRevisionsAPI *ProjectRevisionsAPIService
-
 	ProjectTemplatesAPI *ProjectTemplatesAPIService
 
 	ProjectsAPI *ProjectsAPIService
 
 	PrometheusBillingsAPI *PrometheusBillingsAPIService
-
-	PrometheusOrganizationsAPI *PrometheusOrganizationsAPIService
 
 	PrometheusRulesAPI *PrometheusRulesAPIService
 
@@ -205,9 +201,13 @@ type APIClient struct {
 
 	UsersAPI *UsersAPIService
 
+	VirtualClusterAPI *VirtualClusterAPIService
+
 	VsphereCloudCredentialAPI *VsphereCloudCredentialAPIService
 
 	ZadaraCloudCredentialAPI *ZadaraCloudCredentialAPIService
+
+	ZededaCloudCredentialAPI *ZededaCloudCredentialAPIService
 }
 
 type service struct {
@@ -230,7 +230,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccessProfilesAPI = (*AccessProfilesAPIService)(&c.common)
 	c.AdminAPI = (*AdminAPIService)(&c.common)
 	c.AiCredentialsAPI = (*AiCredentialsAPIService)(&c.common)
-	c.AiManagementAPI = (*AiManagementAPIService)(&c.common)
 	c.AlertingIntegrationsAPI = (*AlertingIntegrationsAPIService)(&c.common)
 	c.AlertingProfilesAPI = (*AlertingProfilesAPIService)(&c.common)
 	c.AllowedHostAPI = (*AllowedHostAPIService)(&c.common)
@@ -247,6 +246,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CommonAPI = (*CommonAPIService)(&c.common)
 	c.CronJobServiceAPI = (*CronJobServiceAPIService)(&c.common)
 	c.DnsServersAPI = (*DnsServersAPIService)(&c.common)
+	c.ExecutorsAPI = (*ExecutorsAPIService)(&c.common)
 	c.FlavorsAPI = (*FlavorsAPIService)(&c.common)
 	c.GoogleAPI = (*GoogleAPIService)(&c.common)
 	c.ImagesAPI = (*ImagesAPIService)(&c.common)
@@ -271,17 +271,15 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.PartnersAPI = (*PartnersAPIService)(&c.common)
 	c.PaymentsAPI = (*PaymentsAPIService)(&c.common)
 	c.PreDefinedQueriesAPI = (*PreDefinedQueriesAPIService)(&c.common)
-	c.ProjectActionsAPI = (*ProjectActionsAPIService)(&c.common)
 	c.ProjectAppParamsAPI = (*ProjectAppParamsAPIService)(&c.common)
 	c.ProjectAppsAPI = (*ProjectAppsAPIService)(&c.common)
+	c.ProjectDeploymentAPI = (*ProjectDeploymentAPIService)(&c.common)
 	c.ProjectGroupsAPI = (*ProjectGroupsAPIService)(&c.common)
 	c.ProjectInfracostsAPI = (*ProjectInfracostsAPIService)(&c.common)
 	c.ProjectQuotasAPI = (*ProjectQuotasAPIService)(&c.common)
-	c.ProjectRevisionsAPI = (*ProjectRevisionsAPIService)(&c.common)
 	c.ProjectTemplatesAPI = (*ProjectTemplatesAPIService)(&c.common)
 	c.ProjectsAPI = (*ProjectsAPIService)(&c.common)
 	c.PrometheusBillingsAPI = (*PrometheusBillingsAPIService)(&c.common)
-	c.PrometheusOrganizationsAPI = (*PrometheusOrganizationsAPIService)(&c.common)
 	c.PrometheusRulesAPI = (*PrometheusRulesAPIService)(&c.common)
 	c.ProxmoxCloudCredentialAPI = (*ProxmoxCloudCredentialAPIService)(&c.common)
 	c.S3CredentialsAPI = (*S3CredentialsAPIService)(&c.common)
@@ -303,8 +301,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.UserProjectsAPI = (*UserProjectsAPIService)(&c.common)
 	c.UserTokenAPI = (*UserTokenAPIService)(&c.common)
 	c.UsersAPI = (*UsersAPIService)(&c.common)
+	c.VirtualClusterAPI = (*VirtualClusterAPIService)(&c.common)
 	c.VsphereCloudCredentialAPI = (*VsphereCloudCredentialAPIService)(&c.common)
 	c.ZadaraCloudCredentialAPI = (*ZadaraCloudCredentialAPIService)(&c.common)
+	c.ZededaCloudCredentialAPI = (*ZededaCloudCredentialAPIService)(&c.common)
 
 	return c
 }

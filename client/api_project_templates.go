@@ -24,48 +24,48 @@ import (
 // ProjectTemplatesAPIService ProjectTemplatesAPI service
 type ProjectTemplatesAPIService service
 
-type ApiProjecttemplateCreateRequest struct {
+type ApiProjectTemplatesCreateRequest struct {
 	ctx context.Context
 	ApiService *ProjectTemplatesAPIService
 	createProjectFromTemplateCommand *CreateProjectFromTemplateCommand
 }
 
-func (r ApiProjecttemplateCreateRequest) CreateProjectFromTemplateCommand(createProjectFromTemplateCommand CreateProjectFromTemplateCommand) ApiProjecttemplateCreateRequest {
+func (r ApiProjectTemplatesCreateRequest) CreateProjectFromTemplateCommand(createProjectFromTemplateCommand CreateProjectFromTemplateCommand) ApiProjectTemplatesCreateRequest {
 	r.createProjectFromTemplateCommand = &createProjectFromTemplateCommand
 	return r
 }
 
-func (r ApiProjecttemplateCreateRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ProjecttemplateCreateExecute(r)
+func (r ApiProjectTemplatesCreateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProjectTemplatesCreateExecute(r)
 }
 
 /*
-ProjecttemplateCreate Create project from template
+ProjectTemplatesCreate Create project from template
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProjecttemplateCreateRequest
+ @return ApiProjectTemplatesCreateRequest
 */
-func (a *ProjectTemplatesAPIService) ProjecttemplateCreate(ctx context.Context) ApiProjecttemplateCreateRequest {
-	return ApiProjecttemplateCreateRequest{
+func (a *ProjectTemplatesAPIService) ProjectTemplatesCreate(ctx context.Context) ApiProjectTemplatesCreateRequest {
+	return ApiProjectTemplatesCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *ProjectTemplatesAPIService) ProjecttemplateCreateExecute(r ApiProjecttemplateCreateRequest) (*http.Response, error) {
+func (a *ProjectTemplatesAPIService) ProjectTemplatesCreateExecute(r ApiProjectTemplatesCreateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTemplatesAPIService.ProjecttemplateCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTemplatesAPIService.ProjectTemplatesCreate")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/projecttemplate/create"
+	localVarPath := localBasePath + "/api/v1/project-templates/create"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -189,25 +189,25 @@ func (a *ProjectTemplatesAPIService) ProjecttemplateCreateExecute(r ApiProjectte
 	return localVarHTTPResponse, nil
 }
 
-type ApiProjecttemplateDeleteRequest struct {
+type ApiProjectTemplatesDeleteRequest struct {
 	ctx context.Context
 	ApiService *ProjectTemplatesAPIService
 	id int32
 }
 
-func (r ApiProjecttemplateDeleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ProjecttemplateDeleteExecute(r)
+func (r ApiProjectTemplatesDeleteRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProjectTemplatesDeleteExecute(r)
 }
 
 /*
-ProjecttemplateDelete Delete project template by Id
+ProjectTemplatesDelete Delete project template by Id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
- @return ApiProjecttemplateDeleteRequest
+ @return ApiProjectTemplatesDeleteRequest
 */
-func (a *ProjectTemplatesAPIService) ProjecttemplateDelete(ctx context.Context, id int32) ApiProjecttemplateDeleteRequest {
-	return ApiProjecttemplateDeleteRequest{
+func (a *ProjectTemplatesAPIService) ProjectTemplatesDelete(ctx context.Context, id int32) ApiProjectTemplatesDeleteRequest {
+	return ApiProjectTemplatesDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		id: id,
@@ -215,19 +215,19 @@ func (a *ProjectTemplatesAPIService) ProjecttemplateDelete(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *ProjectTemplatesAPIService) ProjecttemplateDeleteExecute(r ApiProjecttemplateDeleteRequest) (*http.Response, error) {
+func (a *ProjectTemplatesAPIService) ProjectTemplatesDeleteExecute(r ApiProjectTemplatesDeleteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTemplatesAPIService.ProjecttemplateDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTemplatesAPIService.ProjectTemplatesDelete")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/projecttemplate/{id}"
+	localVarPath := localBasePath + "/api/v1/project-templates/{id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -347,35 +347,35 @@ func (a *ProjectTemplatesAPIService) ProjecttemplateDeleteExecute(r ApiProjectte
 	return localVarHTTPResponse, nil
 }
 
-type ApiProjecttemplateDropdownRequest struct {
+type ApiProjectTemplatesDropdownRequest struct {
 	ctx context.Context
 	ApiService *ProjectTemplatesAPIService
 	organizationId *int32
 	search *string
 }
 
-func (r ApiProjecttemplateDropdownRequest) OrganizationId(organizationId int32) ApiProjecttemplateDropdownRequest {
+func (r ApiProjectTemplatesDropdownRequest) OrganizationId(organizationId int32) ApiProjectTemplatesDropdownRequest {
 	r.organizationId = &organizationId
 	return r
 }
 
-func (r ApiProjecttemplateDropdownRequest) Search(search string) ApiProjecttemplateDropdownRequest {
+func (r ApiProjectTemplatesDropdownRequest) Search(search string) ApiProjectTemplatesDropdownRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiProjecttemplateDropdownRequest) Execute() ([]ProjectTemplateDropdownListDto, *http.Response, error) {
-	return r.ApiService.ProjecttemplateDropdownExecute(r)
+func (r ApiProjectTemplatesDropdownRequest) Execute() ([]ProjectTemplateDropdownListDto, *http.Response, error) {
+	return r.ApiService.ProjectTemplatesDropdownExecute(r)
 }
 
 /*
-ProjecttemplateDropdown Retrieve project template by organization Id
+ProjectTemplatesDropdown Retrieve project template by organization Id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProjecttemplateDropdownRequest
+ @return ApiProjectTemplatesDropdownRequest
 */
-func (a *ProjectTemplatesAPIService) ProjecttemplateDropdown(ctx context.Context) ApiProjecttemplateDropdownRequest {
-	return ApiProjecttemplateDropdownRequest{
+func (a *ProjectTemplatesAPIService) ProjectTemplatesDropdown(ctx context.Context) ApiProjectTemplatesDropdownRequest {
+	return ApiProjectTemplatesDropdownRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -383,7 +383,7 @@ func (a *ProjectTemplatesAPIService) ProjecttemplateDropdown(ctx context.Context
 
 // Execute executes the request
 //  @return []ProjectTemplateDropdownListDto
-func (a *ProjectTemplatesAPIService) ProjecttemplateDropdownExecute(r ApiProjecttemplateDropdownRequest) ([]ProjectTemplateDropdownListDto, *http.Response, error) {
+func (a *ProjectTemplatesAPIService) ProjectTemplatesDropdownExecute(r ApiProjectTemplatesDropdownRequest) ([]ProjectTemplateDropdownListDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -391,12 +391,12 @@ func (a *ProjectTemplatesAPIService) ProjecttemplateDropdownExecute(r ApiProject
 		localVarReturnValue  []ProjectTemplateDropdownListDto
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTemplatesAPIService.ProjecttemplateDropdown")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTemplatesAPIService.ProjectTemplatesDropdown")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/projecttemplate/list"
+	localVarPath := localBasePath + "/api/v1/project-templates/list"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -530,7 +530,7 @@ func (a *ProjectTemplatesAPIService) ProjecttemplateDropdownExecute(r ApiProject
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjecttemplateListRequest struct {
+type ApiProjectTemplatesListRequest struct {
 	ctx context.Context
 	ApiService *ProjectTemplatesAPIService
 	limit *int32
@@ -542,53 +542,53 @@ type ApiProjecttemplateListRequest struct {
 	id *int32
 }
 
-func (r ApiProjecttemplateListRequest) Limit(limit int32) ApiProjecttemplateListRequest {
+func (r ApiProjectTemplatesListRequest) Limit(limit int32) ApiProjectTemplatesListRequest {
 	r.limit = &limit
 	return r
 }
 
-func (r ApiProjecttemplateListRequest) Offset(offset int32) ApiProjecttemplateListRequest {
+func (r ApiProjectTemplatesListRequest) Offset(offset int32) ApiProjectTemplatesListRequest {
 	r.offset = &offset
 	return r
 }
 
-func (r ApiProjecttemplateListRequest) OrganizationId(organizationId int32) ApiProjecttemplateListRequest {
+func (r ApiProjectTemplatesListRequest) OrganizationId(organizationId int32) ApiProjectTemplatesListRequest {
 	r.organizationId = &organizationId
 	return r
 }
 
-func (r ApiProjecttemplateListRequest) SortBy(sortBy string) ApiProjecttemplateListRequest {
+func (r ApiProjectTemplatesListRequest) SortBy(sortBy string) ApiProjectTemplatesListRequest {
 	r.sortBy = &sortBy
 	return r
 }
 
-func (r ApiProjecttemplateListRequest) SortDirection(sortDirection string) ApiProjecttemplateListRequest {
+func (r ApiProjectTemplatesListRequest) SortDirection(sortDirection string) ApiProjectTemplatesListRequest {
 	r.sortDirection = &sortDirection
 	return r
 }
 
-func (r ApiProjecttemplateListRequest) Search(search string) ApiProjecttemplateListRequest {
+func (r ApiProjectTemplatesListRequest) Search(search string) ApiProjectTemplatesListRequest {
 	r.search = &search
 	return r
 }
 
-func (r ApiProjecttemplateListRequest) Id(id int32) ApiProjecttemplateListRequest {
+func (r ApiProjectTemplatesListRequest) Id(id int32) ApiProjectTemplatesListRequest {
 	r.id = &id
 	return r
 }
 
-func (r ApiProjecttemplateListRequest) Execute() (*ProjectTemplateList, *http.Response, error) {
-	return r.ApiService.ProjecttemplateListExecute(r)
+func (r ApiProjectTemplatesListRequest) Execute() (*ProjectTemplateList, *http.Response, error) {
+	return r.ApiService.ProjectTemplatesListExecute(r)
 }
 
 /*
-ProjecttemplateList Retrieve all project templates
+ProjectTemplatesList Retrieve all project templates
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProjecttemplateListRequest
+ @return ApiProjectTemplatesListRequest
 */
-func (a *ProjectTemplatesAPIService) ProjecttemplateList(ctx context.Context) ApiProjecttemplateListRequest {
-	return ApiProjecttemplateListRequest{
+func (a *ProjectTemplatesAPIService) ProjectTemplatesList(ctx context.Context) ApiProjectTemplatesListRequest {
+	return ApiProjectTemplatesListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -596,7 +596,7 @@ func (a *ProjectTemplatesAPIService) ProjecttemplateList(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return ProjectTemplateList
-func (a *ProjectTemplatesAPIService) ProjecttemplateListExecute(r ApiProjecttemplateListRequest) (*ProjectTemplateList, *http.Response, error) {
+func (a *ProjectTemplatesAPIService) ProjectTemplatesListExecute(r ApiProjectTemplatesListRequest) (*ProjectTemplateList, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -604,12 +604,12 @@ func (a *ProjectTemplatesAPIService) ProjecttemplateListExecute(r ApiProjecttemp
 		localVarReturnValue  *ProjectTemplateList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTemplatesAPIService.ProjecttemplateList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectTemplatesAPIService.ProjectTemplatesList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/projecttemplate"
+	localVarPath := localBasePath + "/api/v1/project-templates"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -6313,7 +6313,7 @@ func (r ApiKubernetesKillPodRequest) Execute() (*http.Response, error) {
 }
 
 /*
-KubernetesKillPod Method for KubernetesKillPod
+KubernetesKillPod Kill the pod
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId

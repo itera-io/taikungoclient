@@ -4310,55 +4310,52 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectsExecute(r ApiCronjobSyncPr
 	return localVarHTTPResponse, nil
 }
 
-type ApiCronjobTriggerTemplatesRequest struct {
+type ApiCronjobTektonPipelinesRequest struct {
 	ctx context.Context
 	ApiService *CronJobServiceAPIService
 	body *map[string]interface{}
 }
 
-func (r ApiCronjobTriggerTemplatesRequest) Body(body map[string]interface{}) ApiCronjobTriggerTemplatesRequest {
+func (r ApiCronjobTektonPipelinesRequest) Body(body map[string]interface{}) ApiCronjobTektonPipelinesRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCronjobTriggerTemplatesRequest) Execute() (*http.Response, error) {
-	return r.ApiService.CronjobTriggerTemplatesExecute(r)
+func (r ApiCronjobTektonPipelinesRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CronjobTektonPipelinesExecute(r)
 }
 
 /*
-CronjobTriggerTemplates Trigger scheduled templates
+CronjobTektonPipelines Tekton pipelines
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCronjobTriggerTemplatesRequest
+ @return ApiCronjobTektonPipelinesRequest
 */
-func (a *CronJobServiceAPIService) CronjobTriggerTemplates(ctx context.Context) ApiCronjobTriggerTemplatesRequest {
-	return ApiCronjobTriggerTemplatesRequest{
+func (a *CronJobServiceAPIService) CronjobTektonPipelines(ctx context.Context) ApiCronjobTektonPipelinesRequest {
+	return ApiCronjobTektonPipelinesRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *CronJobServiceAPIService) CronjobTriggerTemplatesExecute(r ApiCronjobTriggerTemplatesRequest) (*http.Response, error) {
+func (a *CronJobServiceAPIService) CronjobTektonPipelinesExecute(r ApiCronjobTektonPipelinesRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobTriggerTemplates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CronJobServiceAPIService.CronjobTektonPipelines")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/cronjob/trigger-templates"
+	localVarPath := localBasePath + "/api/v1/cronjob/tekton-pipelines"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.body == nil {
-		return nil, reportError("body is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

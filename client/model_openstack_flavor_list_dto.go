@@ -20,7 +20,7 @@ var _ MappedNullable = &OpenstackFlavorListDto{}
 
 // OpenstackFlavorListDto struct for OpenstackFlavorListDto
 type OpenstackFlavorListDto struct {
-	Ram *int64 `json:"ram,omitempty"`
+	Ram *float64 `json:"ram,omitempty"`
 	Cpu *int64 `json:"cpu,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	Description NullableString `json:"description,omitempty"`
@@ -44,9 +44,9 @@ func NewOpenstackFlavorListDtoWithDefaults() *OpenstackFlavorListDto {
 }
 
 // GetRam returns the Ram field value if set, zero value otherwise.
-func (o *OpenstackFlavorListDto) GetRam() int64 {
+func (o *OpenstackFlavorListDto) GetRam() float64 {
 	if o == nil || IsNil(o.Ram) {
-		var ret int64
+		var ret float64
 		return ret
 	}
 	return *o.Ram
@@ -54,7 +54,7 @@ func (o *OpenstackFlavorListDto) GetRam() int64 {
 
 // GetRamOk returns a tuple with the Ram field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OpenstackFlavorListDto) GetRamOk() (*int64, bool) {
+func (o *OpenstackFlavorListDto) GetRamOk() (*float64, bool) {
 	if o == nil || IsNil(o.Ram) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *OpenstackFlavorListDto) HasRam() bool {
 	return false
 }
 
-// SetRam gets a reference to the given int64 and assigns it to the Ram field.
-func (o *OpenstackFlavorListDto) SetRam(v int64) {
+// SetRam gets a reference to the given float64 and assigns it to the Ram field.
+func (o *OpenstackFlavorListDto) SetRam(v float64) {
 	o.Ram = &v
 }
 

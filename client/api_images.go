@@ -799,7 +799,7 @@ func (r ApiImagesAzureImagesRequest) Execute() (*PublicImageList, *http.Response
 }
 
 /*
-ImagesAzureImages Method for ImagesAzureImages
+ImagesAzureImages Retrieve azure images
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param cloudId
@@ -1562,7 +1562,7 @@ func (r ApiImagesGoogleImagesRequest) Execute() (*PublicImageList, *http.Respons
 }
 
 /*
-ImagesGoogleImages Method for ImagesGoogleImages
+ImagesGoogleImages Retrieve google images
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param cloudId

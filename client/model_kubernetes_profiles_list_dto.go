@@ -36,7 +36,7 @@ type KubernetesProfilesListDto struct {
 	CreatedAt NullableString `json:"createdAt,omitempty"`
 	LastModified NullableString `json:"lastModified,omitempty"`
 	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
-	ProxmoxStorage NullableString `json:"proxmoxStorage,omitempty"`
+	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
 	NvidiaGpuOperatorEnabled *bool `json:"nvidiaGpuOperatorEnabled,omitempty"`
 	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
 }
@@ -651,46 +651,36 @@ func (o *KubernetesProfilesListDto) UnsetLastModifiedBy() {
 	o.LastModifiedBy.Unset()
 }
 
-// GetProxmoxStorage returns the ProxmoxStorage field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *KubernetesProfilesListDto) GetProxmoxStorage() string {
-	if o == nil || IsNil(o.ProxmoxStorage.Get()) {
-		var ret string
+// GetProxmoxStorage returns the ProxmoxStorage field value if set, zero value otherwise.
+func (o *KubernetesProfilesListDto) GetProxmoxStorage() ProxmoxStorage {
+	if o == nil || IsNil(o.ProxmoxStorage) {
+		var ret ProxmoxStorage
 		return ret
 	}
-	return *o.ProxmoxStorage.Get()
+	return *o.ProxmoxStorage
 }
 
 // GetProxmoxStorageOk returns a tuple with the ProxmoxStorage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *KubernetesProfilesListDto) GetProxmoxStorageOk() (*string, bool) {
-	if o == nil {
+func (o *KubernetesProfilesListDto) GetProxmoxStorageOk() (*ProxmoxStorage, bool) {
+	if o == nil || IsNil(o.ProxmoxStorage) {
 		return nil, false
 	}
-	return o.ProxmoxStorage.Get(), o.ProxmoxStorage.IsSet()
+	return o.ProxmoxStorage, true
 }
 
 // HasProxmoxStorage returns a boolean if a field has been set.
 func (o *KubernetesProfilesListDto) HasProxmoxStorage() bool {
-	if o != nil && o.ProxmoxStorage.IsSet() {
+	if o != nil && !IsNil(o.ProxmoxStorage) {
 		return true
 	}
 
 	return false
 }
 
-// SetProxmoxStorage gets a reference to the given NullableString and assigns it to the ProxmoxStorage field.
-func (o *KubernetesProfilesListDto) SetProxmoxStorage(v string) {
-	o.ProxmoxStorage.Set(&v)
-}
-// SetProxmoxStorageNil sets the value for ProxmoxStorage to be an explicit nil
-func (o *KubernetesProfilesListDto) SetProxmoxStorageNil() {
-	o.ProxmoxStorage.Set(nil)
-}
-
-// UnsetProxmoxStorage ensures that no value is present for ProxmoxStorage, not even an explicit nil
-func (o *KubernetesProfilesListDto) UnsetProxmoxStorage() {
-	o.ProxmoxStorage.Unset()
+// SetProxmoxStorage gets a reference to the given ProxmoxStorage and assigns it to the ProxmoxStorage field.
+func (o *KubernetesProfilesListDto) SetProxmoxStorage(v ProxmoxStorage) {
+	o.ProxmoxStorage = &v
 }
 
 // GetNvidiaGpuOperatorEnabled returns the NvidiaGpuOperatorEnabled field value if set, zero value otherwise.
@@ -815,8 +805,8 @@ func (o KubernetesProfilesListDto) ToMap() (map[string]interface{}, error) {
 	if o.LastModifiedBy.IsSet() {
 		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
 	}
-	if o.ProxmoxStorage.IsSet() {
-		toSerialize["proxmoxStorage"] = o.ProxmoxStorage.Get()
+	if !IsNil(o.ProxmoxStorage) {
+		toSerialize["proxmoxStorage"] = o.ProxmoxStorage
 	}
 	if !IsNil(o.NvidiaGpuOperatorEnabled) {
 		toSerialize["nvidiaGpuOperatorEnabled"] = o.NvidiaGpuOperatorEnabled

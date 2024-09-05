@@ -17,12 +17,179 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
 	"os"
 )
 
 
 // PartnersAPIService PartnersAPI service
 type PartnersAPIService service
+
+type ApiPartnerAddOrganizationsRequest struct {
+	ctx context.Context
+	ApiService *PartnersAPIService
+	id int32
+	requestBody *[]int32
+}
+
+func (r ApiPartnerAddOrganizationsRequest) RequestBody(requestBody []int32) ApiPartnerAddOrganizationsRequest {
+	r.requestBody = &requestBody
+	return r
+}
+
+func (r ApiPartnerAddOrganizationsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PartnerAddOrganizationsExecute(r)
+}
+
+/*
+PartnerAddOrganizations Add organizations to a partner
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPartnerAddOrganizationsRequest
+*/
+func (a *PartnersAPIService) PartnerAddOrganizations(ctx context.Context, id int32) ApiPartnerAddOrganizationsRequest {
+	return ApiPartnerAddOrganizationsRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *PartnersAPIService) PartnerAddOrganizationsExecute(r ApiPartnerAddOrganizationsRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerAddOrganizations")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/partner/{id}/organizations"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.requestBody
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
 
 type ApiPartnerAddWhitelistDomainRequest struct {
 	ctx context.Context
@@ -348,168 +515,6 @@ func (a *PartnersAPIService) PartnerBecomeAPartnerExecute(r ApiPartnerBecomeAPar
 	return localVarHTTPResponse, nil
 }
 
-type ApiPartnerBindOrganizationsRequest struct {
-	ctx context.Context
-	ApiService *PartnersAPIService
-	bindOrganizationsCommand *BindOrganizationsCommand
-}
-
-func (r ApiPartnerBindOrganizationsRequest) BindOrganizationsCommand(bindOrganizationsCommand BindOrganizationsCommand) ApiPartnerBindOrganizationsRequest {
-	r.bindOrganizationsCommand = &bindOrganizationsCommand
-	return r
-}
-
-func (r ApiPartnerBindOrganizationsRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PartnerBindOrganizationsExecute(r)
-}
-
-/*
-PartnerBindOrganizations Bind organizations to a partner
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPartnerBindOrganizationsRequest
-*/
-func (a *PartnersAPIService) PartnerBindOrganizations(ctx context.Context) ApiPartnerBindOrganizationsRequest {
-	return ApiPartnerBindOrganizationsRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-func (a *PartnersAPIService) PartnerBindOrganizationsExecute(r ApiPartnerBindOrganizationsRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerBindOrganizations")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/partner/bindorganizations"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.bindOrganizationsCommand
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["Bearer"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
 type ApiPartnerContactUsRequest struct {
 	ctx context.Context
 	ApiService *PartnersAPIService
@@ -689,6 +694,16 @@ type ApiPartnerCreateRequest struct {
 	city *string
 	vatNumber *string
 	address *string
+	bg *string
+	bgCollapsedSubItem *string
+	itemText *string
+	itemBg *string
+	itemBgHover *string
+	itemTextActive *string
+	itemBgActive *string
+	itemBgActiveHover *string
+	expanded *os.File
+	collapsed *os.File
 }
 
 func (r ApiPartnerCreateRequest) Logo(logo *os.File) ApiPartnerCreateRequest {
@@ -758,6 +773,56 @@ func (r ApiPartnerCreateRequest) VatNumber(vatNumber string) ApiPartnerCreateReq
 
 func (r ApiPartnerCreateRequest) Address(address string) ApiPartnerCreateRequest {
 	r.address = &address
+	return r
+}
+
+func (r ApiPartnerCreateRequest) Bg(bg string) ApiPartnerCreateRequest {
+	r.bg = &bg
+	return r
+}
+
+func (r ApiPartnerCreateRequest) BgCollapsedSubItem(bgCollapsedSubItem string) ApiPartnerCreateRequest {
+	r.bgCollapsedSubItem = &bgCollapsedSubItem
+	return r
+}
+
+func (r ApiPartnerCreateRequest) ItemText(itemText string) ApiPartnerCreateRequest {
+	r.itemText = &itemText
+	return r
+}
+
+func (r ApiPartnerCreateRequest) ItemBg(itemBg string) ApiPartnerCreateRequest {
+	r.itemBg = &itemBg
+	return r
+}
+
+func (r ApiPartnerCreateRequest) ItemBgHover(itemBgHover string) ApiPartnerCreateRequest {
+	r.itemBgHover = &itemBgHover
+	return r
+}
+
+func (r ApiPartnerCreateRequest) ItemTextActive(itemTextActive string) ApiPartnerCreateRequest {
+	r.itemTextActive = &itemTextActive
+	return r
+}
+
+func (r ApiPartnerCreateRequest) ItemBgActive(itemBgActive string) ApiPartnerCreateRequest {
+	r.itemBgActive = &itemBgActive
+	return r
+}
+
+func (r ApiPartnerCreateRequest) ItemBgActiveHover(itemBgActiveHover string) ApiPartnerCreateRequest {
+	r.itemBgActiveHover = &itemBgActiveHover
+	return r
+}
+
+func (r ApiPartnerCreateRequest) Expanded(expanded *os.File) ApiPartnerCreateRequest {
+	r.expanded = expanded
+	return r
+}
+
+func (r ApiPartnerCreateRequest) Collapsed(collapsed *os.File) ApiPartnerCreateRequest {
+	r.collapsed = collapsed
 	return r
 }
 
@@ -880,6 +945,226 @@ func (a *PartnersAPIService) PartnerCreateExecute(r ApiPartnerCreateRequest) (*h
 	if r.address != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "address", r.address, "", "")
 	}
+	if r.bg != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "bg", r.bg, "", "")
+	}
+	if r.bgCollapsedSubItem != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "bgCollapsedSubItem", r.bgCollapsedSubItem, "", "")
+	}
+	if r.itemText != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemText", r.itemText, "", "")
+	}
+	if r.itemBg != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBg", r.itemBg, "", "")
+	}
+	if r.itemBgHover != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgHover", r.itemBgHover, "", "")
+	}
+	if r.itemTextActive != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemTextActive", r.itemTextActive, "", "")
+	}
+	if r.itemBgActive != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActive", r.itemBgActive, "", "")
+	}
+	if r.itemBgActiveHover != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActiveHover", r.itemBgActiveHover, "", "")
+	}
+	var expandedLocalVarFormFileName string
+	var expandedLocalVarFileName     string
+	var expandedLocalVarFileBytes    []byte
+
+	expandedLocalVarFormFileName = "expanded"
+	expandedLocalVarFile := r.expanded
+
+	if expandedLocalVarFile != nil {
+		fbs, _ := io.ReadAll(expandedLocalVarFile)
+
+		expandedLocalVarFileBytes = fbs
+		expandedLocalVarFileName = expandedLocalVarFile.Name()
+		expandedLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: expandedLocalVarFileBytes, fileName: expandedLocalVarFileName, formFileName: expandedLocalVarFormFileName})
+	}
+	var collapsedLocalVarFormFileName string
+	var collapsedLocalVarFileName     string
+	var collapsedLocalVarFileBytes    []byte
+
+	collapsedLocalVarFormFileName = "collapsed"
+	collapsedLocalVarFile := r.collapsed
+
+	if collapsedLocalVarFile != nil {
+		fbs, _ := io.ReadAll(collapsedLocalVarFile)
+
+		collapsedLocalVarFileBytes = fbs
+		collapsedLocalVarFileName = collapsedLocalVarFile.Name()
+		collapsedLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: collapsedLocalVarFileBytes, fileName: collapsedLocalVarFileName, formFileName: collapsedLocalVarFormFileName})
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiPartnerDeleteOrganizationsRequest struct {
+	ctx context.Context
+	ApiService *PartnersAPIService
+	id int32
+	requestBody *[]int32
+}
+
+func (r ApiPartnerDeleteOrganizationsRequest) RequestBody(requestBody []int32) ApiPartnerDeleteOrganizationsRequest {
+	r.requestBody = &requestBody
+	return r
+}
+
+func (r ApiPartnerDeleteOrganizationsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.PartnerDeleteOrganizationsExecute(r)
+}
+
+/*
+PartnerDeleteOrganizations Delete organizations from a partner
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param id
+ @return ApiPartnerDeleteOrganizationsRequest
+*/
+func (a *PartnersAPIService) PartnerDeleteOrganizations(ctx context.Context, id int32) ApiPartnerDeleteOrganizationsRequest {
+	return ApiPartnerDeleteOrganizationsRequest{
+		ApiService: a,
+		ctx: ctx,
+		id: id,
+	}
+}
+
+// Execute executes the request
+func (a *PartnersAPIService) PartnerDeleteOrganizationsExecute(r ApiPartnerDeleteOrganizationsRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPut
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PartnersAPIService.PartnerDeleteOrganizations")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/partner/{id}/organizations"
+	localVarPath = strings.Replace(localVarPath, "{"+"id"+"}", url.PathEscape(parameterValueToString(r.id, "id")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.requestBody
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1897,6 +2182,16 @@ type ApiPartnerUpdateRequest struct {
 	allowRegistration *bool
 	requiredUserApproval *bool
 	paymentEnabled *bool
+	bg *string
+	bgCollapsedSubItem *string
+	itemText *string
+	itemBg *string
+	itemBgHover *string
+	itemTextActive *string
+	itemBgActive *string
+	itemBgActiveHover *string
+	expanded *os.File
+	collapsed *os.File
 }
 
 func (r ApiPartnerUpdateRequest) Id(id int32) ApiPartnerUpdateRequest {
@@ -1971,6 +2266,56 @@ func (r ApiPartnerUpdateRequest) RequiredUserApproval(requiredUserApproval bool)
 
 func (r ApiPartnerUpdateRequest) PaymentEnabled(paymentEnabled bool) ApiPartnerUpdateRequest {
 	r.paymentEnabled = &paymentEnabled
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) Bg(bg string) ApiPartnerUpdateRequest {
+	r.bg = &bg
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) BgCollapsedSubItem(bgCollapsedSubItem string) ApiPartnerUpdateRequest {
+	r.bgCollapsedSubItem = &bgCollapsedSubItem
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) ItemText(itemText string) ApiPartnerUpdateRequest {
+	r.itemText = &itemText
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) ItemBg(itemBg string) ApiPartnerUpdateRequest {
+	r.itemBg = &itemBg
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) ItemBgHover(itemBgHover string) ApiPartnerUpdateRequest {
+	r.itemBgHover = &itemBgHover
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) ItemTextActive(itemTextActive string) ApiPartnerUpdateRequest {
+	r.itemTextActive = &itemTextActive
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) ItemBgActive(itemBgActive string) ApiPartnerUpdateRequest {
+	r.itemBgActive = &itemBgActive
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) ItemBgActiveHover(itemBgActiveHover string) ApiPartnerUpdateRequest {
+	r.itemBgActiveHover = &itemBgActiveHover
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) Expanded(expanded *os.File) ApiPartnerUpdateRequest {
+	r.expanded = expanded
+	return r
+}
+
+func (r ApiPartnerUpdateRequest) Collapsed(collapsed *os.File) ApiPartnerUpdateRequest {
+	r.collapsed = collapsed
 	return r
 }
 
@@ -2095,6 +2440,60 @@ func (a *PartnersAPIService) PartnerUpdateExecute(r ApiPartnerUpdateRequest) (*h
 	}
 	if r.paymentEnabled != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "paymentEnabled", r.paymentEnabled, "", "")
+	}
+	if r.bg != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "bg", r.bg, "", "")
+	}
+	if r.bgCollapsedSubItem != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "bgCollapsedSubItem", r.bgCollapsedSubItem, "", "")
+	}
+	if r.itemText != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemText", r.itemText, "", "")
+	}
+	if r.itemBg != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBg", r.itemBg, "", "")
+	}
+	if r.itemBgHover != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgHover", r.itemBgHover, "", "")
+	}
+	if r.itemTextActive != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemTextActive", r.itemTextActive, "", "")
+	}
+	if r.itemBgActive != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActive", r.itemBgActive, "", "")
+	}
+	if r.itemBgActiveHover != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "itemBgActiveHover", r.itemBgActiveHover, "", "")
+	}
+	var expandedLocalVarFormFileName string
+	var expandedLocalVarFileName     string
+	var expandedLocalVarFileBytes    []byte
+
+	expandedLocalVarFormFileName = "expanded"
+	expandedLocalVarFile := r.expanded
+
+	if expandedLocalVarFile != nil {
+		fbs, _ := io.ReadAll(expandedLocalVarFile)
+
+		expandedLocalVarFileBytes = fbs
+		expandedLocalVarFileName = expandedLocalVarFile.Name()
+		expandedLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: expandedLocalVarFileBytes, fileName: expandedLocalVarFileName, formFileName: expandedLocalVarFormFileName})
+	}
+	var collapsedLocalVarFormFileName string
+	var collapsedLocalVarFileName     string
+	var collapsedLocalVarFileBytes    []byte
+
+	collapsedLocalVarFormFileName = "collapsed"
+	collapsedLocalVarFile := r.collapsed
+
+	if collapsedLocalVarFile != nil {
+		fbs, _ := io.ReadAll(collapsedLocalVarFile)
+
+		collapsedLocalVarFileBytes = fbs
+		collapsedLocalVarFileName = collapsedLocalVarFile.Name()
+		collapsedLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: collapsedLocalVarFileBytes, fileName: collapsedLocalVarFileName, formFileName: collapsedLocalVarFormFileName})
 	}
 	if r.ctx != nil {
 		// API Key Authentication

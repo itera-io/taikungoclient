@@ -877,7 +877,7 @@ func (r ApiPaymentGetStripeInvoicesRequest) Execute() (*StripeInvoices, *http.Re
 }
 
 /*
-PaymentGetStripeInvoices Method for PaymentGetStripeInvoices
+PaymentGetStripeInvoices Get required stripe invoices by stripe subscription id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param subscriptionId

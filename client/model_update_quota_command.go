@@ -22,11 +22,11 @@ var _ MappedNullable = &UpdateQuotaCommand{}
 type UpdateQuotaCommand struct {
 	QuotaId *int32 `json:"quotaId,omitempty"`
 	ServerCpu *int64 `json:"serverCpu,omitempty"`
-	ServerRam *int64 `json:"serverRam,omitempty"`
-	ServerDiskSize *int64 `json:"serverDiskSize,omitempty"`
+	ServerRam *float64 `json:"serverRam,omitempty"`
+	ServerDiskSize *float64 `json:"serverDiskSize,omitempty"`
 	VmCpu *int64 `json:"vmCpu,omitempty"`
-	VmRam *int64 `json:"vmRam,omitempty"`
-	VmVolumeSize *int64 `json:"vmVolumeSize,omitempty"`
+	VmRam *float64 `json:"vmRam,omitempty"`
+	VmVolumeSize *float64 `json:"vmVolumeSize,omitempty"`
 }
 
 // NewUpdateQuotaCommand instantiates a new UpdateQuotaCommand object
@@ -111,9 +111,9 @@ func (o *UpdateQuotaCommand) SetServerCpu(v int64) {
 }
 
 // GetServerRam returns the ServerRam field value if set, zero value otherwise.
-func (o *UpdateQuotaCommand) GetServerRam() int64 {
+func (o *UpdateQuotaCommand) GetServerRam() float64 {
 	if o == nil || IsNil(o.ServerRam) {
-		var ret int64
+		var ret float64
 		return ret
 	}
 	return *o.ServerRam
@@ -121,7 +121,7 @@ func (o *UpdateQuotaCommand) GetServerRam() int64 {
 
 // GetServerRamOk returns a tuple with the ServerRam field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateQuotaCommand) GetServerRamOk() (*int64, bool) {
+func (o *UpdateQuotaCommand) GetServerRamOk() (*float64, bool) {
 	if o == nil || IsNil(o.ServerRam) {
 		return nil, false
 	}
@@ -137,15 +137,15 @@ func (o *UpdateQuotaCommand) HasServerRam() bool {
 	return false
 }
 
-// SetServerRam gets a reference to the given int64 and assigns it to the ServerRam field.
-func (o *UpdateQuotaCommand) SetServerRam(v int64) {
+// SetServerRam gets a reference to the given float64 and assigns it to the ServerRam field.
+func (o *UpdateQuotaCommand) SetServerRam(v float64) {
 	o.ServerRam = &v
 }
 
 // GetServerDiskSize returns the ServerDiskSize field value if set, zero value otherwise.
-func (o *UpdateQuotaCommand) GetServerDiskSize() int64 {
+func (o *UpdateQuotaCommand) GetServerDiskSize() float64 {
 	if o == nil || IsNil(o.ServerDiskSize) {
-		var ret int64
+		var ret float64
 		return ret
 	}
 	return *o.ServerDiskSize
@@ -153,7 +153,7 @@ func (o *UpdateQuotaCommand) GetServerDiskSize() int64 {
 
 // GetServerDiskSizeOk returns a tuple with the ServerDiskSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateQuotaCommand) GetServerDiskSizeOk() (*int64, bool) {
+func (o *UpdateQuotaCommand) GetServerDiskSizeOk() (*float64, bool) {
 	if o == nil || IsNil(o.ServerDiskSize) {
 		return nil, false
 	}
@@ -169,8 +169,8 @@ func (o *UpdateQuotaCommand) HasServerDiskSize() bool {
 	return false
 }
 
-// SetServerDiskSize gets a reference to the given int64 and assigns it to the ServerDiskSize field.
-func (o *UpdateQuotaCommand) SetServerDiskSize(v int64) {
+// SetServerDiskSize gets a reference to the given float64 and assigns it to the ServerDiskSize field.
+func (o *UpdateQuotaCommand) SetServerDiskSize(v float64) {
 	o.ServerDiskSize = &v
 }
 
@@ -207,9 +207,9 @@ func (o *UpdateQuotaCommand) SetVmCpu(v int64) {
 }
 
 // GetVmRam returns the VmRam field value if set, zero value otherwise.
-func (o *UpdateQuotaCommand) GetVmRam() int64 {
+func (o *UpdateQuotaCommand) GetVmRam() float64 {
 	if o == nil || IsNil(o.VmRam) {
-		var ret int64
+		var ret float64
 		return ret
 	}
 	return *o.VmRam
@@ -217,7 +217,7 @@ func (o *UpdateQuotaCommand) GetVmRam() int64 {
 
 // GetVmRamOk returns a tuple with the VmRam field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateQuotaCommand) GetVmRamOk() (*int64, bool) {
+func (o *UpdateQuotaCommand) GetVmRamOk() (*float64, bool) {
 	if o == nil || IsNil(o.VmRam) {
 		return nil, false
 	}
@@ -233,15 +233,15 @@ func (o *UpdateQuotaCommand) HasVmRam() bool {
 	return false
 }
 
-// SetVmRam gets a reference to the given int64 and assigns it to the VmRam field.
-func (o *UpdateQuotaCommand) SetVmRam(v int64) {
+// SetVmRam gets a reference to the given float64 and assigns it to the VmRam field.
+func (o *UpdateQuotaCommand) SetVmRam(v float64) {
 	o.VmRam = &v
 }
 
 // GetVmVolumeSize returns the VmVolumeSize field value if set, zero value otherwise.
-func (o *UpdateQuotaCommand) GetVmVolumeSize() int64 {
+func (o *UpdateQuotaCommand) GetVmVolumeSize() float64 {
 	if o == nil || IsNil(o.VmVolumeSize) {
-		var ret int64
+		var ret float64
 		return ret
 	}
 	return *o.VmVolumeSize
@@ -249,7 +249,7 @@ func (o *UpdateQuotaCommand) GetVmVolumeSize() int64 {
 
 // GetVmVolumeSizeOk returns a tuple with the VmVolumeSize field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *UpdateQuotaCommand) GetVmVolumeSizeOk() (*int64, bool) {
+func (o *UpdateQuotaCommand) GetVmVolumeSizeOk() (*float64, bool) {
 	if o == nil || IsNil(o.VmVolumeSize) {
 		return nil, false
 	}
@@ -265,8 +265,8 @@ func (o *UpdateQuotaCommand) HasVmVolumeSize() bool {
 	return false
 }
 
-// SetVmVolumeSize gets a reference to the given int64 and assigns it to the VmVolumeSize field.
-func (o *UpdateQuotaCommand) SetVmVolumeSize(v int64) {
+// SetVmVolumeSize gets a reference to the given float64 and assigns it to the VmVolumeSize field.
+func (o *UpdateQuotaCommand) SetVmVolumeSize(v float64) {
 	o.VmVolumeSize = &v
 }
 

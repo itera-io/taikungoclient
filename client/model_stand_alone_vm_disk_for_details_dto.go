@@ -27,7 +27,7 @@ type StandAloneVmDiskForDetailsDto struct {
 	VolumeType NullableString `json:"volumeType,omitempty"`
 	DeviceName NullableString `json:"deviceName,omitempty"`
 	LunId NullableString `json:"lunId,omitempty"`
-	Status NullableString `json:"status,omitempty"`
+	Status *StandAloneVmDiskStatus `json:"status,omitempty"`
 }
 
 // NewStandAloneVmDiskForDetailsDto instantiates a new StandAloneVmDiskForDetailsDto object
@@ -311,46 +311,36 @@ func (o *StandAloneVmDiskForDetailsDto) UnsetLunId() {
 	o.LunId.Unset()
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *StandAloneVmDiskForDetailsDto) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
-		var ret string
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *StandAloneVmDiskForDetailsDto) GetStatus() StandAloneVmDiskStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret StandAloneVmDiskStatus
 		return ret
 	}
-	return *o.Status.Get()
+	return *o.Status
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *StandAloneVmDiskForDetailsDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+func (o *StandAloneVmDiskForDetailsDto) GetStatusOk() (*StandAloneVmDiskStatus, bool) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return o.Status.Get(), o.Status.IsSet()
+	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *StandAloneVmDiskForDetailsDto) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
-func (o *StandAloneVmDiskForDetailsDto) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *StandAloneVmDiskForDetailsDto) SetStatusNil() {
-	o.Status.Set(nil)
-}
-
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *StandAloneVmDiskForDetailsDto) UnsetStatus() {
-	o.Status.Unset()
+// SetStatus gets a reference to the given StandAloneVmDiskStatus and assigns it to the Status field.
+func (o *StandAloneVmDiskForDetailsDto) SetStatus(v StandAloneVmDiskStatus) {
+	o.Status = &v
 }
 
 func (o StandAloneVmDiskForDetailsDto) MarshalJSON() ([]byte, error) {
@@ -384,8 +374,8 @@ func (o StandAloneVmDiskForDetailsDto) ToMap() (map[string]interface{}, error) {
 	if o.LunId.IsSet() {
 		toSerialize["lunId"] = o.LunId.Get()
 	}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
 }

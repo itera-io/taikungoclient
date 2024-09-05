@@ -26,7 +26,7 @@ type AzureFlavorsWithPriceDto struct {
 	WindowsSpotPrice NullableString `json:"windowsSpotPrice,omitempty"`
 	LinuxSpotPrice NullableString `json:"linuxSpotPrice,omitempty"`
 	Cpu *int32 `json:"cpu,omitempty"`
-	Ram *int64 `json:"ram,omitempty"`
+	Ram *float64 `json:"ram,omitempty"`
 	Description interface{} `json:"description,omitempty"`
 	MaxDataDiskCount NullableFloat64 `json:"maxDataDiskCount,omitempty"`
 }
@@ -291,9 +291,9 @@ func (o *AzureFlavorsWithPriceDto) SetCpu(v int32) {
 }
 
 // GetRam returns the Ram field value if set, zero value otherwise.
-func (o *AzureFlavorsWithPriceDto) GetRam() int64 {
+func (o *AzureFlavorsWithPriceDto) GetRam() float64 {
 	if o == nil || IsNil(o.Ram) {
-		var ret int64
+		var ret float64
 		return ret
 	}
 	return *o.Ram
@@ -301,7 +301,7 @@ func (o *AzureFlavorsWithPriceDto) GetRam() int64 {
 
 // GetRamOk returns a tuple with the Ram field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AzureFlavorsWithPriceDto) GetRamOk() (*int64, bool) {
+func (o *AzureFlavorsWithPriceDto) GetRamOk() (*float64, bool) {
 	if o == nil || IsNil(o.Ram) {
 		return nil, false
 	}
@@ -317,8 +317,8 @@ func (o *AzureFlavorsWithPriceDto) HasRam() bool {
 	return false
 }
 
-// SetRam gets a reference to the given int64 and assigns it to the Ram field.
-func (o *AzureFlavorsWithPriceDto) SetRam(v int64) {
+// SetRam gets a reference to the given float64 and assigns it to the Ram field.
+func (o *AzureFlavorsWithPriceDto) SetRam(v float64) {
 	o.Ram = &v
 }
 

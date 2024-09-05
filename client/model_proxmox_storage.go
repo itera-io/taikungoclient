@@ -23,12 +23,14 @@ type ProxmoxStorage string
 const (
 	PROXMOXSTORAGE_NFS ProxmoxStorage = "NFS"
 	PROXMOXSTORAGE_OPEN_EBS ProxmoxStorage = "OpenEBS"
+	PROXMOXSTORAGE_LONGHORN ProxmoxStorage = "Longhorn"
 )
 
 // All allowed values of ProxmoxStorage enum
 var AllowedProxmoxStorageEnumValues = []ProxmoxStorage{
 	"NFS",
 	"OpenEBS",
+	"Longhorn",
 }
 
 func (v *ProxmoxStorage) UnmarshalJSON(src []byte) error {

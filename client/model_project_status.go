@@ -34,16 +34,13 @@ const (
 	PROJECTSTATUS_ENABLE_GATEKEEPER ProjectStatus = "EnableGatekeeper"
 	PROJECTSTATUS_FAILURE ProjectStatus = "Failure"
 	PROJECTSTATUS_FAILED_UPGRADE ProjectStatus = "FailedUpgrade"
-	PROJECTSTATUS_PENDING ProjectStatus = "Pending"
-	PROJECTSTATUS_PENDING_DELETE ProjectStatus = "PendingDelete"
-	PROJECTSTATUS_PENDING_PURGE ProjectStatus = "PendingPurge"
-	PROJECTSTATUS_PENDING_UPDATE_CREDENTIALS ProjectStatus = "PendingUpdateCredentials"
-	PROJECTSTATUS_PENDING_UPGRADE ProjectStatus = "PendingUpgrade"
 	PROJECTSTATUS_PURGING ProjectStatus = "Purging"
 	PROJECTSTATUS_READY ProjectStatus = "Ready"
 	PROJECTSTATUS_UPDATING ProjectStatus = "Updating"
 	PROJECTSTATUS_UPGRADING ProjectStatus = "Upgrading"
 	PROJECTSTATUS_UPDATING_CREDENTIALS ProjectStatus = "UpdatingCredentials"
+	PROJECTSTATUS_UNINSTALL_VIRTUAL_CLUSTER ProjectStatus = "UninstallVirtualCluster"
+	PROJECTSTATUS_REPAIRING ProjectStatus = "Repairing"
 )
 
 // All allowed values of ProjectStatus enum
@@ -61,16 +58,13 @@ var AllowedProjectStatusEnumValues = []ProjectStatus{
 	"EnableGatekeeper",
 	"Failure",
 	"FailedUpgrade",
-	"Pending",
-	"PendingDelete",
-	"PendingPurge",
-	"PendingUpdateCredentials",
-	"PendingUpgrade",
 	"Purging",
 	"Ready",
 	"Updating",
 	"Upgrading",
 	"UpdatingCredentials",
+	"UninstallVirtualCluster",
+	"Repairing",
 }
 
 func (v *ProjectStatus) UnmarshalJSON(src []byte) error {

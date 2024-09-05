@@ -24,13 +24,15 @@ type ProjectListDetailDto struct {
 	Name NullableString `json:"name,omitempty"`
 	IsKubernetes *bool `json:"isKubernetes,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
+	IsVirtualCluster *bool `json:"isVirtualCluster,omitempty"`
+	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
 	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
 	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
 	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	Status NullableString `json:"status,omitempty"`
-	Health NullableString `json:"health,omitempty"`
+	Status *ProjectStatus `json:"status,omitempty"`
+	Health *ProjectHealth `json:"health,omitempty"`
 	CloudType *CloudType `json:"cloudType,omitempty"`
 	KubesprayCurrentVersion NullableString `json:"kubesprayCurrentVersion,omitempty"`
 	KubesprayTargetVersion NullableString `json:"kubesprayTargetVersion,omitempty"`
@@ -58,6 +60,12 @@ type ProjectListDetailDto struct {
 	IsAutoscalingEnabled *bool `json:"isAutoscalingEnabled,omitempty"`
 	IsAutoscalingSpotEnabled *bool `json:"isAutoscalingSpotEnabled,omitempty"`
 	AiEnabled *bool `json:"aiEnabled,omitempty"`
+	AnyServer *bool `json:"anyServer,omitempty"`
+	AnyVm *bool `json:"anyVm,omitempty"`
+	AllUsers []string `json:"allUsers,omitempty"`
+	ParentProjectId NullableInt32 `json:"parentProjectId,omitempty"`
+	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
+	OpaProfileId NullableInt32 `json:"opaProfileId,omitempty"`
 	LockButton *ButtonStatusDto `json:"lockButton,omitempty"`
 	UnlockButton *ButtonStatusDto `json:"unlockButton,omitempty"`
 	DeleteButton *ButtonStatusDto `json:"deleteButton,omitempty"`
@@ -219,6 +227,70 @@ func (o *ProjectListDetailDto) HasIsLocked() bool {
 // SetIsLocked gets a reference to the given bool and assigns it to the IsLocked field.
 func (o *ProjectListDetailDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
+}
+
+// GetIsVirtualCluster returns the IsVirtualCluster field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetIsVirtualCluster() bool {
+	if o == nil || IsNil(o.IsVirtualCluster) {
+		var ret bool
+		return ret
+	}
+	return *o.IsVirtualCluster
+}
+
+// GetIsVirtualClusterOk returns a tuple with the IsVirtualCluster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetIsVirtualClusterOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsVirtualCluster) {
+		return nil, false
+	}
+	return o.IsVirtualCluster, true
+}
+
+// HasIsVirtualCluster returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasIsVirtualCluster() bool {
+	if o != nil && !IsNil(o.IsVirtualCluster) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsVirtualCluster gets a reference to the given bool and assigns it to the IsVirtualCluster field.
+func (o *ProjectListDetailDto) SetIsVirtualCluster(v bool) {
+	o.IsVirtualCluster = &v
+}
+
+// GetIsMonitoringEnabled returns the IsMonitoringEnabled field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetIsMonitoringEnabled() bool {
+	if o == nil || IsNil(o.IsMonitoringEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.IsMonitoringEnabled
+}
+
+// GetIsMonitoringEnabledOk returns a tuple with the IsMonitoringEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetIsMonitoringEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsMonitoringEnabled) {
+		return nil, false
+	}
+	return o.IsMonitoringEnabled, true
+}
+
+// HasIsMonitoringEnabled returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasIsMonitoringEnabled() bool {
+	if o != nil && !IsNil(o.IsMonitoringEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsMonitoringEnabled gets a reference to the given bool and assigns it to the IsMonitoringEnabled field.
+func (o *ProjectListDetailDto) SetIsMonitoringEnabled(v bool) {
+	o.IsMonitoringEnabled = &v
 }
 
 // GetHasKubeConfigFile returns the HasKubeConfigFile field value if set, zero value otherwise.
@@ -401,88 +473,68 @@ func (o *ProjectListDetailDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectListDetailDto) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
-		var ret string
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetStatus() ProjectStatus {
+	if o == nil || IsNil(o.Status) {
+		var ret ProjectStatus
 		return ret
 	}
-	return *o.Status.Get()
+	return *o.Status
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectListDetailDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+func (o *ProjectListDetailDto) GetStatusOk() (*ProjectStatus, bool) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return o.Status.Get(), o.Status.IsSet()
+	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ProjectListDetailDto) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
-func (o *ProjectListDetailDto) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *ProjectListDetailDto) SetStatusNil() {
-	o.Status.Set(nil)
+// SetStatus gets a reference to the given ProjectStatus and assigns it to the Status field.
+func (o *ProjectListDetailDto) SetStatus(v ProjectStatus) {
+	o.Status = &v
 }
 
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *ProjectListDetailDto) UnsetStatus() {
-	o.Status.Unset()
-}
-
-// GetHealth returns the Health field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ProjectListDetailDto) GetHealth() string {
-	if o == nil || IsNil(o.Health.Get()) {
-		var ret string
+// GetHealth returns the Health field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetHealth() ProjectHealth {
+	if o == nil || IsNil(o.Health) {
+		var ret ProjectHealth
 		return ret
 	}
-	return *o.Health.Get()
+	return *o.Health
 }
 
 // GetHealthOk returns a tuple with the Health field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ProjectListDetailDto) GetHealthOk() (*string, bool) {
-	if o == nil {
+func (o *ProjectListDetailDto) GetHealthOk() (*ProjectHealth, bool) {
+	if o == nil || IsNil(o.Health) {
 		return nil, false
 	}
-	return o.Health.Get(), o.Health.IsSet()
+	return o.Health, true
 }
 
 // HasHealth returns a boolean if a field has been set.
 func (o *ProjectListDetailDto) HasHealth() bool {
-	if o != nil && o.Health.IsSet() {
+	if o != nil && !IsNil(o.Health) {
 		return true
 	}
 
 	return false
 }
 
-// SetHealth gets a reference to the given NullableString and assigns it to the Health field.
-func (o *ProjectListDetailDto) SetHealth(v string) {
-	o.Health.Set(&v)
-}
-// SetHealthNil sets the value for Health to be an explicit nil
-func (o *ProjectListDetailDto) SetHealthNil() {
-	o.Health.Set(nil)
-}
-
-// UnsetHealth ensures that no value is present for Health, not even an explicit nil
-func (o *ProjectListDetailDto) UnsetHealth() {
-	o.Health.Unset()
+// SetHealth gets a reference to the given ProjectHealth and assigns it to the Health field.
+func (o *ProjectListDetailDto) SetHealth(v ProjectHealth) {
+	o.Health = &v
 }
 
 // GetCloudType returns the CloudType field value if set, zero value otherwise.
@@ -1460,6 +1512,229 @@ func (o *ProjectListDetailDto) SetAiEnabled(v bool) {
 	o.AiEnabled = &v
 }
 
+// GetAnyServer returns the AnyServer field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetAnyServer() bool {
+	if o == nil || IsNil(o.AnyServer) {
+		var ret bool
+		return ret
+	}
+	return *o.AnyServer
+}
+
+// GetAnyServerOk returns a tuple with the AnyServer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetAnyServerOk() (*bool, bool) {
+	if o == nil || IsNil(o.AnyServer) {
+		return nil, false
+	}
+	return o.AnyServer, true
+}
+
+// HasAnyServer returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasAnyServer() bool {
+	if o != nil && !IsNil(o.AnyServer) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnyServer gets a reference to the given bool and assigns it to the AnyServer field.
+func (o *ProjectListDetailDto) SetAnyServer(v bool) {
+	o.AnyServer = &v
+}
+
+// GetAnyVm returns the AnyVm field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetAnyVm() bool {
+	if o == nil || IsNil(o.AnyVm) {
+		var ret bool
+		return ret
+	}
+	return *o.AnyVm
+}
+
+// GetAnyVmOk returns a tuple with the AnyVm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetAnyVmOk() (*bool, bool) {
+	if o == nil || IsNil(o.AnyVm) {
+		return nil, false
+	}
+	return o.AnyVm, true
+}
+
+// HasAnyVm returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasAnyVm() bool {
+	if o != nil && !IsNil(o.AnyVm) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnyVm gets a reference to the given bool and assigns it to the AnyVm field.
+func (o *ProjectListDetailDto) SetAnyVm(v bool) {
+	o.AnyVm = &v
+}
+
+// GetAllUsers returns the AllUsers field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectListDetailDto) GetAllUsers() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.AllUsers
+}
+
+// GetAllUsersOk returns a tuple with the AllUsers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectListDetailDto) GetAllUsersOk() ([]string, bool) {
+	if o == nil || IsNil(o.AllUsers) {
+		return nil, false
+	}
+	return o.AllUsers, true
+}
+
+// HasAllUsers returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasAllUsers() bool {
+	if o != nil && !IsNil(o.AllUsers) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllUsers gets a reference to the given []string and assigns it to the AllUsers field.
+func (o *ProjectListDetailDto) SetAllUsers(v []string) {
+	o.AllUsers = v
+}
+
+// GetParentProjectId returns the ParentProjectId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectListDetailDto) GetParentProjectId() int32 {
+	if o == nil || IsNil(o.ParentProjectId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.ParentProjectId.Get()
+}
+
+// GetParentProjectIdOk returns a tuple with the ParentProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectListDetailDto) GetParentProjectIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ParentProjectId.Get(), o.ParentProjectId.IsSet()
+}
+
+// HasParentProjectId returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasParentProjectId() bool {
+	if o != nil && o.ParentProjectId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetParentProjectId gets a reference to the given NullableInt32 and assigns it to the ParentProjectId field.
+func (o *ProjectListDetailDto) SetParentProjectId(v int32) {
+	o.ParentProjectId.Set(&v)
+}
+// SetParentProjectIdNil sets the value for ParentProjectId to be an explicit nil
+func (o *ProjectListDetailDto) SetParentProjectIdNil() {
+	o.ParentProjectId.Set(nil)
+}
+
+// UnsetParentProjectId ensures that no value is present for ParentProjectId, not even an explicit nil
+func (o *ProjectListDetailDto) UnsetParentProjectId() {
+	o.ParentProjectId.Unset()
+}
+
+// GetAlertingProfileId returns the AlertingProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectListDetailDto) GetAlertingProfileId() int32 {
+	if o == nil || IsNil(o.AlertingProfileId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AlertingProfileId.Get()
+}
+
+// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectListDetailDto) GetAlertingProfileIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AlertingProfileId.Get(), o.AlertingProfileId.IsSet()
+}
+
+// HasAlertingProfileId returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasAlertingProfileId() bool {
+	if o != nil && o.AlertingProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertingProfileId gets a reference to the given NullableInt32 and assigns it to the AlertingProfileId field.
+func (o *ProjectListDetailDto) SetAlertingProfileId(v int32) {
+	o.AlertingProfileId.Set(&v)
+}
+// SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
+func (o *ProjectListDetailDto) SetAlertingProfileIdNil() {
+	o.AlertingProfileId.Set(nil)
+}
+
+// UnsetAlertingProfileId ensures that no value is present for AlertingProfileId, not even an explicit nil
+func (o *ProjectListDetailDto) UnsetAlertingProfileId() {
+	o.AlertingProfileId.Unset()
+}
+
+// GetOpaProfileId returns the OpaProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectListDetailDto) GetOpaProfileId() int32 {
+	if o == nil || IsNil(o.OpaProfileId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.OpaProfileId.Get()
+}
+
+// GetOpaProfileIdOk returns a tuple with the OpaProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectListDetailDto) GetOpaProfileIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OpaProfileId.Get(), o.OpaProfileId.IsSet()
+}
+
+// HasOpaProfileId returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasOpaProfileId() bool {
+	if o != nil && o.OpaProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOpaProfileId gets a reference to the given NullableInt32 and assigns it to the OpaProfileId field.
+func (o *ProjectListDetailDto) SetOpaProfileId(v int32) {
+	o.OpaProfileId.Set(&v)
+}
+// SetOpaProfileIdNil sets the value for OpaProfileId to be an explicit nil
+func (o *ProjectListDetailDto) SetOpaProfileIdNil() {
+	o.OpaProfileId.Set(nil)
+}
+
+// UnsetOpaProfileId ensures that no value is present for OpaProfileId, not even an explicit nil
+func (o *ProjectListDetailDto) UnsetOpaProfileId() {
+	o.OpaProfileId.Unset()
+}
+
 // GetLockButton returns the LockButton field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetLockButton() ButtonStatusDto {
 	if o == nil || IsNil(o.LockButton) {
@@ -1674,6 +1949,12 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
+	if !IsNil(o.IsVirtualCluster) {
+		toSerialize["isVirtualCluster"] = o.IsVirtualCluster
+	}
+	if !IsNil(o.IsMonitoringEnabled) {
+		toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
+	}
 	if !IsNil(o.HasKubeConfigFile) {
 		toSerialize["hasKubeConfigFile"] = o.HasKubeConfigFile
 	}
@@ -1689,11 +1970,11 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
-	if o.Health.IsSet() {
-		toSerialize["health"] = o.Health.Get()
+	if !IsNil(o.Health) {
+		toSerialize["health"] = o.Health
 	}
 	if !IsNil(o.CloudType) {
 		toSerialize["cloudType"] = o.CloudType
@@ -1775,6 +2056,24 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AiEnabled) {
 		toSerialize["aiEnabled"] = o.AiEnabled
+	}
+	if !IsNil(o.AnyServer) {
+		toSerialize["anyServer"] = o.AnyServer
+	}
+	if !IsNil(o.AnyVm) {
+		toSerialize["anyVm"] = o.AnyVm
+	}
+	if o.AllUsers != nil {
+		toSerialize["allUsers"] = o.AllUsers
+	}
+	if o.ParentProjectId.IsSet() {
+		toSerialize["parentProjectId"] = o.ParentProjectId.Get()
+	}
+	if o.AlertingProfileId.IsSet() {
+		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
+	}
+	if o.OpaProfileId.IsSet() {
+		toSerialize["opaProfileId"] = o.OpaProfileId.Get()
 	}
 	if !IsNil(o.LockButton) {
 		toSerialize["lockButton"] = o.LockButton

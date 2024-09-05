@@ -46,17 +46,6 @@ func Test_taikuncore_ServersAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ServersAPIService ServersDelete", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.ServersAPI.ServersDelete(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ServersAPIService ServersDetails", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -115,17 +104,6 @@ func Test_taikuncore_ServersAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ServersAPIService ServersUpdate", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.ServersAPI.ServersUpdate(context.Background()).Execute()
-
-		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

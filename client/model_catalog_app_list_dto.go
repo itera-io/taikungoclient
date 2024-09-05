@@ -20,7 +20,7 @@ var _ MappedNullable = &CatalogAppListDto{}
 
 // CatalogAppListDto struct for CatalogAppListDto
 type CatalogAppListDto struct {
-	Id *int32 `json:"id,omitempty"`
+	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	RepoId *int32 `json:"repoId,omitempty"`
 	RepoName NullableString `json:"repoName,omitempty"`
@@ -28,8 +28,14 @@ type CatalogAppListDto struct {
 	CatalogName NullableString `json:"catalogName,omitempty"`
 	PackageId NullableString `json:"packageId,omitempty"`
 	Version NullableString `json:"version,omitempty"`
-	Logo NullableString `json:"logo,omitempty"`
+	LogoImageId NullableString `json:"logoImageId,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
+	AppVersion NullableString `json:"appVersion,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	SecurityReportSummary *SecurityReportSummary `json:"securityReportSummary,omitempty"`
+	Repository *Repository `json:"repository,omitempty"`
+	Stars *int64 `json:"stars,omitempty"`
+	InstalledInstanceCount NullableInt32 `json:"installedInstanceCount,omitempty"`
 }
 
 // NewCatalogAppListDto instantiates a new CatalogAppListDto object
@@ -49,36 +55,36 @@ func NewCatalogAppListDtoWithDefaults() *CatalogAppListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *CatalogAppListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+// GetCatalogAppId returns the CatalogAppId field value if set, zero value otherwise.
+func (o *CatalogAppListDto) GetCatalogAppId() int32 {
+	if o == nil || IsNil(o.CatalogAppId) {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+	return *o.CatalogAppId
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetCatalogAppIdOk returns a tuple with the CatalogAppId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CatalogAppListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+func (o *CatalogAppListDto) GetCatalogAppIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.CatalogAppId) {
 		return nil, false
 	}
-	return o.Id, true
+	return o.CatalogAppId, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *CatalogAppListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+// HasCatalogAppId returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasCatalogAppId() bool {
+	if o != nil && !IsNil(o.CatalogAppId) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given int32 and assigns it to the Id field.
-func (o *CatalogAppListDto) SetId(v int32) {
-	o.Id = &v
+// SetCatalogAppId gets a reference to the given int32 and assigns it to the CatalogAppId field.
+func (o *CatalogAppListDto) SetCatalogAppId(v int32) {
+	o.CatalogAppId = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -355,46 +361,46 @@ func (o *CatalogAppListDto) UnsetVersion() {
 	o.Version.Unset()
 }
 
-// GetLogo returns the Logo field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *CatalogAppListDto) GetLogo() string {
-	if o == nil || IsNil(o.Logo.Get()) {
+// GetLogoImageId returns the LogoImageId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogAppListDto) GetLogoImageId() string {
+	if o == nil || IsNil(o.LogoImageId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Logo.Get()
+	return *o.LogoImageId.Get()
 }
 
-// GetLogoOk returns a tuple with the Logo field value if set, nil otherwise
+// GetLogoImageIdOk returns a tuple with the LogoImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CatalogAppListDto) GetLogoOk() (*string, bool) {
+func (o *CatalogAppListDto) GetLogoImageIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Logo.Get(), o.Logo.IsSet()
+	return o.LogoImageId.Get(), o.LogoImageId.IsSet()
 }
 
-// HasLogo returns a boolean if a field has been set.
-func (o *CatalogAppListDto) HasLogo() bool {
-	if o != nil && o.Logo.IsSet() {
+// HasLogoImageId returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasLogoImageId() bool {
+	if o != nil && o.LogoImageId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLogo gets a reference to the given NullableString and assigns it to the Logo field.
-func (o *CatalogAppListDto) SetLogo(v string) {
-	o.Logo.Set(&v)
+// SetLogoImageId gets a reference to the given NullableString and assigns it to the LogoImageId field.
+func (o *CatalogAppListDto) SetLogoImageId(v string) {
+	o.LogoImageId.Set(&v)
 }
-// SetLogoNil sets the value for Logo to be an explicit nil
-func (o *CatalogAppListDto) SetLogoNil() {
-	o.Logo.Set(nil)
+// SetLogoImageIdNil sets the value for LogoImageId to be an explicit nil
+func (o *CatalogAppListDto) SetLogoImageIdNil() {
+	o.LogoImageId.Set(nil)
 }
 
-// UnsetLogo ensures that no value is present for Logo, not even an explicit nil
-func (o *CatalogAppListDto) UnsetLogo() {
-	o.Logo.Unset()
+// UnsetLogoImageId ensures that no value is present for LogoImageId, not even an explicit nil
+func (o *CatalogAppListDto) UnsetLogoImageId() {
+	o.LogoImageId.Unset()
 }
 
 // GetIsLocked returns the IsLocked field value if set, zero value otherwise.
@@ -429,6 +435,228 @@ func (o *CatalogAppListDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
+// GetAppVersion returns the AppVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogAppListDto) GetAppVersion() string {
+	if o == nil || IsNil(o.AppVersion.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AppVersion.Get()
+}
+
+// GetAppVersionOk returns a tuple with the AppVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogAppListDto) GetAppVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AppVersion.Get(), o.AppVersion.IsSet()
+}
+
+// HasAppVersion returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasAppVersion() bool {
+	if o != nil && o.AppVersion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAppVersion gets a reference to the given NullableString and assigns it to the AppVersion field.
+func (o *CatalogAppListDto) SetAppVersion(v string) {
+	o.AppVersion.Set(&v)
+}
+// SetAppVersionNil sets the value for AppVersion to be an explicit nil
+func (o *CatalogAppListDto) SetAppVersionNil() {
+	o.AppVersion.Set(nil)
+}
+
+// UnsetAppVersion ensures that no value is present for AppVersion, not even an explicit nil
+func (o *CatalogAppListDto) UnsetAppVersion() {
+	o.AppVersion.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogAppListDto) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogAppListDto) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *CatalogAppListDto) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *CatalogAppListDto) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *CatalogAppListDto) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetSecurityReportSummary returns the SecurityReportSummary field value if set, zero value otherwise.
+func (o *CatalogAppListDto) GetSecurityReportSummary() SecurityReportSummary {
+	if o == nil || IsNil(o.SecurityReportSummary) {
+		var ret SecurityReportSummary
+		return ret
+	}
+	return *o.SecurityReportSummary
+}
+
+// GetSecurityReportSummaryOk returns a tuple with the SecurityReportSummary field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogAppListDto) GetSecurityReportSummaryOk() (*SecurityReportSummary, bool) {
+	if o == nil || IsNil(o.SecurityReportSummary) {
+		return nil, false
+	}
+	return o.SecurityReportSummary, true
+}
+
+// HasSecurityReportSummary returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasSecurityReportSummary() bool {
+	if o != nil && !IsNil(o.SecurityReportSummary) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityReportSummary gets a reference to the given SecurityReportSummary and assigns it to the SecurityReportSummary field.
+func (o *CatalogAppListDto) SetSecurityReportSummary(v SecurityReportSummary) {
+	o.SecurityReportSummary = &v
+}
+
+// GetRepository returns the Repository field value if set, zero value otherwise.
+func (o *CatalogAppListDto) GetRepository() Repository {
+	if o == nil || IsNil(o.Repository) {
+		var ret Repository
+		return ret
+	}
+	return *o.Repository
+}
+
+// GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogAppListDto) GetRepositoryOk() (*Repository, bool) {
+	if o == nil || IsNil(o.Repository) {
+		return nil, false
+	}
+	return o.Repository, true
+}
+
+// HasRepository returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasRepository() bool {
+	if o != nil && !IsNil(o.Repository) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepository gets a reference to the given Repository and assigns it to the Repository field.
+func (o *CatalogAppListDto) SetRepository(v Repository) {
+	o.Repository = &v
+}
+
+// GetStars returns the Stars field value if set, zero value otherwise.
+func (o *CatalogAppListDto) GetStars() int64 {
+	if o == nil || IsNil(o.Stars) {
+		var ret int64
+		return ret
+	}
+	return *o.Stars
+}
+
+// GetStarsOk returns a tuple with the Stars field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogAppListDto) GetStarsOk() (*int64, bool) {
+	if o == nil || IsNil(o.Stars) {
+		return nil, false
+	}
+	return o.Stars, true
+}
+
+// HasStars returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasStars() bool {
+	if o != nil && !IsNil(o.Stars) {
+		return true
+	}
+
+	return false
+}
+
+// SetStars gets a reference to the given int64 and assigns it to the Stars field.
+func (o *CatalogAppListDto) SetStars(v int64) {
+	o.Stars = &v
+}
+
+// GetInstalledInstanceCount returns the InstalledInstanceCount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CatalogAppListDto) GetInstalledInstanceCount() int32 {
+	if o == nil || IsNil(o.InstalledInstanceCount.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.InstalledInstanceCount.Get()
+}
+
+// GetInstalledInstanceCountOk returns a tuple with the InstalledInstanceCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CatalogAppListDto) GetInstalledInstanceCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InstalledInstanceCount.Get(), o.InstalledInstanceCount.IsSet()
+}
+
+// HasInstalledInstanceCount returns a boolean if a field has been set.
+func (o *CatalogAppListDto) HasInstalledInstanceCount() bool {
+	if o != nil && o.InstalledInstanceCount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInstalledInstanceCount gets a reference to the given NullableInt32 and assigns it to the InstalledInstanceCount field.
+func (o *CatalogAppListDto) SetInstalledInstanceCount(v int32) {
+	o.InstalledInstanceCount.Set(&v)
+}
+// SetInstalledInstanceCountNil sets the value for InstalledInstanceCount to be an explicit nil
+func (o *CatalogAppListDto) SetInstalledInstanceCountNil() {
+	o.InstalledInstanceCount.Set(nil)
+}
+
+// UnsetInstalledInstanceCount ensures that no value is present for InstalledInstanceCount, not even an explicit nil
+func (o *CatalogAppListDto) UnsetInstalledInstanceCount() {
+	o.InstalledInstanceCount.Unset()
+}
+
 func (o CatalogAppListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -439,8 +667,8 @@ func (o CatalogAppListDto) MarshalJSON() ([]byte, error) {
 
 func (o CatalogAppListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if !IsNil(o.CatalogAppId) {
+		toSerialize["catalogAppId"] = o.CatalogAppId
 	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
@@ -463,11 +691,29 @@ func (o CatalogAppListDto) ToMap() (map[string]interface{}, error) {
 	if o.Version.IsSet() {
 		toSerialize["version"] = o.Version.Get()
 	}
-	if o.Logo.IsSet() {
-		toSerialize["logo"] = o.Logo.Get()
+	if o.LogoImageId.IsSet() {
+		toSerialize["logoImageId"] = o.LogoImageId.Get()
 	}
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
+	}
+	if o.AppVersion.IsSet() {
+		toSerialize["appVersion"] = o.AppVersion.Get()
+	}
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
+	if !IsNil(o.SecurityReportSummary) {
+		toSerialize["securityReportSummary"] = o.SecurityReportSummary
+	}
+	if !IsNil(o.Repository) {
+		toSerialize["repository"] = o.Repository
+	}
+	if !IsNil(o.Stars) {
+		toSerialize["stars"] = o.Stars
+	}
+	if o.InstalledInstanceCount.IsSet() {
+		toSerialize["installedInstanceCount"] = o.InstalledInstanceCount.Get()
 	}
 	return toSerialize, nil
 }

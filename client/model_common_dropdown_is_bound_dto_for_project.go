@@ -27,6 +27,8 @@ type CommonDropdownIsBoundDtoForProject struct {
 	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	MaintenanceModeEnabled *bool `json:"maintenanceModeEnabled,omitempty"`
+	IsVirtualCluster *bool `json:"isVirtualCluster,omitempty"`
+	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
 	CloudType *CloudType `json:"cloudType,omitempty"`
 	Status *ProjectStatus `json:"status,omitempty"`
 	Health *ProjectHealth `json:"health,omitempty"`
@@ -293,6 +295,80 @@ func (o *CommonDropdownIsBoundDtoForProject) SetMaintenanceModeEnabled(v bool) {
 	o.MaintenanceModeEnabled = &v
 }
 
+// GetIsVirtualCluster returns the IsVirtualCluster field value if set, zero value otherwise.
+func (o *CommonDropdownIsBoundDtoForProject) GetIsVirtualCluster() bool {
+	if o == nil || IsNil(o.IsVirtualCluster) {
+		var ret bool
+		return ret
+	}
+	return *o.IsVirtualCluster
+}
+
+// GetIsVirtualClusterOk returns a tuple with the IsVirtualCluster field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonDropdownIsBoundDtoForProject) GetIsVirtualClusterOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsVirtualCluster) {
+		return nil, false
+	}
+	return o.IsVirtualCluster, true
+}
+
+// HasIsVirtualCluster returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasIsVirtualCluster() bool {
+	if o != nil && !IsNil(o.IsVirtualCluster) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsVirtualCluster gets a reference to the given bool and assigns it to the IsVirtualCluster field.
+func (o *CommonDropdownIsBoundDtoForProject) SetIsVirtualCluster(v bool) {
+	o.IsVirtualCluster = &v
+}
+
+// GetAlertingProfileId returns the AlertingProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CommonDropdownIsBoundDtoForProject) GetAlertingProfileId() int32 {
+	if o == nil || IsNil(o.AlertingProfileId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AlertingProfileId.Get()
+}
+
+// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CommonDropdownIsBoundDtoForProject) GetAlertingProfileIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AlertingProfileId.Get(), o.AlertingProfileId.IsSet()
+}
+
+// HasAlertingProfileId returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasAlertingProfileId() bool {
+	if o != nil && o.AlertingProfileId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAlertingProfileId gets a reference to the given NullableInt32 and assigns it to the AlertingProfileId field.
+func (o *CommonDropdownIsBoundDtoForProject) SetAlertingProfileId(v int32) {
+	o.AlertingProfileId.Set(&v)
+}
+// SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
+func (o *CommonDropdownIsBoundDtoForProject) SetAlertingProfileIdNil() {
+	o.AlertingProfileId.Set(nil)
+}
+
+// UnsetAlertingProfileId ensures that no value is present for AlertingProfileId, not even an explicit nil
+func (o *CommonDropdownIsBoundDtoForProject) UnsetAlertingProfileId() {
+	o.AlertingProfileId.Unset()
+}
+
 // GetCloudType returns the CloudType field value if set, zero value otherwise.
 func (o *CommonDropdownIsBoundDtoForProject) GetCloudType() CloudType {
 	if o == nil || IsNil(o.CloudType) {
@@ -419,6 +495,12 @@ func (o CommonDropdownIsBoundDtoForProject) ToMap() (map[string]interface{}, err
 	}
 	if !IsNil(o.MaintenanceModeEnabled) {
 		toSerialize["maintenanceModeEnabled"] = o.MaintenanceModeEnabled
+	}
+	if !IsNil(o.IsVirtualCluster) {
+		toSerialize["isVirtualCluster"] = o.IsVirtualCluster
+	}
+	if o.AlertingProfileId.IsSet() {
+		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	}
 	if !IsNil(o.CloudType) {
 		toSerialize["cloudType"] = o.CloudType

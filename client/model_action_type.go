@@ -85,6 +85,21 @@ const (
 	ACTIONTYPE_STARTED_DISABLE_AI ActionType = "StartedDisableAi"
 	ACTIONTYPE_ENABLE_DISABLE_MAINTENANCE_MODE ActionType = "EnableDisableMaintenanceMode"
 	ACTIONTYPE_UPDATE_VM_FLAVOR ActionType = "UpdateVmFlavor"
+	ACTIONTYPE_DELETE_VIRTUAL_CLUSTER ActionType = "DeleteVirtualCluster"
+	ACTIONTYPE_START_COMMIT_CHANGES ActionType = "StartCommitChanges"
+	ACTIONTYPE_START_PURGE_SERVERS ActionType = "StartPurgeServers"
+	ACTIONTYPE_START_PURGE_VMS ActionType = "StartPurgeVms"
+	ACTIONTYPE_START_COMMIT_VM_CHANGES ActionType = "StartCommitVmChanges"
+	ACTIONTYPE_START_REPAIR_SERVERS ActionType = "StartRepairServers"
+	ACTIONTYPE_START_REPAIR_VMS ActionType = "StartRepairVms"
+	ACTIONTYPE_NONE ActionType = "None"
+	ACTIONTYPE_COMMIT_VM_CHANGES ActionType = "CommitVmChanges"
+	ACTIONTYPE_REPAIR_SERVERS ActionType = "RepairServers"
+	ACTIONTYPE_REPAIR_VMS ActionType = "RepairVms"
+	ACTIONTYPE_SCALE_UP_SERVERS ActionType = "ScaleUpServers"
+	ACTIONTYPE_SCALE_UP_VMS ActionType = "ScaleUpVms"
+	ACTIONTYPE_START_ADDING_V_CLUSTER ActionType = "StartAddingVCluster"
+	ACTIONTYPE_ADDING_V_CLUSTER ActionType = "AddingVCluster"
 )
 
 // All allowed values of ActionType enum
@@ -153,6 +168,21 @@ var AllowedActionTypeEnumValues = []ActionType{
 	"StartedDisableAi",
 	"EnableDisableMaintenanceMode",
 	"UpdateVmFlavor",
+	"DeleteVirtualCluster",
+	"StartCommitChanges",
+	"StartPurgeServers",
+	"StartPurgeVms",
+	"StartCommitVmChanges",
+	"StartRepairServers",
+	"StartRepairVms",
+	"None",
+	"CommitVmChanges",
+	"RepairServers",
+	"RepairVms",
+	"ScaleUpServers",
+	"ScaleUpVms",
+	"StartAddingVCluster",
+	"AddingVCluster",
 }
 
 func (v *ActionType) UnmarshalJSON(src []byte) error {

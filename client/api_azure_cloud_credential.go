@@ -836,7 +836,11 @@ func (r ApiAzureOffersRequest) Execute() (*AzureOffersList, *http.Response, erro
 }
 
 /*
-AzureOffers Method for AzureOffers
+AzureOffers List Azure offer list by publisher
+
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>SortBy</b> - Options: <i>name</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>azureOffer</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param cloudId
@@ -1285,7 +1289,11 @@ func (r ApiAzureSkusRequest) Execute() (*AzureSkusList, *http.Response, error) {
 }
 
 /*
-AzureSkus Method for AzureSkus
+AzureSkus List Azure skus list by publisher and offer
+
+<div style='font-family: Arial, sans-serif;'>
+                        <h2 style='color: #4A90E2;'>Description</h2>
+                        <ul><li><b>SortBy</b> - Options: <i>name</i><li><b>SortDirection</b> - Options: <i>asc</i>, <i>desc</i><li><b>Search</b> - Options: <i>azureSku</i></ul></div>
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param cloudId
