@@ -199,6 +199,24 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 1000
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -4408,8 +4426,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-05T00:17:16.9353757Z
-                  createdAt: 2024-09-05T00:17:16.9353757Z
+                  lastValidated: 2024-09-10T20:16:30.7255049Z
+                  createdAt: 2024-09-10T20:16:30.7255049Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -4514,14 +4532,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-05T00:17:16.9353757Z
+                    lastBackup: 2024-09-10T20:16:30.7255049Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-05T00:17:16.9353757Z
+                  createdAt: 2024-09-10T20:16:30.7255049Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-05T00:17:16.9353757Z
+                  lastBackup: 2024-09-10T20:16:30.7255049Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -4626,8 +4644,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-05T00:17:16.9353757Z
-                  expiration: 2024-09-05T00:17:16.9353757Z
+                  createdAt: 2024-09-10T20:16:30.7255049Z
+                  expiration: 2024-09-10T20:16:30.7255049Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -4731,7 +4749,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-05T00:17:16.9353757Z
+                  createdAt: 2024-09-10T20:16:30.7255049Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -4841,9 +4859,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-05T00:17:16.9353757+00:00
-                  startTimeStamp: 2024-09-05T00:17:16.9353757+00:00
-                  createdAt: 2024-09-05T00:17:16.9353757Z
+                  completionDateTime: 2024-09-10T20:16:30.7255049+00:00
+                  startTimeStamp: 2024-09-10T20:16:30.7255049+00:00
+                  createdAt: 2024-09-10T20:16:30.7255049Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -15142,6 +15160,24 @@ paths:
           format: int32
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          default: 1000
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -19062,6 +19098,696 @@ paths:
       summary: Uninstall application
       tags:
       - Project apps
+  /api/v1/project-deployment/commit:
+    post:
+      operationId: project-deployment-commit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectDeploymentCommitCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Commit
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/commit-vm:
+    post:
+      operationId: project-deployment-commit-vm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentCommitVmCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Commit
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/delete:
+    post:
+      operationId: project-deployment-delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectDeploymentDeleteServersCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/delete-vms:
+    post:
+      operationId: project-deployment-delete-vms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectDeploymentDeleteVmsCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete vms
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/delete-vm-disks:
+    post:
+      operationId: project-deployment-delete-vm-disks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteVmDiskCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete vm disks
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/disable-ai:
+    post:
+      operationId: project-deployment-disable-ai
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentDisableAiCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable ai
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/disable-backup:
+    post:
+      operationId: project-deployment-disable-backup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentDisableBackupCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable backup
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/disable-monitoring:
+    post:
+      operationId: project-deployment-disable-monitoring
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentDisableMonitoringCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable monitoring
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/disable-opa:
+    post:
+      operationId: project-deployment-disable-opa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentDisableOpaCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable opa
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/enable-ai:
+    post:
+      operationId: project-deployment-enable-ai
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentEnableAiCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable ai
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/enable-backup:
+    post:
+      operationId: project-deployment-enable-backup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentEnableBackupCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable backup
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/enable-monitoring:
+    post:
+      operationId: project-deployment-enable-monitoring
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentEnableMonitoringCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable monitoring
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/enable-opa:
+    post:
+      operationId: project-deployment-enable-opa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentOpaEnableCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable opa
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/repair:
+    post:
+      operationId: project-deployment-repair
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectDeploymentRepairCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Repair
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/repair-vm:
+    post:
+      operationId: project-deployment-repair-vm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectDeploymentRepairVmCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Repair Vm
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/upgrade/{projectId}:
+    post:
+      operationId: project-deployment-upgrade
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Upgrade the project's Kubernetes to the next available version. Project
+        must be READY.
+      tags:
+      - Project deployment
   /api/v1/projectgroups/bind-project:
     post:
       operationId: projectgroups-bind-project
@@ -36741,6 +37467,69 @@ components:
           format: int32
           type: integer
       type: object
+    DeleteVmDiskCommand:
+      additionalProperties: false
+      example:
+        vmDiskIds:
+        - 6
+        - 6
+        standaloneVmId: 0
+      properties:
+        standaloneVmId:
+          format: int32
+          type: integer
+        vmDiskIds:
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
+      type: object
+    DeploymentCommitVmCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    DeploymentDisableAiCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    DeploymentDisableBackupCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    DeploymentDisableMonitoringCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    DeploymentDisableOpaCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
     DeploymentDto:
       additionalProperties: false
       example:
@@ -36761,6 +37550,54 @@ components:
         age:
           nullable: true
           type: string
+      type: object
+    DeploymentEnableAiCommand:
+      additionalProperties: false
+      example:
+        aiCredentialId: 6
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        aiCredentialId:
+          format: int32
+          type: integer
+      type: object
+    DeploymentEnableBackupCommand:
+      additionalProperties: false
+      example:
+        s3CredentialId: 6
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        s3CredentialId:
+          format: int32
+          type: integer
+      type: object
+    DeploymentEnableMonitoringCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    DeploymentOpaEnableCommand:
+      additionalProperties: false
+      example:
+        opaCredentialId: 6
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        opaCredentialId:
+          format: int32
+          type: integer
       type: object
     DeploymentSearchCommand:
       additionalProperties: false
@@ -41146,6 +41983,7 @@ components:
           type: string
         podSelector:
           additionalProperties:
+            nullable: true
             type: string
           nullable: true
           type: object
@@ -44171,6 +45009,75 @@ components:
         expiredAt:
           nullable: true
           type: string
+      type: object
+    ProjectDeploymentCommitCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    ProjectDeploymentDeleteServersCommand:
+      additionalProperties: false
+      example:
+        forceDeleteVClusters: true
+        deleteAutoscalingServers: true
+        projectId: 0
+        serverIds:
+        - 6
+        - 6
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        serverIds:
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
+        forceDeleteVClusters:
+          type: boolean
+        deleteAutoscalingServers:
+          type: boolean
+      type: object
+    ProjectDeploymentDeleteVmsCommand:
+      additionalProperties: false
+      example:
+        vmIds:
+        - 6
+        - 6
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        vmIds:
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
+      type: object
+    ProjectDeploymentRepairCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    ProjectDeploymentRepairVmCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
       type: object
     ProjectDetailsErrorListDto:
       additionalProperties: false
@@ -50264,14 +51171,12 @@ components:
         unsupportedResourceCounts:
           additionalProperties:
             format: int32
-            nullable: true
             type: integer
           nullable: true
           type: object
         noPriceResourceCounts:
           additionalProperties:
             format: int32
-            nullable: true
             type: integer
           nullable: true
           type: object

@@ -360,6 +360,8 @@ type ApiAccessprofilesDropdownRequest struct {
 	ApiService *AccessProfilesAPIService
 	organizationId *int32
 	search *string
+	offset *int32
+	limit *int32
 }
 
 func (r ApiAccessprofilesDropdownRequest) OrganizationId(organizationId int32) ApiAccessprofilesDropdownRequest {
@@ -369,6 +371,16 @@ func (r ApiAccessprofilesDropdownRequest) OrganizationId(organizationId int32) A
 
 func (r ApiAccessprofilesDropdownRequest) Search(search string) ApiAccessprofilesDropdownRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiAccessprofilesDropdownRequest) Offset(offset int32) ApiAccessprofilesDropdownRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiAccessprofilesDropdownRequest) Limit(limit int32) ApiAccessprofilesDropdownRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -415,6 +427,18 @@ func (a *AccessProfilesAPIService) AccessprofilesDropdownExecute(r ApiAccessprof
 	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 1000
+		r.limit = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

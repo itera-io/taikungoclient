@@ -386,6 +386,22 @@ Class | Method | HTTP request | Description
 *ProjectAppsAPI* | [**ProjectappLockManager**](docs/ProjectAppsAPI.md#projectapplockmanager) | **Post** /api/v1/projectapp/lockmanager | Lock/Unlock project app
 *ProjectAppsAPI* | [**ProjectappSync**](docs/ProjectAppsAPI.md#projectappsync) | **Post** /api/v1/projectapp/sync | Sync an application
 *ProjectAppsAPI* | [**ProjectappUpdateExtraValues**](docs/ProjectAppsAPI.md#projectappupdateextravalues) | **Post** /api/v1/projectapp/update-extra-values | Update extra values
+*ProjectDeploymentAPI* | [**ProjectDeploymentCommit**](docs/ProjectDeploymentAPI.md#projectdeploymentcommit) | **Post** /api/v1/project-deployment/commit | Commit
+*ProjectDeploymentAPI* | [**ProjectDeploymentCommitVm**](docs/ProjectDeploymentAPI.md#projectdeploymentcommitvm) | **Post** /api/v1/project-deployment/commit-vm | Commit
+*ProjectDeploymentAPI* | [**ProjectDeploymentDelete**](docs/ProjectDeploymentAPI.md#projectdeploymentdelete) | **Post** /api/v1/project-deployment/delete | Delete
+*ProjectDeploymentAPI* | [**ProjectDeploymentDeleteVmDisks**](docs/ProjectDeploymentAPI.md#projectdeploymentdeletevmdisks) | **Post** /api/v1/project-deployment/delete-vm-disks | Delete vm disks
+*ProjectDeploymentAPI* | [**ProjectDeploymentDeleteVms**](docs/ProjectDeploymentAPI.md#projectdeploymentdeletevms) | **Post** /api/v1/project-deployment/delete-vms | Delete vms
+*ProjectDeploymentAPI* | [**ProjectDeploymentDisableAi**](docs/ProjectDeploymentAPI.md#projectdeploymentdisableai) | **Post** /api/v1/project-deployment/disable-ai | Disable ai
+*ProjectDeploymentAPI* | [**ProjectDeploymentDisableBackup**](docs/ProjectDeploymentAPI.md#projectdeploymentdisablebackup) | **Post** /api/v1/project-deployment/disable-backup | Disable backup
+*ProjectDeploymentAPI* | [**ProjectDeploymentDisableMonitoring**](docs/ProjectDeploymentAPI.md#projectdeploymentdisablemonitoring) | **Post** /api/v1/project-deployment/disable-monitoring | Disable monitoring
+*ProjectDeploymentAPI* | [**ProjectDeploymentDisableOpa**](docs/ProjectDeploymentAPI.md#projectdeploymentdisableopa) | **Post** /api/v1/project-deployment/disable-opa | Disable opa
+*ProjectDeploymentAPI* | [**ProjectDeploymentEnableAi**](docs/ProjectDeploymentAPI.md#projectdeploymentenableai) | **Post** /api/v1/project-deployment/enable-ai | Enable ai
+*ProjectDeploymentAPI* | [**ProjectDeploymentEnableBackup**](docs/ProjectDeploymentAPI.md#projectdeploymentenablebackup) | **Post** /api/v1/project-deployment/enable-backup | Enable backup
+*ProjectDeploymentAPI* | [**ProjectDeploymentEnableMonitoring**](docs/ProjectDeploymentAPI.md#projectdeploymentenablemonitoring) | **Post** /api/v1/project-deployment/enable-monitoring | Enable monitoring
+*ProjectDeploymentAPI* | [**ProjectDeploymentEnableOpa**](docs/ProjectDeploymentAPI.md#projectdeploymentenableopa) | **Post** /api/v1/project-deployment/enable-opa | Enable opa
+*ProjectDeploymentAPI* | [**ProjectDeploymentRepair**](docs/ProjectDeploymentAPI.md#projectdeploymentrepair) | **Post** /api/v1/project-deployment/repair | Repair
+*ProjectDeploymentAPI* | [**ProjectDeploymentRepairVm**](docs/ProjectDeploymentAPI.md#projectdeploymentrepairvm) | **Post** /api/v1/project-deployment/repair-vm | Repair Vm
+*ProjectDeploymentAPI* | [**ProjectDeploymentUpgrade**](docs/ProjectDeploymentAPI.md#projectdeploymentupgrade) | **Post** /api/v1/project-deployment/upgrade/{projectId} | Upgrade the project&#39;s Kubernetes to the next available version. Project must be READY.
 *ProjectGroupsAPI* | [**ProjectgroupsBindProject**](docs/ProjectGroupsAPI.md#projectgroupsbindproject) | **Post** /api/v1/projectgroups/bind-project | Bind Projects to group
 *ProjectGroupsAPI* | [**ProjectgroupsBindUserGroup**](docs/ProjectGroupsAPI.md#projectgroupsbindusergroup) | **Post** /api/v1/projectgroups/bind-user-group | Bind User groups
 *ProjectGroupsAPI* | [**ProjectgroupsCreate**](docs/ProjectGroupsAPI.md#projectgroupscreate) | **Post** /api/v1/projectgroups/create | Add Project groups
@@ -785,7 +801,17 @@ Class | Method | HTTP request | Description
  - [DeleteStandAloneProfileCommand](docs/DeleteStandAloneProfileCommand.md)
  - [DeleteUserGroupCommand](docs/DeleteUserGroupCommand.md)
  - [DeleteVirtualClusterCommand](docs/DeleteVirtualClusterCommand.md)
+ - [DeleteVmDiskCommand](docs/DeleteVmDiskCommand.md)
+ - [DeploymentCommitVmCommand](docs/DeploymentCommitVmCommand.md)
+ - [DeploymentDisableAiCommand](docs/DeploymentDisableAiCommand.md)
+ - [DeploymentDisableBackupCommand](docs/DeploymentDisableBackupCommand.md)
+ - [DeploymentDisableMonitoringCommand](docs/DeploymentDisableMonitoringCommand.md)
+ - [DeploymentDisableOpaCommand](docs/DeploymentDisableOpaCommand.md)
  - [DeploymentDto](docs/DeploymentDto.md)
+ - [DeploymentEnableAiCommand](docs/DeploymentEnableAiCommand.md)
+ - [DeploymentEnableBackupCommand](docs/DeploymentEnableBackupCommand.md)
+ - [DeploymentEnableMonitoringCommand](docs/DeploymentEnableMonitoringCommand.md)
+ - [DeploymentOpaEnableCommand](docs/DeploymentOpaEnableCommand.md)
  - [DeploymentSearchCommand](docs/DeploymentSearchCommand.md)
  - [DeploymentSearchList](docs/DeploymentSearchList.md)
  - [Deployments](docs/Deployments.md)
@@ -1005,6 +1031,11 @@ Class | Method | HTTP request | Description
  - [ProjectCatalogDto](docs/ProjectCatalogDto.md)
  - [ProjectChartDto](docs/ProjectChartDto.md)
  - [ProjectCommonRecordDto](docs/ProjectCommonRecordDto.md)
+ - [ProjectDeploymentCommitCommand](docs/ProjectDeploymentCommitCommand.md)
+ - [ProjectDeploymentDeleteServersCommand](docs/ProjectDeploymentDeleteServersCommand.md)
+ - [ProjectDeploymentDeleteVmsCommand](docs/ProjectDeploymentDeleteVmsCommand.md)
+ - [ProjectDeploymentRepairCommand](docs/ProjectDeploymentRepairCommand.md)
+ - [ProjectDeploymentRepairVmCommand](docs/ProjectDeploymentRepairVmCommand.md)
  - [ProjectDetailsErrorListDto](docs/ProjectDetailsErrorListDto.md)
  - [ProjectDetailsErrorType](docs/ProjectDetailsErrorType.md)
  - [ProjectDetailsForServersDto](docs/ProjectDetailsForServersDto.md)
