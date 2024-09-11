@@ -20,8 +20,8 @@ var _ MappedNullable = &UserDto{}
 
 // UserDto struct for UserDto
 type UserDto struct {
-	UserId *string `json:"userId,omitempty"`
-	UserName *string `json:"userName,omitempty"`
+	UserId NullableString `json:"userId,omitempty"`
+	UserName NullableString `json:"userName,omitempty"`
 }
 
 // NewUserDto instantiates a new UserDto object
@@ -41,68 +41,88 @@ func NewUserDtoWithDefaults() *UserDto {
 	return &this
 }
 
-// GetUserId returns the UserId field value if set, zero value otherwise.
+// GetUserId returns the UserId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserDto) GetUserId() string {
-	if o == nil || IsNil(o.UserId) {
+	if o == nil || IsNil(o.UserId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UserId
+	return *o.UserId.Get()
 }
 
 // GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserDto) GetUserIdOk() (*string, bool) {
-	if o == nil || IsNil(o.UserId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserId, true
+	return o.UserId.Get(), o.UserId.IsSet()
 }
 
 // HasUserId returns a boolean if a field has been set.
 func (o *UserDto) HasUserId() bool {
-	if o != nil && !IsNil(o.UserId) {
+	if o != nil && o.UserId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserId gets a reference to the given string and assigns it to the UserId field.
+// SetUserId gets a reference to the given NullableString and assigns it to the UserId field.
 func (o *UserDto) SetUserId(v string) {
-	o.UserId = &v
+	o.UserId.Set(&v)
+}
+// SetUserIdNil sets the value for UserId to be an explicit nil
+func (o *UserDto) SetUserIdNil() {
+	o.UserId.Set(nil)
 }
 
-// GetUserName returns the UserName field value if set, zero value otherwise.
+// UnsetUserId ensures that no value is present for UserId, not even an explicit nil
+func (o *UserDto) UnsetUserId() {
+	o.UserId.Unset()
+}
+
+// GetUserName returns the UserName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserDto) GetUserName() string {
-	if o == nil || IsNil(o.UserName) {
+	if o == nil || IsNil(o.UserName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UserName
+	return *o.UserName.Get()
 }
 
 // GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserDto) GetUserNameOk() (*string, bool) {
-	if o == nil || IsNil(o.UserName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserName, true
+	return o.UserName.Get(), o.UserName.IsSet()
 }
 
 // HasUserName returns a boolean if a field has been set.
 func (o *UserDto) HasUserName() bool {
-	if o != nil && !IsNil(o.UserName) {
+	if o != nil && o.UserName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserName gets a reference to the given string and assigns it to the UserName field.
+// SetUserName gets a reference to the given NullableString and assigns it to the UserName field.
 func (o *UserDto) SetUserName(v string) {
-	o.UserName = &v
+	o.UserName.Set(&v)
+}
+// SetUserNameNil sets the value for UserName to be an explicit nil
+func (o *UserDto) SetUserNameNil() {
+	o.UserName.Set(nil)
+}
+
+// UnsetUserName ensures that no value is present for UserName, not even an explicit nil
+func (o *UserDto) UnsetUserName() {
+	o.UserName.Unset()
 }
 
 func (o UserDto) MarshalJSON() ([]byte, error) {
@@ -115,11 +135,11 @@ func (o UserDto) MarshalJSON() ([]byte, error) {
 
 func (o UserDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.UserId) {
-		toSerialize["userId"] = o.UserId
+	if o.UserId.IsSet() {
+		toSerialize["userId"] = o.UserId.Get()
 	}
-	if !IsNil(o.UserName) {
-		toSerialize["userName"] = o.UserName
+	if o.UserName.IsSet() {
+		toSerialize["userName"] = o.UserName.Get()
 	}
 	return toSerialize, nil
 }

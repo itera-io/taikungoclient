@@ -74,9 +74,6 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignEmailExecute(r ApiAle
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.alertingEmailDto == nil {
-		return nil, reportError("alertingEmailDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -243,9 +240,6 @@ func (a *AlertingProfilesAPIService) AlertingprofilesAssignWebhooksExecute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.alertingWebhookDto == nil {
-		return nil, reportError("alertingWebhookDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -575,9 +569,6 @@ func (a *AlertingProfilesAPIService) AlertingprofilesCreateExecute(r ApiAlerting
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createAlertingProfileCommand == nil {
-		return localVarReturnValue, nil, reportError("createAlertingProfileCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1029,17 +1020,17 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDetachExecute(r ApiAlerting
 type ApiAlertingprofilesDropdownRequest struct {
 	ctx context.Context
 	ApiService *AlertingProfilesAPIService
-	search *string
 	organizationId *int32
-}
-
-func (r ApiAlertingprofilesDropdownRequest) Search(search string) ApiAlertingprofilesDropdownRequest {
-	r.search = &search
-	return r
+	search *string
 }
 
 func (r ApiAlertingprofilesDropdownRequest) OrganizationId(organizationId int32) ApiAlertingprofilesDropdownRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiAlertingprofilesDropdownRequest) Search(search string) ApiAlertingprofilesDropdownRequest {
+	r.search = &search
 	return r
 }
 
@@ -1080,14 +1071,13 @@ func (a *AlertingProfilesAPIService) AlertingprofilesDropdownExecute(r ApiAlerti
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1258,9 +1248,6 @@ func (a *AlertingProfilesAPIService) AlertingprofilesEditExecute(r ApiAlertingpr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateAlertingProfileCommand == nil {
-		return localVarReturnValue, nil, reportError("updateAlertingProfileCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1389,14 +1376,19 @@ func (a *AlertingProfilesAPIService) AlertingprofilesEditExecute(r ApiAlertingpr
 type ApiAlertingprofilesListRequest struct {
 	ctx context.Context
 	ApiService *AlertingProfilesAPIService
+	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-	searchId *string
-	organizationId *int32
 	id *int32
+	searchId *string
 	limit *int32
 	offset *int32
+}
+
+func (r ApiAlertingprofilesListRequest) OrganizationId(organizationId int32) ApiAlertingprofilesListRequest {
+	r.organizationId = &organizationId
+	return r
 }
 
 func (r ApiAlertingprofilesListRequest) SortBy(sortBy string) ApiAlertingprofilesListRequest {
@@ -1414,18 +1406,13 @@ func (r ApiAlertingprofilesListRequest) Search(search string) ApiAlertingprofile
 	return r
 }
 
-func (r ApiAlertingprofilesListRequest) SearchId(searchId string) ApiAlertingprofilesListRequest {
-	r.searchId = &searchId
-	return r
-}
-
-func (r ApiAlertingprofilesListRequest) OrganizationId(organizationId int32) ApiAlertingprofilesListRequest {
-	r.organizationId = &organizationId
-	return r
-}
-
 func (r ApiAlertingprofilesListRequest) Id(id int32) ApiAlertingprofilesListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiAlertingprofilesListRequest) SearchId(searchId string) ApiAlertingprofilesListRequest {
+	r.searchId = &searchId
 	return r
 }
 
@@ -1480,29 +1467,25 @@ func (a *AlertingProfilesAPIService) AlertingprofilesListExecute(r ApiAlertingpr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	} else {
@@ -1683,9 +1666,6 @@ func (a *AlertingProfilesAPIService) AlertingprofilesLockManagerExecute(r ApiAle
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.alertingProfilesLockManagerCommand == nil {
-		return nil, reportError("alertingProfilesLockManagerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1848,9 +1828,6 @@ func (a *AlertingProfilesAPIService) AlertingprofilesVerifyExecute(r ApiAlerting
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.verifyWebhookCommand == nil {
-		return nil, reportError("verifyWebhookCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

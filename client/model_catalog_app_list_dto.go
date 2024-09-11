@@ -21,17 +21,17 @@ var _ MappedNullable = &CatalogAppListDto{}
 // CatalogAppListDto struct for CatalogAppListDto
 type CatalogAppListDto struct {
 	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	RepoId *int32 `json:"repoId,omitempty"`
-	RepoName *string `json:"repoName,omitempty"`
+	RepoName NullableString `json:"repoName,omitempty"`
 	CatalogId *int32 `json:"catalogId,omitempty"`
-	CatalogName *string `json:"catalogName,omitempty"`
-	PackageId *string `json:"packageId,omitempty"`
-	Version *string `json:"version,omitempty"`
-	LogoImageId *string `json:"logoImageId,omitempty"`
+	CatalogName NullableString `json:"catalogName,omitempty"`
+	PackageId NullableString `json:"packageId,omitempty"`
+	Version NullableString `json:"version,omitempty"`
+	LogoImageId NullableString `json:"logoImageId,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
-	AppVersion *string `json:"appVersion,omitempty"`
-	Description *string `json:"description,omitempty"`
+	AppVersion NullableString `json:"appVersion,omitempty"`
+	Description NullableString `json:"description,omitempty"`
 	SecurityReportSummary *SecurityReportSummary `json:"securityReportSummary,omitempty"`
 	Repository *Repository `json:"repository,omitempty"`
 	Stars *int64 `json:"stars,omitempty"`
@@ -87,36 +87,46 @@ func (o *CatalogAppListDto) SetCatalogAppId(v int32) {
 	o.CatalogAppId = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogAppListDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogAppListDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CatalogAppListDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CatalogAppListDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CatalogAppListDto) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CatalogAppListDto) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetRepoId returns the RepoId field value if set, zero value otherwise.
@@ -151,36 +161,46 @@ func (o *CatalogAppListDto) SetRepoId(v int32) {
 	o.RepoId = &v
 }
 
-// GetRepoName returns the RepoName field value if set, zero value otherwise.
+// GetRepoName returns the RepoName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogAppListDto) GetRepoName() string {
-	if o == nil || IsNil(o.RepoName) {
+	if o == nil || IsNil(o.RepoName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RepoName
+	return *o.RepoName.Get()
 }
 
 // GetRepoNameOk returns a tuple with the RepoName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogAppListDto) GetRepoNameOk() (*string, bool) {
-	if o == nil || IsNil(o.RepoName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RepoName, true
+	return o.RepoName.Get(), o.RepoName.IsSet()
 }
 
 // HasRepoName returns a boolean if a field has been set.
 func (o *CatalogAppListDto) HasRepoName() bool {
-	if o != nil && !IsNil(o.RepoName) {
+	if o != nil && o.RepoName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRepoName gets a reference to the given string and assigns it to the RepoName field.
+// SetRepoName gets a reference to the given NullableString and assigns it to the RepoName field.
 func (o *CatalogAppListDto) SetRepoName(v string) {
-	o.RepoName = &v
+	o.RepoName.Set(&v)
+}
+// SetRepoNameNil sets the value for RepoName to be an explicit nil
+func (o *CatalogAppListDto) SetRepoNameNil() {
+	o.RepoName.Set(nil)
+}
+
+// UnsetRepoName ensures that no value is present for RepoName, not even an explicit nil
+func (o *CatalogAppListDto) UnsetRepoName() {
+	o.RepoName.Unset()
 }
 
 // GetCatalogId returns the CatalogId field value if set, zero value otherwise.
@@ -215,132 +235,172 @@ func (o *CatalogAppListDto) SetCatalogId(v int32) {
 	o.CatalogId = &v
 }
 
-// GetCatalogName returns the CatalogName field value if set, zero value otherwise.
+// GetCatalogName returns the CatalogName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogAppListDto) GetCatalogName() string {
-	if o == nil || IsNil(o.CatalogName) {
+	if o == nil || IsNil(o.CatalogName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CatalogName
+	return *o.CatalogName.Get()
 }
 
 // GetCatalogNameOk returns a tuple with the CatalogName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogAppListDto) GetCatalogNameOk() (*string, bool) {
-	if o == nil || IsNil(o.CatalogName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CatalogName, true
+	return o.CatalogName.Get(), o.CatalogName.IsSet()
 }
 
 // HasCatalogName returns a boolean if a field has been set.
 func (o *CatalogAppListDto) HasCatalogName() bool {
-	if o != nil && !IsNil(o.CatalogName) {
+	if o != nil && o.CatalogName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCatalogName gets a reference to the given string and assigns it to the CatalogName field.
+// SetCatalogName gets a reference to the given NullableString and assigns it to the CatalogName field.
 func (o *CatalogAppListDto) SetCatalogName(v string) {
-	o.CatalogName = &v
+	o.CatalogName.Set(&v)
+}
+// SetCatalogNameNil sets the value for CatalogName to be an explicit nil
+func (o *CatalogAppListDto) SetCatalogNameNil() {
+	o.CatalogName.Set(nil)
 }
 
-// GetPackageId returns the PackageId field value if set, zero value otherwise.
+// UnsetCatalogName ensures that no value is present for CatalogName, not even an explicit nil
+func (o *CatalogAppListDto) UnsetCatalogName() {
+	o.CatalogName.Unset()
+}
+
+// GetPackageId returns the PackageId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogAppListDto) GetPackageId() string {
-	if o == nil || IsNil(o.PackageId) {
+	if o == nil || IsNil(o.PackageId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PackageId
+	return *o.PackageId.Get()
 }
 
 // GetPackageIdOk returns a tuple with the PackageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogAppListDto) GetPackageIdOk() (*string, bool) {
-	if o == nil || IsNil(o.PackageId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PackageId, true
+	return o.PackageId.Get(), o.PackageId.IsSet()
 }
 
 // HasPackageId returns a boolean if a field has been set.
 func (o *CatalogAppListDto) HasPackageId() bool {
-	if o != nil && !IsNil(o.PackageId) {
+	if o != nil && o.PackageId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPackageId gets a reference to the given string and assigns it to the PackageId field.
+// SetPackageId gets a reference to the given NullableString and assigns it to the PackageId field.
 func (o *CatalogAppListDto) SetPackageId(v string) {
-	o.PackageId = &v
+	o.PackageId.Set(&v)
+}
+// SetPackageIdNil sets the value for PackageId to be an explicit nil
+func (o *CatalogAppListDto) SetPackageIdNil() {
+	o.PackageId.Set(nil)
 }
 
-// GetVersion returns the Version field value if set, zero value otherwise.
+// UnsetPackageId ensures that no value is present for PackageId, not even an explicit nil
+func (o *CatalogAppListDto) UnsetPackageId() {
+	o.PackageId.Unset()
+}
+
+// GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogAppListDto) GetVersion() string {
-	if o == nil || IsNil(o.Version) {
+	if o == nil || IsNil(o.Version.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Version
+	return *o.Version.Get()
 }
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogAppListDto) GetVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.Version) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Version, true
+	return o.Version.Get(), o.Version.IsSet()
 }
 
 // HasVersion returns a boolean if a field has been set.
 func (o *CatalogAppListDto) HasVersion() bool {
-	if o != nil && !IsNil(o.Version) {
+	if o != nil && o.Version.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetVersion gets a reference to the given string and assigns it to the Version field.
+// SetVersion gets a reference to the given NullableString and assigns it to the Version field.
 func (o *CatalogAppListDto) SetVersion(v string) {
-	o.Version = &v
+	o.Version.Set(&v)
+}
+// SetVersionNil sets the value for Version to be an explicit nil
+func (o *CatalogAppListDto) SetVersionNil() {
+	o.Version.Set(nil)
 }
 
-// GetLogoImageId returns the LogoImageId field value if set, zero value otherwise.
+// UnsetVersion ensures that no value is present for Version, not even an explicit nil
+func (o *CatalogAppListDto) UnsetVersion() {
+	o.Version.Unset()
+}
+
+// GetLogoImageId returns the LogoImageId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogAppListDto) GetLogoImageId() string {
-	if o == nil || IsNil(o.LogoImageId) {
+	if o == nil || IsNil(o.LogoImageId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LogoImageId
+	return *o.LogoImageId.Get()
 }
 
 // GetLogoImageIdOk returns a tuple with the LogoImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogAppListDto) GetLogoImageIdOk() (*string, bool) {
-	if o == nil || IsNil(o.LogoImageId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LogoImageId, true
+	return o.LogoImageId.Get(), o.LogoImageId.IsSet()
 }
 
 // HasLogoImageId returns a boolean if a field has been set.
 func (o *CatalogAppListDto) HasLogoImageId() bool {
-	if o != nil && !IsNil(o.LogoImageId) {
+	if o != nil && o.LogoImageId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLogoImageId gets a reference to the given string and assigns it to the LogoImageId field.
+// SetLogoImageId gets a reference to the given NullableString and assigns it to the LogoImageId field.
 func (o *CatalogAppListDto) SetLogoImageId(v string) {
-	o.LogoImageId = &v
+	o.LogoImageId.Set(&v)
+}
+// SetLogoImageIdNil sets the value for LogoImageId to be an explicit nil
+func (o *CatalogAppListDto) SetLogoImageIdNil() {
+	o.LogoImageId.Set(nil)
+}
+
+// UnsetLogoImageId ensures that no value is present for LogoImageId, not even an explicit nil
+func (o *CatalogAppListDto) UnsetLogoImageId() {
+	o.LogoImageId.Unset()
 }
 
 // GetIsLocked returns the IsLocked field value if set, zero value otherwise.
@@ -375,68 +435,88 @@ func (o *CatalogAppListDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
-// GetAppVersion returns the AppVersion field value if set, zero value otherwise.
+// GetAppVersion returns the AppVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogAppListDto) GetAppVersion() string {
-	if o == nil || IsNil(o.AppVersion) {
+	if o == nil || IsNil(o.AppVersion.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AppVersion
+	return *o.AppVersion.Get()
 }
 
 // GetAppVersionOk returns a tuple with the AppVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogAppListDto) GetAppVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.AppVersion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AppVersion, true
+	return o.AppVersion.Get(), o.AppVersion.IsSet()
 }
 
 // HasAppVersion returns a boolean if a field has been set.
 func (o *CatalogAppListDto) HasAppVersion() bool {
-	if o != nil && !IsNil(o.AppVersion) {
+	if o != nil && o.AppVersion.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAppVersion gets a reference to the given string and assigns it to the AppVersion field.
+// SetAppVersion gets a reference to the given NullableString and assigns it to the AppVersion field.
 func (o *CatalogAppListDto) SetAppVersion(v string) {
-	o.AppVersion = &v
+	o.AppVersion.Set(&v)
+}
+// SetAppVersionNil sets the value for AppVersion to be an explicit nil
+func (o *CatalogAppListDto) SetAppVersionNil() {
+	o.AppVersion.Set(nil)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// UnsetAppVersion ensures that no value is present for AppVersion, not even an explicit nil
+func (o *CatalogAppListDto) UnsetAppVersion() {
+	o.AppVersion.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CatalogAppListDto) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CatalogAppListDto) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CatalogAppListDto) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *CatalogAppListDto) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *CatalogAppListDto) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *CatalogAppListDto) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetSecurityReportSummary returns the SecurityReportSummary field value if set, zero value otherwise.
@@ -590,38 +670,38 @@ func (o CatalogAppListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CatalogAppId) {
 		toSerialize["catalogAppId"] = o.CatalogAppId
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
 	if !IsNil(o.RepoId) {
 		toSerialize["repoId"] = o.RepoId
 	}
-	if !IsNil(o.RepoName) {
-		toSerialize["repoName"] = o.RepoName
+	if o.RepoName.IsSet() {
+		toSerialize["repoName"] = o.RepoName.Get()
 	}
 	if !IsNil(o.CatalogId) {
 		toSerialize["catalogId"] = o.CatalogId
 	}
-	if !IsNil(o.CatalogName) {
-		toSerialize["catalogName"] = o.CatalogName
+	if o.CatalogName.IsSet() {
+		toSerialize["catalogName"] = o.CatalogName.Get()
 	}
-	if !IsNil(o.PackageId) {
-		toSerialize["packageId"] = o.PackageId
+	if o.PackageId.IsSet() {
+		toSerialize["packageId"] = o.PackageId.Get()
 	}
-	if !IsNil(o.Version) {
-		toSerialize["version"] = o.Version
+	if o.Version.IsSet() {
+		toSerialize["version"] = o.Version.Get()
 	}
-	if !IsNil(o.LogoImageId) {
-		toSerialize["logoImageId"] = o.LogoImageId
+	if o.LogoImageId.IsSet() {
+		toSerialize["logoImageId"] = o.LogoImageId.Get()
 	}
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
-	if !IsNil(o.AppVersion) {
-		toSerialize["appVersion"] = o.AppVersion
+	if o.AppVersion.IsSet() {
+		toSerialize["appVersion"] = o.AppVersion.Get()
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	if !IsNil(o.SecurityReportSummary) {
 		toSerialize["securityReportSummary"] = o.SecurityReportSummary

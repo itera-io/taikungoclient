@@ -70,9 +70,6 @@ func (a *VirtualClusterAPIService) VirtualClusterCreateExecute(r ApiVirtualClust
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createVirtualClusterCommand == nil {
-		return nil, reportError("createVirtualClusterCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -358,13 +355,23 @@ type ApiVirtualClusterListRequest struct {
 	ctx context.Context
 	ApiService *VirtualClusterAPIService
 	parentProjectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
-	limit *int32
-	offset *int32
 	id *int32
+}
+
+func (r ApiVirtualClusterListRequest) Limit(limit int32) ApiVirtualClusterListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiVirtualClusterListRequest) Offset(offset int32) ApiVirtualClusterListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiVirtualClusterListRequest) SortBy(sortBy string) ApiVirtualClusterListRequest {
@@ -384,16 +391,6 @@ func (r ApiVirtualClusterListRequest) Search(search string) ApiVirtualClusterLis
 
 func (r ApiVirtualClusterListRequest) SearchId(searchId string) ApiVirtualClusterListRequest {
 	r.searchId = &searchId
-	return r
-}
-
-func (r ApiVirtualClusterListRequest) Limit(limit int32) ApiVirtualClusterListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiVirtualClusterListRequest) Offset(offset int32) ApiVirtualClusterListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -442,18 +439,6 @@ func (a *VirtualClusterAPIService) VirtualClusterListExecute(r ApiVirtualCluster
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -461,10 +446,18 @@ func (a *VirtualClusterAPIService) VirtualClusterListExecute(r ApiVirtualCluster
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}

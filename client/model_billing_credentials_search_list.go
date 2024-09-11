@@ -41,9 +41,9 @@ func NewBillingCredentialsSearchListWithDefaults() *BillingCredentialsSearchList
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise.
+// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BillingCredentialsSearchList) GetData() []CommonSearchResponseData {
-	if o == nil || IsNil(o.Data) {
+	if o == nil {
 		var ret []CommonSearchResponseData
 		return ret
 	}
@@ -52,6 +52,7 @@ func (o *BillingCredentialsSearchList) GetData() []CommonSearchResponseData {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BillingCredentialsSearchList) GetDataOk() ([]CommonSearchResponseData, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
@@ -115,7 +116,7 @@ func (o BillingCredentialsSearchList) MarshalJSON() ([]byte, error) {
 
 func (o BillingCredentialsSearchList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Data) {
+	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
 	if !IsNil(o.TotalCount) {

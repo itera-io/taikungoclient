@@ -21,9 +21,9 @@ var _ MappedNullable = &UserGroupDetailsListDto{}
 // UserGroupDetailsListDto struct for UserGroupDetailsListDto
 type UserGroupDetailsListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName *string `json:"organizationName,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
 	Users []UserListDto `json:"users,omitempty"`
 	ProjectGroups []ProjectGroupEntityListDto `json:"projectGroups,omitempty"`
 }
@@ -77,36 +77,46 @@ func (o *UserGroupDetailsListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserGroupDetailsListDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserGroupDetailsListDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *UserGroupDetailsListDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *UserGroupDetailsListDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *UserGroupDetailsListDto) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *UserGroupDetailsListDto) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
@@ -141,41 +151,51 @@ func (o *UserGroupDetailsListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserGroupDetailsListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil || IsNil(o.OrganizationName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName
+	return *o.OrganizationName.Get()
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserGroupDetailsListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName, true
+	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *UserGroupDetailsListDto) HasOrganizationName() bool {
-	if o != nil && !IsNil(o.OrganizationName) {
+	if o != nil && o.OrganizationName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
 func (o *UserGroupDetailsListDto) SetOrganizationName(v string) {
-	o.OrganizationName = &v
+	o.OrganizationName.Set(&v)
+}
+// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
+func (o *UserGroupDetailsListDto) SetOrganizationNameNil() {
+	o.OrganizationName.Set(nil)
 }
 
-// GetUsers returns the Users field value if set, zero value otherwise.
+// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
+func (o *UserGroupDetailsListDto) UnsetOrganizationName() {
+	o.OrganizationName.Unset()
+}
+
+// GetUsers returns the Users field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserGroupDetailsListDto) GetUsers() []UserListDto {
-	if o == nil || IsNil(o.Users) {
+	if o == nil {
 		var ret []UserListDto
 		return ret
 	}
@@ -184,6 +204,7 @@ func (o *UserGroupDetailsListDto) GetUsers() []UserListDto {
 
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserGroupDetailsListDto) GetUsersOk() ([]UserListDto, bool) {
 	if o == nil || IsNil(o.Users) {
 		return nil, false
@@ -205,9 +226,9 @@ func (o *UserGroupDetailsListDto) SetUsers(v []UserListDto) {
 	o.Users = v
 }
 
-// GetProjectGroups returns the ProjectGroups field value if set, zero value otherwise.
+// GetProjectGroups returns the ProjectGroups field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserGroupDetailsListDto) GetProjectGroups() []ProjectGroupEntityListDto {
-	if o == nil || IsNil(o.ProjectGroups) {
+	if o == nil {
 		var ret []ProjectGroupEntityListDto
 		return ret
 	}
@@ -216,6 +237,7 @@ func (o *UserGroupDetailsListDto) GetProjectGroups() []ProjectGroupEntityListDto
 
 // GetProjectGroupsOk returns a tuple with the ProjectGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserGroupDetailsListDto) GetProjectGroupsOk() ([]ProjectGroupEntityListDto, bool) {
 	if o == nil || IsNil(o.ProjectGroups) {
 		return nil, false
@@ -250,19 +272,19 @@ func (o UserGroupDetailsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if !IsNil(o.OrganizationName) {
-		toSerialize["organizationName"] = o.OrganizationName
+	if o.OrganizationName.IsSet() {
+		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
-	if !IsNil(o.Users) {
+	if o.Users != nil {
 		toSerialize["users"] = o.Users
 	}
-	if !IsNil(o.ProjectGroups) {
+	if o.ProjectGroups != nil {
 		toSerialize["projectGroups"] = o.ProjectGroups
 	}
 	return toSerialize, nil

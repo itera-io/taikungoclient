@@ -21,7 +21,7 @@ var _ MappedNullable = &ImageByIdCommand{}
 // ImageByIdCommand struct for ImageByIdCommand
 type ImageByIdCommand struct {
 	CloudId *int32 `json:"cloudId,omitempty"`
-	ImageId *string `json:"imageId,omitempty"`
+	ImageId NullableString `json:"imageId,omitempty"`
 }
 
 // NewImageByIdCommand instantiates a new ImageByIdCommand object
@@ -73,36 +73,46 @@ func (o *ImageByIdCommand) SetCloudId(v int32) {
 	o.CloudId = &v
 }
 
-// GetImageId returns the ImageId field value if set, zero value otherwise.
+// GetImageId returns the ImageId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ImageByIdCommand) GetImageId() string {
-	if o == nil || IsNil(o.ImageId) {
+	if o == nil || IsNil(o.ImageId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ImageId
+	return *o.ImageId.Get()
 }
 
 // GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ImageByIdCommand) GetImageIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ImageId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ImageId, true
+	return o.ImageId.Get(), o.ImageId.IsSet()
 }
 
 // HasImageId returns a boolean if a field has been set.
 func (o *ImageByIdCommand) HasImageId() bool {
-	if o != nil && !IsNil(o.ImageId) {
+	if o != nil && o.ImageId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetImageId gets a reference to the given string and assigns it to the ImageId field.
+// SetImageId gets a reference to the given NullableString and assigns it to the ImageId field.
 func (o *ImageByIdCommand) SetImageId(v string) {
-	o.ImageId = &v
+	o.ImageId.Set(&v)
+}
+// SetImageIdNil sets the value for ImageId to be an explicit nil
+func (o *ImageByIdCommand) SetImageIdNil() {
+	o.ImageId.Set(nil)
+}
+
+// UnsetImageId ensures that no value is present for ImageId, not even an explicit nil
+func (o *ImageByIdCommand) UnsetImageId() {
+	o.ImageId.Unset()
 }
 
 func (o ImageByIdCommand) MarshalJSON() ([]byte, error) {
@@ -118,8 +128,8 @@ func (o ImageByIdCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CloudId) {
 		toSerialize["cloudId"] = o.CloudId
 	}
-	if !IsNil(o.ImageId) {
-		toSerialize["imageId"] = o.ImageId
+	if o.ImageId.IsSet() {
+		toSerialize["imageId"] = o.ImageId.Get()
 	}
 	return toSerialize, nil
 }

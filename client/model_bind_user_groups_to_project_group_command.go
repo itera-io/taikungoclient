@@ -41,9 +41,9 @@ func NewBindUserGroupsToProjectGroupCommandWithDefaults() *BindUserGroupsToProje
 	return &this
 }
 
-// GetUserGroups returns the UserGroups field value if set, zero value otherwise.
+// GetUserGroups returns the UserGroups field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BindUserGroupsToProjectGroupCommand) GetUserGroups() []int32 {
-	if o == nil || IsNil(o.UserGroups) {
+	if o == nil {
 		var ret []int32
 		return ret
 	}
@@ -52,6 +52,7 @@ func (o *BindUserGroupsToProjectGroupCommand) GetUserGroups() []int32 {
 
 // GetUserGroupsOk returns a tuple with the UserGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindUserGroupsToProjectGroupCommand) GetUserGroupsOk() ([]int32, bool) {
 	if o == nil || IsNil(o.UserGroups) {
 		return nil, false
@@ -115,7 +116,7 @@ func (o BindUserGroupsToProjectGroupCommand) MarshalJSON() ([]byte, error) {
 
 func (o BindUserGroupsToProjectGroupCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.UserGroups) {
+	if o.UserGroups != nil {
 		toSerialize["userGroups"] = o.UserGroups
 	}
 	if !IsNil(o.ProjectGroupId) {

@@ -20,15 +20,15 @@ var _ MappedNullable = &CreateZadaraCloudCommand{}
 
 // CreateZadaraCloudCommand struct for CreateZadaraCloudCommand
 type CreateZadaraCloudCommand struct {
-	Name *string `json:"name,omitempty"`
-	ZadaraUrl *string `json:"zadaraUrl,omitempty"`
-	ZadaraSecretAccessKey *string `json:"zadaraSecretAccessKey,omitempty"`
-	ZadaraAccessKeyId *string `json:"zadaraAccessKeyId,omitempty"`
-	ZadaraRegion *string `json:"zadaraRegion,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	ZadaraUrl NullableString `json:"zadaraUrl,omitempty"`
+	ZadaraSecretAccessKey NullableString `json:"zadaraSecretAccessKey,omitempty"`
+	ZadaraAccessKeyId NullableString `json:"zadaraAccessKeyId,omitempty"`
+	ZadaraRegion NullableString `json:"zadaraRegion,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	AzCount *int32 `json:"azCount,omitempty"`
-	ZadaraContinent *string `json:"zadaraContinent,omitempty"`
-	ZadaraVolumeType *string `json:"zadaraVolumeType,omitempty"`
+	ZadaraContinent NullableString `json:"zadaraContinent,omitempty"`
+	ZadaraVolumeType NullableString `json:"zadaraVolumeType,omitempty"`
 }
 
 // NewCreateZadaraCloudCommand instantiates a new CreateZadaraCloudCommand object
@@ -48,164 +48,214 @@ func NewCreateZadaraCloudCommandWithDefaults() *CreateZadaraCloudCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateZadaraCloudCommand) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZadaraCloudCommand) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateZadaraCloudCommand) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CreateZadaraCloudCommand) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CreateZadaraCloudCommand) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetZadaraUrl returns the ZadaraUrl field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CreateZadaraCloudCommand) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetZadaraUrl returns the ZadaraUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateZadaraCloudCommand) GetZadaraUrl() string {
-	if o == nil || IsNil(o.ZadaraUrl) {
+	if o == nil || IsNil(o.ZadaraUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ZadaraUrl
+	return *o.ZadaraUrl.Get()
 }
 
 // GetZadaraUrlOk returns a tuple with the ZadaraUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZadaraCloudCommand) GetZadaraUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.ZadaraUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ZadaraUrl, true
+	return o.ZadaraUrl.Get(), o.ZadaraUrl.IsSet()
 }
 
 // HasZadaraUrl returns a boolean if a field has been set.
 func (o *CreateZadaraCloudCommand) HasZadaraUrl() bool {
-	if o != nil && !IsNil(o.ZadaraUrl) {
+	if o != nil && o.ZadaraUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetZadaraUrl gets a reference to the given string and assigns it to the ZadaraUrl field.
+// SetZadaraUrl gets a reference to the given NullableString and assigns it to the ZadaraUrl field.
 func (o *CreateZadaraCloudCommand) SetZadaraUrl(v string) {
-	o.ZadaraUrl = &v
+	o.ZadaraUrl.Set(&v)
+}
+// SetZadaraUrlNil sets the value for ZadaraUrl to be an explicit nil
+func (o *CreateZadaraCloudCommand) SetZadaraUrlNil() {
+	o.ZadaraUrl.Set(nil)
 }
 
-// GetZadaraSecretAccessKey returns the ZadaraSecretAccessKey field value if set, zero value otherwise.
+// UnsetZadaraUrl ensures that no value is present for ZadaraUrl, not even an explicit nil
+func (o *CreateZadaraCloudCommand) UnsetZadaraUrl() {
+	o.ZadaraUrl.Unset()
+}
+
+// GetZadaraSecretAccessKey returns the ZadaraSecretAccessKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateZadaraCloudCommand) GetZadaraSecretAccessKey() string {
-	if o == nil || IsNil(o.ZadaraSecretAccessKey) {
+	if o == nil || IsNil(o.ZadaraSecretAccessKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ZadaraSecretAccessKey
+	return *o.ZadaraSecretAccessKey.Get()
 }
 
 // GetZadaraSecretAccessKeyOk returns a tuple with the ZadaraSecretAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZadaraCloudCommand) GetZadaraSecretAccessKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.ZadaraSecretAccessKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ZadaraSecretAccessKey, true
+	return o.ZadaraSecretAccessKey.Get(), o.ZadaraSecretAccessKey.IsSet()
 }
 
 // HasZadaraSecretAccessKey returns a boolean if a field has been set.
 func (o *CreateZadaraCloudCommand) HasZadaraSecretAccessKey() bool {
-	if o != nil && !IsNil(o.ZadaraSecretAccessKey) {
+	if o != nil && o.ZadaraSecretAccessKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetZadaraSecretAccessKey gets a reference to the given string and assigns it to the ZadaraSecretAccessKey field.
+// SetZadaraSecretAccessKey gets a reference to the given NullableString and assigns it to the ZadaraSecretAccessKey field.
 func (o *CreateZadaraCloudCommand) SetZadaraSecretAccessKey(v string) {
-	o.ZadaraSecretAccessKey = &v
+	o.ZadaraSecretAccessKey.Set(&v)
+}
+// SetZadaraSecretAccessKeyNil sets the value for ZadaraSecretAccessKey to be an explicit nil
+func (o *CreateZadaraCloudCommand) SetZadaraSecretAccessKeyNil() {
+	o.ZadaraSecretAccessKey.Set(nil)
 }
 
-// GetZadaraAccessKeyId returns the ZadaraAccessKeyId field value if set, zero value otherwise.
+// UnsetZadaraSecretAccessKey ensures that no value is present for ZadaraSecretAccessKey, not even an explicit nil
+func (o *CreateZadaraCloudCommand) UnsetZadaraSecretAccessKey() {
+	o.ZadaraSecretAccessKey.Unset()
+}
+
+// GetZadaraAccessKeyId returns the ZadaraAccessKeyId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateZadaraCloudCommand) GetZadaraAccessKeyId() string {
-	if o == nil || IsNil(o.ZadaraAccessKeyId) {
+	if o == nil || IsNil(o.ZadaraAccessKeyId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ZadaraAccessKeyId
+	return *o.ZadaraAccessKeyId.Get()
 }
 
 // GetZadaraAccessKeyIdOk returns a tuple with the ZadaraAccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZadaraCloudCommand) GetZadaraAccessKeyIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ZadaraAccessKeyId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ZadaraAccessKeyId, true
+	return o.ZadaraAccessKeyId.Get(), o.ZadaraAccessKeyId.IsSet()
 }
 
 // HasZadaraAccessKeyId returns a boolean if a field has been set.
 func (o *CreateZadaraCloudCommand) HasZadaraAccessKeyId() bool {
-	if o != nil && !IsNil(o.ZadaraAccessKeyId) {
+	if o != nil && o.ZadaraAccessKeyId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetZadaraAccessKeyId gets a reference to the given string and assigns it to the ZadaraAccessKeyId field.
+// SetZadaraAccessKeyId gets a reference to the given NullableString and assigns it to the ZadaraAccessKeyId field.
 func (o *CreateZadaraCloudCommand) SetZadaraAccessKeyId(v string) {
-	o.ZadaraAccessKeyId = &v
+	o.ZadaraAccessKeyId.Set(&v)
+}
+// SetZadaraAccessKeyIdNil sets the value for ZadaraAccessKeyId to be an explicit nil
+func (o *CreateZadaraCloudCommand) SetZadaraAccessKeyIdNil() {
+	o.ZadaraAccessKeyId.Set(nil)
 }
 
-// GetZadaraRegion returns the ZadaraRegion field value if set, zero value otherwise.
+// UnsetZadaraAccessKeyId ensures that no value is present for ZadaraAccessKeyId, not even an explicit nil
+func (o *CreateZadaraCloudCommand) UnsetZadaraAccessKeyId() {
+	o.ZadaraAccessKeyId.Unset()
+}
+
+// GetZadaraRegion returns the ZadaraRegion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateZadaraCloudCommand) GetZadaraRegion() string {
-	if o == nil || IsNil(o.ZadaraRegion) {
+	if o == nil || IsNil(o.ZadaraRegion.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ZadaraRegion
+	return *o.ZadaraRegion.Get()
 }
 
 // GetZadaraRegionOk returns a tuple with the ZadaraRegion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZadaraCloudCommand) GetZadaraRegionOk() (*string, bool) {
-	if o == nil || IsNil(o.ZadaraRegion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ZadaraRegion, true
+	return o.ZadaraRegion.Get(), o.ZadaraRegion.IsSet()
 }
 
 // HasZadaraRegion returns a boolean if a field has been set.
 func (o *CreateZadaraCloudCommand) HasZadaraRegion() bool {
-	if o != nil && !IsNil(o.ZadaraRegion) {
+	if o != nil && o.ZadaraRegion.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetZadaraRegion gets a reference to the given string and assigns it to the ZadaraRegion field.
+// SetZadaraRegion gets a reference to the given NullableString and assigns it to the ZadaraRegion field.
 func (o *CreateZadaraCloudCommand) SetZadaraRegion(v string) {
-	o.ZadaraRegion = &v
+	o.ZadaraRegion.Set(&v)
+}
+// SetZadaraRegionNil sets the value for ZadaraRegion to be an explicit nil
+func (o *CreateZadaraCloudCommand) SetZadaraRegionNil() {
+	o.ZadaraRegion.Set(nil)
+}
+
+// UnsetZadaraRegion ensures that no value is present for ZadaraRegion, not even an explicit nil
+func (o *CreateZadaraCloudCommand) UnsetZadaraRegion() {
+	o.ZadaraRegion.Unset()
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -282,68 +332,88 @@ func (o *CreateZadaraCloudCommand) SetAzCount(v int32) {
 	o.AzCount = &v
 }
 
-// GetZadaraContinent returns the ZadaraContinent field value if set, zero value otherwise.
+// GetZadaraContinent returns the ZadaraContinent field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateZadaraCloudCommand) GetZadaraContinent() string {
-	if o == nil || IsNil(o.ZadaraContinent) {
+	if o == nil || IsNil(o.ZadaraContinent.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ZadaraContinent
+	return *o.ZadaraContinent.Get()
 }
 
 // GetZadaraContinentOk returns a tuple with the ZadaraContinent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZadaraCloudCommand) GetZadaraContinentOk() (*string, bool) {
-	if o == nil || IsNil(o.ZadaraContinent) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ZadaraContinent, true
+	return o.ZadaraContinent.Get(), o.ZadaraContinent.IsSet()
 }
 
 // HasZadaraContinent returns a boolean if a field has been set.
 func (o *CreateZadaraCloudCommand) HasZadaraContinent() bool {
-	if o != nil && !IsNil(o.ZadaraContinent) {
+	if o != nil && o.ZadaraContinent.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetZadaraContinent gets a reference to the given string and assigns it to the ZadaraContinent field.
+// SetZadaraContinent gets a reference to the given NullableString and assigns it to the ZadaraContinent field.
 func (o *CreateZadaraCloudCommand) SetZadaraContinent(v string) {
-	o.ZadaraContinent = &v
+	o.ZadaraContinent.Set(&v)
+}
+// SetZadaraContinentNil sets the value for ZadaraContinent to be an explicit nil
+func (o *CreateZadaraCloudCommand) SetZadaraContinentNil() {
+	o.ZadaraContinent.Set(nil)
 }
 
-// GetZadaraVolumeType returns the ZadaraVolumeType field value if set, zero value otherwise.
+// UnsetZadaraContinent ensures that no value is present for ZadaraContinent, not even an explicit nil
+func (o *CreateZadaraCloudCommand) UnsetZadaraContinent() {
+	o.ZadaraContinent.Unset()
+}
+
+// GetZadaraVolumeType returns the ZadaraVolumeType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateZadaraCloudCommand) GetZadaraVolumeType() string {
-	if o == nil || IsNil(o.ZadaraVolumeType) {
+	if o == nil || IsNil(o.ZadaraVolumeType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ZadaraVolumeType
+	return *o.ZadaraVolumeType.Get()
 }
 
 // GetZadaraVolumeTypeOk returns a tuple with the ZadaraVolumeType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZadaraCloudCommand) GetZadaraVolumeTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.ZadaraVolumeType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ZadaraVolumeType, true
+	return o.ZadaraVolumeType.Get(), o.ZadaraVolumeType.IsSet()
 }
 
 // HasZadaraVolumeType returns a boolean if a field has been set.
 func (o *CreateZadaraCloudCommand) HasZadaraVolumeType() bool {
-	if o != nil && !IsNil(o.ZadaraVolumeType) {
+	if o != nil && o.ZadaraVolumeType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetZadaraVolumeType gets a reference to the given string and assigns it to the ZadaraVolumeType field.
+// SetZadaraVolumeType gets a reference to the given NullableString and assigns it to the ZadaraVolumeType field.
 func (o *CreateZadaraCloudCommand) SetZadaraVolumeType(v string) {
-	o.ZadaraVolumeType = &v
+	o.ZadaraVolumeType.Set(&v)
+}
+// SetZadaraVolumeTypeNil sets the value for ZadaraVolumeType to be an explicit nil
+func (o *CreateZadaraCloudCommand) SetZadaraVolumeTypeNil() {
+	o.ZadaraVolumeType.Set(nil)
+}
+
+// UnsetZadaraVolumeType ensures that no value is present for ZadaraVolumeType, not even an explicit nil
+func (o *CreateZadaraCloudCommand) UnsetZadaraVolumeType() {
+	o.ZadaraVolumeType.Unset()
 }
 
 func (o CreateZadaraCloudCommand) MarshalJSON() ([]byte, error) {
@@ -356,20 +426,20 @@ func (o CreateZadaraCloudCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateZadaraCloudCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.ZadaraUrl) {
-		toSerialize["zadaraUrl"] = o.ZadaraUrl
+	if o.ZadaraUrl.IsSet() {
+		toSerialize["zadaraUrl"] = o.ZadaraUrl.Get()
 	}
-	if !IsNil(o.ZadaraSecretAccessKey) {
-		toSerialize["zadaraSecretAccessKey"] = o.ZadaraSecretAccessKey
+	if o.ZadaraSecretAccessKey.IsSet() {
+		toSerialize["zadaraSecretAccessKey"] = o.ZadaraSecretAccessKey.Get()
 	}
-	if !IsNil(o.ZadaraAccessKeyId) {
-		toSerialize["zadaraAccessKeyId"] = o.ZadaraAccessKeyId
+	if o.ZadaraAccessKeyId.IsSet() {
+		toSerialize["zadaraAccessKeyId"] = o.ZadaraAccessKeyId.Get()
 	}
-	if !IsNil(o.ZadaraRegion) {
-		toSerialize["zadaraRegion"] = o.ZadaraRegion
+	if o.ZadaraRegion.IsSet() {
+		toSerialize["zadaraRegion"] = o.ZadaraRegion.Get()
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
@@ -377,11 +447,11 @@ func (o CreateZadaraCloudCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AzCount) {
 		toSerialize["azCount"] = o.AzCount
 	}
-	if !IsNil(o.ZadaraContinent) {
-		toSerialize["zadaraContinent"] = o.ZadaraContinent
+	if o.ZadaraContinent.IsSet() {
+		toSerialize["zadaraContinent"] = o.ZadaraContinent.Get()
 	}
-	if !IsNil(o.ZadaraVolumeType) {
-		toSerialize["zadaraVolumeType"] = o.ZadaraVolumeType
+	if o.ZadaraVolumeType.IsSet() {
+		toSerialize["zadaraVolumeType"] = o.ZadaraVolumeType.Get()
 	}
 	return toSerialize, nil
 }

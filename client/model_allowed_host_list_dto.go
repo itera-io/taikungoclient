@@ -21,11 +21,11 @@ var _ MappedNullable = &AllowedHostListDto{}
 // AllowedHostListDto struct for AllowedHostListDto
 type AllowedHostListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Description *string `json:"description,omitempty"`
-	IpAddress *string `json:"ipAddress,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	IpAddress NullableString `json:"ipAddress,omitempty"`
 	MaskBits *int32 `json:"maskBits,omitempty"`
 	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
-	AccessProfileName *string `json:"accessProfileName,omitempty"`
+	AccessProfileName NullableString `json:"accessProfileName,omitempty"`
 }
 
 // NewAllowedHostListDto instantiates a new AllowedHostListDto object
@@ -77,68 +77,88 @@ func (o *AllowedHostListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AllowedHostListDto) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllowedHostListDto) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AllowedHostListDto) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *AllowedHostListDto) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *AllowedHostListDto) SetDescriptionNil() {
+	o.Description.Set(nil)
 }
 
-// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *AllowedHostListDto) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AllowedHostListDto) GetIpAddress() string {
-	if o == nil || IsNil(o.IpAddress) {
+	if o == nil || IsNil(o.IpAddress.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.IpAddress
+	return *o.IpAddress.Get()
 }
 
 // GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllowedHostListDto) GetIpAddressOk() (*string, bool) {
-	if o == nil || IsNil(o.IpAddress) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IpAddress, true
+	return o.IpAddress.Get(), o.IpAddress.IsSet()
 }
 
 // HasIpAddress returns a boolean if a field has been set.
 func (o *AllowedHostListDto) HasIpAddress() bool {
-	if o != nil && !IsNil(o.IpAddress) {
+	if o != nil && o.IpAddress.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
+// SetIpAddress gets a reference to the given NullableString and assigns it to the IpAddress field.
 func (o *AllowedHostListDto) SetIpAddress(v string) {
-	o.IpAddress = &v
+	o.IpAddress.Set(&v)
+}
+// SetIpAddressNil sets the value for IpAddress to be an explicit nil
+func (o *AllowedHostListDto) SetIpAddressNil() {
+	o.IpAddress.Set(nil)
+}
+
+// UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
+func (o *AllowedHostListDto) UnsetIpAddress() {
+	o.IpAddress.Unset()
 }
 
 // GetMaskBits returns the MaskBits field value if set, zero value otherwise.
@@ -205,36 +225,46 @@ func (o *AllowedHostListDto) SetAccessProfileId(v int32) {
 	o.AccessProfileId = &v
 }
 
-// GetAccessProfileName returns the AccessProfileName field value if set, zero value otherwise.
+// GetAccessProfileName returns the AccessProfileName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AllowedHostListDto) GetAccessProfileName() string {
-	if o == nil || IsNil(o.AccessProfileName) {
+	if o == nil || IsNil(o.AccessProfileName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AccessProfileName
+	return *o.AccessProfileName.Get()
 }
 
 // GetAccessProfileNameOk returns a tuple with the AccessProfileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllowedHostListDto) GetAccessProfileNameOk() (*string, bool) {
-	if o == nil || IsNil(o.AccessProfileName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AccessProfileName, true
+	return o.AccessProfileName.Get(), o.AccessProfileName.IsSet()
 }
 
 // HasAccessProfileName returns a boolean if a field has been set.
 func (o *AllowedHostListDto) HasAccessProfileName() bool {
-	if o != nil && !IsNil(o.AccessProfileName) {
+	if o != nil && o.AccessProfileName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessProfileName gets a reference to the given string and assigns it to the AccessProfileName field.
+// SetAccessProfileName gets a reference to the given NullableString and assigns it to the AccessProfileName field.
 func (o *AllowedHostListDto) SetAccessProfileName(v string) {
-	o.AccessProfileName = &v
+	o.AccessProfileName.Set(&v)
+}
+// SetAccessProfileNameNil sets the value for AccessProfileName to be an explicit nil
+func (o *AllowedHostListDto) SetAccessProfileNameNil() {
+	o.AccessProfileName.Set(nil)
+}
+
+// UnsetAccessProfileName ensures that no value is present for AccessProfileName, not even an explicit nil
+func (o *AllowedHostListDto) UnsetAccessProfileName() {
+	o.AccessProfileName.Unset()
 }
 
 func (o AllowedHostListDto) MarshalJSON() ([]byte, error) {
@@ -250,11 +280,11 @@ func (o AllowedHostListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
-	if !IsNil(o.IpAddress) {
-		toSerialize["ipAddress"] = o.IpAddress
+	if o.IpAddress.IsSet() {
+		toSerialize["ipAddress"] = o.IpAddress.Get()
 	}
 	if !IsNil(o.MaskBits) {
 		toSerialize["maskBits"] = o.MaskBits
@@ -262,8 +292,8 @@ func (o AllowedHostListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AccessProfileId) {
 		toSerialize["accessProfileId"] = o.AccessProfileId
 	}
-	if !IsNil(o.AccessProfileName) {
-		toSerialize["accessProfileName"] = o.AccessProfileName
+	if o.AccessProfileName.IsSet() {
+		toSerialize["accessProfileName"] = o.AccessProfileName.Get()
 	}
 	return toSerialize, nil
 }

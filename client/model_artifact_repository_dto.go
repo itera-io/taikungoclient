@@ -20,11 +20,11 @@ var _ MappedNullable = &ArtifactRepositoryDto{}
 
 // ArtifactRepositoryDto struct for ArtifactRepositoryDto
 type ArtifactRepositoryDto struct {
-	RepositoryId *string `json:"repositoryId,omitempty"`
-	Name *string `json:"name,omitempty"`
-	DisplayName *string `json:"displayName,omitempty"`
-	Url *string `json:"url,omitempty"`
-	OrganizationName *string `json:"organizationName,omitempty"`
+	RepositoryId NullableString `json:"repositoryId,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	DisplayName NullableString `json:"displayName,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
 	Disabled *bool `json:"disabled,omitempty"`
 	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
 	Official *bool `json:"official,omitempty"`
@@ -50,164 +50,214 @@ func NewArtifactRepositoryDtoWithDefaults() *ArtifactRepositoryDto {
 	return &this
 }
 
-// GetRepositoryId returns the RepositoryId field value if set, zero value otherwise.
+// GetRepositoryId returns the RepositoryId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ArtifactRepositoryDto) GetRepositoryId() string {
-	if o == nil || IsNil(o.RepositoryId) {
+	if o == nil || IsNil(o.RepositoryId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RepositoryId
+	return *o.RepositoryId.Get()
 }
 
 // GetRepositoryIdOk returns a tuple with the RepositoryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArtifactRepositoryDto) GetRepositoryIdOk() (*string, bool) {
-	if o == nil || IsNil(o.RepositoryId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RepositoryId, true
+	return o.RepositoryId.Get(), o.RepositoryId.IsSet()
 }
 
 // HasRepositoryId returns a boolean if a field has been set.
 func (o *ArtifactRepositoryDto) HasRepositoryId() bool {
-	if o != nil && !IsNil(o.RepositoryId) {
+	if o != nil && o.RepositoryId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRepositoryId gets a reference to the given string and assigns it to the RepositoryId field.
+// SetRepositoryId gets a reference to the given NullableString and assigns it to the RepositoryId field.
 func (o *ArtifactRepositoryDto) SetRepositoryId(v string) {
-	o.RepositoryId = &v
+	o.RepositoryId.Set(&v)
+}
+// SetRepositoryIdNil sets the value for RepositoryId to be an explicit nil
+func (o *ArtifactRepositoryDto) SetRepositoryIdNil() {
+	o.RepositoryId.Set(nil)
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// UnsetRepositoryId ensures that no value is present for RepositoryId, not even an explicit nil
+func (o *ArtifactRepositoryDto) UnsetRepositoryId() {
+	o.RepositoryId.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ArtifactRepositoryDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArtifactRepositoryDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ArtifactRepositoryDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *ArtifactRepositoryDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *ArtifactRepositoryDto) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *ArtifactRepositoryDto) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetDisplayName returns the DisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ArtifactRepositoryDto) GetDisplayName() string {
-	if o == nil || IsNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DisplayName
+	return *o.DisplayName.Get()
 }
 
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArtifactRepositoryDto) GetDisplayNameOk() (*string, bool) {
-	if o == nil || IsNil(o.DisplayName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DisplayName, true
+	return o.DisplayName.Get(), o.DisplayName.IsSet()
 }
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *ArtifactRepositoryDto) HasDisplayName() bool {
-	if o != nil && !IsNil(o.DisplayName) {
+	if o != nil && o.DisplayName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
+// SetDisplayName gets a reference to the given NullableString and assigns it to the DisplayName field.
 func (o *ArtifactRepositoryDto) SetDisplayName(v string) {
-	o.DisplayName = &v
+	o.DisplayName.Set(&v)
+}
+// SetDisplayNameNil sets the value for DisplayName to be an explicit nil
+func (o *ArtifactRepositoryDto) SetDisplayNameNil() {
+	o.DisplayName.Set(nil)
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
+// UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
+func (o *ArtifactRepositoryDto) UnsetDisplayName() {
+	o.DisplayName.Unset()
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ArtifactRepositoryDto) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Url
+	return *o.Url.Get()
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArtifactRepositoryDto) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return o.Url.Get(), o.Url.IsSet()
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *ArtifactRepositoryDto) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
+	if o != nil && o.Url.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given string and assigns it to the Url field.
+// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
 func (o *ArtifactRepositoryDto) SetUrl(v string) {
-	o.Url = &v
+	o.Url.Set(&v)
+}
+// SetUrlNil sets the value for Url to be an explicit nil
+func (o *ArtifactRepositoryDto) SetUrlNil() {
+	o.Url.Set(nil)
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
+// UnsetUrl ensures that no value is present for Url, not even an explicit nil
+func (o *ArtifactRepositoryDto) UnsetUrl() {
+	o.Url.Unset()
+}
+
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ArtifactRepositoryDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil || IsNil(o.OrganizationName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName
+	return *o.OrganizationName.Get()
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArtifactRepositoryDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName, true
+	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *ArtifactRepositoryDto) HasOrganizationName() bool {
-	if o != nil && !IsNil(o.OrganizationName) {
+	if o != nil && o.OrganizationName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
 func (o *ArtifactRepositoryDto) SetOrganizationName(v string) {
-	o.OrganizationName = &v
+	o.OrganizationName.Set(&v)
+}
+// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
+func (o *ArtifactRepositoryDto) SetOrganizationNameNil() {
+	o.OrganizationName.Set(nil)
+}
+
+// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
+func (o *ArtifactRepositoryDto) UnsetOrganizationName() {
+	o.OrganizationName.Unset()
 }
 
 // GetDisabled returns the Disabled field value if set, zero value otherwise.
@@ -412,20 +462,20 @@ func (o ArtifactRepositoryDto) MarshalJSON() ([]byte, error) {
 
 func (o ArtifactRepositoryDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.RepositoryId) {
-		toSerialize["repositoryId"] = o.RepositoryId
+	if o.RepositoryId.IsSet() {
+		toSerialize["repositoryId"] = o.RepositoryId.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.DisplayName) {
-		toSerialize["displayName"] = o.DisplayName
+	if o.DisplayName.IsSet() {
+		toSerialize["displayName"] = o.DisplayName.Get()
 	}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
+	if o.Url.IsSet() {
+		toSerialize["url"] = o.Url.Get()
 	}
-	if !IsNil(o.OrganizationName) {
-		toSerialize["organizationName"] = o.OrganizationName
+	if o.OrganizationName.IsSet() {
+		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
 	if !IsNil(o.Disabled) {
 		toSerialize["disabled"] = o.Disabled

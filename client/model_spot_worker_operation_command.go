@@ -21,7 +21,7 @@ var _ MappedNullable = &SpotWorkerOperationCommand{}
 // SpotWorkerOperationCommand struct for SpotWorkerOperationCommand
 type SpotWorkerOperationCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	Mode *string `json:"mode,omitempty"`
+	Mode NullableString `json:"mode,omitempty"`
 }
 
 // NewSpotWorkerOperationCommand instantiates a new SpotWorkerOperationCommand object
@@ -73,36 +73,46 @@ func (o *SpotWorkerOperationCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise.
+// GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SpotWorkerOperationCommand) GetMode() string {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil || IsNil(o.Mode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Mode
+	return *o.Mode.Get()
 }
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SpotWorkerOperationCommand) GetModeOk() (*string, bool) {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Mode, true
+	return o.Mode.Get(), o.Mode.IsSet()
 }
 
 // HasMode returns a boolean if a field has been set.
 func (o *SpotWorkerOperationCommand) HasMode() bool {
-	if o != nil && !IsNil(o.Mode) {
+	if o != nil && o.Mode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMode gets a reference to the given string and assigns it to the Mode field.
+// SetMode gets a reference to the given NullableString and assigns it to the Mode field.
 func (o *SpotWorkerOperationCommand) SetMode(v string) {
-	o.Mode = &v
+	o.Mode.Set(&v)
+}
+// SetModeNil sets the value for Mode to be an explicit nil
+func (o *SpotWorkerOperationCommand) SetModeNil() {
+	o.Mode.Set(nil)
+}
+
+// UnsetMode ensures that no value is present for Mode, not even an explicit nil
+func (o *SpotWorkerOperationCommand) UnsetMode() {
+	o.Mode.Unset()
 }
 
 func (o SpotWorkerOperationCommand) MarshalJSON() ([]byte, error) {
@@ -118,8 +128,8 @@ func (o SpotWorkerOperationCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Mode) {
-		toSerialize["mode"] = o.Mode
+	if o.Mode.IsSet() {
+		toSerialize["mode"] = o.Mode.Get()
 	}
 	return toSerialize, nil
 }

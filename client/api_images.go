@@ -436,11 +436,10 @@ func (a *ImagesAPIService) ImagesAwsPersonalImagesExecute(r ApiImagesAwsPersonal
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
@@ -751,13 +750,23 @@ type ApiImagesAzureImagesRequest struct {
 	publisherName string
 	offer string
 	sku string
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-	limit *int32
-	offset *int32
 	projectId *int32
 	latest *bool
+}
+
+func (r ApiImagesAzureImagesRequest) Limit(limit int32) ApiImagesAzureImagesRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiImagesAzureImagesRequest) Offset(offset int32) ApiImagesAzureImagesRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiImagesAzureImagesRequest) SortBy(sortBy string) ApiImagesAzureImagesRequest {
@@ -772,16 +781,6 @@ func (r ApiImagesAzureImagesRequest) SortDirection(sortDirection string) ApiImag
 
 func (r ApiImagesAzureImagesRequest) Search(search string) ApiImagesAzureImagesRequest {
 	r.search = &search
-	return r
-}
-
-func (r ApiImagesAzureImagesRequest) Limit(limit int32) ApiImagesAzureImagesRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiImagesAzureImagesRequest) Offset(offset int32) ApiImagesAzureImagesRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -844,15 +843,6 @@ func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -860,9 +850,15 @@ func (a *ImagesAPIService) ImagesAzureImagesExecute(r ApiImagesAzureImagesReques
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
@@ -1218,9 +1214,6 @@ func (a *ImagesAPIService) ImagesBindImagesToProjectExecute(r ApiImagesBindImage
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bindImageToProjectCommand == nil {
-		return nil, reportError("bindImageToProjectCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1519,29 +1512,14 @@ type ApiImagesGoogleImagesRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
 	cloudId int32
-	sortBy *string
-	sortDirection *string
-	search *string
 	type_ string
 	latest *bool
 	limit *int32
 	offset *int32
+	sortBy *string
+	sortDirection *string
+	search *string
 	projectId *int32
-}
-
-func (r ApiImagesGoogleImagesRequest) SortBy(sortBy string) ApiImagesGoogleImagesRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiImagesGoogleImagesRequest) SortDirection(sortDirection string) ApiImagesGoogleImagesRequest {
-	r.sortDirection = &sortDirection
-	return r
-}
-
-func (r ApiImagesGoogleImagesRequest) Search(search string) ApiImagesGoogleImagesRequest {
-	r.search = &search
-	return r
 }
 
 func (r ApiImagesGoogleImagesRequest) Latest(latest bool) ApiImagesGoogleImagesRequest {
@@ -1556,6 +1534,21 @@ func (r ApiImagesGoogleImagesRequest) Limit(limit int32) ApiImagesGoogleImagesRe
 
 func (r ApiImagesGoogleImagesRequest) Offset(offset int32) ApiImagesGoogleImagesRequest {
 	r.offset = &offset
+	return r
+}
+
+func (r ApiImagesGoogleImagesRequest) SortBy(sortBy string) ApiImagesGoogleImagesRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiImagesGoogleImagesRequest) SortDirection(sortDirection string) ApiImagesGoogleImagesRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiImagesGoogleImagesRequest) Search(search string) ApiImagesGoogleImagesRequest {
+	r.search = &search
 	return r
 }
 
@@ -1607,15 +1600,6 @@ func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 	if r.latest == nil {
 		return localVarReturnValue, nil, reportError("latest is required and must be specified")
 	}
@@ -1626,9 +1610,15 @@ func (a *ImagesAPIService) ImagesGoogleImagesExecute(r ApiImagesGoogleImagesRequ
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "Latest", r.latest, "form", "")
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
@@ -1935,12 +1925,22 @@ type ApiImagesOpenshiftImagesRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
 	cloudId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-	limit *int32
-	offset *int32
 	projectId *int32
+}
+
+func (r ApiImagesOpenshiftImagesRequest) Limit(limit int32) ApiImagesOpenshiftImagesRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiImagesOpenshiftImagesRequest) Offset(offset int32) ApiImagesOpenshiftImagesRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiImagesOpenshiftImagesRequest) SortBy(sortBy string) ApiImagesOpenshiftImagesRequest {
@@ -1955,16 +1955,6 @@ func (r ApiImagesOpenshiftImagesRequest) SortDirection(sortDirection string) Api
 
 func (r ApiImagesOpenshiftImagesRequest) Search(search string) ApiImagesOpenshiftImagesRequest {
 	r.search = &search
-	return r
-}
-
-func (r ApiImagesOpenshiftImagesRequest) Limit(limit int32) ApiImagesOpenshiftImagesRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiImagesOpenshiftImagesRequest) Offset(offset int32) ApiImagesOpenshiftImagesRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -2013,15 +2003,6 @@ func (a *ImagesAPIService) ImagesOpenshiftImagesExecute(r ApiImagesOpenshiftImag
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -2029,9 +2010,15 @@ func (a *ImagesAPIService) ImagesOpenshiftImagesExecute(r ApiImagesOpenshiftImag
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
@@ -2161,13 +2148,23 @@ type ApiImagesOpenstackImagesRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
 	cloudId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-	limit *int32
-	offset *int32
 	projectId *int32
 	personal *bool
+}
+
+func (r ApiImagesOpenstackImagesRequest) Limit(limit int32) ApiImagesOpenstackImagesRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiImagesOpenstackImagesRequest) Offset(offset int32) ApiImagesOpenstackImagesRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiImagesOpenstackImagesRequest) SortBy(sortBy string) ApiImagesOpenstackImagesRequest {
@@ -2182,16 +2179,6 @@ func (r ApiImagesOpenstackImagesRequest) SortDirection(sortDirection string) Api
 
 func (r ApiImagesOpenstackImagesRequest) Search(search string) ApiImagesOpenstackImagesRequest {
 	r.search = &search
-	return r
-}
-
-func (r ApiImagesOpenstackImagesRequest) Limit(limit int32) ApiImagesOpenstackImagesRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiImagesOpenstackImagesRequest) Offset(offset int32) ApiImagesOpenstackImagesRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -2245,15 +2232,6 @@ func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImag
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -2261,9 +2239,15 @@ func (a *ImagesAPIService) ImagesOpenstackImagesExecute(r ApiImagesOpenstackImag
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
@@ -2399,12 +2383,22 @@ type ApiImagesProxmoxImagesRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
 	cloudId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-	limit *int32
-	offset *int32
 	projectId *int32
+}
+
+func (r ApiImagesProxmoxImagesRequest) Limit(limit int32) ApiImagesProxmoxImagesRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiImagesProxmoxImagesRequest) Offset(offset int32) ApiImagesProxmoxImagesRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiImagesProxmoxImagesRequest) SortBy(sortBy string) ApiImagesProxmoxImagesRequest {
@@ -2419,16 +2413,6 @@ func (r ApiImagesProxmoxImagesRequest) SortDirection(sortDirection string) ApiIm
 
 func (r ApiImagesProxmoxImagesRequest) Search(search string) ApiImagesProxmoxImagesRequest {
 	r.search = &search
-	return r
-}
-
-func (r ApiImagesProxmoxImagesRequest) Limit(limit int32) ApiImagesProxmoxImagesRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiImagesProxmoxImagesRequest) Offset(offset int32) ApiImagesProxmoxImagesRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -2477,15 +2461,6 @@ func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -2493,9 +2468,15 @@ func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRe
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
@@ -2624,14 +2605,29 @@ func (a *ImagesAPIService) ImagesProxmoxImagesExecute(r ApiImagesProxmoxImagesRe
 type ApiImagesSelectedImagesForProjectRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
+	limit *int32
+	offset *int32
+	projectId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	filterBy *string
-	limit *int32
-	offset *int32
-	projectId *int32
 	organizationId *int32
+}
+
+func (r ApiImagesSelectedImagesForProjectRequest) Limit(limit int32) ApiImagesSelectedImagesForProjectRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiImagesSelectedImagesForProjectRequest) Offset(offset int32) ApiImagesSelectedImagesForProjectRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiImagesSelectedImagesForProjectRequest) ProjectId(projectId int32) ApiImagesSelectedImagesForProjectRequest {
+	r.projectId = &projectId
+	return r
 }
 
 func (r ApiImagesSelectedImagesForProjectRequest) SortBy(sortBy string) ApiImagesSelectedImagesForProjectRequest {
@@ -2651,21 +2647,6 @@ func (r ApiImagesSelectedImagesForProjectRequest) Search(search string) ApiImage
 
 func (r ApiImagesSelectedImagesForProjectRequest) FilterBy(filterBy string) ApiImagesSelectedImagesForProjectRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiImagesSelectedImagesForProjectRequest) Limit(limit int32) ApiImagesSelectedImagesForProjectRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiImagesSelectedImagesForProjectRequest) Offset(offset int32) ApiImagesSelectedImagesForProjectRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiImagesSelectedImagesForProjectRequest) ProjectId(projectId int32) ApiImagesSelectedImagesForProjectRequest {
-	r.projectId = &projectId
 	return r
 }
 
@@ -2711,18 +2692,6 @@ func (a *ImagesAPIService) ImagesSelectedImagesForProjectExecute(r ApiImagesSele
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -2733,10 +2702,18 @@ func (a *ImagesAPIService) ImagesSelectedImagesForProjectExecute(r ApiImagesSele
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
@@ -2866,12 +2843,22 @@ type ApiImagesTanzuImagesRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
 	cloudId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-	limit *int32
-	offset *int32
 	projectId *int32
+}
+
+func (r ApiImagesTanzuImagesRequest) Limit(limit int32) ApiImagesTanzuImagesRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiImagesTanzuImagesRequest) Offset(offset int32) ApiImagesTanzuImagesRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiImagesTanzuImagesRequest) SortBy(sortBy string) ApiImagesTanzuImagesRequest {
@@ -2886,16 +2873,6 @@ func (r ApiImagesTanzuImagesRequest) SortDirection(sortDirection string) ApiImag
 
 func (r ApiImagesTanzuImagesRequest) Search(search string) ApiImagesTanzuImagesRequest {
 	r.search = &search
-	return r
-}
-
-func (r ApiImagesTanzuImagesRequest) Limit(limit int32) ApiImagesTanzuImagesRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiImagesTanzuImagesRequest) Offset(offset int32) ApiImagesTanzuImagesRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -2944,15 +2921,6 @@ func (a *ImagesAPIService) ImagesTanzuImagesExecute(r ApiImagesTanzuImagesReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -2960,9 +2928,15 @@ func (a *ImagesAPIService) ImagesTanzuImagesExecute(r ApiImagesTanzuImagesReques
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
@@ -3257,12 +3231,22 @@ type ApiImagesVsphereImagesRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
 	cloudId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-	limit *int32
-	offset *int32
 	projectId *int32
+}
+
+func (r ApiImagesVsphereImagesRequest) Limit(limit int32) ApiImagesVsphereImagesRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiImagesVsphereImagesRequest) Offset(offset int32) ApiImagesVsphereImagesRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiImagesVsphereImagesRequest) SortBy(sortBy string) ApiImagesVsphereImagesRequest {
@@ -3277,16 +3261,6 @@ func (r ApiImagesVsphereImagesRequest) SortDirection(sortDirection string) ApiIm
 
 func (r ApiImagesVsphereImagesRequest) Search(search string) ApiImagesVsphereImagesRequest {
 	r.search = &search
-	return r
-}
-
-func (r ApiImagesVsphereImagesRequest) Limit(limit int32) ApiImagesVsphereImagesRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiImagesVsphereImagesRequest) Offset(offset int32) ApiImagesVsphereImagesRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -3335,15 +3309,6 @@ func (a *ImagesAPIService) ImagesVsphereImagesExecute(r ApiImagesVsphereImagesRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -3351,9 +3316,15 @@ func (a *ImagesAPIService) ImagesVsphereImagesExecute(r ApiImagesVsphereImagesRe
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
@@ -3483,28 +3454,13 @@ type ApiImagesZadaraImagesListRequest struct {
 	ctx context.Context
 	ApiService *ImagesAPIService
 	cloudId int32
-	sortBy *string
-	sortDirection *string
-	search *string
 	latest *bool
 	limit *int32
 	offset *int32
+	sortBy *string
+	sortDirection *string
+	search *string
 	projectId *int32
-}
-
-func (r ApiImagesZadaraImagesListRequest) SortBy(sortBy string) ApiImagesZadaraImagesListRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiImagesZadaraImagesListRequest) SortDirection(sortDirection string) ApiImagesZadaraImagesListRequest {
-	r.sortDirection = &sortDirection
-	return r
-}
-
-func (r ApiImagesZadaraImagesListRequest) Search(search string) ApiImagesZadaraImagesListRequest {
-	r.search = &search
-	return r
 }
 
 func (r ApiImagesZadaraImagesListRequest) Latest(latest bool) ApiImagesZadaraImagesListRequest {
@@ -3519,6 +3475,21 @@ func (r ApiImagesZadaraImagesListRequest) Limit(limit int32) ApiImagesZadaraImag
 
 func (r ApiImagesZadaraImagesListRequest) Offset(offset int32) ApiImagesZadaraImagesListRequest {
 	r.offset = &offset
+	return r
+}
+
+func (r ApiImagesZadaraImagesListRequest) SortBy(sortBy string) ApiImagesZadaraImagesListRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiImagesZadaraImagesListRequest) SortDirection(sortDirection string) ApiImagesZadaraImagesListRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiImagesZadaraImagesListRequest) Search(search string) ApiImagesZadaraImagesListRequest {
+	r.search = &search
 	return r
 }
 
@@ -3567,15 +3538,6 @@ func (a *ImagesAPIService) ImagesZadaraImagesListExecute(r ApiImagesZadaraImages
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 	if r.latest == nil {
 		return localVarReturnValue, nil, reportError("latest is required and must be specified")
 	}
@@ -3586,9 +3548,15 @@ func (a *ImagesAPIService) ImagesZadaraImagesListExecute(r ApiImagesZadaraImages
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "Latest", r.latest, "form", "")
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
@@ -3773,11 +3741,10 @@ func (a *ImagesAPIService) ImagesZadaraPersonalImagesExecute(r ApiImagesZadaraPe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}

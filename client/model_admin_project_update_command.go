@@ -21,8 +21,8 @@ var _ MappedNullable = &AdminProjectUpdateCommand{}
 // AdminProjectUpdateCommand struct for AdminProjectUpdateCommand
 type AdminProjectUpdateCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	KubernetesCurrentVersion *string `json:"kubernetesCurrentVersion,omitempty"`
-	KubesprayCurrentVersion *string `json:"kubesprayCurrentVersion,omitempty"`
+	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion,omitempty"`
+	KubesprayCurrentVersion NullableString `json:"kubesprayCurrentVersion,omitempty"`
 }
 
 // NewAdminProjectUpdateCommand instantiates a new AdminProjectUpdateCommand object
@@ -74,68 +74,88 @@ func (o *AdminProjectUpdateCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetKubernetesCurrentVersion returns the KubernetesCurrentVersion field value if set, zero value otherwise.
+// GetKubernetesCurrentVersion returns the KubernetesCurrentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AdminProjectUpdateCommand) GetKubernetesCurrentVersion() string {
-	if o == nil || IsNil(o.KubernetesCurrentVersion) {
+	if o == nil || IsNil(o.KubernetesCurrentVersion.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.KubernetesCurrentVersion
+	return *o.KubernetesCurrentVersion.Get()
 }
 
 // GetKubernetesCurrentVersionOk returns a tuple with the KubernetesCurrentVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminProjectUpdateCommand) GetKubernetesCurrentVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.KubernetesCurrentVersion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.KubernetesCurrentVersion, true
+	return o.KubernetesCurrentVersion.Get(), o.KubernetesCurrentVersion.IsSet()
 }
 
 // HasKubernetesCurrentVersion returns a boolean if a field has been set.
 func (o *AdminProjectUpdateCommand) HasKubernetesCurrentVersion() bool {
-	if o != nil && !IsNil(o.KubernetesCurrentVersion) {
+	if o != nil && o.KubernetesCurrentVersion.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKubernetesCurrentVersion gets a reference to the given string and assigns it to the KubernetesCurrentVersion field.
+// SetKubernetesCurrentVersion gets a reference to the given NullableString and assigns it to the KubernetesCurrentVersion field.
 func (o *AdminProjectUpdateCommand) SetKubernetesCurrentVersion(v string) {
-	o.KubernetesCurrentVersion = &v
+	o.KubernetesCurrentVersion.Set(&v)
+}
+// SetKubernetesCurrentVersionNil sets the value for KubernetesCurrentVersion to be an explicit nil
+func (o *AdminProjectUpdateCommand) SetKubernetesCurrentVersionNil() {
+	o.KubernetesCurrentVersion.Set(nil)
 }
 
-// GetKubesprayCurrentVersion returns the KubesprayCurrentVersion field value if set, zero value otherwise.
+// UnsetKubernetesCurrentVersion ensures that no value is present for KubernetesCurrentVersion, not even an explicit nil
+func (o *AdminProjectUpdateCommand) UnsetKubernetesCurrentVersion() {
+	o.KubernetesCurrentVersion.Unset()
+}
+
+// GetKubesprayCurrentVersion returns the KubesprayCurrentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AdminProjectUpdateCommand) GetKubesprayCurrentVersion() string {
-	if o == nil || IsNil(o.KubesprayCurrentVersion) {
+	if o == nil || IsNil(o.KubesprayCurrentVersion.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.KubesprayCurrentVersion
+	return *o.KubesprayCurrentVersion.Get()
 }
 
 // GetKubesprayCurrentVersionOk returns a tuple with the KubesprayCurrentVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminProjectUpdateCommand) GetKubesprayCurrentVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.KubesprayCurrentVersion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.KubesprayCurrentVersion, true
+	return o.KubesprayCurrentVersion.Get(), o.KubesprayCurrentVersion.IsSet()
 }
 
 // HasKubesprayCurrentVersion returns a boolean if a field has been set.
 func (o *AdminProjectUpdateCommand) HasKubesprayCurrentVersion() bool {
-	if o != nil && !IsNil(o.KubesprayCurrentVersion) {
+	if o != nil && o.KubesprayCurrentVersion.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKubesprayCurrentVersion gets a reference to the given string and assigns it to the KubesprayCurrentVersion field.
+// SetKubesprayCurrentVersion gets a reference to the given NullableString and assigns it to the KubesprayCurrentVersion field.
 func (o *AdminProjectUpdateCommand) SetKubesprayCurrentVersion(v string) {
-	o.KubesprayCurrentVersion = &v
+	o.KubesprayCurrentVersion.Set(&v)
+}
+// SetKubesprayCurrentVersionNil sets the value for KubesprayCurrentVersion to be an explicit nil
+func (o *AdminProjectUpdateCommand) SetKubesprayCurrentVersionNil() {
+	o.KubesprayCurrentVersion.Set(nil)
+}
+
+// UnsetKubesprayCurrentVersion ensures that no value is present for KubesprayCurrentVersion, not even an explicit nil
+func (o *AdminProjectUpdateCommand) UnsetKubesprayCurrentVersion() {
+	o.KubesprayCurrentVersion.Unset()
 }
 
 func (o AdminProjectUpdateCommand) MarshalJSON() ([]byte, error) {
@@ -151,11 +171,11 @@ func (o AdminProjectUpdateCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.KubernetesCurrentVersion) {
-		toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion
+	if o.KubernetesCurrentVersion.IsSet() {
+		toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion.Get()
 	}
-	if !IsNil(o.KubesprayCurrentVersion) {
-		toSerialize["kubesprayCurrentVersion"] = o.KubesprayCurrentVersion
+	if o.KubesprayCurrentVersion.IsSet() {
+		toSerialize["kubesprayCurrentVersion"] = o.KubesprayCurrentVersion.Get()
 	}
 	return toSerialize, nil
 }

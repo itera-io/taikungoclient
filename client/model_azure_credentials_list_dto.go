@@ -23,20 +23,20 @@ type AzureCredentialsListDto struct {
 	Id *int32 `json:"id,omitempty"`
 	ProjectCount *int32 `json:"projectCount,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
-	Name *string `json:"name,omitempty"`
-	TenantId *string `json:"tenantId,omitempty"`
-	Location *string `json:"location,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	TenantId NullableString `json:"tenantId,omitempty"`
+	Location NullableString `json:"location,omitempty"`
 	AvailabilityZones []string `json:"availabilityZones,omitempty"`
 	AvailabilityZonesCount *int32 `json:"availabilityZonesCount,omitempty"`
 	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy *string `json:"createdBy,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
-	LastModified *string `json:"lastModified,omitempty"`
-	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName *string `json:"organizationName,omitempty"`
-	ContinentName *string `json:"continentName,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	ContinentName NullableString `json:"continentName,omitempty"`
 }
 
 // NewAzureCredentialsListDto instantiates a new AzureCredentialsListDto object
@@ -152,105 +152,135 @@ func (o *AzureCredentialsListDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureCredentialsListDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureCredentialsListDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *AzureCredentialsListDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *AzureCredentialsListDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *AzureCredentialsListDto) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetTenantId returns the TenantId field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *AzureCredentialsListDto) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetTenantId returns the TenantId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureCredentialsListDto) GetTenantId() string {
-	if o == nil || IsNil(o.TenantId) {
+	if o == nil || IsNil(o.TenantId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TenantId
+	return *o.TenantId.Get()
 }
 
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureCredentialsListDto) GetTenantIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TenantId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TenantId, true
+	return o.TenantId.Get(), o.TenantId.IsSet()
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *AzureCredentialsListDto) HasTenantId() bool {
-	if o != nil && !IsNil(o.TenantId) {
+	if o != nil && o.TenantId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTenantId gets a reference to the given string and assigns it to the TenantId field.
+// SetTenantId gets a reference to the given NullableString and assigns it to the TenantId field.
 func (o *AzureCredentialsListDto) SetTenantId(v string) {
-	o.TenantId = &v
+	o.TenantId.Set(&v)
+}
+// SetTenantIdNil sets the value for TenantId to be an explicit nil
+func (o *AzureCredentialsListDto) SetTenantIdNil() {
+	o.TenantId.Set(nil)
 }
 
-// GetLocation returns the Location field value if set, zero value otherwise.
+// UnsetTenantId ensures that no value is present for TenantId, not even an explicit nil
+func (o *AzureCredentialsListDto) UnsetTenantId() {
+	o.TenantId.Unset()
+}
+
+// GetLocation returns the Location field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureCredentialsListDto) GetLocation() string {
-	if o == nil || IsNil(o.Location) {
+	if o == nil || IsNil(o.Location.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Location
+	return *o.Location.Get()
 }
 
 // GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureCredentialsListDto) GetLocationOk() (*string, bool) {
-	if o == nil || IsNil(o.Location) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Location, true
+	return o.Location.Get(), o.Location.IsSet()
 }
 
 // HasLocation returns a boolean if a field has been set.
 func (o *AzureCredentialsListDto) HasLocation() bool {
-	if o != nil && !IsNil(o.Location) {
+	if o != nil && o.Location.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLocation gets a reference to the given string and assigns it to the Location field.
+// SetLocation gets a reference to the given NullableString and assigns it to the Location field.
 func (o *AzureCredentialsListDto) SetLocation(v string) {
-	o.Location = &v
+	o.Location.Set(&v)
+}
+// SetLocationNil sets the value for Location to be an explicit nil
+func (o *AzureCredentialsListDto) SetLocationNil() {
+	o.Location.Set(nil)
 }
 
-// GetAvailabilityZones returns the AvailabilityZones field value if set, zero value otherwise.
+// UnsetLocation ensures that no value is present for Location, not even an explicit nil
+func (o *AzureCredentialsListDto) UnsetLocation() {
+	o.Location.Unset()
+}
+
+// GetAvailabilityZones returns the AvailabilityZones field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureCredentialsListDto) GetAvailabilityZones() []string {
-	if o == nil || IsNil(o.AvailabilityZones) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -259,6 +289,7 @@ func (o *AzureCredentialsListDto) GetAvailabilityZones() []string {
 
 // GetAvailabilityZonesOk returns a tuple with the AvailabilityZones field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureCredentialsListDto) GetAvailabilityZonesOk() ([]string, bool) {
 	if o == nil || IsNil(o.AvailabilityZones) {
 		return nil, false
@@ -312,9 +343,9 @@ func (o *AzureCredentialsListDto) SetAvailabilityZonesCount(v int32) {
 	o.AvailabilityZonesCount = &v
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise.
+// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureCredentialsListDto) GetProjects() []CommonDropdownDto {
-	if o == nil || IsNil(o.Projects) {
+	if o == nil {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -323,6 +354,7 @@ func (o *AzureCredentialsListDto) GetProjects() []CommonDropdownDto {
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureCredentialsListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
@@ -344,132 +376,172 @@ func (o *AzureCredentialsListDto) SetProjects(v []CommonDropdownDto) {
 	o.Projects = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureCredentialsListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy
+	return *o.CreatedBy.Get()
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureCredentialsListDto) GetCreatedByOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedBy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy, true
+	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *AzureCredentialsListDto) HasCreatedBy() bool {
-	if o != nil && !IsNil(o.CreatedBy) {
+	if o != nil && o.CreatedBy.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
+// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
 func (o *AzureCredentialsListDto) SetCreatedBy(v string) {
-	o.CreatedBy = &v
+	o.CreatedBy.Set(&v)
+}
+// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
+func (o *AzureCredentialsListDto) SetCreatedByNil() {
+	o.CreatedBy.Set(nil)
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
+func (o *AzureCredentialsListDto) UnsetCreatedBy() {
+	o.CreatedBy.Unset()
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureCredentialsListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureCredentialsListDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *AzureCredentialsListDto) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
 func (o *AzureCredentialsListDto) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *AzureCredentialsListDto) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
 }
 
-// GetLastModified returns the LastModified field value if set, zero value otherwise.
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *AzureCredentialsListDto) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
+}
+
+// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureCredentialsListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified) {
+	if o == nil || IsNil(o.LastModified.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LastModified
+	return *o.LastModified.Get()
 }
 
 // GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureCredentialsListDto) GetLastModifiedOk() (*string, bool) {
-	if o == nil || IsNil(o.LastModified) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastModified, true
+	return o.LastModified.Get(), o.LastModified.IsSet()
 }
 
 // HasLastModified returns a boolean if a field has been set.
 func (o *AzureCredentialsListDto) HasLastModified() bool {
-	if o != nil && !IsNil(o.LastModified) {
+	if o != nil && o.LastModified.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
+// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
 func (o *AzureCredentialsListDto) SetLastModified(v string) {
-	o.LastModified = &v
+	o.LastModified.Set(&v)
+}
+// SetLastModifiedNil sets the value for LastModified to be an explicit nil
+func (o *AzureCredentialsListDto) SetLastModifiedNil() {
+	o.LastModified.Set(nil)
 }
 
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
+// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
+func (o *AzureCredentialsListDto) UnsetLastModified() {
+	o.LastModified.Unset()
+}
+
+// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureCredentialsListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy) {
+	if o == nil || IsNil(o.LastModifiedBy.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LastModifiedBy
+	return *o.LastModifiedBy.Get()
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
-	if o == nil || IsNil(o.LastModifiedBy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy, true
+	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *AzureCredentialsListDto) HasLastModifiedBy() bool {
-	if o != nil && !IsNil(o.LastModifiedBy) {
+	if o != nil && o.LastModifiedBy.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModifiedBy gets a reference to the given string and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
 func (o *AzureCredentialsListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy = &v
+	o.LastModifiedBy.Set(&v)
+}
+// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
+func (o *AzureCredentialsListDto) SetLastModifiedByNil() {
+	o.LastModifiedBy.Set(nil)
+}
+
+// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
+func (o *AzureCredentialsListDto) UnsetLastModifiedBy() {
+	o.LastModifiedBy.Unset()
 }
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
@@ -536,68 +608,88 @@ func (o *AzureCredentialsListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureCredentialsListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil || IsNil(o.OrganizationName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName
+	return *o.OrganizationName.Get()
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureCredentialsListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName, true
+	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *AzureCredentialsListDto) HasOrganizationName() bool {
-	if o != nil && !IsNil(o.OrganizationName) {
+	if o != nil && o.OrganizationName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
 func (o *AzureCredentialsListDto) SetOrganizationName(v string) {
-	o.OrganizationName = &v
+	o.OrganizationName.Set(&v)
+}
+// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
+func (o *AzureCredentialsListDto) SetOrganizationNameNil() {
+	o.OrganizationName.Set(nil)
 }
 
-// GetContinentName returns the ContinentName field value if set, zero value otherwise.
+// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
+func (o *AzureCredentialsListDto) UnsetOrganizationName() {
+	o.OrganizationName.Unset()
+}
+
+// GetContinentName returns the ContinentName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureCredentialsListDto) GetContinentName() string {
-	if o == nil || IsNil(o.ContinentName) {
+	if o == nil || IsNil(o.ContinentName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ContinentName
+	return *o.ContinentName.Get()
 }
 
 // GetContinentNameOk returns a tuple with the ContinentName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureCredentialsListDto) GetContinentNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ContinentName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ContinentName, true
+	return o.ContinentName.Get(), o.ContinentName.IsSet()
 }
 
 // HasContinentName returns a boolean if a field has been set.
 func (o *AzureCredentialsListDto) HasContinentName() bool {
-	if o != nil && !IsNil(o.ContinentName) {
+	if o != nil && o.ContinentName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetContinentName gets a reference to the given string and assigns it to the ContinentName field.
+// SetContinentName gets a reference to the given NullableString and assigns it to the ContinentName field.
 func (o *AzureCredentialsListDto) SetContinentName(v string) {
-	o.ContinentName = &v
+	o.ContinentName.Set(&v)
+}
+// SetContinentNameNil sets the value for ContinentName to be an explicit nil
+func (o *AzureCredentialsListDto) SetContinentNameNil() {
+	o.ContinentName.Set(nil)
+}
+
+// UnsetContinentName ensures that no value is present for ContinentName, not even an explicit nil
+func (o *AzureCredentialsListDto) UnsetContinentName() {
+	o.ContinentName.Unset()
 }
 
 func (o AzureCredentialsListDto) MarshalJSON() ([]byte, error) {
@@ -619,35 +711,35 @@ func (o AzureCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
+	if o.TenantId.IsSet() {
+		toSerialize["tenantId"] = o.TenantId.Get()
 	}
-	if !IsNil(o.Location) {
-		toSerialize["location"] = o.Location
+	if o.Location.IsSet() {
+		toSerialize["location"] = o.Location.Get()
 	}
-	if !IsNil(o.AvailabilityZones) {
+	if o.AvailabilityZones != nil {
 		toSerialize["availabilityZones"] = o.AvailabilityZones
 	}
 	if !IsNil(o.AvailabilityZonesCount) {
 		toSerialize["availabilityZonesCount"] = o.AvailabilityZonesCount
 	}
-	if !IsNil(o.Projects) {
+	if o.Projects != nil {
 		toSerialize["projects"] = o.Projects
 	}
-	if !IsNil(o.CreatedBy) {
-		toSerialize["createdBy"] = o.CreatedBy
+	if o.CreatedBy.IsSet() {
+		toSerialize["createdBy"] = o.CreatedBy.Get()
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
-	if !IsNil(o.LastModified) {
-		toSerialize["lastModified"] = o.LastModified
+	if o.LastModified.IsSet() {
+		toSerialize["lastModified"] = o.LastModified.Get()
 	}
-	if !IsNil(o.LastModifiedBy) {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy
+	if o.LastModifiedBy.IsSet() {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
@@ -655,11 +747,11 @@ func (o AzureCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if !IsNil(o.OrganizationName) {
-		toSerialize["organizationName"] = o.OrganizationName
+	if o.OrganizationName.IsSet() {
+		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
-	if !IsNil(o.ContinentName) {
-		toSerialize["continentName"] = o.ContinentName
+	if o.ContinentName.IsSet() {
+		toSerialize["continentName"] = o.ContinentName.Get()
 	}
 	return toSerialize, nil
 }

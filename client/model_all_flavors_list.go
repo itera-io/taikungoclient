@@ -22,7 +22,7 @@ var _ MappedNullable = &AllFlavorsList{}
 type AllFlavorsList struct {
 	Data []FlavorsListDto `json:"data,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
-	CloudType *string `json:"cloudType,omitempty"`
+	CloudType NullableString `json:"cloudType,omitempty"`
 }
 
 // NewAllFlavorsList instantiates a new AllFlavorsList object
@@ -42,9 +42,9 @@ func NewAllFlavorsListWithDefaults() *AllFlavorsList {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise.
+// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AllFlavorsList) GetData() []FlavorsListDto {
-	if o == nil || IsNil(o.Data) {
+	if o == nil {
 		var ret []FlavorsListDto
 		return ret
 	}
@@ -53,6 +53,7 @@ func (o *AllFlavorsList) GetData() []FlavorsListDto {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllFlavorsList) GetDataOk() ([]FlavorsListDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
@@ -106,36 +107,46 @@ func (o *AllFlavorsList) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 
-// GetCloudType returns the CloudType field value if set, zero value otherwise.
+// GetCloudType returns the CloudType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AllFlavorsList) GetCloudType() string {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil || IsNil(o.CloudType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CloudType
+	return *o.CloudType.Get()
 }
 
 // GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllFlavorsList) GetCloudTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CloudType, true
+	return o.CloudType.Get(), o.CloudType.IsSet()
 }
 
 // HasCloudType returns a boolean if a field has been set.
 func (o *AllFlavorsList) HasCloudType() bool {
-	if o != nil && !IsNil(o.CloudType) {
+	if o != nil && o.CloudType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCloudType gets a reference to the given string and assigns it to the CloudType field.
+// SetCloudType gets a reference to the given NullableString and assigns it to the CloudType field.
 func (o *AllFlavorsList) SetCloudType(v string) {
-	o.CloudType = &v
+	o.CloudType.Set(&v)
+}
+// SetCloudTypeNil sets the value for CloudType to be an explicit nil
+func (o *AllFlavorsList) SetCloudTypeNil() {
+	o.CloudType.Set(nil)
+}
+
+// UnsetCloudType ensures that no value is present for CloudType, not even an explicit nil
+func (o *AllFlavorsList) UnsetCloudType() {
+	o.CloudType.Unset()
 }
 
 func (o AllFlavorsList) MarshalJSON() ([]byte, error) {
@@ -148,14 +159,14 @@ func (o AllFlavorsList) MarshalJSON() ([]byte, error) {
 
 func (o AllFlavorsList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Data) {
+	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
-	if !IsNil(o.CloudType) {
-		toSerialize["cloudType"] = o.CloudType
+	if o.CloudType.IsSet() {
+		toSerialize["cloudType"] = o.CloudType.Get()
 	}
 	return toSerialize, nil
 }

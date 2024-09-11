@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the CreateDnsServerCommand type satisfies the MappedNullable interface at compile time
@@ -22,20 +20,16 @@ var _ MappedNullable = &CreateDnsServerCommand{}
 
 // CreateDnsServerCommand struct for CreateDnsServerCommand
 type CreateDnsServerCommand struct {
-	Address string `json:"address"`
-	AccessProfileId int32 `json:"accessProfileId"`
+	Address NullableString `json:"address,omitempty"`
+	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
 }
-
-type _CreateDnsServerCommand CreateDnsServerCommand
 
 // NewCreateDnsServerCommand instantiates a new CreateDnsServerCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateDnsServerCommand(address string, accessProfileId int32) *CreateDnsServerCommand {
+func NewCreateDnsServerCommand() *CreateDnsServerCommand {
 	this := CreateDnsServerCommand{}
-	this.Address = address
-	this.AccessProfileId = accessProfileId
 	return &this
 }
 
@@ -47,52 +41,78 @@ func NewCreateDnsServerCommandWithDefaults() *CreateDnsServerCommand {
 	return &this
 }
 
-// GetAddress returns the Address field value
+// GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateDnsServerCommand) GetAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.Address.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.Address
+	return *o.Address.Get()
 }
 
-// GetAddressOk returns a tuple with the Address field value
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateDnsServerCommand) GetAddressOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Address, true
+	return o.Address.Get(), o.Address.IsSet()
 }
 
-// SetAddress sets field value
+// HasAddress returns a boolean if a field has been set.
+func (o *CreateDnsServerCommand) HasAddress() bool {
+	if o != nil && o.Address.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress gets a reference to the given NullableString and assigns it to the Address field.
 func (o *CreateDnsServerCommand) SetAddress(v string) {
-	o.Address = v
+	o.Address.Set(&v)
+}
+// SetAddressNil sets the value for Address to be an explicit nil
+func (o *CreateDnsServerCommand) SetAddressNil() {
+	o.Address.Set(nil)
 }
 
-// GetAccessProfileId returns the AccessProfileId field value
+// UnsetAddress ensures that no value is present for Address, not even an explicit nil
+func (o *CreateDnsServerCommand) UnsetAddress() {
+	o.Address.Unset()
+}
+
+// GetAccessProfileId returns the AccessProfileId field value if set, zero value otherwise.
 func (o *CreateDnsServerCommand) GetAccessProfileId() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.AccessProfileId) {
 		var ret int32
 		return ret
 	}
-
-	return o.AccessProfileId
+	return *o.AccessProfileId
 }
 
-// GetAccessProfileIdOk returns a tuple with the AccessProfileId field value
+// GetAccessProfileIdOk returns a tuple with the AccessProfileId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CreateDnsServerCommand) GetAccessProfileIdOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AccessProfileId) {
 		return nil, false
 	}
-	return &o.AccessProfileId, true
+	return o.AccessProfileId, true
 }
 
-// SetAccessProfileId sets field value
+// HasAccessProfileId returns a boolean if a field has been set.
+func (o *CreateDnsServerCommand) HasAccessProfileId() bool {
+	if o != nil && !IsNil(o.AccessProfileId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAccessProfileId gets a reference to the given int32 and assigns it to the AccessProfileId field.
 func (o *CreateDnsServerCommand) SetAccessProfileId(v int32) {
-	o.AccessProfileId = v
+	o.AccessProfileId = &v
 }
 
 func (o CreateDnsServerCommand) MarshalJSON() ([]byte, error) {
@@ -105,47 +125,13 @@ func (o CreateDnsServerCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateDnsServerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["address"] = o.Address
-	toSerialize["accessProfileId"] = o.AccessProfileId
+	if o.Address.IsSet() {
+		toSerialize["address"] = o.Address.Get()
+	}
+	if !IsNil(o.AccessProfileId) {
+		toSerialize["accessProfileId"] = o.AccessProfileId
+	}
 	return toSerialize, nil
-}
-
-func (o *CreateDnsServerCommand) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"address",
-		"accessProfileId",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCreateDnsServerCommand := _CreateDnsServerCommand{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateDnsServerCommand)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateDnsServerCommand(varCreateDnsServerCommand)
-
-	return err
 }
 
 type NullableCreateDnsServerCommand struct {

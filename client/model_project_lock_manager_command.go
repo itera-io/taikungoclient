@@ -21,7 +21,7 @@ var _ MappedNullable = &ProjectLockManagerCommand{}
 // ProjectLockManagerCommand struct for ProjectLockManagerCommand
 type ProjectLockManagerCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	Mode *string `json:"mode,omitempty"`
+	Mode NullableString `json:"mode,omitempty"`
 }
 
 // NewProjectLockManagerCommand instantiates a new ProjectLockManagerCommand object
@@ -73,36 +73,46 @@ func (o *ProjectLockManagerCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise.
+// GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectLockManagerCommand) GetMode() string {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil || IsNil(o.Mode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Mode
+	return *o.Mode.Get()
 }
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectLockManagerCommand) GetModeOk() (*string, bool) {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Mode, true
+	return o.Mode.Get(), o.Mode.IsSet()
 }
 
 // HasMode returns a boolean if a field has been set.
 func (o *ProjectLockManagerCommand) HasMode() bool {
-	if o != nil && !IsNil(o.Mode) {
+	if o != nil && o.Mode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMode gets a reference to the given string and assigns it to the Mode field.
+// SetMode gets a reference to the given NullableString and assigns it to the Mode field.
 func (o *ProjectLockManagerCommand) SetMode(v string) {
-	o.Mode = &v
+	o.Mode.Set(&v)
+}
+// SetModeNil sets the value for Mode to be an explicit nil
+func (o *ProjectLockManagerCommand) SetModeNil() {
+	o.Mode.Set(nil)
+}
+
+// UnsetMode ensures that no value is present for Mode, not even an explicit nil
+func (o *ProjectLockManagerCommand) UnsetMode() {
+	o.Mode.Unset()
 }
 
 func (o ProjectLockManagerCommand) MarshalJSON() ([]byte, error) {
@@ -118,8 +128,8 @@ func (o ProjectLockManagerCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Mode) {
-		toSerialize["mode"] = o.Mode
+	if o.Mode.IsSet() {
+		toSerialize["mode"] = o.Mode.Get()
 	}
 	return toSerialize, nil
 }

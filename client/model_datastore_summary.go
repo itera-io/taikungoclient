@@ -21,10 +21,10 @@ var _ MappedNullable = &DatastoreSummary{}
 // DatastoreSummary struct for DatastoreSummary
 type DatastoreSummary struct {
 	Capacity *int64 `json:"capacity,omitempty"`
-	Datastore *string `json:"datastore,omitempty"`
+	Datastore NullableString `json:"datastore,omitempty"`
 	FreeSpace *int64 `json:"freeSpace,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Type NullableString `json:"type,omitempty"`
 }
 
 // NewDatastoreSummary instantiates a new DatastoreSummary object
@@ -76,36 +76,46 @@ func (o *DatastoreSummary) SetCapacity(v int64) {
 	o.Capacity = &v
 }
 
-// GetDatastore returns the Datastore field value if set, zero value otherwise.
+// GetDatastore returns the Datastore field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DatastoreSummary) GetDatastore() string {
-	if o == nil || IsNil(o.Datastore) {
+	if o == nil || IsNil(o.Datastore.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Datastore
+	return *o.Datastore.Get()
 }
 
 // GetDatastoreOk returns a tuple with the Datastore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DatastoreSummary) GetDatastoreOk() (*string, bool) {
-	if o == nil || IsNil(o.Datastore) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Datastore, true
+	return o.Datastore.Get(), o.Datastore.IsSet()
 }
 
 // HasDatastore returns a boolean if a field has been set.
 func (o *DatastoreSummary) HasDatastore() bool {
-	if o != nil && !IsNil(o.Datastore) {
+	if o != nil && o.Datastore.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDatastore gets a reference to the given string and assigns it to the Datastore field.
+// SetDatastore gets a reference to the given NullableString and assigns it to the Datastore field.
 func (o *DatastoreSummary) SetDatastore(v string) {
-	o.Datastore = &v
+	o.Datastore.Set(&v)
+}
+// SetDatastoreNil sets the value for Datastore to be an explicit nil
+func (o *DatastoreSummary) SetDatastoreNil() {
+	o.Datastore.Set(nil)
+}
+
+// UnsetDatastore ensures that no value is present for Datastore, not even an explicit nil
+func (o *DatastoreSummary) UnsetDatastore() {
+	o.Datastore.Unset()
 }
 
 // GetFreeSpace returns the FreeSpace field value if set, zero value otherwise.
@@ -140,68 +150,88 @@ func (o *DatastoreSummary) SetFreeSpace(v int64) {
 	o.FreeSpace = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DatastoreSummary) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DatastoreSummary) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *DatastoreSummary) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *DatastoreSummary) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *DatastoreSummary) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *DatastoreSummary) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DatastoreSummary) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DatastoreSummary) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *DatastoreSummary) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
+	if o != nil && o.Type.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
 func (o *DatastoreSummary) SetType(v string) {
-	o.Type = &v
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *DatastoreSummary) SetTypeNil() {
+	o.Type.Set(nil)
+}
+
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *DatastoreSummary) UnsetType() {
+	o.Type.Unset()
 }
 
 func (o DatastoreSummary) MarshalJSON() ([]byte, error) {
@@ -217,17 +247,17 @@ func (o DatastoreSummary) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Capacity) {
 		toSerialize["capacity"] = o.Capacity
 	}
-	if !IsNil(o.Datastore) {
-		toSerialize["datastore"] = o.Datastore
+	if o.Datastore.IsSet() {
+		toSerialize["datastore"] = o.Datastore.Get()
 	}
 	if !IsNil(o.FreeSpace) {
 		toSerialize["freeSpace"] = o.FreeSpace
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
 	return toSerialize, nil
 }

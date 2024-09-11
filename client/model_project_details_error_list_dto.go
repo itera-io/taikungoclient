@@ -74,9 +74,9 @@ func (o *ProjectDetailsErrorListDto) SetType(v ProjectDetailsErrorType) {
 	o.Type = &v
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise.
+// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectDetailsErrorListDto) GetMessage() []string {
-	if o == nil || IsNil(o.Message) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -85,6 +85,7 @@ func (o *ProjectDetailsErrorListDto) GetMessage() []string {
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsErrorListDto) GetMessageOk() ([]string, bool) {
 	if o == nil || IsNil(o.Message) {
 		return nil, false
@@ -151,7 +152,7 @@ func (o ProjectDetailsErrorListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if !IsNil(o.Message) {
+	if o.Message != nil {
 		toSerialize["message"] = o.Message
 	}
 	if !IsNil(o.Kind) {

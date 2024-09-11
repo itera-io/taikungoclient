@@ -21,7 +21,7 @@ var _ MappedNullable = &DeploymentCompletedCommand{}
 // DeploymentCompletedCommand struct for DeploymentCompletedCommand
 type DeploymentCompletedCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	Result *string `json:"result,omitempty"`
+	Result NullableString `json:"result,omitempty"`
 	FromCronJob *bool `json:"fromCronJob,omitempty"`
 }
 
@@ -74,36 +74,46 @@ func (o *DeploymentCompletedCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetResult returns the Result field value if set, zero value otherwise.
+// GetResult returns the Result field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentCompletedCommand) GetResult() string {
-	if o == nil || IsNil(o.Result) {
+	if o == nil || IsNil(o.Result.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Result
+	return *o.Result.Get()
 }
 
 // GetResultOk returns a tuple with the Result field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeploymentCompletedCommand) GetResultOk() (*string, bool) {
-	if o == nil || IsNil(o.Result) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Result, true
+	return o.Result.Get(), o.Result.IsSet()
 }
 
 // HasResult returns a boolean if a field has been set.
 func (o *DeploymentCompletedCommand) HasResult() bool {
-	if o != nil && !IsNil(o.Result) {
+	if o != nil && o.Result.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetResult gets a reference to the given string and assigns it to the Result field.
+// SetResult gets a reference to the given NullableString and assigns it to the Result field.
 func (o *DeploymentCompletedCommand) SetResult(v string) {
-	o.Result = &v
+	o.Result.Set(&v)
+}
+// SetResultNil sets the value for Result to be an explicit nil
+func (o *DeploymentCompletedCommand) SetResultNil() {
+	o.Result.Set(nil)
+}
+
+// UnsetResult ensures that no value is present for Result, not even an explicit nil
+func (o *DeploymentCompletedCommand) UnsetResult() {
+	o.Result.Unset()
 }
 
 // GetFromCronJob returns the FromCronJob field value if set, zero value otherwise.
@@ -151,8 +161,8 @@ func (o DeploymentCompletedCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.Result) {
-		toSerialize["result"] = o.Result
+	if o.Result.IsSet() {
+		toSerialize["result"] = o.Result.Get()
 	}
 	if !IsNil(o.FromCronJob) {
 		toSerialize["fromCronJob"] = o.FromCronJob

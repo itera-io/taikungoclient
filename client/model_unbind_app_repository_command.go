@@ -40,9 +40,9 @@ func NewUnbindAppRepositoryCommandWithDefaults() *UnbindAppRepositoryCommand {
 	return &this
 }
 
-// GetIds returns the Ids field value if set, zero value otherwise.
+// GetIds returns the Ids field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UnbindAppRepositoryCommand) GetIds() []string {
-	if o == nil || IsNil(o.Ids) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -51,6 +51,7 @@ func (o *UnbindAppRepositoryCommand) GetIds() []string {
 
 // GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UnbindAppRepositoryCommand) GetIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Ids) {
 		return nil, false
@@ -82,7 +83,7 @@ func (o UnbindAppRepositoryCommand) MarshalJSON() ([]byte, error) {
 
 func (o UnbindAppRepositoryCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ids) {
+	if o.Ids != nil {
 		toSerialize["ids"] = o.Ids
 	}
 	return toSerialize, nil

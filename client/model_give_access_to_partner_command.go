@@ -20,7 +20,7 @@ var _ MappedNullable = &GiveAccessToPartnerCommand{}
 
 // GiveAccessToPartnerCommand struct for GiveAccessToPartnerCommand
 type GiveAccessToPartnerCommand struct {
-	Mode *string `json:"mode,omitempty"`
+	Mode NullableString `json:"mode,omitempty"`
 }
 
 // NewGiveAccessToPartnerCommand instantiates a new GiveAccessToPartnerCommand object
@@ -40,36 +40,46 @@ func NewGiveAccessToPartnerCommandWithDefaults() *GiveAccessToPartnerCommand {
 	return &this
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise.
+// GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GiveAccessToPartnerCommand) GetMode() string {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil || IsNil(o.Mode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Mode
+	return *o.Mode.Get()
 }
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GiveAccessToPartnerCommand) GetModeOk() (*string, bool) {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Mode, true
+	return o.Mode.Get(), o.Mode.IsSet()
 }
 
 // HasMode returns a boolean if a field has been set.
 func (o *GiveAccessToPartnerCommand) HasMode() bool {
-	if o != nil && !IsNil(o.Mode) {
+	if o != nil && o.Mode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMode gets a reference to the given string and assigns it to the Mode field.
+// SetMode gets a reference to the given NullableString and assigns it to the Mode field.
 func (o *GiveAccessToPartnerCommand) SetMode(v string) {
-	o.Mode = &v
+	o.Mode.Set(&v)
+}
+// SetModeNil sets the value for Mode to be an explicit nil
+func (o *GiveAccessToPartnerCommand) SetModeNil() {
+	o.Mode.Set(nil)
+}
+
+// UnsetMode ensures that no value is present for Mode, not even an explicit nil
+func (o *GiveAccessToPartnerCommand) UnsetMode() {
+	o.Mode.Unset()
 }
 
 func (o GiveAccessToPartnerCommand) MarshalJSON() ([]byte, error) {
@@ -82,8 +92,8 @@ func (o GiveAccessToPartnerCommand) MarshalJSON() ([]byte, error) {
 
 func (o GiveAccessToPartnerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Mode) {
-		toSerialize["mode"] = o.Mode
+	if o.Mode.IsSet() {
+		toSerialize["mode"] = o.Mode.Get()
 	}
 	return toSerialize, nil
 }

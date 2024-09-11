@@ -72,9 +72,6 @@ func (a *AlertingIntegrationsAPIService) AlertingintegrationsCreateExecute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createAlertingIntegrationCommand == nil {
-		return localVarReturnValue, nil, reportError("createAlertingIntegrationCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -404,9 +401,6 @@ func (a *AlertingIntegrationsAPIService) AlertingintegrationsEditExecute(r ApiAl
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.editAlertingIntegrationCommand == nil {
-		return nil, reportError("editAlertingIntegrationCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -575,11 +569,10 @@ func (a *AlertingIntegrationsAPIService) AlertingintegrationsListExecute(r ApiAl
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -705,12 +698,22 @@ func (a *AlertingIntegrationsAPIService) AlertingintegrationsListExecute(r ApiAl
 type ApiDocumentationListRequest struct {
 	ctx context.Context
 	ApiService *AlertingIntegrationsAPIService
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	key *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiDocumentationListRequest) Limit(limit int32) ApiDocumentationListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiDocumentationListRequest) Offset(offset int32) ApiDocumentationListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiDocumentationListRequest) SortBy(sortBy string) ApiDocumentationListRequest {
@@ -730,16 +733,6 @@ func (r ApiDocumentationListRequest) Search(search string) ApiDocumentationListR
 
 func (r ApiDocumentationListRequest) Key(key string) ApiDocumentationListRequest {
 	r.key = &key
-	return r
-}
-
-func (r ApiDocumentationListRequest) Limit(limit int32) ApiDocumentationListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiDocumentationListRequest) Offset(offset int32) ApiDocumentationListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -780,18 +773,6 @@ func (a *AlertingIntegrationsAPIService) DocumentationListExecute(r ApiDocumenta
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.key == nil {
-		return localVarReturnValue, nil, reportError("key is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -799,10 +780,18 @@ func (a *AlertingIntegrationsAPIService) DocumentationListExecute(r ApiDocumenta
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Key", r.key, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.key != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Key", r.key, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

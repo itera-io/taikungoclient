@@ -72,9 +72,6 @@ func (a *DnsServersAPIService) DnsserversCreateExecute(r ApiDnsserversCreateRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createDnsServerCommand == nil {
-		return localVarReturnValue, nil, reportError("createDnsServerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -408,9 +405,6 @@ func (a *DnsServersAPIService) DnsserversEditExecute(r ApiDnsserversEditRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.dnsNtpAddressEditDto == nil {
-		return nil, reportError("dnsNtpAddressEditDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -579,11 +573,10 @@ func (a *DnsServersAPIService) DnsserversListExecute(r ApiDnsserversListRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

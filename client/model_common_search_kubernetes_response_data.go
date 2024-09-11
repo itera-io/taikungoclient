@@ -20,12 +20,12 @@ var _ MappedNullable = &CommonSearchKubernetesResponseData{}
 
 // CommonSearchKubernetesResponseData struct for CommonSearchKubernetesResponseData
 type CommonSearchKubernetesResponseData struct {
-	MetadataName *string `json:"metadataName,omitempty"`
-	Namespace *string `json:"namespace,omitempty"`
+	MetadataName NullableString `json:"metadataName,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
-	ProjectName *string `json:"projectName,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName *string `json:"organizationName,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
 }
 
 // NewCommonSearchKubernetesResponseData instantiates a new CommonSearchKubernetesResponseData object
@@ -45,68 +45,88 @@ func NewCommonSearchKubernetesResponseDataWithDefaults() *CommonSearchKubernetes
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise.
+// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CommonSearchKubernetesResponseData) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName) {
+	if o == nil || IsNil(o.MetadataName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName
+	return *o.MetadataName.Get()
 }
 
 // GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CommonSearchKubernetesResponseData) GetMetadataNameOk() (*string, bool) {
-	if o == nil || IsNil(o.MetadataName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetadataName, true
+	return o.MetadataName.Get(), o.MetadataName.IsSet()
 }
 
 // HasMetadataName returns a boolean if a field has been set.
 func (o *CommonSearchKubernetesResponseData) HasMetadataName() bool {
-	if o != nil && !IsNil(o.MetadataName) {
+	if o != nil && o.MetadataName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMetadataName gets a reference to the given string and assigns it to the MetadataName field.
+// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
 func (o *CommonSearchKubernetesResponseData) SetMetadataName(v string) {
-	o.MetadataName = &v
+	o.MetadataName.Set(&v)
+}
+// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
+func (o *CommonSearchKubernetesResponseData) SetMetadataNameNil() {
+	o.MetadataName.Set(nil)
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
+// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
+func (o *CommonSearchKubernetesResponseData) UnsetMetadataName() {
+	o.MetadataName.Unset()
+}
+
+// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CommonSearchKubernetesResponseData) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil || IsNil(o.Namespace.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace
+	return *o.Namespace.Get()
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CommonSearchKubernetesResponseData) GetNamespaceOk() (*string, bool) {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Namespace, true
+	return o.Namespace.Get(), o.Namespace.IsSet()
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *CommonSearchKubernetesResponseData) HasNamespace() bool {
-	if o != nil && !IsNil(o.Namespace) {
+	if o != nil && o.Namespace.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
 func (o *CommonSearchKubernetesResponseData) SetNamespace(v string) {
-	o.Namespace = &v
+	o.Namespace.Set(&v)
+}
+// SetNamespaceNil sets the value for Namespace to be an explicit nil
+func (o *CommonSearchKubernetesResponseData) SetNamespaceNil() {
+	o.Namespace.Set(nil)
+}
+
+// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
+func (o *CommonSearchKubernetesResponseData) UnsetNamespace() {
+	o.Namespace.Unset()
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
@@ -141,36 +161,46 @@ func (o *CommonSearchKubernetesResponseData) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetProjectName returns the ProjectName field value if set, zero value otherwise.
+// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CommonSearchKubernetesResponseData) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName) {
+	if o == nil || IsNil(o.ProjectName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName
+	return *o.ProjectName.Get()
 }
 
 // GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CommonSearchKubernetesResponseData) GetProjectNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ProjectName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName, true
+	return o.ProjectName.Get(), o.ProjectName.IsSet()
 }
 
 // HasProjectName returns a boolean if a field has been set.
 func (o *CommonSearchKubernetesResponseData) HasProjectName() bool {
-	if o != nil && !IsNil(o.ProjectName) {
+	if o != nil && o.ProjectName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
+// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
 func (o *CommonSearchKubernetesResponseData) SetProjectName(v string) {
-	o.ProjectName = &v
+	o.ProjectName.Set(&v)
+}
+// SetProjectNameNil sets the value for ProjectName to be an explicit nil
+func (o *CommonSearchKubernetesResponseData) SetProjectNameNil() {
+	o.ProjectName.Set(nil)
+}
+
+// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
+func (o *CommonSearchKubernetesResponseData) UnsetProjectName() {
+	o.ProjectName.Unset()
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
@@ -205,36 +235,46 @@ func (o *CommonSearchKubernetesResponseData) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CommonSearchKubernetesResponseData) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil || IsNil(o.OrganizationName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName
+	return *o.OrganizationName.Get()
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CommonSearchKubernetesResponseData) GetOrganizationNameOk() (*string, bool) {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName, true
+	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *CommonSearchKubernetesResponseData) HasOrganizationName() bool {
-	if o != nil && !IsNil(o.OrganizationName) {
+	if o != nil && o.OrganizationName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
 func (o *CommonSearchKubernetesResponseData) SetOrganizationName(v string) {
-	o.OrganizationName = &v
+	o.OrganizationName.Set(&v)
+}
+// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
+func (o *CommonSearchKubernetesResponseData) SetOrganizationNameNil() {
+	o.OrganizationName.Set(nil)
+}
+
+// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
+func (o *CommonSearchKubernetesResponseData) UnsetOrganizationName() {
+	o.OrganizationName.Unset()
 }
 
 func (o CommonSearchKubernetesResponseData) MarshalJSON() ([]byte, error) {
@@ -247,23 +287,23 @@ func (o CommonSearchKubernetesResponseData) MarshalJSON() ([]byte, error) {
 
 func (o CommonSearchKubernetesResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MetadataName) {
-		toSerialize["metadataName"] = o.MetadataName
+	if o.MetadataName.IsSet() {
+		toSerialize["metadataName"] = o.MetadataName.Get()
 	}
-	if !IsNil(o.Namespace) {
-		toSerialize["namespace"] = o.Namespace
+	if o.Namespace.IsSet() {
+		toSerialize["namespace"] = o.Namespace.Get()
 	}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.ProjectName) {
-		toSerialize["projectName"] = o.ProjectName
+	if o.ProjectName.IsSet() {
+		toSerialize["projectName"] = o.ProjectName.Get()
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if !IsNil(o.OrganizationName) {
-		toSerialize["organizationName"] = o.OrganizationName
+	if o.OrganizationName.IsSet() {
+		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
 	return toSerialize, nil
 }

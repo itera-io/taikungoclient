@@ -73,9 +73,9 @@ func (o *UnbindProjectGroupFromUserGroupCommand) SetUserGroupId(v int32) {
 	o.UserGroupId = &v
 }
 
-// GetProjectGroupIds returns the ProjectGroupIds field value if set, zero value otherwise.
+// GetProjectGroupIds returns the ProjectGroupIds field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UnbindProjectGroupFromUserGroupCommand) GetProjectGroupIds() []int32 {
-	if o == nil || IsNil(o.ProjectGroupIds) {
+	if o == nil {
 		var ret []int32
 		return ret
 	}
@@ -84,6 +84,7 @@ func (o *UnbindProjectGroupFromUserGroupCommand) GetProjectGroupIds() []int32 {
 
 // GetProjectGroupIdsOk returns a tuple with the ProjectGroupIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UnbindProjectGroupFromUserGroupCommand) GetProjectGroupIdsOk() ([]int32, bool) {
 	if o == nil || IsNil(o.ProjectGroupIds) {
 		return nil, false
@@ -118,7 +119,7 @@ func (o UnbindProjectGroupFromUserGroupCommand) ToMap() (map[string]interface{},
 	if !IsNil(o.UserGroupId) {
 		toSerialize["userGroupId"] = o.UserGroupId
 	}
-	if !IsNil(o.ProjectGroupIds) {
+	if o.ProjectGroupIds != nil {
 		toSerialize["projectGroupIds"] = o.ProjectGroupIds
 	}
 	return toSerialize, nil

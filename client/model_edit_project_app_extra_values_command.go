@@ -21,7 +21,7 @@ var _ MappedNullable = &EditProjectAppExtraValuesCommand{}
 // EditProjectAppExtraValuesCommand struct for EditProjectAppExtraValuesCommand
 type EditProjectAppExtraValuesCommand struct {
 	ProjectAppId *int32 `json:"projectAppId,omitempty"`
-	ExtraValues *string `json:"extraValues,omitempty"`
+	ExtraValues NullableString `json:"extraValues,omitempty"`
 }
 
 // NewEditProjectAppExtraValuesCommand instantiates a new EditProjectAppExtraValuesCommand object
@@ -73,36 +73,46 @@ func (o *EditProjectAppExtraValuesCommand) SetProjectAppId(v int32) {
 	o.ProjectAppId = &v
 }
 
-// GetExtraValues returns the ExtraValues field value if set, zero value otherwise.
+// GetExtraValues returns the ExtraValues field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EditProjectAppExtraValuesCommand) GetExtraValues() string {
-	if o == nil || IsNil(o.ExtraValues) {
+	if o == nil || IsNil(o.ExtraValues.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ExtraValues
+	return *o.ExtraValues.Get()
 }
 
 // GetExtraValuesOk returns a tuple with the ExtraValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditProjectAppExtraValuesCommand) GetExtraValuesOk() (*string, bool) {
-	if o == nil || IsNil(o.ExtraValues) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExtraValues, true
+	return o.ExtraValues.Get(), o.ExtraValues.IsSet()
 }
 
 // HasExtraValues returns a boolean if a field has been set.
 func (o *EditProjectAppExtraValuesCommand) HasExtraValues() bool {
-	if o != nil && !IsNil(o.ExtraValues) {
+	if o != nil && o.ExtraValues.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetExtraValues gets a reference to the given string and assigns it to the ExtraValues field.
+// SetExtraValues gets a reference to the given NullableString and assigns it to the ExtraValues field.
 func (o *EditProjectAppExtraValuesCommand) SetExtraValues(v string) {
-	o.ExtraValues = &v
+	o.ExtraValues.Set(&v)
+}
+// SetExtraValuesNil sets the value for ExtraValues to be an explicit nil
+func (o *EditProjectAppExtraValuesCommand) SetExtraValuesNil() {
+	o.ExtraValues.Set(nil)
+}
+
+// UnsetExtraValues ensures that no value is present for ExtraValues, not even an explicit nil
+func (o *EditProjectAppExtraValuesCommand) UnsetExtraValues() {
+	o.ExtraValues.Unset()
 }
 
 func (o EditProjectAppExtraValuesCommand) MarshalJSON() ([]byte, error) {
@@ -118,8 +128,8 @@ func (o EditProjectAppExtraValuesCommand) ToMap() (map[string]interface{}, error
 	if !IsNil(o.ProjectAppId) {
 		toSerialize["projectAppId"] = o.ProjectAppId
 	}
-	if !IsNil(o.ExtraValues) {
-		toSerialize["extraValues"] = o.ExtraValues
+	if o.ExtraValues.IsSet() {
+		toSerialize["extraValues"] = o.ExtraValues.Get()
 	}
 	return toSerialize, nil
 }

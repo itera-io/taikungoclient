@@ -20,8 +20,8 @@ var _ MappedNullable = &CreateSshUserCommand{}
 
 // CreateSshUserCommand struct for CreateSshUserCommand
 type CreateSshUserCommand struct {
-	Name *string `json:"name,omitempty"`
-	SshPublicKey *string `json:"sshPublicKey,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
 	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
 }
 
@@ -42,68 +42,88 @@ func NewCreateSshUserCommandWithDefaults() *CreateSshUserCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSshUserCommand) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSshUserCommand) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateSshUserCommand) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CreateSshUserCommand) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CreateSshUserCommand) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetSshPublicKey returns the SshPublicKey field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CreateSshUserCommand) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetSshPublicKey returns the SshPublicKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSshUserCommand) GetSshPublicKey() string {
-	if o == nil || IsNil(o.SshPublicKey) {
+	if o == nil || IsNil(o.SshPublicKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SshPublicKey
+	return *o.SshPublicKey.Get()
 }
 
 // GetSshPublicKeyOk returns a tuple with the SshPublicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSshUserCommand) GetSshPublicKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.SshPublicKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SshPublicKey, true
+	return o.SshPublicKey.Get(), o.SshPublicKey.IsSet()
 }
 
 // HasSshPublicKey returns a boolean if a field has been set.
 func (o *CreateSshUserCommand) HasSshPublicKey() bool {
-	if o != nil && !IsNil(o.SshPublicKey) {
+	if o != nil && o.SshPublicKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSshPublicKey gets a reference to the given string and assigns it to the SshPublicKey field.
+// SetSshPublicKey gets a reference to the given NullableString and assigns it to the SshPublicKey field.
 func (o *CreateSshUserCommand) SetSshPublicKey(v string) {
-	o.SshPublicKey = &v
+	o.SshPublicKey.Set(&v)
+}
+// SetSshPublicKeyNil sets the value for SshPublicKey to be an explicit nil
+func (o *CreateSshUserCommand) SetSshPublicKeyNil() {
+	o.SshPublicKey.Set(nil)
+}
+
+// UnsetSshPublicKey ensures that no value is present for SshPublicKey, not even an explicit nil
+func (o *CreateSshUserCommand) UnsetSshPublicKey() {
+	o.SshPublicKey.Unset()
 }
 
 // GetAccessProfileId returns the AccessProfileId field value if set, zero value otherwise.
@@ -148,11 +168,11 @@ func (o CreateSshUserCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateSshUserCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.SshPublicKey) {
-		toSerialize["sshPublicKey"] = o.SshPublicKey
+	if o.SshPublicKey.IsSet() {
+		toSerialize["sshPublicKey"] = o.SshPublicKey.Get()
 	}
 	if !IsNil(o.AccessProfileId) {
 		toSerialize["accessProfileId"] = o.AccessProfileId

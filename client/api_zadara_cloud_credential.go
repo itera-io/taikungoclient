@@ -71,9 +71,6 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraCreateExecute(r ApiZadaraCreateR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createZadaraCloudCommand == nil {
-		return localVarReturnValue, nil, reportError("createZadaraCloudCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -202,14 +199,19 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraCreateExecute(r ApiZadaraCreateR
 type ApiZadaraListRequest struct {
 	ctx context.Context
 	ApiService *ZadaraCloudCredentialAPIService
+	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
-	organizationId *int32
 	id *int32
 	limit *int32
 	offset *int32
+}
+
+func (r ApiZadaraListRequest) OrganizationId(organizationId int32) ApiZadaraListRequest {
+	r.organizationId = &organizationId
+	return r
 }
 
 func (r ApiZadaraListRequest) SortBy(sortBy string) ApiZadaraListRequest {
@@ -229,11 +231,6 @@ func (r ApiZadaraListRequest) Search(search string) ApiZadaraListRequest {
 
 func (r ApiZadaraListRequest) SearchId(searchId string) ApiZadaraListRequest {
 	r.searchId = &searchId
-	return r
-}
-
-func (r ApiZadaraListRequest) OrganizationId(organizationId int32) ApiZadaraListRequest {
-	r.organizationId = &organizationId
 	return r
 }
 
@@ -293,26 +290,22 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraListExecute(r ApiZadaraListReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
@@ -498,9 +491,6 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraRegionlistExecute(r ApiZadaraReg
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.zadaraRegionListCommand == nil {
-		return localVarReturnValue, nil, reportError("zadaraRegionListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -672,9 +662,6 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraUpdateExecute(r ApiZadaraUpdateR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateZadaraCommand == nil {
-		return nil, reportError("updateZadaraCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1004,9 +991,6 @@ func (a *ZadaraCloudCredentialAPIService) ZadaraZonelistExecute(r ApiZadaraZonel
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.zadaraAvailabilityZonesCommand == nil {
-		return localVarReturnValue, nil, reportError("zadaraAvailabilityZonesCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

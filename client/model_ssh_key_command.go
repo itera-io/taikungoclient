@@ -20,7 +20,7 @@ var _ MappedNullable = &SshKeyCommand{}
 
 // SshKeyCommand struct for SshKeyCommand
 type SshKeyCommand struct {
-	SshPublicKey *string `json:"sshPublicKey,omitempty"`
+	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
 }
 
 // NewSshKeyCommand instantiates a new SshKeyCommand object
@@ -40,36 +40,46 @@ func NewSshKeyCommandWithDefaults() *SshKeyCommand {
 	return &this
 }
 
-// GetSshPublicKey returns the SshPublicKey field value if set, zero value otherwise.
+// GetSshPublicKey returns the SshPublicKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SshKeyCommand) GetSshPublicKey() string {
-	if o == nil || IsNil(o.SshPublicKey) {
+	if o == nil || IsNil(o.SshPublicKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SshPublicKey
+	return *o.SshPublicKey.Get()
 }
 
 // GetSshPublicKeyOk returns a tuple with the SshPublicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SshKeyCommand) GetSshPublicKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.SshPublicKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SshPublicKey, true
+	return o.SshPublicKey.Get(), o.SshPublicKey.IsSet()
 }
 
 // HasSshPublicKey returns a boolean if a field has been set.
 func (o *SshKeyCommand) HasSshPublicKey() bool {
-	if o != nil && !IsNil(o.SshPublicKey) {
+	if o != nil && o.SshPublicKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSshPublicKey gets a reference to the given string and assigns it to the SshPublicKey field.
+// SetSshPublicKey gets a reference to the given NullableString and assigns it to the SshPublicKey field.
 func (o *SshKeyCommand) SetSshPublicKey(v string) {
-	o.SshPublicKey = &v
+	o.SshPublicKey.Set(&v)
+}
+// SetSshPublicKeyNil sets the value for SshPublicKey to be an explicit nil
+func (o *SshKeyCommand) SetSshPublicKeyNil() {
+	o.SshPublicKey.Set(nil)
+}
+
+// UnsetSshPublicKey ensures that no value is present for SshPublicKey, not even an explicit nil
+func (o *SshKeyCommand) UnsetSshPublicKey() {
+	o.SshPublicKey.Unset()
 }
 
 func (o SshKeyCommand) MarshalJSON() ([]byte, error) {
@@ -82,8 +92,8 @@ func (o SshKeyCommand) MarshalJSON() ([]byte, error) {
 
 func (o SshKeyCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.SshPublicKey) {
-		toSerialize["sshPublicKey"] = o.SshPublicKey
+	if o.SshPublicKey.IsSet() {
+		toSerialize["sshPublicKey"] = o.SshPublicKey.Get()
 	}
 	return toSerialize, nil
 }

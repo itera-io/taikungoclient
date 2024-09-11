@@ -41,9 +41,9 @@ func NewConfigMapsWithDefaults() *ConfigMaps {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise.
+// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConfigMaps) GetData() []ConfigMapDto {
-	if o == nil || IsNil(o.Data) {
+	if o == nil {
 		var ret []ConfigMapDto
 		return ret
 	}
@@ -52,6 +52,7 @@ func (o *ConfigMaps) GetData() []ConfigMapDto {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConfigMaps) GetDataOk() ([]ConfigMapDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
@@ -115,7 +116,7 @@ func (o ConfigMaps) MarshalJSON() ([]byte, error) {
 
 func (o ConfigMaps) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Data) {
+	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
 	if !IsNil(o.TotalCount) {

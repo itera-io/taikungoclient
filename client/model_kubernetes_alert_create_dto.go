@@ -21,12 +21,12 @@ var _ MappedNullable = &KubernetesAlertCreateDto{}
 
 // KubernetesAlertCreateDto struct for KubernetesAlertCreateDto
 type KubernetesAlertCreateDto struct {
-	Status *string `json:"status,omitempty"`
+	Status NullableString `json:"status,omitempty"`
 	Labels interface{} `json:"labels,omitempty"`
 	Annotations *KubernetesAnnotations `json:"annotations,omitempty"`
 	StartsAt *time.Time `json:"startsAt,omitempty"`
 	EndsAt *time.Time `json:"endsAt,omitempty"`
-	Fingerprint *string `json:"fingerprint,omitempty"`
+	Fingerprint NullableString `json:"fingerprint,omitempty"`
 }
 
 // NewKubernetesAlertCreateDto instantiates a new KubernetesAlertCreateDto object
@@ -46,36 +46,46 @@ func NewKubernetesAlertCreateDtoWithDefaults() *KubernetesAlertCreateDto {
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesAlertCreateDto) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Status
+	return *o.Status.Get()
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertCreateDto) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.Status.Get(), o.Status.IsSet()
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *KubernetesAlertCreateDto) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
+	if o != nil && o.Status.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
 func (o *KubernetesAlertCreateDto) SetStatus(v string) {
-	o.Status = &v
+	o.Status.Set(&v)
+}
+// SetStatusNil sets the value for Status to be an explicit nil
+func (o *KubernetesAlertCreateDto) SetStatusNil() {
+	o.Status.Set(nil)
+}
+
+// UnsetStatus ensures that no value is present for Status, not even an explicit nil
+func (o *KubernetesAlertCreateDto) UnsetStatus() {
+	o.Status.Unset()
 }
 
 // GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -207,36 +217,46 @@ func (o *KubernetesAlertCreateDto) SetEndsAt(v time.Time) {
 	o.EndsAt = &v
 }
 
-// GetFingerprint returns the Fingerprint field value if set, zero value otherwise.
+// GetFingerprint returns the Fingerprint field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesAlertCreateDto) GetFingerprint() string {
-	if o == nil || IsNil(o.Fingerprint) {
+	if o == nil || IsNil(o.Fingerprint.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Fingerprint
+	return *o.Fingerprint.Get()
 }
 
 // GetFingerprintOk returns a tuple with the Fingerprint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertCreateDto) GetFingerprintOk() (*string, bool) {
-	if o == nil || IsNil(o.Fingerprint) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Fingerprint, true
+	return o.Fingerprint.Get(), o.Fingerprint.IsSet()
 }
 
 // HasFingerprint returns a boolean if a field has been set.
 func (o *KubernetesAlertCreateDto) HasFingerprint() bool {
-	if o != nil && !IsNil(o.Fingerprint) {
+	if o != nil && o.Fingerprint.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFingerprint gets a reference to the given string and assigns it to the Fingerprint field.
+// SetFingerprint gets a reference to the given NullableString and assigns it to the Fingerprint field.
 func (o *KubernetesAlertCreateDto) SetFingerprint(v string) {
-	o.Fingerprint = &v
+	o.Fingerprint.Set(&v)
+}
+// SetFingerprintNil sets the value for Fingerprint to be an explicit nil
+func (o *KubernetesAlertCreateDto) SetFingerprintNil() {
+	o.Fingerprint.Set(nil)
+}
+
+// UnsetFingerprint ensures that no value is present for Fingerprint, not even an explicit nil
+func (o *KubernetesAlertCreateDto) UnsetFingerprint() {
+	o.Fingerprint.Unset()
 }
 
 func (o KubernetesAlertCreateDto) MarshalJSON() ([]byte, error) {
@@ -249,8 +269,8 @@ func (o KubernetesAlertCreateDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesAlertCreateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if o.Status.IsSet() {
+		toSerialize["status"] = o.Status.Get()
 	}
 	if o.Labels != nil {
 		toSerialize["labels"] = o.Labels
@@ -264,8 +284,8 @@ func (o KubernetesAlertCreateDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EndsAt) {
 		toSerialize["endsAt"] = o.EndsAt
 	}
-	if !IsNil(o.Fingerprint) {
-		toSerialize["fingerprint"] = o.Fingerprint
+	if o.Fingerprint.IsSet() {
+		toSerialize["fingerprint"] = o.Fingerprint.Get()
 	}
 	return toSerialize, nil
 }

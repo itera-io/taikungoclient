@@ -28,30 +28,15 @@ type ApiFlavorsAwsInstanceTypesRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
 	cloudId int32
-	search *string
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
 	startRam *float64
 	endRam *float64
 	startCpu *int32
 	endCpu *int32
-}
-
-func (r ApiFlavorsAwsInstanceTypesRequest) Search(search string) ApiFlavorsAwsInstanceTypesRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiFlavorsAwsInstanceTypesRequest) SortBy(sortBy string) ApiFlavorsAwsInstanceTypesRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiFlavorsAwsInstanceTypesRequest) SortDirection(sortDirection string) ApiFlavorsAwsInstanceTypesRequest {
-	r.sortDirection = &sortDirection
-	return r
+	search *string
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiFlavorsAwsInstanceTypesRequest) Limit(limit int32) ApiFlavorsAwsInstanceTypesRequest {
@@ -81,6 +66,21 @@ func (r ApiFlavorsAwsInstanceTypesRequest) StartCpu(startCpu int32) ApiFlavorsAw
 
 func (r ApiFlavorsAwsInstanceTypesRequest) EndCpu(endCpu int32) ApiFlavorsAwsInstanceTypesRequest {
 	r.endCpu = &endCpu
+	return r
+}
+
+func (r ApiFlavorsAwsInstanceTypesRequest) Search(search string) ApiFlavorsAwsInstanceTypesRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiFlavorsAwsInstanceTypesRequest) SortBy(sortBy string) ApiFlavorsAwsInstanceTypesRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiFlavorsAwsInstanceTypesRequest) SortDirection(sortDirection string) ApiFlavorsAwsInstanceTypesRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -124,15 +124,6 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -152,9 +143,15 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 	if r.endCpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -281,30 +278,15 @@ type ApiFlavorsAzureVmSizesRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
 	cloudId int32
-	search *string
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
 	startRam *float64
 	endRam *float64
 	startCpu *int32
 	endCpu *int32
-}
-
-func (r ApiFlavorsAzureVmSizesRequest) Search(search string) ApiFlavorsAzureVmSizesRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiFlavorsAzureVmSizesRequest) SortBy(sortBy string) ApiFlavorsAzureVmSizesRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiFlavorsAzureVmSizesRequest) SortDirection(sortDirection string) ApiFlavorsAzureVmSizesRequest {
-	r.sortDirection = &sortDirection
-	return r
+	search *string
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiFlavorsAzureVmSizesRequest) Limit(limit int32) ApiFlavorsAzureVmSizesRequest {
@@ -334,6 +316,21 @@ func (r ApiFlavorsAzureVmSizesRequest) StartCpu(startCpu int32) ApiFlavorsAzureV
 
 func (r ApiFlavorsAzureVmSizesRequest) EndCpu(endCpu int32) ApiFlavorsAzureVmSizesRequest {
 	r.endCpu = &endCpu
+	return r
+}
+
+func (r ApiFlavorsAzureVmSizesRequest) Search(search string) ApiFlavorsAzureVmSizesRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiFlavorsAzureVmSizesRequest) SortBy(sortBy string) ApiFlavorsAzureVmSizesRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiFlavorsAzureVmSizesRequest) SortDirection(sortDirection string) ApiFlavorsAzureVmSizesRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -377,15 +374,6 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -405,9 +393,15 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 	if r.endCpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -576,9 +570,6 @@ func (a *FlavorsAPIService) FlavorsBindToProjectExecute(r ApiFlavorsBindToProjec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bindFlavorToProjectCommand == nil {
-		return nil, reportError("bindFlavorToProjectCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -698,10 +689,15 @@ func (a *FlavorsAPIService) FlavorsBindToProjectExecute(r ApiFlavorsBindToProjec
 type ApiFlavorsDropdownFlavorsRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
+	organizationId *int32
 	filterBy *string
 	search *string
-	organizationId *int32
 	isInfra *bool
+}
+
+func (r ApiFlavorsDropdownFlavorsRequest) OrganizationId(organizationId int32) ApiFlavorsDropdownFlavorsRequest {
+	r.organizationId = &organizationId
+	return r
 }
 
 func (r ApiFlavorsDropdownFlavorsRequest) FilterBy(filterBy string) ApiFlavorsDropdownFlavorsRequest {
@@ -711,11 +707,6 @@ func (r ApiFlavorsDropdownFlavorsRequest) FilterBy(filterBy string) ApiFlavorsDr
 
 func (r ApiFlavorsDropdownFlavorsRequest) Search(search string) ApiFlavorsDropdownFlavorsRequest {
 	r.search = &search
-	return r
-}
-
-func (r ApiFlavorsDropdownFlavorsRequest) OrganizationId(organizationId int32) ApiFlavorsDropdownFlavorsRequest {
-	r.organizationId = &organizationId
 	return r
 }
 
@@ -761,18 +752,16 @@ func (a *FlavorsAPIService) FlavorsDropdownFlavorsExecute(r ApiFlavorsDropdownFl
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.isInfra != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "form", "")
 	}
@@ -902,30 +891,15 @@ type ApiFlavorsGoogleMachineTypesRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
 	cloudId int32
-	search *string
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
 	startRam *float64
 	endRam *float64
 	startCpu *int32
 	endCpu *int32
-}
-
-func (r ApiFlavorsGoogleMachineTypesRequest) Search(search string) ApiFlavorsGoogleMachineTypesRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiFlavorsGoogleMachineTypesRequest) SortBy(sortBy string) ApiFlavorsGoogleMachineTypesRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiFlavorsGoogleMachineTypesRequest) SortDirection(sortDirection string) ApiFlavorsGoogleMachineTypesRequest {
-	r.sortDirection = &sortDirection
-	return r
+	search *string
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiFlavorsGoogleMachineTypesRequest) Limit(limit int32) ApiFlavorsGoogleMachineTypesRequest {
@@ -955,6 +929,21 @@ func (r ApiFlavorsGoogleMachineTypesRequest) StartCpu(startCpu int32) ApiFlavors
 
 func (r ApiFlavorsGoogleMachineTypesRequest) EndCpu(endCpu int32) ApiFlavorsGoogleMachineTypesRequest {
 	r.endCpu = &endCpu
+	return r
+}
+
+func (r ApiFlavorsGoogleMachineTypesRequest) Search(search string) ApiFlavorsGoogleMachineTypesRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiFlavorsGoogleMachineTypesRequest) SortBy(sortBy string) ApiFlavorsGoogleMachineTypesRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiFlavorsGoogleMachineTypesRequest) SortDirection(sortDirection string) ApiFlavorsGoogleMachineTypesRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -998,15 +987,6 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -1026,9 +1006,15 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 	if r.endCpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1155,30 +1141,15 @@ type ApiFlavorsOpenshiftFlavorsRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
 	cloudId int32
-	search *string
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
 	startRam *float64
 	endRam *float64
 	startCpu *int32
 	endCpu *int32
-}
-
-func (r ApiFlavorsOpenshiftFlavorsRequest) Search(search string) ApiFlavorsOpenshiftFlavorsRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiFlavorsOpenshiftFlavorsRequest) SortBy(sortBy string) ApiFlavorsOpenshiftFlavorsRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiFlavorsOpenshiftFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsOpenshiftFlavorsRequest {
-	r.sortDirection = &sortDirection
-	return r
+	search *string
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiFlavorsOpenshiftFlavorsRequest) Limit(limit int32) ApiFlavorsOpenshiftFlavorsRequest {
@@ -1208,6 +1179,21 @@ func (r ApiFlavorsOpenshiftFlavorsRequest) StartCpu(startCpu int32) ApiFlavorsOp
 
 func (r ApiFlavorsOpenshiftFlavorsRequest) EndCpu(endCpu int32) ApiFlavorsOpenshiftFlavorsRequest {
 	r.endCpu = &endCpu
+	return r
+}
+
+func (r ApiFlavorsOpenshiftFlavorsRequest) Search(search string) ApiFlavorsOpenshiftFlavorsRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiFlavorsOpenshiftFlavorsRequest) SortBy(sortBy string) ApiFlavorsOpenshiftFlavorsRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiFlavorsOpenshiftFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsOpenshiftFlavorsRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -1251,15 +1237,6 @@ func (a *FlavorsAPIService) FlavorsOpenshiftFlavorsExecute(r ApiFlavorsOpenshift
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -1279,9 +1256,15 @@ func (a *FlavorsAPIService) FlavorsOpenshiftFlavorsExecute(r ApiFlavorsOpenshift
 	if r.endCpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1408,30 +1391,15 @@ type ApiFlavorsOpenstackFlavorsRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
 	cloudId int32
-	search *string
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
 	startRam *float64
 	endRam *float64
 	startCpu *int32
 	endCpu *int32
-}
-
-func (r ApiFlavorsOpenstackFlavorsRequest) Search(search string) ApiFlavorsOpenstackFlavorsRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiFlavorsOpenstackFlavorsRequest) SortBy(sortBy string) ApiFlavorsOpenstackFlavorsRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiFlavorsOpenstackFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsOpenstackFlavorsRequest {
-	r.sortDirection = &sortDirection
-	return r
+	search *string
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiFlavorsOpenstackFlavorsRequest) Limit(limit int32) ApiFlavorsOpenstackFlavorsRequest {
@@ -1461,6 +1429,21 @@ func (r ApiFlavorsOpenstackFlavorsRequest) StartCpu(startCpu int32) ApiFlavorsOp
 
 func (r ApiFlavorsOpenstackFlavorsRequest) EndCpu(endCpu int32) ApiFlavorsOpenstackFlavorsRequest {
 	r.endCpu = &endCpu
+	return r
+}
+
+func (r ApiFlavorsOpenstackFlavorsRequest) Search(search string) ApiFlavorsOpenstackFlavorsRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiFlavorsOpenstackFlavorsRequest) SortBy(sortBy string) ApiFlavorsOpenstackFlavorsRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiFlavorsOpenstackFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsOpenstackFlavorsRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -1504,15 +1487,6 @@ func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstack
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -1532,9 +1506,15 @@ func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstack
 	if r.endCpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1661,30 +1641,15 @@ type ApiFlavorsProxmoxFlavorsRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
 	cloudId int32
-	search *string
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
 	startRam *float64
 	endRam *float64
 	startCpu *int32
 	endCpu *int32
-}
-
-func (r ApiFlavorsProxmoxFlavorsRequest) Search(search string) ApiFlavorsProxmoxFlavorsRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiFlavorsProxmoxFlavorsRequest) SortBy(sortBy string) ApiFlavorsProxmoxFlavorsRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiFlavorsProxmoxFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsProxmoxFlavorsRequest {
-	r.sortDirection = &sortDirection
-	return r
+	search *string
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiFlavorsProxmoxFlavorsRequest) Limit(limit int32) ApiFlavorsProxmoxFlavorsRequest {
@@ -1714,6 +1679,21 @@ func (r ApiFlavorsProxmoxFlavorsRequest) StartCpu(startCpu int32) ApiFlavorsProx
 
 func (r ApiFlavorsProxmoxFlavorsRequest) EndCpu(endCpu int32) ApiFlavorsProxmoxFlavorsRequest {
 	r.endCpu = &endCpu
+	return r
+}
+
+func (r ApiFlavorsProxmoxFlavorsRequest) Search(search string) ApiFlavorsProxmoxFlavorsRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiFlavorsProxmoxFlavorsRequest) SortBy(sortBy string) ApiFlavorsProxmoxFlavorsRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiFlavorsProxmoxFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsProxmoxFlavorsRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -1757,15 +1737,6 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -1785,9 +1756,15 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 	if r.endCpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1913,16 +1890,31 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 type ApiFlavorsSelectedFlavorsForProjectRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
+	limit *int32
+	offset *int32
+	projectId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	filterBy *string
-	flavorName *string
-	limit *int32
-	offset *int32
-	projectId *int32
 	organizationId *int32
+	flavorName *string
 	withPrice *bool
+}
+
+func (r ApiFlavorsSelectedFlavorsForProjectRequest) Limit(limit int32) ApiFlavorsSelectedFlavorsForProjectRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiFlavorsSelectedFlavorsForProjectRequest) Offset(offset int32) ApiFlavorsSelectedFlavorsForProjectRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiFlavorsSelectedFlavorsForProjectRequest) ProjectId(projectId int32) ApiFlavorsSelectedFlavorsForProjectRequest {
+	r.projectId = &projectId
+	return r
 }
 
 func (r ApiFlavorsSelectedFlavorsForProjectRequest) SortBy(sortBy string) ApiFlavorsSelectedFlavorsForProjectRequest {
@@ -1945,28 +1937,13 @@ func (r ApiFlavorsSelectedFlavorsForProjectRequest) FilterBy(filterBy string) Ap
 	return r
 }
 
-func (r ApiFlavorsSelectedFlavorsForProjectRequest) FlavorName(flavorName string) ApiFlavorsSelectedFlavorsForProjectRequest {
-	r.flavorName = &flavorName
-	return r
-}
-
-func (r ApiFlavorsSelectedFlavorsForProjectRequest) Limit(limit int32) ApiFlavorsSelectedFlavorsForProjectRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiFlavorsSelectedFlavorsForProjectRequest) Offset(offset int32) ApiFlavorsSelectedFlavorsForProjectRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiFlavorsSelectedFlavorsForProjectRequest) ProjectId(projectId int32) ApiFlavorsSelectedFlavorsForProjectRequest {
-	r.projectId = &projectId
-	return r
-}
-
 func (r ApiFlavorsSelectedFlavorsForProjectRequest) OrganizationId(organizationId int32) ApiFlavorsSelectedFlavorsForProjectRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiFlavorsSelectedFlavorsForProjectRequest) FlavorName(flavorName string) ApiFlavorsSelectedFlavorsForProjectRequest {
+	r.flavorName = &flavorName
 	return r
 }
 
@@ -2012,21 +1989,6 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
-	if r.flavorName == nil {
-		return localVarReturnValue, nil, reportError("flavorName is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -2037,14 +1999,24 @@ func (a *FlavorsAPIService) FlavorsSelectedFlavorsForProjectExecute(r ApiFlavors
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FlavorName", r.flavorName, "form", "")
+	if r.flavorName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FlavorName", r.flavorName, "form", "")
+	}
 	if r.withPrice != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "WithPrice", r.withPrice, "form", "")
 	}
@@ -2174,30 +2146,15 @@ type ApiFlavorsTanzuFlavorsRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
 	cloudId int32
-	search *string
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
 	startRam *float64
 	endRam *float64
 	startCpu *int32
 	endCpu *int32
-}
-
-func (r ApiFlavorsTanzuFlavorsRequest) Search(search string) ApiFlavorsTanzuFlavorsRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiFlavorsTanzuFlavorsRequest) SortBy(sortBy string) ApiFlavorsTanzuFlavorsRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiFlavorsTanzuFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsTanzuFlavorsRequest {
-	r.sortDirection = &sortDirection
-	return r
+	search *string
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiFlavorsTanzuFlavorsRequest) Limit(limit int32) ApiFlavorsTanzuFlavorsRequest {
@@ -2227,6 +2184,21 @@ func (r ApiFlavorsTanzuFlavorsRequest) StartCpu(startCpu int32) ApiFlavorsTanzuF
 
 func (r ApiFlavorsTanzuFlavorsRequest) EndCpu(endCpu int32) ApiFlavorsTanzuFlavorsRequest {
 	r.endCpu = &endCpu
+	return r
+}
+
+func (r ApiFlavorsTanzuFlavorsRequest) Search(search string) ApiFlavorsTanzuFlavorsRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiFlavorsTanzuFlavorsRequest) SortBy(sortBy string) ApiFlavorsTanzuFlavorsRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiFlavorsTanzuFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsTanzuFlavorsRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -2270,15 +2242,6 @@ func (a *FlavorsAPIService) FlavorsTanzuFlavorsExecute(r ApiFlavorsTanzuFlavorsR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -2298,9 +2261,15 @@ func (a *FlavorsAPIService) FlavorsTanzuFlavorsExecute(r ApiFlavorsTanzuFlavorsR
 	if r.endCpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2592,30 +2561,15 @@ type ApiFlavorsVsphereFlavorsRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
 	cloudId int32
-	search *string
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
 	startRam *float64
 	endRam *float64
 	startCpu *int32
 	endCpu *int32
-}
-
-func (r ApiFlavorsVsphereFlavorsRequest) Search(search string) ApiFlavorsVsphereFlavorsRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiFlavorsVsphereFlavorsRequest) SortBy(sortBy string) ApiFlavorsVsphereFlavorsRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiFlavorsVsphereFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsVsphereFlavorsRequest {
-	r.sortDirection = &sortDirection
-	return r
+	search *string
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiFlavorsVsphereFlavorsRequest) Limit(limit int32) ApiFlavorsVsphereFlavorsRequest {
@@ -2645,6 +2599,21 @@ func (r ApiFlavorsVsphereFlavorsRequest) StartCpu(startCpu int32) ApiFlavorsVsph
 
 func (r ApiFlavorsVsphereFlavorsRequest) EndCpu(endCpu int32) ApiFlavorsVsphereFlavorsRequest {
 	r.endCpu = &endCpu
+	return r
+}
+
+func (r ApiFlavorsVsphereFlavorsRequest) Search(search string) ApiFlavorsVsphereFlavorsRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiFlavorsVsphereFlavorsRequest) SortBy(sortBy string) ApiFlavorsVsphereFlavorsRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiFlavorsVsphereFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsVsphereFlavorsRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -2688,15 +2657,6 @@ func (a *FlavorsAPIService) FlavorsVsphereFlavorsExecute(r ApiFlavorsVsphereFlav
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -2716,9 +2676,15 @@ func (a *FlavorsAPIService) FlavorsVsphereFlavorsExecute(r ApiFlavorsVsphereFlav
 	if r.endCpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2845,30 +2811,15 @@ type ApiFlavorsZadaraInstanceTypesRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
 	cloudId int32
-	search *string
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
 	startRam *float64
 	endRam *float64
 	startCpu *int32
 	endCpu *int32
-}
-
-func (r ApiFlavorsZadaraInstanceTypesRequest) Search(search string) ApiFlavorsZadaraInstanceTypesRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiFlavorsZadaraInstanceTypesRequest) SortBy(sortBy string) ApiFlavorsZadaraInstanceTypesRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiFlavorsZadaraInstanceTypesRequest) SortDirection(sortDirection string) ApiFlavorsZadaraInstanceTypesRequest {
-	r.sortDirection = &sortDirection
-	return r
+	search *string
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiFlavorsZadaraInstanceTypesRequest) Limit(limit int32) ApiFlavorsZadaraInstanceTypesRequest {
@@ -2898,6 +2849,21 @@ func (r ApiFlavorsZadaraInstanceTypesRequest) StartCpu(startCpu int32) ApiFlavor
 
 func (r ApiFlavorsZadaraInstanceTypesRequest) EndCpu(endCpu int32) ApiFlavorsZadaraInstanceTypesRequest {
 	r.endCpu = &endCpu
+	return r
+}
+
+func (r ApiFlavorsZadaraInstanceTypesRequest) Search(search string) ApiFlavorsZadaraInstanceTypesRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiFlavorsZadaraInstanceTypesRequest) SortBy(sortBy string) ApiFlavorsZadaraInstanceTypesRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiFlavorsZadaraInstanceTypesRequest) SortDirection(sortDirection string) ApiFlavorsZadaraInstanceTypesRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -2941,15 +2907,6 @@ func (a *FlavorsAPIService) FlavorsZadaraInstanceTypesExecute(r ApiFlavorsZadara
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -2969,9 +2926,15 @@ func (a *FlavorsAPIService) FlavorsZadaraInstanceTypesExecute(r ApiFlavorsZadara
 	if r.endCpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -3098,30 +3061,15 @@ type ApiFlavorsZededaFlavorsRequest struct {
 	ctx context.Context
 	ApiService *FlavorsAPIService
 	cloudId int32
-	search *string
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
 	startRam *float64
 	endRam *float64
 	startCpu *int32
 	endCpu *int32
-}
-
-func (r ApiFlavorsZededaFlavorsRequest) Search(search string) ApiFlavorsZededaFlavorsRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiFlavorsZededaFlavorsRequest) SortBy(sortBy string) ApiFlavorsZededaFlavorsRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiFlavorsZededaFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsZededaFlavorsRequest {
-	r.sortDirection = &sortDirection
-	return r
+	search *string
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiFlavorsZededaFlavorsRequest) Limit(limit int32) ApiFlavorsZededaFlavorsRequest {
@@ -3151,6 +3099,21 @@ func (r ApiFlavorsZededaFlavorsRequest) StartCpu(startCpu int32) ApiFlavorsZeded
 
 func (r ApiFlavorsZededaFlavorsRequest) EndCpu(endCpu int32) ApiFlavorsZededaFlavorsRequest {
 	r.endCpu = &endCpu
+	return r
+}
+
+func (r ApiFlavorsZededaFlavorsRequest) Search(search string) ApiFlavorsZededaFlavorsRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiFlavorsZededaFlavorsRequest) SortBy(sortBy string) ApiFlavorsZededaFlavorsRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiFlavorsZededaFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsZededaFlavorsRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -3194,15 +3157,6 @@ func (a *FlavorsAPIService) FlavorsZededaFlavorsExecute(r ApiFlavorsZededaFlavor
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -3222,9 +3176,15 @@ func (a *FlavorsAPIService) FlavorsZededaFlavorsExecute(r ApiFlavorsZededaFlavor
 	if r.endCpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

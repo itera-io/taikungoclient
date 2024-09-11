@@ -21,9 +21,9 @@ var _ MappedNullable = &VmTemplateListCommand{}
 // VmTemplateListCommand struct for VmTemplateListCommand
 type VmTemplateListCommand struct {
 	CloudId NullableInt32 `json:"cloudId,omitempty"`
-	Url *string `json:"url,omitempty"`
-	TokenId *string `json:"tokenId,omitempty"`
-	TokenSecret *string `json:"tokenSecret,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	TokenId NullableString `json:"tokenId,omitempty"`
+	TokenSecret NullableString `json:"tokenSecret,omitempty"`
 }
 
 // NewVmTemplateListCommand instantiates a new VmTemplateListCommand object
@@ -85,100 +85,130 @@ func (o *VmTemplateListCommand) UnsetCloudId() {
 	o.CloudId.Unset()
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
+// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VmTemplateListCommand) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Url
+	return *o.Url.Get()
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VmTemplateListCommand) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return o.Url.Get(), o.Url.IsSet()
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *VmTemplateListCommand) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
+	if o != nil && o.Url.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given string and assigns it to the Url field.
+// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
 func (o *VmTemplateListCommand) SetUrl(v string) {
-	o.Url = &v
+	o.Url.Set(&v)
+}
+// SetUrlNil sets the value for Url to be an explicit nil
+func (o *VmTemplateListCommand) SetUrlNil() {
+	o.Url.Set(nil)
 }
 
-// GetTokenId returns the TokenId field value if set, zero value otherwise.
+// UnsetUrl ensures that no value is present for Url, not even an explicit nil
+func (o *VmTemplateListCommand) UnsetUrl() {
+	o.Url.Unset()
+}
+
+// GetTokenId returns the TokenId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VmTemplateListCommand) GetTokenId() string {
-	if o == nil || IsNil(o.TokenId) {
+	if o == nil || IsNil(o.TokenId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TokenId
+	return *o.TokenId.Get()
 }
 
 // GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VmTemplateListCommand) GetTokenIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TokenId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TokenId, true
+	return o.TokenId.Get(), o.TokenId.IsSet()
 }
 
 // HasTokenId returns a boolean if a field has been set.
 func (o *VmTemplateListCommand) HasTokenId() bool {
-	if o != nil && !IsNil(o.TokenId) {
+	if o != nil && o.TokenId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
+// SetTokenId gets a reference to the given NullableString and assigns it to the TokenId field.
 func (o *VmTemplateListCommand) SetTokenId(v string) {
-	o.TokenId = &v
+	o.TokenId.Set(&v)
+}
+// SetTokenIdNil sets the value for TokenId to be an explicit nil
+func (o *VmTemplateListCommand) SetTokenIdNil() {
+	o.TokenId.Set(nil)
 }
 
-// GetTokenSecret returns the TokenSecret field value if set, zero value otherwise.
+// UnsetTokenId ensures that no value is present for TokenId, not even an explicit nil
+func (o *VmTemplateListCommand) UnsetTokenId() {
+	o.TokenId.Unset()
+}
+
+// GetTokenSecret returns the TokenSecret field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VmTemplateListCommand) GetTokenSecret() string {
-	if o == nil || IsNil(o.TokenSecret) {
+	if o == nil || IsNil(o.TokenSecret.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TokenSecret
+	return *o.TokenSecret.Get()
 }
 
 // GetTokenSecretOk returns a tuple with the TokenSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VmTemplateListCommand) GetTokenSecretOk() (*string, bool) {
-	if o == nil || IsNil(o.TokenSecret) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TokenSecret, true
+	return o.TokenSecret.Get(), o.TokenSecret.IsSet()
 }
 
 // HasTokenSecret returns a boolean if a field has been set.
 func (o *VmTemplateListCommand) HasTokenSecret() bool {
-	if o != nil && !IsNil(o.TokenSecret) {
+	if o != nil && o.TokenSecret.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTokenSecret gets a reference to the given string and assigns it to the TokenSecret field.
+// SetTokenSecret gets a reference to the given NullableString and assigns it to the TokenSecret field.
 func (o *VmTemplateListCommand) SetTokenSecret(v string) {
-	o.TokenSecret = &v
+	o.TokenSecret.Set(&v)
+}
+// SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
+func (o *VmTemplateListCommand) SetTokenSecretNil() {
+	o.TokenSecret.Set(nil)
+}
+
+// UnsetTokenSecret ensures that no value is present for TokenSecret, not even an explicit nil
+func (o *VmTemplateListCommand) UnsetTokenSecret() {
+	o.TokenSecret.Unset()
 }
 
 func (o VmTemplateListCommand) MarshalJSON() ([]byte, error) {
@@ -194,14 +224,14 @@ func (o VmTemplateListCommand) ToMap() (map[string]interface{}, error) {
 	if o.CloudId.IsSet() {
 		toSerialize["cloudId"] = o.CloudId.Get()
 	}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
+	if o.Url.IsSet() {
+		toSerialize["url"] = o.Url.Get()
 	}
-	if !IsNil(o.TokenId) {
-		toSerialize["tokenId"] = o.TokenId
+	if o.TokenId.IsSet() {
+		toSerialize["tokenId"] = o.TokenId.Get()
 	}
-	if !IsNil(o.TokenSecret) {
-		toSerialize["tokenSecret"] = o.TokenSecret
+	if o.TokenSecret.IsSet() {
+		toSerialize["tokenSecret"] = o.TokenSecret.Get()
 	}
 	return toSerialize, nil
 }

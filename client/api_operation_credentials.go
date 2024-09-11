@@ -361,34 +361,14 @@ func (a *OperationCredentialsAPIService) OpscredentialsDeleteExecute(r ApiOpscre
 type ApiOpscredentialsListRequest struct {
 	ctx context.Context
 	ApiService *OperationCredentialsAPIService
-	search *string
-	searchId *string
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
 	organizationId *int32
+	search *string
+	searchId *string
 	id *int32
-}
-
-func (r ApiOpscredentialsListRequest) Search(search string) ApiOpscredentialsListRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiOpscredentialsListRequest) SearchId(searchId string) ApiOpscredentialsListRequest {
-	r.searchId = &searchId
-	return r
-}
-
-func (r ApiOpscredentialsListRequest) SortBy(sortBy string) ApiOpscredentialsListRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiOpscredentialsListRequest) SortDirection(sortDirection string) ApiOpscredentialsListRequest {
-	r.sortDirection = &sortDirection
-	return r
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiOpscredentialsListRequest) Limit(limit int32) ApiOpscredentialsListRequest {
@@ -406,8 +386,28 @@ func (r ApiOpscredentialsListRequest) OrganizationId(organizationId int32) ApiOp
 	return r
 }
 
+func (r ApiOpscredentialsListRequest) Search(search string) ApiOpscredentialsListRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiOpscredentialsListRequest) SearchId(searchId string) ApiOpscredentialsListRequest {
+	r.searchId = &searchId
+	return r
+}
+
 func (r ApiOpscredentialsListRequest) Id(id int32) ApiOpscredentialsListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiOpscredentialsListRequest) SortBy(sortBy string) ApiOpscredentialsListRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiOpscredentialsListRequest) SortDirection(sortDirection string) ApiOpscredentialsListRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -448,18 +448,6 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -470,13 +458,21 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -602,17 +598,17 @@ func (a *OperationCredentialsAPIService) OpscredentialsListExecute(r ApiOpscrede
 type ApiOpscredentialsListByOrganizationIdRequest struct {
 	ctx context.Context
 	ApiService *OperationCredentialsAPIService
-	search *string
 	organizationId *int32
-}
-
-func (r ApiOpscredentialsListByOrganizationIdRequest) Search(search string) ApiOpscredentialsListByOrganizationIdRequest {
-	r.search = &search
-	return r
+	search *string
 }
 
 func (r ApiOpscredentialsListByOrganizationIdRequest) OrganizationId(organizationId int32) ApiOpscredentialsListByOrganizationIdRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiOpscredentialsListByOrganizationIdRequest) Search(search string) ApiOpscredentialsListByOrganizationIdRequest {
+	r.search = &search
 	return r
 }
 
@@ -653,14 +649,13 @@ func (a *OperationCredentialsAPIService) OpscredentialsListByOrganizationIdExecu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -21,8 +21,8 @@ var _ MappedNullable = &CreateProjectCommand{}
 
 // CreateProjectCommand struct for CreateProjectCommand
 type CreateProjectCommand struct {
-	Name *string `json:"name,omitempty"`
-	KubernetesVersion *string `json:"kubernetesVersion,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	CloudCredentialId *int32 `json:"cloudCredentialId,omitempty"`
 	S3CredentialId NullableInt32 `json:"s3CredentialId,omitempty"`
@@ -38,7 +38,7 @@ type CreateProjectCommand struct {
 	Flavors []string `json:"flavors,omitempty"`
 	Users []string `json:"users,omitempty"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
-	TaikunLBFlavor *string `json:"taikunLBFlavor,omitempty"`
+	TaikunLBFlavor NullableString `json:"taikunLBFlavor,omitempty"`
 	RouterIdStartRange NullableInt32 `json:"routerIdStartRange,omitempty"`
 	RouterIdEndRange NullableInt32 `json:"routerIdEndRange,omitempty"`
 	ExpiredAt NullableTime `json:"expiredAt,omitempty"`
@@ -48,16 +48,16 @@ type CreateProjectCommand struct {
 	AllowSpotVMs *bool `json:"allowSpotVMs,omitempty"`
 	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice,omitempty"`
 	AutoscalingEnabled *bool `json:"autoscalingEnabled,omitempty"`
-	AutoscalingGroupName *string `json:"autoscalingGroupName,omitempty"`
+	AutoscalingGroupName NullableString `json:"autoscalingGroupName,omitempty"`
 	MinSize *int32 `json:"minSize,omitempty"`
 	MaxSize *int32 `json:"maxSize,omitempty"`
 	DiskSize *float64 `json:"diskSize,omitempty"`
-	AutoscalingFlavor *string `json:"autoscalingFlavor,omitempty"`
+	AutoscalingFlavor NullableString `json:"autoscalingFlavor,omitempty"`
 	AutoscalingSpotEnabled *bool `json:"autoscalingSpotEnabled,omitempty"`
-	Cidr *string `json:"cidr,omitempty"`
+	Cidr NullableString `json:"cidr,omitempty"`
 	NetMask NullableInt32 `json:"netMask,omitempty"`
 	SaveAsTemplate *bool `json:"saveAsTemplate,omitempty"`
-	TemplateName *string `json:"templateName,omitempty"`
+	TemplateName NullableString `json:"templateName,omitempty"`
 	ServerTemplates []ServerTemplateDto `json:"serverTemplates,omitempty"`
 }
 
@@ -78,68 +78,88 @@ func NewCreateProjectCommandWithDefaults() *CreateProjectCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectCommand) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProjectCommand) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateProjectCommand) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CreateProjectCommand) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CreateProjectCommand) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CreateProjectCommand) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectCommand) GetKubernetesVersion() string {
-	if o == nil || IsNil(o.KubernetesVersion) {
+	if o == nil || IsNil(o.KubernetesVersion.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.KubernetesVersion
+	return *o.KubernetesVersion.Get()
 }
 
 // GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProjectCommand) GetKubernetesVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.KubernetesVersion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.KubernetesVersion, true
+	return o.KubernetesVersion.Get(), o.KubernetesVersion.IsSet()
 }
 
 // HasKubernetesVersion returns a boolean if a field has been set.
 func (o *CreateProjectCommand) HasKubernetesVersion() bool {
-	if o != nil && !IsNil(o.KubernetesVersion) {
+	if o != nil && o.KubernetesVersion.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKubernetesVersion gets a reference to the given string and assigns it to the KubernetesVersion field.
+// SetKubernetesVersion gets a reference to the given NullableString and assigns it to the KubernetesVersion field.
 func (o *CreateProjectCommand) SetKubernetesVersion(v string) {
-	o.KubernetesVersion = &v
+	o.KubernetesVersion.Set(&v)
+}
+// SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
+func (o *CreateProjectCommand) SetKubernetesVersionNil() {
+	o.KubernetesVersion.Set(nil)
+}
+
+// UnsetKubernetesVersion ensures that no value is present for KubernetesVersion, not even an explicit nil
+func (o *CreateProjectCommand) UnsetKubernetesVersion() {
+	o.KubernetesVersion.Unset()
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -586,9 +606,9 @@ func (o *CreateProjectCommand) UnsetAiCredentialId() {
 	o.AiCredentialId.Unset()
 }
 
-// GetFlavors returns the Flavors field value if set, zero value otherwise.
+// GetFlavors returns the Flavors field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectCommand) GetFlavors() []string {
-	if o == nil || IsNil(o.Flavors) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -597,6 +617,7 @@ func (o *CreateProjectCommand) GetFlavors() []string {
 
 // GetFlavorsOk returns a tuple with the Flavors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProjectCommand) GetFlavorsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Flavors) {
 		return nil, false
@@ -618,9 +639,9 @@ func (o *CreateProjectCommand) SetFlavors(v []string) {
 	o.Flavors = v
 }
 
-// GetUsers returns the Users field value if set, zero value otherwise.
+// GetUsers returns the Users field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectCommand) GetUsers() []string {
-	if o == nil || IsNil(o.Users) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -629,6 +650,7 @@ func (o *CreateProjectCommand) GetUsers() []string {
 
 // GetUsersOk returns a tuple with the Users field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProjectCommand) GetUsersOk() ([]string, bool) {
 	if o == nil || IsNil(o.Users) {
 		return nil, false
@@ -692,36 +714,46 @@ func (o *CreateProjectCommand) UnsetAlertingProfileId() {
 	o.AlertingProfileId.Unset()
 }
 
-// GetTaikunLBFlavor returns the TaikunLBFlavor field value if set, zero value otherwise.
+// GetTaikunLBFlavor returns the TaikunLBFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectCommand) GetTaikunLBFlavor() string {
-	if o == nil || IsNil(o.TaikunLBFlavor) {
+	if o == nil || IsNil(o.TaikunLBFlavor.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TaikunLBFlavor
+	return *o.TaikunLBFlavor.Get()
 }
 
 // GetTaikunLBFlavorOk returns a tuple with the TaikunLBFlavor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProjectCommand) GetTaikunLBFlavorOk() (*string, bool) {
-	if o == nil || IsNil(o.TaikunLBFlavor) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TaikunLBFlavor, true
+	return o.TaikunLBFlavor.Get(), o.TaikunLBFlavor.IsSet()
 }
 
 // HasTaikunLBFlavor returns a boolean if a field has been set.
 func (o *CreateProjectCommand) HasTaikunLBFlavor() bool {
-	if o != nil && !IsNil(o.TaikunLBFlavor) {
+	if o != nil && o.TaikunLBFlavor.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTaikunLBFlavor gets a reference to the given string and assigns it to the TaikunLBFlavor field.
+// SetTaikunLBFlavor gets a reference to the given NullableString and assigns it to the TaikunLBFlavor field.
 func (o *CreateProjectCommand) SetTaikunLBFlavor(v string) {
-	o.TaikunLBFlavor = &v
+	o.TaikunLBFlavor.Set(&v)
+}
+// SetTaikunLBFlavorNil sets the value for TaikunLBFlavor to be an explicit nil
+func (o *CreateProjectCommand) SetTaikunLBFlavorNil() {
+	o.TaikunLBFlavor.Set(nil)
+}
+
+// UnsetTaikunLBFlavor ensures that no value is present for TaikunLBFlavor, not even an explicit nil
+func (o *CreateProjectCommand) UnsetTaikunLBFlavor() {
+	o.TaikunLBFlavor.Unset()
 }
 
 // GetRouterIdStartRange returns the RouterIdStartRange field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1052,36 +1084,46 @@ func (o *CreateProjectCommand) SetAutoscalingEnabled(v bool) {
 	o.AutoscalingEnabled = &v
 }
 
-// GetAutoscalingGroupName returns the AutoscalingGroupName field value if set, zero value otherwise.
+// GetAutoscalingGroupName returns the AutoscalingGroupName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectCommand) GetAutoscalingGroupName() string {
-	if o == nil || IsNil(o.AutoscalingGroupName) {
+	if o == nil || IsNil(o.AutoscalingGroupName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AutoscalingGroupName
+	return *o.AutoscalingGroupName.Get()
 }
 
 // GetAutoscalingGroupNameOk returns a tuple with the AutoscalingGroupName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProjectCommand) GetAutoscalingGroupNameOk() (*string, bool) {
-	if o == nil || IsNil(o.AutoscalingGroupName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AutoscalingGroupName, true
+	return o.AutoscalingGroupName.Get(), o.AutoscalingGroupName.IsSet()
 }
 
 // HasAutoscalingGroupName returns a boolean if a field has been set.
 func (o *CreateProjectCommand) HasAutoscalingGroupName() bool {
-	if o != nil && !IsNil(o.AutoscalingGroupName) {
+	if o != nil && o.AutoscalingGroupName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAutoscalingGroupName gets a reference to the given string and assigns it to the AutoscalingGroupName field.
+// SetAutoscalingGroupName gets a reference to the given NullableString and assigns it to the AutoscalingGroupName field.
 func (o *CreateProjectCommand) SetAutoscalingGroupName(v string) {
-	o.AutoscalingGroupName = &v
+	o.AutoscalingGroupName.Set(&v)
+}
+// SetAutoscalingGroupNameNil sets the value for AutoscalingGroupName to be an explicit nil
+func (o *CreateProjectCommand) SetAutoscalingGroupNameNil() {
+	o.AutoscalingGroupName.Set(nil)
+}
+
+// UnsetAutoscalingGroupName ensures that no value is present for AutoscalingGroupName, not even an explicit nil
+func (o *CreateProjectCommand) UnsetAutoscalingGroupName() {
+	o.AutoscalingGroupName.Unset()
 }
 
 // GetMinSize returns the MinSize field value if set, zero value otherwise.
@@ -1180,36 +1222,46 @@ func (o *CreateProjectCommand) SetDiskSize(v float64) {
 	o.DiskSize = &v
 }
 
-// GetAutoscalingFlavor returns the AutoscalingFlavor field value if set, zero value otherwise.
+// GetAutoscalingFlavor returns the AutoscalingFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectCommand) GetAutoscalingFlavor() string {
-	if o == nil || IsNil(o.AutoscalingFlavor) {
+	if o == nil || IsNil(o.AutoscalingFlavor.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AutoscalingFlavor
+	return *o.AutoscalingFlavor.Get()
 }
 
 // GetAutoscalingFlavorOk returns a tuple with the AutoscalingFlavor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProjectCommand) GetAutoscalingFlavorOk() (*string, bool) {
-	if o == nil || IsNil(o.AutoscalingFlavor) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AutoscalingFlavor, true
+	return o.AutoscalingFlavor.Get(), o.AutoscalingFlavor.IsSet()
 }
 
 // HasAutoscalingFlavor returns a boolean if a field has been set.
 func (o *CreateProjectCommand) HasAutoscalingFlavor() bool {
-	if o != nil && !IsNil(o.AutoscalingFlavor) {
+	if o != nil && o.AutoscalingFlavor.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAutoscalingFlavor gets a reference to the given string and assigns it to the AutoscalingFlavor field.
+// SetAutoscalingFlavor gets a reference to the given NullableString and assigns it to the AutoscalingFlavor field.
 func (o *CreateProjectCommand) SetAutoscalingFlavor(v string) {
-	o.AutoscalingFlavor = &v
+	o.AutoscalingFlavor.Set(&v)
+}
+// SetAutoscalingFlavorNil sets the value for AutoscalingFlavor to be an explicit nil
+func (o *CreateProjectCommand) SetAutoscalingFlavorNil() {
+	o.AutoscalingFlavor.Set(nil)
+}
+
+// UnsetAutoscalingFlavor ensures that no value is present for AutoscalingFlavor, not even an explicit nil
+func (o *CreateProjectCommand) UnsetAutoscalingFlavor() {
+	o.AutoscalingFlavor.Unset()
 }
 
 // GetAutoscalingSpotEnabled returns the AutoscalingSpotEnabled field value if set, zero value otherwise.
@@ -1244,36 +1296,46 @@ func (o *CreateProjectCommand) SetAutoscalingSpotEnabled(v bool) {
 	o.AutoscalingSpotEnabled = &v
 }
 
-// GetCidr returns the Cidr field value if set, zero value otherwise.
+// GetCidr returns the Cidr field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectCommand) GetCidr() string {
-	if o == nil || IsNil(o.Cidr) {
+	if o == nil || IsNil(o.Cidr.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Cidr
+	return *o.Cidr.Get()
 }
 
 // GetCidrOk returns a tuple with the Cidr field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProjectCommand) GetCidrOk() (*string, bool) {
-	if o == nil || IsNil(o.Cidr) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Cidr, true
+	return o.Cidr.Get(), o.Cidr.IsSet()
 }
 
 // HasCidr returns a boolean if a field has been set.
 func (o *CreateProjectCommand) HasCidr() bool {
-	if o != nil && !IsNil(o.Cidr) {
+	if o != nil && o.Cidr.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCidr gets a reference to the given string and assigns it to the Cidr field.
+// SetCidr gets a reference to the given NullableString and assigns it to the Cidr field.
 func (o *CreateProjectCommand) SetCidr(v string) {
-	o.Cidr = &v
+	o.Cidr.Set(&v)
+}
+// SetCidrNil sets the value for Cidr to be an explicit nil
+func (o *CreateProjectCommand) SetCidrNil() {
+	o.Cidr.Set(nil)
+}
+
+// UnsetCidr ensures that no value is present for Cidr, not even an explicit nil
+func (o *CreateProjectCommand) UnsetCidr() {
+	o.Cidr.Unset()
 }
 
 // GetNetMask returns the NetMask field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1350,41 +1412,51 @@ func (o *CreateProjectCommand) SetSaveAsTemplate(v bool) {
 	o.SaveAsTemplate = &v
 }
 
-// GetTemplateName returns the TemplateName field value if set, zero value otherwise.
+// GetTemplateName returns the TemplateName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectCommand) GetTemplateName() string {
-	if o == nil || IsNil(o.TemplateName) {
+	if o == nil || IsNil(o.TemplateName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TemplateName
+	return *o.TemplateName.Get()
 }
 
 // GetTemplateNameOk returns a tuple with the TemplateName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProjectCommand) GetTemplateNameOk() (*string, bool) {
-	if o == nil || IsNil(o.TemplateName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TemplateName, true
+	return o.TemplateName.Get(), o.TemplateName.IsSet()
 }
 
 // HasTemplateName returns a boolean if a field has been set.
 func (o *CreateProjectCommand) HasTemplateName() bool {
-	if o != nil && !IsNil(o.TemplateName) {
+	if o != nil && o.TemplateName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTemplateName gets a reference to the given string and assigns it to the TemplateName field.
+// SetTemplateName gets a reference to the given NullableString and assigns it to the TemplateName field.
 func (o *CreateProjectCommand) SetTemplateName(v string) {
-	o.TemplateName = &v
+	o.TemplateName.Set(&v)
+}
+// SetTemplateNameNil sets the value for TemplateName to be an explicit nil
+func (o *CreateProjectCommand) SetTemplateNameNil() {
+	o.TemplateName.Set(nil)
 }
 
-// GetServerTemplates returns the ServerTemplates field value if set, zero value otherwise.
+// UnsetTemplateName ensures that no value is present for TemplateName, not even an explicit nil
+func (o *CreateProjectCommand) UnsetTemplateName() {
+	o.TemplateName.Unset()
+}
+
+// GetServerTemplates returns the ServerTemplates field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectCommand) GetServerTemplates() []ServerTemplateDto {
-	if o == nil || IsNil(o.ServerTemplates) {
+	if o == nil {
 		var ret []ServerTemplateDto
 		return ret
 	}
@@ -1393,6 +1465,7 @@ func (o *CreateProjectCommand) GetServerTemplates() []ServerTemplateDto {
 
 // GetServerTemplatesOk returns a tuple with the ServerTemplates field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProjectCommand) GetServerTemplatesOk() ([]ServerTemplateDto, bool) {
 	if o == nil || IsNil(o.ServerTemplates) {
 		return nil, false
@@ -1424,11 +1497,11 @@ func (o CreateProjectCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.KubernetesVersion) {
-		toSerialize["kubernetesVersion"] = o.KubernetesVersion
+	if o.KubernetesVersion.IsSet() {
+		toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
@@ -1466,17 +1539,17 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	if o.AiCredentialId.IsSet() {
 		toSerialize["aiCredentialId"] = o.AiCredentialId.Get()
 	}
-	if !IsNil(o.Flavors) {
+	if o.Flavors != nil {
 		toSerialize["flavors"] = o.Flavors
 	}
-	if !IsNil(o.Users) {
+	if o.Users != nil {
 		toSerialize["users"] = o.Users
 	}
 	if o.AlertingProfileId.IsSet() {
 		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	}
-	if !IsNil(o.TaikunLBFlavor) {
-		toSerialize["taikunLBFlavor"] = o.TaikunLBFlavor
+	if o.TaikunLBFlavor.IsSet() {
+		toSerialize["taikunLBFlavor"] = o.TaikunLBFlavor.Get()
 	}
 	if o.RouterIdStartRange.IsSet() {
 		toSerialize["routerIdStartRange"] = o.RouterIdStartRange.Get()
@@ -1505,8 +1578,8 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoscalingEnabled) {
 		toSerialize["autoscalingEnabled"] = o.AutoscalingEnabled
 	}
-	if !IsNil(o.AutoscalingGroupName) {
-		toSerialize["autoscalingGroupName"] = o.AutoscalingGroupName
+	if o.AutoscalingGroupName.IsSet() {
+		toSerialize["autoscalingGroupName"] = o.AutoscalingGroupName.Get()
 	}
 	if !IsNil(o.MinSize) {
 		toSerialize["minSize"] = o.MinSize
@@ -1517,14 +1590,14 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiskSize) {
 		toSerialize["diskSize"] = o.DiskSize
 	}
-	if !IsNil(o.AutoscalingFlavor) {
-		toSerialize["autoscalingFlavor"] = o.AutoscalingFlavor
+	if o.AutoscalingFlavor.IsSet() {
+		toSerialize["autoscalingFlavor"] = o.AutoscalingFlavor.Get()
 	}
 	if !IsNil(o.AutoscalingSpotEnabled) {
 		toSerialize["autoscalingSpotEnabled"] = o.AutoscalingSpotEnabled
 	}
-	if !IsNil(o.Cidr) {
-		toSerialize["cidr"] = o.Cidr
+	if o.Cidr.IsSet() {
+		toSerialize["cidr"] = o.Cidr.Get()
 	}
 	if o.NetMask.IsSet() {
 		toSerialize["netMask"] = o.NetMask.Get()
@@ -1532,10 +1605,10 @@ func (o CreateProjectCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SaveAsTemplate) {
 		toSerialize["saveAsTemplate"] = o.SaveAsTemplate
 	}
-	if !IsNil(o.TemplateName) {
-		toSerialize["templateName"] = o.TemplateName
+	if o.TemplateName.IsSet() {
+		toSerialize["templateName"] = o.TemplateName.Get()
 	}
-	if !IsNil(o.ServerTemplates) {
+	if o.ServerTemplates != nil {
 		toSerialize["serverTemplates"] = o.ServerTemplates
 	}
 	return toSerialize, nil

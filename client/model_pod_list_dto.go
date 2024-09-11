@@ -20,13 +20,13 @@ var _ MappedNullable = &PodListDto{}
 
 // PodListDto struct for PodListDto
 type PodListDto struct {
-	MetadataName *string `json:"metadataName,omitempty"`
+	MetadataName NullableString `json:"metadataName,omitempty"`
 	RestartCount *int32 `json:"restartCount,omitempty"`
-	Namespace *string `json:"namespace,omitempty"`
-	Node *string `json:"node,omitempty"`
-	Age *string `json:"age,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Phase *string `json:"phase,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Node NullableString `json:"node,omitempty"`
+	Age NullableString `json:"age,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Phase NullableString `json:"phase,omitempty"`
 	Container []string `json:"container,omitempty"`
 }
 
@@ -47,36 +47,46 @@ func NewPodListDtoWithDefaults() *PodListDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise.
+// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PodListDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName) {
+	if o == nil || IsNil(o.MetadataName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName
+	return *o.MetadataName.Get()
 }
 
 // GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodListDto) GetMetadataNameOk() (*string, bool) {
-	if o == nil || IsNil(o.MetadataName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetadataName, true
+	return o.MetadataName.Get(), o.MetadataName.IsSet()
 }
 
 // HasMetadataName returns a boolean if a field has been set.
 func (o *PodListDto) HasMetadataName() bool {
-	if o != nil && !IsNil(o.MetadataName) {
+	if o != nil && o.MetadataName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMetadataName gets a reference to the given string and assigns it to the MetadataName field.
+// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
 func (o *PodListDto) SetMetadataName(v string) {
-	o.MetadataName = &v
+	o.MetadataName.Set(&v)
+}
+// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
+func (o *PodListDto) SetMetadataNameNil() {
+	o.MetadataName.Set(nil)
+}
+
+// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
+func (o *PodListDto) UnsetMetadataName() {
+	o.MetadataName.Unset()
 }
 
 // GetRestartCount returns the RestartCount field value if set, zero value otherwise.
@@ -111,169 +121,219 @@ func (o *PodListDto) SetRestartCount(v int32) {
 	o.RestartCount = &v
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
+// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PodListDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil || IsNil(o.Namespace.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace
+	return *o.Namespace.Get()
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodListDto) GetNamespaceOk() (*string, bool) {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Namespace, true
+	return o.Namespace.Get(), o.Namespace.IsSet()
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *PodListDto) HasNamespace() bool {
-	if o != nil && !IsNil(o.Namespace) {
+	if o != nil && o.Namespace.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
 func (o *PodListDto) SetNamespace(v string) {
-	o.Namespace = &v
+	o.Namespace.Set(&v)
+}
+// SetNamespaceNil sets the value for Namespace to be an explicit nil
+func (o *PodListDto) SetNamespaceNil() {
+	o.Namespace.Set(nil)
 }
 
-// GetNode returns the Node field value if set, zero value otherwise.
+// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
+func (o *PodListDto) UnsetNamespace() {
+	o.Namespace.Unset()
+}
+
+// GetNode returns the Node field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PodListDto) GetNode() string {
-	if o == nil || IsNil(o.Node) {
+	if o == nil || IsNil(o.Node.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Node
+	return *o.Node.Get()
 }
 
 // GetNodeOk returns a tuple with the Node field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodListDto) GetNodeOk() (*string, bool) {
-	if o == nil || IsNil(o.Node) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Node, true
+	return o.Node.Get(), o.Node.IsSet()
 }
 
 // HasNode returns a boolean if a field has been set.
 func (o *PodListDto) HasNode() bool {
-	if o != nil && !IsNil(o.Node) {
+	if o != nil && o.Node.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNode gets a reference to the given string and assigns it to the Node field.
+// SetNode gets a reference to the given NullableString and assigns it to the Node field.
 func (o *PodListDto) SetNode(v string) {
-	o.Node = &v
+	o.Node.Set(&v)
+}
+// SetNodeNil sets the value for Node to be an explicit nil
+func (o *PodListDto) SetNodeNil() {
+	o.Node.Set(nil)
 }
 
-// GetAge returns the Age field value if set, zero value otherwise.
+// UnsetNode ensures that no value is present for Node, not even an explicit nil
+func (o *PodListDto) UnsetNode() {
+	o.Node.Unset()
+}
+
+// GetAge returns the Age field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PodListDto) GetAge() string {
-	if o == nil || IsNil(o.Age) {
+	if o == nil || IsNil(o.Age.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Age
+	return *o.Age.Get()
 }
 
 // GetAgeOk returns a tuple with the Age field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodListDto) GetAgeOk() (*string, bool) {
-	if o == nil || IsNil(o.Age) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Age, true
+	return o.Age.Get(), o.Age.IsSet()
 }
 
 // HasAge returns a boolean if a field has been set.
 func (o *PodListDto) HasAge() bool {
-	if o != nil && !IsNil(o.Age) {
+	if o != nil && o.Age.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAge gets a reference to the given string and assigns it to the Age field.
+// SetAge gets a reference to the given NullableString and assigns it to the Age field.
 func (o *PodListDto) SetAge(v string) {
-	o.Age = &v
+	o.Age.Set(&v)
+}
+// SetAgeNil sets the value for Age to be an explicit nil
+func (o *PodListDto) SetAgeNil() {
+	o.Age.Set(nil)
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// UnsetAge ensures that no value is present for Age, not even an explicit nil
+func (o *PodListDto) UnsetAge() {
+	o.Age.Unset()
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PodListDto) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Status
+	return *o.Status.Get()
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodListDto) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.Status.Get(), o.Status.IsSet()
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *PodListDto) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
+	if o != nil && o.Status.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
 func (o *PodListDto) SetStatus(v string) {
-	o.Status = &v
+	o.Status.Set(&v)
+}
+// SetStatusNil sets the value for Status to be an explicit nil
+func (o *PodListDto) SetStatusNil() {
+	o.Status.Set(nil)
 }
 
-// GetPhase returns the Phase field value if set, zero value otherwise.
+// UnsetStatus ensures that no value is present for Status, not even an explicit nil
+func (o *PodListDto) UnsetStatus() {
+	o.Status.Unset()
+}
+
+// GetPhase returns the Phase field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PodListDto) GetPhase() string {
-	if o == nil || IsNil(o.Phase) {
+	if o == nil || IsNil(o.Phase.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Phase
+	return *o.Phase.Get()
 }
 
 // GetPhaseOk returns a tuple with the Phase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodListDto) GetPhaseOk() (*string, bool) {
-	if o == nil || IsNil(o.Phase) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Phase, true
+	return o.Phase.Get(), o.Phase.IsSet()
 }
 
 // HasPhase returns a boolean if a field has been set.
 func (o *PodListDto) HasPhase() bool {
-	if o != nil && !IsNil(o.Phase) {
+	if o != nil && o.Phase.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPhase gets a reference to the given string and assigns it to the Phase field.
+// SetPhase gets a reference to the given NullableString and assigns it to the Phase field.
 func (o *PodListDto) SetPhase(v string) {
-	o.Phase = &v
+	o.Phase.Set(&v)
+}
+// SetPhaseNil sets the value for Phase to be an explicit nil
+func (o *PodListDto) SetPhaseNil() {
+	o.Phase.Set(nil)
 }
 
-// GetContainer returns the Container field value if set, zero value otherwise.
+// UnsetPhase ensures that no value is present for Phase, not even an explicit nil
+func (o *PodListDto) UnsetPhase() {
+	o.Phase.Unset()
+}
+
+// GetContainer returns the Container field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PodListDto) GetContainer() []string {
-	if o == nil || IsNil(o.Container) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -282,6 +342,7 @@ func (o *PodListDto) GetContainer() []string {
 
 // GetContainerOk returns a tuple with the Container field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodListDto) GetContainerOk() ([]string, bool) {
 	if o == nil || IsNil(o.Container) {
 		return nil, false
@@ -313,28 +374,28 @@ func (o PodListDto) MarshalJSON() ([]byte, error) {
 
 func (o PodListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MetadataName) {
-		toSerialize["metadataName"] = o.MetadataName
+	if o.MetadataName.IsSet() {
+		toSerialize["metadataName"] = o.MetadataName.Get()
 	}
 	if !IsNil(o.RestartCount) {
 		toSerialize["restartCount"] = o.RestartCount
 	}
-	if !IsNil(o.Namespace) {
-		toSerialize["namespace"] = o.Namespace
+	if o.Namespace.IsSet() {
+		toSerialize["namespace"] = o.Namespace.Get()
 	}
-	if !IsNil(o.Node) {
-		toSerialize["node"] = o.Node
+	if o.Node.IsSet() {
+		toSerialize["node"] = o.Node.Get()
 	}
-	if !IsNil(o.Age) {
-		toSerialize["age"] = o.Age
+	if o.Age.IsSet() {
+		toSerialize["age"] = o.Age.Get()
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if o.Status.IsSet() {
+		toSerialize["status"] = o.Status.Get()
 	}
-	if !IsNil(o.Phase) {
-		toSerialize["phase"] = o.Phase
+	if o.Phase.IsSet() {
+		toSerialize["phase"] = o.Phase.Get()
 	}
-	if !IsNil(o.Container) {
+	if o.Container != nil {
 		toSerialize["container"] = o.Container
 	}
 	return toSerialize, nil

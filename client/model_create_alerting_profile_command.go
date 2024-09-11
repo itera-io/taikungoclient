@@ -20,7 +20,7 @@ var _ MappedNullable = &CreateAlertingProfileCommand{}
 
 // CreateAlertingProfileCommand struct for CreateAlertingProfileCommand
 type CreateAlertingProfileCommand struct {
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	SlackConfigurationId NullableInt32 `json:"slackConfigurationId,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	Emails []AlertingEmailDto `json:"emails,omitempty"`
@@ -46,36 +46,46 @@ func NewCreateAlertingProfileCommandWithDefaults() *CreateAlertingProfileCommand
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateAlertingProfileCommand) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAlertingProfileCommand) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateAlertingProfileCommand) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CreateAlertingProfileCommand) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CreateAlertingProfileCommand) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CreateAlertingProfileCommand) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetSlackConfigurationId returns the SlackConfigurationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -162,9 +172,9 @@ func (o *CreateAlertingProfileCommand) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
-// GetEmails returns the Emails field value if set, zero value otherwise.
+// GetEmails returns the Emails field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateAlertingProfileCommand) GetEmails() []AlertingEmailDto {
-	if o == nil || IsNil(o.Emails) {
+	if o == nil {
 		var ret []AlertingEmailDto
 		return ret
 	}
@@ -173,6 +183,7 @@ func (o *CreateAlertingProfileCommand) GetEmails() []AlertingEmailDto {
 
 // GetEmailsOk returns a tuple with the Emails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAlertingProfileCommand) GetEmailsOk() ([]AlertingEmailDto, bool) {
 	if o == nil || IsNil(o.Emails) {
 		return nil, false
@@ -194,9 +205,9 @@ func (o *CreateAlertingProfileCommand) SetEmails(v []AlertingEmailDto) {
 	o.Emails = v
 }
 
-// GetWebhooks returns the Webhooks field value if set, zero value otherwise.
+// GetWebhooks returns the Webhooks field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateAlertingProfileCommand) GetWebhooks() []AlertingWebhookDto {
-	if o == nil || IsNil(o.Webhooks) {
+	if o == nil {
 		var ret []AlertingWebhookDto
 		return ret
 	}
@@ -205,6 +216,7 @@ func (o *CreateAlertingProfileCommand) GetWebhooks() []AlertingWebhookDto {
 
 // GetWebhooksOk returns a tuple with the Webhooks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAlertingProfileCommand) GetWebhooksOk() ([]AlertingWebhookDto, bool) {
 	if o == nil || IsNil(o.Webhooks) {
 		return nil, false
@@ -226,9 +238,9 @@ func (o *CreateAlertingProfileCommand) SetWebhooks(v []AlertingWebhookDto) {
 	o.Webhooks = v
 }
 
-// GetAlertingIntegrations returns the AlertingIntegrations field value if set, zero value otherwise.
+// GetAlertingIntegrations returns the AlertingIntegrations field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateAlertingProfileCommand) GetAlertingIntegrations() []AlertingIntegrationDto {
-	if o == nil || IsNil(o.AlertingIntegrations) {
+	if o == nil {
 		var ret []AlertingIntegrationDto
 		return ret
 	}
@@ -237,6 +249,7 @@ func (o *CreateAlertingProfileCommand) GetAlertingIntegrations() []AlertingInteg
 
 // GetAlertingIntegrationsOk returns a tuple with the AlertingIntegrations field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAlertingProfileCommand) GetAlertingIntegrationsOk() ([]AlertingIntegrationDto, bool) {
 	if o == nil || IsNil(o.AlertingIntegrations) {
 		return nil, false
@@ -300,8 +313,8 @@ func (o CreateAlertingProfileCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateAlertingProfileCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
 	if o.SlackConfigurationId.IsSet() {
 		toSerialize["slackConfigurationId"] = o.SlackConfigurationId.Get()
@@ -309,13 +322,13 @@ func (o CreateAlertingProfileCommand) ToMap() (map[string]interface{}, error) {
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
-	if !IsNil(o.Emails) {
+	if o.Emails != nil {
 		toSerialize["emails"] = o.Emails
 	}
-	if !IsNil(o.Webhooks) {
+	if o.Webhooks != nil {
 		toSerialize["webhooks"] = o.Webhooks
 	}
-	if !IsNil(o.AlertingIntegrations) {
+	if o.AlertingIntegrations != nil {
 		toSerialize["alertingIntegrations"] = o.AlertingIntegrations
 	}
 	if !IsNil(o.Reminder) {

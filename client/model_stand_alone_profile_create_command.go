@@ -20,8 +20,8 @@ var _ MappedNullable = &StandAloneProfileCreateCommand{}
 
 // StandAloneProfileCreateCommand struct for StandAloneProfileCreateCommand
 type StandAloneProfileCreateCommand struct {
-	Name *string `json:"name,omitempty"`
-	PublicKey *string `json:"publicKey,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	PublicKey NullableString `json:"publicKey,omitempty"`
 	SecurityGroups []StandAloneProfileSecurityGroupDto `json:"securityGroups,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
@@ -43,73 +43,93 @@ func NewStandAloneProfileCreateCommandWithDefaults() *StandAloneProfileCreateCom
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StandAloneProfileCreateCommand) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandAloneProfileCreateCommand) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *StandAloneProfileCreateCommand) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *StandAloneProfileCreateCommand) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *StandAloneProfileCreateCommand) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetPublicKey returns the PublicKey field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *StandAloneProfileCreateCommand) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetPublicKey returns the PublicKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StandAloneProfileCreateCommand) GetPublicKey() string {
-	if o == nil || IsNil(o.PublicKey) {
+	if o == nil || IsNil(o.PublicKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PublicKey
+	return *o.PublicKey.Get()
 }
 
 // GetPublicKeyOk returns a tuple with the PublicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandAloneProfileCreateCommand) GetPublicKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.PublicKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PublicKey, true
+	return o.PublicKey.Get(), o.PublicKey.IsSet()
 }
 
 // HasPublicKey returns a boolean if a field has been set.
 func (o *StandAloneProfileCreateCommand) HasPublicKey() bool {
-	if o != nil && !IsNil(o.PublicKey) {
+	if o != nil && o.PublicKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPublicKey gets a reference to the given string and assigns it to the PublicKey field.
+// SetPublicKey gets a reference to the given NullableString and assigns it to the PublicKey field.
 func (o *StandAloneProfileCreateCommand) SetPublicKey(v string) {
-	o.PublicKey = &v
+	o.PublicKey.Set(&v)
+}
+// SetPublicKeyNil sets the value for PublicKey to be an explicit nil
+func (o *StandAloneProfileCreateCommand) SetPublicKeyNil() {
+	o.PublicKey.Set(nil)
 }
 
-// GetSecurityGroups returns the SecurityGroups field value if set, zero value otherwise.
+// UnsetPublicKey ensures that no value is present for PublicKey, not even an explicit nil
+func (o *StandAloneProfileCreateCommand) UnsetPublicKey() {
+	o.PublicKey.Unset()
+}
+
+// GetSecurityGroups returns the SecurityGroups field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StandAloneProfileCreateCommand) GetSecurityGroups() []StandAloneProfileSecurityGroupDto {
-	if o == nil || IsNil(o.SecurityGroups) {
+	if o == nil {
 		var ret []StandAloneProfileSecurityGroupDto
 		return ret
 	}
@@ -118,6 +138,7 @@ func (o *StandAloneProfileCreateCommand) GetSecurityGroups() []StandAloneProfile
 
 // GetSecurityGroupsOk returns a tuple with the SecurityGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandAloneProfileCreateCommand) GetSecurityGroupsOk() ([]StandAloneProfileSecurityGroupDto, bool) {
 	if o == nil || IsNil(o.SecurityGroups) {
 		return nil, false
@@ -191,13 +212,13 @@ func (o StandAloneProfileCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o StandAloneProfileCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.PublicKey) {
-		toSerialize["publicKey"] = o.PublicKey
+	if o.PublicKey.IsSet() {
+		toSerialize["publicKey"] = o.PublicKey.Get()
 	}
-	if !IsNil(o.SecurityGroups) {
+	if o.SecurityGroups != nil {
 		toSerialize["securityGroups"] = o.SecurityGroups
 	}
 	if o.OrganizationId.IsSet() {

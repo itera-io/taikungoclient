@@ -20,8 +20,8 @@ var _ MappedNullable = &UpdatePaymentIdCommand{}
 
 // UpdatePaymentIdCommand struct for UpdatePaymentIdCommand
 type UpdatePaymentIdCommand struct {
-	PaymentMethodId *string `json:"paymentMethodId,omitempty"`
-	PaymentIntentId *string `json:"paymentIntentId,omitempty"`
+	PaymentMethodId NullableString `json:"paymentMethodId,omitempty"`
+	PaymentIntentId NullableString `json:"paymentIntentId,omitempty"`
 }
 
 // NewUpdatePaymentIdCommand instantiates a new UpdatePaymentIdCommand object
@@ -41,68 +41,88 @@ func NewUpdatePaymentIdCommandWithDefaults() *UpdatePaymentIdCommand {
 	return &this
 }
 
-// GetPaymentMethodId returns the PaymentMethodId field value if set, zero value otherwise.
+// GetPaymentMethodId returns the PaymentMethodId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdatePaymentIdCommand) GetPaymentMethodId() string {
-	if o == nil || IsNil(o.PaymentMethodId) {
+	if o == nil || IsNil(o.PaymentMethodId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PaymentMethodId
+	return *o.PaymentMethodId.Get()
 }
 
 // GetPaymentMethodIdOk returns a tuple with the PaymentMethodId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdatePaymentIdCommand) GetPaymentMethodIdOk() (*string, bool) {
-	if o == nil || IsNil(o.PaymentMethodId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PaymentMethodId, true
+	return o.PaymentMethodId.Get(), o.PaymentMethodId.IsSet()
 }
 
 // HasPaymentMethodId returns a boolean if a field has been set.
 func (o *UpdatePaymentIdCommand) HasPaymentMethodId() bool {
-	if o != nil && !IsNil(o.PaymentMethodId) {
+	if o != nil && o.PaymentMethodId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPaymentMethodId gets a reference to the given string and assigns it to the PaymentMethodId field.
+// SetPaymentMethodId gets a reference to the given NullableString and assigns it to the PaymentMethodId field.
 func (o *UpdatePaymentIdCommand) SetPaymentMethodId(v string) {
-	o.PaymentMethodId = &v
+	o.PaymentMethodId.Set(&v)
+}
+// SetPaymentMethodIdNil sets the value for PaymentMethodId to be an explicit nil
+func (o *UpdatePaymentIdCommand) SetPaymentMethodIdNil() {
+	o.PaymentMethodId.Set(nil)
 }
 
-// GetPaymentIntentId returns the PaymentIntentId field value if set, zero value otherwise.
+// UnsetPaymentMethodId ensures that no value is present for PaymentMethodId, not even an explicit nil
+func (o *UpdatePaymentIdCommand) UnsetPaymentMethodId() {
+	o.PaymentMethodId.Unset()
+}
+
+// GetPaymentIntentId returns the PaymentIntentId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdatePaymentIdCommand) GetPaymentIntentId() string {
-	if o == nil || IsNil(o.PaymentIntentId) {
+	if o == nil || IsNil(o.PaymentIntentId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PaymentIntentId
+	return *o.PaymentIntentId.Get()
 }
 
 // GetPaymentIntentIdOk returns a tuple with the PaymentIntentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdatePaymentIdCommand) GetPaymentIntentIdOk() (*string, bool) {
-	if o == nil || IsNil(o.PaymentIntentId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PaymentIntentId, true
+	return o.PaymentIntentId.Get(), o.PaymentIntentId.IsSet()
 }
 
 // HasPaymentIntentId returns a boolean if a field has been set.
 func (o *UpdatePaymentIdCommand) HasPaymentIntentId() bool {
-	if o != nil && !IsNil(o.PaymentIntentId) {
+	if o != nil && o.PaymentIntentId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPaymentIntentId gets a reference to the given string and assigns it to the PaymentIntentId field.
+// SetPaymentIntentId gets a reference to the given NullableString and assigns it to the PaymentIntentId field.
 func (o *UpdatePaymentIdCommand) SetPaymentIntentId(v string) {
-	o.PaymentIntentId = &v
+	o.PaymentIntentId.Set(&v)
+}
+// SetPaymentIntentIdNil sets the value for PaymentIntentId to be an explicit nil
+func (o *UpdatePaymentIdCommand) SetPaymentIntentIdNil() {
+	o.PaymentIntentId.Set(nil)
+}
+
+// UnsetPaymentIntentId ensures that no value is present for PaymentIntentId, not even an explicit nil
+func (o *UpdatePaymentIdCommand) UnsetPaymentIntentId() {
+	o.PaymentIntentId.Unset()
 }
 
 func (o UpdatePaymentIdCommand) MarshalJSON() ([]byte, error) {
@@ -115,11 +135,11 @@ func (o UpdatePaymentIdCommand) MarshalJSON() ([]byte, error) {
 
 func (o UpdatePaymentIdCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.PaymentMethodId) {
-		toSerialize["paymentMethodId"] = o.PaymentMethodId
+	if o.PaymentMethodId.IsSet() {
+		toSerialize["paymentMethodId"] = o.PaymentMethodId.Get()
 	}
-	if !IsNil(o.PaymentIntentId) {
-		toSerialize["paymentIntentId"] = o.PaymentIntentId
+	if o.PaymentIntentId.IsSet() {
+		toSerialize["paymentIntentId"] = o.PaymentIntentId.Get()
 	}
 	return toSerialize, nil
 }

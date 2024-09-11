@@ -41,9 +41,9 @@ func NewAzureFlavorListWithDefaults() *AzureFlavorList {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise.
+// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureFlavorList) GetData() []AzureFlavorsWithPriceDto {
-	if o == nil || IsNil(o.Data) {
+	if o == nil {
 		var ret []AzureFlavorsWithPriceDto
 		return ret
 	}
@@ -52,6 +52,7 @@ func (o *AzureFlavorList) GetData() []AzureFlavorsWithPriceDto {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureFlavorList) GetDataOk() ([]AzureFlavorsWithPriceDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
@@ -115,7 +116,7 @@ func (o AzureFlavorList) MarshalJSON() ([]byte, error) {
 
 func (o AzureFlavorList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Data) {
+	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
 	if !IsNil(o.TotalCount) {

@@ -20,7 +20,7 @@ var _ MappedNullable = &VerifyEmailCommand{}
 
 // VerifyEmailCommand struct for VerifyEmailCommand
 type VerifyEmailCommand struct {
-	Token *string `json:"token,omitempty"`
+	Token NullableString `json:"token,omitempty"`
 	Mode *EmailMode `json:"mode,omitempty"`
 }
 
@@ -41,36 +41,46 @@ func NewVerifyEmailCommandWithDefaults() *VerifyEmailCommand {
 	return &this
 }
 
-// GetToken returns the Token field value if set, zero value otherwise.
+// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VerifyEmailCommand) GetToken() string {
-	if o == nil || IsNil(o.Token) {
+	if o == nil || IsNil(o.Token.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Token
+	return *o.Token.Get()
 }
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VerifyEmailCommand) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Token, true
+	return o.Token.Get(), o.Token.IsSet()
 }
 
 // HasToken returns a boolean if a field has been set.
 func (o *VerifyEmailCommand) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
+	if o != nil && o.Token.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given string and assigns it to the Token field.
+// SetToken gets a reference to the given NullableString and assigns it to the Token field.
 func (o *VerifyEmailCommand) SetToken(v string) {
-	o.Token = &v
+	o.Token.Set(&v)
+}
+// SetTokenNil sets the value for Token to be an explicit nil
+func (o *VerifyEmailCommand) SetTokenNil() {
+	o.Token.Set(nil)
+}
+
+// UnsetToken ensures that no value is present for Token, not even an explicit nil
+func (o *VerifyEmailCommand) UnsetToken() {
+	o.Token.Unset()
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
@@ -115,8 +125,8 @@ func (o VerifyEmailCommand) MarshalJSON() ([]byte, error) {
 
 func (o VerifyEmailCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
+	if o.Token.IsSet() {
+		toSerialize["token"] = o.Token.Get()
 	}
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode

@@ -73,9 +73,9 @@ func (o *BindFlavorToProjectCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetFlavors returns the Flavors field value if set, zero value otherwise.
+// GetFlavors returns the Flavors field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BindFlavorToProjectCommand) GetFlavors() []string {
-	if o == nil || IsNil(o.Flavors) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -84,6 +84,7 @@ func (o *BindFlavorToProjectCommand) GetFlavors() []string {
 
 // GetFlavorsOk returns a tuple with the Flavors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindFlavorToProjectCommand) GetFlavorsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Flavors) {
 		return nil, false
@@ -118,7 +119,7 @@ func (o BindFlavorToProjectCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.Flavors) {
+	if o.Flavors != nil {
 		toSerialize["flavors"] = o.Flavors
 	}
 	return toSerialize, nil

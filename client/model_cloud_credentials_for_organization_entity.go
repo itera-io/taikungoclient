@@ -22,7 +22,7 @@ var _ MappedNullable = &CloudCredentialsForOrganizationEntity{}
 type CloudCredentialsForOrganizationEntity struct {
 	Id *int32 `json:"id,omitempty"`
 	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	FullName *string `json:"fullName,omitempty"`
+	FullName NullableString `json:"fullName,omitempty"`
 	CloudType *CloudType `json:"cloudType,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 }
@@ -76,9 +76,9 @@ func (o *CloudCredentialsForOrganizationEntity) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise.
+// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CloudCredentialsForOrganizationEntity) GetProjects() []CommonDropdownDto {
-	if o == nil || IsNil(o.Projects) {
+	if o == nil {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -87,6 +87,7 @@ func (o *CloudCredentialsForOrganizationEntity) GetProjects() []CommonDropdownDt
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CloudCredentialsForOrganizationEntity) GetProjectsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
@@ -108,36 +109,46 @@ func (o *CloudCredentialsForOrganizationEntity) SetProjects(v []CommonDropdownDt
 	o.Projects = v
 }
 
-// GetFullName returns the FullName field value if set, zero value otherwise.
+// GetFullName returns the FullName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CloudCredentialsForOrganizationEntity) GetFullName() string {
-	if o == nil || IsNil(o.FullName) {
+	if o == nil || IsNil(o.FullName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FullName
+	return *o.FullName.Get()
 }
 
 // GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CloudCredentialsForOrganizationEntity) GetFullNameOk() (*string, bool) {
-	if o == nil || IsNil(o.FullName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FullName, true
+	return o.FullName.Get(), o.FullName.IsSet()
 }
 
 // HasFullName returns a boolean if a field has been set.
 func (o *CloudCredentialsForOrganizationEntity) HasFullName() bool {
-	if o != nil && !IsNil(o.FullName) {
+	if o != nil && o.FullName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFullName gets a reference to the given string and assigns it to the FullName field.
+// SetFullName gets a reference to the given NullableString and assigns it to the FullName field.
 func (o *CloudCredentialsForOrganizationEntity) SetFullName(v string) {
-	o.FullName = &v
+	o.FullName.Set(&v)
+}
+// SetFullNameNil sets the value for FullName to be an explicit nil
+func (o *CloudCredentialsForOrganizationEntity) SetFullNameNil() {
+	o.FullName.Set(nil)
+}
+
+// UnsetFullName ensures that no value is present for FullName, not even an explicit nil
+func (o *CloudCredentialsForOrganizationEntity) UnsetFullName() {
+	o.FullName.Unset()
 }
 
 // GetCloudType returns the CloudType field value if set, zero value otherwise.
@@ -217,11 +228,11 @@ func (o CloudCredentialsForOrganizationEntity) ToMap() (map[string]interface{}, 
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Projects) {
+	if o.Projects != nil {
 		toSerialize["projects"] = o.Projects
 	}
-	if !IsNil(o.FullName) {
-		toSerialize["fullName"] = o.FullName
+	if o.FullName.IsSet() {
+		toSerialize["fullName"] = o.FullName.Get()
 	}
 	if !IsNil(o.CloudType) {
 		toSerialize["cloudType"] = o.CloudType

@@ -20,11 +20,11 @@ var _ MappedNullable = &KubernetesJobDto{}
 
 // KubernetesJobDto struct for KubernetesJobDto
 type KubernetesJobDto struct {
-	MetadataName *string `json:"metadataName,omitempty"`
-	Namespace *string `json:"namespace,omitempty"`
-	Age *string `json:"age,omitempty"`
+	MetadataName NullableString `json:"metadataName,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Age NullableString `json:"age,omitempty"`
 	Completions NullableInt32 `json:"completions,omitempty"`
-	Conditions *string `json:"conditions,omitempty"`
+	Conditions NullableString `json:"conditions,omitempty"`
 }
 
 // NewKubernetesJobDto instantiates a new KubernetesJobDto object
@@ -44,100 +44,130 @@ func NewKubernetesJobDtoWithDefaults() *KubernetesJobDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise.
+// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesJobDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName) {
+	if o == nil || IsNil(o.MetadataName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName
+	return *o.MetadataName.Get()
 }
 
 // GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesJobDto) GetMetadataNameOk() (*string, bool) {
-	if o == nil || IsNil(o.MetadataName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetadataName, true
+	return o.MetadataName.Get(), o.MetadataName.IsSet()
 }
 
 // HasMetadataName returns a boolean if a field has been set.
 func (o *KubernetesJobDto) HasMetadataName() bool {
-	if o != nil && !IsNil(o.MetadataName) {
+	if o != nil && o.MetadataName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMetadataName gets a reference to the given string and assigns it to the MetadataName field.
+// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
 func (o *KubernetesJobDto) SetMetadataName(v string) {
-	o.MetadataName = &v
+	o.MetadataName.Set(&v)
+}
+// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
+func (o *KubernetesJobDto) SetMetadataNameNil() {
+	o.MetadataName.Set(nil)
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
+// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
+func (o *KubernetesJobDto) UnsetMetadataName() {
+	o.MetadataName.Unset()
+}
+
+// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesJobDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil || IsNil(o.Namespace.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace
+	return *o.Namespace.Get()
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesJobDto) GetNamespaceOk() (*string, bool) {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Namespace, true
+	return o.Namespace.Get(), o.Namespace.IsSet()
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *KubernetesJobDto) HasNamespace() bool {
-	if o != nil && !IsNil(o.Namespace) {
+	if o != nil && o.Namespace.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
 func (o *KubernetesJobDto) SetNamespace(v string) {
-	o.Namespace = &v
+	o.Namespace.Set(&v)
+}
+// SetNamespaceNil sets the value for Namespace to be an explicit nil
+func (o *KubernetesJobDto) SetNamespaceNil() {
+	o.Namespace.Set(nil)
 }
 
-// GetAge returns the Age field value if set, zero value otherwise.
+// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
+func (o *KubernetesJobDto) UnsetNamespace() {
+	o.Namespace.Unset()
+}
+
+// GetAge returns the Age field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesJobDto) GetAge() string {
-	if o == nil || IsNil(o.Age) {
+	if o == nil || IsNil(o.Age.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Age
+	return *o.Age.Get()
 }
 
 // GetAgeOk returns a tuple with the Age field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesJobDto) GetAgeOk() (*string, bool) {
-	if o == nil || IsNil(o.Age) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Age, true
+	return o.Age.Get(), o.Age.IsSet()
 }
 
 // HasAge returns a boolean if a field has been set.
 func (o *KubernetesJobDto) HasAge() bool {
-	if o != nil && !IsNil(o.Age) {
+	if o != nil && o.Age.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAge gets a reference to the given string and assigns it to the Age field.
+// SetAge gets a reference to the given NullableString and assigns it to the Age field.
 func (o *KubernetesJobDto) SetAge(v string) {
-	o.Age = &v
+	o.Age.Set(&v)
+}
+// SetAgeNil sets the value for Age to be an explicit nil
+func (o *KubernetesJobDto) SetAgeNil() {
+	o.Age.Set(nil)
+}
+
+// UnsetAge ensures that no value is present for Age, not even an explicit nil
+func (o *KubernetesJobDto) UnsetAge() {
+	o.Age.Unset()
 }
 
 // GetCompletions returns the Completions field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -182,36 +212,46 @@ func (o *KubernetesJobDto) UnsetCompletions() {
 	o.Completions.Unset()
 }
 
-// GetConditions returns the Conditions field value if set, zero value otherwise.
+// GetConditions returns the Conditions field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesJobDto) GetConditions() string {
-	if o == nil || IsNil(o.Conditions) {
+	if o == nil || IsNil(o.Conditions.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Conditions
+	return *o.Conditions.Get()
 }
 
 // GetConditionsOk returns a tuple with the Conditions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesJobDto) GetConditionsOk() (*string, bool) {
-	if o == nil || IsNil(o.Conditions) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Conditions, true
+	return o.Conditions.Get(), o.Conditions.IsSet()
 }
 
 // HasConditions returns a boolean if a field has been set.
 func (o *KubernetesJobDto) HasConditions() bool {
-	if o != nil && !IsNil(o.Conditions) {
+	if o != nil && o.Conditions.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetConditions gets a reference to the given string and assigns it to the Conditions field.
+// SetConditions gets a reference to the given NullableString and assigns it to the Conditions field.
 func (o *KubernetesJobDto) SetConditions(v string) {
-	o.Conditions = &v
+	o.Conditions.Set(&v)
+}
+// SetConditionsNil sets the value for Conditions to be an explicit nil
+func (o *KubernetesJobDto) SetConditionsNil() {
+	o.Conditions.Set(nil)
+}
+
+// UnsetConditions ensures that no value is present for Conditions, not even an explicit nil
+func (o *KubernetesJobDto) UnsetConditions() {
+	o.Conditions.Unset()
 }
 
 func (o KubernetesJobDto) MarshalJSON() ([]byte, error) {
@@ -224,20 +264,20 @@ func (o KubernetesJobDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesJobDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MetadataName) {
-		toSerialize["metadataName"] = o.MetadataName
+	if o.MetadataName.IsSet() {
+		toSerialize["metadataName"] = o.MetadataName.Get()
 	}
-	if !IsNil(o.Namespace) {
-		toSerialize["namespace"] = o.Namespace
+	if o.Namespace.IsSet() {
+		toSerialize["namespace"] = o.Namespace.Get()
 	}
-	if !IsNil(o.Age) {
-		toSerialize["age"] = o.Age
+	if o.Age.IsSet() {
+		toSerialize["age"] = o.Age.Get()
 	}
 	if o.Completions.IsSet() {
 		toSerialize["completions"] = o.Completions.Get()
 	}
-	if !IsNil(o.Conditions) {
-		toSerialize["conditions"] = o.Conditions
+	if o.Conditions.IsSet() {
+		toSerialize["conditions"] = o.Conditions.Get()
 	}
 	return toSerialize, nil
 }

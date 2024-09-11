@@ -21,7 +21,7 @@ var _ MappedNullable = &UpdateProjectAppCommand{}
 // UpdateProjectAppCommand struct for UpdateProjectAppCommand
 type UpdateProjectAppCommand struct {
 	ProjectAppId *int32 `json:"projectAppId,omitempty"`
-	Status *string `json:"status,omitempty"`
+	Status NullableString `json:"status,omitempty"`
 }
 
 // NewUpdateProjectAppCommand instantiates a new UpdateProjectAppCommand object
@@ -73,36 +73,46 @@ func (o *UpdateProjectAppCommand) SetProjectAppId(v int32) {
 	o.ProjectAppId = &v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateProjectAppCommand) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Status
+	return *o.Status.Get()
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateProjectAppCommand) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.Status.Get(), o.Status.IsSet()
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *UpdateProjectAppCommand) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
+	if o != nil && o.Status.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
 func (o *UpdateProjectAppCommand) SetStatus(v string) {
-	o.Status = &v
+	o.Status.Set(&v)
+}
+// SetStatusNil sets the value for Status to be an explicit nil
+func (o *UpdateProjectAppCommand) SetStatusNil() {
+	o.Status.Set(nil)
+}
+
+// UnsetStatus ensures that no value is present for Status, not even an explicit nil
+func (o *UpdateProjectAppCommand) UnsetStatus() {
+	o.Status.Unset()
 }
 
 func (o UpdateProjectAppCommand) MarshalJSON() ([]byte, error) {
@@ -118,8 +128,8 @@ func (o UpdateProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectAppId) {
 		toSerialize["projectAppId"] = o.ProjectAppId
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if o.Status.IsSet() {
+		toSerialize["status"] = o.Status.Get()
 	}
 	return toSerialize, nil
 }

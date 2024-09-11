@@ -21,11 +21,11 @@ var _ MappedNullable = &BoundImagesForProjectsListDto{}
 // BoundImagesForProjectsListDto struct for BoundImagesForProjectsListDto
 type BoundImagesForProjectsListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	ProjectId NullableInt32 `json:"projectId,omitempty"`
-	ProjectName *string `json:"projectName,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
 	Size NullableFloat64 `json:"size,omitempty"`
-	ImageId *string `json:"imageId,omitempty"`
+	ImageId NullableString `json:"imageId,omitempty"`
 	CloudId NullableInt32 `json:"cloudId,omitempty"`
 	IsWindows *bool `json:"isWindows,omitempty"`
 	CloudType *CloudType `json:"cloudType,omitempty"`
@@ -80,36 +80,46 @@ func (o *BoundImagesForProjectsListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BoundImagesForProjectsListDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BoundImagesForProjectsListDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *BoundImagesForProjectsListDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *BoundImagesForProjectsListDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *BoundImagesForProjectsListDto) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *BoundImagesForProjectsListDto) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -154,36 +164,46 @@ func (o *BoundImagesForProjectsListDto) UnsetProjectId() {
 	o.ProjectId.Unset()
 }
 
-// GetProjectName returns the ProjectName field value if set, zero value otherwise.
+// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BoundImagesForProjectsListDto) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName) {
+	if o == nil || IsNil(o.ProjectName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName
+	return *o.ProjectName.Get()
 }
 
 // GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BoundImagesForProjectsListDto) GetProjectNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ProjectName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName, true
+	return o.ProjectName.Get(), o.ProjectName.IsSet()
 }
 
 // HasProjectName returns a boolean if a field has been set.
 func (o *BoundImagesForProjectsListDto) HasProjectName() bool {
-	if o != nil && !IsNil(o.ProjectName) {
+	if o != nil && o.ProjectName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
+// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
 func (o *BoundImagesForProjectsListDto) SetProjectName(v string) {
-	o.ProjectName = &v
+	o.ProjectName.Set(&v)
+}
+// SetProjectNameNil sets the value for ProjectName to be an explicit nil
+func (o *BoundImagesForProjectsListDto) SetProjectNameNil() {
+	o.ProjectName.Set(nil)
+}
+
+// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
+func (o *BoundImagesForProjectsListDto) UnsetProjectName() {
+	o.ProjectName.Unset()
 }
 
 // GetSize returns the Size field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -228,36 +248,46 @@ func (o *BoundImagesForProjectsListDto) UnsetSize() {
 	o.Size.Unset()
 }
 
-// GetImageId returns the ImageId field value if set, zero value otherwise.
+// GetImageId returns the ImageId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BoundImagesForProjectsListDto) GetImageId() string {
-	if o == nil || IsNil(o.ImageId) {
+	if o == nil || IsNil(o.ImageId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ImageId
+	return *o.ImageId.Get()
 }
 
 // GetImageIdOk returns a tuple with the ImageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BoundImagesForProjectsListDto) GetImageIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ImageId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ImageId, true
+	return o.ImageId.Get(), o.ImageId.IsSet()
 }
 
 // HasImageId returns a boolean if a field has been set.
 func (o *BoundImagesForProjectsListDto) HasImageId() bool {
-	if o != nil && !IsNil(o.ImageId) {
+	if o != nil && o.ImageId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetImageId gets a reference to the given string and assigns it to the ImageId field.
+// SetImageId gets a reference to the given NullableString and assigns it to the ImageId field.
 func (o *BoundImagesForProjectsListDto) SetImageId(v string) {
-	o.ImageId = &v
+	o.ImageId.Set(&v)
+}
+// SetImageIdNil sets the value for ImageId to be an explicit nil
+func (o *BoundImagesForProjectsListDto) SetImageIdNil() {
+	o.ImageId.Set(nil)
+}
+
+// UnsetImageId ensures that no value is present for ImageId, not even an explicit nil
+func (o *BoundImagesForProjectsListDto) UnsetImageId() {
+	o.ImageId.Unset()
 }
 
 // GetCloudId returns the CloudId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -379,20 +409,20 @@ func (o BoundImagesForProjectsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
 	if o.ProjectId.IsSet() {
 		toSerialize["projectId"] = o.ProjectId.Get()
 	}
-	if !IsNil(o.ProjectName) {
-		toSerialize["projectName"] = o.ProjectName
+	if o.ProjectName.IsSet() {
+		toSerialize["projectName"] = o.ProjectName.Get()
 	}
 	if o.Size.IsSet() {
 		toSerialize["size"] = o.Size.Get()
 	}
-	if !IsNil(o.ImageId) {
-		toSerialize["imageId"] = o.ImageId
+	if o.ImageId.IsSet() {
+		toSerialize["imageId"] = o.ImageId.Get()
 	}
 	if o.CloudId.IsSet() {
 		toSerialize["cloudId"] = o.CloudId.Get()

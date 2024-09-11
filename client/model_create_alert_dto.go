@@ -21,7 +21,7 @@ var _ MappedNullable = &CreateAlertDto{}
 // CreateAlertDto struct for CreateAlertDto
 type CreateAlertDto struct {
 	Alerts []KubernetesAlertCreateDto `json:"alerts,omitempty"`
-	Status *string `json:"status,omitempty"`
+	Status NullableString `json:"status,omitempty"`
 }
 
 // NewCreateAlertDto instantiates a new CreateAlertDto object
@@ -41,9 +41,9 @@ func NewCreateAlertDtoWithDefaults() *CreateAlertDto {
 	return &this
 }
 
-// GetAlerts returns the Alerts field value if set, zero value otherwise.
+// GetAlerts returns the Alerts field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateAlertDto) GetAlerts() []KubernetesAlertCreateDto {
-	if o == nil || IsNil(o.Alerts) {
+	if o == nil {
 		var ret []KubernetesAlertCreateDto
 		return ret
 	}
@@ -52,6 +52,7 @@ func (o *CreateAlertDto) GetAlerts() []KubernetesAlertCreateDto {
 
 // GetAlertsOk returns a tuple with the Alerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAlertDto) GetAlertsOk() ([]KubernetesAlertCreateDto, bool) {
 	if o == nil || IsNil(o.Alerts) {
 		return nil, false
@@ -73,36 +74,46 @@ func (o *CreateAlertDto) SetAlerts(v []KubernetesAlertCreateDto) {
 	o.Alerts = v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateAlertDto) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Status
+	return *o.Status.Get()
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAlertDto) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.Status.Get(), o.Status.IsSet()
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *CreateAlertDto) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
+	if o != nil && o.Status.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
 func (o *CreateAlertDto) SetStatus(v string) {
-	o.Status = &v
+	o.Status.Set(&v)
+}
+// SetStatusNil sets the value for Status to be an explicit nil
+func (o *CreateAlertDto) SetStatusNil() {
+	o.Status.Set(nil)
+}
+
+// UnsetStatus ensures that no value is present for Status, not even an explicit nil
+func (o *CreateAlertDto) UnsetStatus() {
+	o.Status.Unset()
 }
 
 func (o CreateAlertDto) MarshalJSON() ([]byte, error) {
@@ -115,11 +126,11 @@ func (o CreateAlertDto) MarshalJSON() ([]byte, error) {
 
 func (o CreateAlertDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Alerts) {
+	if o.Alerts != nil {
 		toSerialize["alerts"] = o.Alerts
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if o.Status.IsSet() {
+		toSerialize["status"] = o.Status.Get()
 	}
 	return toSerialize, nil
 }

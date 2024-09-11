@@ -1169,23 +1169,13 @@ func (a *TicketAPIService) TicketEditMessageExecute(r ApiTicketEditMessageReques
 type ApiTicketListRequest struct {
 	ctx context.Context
 	ApiService *TicketAPIService
-	search *string
-	ticketId *string
 	limit *int32
 	offset *int32
 	organizationId *int32
+	search *string
 	startDate *time.Time
 	endDate *time.Time
-}
-
-func (r ApiTicketListRequest) Search(search string) ApiTicketListRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiTicketListRequest) TicketId(ticketId string) ApiTicketListRequest {
-	r.ticketId = &ticketId
-	return r
+	ticketId *string
 }
 
 func (r ApiTicketListRequest) Limit(limit int32) ApiTicketListRequest {
@@ -1203,6 +1193,11 @@ func (r ApiTicketListRequest) OrganizationId(organizationId int32) ApiTicketList
 	return r
 }
 
+func (r ApiTicketListRequest) Search(search string) ApiTicketListRequest {
+	r.search = &search
+	return r
+}
+
 func (r ApiTicketListRequest) StartDate(startDate time.Time) ApiTicketListRequest {
 	r.startDate = &startDate
 	return r
@@ -1210,6 +1205,11 @@ func (r ApiTicketListRequest) StartDate(startDate time.Time) ApiTicketListReques
 
 func (r ApiTicketListRequest) EndDate(endDate time.Time) ApiTicketListRequest {
 	r.endDate = &endDate
+	return r
+}
+
+func (r ApiTicketListRequest) TicketId(ticketId string) ApiTicketListRequest {
+	r.ticketId = &ticketId
 	return r
 }
 
@@ -1250,12 +1250,6 @@ func (a *TicketAPIService) TicketListExecute(r ApiTicketListRequest) (*AllTicket
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.ticketId == nil {
-		return localVarReturnValue, nil, reportError("ticketId is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -1266,14 +1260,18 @@ func (a *TicketAPIService) TicketListExecute(r ApiTicketListRequest) (*AllTicket
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.startDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "StartDate", r.startDate, "form", "")
 	}
 	if r.endDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndDate", r.endDate, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "TicketId", r.ticketId, "form", "")
+	if r.ticketId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "TicketId", r.ticketId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -21,8 +21,8 @@ var _ MappedNullable = &PartnerRecordDto{}
 // PartnerRecordDto struct for PartnerRecordDto
 type PartnerRecordDto struct {
 	Id *int32 `json:"id,omitempty"`
-	LogoUrl *string `json:"logoUrl,omitempty"`
-	BackgroundImageUrl *string `json:"backgroundImageUrl,omitempty"`
+	LogoUrl NullableString `json:"logoUrl,omitempty"`
+	BackgroundImageUrl NullableString `json:"backgroundImageUrl,omitempty"`
 	PaymentEnabled *bool `json:"paymentEnabled,omitempty"`
 	AllowRegistration *bool `json:"allowRegistration,omitempty"`
 	PartnerColorSettings *PartnerColorSettingsDto `json:"partnerColorSettings,omitempty"`
@@ -78,68 +78,88 @@ func (o *PartnerRecordDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetLogoUrl returns the LogoUrl field value if set, zero value otherwise.
+// GetLogoUrl returns the LogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerRecordDto) GetLogoUrl() string {
-	if o == nil || IsNil(o.LogoUrl) {
+	if o == nil || IsNil(o.LogoUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LogoUrl
+	return *o.LogoUrl.Get()
 }
 
 // GetLogoUrlOk returns a tuple with the LogoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerRecordDto) GetLogoUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.LogoUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LogoUrl, true
+	return o.LogoUrl.Get(), o.LogoUrl.IsSet()
 }
 
 // HasLogoUrl returns a boolean if a field has been set.
 func (o *PartnerRecordDto) HasLogoUrl() bool {
-	if o != nil && !IsNil(o.LogoUrl) {
+	if o != nil && o.LogoUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLogoUrl gets a reference to the given string and assigns it to the LogoUrl field.
+// SetLogoUrl gets a reference to the given NullableString and assigns it to the LogoUrl field.
 func (o *PartnerRecordDto) SetLogoUrl(v string) {
-	o.LogoUrl = &v
+	o.LogoUrl.Set(&v)
+}
+// SetLogoUrlNil sets the value for LogoUrl to be an explicit nil
+func (o *PartnerRecordDto) SetLogoUrlNil() {
+	o.LogoUrl.Set(nil)
 }
 
-// GetBackgroundImageUrl returns the BackgroundImageUrl field value if set, zero value otherwise.
+// UnsetLogoUrl ensures that no value is present for LogoUrl, not even an explicit nil
+func (o *PartnerRecordDto) UnsetLogoUrl() {
+	o.LogoUrl.Unset()
+}
+
+// GetBackgroundImageUrl returns the BackgroundImageUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerRecordDto) GetBackgroundImageUrl() string {
-	if o == nil || IsNil(o.BackgroundImageUrl) {
+	if o == nil || IsNil(o.BackgroundImageUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.BackgroundImageUrl
+	return *o.BackgroundImageUrl.Get()
 }
 
 // GetBackgroundImageUrlOk returns a tuple with the BackgroundImageUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerRecordDto) GetBackgroundImageUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.BackgroundImageUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BackgroundImageUrl, true
+	return o.BackgroundImageUrl.Get(), o.BackgroundImageUrl.IsSet()
 }
 
 // HasBackgroundImageUrl returns a boolean if a field has been set.
 func (o *PartnerRecordDto) HasBackgroundImageUrl() bool {
-	if o != nil && !IsNil(o.BackgroundImageUrl) {
+	if o != nil && o.BackgroundImageUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBackgroundImageUrl gets a reference to the given string and assigns it to the BackgroundImageUrl field.
+// SetBackgroundImageUrl gets a reference to the given NullableString and assigns it to the BackgroundImageUrl field.
 func (o *PartnerRecordDto) SetBackgroundImageUrl(v string) {
-	o.BackgroundImageUrl = &v
+	o.BackgroundImageUrl.Set(&v)
+}
+// SetBackgroundImageUrlNil sets the value for BackgroundImageUrl to be an explicit nil
+func (o *PartnerRecordDto) SetBackgroundImageUrlNil() {
+	o.BackgroundImageUrl.Set(nil)
+}
+
+// UnsetBackgroundImageUrl ensures that no value is present for BackgroundImageUrl, not even an explicit nil
+func (o *PartnerRecordDto) UnsetBackgroundImageUrl() {
+	o.BackgroundImageUrl.Unset()
 }
 
 // GetPaymentEnabled returns the PaymentEnabled field value if set, zero value otherwise.
@@ -283,11 +303,11 @@ func (o PartnerRecordDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.LogoUrl) {
-		toSerialize["logoUrl"] = o.LogoUrl
+	if o.LogoUrl.IsSet() {
+		toSerialize["logoUrl"] = o.LogoUrl.Get()
 	}
-	if !IsNil(o.BackgroundImageUrl) {
-		toSerialize["backgroundImageUrl"] = o.BackgroundImageUrl
+	if o.BackgroundImageUrl.IsSet() {
+		toSerialize["backgroundImageUrl"] = o.BackgroundImageUrl.Get()
 	}
 	if !IsNil(o.PaymentEnabled) {
 		toSerialize["paymentEnabled"] = o.PaymentEnabled

@@ -20,8 +20,8 @@ var _ MappedNullable = &Filter{}
 
 // Filter struct for Filter
 type Filter struct {
-	Operator *string `json:"operator,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Operator NullableString `json:"operator,omitempty"`
+	Value NullableString `json:"value,omitempty"`
 }
 
 // NewFilter instantiates a new Filter object
@@ -41,68 +41,88 @@ func NewFilterWithDefaults() *Filter {
 	return &this
 }
 
-// GetOperator returns the Operator field value if set, zero value otherwise.
+// GetOperator returns the Operator field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Filter) GetOperator() string {
-	if o == nil || IsNil(o.Operator) {
+	if o == nil || IsNil(o.Operator.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Operator
+	return *o.Operator.Get()
 }
 
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Filter) GetOperatorOk() (*string, bool) {
-	if o == nil || IsNil(o.Operator) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Operator, true
+	return o.Operator.Get(), o.Operator.IsSet()
 }
 
 // HasOperator returns a boolean if a field has been set.
 func (o *Filter) HasOperator() bool {
-	if o != nil && !IsNil(o.Operator) {
+	if o != nil && o.Operator.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOperator gets a reference to the given string and assigns it to the Operator field.
+// SetOperator gets a reference to the given NullableString and assigns it to the Operator field.
 func (o *Filter) SetOperator(v string) {
-	o.Operator = &v
+	o.Operator.Set(&v)
+}
+// SetOperatorNil sets the value for Operator to be an explicit nil
+func (o *Filter) SetOperatorNil() {
+	o.Operator.Set(nil)
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// UnsetOperator ensures that no value is present for Operator, not even an explicit nil
+func (o *Filter) UnsetOperator() {
+	o.Operator.Unset()
+}
+
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Filter) GetValue() string {
-	if o == nil || IsNil(o.Value) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Filter) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *Filter) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue gets a reference to the given NullableString and assigns it to the Value field.
 func (o *Filter) SetValue(v string) {
-	o.Value = &v
+	o.Value.Set(&v)
+}
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *Filter) SetValueNil() {
+	o.Value.Set(nil)
+}
+
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *Filter) UnsetValue() {
+	o.Value.Unset()
 }
 
 func (o Filter) MarshalJSON() ([]byte, error) {
@@ -115,11 +135,11 @@ func (o Filter) MarshalJSON() ([]byte, error) {
 
 func (o Filter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Operator) {
-		toSerialize["operator"] = o.Operator
+	if o.Operator.IsSet() {
+		toSerialize["operator"] = o.Operator.Get()
 	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
 	return toSerialize, nil
 }

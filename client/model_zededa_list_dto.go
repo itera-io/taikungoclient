@@ -23,21 +23,21 @@ type ZededaListDto struct {
 	Id *int32 `json:"id,omitempty"`
 	ProjectCount *int32 `json:"projectCount,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy *string `json:"createdBy,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
-	LastModified *string `json:"lastModified,omitempty"`
-	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName *string `json:"organizationName,omitempty"`
-	ContinentName *string `json:"continentName,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	ContinentName NullableString `json:"continentName,omitempty"`
 	EdgeNodes []CommonDropdownDto `json:"edgeNodes,omitempty"`
-	ApiToken *string `json:"apiToken,omitempty"`
-	ApiUrl *string `json:"apiUrl,omitempty"`
-	Project *string `json:"project,omitempty"`
-	ProjectId *string `json:"projectId,omitempty"`
+	ApiToken NullableString `json:"apiToken,omitempty"`
+	ApiUrl NullableString `json:"apiUrl,omitempty"`
+	Project NullableString `json:"project,omitempty"`
+	ProjectId NullableString `json:"projectId,omitempty"`
 	ZededaNetworks []ZededaNetworkListDto `json:"zededaNetworks,omitempty"`
 }
 
@@ -154,41 +154,51 @@ func (o *ZededaListDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ZededaListDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *ZededaListDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *ZededaListDto) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *ZededaListDto) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetProjects() []CommonDropdownDto {
-	if o == nil || IsNil(o.Projects) {
+	if o == nil {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -197,6 +207,7 @@ func (o *ZededaListDto) GetProjects() []CommonDropdownDto {
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
@@ -218,132 +229,172 @@ func (o *ZededaListDto) SetProjects(v []CommonDropdownDto) {
 	o.Projects = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy
+	return *o.CreatedBy.Get()
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetCreatedByOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedBy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy, true
+	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *ZededaListDto) HasCreatedBy() bool {
-	if o != nil && !IsNil(o.CreatedBy) {
+	if o != nil && o.CreatedBy.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
+// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
 func (o *ZededaListDto) SetCreatedBy(v string) {
-	o.CreatedBy = &v
+	o.CreatedBy.Set(&v)
+}
+// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
+func (o *ZededaListDto) SetCreatedByNil() {
+	o.CreatedBy.Set(nil)
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
+func (o *ZededaListDto) UnsetCreatedBy() {
+	o.CreatedBy.Unset()
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *ZededaListDto) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
 func (o *ZededaListDto) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *ZededaListDto) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
 }
 
-// GetLastModified returns the LastModified field value if set, zero value otherwise.
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *ZededaListDto) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
+}
+
+// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified) {
+	if o == nil || IsNil(o.LastModified.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LastModified
+	return *o.LastModified.Get()
 }
 
 // GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetLastModifiedOk() (*string, bool) {
-	if o == nil || IsNil(o.LastModified) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastModified, true
+	return o.LastModified.Get(), o.LastModified.IsSet()
 }
 
 // HasLastModified returns a boolean if a field has been set.
 func (o *ZededaListDto) HasLastModified() bool {
-	if o != nil && !IsNil(o.LastModified) {
+	if o != nil && o.LastModified.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
+// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
 func (o *ZededaListDto) SetLastModified(v string) {
-	o.LastModified = &v
+	o.LastModified.Set(&v)
+}
+// SetLastModifiedNil sets the value for LastModified to be an explicit nil
+func (o *ZededaListDto) SetLastModifiedNil() {
+	o.LastModified.Set(nil)
 }
 
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
+// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
+func (o *ZededaListDto) UnsetLastModified() {
+	o.LastModified.Unset()
+}
+
+// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy) {
+	if o == nil || IsNil(o.LastModifiedBy.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LastModifiedBy
+	return *o.LastModifiedBy.Get()
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetLastModifiedByOk() (*string, bool) {
-	if o == nil || IsNil(o.LastModifiedBy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy, true
+	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *ZededaListDto) HasLastModifiedBy() bool {
-	if o != nil && !IsNil(o.LastModifiedBy) {
+	if o != nil && o.LastModifiedBy.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModifiedBy gets a reference to the given string and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
 func (o *ZededaListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy = &v
+	o.LastModifiedBy.Set(&v)
+}
+// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
+func (o *ZededaListDto) SetLastModifiedByNil() {
+	o.LastModifiedBy.Set(nil)
+}
+
+// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
+func (o *ZededaListDto) UnsetLastModifiedBy() {
+	o.LastModifiedBy.Unset()
 }
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
@@ -410,73 +461,93 @@ func (o *ZededaListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil || IsNil(o.OrganizationName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName
+	return *o.OrganizationName.Get()
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName, true
+	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *ZededaListDto) HasOrganizationName() bool {
-	if o != nil && !IsNil(o.OrganizationName) {
+	if o != nil && o.OrganizationName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
 func (o *ZededaListDto) SetOrganizationName(v string) {
-	o.OrganizationName = &v
+	o.OrganizationName.Set(&v)
+}
+// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
+func (o *ZededaListDto) SetOrganizationNameNil() {
+	o.OrganizationName.Set(nil)
 }
 
-// GetContinentName returns the ContinentName field value if set, zero value otherwise.
+// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
+func (o *ZededaListDto) UnsetOrganizationName() {
+	o.OrganizationName.Unset()
+}
+
+// GetContinentName returns the ContinentName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetContinentName() string {
-	if o == nil || IsNil(o.ContinentName) {
+	if o == nil || IsNil(o.ContinentName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ContinentName
+	return *o.ContinentName.Get()
 }
 
 // GetContinentNameOk returns a tuple with the ContinentName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetContinentNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ContinentName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ContinentName, true
+	return o.ContinentName.Get(), o.ContinentName.IsSet()
 }
 
 // HasContinentName returns a boolean if a field has been set.
 func (o *ZededaListDto) HasContinentName() bool {
-	if o != nil && !IsNil(o.ContinentName) {
+	if o != nil && o.ContinentName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetContinentName gets a reference to the given string and assigns it to the ContinentName field.
+// SetContinentName gets a reference to the given NullableString and assigns it to the ContinentName field.
 func (o *ZededaListDto) SetContinentName(v string) {
-	o.ContinentName = &v
+	o.ContinentName.Set(&v)
+}
+// SetContinentNameNil sets the value for ContinentName to be an explicit nil
+func (o *ZededaListDto) SetContinentNameNil() {
+	o.ContinentName.Set(nil)
 }
 
-// GetEdgeNodes returns the EdgeNodes field value if set, zero value otherwise.
+// UnsetContinentName ensures that no value is present for ContinentName, not even an explicit nil
+func (o *ZededaListDto) UnsetContinentName() {
+	o.ContinentName.Unset()
+}
+
+// GetEdgeNodes returns the EdgeNodes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetEdgeNodes() []CommonDropdownDto {
-	if o == nil || IsNil(o.EdgeNodes) {
+	if o == nil {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -485,6 +556,7 @@ func (o *ZededaListDto) GetEdgeNodes() []CommonDropdownDto {
 
 // GetEdgeNodesOk returns a tuple with the EdgeNodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetEdgeNodesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.EdgeNodes) {
 		return nil, false
@@ -506,137 +578,177 @@ func (o *ZededaListDto) SetEdgeNodes(v []CommonDropdownDto) {
 	o.EdgeNodes = v
 }
 
-// GetApiToken returns the ApiToken field value if set, zero value otherwise.
+// GetApiToken returns the ApiToken field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetApiToken() string {
-	if o == nil || IsNil(o.ApiToken) {
+	if o == nil || IsNil(o.ApiToken.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ApiToken
+	return *o.ApiToken.Get()
 }
 
 // GetApiTokenOk returns a tuple with the ApiToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetApiTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.ApiToken) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ApiToken, true
+	return o.ApiToken.Get(), o.ApiToken.IsSet()
 }
 
 // HasApiToken returns a boolean if a field has been set.
 func (o *ZededaListDto) HasApiToken() bool {
-	if o != nil && !IsNil(o.ApiToken) {
+	if o != nil && o.ApiToken.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetApiToken gets a reference to the given string and assigns it to the ApiToken field.
+// SetApiToken gets a reference to the given NullableString and assigns it to the ApiToken field.
 func (o *ZededaListDto) SetApiToken(v string) {
-	o.ApiToken = &v
+	o.ApiToken.Set(&v)
+}
+// SetApiTokenNil sets the value for ApiToken to be an explicit nil
+func (o *ZededaListDto) SetApiTokenNil() {
+	o.ApiToken.Set(nil)
 }
 
-// GetApiUrl returns the ApiUrl field value if set, zero value otherwise.
+// UnsetApiToken ensures that no value is present for ApiToken, not even an explicit nil
+func (o *ZededaListDto) UnsetApiToken() {
+	o.ApiToken.Unset()
+}
+
+// GetApiUrl returns the ApiUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetApiUrl() string {
-	if o == nil || IsNil(o.ApiUrl) {
+	if o == nil || IsNil(o.ApiUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ApiUrl
+	return *o.ApiUrl.Get()
 }
 
 // GetApiUrlOk returns a tuple with the ApiUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetApiUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.ApiUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ApiUrl, true
+	return o.ApiUrl.Get(), o.ApiUrl.IsSet()
 }
 
 // HasApiUrl returns a boolean if a field has been set.
 func (o *ZededaListDto) HasApiUrl() bool {
-	if o != nil && !IsNil(o.ApiUrl) {
+	if o != nil && o.ApiUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetApiUrl gets a reference to the given string and assigns it to the ApiUrl field.
+// SetApiUrl gets a reference to the given NullableString and assigns it to the ApiUrl field.
 func (o *ZededaListDto) SetApiUrl(v string) {
-	o.ApiUrl = &v
+	o.ApiUrl.Set(&v)
+}
+// SetApiUrlNil sets the value for ApiUrl to be an explicit nil
+func (o *ZededaListDto) SetApiUrlNil() {
+	o.ApiUrl.Set(nil)
 }
 
-// GetProject returns the Project field value if set, zero value otherwise.
+// UnsetApiUrl ensures that no value is present for ApiUrl, not even an explicit nil
+func (o *ZededaListDto) UnsetApiUrl() {
+	o.ApiUrl.Unset()
+}
+
+// GetProject returns the Project field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetProject() string {
-	if o == nil || IsNil(o.Project) {
+	if o == nil || IsNil(o.Project.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Project
+	return *o.Project.Get()
 }
 
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetProjectOk() (*string, bool) {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Project, true
+	return o.Project.Get(), o.Project.IsSet()
 }
 
 // HasProject returns a boolean if a field has been set.
 func (o *ZededaListDto) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
+	if o != nil && o.Project.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProject gets a reference to the given string and assigns it to the Project field.
+// SetProject gets a reference to the given NullableString and assigns it to the Project field.
 func (o *ZededaListDto) SetProject(v string) {
-	o.Project = &v
+	o.Project.Set(&v)
+}
+// SetProjectNil sets the value for Project to be an explicit nil
+func (o *ZededaListDto) SetProjectNil() {
+	o.Project.Set(nil)
 }
 
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+// UnsetProject ensures that no value is present for Project, not even an explicit nil
+func (o *ZededaListDto) UnsetProject() {
+	o.Project.Unset()
+}
+
+// GetProjectId returns the ProjectId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetProjectId() string {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil || IsNil(o.ProjectId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProjectId
+	return *o.ProjectId.Get()
 }
 
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetProjectIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectId, true
+	return o.ProjectId.Get(), o.ProjectId.IsSet()
 }
 
 // HasProjectId returns a boolean if a field has been set.
 func (o *ZededaListDto) HasProjectId() bool {
-	if o != nil && !IsNil(o.ProjectId) {
+	if o != nil && o.ProjectId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
+// SetProjectId gets a reference to the given NullableString and assigns it to the ProjectId field.
 func (o *ZededaListDto) SetProjectId(v string) {
-	o.ProjectId = &v
+	o.ProjectId.Set(&v)
+}
+// SetProjectIdNil sets the value for ProjectId to be an explicit nil
+func (o *ZededaListDto) SetProjectIdNil() {
+	o.ProjectId.Set(nil)
 }
 
-// GetZededaNetworks returns the ZededaNetworks field value if set, zero value otherwise.
+// UnsetProjectId ensures that no value is present for ProjectId, not even an explicit nil
+func (o *ZededaListDto) UnsetProjectId() {
+	o.ProjectId.Unset()
+}
+
+// GetZededaNetworks returns the ZededaNetworks field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ZededaListDto) GetZededaNetworks() []ZededaNetworkListDto {
-	if o == nil || IsNil(o.ZededaNetworks) {
+	if o == nil {
 		var ret []ZededaNetworkListDto
 		return ret
 	}
@@ -645,6 +757,7 @@ func (o *ZededaListDto) GetZededaNetworks() []ZededaNetworkListDto {
 
 // GetZededaNetworksOk returns a tuple with the ZededaNetworks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaListDto) GetZededaNetworksOk() ([]ZededaNetworkListDto, bool) {
 	if o == nil || IsNil(o.ZededaNetworks) {
 		return nil, false
@@ -685,23 +798,23 @@ func (o ZededaListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Projects) {
+	if o.Projects != nil {
 		toSerialize["projects"] = o.Projects
 	}
-	if !IsNil(o.CreatedBy) {
-		toSerialize["createdBy"] = o.CreatedBy
+	if o.CreatedBy.IsSet() {
+		toSerialize["createdBy"] = o.CreatedBy.Get()
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
-	if !IsNil(o.LastModified) {
-		toSerialize["lastModified"] = o.LastModified
+	if o.LastModified.IsSet() {
+		toSerialize["lastModified"] = o.LastModified.Get()
 	}
-	if !IsNil(o.LastModifiedBy) {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy
+	if o.LastModifiedBy.IsSet() {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
@@ -709,28 +822,28 @@ func (o ZededaListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if !IsNil(o.OrganizationName) {
-		toSerialize["organizationName"] = o.OrganizationName
+	if o.OrganizationName.IsSet() {
+		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
-	if !IsNil(o.ContinentName) {
-		toSerialize["continentName"] = o.ContinentName
+	if o.ContinentName.IsSet() {
+		toSerialize["continentName"] = o.ContinentName.Get()
 	}
-	if !IsNil(o.EdgeNodes) {
+	if o.EdgeNodes != nil {
 		toSerialize["edgeNodes"] = o.EdgeNodes
 	}
-	if !IsNil(o.ApiToken) {
-		toSerialize["apiToken"] = o.ApiToken
+	if o.ApiToken.IsSet() {
+		toSerialize["apiToken"] = o.ApiToken.Get()
 	}
-	if !IsNil(o.ApiUrl) {
-		toSerialize["apiUrl"] = o.ApiUrl
+	if o.ApiUrl.IsSet() {
+		toSerialize["apiUrl"] = o.ApiUrl.Get()
 	}
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
+	if o.Project.IsSet() {
+		toSerialize["project"] = o.Project.Get()
 	}
-	if !IsNil(o.ProjectId) {
-		toSerialize["projectId"] = o.ProjectId
+	if o.ProjectId.IsSet() {
+		toSerialize["projectId"] = o.ProjectId.Get()
 	}
-	if !IsNil(o.ZededaNetworks) {
+	if o.ZededaNetworks != nil {
 		toSerialize["zededaNetworks"] = o.ZededaNetworks
 	}
 	return toSerialize, nil

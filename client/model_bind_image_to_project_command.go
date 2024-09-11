@@ -73,9 +73,9 @@ func (o *BindImageToProjectCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetImages returns the Images field value if set, zero value otherwise.
+// GetImages returns the Images field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BindImageToProjectCommand) GetImages() []string {
-	if o == nil || IsNil(o.Images) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -84,6 +84,7 @@ func (o *BindImageToProjectCommand) GetImages() []string {
 
 // GetImagesOk returns a tuple with the Images field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindImageToProjectCommand) GetImagesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Images) {
 		return nil, false
@@ -118,7 +119,7 @@ func (o BindImageToProjectCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.Images) {
+	if o.Images != nil {
 		toSerialize["images"] = o.Images
 	}
 	return toSerialize, nil

@@ -25,10 +25,10 @@ type PrometheusBillingSummaryDto struct {
 	StartDate *time.Time `json:"startDate,omitempty"`
 	EndDate NullableTime `json:"endDate,omitempty"`
 	PrometheusRuleId *int32 `json:"prometheusRuleId,omitempty"`
-	RuleName *string `json:"ruleName,omitempty"`
-	CreatedBy *string `json:"createdBy,omitempty"`
-	LastModified *string `json:"lastModified,omitempty"`
-	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
+	RuleName NullableString `json:"ruleName,omitempty"`
+	CreatedBy NullableString `json:"createdBy,omitempty"`
+	LastModified NullableString `json:"lastModified,omitempty"`
+	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
 }
 
 // NewPrometheusBillingSummaryDto instantiates a new PrometheusBillingSummaryDto object
@@ -186,132 +186,172 @@ func (o *PrometheusBillingSummaryDto) SetPrometheusRuleId(v int32) {
 	o.PrometheusRuleId = &v
 }
 
-// GetRuleName returns the RuleName field value if set, zero value otherwise.
+// GetRuleName returns the RuleName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PrometheusBillingSummaryDto) GetRuleName() string {
-	if o == nil || IsNil(o.RuleName) {
+	if o == nil || IsNil(o.RuleName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RuleName
+	return *o.RuleName.Get()
 }
 
 // GetRuleNameOk returns a tuple with the RuleName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusBillingSummaryDto) GetRuleNameOk() (*string, bool) {
-	if o == nil || IsNil(o.RuleName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RuleName, true
+	return o.RuleName.Get(), o.RuleName.IsSet()
 }
 
 // HasRuleName returns a boolean if a field has been set.
 func (o *PrometheusBillingSummaryDto) HasRuleName() bool {
-	if o != nil && !IsNil(o.RuleName) {
+	if o != nil && o.RuleName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRuleName gets a reference to the given string and assigns it to the RuleName field.
+// SetRuleName gets a reference to the given NullableString and assigns it to the RuleName field.
 func (o *PrometheusBillingSummaryDto) SetRuleName(v string) {
-	o.RuleName = &v
+	o.RuleName.Set(&v)
+}
+// SetRuleNameNil sets the value for RuleName to be an explicit nil
+func (o *PrometheusBillingSummaryDto) SetRuleNameNil() {
+	o.RuleName.Set(nil)
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
+// UnsetRuleName ensures that no value is present for RuleName, not even an explicit nil
+func (o *PrometheusBillingSummaryDto) UnsetRuleName() {
+	o.RuleName.Unset()
+}
+
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PrometheusBillingSummaryDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy) {
+	if o == nil || IsNil(o.CreatedBy.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy
+	return *o.CreatedBy.Get()
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusBillingSummaryDto) GetCreatedByOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedBy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy, true
+	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *PrometheusBillingSummaryDto) HasCreatedBy() bool {
-	if o != nil && !IsNil(o.CreatedBy) {
+	if o != nil && o.CreatedBy.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
+// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
 func (o *PrometheusBillingSummaryDto) SetCreatedBy(v string) {
-	o.CreatedBy = &v
+	o.CreatedBy.Set(&v)
+}
+// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
+func (o *PrometheusBillingSummaryDto) SetCreatedByNil() {
+	o.CreatedBy.Set(nil)
 }
 
-// GetLastModified returns the LastModified field value if set, zero value otherwise.
+// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
+func (o *PrometheusBillingSummaryDto) UnsetCreatedBy() {
+	o.CreatedBy.Unset()
+}
+
+// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PrometheusBillingSummaryDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified) {
+	if o == nil || IsNil(o.LastModified.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LastModified
+	return *o.LastModified.Get()
 }
 
 // GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusBillingSummaryDto) GetLastModifiedOk() (*string, bool) {
-	if o == nil || IsNil(o.LastModified) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastModified, true
+	return o.LastModified.Get(), o.LastModified.IsSet()
 }
 
 // HasLastModified returns a boolean if a field has been set.
 func (o *PrometheusBillingSummaryDto) HasLastModified() bool {
-	if o != nil && !IsNil(o.LastModified) {
+	if o != nil && o.LastModified.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
+// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
 func (o *PrometheusBillingSummaryDto) SetLastModified(v string) {
-	o.LastModified = &v
+	o.LastModified.Set(&v)
+}
+// SetLastModifiedNil sets the value for LastModified to be an explicit nil
+func (o *PrometheusBillingSummaryDto) SetLastModifiedNil() {
+	o.LastModified.Set(nil)
 }
 
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
+// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
+func (o *PrometheusBillingSummaryDto) UnsetLastModified() {
+	o.LastModified.Unset()
+}
+
+// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PrometheusBillingSummaryDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy) {
+	if o == nil || IsNil(o.LastModifiedBy.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LastModifiedBy
+	return *o.LastModifiedBy.Get()
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusBillingSummaryDto) GetLastModifiedByOk() (*string, bool) {
-	if o == nil || IsNil(o.LastModifiedBy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy, true
+	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *PrometheusBillingSummaryDto) HasLastModifiedBy() bool {
-	if o != nil && !IsNil(o.LastModifiedBy) {
+	if o != nil && o.LastModifiedBy.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModifiedBy gets a reference to the given string and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
 func (o *PrometheusBillingSummaryDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy = &v
+	o.LastModifiedBy.Set(&v)
+}
+// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
+func (o *PrometheusBillingSummaryDto) SetLastModifiedByNil() {
+	o.LastModifiedBy.Set(nil)
+}
+
+// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
+func (o *PrometheusBillingSummaryDto) UnsetLastModifiedBy() {
+	o.LastModifiedBy.Unset()
 }
 
 func (o PrometheusBillingSummaryDto) MarshalJSON() ([]byte, error) {
@@ -336,17 +376,17 @@ func (o PrometheusBillingSummaryDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PrometheusRuleId) {
 		toSerialize["prometheusRuleId"] = o.PrometheusRuleId
 	}
-	if !IsNil(o.RuleName) {
-		toSerialize["ruleName"] = o.RuleName
+	if o.RuleName.IsSet() {
+		toSerialize["ruleName"] = o.RuleName.Get()
 	}
-	if !IsNil(o.CreatedBy) {
-		toSerialize["createdBy"] = o.CreatedBy
+	if o.CreatedBy.IsSet() {
+		toSerialize["createdBy"] = o.CreatedBy.Get()
 	}
-	if !IsNil(o.LastModified) {
-		toSerialize["lastModified"] = o.LastModified
+	if o.LastModified.IsSet() {
+		toSerialize["lastModified"] = o.LastModified.Get()
 	}
-	if !IsNil(o.LastModifiedBy) {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy
+	if o.LastModifiedBy.IsSet() {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
 	}
 	return toSerialize, nil
 }

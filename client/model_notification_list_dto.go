@@ -20,12 +20,12 @@ var _ MappedNullable = &NotificationListDto{}
 
 // NotificationListDto struct for NotificationListDto
 type NotificationListDto struct {
-	CreatedAt *string `json:"createdAt,omitempty"`
-	ActionMessage *string `json:"actionMessage,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	ActionMessage NullableString `json:"actionMessage,omitempty"`
 	ActionStatus *ActionStatus `json:"actionStatus,omitempty"`
-	Username *string `json:"username,omitempty"`
+	Username NullableString `json:"username,omitempty"`
 	Category *ActionType `json:"category,omitempty"`
-	ProjectName *string `json:"projectName,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 	IsDeleted *bool `json:"isDeleted,omitempty"`
 }
@@ -47,68 +47,88 @@ func NewNotificationListDtoWithDefaults() *NotificationListDto {
 	return &this
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NotificationListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NotificationListDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *NotificationListDto) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
 func (o *NotificationListDto) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *NotificationListDto) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
 }
 
-// GetActionMessage returns the ActionMessage field value if set, zero value otherwise.
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *NotificationListDto) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
+}
+
+// GetActionMessage returns the ActionMessage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NotificationListDto) GetActionMessage() string {
-	if o == nil || IsNil(o.ActionMessage) {
+	if o == nil || IsNil(o.ActionMessage.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ActionMessage
+	return *o.ActionMessage.Get()
 }
 
 // GetActionMessageOk returns a tuple with the ActionMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NotificationListDto) GetActionMessageOk() (*string, bool) {
-	if o == nil || IsNil(o.ActionMessage) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ActionMessage, true
+	return o.ActionMessage.Get(), o.ActionMessage.IsSet()
 }
 
 // HasActionMessage returns a boolean if a field has been set.
 func (o *NotificationListDto) HasActionMessage() bool {
-	if o != nil && !IsNil(o.ActionMessage) {
+	if o != nil && o.ActionMessage.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetActionMessage gets a reference to the given string and assigns it to the ActionMessage field.
+// SetActionMessage gets a reference to the given NullableString and assigns it to the ActionMessage field.
 func (o *NotificationListDto) SetActionMessage(v string) {
-	o.ActionMessage = &v
+	o.ActionMessage.Set(&v)
+}
+// SetActionMessageNil sets the value for ActionMessage to be an explicit nil
+func (o *NotificationListDto) SetActionMessageNil() {
+	o.ActionMessage.Set(nil)
+}
+
+// UnsetActionMessage ensures that no value is present for ActionMessage, not even an explicit nil
+func (o *NotificationListDto) UnsetActionMessage() {
+	o.ActionMessage.Unset()
 }
 
 // GetActionStatus returns the ActionStatus field value if set, zero value otherwise.
@@ -143,36 +163,46 @@ func (o *NotificationListDto) SetActionStatus(v ActionStatus) {
 	o.ActionStatus = &v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NotificationListDto) GetUsername() string {
-	if o == nil || IsNil(o.Username) {
+	if o == nil || IsNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Username
+	return *o.Username.Get()
 }
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NotificationListDto) GetUsernameOk() (*string, bool) {
-	if o == nil || IsNil(o.Username) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Username, true
+	return o.Username.Get(), o.Username.IsSet()
 }
 
 // HasUsername returns a boolean if a field has been set.
 func (o *NotificationListDto) HasUsername() bool {
-	if o != nil && !IsNil(o.Username) {
+	if o != nil && o.Username.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUsername gets a reference to the given string and assigns it to the Username field.
+// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
 func (o *NotificationListDto) SetUsername(v string) {
-	o.Username = &v
+	o.Username.Set(&v)
+}
+// SetUsernameNil sets the value for Username to be an explicit nil
+func (o *NotificationListDto) SetUsernameNil() {
+	o.Username.Set(nil)
+}
+
+// UnsetUsername ensures that no value is present for Username, not even an explicit nil
+func (o *NotificationListDto) UnsetUsername() {
+	o.Username.Unset()
 }
 
 // GetCategory returns the Category field value if set, zero value otherwise.
@@ -207,36 +237,46 @@ func (o *NotificationListDto) SetCategory(v ActionType) {
 	o.Category = &v
 }
 
-// GetProjectName returns the ProjectName field value if set, zero value otherwise.
+// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *NotificationListDto) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName) {
+	if o == nil || IsNil(o.ProjectName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName
+	return *o.ProjectName.Get()
 }
 
 // GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NotificationListDto) GetProjectNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ProjectName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName, true
+	return o.ProjectName.Get(), o.ProjectName.IsSet()
 }
 
 // HasProjectName returns a boolean if a field has been set.
 func (o *NotificationListDto) HasProjectName() bool {
-	if o != nil && !IsNil(o.ProjectName) {
+	if o != nil && o.ProjectName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
+// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
 func (o *NotificationListDto) SetProjectName(v string) {
-	o.ProjectName = &v
+	o.ProjectName.Set(&v)
+}
+// SetProjectNameNil sets the value for ProjectName to be an explicit nil
+func (o *NotificationListDto) SetProjectNameNil() {
+	o.ProjectName.Set(nil)
+}
+
+// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
+func (o *NotificationListDto) UnsetProjectName() {
+	o.ProjectName.Unset()
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
@@ -313,23 +353,23 @@ func (o NotificationListDto) MarshalJSON() ([]byte, error) {
 
 func (o NotificationListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
-	if !IsNil(o.ActionMessage) {
-		toSerialize["actionMessage"] = o.ActionMessage
+	if o.ActionMessage.IsSet() {
+		toSerialize["actionMessage"] = o.ActionMessage.Get()
 	}
 	if !IsNil(o.ActionStatus) {
 		toSerialize["actionStatus"] = o.ActionStatus
 	}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
+	if o.Username.IsSet() {
+		toSerialize["username"] = o.Username.Get()
 	}
 	if !IsNil(o.Category) {
 		toSerialize["category"] = o.Category
 	}
-	if !IsNil(o.ProjectName) {
-		toSerialize["projectName"] = o.ProjectName
+	if o.ProjectName.IsSet() {
+		toSerialize["projectName"] = o.ProjectName.Get()
 	}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId

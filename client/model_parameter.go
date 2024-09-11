@@ -20,9 +20,9 @@ var _ MappedNullable = &Parameter{}
 
 // Parameter struct for Parameter
 type Parameter struct {
-	Label *string `json:"label,omitempty"`
-	Operator *string `json:"operator,omitempty"`
-	Value *string `json:"value,omitempty"`
+	Label NullableString `json:"label,omitempty"`
+	Operator NullableString `json:"operator,omitempty"`
+	Value NullableString `json:"value,omitempty"`
 }
 
 // NewParameter instantiates a new Parameter object
@@ -42,100 +42,130 @@ func NewParameterWithDefaults() *Parameter {
 	return &this
 }
 
-// GetLabel returns the Label field value if set, zero value otherwise.
+// GetLabel returns the Label field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Parameter) GetLabel() string {
-	if o == nil || IsNil(o.Label) {
+	if o == nil || IsNil(o.Label.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Label
+	return *o.Label.Get()
 }
 
 // GetLabelOk returns a tuple with the Label field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Parameter) GetLabelOk() (*string, bool) {
-	if o == nil || IsNil(o.Label) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Label, true
+	return o.Label.Get(), o.Label.IsSet()
 }
 
 // HasLabel returns a boolean if a field has been set.
 func (o *Parameter) HasLabel() bool {
-	if o != nil && !IsNil(o.Label) {
+	if o != nil && o.Label.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLabel gets a reference to the given string and assigns it to the Label field.
+// SetLabel gets a reference to the given NullableString and assigns it to the Label field.
 func (o *Parameter) SetLabel(v string) {
-	o.Label = &v
+	o.Label.Set(&v)
+}
+// SetLabelNil sets the value for Label to be an explicit nil
+func (o *Parameter) SetLabelNil() {
+	o.Label.Set(nil)
 }
 
-// GetOperator returns the Operator field value if set, zero value otherwise.
+// UnsetLabel ensures that no value is present for Label, not even an explicit nil
+func (o *Parameter) UnsetLabel() {
+	o.Label.Unset()
+}
+
+// GetOperator returns the Operator field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Parameter) GetOperator() string {
-	if o == nil || IsNil(o.Operator) {
+	if o == nil || IsNil(o.Operator.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Operator
+	return *o.Operator.Get()
 }
 
 // GetOperatorOk returns a tuple with the Operator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Parameter) GetOperatorOk() (*string, bool) {
-	if o == nil || IsNil(o.Operator) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Operator, true
+	return o.Operator.Get(), o.Operator.IsSet()
 }
 
 // HasOperator returns a boolean if a field has been set.
 func (o *Parameter) HasOperator() bool {
-	if o != nil && !IsNil(o.Operator) {
+	if o != nil && o.Operator.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOperator gets a reference to the given string and assigns it to the Operator field.
+// SetOperator gets a reference to the given NullableString and assigns it to the Operator field.
 func (o *Parameter) SetOperator(v string) {
-	o.Operator = &v
+	o.Operator.Set(&v)
+}
+// SetOperatorNil sets the value for Operator to be an explicit nil
+func (o *Parameter) SetOperatorNil() {
+	o.Operator.Set(nil)
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// UnsetOperator ensures that no value is present for Operator, not even an explicit nil
+func (o *Parameter) UnsetOperator() {
+	o.Operator.Unset()
+}
+
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Parameter) GetValue() string {
-	if o == nil || IsNil(o.Value) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Parameter) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *Parameter) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue gets a reference to the given NullableString and assigns it to the Value field.
 func (o *Parameter) SetValue(v string) {
-	o.Value = &v
+	o.Value.Set(&v)
+}
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *Parameter) SetValueNil() {
+	o.Value.Set(nil)
+}
+
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *Parameter) UnsetValue() {
+	o.Value.Unset()
 }
 
 func (o Parameter) MarshalJSON() ([]byte, error) {
@@ -148,14 +178,14 @@ func (o Parameter) MarshalJSON() ([]byte, error) {
 
 func (o Parameter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Label) {
-		toSerialize["label"] = o.Label
+	if o.Label.IsSet() {
+		toSerialize["label"] = o.Label.Get()
 	}
-	if !IsNil(o.Operator) {
-		toSerialize["operator"] = o.Operator
+	if o.Operator.IsSet() {
+		toSerialize["operator"] = o.Operator.Get()
 	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
 	return toSerialize, nil
 }

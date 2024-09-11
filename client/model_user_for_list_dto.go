@@ -20,16 +20,16 @@ var _ MappedNullable = &UserForListDto{}
 
 // UserForListDto struct for UserForListDto
 type UserForListDto struct {
-	Id *string `json:"id,omitempty"`
-	Username *string `json:"username,omitempty"`
-	OrganizationName *string `json:"organizationName,omitempty"`
+	Id NullableString `json:"id,omitempty"`
+	Username NullableString `json:"username,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
 	HasCustomerId *bool `json:"hasCustomerId,omitempty"`
 	HasPaymentMethod *bool `json:"hasPaymentMethod,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
 	Role *UserRole `json:"role,omitempty"`
-	Email *string `json:"email,omitempty"`
-	DisplayName *string `json:"displayName,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	DisplayName NullableString `json:"displayName,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
 	IsEmailConfirmed *bool `json:"isEmailConfirmed,omitempty"`
 	IsEmailNotificationEnabled *bool `json:"isEmailNotificationEnabled,omitempty"`
 	IsForcedToResetPassword *bool `json:"isForcedToResetPassword,omitempty"`
@@ -42,7 +42,7 @@ type UserForListDto struct {
 	HasRepo *bool `json:"hasRepo,omitempty"`
 	IsNewOrganization *bool `json:"isNewOrganization,omitempty"`
 	Is2FAEnabled *bool `json:"is2FAEnabled,omitempty"`
-	LastLoginAt *string `json:"lastLoginAt,omitempty"`
+	LastLoginAt NullableString `json:"lastLoginAt,omitempty"`
 	BoundProjects []ProjectDto `json:"boundProjects,omitempty"`
 	Partner *PartnerDetailsForUserDto `json:"partner,omitempty"`
 }
@@ -64,100 +64,130 @@ func NewUserForListDtoWithDefaults() *UserForListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserForListDto) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Id
+	return *o.Id.Get()
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserForListDto) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Id.Get(), o.Id.IsSet()
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *UserForListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+	if o != nil && o.Id.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
 func (o *UserForListDto) SetId(v string) {
-	o.Id = &v
+	o.Id.Set(&v)
+}
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *UserForListDto) SetIdNil() {
+	o.Id.Set(nil)
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise.
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *UserForListDto) UnsetId() {
+	o.Id.Unset()
+}
+
+// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserForListDto) GetUsername() string {
-	if o == nil || IsNil(o.Username) {
+	if o == nil || IsNil(o.Username.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Username
+	return *o.Username.Get()
 }
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserForListDto) GetUsernameOk() (*string, bool) {
-	if o == nil || IsNil(o.Username) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Username, true
+	return o.Username.Get(), o.Username.IsSet()
 }
 
 // HasUsername returns a boolean if a field has been set.
 func (o *UserForListDto) HasUsername() bool {
-	if o != nil && !IsNil(o.Username) {
+	if o != nil && o.Username.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUsername gets a reference to the given string and assigns it to the Username field.
+// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
 func (o *UserForListDto) SetUsername(v string) {
-	o.Username = &v
+	o.Username.Set(&v)
+}
+// SetUsernameNil sets the value for Username to be an explicit nil
+func (o *UserForListDto) SetUsernameNil() {
+	o.Username.Set(nil)
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
+// UnsetUsername ensures that no value is present for Username, not even an explicit nil
+func (o *UserForListDto) UnsetUsername() {
+	o.Username.Unset()
+}
+
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserForListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil || IsNil(o.OrganizationName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName
+	return *o.OrganizationName.Get()
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserForListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName, true
+	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *UserForListDto) HasOrganizationName() bool {
-	if o != nil && !IsNil(o.OrganizationName) {
+	if o != nil && o.OrganizationName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
 func (o *UserForListDto) SetOrganizationName(v string) {
-	o.OrganizationName = &v
+	o.OrganizationName.Set(&v)
+}
+// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
+func (o *UserForListDto) SetOrganizationNameNil() {
+	o.OrganizationName.Set(nil)
+}
+
+// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
+func (o *UserForListDto) UnsetOrganizationName() {
+	o.OrganizationName.Unset()
 }
 
 // GetHasCustomerId returns the HasCustomerId field value if set, zero value otherwise.
@@ -288,100 +318,130 @@ func (o *UserForListDto) SetRole(v UserRole) {
 	o.Role = &v
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise.
+// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserForListDto) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Email
+	return *o.Email.Get()
 }
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserForListDto) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Email, true
+	return o.Email.Get(), o.Email.IsSet()
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *UserForListDto) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
+	if o != nil && o.Email.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given string and assigns it to the Email field.
+// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
 func (o *UserForListDto) SetEmail(v string) {
-	o.Email = &v
+	o.Email.Set(&v)
+}
+// SetEmailNil sets the value for Email to be an explicit nil
+func (o *UserForListDto) SetEmailNil() {
+	o.Email.Set(nil)
 }
 
-// GetDisplayName returns the DisplayName field value if set, zero value otherwise.
+// UnsetEmail ensures that no value is present for Email, not even an explicit nil
+func (o *UserForListDto) UnsetEmail() {
+	o.Email.Unset()
+}
+
+// GetDisplayName returns the DisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserForListDto) GetDisplayName() string {
-	if o == nil || IsNil(o.DisplayName) {
+	if o == nil || IsNil(o.DisplayName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DisplayName
+	return *o.DisplayName.Get()
 }
 
 // GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserForListDto) GetDisplayNameOk() (*string, bool) {
-	if o == nil || IsNil(o.DisplayName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DisplayName, true
+	return o.DisplayName.Get(), o.DisplayName.IsSet()
 }
 
 // HasDisplayName returns a boolean if a field has been set.
 func (o *UserForListDto) HasDisplayName() bool {
-	if o != nil && !IsNil(o.DisplayName) {
+	if o != nil && o.DisplayName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDisplayName gets a reference to the given string and assigns it to the DisplayName field.
+// SetDisplayName gets a reference to the given NullableString and assigns it to the DisplayName field.
 func (o *UserForListDto) SetDisplayName(v string) {
-	o.DisplayName = &v
+	o.DisplayName.Set(&v)
+}
+// SetDisplayNameNil sets the value for DisplayName to be an explicit nil
+func (o *UserForListDto) SetDisplayNameNil() {
+	o.DisplayName.Set(nil)
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
+func (o *UserForListDto) UnsetDisplayName() {
+	o.DisplayName.Unset()
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserForListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserForListDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *UserForListDto) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
 func (o *UserForListDto) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *UserForListDto) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
+}
+
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *UserForListDto) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
 }
 
 // GetIsEmailConfirmed returns the IsEmailConfirmed field value if set, zero value otherwise.
@@ -768,41 +828,51 @@ func (o *UserForListDto) SetIs2FAEnabled(v bool) {
 	o.Is2FAEnabled = &v
 }
 
-// GetLastLoginAt returns the LastLoginAt field value if set, zero value otherwise.
+// GetLastLoginAt returns the LastLoginAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserForListDto) GetLastLoginAt() string {
-	if o == nil || IsNil(o.LastLoginAt) {
+	if o == nil || IsNil(o.LastLoginAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LastLoginAt
+	return *o.LastLoginAt.Get()
 }
 
 // GetLastLoginAtOk returns a tuple with the LastLoginAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserForListDto) GetLastLoginAtOk() (*string, bool) {
-	if o == nil || IsNil(o.LastLoginAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastLoginAt, true
+	return o.LastLoginAt.Get(), o.LastLoginAt.IsSet()
 }
 
 // HasLastLoginAt returns a boolean if a field has been set.
 func (o *UserForListDto) HasLastLoginAt() bool {
-	if o != nil && !IsNil(o.LastLoginAt) {
+	if o != nil && o.LastLoginAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastLoginAt gets a reference to the given string and assigns it to the LastLoginAt field.
+// SetLastLoginAt gets a reference to the given NullableString and assigns it to the LastLoginAt field.
 func (o *UserForListDto) SetLastLoginAt(v string) {
-	o.LastLoginAt = &v
+	o.LastLoginAt.Set(&v)
+}
+// SetLastLoginAtNil sets the value for LastLoginAt to be an explicit nil
+func (o *UserForListDto) SetLastLoginAtNil() {
+	o.LastLoginAt.Set(nil)
 }
 
-// GetBoundProjects returns the BoundProjects field value if set, zero value otherwise.
+// UnsetLastLoginAt ensures that no value is present for LastLoginAt, not even an explicit nil
+func (o *UserForListDto) UnsetLastLoginAt() {
+	o.LastLoginAt.Unset()
+}
+
+// GetBoundProjects returns the BoundProjects field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserForListDto) GetBoundProjects() []ProjectDto {
-	if o == nil || IsNil(o.BoundProjects) {
+	if o == nil {
 		var ret []ProjectDto
 		return ret
 	}
@@ -811,6 +881,7 @@ func (o *UserForListDto) GetBoundProjects() []ProjectDto {
 
 // GetBoundProjectsOk returns a tuple with the BoundProjects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserForListDto) GetBoundProjectsOk() ([]ProjectDto, bool) {
 	if o == nil || IsNil(o.BoundProjects) {
 		return nil, false
@@ -874,14 +945,14 @@ func (o UserForListDto) MarshalJSON() ([]byte, error) {
 
 func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
 	}
-	if !IsNil(o.Username) {
-		toSerialize["username"] = o.Username
+	if o.Username.IsSet() {
+		toSerialize["username"] = o.Username.Get()
 	}
-	if !IsNil(o.OrganizationName) {
-		toSerialize["organizationName"] = o.OrganizationName
+	if o.OrganizationName.IsSet() {
+		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
 	if !IsNil(o.HasCustomerId) {
 		toSerialize["hasCustomerId"] = o.HasCustomerId
@@ -895,14 +966,14 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
-	if !IsNil(o.Email) {
-		toSerialize["email"] = o.Email
+	if o.Email.IsSet() {
+		toSerialize["email"] = o.Email.Get()
 	}
-	if !IsNil(o.DisplayName) {
-		toSerialize["displayName"] = o.DisplayName
+	if o.DisplayName.IsSet() {
+		toSerialize["displayName"] = o.DisplayName.Get()
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
 	if !IsNil(o.IsEmailConfirmed) {
 		toSerialize["isEmailConfirmed"] = o.IsEmailConfirmed
@@ -940,10 +1011,10 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Is2FAEnabled) {
 		toSerialize["is2FAEnabled"] = o.Is2FAEnabled
 	}
-	if !IsNil(o.LastLoginAt) {
-		toSerialize["lastLoginAt"] = o.LastLoginAt
+	if o.LastLoginAt.IsSet() {
+		toSerialize["lastLoginAt"] = o.LastLoginAt.Get()
 	}
-	if !IsNil(o.BoundProjects) {
+	if o.BoundProjects != nil {
 		toSerialize["boundProjects"] = o.BoundProjects
 	}
 	if !IsNil(o.Partner) {

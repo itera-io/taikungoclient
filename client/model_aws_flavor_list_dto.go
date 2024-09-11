@@ -22,12 +22,12 @@ var _ MappedNullable = &AwsFlavorListDto{}
 type AwsFlavorListDto struct {
 	Ram *float64 `json:"ram,omitempty"`
 	Cpu *int32 `json:"cpu,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Description interface{} `json:"description,omitempty"`
-	LinuxPrice *string `json:"linuxPrice,omitempty"`
-	WindowsPrice *string `json:"windowsPrice,omitempty"`
-	WindowsSpotPrice *string `json:"windowsSpotPrice,omitempty"`
-	LinuxSpotPrice *string `json:"linuxSpotPrice,omitempty"`
+	LinuxPrice NullableString `json:"linuxPrice,omitempty"`
+	WindowsPrice NullableString `json:"windowsPrice,omitempty"`
+	WindowsSpotPrice NullableString `json:"windowsSpotPrice,omitempty"`
+	LinuxSpotPrice NullableString `json:"linuxSpotPrice,omitempty"`
 	Zones []string `json:"zones,omitempty"`
 }
 
@@ -112,36 +112,46 @@ func (o *AwsFlavorListDto) SetCpu(v int32) {
 	o.Cpu = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AwsFlavorListDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AwsFlavorListDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *AwsFlavorListDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *AwsFlavorListDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *AwsFlavorListDto) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *AwsFlavorListDto) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -177,137 +187,177 @@ func (o *AwsFlavorListDto) SetDescription(v interface{}) {
 	o.Description = v
 }
 
-// GetLinuxPrice returns the LinuxPrice field value if set, zero value otherwise.
+// GetLinuxPrice returns the LinuxPrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AwsFlavorListDto) GetLinuxPrice() string {
-	if o == nil || IsNil(o.LinuxPrice) {
+	if o == nil || IsNil(o.LinuxPrice.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LinuxPrice
+	return *o.LinuxPrice.Get()
 }
 
 // GetLinuxPriceOk returns a tuple with the LinuxPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AwsFlavorListDto) GetLinuxPriceOk() (*string, bool) {
-	if o == nil || IsNil(o.LinuxPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LinuxPrice, true
+	return o.LinuxPrice.Get(), o.LinuxPrice.IsSet()
 }
 
 // HasLinuxPrice returns a boolean if a field has been set.
 func (o *AwsFlavorListDto) HasLinuxPrice() bool {
-	if o != nil && !IsNil(o.LinuxPrice) {
+	if o != nil && o.LinuxPrice.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLinuxPrice gets a reference to the given string and assigns it to the LinuxPrice field.
+// SetLinuxPrice gets a reference to the given NullableString and assigns it to the LinuxPrice field.
 func (o *AwsFlavorListDto) SetLinuxPrice(v string) {
-	o.LinuxPrice = &v
+	o.LinuxPrice.Set(&v)
+}
+// SetLinuxPriceNil sets the value for LinuxPrice to be an explicit nil
+func (o *AwsFlavorListDto) SetLinuxPriceNil() {
+	o.LinuxPrice.Set(nil)
 }
 
-// GetWindowsPrice returns the WindowsPrice field value if set, zero value otherwise.
+// UnsetLinuxPrice ensures that no value is present for LinuxPrice, not even an explicit nil
+func (o *AwsFlavorListDto) UnsetLinuxPrice() {
+	o.LinuxPrice.Unset()
+}
+
+// GetWindowsPrice returns the WindowsPrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AwsFlavorListDto) GetWindowsPrice() string {
-	if o == nil || IsNil(o.WindowsPrice) {
+	if o == nil || IsNil(o.WindowsPrice.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.WindowsPrice
+	return *o.WindowsPrice.Get()
 }
 
 // GetWindowsPriceOk returns a tuple with the WindowsPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AwsFlavorListDto) GetWindowsPriceOk() (*string, bool) {
-	if o == nil || IsNil(o.WindowsPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WindowsPrice, true
+	return o.WindowsPrice.Get(), o.WindowsPrice.IsSet()
 }
 
 // HasWindowsPrice returns a boolean if a field has been set.
 func (o *AwsFlavorListDto) HasWindowsPrice() bool {
-	if o != nil && !IsNil(o.WindowsPrice) {
+	if o != nil && o.WindowsPrice.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWindowsPrice gets a reference to the given string and assigns it to the WindowsPrice field.
+// SetWindowsPrice gets a reference to the given NullableString and assigns it to the WindowsPrice field.
 func (o *AwsFlavorListDto) SetWindowsPrice(v string) {
-	o.WindowsPrice = &v
+	o.WindowsPrice.Set(&v)
+}
+// SetWindowsPriceNil sets the value for WindowsPrice to be an explicit nil
+func (o *AwsFlavorListDto) SetWindowsPriceNil() {
+	o.WindowsPrice.Set(nil)
 }
 
-// GetWindowsSpotPrice returns the WindowsSpotPrice field value if set, zero value otherwise.
+// UnsetWindowsPrice ensures that no value is present for WindowsPrice, not even an explicit nil
+func (o *AwsFlavorListDto) UnsetWindowsPrice() {
+	o.WindowsPrice.Unset()
+}
+
+// GetWindowsSpotPrice returns the WindowsSpotPrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AwsFlavorListDto) GetWindowsSpotPrice() string {
-	if o == nil || IsNil(o.WindowsSpotPrice) {
+	if o == nil || IsNil(o.WindowsSpotPrice.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.WindowsSpotPrice
+	return *o.WindowsSpotPrice.Get()
 }
 
 // GetWindowsSpotPriceOk returns a tuple with the WindowsSpotPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AwsFlavorListDto) GetWindowsSpotPriceOk() (*string, bool) {
-	if o == nil || IsNil(o.WindowsSpotPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WindowsSpotPrice, true
+	return o.WindowsSpotPrice.Get(), o.WindowsSpotPrice.IsSet()
 }
 
 // HasWindowsSpotPrice returns a boolean if a field has been set.
 func (o *AwsFlavorListDto) HasWindowsSpotPrice() bool {
-	if o != nil && !IsNil(o.WindowsSpotPrice) {
+	if o != nil && o.WindowsSpotPrice.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWindowsSpotPrice gets a reference to the given string and assigns it to the WindowsSpotPrice field.
+// SetWindowsSpotPrice gets a reference to the given NullableString and assigns it to the WindowsSpotPrice field.
 func (o *AwsFlavorListDto) SetWindowsSpotPrice(v string) {
-	o.WindowsSpotPrice = &v
+	o.WindowsSpotPrice.Set(&v)
+}
+// SetWindowsSpotPriceNil sets the value for WindowsSpotPrice to be an explicit nil
+func (o *AwsFlavorListDto) SetWindowsSpotPriceNil() {
+	o.WindowsSpotPrice.Set(nil)
 }
 
-// GetLinuxSpotPrice returns the LinuxSpotPrice field value if set, zero value otherwise.
+// UnsetWindowsSpotPrice ensures that no value is present for WindowsSpotPrice, not even an explicit nil
+func (o *AwsFlavorListDto) UnsetWindowsSpotPrice() {
+	o.WindowsSpotPrice.Unset()
+}
+
+// GetLinuxSpotPrice returns the LinuxSpotPrice field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AwsFlavorListDto) GetLinuxSpotPrice() string {
-	if o == nil || IsNil(o.LinuxSpotPrice) {
+	if o == nil || IsNil(o.LinuxSpotPrice.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LinuxSpotPrice
+	return *o.LinuxSpotPrice.Get()
 }
 
 // GetLinuxSpotPriceOk returns a tuple with the LinuxSpotPrice field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AwsFlavorListDto) GetLinuxSpotPriceOk() (*string, bool) {
-	if o == nil || IsNil(o.LinuxSpotPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LinuxSpotPrice, true
+	return o.LinuxSpotPrice.Get(), o.LinuxSpotPrice.IsSet()
 }
 
 // HasLinuxSpotPrice returns a boolean if a field has been set.
 func (o *AwsFlavorListDto) HasLinuxSpotPrice() bool {
-	if o != nil && !IsNil(o.LinuxSpotPrice) {
+	if o != nil && o.LinuxSpotPrice.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLinuxSpotPrice gets a reference to the given string and assigns it to the LinuxSpotPrice field.
+// SetLinuxSpotPrice gets a reference to the given NullableString and assigns it to the LinuxSpotPrice field.
 func (o *AwsFlavorListDto) SetLinuxSpotPrice(v string) {
-	o.LinuxSpotPrice = &v
+	o.LinuxSpotPrice.Set(&v)
+}
+// SetLinuxSpotPriceNil sets the value for LinuxSpotPrice to be an explicit nil
+func (o *AwsFlavorListDto) SetLinuxSpotPriceNil() {
+	o.LinuxSpotPrice.Set(nil)
 }
 
-// GetZones returns the Zones field value if set, zero value otherwise.
+// UnsetLinuxSpotPrice ensures that no value is present for LinuxSpotPrice, not even an explicit nil
+func (o *AwsFlavorListDto) UnsetLinuxSpotPrice() {
+	o.LinuxSpotPrice.Unset()
+}
+
+// GetZones returns the Zones field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AwsFlavorListDto) GetZones() []string {
-	if o == nil || IsNil(o.Zones) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -316,6 +366,7 @@ func (o *AwsFlavorListDto) GetZones() []string {
 
 // GetZonesOk returns a tuple with the Zones field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AwsFlavorListDto) GetZonesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Zones) {
 		return nil, false
@@ -353,25 +404,25 @@ func (o AwsFlavorListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Cpu) {
 		toSerialize["cpu"] = o.Cpu
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.LinuxPrice) {
-		toSerialize["linuxPrice"] = o.LinuxPrice
+	if o.LinuxPrice.IsSet() {
+		toSerialize["linuxPrice"] = o.LinuxPrice.Get()
 	}
-	if !IsNil(o.WindowsPrice) {
-		toSerialize["windowsPrice"] = o.WindowsPrice
+	if o.WindowsPrice.IsSet() {
+		toSerialize["windowsPrice"] = o.WindowsPrice.Get()
 	}
-	if !IsNil(o.WindowsSpotPrice) {
-		toSerialize["windowsSpotPrice"] = o.WindowsSpotPrice
+	if o.WindowsSpotPrice.IsSet() {
+		toSerialize["windowsSpotPrice"] = o.WindowsSpotPrice.Get()
 	}
-	if !IsNil(o.LinuxSpotPrice) {
-		toSerialize["linuxSpotPrice"] = o.LinuxSpotPrice
+	if o.LinuxSpotPrice.IsSet() {
+		toSerialize["linuxSpotPrice"] = o.LinuxSpotPrice.Get()
 	}
-	if !IsNil(o.Zones) {
+	if o.Zones != nil {
 		toSerialize["zones"] = o.Zones
 	}
 	return toSerialize, nil

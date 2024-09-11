@@ -72,9 +72,6 @@ func (a *SecurityGroupAPIService) SecuritygroupCreateExecute(r ApiSecuritygroupC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createSecurityGroupCommand == nil {
-		return localVarReturnValue, nil, reportError("createSecurityGroupCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -404,9 +401,6 @@ func (a *SecurityGroupAPIService) SecuritygroupEditExecute(r ApiSecuritygroupEdi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.editSecurityGroupCommand == nil {
-		return nil, reportError("editSecurityGroupCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

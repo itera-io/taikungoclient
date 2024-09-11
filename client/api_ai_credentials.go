@@ -72,9 +72,6 @@ func (a *AiCredentialsAPIService) AiCredentialCreateExecute(r ApiAiCredentialCre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createAiCredentialCommand == nil {
-		return localVarReturnValue, nil, reportError("createAiCredentialCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -361,17 +358,17 @@ func (a *AiCredentialsAPIService) AiCredentialDeleteExecute(r ApiAiCredentialDel
 type ApiAiCredentialDropdownRequest struct {
 	ctx context.Context
 	ApiService *AiCredentialsAPIService
-	search *string
 	organizationId *int32
-}
-
-func (r ApiAiCredentialDropdownRequest) Search(search string) ApiAiCredentialDropdownRequest {
-	r.search = &search
-	return r
+	search *string
 }
 
 func (r ApiAiCredentialDropdownRequest) OrganizationId(organizationId int32) ApiAiCredentialDropdownRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiAiCredentialDropdownRequest) Search(search string) ApiAiCredentialDropdownRequest {
+	r.search = &search
 	return r
 }
 
@@ -412,14 +409,13 @@ func (a *AiCredentialsAPIService) AiCredentialDropdownExecute(r ApiAiCredentialD
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -545,14 +541,19 @@ func (a *AiCredentialsAPIService) AiCredentialDropdownExecute(r ApiAiCredentialD
 type ApiAiCredentialListRequest struct {
 	ctx context.Context
 	ApiService *AiCredentialsAPIService
+	organizationId *int32
 	search *string
 	searchId *string
-	sortBy *string
-	organizationId *int32
 	id *int32
+	sortBy *string
 	sortDirection *string
 	limit *int32
 	offset *int32
+}
+
+func (r ApiAiCredentialListRequest) OrganizationId(organizationId int32) ApiAiCredentialListRequest {
+	r.organizationId = &organizationId
+	return r
 }
 
 func (r ApiAiCredentialListRequest) Search(search string) ApiAiCredentialListRequest {
@@ -565,18 +566,13 @@ func (r ApiAiCredentialListRequest) SearchId(searchId string) ApiAiCredentialLis
 	return r
 }
 
-func (r ApiAiCredentialListRequest) SortBy(sortBy string) ApiAiCredentialListRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiAiCredentialListRequest) OrganizationId(organizationId int32) ApiAiCredentialListRequest {
-	r.organizationId = &organizationId
-	return r
-}
-
 func (r ApiAiCredentialListRequest) Id(id int32) ApiAiCredentialListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiAiCredentialListRequest) SortBy(sortBy string) ApiAiCredentialListRequest {
+	r.sortBy = &sortBy
 	return r
 }
 
@@ -636,25 +632,22 @@ func (a *AiCredentialsAPIService) AiCredentialListExecute(r ApiAiCredentialListR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	}

@@ -20,11 +20,11 @@ var _ MappedNullable = &CreateBackupPolicyCommand{}
 
 // CreateBackupPolicyCommand struct for CreateBackupPolicyCommand
 type CreateBackupPolicyCommand struct {
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	IncludeNamespaces []string `json:"includeNamespaces,omitempty"`
-	CronPeriod *string `json:"cronPeriod,omitempty"`
+	CronPeriod NullableString `json:"cronPeriod,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
-	RetentionPeriod *string `json:"retentionPeriod,omitempty"`
+	RetentionPeriod NullableString `json:"retentionPeriod,omitempty"`
 }
 
 // NewCreateBackupPolicyCommand instantiates a new CreateBackupPolicyCommand object
@@ -44,41 +44,51 @@ func NewCreateBackupPolicyCommandWithDefaults() *CreateBackupPolicyCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateBackupPolicyCommand) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateBackupPolicyCommand) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateBackupPolicyCommand) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CreateBackupPolicyCommand) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CreateBackupPolicyCommand) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetIncludeNamespaces returns the IncludeNamespaces field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CreateBackupPolicyCommand) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetIncludeNamespaces returns the IncludeNamespaces field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateBackupPolicyCommand) GetIncludeNamespaces() []string {
-	if o == nil || IsNil(o.IncludeNamespaces) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -87,6 +97,7 @@ func (o *CreateBackupPolicyCommand) GetIncludeNamespaces() []string {
 
 // GetIncludeNamespacesOk returns a tuple with the IncludeNamespaces field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateBackupPolicyCommand) GetIncludeNamespacesOk() ([]string, bool) {
 	if o == nil || IsNil(o.IncludeNamespaces) {
 		return nil, false
@@ -108,36 +119,46 @@ func (o *CreateBackupPolicyCommand) SetIncludeNamespaces(v []string) {
 	o.IncludeNamespaces = v
 }
 
-// GetCronPeriod returns the CronPeriod field value if set, zero value otherwise.
+// GetCronPeriod returns the CronPeriod field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateBackupPolicyCommand) GetCronPeriod() string {
-	if o == nil || IsNil(o.CronPeriod) {
+	if o == nil || IsNil(o.CronPeriod.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CronPeriod
+	return *o.CronPeriod.Get()
 }
 
 // GetCronPeriodOk returns a tuple with the CronPeriod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateBackupPolicyCommand) GetCronPeriodOk() (*string, bool) {
-	if o == nil || IsNil(o.CronPeriod) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CronPeriod, true
+	return o.CronPeriod.Get(), o.CronPeriod.IsSet()
 }
 
 // HasCronPeriod returns a boolean if a field has been set.
 func (o *CreateBackupPolicyCommand) HasCronPeriod() bool {
-	if o != nil && !IsNil(o.CronPeriod) {
+	if o != nil && o.CronPeriod.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCronPeriod gets a reference to the given string and assigns it to the CronPeriod field.
+// SetCronPeriod gets a reference to the given NullableString and assigns it to the CronPeriod field.
 func (o *CreateBackupPolicyCommand) SetCronPeriod(v string) {
-	o.CronPeriod = &v
+	o.CronPeriod.Set(&v)
+}
+// SetCronPeriodNil sets the value for CronPeriod to be an explicit nil
+func (o *CreateBackupPolicyCommand) SetCronPeriodNil() {
+	o.CronPeriod.Set(nil)
+}
+
+// UnsetCronPeriod ensures that no value is present for CronPeriod, not even an explicit nil
+func (o *CreateBackupPolicyCommand) UnsetCronPeriod() {
+	o.CronPeriod.Unset()
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
@@ -172,36 +193,46 @@ func (o *CreateBackupPolicyCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetRetentionPeriod returns the RetentionPeriod field value if set, zero value otherwise.
+// GetRetentionPeriod returns the RetentionPeriod field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateBackupPolicyCommand) GetRetentionPeriod() string {
-	if o == nil || IsNil(o.RetentionPeriod) {
+	if o == nil || IsNil(o.RetentionPeriod.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RetentionPeriod
+	return *o.RetentionPeriod.Get()
 }
 
 // GetRetentionPeriodOk returns a tuple with the RetentionPeriod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateBackupPolicyCommand) GetRetentionPeriodOk() (*string, bool) {
-	if o == nil || IsNil(o.RetentionPeriod) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RetentionPeriod, true
+	return o.RetentionPeriod.Get(), o.RetentionPeriod.IsSet()
 }
 
 // HasRetentionPeriod returns a boolean if a field has been set.
 func (o *CreateBackupPolicyCommand) HasRetentionPeriod() bool {
-	if o != nil && !IsNil(o.RetentionPeriod) {
+	if o != nil && o.RetentionPeriod.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRetentionPeriod gets a reference to the given string and assigns it to the RetentionPeriod field.
+// SetRetentionPeriod gets a reference to the given NullableString and assigns it to the RetentionPeriod field.
 func (o *CreateBackupPolicyCommand) SetRetentionPeriod(v string) {
-	o.RetentionPeriod = &v
+	o.RetentionPeriod.Set(&v)
+}
+// SetRetentionPeriodNil sets the value for RetentionPeriod to be an explicit nil
+func (o *CreateBackupPolicyCommand) SetRetentionPeriodNil() {
+	o.RetentionPeriod.Set(nil)
+}
+
+// UnsetRetentionPeriod ensures that no value is present for RetentionPeriod, not even an explicit nil
+func (o *CreateBackupPolicyCommand) UnsetRetentionPeriod() {
+	o.RetentionPeriod.Unset()
 }
 
 func (o CreateBackupPolicyCommand) MarshalJSON() ([]byte, error) {
@@ -214,20 +245,20 @@ func (o CreateBackupPolicyCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateBackupPolicyCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.IncludeNamespaces) {
+	if o.IncludeNamespaces != nil {
 		toSerialize["includeNamespaces"] = o.IncludeNamespaces
 	}
-	if !IsNil(o.CronPeriod) {
-		toSerialize["cronPeriod"] = o.CronPeriod
+	if o.CronPeriod.IsSet() {
+		toSerialize["cronPeriod"] = o.CronPeriod.Get()
 	}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.RetentionPeriod) {
-		toSerialize["retentionPeriod"] = o.RetentionPeriod
+	if o.RetentionPeriod.IsSet() {
+		toSerialize["retentionPeriod"] = o.RetentionPeriod.Get()
 	}
 	return toSerialize, nil
 }

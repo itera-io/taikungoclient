@@ -21,11 +21,11 @@ var _ MappedNullable = &StandAloneProfileSecurityGroupForDetailsDto{}
 // StandAloneProfileSecurityGroupForDetailsDto struct for StandAloneProfileSecurityGroupForDetailsDto
 type StandAloneProfileSecurityGroupForDetailsDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Protocol *string `json:"protocol,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Protocol NullableString `json:"protocol,omitempty"`
 	PortMinRange *int32 `json:"portMinRange,omitempty"`
 	PortMaxRange *int32 `json:"portMaxRange,omitempty"`
-	RemoteIpPrefix *string `json:"remoteIpPrefix,omitempty"`
+	RemoteIpPrefix NullableString `json:"remoteIpPrefix,omitempty"`
 	IsRdpPortEnabled *bool `json:"isRdpPortEnabled,omitempty"`
 }
 
@@ -78,68 +78,88 @@ func (o *StandAloneProfileSecurityGroupForDetailsDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StandAloneProfileSecurityGroupForDetailsDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandAloneProfileSecurityGroupForDetailsDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *StandAloneProfileSecurityGroupForDetailsDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *StandAloneProfileSecurityGroupForDetailsDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *StandAloneProfileSecurityGroupForDetailsDto) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetProtocol returns the Protocol field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *StandAloneProfileSecurityGroupForDetailsDto) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetProtocol returns the Protocol field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StandAloneProfileSecurityGroupForDetailsDto) GetProtocol() string {
-	if o == nil || IsNil(o.Protocol) {
+	if o == nil || IsNil(o.Protocol.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Protocol
+	return *o.Protocol.Get()
 }
 
 // GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandAloneProfileSecurityGroupForDetailsDto) GetProtocolOk() (*string, bool) {
-	if o == nil || IsNil(o.Protocol) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Protocol, true
+	return o.Protocol.Get(), o.Protocol.IsSet()
 }
 
 // HasProtocol returns a boolean if a field has been set.
 func (o *StandAloneProfileSecurityGroupForDetailsDto) HasProtocol() bool {
-	if o != nil && !IsNil(o.Protocol) {
+	if o != nil && o.Protocol.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
+// SetProtocol gets a reference to the given NullableString and assigns it to the Protocol field.
 func (o *StandAloneProfileSecurityGroupForDetailsDto) SetProtocol(v string) {
-	o.Protocol = &v
+	o.Protocol.Set(&v)
+}
+// SetProtocolNil sets the value for Protocol to be an explicit nil
+func (o *StandAloneProfileSecurityGroupForDetailsDto) SetProtocolNil() {
+	o.Protocol.Set(nil)
+}
+
+// UnsetProtocol ensures that no value is present for Protocol, not even an explicit nil
+func (o *StandAloneProfileSecurityGroupForDetailsDto) UnsetProtocol() {
+	o.Protocol.Unset()
 }
 
 // GetPortMinRange returns the PortMinRange field value if set, zero value otherwise.
@@ -206,36 +226,46 @@ func (o *StandAloneProfileSecurityGroupForDetailsDto) SetPortMaxRange(v int32) {
 	o.PortMaxRange = &v
 }
 
-// GetRemoteIpPrefix returns the RemoteIpPrefix field value if set, zero value otherwise.
+// GetRemoteIpPrefix returns the RemoteIpPrefix field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StandAloneProfileSecurityGroupForDetailsDto) GetRemoteIpPrefix() string {
-	if o == nil || IsNil(o.RemoteIpPrefix) {
+	if o == nil || IsNil(o.RemoteIpPrefix.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RemoteIpPrefix
+	return *o.RemoteIpPrefix.Get()
 }
 
 // GetRemoteIpPrefixOk returns a tuple with the RemoteIpPrefix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandAloneProfileSecurityGroupForDetailsDto) GetRemoteIpPrefixOk() (*string, bool) {
-	if o == nil || IsNil(o.RemoteIpPrefix) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RemoteIpPrefix, true
+	return o.RemoteIpPrefix.Get(), o.RemoteIpPrefix.IsSet()
 }
 
 // HasRemoteIpPrefix returns a boolean if a field has been set.
 func (o *StandAloneProfileSecurityGroupForDetailsDto) HasRemoteIpPrefix() bool {
-	if o != nil && !IsNil(o.RemoteIpPrefix) {
+	if o != nil && o.RemoteIpPrefix.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRemoteIpPrefix gets a reference to the given string and assigns it to the RemoteIpPrefix field.
+// SetRemoteIpPrefix gets a reference to the given NullableString and assigns it to the RemoteIpPrefix field.
 func (o *StandAloneProfileSecurityGroupForDetailsDto) SetRemoteIpPrefix(v string) {
-	o.RemoteIpPrefix = &v
+	o.RemoteIpPrefix.Set(&v)
+}
+// SetRemoteIpPrefixNil sets the value for RemoteIpPrefix to be an explicit nil
+func (o *StandAloneProfileSecurityGroupForDetailsDto) SetRemoteIpPrefixNil() {
+	o.RemoteIpPrefix.Set(nil)
+}
+
+// UnsetRemoteIpPrefix ensures that no value is present for RemoteIpPrefix, not even an explicit nil
+func (o *StandAloneProfileSecurityGroupForDetailsDto) UnsetRemoteIpPrefix() {
+	o.RemoteIpPrefix.Unset()
 }
 
 // GetIsRdpPortEnabled returns the IsRdpPortEnabled field value if set, zero value otherwise.
@@ -283,11 +313,11 @@ func (o StandAloneProfileSecurityGroupForDetailsDto) ToMap() (map[string]interfa
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Protocol) {
-		toSerialize["protocol"] = o.Protocol
+	if o.Protocol.IsSet() {
+		toSerialize["protocol"] = o.Protocol.Get()
 	}
 	if !IsNil(o.PortMinRange) {
 		toSerialize["portMinRange"] = o.PortMinRange
@@ -295,8 +325,8 @@ func (o StandAloneProfileSecurityGroupForDetailsDto) ToMap() (map[string]interfa
 	if !IsNil(o.PortMaxRange) {
 		toSerialize["portMaxRange"] = o.PortMaxRange
 	}
-	if !IsNil(o.RemoteIpPrefix) {
-		toSerialize["remoteIpPrefix"] = o.RemoteIpPrefix
+	if o.RemoteIpPrefix.IsSet() {
+		toSerialize["remoteIpPrefix"] = o.RemoteIpPrefix.Get()
 	}
 	if !IsNil(o.IsRdpPortEnabled) {
 		toSerialize["isRdpPortEnabled"] = o.IsRdpPortEnabled

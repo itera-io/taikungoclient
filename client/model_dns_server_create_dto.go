@@ -20,7 +20,7 @@ var _ MappedNullable = &DnsServerCreateDto{}
 
 // DnsServerCreateDto struct for DnsServerCreateDto
 type DnsServerCreateDto struct {
-	Address *string `json:"address,omitempty"`
+	Address NullableString `json:"address,omitempty"`
 }
 
 // NewDnsServerCreateDto instantiates a new DnsServerCreateDto object
@@ -40,36 +40,46 @@ func NewDnsServerCreateDtoWithDefaults() *DnsServerCreateDto {
 	return &this
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise.
+// GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DnsServerCreateDto) GetAddress() string {
-	if o == nil || IsNil(o.Address) {
+	if o == nil || IsNil(o.Address.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Address
+	return *o.Address.Get()
 }
 
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DnsServerCreateDto) GetAddressOk() (*string, bool) {
-	if o == nil || IsNil(o.Address) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Address, true
+	return o.Address.Get(), o.Address.IsSet()
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *DnsServerCreateDto) HasAddress() bool {
-	if o != nil && !IsNil(o.Address) {
+	if o != nil && o.Address.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAddress gets a reference to the given string and assigns it to the Address field.
+// SetAddress gets a reference to the given NullableString and assigns it to the Address field.
 func (o *DnsServerCreateDto) SetAddress(v string) {
-	o.Address = &v
+	o.Address.Set(&v)
+}
+// SetAddressNil sets the value for Address to be an explicit nil
+func (o *DnsServerCreateDto) SetAddressNil() {
+	o.Address.Set(nil)
+}
+
+// UnsetAddress ensures that no value is present for Address, not even an explicit nil
+func (o *DnsServerCreateDto) UnsetAddress() {
+	o.Address.Unset()
 }
 
 func (o DnsServerCreateDto) MarshalJSON() ([]byte, error) {
@@ -82,8 +92,8 @@ func (o DnsServerCreateDto) MarshalJSON() ([]byte, error) {
 
 func (o DnsServerCreateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
-		toSerialize["address"] = o.Address
+	if o.Address.IsSet() {
+		toSerialize["address"] = o.Address.Get()
 	}
 	return toSerialize, nil
 }

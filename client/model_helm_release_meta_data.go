@@ -20,9 +20,9 @@ var _ MappedNullable = &HelmReleaseMetaData{}
 
 // HelmReleaseMetaData struct for HelmReleaseMetaData
 type HelmReleaseMetaData struct {
-	CreationTimestamp *string `json:"creationTimestamp,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Namespace *string `json:"namespace,omitempty"`
+	CreationTimestamp NullableString `json:"creationTimestamp,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
 }
 
 // NewHelmReleaseMetaData instantiates a new HelmReleaseMetaData object
@@ -42,100 +42,130 @@ func NewHelmReleaseMetaDataWithDefaults() *HelmReleaseMetaData {
 	return &this
 }
 
-// GetCreationTimestamp returns the CreationTimestamp field value if set, zero value otherwise.
+// GetCreationTimestamp returns the CreationTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmReleaseMetaData) GetCreationTimestamp() string {
-	if o == nil || IsNil(o.CreationTimestamp) {
+	if o == nil || IsNil(o.CreationTimestamp.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreationTimestamp
+	return *o.CreationTimestamp.Get()
 }
 
 // GetCreationTimestampOk returns a tuple with the CreationTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmReleaseMetaData) GetCreationTimestampOk() (*string, bool) {
-	if o == nil || IsNil(o.CreationTimestamp) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreationTimestamp, true
+	return o.CreationTimestamp.Get(), o.CreationTimestamp.IsSet()
 }
 
 // HasCreationTimestamp returns a boolean if a field has been set.
 func (o *HelmReleaseMetaData) HasCreationTimestamp() bool {
-	if o != nil && !IsNil(o.CreationTimestamp) {
+	if o != nil && o.CreationTimestamp.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreationTimestamp gets a reference to the given string and assigns it to the CreationTimestamp field.
+// SetCreationTimestamp gets a reference to the given NullableString and assigns it to the CreationTimestamp field.
 func (o *HelmReleaseMetaData) SetCreationTimestamp(v string) {
-	o.CreationTimestamp = &v
+	o.CreationTimestamp.Set(&v)
+}
+// SetCreationTimestampNil sets the value for CreationTimestamp to be an explicit nil
+func (o *HelmReleaseMetaData) SetCreationTimestampNil() {
+	o.CreationTimestamp.Set(nil)
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// UnsetCreationTimestamp ensures that no value is present for CreationTimestamp, not even an explicit nil
+func (o *HelmReleaseMetaData) UnsetCreationTimestamp() {
+	o.CreationTimestamp.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmReleaseMetaData) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmReleaseMetaData) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *HelmReleaseMetaData) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *HelmReleaseMetaData) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *HelmReleaseMetaData) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *HelmReleaseMetaData) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmReleaseMetaData) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil || IsNil(o.Namespace.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace
+	return *o.Namespace.Get()
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmReleaseMetaData) GetNamespaceOk() (*string, bool) {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Namespace, true
+	return o.Namespace.Get(), o.Namespace.IsSet()
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *HelmReleaseMetaData) HasNamespace() bool {
-	if o != nil && !IsNil(o.Namespace) {
+	if o != nil && o.Namespace.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
 func (o *HelmReleaseMetaData) SetNamespace(v string) {
-	o.Namespace = &v
+	o.Namespace.Set(&v)
+}
+// SetNamespaceNil sets the value for Namespace to be an explicit nil
+func (o *HelmReleaseMetaData) SetNamespaceNil() {
+	o.Namespace.Set(nil)
+}
+
+// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
+func (o *HelmReleaseMetaData) UnsetNamespace() {
+	o.Namespace.Unset()
 }
 
 func (o HelmReleaseMetaData) MarshalJSON() ([]byte, error) {
@@ -148,14 +178,14 @@ func (o HelmReleaseMetaData) MarshalJSON() ([]byte, error) {
 
 func (o HelmReleaseMetaData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CreationTimestamp) {
-		toSerialize["creationTimestamp"] = o.CreationTimestamp
+	if o.CreationTimestamp.IsSet() {
+		toSerialize["creationTimestamp"] = o.CreationTimestamp.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Namespace) {
-		toSerialize["namespace"] = o.Namespace
+	if o.Namespace.IsSet() {
+		toSerialize["namespace"] = o.Namespace.Get()
 	}
 	return toSerialize, nil
 }

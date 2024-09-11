@@ -20,8 +20,8 @@ var _ MappedNullable = &HelmReleaseSourceRef{}
 
 // HelmReleaseSourceRef struct for HelmReleaseSourceRef
 type HelmReleaseSourceRef struct {
-	Kind *string `json:"kind,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Kind NullableString `json:"kind,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 }
 
 // NewHelmReleaseSourceRef instantiates a new HelmReleaseSourceRef object
@@ -41,68 +41,88 @@ func NewHelmReleaseSourceRefWithDefaults() *HelmReleaseSourceRef {
 	return &this
 }
 
-// GetKind returns the Kind field value if set, zero value otherwise.
+// GetKind returns the Kind field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmReleaseSourceRef) GetKind() string {
-	if o == nil || IsNil(o.Kind) {
+	if o == nil || IsNil(o.Kind.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Kind
+	return *o.Kind.Get()
 }
 
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmReleaseSourceRef) GetKindOk() (*string, bool) {
-	if o == nil || IsNil(o.Kind) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Kind, true
+	return o.Kind.Get(), o.Kind.IsSet()
 }
 
 // HasKind returns a boolean if a field has been set.
 func (o *HelmReleaseSourceRef) HasKind() bool {
-	if o != nil && !IsNil(o.Kind) {
+	if o != nil && o.Kind.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKind gets a reference to the given string and assigns it to the Kind field.
+// SetKind gets a reference to the given NullableString and assigns it to the Kind field.
 func (o *HelmReleaseSourceRef) SetKind(v string) {
-	o.Kind = &v
+	o.Kind.Set(&v)
+}
+// SetKindNil sets the value for Kind to be an explicit nil
+func (o *HelmReleaseSourceRef) SetKindNil() {
+	o.Kind.Set(nil)
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// UnsetKind ensures that no value is present for Kind, not even an explicit nil
+func (o *HelmReleaseSourceRef) UnsetKind() {
+	o.Kind.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmReleaseSourceRef) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmReleaseSourceRef) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *HelmReleaseSourceRef) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *HelmReleaseSourceRef) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *HelmReleaseSourceRef) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *HelmReleaseSourceRef) UnsetName() {
+	o.Name.Unset()
 }
 
 func (o HelmReleaseSourceRef) MarshalJSON() ([]byte, error) {
@@ -115,11 +135,11 @@ func (o HelmReleaseSourceRef) MarshalJSON() ([]byte, error) {
 
 func (o HelmReleaseSourceRef) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Kind) {
-		toSerialize["kind"] = o.Kind
+	if o.Kind.IsSet() {
+		toSerialize["kind"] = o.Kind.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
 	return toSerialize, nil
 }

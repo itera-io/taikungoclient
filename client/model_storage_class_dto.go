@@ -20,11 +20,11 @@ var _ MappedNullable = &StorageClassDto{}
 
 // StorageClassDto struct for StorageClassDto
 type StorageClassDto struct {
-	MetadataName *string `json:"metadataName,omitempty"`
-	Age *string `json:"age,omitempty"`
-	Provisioner *string `json:"provisioner,omitempty"`
-	ReclaimPolicy *string `json:"reclaimPolicy,omitempty"`
-	VolumeBindingMode *string `json:"volumeBindingMode,omitempty"`
+	MetadataName NullableString `json:"metadataName,omitempty"`
+	Age NullableString `json:"age,omitempty"`
+	Provisioner NullableString `json:"provisioner,omitempty"`
+	ReclaimPolicy NullableString `json:"reclaimPolicy,omitempty"`
+	VolumeBindingMode NullableString `json:"volumeBindingMode,omitempty"`
 	AllowVolumeExpansion NullableBool `json:"allowVolumeExpansion,omitempty"`
 }
 
@@ -45,164 +45,214 @@ func NewStorageClassDtoWithDefaults() *StorageClassDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise.
+// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StorageClassDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName) {
+	if o == nil || IsNil(o.MetadataName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName
+	return *o.MetadataName.Get()
 }
 
 // GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StorageClassDto) GetMetadataNameOk() (*string, bool) {
-	if o == nil || IsNil(o.MetadataName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MetadataName, true
+	return o.MetadataName.Get(), o.MetadataName.IsSet()
 }
 
 // HasMetadataName returns a boolean if a field has been set.
 func (o *StorageClassDto) HasMetadataName() bool {
-	if o != nil && !IsNil(o.MetadataName) {
+	if o != nil && o.MetadataName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMetadataName gets a reference to the given string and assigns it to the MetadataName field.
+// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
 func (o *StorageClassDto) SetMetadataName(v string) {
-	o.MetadataName = &v
+	o.MetadataName.Set(&v)
+}
+// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
+func (o *StorageClassDto) SetMetadataNameNil() {
+	o.MetadataName.Set(nil)
 }
 
-// GetAge returns the Age field value if set, zero value otherwise.
+// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
+func (o *StorageClassDto) UnsetMetadataName() {
+	o.MetadataName.Unset()
+}
+
+// GetAge returns the Age field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StorageClassDto) GetAge() string {
-	if o == nil || IsNil(o.Age) {
+	if o == nil || IsNil(o.Age.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Age
+	return *o.Age.Get()
 }
 
 // GetAgeOk returns a tuple with the Age field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StorageClassDto) GetAgeOk() (*string, bool) {
-	if o == nil || IsNil(o.Age) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Age, true
+	return o.Age.Get(), o.Age.IsSet()
 }
 
 // HasAge returns a boolean if a field has been set.
 func (o *StorageClassDto) HasAge() bool {
-	if o != nil && !IsNil(o.Age) {
+	if o != nil && o.Age.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAge gets a reference to the given string and assigns it to the Age field.
+// SetAge gets a reference to the given NullableString and assigns it to the Age field.
 func (o *StorageClassDto) SetAge(v string) {
-	o.Age = &v
+	o.Age.Set(&v)
+}
+// SetAgeNil sets the value for Age to be an explicit nil
+func (o *StorageClassDto) SetAgeNil() {
+	o.Age.Set(nil)
 }
 
-// GetProvisioner returns the Provisioner field value if set, zero value otherwise.
+// UnsetAge ensures that no value is present for Age, not even an explicit nil
+func (o *StorageClassDto) UnsetAge() {
+	o.Age.Unset()
+}
+
+// GetProvisioner returns the Provisioner field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StorageClassDto) GetProvisioner() string {
-	if o == nil || IsNil(o.Provisioner) {
+	if o == nil || IsNil(o.Provisioner.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Provisioner
+	return *o.Provisioner.Get()
 }
 
 // GetProvisionerOk returns a tuple with the Provisioner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StorageClassDto) GetProvisionerOk() (*string, bool) {
-	if o == nil || IsNil(o.Provisioner) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Provisioner, true
+	return o.Provisioner.Get(), o.Provisioner.IsSet()
 }
 
 // HasProvisioner returns a boolean if a field has been set.
 func (o *StorageClassDto) HasProvisioner() bool {
-	if o != nil && !IsNil(o.Provisioner) {
+	if o != nil && o.Provisioner.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProvisioner gets a reference to the given string and assigns it to the Provisioner field.
+// SetProvisioner gets a reference to the given NullableString and assigns it to the Provisioner field.
 func (o *StorageClassDto) SetProvisioner(v string) {
-	o.Provisioner = &v
+	o.Provisioner.Set(&v)
+}
+// SetProvisionerNil sets the value for Provisioner to be an explicit nil
+func (o *StorageClassDto) SetProvisionerNil() {
+	o.Provisioner.Set(nil)
 }
 
-// GetReclaimPolicy returns the ReclaimPolicy field value if set, zero value otherwise.
+// UnsetProvisioner ensures that no value is present for Provisioner, not even an explicit nil
+func (o *StorageClassDto) UnsetProvisioner() {
+	o.Provisioner.Unset()
+}
+
+// GetReclaimPolicy returns the ReclaimPolicy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StorageClassDto) GetReclaimPolicy() string {
-	if o == nil || IsNil(o.ReclaimPolicy) {
+	if o == nil || IsNil(o.ReclaimPolicy.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ReclaimPolicy
+	return *o.ReclaimPolicy.Get()
 }
 
 // GetReclaimPolicyOk returns a tuple with the ReclaimPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StorageClassDto) GetReclaimPolicyOk() (*string, bool) {
-	if o == nil || IsNil(o.ReclaimPolicy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ReclaimPolicy, true
+	return o.ReclaimPolicy.Get(), o.ReclaimPolicy.IsSet()
 }
 
 // HasReclaimPolicy returns a boolean if a field has been set.
 func (o *StorageClassDto) HasReclaimPolicy() bool {
-	if o != nil && !IsNil(o.ReclaimPolicy) {
+	if o != nil && o.ReclaimPolicy.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReclaimPolicy gets a reference to the given string and assigns it to the ReclaimPolicy field.
+// SetReclaimPolicy gets a reference to the given NullableString and assigns it to the ReclaimPolicy field.
 func (o *StorageClassDto) SetReclaimPolicy(v string) {
-	o.ReclaimPolicy = &v
+	o.ReclaimPolicy.Set(&v)
+}
+// SetReclaimPolicyNil sets the value for ReclaimPolicy to be an explicit nil
+func (o *StorageClassDto) SetReclaimPolicyNil() {
+	o.ReclaimPolicy.Set(nil)
 }
 
-// GetVolumeBindingMode returns the VolumeBindingMode field value if set, zero value otherwise.
+// UnsetReclaimPolicy ensures that no value is present for ReclaimPolicy, not even an explicit nil
+func (o *StorageClassDto) UnsetReclaimPolicy() {
+	o.ReclaimPolicy.Unset()
+}
+
+// GetVolumeBindingMode returns the VolumeBindingMode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StorageClassDto) GetVolumeBindingMode() string {
-	if o == nil || IsNil(o.VolumeBindingMode) {
+	if o == nil || IsNil(o.VolumeBindingMode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.VolumeBindingMode
+	return *o.VolumeBindingMode.Get()
 }
 
 // GetVolumeBindingModeOk returns a tuple with the VolumeBindingMode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StorageClassDto) GetVolumeBindingModeOk() (*string, bool) {
-	if o == nil || IsNil(o.VolumeBindingMode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.VolumeBindingMode, true
+	return o.VolumeBindingMode.Get(), o.VolumeBindingMode.IsSet()
 }
 
 // HasVolumeBindingMode returns a boolean if a field has been set.
 func (o *StorageClassDto) HasVolumeBindingMode() bool {
-	if o != nil && !IsNil(o.VolumeBindingMode) {
+	if o != nil && o.VolumeBindingMode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetVolumeBindingMode gets a reference to the given string and assigns it to the VolumeBindingMode field.
+// SetVolumeBindingMode gets a reference to the given NullableString and assigns it to the VolumeBindingMode field.
 func (o *StorageClassDto) SetVolumeBindingMode(v string) {
-	o.VolumeBindingMode = &v
+	o.VolumeBindingMode.Set(&v)
+}
+// SetVolumeBindingModeNil sets the value for VolumeBindingMode to be an explicit nil
+func (o *StorageClassDto) SetVolumeBindingModeNil() {
+	o.VolumeBindingMode.Set(nil)
+}
+
+// UnsetVolumeBindingMode ensures that no value is present for VolumeBindingMode, not even an explicit nil
+func (o *StorageClassDto) UnsetVolumeBindingMode() {
+	o.VolumeBindingMode.Unset()
 }
 
 // GetAllowVolumeExpansion returns the AllowVolumeExpansion field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -257,20 +307,20 @@ func (o StorageClassDto) MarshalJSON() ([]byte, error) {
 
 func (o StorageClassDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.MetadataName) {
-		toSerialize["metadataName"] = o.MetadataName
+	if o.MetadataName.IsSet() {
+		toSerialize["metadataName"] = o.MetadataName.Get()
 	}
-	if !IsNil(o.Age) {
-		toSerialize["age"] = o.Age
+	if o.Age.IsSet() {
+		toSerialize["age"] = o.Age.Get()
 	}
-	if !IsNil(o.Provisioner) {
-		toSerialize["provisioner"] = o.Provisioner
+	if o.Provisioner.IsSet() {
+		toSerialize["provisioner"] = o.Provisioner.Get()
 	}
-	if !IsNil(o.ReclaimPolicy) {
-		toSerialize["reclaimPolicy"] = o.ReclaimPolicy
+	if o.ReclaimPolicy.IsSet() {
+		toSerialize["reclaimPolicy"] = o.ReclaimPolicy.Get()
 	}
-	if !IsNil(o.VolumeBindingMode) {
-		toSerialize["volumeBindingMode"] = o.VolumeBindingMode
+	if o.VolumeBindingMode.IsSet() {
+		toSerialize["volumeBindingMode"] = o.VolumeBindingMode.Get()
 	}
 	if o.AllowVolumeExpansion.IsSet() {
 		toSerialize["allowVolumeExpansion"] = o.AllowVolumeExpansion.Get()

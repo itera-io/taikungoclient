@@ -21,23 +21,23 @@ var _ MappedNullable = &GoogleCredentialsListDto{}
 // GoogleCredentialsListDto struct for GoogleCredentialsListDto
 type GoogleCredentialsListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Projects []CommonDropdownDto `json:"projects,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName *string `json:"organizationName,omitempty"`
-	PartnerLogo *string `json:"partnerLogo,omitempty"`
-	PartnerName *string `json:"partnerName,omitempty"`
-	FolderId *string `json:"folderId,omitempty"`
-	ProjectId *string `json:"projectId,omitempty"`
-	BillingAccountId *string `json:"billingAccountId,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	PartnerLogo NullableString `json:"partnerLogo,omitempty"`
+	PartnerName NullableString `json:"partnerName,omitempty"`
+	FolderId NullableString `json:"folderId,omitempty"`
+	ProjectId NullableString `json:"projectId,omitempty"`
+	BillingAccountId NullableString `json:"billingAccountId,omitempty"`
 	Zones []string `json:"zones,omitempty"`
 	AvailabilityZonesCount *int32 `json:"availabilityZonesCount,omitempty"`
-	Region *string `json:"region,omitempty"`
+	Region NullableString `json:"region,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
-	BillingAccountName *string `json:"billingAccountName,omitempty"`
-	CreatedAt *string `json:"createdAt,omitempty"`
-	ContinentName *string `json:"continentName,omitempty"`
+	BillingAccountName NullableString `json:"billingAccountName,omitempty"`
+	CreatedAt NullableString `json:"createdAt,omitempty"`
+	ContinentName NullableString `json:"continentName,omitempty"`
 }
 
 // NewGoogleCredentialsListDto instantiates a new GoogleCredentialsListDto object
@@ -89,41 +89,51 @@ func (o *GoogleCredentialsListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *GoogleCredentialsListDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *GoogleCredentialsListDto) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetProjects() []CommonDropdownDto {
-	if o == nil || IsNil(o.Projects) {
+	if o == nil {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -132,6 +142,7 @@ func (o *GoogleCredentialsListDto) GetProjects() []CommonDropdownDto {
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
@@ -185,201 +196,261 @@ func (o *GoogleCredentialsListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil || IsNil(o.OrganizationName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName
+	return *o.OrganizationName.Get()
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName, true
+	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasOrganizationName() bool {
-	if o != nil && !IsNil(o.OrganizationName) {
+	if o != nil && o.OrganizationName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
 func (o *GoogleCredentialsListDto) SetOrganizationName(v string) {
-	o.OrganizationName = &v
+	o.OrganizationName.Set(&v)
+}
+// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
+func (o *GoogleCredentialsListDto) SetOrganizationNameNil() {
+	o.OrganizationName.Set(nil)
 }
 
-// GetPartnerLogo returns the PartnerLogo field value if set, zero value otherwise.
+// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetOrganizationName() {
+	o.OrganizationName.Unset()
+}
+
+// GetPartnerLogo returns the PartnerLogo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetPartnerLogo() string {
-	if o == nil || IsNil(o.PartnerLogo) {
+	if o == nil || IsNil(o.PartnerLogo.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PartnerLogo
+	return *o.PartnerLogo.Get()
 }
 
 // GetPartnerLogoOk returns a tuple with the PartnerLogo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetPartnerLogoOk() (*string, bool) {
-	if o == nil || IsNil(o.PartnerLogo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PartnerLogo, true
+	return o.PartnerLogo.Get(), o.PartnerLogo.IsSet()
 }
 
 // HasPartnerLogo returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasPartnerLogo() bool {
-	if o != nil && !IsNil(o.PartnerLogo) {
+	if o != nil && o.PartnerLogo.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerLogo gets a reference to the given string and assigns it to the PartnerLogo field.
+// SetPartnerLogo gets a reference to the given NullableString and assigns it to the PartnerLogo field.
 func (o *GoogleCredentialsListDto) SetPartnerLogo(v string) {
-	o.PartnerLogo = &v
+	o.PartnerLogo.Set(&v)
+}
+// SetPartnerLogoNil sets the value for PartnerLogo to be an explicit nil
+func (o *GoogleCredentialsListDto) SetPartnerLogoNil() {
+	o.PartnerLogo.Set(nil)
 }
 
-// GetPartnerName returns the PartnerName field value if set, zero value otherwise.
+// UnsetPartnerLogo ensures that no value is present for PartnerLogo, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetPartnerLogo() {
+	o.PartnerLogo.Unset()
+}
+
+// GetPartnerName returns the PartnerName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetPartnerName() string {
-	if o == nil || IsNil(o.PartnerName) {
+	if o == nil || IsNil(o.PartnerName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PartnerName
+	return *o.PartnerName.Get()
 }
 
 // GetPartnerNameOk returns a tuple with the PartnerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetPartnerNameOk() (*string, bool) {
-	if o == nil || IsNil(o.PartnerName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PartnerName, true
+	return o.PartnerName.Get(), o.PartnerName.IsSet()
 }
 
 // HasPartnerName returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasPartnerName() bool {
-	if o != nil && !IsNil(o.PartnerName) {
+	if o != nil && o.PartnerName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerName gets a reference to the given string and assigns it to the PartnerName field.
+// SetPartnerName gets a reference to the given NullableString and assigns it to the PartnerName field.
 func (o *GoogleCredentialsListDto) SetPartnerName(v string) {
-	o.PartnerName = &v
+	o.PartnerName.Set(&v)
+}
+// SetPartnerNameNil sets the value for PartnerName to be an explicit nil
+func (o *GoogleCredentialsListDto) SetPartnerNameNil() {
+	o.PartnerName.Set(nil)
 }
 
-// GetFolderId returns the FolderId field value if set, zero value otherwise.
+// UnsetPartnerName ensures that no value is present for PartnerName, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetPartnerName() {
+	o.PartnerName.Unset()
+}
+
+// GetFolderId returns the FolderId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetFolderId() string {
-	if o == nil || IsNil(o.FolderId) {
+	if o == nil || IsNil(o.FolderId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FolderId
+	return *o.FolderId.Get()
 }
 
 // GetFolderIdOk returns a tuple with the FolderId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetFolderIdOk() (*string, bool) {
-	if o == nil || IsNil(o.FolderId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FolderId, true
+	return o.FolderId.Get(), o.FolderId.IsSet()
 }
 
 // HasFolderId returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasFolderId() bool {
-	if o != nil && !IsNil(o.FolderId) {
+	if o != nil && o.FolderId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFolderId gets a reference to the given string and assigns it to the FolderId field.
+// SetFolderId gets a reference to the given NullableString and assigns it to the FolderId field.
 func (o *GoogleCredentialsListDto) SetFolderId(v string) {
-	o.FolderId = &v
+	o.FolderId.Set(&v)
+}
+// SetFolderIdNil sets the value for FolderId to be an explicit nil
+func (o *GoogleCredentialsListDto) SetFolderIdNil() {
+	o.FolderId.Set(nil)
 }
 
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+// UnsetFolderId ensures that no value is present for FolderId, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetFolderId() {
+	o.FolderId.Unset()
+}
+
+// GetProjectId returns the ProjectId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetProjectId() string {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil || IsNil(o.ProjectId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProjectId
+	return *o.ProjectId.Get()
 }
 
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetProjectIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectId, true
+	return o.ProjectId.Get(), o.ProjectId.IsSet()
 }
 
 // HasProjectId returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasProjectId() bool {
-	if o != nil && !IsNil(o.ProjectId) {
+	if o != nil && o.ProjectId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
+// SetProjectId gets a reference to the given NullableString and assigns it to the ProjectId field.
 func (o *GoogleCredentialsListDto) SetProjectId(v string) {
-	o.ProjectId = &v
+	o.ProjectId.Set(&v)
+}
+// SetProjectIdNil sets the value for ProjectId to be an explicit nil
+func (o *GoogleCredentialsListDto) SetProjectIdNil() {
+	o.ProjectId.Set(nil)
 }
 
-// GetBillingAccountId returns the BillingAccountId field value if set, zero value otherwise.
+// UnsetProjectId ensures that no value is present for ProjectId, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetProjectId() {
+	o.ProjectId.Unset()
+}
+
+// GetBillingAccountId returns the BillingAccountId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetBillingAccountId() string {
-	if o == nil || IsNil(o.BillingAccountId) {
+	if o == nil || IsNil(o.BillingAccountId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.BillingAccountId
+	return *o.BillingAccountId.Get()
 }
 
 // GetBillingAccountIdOk returns a tuple with the BillingAccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetBillingAccountIdOk() (*string, bool) {
-	if o == nil || IsNil(o.BillingAccountId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BillingAccountId, true
+	return o.BillingAccountId.Get(), o.BillingAccountId.IsSet()
 }
 
 // HasBillingAccountId returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasBillingAccountId() bool {
-	if o != nil && !IsNil(o.BillingAccountId) {
+	if o != nil && o.BillingAccountId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBillingAccountId gets a reference to the given string and assigns it to the BillingAccountId field.
+// SetBillingAccountId gets a reference to the given NullableString and assigns it to the BillingAccountId field.
 func (o *GoogleCredentialsListDto) SetBillingAccountId(v string) {
-	o.BillingAccountId = &v
+	o.BillingAccountId.Set(&v)
+}
+// SetBillingAccountIdNil sets the value for BillingAccountId to be an explicit nil
+func (o *GoogleCredentialsListDto) SetBillingAccountIdNil() {
+	o.BillingAccountId.Set(nil)
 }
 
-// GetZones returns the Zones field value if set, zero value otherwise.
+// UnsetBillingAccountId ensures that no value is present for BillingAccountId, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetBillingAccountId() {
+	o.BillingAccountId.Unset()
+}
+
+// GetZones returns the Zones field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetZones() []string {
-	if o == nil || IsNil(o.Zones) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -388,6 +459,7 @@ func (o *GoogleCredentialsListDto) GetZones() []string {
 
 // GetZonesOk returns a tuple with the Zones field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetZonesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Zones) {
 		return nil, false
@@ -441,36 +513,46 @@ func (o *GoogleCredentialsListDto) SetAvailabilityZonesCount(v int32) {
 	o.AvailabilityZonesCount = &v
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise.
+// GetRegion returns the Region field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetRegion() string {
-	if o == nil || IsNil(o.Region) {
+	if o == nil || IsNil(o.Region.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Region
+	return *o.Region.Get()
 }
 
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetRegionOk() (*string, bool) {
-	if o == nil || IsNil(o.Region) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Region, true
+	return o.Region.Get(), o.Region.IsSet()
 }
 
 // HasRegion returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasRegion() bool {
-	if o != nil && !IsNil(o.Region) {
+	if o != nil && o.Region.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRegion gets a reference to the given string and assigns it to the Region field.
+// SetRegion gets a reference to the given NullableString and assigns it to the Region field.
 func (o *GoogleCredentialsListDto) SetRegion(v string) {
-	o.Region = &v
+	o.Region.Set(&v)
+}
+// SetRegionNil sets the value for Region to be an explicit nil
+func (o *GoogleCredentialsListDto) SetRegionNil() {
+	o.Region.Set(nil)
+}
+
+// UnsetRegion ensures that no value is present for Region, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetRegion() {
+	o.Region.Unset()
 }
 
 // GetIsLocked returns the IsLocked field value if set, zero value otherwise.
@@ -537,100 +619,130 @@ func (o *GoogleCredentialsListDto) SetIsDefault(v bool) {
 	o.IsDefault = &v
 }
 
-// GetBillingAccountName returns the BillingAccountName field value if set, zero value otherwise.
+// GetBillingAccountName returns the BillingAccountName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetBillingAccountName() string {
-	if o == nil || IsNil(o.BillingAccountName) {
+	if o == nil || IsNil(o.BillingAccountName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.BillingAccountName
+	return *o.BillingAccountName.Get()
 }
 
 // GetBillingAccountNameOk returns a tuple with the BillingAccountName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetBillingAccountNameOk() (*string, bool) {
-	if o == nil || IsNil(o.BillingAccountName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BillingAccountName, true
+	return o.BillingAccountName.Get(), o.BillingAccountName.IsSet()
 }
 
 // HasBillingAccountName returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasBillingAccountName() bool {
-	if o != nil && !IsNil(o.BillingAccountName) {
+	if o != nil && o.BillingAccountName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBillingAccountName gets a reference to the given string and assigns it to the BillingAccountName field.
+// SetBillingAccountName gets a reference to the given NullableString and assigns it to the BillingAccountName field.
 func (o *GoogleCredentialsListDto) SetBillingAccountName(v string) {
-	o.BillingAccountName = &v
+	o.BillingAccountName.Set(&v)
+}
+// SetBillingAccountNameNil sets the value for BillingAccountName to be an explicit nil
+func (o *GoogleCredentialsListDto) SetBillingAccountNameNil() {
+	o.BillingAccountName.Set(nil)
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
+// UnsetBillingAccountName ensures that no value is present for BillingAccountName, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetBillingAccountName() {
+	o.BillingAccountName.Unset()
+}
+
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil || IsNil(o.CreatedAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil || IsNil(o.CreatedAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasCreatedAt() bool {
-	if o != nil && !IsNil(o.CreatedAt) {
+	if o != nil && o.CreatedAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
 func (o *GoogleCredentialsListDto) SetCreatedAt(v string) {
-	o.CreatedAt = &v
+	o.CreatedAt.Set(&v)
+}
+// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
+func (o *GoogleCredentialsListDto) SetCreatedAtNil() {
+	o.CreatedAt.Set(nil)
 }
 
-// GetContinentName returns the ContinentName field value if set, zero value otherwise.
+// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetCreatedAt() {
+	o.CreatedAt.Unset()
+}
+
+// GetContinentName returns the ContinentName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GoogleCredentialsListDto) GetContinentName() string {
-	if o == nil || IsNil(o.ContinentName) {
+	if o == nil || IsNil(o.ContinentName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ContinentName
+	return *o.ContinentName.Get()
 }
 
 // GetContinentNameOk returns a tuple with the ContinentName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GoogleCredentialsListDto) GetContinentNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ContinentName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ContinentName, true
+	return o.ContinentName.Get(), o.ContinentName.IsSet()
 }
 
 // HasContinentName returns a boolean if a field has been set.
 func (o *GoogleCredentialsListDto) HasContinentName() bool {
-	if o != nil && !IsNil(o.ContinentName) {
+	if o != nil && o.ContinentName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetContinentName gets a reference to the given string and assigns it to the ContinentName field.
+// SetContinentName gets a reference to the given NullableString and assigns it to the ContinentName field.
 func (o *GoogleCredentialsListDto) SetContinentName(v string) {
-	o.ContinentName = &v
+	o.ContinentName.Set(&v)
+}
+// SetContinentNameNil sets the value for ContinentName to be an explicit nil
+func (o *GoogleCredentialsListDto) SetContinentNameNil() {
+	o.ContinentName.Set(nil)
+}
+
+// UnsetContinentName ensures that no value is present for ContinentName, not even an explicit nil
+func (o *GoogleCredentialsListDto) UnsetContinentName() {
+	o.ContinentName.Unset()
 }
 
 func (o GoogleCredentialsListDto) MarshalJSON() ([]byte, error) {
@@ -646,41 +758,41 @@ func (o GoogleCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Projects) {
+	if o.Projects != nil {
 		toSerialize["projects"] = o.Projects
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if !IsNil(o.OrganizationName) {
-		toSerialize["organizationName"] = o.OrganizationName
+	if o.OrganizationName.IsSet() {
+		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
-	if !IsNil(o.PartnerLogo) {
-		toSerialize["partnerLogo"] = o.PartnerLogo
+	if o.PartnerLogo.IsSet() {
+		toSerialize["partnerLogo"] = o.PartnerLogo.Get()
 	}
-	if !IsNil(o.PartnerName) {
-		toSerialize["partnerName"] = o.PartnerName
+	if o.PartnerName.IsSet() {
+		toSerialize["partnerName"] = o.PartnerName.Get()
 	}
-	if !IsNil(o.FolderId) {
-		toSerialize["folderId"] = o.FolderId
+	if o.FolderId.IsSet() {
+		toSerialize["folderId"] = o.FolderId.Get()
 	}
-	if !IsNil(o.ProjectId) {
-		toSerialize["projectId"] = o.ProjectId
+	if o.ProjectId.IsSet() {
+		toSerialize["projectId"] = o.ProjectId.Get()
 	}
-	if !IsNil(o.BillingAccountId) {
-		toSerialize["billingAccountId"] = o.BillingAccountId
+	if o.BillingAccountId.IsSet() {
+		toSerialize["billingAccountId"] = o.BillingAccountId.Get()
 	}
-	if !IsNil(o.Zones) {
+	if o.Zones != nil {
 		toSerialize["zones"] = o.Zones
 	}
 	if !IsNil(o.AvailabilityZonesCount) {
 		toSerialize["availabilityZonesCount"] = o.AvailabilityZonesCount
 	}
-	if !IsNil(o.Region) {
-		toSerialize["region"] = o.Region
+	if o.Region.IsSet() {
+		toSerialize["region"] = o.Region.Get()
 	}
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
@@ -688,14 +800,14 @@ func (o GoogleCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
 	}
-	if !IsNil(o.BillingAccountName) {
-		toSerialize["billingAccountName"] = o.BillingAccountName
+	if o.BillingAccountName.IsSet() {
+		toSerialize["billingAccountName"] = o.BillingAccountName.Get()
 	}
-	if !IsNil(o.CreatedAt) {
-		toSerialize["createdAt"] = o.CreatedAt
+	if o.CreatedAt.IsSet() {
+		toSerialize["createdAt"] = o.CreatedAt.Get()
 	}
-	if !IsNil(o.ContinentName) {
-		toSerialize["continentName"] = o.ContinentName
+	if o.ContinentName.IsSet() {
+		toSerialize["continentName"] = o.ContinentName.Get()
 	}
 	return toSerialize, nil
 }

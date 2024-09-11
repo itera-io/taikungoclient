@@ -21,7 +21,7 @@ var _ MappedNullable = &PartnerEntity{}
 // PartnerEntity struct for PartnerEntity
 type PartnerEntity struct {
 	PartnerId *int32 `json:"partnerId,omitempty"`
-	PartnerName *string `json:"partnerName,omitempty"`
+	PartnerName NullableString `json:"partnerName,omitempty"`
 }
 
 // NewPartnerEntity instantiates a new PartnerEntity object
@@ -73,36 +73,46 @@ func (o *PartnerEntity) SetPartnerId(v int32) {
 	o.PartnerId = &v
 }
 
-// GetPartnerName returns the PartnerName field value if set, zero value otherwise.
+// GetPartnerName returns the PartnerName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerEntity) GetPartnerName() string {
-	if o == nil || IsNil(o.PartnerName) {
+	if o == nil || IsNil(o.PartnerName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PartnerName
+	return *o.PartnerName.Get()
 }
 
 // GetPartnerNameOk returns a tuple with the PartnerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerEntity) GetPartnerNameOk() (*string, bool) {
-	if o == nil || IsNil(o.PartnerName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PartnerName, true
+	return o.PartnerName.Get(), o.PartnerName.IsSet()
 }
 
 // HasPartnerName returns a boolean if a field has been set.
 func (o *PartnerEntity) HasPartnerName() bool {
-	if o != nil && !IsNil(o.PartnerName) {
+	if o != nil && o.PartnerName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerName gets a reference to the given string and assigns it to the PartnerName field.
+// SetPartnerName gets a reference to the given NullableString and assigns it to the PartnerName field.
 func (o *PartnerEntity) SetPartnerName(v string) {
-	o.PartnerName = &v
+	o.PartnerName.Set(&v)
+}
+// SetPartnerNameNil sets the value for PartnerName to be an explicit nil
+func (o *PartnerEntity) SetPartnerNameNil() {
+	o.PartnerName.Set(nil)
+}
+
+// UnsetPartnerName ensures that no value is present for PartnerName, not even an explicit nil
+func (o *PartnerEntity) UnsetPartnerName() {
+	o.PartnerName.Unset()
 }
 
 func (o PartnerEntity) MarshalJSON() ([]byte, error) {
@@ -118,8 +128,8 @@ func (o PartnerEntity) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PartnerId) {
 		toSerialize["partnerId"] = o.PartnerId
 	}
-	if !IsNil(o.PartnerName) {
-		toSerialize["partnerName"] = o.PartnerName
+	if o.PartnerName.IsSet() {
+		toSerialize["partnerName"] = o.PartnerName.Get()
 	}
 	return toSerialize, nil
 }

@@ -75,9 +75,6 @@ func (a *KubernetesAPIService) KubernetesAddK8sAlertExecute(r ApiKubernetesAddK8
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createAlertDto == nil {
-		return nil, reportError("createAlertDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -244,9 +241,6 @@ func (a *KubernetesAPIService) KubernetesAddK8sEventsExecute(r ApiKubernetesAddK
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.kubernetesEventCreateDto == nil {
-		return nil, reportError("kubernetesEventCreateDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -367,14 +361,24 @@ type ApiKubernetesAlertListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	type_ *string
-	limit *int32
-	offset *int32
 	startDate *time.Time
 	endDate *time.Time
+}
+
+func (r ApiKubernetesAlertListRequest) Limit(limit int32) ApiKubernetesAlertListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesAlertListRequest) Offset(offset int32) ApiKubernetesAlertListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesAlertListRequest) SortBy(sortBy string) ApiKubernetesAlertListRequest {
@@ -394,16 +398,6 @@ func (r ApiKubernetesAlertListRequest) Search(search string) ApiKubernetesAlertL
 
 func (r ApiKubernetesAlertListRequest) Type_(type_ string) ApiKubernetesAlertListRequest {
 	r.type_ = &type_
-	return r
-}
-
-func (r ApiKubernetesAlertListRequest) Limit(limit int32) ApiKubernetesAlertListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesAlertListRequest) Offset(offset int32) ApiKubernetesAlertListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -457,18 +451,6 @@ func (a *KubernetesAPIService) KubernetesAlertListExecute(r ApiKubernetesAlertLi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.type_ == nil {
-		return localVarReturnValue, nil, reportError("type_ is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -476,10 +458,18 @@ func (a *KubernetesAPIService) KubernetesAlertListExecute(r ApiKubernetesAlertLi
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Type", r.type_, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.type_ != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Type", r.type_, "form", "")
+	}
 	if r.startDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "StartDate", r.startDate, "form", "")
 	}
@@ -788,13 +778,23 @@ type ApiKubernetesConfigMapListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesConfigMapListRequest) Limit(limit int32) ApiKubernetesConfigMapListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesConfigMapListRequest) Offset(offset int32) ApiKubernetesConfigMapListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesConfigMapListRequest) SortBy(sortBy string) ApiKubernetesConfigMapListRequest {
@@ -819,16 +819,6 @@ func (r ApiKubernetesConfigMapListRequest) SearchId(searchId string) ApiKubernet
 
 func (r ApiKubernetesConfigMapListRequest) FilterBy(filterBy string) ApiKubernetesConfigMapListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesConfigMapListRequest) Limit(limit int32) ApiKubernetesConfigMapListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesConfigMapListRequest) Offset(offset int32) ApiKubernetesConfigMapListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -872,21 +862,6 @@ func (a *KubernetesAPIService) KubernetesConfigMapListExecute(r ApiKubernetesCon
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -894,11 +869,21 @@ func (a *KubernetesAPIService) KubernetesConfigMapListExecute(r ApiKubernetesCon
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1025,13 +1010,23 @@ type ApiKubernetesCrdListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesCrdListRequest) Limit(limit int32) ApiKubernetesCrdListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesCrdListRequest) Offset(offset int32) ApiKubernetesCrdListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesCrdListRequest) SortBy(sortBy string) ApiKubernetesCrdListRequest {
@@ -1056,16 +1051,6 @@ func (r ApiKubernetesCrdListRequest) SearchId(searchId string) ApiKubernetesCrdL
 
 func (r ApiKubernetesCrdListRequest) FilterBy(filterBy string) ApiKubernetesCrdListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesCrdListRequest) Limit(limit int32) ApiKubernetesCrdListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesCrdListRequest) Offset(offset int32) ApiKubernetesCrdListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -1109,21 +1094,6 @@ func (a *KubernetesAPIService) KubernetesCrdListExecute(r ApiKubernetesCrdListRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -1131,11 +1101,21 @@ func (a *KubernetesAPIService) KubernetesCrdListExecute(r ApiKubernetesCrdListRe
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1262,13 +1242,23 @@ type ApiKubernetesCronJobListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesCronJobListRequest) Limit(limit int32) ApiKubernetesCronJobListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesCronJobListRequest) Offset(offset int32) ApiKubernetesCronJobListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesCronJobListRequest) SortBy(sortBy string) ApiKubernetesCronJobListRequest {
@@ -1293,16 +1283,6 @@ func (r ApiKubernetesCronJobListRequest) SearchId(searchId string) ApiKubernetes
 
 func (r ApiKubernetesCronJobListRequest) FilterBy(filterBy string) ApiKubernetesCronJobListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesCronJobListRequest) Limit(limit int32) ApiKubernetesCronJobListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesCronJobListRequest) Offset(offset int32) ApiKubernetesCronJobListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -1346,21 +1326,6 @@ func (a *KubernetesAPIService) KubernetesCronJobListExecute(r ApiKubernetesCronJ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -1368,11 +1333,21 @@ func (a *KubernetesAPIService) KubernetesCronJobListExecute(r ApiKubernetesCronJ
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1499,13 +1474,23 @@ type ApiKubernetesDaemonSetListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesDaemonSetListRequest) Limit(limit int32) ApiKubernetesDaemonSetListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesDaemonSetListRequest) Offset(offset int32) ApiKubernetesDaemonSetListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesDaemonSetListRequest) SortBy(sortBy string) ApiKubernetesDaemonSetListRequest {
@@ -1530,16 +1515,6 @@ func (r ApiKubernetesDaemonSetListRequest) SearchId(searchId string) ApiKubernet
 
 func (r ApiKubernetesDaemonSetListRequest) FilterBy(filterBy string) ApiKubernetesDaemonSetListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesDaemonSetListRequest) Limit(limit int32) ApiKubernetesDaemonSetListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesDaemonSetListRequest) Offset(offset int32) ApiKubernetesDaemonSetListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -1583,21 +1558,6 @@ func (a *KubernetesAPIService) KubernetesDaemonSetListExecute(r ApiKubernetesDae
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -1605,11 +1565,21 @@ func (a *KubernetesAPIService) KubernetesDaemonSetListExecute(r ApiKubernetesDae
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1905,13 +1875,23 @@ type ApiKubernetesDeploymentListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesDeploymentListRequest) Limit(limit int32) ApiKubernetesDeploymentListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesDeploymentListRequest) Offset(offset int32) ApiKubernetesDeploymentListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesDeploymentListRequest) SortBy(sortBy string) ApiKubernetesDeploymentListRequest {
@@ -1936,16 +1916,6 @@ func (r ApiKubernetesDeploymentListRequest) SearchId(searchId string) ApiKuberne
 
 func (r ApiKubernetesDeploymentListRequest) FilterBy(filterBy string) ApiKubernetesDeploymentListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesDeploymentListRequest) Limit(limit int32) ApiKubernetesDeploymentListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesDeploymentListRequest) Offset(offset int32) ApiKubernetesDeploymentListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -1989,21 +1959,6 @@ func (a *KubernetesAPIService) KubernetesDeploymentListExecute(r ApiKubernetesDe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -2011,11 +1966,21 @@ func (a *KubernetesAPIService) KubernetesDeploymentListExecute(r ApiKubernetesDe
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -5467,13 +5432,23 @@ type ApiKubernetesHelmReleaseListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesHelmReleaseListRequest) Limit(limit int32) ApiKubernetesHelmReleaseListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesHelmReleaseListRequest) Offset(offset int32) ApiKubernetesHelmReleaseListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesHelmReleaseListRequest) SortBy(sortBy string) ApiKubernetesHelmReleaseListRequest {
@@ -5498,16 +5473,6 @@ func (r ApiKubernetesHelmReleaseListRequest) SearchId(searchId string) ApiKubern
 
 func (r ApiKubernetesHelmReleaseListRequest) FilterBy(filterBy string) ApiKubernetesHelmReleaseListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesHelmReleaseListRequest) Limit(limit int32) ApiKubernetesHelmReleaseListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesHelmReleaseListRequest) Offset(offset int32) ApiKubernetesHelmReleaseListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -5551,21 +5516,6 @@ func (a *KubernetesAPIService) KubernetesHelmReleaseListExecute(r ApiKubernetesH
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -5573,11 +5523,21 @@ func (a *KubernetesAPIService) KubernetesHelmReleaseListExecute(r ApiKubernetesH
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -5704,13 +5664,23 @@ type ApiKubernetesIngressListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesIngressListRequest) Limit(limit int32) ApiKubernetesIngressListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesIngressListRequest) Offset(offset int32) ApiKubernetesIngressListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesIngressListRequest) SortBy(sortBy string) ApiKubernetesIngressListRequest {
@@ -5735,16 +5705,6 @@ func (r ApiKubernetesIngressListRequest) SearchId(searchId string) ApiKubernetes
 
 func (r ApiKubernetesIngressListRequest) FilterBy(filterBy string) ApiKubernetesIngressListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesIngressListRequest) Limit(limit int32) ApiKubernetesIngressListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesIngressListRequest) Offset(offset int32) ApiKubernetesIngressListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -5788,21 +5748,6 @@ func (a *KubernetesAPIService) KubernetesIngressListExecute(r ApiKubernetesIngre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -5810,11 +5755,21 @@ func (a *KubernetesAPIService) KubernetesIngressListExecute(r ApiKubernetesIngre
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6117,13 +6072,23 @@ type ApiKubernetesJobsListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesJobsListRequest) Limit(limit int32) ApiKubernetesJobsListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesJobsListRequest) Offset(offset int32) ApiKubernetesJobsListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesJobsListRequest) SortBy(sortBy string) ApiKubernetesJobsListRequest {
@@ -6148,16 +6113,6 @@ func (r ApiKubernetesJobsListRequest) SearchId(searchId string) ApiKubernetesJob
 
 func (r ApiKubernetesJobsListRequest) FilterBy(filterBy string) ApiKubernetesJobsListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesJobsListRequest) Limit(limit int32) ApiKubernetesJobsListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesJobsListRequest) Offset(offset int32) ApiKubernetesJobsListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -6201,21 +6156,6 @@ func (a *KubernetesAPIService) KubernetesJobsListExecute(r ApiKubernetesJobsList
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -6223,11 +6163,21 @@ func (a *KubernetesAPIService) KubernetesJobsListExecute(r ApiKubernetesJobsList
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -6867,13 +6817,23 @@ type ApiKubernetesNetworkPolicyListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesNetworkPolicyListRequest) Limit(limit int32) ApiKubernetesNetworkPolicyListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesNetworkPolicyListRequest) Offset(offset int32) ApiKubernetesNetworkPolicyListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesNetworkPolicyListRequest) SortBy(sortBy string) ApiKubernetesNetworkPolicyListRequest {
@@ -6898,16 +6858,6 @@ func (r ApiKubernetesNetworkPolicyListRequest) SearchId(searchId string) ApiKube
 
 func (r ApiKubernetesNetworkPolicyListRequest) FilterBy(filterBy string) ApiKubernetesNetworkPolicyListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesNetworkPolicyListRequest) Limit(limit int32) ApiKubernetesNetworkPolicyListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesNetworkPolicyListRequest) Offset(offset int32) ApiKubernetesNetworkPolicyListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -6951,21 +6901,6 @@ func (a *KubernetesAPIService) KubernetesNetworkPolicyListExecute(r ApiKubernete
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -6973,11 +6908,21 @@ func (a *KubernetesAPIService) KubernetesNetworkPolicyListExecute(r ApiKubernete
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -7152,11 +7097,10 @@ func (a *KubernetesAPIService) KubernetesNodeListExecute(r ApiKubernetesNodeList
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -9107,13 +9051,23 @@ type ApiKubernetesPdbListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesPdbListRequest) Limit(limit int32) ApiKubernetesPdbListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesPdbListRequest) Offset(offset int32) ApiKubernetesPdbListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesPdbListRequest) SortBy(sortBy string) ApiKubernetesPdbListRequest {
@@ -9138,16 +9092,6 @@ func (r ApiKubernetesPdbListRequest) SearchId(searchId string) ApiKubernetesPdbL
 
 func (r ApiKubernetesPdbListRequest) FilterBy(filterBy string) ApiKubernetesPdbListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesPdbListRequest) Limit(limit int32) ApiKubernetesPdbListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesPdbListRequest) Offset(offset int32) ApiKubernetesPdbListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -9191,21 +9135,6 @@ func (a *KubernetesAPIService) KubernetesPdbListExecute(r ApiKubernetesPdbListRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -9213,11 +9142,21 @@ func (a *KubernetesAPIService) KubernetesPdbListExecute(r ApiKubernetesPdbListRe
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -9344,13 +9283,23 @@ type ApiKubernetesPodListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesPodListRequest) Limit(limit int32) ApiKubernetesPodListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesPodListRequest) Offset(offset int32) ApiKubernetesPodListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesPodListRequest) SortBy(sortBy string) ApiKubernetesPodListRequest {
@@ -9375,16 +9324,6 @@ func (r ApiKubernetesPodListRequest) SearchId(searchId string) ApiKubernetesPodL
 
 func (r ApiKubernetesPodListRequest) FilterBy(filterBy string) ApiKubernetesPodListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesPodListRequest) Limit(limit int32) ApiKubernetesPodListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesPodListRequest) Offset(offset int32) ApiKubernetesPodListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -9428,21 +9367,6 @@ func (a *KubernetesAPIService) KubernetesPodListExecute(r ApiKubernetesPodListRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -9450,11 +9374,21 @@ func (a *KubernetesAPIService) KubernetesPodListExecute(r ApiKubernetesPodListRe
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -9757,13 +9691,23 @@ type ApiKubernetesPvcListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesPvcListRequest) Limit(limit int32) ApiKubernetesPvcListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesPvcListRequest) Offset(offset int32) ApiKubernetesPvcListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesPvcListRequest) SortBy(sortBy string) ApiKubernetesPvcListRequest {
@@ -9788,16 +9732,6 @@ func (r ApiKubernetesPvcListRequest) SearchId(searchId string) ApiKubernetesPvcL
 
 func (r ApiKubernetesPvcListRequest) FilterBy(filterBy string) ApiKubernetesPvcListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesPvcListRequest) Limit(limit int32) ApiKubernetesPvcListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesPvcListRequest) Offset(offset int32) ApiKubernetesPvcListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -9841,21 +9775,6 @@ func (a *KubernetesAPIService) KubernetesPvcListExecute(r ApiKubernetesPvcListRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -9863,11 +9782,21 @@ func (a *KubernetesAPIService) KubernetesPvcListExecute(r ApiKubernetesPvcListRe
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -10823,13 +10752,23 @@ type ApiKubernetesSecretListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesSecretListRequest) Limit(limit int32) ApiKubernetesSecretListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesSecretListRequest) Offset(offset int32) ApiKubernetesSecretListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesSecretListRequest) SortBy(sortBy string) ApiKubernetesSecretListRequest {
@@ -10854,16 +10793,6 @@ func (r ApiKubernetesSecretListRequest) SearchId(searchId string) ApiKubernetesS
 
 func (r ApiKubernetesSecretListRequest) FilterBy(filterBy string) ApiKubernetesSecretListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesSecretListRequest) Limit(limit int32) ApiKubernetesSecretListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesSecretListRequest) Offset(offset int32) ApiKubernetesSecretListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -10907,21 +10836,6 @@ func (a *KubernetesAPIService) KubernetesSecretListExecute(r ApiKubernetesSecret
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -10929,11 +10843,21 @@ func (a *KubernetesAPIService) KubernetesSecretListExecute(r ApiKubernetesSecret
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -11060,13 +10984,23 @@ type ApiKubernetesServiceListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesServiceListRequest) Limit(limit int32) ApiKubernetesServiceListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesServiceListRequest) Offset(offset int32) ApiKubernetesServiceListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesServiceListRequest) SortBy(sortBy string) ApiKubernetesServiceListRequest {
@@ -11091,16 +11025,6 @@ func (r ApiKubernetesServiceListRequest) SearchId(searchId string) ApiKubernetes
 
 func (r ApiKubernetesServiceListRequest) FilterBy(filterBy string) ApiKubernetesServiceListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesServiceListRequest) Limit(limit int32) ApiKubernetesServiceListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesServiceListRequest) Offset(offset int32) ApiKubernetesServiceListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -11144,21 +11068,6 @@ func (a *KubernetesAPIService) KubernetesServiceListExecute(r ApiKubernetesServi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -11166,11 +11075,21 @@ func (a *KubernetesAPIService) KubernetesServiceListExecute(r ApiKubernetesServi
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -11462,13 +11381,23 @@ type ApiKubernetesStorageClassListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesStorageClassListRequest) Limit(limit int32) ApiKubernetesStorageClassListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesStorageClassListRequest) Offset(offset int32) ApiKubernetesStorageClassListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesStorageClassListRequest) SortBy(sortBy string) ApiKubernetesStorageClassListRequest {
@@ -11493,16 +11422,6 @@ func (r ApiKubernetesStorageClassListRequest) SearchId(searchId string) ApiKuber
 
 func (r ApiKubernetesStorageClassListRequest) FilterBy(filterBy string) ApiKubernetesStorageClassListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesStorageClassListRequest) Limit(limit int32) ApiKubernetesStorageClassListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesStorageClassListRequest) Offset(offset int32) ApiKubernetesStorageClassListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -11546,21 +11465,6 @@ func (a *KubernetesAPIService) KubernetesStorageClassListExecute(r ApiKubernetes
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -11568,11 +11472,21 @@ func (a *KubernetesAPIService) KubernetesStorageClassListExecute(r ApiKubernetes
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -11699,13 +11613,23 @@ type ApiKubernetesStsListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	projectId int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	filterBy *string
-	limit *int32
-	offset *int32
+}
+
+func (r ApiKubernetesStsListRequest) Limit(limit int32) ApiKubernetesStsListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesStsListRequest) Offset(offset int32) ApiKubernetesStsListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesStsListRequest) SortBy(sortBy string) ApiKubernetesStsListRequest {
@@ -11730,16 +11654,6 @@ func (r ApiKubernetesStsListRequest) SearchId(searchId string) ApiKubernetesStsL
 
 func (r ApiKubernetesStsListRequest) FilterBy(filterBy string) ApiKubernetesStsListRequest {
 	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiKubernetesStsListRequest) Limit(limit int32) ApiKubernetesStsListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesStsListRequest) Offset(offset int32) ApiKubernetesStsListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -11783,21 +11697,6 @@ func (a *KubernetesAPIService) KubernetesStsListExecute(r ApiKubernetesStsListRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -11805,11 +11704,21 @@ func (a *KubernetesAPIService) KubernetesStsListExecute(r ApiKubernetesStsListRe
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -11982,9 +11891,6 @@ func (a *KubernetesAPIService) KubernetesUpdateAlertExecute(r ApiKubernetesUpdat
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateKubernetesAlertDto == nil {
-		return nil, reportError("updateKubernetesAlertDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

@@ -28,30 +28,15 @@ type ApiCloudcredentialsAllFlavorsRequest struct {
 	ctx context.Context
 	ApiService *CloudCredentialAPIService
 	cloudId int32
-	search *string
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
 	startRam *float64
 	endRam *float64
 	startCpu *int32
 	endCpu *int32
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) Search(search string) ApiCloudcredentialsAllFlavorsRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) SortBy(sortBy string) ApiCloudcredentialsAllFlavorsRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiCloudcredentialsAllFlavorsRequest) SortDirection(sortDirection string) ApiCloudcredentialsAllFlavorsRequest {
-	r.sortDirection = &sortDirection
-	return r
+	search *string
+	sortBy *string
+	sortDirection *string
 }
 
 func (r ApiCloudcredentialsAllFlavorsRequest) Limit(limit int32) ApiCloudcredentialsAllFlavorsRequest {
@@ -81,6 +66,21 @@ func (r ApiCloudcredentialsAllFlavorsRequest) StartCpu(startCpu int32) ApiCloudc
 
 func (r ApiCloudcredentialsAllFlavorsRequest) EndCpu(endCpu int32) ApiCloudcredentialsAllFlavorsRequest {
 	r.endCpu = &endCpu
+	return r
+}
+
+func (r ApiCloudcredentialsAllFlavorsRequest) Search(search string) ApiCloudcredentialsAllFlavorsRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiCloudcredentialsAllFlavorsRequest) SortBy(sortBy string) ApiCloudcredentialsAllFlavorsRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiCloudcredentialsAllFlavorsRequest) SortDirection(sortDirection string) ApiCloudcredentialsAllFlavorsRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -124,15 +124,6 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -152,9 +143,15 @@ func (a *CloudCredentialAPIService) CloudcredentialsAllFlavorsExecute(r ApiCloud
 	if r.endCpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndCpu", r.endCpu, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -942,16 +939,11 @@ func (a *CloudCredentialAPIService) CloudcredentialsMakeDefaultExecute(r ApiClou
 type ApiCloudcredentialsOrgListRequest struct {
 	ctx context.Context
 	ApiService *CloudCredentialAPIService
-	search *string
 	isAdmin *bool
 	organizationId *int32
+	search *string
 	isInfra *bool
 	id *int32
-}
-
-func (r ApiCloudcredentialsOrgListRequest) Search(search string) ApiCloudcredentialsOrgListRequest {
-	r.search = &search
-	return r
 }
 
 func (r ApiCloudcredentialsOrgListRequest) IsAdmin(isAdmin bool) ApiCloudcredentialsOrgListRequest {
@@ -961,6 +953,11 @@ func (r ApiCloudcredentialsOrgListRequest) IsAdmin(isAdmin bool) ApiCloudcredent
 
 func (r ApiCloudcredentialsOrgListRequest) OrganizationId(organizationId int32) ApiCloudcredentialsOrgListRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiCloudcredentialsOrgListRequest) Search(search string) ApiCloudcredentialsOrgListRequest {
+	r.search = &search
 	return r
 }
 
@@ -1011,9 +1008,6 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 	if r.isAdmin == nil {
 		return localVarReturnValue, nil, reportError("isAdmin is required and must be specified")
 	}
@@ -1021,7 +1015,9 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	parameterAddToHeaderOrQuery(localVarQueryParams, "IsAdmin", r.isAdmin, "form", "")
 	if r.isInfra != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "form", "")

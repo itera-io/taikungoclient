@@ -21,7 +21,7 @@ var _ MappedNullable = &ServerCommonRecordDto{}
 // ServerCommonRecordDto struct for ServerCommonRecordDto
 type ServerCommonRecordDto struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	ProjectName *string `json:"projectName,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
 	Names []string `json:"names,omitempty"`
 }
 
@@ -74,41 +74,51 @@ func (o *ServerCommonRecordDto) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetProjectName returns the ProjectName field value if set, zero value otherwise.
+// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServerCommonRecordDto) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName) {
+	if o == nil || IsNil(o.ProjectName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName
+	return *o.ProjectName.Get()
 }
 
 // GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerCommonRecordDto) GetProjectNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ProjectName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName, true
+	return o.ProjectName.Get(), o.ProjectName.IsSet()
 }
 
 // HasProjectName returns a boolean if a field has been set.
 func (o *ServerCommonRecordDto) HasProjectName() bool {
-	if o != nil && !IsNil(o.ProjectName) {
+	if o != nil && o.ProjectName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
+// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
 func (o *ServerCommonRecordDto) SetProjectName(v string) {
-	o.ProjectName = &v
+	o.ProjectName.Set(&v)
+}
+// SetProjectNameNil sets the value for ProjectName to be an explicit nil
+func (o *ServerCommonRecordDto) SetProjectNameNil() {
+	o.ProjectName.Set(nil)
 }
 
-// GetNames returns the Names field value if set, zero value otherwise.
+// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
+func (o *ServerCommonRecordDto) UnsetProjectName() {
+	o.ProjectName.Unset()
+}
+
+// GetNames returns the Names field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServerCommonRecordDto) GetNames() []string {
-	if o == nil || IsNil(o.Names) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -117,6 +127,7 @@ func (o *ServerCommonRecordDto) GetNames() []string {
 
 // GetNamesOk returns a tuple with the Names field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerCommonRecordDto) GetNamesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Names) {
 		return nil, false
@@ -151,10 +162,10 @@ func (o ServerCommonRecordDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.ProjectName) {
-		toSerialize["projectName"] = o.ProjectName
+	if o.ProjectName.IsSet() {
+		toSerialize["projectName"] = o.ProjectName.Get()
 	}
-	if !IsNil(o.Names) {
+	if o.Names != nil {
 		toSerialize["names"] = o.Names
 	}
 	return toSerialize, nil

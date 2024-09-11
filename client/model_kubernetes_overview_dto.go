@@ -21,13 +21,13 @@ var _ MappedNullable = &KubernetesOverviewDto{}
 // KubernetesOverviewDto struct for KubernetesOverviewDto
 type KubernetesOverviewDto struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	ProjectName *string `json:"projectName,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
 	HealthyPods *int32 `json:"healthyPods,omitempty"`
 	UnhealthyPods *int32 `json:"unhealthyPods,omitempty"`
 	HealthyNodes *int32 `json:"healthyNodes,omitempty"`
 	UnhealthyNodes *int32 `json:"unhealthyNodes,omitempty"`
 	AlertsCount *int32 `json:"alertsCount,omitempty"`
-	KubernetesHealth *string `json:"kubernetesHealth,omitempty"`
+	KubernetesHealth NullableString `json:"kubernetesHealth,omitempty"`
 }
 
 // NewKubernetesOverviewDto instantiates a new KubernetesOverviewDto object
@@ -79,36 +79,46 @@ func (o *KubernetesOverviewDto) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetProjectName returns the ProjectName field value if set, zero value otherwise.
+// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesOverviewDto) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName) {
+	if o == nil || IsNil(o.ProjectName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName
+	return *o.ProjectName.Get()
 }
 
 // GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesOverviewDto) GetProjectNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ProjectName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName, true
+	return o.ProjectName.Get(), o.ProjectName.IsSet()
 }
 
 // HasProjectName returns a boolean if a field has been set.
 func (o *KubernetesOverviewDto) HasProjectName() bool {
-	if o != nil && !IsNil(o.ProjectName) {
+	if o != nil && o.ProjectName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
+// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
 func (o *KubernetesOverviewDto) SetProjectName(v string) {
-	o.ProjectName = &v
+	o.ProjectName.Set(&v)
+}
+// SetProjectNameNil sets the value for ProjectName to be an explicit nil
+func (o *KubernetesOverviewDto) SetProjectNameNil() {
+	o.ProjectName.Set(nil)
+}
+
+// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
+func (o *KubernetesOverviewDto) UnsetProjectName() {
+	o.ProjectName.Unset()
 }
 
 // GetHealthyPods returns the HealthyPods field value if set, zero value otherwise.
@@ -271,36 +281,46 @@ func (o *KubernetesOverviewDto) SetAlertsCount(v int32) {
 	o.AlertsCount = &v
 }
 
-// GetKubernetesHealth returns the KubernetesHealth field value if set, zero value otherwise.
+// GetKubernetesHealth returns the KubernetesHealth field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KubernetesOverviewDto) GetKubernetesHealth() string {
-	if o == nil || IsNil(o.KubernetesHealth) {
+	if o == nil || IsNil(o.KubernetesHealth.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.KubernetesHealth
+	return *o.KubernetesHealth.Get()
 }
 
 // GetKubernetesHealthOk returns a tuple with the KubernetesHealth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesOverviewDto) GetKubernetesHealthOk() (*string, bool) {
-	if o == nil || IsNil(o.KubernetesHealth) {
+	if o == nil {
 		return nil, false
 	}
-	return o.KubernetesHealth, true
+	return o.KubernetesHealth.Get(), o.KubernetesHealth.IsSet()
 }
 
 // HasKubernetesHealth returns a boolean if a field has been set.
 func (o *KubernetesOverviewDto) HasKubernetesHealth() bool {
-	if o != nil && !IsNil(o.KubernetesHealth) {
+	if o != nil && o.KubernetesHealth.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKubernetesHealth gets a reference to the given string and assigns it to the KubernetesHealth field.
+// SetKubernetesHealth gets a reference to the given NullableString and assigns it to the KubernetesHealth field.
 func (o *KubernetesOverviewDto) SetKubernetesHealth(v string) {
-	o.KubernetesHealth = &v
+	o.KubernetesHealth.Set(&v)
+}
+// SetKubernetesHealthNil sets the value for KubernetesHealth to be an explicit nil
+func (o *KubernetesOverviewDto) SetKubernetesHealthNil() {
+	o.KubernetesHealth.Set(nil)
+}
+
+// UnsetKubernetesHealth ensures that no value is present for KubernetesHealth, not even an explicit nil
+func (o *KubernetesOverviewDto) UnsetKubernetesHealth() {
+	o.KubernetesHealth.Unset()
 }
 
 func (o KubernetesOverviewDto) MarshalJSON() ([]byte, error) {
@@ -316,8 +336,8 @@ func (o KubernetesOverviewDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.ProjectName) {
-		toSerialize["projectName"] = o.ProjectName
+	if o.ProjectName.IsSet() {
+		toSerialize["projectName"] = o.ProjectName.Get()
 	}
 	if !IsNil(o.HealthyPods) {
 		toSerialize["healthyPods"] = o.HealthyPods
@@ -334,8 +354,8 @@ func (o KubernetesOverviewDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AlertsCount) {
 		toSerialize["alertsCount"] = o.AlertsCount
 	}
-	if !IsNil(o.KubernetesHealth) {
-		toSerialize["kubernetesHealth"] = o.KubernetesHealth
+	if o.KubernetesHealth.IsSet() {
+		toSerialize["kubernetesHealth"] = o.KubernetesHealth.Get()
 	}
 	return toSerialize, nil
 }

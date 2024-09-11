@@ -21,14 +21,14 @@ var _ MappedNullable = &KeycloakListDto{}
 // KeycloakListDto struct for KeycloakListDto
 type KeycloakListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
-	ClientId *string `json:"clientId,omitempty"`
-	ClientSecret *string `json:"clientSecret,omitempty"`
-	RealmsName *string `json:"realmsName,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	ClientId NullableString `json:"clientId,omitempty"`
+	ClientSecret NullableString `json:"clientSecret,omitempty"`
+	RealmsName NullableString `json:"realmsName,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName *string `json:"organizationName,omitempty"`
-	PartnerLogo *string `json:"partnerLogo,omitempty"`
+	OrganizationName NullableString `json:"organizationName,omitempty"`
+	PartnerLogo NullableString `json:"partnerLogo,omitempty"`
 	Enabled *bool `json:"enabled,omitempty"`
 }
 
@@ -81,164 +81,214 @@ func (o *KeycloakListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KeycloakListDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KeycloakListDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *KeycloakListDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *KeycloakListDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *KeycloakListDto) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *KeycloakListDto) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KeycloakListDto) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Url
+	return *o.Url.Get()
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KeycloakListDto) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return o.Url.Get(), o.Url.IsSet()
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *KeycloakListDto) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
+	if o != nil && o.Url.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given string and assigns it to the Url field.
+// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
 func (o *KeycloakListDto) SetUrl(v string) {
-	o.Url = &v
+	o.Url.Set(&v)
+}
+// SetUrlNil sets the value for Url to be an explicit nil
+func (o *KeycloakListDto) SetUrlNil() {
+	o.Url.Set(nil)
 }
 
-// GetClientId returns the ClientId field value if set, zero value otherwise.
+// UnsetUrl ensures that no value is present for Url, not even an explicit nil
+func (o *KeycloakListDto) UnsetUrl() {
+	o.Url.Unset()
+}
+
+// GetClientId returns the ClientId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KeycloakListDto) GetClientId() string {
-	if o == nil || IsNil(o.ClientId) {
+	if o == nil || IsNil(o.ClientId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ClientId
+	return *o.ClientId.Get()
 }
 
 // GetClientIdOk returns a tuple with the ClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KeycloakListDto) GetClientIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ClientId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ClientId, true
+	return o.ClientId.Get(), o.ClientId.IsSet()
 }
 
 // HasClientId returns a boolean if a field has been set.
 func (o *KeycloakListDto) HasClientId() bool {
-	if o != nil && !IsNil(o.ClientId) {
+	if o != nil && o.ClientId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetClientId gets a reference to the given string and assigns it to the ClientId field.
+// SetClientId gets a reference to the given NullableString and assigns it to the ClientId field.
 func (o *KeycloakListDto) SetClientId(v string) {
-	o.ClientId = &v
+	o.ClientId.Set(&v)
+}
+// SetClientIdNil sets the value for ClientId to be an explicit nil
+func (o *KeycloakListDto) SetClientIdNil() {
+	o.ClientId.Set(nil)
 }
 
-// GetClientSecret returns the ClientSecret field value if set, zero value otherwise.
+// UnsetClientId ensures that no value is present for ClientId, not even an explicit nil
+func (o *KeycloakListDto) UnsetClientId() {
+	o.ClientId.Unset()
+}
+
+// GetClientSecret returns the ClientSecret field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KeycloakListDto) GetClientSecret() string {
-	if o == nil || IsNil(o.ClientSecret) {
+	if o == nil || IsNil(o.ClientSecret.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ClientSecret
+	return *o.ClientSecret.Get()
 }
 
 // GetClientSecretOk returns a tuple with the ClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KeycloakListDto) GetClientSecretOk() (*string, bool) {
-	if o == nil || IsNil(o.ClientSecret) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ClientSecret, true
+	return o.ClientSecret.Get(), o.ClientSecret.IsSet()
 }
 
 // HasClientSecret returns a boolean if a field has been set.
 func (o *KeycloakListDto) HasClientSecret() bool {
-	if o != nil && !IsNil(o.ClientSecret) {
+	if o != nil && o.ClientSecret.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetClientSecret gets a reference to the given string and assigns it to the ClientSecret field.
+// SetClientSecret gets a reference to the given NullableString and assigns it to the ClientSecret field.
 func (o *KeycloakListDto) SetClientSecret(v string) {
-	o.ClientSecret = &v
+	o.ClientSecret.Set(&v)
+}
+// SetClientSecretNil sets the value for ClientSecret to be an explicit nil
+func (o *KeycloakListDto) SetClientSecretNil() {
+	o.ClientSecret.Set(nil)
 }
 
-// GetRealmsName returns the RealmsName field value if set, zero value otherwise.
+// UnsetClientSecret ensures that no value is present for ClientSecret, not even an explicit nil
+func (o *KeycloakListDto) UnsetClientSecret() {
+	o.ClientSecret.Unset()
+}
+
+// GetRealmsName returns the RealmsName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KeycloakListDto) GetRealmsName() string {
-	if o == nil || IsNil(o.RealmsName) {
+	if o == nil || IsNil(o.RealmsName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RealmsName
+	return *o.RealmsName.Get()
 }
 
 // GetRealmsNameOk returns a tuple with the RealmsName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KeycloakListDto) GetRealmsNameOk() (*string, bool) {
-	if o == nil || IsNil(o.RealmsName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RealmsName, true
+	return o.RealmsName.Get(), o.RealmsName.IsSet()
 }
 
 // HasRealmsName returns a boolean if a field has been set.
 func (o *KeycloakListDto) HasRealmsName() bool {
-	if o != nil && !IsNil(o.RealmsName) {
+	if o != nil && o.RealmsName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRealmsName gets a reference to the given string and assigns it to the RealmsName field.
+// SetRealmsName gets a reference to the given NullableString and assigns it to the RealmsName field.
 func (o *KeycloakListDto) SetRealmsName(v string) {
-	o.RealmsName = &v
+	o.RealmsName.Set(&v)
+}
+// SetRealmsNameNil sets the value for RealmsName to be an explicit nil
+func (o *KeycloakListDto) SetRealmsNameNil() {
+	o.RealmsName.Set(nil)
+}
+
+// UnsetRealmsName ensures that no value is present for RealmsName, not even an explicit nil
+func (o *KeycloakListDto) UnsetRealmsName() {
+	o.RealmsName.Unset()
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
@@ -273,68 +323,88 @@ func (o *KeycloakListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KeycloakListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil || IsNil(o.OrganizationName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName
+	return *o.OrganizationName.Get()
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KeycloakListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil || IsNil(o.OrganizationName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName, true
+	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *KeycloakListDto) HasOrganizationName() bool {
-	if o != nil && !IsNil(o.OrganizationName) {
+	if o != nil && o.OrganizationName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
 func (o *KeycloakListDto) SetOrganizationName(v string) {
-	o.OrganizationName = &v
+	o.OrganizationName.Set(&v)
+}
+// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
+func (o *KeycloakListDto) SetOrganizationNameNil() {
+	o.OrganizationName.Set(nil)
 }
 
-// GetPartnerLogo returns the PartnerLogo field value if set, zero value otherwise.
+// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
+func (o *KeycloakListDto) UnsetOrganizationName() {
+	o.OrganizationName.Unset()
+}
+
+// GetPartnerLogo returns the PartnerLogo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *KeycloakListDto) GetPartnerLogo() string {
-	if o == nil || IsNil(o.PartnerLogo) {
+	if o == nil || IsNil(o.PartnerLogo.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PartnerLogo
+	return *o.PartnerLogo.Get()
 }
 
 // GetPartnerLogoOk returns a tuple with the PartnerLogo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KeycloakListDto) GetPartnerLogoOk() (*string, bool) {
-	if o == nil || IsNil(o.PartnerLogo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PartnerLogo, true
+	return o.PartnerLogo.Get(), o.PartnerLogo.IsSet()
 }
 
 // HasPartnerLogo returns a boolean if a field has been set.
 func (o *KeycloakListDto) HasPartnerLogo() bool {
-	if o != nil && !IsNil(o.PartnerLogo) {
+	if o != nil && o.PartnerLogo.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerLogo gets a reference to the given string and assigns it to the PartnerLogo field.
+// SetPartnerLogo gets a reference to the given NullableString and assigns it to the PartnerLogo field.
 func (o *KeycloakListDto) SetPartnerLogo(v string) {
-	o.PartnerLogo = &v
+	o.PartnerLogo.Set(&v)
+}
+// SetPartnerLogoNil sets the value for PartnerLogo to be an explicit nil
+func (o *KeycloakListDto) SetPartnerLogoNil() {
+	o.PartnerLogo.Set(nil)
+}
+
+// UnsetPartnerLogo ensures that no value is present for PartnerLogo, not even an explicit nil
+func (o *KeycloakListDto) UnsetPartnerLogo() {
+	o.PartnerLogo.Unset()
 }
 
 // GetEnabled returns the Enabled field value if set, zero value otherwise.
@@ -382,29 +452,29 @@ func (o KeycloakListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
+	if o.Url.IsSet() {
+		toSerialize["url"] = o.Url.Get()
 	}
-	if !IsNil(o.ClientId) {
-		toSerialize["clientId"] = o.ClientId
+	if o.ClientId.IsSet() {
+		toSerialize["clientId"] = o.ClientId.Get()
 	}
-	if !IsNil(o.ClientSecret) {
-		toSerialize["clientSecret"] = o.ClientSecret
+	if o.ClientSecret.IsSet() {
+		toSerialize["clientSecret"] = o.ClientSecret.Get()
 	}
-	if !IsNil(o.RealmsName) {
-		toSerialize["realmsName"] = o.RealmsName
+	if o.RealmsName.IsSet() {
+		toSerialize["realmsName"] = o.RealmsName.Get()
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if !IsNil(o.OrganizationName) {
-		toSerialize["organizationName"] = o.OrganizationName
+	if o.OrganizationName.IsSet() {
+		toSerialize["organizationName"] = o.OrganizationName.Get()
 	}
-	if !IsNil(o.PartnerLogo) {
-		toSerialize["partnerLogo"] = o.PartnerLogo
+	if o.PartnerLogo.IsSet() {
+		toSerialize["partnerLogo"] = o.PartnerLogo.Get()
 	}
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled

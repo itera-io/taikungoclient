@@ -21,7 +21,7 @@ var _ MappedNullable = &UpdateStandAloneVmFlavorCommand{}
 // UpdateStandAloneVmFlavorCommand struct for UpdateStandAloneVmFlavorCommand
 type UpdateStandAloneVmFlavorCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	Flavor *string `json:"flavor,omitempty"`
+	Flavor NullableString `json:"flavor,omitempty"`
 }
 
 // NewUpdateStandAloneVmFlavorCommand instantiates a new UpdateStandAloneVmFlavorCommand object
@@ -73,36 +73,46 @@ func (o *UpdateStandAloneVmFlavorCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetFlavor returns the Flavor field value if set, zero value otherwise.
+// GetFlavor returns the Flavor field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateStandAloneVmFlavorCommand) GetFlavor() string {
-	if o == nil || IsNil(o.Flavor) {
+	if o == nil || IsNil(o.Flavor.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Flavor
+	return *o.Flavor.Get()
 }
 
 // GetFlavorOk returns a tuple with the Flavor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateStandAloneVmFlavorCommand) GetFlavorOk() (*string, bool) {
-	if o == nil || IsNil(o.Flavor) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Flavor, true
+	return o.Flavor.Get(), o.Flavor.IsSet()
 }
 
 // HasFlavor returns a boolean if a field has been set.
 func (o *UpdateStandAloneVmFlavorCommand) HasFlavor() bool {
-	if o != nil && !IsNil(o.Flavor) {
+	if o != nil && o.Flavor.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFlavor gets a reference to the given string and assigns it to the Flavor field.
+// SetFlavor gets a reference to the given NullableString and assigns it to the Flavor field.
 func (o *UpdateStandAloneVmFlavorCommand) SetFlavor(v string) {
-	o.Flavor = &v
+	o.Flavor.Set(&v)
+}
+// SetFlavorNil sets the value for Flavor to be an explicit nil
+func (o *UpdateStandAloneVmFlavorCommand) SetFlavorNil() {
+	o.Flavor.Set(nil)
+}
+
+// UnsetFlavor ensures that no value is present for Flavor, not even an explicit nil
+func (o *UpdateStandAloneVmFlavorCommand) UnsetFlavor() {
+	o.Flavor.Unset()
 }
 
 func (o UpdateStandAloneVmFlavorCommand) MarshalJSON() ([]byte, error) {
@@ -118,8 +128,8 @@ func (o UpdateStandAloneVmFlavorCommand) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Flavor) {
-		toSerialize["flavor"] = o.Flavor
+	if o.Flavor.IsSet() {
+		toSerialize["flavor"] = o.Flavor.Get()
 	}
 	return toSerialize, nil
 }

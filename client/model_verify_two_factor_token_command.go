@@ -20,8 +20,8 @@ var _ MappedNullable = &VerifyTwoFactorTokenCommand{}
 
 // VerifyTwoFactorTokenCommand struct for VerifyTwoFactorTokenCommand
 type VerifyTwoFactorTokenCommand struct {
-	TwoFactorTempKey *string `json:"twoFactorTempKey,omitempty"`
-	Code *string `json:"code,omitempty"`
+	TwoFactorTempKey NullableString `json:"twoFactorTempKey,omitempty"`
+	Code NullableString `json:"code,omitempty"`
 }
 
 // NewVerifyTwoFactorTokenCommand instantiates a new VerifyTwoFactorTokenCommand object
@@ -41,68 +41,88 @@ func NewVerifyTwoFactorTokenCommandWithDefaults() *VerifyTwoFactorTokenCommand {
 	return &this
 }
 
-// GetTwoFactorTempKey returns the TwoFactorTempKey field value if set, zero value otherwise.
+// GetTwoFactorTempKey returns the TwoFactorTempKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VerifyTwoFactorTokenCommand) GetTwoFactorTempKey() string {
-	if o == nil || IsNil(o.TwoFactorTempKey) {
+	if o == nil || IsNil(o.TwoFactorTempKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TwoFactorTempKey
+	return *o.TwoFactorTempKey.Get()
 }
 
 // GetTwoFactorTempKeyOk returns a tuple with the TwoFactorTempKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VerifyTwoFactorTokenCommand) GetTwoFactorTempKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.TwoFactorTempKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TwoFactorTempKey, true
+	return o.TwoFactorTempKey.Get(), o.TwoFactorTempKey.IsSet()
 }
 
 // HasTwoFactorTempKey returns a boolean if a field has been set.
 func (o *VerifyTwoFactorTokenCommand) HasTwoFactorTempKey() bool {
-	if o != nil && !IsNil(o.TwoFactorTempKey) {
+	if o != nil && o.TwoFactorTempKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTwoFactorTempKey gets a reference to the given string and assigns it to the TwoFactorTempKey field.
+// SetTwoFactorTempKey gets a reference to the given NullableString and assigns it to the TwoFactorTempKey field.
 func (o *VerifyTwoFactorTokenCommand) SetTwoFactorTempKey(v string) {
-	o.TwoFactorTempKey = &v
+	o.TwoFactorTempKey.Set(&v)
+}
+// SetTwoFactorTempKeyNil sets the value for TwoFactorTempKey to be an explicit nil
+func (o *VerifyTwoFactorTokenCommand) SetTwoFactorTempKeyNil() {
+	o.TwoFactorTempKey.Set(nil)
 }
 
-// GetCode returns the Code field value if set, zero value otherwise.
+// UnsetTwoFactorTempKey ensures that no value is present for TwoFactorTempKey, not even an explicit nil
+func (o *VerifyTwoFactorTokenCommand) UnsetTwoFactorTempKey() {
+	o.TwoFactorTempKey.Unset()
+}
+
+// GetCode returns the Code field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VerifyTwoFactorTokenCommand) GetCode() string {
-	if o == nil || IsNil(o.Code) {
+	if o == nil || IsNil(o.Code.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Code
+	return *o.Code.Get()
 }
 
 // GetCodeOk returns a tuple with the Code field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VerifyTwoFactorTokenCommand) GetCodeOk() (*string, bool) {
-	if o == nil || IsNil(o.Code) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Code, true
+	return o.Code.Get(), o.Code.IsSet()
 }
 
 // HasCode returns a boolean if a field has been set.
 func (o *VerifyTwoFactorTokenCommand) HasCode() bool {
-	if o != nil && !IsNil(o.Code) {
+	if o != nil && o.Code.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCode gets a reference to the given string and assigns it to the Code field.
+// SetCode gets a reference to the given NullableString and assigns it to the Code field.
 func (o *VerifyTwoFactorTokenCommand) SetCode(v string) {
-	o.Code = &v
+	o.Code.Set(&v)
+}
+// SetCodeNil sets the value for Code to be an explicit nil
+func (o *VerifyTwoFactorTokenCommand) SetCodeNil() {
+	o.Code.Set(nil)
+}
+
+// UnsetCode ensures that no value is present for Code, not even an explicit nil
+func (o *VerifyTwoFactorTokenCommand) UnsetCode() {
+	o.Code.Unset()
 }
 
 func (o VerifyTwoFactorTokenCommand) MarshalJSON() ([]byte, error) {
@@ -115,11 +135,11 @@ func (o VerifyTwoFactorTokenCommand) MarshalJSON() ([]byte, error) {
 
 func (o VerifyTwoFactorTokenCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TwoFactorTempKey) {
-		toSerialize["twoFactorTempKey"] = o.TwoFactorTempKey
+	if o.TwoFactorTempKey.IsSet() {
+		toSerialize["twoFactorTempKey"] = o.TwoFactorTempKey.Get()
 	}
-	if !IsNil(o.Code) {
-		toSerialize["code"] = o.Code
+	if o.Code.IsSet() {
+		toSerialize["code"] = o.Code.Get()
 	}
 	return toSerialize, nil
 }

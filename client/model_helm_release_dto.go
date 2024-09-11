@@ -20,8 +20,8 @@ var _ MappedNullable = &HelmReleaseDto{}
 
 // HelmReleaseDto struct for HelmReleaseDto
 type HelmReleaseDto struct {
-	ApiVersion *string `json:"apiVersion,omitempty"`
-	Kind *string `json:"kind,omitempty"`
+	ApiVersion NullableString `json:"apiVersion,omitempty"`
+	Kind NullableString `json:"kind,omitempty"`
 	Metadata *HelmReleaseMetaData `json:"metadata,omitempty"`
 	Spec *HelmReleaseSpec `json:"spec,omitempty"`
 	Status *HelmStatus `json:"status,omitempty"`
@@ -44,68 +44,88 @@ func NewHelmReleaseDtoWithDefaults() *HelmReleaseDto {
 	return &this
 }
 
-// GetApiVersion returns the ApiVersion field value if set, zero value otherwise.
+// GetApiVersion returns the ApiVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmReleaseDto) GetApiVersion() string {
-	if o == nil || IsNil(o.ApiVersion) {
+	if o == nil || IsNil(o.ApiVersion.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ApiVersion
+	return *o.ApiVersion.Get()
 }
 
 // GetApiVersionOk returns a tuple with the ApiVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmReleaseDto) GetApiVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.ApiVersion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ApiVersion, true
+	return o.ApiVersion.Get(), o.ApiVersion.IsSet()
 }
 
 // HasApiVersion returns a boolean if a field has been set.
 func (o *HelmReleaseDto) HasApiVersion() bool {
-	if o != nil && !IsNil(o.ApiVersion) {
+	if o != nil && o.ApiVersion.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetApiVersion gets a reference to the given string and assigns it to the ApiVersion field.
+// SetApiVersion gets a reference to the given NullableString and assigns it to the ApiVersion field.
 func (o *HelmReleaseDto) SetApiVersion(v string) {
-	o.ApiVersion = &v
+	o.ApiVersion.Set(&v)
+}
+// SetApiVersionNil sets the value for ApiVersion to be an explicit nil
+func (o *HelmReleaseDto) SetApiVersionNil() {
+	o.ApiVersion.Set(nil)
 }
 
-// GetKind returns the Kind field value if set, zero value otherwise.
+// UnsetApiVersion ensures that no value is present for ApiVersion, not even an explicit nil
+func (o *HelmReleaseDto) UnsetApiVersion() {
+	o.ApiVersion.Unset()
+}
+
+// GetKind returns the Kind field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmReleaseDto) GetKind() string {
-	if o == nil || IsNil(o.Kind) {
+	if o == nil || IsNil(o.Kind.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Kind
+	return *o.Kind.Get()
 }
 
 // GetKindOk returns a tuple with the Kind field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmReleaseDto) GetKindOk() (*string, bool) {
-	if o == nil || IsNil(o.Kind) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Kind, true
+	return o.Kind.Get(), o.Kind.IsSet()
 }
 
 // HasKind returns a boolean if a field has been set.
 func (o *HelmReleaseDto) HasKind() bool {
-	if o != nil && !IsNil(o.Kind) {
+	if o != nil && o.Kind.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKind gets a reference to the given string and assigns it to the Kind field.
+// SetKind gets a reference to the given NullableString and assigns it to the Kind field.
 func (o *HelmReleaseDto) SetKind(v string) {
-	o.Kind = &v
+	o.Kind.Set(&v)
+}
+// SetKindNil sets the value for Kind to be an explicit nil
+func (o *HelmReleaseDto) SetKindNil() {
+	o.Kind.Set(nil)
+}
+
+// UnsetKind ensures that no value is present for Kind, not even an explicit nil
+func (o *HelmReleaseDto) UnsetKind() {
+	o.Kind.Unset()
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -214,11 +234,11 @@ func (o HelmReleaseDto) MarshalJSON() ([]byte, error) {
 
 func (o HelmReleaseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ApiVersion) {
-		toSerialize["apiVersion"] = o.ApiVersion
+	if o.ApiVersion.IsSet() {
+		toSerialize["apiVersion"] = o.ApiVersion.Get()
 	}
-	if !IsNil(o.Kind) {
-		toSerialize["kind"] = o.Kind
+	if o.Kind.IsSet() {
+		toSerialize["kind"] = o.Kind.Get()
 	}
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata

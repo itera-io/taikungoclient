@@ -72,9 +72,6 @@ func (a *AllowedHostAPIService) AllowedhostCreateExecute(r ApiAllowedhostCreateR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createAllowedHostCommand == nil {
-		return localVarReturnValue, nil, reportError("createAllowedHostCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -408,9 +405,6 @@ func (a *AllowedHostAPIService) AllowedhostEditExecute(r ApiAllowedhostEditReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.editAllowedHostDto == nil {
-		return nil, reportError("editAllowedHostDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -531,11 +525,21 @@ type ApiAllowedhostListRequest struct {
 	ctx context.Context
 	ApiService *AllowedHostAPIService
 	accessProfileId int32
+	offset *int32
+	limit *int32
 	search *string
 	sortBy *string
 	sortDirection *string
-	offset *int32
-	limit *int32
+}
+
+func (r ApiAllowedhostListRequest) Offset(offset int32) ApiAllowedhostListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiAllowedhostListRequest) Limit(limit int32) ApiAllowedhostListRequest {
+	r.limit = &limit
+	return r
 }
 
 func (r ApiAllowedhostListRequest) Search(search string) ApiAllowedhostListRequest {
@@ -550,16 +554,6 @@ func (r ApiAllowedhostListRequest) SortBy(sortBy string) ApiAllowedhostListReque
 
 func (r ApiAllowedhostListRequest) SortDirection(sortDirection string) ApiAllowedhostListRequest {
 	r.sortDirection = &sortDirection
-	return r
-}
-
-func (r ApiAllowedhostListRequest) Offset(offset int32) ApiAllowedhostListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiAllowedhostListRequest) Limit(limit int32) ApiAllowedhostListRequest {
-	r.limit = &limit
 	return r
 }
 
@@ -603,15 +597,6 @@ func (a *AllowedHostAPIService) AllowedhostListExecute(r ApiAllowedhostListReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
@@ -619,9 +604,15 @@ func (a *AllowedHostAPIService) AllowedhostListExecute(r ApiAllowedhostListReque
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

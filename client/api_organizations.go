@@ -404,9 +404,6 @@ func (a *OrganizationsAPIService) OrganizationsAddPrometheusrulesExecute(r ApiOr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.addPrometheusRulesToOrganizationDto == nil {
-		return nil, reportError("addPrometheusRulesToOrganizationDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -571,9 +568,6 @@ func (a *OrganizationsAPIService) OrganizationsCreateExecute(r ApiOrganizationsC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.organizationCreateCommand == nil {
-		return localVarReturnValue, nil, reportError("organizationCreateCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -907,9 +901,6 @@ func (a *OrganizationsAPIService) OrganizationsDeletePrometheusrulesExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.requestBody == nil {
-		return nil, reportError("requestBody is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1544,13 +1535,23 @@ func (a *OrganizationsAPIService) OrganizationsLeaveExecute(r ApiOrganizationsLe
 type ApiOrganizationsListRequest struct {
 	ctx context.Context
 	ApiService *OrganizationsAPIService
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
-	limit *int32
-	offset *int32
 	id *int32
+}
+
+func (r ApiOrganizationsListRequest) Limit(limit int32) ApiOrganizationsListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiOrganizationsListRequest) Offset(offset int32) ApiOrganizationsListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiOrganizationsListRequest) SortBy(sortBy string) ApiOrganizationsListRequest {
@@ -1570,16 +1571,6 @@ func (r ApiOrganizationsListRequest) Search(search string) ApiOrganizationsListR
 
 func (r ApiOrganizationsListRequest) SearchId(searchId string) ApiOrganizationsListRequest {
 	r.searchId = &searchId
-	return r
-}
-
-func (r ApiOrganizationsListRequest) Limit(limit int32) ApiOrganizationsListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiOrganizationsListRequest) Offset(offset int32) ApiOrganizationsListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -1625,18 +1616,6 @@ func (a *OrganizationsAPIService) OrganizationsListExecute(r ApiOrganizationsLis
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -1644,10 +1623,18 @@ func (a *OrganizationsAPIService) OrganizationsListExecute(r ApiOrganizationsLis
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
@@ -1776,18 +1763,18 @@ func (a *OrganizationsAPIService) OrganizationsListExecute(r ApiOrganizationsLis
 type ApiOrganizationsOrganizationListRequest struct {
 	ctx context.Context
 	ApiService *OrganizationsAPIService
-	search *string
 	partnerId *int32
+	search *string
 	isInfra *bool
-}
-
-func (r ApiOrganizationsOrganizationListRequest) Search(search string) ApiOrganizationsOrganizationListRequest {
-	r.search = &search
-	return r
 }
 
 func (r ApiOrganizationsOrganizationListRequest) PartnerId(partnerId int32) ApiOrganizationsOrganizationListRequest {
 	r.partnerId = &partnerId
+	return r
+}
+
+func (r ApiOrganizationsOrganizationListRequest) Search(search string) ApiOrganizationsOrganizationListRequest {
+	r.search = &search
 	return r
 }
 
@@ -1833,14 +1820,13 @@ func (a *OrganizationsAPIService) OrganizationsOrganizationListExecute(r ApiOrga
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.partnerId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "PartnerId", r.partnerId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.isInfra != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "form", "")
 	}
@@ -2177,9 +2163,6 @@ func (a *OrganizationsAPIService) OrganizationsUpdateExecute(r ApiOrganizationsU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateOrganizationCommand == nil {
-		return nil, reportError("updateOrganizationCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

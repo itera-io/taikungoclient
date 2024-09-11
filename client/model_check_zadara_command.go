@@ -20,9 +20,9 @@ var _ MappedNullable = &CheckZadaraCommand{}
 
 // CheckZadaraCommand struct for CheckZadaraCommand
 type CheckZadaraCommand struct {
-	ZadaraSecretAccessKey *string `json:"zadaraSecretAccessKey,omitempty"`
-	ZadaraAccessKeyId *string `json:"zadaraAccessKeyId,omitempty"`
-	ZadaraUrl *string `json:"zadaraUrl,omitempty"`
+	ZadaraSecretAccessKey NullableString `json:"zadaraSecretAccessKey,omitempty"`
+	ZadaraAccessKeyId NullableString `json:"zadaraAccessKeyId,omitempty"`
+	ZadaraUrl NullableString `json:"zadaraUrl,omitempty"`
 }
 
 // NewCheckZadaraCommand instantiates a new CheckZadaraCommand object
@@ -42,100 +42,130 @@ func NewCheckZadaraCommandWithDefaults() *CheckZadaraCommand {
 	return &this
 }
 
-// GetZadaraSecretAccessKey returns the ZadaraSecretAccessKey field value if set, zero value otherwise.
+// GetZadaraSecretAccessKey returns the ZadaraSecretAccessKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckZadaraCommand) GetZadaraSecretAccessKey() string {
-	if o == nil || IsNil(o.ZadaraSecretAccessKey) {
+	if o == nil || IsNil(o.ZadaraSecretAccessKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ZadaraSecretAccessKey
+	return *o.ZadaraSecretAccessKey.Get()
 }
 
 // GetZadaraSecretAccessKeyOk returns a tuple with the ZadaraSecretAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckZadaraCommand) GetZadaraSecretAccessKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.ZadaraSecretAccessKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ZadaraSecretAccessKey, true
+	return o.ZadaraSecretAccessKey.Get(), o.ZadaraSecretAccessKey.IsSet()
 }
 
 // HasZadaraSecretAccessKey returns a boolean if a field has been set.
 func (o *CheckZadaraCommand) HasZadaraSecretAccessKey() bool {
-	if o != nil && !IsNil(o.ZadaraSecretAccessKey) {
+	if o != nil && o.ZadaraSecretAccessKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetZadaraSecretAccessKey gets a reference to the given string and assigns it to the ZadaraSecretAccessKey field.
+// SetZadaraSecretAccessKey gets a reference to the given NullableString and assigns it to the ZadaraSecretAccessKey field.
 func (o *CheckZadaraCommand) SetZadaraSecretAccessKey(v string) {
-	o.ZadaraSecretAccessKey = &v
+	o.ZadaraSecretAccessKey.Set(&v)
+}
+// SetZadaraSecretAccessKeyNil sets the value for ZadaraSecretAccessKey to be an explicit nil
+func (o *CheckZadaraCommand) SetZadaraSecretAccessKeyNil() {
+	o.ZadaraSecretAccessKey.Set(nil)
 }
 
-// GetZadaraAccessKeyId returns the ZadaraAccessKeyId field value if set, zero value otherwise.
+// UnsetZadaraSecretAccessKey ensures that no value is present for ZadaraSecretAccessKey, not even an explicit nil
+func (o *CheckZadaraCommand) UnsetZadaraSecretAccessKey() {
+	o.ZadaraSecretAccessKey.Unset()
+}
+
+// GetZadaraAccessKeyId returns the ZadaraAccessKeyId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckZadaraCommand) GetZadaraAccessKeyId() string {
-	if o == nil || IsNil(o.ZadaraAccessKeyId) {
+	if o == nil || IsNil(o.ZadaraAccessKeyId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ZadaraAccessKeyId
+	return *o.ZadaraAccessKeyId.Get()
 }
 
 // GetZadaraAccessKeyIdOk returns a tuple with the ZadaraAccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckZadaraCommand) GetZadaraAccessKeyIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ZadaraAccessKeyId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ZadaraAccessKeyId, true
+	return o.ZadaraAccessKeyId.Get(), o.ZadaraAccessKeyId.IsSet()
 }
 
 // HasZadaraAccessKeyId returns a boolean if a field has been set.
 func (o *CheckZadaraCommand) HasZadaraAccessKeyId() bool {
-	if o != nil && !IsNil(o.ZadaraAccessKeyId) {
+	if o != nil && o.ZadaraAccessKeyId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetZadaraAccessKeyId gets a reference to the given string and assigns it to the ZadaraAccessKeyId field.
+// SetZadaraAccessKeyId gets a reference to the given NullableString and assigns it to the ZadaraAccessKeyId field.
 func (o *CheckZadaraCommand) SetZadaraAccessKeyId(v string) {
-	o.ZadaraAccessKeyId = &v
+	o.ZadaraAccessKeyId.Set(&v)
+}
+// SetZadaraAccessKeyIdNil sets the value for ZadaraAccessKeyId to be an explicit nil
+func (o *CheckZadaraCommand) SetZadaraAccessKeyIdNil() {
+	o.ZadaraAccessKeyId.Set(nil)
 }
 
-// GetZadaraUrl returns the ZadaraUrl field value if set, zero value otherwise.
+// UnsetZadaraAccessKeyId ensures that no value is present for ZadaraAccessKeyId, not even an explicit nil
+func (o *CheckZadaraCommand) UnsetZadaraAccessKeyId() {
+	o.ZadaraAccessKeyId.Unset()
+}
+
+// GetZadaraUrl returns the ZadaraUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckZadaraCommand) GetZadaraUrl() string {
-	if o == nil || IsNil(o.ZadaraUrl) {
+	if o == nil || IsNil(o.ZadaraUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ZadaraUrl
+	return *o.ZadaraUrl.Get()
 }
 
 // GetZadaraUrlOk returns a tuple with the ZadaraUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckZadaraCommand) GetZadaraUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.ZadaraUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ZadaraUrl, true
+	return o.ZadaraUrl.Get(), o.ZadaraUrl.IsSet()
 }
 
 // HasZadaraUrl returns a boolean if a field has been set.
 func (o *CheckZadaraCommand) HasZadaraUrl() bool {
-	if o != nil && !IsNil(o.ZadaraUrl) {
+	if o != nil && o.ZadaraUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetZadaraUrl gets a reference to the given string and assigns it to the ZadaraUrl field.
+// SetZadaraUrl gets a reference to the given NullableString and assigns it to the ZadaraUrl field.
 func (o *CheckZadaraCommand) SetZadaraUrl(v string) {
-	o.ZadaraUrl = &v
+	o.ZadaraUrl.Set(&v)
+}
+// SetZadaraUrlNil sets the value for ZadaraUrl to be an explicit nil
+func (o *CheckZadaraCommand) SetZadaraUrlNil() {
+	o.ZadaraUrl.Set(nil)
+}
+
+// UnsetZadaraUrl ensures that no value is present for ZadaraUrl, not even an explicit nil
+func (o *CheckZadaraCommand) UnsetZadaraUrl() {
+	o.ZadaraUrl.Unset()
 }
 
 func (o CheckZadaraCommand) MarshalJSON() ([]byte, error) {
@@ -148,14 +178,14 @@ func (o CheckZadaraCommand) MarshalJSON() ([]byte, error) {
 
 func (o CheckZadaraCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ZadaraSecretAccessKey) {
-		toSerialize["zadaraSecretAccessKey"] = o.ZadaraSecretAccessKey
+	if o.ZadaraSecretAccessKey.IsSet() {
+		toSerialize["zadaraSecretAccessKey"] = o.ZadaraSecretAccessKey.Get()
 	}
-	if !IsNil(o.ZadaraAccessKeyId) {
-		toSerialize["zadaraAccessKeyId"] = o.ZadaraAccessKeyId
+	if o.ZadaraAccessKeyId.IsSet() {
+		toSerialize["zadaraAccessKeyId"] = o.ZadaraAccessKeyId.Get()
 	}
-	if !IsNil(o.ZadaraUrl) {
-		toSerialize["zadaraUrl"] = o.ZadaraUrl
+	if o.ZadaraUrl.IsSet() {
+		toSerialize["zadaraUrl"] = o.ZadaraUrl.Get()
 	}
 	return toSerialize, nil
 }

@@ -20,7 +20,7 @@ var _ MappedNullable = &ConfirmEmailCommand{}
 
 // ConfirmEmailCommand struct for ConfirmEmailCommand
 type ConfirmEmailCommand struct {
-	NewEmail *string `json:"newEmail,omitempty"`
+	NewEmail NullableString `json:"newEmail,omitempty"`
 	Mode *EmailMode `json:"mode,omitempty"`
 }
 
@@ -41,36 +41,46 @@ func NewConfirmEmailCommandWithDefaults() *ConfirmEmailCommand {
 	return &this
 }
 
-// GetNewEmail returns the NewEmail field value if set, zero value otherwise.
+// GetNewEmail returns the NewEmail field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ConfirmEmailCommand) GetNewEmail() string {
-	if o == nil || IsNil(o.NewEmail) {
+	if o == nil || IsNil(o.NewEmail.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.NewEmail
+	return *o.NewEmail.Get()
 }
 
 // GetNewEmailOk returns a tuple with the NewEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ConfirmEmailCommand) GetNewEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.NewEmail) {
+	if o == nil {
 		return nil, false
 	}
-	return o.NewEmail, true
+	return o.NewEmail.Get(), o.NewEmail.IsSet()
 }
 
 // HasNewEmail returns a boolean if a field has been set.
 func (o *ConfirmEmailCommand) HasNewEmail() bool {
-	if o != nil && !IsNil(o.NewEmail) {
+	if o != nil && o.NewEmail.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNewEmail gets a reference to the given string and assigns it to the NewEmail field.
+// SetNewEmail gets a reference to the given NullableString and assigns it to the NewEmail field.
 func (o *ConfirmEmailCommand) SetNewEmail(v string) {
-	o.NewEmail = &v
+	o.NewEmail.Set(&v)
+}
+// SetNewEmailNil sets the value for NewEmail to be an explicit nil
+func (o *ConfirmEmailCommand) SetNewEmailNil() {
+	o.NewEmail.Set(nil)
+}
+
+// UnsetNewEmail ensures that no value is present for NewEmail, not even an explicit nil
+func (o *ConfirmEmailCommand) UnsetNewEmail() {
+	o.NewEmail.Unset()
 }
 
 // GetMode returns the Mode field value if set, zero value otherwise.
@@ -115,8 +125,8 @@ func (o ConfirmEmailCommand) MarshalJSON() ([]byte, error) {
 
 func (o ConfirmEmailCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.NewEmail) {
-		toSerialize["newEmail"] = o.NewEmail
+	if o.NewEmail.IsSet() {
+		toSerialize["newEmail"] = o.NewEmail.Get()
 	}
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode

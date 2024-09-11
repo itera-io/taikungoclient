@@ -21,9 +21,9 @@ var _ MappedNullable = &PatchPdbCommand{}
 // PatchPdbCommand struct for PatchPdbCommand
 type PatchPdbCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	Yaml *string `json:"yaml,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Namespace *string `json:"namespace,omitempty"`
+	Yaml NullableString `json:"yaml,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
 }
 
 // NewPatchPdbCommand instantiates a new PatchPdbCommand object
@@ -75,100 +75,130 @@ func (o *PatchPdbCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetYaml returns the Yaml field value if set, zero value otherwise.
+// GetYaml returns the Yaml field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchPdbCommand) GetYaml() string {
-	if o == nil || IsNil(o.Yaml) {
+	if o == nil || IsNil(o.Yaml.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Yaml
+	return *o.Yaml.Get()
 }
 
 // GetYamlOk returns a tuple with the Yaml field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchPdbCommand) GetYamlOk() (*string, bool) {
-	if o == nil || IsNil(o.Yaml) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Yaml, true
+	return o.Yaml.Get(), o.Yaml.IsSet()
 }
 
 // HasYaml returns a boolean if a field has been set.
 func (o *PatchPdbCommand) HasYaml() bool {
-	if o != nil && !IsNil(o.Yaml) {
+	if o != nil && o.Yaml.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetYaml gets a reference to the given string and assigns it to the Yaml field.
+// SetYaml gets a reference to the given NullableString and assigns it to the Yaml field.
 func (o *PatchPdbCommand) SetYaml(v string) {
-	o.Yaml = &v
+	o.Yaml.Set(&v)
+}
+// SetYamlNil sets the value for Yaml to be an explicit nil
+func (o *PatchPdbCommand) SetYamlNil() {
+	o.Yaml.Set(nil)
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// UnsetYaml ensures that no value is present for Yaml, not even an explicit nil
+func (o *PatchPdbCommand) UnsetYaml() {
+	o.Yaml.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchPdbCommand) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchPdbCommand) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchPdbCommand) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *PatchPdbCommand) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *PatchPdbCommand) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *PatchPdbCommand) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchPdbCommand) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil || IsNil(o.Namespace.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace
+	return *o.Namespace.Get()
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchPdbCommand) GetNamespaceOk() (*string, bool) {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Namespace, true
+	return o.Namespace.Get(), o.Namespace.IsSet()
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *PatchPdbCommand) HasNamespace() bool {
-	if o != nil && !IsNil(o.Namespace) {
+	if o != nil && o.Namespace.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
 func (o *PatchPdbCommand) SetNamespace(v string) {
-	o.Namespace = &v
+	o.Namespace.Set(&v)
+}
+// SetNamespaceNil sets the value for Namespace to be an explicit nil
+func (o *PatchPdbCommand) SetNamespaceNil() {
+	o.Namespace.Set(nil)
+}
+
+// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
+func (o *PatchPdbCommand) UnsetNamespace() {
+	o.Namespace.Unset()
 }
 
 func (o PatchPdbCommand) MarshalJSON() ([]byte, error) {
@@ -184,14 +214,14 @@ func (o PatchPdbCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.Yaml) {
-		toSerialize["yaml"] = o.Yaml
+	if o.Yaml.IsSet() {
+		toSerialize["yaml"] = o.Yaml.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Namespace) {
-		toSerialize["namespace"] = o.Namespace
+	if o.Namespace.IsSet() {
+		toSerialize["namespace"] = o.Namespace.Get()
 	}
 	return toSerialize, nil
 }

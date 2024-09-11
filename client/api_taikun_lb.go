@@ -76,9 +76,6 @@ func (a *TaikunLBAPIService) TaikunLbCreateTaikunLbExecute(r ApiTaikunLbCreateTa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createGenericTaikunLbDto == nil {
-		return localVarReturnValue, nil, reportError("createGenericTaikunLbDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -254,9 +251,6 @@ func (a *TaikunLBAPIService) TaikunLbDeleteTaikunLbExecute(r ApiTaikunLbDeleteTa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createGenericTaikunLbDto == nil {
-		return nil, reportError("createGenericTaikunLbDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -431,15 +425,13 @@ func (a *TaikunLBAPIService) TaikunLbListTaikunLbExecute(r ApiTaikunLbListTaikun
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.svcName == nil {
-		return localVarReturnValue, nil, reportError("svcName is required and must be specified")
-	}
-	if r.svcNameSpace == nil {
-		return localVarReturnValue, nil, reportError("svcNameSpace is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SvcName", r.svcName, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SvcNameSpace", r.svcNameSpace, "form", "")
+	if r.svcName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SvcName", r.svcName, "form", "")
+	}
+	if r.svcNameSpace != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SvcNameSpace", r.svcNameSpace, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

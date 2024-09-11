@@ -22,7 +22,7 @@ var _ MappedNullable = &Status{}
 // Status struct for Status
 type Status struct {
 	LastBackup *time.Time `json:"lastBackup,omitempty"`
-	Phase *string `json:"phase,omitempty"`
+	Phase NullableString `json:"phase,omitempty"`
 }
 
 // NewStatus instantiates a new Status object
@@ -74,36 +74,46 @@ func (o *Status) SetLastBackup(v time.Time) {
 	o.LastBackup = &v
 }
 
-// GetPhase returns the Phase field value if set, zero value otherwise.
+// GetPhase returns the Phase field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Status) GetPhase() string {
-	if o == nil || IsNil(o.Phase) {
+	if o == nil || IsNil(o.Phase.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Phase
+	return *o.Phase.Get()
 }
 
 // GetPhaseOk returns a tuple with the Phase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Status) GetPhaseOk() (*string, bool) {
-	if o == nil || IsNil(o.Phase) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Phase, true
+	return o.Phase.Get(), o.Phase.IsSet()
 }
 
 // HasPhase returns a boolean if a field has been set.
 func (o *Status) HasPhase() bool {
-	if o != nil && !IsNil(o.Phase) {
+	if o != nil && o.Phase.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPhase gets a reference to the given string and assigns it to the Phase field.
+// SetPhase gets a reference to the given NullableString and assigns it to the Phase field.
 func (o *Status) SetPhase(v string) {
-	o.Phase = &v
+	o.Phase.Set(&v)
+}
+// SetPhaseNil sets the value for Phase to be an explicit nil
+func (o *Status) SetPhaseNil() {
+	o.Phase.Set(nil)
+}
+
+// UnsetPhase ensures that no value is present for Phase, not even an explicit nil
+func (o *Status) UnsetPhase() {
+	o.Phase.Unset()
 }
 
 func (o Status) MarshalJSON() ([]byte, error) {
@@ -119,8 +129,8 @@ func (o Status) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastBackup) {
 		toSerialize["lastBackup"] = o.LastBackup
 	}
-	if !IsNil(o.Phase) {
-		toSerialize["phase"] = o.Phase
+	if o.Phase.IsSet() {
+		toSerialize["phase"] = o.Phase.Get()
 	}
 	return toSerialize, nil
 }

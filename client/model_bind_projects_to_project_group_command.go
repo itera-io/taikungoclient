@@ -73,9 +73,9 @@ func (o *BindProjectsToProjectGroupCommand) SetProjectGroupId(v int32) {
 	o.ProjectGroupId = &v
 }
 
-// GetProjectIds returns the ProjectIds field value if set, zero value otherwise.
+// GetProjectIds returns the ProjectIds field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BindProjectsToProjectGroupCommand) GetProjectIds() []int32 {
-	if o == nil || IsNil(o.ProjectIds) {
+	if o == nil {
 		var ret []int32
 		return ret
 	}
@@ -84,6 +84,7 @@ func (o *BindProjectsToProjectGroupCommand) GetProjectIds() []int32 {
 
 // GetProjectIdsOk returns a tuple with the ProjectIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindProjectsToProjectGroupCommand) GetProjectIdsOk() ([]int32, bool) {
 	if o == nil || IsNil(o.ProjectIds) {
 		return nil, false
@@ -118,7 +119,7 @@ func (o BindProjectsToProjectGroupCommand) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.ProjectGroupId) {
 		toSerialize["projectGroupId"] = o.ProjectGroupId
 	}
-	if !IsNil(o.ProjectIds) {
+	if o.ProjectIds != nil {
 		toSerialize["projectIds"] = o.ProjectIds
 	}
 	return toSerialize, nil

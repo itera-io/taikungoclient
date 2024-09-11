@@ -74,9 +74,6 @@ func (a *PrometheusRulesAPIService) PrometheusrulesAddOrganizationsExecute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.addOrganizationsToRuleDto == nil {
-		return nil, reportError("addOrganizationsToRuleDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -241,9 +238,6 @@ func (a *PrometheusRulesAPIService) PrometheusrulesCreateExecute(r ApiPrometheus
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.ruleCreateCommand == nil {
-		return localVarReturnValue, nil, reportError("ruleCreateCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -577,9 +571,6 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDeleteOrganizationsExecute(r 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.requestBody == nil {
-		return nil, reportError("requestBody is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -873,14 +864,29 @@ func (a *PrometheusRulesAPIService) PrometheusrulesDetailsExecute(r ApiPrometheu
 type ApiPrometheusrulesListRequest struct {
 	ctx context.Context
 	ApiService *PrometheusRulesAPIService
+	limit *int32
+	offset *int32
+	partnerId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
-	limit *int32
-	offset *int32
-	partnerId *int32
 	id *int32
+}
+
+func (r ApiPrometheusrulesListRequest) Limit(limit int32) ApiPrometheusrulesListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiPrometheusrulesListRequest) Offset(offset int32) ApiPrometheusrulesListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiPrometheusrulesListRequest) PartnerId(partnerId int32) ApiPrometheusrulesListRequest {
+	r.partnerId = &partnerId
+	return r
 }
 
 func (r ApiPrometheusrulesListRequest) SortBy(sortBy string) ApiPrometheusrulesListRequest {
@@ -900,21 +906,6 @@ func (r ApiPrometheusrulesListRequest) Search(search string) ApiPrometheusrulesL
 
 func (r ApiPrometheusrulesListRequest) SearchId(searchId string) ApiPrometheusrulesListRequest {
 	r.searchId = &searchId
-	return r
-}
-
-func (r ApiPrometheusrulesListRequest) Limit(limit int32) ApiPrometheusrulesListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiPrometheusrulesListRequest) Offset(offset int32) ApiPrometheusrulesListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiPrometheusrulesListRequest) PartnerId(partnerId int32) ApiPrometheusrulesListRequest {
-	r.partnerId = &partnerId
 	return r
 }
 
@@ -960,18 +951,6 @@ func (a *PrometheusRulesAPIService) PrometheusrulesListExecute(r ApiPrometheusru
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -982,10 +961,18 @@ func (a *PrometheusRulesAPIService) PrometheusrulesListExecute(r ApiPrometheusru
 	if r.partnerId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "PartnerId", r.partnerId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
@@ -1161,9 +1148,6 @@ func (a *PrometheusRulesAPIService) PrometheusrulesUpdateExecute(r ApiPrometheus
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.ruleForUpdateDto == nil {
-		return nil, reportError("ruleForUpdateDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

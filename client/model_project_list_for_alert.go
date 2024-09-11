@@ -21,11 +21,11 @@ var _ MappedNullable = &ProjectListForAlert{}
 // ProjectListForAlert struct for ProjectListForAlert
 type ProjectListForAlert struct {
 	Id *int32 `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Token *string `json:"token,omitempty"`
-	Status *string `json:"status,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Token NullableString `json:"token,omitempty"`
+	Status NullableString `json:"status,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	Health *string `json:"health,omitempty"`
+	Health NullableString `json:"health,omitempty"`
 	IsKubernetes *bool `json:"isKubernetes,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
@@ -83,100 +83,130 @@ func (o *ProjectListForAlert) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectListForAlert) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListForAlert) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ProjectListForAlert) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *ProjectListForAlert) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *ProjectListForAlert) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetToken returns the Token field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *ProjectListForAlert) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectListForAlert) GetToken() string {
-	if o == nil || IsNil(o.Token) {
+	if o == nil || IsNil(o.Token.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Token
+	return *o.Token.Get()
 }
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListForAlert) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Token, true
+	return o.Token.Get(), o.Token.IsSet()
 }
 
 // HasToken returns a boolean if a field has been set.
 func (o *ProjectListForAlert) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
+	if o != nil && o.Token.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given string and assigns it to the Token field.
+// SetToken gets a reference to the given NullableString and assigns it to the Token field.
 func (o *ProjectListForAlert) SetToken(v string) {
-	o.Token = &v
+	o.Token.Set(&v)
+}
+// SetTokenNil sets the value for Token to be an explicit nil
+func (o *ProjectListForAlert) SetTokenNil() {
+	o.Token.Set(nil)
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// UnsetToken ensures that no value is present for Token, not even an explicit nil
+func (o *ProjectListForAlert) UnsetToken() {
+	o.Token.Unset()
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectListForAlert) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Status
+	return *o.Status.Get()
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListForAlert) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.Status.Get(), o.Status.IsSet()
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ProjectListForAlert) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
+	if o != nil && o.Status.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
 func (o *ProjectListForAlert) SetStatus(v string) {
-	o.Status = &v
+	o.Status.Set(&v)
+}
+// SetStatusNil sets the value for Status to be an explicit nil
+func (o *ProjectListForAlert) SetStatusNil() {
+	o.Status.Set(nil)
+}
+
+// UnsetStatus ensures that no value is present for Status, not even an explicit nil
+func (o *ProjectListForAlert) UnsetStatus() {
+	o.Status.Unset()
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
@@ -211,36 +241,46 @@ func (o *ProjectListForAlert) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetHealth returns the Health field value if set, zero value otherwise.
+// GetHealth returns the Health field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectListForAlert) GetHealth() string {
-	if o == nil || IsNil(o.Health) {
+	if o == nil || IsNil(o.Health.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Health
+	return *o.Health.Get()
 }
 
 // GetHealthOk returns a tuple with the Health field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListForAlert) GetHealthOk() (*string, bool) {
-	if o == nil || IsNil(o.Health) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Health, true
+	return o.Health.Get(), o.Health.IsSet()
 }
 
 // HasHealth returns a boolean if a field has been set.
 func (o *ProjectListForAlert) HasHealth() bool {
-	if o != nil && !IsNil(o.Health) {
+	if o != nil && o.Health.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHealth gets a reference to the given string and assigns it to the Health field.
+// SetHealth gets a reference to the given NullableString and assigns it to the Health field.
 func (o *ProjectListForAlert) SetHealth(v string) {
-	o.Health = &v
+	o.Health.Set(&v)
+}
+// SetHealthNil sets the value for Health to be an explicit nil
+func (o *ProjectListForAlert) SetHealthNil() {
+	o.Health.Set(nil)
+}
+
+// UnsetHealth ensures that no value is present for Health, not even an explicit nil
+func (o *ProjectListForAlert) UnsetHealth() {
+	o.Health.Unset()
 }
 
 // GetIsKubernetes returns the IsKubernetes field value if set, zero value otherwise.
@@ -403,9 +443,9 @@ func (o *ProjectListForAlert) SetMonitoringCredential(v MonitoringCredentialsLis
 	o.MonitoringCredential = &v
 }
 
-// GetKubernetesAlerts returns the KubernetesAlerts field value if set, zero value otherwise.
+// GetKubernetesAlerts returns the KubernetesAlerts field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectListForAlert) GetKubernetesAlerts() []KubernetesAlertDtoForPoller {
-	if o == nil || IsNil(o.KubernetesAlerts) {
+	if o == nil {
 		var ret []KubernetesAlertDtoForPoller
 		return ret
 	}
@@ -414,6 +454,7 @@ func (o *ProjectListForAlert) GetKubernetesAlerts() []KubernetesAlertDtoForPolle
 
 // GetKubernetesAlertsOk returns a tuple with the KubernetesAlerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListForAlert) GetKubernetesAlertsOk() ([]KubernetesAlertDtoForPoller, bool) {
 	if o == nil || IsNil(o.KubernetesAlerts) {
 		return nil, false
@@ -448,20 +489,20 @@ func (o ProjectListForAlert) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
+	if o.Token.IsSet() {
+		toSerialize["token"] = o.Token.Get()
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if o.Status.IsSet() {
+		toSerialize["status"] = o.Status.Get()
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if !IsNil(o.Health) {
-		toSerialize["health"] = o.Health
+	if o.Health.IsSet() {
+		toSerialize["health"] = o.Health.Get()
 	}
 	if !IsNil(o.IsKubernetes) {
 		toSerialize["isKubernetes"] = o.IsKubernetes
@@ -478,7 +519,7 @@ func (o ProjectListForAlert) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MonitoringCredential) {
 		toSerialize["monitoringCredential"] = o.MonitoringCredential
 	}
-	if !IsNil(o.KubernetesAlerts) {
+	if o.KubernetesAlerts != nil {
 		toSerialize["kubernetesAlerts"] = o.KubernetesAlerts
 	}
 	return toSerialize, nil

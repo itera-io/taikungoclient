@@ -40,9 +40,9 @@ func NewDeleteSlackConfigCommandWithDefaults() *DeleteSlackConfigCommand {
 	return &this
 }
 
-// GetIds returns the Ids field value if set, zero value otherwise.
+// GetIds returns the Ids field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeleteSlackConfigCommand) GetIds() []int32 {
-	if o == nil || IsNil(o.Ids) {
+	if o == nil {
 		var ret []int32
 		return ret
 	}
@@ -51,6 +51,7 @@ func (o *DeleteSlackConfigCommand) GetIds() []int32 {
 
 // GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeleteSlackConfigCommand) GetIdsOk() ([]int32, bool) {
 	if o == nil || IsNil(o.Ids) {
 		return nil, false
@@ -82,7 +83,7 @@ func (o DeleteSlackConfigCommand) MarshalJSON() ([]byte, error) {
 
 func (o DeleteSlackConfigCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ids) {
+	if o.Ids != nil {
 		toSerialize["ids"] = o.Ids
 	}
 	return toSerialize, nil

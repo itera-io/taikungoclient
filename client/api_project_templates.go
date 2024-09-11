@@ -350,17 +350,17 @@ func (a *ProjectTemplatesAPIService) ProjectTemplatesDeleteExecute(r ApiProjectT
 type ApiProjectTemplatesDropdownRequest struct {
 	ctx context.Context
 	ApiService *ProjectTemplatesAPIService
-	search *string
 	organizationId *int32
-}
-
-func (r ApiProjectTemplatesDropdownRequest) Search(search string) ApiProjectTemplatesDropdownRequest {
-	r.search = &search
-	return r
+	search *string
 }
 
 func (r ApiProjectTemplatesDropdownRequest) OrganizationId(organizationId int32) ApiProjectTemplatesDropdownRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiProjectTemplatesDropdownRequest) Search(search string) ApiProjectTemplatesDropdownRequest {
+	r.search = &search
 	return r
 }
 
@@ -401,14 +401,13 @@ func (a *ProjectTemplatesAPIService) ProjectTemplatesDropdownExecute(r ApiProjec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -534,28 +533,13 @@ func (a *ProjectTemplatesAPIService) ProjectTemplatesDropdownExecute(r ApiProjec
 type ApiProjectTemplatesListRequest struct {
 	ctx context.Context
 	ApiService *ProjectTemplatesAPIService
-	sortBy *string
-	sortDirection *string
-	search *string
 	limit *int32
 	offset *int32
 	organizationId *int32
+	sortBy *string
+	sortDirection *string
+	search *string
 	id *int32
-}
-
-func (r ApiProjectTemplatesListRequest) SortBy(sortBy string) ApiProjectTemplatesListRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiProjectTemplatesListRequest) SortDirection(sortDirection string) ApiProjectTemplatesListRequest {
-	r.sortDirection = &sortDirection
-	return r
-}
-
-func (r ApiProjectTemplatesListRequest) Search(search string) ApiProjectTemplatesListRequest {
-	r.search = &search
-	return r
 }
 
 func (r ApiProjectTemplatesListRequest) Limit(limit int32) ApiProjectTemplatesListRequest {
@@ -570,6 +554,21 @@ func (r ApiProjectTemplatesListRequest) Offset(offset int32) ApiProjectTemplates
 
 func (r ApiProjectTemplatesListRequest) OrganizationId(organizationId int32) ApiProjectTemplatesListRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiProjectTemplatesListRequest) SortBy(sortBy string) ApiProjectTemplatesListRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiProjectTemplatesListRequest) SortDirection(sortDirection string) ApiProjectTemplatesListRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiProjectTemplatesListRequest) Search(search string) ApiProjectTemplatesListRequest {
+	r.search = &search
 	return r
 }
 
@@ -615,15 +614,6 @@ func (a *ProjectTemplatesAPIService) ProjectTemplatesListExecute(r ApiProjectTem
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -634,9 +624,15 @@ func (a *ProjectTemplatesAPIService) ProjectTemplatesListExecute(r ApiProjectTem
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}

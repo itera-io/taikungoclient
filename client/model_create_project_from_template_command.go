@@ -21,7 +21,7 @@ var _ MappedNullable = &CreateProjectFromTemplateCommand{}
 // CreateProjectFromTemplateCommand struct for CreateProjectFromTemplateCommand
 type CreateProjectFromTemplateCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	ProjectName *string `json:"projectName,omitempty"`
+	ProjectName NullableString `json:"projectName,omitempty"`
 	CanCommit *bool `json:"canCommit,omitempty"`
 }
 
@@ -74,36 +74,46 @@ func (o *CreateProjectFromTemplateCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetProjectName returns the ProjectName field value if set, zero value otherwise.
+// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectFromTemplateCommand) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName) {
+	if o == nil || IsNil(o.ProjectName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName
+	return *o.ProjectName.Get()
 }
 
 // GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProjectFromTemplateCommand) GetProjectNameOk() (*string, bool) {
-	if o == nil || IsNil(o.ProjectName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName, true
+	return o.ProjectName.Get(), o.ProjectName.IsSet()
 }
 
 // HasProjectName returns a boolean if a field has been set.
 func (o *CreateProjectFromTemplateCommand) HasProjectName() bool {
-	if o != nil && !IsNil(o.ProjectName) {
+	if o != nil && o.ProjectName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
+// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
 func (o *CreateProjectFromTemplateCommand) SetProjectName(v string) {
-	o.ProjectName = &v
+	o.ProjectName.Set(&v)
+}
+// SetProjectNameNil sets the value for ProjectName to be an explicit nil
+func (o *CreateProjectFromTemplateCommand) SetProjectNameNil() {
+	o.ProjectName.Set(nil)
+}
+
+// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
+func (o *CreateProjectFromTemplateCommand) UnsetProjectName() {
+	o.ProjectName.Unset()
 }
 
 // GetCanCommit returns the CanCommit field value if set, zero value otherwise.
@@ -151,8 +161,8 @@ func (o CreateProjectFromTemplateCommand) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.ProjectName) {
-		toSerialize["projectName"] = o.ProjectName
+	if o.ProjectName.IsSet() {
+		toSerialize["projectName"] = o.ProjectName.Get()
 	}
 	if !IsNil(o.CanCommit) {
 		toSerialize["canCommit"] = o.CanCommit

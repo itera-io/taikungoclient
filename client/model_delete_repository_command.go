@@ -20,7 +20,7 @@ var _ MappedNullable = &DeleteRepositoryCommand{}
 
 // DeleteRepositoryCommand struct for DeleteRepositoryCommand
 type DeleteRepositoryCommand struct {
-	RepoName *string `json:"repoName,omitempty"`
+	RepoName NullableString `json:"repoName,omitempty"`
 }
 
 // NewDeleteRepositoryCommand instantiates a new DeleteRepositoryCommand object
@@ -40,36 +40,46 @@ func NewDeleteRepositoryCommandWithDefaults() *DeleteRepositoryCommand {
 	return &this
 }
 
-// GetRepoName returns the RepoName field value if set, zero value otherwise.
+// GetRepoName returns the RepoName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeleteRepositoryCommand) GetRepoName() string {
-	if o == nil || IsNil(o.RepoName) {
+	if o == nil || IsNil(o.RepoName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RepoName
+	return *o.RepoName.Get()
 }
 
 // GetRepoNameOk returns a tuple with the RepoName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeleteRepositoryCommand) GetRepoNameOk() (*string, bool) {
-	if o == nil || IsNil(o.RepoName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RepoName, true
+	return o.RepoName.Get(), o.RepoName.IsSet()
 }
 
 // HasRepoName returns a boolean if a field has been set.
 func (o *DeleteRepositoryCommand) HasRepoName() bool {
-	if o != nil && !IsNil(o.RepoName) {
+	if o != nil && o.RepoName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRepoName gets a reference to the given string and assigns it to the RepoName field.
+// SetRepoName gets a reference to the given NullableString and assigns it to the RepoName field.
 func (o *DeleteRepositoryCommand) SetRepoName(v string) {
-	o.RepoName = &v
+	o.RepoName.Set(&v)
+}
+// SetRepoNameNil sets the value for RepoName to be an explicit nil
+func (o *DeleteRepositoryCommand) SetRepoNameNil() {
+	o.RepoName.Set(nil)
+}
+
+// UnsetRepoName ensures that no value is present for RepoName, not even an explicit nil
+func (o *DeleteRepositoryCommand) UnsetRepoName() {
+	o.RepoName.Unset()
 }
 
 func (o DeleteRepositoryCommand) MarshalJSON() ([]byte, error) {
@@ -82,8 +92,8 @@ func (o DeleteRepositoryCommand) MarshalJSON() ([]byte, error) {
 
 func (o DeleteRepositoryCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.RepoName) {
-		toSerialize["repoName"] = o.RepoName
+	if o.RepoName.IsSet() {
+		toSerialize["repoName"] = o.RepoName.Get()
 	}
 	return toSerialize, nil
 }

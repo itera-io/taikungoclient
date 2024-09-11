@@ -71,9 +71,6 @@ func (a *KubeConfigAPIService) KubeconfigCreateExecute(r ApiKubeconfigCreateRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createKubeConfigCommand == nil {
-		return localVarReturnValue, nil, reportError("createKubeConfigCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1061,32 +1058,17 @@ type ApiKubeconfigListRequest struct {
 	ctx context.Context
 	ApiService *KubeConfigAPIService
 	projectId *int32
-	sortBy *string
-	sortDirection *string
-	search *string
 	organizationId *int32
 	limit *int32
 	offset *int32
+	sortBy *string
+	sortDirection *string
+	search *string
 	id *int32
 }
 
 func (r ApiKubeconfigListRequest) ProjectId(projectId int32) ApiKubeconfigListRequest {
 	r.projectId = &projectId
-	return r
-}
-
-func (r ApiKubeconfigListRequest) SortBy(sortBy string) ApiKubeconfigListRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiKubeconfigListRequest) SortDirection(sortDirection string) ApiKubeconfigListRequest {
-	r.sortDirection = &sortDirection
-	return r
-}
-
-func (r ApiKubeconfigListRequest) Search(search string) ApiKubeconfigListRequest {
-	r.search = &search
 	return r
 }
 
@@ -1102,6 +1084,21 @@ func (r ApiKubeconfigListRequest) Limit(limit int32) ApiKubeconfigListRequest {
 
 func (r ApiKubeconfigListRequest) Offset(offset int32) ApiKubeconfigListRequest {
 	r.offset = &offset
+	return r
+}
+
+func (r ApiKubeconfigListRequest) SortBy(sortBy string) ApiKubeconfigListRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiKubeconfigListRequest) SortDirection(sortDirection string) ApiKubeconfigListRequest {
+	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiKubeconfigListRequest) Search(search string) ApiKubeconfigListRequest {
+	r.search = &search
 	return r
 }
 
@@ -1150,15 +1147,6 @@ func (a *KubeConfigAPIService) KubeconfigListExecute(r ApiKubeconfigListRequest)
 	if r.projectId == nil {
 		return localVarReturnValue, nil, reportError("projectId is required and must be specified")
 	}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
@@ -1170,9 +1158,15 @@ func (a *KubeConfigAPIService) KubeconfigListExecute(r ApiKubeconfigListRequest)
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}

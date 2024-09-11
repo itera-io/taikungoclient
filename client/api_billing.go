@@ -70,9 +70,6 @@ func (a *BillingAPIService) BillingCreateExecute(r ApiBillingCreateRequest) (*ht
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createBillingSummaryCommand == nil {
-		return nil, reportError("createBillingSummaryCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -579,25 +576,15 @@ func (a *BillingAPIService) BillingGroupedListExecute(r ApiBillingGroupedListReq
 type ApiBillingListRequest struct {
 	ctx context.Context
 	ApiService *BillingAPIService
-	sortBy *string
-	sortDirection *string
 	limit *int32
 	offset *int32
+	sortBy *string
+	sortDirection *string
 	startDate *time.Time
 	endDate *time.Time
 	organizationId *int32
 	isDeleted *bool
 	projectId *int32
-}
-
-func (r ApiBillingListRequest) SortBy(sortBy string) ApiBillingListRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiBillingListRequest) SortDirection(sortDirection string) ApiBillingListRequest {
-	r.sortDirection = &sortDirection
-	return r
 }
 
 func (r ApiBillingListRequest) Limit(limit int32) ApiBillingListRequest {
@@ -607,6 +594,16 @@ func (r ApiBillingListRequest) Limit(limit int32) ApiBillingListRequest {
 
 func (r ApiBillingListRequest) Offset(offset int32) ApiBillingListRequest {
 	r.offset = &offset
+	return r
+}
+
+func (r ApiBillingListRequest) SortBy(sortBy string) ApiBillingListRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiBillingListRequest) SortDirection(sortDirection string) ApiBillingListRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -672,12 +669,6 @@ func (a *BillingAPIService) BillingListExecute(r ApiBillingListRequest) (*Billin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -685,8 +676,12 @@ func (a *BillingAPIService) BillingListExecute(r ApiBillingListRequest) (*Billin
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	if r.startDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "StartDate", r.startDate, "form", "")
 	}

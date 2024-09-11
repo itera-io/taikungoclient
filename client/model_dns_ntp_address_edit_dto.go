@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the DnsNtpAddressEditDto type satisfies the MappedNullable interface at compile time
@@ -22,18 +20,15 @@ var _ MappedNullable = &DnsNtpAddressEditDto{}
 
 // DnsNtpAddressEditDto struct for DnsNtpAddressEditDto
 type DnsNtpAddressEditDto struct {
-	Address string `json:"address"`
+	Address NullableString `json:"address,omitempty"`
 }
-
-type _DnsNtpAddressEditDto DnsNtpAddressEditDto
 
 // NewDnsNtpAddressEditDto instantiates a new DnsNtpAddressEditDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDnsNtpAddressEditDto(address string) *DnsNtpAddressEditDto {
+func NewDnsNtpAddressEditDto() *DnsNtpAddressEditDto {
 	this := DnsNtpAddressEditDto{}
-	this.Address = address
 	return &this
 }
 
@@ -45,28 +40,46 @@ func NewDnsNtpAddressEditDtoWithDefaults() *DnsNtpAddressEditDto {
 	return &this
 }
 
-// GetAddress returns the Address field value
+// GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DnsNtpAddressEditDto) GetAddress() string {
-	if o == nil {
+	if o == nil || IsNil(o.Address.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.Address
+	return *o.Address.Get()
 }
 
-// GetAddressOk returns a tuple with the Address field value
+// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DnsNtpAddressEditDto) GetAddressOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Address, true
+	return o.Address.Get(), o.Address.IsSet()
 }
 
-// SetAddress sets field value
+// HasAddress returns a boolean if a field has been set.
+func (o *DnsNtpAddressEditDto) HasAddress() bool {
+	if o != nil && o.Address.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAddress gets a reference to the given NullableString and assigns it to the Address field.
 func (o *DnsNtpAddressEditDto) SetAddress(v string) {
-	o.Address = v
+	o.Address.Set(&v)
+}
+// SetAddressNil sets the value for Address to be an explicit nil
+func (o *DnsNtpAddressEditDto) SetAddressNil() {
+	o.Address.Set(nil)
+}
+
+// UnsetAddress ensures that no value is present for Address, not even an explicit nil
+func (o *DnsNtpAddressEditDto) UnsetAddress() {
+	o.Address.Unset()
 }
 
 func (o DnsNtpAddressEditDto) MarshalJSON() ([]byte, error) {
@@ -79,45 +92,10 @@ func (o DnsNtpAddressEditDto) MarshalJSON() ([]byte, error) {
 
 func (o DnsNtpAddressEditDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["address"] = o.Address
+	if o.Address.IsSet() {
+		toSerialize["address"] = o.Address.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *DnsNtpAddressEditDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"address",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDnsNtpAddressEditDto := _DnsNtpAddressEditDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDnsNtpAddressEditDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DnsNtpAddressEditDto(varDnsNtpAddressEditDto)
-
-	return err
 }
 
 type NullableDnsNtpAddressEditDto struct {

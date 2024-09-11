@@ -73,9 +73,9 @@ func (o *ProjectDeploymentDeleteVmsCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetVmIds returns the VmIds field value if set, zero value otherwise.
+// GetVmIds returns the VmIds field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectDeploymentDeleteVmsCommand) GetVmIds() []int32 {
-	if o == nil || IsNil(o.VmIds) {
+	if o == nil {
 		var ret []int32
 		return ret
 	}
@@ -84,6 +84,7 @@ func (o *ProjectDeploymentDeleteVmsCommand) GetVmIds() []int32 {
 
 // GetVmIdsOk returns a tuple with the VmIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDeploymentDeleteVmsCommand) GetVmIdsOk() ([]int32, bool) {
 	if o == nil || IsNil(o.VmIds) {
 		return nil, false
@@ -118,7 +119,7 @@ func (o ProjectDeploymentDeleteVmsCommand) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.VmIds) {
+	if o.VmIds != nil {
 		toSerialize["vmIds"] = o.VmIds
 	}
 	return toSerialize, nil

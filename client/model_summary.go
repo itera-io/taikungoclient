@@ -25,8 +25,8 @@ type Summary struct {
 	TotalUnsupportedResources *int32 `json:"totalUnsupportedResources,omitempty"`
 	TotalUsageBasedResources *int32 `json:"totalUsageBasedResources,omitempty"`
 	TotalNoPriceResources *int32 `json:"totalNoPriceResources,omitempty"`
-	UnsupportedResourceCounts *map[string]int32 `json:"unsupportedResourceCounts,omitempty"`
-	NoPriceResourceCounts *map[string]int32 `json:"noPriceResourceCounts,omitempty"`
+	UnsupportedResourceCounts map[string]int32 `json:"unsupportedResourceCounts,omitempty"`
+	NoPriceResourceCounts map[string]int32 `json:"noPriceResourceCounts,omitempty"`
 }
 
 // NewSummary instantiates a new Summary object
@@ -206,22 +206,23 @@ func (o *Summary) SetTotalNoPriceResources(v int32) {
 	o.TotalNoPriceResources = &v
 }
 
-// GetUnsupportedResourceCounts returns the UnsupportedResourceCounts field value if set, zero value otherwise.
+// GetUnsupportedResourceCounts returns the UnsupportedResourceCounts field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Summary) GetUnsupportedResourceCounts() map[string]int32 {
-	if o == nil || IsNil(o.UnsupportedResourceCounts) {
+	if o == nil {
 		var ret map[string]int32
 		return ret
 	}
-	return *o.UnsupportedResourceCounts
+	return o.UnsupportedResourceCounts
 }
 
 // GetUnsupportedResourceCountsOk returns a tuple with the UnsupportedResourceCounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Summary) GetUnsupportedResourceCountsOk() (*map[string]int32, bool) {
 	if o == nil || IsNil(o.UnsupportedResourceCounts) {
 		return nil, false
 	}
-	return o.UnsupportedResourceCounts, true
+	return &o.UnsupportedResourceCounts, true
 }
 
 // HasUnsupportedResourceCounts returns a boolean if a field has been set.
@@ -235,25 +236,26 @@ func (o *Summary) HasUnsupportedResourceCounts() bool {
 
 // SetUnsupportedResourceCounts gets a reference to the given map[string]int32 and assigns it to the UnsupportedResourceCounts field.
 func (o *Summary) SetUnsupportedResourceCounts(v map[string]int32) {
-	o.UnsupportedResourceCounts = &v
+	o.UnsupportedResourceCounts = v
 }
 
-// GetNoPriceResourceCounts returns the NoPriceResourceCounts field value if set, zero value otherwise.
+// GetNoPriceResourceCounts returns the NoPriceResourceCounts field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Summary) GetNoPriceResourceCounts() map[string]int32 {
-	if o == nil || IsNil(o.NoPriceResourceCounts) {
+	if o == nil {
 		var ret map[string]int32
 		return ret
 	}
-	return *o.NoPriceResourceCounts
+	return o.NoPriceResourceCounts
 }
 
 // GetNoPriceResourceCountsOk returns a tuple with the NoPriceResourceCounts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Summary) GetNoPriceResourceCountsOk() (*map[string]int32, bool) {
 	if o == nil || IsNil(o.NoPriceResourceCounts) {
 		return nil, false
 	}
-	return o.NoPriceResourceCounts, true
+	return &o.NoPriceResourceCounts, true
 }
 
 // HasNoPriceResourceCounts returns a boolean if a field has been set.
@@ -267,7 +269,7 @@ func (o *Summary) HasNoPriceResourceCounts() bool {
 
 // SetNoPriceResourceCounts gets a reference to the given map[string]int32 and assigns it to the NoPriceResourceCounts field.
 func (o *Summary) SetNoPriceResourceCounts(v map[string]int32) {
-	o.NoPriceResourceCounts = &v
+	o.NoPriceResourceCounts = v
 }
 
 func (o Summary) MarshalJSON() ([]byte, error) {
@@ -295,10 +297,10 @@ func (o Summary) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalNoPriceResources) {
 		toSerialize["totalNoPriceResources"] = o.TotalNoPriceResources
 	}
-	if !IsNil(o.UnsupportedResourceCounts) {
+	if o.UnsupportedResourceCounts != nil {
 		toSerialize["unsupportedResourceCounts"] = o.UnsupportedResourceCounts
 	}
-	if !IsNil(o.NoPriceResourceCounts) {
+	if o.NoPriceResourceCounts != nil {
 		toSerialize["noPriceResourceCounts"] = o.NoPriceResourceCounts
 	}
 	return toSerialize, nil

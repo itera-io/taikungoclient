@@ -20,7 +20,7 @@ var _ MappedNullable = &CreateNtpServerCommand{}
 
 // CreateNtpServerCommand struct for CreateNtpServerCommand
 type CreateNtpServerCommand struct {
-	Address *string `json:"address,omitempty"`
+	Address NullableString `json:"address,omitempty"`
 	AccessProfileId *int32 `json:"accessProfileId,omitempty"`
 }
 
@@ -41,36 +41,46 @@ func NewCreateNtpServerCommandWithDefaults() *CreateNtpServerCommand {
 	return &this
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise.
+// GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateNtpServerCommand) GetAddress() string {
-	if o == nil || IsNil(o.Address) {
+	if o == nil || IsNil(o.Address.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Address
+	return *o.Address.Get()
 }
 
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateNtpServerCommand) GetAddressOk() (*string, bool) {
-	if o == nil || IsNil(o.Address) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Address, true
+	return o.Address.Get(), o.Address.IsSet()
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *CreateNtpServerCommand) HasAddress() bool {
-	if o != nil && !IsNil(o.Address) {
+	if o != nil && o.Address.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAddress gets a reference to the given string and assigns it to the Address field.
+// SetAddress gets a reference to the given NullableString and assigns it to the Address field.
 func (o *CreateNtpServerCommand) SetAddress(v string) {
-	o.Address = &v
+	o.Address.Set(&v)
+}
+// SetAddressNil sets the value for Address to be an explicit nil
+func (o *CreateNtpServerCommand) SetAddressNil() {
+	o.Address.Set(nil)
+}
+
+// UnsetAddress ensures that no value is present for Address, not even an explicit nil
+func (o *CreateNtpServerCommand) UnsetAddress() {
+	o.Address.Unset()
 }
 
 // GetAccessProfileId returns the AccessProfileId field value if set, zero value otherwise.
@@ -115,8 +125,8 @@ func (o CreateNtpServerCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateNtpServerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Address) {
-		toSerialize["address"] = o.Address
+	if o.Address.IsSet() {
+		toSerialize["address"] = o.Address.Get()
 	}
 	if !IsNil(o.AccessProfileId) {
 		toSerialize["accessProfileId"] = o.AccessProfileId

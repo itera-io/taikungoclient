@@ -20,7 +20,7 @@ var _ MappedNullable = &PrometheusDashboardListDto{}
 
 // PrometheusDashboardListDto struct for PrometheusDashboardListDto
 type PrometheusDashboardListDto struct {
-	CategoryName *string `json:"categoryName,omitempty"`
+	CategoryName NullableString `json:"categoryName,omitempty"`
 	Data []PrometheusDashboardDto `json:"data,omitempty"`
 }
 
@@ -41,41 +41,51 @@ func NewPrometheusDashboardListDtoWithDefaults() *PrometheusDashboardListDto {
 	return &this
 }
 
-// GetCategoryName returns the CategoryName field value if set, zero value otherwise.
+// GetCategoryName returns the CategoryName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PrometheusDashboardListDto) GetCategoryName() string {
-	if o == nil || IsNil(o.CategoryName) {
+	if o == nil || IsNil(o.CategoryName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CategoryName
+	return *o.CategoryName.Get()
 }
 
 // GetCategoryNameOk returns a tuple with the CategoryName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusDashboardListDto) GetCategoryNameOk() (*string, bool) {
-	if o == nil || IsNil(o.CategoryName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CategoryName, true
+	return o.CategoryName.Get(), o.CategoryName.IsSet()
 }
 
 // HasCategoryName returns a boolean if a field has been set.
 func (o *PrometheusDashboardListDto) HasCategoryName() bool {
-	if o != nil && !IsNil(o.CategoryName) {
+	if o != nil && o.CategoryName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCategoryName gets a reference to the given string and assigns it to the CategoryName field.
+// SetCategoryName gets a reference to the given NullableString and assigns it to the CategoryName field.
 func (o *PrometheusDashboardListDto) SetCategoryName(v string) {
-	o.CategoryName = &v
+	o.CategoryName.Set(&v)
+}
+// SetCategoryNameNil sets the value for CategoryName to be an explicit nil
+func (o *PrometheusDashboardListDto) SetCategoryNameNil() {
+	o.CategoryName.Set(nil)
 }
 
-// GetData returns the Data field value if set, zero value otherwise.
+// UnsetCategoryName ensures that no value is present for CategoryName, not even an explicit nil
+func (o *PrometheusDashboardListDto) UnsetCategoryName() {
+	o.CategoryName.Unset()
+}
+
+// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PrometheusDashboardListDto) GetData() []PrometheusDashboardDto {
-	if o == nil || IsNil(o.Data) {
+	if o == nil {
 		var ret []PrometheusDashboardDto
 		return ret
 	}
@@ -84,6 +94,7 @@ func (o *PrometheusDashboardListDto) GetData() []PrometheusDashboardDto {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusDashboardListDto) GetDataOk() ([]PrometheusDashboardDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
@@ -115,10 +126,10 @@ func (o PrometheusDashboardListDto) MarshalJSON() ([]byte, error) {
 
 func (o PrometheusDashboardListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CategoryName) {
-		toSerialize["categoryName"] = o.CategoryName
+	if o.CategoryName.IsSet() {
+		toSerialize["categoryName"] = o.CategoryName.Get()
 	}
-	if !IsNil(o.Data) {
+	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
 	return toSerialize, nil

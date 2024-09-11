@@ -21,7 +21,7 @@ var _ MappedNullable = &PatchNodeCommand{}
 // PatchNodeCommand struct for PatchNodeCommand
 type PatchNodeCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	Parameters []PatchNodeLabelsDto `json:"parameters,omitempty"`
 }
 
@@ -74,41 +74,51 @@ func (o *PatchNodeCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchNodeCommand) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchNodeCommand) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *PatchNodeCommand) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *PatchNodeCommand) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *PatchNodeCommand) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetParameters returns the Parameters field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *PatchNodeCommand) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetParameters returns the Parameters field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PatchNodeCommand) GetParameters() []PatchNodeLabelsDto {
-	if o == nil || IsNil(o.Parameters) {
+	if o == nil {
 		var ret []PatchNodeLabelsDto
 		return ret
 	}
@@ -117,6 +127,7 @@ func (o *PatchNodeCommand) GetParameters() []PatchNodeLabelsDto {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchNodeCommand) GetParametersOk() ([]PatchNodeLabelsDto, bool) {
 	if o == nil || IsNil(o.Parameters) {
 		return nil, false
@@ -151,10 +162,10 @@ func (o PatchNodeCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Parameters) {
+	if o.Parameters != nil {
 		toSerialize["parameters"] = o.Parameters
 	}
 	return toSerialize, nil

@@ -20,8 +20,8 @@ var _ MappedNullable = &LeaveTaikunCommand{}
 
 // LeaveTaikunCommand struct for LeaveTaikunCommand
 type LeaveTaikunCommand struct {
-	Reason *string `json:"reason,omitempty"`
-	Message *string `json:"message,omitempty"`
+	Reason NullableString `json:"reason,omitempty"`
+	Message NullableString `json:"message,omitempty"`
 }
 
 // NewLeaveTaikunCommand instantiates a new LeaveTaikunCommand object
@@ -41,68 +41,88 @@ func NewLeaveTaikunCommandWithDefaults() *LeaveTaikunCommand {
 	return &this
 }
 
-// GetReason returns the Reason field value if set, zero value otherwise.
+// GetReason returns the Reason field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LeaveTaikunCommand) GetReason() string {
-	if o == nil || IsNil(o.Reason) {
+	if o == nil || IsNil(o.Reason.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Reason
+	return *o.Reason.Get()
 }
 
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LeaveTaikunCommand) GetReasonOk() (*string, bool) {
-	if o == nil || IsNil(o.Reason) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Reason, true
+	return o.Reason.Get(), o.Reason.IsSet()
 }
 
 // HasReason returns a boolean if a field has been set.
 func (o *LeaveTaikunCommand) HasReason() bool {
-	if o != nil && !IsNil(o.Reason) {
+	if o != nil && o.Reason.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReason gets a reference to the given string and assigns it to the Reason field.
+// SetReason gets a reference to the given NullableString and assigns it to the Reason field.
 func (o *LeaveTaikunCommand) SetReason(v string) {
-	o.Reason = &v
+	o.Reason.Set(&v)
+}
+// SetReasonNil sets the value for Reason to be an explicit nil
+func (o *LeaveTaikunCommand) SetReasonNil() {
+	o.Reason.Set(nil)
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise.
+// UnsetReason ensures that no value is present for Reason, not even an explicit nil
+func (o *LeaveTaikunCommand) UnsetReason() {
+	o.Reason.Unset()
+}
+
+// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LeaveTaikunCommand) GetMessage() string {
-	if o == nil || IsNil(o.Message) {
+	if o == nil || IsNil(o.Message.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Message
+	return *o.Message.Get()
 }
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LeaveTaikunCommand) GetMessageOk() (*string, bool) {
-	if o == nil || IsNil(o.Message) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Message, true
+	return o.Message.Get(), o.Message.IsSet()
 }
 
 // HasMessage returns a boolean if a field has been set.
 func (o *LeaveTaikunCommand) HasMessage() bool {
-	if o != nil && !IsNil(o.Message) {
+	if o != nil && o.Message.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMessage gets a reference to the given string and assigns it to the Message field.
+// SetMessage gets a reference to the given NullableString and assigns it to the Message field.
 func (o *LeaveTaikunCommand) SetMessage(v string) {
-	o.Message = &v
+	o.Message.Set(&v)
+}
+// SetMessageNil sets the value for Message to be an explicit nil
+func (o *LeaveTaikunCommand) SetMessageNil() {
+	o.Message.Set(nil)
+}
+
+// UnsetMessage ensures that no value is present for Message, not even an explicit nil
+func (o *LeaveTaikunCommand) UnsetMessage() {
+	o.Message.Unset()
 }
 
 func (o LeaveTaikunCommand) MarshalJSON() ([]byte, error) {
@@ -115,11 +135,11 @@ func (o LeaveTaikunCommand) MarshalJSON() ([]byte, error) {
 
 func (o LeaveTaikunCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Reason) {
-		toSerialize["reason"] = o.Reason
+	if o.Reason.IsSet() {
+		toSerialize["reason"] = o.Reason.Get()
 	}
-	if !IsNil(o.Message) {
-		toSerialize["message"] = o.Message
+	if o.Message.IsSet() {
+		toSerialize["message"] = o.Message.Get()
 	}
 	return toSerialize, nil
 }

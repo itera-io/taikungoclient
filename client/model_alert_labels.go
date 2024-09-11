@@ -20,19 +20,19 @@ var _ MappedNullable = &AlertLabels{}
 
 // AlertLabels struct for AlertLabels
 type AlertLabels struct {
-	Alertname *string `json:"alertname,omitempty"`
-	Condition *string `json:"condition,omitempty"`
-	Container *string `json:"container,omitempty"`
-	Endpoint *string `json:"endpoint,omitempty"`
-	Instance *string `json:"instance,omitempty"`
-	Job *string `json:"job,omitempty"`
-	Namespace *string `json:"namespace,omitempty"`
-	Node *string `json:"node,omitempty"`
-	Pod *string `json:"pod,omitempty"`
-	Service *string `json:"service,omitempty"`
-	Severity *string `json:"severity,omitempty"`
-	Status *string `json:"status,omitempty"`
-	Daemonset *string `json:"daemonset,omitempty"`
+	Alertname NullableString `json:"alertname,omitempty"`
+	Condition NullableString `json:"condition,omitempty"`
+	Container NullableString `json:"container,omitempty"`
+	Endpoint NullableString `json:"endpoint,omitempty"`
+	Instance NullableString `json:"instance,omitempty"`
+	Job NullableString `json:"job,omitempty"`
+	Namespace NullableString `json:"namespace,omitempty"`
+	Node NullableString `json:"node,omitempty"`
+	Pod NullableString `json:"pod,omitempty"`
+	Service NullableString `json:"service,omitempty"`
+	Severity NullableString `json:"severity,omitempty"`
+	Status NullableString `json:"status,omitempty"`
+	Daemonset NullableString `json:"daemonset,omitempty"`
 }
 
 // NewAlertLabels instantiates a new AlertLabels object
@@ -52,420 +52,550 @@ func NewAlertLabelsWithDefaults() *AlertLabels {
 	return &this
 }
 
-// GetAlertname returns the Alertname field value if set, zero value otherwise.
+// GetAlertname returns the Alertname field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetAlertname() string {
-	if o == nil || IsNil(o.Alertname) {
+	if o == nil || IsNil(o.Alertname.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Alertname
+	return *o.Alertname.Get()
 }
 
 // GetAlertnameOk returns a tuple with the Alertname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetAlertnameOk() (*string, bool) {
-	if o == nil || IsNil(o.Alertname) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Alertname, true
+	return o.Alertname.Get(), o.Alertname.IsSet()
 }
 
 // HasAlertname returns a boolean if a field has been set.
 func (o *AlertLabels) HasAlertname() bool {
-	if o != nil && !IsNil(o.Alertname) {
+	if o != nil && o.Alertname.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAlertname gets a reference to the given string and assigns it to the Alertname field.
+// SetAlertname gets a reference to the given NullableString and assigns it to the Alertname field.
 func (o *AlertLabels) SetAlertname(v string) {
-	o.Alertname = &v
+	o.Alertname.Set(&v)
+}
+// SetAlertnameNil sets the value for Alertname to be an explicit nil
+func (o *AlertLabels) SetAlertnameNil() {
+	o.Alertname.Set(nil)
 }
 
-// GetCondition returns the Condition field value if set, zero value otherwise.
+// UnsetAlertname ensures that no value is present for Alertname, not even an explicit nil
+func (o *AlertLabels) UnsetAlertname() {
+	o.Alertname.Unset()
+}
+
+// GetCondition returns the Condition field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetCondition() string {
-	if o == nil || IsNil(o.Condition) {
+	if o == nil || IsNil(o.Condition.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Condition
+	return *o.Condition.Get()
 }
 
 // GetConditionOk returns a tuple with the Condition field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetConditionOk() (*string, bool) {
-	if o == nil || IsNil(o.Condition) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Condition, true
+	return o.Condition.Get(), o.Condition.IsSet()
 }
 
 // HasCondition returns a boolean if a field has been set.
 func (o *AlertLabels) HasCondition() bool {
-	if o != nil && !IsNil(o.Condition) {
+	if o != nil && o.Condition.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCondition gets a reference to the given string and assigns it to the Condition field.
+// SetCondition gets a reference to the given NullableString and assigns it to the Condition field.
 func (o *AlertLabels) SetCondition(v string) {
-	o.Condition = &v
+	o.Condition.Set(&v)
+}
+// SetConditionNil sets the value for Condition to be an explicit nil
+func (o *AlertLabels) SetConditionNil() {
+	o.Condition.Set(nil)
 }
 
-// GetContainer returns the Container field value if set, zero value otherwise.
+// UnsetCondition ensures that no value is present for Condition, not even an explicit nil
+func (o *AlertLabels) UnsetCondition() {
+	o.Condition.Unset()
+}
+
+// GetContainer returns the Container field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetContainer() string {
-	if o == nil || IsNil(o.Container) {
+	if o == nil || IsNil(o.Container.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Container
+	return *o.Container.Get()
 }
 
 // GetContainerOk returns a tuple with the Container field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetContainerOk() (*string, bool) {
-	if o == nil || IsNil(o.Container) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Container, true
+	return o.Container.Get(), o.Container.IsSet()
 }
 
 // HasContainer returns a boolean if a field has been set.
 func (o *AlertLabels) HasContainer() bool {
-	if o != nil && !IsNil(o.Container) {
+	if o != nil && o.Container.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetContainer gets a reference to the given string and assigns it to the Container field.
+// SetContainer gets a reference to the given NullableString and assigns it to the Container field.
 func (o *AlertLabels) SetContainer(v string) {
-	o.Container = &v
+	o.Container.Set(&v)
+}
+// SetContainerNil sets the value for Container to be an explicit nil
+func (o *AlertLabels) SetContainerNil() {
+	o.Container.Set(nil)
 }
 
-// GetEndpoint returns the Endpoint field value if set, zero value otherwise.
+// UnsetContainer ensures that no value is present for Container, not even an explicit nil
+func (o *AlertLabels) UnsetContainer() {
+	o.Container.Unset()
+}
+
+// GetEndpoint returns the Endpoint field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetEndpoint() string {
-	if o == nil || IsNil(o.Endpoint) {
+	if o == nil || IsNil(o.Endpoint.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Endpoint
+	return *o.Endpoint.Get()
 }
 
 // GetEndpointOk returns a tuple with the Endpoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetEndpointOk() (*string, bool) {
-	if o == nil || IsNil(o.Endpoint) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Endpoint, true
+	return o.Endpoint.Get(), o.Endpoint.IsSet()
 }
 
 // HasEndpoint returns a boolean if a field has been set.
 func (o *AlertLabels) HasEndpoint() bool {
-	if o != nil && !IsNil(o.Endpoint) {
+	if o != nil && o.Endpoint.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEndpoint gets a reference to the given string and assigns it to the Endpoint field.
+// SetEndpoint gets a reference to the given NullableString and assigns it to the Endpoint field.
 func (o *AlertLabels) SetEndpoint(v string) {
-	o.Endpoint = &v
+	o.Endpoint.Set(&v)
+}
+// SetEndpointNil sets the value for Endpoint to be an explicit nil
+func (o *AlertLabels) SetEndpointNil() {
+	o.Endpoint.Set(nil)
 }
 
-// GetInstance returns the Instance field value if set, zero value otherwise.
+// UnsetEndpoint ensures that no value is present for Endpoint, not even an explicit nil
+func (o *AlertLabels) UnsetEndpoint() {
+	o.Endpoint.Unset()
+}
+
+// GetInstance returns the Instance field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetInstance() string {
-	if o == nil || IsNil(o.Instance) {
+	if o == nil || IsNil(o.Instance.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Instance
+	return *o.Instance.Get()
 }
 
 // GetInstanceOk returns a tuple with the Instance field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetInstanceOk() (*string, bool) {
-	if o == nil || IsNil(o.Instance) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Instance, true
+	return o.Instance.Get(), o.Instance.IsSet()
 }
 
 // HasInstance returns a boolean if a field has been set.
 func (o *AlertLabels) HasInstance() bool {
-	if o != nil && !IsNil(o.Instance) {
+	if o != nil && o.Instance.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetInstance gets a reference to the given string and assigns it to the Instance field.
+// SetInstance gets a reference to the given NullableString and assigns it to the Instance field.
 func (o *AlertLabels) SetInstance(v string) {
-	o.Instance = &v
+	o.Instance.Set(&v)
+}
+// SetInstanceNil sets the value for Instance to be an explicit nil
+func (o *AlertLabels) SetInstanceNil() {
+	o.Instance.Set(nil)
 }
 
-// GetJob returns the Job field value if set, zero value otherwise.
+// UnsetInstance ensures that no value is present for Instance, not even an explicit nil
+func (o *AlertLabels) UnsetInstance() {
+	o.Instance.Unset()
+}
+
+// GetJob returns the Job field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetJob() string {
-	if o == nil || IsNil(o.Job) {
+	if o == nil || IsNil(o.Job.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Job
+	return *o.Job.Get()
 }
 
 // GetJobOk returns a tuple with the Job field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetJobOk() (*string, bool) {
-	if o == nil || IsNil(o.Job) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Job, true
+	return o.Job.Get(), o.Job.IsSet()
 }
 
 // HasJob returns a boolean if a field has been set.
 func (o *AlertLabels) HasJob() bool {
-	if o != nil && !IsNil(o.Job) {
+	if o != nil && o.Job.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetJob gets a reference to the given string and assigns it to the Job field.
+// SetJob gets a reference to the given NullableString and assigns it to the Job field.
 func (o *AlertLabels) SetJob(v string) {
-	o.Job = &v
+	o.Job.Set(&v)
+}
+// SetJobNil sets the value for Job to be an explicit nil
+func (o *AlertLabels) SetJobNil() {
+	o.Job.Set(nil)
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
+// UnsetJob ensures that no value is present for Job, not even an explicit nil
+func (o *AlertLabels) UnsetJob() {
+	o.Job.Unset()
+}
+
+// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil || IsNil(o.Namespace.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace
+	return *o.Namespace.Get()
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetNamespaceOk() (*string, bool) {
-	if o == nil || IsNil(o.Namespace) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Namespace, true
+	return o.Namespace.Get(), o.Namespace.IsSet()
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *AlertLabels) HasNamespace() bool {
-	if o != nil && !IsNil(o.Namespace) {
+	if o != nil && o.Namespace.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
 func (o *AlertLabels) SetNamespace(v string) {
-	o.Namespace = &v
+	o.Namespace.Set(&v)
+}
+// SetNamespaceNil sets the value for Namespace to be an explicit nil
+func (o *AlertLabels) SetNamespaceNil() {
+	o.Namespace.Set(nil)
 }
 
-// GetNode returns the Node field value if set, zero value otherwise.
+// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
+func (o *AlertLabels) UnsetNamespace() {
+	o.Namespace.Unset()
+}
+
+// GetNode returns the Node field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetNode() string {
-	if o == nil || IsNil(o.Node) {
+	if o == nil || IsNil(o.Node.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Node
+	return *o.Node.Get()
 }
 
 // GetNodeOk returns a tuple with the Node field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetNodeOk() (*string, bool) {
-	if o == nil || IsNil(o.Node) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Node, true
+	return o.Node.Get(), o.Node.IsSet()
 }
 
 // HasNode returns a boolean if a field has been set.
 func (o *AlertLabels) HasNode() bool {
-	if o != nil && !IsNil(o.Node) {
+	if o != nil && o.Node.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetNode gets a reference to the given string and assigns it to the Node field.
+// SetNode gets a reference to the given NullableString and assigns it to the Node field.
 func (o *AlertLabels) SetNode(v string) {
-	o.Node = &v
+	o.Node.Set(&v)
+}
+// SetNodeNil sets the value for Node to be an explicit nil
+func (o *AlertLabels) SetNodeNil() {
+	o.Node.Set(nil)
 }
 
-// GetPod returns the Pod field value if set, zero value otherwise.
+// UnsetNode ensures that no value is present for Node, not even an explicit nil
+func (o *AlertLabels) UnsetNode() {
+	o.Node.Unset()
+}
+
+// GetPod returns the Pod field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetPod() string {
-	if o == nil || IsNil(o.Pod) {
+	if o == nil || IsNil(o.Pod.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Pod
+	return *o.Pod.Get()
 }
 
 // GetPodOk returns a tuple with the Pod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetPodOk() (*string, bool) {
-	if o == nil || IsNil(o.Pod) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Pod, true
+	return o.Pod.Get(), o.Pod.IsSet()
 }
 
 // HasPod returns a boolean if a field has been set.
 func (o *AlertLabels) HasPod() bool {
-	if o != nil && !IsNil(o.Pod) {
+	if o != nil && o.Pod.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPod gets a reference to the given string and assigns it to the Pod field.
+// SetPod gets a reference to the given NullableString and assigns it to the Pod field.
 func (o *AlertLabels) SetPod(v string) {
-	o.Pod = &v
+	o.Pod.Set(&v)
+}
+// SetPodNil sets the value for Pod to be an explicit nil
+func (o *AlertLabels) SetPodNil() {
+	o.Pod.Set(nil)
 }
 
-// GetService returns the Service field value if set, zero value otherwise.
+// UnsetPod ensures that no value is present for Pod, not even an explicit nil
+func (o *AlertLabels) UnsetPod() {
+	o.Pod.Unset()
+}
+
+// GetService returns the Service field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetService() string {
-	if o == nil || IsNil(o.Service) {
+	if o == nil || IsNil(o.Service.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Service
+	return *o.Service.Get()
 }
 
 // GetServiceOk returns a tuple with the Service field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetServiceOk() (*string, bool) {
-	if o == nil || IsNil(o.Service) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Service, true
+	return o.Service.Get(), o.Service.IsSet()
 }
 
 // HasService returns a boolean if a field has been set.
 func (o *AlertLabels) HasService() bool {
-	if o != nil && !IsNil(o.Service) {
+	if o != nil && o.Service.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetService gets a reference to the given string and assigns it to the Service field.
+// SetService gets a reference to the given NullableString and assigns it to the Service field.
 func (o *AlertLabels) SetService(v string) {
-	o.Service = &v
+	o.Service.Set(&v)
+}
+// SetServiceNil sets the value for Service to be an explicit nil
+func (o *AlertLabels) SetServiceNil() {
+	o.Service.Set(nil)
 }
 
-// GetSeverity returns the Severity field value if set, zero value otherwise.
+// UnsetService ensures that no value is present for Service, not even an explicit nil
+func (o *AlertLabels) UnsetService() {
+	o.Service.Unset()
+}
+
+// GetSeverity returns the Severity field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetSeverity() string {
-	if o == nil || IsNil(o.Severity) {
+	if o == nil || IsNil(o.Severity.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Severity
+	return *o.Severity.Get()
 }
 
 // GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetSeverityOk() (*string, bool) {
-	if o == nil || IsNil(o.Severity) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Severity, true
+	return o.Severity.Get(), o.Severity.IsSet()
 }
 
 // HasSeverity returns a boolean if a field has been set.
 func (o *AlertLabels) HasSeverity() bool {
-	if o != nil && !IsNil(o.Severity) {
+	if o != nil && o.Severity.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSeverity gets a reference to the given string and assigns it to the Severity field.
+// SetSeverity gets a reference to the given NullableString and assigns it to the Severity field.
 func (o *AlertLabels) SetSeverity(v string) {
-	o.Severity = &v
+	o.Severity.Set(&v)
+}
+// SetSeverityNil sets the value for Severity to be an explicit nil
+func (o *AlertLabels) SetSeverityNil() {
+	o.Severity.Set(nil)
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// UnsetSeverity ensures that no value is present for Severity, not even an explicit nil
+func (o *AlertLabels) UnsetSeverity() {
+	o.Severity.Unset()
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetStatus() string {
-	if o == nil || IsNil(o.Status) {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Status
+	return *o.Status.Get()
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetStatusOk() (*string, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return o.Status.Get(), o.Status.IsSet()
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *AlertLabels) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
+	if o != nil && o.Status.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given string and assigns it to the Status field.
+// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
 func (o *AlertLabels) SetStatus(v string) {
-	o.Status = &v
+	o.Status.Set(&v)
+}
+// SetStatusNil sets the value for Status to be an explicit nil
+func (o *AlertLabels) SetStatusNil() {
+	o.Status.Set(nil)
 }
 
-// GetDaemonset returns the Daemonset field value if set, zero value otherwise.
+// UnsetStatus ensures that no value is present for Status, not even an explicit nil
+func (o *AlertLabels) UnsetStatus() {
+	o.Status.Unset()
+}
+
+// GetDaemonset returns the Daemonset field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AlertLabels) GetDaemonset() string {
-	if o == nil || IsNil(o.Daemonset) {
+	if o == nil || IsNil(o.Daemonset.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Daemonset
+	return *o.Daemonset.Get()
 }
 
 // GetDaemonsetOk returns a tuple with the Daemonset field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertLabels) GetDaemonsetOk() (*string, bool) {
-	if o == nil || IsNil(o.Daemonset) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Daemonset, true
+	return o.Daemonset.Get(), o.Daemonset.IsSet()
 }
 
 // HasDaemonset returns a boolean if a field has been set.
 func (o *AlertLabels) HasDaemonset() bool {
-	if o != nil && !IsNil(o.Daemonset) {
+	if o != nil && o.Daemonset.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDaemonset gets a reference to the given string and assigns it to the Daemonset field.
+// SetDaemonset gets a reference to the given NullableString and assigns it to the Daemonset field.
 func (o *AlertLabels) SetDaemonset(v string) {
-	o.Daemonset = &v
+	o.Daemonset.Set(&v)
+}
+// SetDaemonsetNil sets the value for Daemonset to be an explicit nil
+func (o *AlertLabels) SetDaemonsetNil() {
+	o.Daemonset.Set(nil)
+}
+
+// UnsetDaemonset ensures that no value is present for Daemonset, not even an explicit nil
+func (o *AlertLabels) UnsetDaemonset() {
+	o.Daemonset.Unset()
 }
 
 func (o AlertLabels) MarshalJSON() ([]byte, error) {
@@ -478,44 +608,44 @@ func (o AlertLabels) MarshalJSON() ([]byte, error) {
 
 func (o AlertLabels) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Alertname) {
-		toSerialize["alertname"] = o.Alertname
+	if o.Alertname.IsSet() {
+		toSerialize["alertname"] = o.Alertname.Get()
 	}
-	if !IsNil(o.Condition) {
-		toSerialize["condition"] = o.Condition
+	if o.Condition.IsSet() {
+		toSerialize["condition"] = o.Condition.Get()
 	}
-	if !IsNil(o.Container) {
-		toSerialize["container"] = o.Container
+	if o.Container.IsSet() {
+		toSerialize["container"] = o.Container.Get()
 	}
-	if !IsNil(o.Endpoint) {
-		toSerialize["endpoint"] = o.Endpoint
+	if o.Endpoint.IsSet() {
+		toSerialize["endpoint"] = o.Endpoint.Get()
 	}
-	if !IsNil(o.Instance) {
-		toSerialize["instance"] = o.Instance
+	if o.Instance.IsSet() {
+		toSerialize["instance"] = o.Instance.Get()
 	}
-	if !IsNil(o.Job) {
-		toSerialize["job"] = o.Job
+	if o.Job.IsSet() {
+		toSerialize["job"] = o.Job.Get()
 	}
-	if !IsNil(o.Namespace) {
-		toSerialize["namespace"] = o.Namespace
+	if o.Namespace.IsSet() {
+		toSerialize["namespace"] = o.Namespace.Get()
 	}
-	if !IsNil(o.Node) {
-		toSerialize["node"] = o.Node
+	if o.Node.IsSet() {
+		toSerialize["node"] = o.Node.Get()
 	}
-	if !IsNil(o.Pod) {
-		toSerialize["pod"] = o.Pod
+	if o.Pod.IsSet() {
+		toSerialize["pod"] = o.Pod.Get()
 	}
-	if !IsNil(o.Service) {
-		toSerialize["service"] = o.Service
+	if o.Service.IsSet() {
+		toSerialize["service"] = o.Service.Get()
 	}
-	if !IsNil(o.Severity) {
-		toSerialize["severity"] = o.Severity
+	if o.Severity.IsSet() {
+		toSerialize["severity"] = o.Severity.Get()
 	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
+	if o.Status.IsSet() {
+		toSerialize["status"] = o.Status.Get()
 	}
-	if !IsNil(o.Daemonset) {
-		toSerialize["daemonset"] = o.Daemonset
+	if o.Daemonset.IsSet() {
+		toSerialize["daemonset"] = o.Daemonset.Get()
 	}
 	return toSerialize, nil
 }

@@ -399,9 +399,6 @@ func (a *AdminAPIService) AdminCreateUserExecute(r ApiAdminCreateUserRequest) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.adminUserCreateCommand == nil {
-		return nil, reportError("adminUserCreateCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1364,15 +1361,10 @@ func (a *AdminAPIService) AdminMakeOwnerExecute(r ApiAdminMakeOwnerRequest) (*ht
 type ApiAdminOrganizationsRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
-	search *string
 	limit *int32
 	offset *int32
 	partnerId *int32
-}
-
-func (r ApiAdminOrganizationsRequest) Search(search string) ApiAdminOrganizationsRequest {
-	r.search = &search
-	return r
+	search *string
 }
 
 func (r ApiAdminOrganizationsRequest) Limit(limit int32) ApiAdminOrganizationsRequest {
@@ -1387,6 +1379,11 @@ func (r ApiAdminOrganizationsRequest) Offset(offset int32) ApiAdminOrganizations
 
 func (r ApiAdminOrganizationsRequest) PartnerId(partnerId int32) ApiAdminOrganizationsRequest {
 	r.partnerId = &partnerId
+	return r
+}
+
+func (r ApiAdminOrganizationsRequest) Search(search string) ApiAdminOrganizationsRequest {
+	r.search = &search
 	return r
 }
 
@@ -1427,9 +1424,6 @@ func (a *AdminAPIService) AdminOrganizationsExecute(r ApiAdminOrganizationsReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -1440,7 +1434,9 @@ func (a *AdminAPIService) AdminOrganizationsExecute(r ApiAdminOrganizationsReque
 	if r.partnerId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "PartnerId", r.partnerId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1566,15 +1562,10 @@ func (a *AdminAPIService) AdminOrganizationsExecute(r ApiAdminOrganizationsReque
 type ApiAdminProjectListRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
-	search *string
 	limit *int32
 	offset *int32
 	organizationId *int32
-}
-
-func (r ApiAdminProjectListRequest) Search(search string) ApiAdminProjectListRequest {
-	r.search = &search
-	return r
+	search *string
 }
 
 func (r ApiAdminProjectListRequest) Limit(limit int32) ApiAdminProjectListRequest {
@@ -1589,6 +1580,11 @@ func (r ApiAdminProjectListRequest) Offset(offset int32) ApiAdminProjectListRequ
 
 func (r ApiAdminProjectListRequest) OrganizationId(organizationId int32) ApiAdminProjectListRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiAdminProjectListRequest) Search(search string) ApiAdminProjectListRequest {
+	r.search = &search
 	return r
 }
 
@@ -1629,9 +1625,6 @@ func (a *AdminAPIService) AdminProjectListExecute(r ApiAdminProjectListRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -1642,7 +1635,9 @@ func (a *AdminAPIService) AdminProjectListExecute(r ApiAdminProjectListRequest) 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2306,9 +2301,6 @@ func (a *AdminAPIService) AdminUpdateUserExecute(r ApiAdminUpdateUserRequest) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.adminUsersUpdatePasswordCommand == nil {
-		return nil, reportError("adminUsersUpdatePasswordCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2758,15 +2750,10 @@ func (a *AdminAPIService) AdminUpdateUsersExecute(r ApiAdminUpdateUsersRequest) 
 type ApiAdminUsersListRequest struct {
 	ctx context.Context
 	ApiService *AdminAPIService
-	search *string
 	limit *int32
 	offset *int32
 	organizationId *int32
-}
-
-func (r ApiAdminUsersListRequest) Search(search string) ApiAdminUsersListRequest {
-	r.search = &search
-	return r
+	search *string
 }
 
 func (r ApiAdminUsersListRequest) Limit(limit int32) ApiAdminUsersListRequest {
@@ -2781,6 +2768,11 @@ func (r ApiAdminUsersListRequest) Offset(offset int32) ApiAdminUsersListRequest 
 
 func (r ApiAdminUsersListRequest) OrganizationId(organizationId int32) ApiAdminUsersListRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiAdminUsersListRequest) Search(search string) ApiAdminUsersListRequest {
+	r.search = &search
 	return r
 }
 
@@ -2821,9 +2813,6 @@ func (a *AdminAPIService) AdminUsersListExecute(r ApiAdminUsersListRequest) (*Ad
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -2834,7 +2823,9 @@ func (a *AdminAPIService) AdminUsersListExecute(r ApiAdminUsersListRequest) (*Ad
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

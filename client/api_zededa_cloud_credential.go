@@ -71,9 +71,6 @@ func (a *ZededaCloudCredentialAPIService) ZededaCreateExecute(r ApiZededaCreateR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createZededaCommand == nil {
-		return localVarReturnValue, nil, reportError("createZededaCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -247,9 +244,6 @@ func (a *ZededaCloudCredentialAPIService) ZededaEdgeNodesExecute(r ApiZededaEdge
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.zededaEdgeNodesCommand == nil {
-		return localVarReturnValue, nil, reportError("zededaEdgeNodesCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -423,9 +417,6 @@ func (a *ZededaCloudCredentialAPIService) ZededaInterfacesExecute(r ApiZededaInt
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.zededaInterfaceCommand == nil {
-		return localVarReturnValue, nil, reportError("zededaInterfaceCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -554,14 +545,29 @@ func (a *ZededaCloudCredentialAPIService) ZededaInterfacesExecute(r ApiZededaInt
 type ApiZededaListRequest struct {
 	ctx context.Context
 	ApiService *ZededaCloudCredentialAPIService
+	limit *int32
+	offset *int32
+	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
-	limit *int32
-	offset *int32
-	organizationId *int32
 	id *int32
+}
+
+func (r ApiZededaListRequest) Limit(limit int32) ApiZededaListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiZededaListRequest) Offset(offset int32) ApiZededaListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiZededaListRequest) OrganizationId(organizationId int32) ApiZededaListRequest {
+	r.organizationId = &organizationId
+	return r
 }
 
 func (r ApiZededaListRequest) SortBy(sortBy string) ApiZededaListRequest {
@@ -581,21 +587,6 @@ func (r ApiZededaListRequest) Search(search string) ApiZededaListRequest {
 
 func (r ApiZededaListRequest) SearchId(searchId string) ApiZededaListRequest {
 	r.searchId = &searchId
-	return r
-}
-
-func (r ApiZededaListRequest) Limit(limit int32) ApiZededaListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiZededaListRequest) Offset(offset int32) ApiZededaListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiZededaListRequest) OrganizationId(organizationId int32) ApiZededaListRequest {
-	r.organizationId = &organizationId
 	return r
 }
 
@@ -641,18 +632,6 @@ func (a *ZededaCloudCredentialAPIService) ZededaListExecute(r ApiZededaListReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -663,10 +642,18 @@ func (a *ZededaCloudCredentialAPIService) ZededaListExecute(r ApiZededaListReque
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
@@ -840,9 +827,6 @@ func (a *ZededaCloudCredentialAPIService) ZededaProjectsExecute(r ApiZededaProje
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.zededaProjectsCommand == nil {
-		return localVarReturnValue, nil, reportError("zededaProjectsCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1014,9 +998,6 @@ func (a *ZededaCloudCredentialAPIService) ZededaUpdateEdgeNodesExecute(r ApiZede
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateEdgeNodesCommand == nil {
-		return nil, reportError("updateEdgeNodesCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

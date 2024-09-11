@@ -361,20 +361,20 @@ func (a *KubernetesProfilesAPIService) KubernetesprofilesDeleteExecute(r ApiKube
 type ApiKubernetesprofilesDropdownRequest struct {
 	ctx context.Context
 	ApiService *KubernetesProfilesAPIService
-	search *string
 	organizationId *int32
+	search *string
 	cloudId *int32
 	offset *int32
 	limit *int32
 }
 
-func (r ApiKubernetesprofilesDropdownRequest) Search(search string) ApiKubernetesprofilesDropdownRequest {
-	r.search = &search
+func (r ApiKubernetesprofilesDropdownRequest) OrganizationId(organizationId int32) ApiKubernetesprofilesDropdownRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
-func (r ApiKubernetesprofilesDropdownRequest) OrganizationId(organizationId int32) ApiKubernetesprofilesDropdownRequest {
-	r.organizationId = &organizationId
+func (r ApiKubernetesprofilesDropdownRequest) Search(search string) ApiKubernetesprofilesDropdownRequest {
+	r.search = &search
 	return r
 }
 
@@ -430,14 +430,13 @@ func (a *KubernetesProfilesAPIService) KubernetesprofilesDropdownExecute(r ApiKu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	if r.cloudId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "CloudId", r.cloudId, "form", "")
 	}
@@ -578,14 +577,29 @@ func (a *KubernetesProfilesAPIService) KubernetesprofilesDropdownExecute(r ApiKu
 type ApiKubernetesprofilesListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesProfilesAPIService
+	organizationId *int32
+	limit *int32
+	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
-	organizationId *int32
-	limit *int32
-	offset *int32
 	id *int32
+}
+
+func (r ApiKubernetesprofilesListRequest) OrganizationId(organizationId int32) ApiKubernetesprofilesListRequest {
+	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiKubernetesprofilesListRequest) Limit(limit int32) ApiKubernetesprofilesListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiKubernetesprofilesListRequest) Offset(offset int32) ApiKubernetesprofilesListRequest {
+	r.offset = &offset
+	return r
 }
 
 func (r ApiKubernetesprofilesListRequest) SortBy(sortBy string) ApiKubernetesprofilesListRequest {
@@ -605,21 +619,6 @@ func (r ApiKubernetesprofilesListRequest) Search(search string) ApiKubernetespro
 
 func (r ApiKubernetesprofilesListRequest) SearchId(searchId string) ApiKubernetesprofilesListRequest {
 	r.searchId = &searchId
-	return r
-}
-
-func (r ApiKubernetesprofilesListRequest) OrganizationId(organizationId int32) ApiKubernetesprofilesListRequest {
-	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiKubernetesprofilesListRequest) Limit(limit int32) ApiKubernetesprofilesListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesprofilesListRequest) Offset(offset int32) ApiKubernetesprofilesListRequest {
-	r.offset = &offset
 	return r
 }
 
@@ -665,18 +664,6 @@ func (a *KubernetesProfilesAPIService) KubernetesprofilesListExecute(r ApiKubern
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
@@ -687,10 +674,18 @@ func (a *KubernetesProfilesAPIService) KubernetesprofilesListExecute(r ApiKubern
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}

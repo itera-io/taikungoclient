@@ -73,9 +73,9 @@ func (o *EditCatalogAppParamCommand) SetCatalogAppId(v int32) {
 	o.CatalogAppId = &v
 }
 
-// GetParameters returns the Parameters field value if set, zero value otherwise.
+// GetParameters returns the Parameters field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EditCatalogAppParamCommand) GetParameters() []CatalogAppParamsDto {
-	if o == nil || IsNil(o.Parameters) {
+	if o == nil {
 		var ret []CatalogAppParamsDto
 		return ret
 	}
@@ -84,6 +84,7 @@ func (o *EditCatalogAppParamCommand) GetParameters() []CatalogAppParamsDto {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditCatalogAppParamCommand) GetParametersOk() ([]CatalogAppParamsDto, bool) {
 	if o == nil || IsNil(o.Parameters) {
 		return nil, false
@@ -118,7 +119,7 @@ func (o EditCatalogAppParamCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CatalogAppId) {
 		toSerialize["catalogAppId"] = o.CatalogAppId
 	}
-	if !IsNil(o.Parameters) {
+	if o.Parameters != nil {
 		toSerialize["parameters"] = o.Parameters
 	}
 	return toSerialize, nil

@@ -21,12 +21,12 @@ var _ MappedNullable = &StandAloneVmDiskForDetailsDto{}
 // StandAloneVmDiskForDetailsDto struct for StandAloneVmDiskForDetailsDto
 type StandAloneVmDiskForDetailsDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Name NullableString `json:"name,omitempty"`
 	CurrentSize *int64 `json:"currentSize,omitempty"`
 	TargetSize *int64 `json:"targetSize,omitempty"`
-	VolumeType *string `json:"volumeType,omitempty"`
-	DeviceName *string `json:"deviceName,omitempty"`
-	LunId *string `json:"lunId,omitempty"`
+	VolumeType NullableString `json:"volumeType,omitempty"`
+	DeviceName NullableString `json:"deviceName,omitempty"`
+	LunId NullableString `json:"lunId,omitempty"`
 	Status *StandAloneVmDiskStatus `json:"status,omitempty"`
 }
 
@@ -79,36 +79,46 @@ func (o *StandAloneVmDiskForDetailsDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StandAloneVmDiskForDetailsDto) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandAloneVmDiskForDetailsDto) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *StandAloneVmDiskForDetailsDto) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *StandAloneVmDiskForDetailsDto) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *StandAloneVmDiskForDetailsDto) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *StandAloneVmDiskForDetailsDto) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetCurrentSize returns the CurrentSize field value if set, zero value otherwise.
@@ -175,100 +185,130 @@ func (o *StandAloneVmDiskForDetailsDto) SetTargetSize(v int64) {
 	o.TargetSize = &v
 }
 
-// GetVolumeType returns the VolumeType field value if set, zero value otherwise.
+// GetVolumeType returns the VolumeType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StandAloneVmDiskForDetailsDto) GetVolumeType() string {
-	if o == nil || IsNil(o.VolumeType) {
+	if o == nil || IsNil(o.VolumeType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.VolumeType
+	return *o.VolumeType.Get()
 }
 
 // GetVolumeTypeOk returns a tuple with the VolumeType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandAloneVmDiskForDetailsDto) GetVolumeTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.VolumeType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.VolumeType, true
+	return o.VolumeType.Get(), o.VolumeType.IsSet()
 }
 
 // HasVolumeType returns a boolean if a field has been set.
 func (o *StandAloneVmDiskForDetailsDto) HasVolumeType() bool {
-	if o != nil && !IsNil(o.VolumeType) {
+	if o != nil && o.VolumeType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetVolumeType gets a reference to the given string and assigns it to the VolumeType field.
+// SetVolumeType gets a reference to the given NullableString and assigns it to the VolumeType field.
 func (o *StandAloneVmDiskForDetailsDto) SetVolumeType(v string) {
-	o.VolumeType = &v
+	o.VolumeType.Set(&v)
+}
+// SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
+func (o *StandAloneVmDiskForDetailsDto) SetVolumeTypeNil() {
+	o.VolumeType.Set(nil)
 }
 
-// GetDeviceName returns the DeviceName field value if set, zero value otherwise.
+// UnsetVolumeType ensures that no value is present for VolumeType, not even an explicit nil
+func (o *StandAloneVmDiskForDetailsDto) UnsetVolumeType() {
+	o.VolumeType.Unset()
+}
+
+// GetDeviceName returns the DeviceName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StandAloneVmDiskForDetailsDto) GetDeviceName() string {
-	if o == nil || IsNil(o.DeviceName) {
+	if o == nil || IsNil(o.DeviceName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DeviceName
+	return *o.DeviceName.Get()
 }
 
 // GetDeviceNameOk returns a tuple with the DeviceName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandAloneVmDiskForDetailsDto) GetDeviceNameOk() (*string, bool) {
-	if o == nil || IsNil(o.DeviceName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DeviceName, true
+	return o.DeviceName.Get(), o.DeviceName.IsSet()
 }
 
 // HasDeviceName returns a boolean if a field has been set.
 func (o *StandAloneVmDiskForDetailsDto) HasDeviceName() bool {
-	if o != nil && !IsNil(o.DeviceName) {
+	if o != nil && o.DeviceName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDeviceName gets a reference to the given string and assigns it to the DeviceName field.
+// SetDeviceName gets a reference to the given NullableString and assigns it to the DeviceName field.
 func (o *StandAloneVmDiskForDetailsDto) SetDeviceName(v string) {
-	o.DeviceName = &v
+	o.DeviceName.Set(&v)
+}
+// SetDeviceNameNil sets the value for DeviceName to be an explicit nil
+func (o *StandAloneVmDiskForDetailsDto) SetDeviceNameNil() {
+	o.DeviceName.Set(nil)
 }
 
-// GetLunId returns the LunId field value if set, zero value otherwise.
+// UnsetDeviceName ensures that no value is present for DeviceName, not even an explicit nil
+func (o *StandAloneVmDiskForDetailsDto) UnsetDeviceName() {
+	o.DeviceName.Unset()
+}
+
+// GetLunId returns the LunId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *StandAloneVmDiskForDetailsDto) GetLunId() string {
-	if o == nil || IsNil(o.LunId) {
+	if o == nil || IsNil(o.LunId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LunId
+	return *o.LunId.Get()
 }
 
 // GetLunIdOk returns a tuple with the LunId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandAloneVmDiskForDetailsDto) GetLunIdOk() (*string, bool) {
-	if o == nil || IsNil(o.LunId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LunId, true
+	return o.LunId.Get(), o.LunId.IsSet()
 }
 
 // HasLunId returns a boolean if a field has been set.
 func (o *StandAloneVmDiskForDetailsDto) HasLunId() bool {
-	if o != nil && !IsNil(o.LunId) {
+	if o != nil && o.LunId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLunId gets a reference to the given string and assigns it to the LunId field.
+// SetLunId gets a reference to the given NullableString and assigns it to the LunId field.
 func (o *StandAloneVmDiskForDetailsDto) SetLunId(v string) {
-	o.LunId = &v
+	o.LunId.Set(&v)
+}
+// SetLunIdNil sets the value for LunId to be an explicit nil
+func (o *StandAloneVmDiskForDetailsDto) SetLunIdNil() {
+	o.LunId.Set(nil)
+}
+
+// UnsetLunId ensures that no value is present for LunId, not even an explicit nil
+func (o *StandAloneVmDiskForDetailsDto) UnsetLunId() {
+	o.LunId.Unset()
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
@@ -316,8 +356,8 @@ func (o StandAloneVmDiskForDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
 	if !IsNil(o.CurrentSize) {
 		toSerialize["currentSize"] = o.CurrentSize
@@ -325,14 +365,14 @@ func (o StandAloneVmDiskForDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TargetSize) {
 		toSerialize["targetSize"] = o.TargetSize
 	}
-	if !IsNil(o.VolumeType) {
-		toSerialize["volumeType"] = o.VolumeType
+	if o.VolumeType.IsSet() {
+		toSerialize["volumeType"] = o.VolumeType.Get()
 	}
-	if !IsNil(o.DeviceName) {
-		toSerialize["deviceName"] = o.DeviceName
+	if o.DeviceName.IsSet() {
+		toSerialize["deviceName"] = o.DeviceName.Get()
 	}
-	if !IsNil(o.LunId) {
-		toSerialize["lunId"] = o.LunId
+	if o.LunId.IsSet() {
+		toSerialize["lunId"] = o.LunId.Get()
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status

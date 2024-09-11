@@ -40,9 +40,9 @@ func NewBindAppRepositoryCommandWithDefaults() *BindAppRepositoryCommand {
 	return &this
 }
 
-// GetFilteringElements returns the FilteringElements field value if set, zero value otherwise.
+// GetFilteringElements returns the FilteringElements field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BindAppRepositoryCommand) GetFilteringElements() []FilteringElementDto {
-	if o == nil || IsNil(o.FilteringElements) {
+	if o == nil {
 		var ret []FilteringElementDto
 		return ret
 	}
@@ -51,6 +51,7 @@ func (o *BindAppRepositoryCommand) GetFilteringElements() []FilteringElementDto 
 
 // GetFilteringElementsOk returns a tuple with the FilteringElements field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindAppRepositoryCommand) GetFilteringElementsOk() ([]FilteringElementDto, bool) {
 	if o == nil || IsNil(o.FilteringElements) {
 		return nil, false
@@ -82,7 +83,7 @@ func (o BindAppRepositoryCommand) MarshalJSON() ([]byte, error) {
 
 func (o BindAppRepositoryCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.FilteringElements) {
+	if o.FilteringElements != nil {
 		toSerialize["filteringElements"] = o.FilteringElements
 	}
 	return toSerialize, nil

@@ -41,9 +41,9 @@ func NewHelmStatusWithDefaults() *HelmStatus {
 	return &this
 }
 
-// GetConditions returns the Conditions field value if set, zero value otherwise.
+// GetConditions returns the Conditions field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmStatus) GetConditions() []HelmCondition {
-	if o == nil || IsNil(o.Conditions) {
+	if o == nil {
 		var ret []HelmCondition
 		return ret
 	}
@@ -52,6 +52,7 @@ func (o *HelmStatus) GetConditions() []HelmCondition {
 
 // GetConditionsOk returns a tuple with the Conditions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmStatus) GetConditionsOk() ([]HelmCondition, bool) {
 	if o == nil || IsNil(o.Conditions) {
 		return nil, false
@@ -115,7 +116,7 @@ func (o HelmStatus) MarshalJSON() ([]byte, error) {
 
 func (o HelmStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Conditions) {
+	if o.Conditions != nil {
 		toSerialize["conditions"] = o.Conditions
 	}
 	if !IsNil(o.Failures) {

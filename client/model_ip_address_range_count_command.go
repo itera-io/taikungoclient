@@ -20,8 +20,8 @@ var _ MappedNullable = &IpAddressRangeCountCommand{}
 
 // IpAddressRangeCountCommand struct for IpAddressRangeCountCommand
 type IpAddressRangeCountCommand struct {
-	Begin *string `json:"begin,omitempty"`
-	End *string `json:"end,omitempty"`
+	Begin NullableString `json:"begin,omitempty"`
+	End NullableString `json:"end,omitempty"`
 }
 
 // NewIpAddressRangeCountCommand instantiates a new IpAddressRangeCountCommand object
@@ -41,68 +41,88 @@ func NewIpAddressRangeCountCommandWithDefaults() *IpAddressRangeCountCommand {
 	return &this
 }
 
-// GetBegin returns the Begin field value if set, zero value otherwise.
+// GetBegin returns the Begin field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IpAddressRangeCountCommand) GetBegin() string {
-	if o == nil || IsNil(o.Begin) {
+	if o == nil || IsNil(o.Begin.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Begin
+	return *o.Begin.Get()
 }
 
 // GetBeginOk returns a tuple with the Begin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpAddressRangeCountCommand) GetBeginOk() (*string, bool) {
-	if o == nil || IsNil(o.Begin) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Begin, true
+	return o.Begin.Get(), o.Begin.IsSet()
 }
 
 // HasBegin returns a boolean if a field has been set.
 func (o *IpAddressRangeCountCommand) HasBegin() bool {
-	if o != nil && !IsNil(o.Begin) {
+	if o != nil && o.Begin.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBegin gets a reference to the given string and assigns it to the Begin field.
+// SetBegin gets a reference to the given NullableString and assigns it to the Begin field.
 func (o *IpAddressRangeCountCommand) SetBegin(v string) {
-	o.Begin = &v
+	o.Begin.Set(&v)
+}
+// SetBeginNil sets the value for Begin to be an explicit nil
+func (o *IpAddressRangeCountCommand) SetBeginNil() {
+	o.Begin.Set(nil)
 }
 
-// GetEnd returns the End field value if set, zero value otherwise.
+// UnsetBegin ensures that no value is present for Begin, not even an explicit nil
+func (o *IpAddressRangeCountCommand) UnsetBegin() {
+	o.Begin.Unset()
+}
+
+// GetEnd returns the End field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *IpAddressRangeCountCommand) GetEnd() string {
-	if o == nil || IsNil(o.End) {
+	if o == nil || IsNil(o.End.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.End
+	return *o.End.Get()
 }
 
 // GetEndOk returns a tuple with the End field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpAddressRangeCountCommand) GetEndOk() (*string, bool) {
-	if o == nil || IsNil(o.End) {
+	if o == nil {
 		return nil, false
 	}
-	return o.End, true
+	return o.End.Get(), o.End.IsSet()
 }
 
 // HasEnd returns a boolean if a field has been set.
 func (o *IpAddressRangeCountCommand) HasEnd() bool {
-	if o != nil && !IsNil(o.End) {
+	if o != nil && o.End.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnd gets a reference to the given string and assigns it to the End field.
+// SetEnd gets a reference to the given NullableString and assigns it to the End field.
 func (o *IpAddressRangeCountCommand) SetEnd(v string) {
-	o.End = &v
+	o.End.Set(&v)
+}
+// SetEndNil sets the value for End to be an explicit nil
+func (o *IpAddressRangeCountCommand) SetEndNil() {
+	o.End.Set(nil)
+}
+
+// UnsetEnd ensures that no value is present for End, not even an explicit nil
+func (o *IpAddressRangeCountCommand) UnsetEnd() {
+	o.End.Unset()
 }
 
 func (o IpAddressRangeCountCommand) MarshalJSON() ([]byte, error) {
@@ -115,11 +135,11 @@ func (o IpAddressRangeCountCommand) MarshalJSON() ([]byte, error) {
 
 func (o IpAddressRangeCountCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Begin) {
-		toSerialize["begin"] = o.Begin
+	if o.Begin.IsSet() {
+		toSerialize["begin"] = o.Begin.Get()
 	}
-	if !IsNil(o.End) {
-		toSerialize["end"] = o.End
+	if o.End.IsSet() {
+		toSerialize["end"] = o.End.Get()
 	}
 	return toSerialize, nil
 }

@@ -71,9 +71,6 @@ func (a *StandaloneProfileAPIService) StandaloneprofileCreateExecute(r ApiStanda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.standAloneProfileCreateCommand == nil {
-		return localVarReturnValue, nil, reportError("standAloneProfileCreateCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -367,17 +364,17 @@ func (a *StandaloneProfileAPIService) StandaloneprofileDeleteExecute(r ApiStanda
 type ApiStandaloneprofileDropdownRequest struct {
 	ctx context.Context
 	ApiService *StandaloneProfileAPIService
-	search *string
 	organizationId *int32
-}
-
-func (r ApiStandaloneprofileDropdownRequest) Search(search string) ApiStandaloneprofileDropdownRequest {
-	r.search = &search
-	return r
+	search *string
 }
 
 func (r ApiStandaloneprofileDropdownRequest) OrganizationId(organizationId int32) ApiStandaloneprofileDropdownRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiStandaloneprofileDropdownRequest) Search(search string) ApiStandaloneprofileDropdownRequest {
+	r.search = &search
 	return r
 }
 
@@ -418,14 +415,13 @@ func (a *StandaloneProfileAPIService) StandaloneprofileDropdownExecute(r ApiStan
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -716,14 +712,29 @@ func (a *StandaloneProfileAPIService) StandaloneprofileEditExecute(r ApiStandalo
 type ApiStandaloneprofileListRequest struct {
 	ctx context.Context
 	ApiService *StandaloneProfileAPIService
+	limit *int32
+	offset *int32
+	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
-	limit *int32
-	offset *int32
-	organizationId *int32
 	id *int32
+}
+
+func (r ApiStandaloneprofileListRequest) Limit(limit int32) ApiStandaloneprofileListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiStandaloneprofileListRequest) Offset(offset int32) ApiStandaloneprofileListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiStandaloneprofileListRequest) OrganizationId(organizationId int32) ApiStandaloneprofileListRequest {
+	r.organizationId = &organizationId
+	return r
 }
 
 func (r ApiStandaloneprofileListRequest) SortBy(sortBy string) ApiStandaloneprofileListRequest {
@@ -743,21 +754,6 @@ func (r ApiStandaloneprofileListRequest) Search(search string) ApiStandaloneprof
 
 func (r ApiStandaloneprofileListRequest) SearchId(searchId string) ApiStandaloneprofileListRequest {
 	r.searchId = &searchId
-	return r
-}
-
-func (r ApiStandaloneprofileListRequest) Limit(limit int32) ApiStandaloneprofileListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiStandaloneprofileListRequest) Offset(offset int32) ApiStandaloneprofileListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiStandaloneprofileListRequest) OrganizationId(organizationId int32) ApiStandaloneprofileListRequest {
-	r.organizationId = &organizationId
 	return r
 }
 
@@ -803,18 +799,6 @@ func (a *StandaloneProfileAPIService) StandaloneprofileListExecute(r ApiStandalo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -825,10 +809,18 @@ func (a *StandaloneProfileAPIService) StandaloneprofileListExecute(r ApiStandalo
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}

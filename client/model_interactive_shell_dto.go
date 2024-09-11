@@ -20,8 +20,8 @@ var _ MappedNullable = &InteractiveShellDto{}
 
 // InteractiveShellDto struct for InteractiveShellDto
 type InteractiveShellDto struct {
-	KubeConfig *string `json:"kubeConfig,omitempty"`
-	AdminKubeConfig *string `json:"adminKubeConfig,omitempty"`
+	KubeConfig NullableString `json:"kubeConfig,omitempty"`
+	AdminKubeConfig NullableString `json:"adminKubeConfig,omitempty"`
 }
 
 // NewInteractiveShellDto instantiates a new InteractiveShellDto object
@@ -41,68 +41,88 @@ func NewInteractiveShellDtoWithDefaults() *InteractiveShellDto {
 	return &this
 }
 
-// GetKubeConfig returns the KubeConfig field value if set, zero value otherwise.
+// GetKubeConfig returns the KubeConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InteractiveShellDto) GetKubeConfig() string {
-	if o == nil || IsNil(o.KubeConfig) {
+	if o == nil || IsNil(o.KubeConfig.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.KubeConfig
+	return *o.KubeConfig.Get()
 }
 
 // GetKubeConfigOk returns a tuple with the KubeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InteractiveShellDto) GetKubeConfigOk() (*string, bool) {
-	if o == nil || IsNil(o.KubeConfig) {
+	if o == nil {
 		return nil, false
 	}
-	return o.KubeConfig, true
+	return o.KubeConfig.Get(), o.KubeConfig.IsSet()
 }
 
 // HasKubeConfig returns a boolean if a field has been set.
 func (o *InteractiveShellDto) HasKubeConfig() bool {
-	if o != nil && !IsNil(o.KubeConfig) {
+	if o != nil && o.KubeConfig.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetKubeConfig gets a reference to the given string and assigns it to the KubeConfig field.
+// SetKubeConfig gets a reference to the given NullableString and assigns it to the KubeConfig field.
 func (o *InteractiveShellDto) SetKubeConfig(v string) {
-	o.KubeConfig = &v
+	o.KubeConfig.Set(&v)
+}
+// SetKubeConfigNil sets the value for KubeConfig to be an explicit nil
+func (o *InteractiveShellDto) SetKubeConfigNil() {
+	o.KubeConfig.Set(nil)
 }
 
-// GetAdminKubeConfig returns the AdminKubeConfig field value if set, zero value otherwise.
+// UnsetKubeConfig ensures that no value is present for KubeConfig, not even an explicit nil
+func (o *InteractiveShellDto) UnsetKubeConfig() {
+	o.KubeConfig.Unset()
+}
+
+// GetAdminKubeConfig returns the AdminKubeConfig field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *InteractiveShellDto) GetAdminKubeConfig() string {
-	if o == nil || IsNil(o.AdminKubeConfig) {
+	if o == nil || IsNil(o.AdminKubeConfig.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AdminKubeConfig
+	return *o.AdminKubeConfig.Get()
 }
 
 // GetAdminKubeConfigOk returns a tuple with the AdminKubeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InteractiveShellDto) GetAdminKubeConfigOk() (*string, bool) {
-	if o == nil || IsNil(o.AdminKubeConfig) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AdminKubeConfig, true
+	return o.AdminKubeConfig.Get(), o.AdminKubeConfig.IsSet()
 }
 
 // HasAdminKubeConfig returns a boolean if a field has been set.
 func (o *InteractiveShellDto) HasAdminKubeConfig() bool {
-	if o != nil && !IsNil(o.AdminKubeConfig) {
+	if o != nil && o.AdminKubeConfig.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAdminKubeConfig gets a reference to the given string and assigns it to the AdminKubeConfig field.
+// SetAdminKubeConfig gets a reference to the given NullableString and assigns it to the AdminKubeConfig field.
 func (o *InteractiveShellDto) SetAdminKubeConfig(v string) {
-	o.AdminKubeConfig = &v
+	o.AdminKubeConfig.Set(&v)
+}
+// SetAdminKubeConfigNil sets the value for AdminKubeConfig to be an explicit nil
+func (o *InteractiveShellDto) SetAdminKubeConfigNil() {
+	o.AdminKubeConfig.Set(nil)
+}
+
+// UnsetAdminKubeConfig ensures that no value is present for AdminKubeConfig, not even an explicit nil
+func (o *InteractiveShellDto) UnsetAdminKubeConfig() {
+	o.AdminKubeConfig.Unset()
 }
 
 func (o InteractiveShellDto) MarshalJSON() ([]byte, error) {
@@ -115,11 +135,11 @@ func (o InteractiveShellDto) MarshalJSON() ([]byte, error) {
 
 func (o InteractiveShellDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.KubeConfig) {
-		toSerialize["kubeConfig"] = o.KubeConfig
+	if o.KubeConfig.IsSet() {
+		toSerialize["kubeConfig"] = o.KubeConfig.Get()
 	}
-	if !IsNil(o.AdminKubeConfig) {
-		toSerialize["adminKubeConfig"] = o.AdminKubeConfig
+	if o.AdminKubeConfig.IsSet() {
+		toSerialize["adminKubeConfig"] = o.AdminKubeConfig.Get()
 	}
 	return toSerialize, nil
 }

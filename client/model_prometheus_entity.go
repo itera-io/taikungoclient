@@ -21,7 +21,7 @@ var _ MappedNullable = &PrometheusEntity{}
 // PrometheusEntity struct for PrometheusEntity
 type PrometheusEntity struct {
 	PrometheusRuleId *int32 `json:"prometheusRuleId,omitempty"`
-	PrometheusRuleName *string `json:"prometheusRuleName,omitempty"`
+	PrometheusRuleName NullableString `json:"prometheusRuleName,omitempty"`
 	RuleDiscountRate *float64 `json:"ruleDiscountRate,omitempty"`
 }
 
@@ -74,36 +74,46 @@ func (o *PrometheusEntity) SetPrometheusRuleId(v int32) {
 	o.PrometheusRuleId = &v
 }
 
-// GetPrometheusRuleName returns the PrometheusRuleName field value if set, zero value otherwise.
+// GetPrometheusRuleName returns the PrometheusRuleName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PrometheusEntity) GetPrometheusRuleName() string {
-	if o == nil || IsNil(o.PrometheusRuleName) {
+	if o == nil || IsNil(o.PrometheusRuleName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.PrometheusRuleName
+	return *o.PrometheusRuleName.Get()
 }
 
 // GetPrometheusRuleNameOk returns a tuple with the PrometheusRuleName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusEntity) GetPrometheusRuleNameOk() (*string, bool) {
-	if o == nil || IsNil(o.PrometheusRuleName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PrometheusRuleName, true
+	return o.PrometheusRuleName.Get(), o.PrometheusRuleName.IsSet()
 }
 
 // HasPrometheusRuleName returns a boolean if a field has been set.
 func (o *PrometheusEntity) HasPrometheusRuleName() bool {
-	if o != nil && !IsNil(o.PrometheusRuleName) {
+	if o != nil && o.PrometheusRuleName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPrometheusRuleName gets a reference to the given string and assigns it to the PrometheusRuleName field.
+// SetPrometheusRuleName gets a reference to the given NullableString and assigns it to the PrometheusRuleName field.
 func (o *PrometheusEntity) SetPrometheusRuleName(v string) {
-	o.PrometheusRuleName = &v
+	o.PrometheusRuleName.Set(&v)
+}
+// SetPrometheusRuleNameNil sets the value for PrometheusRuleName to be an explicit nil
+func (o *PrometheusEntity) SetPrometheusRuleNameNil() {
+	o.PrometheusRuleName.Set(nil)
+}
+
+// UnsetPrometheusRuleName ensures that no value is present for PrometheusRuleName, not even an explicit nil
+func (o *PrometheusEntity) UnsetPrometheusRuleName() {
+	o.PrometheusRuleName.Unset()
 }
 
 // GetRuleDiscountRate returns the RuleDiscountRate field value if set, zero value otherwise.
@@ -151,8 +161,8 @@ func (o PrometheusEntity) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PrometheusRuleId) {
 		toSerialize["prometheusRuleId"] = o.PrometheusRuleId
 	}
-	if !IsNil(o.PrometheusRuleName) {
-		toSerialize["prometheusRuleName"] = o.PrometheusRuleName
+	if o.PrometheusRuleName.IsSet() {
+		toSerialize["prometheusRuleName"] = o.PrometheusRuleName.Get()
 	}
 	if !IsNil(o.RuleDiscountRate) {
 		toSerialize["ruleDiscountRate"] = o.RuleDiscountRate

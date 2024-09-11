@@ -20,7 +20,7 @@ var _ MappedNullable = &ArchiveTicketCommand{}
 
 // ArchiveTicketCommand struct for ArchiveTicketCommand
 type ArchiveTicketCommand struct {
-	TicketId *string `json:"ticketId,omitempty"`
+	TicketId NullableString `json:"ticketId,omitempty"`
 }
 
 // NewArchiveTicketCommand instantiates a new ArchiveTicketCommand object
@@ -40,36 +40,46 @@ func NewArchiveTicketCommandWithDefaults() *ArchiveTicketCommand {
 	return &this
 }
 
-// GetTicketId returns the TicketId field value if set, zero value otherwise.
+// GetTicketId returns the TicketId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ArchiveTicketCommand) GetTicketId() string {
-	if o == nil || IsNil(o.TicketId) {
+	if o == nil || IsNil(o.TicketId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.TicketId
+	return *o.TicketId.Get()
 }
 
 // GetTicketIdOk returns a tuple with the TicketId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArchiveTicketCommand) GetTicketIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TicketId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TicketId, true
+	return o.TicketId.Get(), o.TicketId.IsSet()
 }
 
 // HasTicketId returns a boolean if a field has been set.
 func (o *ArchiveTicketCommand) HasTicketId() bool {
-	if o != nil && !IsNil(o.TicketId) {
+	if o != nil && o.TicketId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTicketId gets a reference to the given string and assigns it to the TicketId field.
+// SetTicketId gets a reference to the given NullableString and assigns it to the TicketId field.
 func (o *ArchiveTicketCommand) SetTicketId(v string) {
-	o.TicketId = &v
+	o.TicketId.Set(&v)
+}
+// SetTicketIdNil sets the value for TicketId to be an explicit nil
+func (o *ArchiveTicketCommand) SetTicketIdNil() {
+	o.TicketId.Set(nil)
+}
+
+// UnsetTicketId ensures that no value is present for TicketId, not even an explicit nil
+func (o *ArchiveTicketCommand) UnsetTicketId() {
+	o.TicketId.Unset()
 }
 
 func (o ArchiveTicketCommand) MarshalJSON() ([]byte, error) {
@@ -82,8 +92,8 @@ func (o ArchiveTicketCommand) MarshalJSON() ([]byte, error) {
 
 func (o ArchiveTicketCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TicketId) {
-		toSerialize["ticketId"] = o.TicketId
+	if o.TicketId.IsSet() {
+		toSerialize["ticketId"] = o.TicketId.Get()
 	}
 	return toSerialize, nil
 }

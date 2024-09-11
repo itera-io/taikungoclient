@@ -71,9 +71,6 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksCreateExecute(r ApiStanda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createStandAloneDiskCommand == nil {
-		return localVarReturnValue, nil, reportError("createStandAloneDiskCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -245,9 +242,6 @@ func (a *StandaloneVMDisksAPIService) StandalonevmdisksUpdateSizeExecute(r ApiSt
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateStandaloneVmDiskSizeCommand == nil {
-		return nil, reportError("updateStandaloneVmDiskSizeCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

@@ -73,9 +73,9 @@ func (o *DeleteVmDiskCommand) SetStandaloneVmId(v int32) {
 	o.StandaloneVmId = &v
 }
 
-// GetVmDiskIds returns the VmDiskIds field value if set, zero value otherwise.
+// GetVmDiskIds returns the VmDiskIds field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeleteVmDiskCommand) GetVmDiskIds() []int32 {
-	if o == nil || IsNil(o.VmDiskIds) {
+	if o == nil {
 		var ret []int32
 		return ret
 	}
@@ -84,6 +84,7 @@ func (o *DeleteVmDiskCommand) GetVmDiskIds() []int32 {
 
 // GetVmDiskIdsOk returns a tuple with the VmDiskIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeleteVmDiskCommand) GetVmDiskIdsOk() ([]int32, bool) {
 	if o == nil || IsNil(o.VmDiskIds) {
 		return nil, false
@@ -118,7 +119,7 @@ func (o DeleteVmDiskCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StandaloneVmId) {
 		toSerialize["standaloneVmId"] = o.StandaloneVmId
 	}
-	if !IsNil(o.VmDiskIds) {
+	if o.VmDiskIds != nil {
 		toSerialize["vmDiskIds"] = o.VmDiskIds
 	}
 	return toSerialize, nil

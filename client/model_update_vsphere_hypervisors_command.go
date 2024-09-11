@@ -73,9 +73,9 @@ func (o *UpdateVsphereHypervisorsCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetHypervisors returns the Hypervisors field value if set, zero value otherwise.
+// GetHypervisors returns the Hypervisors field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateVsphereHypervisorsCommand) GetHypervisors() []string {
-	if o == nil || IsNil(o.Hypervisors) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -84,6 +84,7 @@ func (o *UpdateVsphereHypervisorsCommand) GetHypervisors() []string {
 
 // GetHypervisorsOk returns a tuple with the Hypervisors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateVsphereHypervisorsCommand) GetHypervisorsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Hypervisors) {
 		return nil, false
@@ -118,7 +119,7 @@ func (o UpdateVsphereHypervisorsCommand) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Hypervisors) {
+	if o.Hypervisors != nil {
 		toSerialize["hypervisors"] = o.Hypervisors
 	}
 	return toSerialize, nil

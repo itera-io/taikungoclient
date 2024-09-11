@@ -20,8 +20,8 @@ var _ MappedNullable = &CreateGenericTaikunLbDto{}
 
 // CreateGenericTaikunLbDto struct for CreateGenericTaikunLbDto
 type CreateGenericTaikunLbDto struct {
-	SvcName *string `json:"svcName,omitempty"`
-	SvcNamespace *string `json:"svcNamespace,omitempty"`
+	SvcName NullableString `json:"svcName,omitempty"`
+	SvcNamespace NullableString `json:"svcNamespace,omitempty"`
 }
 
 // NewCreateGenericTaikunLbDto instantiates a new CreateGenericTaikunLbDto object
@@ -41,68 +41,88 @@ func NewCreateGenericTaikunLbDtoWithDefaults() *CreateGenericTaikunLbDto {
 	return &this
 }
 
-// GetSvcName returns the SvcName field value if set, zero value otherwise.
+// GetSvcName returns the SvcName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateGenericTaikunLbDto) GetSvcName() string {
-	if o == nil || IsNil(o.SvcName) {
+	if o == nil || IsNil(o.SvcName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SvcName
+	return *o.SvcName.Get()
 }
 
 // GetSvcNameOk returns a tuple with the SvcName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateGenericTaikunLbDto) GetSvcNameOk() (*string, bool) {
-	if o == nil || IsNil(o.SvcName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SvcName, true
+	return o.SvcName.Get(), o.SvcName.IsSet()
 }
 
 // HasSvcName returns a boolean if a field has been set.
 func (o *CreateGenericTaikunLbDto) HasSvcName() bool {
-	if o != nil && !IsNil(o.SvcName) {
+	if o != nil && o.SvcName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSvcName gets a reference to the given string and assigns it to the SvcName field.
+// SetSvcName gets a reference to the given NullableString and assigns it to the SvcName field.
 func (o *CreateGenericTaikunLbDto) SetSvcName(v string) {
-	o.SvcName = &v
+	o.SvcName.Set(&v)
+}
+// SetSvcNameNil sets the value for SvcName to be an explicit nil
+func (o *CreateGenericTaikunLbDto) SetSvcNameNil() {
+	o.SvcName.Set(nil)
 }
 
-// GetSvcNamespace returns the SvcNamespace field value if set, zero value otherwise.
+// UnsetSvcName ensures that no value is present for SvcName, not even an explicit nil
+func (o *CreateGenericTaikunLbDto) UnsetSvcName() {
+	o.SvcName.Unset()
+}
+
+// GetSvcNamespace returns the SvcNamespace field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateGenericTaikunLbDto) GetSvcNamespace() string {
-	if o == nil || IsNil(o.SvcNamespace) {
+	if o == nil || IsNil(o.SvcNamespace.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SvcNamespace
+	return *o.SvcNamespace.Get()
 }
 
 // GetSvcNamespaceOk returns a tuple with the SvcNamespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateGenericTaikunLbDto) GetSvcNamespaceOk() (*string, bool) {
-	if o == nil || IsNil(o.SvcNamespace) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SvcNamespace, true
+	return o.SvcNamespace.Get(), o.SvcNamespace.IsSet()
 }
 
 // HasSvcNamespace returns a boolean if a field has been set.
 func (o *CreateGenericTaikunLbDto) HasSvcNamespace() bool {
-	if o != nil && !IsNil(o.SvcNamespace) {
+	if o != nil && o.SvcNamespace.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSvcNamespace gets a reference to the given string and assigns it to the SvcNamespace field.
+// SetSvcNamespace gets a reference to the given NullableString and assigns it to the SvcNamespace field.
 func (o *CreateGenericTaikunLbDto) SetSvcNamespace(v string) {
-	o.SvcNamespace = &v
+	o.SvcNamespace.Set(&v)
+}
+// SetSvcNamespaceNil sets the value for SvcNamespace to be an explicit nil
+func (o *CreateGenericTaikunLbDto) SetSvcNamespaceNil() {
+	o.SvcNamespace.Set(nil)
+}
+
+// UnsetSvcNamespace ensures that no value is present for SvcNamespace, not even an explicit nil
+func (o *CreateGenericTaikunLbDto) UnsetSvcNamespace() {
+	o.SvcNamespace.Unset()
 }
 
 func (o CreateGenericTaikunLbDto) MarshalJSON() ([]byte, error) {
@@ -115,11 +135,11 @@ func (o CreateGenericTaikunLbDto) MarshalJSON() ([]byte, error) {
 
 func (o CreateGenericTaikunLbDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.SvcName) {
-		toSerialize["svcName"] = o.SvcName
+	if o.SvcName.IsSet() {
+		toSerialize["svcName"] = o.SvcName.Get()
 	}
-	if !IsNil(o.SvcNamespace) {
-		toSerialize["svcNamespace"] = o.SvcNamespace
+	if o.SvcNamespace.IsSet() {
+		toSerialize["svcNamespace"] = o.SvcNamespace.Get()
 	}
 	return toSerialize, nil
 }

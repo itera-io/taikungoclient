@@ -73,9 +73,9 @@ func (o *UpdateEdgeNodesCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetEdgeNodes returns the EdgeNodes field value if set, zero value otherwise.
+// GetEdgeNodes returns the EdgeNodes field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateEdgeNodesCommand) GetEdgeNodes() []string {
-	if o == nil || IsNil(o.EdgeNodes) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -84,6 +84,7 @@ func (o *UpdateEdgeNodesCommand) GetEdgeNodes() []string {
 
 // GetEdgeNodesOk returns a tuple with the EdgeNodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateEdgeNodesCommand) GetEdgeNodesOk() ([]string, bool) {
 	if o == nil || IsNil(o.EdgeNodes) {
 		return nil, false
@@ -118,7 +119,7 @@ func (o UpdateEdgeNodesCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.EdgeNodes) {
+	if o.EdgeNodes != nil {
 		toSerialize["edgeNodes"] = o.EdgeNodes
 	}
 	return toSerialize, nil

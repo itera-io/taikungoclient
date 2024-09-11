@@ -20,11 +20,11 @@ var _ MappedNullable = &LoginCommand{}
 
 // LoginCommand struct for LoginCommand
 type LoginCommand struct {
-	Email *string `json:"email,omitempty"`
-	Password *string `json:"password,omitempty"`
-	Mode *string `json:"mode,omitempty"`
-	AccessKey *string `json:"accessKey,omitempty"`
-	SecretKey *string `json:"secretKey,omitempty"`
+	Email NullableString `json:"email,omitempty"`
+	Password NullableString `json:"password,omitempty"`
+	Mode NullableString `json:"mode,omitempty"`
+	AccessKey NullableString `json:"accessKey,omitempty"`
+	SecretKey NullableString `json:"secretKey,omitempty"`
 	Local *bool `json:"local,omitempty"`
 }
 
@@ -45,164 +45,214 @@ func NewLoginCommandWithDefaults() *LoginCommand {
 	return &this
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise.
+// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LoginCommand) GetEmail() string {
-	if o == nil || IsNil(o.Email) {
+	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Email
+	return *o.Email.Get()
 }
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LoginCommand) GetEmailOk() (*string, bool) {
-	if o == nil || IsNil(o.Email) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Email, true
+	return o.Email.Get(), o.Email.IsSet()
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *LoginCommand) HasEmail() bool {
-	if o != nil && !IsNil(o.Email) {
+	if o != nil && o.Email.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given string and assigns it to the Email field.
+// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
 func (o *LoginCommand) SetEmail(v string) {
-	o.Email = &v
+	o.Email.Set(&v)
+}
+// SetEmailNil sets the value for Email to be an explicit nil
+func (o *LoginCommand) SetEmailNil() {
+	o.Email.Set(nil)
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise.
+// UnsetEmail ensures that no value is present for Email, not even an explicit nil
+func (o *LoginCommand) UnsetEmail() {
+	o.Email.Unset()
+}
+
+// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LoginCommand) GetPassword() string {
-	if o == nil || IsNil(o.Password) {
+	if o == nil || IsNil(o.Password.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Password
+	return *o.Password.Get()
 }
 
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LoginCommand) GetPasswordOk() (*string, bool) {
-	if o == nil || IsNil(o.Password) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Password, true
+	return o.Password.Get(), o.Password.IsSet()
 }
 
 // HasPassword returns a boolean if a field has been set.
 func (o *LoginCommand) HasPassword() bool {
-	if o != nil && !IsNil(o.Password) {
+	if o != nil && o.Password.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPassword gets a reference to the given string and assigns it to the Password field.
+// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
 func (o *LoginCommand) SetPassword(v string) {
-	o.Password = &v
+	o.Password.Set(&v)
+}
+// SetPasswordNil sets the value for Password to be an explicit nil
+func (o *LoginCommand) SetPasswordNil() {
+	o.Password.Set(nil)
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise.
+// UnsetPassword ensures that no value is present for Password, not even an explicit nil
+func (o *LoginCommand) UnsetPassword() {
+	o.Password.Unset()
+}
+
+// GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LoginCommand) GetMode() string {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil || IsNil(o.Mode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Mode
+	return *o.Mode.Get()
 }
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LoginCommand) GetModeOk() (*string, bool) {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Mode, true
+	return o.Mode.Get(), o.Mode.IsSet()
 }
 
 // HasMode returns a boolean if a field has been set.
 func (o *LoginCommand) HasMode() bool {
-	if o != nil && !IsNil(o.Mode) {
+	if o != nil && o.Mode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMode gets a reference to the given string and assigns it to the Mode field.
+// SetMode gets a reference to the given NullableString and assigns it to the Mode field.
 func (o *LoginCommand) SetMode(v string) {
-	o.Mode = &v
+	o.Mode.Set(&v)
+}
+// SetModeNil sets the value for Mode to be an explicit nil
+func (o *LoginCommand) SetModeNil() {
+	o.Mode.Set(nil)
 }
 
-// GetAccessKey returns the AccessKey field value if set, zero value otherwise.
+// UnsetMode ensures that no value is present for Mode, not even an explicit nil
+func (o *LoginCommand) UnsetMode() {
+	o.Mode.Unset()
+}
+
+// GetAccessKey returns the AccessKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LoginCommand) GetAccessKey() string {
-	if o == nil || IsNil(o.AccessKey) {
+	if o == nil || IsNil(o.AccessKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.AccessKey
+	return *o.AccessKey.Get()
 }
 
 // GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LoginCommand) GetAccessKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.AccessKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AccessKey, true
+	return o.AccessKey.Get(), o.AccessKey.IsSet()
 }
 
 // HasAccessKey returns a boolean if a field has been set.
 func (o *LoginCommand) HasAccessKey() bool {
-	if o != nil && !IsNil(o.AccessKey) {
+	if o != nil && o.AccessKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessKey gets a reference to the given string and assigns it to the AccessKey field.
+// SetAccessKey gets a reference to the given NullableString and assigns it to the AccessKey field.
 func (o *LoginCommand) SetAccessKey(v string) {
-	o.AccessKey = &v
+	o.AccessKey.Set(&v)
+}
+// SetAccessKeyNil sets the value for AccessKey to be an explicit nil
+func (o *LoginCommand) SetAccessKeyNil() {
+	o.AccessKey.Set(nil)
 }
 
-// GetSecretKey returns the SecretKey field value if set, zero value otherwise.
+// UnsetAccessKey ensures that no value is present for AccessKey, not even an explicit nil
+func (o *LoginCommand) UnsetAccessKey() {
+	o.AccessKey.Unset()
+}
+
+// GetSecretKey returns the SecretKey field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LoginCommand) GetSecretKey() string {
-	if o == nil || IsNil(o.SecretKey) {
+	if o == nil || IsNil(o.SecretKey.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SecretKey
+	return *o.SecretKey.Get()
 }
 
 // GetSecretKeyOk returns a tuple with the SecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LoginCommand) GetSecretKeyOk() (*string, bool) {
-	if o == nil || IsNil(o.SecretKey) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SecretKey, true
+	return o.SecretKey.Get(), o.SecretKey.IsSet()
 }
 
 // HasSecretKey returns a boolean if a field has been set.
 func (o *LoginCommand) HasSecretKey() bool {
-	if o != nil && !IsNil(o.SecretKey) {
+	if o != nil && o.SecretKey.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSecretKey gets a reference to the given string and assigns it to the SecretKey field.
+// SetSecretKey gets a reference to the given NullableString and assigns it to the SecretKey field.
 func (o *LoginCommand) SetSecretKey(v string) {
-	o.SecretKey = &v
+	o.SecretKey.Set(&v)
+}
+// SetSecretKeyNil sets the value for SecretKey to be an explicit nil
+func (o *LoginCommand) SetSecretKeyNil() {
+	o.SecretKey.Set(nil)
+}
+
+// UnsetSecretKey ensures that no value is present for SecretKey, not even an explicit nil
+func (o *LoginCommand) UnsetSecretKey() {
+	o.SecretKey.Unset()
 }
 
 // GetLocal returns the Local field value if set, zero value otherwise.
@@ -247,20 +297,20 @@ func (o LoginCommand) MarshalJSON() ([]byte, error) {
 
 func (o LoginCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Email) {
-		toSerialize["email"] = o.Email
+	if o.Email.IsSet() {
+		toSerialize["email"] = o.Email.Get()
 	}
-	if !IsNil(o.Password) {
-		toSerialize["password"] = o.Password
+	if o.Password.IsSet() {
+		toSerialize["password"] = o.Password.Get()
 	}
-	if !IsNil(o.Mode) {
-		toSerialize["mode"] = o.Mode
+	if o.Mode.IsSet() {
+		toSerialize["mode"] = o.Mode.Get()
 	}
-	if !IsNil(o.AccessKey) {
-		toSerialize["accessKey"] = o.AccessKey
+	if o.AccessKey.IsSet() {
+		toSerialize["accessKey"] = o.AccessKey.Get()
 	}
-	if !IsNil(o.SecretKey) {
-		toSerialize["secretKey"] = o.SecretKey
+	if o.SecretKey.IsSet() {
+		toSerialize["secretKey"] = o.SecretKey.Get()
 	}
 	if !IsNil(o.Local) {
 		toSerialize["local"] = o.Local

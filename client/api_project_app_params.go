@@ -74,9 +74,6 @@ func (a *ProjectAppParamsAPIService) ProjectappparamEditExecute(r ApiProjectappp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.editProjectAppParamsDto == nil {
-		return nil, reportError("editProjectAppParamsDto is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

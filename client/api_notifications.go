@@ -70,9 +70,6 @@ func (a *NotificationsAPIService) NotificationsCreateExecute(r ApiNotificationsC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.notificationSendCommand == nil {
-		return nil, reportError("notificationSendCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -192,16 +189,21 @@ func (a *NotificationsAPIService) NotificationsCreateExecute(r ApiNotificationsC
 type ApiNotificationsExportCsvRequest struct {
 	ctx context.Context
 	ApiService *NotificationsAPIService
+	isEmailEnabled *bool
 	sortBy *string
 	sortDirection *string
-	filterBy *string
-	userId *string
-	isEmailEnabled *bool
 	startDate *time.Time
 	endDate *time.Time
 	organizationId *int32
+	filterBy *string
 	projectId *int32
+	userId *string
 	isDeleted *bool
+}
+
+func (r ApiNotificationsExportCsvRequest) IsEmailEnabled(isEmailEnabled bool) ApiNotificationsExportCsvRequest {
+	r.isEmailEnabled = &isEmailEnabled
+	return r
 }
 
 func (r ApiNotificationsExportCsvRequest) SortBy(sortBy string) ApiNotificationsExportCsvRequest {
@@ -211,21 +213,6 @@ func (r ApiNotificationsExportCsvRequest) SortBy(sortBy string) ApiNotifications
 
 func (r ApiNotificationsExportCsvRequest) SortDirection(sortDirection string) ApiNotificationsExportCsvRequest {
 	r.sortDirection = &sortDirection
-	return r
-}
-
-func (r ApiNotificationsExportCsvRequest) FilterBy(filterBy string) ApiNotificationsExportCsvRequest {
-	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiNotificationsExportCsvRequest) UserId(userId string) ApiNotificationsExportCsvRequest {
-	r.userId = &userId
-	return r
-}
-
-func (r ApiNotificationsExportCsvRequest) IsEmailEnabled(isEmailEnabled bool) ApiNotificationsExportCsvRequest {
-	r.isEmailEnabled = &isEmailEnabled
 	return r
 }
 
@@ -244,8 +231,18 @@ func (r ApiNotificationsExportCsvRequest) OrganizationId(organizationId int32) A
 	return r
 }
 
+func (r ApiNotificationsExportCsvRequest) FilterBy(filterBy string) ApiNotificationsExportCsvRequest {
+	r.filterBy = &filterBy
+	return r
+}
+
 func (r ApiNotificationsExportCsvRequest) ProjectId(projectId int32) ApiNotificationsExportCsvRequest {
 	r.projectId = &projectId
+	return r
+}
+
+func (r ApiNotificationsExportCsvRequest) UserId(userId string) ApiNotificationsExportCsvRequest {
+	r.userId = &userId
 	return r
 }
 
@@ -291,24 +288,16 @@ func (a *NotificationsAPIService) NotificationsExportCsvExecute(r ApiNotificatio
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
-	if r.userId == nil {
-		return localVarReturnValue, nil, reportError("userId is required and must be specified")
-	}
 	if r.isEmailEnabled == nil {
 		return localVarReturnValue, nil, reportError("isEmailEnabled is required and must be specified")
 	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	if r.startDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "StartDate", r.startDate, "form", "")
 	}
@@ -318,11 +307,15 @@ func (a *NotificationsAPIService) NotificationsExportCsvExecute(r ApiNotificatio
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "UserId", r.userId, "form", "")
+	if r.userId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "UserId", r.userId, "form", "")
+	}
 	if r.isDeleted != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "form", "")
 	}
@@ -452,43 +445,18 @@ func (a *NotificationsAPIService) NotificationsExportCsvExecute(r ApiNotificatio
 type ApiNotificationsListRequest struct {
 	ctx context.Context
 	ApiService *NotificationsAPIService
-	sortBy *string
-	sortDirection *string
-	filterBy *string
-	userId *string
-	search *string
 	limit *int32
 	offset *int32
+	sortBy *string
+	sortDirection *string
 	startDate *time.Time
 	endDate *time.Time
 	organizationId *int32
+	filterBy *string
 	projectId *int32
+	userId *string
 	isDeleted *bool
-}
-
-func (r ApiNotificationsListRequest) SortBy(sortBy string) ApiNotificationsListRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiNotificationsListRequest) SortDirection(sortDirection string) ApiNotificationsListRequest {
-	r.sortDirection = &sortDirection
-	return r
-}
-
-func (r ApiNotificationsListRequest) FilterBy(filterBy string) ApiNotificationsListRequest {
-	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiNotificationsListRequest) UserId(userId string) ApiNotificationsListRequest {
-	r.userId = &userId
-	return r
-}
-
-func (r ApiNotificationsListRequest) Search(search string) ApiNotificationsListRequest {
-	r.search = &search
-	return r
+	search *string
 }
 
 func (r ApiNotificationsListRequest) Limit(limit int32) ApiNotificationsListRequest {
@@ -498,6 +466,16 @@ func (r ApiNotificationsListRequest) Limit(limit int32) ApiNotificationsListRequ
 
 func (r ApiNotificationsListRequest) Offset(offset int32) ApiNotificationsListRequest {
 	r.offset = &offset
+	return r
+}
+
+func (r ApiNotificationsListRequest) SortBy(sortBy string) ApiNotificationsListRequest {
+	r.sortBy = &sortBy
+	return r
+}
+
+func (r ApiNotificationsListRequest) SortDirection(sortDirection string) ApiNotificationsListRequest {
+	r.sortDirection = &sortDirection
 	return r
 }
 
@@ -516,13 +494,28 @@ func (r ApiNotificationsListRequest) OrganizationId(organizationId int32) ApiNot
 	return r
 }
 
+func (r ApiNotificationsListRequest) FilterBy(filterBy string) ApiNotificationsListRequest {
+	r.filterBy = &filterBy
+	return r
+}
+
 func (r ApiNotificationsListRequest) ProjectId(projectId int32) ApiNotificationsListRequest {
 	r.projectId = &projectId
 	return r
 }
 
+func (r ApiNotificationsListRequest) UserId(userId string) ApiNotificationsListRequest {
+	r.userId = &userId
+	return r
+}
+
 func (r ApiNotificationsListRequest) IsDeleted(isDeleted bool) ApiNotificationsListRequest {
 	r.isDeleted = &isDeleted
+	return r
+}
+
+func (r ApiNotificationsListRequest) Search(search string) ApiNotificationsListRequest {
+	r.search = &search
 	return r
 }
 
@@ -563,21 +556,6 @@ func (a *NotificationsAPIService) NotificationsListExecute(r ApiNotificationsLis
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.filterBy == nil {
-		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
-	}
-	if r.userId == nil {
-		return localVarReturnValue, nil, reportError("userId is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -585,8 +563,12 @@ func (a *NotificationsAPIService) NotificationsListExecute(r ApiNotificationsLis
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
 	if r.startDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "StartDate", r.startDate, "form", "")
 	}
@@ -596,15 +578,21 @@ func (a *NotificationsAPIService) NotificationsListExecute(r ApiNotificationsLis
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	if r.filterBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "UserId", r.userId, "form", "")
+	if r.userId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "UserId", r.userId, "form", "")
+	}
 	if r.isDeleted != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsDeleted", r.isDeleted, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

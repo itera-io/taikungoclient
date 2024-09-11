@@ -21,9 +21,9 @@ var _ MappedNullable = &CreateSlackConfigurationCommand{}
 // CreateSlackConfigurationCommand struct for CreateSlackConfigurationCommand
 type CreateSlackConfigurationCommand struct {
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Channel *string `json:"channel,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
+	Channel NullableString `json:"channel,omitempty"`
 	SlackType *SlackType `json:"slackType,omitempty"`
 }
 
@@ -86,100 +86,130 @@ func (o *CreateSlackConfigurationCommand) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSlackConfigurationCommand) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSlackConfigurationCommand) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateSlackConfigurationCommand) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *CreateSlackConfigurationCommand) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *CreateSlackConfigurationCommand) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *CreateSlackConfigurationCommand) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSlackConfigurationCommand) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+	if o == nil || IsNil(o.Url.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Url
+	return *o.Url.Get()
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSlackConfigurationCommand) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return o.Url.Get(), o.Url.IsSet()
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *CreateSlackConfigurationCommand) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
+	if o != nil && o.Url.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given string and assigns it to the Url field.
+// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
 func (o *CreateSlackConfigurationCommand) SetUrl(v string) {
-	o.Url = &v
+	o.Url.Set(&v)
+}
+// SetUrlNil sets the value for Url to be an explicit nil
+func (o *CreateSlackConfigurationCommand) SetUrlNil() {
+	o.Url.Set(nil)
 }
 
-// GetChannel returns the Channel field value if set, zero value otherwise.
+// UnsetUrl ensures that no value is present for Url, not even an explicit nil
+func (o *CreateSlackConfigurationCommand) UnsetUrl() {
+	o.Url.Unset()
+}
+
+// GetChannel returns the Channel field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateSlackConfigurationCommand) GetChannel() string {
-	if o == nil || IsNil(o.Channel) {
+	if o == nil || IsNil(o.Channel.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Channel
+	return *o.Channel.Get()
 }
 
 // GetChannelOk returns a tuple with the Channel field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateSlackConfigurationCommand) GetChannelOk() (*string, bool) {
-	if o == nil || IsNil(o.Channel) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Channel, true
+	return o.Channel.Get(), o.Channel.IsSet()
 }
 
 // HasChannel returns a boolean if a field has been set.
 func (o *CreateSlackConfigurationCommand) HasChannel() bool {
-	if o != nil && !IsNil(o.Channel) {
+	if o != nil && o.Channel.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetChannel gets a reference to the given string and assigns it to the Channel field.
+// SetChannel gets a reference to the given NullableString and assigns it to the Channel field.
 func (o *CreateSlackConfigurationCommand) SetChannel(v string) {
-	o.Channel = &v
+	o.Channel.Set(&v)
+}
+// SetChannelNil sets the value for Channel to be an explicit nil
+func (o *CreateSlackConfigurationCommand) SetChannelNil() {
+	o.Channel.Set(nil)
+}
+
+// UnsetChannel ensures that no value is present for Channel, not even an explicit nil
+func (o *CreateSlackConfigurationCommand) UnsetChannel() {
+	o.Channel.Unset()
 }
 
 // GetSlackType returns the SlackType field value if set, zero value otherwise.
@@ -227,14 +257,14 @@ func (o CreateSlackConfigurationCommand) ToMap() (map[string]interface{}, error)
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
+	if o.Url.IsSet() {
+		toSerialize["url"] = o.Url.Get()
 	}
-	if !IsNil(o.Channel) {
-		toSerialize["channel"] = o.Channel
+	if o.Channel.IsSet() {
+		toSerialize["channel"] = o.Channel.Get()
 	}
 	if !IsNil(o.SlackType) {
 		toSerialize["slackType"] = o.SlackType

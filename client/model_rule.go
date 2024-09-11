@@ -21,17 +21,17 @@ var _ MappedNullable = &Rule{}
 
 // Rule struct for Rule
 type Rule struct {
-	State *string `json:"state,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Query *string `json:"query,omitempty"`
+	State NullableString `json:"state,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Query NullableString `json:"query,omitempty"`
 	Duration *int64 `json:"duration,omitempty"`
 	Labels *RuleLabels `json:"labels,omitempty"`
 	Annotations *Annotations `json:"annotations,omitempty"`
 	Alerts []Alert `json:"alerts,omitempty"`
-	Health *string `json:"health,omitempty"`
+	Health NullableString `json:"health,omitempty"`
 	EvaluationTime *float64 `json:"evaluationTime,omitempty"`
 	LastEvaluation *time.Time `json:"lastEvaluation,omitempty"`
-	Type *string `json:"type,omitempty"`
+	Type NullableString `json:"type,omitempty"`
 }
 
 // NewRule instantiates a new Rule object
@@ -51,100 +51,130 @@ func NewRuleWithDefaults() *Rule {
 	return &this
 }
 
-// GetState returns the State field value if set, zero value otherwise.
+// GetState returns the State field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Rule) GetState() string {
-	if o == nil || IsNil(o.State) {
+	if o == nil || IsNil(o.State.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.State
+	return *o.State.Get()
 }
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Rule) GetStateOk() (*string, bool) {
-	if o == nil || IsNil(o.State) {
+	if o == nil {
 		return nil, false
 	}
-	return o.State, true
+	return o.State.Get(), o.State.IsSet()
 }
 
 // HasState returns a boolean if a field has been set.
 func (o *Rule) HasState() bool {
-	if o != nil && !IsNil(o.State) {
+	if o != nil && o.State.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
+// SetState gets a reference to the given NullableString and assigns it to the State field.
 func (o *Rule) SetState(v string) {
-	o.State = &v
+	o.State.Set(&v)
+}
+// SetStateNil sets the value for State to be an explicit nil
+func (o *Rule) SetStateNil() {
+	o.State.Set(nil)
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// UnsetState ensures that no value is present for State, not even an explicit nil
+func (o *Rule) UnsetState() {
+	o.State.Unset()
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Rule) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil || IsNil(o.Name.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Name
+	return *o.Name.Get()
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Rule) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return o.Name.Get(), o.Name.IsSet()
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Rule) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
+	if o != nil && o.Name.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
 func (o *Rule) SetName(v string) {
-	o.Name = &v
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *Rule) SetNameNil() {
+	o.Name.Set(nil)
 }
 
-// GetQuery returns the Query field value if set, zero value otherwise.
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *Rule) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetQuery returns the Query field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Rule) GetQuery() string {
-	if o == nil || IsNil(o.Query) {
+	if o == nil || IsNil(o.Query.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Query
+	return *o.Query.Get()
 }
 
 // GetQueryOk returns a tuple with the Query field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Rule) GetQueryOk() (*string, bool) {
-	if o == nil || IsNil(o.Query) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Query, true
+	return o.Query.Get(), o.Query.IsSet()
 }
 
 // HasQuery returns a boolean if a field has been set.
 func (o *Rule) HasQuery() bool {
-	if o != nil && !IsNil(o.Query) {
+	if o != nil && o.Query.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQuery gets a reference to the given string and assigns it to the Query field.
+// SetQuery gets a reference to the given NullableString and assigns it to the Query field.
 func (o *Rule) SetQuery(v string) {
-	o.Query = &v
+	o.Query.Set(&v)
+}
+// SetQueryNil sets the value for Query to be an explicit nil
+func (o *Rule) SetQueryNil() {
+	o.Query.Set(nil)
+}
+
+// UnsetQuery ensures that no value is present for Query, not even an explicit nil
+func (o *Rule) UnsetQuery() {
+	o.Query.Unset()
 }
 
 // GetDuration returns the Duration field value if set, zero value otherwise.
@@ -243,9 +273,9 @@ func (o *Rule) SetAnnotations(v Annotations) {
 	o.Annotations = &v
 }
 
-// GetAlerts returns the Alerts field value if set, zero value otherwise.
+// GetAlerts returns the Alerts field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Rule) GetAlerts() []Alert {
-	if o == nil || IsNil(o.Alerts) {
+	if o == nil {
 		var ret []Alert
 		return ret
 	}
@@ -254,6 +284,7 @@ func (o *Rule) GetAlerts() []Alert {
 
 // GetAlertsOk returns a tuple with the Alerts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Rule) GetAlertsOk() ([]Alert, bool) {
 	if o == nil || IsNil(o.Alerts) {
 		return nil, false
@@ -275,36 +306,46 @@ func (o *Rule) SetAlerts(v []Alert) {
 	o.Alerts = v
 }
 
-// GetHealth returns the Health field value if set, zero value otherwise.
+// GetHealth returns the Health field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Rule) GetHealth() string {
-	if o == nil || IsNil(o.Health) {
+	if o == nil || IsNil(o.Health.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Health
+	return *o.Health.Get()
 }
 
 // GetHealthOk returns a tuple with the Health field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Rule) GetHealthOk() (*string, bool) {
-	if o == nil || IsNil(o.Health) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Health, true
+	return o.Health.Get(), o.Health.IsSet()
 }
 
 // HasHealth returns a boolean if a field has been set.
 func (o *Rule) HasHealth() bool {
-	if o != nil && !IsNil(o.Health) {
+	if o != nil && o.Health.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHealth gets a reference to the given string and assigns it to the Health field.
+// SetHealth gets a reference to the given NullableString and assigns it to the Health field.
 func (o *Rule) SetHealth(v string) {
-	o.Health = &v
+	o.Health.Set(&v)
+}
+// SetHealthNil sets the value for Health to be an explicit nil
+func (o *Rule) SetHealthNil() {
+	o.Health.Set(nil)
+}
+
+// UnsetHealth ensures that no value is present for Health, not even an explicit nil
+func (o *Rule) UnsetHealth() {
+	o.Health.Unset()
 }
 
 // GetEvaluationTime returns the EvaluationTime field value if set, zero value otherwise.
@@ -371,36 +412,46 @@ func (o *Rule) SetLastEvaluation(v time.Time) {
 	o.LastEvaluation = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Rule) GetType() string {
-	if o == nil || IsNil(o.Type) {
+	if o == nil || IsNil(o.Type.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Type
+	return *o.Type.Get()
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Rule) GetTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return o.Type.Get(), o.Type.IsSet()
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *Rule) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
+	if o != nil && o.Type.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given string and assigns it to the Type field.
+// SetType gets a reference to the given NullableString and assigns it to the Type field.
 func (o *Rule) SetType(v string) {
-	o.Type = &v
+	o.Type.Set(&v)
+}
+// SetTypeNil sets the value for Type to be an explicit nil
+func (o *Rule) SetTypeNil() {
+	o.Type.Set(nil)
+}
+
+// UnsetType ensures that no value is present for Type, not even an explicit nil
+func (o *Rule) UnsetType() {
+	o.Type.Unset()
 }
 
 func (o Rule) MarshalJSON() ([]byte, error) {
@@ -413,14 +464,14 @@ func (o Rule) MarshalJSON() ([]byte, error) {
 
 func (o Rule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.State) {
-		toSerialize["state"] = o.State
+	if o.State.IsSet() {
+		toSerialize["state"] = o.State.Get()
 	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
 	}
-	if !IsNil(o.Query) {
-		toSerialize["query"] = o.Query
+	if o.Query.IsSet() {
+		toSerialize["query"] = o.Query.Get()
 	}
 	if !IsNil(o.Duration) {
 		toSerialize["duration"] = o.Duration
@@ -431,11 +482,11 @@ func (o Rule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Annotations) {
 		toSerialize["annotations"] = o.Annotations
 	}
-	if !IsNil(o.Alerts) {
+	if o.Alerts != nil {
 		toSerialize["alerts"] = o.Alerts
 	}
-	if !IsNil(o.Health) {
-		toSerialize["health"] = o.Health
+	if o.Health.IsSet() {
+		toSerialize["health"] = o.Health.Get()
 	}
 	if !IsNil(o.EvaluationTime) {
 		toSerialize["evaluationTime"] = o.EvaluationTime
@@ -443,8 +494,8 @@ func (o Rule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastEvaluation) {
 		toSerialize["lastEvaluation"] = o.LastEvaluation
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
+	if o.Type.IsSet() {
+		toSerialize["type"] = o.Type.Get()
 	}
 	return toSerialize, nil
 }

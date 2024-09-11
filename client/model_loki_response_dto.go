@@ -27,7 +27,7 @@ type LokiResponseDto struct {
 	Start NullableTime `json:"start,omitempty"`
 	End NullableTime `json:"end,omitempty"`
 	Limit NullableInt32 `json:"limit,omitempty"`
-	Direction *string `json:"direction,omitempty"`
+	Direction NullableString `json:"direction,omitempty"`
 	CanDownload *bool `json:"canDownload,omitempty"`
 }
 
@@ -80,9 +80,9 @@ func (o *LokiResponseDto) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetParameters returns the Parameters field value if set, zero value otherwise.
+// GetParameters returns the Parameters field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LokiResponseDto) GetParameters() []Parameter {
-	if o == nil || IsNil(o.Parameters) {
+	if o == nil {
 		var ret []Parameter
 		return ret
 	}
@@ -91,6 +91,7 @@ func (o *LokiResponseDto) GetParameters() []Parameter {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LokiResponseDto) GetParametersOk() ([]Parameter, bool) {
 	if o == nil || IsNil(o.Parameters) {
 		return nil, false
@@ -112,9 +113,9 @@ func (o *LokiResponseDto) SetParameters(v []Parameter) {
 	o.Parameters = v
 }
 
-// GetFilters returns the Filters field value if set, zero value otherwise.
+// GetFilters returns the Filters field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LokiResponseDto) GetFilters() []Filter {
-	if o == nil || IsNil(o.Filters) {
+	if o == nil {
 		var ret []Filter
 		return ret
 	}
@@ -123,6 +124,7 @@ func (o *LokiResponseDto) GetFilters() []Filter {
 
 // GetFiltersOk returns a tuple with the Filters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LokiResponseDto) GetFiltersOk() ([]Filter, bool) {
 	if o == nil || IsNil(o.Filters) {
 		return nil, false
@@ -270,36 +272,46 @@ func (o *LokiResponseDto) UnsetLimit() {
 	o.Limit.Unset()
 }
 
-// GetDirection returns the Direction field value if set, zero value otherwise.
+// GetDirection returns the Direction field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *LokiResponseDto) GetDirection() string {
-	if o == nil || IsNil(o.Direction) {
+	if o == nil || IsNil(o.Direction.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Direction
+	return *o.Direction.Get()
 }
 
 // GetDirectionOk returns a tuple with the Direction field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LokiResponseDto) GetDirectionOk() (*string, bool) {
-	if o == nil || IsNil(o.Direction) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Direction, true
+	return o.Direction.Get(), o.Direction.IsSet()
 }
 
 // HasDirection returns a boolean if a field has been set.
 func (o *LokiResponseDto) HasDirection() bool {
-	if o != nil && !IsNil(o.Direction) {
+	if o != nil && o.Direction.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDirection gets a reference to the given string and assigns it to the Direction field.
+// SetDirection gets a reference to the given NullableString and assigns it to the Direction field.
 func (o *LokiResponseDto) SetDirection(v string) {
-	o.Direction = &v
+	o.Direction.Set(&v)
+}
+// SetDirectionNil sets the value for Direction to be an explicit nil
+func (o *LokiResponseDto) SetDirectionNil() {
+	o.Direction.Set(nil)
+}
+
+// UnsetDirection ensures that no value is present for Direction, not even an explicit nil
+func (o *LokiResponseDto) UnsetDirection() {
+	o.Direction.Unset()
 }
 
 // GetCanDownload returns the CanDownload field value if set, zero value otherwise.
@@ -347,10 +359,10 @@ func (o LokiResponseDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.Parameters) {
+	if o.Parameters != nil {
 		toSerialize["parameters"] = o.Parameters
 	}
-	if !IsNil(o.Filters) {
+	if o.Filters != nil {
 		toSerialize["filters"] = o.Filters
 	}
 	if o.Start.IsSet() {
@@ -362,8 +374,8 @@ func (o LokiResponseDto) ToMap() (map[string]interface{}, error) {
 	if o.Limit.IsSet() {
 		toSerialize["limit"] = o.Limit.Get()
 	}
-	if !IsNil(o.Direction) {
-		toSerialize["direction"] = o.Direction
+	if o.Direction.IsSet() {
+		toSerialize["direction"] = o.Direction.Get()
 	}
 	if !IsNil(o.CanDownload) {
 		toSerialize["canDownload"] = o.CanDownload

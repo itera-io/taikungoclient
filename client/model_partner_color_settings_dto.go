@@ -20,14 +20,14 @@ var _ MappedNullable = &PartnerColorSettingsDto{}
 
 // PartnerColorSettingsDto struct for PartnerColorSettingsDto
 type PartnerColorSettingsDto struct {
-	Bg *string `json:"bg,omitempty"`
-	BgCollapsedSubItem *string `json:"bgCollapsedSubItem,omitempty"`
-	ItemText *string `json:"itemText,omitempty"`
-	ItemBg *string `json:"itemBg,omitempty"`
-	ItemBgHover *string `json:"itemBgHover,omitempty"`
-	ItemTextActive *string `json:"itemTextActive,omitempty"`
-	ItemBgActive *string `json:"itemBgActive,omitempty"`
-	ItemBgActiveHover *string `json:"itemBgActiveHover,omitempty"`
+	Bg NullableString `json:"bg,omitempty"`
+	BgCollapsedSubItem NullableString `json:"bgCollapsedSubItem,omitempty"`
+	ItemText NullableString `json:"itemText,omitempty"`
+	ItemBg NullableString `json:"itemBg,omitempty"`
+	ItemBgHover NullableString `json:"itemBgHover,omitempty"`
+	ItemTextActive NullableString `json:"itemTextActive,omitempty"`
+	ItemBgActive NullableString `json:"itemBgActive,omitempty"`
+	ItemBgActiveHover NullableString `json:"itemBgActiveHover,omitempty"`
 }
 
 // NewPartnerColorSettingsDto instantiates a new PartnerColorSettingsDto object
@@ -47,260 +47,340 @@ func NewPartnerColorSettingsDtoWithDefaults() *PartnerColorSettingsDto {
 	return &this
 }
 
-// GetBg returns the Bg field value if set, zero value otherwise.
+// GetBg returns the Bg field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerColorSettingsDto) GetBg() string {
-	if o == nil || IsNil(o.Bg) {
+	if o == nil || IsNil(o.Bg.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Bg
+	return *o.Bg.Get()
 }
 
 // GetBgOk returns a tuple with the Bg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerColorSettingsDto) GetBgOk() (*string, bool) {
-	if o == nil || IsNil(o.Bg) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Bg, true
+	return o.Bg.Get(), o.Bg.IsSet()
 }
 
 // HasBg returns a boolean if a field has been set.
 func (o *PartnerColorSettingsDto) HasBg() bool {
-	if o != nil && !IsNil(o.Bg) {
+	if o != nil && o.Bg.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBg gets a reference to the given string and assigns it to the Bg field.
+// SetBg gets a reference to the given NullableString and assigns it to the Bg field.
 func (o *PartnerColorSettingsDto) SetBg(v string) {
-	o.Bg = &v
+	o.Bg.Set(&v)
+}
+// SetBgNil sets the value for Bg to be an explicit nil
+func (o *PartnerColorSettingsDto) SetBgNil() {
+	o.Bg.Set(nil)
 }
 
-// GetBgCollapsedSubItem returns the BgCollapsedSubItem field value if set, zero value otherwise.
+// UnsetBg ensures that no value is present for Bg, not even an explicit nil
+func (o *PartnerColorSettingsDto) UnsetBg() {
+	o.Bg.Unset()
+}
+
+// GetBgCollapsedSubItem returns the BgCollapsedSubItem field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerColorSettingsDto) GetBgCollapsedSubItem() string {
-	if o == nil || IsNil(o.BgCollapsedSubItem) {
+	if o == nil || IsNil(o.BgCollapsedSubItem.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.BgCollapsedSubItem
+	return *o.BgCollapsedSubItem.Get()
 }
 
 // GetBgCollapsedSubItemOk returns a tuple with the BgCollapsedSubItem field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerColorSettingsDto) GetBgCollapsedSubItemOk() (*string, bool) {
-	if o == nil || IsNil(o.BgCollapsedSubItem) {
+	if o == nil {
 		return nil, false
 	}
-	return o.BgCollapsedSubItem, true
+	return o.BgCollapsedSubItem.Get(), o.BgCollapsedSubItem.IsSet()
 }
 
 // HasBgCollapsedSubItem returns a boolean if a field has been set.
 func (o *PartnerColorSettingsDto) HasBgCollapsedSubItem() bool {
-	if o != nil && !IsNil(o.BgCollapsedSubItem) {
+	if o != nil && o.BgCollapsedSubItem.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetBgCollapsedSubItem gets a reference to the given string and assigns it to the BgCollapsedSubItem field.
+// SetBgCollapsedSubItem gets a reference to the given NullableString and assigns it to the BgCollapsedSubItem field.
 func (o *PartnerColorSettingsDto) SetBgCollapsedSubItem(v string) {
-	o.BgCollapsedSubItem = &v
+	o.BgCollapsedSubItem.Set(&v)
+}
+// SetBgCollapsedSubItemNil sets the value for BgCollapsedSubItem to be an explicit nil
+func (o *PartnerColorSettingsDto) SetBgCollapsedSubItemNil() {
+	o.BgCollapsedSubItem.Set(nil)
 }
 
-// GetItemText returns the ItemText field value if set, zero value otherwise.
+// UnsetBgCollapsedSubItem ensures that no value is present for BgCollapsedSubItem, not even an explicit nil
+func (o *PartnerColorSettingsDto) UnsetBgCollapsedSubItem() {
+	o.BgCollapsedSubItem.Unset()
+}
+
+// GetItemText returns the ItemText field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerColorSettingsDto) GetItemText() string {
-	if o == nil || IsNil(o.ItemText) {
+	if o == nil || IsNil(o.ItemText.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ItemText
+	return *o.ItemText.Get()
 }
 
 // GetItemTextOk returns a tuple with the ItemText field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerColorSettingsDto) GetItemTextOk() (*string, bool) {
-	if o == nil || IsNil(o.ItemText) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ItemText, true
+	return o.ItemText.Get(), o.ItemText.IsSet()
 }
 
 // HasItemText returns a boolean if a field has been set.
 func (o *PartnerColorSettingsDto) HasItemText() bool {
-	if o != nil && !IsNil(o.ItemText) {
+	if o != nil && o.ItemText.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetItemText gets a reference to the given string and assigns it to the ItemText field.
+// SetItemText gets a reference to the given NullableString and assigns it to the ItemText field.
 func (o *PartnerColorSettingsDto) SetItemText(v string) {
-	o.ItemText = &v
+	o.ItemText.Set(&v)
+}
+// SetItemTextNil sets the value for ItemText to be an explicit nil
+func (o *PartnerColorSettingsDto) SetItemTextNil() {
+	o.ItemText.Set(nil)
 }
 
-// GetItemBg returns the ItemBg field value if set, zero value otherwise.
+// UnsetItemText ensures that no value is present for ItemText, not even an explicit nil
+func (o *PartnerColorSettingsDto) UnsetItemText() {
+	o.ItemText.Unset()
+}
+
+// GetItemBg returns the ItemBg field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerColorSettingsDto) GetItemBg() string {
-	if o == nil || IsNil(o.ItemBg) {
+	if o == nil || IsNil(o.ItemBg.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ItemBg
+	return *o.ItemBg.Get()
 }
 
 // GetItemBgOk returns a tuple with the ItemBg field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerColorSettingsDto) GetItemBgOk() (*string, bool) {
-	if o == nil || IsNil(o.ItemBg) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ItemBg, true
+	return o.ItemBg.Get(), o.ItemBg.IsSet()
 }
 
 // HasItemBg returns a boolean if a field has been set.
 func (o *PartnerColorSettingsDto) HasItemBg() bool {
-	if o != nil && !IsNil(o.ItemBg) {
+	if o != nil && o.ItemBg.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetItemBg gets a reference to the given string and assigns it to the ItemBg field.
+// SetItemBg gets a reference to the given NullableString and assigns it to the ItemBg field.
 func (o *PartnerColorSettingsDto) SetItemBg(v string) {
-	o.ItemBg = &v
+	o.ItemBg.Set(&v)
+}
+// SetItemBgNil sets the value for ItemBg to be an explicit nil
+func (o *PartnerColorSettingsDto) SetItemBgNil() {
+	o.ItemBg.Set(nil)
 }
 
-// GetItemBgHover returns the ItemBgHover field value if set, zero value otherwise.
+// UnsetItemBg ensures that no value is present for ItemBg, not even an explicit nil
+func (o *PartnerColorSettingsDto) UnsetItemBg() {
+	o.ItemBg.Unset()
+}
+
+// GetItemBgHover returns the ItemBgHover field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerColorSettingsDto) GetItemBgHover() string {
-	if o == nil || IsNil(o.ItemBgHover) {
+	if o == nil || IsNil(o.ItemBgHover.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ItemBgHover
+	return *o.ItemBgHover.Get()
 }
 
 // GetItemBgHoverOk returns a tuple with the ItemBgHover field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerColorSettingsDto) GetItemBgHoverOk() (*string, bool) {
-	if o == nil || IsNil(o.ItemBgHover) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ItemBgHover, true
+	return o.ItemBgHover.Get(), o.ItemBgHover.IsSet()
 }
 
 // HasItemBgHover returns a boolean if a field has been set.
 func (o *PartnerColorSettingsDto) HasItemBgHover() bool {
-	if o != nil && !IsNil(o.ItemBgHover) {
+	if o != nil && o.ItemBgHover.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetItemBgHover gets a reference to the given string and assigns it to the ItemBgHover field.
+// SetItemBgHover gets a reference to the given NullableString and assigns it to the ItemBgHover field.
 func (o *PartnerColorSettingsDto) SetItemBgHover(v string) {
-	o.ItemBgHover = &v
+	o.ItemBgHover.Set(&v)
+}
+// SetItemBgHoverNil sets the value for ItemBgHover to be an explicit nil
+func (o *PartnerColorSettingsDto) SetItemBgHoverNil() {
+	o.ItemBgHover.Set(nil)
 }
 
-// GetItemTextActive returns the ItemTextActive field value if set, zero value otherwise.
+// UnsetItemBgHover ensures that no value is present for ItemBgHover, not even an explicit nil
+func (o *PartnerColorSettingsDto) UnsetItemBgHover() {
+	o.ItemBgHover.Unset()
+}
+
+// GetItemTextActive returns the ItemTextActive field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerColorSettingsDto) GetItemTextActive() string {
-	if o == nil || IsNil(o.ItemTextActive) {
+	if o == nil || IsNil(o.ItemTextActive.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ItemTextActive
+	return *o.ItemTextActive.Get()
 }
 
 // GetItemTextActiveOk returns a tuple with the ItemTextActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerColorSettingsDto) GetItemTextActiveOk() (*string, bool) {
-	if o == nil || IsNil(o.ItemTextActive) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ItemTextActive, true
+	return o.ItemTextActive.Get(), o.ItemTextActive.IsSet()
 }
 
 // HasItemTextActive returns a boolean if a field has been set.
 func (o *PartnerColorSettingsDto) HasItemTextActive() bool {
-	if o != nil && !IsNil(o.ItemTextActive) {
+	if o != nil && o.ItemTextActive.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetItemTextActive gets a reference to the given string and assigns it to the ItemTextActive field.
+// SetItemTextActive gets a reference to the given NullableString and assigns it to the ItemTextActive field.
 func (o *PartnerColorSettingsDto) SetItemTextActive(v string) {
-	o.ItemTextActive = &v
+	o.ItemTextActive.Set(&v)
+}
+// SetItemTextActiveNil sets the value for ItemTextActive to be an explicit nil
+func (o *PartnerColorSettingsDto) SetItemTextActiveNil() {
+	o.ItemTextActive.Set(nil)
 }
 
-// GetItemBgActive returns the ItemBgActive field value if set, zero value otherwise.
+// UnsetItemTextActive ensures that no value is present for ItemTextActive, not even an explicit nil
+func (o *PartnerColorSettingsDto) UnsetItemTextActive() {
+	o.ItemTextActive.Unset()
+}
+
+// GetItemBgActive returns the ItemBgActive field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerColorSettingsDto) GetItemBgActive() string {
-	if o == nil || IsNil(o.ItemBgActive) {
+	if o == nil || IsNil(o.ItemBgActive.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ItemBgActive
+	return *o.ItemBgActive.Get()
 }
 
 // GetItemBgActiveOk returns a tuple with the ItemBgActive field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerColorSettingsDto) GetItemBgActiveOk() (*string, bool) {
-	if o == nil || IsNil(o.ItemBgActive) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ItemBgActive, true
+	return o.ItemBgActive.Get(), o.ItemBgActive.IsSet()
 }
 
 // HasItemBgActive returns a boolean if a field has been set.
 func (o *PartnerColorSettingsDto) HasItemBgActive() bool {
-	if o != nil && !IsNil(o.ItemBgActive) {
+	if o != nil && o.ItemBgActive.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetItemBgActive gets a reference to the given string and assigns it to the ItemBgActive field.
+// SetItemBgActive gets a reference to the given NullableString and assigns it to the ItemBgActive field.
 func (o *PartnerColorSettingsDto) SetItemBgActive(v string) {
-	o.ItemBgActive = &v
+	o.ItemBgActive.Set(&v)
+}
+// SetItemBgActiveNil sets the value for ItemBgActive to be an explicit nil
+func (o *PartnerColorSettingsDto) SetItemBgActiveNil() {
+	o.ItemBgActive.Set(nil)
 }
 
-// GetItemBgActiveHover returns the ItemBgActiveHover field value if set, zero value otherwise.
+// UnsetItemBgActive ensures that no value is present for ItemBgActive, not even an explicit nil
+func (o *PartnerColorSettingsDto) UnsetItemBgActive() {
+	o.ItemBgActive.Unset()
+}
+
+// GetItemBgActiveHover returns the ItemBgActiveHover field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerColorSettingsDto) GetItemBgActiveHover() string {
-	if o == nil || IsNil(o.ItemBgActiveHover) {
+	if o == nil || IsNil(o.ItemBgActiveHover.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ItemBgActiveHover
+	return *o.ItemBgActiveHover.Get()
 }
 
 // GetItemBgActiveHoverOk returns a tuple with the ItemBgActiveHover field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerColorSettingsDto) GetItemBgActiveHoverOk() (*string, bool) {
-	if o == nil || IsNil(o.ItemBgActiveHover) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ItemBgActiveHover, true
+	return o.ItemBgActiveHover.Get(), o.ItemBgActiveHover.IsSet()
 }
 
 // HasItemBgActiveHover returns a boolean if a field has been set.
 func (o *PartnerColorSettingsDto) HasItemBgActiveHover() bool {
-	if o != nil && !IsNil(o.ItemBgActiveHover) {
+	if o != nil && o.ItemBgActiveHover.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetItemBgActiveHover gets a reference to the given string and assigns it to the ItemBgActiveHover field.
+// SetItemBgActiveHover gets a reference to the given NullableString and assigns it to the ItemBgActiveHover field.
 func (o *PartnerColorSettingsDto) SetItemBgActiveHover(v string) {
-	o.ItemBgActiveHover = &v
+	o.ItemBgActiveHover.Set(&v)
+}
+// SetItemBgActiveHoverNil sets the value for ItemBgActiveHover to be an explicit nil
+func (o *PartnerColorSettingsDto) SetItemBgActiveHoverNil() {
+	o.ItemBgActiveHover.Set(nil)
+}
+
+// UnsetItemBgActiveHover ensures that no value is present for ItemBgActiveHover, not even an explicit nil
+func (o *PartnerColorSettingsDto) UnsetItemBgActiveHover() {
+	o.ItemBgActiveHover.Unset()
 }
 
 func (o PartnerColorSettingsDto) MarshalJSON() ([]byte, error) {
@@ -313,29 +393,29 @@ func (o PartnerColorSettingsDto) MarshalJSON() ([]byte, error) {
 
 func (o PartnerColorSettingsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Bg) {
-		toSerialize["bg"] = o.Bg
+	if o.Bg.IsSet() {
+		toSerialize["bg"] = o.Bg.Get()
 	}
-	if !IsNil(o.BgCollapsedSubItem) {
-		toSerialize["bgCollapsedSubItem"] = o.BgCollapsedSubItem
+	if o.BgCollapsedSubItem.IsSet() {
+		toSerialize["bgCollapsedSubItem"] = o.BgCollapsedSubItem.Get()
 	}
-	if !IsNil(o.ItemText) {
-		toSerialize["itemText"] = o.ItemText
+	if o.ItemText.IsSet() {
+		toSerialize["itemText"] = o.ItemText.Get()
 	}
-	if !IsNil(o.ItemBg) {
-		toSerialize["itemBg"] = o.ItemBg
+	if o.ItemBg.IsSet() {
+		toSerialize["itemBg"] = o.ItemBg.Get()
 	}
-	if !IsNil(o.ItemBgHover) {
-		toSerialize["itemBgHover"] = o.ItemBgHover
+	if o.ItemBgHover.IsSet() {
+		toSerialize["itemBgHover"] = o.ItemBgHover.Get()
 	}
-	if !IsNil(o.ItemTextActive) {
-		toSerialize["itemTextActive"] = o.ItemTextActive
+	if o.ItemTextActive.IsSet() {
+		toSerialize["itemTextActive"] = o.ItemTextActive.Get()
 	}
-	if !IsNil(o.ItemBgActive) {
-		toSerialize["itemBgActive"] = o.ItemBgActive
+	if o.ItemBgActive.IsSet() {
+		toSerialize["itemBgActive"] = o.ItemBgActive.Get()
 	}
-	if !IsNil(o.ItemBgActiveHover) {
-		toSerialize["itemBgActiveHover"] = o.ItemBgActiveHover
+	if o.ItemBgActiveHover.IsSet() {
+		toSerialize["itemBgActiveHover"] = o.ItemBgActiveHover.Get()
 	}
 	return toSerialize, nil
 }

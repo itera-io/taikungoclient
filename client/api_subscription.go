@@ -247,11 +247,10 @@ func (a *SubscriptionAPIService) SubscriptionBoundListExecute(r ApiSubscriptionB
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -542,11 +541,21 @@ func (a *SubscriptionAPIService) SubscriptionDeleteExecute(r ApiSubscriptionDele
 type ApiSubscriptionListRequest struct {
 	ctx context.Context
 	ApiService *SubscriptionAPIService
+	offset *int32
+	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-	offset *int32
-	limit *int32
+}
+
+func (r ApiSubscriptionListRequest) Offset(offset int32) ApiSubscriptionListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiSubscriptionListRequest) Limit(limit int32) ApiSubscriptionListRequest {
+	r.limit = &limit
+	return r
 }
 
 func (r ApiSubscriptionListRequest) SortBy(sortBy string) ApiSubscriptionListRequest {
@@ -561,16 +570,6 @@ func (r ApiSubscriptionListRequest) SortDirection(sortDirection string) ApiSubsc
 
 func (r ApiSubscriptionListRequest) Search(search string) ApiSubscriptionListRequest {
 	r.search = &search
-	return r
-}
-
-func (r ApiSubscriptionListRequest) Offset(offset int32) ApiSubscriptionListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiSubscriptionListRequest) Limit(limit int32) ApiSubscriptionListRequest {
-	r.limit = &limit
 	return r
 }
 
@@ -611,15 +610,6 @@ func (a *SubscriptionAPIService) SubscriptionListExecute(r ApiSubscriptionListRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
@@ -627,9 +617,15 @@ func (a *SubscriptionAPIService) SubscriptionListExecute(r ApiSubscriptionListRe
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -963,9 +959,6 @@ func (a *SubscriptionAPIService) SubscriptionSubscriptionExecute(r ApiSubscripti
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createSubscriptionCommand == nil {
-		return nil, reportError("createSubscriptionCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1128,9 +1121,6 @@ func (a *SubscriptionAPIService) SubscriptionUpdateExecute(r ApiSubscriptionUpda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateSubscriptionCommand == nil {
-		return nil, reportError("updateSubscriptionCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

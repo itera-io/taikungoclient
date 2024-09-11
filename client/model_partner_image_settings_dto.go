@@ -20,8 +20,8 @@ var _ MappedNullable = &PartnerImageSettingsDto{}
 
 // PartnerImageSettingsDto struct for PartnerImageSettingsDto
 type PartnerImageSettingsDto struct {
-	Expanded *string `json:"expanded,omitempty"`
-	Collapsed *string `json:"collapsed,omitempty"`
+	Expanded NullableString `json:"expanded,omitempty"`
+	Collapsed NullableString `json:"collapsed,omitempty"`
 }
 
 // NewPartnerImageSettingsDto instantiates a new PartnerImageSettingsDto object
@@ -41,68 +41,88 @@ func NewPartnerImageSettingsDtoWithDefaults() *PartnerImageSettingsDto {
 	return &this
 }
 
-// GetExpanded returns the Expanded field value if set, zero value otherwise.
+// GetExpanded returns the Expanded field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerImageSettingsDto) GetExpanded() string {
-	if o == nil || IsNil(o.Expanded) {
+	if o == nil || IsNil(o.Expanded.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Expanded
+	return *o.Expanded.Get()
 }
 
 // GetExpandedOk returns a tuple with the Expanded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerImageSettingsDto) GetExpandedOk() (*string, bool) {
-	if o == nil || IsNil(o.Expanded) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Expanded, true
+	return o.Expanded.Get(), o.Expanded.IsSet()
 }
 
 // HasExpanded returns a boolean if a field has been set.
 func (o *PartnerImageSettingsDto) HasExpanded() bool {
-	if o != nil && !IsNil(o.Expanded) {
+	if o != nil && o.Expanded.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetExpanded gets a reference to the given string and assigns it to the Expanded field.
+// SetExpanded gets a reference to the given NullableString and assigns it to the Expanded field.
 func (o *PartnerImageSettingsDto) SetExpanded(v string) {
-	o.Expanded = &v
+	o.Expanded.Set(&v)
+}
+// SetExpandedNil sets the value for Expanded to be an explicit nil
+func (o *PartnerImageSettingsDto) SetExpandedNil() {
+	o.Expanded.Set(nil)
 }
 
-// GetCollapsed returns the Collapsed field value if set, zero value otherwise.
+// UnsetExpanded ensures that no value is present for Expanded, not even an explicit nil
+func (o *PartnerImageSettingsDto) UnsetExpanded() {
+	o.Expanded.Unset()
+}
+
+// GetCollapsed returns the Collapsed field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PartnerImageSettingsDto) GetCollapsed() string {
-	if o == nil || IsNil(o.Collapsed) {
+	if o == nil || IsNil(o.Collapsed.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Collapsed
+	return *o.Collapsed.Get()
 }
 
 // GetCollapsedOk returns a tuple with the Collapsed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerImageSettingsDto) GetCollapsedOk() (*string, bool) {
-	if o == nil || IsNil(o.Collapsed) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Collapsed, true
+	return o.Collapsed.Get(), o.Collapsed.IsSet()
 }
 
 // HasCollapsed returns a boolean if a field has been set.
 func (o *PartnerImageSettingsDto) HasCollapsed() bool {
-	if o != nil && !IsNil(o.Collapsed) {
+	if o != nil && o.Collapsed.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCollapsed gets a reference to the given string and assigns it to the Collapsed field.
+// SetCollapsed gets a reference to the given NullableString and assigns it to the Collapsed field.
 func (o *PartnerImageSettingsDto) SetCollapsed(v string) {
-	o.Collapsed = &v
+	o.Collapsed.Set(&v)
+}
+// SetCollapsedNil sets the value for Collapsed to be an explicit nil
+func (o *PartnerImageSettingsDto) SetCollapsedNil() {
+	o.Collapsed.Set(nil)
+}
+
+// UnsetCollapsed ensures that no value is present for Collapsed, not even an explicit nil
+func (o *PartnerImageSettingsDto) UnsetCollapsed() {
+	o.Collapsed.Unset()
 }
 
 func (o PartnerImageSettingsDto) MarshalJSON() ([]byte, error) {
@@ -115,11 +135,11 @@ func (o PartnerImageSettingsDto) MarshalJSON() ([]byte, error) {
 
 func (o PartnerImageSettingsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Expanded) {
-		toSerialize["expanded"] = o.Expanded
+	if o.Expanded.IsSet() {
+		toSerialize["expanded"] = o.Expanded.Get()
 	}
-	if !IsNil(o.Collapsed) {
-		toSerialize["collapsed"] = o.Collapsed
+	if o.Collapsed.IsSet() {
+		toSerialize["collapsed"] = o.Collapsed.Get()
 	}
 	return toSerialize, nil
 }

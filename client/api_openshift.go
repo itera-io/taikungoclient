@@ -70,9 +70,6 @@ func (a *OpenshiftAPIService) OpenshiftCreateExecute(r ApiOpenshiftCreateRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openshiftCreateCommand == nil {
-		return nil, reportError("openshiftCreateCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -192,14 +189,29 @@ func (a *OpenshiftAPIService) OpenshiftCreateExecute(r ApiOpenshiftCreateRequest
 type ApiOpenshiftListRequest struct {
 	ctx context.Context
 	ApiService *OpenshiftAPIService
+	limit *int32
+	offset *int32
+	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
-	limit *int32
-	offset *int32
-	organizationId *int32
 	id *int32
+}
+
+func (r ApiOpenshiftListRequest) Limit(limit int32) ApiOpenshiftListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiOpenshiftListRequest) Offset(offset int32) ApiOpenshiftListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiOpenshiftListRequest) OrganizationId(organizationId int32) ApiOpenshiftListRequest {
+	r.organizationId = &organizationId
+	return r
 }
 
 func (r ApiOpenshiftListRequest) SortBy(sortBy string) ApiOpenshiftListRequest {
@@ -219,21 +231,6 @@ func (r ApiOpenshiftListRequest) Search(search string) ApiOpenshiftListRequest {
 
 func (r ApiOpenshiftListRequest) SearchId(searchId string) ApiOpenshiftListRequest {
 	r.searchId = &searchId
-	return r
-}
-
-func (r ApiOpenshiftListRequest) Limit(limit int32) ApiOpenshiftListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiOpenshiftListRequest) Offset(offset int32) ApiOpenshiftListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiOpenshiftListRequest) OrganizationId(organizationId int32) ApiOpenshiftListRequest {
-	r.organizationId = &organizationId
 	return r
 }
 
@@ -279,18 +276,6 @@ func (a *OpenshiftAPIService) OpenshiftListExecute(r ApiOpenshiftListRequest) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sortBy == nil {
-		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
-	}
-	if r.sortDirection == nil {
-		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
-	if r.searchId == nil {
-		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
-	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -301,10 +286,18 @@ func (a *OpenshiftAPIService) OpenshiftListExecute(r ApiOpenshiftListRequest) (*
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	if r.sortBy != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	}
+	if r.sortDirection != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	}
+	if r.searchId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	}
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}

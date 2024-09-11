@@ -22,13 +22,13 @@ var _ MappedNullable = &PrometheusMetricsCommand{}
 // PrometheusMetricsCommand struct for PrometheusMetricsCommand
 type PrometheusMetricsCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	Parameters *string `json:"parameters,omitempty"`
+	Parameters NullableString `json:"parameters,omitempty"`
 	Time NullableTime `json:"time,omitempty"`
 	Start NullableTime `json:"start,omitempty"`
 	End NullableTime `json:"end,omitempty"`
 	IsGraphEnabled *bool `json:"isGraphEnabled,omitempty"`
 	IsAutoComplete *bool `json:"isAutoComplete,omitempty"`
-	Step *string `json:"step,omitempty"`
+	Step NullableString `json:"step,omitempty"`
 }
 
 // NewPrometheusMetricsCommand instantiates a new PrometheusMetricsCommand object
@@ -80,36 +80,46 @@ func (o *PrometheusMetricsCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetParameters returns the Parameters field value if set, zero value otherwise.
+// GetParameters returns the Parameters field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PrometheusMetricsCommand) GetParameters() string {
-	if o == nil || IsNil(o.Parameters) {
+	if o == nil || IsNil(o.Parameters.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Parameters
+	return *o.Parameters.Get()
 }
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusMetricsCommand) GetParametersOk() (*string, bool) {
-	if o == nil || IsNil(o.Parameters) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Parameters, true
+	return o.Parameters.Get(), o.Parameters.IsSet()
 }
 
 // HasParameters returns a boolean if a field has been set.
 func (o *PrometheusMetricsCommand) HasParameters() bool {
-	if o != nil && !IsNil(o.Parameters) {
+	if o != nil && o.Parameters.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetParameters gets a reference to the given string and assigns it to the Parameters field.
+// SetParameters gets a reference to the given NullableString and assigns it to the Parameters field.
 func (o *PrometheusMetricsCommand) SetParameters(v string) {
-	o.Parameters = &v
+	o.Parameters.Set(&v)
+}
+// SetParametersNil sets the value for Parameters to be an explicit nil
+func (o *PrometheusMetricsCommand) SetParametersNil() {
+	o.Parameters.Set(nil)
+}
+
+// UnsetParameters ensures that no value is present for Parameters, not even an explicit nil
+func (o *PrometheusMetricsCommand) UnsetParameters() {
+	o.Parameters.Unset()
 }
 
 // GetTime returns the Time field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -302,36 +312,46 @@ func (o *PrometheusMetricsCommand) SetIsAutoComplete(v bool) {
 	o.IsAutoComplete = &v
 }
 
-// GetStep returns the Step field value if set, zero value otherwise.
+// GetStep returns the Step field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PrometheusMetricsCommand) GetStep() string {
-	if o == nil || IsNil(o.Step) {
+	if o == nil || IsNil(o.Step.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Step
+	return *o.Step.Get()
 }
 
 // GetStepOk returns a tuple with the Step field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusMetricsCommand) GetStepOk() (*string, bool) {
-	if o == nil || IsNil(o.Step) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Step, true
+	return o.Step.Get(), o.Step.IsSet()
 }
 
 // HasStep returns a boolean if a field has been set.
 func (o *PrometheusMetricsCommand) HasStep() bool {
-	if o != nil && !IsNil(o.Step) {
+	if o != nil && o.Step.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStep gets a reference to the given string and assigns it to the Step field.
+// SetStep gets a reference to the given NullableString and assigns it to the Step field.
 func (o *PrometheusMetricsCommand) SetStep(v string) {
-	o.Step = &v
+	o.Step.Set(&v)
+}
+// SetStepNil sets the value for Step to be an explicit nil
+func (o *PrometheusMetricsCommand) SetStepNil() {
+	o.Step.Set(nil)
+}
+
+// UnsetStep ensures that no value is present for Step, not even an explicit nil
+func (o *PrometheusMetricsCommand) UnsetStep() {
+	o.Step.Unset()
 }
 
 func (o PrometheusMetricsCommand) MarshalJSON() ([]byte, error) {
@@ -347,8 +367,8 @@ func (o PrometheusMetricsCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.Parameters) {
-		toSerialize["parameters"] = o.Parameters
+	if o.Parameters.IsSet() {
+		toSerialize["parameters"] = o.Parameters.Get()
 	}
 	if o.Time.IsSet() {
 		toSerialize["time"] = o.Time.Get()
@@ -365,8 +385,8 @@ func (o PrometheusMetricsCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsAutoComplete) {
 		toSerialize["isAutoComplete"] = o.IsAutoComplete
 	}
-	if !IsNil(o.Step) {
-		toSerialize["step"] = o.Step
+	if o.Step.IsSet() {
+		toSerialize["step"] = o.Step.Get()
 	}
 	return toSerialize, nil
 }

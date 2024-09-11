@@ -20,8 +20,8 @@ var _ MappedNullable = &RefreshTokenCommand{}
 
 // RefreshTokenCommand struct for RefreshTokenCommand
 type RefreshTokenCommand struct {
-	Token *string `json:"token,omitempty"`
-	RefreshToken *string `json:"refreshToken,omitempty"`
+	Token NullableString `json:"token,omitempty"`
+	RefreshToken NullableString `json:"refreshToken,omitempty"`
 }
 
 // NewRefreshTokenCommand instantiates a new RefreshTokenCommand object
@@ -41,68 +41,88 @@ func NewRefreshTokenCommandWithDefaults() *RefreshTokenCommand {
 	return &this
 }
 
-// GetToken returns the Token field value if set, zero value otherwise.
+// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RefreshTokenCommand) GetToken() string {
-	if o == nil || IsNil(o.Token) {
+	if o == nil || IsNil(o.Token.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Token
+	return *o.Token.Get()
 }
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RefreshTokenCommand) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Token, true
+	return o.Token.Get(), o.Token.IsSet()
 }
 
 // HasToken returns a boolean if a field has been set.
 func (o *RefreshTokenCommand) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
+	if o != nil && o.Token.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given string and assigns it to the Token field.
+// SetToken gets a reference to the given NullableString and assigns it to the Token field.
 func (o *RefreshTokenCommand) SetToken(v string) {
-	o.Token = &v
+	o.Token.Set(&v)
+}
+// SetTokenNil sets the value for Token to be an explicit nil
+func (o *RefreshTokenCommand) SetTokenNil() {
+	o.Token.Set(nil)
 }
 
-// GetRefreshToken returns the RefreshToken field value if set, zero value otherwise.
+// UnsetToken ensures that no value is present for Token, not even an explicit nil
+func (o *RefreshTokenCommand) UnsetToken() {
+	o.Token.Unset()
+}
+
+// GetRefreshToken returns the RefreshToken field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *RefreshTokenCommand) GetRefreshToken() string {
-	if o == nil || IsNil(o.RefreshToken) {
+	if o == nil || IsNil(o.RefreshToken.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.RefreshToken
+	return *o.RefreshToken.Get()
 }
 
 // GetRefreshTokenOk returns a tuple with the RefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RefreshTokenCommand) GetRefreshTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.RefreshToken) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RefreshToken, true
+	return o.RefreshToken.Get(), o.RefreshToken.IsSet()
 }
 
 // HasRefreshToken returns a boolean if a field has been set.
 func (o *RefreshTokenCommand) HasRefreshToken() bool {
-	if o != nil && !IsNil(o.RefreshToken) {
+	if o != nil && o.RefreshToken.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRefreshToken gets a reference to the given string and assigns it to the RefreshToken field.
+// SetRefreshToken gets a reference to the given NullableString and assigns it to the RefreshToken field.
 func (o *RefreshTokenCommand) SetRefreshToken(v string) {
-	o.RefreshToken = &v
+	o.RefreshToken.Set(&v)
+}
+// SetRefreshTokenNil sets the value for RefreshToken to be an explicit nil
+func (o *RefreshTokenCommand) SetRefreshTokenNil() {
+	o.RefreshToken.Set(nil)
+}
+
+// UnsetRefreshToken ensures that no value is present for RefreshToken, not even an explicit nil
+func (o *RefreshTokenCommand) UnsetRefreshToken() {
+	o.RefreshToken.Unset()
 }
 
 func (o RefreshTokenCommand) MarshalJSON() ([]byte, error) {
@@ -115,11 +135,11 @@ func (o RefreshTokenCommand) MarshalJSON() ([]byte, error) {
 
 func (o RefreshTokenCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
+	if o.Token.IsSet() {
+		toSerialize["token"] = o.Token.Get()
 	}
-	if !IsNil(o.RefreshToken) {
-		toSerialize["refreshToken"] = o.RefreshToken
+	if o.RefreshToken.IsSet() {
+		toSerialize["refreshToken"] = o.RefreshToken.Get()
 	}
 	return toSerialize, nil
 }

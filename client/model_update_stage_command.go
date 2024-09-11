@@ -21,7 +21,7 @@ var _ MappedNullable = &UpdateStageCommand{}
 // UpdateStageCommand struct for UpdateStageCommand
 type UpdateStageCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	Stage *string `json:"stage,omitempty"`
+	Stage NullableString `json:"stage,omitempty"`
 }
 
 // NewUpdateStageCommand instantiates a new UpdateStageCommand object
@@ -73,36 +73,46 @@ func (o *UpdateStageCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetStage returns the Stage field value if set, zero value otherwise.
+// GetStage returns the Stage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UpdateStageCommand) GetStage() string {
-	if o == nil || IsNil(o.Stage) {
+	if o == nil || IsNil(o.Stage.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Stage
+	return *o.Stage.Get()
 }
 
 // GetStageOk returns a tuple with the Stage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateStageCommand) GetStageOk() (*string, bool) {
-	if o == nil || IsNil(o.Stage) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Stage, true
+	return o.Stage.Get(), o.Stage.IsSet()
 }
 
 // HasStage returns a boolean if a field has been set.
 func (o *UpdateStageCommand) HasStage() bool {
-	if o != nil && !IsNil(o.Stage) {
+	if o != nil && o.Stage.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetStage gets a reference to the given string and assigns it to the Stage field.
+// SetStage gets a reference to the given NullableString and assigns it to the Stage field.
 func (o *UpdateStageCommand) SetStage(v string) {
-	o.Stage = &v
+	o.Stage.Set(&v)
+}
+// SetStageNil sets the value for Stage to be an explicit nil
+func (o *UpdateStageCommand) SetStageNil() {
+	o.Stage.Set(nil)
+}
+
+// UnsetStage ensures that no value is present for Stage, not even an explicit nil
+func (o *UpdateStageCommand) UnsetStage() {
+	o.Stage.Unset()
 }
 
 func (o UpdateStageCommand) MarshalJSON() ([]byte, error) {
@@ -118,8 +128,8 @@ func (o UpdateStageCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.Stage) {
-		toSerialize["stage"] = o.Stage
+	if o.Stage.IsSet() {
+		toSerialize["stage"] = o.Stage.Get()
 	}
 	return toSerialize, nil
 }

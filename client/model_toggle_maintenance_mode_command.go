@@ -20,7 +20,7 @@ var _ MappedNullable = &ToggleMaintenanceModeCommand{}
 
 // ToggleMaintenanceModeCommand struct for ToggleMaintenanceModeCommand
 type ToggleMaintenanceModeCommand struct {
-	Mode *string `json:"mode,omitempty"`
+	Mode NullableString `json:"mode,omitempty"`
 }
 
 // NewToggleMaintenanceModeCommand instantiates a new ToggleMaintenanceModeCommand object
@@ -40,36 +40,46 @@ func NewToggleMaintenanceModeCommandWithDefaults() *ToggleMaintenanceModeCommand
 	return &this
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise.
+// GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ToggleMaintenanceModeCommand) GetMode() string {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil || IsNil(o.Mode.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Mode
+	return *o.Mode.Get()
 }
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ToggleMaintenanceModeCommand) GetModeOk() (*string, bool) {
-	if o == nil || IsNil(o.Mode) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Mode, true
+	return o.Mode.Get(), o.Mode.IsSet()
 }
 
 // HasMode returns a boolean if a field has been set.
 func (o *ToggleMaintenanceModeCommand) HasMode() bool {
-	if o != nil && !IsNil(o.Mode) {
+	if o != nil && o.Mode.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMode gets a reference to the given string and assigns it to the Mode field.
+// SetMode gets a reference to the given NullableString and assigns it to the Mode field.
 func (o *ToggleMaintenanceModeCommand) SetMode(v string) {
-	o.Mode = &v
+	o.Mode.Set(&v)
+}
+// SetModeNil sets the value for Mode to be an explicit nil
+func (o *ToggleMaintenanceModeCommand) SetModeNil() {
+	o.Mode.Set(nil)
+}
+
+// UnsetMode ensures that no value is present for Mode, not even an explicit nil
+func (o *ToggleMaintenanceModeCommand) UnsetMode() {
+	o.Mode.Unset()
 }
 
 func (o ToggleMaintenanceModeCommand) MarshalJSON() ([]byte, error) {
@@ -82,8 +92,8 @@ func (o ToggleMaintenanceModeCommand) MarshalJSON() ([]byte, error) {
 
 func (o ToggleMaintenanceModeCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Mode) {
-		toSerialize["mode"] = o.Mode
+	if o.Mode.IsSet() {
+		toSerialize["mode"] = o.Mode.Get()
 	}
 	return toSerialize, nil
 }

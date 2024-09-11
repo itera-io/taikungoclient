@@ -75,9 +75,9 @@ func (o *ProjectDeploymentDeleteServersCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetServerIds returns the ServerIds field value if set, zero value otherwise.
+// GetServerIds returns the ServerIds field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectDeploymentDeleteServersCommand) GetServerIds() []int32 {
-	if o == nil || IsNil(o.ServerIds) {
+	if o == nil {
 		var ret []int32
 		return ret
 	}
@@ -86,6 +86,7 @@ func (o *ProjectDeploymentDeleteServersCommand) GetServerIds() []int32 {
 
 // GetServerIdsOk returns a tuple with the ServerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDeploymentDeleteServersCommand) GetServerIdsOk() ([]int32, bool) {
 	if o == nil || IsNil(o.ServerIds) {
 		return nil, false
@@ -184,7 +185,7 @@ func (o ProjectDeploymentDeleteServersCommand) ToMap() (map[string]interface{}, 
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if !IsNil(o.ServerIds) {
+	if o.ServerIds != nil {
 		toSerialize["serverIds"] = o.ServerIds
 	}
 	if !IsNil(o.ForceDeleteVClusters) {

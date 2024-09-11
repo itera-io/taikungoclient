@@ -21,7 +21,7 @@ var _ MappedNullable = &AzureDashboardCommand{}
 // AzureDashboardCommand struct for AzureDashboardCommand
 type AzureDashboardCommand struct {
 	CloudId *int32 `json:"cloudId,omitempty"`
-	FilterBy *string `json:"filterBy,omitempty"`
+	FilterBy NullableString `json:"filterBy,omitempty"`
 }
 
 // NewAzureDashboardCommand instantiates a new AzureDashboardCommand object
@@ -73,36 +73,46 @@ func (o *AzureDashboardCommand) SetCloudId(v int32) {
 	o.CloudId = &v
 }
 
-// GetFilterBy returns the FilterBy field value if set, zero value otherwise.
+// GetFilterBy returns the FilterBy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AzureDashboardCommand) GetFilterBy() string {
-	if o == nil || IsNil(o.FilterBy) {
+	if o == nil || IsNil(o.FilterBy.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.FilterBy
+	return *o.FilterBy.Get()
 }
 
 // GetFilterByOk returns a tuple with the FilterBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AzureDashboardCommand) GetFilterByOk() (*string, bool) {
-	if o == nil || IsNil(o.FilterBy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.FilterBy, true
+	return o.FilterBy.Get(), o.FilterBy.IsSet()
 }
 
 // HasFilterBy returns a boolean if a field has been set.
 func (o *AzureDashboardCommand) HasFilterBy() bool {
-	if o != nil && !IsNil(o.FilterBy) {
+	if o != nil && o.FilterBy.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFilterBy gets a reference to the given string and assigns it to the FilterBy field.
+// SetFilterBy gets a reference to the given NullableString and assigns it to the FilterBy field.
 func (o *AzureDashboardCommand) SetFilterBy(v string) {
-	o.FilterBy = &v
+	o.FilterBy.Set(&v)
+}
+// SetFilterByNil sets the value for FilterBy to be an explicit nil
+func (o *AzureDashboardCommand) SetFilterByNil() {
+	o.FilterBy.Set(nil)
+}
+
+// UnsetFilterBy ensures that no value is present for FilterBy, not even an explicit nil
+func (o *AzureDashboardCommand) UnsetFilterBy() {
+	o.FilterBy.Unset()
 }
 
 func (o AzureDashboardCommand) MarshalJSON() ([]byte, error) {
@@ -118,8 +128,8 @@ func (o AzureDashboardCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CloudId) {
 		toSerialize["cloudId"] = o.CloudId
 	}
-	if !IsNil(o.FilterBy) {
-		toSerialize["filterBy"] = o.FilterBy
+	if o.FilterBy.IsSet() {
+		toSerialize["filterBy"] = o.FilterBy.Get()
 	}
 	return toSerialize, nil
 }

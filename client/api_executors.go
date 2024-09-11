@@ -69,9 +69,6 @@ func (a *ExecutorsAPIService) ExecutorsCreateExecute(r ApiExecutorsCreateRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createExecutorCommand == nil {
-		return nil, reportError("createExecutorCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -399,9 +396,6 @@ func (a *ExecutorsAPIService) ExecutorsToggleExecute(r ApiExecutorsToggleRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.toggleExecutorCommand == nil {
-		return nil, reportError("toggleExecutorCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
