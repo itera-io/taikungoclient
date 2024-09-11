@@ -83,37 +83,37 @@ func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 					// I have an authMode specified (eg. "default" or "keycloak")
 					// Use for modes: keycloak, default, token, autoscaling
 					loginCmd = &taikuncore.LoginCommand{
-						SecretKey: &c.Client.secretKey,
-						AccessKey: &c.Client.accessKey,
-						Mode:      &c.Client.authMode,
+						SecretKey: *taikuncore.NewNullableString(&c.Client.secretKey),
+						AccessKey: *taikuncore.NewNullableString(&c.Client.accessKey),
+						Mode:      *taikuncore.NewNullableString(&c.Client.authMode),
 					}
 				} else {
 					// I do not have and authMode specified
 					// Use authentication with email + password
 					loginCmd = &taikuncore.LoginCommand{
-						Email:    &c.Client.email,
-						Password: &c.Client.password,
+						Email:    *taikuncore.NewNullableString(&c.Client.email),
+						Password: *taikuncore.NewNullableString(&c.Client.password),
 					}
 				}
 				result, body, err := c.Client.Client.AuthManagementAPI.AuthLogin(req.Context()).LoginCommand(*loginCmd).Execute()
 				if err != nil {
 					return nil, CreateError(body, err)
 				}
-				c.Client.token = *result.Token
-				c.Client.refreshToken = *result.RefreshToken
+				c.Client.token = *result.Token.Get()
+				c.Client.refreshToken = *result.RefreshToken.Get()
 
 			}
 		} else { // We do have a token
 			if c.Client.token != "" && c.hasTokenExpired() {
 				result, body, err := c.Client.Client.AuthManagementAPI.AuthRefresh(req.Context()).RefreshTokenCommand(taikuncore.RefreshTokenCommand{
-					RefreshToken: &c.Client.refreshToken,
-					Token:        &c.Client.token,
+					RefreshToken: *taikuncore.NewNullableString(&c.Client.refreshToken),
+					Token:        *taikuncore.NewNullableString(&c.Client.token),
 				}).Execute()
 				if err != nil {
 					return nil, CreateError(body, err)
 				}
-				c.Client.token = *result.Token
-				c.Client.refreshToken = *result.RefreshToken
+				c.Client.token = *result.Token.Get()
+				c.Client.refreshToken = *result.RefreshToken.Get()
 			}
 		}
 		req.Header.Set("Authorization", "Bearer "+c.Client.token)
