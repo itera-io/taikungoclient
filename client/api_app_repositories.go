@@ -26,23 +26,13 @@ type AppRepositoriesAPIService service
 type ApiRepositoryAvailableListRequest struct {
 	ctx context.Context
 	ApiService *AppRepositoriesAPIService
-	offset *int32
-	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	id *string
+	offset *int32
+	limit *int32
 	isPrivate *bool
-}
-
-func (r ApiRepositoryAvailableListRequest) Offset(offset int32) ApiRepositoryAvailableListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiRepositoryAvailableListRequest) Limit(limit int32) ApiRepositoryAvailableListRequest {
-	r.limit = &limit
-	return r
 }
 
 func (r ApiRepositoryAvailableListRequest) SortBy(sortBy string) ApiRepositoryAvailableListRequest {
@@ -62,6 +52,16 @@ func (r ApiRepositoryAvailableListRequest) Search(search string) ApiRepositoryAv
 
 func (r ApiRepositoryAvailableListRequest) Id(id string) ApiRepositoryAvailableListRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiRepositoryAvailableListRequest) Offset(offset int32) ApiRepositoryAvailableListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiRepositoryAvailableListRequest) Limit(limit int32) ApiRepositoryAvailableListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -107,6 +107,18 @@ func (a *AppRepositoriesAPIService) RepositoryAvailableListExecute(r ApiReposito
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.id == nil {
+		return localVarReturnValue, nil, reportError("id is required and must be specified")
+	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
@@ -114,18 +126,10 @@ func (a *AppRepositoriesAPIService) RepositoryAvailableListExecute(r ApiReposito
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	if r.isPrivate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsPrivate", r.isPrivate, "form", "")
 	}
@@ -297,6 +301,9 @@ func (a *AppRepositoriesAPIService) RepositoryBindExecute(r ApiRepositoryBindReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.bindAppRepositoryCommand == nil {
+		return nil, reportError("bindAppRepositoryCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -624,6 +631,9 @@ func (a *AppRepositoriesAPIService) RepositoryImportExecute(r ApiRepositoryImpor
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.importRepoCommand == nil {
+		return nil, reportError("importRepoCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

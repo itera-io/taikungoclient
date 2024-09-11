@@ -20,12 +20,12 @@ var _ MappedNullable = &PvcDto{}
 
 // PvcDto struct for PvcDto
 type PvcDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	Phase NullableString `json:"phase,omitempty"`
-	Size NullableString `json:"size,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	StorageClassName NullableString `json:"storageClassName,omitempty"`
-	Age NullableString `json:"age,omitempty"`
+	MetadataName *string `json:"metadataName,omitempty"`
+	Phase *string `json:"phase,omitempty"`
+	Size *string `json:"size,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
+	StorageClassName *string `json:"storageClassName,omitempty"`
+	Age *string `json:"age,omitempty"`
 }
 
 // NewPvcDto instantiates a new PvcDto object
@@ -45,256 +45,196 @@ func NewPvcDtoWithDefaults() *PvcDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value if set, zero value otherwise.
 func (o *PvcDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil || IsNil(o.MetadataName) {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName.Get()
+	return *o.MetadataName
 }
 
 // GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PvcDto) GetMetadataNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetadataName) {
 		return nil, false
 	}
-	return o.MetadataName.Get(), o.MetadataName.IsSet()
+	return o.MetadataName, true
 }
 
 // HasMetadataName returns a boolean if a field has been set.
 func (o *PvcDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
+	if o != nil && !IsNil(o.MetadataName) {
 		return true
 	}
 
 	return false
 }
 
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName gets a reference to the given string and assigns it to the MetadataName field.
 func (o *PvcDto) SetMetadataName(v string) {
-	o.MetadataName.Set(&v)
-}
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *PvcDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
+	o.MetadataName = &v
 }
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *PvcDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetPhase returns the Phase field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPhase returns the Phase field value if set, zero value otherwise.
 func (o *PvcDto) GetPhase() string {
-	if o == nil || IsNil(o.Phase.Get()) {
+	if o == nil || IsNil(o.Phase) {
 		var ret string
 		return ret
 	}
-	return *o.Phase.Get()
+	return *o.Phase
 }
 
 // GetPhaseOk returns a tuple with the Phase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PvcDto) GetPhaseOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Phase) {
 		return nil, false
 	}
-	return o.Phase.Get(), o.Phase.IsSet()
+	return o.Phase, true
 }
 
 // HasPhase returns a boolean if a field has been set.
 func (o *PvcDto) HasPhase() bool {
-	if o != nil && o.Phase.IsSet() {
+	if o != nil && !IsNil(o.Phase) {
 		return true
 	}
 
 	return false
 }
 
-// SetPhase gets a reference to the given NullableString and assigns it to the Phase field.
+// SetPhase gets a reference to the given string and assigns it to the Phase field.
 func (o *PvcDto) SetPhase(v string) {
-	o.Phase.Set(&v)
-}
-// SetPhaseNil sets the value for Phase to be an explicit nil
-func (o *PvcDto) SetPhaseNil() {
-	o.Phase.Set(nil)
+	o.Phase = &v
 }
 
-// UnsetPhase ensures that no value is present for Phase, not even an explicit nil
-func (o *PvcDto) UnsetPhase() {
-	o.Phase.Unset()
-}
-
-// GetSize returns the Size field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSize returns the Size field value if set, zero value otherwise.
 func (o *PvcDto) GetSize() string {
-	if o == nil || IsNil(o.Size.Get()) {
+	if o == nil || IsNil(o.Size) {
 		var ret string
 		return ret
 	}
-	return *o.Size.Get()
+	return *o.Size
 }
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PvcDto) GetSizeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
-	return o.Size.Get(), o.Size.IsSet()
+	return o.Size, true
 }
 
 // HasSize returns a boolean if a field has been set.
 func (o *PvcDto) HasSize() bool {
-	if o != nil && o.Size.IsSet() {
+	if o != nil && !IsNil(o.Size) {
 		return true
 	}
 
 	return false
 }
 
-// SetSize gets a reference to the given NullableString and assigns it to the Size field.
+// SetSize gets a reference to the given string and assigns it to the Size field.
 func (o *PvcDto) SetSize(v string) {
-	o.Size.Set(&v)
-}
-// SetSizeNil sets the value for Size to be an explicit nil
-func (o *PvcDto) SetSizeNil() {
-	o.Size.Set(nil)
+	o.Size = &v
 }
 
-// UnsetSize ensures that no value is present for Size, not even an explicit nil
-func (o *PvcDto) UnsetSize() {
-	o.Size.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *PvcDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+	return *o.Namespace
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PvcDto) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return o.Namespace, true
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *PvcDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
+	if o != nil && !IsNil(o.Namespace) {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *PvcDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *PvcDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = &v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *PvcDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetStorageClassName returns the StorageClassName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStorageClassName returns the StorageClassName field value if set, zero value otherwise.
 func (o *PvcDto) GetStorageClassName() string {
-	if o == nil || IsNil(o.StorageClassName.Get()) {
+	if o == nil || IsNil(o.StorageClassName) {
 		var ret string
 		return ret
 	}
-	return *o.StorageClassName.Get()
+	return *o.StorageClassName
 }
 
 // GetStorageClassNameOk returns a tuple with the StorageClassName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PvcDto) GetStorageClassNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StorageClassName) {
 		return nil, false
 	}
-	return o.StorageClassName.Get(), o.StorageClassName.IsSet()
+	return o.StorageClassName, true
 }
 
 // HasStorageClassName returns a boolean if a field has been set.
 func (o *PvcDto) HasStorageClassName() bool {
-	if o != nil && o.StorageClassName.IsSet() {
+	if o != nil && !IsNil(o.StorageClassName) {
 		return true
 	}
 
 	return false
 }
 
-// SetStorageClassName gets a reference to the given NullableString and assigns it to the StorageClassName field.
+// SetStorageClassName gets a reference to the given string and assigns it to the StorageClassName field.
 func (o *PvcDto) SetStorageClassName(v string) {
-	o.StorageClassName.Set(&v)
-}
-// SetStorageClassNameNil sets the value for StorageClassName to be an explicit nil
-func (o *PvcDto) SetStorageClassNameNil() {
-	o.StorageClassName.Set(nil)
+	o.StorageClassName = &v
 }
 
-// UnsetStorageClassName ensures that no value is present for StorageClassName, not even an explicit nil
-func (o *PvcDto) UnsetStorageClassName() {
-	o.StorageClassName.Unset()
-}
-
-// GetAge returns the Age field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAge returns the Age field value if set, zero value otherwise.
 func (o *PvcDto) GetAge() string {
-	if o == nil || IsNil(o.Age.Get()) {
+	if o == nil || IsNil(o.Age) {
 		var ret string
 		return ret
 	}
-	return *o.Age.Get()
+	return *o.Age
 }
 
 // GetAgeOk returns a tuple with the Age field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PvcDto) GetAgeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Age) {
 		return nil, false
 	}
-	return o.Age.Get(), o.Age.IsSet()
+	return o.Age, true
 }
 
 // HasAge returns a boolean if a field has been set.
 func (o *PvcDto) HasAge() bool {
-	if o != nil && o.Age.IsSet() {
+	if o != nil && !IsNil(o.Age) {
 		return true
 	}
 
 	return false
 }
 
-// SetAge gets a reference to the given NullableString and assigns it to the Age field.
+// SetAge gets a reference to the given string and assigns it to the Age field.
 func (o *PvcDto) SetAge(v string) {
-	o.Age.Set(&v)
-}
-// SetAgeNil sets the value for Age to be an explicit nil
-func (o *PvcDto) SetAgeNil() {
-	o.Age.Set(nil)
-}
-
-// UnsetAge ensures that no value is present for Age, not even an explicit nil
-func (o *PvcDto) UnsetAge() {
-	o.Age.Unset()
+	o.Age = &v
 }
 
 func (o PvcDto) MarshalJSON() ([]byte, error) {
@@ -307,23 +247,23 @@ func (o PvcDto) MarshalJSON() ([]byte, error) {
 
 func (o PvcDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
+	if !IsNil(o.MetadataName) {
+		toSerialize["metadataName"] = o.MetadataName
 	}
-	if o.Phase.IsSet() {
-		toSerialize["phase"] = o.Phase.Get()
+	if !IsNil(o.Phase) {
+		toSerialize["phase"] = o.Phase
 	}
-	if o.Size.IsSet() {
-		toSerialize["size"] = o.Size.Get()
+	if !IsNil(o.Size) {
+		toSerialize["size"] = o.Size
 	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
 	}
-	if o.StorageClassName.IsSet() {
-		toSerialize["storageClassName"] = o.StorageClassName.Get()
+	if !IsNil(o.StorageClassName) {
+		toSerialize["storageClassName"] = o.StorageClassName
 	}
-	if o.Age.IsSet() {
-		toSerialize["age"] = o.Age.Get()
+	if !IsNil(o.Age) {
+		toSerialize["age"] = o.Age
 	}
 	return toSerialize, nil
 }

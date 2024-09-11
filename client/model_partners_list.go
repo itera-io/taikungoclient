@@ -41,9 +41,9 @@ func NewPartnersListWithDefaults() *PartnersList {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *PartnersList) GetData() []PartnerDetailsDto {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []PartnerDetailsDto
 		return ret
 	}
@@ -52,7 +52,6 @@ func (o *PartnersList) GetData() []PartnerDetailsDto {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnersList) GetDataOk() ([]PartnerDetailsDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
@@ -116,7 +115,7 @@ func (o PartnersList) MarshalJSON() ([]byte, error) {
 
 func (o PartnersList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
+	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
 	if !IsNil(o.TotalCount) {

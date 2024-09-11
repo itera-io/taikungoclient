@@ -21,15 +21,15 @@ var _ MappedNullable = &AdminProjectsResponseData{}
 // AdminProjectsResponseData struct for AdminProjectsResponseData
 type AdminProjectsResponseData struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
-	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion,omitempty"`
-	KubesprayCurrentVersion NullableString `json:"kubesprayCurrentVersion,omitempty"`
-	Status NullableString `json:"status,omitempty"`
+	KubernetesCurrentVersion *string `json:"kubernetesCurrentVersion,omitempty"`
+	KubesprayCurrentVersion *string `json:"kubesprayCurrentVersion,omitempty"`
+	Status *string `json:"status,omitempty"`
 	ServersCount *int32 `json:"serversCount,omitempty"`
 	Tcu *int32 `json:"tcu,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
 	CloudType *CloudType `json:"cloudType,omitempty"`
 }
 
@@ -82,88 +82,68 @@ func (o *AdminProjectsResponseData) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *AdminProjectsResponseData) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminProjectsResponseData) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *AdminProjectsResponseData) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AdminProjectsResponseData) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *AdminProjectsResponseData) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *AdminProjectsResponseData) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *AdminProjectsResponseData) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminProjectsResponseData) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *AdminProjectsResponseData) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *AdminProjectsResponseData) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *AdminProjectsResponseData) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
-
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *AdminProjectsResponseData) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
+	o.OrganizationName = &v
 }
 
 // GetIsLocked returns the IsLocked field value if set, zero value otherwise.
@@ -198,130 +178,100 @@ func (o *AdminProjectsResponseData) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
-// GetKubernetesCurrentVersion returns the KubernetesCurrentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubernetesCurrentVersion returns the KubernetesCurrentVersion field value if set, zero value otherwise.
 func (o *AdminProjectsResponseData) GetKubernetesCurrentVersion() string {
-	if o == nil || IsNil(o.KubernetesCurrentVersion.Get()) {
+	if o == nil || IsNil(o.KubernetesCurrentVersion) {
 		var ret string
 		return ret
 	}
-	return *o.KubernetesCurrentVersion.Get()
+	return *o.KubernetesCurrentVersion
 }
 
 // GetKubernetesCurrentVersionOk returns a tuple with the KubernetesCurrentVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminProjectsResponseData) GetKubernetesCurrentVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesCurrentVersion) {
 		return nil, false
 	}
-	return o.KubernetesCurrentVersion.Get(), o.KubernetesCurrentVersion.IsSet()
+	return o.KubernetesCurrentVersion, true
 }
 
 // HasKubernetesCurrentVersion returns a boolean if a field has been set.
 func (o *AdminProjectsResponseData) HasKubernetesCurrentVersion() bool {
-	if o != nil && o.KubernetesCurrentVersion.IsSet() {
+	if o != nil && !IsNil(o.KubernetesCurrentVersion) {
 		return true
 	}
 
 	return false
 }
 
-// SetKubernetesCurrentVersion gets a reference to the given NullableString and assigns it to the KubernetesCurrentVersion field.
+// SetKubernetesCurrentVersion gets a reference to the given string and assigns it to the KubernetesCurrentVersion field.
 func (o *AdminProjectsResponseData) SetKubernetesCurrentVersion(v string) {
-	o.KubernetesCurrentVersion.Set(&v)
-}
-// SetKubernetesCurrentVersionNil sets the value for KubernetesCurrentVersion to be an explicit nil
-func (o *AdminProjectsResponseData) SetKubernetesCurrentVersionNil() {
-	o.KubernetesCurrentVersion.Set(nil)
+	o.KubernetesCurrentVersion = &v
 }
 
-// UnsetKubernetesCurrentVersion ensures that no value is present for KubernetesCurrentVersion, not even an explicit nil
-func (o *AdminProjectsResponseData) UnsetKubernetesCurrentVersion() {
-	o.KubernetesCurrentVersion.Unset()
-}
-
-// GetKubesprayCurrentVersion returns the KubesprayCurrentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubesprayCurrentVersion returns the KubesprayCurrentVersion field value if set, zero value otherwise.
 func (o *AdminProjectsResponseData) GetKubesprayCurrentVersion() string {
-	if o == nil || IsNil(o.KubesprayCurrentVersion.Get()) {
+	if o == nil || IsNil(o.KubesprayCurrentVersion) {
 		var ret string
 		return ret
 	}
-	return *o.KubesprayCurrentVersion.Get()
+	return *o.KubesprayCurrentVersion
 }
 
 // GetKubesprayCurrentVersionOk returns a tuple with the KubesprayCurrentVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminProjectsResponseData) GetKubesprayCurrentVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubesprayCurrentVersion) {
 		return nil, false
 	}
-	return o.KubesprayCurrentVersion.Get(), o.KubesprayCurrentVersion.IsSet()
+	return o.KubesprayCurrentVersion, true
 }
 
 // HasKubesprayCurrentVersion returns a boolean if a field has been set.
 func (o *AdminProjectsResponseData) HasKubesprayCurrentVersion() bool {
-	if o != nil && o.KubesprayCurrentVersion.IsSet() {
+	if o != nil && !IsNil(o.KubesprayCurrentVersion) {
 		return true
 	}
 
 	return false
 }
 
-// SetKubesprayCurrentVersion gets a reference to the given NullableString and assigns it to the KubesprayCurrentVersion field.
+// SetKubesprayCurrentVersion gets a reference to the given string and assigns it to the KubesprayCurrentVersion field.
 func (o *AdminProjectsResponseData) SetKubesprayCurrentVersion(v string) {
-	o.KubesprayCurrentVersion.Set(&v)
-}
-// SetKubesprayCurrentVersionNil sets the value for KubesprayCurrentVersion to be an explicit nil
-func (o *AdminProjectsResponseData) SetKubesprayCurrentVersionNil() {
-	o.KubesprayCurrentVersion.Set(nil)
+	o.KubesprayCurrentVersion = &v
 }
 
-// UnsetKubesprayCurrentVersion ensures that no value is present for KubesprayCurrentVersion, not even an explicit nil
-func (o *AdminProjectsResponseData) UnsetKubesprayCurrentVersion() {
-	o.KubesprayCurrentVersion.Unset()
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *AdminProjectsResponseData) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-	return *o.Status.Get()
+	return *o.Status
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminProjectsResponseData) GetStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return o.Status.Get(), o.Status.IsSet()
+	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *AdminProjectsResponseData) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *AdminProjectsResponseData) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *AdminProjectsResponseData) SetStatusNil() {
-	o.Status.Set(nil)
-}
-
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *AdminProjectsResponseData) UnsetStatus() {
-	o.Status.Unset()
+	o.Status = &v
 }
 
 // GetServersCount returns the ServersCount field value if set, zero value otherwise.
@@ -388,46 +338,36 @@ func (o *AdminProjectsResponseData) SetTcu(v int32) {
 	o.Tcu = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *AdminProjectsResponseData) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminProjectsResponseData) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *AdminProjectsResponseData) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *AdminProjectsResponseData) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *AdminProjectsResponseData) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
-
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *AdminProjectsResponseData) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
+	o.CreatedAt = &v
 }
 
 // GetCloudType returns the CloudType field value if set, zero value otherwise.
@@ -475,23 +415,23 @@ func (o AdminProjectsResponseData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
-	if o.KubernetesCurrentVersion.IsSet() {
-		toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion.Get()
+	if !IsNil(o.KubernetesCurrentVersion) {
+		toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion
 	}
-	if o.KubesprayCurrentVersion.IsSet() {
-		toSerialize["kubesprayCurrentVersion"] = o.KubesprayCurrentVersion.Get()
+	if !IsNil(o.KubesprayCurrentVersion) {
+		toSerialize["kubesprayCurrentVersion"] = o.KubesprayCurrentVersion
 	}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.ServersCount) {
 		toSerialize["serversCount"] = o.ServersCount
@@ -499,8 +439,8 @@ func (o AdminProjectsResponseData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Tcu) {
 		toSerialize["tcu"] = o.Tcu
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
 	}
 	if !IsNil(o.CloudType) {
 		toSerialize["cloudType"] = o.CloudType

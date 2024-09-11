@@ -20,13 +20,13 @@ var _ MappedNullable = &CreateKubeConfigCommand{}
 
 // CreateKubeConfigCommand struct for CreateKubeConfigCommand
 type CreateKubeConfigCommand struct {
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 	IsAccessibleForAll *bool `json:"isAccessibleForAll,omitempty"`
 	IsAccessibleForManager *bool `json:"isAccessibleForManager,omitempty"`
 	KubeConfigRoleId *int32 `json:"kubeConfigRoleId,omitempty"`
-	UserId NullableString `json:"userId,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
+	UserId *string `json:"userId,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
 	Ttl NullableInt32 `json:"ttl,omitempty"`
 }
 
@@ -47,46 +47,36 @@ func NewCreateKubeConfigCommandWithDefaults() *CreateKubeConfigCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateKubeConfigCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateKubeConfigCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateKubeConfigCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateKubeConfigCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *CreateKubeConfigCommand) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *CreateKubeConfigCommand) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
@@ -217,88 +207,68 @@ func (o *CreateKubeConfigCommand) SetKubeConfigRoleId(v int32) {
 	o.KubeConfigRoleId = &v
 }
 
-// GetUserId returns the UserId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserId returns the UserId field value if set, zero value otherwise.
 func (o *CreateKubeConfigCommand) GetUserId() string {
-	if o == nil || IsNil(o.UserId.Get()) {
+	if o == nil || IsNil(o.UserId) {
 		var ret string
 		return ret
 	}
-	return *o.UserId.Get()
+	return *o.UserId
 }
 
 // GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateKubeConfigCommand) GetUserIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserId) {
 		return nil, false
 	}
-	return o.UserId.Get(), o.UserId.IsSet()
+	return o.UserId, true
 }
 
 // HasUserId returns a boolean if a field has been set.
 func (o *CreateKubeConfigCommand) HasUserId() bool {
-	if o != nil && o.UserId.IsSet() {
+	if o != nil && !IsNil(o.UserId) {
 		return true
 	}
 
 	return false
 }
 
-// SetUserId gets a reference to the given NullableString and assigns it to the UserId field.
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *CreateKubeConfigCommand) SetUserId(v string) {
-	o.UserId.Set(&v)
-}
-// SetUserIdNil sets the value for UserId to be an explicit nil
-func (o *CreateKubeConfigCommand) SetUserIdNil() {
-	o.UserId.Set(nil)
+	o.UserId = &v
 }
 
-// UnsetUserId ensures that no value is present for UserId, not even an explicit nil
-func (o *CreateKubeConfigCommand) UnsetUserId() {
-	o.UserId.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *CreateKubeConfigCommand) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+	return *o.Namespace
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateKubeConfigCommand) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return o.Namespace, true
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *CreateKubeConfigCommand) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
+	if o != nil && !IsNil(o.Namespace) {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *CreateKubeConfigCommand) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *CreateKubeConfigCommand) SetNamespaceNil() {
-	o.Namespace.Set(nil)
-}
-
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *CreateKubeConfigCommand) UnsetNamespace() {
-	o.Namespace.Unset()
+	o.Namespace = &v
 }
 
 // GetTtl returns the Ttl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -353,8 +323,8 @@ func (o CreateKubeConfigCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateKubeConfigCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
@@ -368,11 +338,11 @@ func (o CreateKubeConfigCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.KubeConfigRoleId) {
 		toSerialize["kubeConfigRoleId"] = o.KubeConfigRoleId
 	}
-	if o.UserId.IsSet() {
-		toSerialize["userId"] = o.UserId.Get()
+	if !IsNil(o.UserId) {
+		toSerialize["userId"] = o.UserId
 	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
 	}
 	if o.Ttl.IsSet() {
 		toSerialize["ttl"] = o.Ttl.Get()

@@ -21,19 +21,19 @@ var _ MappedNullable = &AccessProfilesListDto{}
 // AccessProfilesListDto struct for AccessProfilesListDto
 type AccessProfilesListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	HttpProxy NullableString `json:"httpProxy,omitempty"`
+	Name *string `json:"name,omitempty"`
+	HttpProxy *string `json:"httpProxy,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	DnsServers []DnsServerListDto `json:"dnsServers,omitempty"`
 	NtpServers []NtpServerListDto `json:"ntpServers,omitempty"`
 	AllowedHosts []AllowedHostListDto `json:"allowedHosts,omitempty"`
 	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
+	CreatedBy *string `json:"createdBy,omitempty"`
+	LastModified *string `json:"lastModified,omitempty"`
+	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
 }
 
 // NewAccessProfilesListDto instantiates a new AccessProfilesListDto object
@@ -85,88 +85,68 @@ func (o *AccessProfilesListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *AccessProfilesListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *AccessProfilesListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AccessProfilesListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *AccessProfilesListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *AccessProfilesListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetHttpProxy returns the HttpProxy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHttpProxy returns the HttpProxy field value if set, zero value otherwise.
 func (o *AccessProfilesListDto) GetHttpProxy() string {
-	if o == nil || IsNil(o.HttpProxy.Get()) {
+	if o == nil || IsNil(o.HttpProxy) {
 		var ret string
 		return ret
 	}
-	return *o.HttpProxy.Get()
+	return *o.HttpProxy
 }
 
 // GetHttpProxyOk returns a tuple with the HttpProxy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesListDto) GetHttpProxyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HttpProxy) {
 		return nil, false
 	}
-	return o.HttpProxy.Get(), o.HttpProxy.IsSet()
+	return o.HttpProxy, true
 }
 
 // HasHttpProxy returns a boolean if a field has been set.
 func (o *AccessProfilesListDto) HasHttpProxy() bool {
-	if o != nil && o.HttpProxy.IsSet() {
+	if o != nil && !IsNil(o.HttpProxy) {
 		return true
 	}
 
 	return false
 }
 
-// SetHttpProxy gets a reference to the given NullableString and assigns it to the HttpProxy field.
+// SetHttpProxy gets a reference to the given string and assigns it to the HttpProxy field.
 func (o *AccessProfilesListDto) SetHttpProxy(v string) {
-	o.HttpProxy.Set(&v)
-}
-// SetHttpProxyNil sets the value for HttpProxy to be an explicit nil
-func (o *AccessProfilesListDto) SetHttpProxyNil() {
-	o.HttpProxy.Set(nil)
-}
-
-// UnsetHttpProxy ensures that no value is present for HttpProxy, not even an explicit nil
-func (o *AccessProfilesListDto) UnsetHttpProxy() {
-	o.HttpProxy.Unset()
+	o.HttpProxy = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -211,46 +191,36 @@ func (o *AccessProfilesListDto) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *AccessProfilesListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *AccessProfilesListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *AccessProfilesListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *AccessProfilesListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
-
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *AccessProfilesListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
+	o.OrganizationName = &v
 }
 
 // GetIsLocked returns the IsLocked field value if set, zero value otherwise.
@@ -285,9 +255,9 @@ func (o *AccessProfilesListDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
-// GetDnsServers returns the DnsServers field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDnsServers returns the DnsServers field value if set, zero value otherwise.
 func (o *AccessProfilesListDto) GetDnsServers() []DnsServerListDto {
-	if o == nil {
+	if o == nil || IsNil(o.DnsServers) {
 		var ret []DnsServerListDto
 		return ret
 	}
@@ -296,7 +266,6 @@ func (o *AccessProfilesListDto) GetDnsServers() []DnsServerListDto {
 
 // GetDnsServersOk returns a tuple with the DnsServers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesListDto) GetDnsServersOk() ([]DnsServerListDto, bool) {
 	if o == nil || IsNil(o.DnsServers) {
 		return nil, false
@@ -318,9 +287,9 @@ func (o *AccessProfilesListDto) SetDnsServers(v []DnsServerListDto) {
 	o.DnsServers = v
 }
 
-// GetNtpServers returns the NtpServers field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNtpServers returns the NtpServers field value if set, zero value otherwise.
 func (o *AccessProfilesListDto) GetNtpServers() []NtpServerListDto {
-	if o == nil {
+	if o == nil || IsNil(o.NtpServers) {
 		var ret []NtpServerListDto
 		return ret
 	}
@@ -329,7 +298,6 @@ func (o *AccessProfilesListDto) GetNtpServers() []NtpServerListDto {
 
 // GetNtpServersOk returns a tuple with the NtpServers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesListDto) GetNtpServersOk() ([]NtpServerListDto, bool) {
 	if o == nil || IsNil(o.NtpServers) {
 		return nil, false
@@ -351,9 +319,9 @@ func (o *AccessProfilesListDto) SetNtpServers(v []NtpServerListDto) {
 	o.NtpServers = v
 }
 
-// GetAllowedHosts returns the AllowedHosts field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAllowedHosts returns the AllowedHosts field value if set, zero value otherwise.
 func (o *AccessProfilesListDto) GetAllowedHosts() []AllowedHostListDto {
-	if o == nil {
+	if o == nil || IsNil(o.AllowedHosts) {
 		var ret []AllowedHostListDto
 		return ret
 	}
@@ -362,7 +330,6 @@ func (o *AccessProfilesListDto) GetAllowedHosts() []AllowedHostListDto {
 
 // GetAllowedHostsOk returns a tuple with the AllowedHosts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesListDto) GetAllowedHostsOk() ([]AllowedHostListDto, bool) {
 	if o == nil || IsNil(o.AllowedHosts) {
 		return nil, false
@@ -384,9 +351,9 @@ func (o *AccessProfilesListDto) SetAllowedHosts(v []AllowedHostListDto) {
 	o.AllowedHosts = v
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value if set, zero value otherwise.
 func (o *AccessProfilesListDto) GetProjects() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.Projects) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -395,7 +362,6 @@ func (o *AccessProfilesListDto) GetProjects() []CommonDropdownDto {
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
@@ -417,172 +383,132 @@ func (o *AccessProfilesListDto) SetProjects(v []CommonDropdownDto) {
 	o.Projects = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *AccessProfilesListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy.Get()
+	return *o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesListDto) GetCreatedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedBy) {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return o.CreatedBy, true
 }
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *AccessProfilesListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
+	if o != nil && !IsNil(o.CreatedBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
 func (o *AccessProfilesListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
-}
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *AccessProfilesListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
+	o.CreatedBy = &v
 }
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *AccessProfilesListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value if set, zero value otherwise.
 func (o *AccessProfilesListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || IsNil(o.LastModified) {
 		var ret string
 		return ret
 	}
-	return *o.LastModified.Get()
+	return *o.LastModified
 }
 
 // GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesListDto) GetLastModifiedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModified) {
 		return nil, false
 	}
-	return o.LastModified.Get(), o.LastModified.IsSet()
+	return o.LastModified, true
 }
 
 // HasLastModified returns a boolean if a field has been set.
 func (o *AccessProfilesListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
+	if o != nil && !IsNil(o.LastModified) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
 func (o *AccessProfilesListDto) SetLastModified(v string) {
-	o.LastModified.Set(&v)
-}
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *AccessProfilesListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
+	o.LastModified = &v
 }
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *AccessProfilesListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
 func (o *AccessProfilesListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		var ret string
 		return ret
 	}
-	return *o.LastModifiedBy.Get()
+	return *o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesListDto) GetLastModifiedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return o.LastModifiedBy, true
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *AccessProfilesListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
+	if o != nil && !IsNil(o.LastModifiedBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy gets a reference to the given string and assigns it to the LastModifiedBy field.
 func (o *AccessProfilesListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
-}
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *AccessProfilesListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
+	o.LastModifiedBy = &v
 }
 
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *AccessProfilesListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *AccessProfilesListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AccessProfilesListDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *AccessProfilesListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *AccessProfilesListDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *AccessProfilesListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
-
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *AccessProfilesListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
+	o.CreatedAt = &v
 }
 
 func (o AccessProfilesListDto) MarshalJSON() ([]byte, error) {
@@ -598,44 +524,44 @@ func (o AccessProfilesListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.HttpProxy.IsSet() {
-		toSerialize["httpProxy"] = o.HttpProxy.Get()
+	if !IsNil(o.HttpProxy) {
+		toSerialize["httpProxy"] = o.HttpProxy
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
-	if o.DnsServers != nil {
+	if !IsNil(o.DnsServers) {
 		toSerialize["dnsServers"] = o.DnsServers
 	}
-	if o.NtpServers != nil {
+	if !IsNil(o.NtpServers) {
 		toSerialize["ntpServers"] = o.NtpServers
 	}
-	if o.AllowedHosts != nil {
+	if !IsNil(o.AllowedHosts) {
 		toSerialize["allowedHosts"] = o.AllowedHosts
 	}
-	if o.Projects != nil {
+	if !IsNil(o.Projects) {
 		toSerialize["projects"] = o.Projects
 	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
+	if !IsNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
 	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
+	if !IsNil(o.LastModified) {
+		toSerialize["lastModified"] = o.LastModified
 	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
 	}
 	return toSerialize, nil
 }

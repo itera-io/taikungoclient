@@ -23,9 +23,9 @@ var _ MappedNullable = &Alert{}
 type Alert struct {
 	Labels *AlertLabels `json:"labels,omitempty"`
 	Annotations *Annotations `json:"annotations,omitempty"`
-	State NullableString `json:"state,omitempty"`
+	State *string `json:"state,omitempty"`
 	ActiveAt *time.Time `json:"activeAt,omitempty"`
-	Value NullableString `json:"value,omitempty"`
+	Value *string `json:"value,omitempty"`
 }
 
 // NewAlert instantiates a new Alert object
@@ -109,46 +109,36 @@ func (o *Alert) SetAnnotations(v Annotations) {
 	o.Annotations = &v
 }
 
-// GetState returns the State field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetState returns the State field value if set, zero value otherwise.
 func (o *Alert) GetState() string {
-	if o == nil || IsNil(o.State.Get()) {
+	if o == nil || IsNil(o.State) {
 		var ret string
 		return ret
 	}
-	return *o.State.Get()
+	return *o.State
 }
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Alert) GetStateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.State) {
 		return nil, false
 	}
-	return o.State.Get(), o.State.IsSet()
+	return o.State, true
 }
 
 // HasState returns a boolean if a field has been set.
 func (o *Alert) HasState() bool {
-	if o != nil && o.State.IsSet() {
+	if o != nil && !IsNil(o.State) {
 		return true
 	}
 
 	return false
 }
 
-// SetState gets a reference to the given NullableString and assigns it to the State field.
+// SetState gets a reference to the given string and assigns it to the State field.
 func (o *Alert) SetState(v string) {
-	o.State.Set(&v)
-}
-// SetStateNil sets the value for State to be an explicit nil
-func (o *Alert) SetStateNil() {
-	o.State.Set(nil)
-}
-
-// UnsetState ensures that no value is present for State, not even an explicit nil
-func (o *Alert) UnsetState() {
-	o.State.Unset()
+	o.State = &v
 }
 
 // GetActiveAt returns the ActiveAt field value if set, zero value otherwise.
@@ -183,46 +173,36 @@ func (o *Alert) SetActiveAt(v time.Time) {
 	o.ActiveAt = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetValue returns the Value field value if set, zero value otherwise.
 func (o *Alert) GetValue() string {
-	if o == nil || IsNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
-	return *o.Value.Get()
+	return *o.Value
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Alert) GetValueOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
-	return o.Value.Get(), o.Value.IsSet()
+	return o.Value, true
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *Alert) HasValue() bool {
-	if o != nil && o.Value.IsSet() {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given NullableString and assigns it to the Value field.
+// SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *Alert) SetValue(v string) {
-	o.Value.Set(&v)
-}
-// SetValueNil sets the value for Value to be an explicit nil
-func (o *Alert) SetValueNil() {
-	o.Value.Set(nil)
-}
-
-// UnsetValue ensures that no value is present for Value, not even an explicit nil
-func (o *Alert) UnsetValue() {
-	o.Value.Unset()
+	o.Value = &v
 }
 
 func (o Alert) MarshalJSON() ([]byte, error) {
@@ -241,14 +221,14 @@ func (o Alert) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Annotations) {
 		toSerialize["annotations"] = o.Annotations
 	}
-	if o.State.IsSet() {
-		toSerialize["state"] = o.State.Get()
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
 	}
 	if !IsNil(o.ActiveAt) {
 		toSerialize["activeAt"] = o.ActiveAt
 	}
-	if o.Value.IsSet() {
-		toSerialize["value"] = o.Value.Get()
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
 	}
 	return toSerialize, nil
 }

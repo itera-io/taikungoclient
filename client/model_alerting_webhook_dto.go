@@ -21,7 +21,7 @@ var _ MappedNullable = &AlertingWebhookDto{}
 // AlertingWebhookDto struct for AlertingWebhookDto
 type AlertingWebhookDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Url NullableString `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 	Headers []WebhookHeaderDto `json:"headers,omitempty"`
 }
 
@@ -74,51 +74,41 @@ func (o *AlertingWebhookDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *AlertingWebhookDto) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingWebhookDto) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *AlertingWebhookDto) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *AlertingWebhookDto) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *AlertingWebhookDto) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = &v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *AlertingWebhookDto) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetHeaders returns the Headers field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHeaders returns the Headers field value if set, zero value otherwise.
 func (o *AlertingWebhookDto) GetHeaders() []WebhookHeaderDto {
-	if o == nil {
+	if o == nil || IsNil(o.Headers) {
 		var ret []WebhookHeaderDto
 		return ret
 	}
@@ -127,7 +117,6 @@ func (o *AlertingWebhookDto) GetHeaders() []WebhookHeaderDto {
 
 // GetHeadersOk returns a tuple with the Headers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingWebhookDto) GetHeadersOk() ([]WebhookHeaderDto, bool) {
 	if o == nil || IsNil(o.Headers) {
 		return nil, false
@@ -162,10 +151,10 @@ func (o AlertingWebhookDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
-	if o.Headers != nil {
+	if !IsNil(o.Headers) {
 		toSerialize["headers"] = o.Headers
 	}
 	return toSerialize, nil

@@ -21,7 +21,7 @@ var _ MappedNullable = &OperationDto{}
 // OperationDto struct for OperationDto
 type OperationDto struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	Operation NullableString `json:"operation,omitempty"`
+	Operation *string `json:"operation,omitempty"`
 }
 
 // NewOperationDto instantiates a new OperationDto object
@@ -73,46 +73,36 @@ func (o *OperationDto) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetOperation returns the Operation field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOperation returns the Operation field value if set, zero value otherwise.
 func (o *OperationDto) GetOperation() string {
-	if o == nil || IsNil(o.Operation.Get()) {
+	if o == nil || IsNil(o.Operation) {
 		var ret string
 		return ret
 	}
-	return *o.Operation.Get()
+	return *o.Operation
 }
 
 // GetOperationOk returns a tuple with the Operation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationDto) GetOperationOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Operation) {
 		return nil, false
 	}
-	return o.Operation.Get(), o.Operation.IsSet()
+	return o.Operation, true
 }
 
 // HasOperation returns a boolean if a field has been set.
 func (o *OperationDto) HasOperation() bool {
-	if o != nil && o.Operation.IsSet() {
+	if o != nil && !IsNil(o.Operation) {
 		return true
 	}
 
 	return false
 }
 
-// SetOperation gets a reference to the given NullableString and assigns it to the Operation field.
+// SetOperation gets a reference to the given string and assigns it to the Operation field.
 func (o *OperationDto) SetOperation(v string) {
-	o.Operation.Set(&v)
-}
-// SetOperationNil sets the value for Operation to be an explicit nil
-func (o *OperationDto) SetOperationNil() {
-	o.Operation.Set(nil)
-}
-
-// UnsetOperation ensures that no value is present for Operation, not even an explicit nil
-func (o *OperationDto) UnsetOperation() {
-	o.Operation.Unset()
+	o.Operation = &v
 }
 
 func (o OperationDto) MarshalJSON() ([]byte, error) {
@@ -128,8 +118,8 @@ func (o OperationDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if o.Operation.IsSet() {
-		toSerialize["operation"] = o.Operation.Get()
+	if !IsNil(o.Operation) {
+		toSerialize["operation"] = o.Operation
 	}
 	return toSerialize, nil
 }

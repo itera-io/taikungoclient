@@ -21,7 +21,7 @@ var _ MappedNullable = &ListForPartnersDto{}
 // ListForPartnersDto struct for ListForPartnersDto
 type ListForPartnersDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	ProjectLimit *int32 `json:"projectLimit,omitempty"`
 	ServerLimit *int32 `json:"serverLimit,omitempty"`
 	UserLimit *int32 `json:"userLimit,omitempty"`
@@ -30,7 +30,7 @@ type ListForPartnersDto struct {
 	YearlyPrice *float64 `json:"yearlyPrice,omitempty"`
 	TcuPrice *float64 `json:"tcuPrice,omitempty"`
 	IsDeprecated *bool `json:"isDeprecated,omitempty"`
-	Currency NullableString `json:"currency,omitempty"`
+	Currency *string `json:"currency,omitempty"`
 	IsEnterprise *bool `json:"isEnterprise,omitempty"`
 	Partner *PartnerDetailsForSubscription `json:"partner,omitempty"`
 	ExceededUser *bool `json:"exceededUser,omitempty"`
@@ -40,7 +40,7 @@ type ListForPartnersDto struct {
 	IsActive *bool `json:"isActive,omitempty"`
 	IsYearly *bool `json:"isYearly,omitempty"`
 	TrialDays *int32 `json:"trialDays,omitempty"`
-	Description NullableString `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 	IsDemo *bool `json:"isDemo,omitempty"`
 }
 
@@ -93,46 +93,36 @@ func (o *ListForPartnersDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ListForPartnersDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListForPartnersDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ListForPartnersDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ListForPartnersDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ListForPartnersDto) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ListForPartnersDto) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetProjectLimit returns the ProjectLimit field value if set, zero value otherwise.
@@ -391,46 +381,36 @@ func (o *ListForPartnersDto) SetIsDeprecated(v bool) {
 	o.IsDeprecated = &v
 }
 
-// GetCurrency returns the Currency field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCurrency returns the Currency field value if set, zero value otherwise.
 func (o *ListForPartnersDto) GetCurrency() string {
-	if o == nil || IsNil(o.Currency.Get()) {
+	if o == nil || IsNil(o.Currency) {
 		var ret string
 		return ret
 	}
-	return *o.Currency.Get()
+	return *o.Currency
 }
 
 // GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListForPartnersDto) GetCurrencyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Currency) {
 		return nil, false
 	}
-	return o.Currency.Get(), o.Currency.IsSet()
+	return o.Currency, true
 }
 
 // HasCurrency returns a boolean if a field has been set.
 func (o *ListForPartnersDto) HasCurrency() bool {
-	if o != nil && o.Currency.IsSet() {
+	if o != nil && !IsNil(o.Currency) {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrency gets a reference to the given NullableString and assigns it to the Currency field.
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
 func (o *ListForPartnersDto) SetCurrency(v string) {
-	o.Currency.Set(&v)
-}
-// SetCurrencyNil sets the value for Currency to be an explicit nil
-func (o *ListForPartnersDto) SetCurrencyNil() {
-	o.Currency.Set(nil)
-}
-
-// UnsetCurrency ensures that no value is present for Currency, not even an explicit nil
-func (o *ListForPartnersDto) UnsetCurrency() {
-	o.Currency.Unset()
+	o.Currency = &v
 }
 
 // GetIsEnterprise returns the IsEnterprise field value if set, zero value otherwise.
@@ -721,46 +701,36 @@ func (o *ListForPartnersDto) SetTrialDays(v int32) {
 	o.TrialDays = &v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ListForPartnersDto) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListForPartnersDto) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ListForPartnersDto) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *ListForPartnersDto) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *ListForPartnersDto) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *ListForPartnersDto) UnsetDescription() {
-	o.Description.Unset()
+	o.Description = &v
 }
 
 // GetIsDemo returns the IsDemo field value if set, zero value otherwise.
@@ -808,8 +778,8 @@ func (o ListForPartnersDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.ProjectLimit) {
 		toSerialize["projectLimit"] = o.ProjectLimit
@@ -835,8 +805,8 @@ func (o ListForPartnersDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsDeprecated) {
 		toSerialize["isDeprecated"] = o.IsDeprecated
 	}
-	if o.Currency.IsSet() {
-		toSerialize["currency"] = o.Currency.Get()
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
 	}
 	if !IsNil(o.IsEnterprise) {
 		toSerialize["isEnterprise"] = o.IsEnterprise
@@ -865,8 +835,8 @@ func (o ListForPartnersDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TrialDays) {
 		toSerialize["trialDays"] = o.TrialDays
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.IsDemo) {
 		toSerialize["isDemo"] = o.IsDemo

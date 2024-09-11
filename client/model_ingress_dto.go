@@ -20,10 +20,10 @@ var _ MappedNullable = &IngressDto{}
 
 // IngressDto struct for IngressDto
 type IngressDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	Hosts NullableString `json:"hosts,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Age NullableString `json:"age,omitempty"`
+	MetadataName *string `json:"metadataName,omitempty"`
+	Hosts *string `json:"hosts,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
+	Age *string `json:"age,omitempty"`
 }
 
 // NewIngressDto instantiates a new IngressDto object
@@ -43,172 +43,132 @@ func NewIngressDtoWithDefaults() *IngressDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value if set, zero value otherwise.
 func (o *IngressDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil || IsNil(o.MetadataName) {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName.Get()
+	return *o.MetadataName
 }
 
 // GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IngressDto) GetMetadataNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetadataName) {
 		return nil, false
 	}
-	return o.MetadataName.Get(), o.MetadataName.IsSet()
+	return o.MetadataName, true
 }
 
 // HasMetadataName returns a boolean if a field has been set.
 func (o *IngressDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
+	if o != nil && !IsNil(o.MetadataName) {
 		return true
 	}
 
 	return false
 }
 
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName gets a reference to the given string and assigns it to the MetadataName field.
 func (o *IngressDto) SetMetadataName(v string) {
-	o.MetadataName.Set(&v)
-}
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *IngressDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
+	o.MetadataName = &v
 }
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *IngressDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetHosts returns the Hosts field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHosts returns the Hosts field value if set, zero value otherwise.
 func (o *IngressDto) GetHosts() string {
-	if o == nil || IsNil(o.Hosts.Get()) {
+	if o == nil || IsNil(o.Hosts) {
 		var ret string
 		return ret
 	}
-	return *o.Hosts.Get()
+	return *o.Hosts
 }
 
 // GetHostsOk returns a tuple with the Hosts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IngressDto) GetHostsOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Hosts) {
 		return nil, false
 	}
-	return o.Hosts.Get(), o.Hosts.IsSet()
+	return o.Hosts, true
 }
 
 // HasHosts returns a boolean if a field has been set.
 func (o *IngressDto) HasHosts() bool {
-	if o != nil && o.Hosts.IsSet() {
+	if o != nil && !IsNil(o.Hosts) {
 		return true
 	}
 
 	return false
 }
 
-// SetHosts gets a reference to the given NullableString and assigns it to the Hosts field.
+// SetHosts gets a reference to the given string and assigns it to the Hosts field.
 func (o *IngressDto) SetHosts(v string) {
-	o.Hosts.Set(&v)
-}
-// SetHostsNil sets the value for Hosts to be an explicit nil
-func (o *IngressDto) SetHostsNil() {
-	o.Hosts.Set(nil)
+	o.Hosts = &v
 }
 
-// UnsetHosts ensures that no value is present for Hosts, not even an explicit nil
-func (o *IngressDto) UnsetHosts() {
-	o.Hosts.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *IngressDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+	return *o.Namespace
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IngressDto) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return o.Namespace, true
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *IngressDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
+	if o != nil && !IsNil(o.Namespace) {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *IngressDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *IngressDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = &v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *IngressDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetAge returns the Age field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAge returns the Age field value if set, zero value otherwise.
 func (o *IngressDto) GetAge() string {
-	if o == nil || IsNil(o.Age.Get()) {
+	if o == nil || IsNil(o.Age) {
 		var ret string
 		return ret
 	}
-	return *o.Age.Get()
+	return *o.Age
 }
 
 // GetAgeOk returns a tuple with the Age field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IngressDto) GetAgeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Age) {
 		return nil, false
 	}
-	return o.Age.Get(), o.Age.IsSet()
+	return o.Age, true
 }
 
 // HasAge returns a boolean if a field has been set.
 func (o *IngressDto) HasAge() bool {
-	if o != nil && o.Age.IsSet() {
+	if o != nil && !IsNil(o.Age) {
 		return true
 	}
 
 	return false
 }
 
-// SetAge gets a reference to the given NullableString and assigns it to the Age field.
+// SetAge gets a reference to the given string and assigns it to the Age field.
 func (o *IngressDto) SetAge(v string) {
-	o.Age.Set(&v)
-}
-// SetAgeNil sets the value for Age to be an explicit nil
-func (o *IngressDto) SetAgeNil() {
-	o.Age.Set(nil)
-}
-
-// UnsetAge ensures that no value is present for Age, not even an explicit nil
-func (o *IngressDto) UnsetAge() {
-	o.Age.Unset()
+	o.Age = &v
 }
 
 func (o IngressDto) MarshalJSON() ([]byte, error) {
@@ -221,17 +181,17 @@ func (o IngressDto) MarshalJSON() ([]byte, error) {
 
 func (o IngressDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
+	if !IsNil(o.MetadataName) {
+		toSerialize["metadataName"] = o.MetadataName
 	}
-	if o.Hosts.IsSet() {
-		toSerialize["hosts"] = o.Hosts.Get()
+	if !IsNil(o.Hosts) {
+		toSerialize["hosts"] = o.Hosts
 	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
 	}
-	if o.Age.IsSet() {
-		toSerialize["age"] = o.Age.Get()
+	if !IsNil(o.Age) {
+		toSerialize["age"] = o.Age
 	}
 	return toSerialize, nil
 }

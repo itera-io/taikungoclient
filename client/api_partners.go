@@ -75,6 +75,9 @@ func (a *PartnersAPIService) PartnerAddOrganizationsExecute(r ApiPartnerAddOrgan
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.requestBody == nil {
+		return nil, reportError("requestBody is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -237,6 +240,9 @@ func (a *PartnersAPIService) PartnerAddWhitelistDomainExecute(r ApiPartnerAddWhi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.whiteListDomainCreateCommand == nil {
+		return nil, reportError("whiteListDomainCreateCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -399,6 +405,9 @@ func (a *PartnersAPIService) PartnerBecomeAPartnerExecute(r ApiPartnerBecomeAPar
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.becomePartnerCommand == nil {
+		return nil, reportError("becomePartnerCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -561,6 +570,9 @@ func (a *PartnersAPIService) PartnerContactUsExecute(r ApiPartnerContactUsReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.contactUsCommand == nil {
+		return nil, reportError("contactUsCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1145,6 +1157,9 @@ func (a *PartnersAPIService) PartnerDeleteOrganizationsExecute(r ApiPartnerDelet
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.requestBody == nil {
+		return nil, reportError("requestBody is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1307,6 +1322,9 @@ func (a *PartnersAPIService) PartnerDeleteWhitelistDomainExecute(r ApiPartnerDel
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.whiteListDomainDeleteCommand == nil {
+		return nil, reportError("whiteListDomainDeleteCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1636,10 +1654,11 @@ func (a *PartnersAPIService) PartnerDropdownExecute(r ApiPartnerDropdownRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
 	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1810,10 +1829,11 @@ func (a *PartnersAPIService) PartnerInfoExecute(r ApiPartnerInfoRequest) (*Partn
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-
-	if r.domain != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Domain", r.domain, "form", "")
+	if r.domain == nil {
+		return localVarReturnValue, nil, reportError("domain is required and must be specified")
 	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Domain", r.domain, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1939,28 +1959,13 @@ func (a *PartnersAPIService) PartnerInfoExecute(r ApiPartnerInfoRequest) (*Partn
 type ApiPartnerListRequest struct {
 	ctx context.Context
 	ApiService *PartnersAPIService
-	offset *int32
-	limit *int32
-	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
-}
-
-func (r ApiPartnerListRequest) Offset(offset int32) ApiPartnerListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiPartnerListRequest) Limit(limit int32) ApiPartnerListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiPartnerListRequest) OrganizationId(organizationId int32) ApiPartnerListRequest {
-	r.organizationId = &organizationId
-	return r
+	offset *int32
+	limit *int32
+	organizationId *int32
 }
 
 func (r ApiPartnerListRequest) SortBy(sortBy string) ApiPartnerListRequest {
@@ -1980,6 +1985,21 @@ func (r ApiPartnerListRequest) Search(search string) ApiPartnerListRequest {
 
 func (r ApiPartnerListRequest) SearchId(searchId string) ApiPartnerListRequest {
 	r.searchId = &searchId
+	return r
+}
+
+func (r ApiPartnerListRequest) Offset(offset int32) ApiPartnerListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiPartnerListRequest) Limit(limit int32) ApiPartnerListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiPartnerListRequest) OrganizationId(organizationId int32) ApiPartnerListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -2020,6 +2040,18 @@ func (a *PartnersAPIService) PartnerListExecute(r ApiPartnerListRequest) (*Partn
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
@@ -2030,18 +2062,10 @@ func (a *PartnersAPIService) PartnerListExecute(r ApiPartnerListRequest) (*Partn
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

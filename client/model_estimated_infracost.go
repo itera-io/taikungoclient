@@ -20,20 +20,20 @@ var _ MappedNullable = &EstimatedInfracost{}
 
 // EstimatedInfracost struct for EstimatedInfracost
 type EstimatedInfracost struct {
-	Version NullableString `json:"version,omitempty"`
+	Version *string `json:"version,omitempty"`
 	Metadata *Metadata `json:"metadata,omitempty"`
-	Currency NullableString `json:"currency,omitempty"`
+	Currency *string `json:"currency,omitempty"`
 	Projects []ProjectInfracost `json:"projects,omitempty"`
-	TotalHourlyCost NullableString `json:"totalHourlyCost,omitempty"`
-	TotalMonthlyCost NullableString `json:"totalMonthlyCost,omitempty"`
-	TotalMonthlyUsageCost NullableString `json:"totalMonthlyUsageCost,omitempty"`
-	PastTotalHourlyCost NullableString `json:"pastTotalHourlyCost,omitempty"`
-	PastTotalMonthlyCost NullableString `json:"pastTotalMonthlyCost,omitempty"`
-	PastTotalMonthlyUsageCost NullableString `json:"pastTotalMonthlyUsageCost,omitempty"`
-	DiffTotalHourlyCost NullableString `json:"diffTotalHourlyCost,omitempty"`
-	DiffTotalMonthlyCost NullableString `json:"diffTotalMonthlyCost,omitempty"`
-	DiffTotalMonthlyUsageCost NullableString `json:"diffTotalMonthlyUsageCost,omitempty"`
-	TimeGenerated NullableString `json:"timeGenerated,omitempty"`
+	TotalHourlyCost *string `json:"totalHourlyCost,omitempty"`
+	TotalMonthlyCost *string `json:"totalMonthlyCost,omitempty"`
+	TotalMonthlyUsageCost *string `json:"totalMonthlyUsageCost,omitempty"`
+	PastTotalHourlyCost *string `json:"pastTotalHourlyCost,omitempty"`
+	PastTotalMonthlyCost *string `json:"pastTotalMonthlyCost,omitempty"`
+	PastTotalMonthlyUsageCost *string `json:"pastTotalMonthlyUsageCost,omitempty"`
+	DiffTotalHourlyCost *string `json:"diffTotalHourlyCost,omitempty"`
+	DiffTotalMonthlyCost *string `json:"diffTotalMonthlyCost,omitempty"`
+	DiffTotalMonthlyUsageCost *string `json:"diffTotalMonthlyUsageCost,omitempty"`
+	TimeGenerated *string `json:"timeGenerated,omitempty"`
 	Summary *Summary `json:"summary,omitempty"`
 }
 
@@ -54,46 +54,36 @@ func NewEstimatedInfracostWithDefaults() *EstimatedInfracost {
 	return &this
 }
 
-// GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetVersion() string {
-	if o == nil || IsNil(o.Version.Get()) {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-	return *o.Version.Get()
+	return *o.Version
 }
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return o.Version.Get(), o.Version.IsSet()
+	return o.Version, true
 }
 
 // HasVersion returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasVersion() bool {
-	if o != nil && o.Version.IsSet() {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
 	return false
 }
 
-// SetVersion gets a reference to the given NullableString and assigns it to the Version field.
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *EstimatedInfracost) SetVersion(v string) {
-	o.Version.Set(&v)
-}
-// SetVersionNil sets the value for Version to be an explicit nil
-func (o *EstimatedInfracost) SetVersionNil() {
-	o.Version.Set(nil)
-}
-
-// UnsetVersion ensures that no value is present for Version, not even an explicit nil
-func (o *EstimatedInfracost) UnsetVersion() {
-	o.Version.Unset()
+	o.Version = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise.
@@ -128,51 +118,41 @@ func (o *EstimatedInfracost) SetMetadata(v Metadata) {
 	o.Metadata = &v
 }
 
-// GetCurrency returns the Currency field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCurrency returns the Currency field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetCurrency() string {
-	if o == nil || IsNil(o.Currency.Get()) {
+	if o == nil || IsNil(o.Currency) {
 		var ret string
 		return ret
 	}
-	return *o.Currency.Get()
+	return *o.Currency
 }
 
 // GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetCurrencyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Currency) {
 		return nil, false
 	}
-	return o.Currency.Get(), o.Currency.IsSet()
+	return o.Currency, true
 }
 
 // HasCurrency returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasCurrency() bool {
-	if o != nil && o.Currency.IsSet() {
+	if o != nil && !IsNil(o.Currency) {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrency gets a reference to the given NullableString and assigns it to the Currency field.
+// SetCurrency gets a reference to the given string and assigns it to the Currency field.
 func (o *EstimatedInfracost) SetCurrency(v string) {
-	o.Currency.Set(&v)
-}
-// SetCurrencyNil sets the value for Currency to be an explicit nil
-func (o *EstimatedInfracost) SetCurrencyNil() {
-	o.Currency.Set(nil)
+	o.Currency = &v
 }
 
-// UnsetCurrency ensures that no value is present for Currency, not even an explicit nil
-func (o *EstimatedInfracost) UnsetCurrency() {
-	o.Currency.Unset()
-}
-
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetProjects() []ProjectInfracost {
-	if o == nil {
+	if o == nil || IsNil(o.Projects) {
 		var ret []ProjectInfracost
 		return ret
 	}
@@ -181,7 +161,6 @@ func (o *EstimatedInfracost) GetProjects() []ProjectInfracost {
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetProjectsOk() ([]ProjectInfracost, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
@@ -203,424 +182,324 @@ func (o *EstimatedInfracost) SetProjects(v []ProjectInfracost) {
 	o.Projects = v
 }
 
-// GetTotalHourlyCost returns the TotalHourlyCost field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTotalHourlyCost returns the TotalHourlyCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetTotalHourlyCost() string {
-	if o == nil || IsNil(o.TotalHourlyCost.Get()) {
+	if o == nil || IsNil(o.TotalHourlyCost) {
 		var ret string
 		return ret
 	}
-	return *o.TotalHourlyCost.Get()
+	return *o.TotalHourlyCost
 }
 
 // GetTotalHourlyCostOk returns a tuple with the TotalHourlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetTotalHourlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalHourlyCost) {
 		return nil, false
 	}
-	return o.TotalHourlyCost.Get(), o.TotalHourlyCost.IsSet()
+	return o.TotalHourlyCost, true
 }
 
 // HasTotalHourlyCost returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasTotalHourlyCost() bool {
-	if o != nil && o.TotalHourlyCost.IsSet() {
+	if o != nil && !IsNil(o.TotalHourlyCost) {
 		return true
 	}
 
 	return false
 }
 
-// SetTotalHourlyCost gets a reference to the given NullableString and assigns it to the TotalHourlyCost field.
+// SetTotalHourlyCost gets a reference to the given string and assigns it to the TotalHourlyCost field.
 func (o *EstimatedInfracost) SetTotalHourlyCost(v string) {
-	o.TotalHourlyCost.Set(&v)
-}
-// SetTotalHourlyCostNil sets the value for TotalHourlyCost to be an explicit nil
-func (o *EstimatedInfracost) SetTotalHourlyCostNil() {
-	o.TotalHourlyCost.Set(nil)
+	o.TotalHourlyCost = &v
 }
 
-// UnsetTotalHourlyCost ensures that no value is present for TotalHourlyCost, not even an explicit nil
-func (o *EstimatedInfracost) UnsetTotalHourlyCost() {
-	o.TotalHourlyCost.Unset()
-}
-
-// GetTotalMonthlyCost returns the TotalMonthlyCost field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTotalMonthlyCost returns the TotalMonthlyCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetTotalMonthlyCost() string {
-	if o == nil || IsNil(o.TotalMonthlyCost.Get()) {
+	if o == nil || IsNil(o.TotalMonthlyCost) {
 		var ret string
 		return ret
 	}
-	return *o.TotalMonthlyCost.Get()
+	return *o.TotalMonthlyCost
 }
 
 // GetTotalMonthlyCostOk returns a tuple with the TotalMonthlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetTotalMonthlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyCost) {
 		return nil, false
 	}
-	return o.TotalMonthlyCost.Get(), o.TotalMonthlyCost.IsSet()
+	return o.TotalMonthlyCost, true
 }
 
 // HasTotalMonthlyCost returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasTotalMonthlyCost() bool {
-	if o != nil && o.TotalMonthlyCost.IsSet() {
+	if o != nil && !IsNil(o.TotalMonthlyCost) {
 		return true
 	}
 
 	return false
 }
 
-// SetTotalMonthlyCost gets a reference to the given NullableString and assigns it to the TotalMonthlyCost field.
+// SetTotalMonthlyCost gets a reference to the given string and assigns it to the TotalMonthlyCost field.
 func (o *EstimatedInfracost) SetTotalMonthlyCost(v string) {
-	o.TotalMonthlyCost.Set(&v)
-}
-// SetTotalMonthlyCostNil sets the value for TotalMonthlyCost to be an explicit nil
-func (o *EstimatedInfracost) SetTotalMonthlyCostNil() {
-	o.TotalMonthlyCost.Set(nil)
+	o.TotalMonthlyCost = &v
 }
 
-// UnsetTotalMonthlyCost ensures that no value is present for TotalMonthlyCost, not even an explicit nil
-func (o *EstimatedInfracost) UnsetTotalMonthlyCost() {
-	o.TotalMonthlyCost.Unset()
-}
-
-// GetTotalMonthlyUsageCost returns the TotalMonthlyUsageCost field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTotalMonthlyUsageCost returns the TotalMonthlyUsageCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetTotalMonthlyUsageCost() string {
-	if o == nil || IsNil(o.TotalMonthlyUsageCost.Get()) {
+	if o == nil || IsNil(o.TotalMonthlyUsageCost) {
 		var ret string
 		return ret
 	}
-	return *o.TotalMonthlyUsageCost.Get()
+	return *o.TotalMonthlyUsageCost
 }
 
 // GetTotalMonthlyUsageCostOk returns a tuple with the TotalMonthlyUsageCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetTotalMonthlyUsageCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalMonthlyUsageCost) {
 		return nil, false
 	}
-	return o.TotalMonthlyUsageCost.Get(), o.TotalMonthlyUsageCost.IsSet()
+	return o.TotalMonthlyUsageCost, true
 }
 
 // HasTotalMonthlyUsageCost returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasTotalMonthlyUsageCost() bool {
-	if o != nil && o.TotalMonthlyUsageCost.IsSet() {
+	if o != nil && !IsNil(o.TotalMonthlyUsageCost) {
 		return true
 	}
 
 	return false
 }
 
-// SetTotalMonthlyUsageCost gets a reference to the given NullableString and assigns it to the TotalMonthlyUsageCost field.
+// SetTotalMonthlyUsageCost gets a reference to the given string and assigns it to the TotalMonthlyUsageCost field.
 func (o *EstimatedInfracost) SetTotalMonthlyUsageCost(v string) {
-	o.TotalMonthlyUsageCost.Set(&v)
-}
-// SetTotalMonthlyUsageCostNil sets the value for TotalMonthlyUsageCost to be an explicit nil
-func (o *EstimatedInfracost) SetTotalMonthlyUsageCostNil() {
-	o.TotalMonthlyUsageCost.Set(nil)
+	o.TotalMonthlyUsageCost = &v
 }
 
-// UnsetTotalMonthlyUsageCost ensures that no value is present for TotalMonthlyUsageCost, not even an explicit nil
-func (o *EstimatedInfracost) UnsetTotalMonthlyUsageCost() {
-	o.TotalMonthlyUsageCost.Unset()
-}
-
-// GetPastTotalHourlyCost returns the PastTotalHourlyCost field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPastTotalHourlyCost returns the PastTotalHourlyCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetPastTotalHourlyCost() string {
-	if o == nil || IsNil(o.PastTotalHourlyCost.Get()) {
+	if o == nil || IsNil(o.PastTotalHourlyCost) {
 		var ret string
 		return ret
 	}
-	return *o.PastTotalHourlyCost.Get()
+	return *o.PastTotalHourlyCost
 }
 
 // GetPastTotalHourlyCostOk returns a tuple with the PastTotalHourlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetPastTotalHourlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PastTotalHourlyCost) {
 		return nil, false
 	}
-	return o.PastTotalHourlyCost.Get(), o.PastTotalHourlyCost.IsSet()
+	return o.PastTotalHourlyCost, true
 }
 
 // HasPastTotalHourlyCost returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasPastTotalHourlyCost() bool {
-	if o != nil && o.PastTotalHourlyCost.IsSet() {
+	if o != nil && !IsNil(o.PastTotalHourlyCost) {
 		return true
 	}
 
 	return false
 }
 
-// SetPastTotalHourlyCost gets a reference to the given NullableString and assigns it to the PastTotalHourlyCost field.
+// SetPastTotalHourlyCost gets a reference to the given string and assigns it to the PastTotalHourlyCost field.
 func (o *EstimatedInfracost) SetPastTotalHourlyCost(v string) {
-	o.PastTotalHourlyCost.Set(&v)
-}
-// SetPastTotalHourlyCostNil sets the value for PastTotalHourlyCost to be an explicit nil
-func (o *EstimatedInfracost) SetPastTotalHourlyCostNil() {
-	o.PastTotalHourlyCost.Set(nil)
+	o.PastTotalHourlyCost = &v
 }
 
-// UnsetPastTotalHourlyCost ensures that no value is present for PastTotalHourlyCost, not even an explicit nil
-func (o *EstimatedInfracost) UnsetPastTotalHourlyCost() {
-	o.PastTotalHourlyCost.Unset()
-}
-
-// GetPastTotalMonthlyCost returns the PastTotalMonthlyCost field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPastTotalMonthlyCost returns the PastTotalMonthlyCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetPastTotalMonthlyCost() string {
-	if o == nil || IsNil(o.PastTotalMonthlyCost.Get()) {
+	if o == nil || IsNil(o.PastTotalMonthlyCost) {
 		var ret string
 		return ret
 	}
-	return *o.PastTotalMonthlyCost.Get()
+	return *o.PastTotalMonthlyCost
 }
 
 // GetPastTotalMonthlyCostOk returns a tuple with the PastTotalMonthlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetPastTotalMonthlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PastTotalMonthlyCost) {
 		return nil, false
 	}
-	return o.PastTotalMonthlyCost.Get(), o.PastTotalMonthlyCost.IsSet()
+	return o.PastTotalMonthlyCost, true
 }
 
 // HasPastTotalMonthlyCost returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasPastTotalMonthlyCost() bool {
-	if o != nil && o.PastTotalMonthlyCost.IsSet() {
+	if o != nil && !IsNil(o.PastTotalMonthlyCost) {
 		return true
 	}
 
 	return false
 }
 
-// SetPastTotalMonthlyCost gets a reference to the given NullableString and assigns it to the PastTotalMonthlyCost field.
+// SetPastTotalMonthlyCost gets a reference to the given string and assigns it to the PastTotalMonthlyCost field.
 func (o *EstimatedInfracost) SetPastTotalMonthlyCost(v string) {
-	o.PastTotalMonthlyCost.Set(&v)
-}
-// SetPastTotalMonthlyCostNil sets the value for PastTotalMonthlyCost to be an explicit nil
-func (o *EstimatedInfracost) SetPastTotalMonthlyCostNil() {
-	o.PastTotalMonthlyCost.Set(nil)
+	o.PastTotalMonthlyCost = &v
 }
 
-// UnsetPastTotalMonthlyCost ensures that no value is present for PastTotalMonthlyCost, not even an explicit nil
-func (o *EstimatedInfracost) UnsetPastTotalMonthlyCost() {
-	o.PastTotalMonthlyCost.Unset()
-}
-
-// GetPastTotalMonthlyUsageCost returns the PastTotalMonthlyUsageCost field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPastTotalMonthlyUsageCost returns the PastTotalMonthlyUsageCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetPastTotalMonthlyUsageCost() string {
-	if o == nil || IsNil(o.PastTotalMonthlyUsageCost.Get()) {
+	if o == nil || IsNil(o.PastTotalMonthlyUsageCost) {
 		var ret string
 		return ret
 	}
-	return *o.PastTotalMonthlyUsageCost.Get()
+	return *o.PastTotalMonthlyUsageCost
 }
 
 // GetPastTotalMonthlyUsageCostOk returns a tuple with the PastTotalMonthlyUsageCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetPastTotalMonthlyUsageCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PastTotalMonthlyUsageCost) {
 		return nil, false
 	}
-	return o.PastTotalMonthlyUsageCost.Get(), o.PastTotalMonthlyUsageCost.IsSet()
+	return o.PastTotalMonthlyUsageCost, true
 }
 
 // HasPastTotalMonthlyUsageCost returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasPastTotalMonthlyUsageCost() bool {
-	if o != nil && o.PastTotalMonthlyUsageCost.IsSet() {
+	if o != nil && !IsNil(o.PastTotalMonthlyUsageCost) {
 		return true
 	}
 
 	return false
 }
 
-// SetPastTotalMonthlyUsageCost gets a reference to the given NullableString and assigns it to the PastTotalMonthlyUsageCost field.
+// SetPastTotalMonthlyUsageCost gets a reference to the given string and assigns it to the PastTotalMonthlyUsageCost field.
 func (o *EstimatedInfracost) SetPastTotalMonthlyUsageCost(v string) {
-	o.PastTotalMonthlyUsageCost.Set(&v)
-}
-// SetPastTotalMonthlyUsageCostNil sets the value for PastTotalMonthlyUsageCost to be an explicit nil
-func (o *EstimatedInfracost) SetPastTotalMonthlyUsageCostNil() {
-	o.PastTotalMonthlyUsageCost.Set(nil)
+	o.PastTotalMonthlyUsageCost = &v
 }
 
-// UnsetPastTotalMonthlyUsageCost ensures that no value is present for PastTotalMonthlyUsageCost, not even an explicit nil
-func (o *EstimatedInfracost) UnsetPastTotalMonthlyUsageCost() {
-	o.PastTotalMonthlyUsageCost.Unset()
-}
-
-// GetDiffTotalHourlyCost returns the DiffTotalHourlyCost field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDiffTotalHourlyCost returns the DiffTotalHourlyCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetDiffTotalHourlyCost() string {
-	if o == nil || IsNil(o.DiffTotalHourlyCost.Get()) {
+	if o == nil || IsNil(o.DiffTotalHourlyCost) {
 		var ret string
 		return ret
 	}
-	return *o.DiffTotalHourlyCost.Get()
+	return *o.DiffTotalHourlyCost
 }
 
 // GetDiffTotalHourlyCostOk returns a tuple with the DiffTotalHourlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetDiffTotalHourlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DiffTotalHourlyCost) {
 		return nil, false
 	}
-	return o.DiffTotalHourlyCost.Get(), o.DiffTotalHourlyCost.IsSet()
+	return o.DiffTotalHourlyCost, true
 }
 
 // HasDiffTotalHourlyCost returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasDiffTotalHourlyCost() bool {
-	if o != nil && o.DiffTotalHourlyCost.IsSet() {
+	if o != nil && !IsNil(o.DiffTotalHourlyCost) {
 		return true
 	}
 
 	return false
 }
 
-// SetDiffTotalHourlyCost gets a reference to the given NullableString and assigns it to the DiffTotalHourlyCost field.
+// SetDiffTotalHourlyCost gets a reference to the given string and assigns it to the DiffTotalHourlyCost field.
 func (o *EstimatedInfracost) SetDiffTotalHourlyCost(v string) {
-	o.DiffTotalHourlyCost.Set(&v)
-}
-// SetDiffTotalHourlyCostNil sets the value for DiffTotalHourlyCost to be an explicit nil
-func (o *EstimatedInfracost) SetDiffTotalHourlyCostNil() {
-	o.DiffTotalHourlyCost.Set(nil)
+	o.DiffTotalHourlyCost = &v
 }
 
-// UnsetDiffTotalHourlyCost ensures that no value is present for DiffTotalHourlyCost, not even an explicit nil
-func (o *EstimatedInfracost) UnsetDiffTotalHourlyCost() {
-	o.DiffTotalHourlyCost.Unset()
-}
-
-// GetDiffTotalMonthlyCost returns the DiffTotalMonthlyCost field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDiffTotalMonthlyCost returns the DiffTotalMonthlyCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetDiffTotalMonthlyCost() string {
-	if o == nil || IsNil(o.DiffTotalMonthlyCost.Get()) {
+	if o == nil || IsNil(o.DiffTotalMonthlyCost) {
 		var ret string
 		return ret
 	}
-	return *o.DiffTotalMonthlyCost.Get()
+	return *o.DiffTotalMonthlyCost
 }
 
 // GetDiffTotalMonthlyCostOk returns a tuple with the DiffTotalMonthlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetDiffTotalMonthlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DiffTotalMonthlyCost) {
 		return nil, false
 	}
-	return o.DiffTotalMonthlyCost.Get(), o.DiffTotalMonthlyCost.IsSet()
+	return o.DiffTotalMonthlyCost, true
 }
 
 // HasDiffTotalMonthlyCost returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasDiffTotalMonthlyCost() bool {
-	if o != nil && o.DiffTotalMonthlyCost.IsSet() {
+	if o != nil && !IsNil(o.DiffTotalMonthlyCost) {
 		return true
 	}
 
 	return false
 }
 
-// SetDiffTotalMonthlyCost gets a reference to the given NullableString and assigns it to the DiffTotalMonthlyCost field.
+// SetDiffTotalMonthlyCost gets a reference to the given string and assigns it to the DiffTotalMonthlyCost field.
 func (o *EstimatedInfracost) SetDiffTotalMonthlyCost(v string) {
-	o.DiffTotalMonthlyCost.Set(&v)
-}
-// SetDiffTotalMonthlyCostNil sets the value for DiffTotalMonthlyCost to be an explicit nil
-func (o *EstimatedInfracost) SetDiffTotalMonthlyCostNil() {
-	o.DiffTotalMonthlyCost.Set(nil)
+	o.DiffTotalMonthlyCost = &v
 }
 
-// UnsetDiffTotalMonthlyCost ensures that no value is present for DiffTotalMonthlyCost, not even an explicit nil
-func (o *EstimatedInfracost) UnsetDiffTotalMonthlyCost() {
-	o.DiffTotalMonthlyCost.Unset()
-}
-
-// GetDiffTotalMonthlyUsageCost returns the DiffTotalMonthlyUsageCost field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDiffTotalMonthlyUsageCost returns the DiffTotalMonthlyUsageCost field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetDiffTotalMonthlyUsageCost() string {
-	if o == nil || IsNil(o.DiffTotalMonthlyUsageCost.Get()) {
+	if o == nil || IsNil(o.DiffTotalMonthlyUsageCost) {
 		var ret string
 		return ret
 	}
-	return *o.DiffTotalMonthlyUsageCost.Get()
+	return *o.DiffTotalMonthlyUsageCost
 }
 
 // GetDiffTotalMonthlyUsageCostOk returns a tuple with the DiffTotalMonthlyUsageCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetDiffTotalMonthlyUsageCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DiffTotalMonthlyUsageCost) {
 		return nil, false
 	}
-	return o.DiffTotalMonthlyUsageCost.Get(), o.DiffTotalMonthlyUsageCost.IsSet()
+	return o.DiffTotalMonthlyUsageCost, true
 }
 
 // HasDiffTotalMonthlyUsageCost returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasDiffTotalMonthlyUsageCost() bool {
-	if o != nil && o.DiffTotalMonthlyUsageCost.IsSet() {
+	if o != nil && !IsNil(o.DiffTotalMonthlyUsageCost) {
 		return true
 	}
 
 	return false
 }
 
-// SetDiffTotalMonthlyUsageCost gets a reference to the given NullableString and assigns it to the DiffTotalMonthlyUsageCost field.
+// SetDiffTotalMonthlyUsageCost gets a reference to the given string and assigns it to the DiffTotalMonthlyUsageCost field.
 func (o *EstimatedInfracost) SetDiffTotalMonthlyUsageCost(v string) {
-	o.DiffTotalMonthlyUsageCost.Set(&v)
-}
-// SetDiffTotalMonthlyUsageCostNil sets the value for DiffTotalMonthlyUsageCost to be an explicit nil
-func (o *EstimatedInfracost) SetDiffTotalMonthlyUsageCostNil() {
-	o.DiffTotalMonthlyUsageCost.Set(nil)
+	o.DiffTotalMonthlyUsageCost = &v
 }
 
-// UnsetDiffTotalMonthlyUsageCost ensures that no value is present for DiffTotalMonthlyUsageCost, not even an explicit nil
-func (o *EstimatedInfracost) UnsetDiffTotalMonthlyUsageCost() {
-	o.DiffTotalMonthlyUsageCost.Unset()
-}
-
-// GetTimeGenerated returns the TimeGenerated field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTimeGenerated returns the TimeGenerated field value if set, zero value otherwise.
 func (o *EstimatedInfracost) GetTimeGenerated() string {
-	if o == nil || IsNil(o.TimeGenerated.Get()) {
+	if o == nil || IsNil(o.TimeGenerated) {
 		var ret string
 		return ret
 	}
-	return *o.TimeGenerated.Get()
+	return *o.TimeGenerated
 }
 
 // GetTimeGeneratedOk returns a tuple with the TimeGenerated field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EstimatedInfracost) GetTimeGeneratedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TimeGenerated) {
 		return nil, false
 	}
-	return o.TimeGenerated.Get(), o.TimeGenerated.IsSet()
+	return o.TimeGenerated, true
 }
 
 // HasTimeGenerated returns a boolean if a field has been set.
 func (o *EstimatedInfracost) HasTimeGenerated() bool {
-	if o != nil && o.TimeGenerated.IsSet() {
+	if o != nil && !IsNil(o.TimeGenerated) {
 		return true
 	}
 
 	return false
 }
 
-// SetTimeGenerated gets a reference to the given NullableString and assigns it to the TimeGenerated field.
+// SetTimeGenerated gets a reference to the given string and assigns it to the TimeGenerated field.
 func (o *EstimatedInfracost) SetTimeGenerated(v string) {
-	o.TimeGenerated.Set(&v)
-}
-// SetTimeGeneratedNil sets the value for TimeGenerated to be an explicit nil
-func (o *EstimatedInfracost) SetTimeGeneratedNil() {
-	o.TimeGenerated.Set(nil)
-}
-
-// UnsetTimeGenerated ensures that no value is present for TimeGenerated, not even an explicit nil
-func (o *EstimatedInfracost) UnsetTimeGenerated() {
-	o.TimeGenerated.Unset()
+	o.TimeGenerated = &v
 }
 
 // GetSummary returns the Summary field value if set, zero value otherwise.
@@ -665,47 +544,47 @@ func (o EstimatedInfracost) MarshalJSON() ([]byte, error) {
 
 func (o EstimatedInfracost) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Version.IsSet() {
-		toSerialize["version"] = o.Version.Get()
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
 	}
-	if o.Currency.IsSet() {
-		toSerialize["currency"] = o.Currency.Get()
+	if !IsNil(o.Currency) {
+		toSerialize["currency"] = o.Currency
 	}
-	if o.Projects != nil {
+	if !IsNil(o.Projects) {
 		toSerialize["projects"] = o.Projects
 	}
-	if o.TotalHourlyCost.IsSet() {
-		toSerialize["totalHourlyCost"] = o.TotalHourlyCost.Get()
+	if !IsNil(o.TotalHourlyCost) {
+		toSerialize["totalHourlyCost"] = o.TotalHourlyCost
 	}
-	if o.TotalMonthlyCost.IsSet() {
-		toSerialize["totalMonthlyCost"] = o.TotalMonthlyCost.Get()
+	if !IsNil(o.TotalMonthlyCost) {
+		toSerialize["totalMonthlyCost"] = o.TotalMonthlyCost
 	}
-	if o.TotalMonthlyUsageCost.IsSet() {
-		toSerialize["totalMonthlyUsageCost"] = o.TotalMonthlyUsageCost.Get()
+	if !IsNil(o.TotalMonthlyUsageCost) {
+		toSerialize["totalMonthlyUsageCost"] = o.TotalMonthlyUsageCost
 	}
-	if o.PastTotalHourlyCost.IsSet() {
-		toSerialize["pastTotalHourlyCost"] = o.PastTotalHourlyCost.Get()
+	if !IsNil(o.PastTotalHourlyCost) {
+		toSerialize["pastTotalHourlyCost"] = o.PastTotalHourlyCost
 	}
-	if o.PastTotalMonthlyCost.IsSet() {
-		toSerialize["pastTotalMonthlyCost"] = o.PastTotalMonthlyCost.Get()
+	if !IsNil(o.PastTotalMonthlyCost) {
+		toSerialize["pastTotalMonthlyCost"] = o.PastTotalMonthlyCost
 	}
-	if o.PastTotalMonthlyUsageCost.IsSet() {
-		toSerialize["pastTotalMonthlyUsageCost"] = o.PastTotalMonthlyUsageCost.Get()
+	if !IsNil(o.PastTotalMonthlyUsageCost) {
+		toSerialize["pastTotalMonthlyUsageCost"] = o.PastTotalMonthlyUsageCost
 	}
-	if o.DiffTotalHourlyCost.IsSet() {
-		toSerialize["diffTotalHourlyCost"] = o.DiffTotalHourlyCost.Get()
+	if !IsNil(o.DiffTotalHourlyCost) {
+		toSerialize["diffTotalHourlyCost"] = o.DiffTotalHourlyCost
 	}
-	if o.DiffTotalMonthlyCost.IsSet() {
-		toSerialize["diffTotalMonthlyCost"] = o.DiffTotalMonthlyCost.Get()
+	if !IsNil(o.DiffTotalMonthlyCost) {
+		toSerialize["diffTotalMonthlyCost"] = o.DiffTotalMonthlyCost
 	}
-	if o.DiffTotalMonthlyUsageCost.IsSet() {
-		toSerialize["diffTotalMonthlyUsageCost"] = o.DiffTotalMonthlyUsageCost.Get()
+	if !IsNil(o.DiffTotalMonthlyUsageCost) {
+		toSerialize["diffTotalMonthlyUsageCost"] = o.DiffTotalMonthlyUsageCost
 	}
-	if o.TimeGenerated.IsSet() {
-		toSerialize["timeGenerated"] = o.TimeGenerated.Get()
+	if !IsNil(o.TimeGenerated) {
+		toSerialize["timeGenerated"] = o.TimeGenerated
 	}
 	if !IsNil(o.Summary) {
 		toSerialize["summary"] = o.Summary

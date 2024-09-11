@@ -74,6 +74,9 @@ func (a *UsersAPIService) UsersAddUserProjectsExecute(r ApiUsersAddUserProjectsR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.requestBody == nil {
+		return nil, reportError("requestBody is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -236,6 +239,9 @@ func (a *UsersAPIService) UsersChangePasswordExecute(r ApiUsersChangePasswordReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.changePasswordCommand == nil {
+		return nil, reportError("changePasswordCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -398,6 +404,9 @@ func (a *UsersAPIService) UsersConfirmEmailExecute(r ApiUsersConfirmEmailRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.confirmEmailCommand == nil {
+		return nil, reportError("confirmEmailCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -562,6 +571,9 @@ func (a *UsersAPIService) UsersCreateExecute(r ApiUsersCreateRequest) (*ApiRespo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createUserCommand == nil {
+		return localVarReturnValue, nil, reportError("createUserCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1060,6 +1072,9 @@ func (a *UsersAPIService) UsersDeleteUserProjectsExecute(r ApiUsersDeleteUserPro
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.requestBody == nil {
+		return nil, reportError("requestBody is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1344,15 +1359,10 @@ func (a *UsersAPIService) UsersDisableExecute(r ApiUsersDisableRequest) (*http.R
 type ApiUsersDropdownRequest struct {
 	ctx context.Context
 	ApiService *UsersAPIService
-	organizationId *int32
 	search *string
-	projectId *int32
 	filterBy *string
-}
-
-func (r ApiUsersDropdownRequest) OrganizationId(organizationId int32) ApiUsersDropdownRequest {
-	r.organizationId = &organizationId
-	return r
+	organizationId *int32
+	projectId *int32
 }
 
 func (r ApiUsersDropdownRequest) Search(search string) ApiUsersDropdownRequest {
@@ -1360,13 +1370,18 @@ func (r ApiUsersDropdownRequest) Search(search string) ApiUsersDropdownRequest {
 	return r
 }
 
-func (r ApiUsersDropdownRequest) ProjectId(projectId int32) ApiUsersDropdownRequest {
-	r.projectId = &projectId
+func (r ApiUsersDropdownRequest) FilterBy(filterBy string) ApiUsersDropdownRequest {
+	r.filterBy = &filterBy
 	return r
 }
 
-func (r ApiUsersDropdownRequest) FilterBy(filterBy string) ApiUsersDropdownRequest {
-	r.filterBy = &filterBy
+func (r ApiUsersDropdownRequest) OrganizationId(organizationId int32) ApiUsersDropdownRequest {
+	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiUsersDropdownRequest) ProjectId(projectId int32) ApiUsersDropdownRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -1407,19 +1422,21 @@ func (a *UsersAPIService) UsersDropdownExecute(r ApiUsersDropdownRequest) ([]Com
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.filterBy == nil {
+		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
+	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
-	if r.filterBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1875,30 +1892,15 @@ func (a *UsersAPIService) UsersForceToResetPasswordExecute(r ApiUsersForceToRese
 type ApiUsersListRequest struct {
 	ctx context.Context
 	ApiService *UsersAPIService
-	limit *int32
-	offset *int32
-	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
 	id *string
 	filterBy *string
-}
-
-func (r ApiUsersListRequest) Limit(limit int32) ApiUsersListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiUsersListRequest) Offset(offset int32) ApiUsersListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiUsersListRequest) OrganizationId(organizationId int32) ApiUsersListRequest {
-	r.organizationId = &organizationId
-	return r
+	limit *int32
+	offset *int32
+	organizationId *int32
 }
 
 func (r ApiUsersListRequest) SortBy(sortBy string) ApiUsersListRequest {
@@ -1928,6 +1930,21 @@ func (r ApiUsersListRequest) Id(id string) ApiUsersListRequest {
 
 func (r ApiUsersListRequest) FilterBy(filterBy string) ApiUsersListRequest {
 	r.filterBy = &filterBy
+	return r
+}
+
+func (r ApiUsersListRequest) Limit(limit int32) ApiUsersListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiUsersListRequest) Offset(offset int32) ApiUsersListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiUsersListRequest) OrganizationId(organizationId int32) ApiUsersListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -1968,6 +1985,24 @@ func (a *UsersAPIService) UsersListExecute(r ApiUsersListRequest) (*UsersList, *
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
+	if r.id == nil {
+		return localVarReturnValue, nil, reportError("id is required and must be specified")
+	}
+	if r.filterBy == nil {
+		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -1978,24 +2013,12 @@ func (a *UsersAPIService) UsersListExecute(r ApiUsersListRequest) (*UsersList, *
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
-	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
-	}
-	if r.filterBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -2659,6 +2682,9 @@ func (a *UsersAPIService) UsersUpdateUserExecute(r ApiUsersUpdateUserRequest) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateUserCommand == nil {
+		return nil, reportError("updateUserCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

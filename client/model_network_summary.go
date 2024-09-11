@@ -20,9 +20,9 @@ var _ MappedNullable = &NetworkSummary{}
 
 // NetworkSummary struct for NetworkSummary
 type NetworkSummary struct {
-	Network NullableString `json:"network,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Type NullableString `json:"type,omitempty"`
+	Network *string `json:"network,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewNetworkSummary instantiates a new NetworkSummary object
@@ -42,130 +42,100 @@ func NewNetworkSummaryWithDefaults() *NetworkSummary {
 	return &this
 }
 
-// GetNetwork returns the Network field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNetwork returns the Network field value if set, zero value otherwise.
 func (o *NetworkSummary) GetNetwork() string {
-	if o == nil || IsNil(o.Network.Get()) {
+	if o == nil || IsNil(o.Network) {
 		var ret string
 		return ret
 	}
-	return *o.Network.Get()
+	return *o.Network
 }
 
 // GetNetworkOk returns a tuple with the Network field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkSummary) GetNetworkOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Network) {
 		return nil, false
 	}
-	return o.Network.Get(), o.Network.IsSet()
+	return o.Network, true
 }
 
 // HasNetwork returns a boolean if a field has been set.
 func (o *NetworkSummary) HasNetwork() bool {
-	if o != nil && o.Network.IsSet() {
+	if o != nil && !IsNil(o.Network) {
 		return true
 	}
 
 	return false
 }
 
-// SetNetwork gets a reference to the given NullableString and assigns it to the Network field.
+// SetNetwork gets a reference to the given string and assigns it to the Network field.
 func (o *NetworkSummary) SetNetwork(v string) {
-	o.Network.Set(&v)
-}
-// SetNetworkNil sets the value for Network to be an explicit nil
-func (o *NetworkSummary) SetNetworkNil() {
-	o.Network.Set(nil)
+	o.Network = &v
 }
 
-// UnsetNetwork ensures that no value is present for Network, not even an explicit nil
-func (o *NetworkSummary) UnsetNetwork() {
-	o.Network.Unset()
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *NetworkSummary) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkSummary) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *NetworkSummary) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *NetworkSummary) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *NetworkSummary) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *NetworkSummary) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *NetworkSummary) GetType() string {
-	if o == nil || IsNil(o.Type.Get()) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-	return *o.Type.Get()
+	return *o.Type
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkSummary) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return o.Type.Get(), o.Type.IsSet()
+	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *NetworkSummary) HasType() bool {
-	if o != nil && o.Type.IsSet() {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given NullableString and assigns it to the Type field.
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *NetworkSummary) SetType(v string) {
-	o.Type.Set(&v)
-}
-// SetTypeNil sets the value for Type to be an explicit nil
-func (o *NetworkSummary) SetTypeNil() {
-	o.Type.Set(nil)
-}
-
-// UnsetType ensures that no value is present for Type, not even an explicit nil
-func (o *NetworkSummary) UnsetType() {
-	o.Type.Unset()
+	o.Type = &v
 }
 
 func (o NetworkSummary) MarshalJSON() ([]byte, error) {
@@ -178,14 +148,14 @@ func (o NetworkSummary) MarshalJSON() ([]byte, error) {
 
 func (o NetworkSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Network.IsSet() {
-		toSerialize["network"] = o.Network.Get()
+	if !IsNil(o.Network) {
+		toSerialize["network"] = o.Network
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.Type.IsSet() {
-		toSerialize["type"] = o.Type.Get()
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
 }

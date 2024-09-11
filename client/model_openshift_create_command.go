@@ -20,11 +20,11 @@ var _ MappedNullable = &OpenshiftCreateCommand{}
 
 // OpenshiftCreateCommand struct for OpenshiftCreateCommand
 type OpenshiftCreateCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	KubeConfig NullableString `json:"kubeConfig,omitempty"`
-	PullSecret NullableString `json:"pullSecret,omitempty"`
-	StorageClass NullableString `json:"storageClass,omitempty"`
-	BaseDomain NullableString `json:"baseDomain,omitempty"`
+	Name *string `json:"name,omitempty"`
+	KubeConfig *string `json:"kubeConfig,omitempty"`
+	PullSecret *string `json:"pullSecret,omitempty"`
+	StorageClass *string `json:"storageClass,omitempty"`
+	BaseDomain *string `json:"baseDomain,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
 
@@ -45,214 +45,164 @@ func NewOpenshiftCreateCommandWithDefaults() *OpenshiftCreateCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OpenshiftCreateCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftCreateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *OpenshiftCreateCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OpenshiftCreateCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *OpenshiftCreateCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *OpenshiftCreateCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetKubeConfig returns the KubeConfig field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubeConfig returns the KubeConfig field value if set, zero value otherwise.
 func (o *OpenshiftCreateCommand) GetKubeConfig() string {
-	if o == nil || IsNil(o.KubeConfig.Get()) {
+	if o == nil || IsNil(o.KubeConfig) {
 		var ret string
 		return ret
 	}
-	return *o.KubeConfig.Get()
+	return *o.KubeConfig
 }
 
 // GetKubeConfigOk returns a tuple with the KubeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftCreateCommand) GetKubeConfigOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfig) {
 		return nil, false
 	}
-	return o.KubeConfig.Get(), o.KubeConfig.IsSet()
+	return o.KubeConfig, true
 }
 
 // HasKubeConfig returns a boolean if a field has been set.
 func (o *OpenshiftCreateCommand) HasKubeConfig() bool {
-	if o != nil && o.KubeConfig.IsSet() {
+	if o != nil && !IsNil(o.KubeConfig) {
 		return true
 	}
 
 	return false
 }
 
-// SetKubeConfig gets a reference to the given NullableString and assigns it to the KubeConfig field.
+// SetKubeConfig gets a reference to the given string and assigns it to the KubeConfig field.
 func (o *OpenshiftCreateCommand) SetKubeConfig(v string) {
-	o.KubeConfig.Set(&v)
-}
-// SetKubeConfigNil sets the value for KubeConfig to be an explicit nil
-func (o *OpenshiftCreateCommand) SetKubeConfigNil() {
-	o.KubeConfig.Set(nil)
+	o.KubeConfig = &v
 }
 
-// UnsetKubeConfig ensures that no value is present for KubeConfig, not even an explicit nil
-func (o *OpenshiftCreateCommand) UnsetKubeConfig() {
-	o.KubeConfig.Unset()
-}
-
-// GetPullSecret returns the PullSecret field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPullSecret returns the PullSecret field value if set, zero value otherwise.
 func (o *OpenshiftCreateCommand) GetPullSecret() string {
-	if o == nil || IsNil(o.PullSecret.Get()) {
+	if o == nil || IsNil(o.PullSecret) {
 		var ret string
 		return ret
 	}
-	return *o.PullSecret.Get()
+	return *o.PullSecret
 }
 
 // GetPullSecretOk returns a tuple with the PullSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftCreateCommand) GetPullSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PullSecret) {
 		return nil, false
 	}
-	return o.PullSecret.Get(), o.PullSecret.IsSet()
+	return o.PullSecret, true
 }
 
 // HasPullSecret returns a boolean if a field has been set.
 func (o *OpenshiftCreateCommand) HasPullSecret() bool {
-	if o != nil && o.PullSecret.IsSet() {
+	if o != nil && !IsNil(o.PullSecret) {
 		return true
 	}
 
 	return false
 }
 
-// SetPullSecret gets a reference to the given NullableString and assigns it to the PullSecret field.
+// SetPullSecret gets a reference to the given string and assigns it to the PullSecret field.
 func (o *OpenshiftCreateCommand) SetPullSecret(v string) {
-	o.PullSecret.Set(&v)
-}
-// SetPullSecretNil sets the value for PullSecret to be an explicit nil
-func (o *OpenshiftCreateCommand) SetPullSecretNil() {
-	o.PullSecret.Set(nil)
+	o.PullSecret = &v
 }
 
-// UnsetPullSecret ensures that no value is present for PullSecret, not even an explicit nil
-func (o *OpenshiftCreateCommand) UnsetPullSecret() {
-	o.PullSecret.Unset()
-}
-
-// GetStorageClass returns the StorageClass field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStorageClass returns the StorageClass field value if set, zero value otherwise.
 func (o *OpenshiftCreateCommand) GetStorageClass() string {
-	if o == nil || IsNil(o.StorageClass.Get()) {
+	if o == nil || IsNil(o.StorageClass) {
 		var ret string
 		return ret
 	}
-	return *o.StorageClass.Get()
+	return *o.StorageClass
 }
 
 // GetStorageClassOk returns a tuple with the StorageClass field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftCreateCommand) GetStorageClassOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StorageClass) {
 		return nil, false
 	}
-	return o.StorageClass.Get(), o.StorageClass.IsSet()
+	return o.StorageClass, true
 }
 
 // HasStorageClass returns a boolean if a field has been set.
 func (o *OpenshiftCreateCommand) HasStorageClass() bool {
-	if o != nil && o.StorageClass.IsSet() {
+	if o != nil && !IsNil(o.StorageClass) {
 		return true
 	}
 
 	return false
 }
 
-// SetStorageClass gets a reference to the given NullableString and assigns it to the StorageClass field.
+// SetStorageClass gets a reference to the given string and assigns it to the StorageClass field.
 func (o *OpenshiftCreateCommand) SetStorageClass(v string) {
-	o.StorageClass.Set(&v)
-}
-// SetStorageClassNil sets the value for StorageClass to be an explicit nil
-func (o *OpenshiftCreateCommand) SetStorageClassNil() {
-	o.StorageClass.Set(nil)
+	o.StorageClass = &v
 }
 
-// UnsetStorageClass ensures that no value is present for StorageClass, not even an explicit nil
-func (o *OpenshiftCreateCommand) UnsetStorageClass() {
-	o.StorageClass.Unset()
-}
-
-// GetBaseDomain returns the BaseDomain field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBaseDomain returns the BaseDomain field value if set, zero value otherwise.
 func (o *OpenshiftCreateCommand) GetBaseDomain() string {
-	if o == nil || IsNil(o.BaseDomain.Get()) {
+	if o == nil || IsNil(o.BaseDomain) {
 		var ret string
 		return ret
 	}
-	return *o.BaseDomain.Get()
+	return *o.BaseDomain
 }
 
 // GetBaseDomainOk returns a tuple with the BaseDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftCreateCommand) GetBaseDomainOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BaseDomain) {
 		return nil, false
 	}
-	return o.BaseDomain.Get(), o.BaseDomain.IsSet()
+	return o.BaseDomain, true
 }
 
 // HasBaseDomain returns a boolean if a field has been set.
 func (o *OpenshiftCreateCommand) HasBaseDomain() bool {
-	if o != nil && o.BaseDomain.IsSet() {
+	if o != nil && !IsNil(o.BaseDomain) {
 		return true
 	}
 
 	return false
 }
 
-// SetBaseDomain gets a reference to the given NullableString and assigns it to the BaseDomain field.
+// SetBaseDomain gets a reference to the given string and assigns it to the BaseDomain field.
 func (o *OpenshiftCreateCommand) SetBaseDomain(v string) {
-	o.BaseDomain.Set(&v)
-}
-// SetBaseDomainNil sets the value for BaseDomain to be an explicit nil
-func (o *OpenshiftCreateCommand) SetBaseDomainNil() {
-	o.BaseDomain.Set(nil)
-}
-
-// UnsetBaseDomain ensures that no value is present for BaseDomain, not even an explicit nil
-func (o *OpenshiftCreateCommand) UnsetBaseDomain() {
-	o.BaseDomain.Unset()
+	o.BaseDomain = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -307,20 +257,20 @@ func (o OpenshiftCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o OpenshiftCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.KubeConfig.IsSet() {
-		toSerialize["kubeConfig"] = o.KubeConfig.Get()
+	if !IsNil(o.KubeConfig) {
+		toSerialize["kubeConfig"] = o.KubeConfig
 	}
-	if o.PullSecret.IsSet() {
-		toSerialize["pullSecret"] = o.PullSecret.Get()
+	if !IsNil(o.PullSecret) {
+		toSerialize["pullSecret"] = o.PullSecret
 	}
-	if o.StorageClass.IsSet() {
-		toSerialize["storageClass"] = o.StorageClass.Get()
+	if !IsNil(o.StorageClass) {
+		toSerialize["storageClass"] = o.StorageClass
 	}
-	if o.BaseDomain.IsSet() {
-		toSerialize["baseDomain"] = o.BaseDomain.Get()
+	if !IsNil(o.BaseDomain) {
+		toSerialize["baseDomain"] = o.BaseDomain
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()

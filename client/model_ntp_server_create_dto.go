@@ -20,7 +20,7 @@ var _ MappedNullable = &NtpServerCreateDto{}
 
 // NtpServerCreateDto struct for NtpServerCreateDto
 type NtpServerCreateDto struct {
-	Address NullableString `json:"address,omitempty"`
+	Address *string `json:"address,omitempty"`
 }
 
 // NewNtpServerCreateDto instantiates a new NtpServerCreateDto object
@@ -40,46 +40,36 @@ func NewNtpServerCreateDtoWithDefaults() *NtpServerCreateDto {
 	return &this
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAddress returns the Address field value if set, zero value otherwise.
 func (o *NtpServerCreateDto) GetAddress() string {
-	if o == nil || IsNil(o.Address.Get()) {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
-	return *o.Address.Get()
+	return *o.Address
 }
 
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NtpServerCreateDto) GetAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
-	return o.Address.Get(), o.Address.IsSet()
+	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *NtpServerCreateDto) HasAddress() bool {
-	if o != nil && o.Address.IsSet() {
+	if o != nil && !IsNil(o.Address) {
 		return true
 	}
 
 	return false
 }
 
-// SetAddress gets a reference to the given NullableString and assigns it to the Address field.
+// SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *NtpServerCreateDto) SetAddress(v string) {
-	o.Address.Set(&v)
-}
-// SetAddressNil sets the value for Address to be an explicit nil
-func (o *NtpServerCreateDto) SetAddressNil() {
-	o.Address.Set(nil)
-}
-
-// UnsetAddress ensures that no value is present for Address, not even an explicit nil
-func (o *NtpServerCreateDto) UnsetAddress() {
-	o.Address.Unset()
+	o.Address = &v
 }
 
 func (o NtpServerCreateDto) MarshalJSON() ([]byte, error) {
@@ -92,8 +82,8 @@ func (o NtpServerCreateDto) MarshalJSON() ([]byte, error) {
 
 func (o NtpServerCreateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Address.IsSet() {
-		toSerialize["address"] = o.Address.Get()
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
 	}
 	return toSerialize, nil
 }

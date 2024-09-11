@@ -40,9 +40,9 @@ func NewDeleteImageFromProjectCommandWithDefaults() *DeleteImageFromProjectComma
 	return &this
 }
 
-// GetIds returns the Ids field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIds returns the Ids field value if set, zero value otherwise.
 func (o *DeleteImageFromProjectCommand) GetIds() []int32 {
-	if o == nil {
+	if o == nil || IsNil(o.Ids) {
 		var ret []int32
 		return ret
 	}
@@ -51,7 +51,6 @@ func (o *DeleteImageFromProjectCommand) GetIds() []int32 {
 
 // GetIdsOk returns a tuple with the Ids field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeleteImageFromProjectCommand) GetIdsOk() ([]int32, bool) {
 	if o == nil || IsNil(o.Ids) {
 		return nil, false
@@ -83,7 +82,7 @@ func (o DeleteImageFromProjectCommand) MarshalJSON() ([]byte, error) {
 
 func (o DeleteImageFromProjectCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Ids != nil {
+	if !IsNil(o.Ids) {
 		toSerialize["ids"] = o.Ids
 	}
 	return toSerialize, nil

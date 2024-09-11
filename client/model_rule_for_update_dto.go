@@ -20,8 +20,8 @@ var _ MappedNullable = &RuleForUpdateDto{}
 
 // RuleForUpdateDto struct for RuleForUpdateDto
 type RuleForUpdateDto struct {
-	Name NullableString `json:"name,omitempty"`
-	MetricName NullableString `json:"metricName,omitempty"`
+	Name *string `json:"name,omitempty"`
+	MetricName *string `json:"metricName,omitempty"`
 	Type *PrometheusType `json:"type,omitempty"`
 	Price NullableFloat64 `json:"price,omitempty"`
 	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
@@ -45,88 +45,68 @@ func NewRuleForUpdateDtoWithDefaults() *RuleForUpdateDto {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *RuleForUpdateDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RuleForUpdateDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *RuleForUpdateDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *RuleForUpdateDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *RuleForUpdateDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *RuleForUpdateDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetMetricName returns the MetricName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetricName returns the MetricName field value if set, zero value otherwise.
 func (o *RuleForUpdateDto) GetMetricName() string {
-	if o == nil || IsNil(o.MetricName.Get()) {
+	if o == nil || IsNil(o.MetricName) {
 		var ret string
 		return ret
 	}
-	return *o.MetricName.Get()
+	return *o.MetricName
 }
 
 // GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RuleForUpdateDto) GetMetricNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetricName) {
 		return nil, false
 	}
-	return o.MetricName.Get(), o.MetricName.IsSet()
+	return o.MetricName, true
 }
 
 // HasMetricName returns a boolean if a field has been set.
 func (o *RuleForUpdateDto) HasMetricName() bool {
-	if o != nil && o.MetricName.IsSet() {
+	if o != nil && !IsNil(o.MetricName) {
 		return true
 	}
 
 	return false
 }
 
-// SetMetricName gets a reference to the given NullableString and assigns it to the MetricName field.
+// SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *RuleForUpdateDto) SetMetricName(v string) {
-	o.MetricName.Set(&v)
-}
-// SetMetricNameNil sets the value for MetricName to be an explicit nil
-func (o *RuleForUpdateDto) SetMetricNameNil() {
-	o.MetricName.Set(nil)
-}
-
-// UnsetMetricName ensures that no value is present for MetricName, not even an explicit nil
-func (o *RuleForUpdateDto) UnsetMetricName() {
-	o.MetricName.Unset()
+	o.MetricName = &v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.
@@ -203,9 +183,9 @@ func (o *RuleForUpdateDto) UnsetPrice() {
 	o.Price.Unset()
 }
 
-// GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLabels returns the Labels field value if set, zero value otherwise.
 func (o *RuleForUpdateDto) GetLabels() []PrometheusLabelListDto {
-	if o == nil {
+	if o == nil || IsNil(o.Labels) {
 		var ret []PrometheusLabelListDto
 		return ret
 	}
@@ -214,7 +194,6 @@ func (o *RuleForUpdateDto) GetLabels() []PrometheusLabelListDto {
 
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RuleForUpdateDto) GetLabelsOk() ([]PrometheusLabelListDto, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
@@ -288,11 +267,11 @@ func (o RuleForUpdateDto) MarshalJSON() ([]byte, error) {
 
 func (o RuleForUpdateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.MetricName.IsSet() {
-		toSerialize["metricName"] = o.MetricName.Get()
+	if !IsNil(o.MetricName) {
+		toSerialize["metricName"] = o.MetricName
 	}
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
@@ -300,7 +279,7 @@ func (o RuleForUpdateDto) ToMap() (map[string]interface{}, error) {
 	if o.Price.IsSet() {
 		toSerialize["price"] = o.Price.Get()
 	}
-	if o.Labels != nil {
+	if !IsNil(o.Labels) {
 		toSerialize["labels"] = o.Labels
 	}
 	if o.OperationCredentialId.IsSet() {

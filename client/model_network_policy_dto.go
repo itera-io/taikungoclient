@@ -20,10 +20,10 @@ var _ MappedNullable = &NetworkPolicyDto{}
 
 // NetworkPolicyDto struct for NetworkPolicyDto
 type NetworkPolicyDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	PodSelector map[string]string `json:"podSelector,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Age NullableString `json:"age,omitempty"`
+	MetadataName *string `json:"metadataName,omitempty"`
+	PodSelector *map[string]string `json:"podSelector,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
+	Age *string `json:"age,omitempty"`
 }
 
 // NewNetworkPolicyDto instantiates a new NetworkPolicyDto object
@@ -43,65 +43,54 @@ func NewNetworkPolicyDtoWithDefaults() *NetworkPolicyDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value if set, zero value otherwise.
 func (o *NetworkPolicyDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil || IsNil(o.MetadataName) {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName.Get()
+	return *o.MetadataName
 }
 
 // GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkPolicyDto) GetMetadataNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetadataName) {
 		return nil, false
 	}
-	return o.MetadataName.Get(), o.MetadataName.IsSet()
+	return o.MetadataName, true
 }
 
 // HasMetadataName returns a boolean if a field has been set.
 func (o *NetworkPolicyDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
+	if o != nil && !IsNil(o.MetadataName) {
 		return true
 	}
 
 	return false
 }
 
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName gets a reference to the given string and assigns it to the MetadataName field.
 func (o *NetworkPolicyDto) SetMetadataName(v string) {
-	o.MetadataName.Set(&v)
-}
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *NetworkPolicyDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
+	o.MetadataName = &v
 }
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *NetworkPolicyDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetPodSelector returns the PodSelector field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPodSelector returns the PodSelector field value if set, zero value otherwise.
 func (o *NetworkPolicyDto) GetPodSelector() map[string]string {
-	if o == nil {
+	if o == nil || IsNil(o.PodSelector) {
 		var ret map[string]string
 		return ret
 	}
-	return o.PodSelector
+	return *o.PodSelector
 }
 
 // GetPodSelectorOk returns a tuple with the PodSelector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkPolicyDto) GetPodSelectorOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.PodSelector) {
 		return nil, false
 	}
-	return &o.PodSelector, true
+	return o.PodSelector, true
 }
 
 // HasPodSelector returns a boolean if a field has been set.
@@ -115,91 +104,71 @@ func (o *NetworkPolicyDto) HasPodSelector() bool {
 
 // SetPodSelector gets a reference to the given map[string]string and assigns it to the PodSelector field.
 func (o *NetworkPolicyDto) SetPodSelector(v map[string]string) {
-	o.PodSelector = v
+	o.PodSelector = &v
 }
 
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *NetworkPolicyDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+	return *o.Namespace
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkPolicyDto) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return o.Namespace, true
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *NetworkPolicyDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
+	if o != nil && !IsNil(o.Namespace) {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *NetworkPolicyDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *NetworkPolicyDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = &v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *NetworkPolicyDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetAge returns the Age field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAge returns the Age field value if set, zero value otherwise.
 func (o *NetworkPolicyDto) GetAge() string {
-	if o == nil || IsNil(o.Age.Get()) {
+	if o == nil || IsNil(o.Age) {
 		var ret string
 		return ret
 	}
-	return *o.Age.Get()
+	return *o.Age
 }
 
 // GetAgeOk returns a tuple with the Age field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NetworkPolicyDto) GetAgeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Age) {
 		return nil, false
 	}
-	return o.Age.Get(), o.Age.IsSet()
+	return o.Age, true
 }
 
 // HasAge returns a boolean if a field has been set.
 func (o *NetworkPolicyDto) HasAge() bool {
-	if o != nil && o.Age.IsSet() {
+	if o != nil && !IsNil(o.Age) {
 		return true
 	}
 
 	return false
 }
 
-// SetAge gets a reference to the given NullableString and assigns it to the Age field.
+// SetAge gets a reference to the given string and assigns it to the Age field.
 func (o *NetworkPolicyDto) SetAge(v string) {
-	o.Age.Set(&v)
-}
-// SetAgeNil sets the value for Age to be an explicit nil
-func (o *NetworkPolicyDto) SetAgeNil() {
-	o.Age.Set(nil)
-}
-
-// UnsetAge ensures that no value is present for Age, not even an explicit nil
-func (o *NetworkPolicyDto) UnsetAge() {
-	o.Age.Unset()
+	o.Age = &v
 }
 
 func (o NetworkPolicyDto) MarshalJSON() ([]byte, error) {
@@ -212,17 +181,17 @@ func (o NetworkPolicyDto) MarshalJSON() ([]byte, error) {
 
 func (o NetworkPolicyDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
+	if !IsNil(o.MetadataName) {
+		toSerialize["metadataName"] = o.MetadataName
 	}
-	if o.PodSelector != nil {
+	if !IsNil(o.PodSelector) {
 		toSerialize["podSelector"] = o.PodSelector
 	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
 	}
-	if o.Age.IsSet() {
-		toSerialize["age"] = o.Age.Get()
+	if !IsNil(o.Age) {
+		toSerialize["age"] = o.Age
 	}
 	return toSerialize, nil
 }

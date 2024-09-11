@@ -21,17 +21,17 @@ var _ MappedNullable = &TaikunLbResponseDto{}
 // TaikunLbResponseDto struct for TaikunLbResponseDto
 type TaikunLbResponseDto struct {
 	Id *int32 `json:"id,omitempty"`
-	PublicIp NullableString `json:"publicIp,omitempty"`
-	VirtualLbIpFirst NullableString `json:"virtualLbIpFirst,omitempty"`
-	VirtualLbIpSecond NullableString `json:"virtualLbIpSecond,omitempty"`
-	PrivateIpFirst NullableString `json:"privateIpFirst,omitempty"`
-	PrivateIpSecond NullableString `json:"privateIpSecond,omitempty"`
-	VirtualRouterId NullableString `json:"virtualRouterId,omitempty"`
-	HypervisorFirst NullableString `json:"hypervisorFirst,omitempty"`
-	HypervisorSecond NullableString `json:"hypervisorSecond,omitempty"`
-	SvcName NullableString `json:"svcName,omitempty"`
-	SvcNamespace NullableString `json:"svcNamespace,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
+	PublicIp *string `json:"publicIp,omitempty"`
+	VirtualLbIpFirst *string `json:"virtualLbIpFirst,omitempty"`
+	VirtualLbIpSecond *string `json:"virtualLbIpSecond,omitempty"`
+	PrivateIpFirst *string `json:"privateIpFirst,omitempty"`
+	PrivateIpSecond *string `json:"privateIpSecond,omitempty"`
+	VirtualRouterId *string `json:"virtualRouterId,omitempty"`
+	HypervisorFirst *string `json:"hypervisorFirst,omitempty"`
+	HypervisorSecond *string `json:"hypervisorSecond,omitempty"`
+	SvcName *string `json:"svcName,omitempty"`
+	SvcNamespace *string `json:"svcNamespace,omitempty"`
+	ProjectName *string `json:"projectName,omitempty"`
 }
 
 // NewTaikunLbResponseDto instantiates a new TaikunLbResponseDto object
@@ -83,466 +83,356 @@ func (o *TaikunLbResponseDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetPublicIp returns the PublicIp field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPublicIp returns the PublicIp field value if set, zero value otherwise.
 func (o *TaikunLbResponseDto) GetPublicIp() string {
-	if o == nil || IsNil(o.PublicIp.Get()) {
+	if o == nil || IsNil(o.PublicIp) {
 		var ret string
 		return ret
 	}
-	return *o.PublicIp.Get()
+	return *o.PublicIp
 }
 
 // GetPublicIpOk returns a tuple with the PublicIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaikunLbResponseDto) GetPublicIpOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PublicIp) {
 		return nil, false
 	}
-	return o.PublicIp.Get(), o.PublicIp.IsSet()
+	return o.PublicIp, true
 }
 
 // HasPublicIp returns a boolean if a field has been set.
 func (o *TaikunLbResponseDto) HasPublicIp() bool {
-	if o != nil && o.PublicIp.IsSet() {
+	if o != nil && !IsNil(o.PublicIp) {
 		return true
 	}
 
 	return false
 }
 
-// SetPublicIp gets a reference to the given NullableString and assigns it to the PublicIp field.
+// SetPublicIp gets a reference to the given string and assigns it to the PublicIp field.
 func (o *TaikunLbResponseDto) SetPublicIp(v string) {
-	o.PublicIp.Set(&v)
-}
-// SetPublicIpNil sets the value for PublicIp to be an explicit nil
-func (o *TaikunLbResponseDto) SetPublicIpNil() {
-	o.PublicIp.Set(nil)
+	o.PublicIp = &v
 }
 
-// UnsetPublicIp ensures that no value is present for PublicIp, not even an explicit nil
-func (o *TaikunLbResponseDto) UnsetPublicIp() {
-	o.PublicIp.Unset()
-}
-
-// GetVirtualLbIpFirst returns the VirtualLbIpFirst field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVirtualLbIpFirst returns the VirtualLbIpFirst field value if set, zero value otherwise.
 func (o *TaikunLbResponseDto) GetVirtualLbIpFirst() string {
-	if o == nil || IsNil(o.VirtualLbIpFirst.Get()) {
+	if o == nil || IsNil(o.VirtualLbIpFirst) {
 		var ret string
 		return ret
 	}
-	return *o.VirtualLbIpFirst.Get()
+	return *o.VirtualLbIpFirst
 }
 
 // GetVirtualLbIpFirstOk returns a tuple with the VirtualLbIpFirst field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaikunLbResponseDto) GetVirtualLbIpFirstOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VirtualLbIpFirst) {
 		return nil, false
 	}
-	return o.VirtualLbIpFirst.Get(), o.VirtualLbIpFirst.IsSet()
+	return o.VirtualLbIpFirst, true
 }
 
 // HasVirtualLbIpFirst returns a boolean if a field has been set.
 func (o *TaikunLbResponseDto) HasVirtualLbIpFirst() bool {
-	if o != nil && o.VirtualLbIpFirst.IsSet() {
+	if o != nil && !IsNil(o.VirtualLbIpFirst) {
 		return true
 	}
 
 	return false
 }
 
-// SetVirtualLbIpFirst gets a reference to the given NullableString and assigns it to the VirtualLbIpFirst field.
+// SetVirtualLbIpFirst gets a reference to the given string and assigns it to the VirtualLbIpFirst field.
 func (o *TaikunLbResponseDto) SetVirtualLbIpFirst(v string) {
-	o.VirtualLbIpFirst.Set(&v)
-}
-// SetVirtualLbIpFirstNil sets the value for VirtualLbIpFirst to be an explicit nil
-func (o *TaikunLbResponseDto) SetVirtualLbIpFirstNil() {
-	o.VirtualLbIpFirst.Set(nil)
+	o.VirtualLbIpFirst = &v
 }
 
-// UnsetVirtualLbIpFirst ensures that no value is present for VirtualLbIpFirst, not even an explicit nil
-func (o *TaikunLbResponseDto) UnsetVirtualLbIpFirst() {
-	o.VirtualLbIpFirst.Unset()
-}
-
-// GetVirtualLbIpSecond returns the VirtualLbIpSecond field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVirtualLbIpSecond returns the VirtualLbIpSecond field value if set, zero value otherwise.
 func (o *TaikunLbResponseDto) GetVirtualLbIpSecond() string {
-	if o == nil || IsNil(o.VirtualLbIpSecond.Get()) {
+	if o == nil || IsNil(o.VirtualLbIpSecond) {
 		var ret string
 		return ret
 	}
-	return *o.VirtualLbIpSecond.Get()
+	return *o.VirtualLbIpSecond
 }
 
 // GetVirtualLbIpSecondOk returns a tuple with the VirtualLbIpSecond field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaikunLbResponseDto) GetVirtualLbIpSecondOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VirtualLbIpSecond) {
 		return nil, false
 	}
-	return o.VirtualLbIpSecond.Get(), o.VirtualLbIpSecond.IsSet()
+	return o.VirtualLbIpSecond, true
 }
 
 // HasVirtualLbIpSecond returns a boolean if a field has been set.
 func (o *TaikunLbResponseDto) HasVirtualLbIpSecond() bool {
-	if o != nil && o.VirtualLbIpSecond.IsSet() {
+	if o != nil && !IsNil(o.VirtualLbIpSecond) {
 		return true
 	}
 
 	return false
 }
 
-// SetVirtualLbIpSecond gets a reference to the given NullableString and assigns it to the VirtualLbIpSecond field.
+// SetVirtualLbIpSecond gets a reference to the given string and assigns it to the VirtualLbIpSecond field.
 func (o *TaikunLbResponseDto) SetVirtualLbIpSecond(v string) {
-	o.VirtualLbIpSecond.Set(&v)
-}
-// SetVirtualLbIpSecondNil sets the value for VirtualLbIpSecond to be an explicit nil
-func (o *TaikunLbResponseDto) SetVirtualLbIpSecondNil() {
-	o.VirtualLbIpSecond.Set(nil)
+	o.VirtualLbIpSecond = &v
 }
 
-// UnsetVirtualLbIpSecond ensures that no value is present for VirtualLbIpSecond, not even an explicit nil
-func (o *TaikunLbResponseDto) UnsetVirtualLbIpSecond() {
-	o.VirtualLbIpSecond.Unset()
-}
-
-// GetPrivateIpFirst returns the PrivateIpFirst field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPrivateIpFirst returns the PrivateIpFirst field value if set, zero value otherwise.
 func (o *TaikunLbResponseDto) GetPrivateIpFirst() string {
-	if o == nil || IsNil(o.PrivateIpFirst.Get()) {
+	if o == nil || IsNil(o.PrivateIpFirst) {
 		var ret string
 		return ret
 	}
-	return *o.PrivateIpFirst.Get()
+	return *o.PrivateIpFirst
 }
 
 // GetPrivateIpFirstOk returns a tuple with the PrivateIpFirst field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaikunLbResponseDto) GetPrivateIpFirstOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PrivateIpFirst) {
 		return nil, false
 	}
-	return o.PrivateIpFirst.Get(), o.PrivateIpFirst.IsSet()
+	return o.PrivateIpFirst, true
 }
 
 // HasPrivateIpFirst returns a boolean if a field has been set.
 func (o *TaikunLbResponseDto) HasPrivateIpFirst() bool {
-	if o != nil && o.PrivateIpFirst.IsSet() {
+	if o != nil && !IsNil(o.PrivateIpFirst) {
 		return true
 	}
 
 	return false
 }
 
-// SetPrivateIpFirst gets a reference to the given NullableString and assigns it to the PrivateIpFirst field.
+// SetPrivateIpFirst gets a reference to the given string and assigns it to the PrivateIpFirst field.
 func (o *TaikunLbResponseDto) SetPrivateIpFirst(v string) {
-	o.PrivateIpFirst.Set(&v)
-}
-// SetPrivateIpFirstNil sets the value for PrivateIpFirst to be an explicit nil
-func (o *TaikunLbResponseDto) SetPrivateIpFirstNil() {
-	o.PrivateIpFirst.Set(nil)
+	o.PrivateIpFirst = &v
 }
 
-// UnsetPrivateIpFirst ensures that no value is present for PrivateIpFirst, not even an explicit nil
-func (o *TaikunLbResponseDto) UnsetPrivateIpFirst() {
-	o.PrivateIpFirst.Unset()
-}
-
-// GetPrivateIpSecond returns the PrivateIpSecond field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPrivateIpSecond returns the PrivateIpSecond field value if set, zero value otherwise.
 func (o *TaikunLbResponseDto) GetPrivateIpSecond() string {
-	if o == nil || IsNil(o.PrivateIpSecond.Get()) {
+	if o == nil || IsNil(o.PrivateIpSecond) {
 		var ret string
 		return ret
 	}
-	return *o.PrivateIpSecond.Get()
+	return *o.PrivateIpSecond
 }
 
 // GetPrivateIpSecondOk returns a tuple with the PrivateIpSecond field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaikunLbResponseDto) GetPrivateIpSecondOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PrivateIpSecond) {
 		return nil, false
 	}
-	return o.PrivateIpSecond.Get(), o.PrivateIpSecond.IsSet()
+	return o.PrivateIpSecond, true
 }
 
 // HasPrivateIpSecond returns a boolean if a field has been set.
 func (o *TaikunLbResponseDto) HasPrivateIpSecond() bool {
-	if o != nil && o.PrivateIpSecond.IsSet() {
+	if o != nil && !IsNil(o.PrivateIpSecond) {
 		return true
 	}
 
 	return false
 }
 
-// SetPrivateIpSecond gets a reference to the given NullableString and assigns it to the PrivateIpSecond field.
+// SetPrivateIpSecond gets a reference to the given string and assigns it to the PrivateIpSecond field.
 func (o *TaikunLbResponseDto) SetPrivateIpSecond(v string) {
-	o.PrivateIpSecond.Set(&v)
-}
-// SetPrivateIpSecondNil sets the value for PrivateIpSecond to be an explicit nil
-func (o *TaikunLbResponseDto) SetPrivateIpSecondNil() {
-	o.PrivateIpSecond.Set(nil)
+	o.PrivateIpSecond = &v
 }
 
-// UnsetPrivateIpSecond ensures that no value is present for PrivateIpSecond, not even an explicit nil
-func (o *TaikunLbResponseDto) UnsetPrivateIpSecond() {
-	o.PrivateIpSecond.Unset()
-}
-
-// GetVirtualRouterId returns the VirtualRouterId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVirtualRouterId returns the VirtualRouterId field value if set, zero value otherwise.
 func (o *TaikunLbResponseDto) GetVirtualRouterId() string {
-	if o == nil || IsNil(o.VirtualRouterId.Get()) {
+	if o == nil || IsNil(o.VirtualRouterId) {
 		var ret string
 		return ret
 	}
-	return *o.VirtualRouterId.Get()
+	return *o.VirtualRouterId
 }
 
 // GetVirtualRouterIdOk returns a tuple with the VirtualRouterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaikunLbResponseDto) GetVirtualRouterIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VirtualRouterId) {
 		return nil, false
 	}
-	return o.VirtualRouterId.Get(), o.VirtualRouterId.IsSet()
+	return o.VirtualRouterId, true
 }
 
 // HasVirtualRouterId returns a boolean if a field has been set.
 func (o *TaikunLbResponseDto) HasVirtualRouterId() bool {
-	if o != nil && o.VirtualRouterId.IsSet() {
+	if o != nil && !IsNil(o.VirtualRouterId) {
 		return true
 	}
 
 	return false
 }
 
-// SetVirtualRouterId gets a reference to the given NullableString and assigns it to the VirtualRouterId field.
+// SetVirtualRouterId gets a reference to the given string and assigns it to the VirtualRouterId field.
 func (o *TaikunLbResponseDto) SetVirtualRouterId(v string) {
-	o.VirtualRouterId.Set(&v)
-}
-// SetVirtualRouterIdNil sets the value for VirtualRouterId to be an explicit nil
-func (o *TaikunLbResponseDto) SetVirtualRouterIdNil() {
-	o.VirtualRouterId.Set(nil)
+	o.VirtualRouterId = &v
 }
 
-// UnsetVirtualRouterId ensures that no value is present for VirtualRouterId, not even an explicit nil
-func (o *TaikunLbResponseDto) UnsetVirtualRouterId() {
-	o.VirtualRouterId.Unset()
-}
-
-// GetHypervisorFirst returns the HypervisorFirst field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHypervisorFirst returns the HypervisorFirst field value if set, zero value otherwise.
 func (o *TaikunLbResponseDto) GetHypervisorFirst() string {
-	if o == nil || IsNil(o.HypervisorFirst.Get()) {
+	if o == nil || IsNil(o.HypervisorFirst) {
 		var ret string
 		return ret
 	}
-	return *o.HypervisorFirst.Get()
+	return *o.HypervisorFirst
 }
 
 // GetHypervisorFirstOk returns a tuple with the HypervisorFirst field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaikunLbResponseDto) GetHypervisorFirstOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HypervisorFirst) {
 		return nil, false
 	}
-	return o.HypervisorFirst.Get(), o.HypervisorFirst.IsSet()
+	return o.HypervisorFirst, true
 }
 
 // HasHypervisorFirst returns a boolean if a field has been set.
 func (o *TaikunLbResponseDto) HasHypervisorFirst() bool {
-	if o != nil && o.HypervisorFirst.IsSet() {
+	if o != nil && !IsNil(o.HypervisorFirst) {
 		return true
 	}
 
 	return false
 }
 
-// SetHypervisorFirst gets a reference to the given NullableString and assigns it to the HypervisorFirst field.
+// SetHypervisorFirst gets a reference to the given string and assigns it to the HypervisorFirst field.
 func (o *TaikunLbResponseDto) SetHypervisorFirst(v string) {
-	o.HypervisorFirst.Set(&v)
-}
-// SetHypervisorFirstNil sets the value for HypervisorFirst to be an explicit nil
-func (o *TaikunLbResponseDto) SetHypervisorFirstNil() {
-	o.HypervisorFirst.Set(nil)
+	o.HypervisorFirst = &v
 }
 
-// UnsetHypervisorFirst ensures that no value is present for HypervisorFirst, not even an explicit nil
-func (o *TaikunLbResponseDto) UnsetHypervisorFirst() {
-	o.HypervisorFirst.Unset()
-}
-
-// GetHypervisorSecond returns the HypervisorSecond field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHypervisorSecond returns the HypervisorSecond field value if set, zero value otherwise.
 func (o *TaikunLbResponseDto) GetHypervisorSecond() string {
-	if o == nil || IsNil(o.HypervisorSecond.Get()) {
+	if o == nil || IsNil(o.HypervisorSecond) {
 		var ret string
 		return ret
 	}
-	return *o.HypervisorSecond.Get()
+	return *o.HypervisorSecond
 }
 
 // GetHypervisorSecondOk returns a tuple with the HypervisorSecond field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaikunLbResponseDto) GetHypervisorSecondOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HypervisorSecond) {
 		return nil, false
 	}
-	return o.HypervisorSecond.Get(), o.HypervisorSecond.IsSet()
+	return o.HypervisorSecond, true
 }
 
 // HasHypervisorSecond returns a boolean if a field has been set.
 func (o *TaikunLbResponseDto) HasHypervisorSecond() bool {
-	if o != nil && o.HypervisorSecond.IsSet() {
+	if o != nil && !IsNil(o.HypervisorSecond) {
 		return true
 	}
 
 	return false
 }
 
-// SetHypervisorSecond gets a reference to the given NullableString and assigns it to the HypervisorSecond field.
+// SetHypervisorSecond gets a reference to the given string and assigns it to the HypervisorSecond field.
 func (o *TaikunLbResponseDto) SetHypervisorSecond(v string) {
-	o.HypervisorSecond.Set(&v)
-}
-// SetHypervisorSecondNil sets the value for HypervisorSecond to be an explicit nil
-func (o *TaikunLbResponseDto) SetHypervisorSecondNil() {
-	o.HypervisorSecond.Set(nil)
+	o.HypervisorSecond = &v
 }
 
-// UnsetHypervisorSecond ensures that no value is present for HypervisorSecond, not even an explicit nil
-func (o *TaikunLbResponseDto) UnsetHypervisorSecond() {
-	o.HypervisorSecond.Unset()
-}
-
-// GetSvcName returns the SvcName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSvcName returns the SvcName field value if set, zero value otherwise.
 func (o *TaikunLbResponseDto) GetSvcName() string {
-	if o == nil || IsNil(o.SvcName.Get()) {
+	if o == nil || IsNil(o.SvcName) {
 		var ret string
 		return ret
 	}
-	return *o.SvcName.Get()
+	return *o.SvcName
 }
 
 // GetSvcNameOk returns a tuple with the SvcName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaikunLbResponseDto) GetSvcNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SvcName) {
 		return nil, false
 	}
-	return o.SvcName.Get(), o.SvcName.IsSet()
+	return o.SvcName, true
 }
 
 // HasSvcName returns a boolean if a field has been set.
 func (o *TaikunLbResponseDto) HasSvcName() bool {
-	if o != nil && o.SvcName.IsSet() {
+	if o != nil && !IsNil(o.SvcName) {
 		return true
 	}
 
 	return false
 }
 
-// SetSvcName gets a reference to the given NullableString and assigns it to the SvcName field.
+// SetSvcName gets a reference to the given string and assigns it to the SvcName field.
 func (o *TaikunLbResponseDto) SetSvcName(v string) {
-	o.SvcName.Set(&v)
-}
-// SetSvcNameNil sets the value for SvcName to be an explicit nil
-func (o *TaikunLbResponseDto) SetSvcNameNil() {
-	o.SvcName.Set(nil)
+	o.SvcName = &v
 }
 
-// UnsetSvcName ensures that no value is present for SvcName, not even an explicit nil
-func (o *TaikunLbResponseDto) UnsetSvcName() {
-	o.SvcName.Unset()
-}
-
-// GetSvcNamespace returns the SvcNamespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSvcNamespace returns the SvcNamespace field value if set, zero value otherwise.
 func (o *TaikunLbResponseDto) GetSvcNamespace() string {
-	if o == nil || IsNil(o.SvcNamespace.Get()) {
+	if o == nil || IsNil(o.SvcNamespace) {
 		var ret string
 		return ret
 	}
-	return *o.SvcNamespace.Get()
+	return *o.SvcNamespace
 }
 
 // GetSvcNamespaceOk returns a tuple with the SvcNamespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaikunLbResponseDto) GetSvcNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SvcNamespace) {
 		return nil, false
 	}
-	return o.SvcNamespace.Get(), o.SvcNamespace.IsSet()
+	return o.SvcNamespace, true
 }
 
 // HasSvcNamespace returns a boolean if a field has been set.
 func (o *TaikunLbResponseDto) HasSvcNamespace() bool {
-	if o != nil && o.SvcNamespace.IsSet() {
+	if o != nil && !IsNil(o.SvcNamespace) {
 		return true
 	}
 
 	return false
 }
 
-// SetSvcNamespace gets a reference to the given NullableString and assigns it to the SvcNamespace field.
+// SetSvcNamespace gets a reference to the given string and assigns it to the SvcNamespace field.
 func (o *TaikunLbResponseDto) SetSvcNamespace(v string) {
-	o.SvcNamespace.Set(&v)
-}
-// SetSvcNamespaceNil sets the value for SvcNamespace to be an explicit nil
-func (o *TaikunLbResponseDto) SetSvcNamespaceNil() {
-	o.SvcNamespace.Set(nil)
+	o.SvcNamespace = &v
 }
 
-// UnsetSvcNamespace ensures that no value is present for SvcNamespace, not even an explicit nil
-func (o *TaikunLbResponseDto) UnsetSvcNamespace() {
-	o.SvcNamespace.Unset()
-}
-
-// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *TaikunLbResponseDto) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName.Get()) {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName.Get()
+	return *o.ProjectName
 }
 
 // GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TaikunLbResponseDto) GetProjectNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
-	return o.ProjectName.Get(), o.ProjectName.IsSet()
+	return o.ProjectName, true
 }
 
 // HasProjectName returns a boolean if a field has been set.
 func (o *TaikunLbResponseDto) HasProjectName() bool {
-	if o != nil && o.ProjectName.IsSet() {
+	if o != nil && !IsNil(o.ProjectName) {
 		return true
 	}
 
 	return false
 }
 
-// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
 func (o *TaikunLbResponseDto) SetProjectName(v string) {
-	o.ProjectName.Set(&v)
-}
-// SetProjectNameNil sets the value for ProjectName to be an explicit nil
-func (o *TaikunLbResponseDto) SetProjectNameNil() {
-	o.ProjectName.Set(nil)
-}
-
-// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
-func (o *TaikunLbResponseDto) UnsetProjectName() {
-	o.ProjectName.Unset()
+	o.ProjectName = &v
 }
 
 func (o TaikunLbResponseDto) MarshalJSON() ([]byte, error) {
@@ -558,38 +448,38 @@ func (o TaikunLbResponseDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.PublicIp.IsSet() {
-		toSerialize["publicIp"] = o.PublicIp.Get()
+	if !IsNil(o.PublicIp) {
+		toSerialize["publicIp"] = o.PublicIp
 	}
-	if o.VirtualLbIpFirst.IsSet() {
-		toSerialize["virtualLbIpFirst"] = o.VirtualLbIpFirst.Get()
+	if !IsNil(o.VirtualLbIpFirst) {
+		toSerialize["virtualLbIpFirst"] = o.VirtualLbIpFirst
 	}
-	if o.VirtualLbIpSecond.IsSet() {
-		toSerialize["virtualLbIpSecond"] = o.VirtualLbIpSecond.Get()
+	if !IsNil(o.VirtualLbIpSecond) {
+		toSerialize["virtualLbIpSecond"] = o.VirtualLbIpSecond
 	}
-	if o.PrivateIpFirst.IsSet() {
-		toSerialize["privateIpFirst"] = o.PrivateIpFirst.Get()
+	if !IsNil(o.PrivateIpFirst) {
+		toSerialize["privateIpFirst"] = o.PrivateIpFirst
 	}
-	if o.PrivateIpSecond.IsSet() {
-		toSerialize["privateIpSecond"] = o.PrivateIpSecond.Get()
+	if !IsNil(o.PrivateIpSecond) {
+		toSerialize["privateIpSecond"] = o.PrivateIpSecond
 	}
-	if o.VirtualRouterId.IsSet() {
-		toSerialize["virtualRouterId"] = o.VirtualRouterId.Get()
+	if !IsNil(o.VirtualRouterId) {
+		toSerialize["virtualRouterId"] = o.VirtualRouterId
 	}
-	if o.HypervisorFirst.IsSet() {
-		toSerialize["hypervisorFirst"] = o.HypervisorFirst.Get()
+	if !IsNil(o.HypervisorFirst) {
+		toSerialize["hypervisorFirst"] = o.HypervisorFirst
 	}
-	if o.HypervisorSecond.IsSet() {
-		toSerialize["hypervisorSecond"] = o.HypervisorSecond.Get()
+	if !IsNil(o.HypervisorSecond) {
+		toSerialize["hypervisorSecond"] = o.HypervisorSecond
 	}
-	if o.SvcName.IsSet() {
-		toSerialize["svcName"] = o.SvcName.Get()
+	if !IsNil(o.SvcName) {
+		toSerialize["svcName"] = o.SvcName
 	}
-	if o.SvcNamespace.IsSet() {
-		toSerialize["svcNamespace"] = o.SvcNamespace.Get()
+	if !IsNil(o.SvcNamespace) {
+		toSerialize["svcNamespace"] = o.SvcNamespace
 	}
-	if o.ProjectName.IsSet() {
-		toSerialize["projectName"] = o.ProjectName.Get()
+	if !IsNil(o.ProjectName) {
+		toSerialize["projectName"] = o.ProjectName
 	}
 	return toSerialize, nil
 }

@@ -22,10 +22,10 @@ var _ MappedNullable = &ProjectsForBillingDto{}
 // ProjectsForBillingDto struct for ProjectsForBillingDto
 type ProjectsForBillingDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	CreatedAt NullableTime `json:"createdAt,omitempty"`
 	BillingStartDate NullableTime `json:"billingStartDate,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 	Price *float64 `json:"price,omitempty"`
 	Servers []ServersForBillingDto `json:"servers,omitempty"`
 	StandaloneVms []StandaloneVmsForBillingDto `json:"standaloneVms,omitempty"`
@@ -81,46 +81,36 @@ func (o *ProjectsForBillingDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ProjectsForBillingDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectsForBillingDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ProjectsForBillingDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ProjectsForBillingDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ProjectsForBillingDto) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ProjectsForBillingDto) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -207,46 +197,36 @@ func (o *ProjectsForBillingDto) UnsetBillingStartDate() {
 	o.BillingStartDate.Unset()
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *ProjectsForBillingDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectsForBillingDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *ProjectsForBillingDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *ProjectsForBillingDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *ProjectsForBillingDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
-
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *ProjectsForBillingDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
+	o.OrganizationName = &v
 }
 
 // GetPrice returns the Price field value if set, zero value otherwise.
@@ -281,9 +261,9 @@ func (o *ProjectsForBillingDto) SetPrice(v float64) {
 	o.Price = &v
 }
 
-// GetServers returns the Servers field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetServers returns the Servers field value if set, zero value otherwise.
 func (o *ProjectsForBillingDto) GetServers() []ServersForBillingDto {
-	if o == nil {
+	if o == nil || IsNil(o.Servers) {
 		var ret []ServersForBillingDto
 		return ret
 	}
@@ -292,7 +272,6 @@ func (o *ProjectsForBillingDto) GetServers() []ServersForBillingDto {
 
 // GetServersOk returns a tuple with the Servers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectsForBillingDto) GetServersOk() ([]ServersForBillingDto, bool) {
 	if o == nil || IsNil(o.Servers) {
 		return nil, false
@@ -314,9 +293,9 @@ func (o *ProjectsForBillingDto) SetServers(v []ServersForBillingDto) {
 	o.Servers = v
 }
 
-// GetStandaloneVms returns the StandaloneVms field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStandaloneVms returns the StandaloneVms field value if set, zero value otherwise.
 func (o *ProjectsForBillingDto) GetStandaloneVms() []StandaloneVmsForBillingDto {
-	if o == nil {
+	if o == nil || IsNil(o.StandaloneVms) {
 		var ret []StandaloneVmsForBillingDto
 		return ret
 	}
@@ -325,7 +304,6 @@ func (o *ProjectsForBillingDto) GetStandaloneVms() []StandaloneVmsForBillingDto 
 
 // GetStandaloneVmsOk returns a tuple with the StandaloneVms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectsForBillingDto) GetStandaloneVmsOk() ([]StandaloneVmsForBillingDto, bool) {
 	if o == nil || IsNil(o.StandaloneVms) {
 		return nil, false
@@ -392,8 +370,8 @@ func (o ProjectsForBillingDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
@@ -401,16 +379,16 @@ func (o ProjectsForBillingDto) ToMap() (map[string]interface{}, error) {
 	if o.BillingStartDate.IsSet() {
 		toSerialize["billingStartDate"] = o.BillingStartDate.Get()
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price
 	}
-	if o.Servers != nil {
+	if !IsNil(o.Servers) {
 		toSerialize["servers"] = o.Servers
 	}
-	if o.StandaloneVms != nil {
+	if !IsNil(o.StandaloneVms) {
 		toSerialize["standaloneVms"] = o.StandaloneVms
 	}
 	if !IsNil(o.BillingEnabled) {

@@ -20,12 +20,12 @@ var _ MappedNullable = &OpenStackNetworkListQuery{}
 
 // OpenStackNetworkListQuery struct for OpenStackNetworkListQuery
 type OpenStackNetworkListQuery struct {
-	OpenStackUser NullableString `json:"openStackUser,omitempty"`
-	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
-	OpenStackUrl NullableString `json:"openStackUrl,omitempty"`
-	OpenStackProjectId NullableString `json:"openStackProjectId,omitempty"`
-	OpenStackDomain NullableString `json:"openStackDomain,omitempty"`
-	OpenStackRegion NullableString `json:"openStackRegion,omitempty"`
+	OpenStackUser *string `json:"openStackUser,omitempty"`
+	OpenStackPassword *string `json:"openStackPassword,omitempty"`
+	OpenStackUrl *string `json:"openStackUrl,omitempty"`
+	OpenStackProjectId *string `json:"openStackProjectId,omitempty"`
+	OpenStackDomain *string `json:"openStackDomain,omitempty"`
+	OpenStackRegion *string `json:"openStackRegion,omitempty"`
 	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
 	IsAdmin *bool `json:"isAdmin,omitempty"`
 }
@@ -47,256 +47,196 @@ func NewOpenStackNetworkListQueryWithDefaults() *OpenStackNetworkListQuery {
 	return &this
 }
 
-// GetOpenStackUser returns the OpenStackUser field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOpenStackUser returns the OpenStackUser field value if set, zero value otherwise.
 func (o *OpenStackNetworkListQuery) GetOpenStackUser() string {
-	if o == nil || IsNil(o.OpenStackUser.Get()) {
+	if o == nil || IsNil(o.OpenStackUser) {
 		var ret string
 		return ret
 	}
-	return *o.OpenStackUser.Get()
+	return *o.OpenStackUser
 }
 
 // GetOpenStackUserOk returns a tuple with the OpenStackUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenStackNetworkListQuery) GetOpenStackUserOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUser) {
 		return nil, false
 	}
-	return o.OpenStackUser.Get(), o.OpenStackUser.IsSet()
+	return o.OpenStackUser, true
 }
 
 // HasOpenStackUser returns a boolean if a field has been set.
 func (o *OpenStackNetworkListQuery) HasOpenStackUser() bool {
-	if o != nil && o.OpenStackUser.IsSet() {
+	if o != nil && !IsNil(o.OpenStackUser) {
 		return true
 	}
 
 	return false
 }
 
-// SetOpenStackUser gets a reference to the given NullableString and assigns it to the OpenStackUser field.
+// SetOpenStackUser gets a reference to the given string and assigns it to the OpenStackUser field.
 func (o *OpenStackNetworkListQuery) SetOpenStackUser(v string) {
-	o.OpenStackUser.Set(&v)
-}
-// SetOpenStackUserNil sets the value for OpenStackUser to be an explicit nil
-func (o *OpenStackNetworkListQuery) SetOpenStackUserNil() {
-	o.OpenStackUser.Set(nil)
+	o.OpenStackUser = &v
 }
 
-// UnsetOpenStackUser ensures that no value is present for OpenStackUser, not even an explicit nil
-func (o *OpenStackNetworkListQuery) UnsetOpenStackUser() {
-	o.OpenStackUser.Unset()
-}
-
-// GetOpenStackPassword returns the OpenStackPassword field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOpenStackPassword returns the OpenStackPassword field value if set, zero value otherwise.
 func (o *OpenStackNetworkListQuery) GetOpenStackPassword() string {
-	if o == nil || IsNil(o.OpenStackPassword.Get()) {
+	if o == nil || IsNil(o.OpenStackPassword) {
 		var ret string
 		return ret
 	}
-	return *o.OpenStackPassword.Get()
+	return *o.OpenStackPassword
 }
 
 // GetOpenStackPasswordOk returns a tuple with the OpenStackPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenStackNetworkListQuery) GetOpenStackPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackPassword) {
 		return nil, false
 	}
-	return o.OpenStackPassword.Get(), o.OpenStackPassword.IsSet()
+	return o.OpenStackPassword, true
 }
 
 // HasOpenStackPassword returns a boolean if a field has been set.
 func (o *OpenStackNetworkListQuery) HasOpenStackPassword() bool {
-	if o != nil && o.OpenStackPassword.IsSet() {
+	if o != nil && !IsNil(o.OpenStackPassword) {
 		return true
 	}
 
 	return false
 }
 
-// SetOpenStackPassword gets a reference to the given NullableString and assigns it to the OpenStackPassword field.
+// SetOpenStackPassword gets a reference to the given string and assigns it to the OpenStackPassword field.
 func (o *OpenStackNetworkListQuery) SetOpenStackPassword(v string) {
-	o.OpenStackPassword.Set(&v)
-}
-// SetOpenStackPasswordNil sets the value for OpenStackPassword to be an explicit nil
-func (o *OpenStackNetworkListQuery) SetOpenStackPasswordNil() {
-	o.OpenStackPassword.Set(nil)
+	o.OpenStackPassword = &v
 }
 
-// UnsetOpenStackPassword ensures that no value is present for OpenStackPassword, not even an explicit nil
-func (o *OpenStackNetworkListQuery) UnsetOpenStackPassword() {
-	o.OpenStackPassword.Unset()
-}
-
-// GetOpenStackUrl returns the OpenStackUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOpenStackUrl returns the OpenStackUrl field value if set, zero value otherwise.
 func (o *OpenStackNetworkListQuery) GetOpenStackUrl() string {
-	if o == nil || IsNil(o.OpenStackUrl.Get()) {
+	if o == nil || IsNil(o.OpenStackUrl) {
 		var ret string
 		return ret
 	}
-	return *o.OpenStackUrl.Get()
+	return *o.OpenStackUrl
 }
 
 // GetOpenStackUrlOk returns a tuple with the OpenStackUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenStackNetworkListQuery) GetOpenStackUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUrl) {
 		return nil, false
 	}
-	return o.OpenStackUrl.Get(), o.OpenStackUrl.IsSet()
+	return o.OpenStackUrl, true
 }
 
 // HasOpenStackUrl returns a boolean if a field has been set.
 func (o *OpenStackNetworkListQuery) HasOpenStackUrl() bool {
-	if o != nil && o.OpenStackUrl.IsSet() {
+	if o != nil && !IsNil(o.OpenStackUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetOpenStackUrl gets a reference to the given NullableString and assigns it to the OpenStackUrl field.
+// SetOpenStackUrl gets a reference to the given string and assigns it to the OpenStackUrl field.
 func (o *OpenStackNetworkListQuery) SetOpenStackUrl(v string) {
-	o.OpenStackUrl.Set(&v)
-}
-// SetOpenStackUrlNil sets the value for OpenStackUrl to be an explicit nil
-func (o *OpenStackNetworkListQuery) SetOpenStackUrlNil() {
-	o.OpenStackUrl.Set(nil)
+	o.OpenStackUrl = &v
 }
 
-// UnsetOpenStackUrl ensures that no value is present for OpenStackUrl, not even an explicit nil
-func (o *OpenStackNetworkListQuery) UnsetOpenStackUrl() {
-	o.OpenStackUrl.Unset()
-}
-
-// GetOpenStackProjectId returns the OpenStackProjectId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOpenStackProjectId returns the OpenStackProjectId field value if set, zero value otherwise.
 func (o *OpenStackNetworkListQuery) GetOpenStackProjectId() string {
-	if o == nil || IsNil(o.OpenStackProjectId.Get()) {
+	if o == nil || IsNil(o.OpenStackProjectId) {
 		var ret string
 		return ret
 	}
-	return *o.OpenStackProjectId.Get()
+	return *o.OpenStackProjectId
 }
 
 // GetOpenStackProjectIdOk returns a tuple with the OpenStackProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenStackNetworkListQuery) GetOpenStackProjectIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackProjectId) {
 		return nil, false
 	}
-	return o.OpenStackProjectId.Get(), o.OpenStackProjectId.IsSet()
+	return o.OpenStackProjectId, true
 }
 
 // HasOpenStackProjectId returns a boolean if a field has been set.
 func (o *OpenStackNetworkListQuery) HasOpenStackProjectId() bool {
-	if o != nil && o.OpenStackProjectId.IsSet() {
+	if o != nil && !IsNil(o.OpenStackProjectId) {
 		return true
 	}
 
 	return false
 }
 
-// SetOpenStackProjectId gets a reference to the given NullableString and assigns it to the OpenStackProjectId field.
+// SetOpenStackProjectId gets a reference to the given string and assigns it to the OpenStackProjectId field.
 func (o *OpenStackNetworkListQuery) SetOpenStackProjectId(v string) {
-	o.OpenStackProjectId.Set(&v)
-}
-// SetOpenStackProjectIdNil sets the value for OpenStackProjectId to be an explicit nil
-func (o *OpenStackNetworkListQuery) SetOpenStackProjectIdNil() {
-	o.OpenStackProjectId.Set(nil)
+	o.OpenStackProjectId = &v
 }
 
-// UnsetOpenStackProjectId ensures that no value is present for OpenStackProjectId, not even an explicit nil
-func (o *OpenStackNetworkListQuery) UnsetOpenStackProjectId() {
-	o.OpenStackProjectId.Unset()
-}
-
-// GetOpenStackDomain returns the OpenStackDomain field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOpenStackDomain returns the OpenStackDomain field value if set, zero value otherwise.
 func (o *OpenStackNetworkListQuery) GetOpenStackDomain() string {
-	if o == nil || IsNil(o.OpenStackDomain.Get()) {
+	if o == nil || IsNil(o.OpenStackDomain) {
 		var ret string
 		return ret
 	}
-	return *o.OpenStackDomain.Get()
+	return *o.OpenStackDomain
 }
 
 // GetOpenStackDomainOk returns a tuple with the OpenStackDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenStackNetworkListQuery) GetOpenStackDomainOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackDomain) {
 		return nil, false
 	}
-	return o.OpenStackDomain.Get(), o.OpenStackDomain.IsSet()
+	return o.OpenStackDomain, true
 }
 
 // HasOpenStackDomain returns a boolean if a field has been set.
 func (o *OpenStackNetworkListQuery) HasOpenStackDomain() bool {
-	if o != nil && o.OpenStackDomain.IsSet() {
+	if o != nil && !IsNil(o.OpenStackDomain) {
 		return true
 	}
 
 	return false
 }
 
-// SetOpenStackDomain gets a reference to the given NullableString and assigns it to the OpenStackDomain field.
+// SetOpenStackDomain gets a reference to the given string and assigns it to the OpenStackDomain field.
 func (o *OpenStackNetworkListQuery) SetOpenStackDomain(v string) {
-	o.OpenStackDomain.Set(&v)
-}
-// SetOpenStackDomainNil sets the value for OpenStackDomain to be an explicit nil
-func (o *OpenStackNetworkListQuery) SetOpenStackDomainNil() {
-	o.OpenStackDomain.Set(nil)
+	o.OpenStackDomain = &v
 }
 
-// UnsetOpenStackDomain ensures that no value is present for OpenStackDomain, not even an explicit nil
-func (o *OpenStackNetworkListQuery) UnsetOpenStackDomain() {
-	o.OpenStackDomain.Unset()
-}
-
-// GetOpenStackRegion returns the OpenStackRegion field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOpenStackRegion returns the OpenStackRegion field value if set, zero value otherwise.
 func (o *OpenStackNetworkListQuery) GetOpenStackRegion() string {
-	if o == nil || IsNil(o.OpenStackRegion.Get()) {
+	if o == nil || IsNil(o.OpenStackRegion) {
 		var ret string
 		return ret
 	}
-	return *o.OpenStackRegion.Get()
+	return *o.OpenStackRegion
 }
 
 // GetOpenStackRegionOk returns a tuple with the OpenStackRegion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenStackNetworkListQuery) GetOpenStackRegionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackRegion) {
 		return nil, false
 	}
-	return o.OpenStackRegion.Get(), o.OpenStackRegion.IsSet()
+	return o.OpenStackRegion, true
 }
 
 // HasOpenStackRegion returns a boolean if a field has been set.
 func (o *OpenStackNetworkListQuery) HasOpenStackRegion() bool {
-	if o != nil && o.OpenStackRegion.IsSet() {
+	if o != nil && !IsNil(o.OpenStackRegion) {
 		return true
 	}
 
 	return false
 }
 
-// SetOpenStackRegion gets a reference to the given NullableString and assigns it to the OpenStackRegion field.
+// SetOpenStackRegion gets a reference to the given string and assigns it to the OpenStackRegion field.
 func (o *OpenStackNetworkListQuery) SetOpenStackRegion(v string) {
-	o.OpenStackRegion.Set(&v)
-}
-// SetOpenStackRegionNil sets the value for OpenStackRegion to be an explicit nil
-func (o *OpenStackNetworkListQuery) SetOpenStackRegionNil() {
-	o.OpenStackRegion.Set(nil)
-}
-
-// UnsetOpenStackRegion ensures that no value is present for OpenStackRegion, not even an explicit nil
-func (o *OpenStackNetworkListQuery) UnsetOpenStackRegion() {
-	o.OpenStackRegion.Unset()
+	o.OpenStackRegion = &v
 }
 
 // GetApplicationCredEnabled returns the ApplicationCredEnabled field value if set, zero value otherwise.
@@ -373,23 +313,23 @@ func (o OpenStackNetworkListQuery) MarshalJSON() ([]byte, error) {
 
 func (o OpenStackNetworkListQuery) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.OpenStackUser.IsSet() {
-		toSerialize["openStackUser"] = o.OpenStackUser.Get()
+	if !IsNil(o.OpenStackUser) {
+		toSerialize["openStackUser"] = o.OpenStackUser
 	}
-	if o.OpenStackPassword.IsSet() {
-		toSerialize["openStackPassword"] = o.OpenStackPassword.Get()
+	if !IsNil(o.OpenStackPassword) {
+		toSerialize["openStackPassword"] = o.OpenStackPassword
 	}
-	if o.OpenStackUrl.IsSet() {
-		toSerialize["openStackUrl"] = o.OpenStackUrl.Get()
+	if !IsNil(o.OpenStackUrl) {
+		toSerialize["openStackUrl"] = o.OpenStackUrl
 	}
-	if o.OpenStackProjectId.IsSet() {
-		toSerialize["openStackProjectId"] = o.OpenStackProjectId.Get()
+	if !IsNil(o.OpenStackProjectId) {
+		toSerialize["openStackProjectId"] = o.OpenStackProjectId
 	}
-	if o.OpenStackDomain.IsSet() {
-		toSerialize["openStackDomain"] = o.OpenStackDomain.Get()
+	if !IsNil(o.OpenStackDomain) {
+		toSerialize["openStackDomain"] = o.OpenStackDomain
 	}
-	if o.OpenStackRegion.IsSet() {
-		toSerialize["openStackRegion"] = o.OpenStackRegion.Get()
+	if !IsNil(o.OpenStackRegion) {
+		toSerialize["openStackRegion"] = o.OpenStackRegion
 	}
 	if !IsNil(o.ApplicationCredEnabled) {
 		toSerialize["applicationCredEnabled"] = o.ApplicationCredEnabled

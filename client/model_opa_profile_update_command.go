@@ -21,7 +21,7 @@ var _ MappedNullable = &OpaProfileUpdateCommand{}
 // OpaProfileUpdateCommand struct for OpaProfileUpdateCommand
 type OpaProfileUpdateCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	ForbidNodePort NullableBool `json:"forbidNodePort,omitempty"`
 	ForbidHttpIngress NullableBool `json:"forbidHttpIngress,omitempty"`
 	RequireProbe NullableBool `json:"requireProbe,omitempty"`
@@ -81,46 +81,36 @@ func (o *OpaProfileUpdateCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OpaProfileUpdateCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpaProfileUpdateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *OpaProfileUpdateCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OpaProfileUpdateCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *OpaProfileUpdateCommand) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *OpaProfileUpdateCommand) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetForbidNodePort returns the ForbidNodePort field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -333,9 +323,9 @@ func (o *OpaProfileUpdateCommand) UnsetUniqueServiceSelector() {
 	o.UniqueServiceSelector.Unset()
 }
 
-// GetAllowedRepo returns the AllowedRepo field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAllowedRepo returns the AllowedRepo field value if set, zero value otherwise.
 func (o *OpaProfileUpdateCommand) GetAllowedRepo() []string {
-	if o == nil {
+	if o == nil || IsNil(o.AllowedRepo) {
 		var ret []string
 		return ret
 	}
@@ -344,7 +334,6 @@ func (o *OpaProfileUpdateCommand) GetAllowedRepo() []string {
 
 // GetAllowedRepoOk returns a tuple with the AllowedRepo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpaProfileUpdateCommand) GetAllowedRepoOk() ([]string, bool) {
 	if o == nil || IsNil(o.AllowedRepo) {
 		return nil, false
@@ -366,9 +355,9 @@ func (o *OpaProfileUpdateCommand) SetAllowedRepo(v []string) {
 	o.AllowedRepo = v
 }
 
-// GetForbidSpecificTags returns the ForbidSpecificTags field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetForbidSpecificTags returns the ForbidSpecificTags field value if set, zero value otherwise.
 func (o *OpaProfileUpdateCommand) GetForbidSpecificTags() []string {
-	if o == nil {
+	if o == nil || IsNil(o.ForbidSpecificTags) {
 		var ret []string
 		return ret
 	}
@@ -377,7 +366,6 @@ func (o *OpaProfileUpdateCommand) GetForbidSpecificTags() []string {
 
 // GetForbidSpecificTagsOk returns a tuple with the ForbidSpecificTags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpaProfileUpdateCommand) GetForbidSpecificTagsOk() ([]string, bool) {
 	if o == nil || IsNil(o.ForbidSpecificTags) {
 		return nil, false
@@ -399,9 +387,9 @@ func (o *OpaProfileUpdateCommand) SetForbidSpecificTags(v []string) {
 	o.ForbidSpecificTags = v
 }
 
-// GetIngressWhitelist returns the IngressWhitelist field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIngressWhitelist returns the IngressWhitelist field value if set, zero value otherwise.
 func (o *OpaProfileUpdateCommand) GetIngressWhitelist() []string {
-	if o == nil {
+	if o == nil || IsNil(o.IngressWhitelist) {
 		var ret []string
 		return ret
 	}
@@ -410,7 +398,6 @@ func (o *OpaProfileUpdateCommand) GetIngressWhitelist() []string {
 
 // GetIngressWhitelistOk returns a tuple with the IngressWhitelist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpaProfileUpdateCommand) GetIngressWhitelistOk() ([]string, bool) {
 	if o == nil || IsNil(o.IngressWhitelist) {
 		return nil, false
@@ -445,8 +432,8 @@ func (o OpaProfileUpdateCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if o.ForbidNodePort.IsSet() {
 		toSerialize["forbidNodePort"] = o.ForbidNodePort.Get()
@@ -463,13 +450,13 @@ func (o OpaProfileUpdateCommand) ToMap() (map[string]interface{}, error) {
 	if o.UniqueServiceSelector.IsSet() {
 		toSerialize["uniqueServiceSelector"] = o.UniqueServiceSelector.Get()
 	}
-	if o.AllowedRepo != nil {
+	if !IsNil(o.AllowedRepo) {
 		toSerialize["allowedRepo"] = o.AllowedRepo
 	}
-	if o.ForbidSpecificTags != nil {
+	if !IsNil(o.ForbidSpecificTags) {
 		toSerialize["forbidSpecificTags"] = o.ForbidSpecificTags
 	}
-	if o.IngressWhitelist != nil {
+	if !IsNil(o.IngressWhitelist) {
 		toSerialize["ingressWhitelist"] = o.IngressWhitelist
 	}
 	return toSerialize, nil

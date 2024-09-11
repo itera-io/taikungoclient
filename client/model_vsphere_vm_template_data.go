@@ -20,9 +20,9 @@ var _ MappedNullable = &VsphereVmTemplateData{}
 
 // VsphereVmTemplateData struct for VsphereVmTemplateData
 type VsphereVmTemplateData struct {
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Size *int32 `json:"size,omitempty"`
-	Uuid NullableString `json:"uuid,omitempty"`
+	Uuid *string `json:"uuid,omitempty"`
 }
 
 // NewVsphereVmTemplateData instantiates a new VsphereVmTemplateData object
@@ -42,46 +42,36 @@ func NewVsphereVmTemplateDataWithDefaults() *VsphereVmTemplateData {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *VsphereVmTemplateData) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereVmTemplateData) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *VsphereVmTemplateData) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *VsphereVmTemplateData) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *VsphereVmTemplateData) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *VsphereVmTemplateData) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
@@ -116,46 +106,36 @@ func (o *VsphereVmTemplateData) SetSize(v int32) {
 	o.Size = &v
 }
 
-// GetUuid returns the Uuid field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUuid returns the Uuid field value if set, zero value otherwise.
 func (o *VsphereVmTemplateData) GetUuid() string {
-	if o == nil || IsNil(o.Uuid.Get()) {
+	if o == nil || IsNil(o.Uuid) {
 		var ret string
 		return ret
 	}
-	return *o.Uuid.Get()
+	return *o.Uuid
 }
 
 // GetUuidOk returns a tuple with the Uuid field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereVmTemplateData) GetUuidOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Uuid) {
 		return nil, false
 	}
-	return o.Uuid.Get(), o.Uuid.IsSet()
+	return o.Uuid, true
 }
 
 // HasUuid returns a boolean if a field has been set.
 func (o *VsphereVmTemplateData) HasUuid() bool {
-	if o != nil && o.Uuid.IsSet() {
+	if o != nil && !IsNil(o.Uuid) {
 		return true
 	}
 
 	return false
 }
 
-// SetUuid gets a reference to the given NullableString and assigns it to the Uuid field.
+// SetUuid gets a reference to the given string and assigns it to the Uuid field.
 func (o *VsphereVmTemplateData) SetUuid(v string) {
-	o.Uuid.Set(&v)
-}
-// SetUuidNil sets the value for Uuid to be an explicit nil
-func (o *VsphereVmTemplateData) SetUuidNil() {
-	o.Uuid.Set(nil)
-}
-
-// UnsetUuid ensures that no value is present for Uuid, not even an explicit nil
-func (o *VsphereVmTemplateData) UnsetUuid() {
-	o.Uuid.Unset()
+	o.Uuid = &v
 }
 
 func (o VsphereVmTemplateData) MarshalJSON() ([]byte, error) {
@@ -168,14 +148,14 @@ func (o VsphereVmTemplateData) MarshalJSON() ([]byte, error) {
 
 func (o VsphereVmTemplateData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Size) {
 		toSerialize["size"] = o.Size
 	}
-	if o.Uuid.IsSet() {
-		toSerialize["uuid"] = o.Uuid.Get()
+	if !IsNil(o.Uuid) {
+		toSerialize["uuid"] = o.Uuid
 	}
 	return toSerialize, nil
 }

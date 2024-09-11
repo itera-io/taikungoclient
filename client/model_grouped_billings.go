@@ -20,7 +20,7 @@ var _ MappedNullable = &GroupedBillings{}
 
 // GroupedBillings struct for GroupedBillings
 type GroupedBillings struct {
-	StartDate NullableString `json:"startDate,omitempty"`
+	StartDate *string `json:"startDate,omitempty"`
 	Tcu *int64 `json:"tcu,omitempty"`
 }
 
@@ -41,46 +41,36 @@ func NewGroupedBillingsWithDefaults() *GroupedBillings {
 	return &this
 }
 
-// GetStartDate returns the StartDate field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStartDate returns the StartDate field value if set, zero value otherwise.
 func (o *GroupedBillings) GetStartDate() string {
-	if o == nil || IsNil(o.StartDate.Get()) {
+	if o == nil || IsNil(o.StartDate) {
 		var ret string
 		return ret
 	}
-	return *o.StartDate.Get()
+	return *o.StartDate
 }
 
 // GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GroupedBillings) GetStartDateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StartDate) {
 		return nil, false
 	}
-	return o.StartDate.Get(), o.StartDate.IsSet()
+	return o.StartDate, true
 }
 
 // HasStartDate returns a boolean if a field has been set.
 func (o *GroupedBillings) HasStartDate() bool {
-	if o != nil && o.StartDate.IsSet() {
+	if o != nil && !IsNil(o.StartDate) {
 		return true
 	}
 
 	return false
 }
 
-// SetStartDate gets a reference to the given NullableString and assigns it to the StartDate field.
+// SetStartDate gets a reference to the given string and assigns it to the StartDate field.
 func (o *GroupedBillings) SetStartDate(v string) {
-	o.StartDate.Set(&v)
-}
-// SetStartDateNil sets the value for StartDate to be an explicit nil
-func (o *GroupedBillings) SetStartDateNil() {
-	o.StartDate.Set(nil)
-}
-
-// UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
-func (o *GroupedBillings) UnsetStartDate() {
-	o.StartDate.Unset()
+	o.StartDate = &v
 }
 
 // GetTcu returns the Tcu field value if set, zero value otherwise.
@@ -125,8 +115,8 @@ func (o GroupedBillings) MarshalJSON() ([]byte, error) {
 
 func (o GroupedBillings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.StartDate.IsSet() {
-		toSerialize["startDate"] = o.StartDate.Get()
+	if !IsNil(o.StartDate) {
+		toSerialize["startDate"] = o.StartDate
 	}
 	if !IsNil(o.Tcu) {
 		toSerialize["tcu"] = o.Tcu

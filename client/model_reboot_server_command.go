@@ -21,7 +21,7 @@ var _ MappedNullable = &RebootServerCommand{}
 // RebootServerCommand struct for RebootServerCommand
 type RebootServerCommand struct {
 	ServerId *int32 `json:"serverId,omitempty"`
-	Type NullableString `json:"type,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // NewRebootServerCommand instantiates a new RebootServerCommand object
@@ -73,46 +73,36 @@ func (o *RebootServerCommand) SetServerId(v int32) {
 	o.ServerId = &v
 }
 
-// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *RebootServerCommand) GetType() string {
-	if o == nil || IsNil(o.Type.Get()) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-	return *o.Type.Get()
+	return *o.Type
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RebootServerCommand) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return o.Type.Get(), o.Type.IsSet()
+	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *RebootServerCommand) HasType() bool {
-	if o != nil && o.Type.IsSet() {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given NullableString and assigns it to the Type field.
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *RebootServerCommand) SetType(v string) {
-	o.Type.Set(&v)
-}
-// SetTypeNil sets the value for Type to be an explicit nil
-func (o *RebootServerCommand) SetTypeNil() {
-	o.Type.Set(nil)
-}
-
-// UnsetType ensures that no value is present for Type, not even an explicit nil
-func (o *RebootServerCommand) UnsetType() {
-	o.Type.Unset()
+	o.Type = &v
 }
 
 func (o RebootServerCommand) MarshalJSON() ([]byte, error) {
@@ -128,8 +118,8 @@ func (o RebootServerCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServerId) {
 		toSerialize["serverId"] = o.ServerId
 	}
-	if o.Type.IsSet() {
-		toSerialize["type"] = o.Type.Get()
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
 }

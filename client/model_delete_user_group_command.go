@@ -40,9 +40,9 @@ func NewDeleteUserGroupCommandWithDefaults() *DeleteUserGroupCommand {
 	return &this
 }
 
-// GetUserGroupIds returns the UserGroupIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserGroupIds returns the UserGroupIds field value if set, zero value otherwise.
 func (o *DeleteUserGroupCommand) GetUserGroupIds() []int32 {
-	if o == nil {
+	if o == nil || IsNil(o.UserGroupIds) {
 		var ret []int32
 		return ret
 	}
@@ -51,7 +51,6 @@ func (o *DeleteUserGroupCommand) GetUserGroupIds() []int32 {
 
 // GetUserGroupIdsOk returns a tuple with the UserGroupIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeleteUserGroupCommand) GetUserGroupIdsOk() ([]int32, bool) {
 	if o == nil || IsNil(o.UserGroupIds) {
 		return nil, false
@@ -83,7 +82,7 @@ func (o DeleteUserGroupCommand) MarshalJSON() ([]byte, error) {
 
 func (o DeleteUserGroupCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.UserGroupIds != nil {
+	if !IsNil(o.UserGroupIds) {
 		toSerialize["userGroupIds"] = o.UserGroupIds
 	}
 	return toSerialize, nil

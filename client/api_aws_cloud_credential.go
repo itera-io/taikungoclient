@@ -71,6 +71,9 @@ func (a *AWSCloudCredentialAPIService) AwsCreateExecute(r ApiAwsCreateRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createAwsCloudCommand == nil {
+		return localVarReturnValue, nil, reportError("createAwsCloudCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -199,19 +202,14 @@ func (a *AWSCloudCredentialAPIService) AwsCreateExecute(r ApiAwsCreateRequest) (
 type ApiAwsListRequest struct {
 	ctx context.Context
 	ApiService *AWSCloudCredentialAPIService
-	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
+	organizationId *int32
 	id *int32
 	limit *int32
 	offset *int32
-}
-
-func (r ApiAwsListRequest) OrganizationId(organizationId int32) ApiAwsListRequest {
-	r.organizationId = &organizationId
-	return r
 }
 
 func (r ApiAwsListRequest) SortBy(sortBy string) ApiAwsListRequest {
@@ -231,6 +229,11 @@ func (r ApiAwsListRequest) Search(search string) ApiAwsListRequest {
 
 func (r ApiAwsListRequest) SearchId(searchId string) ApiAwsListRequest {
 	r.searchId = &searchId
+	return r
+}
+
+func (r ApiAwsListRequest) OrganizationId(organizationId int32) ApiAwsListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -290,22 +293,26 @@ func (a *AWSCloudCredentialAPIService) AwsListExecute(r ApiAwsListRequest) (*Aws
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
@@ -656,6 +663,9 @@ func (a *AWSCloudCredentialAPIService) AwsRegionlistExecute(r ApiAwsRegionlistRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.regionListCommand == nil {
+		return localVarReturnValue, nil, reportError("regionListCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -827,6 +837,9 @@ func (a *AWSCloudCredentialAPIService) AwsUpdateExecute(r ApiAwsUpdateRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateAwsCommand == nil {
+		return nil, reportError("updateAwsCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -989,6 +1002,9 @@ func (a *AWSCloudCredentialAPIService) AwsValidateOwnersExecute(r ApiAwsValidate
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.awsValidateOwnerCommand == nil {
+		return nil, reportError("awsValidateOwnerCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1153,6 +1169,9 @@ func (a *AWSCloudCredentialAPIService) AwsZonesExecute(r ApiAwsZonesRequest) (*A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.amazonAvailabilityZonesCommand == nil {
+		return localVarReturnValue, nil, reportError("amazonAvailabilityZonesCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

@@ -21,9 +21,9 @@ var _ MappedNullable = &SshUsersListDto{}
 // SshUsersListDto struct for SshUsersListDto
 type SshUsersListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	SshPublicKey NullableString `json:"sshPublicKey,omitempty"`
-	AccessProfileName NullableString `json:"accessProfileName,omitempty"`
+	Name *string `json:"name,omitempty"`
+	SshPublicKey *string `json:"sshPublicKey,omitempty"`
+	AccessProfileName *string `json:"accessProfileName,omitempty"`
 }
 
 // NewSshUsersListDto instantiates a new SshUsersListDto object
@@ -75,130 +75,100 @@ func (o *SshUsersListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *SshUsersListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SshUsersListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *SshUsersListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *SshUsersListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *SshUsersListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *SshUsersListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetSshPublicKey returns the SshPublicKey field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSshPublicKey returns the SshPublicKey field value if set, zero value otherwise.
 func (o *SshUsersListDto) GetSshPublicKey() string {
-	if o == nil || IsNil(o.SshPublicKey.Get()) {
+	if o == nil || IsNil(o.SshPublicKey) {
 		var ret string
 		return ret
 	}
-	return *o.SshPublicKey.Get()
+	return *o.SshPublicKey
 }
 
 // GetSshPublicKeyOk returns a tuple with the SshPublicKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SshUsersListDto) GetSshPublicKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SshPublicKey) {
 		return nil, false
 	}
-	return o.SshPublicKey.Get(), o.SshPublicKey.IsSet()
+	return o.SshPublicKey, true
 }
 
 // HasSshPublicKey returns a boolean if a field has been set.
 func (o *SshUsersListDto) HasSshPublicKey() bool {
-	if o != nil && o.SshPublicKey.IsSet() {
+	if o != nil && !IsNil(o.SshPublicKey) {
 		return true
 	}
 
 	return false
 }
 
-// SetSshPublicKey gets a reference to the given NullableString and assigns it to the SshPublicKey field.
+// SetSshPublicKey gets a reference to the given string and assigns it to the SshPublicKey field.
 func (o *SshUsersListDto) SetSshPublicKey(v string) {
-	o.SshPublicKey.Set(&v)
-}
-// SetSshPublicKeyNil sets the value for SshPublicKey to be an explicit nil
-func (o *SshUsersListDto) SetSshPublicKeyNil() {
-	o.SshPublicKey.Set(nil)
+	o.SshPublicKey = &v
 }
 
-// UnsetSshPublicKey ensures that no value is present for SshPublicKey, not even an explicit nil
-func (o *SshUsersListDto) UnsetSshPublicKey() {
-	o.SshPublicKey.Unset()
-}
-
-// GetAccessProfileName returns the AccessProfileName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAccessProfileName returns the AccessProfileName field value if set, zero value otherwise.
 func (o *SshUsersListDto) GetAccessProfileName() string {
-	if o == nil || IsNil(o.AccessProfileName.Get()) {
+	if o == nil || IsNil(o.AccessProfileName) {
 		var ret string
 		return ret
 	}
-	return *o.AccessProfileName.Get()
+	return *o.AccessProfileName
 }
 
 // GetAccessProfileNameOk returns a tuple with the AccessProfileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SshUsersListDto) GetAccessProfileNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AccessProfileName) {
 		return nil, false
 	}
-	return o.AccessProfileName.Get(), o.AccessProfileName.IsSet()
+	return o.AccessProfileName, true
 }
 
 // HasAccessProfileName returns a boolean if a field has been set.
 func (o *SshUsersListDto) HasAccessProfileName() bool {
-	if o != nil && o.AccessProfileName.IsSet() {
+	if o != nil && !IsNil(o.AccessProfileName) {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessProfileName gets a reference to the given NullableString and assigns it to the AccessProfileName field.
+// SetAccessProfileName gets a reference to the given string and assigns it to the AccessProfileName field.
 func (o *SshUsersListDto) SetAccessProfileName(v string) {
-	o.AccessProfileName.Set(&v)
-}
-// SetAccessProfileNameNil sets the value for AccessProfileName to be an explicit nil
-func (o *SshUsersListDto) SetAccessProfileNameNil() {
-	o.AccessProfileName.Set(nil)
-}
-
-// UnsetAccessProfileName ensures that no value is present for AccessProfileName, not even an explicit nil
-func (o *SshUsersListDto) UnsetAccessProfileName() {
-	o.AccessProfileName.Unset()
+	o.AccessProfileName = &v
 }
 
 func (o SshUsersListDto) MarshalJSON() ([]byte, error) {
@@ -214,14 +184,14 @@ func (o SshUsersListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.SshPublicKey.IsSet() {
-		toSerialize["sshPublicKey"] = o.SshPublicKey.Get()
+	if !IsNil(o.SshPublicKey) {
+		toSerialize["sshPublicKey"] = o.SshPublicKey
 	}
-	if o.AccessProfileName.IsSet() {
-		toSerialize["accessProfileName"] = o.AccessProfileName.Get()
+	if !IsNil(o.AccessProfileName) {
+		toSerialize["accessProfileName"] = o.AccessProfileName
 	}
 	return toSerialize, nil
 }

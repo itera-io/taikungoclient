@@ -21,20 +21,20 @@ var _ MappedNullable = &OpenshiftListDto{}
 // OpenshiftListDto struct for OpenshiftListDto
 type OpenshiftListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	BaseDomain NullableString `json:"baseDomain,omitempty"`
-	StorageClass NullableString `json:"storageClass,omitempty"`
+	Name *string `json:"name,omitempty"`
+	BaseDomain *string `json:"baseDomain,omitempty"`
+	StorageClass *string `json:"storageClass,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 	Projects []CommonDropdownDto `json:"projects,omitempty"`
 	ProjectCount *int32 `json:"projectCount,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	CreatedBy *string `json:"createdBy,omitempty"`
+	LastModified *string `json:"lastModified,omitempty"`
+	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	ContinentName NullableString `json:"continentName,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
+	ContinentName *string `json:"continentName,omitempty"`
 }
 
 // NewOpenshiftListDto instantiates a new OpenshiftListDto object
@@ -86,130 +86,100 @@ func (o *OpenshiftListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OpenshiftListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *OpenshiftListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OpenshiftListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *OpenshiftListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *OpenshiftListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetBaseDomain returns the BaseDomain field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBaseDomain returns the BaseDomain field value if set, zero value otherwise.
 func (o *OpenshiftListDto) GetBaseDomain() string {
-	if o == nil || IsNil(o.BaseDomain.Get()) {
+	if o == nil || IsNil(o.BaseDomain) {
 		var ret string
 		return ret
 	}
-	return *o.BaseDomain.Get()
+	return *o.BaseDomain
 }
 
 // GetBaseDomainOk returns a tuple with the BaseDomain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftListDto) GetBaseDomainOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BaseDomain) {
 		return nil, false
 	}
-	return o.BaseDomain.Get(), o.BaseDomain.IsSet()
+	return o.BaseDomain, true
 }
 
 // HasBaseDomain returns a boolean if a field has been set.
 func (o *OpenshiftListDto) HasBaseDomain() bool {
-	if o != nil && o.BaseDomain.IsSet() {
+	if o != nil && !IsNil(o.BaseDomain) {
 		return true
 	}
 
 	return false
 }
 
-// SetBaseDomain gets a reference to the given NullableString and assigns it to the BaseDomain field.
+// SetBaseDomain gets a reference to the given string and assigns it to the BaseDomain field.
 func (o *OpenshiftListDto) SetBaseDomain(v string) {
-	o.BaseDomain.Set(&v)
-}
-// SetBaseDomainNil sets the value for BaseDomain to be an explicit nil
-func (o *OpenshiftListDto) SetBaseDomainNil() {
-	o.BaseDomain.Set(nil)
+	o.BaseDomain = &v
 }
 
-// UnsetBaseDomain ensures that no value is present for BaseDomain, not even an explicit nil
-func (o *OpenshiftListDto) UnsetBaseDomain() {
-	o.BaseDomain.Unset()
-}
-
-// GetStorageClass returns the StorageClass field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStorageClass returns the StorageClass field value if set, zero value otherwise.
 func (o *OpenshiftListDto) GetStorageClass() string {
-	if o == nil || IsNil(o.StorageClass.Get()) {
+	if o == nil || IsNil(o.StorageClass) {
 		var ret string
 		return ret
 	}
-	return *o.StorageClass.Get()
+	return *o.StorageClass
 }
 
 // GetStorageClassOk returns a tuple with the StorageClass field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftListDto) GetStorageClassOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StorageClass) {
 		return nil, false
 	}
-	return o.StorageClass.Get(), o.StorageClass.IsSet()
+	return o.StorageClass, true
 }
 
 // HasStorageClass returns a boolean if a field has been set.
 func (o *OpenshiftListDto) HasStorageClass() bool {
-	if o != nil && o.StorageClass.IsSet() {
+	if o != nil && !IsNil(o.StorageClass) {
 		return true
 	}
 
 	return false
 }
 
-// SetStorageClass gets a reference to the given NullableString and assigns it to the StorageClass field.
+// SetStorageClass gets a reference to the given string and assigns it to the StorageClass field.
 func (o *OpenshiftListDto) SetStorageClass(v string) {
-	o.StorageClass.Set(&v)
-}
-// SetStorageClassNil sets the value for StorageClass to be an explicit nil
-func (o *OpenshiftListDto) SetStorageClassNil() {
-	o.StorageClass.Set(nil)
-}
-
-// UnsetStorageClass ensures that no value is present for StorageClass, not even an explicit nil
-func (o *OpenshiftListDto) UnsetStorageClass() {
-	o.StorageClass.Unset()
+	o.StorageClass = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
@@ -244,51 +214,41 @@ func (o *OpenshiftListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *OpenshiftListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *OpenshiftListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *OpenshiftListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *OpenshiftListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+	o.OrganizationName = &v
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *OpenshiftListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value if set, zero value otherwise.
 func (o *OpenshiftListDto) GetProjects() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.Projects) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -297,7 +257,6 @@ func (o *OpenshiftListDto) GetProjects() []CommonDropdownDto {
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
@@ -383,130 +342,100 @@ func (o *OpenshiftListDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *OpenshiftListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy.Get()
+	return *o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftListDto) GetCreatedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedBy) {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return o.CreatedBy, true
 }
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *OpenshiftListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
+	if o != nil && !IsNil(o.CreatedBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
 func (o *OpenshiftListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
-}
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *OpenshiftListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
+	o.CreatedBy = &v
 }
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *OpenshiftListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value if set, zero value otherwise.
 func (o *OpenshiftListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || IsNil(o.LastModified) {
 		var ret string
 		return ret
 	}
-	return *o.LastModified.Get()
+	return *o.LastModified
 }
 
 // GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftListDto) GetLastModifiedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModified) {
 		return nil, false
 	}
-	return o.LastModified.Get(), o.LastModified.IsSet()
+	return o.LastModified, true
 }
 
 // HasLastModified returns a boolean if a field has been set.
 func (o *OpenshiftListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
+	if o != nil && !IsNil(o.LastModified) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
 func (o *OpenshiftListDto) SetLastModified(v string) {
-	o.LastModified.Set(&v)
-}
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *OpenshiftListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
+	o.LastModified = &v
 }
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *OpenshiftListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
 func (o *OpenshiftListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		var ret string
 		return ret
 	}
-	return *o.LastModifiedBy.Get()
+	return *o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftListDto) GetLastModifiedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return o.LastModifiedBy, true
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *OpenshiftListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
+	if o != nil && !IsNil(o.LastModifiedBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy gets a reference to the given string and assigns it to the LastModifiedBy field.
 func (o *OpenshiftListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
-}
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *OpenshiftListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
-
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *OpenshiftListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
+	o.LastModifiedBy = &v
 }
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
@@ -541,88 +470,68 @@ func (o *OpenshiftListDto) SetIsDefault(v bool) {
 	o.IsDefault = &v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *OpenshiftListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftListDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *OpenshiftListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *OpenshiftListDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *OpenshiftListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
+	o.CreatedAt = &v
 }
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *OpenshiftListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetContinentName returns the ContinentName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetContinentName returns the ContinentName field value if set, zero value otherwise.
 func (o *OpenshiftListDto) GetContinentName() string {
-	if o == nil || IsNil(o.ContinentName.Get()) {
+	if o == nil || IsNil(o.ContinentName) {
 		var ret string
 		return ret
 	}
-	return *o.ContinentName.Get()
+	return *o.ContinentName
 }
 
 // GetContinentNameOk returns a tuple with the ContinentName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenshiftListDto) GetContinentNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ContinentName) {
 		return nil, false
 	}
-	return o.ContinentName.Get(), o.ContinentName.IsSet()
+	return o.ContinentName, true
 }
 
 // HasContinentName returns a boolean if a field has been set.
 func (o *OpenshiftListDto) HasContinentName() bool {
-	if o != nil && o.ContinentName.IsSet() {
+	if o != nil && !IsNil(o.ContinentName) {
 		return true
 	}
 
 	return false
 }
 
-// SetContinentName gets a reference to the given NullableString and assigns it to the ContinentName field.
+// SetContinentName gets a reference to the given string and assigns it to the ContinentName field.
 func (o *OpenshiftListDto) SetContinentName(v string) {
-	o.ContinentName.Set(&v)
-}
-// SetContinentNameNil sets the value for ContinentName to be an explicit nil
-func (o *OpenshiftListDto) SetContinentNameNil() {
-	o.ContinentName.Set(nil)
-}
-
-// UnsetContinentName ensures that no value is present for ContinentName, not even an explicit nil
-func (o *OpenshiftListDto) UnsetContinentName() {
-	o.ContinentName.Unset()
+	o.ContinentName = &v
 }
 
 func (o OpenshiftListDto) MarshalJSON() ([]byte, error) {
@@ -638,22 +547,22 @@ func (o OpenshiftListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.BaseDomain.IsSet() {
-		toSerialize["baseDomain"] = o.BaseDomain.Get()
+	if !IsNil(o.BaseDomain) {
+		toSerialize["baseDomain"] = o.BaseDomain
 	}
-	if o.StorageClass.IsSet() {
-		toSerialize["storageClass"] = o.StorageClass.Get()
+	if !IsNil(o.StorageClass) {
+		toSerialize["storageClass"] = o.StorageClass
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
-	if o.Projects != nil {
+	if !IsNil(o.Projects) {
 		toSerialize["projects"] = o.Projects
 	}
 	if !IsNil(o.ProjectCount) {
@@ -662,23 +571,23 @@ func (o OpenshiftListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
+	if !IsNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
 	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
+	if !IsNil(o.LastModified) {
+		toSerialize["lastModified"] = o.LastModified
 	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.ContinentName.IsSet() {
-		toSerialize["continentName"] = o.ContinentName.Get()
+	if !IsNil(o.ContinentName) {
+		toSerialize["continentName"] = o.ContinentName
 	}
 	return toSerialize, nil
 }

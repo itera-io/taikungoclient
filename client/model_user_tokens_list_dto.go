@@ -20,12 +20,12 @@ var _ MappedNullable = &UserTokensListDto{}
 
 // UserTokensListDto struct for UserTokensListDto
 type UserTokensListDto struct {
-	Id NullableString `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Id *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
 	IsReadonly *bool `json:"isReadonly,omitempty"`
-	ExpireDate NullableString `json:"expireDate,omitempty"`
-	AccessKey NullableString `json:"accessKey,omitempty"`
+	ExpireDate *string `json:"expireDate,omitempty"`
+	AccessKey *string `json:"accessKey,omitempty"`
 }
 
 // NewUserTokensListDto instantiates a new UserTokensListDto object
@@ -45,130 +45,100 @@ func NewUserTokensListDtoWithDefaults() *UserTokensListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *UserTokensListDto) GetId() string {
-	if o == nil || IsNil(o.Id.Get()) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-	return *o.Id.Get()
+	return *o.Id
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserTokensListDto) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.Id.Get(), o.Id.IsSet()
+	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *UserTokensListDto) HasId() bool {
-	if o != nil && o.Id.IsSet() {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given NullableString and assigns it to the Id field.
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *UserTokensListDto) SetId(v string) {
-	o.Id.Set(&v)
-}
-// SetIdNil sets the value for Id to be an explicit nil
-func (o *UserTokensListDto) SetIdNil() {
-	o.Id.Set(nil)
+	o.Id = &v
 }
 
-// UnsetId ensures that no value is present for Id, not even an explicit nil
-func (o *UserTokensListDto) UnsetId() {
-	o.Id.Unset()
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UserTokensListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserTokensListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *UserTokensListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UserTokensListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *UserTokensListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *UserTokensListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *UserTokensListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserTokensListDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *UserTokensListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *UserTokensListDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *UserTokensListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
-
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *UserTokensListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
+	o.CreatedAt = &v
 }
 
 // GetIsReadonly returns the IsReadonly field value if set, zero value otherwise.
@@ -203,88 +173,68 @@ func (o *UserTokensListDto) SetIsReadonly(v bool) {
 	o.IsReadonly = &v
 }
 
-// GetExpireDate returns the ExpireDate field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpireDate returns the ExpireDate field value if set, zero value otherwise.
 func (o *UserTokensListDto) GetExpireDate() string {
-	if o == nil || IsNil(o.ExpireDate.Get()) {
+	if o == nil || IsNil(o.ExpireDate) {
 		var ret string
 		return ret
 	}
-	return *o.ExpireDate.Get()
+	return *o.ExpireDate
 }
 
 // GetExpireDateOk returns a tuple with the ExpireDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserTokensListDto) GetExpireDateOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExpireDate) {
 		return nil, false
 	}
-	return o.ExpireDate.Get(), o.ExpireDate.IsSet()
+	return o.ExpireDate, true
 }
 
 // HasExpireDate returns a boolean if a field has been set.
 func (o *UserTokensListDto) HasExpireDate() bool {
-	if o != nil && o.ExpireDate.IsSet() {
+	if o != nil && !IsNil(o.ExpireDate) {
 		return true
 	}
 
 	return false
 }
 
-// SetExpireDate gets a reference to the given NullableString and assigns it to the ExpireDate field.
+// SetExpireDate gets a reference to the given string and assigns it to the ExpireDate field.
 func (o *UserTokensListDto) SetExpireDate(v string) {
-	o.ExpireDate.Set(&v)
-}
-// SetExpireDateNil sets the value for ExpireDate to be an explicit nil
-func (o *UserTokensListDto) SetExpireDateNil() {
-	o.ExpireDate.Set(nil)
+	o.ExpireDate = &v
 }
 
-// UnsetExpireDate ensures that no value is present for ExpireDate, not even an explicit nil
-func (o *UserTokensListDto) UnsetExpireDate() {
-	o.ExpireDate.Unset()
-}
-
-// GetAccessKey returns the AccessKey field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAccessKey returns the AccessKey field value if set, zero value otherwise.
 func (o *UserTokensListDto) GetAccessKey() string {
-	if o == nil || IsNil(o.AccessKey.Get()) {
+	if o == nil || IsNil(o.AccessKey) {
 		var ret string
 		return ret
 	}
-	return *o.AccessKey.Get()
+	return *o.AccessKey
 }
 
 // GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserTokensListDto) GetAccessKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AccessKey) {
 		return nil, false
 	}
-	return o.AccessKey.Get(), o.AccessKey.IsSet()
+	return o.AccessKey, true
 }
 
 // HasAccessKey returns a boolean if a field has been set.
 func (o *UserTokensListDto) HasAccessKey() bool {
-	if o != nil && o.AccessKey.IsSet() {
+	if o != nil && !IsNil(o.AccessKey) {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessKey gets a reference to the given NullableString and assigns it to the AccessKey field.
+// SetAccessKey gets a reference to the given string and assigns it to the AccessKey field.
 func (o *UserTokensListDto) SetAccessKey(v string) {
-	o.AccessKey.Set(&v)
-}
-// SetAccessKeyNil sets the value for AccessKey to be an explicit nil
-func (o *UserTokensListDto) SetAccessKeyNil() {
-	o.AccessKey.Set(nil)
-}
-
-// UnsetAccessKey ensures that no value is present for AccessKey, not even an explicit nil
-func (o *UserTokensListDto) UnsetAccessKey() {
-	o.AccessKey.Unset()
+	o.AccessKey = &v
 }
 
 func (o UserTokensListDto) MarshalJSON() ([]byte, error) {
@@ -297,23 +247,23 @@ func (o UserTokensListDto) MarshalJSON() ([]byte, error) {
 
 func (o UserTokensListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id.IsSet() {
-		toSerialize["id"] = o.Id.Get()
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
 	}
 	if !IsNil(o.IsReadonly) {
 		toSerialize["isReadonly"] = o.IsReadonly
 	}
-	if o.ExpireDate.IsSet() {
-		toSerialize["expireDate"] = o.ExpireDate.Get()
+	if !IsNil(o.ExpireDate) {
+		toSerialize["expireDate"] = o.ExpireDate
 	}
-	if o.AccessKey.IsSet() {
-		toSerialize["accessKey"] = o.AccessKey.Get()
+	if !IsNil(o.AccessKey) {
+		toSerialize["accessKey"] = o.AccessKey
 	}
 	return toSerialize, nil
 }

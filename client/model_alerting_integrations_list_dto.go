@@ -21,10 +21,10 @@ var _ MappedNullable = &AlertingIntegrationsListDto{}
 // AlertingIntegrationsListDto struct for AlertingIntegrationsListDto
 type AlertingIntegrationsListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Token NullableString `json:"token,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Token *string `json:"token,omitempty"`
 	AlertingIntegrationType *AlertingIntegrationType `json:"alertingIntegrationType,omitempty"`
-	AlertingProfileName NullableString `json:"alertingProfileName,omitempty"`
+	AlertingProfileName *string `json:"alertingProfileName,omitempty"`
 }
 
 // NewAlertingIntegrationsListDto instantiates a new AlertingIntegrationsListDto object
@@ -76,88 +76,68 @@ func (o *AlertingIntegrationsListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *AlertingIntegrationsListDto) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingIntegrationsListDto) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *AlertingIntegrationsListDto) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *AlertingIntegrationsListDto) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *AlertingIntegrationsListDto) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = &v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *AlertingIntegrationsListDto) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetToken returns the Token field value if set, zero value otherwise.
 func (o *AlertingIntegrationsListDto) GetToken() string {
-	if o == nil || IsNil(o.Token.Get()) {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
-	return *o.Token.Get()
+	return *o.Token
 }
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingIntegrationsListDto) GetTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
-	return o.Token.Get(), o.Token.IsSet()
+	return o.Token, true
 }
 
 // HasToken returns a boolean if a field has been set.
 func (o *AlertingIntegrationsListDto) HasToken() bool {
-	if o != nil && o.Token.IsSet() {
+	if o != nil && !IsNil(o.Token) {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given NullableString and assigns it to the Token field.
+// SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *AlertingIntegrationsListDto) SetToken(v string) {
-	o.Token.Set(&v)
-}
-// SetTokenNil sets the value for Token to be an explicit nil
-func (o *AlertingIntegrationsListDto) SetTokenNil() {
-	o.Token.Set(nil)
-}
-
-// UnsetToken ensures that no value is present for Token, not even an explicit nil
-func (o *AlertingIntegrationsListDto) UnsetToken() {
-	o.Token.Unset()
+	o.Token = &v
 }
 
 // GetAlertingIntegrationType returns the AlertingIntegrationType field value if set, zero value otherwise.
@@ -192,46 +172,36 @@ func (o *AlertingIntegrationsListDto) SetAlertingIntegrationType(v AlertingInteg
 	o.AlertingIntegrationType = &v
 }
 
-// GetAlertingProfileName returns the AlertingProfileName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAlertingProfileName returns the AlertingProfileName field value if set, zero value otherwise.
 func (o *AlertingIntegrationsListDto) GetAlertingProfileName() string {
-	if o == nil || IsNil(o.AlertingProfileName.Get()) {
+	if o == nil || IsNil(o.AlertingProfileName) {
 		var ret string
 		return ret
 	}
-	return *o.AlertingProfileName.Get()
+	return *o.AlertingProfileName
 }
 
 // GetAlertingProfileNameOk returns a tuple with the AlertingProfileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingIntegrationsListDto) GetAlertingProfileNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AlertingProfileName) {
 		return nil, false
 	}
-	return o.AlertingProfileName.Get(), o.AlertingProfileName.IsSet()
+	return o.AlertingProfileName, true
 }
 
 // HasAlertingProfileName returns a boolean if a field has been set.
 func (o *AlertingIntegrationsListDto) HasAlertingProfileName() bool {
-	if o != nil && o.AlertingProfileName.IsSet() {
+	if o != nil && !IsNil(o.AlertingProfileName) {
 		return true
 	}
 
 	return false
 }
 
-// SetAlertingProfileName gets a reference to the given NullableString and assigns it to the AlertingProfileName field.
+// SetAlertingProfileName gets a reference to the given string and assigns it to the AlertingProfileName field.
 func (o *AlertingIntegrationsListDto) SetAlertingProfileName(v string) {
-	o.AlertingProfileName.Set(&v)
-}
-// SetAlertingProfileNameNil sets the value for AlertingProfileName to be an explicit nil
-func (o *AlertingIntegrationsListDto) SetAlertingProfileNameNil() {
-	o.AlertingProfileName.Set(nil)
-}
-
-// UnsetAlertingProfileName ensures that no value is present for AlertingProfileName, not even an explicit nil
-func (o *AlertingIntegrationsListDto) UnsetAlertingProfileName() {
-	o.AlertingProfileName.Unset()
+	o.AlertingProfileName = &v
 }
 
 func (o AlertingIntegrationsListDto) MarshalJSON() ([]byte, error) {
@@ -247,17 +217,17 @@ func (o AlertingIntegrationsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
-	if o.Token.IsSet() {
-		toSerialize["token"] = o.Token.Get()
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
 	}
 	if !IsNil(o.AlertingIntegrationType) {
 		toSerialize["alertingIntegrationType"] = o.AlertingIntegrationType
 	}
-	if o.AlertingProfileName.IsSet() {
-		toSerialize["alertingProfileName"] = o.AlertingProfileName.Get()
+	if !IsNil(o.AlertingProfileName) {
+		toSerialize["alertingProfileName"] = o.AlertingProfileName
 	}
 	return toSerialize, nil
 }

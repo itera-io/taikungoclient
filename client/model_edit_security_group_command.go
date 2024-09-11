@@ -21,11 +21,11 @@ var _ MappedNullable = &EditSecurityGroupCommand{}
 // EditSecurityGroupCommand struct for EditSecurityGroupCommand
 type EditSecurityGroupCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Protocol NullableString `json:"protocol,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Protocol *string `json:"protocol,omitempty"`
 	PortMinRange *int32 `json:"portMinRange,omitempty"`
 	PortMaxRange *int32 `json:"portMaxRange,omitempty"`
-	RemoteIpPrefix NullableString `json:"remoteIpPrefix,omitempty"`
+	RemoteIpPrefix *string `json:"remoteIpPrefix,omitempty"`
 }
 
 // NewEditSecurityGroupCommand instantiates a new EditSecurityGroupCommand object
@@ -77,88 +77,68 @@ func (o *EditSecurityGroupCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *EditSecurityGroupCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditSecurityGroupCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *EditSecurityGroupCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *EditSecurityGroupCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *EditSecurityGroupCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *EditSecurityGroupCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetProtocol returns the Protocol field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProtocol returns the Protocol field value if set, zero value otherwise.
 func (o *EditSecurityGroupCommand) GetProtocol() string {
-	if o == nil || IsNil(o.Protocol.Get()) {
+	if o == nil || IsNil(o.Protocol) {
 		var ret string
 		return ret
 	}
-	return *o.Protocol.Get()
+	return *o.Protocol
 }
 
 // GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditSecurityGroupCommand) GetProtocolOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Protocol) {
 		return nil, false
 	}
-	return o.Protocol.Get(), o.Protocol.IsSet()
+	return o.Protocol, true
 }
 
 // HasProtocol returns a boolean if a field has been set.
 func (o *EditSecurityGroupCommand) HasProtocol() bool {
-	if o != nil && o.Protocol.IsSet() {
+	if o != nil && !IsNil(o.Protocol) {
 		return true
 	}
 
 	return false
 }
 
-// SetProtocol gets a reference to the given NullableString and assigns it to the Protocol field.
+// SetProtocol gets a reference to the given string and assigns it to the Protocol field.
 func (o *EditSecurityGroupCommand) SetProtocol(v string) {
-	o.Protocol.Set(&v)
-}
-// SetProtocolNil sets the value for Protocol to be an explicit nil
-func (o *EditSecurityGroupCommand) SetProtocolNil() {
-	o.Protocol.Set(nil)
-}
-
-// UnsetProtocol ensures that no value is present for Protocol, not even an explicit nil
-func (o *EditSecurityGroupCommand) UnsetProtocol() {
-	o.Protocol.Unset()
+	o.Protocol = &v
 }
 
 // GetPortMinRange returns the PortMinRange field value if set, zero value otherwise.
@@ -225,46 +205,36 @@ func (o *EditSecurityGroupCommand) SetPortMaxRange(v int32) {
 	o.PortMaxRange = &v
 }
 
-// GetRemoteIpPrefix returns the RemoteIpPrefix field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRemoteIpPrefix returns the RemoteIpPrefix field value if set, zero value otherwise.
 func (o *EditSecurityGroupCommand) GetRemoteIpPrefix() string {
-	if o == nil || IsNil(o.RemoteIpPrefix.Get()) {
+	if o == nil || IsNil(o.RemoteIpPrefix) {
 		var ret string
 		return ret
 	}
-	return *o.RemoteIpPrefix.Get()
+	return *o.RemoteIpPrefix
 }
 
 // GetRemoteIpPrefixOk returns a tuple with the RemoteIpPrefix field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditSecurityGroupCommand) GetRemoteIpPrefixOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RemoteIpPrefix) {
 		return nil, false
 	}
-	return o.RemoteIpPrefix.Get(), o.RemoteIpPrefix.IsSet()
+	return o.RemoteIpPrefix, true
 }
 
 // HasRemoteIpPrefix returns a boolean if a field has been set.
 func (o *EditSecurityGroupCommand) HasRemoteIpPrefix() bool {
-	if o != nil && o.RemoteIpPrefix.IsSet() {
+	if o != nil && !IsNil(o.RemoteIpPrefix) {
 		return true
 	}
 
 	return false
 }
 
-// SetRemoteIpPrefix gets a reference to the given NullableString and assigns it to the RemoteIpPrefix field.
+// SetRemoteIpPrefix gets a reference to the given string and assigns it to the RemoteIpPrefix field.
 func (o *EditSecurityGroupCommand) SetRemoteIpPrefix(v string) {
-	o.RemoteIpPrefix.Set(&v)
-}
-// SetRemoteIpPrefixNil sets the value for RemoteIpPrefix to be an explicit nil
-func (o *EditSecurityGroupCommand) SetRemoteIpPrefixNil() {
-	o.RemoteIpPrefix.Set(nil)
-}
-
-// UnsetRemoteIpPrefix ensures that no value is present for RemoteIpPrefix, not even an explicit nil
-func (o *EditSecurityGroupCommand) UnsetRemoteIpPrefix() {
-	o.RemoteIpPrefix.Unset()
+	o.RemoteIpPrefix = &v
 }
 
 func (o EditSecurityGroupCommand) MarshalJSON() ([]byte, error) {
@@ -280,11 +250,11 @@ func (o EditSecurityGroupCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.Protocol.IsSet() {
-		toSerialize["protocol"] = o.Protocol.Get()
+	if !IsNil(o.Protocol) {
+		toSerialize["protocol"] = o.Protocol
 	}
 	if !IsNil(o.PortMinRange) {
 		toSerialize["portMinRange"] = o.PortMinRange
@@ -292,8 +262,8 @@ func (o EditSecurityGroupCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PortMaxRange) {
 		toSerialize["portMaxRange"] = o.PortMaxRange
 	}
-	if o.RemoteIpPrefix.IsSet() {
-		toSerialize["remoteIpPrefix"] = o.RemoteIpPrefix.Get()
+	if !IsNil(o.RemoteIpPrefix) {
+		toSerialize["remoteIpPrefix"] = o.RemoteIpPrefix
 	}
 	return toSerialize, nil
 }

@@ -41,9 +41,9 @@ func NewWhiteListDomainCreateCommandWithDefaults() *WhiteListDomainCreateCommand
 	return &this
 }
 
-// GetWhiteListDomains returns the WhiteListDomains field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetWhiteListDomains returns the WhiteListDomains field value if set, zero value otherwise.
 func (o *WhiteListDomainCreateCommand) GetWhiteListDomains() []WhiteListDomainCreateDto {
-	if o == nil {
+	if o == nil || IsNil(o.WhiteListDomains) {
 		var ret []WhiteListDomainCreateDto
 		return ret
 	}
@@ -52,7 +52,6 @@ func (o *WhiteListDomainCreateCommand) GetWhiteListDomains() []WhiteListDomainCr
 
 // GetWhiteListDomainsOk returns a tuple with the WhiteListDomains field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WhiteListDomainCreateCommand) GetWhiteListDomainsOk() ([]WhiteListDomainCreateDto, bool) {
 	if o == nil || IsNil(o.WhiteListDomains) {
 		return nil, false
@@ -126,7 +125,7 @@ func (o WhiteListDomainCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o WhiteListDomainCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.WhiteListDomains != nil {
+	if !IsNil(o.WhiteListDomains) {
 		toSerialize["whiteListDomains"] = o.WhiteListDomains
 	}
 	if o.PartnerId.IsSet() {

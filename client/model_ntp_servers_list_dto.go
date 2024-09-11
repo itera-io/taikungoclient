@@ -21,8 +21,8 @@ var _ MappedNullable = &NtpServersListDto{}
 // NtpServersListDto struct for NtpServersListDto
 type NtpServersListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Address NullableString `json:"address,omitempty"`
-	AccessProfileName NullableString `json:"accessProfileName,omitempty"`
+	Address *string `json:"address,omitempty"`
+	AccessProfileName *string `json:"accessProfileName,omitempty"`
 }
 
 // NewNtpServersListDto instantiates a new NtpServersListDto object
@@ -74,88 +74,68 @@ func (o *NtpServersListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAddress returns the Address field value if set, zero value otherwise.
 func (o *NtpServersListDto) GetAddress() string {
-	if o == nil || IsNil(o.Address.Get()) {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
-	return *o.Address.Get()
+	return *o.Address
 }
 
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NtpServersListDto) GetAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
-	return o.Address.Get(), o.Address.IsSet()
+	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *NtpServersListDto) HasAddress() bool {
-	if o != nil && o.Address.IsSet() {
+	if o != nil && !IsNil(o.Address) {
 		return true
 	}
 
 	return false
 }
 
-// SetAddress gets a reference to the given NullableString and assigns it to the Address field.
+// SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *NtpServersListDto) SetAddress(v string) {
-	o.Address.Set(&v)
-}
-// SetAddressNil sets the value for Address to be an explicit nil
-func (o *NtpServersListDto) SetAddressNil() {
-	o.Address.Set(nil)
+	o.Address = &v
 }
 
-// UnsetAddress ensures that no value is present for Address, not even an explicit nil
-func (o *NtpServersListDto) UnsetAddress() {
-	o.Address.Unset()
-}
-
-// GetAccessProfileName returns the AccessProfileName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAccessProfileName returns the AccessProfileName field value if set, zero value otherwise.
 func (o *NtpServersListDto) GetAccessProfileName() string {
-	if o == nil || IsNil(o.AccessProfileName.Get()) {
+	if o == nil || IsNil(o.AccessProfileName) {
 		var ret string
 		return ret
 	}
-	return *o.AccessProfileName.Get()
+	return *o.AccessProfileName
 }
 
 // GetAccessProfileNameOk returns a tuple with the AccessProfileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NtpServersListDto) GetAccessProfileNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AccessProfileName) {
 		return nil, false
 	}
-	return o.AccessProfileName.Get(), o.AccessProfileName.IsSet()
+	return o.AccessProfileName, true
 }
 
 // HasAccessProfileName returns a boolean if a field has been set.
 func (o *NtpServersListDto) HasAccessProfileName() bool {
-	if o != nil && o.AccessProfileName.IsSet() {
+	if o != nil && !IsNil(o.AccessProfileName) {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessProfileName gets a reference to the given NullableString and assigns it to the AccessProfileName field.
+// SetAccessProfileName gets a reference to the given string and assigns it to the AccessProfileName field.
 func (o *NtpServersListDto) SetAccessProfileName(v string) {
-	o.AccessProfileName.Set(&v)
-}
-// SetAccessProfileNameNil sets the value for AccessProfileName to be an explicit nil
-func (o *NtpServersListDto) SetAccessProfileNameNil() {
-	o.AccessProfileName.Set(nil)
-}
-
-// UnsetAccessProfileName ensures that no value is present for AccessProfileName, not even an explicit nil
-func (o *NtpServersListDto) UnsetAccessProfileName() {
-	o.AccessProfileName.Unset()
+	o.AccessProfileName = &v
 }
 
 func (o NtpServersListDto) MarshalJSON() ([]byte, error) {
@@ -171,11 +151,11 @@ func (o NtpServersListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Address.IsSet() {
-		toSerialize["address"] = o.Address.Get()
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
 	}
-	if o.AccessProfileName.IsSet() {
-		toSerialize["accessProfileName"] = o.AccessProfileName.Get()
+	if !IsNil(o.AccessProfileName) {
+		toSerialize["accessProfileName"] = o.AccessProfileName
 	}
 	return toSerialize, nil
 }

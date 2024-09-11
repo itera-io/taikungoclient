@@ -21,8 +21,8 @@ var _ MappedNullable = &DescribeNetworkPolicyCommand{}
 // DescribeNetworkPolicyCommand struct for DescribeNetworkPolicyCommand
 type DescribeNetworkPolicyCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
 }
 
 // NewDescribeNetworkPolicyCommand instantiates a new DescribeNetworkPolicyCommand object
@@ -74,88 +74,68 @@ func (o *DescribeNetworkPolicyCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *DescribeNetworkPolicyCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DescribeNetworkPolicyCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *DescribeNetworkPolicyCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DescribeNetworkPolicyCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *DescribeNetworkPolicyCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *DescribeNetworkPolicyCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *DescribeNetworkPolicyCommand) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+	return *o.Namespace
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DescribeNetworkPolicyCommand) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return o.Namespace, true
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *DescribeNetworkPolicyCommand) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
+	if o != nil && !IsNil(o.Namespace) {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *DescribeNetworkPolicyCommand) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *DescribeNetworkPolicyCommand) SetNamespaceNil() {
-	o.Namespace.Set(nil)
-}
-
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *DescribeNetworkPolicyCommand) UnsetNamespace() {
-	o.Namespace.Unset()
+	o.Namespace = &v
 }
 
 func (o DescribeNetworkPolicyCommand) MarshalJSON() ([]byte, error) {
@@ -171,11 +151,11 @@ func (o DescribeNetworkPolicyCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
 	}
 	return toSerialize, nil
 }

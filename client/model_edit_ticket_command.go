@@ -20,9 +20,9 @@ var _ MappedNullable = &EditTicketCommand{}
 
 // EditTicketCommand struct for EditTicketCommand
 type EditTicketCommand struct {
-	TicketId NullableString `json:"ticketId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Description NullableString `json:"description,omitempty"`
+	TicketId *string `json:"ticketId,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Description *string `json:"description,omitempty"`
 }
 
 // NewEditTicketCommand instantiates a new EditTicketCommand object
@@ -42,130 +42,100 @@ func NewEditTicketCommandWithDefaults() *EditTicketCommand {
 	return &this
 }
 
-// GetTicketId returns the TicketId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTicketId returns the TicketId field value if set, zero value otherwise.
 func (o *EditTicketCommand) GetTicketId() string {
-	if o == nil || IsNil(o.TicketId.Get()) {
+	if o == nil || IsNil(o.TicketId) {
 		var ret string
 		return ret
 	}
-	return *o.TicketId.Get()
+	return *o.TicketId
 }
 
 // GetTicketIdOk returns a tuple with the TicketId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditTicketCommand) GetTicketIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TicketId) {
 		return nil, false
 	}
-	return o.TicketId.Get(), o.TicketId.IsSet()
+	return o.TicketId, true
 }
 
 // HasTicketId returns a boolean if a field has been set.
 func (o *EditTicketCommand) HasTicketId() bool {
-	if o != nil && o.TicketId.IsSet() {
+	if o != nil && !IsNil(o.TicketId) {
 		return true
 	}
 
 	return false
 }
 
-// SetTicketId gets a reference to the given NullableString and assigns it to the TicketId field.
+// SetTicketId gets a reference to the given string and assigns it to the TicketId field.
 func (o *EditTicketCommand) SetTicketId(v string) {
-	o.TicketId.Set(&v)
-}
-// SetTicketIdNil sets the value for TicketId to be an explicit nil
-func (o *EditTicketCommand) SetTicketIdNil() {
-	o.TicketId.Set(nil)
+	o.TicketId = &v
 }
 
-// UnsetTicketId ensures that no value is present for TicketId, not even an explicit nil
-func (o *EditTicketCommand) UnsetTicketId() {
-	o.TicketId.Unset()
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *EditTicketCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditTicketCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *EditTicketCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *EditTicketCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *EditTicketCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *EditTicketCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *EditTicketCommand) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditTicketCommand) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *EditTicketCommand) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *EditTicketCommand) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *EditTicketCommand) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *EditTicketCommand) UnsetDescription() {
-	o.Description.Unset()
+	o.Description = &v
 }
 
 func (o EditTicketCommand) MarshalJSON() ([]byte, error) {
@@ -178,14 +148,14 @@ func (o EditTicketCommand) MarshalJSON() ([]byte, error) {
 
 func (o EditTicketCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.TicketId.IsSet() {
-		toSerialize["ticketId"] = o.TicketId.Get()
+	if !IsNil(o.TicketId) {
+		toSerialize["ticketId"] = o.TicketId
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	return toSerialize, nil
 }

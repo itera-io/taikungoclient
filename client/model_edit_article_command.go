@@ -20,8 +20,8 @@ var _ MappedNullable = &EditArticleCommand{}
 
 // EditArticleCommand struct for EditArticleCommand
 type EditArticleCommand struct {
-	MessageId NullableString `json:"messageId,omitempty"`
-	Body NullableString `json:"body,omitempty"`
+	MessageId *string `json:"messageId,omitempty"`
+	Body *string `json:"body,omitempty"`
 }
 
 // NewEditArticleCommand instantiates a new EditArticleCommand object
@@ -41,88 +41,68 @@ func NewEditArticleCommandWithDefaults() *EditArticleCommand {
 	return &this
 }
 
-// GetMessageId returns the MessageId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMessageId returns the MessageId field value if set, zero value otherwise.
 func (o *EditArticleCommand) GetMessageId() string {
-	if o == nil || IsNil(o.MessageId.Get()) {
+	if o == nil || IsNil(o.MessageId) {
 		var ret string
 		return ret
 	}
-	return *o.MessageId.Get()
+	return *o.MessageId
 }
 
 // GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditArticleCommand) GetMessageIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MessageId) {
 		return nil, false
 	}
-	return o.MessageId.Get(), o.MessageId.IsSet()
+	return o.MessageId, true
 }
 
 // HasMessageId returns a boolean if a field has been set.
 func (o *EditArticleCommand) HasMessageId() bool {
-	if o != nil && o.MessageId.IsSet() {
+	if o != nil && !IsNil(o.MessageId) {
 		return true
 	}
 
 	return false
 }
 
-// SetMessageId gets a reference to the given NullableString and assigns it to the MessageId field.
+// SetMessageId gets a reference to the given string and assigns it to the MessageId field.
 func (o *EditArticleCommand) SetMessageId(v string) {
-	o.MessageId.Set(&v)
-}
-// SetMessageIdNil sets the value for MessageId to be an explicit nil
-func (o *EditArticleCommand) SetMessageIdNil() {
-	o.MessageId.Set(nil)
+	o.MessageId = &v
 }
 
-// UnsetMessageId ensures that no value is present for MessageId, not even an explicit nil
-func (o *EditArticleCommand) UnsetMessageId() {
-	o.MessageId.Unset()
-}
-
-// GetBody returns the Body field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBody returns the Body field value if set, zero value otherwise.
 func (o *EditArticleCommand) GetBody() string {
-	if o == nil || IsNil(o.Body.Get()) {
+	if o == nil || IsNil(o.Body) {
 		var ret string
 		return ret
 	}
-	return *o.Body.Get()
+	return *o.Body
 }
 
 // GetBodyOk returns a tuple with the Body field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditArticleCommand) GetBodyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Body) {
 		return nil, false
 	}
-	return o.Body.Get(), o.Body.IsSet()
+	return o.Body, true
 }
 
 // HasBody returns a boolean if a field has been set.
 func (o *EditArticleCommand) HasBody() bool {
-	if o != nil && o.Body.IsSet() {
+	if o != nil && !IsNil(o.Body) {
 		return true
 	}
 
 	return false
 }
 
-// SetBody gets a reference to the given NullableString and assigns it to the Body field.
+// SetBody gets a reference to the given string and assigns it to the Body field.
 func (o *EditArticleCommand) SetBody(v string) {
-	o.Body.Set(&v)
-}
-// SetBodyNil sets the value for Body to be an explicit nil
-func (o *EditArticleCommand) SetBodyNil() {
-	o.Body.Set(nil)
-}
-
-// UnsetBody ensures that no value is present for Body, not even an explicit nil
-func (o *EditArticleCommand) UnsetBody() {
-	o.Body.Unset()
+	o.Body = &v
 }
 
 func (o EditArticleCommand) MarshalJSON() ([]byte, error) {
@@ -135,11 +115,11 @@ func (o EditArticleCommand) MarshalJSON() ([]byte, error) {
 
 func (o EditArticleCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MessageId.IsSet() {
-		toSerialize["messageId"] = o.MessageId.Get()
+	if !IsNil(o.MessageId) {
+		toSerialize["messageId"] = o.MessageId
 	}
-	if o.Body.IsSet() {
-		toSerialize["body"] = o.Body.Get()
+	if !IsNil(o.Body) {
+		toSerialize["body"] = o.Body
 	}
 	return toSerialize, nil
 }

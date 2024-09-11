@@ -41,9 +41,9 @@ func NewBackupDtoWithDefaults() *BackupDto {
 	return &this
 }
 
-// GetIncludedNamespace returns the IncludedNamespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIncludedNamespace returns the IncludedNamespace field value if set, zero value otherwise.
 func (o *BackupDto) GetIncludedNamespace() []string {
-	if o == nil {
+	if o == nil || IsNil(o.IncludedNamespace) {
 		var ret []string
 		return ret
 	}
@@ -52,7 +52,6 @@ func (o *BackupDto) GetIncludedNamespace() []string {
 
 // GetIncludedNamespaceOk returns a tuple with the IncludedNamespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupDto) GetIncludedNamespaceOk() ([]string, bool) {
 	if o == nil || IsNil(o.IncludedNamespace) {
 		return nil, false
@@ -74,9 +73,9 @@ func (o *BackupDto) SetIncludedNamespace(v []string) {
 	o.IncludedNamespace = v
 }
 
-// GetExcludedNamespace returns the ExcludedNamespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExcludedNamespace returns the ExcludedNamespace field value if set, zero value otherwise.
 func (o *BackupDto) GetExcludedNamespace() []string {
-	if o == nil {
+	if o == nil || IsNil(o.ExcludedNamespace) {
 		var ret []string
 		return ret
 	}
@@ -85,7 +84,6 @@ func (o *BackupDto) GetExcludedNamespace() []string {
 
 // GetExcludedNamespaceOk returns a tuple with the ExcludedNamespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupDto) GetExcludedNamespaceOk() ([]string, bool) {
 	if o == nil || IsNil(o.ExcludedNamespace) {
 		return nil, false
@@ -117,10 +115,10 @@ func (o BackupDto) MarshalJSON() ([]byte, error) {
 
 func (o BackupDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.IncludedNamespace != nil {
+	if !IsNil(o.IncludedNamespace) {
 		toSerialize["includedNamespace"] = o.IncludedNamespace
 	}
-	if o.ExcludedNamespace != nil {
+	if !IsNil(o.ExcludedNamespace) {
 		toSerialize["excludedNamespace"] = o.ExcludedNamespace
 	}
 	return toSerialize, nil

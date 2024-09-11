@@ -235,6 +235,9 @@ func (a *ProjectGroupsAPIService) ProjectgroupsBindUserGroupExecute(r ApiProject
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.bindUserGroupsToProjectGroupCommand == nil {
+		return nil, reportError("bindUserGroupsToProjectGroupCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -399,6 +402,9 @@ func (a *ProjectGroupsAPIService) ProjectgroupsCreateExecute(r ApiProjectgroupsC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createProjectGroupCommand == nil {
+		return localVarReturnValue, nil, reportError("createProjectGroupCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -570,6 +576,9 @@ func (a *ProjectGroupsAPIService) ProjectgroupsDeleteExecute(r ApiProjectgroupsD
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.requestBody == nil {
+		return nil, reportError("requestBody is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -689,29 +698,14 @@ func (a *ProjectGroupsAPIService) ProjectgroupsDeleteExecute(r ApiProjectgroupsD
 type ApiProjectgroupsListRequest struct {
 	ctx context.Context
 	ApiService *ProjectGroupsAPIService
-	limit *int32
-	offset *int32
-	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
+	limit *int32
+	offset *int32
+	organizationId *int32
 	id *int32
-}
-
-func (r ApiProjectgroupsListRequest) Limit(limit int32) ApiProjectgroupsListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiProjectgroupsListRequest) Offset(offset int32) ApiProjectgroupsListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiProjectgroupsListRequest) OrganizationId(organizationId int32) ApiProjectgroupsListRequest {
-	r.organizationId = &organizationId
-	return r
 }
 
 func (r ApiProjectgroupsListRequest) SortBy(sortBy string) ApiProjectgroupsListRequest {
@@ -731,6 +725,21 @@ func (r ApiProjectgroupsListRequest) Search(search string) ApiProjectgroupsListR
 
 func (r ApiProjectgroupsListRequest) SearchId(searchId string) ApiProjectgroupsListRequest {
 	r.searchId = &searchId
+	return r
+}
+
+func (r ApiProjectgroupsListRequest) Limit(limit int32) ApiProjectgroupsListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiProjectgroupsListRequest) Offset(offset int32) ApiProjectgroupsListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiProjectgroupsListRequest) OrganizationId(organizationId int32) ApiProjectgroupsListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -776,6 +785,18 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListExecute(r ApiProjectgroupsLis
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -786,18 +807,10 @@ func (a *ProjectGroupsAPIService) ProjectgroupsListExecute(r ApiProjectgroupsLis
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
@@ -1307,6 +1320,9 @@ func (a *ProjectGroupsAPIService) ProjectgroupsUnbindProjectExecute(r ApiProject
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.unbindProjectFromProjectGroupCommand == nil {
+		return nil, reportError("unbindProjectFromProjectGroupCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

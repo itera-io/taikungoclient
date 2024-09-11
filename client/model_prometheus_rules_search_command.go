@@ -22,7 +22,7 @@ var _ MappedNullable = &PrometheusRulesSearchCommand{}
 type PrometheusRulesSearchCommand struct {
 	Limit NullableInt32 `json:"limit,omitempty"`
 	Offset NullableInt32 `json:"offset,omitempty"`
-	SearchTerm NullableString `json:"searchTerm,omitempty"`
+	SearchTerm *string `json:"searchTerm,omitempty"`
 }
 
 // NewPrometheusRulesSearchCommand instantiates a new PrometheusRulesSearchCommand object
@@ -126,46 +126,36 @@ func (o *PrometheusRulesSearchCommand) UnsetOffset() {
 	o.Offset.Unset()
 }
 
-// GetSearchTerm returns the SearchTerm field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSearchTerm returns the SearchTerm field value if set, zero value otherwise.
 func (o *PrometheusRulesSearchCommand) GetSearchTerm() string {
-	if o == nil || IsNil(o.SearchTerm.Get()) {
+	if o == nil || IsNil(o.SearchTerm) {
 		var ret string
 		return ret
 	}
-	return *o.SearchTerm.Get()
+	return *o.SearchTerm
 }
 
 // GetSearchTermOk returns a tuple with the SearchTerm field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRulesSearchCommand) GetSearchTermOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SearchTerm) {
 		return nil, false
 	}
-	return o.SearchTerm.Get(), o.SearchTerm.IsSet()
+	return o.SearchTerm, true
 }
 
 // HasSearchTerm returns a boolean if a field has been set.
 func (o *PrometheusRulesSearchCommand) HasSearchTerm() bool {
-	if o != nil && o.SearchTerm.IsSet() {
+	if o != nil && !IsNil(o.SearchTerm) {
 		return true
 	}
 
 	return false
 }
 
-// SetSearchTerm gets a reference to the given NullableString and assigns it to the SearchTerm field.
+// SetSearchTerm gets a reference to the given string and assigns it to the SearchTerm field.
 func (o *PrometheusRulesSearchCommand) SetSearchTerm(v string) {
-	o.SearchTerm.Set(&v)
-}
-// SetSearchTermNil sets the value for SearchTerm to be an explicit nil
-func (o *PrometheusRulesSearchCommand) SetSearchTermNil() {
-	o.SearchTerm.Set(nil)
-}
-
-// UnsetSearchTerm ensures that no value is present for SearchTerm, not even an explicit nil
-func (o *PrometheusRulesSearchCommand) UnsetSearchTerm() {
-	o.SearchTerm.Unset()
+	o.SearchTerm = &v
 }
 
 func (o PrometheusRulesSearchCommand) MarshalJSON() ([]byte, error) {
@@ -184,8 +174,8 @@ func (o PrometheusRulesSearchCommand) ToMap() (map[string]interface{}, error) {
 	if o.Offset.IsSet() {
 		toSerialize["offset"] = o.Offset.Get()
 	}
-	if o.SearchTerm.IsSet() {
-		toSerialize["searchTerm"] = o.SearchTerm.Get()
+	if !IsNil(o.SearchTerm) {
+		toSerialize["searchTerm"] = o.SearchTerm
 	}
 	return toSerialize, nil
 }

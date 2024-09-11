@@ -21,11 +21,11 @@ var _ MappedNullable = &ServersSearchResponseData{}
 // ServersSearchResponseData struct for ServersSearchResponseData
 type ServersSearchResponseData struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
+	ProjectName *string `json:"projectName,omitempty"`
 }
 
 // NewServersSearchResponseData instantiates a new ServersSearchResponseData object
@@ -77,46 +77,36 @@ func (o *ServersSearchResponseData) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ServersSearchResponseData) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServersSearchResponseData) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ServersSearchResponseData) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ServersSearchResponseData) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ServersSearchResponseData) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ServersSearchResponseData) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -161,46 +151,36 @@ func (o *ServersSearchResponseData) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *ServersSearchResponseData) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServersSearchResponseData) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *ServersSearchResponseData) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *ServersSearchResponseData) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *ServersSearchResponseData) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
-
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *ServersSearchResponseData) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
+	o.OrganizationName = &v
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
@@ -235,46 +215,36 @@ func (o *ServersSearchResponseData) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *ServersSearchResponseData) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName.Get()) {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName.Get()
+	return *o.ProjectName
 }
 
 // GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServersSearchResponseData) GetProjectNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
-	return o.ProjectName.Get(), o.ProjectName.IsSet()
+	return o.ProjectName, true
 }
 
 // HasProjectName returns a boolean if a field has been set.
 func (o *ServersSearchResponseData) HasProjectName() bool {
-	if o != nil && o.ProjectName.IsSet() {
+	if o != nil && !IsNil(o.ProjectName) {
 		return true
 	}
 
 	return false
 }
 
-// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
 func (o *ServersSearchResponseData) SetProjectName(v string) {
-	o.ProjectName.Set(&v)
-}
-// SetProjectNameNil sets the value for ProjectName to be an explicit nil
-func (o *ServersSearchResponseData) SetProjectNameNil() {
-	o.ProjectName.Set(nil)
-}
-
-// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
-func (o *ServersSearchResponseData) UnsetProjectName() {
-	o.ProjectName.Unset()
+	o.ProjectName = &v
 }
 
 func (o ServersSearchResponseData) MarshalJSON() ([]byte, error) {
@@ -290,20 +260,20 @@ func (o ServersSearchResponseData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if o.ProjectName.IsSet() {
-		toSerialize["projectName"] = o.ProjectName.Get()
+	if !IsNil(o.ProjectName) {
+		toSerialize["projectName"] = o.ProjectName
 	}
 	return toSerialize, nil
 }

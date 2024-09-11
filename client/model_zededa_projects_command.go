@@ -20,8 +20,8 @@ var _ MappedNullable = &ZededaProjectsCommand{}
 
 // ZededaProjectsCommand struct for ZededaProjectsCommand
 type ZededaProjectsCommand struct {
-	ApiUrl NullableString `json:"apiUrl,omitempty"`
-	ApiToken NullableString `json:"apiToken,omitempty"`
+	ApiUrl *string `json:"apiUrl,omitempty"`
+	ApiToken *string `json:"apiToken,omitempty"`
 }
 
 // NewZededaProjectsCommand instantiates a new ZededaProjectsCommand object
@@ -41,88 +41,68 @@ func NewZededaProjectsCommandWithDefaults() *ZededaProjectsCommand {
 	return &this
 }
 
-// GetApiUrl returns the ApiUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetApiUrl returns the ApiUrl field value if set, zero value otherwise.
 func (o *ZededaProjectsCommand) GetApiUrl() string {
-	if o == nil || IsNil(o.ApiUrl.Get()) {
+	if o == nil || IsNil(o.ApiUrl) {
 		var ret string
 		return ret
 	}
-	return *o.ApiUrl.Get()
+	return *o.ApiUrl
 }
 
 // GetApiUrlOk returns a tuple with the ApiUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaProjectsCommand) GetApiUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ApiUrl) {
 		return nil, false
 	}
-	return o.ApiUrl.Get(), o.ApiUrl.IsSet()
+	return o.ApiUrl, true
 }
 
 // HasApiUrl returns a boolean if a field has been set.
 func (o *ZededaProjectsCommand) HasApiUrl() bool {
-	if o != nil && o.ApiUrl.IsSet() {
+	if o != nil && !IsNil(o.ApiUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetApiUrl gets a reference to the given NullableString and assigns it to the ApiUrl field.
+// SetApiUrl gets a reference to the given string and assigns it to the ApiUrl field.
 func (o *ZededaProjectsCommand) SetApiUrl(v string) {
-	o.ApiUrl.Set(&v)
-}
-// SetApiUrlNil sets the value for ApiUrl to be an explicit nil
-func (o *ZededaProjectsCommand) SetApiUrlNil() {
-	o.ApiUrl.Set(nil)
+	o.ApiUrl = &v
 }
 
-// UnsetApiUrl ensures that no value is present for ApiUrl, not even an explicit nil
-func (o *ZededaProjectsCommand) UnsetApiUrl() {
-	o.ApiUrl.Unset()
-}
-
-// GetApiToken returns the ApiToken field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetApiToken returns the ApiToken field value if set, zero value otherwise.
 func (o *ZededaProjectsCommand) GetApiToken() string {
-	if o == nil || IsNil(o.ApiToken.Get()) {
+	if o == nil || IsNil(o.ApiToken) {
 		var ret string
 		return ret
 	}
-	return *o.ApiToken.Get()
+	return *o.ApiToken
 }
 
 // GetApiTokenOk returns a tuple with the ApiToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaProjectsCommand) GetApiTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ApiToken) {
 		return nil, false
 	}
-	return o.ApiToken.Get(), o.ApiToken.IsSet()
+	return o.ApiToken, true
 }
 
 // HasApiToken returns a boolean if a field has been set.
 func (o *ZededaProjectsCommand) HasApiToken() bool {
-	if o != nil && o.ApiToken.IsSet() {
+	if o != nil && !IsNil(o.ApiToken) {
 		return true
 	}
 
 	return false
 }
 
-// SetApiToken gets a reference to the given NullableString and assigns it to the ApiToken field.
+// SetApiToken gets a reference to the given string and assigns it to the ApiToken field.
 func (o *ZededaProjectsCommand) SetApiToken(v string) {
-	o.ApiToken.Set(&v)
-}
-// SetApiTokenNil sets the value for ApiToken to be an explicit nil
-func (o *ZededaProjectsCommand) SetApiTokenNil() {
-	o.ApiToken.Set(nil)
-}
-
-// UnsetApiToken ensures that no value is present for ApiToken, not even an explicit nil
-func (o *ZededaProjectsCommand) UnsetApiToken() {
-	o.ApiToken.Unset()
+	o.ApiToken = &v
 }
 
 func (o ZededaProjectsCommand) MarshalJSON() ([]byte, error) {
@@ -135,11 +115,11 @@ func (o ZededaProjectsCommand) MarshalJSON() ([]byte, error) {
 
 func (o ZededaProjectsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ApiUrl.IsSet() {
-		toSerialize["apiUrl"] = o.ApiUrl.Get()
+	if !IsNil(o.ApiUrl) {
+		toSerialize["apiUrl"] = o.ApiUrl
 	}
-	if o.ApiToken.IsSet() {
-		toSerialize["apiToken"] = o.ApiToken.Get()
+	if !IsNil(o.ApiToken) {
+		toSerialize["apiToken"] = o.ApiToken
 	}
 	return toSerialize, nil
 }

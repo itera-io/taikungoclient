@@ -20,12 +20,12 @@ var _ MappedNullable = &ArticlesListDto{}
 
 // ArticlesListDto struct for ArticlesListDto
 type ArticlesListDto struct {
-	SenderName NullableString `json:"senderName,omitempty"`
+	SenderName *string `json:"senderName,omitempty"`
 	IsCsm *bool `json:"isCsm,omitempty"`
-	CreateAt NullableString `json:"createAt,omitempty"`
-	Body NullableString `json:"body,omitempty"`
-	MessageId NullableString `json:"messageId,omitempty"`
-	UserId NullableString `json:"userId,omitempty"`
+	CreateAt *string `json:"createAt,omitempty"`
+	Body *string `json:"body,omitempty"`
+	MessageId *string `json:"messageId,omitempty"`
+	UserId *string `json:"userId,omitempty"`
 }
 
 // NewArticlesListDto instantiates a new ArticlesListDto object
@@ -45,46 +45,36 @@ func NewArticlesListDtoWithDefaults() *ArticlesListDto {
 	return &this
 }
 
-// GetSenderName returns the SenderName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSenderName returns the SenderName field value if set, zero value otherwise.
 func (o *ArticlesListDto) GetSenderName() string {
-	if o == nil || IsNil(o.SenderName.Get()) {
+	if o == nil || IsNil(o.SenderName) {
 		var ret string
 		return ret
 	}
-	return *o.SenderName.Get()
+	return *o.SenderName
 }
 
 // GetSenderNameOk returns a tuple with the SenderName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArticlesListDto) GetSenderNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SenderName) {
 		return nil, false
 	}
-	return o.SenderName.Get(), o.SenderName.IsSet()
+	return o.SenderName, true
 }
 
 // HasSenderName returns a boolean if a field has been set.
 func (o *ArticlesListDto) HasSenderName() bool {
-	if o != nil && o.SenderName.IsSet() {
+	if o != nil && !IsNil(o.SenderName) {
 		return true
 	}
 
 	return false
 }
 
-// SetSenderName gets a reference to the given NullableString and assigns it to the SenderName field.
+// SetSenderName gets a reference to the given string and assigns it to the SenderName field.
 func (o *ArticlesListDto) SetSenderName(v string) {
-	o.SenderName.Set(&v)
-}
-// SetSenderNameNil sets the value for SenderName to be an explicit nil
-func (o *ArticlesListDto) SetSenderNameNil() {
-	o.SenderName.Set(nil)
-}
-
-// UnsetSenderName ensures that no value is present for SenderName, not even an explicit nil
-func (o *ArticlesListDto) UnsetSenderName() {
-	o.SenderName.Unset()
+	o.SenderName = &v
 }
 
 // GetIsCsm returns the IsCsm field value if set, zero value otherwise.
@@ -119,172 +109,132 @@ func (o *ArticlesListDto) SetIsCsm(v bool) {
 	o.IsCsm = &v
 }
 
-// GetCreateAt returns the CreateAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreateAt returns the CreateAt field value if set, zero value otherwise.
 func (o *ArticlesListDto) GetCreateAt() string {
-	if o == nil || IsNil(o.CreateAt.Get()) {
+	if o == nil || IsNil(o.CreateAt) {
 		var ret string
 		return ret
 	}
-	return *o.CreateAt.Get()
+	return *o.CreateAt
 }
 
 // GetCreateAtOk returns a tuple with the CreateAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArticlesListDto) GetCreateAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreateAt) {
 		return nil, false
 	}
-	return o.CreateAt.Get(), o.CreateAt.IsSet()
+	return o.CreateAt, true
 }
 
 // HasCreateAt returns a boolean if a field has been set.
 func (o *ArticlesListDto) HasCreateAt() bool {
-	if o != nil && o.CreateAt.IsSet() {
+	if o != nil && !IsNil(o.CreateAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreateAt gets a reference to the given NullableString and assigns it to the CreateAt field.
+// SetCreateAt gets a reference to the given string and assigns it to the CreateAt field.
 func (o *ArticlesListDto) SetCreateAt(v string) {
-	o.CreateAt.Set(&v)
-}
-// SetCreateAtNil sets the value for CreateAt to be an explicit nil
-func (o *ArticlesListDto) SetCreateAtNil() {
-	o.CreateAt.Set(nil)
+	o.CreateAt = &v
 }
 
-// UnsetCreateAt ensures that no value is present for CreateAt, not even an explicit nil
-func (o *ArticlesListDto) UnsetCreateAt() {
-	o.CreateAt.Unset()
-}
-
-// GetBody returns the Body field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBody returns the Body field value if set, zero value otherwise.
 func (o *ArticlesListDto) GetBody() string {
-	if o == nil || IsNil(o.Body.Get()) {
+	if o == nil || IsNil(o.Body) {
 		var ret string
 		return ret
 	}
-	return *o.Body.Get()
+	return *o.Body
 }
 
 // GetBodyOk returns a tuple with the Body field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArticlesListDto) GetBodyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Body) {
 		return nil, false
 	}
-	return o.Body.Get(), o.Body.IsSet()
+	return o.Body, true
 }
 
 // HasBody returns a boolean if a field has been set.
 func (o *ArticlesListDto) HasBody() bool {
-	if o != nil && o.Body.IsSet() {
+	if o != nil && !IsNil(o.Body) {
 		return true
 	}
 
 	return false
 }
 
-// SetBody gets a reference to the given NullableString and assigns it to the Body field.
+// SetBody gets a reference to the given string and assigns it to the Body field.
 func (o *ArticlesListDto) SetBody(v string) {
-	o.Body.Set(&v)
-}
-// SetBodyNil sets the value for Body to be an explicit nil
-func (o *ArticlesListDto) SetBodyNil() {
-	o.Body.Set(nil)
+	o.Body = &v
 }
 
-// UnsetBody ensures that no value is present for Body, not even an explicit nil
-func (o *ArticlesListDto) UnsetBody() {
-	o.Body.Unset()
-}
-
-// GetMessageId returns the MessageId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMessageId returns the MessageId field value if set, zero value otherwise.
 func (o *ArticlesListDto) GetMessageId() string {
-	if o == nil || IsNil(o.MessageId.Get()) {
+	if o == nil || IsNil(o.MessageId) {
 		var ret string
 		return ret
 	}
-	return *o.MessageId.Get()
+	return *o.MessageId
 }
 
 // GetMessageIdOk returns a tuple with the MessageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArticlesListDto) GetMessageIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MessageId) {
 		return nil, false
 	}
-	return o.MessageId.Get(), o.MessageId.IsSet()
+	return o.MessageId, true
 }
 
 // HasMessageId returns a boolean if a field has been set.
 func (o *ArticlesListDto) HasMessageId() bool {
-	if o != nil && o.MessageId.IsSet() {
+	if o != nil && !IsNil(o.MessageId) {
 		return true
 	}
 
 	return false
 }
 
-// SetMessageId gets a reference to the given NullableString and assigns it to the MessageId field.
+// SetMessageId gets a reference to the given string and assigns it to the MessageId field.
 func (o *ArticlesListDto) SetMessageId(v string) {
-	o.MessageId.Set(&v)
-}
-// SetMessageIdNil sets the value for MessageId to be an explicit nil
-func (o *ArticlesListDto) SetMessageIdNil() {
-	o.MessageId.Set(nil)
+	o.MessageId = &v
 }
 
-// UnsetMessageId ensures that no value is present for MessageId, not even an explicit nil
-func (o *ArticlesListDto) UnsetMessageId() {
-	o.MessageId.Unset()
-}
-
-// GetUserId returns the UserId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserId returns the UserId field value if set, zero value otherwise.
 func (o *ArticlesListDto) GetUserId() string {
-	if o == nil || IsNil(o.UserId.Get()) {
+	if o == nil || IsNil(o.UserId) {
 		var ret string
 		return ret
 	}
-	return *o.UserId.Get()
+	return *o.UserId
 }
 
 // GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArticlesListDto) GetUserIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserId) {
 		return nil, false
 	}
-	return o.UserId.Get(), o.UserId.IsSet()
+	return o.UserId, true
 }
 
 // HasUserId returns a boolean if a field has been set.
 func (o *ArticlesListDto) HasUserId() bool {
-	if o != nil && o.UserId.IsSet() {
+	if o != nil && !IsNil(o.UserId) {
 		return true
 	}
 
 	return false
 }
 
-// SetUserId gets a reference to the given NullableString and assigns it to the UserId field.
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *ArticlesListDto) SetUserId(v string) {
-	o.UserId.Set(&v)
-}
-// SetUserIdNil sets the value for UserId to be an explicit nil
-func (o *ArticlesListDto) SetUserIdNil() {
-	o.UserId.Set(nil)
-}
-
-// UnsetUserId ensures that no value is present for UserId, not even an explicit nil
-func (o *ArticlesListDto) UnsetUserId() {
-	o.UserId.Unset()
+	o.UserId = &v
 }
 
 func (o ArticlesListDto) MarshalJSON() ([]byte, error) {
@@ -297,23 +247,23 @@ func (o ArticlesListDto) MarshalJSON() ([]byte, error) {
 
 func (o ArticlesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.SenderName.IsSet() {
-		toSerialize["senderName"] = o.SenderName.Get()
+	if !IsNil(o.SenderName) {
+		toSerialize["senderName"] = o.SenderName
 	}
 	if !IsNil(o.IsCsm) {
 		toSerialize["isCsm"] = o.IsCsm
 	}
-	if o.CreateAt.IsSet() {
-		toSerialize["createAt"] = o.CreateAt.Get()
+	if !IsNil(o.CreateAt) {
+		toSerialize["createAt"] = o.CreateAt
 	}
-	if o.Body.IsSet() {
-		toSerialize["body"] = o.Body.Get()
+	if !IsNil(o.Body) {
+		toSerialize["body"] = o.Body
 	}
-	if o.MessageId.IsSet() {
-		toSerialize["messageId"] = o.MessageId.Get()
+	if !IsNil(o.MessageId) {
+		toSerialize["messageId"] = o.MessageId
 	}
-	if o.UserId.IsSet() {
-		toSerialize["userId"] = o.UserId.Get()
+	if !IsNil(o.UserId) {
+		toSerialize["userId"] = o.UserId
 	}
 	return toSerialize, nil
 }

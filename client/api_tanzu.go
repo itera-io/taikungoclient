@@ -372,29 +372,14 @@ func (a *TanzuAPIService) TanzuKubernetesVersionsExecute(r ApiTanzuKubernetesVer
 type ApiTanzuListRequest struct {
 	ctx context.Context
 	ApiService *TanzuAPIService
-	limit *int32
-	offset *int32
-	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
+	limit *int32
+	offset *int32
+	organizationId *int32
 	id *int32
-}
-
-func (r ApiTanzuListRequest) Limit(limit int32) ApiTanzuListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiTanzuListRequest) Offset(offset int32) ApiTanzuListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiTanzuListRequest) OrganizationId(organizationId int32) ApiTanzuListRequest {
-	r.organizationId = &organizationId
-	return r
 }
 
 func (r ApiTanzuListRequest) SortBy(sortBy string) ApiTanzuListRequest {
@@ -414,6 +399,21 @@ func (r ApiTanzuListRequest) Search(search string) ApiTanzuListRequest {
 
 func (r ApiTanzuListRequest) SearchId(searchId string) ApiTanzuListRequest {
 	r.searchId = &searchId
+	return r
+}
+
+func (r ApiTanzuListRequest) Limit(limit int32) ApiTanzuListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiTanzuListRequest) Offset(offset int32) ApiTanzuListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiTanzuListRequest) OrganizationId(organizationId int32) ApiTanzuListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -459,6 +459,18 @@ func (a *TanzuAPIService) TanzuListExecute(r ApiTanzuListRequest) (*TanzuCredent
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -469,18 +481,10 @@ func (a *TanzuAPIService) TanzuListExecute(r ApiTanzuListRequest) (*TanzuCredent
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
@@ -654,6 +658,9 @@ func (a *TanzuAPIService) TanzuStorageListExecute(r ApiTanzuStorageListRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.tanzuStorageListCommand == nil {
+		return localVarReturnValue, nil, reportError("tanzuStorageListCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

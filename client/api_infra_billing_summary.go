@@ -69,6 +69,9 @@ func (a *InfraBillingSummaryAPIService) InfraBillingSummaryCreateExecute(r ApiIn
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.infraBillingSummariesCreateCommand == nil {
+		return nil, reportError("infraBillingSummariesCreateCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

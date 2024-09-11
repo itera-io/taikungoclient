@@ -20,7 +20,7 @@ var _ MappedNullable = &HelmReleaseSpec{}
 
 // HelmReleaseSpec struct for HelmReleaseSpec
 type HelmReleaseSpec struct {
-	TargetNamespace NullableString `json:"targetNamespace,omitempty"`
+	TargetNamespace *string `json:"targetNamespace,omitempty"`
 	Chart *HelmReleaseChart `json:"chart,omitempty"`
 }
 
@@ -41,46 +41,36 @@ func NewHelmReleaseSpecWithDefaults() *HelmReleaseSpec {
 	return &this
 }
 
-// GetTargetNamespace returns the TargetNamespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTargetNamespace returns the TargetNamespace field value if set, zero value otherwise.
 func (o *HelmReleaseSpec) GetTargetNamespace() string {
-	if o == nil || IsNil(o.TargetNamespace.Get()) {
+	if o == nil || IsNil(o.TargetNamespace) {
 		var ret string
 		return ret
 	}
-	return *o.TargetNamespace.Get()
+	return *o.TargetNamespace
 }
 
 // GetTargetNamespaceOk returns a tuple with the TargetNamespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmReleaseSpec) GetTargetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TargetNamespace) {
 		return nil, false
 	}
-	return o.TargetNamespace.Get(), o.TargetNamespace.IsSet()
+	return o.TargetNamespace, true
 }
 
 // HasTargetNamespace returns a boolean if a field has been set.
 func (o *HelmReleaseSpec) HasTargetNamespace() bool {
-	if o != nil && o.TargetNamespace.IsSet() {
+	if o != nil && !IsNil(o.TargetNamespace) {
 		return true
 	}
 
 	return false
 }
 
-// SetTargetNamespace gets a reference to the given NullableString and assigns it to the TargetNamespace field.
+// SetTargetNamespace gets a reference to the given string and assigns it to the TargetNamespace field.
 func (o *HelmReleaseSpec) SetTargetNamespace(v string) {
-	o.TargetNamespace.Set(&v)
-}
-// SetTargetNamespaceNil sets the value for TargetNamespace to be an explicit nil
-func (o *HelmReleaseSpec) SetTargetNamespaceNil() {
-	o.TargetNamespace.Set(nil)
-}
-
-// UnsetTargetNamespace ensures that no value is present for TargetNamespace, not even an explicit nil
-func (o *HelmReleaseSpec) UnsetTargetNamespace() {
-	o.TargetNamespace.Unset()
+	o.TargetNamespace = &v
 }
 
 // GetChart returns the Chart field value if set, zero value otherwise.
@@ -125,8 +115,8 @@ func (o HelmReleaseSpec) MarshalJSON() ([]byte, error) {
 
 func (o HelmReleaseSpec) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.TargetNamespace.IsSet() {
-		toSerialize["targetNamespace"] = o.TargetNamespace.Get()
+	if !IsNil(o.TargetNamespace) {
+		toSerialize["targetNamespace"] = o.TargetNamespace
 	}
 	if !IsNil(o.Chart) {
 		toSerialize["chart"] = o.Chart

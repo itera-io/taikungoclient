@@ -21,9 +21,9 @@ var _ MappedNullable = &CreateStandAloneDiskCommand{}
 // CreateStandAloneDiskCommand struct for CreateStandAloneDiskCommand
 type CreateStandAloneDiskCommand struct {
 	StandaloneVmId *int32 `json:"standaloneVmId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Size *int64 `json:"size,omitempty"`
-	VolumeType NullableString `json:"volumeType,omitempty"`
+	VolumeType *string `json:"volumeType,omitempty"`
 }
 
 // NewCreateStandAloneDiskCommand instantiates a new CreateStandAloneDiskCommand object
@@ -75,46 +75,36 @@ func (o *CreateStandAloneDiskCommand) SetStandaloneVmId(v int32) {
 	o.StandaloneVmId = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateStandAloneDiskCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateStandAloneDiskCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateStandAloneDiskCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateStandAloneDiskCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *CreateStandAloneDiskCommand) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *CreateStandAloneDiskCommand) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
@@ -149,46 +139,36 @@ func (o *CreateStandAloneDiskCommand) SetSize(v int64) {
 	o.Size = &v
 }
 
-// GetVolumeType returns the VolumeType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVolumeType returns the VolumeType field value if set, zero value otherwise.
 func (o *CreateStandAloneDiskCommand) GetVolumeType() string {
-	if o == nil || IsNil(o.VolumeType.Get()) {
+	if o == nil || IsNil(o.VolumeType) {
 		var ret string
 		return ret
 	}
-	return *o.VolumeType.Get()
+	return *o.VolumeType
 }
 
 // GetVolumeTypeOk returns a tuple with the VolumeType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateStandAloneDiskCommand) GetVolumeTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VolumeType) {
 		return nil, false
 	}
-	return o.VolumeType.Get(), o.VolumeType.IsSet()
+	return o.VolumeType, true
 }
 
 // HasVolumeType returns a boolean if a field has been set.
 func (o *CreateStandAloneDiskCommand) HasVolumeType() bool {
-	if o != nil && o.VolumeType.IsSet() {
+	if o != nil && !IsNil(o.VolumeType) {
 		return true
 	}
 
 	return false
 }
 
-// SetVolumeType gets a reference to the given NullableString and assigns it to the VolumeType field.
+// SetVolumeType gets a reference to the given string and assigns it to the VolumeType field.
 func (o *CreateStandAloneDiskCommand) SetVolumeType(v string) {
-	o.VolumeType.Set(&v)
-}
-// SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
-func (o *CreateStandAloneDiskCommand) SetVolumeTypeNil() {
-	o.VolumeType.Set(nil)
-}
-
-// UnsetVolumeType ensures that no value is present for VolumeType, not even an explicit nil
-func (o *CreateStandAloneDiskCommand) UnsetVolumeType() {
-	o.VolumeType.Unset()
+	o.VolumeType = &v
 }
 
 func (o CreateStandAloneDiskCommand) MarshalJSON() ([]byte, error) {
@@ -204,14 +184,14 @@ func (o CreateStandAloneDiskCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StandaloneVmId) {
 		toSerialize["standaloneVmId"] = o.StandaloneVmId
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Size) {
 		toSerialize["size"] = o.Size
 	}
-	if o.VolumeType.IsSet() {
-		toSerialize["volumeType"] = o.VolumeType.Get()
+	if !IsNil(o.VolumeType) {
+		toSerialize["volumeType"] = o.VolumeType
 	}
 	return toSerialize, nil
 }

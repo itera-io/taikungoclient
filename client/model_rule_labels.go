@@ -20,7 +20,7 @@ var _ MappedNullable = &RuleLabels{}
 
 // RuleLabels struct for RuleLabels
 type RuleLabels struct {
-	Severity NullableString `json:"severity,omitempty"`
+	Severity *string `json:"severity,omitempty"`
 }
 
 // NewRuleLabels instantiates a new RuleLabels object
@@ -40,46 +40,36 @@ func NewRuleLabelsWithDefaults() *RuleLabels {
 	return &this
 }
 
-// GetSeverity returns the Severity field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSeverity returns the Severity field value if set, zero value otherwise.
 func (o *RuleLabels) GetSeverity() string {
-	if o == nil || IsNil(o.Severity.Get()) {
+	if o == nil || IsNil(o.Severity) {
 		var ret string
 		return ret
 	}
-	return *o.Severity.Get()
+	return *o.Severity
 }
 
 // GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RuleLabels) GetSeverityOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Severity) {
 		return nil, false
 	}
-	return o.Severity.Get(), o.Severity.IsSet()
+	return o.Severity, true
 }
 
 // HasSeverity returns a boolean if a field has been set.
 func (o *RuleLabels) HasSeverity() bool {
-	if o != nil && o.Severity.IsSet() {
+	if o != nil && !IsNil(o.Severity) {
 		return true
 	}
 
 	return false
 }
 
-// SetSeverity gets a reference to the given NullableString and assigns it to the Severity field.
+// SetSeverity gets a reference to the given string and assigns it to the Severity field.
 func (o *RuleLabels) SetSeverity(v string) {
-	o.Severity.Set(&v)
-}
-// SetSeverityNil sets the value for Severity to be an explicit nil
-func (o *RuleLabels) SetSeverityNil() {
-	o.Severity.Set(nil)
-}
-
-// UnsetSeverity ensures that no value is present for Severity, not even an explicit nil
-func (o *RuleLabels) UnsetSeverity() {
-	o.Severity.Unset()
+	o.Severity = &v
 }
 
 func (o RuleLabels) MarshalJSON() ([]byte, error) {
@@ -92,8 +82,8 @@ func (o RuleLabels) MarshalJSON() ([]byte, error) {
 
 func (o RuleLabels) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Severity.IsSet() {
-		toSerialize["severity"] = o.Severity.Get()
+	if !IsNil(o.Severity) {
+		toSerialize["severity"] = o.Severity
 	}
 	return toSerialize, nil
 }

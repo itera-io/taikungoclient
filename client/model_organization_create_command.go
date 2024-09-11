@@ -20,15 +20,15 @@ var _ MappedNullable = &OrganizationCreateCommand{}
 
 // OrganizationCreateCommand struct for OrganizationCreateCommand
 type OrganizationCreateCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	FullName NullableString `json:"fullName,omitempty"`
-	Phone NullableString `json:"phone,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	BillingEmail NullableString `json:"billingEmail,omitempty"`
-	Address NullableString `json:"address,omitempty"`
-	Country NullableString `json:"country,omitempty"`
-	City NullableString `json:"city,omitempty"`
-	VatNumber NullableString `json:"vatNumber,omitempty"`
+	Name *string `json:"name,omitempty"`
+	FullName *string `json:"fullName,omitempty"`
+	Phone *string `json:"phone,omitempty"`
+	Email *string `json:"email,omitempty"`
+	BillingEmail *string `json:"billingEmail,omitempty"`
+	Address *string `json:"address,omitempty"`
+	Country *string `json:"country,omitempty"`
+	City *string `json:"city,omitempty"`
+	VatNumber *string `json:"vatNumber,omitempty"`
 	DiscountRate NullableFloat64 `json:"discountRate,omitempty"`
 	IsEligibleUpdateSubscription *bool `json:"isEligibleUpdateSubscription,omitempty"`
 	AdminCloudCredentialId NullableInt32 `json:"adminCloudCredentialId,omitempty"`
@@ -51,382 +51,292 @@ func NewOrganizationCreateCommandWithDefaults() *OrganizationCreateCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationCreateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *OrganizationCreateCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OrganizationCreateCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *OrganizationCreateCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetFullName returns the FullName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFullName returns the FullName field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetFullName() string {
-	if o == nil || IsNil(o.FullName.Get()) {
+	if o == nil || IsNil(o.FullName) {
 		var ret string
 		return ret
 	}
-	return *o.FullName.Get()
+	return *o.FullName
 }
 
 // GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationCreateCommand) GetFullNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FullName) {
 		return nil, false
 	}
-	return o.FullName.Get(), o.FullName.IsSet()
+	return o.FullName, true
 }
 
 // HasFullName returns a boolean if a field has been set.
 func (o *OrganizationCreateCommand) HasFullName() bool {
-	if o != nil && o.FullName.IsSet() {
+	if o != nil && !IsNil(o.FullName) {
 		return true
 	}
 
 	return false
 }
 
-// SetFullName gets a reference to the given NullableString and assigns it to the FullName field.
+// SetFullName gets a reference to the given string and assigns it to the FullName field.
 func (o *OrganizationCreateCommand) SetFullName(v string) {
-	o.FullName.Set(&v)
-}
-// SetFullNameNil sets the value for FullName to be an explicit nil
-func (o *OrganizationCreateCommand) SetFullNameNil() {
-	o.FullName.Set(nil)
+	o.FullName = &v
 }
 
-// UnsetFullName ensures that no value is present for FullName, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetFullName() {
-	o.FullName.Unset()
-}
-
-// GetPhone returns the Phone field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPhone returns the Phone field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetPhone() string {
-	if o == nil || IsNil(o.Phone.Get()) {
+	if o == nil || IsNil(o.Phone) {
 		var ret string
 		return ret
 	}
-	return *o.Phone.Get()
+	return *o.Phone
 }
 
 // GetPhoneOk returns a tuple with the Phone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationCreateCommand) GetPhoneOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Phone) {
 		return nil, false
 	}
-	return o.Phone.Get(), o.Phone.IsSet()
+	return o.Phone, true
 }
 
 // HasPhone returns a boolean if a field has been set.
 func (o *OrganizationCreateCommand) HasPhone() bool {
-	if o != nil && o.Phone.IsSet() {
+	if o != nil && !IsNil(o.Phone) {
 		return true
 	}
 
 	return false
 }
 
-// SetPhone gets a reference to the given NullableString and assigns it to the Phone field.
+// SetPhone gets a reference to the given string and assigns it to the Phone field.
 func (o *OrganizationCreateCommand) SetPhone(v string) {
-	o.Phone.Set(&v)
-}
-// SetPhoneNil sets the value for Phone to be an explicit nil
-func (o *OrganizationCreateCommand) SetPhoneNil() {
-	o.Phone.Set(nil)
+	o.Phone = &v
 }
 
-// UnsetPhone ensures that no value is present for Phone, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetPhone() {
-	o.Phone.Unset()
-}
-
-// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetEmail() string {
-	if o == nil || IsNil(o.Email.Get()) {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-	return *o.Email.Get()
+	return *o.Email
 }
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationCreateCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return o.Email.Get(), o.Email.IsSet()
+	return o.Email, true
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *OrganizationCreateCommand) HasEmail() bool {
-	if o != nil && o.Email.IsSet() {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *OrganizationCreateCommand) SetEmail(v string) {
-	o.Email.Set(&v)
-}
-// SetEmailNil sets the value for Email to be an explicit nil
-func (o *OrganizationCreateCommand) SetEmailNil() {
-	o.Email.Set(nil)
+	o.Email = &v
 }
 
-// UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetEmail() {
-	o.Email.Unset()
-}
-
-// GetBillingEmail returns the BillingEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBillingEmail returns the BillingEmail field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetBillingEmail() string {
-	if o == nil || IsNil(o.BillingEmail.Get()) {
+	if o == nil || IsNil(o.BillingEmail) {
 		var ret string
 		return ret
 	}
-	return *o.BillingEmail.Get()
+	return *o.BillingEmail
 }
 
 // GetBillingEmailOk returns a tuple with the BillingEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationCreateCommand) GetBillingEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BillingEmail) {
 		return nil, false
 	}
-	return o.BillingEmail.Get(), o.BillingEmail.IsSet()
+	return o.BillingEmail, true
 }
 
 // HasBillingEmail returns a boolean if a field has been set.
 func (o *OrganizationCreateCommand) HasBillingEmail() bool {
-	if o != nil && o.BillingEmail.IsSet() {
+	if o != nil && !IsNil(o.BillingEmail) {
 		return true
 	}
 
 	return false
 }
 
-// SetBillingEmail gets a reference to the given NullableString and assigns it to the BillingEmail field.
+// SetBillingEmail gets a reference to the given string and assigns it to the BillingEmail field.
 func (o *OrganizationCreateCommand) SetBillingEmail(v string) {
-	o.BillingEmail.Set(&v)
-}
-// SetBillingEmailNil sets the value for BillingEmail to be an explicit nil
-func (o *OrganizationCreateCommand) SetBillingEmailNil() {
-	o.BillingEmail.Set(nil)
+	o.BillingEmail = &v
 }
 
-// UnsetBillingEmail ensures that no value is present for BillingEmail, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetBillingEmail() {
-	o.BillingEmail.Unset()
-}
-
-// GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAddress returns the Address field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetAddress() string {
-	if o == nil || IsNil(o.Address.Get()) {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
-	return *o.Address.Get()
+	return *o.Address
 }
 
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationCreateCommand) GetAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
-	return o.Address.Get(), o.Address.IsSet()
+	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *OrganizationCreateCommand) HasAddress() bool {
-	if o != nil && o.Address.IsSet() {
+	if o != nil && !IsNil(o.Address) {
 		return true
 	}
 
 	return false
 }
 
-// SetAddress gets a reference to the given NullableString and assigns it to the Address field.
+// SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *OrganizationCreateCommand) SetAddress(v string) {
-	o.Address.Set(&v)
-}
-// SetAddressNil sets the value for Address to be an explicit nil
-func (o *OrganizationCreateCommand) SetAddressNil() {
-	o.Address.Set(nil)
+	o.Address = &v
 }
 
-// UnsetAddress ensures that no value is present for Address, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetAddress() {
-	o.Address.Unset()
-}
-
-// GetCountry returns the Country field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCountry returns the Country field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetCountry() string {
-	if o == nil || IsNil(o.Country.Get()) {
+	if o == nil || IsNil(o.Country) {
 		var ret string
 		return ret
 	}
-	return *o.Country.Get()
+	return *o.Country
 }
 
 // GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationCreateCommand) GetCountryOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Country) {
 		return nil, false
 	}
-	return o.Country.Get(), o.Country.IsSet()
+	return o.Country, true
 }
 
 // HasCountry returns a boolean if a field has been set.
 func (o *OrganizationCreateCommand) HasCountry() bool {
-	if o != nil && o.Country.IsSet() {
+	if o != nil && !IsNil(o.Country) {
 		return true
 	}
 
 	return false
 }
 
-// SetCountry gets a reference to the given NullableString and assigns it to the Country field.
+// SetCountry gets a reference to the given string and assigns it to the Country field.
 func (o *OrganizationCreateCommand) SetCountry(v string) {
-	o.Country.Set(&v)
-}
-// SetCountryNil sets the value for Country to be an explicit nil
-func (o *OrganizationCreateCommand) SetCountryNil() {
-	o.Country.Set(nil)
+	o.Country = &v
 }
 
-// UnsetCountry ensures that no value is present for Country, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetCountry() {
-	o.Country.Unset()
-}
-
-// GetCity returns the City field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCity returns the City field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetCity() string {
-	if o == nil || IsNil(o.City.Get()) {
+	if o == nil || IsNil(o.City) {
 		var ret string
 		return ret
 	}
-	return *o.City.Get()
+	return *o.City
 }
 
 // GetCityOk returns a tuple with the City field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationCreateCommand) GetCityOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.City) {
 		return nil, false
 	}
-	return o.City.Get(), o.City.IsSet()
+	return o.City, true
 }
 
 // HasCity returns a boolean if a field has been set.
 func (o *OrganizationCreateCommand) HasCity() bool {
-	if o != nil && o.City.IsSet() {
+	if o != nil && !IsNil(o.City) {
 		return true
 	}
 
 	return false
 }
 
-// SetCity gets a reference to the given NullableString and assigns it to the City field.
+// SetCity gets a reference to the given string and assigns it to the City field.
 func (o *OrganizationCreateCommand) SetCity(v string) {
-	o.City.Set(&v)
-}
-// SetCityNil sets the value for City to be an explicit nil
-func (o *OrganizationCreateCommand) SetCityNil() {
-	o.City.Set(nil)
+	o.City = &v
 }
 
-// UnsetCity ensures that no value is present for City, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetCity() {
-	o.City.Unset()
-}
-
-// GetVatNumber returns the VatNumber field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVatNumber returns the VatNumber field value if set, zero value otherwise.
 func (o *OrganizationCreateCommand) GetVatNumber() string {
-	if o == nil || IsNil(o.VatNumber.Get()) {
+	if o == nil || IsNil(o.VatNumber) {
 		var ret string
 		return ret
 	}
-	return *o.VatNumber.Get()
+	return *o.VatNumber
 }
 
 // GetVatNumberOk returns a tuple with the VatNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationCreateCommand) GetVatNumberOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VatNumber) {
 		return nil, false
 	}
-	return o.VatNumber.Get(), o.VatNumber.IsSet()
+	return o.VatNumber, true
 }
 
 // HasVatNumber returns a boolean if a field has been set.
 func (o *OrganizationCreateCommand) HasVatNumber() bool {
-	if o != nil && o.VatNumber.IsSet() {
+	if o != nil && !IsNil(o.VatNumber) {
 		return true
 	}
 
 	return false
 }
 
-// SetVatNumber gets a reference to the given NullableString and assigns it to the VatNumber field.
+// SetVatNumber gets a reference to the given string and assigns it to the VatNumber field.
 func (o *OrganizationCreateCommand) SetVatNumber(v string) {
-	o.VatNumber.Set(&v)
-}
-// SetVatNumberNil sets the value for VatNumber to be an explicit nil
-func (o *OrganizationCreateCommand) SetVatNumberNil() {
-	o.VatNumber.Set(nil)
-}
-
-// UnsetVatNumber ensures that no value is present for VatNumber, not even an explicit nil
-func (o *OrganizationCreateCommand) UnsetVatNumber() {
-	o.VatNumber.Unset()
+	o.VatNumber = &v
 }
 
 // GetDiscountRate returns the DiscountRate field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -555,32 +465,32 @@ func (o OrganizationCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o OrganizationCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.FullName.IsSet() {
-		toSerialize["fullName"] = o.FullName.Get()
+	if !IsNil(o.FullName) {
+		toSerialize["fullName"] = o.FullName
 	}
-	if o.Phone.IsSet() {
-		toSerialize["phone"] = o.Phone.Get()
+	if !IsNil(o.Phone) {
+		toSerialize["phone"] = o.Phone
 	}
-	if o.Email.IsSet() {
-		toSerialize["email"] = o.Email.Get()
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
 	}
-	if o.BillingEmail.IsSet() {
-		toSerialize["billingEmail"] = o.BillingEmail.Get()
+	if !IsNil(o.BillingEmail) {
+		toSerialize["billingEmail"] = o.BillingEmail
 	}
-	if o.Address.IsSet() {
-		toSerialize["address"] = o.Address.Get()
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
 	}
-	if o.Country.IsSet() {
-		toSerialize["country"] = o.Country.Get()
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
 	}
-	if o.City.IsSet() {
-		toSerialize["city"] = o.City.Get()
+	if !IsNil(o.City) {
+		toSerialize["city"] = o.City
 	}
-	if o.VatNumber.IsSet() {
-		toSerialize["vatNumber"] = o.VatNumber.Get()
+	if !IsNil(o.VatNumber) {
+		toSerialize["vatNumber"] = o.VatNumber
 	}
 	if o.DiscountRate.IsSet() {
 		toSerialize["discountRate"] = o.DiscountRate.Get()

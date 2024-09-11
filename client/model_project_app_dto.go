@@ -21,11 +21,11 @@ var _ MappedNullable = &ProjectAppDto{}
 // ProjectAppDto struct for ProjectAppDto
 type ProjectAppDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
+	ProjectName *string `json:"projectName,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
-	Version NullableString `json:"version,omitempty"`
+	Version *string `json:"version,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	Status *EInstanceStatus `json:"status,omitempty"`
 	AutoSync *bool `json:"autoSync,omitempty"`
@@ -80,130 +80,100 @@ func (o *ProjectAppDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ProjectAppDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectAppDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ProjectAppDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ProjectAppDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ProjectAppDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ProjectAppDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *ProjectAppDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+	return *o.Namespace
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectAppDto) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return o.Namespace, true
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *ProjectAppDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
+	if o != nil && !IsNil(o.Namespace) {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *ProjectAppDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *ProjectAppDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = &v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *ProjectAppDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjectName returns the ProjectName field value if set, zero value otherwise.
 func (o *ProjectAppDto) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName.Get()) {
+	if o == nil || IsNil(o.ProjectName) {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName.Get()
+	return *o.ProjectName
 }
 
 // GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectAppDto) GetProjectNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectName) {
 		return nil, false
 	}
-	return o.ProjectName.Get(), o.ProjectName.IsSet()
+	return o.ProjectName, true
 }
 
 // HasProjectName returns a boolean if a field has been set.
 func (o *ProjectAppDto) HasProjectName() bool {
-	if o != nil && o.ProjectName.IsSet() {
+	if o != nil && !IsNil(o.ProjectName) {
 		return true
 	}
 
 	return false
 }
 
-// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
+// SetProjectName gets a reference to the given string and assigns it to the ProjectName field.
 func (o *ProjectAppDto) SetProjectName(v string) {
-	o.ProjectName.Set(&v)
-}
-// SetProjectNameNil sets the value for ProjectName to be an explicit nil
-func (o *ProjectAppDto) SetProjectNameNil() {
-	o.ProjectName.Set(nil)
-}
-
-// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
-func (o *ProjectAppDto) UnsetProjectName() {
-	o.ProjectName.Unset()
+	o.ProjectName = &v
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
@@ -238,46 +208,36 @@ func (o *ProjectAppDto) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *ProjectAppDto) GetVersion() string {
-	if o == nil || IsNil(o.Version.Get()) {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-	return *o.Version.Get()
+	return *o.Version
 }
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectAppDto) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return o.Version.Get(), o.Version.IsSet()
+	return o.Version, true
 }
 
 // HasVersion returns a boolean if a field has been set.
 func (o *ProjectAppDto) HasVersion() bool {
-	if o != nil && o.Version.IsSet() {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
 	return false
 }
 
-// SetVersion gets a reference to the given NullableString and assigns it to the Version field.
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *ProjectAppDto) SetVersion(v string) {
-	o.Version.Set(&v)
-}
-// SetVersionNil sets the value for Version to be an explicit nil
-func (o *ProjectAppDto) SetVersionNil() {
-	o.Version.Set(nil)
-}
-
-// UnsetVersion ensures that no value is present for Version, not even an explicit nil
-func (o *ProjectAppDto) UnsetVersion() {
-	o.Version.Unset()
+	o.Version = &v
 }
 
 // GetIsLocked returns the IsLocked field value if set, zero value otherwise.
@@ -389,20 +349,20 @@ func (o ProjectAppDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
 	}
-	if o.ProjectName.IsSet() {
-		toSerialize["projectName"] = o.ProjectName.Get()
+	if !IsNil(o.ProjectName) {
+		toSerialize["projectName"] = o.ProjectName
 	}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if o.Version.IsSet() {
-		toSerialize["version"] = o.Version.Get()
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked

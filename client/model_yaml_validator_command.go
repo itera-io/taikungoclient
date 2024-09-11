@@ -20,7 +20,7 @@ var _ MappedNullable = &YamlValidatorCommand{}
 
 // YamlValidatorCommand struct for YamlValidatorCommand
 type YamlValidatorCommand struct {
-	Yaml NullableString `json:"yaml,omitempty"`
+	Yaml *string `json:"yaml,omitempty"`
 }
 
 // NewYamlValidatorCommand instantiates a new YamlValidatorCommand object
@@ -40,46 +40,36 @@ func NewYamlValidatorCommandWithDefaults() *YamlValidatorCommand {
 	return &this
 }
 
-// GetYaml returns the Yaml field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetYaml returns the Yaml field value if set, zero value otherwise.
 func (o *YamlValidatorCommand) GetYaml() string {
-	if o == nil || IsNil(o.Yaml.Get()) {
+	if o == nil || IsNil(o.Yaml) {
 		var ret string
 		return ret
 	}
-	return *o.Yaml.Get()
+	return *o.Yaml
 }
 
 // GetYamlOk returns a tuple with the Yaml field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *YamlValidatorCommand) GetYamlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Yaml) {
 		return nil, false
 	}
-	return o.Yaml.Get(), o.Yaml.IsSet()
+	return o.Yaml, true
 }
 
 // HasYaml returns a boolean if a field has been set.
 func (o *YamlValidatorCommand) HasYaml() bool {
-	if o != nil && o.Yaml.IsSet() {
+	if o != nil && !IsNil(o.Yaml) {
 		return true
 	}
 
 	return false
 }
 
-// SetYaml gets a reference to the given NullableString and assigns it to the Yaml field.
+// SetYaml gets a reference to the given string and assigns it to the Yaml field.
 func (o *YamlValidatorCommand) SetYaml(v string) {
-	o.Yaml.Set(&v)
-}
-// SetYamlNil sets the value for Yaml to be an explicit nil
-func (o *YamlValidatorCommand) SetYamlNil() {
-	o.Yaml.Set(nil)
-}
-
-// UnsetYaml ensures that no value is present for Yaml, not even an explicit nil
-func (o *YamlValidatorCommand) UnsetYaml() {
-	o.Yaml.Unset()
+	o.Yaml = &v
 }
 
 func (o YamlValidatorCommand) MarshalJSON() ([]byte, error) {
@@ -92,8 +82,8 @@ func (o YamlValidatorCommand) MarshalJSON() ([]byte, error) {
 
 func (o YamlValidatorCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Yaml.IsSet() {
-		toSerialize["yaml"] = o.Yaml.Get()
+	if !IsNil(o.Yaml) {
+		toSerialize["yaml"] = o.Yaml
 	}
 	return toSerialize, nil
 }

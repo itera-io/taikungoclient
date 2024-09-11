@@ -20,7 +20,7 @@ var _ MappedNullable = &PayInvoiceCommand{}
 
 // PayInvoiceCommand struct for PayInvoiceCommand
 type PayInvoiceCommand struct {
-	InvoiceId NullableString `json:"invoiceId,omitempty"`
+	InvoiceId *string `json:"invoiceId,omitempty"`
 }
 
 // NewPayInvoiceCommand instantiates a new PayInvoiceCommand object
@@ -40,46 +40,36 @@ func NewPayInvoiceCommandWithDefaults() *PayInvoiceCommand {
 	return &this
 }
 
-// GetInvoiceId returns the InvoiceId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInvoiceId returns the InvoiceId field value if set, zero value otherwise.
 func (o *PayInvoiceCommand) GetInvoiceId() string {
-	if o == nil || IsNil(o.InvoiceId.Get()) {
+	if o == nil || IsNil(o.InvoiceId) {
 		var ret string
 		return ret
 	}
-	return *o.InvoiceId.Get()
+	return *o.InvoiceId
 }
 
 // GetInvoiceIdOk returns a tuple with the InvoiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PayInvoiceCommand) GetInvoiceIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceId) {
 		return nil, false
 	}
-	return o.InvoiceId.Get(), o.InvoiceId.IsSet()
+	return o.InvoiceId, true
 }
 
 // HasInvoiceId returns a boolean if a field has been set.
 func (o *PayInvoiceCommand) HasInvoiceId() bool {
-	if o != nil && o.InvoiceId.IsSet() {
+	if o != nil && !IsNil(o.InvoiceId) {
 		return true
 	}
 
 	return false
 }
 
-// SetInvoiceId gets a reference to the given NullableString and assigns it to the InvoiceId field.
+// SetInvoiceId gets a reference to the given string and assigns it to the InvoiceId field.
 func (o *PayInvoiceCommand) SetInvoiceId(v string) {
-	o.InvoiceId.Set(&v)
-}
-// SetInvoiceIdNil sets the value for InvoiceId to be an explicit nil
-func (o *PayInvoiceCommand) SetInvoiceIdNil() {
-	o.InvoiceId.Set(nil)
-}
-
-// UnsetInvoiceId ensures that no value is present for InvoiceId, not even an explicit nil
-func (o *PayInvoiceCommand) UnsetInvoiceId() {
-	o.InvoiceId.Unset()
+	o.InvoiceId = &v
 }
 
 func (o PayInvoiceCommand) MarshalJSON() ([]byte, error) {
@@ -92,8 +82,8 @@ func (o PayInvoiceCommand) MarshalJSON() ([]byte, error) {
 
 func (o PayInvoiceCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.InvoiceId.IsSet() {
-		toSerialize["invoiceId"] = o.InvoiceId.Get()
+	if !IsNil(o.InvoiceId) {
+		toSerialize["invoiceId"] = o.InvoiceId
 	}
 	return toSerialize, nil
 }

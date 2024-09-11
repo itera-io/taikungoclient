@@ -20,9 +20,9 @@ var _ MappedNullable = &AmazonAvailabilityZonesCommand{}
 
 // AmazonAvailabilityZonesCommand struct for AmazonAvailabilityZonesCommand
 type AmazonAvailabilityZonesCommand struct {
-	Region NullableString `json:"region,omitempty"`
-	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
-	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
+	Region *string `json:"region,omitempty"`
+	AwsAccessKeyId *string `json:"awsAccessKeyId,omitempty"`
+	AwsSecretAccessKey *string `json:"awsSecretAccessKey,omitempty"`
 	CloudId NullableInt32 `json:"cloudId,omitempty"`
 }
 
@@ -43,130 +43,100 @@ func NewAmazonAvailabilityZonesCommandWithDefaults() *AmazonAvailabilityZonesCom
 	return &this
 }
 
-// GetRegion returns the Region field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRegion returns the Region field value if set, zero value otherwise.
 func (o *AmazonAvailabilityZonesCommand) GetRegion() string {
-	if o == nil || IsNil(o.Region.Get()) {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
-	return *o.Region.Get()
+	return *o.Region
 }
 
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AmazonAvailabilityZonesCommand) GetRegionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
-	return o.Region.Get(), o.Region.IsSet()
+	return o.Region, true
 }
 
 // HasRegion returns a boolean if a field has been set.
 func (o *AmazonAvailabilityZonesCommand) HasRegion() bool {
-	if o != nil && o.Region.IsSet() {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
 	return false
 }
 
-// SetRegion gets a reference to the given NullableString and assigns it to the Region field.
+// SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *AmazonAvailabilityZonesCommand) SetRegion(v string) {
-	o.Region.Set(&v)
-}
-// SetRegionNil sets the value for Region to be an explicit nil
-func (o *AmazonAvailabilityZonesCommand) SetRegionNil() {
-	o.Region.Set(nil)
+	o.Region = &v
 }
 
-// UnsetRegion ensures that no value is present for Region, not even an explicit nil
-func (o *AmazonAvailabilityZonesCommand) UnsetRegion() {
-	o.Region.Unset()
-}
-
-// GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise.
 func (o *AmazonAvailabilityZonesCommand) GetAwsAccessKeyId() string {
-	if o == nil || IsNil(o.AwsAccessKeyId.Get()) {
+	if o == nil || IsNil(o.AwsAccessKeyId) {
 		var ret string
 		return ret
 	}
-	return *o.AwsAccessKeyId.Get()
+	return *o.AwsAccessKeyId
 }
 
 // GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AmazonAvailabilityZonesCommand) GetAwsAccessKeyIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AwsAccessKeyId) {
 		return nil, false
 	}
-	return o.AwsAccessKeyId.Get(), o.AwsAccessKeyId.IsSet()
+	return o.AwsAccessKeyId, true
 }
 
 // HasAwsAccessKeyId returns a boolean if a field has been set.
 func (o *AmazonAvailabilityZonesCommand) HasAwsAccessKeyId() bool {
-	if o != nil && o.AwsAccessKeyId.IsSet() {
+	if o != nil && !IsNil(o.AwsAccessKeyId) {
 		return true
 	}
 
 	return false
 }
 
-// SetAwsAccessKeyId gets a reference to the given NullableString and assigns it to the AwsAccessKeyId field.
+// SetAwsAccessKeyId gets a reference to the given string and assigns it to the AwsAccessKeyId field.
 func (o *AmazonAvailabilityZonesCommand) SetAwsAccessKeyId(v string) {
-	o.AwsAccessKeyId.Set(&v)
-}
-// SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
-func (o *AmazonAvailabilityZonesCommand) SetAwsAccessKeyIdNil() {
-	o.AwsAccessKeyId.Set(nil)
+	o.AwsAccessKeyId = &v
 }
 
-// UnsetAwsAccessKeyId ensures that no value is present for AwsAccessKeyId, not even an explicit nil
-func (o *AmazonAvailabilityZonesCommand) UnsetAwsAccessKeyId() {
-	o.AwsAccessKeyId.Unset()
-}
-
-// GetAwsSecretAccessKey returns the AwsSecretAccessKey field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAwsSecretAccessKey returns the AwsSecretAccessKey field value if set, zero value otherwise.
 func (o *AmazonAvailabilityZonesCommand) GetAwsSecretAccessKey() string {
-	if o == nil || IsNil(o.AwsSecretAccessKey.Get()) {
+	if o == nil || IsNil(o.AwsSecretAccessKey) {
 		var ret string
 		return ret
 	}
-	return *o.AwsSecretAccessKey.Get()
+	return *o.AwsSecretAccessKey
 }
 
 // GetAwsSecretAccessKeyOk returns a tuple with the AwsSecretAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AmazonAvailabilityZonesCommand) GetAwsSecretAccessKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AwsSecretAccessKey) {
 		return nil, false
 	}
-	return o.AwsSecretAccessKey.Get(), o.AwsSecretAccessKey.IsSet()
+	return o.AwsSecretAccessKey, true
 }
 
 // HasAwsSecretAccessKey returns a boolean if a field has been set.
 func (o *AmazonAvailabilityZonesCommand) HasAwsSecretAccessKey() bool {
-	if o != nil && o.AwsSecretAccessKey.IsSet() {
+	if o != nil && !IsNil(o.AwsSecretAccessKey) {
 		return true
 	}
 
 	return false
 }
 
-// SetAwsSecretAccessKey gets a reference to the given NullableString and assigns it to the AwsSecretAccessKey field.
+// SetAwsSecretAccessKey gets a reference to the given string and assigns it to the AwsSecretAccessKey field.
 func (o *AmazonAvailabilityZonesCommand) SetAwsSecretAccessKey(v string) {
-	o.AwsSecretAccessKey.Set(&v)
-}
-// SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
-func (o *AmazonAvailabilityZonesCommand) SetAwsSecretAccessKeyNil() {
-	o.AwsSecretAccessKey.Set(nil)
-}
-
-// UnsetAwsSecretAccessKey ensures that no value is present for AwsSecretAccessKey, not even an explicit nil
-func (o *AmazonAvailabilityZonesCommand) UnsetAwsSecretAccessKey() {
-	o.AwsSecretAccessKey.Unset()
+	o.AwsSecretAccessKey = &v
 }
 
 // GetCloudId returns the CloudId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -221,14 +191,14 @@ func (o AmazonAvailabilityZonesCommand) MarshalJSON() ([]byte, error) {
 
 func (o AmazonAvailabilityZonesCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Region.IsSet() {
-		toSerialize["region"] = o.Region.Get()
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
-	if o.AwsAccessKeyId.IsSet() {
-		toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId.Get()
+	if !IsNil(o.AwsAccessKeyId) {
+		toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId
 	}
-	if o.AwsSecretAccessKey.IsSet() {
-		toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey.Get()
+	if !IsNil(o.AwsSecretAccessKey) {
+		toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey
 	}
 	if o.CloudId.IsSet() {
 		toSerialize["cloudId"] = o.CloudId.Get()

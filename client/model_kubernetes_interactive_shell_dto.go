@@ -20,8 +20,8 @@ var _ MappedNullable = &KubernetesInteractiveShellDto{}
 
 // KubernetesInteractiveShellDto struct for KubernetesInteractiveShellDto
 type KubernetesInteractiveShellDto struct {
-	KubeConfig NullableString `json:"kubeConfig,omitempty"`
-	PodName NullableString `json:"podName,omitempty"`
+	KubeConfig *string `json:"kubeConfig,omitempty"`
+	PodName *string `json:"podName,omitempty"`
 }
 
 // NewKubernetesInteractiveShellDto instantiates a new KubernetesInteractiveShellDto object
@@ -41,88 +41,68 @@ func NewKubernetesInteractiveShellDtoWithDefaults() *KubernetesInteractiveShellD
 	return &this
 }
 
-// GetKubeConfig returns the KubeConfig field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubeConfig returns the KubeConfig field value if set, zero value otherwise.
 func (o *KubernetesInteractiveShellDto) GetKubeConfig() string {
-	if o == nil || IsNil(o.KubeConfig.Get()) {
+	if o == nil || IsNil(o.KubeConfig) {
 		var ret string
 		return ret
 	}
-	return *o.KubeConfig.Get()
+	return *o.KubeConfig
 }
 
 // GetKubeConfigOk returns a tuple with the KubeConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesInteractiveShellDto) GetKubeConfigOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubeConfig) {
 		return nil, false
 	}
-	return o.KubeConfig.Get(), o.KubeConfig.IsSet()
+	return o.KubeConfig, true
 }
 
 // HasKubeConfig returns a boolean if a field has been set.
 func (o *KubernetesInteractiveShellDto) HasKubeConfig() bool {
-	if o != nil && o.KubeConfig.IsSet() {
+	if o != nil && !IsNil(o.KubeConfig) {
 		return true
 	}
 
 	return false
 }
 
-// SetKubeConfig gets a reference to the given NullableString and assigns it to the KubeConfig field.
+// SetKubeConfig gets a reference to the given string and assigns it to the KubeConfig field.
 func (o *KubernetesInteractiveShellDto) SetKubeConfig(v string) {
-	o.KubeConfig.Set(&v)
-}
-// SetKubeConfigNil sets the value for KubeConfig to be an explicit nil
-func (o *KubernetesInteractiveShellDto) SetKubeConfigNil() {
-	o.KubeConfig.Set(nil)
+	o.KubeConfig = &v
 }
 
-// UnsetKubeConfig ensures that no value is present for KubeConfig, not even an explicit nil
-func (o *KubernetesInteractiveShellDto) UnsetKubeConfig() {
-	o.KubeConfig.Unset()
-}
-
-// GetPodName returns the PodName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPodName returns the PodName field value if set, zero value otherwise.
 func (o *KubernetesInteractiveShellDto) GetPodName() string {
-	if o == nil || IsNil(o.PodName.Get()) {
+	if o == nil || IsNil(o.PodName) {
 		var ret string
 		return ret
 	}
-	return *o.PodName.Get()
+	return *o.PodName
 }
 
 // GetPodNameOk returns a tuple with the PodName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesInteractiveShellDto) GetPodNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PodName) {
 		return nil, false
 	}
-	return o.PodName.Get(), o.PodName.IsSet()
+	return o.PodName, true
 }
 
 // HasPodName returns a boolean if a field has been set.
 func (o *KubernetesInteractiveShellDto) HasPodName() bool {
-	if o != nil && o.PodName.IsSet() {
+	if o != nil && !IsNil(o.PodName) {
 		return true
 	}
 
 	return false
 }
 
-// SetPodName gets a reference to the given NullableString and assigns it to the PodName field.
+// SetPodName gets a reference to the given string and assigns it to the PodName field.
 func (o *KubernetesInteractiveShellDto) SetPodName(v string) {
-	o.PodName.Set(&v)
-}
-// SetPodNameNil sets the value for PodName to be an explicit nil
-func (o *KubernetesInteractiveShellDto) SetPodNameNil() {
-	o.PodName.Set(nil)
-}
-
-// UnsetPodName ensures that no value is present for PodName, not even an explicit nil
-func (o *KubernetesInteractiveShellDto) UnsetPodName() {
-	o.PodName.Unset()
+	o.PodName = &v
 }
 
 func (o KubernetesInteractiveShellDto) MarshalJSON() ([]byte, error) {
@@ -135,11 +115,11 @@ func (o KubernetesInteractiveShellDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesInteractiveShellDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.KubeConfig.IsSet() {
-		toSerialize["kubeConfig"] = o.KubeConfig.Get()
+	if !IsNil(o.KubeConfig) {
+		toSerialize["kubeConfig"] = o.KubeConfig
 	}
-	if o.PodName.IsSet() {
-		toSerialize["podName"] = o.PodName.Get()
+	if !IsNil(o.PodName) {
+		toSerialize["podName"] = o.PodName
 	}
 	return toSerialize, nil
 }

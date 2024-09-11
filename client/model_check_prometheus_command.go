@@ -20,9 +20,9 @@ var _ MappedNullable = &CheckPrometheusCommand{}
 
 // CheckPrometheusCommand struct for CheckPrometheusCommand
 type CheckPrometheusCommand struct {
-	Password NullableString `json:"password,omitempty"`
-	UserName NullableString `json:"userName,omitempty"`
-	Url NullableString `json:"url,omitempty"`
+	Password *string `json:"password,omitempty"`
+	UserName *string `json:"userName,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewCheckPrometheusCommand instantiates a new CheckPrometheusCommand object
@@ -42,130 +42,100 @@ func NewCheckPrometheusCommandWithDefaults() *CheckPrometheusCommand {
 	return &this
 }
 
-// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *CheckPrometheusCommand) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-	return *o.Password.Get()
+	return *o.Password
 }
 
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckPrometheusCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return o.Password.Get(), o.Password.IsSet()
+	return o.Password, true
 }
 
 // HasPassword returns a boolean if a field has been set.
 func (o *CheckPrometheusCommand) HasPassword() bool {
-	if o != nil && o.Password.IsSet() {
+	if o != nil && !IsNil(o.Password) {
 		return true
 	}
 
 	return false
 }
 
-// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *CheckPrometheusCommand) SetPassword(v string) {
-	o.Password.Set(&v)
-}
-// SetPasswordNil sets the value for Password to be an explicit nil
-func (o *CheckPrometheusCommand) SetPasswordNil() {
-	o.Password.Set(nil)
+	o.Password = &v
 }
 
-// UnsetPassword ensures that no value is present for Password, not even an explicit nil
-func (o *CheckPrometheusCommand) UnsetPassword() {
-	o.Password.Unset()
-}
-
-// GetUserName returns the UserName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserName returns the UserName field value if set, zero value otherwise.
 func (o *CheckPrometheusCommand) GetUserName() string {
-	if o == nil || IsNil(o.UserName.Get()) {
+	if o == nil || IsNil(o.UserName) {
 		var ret string
 		return ret
 	}
-	return *o.UserName.Get()
+	return *o.UserName
 }
 
 // GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckPrometheusCommand) GetUserNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserName) {
 		return nil, false
 	}
-	return o.UserName.Get(), o.UserName.IsSet()
+	return o.UserName, true
 }
 
 // HasUserName returns a boolean if a field has been set.
 func (o *CheckPrometheusCommand) HasUserName() bool {
-	if o != nil && o.UserName.IsSet() {
+	if o != nil && !IsNil(o.UserName) {
 		return true
 	}
 
 	return false
 }
 
-// SetUserName gets a reference to the given NullableString and assigns it to the UserName field.
+// SetUserName gets a reference to the given string and assigns it to the UserName field.
 func (o *CheckPrometheusCommand) SetUserName(v string) {
-	o.UserName.Set(&v)
-}
-// SetUserNameNil sets the value for UserName to be an explicit nil
-func (o *CheckPrometheusCommand) SetUserNameNil() {
-	o.UserName.Set(nil)
+	o.UserName = &v
 }
 
-// UnsetUserName ensures that no value is present for UserName, not even an explicit nil
-func (o *CheckPrometheusCommand) UnsetUserName() {
-	o.UserName.Unset()
-}
-
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *CheckPrometheusCommand) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckPrometheusCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *CheckPrometheusCommand) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *CheckPrometheusCommand) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *CheckPrometheusCommand) SetUrlNil() {
-	o.Url.Set(nil)
-}
-
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *CheckPrometheusCommand) UnsetUrl() {
-	o.Url.Unset()
+	o.Url = &v
 }
 
 func (o CheckPrometheusCommand) MarshalJSON() ([]byte, error) {
@@ -178,14 +148,14 @@ func (o CheckPrometheusCommand) MarshalJSON() ([]byte, error) {
 
 func (o CheckPrometheusCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Password.IsSet() {
-		toSerialize["password"] = o.Password.Get()
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
 	}
-	if o.UserName.IsSet() {
-		toSerialize["userName"] = o.UserName.Get()
+	if !IsNil(o.UserName) {
+		toSerialize["userName"] = o.UserName
 	}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
 	return toSerialize, nil
 }

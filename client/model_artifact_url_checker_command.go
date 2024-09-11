@@ -20,8 +20,8 @@ var _ MappedNullable = &ArtifactUrlCheckerCommand{}
 
 // ArtifactUrlCheckerCommand struct for ArtifactUrlCheckerCommand
 type ArtifactUrlCheckerCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewArtifactUrlCheckerCommand instantiates a new ArtifactUrlCheckerCommand object
@@ -41,88 +41,68 @@ func NewArtifactUrlCheckerCommandWithDefaults() *ArtifactUrlCheckerCommand {
 	return &this
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *ArtifactUrlCheckerCommand) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArtifactUrlCheckerCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *ArtifactUrlCheckerCommand) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *ArtifactUrlCheckerCommand) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *ArtifactUrlCheckerCommand) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = &v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *ArtifactUrlCheckerCommand) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ArtifactUrlCheckerCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ArtifactUrlCheckerCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ArtifactUrlCheckerCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ArtifactUrlCheckerCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ArtifactUrlCheckerCommand) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ArtifactUrlCheckerCommand) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 func (o ArtifactUrlCheckerCommand) MarshalJSON() ([]byte, error) {
@@ -135,11 +115,11 @@ func (o ArtifactUrlCheckerCommand) MarshalJSON() ([]byte, error) {
 
 func (o ArtifactUrlCheckerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
 }

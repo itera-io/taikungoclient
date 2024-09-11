@@ -41,9 +41,9 @@ func NewKubernetesDashboardDtoWithDefaults() *KubernetesDashboardDto {
 	return &this
 }
 
-// GetPods returns the Pods field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPods returns the Pods field value if set, zero value otherwise.
 func (o *KubernetesDashboardDto) GetPods() []PodDto {
-	if o == nil {
+	if o == nil || IsNil(o.Pods) {
 		var ret []PodDto
 		return ret
 	}
@@ -52,7 +52,6 @@ func (o *KubernetesDashboardDto) GetPods() []PodDto {
 
 // GetPodsOk returns a tuple with the Pods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesDashboardDto) GetPodsOk() ([]PodDto, bool) {
 	if o == nil || IsNil(o.Pods) {
 		return nil, false
@@ -74,9 +73,9 @@ func (o *KubernetesDashboardDto) SetPods(v []PodDto) {
 	o.Pods = v
 }
 
-// GetNodes returns the Nodes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNodes returns the Nodes field value if set, zero value otherwise.
 func (o *KubernetesDashboardDto) GetNodes() []NodeDto {
-	if o == nil {
+	if o == nil || IsNil(o.Nodes) {
 		var ret []NodeDto
 		return ret
 	}
@@ -85,7 +84,6 @@ func (o *KubernetesDashboardDto) GetNodes() []NodeDto {
 
 // GetNodesOk returns a tuple with the Nodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesDashboardDto) GetNodesOk() ([]NodeDto, bool) {
 	if o == nil || IsNil(o.Nodes) {
 		return nil, false
@@ -117,10 +115,10 @@ func (o KubernetesDashboardDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesDashboardDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Pods != nil {
+	if !IsNil(o.Pods) {
 		toSerialize["pods"] = o.Pods
 	}
-	if o.Nodes != nil {
+	if !IsNil(o.Nodes) {
 		toSerialize["nodes"] = o.Nodes
 	}
 	return toSerialize, nil

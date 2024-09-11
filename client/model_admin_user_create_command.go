@@ -20,9 +20,9 @@ var _ MappedNullable = &AdminUserCreateCommand{}
 
 // AdminUserCreateCommand struct for AdminUserCreateCommand
 type AdminUserCreateCommand struct {
-	Email NullableString `json:"email,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
+	Email *string `json:"email,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
 	Role *UserRole `json:"role,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
@@ -44,130 +44,100 @@ func NewAdminUserCreateCommandWithDefaults() *AdminUserCreateCommand {
 	return &this
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *AdminUserCreateCommand) GetEmail() string {
-	if o == nil || IsNil(o.Email.Get()) {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-	return *o.Email.Get()
+	return *o.Email
 }
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminUserCreateCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return o.Email.Get(), o.Email.IsSet()
+	return o.Email, true
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *AdminUserCreateCommand) HasEmail() bool {
-	if o != nil && o.Email.IsSet() {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *AdminUserCreateCommand) SetEmail(v string) {
-	o.Email.Set(&v)
-}
-// SetEmailNil sets the value for Email to be an explicit nil
-func (o *AdminUserCreateCommand) SetEmailNil() {
-	o.Email.Set(nil)
+	o.Email = &v
 }
 
-// UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *AdminUserCreateCommand) UnsetEmail() {
-	o.Email.Unset()
-}
-
-// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *AdminUserCreateCommand) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-	return *o.Username.Get()
+	return *o.Username
 }
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminUserCreateCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return o.Username.Get(), o.Username.IsSet()
+	return o.Username, true
 }
 
 // HasUsername returns a boolean if a field has been set.
 func (o *AdminUserCreateCommand) HasUsername() bool {
-	if o != nil && o.Username.IsSet() {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
 	return false
 }
 
-// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *AdminUserCreateCommand) SetUsername(v string) {
-	o.Username.Set(&v)
-}
-// SetUsernameNil sets the value for Username to be an explicit nil
-func (o *AdminUserCreateCommand) SetUsernameNil() {
-	o.Username.Set(nil)
+	o.Username = &v
 }
 
-// UnsetUsername ensures that no value is present for Username, not even an explicit nil
-func (o *AdminUserCreateCommand) UnsetUsername() {
-	o.Username.Unset()
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *AdminUserCreateCommand) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-	return *o.Password.Get()
+	return *o.Password
 }
 
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminUserCreateCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return o.Password.Get(), o.Password.IsSet()
+	return o.Password, true
 }
 
 // HasPassword returns a boolean if a field has been set.
 func (o *AdminUserCreateCommand) HasPassword() bool {
-	if o != nil && o.Password.IsSet() {
+	if o != nil && !IsNil(o.Password) {
 		return true
 	}
 
 	return false
 }
 
-// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *AdminUserCreateCommand) SetPassword(v string) {
-	o.Password.Set(&v)
-}
-// SetPasswordNil sets the value for Password to be an explicit nil
-func (o *AdminUserCreateCommand) SetPasswordNil() {
-	o.Password.Set(nil)
-}
-
-// UnsetPassword ensures that no value is present for Password, not even an explicit nil
-func (o *AdminUserCreateCommand) UnsetPassword() {
-	o.Password.Unset()
+	o.Password = &v
 }
 
 // GetRole returns the Role field value if set, zero value otherwise.
@@ -254,14 +224,14 @@ func (o AdminUserCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o AdminUserCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Email.IsSet() {
-		toSerialize["email"] = o.Email.Get()
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
 	}
-	if o.Username.IsSet() {
-		toSerialize["username"] = o.Username.Get()
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
 	}
-	if o.Password.IsSet() {
-		toSerialize["password"] = o.Password.Get()
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
 	}
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role

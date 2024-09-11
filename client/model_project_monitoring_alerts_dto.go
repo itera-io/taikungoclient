@@ -20,7 +20,7 @@ var _ MappedNullable = &ProjectMonitoringAlertsDto{}
 
 // ProjectMonitoringAlertsDto struct for ProjectMonitoringAlertsDto
 type ProjectMonitoringAlertsDto struct {
-	Status NullableString `json:"status,omitempty"`
+	Status *string `json:"status,omitempty"`
 	Data *AlertData `json:"data,omitempty"`
 }
 
@@ -41,46 +41,36 @@ func NewProjectMonitoringAlertsDtoWithDefaults() *ProjectMonitoringAlertsDto {
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ProjectMonitoringAlertsDto) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-	return *o.Status.Get()
+	return *o.Status
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectMonitoringAlertsDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return o.Status.Get(), o.Status.IsSet()
+	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *ProjectMonitoringAlertsDto) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *ProjectMonitoringAlertsDto) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *ProjectMonitoringAlertsDto) SetStatusNil() {
-	o.Status.Set(nil)
-}
-
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *ProjectMonitoringAlertsDto) UnsetStatus() {
-	o.Status.Unset()
+	o.Status = &v
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
@@ -125,8 +115,8 @@ func (o ProjectMonitoringAlertsDto) MarshalJSON() ([]byte, error) {
 
 func (o ProjectMonitoringAlertsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data

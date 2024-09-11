@@ -20,9 +20,9 @@ var _ MappedNullable = &ResetPasswordCommand{}
 
 // ResetPasswordCommand struct for ResetPasswordCommand
 type ResetPasswordCommand struct {
-	Token NullableString `json:"token,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	NewPassword NullableString `json:"newPassword,omitempty"`
+	Token *string `json:"token,omitempty"`
+	Email *string `json:"email,omitempty"`
+	NewPassword *string `json:"newPassword,omitempty"`
 }
 
 // NewResetPasswordCommand instantiates a new ResetPasswordCommand object
@@ -42,130 +42,100 @@ func NewResetPasswordCommandWithDefaults() *ResetPasswordCommand {
 	return &this
 }
 
-// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetToken returns the Token field value if set, zero value otherwise.
 func (o *ResetPasswordCommand) GetToken() string {
-	if o == nil || IsNil(o.Token.Get()) {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
-	return *o.Token.Get()
+	return *o.Token
 }
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResetPasswordCommand) GetTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
-	return o.Token.Get(), o.Token.IsSet()
+	return o.Token, true
 }
 
 // HasToken returns a boolean if a field has been set.
 func (o *ResetPasswordCommand) HasToken() bool {
-	if o != nil && o.Token.IsSet() {
+	if o != nil && !IsNil(o.Token) {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given NullableString and assigns it to the Token field.
+// SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *ResetPasswordCommand) SetToken(v string) {
-	o.Token.Set(&v)
-}
-// SetTokenNil sets the value for Token to be an explicit nil
-func (o *ResetPasswordCommand) SetTokenNil() {
-	o.Token.Set(nil)
+	o.Token = &v
 }
 
-// UnsetToken ensures that no value is present for Token, not even an explicit nil
-func (o *ResetPasswordCommand) UnsetToken() {
-	o.Token.Unset()
-}
-
-// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *ResetPasswordCommand) GetEmail() string {
-	if o == nil || IsNil(o.Email.Get()) {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-	return *o.Email.Get()
+	return *o.Email
 }
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResetPasswordCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return o.Email.Get(), o.Email.IsSet()
+	return o.Email, true
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *ResetPasswordCommand) HasEmail() bool {
-	if o != nil && o.Email.IsSet() {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *ResetPasswordCommand) SetEmail(v string) {
-	o.Email.Set(&v)
-}
-// SetEmailNil sets the value for Email to be an explicit nil
-func (o *ResetPasswordCommand) SetEmailNil() {
-	o.Email.Set(nil)
+	o.Email = &v
 }
 
-// UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *ResetPasswordCommand) UnsetEmail() {
-	o.Email.Unset()
-}
-
-// GetNewPassword returns the NewPassword field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNewPassword returns the NewPassword field value if set, zero value otherwise.
 func (o *ResetPasswordCommand) GetNewPassword() string {
-	if o == nil || IsNil(o.NewPassword.Get()) {
+	if o == nil || IsNil(o.NewPassword) {
 		var ret string
 		return ret
 	}
-	return *o.NewPassword.Get()
+	return *o.NewPassword
 }
 
 // GetNewPasswordOk returns a tuple with the NewPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResetPasswordCommand) GetNewPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.NewPassword) {
 		return nil, false
 	}
-	return o.NewPassword.Get(), o.NewPassword.IsSet()
+	return o.NewPassword, true
 }
 
 // HasNewPassword returns a boolean if a field has been set.
 func (o *ResetPasswordCommand) HasNewPassword() bool {
-	if o != nil && o.NewPassword.IsSet() {
+	if o != nil && !IsNil(o.NewPassword) {
 		return true
 	}
 
 	return false
 }
 
-// SetNewPassword gets a reference to the given NullableString and assigns it to the NewPassword field.
+// SetNewPassword gets a reference to the given string and assigns it to the NewPassword field.
 func (o *ResetPasswordCommand) SetNewPassword(v string) {
-	o.NewPassword.Set(&v)
-}
-// SetNewPasswordNil sets the value for NewPassword to be an explicit nil
-func (o *ResetPasswordCommand) SetNewPasswordNil() {
-	o.NewPassword.Set(nil)
-}
-
-// UnsetNewPassword ensures that no value is present for NewPassword, not even an explicit nil
-func (o *ResetPasswordCommand) UnsetNewPassword() {
-	o.NewPassword.Unset()
+	o.NewPassword = &v
 }
 
 func (o ResetPasswordCommand) MarshalJSON() ([]byte, error) {
@@ -178,14 +148,14 @@ func (o ResetPasswordCommand) MarshalJSON() ([]byte, error) {
 
 func (o ResetPasswordCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Token.IsSet() {
-		toSerialize["token"] = o.Token.Get()
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
 	}
-	if o.Email.IsSet() {
-		toSerialize["email"] = o.Email.Get()
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
 	}
-	if o.NewPassword.IsSet() {
-		toSerialize["newPassword"] = o.NewPassword.Get()
+	if !IsNil(o.NewPassword) {
+		toSerialize["newPassword"] = o.NewPassword
 	}
 	return toSerialize, nil
 }

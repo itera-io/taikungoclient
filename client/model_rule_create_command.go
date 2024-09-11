@@ -20,8 +20,8 @@ var _ MappedNullable = &RuleCreateCommand{}
 
 // RuleCreateCommand struct for RuleCreateCommand
 type RuleCreateCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	MetricName NullableString `json:"metricName,omitempty"`
+	Name *string `json:"name,omitempty"`
+	MetricName *string `json:"metricName,omitempty"`
 	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
 	Type *PrometheusType `json:"type,omitempty"`
 	Price *float64 `json:"price,omitempty"`
@@ -48,93 +48,73 @@ func NewRuleCreateCommandWithDefaults() *RuleCreateCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *RuleCreateCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RuleCreateCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *RuleCreateCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *RuleCreateCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *RuleCreateCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *RuleCreateCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetMetricName returns the MetricName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetricName returns the MetricName field value if set, zero value otherwise.
 func (o *RuleCreateCommand) GetMetricName() string {
-	if o == nil || IsNil(o.MetricName.Get()) {
+	if o == nil || IsNil(o.MetricName) {
 		var ret string
 		return ret
 	}
-	return *o.MetricName.Get()
+	return *o.MetricName
 }
 
 // GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RuleCreateCommand) GetMetricNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetricName) {
 		return nil, false
 	}
-	return o.MetricName.Get(), o.MetricName.IsSet()
+	return o.MetricName, true
 }
 
 // HasMetricName returns a boolean if a field has been set.
 func (o *RuleCreateCommand) HasMetricName() bool {
-	if o != nil && o.MetricName.IsSet() {
+	if o != nil && !IsNil(o.MetricName) {
 		return true
 	}
 
 	return false
 }
 
-// SetMetricName gets a reference to the given NullableString and assigns it to the MetricName field.
+// SetMetricName gets a reference to the given string and assigns it to the MetricName field.
 func (o *RuleCreateCommand) SetMetricName(v string) {
-	o.MetricName.Set(&v)
-}
-// SetMetricNameNil sets the value for MetricName to be an explicit nil
-func (o *RuleCreateCommand) SetMetricNameNil() {
-	o.MetricName.Set(nil)
+	o.MetricName = &v
 }
 
-// UnsetMetricName ensures that no value is present for MetricName, not even an explicit nil
-func (o *RuleCreateCommand) UnsetMetricName() {
-	o.MetricName.Unset()
-}
-
-// GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLabels returns the Labels field value if set, zero value otherwise.
 func (o *RuleCreateCommand) GetLabels() []PrometheusLabelListDto {
-	if o == nil {
+	if o == nil || IsNil(o.Labels) {
 		var ret []PrometheusLabelListDto
 		return ret
 	}
@@ -143,7 +123,6 @@ func (o *RuleCreateCommand) GetLabels() []PrometheusLabelListDto {
 
 // GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RuleCreateCommand) GetLabelsOk() ([]PrometheusLabelListDto, bool) {
 	if o == nil || IsNil(o.Labels) {
 		return nil, false
@@ -303,9 +282,9 @@ func (o *RuleCreateCommand) SetOperationCredentialId(v int32) {
 	o.OperationCredentialId = &v
 }
 
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
 func (o *RuleCreateCommand) GetOrganizationId() []int32 {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationId) {
 		var ret []int32
 		return ret
 	}
@@ -314,7 +293,6 @@ func (o *RuleCreateCommand) GetOrganizationId() []int32 {
 
 // GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *RuleCreateCommand) GetOrganizationIdOk() ([]int32, bool) {
 	if o == nil || IsNil(o.OrganizationId) {
 		return nil, false
@@ -388,13 +366,13 @@ func (o RuleCreateCommand) MarshalJSON() ([]byte, error) {
 
 func (o RuleCreateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.MetricName.IsSet() {
-		toSerialize["metricName"] = o.MetricName.Get()
+	if !IsNil(o.MetricName) {
+		toSerialize["metricName"] = o.MetricName
 	}
-	if o.Labels != nil {
+	if !IsNil(o.Labels) {
 		toSerialize["labels"] = o.Labels
 	}
 	if !IsNil(o.Type) {
@@ -409,7 +387,7 @@ func (o RuleCreateCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OperationCredentialId) {
 		toSerialize["operationCredentialId"] = o.OperationCredentialId
 	}
-	if o.OrganizationId != nil {
+	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
 	if o.RuleDiscountRate.IsSet() {

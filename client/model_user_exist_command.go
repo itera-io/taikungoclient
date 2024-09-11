@@ -20,8 +20,8 @@ var _ MappedNullable = &UserExistCommand{}
 
 // UserExistCommand struct for UserExistCommand
 type UserExistCommand struct {
-	Email NullableString `json:"email,omitempty"`
-	UserName NullableString `json:"userName,omitempty"`
+	Email *string `json:"email,omitempty"`
+	UserName *string `json:"userName,omitempty"`
 }
 
 // NewUserExistCommand instantiates a new UserExistCommand object
@@ -41,88 +41,68 @@ func NewUserExistCommandWithDefaults() *UserExistCommand {
 	return &this
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *UserExistCommand) GetEmail() string {
-	if o == nil || IsNil(o.Email.Get()) {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-	return *o.Email.Get()
+	return *o.Email
 }
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserExistCommand) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return o.Email.Get(), o.Email.IsSet()
+	return o.Email, true
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *UserExistCommand) HasEmail() bool {
-	if o != nil && o.Email.IsSet() {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *UserExistCommand) SetEmail(v string) {
-	o.Email.Set(&v)
-}
-// SetEmailNil sets the value for Email to be an explicit nil
-func (o *UserExistCommand) SetEmailNil() {
-	o.Email.Set(nil)
+	o.Email = &v
 }
 
-// UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *UserExistCommand) UnsetEmail() {
-	o.Email.Unset()
-}
-
-// GetUserName returns the UserName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserName returns the UserName field value if set, zero value otherwise.
 func (o *UserExistCommand) GetUserName() string {
-	if o == nil || IsNil(o.UserName.Get()) {
+	if o == nil || IsNil(o.UserName) {
 		var ret string
 		return ret
 	}
-	return *o.UserName.Get()
+	return *o.UserName
 }
 
 // GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserExistCommand) GetUserNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserName) {
 		return nil, false
 	}
-	return o.UserName.Get(), o.UserName.IsSet()
+	return o.UserName, true
 }
 
 // HasUserName returns a boolean if a field has been set.
 func (o *UserExistCommand) HasUserName() bool {
-	if o != nil && o.UserName.IsSet() {
+	if o != nil && !IsNil(o.UserName) {
 		return true
 	}
 
 	return false
 }
 
-// SetUserName gets a reference to the given NullableString and assigns it to the UserName field.
+// SetUserName gets a reference to the given string and assigns it to the UserName field.
 func (o *UserExistCommand) SetUserName(v string) {
-	o.UserName.Set(&v)
-}
-// SetUserNameNil sets the value for UserName to be an explicit nil
-func (o *UserExistCommand) SetUserNameNil() {
-	o.UserName.Set(nil)
-}
-
-// UnsetUserName ensures that no value is present for UserName, not even an explicit nil
-func (o *UserExistCommand) UnsetUserName() {
-	o.UserName.Unset()
+	o.UserName = &v
 }
 
 func (o UserExistCommand) MarshalJSON() ([]byte, error) {
@@ -135,11 +115,11 @@ func (o UserExistCommand) MarshalJSON() ([]byte, error) {
 
 func (o UserExistCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Email.IsSet() {
-		toSerialize["email"] = o.Email.Get()
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
 	}
-	if o.UserName.IsSet() {
-		toSerialize["userName"] = o.UserName.Get()
+	if !IsNil(o.UserName) {
+		toSerialize["userName"] = o.UserName
 	}
 	return toSerialize, nil
 }

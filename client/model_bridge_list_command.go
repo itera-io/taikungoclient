@@ -20,10 +20,10 @@ var _ MappedNullable = &BridgeListCommand{}
 
 // BridgeListCommand struct for BridgeListCommand
 type BridgeListCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	TokenId NullableString `json:"tokenId,omitempty"`
-	TokenSecret NullableString `json:"tokenSecret,omitempty"`
-	Hypervisor NullableString `json:"hypervisor,omitempty"`
+	Url *string `json:"url,omitempty"`
+	TokenId *string `json:"tokenId,omitempty"`
+	TokenSecret *string `json:"tokenSecret,omitempty"`
+	Hypervisor *string `json:"hypervisor,omitempty"`
 }
 
 // NewBridgeListCommand instantiates a new BridgeListCommand object
@@ -43,172 +43,132 @@ func NewBridgeListCommandWithDefaults() *BridgeListCommand {
 	return &this
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *BridgeListCommand) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BridgeListCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *BridgeListCommand) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *BridgeListCommand) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *BridgeListCommand) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = &v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *BridgeListCommand) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetTokenId returns the TokenId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTokenId returns the TokenId field value if set, zero value otherwise.
 func (o *BridgeListCommand) GetTokenId() string {
-	if o == nil || IsNil(o.TokenId.Get()) {
+	if o == nil || IsNil(o.TokenId) {
 		var ret string
 		return ret
 	}
-	return *o.TokenId.Get()
+	return *o.TokenId
 }
 
 // GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BridgeListCommand) GetTokenIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		return nil, false
 	}
-	return o.TokenId.Get(), o.TokenId.IsSet()
+	return o.TokenId, true
 }
 
 // HasTokenId returns a boolean if a field has been set.
 func (o *BridgeListCommand) HasTokenId() bool {
-	if o != nil && o.TokenId.IsSet() {
+	if o != nil && !IsNil(o.TokenId) {
 		return true
 	}
 
 	return false
 }
 
-// SetTokenId gets a reference to the given NullableString and assigns it to the TokenId field.
+// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
 func (o *BridgeListCommand) SetTokenId(v string) {
-	o.TokenId.Set(&v)
-}
-// SetTokenIdNil sets the value for TokenId to be an explicit nil
-func (o *BridgeListCommand) SetTokenIdNil() {
-	o.TokenId.Set(nil)
+	o.TokenId = &v
 }
 
-// UnsetTokenId ensures that no value is present for TokenId, not even an explicit nil
-func (o *BridgeListCommand) UnsetTokenId() {
-	o.TokenId.Unset()
-}
-
-// GetTokenSecret returns the TokenSecret field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTokenSecret returns the TokenSecret field value if set, zero value otherwise.
 func (o *BridgeListCommand) GetTokenSecret() string {
-	if o == nil || IsNil(o.TokenSecret.Get()) {
+	if o == nil || IsNil(o.TokenSecret) {
 		var ret string
 		return ret
 	}
-	return *o.TokenSecret.Get()
+	return *o.TokenSecret
 }
 
 // GetTokenSecretOk returns a tuple with the TokenSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BridgeListCommand) GetTokenSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenSecret) {
 		return nil, false
 	}
-	return o.TokenSecret.Get(), o.TokenSecret.IsSet()
+	return o.TokenSecret, true
 }
 
 // HasTokenSecret returns a boolean if a field has been set.
 func (o *BridgeListCommand) HasTokenSecret() bool {
-	if o != nil && o.TokenSecret.IsSet() {
+	if o != nil && !IsNil(o.TokenSecret) {
 		return true
 	}
 
 	return false
 }
 
-// SetTokenSecret gets a reference to the given NullableString and assigns it to the TokenSecret field.
+// SetTokenSecret gets a reference to the given string and assigns it to the TokenSecret field.
 func (o *BridgeListCommand) SetTokenSecret(v string) {
-	o.TokenSecret.Set(&v)
-}
-// SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
-func (o *BridgeListCommand) SetTokenSecretNil() {
-	o.TokenSecret.Set(nil)
+	o.TokenSecret = &v
 }
 
-// UnsetTokenSecret ensures that no value is present for TokenSecret, not even an explicit nil
-func (o *BridgeListCommand) UnsetTokenSecret() {
-	o.TokenSecret.Unset()
-}
-
-// GetHypervisor returns the Hypervisor field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHypervisor returns the Hypervisor field value if set, zero value otherwise.
 func (o *BridgeListCommand) GetHypervisor() string {
-	if o == nil || IsNil(o.Hypervisor.Get()) {
+	if o == nil || IsNil(o.Hypervisor) {
 		var ret string
 		return ret
 	}
-	return *o.Hypervisor.Get()
+	return *o.Hypervisor
 }
 
 // GetHypervisorOk returns a tuple with the Hypervisor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BridgeListCommand) GetHypervisorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisor) {
 		return nil, false
 	}
-	return o.Hypervisor.Get(), o.Hypervisor.IsSet()
+	return o.Hypervisor, true
 }
 
 // HasHypervisor returns a boolean if a field has been set.
 func (o *BridgeListCommand) HasHypervisor() bool {
-	if o != nil && o.Hypervisor.IsSet() {
+	if o != nil && !IsNil(o.Hypervisor) {
 		return true
 	}
 
 	return false
 }
 
-// SetHypervisor gets a reference to the given NullableString and assigns it to the Hypervisor field.
+// SetHypervisor gets a reference to the given string and assigns it to the Hypervisor field.
 func (o *BridgeListCommand) SetHypervisor(v string) {
-	o.Hypervisor.Set(&v)
-}
-// SetHypervisorNil sets the value for Hypervisor to be an explicit nil
-func (o *BridgeListCommand) SetHypervisorNil() {
-	o.Hypervisor.Set(nil)
-}
-
-// UnsetHypervisor ensures that no value is present for Hypervisor, not even an explicit nil
-func (o *BridgeListCommand) UnsetHypervisor() {
-	o.Hypervisor.Unset()
+	o.Hypervisor = &v
 }
 
 func (o BridgeListCommand) MarshalJSON() ([]byte, error) {
@@ -221,17 +181,17 @@ func (o BridgeListCommand) MarshalJSON() ([]byte, error) {
 
 func (o BridgeListCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
-	if o.TokenId.IsSet() {
-		toSerialize["tokenId"] = o.TokenId.Get()
+	if !IsNil(o.TokenId) {
+		toSerialize["tokenId"] = o.TokenId
 	}
-	if o.TokenSecret.IsSet() {
-		toSerialize["tokenSecret"] = o.TokenSecret.Get()
+	if !IsNil(o.TokenSecret) {
+		toSerialize["tokenSecret"] = o.TokenSecret
 	}
-	if o.Hypervisor.IsSet() {
-		toSerialize["hypervisor"] = o.Hypervisor.Get()
+	if !IsNil(o.Hypervisor) {
+		toSerialize["hypervisor"] = o.Hypervisor
 	}
 	return toSerialize, nil
 }

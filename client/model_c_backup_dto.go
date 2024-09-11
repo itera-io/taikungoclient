@@ -21,13 +21,13 @@ var _ MappedNullable = &CBackupDto{}
 
 // CBackupDto struct for CBackupDto
 type CBackupDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
+	MetadataName *string `json:"metadataName,omitempty"`
 	CreatedAt NullableTime `json:"createdAt,omitempty"`
 	Expiration NullableTime `json:"expiration,omitempty"`
-	ScheduleName NullableString `json:"scheduleName,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Location NullableString `json:"location,omitempty"`
-	Phase NullableString `json:"phase,omitempty"`
+	ScheduleName *string `json:"scheduleName,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
+	Location *string `json:"location,omitempty"`
+	Phase *string `json:"phase,omitempty"`
 }
 
 // NewCBackupDto instantiates a new CBackupDto object
@@ -47,46 +47,36 @@ func NewCBackupDtoWithDefaults() *CBackupDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value if set, zero value otherwise.
 func (o *CBackupDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil || IsNil(o.MetadataName) {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName.Get()
+	return *o.MetadataName
 }
 
 // GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CBackupDto) GetMetadataNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetadataName) {
 		return nil, false
 	}
-	return o.MetadataName.Get(), o.MetadataName.IsSet()
+	return o.MetadataName, true
 }
 
 // HasMetadataName returns a boolean if a field has been set.
 func (o *CBackupDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
+	if o != nil && !IsNil(o.MetadataName) {
 		return true
 	}
 
 	return false
 }
 
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName gets a reference to the given string and assigns it to the MetadataName field.
 func (o *CBackupDto) SetMetadataName(v string) {
-	o.MetadataName.Set(&v)
-}
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *CBackupDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
-}
-
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *CBackupDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
+	o.MetadataName = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -173,172 +163,132 @@ func (o *CBackupDto) UnsetExpiration() {
 	o.Expiration.Unset()
 }
 
-// GetScheduleName returns the ScheduleName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetScheduleName returns the ScheduleName field value if set, zero value otherwise.
 func (o *CBackupDto) GetScheduleName() string {
-	if o == nil || IsNil(o.ScheduleName.Get()) {
+	if o == nil || IsNil(o.ScheduleName) {
 		var ret string
 		return ret
 	}
-	return *o.ScheduleName.Get()
+	return *o.ScheduleName
 }
 
 // GetScheduleNameOk returns a tuple with the ScheduleName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CBackupDto) GetScheduleNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ScheduleName) {
 		return nil, false
 	}
-	return o.ScheduleName.Get(), o.ScheduleName.IsSet()
+	return o.ScheduleName, true
 }
 
 // HasScheduleName returns a boolean if a field has been set.
 func (o *CBackupDto) HasScheduleName() bool {
-	if o != nil && o.ScheduleName.IsSet() {
+	if o != nil && !IsNil(o.ScheduleName) {
 		return true
 	}
 
 	return false
 }
 
-// SetScheduleName gets a reference to the given NullableString and assigns it to the ScheduleName field.
+// SetScheduleName gets a reference to the given string and assigns it to the ScheduleName field.
 func (o *CBackupDto) SetScheduleName(v string) {
-	o.ScheduleName.Set(&v)
-}
-// SetScheduleNameNil sets the value for ScheduleName to be an explicit nil
-func (o *CBackupDto) SetScheduleNameNil() {
-	o.ScheduleName.Set(nil)
+	o.ScheduleName = &v
 }
 
-// UnsetScheduleName ensures that no value is present for ScheduleName, not even an explicit nil
-func (o *CBackupDto) UnsetScheduleName() {
-	o.ScheduleName.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *CBackupDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+	return *o.Namespace
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CBackupDto) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return o.Namespace, true
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *CBackupDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
+	if o != nil && !IsNil(o.Namespace) {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *CBackupDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *CBackupDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = &v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *CBackupDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetLocation returns the Location field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLocation returns the Location field value if set, zero value otherwise.
 func (o *CBackupDto) GetLocation() string {
-	if o == nil || IsNil(o.Location.Get()) {
+	if o == nil || IsNil(o.Location) {
 		var ret string
 		return ret
 	}
-	return *o.Location.Get()
+	return *o.Location
 }
 
 // GetLocationOk returns a tuple with the Location field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CBackupDto) GetLocationOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Location) {
 		return nil, false
 	}
-	return o.Location.Get(), o.Location.IsSet()
+	return o.Location, true
 }
 
 // HasLocation returns a boolean if a field has been set.
 func (o *CBackupDto) HasLocation() bool {
-	if o != nil && o.Location.IsSet() {
+	if o != nil && !IsNil(o.Location) {
 		return true
 	}
 
 	return false
 }
 
-// SetLocation gets a reference to the given NullableString and assigns it to the Location field.
+// SetLocation gets a reference to the given string and assigns it to the Location field.
 func (o *CBackupDto) SetLocation(v string) {
-	o.Location.Set(&v)
-}
-// SetLocationNil sets the value for Location to be an explicit nil
-func (o *CBackupDto) SetLocationNil() {
-	o.Location.Set(nil)
+	o.Location = &v
 }
 
-// UnsetLocation ensures that no value is present for Location, not even an explicit nil
-func (o *CBackupDto) UnsetLocation() {
-	o.Location.Unset()
-}
-
-// GetPhase returns the Phase field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPhase returns the Phase field value if set, zero value otherwise.
 func (o *CBackupDto) GetPhase() string {
-	if o == nil || IsNil(o.Phase.Get()) {
+	if o == nil || IsNil(o.Phase) {
 		var ret string
 		return ret
 	}
-	return *o.Phase.Get()
+	return *o.Phase
 }
 
 // GetPhaseOk returns a tuple with the Phase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CBackupDto) GetPhaseOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Phase) {
 		return nil, false
 	}
-	return o.Phase.Get(), o.Phase.IsSet()
+	return o.Phase, true
 }
 
 // HasPhase returns a boolean if a field has been set.
 func (o *CBackupDto) HasPhase() bool {
-	if o != nil && o.Phase.IsSet() {
+	if o != nil && !IsNil(o.Phase) {
 		return true
 	}
 
 	return false
 }
 
-// SetPhase gets a reference to the given NullableString and assigns it to the Phase field.
+// SetPhase gets a reference to the given string and assigns it to the Phase field.
 func (o *CBackupDto) SetPhase(v string) {
-	o.Phase.Set(&v)
-}
-// SetPhaseNil sets the value for Phase to be an explicit nil
-func (o *CBackupDto) SetPhaseNil() {
-	o.Phase.Set(nil)
-}
-
-// UnsetPhase ensures that no value is present for Phase, not even an explicit nil
-func (o *CBackupDto) UnsetPhase() {
-	o.Phase.Unset()
+	o.Phase = &v
 }
 
 func (o CBackupDto) MarshalJSON() ([]byte, error) {
@@ -351,8 +301,8 @@ func (o CBackupDto) MarshalJSON() ([]byte, error) {
 
 func (o CBackupDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
+	if !IsNil(o.MetadataName) {
+		toSerialize["metadataName"] = o.MetadataName
 	}
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
@@ -360,17 +310,17 @@ func (o CBackupDto) ToMap() (map[string]interface{}, error) {
 	if o.Expiration.IsSet() {
 		toSerialize["expiration"] = o.Expiration.Get()
 	}
-	if o.ScheduleName.IsSet() {
-		toSerialize["scheduleName"] = o.ScheduleName.Get()
+	if !IsNil(o.ScheduleName) {
+		toSerialize["scheduleName"] = o.ScheduleName
 	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
 	}
-	if o.Location.IsSet() {
-		toSerialize["location"] = o.Location.Get()
+	if !IsNil(o.Location) {
+		toSerialize["location"] = o.Location
 	}
-	if o.Phase.IsSet() {
-		toSerialize["phase"] = o.Phase.Get()
+	if !IsNil(o.Phase) {
+		toSerialize["phase"] = o.Phase
 	}
 	return toSerialize, nil
 }

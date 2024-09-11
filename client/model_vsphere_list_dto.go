@@ -23,25 +23,25 @@ type VsphereListDto struct {
 	Id *int32 `json:"id,omitempty"`
 	ProjectCount *int32 `json:"projectCount,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	CreatedBy *string `json:"createdBy,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
+	LastModified *string `json:"lastModified,omitempty"`
+	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 	DrsEnabled *bool `json:"drsEnabled,omitempty"`
-	ResourcePool NullableString `json:"resourcePool,omitempty"`
+	ResourcePool *string `json:"resourcePool,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	ContinentName NullableString `json:"continentName,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
+	ContinentName *string `json:"continentName,omitempty"`
 	Hypervisors []CommonStringBasedDropdownDto `json:"hypervisors,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	DatacenterId NullableString `json:"datacenterId,omitempty"`
-	DatacenterName NullableString `json:"datacenterName,omitempty"`
-	Datastore NullableString `json:"datastore,omitempty"`
-	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Url *string `json:"url,omitempty"`
+	DatacenterId *string `json:"datacenterId,omitempty"`
+	DatacenterName *string `json:"datacenterName,omitempty"`
+	Datastore *string `json:"datastore,omitempty"`
+	VmTemplateName *string `json:"vmTemplateName,omitempty"`
 	VsphereNetworks []VsphereNetworkListDto `json:"vsphereNetworks,omitempty"`
 	SkipTlsFlag *bool `json:"skipTlsFlag,omitempty"`
 }
@@ -159,51 +159,41 @@ func (o *VsphereListDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *VsphereListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *VsphereListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *VsphereListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *VsphereListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *VsphereListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value if set, zero value otherwise.
 func (o *VsphereListDto) GetProjects() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.Projects) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -212,7 +202,6 @@ func (o *VsphereListDto) GetProjects() []CommonDropdownDto {
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
@@ -234,172 +223,132 @@ func (o *VsphereListDto) SetProjects(v []CommonDropdownDto) {
 	o.Projects = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *VsphereListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy.Get()
+	return *o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetCreatedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedBy) {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return o.CreatedBy, true
 }
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *VsphereListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
+	if o != nil && !IsNil(o.CreatedBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
 func (o *VsphereListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
-}
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *VsphereListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
+	o.CreatedBy = &v
 }
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *VsphereListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *VsphereListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *VsphereListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *VsphereListDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *VsphereListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
+	o.CreatedAt = &v
 }
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *VsphereListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value if set, zero value otherwise.
 func (o *VsphereListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || IsNil(o.LastModified) {
 		var ret string
 		return ret
 	}
-	return *o.LastModified.Get()
+	return *o.LastModified
 }
 
 // GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetLastModifiedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModified) {
 		return nil, false
 	}
-	return o.LastModified.Get(), o.LastModified.IsSet()
+	return o.LastModified, true
 }
 
 // HasLastModified returns a boolean if a field has been set.
 func (o *VsphereListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
+	if o != nil && !IsNil(o.LastModified) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
 func (o *VsphereListDto) SetLastModified(v string) {
-	o.LastModified.Set(&v)
-}
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *VsphereListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
+	o.LastModified = &v
 }
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *VsphereListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
 func (o *VsphereListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		var ret string
 		return ret
 	}
-	return *o.LastModifiedBy.Get()
+	return *o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetLastModifiedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return o.LastModifiedBy, true
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *VsphereListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
+	if o != nil && !IsNil(o.LastModifiedBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy gets a reference to the given string and assigns it to the LastModifiedBy field.
 func (o *VsphereListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
-}
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *VsphereListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
-
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *VsphereListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
+	o.LastModifiedBy = &v
 }
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
@@ -466,46 +415,36 @@ func (o *VsphereListDto) SetDrsEnabled(v bool) {
 	o.DrsEnabled = &v
 }
 
-// GetResourcePool returns the ResourcePool field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetResourcePool returns the ResourcePool field value if set, zero value otherwise.
 func (o *VsphereListDto) GetResourcePool() string {
-	if o == nil || IsNil(o.ResourcePool.Get()) {
+	if o == nil || IsNil(o.ResourcePool) {
 		var ret string
 		return ret
 	}
-	return *o.ResourcePool.Get()
+	return *o.ResourcePool
 }
 
 // GetResourcePoolOk returns a tuple with the ResourcePool field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetResourcePoolOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ResourcePool) {
 		return nil, false
 	}
-	return o.ResourcePool.Get(), o.ResourcePool.IsSet()
+	return o.ResourcePool, true
 }
 
 // HasResourcePool returns a boolean if a field has been set.
 func (o *VsphereListDto) HasResourcePool() bool {
-	if o != nil && o.ResourcePool.IsSet() {
+	if o != nil && !IsNil(o.ResourcePool) {
 		return true
 	}
 
 	return false
 }
 
-// SetResourcePool gets a reference to the given NullableString and assigns it to the ResourcePool field.
+// SetResourcePool gets a reference to the given string and assigns it to the ResourcePool field.
 func (o *VsphereListDto) SetResourcePool(v string) {
-	o.ResourcePool.Set(&v)
-}
-// SetResourcePoolNil sets the value for ResourcePool to be an explicit nil
-func (o *VsphereListDto) SetResourcePoolNil() {
-	o.ResourcePool.Set(nil)
-}
-
-// UnsetResourcePool ensures that no value is present for ResourcePool, not even an explicit nil
-func (o *VsphereListDto) UnsetResourcePool() {
-	o.ResourcePool.Unset()
+	o.ResourcePool = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
@@ -540,93 +479,73 @@ func (o *VsphereListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *VsphereListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *VsphereListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *VsphereListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *VsphereListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+	o.OrganizationName = &v
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *VsphereListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetContinentName returns the ContinentName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetContinentName returns the ContinentName field value if set, zero value otherwise.
 func (o *VsphereListDto) GetContinentName() string {
-	if o == nil || IsNil(o.ContinentName.Get()) {
+	if o == nil || IsNil(o.ContinentName) {
 		var ret string
 		return ret
 	}
-	return *o.ContinentName.Get()
+	return *o.ContinentName
 }
 
 // GetContinentNameOk returns a tuple with the ContinentName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetContinentNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ContinentName) {
 		return nil, false
 	}
-	return o.ContinentName.Get(), o.ContinentName.IsSet()
+	return o.ContinentName, true
 }
 
 // HasContinentName returns a boolean if a field has been set.
 func (o *VsphereListDto) HasContinentName() bool {
-	if o != nil && o.ContinentName.IsSet() {
+	if o != nil && !IsNil(o.ContinentName) {
 		return true
 	}
 
 	return false
 }
 
-// SetContinentName gets a reference to the given NullableString and assigns it to the ContinentName field.
+// SetContinentName gets a reference to the given string and assigns it to the ContinentName field.
 func (o *VsphereListDto) SetContinentName(v string) {
-	o.ContinentName.Set(&v)
-}
-// SetContinentNameNil sets the value for ContinentName to be an explicit nil
-func (o *VsphereListDto) SetContinentNameNil() {
-	o.ContinentName.Set(nil)
+	o.ContinentName = &v
 }
 
-// UnsetContinentName ensures that no value is present for ContinentName, not even an explicit nil
-func (o *VsphereListDto) UnsetContinentName() {
-	o.ContinentName.Unset()
-}
-
-// GetHypervisors returns the Hypervisors field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHypervisors returns the Hypervisors field value if set, zero value otherwise.
 func (o *VsphereListDto) GetHypervisors() []CommonStringBasedDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisors) {
 		var ret []CommonStringBasedDropdownDto
 		return ret
 	}
@@ -635,7 +554,6 @@ func (o *VsphereListDto) GetHypervisors() []CommonStringBasedDropdownDto {
 
 // GetHypervisorsOk returns a tuple with the Hypervisors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetHypervisorsOk() ([]CommonStringBasedDropdownDto, bool) {
 	if o == nil || IsNil(o.Hypervisors) {
 		return nil, false
@@ -657,261 +575,201 @@ func (o *VsphereListDto) SetHypervisors(v []CommonStringBasedDropdownDto) {
 	o.Hypervisors = v
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *VsphereListDto) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-	return *o.Username.Get()
+	return *o.Username
 }
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return o.Username.Get(), o.Username.IsSet()
+	return o.Username, true
 }
 
 // HasUsername returns a boolean if a field has been set.
 func (o *VsphereListDto) HasUsername() bool {
-	if o != nil && o.Username.IsSet() {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
 	return false
 }
 
-// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *VsphereListDto) SetUsername(v string) {
-	o.Username.Set(&v)
-}
-// SetUsernameNil sets the value for Username to be an explicit nil
-func (o *VsphereListDto) SetUsernameNil() {
-	o.Username.Set(nil)
+	o.Username = &v
 }
 
-// UnsetUsername ensures that no value is present for Username, not even an explicit nil
-func (o *VsphereListDto) UnsetUsername() {
-	o.Username.Unset()
-}
-
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *VsphereListDto) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *VsphereListDto) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *VsphereListDto) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *VsphereListDto) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = &v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *VsphereListDto) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetDatacenterId returns the DatacenterId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDatacenterId returns the DatacenterId field value if set, zero value otherwise.
 func (o *VsphereListDto) GetDatacenterId() string {
-	if o == nil || IsNil(o.DatacenterId.Get()) {
+	if o == nil || IsNil(o.DatacenterId) {
 		var ret string
 		return ret
 	}
-	return *o.DatacenterId.Get()
+	return *o.DatacenterId
 }
 
 // GetDatacenterIdOk returns a tuple with the DatacenterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetDatacenterIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterId) {
 		return nil, false
 	}
-	return o.DatacenterId.Get(), o.DatacenterId.IsSet()
+	return o.DatacenterId, true
 }
 
 // HasDatacenterId returns a boolean if a field has been set.
 func (o *VsphereListDto) HasDatacenterId() bool {
-	if o != nil && o.DatacenterId.IsSet() {
+	if o != nil && !IsNil(o.DatacenterId) {
 		return true
 	}
 
 	return false
 }
 
-// SetDatacenterId gets a reference to the given NullableString and assigns it to the DatacenterId field.
+// SetDatacenterId gets a reference to the given string and assigns it to the DatacenterId field.
 func (o *VsphereListDto) SetDatacenterId(v string) {
-	o.DatacenterId.Set(&v)
-}
-// SetDatacenterIdNil sets the value for DatacenterId to be an explicit nil
-func (o *VsphereListDto) SetDatacenterIdNil() {
-	o.DatacenterId.Set(nil)
+	o.DatacenterId = &v
 }
 
-// UnsetDatacenterId ensures that no value is present for DatacenterId, not even an explicit nil
-func (o *VsphereListDto) UnsetDatacenterId() {
-	o.DatacenterId.Unset()
-}
-
-// GetDatacenterName returns the DatacenterName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDatacenterName returns the DatacenterName field value if set, zero value otherwise.
 func (o *VsphereListDto) GetDatacenterName() string {
-	if o == nil || IsNil(o.DatacenterName.Get()) {
+	if o == nil || IsNil(o.DatacenterName) {
 		var ret string
 		return ret
 	}
-	return *o.DatacenterName.Get()
+	return *o.DatacenterName
 }
 
 // GetDatacenterNameOk returns a tuple with the DatacenterName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetDatacenterNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterName) {
 		return nil, false
 	}
-	return o.DatacenterName.Get(), o.DatacenterName.IsSet()
+	return o.DatacenterName, true
 }
 
 // HasDatacenterName returns a boolean if a field has been set.
 func (o *VsphereListDto) HasDatacenterName() bool {
-	if o != nil && o.DatacenterName.IsSet() {
+	if o != nil && !IsNil(o.DatacenterName) {
 		return true
 	}
 
 	return false
 }
 
-// SetDatacenterName gets a reference to the given NullableString and assigns it to the DatacenterName field.
+// SetDatacenterName gets a reference to the given string and assigns it to the DatacenterName field.
 func (o *VsphereListDto) SetDatacenterName(v string) {
-	o.DatacenterName.Set(&v)
-}
-// SetDatacenterNameNil sets the value for DatacenterName to be an explicit nil
-func (o *VsphereListDto) SetDatacenterNameNil() {
-	o.DatacenterName.Set(nil)
+	o.DatacenterName = &v
 }
 
-// UnsetDatacenterName ensures that no value is present for DatacenterName, not even an explicit nil
-func (o *VsphereListDto) UnsetDatacenterName() {
-	o.DatacenterName.Unset()
-}
-
-// GetDatastore returns the Datastore field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDatastore returns the Datastore field value if set, zero value otherwise.
 func (o *VsphereListDto) GetDatastore() string {
-	if o == nil || IsNil(o.Datastore.Get()) {
+	if o == nil || IsNil(o.Datastore) {
 		var ret string
 		return ret
 	}
-	return *o.Datastore.Get()
+	return *o.Datastore
 }
 
 // GetDatastoreOk returns a tuple with the Datastore field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetDatastoreOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Datastore) {
 		return nil, false
 	}
-	return o.Datastore.Get(), o.Datastore.IsSet()
+	return o.Datastore, true
 }
 
 // HasDatastore returns a boolean if a field has been set.
 func (o *VsphereListDto) HasDatastore() bool {
-	if o != nil && o.Datastore.IsSet() {
+	if o != nil && !IsNil(o.Datastore) {
 		return true
 	}
 
 	return false
 }
 
-// SetDatastore gets a reference to the given NullableString and assigns it to the Datastore field.
+// SetDatastore gets a reference to the given string and assigns it to the Datastore field.
 func (o *VsphereListDto) SetDatastore(v string) {
-	o.Datastore.Set(&v)
-}
-// SetDatastoreNil sets the value for Datastore to be an explicit nil
-func (o *VsphereListDto) SetDatastoreNil() {
-	o.Datastore.Set(nil)
+	o.Datastore = &v
 }
 
-// UnsetDatastore ensures that no value is present for Datastore, not even an explicit nil
-func (o *VsphereListDto) UnsetDatastore() {
-	o.Datastore.Unset()
-}
-
-// GetVmTemplateName returns the VmTemplateName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVmTemplateName returns the VmTemplateName field value if set, zero value otherwise.
 func (o *VsphereListDto) GetVmTemplateName() string {
-	if o == nil || IsNil(o.VmTemplateName.Get()) {
+	if o == nil || IsNil(o.VmTemplateName) {
 		var ret string
 		return ret
 	}
-	return *o.VmTemplateName.Get()
+	return *o.VmTemplateName
 }
 
 // GetVmTemplateNameOk returns a tuple with the VmTemplateName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetVmTemplateNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VmTemplateName) {
 		return nil, false
 	}
-	return o.VmTemplateName.Get(), o.VmTemplateName.IsSet()
+	return o.VmTemplateName, true
 }
 
 // HasVmTemplateName returns a boolean if a field has been set.
 func (o *VsphereListDto) HasVmTemplateName() bool {
-	if o != nil && o.VmTemplateName.IsSet() {
+	if o != nil && !IsNil(o.VmTemplateName) {
 		return true
 	}
 
 	return false
 }
 
-// SetVmTemplateName gets a reference to the given NullableString and assigns it to the VmTemplateName field.
+// SetVmTemplateName gets a reference to the given string and assigns it to the VmTemplateName field.
 func (o *VsphereListDto) SetVmTemplateName(v string) {
-	o.VmTemplateName.Set(&v)
-}
-// SetVmTemplateNameNil sets the value for VmTemplateName to be an explicit nil
-func (o *VsphereListDto) SetVmTemplateNameNil() {
-	o.VmTemplateName.Set(nil)
+	o.VmTemplateName = &v
 }
 
-// UnsetVmTemplateName ensures that no value is present for VmTemplateName, not even an explicit nil
-func (o *VsphereListDto) UnsetVmTemplateName() {
-	o.VmTemplateName.Unset()
-}
-
-// GetVsphereNetworks returns the VsphereNetworks field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVsphereNetworks returns the VsphereNetworks field value if set, zero value otherwise.
 func (o *VsphereListDto) GetVsphereNetworks() []VsphereNetworkListDto {
-	if o == nil {
+	if o == nil || IsNil(o.VsphereNetworks) {
 		var ret []VsphereNetworkListDto
 		return ret
 	}
@@ -920,7 +778,6 @@ func (o *VsphereListDto) GetVsphereNetworks() []VsphereNetworkListDto {
 
 // GetVsphereNetworksOk returns a tuple with the VsphereNetworks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereListDto) GetVsphereNetworksOk() ([]VsphereNetworkListDto, bool) {
 	if o == nil || IsNil(o.VsphereNetworks) {
 		return nil, false
@@ -993,23 +850,23 @@ func (o VsphereListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.Projects != nil {
+	if !IsNil(o.Projects) {
 		toSerialize["projects"] = o.Projects
 	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
+	if !IsNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
+	if !IsNil(o.LastModified) {
+		toSerialize["lastModified"] = o.LastModified
 	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
@@ -1017,40 +874,40 @@ func (o VsphereListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DrsEnabled) {
 		toSerialize["drsEnabled"] = o.DrsEnabled
 	}
-	if o.ResourcePool.IsSet() {
-		toSerialize["resourcePool"] = o.ResourcePool.Get()
+	if !IsNil(o.ResourcePool) {
+		toSerialize["resourcePool"] = o.ResourcePool
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
-	if o.ContinentName.IsSet() {
-		toSerialize["continentName"] = o.ContinentName.Get()
+	if !IsNil(o.ContinentName) {
+		toSerialize["continentName"] = o.ContinentName
 	}
-	if o.Hypervisors != nil {
+	if !IsNil(o.Hypervisors) {
 		toSerialize["hypervisors"] = o.Hypervisors
 	}
-	if o.Username.IsSet() {
-		toSerialize["username"] = o.Username.Get()
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
 	}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
-	if o.DatacenterId.IsSet() {
-		toSerialize["datacenterId"] = o.DatacenterId.Get()
+	if !IsNil(o.DatacenterId) {
+		toSerialize["datacenterId"] = o.DatacenterId
 	}
-	if o.DatacenterName.IsSet() {
-		toSerialize["datacenterName"] = o.DatacenterName.Get()
+	if !IsNil(o.DatacenterName) {
+		toSerialize["datacenterName"] = o.DatacenterName
 	}
-	if o.Datastore.IsSet() {
-		toSerialize["datastore"] = o.Datastore.Get()
+	if !IsNil(o.Datastore) {
+		toSerialize["datastore"] = o.Datastore
 	}
-	if o.VmTemplateName.IsSet() {
-		toSerialize["vmTemplateName"] = o.VmTemplateName.Get()
+	if !IsNil(o.VmTemplateName) {
+		toSerialize["vmTemplateName"] = o.VmTemplateName
 	}
-	if o.VsphereNetworks != nil {
+	if !IsNil(o.VsphereNetworks) {
 		toSerialize["vsphereNetworks"] = o.VsphereNetworks
 	}
 	if !IsNil(o.SkipTlsFlag) {

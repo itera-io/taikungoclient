@@ -42,9 +42,9 @@ func NewPrometheusBillingInfoWithDefaults() *PrometheusBillingInfo {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *PrometheusBillingInfo) GetData() []PrometheusBillingSummaryDto {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []PrometheusBillingSummaryDto
 		return ret
 	}
@@ -53,7 +53,6 @@ func (o *PrometheusBillingInfo) GetData() []PrometheusBillingSummaryDto {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusBillingInfo) GetDataOk() ([]PrometheusBillingSummaryDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
@@ -149,7 +148,7 @@ func (o PrometheusBillingInfo) MarshalJSON() ([]byte, error) {
 
 func (o PrometheusBillingInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
+	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
 	if !IsNil(o.TotalPrice) {

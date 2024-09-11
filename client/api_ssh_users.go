@@ -72,6 +72,9 @@ func (a *SshUsersAPIService) SshusersCreateExecute(r ApiSshusersCreateRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createSshUserCommand == nil {
+		return localVarReturnValue, nil, reportError("createSshUserCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -408,6 +411,9 @@ func (a *SshUsersAPIService) SshusersEditExecute(r ApiSshusersEditRequest) (*htt
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.editSshUserCommand == nil {
+		return nil, reportError("editSshUserCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -576,10 +582,11 @@ func (a *SshUsersAPIService) SshusersListExecute(r ApiSshusersListRequest) ([]Ss
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
 	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -21,10 +21,10 @@ var _ MappedNullable = &GetToken{}
 
 // GetToken struct for GetToken
 type GetToken struct {
-	Token NullableString `json:"token,omitempty"`
-	RefreshToken NullableString `json:"refreshToken,omitempty"`
+	Token *string `json:"token,omitempty"`
+	RefreshToken *string `json:"refreshToken,omitempty"`
 	RefreshTokenExpireTime *time.Time `json:"refreshTokenExpireTime,omitempty"`
-	TempToken NullableString `json:"tempToken,omitempty"`
+	TempToken *string `json:"tempToken,omitempty"`
 }
 
 // NewGetToken instantiates a new GetToken object
@@ -44,88 +44,68 @@ func NewGetTokenWithDefaults() *GetToken {
 	return &this
 }
 
-// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetToken returns the Token field value if set, zero value otherwise.
 func (o *GetToken) GetToken() string {
-	if o == nil || IsNil(o.Token.Get()) {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
-	return *o.Token.Get()
+	return *o.Token
 }
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetToken) GetTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
-	return o.Token.Get(), o.Token.IsSet()
+	return o.Token, true
 }
 
 // HasToken returns a boolean if a field has been set.
 func (o *GetToken) HasToken() bool {
-	if o != nil && o.Token.IsSet() {
+	if o != nil && !IsNil(o.Token) {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given NullableString and assigns it to the Token field.
+// SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *GetToken) SetToken(v string) {
-	o.Token.Set(&v)
-}
-// SetTokenNil sets the value for Token to be an explicit nil
-func (o *GetToken) SetTokenNil() {
-	o.Token.Set(nil)
+	o.Token = &v
 }
 
-// UnsetToken ensures that no value is present for Token, not even an explicit nil
-func (o *GetToken) UnsetToken() {
-	o.Token.Unset()
-}
-
-// GetRefreshToken returns the RefreshToken field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRefreshToken returns the RefreshToken field value if set, zero value otherwise.
 func (o *GetToken) GetRefreshToken() string {
-	if o == nil || IsNil(o.RefreshToken.Get()) {
+	if o == nil || IsNil(o.RefreshToken) {
 		var ret string
 		return ret
 	}
-	return *o.RefreshToken.Get()
+	return *o.RefreshToken
 }
 
 // GetRefreshTokenOk returns a tuple with the RefreshToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetToken) GetRefreshTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RefreshToken) {
 		return nil, false
 	}
-	return o.RefreshToken.Get(), o.RefreshToken.IsSet()
+	return o.RefreshToken, true
 }
 
 // HasRefreshToken returns a boolean if a field has been set.
 func (o *GetToken) HasRefreshToken() bool {
-	if o != nil && o.RefreshToken.IsSet() {
+	if o != nil && !IsNil(o.RefreshToken) {
 		return true
 	}
 
 	return false
 }
 
-// SetRefreshToken gets a reference to the given NullableString and assigns it to the RefreshToken field.
+// SetRefreshToken gets a reference to the given string and assigns it to the RefreshToken field.
 func (o *GetToken) SetRefreshToken(v string) {
-	o.RefreshToken.Set(&v)
-}
-// SetRefreshTokenNil sets the value for RefreshToken to be an explicit nil
-func (o *GetToken) SetRefreshTokenNil() {
-	o.RefreshToken.Set(nil)
-}
-
-// UnsetRefreshToken ensures that no value is present for RefreshToken, not even an explicit nil
-func (o *GetToken) UnsetRefreshToken() {
-	o.RefreshToken.Unset()
+	o.RefreshToken = &v
 }
 
 // GetRefreshTokenExpireTime returns the RefreshTokenExpireTime field value if set, zero value otherwise.
@@ -160,46 +140,36 @@ func (o *GetToken) SetRefreshTokenExpireTime(v time.Time) {
 	o.RefreshTokenExpireTime = &v
 }
 
-// GetTempToken returns the TempToken field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTempToken returns the TempToken field value if set, zero value otherwise.
 func (o *GetToken) GetTempToken() string {
-	if o == nil || IsNil(o.TempToken.Get()) {
+	if o == nil || IsNil(o.TempToken) {
 		var ret string
 		return ret
 	}
-	return *o.TempToken.Get()
+	return *o.TempToken
 }
 
 // GetTempTokenOk returns a tuple with the TempToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetToken) GetTempTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TempToken) {
 		return nil, false
 	}
-	return o.TempToken.Get(), o.TempToken.IsSet()
+	return o.TempToken, true
 }
 
 // HasTempToken returns a boolean if a field has been set.
 func (o *GetToken) HasTempToken() bool {
-	if o != nil && o.TempToken.IsSet() {
+	if o != nil && !IsNil(o.TempToken) {
 		return true
 	}
 
 	return false
 }
 
-// SetTempToken gets a reference to the given NullableString and assigns it to the TempToken field.
+// SetTempToken gets a reference to the given string and assigns it to the TempToken field.
 func (o *GetToken) SetTempToken(v string) {
-	o.TempToken.Set(&v)
-}
-// SetTempTokenNil sets the value for TempToken to be an explicit nil
-func (o *GetToken) SetTempTokenNil() {
-	o.TempToken.Set(nil)
-}
-
-// UnsetTempToken ensures that no value is present for TempToken, not even an explicit nil
-func (o *GetToken) UnsetTempToken() {
-	o.TempToken.Unset()
+	o.TempToken = &v
 }
 
 func (o GetToken) MarshalJSON() ([]byte, error) {
@@ -212,17 +182,17 @@ func (o GetToken) MarshalJSON() ([]byte, error) {
 
 func (o GetToken) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Token.IsSet() {
-		toSerialize["token"] = o.Token.Get()
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
 	}
-	if o.RefreshToken.IsSet() {
-		toSerialize["refreshToken"] = o.RefreshToken.Get()
+	if !IsNil(o.RefreshToken) {
+		toSerialize["refreshToken"] = o.RefreshToken
 	}
 	if !IsNil(o.RefreshTokenExpireTime) {
 		toSerialize["refreshTokenExpireTime"] = o.RefreshTokenExpireTime
 	}
-	if o.TempToken.IsSet() {
-		toSerialize["tempToken"] = o.TempToken.Get()
+	if !IsNil(o.TempToken) {
+		toSerialize["tempToken"] = o.TempToken
 	}
 	return toSerialize, nil
 }

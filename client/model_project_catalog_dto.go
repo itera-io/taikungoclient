@@ -21,8 +21,8 @@ var _ MappedNullable = &ProjectCatalogDto{}
 // ProjectCatalogDto struct for ProjectCatalogDto
 type ProjectCatalogDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
+	Name *string `json:"name,omitempty"`
+	KubernetesVersion *string `json:"kubernetesVersion,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	MaintenanceModeEnabled *bool `json:"maintenanceModeEnabled,omitempty"`
 	IsVirtualCluster *bool `json:"isVirtualCluster,omitempty"`
@@ -80,88 +80,68 @@ func (o *ProjectCatalogDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ProjectCatalogDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectCatalogDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ProjectCatalogDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ProjectCatalogDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ProjectCatalogDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ProjectCatalogDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise.
 func (o *ProjectCatalogDto) GetKubernetesVersion() string {
-	if o == nil || IsNil(o.KubernetesVersion.Get()) {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		var ret string
 		return ret
 	}
-	return *o.KubernetesVersion.Get()
+	return *o.KubernetesVersion
 }
 
 // GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectCatalogDto) GetKubernetesVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		return nil, false
 	}
-	return o.KubernetesVersion.Get(), o.KubernetesVersion.IsSet()
+	return o.KubernetesVersion, true
 }
 
 // HasKubernetesVersion returns a boolean if a field has been set.
 func (o *ProjectCatalogDto) HasKubernetesVersion() bool {
-	if o != nil && o.KubernetesVersion.IsSet() {
+	if o != nil && !IsNil(o.KubernetesVersion) {
 		return true
 	}
 
 	return false
 }
 
-// SetKubernetesVersion gets a reference to the given NullableString and assigns it to the KubernetesVersion field.
+// SetKubernetesVersion gets a reference to the given string and assigns it to the KubernetesVersion field.
 func (o *ProjectCatalogDto) SetKubernetesVersion(v string) {
-	o.KubernetesVersion.Set(&v)
-}
-// SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
-func (o *ProjectCatalogDto) SetKubernetesVersionNil() {
-	o.KubernetesVersion.Set(nil)
-}
-
-// UnsetKubernetesVersion ensures that no value is present for KubernetesVersion, not even an explicit nil
-func (o *ProjectCatalogDto) UnsetKubernetesVersion() {
-	o.KubernetesVersion.Unset()
+	o.KubernetesVersion = &v
 }
 
 // GetIsLocked returns the IsLocked field value if set, zero value otherwise.
@@ -369,11 +349,11 @@ func (o ProjectCatalogDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.KubernetesVersion.IsSet() {
-		toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
+	if !IsNil(o.KubernetesVersion) {
+		toSerialize["kubernetesVersion"] = o.KubernetesVersion
 	}
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked

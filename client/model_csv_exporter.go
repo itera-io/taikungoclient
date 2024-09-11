@@ -20,9 +20,9 @@ var _ MappedNullable = &CsvExporter{}
 
 // CsvExporter struct for CsvExporter
 type CsvExporter struct {
-	FileName NullableString `json:"fileName,omitempty"`
-	ContentType NullableString `json:"contentType,omitempty"`
-	Content NullableString `json:"content,omitempty"`
+	FileName *string `json:"fileName,omitempty"`
+	ContentType *string `json:"contentType,omitempty"`
+	Content *string `json:"content,omitempty"`
 }
 
 // NewCsvExporter instantiates a new CsvExporter object
@@ -42,130 +42,100 @@ func NewCsvExporterWithDefaults() *CsvExporter {
 	return &this
 }
 
-// GetFileName returns the FileName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFileName returns the FileName field value if set, zero value otherwise.
 func (o *CsvExporter) GetFileName() string {
-	if o == nil || IsNil(o.FileName.Get()) {
+	if o == nil || IsNil(o.FileName) {
 		var ret string
 		return ret
 	}
-	return *o.FileName.Get()
+	return *o.FileName
 }
 
 // GetFileNameOk returns a tuple with the FileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CsvExporter) GetFileNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FileName) {
 		return nil, false
 	}
-	return o.FileName.Get(), o.FileName.IsSet()
+	return o.FileName, true
 }
 
 // HasFileName returns a boolean if a field has been set.
 func (o *CsvExporter) HasFileName() bool {
-	if o != nil && o.FileName.IsSet() {
+	if o != nil && !IsNil(o.FileName) {
 		return true
 	}
 
 	return false
 }
 
-// SetFileName gets a reference to the given NullableString and assigns it to the FileName field.
+// SetFileName gets a reference to the given string and assigns it to the FileName field.
 func (o *CsvExporter) SetFileName(v string) {
-	o.FileName.Set(&v)
-}
-// SetFileNameNil sets the value for FileName to be an explicit nil
-func (o *CsvExporter) SetFileNameNil() {
-	o.FileName.Set(nil)
+	o.FileName = &v
 }
 
-// UnsetFileName ensures that no value is present for FileName, not even an explicit nil
-func (o *CsvExporter) UnsetFileName() {
-	o.FileName.Unset()
-}
-
-// GetContentType returns the ContentType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetContentType returns the ContentType field value if set, zero value otherwise.
 func (o *CsvExporter) GetContentType() string {
-	if o == nil || IsNil(o.ContentType.Get()) {
+	if o == nil || IsNil(o.ContentType) {
 		var ret string
 		return ret
 	}
-	return *o.ContentType.Get()
+	return *o.ContentType
 }
 
 // GetContentTypeOk returns a tuple with the ContentType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CsvExporter) GetContentTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ContentType) {
 		return nil, false
 	}
-	return o.ContentType.Get(), o.ContentType.IsSet()
+	return o.ContentType, true
 }
 
 // HasContentType returns a boolean if a field has been set.
 func (o *CsvExporter) HasContentType() bool {
-	if o != nil && o.ContentType.IsSet() {
+	if o != nil && !IsNil(o.ContentType) {
 		return true
 	}
 
 	return false
 }
 
-// SetContentType gets a reference to the given NullableString and assigns it to the ContentType field.
+// SetContentType gets a reference to the given string and assigns it to the ContentType field.
 func (o *CsvExporter) SetContentType(v string) {
-	o.ContentType.Set(&v)
-}
-// SetContentTypeNil sets the value for ContentType to be an explicit nil
-func (o *CsvExporter) SetContentTypeNil() {
-	o.ContentType.Set(nil)
+	o.ContentType = &v
 }
 
-// UnsetContentType ensures that no value is present for ContentType, not even an explicit nil
-func (o *CsvExporter) UnsetContentType() {
-	o.ContentType.Unset()
-}
-
-// GetContent returns the Content field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetContent returns the Content field value if set, zero value otherwise.
 func (o *CsvExporter) GetContent() string {
-	if o == nil || IsNil(o.Content.Get()) {
+	if o == nil || IsNil(o.Content) {
 		var ret string
 		return ret
 	}
-	return *o.Content.Get()
+	return *o.Content
 }
 
 // GetContentOk returns a tuple with the Content field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CsvExporter) GetContentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Content) {
 		return nil, false
 	}
-	return o.Content.Get(), o.Content.IsSet()
+	return o.Content, true
 }
 
 // HasContent returns a boolean if a field has been set.
 func (o *CsvExporter) HasContent() bool {
-	if o != nil && o.Content.IsSet() {
+	if o != nil && !IsNil(o.Content) {
 		return true
 	}
 
 	return false
 }
 
-// SetContent gets a reference to the given NullableString and assigns it to the Content field.
+// SetContent gets a reference to the given string and assigns it to the Content field.
 func (o *CsvExporter) SetContent(v string) {
-	o.Content.Set(&v)
-}
-// SetContentNil sets the value for Content to be an explicit nil
-func (o *CsvExporter) SetContentNil() {
-	o.Content.Set(nil)
-}
-
-// UnsetContent ensures that no value is present for Content, not even an explicit nil
-func (o *CsvExporter) UnsetContent() {
-	o.Content.Unset()
+	o.Content = &v
 }
 
 func (o CsvExporter) MarshalJSON() ([]byte, error) {
@@ -178,14 +148,14 @@ func (o CsvExporter) MarshalJSON() ([]byte, error) {
 
 func (o CsvExporter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.FileName.IsSet() {
-		toSerialize["fileName"] = o.FileName.Get()
+	if !IsNil(o.FileName) {
+		toSerialize["fileName"] = o.FileName
 	}
-	if o.ContentType.IsSet() {
-		toSerialize["contentType"] = o.ContentType.Get()
+	if !IsNil(o.ContentType) {
+		toSerialize["contentType"] = o.ContentType
 	}
-	if o.Content.IsSet() {
-		toSerialize["content"] = o.Content.Get()
+	if !IsNil(o.Content) {
+		toSerialize["content"] = o.Content
 	}
 	return toSerialize, nil
 }

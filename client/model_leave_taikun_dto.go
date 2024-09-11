@@ -20,8 +20,8 @@ var _ MappedNullable = &LeaveTaikunDto{}
 
 // LeaveTaikunDto struct for LeaveTaikunDto
 type LeaveTaikunDto struct {
-	PaymentIntentId NullableString `json:"paymentIntentId,omitempty"`
-	PaymentClientSecret NullableString `json:"paymentClientSecret,omitempty"`
+	PaymentIntentId *string `json:"paymentIntentId,omitempty"`
+	PaymentClientSecret *string `json:"paymentClientSecret,omitempty"`
 }
 
 // NewLeaveTaikunDto instantiates a new LeaveTaikunDto object
@@ -41,88 +41,68 @@ func NewLeaveTaikunDtoWithDefaults() *LeaveTaikunDto {
 	return &this
 }
 
-// GetPaymentIntentId returns the PaymentIntentId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPaymentIntentId returns the PaymentIntentId field value if set, zero value otherwise.
 func (o *LeaveTaikunDto) GetPaymentIntentId() string {
-	if o == nil || IsNil(o.PaymentIntentId.Get()) {
+	if o == nil || IsNil(o.PaymentIntentId) {
 		var ret string
 		return ret
 	}
-	return *o.PaymentIntentId.Get()
+	return *o.PaymentIntentId
 }
 
 // GetPaymentIntentIdOk returns a tuple with the PaymentIntentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LeaveTaikunDto) GetPaymentIntentIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentIntentId) {
 		return nil, false
 	}
-	return o.PaymentIntentId.Get(), o.PaymentIntentId.IsSet()
+	return o.PaymentIntentId, true
 }
 
 // HasPaymentIntentId returns a boolean if a field has been set.
 func (o *LeaveTaikunDto) HasPaymentIntentId() bool {
-	if o != nil && o.PaymentIntentId.IsSet() {
+	if o != nil && !IsNil(o.PaymentIntentId) {
 		return true
 	}
 
 	return false
 }
 
-// SetPaymentIntentId gets a reference to the given NullableString and assigns it to the PaymentIntentId field.
+// SetPaymentIntentId gets a reference to the given string and assigns it to the PaymentIntentId field.
 func (o *LeaveTaikunDto) SetPaymentIntentId(v string) {
-	o.PaymentIntentId.Set(&v)
-}
-// SetPaymentIntentIdNil sets the value for PaymentIntentId to be an explicit nil
-func (o *LeaveTaikunDto) SetPaymentIntentIdNil() {
-	o.PaymentIntentId.Set(nil)
+	o.PaymentIntentId = &v
 }
 
-// UnsetPaymentIntentId ensures that no value is present for PaymentIntentId, not even an explicit nil
-func (o *LeaveTaikunDto) UnsetPaymentIntentId() {
-	o.PaymentIntentId.Unset()
-}
-
-// GetPaymentClientSecret returns the PaymentClientSecret field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPaymentClientSecret returns the PaymentClientSecret field value if set, zero value otherwise.
 func (o *LeaveTaikunDto) GetPaymentClientSecret() string {
-	if o == nil || IsNil(o.PaymentClientSecret.Get()) {
+	if o == nil || IsNil(o.PaymentClientSecret) {
 		var ret string
 		return ret
 	}
-	return *o.PaymentClientSecret.Get()
+	return *o.PaymentClientSecret
 }
 
 // GetPaymentClientSecretOk returns a tuple with the PaymentClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LeaveTaikunDto) GetPaymentClientSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentClientSecret) {
 		return nil, false
 	}
-	return o.PaymentClientSecret.Get(), o.PaymentClientSecret.IsSet()
+	return o.PaymentClientSecret, true
 }
 
 // HasPaymentClientSecret returns a boolean if a field has been set.
 func (o *LeaveTaikunDto) HasPaymentClientSecret() bool {
-	if o != nil && o.PaymentClientSecret.IsSet() {
+	if o != nil && !IsNil(o.PaymentClientSecret) {
 		return true
 	}
 
 	return false
 }
 
-// SetPaymentClientSecret gets a reference to the given NullableString and assigns it to the PaymentClientSecret field.
+// SetPaymentClientSecret gets a reference to the given string and assigns it to the PaymentClientSecret field.
 func (o *LeaveTaikunDto) SetPaymentClientSecret(v string) {
-	o.PaymentClientSecret.Set(&v)
-}
-// SetPaymentClientSecretNil sets the value for PaymentClientSecret to be an explicit nil
-func (o *LeaveTaikunDto) SetPaymentClientSecretNil() {
-	o.PaymentClientSecret.Set(nil)
-}
-
-// UnsetPaymentClientSecret ensures that no value is present for PaymentClientSecret, not even an explicit nil
-func (o *LeaveTaikunDto) UnsetPaymentClientSecret() {
-	o.PaymentClientSecret.Unset()
+	o.PaymentClientSecret = &v
 }
 
 func (o LeaveTaikunDto) MarshalJSON() ([]byte, error) {
@@ -135,11 +115,11 @@ func (o LeaveTaikunDto) MarshalJSON() ([]byte, error) {
 
 func (o LeaveTaikunDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.PaymentIntentId.IsSet() {
-		toSerialize["paymentIntentId"] = o.PaymentIntentId.Get()
+	if !IsNil(o.PaymentIntentId) {
+		toSerialize["paymentIntentId"] = o.PaymentIntentId
 	}
-	if o.PaymentClientSecret.IsSet() {
-		toSerialize["paymentClientSecret"] = o.PaymentClientSecret.Get()
+	if !IsNil(o.PaymentClientSecret) {
+		toSerialize["paymentClientSecret"] = o.PaymentClientSecret
 	}
 	return toSerialize, nil
 }

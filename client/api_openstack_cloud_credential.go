@@ -202,30 +202,15 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackCreateExecute(r ApiOpensta
 type ApiOpenstackListRequest struct {
 	ctx context.Context
 	ApiService *OpenstackCloudCredentialAPIService
-	limit *int32
-	offset *int32
-	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
+	limit *int32
+	offset *int32
+	organizationId *int32
 	id *int32
 	isInfra *bool
-}
-
-func (r ApiOpenstackListRequest) Limit(limit int32) ApiOpenstackListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiOpenstackListRequest) Offset(offset int32) ApiOpenstackListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiOpenstackListRequest) OrganizationId(organizationId int32) ApiOpenstackListRequest {
-	r.organizationId = &organizationId
-	return r
 }
 
 func (r ApiOpenstackListRequest) SortBy(sortBy string) ApiOpenstackListRequest {
@@ -245,6 +230,21 @@ func (r ApiOpenstackListRequest) Search(search string) ApiOpenstackListRequest {
 
 func (r ApiOpenstackListRequest) SearchId(searchId string) ApiOpenstackListRequest {
 	r.searchId = &searchId
+	return r
+}
+
+func (r ApiOpenstackListRequest) Limit(limit int32) ApiOpenstackListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiOpenstackListRequest) Offset(offset int32) ApiOpenstackListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiOpenstackListRequest) OrganizationId(organizationId int32) ApiOpenstackListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -295,6 +295,18 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackListExecute(r ApiOpenstack
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -305,18 +317,10 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackListExecute(r ApiOpenstack
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}

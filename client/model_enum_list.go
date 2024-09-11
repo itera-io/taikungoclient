@@ -65,9 +65,9 @@ func NewEnumListWithDefaults() *EnumList {
 	return &this
 }
 
-// GetCloudTypes returns the CloudTypes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCloudTypes returns the CloudTypes field value if set, zero value otherwise.
 func (o *EnumList) GetCloudTypes() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.CloudTypes) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -76,7 +76,6 @@ func (o *EnumList) GetCloudTypes() []CommonDropdownDto {
 
 // GetCloudTypesOk returns a tuple with the CloudTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetCloudTypesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.CloudTypes) {
 		return nil, false
@@ -98,9 +97,9 @@ func (o *EnumList) SetCloudTypes(v []CommonDropdownDto) {
 	o.CloudTypes = v
 }
 
-// GetProjectStatuses returns the ProjectStatuses field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjectStatuses returns the ProjectStatuses field value if set, zero value otherwise.
 func (o *EnumList) GetProjectStatuses() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.ProjectStatuses) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -109,7 +108,6 @@ func (o *EnumList) GetProjectStatuses() []CommonDropdownDto {
 
 // GetProjectStatusesOk returns a tuple with the ProjectStatuses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetProjectStatusesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.ProjectStatuses) {
 		return nil, false
@@ -131,9 +129,9 @@ func (o *EnumList) SetProjectStatuses(v []CommonDropdownDto) {
 	o.ProjectStatuses = v
 }
 
-// GetServerRoles returns the ServerRoles field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetServerRoles returns the ServerRoles field value if set, zero value otherwise.
 func (o *EnumList) GetServerRoles() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.ServerRoles) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -142,7 +140,6 @@ func (o *EnumList) GetServerRoles() []CommonDropdownDto {
 
 // GetServerRolesOk returns a tuple with the ServerRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetServerRolesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.ServerRoles) {
 		return nil, false
@@ -164,9 +161,9 @@ func (o *EnumList) SetServerRoles(v []CommonDropdownDto) {
 	o.ServerRoles = v
 }
 
-// GetServerStatuses returns the ServerStatuses field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetServerStatuses returns the ServerStatuses field value if set, zero value otherwise.
 func (o *EnumList) GetServerStatuses() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.ServerStatuses) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -175,7 +172,6 @@ func (o *EnumList) GetServerStatuses() []CommonDropdownDto {
 
 // GetServerStatusesOk returns a tuple with the ServerStatuses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetServerStatusesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.ServerStatuses) {
 		return nil, false
@@ -197,9 +193,9 @@ func (o *EnumList) SetServerStatuses(v []CommonDropdownDto) {
 	o.ServerStatuses = v
 }
 
-// GetUserRoles returns the UserRoles field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserRoles returns the UserRoles field value if set, zero value otherwise.
 func (o *EnumList) GetUserRoles() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.UserRoles) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -208,7 +204,6 @@ func (o *EnumList) GetUserRoles() []CommonDropdownDto {
 
 // GetUserRolesOk returns a tuple with the UserRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetUserRolesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.UserRoles) {
 		return nil, false
@@ -230,9 +225,9 @@ func (o *EnumList) SetUserRoles(v []CommonDropdownDto) {
 	o.UserRoles = v
 }
 
-// GetSecurityGroupRules returns the SecurityGroupRules field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSecurityGroupRules returns the SecurityGroupRules field value if set, zero value otherwise.
 func (o *EnumList) GetSecurityGroupRules() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.SecurityGroupRules) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -241,7 +236,6 @@ func (o *EnumList) GetSecurityGroupRules() []CommonDropdownDto {
 
 // GetSecurityGroupRulesOk returns a tuple with the SecurityGroupRules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetSecurityGroupRulesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.SecurityGroupRules) {
 		return nil, false
@@ -263,9 +257,9 @@ func (o *EnumList) SetSecurityGroupRules(v []CommonDropdownDto) {
 	o.SecurityGroupRules = v
 }
 
-// GetPrometheusTypes returns the PrometheusTypes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPrometheusTypes returns the PrometheusTypes field value if set, zero value otherwise.
 func (o *EnumList) GetPrometheusTypes() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.PrometheusTypes) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -274,7 +268,6 @@ func (o *EnumList) GetPrometheusTypes() []CommonDropdownDto {
 
 // GetPrometheusTypesOk returns a tuple with the PrometheusTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetPrometheusTypesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.PrometheusTypes) {
 		return nil, false
@@ -296,9 +289,9 @@ func (o *EnumList) SetPrometheusTypes(v []CommonDropdownDto) {
 	o.PrometheusTypes = v
 }
 
-// GetAuditLogs returns the AuditLogs field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAuditLogs returns the AuditLogs field value if set, zero value otherwise.
 func (o *EnumList) GetAuditLogs() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.AuditLogs) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -307,7 +300,6 @@ func (o *EnumList) GetAuditLogs() []CommonDropdownDto {
 
 // GetAuditLogsOk returns a tuple with the AuditLogs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetAuditLogsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.AuditLogs) {
 		return nil, false
@@ -329,9 +321,9 @@ func (o *EnumList) SetAuditLogs(v []CommonDropdownDto) {
 	o.AuditLogs = v
 }
 
-// GetRebootOptions returns the RebootOptions field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRebootOptions returns the RebootOptions field value if set, zero value otherwise.
 func (o *EnumList) GetRebootOptions() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.RebootOptions) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -340,7 +332,6 @@ func (o *EnumList) GetRebootOptions() []CommonDropdownDto {
 
 // GetRebootOptionsOk returns a tuple with the RebootOptions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetRebootOptionsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.RebootOptions) {
 		return nil, false
@@ -362,9 +353,9 @@ func (o *EnumList) SetRebootOptions(v []CommonDropdownDto) {
 	o.RebootOptions = v
 }
 
-// GetAvailability returns the Availability field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAvailability returns the Availability field value if set, zero value otherwise.
 func (o *EnumList) GetAvailability() []CommonAvailabilityDto {
-	if o == nil {
+	if o == nil || IsNil(o.Availability) {
 		var ret []CommonAvailabilityDto
 		return ret
 	}
@@ -373,7 +364,6 @@ func (o *EnumList) GetAvailability() []CommonAvailabilityDto {
 
 // GetAvailabilityOk returns a tuple with the Availability field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetAvailabilityOk() ([]CommonAvailabilityDto, bool) {
 	if o == nil || IsNil(o.Availability) {
 		return nil, false
@@ -395,9 +385,9 @@ func (o *EnumList) SetAvailability(v []CommonAvailabilityDto) {
 	o.Availability = v
 }
 
-// GetSlackTypes returns the SlackTypes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSlackTypes returns the SlackTypes field value if set, zero value otherwise.
 func (o *EnumList) GetSlackTypes() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.SlackTypes) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -406,7 +396,6 @@ func (o *EnumList) GetSlackTypes() []CommonDropdownDto {
 
 // GetSlackTypesOk returns a tuple with the SlackTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetSlackTypesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.SlackTypes) {
 		return nil, false
@@ -428,9 +417,9 @@ func (o *EnumList) SetSlackTypes(v []CommonDropdownDto) {
 	o.SlackTypes = v
 }
 
-// GetRequestLogs returns the RequestLogs field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRequestLogs returns the RequestLogs field value if set, zero value otherwise.
 func (o *EnumList) GetRequestLogs() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.RequestLogs) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -439,7 +428,6 @@ func (o *EnumList) GetRequestLogs() []CommonDropdownDto {
 
 // GetRequestLogsOk returns a tuple with the RequestLogs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetRequestLogsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.RequestLogs) {
 		return nil, false
@@ -461,9 +449,9 @@ func (o *EnumList) SetRequestLogs(v []CommonDropdownDto) {
 	o.RequestLogs = v
 }
 
-// GetAzureQuotas returns the AzureQuotas field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAzureQuotas returns the AzureQuotas field value if set, zero value otherwise.
 func (o *EnumList) GetAzureQuotas() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.AzureQuotas) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -472,7 +460,6 @@ func (o *EnumList) GetAzureQuotas() []CommonDropdownDto {
 
 // GetAzureQuotasOk returns a tuple with the AzureQuotas field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetAzureQuotasOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.AzureQuotas) {
 		return nil, false
@@ -494,9 +481,9 @@ func (o *EnumList) SetAzureQuotas(v []CommonDropdownDto) {
 	o.AzureQuotas = v
 }
 
-// GetShowbackKinds returns the ShowbackKinds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetShowbackKinds returns the ShowbackKinds field value if set, zero value otherwise.
 func (o *EnumList) GetShowbackKinds() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.ShowbackKinds) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -505,7 +492,6 @@ func (o *EnumList) GetShowbackKinds() []CommonDropdownDto {
 
 // GetShowbackKindsOk returns a tuple with the ShowbackKinds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetShowbackKindsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.ShowbackKinds) {
 		return nil, false
@@ -527,9 +513,9 @@ func (o *EnumList) SetShowbackKinds(v []CommonDropdownDto) {
 	o.ShowbackKinds = v
 }
 
-// GetAlertTypes returns the AlertTypes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAlertTypes returns the AlertTypes field value if set, zero value otherwise.
 func (o *EnumList) GetAlertTypes() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.AlertTypes) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -538,7 +524,6 @@ func (o *EnumList) GetAlertTypes() []CommonDropdownDto {
 
 // GetAlertTypesOk returns a tuple with the AlertTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetAlertTypesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.AlertTypes) {
 		return nil, false
@@ -560,9 +545,9 @@ func (o *EnumList) SetAlertTypes(v []CommonDropdownDto) {
 	o.AlertTypes = v
 }
 
-// GetReminderTypes returns the ReminderTypes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetReminderTypes returns the ReminderTypes field value if set, zero value otherwise.
 func (o *EnumList) GetReminderTypes() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.ReminderTypes) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -571,7 +556,6 @@ func (o *EnumList) GetReminderTypes() []CommonDropdownDto {
 
 // GetReminderTypesOk returns a tuple with the ReminderTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetReminderTypesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.ReminderTypes) {
 		return nil, false
@@ -593,9 +577,9 @@ func (o *EnumList) SetReminderTypes(v []CommonDropdownDto) {
 	o.ReminderTypes = v
 }
 
-// GetAwsPlatforms returns the AwsPlatforms field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAwsPlatforms returns the AwsPlatforms field value if set, zero value otherwise.
 func (o *EnumList) GetAwsPlatforms() []CommonStringBasedDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.AwsPlatforms) {
 		var ret []CommonStringBasedDropdownDto
 		return ret
 	}
@@ -604,7 +588,6 @@ func (o *EnumList) GetAwsPlatforms() []CommonStringBasedDropdownDto {
 
 // GetAwsPlatformsOk returns a tuple with the AwsPlatforms field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetAwsPlatformsOk() ([]CommonStringBasedDropdownDto, bool) {
 	if o == nil || IsNil(o.AwsPlatforms) {
 		return nil, false
@@ -626,9 +609,9 @@ func (o *EnumList) SetAwsPlatforms(v []CommonStringBasedDropdownDto) {
 	o.AwsPlatforms = v
 }
 
-// GetCronPeriods returns the CronPeriods field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCronPeriods returns the CronPeriods field value if set, zero value otherwise.
 func (o *EnumList) GetCronPeriods() []CommonStringBasedDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.CronPeriods) {
 		var ret []CommonStringBasedDropdownDto
 		return ret
 	}
@@ -637,7 +620,6 @@ func (o *EnumList) GetCronPeriods() []CommonStringBasedDropdownDto {
 
 // GetCronPeriodsOk returns a tuple with the CronPeriods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetCronPeriodsOk() ([]CommonStringBasedDropdownDto, bool) {
 	if o == nil || IsNil(o.CronPeriods) {
 		return nil, false
@@ -659,9 +641,9 @@ func (o *EnumList) SetCronPeriods(v []CommonStringBasedDropdownDto) {
 	o.CronPeriods = v
 }
 
-// GetValidityPeriods returns the ValidityPeriods field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetValidityPeriods returns the ValidityPeriods field value if set, zero value otherwise.
 func (o *EnumList) GetValidityPeriods() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.ValidityPeriods) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -670,7 +652,6 @@ func (o *EnumList) GetValidityPeriods() []CommonDropdownDto {
 
 // GetValidityPeriodsOk returns a tuple with the ValidityPeriods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetValidityPeriodsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.ValidityPeriods) {
 		return nil, false
@@ -692,9 +673,9 @@ func (o *EnumList) SetValidityPeriods(v []CommonDropdownDto) {
 	o.ValidityPeriods = v
 }
 
-// GetAlertingIntegrationTypes returns the AlertingIntegrationTypes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAlertingIntegrationTypes returns the AlertingIntegrationTypes field value if set, zero value otherwise.
 func (o *EnumList) GetAlertingIntegrationTypes() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.AlertingIntegrationTypes) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -703,7 +684,6 @@ func (o *EnumList) GetAlertingIntegrationTypes() []CommonDropdownDto {
 
 // GetAlertingIntegrationTypesOk returns a tuple with the AlertingIntegrationTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetAlertingIntegrationTypesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.AlertingIntegrationTypes) {
 		return nil, false
@@ -725,9 +705,9 @@ func (o *EnumList) SetAlertingIntegrationTypes(v []CommonDropdownDto) {
 	o.AlertingIntegrationTypes = v
 }
 
-// GetGoogleImageTypes returns the GoogleImageTypes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGoogleImageTypes returns the GoogleImageTypes field value if set, zero value otherwise.
 func (o *EnumList) GetGoogleImageTypes() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.GoogleImageTypes) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -736,7 +716,6 @@ func (o *EnumList) GetGoogleImageTypes() []CommonDropdownDto {
 
 // GetGoogleImageTypesOk returns a tuple with the GoogleImageTypes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetGoogleImageTypesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.GoogleImageTypes) {
 		return nil, false
@@ -758,9 +737,9 @@ func (o *EnumList) SetGoogleImageTypes(v []CommonDropdownDto) {
 	o.GoogleImageTypes = v
 }
 
-// GetStandaloneVmStatuses returns the StandaloneVmStatuses field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStandaloneVmStatuses returns the StandaloneVmStatuses field value if set, zero value otherwise.
 func (o *EnumList) GetStandaloneVmStatuses() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.StandaloneVmStatuses) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -769,7 +748,6 @@ func (o *EnumList) GetStandaloneVmStatuses() []CommonDropdownDto {
 
 // GetStandaloneVmStatusesOk returns a tuple with the StandaloneVmStatuses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetStandaloneVmStatusesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.StandaloneVmStatuses) {
 		return nil, false
@@ -791,9 +769,9 @@ func (o *EnumList) SetStandaloneVmStatuses(v []CommonDropdownDto) {
 	o.StandaloneVmStatuses = v
 }
 
-// GetOpenstackContinents returns the OpenstackContinents field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOpenstackContinents returns the OpenstackContinents field value if set, zero value otherwise.
 func (o *EnumList) GetOpenstackContinents() []CommonStringBasedDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.OpenstackContinents) {
 		var ret []CommonStringBasedDropdownDto
 		return ret
 	}
@@ -802,7 +780,6 @@ func (o *EnumList) GetOpenstackContinents() []CommonStringBasedDropdownDto {
 
 // GetOpenstackContinentsOk returns a tuple with the OpenstackContinents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetOpenstackContinentsOk() ([]CommonStringBasedDropdownDto, bool) {
 	if o == nil || IsNil(o.OpenstackContinents) {
 		return nil, false
@@ -824,9 +801,9 @@ func (o *EnumList) SetOpenstackContinents(v []CommonStringBasedDropdownDto) {
 	o.OpenstackContinents = v
 }
 
-// GetRetentionPeriods returns the RetentionPeriods field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRetentionPeriods returns the RetentionPeriods field value if set, zero value otherwise.
 func (o *EnumList) GetRetentionPeriods() []CommonStringBasedDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.RetentionPeriods) {
 		var ret []CommonStringBasedDropdownDto
 		return ret
 	}
@@ -835,7 +812,6 @@ func (o *EnumList) GetRetentionPeriods() []CommonStringBasedDropdownDto {
 
 // GetRetentionPeriodsOk returns a tuple with the RetentionPeriods field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetRetentionPeriodsOk() ([]CommonStringBasedDropdownDto, bool) {
 	if o == nil || IsNil(o.RetentionPeriods) {
 		return nil, false
@@ -857,9 +833,9 @@ func (o *EnumList) SetRetentionPeriods(v []CommonStringBasedDropdownDto) {
 	o.RetentionPeriods = v
 }
 
-// GetTicketPriorities returns the TicketPriorities field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTicketPriorities returns the TicketPriorities field value if set, zero value otherwise.
 func (o *EnumList) GetTicketPriorities() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.TicketPriorities) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -868,7 +844,6 @@ func (o *EnumList) GetTicketPriorities() []CommonDropdownDto {
 
 // GetTicketPrioritiesOk returns a tuple with the TicketPriorities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetTicketPrioritiesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.TicketPriorities) {
 		return nil, false
@@ -890,9 +865,9 @@ func (o *EnumList) SetTicketPriorities(v []CommonDropdownDto) {
 	o.TicketPriorities = v
 }
 
-// GetProxmoxRoles returns the ProxmoxRoles field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProxmoxRoles returns the ProxmoxRoles field value if set, zero value otherwise.
 func (o *EnumList) GetProxmoxRoles() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.ProxmoxRoles) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -901,7 +876,6 @@ func (o *EnumList) GetProxmoxRoles() []CommonDropdownDto {
 
 // GetProxmoxRolesOk returns a tuple with the ProxmoxRoles field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnumList) GetProxmoxRolesOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.ProxmoxRoles) {
 		return nil, false
@@ -933,82 +907,82 @@ func (o EnumList) MarshalJSON() ([]byte, error) {
 
 func (o EnumList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CloudTypes != nil {
+	if !IsNil(o.CloudTypes) {
 		toSerialize["cloudTypes"] = o.CloudTypes
 	}
-	if o.ProjectStatuses != nil {
+	if !IsNil(o.ProjectStatuses) {
 		toSerialize["projectStatuses"] = o.ProjectStatuses
 	}
-	if o.ServerRoles != nil {
+	if !IsNil(o.ServerRoles) {
 		toSerialize["serverRoles"] = o.ServerRoles
 	}
-	if o.ServerStatuses != nil {
+	if !IsNil(o.ServerStatuses) {
 		toSerialize["serverStatuses"] = o.ServerStatuses
 	}
-	if o.UserRoles != nil {
+	if !IsNil(o.UserRoles) {
 		toSerialize["userRoles"] = o.UserRoles
 	}
-	if o.SecurityGroupRules != nil {
+	if !IsNil(o.SecurityGroupRules) {
 		toSerialize["securityGroupRules"] = o.SecurityGroupRules
 	}
-	if o.PrometheusTypes != nil {
+	if !IsNil(o.PrometheusTypes) {
 		toSerialize["prometheusTypes"] = o.PrometheusTypes
 	}
-	if o.AuditLogs != nil {
+	if !IsNil(o.AuditLogs) {
 		toSerialize["auditLogs"] = o.AuditLogs
 	}
-	if o.RebootOptions != nil {
+	if !IsNil(o.RebootOptions) {
 		toSerialize["rebootOptions"] = o.RebootOptions
 	}
-	if o.Availability != nil {
+	if !IsNil(o.Availability) {
 		toSerialize["availability"] = o.Availability
 	}
-	if o.SlackTypes != nil {
+	if !IsNil(o.SlackTypes) {
 		toSerialize["slackTypes"] = o.SlackTypes
 	}
-	if o.RequestLogs != nil {
+	if !IsNil(o.RequestLogs) {
 		toSerialize["requestLogs"] = o.RequestLogs
 	}
-	if o.AzureQuotas != nil {
+	if !IsNil(o.AzureQuotas) {
 		toSerialize["azureQuotas"] = o.AzureQuotas
 	}
-	if o.ShowbackKinds != nil {
+	if !IsNil(o.ShowbackKinds) {
 		toSerialize["showbackKinds"] = o.ShowbackKinds
 	}
-	if o.AlertTypes != nil {
+	if !IsNil(o.AlertTypes) {
 		toSerialize["alertTypes"] = o.AlertTypes
 	}
-	if o.ReminderTypes != nil {
+	if !IsNil(o.ReminderTypes) {
 		toSerialize["reminderTypes"] = o.ReminderTypes
 	}
-	if o.AwsPlatforms != nil {
+	if !IsNil(o.AwsPlatforms) {
 		toSerialize["awsPlatforms"] = o.AwsPlatforms
 	}
-	if o.CronPeriods != nil {
+	if !IsNil(o.CronPeriods) {
 		toSerialize["cronPeriods"] = o.CronPeriods
 	}
-	if o.ValidityPeriods != nil {
+	if !IsNil(o.ValidityPeriods) {
 		toSerialize["validityPeriods"] = o.ValidityPeriods
 	}
-	if o.AlertingIntegrationTypes != nil {
+	if !IsNil(o.AlertingIntegrationTypes) {
 		toSerialize["alertingIntegrationTypes"] = o.AlertingIntegrationTypes
 	}
-	if o.GoogleImageTypes != nil {
+	if !IsNil(o.GoogleImageTypes) {
 		toSerialize["googleImageTypes"] = o.GoogleImageTypes
 	}
-	if o.StandaloneVmStatuses != nil {
+	if !IsNil(o.StandaloneVmStatuses) {
 		toSerialize["standaloneVmStatuses"] = o.StandaloneVmStatuses
 	}
-	if o.OpenstackContinents != nil {
+	if !IsNil(o.OpenstackContinents) {
 		toSerialize["openstackContinents"] = o.OpenstackContinents
 	}
-	if o.RetentionPeriods != nil {
+	if !IsNil(o.RetentionPeriods) {
 		toSerialize["retentionPeriods"] = o.RetentionPeriods
 	}
-	if o.TicketPriorities != nil {
+	if !IsNil(o.TicketPriorities) {
 		toSerialize["ticketPriorities"] = o.TicketPriorities
 	}
-	if o.ProxmoxRoles != nil {
+	if !IsNil(o.ProxmoxRoles) {
 		toSerialize["proxmoxRoles"] = o.ProxmoxRoles
 	}
 	return toSerialize, nil

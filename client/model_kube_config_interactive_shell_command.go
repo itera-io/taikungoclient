@@ -21,7 +21,7 @@ var _ MappedNullable = &KubeConfigInteractiveShellCommand{}
 // KubeConfigInteractiveShellCommand struct for KubeConfigInteractiveShellCommand
 type KubeConfigInteractiveShellCommand struct {
 	KubeConfigId *int32 `json:"kubeConfigId,omitempty"`
-	Token NullableString `json:"token,omitempty"`
+	Token *string `json:"token,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 }
 
@@ -74,46 +74,36 @@ func (o *KubeConfigInteractiveShellCommand) SetKubeConfigId(v int32) {
 	o.KubeConfigId = &v
 }
 
-// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetToken returns the Token field value if set, zero value otherwise.
 func (o *KubeConfigInteractiveShellCommand) GetToken() string {
-	if o == nil || IsNil(o.Token.Get()) {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
-	return *o.Token.Get()
+	return *o.Token
 }
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubeConfigInteractiveShellCommand) GetTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
-	return o.Token.Get(), o.Token.IsSet()
+	return o.Token, true
 }
 
 // HasToken returns a boolean if a field has been set.
 func (o *KubeConfigInteractiveShellCommand) HasToken() bool {
-	if o != nil && o.Token.IsSet() {
+	if o != nil && !IsNil(o.Token) {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given NullableString and assigns it to the Token field.
+// SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *KubeConfigInteractiveShellCommand) SetToken(v string) {
-	o.Token.Set(&v)
-}
-// SetTokenNil sets the value for Token to be an explicit nil
-func (o *KubeConfigInteractiveShellCommand) SetTokenNil() {
-	o.Token.Set(nil)
-}
-
-// UnsetToken ensures that no value is present for Token, not even an explicit nil
-func (o *KubeConfigInteractiveShellCommand) UnsetToken() {
-	o.Token.Unset()
+	o.Token = &v
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
@@ -161,8 +151,8 @@ func (o KubeConfigInteractiveShellCommand) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.KubeConfigId) {
 		toSerialize["kubeConfigId"] = o.KubeConfigId
 	}
-	if o.Token.IsSet() {
-		toSerialize["token"] = o.Token.Get()
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
 	}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId

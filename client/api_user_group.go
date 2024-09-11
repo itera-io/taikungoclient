@@ -235,6 +235,9 @@ func (a *UserGroupAPIService) UsergroupsBindProjectsGroupExecute(r ApiUsergroups
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.bindProjectGroupsToUserGroupCommand == nil {
+		return nil, reportError("bindProjectGroupsToUserGroupCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -564,6 +567,9 @@ func (a *UserGroupAPIService) UsergroupsCreateExecute(r ApiUsergroupsCreateReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createUserGroupCommand == nil {
+		return localVarReturnValue, nil, reportError("createUserGroupCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -857,29 +863,14 @@ func (a *UserGroupAPIService) UsergroupsDeleteExecute(r ApiUsergroupsDeleteReque
 type ApiUsergroupsListRequest struct {
 	ctx context.Context
 	ApiService *UserGroupAPIService
-	limit *int32
-	offset *int32
-	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
+	limit *int32
+	offset *int32
+	organizationId *int32
 	id *int32
-}
-
-func (r ApiUsergroupsListRequest) Limit(limit int32) ApiUsergroupsListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiUsergroupsListRequest) Offset(offset int32) ApiUsergroupsListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiUsergroupsListRequest) OrganizationId(organizationId int32) ApiUsergroupsListRequest {
-	r.organizationId = &organizationId
-	return r
 }
 
 func (r ApiUsergroupsListRequest) SortBy(sortBy string) ApiUsergroupsListRequest {
@@ -899,6 +890,21 @@ func (r ApiUsergroupsListRequest) Search(search string) ApiUsergroupsListRequest
 
 func (r ApiUsergroupsListRequest) SearchId(searchId string) ApiUsergroupsListRequest {
 	r.searchId = &searchId
+	return r
+}
+
+func (r ApiUsergroupsListRequest) Limit(limit int32) ApiUsergroupsListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiUsergroupsListRequest) Offset(offset int32) ApiUsergroupsListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiUsergroupsListRequest) OrganizationId(organizationId int32) ApiUsergroupsListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -944,6 +950,18 @@ func (a *UserGroupAPIService) UsergroupsListExecute(r ApiUsergroupsListRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -954,18 +972,10 @@ func (a *UserGroupAPIService) UsergroupsListExecute(r ApiUsergroupsListRequest) 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
@@ -1306,6 +1316,9 @@ func (a *UserGroupAPIService) UsergroupsUnbindUserExecute(r ApiUsergroupsUnbindU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.unbindUserFromUserGroupCommand == nil {
+		return nil, reportError("unbindUserFromUserGroupCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1472,6 +1485,9 @@ func (a *UserGroupAPIService) UsergroupsUpdateExecute(r ApiUsergroupsUpdateReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateUserGroupDto == nil {
+		return nil, reportError("updateUserGroupDto is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

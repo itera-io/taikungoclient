@@ -74,6 +74,9 @@ func (a *CatalogAPIService) CatalogAddProjectExecute(r ApiCatalogAddProjectReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.requestBody == nil {
+		return nil, reportError("requestBody is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -563,6 +566,9 @@ func (a *CatalogAPIService) CatalogDeleteProjectExecute(r ApiCatalogDeleteProjec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.requestBody == nil {
+		return nil, reportError("requestBody is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -727,10 +733,11 @@ func (a *CatalogAPIService) CatalogDropdownExecute(r ApiCatalogDropdownRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
 	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1021,22 +1028,12 @@ func (a *CatalogAPIService) CatalogEditExecute(r ApiCatalogEditRequest) (*http.R
 type ApiCatalogListRequest struct {
 	ctx context.Context
 	ApiService *CatalogAPIService
-	offset *int32
-	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
+	offset *int32
+	limit *int32
 	id *int32
-}
-
-func (r ApiCatalogListRequest) Offset(offset int32) ApiCatalogListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiCatalogListRequest) Limit(limit int32) ApiCatalogListRequest {
-	r.limit = &limit
-	return r
 }
 
 func (r ApiCatalogListRequest) SortBy(sortBy string) ApiCatalogListRequest {
@@ -1051,6 +1048,16 @@ func (r ApiCatalogListRequest) SortDirection(sortDirection string) ApiCatalogLis
 
 func (r ApiCatalogListRequest) Search(search string) ApiCatalogListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiCatalogListRequest) Offset(offset int32) ApiCatalogListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiCatalogListRequest) Limit(limit int32) ApiCatalogListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -1096,6 +1103,15 @@ func (a *CatalogAPIService) CatalogListExecute(r ApiCatalogListRequest) (*Catalo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
@@ -1103,15 +1119,9 @@ func (a *CatalogAPIService) CatalogListExecute(r ApiCatalogListRequest) (*Catalo
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}

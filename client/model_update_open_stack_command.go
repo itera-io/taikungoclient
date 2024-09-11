@@ -21,9 +21,9 @@ var _ MappedNullable = &UpdateOpenStackCommand{}
 // UpdateOpenStackCommand struct for UpdateOpenStackCommand
 type UpdateOpenStackCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	OpenStackUser NullableString `json:"openStackUser,omitempty"`
-	OpenStackPassword NullableString `json:"openStackPassword,omitempty"`
+	Name *string `json:"name,omitempty"`
+	OpenStackUser *string `json:"openStackUser,omitempty"`
+	OpenStackPassword *string `json:"openStackPassword,omitempty"`
 }
 
 // NewUpdateOpenStackCommand instantiates a new UpdateOpenStackCommand object
@@ -75,130 +75,100 @@ func (o *UpdateOpenStackCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateOpenStackCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateOpenStackCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *UpdateOpenStackCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UpdateOpenStackCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *UpdateOpenStackCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *UpdateOpenStackCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetOpenStackUser returns the OpenStackUser field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOpenStackUser returns the OpenStackUser field value if set, zero value otherwise.
 func (o *UpdateOpenStackCommand) GetOpenStackUser() string {
-	if o == nil || IsNil(o.OpenStackUser.Get()) {
+	if o == nil || IsNil(o.OpenStackUser) {
 		var ret string
 		return ret
 	}
-	return *o.OpenStackUser.Get()
+	return *o.OpenStackUser
 }
 
 // GetOpenStackUserOk returns a tuple with the OpenStackUser field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateOpenStackCommand) GetOpenStackUserOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackUser) {
 		return nil, false
 	}
-	return o.OpenStackUser.Get(), o.OpenStackUser.IsSet()
+	return o.OpenStackUser, true
 }
 
 // HasOpenStackUser returns a boolean if a field has been set.
 func (o *UpdateOpenStackCommand) HasOpenStackUser() bool {
-	if o != nil && o.OpenStackUser.IsSet() {
+	if o != nil && !IsNil(o.OpenStackUser) {
 		return true
 	}
 
 	return false
 }
 
-// SetOpenStackUser gets a reference to the given NullableString and assigns it to the OpenStackUser field.
+// SetOpenStackUser gets a reference to the given string and assigns it to the OpenStackUser field.
 func (o *UpdateOpenStackCommand) SetOpenStackUser(v string) {
-	o.OpenStackUser.Set(&v)
-}
-// SetOpenStackUserNil sets the value for OpenStackUser to be an explicit nil
-func (o *UpdateOpenStackCommand) SetOpenStackUserNil() {
-	o.OpenStackUser.Set(nil)
+	o.OpenStackUser = &v
 }
 
-// UnsetOpenStackUser ensures that no value is present for OpenStackUser, not even an explicit nil
-func (o *UpdateOpenStackCommand) UnsetOpenStackUser() {
-	o.OpenStackUser.Unset()
-}
-
-// GetOpenStackPassword returns the OpenStackPassword field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOpenStackPassword returns the OpenStackPassword field value if set, zero value otherwise.
 func (o *UpdateOpenStackCommand) GetOpenStackPassword() string {
-	if o == nil || IsNil(o.OpenStackPassword.Get()) {
+	if o == nil || IsNil(o.OpenStackPassword) {
 		var ret string
 		return ret
 	}
-	return *o.OpenStackPassword.Get()
+	return *o.OpenStackPassword
 }
 
 // GetOpenStackPasswordOk returns a tuple with the OpenStackPassword field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateOpenStackCommand) GetOpenStackPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OpenStackPassword) {
 		return nil, false
 	}
-	return o.OpenStackPassword.Get(), o.OpenStackPassword.IsSet()
+	return o.OpenStackPassword, true
 }
 
 // HasOpenStackPassword returns a boolean if a field has been set.
 func (o *UpdateOpenStackCommand) HasOpenStackPassword() bool {
-	if o != nil && o.OpenStackPassword.IsSet() {
+	if o != nil && !IsNil(o.OpenStackPassword) {
 		return true
 	}
 
 	return false
 }
 
-// SetOpenStackPassword gets a reference to the given NullableString and assigns it to the OpenStackPassword field.
+// SetOpenStackPassword gets a reference to the given string and assigns it to the OpenStackPassword field.
 func (o *UpdateOpenStackCommand) SetOpenStackPassword(v string) {
-	o.OpenStackPassword.Set(&v)
-}
-// SetOpenStackPasswordNil sets the value for OpenStackPassword to be an explicit nil
-func (o *UpdateOpenStackCommand) SetOpenStackPasswordNil() {
-	o.OpenStackPassword.Set(nil)
-}
-
-// UnsetOpenStackPassword ensures that no value is present for OpenStackPassword, not even an explicit nil
-func (o *UpdateOpenStackCommand) UnsetOpenStackPassword() {
-	o.OpenStackPassword.Unset()
+	o.OpenStackPassword = &v
 }
 
 func (o UpdateOpenStackCommand) MarshalJSON() ([]byte, error) {
@@ -214,14 +184,14 @@ func (o UpdateOpenStackCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.OpenStackUser.IsSet() {
-		toSerialize["openStackUser"] = o.OpenStackUser.Get()
+	if !IsNil(o.OpenStackUser) {
+		toSerialize["openStackUser"] = o.OpenStackUser
 	}
-	if o.OpenStackPassword.IsSet() {
-		toSerialize["openStackPassword"] = o.OpenStackPassword.Get()
+	if !IsNil(o.OpenStackPassword) {
+		toSerialize["openStackPassword"] = o.OpenStackPassword
 	}
 	return toSerialize, nil
 }

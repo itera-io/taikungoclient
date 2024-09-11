@@ -20,13 +20,13 @@ var _ MappedNullable = &CreateProxmoxCommand{}
 
 // CreateProxmoxCommand struct for CreateProxmoxCommand
 type CreateProxmoxCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	TokenId NullableString `json:"tokenId,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	TokenSecret NullableString `json:"tokenSecret,omitempty"`
-	Storage NullableString `json:"storage,omitempty"`
-	VmTemplateName NullableString `json:"vmTemplateName,omitempty"`
-	Continent NullableString `json:"continent,omitempty"`
+	Name *string `json:"name,omitempty"`
+	TokenId *string `json:"tokenId,omitempty"`
+	Url *string `json:"url,omitempty"`
+	TokenSecret *string `json:"tokenSecret,omitempty"`
+	Storage *string `json:"storage,omitempty"`
+	VmTemplateName *string `json:"vmTemplateName,omitempty"`
+	Continent *string `json:"continent,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	Hypervisors []string `json:"hypervisors,omitempty"`
 	PublicNetwork *CreateProxmoxNetworkDto `json:"publicNetwork,omitempty"`
@@ -51,298 +51,228 @@ func NewCreateProxmoxCommandWithDefaults() *CreateProxmoxCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProxmoxCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateProxmoxCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateProxmoxCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *CreateProxmoxCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *CreateProxmoxCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetTokenId returns the TokenId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTokenId returns the TokenId field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetTokenId() string {
-	if o == nil || IsNil(o.TokenId.Get()) {
+	if o == nil || IsNil(o.TokenId) {
 		var ret string
 		return ret
 	}
-	return *o.TokenId.Get()
+	return *o.TokenId
 }
 
 // GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProxmoxCommand) GetTokenIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		return nil, false
 	}
-	return o.TokenId.Get(), o.TokenId.IsSet()
+	return o.TokenId, true
 }
 
 // HasTokenId returns a boolean if a field has been set.
 func (o *CreateProxmoxCommand) HasTokenId() bool {
-	if o != nil && o.TokenId.IsSet() {
+	if o != nil && !IsNil(o.TokenId) {
 		return true
 	}
 
 	return false
 }
 
-// SetTokenId gets a reference to the given NullableString and assigns it to the TokenId field.
+// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
 func (o *CreateProxmoxCommand) SetTokenId(v string) {
-	o.TokenId.Set(&v)
-}
-// SetTokenIdNil sets the value for TokenId to be an explicit nil
-func (o *CreateProxmoxCommand) SetTokenIdNil() {
-	o.TokenId.Set(nil)
+	o.TokenId = &v
 }
 
-// UnsetTokenId ensures that no value is present for TokenId, not even an explicit nil
-func (o *CreateProxmoxCommand) UnsetTokenId() {
-	o.TokenId.Unset()
-}
-
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProxmoxCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *CreateProxmoxCommand) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *CreateProxmoxCommand) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *CreateProxmoxCommand) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = &v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *CreateProxmoxCommand) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetTokenSecret returns the TokenSecret field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTokenSecret returns the TokenSecret field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetTokenSecret() string {
-	if o == nil || IsNil(o.TokenSecret.Get()) {
+	if o == nil || IsNil(o.TokenSecret) {
 		var ret string
 		return ret
 	}
-	return *o.TokenSecret.Get()
+	return *o.TokenSecret
 }
 
 // GetTokenSecretOk returns a tuple with the TokenSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProxmoxCommand) GetTokenSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenSecret) {
 		return nil, false
 	}
-	return o.TokenSecret.Get(), o.TokenSecret.IsSet()
+	return o.TokenSecret, true
 }
 
 // HasTokenSecret returns a boolean if a field has been set.
 func (o *CreateProxmoxCommand) HasTokenSecret() bool {
-	if o != nil && o.TokenSecret.IsSet() {
+	if o != nil && !IsNil(o.TokenSecret) {
 		return true
 	}
 
 	return false
 }
 
-// SetTokenSecret gets a reference to the given NullableString and assigns it to the TokenSecret field.
+// SetTokenSecret gets a reference to the given string and assigns it to the TokenSecret field.
 func (o *CreateProxmoxCommand) SetTokenSecret(v string) {
-	o.TokenSecret.Set(&v)
-}
-// SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
-func (o *CreateProxmoxCommand) SetTokenSecretNil() {
-	o.TokenSecret.Set(nil)
+	o.TokenSecret = &v
 }
 
-// UnsetTokenSecret ensures that no value is present for TokenSecret, not even an explicit nil
-func (o *CreateProxmoxCommand) UnsetTokenSecret() {
-	o.TokenSecret.Unset()
-}
-
-// GetStorage returns the Storage field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStorage returns the Storage field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetStorage() string {
-	if o == nil || IsNil(o.Storage.Get()) {
+	if o == nil || IsNil(o.Storage) {
 		var ret string
 		return ret
 	}
-	return *o.Storage.Get()
+	return *o.Storage
 }
 
 // GetStorageOk returns a tuple with the Storage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProxmoxCommand) GetStorageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Storage) {
 		return nil, false
 	}
-	return o.Storage.Get(), o.Storage.IsSet()
+	return o.Storage, true
 }
 
 // HasStorage returns a boolean if a field has been set.
 func (o *CreateProxmoxCommand) HasStorage() bool {
-	if o != nil && o.Storage.IsSet() {
+	if o != nil && !IsNil(o.Storage) {
 		return true
 	}
 
 	return false
 }
 
-// SetStorage gets a reference to the given NullableString and assigns it to the Storage field.
+// SetStorage gets a reference to the given string and assigns it to the Storage field.
 func (o *CreateProxmoxCommand) SetStorage(v string) {
-	o.Storage.Set(&v)
-}
-// SetStorageNil sets the value for Storage to be an explicit nil
-func (o *CreateProxmoxCommand) SetStorageNil() {
-	o.Storage.Set(nil)
+	o.Storage = &v
 }
 
-// UnsetStorage ensures that no value is present for Storage, not even an explicit nil
-func (o *CreateProxmoxCommand) UnsetStorage() {
-	o.Storage.Unset()
-}
-
-// GetVmTemplateName returns the VmTemplateName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVmTemplateName returns the VmTemplateName field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetVmTemplateName() string {
-	if o == nil || IsNil(o.VmTemplateName.Get()) {
+	if o == nil || IsNil(o.VmTemplateName) {
 		var ret string
 		return ret
 	}
-	return *o.VmTemplateName.Get()
+	return *o.VmTemplateName
 }
 
 // GetVmTemplateNameOk returns a tuple with the VmTemplateName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProxmoxCommand) GetVmTemplateNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VmTemplateName) {
 		return nil, false
 	}
-	return o.VmTemplateName.Get(), o.VmTemplateName.IsSet()
+	return o.VmTemplateName, true
 }
 
 // HasVmTemplateName returns a boolean if a field has been set.
 func (o *CreateProxmoxCommand) HasVmTemplateName() bool {
-	if o != nil && o.VmTemplateName.IsSet() {
+	if o != nil && !IsNil(o.VmTemplateName) {
 		return true
 	}
 
 	return false
 }
 
-// SetVmTemplateName gets a reference to the given NullableString and assigns it to the VmTemplateName field.
+// SetVmTemplateName gets a reference to the given string and assigns it to the VmTemplateName field.
 func (o *CreateProxmoxCommand) SetVmTemplateName(v string) {
-	o.VmTemplateName.Set(&v)
-}
-// SetVmTemplateNameNil sets the value for VmTemplateName to be an explicit nil
-func (o *CreateProxmoxCommand) SetVmTemplateNameNil() {
-	o.VmTemplateName.Set(nil)
+	o.VmTemplateName = &v
 }
 
-// UnsetVmTemplateName ensures that no value is present for VmTemplateName, not even an explicit nil
-func (o *CreateProxmoxCommand) UnsetVmTemplateName() {
-	o.VmTemplateName.Unset()
-}
-
-// GetContinent returns the Continent field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetContinent returns the Continent field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetContinent() string {
-	if o == nil || IsNil(o.Continent.Get()) {
+	if o == nil || IsNil(o.Continent) {
 		var ret string
 		return ret
 	}
-	return *o.Continent.Get()
+	return *o.Continent
 }
 
 // GetContinentOk returns a tuple with the Continent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProxmoxCommand) GetContinentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Continent) {
 		return nil, false
 	}
-	return o.Continent.Get(), o.Continent.IsSet()
+	return o.Continent, true
 }
 
 // HasContinent returns a boolean if a field has been set.
 func (o *CreateProxmoxCommand) HasContinent() bool {
-	if o != nil && o.Continent.IsSet() {
+	if o != nil && !IsNil(o.Continent) {
 		return true
 	}
 
 	return false
 }
 
-// SetContinent gets a reference to the given NullableString and assigns it to the Continent field.
+// SetContinent gets a reference to the given string and assigns it to the Continent field.
 func (o *CreateProxmoxCommand) SetContinent(v string) {
-	o.Continent.Set(&v)
-}
-// SetContinentNil sets the value for Continent to be an explicit nil
-func (o *CreateProxmoxCommand) SetContinentNil() {
-	o.Continent.Set(nil)
-}
-
-// UnsetContinent ensures that no value is present for Continent, not even an explicit nil
-func (o *CreateProxmoxCommand) UnsetContinent() {
-	o.Continent.Unset()
+	o.Continent = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -387,9 +317,9 @@ func (o *CreateProxmoxCommand) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
-// GetHypervisors returns the Hypervisors field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHypervisors returns the Hypervisors field value if set, zero value otherwise.
 func (o *CreateProxmoxCommand) GetHypervisors() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisors) {
 		var ret []string
 		return ret
 	}
@@ -398,7 +328,6 @@ func (o *CreateProxmoxCommand) GetHypervisors() []string {
 
 // GetHypervisorsOk returns a tuple with the Hypervisors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateProxmoxCommand) GetHypervisorsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Hypervisors) {
 		return nil, false
@@ -526,31 +455,31 @@ func (o CreateProxmoxCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateProxmoxCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.TokenId.IsSet() {
-		toSerialize["tokenId"] = o.TokenId.Get()
+	if !IsNil(o.TokenId) {
+		toSerialize["tokenId"] = o.TokenId
 	}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
-	if o.TokenSecret.IsSet() {
-		toSerialize["tokenSecret"] = o.TokenSecret.Get()
+	if !IsNil(o.TokenSecret) {
+		toSerialize["tokenSecret"] = o.TokenSecret
 	}
-	if o.Storage.IsSet() {
-		toSerialize["storage"] = o.Storage.Get()
+	if !IsNil(o.Storage) {
+		toSerialize["storage"] = o.Storage
 	}
-	if o.VmTemplateName.IsSet() {
-		toSerialize["vmTemplateName"] = o.VmTemplateName.Get()
+	if !IsNil(o.VmTemplateName) {
+		toSerialize["vmTemplateName"] = o.VmTemplateName
 	}
-	if o.Continent.IsSet() {
-		toSerialize["continent"] = o.Continent.Get()
+	if !IsNil(o.Continent) {
+		toSerialize["continent"] = o.Continent
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
-	if o.Hypervisors != nil {
+	if !IsNil(o.Hypervisors) {
 		toSerialize["hypervisors"] = o.Hypervisors
 	}
 	if !IsNil(o.PublicNetwork) {

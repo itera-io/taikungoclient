@@ -20,9 +20,9 @@ var _ MappedNullable = &ZededaEdgeNodesCommand{}
 
 // ZededaEdgeNodesCommand struct for ZededaEdgeNodesCommand
 type ZededaEdgeNodesCommand struct {
-	ApiUrl NullableString `json:"apiUrl,omitempty"`
-	ApiToken NullableString `json:"apiToken,omitempty"`
-	Project NullableString `json:"project,omitempty"`
+	ApiUrl *string `json:"apiUrl,omitempty"`
+	ApiToken *string `json:"apiToken,omitempty"`
+	Project *string `json:"project,omitempty"`
 }
 
 // NewZededaEdgeNodesCommand instantiates a new ZededaEdgeNodesCommand object
@@ -42,130 +42,100 @@ func NewZededaEdgeNodesCommandWithDefaults() *ZededaEdgeNodesCommand {
 	return &this
 }
 
-// GetApiUrl returns the ApiUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetApiUrl returns the ApiUrl field value if set, zero value otherwise.
 func (o *ZededaEdgeNodesCommand) GetApiUrl() string {
-	if o == nil || IsNil(o.ApiUrl.Get()) {
+	if o == nil || IsNil(o.ApiUrl) {
 		var ret string
 		return ret
 	}
-	return *o.ApiUrl.Get()
+	return *o.ApiUrl
 }
 
 // GetApiUrlOk returns a tuple with the ApiUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaEdgeNodesCommand) GetApiUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ApiUrl) {
 		return nil, false
 	}
-	return o.ApiUrl.Get(), o.ApiUrl.IsSet()
+	return o.ApiUrl, true
 }
 
 // HasApiUrl returns a boolean if a field has been set.
 func (o *ZededaEdgeNodesCommand) HasApiUrl() bool {
-	if o != nil && o.ApiUrl.IsSet() {
+	if o != nil && !IsNil(o.ApiUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetApiUrl gets a reference to the given NullableString and assigns it to the ApiUrl field.
+// SetApiUrl gets a reference to the given string and assigns it to the ApiUrl field.
 func (o *ZededaEdgeNodesCommand) SetApiUrl(v string) {
-	o.ApiUrl.Set(&v)
-}
-// SetApiUrlNil sets the value for ApiUrl to be an explicit nil
-func (o *ZededaEdgeNodesCommand) SetApiUrlNil() {
-	o.ApiUrl.Set(nil)
+	o.ApiUrl = &v
 }
 
-// UnsetApiUrl ensures that no value is present for ApiUrl, not even an explicit nil
-func (o *ZededaEdgeNodesCommand) UnsetApiUrl() {
-	o.ApiUrl.Unset()
-}
-
-// GetApiToken returns the ApiToken field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetApiToken returns the ApiToken field value if set, zero value otherwise.
 func (o *ZededaEdgeNodesCommand) GetApiToken() string {
-	if o == nil || IsNil(o.ApiToken.Get()) {
+	if o == nil || IsNil(o.ApiToken) {
 		var ret string
 		return ret
 	}
-	return *o.ApiToken.Get()
+	return *o.ApiToken
 }
 
 // GetApiTokenOk returns a tuple with the ApiToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaEdgeNodesCommand) GetApiTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ApiToken) {
 		return nil, false
 	}
-	return o.ApiToken.Get(), o.ApiToken.IsSet()
+	return o.ApiToken, true
 }
 
 // HasApiToken returns a boolean if a field has been set.
 func (o *ZededaEdgeNodesCommand) HasApiToken() bool {
-	if o != nil && o.ApiToken.IsSet() {
+	if o != nil && !IsNil(o.ApiToken) {
 		return true
 	}
 
 	return false
 }
 
-// SetApiToken gets a reference to the given NullableString and assigns it to the ApiToken field.
+// SetApiToken gets a reference to the given string and assigns it to the ApiToken field.
 func (o *ZededaEdgeNodesCommand) SetApiToken(v string) {
-	o.ApiToken.Set(&v)
-}
-// SetApiTokenNil sets the value for ApiToken to be an explicit nil
-func (o *ZededaEdgeNodesCommand) SetApiTokenNil() {
-	o.ApiToken.Set(nil)
+	o.ApiToken = &v
 }
 
-// UnsetApiToken ensures that no value is present for ApiToken, not even an explicit nil
-func (o *ZededaEdgeNodesCommand) UnsetApiToken() {
-	o.ApiToken.Unset()
-}
-
-// GetProject returns the Project field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProject returns the Project field value if set, zero value otherwise.
 func (o *ZededaEdgeNodesCommand) GetProject() string {
-	if o == nil || IsNil(o.Project.Get()) {
+	if o == nil || IsNil(o.Project) {
 		var ret string
 		return ret
 	}
-	return *o.Project.Get()
+	return *o.Project
 }
 
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaEdgeNodesCommand) GetProjectOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Project) {
 		return nil, false
 	}
-	return o.Project.Get(), o.Project.IsSet()
+	return o.Project, true
 }
 
 // HasProject returns a boolean if a field has been set.
 func (o *ZededaEdgeNodesCommand) HasProject() bool {
-	if o != nil && o.Project.IsSet() {
+	if o != nil && !IsNil(o.Project) {
 		return true
 	}
 
 	return false
 }
 
-// SetProject gets a reference to the given NullableString and assigns it to the Project field.
+// SetProject gets a reference to the given string and assigns it to the Project field.
 func (o *ZededaEdgeNodesCommand) SetProject(v string) {
-	o.Project.Set(&v)
-}
-// SetProjectNil sets the value for Project to be an explicit nil
-func (o *ZededaEdgeNodesCommand) SetProjectNil() {
-	o.Project.Set(nil)
-}
-
-// UnsetProject ensures that no value is present for Project, not even an explicit nil
-func (o *ZededaEdgeNodesCommand) UnsetProject() {
-	o.Project.Unset()
+	o.Project = &v
 }
 
 func (o ZededaEdgeNodesCommand) MarshalJSON() ([]byte, error) {
@@ -178,14 +148,14 @@ func (o ZededaEdgeNodesCommand) MarshalJSON() ([]byte, error) {
 
 func (o ZededaEdgeNodesCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ApiUrl.IsSet() {
-		toSerialize["apiUrl"] = o.ApiUrl.Get()
+	if !IsNil(o.ApiUrl) {
+		toSerialize["apiUrl"] = o.ApiUrl
 	}
-	if o.ApiToken.IsSet() {
-		toSerialize["apiToken"] = o.ApiToken.Get()
+	if !IsNil(o.ApiToken) {
+		toSerialize["apiToken"] = o.ApiToken
 	}
-	if o.Project.IsSet() {
-		toSerialize["project"] = o.Project.Get()
+	if !IsNil(o.Project) {
+		toSerialize["project"] = o.Project
 	}
 	return toSerialize, nil
 }

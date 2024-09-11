@@ -20,16 +20,16 @@ var _ MappedNullable = &Repository{}
 
 // Repository struct for Repository
 type Repository struct {
-	Url NullableString `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 	Kind *int64 `json:"kind,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Official *bool `json:"official,omitempty"`
-	RepositoryId NullableString `json:"repositoryId,omitempty"`
+	RepositoryId *string `json:"repositoryId,omitempty"`
 	ScannerDisabled *bool `json:"scannerDisabled,omitempty"`
 	IsImported *bool `json:"isImported,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
-	OrganizationDisplayName NullableString `json:"organizationDisplayName,omitempty"`
+	OrganizationDisplayName *string `json:"organizationDisplayName,omitempty"`
 }
 
 // NewRepository instantiates a new Repository object
@@ -49,46 +49,36 @@ func NewRepositoryWithDefaults() *Repository {
 	return &this
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *Repository) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Repository) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *Repository) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *Repository) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *Repository) SetUrlNil() {
-	o.Url.Set(nil)
-}
-
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *Repository) UnsetUrl() {
-	o.Url.Unset()
+	o.Url = &v
 }
 
 // GetKind returns the Kind field value if set, zero value otherwise.
@@ -123,46 +113,36 @@ func (o *Repository) SetKind(v int64) {
 	o.Kind = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *Repository) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Repository) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Repository) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Repository) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *Repository) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *Repository) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetOfficial returns the Official field value if set, zero value otherwise.
@@ -197,46 +177,36 @@ func (o *Repository) SetOfficial(v bool) {
 	o.Official = &v
 }
 
-// GetRepositoryId returns the RepositoryId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRepositoryId returns the RepositoryId field value if set, zero value otherwise.
 func (o *Repository) GetRepositoryId() string {
-	if o == nil || IsNil(o.RepositoryId.Get()) {
+	if o == nil || IsNil(o.RepositoryId) {
 		var ret string
 		return ret
 	}
-	return *o.RepositoryId.Get()
+	return *o.RepositoryId
 }
 
 // GetRepositoryIdOk returns a tuple with the RepositoryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Repository) GetRepositoryIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RepositoryId) {
 		return nil, false
 	}
-	return o.RepositoryId.Get(), o.RepositoryId.IsSet()
+	return o.RepositoryId, true
 }
 
 // HasRepositoryId returns a boolean if a field has been set.
 func (o *Repository) HasRepositoryId() bool {
-	if o != nil && o.RepositoryId.IsSet() {
+	if o != nil && !IsNil(o.RepositoryId) {
 		return true
 	}
 
 	return false
 }
 
-// SetRepositoryId gets a reference to the given NullableString and assigns it to the RepositoryId field.
+// SetRepositoryId gets a reference to the given string and assigns it to the RepositoryId field.
 func (o *Repository) SetRepositoryId(v string) {
-	o.RepositoryId.Set(&v)
-}
-// SetRepositoryIdNil sets the value for RepositoryId to be an explicit nil
-func (o *Repository) SetRepositoryIdNil() {
-	o.RepositoryId.Set(nil)
-}
-
-// UnsetRepositoryId ensures that no value is present for RepositoryId, not even an explicit nil
-func (o *Repository) UnsetRepositoryId() {
-	o.RepositoryId.Unset()
+	o.RepositoryId = &v
 }
 
 // GetScannerDisabled returns the ScannerDisabled field value if set, zero value otherwise.
@@ -303,46 +273,36 @@ func (o *Repository) SetIsImported(v bool) {
 	o.IsImported = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *Repository) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Repository) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *Repository) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *Repository) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *Repository) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
-
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *Repository) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
+	o.OrganizationName = &v
 }
 
 // GetVerifiedPublisher returns the VerifiedPublisher field value if set, zero value otherwise.
@@ -377,46 +337,36 @@ func (o *Repository) SetVerifiedPublisher(v bool) {
 	o.VerifiedPublisher = &v
 }
 
-// GetOrganizationDisplayName returns the OrganizationDisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationDisplayName returns the OrganizationDisplayName field value if set, zero value otherwise.
 func (o *Repository) GetOrganizationDisplayName() string {
-	if o == nil || IsNil(o.OrganizationDisplayName.Get()) {
+	if o == nil || IsNil(o.OrganizationDisplayName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationDisplayName.Get()
+	return *o.OrganizationDisplayName
 }
 
 // GetOrganizationDisplayNameOk returns a tuple with the OrganizationDisplayName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Repository) GetOrganizationDisplayNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationDisplayName) {
 		return nil, false
 	}
-	return o.OrganizationDisplayName.Get(), o.OrganizationDisplayName.IsSet()
+	return o.OrganizationDisplayName, true
 }
 
 // HasOrganizationDisplayName returns a boolean if a field has been set.
 func (o *Repository) HasOrganizationDisplayName() bool {
-	if o != nil && o.OrganizationDisplayName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationDisplayName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationDisplayName gets a reference to the given NullableString and assigns it to the OrganizationDisplayName field.
+// SetOrganizationDisplayName gets a reference to the given string and assigns it to the OrganizationDisplayName field.
 func (o *Repository) SetOrganizationDisplayName(v string) {
-	o.OrganizationDisplayName.Set(&v)
-}
-// SetOrganizationDisplayNameNil sets the value for OrganizationDisplayName to be an explicit nil
-func (o *Repository) SetOrganizationDisplayNameNil() {
-	o.OrganizationDisplayName.Set(nil)
-}
-
-// UnsetOrganizationDisplayName ensures that no value is present for OrganizationDisplayName, not even an explicit nil
-func (o *Repository) UnsetOrganizationDisplayName() {
-	o.OrganizationDisplayName.Unset()
+	o.OrganizationDisplayName = &v
 }
 
 func (o Repository) MarshalJSON() ([]byte, error) {
@@ -429,20 +379,20 @@ func (o Repository) MarshalJSON() ([]byte, error) {
 
 func (o Repository) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
 	if !IsNil(o.Kind) {
 		toSerialize["kind"] = o.Kind
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Official) {
 		toSerialize["official"] = o.Official
 	}
-	if o.RepositoryId.IsSet() {
-		toSerialize["repositoryId"] = o.RepositoryId.Get()
+	if !IsNil(o.RepositoryId) {
+		toSerialize["repositoryId"] = o.RepositoryId
 	}
 	if !IsNil(o.ScannerDisabled) {
 		toSerialize["scannerDisabled"] = o.ScannerDisabled
@@ -450,14 +400,14 @@ func (o Repository) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsImported) {
 		toSerialize["isImported"] = o.IsImported
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
 	if !IsNil(o.VerifiedPublisher) {
 		toSerialize["verifiedPublisher"] = o.VerifiedPublisher
 	}
-	if o.OrganizationDisplayName.IsSet() {
-		toSerialize["organizationDisplayName"] = o.OrganizationDisplayName.Get()
+	if !IsNil(o.OrganizationDisplayName) {
+		toSerialize["organizationDisplayName"] = o.OrganizationDisplayName
 	}
 	return toSerialize, nil
 }

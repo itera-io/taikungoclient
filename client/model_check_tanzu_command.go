@@ -20,12 +20,12 @@ var _ MappedNullable = &CheckTanzuCommand{}
 
 // CheckTanzuCommand struct for CheckTanzuCommand
 type CheckTanzuCommand struct {
-	Username NullableString `json:"username,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Password *string `json:"password,omitempty"`
+	Namespace *string `json:"namespace,omitempty"`
 	Port NullableInt32 `json:"port,omitempty"`
-	VolumeType NullableString `json:"volumeType,omitempty"`
+	VolumeType *string `json:"volumeType,omitempty"`
 }
 
 // NewCheckTanzuCommand instantiates a new CheckTanzuCommand object
@@ -45,172 +45,132 @@ func NewCheckTanzuCommandWithDefaults() *CheckTanzuCommand {
 	return &this
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *CheckTanzuCommand) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-	return *o.Username.Get()
+	return *o.Username
 }
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckTanzuCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return o.Username.Get(), o.Username.IsSet()
+	return o.Username, true
 }
 
 // HasUsername returns a boolean if a field has been set.
 func (o *CheckTanzuCommand) HasUsername() bool {
-	if o != nil && o.Username.IsSet() {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
 	return false
 }
 
-// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *CheckTanzuCommand) SetUsername(v string) {
-	o.Username.Set(&v)
-}
-// SetUsernameNil sets the value for Username to be an explicit nil
-func (o *CheckTanzuCommand) SetUsernameNil() {
-	o.Username.Set(nil)
+	o.Username = &v
 }
 
-// UnsetUsername ensures that no value is present for Username, not even an explicit nil
-func (o *CheckTanzuCommand) UnsetUsername() {
-	o.Username.Unset()
-}
-
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *CheckTanzuCommand) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckTanzuCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *CheckTanzuCommand) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *CheckTanzuCommand) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *CheckTanzuCommand) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = &v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *CheckTanzuCommand) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *CheckTanzuCommand) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-	return *o.Password.Get()
+	return *o.Password
 }
 
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckTanzuCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return o.Password.Get(), o.Password.IsSet()
+	return o.Password, true
 }
 
 // HasPassword returns a boolean if a field has been set.
 func (o *CheckTanzuCommand) HasPassword() bool {
-	if o != nil && o.Password.IsSet() {
+	if o != nil && !IsNil(o.Password) {
 		return true
 	}
 
 	return false
 }
 
-// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *CheckTanzuCommand) SetPassword(v string) {
-	o.Password.Set(&v)
-}
-// SetPasswordNil sets the value for Password to be an explicit nil
-func (o *CheckTanzuCommand) SetPasswordNil() {
-	o.Password.Set(nil)
+	o.Password = &v
 }
 
-// UnsetPassword ensures that no value is present for Password, not even an explicit nil
-func (o *CheckTanzuCommand) UnsetPassword() {
-	o.Password.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *CheckTanzuCommand) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+	return *o.Namespace
 }
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckTanzuCommand) GetNamespaceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return o.Namespace, true
 }
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *CheckTanzuCommand) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
+	if o != nil && !IsNil(o.Namespace) {
 		return true
 	}
 
 	return false
 }
 
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
 func (o *CheckTanzuCommand) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *CheckTanzuCommand) SetNamespaceNil() {
-	o.Namespace.Set(nil)
-}
-
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *CheckTanzuCommand) UnsetNamespace() {
-	o.Namespace.Unset()
+	o.Namespace = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -255,46 +215,36 @@ func (o *CheckTanzuCommand) UnsetPort() {
 	o.Port.Unset()
 }
 
-// GetVolumeType returns the VolumeType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVolumeType returns the VolumeType field value if set, zero value otherwise.
 func (o *CheckTanzuCommand) GetVolumeType() string {
-	if o == nil || IsNil(o.VolumeType.Get()) {
+	if o == nil || IsNil(o.VolumeType) {
 		var ret string
 		return ret
 	}
-	return *o.VolumeType.Get()
+	return *o.VolumeType
 }
 
 // GetVolumeTypeOk returns a tuple with the VolumeType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckTanzuCommand) GetVolumeTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VolumeType) {
 		return nil, false
 	}
-	return o.VolumeType.Get(), o.VolumeType.IsSet()
+	return o.VolumeType, true
 }
 
 // HasVolumeType returns a boolean if a field has been set.
 func (o *CheckTanzuCommand) HasVolumeType() bool {
-	if o != nil && o.VolumeType.IsSet() {
+	if o != nil && !IsNil(o.VolumeType) {
 		return true
 	}
 
 	return false
 }
 
-// SetVolumeType gets a reference to the given NullableString and assigns it to the VolumeType field.
+// SetVolumeType gets a reference to the given string and assigns it to the VolumeType field.
 func (o *CheckTanzuCommand) SetVolumeType(v string) {
-	o.VolumeType.Set(&v)
-}
-// SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
-func (o *CheckTanzuCommand) SetVolumeTypeNil() {
-	o.VolumeType.Set(nil)
-}
-
-// UnsetVolumeType ensures that no value is present for VolumeType, not even an explicit nil
-func (o *CheckTanzuCommand) UnsetVolumeType() {
-	o.VolumeType.Unset()
+	o.VolumeType = &v
 }
 
 func (o CheckTanzuCommand) MarshalJSON() ([]byte, error) {
@@ -307,23 +257,23 @@ func (o CheckTanzuCommand) MarshalJSON() ([]byte, error) {
 
 func (o CheckTanzuCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Username.IsSet() {
-		toSerialize["username"] = o.Username.Get()
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
 	}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
-	if o.Password.IsSet() {
-		toSerialize["password"] = o.Password.Get()
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
 	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
+	if !IsNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
 	}
 	if o.Port.IsSet() {
 		toSerialize["port"] = o.Port.Get()
 	}
-	if o.VolumeType.IsSet() {
-		toSerialize["volumeType"] = o.VolumeType.Get()
+	if !IsNil(o.VolumeType) {
+		toSerialize["volumeType"] = o.VolumeType
 	}
 	return toSerialize, nil
 }

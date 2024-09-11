@@ -72,6 +72,9 @@ func (a *CatalogAppAPIService) CatalogAppCreateExecute(r ApiCatalogAppCreateRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createCatalogAppCommand == nil {
+		return localVarReturnValue, nil, reportError("createCatalogAppCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -570,6 +573,9 @@ func (a *CatalogAppAPIService) CatalogAppEditParamsExecute(r ApiCatalogAppEditPa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.editCatalogAppParamCommand == nil {
+		return nil, reportError("editCatalogAppParamCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -854,17 +860,12 @@ func (a *CatalogAppAPIService) CatalogAppEditVersionExecute(r ApiCatalogAppEditV
 type ApiCatalogAppListRequest struct {
 	ctx context.Context
 	ApiService *CatalogAppAPIService
-	catalogId *int32
 	search *string
 	sortBy *string
 	sortDirection *string
+	catalogId *int32
 	offset *int32
 	limit *int32
-}
-
-func (r ApiCatalogAppListRequest) CatalogId(catalogId int32) ApiCatalogAppListRequest {
-	r.catalogId = &catalogId
-	return r
 }
 
 func (r ApiCatalogAppListRequest) Search(search string) ApiCatalogAppListRequest {
@@ -879,6 +880,11 @@ func (r ApiCatalogAppListRequest) SortBy(sortBy string) ApiCatalogAppListRequest
 
 func (r ApiCatalogAppListRequest) SortDirection(sortDirection string) ApiCatalogAppListRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiCatalogAppListRequest) CatalogId(catalogId int32) ApiCatalogAppListRequest {
+	r.catalogId = &catalogId
 	return r
 }
 
@@ -929,19 +935,22 @@ func (a *CatalogAppAPIService) CatalogAppListExecute(r ApiCatalogAppListRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
 
 	if r.catalogId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "CatalogId", r.catalogId, "form", "")
 	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	} else {

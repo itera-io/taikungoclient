@@ -20,17 +20,17 @@ var _ MappedNullable = &AvailablePackageDetailsDto{}
 
 // AvailablePackageDetailsDto struct for AvailablePackageDetailsDto
 type AvailablePackageDetailsDto struct {
-	Name NullableString `json:"name,omitempty"`
-	AppRepoName NullableString `json:"appRepoName,omitempty"`
-	AppRepoOrganizationName NullableString `json:"appRepoOrganizationName,omitempty"`
-	AppRepoId NullableString `json:"appRepoId,omitempty"`
-	PackageId NullableString `json:"packageId,omitempty"`
-	LogoId NullableString `json:"logoId,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	Readme NullableString `json:"readme,omitempty"`
-	Version NullableString `json:"version,omitempty"`
+	Name *string `json:"name,omitempty"`
+	AppRepoName *string `json:"appRepoName,omitempty"`
+	AppRepoOrganizationName *string `json:"appRepoOrganizationName,omitempty"`
+	AppRepoId *string `json:"appRepoId,omitempty"`
+	PackageId *string `json:"packageId,omitempty"`
+	LogoId *string `json:"logoId,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Readme *string `json:"readme,omitempty"`
+	Version *string `json:"version,omitempty"`
 	SecurityReport *SecurityReportSummaryDto `json:"securityReport,omitempty"`
-	AppVersion NullableString `json:"appVersion,omitempty"`
+	AppVersion *string `json:"appVersion,omitempty"`
 	Stars *int32 `json:"stars,omitempty"`
 	VerifiedPublisher *bool `json:"verifiedPublisher,omitempty"`
 	Official *bool `json:"official,omitempty"`
@@ -55,382 +55,292 @@ func NewAvailablePackageDetailsDtoWithDefaults() *AvailablePackageDetailsDto {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *AvailablePackageDetailsDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailablePackageDetailsDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *AvailablePackageDetailsDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AvailablePackageDetailsDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *AvailablePackageDetailsDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *AvailablePackageDetailsDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetAppRepoName returns the AppRepoName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAppRepoName returns the AppRepoName field value if set, zero value otherwise.
 func (o *AvailablePackageDetailsDto) GetAppRepoName() string {
-	if o == nil || IsNil(o.AppRepoName.Get()) {
+	if o == nil || IsNil(o.AppRepoName) {
 		var ret string
 		return ret
 	}
-	return *o.AppRepoName.Get()
+	return *o.AppRepoName
 }
 
 // GetAppRepoNameOk returns a tuple with the AppRepoName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailablePackageDetailsDto) GetAppRepoNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AppRepoName) {
 		return nil, false
 	}
-	return o.AppRepoName.Get(), o.AppRepoName.IsSet()
+	return o.AppRepoName, true
 }
 
 // HasAppRepoName returns a boolean if a field has been set.
 func (o *AvailablePackageDetailsDto) HasAppRepoName() bool {
-	if o != nil && o.AppRepoName.IsSet() {
+	if o != nil && !IsNil(o.AppRepoName) {
 		return true
 	}
 
 	return false
 }
 
-// SetAppRepoName gets a reference to the given NullableString and assigns it to the AppRepoName field.
+// SetAppRepoName gets a reference to the given string and assigns it to the AppRepoName field.
 func (o *AvailablePackageDetailsDto) SetAppRepoName(v string) {
-	o.AppRepoName.Set(&v)
-}
-// SetAppRepoNameNil sets the value for AppRepoName to be an explicit nil
-func (o *AvailablePackageDetailsDto) SetAppRepoNameNil() {
-	o.AppRepoName.Set(nil)
+	o.AppRepoName = &v
 }
 
-// UnsetAppRepoName ensures that no value is present for AppRepoName, not even an explicit nil
-func (o *AvailablePackageDetailsDto) UnsetAppRepoName() {
-	o.AppRepoName.Unset()
-}
-
-// GetAppRepoOrganizationName returns the AppRepoOrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAppRepoOrganizationName returns the AppRepoOrganizationName field value if set, zero value otherwise.
 func (o *AvailablePackageDetailsDto) GetAppRepoOrganizationName() string {
-	if o == nil || IsNil(o.AppRepoOrganizationName.Get()) {
+	if o == nil || IsNil(o.AppRepoOrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.AppRepoOrganizationName.Get()
+	return *o.AppRepoOrganizationName
 }
 
 // GetAppRepoOrganizationNameOk returns a tuple with the AppRepoOrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailablePackageDetailsDto) GetAppRepoOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AppRepoOrganizationName) {
 		return nil, false
 	}
-	return o.AppRepoOrganizationName.Get(), o.AppRepoOrganizationName.IsSet()
+	return o.AppRepoOrganizationName, true
 }
 
 // HasAppRepoOrganizationName returns a boolean if a field has been set.
 func (o *AvailablePackageDetailsDto) HasAppRepoOrganizationName() bool {
-	if o != nil && o.AppRepoOrganizationName.IsSet() {
+	if o != nil && !IsNil(o.AppRepoOrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetAppRepoOrganizationName gets a reference to the given NullableString and assigns it to the AppRepoOrganizationName field.
+// SetAppRepoOrganizationName gets a reference to the given string and assigns it to the AppRepoOrganizationName field.
 func (o *AvailablePackageDetailsDto) SetAppRepoOrganizationName(v string) {
-	o.AppRepoOrganizationName.Set(&v)
-}
-// SetAppRepoOrganizationNameNil sets the value for AppRepoOrganizationName to be an explicit nil
-func (o *AvailablePackageDetailsDto) SetAppRepoOrganizationNameNil() {
-	o.AppRepoOrganizationName.Set(nil)
+	o.AppRepoOrganizationName = &v
 }
 
-// UnsetAppRepoOrganizationName ensures that no value is present for AppRepoOrganizationName, not even an explicit nil
-func (o *AvailablePackageDetailsDto) UnsetAppRepoOrganizationName() {
-	o.AppRepoOrganizationName.Unset()
-}
-
-// GetAppRepoId returns the AppRepoId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAppRepoId returns the AppRepoId field value if set, zero value otherwise.
 func (o *AvailablePackageDetailsDto) GetAppRepoId() string {
-	if o == nil || IsNil(o.AppRepoId.Get()) {
+	if o == nil || IsNil(o.AppRepoId) {
 		var ret string
 		return ret
 	}
-	return *o.AppRepoId.Get()
+	return *o.AppRepoId
 }
 
 // GetAppRepoIdOk returns a tuple with the AppRepoId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailablePackageDetailsDto) GetAppRepoIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AppRepoId) {
 		return nil, false
 	}
-	return o.AppRepoId.Get(), o.AppRepoId.IsSet()
+	return o.AppRepoId, true
 }
 
 // HasAppRepoId returns a boolean if a field has been set.
 func (o *AvailablePackageDetailsDto) HasAppRepoId() bool {
-	if o != nil && o.AppRepoId.IsSet() {
+	if o != nil && !IsNil(o.AppRepoId) {
 		return true
 	}
 
 	return false
 }
 
-// SetAppRepoId gets a reference to the given NullableString and assigns it to the AppRepoId field.
+// SetAppRepoId gets a reference to the given string and assigns it to the AppRepoId field.
 func (o *AvailablePackageDetailsDto) SetAppRepoId(v string) {
-	o.AppRepoId.Set(&v)
-}
-// SetAppRepoIdNil sets the value for AppRepoId to be an explicit nil
-func (o *AvailablePackageDetailsDto) SetAppRepoIdNil() {
-	o.AppRepoId.Set(nil)
+	o.AppRepoId = &v
 }
 
-// UnsetAppRepoId ensures that no value is present for AppRepoId, not even an explicit nil
-func (o *AvailablePackageDetailsDto) UnsetAppRepoId() {
-	o.AppRepoId.Unset()
-}
-
-// GetPackageId returns the PackageId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPackageId returns the PackageId field value if set, zero value otherwise.
 func (o *AvailablePackageDetailsDto) GetPackageId() string {
-	if o == nil || IsNil(o.PackageId.Get()) {
+	if o == nil || IsNil(o.PackageId) {
 		var ret string
 		return ret
 	}
-	return *o.PackageId.Get()
+	return *o.PackageId
 }
 
 // GetPackageIdOk returns a tuple with the PackageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailablePackageDetailsDto) GetPackageIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PackageId) {
 		return nil, false
 	}
-	return o.PackageId.Get(), o.PackageId.IsSet()
+	return o.PackageId, true
 }
 
 // HasPackageId returns a boolean if a field has been set.
 func (o *AvailablePackageDetailsDto) HasPackageId() bool {
-	if o != nil && o.PackageId.IsSet() {
+	if o != nil && !IsNil(o.PackageId) {
 		return true
 	}
 
 	return false
 }
 
-// SetPackageId gets a reference to the given NullableString and assigns it to the PackageId field.
+// SetPackageId gets a reference to the given string and assigns it to the PackageId field.
 func (o *AvailablePackageDetailsDto) SetPackageId(v string) {
-	o.PackageId.Set(&v)
-}
-// SetPackageIdNil sets the value for PackageId to be an explicit nil
-func (o *AvailablePackageDetailsDto) SetPackageIdNil() {
-	o.PackageId.Set(nil)
+	o.PackageId = &v
 }
 
-// UnsetPackageId ensures that no value is present for PackageId, not even an explicit nil
-func (o *AvailablePackageDetailsDto) UnsetPackageId() {
-	o.PackageId.Unset()
-}
-
-// GetLogoId returns the LogoId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLogoId returns the LogoId field value if set, zero value otherwise.
 func (o *AvailablePackageDetailsDto) GetLogoId() string {
-	if o == nil || IsNil(o.LogoId.Get()) {
+	if o == nil || IsNil(o.LogoId) {
 		var ret string
 		return ret
 	}
-	return *o.LogoId.Get()
+	return *o.LogoId
 }
 
 // GetLogoIdOk returns a tuple with the LogoId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailablePackageDetailsDto) GetLogoIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LogoId) {
 		return nil, false
 	}
-	return o.LogoId.Get(), o.LogoId.IsSet()
+	return o.LogoId, true
 }
 
 // HasLogoId returns a boolean if a field has been set.
 func (o *AvailablePackageDetailsDto) HasLogoId() bool {
-	if o != nil && o.LogoId.IsSet() {
+	if o != nil && !IsNil(o.LogoId) {
 		return true
 	}
 
 	return false
 }
 
-// SetLogoId gets a reference to the given NullableString and assigns it to the LogoId field.
+// SetLogoId gets a reference to the given string and assigns it to the LogoId field.
 func (o *AvailablePackageDetailsDto) SetLogoId(v string) {
-	o.LogoId.Set(&v)
-}
-// SetLogoIdNil sets the value for LogoId to be an explicit nil
-func (o *AvailablePackageDetailsDto) SetLogoIdNil() {
-	o.LogoId.Set(nil)
+	o.LogoId = &v
 }
 
-// UnsetLogoId ensures that no value is present for LogoId, not even an explicit nil
-func (o *AvailablePackageDetailsDto) UnsetLogoId() {
-	o.LogoId.Unset()
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *AvailablePackageDetailsDto) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailablePackageDetailsDto) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *AvailablePackageDetailsDto) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *AvailablePackageDetailsDto) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *AvailablePackageDetailsDto) SetDescriptionNil() {
-	o.Description.Set(nil)
+	o.Description = &v
 }
 
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *AvailablePackageDetailsDto) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetReadme returns the Readme field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetReadme returns the Readme field value if set, zero value otherwise.
 func (o *AvailablePackageDetailsDto) GetReadme() string {
-	if o == nil || IsNil(o.Readme.Get()) {
+	if o == nil || IsNil(o.Readme) {
 		var ret string
 		return ret
 	}
-	return *o.Readme.Get()
+	return *o.Readme
 }
 
 // GetReadmeOk returns a tuple with the Readme field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailablePackageDetailsDto) GetReadmeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Readme) {
 		return nil, false
 	}
-	return o.Readme.Get(), o.Readme.IsSet()
+	return o.Readme, true
 }
 
 // HasReadme returns a boolean if a field has been set.
 func (o *AvailablePackageDetailsDto) HasReadme() bool {
-	if o != nil && o.Readme.IsSet() {
+	if o != nil && !IsNil(o.Readme) {
 		return true
 	}
 
 	return false
 }
 
-// SetReadme gets a reference to the given NullableString and assigns it to the Readme field.
+// SetReadme gets a reference to the given string and assigns it to the Readme field.
 func (o *AvailablePackageDetailsDto) SetReadme(v string) {
-	o.Readme.Set(&v)
-}
-// SetReadmeNil sets the value for Readme to be an explicit nil
-func (o *AvailablePackageDetailsDto) SetReadmeNil() {
-	o.Readme.Set(nil)
+	o.Readme = &v
 }
 
-// UnsetReadme ensures that no value is present for Readme, not even an explicit nil
-func (o *AvailablePackageDetailsDto) UnsetReadme() {
-	o.Readme.Unset()
-}
-
-// GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *AvailablePackageDetailsDto) GetVersion() string {
-	if o == nil || IsNil(o.Version.Get()) {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-	return *o.Version.Get()
+	return *o.Version
 }
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailablePackageDetailsDto) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return o.Version.Get(), o.Version.IsSet()
+	return o.Version, true
 }
 
 // HasVersion returns a boolean if a field has been set.
 func (o *AvailablePackageDetailsDto) HasVersion() bool {
-	if o != nil && o.Version.IsSet() {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
 	return false
 }
 
-// SetVersion gets a reference to the given NullableString and assigns it to the Version field.
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *AvailablePackageDetailsDto) SetVersion(v string) {
-	o.Version.Set(&v)
-}
-// SetVersionNil sets the value for Version to be an explicit nil
-func (o *AvailablePackageDetailsDto) SetVersionNil() {
-	o.Version.Set(nil)
-}
-
-// UnsetVersion ensures that no value is present for Version, not even an explicit nil
-func (o *AvailablePackageDetailsDto) UnsetVersion() {
-	o.Version.Unset()
+	o.Version = &v
 }
 
 // GetSecurityReport returns the SecurityReport field value if set, zero value otherwise.
@@ -465,46 +375,36 @@ func (o *AvailablePackageDetailsDto) SetSecurityReport(v SecurityReportSummaryDt
 	o.SecurityReport = &v
 }
 
-// GetAppVersion returns the AppVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAppVersion returns the AppVersion field value if set, zero value otherwise.
 func (o *AvailablePackageDetailsDto) GetAppVersion() string {
-	if o == nil || IsNil(o.AppVersion.Get()) {
+	if o == nil || IsNil(o.AppVersion) {
 		var ret string
 		return ret
 	}
-	return *o.AppVersion.Get()
+	return *o.AppVersion
 }
 
 // GetAppVersionOk returns a tuple with the AppVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailablePackageDetailsDto) GetAppVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AppVersion) {
 		return nil, false
 	}
-	return o.AppVersion.Get(), o.AppVersion.IsSet()
+	return o.AppVersion, true
 }
 
 // HasAppVersion returns a boolean if a field has been set.
 func (o *AvailablePackageDetailsDto) HasAppVersion() bool {
-	if o != nil && o.AppVersion.IsSet() {
+	if o != nil && !IsNil(o.AppVersion) {
 		return true
 	}
 
 	return false
 }
 
-// SetAppVersion gets a reference to the given NullableString and assigns it to the AppVersion field.
+// SetAppVersion gets a reference to the given string and assigns it to the AppVersion field.
 func (o *AvailablePackageDetailsDto) SetAppVersion(v string) {
-	o.AppVersion.Set(&v)
-}
-// SetAppVersionNil sets the value for AppVersion to be an explicit nil
-func (o *AvailablePackageDetailsDto) SetAppVersionNil() {
-	o.AppVersion.Set(nil)
-}
-
-// UnsetAppVersion ensures that no value is present for AppVersion, not even an explicit nil
-func (o *AvailablePackageDetailsDto) UnsetAppVersion() {
-	o.AppVersion.Unset()
+	o.AppVersion = &v
 }
 
 // GetStars returns the Stars field value if set, zero value otherwise.
@@ -603,9 +503,9 @@ func (o *AvailablePackageDetailsDto) SetOfficial(v bool) {
 	o.Official = &v
 }
 
-// GetBoundCatalogs returns the BoundCatalogs field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBoundCatalogs returns the BoundCatalogs field value if set, zero value otherwise.
 func (o *AvailablePackageDetailsDto) GetBoundCatalogs() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.BoundCatalogs) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -614,7 +514,6 @@ func (o *AvailablePackageDetailsDto) GetBoundCatalogs() []CommonDropdownDto {
 
 // GetBoundCatalogsOk returns a tuple with the BoundCatalogs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AvailablePackageDetailsDto) GetBoundCatalogsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.BoundCatalogs) {
 		return nil, false
@@ -678,38 +577,38 @@ func (o AvailablePackageDetailsDto) MarshalJSON() ([]byte, error) {
 
 func (o AvailablePackageDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.AppRepoName.IsSet() {
-		toSerialize["appRepoName"] = o.AppRepoName.Get()
+	if !IsNil(o.AppRepoName) {
+		toSerialize["appRepoName"] = o.AppRepoName
 	}
-	if o.AppRepoOrganizationName.IsSet() {
-		toSerialize["appRepoOrganizationName"] = o.AppRepoOrganizationName.Get()
+	if !IsNil(o.AppRepoOrganizationName) {
+		toSerialize["appRepoOrganizationName"] = o.AppRepoOrganizationName
 	}
-	if o.AppRepoId.IsSet() {
-		toSerialize["appRepoId"] = o.AppRepoId.Get()
+	if !IsNil(o.AppRepoId) {
+		toSerialize["appRepoId"] = o.AppRepoId
 	}
-	if o.PackageId.IsSet() {
-		toSerialize["packageId"] = o.PackageId.Get()
+	if !IsNil(o.PackageId) {
+		toSerialize["packageId"] = o.PackageId
 	}
-	if o.LogoId.IsSet() {
-		toSerialize["logoId"] = o.LogoId.Get()
+	if !IsNil(o.LogoId) {
+		toSerialize["logoId"] = o.LogoId
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
-	if o.Readme.IsSet() {
-		toSerialize["readme"] = o.Readme.Get()
+	if !IsNil(o.Readme) {
+		toSerialize["readme"] = o.Readme
 	}
-	if o.Version.IsSet() {
-		toSerialize["version"] = o.Version.Get()
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	if !IsNil(o.SecurityReport) {
 		toSerialize["securityReport"] = o.SecurityReport
 	}
-	if o.AppVersion.IsSet() {
-		toSerialize["appVersion"] = o.AppVersion.Get()
+	if !IsNil(o.AppVersion) {
+		toSerialize["appVersion"] = o.AppVersion
 	}
 	if !IsNil(o.Stars) {
 		toSerialize["stars"] = o.Stars
@@ -720,7 +619,7 @@ func (o AvailablePackageDetailsDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Official) {
 		toSerialize["official"] = o.Official
 	}
-	if o.BoundCatalogs != nil {
+	if !IsNil(o.BoundCatalogs) {
 		toSerialize["boundCatalogs"] = o.BoundCatalogs
 	}
 	if !IsNil(o.HasJsonSchema) {

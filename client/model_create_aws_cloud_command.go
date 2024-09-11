@@ -20,11 +20,11 @@ var _ MappedNullable = &CreateAwsCloudCommand{}
 
 // CreateAwsCloudCommand struct for CreateAwsCloudCommand
 type CreateAwsCloudCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
-	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
+	Name *string `json:"name,omitempty"`
+	AwsSecretAccessKey *string `json:"awsSecretAccessKey,omitempty"`
+	AwsAccessKeyId *string `json:"awsAccessKeyId,omitempty"`
 	AzCount *int32 `json:"azCount,omitempty"`
-	AwsRegion NullableString `json:"awsRegion,omitempty"`
+	AwsRegion *string `json:"awsRegion,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
 
@@ -45,130 +45,100 @@ func NewCreateAwsCloudCommandWithDefaults() *CreateAwsCloudCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateAwsCloudCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAwsCloudCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateAwsCloudCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateAwsCloudCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *CreateAwsCloudCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *CreateAwsCloudCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetAwsSecretAccessKey returns the AwsSecretAccessKey field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAwsSecretAccessKey returns the AwsSecretAccessKey field value if set, zero value otherwise.
 func (o *CreateAwsCloudCommand) GetAwsSecretAccessKey() string {
-	if o == nil || IsNil(o.AwsSecretAccessKey.Get()) {
+	if o == nil || IsNil(o.AwsSecretAccessKey) {
 		var ret string
 		return ret
 	}
-	return *o.AwsSecretAccessKey.Get()
+	return *o.AwsSecretAccessKey
 }
 
 // GetAwsSecretAccessKeyOk returns a tuple with the AwsSecretAccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAwsCloudCommand) GetAwsSecretAccessKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AwsSecretAccessKey) {
 		return nil, false
 	}
-	return o.AwsSecretAccessKey.Get(), o.AwsSecretAccessKey.IsSet()
+	return o.AwsSecretAccessKey, true
 }
 
 // HasAwsSecretAccessKey returns a boolean if a field has been set.
 func (o *CreateAwsCloudCommand) HasAwsSecretAccessKey() bool {
-	if o != nil && o.AwsSecretAccessKey.IsSet() {
+	if o != nil && !IsNil(o.AwsSecretAccessKey) {
 		return true
 	}
 
 	return false
 }
 
-// SetAwsSecretAccessKey gets a reference to the given NullableString and assigns it to the AwsSecretAccessKey field.
+// SetAwsSecretAccessKey gets a reference to the given string and assigns it to the AwsSecretAccessKey field.
 func (o *CreateAwsCloudCommand) SetAwsSecretAccessKey(v string) {
-	o.AwsSecretAccessKey.Set(&v)
-}
-// SetAwsSecretAccessKeyNil sets the value for AwsSecretAccessKey to be an explicit nil
-func (o *CreateAwsCloudCommand) SetAwsSecretAccessKeyNil() {
-	o.AwsSecretAccessKey.Set(nil)
+	o.AwsSecretAccessKey = &v
 }
 
-// UnsetAwsSecretAccessKey ensures that no value is present for AwsSecretAccessKey, not even an explicit nil
-func (o *CreateAwsCloudCommand) UnsetAwsSecretAccessKey() {
-	o.AwsSecretAccessKey.Unset()
-}
-
-// GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAwsAccessKeyId returns the AwsAccessKeyId field value if set, zero value otherwise.
 func (o *CreateAwsCloudCommand) GetAwsAccessKeyId() string {
-	if o == nil || IsNil(o.AwsAccessKeyId.Get()) {
+	if o == nil || IsNil(o.AwsAccessKeyId) {
 		var ret string
 		return ret
 	}
-	return *o.AwsAccessKeyId.Get()
+	return *o.AwsAccessKeyId
 }
 
 // GetAwsAccessKeyIdOk returns a tuple with the AwsAccessKeyId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAwsCloudCommand) GetAwsAccessKeyIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AwsAccessKeyId) {
 		return nil, false
 	}
-	return o.AwsAccessKeyId.Get(), o.AwsAccessKeyId.IsSet()
+	return o.AwsAccessKeyId, true
 }
 
 // HasAwsAccessKeyId returns a boolean if a field has been set.
 func (o *CreateAwsCloudCommand) HasAwsAccessKeyId() bool {
-	if o != nil && o.AwsAccessKeyId.IsSet() {
+	if o != nil && !IsNil(o.AwsAccessKeyId) {
 		return true
 	}
 
 	return false
 }
 
-// SetAwsAccessKeyId gets a reference to the given NullableString and assigns it to the AwsAccessKeyId field.
+// SetAwsAccessKeyId gets a reference to the given string and assigns it to the AwsAccessKeyId field.
 func (o *CreateAwsCloudCommand) SetAwsAccessKeyId(v string) {
-	o.AwsAccessKeyId.Set(&v)
-}
-// SetAwsAccessKeyIdNil sets the value for AwsAccessKeyId to be an explicit nil
-func (o *CreateAwsCloudCommand) SetAwsAccessKeyIdNil() {
-	o.AwsAccessKeyId.Set(nil)
-}
-
-// UnsetAwsAccessKeyId ensures that no value is present for AwsAccessKeyId, not even an explicit nil
-func (o *CreateAwsCloudCommand) UnsetAwsAccessKeyId() {
-	o.AwsAccessKeyId.Unset()
+	o.AwsAccessKeyId = &v
 }
 
 // GetAzCount returns the AzCount field value if set, zero value otherwise.
@@ -203,46 +173,36 @@ func (o *CreateAwsCloudCommand) SetAzCount(v int32) {
 	o.AzCount = &v
 }
 
-// GetAwsRegion returns the AwsRegion field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAwsRegion returns the AwsRegion field value if set, zero value otherwise.
 func (o *CreateAwsCloudCommand) GetAwsRegion() string {
-	if o == nil || IsNil(o.AwsRegion.Get()) {
+	if o == nil || IsNil(o.AwsRegion) {
 		var ret string
 		return ret
 	}
-	return *o.AwsRegion.Get()
+	return *o.AwsRegion
 }
 
 // GetAwsRegionOk returns a tuple with the AwsRegion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAwsCloudCommand) GetAwsRegionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AwsRegion) {
 		return nil, false
 	}
-	return o.AwsRegion.Get(), o.AwsRegion.IsSet()
+	return o.AwsRegion, true
 }
 
 // HasAwsRegion returns a boolean if a field has been set.
 func (o *CreateAwsCloudCommand) HasAwsRegion() bool {
-	if o != nil && o.AwsRegion.IsSet() {
+	if o != nil && !IsNil(o.AwsRegion) {
 		return true
 	}
 
 	return false
 }
 
-// SetAwsRegion gets a reference to the given NullableString and assigns it to the AwsRegion field.
+// SetAwsRegion gets a reference to the given string and assigns it to the AwsRegion field.
 func (o *CreateAwsCloudCommand) SetAwsRegion(v string) {
-	o.AwsRegion.Set(&v)
-}
-// SetAwsRegionNil sets the value for AwsRegion to be an explicit nil
-func (o *CreateAwsCloudCommand) SetAwsRegionNil() {
-	o.AwsRegion.Set(nil)
-}
-
-// UnsetAwsRegion ensures that no value is present for AwsRegion, not even an explicit nil
-func (o *CreateAwsCloudCommand) UnsetAwsRegion() {
-	o.AwsRegion.Unset()
+	o.AwsRegion = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -297,20 +257,20 @@ func (o CreateAwsCloudCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateAwsCloudCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.AwsSecretAccessKey.IsSet() {
-		toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey.Get()
+	if !IsNil(o.AwsSecretAccessKey) {
+		toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey
 	}
-	if o.AwsAccessKeyId.IsSet() {
-		toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId.Get()
+	if !IsNil(o.AwsAccessKeyId) {
+		toSerialize["awsAccessKeyId"] = o.AwsAccessKeyId
 	}
 	if !IsNil(o.AzCount) {
 		toSerialize["azCount"] = o.AzCount
 	}
-	if o.AwsRegion.IsSet() {
-		toSerialize["awsRegion"] = o.AwsRegion.Get()
+	if !IsNil(o.AwsRegion) {
+		toSerialize["awsRegion"] = o.AwsRegion
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()

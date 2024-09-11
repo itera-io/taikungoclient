@@ -72,6 +72,9 @@ func (a *AccessProfilesAPIService) AccessprofilesCreateExecute(r ApiAccessprofil
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createAccessProfileCommand == nil {
+		return localVarReturnValue, nil, reportError("createAccessProfileCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -358,19 +361,19 @@ func (a *AccessProfilesAPIService) AccessprofilesDeleteExecute(r ApiAccessprofil
 type ApiAccessprofilesDropdownRequest struct {
 	ctx context.Context
 	ApiService *AccessProfilesAPIService
-	organizationId *int32
 	search *string
+	organizationId *int32
 	offset *int32
 	limit *int32
 }
 
-func (r ApiAccessprofilesDropdownRequest) OrganizationId(organizationId int32) ApiAccessprofilesDropdownRequest {
-	r.organizationId = &organizationId
+func (r ApiAccessprofilesDropdownRequest) Search(search string) ApiAccessprofilesDropdownRequest {
+	r.search = &search
 	return r
 }
 
-func (r ApiAccessprofilesDropdownRequest) Search(search string) ApiAccessprofilesDropdownRequest {
-	r.search = &search
+func (r ApiAccessprofilesDropdownRequest) OrganizationId(organizationId int32) ApiAccessprofilesDropdownRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -421,13 +424,14 @@ func (a *AccessProfilesAPIService) AccessprofilesDropdownExecute(r ApiAccessprof
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	} else {
@@ -565,19 +569,14 @@ func (a *AccessProfilesAPIService) AccessprofilesDropdownExecute(r ApiAccessprof
 type ApiAccessprofilesListRequest struct {
 	ctx context.Context
 	ApiService *AccessProfilesAPIService
-	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
+	organizationId *int32
 	id *int32
 	limit *int32
 	offset *int32
-}
-
-func (r ApiAccessprofilesListRequest) OrganizationId(organizationId int32) ApiAccessprofilesListRequest {
-	r.organizationId = &organizationId
-	return r
 }
 
 func (r ApiAccessprofilesListRequest) SortBy(sortBy string) ApiAccessprofilesListRequest {
@@ -597,6 +596,11 @@ func (r ApiAccessprofilesListRequest) Search(search string) ApiAccessprofilesLis
 
 func (r ApiAccessprofilesListRequest) SearchId(searchId string) ApiAccessprofilesListRequest {
 	r.searchId = &searchId
+	return r
+}
+
+func (r ApiAccessprofilesListRequest) OrganizationId(organizationId int32) ApiAccessprofilesListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -656,22 +660,26 @@ func (a *AccessProfilesAPIService) AccessprofilesListExecute(r ApiAccessprofiles
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
@@ -855,6 +863,9 @@ func (a *AccessProfilesAPIService) AccessprofilesLockManagerExecute(r ApiAccessp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.accessProfilesLockManagementCommand == nil {
+		return nil, reportError("accessProfilesLockManagementCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1021,6 +1032,9 @@ func (a *AccessProfilesAPIService) AccessprofilesUpdateExecute(r ApiAccessprofil
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateAccessProfileDto == nil {
+		return nil, reportError("updateAccessProfileDto is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

@@ -20,7 +20,7 @@ var _ MappedNullable = &AdminAddBalanceCommand{}
 
 // AdminAddBalanceCommand struct for AdminAddBalanceCommand
 type AdminAddBalanceCommand struct {
-	CustomerId NullableString `json:"customerId,omitempty"`
+	CustomerId *string `json:"customerId,omitempty"`
 	Balance *int64 `json:"balance,omitempty"`
 }
 
@@ -41,46 +41,36 @@ func NewAdminAddBalanceCommandWithDefaults() *AdminAddBalanceCommand {
 	return &this
 }
 
-// GetCustomerId returns the CustomerId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
 func (o *AdminAddBalanceCommand) GetCustomerId() string {
-	if o == nil || IsNil(o.CustomerId.Get()) {
+	if o == nil || IsNil(o.CustomerId) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerId.Get()
+	return *o.CustomerId
 }
 
 // GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminAddBalanceCommand) GetCustomerIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerId) {
 		return nil, false
 	}
-	return o.CustomerId.Get(), o.CustomerId.IsSet()
+	return o.CustomerId, true
 }
 
 // HasCustomerId returns a boolean if a field has been set.
 func (o *AdminAddBalanceCommand) HasCustomerId() bool {
-	if o != nil && o.CustomerId.IsSet() {
+	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerId gets a reference to the given NullableString and assigns it to the CustomerId field.
+// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
 func (o *AdminAddBalanceCommand) SetCustomerId(v string) {
-	o.CustomerId.Set(&v)
-}
-// SetCustomerIdNil sets the value for CustomerId to be an explicit nil
-func (o *AdminAddBalanceCommand) SetCustomerIdNil() {
-	o.CustomerId.Set(nil)
-}
-
-// UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
-func (o *AdminAddBalanceCommand) UnsetCustomerId() {
-	o.CustomerId.Unset()
+	o.CustomerId = &v
 }
 
 // GetBalance returns the Balance field value if set, zero value otherwise.
@@ -125,8 +115,8 @@ func (o AdminAddBalanceCommand) MarshalJSON() ([]byte, error) {
 
 func (o AdminAddBalanceCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CustomerId.IsSet() {
-		toSerialize["customerId"] = o.CustomerId.Get()
+	if !IsNil(o.CustomerId) {
+		toSerialize["customerId"] = o.CustomerId
 	}
 	if !IsNil(o.Balance) {
 		toSerialize["balance"] = o.Balance

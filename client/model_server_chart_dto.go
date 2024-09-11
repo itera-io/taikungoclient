@@ -74,9 +74,9 @@ func NewServerChartDtoWithDefaults() *ServerChartDto {
 	return &this
 }
 
-// GetAws returns the Aws field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAws returns the Aws field value if set, zero value otherwise.
 func (o *ServerChartDto) GetAws() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Aws) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -85,7 +85,6 @@ func (o *ServerChartDto) GetAws() []ServerCommonRecordDto {
 
 // GetAwsOk returns a tuple with the Aws field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetAwsOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Aws) {
 		return nil, false
@@ -107,9 +106,9 @@ func (o *ServerChartDto) SetAws(v []ServerCommonRecordDto) {
 	o.Aws = v
 }
 
-// GetAzure returns the Azure field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAzure returns the Azure field value if set, zero value otherwise.
 func (o *ServerChartDto) GetAzure() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Azure) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -118,7 +117,6 @@ func (o *ServerChartDto) GetAzure() []ServerCommonRecordDto {
 
 // GetAzureOk returns a tuple with the Azure field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetAzureOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Azure) {
 		return nil, false
@@ -140,9 +138,9 @@ func (o *ServerChartDto) SetAzure(v []ServerCommonRecordDto) {
 	o.Azure = v
 }
 
-// GetOpenstack returns the Openstack field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOpenstack returns the Openstack field value if set, zero value otherwise.
 func (o *ServerChartDto) GetOpenstack() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Openstack) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -151,7 +149,6 @@ func (o *ServerChartDto) GetOpenstack() []ServerCommonRecordDto {
 
 // GetOpenstackOk returns a tuple with the Openstack field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetOpenstackOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Openstack) {
 		return nil, false
@@ -173,9 +170,9 @@ func (o *ServerChartDto) SetOpenstack(v []ServerCommonRecordDto) {
 	o.Openstack = v
 }
 
-// GetGoogle returns the Google field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGoogle returns the Google field value if set, zero value otherwise.
 func (o *ServerChartDto) GetGoogle() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Google) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -184,7 +181,6 @@ func (o *ServerChartDto) GetGoogle() []ServerCommonRecordDto {
 
 // GetGoogleOk returns a tuple with the Google field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetGoogleOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Google) {
 		return nil, false
@@ -206,9 +202,9 @@ func (o *ServerChartDto) SetGoogle(v []ServerCommonRecordDto) {
 	o.Google = v
 }
 
-// GetTanzu returns the Tanzu field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTanzu returns the Tanzu field value if set, zero value otherwise.
 func (o *ServerChartDto) GetTanzu() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Tanzu) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -217,7 +213,6 @@ func (o *ServerChartDto) GetTanzu() []ServerCommonRecordDto {
 
 // GetTanzuOk returns a tuple with the Tanzu field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetTanzuOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Tanzu) {
 		return nil, false
@@ -239,9 +234,9 @@ func (o *ServerChartDto) SetTanzu(v []ServerCommonRecordDto) {
 	o.Tanzu = v
 }
 
-// GetProxmox returns the Proxmox field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProxmox returns the Proxmox field value if set, zero value otherwise.
 func (o *ServerChartDto) GetProxmox() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Proxmox) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -250,7 +245,6 @@ func (o *ServerChartDto) GetProxmox() []ServerCommonRecordDto {
 
 // GetProxmoxOk returns a tuple with the Proxmox field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetProxmoxOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Proxmox) {
 		return nil, false
@@ -272,9 +266,9 @@ func (o *ServerChartDto) SetProxmox(v []ServerCommonRecordDto) {
 	o.Proxmox = v
 }
 
-// GetVsphere returns the Vsphere field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVsphere returns the Vsphere field value if set, zero value otherwise.
 func (o *ServerChartDto) GetVsphere() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Vsphere) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -283,7 +277,6 @@ func (o *ServerChartDto) GetVsphere() []ServerCommonRecordDto {
 
 // GetVsphereOk returns a tuple with the Vsphere field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetVsphereOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Vsphere) {
 		return nil, false
@@ -305,9 +298,9 @@ func (o *ServerChartDto) SetVsphere(v []ServerCommonRecordDto) {
 	o.Vsphere = v
 }
 
-// GetZadara returns the Zadara field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetZadara returns the Zadara field value if set, zero value otherwise.
 func (o *ServerChartDto) GetZadara() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Zadara) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -316,7 +309,6 @@ func (o *ServerChartDto) GetZadara() []ServerCommonRecordDto {
 
 // GetZadaraOk returns a tuple with the Zadara field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetZadaraOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Zadara) {
 		return nil, false
@@ -338,9 +330,9 @@ func (o *ServerChartDto) SetZadara(v []ServerCommonRecordDto) {
 	o.Zadara = v
 }
 
-// GetOpenshift returns the Openshift field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOpenshift returns the Openshift field value if set, zero value otherwise.
 func (o *ServerChartDto) GetOpenshift() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Openshift) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -349,7 +341,6 @@ func (o *ServerChartDto) GetOpenshift() []ServerCommonRecordDto {
 
 // GetOpenshiftOk returns a tuple with the Openshift field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetOpenshiftOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Openshift) {
 		return nil, false
@@ -371,9 +362,9 @@ func (o *ServerChartDto) SetOpenshift(v []ServerCommonRecordDto) {
 	o.Openshift = v
 }
 
-// GetZededa returns the Zededa field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetZededa returns the Zededa field value if set, zero value otherwise.
 func (o *ServerChartDto) GetZededa() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Zededa) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -382,7 +373,6 @@ func (o *ServerChartDto) GetZededa() []ServerCommonRecordDto {
 
 // GetZededaOk returns a tuple with the Zededa field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetZededaOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Zededa) {
 		return nil, false
@@ -404,9 +394,9 @@ func (o *ServerChartDto) SetZededa(v []ServerCommonRecordDto) {
 	o.Zededa = v
 }
 
-// GetFailed returns the Failed field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFailed returns the Failed field value if set, zero value otherwise.
 func (o *ServerChartDto) GetFailed() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Failed) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -415,7 +405,6 @@ func (o *ServerChartDto) GetFailed() []ServerCommonRecordDto {
 
 // GetFailedOk returns a tuple with the Failed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetFailedOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Failed) {
 		return nil, false
@@ -437,9 +426,9 @@ func (o *ServerChartDto) SetFailed(v []ServerCommonRecordDto) {
 	o.Failed = v
 }
 
-// GetSucceeded returns the Succeeded field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSucceeded returns the Succeeded field value if set, zero value otherwise.
 func (o *ServerChartDto) GetSucceeded() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Succeeded) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -448,7 +437,6 @@ func (o *ServerChartDto) GetSucceeded() []ServerCommonRecordDto {
 
 // GetSucceededOk returns a tuple with the Succeeded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetSucceededOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Succeeded) {
 		return nil, false
@@ -470,9 +458,9 @@ func (o *ServerChartDto) SetSucceeded(v []ServerCommonRecordDto) {
 	o.Succeeded = v
 }
 
-// GetWaiting returns the Waiting field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetWaiting returns the Waiting field value if set, zero value otherwise.
 func (o *ServerChartDto) GetWaiting() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Waiting) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -481,7 +469,6 @@ func (o *ServerChartDto) GetWaiting() []ServerCommonRecordDto {
 
 // GetWaitingOk returns a tuple with the Waiting field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetWaitingOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Waiting) {
 		return nil, false
@@ -503,9 +490,9 @@ func (o *ServerChartDto) SetWaiting(v []ServerCommonRecordDto) {
 	o.Waiting = v
 }
 
-// GetUpdating returns the Updating field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUpdating returns the Updating field value if set, zero value otherwise.
 func (o *ServerChartDto) GetUpdating() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Updating) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -514,7 +501,6 @@ func (o *ServerChartDto) GetUpdating() []ServerCommonRecordDto {
 
 // GetUpdatingOk returns a tuple with the Updating field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetUpdatingOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Updating) {
 		return nil, false
@@ -536,9 +522,9 @@ func (o *ServerChartDto) SetUpdating(v []ServerCommonRecordDto) {
 	o.Updating = v
 }
 
-// GetDeleting returns the Deleting field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDeleting returns the Deleting field value if set, zero value otherwise.
 func (o *ServerChartDto) GetDeleting() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Deleting) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -547,7 +533,6 @@ func (o *ServerChartDto) GetDeleting() []ServerCommonRecordDto {
 
 // GetDeletingOk returns a tuple with the Deleting field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetDeletingOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Deleting) {
 		return nil, false
@@ -569,9 +554,9 @@ func (o *ServerChartDto) SetDeleting(v []ServerCommonRecordDto) {
 	o.Deleting = v
 }
 
-// GetPurging returns the Purging field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPurging returns the Purging field value if set, zero value otherwise.
 func (o *ServerChartDto) GetPurging() []ServerCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Purging) {
 		var ret []ServerCommonRecordDto
 		return ret
 	}
@@ -580,7 +565,6 @@ func (o *ServerChartDto) GetPurging() []ServerCommonRecordDto {
 
 // GetPurgingOk returns a tuple with the Purging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetPurgingOk() ([]ServerCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Purging) {
 		return nil, false
@@ -1178,9 +1162,9 @@ func (o *ServerChartDto) SetTotalZededaCount(v int32) {
 	o.TotalZededaCount = &v
 }
 
-// GetUsedResources returns the UsedResources field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUsedResources returns the UsedResources field value if set, zero value otherwise.
 func (o *ServerChartDto) GetUsedResources() []UserResourceChartDto {
-	if o == nil {
+	if o == nil || IsNil(o.UsedResources) {
 		var ret []UserResourceChartDto
 		return ret
 	}
@@ -1189,7 +1173,6 @@ func (o *ServerChartDto) GetUsedResources() []UserResourceChartDto {
 
 // GetUsedResourcesOk returns a tuple with the UsedResources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerChartDto) GetUsedResourcesOk() ([]UserResourceChartDto, bool) {
 	if o == nil || IsNil(o.UsedResources) {
 		return nil, false
@@ -1221,52 +1204,52 @@ func (o ServerChartDto) MarshalJSON() ([]byte, error) {
 
 func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Aws != nil {
+	if !IsNil(o.Aws) {
 		toSerialize["aws"] = o.Aws
 	}
-	if o.Azure != nil {
+	if !IsNil(o.Azure) {
 		toSerialize["azure"] = o.Azure
 	}
-	if o.Openstack != nil {
+	if !IsNil(o.Openstack) {
 		toSerialize["openstack"] = o.Openstack
 	}
-	if o.Google != nil {
+	if !IsNil(o.Google) {
 		toSerialize["google"] = o.Google
 	}
-	if o.Tanzu != nil {
+	if !IsNil(o.Tanzu) {
 		toSerialize["tanzu"] = o.Tanzu
 	}
-	if o.Proxmox != nil {
+	if !IsNil(o.Proxmox) {
 		toSerialize["proxmox"] = o.Proxmox
 	}
-	if o.Vsphere != nil {
+	if !IsNil(o.Vsphere) {
 		toSerialize["vsphere"] = o.Vsphere
 	}
-	if o.Zadara != nil {
+	if !IsNil(o.Zadara) {
 		toSerialize["zadara"] = o.Zadara
 	}
-	if o.Openshift != nil {
+	if !IsNil(o.Openshift) {
 		toSerialize["openshift"] = o.Openshift
 	}
-	if o.Zededa != nil {
+	if !IsNil(o.Zededa) {
 		toSerialize["zededa"] = o.Zededa
 	}
-	if o.Failed != nil {
+	if !IsNil(o.Failed) {
 		toSerialize["failed"] = o.Failed
 	}
-	if o.Succeeded != nil {
+	if !IsNil(o.Succeeded) {
 		toSerialize["succeeded"] = o.Succeeded
 	}
-	if o.Waiting != nil {
+	if !IsNil(o.Waiting) {
 		toSerialize["waiting"] = o.Waiting
 	}
-	if o.Updating != nil {
+	if !IsNil(o.Updating) {
 		toSerialize["updating"] = o.Updating
 	}
-	if o.Deleting != nil {
+	if !IsNil(o.Deleting) {
 		toSerialize["deleting"] = o.Deleting
 	}
-	if o.Purging != nil {
+	if !IsNil(o.Purging) {
 		toSerialize["purging"] = o.Purging
 	}
 	if !IsNil(o.TotalCount) {
@@ -1323,7 +1306,7 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TotalZededaCount) {
 		toSerialize["totalZededaCount"] = o.TotalZededaCount
 	}
-	if o.UsedResources != nil {
+	if !IsNil(o.UsedResources) {
 		toSerialize["usedResources"] = o.UsedResources
 	}
 	return toSerialize, nil

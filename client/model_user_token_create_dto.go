@@ -20,8 +20,8 @@ var _ MappedNullable = &UserTokenCreateDto{}
 
 // UserTokenCreateDto struct for UserTokenCreateDto
 type UserTokenCreateDto struct {
-	AccessKey NullableString `json:"accessKey,omitempty"`
-	SecretKey NullableString `json:"secretKey,omitempty"`
+	AccessKey *string `json:"accessKey,omitempty"`
+	SecretKey *string `json:"secretKey,omitempty"`
 }
 
 // NewUserTokenCreateDto instantiates a new UserTokenCreateDto object
@@ -41,88 +41,68 @@ func NewUserTokenCreateDtoWithDefaults() *UserTokenCreateDto {
 	return &this
 }
 
-// GetAccessKey returns the AccessKey field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAccessKey returns the AccessKey field value if set, zero value otherwise.
 func (o *UserTokenCreateDto) GetAccessKey() string {
-	if o == nil || IsNil(o.AccessKey.Get()) {
+	if o == nil || IsNil(o.AccessKey) {
 		var ret string
 		return ret
 	}
-	return *o.AccessKey.Get()
+	return *o.AccessKey
 }
 
 // GetAccessKeyOk returns a tuple with the AccessKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserTokenCreateDto) GetAccessKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AccessKey) {
 		return nil, false
 	}
-	return o.AccessKey.Get(), o.AccessKey.IsSet()
+	return o.AccessKey, true
 }
 
 // HasAccessKey returns a boolean if a field has been set.
 func (o *UserTokenCreateDto) HasAccessKey() bool {
-	if o != nil && o.AccessKey.IsSet() {
+	if o != nil && !IsNil(o.AccessKey) {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessKey gets a reference to the given NullableString and assigns it to the AccessKey field.
+// SetAccessKey gets a reference to the given string and assigns it to the AccessKey field.
 func (o *UserTokenCreateDto) SetAccessKey(v string) {
-	o.AccessKey.Set(&v)
-}
-// SetAccessKeyNil sets the value for AccessKey to be an explicit nil
-func (o *UserTokenCreateDto) SetAccessKeyNil() {
-	o.AccessKey.Set(nil)
+	o.AccessKey = &v
 }
 
-// UnsetAccessKey ensures that no value is present for AccessKey, not even an explicit nil
-func (o *UserTokenCreateDto) UnsetAccessKey() {
-	o.AccessKey.Unset()
-}
-
-// GetSecretKey returns the SecretKey field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSecretKey returns the SecretKey field value if set, zero value otherwise.
 func (o *UserTokenCreateDto) GetSecretKey() string {
-	if o == nil || IsNil(o.SecretKey.Get()) {
+	if o == nil || IsNil(o.SecretKey) {
 		var ret string
 		return ret
 	}
-	return *o.SecretKey.Get()
+	return *o.SecretKey
 }
 
 // GetSecretKeyOk returns a tuple with the SecretKey field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserTokenCreateDto) GetSecretKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SecretKey) {
 		return nil, false
 	}
-	return o.SecretKey.Get(), o.SecretKey.IsSet()
+	return o.SecretKey, true
 }
 
 // HasSecretKey returns a boolean if a field has been set.
 func (o *UserTokenCreateDto) HasSecretKey() bool {
-	if o != nil && o.SecretKey.IsSet() {
+	if o != nil && !IsNil(o.SecretKey) {
 		return true
 	}
 
 	return false
 }
 
-// SetSecretKey gets a reference to the given NullableString and assigns it to the SecretKey field.
+// SetSecretKey gets a reference to the given string and assigns it to the SecretKey field.
 func (o *UserTokenCreateDto) SetSecretKey(v string) {
-	o.SecretKey.Set(&v)
-}
-// SetSecretKeyNil sets the value for SecretKey to be an explicit nil
-func (o *UserTokenCreateDto) SetSecretKeyNil() {
-	o.SecretKey.Set(nil)
-}
-
-// UnsetSecretKey ensures that no value is present for SecretKey, not even an explicit nil
-func (o *UserTokenCreateDto) UnsetSecretKey() {
-	o.SecretKey.Unset()
+	o.SecretKey = &v
 }
 
 func (o UserTokenCreateDto) MarshalJSON() ([]byte, error) {
@@ -135,11 +115,11 @@ func (o UserTokenCreateDto) MarshalJSON() ([]byte, error) {
 
 func (o UserTokenCreateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.AccessKey.IsSet() {
-		toSerialize["accessKey"] = o.AccessKey.Get()
+	if !IsNil(o.AccessKey) {
+		toSerialize["accessKey"] = o.AccessKey
 	}
-	if o.SecretKey.IsSet() {
-		toSerialize["secretKey"] = o.SecretKey.Get()
+	if !IsNil(o.SecretKey) {
+		toSerialize["secretKey"] = o.SecretKey
 	}
 	return toSerialize, nil
 }

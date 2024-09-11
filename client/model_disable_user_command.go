@@ -20,7 +20,7 @@ var _ MappedNullable = &DisableUserCommand{}
 
 // DisableUserCommand struct for DisableUserCommand
 type DisableUserCommand struct {
-	Id NullableString `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Disable *bool `json:"disable,omitempty"`
 }
 
@@ -41,46 +41,36 @@ func NewDisableUserCommandWithDefaults() *DisableUserCommand {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *DisableUserCommand) GetId() string {
-	if o == nil || IsNil(o.Id.Get()) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-	return *o.Id.Get()
+	return *o.Id
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DisableUserCommand) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.Id.Get(), o.Id.IsSet()
+	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *DisableUserCommand) HasId() bool {
-	if o != nil && o.Id.IsSet() {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given NullableString and assigns it to the Id field.
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *DisableUserCommand) SetId(v string) {
-	o.Id.Set(&v)
-}
-// SetIdNil sets the value for Id to be an explicit nil
-func (o *DisableUserCommand) SetIdNil() {
-	o.Id.Set(nil)
-}
-
-// UnsetId ensures that no value is present for Id, not even an explicit nil
-func (o *DisableUserCommand) UnsetId() {
-	o.Id.Unset()
+	o.Id = &v
 }
 
 // GetDisable returns the Disable field value if set, zero value otherwise.
@@ -125,8 +115,8 @@ func (o DisableUserCommand) MarshalJSON() ([]byte, error) {
 
 func (o DisableUserCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id.IsSet() {
-		toSerialize["id"] = o.Id.Get()
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.Disable) {
 		toSerialize["disable"] = o.Disable

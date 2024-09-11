@@ -20,8 +20,8 @@ var _ MappedNullable = &GetCatalogAppValueAutocompleteCommand{}
 
 // GetCatalogAppValueAutocompleteCommand struct for GetCatalogAppValueAutocompleteCommand
 type GetCatalogAppValueAutocompleteCommand struct {
-	PackageId NullableString `json:"packageId,omitempty"`
-	Version NullableString `json:"version,omitempty"`
+	PackageId *string `json:"packageId,omitempty"`
+	Version *string `json:"version,omitempty"`
 	CatalogAppId NullableInt32 `json:"catalogAppId,omitempty"`
 	IsQuestion NullableBool `json:"isQuestion,omitempty"`
 }
@@ -43,88 +43,68 @@ func NewGetCatalogAppValueAutocompleteCommandWithDefaults() *GetCatalogAppValueA
 	return &this
 }
 
-// GetPackageId returns the PackageId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPackageId returns the PackageId field value if set, zero value otherwise.
 func (o *GetCatalogAppValueAutocompleteCommand) GetPackageId() string {
-	if o == nil || IsNil(o.PackageId.Get()) {
+	if o == nil || IsNil(o.PackageId) {
 		var ret string
 		return ret
 	}
-	return *o.PackageId.Get()
+	return *o.PackageId
 }
 
 // GetPackageIdOk returns a tuple with the PackageId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetCatalogAppValueAutocompleteCommand) GetPackageIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PackageId) {
 		return nil, false
 	}
-	return o.PackageId.Get(), o.PackageId.IsSet()
+	return o.PackageId, true
 }
 
 // HasPackageId returns a boolean if a field has been set.
 func (o *GetCatalogAppValueAutocompleteCommand) HasPackageId() bool {
-	if o != nil && o.PackageId.IsSet() {
+	if o != nil && !IsNil(o.PackageId) {
 		return true
 	}
 
 	return false
 }
 
-// SetPackageId gets a reference to the given NullableString and assigns it to the PackageId field.
+// SetPackageId gets a reference to the given string and assigns it to the PackageId field.
 func (o *GetCatalogAppValueAutocompleteCommand) SetPackageId(v string) {
-	o.PackageId.Set(&v)
-}
-// SetPackageIdNil sets the value for PackageId to be an explicit nil
-func (o *GetCatalogAppValueAutocompleteCommand) SetPackageIdNil() {
-	o.PackageId.Set(nil)
+	o.PackageId = &v
 }
 
-// UnsetPackageId ensures that no value is present for PackageId, not even an explicit nil
-func (o *GetCatalogAppValueAutocompleteCommand) UnsetPackageId() {
-	o.PackageId.Unset()
-}
-
-// GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *GetCatalogAppValueAutocompleteCommand) GetVersion() string {
-	if o == nil || IsNil(o.Version.Get()) {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-	return *o.Version.Get()
+	return *o.Version
 }
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetCatalogAppValueAutocompleteCommand) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return o.Version.Get(), o.Version.IsSet()
+	return o.Version, true
 }
 
 // HasVersion returns a boolean if a field has been set.
 func (o *GetCatalogAppValueAutocompleteCommand) HasVersion() bool {
-	if o != nil && o.Version.IsSet() {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
 	return false
 }
 
-// SetVersion gets a reference to the given NullableString and assigns it to the Version field.
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *GetCatalogAppValueAutocompleteCommand) SetVersion(v string) {
-	o.Version.Set(&v)
-}
-// SetVersionNil sets the value for Version to be an explicit nil
-func (o *GetCatalogAppValueAutocompleteCommand) SetVersionNil() {
-	o.Version.Set(nil)
-}
-
-// UnsetVersion ensures that no value is present for Version, not even an explicit nil
-func (o *GetCatalogAppValueAutocompleteCommand) UnsetVersion() {
-	o.Version.Unset()
+	o.Version = &v
 }
 
 // GetCatalogAppId returns the CatalogAppId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -221,11 +201,11 @@ func (o GetCatalogAppValueAutocompleteCommand) MarshalJSON() ([]byte, error) {
 
 func (o GetCatalogAppValueAutocompleteCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.PackageId.IsSet() {
-		toSerialize["packageId"] = o.PackageId.Get()
+	if !IsNil(o.PackageId) {
+		toSerialize["packageId"] = o.PackageId
 	}
-	if o.Version.IsSet() {
-		toSerialize["version"] = o.Version.Get()
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	if o.CatalogAppId.IsSet() {
 		toSerialize["catalogAppId"] = o.CatalogAppId.Get()

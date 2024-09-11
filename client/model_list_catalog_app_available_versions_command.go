@@ -20,9 +20,9 @@ var _ MappedNullable = &ListCatalogAppAvailableVersionsCommand{}
 
 // ListCatalogAppAvailableVersionsCommand struct for ListCatalogAppAvailableVersionsCommand
 type ListCatalogAppAvailableVersionsCommand struct {
-	RepoName NullableString `json:"repoName,omitempty"`
-	PackageName NullableString `json:"packageName,omitempty"`
-	CurrentVersion NullableString `json:"currentVersion,omitempty"`
+	RepoName *string `json:"repoName,omitempty"`
+	PackageName *string `json:"packageName,omitempty"`
+	CurrentVersion *string `json:"currentVersion,omitempty"`
 }
 
 // NewListCatalogAppAvailableVersionsCommand instantiates a new ListCatalogAppAvailableVersionsCommand object
@@ -42,130 +42,100 @@ func NewListCatalogAppAvailableVersionsCommandWithDefaults() *ListCatalogAppAvai
 	return &this
 }
 
-// GetRepoName returns the RepoName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRepoName returns the RepoName field value if set, zero value otherwise.
 func (o *ListCatalogAppAvailableVersionsCommand) GetRepoName() string {
-	if o == nil || IsNil(o.RepoName.Get()) {
+	if o == nil || IsNil(o.RepoName) {
 		var ret string
 		return ret
 	}
-	return *o.RepoName.Get()
+	return *o.RepoName
 }
 
 // GetRepoNameOk returns a tuple with the RepoName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListCatalogAppAvailableVersionsCommand) GetRepoNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RepoName) {
 		return nil, false
 	}
-	return o.RepoName.Get(), o.RepoName.IsSet()
+	return o.RepoName, true
 }
 
 // HasRepoName returns a boolean if a field has been set.
 func (o *ListCatalogAppAvailableVersionsCommand) HasRepoName() bool {
-	if o != nil && o.RepoName.IsSet() {
+	if o != nil && !IsNil(o.RepoName) {
 		return true
 	}
 
 	return false
 }
 
-// SetRepoName gets a reference to the given NullableString and assigns it to the RepoName field.
+// SetRepoName gets a reference to the given string and assigns it to the RepoName field.
 func (o *ListCatalogAppAvailableVersionsCommand) SetRepoName(v string) {
-	o.RepoName.Set(&v)
-}
-// SetRepoNameNil sets the value for RepoName to be an explicit nil
-func (o *ListCatalogAppAvailableVersionsCommand) SetRepoNameNil() {
-	o.RepoName.Set(nil)
+	o.RepoName = &v
 }
 
-// UnsetRepoName ensures that no value is present for RepoName, not even an explicit nil
-func (o *ListCatalogAppAvailableVersionsCommand) UnsetRepoName() {
-	o.RepoName.Unset()
-}
-
-// GetPackageName returns the PackageName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPackageName returns the PackageName field value if set, zero value otherwise.
 func (o *ListCatalogAppAvailableVersionsCommand) GetPackageName() string {
-	if o == nil || IsNil(o.PackageName.Get()) {
+	if o == nil || IsNil(o.PackageName) {
 		var ret string
 		return ret
 	}
-	return *o.PackageName.Get()
+	return *o.PackageName
 }
 
 // GetPackageNameOk returns a tuple with the PackageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListCatalogAppAvailableVersionsCommand) GetPackageNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PackageName) {
 		return nil, false
 	}
-	return o.PackageName.Get(), o.PackageName.IsSet()
+	return o.PackageName, true
 }
 
 // HasPackageName returns a boolean if a field has been set.
 func (o *ListCatalogAppAvailableVersionsCommand) HasPackageName() bool {
-	if o != nil && o.PackageName.IsSet() {
+	if o != nil && !IsNil(o.PackageName) {
 		return true
 	}
 
 	return false
 }
 
-// SetPackageName gets a reference to the given NullableString and assigns it to the PackageName field.
+// SetPackageName gets a reference to the given string and assigns it to the PackageName field.
 func (o *ListCatalogAppAvailableVersionsCommand) SetPackageName(v string) {
-	o.PackageName.Set(&v)
-}
-// SetPackageNameNil sets the value for PackageName to be an explicit nil
-func (o *ListCatalogAppAvailableVersionsCommand) SetPackageNameNil() {
-	o.PackageName.Set(nil)
+	o.PackageName = &v
 }
 
-// UnsetPackageName ensures that no value is present for PackageName, not even an explicit nil
-func (o *ListCatalogAppAvailableVersionsCommand) UnsetPackageName() {
-	o.PackageName.Unset()
-}
-
-// GetCurrentVersion returns the CurrentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCurrentVersion returns the CurrentVersion field value if set, zero value otherwise.
 func (o *ListCatalogAppAvailableVersionsCommand) GetCurrentVersion() string {
-	if o == nil || IsNil(o.CurrentVersion.Get()) {
+	if o == nil || IsNil(o.CurrentVersion) {
 		var ret string
 		return ret
 	}
-	return *o.CurrentVersion.Get()
+	return *o.CurrentVersion
 }
 
 // GetCurrentVersionOk returns a tuple with the CurrentVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListCatalogAppAvailableVersionsCommand) GetCurrentVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CurrentVersion) {
 		return nil, false
 	}
-	return o.CurrentVersion.Get(), o.CurrentVersion.IsSet()
+	return o.CurrentVersion, true
 }
 
 // HasCurrentVersion returns a boolean if a field has been set.
 func (o *ListCatalogAppAvailableVersionsCommand) HasCurrentVersion() bool {
-	if o != nil && o.CurrentVersion.IsSet() {
+	if o != nil && !IsNil(o.CurrentVersion) {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrentVersion gets a reference to the given NullableString and assigns it to the CurrentVersion field.
+// SetCurrentVersion gets a reference to the given string and assigns it to the CurrentVersion field.
 func (o *ListCatalogAppAvailableVersionsCommand) SetCurrentVersion(v string) {
-	o.CurrentVersion.Set(&v)
-}
-// SetCurrentVersionNil sets the value for CurrentVersion to be an explicit nil
-func (o *ListCatalogAppAvailableVersionsCommand) SetCurrentVersionNil() {
-	o.CurrentVersion.Set(nil)
-}
-
-// UnsetCurrentVersion ensures that no value is present for CurrentVersion, not even an explicit nil
-func (o *ListCatalogAppAvailableVersionsCommand) UnsetCurrentVersion() {
-	o.CurrentVersion.Unset()
+	o.CurrentVersion = &v
 }
 
 func (o ListCatalogAppAvailableVersionsCommand) MarshalJSON() ([]byte, error) {
@@ -178,14 +148,14 @@ func (o ListCatalogAppAvailableVersionsCommand) MarshalJSON() ([]byte, error) {
 
 func (o ListCatalogAppAvailableVersionsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.RepoName.IsSet() {
-		toSerialize["repoName"] = o.RepoName.Get()
+	if !IsNil(o.RepoName) {
+		toSerialize["repoName"] = o.RepoName
 	}
-	if o.PackageName.IsSet() {
-		toSerialize["packageName"] = o.PackageName.Get()
+	if !IsNil(o.PackageName) {
+		toSerialize["packageName"] = o.PackageName
 	}
-	if o.CurrentVersion.IsSet() {
-		toSerialize["currentVersion"] = o.CurrentVersion.Get()
+	if !IsNil(o.CurrentVersion) {
+		toSerialize["currentVersion"] = o.CurrentVersion
 	}
 	return toSerialize, nil
 }

@@ -20,9 +20,9 @@ var _ MappedNullable = &HelmCredentialCommand{}
 
 // HelmCredentialCommand struct for HelmCredentialCommand
 type HelmCredentialCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
 }
 
 // NewHelmCredentialCommand instantiates a new HelmCredentialCommand object
@@ -42,130 +42,100 @@ func NewHelmCredentialCommandWithDefaults() *HelmCredentialCommand {
 	return &this
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *HelmCredentialCommand) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmCredentialCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *HelmCredentialCommand) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *HelmCredentialCommand) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *HelmCredentialCommand) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = &v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *HelmCredentialCommand) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *HelmCredentialCommand) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-	return *o.Username.Get()
+	return *o.Username
 }
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmCredentialCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return o.Username.Get(), o.Username.IsSet()
+	return o.Username, true
 }
 
 // HasUsername returns a boolean if a field has been set.
 func (o *HelmCredentialCommand) HasUsername() bool {
-	if o != nil && o.Username.IsSet() {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
 	return false
 }
 
-// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *HelmCredentialCommand) SetUsername(v string) {
-	o.Username.Set(&v)
-}
-// SetUsernameNil sets the value for Username to be an explicit nil
-func (o *HelmCredentialCommand) SetUsernameNil() {
-	o.Username.Set(nil)
+	o.Username = &v
 }
 
-// UnsetUsername ensures that no value is present for Username, not even an explicit nil
-func (o *HelmCredentialCommand) UnsetUsername() {
-	o.Username.Unset()
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *HelmCredentialCommand) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-	return *o.Password.Get()
+	return *o.Password
 }
 
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmCredentialCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return o.Password.Get(), o.Password.IsSet()
+	return o.Password, true
 }
 
 // HasPassword returns a boolean if a field has been set.
 func (o *HelmCredentialCommand) HasPassword() bool {
-	if o != nil && o.Password.IsSet() {
+	if o != nil && !IsNil(o.Password) {
 		return true
 	}
 
 	return false
 }
 
-// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *HelmCredentialCommand) SetPassword(v string) {
-	o.Password.Set(&v)
-}
-// SetPasswordNil sets the value for Password to be an explicit nil
-func (o *HelmCredentialCommand) SetPasswordNil() {
-	o.Password.Set(nil)
-}
-
-// UnsetPassword ensures that no value is present for Password, not even an explicit nil
-func (o *HelmCredentialCommand) UnsetPassword() {
-	o.Password.Unset()
+	o.Password = &v
 }
 
 func (o HelmCredentialCommand) MarshalJSON() ([]byte, error) {
@@ -178,14 +148,14 @@ func (o HelmCredentialCommand) MarshalJSON() ([]byte, error) {
 
 func (o HelmCredentialCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
-	if o.Username.IsSet() {
-		toSerialize["username"] = o.Username.Get()
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
 	}
-	if o.Password.IsSet() {
-		toSerialize["password"] = o.Password.Get()
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
 	}
 	return toSerialize, nil
 }

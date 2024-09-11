@@ -368,17 +368,17 @@ func (a *SlackAPIService) SlackDeleteMultipleExecute(r ApiSlackDeleteMultipleReq
 type ApiSlackDropdownRequest struct {
 	ctx context.Context
 	ApiService *SlackAPIService
-	organizationId *int32
 	search *string
-}
-
-func (r ApiSlackDropdownRequest) OrganizationId(organizationId int32) ApiSlackDropdownRequest {
-	r.organizationId = &organizationId
-	return r
+	organizationId *int32
 }
 
 func (r ApiSlackDropdownRequest) Search(search string) ApiSlackDropdownRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiSlackDropdownRequest) OrganizationId(organizationId int32) ApiSlackDropdownRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -419,13 +419,14 @@ func (a *SlackAPIService) SlackDropdownExecute(r ApiSlackDropdownRequest) ([]Com
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -551,28 +552,13 @@ func (a *SlackAPIService) SlackDropdownExecute(r ApiSlackDropdownRequest) ([]Com
 type ApiSlackListRequest struct {
 	ctx context.Context
 	ApiService *SlackAPIService
-	organizationId *int32
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
+	organizationId *int32
+	limit *int32
+	offset *int32
 	id *int32
-}
-
-func (r ApiSlackListRequest) OrganizationId(organizationId int32) ApiSlackListRequest {
-	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiSlackListRequest) Limit(limit int32) ApiSlackListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiSlackListRequest) Offset(offset int32) ApiSlackListRequest {
-	r.offset = &offset
-	return r
 }
 
 func (r ApiSlackListRequest) SortBy(sortBy string) ApiSlackListRequest {
@@ -587,6 +573,21 @@ func (r ApiSlackListRequest) SortDirection(sortDirection string) ApiSlackListReq
 
 func (r ApiSlackListRequest) Search(search string) ApiSlackListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiSlackListRequest) OrganizationId(organizationId int32) ApiSlackListRequest {
+	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiSlackListRequest) Limit(limit int32) ApiSlackListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiSlackListRequest) Offset(offset int32) ApiSlackListRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -632,6 +633,15 @@ func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigu
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
@@ -642,15 +652,9 @@ func (a *SlackAPIService) SlackListExecute(r ApiSlackListRequest) (*SlackConfigu
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
@@ -826,6 +830,9 @@ func (a *SlackAPIService) SlackUpdateExecute(r ApiSlackUpdateRequest) (*http.Res
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateSlackConfigurationDto == nil {
+		return nil, reportError("updateSlackConfigurationDto is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

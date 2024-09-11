@@ -21,7 +21,7 @@ var _ MappedNullable = &InfraBillingSummaryDto{}
 // InfraBillingSummaryDto struct for InfraBillingSummaryDto
 type InfraBillingSummaryDto struct {
 	InfraProductId *int32 `json:"infraProductId,omitempty"`
-	InfraProductName NullableString `json:"infraProductName,omitempty"`
+	InfraProductName *string `json:"infraProductName,omitempty"`
 	Intervals []DateInterval `json:"intervals,omitempty"`
 	TotalPrice *float64 `json:"totalPrice,omitempty"`
 }
@@ -75,51 +75,41 @@ func (o *InfraBillingSummaryDto) SetInfraProductId(v int32) {
 	o.InfraProductId = &v
 }
 
-// GetInfraProductName returns the InfraProductName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInfraProductName returns the InfraProductName field value if set, zero value otherwise.
 func (o *InfraBillingSummaryDto) GetInfraProductName() string {
-	if o == nil || IsNil(o.InfraProductName.Get()) {
+	if o == nil || IsNil(o.InfraProductName) {
 		var ret string
 		return ret
 	}
-	return *o.InfraProductName.Get()
+	return *o.InfraProductName
 }
 
 // GetInfraProductNameOk returns a tuple with the InfraProductName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InfraBillingSummaryDto) GetInfraProductNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InfraProductName) {
 		return nil, false
 	}
-	return o.InfraProductName.Get(), o.InfraProductName.IsSet()
+	return o.InfraProductName, true
 }
 
 // HasInfraProductName returns a boolean if a field has been set.
 func (o *InfraBillingSummaryDto) HasInfraProductName() bool {
-	if o != nil && o.InfraProductName.IsSet() {
+	if o != nil && !IsNil(o.InfraProductName) {
 		return true
 	}
 
 	return false
 }
 
-// SetInfraProductName gets a reference to the given NullableString and assigns it to the InfraProductName field.
+// SetInfraProductName gets a reference to the given string and assigns it to the InfraProductName field.
 func (o *InfraBillingSummaryDto) SetInfraProductName(v string) {
-	o.InfraProductName.Set(&v)
-}
-// SetInfraProductNameNil sets the value for InfraProductName to be an explicit nil
-func (o *InfraBillingSummaryDto) SetInfraProductNameNil() {
-	o.InfraProductName.Set(nil)
+	o.InfraProductName = &v
 }
 
-// UnsetInfraProductName ensures that no value is present for InfraProductName, not even an explicit nil
-func (o *InfraBillingSummaryDto) UnsetInfraProductName() {
-	o.InfraProductName.Unset()
-}
-
-// GetIntervals returns the Intervals field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIntervals returns the Intervals field value if set, zero value otherwise.
 func (o *InfraBillingSummaryDto) GetIntervals() []DateInterval {
-	if o == nil {
+	if o == nil || IsNil(o.Intervals) {
 		var ret []DateInterval
 		return ret
 	}
@@ -128,7 +118,6 @@ func (o *InfraBillingSummaryDto) GetIntervals() []DateInterval {
 
 // GetIntervalsOk returns a tuple with the Intervals field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InfraBillingSummaryDto) GetIntervalsOk() ([]DateInterval, bool) {
 	if o == nil || IsNil(o.Intervals) {
 		return nil, false
@@ -195,10 +184,10 @@ func (o InfraBillingSummaryDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InfraProductId) {
 		toSerialize["infraProductId"] = o.InfraProductId
 	}
-	if o.InfraProductName.IsSet() {
-		toSerialize["infraProductName"] = o.InfraProductName.Get()
+	if !IsNil(o.InfraProductName) {
+		toSerialize["infraProductName"] = o.InfraProductName
 	}
-	if o.Intervals != nil {
+	if !IsNil(o.Intervals) {
 		toSerialize["intervals"] = o.Intervals
 	}
 	if !IsNil(o.TotalPrice) {

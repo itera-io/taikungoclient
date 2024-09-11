@@ -21,10 +21,10 @@ var _ MappedNullable = &PrometheusDashboardDto{}
 // PrometheusDashboardDto struct for PrometheusDashboardDto
 type PrometheusDashboardDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	ExpressionDecoded NullableString `json:"expressionDecoded,omitempty"`
-	ExpressionEncoded NullableString `json:"expressionEncoded,omitempty"`
-	Description NullableString `json:"description,omitempty"`
+	Name *string `json:"name,omitempty"`
+	ExpressionDecoded *string `json:"expressionDecoded,omitempty"`
+	ExpressionEncoded *string `json:"expressionEncoded,omitempty"`
+	Description *string `json:"description,omitempty"`
 	IsReadonly *bool `json:"isReadonly,omitempty"`
 }
 
@@ -77,172 +77,132 @@ func (o *PrometheusDashboardDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *PrometheusDashboardDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusDashboardDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *PrometheusDashboardDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PrometheusDashboardDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *PrometheusDashboardDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *PrometheusDashboardDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetExpressionDecoded returns the ExpressionDecoded field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpressionDecoded returns the ExpressionDecoded field value if set, zero value otherwise.
 func (o *PrometheusDashboardDto) GetExpressionDecoded() string {
-	if o == nil || IsNil(o.ExpressionDecoded.Get()) {
+	if o == nil || IsNil(o.ExpressionDecoded) {
 		var ret string
 		return ret
 	}
-	return *o.ExpressionDecoded.Get()
+	return *o.ExpressionDecoded
 }
 
 // GetExpressionDecodedOk returns a tuple with the ExpressionDecoded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusDashboardDto) GetExpressionDecodedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExpressionDecoded) {
 		return nil, false
 	}
-	return o.ExpressionDecoded.Get(), o.ExpressionDecoded.IsSet()
+	return o.ExpressionDecoded, true
 }
 
 // HasExpressionDecoded returns a boolean if a field has been set.
 func (o *PrometheusDashboardDto) HasExpressionDecoded() bool {
-	if o != nil && o.ExpressionDecoded.IsSet() {
+	if o != nil && !IsNil(o.ExpressionDecoded) {
 		return true
 	}
 
 	return false
 }
 
-// SetExpressionDecoded gets a reference to the given NullableString and assigns it to the ExpressionDecoded field.
+// SetExpressionDecoded gets a reference to the given string and assigns it to the ExpressionDecoded field.
 func (o *PrometheusDashboardDto) SetExpressionDecoded(v string) {
-	o.ExpressionDecoded.Set(&v)
-}
-// SetExpressionDecodedNil sets the value for ExpressionDecoded to be an explicit nil
-func (o *PrometheusDashboardDto) SetExpressionDecodedNil() {
-	o.ExpressionDecoded.Set(nil)
+	o.ExpressionDecoded = &v
 }
 
-// UnsetExpressionDecoded ensures that no value is present for ExpressionDecoded, not even an explicit nil
-func (o *PrometheusDashboardDto) UnsetExpressionDecoded() {
-	o.ExpressionDecoded.Unset()
-}
-
-// GetExpressionEncoded returns the ExpressionEncoded field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpressionEncoded returns the ExpressionEncoded field value if set, zero value otherwise.
 func (o *PrometheusDashboardDto) GetExpressionEncoded() string {
-	if o == nil || IsNil(o.ExpressionEncoded.Get()) {
+	if o == nil || IsNil(o.ExpressionEncoded) {
 		var ret string
 		return ret
 	}
-	return *o.ExpressionEncoded.Get()
+	return *o.ExpressionEncoded
 }
 
 // GetExpressionEncodedOk returns a tuple with the ExpressionEncoded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusDashboardDto) GetExpressionEncodedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExpressionEncoded) {
 		return nil, false
 	}
-	return o.ExpressionEncoded.Get(), o.ExpressionEncoded.IsSet()
+	return o.ExpressionEncoded, true
 }
 
 // HasExpressionEncoded returns a boolean if a field has been set.
 func (o *PrometheusDashboardDto) HasExpressionEncoded() bool {
-	if o != nil && o.ExpressionEncoded.IsSet() {
+	if o != nil && !IsNil(o.ExpressionEncoded) {
 		return true
 	}
 
 	return false
 }
 
-// SetExpressionEncoded gets a reference to the given NullableString and assigns it to the ExpressionEncoded field.
+// SetExpressionEncoded gets a reference to the given string and assigns it to the ExpressionEncoded field.
 func (o *PrometheusDashboardDto) SetExpressionEncoded(v string) {
-	o.ExpressionEncoded.Set(&v)
-}
-// SetExpressionEncodedNil sets the value for ExpressionEncoded to be an explicit nil
-func (o *PrometheusDashboardDto) SetExpressionEncodedNil() {
-	o.ExpressionEncoded.Set(nil)
+	o.ExpressionEncoded = &v
 }
 
-// UnsetExpressionEncoded ensures that no value is present for ExpressionEncoded, not even an explicit nil
-func (o *PrometheusDashboardDto) UnsetExpressionEncoded() {
-	o.ExpressionEncoded.Unset()
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *PrometheusDashboardDto) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusDashboardDto) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *PrometheusDashboardDto) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *PrometheusDashboardDto) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *PrometheusDashboardDto) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *PrometheusDashboardDto) UnsetDescription() {
-	o.Description.Unset()
+	o.Description = &v
 }
 
 // GetIsReadonly returns the IsReadonly field value if set, zero value otherwise.
@@ -290,17 +250,17 @@ func (o PrometheusDashboardDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.ExpressionDecoded.IsSet() {
-		toSerialize["expressionDecoded"] = o.ExpressionDecoded.Get()
+	if !IsNil(o.ExpressionDecoded) {
+		toSerialize["expressionDecoded"] = o.ExpressionDecoded
 	}
-	if o.ExpressionEncoded.IsSet() {
-		toSerialize["expressionEncoded"] = o.ExpressionEncoded.Get()
+	if !IsNil(o.ExpressionEncoded) {
+		toSerialize["expressionEncoded"] = o.ExpressionEncoded
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	if !IsNil(o.IsReadonly) {
 		toSerialize["isReadonly"] = o.IsReadonly

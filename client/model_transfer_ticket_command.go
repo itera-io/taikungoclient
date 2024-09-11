@@ -20,8 +20,8 @@ var _ MappedNullable = &TransferTicketCommand{}
 
 // TransferTicketCommand struct for TransferTicketCommand
 type TransferTicketCommand struct {
-	TicketId NullableString `json:"ticketId,omitempty"`
-	UserId NullableString `json:"userId,omitempty"`
+	TicketId *string `json:"ticketId,omitempty"`
+	UserId *string `json:"userId,omitempty"`
 }
 
 // NewTransferTicketCommand instantiates a new TransferTicketCommand object
@@ -41,88 +41,68 @@ func NewTransferTicketCommandWithDefaults() *TransferTicketCommand {
 	return &this
 }
 
-// GetTicketId returns the TicketId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTicketId returns the TicketId field value if set, zero value otherwise.
 func (o *TransferTicketCommand) GetTicketId() string {
-	if o == nil || IsNil(o.TicketId.Get()) {
+	if o == nil || IsNil(o.TicketId) {
 		var ret string
 		return ret
 	}
-	return *o.TicketId.Get()
+	return *o.TicketId
 }
 
 // GetTicketIdOk returns a tuple with the TicketId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransferTicketCommand) GetTicketIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TicketId) {
 		return nil, false
 	}
-	return o.TicketId.Get(), o.TicketId.IsSet()
+	return o.TicketId, true
 }
 
 // HasTicketId returns a boolean if a field has been set.
 func (o *TransferTicketCommand) HasTicketId() bool {
-	if o != nil && o.TicketId.IsSet() {
+	if o != nil && !IsNil(o.TicketId) {
 		return true
 	}
 
 	return false
 }
 
-// SetTicketId gets a reference to the given NullableString and assigns it to the TicketId field.
+// SetTicketId gets a reference to the given string and assigns it to the TicketId field.
 func (o *TransferTicketCommand) SetTicketId(v string) {
-	o.TicketId.Set(&v)
-}
-// SetTicketIdNil sets the value for TicketId to be an explicit nil
-func (o *TransferTicketCommand) SetTicketIdNil() {
-	o.TicketId.Set(nil)
+	o.TicketId = &v
 }
 
-// UnsetTicketId ensures that no value is present for TicketId, not even an explicit nil
-func (o *TransferTicketCommand) UnsetTicketId() {
-	o.TicketId.Unset()
-}
-
-// GetUserId returns the UserId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserId returns the UserId field value if set, zero value otherwise.
 func (o *TransferTicketCommand) GetUserId() string {
-	if o == nil || IsNil(o.UserId.Get()) {
+	if o == nil || IsNil(o.UserId) {
 		var ret string
 		return ret
 	}
-	return *o.UserId.Get()
+	return *o.UserId
 }
 
 // GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TransferTicketCommand) GetUserIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UserId) {
 		return nil, false
 	}
-	return o.UserId.Get(), o.UserId.IsSet()
+	return o.UserId, true
 }
 
 // HasUserId returns a boolean if a field has been set.
 func (o *TransferTicketCommand) HasUserId() bool {
-	if o != nil && o.UserId.IsSet() {
+	if o != nil && !IsNil(o.UserId) {
 		return true
 	}
 
 	return false
 }
 
-// SetUserId gets a reference to the given NullableString and assigns it to the UserId field.
+// SetUserId gets a reference to the given string and assigns it to the UserId field.
 func (o *TransferTicketCommand) SetUserId(v string) {
-	o.UserId.Set(&v)
-}
-// SetUserIdNil sets the value for UserId to be an explicit nil
-func (o *TransferTicketCommand) SetUserIdNil() {
-	o.UserId.Set(nil)
-}
-
-// UnsetUserId ensures that no value is present for UserId, not even an explicit nil
-func (o *TransferTicketCommand) UnsetUserId() {
-	o.UserId.Unset()
+	o.UserId = &v
 }
 
 func (o TransferTicketCommand) MarshalJSON() ([]byte, error) {
@@ -135,11 +115,11 @@ func (o TransferTicketCommand) MarshalJSON() ([]byte, error) {
 
 func (o TransferTicketCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.TicketId.IsSet() {
-		toSerialize["ticketId"] = o.TicketId.Get()
+	if !IsNil(o.TicketId) {
+		toSerialize["ticketId"] = o.TicketId
 	}
-	if o.UserId.IsSet() {
-		toSerialize["userId"] = o.UserId.Get()
+	if !IsNil(o.UserId) {
+		toSerialize["userId"] = o.UserId
 	}
 	return toSerialize, nil
 }

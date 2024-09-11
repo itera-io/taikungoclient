@@ -21,8 +21,8 @@ var _ MappedNullable = &ProjectCommonRecordDto{}
 // ProjectCommonRecordDto struct for ProjectCommonRecordDto
 type ProjectCommonRecordDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	ExpiredAt NullableString `json:"expiredAt,omitempty"`
+	Name *string `json:"name,omitempty"`
+	ExpiredAt *string `json:"expiredAt,omitempty"`
 }
 
 // NewProjectCommonRecordDto instantiates a new ProjectCommonRecordDto object
@@ -74,88 +74,68 @@ func (o *ProjectCommonRecordDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ProjectCommonRecordDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectCommonRecordDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ProjectCommonRecordDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ProjectCommonRecordDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ProjectCommonRecordDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ProjectCommonRecordDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise.
 func (o *ProjectCommonRecordDto) GetExpiredAt() string {
-	if o == nil || IsNil(o.ExpiredAt.Get()) {
+	if o == nil || IsNil(o.ExpiredAt) {
 		var ret string
 		return ret
 	}
-	return *o.ExpiredAt.Get()
+	return *o.ExpiredAt
 }
 
 // GetExpiredAtOk returns a tuple with the ExpiredAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectCommonRecordDto) GetExpiredAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExpiredAt) {
 		return nil, false
 	}
-	return o.ExpiredAt.Get(), o.ExpiredAt.IsSet()
+	return o.ExpiredAt, true
 }
 
 // HasExpiredAt returns a boolean if a field has been set.
 func (o *ProjectCommonRecordDto) HasExpiredAt() bool {
-	if o != nil && o.ExpiredAt.IsSet() {
+	if o != nil && !IsNil(o.ExpiredAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetExpiredAt gets a reference to the given NullableString and assigns it to the ExpiredAt field.
+// SetExpiredAt gets a reference to the given string and assigns it to the ExpiredAt field.
 func (o *ProjectCommonRecordDto) SetExpiredAt(v string) {
-	o.ExpiredAt.Set(&v)
-}
-// SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
-func (o *ProjectCommonRecordDto) SetExpiredAtNil() {
-	o.ExpiredAt.Set(nil)
-}
-
-// UnsetExpiredAt ensures that no value is present for ExpiredAt, not even an explicit nil
-func (o *ProjectCommonRecordDto) UnsetExpiredAt() {
-	o.ExpiredAt.Unset()
+	o.ExpiredAt = &v
 }
 
 func (o ProjectCommonRecordDto) MarshalJSON() ([]byte, error) {
@@ -171,11 +151,11 @@ func (o ProjectCommonRecordDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.ExpiredAt.IsSet() {
-		toSerialize["expiredAt"] = o.ExpiredAt.Get()
+	if !IsNil(o.ExpiredAt) {
+		toSerialize["expiredAt"] = o.ExpiredAt
 	}
 	return toSerialize, nil
 }

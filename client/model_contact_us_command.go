@@ -20,10 +20,10 @@ var _ MappedNullable = &ContactUsCommand{}
 
 // ContactUsCommand struct for ContactUsCommand
 type ContactUsCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	BusinessEmail NullableString `json:"businessEmail,omitempty"`
-	CompanyName NullableString `json:"companyName,omitempty"`
-	Comment NullableString `json:"comment,omitempty"`
+	Name *string `json:"name,omitempty"`
+	BusinessEmail *string `json:"businessEmail,omitempty"`
+	CompanyName *string `json:"companyName,omitempty"`
+	Comment *string `json:"comment,omitempty"`
 }
 
 // NewContactUsCommand instantiates a new ContactUsCommand object
@@ -43,172 +43,132 @@ func NewContactUsCommandWithDefaults() *ContactUsCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ContactUsCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ContactUsCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ContactUsCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ContactUsCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ContactUsCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ContactUsCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetBusinessEmail returns the BusinessEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBusinessEmail returns the BusinessEmail field value if set, zero value otherwise.
 func (o *ContactUsCommand) GetBusinessEmail() string {
-	if o == nil || IsNil(o.BusinessEmail.Get()) {
+	if o == nil || IsNil(o.BusinessEmail) {
 		var ret string
 		return ret
 	}
-	return *o.BusinessEmail.Get()
+	return *o.BusinessEmail
 }
 
 // GetBusinessEmailOk returns a tuple with the BusinessEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ContactUsCommand) GetBusinessEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BusinessEmail) {
 		return nil, false
 	}
-	return o.BusinessEmail.Get(), o.BusinessEmail.IsSet()
+	return o.BusinessEmail, true
 }
 
 // HasBusinessEmail returns a boolean if a field has been set.
 func (o *ContactUsCommand) HasBusinessEmail() bool {
-	if o != nil && o.BusinessEmail.IsSet() {
+	if o != nil && !IsNil(o.BusinessEmail) {
 		return true
 	}
 
 	return false
 }
 
-// SetBusinessEmail gets a reference to the given NullableString and assigns it to the BusinessEmail field.
+// SetBusinessEmail gets a reference to the given string and assigns it to the BusinessEmail field.
 func (o *ContactUsCommand) SetBusinessEmail(v string) {
-	o.BusinessEmail.Set(&v)
-}
-// SetBusinessEmailNil sets the value for BusinessEmail to be an explicit nil
-func (o *ContactUsCommand) SetBusinessEmailNil() {
-	o.BusinessEmail.Set(nil)
+	o.BusinessEmail = &v
 }
 
-// UnsetBusinessEmail ensures that no value is present for BusinessEmail, not even an explicit nil
-func (o *ContactUsCommand) UnsetBusinessEmail() {
-	o.BusinessEmail.Unset()
-}
-
-// GetCompanyName returns the CompanyName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCompanyName returns the CompanyName field value if set, zero value otherwise.
 func (o *ContactUsCommand) GetCompanyName() string {
-	if o == nil || IsNil(o.CompanyName.Get()) {
+	if o == nil || IsNil(o.CompanyName) {
 		var ret string
 		return ret
 	}
-	return *o.CompanyName.Get()
+	return *o.CompanyName
 }
 
 // GetCompanyNameOk returns a tuple with the CompanyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ContactUsCommand) GetCompanyNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CompanyName) {
 		return nil, false
 	}
-	return o.CompanyName.Get(), o.CompanyName.IsSet()
+	return o.CompanyName, true
 }
 
 // HasCompanyName returns a boolean if a field has been set.
 func (o *ContactUsCommand) HasCompanyName() bool {
-	if o != nil && o.CompanyName.IsSet() {
+	if o != nil && !IsNil(o.CompanyName) {
 		return true
 	}
 
 	return false
 }
 
-// SetCompanyName gets a reference to the given NullableString and assigns it to the CompanyName field.
+// SetCompanyName gets a reference to the given string and assigns it to the CompanyName field.
 func (o *ContactUsCommand) SetCompanyName(v string) {
-	o.CompanyName.Set(&v)
-}
-// SetCompanyNameNil sets the value for CompanyName to be an explicit nil
-func (o *ContactUsCommand) SetCompanyNameNil() {
-	o.CompanyName.Set(nil)
+	o.CompanyName = &v
 }
 
-// UnsetCompanyName ensures that no value is present for CompanyName, not even an explicit nil
-func (o *ContactUsCommand) UnsetCompanyName() {
-	o.CompanyName.Unset()
-}
-
-// GetComment returns the Comment field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetComment returns the Comment field value if set, zero value otherwise.
 func (o *ContactUsCommand) GetComment() string {
-	if o == nil || IsNil(o.Comment.Get()) {
+	if o == nil || IsNil(o.Comment) {
 		var ret string
 		return ret
 	}
-	return *o.Comment.Get()
+	return *o.Comment
 }
 
 // GetCommentOk returns a tuple with the Comment field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ContactUsCommand) GetCommentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Comment) {
 		return nil, false
 	}
-	return o.Comment.Get(), o.Comment.IsSet()
+	return o.Comment, true
 }
 
 // HasComment returns a boolean if a field has been set.
 func (o *ContactUsCommand) HasComment() bool {
-	if o != nil && o.Comment.IsSet() {
+	if o != nil && !IsNil(o.Comment) {
 		return true
 	}
 
 	return false
 }
 
-// SetComment gets a reference to the given NullableString and assigns it to the Comment field.
+// SetComment gets a reference to the given string and assigns it to the Comment field.
 func (o *ContactUsCommand) SetComment(v string) {
-	o.Comment.Set(&v)
-}
-// SetCommentNil sets the value for Comment to be an explicit nil
-func (o *ContactUsCommand) SetCommentNil() {
-	o.Comment.Set(nil)
-}
-
-// UnsetComment ensures that no value is present for Comment, not even an explicit nil
-func (o *ContactUsCommand) UnsetComment() {
-	o.Comment.Unset()
+	o.Comment = &v
 }
 
 func (o ContactUsCommand) MarshalJSON() ([]byte, error) {
@@ -221,17 +181,17 @@ func (o ContactUsCommand) MarshalJSON() ([]byte, error) {
 
 func (o ContactUsCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.BusinessEmail.IsSet() {
-		toSerialize["businessEmail"] = o.BusinessEmail.Get()
+	if !IsNil(o.BusinessEmail) {
+		toSerialize["businessEmail"] = o.BusinessEmail
 	}
-	if o.CompanyName.IsSet() {
-		toSerialize["companyName"] = o.CompanyName.Get()
+	if !IsNil(o.CompanyName) {
+		toSerialize["companyName"] = o.CompanyName
 	}
-	if o.Comment.IsSet() {
-		toSerialize["comment"] = o.Comment.Get()
+	if !IsNil(o.Comment) {
+		toSerialize["comment"] = o.Comment
 	}
 	return toSerialize, nil
 }

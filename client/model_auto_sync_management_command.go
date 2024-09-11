@@ -21,7 +21,7 @@ var _ MappedNullable = &AutoSyncManagementCommand{}
 // AutoSyncManagementCommand struct for AutoSyncManagementCommand
 type AutoSyncManagementCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	Mode NullableString `json:"mode,omitempty"`
+	Mode *string `json:"mode,omitempty"`
 }
 
 // NewAutoSyncManagementCommand instantiates a new AutoSyncManagementCommand object
@@ -73,46 +73,36 @@ func (o *AutoSyncManagementCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetMode returns the Mode field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMode returns the Mode field value if set, zero value otherwise.
 func (o *AutoSyncManagementCommand) GetMode() string {
-	if o == nil || IsNil(o.Mode.Get()) {
+	if o == nil || IsNil(o.Mode) {
 		var ret string
 		return ret
 	}
-	return *o.Mode.Get()
+	return *o.Mode
 }
 
 // GetModeOk returns a tuple with the Mode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AutoSyncManagementCommand) GetModeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Mode) {
 		return nil, false
 	}
-	return o.Mode.Get(), o.Mode.IsSet()
+	return o.Mode, true
 }
 
 // HasMode returns a boolean if a field has been set.
 func (o *AutoSyncManagementCommand) HasMode() bool {
-	if o != nil && o.Mode.IsSet() {
+	if o != nil && !IsNil(o.Mode) {
 		return true
 	}
 
 	return false
 }
 
-// SetMode gets a reference to the given NullableString and assigns it to the Mode field.
+// SetMode gets a reference to the given string and assigns it to the Mode field.
 func (o *AutoSyncManagementCommand) SetMode(v string) {
-	o.Mode.Set(&v)
-}
-// SetModeNil sets the value for Mode to be an explicit nil
-func (o *AutoSyncManagementCommand) SetModeNil() {
-	o.Mode.Set(nil)
-}
-
-// UnsetMode ensures that no value is present for Mode, not even an explicit nil
-func (o *AutoSyncManagementCommand) UnsetMode() {
-	o.Mode.Unset()
+	o.Mode = &v
 }
 
 func (o AutoSyncManagementCommand) MarshalJSON() ([]byte, error) {
@@ -128,8 +118,8 @@ func (o AutoSyncManagementCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Mode.IsSet() {
-		toSerialize["mode"] = o.Mode.Get()
+	if !IsNil(o.Mode) {
+		toSerialize["mode"] = o.Mode
 	}
 	return toSerialize, nil
 }

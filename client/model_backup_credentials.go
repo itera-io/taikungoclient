@@ -41,9 +41,9 @@ func NewBackupCredentialsWithDefaults() *BackupCredentials {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *BackupCredentials) GetData() []BackupCredentialsListDto {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []BackupCredentialsListDto
 		return ret
 	}
@@ -52,7 +52,6 @@ func (o *BackupCredentials) GetData() []BackupCredentialsListDto {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupCredentials) GetDataOk() ([]BackupCredentialsListDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
@@ -116,7 +115,7 @@ func (o BackupCredentials) MarshalJSON() ([]byte, error) {
 
 func (o BackupCredentials) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
+	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
 	if !IsNil(o.TotalCount) {

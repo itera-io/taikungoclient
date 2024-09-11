@@ -71,6 +71,9 @@ func (a *VsphereCloudCredentialAPIService) VsphereCreateExecute(r ApiVsphereCrea
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createVsphereCommand == nil {
+		return localVarReturnValue, nil, reportError("createVsphereCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -727,29 +730,14 @@ func (a *VsphereCloudCredentialAPIService) VsphereHypervisorListExecute(r ApiVsp
 type ApiVsphereListRequest struct {
 	ctx context.Context
 	ApiService *VsphereCloudCredentialAPIService
-	limit *int32
-	offset *int32
-	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
+	limit *int32
+	offset *int32
+	organizationId *int32
 	id *int32
-}
-
-func (r ApiVsphereListRequest) Limit(limit int32) ApiVsphereListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiVsphereListRequest) Offset(offset int32) ApiVsphereListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiVsphereListRequest) OrganizationId(organizationId int32) ApiVsphereListRequest {
-	r.organizationId = &organizationId
-	return r
 }
 
 func (r ApiVsphereListRequest) SortBy(sortBy string) ApiVsphereListRequest {
@@ -769,6 +757,21 @@ func (r ApiVsphereListRequest) Search(search string) ApiVsphereListRequest {
 
 func (r ApiVsphereListRequest) SearchId(searchId string) ApiVsphereListRequest {
 	r.searchId = &searchId
+	return r
+}
+
+func (r ApiVsphereListRequest) Limit(limit int32) ApiVsphereListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiVsphereListRequest) Offset(offset int32) ApiVsphereListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiVsphereListRequest) OrganizationId(organizationId int32) ApiVsphereListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -814,6 +817,18 @@ func (a *VsphereCloudCredentialAPIService) VsphereListExecute(r ApiVsphereListRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -824,18 +839,10 @@ func (a *VsphereCloudCredentialAPIService) VsphereListExecute(r ApiVsphereListRe
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
@@ -1359,6 +1366,9 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateExecute(r ApiVsphereUpda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateVsphereCommand == nil {
+		return nil, reportError("updateVsphereCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

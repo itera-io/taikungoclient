@@ -462,29 +462,14 @@ func (a *GoogleAPIService) GooglecloudCreateExecute(r ApiGooglecloudCreateReques
 type ApiGooglecloudListRequest struct {
 	ctx context.Context
 	ApiService *GoogleAPIService
-	limit *int32
-	offset *int32
-	organizationId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	searchId *string
+	limit *int32
+	offset *int32
+	organizationId *int32
 	id *int32
-}
-
-func (r ApiGooglecloudListRequest) Limit(limit int32) ApiGooglecloudListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiGooglecloudListRequest) Offset(offset int32) ApiGooglecloudListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiGooglecloudListRequest) OrganizationId(organizationId int32) ApiGooglecloudListRequest {
-	r.organizationId = &organizationId
-	return r
 }
 
 func (r ApiGooglecloudListRequest) SortBy(sortBy string) ApiGooglecloudListRequest {
@@ -504,6 +489,21 @@ func (r ApiGooglecloudListRequest) Search(search string) ApiGooglecloudListReque
 
 func (r ApiGooglecloudListRequest) SearchId(searchId string) ApiGooglecloudListRequest {
 	r.searchId = &searchId
+	return r
+}
+
+func (r ApiGooglecloudListRequest) Limit(limit int32) ApiGooglecloudListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiGooglecloudListRequest) Offset(offset int32) ApiGooglecloudListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiGooglecloudListRequest) OrganizationId(organizationId int32) ApiGooglecloudListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -549,6 +549,18 @@ func (a *GoogleAPIService) GooglecloudListExecute(r ApiGooglecloudListRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -559,18 +571,10 @@ func (a *GoogleAPIService) GooglecloudListExecute(r ApiGooglecloudListRequest) (
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}

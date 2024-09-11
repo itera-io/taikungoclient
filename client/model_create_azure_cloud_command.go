@@ -20,12 +20,12 @@ var _ MappedNullable = &CreateAzureCloudCommand{}
 
 // CreateAzureCloudCommand struct for CreateAzureCloudCommand
 type CreateAzureCloudCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	AzureSubscriptionId NullableString `json:"azureSubscriptionId,omitempty"`
-	AzureClientId NullableString `json:"azureClientId,omitempty"`
-	AzureClientSecret NullableString `json:"azureClientSecret,omitempty"`
-	AzureTenantId NullableString `json:"azureTenantId,omitempty"`
-	AzureLocation NullableString `json:"azureLocation,omitempty"`
+	Name *string `json:"name,omitempty"`
+	AzureSubscriptionId *string `json:"azureSubscriptionId,omitempty"`
+	AzureClientId *string `json:"azureClientId,omitempty"`
+	AzureClientSecret *string `json:"azureClientSecret,omitempty"`
+	AzureTenantId *string `json:"azureTenantId,omitempty"`
+	AzureLocation *string `json:"azureLocation,omitempty"`
 	AzCount *int32 `json:"azCount,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
@@ -47,256 +47,196 @@ func NewCreateAzureCloudCommandWithDefaults() *CreateAzureCloudCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAzureCloudCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateAzureCloudCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateAzureCloudCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *CreateAzureCloudCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *CreateAzureCloudCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetAzureSubscriptionId() string {
-	if o == nil || IsNil(o.AzureSubscriptionId.Get()) {
+	if o == nil || IsNil(o.AzureSubscriptionId) {
 		var ret string
 		return ret
 	}
-	return *o.AzureSubscriptionId.Get()
+	return *o.AzureSubscriptionId
 }
 
 // GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAzureCloudCommand) GetAzureSubscriptionIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureSubscriptionId) {
 		return nil, false
 	}
-	return o.AzureSubscriptionId.Get(), o.AzureSubscriptionId.IsSet()
+	return o.AzureSubscriptionId, true
 }
 
 // HasAzureSubscriptionId returns a boolean if a field has been set.
 func (o *CreateAzureCloudCommand) HasAzureSubscriptionId() bool {
-	if o != nil && o.AzureSubscriptionId.IsSet() {
+	if o != nil && !IsNil(o.AzureSubscriptionId) {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureSubscriptionId gets a reference to the given NullableString and assigns it to the AzureSubscriptionId field.
+// SetAzureSubscriptionId gets a reference to the given string and assigns it to the AzureSubscriptionId field.
 func (o *CreateAzureCloudCommand) SetAzureSubscriptionId(v string) {
-	o.AzureSubscriptionId.Set(&v)
-}
-// SetAzureSubscriptionIdNil sets the value for AzureSubscriptionId to be an explicit nil
-func (o *CreateAzureCloudCommand) SetAzureSubscriptionIdNil() {
-	o.AzureSubscriptionId.Set(nil)
+	o.AzureSubscriptionId = &v
 }
 
-// UnsetAzureSubscriptionId ensures that no value is present for AzureSubscriptionId, not even an explicit nil
-func (o *CreateAzureCloudCommand) UnsetAzureSubscriptionId() {
-	o.AzureSubscriptionId.Unset()
-}
-
-// GetAzureClientId returns the AzureClientId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAzureClientId returns the AzureClientId field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetAzureClientId() string {
-	if o == nil || IsNil(o.AzureClientId.Get()) {
+	if o == nil || IsNil(o.AzureClientId) {
 		var ret string
 		return ret
 	}
-	return *o.AzureClientId.Get()
+	return *o.AzureClientId
 }
 
 // GetAzureClientIdOk returns a tuple with the AzureClientId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAzureCloudCommand) GetAzureClientIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientId) {
 		return nil, false
 	}
-	return o.AzureClientId.Get(), o.AzureClientId.IsSet()
+	return o.AzureClientId, true
 }
 
 // HasAzureClientId returns a boolean if a field has been set.
 func (o *CreateAzureCloudCommand) HasAzureClientId() bool {
-	if o != nil && o.AzureClientId.IsSet() {
+	if o != nil && !IsNil(o.AzureClientId) {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureClientId gets a reference to the given NullableString and assigns it to the AzureClientId field.
+// SetAzureClientId gets a reference to the given string and assigns it to the AzureClientId field.
 func (o *CreateAzureCloudCommand) SetAzureClientId(v string) {
-	o.AzureClientId.Set(&v)
-}
-// SetAzureClientIdNil sets the value for AzureClientId to be an explicit nil
-func (o *CreateAzureCloudCommand) SetAzureClientIdNil() {
-	o.AzureClientId.Set(nil)
+	o.AzureClientId = &v
 }
 
-// UnsetAzureClientId ensures that no value is present for AzureClientId, not even an explicit nil
-func (o *CreateAzureCloudCommand) UnsetAzureClientId() {
-	o.AzureClientId.Unset()
-}
-
-// GetAzureClientSecret returns the AzureClientSecret field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAzureClientSecret returns the AzureClientSecret field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetAzureClientSecret() string {
-	if o == nil || IsNil(o.AzureClientSecret.Get()) {
+	if o == nil || IsNil(o.AzureClientSecret) {
 		var ret string
 		return ret
 	}
-	return *o.AzureClientSecret.Get()
+	return *o.AzureClientSecret
 }
 
 // GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAzureCloudCommand) GetAzureClientSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureClientSecret) {
 		return nil, false
 	}
-	return o.AzureClientSecret.Get(), o.AzureClientSecret.IsSet()
+	return o.AzureClientSecret, true
 }
 
 // HasAzureClientSecret returns a boolean if a field has been set.
 func (o *CreateAzureCloudCommand) HasAzureClientSecret() bool {
-	if o != nil && o.AzureClientSecret.IsSet() {
+	if o != nil && !IsNil(o.AzureClientSecret) {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureClientSecret gets a reference to the given NullableString and assigns it to the AzureClientSecret field.
+// SetAzureClientSecret gets a reference to the given string and assigns it to the AzureClientSecret field.
 func (o *CreateAzureCloudCommand) SetAzureClientSecret(v string) {
-	o.AzureClientSecret.Set(&v)
-}
-// SetAzureClientSecretNil sets the value for AzureClientSecret to be an explicit nil
-func (o *CreateAzureCloudCommand) SetAzureClientSecretNil() {
-	o.AzureClientSecret.Set(nil)
+	o.AzureClientSecret = &v
 }
 
-// UnsetAzureClientSecret ensures that no value is present for AzureClientSecret, not even an explicit nil
-func (o *CreateAzureCloudCommand) UnsetAzureClientSecret() {
-	o.AzureClientSecret.Unset()
-}
-
-// GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetAzureTenantId() string {
-	if o == nil || IsNil(o.AzureTenantId.Get()) {
+	if o == nil || IsNil(o.AzureTenantId) {
 		var ret string
 		return ret
 	}
-	return *o.AzureTenantId.Get()
+	return *o.AzureTenantId
 }
 
 // GetAzureTenantIdOk returns a tuple with the AzureTenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAzureCloudCommand) GetAzureTenantIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureTenantId) {
 		return nil, false
 	}
-	return o.AzureTenantId.Get(), o.AzureTenantId.IsSet()
+	return o.AzureTenantId, true
 }
 
 // HasAzureTenantId returns a boolean if a field has been set.
 func (o *CreateAzureCloudCommand) HasAzureTenantId() bool {
-	if o != nil && o.AzureTenantId.IsSet() {
+	if o != nil && !IsNil(o.AzureTenantId) {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureTenantId gets a reference to the given NullableString and assigns it to the AzureTenantId field.
+// SetAzureTenantId gets a reference to the given string and assigns it to the AzureTenantId field.
 func (o *CreateAzureCloudCommand) SetAzureTenantId(v string) {
-	o.AzureTenantId.Set(&v)
-}
-// SetAzureTenantIdNil sets the value for AzureTenantId to be an explicit nil
-func (o *CreateAzureCloudCommand) SetAzureTenantIdNil() {
-	o.AzureTenantId.Set(nil)
+	o.AzureTenantId = &v
 }
 
-// UnsetAzureTenantId ensures that no value is present for AzureTenantId, not even an explicit nil
-func (o *CreateAzureCloudCommand) UnsetAzureTenantId() {
-	o.AzureTenantId.Unset()
-}
-
-// GetAzureLocation returns the AzureLocation field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAzureLocation returns the AzureLocation field value if set, zero value otherwise.
 func (o *CreateAzureCloudCommand) GetAzureLocation() string {
-	if o == nil || IsNil(o.AzureLocation.Get()) {
+	if o == nil || IsNil(o.AzureLocation) {
 		var ret string
 		return ret
 	}
-	return *o.AzureLocation.Get()
+	return *o.AzureLocation
 }
 
 // GetAzureLocationOk returns a tuple with the AzureLocation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAzureCloudCommand) GetAzureLocationOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AzureLocation) {
 		return nil, false
 	}
-	return o.AzureLocation.Get(), o.AzureLocation.IsSet()
+	return o.AzureLocation, true
 }
 
 // HasAzureLocation returns a boolean if a field has been set.
 func (o *CreateAzureCloudCommand) HasAzureLocation() bool {
-	if o != nil && o.AzureLocation.IsSet() {
+	if o != nil && !IsNil(o.AzureLocation) {
 		return true
 	}
 
 	return false
 }
 
-// SetAzureLocation gets a reference to the given NullableString and assigns it to the AzureLocation field.
+// SetAzureLocation gets a reference to the given string and assigns it to the AzureLocation field.
 func (o *CreateAzureCloudCommand) SetAzureLocation(v string) {
-	o.AzureLocation.Set(&v)
-}
-// SetAzureLocationNil sets the value for AzureLocation to be an explicit nil
-func (o *CreateAzureCloudCommand) SetAzureLocationNil() {
-	o.AzureLocation.Set(nil)
-}
-
-// UnsetAzureLocation ensures that no value is present for AzureLocation, not even an explicit nil
-func (o *CreateAzureCloudCommand) UnsetAzureLocation() {
-	o.AzureLocation.Unset()
+	o.AzureLocation = &v
 }
 
 // GetAzCount returns the AzCount field value if set, zero value otherwise.
@@ -383,23 +323,23 @@ func (o CreateAzureCloudCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateAzureCloudCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.AzureSubscriptionId.IsSet() {
-		toSerialize["azureSubscriptionId"] = o.AzureSubscriptionId.Get()
+	if !IsNil(o.AzureSubscriptionId) {
+		toSerialize["azureSubscriptionId"] = o.AzureSubscriptionId
 	}
-	if o.AzureClientId.IsSet() {
-		toSerialize["azureClientId"] = o.AzureClientId.Get()
+	if !IsNil(o.AzureClientId) {
+		toSerialize["azureClientId"] = o.AzureClientId
 	}
-	if o.AzureClientSecret.IsSet() {
-		toSerialize["azureClientSecret"] = o.AzureClientSecret.Get()
+	if !IsNil(o.AzureClientSecret) {
+		toSerialize["azureClientSecret"] = o.AzureClientSecret
 	}
-	if o.AzureTenantId.IsSet() {
-		toSerialize["azureTenantId"] = o.AzureTenantId.Get()
+	if !IsNil(o.AzureTenantId) {
+		toSerialize["azureTenantId"] = o.AzureTenantId
 	}
-	if o.AzureLocation.IsSet() {
-		toSerialize["azureLocation"] = o.AzureLocation.Get()
+	if !IsNil(o.AzureLocation) {
+		toSerialize["azureLocation"] = o.AzureLocation
 	}
 	if !IsNil(o.AzCount) {
 		toSerialize["azCount"] = o.AzCount

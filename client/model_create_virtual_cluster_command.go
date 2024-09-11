@@ -22,11 +22,11 @@ var _ MappedNullable = &CreateVirtualClusterCommand{}
 // CreateVirtualClusterCommand struct for CreateVirtualClusterCommand
 type CreateVirtualClusterCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	ExpiredAt NullableTime `json:"expiredAt,omitempty"`
 	DeleteOnExpiration *bool `json:"deleteOnExpiration,omitempty"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
-	ExposeHostname NullableString `json:"exposeHostname,omitempty"`
+	ExposeHostname *string `json:"exposeHostname,omitempty"`
 }
 
 // NewCreateVirtualClusterCommand instantiates a new CreateVirtualClusterCommand object
@@ -78,46 +78,36 @@ func (o *CreateVirtualClusterCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateVirtualClusterCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateVirtualClusterCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateVirtualClusterCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateVirtualClusterCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *CreateVirtualClusterCommand) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *CreateVirtualClusterCommand) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -236,46 +226,36 @@ func (o *CreateVirtualClusterCommand) UnsetAlertingProfileId() {
 	o.AlertingProfileId.Unset()
 }
 
-// GetExposeHostname returns the ExposeHostname field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExposeHostname returns the ExposeHostname field value if set, zero value otherwise.
 func (o *CreateVirtualClusterCommand) GetExposeHostname() string {
-	if o == nil || IsNil(o.ExposeHostname.Get()) {
+	if o == nil || IsNil(o.ExposeHostname) {
 		var ret string
 		return ret
 	}
-	return *o.ExposeHostname.Get()
+	return *o.ExposeHostname
 }
 
 // GetExposeHostnameOk returns a tuple with the ExposeHostname field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateVirtualClusterCommand) GetExposeHostnameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExposeHostname) {
 		return nil, false
 	}
-	return o.ExposeHostname.Get(), o.ExposeHostname.IsSet()
+	return o.ExposeHostname, true
 }
 
 // HasExposeHostname returns a boolean if a field has been set.
 func (o *CreateVirtualClusterCommand) HasExposeHostname() bool {
-	if o != nil && o.ExposeHostname.IsSet() {
+	if o != nil && !IsNil(o.ExposeHostname) {
 		return true
 	}
 
 	return false
 }
 
-// SetExposeHostname gets a reference to the given NullableString and assigns it to the ExposeHostname field.
+// SetExposeHostname gets a reference to the given string and assigns it to the ExposeHostname field.
 func (o *CreateVirtualClusterCommand) SetExposeHostname(v string) {
-	o.ExposeHostname.Set(&v)
-}
-// SetExposeHostnameNil sets the value for ExposeHostname to be an explicit nil
-func (o *CreateVirtualClusterCommand) SetExposeHostnameNil() {
-	o.ExposeHostname.Set(nil)
-}
-
-// UnsetExposeHostname ensures that no value is present for ExposeHostname, not even an explicit nil
-func (o *CreateVirtualClusterCommand) UnsetExposeHostname() {
-	o.ExposeHostname.Unset()
+	o.ExposeHostname = &v
 }
 
 func (o CreateVirtualClusterCommand) MarshalJSON() ([]byte, error) {
@@ -291,8 +271,8 @@ func (o CreateVirtualClusterCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if o.ExpiredAt.IsSet() {
 		toSerialize["expiredAt"] = o.ExpiredAt.Get()
@@ -303,8 +283,8 @@ func (o CreateVirtualClusterCommand) ToMap() (map[string]interface{}, error) {
 	if o.AlertingProfileId.IsSet() {
 		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	}
-	if o.ExposeHostname.IsSet() {
-		toSerialize["exposeHostname"] = o.ExposeHostname.Get()
+	if !IsNil(o.ExposeHostname) {
+		toSerialize["exposeHostname"] = o.ExposeHostname
 	}
 	return toSerialize, nil
 }

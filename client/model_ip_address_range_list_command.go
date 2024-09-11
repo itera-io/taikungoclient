@@ -20,9 +20,9 @@ var _ MappedNullable = &IpAddressRangeListCommand{}
 
 // IpAddressRangeListCommand struct for IpAddressRangeListCommand
 type IpAddressRangeListCommand struct {
-	IpAddress NullableString `json:"ipAddress,omitempty"`
+	IpAddress *string `json:"ipAddress,omitempty"`
 	NetMask *int32 `json:"netMask,omitempty"`
-	Gateway NullableString `json:"gateway,omitempty"`
+	Gateway *string `json:"gateway,omitempty"`
 }
 
 // NewIpAddressRangeListCommand instantiates a new IpAddressRangeListCommand object
@@ -42,46 +42,36 @@ func NewIpAddressRangeListCommandWithDefaults() *IpAddressRangeListCommand {
 	return &this
 }
 
-// GetIpAddress returns the IpAddress field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *IpAddressRangeListCommand) GetIpAddress() string {
-	if o == nil || IsNil(o.IpAddress.Get()) {
+	if o == nil || IsNil(o.IpAddress) {
 		var ret string
 		return ret
 	}
-	return *o.IpAddress.Get()
+	return *o.IpAddress
 }
 
 // GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpAddressRangeListCommand) GetIpAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
-	return o.IpAddress.Get(), o.IpAddress.IsSet()
+	return o.IpAddress, true
 }
 
 // HasIpAddress returns a boolean if a field has been set.
 func (o *IpAddressRangeListCommand) HasIpAddress() bool {
-	if o != nil && o.IpAddress.IsSet() {
+	if o != nil && !IsNil(o.IpAddress) {
 		return true
 	}
 
 	return false
 }
 
-// SetIpAddress gets a reference to the given NullableString and assigns it to the IpAddress field.
+// SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *IpAddressRangeListCommand) SetIpAddress(v string) {
-	o.IpAddress.Set(&v)
-}
-// SetIpAddressNil sets the value for IpAddress to be an explicit nil
-func (o *IpAddressRangeListCommand) SetIpAddressNil() {
-	o.IpAddress.Set(nil)
-}
-
-// UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
-func (o *IpAddressRangeListCommand) UnsetIpAddress() {
-	o.IpAddress.Unset()
+	o.IpAddress = &v
 }
 
 // GetNetMask returns the NetMask field value if set, zero value otherwise.
@@ -116,46 +106,36 @@ func (o *IpAddressRangeListCommand) SetNetMask(v int32) {
 	o.NetMask = &v
 }
 
-// GetGateway returns the Gateway field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGateway returns the Gateway field value if set, zero value otherwise.
 func (o *IpAddressRangeListCommand) GetGateway() string {
-	if o == nil || IsNil(o.Gateway.Get()) {
+	if o == nil || IsNil(o.Gateway) {
 		var ret string
 		return ret
 	}
-	return *o.Gateway.Get()
+	return *o.Gateway
 }
 
 // GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *IpAddressRangeListCommand) GetGatewayOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Gateway) {
 		return nil, false
 	}
-	return o.Gateway.Get(), o.Gateway.IsSet()
+	return o.Gateway, true
 }
 
 // HasGateway returns a boolean if a field has been set.
 func (o *IpAddressRangeListCommand) HasGateway() bool {
-	if o != nil && o.Gateway.IsSet() {
+	if o != nil && !IsNil(o.Gateway) {
 		return true
 	}
 
 	return false
 }
 
-// SetGateway gets a reference to the given NullableString and assigns it to the Gateway field.
+// SetGateway gets a reference to the given string and assigns it to the Gateway field.
 func (o *IpAddressRangeListCommand) SetGateway(v string) {
-	o.Gateway.Set(&v)
-}
-// SetGatewayNil sets the value for Gateway to be an explicit nil
-func (o *IpAddressRangeListCommand) SetGatewayNil() {
-	o.Gateway.Set(nil)
-}
-
-// UnsetGateway ensures that no value is present for Gateway, not even an explicit nil
-func (o *IpAddressRangeListCommand) UnsetGateway() {
-	o.Gateway.Unset()
+	o.Gateway = &v
 }
 
 func (o IpAddressRangeListCommand) MarshalJSON() ([]byte, error) {
@@ -168,14 +148,14 @@ func (o IpAddressRangeListCommand) MarshalJSON() ([]byte, error) {
 
 func (o IpAddressRangeListCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.IpAddress.IsSet() {
-		toSerialize["ipAddress"] = o.IpAddress.Get()
+	if !IsNil(o.IpAddress) {
+		toSerialize["ipAddress"] = o.IpAddress
 	}
 	if !IsNil(o.NetMask) {
 		toSerialize["netMask"] = o.NetMask
 	}
-	if o.Gateway.IsSet() {
-		toSerialize["gateway"] = o.Gateway.Get()
+	if !IsNil(o.Gateway) {
+		toSerialize["gateway"] = o.Gateway
 	}
 	return toSerialize, nil
 }

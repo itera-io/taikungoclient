@@ -20,7 +20,7 @@ var _ MappedNullable = &VerifyWebhookCommand{}
 
 // VerifyWebhookCommand struct for VerifyWebhookCommand
 type VerifyWebhookCommand struct {
-	Url NullableString `json:"url,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
 // NewVerifyWebhookCommand instantiates a new VerifyWebhookCommand object
@@ -40,46 +40,36 @@ func NewVerifyWebhookCommandWithDefaults() *VerifyWebhookCommand {
 	return &this
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *VerifyWebhookCommand) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VerifyWebhookCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *VerifyWebhookCommand) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *VerifyWebhookCommand) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *VerifyWebhookCommand) SetUrlNil() {
-	o.Url.Set(nil)
-}
-
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *VerifyWebhookCommand) UnsetUrl() {
-	o.Url.Unset()
+	o.Url = &v
 }
 
 func (o VerifyWebhookCommand) MarshalJSON() ([]byte, error) {
@@ -92,8 +82,8 @@ func (o VerifyWebhookCommand) MarshalJSON() ([]byte, error) {
 
 func (o VerifyWebhookCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
 	return toSerialize, nil
 }

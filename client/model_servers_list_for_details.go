@@ -41,9 +41,9 @@ func NewServersListForDetailsWithDefaults() *ServersListForDetails {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *ServersListForDetails) GetData() []ServerListDto {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []ServerListDto
 		return ret
 	}
@@ -52,7 +52,6 @@ func (o *ServersListForDetails) GetData() []ServerListDto {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServersListForDetails) GetDataOk() ([]ServerListDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
@@ -116,7 +115,7 @@ func (o ServersListForDetails) MarshalJSON() ([]byte, error) {
 
 func (o ServersListForDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
+	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
 	if !IsNil(o.Project) {

@@ -21,14 +21,14 @@ var _ MappedNullable = &ProjectTemplateListDto{}
 // ProjectTemplateListDto struct for ProjectTemplateListDto
 type ProjectTemplateListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	MonitoringEnabled *bool `json:"monitoringEnabled,omitempty"`
 	BackupEnabled *bool `json:"backupEnabled,omitempty"`
 	AllowFullSpotKubernetes *bool `json:"allowFullSpotKubernetes,omitempty"`
 	AllowSpotVms *bool `json:"allowSpotVms,omitempty"`
 	AllowSpotWorkers *bool `json:"allowSpotWorkers,omitempty"`
-	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	KubernetesVersion *string `json:"kubernetesVersion,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
 
@@ -81,46 +81,36 @@ func (o *ProjectTemplateListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ProjectTemplateListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectTemplateListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ProjectTemplateListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ProjectTemplateListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ProjectTemplateListDto) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ProjectTemplateListDto) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetMonitoringEnabled returns the MonitoringEnabled field value if set, zero value otherwise.
@@ -283,88 +273,68 @@ func (o *ProjectTemplateListDto) SetAllowSpotWorkers(v bool) {
 	o.AllowSpotWorkers = &v
 }
 
-// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise.
 func (o *ProjectTemplateListDto) GetKubernetesVersion() string {
-	if o == nil || IsNil(o.KubernetesVersion.Get()) {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		var ret string
 		return ret
 	}
-	return *o.KubernetesVersion.Get()
+	return *o.KubernetesVersion
 }
 
 // GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectTemplateListDto) GetKubernetesVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		return nil, false
 	}
-	return o.KubernetesVersion.Get(), o.KubernetesVersion.IsSet()
+	return o.KubernetesVersion, true
 }
 
 // HasKubernetesVersion returns a boolean if a field has been set.
 func (o *ProjectTemplateListDto) HasKubernetesVersion() bool {
-	if o != nil && o.KubernetesVersion.IsSet() {
+	if o != nil && !IsNil(o.KubernetesVersion) {
 		return true
 	}
 
 	return false
 }
 
-// SetKubernetesVersion gets a reference to the given NullableString and assigns it to the KubernetesVersion field.
+// SetKubernetesVersion gets a reference to the given string and assigns it to the KubernetesVersion field.
 func (o *ProjectTemplateListDto) SetKubernetesVersion(v string) {
-	o.KubernetesVersion.Set(&v)
-}
-// SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
-func (o *ProjectTemplateListDto) SetKubernetesVersionNil() {
-	o.KubernetesVersion.Set(nil)
+	o.KubernetesVersion = &v
 }
 
-// UnsetKubernetesVersion ensures that no value is present for KubernetesVersion, not even an explicit nil
-func (o *ProjectTemplateListDto) UnsetKubernetesVersion() {
-	o.KubernetesVersion.Unset()
-}
-
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *ProjectTemplateListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectTemplateListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *ProjectTemplateListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *ProjectTemplateListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *ProjectTemplateListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
-
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *ProjectTemplateListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
+	o.OrganizationName = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -422,8 +392,8 @@ func (o ProjectTemplateListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.MonitoringEnabled) {
 		toSerialize["monitoringEnabled"] = o.MonitoringEnabled
@@ -440,11 +410,11 @@ func (o ProjectTemplateListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AllowSpotWorkers) {
 		toSerialize["allowSpotWorkers"] = o.AllowSpotWorkers
 	}
-	if o.KubernetesVersion.IsSet() {
-		toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
+	if !IsNil(o.KubernetesVersion) {
+		toSerialize["kubernetesVersion"] = o.KubernetesVersion
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()

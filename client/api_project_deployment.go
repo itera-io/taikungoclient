@@ -70,6 +70,9 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentCommitExecute(r ApiProjec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.projectDeploymentCommitCommand == nil {
+		return nil, reportError("projectDeploymentCommitCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -397,6 +400,9 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentCompletedExecute(r ApiPro
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.deploymentCompletedCommand == nil {
+		return nil, reportError("deploymentCompletedCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -724,6 +730,9 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentDeleteVmDisksExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.deleteVmDiskCommand == nil {
+		return nil, reportError("deleteVmDiskCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2701,6 +2710,9 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentUpdateExecute(r ApiProjec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateStageCommand == nil {
+		return nil, reportError("updateStageCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

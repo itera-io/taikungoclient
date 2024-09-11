@@ -21,7 +21,7 @@ var _ MappedNullable = &OperationCredentialsForOrganizationEntity{}
 // OperationCredentialsForOrganizationEntity struct for OperationCredentialsForOrganizationEntity
 type OperationCredentialsForOrganizationEntity struct {
 	OperationCredentialId NullableInt32 `json:"operationCredentialId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 }
 
@@ -84,46 +84,36 @@ func (o *OperationCredentialsForOrganizationEntity) UnsetOperationCredentialId()
 	o.OperationCredentialId.Unset()
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OperationCredentialsForOrganizationEntity) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationCredentialsForOrganizationEntity) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *OperationCredentialsForOrganizationEntity) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OperationCredentialsForOrganizationEntity) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *OperationCredentialsForOrganizationEntity) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *OperationCredentialsForOrganizationEntity) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
@@ -171,8 +161,8 @@ func (o OperationCredentialsForOrganizationEntity) ToMap() (map[string]interface
 	if o.OperationCredentialId.IsSet() {
 		toSerialize["operationCredentialId"] = o.OperationCredentialId.Get()
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault

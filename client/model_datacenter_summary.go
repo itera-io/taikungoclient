@@ -20,8 +20,8 @@ var _ MappedNullable = &DatacenterSummary{}
 
 // DatacenterSummary struct for DatacenterSummary
 type DatacenterSummary struct {
-	Datacenter NullableString `json:"datacenter,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Datacenter *string `json:"datacenter,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // NewDatacenterSummary instantiates a new DatacenterSummary object
@@ -41,88 +41,68 @@ func NewDatacenterSummaryWithDefaults() *DatacenterSummary {
 	return &this
 }
 
-// GetDatacenter returns the Datacenter field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDatacenter returns the Datacenter field value if set, zero value otherwise.
 func (o *DatacenterSummary) GetDatacenter() string {
-	if o == nil || IsNil(o.Datacenter.Get()) {
+	if o == nil || IsNil(o.Datacenter) {
 		var ret string
 		return ret
 	}
-	return *o.Datacenter.Get()
+	return *o.Datacenter
 }
 
 // GetDatacenterOk returns a tuple with the Datacenter field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DatacenterSummary) GetDatacenterOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Datacenter) {
 		return nil, false
 	}
-	return o.Datacenter.Get(), o.Datacenter.IsSet()
+	return o.Datacenter, true
 }
 
 // HasDatacenter returns a boolean if a field has been set.
 func (o *DatacenterSummary) HasDatacenter() bool {
-	if o != nil && o.Datacenter.IsSet() {
+	if o != nil && !IsNil(o.Datacenter) {
 		return true
 	}
 
 	return false
 }
 
-// SetDatacenter gets a reference to the given NullableString and assigns it to the Datacenter field.
+// SetDatacenter gets a reference to the given string and assigns it to the Datacenter field.
 func (o *DatacenterSummary) SetDatacenter(v string) {
-	o.Datacenter.Set(&v)
-}
-// SetDatacenterNil sets the value for Datacenter to be an explicit nil
-func (o *DatacenterSummary) SetDatacenterNil() {
-	o.Datacenter.Set(nil)
+	o.Datacenter = &v
 }
 
-// UnsetDatacenter ensures that no value is present for Datacenter, not even an explicit nil
-func (o *DatacenterSummary) UnsetDatacenter() {
-	o.Datacenter.Unset()
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *DatacenterSummary) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DatacenterSummary) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *DatacenterSummary) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *DatacenterSummary) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *DatacenterSummary) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *DatacenterSummary) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 func (o DatacenterSummary) MarshalJSON() ([]byte, error) {
@@ -135,11 +115,11 @@ func (o DatacenterSummary) MarshalJSON() ([]byte, error) {
 
 func (o DatacenterSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Datacenter.IsSet() {
-		toSerialize["datacenter"] = o.Datacenter.Get()
+	if !IsNil(o.Datacenter) {
+		toSerialize["datacenter"] = o.Datacenter
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
 }

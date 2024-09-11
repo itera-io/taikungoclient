@@ -21,9 +21,9 @@ var _ MappedNullable = &KubernetesEventCreateDto{}
 
 // KubernetesEventCreateDto struct for KubernetesEventCreateDto
 type KubernetesEventCreateDto struct {
-	Type NullableString `json:"type,omitempty"`
-	Reason NullableString `json:"reason,omitempty"`
-	Message NullableString `json:"message,omitempty"`
+	Type *string `json:"type,omitempty"`
+	Reason *string `json:"reason,omitempty"`
+	Message *string `json:"message,omitempty"`
 	Metadata interface{} `json:"metadata,omitempty"`
 	Source interface{} `json:"source,omitempty"`
 	InvolvedObject interface{} `json:"involvedObject,omitempty"`
@@ -49,130 +49,100 @@ func NewKubernetesEventCreateDtoWithDefaults() *KubernetesEventCreateDto {
 	return &this
 }
 
-// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *KubernetesEventCreateDto) GetType() string {
-	if o == nil || IsNil(o.Type.Get()) {
+	if o == nil || IsNil(o.Type) {
 		var ret string
 		return ret
 	}
-	return *o.Type.Get()
+	return *o.Type
 }
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesEventCreateDto) GetTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
-	return o.Type.Get(), o.Type.IsSet()
+	return o.Type, true
 }
 
 // HasType returns a boolean if a field has been set.
 func (o *KubernetesEventCreateDto) HasType() bool {
-	if o != nil && o.Type.IsSet() {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given NullableString and assigns it to the Type field.
+// SetType gets a reference to the given string and assigns it to the Type field.
 func (o *KubernetesEventCreateDto) SetType(v string) {
-	o.Type.Set(&v)
-}
-// SetTypeNil sets the value for Type to be an explicit nil
-func (o *KubernetesEventCreateDto) SetTypeNil() {
-	o.Type.Set(nil)
+	o.Type = &v
 }
 
-// UnsetType ensures that no value is present for Type, not even an explicit nil
-func (o *KubernetesEventCreateDto) UnsetType() {
-	o.Type.Unset()
-}
-
-// GetReason returns the Reason field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetReason returns the Reason field value if set, zero value otherwise.
 func (o *KubernetesEventCreateDto) GetReason() string {
-	if o == nil || IsNil(o.Reason.Get()) {
+	if o == nil || IsNil(o.Reason) {
 		var ret string
 		return ret
 	}
-	return *o.Reason.Get()
+	return *o.Reason
 }
 
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesEventCreateDto) GetReasonOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Reason) {
 		return nil, false
 	}
-	return o.Reason.Get(), o.Reason.IsSet()
+	return o.Reason, true
 }
 
 // HasReason returns a boolean if a field has been set.
 func (o *KubernetesEventCreateDto) HasReason() bool {
-	if o != nil && o.Reason.IsSet() {
+	if o != nil && !IsNil(o.Reason) {
 		return true
 	}
 
 	return false
 }
 
-// SetReason gets a reference to the given NullableString and assigns it to the Reason field.
+// SetReason gets a reference to the given string and assigns it to the Reason field.
 func (o *KubernetesEventCreateDto) SetReason(v string) {
-	o.Reason.Set(&v)
-}
-// SetReasonNil sets the value for Reason to be an explicit nil
-func (o *KubernetesEventCreateDto) SetReasonNil() {
-	o.Reason.Set(nil)
+	o.Reason = &v
 }
 
-// UnsetReason ensures that no value is present for Reason, not even an explicit nil
-func (o *KubernetesEventCreateDto) UnsetReason() {
-	o.Reason.Unset()
-}
-
-// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMessage returns the Message field value if set, zero value otherwise.
 func (o *KubernetesEventCreateDto) GetMessage() string {
-	if o == nil || IsNil(o.Message.Get()) {
+	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
 	}
-	return *o.Message.Get()
+	return *o.Message
 }
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesEventCreateDto) GetMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
-	return o.Message.Get(), o.Message.IsSet()
+	return o.Message, true
 }
 
 // HasMessage returns a boolean if a field has been set.
 func (o *KubernetesEventCreateDto) HasMessage() bool {
-	if o != nil && o.Message.IsSet() {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
 	return false
 }
 
-// SetMessage gets a reference to the given NullableString and assigns it to the Message field.
+// SetMessage gets a reference to the given string and assigns it to the Message field.
 func (o *KubernetesEventCreateDto) SetMessage(v string) {
-	o.Message.Set(&v)
-}
-// SetMessageNil sets the value for Message to be an explicit nil
-func (o *KubernetesEventCreateDto) SetMessageNil() {
-	o.Message.Set(nil)
-}
-
-// UnsetMessage ensures that no value is present for Message, not even an explicit nil
-func (o *KubernetesEventCreateDto) UnsetMessage() {
-	o.Message.Unset()
+	o.Message = &v
 }
 
 // GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -400,14 +370,14 @@ func (o KubernetesEventCreateDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesEventCreateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Type.IsSet() {
-		toSerialize["type"] = o.Type.Get()
+	if !IsNil(o.Type) {
+		toSerialize["type"] = o.Type
 	}
-	if o.Reason.IsSet() {
-		toSerialize["reason"] = o.Reason.Get()
+	if !IsNil(o.Reason) {
+		toSerialize["reason"] = o.Reason
 	}
-	if o.Message.IsSet() {
-		toSerialize["message"] = o.Message.Get()
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
 	}
 	if o.Metadata != nil {
 		toSerialize["metadata"] = o.Metadata

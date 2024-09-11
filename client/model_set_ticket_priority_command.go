@@ -20,7 +20,7 @@ var _ MappedNullable = &SetTicketPriorityCommand{}
 
 // SetTicketPriorityCommand struct for SetTicketPriorityCommand
 type SetTicketPriorityCommand struct {
-	Id NullableString `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Priority *TicketPriority `json:"priority,omitempty"`
 }
 
@@ -41,46 +41,36 @@ func NewSetTicketPriorityCommandWithDefaults() *SetTicketPriorityCommand {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *SetTicketPriorityCommand) GetId() string {
-	if o == nil || IsNil(o.Id.Get()) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-	return *o.Id.Get()
+	return *o.Id
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SetTicketPriorityCommand) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.Id.Get(), o.Id.IsSet()
+	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *SetTicketPriorityCommand) HasId() bool {
-	if o != nil && o.Id.IsSet() {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given NullableString and assigns it to the Id field.
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *SetTicketPriorityCommand) SetId(v string) {
-	o.Id.Set(&v)
-}
-// SetIdNil sets the value for Id to be an explicit nil
-func (o *SetTicketPriorityCommand) SetIdNil() {
-	o.Id.Set(nil)
-}
-
-// UnsetId ensures that no value is present for Id, not even an explicit nil
-func (o *SetTicketPriorityCommand) UnsetId() {
-	o.Id.Unset()
+	o.Id = &v
 }
 
 // GetPriority returns the Priority field value if set, zero value otherwise.
@@ -125,8 +115,8 @@ func (o SetTicketPriorityCommand) MarshalJSON() ([]byte, error) {
 
 func (o SetTicketPriorityCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id.IsSet() {
-		toSerialize["id"] = o.Id.Get()
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
 	if !IsNil(o.Priority) {
 		toSerialize["priority"] = o.Priority

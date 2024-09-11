@@ -21,9 +21,9 @@ var _ MappedNullable = &UpdateProxmoxCommand{}
 // UpdateProxmoxCommand struct for UpdateProxmoxCommand
 type UpdateProxmoxCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	TokenId NullableString `json:"tokenId,omitempty"`
-	TokenSecret NullableString `json:"tokenSecret,omitempty"`
+	Name *string `json:"name,omitempty"`
+	TokenId *string `json:"tokenId,omitempty"`
+	TokenSecret *string `json:"tokenSecret,omitempty"`
 }
 
 // NewUpdateProxmoxCommand instantiates a new UpdateProxmoxCommand object
@@ -75,130 +75,100 @@ func (o *UpdateProxmoxCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateProxmoxCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateProxmoxCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *UpdateProxmoxCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UpdateProxmoxCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *UpdateProxmoxCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *UpdateProxmoxCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetTokenId returns the TokenId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTokenId returns the TokenId field value if set, zero value otherwise.
 func (o *UpdateProxmoxCommand) GetTokenId() string {
-	if o == nil || IsNil(o.TokenId.Get()) {
+	if o == nil || IsNil(o.TokenId) {
 		var ret string
 		return ret
 	}
-	return *o.TokenId.Get()
+	return *o.TokenId
 }
 
 // GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateProxmoxCommand) GetTokenIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		return nil, false
 	}
-	return o.TokenId.Get(), o.TokenId.IsSet()
+	return o.TokenId, true
 }
 
 // HasTokenId returns a boolean if a field has been set.
 func (o *UpdateProxmoxCommand) HasTokenId() bool {
-	if o != nil && o.TokenId.IsSet() {
+	if o != nil && !IsNil(o.TokenId) {
 		return true
 	}
 
 	return false
 }
 
-// SetTokenId gets a reference to the given NullableString and assigns it to the TokenId field.
+// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
 func (o *UpdateProxmoxCommand) SetTokenId(v string) {
-	o.TokenId.Set(&v)
-}
-// SetTokenIdNil sets the value for TokenId to be an explicit nil
-func (o *UpdateProxmoxCommand) SetTokenIdNil() {
-	o.TokenId.Set(nil)
+	o.TokenId = &v
 }
 
-// UnsetTokenId ensures that no value is present for TokenId, not even an explicit nil
-func (o *UpdateProxmoxCommand) UnsetTokenId() {
-	o.TokenId.Unset()
-}
-
-// GetTokenSecret returns the TokenSecret field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTokenSecret returns the TokenSecret field value if set, zero value otherwise.
 func (o *UpdateProxmoxCommand) GetTokenSecret() string {
-	if o == nil || IsNil(o.TokenSecret.Get()) {
+	if o == nil || IsNil(o.TokenSecret) {
 		var ret string
 		return ret
 	}
-	return *o.TokenSecret.Get()
+	return *o.TokenSecret
 }
 
 // GetTokenSecretOk returns a tuple with the TokenSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateProxmoxCommand) GetTokenSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenSecret) {
 		return nil, false
 	}
-	return o.TokenSecret.Get(), o.TokenSecret.IsSet()
+	return o.TokenSecret, true
 }
 
 // HasTokenSecret returns a boolean if a field has been set.
 func (o *UpdateProxmoxCommand) HasTokenSecret() bool {
-	if o != nil && o.TokenSecret.IsSet() {
+	if o != nil && !IsNil(o.TokenSecret) {
 		return true
 	}
 
 	return false
 }
 
-// SetTokenSecret gets a reference to the given NullableString and assigns it to the TokenSecret field.
+// SetTokenSecret gets a reference to the given string and assigns it to the TokenSecret field.
 func (o *UpdateProxmoxCommand) SetTokenSecret(v string) {
-	o.TokenSecret.Set(&v)
-}
-// SetTokenSecretNil sets the value for TokenSecret to be an explicit nil
-func (o *UpdateProxmoxCommand) SetTokenSecretNil() {
-	o.TokenSecret.Set(nil)
-}
-
-// UnsetTokenSecret ensures that no value is present for TokenSecret, not even an explicit nil
-func (o *UpdateProxmoxCommand) UnsetTokenSecret() {
-	o.TokenSecret.Unset()
+	o.TokenSecret = &v
 }
 
 func (o UpdateProxmoxCommand) MarshalJSON() ([]byte, error) {
@@ -214,14 +184,14 @@ func (o UpdateProxmoxCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.TokenId.IsSet() {
-		toSerialize["tokenId"] = o.TokenId.Get()
+	if !IsNil(o.TokenId) {
+		toSerialize["tokenId"] = o.TokenId
 	}
-	if o.TokenSecret.IsSet() {
-		toSerialize["tokenSecret"] = o.TokenSecret.Get()
+	if !IsNil(o.TokenSecret) {
+		toSerialize["tokenSecret"] = o.TokenSecret
 	}
 	return toSerialize, nil
 }

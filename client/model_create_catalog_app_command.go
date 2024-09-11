@@ -20,10 +20,10 @@ var _ MappedNullable = &CreateCatalogAppCommand{}
 
 // CreateCatalogAppCommand struct for CreateCatalogAppCommand
 type CreateCatalogAppCommand struct {
-	RepoName NullableString `json:"repoName,omitempty"`
-	PackageName NullableString `json:"packageName,omitempty"`
+	RepoName *string `json:"repoName,omitempty"`
+	PackageName *string `json:"packageName,omitempty"`
 	CatalogId *int32 `json:"catalogId,omitempty"`
-	Version NullableString `json:"version,omitempty"`
+	Version *string `json:"version,omitempty"`
 	Parameters []CatalogAppParamsDto `json:"parameters,omitempty"`
 }
 
@@ -44,88 +44,68 @@ func NewCreateCatalogAppCommandWithDefaults() *CreateCatalogAppCommand {
 	return &this
 }
 
-// GetRepoName returns the RepoName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRepoName returns the RepoName field value if set, zero value otherwise.
 func (o *CreateCatalogAppCommand) GetRepoName() string {
-	if o == nil || IsNil(o.RepoName.Get()) {
+	if o == nil || IsNil(o.RepoName) {
 		var ret string
 		return ret
 	}
-	return *o.RepoName.Get()
+	return *o.RepoName
 }
 
 // GetRepoNameOk returns a tuple with the RepoName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateCatalogAppCommand) GetRepoNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RepoName) {
 		return nil, false
 	}
-	return o.RepoName.Get(), o.RepoName.IsSet()
+	return o.RepoName, true
 }
 
 // HasRepoName returns a boolean if a field has been set.
 func (o *CreateCatalogAppCommand) HasRepoName() bool {
-	if o != nil && o.RepoName.IsSet() {
+	if o != nil && !IsNil(o.RepoName) {
 		return true
 	}
 
 	return false
 }
 
-// SetRepoName gets a reference to the given NullableString and assigns it to the RepoName field.
+// SetRepoName gets a reference to the given string and assigns it to the RepoName field.
 func (o *CreateCatalogAppCommand) SetRepoName(v string) {
-	o.RepoName.Set(&v)
-}
-// SetRepoNameNil sets the value for RepoName to be an explicit nil
-func (o *CreateCatalogAppCommand) SetRepoNameNil() {
-	o.RepoName.Set(nil)
+	o.RepoName = &v
 }
 
-// UnsetRepoName ensures that no value is present for RepoName, not even an explicit nil
-func (o *CreateCatalogAppCommand) UnsetRepoName() {
-	o.RepoName.Unset()
-}
-
-// GetPackageName returns the PackageName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPackageName returns the PackageName field value if set, zero value otherwise.
 func (o *CreateCatalogAppCommand) GetPackageName() string {
-	if o == nil || IsNil(o.PackageName.Get()) {
+	if o == nil || IsNil(o.PackageName) {
 		var ret string
 		return ret
 	}
-	return *o.PackageName.Get()
+	return *o.PackageName
 }
 
 // GetPackageNameOk returns a tuple with the PackageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateCatalogAppCommand) GetPackageNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PackageName) {
 		return nil, false
 	}
-	return o.PackageName.Get(), o.PackageName.IsSet()
+	return o.PackageName, true
 }
 
 // HasPackageName returns a boolean if a field has been set.
 func (o *CreateCatalogAppCommand) HasPackageName() bool {
-	if o != nil && o.PackageName.IsSet() {
+	if o != nil && !IsNil(o.PackageName) {
 		return true
 	}
 
 	return false
 }
 
-// SetPackageName gets a reference to the given NullableString and assigns it to the PackageName field.
+// SetPackageName gets a reference to the given string and assigns it to the PackageName field.
 func (o *CreateCatalogAppCommand) SetPackageName(v string) {
-	o.PackageName.Set(&v)
-}
-// SetPackageNameNil sets the value for PackageName to be an explicit nil
-func (o *CreateCatalogAppCommand) SetPackageNameNil() {
-	o.PackageName.Set(nil)
-}
-
-// UnsetPackageName ensures that no value is present for PackageName, not even an explicit nil
-func (o *CreateCatalogAppCommand) UnsetPackageName() {
-	o.PackageName.Unset()
+	o.PackageName = &v
 }
 
 // GetCatalogId returns the CatalogId field value if set, zero value otherwise.
@@ -160,51 +140,41 @@ func (o *CreateCatalogAppCommand) SetCatalogId(v int32) {
 	o.CatalogId = &v
 }
 
-// GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *CreateCatalogAppCommand) GetVersion() string {
-	if o == nil || IsNil(o.Version.Get()) {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-	return *o.Version.Get()
+	return *o.Version
 }
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateCatalogAppCommand) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return o.Version.Get(), o.Version.IsSet()
+	return o.Version, true
 }
 
 // HasVersion returns a boolean if a field has been set.
 func (o *CreateCatalogAppCommand) HasVersion() bool {
-	if o != nil && o.Version.IsSet() {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
 	return false
 }
 
-// SetVersion gets a reference to the given NullableString and assigns it to the Version field.
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *CreateCatalogAppCommand) SetVersion(v string) {
-	o.Version.Set(&v)
-}
-// SetVersionNil sets the value for Version to be an explicit nil
-func (o *CreateCatalogAppCommand) SetVersionNil() {
-	o.Version.Set(nil)
+	o.Version = &v
 }
 
-// UnsetVersion ensures that no value is present for Version, not even an explicit nil
-func (o *CreateCatalogAppCommand) UnsetVersion() {
-	o.Version.Unset()
-}
-
-// GetParameters returns the Parameters field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetParameters returns the Parameters field value if set, zero value otherwise.
 func (o *CreateCatalogAppCommand) GetParameters() []CatalogAppParamsDto {
-	if o == nil {
+	if o == nil || IsNil(o.Parameters) {
 		var ret []CatalogAppParamsDto
 		return ret
 	}
@@ -213,7 +183,6 @@ func (o *CreateCatalogAppCommand) GetParameters() []CatalogAppParamsDto {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateCatalogAppCommand) GetParametersOk() ([]CatalogAppParamsDto, bool) {
 	if o == nil || IsNil(o.Parameters) {
 		return nil, false
@@ -245,19 +214,19 @@ func (o CreateCatalogAppCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateCatalogAppCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.RepoName.IsSet() {
-		toSerialize["repoName"] = o.RepoName.Get()
+	if !IsNil(o.RepoName) {
+		toSerialize["repoName"] = o.RepoName
 	}
-	if o.PackageName.IsSet() {
-		toSerialize["packageName"] = o.PackageName.Get()
+	if !IsNil(o.PackageName) {
+		toSerialize["packageName"] = o.PackageName
 	}
 	if !IsNil(o.CatalogId) {
 		toSerialize["catalogId"] = o.CatalogId
 	}
-	if o.Version.IsSet() {
-		toSerialize["version"] = o.Version.Get()
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
-	if o.Parameters != nil {
+	if !IsNil(o.Parameters) {
 		toSerialize["parameters"] = o.Parameters
 	}
 	return toSerialize, nil

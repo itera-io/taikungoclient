@@ -20,8 +20,8 @@ var _ MappedNullable = &KubernetesNodeLabelsDto{}
 
 // KubernetesNodeLabelsDto struct for KubernetesNodeLabelsDto
 type KubernetesNodeLabelsDto struct {
-	Key NullableString `json:"key,omitempty"`
-	Value NullableString `json:"value,omitempty"`
+	Key *string `json:"key,omitempty"`
+	Value *string `json:"value,omitempty"`
 }
 
 // NewKubernetesNodeLabelsDto instantiates a new KubernetesNodeLabelsDto object
@@ -41,88 +41,68 @@ func NewKubernetesNodeLabelsDtoWithDefaults() *KubernetesNodeLabelsDto {
 	return &this
 }
 
-// GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKey returns the Key field value if set, zero value otherwise.
 func (o *KubernetesNodeLabelsDto) GetKey() string {
-	if o == nil || IsNil(o.Key.Get()) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
-	return *o.Key.Get()
+	return *o.Key
 }
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeLabelsDto) GetKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
-	return o.Key.Get(), o.Key.IsSet()
+	return o.Key, true
 }
 
 // HasKey returns a boolean if a field has been set.
 func (o *KubernetesNodeLabelsDto) HasKey() bool {
-	if o != nil && o.Key.IsSet() {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
 	return false
 }
 
-// SetKey gets a reference to the given NullableString and assigns it to the Key field.
+// SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *KubernetesNodeLabelsDto) SetKey(v string) {
-	o.Key.Set(&v)
-}
-// SetKeyNil sets the value for Key to be an explicit nil
-func (o *KubernetesNodeLabelsDto) SetKeyNil() {
-	o.Key.Set(nil)
+	o.Key = &v
 }
 
-// UnsetKey ensures that no value is present for Key, not even an explicit nil
-func (o *KubernetesNodeLabelsDto) UnsetKey() {
-	o.Key.Unset()
-}
-
-// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetValue returns the Value field value if set, zero value otherwise.
 func (o *KubernetesNodeLabelsDto) GetValue() string {
-	if o == nil || IsNil(o.Value.Get()) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
-	return *o.Value.Get()
+	return *o.Value
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeLabelsDto) GetValueOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
-	return o.Value.Get(), o.Value.IsSet()
+	return o.Value, true
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *KubernetesNodeLabelsDto) HasValue() bool {
-	if o != nil && o.Value.IsSet() {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given NullableString and assigns it to the Value field.
+// SetValue gets a reference to the given string and assigns it to the Value field.
 func (o *KubernetesNodeLabelsDto) SetValue(v string) {
-	o.Value.Set(&v)
-}
-// SetValueNil sets the value for Value to be an explicit nil
-func (o *KubernetesNodeLabelsDto) SetValueNil() {
-	o.Value.Set(nil)
-}
-
-// UnsetValue ensures that no value is present for Value, not even an explicit nil
-func (o *KubernetesNodeLabelsDto) UnsetValue() {
-	o.Value.Unset()
+	o.Value = &v
 }
 
 func (o KubernetesNodeLabelsDto) MarshalJSON() ([]byte, error) {
@@ -135,11 +115,11 @@ func (o KubernetesNodeLabelsDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesNodeLabelsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Key.IsSet() {
-		toSerialize["key"] = o.Key.Get()
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
 	}
-	if o.Value.IsSet() {
-		toSerialize["value"] = o.Value.Get()
+	if !IsNil(o.Value) {
+		toSerialize["value"] = o.Value
 	}
 	return toSerialize, nil
 }

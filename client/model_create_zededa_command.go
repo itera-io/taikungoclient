@@ -20,11 +20,11 @@ var _ MappedNullable = &CreateZededaCommand{}
 
 // CreateZededaCommand struct for CreateZededaCommand
 type CreateZededaCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	ApiToken NullableString `json:"apiToken,omitempty"`
-	ApiUrl NullableString `json:"apiUrl,omitempty"`
-	Project NullableString `json:"project,omitempty"`
-	Continent NullableString `json:"continent,omitempty"`
+	Name *string `json:"name,omitempty"`
+	ApiToken *string `json:"apiToken,omitempty"`
+	ApiUrl *string `json:"apiUrl,omitempty"`
+	Project *string `json:"project,omitempty"`
+	Continent *string `json:"continent,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	EdgeNodes []string `json:"edgeNodes,omitempty"`
 	PublicNetwork *CreateZededaNetworkDto `json:"publicNetwork,omitempty"`
@@ -48,214 +48,164 @@ func NewCreateZededaCommandWithDefaults() *CreateZededaCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateZededaCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZededaCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateZededaCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateZededaCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *CreateZededaCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *CreateZededaCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetApiToken returns the ApiToken field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetApiToken returns the ApiToken field value if set, zero value otherwise.
 func (o *CreateZededaCommand) GetApiToken() string {
-	if o == nil || IsNil(o.ApiToken.Get()) {
+	if o == nil || IsNil(o.ApiToken) {
 		var ret string
 		return ret
 	}
-	return *o.ApiToken.Get()
+	return *o.ApiToken
 }
 
 // GetApiTokenOk returns a tuple with the ApiToken field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZededaCommand) GetApiTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ApiToken) {
 		return nil, false
 	}
-	return o.ApiToken.Get(), o.ApiToken.IsSet()
+	return o.ApiToken, true
 }
 
 // HasApiToken returns a boolean if a field has been set.
 func (o *CreateZededaCommand) HasApiToken() bool {
-	if o != nil && o.ApiToken.IsSet() {
+	if o != nil && !IsNil(o.ApiToken) {
 		return true
 	}
 
 	return false
 }
 
-// SetApiToken gets a reference to the given NullableString and assigns it to the ApiToken field.
+// SetApiToken gets a reference to the given string and assigns it to the ApiToken field.
 func (o *CreateZededaCommand) SetApiToken(v string) {
-	o.ApiToken.Set(&v)
-}
-// SetApiTokenNil sets the value for ApiToken to be an explicit nil
-func (o *CreateZededaCommand) SetApiTokenNil() {
-	o.ApiToken.Set(nil)
+	o.ApiToken = &v
 }
 
-// UnsetApiToken ensures that no value is present for ApiToken, not even an explicit nil
-func (o *CreateZededaCommand) UnsetApiToken() {
-	o.ApiToken.Unset()
-}
-
-// GetApiUrl returns the ApiUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetApiUrl returns the ApiUrl field value if set, zero value otherwise.
 func (o *CreateZededaCommand) GetApiUrl() string {
-	if o == nil || IsNil(o.ApiUrl.Get()) {
+	if o == nil || IsNil(o.ApiUrl) {
 		var ret string
 		return ret
 	}
-	return *o.ApiUrl.Get()
+	return *o.ApiUrl
 }
 
 // GetApiUrlOk returns a tuple with the ApiUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZededaCommand) GetApiUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ApiUrl) {
 		return nil, false
 	}
-	return o.ApiUrl.Get(), o.ApiUrl.IsSet()
+	return o.ApiUrl, true
 }
 
 // HasApiUrl returns a boolean if a field has been set.
 func (o *CreateZededaCommand) HasApiUrl() bool {
-	if o != nil && o.ApiUrl.IsSet() {
+	if o != nil && !IsNil(o.ApiUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetApiUrl gets a reference to the given NullableString and assigns it to the ApiUrl field.
+// SetApiUrl gets a reference to the given string and assigns it to the ApiUrl field.
 func (o *CreateZededaCommand) SetApiUrl(v string) {
-	o.ApiUrl.Set(&v)
-}
-// SetApiUrlNil sets the value for ApiUrl to be an explicit nil
-func (o *CreateZededaCommand) SetApiUrlNil() {
-	o.ApiUrl.Set(nil)
+	o.ApiUrl = &v
 }
 
-// UnsetApiUrl ensures that no value is present for ApiUrl, not even an explicit nil
-func (o *CreateZededaCommand) UnsetApiUrl() {
-	o.ApiUrl.Unset()
-}
-
-// GetProject returns the Project field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProject returns the Project field value if set, zero value otherwise.
 func (o *CreateZededaCommand) GetProject() string {
-	if o == nil || IsNil(o.Project.Get()) {
+	if o == nil || IsNil(o.Project) {
 		var ret string
 		return ret
 	}
-	return *o.Project.Get()
+	return *o.Project
 }
 
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZededaCommand) GetProjectOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Project) {
 		return nil, false
 	}
-	return o.Project.Get(), o.Project.IsSet()
+	return o.Project, true
 }
 
 // HasProject returns a boolean if a field has been set.
 func (o *CreateZededaCommand) HasProject() bool {
-	if o != nil && o.Project.IsSet() {
+	if o != nil && !IsNil(o.Project) {
 		return true
 	}
 
 	return false
 }
 
-// SetProject gets a reference to the given NullableString and assigns it to the Project field.
+// SetProject gets a reference to the given string and assigns it to the Project field.
 func (o *CreateZededaCommand) SetProject(v string) {
-	o.Project.Set(&v)
-}
-// SetProjectNil sets the value for Project to be an explicit nil
-func (o *CreateZededaCommand) SetProjectNil() {
-	o.Project.Set(nil)
+	o.Project = &v
 }
 
-// UnsetProject ensures that no value is present for Project, not even an explicit nil
-func (o *CreateZededaCommand) UnsetProject() {
-	o.Project.Unset()
-}
-
-// GetContinent returns the Continent field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetContinent returns the Continent field value if set, zero value otherwise.
 func (o *CreateZededaCommand) GetContinent() string {
-	if o == nil || IsNil(o.Continent.Get()) {
+	if o == nil || IsNil(o.Continent) {
 		var ret string
 		return ret
 	}
-	return *o.Continent.Get()
+	return *o.Continent
 }
 
 // GetContinentOk returns a tuple with the Continent field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZededaCommand) GetContinentOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Continent) {
 		return nil, false
 	}
-	return o.Continent.Get(), o.Continent.IsSet()
+	return o.Continent, true
 }
 
 // HasContinent returns a boolean if a field has been set.
 func (o *CreateZededaCommand) HasContinent() bool {
-	if o != nil && o.Continent.IsSet() {
+	if o != nil && !IsNil(o.Continent) {
 		return true
 	}
 
 	return false
 }
 
-// SetContinent gets a reference to the given NullableString and assigns it to the Continent field.
+// SetContinent gets a reference to the given string and assigns it to the Continent field.
 func (o *CreateZededaCommand) SetContinent(v string) {
-	o.Continent.Set(&v)
-}
-// SetContinentNil sets the value for Continent to be an explicit nil
-func (o *CreateZededaCommand) SetContinentNil() {
-	o.Continent.Set(nil)
-}
-
-// UnsetContinent ensures that no value is present for Continent, not even an explicit nil
-func (o *CreateZededaCommand) UnsetContinent() {
-	o.Continent.Unset()
+	o.Continent = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -300,9 +250,9 @@ func (o *CreateZededaCommand) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
-// GetEdgeNodes returns the EdgeNodes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEdgeNodes returns the EdgeNodes field value if set, zero value otherwise.
 func (o *CreateZededaCommand) GetEdgeNodes() []string {
-	if o == nil {
+	if o == nil || IsNil(o.EdgeNodes) {
 		var ret []string
 		return ret
 	}
@@ -311,7 +261,6 @@ func (o *CreateZededaCommand) GetEdgeNodes() []string {
 
 // GetEdgeNodesOk returns a tuple with the EdgeNodes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateZededaCommand) GetEdgeNodesOk() ([]string, bool) {
 	if o == nil || IsNil(o.EdgeNodes) {
 		return nil, false
@@ -407,25 +356,25 @@ func (o CreateZededaCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateZededaCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.ApiToken.IsSet() {
-		toSerialize["apiToken"] = o.ApiToken.Get()
+	if !IsNil(o.ApiToken) {
+		toSerialize["apiToken"] = o.ApiToken
 	}
-	if o.ApiUrl.IsSet() {
-		toSerialize["apiUrl"] = o.ApiUrl.Get()
+	if !IsNil(o.ApiUrl) {
+		toSerialize["apiUrl"] = o.ApiUrl
 	}
-	if o.Project.IsSet() {
-		toSerialize["project"] = o.Project.Get()
+	if !IsNil(o.Project) {
+		toSerialize["project"] = o.Project
 	}
-	if o.Continent.IsSet() {
-		toSerialize["continent"] = o.Continent.Get()
+	if !IsNil(o.Continent) {
+		toSerialize["continent"] = o.Continent
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
-	if o.EdgeNodes != nil {
+	if !IsNil(o.EdgeNodes) {
 		toSerialize["edgeNodes"] = o.EdgeNodes
 	}
 	if !IsNil(o.PublicNetwork) {

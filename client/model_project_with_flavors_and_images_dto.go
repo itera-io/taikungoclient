@@ -21,7 +21,7 @@ var _ MappedNullable = &ProjectWithFlavorsAndImagesDto{}
 // ProjectWithFlavorsAndImagesDto struct for ProjectWithFlavorsAndImagesDto
 type ProjectWithFlavorsAndImagesDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Flavors []string `json:"flavors,omitempty"`
 	Images []string `json:"images,omitempty"`
 	ImageNames []string `json:"imageNames,omitempty"`
@@ -77,51 +77,41 @@ func (o *ProjectWithFlavorsAndImagesDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ProjectWithFlavorsAndImagesDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectWithFlavorsAndImagesDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ProjectWithFlavorsAndImagesDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ProjectWithFlavorsAndImagesDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ProjectWithFlavorsAndImagesDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ProjectWithFlavorsAndImagesDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetFlavors returns the Flavors field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFlavors returns the Flavors field value if set, zero value otherwise.
 func (o *ProjectWithFlavorsAndImagesDto) GetFlavors() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Flavors) {
 		var ret []string
 		return ret
 	}
@@ -130,7 +120,6 @@ func (o *ProjectWithFlavorsAndImagesDto) GetFlavors() []string {
 
 // GetFlavorsOk returns a tuple with the Flavors field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectWithFlavorsAndImagesDto) GetFlavorsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Flavors) {
 		return nil, false
@@ -152,9 +141,9 @@ func (o *ProjectWithFlavorsAndImagesDto) SetFlavors(v []string) {
 	o.Flavors = v
 }
 
-// GetImages returns the Images field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetImages returns the Images field value if set, zero value otherwise.
 func (o *ProjectWithFlavorsAndImagesDto) GetImages() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Images) {
 		var ret []string
 		return ret
 	}
@@ -163,7 +152,6 @@ func (o *ProjectWithFlavorsAndImagesDto) GetImages() []string {
 
 // GetImagesOk returns a tuple with the Images field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectWithFlavorsAndImagesDto) GetImagesOk() ([]string, bool) {
 	if o == nil || IsNil(o.Images) {
 		return nil, false
@@ -185,9 +173,9 @@ func (o *ProjectWithFlavorsAndImagesDto) SetImages(v []string) {
 	o.Images = v
 }
 
-// GetImageNames returns the ImageNames field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetImageNames returns the ImageNames field value if set, zero value otherwise.
 func (o *ProjectWithFlavorsAndImagesDto) GetImageNames() []string {
-	if o == nil {
+	if o == nil || IsNil(o.ImageNames) {
 		var ret []string
 		return ret
 	}
@@ -196,7 +184,6 @@ func (o *ProjectWithFlavorsAndImagesDto) GetImageNames() []string {
 
 // GetImageNamesOk returns a tuple with the ImageNames field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectWithFlavorsAndImagesDto) GetImageNamesOk() ([]string, bool) {
 	if o == nil || IsNil(o.ImageNames) {
 		return nil, false
@@ -263,16 +250,16 @@ func (o ProjectWithFlavorsAndImagesDto) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.Flavors != nil {
+	if !IsNil(o.Flavors) {
 		toSerialize["flavors"] = o.Flavors
 	}
-	if o.Images != nil {
+	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
 	}
-	if o.ImageNames != nil {
+	if !IsNil(o.ImageNames) {
 		toSerialize["imageNames"] = o.ImageNames
 	}
 	if !IsNil(o.IsReady) {

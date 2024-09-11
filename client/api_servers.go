@@ -248,6 +248,9 @@ func (a *ServersAPIService) ServersCreateExecute(r ApiServersCreateRequest) (*Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.serverForCreateDto == nil {
+		return localVarReturnValue, nil, reportError("serverForCreateDto is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -437,16 +440,19 @@ func (a *ServersAPIService) ServersDetailsExecute(r ApiServersDetailsRequest) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.withAutoscalingGroup == nil {
+		return localVarReturnValue, nil, reportError("withAutoscalingGroup is required and must be specified")
+	}
 
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.withAutoscalingGroup != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "WithAutoscalingGroup", r.withAutoscalingGroup, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "WithAutoscalingGroup", r.withAutoscalingGroup, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -572,12 +578,14 @@ func (a *ServersAPIService) ServersDetailsExecute(r ApiServersDetailsRequest) (*
 type ApiServersListRequest struct {
 	ctx context.Context
 	ApiService *ServersAPIService
-	limit *int32
-	offset *int32
-	projectId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
+	filterBy *string
+	autoscalingGroup *string
+	limit *int32
+	offset *int32
+	projectId *int32
 	startRam *float64
 	endRam *float64
 	startDiskSize *int64
@@ -586,23 +594,6 @@ type ApiServersListRequest struct {
 	endCpu *int32
 	organizationId *int32
 	id *int32
-	filterBy *string
-	autoscalingGroup *string
-}
-
-func (r ApiServersListRequest) Limit(limit int32) ApiServersListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiServersListRequest) Offset(offset int32) ApiServersListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiServersListRequest) ProjectId(projectId int32) ApiServersListRequest {
-	r.projectId = &projectId
-	return r
 }
 
 func (r ApiServersListRequest) SortBy(sortBy string) ApiServersListRequest {
@@ -617,6 +608,31 @@ func (r ApiServersListRequest) SortDirection(sortDirection string) ApiServersLis
 
 func (r ApiServersListRequest) Search(search string) ApiServersListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiServersListRequest) FilterBy(filterBy string) ApiServersListRequest {
+	r.filterBy = &filterBy
+	return r
+}
+
+func (r ApiServersListRequest) AutoscalingGroup(autoscalingGroup string) ApiServersListRequest {
+	r.autoscalingGroup = &autoscalingGroup
+	return r
+}
+
+func (r ApiServersListRequest) Limit(limit int32) ApiServersListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiServersListRequest) Offset(offset int32) ApiServersListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiServersListRequest) ProjectId(projectId int32) ApiServersListRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -660,16 +676,6 @@ func (r ApiServersListRequest) Id(id int32) ApiServersListRequest {
 	return r
 }
 
-func (r ApiServersListRequest) FilterBy(filterBy string) ApiServersListRequest {
-	r.filterBy = &filterBy
-	return r
-}
-
-func (r ApiServersListRequest) AutoscalingGroup(autoscalingGroup string) ApiServersListRequest {
-	r.autoscalingGroup = &autoscalingGroup
-	return r
-}
-
 func (r ApiServersListRequest) Execute() (*ServersList, *http.Response, error) {
 	return r.ApiService.ServersListExecute(r)
 }
@@ -707,6 +713,21 @@ func (a *ServersAPIService) ServersListExecute(r ApiServersListRequest) (*Server
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.filterBy == nil {
+		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
+	}
+	if r.autoscalingGroup == nil {
+		return localVarReturnValue, nil, reportError("autoscalingGroup is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -717,15 +738,9 @@ func (a *ServersAPIService) ServersListExecute(r ApiServersListRequest) (*Server
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	if r.startRam != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
@@ -750,12 +765,8 @@ func (a *ServersAPIService) ServersListExecute(r ApiServersListRequest) (*Server
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
-	if r.filterBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
-	}
-	if r.autoscalingGroup != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "AutoscalingGroup", r.autoscalingGroup, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "AutoscalingGroup", r.autoscalingGroup, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1089,6 +1100,9 @@ func (a *ServersAPIService) ServersResetExecute(r ApiServersResetRequest) (*http
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.resetServerStatusCommand == nil {
+		return nil, reportError("resetServerStatusCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1424,6 +1438,9 @@ func (a *ServersAPIService) ServersUpdateByProjectIdExecute(r ApiServersUpdateBy
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateServerHealthDto == nil {
+		return nil, reportError("updateServerHealthDto is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

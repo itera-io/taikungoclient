@@ -20,14 +20,14 @@ var _ MappedNullable = &Metadata{}
 
 // Metadata struct for Metadata
 type Metadata struct {
-	InfracostCommand NullableString `json:"infracostCommand,omitempty"`
-	VcsBranch NullableString `json:"vcsBranch,omitempty"`
-	VcsCommitSha NullableString `json:"vcsCommitSha,omitempty"`
-	VcsCommitAuthorName NullableString `json:"vcsCommitAuthorName,omitempty"`
-	VcsCommitAuthorEmail NullableString `json:"vcsCommitAuthorEmail,omitempty"`
-	VcsCommitTimestamp NullableString `json:"vcsCommitTimestamp,omitempty"`
-	VcsCommitMessage NullableString `json:"vcsCommitMessage,omitempty"`
-	VcsRepositoryUrl NullableString `json:"vcsRepositoryUrl,omitempty"`
+	InfracostCommand *string `json:"infracostCommand,omitempty"`
+	VcsBranch *string `json:"vcsBranch,omitempty"`
+	VcsCommitSha *string `json:"vcsCommitSha,omitempty"`
+	VcsCommitAuthorName *string `json:"vcsCommitAuthorName,omitempty"`
+	VcsCommitAuthorEmail *string `json:"vcsCommitAuthorEmail,omitempty"`
+	VcsCommitTimestamp *string `json:"vcsCommitTimestamp,omitempty"`
+	VcsCommitMessage *string `json:"vcsCommitMessage,omitempty"`
+	VcsRepositoryUrl *string `json:"vcsRepositoryUrl,omitempty"`
 	UsageApiEnabled *bool `json:"usageApiEnabled,omitempty"`
 }
 
@@ -48,340 +48,260 @@ func NewMetadataWithDefaults() *Metadata {
 	return &this
 }
 
-// GetInfracostCommand returns the InfracostCommand field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInfracostCommand returns the InfracostCommand field value if set, zero value otherwise.
 func (o *Metadata) GetInfracostCommand() string {
-	if o == nil || IsNil(o.InfracostCommand.Get()) {
+	if o == nil || IsNil(o.InfracostCommand) {
 		var ret string
 		return ret
 	}
-	return *o.InfracostCommand.Get()
+	return *o.InfracostCommand
 }
 
 // GetInfracostCommandOk returns a tuple with the InfracostCommand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Metadata) GetInfracostCommandOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InfracostCommand) {
 		return nil, false
 	}
-	return o.InfracostCommand.Get(), o.InfracostCommand.IsSet()
+	return o.InfracostCommand, true
 }
 
 // HasInfracostCommand returns a boolean if a field has been set.
 func (o *Metadata) HasInfracostCommand() bool {
-	if o != nil && o.InfracostCommand.IsSet() {
+	if o != nil && !IsNil(o.InfracostCommand) {
 		return true
 	}
 
 	return false
 }
 
-// SetInfracostCommand gets a reference to the given NullableString and assigns it to the InfracostCommand field.
+// SetInfracostCommand gets a reference to the given string and assigns it to the InfracostCommand field.
 func (o *Metadata) SetInfracostCommand(v string) {
-	o.InfracostCommand.Set(&v)
-}
-// SetInfracostCommandNil sets the value for InfracostCommand to be an explicit nil
-func (o *Metadata) SetInfracostCommandNil() {
-	o.InfracostCommand.Set(nil)
+	o.InfracostCommand = &v
 }
 
-// UnsetInfracostCommand ensures that no value is present for InfracostCommand, not even an explicit nil
-func (o *Metadata) UnsetInfracostCommand() {
-	o.InfracostCommand.Unset()
-}
-
-// GetVcsBranch returns the VcsBranch field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVcsBranch returns the VcsBranch field value if set, zero value otherwise.
 func (o *Metadata) GetVcsBranch() string {
-	if o == nil || IsNil(o.VcsBranch.Get()) {
+	if o == nil || IsNil(o.VcsBranch) {
 		var ret string
 		return ret
 	}
-	return *o.VcsBranch.Get()
+	return *o.VcsBranch
 }
 
 // GetVcsBranchOk returns a tuple with the VcsBranch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Metadata) GetVcsBranchOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VcsBranch) {
 		return nil, false
 	}
-	return o.VcsBranch.Get(), o.VcsBranch.IsSet()
+	return o.VcsBranch, true
 }
 
 // HasVcsBranch returns a boolean if a field has been set.
 func (o *Metadata) HasVcsBranch() bool {
-	if o != nil && o.VcsBranch.IsSet() {
+	if o != nil && !IsNil(o.VcsBranch) {
 		return true
 	}
 
 	return false
 }
 
-// SetVcsBranch gets a reference to the given NullableString and assigns it to the VcsBranch field.
+// SetVcsBranch gets a reference to the given string and assigns it to the VcsBranch field.
 func (o *Metadata) SetVcsBranch(v string) {
-	o.VcsBranch.Set(&v)
-}
-// SetVcsBranchNil sets the value for VcsBranch to be an explicit nil
-func (o *Metadata) SetVcsBranchNil() {
-	o.VcsBranch.Set(nil)
+	o.VcsBranch = &v
 }
 
-// UnsetVcsBranch ensures that no value is present for VcsBranch, not even an explicit nil
-func (o *Metadata) UnsetVcsBranch() {
-	o.VcsBranch.Unset()
-}
-
-// GetVcsCommitSha returns the VcsCommitSha field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVcsCommitSha returns the VcsCommitSha field value if set, zero value otherwise.
 func (o *Metadata) GetVcsCommitSha() string {
-	if o == nil || IsNil(o.VcsCommitSha.Get()) {
+	if o == nil || IsNil(o.VcsCommitSha) {
 		var ret string
 		return ret
 	}
-	return *o.VcsCommitSha.Get()
+	return *o.VcsCommitSha
 }
 
 // GetVcsCommitShaOk returns a tuple with the VcsCommitSha field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Metadata) GetVcsCommitShaOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VcsCommitSha) {
 		return nil, false
 	}
-	return o.VcsCommitSha.Get(), o.VcsCommitSha.IsSet()
+	return o.VcsCommitSha, true
 }
 
 // HasVcsCommitSha returns a boolean if a field has been set.
 func (o *Metadata) HasVcsCommitSha() bool {
-	if o != nil && o.VcsCommitSha.IsSet() {
+	if o != nil && !IsNil(o.VcsCommitSha) {
 		return true
 	}
 
 	return false
 }
 
-// SetVcsCommitSha gets a reference to the given NullableString and assigns it to the VcsCommitSha field.
+// SetVcsCommitSha gets a reference to the given string and assigns it to the VcsCommitSha field.
 func (o *Metadata) SetVcsCommitSha(v string) {
-	o.VcsCommitSha.Set(&v)
-}
-// SetVcsCommitShaNil sets the value for VcsCommitSha to be an explicit nil
-func (o *Metadata) SetVcsCommitShaNil() {
-	o.VcsCommitSha.Set(nil)
+	o.VcsCommitSha = &v
 }
 
-// UnsetVcsCommitSha ensures that no value is present for VcsCommitSha, not even an explicit nil
-func (o *Metadata) UnsetVcsCommitSha() {
-	o.VcsCommitSha.Unset()
-}
-
-// GetVcsCommitAuthorName returns the VcsCommitAuthorName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVcsCommitAuthorName returns the VcsCommitAuthorName field value if set, zero value otherwise.
 func (o *Metadata) GetVcsCommitAuthorName() string {
-	if o == nil || IsNil(o.VcsCommitAuthorName.Get()) {
+	if o == nil || IsNil(o.VcsCommitAuthorName) {
 		var ret string
 		return ret
 	}
-	return *o.VcsCommitAuthorName.Get()
+	return *o.VcsCommitAuthorName
 }
 
 // GetVcsCommitAuthorNameOk returns a tuple with the VcsCommitAuthorName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Metadata) GetVcsCommitAuthorNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VcsCommitAuthorName) {
 		return nil, false
 	}
-	return o.VcsCommitAuthorName.Get(), o.VcsCommitAuthorName.IsSet()
+	return o.VcsCommitAuthorName, true
 }
 
 // HasVcsCommitAuthorName returns a boolean if a field has been set.
 func (o *Metadata) HasVcsCommitAuthorName() bool {
-	if o != nil && o.VcsCommitAuthorName.IsSet() {
+	if o != nil && !IsNil(o.VcsCommitAuthorName) {
 		return true
 	}
 
 	return false
 }
 
-// SetVcsCommitAuthorName gets a reference to the given NullableString and assigns it to the VcsCommitAuthorName field.
+// SetVcsCommitAuthorName gets a reference to the given string and assigns it to the VcsCommitAuthorName field.
 func (o *Metadata) SetVcsCommitAuthorName(v string) {
-	o.VcsCommitAuthorName.Set(&v)
-}
-// SetVcsCommitAuthorNameNil sets the value for VcsCommitAuthorName to be an explicit nil
-func (o *Metadata) SetVcsCommitAuthorNameNil() {
-	o.VcsCommitAuthorName.Set(nil)
+	o.VcsCommitAuthorName = &v
 }
 
-// UnsetVcsCommitAuthorName ensures that no value is present for VcsCommitAuthorName, not even an explicit nil
-func (o *Metadata) UnsetVcsCommitAuthorName() {
-	o.VcsCommitAuthorName.Unset()
-}
-
-// GetVcsCommitAuthorEmail returns the VcsCommitAuthorEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVcsCommitAuthorEmail returns the VcsCommitAuthorEmail field value if set, zero value otherwise.
 func (o *Metadata) GetVcsCommitAuthorEmail() string {
-	if o == nil || IsNil(o.VcsCommitAuthorEmail.Get()) {
+	if o == nil || IsNil(o.VcsCommitAuthorEmail) {
 		var ret string
 		return ret
 	}
-	return *o.VcsCommitAuthorEmail.Get()
+	return *o.VcsCommitAuthorEmail
 }
 
 // GetVcsCommitAuthorEmailOk returns a tuple with the VcsCommitAuthorEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Metadata) GetVcsCommitAuthorEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VcsCommitAuthorEmail) {
 		return nil, false
 	}
-	return o.VcsCommitAuthorEmail.Get(), o.VcsCommitAuthorEmail.IsSet()
+	return o.VcsCommitAuthorEmail, true
 }
 
 // HasVcsCommitAuthorEmail returns a boolean if a field has been set.
 func (o *Metadata) HasVcsCommitAuthorEmail() bool {
-	if o != nil && o.VcsCommitAuthorEmail.IsSet() {
+	if o != nil && !IsNil(o.VcsCommitAuthorEmail) {
 		return true
 	}
 
 	return false
 }
 
-// SetVcsCommitAuthorEmail gets a reference to the given NullableString and assigns it to the VcsCommitAuthorEmail field.
+// SetVcsCommitAuthorEmail gets a reference to the given string and assigns it to the VcsCommitAuthorEmail field.
 func (o *Metadata) SetVcsCommitAuthorEmail(v string) {
-	o.VcsCommitAuthorEmail.Set(&v)
-}
-// SetVcsCommitAuthorEmailNil sets the value for VcsCommitAuthorEmail to be an explicit nil
-func (o *Metadata) SetVcsCommitAuthorEmailNil() {
-	o.VcsCommitAuthorEmail.Set(nil)
+	o.VcsCommitAuthorEmail = &v
 }
 
-// UnsetVcsCommitAuthorEmail ensures that no value is present for VcsCommitAuthorEmail, not even an explicit nil
-func (o *Metadata) UnsetVcsCommitAuthorEmail() {
-	o.VcsCommitAuthorEmail.Unset()
-}
-
-// GetVcsCommitTimestamp returns the VcsCommitTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVcsCommitTimestamp returns the VcsCommitTimestamp field value if set, zero value otherwise.
 func (o *Metadata) GetVcsCommitTimestamp() string {
-	if o == nil || IsNil(o.VcsCommitTimestamp.Get()) {
+	if o == nil || IsNil(o.VcsCommitTimestamp) {
 		var ret string
 		return ret
 	}
-	return *o.VcsCommitTimestamp.Get()
+	return *o.VcsCommitTimestamp
 }
 
 // GetVcsCommitTimestampOk returns a tuple with the VcsCommitTimestamp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Metadata) GetVcsCommitTimestampOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VcsCommitTimestamp) {
 		return nil, false
 	}
-	return o.VcsCommitTimestamp.Get(), o.VcsCommitTimestamp.IsSet()
+	return o.VcsCommitTimestamp, true
 }
 
 // HasVcsCommitTimestamp returns a boolean if a field has been set.
 func (o *Metadata) HasVcsCommitTimestamp() bool {
-	if o != nil && o.VcsCommitTimestamp.IsSet() {
+	if o != nil && !IsNil(o.VcsCommitTimestamp) {
 		return true
 	}
 
 	return false
 }
 
-// SetVcsCommitTimestamp gets a reference to the given NullableString and assigns it to the VcsCommitTimestamp field.
+// SetVcsCommitTimestamp gets a reference to the given string and assigns it to the VcsCommitTimestamp field.
 func (o *Metadata) SetVcsCommitTimestamp(v string) {
-	o.VcsCommitTimestamp.Set(&v)
-}
-// SetVcsCommitTimestampNil sets the value for VcsCommitTimestamp to be an explicit nil
-func (o *Metadata) SetVcsCommitTimestampNil() {
-	o.VcsCommitTimestamp.Set(nil)
+	o.VcsCommitTimestamp = &v
 }
 
-// UnsetVcsCommitTimestamp ensures that no value is present for VcsCommitTimestamp, not even an explicit nil
-func (o *Metadata) UnsetVcsCommitTimestamp() {
-	o.VcsCommitTimestamp.Unset()
-}
-
-// GetVcsCommitMessage returns the VcsCommitMessage field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVcsCommitMessage returns the VcsCommitMessage field value if set, zero value otherwise.
 func (o *Metadata) GetVcsCommitMessage() string {
-	if o == nil || IsNil(o.VcsCommitMessage.Get()) {
+	if o == nil || IsNil(o.VcsCommitMessage) {
 		var ret string
 		return ret
 	}
-	return *o.VcsCommitMessage.Get()
+	return *o.VcsCommitMessage
 }
 
 // GetVcsCommitMessageOk returns a tuple with the VcsCommitMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Metadata) GetVcsCommitMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VcsCommitMessage) {
 		return nil, false
 	}
-	return o.VcsCommitMessage.Get(), o.VcsCommitMessage.IsSet()
+	return o.VcsCommitMessage, true
 }
 
 // HasVcsCommitMessage returns a boolean if a field has been set.
 func (o *Metadata) HasVcsCommitMessage() bool {
-	if o != nil && o.VcsCommitMessage.IsSet() {
+	if o != nil && !IsNil(o.VcsCommitMessage) {
 		return true
 	}
 
 	return false
 }
 
-// SetVcsCommitMessage gets a reference to the given NullableString and assigns it to the VcsCommitMessage field.
+// SetVcsCommitMessage gets a reference to the given string and assigns it to the VcsCommitMessage field.
 func (o *Metadata) SetVcsCommitMessage(v string) {
-	o.VcsCommitMessage.Set(&v)
-}
-// SetVcsCommitMessageNil sets the value for VcsCommitMessage to be an explicit nil
-func (o *Metadata) SetVcsCommitMessageNil() {
-	o.VcsCommitMessage.Set(nil)
+	o.VcsCommitMessage = &v
 }
 
-// UnsetVcsCommitMessage ensures that no value is present for VcsCommitMessage, not even an explicit nil
-func (o *Metadata) UnsetVcsCommitMessage() {
-	o.VcsCommitMessage.Unset()
-}
-
-// GetVcsRepositoryUrl returns the VcsRepositoryUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVcsRepositoryUrl returns the VcsRepositoryUrl field value if set, zero value otherwise.
 func (o *Metadata) GetVcsRepositoryUrl() string {
-	if o == nil || IsNil(o.VcsRepositoryUrl.Get()) {
+	if o == nil || IsNil(o.VcsRepositoryUrl) {
 		var ret string
 		return ret
 	}
-	return *o.VcsRepositoryUrl.Get()
+	return *o.VcsRepositoryUrl
 }
 
 // GetVcsRepositoryUrlOk returns a tuple with the VcsRepositoryUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Metadata) GetVcsRepositoryUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VcsRepositoryUrl) {
 		return nil, false
 	}
-	return o.VcsRepositoryUrl.Get(), o.VcsRepositoryUrl.IsSet()
+	return o.VcsRepositoryUrl, true
 }
 
 // HasVcsRepositoryUrl returns a boolean if a field has been set.
 func (o *Metadata) HasVcsRepositoryUrl() bool {
-	if o != nil && o.VcsRepositoryUrl.IsSet() {
+	if o != nil && !IsNil(o.VcsRepositoryUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetVcsRepositoryUrl gets a reference to the given NullableString and assigns it to the VcsRepositoryUrl field.
+// SetVcsRepositoryUrl gets a reference to the given string and assigns it to the VcsRepositoryUrl field.
 func (o *Metadata) SetVcsRepositoryUrl(v string) {
-	o.VcsRepositoryUrl.Set(&v)
-}
-// SetVcsRepositoryUrlNil sets the value for VcsRepositoryUrl to be an explicit nil
-func (o *Metadata) SetVcsRepositoryUrlNil() {
-	o.VcsRepositoryUrl.Set(nil)
-}
-
-// UnsetVcsRepositoryUrl ensures that no value is present for VcsRepositoryUrl, not even an explicit nil
-func (o *Metadata) UnsetVcsRepositoryUrl() {
-	o.VcsRepositoryUrl.Unset()
+	o.VcsRepositoryUrl = &v
 }
 
 // GetUsageApiEnabled returns the UsageApiEnabled field value if set, zero value otherwise.
@@ -426,29 +346,29 @@ func (o Metadata) MarshalJSON() ([]byte, error) {
 
 func (o Metadata) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.InfracostCommand.IsSet() {
-		toSerialize["infracostCommand"] = o.InfracostCommand.Get()
+	if !IsNil(o.InfracostCommand) {
+		toSerialize["infracostCommand"] = o.InfracostCommand
 	}
-	if o.VcsBranch.IsSet() {
-		toSerialize["vcsBranch"] = o.VcsBranch.Get()
+	if !IsNil(o.VcsBranch) {
+		toSerialize["vcsBranch"] = o.VcsBranch
 	}
-	if o.VcsCommitSha.IsSet() {
-		toSerialize["vcsCommitSha"] = o.VcsCommitSha.Get()
+	if !IsNil(o.VcsCommitSha) {
+		toSerialize["vcsCommitSha"] = o.VcsCommitSha
 	}
-	if o.VcsCommitAuthorName.IsSet() {
-		toSerialize["vcsCommitAuthorName"] = o.VcsCommitAuthorName.Get()
+	if !IsNil(o.VcsCommitAuthorName) {
+		toSerialize["vcsCommitAuthorName"] = o.VcsCommitAuthorName
 	}
-	if o.VcsCommitAuthorEmail.IsSet() {
-		toSerialize["vcsCommitAuthorEmail"] = o.VcsCommitAuthorEmail.Get()
+	if !IsNil(o.VcsCommitAuthorEmail) {
+		toSerialize["vcsCommitAuthorEmail"] = o.VcsCommitAuthorEmail
 	}
-	if o.VcsCommitTimestamp.IsSet() {
-		toSerialize["vcsCommitTimestamp"] = o.VcsCommitTimestamp.Get()
+	if !IsNil(o.VcsCommitTimestamp) {
+		toSerialize["vcsCommitTimestamp"] = o.VcsCommitTimestamp
 	}
-	if o.VcsCommitMessage.IsSet() {
-		toSerialize["vcsCommitMessage"] = o.VcsCommitMessage.Get()
+	if !IsNil(o.VcsCommitMessage) {
+		toSerialize["vcsCommitMessage"] = o.VcsCommitMessage
 	}
-	if o.VcsRepositoryUrl.IsSet() {
-		toSerialize["vcsRepositoryUrl"] = o.VcsRepositoryUrl.Get()
+	if !IsNil(o.VcsRepositoryUrl) {
+		toSerialize["vcsRepositoryUrl"] = o.VcsRepositoryUrl
 	}
 	if !IsNil(o.UsageApiEnabled) {
 		toSerialize["usageApiEnabled"] = o.UsageApiEnabled

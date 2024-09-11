@@ -20,9 +20,9 @@ var _ MappedNullable = &StripeSubscriptionItemDto{}
 
 // StripeSubscriptionItemDto struct for StripeSubscriptionItemDto
 type StripeSubscriptionItemDto struct {
-	SubscriptionItemId NullableString `json:"subscriptionItemId,omitempty"`
-	PriceId NullableString `json:"priceId,omitempty"`
-	ProductId NullableString `json:"productId,omitempty"`
+	SubscriptionItemId *string `json:"subscriptionItemId,omitempty"`
+	PriceId *string `json:"priceId,omitempty"`
+	ProductId *string `json:"productId,omitempty"`
 }
 
 // NewStripeSubscriptionItemDto instantiates a new StripeSubscriptionItemDto object
@@ -42,130 +42,100 @@ func NewStripeSubscriptionItemDtoWithDefaults() *StripeSubscriptionItemDto {
 	return &this
 }
 
-// GetSubscriptionItemId returns the SubscriptionItemId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSubscriptionItemId returns the SubscriptionItemId field value if set, zero value otherwise.
 func (o *StripeSubscriptionItemDto) GetSubscriptionItemId() string {
-	if o == nil || IsNil(o.SubscriptionItemId.Get()) {
+	if o == nil || IsNil(o.SubscriptionItemId) {
 		var ret string
 		return ret
 	}
-	return *o.SubscriptionItemId.Get()
+	return *o.SubscriptionItemId
 }
 
 // GetSubscriptionItemIdOk returns a tuple with the SubscriptionItemId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StripeSubscriptionItemDto) GetSubscriptionItemIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SubscriptionItemId) {
 		return nil, false
 	}
-	return o.SubscriptionItemId.Get(), o.SubscriptionItemId.IsSet()
+	return o.SubscriptionItemId, true
 }
 
 // HasSubscriptionItemId returns a boolean if a field has been set.
 func (o *StripeSubscriptionItemDto) HasSubscriptionItemId() bool {
-	if o != nil && o.SubscriptionItemId.IsSet() {
+	if o != nil && !IsNil(o.SubscriptionItemId) {
 		return true
 	}
 
 	return false
 }
 
-// SetSubscriptionItemId gets a reference to the given NullableString and assigns it to the SubscriptionItemId field.
+// SetSubscriptionItemId gets a reference to the given string and assigns it to the SubscriptionItemId field.
 func (o *StripeSubscriptionItemDto) SetSubscriptionItemId(v string) {
-	o.SubscriptionItemId.Set(&v)
-}
-// SetSubscriptionItemIdNil sets the value for SubscriptionItemId to be an explicit nil
-func (o *StripeSubscriptionItemDto) SetSubscriptionItemIdNil() {
-	o.SubscriptionItemId.Set(nil)
+	o.SubscriptionItemId = &v
 }
 
-// UnsetSubscriptionItemId ensures that no value is present for SubscriptionItemId, not even an explicit nil
-func (o *StripeSubscriptionItemDto) UnsetSubscriptionItemId() {
-	o.SubscriptionItemId.Unset()
-}
-
-// GetPriceId returns the PriceId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPriceId returns the PriceId field value if set, zero value otherwise.
 func (o *StripeSubscriptionItemDto) GetPriceId() string {
-	if o == nil || IsNil(o.PriceId.Get()) {
+	if o == nil || IsNil(o.PriceId) {
 		var ret string
 		return ret
 	}
-	return *o.PriceId.Get()
+	return *o.PriceId
 }
 
 // GetPriceIdOk returns a tuple with the PriceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StripeSubscriptionItemDto) GetPriceIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PriceId) {
 		return nil, false
 	}
-	return o.PriceId.Get(), o.PriceId.IsSet()
+	return o.PriceId, true
 }
 
 // HasPriceId returns a boolean if a field has been set.
 func (o *StripeSubscriptionItemDto) HasPriceId() bool {
-	if o != nil && o.PriceId.IsSet() {
+	if o != nil && !IsNil(o.PriceId) {
 		return true
 	}
 
 	return false
 }
 
-// SetPriceId gets a reference to the given NullableString and assigns it to the PriceId field.
+// SetPriceId gets a reference to the given string and assigns it to the PriceId field.
 func (o *StripeSubscriptionItemDto) SetPriceId(v string) {
-	o.PriceId.Set(&v)
-}
-// SetPriceIdNil sets the value for PriceId to be an explicit nil
-func (o *StripeSubscriptionItemDto) SetPriceIdNil() {
-	o.PriceId.Set(nil)
+	o.PriceId = &v
 }
 
-// UnsetPriceId ensures that no value is present for PriceId, not even an explicit nil
-func (o *StripeSubscriptionItemDto) UnsetPriceId() {
-	o.PriceId.Unset()
-}
-
-// GetProductId returns the ProductId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProductId returns the ProductId field value if set, zero value otherwise.
 func (o *StripeSubscriptionItemDto) GetProductId() string {
-	if o == nil || IsNil(o.ProductId.Get()) {
+	if o == nil || IsNil(o.ProductId) {
 		var ret string
 		return ret
 	}
-	return *o.ProductId.Get()
+	return *o.ProductId
 }
 
 // GetProductIdOk returns a tuple with the ProductId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StripeSubscriptionItemDto) GetProductIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ProductId) {
 		return nil, false
 	}
-	return o.ProductId.Get(), o.ProductId.IsSet()
+	return o.ProductId, true
 }
 
 // HasProductId returns a boolean if a field has been set.
 func (o *StripeSubscriptionItemDto) HasProductId() bool {
-	if o != nil && o.ProductId.IsSet() {
+	if o != nil && !IsNil(o.ProductId) {
 		return true
 	}
 
 	return false
 }
 
-// SetProductId gets a reference to the given NullableString and assigns it to the ProductId field.
+// SetProductId gets a reference to the given string and assigns it to the ProductId field.
 func (o *StripeSubscriptionItemDto) SetProductId(v string) {
-	o.ProductId.Set(&v)
-}
-// SetProductIdNil sets the value for ProductId to be an explicit nil
-func (o *StripeSubscriptionItemDto) SetProductIdNil() {
-	o.ProductId.Set(nil)
-}
-
-// UnsetProductId ensures that no value is present for ProductId, not even an explicit nil
-func (o *StripeSubscriptionItemDto) UnsetProductId() {
-	o.ProductId.Unset()
+	o.ProductId = &v
 }
 
 func (o StripeSubscriptionItemDto) MarshalJSON() ([]byte, error) {
@@ -178,14 +148,14 @@ func (o StripeSubscriptionItemDto) MarshalJSON() ([]byte, error) {
 
 func (o StripeSubscriptionItemDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.SubscriptionItemId.IsSet() {
-		toSerialize["subscriptionItemId"] = o.SubscriptionItemId.Get()
+	if !IsNil(o.SubscriptionItemId) {
+		toSerialize["subscriptionItemId"] = o.SubscriptionItemId
 	}
-	if o.PriceId.IsSet() {
-		toSerialize["priceId"] = o.PriceId.Get()
+	if !IsNil(o.PriceId) {
+		toSerialize["priceId"] = o.PriceId
 	}
-	if o.ProductId.IsSet() {
-		toSerialize["productId"] = o.ProductId.Get()
+	if !IsNil(o.ProductId) {
+		toSerialize["productId"] = o.ProductId
 	}
 	return toSerialize, nil
 }

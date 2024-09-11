@@ -69,6 +69,9 @@ func (a *AutoscalingAPIService) AutoscalingDisableExecute(r ApiAutoscalingDisabl
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.disableAutoscalingCommand == nil {
+		return nil, reportError("disableAutoscalingCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -231,6 +234,9 @@ func (a *AutoscalingAPIService) AutoscalingEditExecute(r ApiAutoscalingEditReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.editAutoscalingCommand == nil {
+		return nil, reportError("editAutoscalingCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -393,6 +399,9 @@ func (a *AutoscalingAPIService) AutoscalingEnableExecute(r ApiAutoscalingEnableR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.enableAutoscalingCommand == nil {
+		return nil, reportError("enableAutoscalingCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -555,6 +564,9 @@ func (a *AutoscalingAPIService) AutoscalingSyncExecute(r ApiAutoscalingSyncReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.autoscalingSyncCommand == nil {
+		return nil, reportError("autoscalingSyncCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

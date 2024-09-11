@@ -21,7 +21,7 @@ var _ MappedNullable = &PrometheusOrganizationDiscountDto{}
 // PrometheusOrganizationDiscountDto struct for PrometheusOrganizationDiscountDto
 type PrometheusOrganizationDiscountDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	RuleDiscountRate *float64 `json:"ruleDiscountRate,omitempty"`
 	GlobalDiscountRate *float64 `json:"globalDiscountRate,omitempty"`
 }
@@ -75,46 +75,36 @@ func (o *PrometheusOrganizationDiscountDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *PrometheusOrganizationDiscountDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusOrganizationDiscountDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *PrometheusOrganizationDiscountDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *PrometheusOrganizationDiscountDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *PrometheusOrganizationDiscountDto) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *PrometheusOrganizationDiscountDto) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetRuleDiscountRate returns the RuleDiscountRate field value if set, zero value otherwise.
@@ -194,8 +184,8 @@ func (o PrometheusOrganizationDiscountDto) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.RuleDiscountRate) {
 		toSerialize["ruleDiscountRate"] = o.RuleDiscountRate

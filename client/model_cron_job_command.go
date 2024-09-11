@@ -20,7 +20,7 @@ var _ MappedNullable = &CronJobCommand{}
 
 // CronJobCommand struct for CronJobCommand
 type CronJobCommand struct {
-	CronPeriod NullableString `json:"cronPeriod,omitempty"`
+	CronPeriod *string `json:"cronPeriod,omitempty"`
 }
 
 // NewCronJobCommand instantiates a new CronJobCommand object
@@ -40,46 +40,36 @@ func NewCronJobCommandWithDefaults() *CronJobCommand {
 	return &this
 }
 
-// GetCronPeriod returns the CronPeriod field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCronPeriod returns the CronPeriod field value if set, zero value otherwise.
 func (o *CronJobCommand) GetCronPeriod() string {
-	if o == nil || IsNil(o.CronPeriod.Get()) {
+	if o == nil || IsNil(o.CronPeriod) {
 		var ret string
 		return ret
 	}
-	return *o.CronPeriod.Get()
+	return *o.CronPeriod
 }
 
 // GetCronPeriodOk returns a tuple with the CronPeriod field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CronJobCommand) GetCronPeriodOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CronPeriod) {
 		return nil, false
 	}
-	return o.CronPeriod.Get(), o.CronPeriod.IsSet()
+	return o.CronPeriod, true
 }
 
 // HasCronPeriod returns a boolean if a field has been set.
 func (o *CronJobCommand) HasCronPeriod() bool {
-	if o != nil && o.CronPeriod.IsSet() {
+	if o != nil && !IsNil(o.CronPeriod) {
 		return true
 	}
 
 	return false
 }
 
-// SetCronPeriod gets a reference to the given NullableString and assigns it to the CronPeriod field.
+// SetCronPeriod gets a reference to the given string and assigns it to the CronPeriod field.
 func (o *CronJobCommand) SetCronPeriod(v string) {
-	o.CronPeriod.Set(&v)
-}
-// SetCronPeriodNil sets the value for CronPeriod to be an explicit nil
-func (o *CronJobCommand) SetCronPeriodNil() {
-	o.CronPeriod.Set(nil)
-}
-
-// UnsetCronPeriod ensures that no value is present for CronPeriod, not even an explicit nil
-func (o *CronJobCommand) UnsetCronPeriod() {
-	o.CronPeriod.Unset()
+	o.CronPeriod = &v
 }
 
 func (o CronJobCommand) MarshalJSON() ([]byte, error) {
@@ -92,8 +82,8 @@ func (o CronJobCommand) MarshalJSON() ([]byte, error) {
 
 func (o CronJobCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CronPeriod.IsSet() {
-		toSerialize["cronPeriod"] = o.CronPeriod.Get()
+	if !IsNil(o.CronPeriod) {
+		toSerialize["cronPeriod"] = o.CronPeriod
 	}
 	return toSerialize, nil
 }

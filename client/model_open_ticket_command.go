@@ -20,7 +20,7 @@ var _ MappedNullable = &OpenTicketCommand{}
 
 // OpenTicketCommand struct for OpenTicketCommand
 type OpenTicketCommand struct {
-	TicketId NullableString `json:"ticketId,omitempty"`
+	TicketId *string `json:"ticketId,omitempty"`
 }
 
 // NewOpenTicketCommand instantiates a new OpenTicketCommand object
@@ -40,46 +40,36 @@ func NewOpenTicketCommandWithDefaults() *OpenTicketCommand {
 	return &this
 }
 
-// GetTicketId returns the TicketId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTicketId returns the TicketId field value if set, zero value otherwise.
 func (o *OpenTicketCommand) GetTicketId() string {
-	if o == nil || IsNil(o.TicketId.Get()) {
+	if o == nil || IsNil(o.TicketId) {
 		var ret string
 		return ret
 	}
-	return *o.TicketId.Get()
+	return *o.TicketId
 }
 
 // GetTicketIdOk returns a tuple with the TicketId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenTicketCommand) GetTicketIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TicketId) {
 		return nil, false
 	}
-	return o.TicketId.Get(), o.TicketId.IsSet()
+	return o.TicketId, true
 }
 
 // HasTicketId returns a boolean if a field has been set.
 func (o *OpenTicketCommand) HasTicketId() bool {
-	if o != nil && o.TicketId.IsSet() {
+	if o != nil && !IsNil(o.TicketId) {
 		return true
 	}
 
 	return false
 }
 
-// SetTicketId gets a reference to the given NullableString and assigns it to the TicketId field.
+// SetTicketId gets a reference to the given string and assigns it to the TicketId field.
 func (o *OpenTicketCommand) SetTicketId(v string) {
-	o.TicketId.Set(&v)
-}
-// SetTicketIdNil sets the value for TicketId to be an explicit nil
-func (o *OpenTicketCommand) SetTicketIdNil() {
-	o.TicketId.Set(nil)
-}
-
-// UnsetTicketId ensures that no value is present for TicketId, not even an explicit nil
-func (o *OpenTicketCommand) UnsetTicketId() {
-	o.TicketId.Unset()
+	o.TicketId = &v
 }
 
 func (o OpenTicketCommand) MarshalJSON() ([]byte, error) {
@@ -92,8 +82,8 @@ func (o OpenTicketCommand) MarshalJSON() ([]byte, error) {
 
 func (o OpenTicketCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.TicketId.IsSet() {
-		toSerialize["ticketId"] = o.TicketId.Get()
+	if !IsNil(o.TicketId) {
+		toSerialize["ticketId"] = o.TicketId
 	}
 	return toSerialize, nil
 }

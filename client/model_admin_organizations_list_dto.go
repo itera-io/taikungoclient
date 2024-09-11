@@ -21,10 +21,10 @@ var _ MappedNullable = &AdminOrganizationsListDto{}
 // AdminOrganizationsListDto struct for AdminOrganizationsListDto
 type AdminOrganizationsListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	CustomerId NullableString `json:"customerId,omitempty"`
-	PartnerName NullableString `json:"partnerName,omitempty"`
-	PartnerLogo NullableString `json:"partnerLogo,omitempty"`
+	Name *string `json:"name,omitempty"`
+	CustomerId *string `json:"customerId,omitempty"`
+	PartnerName *string `json:"partnerName,omitempty"`
+	PartnerLogo *string `json:"partnerLogo,omitempty"`
 }
 
 // NewAdminOrganizationsListDto instantiates a new AdminOrganizationsListDto object
@@ -76,172 +76,132 @@ func (o *AdminOrganizationsListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *AdminOrganizationsListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminOrganizationsListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *AdminOrganizationsListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AdminOrganizationsListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *AdminOrganizationsListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *AdminOrganizationsListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetCustomerId returns the CustomerId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCustomerId returns the CustomerId field value if set, zero value otherwise.
 func (o *AdminOrganizationsListDto) GetCustomerId() string {
-	if o == nil || IsNil(o.CustomerId.Get()) {
+	if o == nil || IsNil(o.CustomerId) {
 		var ret string
 		return ret
 	}
-	return *o.CustomerId.Get()
+	return *o.CustomerId
 }
 
 // GetCustomerIdOk returns a tuple with the CustomerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminOrganizationsListDto) GetCustomerIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CustomerId) {
 		return nil, false
 	}
-	return o.CustomerId.Get(), o.CustomerId.IsSet()
+	return o.CustomerId, true
 }
 
 // HasCustomerId returns a boolean if a field has been set.
 func (o *AdminOrganizationsListDto) HasCustomerId() bool {
-	if o != nil && o.CustomerId.IsSet() {
+	if o != nil && !IsNil(o.CustomerId) {
 		return true
 	}
 
 	return false
 }
 
-// SetCustomerId gets a reference to the given NullableString and assigns it to the CustomerId field.
+// SetCustomerId gets a reference to the given string and assigns it to the CustomerId field.
 func (o *AdminOrganizationsListDto) SetCustomerId(v string) {
-	o.CustomerId.Set(&v)
-}
-// SetCustomerIdNil sets the value for CustomerId to be an explicit nil
-func (o *AdminOrganizationsListDto) SetCustomerIdNil() {
-	o.CustomerId.Set(nil)
+	o.CustomerId = &v
 }
 
-// UnsetCustomerId ensures that no value is present for CustomerId, not even an explicit nil
-func (o *AdminOrganizationsListDto) UnsetCustomerId() {
-	o.CustomerId.Unset()
-}
-
-// GetPartnerName returns the PartnerName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPartnerName returns the PartnerName field value if set, zero value otherwise.
 func (o *AdminOrganizationsListDto) GetPartnerName() string {
-	if o == nil || IsNil(o.PartnerName.Get()) {
+	if o == nil || IsNil(o.PartnerName) {
 		var ret string
 		return ret
 	}
-	return *o.PartnerName.Get()
+	return *o.PartnerName
 }
 
 // GetPartnerNameOk returns a tuple with the PartnerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminOrganizationsListDto) GetPartnerNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerName) {
 		return nil, false
 	}
-	return o.PartnerName.Get(), o.PartnerName.IsSet()
+	return o.PartnerName, true
 }
 
 // HasPartnerName returns a boolean if a field has been set.
 func (o *AdminOrganizationsListDto) HasPartnerName() bool {
-	if o != nil && o.PartnerName.IsSet() {
+	if o != nil && !IsNil(o.PartnerName) {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerName gets a reference to the given NullableString and assigns it to the PartnerName field.
+// SetPartnerName gets a reference to the given string and assigns it to the PartnerName field.
 func (o *AdminOrganizationsListDto) SetPartnerName(v string) {
-	o.PartnerName.Set(&v)
-}
-// SetPartnerNameNil sets the value for PartnerName to be an explicit nil
-func (o *AdminOrganizationsListDto) SetPartnerNameNil() {
-	o.PartnerName.Set(nil)
+	o.PartnerName = &v
 }
 
-// UnsetPartnerName ensures that no value is present for PartnerName, not even an explicit nil
-func (o *AdminOrganizationsListDto) UnsetPartnerName() {
-	o.PartnerName.Unset()
-}
-
-// GetPartnerLogo returns the PartnerLogo field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPartnerLogo returns the PartnerLogo field value if set, zero value otherwise.
 func (o *AdminOrganizationsListDto) GetPartnerLogo() string {
-	if o == nil || IsNil(o.PartnerLogo.Get()) {
+	if o == nil || IsNil(o.PartnerLogo) {
 		var ret string
 		return ret
 	}
-	return *o.PartnerLogo.Get()
+	return *o.PartnerLogo
 }
 
 // GetPartnerLogoOk returns a tuple with the PartnerLogo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminOrganizationsListDto) GetPartnerLogoOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerLogo) {
 		return nil, false
 	}
-	return o.PartnerLogo.Get(), o.PartnerLogo.IsSet()
+	return o.PartnerLogo, true
 }
 
 // HasPartnerLogo returns a boolean if a field has been set.
 func (o *AdminOrganizationsListDto) HasPartnerLogo() bool {
-	if o != nil && o.PartnerLogo.IsSet() {
+	if o != nil && !IsNil(o.PartnerLogo) {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerLogo gets a reference to the given NullableString and assigns it to the PartnerLogo field.
+// SetPartnerLogo gets a reference to the given string and assigns it to the PartnerLogo field.
 func (o *AdminOrganizationsListDto) SetPartnerLogo(v string) {
-	o.PartnerLogo.Set(&v)
-}
-// SetPartnerLogoNil sets the value for PartnerLogo to be an explicit nil
-func (o *AdminOrganizationsListDto) SetPartnerLogoNil() {
-	o.PartnerLogo.Set(nil)
-}
-
-// UnsetPartnerLogo ensures that no value is present for PartnerLogo, not even an explicit nil
-func (o *AdminOrganizationsListDto) UnsetPartnerLogo() {
-	o.PartnerLogo.Unset()
+	o.PartnerLogo = &v
 }
 
 func (o AdminOrganizationsListDto) MarshalJSON() ([]byte, error) {
@@ -257,17 +217,17 @@ func (o AdminOrganizationsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.CustomerId.IsSet() {
-		toSerialize["customerId"] = o.CustomerId.Get()
+	if !IsNil(o.CustomerId) {
+		toSerialize["customerId"] = o.CustomerId
 	}
-	if o.PartnerName.IsSet() {
-		toSerialize["partnerName"] = o.PartnerName.Get()
+	if !IsNil(o.PartnerName) {
+		toSerialize["partnerName"] = o.PartnerName
 	}
-	if o.PartnerLogo.IsSet() {
-		toSerialize["partnerLogo"] = o.PartnerLogo.Get()
+	if !IsNil(o.PartnerLogo) {
+		toSerialize["partnerLogo"] = o.PartnerLogo
 	}
 	return toSerialize, nil
 }

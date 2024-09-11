@@ -20,8 +20,8 @@ var _ MappedNullable = &EditAllowedHostDto{}
 
 // EditAllowedHostDto struct for EditAllowedHostDto
 type EditAllowedHostDto struct {
-	Description NullableString `json:"description,omitempty"`
-	IpAddress NullableString `json:"ipAddress,omitempty"`
+	Description *string `json:"description,omitempty"`
+	IpAddress *string `json:"ipAddress,omitempty"`
 	MaskBits *int32 `json:"maskBits,omitempty"`
 }
 
@@ -42,88 +42,68 @@ func NewEditAllowedHostDtoWithDefaults() *EditAllowedHostDto {
 	return &this
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *EditAllowedHostDto) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditAllowedHostDto) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *EditAllowedHostDto) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *EditAllowedHostDto) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *EditAllowedHostDto) SetDescriptionNil() {
-	o.Description.Set(nil)
+	o.Description = &v
 }
 
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *EditAllowedHostDto) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetIpAddress returns the IpAddress field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *EditAllowedHostDto) GetIpAddress() string {
-	if o == nil || IsNil(o.IpAddress.Get()) {
+	if o == nil || IsNil(o.IpAddress) {
 		var ret string
 		return ret
 	}
-	return *o.IpAddress.Get()
+	return *o.IpAddress
 }
 
 // GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditAllowedHostDto) GetIpAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
 	}
-	return o.IpAddress.Get(), o.IpAddress.IsSet()
+	return o.IpAddress, true
 }
 
 // HasIpAddress returns a boolean if a field has been set.
 func (o *EditAllowedHostDto) HasIpAddress() bool {
-	if o != nil && o.IpAddress.IsSet() {
+	if o != nil && !IsNil(o.IpAddress) {
 		return true
 	}
 
 	return false
 }
 
-// SetIpAddress gets a reference to the given NullableString and assigns it to the IpAddress field.
+// SetIpAddress gets a reference to the given string and assigns it to the IpAddress field.
 func (o *EditAllowedHostDto) SetIpAddress(v string) {
-	o.IpAddress.Set(&v)
-}
-// SetIpAddressNil sets the value for IpAddress to be an explicit nil
-func (o *EditAllowedHostDto) SetIpAddressNil() {
-	o.IpAddress.Set(nil)
-}
-
-// UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
-func (o *EditAllowedHostDto) UnsetIpAddress() {
-	o.IpAddress.Unset()
+	o.IpAddress = &v
 }
 
 // GetMaskBits returns the MaskBits field value if set, zero value otherwise.
@@ -168,11 +148,11 @@ func (o EditAllowedHostDto) MarshalJSON() ([]byte, error) {
 
 func (o EditAllowedHostDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
-	if o.IpAddress.IsSet() {
-		toSerialize["ipAddress"] = o.IpAddress.Get()
+	if !IsNil(o.IpAddress) {
+		toSerialize["ipAddress"] = o.IpAddress
 	}
 	if !IsNil(o.MaskBits) {
 		toSerialize["maskBits"] = o.MaskBits

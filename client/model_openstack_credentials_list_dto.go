@@ -23,27 +23,27 @@ type OpenstackCredentialsListDto struct {
 	Id *int32 `json:"id,omitempty"`
 	ProjectCount *int32 `json:"projectCount,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	User NullableString `json:"user,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Project NullableString `json:"project,omitempty"`
-	Domain NullableString `json:"domain,omitempty"`
-	Region NullableString `json:"region,omitempty"`
-	PublicNetwork NullableString `json:"publicNetwork,omitempty"`
+	Name *string `json:"name,omitempty"`
+	User *string `json:"user,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Project *string `json:"project,omitempty"`
+	Domain *string `json:"domain,omitempty"`
+	Region *string `json:"region,omitempty"`
+	PublicNetwork *string `json:"publicNetwork,omitempty"`
 	ImportNetwork *bool `json:"importNetwork,omitempty"`
-	TenantId NullableString `json:"tenantId,omitempty"`
-	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
-	VolumeType NullableString `json:"volumeType,omitempty"`
-	InternalSubnetId NullableString `json:"internalSubnetId,omitempty"`
+	TenantId *string `json:"tenantId,omitempty"`
+	AvailabilityZone *string `json:"availabilityZone,omitempty"`
+	VolumeType *string `json:"volumeType,omitempty"`
+	InternalSubnetId *string `json:"internalSubnetId,omitempty"`
 	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	CreatedBy *string `json:"createdBy,omitempty"`
+	LastModified *string `json:"lastModified,omitempty"`
+	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	ContinentName NullableString `json:"continentName,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
+	ContinentName *string `json:"continentName,omitempty"`
 	IsAdmin *bool `json:"isAdmin,omitempty"`
 	IsInfra *bool `json:"isInfra,omitempty"`
 	ApplicationCredEnabled *bool `json:"applicationCredEnabled,omitempty"`
@@ -163,298 +163,228 @@ func (o *OpenstackCredentialsListDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OpenstackCredentialsListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetUser returns the User field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUser returns the User field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetUser() string {
-	if o == nil || IsNil(o.User.Get()) {
+	if o == nil || IsNil(o.User) {
 		var ret string
 		return ret
 	}
-	return *o.User.Get()
+	return *o.User
 }
 
 // GetUserOk returns a tuple with the User field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetUserOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.User) {
 		return nil, false
 	}
-	return o.User.Get(), o.User.IsSet()
+	return o.User, true
 }
 
 // HasUser returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasUser() bool {
-	if o != nil && o.User.IsSet() {
+	if o != nil && !IsNil(o.User) {
 		return true
 	}
 
 	return false
 }
 
-// SetUser gets a reference to the given NullableString and assigns it to the User field.
+// SetUser gets a reference to the given string and assigns it to the User field.
 func (o *OpenstackCredentialsListDto) SetUser(v string) {
-	o.User.Set(&v)
-}
-// SetUserNil sets the value for User to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetUserNil() {
-	o.User.Set(nil)
+	o.User = &v
 }
 
-// UnsetUser ensures that no value is present for User, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetUser() {
-	o.User.Unset()
-}
-
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *OpenstackCredentialsListDto) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = &v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetProject returns the Project field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProject returns the Project field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetProject() string {
-	if o == nil || IsNil(o.Project.Get()) {
+	if o == nil || IsNil(o.Project) {
 		var ret string
 		return ret
 	}
-	return *o.Project.Get()
+	return *o.Project
 }
 
 // GetProjectOk returns a tuple with the Project field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetProjectOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Project) {
 		return nil, false
 	}
-	return o.Project.Get(), o.Project.IsSet()
+	return o.Project, true
 }
 
 // HasProject returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasProject() bool {
-	if o != nil && o.Project.IsSet() {
+	if o != nil && !IsNil(o.Project) {
 		return true
 	}
 
 	return false
 }
 
-// SetProject gets a reference to the given NullableString and assigns it to the Project field.
+// SetProject gets a reference to the given string and assigns it to the Project field.
 func (o *OpenstackCredentialsListDto) SetProject(v string) {
-	o.Project.Set(&v)
-}
-// SetProjectNil sets the value for Project to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetProjectNil() {
-	o.Project.Set(nil)
+	o.Project = &v
 }
 
-// UnsetProject ensures that no value is present for Project, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetProject() {
-	o.Project.Unset()
-}
-
-// GetDomain returns the Domain field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDomain returns the Domain field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetDomain() string {
-	if o == nil || IsNil(o.Domain.Get()) {
+	if o == nil || IsNil(o.Domain) {
 		var ret string
 		return ret
 	}
-	return *o.Domain.Get()
+	return *o.Domain
 }
 
 // GetDomainOk returns a tuple with the Domain field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetDomainOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Domain) {
 		return nil, false
 	}
-	return o.Domain.Get(), o.Domain.IsSet()
+	return o.Domain, true
 }
 
 // HasDomain returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasDomain() bool {
-	if o != nil && o.Domain.IsSet() {
+	if o != nil && !IsNil(o.Domain) {
 		return true
 	}
 
 	return false
 }
 
-// SetDomain gets a reference to the given NullableString and assigns it to the Domain field.
+// SetDomain gets a reference to the given string and assigns it to the Domain field.
 func (o *OpenstackCredentialsListDto) SetDomain(v string) {
-	o.Domain.Set(&v)
-}
-// SetDomainNil sets the value for Domain to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetDomainNil() {
-	o.Domain.Set(nil)
+	o.Domain = &v
 }
 
-// UnsetDomain ensures that no value is present for Domain, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetDomain() {
-	o.Domain.Unset()
-}
-
-// GetRegion returns the Region field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRegion returns the Region field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetRegion() string {
-	if o == nil || IsNil(o.Region.Get()) {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
-	return *o.Region.Get()
+	return *o.Region
 }
 
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetRegionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
-	return o.Region.Get(), o.Region.IsSet()
+	return o.Region, true
 }
 
 // HasRegion returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasRegion() bool {
-	if o != nil && o.Region.IsSet() {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
 	return false
 }
 
-// SetRegion gets a reference to the given NullableString and assigns it to the Region field.
+// SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *OpenstackCredentialsListDto) SetRegion(v string) {
-	o.Region.Set(&v)
-}
-// SetRegionNil sets the value for Region to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetRegionNil() {
-	o.Region.Set(nil)
+	o.Region = &v
 }
 
-// UnsetRegion ensures that no value is present for Region, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetRegion() {
-	o.Region.Unset()
-}
-
-// GetPublicNetwork returns the PublicNetwork field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPublicNetwork returns the PublicNetwork field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetPublicNetwork() string {
-	if o == nil || IsNil(o.PublicNetwork.Get()) {
+	if o == nil || IsNil(o.PublicNetwork) {
 		var ret string
 		return ret
 	}
-	return *o.PublicNetwork.Get()
+	return *o.PublicNetwork
 }
 
 // GetPublicNetworkOk returns a tuple with the PublicNetwork field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetPublicNetworkOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PublicNetwork) {
 		return nil, false
 	}
-	return o.PublicNetwork.Get(), o.PublicNetwork.IsSet()
+	return o.PublicNetwork, true
 }
 
 // HasPublicNetwork returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasPublicNetwork() bool {
-	if o != nil && o.PublicNetwork.IsSet() {
+	if o != nil && !IsNil(o.PublicNetwork) {
 		return true
 	}
 
 	return false
 }
 
-// SetPublicNetwork gets a reference to the given NullableString and assigns it to the PublicNetwork field.
+// SetPublicNetwork gets a reference to the given string and assigns it to the PublicNetwork field.
 func (o *OpenstackCredentialsListDto) SetPublicNetwork(v string) {
-	o.PublicNetwork.Set(&v)
-}
-// SetPublicNetworkNil sets the value for PublicNetwork to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetPublicNetworkNil() {
-	o.PublicNetwork.Set(nil)
-}
-
-// UnsetPublicNetwork ensures that no value is present for PublicNetwork, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetPublicNetwork() {
-	o.PublicNetwork.Unset()
+	o.PublicNetwork = &v
 }
 
 // GetImportNetwork returns the ImportNetwork field value if set, zero value otherwise.
@@ -489,177 +419,137 @@ func (o *OpenstackCredentialsListDto) SetImportNetwork(v bool) {
 	o.ImportNetwork = &v
 }
 
-// GetTenantId returns the TenantId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTenantId returns the TenantId field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetTenantId() string {
-	if o == nil || IsNil(o.TenantId.Get()) {
+	if o == nil || IsNil(o.TenantId) {
 		var ret string
 		return ret
 	}
-	return *o.TenantId.Get()
+	return *o.TenantId
 }
 
 // GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetTenantIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TenantId) {
 		return nil, false
 	}
-	return o.TenantId.Get(), o.TenantId.IsSet()
+	return o.TenantId, true
 }
 
 // HasTenantId returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasTenantId() bool {
-	if o != nil && o.TenantId.IsSet() {
+	if o != nil && !IsNil(o.TenantId) {
 		return true
 	}
 
 	return false
 }
 
-// SetTenantId gets a reference to the given NullableString and assigns it to the TenantId field.
+// SetTenantId gets a reference to the given string and assigns it to the TenantId field.
 func (o *OpenstackCredentialsListDto) SetTenantId(v string) {
-	o.TenantId.Set(&v)
-}
-// SetTenantIdNil sets the value for TenantId to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetTenantIdNil() {
-	o.TenantId.Set(nil)
+	o.TenantId = &v
 }
 
-// UnsetTenantId ensures that no value is present for TenantId, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetTenantId() {
-	o.TenantId.Unset()
-}
-
-// GetAvailabilityZone returns the AvailabilityZone field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAvailabilityZone returns the AvailabilityZone field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetAvailabilityZone() string {
-	if o == nil || IsNil(o.AvailabilityZone.Get()) {
+	if o == nil || IsNil(o.AvailabilityZone) {
 		var ret string
 		return ret
 	}
-	return *o.AvailabilityZone.Get()
+	return *o.AvailabilityZone
 }
 
 // GetAvailabilityZoneOk returns a tuple with the AvailabilityZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetAvailabilityZoneOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AvailabilityZone) {
 		return nil, false
 	}
-	return o.AvailabilityZone.Get(), o.AvailabilityZone.IsSet()
+	return o.AvailabilityZone, true
 }
 
 // HasAvailabilityZone returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasAvailabilityZone() bool {
-	if o != nil && o.AvailabilityZone.IsSet() {
+	if o != nil && !IsNil(o.AvailabilityZone) {
 		return true
 	}
 
 	return false
 }
 
-// SetAvailabilityZone gets a reference to the given NullableString and assigns it to the AvailabilityZone field.
+// SetAvailabilityZone gets a reference to the given string and assigns it to the AvailabilityZone field.
 func (o *OpenstackCredentialsListDto) SetAvailabilityZone(v string) {
-	o.AvailabilityZone.Set(&v)
-}
-// SetAvailabilityZoneNil sets the value for AvailabilityZone to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetAvailabilityZoneNil() {
-	o.AvailabilityZone.Set(nil)
+	o.AvailabilityZone = &v
 }
 
-// UnsetAvailabilityZone ensures that no value is present for AvailabilityZone, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetAvailabilityZone() {
-	o.AvailabilityZone.Unset()
-}
-
-// GetVolumeType returns the VolumeType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVolumeType returns the VolumeType field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetVolumeType() string {
-	if o == nil || IsNil(o.VolumeType.Get()) {
+	if o == nil || IsNil(o.VolumeType) {
 		var ret string
 		return ret
 	}
-	return *o.VolumeType.Get()
+	return *o.VolumeType
 }
 
 // GetVolumeTypeOk returns a tuple with the VolumeType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetVolumeTypeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VolumeType) {
 		return nil, false
 	}
-	return o.VolumeType.Get(), o.VolumeType.IsSet()
+	return o.VolumeType, true
 }
 
 // HasVolumeType returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasVolumeType() bool {
-	if o != nil && o.VolumeType.IsSet() {
+	if o != nil && !IsNil(o.VolumeType) {
 		return true
 	}
 
 	return false
 }
 
-// SetVolumeType gets a reference to the given NullableString and assigns it to the VolumeType field.
+// SetVolumeType gets a reference to the given string and assigns it to the VolumeType field.
 func (o *OpenstackCredentialsListDto) SetVolumeType(v string) {
-	o.VolumeType.Set(&v)
-}
-// SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetVolumeTypeNil() {
-	o.VolumeType.Set(nil)
+	o.VolumeType = &v
 }
 
-// UnsetVolumeType ensures that no value is present for VolumeType, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetVolumeType() {
-	o.VolumeType.Unset()
-}
-
-// GetInternalSubnetId returns the InternalSubnetId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInternalSubnetId returns the InternalSubnetId field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetInternalSubnetId() string {
-	if o == nil || IsNil(o.InternalSubnetId.Get()) {
+	if o == nil || IsNil(o.InternalSubnetId) {
 		var ret string
 		return ret
 	}
-	return *o.InternalSubnetId.Get()
+	return *o.InternalSubnetId
 }
 
 // GetInternalSubnetIdOk returns a tuple with the InternalSubnetId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetInternalSubnetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InternalSubnetId) {
 		return nil, false
 	}
-	return o.InternalSubnetId.Get(), o.InternalSubnetId.IsSet()
+	return o.InternalSubnetId, true
 }
 
 // HasInternalSubnetId returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasInternalSubnetId() bool {
-	if o != nil && o.InternalSubnetId.IsSet() {
+	if o != nil && !IsNil(o.InternalSubnetId) {
 		return true
 	}
 
 	return false
 }
 
-// SetInternalSubnetId gets a reference to the given NullableString and assigns it to the InternalSubnetId field.
+// SetInternalSubnetId gets a reference to the given string and assigns it to the InternalSubnetId field.
 func (o *OpenstackCredentialsListDto) SetInternalSubnetId(v string) {
-	o.InternalSubnetId.Set(&v)
-}
-// SetInternalSubnetIdNil sets the value for InternalSubnetId to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetInternalSubnetIdNil() {
-	o.InternalSubnetId.Set(nil)
+	o.InternalSubnetId = &v
 }
 
-// UnsetInternalSubnetId ensures that no value is present for InternalSubnetId, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetInternalSubnetId() {
-	o.InternalSubnetId.Unset()
-}
-
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetProjects() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.Projects) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -668,7 +558,6 @@ func (o *OpenstackCredentialsListDto) GetProjects() []CommonDropdownDto {
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
@@ -690,130 +579,100 @@ func (o *OpenstackCredentialsListDto) SetProjects(v []CommonDropdownDto) {
 	o.Projects = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy.Get()
+	return *o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetCreatedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedBy) {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return o.CreatedBy, true
 }
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
+	if o != nil && !IsNil(o.CreatedBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
 func (o *OpenstackCredentialsListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
-}
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
+	o.CreatedBy = &v
 }
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || IsNil(o.LastModified) {
 		var ret string
 		return ret
 	}
-	return *o.LastModified.Get()
+	return *o.LastModified
 }
 
 // GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetLastModifiedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModified) {
 		return nil, false
 	}
-	return o.LastModified.Get(), o.LastModified.IsSet()
+	return o.LastModified, true
 }
 
 // HasLastModified returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
+	if o != nil && !IsNil(o.LastModified) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
 func (o *OpenstackCredentialsListDto) SetLastModified(v string) {
-	o.LastModified.Set(&v)
-}
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
+	o.LastModified = &v
 }
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		var ret string
 		return ret
 	}
-	return *o.LastModifiedBy.Get()
+	return *o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return o.LastModifiedBy, true
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
+	if o != nil && !IsNil(o.LastModifiedBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy gets a reference to the given string and assigns it to the LastModifiedBy field.
 func (o *OpenstackCredentialsListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
-}
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
-
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
+	o.LastModifiedBy = &v
 }
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
@@ -880,130 +739,100 @@ func (o *OpenstackCredentialsListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *OpenstackCredentialsListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+	o.OrganizationName = &v
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *OpenstackCredentialsListDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
+	o.CreatedAt = &v
 }
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetContinentName returns the ContinentName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetContinentName returns the ContinentName field value if set, zero value otherwise.
 func (o *OpenstackCredentialsListDto) GetContinentName() string {
-	if o == nil || IsNil(o.ContinentName.Get()) {
+	if o == nil || IsNil(o.ContinentName) {
 		var ret string
 		return ret
 	}
-	return *o.ContinentName.Get()
+	return *o.ContinentName
 }
 
 // GetContinentNameOk returns a tuple with the ContinentName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpenstackCredentialsListDto) GetContinentNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ContinentName) {
 		return nil, false
 	}
-	return o.ContinentName.Get(), o.ContinentName.IsSet()
+	return o.ContinentName, true
 }
 
 // HasContinentName returns a boolean if a field has been set.
 func (o *OpenstackCredentialsListDto) HasContinentName() bool {
-	if o != nil && o.ContinentName.IsSet() {
+	if o != nil && !IsNil(o.ContinentName) {
 		return true
 	}
 
 	return false
 }
 
-// SetContinentName gets a reference to the given NullableString and assigns it to the ContinentName field.
+// SetContinentName gets a reference to the given string and assigns it to the ContinentName field.
 func (o *OpenstackCredentialsListDto) SetContinentName(v string) {
-	o.ContinentName.Set(&v)
-}
-// SetContinentNameNil sets the value for ContinentName to be an explicit nil
-func (o *OpenstackCredentialsListDto) SetContinentNameNil() {
-	o.ContinentName.Set(nil)
-}
-
-// UnsetContinentName ensures that no value is present for ContinentName, not even an explicit nil
-func (o *OpenstackCredentialsListDto) UnsetContinentName() {
-	o.ContinentName.Unset()
+	o.ContinentName = &v
 }
 
 // GetIsAdmin returns the IsAdmin field value if set, zero value otherwise.
@@ -1153,53 +982,53 @@ func (o OpenstackCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.User.IsSet() {
-		toSerialize["user"] = o.User.Get()
+	if !IsNil(o.User) {
+		toSerialize["user"] = o.User
 	}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
-	if o.Project.IsSet() {
-		toSerialize["project"] = o.Project.Get()
+	if !IsNil(o.Project) {
+		toSerialize["project"] = o.Project
 	}
-	if o.Domain.IsSet() {
-		toSerialize["domain"] = o.Domain.Get()
+	if !IsNil(o.Domain) {
+		toSerialize["domain"] = o.Domain
 	}
-	if o.Region.IsSet() {
-		toSerialize["region"] = o.Region.Get()
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
-	if o.PublicNetwork.IsSet() {
-		toSerialize["publicNetwork"] = o.PublicNetwork.Get()
+	if !IsNil(o.PublicNetwork) {
+		toSerialize["publicNetwork"] = o.PublicNetwork
 	}
 	if !IsNil(o.ImportNetwork) {
 		toSerialize["importNetwork"] = o.ImportNetwork
 	}
-	if o.TenantId.IsSet() {
-		toSerialize["tenantId"] = o.TenantId.Get()
+	if !IsNil(o.TenantId) {
+		toSerialize["tenantId"] = o.TenantId
 	}
-	if o.AvailabilityZone.IsSet() {
-		toSerialize["availabilityZone"] = o.AvailabilityZone.Get()
+	if !IsNil(o.AvailabilityZone) {
+		toSerialize["availabilityZone"] = o.AvailabilityZone
 	}
-	if o.VolumeType.IsSet() {
-		toSerialize["volumeType"] = o.VolumeType.Get()
+	if !IsNil(o.VolumeType) {
+		toSerialize["volumeType"] = o.VolumeType
 	}
-	if o.InternalSubnetId.IsSet() {
-		toSerialize["internalSubnetId"] = o.InternalSubnetId.Get()
+	if !IsNil(o.InternalSubnetId) {
+		toSerialize["internalSubnetId"] = o.InternalSubnetId
 	}
-	if o.Projects != nil {
+	if !IsNil(o.Projects) {
 		toSerialize["projects"] = o.Projects
 	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
+	if !IsNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
 	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
+	if !IsNil(o.LastModified) {
+		toSerialize["lastModified"] = o.LastModified
 	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
@@ -1207,14 +1036,14 @@ func (o OpenstackCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.ContinentName.IsSet() {
-		toSerialize["continentName"] = o.ContinentName.Get()
+	if !IsNil(o.ContinentName) {
+		toSerialize["continentName"] = o.ContinentName
 	}
 	if !IsNil(o.IsAdmin) {
 		toSerialize["isAdmin"] = o.IsAdmin

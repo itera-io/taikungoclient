@@ -21,7 +21,7 @@ var _ MappedNullable = &ServerTemplateDto{}
 // ServerTemplateDto struct for ServerTemplateDto
 type ServerTemplateDto struct {
 	Role *CloudRole `json:"role,omitempty"`
-	Flavor NullableString `json:"flavor,omitempty"`
+	Flavor *string `json:"flavor,omitempty"`
 	DiskSize *float64 `json:"diskSize,omitempty"`
 	Count *int32 `json:"count,omitempty"`
 }
@@ -75,46 +75,36 @@ func (o *ServerTemplateDto) SetRole(v CloudRole) {
 	o.Role = &v
 }
 
-// GetFlavor returns the Flavor field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFlavor returns the Flavor field value if set, zero value otherwise.
 func (o *ServerTemplateDto) GetFlavor() string {
-	if o == nil || IsNil(o.Flavor.Get()) {
+	if o == nil || IsNil(o.Flavor) {
 		var ret string
 		return ret
 	}
-	return *o.Flavor.Get()
+	return *o.Flavor
 }
 
 // GetFlavorOk returns a tuple with the Flavor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerTemplateDto) GetFlavorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Flavor) {
 		return nil, false
 	}
-	return o.Flavor.Get(), o.Flavor.IsSet()
+	return o.Flavor, true
 }
 
 // HasFlavor returns a boolean if a field has been set.
 func (o *ServerTemplateDto) HasFlavor() bool {
-	if o != nil && o.Flavor.IsSet() {
+	if o != nil && !IsNil(o.Flavor) {
 		return true
 	}
 
 	return false
 }
 
-// SetFlavor gets a reference to the given NullableString and assigns it to the Flavor field.
+// SetFlavor gets a reference to the given string and assigns it to the Flavor field.
 func (o *ServerTemplateDto) SetFlavor(v string) {
-	o.Flavor.Set(&v)
-}
-// SetFlavorNil sets the value for Flavor to be an explicit nil
-func (o *ServerTemplateDto) SetFlavorNil() {
-	o.Flavor.Set(nil)
-}
-
-// UnsetFlavor ensures that no value is present for Flavor, not even an explicit nil
-func (o *ServerTemplateDto) UnsetFlavor() {
-	o.Flavor.Unset()
+	o.Flavor = &v
 }
 
 // GetDiskSize returns the DiskSize field value if set, zero value otherwise.
@@ -194,8 +184,8 @@ func (o ServerTemplateDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
 	}
-	if o.Flavor.IsSet() {
-		toSerialize["flavor"] = o.Flavor.Get()
+	if !IsNil(o.Flavor) {
+		toSerialize["flavor"] = o.Flavor
 	}
 	if !IsNil(o.DiskSize) {
 		toSerialize["diskSize"] = o.DiskSize

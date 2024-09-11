@@ -21,24 +21,24 @@ var _ MappedNullable = &VClusterListDto{}
 // VClusterListDto struct for VClusterListDto
 type VClusterListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	IsVirtualCluster *bool `json:"isVirtualCluster,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
 	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	KubernetesVersion *string `json:"kubernetesVersion,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
+	CreatedBy *string `json:"createdBy,omitempty"`
+	LastModified *string `json:"lastModified,omitempty"`
+	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
 	AlertsCount *int32 `json:"alertsCount,omitempty"`
-	ExpiredAt NullableString `json:"expiredAt,omitempty"`
+	ExpiredAt *string `json:"expiredAt,omitempty"`
 	DeleteOnExpiration *bool `json:"deleteOnExpiration,omitempty"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
-	AlertingProfileName NullableString `json:"alertingProfileName,omitempty"`
-	AccessIp NullableString `json:"accessIp,omitempty"`
+	AlertingProfileName *string `json:"alertingProfileName,omitempty"`
+	AccessIp *string `json:"accessIp,omitempty"`
 	CloudType *CloudType `json:"cloudType,omitempty"`
 	Status *ProjectStatus `json:"status,omitempty"`
 	Health *ProjectHealth `json:"health,omitempty"`
@@ -99,46 +99,36 @@ func (o *VClusterListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *VClusterListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *VClusterListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *VClusterListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *VClusterListDto) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *VClusterListDto) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetIsVirtualCluster returns the IsVirtualCluster field value if set, zero value otherwise.
@@ -269,46 +259,36 @@ func (o *VClusterListDto) SetIsMaintenanceModeEnabled(v bool) {
 	o.IsMaintenanceModeEnabled = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *VClusterListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *VClusterListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *VClusterListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *VClusterListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
-
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *VClusterListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
+	o.OrganizationName = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
@@ -343,214 +323,164 @@ func (o *VClusterListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise.
 func (o *VClusterListDto) GetKubernetesVersion() string {
-	if o == nil || IsNil(o.KubernetesVersion.Get()) {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		var ret string
 		return ret
 	}
-	return *o.KubernetesVersion.Get()
+	return *o.KubernetesVersion
 }
 
 // GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetKubernetesVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesVersion) {
 		return nil, false
 	}
-	return o.KubernetesVersion.Get(), o.KubernetesVersion.IsSet()
+	return o.KubernetesVersion, true
 }
 
 // HasKubernetesVersion returns a boolean if a field has been set.
 func (o *VClusterListDto) HasKubernetesVersion() bool {
-	if o != nil && o.KubernetesVersion.IsSet() {
+	if o != nil && !IsNil(o.KubernetesVersion) {
 		return true
 	}
 
 	return false
 }
 
-// SetKubernetesVersion gets a reference to the given NullableString and assigns it to the KubernetesVersion field.
+// SetKubernetesVersion gets a reference to the given string and assigns it to the KubernetesVersion field.
 func (o *VClusterListDto) SetKubernetesVersion(v string) {
-	o.KubernetesVersion.Set(&v)
-}
-// SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
-func (o *VClusterListDto) SetKubernetesVersionNil() {
-	o.KubernetesVersion.Set(nil)
+	o.KubernetesVersion = &v
 }
 
-// UnsetKubernetesVersion ensures that no value is present for KubernetesVersion, not even an explicit nil
-func (o *VClusterListDto) UnsetKubernetesVersion() {
-	o.KubernetesVersion.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *VClusterListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *VClusterListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *VClusterListDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *VClusterListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
+	o.CreatedAt = &v
 }
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *VClusterListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *VClusterListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy.Get()
+	return *o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetCreatedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedBy) {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return o.CreatedBy, true
 }
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *VClusterListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
+	if o != nil && !IsNil(o.CreatedBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
 func (o *VClusterListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
-}
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *VClusterListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
+	o.CreatedBy = &v
 }
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *VClusterListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value if set, zero value otherwise.
 func (o *VClusterListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || IsNil(o.LastModified) {
 		var ret string
 		return ret
 	}
-	return *o.LastModified.Get()
+	return *o.LastModified
 }
 
 // GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetLastModifiedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModified) {
 		return nil, false
 	}
-	return o.LastModified.Get(), o.LastModified.IsSet()
+	return o.LastModified, true
 }
 
 // HasLastModified returns a boolean if a field has been set.
 func (o *VClusterListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
+	if o != nil && !IsNil(o.LastModified) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
 func (o *VClusterListDto) SetLastModified(v string) {
-	o.LastModified.Set(&v)
-}
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *VClusterListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
+	o.LastModified = &v
 }
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *VClusterListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
 func (o *VClusterListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		var ret string
 		return ret
 	}
-	return *o.LastModifiedBy.Get()
+	return *o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetLastModifiedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return o.LastModifiedBy, true
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *VClusterListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
+	if o != nil && !IsNil(o.LastModifiedBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy gets a reference to the given string and assigns it to the LastModifiedBy field.
 func (o *VClusterListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
-}
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *VClusterListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
-
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *VClusterListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
+	o.LastModifiedBy = &v
 }
 
 // GetAlertsCount returns the AlertsCount field value if set, zero value otherwise.
@@ -585,46 +515,36 @@ func (o *VClusterListDto) SetAlertsCount(v int32) {
 	o.AlertsCount = &v
 }
 
-// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise.
 func (o *VClusterListDto) GetExpiredAt() string {
-	if o == nil || IsNil(o.ExpiredAt.Get()) {
+	if o == nil || IsNil(o.ExpiredAt) {
 		var ret string
 		return ret
 	}
-	return *o.ExpiredAt.Get()
+	return *o.ExpiredAt
 }
 
 // GetExpiredAtOk returns a tuple with the ExpiredAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetExpiredAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExpiredAt) {
 		return nil, false
 	}
-	return o.ExpiredAt.Get(), o.ExpiredAt.IsSet()
+	return o.ExpiredAt, true
 }
 
 // HasExpiredAt returns a boolean if a field has been set.
 func (o *VClusterListDto) HasExpiredAt() bool {
-	if o != nil && o.ExpiredAt.IsSet() {
+	if o != nil && !IsNil(o.ExpiredAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetExpiredAt gets a reference to the given NullableString and assigns it to the ExpiredAt field.
+// SetExpiredAt gets a reference to the given string and assigns it to the ExpiredAt field.
 func (o *VClusterListDto) SetExpiredAt(v string) {
-	o.ExpiredAt.Set(&v)
-}
-// SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
-func (o *VClusterListDto) SetExpiredAtNil() {
-	o.ExpiredAt.Set(nil)
-}
-
-// UnsetExpiredAt ensures that no value is present for ExpiredAt, not even an explicit nil
-func (o *VClusterListDto) UnsetExpiredAt() {
-	o.ExpiredAt.Unset()
+	o.ExpiredAt = &v
 }
 
 // GetDeleteOnExpiration returns the DeleteOnExpiration field value if set, zero value otherwise.
@@ -701,88 +621,68 @@ func (o *VClusterListDto) UnsetAlertingProfileId() {
 	o.AlertingProfileId.Unset()
 }
 
-// GetAlertingProfileName returns the AlertingProfileName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAlertingProfileName returns the AlertingProfileName field value if set, zero value otherwise.
 func (o *VClusterListDto) GetAlertingProfileName() string {
-	if o == nil || IsNil(o.AlertingProfileName.Get()) {
+	if o == nil || IsNil(o.AlertingProfileName) {
 		var ret string
 		return ret
 	}
-	return *o.AlertingProfileName.Get()
+	return *o.AlertingProfileName
 }
 
 // GetAlertingProfileNameOk returns a tuple with the AlertingProfileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetAlertingProfileNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AlertingProfileName) {
 		return nil, false
 	}
-	return o.AlertingProfileName.Get(), o.AlertingProfileName.IsSet()
+	return o.AlertingProfileName, true
 }
 
 // HasAlertingProfileName returns a boolean if a field has been set.
 func (o *VClusterListDto) HasAlertingProfileName() bool {
-	if o != nil && o.AlertingProfileName.IsSet() {
+	if o != nil && !IsNil(o.AlertingProfileName) {
 		return true
 	}
 
 	return false
 }
 
-// SetAlertingProfileName gets a reference to the given NullableString and assigns it to the AlertingProfileName field.
+// SetAlertingProfileName gets a reference to the given string and assigns it to the AlertingProfileName field.
 func (o *VClusterListDto) SetAlertingProfileName(v string) {
-	o.AlertingProfileName.Set(&v)
-}
-// SetAlertingProfileNameNil sets the value for AlertingProfileName to be an explicit nil
-func (o *VClusterListDto) SetAlertingProfileNameNil() {
-	o.AlertingProfileName.Set(nil)
+	o.AlertingProfileName = &v
 }
 
-// UnsetAlertingProfileName ensures that no value is present for AlertingProfileName, not even an explicit nil
-func (o *VClusterListDto) UnsetAlertingProfileName() {
-	o.AlertingProfileName.Unset()
-}
-
-// GetAccessIp returns the AccessIp field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAccessIp returns the AccessIp field value if set, zero value otherwise.
 func (o *VClusterListDto) GetAccessIp() string {
-	if o == nil || IsNil(o.AccessIp.Get()) {
+	if o == nil || IsNil(o.AccessIp) {
 		var ret string
 		return ret
 	}
-	return *o.AccessIp.Get()
+	return *o.AccessIp
 }
 
 // GetAccessIpOk returns a tuple with the AccessIp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetAccessIpOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AccessIp) {
 		return nil, false
 	}
-	return o.AccessIp.Get(), o.AccessIp.IsSet()
+	return o.AccessIp, true
 }
 
 // HasAccessIp returns a boolean if a field has been set.
 func (o *VClusterListDto) HasAccessIp() bool {
-	if o != nil && o.AccessIp.IsSet() {
+	if o != nil && !IsNil(o.AccessIp) {
 		return true
 	}
 
 	return false
 }
 
-// SetAccessIp gets a reference to the given NullableString and assigns it to the AccessIp field.
+// SetAccessIp gets a reference to the given string and assigns it to the AccessIp field.
 func (o *VClusterListDto) SetAccessIp(v string) {
-	o.AccessIp.Set(&v)
-}
-// SetAccessIpNil sets the value for AccessIp to be an explicit nil
-func (o *VClusterListDto) SetAccessIpNil() {
-	o.AccessIp.Set(nil)
-}
-
-// UnsetAccessIp ensures that no value is present for AccessIp, not even an explicit nil
-func (o *VClusterListDto) UnsetAccessIp() {
-	o.AccessIp.Unset()
+	o.AccessIp = &v
 }
 
 // GetCloudType returns the CloudType field value if set, zero value otherwise.
@@ -1086,8 +986,8 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.IsVirtualCluster) {
 		toSerialize["isVirtualCluster"] = o.IsVirtualCluster
@@ -1101,32 +1001,32 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsMaintenanceModeEnabled) {
 		toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if o.KubernetesVersion.IsSet() {
-		toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
+	if !IsNil(o.KubernetesVersion) {
+		toSerialize["kubernetesVersion"] = o.KubernetesVersion
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
+	if !IsNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
 	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
+	if !IsNil(o.LastModified) {
+		toSerialize["lastModified"] = o.LastModified
 	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	}
 	if !IsNil(o.AlertsCount) {
 		toSerialize["alertsCount"] = o.AlertsCount
 	}
-	if o.ExpiredAt.IsSet() {
-		toSerialize["expiredAt"] = o.ExpiredAt.Get()
+	if !IsNil(o.ExpiredAt) {
+		toSerialize["expiredAt"] = o.ExpiredAt
 	}
 	if !IsNil(o.DeleteOnExpiration) {
 		toSerialize["deleteOnExpiration"] = o.DeleteOnExpiration
@@ -1134,11 +1034,11 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	if o.AlertingProfileId.IsSet() {
 		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	}
-	if o.AlertingProfileName.IsSet() {
-		toSerialize["alertingProfileName"] = o.AlertingProfileName.Get()
+	if !IsNil(o.AlertingProfileName) {
+		toSerialize["alertingProfileName"] = o.AlertingProfileName
 	}
-	if o.AccessIp.IsSet() {
-		toSerialize["accessIp"] = o.AccessIp.Get()
+	if !IsNil(o.AccessIp) {
+		toSerialize["accessIp"] = o.AccessIp
 	}
 	if !IsNil(o.CloudType) {
 		toSerialize["cloudType"] = o.CloudType

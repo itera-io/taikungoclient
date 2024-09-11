@@ -41,9 +41,9 @@ func NewSecretsWithDefaults() *Secrets {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *Secrets) GetData() []SecretDto {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []SecretDto
 		return ret
 	}
@@ -52,7 +52,6 @@ func (o *Secrets) GetData() []SecretDto {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Secrets) GetDataOk() ([]SecretDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
@@ -116,7 +115,7 @@ func (o Secrets) MarshalJSON() ([]byte, error) {
 
 func (o Secrets) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
+	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
 	if !IsNil(o.TotalCount) {

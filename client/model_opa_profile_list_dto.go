@@ -21,7 +21,7 @@ var _ MappedNullable = &OpaProfileListDto{}
 // OpaProfileListDto struct for OpaProfileListDto
 type OpaProfileListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	ForbidNodePort *bool `json:"forbidNodePort,omitempty"`
 	ForbidHttpIngress *bool `json:"forbidHttpIngress,omitempty"`
 	RequireProbe *bool `json:"requireProbe,omitempty"`
@@ -34,8 +34,8 @@ type OpaProfileListDto struct {
 	IsLocked *bool `json:"isLocked,omitempty"`
 	Revision *int32 `json:"revision,omitempty"`
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
+	CreatedAt *string `json:"createdAt,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 	Projects []CommonDropdownDto `json:"projects,omitempty"`
 }
@@ -89,46 +89,36 @@ func (o *OpaProfileListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OpaProfileListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpaProfileListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *OpaProfileListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OpaProfileListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *OpaProfileListDto) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *OpaProfileListDto) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetForbidNodePort returns the ForbidNodePort field value if set, zero value otherwise.
@@ -323,9 +313,9 @@ func (o *OpaProfileListDto) SetForcePodResource(v bool) {
 	o.ForcePodResource = &v
 }
 
-// GetAllowedRepo returns the AllowedRepo field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAllowedRepo returns the AllowedRepo field value if set, zero value otherwise.
 func (o *OpaProfileListDto) GetAllowedRepo() []string {
-	if o == nil {
+	if o == nil || IsNil(o.AllowedRepo) {
 		var ret []string
 		return ret
 	}
@@ -334,7 +324,6 @@ func (o *OpaProfileListDto) GetAllowedRepo() []string {
 
 // GetAllowedRepoOk returns a tuple with the AllowedRepo field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpaProfileListDto) GetAllowedRepoOk() ([]string, bool) {
 	if o == nil || IsNil(o.AllowedRepo) {
 		return nil, false
@@ -356,9 +345,9 @@ func (o *OpaProfileListDto) SetAllowedRepo(v []string) {
 	o.AllowedRepo = v
 }
 
-// GetForbidSpecificTags returns the ForbidSpecificTags field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetForbidSpecificTags returns the ForbidSpecificTags field value if set, zero value otherwise.
 func (o *OpaProfileListDto) GetForbidSpecificTags() []string {
-	if o == nil {
+	if o == nil || IsNil(o.ForbidSpecificTags) {
 		var ret []string
 		return ret
 	}
@@ -367,7 +356,6 @@ func (o *OpaProfileListDto) GetForbidSpecificTags() []string {
 
 // GetForbidSpecificTagsOk returns a tuple with the ForbidSpecificTags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpaProfileListDto) GetForbidSpecificTagsOk() ([]string, bool) {
 	if o == nil || IsNil(o.ForbidSpecificTags) {
 		return nil, false
@@ -389,9 +377,9 @@ func (o *OpaProfileListDto) SetForbidSpecificTags(v []string) {
 	o.ForbidSpecificTags = v
 }
 
-// GetIngressWhitelist returns the IngressWhitelist field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIngressWhitelist returns the IngressWhitelist field value if set, zero value otherwise.
 func (o *OpaProfileListDto) GetIngressWhitelist() []string {
-	if o == nil {
+	if o == nil || IsNil(o.IngressWhitelist) {
 		var ret []string
 		return ret
 	}
@@ -400,7 +388,6 @@ func (o *OpaProfileListDto) GetIngressWhitelist() []string {
 
 // GetIngressWhitelistOk returns a tuple with the IngressWhitelist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpaProfileListDto) GetIngressWhitelistOk() ([]string, bool) {
 	if o == nil || IsNil(o.IngressWhitelist) {
 		return nil, false
@@ -518,88 +505,68 @@ func (o *OpaProfileListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *OpaProfileListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpaProfileListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *OpaProfileListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *OpaProfileListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *OpaProfileListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+	o.OrganizationName = &v
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *OpaProfileListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
 func (o *OpaProfileListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || IsNil(o.CreatedAt) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+	return *o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpaProfileListDto) GetCreatedAtOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedAt) {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return o.CreatedAt, true
 }
 
 // HasCreatedAt returns a boolean if a field has been set.
 func (o *OpaProfileListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
+	if o != nil && !IsNil(o.CreatedAt) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt gets a reference to the given string and assigns it to the CreatedAt field.
 func (o *OpaProfileListDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *OpaProfileListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
-
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *OpaProfileListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
+	o.CreatedAt = &v
 }
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
@@ -634,9 +601,9 @@ func (o *OpaProfileListDto) SetIsDefault(v bool) {
 	o.IsDefault = &v
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value if set, zero value otherwise.
 func (o *OpaProfileListDto) GetProjects() []CommonDropdownDto {
-	if o == nil {
+	if o == nil || IsNil(o.Projects) {
 		var ret []CommonDropdownDto
 		return ret
 	}
@@ -645,7 +612,6 @@ func (o *OpaProfileListDto) GetProjects() []CommonDropdownDto {
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OpaProfileListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
@@ -680,8 +646,8 @@ func (o OpaProfileListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.ForbidNodePort) {
 		toSerialize["forbidNodePort"] = o.ForbidNodePort
@@ -701,13 +667,13 @@ func (o OpaProfileListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ForcePodResource) {
 		toSerialize["forcePodResource"] = o.ForcePodResource
 	}
-	if o.AllowedRepo != nil {
+	if !IsNil(o.AllowedRepo) {
 		toSerialize["allowedRepo"] = o.AllowedRepo
 	}
-	if o.ForbidSpecificTags != nil {
+	if !IsNil(o.ForbidSpecificTags) {
 		toSerialize["forbidSpecificTags"] = o.ForbidSpecificTags
 	}
-	if o.IngressWhitelist != nil {
+	if !IsNil(o.IngressWhitelist) {
 		toSerialize["ingressWhitelist"] = o.IngressWhitelist
 	}
 	if !IsNil(o.IsLocked) {
@@ -719,16 +685,16 @@ func (o OpaProfileListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
+	if !IsNil(o.CreatedAt) {
+		toSerialize["createdAt"] = o.CreatedAt
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault
 	}
-	if o.Projects != nil {
+	if !IsNil(o.Projects) {
 		toSerialize["projects"] = o.Projects
 	}
 	return toSerialize, nil

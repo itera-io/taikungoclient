@@ -20,12 +20,12 @@ var _ MappedNullable = &CreateStripeCustomerCommand{}
 
 // CreateStripeCustomerCommand struct for CreateStripeCustomerCommand
 type CreateStripeCustomerCommand struct {
-	LegalName NullableString `json:"legalName,omitempty"`
-	BillingEmail NullableString `json:"billingEmail,omitempty"`
-	Country NullableString `json:"country,omitempty"`
-	Address NullableString `json:"address,omitempty"`
-	City NullableString `json:"city,omitempty"`
-	VatNumber NullableString `json:"vatNumber,omitempty"`
+	LegalName *string `json:"legalName,omitempty"`
+	BillingEmail *string `json:"billingEmail,omitempty"`
+	Country *string `json:"country,omitempty"`
+	Address *string `json:"address,omitempty"`
+	City *string `json:"city,omitempty"`
+	VatNumber *string `json:"vatNumber,omitempty"`
 }
 
 // NewCreateStripeCustomerCommand instantiates a new CreateStripeCustomerCommand object
@@ -45,256 +45,196 @@ func NewCreateStripeCustomerCommandWithDefaults() *CreateStripeCustomerCommand {
 	return &this
 }
 
-// GetLegalName returns the LegalName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLegalName returns the LegalName field value if set, zero value otherwise.
 func (o *CreateStripeCustomerCommand) GetLegalName() string {
-	if o == nil || IsNil(o.LegalName.Get()) {
+	if o == nil || IsNil(o.LegalName) {
 		var ret string
 		return ret
 	}
-	return *o.LegalName.Get()
+	return *o.LegalName
 }
 
 // GetLegalNameOk returns a tuple with the LegalName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateStripeCustomerCommand) GetLegalNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LegalName) {
 		return nil, false
 	}
-	return o.LegalName.Get(), o.LegalName.IsSet()
+	return o.LegalName, true
 }
 
 // HasLegalName returns a boolean if a field has been set.
 func (o *CreateStripeCustomerCommand) HasLegalName() bool {
-	if o != nil && o.LegalName.IsSet() {
+	if o != nil && !IsNil(o.LegalName) {
 		return true
 	}
 
 	return false
 }
 
-// SetLegalName gets a reference to the given NullableString and assigns it to the LegalName field.
+// SetLegalName gets a reference to the given string and assigns it to the LegalName field.
 func (o *CreateStripeCustomerCommand) SetLegalName(v string) {
-	o.LegalName.Set(&v)
-}
-// SetLegalNameNil sets the value for LegalName to be an explicit nil
-func (o *CreateStripeCustomerCommand) SetLegalNameNil() {
-	o.LegalName.Set(nil)
+	o.LegalName = &v
 }
 
-// UnsetLegalName ensures that no value is present for LegalName, not even an explicit nil
-func (o *CreateStripeCustomerCommand) UnsetLegalName() {
-	o.LegalName.Unset()
-}
-
-// GetBillingEmail returns the BillingEmail field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBillingEmail returns the BillingEmail field value if set, zero value otherwise.
 func (o *CreateStripeCustomerCommand) GetBillingEmail() string {
-	if o == nil || IsNil(o.BillingEmail.Get()) {
+	if o == nil || IsNil(o.BillingEmail) {
 		var ret string
 		return ret
 	}
-	return *o.BillingEmail.Get()
+	return *o.BillingEmail
 }
 
 // GetBillingEmailOk returns a tuple with the BillingEmail field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateStripeCustomerCommand) GetBillingEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BillingEmail) {
 		return nil, false
 	}
-	return o.BillingEmail.Get(), o.BillingEmail.IsSet()
+	return o.BillingEmail, true
 }
 
 // HasBillingEmail returns a boolean if a field has been set.
 func (o *CreateStripeCustomerCommand) HasBillingEmail() bool {
-	if o != nil && o.BillingEmail.IsSet() {
+	if o != nil && !IsNil(o.BillingEmail) {
 		return true
 	}
 
 	return false
 }
 
-// SetBillingEmail gets a reference to the given NullableString and assigns it to the BillingEmail field.
+// SetBillingEmail gets a reference to the given string and assigns it to the BillingEmail field.
 func (o *CreateStripeCustomerCommand) SetBillingEmail(v string) {
-	o.BillingEmail.Set(&v)
-}
-// SetBillingEmailNil sets the value for BillingEmail to be an explicit nil
-func (o *CreateStripeCustomerCommand) SetBillingEmailNil() {
-	o.BillingEmail.Set(nil)
+	o.BillingEmail = &v
 }
 
-// UnsetBillingEmail ensures that no value is present for BillingEmail, not even an explicit nil
-func (o *CreateStripeCustomerCommand) UnsetBillingEmail() {
-	o.BillingEmail.Unset()
-}
-
-// GetCountry returns the Country field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCountry returns the Country field value if set, zero value otherwise.
 func (o *CreateStripeCustomerCommand) GetCountry() string {
-	if o == nil || IsNil(o.Country.Get()) {
+	if o == nil || IsNil(o.Country) {
 		var ret string
 		return ret
 	}
-	return *o.Country.Get()
+	return *o.Country
 }
 
 // GetCountryOk returns a tuple with the Country field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateStripeCustomerCommand) GetCountryOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Country) {
 		return nil, false
 	}
-	return o.Country.Get(), o.Country.IsSet()
+	return o.Country, true
 }
 
 // HasCountry returns a boolean if a field has been set.
 func (o *CreateStripeCustomerCommand) HasCountry() bool {
-	if o != nil && o.Country.IsSet() {
+	if o != nil && !IsNil(o.Country) {
 		return true
 	}
 
 	return false
 }
 
-// SetCountry gets a reference to the given NullableString and assigns it to the Country field.
+// SetCountry gets a reference to the given string and assigns it to the Country field.
 func (o *CreateStripeCustomerCommand) SetCountry(v string) {
-	o.Country.Set(&v)
-}
-// SetCountryNil sets the value for Country to be an explicit nil
-func (o *CreateStripeCustomerCommand) SetCountryNil() {
-	o.Country.Set(nil)
+	o.Country = &v
 }
 
-// UnsetCountry ensures that no value is present for Country, not even an explicit nil
-func (o *CreateStripeCustomerCommand) UnsetCountry() {
-	o.Country.Unset()
-}
-
-// GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAddress returns the Address field value if set, zero value otherwise.
 func (o *CreateStripeCustomerCommand) GetAddress() string {
-	if o == nil || IsNil(o.Address.Get()) {
+	if o == nil || IsNil(o.Address) {
 		var ret string
 		return ret
 	}
-	return *o.Address.Get()
+	return *o.Address
 }
 
 // GetAddressOk returns a tuple with the Address field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateStripeCustomerCommand) GetAddressOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Address) {
 		return nil, false
 	}
-	return o.Address.Get(), o.Address.IsSet()
+	return o.Address, true
 }
 
 // HasAddress returns a boolean if a field has been set.
 func (o *CreateStripeCustomerCommand) HasAddress() bool {
-	if o != nil && o.Address.IsSet() {
+	if o != nil && !IsNil(o.Address) {
 		return true
 	}
 
 	return false
 }
 
-// SetAddress gets a reference to the given NullableString and assigns it to the Address field.
+// SetAddress gets a reference to the given string and assigns it to the Address field.
 func (o *CreateStripeCustomerCommand) SetAddress(v string) {
-	o.Address.Set(&v)
-}
-// SetAddressNil sets the value for Address to be an explicit nil
-func (o *CreateStripeCustomerCommand) SetAddressNil() {
-	o.Address.Set(nil)
+	o.Address = &v
 }
 
-// UnsetAddress ensures that no value is present for Address, not even an explicit nil
-func (o *CreateStripeCustomerCommand) UnsetAddress() {
-	o.Address.Unset()
-}
-
-// GetCity returns the City field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCity returns the City field value if set, zero value otherwise.
 func (o *CreateStripeCustomerCommand) GetCity() string {
-	if o == nil || IsNil(o.City.Get()) {
+	if o == nil || IsNil(o.City) {
 		var ret string
 		return ret
 	}
-	return *o.City.Get()
+	return *o.City
 }
 
 // GetCityOk returns a tuple with the City field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateStripeCustomerCommand) GetCityOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.City) {
 		return nil, false
 	}
-	return o.City.Get(), o.City.IsSet()
+	return o.City, true
 }
 
 // HasCity returns a boolean if a field has been set.
 func (o *CreateStripeCustomerCommand) HasCity() bool {
-	if o != nil && o.City.IsSet() {
+	if o != nil && !IsNil(o.City) {
 		return true
 	}
 
 	return false
 }
 
-// SetCity gets a reference to the given NullableString and assigns it to the City field.
+// SetCity gets a reference to the given string and assigns it to the City field.
 func (o *CreateStripeCustomerCommand) SetCity(v string) {
-	o.City.Set(&v)
-}
-// SetCityNil sets the value for City to be an explicit nil
-func (o *CreateStripeCustomerCommand) SetCityNil() {
-	o.City.Set(nil)
+	o.City = &v
 }
 
-// UnsetCity ensures that no value is present for City, not even an explicit nil
-func (o *CreateStripeCustomerCommand) UnsetCity() {
-	o.City.Unset()
-}
-
-// GetVatNumber returns the VatNumber field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVatNumber returns the VatNumber field value if set, zero value otherwise.
 func (o *CreateStripeCustomerCommand) GetVatNumber() string {
-	if o == nil || IsNil(o.VatNumber.Get()) {
+	if o == nil || IsNil(o.VatNumber) {
 		var ret string
 		return ret
 	}
-	return *o.VatNumber.Get()
+	return *o.VatNumber
 }
 
 // GetVatNumberOk returns a tuple with the VatNumber field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateStripeCustomerCommand) GetVatNumberOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.VatNumber) {
 		return nil, false
 	}
-	return o.VatNumber.Get(), o.VatNumber.IsSet()
+	return o.VatNumber, true
 }
 
 // HasVatNumber returns a boolean if a field has been set.
 func (o *CreateStripeCustomerCommand) HasVatNumber() bool {
-	if o != nil && o.VatNumber.IsSet() {
+	if o != nil && !IsNil(o.VatNumber) {
 		return true
 	}
 
 	return false
 }
 
-// SetVatNumber gets a reference to the given NullableString and assigns it to the VatNumber field.
+// SetVatNumber gets a reference to the given string and assigns it to the VatNumber field.
 func (o *CreateStripeCustomerCommand) SetVatNumber(v string) {
-	o.VatNumber.Set(&v)
-}
-// SetVatNumberNil sets the value for VatNumber to be an explicit nil
-func (o *CreateStripeCustomerCommand) SetVatNumberNil() {
-	o.VatNumber.Set(nil)
-}
-
-// UnsetVatNumber ensures that no value is present for VatNumber, not even an explicit nil
-func (o *CreateStripeCustomerCommand) UnsetVatNumber() {
-	o.VatNumber.Unset()
+	o.VatNumber = &v
 }
 
 func (o CreateStripeCustomerCommand) MarshalJSON() ([]byte, error) {
@@ -307,23 +247,23 @@ func (o CreateStripeCustomerCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateStripeCustomerCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.LegalName.IsSet() {
-		toSerialize["legalName"] = o.LegalName.Get()
+	if !IsNil(o.LegalName) {
+		toSerialize["legalName"] = o.LegalName
 	}
-	if o.BillingEmail.IsSet() {
-		toSerialize["billingEmail"] = o.BillingEmail.Get()
+	if !IsNil(o.BillingEmail) {
+		toSerialize["billingEmail"] = o.BillingEmail
 	}
-	if o.Country.IsSet() {
-		toSerialize["country"] = o.Country.Get()
+	if !IsNil(o.Country) {
+		toSerialize["country"] = o.Country
 	}
-	if o.Address.IsSet() {
-		toSerialize["address"] = o.Address.Get()
+	if !IsNil(o.Address) {
+		toSerialize["address"] = o.Address
 	}
-	if o.City.IsSet() {
-		toSerialize["city"] = o.City.Get()
+	if !IsNil(o.City) {
+		toSerialize["city"] = o.City
 	}
-	if o.VatNumber.IsSet() {
-		toSerialize["vatNumber"] = o.VatNumber.Get()
+	if !IsNil(o.VatNumber) {
+		toSerialize["vatNumber"] = o.VatNumber
 	}
 	return toSerialize, nil
 }

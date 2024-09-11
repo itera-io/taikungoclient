@@ -21,14 +21,14 @@ var _ MappedNullable = &UpdateInvoiceDto{}
 
 // UpdateInvoiceDto struct for UpdateInvoiceDto
 type UpdateInvoiceDto struct {
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	OrganizationSubscriptionId NullableInt32 `json:"organizationSubscriptionId,omitempty"`
 	StartDate NullableTime `json:"startDate,omitempty"`
 	EndDate NullableTime `json:"endDate,omitempty"`
 	DueDate NullableTime `json:"dueDate,omitempty"`
 	IsPaid NullableBool `json:"isPaid,omitempty"`
 	RequiredPaymentAction NullableBool `json:"requiredPaymentAction,omitempty"`
-	StripeInvoiceId NullableString `json:"stripeInvoiceId,omitempty"`
+	StripeInvoiceId *string `json:"stripeInvoiceId,omitempty"`
 	Price NullableFloat64 `json:"price,omitempty"`
 }
 
@@ -49,46 +49,36 @@ func NewUpdateInvoiceDtoWithDefaults() *UpdateInvoiceDto {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *UpdateInvoiceDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateInvoiceDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *UpdateInvoiceDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *UpdateInvoiceDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *UpdateInvoiceDto) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *UpdateInvoiceDto) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetOrganizationSubscriptionId returns the OrganizationSubscriptionId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -343,46 +333,36 @@ func (o *UpdateInvoiceDto) UnsetRequiredPaymentAction() {
 	o.RequiredPaymentAction.Unset()
 }
 
-// GetStripeInvoiceId returns the StripeInvoiceId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStripeInvoiceId returns the StripeInvoiceId field value if set, zero value otherwise.
 func (o *UpdateInvoiceDto) GetStripeInvoiceId() string {
-	if o == nil || IsNil(o.StripeInvoiceId.Get()) {
+	if o == nil || IsNil(o.StripeInvoiceId) {
 		var ret string
 		return ret
 	}
-	return *o.StripeInvoiceId.Get()
+	return *o.StripeInvoiceId
 }
 
 // GetStripeInvoiceIdOk returns a tuple with the StripeInvoiceId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateInvoiceDto) GetStripeInvoiceIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StripeInvoiceId) {
 		return nil, false
 	}
-	return o.StripeInvoiceId.Get(), o.StripeInvoiceId.IsSet()
+	return o.StripeInvoiceId, true
 }
 
 // HasStripeInvoiceId returns a boolean if a field has been set.
 func (o *UpdateInvoiceDto) HasStripeInvoiceId() bool {
-	if o != nil && o.StripeInvoiceId.IsSet() {
+	if o != nil && !IsNil(o.StripeInvoiceId) {
 		return true
 	}
 
 	return false
 }
 
-// SetStripeInvoiceId gets a reference to the given NullableString and assigns it to the StripeInvoiceId field.
+// SetStripeInvoiceId gets a reference to the given string and assigns it to the StripeInvoiceId field.
 func (o *UpdateInvoiceDto) SetStripeInvoiceId(v string) {
-	o.StripeInvoiceId.Set(&v)
-}
-// SetStripeInvoiceIdNil sets the value for StripeInvoiceId to be an explicit nil
-func (o *UpdateInvoiceDto) SetStripeInvoiceIdNil() {
-	o.StripeInvoiceId.Set(nil)
-}
-
-// UnsetStripeInvoiceId ensures that no value is present for StripeInvoiceId, not even an explicit nil
-func (o *UpdateInvoiceDto) UnsetStripeInvoiceId() {
-	o.StripeInvoiceId.Unset()
+	o.StripeInvoiceId = &v
 }
 
 // GetPrice returns the Price field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -437,8 +417,8 @@ func (o UpdateInvoiceDto) MarshalJSON() ([]byte, error) {
 
 func (o UpdateInvoiceDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if o.OrganizationSubscriptionId.IsSet() {
 		toSerialize["organizationSubscriptionId"] = o.OrganizationSubscriptionId.Get()
@@ -458,8 +438,8 @@ func (o UpdateInvoiceDto) ToMap() (map[string]interface{}, error) {
 	if o.RequiredPaymentAction.IsSet() {
 		toSerialize["requiredPaymentAction"] = o.RequiredPaymentAction.Get()
 	}
-	if o.StripeInvoiceId.IsSet() {
-		toSerialize["stripeInvoiceId"] = o.StripeInvoiceId.Get()
+	if !IsNil(o.StripeInvoiceId) {
+		toSerialize["stripeInvoiceId"] = o.StripeInvoiceId
 	}
 	if o.Price.IsSet() {
 		toSerialize["price"] = o.Price.Get()

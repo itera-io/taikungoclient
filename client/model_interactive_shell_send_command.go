@@ -21,7 +21,7 @@ var _ MappedNullable = &InteractiveShellSendCommand{}
 // InteractiveShellSendCommand struct for InteractiveShellSendCommand
 type InteractiveShellSendCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	Token NullableString `json:"token,omitempty"`
+	Token *string `json:"token,omitempty"`
 	InstanceId NullableInt32 `json:"instanceId,omitempty"`
 }
 
@@ -74,46 +74,36 @@ func (o *InteractiveShellSendCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetToken returns the Token field value if set, zero value otherwise.
 func (o *InteractiveShellSendCommand) GetToken() string {
-	if o == nil || IsNil(o.Token.Get()) {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
-	return *o.Token.Get()
+	return *o.Token
 }
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InteractiveShellSendCommand) GetTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
-	return o.Token.Get(), o.Token.IsSet()
+	return o.Token, true
 }
 
 // HasToken returns a boolean if a field has been set.
 func (o *InteractiveShellSendCommand) HasToken() bool {
-	if o != nil && o.Token.IsSet() {
+	if o != nil && !IsNil(o.Token) {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given NullableString and assigns it to the Token field.
+// SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *InteractiveShellSendCommand) SetToken(v string) {
-	o.Token.Set(&v)
-}
-// SetTokenNil sets the value for Token to be an explicit nil
-func (o *InteractiveShellSendCommand) SetTokenNil() {
-	o.Token.Set(nil)
-}
-
-// UnsetToken ensures that no value is present for Token, not even an explicit nil
-func (o *InteractiveShellSendCommand) UnsetToken() {
-	o.Token.Unset()
+	o.Token = &v
 }
 
 // GetInstanceId returns the InstanceId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -171,8 +161,8 @@ func (o InteractiveShellSendCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if o.Token.IsSet() {
-		toSerialize["token"] = o.Token.Get()
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
 	}
 	if o.InstanceId.IsSet() {
 		toSerialize["instanceId"] = o.InstanceId.Get()

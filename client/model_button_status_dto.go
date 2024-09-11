@@ -74,9 +74,9 @@ func (o *ButtonStatusDto) SetEnable(v bool) {
 	o.Enable = &v
 }
 
-// GetReasons returns the Reasons field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetReasons returns the Reasons field value if set, zero value otherwise.
 func (o *ButtonStatusDto) GetReasons() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Reasons) {
 		var ret []string
 		return ret
 	}
@@ -85,7 +85,6 @@ func (o *ButtonStatusDto) GetReasons() []string {
 
 // GetReasonsOk returns a tuple with the Reasons field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ButtonStatusDto) GetReasonsOk() ([]string, bool) {
 	if o == nil || IsNil(o.Reasons) {
 		return nil, false
@@ -152,7 +151,7 @@ func (o ButtonStatusDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enable) {
 		toSerialize["enable"] = o.Enable
 	}
-	if o.Reasons != nil {
+	if !IsNil(o.Reasons) {
 		toSerialize["reasons"] = o.Reasons
 	}
 	if !IsNil(o.Hidden) {

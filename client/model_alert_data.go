@@ -40,9 +40,9 @@ func NewAlertDataWithDefaults() *AlertData {
 	return &this
 }
 
-// GetGroups returns the Groups field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGroups returns the Groups field value if set, zero value otherwise.
 func (o *AlertData) GetGroups() []Group {
-	if o == nil {
+	if o == nil || IsNil(o.Groups) {
 		var ret []Group
 		return ret
 	}
@@ -51,7 +51,6 @@ func (o *AlertData) GetGroups() []Group {
 
 // GetGroupsOk returns a tuple with the Groups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertData) GetGroupsOk() ([]Group, bool) {
 	if o == nil || IsNil(o.Groups) {
 		return nil, false
@@ -83,7 +82,7 @@ func (o AlertData) MarshalJSON() ([]byte, error) {
 
 func (o AlertData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Groups != nil {
+	if !IsNil(o.Groups) {
 		toSerialize["groups"] = o.Groups
 	}
 	return toSerialize, nil

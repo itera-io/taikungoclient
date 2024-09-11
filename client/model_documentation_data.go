@@ -21,9 +21,9 @@ var _ MappedNullable = &DocumentationData{}
 // DocumentationData struct for DocumentationData
 type DocumentationData struct {
 	Id *int32 `json:"id,omitempty"`
-	Key NullableString `json:"key,omitempty"`
-	Link NullableString `json:"link,omitempty"`
-	Role NullableString `json:"role,omitempty"`
+	Key *string `json:"key,omitempty"`
+	Link *string `json:"link,omitempty"`
+	Role *string `json:"role,omitempty"`
 }
 
 // NewDocumentationData instantiates a new DocumentationData object
@@ -75,130 +75,100 @@ func (o *DocumentationData) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKey returns the Key field value if set, zero value otherwise.
 func (o *DocumentationData) GetKey() string {
-	if o == nil || IsNil(o.Key.Get()) {
+	if o == nil || IsNil(o.Key) {
 		var ret string
 		return ret
 	}
-	return *o.Key.Get()
+	return *o.Key
 }
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentationData) GetKeyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
-	return o.Key.Get(), o.Key.IsSet()
+	return o.Key, true
 }
 
 // HasKey returns a boolean if a field has been set.
 func (o *DocumentationData) HasKey() bool {
-	if o != nil && o.Key.IsSet() {
+	if o != nil && !IsNil(o.Key) {
 		return true
 	}
 
 	return false
 }
 
-// SetKey gets a reference to the given NullableString and assigns it to the Key field.
+// SetKey gets a reference to the given string and assigns it to the Key field.
 func (o *DocumentationData) SetKey(v string) {
-	o.Key.Set(&v)
-}
-// SetKeyNil sets the value for Key to be an explicit nil
-func (o *DocumentationData) SetKeyNil() {
-	o.Key.Set(nil)
+	o.Key = &v
 }
 
-// UnsetKey ensures that no value is present for Key, not even an explicit nil
-func (o *DocumentationData) UnsetKey() {
-	o.Key.Unset()
-}
-
-// GetLink returns the Link field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLink returns the Link field value if set, zero value otherwise.
 func (o *DocumentationData) GetLink() string {
-	if o == nil || IsNil(o.Link.Get()) {
+	if o == nil || IsNil(o.Link) {
 		var ret string
 		return ret
 	}
-	return *o.Link.Get()
+	return *o.Link
 }
 
 // GetLinkOk returns a tuple with the Link field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentationData) GetLinkOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Link) {
 		return nil, false
 	}
-	return o.Link.Get(), o.Link.IsSet()
+	return o.Link, true
 }
 
 // HasLink returns a boolean if a field has been set.
 func (o *DocumentationData) HasLink() bool {
-	if o != nil && o.Link.IsSet() {
+	if o != nil && !IsNil(o.Link) {
 		return true
 	}
 
 	return false
 }
 
-// SetLink gets a reference to the given NullableString and assigns it to the Link field.
+// SetLink gets a reference to the given string and assigns it to the Link field.
 func (o *DocumentationData) SetLink(v string) {
-	o.Link.Set(&v)
-}
-// SetLinkNil sets the value for Link to be an explicit nil
-func (o *DocumentationData) SetLinkNil() {
-	o.Link.Set(nil)
+	o.Link = &v
 }
 
-// UnsetLink ensures that no value is present for Link, not even an explicit nil
-func (o *DocumentationData) UnsetLink() {
-	o.Link.Unset()
-}
-
-// GetRole returns the Role field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRole returns the Role field value if set, zero value otherwise.
 func (o *DocumentationData) GetRole() string {
-	if o == nil || IsNil(o.Role.Get()) {
+	if o == nil || IsNil(o.Role) {
 		var ret string
 		return ret
 	}
-	return *o.Role.Get()
+	return *o.Role
 }
 
 // GetRoleOk returns a tuple with the Role field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DocumentationData) GetRoleOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Role) {
 		return nil, false
 	}
-	return o.Role.Get(), o.Role.IsSet()
+	return o.Role, true
 }
 
 // HasRole returns a boolean if a field has been set.
 func (o *DocumentationData) HasRole() bool {
-	if o != nil && o.Role.IsSet() {
+	if o != nil && !IsNil(o.Role) {
 		return true
 	}
 
 	return false
 }
 
-// SetRole gets a reference to the given NullableString and assigns it to the Role field.
+// SetRole gets a reference to the given string and assigns it to the Role field.
 func (o *DocumentationData) SetRole(v string) {
-	o.Role.Set(&v)
-}
-// SetRoleNil sets the value for Role to be an explicit nil
-func (o *DocumentationData) SetRoleNil() {
-	o.Role.Set(nil)
-}
-
-// UnsetRole ensures that no value is present for Role, not even an explicit nil
-func (o *DocumentationData) UnsetRole() {
-	o.Role.Unset()
+	o.Role = &v
 }
 
 func (o DocumentationData) MarshalJSON() ([]byte, error) {
@@ -214,14 +184,14 @@ func (o DocumentationData) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Key.IsSet() {
-		toSerialize["key"] = o.Key.Get()
+	if !IsNil(o.Key) {
+		toSerialize["key"] = o.Key
 	}
-	if o.Link.IsSet() {
-		toSerialize["link"] = o.Link.Get()
+	if !IsNil(o.Link) {
+		toSerialize["link"] = o.Link
 	}
-	if o.Role.IsSet() {
-		toSerialize["role"] = o.Role.Get()
+	if !IsNil(o.Role) {
+		toSerialize["role"] = o.Role
 	}
 	return toSerialize, nil
 }

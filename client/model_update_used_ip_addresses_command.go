@@ -40,9 +40,9 @@ func NewUpdateUsedIpAddressesCommandWithDefaults() *UpdateUsedIpAddressesCommand
 	return &this
 }
 
-// GetIpAddress returns the IpAddress field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIpAddress returns the IpAddress field value if set, zero value otherwise.
 func (o *UpdateUsedIpAddressesCommand) GetIpAddress() []string {
-	if o == nil {
+	if o == nil || IsNil(o.IpAddress) {
 		var ret []string
 		return ret
 	}
@@ -51,7 +51,6 @@ func (o *UpdateUsedIpAddressesCommand) GetIpAddress() []string {
 
 // GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UpdateUsedIpAddressesCommand) GetIpAddressOk() ([]string, bool) {
 	if o == nil || IsNil(o.IpAddress) {
 		return nil, false
@@ -83,7 +82,7 @@ func (o UpdateUsedIpAddressesCommand) MarshalJSON() ([]byte, error) {
 
 func (o UpdateUsedIpAddressesCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.IpAddress != nil {
+	if !IsNil(o.IpAddress) {
 		toSerialize["ipAddress"] = o.IpAddress
 	}
 	return toSerialize, nil

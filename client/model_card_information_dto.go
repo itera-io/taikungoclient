@@ -20,11 +20,11 @@ var _ MappedNullable = &CardInformationDto{}
 
 // CardInformationDto struct for CardInformationDto
 type CardInformationDto struct {
-	ExpirationMonth NullableString `json:"expirationMonth,omitempty"`
-	ExpirationYear NullableString `json:"expirationYear,omitempty"`
-	Last4 NullableString `json:"last4,omitempty"`
-	Brand NullableString `json:"brand,omitempty"`
-	HolderName NullableString `json:"holderName,omitempty"`
+	ExpirationMonth *string `json:"expirationMonth,omitempty"`
+	ExpirationYear *string `json:"expirationYear,omitempty"`
+	Last4 *string `json:"last4,omitempty"`
+	Brand *string `json:"brand,omitempty"`
+	HolderName *string `json:"holderName,omitempty"`
 	Balance *int64 `json:"balance,omitempty"`
 }
 
@@ -45,214 +45,164 @@ func NewCardInformationDtoWithDefaults() *CardInformationDto {
 	return &this
 }
 
-// GetExpirationMonth returns the ExpirationMonth field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpirationMonth returns the ExpirationMonth field value if set, zero value otherwise.
 func (o *CardInformationDto) GetExpirationMonth() string {
-	if o == nil || IsNil(o.ExpirationMonth.Get()) {
+	if o == nil || IsNil(o.ExpirationMonth) {
 		var ret string
 		return ret
 	}
-	return *o.ExpirationMonth.Get()
+	return *o.ExpirationMonth
 }
 
 // GetExpirationMonthOk returns a tuple with the ExpirationMonth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CardInformationDto) GetExpirationMonthOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExpirationMonth) {
 		return nil, false
 	}
-	return o.ExpirationMonth.Get(), o.ExpirationMonth.IsSet()
+	return o.ExpirationMonth, true
 }
 
 // HasExpirationMonth returns a boolean if a field has been set.
 func (o *CardInformationDto) HasExpirationMonth() bool {
-	if o != nil && o.ExpirationMonth.IsSet() {
+	if o != nil && !IsNil(o.ExpirationMonth) {
 		return true
 	}
 
 	return false
 }
 
-// SetExpirationMonth gets a reference to the given NullableString and assigns it to the ExpirationMonth field.
+// SetExpirationMonth gets a reference to the given string and assigns it to the ExpirationMonth field.
 func (o *CardInformationDto) SetExpirationMonth(v string) {
-	o.ExpirationMonth.Set(&v)
-}
-// SetExpirationMonthNil sets the value for ExpirationMonth to be an explicit nil
-func (o *CardInformationDto) SetExpirationMonthNil() {
-	o.ExpirationMonth.Set(nil)
+	o.ExpirationMonth = &v
 }
 
-// UnsetExpirationMonth ensures that no value is present for ExpirationMonth, not even an explicit nil
-func (o *CardInformationDto) UnsetExpirationMonth() {
-	o.ExpirationMonth.Unset()
-}
-
-// GetExpirationYear returns the ExpirationYear field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpirationYear returns the ExpirationYear field value if set, zero value otherwise.
 func (o *CardInformationDto) GetExpirationYear() string {
-	if o == nil || IsNil(o.ExpirationYear.Get()) {
+	if o == nil || IsNil(o.ExpirationYear) {
 		var ret string
 		return ret
 	}
-	return *o.ExpirationYear.Get()
+	return *o.ExpirationYear
 }
 
 // GetExpirationYearOk returns a tuple with the ExpirationYear field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CardInformationDto) GetExpirationYearOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExpirationYear) {
 		return nil, false
 	}
-	return o.ExpirationYear.Get(), o.ExpirationYear.IsSet()
+	return o.ExpirationYear, true
 }
 
 // HasExpirationYear returns a boolean if a field has been set.
 func (o *CardInformationDto) HasExpirationYear() bool {
-	if o != nil && o.ExpirationYear.IsSet() {
+	if o != nil && !IsNil(o.ExpirationYear) {
 		return true
 	}
 
 	return false
 }
 
-// SetExpirationYear gets a reference to the given NullableString and assigns it to the ExpirationYear field.
+// SetExpirationYear gets a reference to the given string and assigns it to the ExpirationYear field.
 func (o *CardInformationDto) SetExpirationYear(v string) {
-	o.ExpirationYear.Set(&v)
-}
-// SetExpirationYearNil sets the value for ExpirationYear to be an explicit nil
-func (o *CardInformationDto) SetExpirationYearNil() {
-	o.ExpirationYear.Set(nil)
+	o.ExpirationYear = &v
 }
 
-// UnsetExpirationYear ensures that no value is present for ExpirationYear, not even an explicit nil
-func (o *CardInformationDto) UnsetExpirationYear() {
-	o.ExpirationYear.Unset()
-}
-
-// GetLast4 returns the Last4 field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLast4 returns the Last4 field value if set, zero value otherwise.
 func (o *CardInformationDto) GetLast4() string {
-	if o == nil || IsNil(o.Last4.Get()) {
+	if o == nil || IsNil(o.Last4) {
 		var ret string
 		return ret
 	}
-	return *o.Last4.Get()
+	return *o.Last4
 }
 
 // GetLast4Ok returns a tuple with the Last4 field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CardInformationDto) GetLast4Ok() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Last4) {
 		return nil, false
 	}
-	return o.Last4.Get(), o.Last4.IsSet()
+	return o.Last4, true
 }
 
 // HasLast4 returns a boolean if a field has been set.
 func (o *CardInformationDto) HasLast4() bool {
-	if o != nil && o.Last4.IsSet() {
+	if o != nil && !IsNil(o.Last4) {
 		return true
 	}
 
 	return false
 }
 
-// SetLast4 gets a reference to the given NullableString and assigns it to the Last4 field.
+// SetLast4 gets a reference to the given string and assigns it to the Last4 field.
 func (o *CardInformationDto) SetLast4(v string) {
-	o.Last4.Set(&v)
-}
-// SetLast4Nil sets the value for Last4 to be an explicit nil
-func (o *CardInformationDto) SetLast4Nil() {
-	o.Last4.Set(nil)
+	o.Last4 = &v
 }
 
-// UnsetLast4 ensures that no value is present for Last4, not even an explicit nil
-func (o *CardInformationDto) UnsetLast4() {
-	o.Last4.Unset()
-}
-
-// GetBrand returns the Brand field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBrand returns the Brand field value if set, zero value otherwise.
 func (o *CardInformationDto) GetBrand() string {
-	if o == nil || IsNil(o.Brand.Get()) {
+	if o == nil || IsNil(o.Brand) {
 		var ret string
 		return ret
 	}
-	return *o.Brand.Get()
+	return *o.Brand
 }
 
 // GetBrandOk returns a tuple with the Brand field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CardInformationDto) GetBrandOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Brand) {
 		return nil, false
 	}
-	return o.Brand.Get(), o.Brand.IsSet()
+	return o.Brand, true
 }
 
 // HasBrand returns a boolean if a field has been set.
 func (o *CardInformationDto) HasBrand() bool {
-	if o != nil && o.Brand.IsSet() {
+	if o != nil && !IsNil(o.Brand) {
 		return true
 	}
 
 	return false
 }
 
-// SetBrand gets a reference to the given NullableString and assigns it to the Brand field.
+// SetBrand gets a reference to the given string and assigns it to the Brand field.
 func (o *CardInformationDto) SetBrand(v string) {
-	o.Brand.Set(&v)
-}
-// SetBrandNil sets the value for Brand to be an explicit nil
-func (o *CardInformationDto) SetBrandNil() {
-	o.Brand.Set(nil)
+	o.Brand = &v
 }
 
-// UnsetBrand ensures that no value is present for Brand, not even an explicit nil
-func (o *CardInformationDto) UnsetBrand() {
-	o.Brand.Unset()
-}
-
-// GetHolderName returns the HolderName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHolderName returns the HolderName field value if set, zero value otherwise.
 func (o *CardInformationDto) GetHolderName() string {
-	if o == nil || IsNil(o.HolderName.Get()) {
+	if o == nil || IsNil(o.HolderName) {
 		var ret string
 		return ret
 	}
-	return *o.HolderName.Get()
+	return *o.HolderName
 }
 
 // GetHolderNameOk returns a tuple with the HolderName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CardInformationDto) GetHolderNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HolderName) {
 		return nil, false
 	}
-	return o.HolderName.Get(), o.HolderName.IsSet()
+	return o.HolderName, true
 }
 
 // HasHolderName returns a boolean if a field has been set.
 func (o *CardInformationDto) HasHolderName() bool {
-	if o != nil && o.HolderName.IsSet() {
+	if o != nil && !IsNil(o.HolderName) {
 		return true
 	}
 
 	return false
 }
 
-// SetHolderName gets a reference to the given NullableString and assigns it to the HolderName field.
+// SetHolderName gets a reference to the given string and assigns it to the HolderName field.
 func (o *CardInformationDto) SetHolderName(v string) {
-	o.HolderName.Set(&v)
-}
-// SetHolderNameNil sets the value for HolderName to be an explicit nil
-func (o *CardInformationDto) SetHolderNameNil() {
-	o.HolderName.Set(nil)
-}
-
-// UnsetHolderName ensures that no value is present for HolderName, not even an explicit nil
-func (o *CardInformationDto) UnsetHolderName() {
-	o.HolderName.Unset()
+	o.HolderName = &v
 }
 
 // GetBalance returns the Balance field value if set, zero value otherwise.
@@ -297,20 +247,20 @@ func (o CardInformationDto) MarshalJSON() ([]byte, error) {
 
 func (o CardInformationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ExpirationMonth.IsSet() {
-		toSerialize["expirationMonth"] = o.ExpirationMonth.Get()
+	if !IsNil(o.ExpirationMonth) {
+		toSerialize["expirationMonth"] = o.ExpirationMonth
 	}
-	if o.ExpirationYear.IsSet() {
-		toSerialize["expirationYear"] = o.ExpirationYear.Get()
+	if !IsNil(o.ExpirationYear) {
+		toSerialize["expirationYear"] = o.ExpirationYear
 	}
-	if o.Last4.IsSet() {
-		toSerialize["last4"] = o.Last4.Get()
+	if !IsNil(o.Last4) {
+		toSerialize["last4"] = o.Last4
 	}
-	if o.Brand.IsSet() {
-		toSerialize["brand"] = o.Brand.Get()
+	if !IsNil(o.Brand) {
+		toSerialize["brand"] = o.Brand
 	}
-	if o.HolderName.IsSet() {
-		toSerialize["holderName"] = o.HolderName.Get()
+	if !IsNil(o.HolderName) {
+		toSerialize["holderName"] = o.HolderName
 	}
 	if !IsNil(o.Balance) {
 		toSerialize["balance"] = o.Balance

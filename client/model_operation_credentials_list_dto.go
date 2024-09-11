@@ -21,16 +21,16 @@ var _ MappedNullable = &OperationCredentialsListDto{}
 // OperationCredentialsListDto struct for OperationCredentialsListDto
 type OperationCredentialsListDto struct {
 	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	PrometheusUsername NullableString `json:"prometheusUsername,omitempty"`
-	PrometheusUrl NullableString `json:"prometheusUrl,omitempty"`
+	Name *string `json:"name,omitempty"`
+	PrometheusUsername *string `json:"prometheusUsername,omitempty"`
+	PrometheusUrl *string `json:"prometheusUrl,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 	IsLocked *bool `json:"isLocked,omitempty"`
 	Rules []SimplePrometheusEntity `json:"rules,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	CreatedBy *string `json:"createdBy,omitempty"`
+	LastModified *string `json:"lastModified,omitempty"`
+	LastModifiedBy *string `json:"lastModifiedBy,omitempty"`
 	IsDefault *bool `json:"isDefault,omitempty"`
 }
 
@@ -83,130 +83,100 @@ func (o *OperationCredentialsListDto) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *OperationCredentialsListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationCredentialsListDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *OperationCredentialsListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *OperationCredentialsListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *OperationCredentialsListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *OperationCredentialsListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetPrometheusUsername returns the PrometheusUsername field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPrometheusUsername returns the PrometheusUsername field value if set, zero value otherwise.
 func (o *OperationCredentialsListDto) GetPrometheusUsername() string {
-	if o == nil || IsNil(o.PrometheusUsername.Get()) {
+	if o == nil || IsNil(o.PrometheusUsername) {
 		var ret string
 		return ret
 	}
-	return *o.PrometheusUsername.Get()
+	return *o.PrometheusUsername
 }
 
 // GetPrometheusUsernameOk returns a tuple with the PrometheusUsername field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationCredentialsListDto) GetPrometheusUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PrometheusUsername) {
 		return nil, false
 	}
-	return o.PrometheusUsername.Get(), o.PrometheusUsername.IsSet()
+	return o.PrometheusUsername, true
 }
 
 // HasPrometheusUsername returns a boolean if a field has been set.
 func (o *OperationCredentialsListDto) HasPrometheusUsername() bool {
-	if o != nil && o.PrometheusUsername.IsSet() {
+	if o != nil && !IsNil(o.PrometheusUsername) {
 		return true
 	}
 
 	return false
 }
 
-// SetPrometheusUsername gets a reference to the given NullableString and assigns it to the PrometheusUsername field.
+// SetPrometheusUsername gets a reference to the given string and assigns it to the PrometheusUsername field.
 func (o *OperationCredentialsListDto) SetPrometheusUsername(v string) {
-	o.PrometheusUsername.Set(&v)
-}
-// SetPrometheusUsernameNil sets the value for PrometheusUsername to be an explicit nil
-func (o *OperationCredentialsListDto) SetPrometheusUsernameNil() {
-	o.PrometheusUsername.Set(nil)
+	o.PrometheusUsername = &v
 }
 
-// UnsetPrometheusUsername ensures that no value is present for PrometheusUsername, not even an explicit nil
-func (o *OperationCredentialsListDto) UnsetPrometheusUsername() {
-	o.PrometheusUsername.Unset()
-}
-
-// GetPrometheusUrl returns the PrometheusUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPrometheusUrl returns the PrometheusUrl field value if set, zero value otherwise.
 func (o *OperationCredentialsListDto) GetPrometheusUrl() string {
-	if o == nil || IsNil(o.PrometheusUrl.Get()) {
+	if o == nil || IsNil(o.PrometheusUrl) {
 		var ret string
 		return ret
 	}
-	return *o.PrometheusUrl.Get()
+	return *o.PrometheusUrl
 }
 
 // GetPrometheusUrlOk returns a tuple with the PrometheusUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationCredentialsListDto) GetPrometheusUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PrometheusUrl) {
 		return nil, false
 	}
-	return o.PrometheusUrl.Get(), o.PrometheusUrl.IsSet()
+	return o.PrometheusUrl, true
 }
 
 // HasPrometheusUrl returns a boolean if a field has been set.
 func (o *OperationCredentialsListDto) HasPrometheusUrl() bool {
-	if o != nil && o.PrometheusUrl.IsSet() {
+	if o != nil && !IsNil(o.PrometheusUrl) {
 		return true
 	}
 
 	return false
 }
 
-// SetPrometheusUrl gets a reference to the given NullableString and assigns it to the PrometheusUrl field.
+// SetPrometheusUrl gets a reference to the given string and assigns it to the PrometheusUrl field.
 func (o *OperationCredentialsListDto) SetPrometheusUrl(v string) {
-	o.PrometheusUrl.Set(&v)
-}
-// SetPrometheusUrlNil sets the value for PrometheusUrl to be an explicit nil
-func (o *OperationCredentialsListDto) SetPrometheusUrlNil() {
-	o.PrometheusUrl.Set(nil)
-}
-
-// UnsetPrometheusUrl ensures that no value is present for PrometheusUrl, not even an explicit nil
-func (o *OperationCredentialsListDto) UnsetPrometheusUrl() {
-	o.PrometheusUrl.Unset()
+	o.PrometheusUrl = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -251,46 +221,36 @@ func (o *OperationCredentialsListDto) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *OperationCredentialsListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationCredentialsListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *OperationCredentialsListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *OperationCredentialsListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *OperationCredentialsListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
-
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *OperationCredentialsListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
+	o.OrganizationName = &v
 }
 
 // GetIsLocked returns the IsLocked field value if set, zero value otherwise.
@@ -325,9 +285,9 @@ func (o *OperationCredentialsListDto) SetIsLocked(v bool) {
 	o.IsLocked = &v
 }
 
-// GetRules returns the Rules field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRules returns the Rules field value if set, zero value otherwise.
 func (o *OperationCredentialsListDto) GetRules() []SimplePrometheusEntity {
-	if o == nil {
+	if o == nil || IsNil(o.Rules) {
 		var ret []SimplePrometheusEntity
 		return ret
 	}
@@ -336,7 +296,6 @@ func (o *OperationCredentialsListDto) GetRules() []SimplePrometheusEntity {
 
 // GetRulesOk returns a tuple with the Rules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationCredentialsListDto) GetRulesOk() ([]SimplePrometheusEntity, bool) {
 	if o == nil || IsNil(o.Rules) {
 		return nil, false
@@ -358,130 +317,100 @@ func (o *OperationCredentialsListDto) SetRules(v []SimplePrometheusEntity) {
 	o.Rules = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise.
 func (o *OperationCredentialsListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || IsNil(o.CreatedBy) {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy.Get()
+	return *o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationCredentialsListDto) GetCreatedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CreatedBy) {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return o.CreatedBy, true
 }
 
 // HasCreatedBy returns a boolean if a field has been set.
 func (o *OperationCredentialsListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
+	if o != nil && !IsNil(o.CreatedBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy gets a reference to the given string and assigns it to the CreatedBy field.
 func (o *OperationCredentialsListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
-}
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *OperationCredentialsListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
+	o.CreatedBy = &v
 }
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *OperationCredentialsListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value if set, zero value otherwise.
 func (o *OperationCredentialsListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || IsNil(o.LastModified) {
 		var ret string
 		return ret
 	}
-	return *o.LastModified.Get()
+	return *o.LastModified
 }
 
 // GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationCredentialsListDto) GetLastModifiedOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModified) {
 		return nil, false
 	}
-	return o.LastModified.Get(), o.LastModified.IsSet()
+	return o.LastModified, true
 }
 
 // HasLastModified returns a boolean if a field has been set.
 func (o *OperationCredentialsListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
+	if o != nil && !IsNil(o.LastModified) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified gets a reference to the given string and assigns it to the LastModified field.
 func (o *OperationCredentialsListDto) SetLastModified(v string) {
-	o.LastModified.Set(&v)
-}
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *OperationCredentialsListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
+	o.LastModified = &v
 }
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *OperationCredentialsListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise.
 func (o *OperationCredentialsListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		var ret string
 		return ret
 	}
-	return *o.LastModifiedBy.Get()
+	return *o.LastModifiedBy
 }
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastModifiedBy) {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return o.LastModifiedBy, true
 }
 
 // HasLastModifiedBy returns a boolean if a field has been set.
 func (o *OperationCredentialsListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
+	if o != nil && !IsNil(o.LastModifiedBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy gets a reference to the given string and assigns it to the LastModifiedBy field.
 func (o *OperationCredentialsListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
-}
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *OperationCredentialsListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
-
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *OperationCredentialsListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
+	o.LastModifiedBy = &v
 }
 
 // GetIsDefault returns the IsDefault field value if set, zero value otherwise.
@@ -529,35 +458,35 @@ func (o OperationCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.PrometheusUsername.IsSet() {
-		toSerialize["prometheusUsername"] = o.PrometheusUsername.Get()
+	if !IsNil(o.PrometheusUsername) {
+		toSerialize["prometheusUsername"] = o.PrometheusUsername
 	}
-	if o.PrometheusUrl.IsSet() {
-		toSerialize["prometheusUrl"] = o.PrometheusUrl.Get()
+	if !IsNil(o.PrometheusUrl) {
+		toSerialize["prometheusUrl"] = o.PrometheusUrl
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
 	if !IsNil(o.IsLocked) {
 		toSerialize["isLocked"] = o.IsLocked
 	}
-	if o.Rules != nil {
+	if !IsNil(o.Rules) {
 		toSerialize["rules"] = o.Rules
 	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
+	if !IsNil(o.CreatedBy) {
+		toSerialize["createdBy"] = o.CreatedBy
 	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
+	if !IsNil(o.LastModified) {
+		toSerialize["lastModified"] = o.LastModified
 	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	if !IsNil(o.LastModifiedBy) {
+		toSerialize["lastModifiedBy"] = o.LastModifiedBy
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["isDefault"] = o.IsDefault

@@ -72,6 +72,9 @@ func (a *S3CredentialsAPIService) S3credentialsCreateExecute(r ApiS3credentialsC
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.backupCredentialsCreateCommand == nil {
+		return localVarReturnValue, nil, reportError("backupCredentialsCreateCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -358,17 +361,17 @@ func (a *S3CredentialsAPIService) S3credentialsDeleteExecute(r ApiS3credentialsD
 type ApiS3credentialsDropdownRequest struct {
 	ctx context.Context
 	ApiService *S3CredentialsAPIService
-	organizationId *int32
 	search *string
-}
-
-func (r ApiS3credentialsDropdownRequest) OrganizationId(organizationId int32) ApiS3credentialsDropdownRequest {
-	r.organizationId = &organizationId
-	return r
+	organizationId *int32
 }
 
 func (r ApiS3credentialsDropdownRequest) Search(search string) ApiS3credentialsDropdownRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiS3credentialsDropdownRequest) OrganizationId(organizationId int32) ApiS3credentialsDropdownRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -413,13 +416,14 @@ func (a *S3CredentialsAPIService) S3credentialsDropdownExecute(r ApiS3credential
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -545,19 +549,14 @@ func (a *S3CredentialsAPIService) S3credentialsDropdownExecute(r ApiS3credential
 type ApiS3credentialsListRequest struct {
 	ctx context.Context
 	ApiService *S3CredentialsAPIService
-	organizationId *int32
 	search *string
 	searchId *string
-	id *int32
 	sortBy *string
 	sortDirection *string
+	organizationId *int32
+	id *int32
 	limit *int32
 	offset *int32
-}
-
-func (r ApiS3credentialsListRequest) OrganizationId(organizationId int32) ApiS3credentialsListRequest {
-	r.organizationId = &organizationId
-	return r
 }
 
 func (r ApiS3credentialsListRequest) Search(search string) ApiS3credentialsListRequest {
@@ -570,11 +569,6 @@ func (r ApiS3credentialsListRequest) SearchId(searchId string) ApiS3credentialsL
 	return r
 }
 
-func (r ApiS3credentialsListRequest) Id(id int32) ApiS3credentialsListRequest {
-	r.id = &id
-	return r
-}
-
 func (r ApiS3credentialsListRequest) SortBy(sortBy string) ApiS3credentialsListRequest {
 	r.sortBy = &sortBy
 	return r
@@ -582,6 +576,16 @@ func (r ApiS3credentialsListRequest) SortBy(sortBy string) ApiS3credentialsListR
 
 func (r ApiS3credentialsListRequest) SortDirection(sortDirection string) ApiS3credentialsListRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiS3credentialsListRequest) OrganizationId(organizationId int32) ApiS3credentialsListRequest {
+	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiS3credentialsListRequest) Id(id int32) ApiS3credentialsListRequest {
+	r.id = &id
 	return r
 }
 
@@ -636,25 +640,29 @@ func (a *S3CredentialsAPIService) S3credentialsListExecute(r ApiS3credentialsLis
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	} else {
@@ -835,6 +843,9 @@ func (a *S3CredentialsAPIService) S3credentialsLockManagementExecute(r ApiS3cred
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.backupLockManagerCommand == nil {
+		return nil, reportError("backupLockManagerCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -997,6 +1008,9 @@ func (a *S3CredentialsAPIService) S3credentialsMakeDeafultExecute(r ApiS3credent
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.backupMakeDefaultCommand == nil {
+		return nil, reportError("backupMakeDefaultCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1159,6 +1173,9 @@ func (a *S3CredentialsAPIService) S3credentialsUpdateExecute(r ApiS3credentialsU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.backupCredentialsUpdateCommand == nil {
+		return nil, reportError("backupCredentialsUpdateCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

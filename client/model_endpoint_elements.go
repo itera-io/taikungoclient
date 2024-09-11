@@ -21,10 +21,10 @@ var _ MappedNullable = &EndpointElements{}
 // EndpointElements struct for EndpointElements
 type EndpointElements struct {
 	Id *int32 `json:"id,omitempty"`
-	Controller NullableString `json:"controller,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	Method NullableString `json:"method,omitempty"`
-	Path NullableString `json:"path,omitempty"`
+	Controller *string `json:"controller,omitempty"`
+	Description *string `json:"description,omitempty"`
+	Method *string `json:"method,omitempty"`
+	Path *string `json:"path,omitempty"`
 }
 
 // NewEndpointElements instantiates a new EndpointElements object
@@ -76,172 +76,132 @@ func (o *EndpointElements) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetController returns the Controller field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetController returns the Controller field value if set, zero value otherwise.
 func (o *EndpointElements) GetController() string {
-	if o == nil || IsNil(o.Controller.Get()) {
+	if o == nil || IsNil(o.Controller) {
 		var ret string
 		return ret
 	}
-	return *o.Controller.Get()
+	return *o.Controller
 }
 
 // GetControllerOk returns a tuple with the Controller field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EndpointElements) GetControllerOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Controller) {
 		return nil, false
 	}
-	return o.Controller.Get(), o.Controller.IsSet()
+	return o.Controller, true
 }
 
 // HasController returns a boolean if a field has been set.
 func (o *EndpointElements) HasController() bool {
-	if o != nil && o.Controller.IsSet() {
+	if o != nil && !IsNil(o.Controller) {
 		return true
 	}
 
 	return false
 }
 
-// SetController gets a reference to the given NullableString and assigns it to the Controller field.
+// SetController gets a reference to the given string and assigns it to the Controller field.
 func (o *EndpointElements) SetController(v string) {
-	o.Controller.Set(&v)
-}
-// SetControllerNil sets the value for Controller to be an explicit nil
-func (o *EndpointElements) SetControllerNil() {
-	o.Controller.Set(nil)
+	o.Controller = &v
 }
 
-// UnsetController ensures that no value is present for Controller, not even an explicit nil
-func (o *EndpointElements) UnsetController() {
-	o.Controller.Unset()
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *EndpointElements) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EndpointElements) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *EndpointElements) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *EndpointElements) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *EndpointElements) SetDescriptionNil() {
-	o.Description.Set(nil)
+	o.Description = &v
 }
 
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *EndpointElements) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetMethod returns the Method field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMethod returns the Method field value if set, zero value otherwise.
 func (o *EndpointElements) GetMethod() string {
-	if o == nil || IsNil(o.Method.Get()) {
+	if o == nil || IsNil(o.Method) {
 		var ret string
 		return ret
 	}
-	return *o.Method.Get()
+	return *o.Method
 }
 
 // GetMethodOk returns a tuple with the Method field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EndpointElements) GetMethodOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Method) {
 		return nil, false
 	}
-	return o.Method.Get(), o.Method.IsSet()
+	return o.Method, true
 }
 
 // HasMethod returns a boolean if a field has been set.
 func (o *EndpointElements) HasMethod() bool {
-	if o != nil && o.Method.IsSet() {
+	if o != nil && !IsNil(o.Method) {
 		return true
 	}
 
 	return false
 }
 
-// SetMethod gets a reference to the given NullableString and assigns it to the Method field.
+// SetMethod gets a reference to the given string and assigns it to the Method field.
 func (o *EndpointElements) SetMethod(v string) {
-	o.Method.Set(&v)
-}
-// SetMethodNil sets the value for Method to be an explicit nil
-func (o *EndpointElements) SetMethodNil() {
-	o.Method.Set(nil)
+	o.Method = &v
 }
 
-// UnsetMethod ensures that no value is present for Method, not even an explicit nil
-func (o *EndpointElements) UnsetMethod() {
-	o.Method.Unset()
-}
-
-// GetPath returns the Path field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPath returns the Path field value if set, zero value otherwise.
 func (o *EndpointElements) GetPath() string {
-	if o == nil || IsNil(o.Path.Get()) {
+	if o == nil || IsNil(o.Path) {
 		var ret string
 		return ret
 	}
-	return *o.Path.Get()
+	return *o.Path
 }
 
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EndpointElements) GetPathOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Path) {
 		return nil, false
 	}
-	return o.Path.Get(), o.Path.IsSet()
+	return o.Path, true
 }
 
 // HasPath returns a boolean if a field has been set.
 func (o *EndpointElements) HasPath() bool {
-	if o != nil && o.Path.IsSet() {
+	if o != nil && !IsNil(o.Path) {
 		return true
 	}
 
 	return false
 }
 
-// SetPath gets a reference to the given NullableString and assigns it to the Path field.
+// SetPath gets a reference to the given string and assigns it to the Path field.
 func (o *EndpointElements) SetPath(v string) {
-	o.Path.Set(&v)
-}
-// SetPathNil sets the value for Path to be an explicit nil
-func (o *EndpointElements) SetPathNil() {
-	o.Path.Set(nil)
-}
-
-// UnsetPath ensures that no value is present for Path, not even an explicit nil
-func (o *EndpointElements) UnsetPath() {
-	o.Path.Unset()
+	o.Path = &v
 }
 
 func (o EndpointElements) MarshalJSON() ([]byte, error) {
@@ -257,17 +217,17 @@ func (o EndpointElements) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.Controller.IsSet() {
-		toSerialize["controller"] = o.Controller.Get()
+	if !IsNil(o.Controller) {
+		toSerialize["controller"] = o.Controller
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
-	if o.Method.IsSet() {
-		toSerialize["method"] = o.Method.Get()
+	if !IsNil(o.Method) {
+		toSerialize["method"] = o.Method
 	}
-	if o.Path.IsSet() {
-		toSerialize["path"] = o.Path.Get()
+	if !IsNil(o.Path) {
+		toSerialize["path"] = o.Path
 	}
 	return toSerialize, nil
 }

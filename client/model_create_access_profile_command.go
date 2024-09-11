@@ -20,8 +20,8 @@ var _ MappedNullable = &CreateAccessProfileCommand{}
 
 // CreateAccessProfileCommand struct for CreateAccessProfileCommand
 type CreateAccessProfileCommand struct {
-	Name NullableString `json:"name,omitempty"`
-	HttpProxy NullableString `json:"httpProxy,omitempty"`
+	Name *string `json:"name,omitempty"`
+	HttpProxy *string `json:"httpProxy,omitempty"`
 	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 	SshUsers []SshUserCreateDto `json:"sshUsers,omitempty"`
 	DnsServers []DnsServerCreateDto `json:"dnsServers,omitempty"`
@@ -46,88 +46,68 @@ func NewCreateAccessProfileCommandWithDefaults() *CreateAccessProfileCommand {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *CreateAccessProfileCommand) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAccessProfileCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *CreateAccessProfileCommand) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *CreateAccessProfileCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *CreateAccessProfileCommand) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *CreateAccessProfileCommand) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetHttpProxy returns the HttpProxy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHttpProxy returns the HttpProxy field value if set, zero value otherwise.
 func (o *CreateAccessProfileCommand) GetHttpProxy() string {
-	if o == nil || IsNil(o.HttpProxy.Get()) {
+	if o == nil || IsNil(o.HttpProxy) {
 		var ret string
 		return ret
 	}
-	return *o.HttpProxy.Get()
+	return *o.HttpProxy
 }
 
 // GetHttpProxyOk returns a tuple with the HttpProxy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAccessProfileCommand) GetHttpProxyOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HttpProxy) {
 		return nil, false
 	}
-	return o.HttpProxy.Get(), o.HttpProxy.IsSet()
+	return o.HttpProxy, true
 }
 
 // HasHttpProxy returns a boolean if a field has been set.
 func (o *CreateAccessProfileCommand) HasHttpProxy() bool {
-	if o != nil && o.HttpProxy.IsSet() {
+	if o != nil && !IsNil(o.HttpProxy) {
 		return true
 	}
 
 	return false
 }
 
-// SetHttpProxy gets a reference to the given NullableString and assigns it to the HttpProxy field.
+// SetHttpProxy gets a reference to the given string and assigns it to the HttpProxy field.
 func (o *CreateAccessProfileCommand) SetHttpProxy(v string) {
-	o.HttpProxy.Set(&v)
-}
-// SetHttpProxyNil sets the value for HttpProxy to be an explicit nil
-func (o *CreateAccessProfileCommand) SetHttpProxyNil() {
-	o.HttpProxy.Set(nil)
-}
-
-// UnsetHttpProxy ensures that no value is present for HttpProxy, not even an explicit nil
-func (o *CreateAccessProfileCommand) UnsetHttpProxy() {
-	o.HttpProxy.Unset()
+	o.HttpProxy = &v
 }
 
 // GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -172,9 +152,9 @@ func (o *CreateAccessProfileCommand) UnsetOrganizationId() {
 	o.OrganizationId.Unset()
 }
 
-// GetSshUsers returns the SshUsers field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSshUsers returns the SshUsers field value if set, zero value otherwise.
 func (o *CreateAccessProfileCommand) GetSshUsers() []SshUserCreateDto {
-	if o == nil {
+	if o == nil || IsNil(o.SshUsers) {
 		var ret []SshUserCreateDto
 		return ret
 	}
@@ -183,7 +163,6 @@ func (o *CreateAccessProfileCommand) GetSshUsers() []SshUserCreateDto {
 
 // GetSshUsersOk returns a tuple with the SshUsers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAccessProfileCommand) GetSshUsersOk() ([]SshUserCreateDto, bool) {
 	if o == nil || IsNil(o.SshUsers) {
 		return nil, false
@@ -205,9 +184,9 @@ func (o *CreateAccessProfileCommand) SetSshUsers(v []SshUserCreateDto) {
 	o.SshUsers = v
 }
 
-// GetDnsServers returns the DnsServers field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDnsServers returns the DnsServers field value if set, zero value otherwise.
 func (o *CreateAccessProfileCommand) GetDnsServers() []DnsServerCreateDto {
-	if o == nil {
+	if o == nil || IsNil(o.DnsServers) {
 		var ret []DnsServerCreateDto
 		return ret
 	}
@@ -216,7 +195,6 @@ func (o *CreateAccessProfileCommand) GetDnsServers() []DnsServerCreateDto {
 
 // GetDnsServersOk returns a tuple with the DnsServers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAccessProfileCommand) GetDnsServersOk() ([]DnsServerCreateDto, bool) {
 	if o == nil || IsNil(o.DnsServers) {
 		return nil, false
@@ -238,9 +216,9 @@ func (o *CreateAccessProfileCommand) SetDnsServers(v []DnsServerCreateDto) {
 	o.DnsServers = v
 }
 
-// GetNtpServers returns the NtpServers field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNtpServers returns the NtpServers field value if set, zero value otherwise.
 func (o *CreateAccessProfileCommand) GetNtpServers() []NtpServerCreateDto {
-	if o == nil {
+	if o == nil || IsNil(o.NtpServers) {
 		var ret []NtpServerCreateDto
 		return ret
 	}
@@ -249,7 +227,6 @@ func (o *CreateAccessProfileCommand) GetNtpServers() []NtpServerCreateDto {
 
 // GetNtpServersOk returns a tuple with the NtpServers field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAccessProfileCommand) GetNtpServersOk() ([]NtpServerCreateDto, bool) {
 	if o == nil || IsNil(o.NtpServers) {
 		return nil, false
@@ -271,9 +248,9 @@ func (o *CreateAccessProfileCommand) SetNtpServers(v []NtpServerCreateDto) {
 	o.NtpServers = v
 }
 
-// GetAllowedHosts returns the AllowedHosts field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAllowedHosts returns the AllowedHosts field value if set, zero value otherwise.
 func (o *CreateAccessProfileCommand) GetAllowedHosts() []AllowedHostCreateDto {
-	if o == nil {
+	if o == nil || IsNil(o.AllowedHosts) {
 		var ret []AllowedHostCreateDto
 		return ret
 	}
@@ -282,7 +259,6 @@ func (o *CreateAccessProfileCommand) GetAllowedHosts() []AllowedHostCreateDto {
 
 // GetAllowedHostsOk returns a tuple with the AllowedHosts field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAccessProfileCommand) GetAllowedHostsOk() ([]AllowedHostCreateDto, bool) {
 	if o == nil || IsNil(o.AllowedHosts) {
 		return nil, false
@@ -314,25 +290,25 @@ func (o CreateAccessProfileCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateAccessProfileCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.HttpProxy.IsSet() {
-		toSerialize["httpProxy"] = o.HttpProxy.Get()
+	if !IsNil(o.HttpProxy) {
+		toSerialize["httpProxy"] = o.HttpProxy
 	}
 	if o.OrganizationId.IsSet() {
 		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
-	if o.SshUsers != nil {
+	if !IsNil(o.SshUsers) {
 		toSerialize["sshUsers"] = o.SshUsers
 	}
-	if o.DnsServers != nil {
+	if !IsNil(o.DnsServers) {
 		toSerialize["dnsServers"] = o.DnsServers
 	}
-	if o.NtpServers != nil {
+	if !IsNil(o.NtpServers) {
 		toSerialize["ntpServers"] = o.NtpServers
 	}
-	if o.AllowedHosts != nil {
+	if !IsNil(o.AllowedHosts) {
 		toSerialize["allowedHosts"] = o.AllowedHosts
 	}
 	return toSerialize, nil

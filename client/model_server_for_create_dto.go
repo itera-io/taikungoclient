@@ -20,20 +20,20 @@ var _ MappedNullable = &ServerForCreateDto{}
 
 // ServerForCreateDto struct for ServerForCreateDto
 type ServerForCreateDto struct {
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Role *CloudRole `json:"role,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 	DiskSize *float64 `json:"diskSize,omitempty"`
-	Flavor NullableString `json:"flavor,omitempty"`
+	Flavor *string `json:"flavor,omitempty"`
 	Count *int32 `json:"count,omitempty"`
 	SpotPrice NullableFloat64 `json:"spotPrice,omitempty"`
 	SpotInstance *bool `json:"spotInstance,omitempty"`
 	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
-	AutoscalingGroup NullableString `json:"autoscalingGroup,omitempty"`
-	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
+	AutoscalingGroup *string `json:"autoscalingGroup,omitempty"`
+	AvailabilityZone *string `json:"availabilityZone,omitempty"`
 	ProxmoxExtraDiskSize *int32 `json:"proxmoxExtraDiskSize,omitempty"`
 	ProxmoxRole *ProxmoxRole `json:"proxmoxRole,omitempty"`
-	Hypervisor NullableString `json:"hypervisor,omitempty"`
+	Hypervisor *string `json:"hypervisor,omitempty"`
 	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
 	ReplicaCount NullableInt32 `json:"replicaCount,omitempty"`
 }
@@ -55,46 +55,36 @@ func NewServerForCreateDtoWithDefaults() *ServerForCreateDto {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ServerForCreateDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerForCreateDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ServerForCreateDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ServerForCreateDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ServerForCreateDto) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ServerForCreateDto) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 // GetRole returns the Role field value if set, zero value otherwise.
@@ -193,46 +183,36 @@ func (o *ServerForCreateDto) SetDiskSize(v float64) {
 	o.DiskSize = &v
 }
 
-// GetFlavor returns the Flavor field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFlavor returns the Flavor field value if set, zero value otherwise.
 func (o *ServerForCreateDto) GetFlavor() string {
-	if o == nil || IsNil(o.Flavor.Get()) {
+	if o == nil || IsNil(o.Flavor) {
 		var ret string
 		return ret
 	}
-	return *o.Flavor.Get()
+	return *o.Flavor
 }
 
 // GetFlavorOk returns a tuple with the Flavor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerForCreateDto) GetFlavorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Flavor) {
 		return nil, false
 	}
-	return o.Flavor.Get(), o.Flavor.IsSet()
+	return o.Flavor, true
 }
 
 // HasFlavor returns a boolean if a field has been set.
 func (o *ServerForCreateDto) HasFlavor() bool {
-	if o != nil && o.Flavor.IsSet() {
+	if o != nil && !IsNil(o.Flavor) {
 		return true
 	}
 
 	return false
 }
 
-// SetFlavor gets a reference to the given NullableString and assigns it to the Flavor field.
+// SetFlavor gets a reference to the given string and assigns it to the Flavor field.
 func (o *ServerForCreateDto) SetFlavor(v string) {
-	o.Flavor.Set(&v)
-}
-// SetFlavorNil sets the value for Flavor to be an explicit nil
-func (o *ServerForCreateDto) SetFlavorNil() {
-	o.Flavor.Set(nil)
-}
-
-// UnsetFlavor ensures that no value is present for Flavor, not even an explicit nil
-func (o *ServerForCreateDto) UnsetFlavor() {
-	o.Flavor.Unset()
+	o.Flavor = &v
 }
 
 // GetCount returns the Count field value if set, zero value otherwise.
@@ -373,88 +353,68 @@ func (o *ServerForCreateDto) SetWasmEnabled(v bool) {
 	o.WasmEnabled = &v
 }
 
-// GetAutoscalingGroup returns the AutoscalingGroup field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAutoscalingGroup returns the AutoscalingGroup field value if set, zero value otherwise.
 func (o *ServerForCreateDto) GetAutoscalingGroup() string {
-	if o == nil || IsNil(o.AutoscalingGroup.Get()) {
+	if o == nil || IsNil(o.AutoscalingGroup) {
 		var ret string
 		return ret
 	}
-	return *o.AutoscalingGroup.Get()
+	return *o.AutoscalingGroup
 }
 
 // GetAutoscalingGroupOk returns a tuple with the AutoscalingGroup field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerForCreateDto) GetAutoscalingGroupOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AutoscalingGroup) {
 		return nil, false
 	}
-	return o.AutoscalingGroup.Get(), o.AutoscalingGroup.IsSet()
+	return o.AutoscalingGroup, true
 }
 
 // HasAutoscalingGroup returns a boolean if a field has been set.
 func (o *ServerForCreateDto) HasAutoscalingGroup() bool {
-	if o != nil && o.AutoscalingGroup.IsSet() {
+	if o != nil && !IsNil(o.AutoscalingGroup) {
 		return true
 	}
 
 	return false
 }
 
-// SetAutoscalingGroup gets a reference to the given NullableString and assigns it to the AutoscalingGroup field.
+// SetAutoscalingGroup gets a reference to the given string and assigns it to the AutoscalingGroup field.
 func (o *ServerForCreateDto) SetAutoscalingGroup(v string) {
-	o.AutoscalingGroup.Set(&v)
-}
-// SetAutoscalingGroupNil sets the value for AutoscalingGroup to be an explicit nil
-func (o *ServerForCreateDto) SetAutoscalingGroupNil() {
-	o.AutoscalingGroup.Set(nil)
+	o.AutoscalingGroup = &v
 }
 
-// UnsetAutoscalingGroup ensures that no value is present for AutoscalingGroup, not even an explicit nil
-func (o *ServerForCreateDto) UnsetAutoscalingGroup() {
-	o.AutoscalingGroup.Unset()
-}
-
-// GetAvailabilityZone returns the AvailabilityZone field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAvailabilityZone returns the AvailabilityZone field value if set, zero value otherwise.
 func (o *ServerForCreateDto) GetAvailabilityZone() string {
-	if o == nil || IsNil(o.AvailabilityZone.Get()) {
+	if o == nil || IsNil(o.AvailabilityZone) {
 		var ret string
 		return ret
 	}
-	return *o.AvailabilityZone.Get()
+	return *o.AvailabilityZone
 }
 
 // GetAvailabilityZoneOk returns a tuple with the AvailabilityZone field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerForCreateDto) GetAvailabilityZoneOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AvailabilityZone) {
 		return nil, false
 	}
-	return o.AvailabilityZone.Get(), o.AvailabilityZone.IsSet()
+	return o.AvailabilityZone, true
 }
 
 // HasAvailabilityZone returns a boolean if a field has been set.
 func (o *ServerForCreateDto) HasAvailabilityZone() bool {
-	if o != nil && o.AvailabilityZone.IsSet() {
+	if o != nil && !IsNil(o.AvailabilityZone) {
 		return true
 	}
 
 	return false
 }
 
-// SetAvailabilityZone gets a reference to the given NullableString and assigns it to the AvailabilityZone field.
+// SetAvailabilityZone gets a reference to the given string and assigns it to the AvailabilityZone field.
 func (o *ServerForCreateDto) SetAvailabilityZone(v string) {
-	o.AvailabilityZone.Set(&v)
-}
-// SetAvailabilityZoneNil sets the value for AvailabilityZone to be an explicit nil
-func (o *ServerForCreateDto) SetAvailabilityZoneNil() {
-	o.AvailabilityZone.Set(nil)
-}
-
-// UnsetAvailabilityZone ensures that no value is present for AvailabilityZone, not even an explicit nil
-func (o *ServerForCreateDto) UnsetAvailabilityZone() {
-	o.AvailabilityZone.Unset()
+	o.AvailabilityZone = &v
 }
 
 // GetProxmoxExtraDiskSize returns the ProxmoxExtraDiskSize field value if set, zero value otherwise.
@@ -521,51 +481,41 @@ func (o *ServerForCreateDto) SetProxmoxRole(v ProxmoxRole) {
 	o.ProxmoxRole = &v
 }
 
-// GetHypervisor returns the Hypervisor field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHypervisor returns the Hypervisor field value if set, zero value otherwise.
 func (o *ServerForCreateDto) GetHypervisor() string {
-	if o == nil || IsNil(o.Hypervisor.Get()) {
+	if o == nil || IsNil(o.Hypervisor) {
 		var ret string
 		return ret
 	}
-	return *o.Hypervisor.Get()
+	return *o.Hypervisor
 }
 
 // GetHypervisorOk returns a tuple with the Hypervisor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerForCreateDto) GetHypervisorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Hypervisor) {
 		return nil, false
 	}
-	return o.Hypervisor.Get(), o.Hypervisor.IsSet()
+	return o.Hypervisor, true
 }
 
 // HasHypervisor returns a boolean if a field has been set.
 func (o *ServerForCreateDto) HasHypervisor() bool {
-	if o != nil && o.Hypervisor.IsSet() {
+	if o != nil && !IsNil(o.Hypervisor) {
 		return true
 	}
 
 	return false
 }
 
-// SetHypervisor gets a reference to the given NullableString and assigns it to the Hypervisor field.
+// SetHypervisor gets a reference to the given string and assigns it to the Hypervisor field.
 func (o *ServerForCreateDto) SetHypervisor(v string) {
-	o.Hypervisor.Set(&v)
-}
-// SetHypervisorNil sets the value for Hypervisor to be an explicit nil
-func (o *ServerForCreateDto) SetHypervisorNil() {
-	o.Hypervisor.Set(nil)
+	o.Hypervisor = &v
 }
 
-// UnsetHypervisor ensures that no value is present for Hypervisor, not even an explicit nil
-func (o *ServerForCreateDto) UnsetHypervisor() {
-	o.Hypervisor.Unset()
-}
-
-// GetKubernetesNodeLabels returns the KubernetesNodeLabels field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubernetesNodeLabels returns the KubernetesNodeLabels field value if set, zero value otherwise.
 func (o *ServerForCreateDto) GetKubernetesNodeLabels() []KubernetesNodeLabelsDto {
-	if o == nil {
+	if o == nil || IsNil(o.KubernetesNodeLabels) {
 		var ret []KubernetesNodeLabelsDto
 		return ret
 	}
@@ -574,7 +524,6 @@ func (o *ServerForCreateDto) GetKubernetesNodeLabels() []KubernetesNodeLabelsDto
 
 // GetKubernetesNodeLabelsOk returns a tuple with the KubernetesNodeLabels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerForCreateDto) GetKubernetesNodeLabelsOk() ([]KubernetesNodeLabelsDto, bool) {
 	if o == nil || IsNil(o.KubernetesNodeLabels) {
 		return nil, false
@@ -648,8 +597,8 @@ func (o ServerForCreateDto) MarshalJSON() ([]byte, error) {
 
 func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 	if !IsNil(o.Role) {
 		toSerialize["role"] = o.Role
@@ -660,8 +609,8 @@ func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiskSize) {
 		toSerialize["diskSize"] = o.DiskSize
 	}
-	if o.Flavor.IsSet() {
-		toSerialize["flavor"] = o.Flavor.Get()
+	if !IsNil(o.Flavor) {
+		toSerialize["flavor"] = o.Flavor
 	}
 	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count
@@ -675,11 +624,11 @@ func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.WasmEnabled) {
 		toSerialize["wasmEnabled"] = o.WasmEnabled
 	}
-	if o.AutoscalingGroup.IsSet() {
-		toSerialize["autoscalingGroup"] = o.AutoscalingGroup.Get()
+	if !IsNil(o.AutoscalingGroup) {
+		toSerialize["autoscalingGroup"] = o.AutoscalingGroup
 	}
-	if o.AvailabilityZone.IsSet() {
-		toSerialize["availabilityZone"] = o.AvailabilityZone.Get()
+	if !IsNil(o.AvailabilityZone) {
+		toSerialize["availabilityZone"] = o.AvailabilityZone
 	}
 	if !IsNil(o.ProxmoxExtraDiskSize) {
 		toSerialize["proxmoxExtraDiskSize"] = o.ProxmoxExtraDiskSize
@@ -687,10 +636,10 @@ func (o ServerForCreateDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProxmoxRole) {
 		toSerialize["proxmoxRole"] = o.ProxmoxRole
 	}
-	if o.Hypervisor.IsSet() {
-		toSerialize["hypervisor"] = o.Hypervisor.Get()
+	if !IsNil(o.Hypervisor) {
+		toSerialize["hypervisor"] = o.Hypervisor
 	}
-	if o.KubernetesNodeLabels != nil {
+	if !IsNil(o.KubernetesNodeLabels) {
 		toSerialize["kubernetesNodeLabels"] = o.KubernetesNodeLabels
 	}
 	if o.ReplicaCount.IsSet() {

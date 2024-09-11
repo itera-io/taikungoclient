@@ -20,7 +20,7 @@ var _ MappedNullable = &BindUnbindEndpointToTokenCommand{}
 
 // BindUnbindEndpointToTokenCommand struct for BindUnbindEndpointToTokenCommand
 type BindUnbindEndpointToTokenCommand struct {
-	TokenId NullableString `json:"tokenId,omitempty"`
+	TokenId *string `json:"tokenId,omitempty"`
 	Endpoints []AvailableEndpointData `json:"endpoints,omitempty"`
 	BindAll *bool `json:"bindAll,omitempty"`
 }
@@ -42,51 +42,41 @@ func NewBindUnbindEndpointToTokenCommandWithDefaults() *BindUnbindEndpointToToke
 	return &this
 }
 
-// GetTokenId returns the TokenId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTokenId returns the TokenId field value if set, zero value otherwise.
 func (o *BindUnbindEndpointToTokenCommand) GetTokenId() string {
-	if o == nil || IsNil(o.TokenId.Get()) {
+	if o == nil || IsNil(o.TokenId) {
 		var ret string
 		return ret
 	}
-	return *o.TokenId.Get()
+	return *o.TokenId
 }
 
 // GetTokenIdOk returns a tuple with the TokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindUnbindEndpointToTokenCommand) GetTokenIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TokenId) {
 		return nil, false
 	}
-	return o.TokenId.Get(), o.TokenId.IsSet()
+	return o.TokenId, true
 }
 
 // HasTokenId returns a boolean if a field has been set.
 func (o *BindUnbindEndpointToTokenCommand) HasTokenId() bool {
-	if o != nil && o.TokenId.IsSet() {
+	if o != nil && !IsNil(o.TokenId) {
 		return true
 	}
 
 	return false
 }
 
-// SetTokenId gets a reference to the given NullableString and assigns it to the TokenId field.
+// SetTokenId gets a reference to the given string and assigns it to the TokenId field.
 func (o *BindUnbindEndpointToTokenCommand) SetTokenId(v string) {
-	o.TokenId.Set(&v)
-}
-// SetTokenIdNil sets the value for TokenId to be an explicit nil
-func (o *BindUnbindEndpointToTokenCommand) SetTokenIdNil() {
-	o.TokenId.Set(nil)
+	o.TokenId = &v
 }
 
-// UnsetTokenId ensures that no value is present for TokenId, not even an explicit nil
-func (o *BindUnbindEndpointToTokenCommand) UnsetTokenId() {
-	o.TokenId.Unset()
-}
-
-// GetEndpoints returns the Endpoints field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEndpoints returns the Endpoints field value if set, zero value otherwise.
 func (o *BindUnbindEndpointToTokenCommand) GetEndpoints() []AvailableEndpointData {
-	if o == nil {
+	if o == nil || IsNil(o.Endpoints) {
 		var ret []AvailableEndpointData
 		return ret
 	}
@@ -95,7 +85,6 @@ func (o *BindUnbindEndpointToTokenCommand) GetEndpoints() []AvailableEndpointDat
 
 // GetEndpointsOk returns a tuple with the Endpoints field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindUnbindEndpointToTokenCommand) GetEndpointsOk() ([]AvailableEndpointData, bool) {
 	if o == nil || IsNil(o.Endpoints) {
 		return nil, false
@@ -159,10 +148,10 @@ func (o BindUnbindEndpointToTokenCommand) MarshalJSON() ([]byte, error) {
 
 func (o BindUnbindEndpointToTokenCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.TokenId.IsSet() {
-		toSerialize["tokenId"] = o.TokenId.Get()
+	if !IsNil(o.TokenId) {
+		toSerialize["tokenId"] = o.TokenId
 	}
-	if o.Endpoints != nil {
+	if !IsNil(o.Endpoints) {
 		toSerialize["endpoints"] = o.Endpoints
 	}
 	if !IsNil(o.BindAll) {

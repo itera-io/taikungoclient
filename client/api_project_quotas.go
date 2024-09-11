@@ -26,11 +26,11 @@ type ProjectQuotasAPIService service
 type ApiProjectquotasListRequest struct {
 	ctx context.Context
 	ApiService *ProjectQuotasAPIService
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
+	limit *int32
+	offset *int32
 	startRam *float64
 	endRam *float64
 	startDiskSize *int64
@@ -39,16 +39,6 @@ type ApiProjectquotasListRequest struct {
 	endCpu *int32
 	organizationId *int32
 	id *int32
-}
-
-func (r ApiProjectquotasListRequest) Limit(limit int32) ApiProjectquotasListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiProjectquotasListRequest) Offset(offset int32) ApiProjectquotasListRequest {
-	r.offset = &offset
-	return r
 }
 
 func (r ApiProjectquotasListRequest) SortBy(sortBy string) ApiProjectquotasListRequest {
@@ -63,6 +53,16 @@ func (r ApiProjectquotasListRequest) SortDirection(sortDirection string) ApiProj
 
 func (r ApiProjectquotasListRequest) Search(search string) ApiProjectquotasListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiProjectquotasListRequest) Limit(limit int32) ApiProjectquotasListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiProjectquotasListRequest) Offset(offset int32) ApiProjectquotasListRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -143,6 +143,15 @@ func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasLis
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -150,15 +159,9 @@ func (a *ProjectQuotasAPIService) ProjectquotasListExecute(r ApiProjectquotasLis
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	if r.startRam != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
@@ -351,6 +354,9 @@ func (a *ProjectQuotasAPIService) ProjectquotasUpdateExecute(r ApiProjectquotasU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateQuotaCommand == nil {
+		return nil, reportError("updateQuotaCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

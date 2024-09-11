@@ -361,17 +361,17 @@ func (a *OpaProfilesAPIService) OpaprofilesDeleteExecute(r ApiOpaprofilesDeleteR
 type ApiOpaprofilesDropdownRequest struct {
 	ctx context.Context
 	ApiService *OpaProfilesAPIService
-	organizationId *int32
 	search *string
-}
-
-func (r ApiOpaprofilesDropdownRequest) OrganizationId(organizationId int32) ApiOpaprofilesDropdownRequest {
-	r.organizationId = &organizationId
-	return r
+	organizationId *int32
 }
 
 func (r ApiOpaprofilesDropdownRequest) Search(search string) ApiOpaprofilesDropdownRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiOpaprofilesDropdownRequest) OrganizationId(organizationId int32) ApiOpaprofilesDropdownRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -412,13 +412,14 @@ func (a *OpaProfilesAPIService) OpaprofilesDropdownExecute(r ApiOpaprofilesDropd
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -544,29 +545,14 @@ func (a *OpaProfilesAPIService) OpaprofilesDropdownExecute(r ApiOpaprofilesDropd
 type ApiOpaprofilesListRequest struct {
 	ctx context.Context
 	ApiService *OpaProfilesAPIService
-	organizationId *int32
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
-	id *int32
 	searchId *string
-}
-
-func (r ApiOpaprofilesListRequest) OrganizationId(organizationId int32) ApiOpaprofilesListRequest {
-	r.organizationId = &organizationId
-	return r
-}
-
-func (r ApiOpaprofilesListRequest) Limit(limit int32) ApiOpaprofilesListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiOpaprofilesListRequest) Offset(offset int32) ApiOpaprofilesListRequest {
-	r.offset = &offset
-	return r
+	organizationId *int32
+	limit *int32
+	offset *int32
+	id *int32
 }
 
 func (r ApiOpaprofilesListRequest) SortBy(sortBy string) ApiOpaprofilesListRequest {
@@ -584,13 +570,28 @@ func (r ApiOpaprofilesListRequest) Search(search string) ApiOpaprofilesListReque
 	return r
 }
 
-func (r ApiOpaprofilesListRequest) Id(id int32) ApiOpaprofilesListRequest {
-	r.id = &id
+func (r ApiOpaprofilesListRequest) SearchId(searchId string) ApiOpaprofilesListRequest {
+	r.searchId = &searchId
 	return r
 }
 
-func (r ApiOpaprofilesListRequest) SearchId(searchId string) ApiOpaprofilesListRequest {
-	r.searchId = &searchId
+func (r ApiOpaprofilesListRequest) OrganizationId(organizationId int32) ApiOpaprofilesListRequest {
+	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiOpaprofilesListRequest) Limit(limit int32) ApiOpaprofilesListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiOpaprofilesListRequest) Offset(offset int32) ApiOpaprofilesListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiOpaprofilesListRequest) Id(id int32) ApiOpaprofilesListRequest {
+	r.id = &id
 	return r
 }
 
@@ -631,6 +632,18 @@ func (a *OpaProfilesAPIService) OpaprofilesListExecute(r ApiOpaprofilesListReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
@@ -641,21 +654,13 @@ func (a *OpaProfilesAPIService) OpaprofilesListExecute(r ApiOpaprofilesListReque
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -1319,6 +1324,9 @@ func (a *OpaProfilesAPIService) OpaprofilesUpdateExecute(r ApiOpaprofilesUpdateR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.opaProfileUpdateCommand == nil {
+		return nil, reportError("opaProfileUpdateCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

@@ -20,8 +20,8 @@ var _ MappedNullable = &CreateAlertingIntegrationCommand{}
 
 // CreateAlertingIntegrationCommand struct for CreateAlertingIntegrationCommand
 type CreateAlertingIntegrationCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	Token NullableString `json:"token,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Token *string `json:"token,omitempty"`
 	AlertingIntegrationType *AlertingIntegrationType `json:"alertingIntegrationType,omitempty"`
 	AlertingProfileId *int32 `json:"alertingProfileId,omitempty"`
 }
@@ -43,88 +43,68 @@ func NewCreateAlertingIntegrationCommandWithDefaults() *CreateAlertingIntegratio
 	return &this
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *CreateAlertingIntegrationCommand) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAlertingIntegrationCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *CreateAlertingIntegrationCommand) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *CreateAlertingIntegrationCommand) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *CreateAlertingIntegrationCommand) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = &v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *CreateAlertingIntegrationCommand) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetToken returns the Token field value if set, zero value otherwise.
 func (o *CreateAlertingIntegrationCommand) GetToken() string {
-	if o == nil || IsNil(o.Token.Get()) {
+	if o == nil || IsNil(o.Token) {
 		var ret string
 		return ret
 	}
-	return *o.Token.Get()
+	return *o.Token
 }
 
 // GetTokenOk returns a tuple with the Token field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateAlertingIntegrationCommand) GetTokenOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Token) {
 		return nil, false
 	}
-	return o.Token.Get(), o.Token.IsSet()
+	return o.Token, true
 }
 
 // HasToken returns a boolean if a field has been set.
 func (o *CreateAlertingIntegrationCommand) HasToken() bool {
-	if o != nil && o.Token.IsSet() {
+	if o != nil && !IsNil(o.Token) {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given NullableString and assigns it to the Token field.
+// SetToken gets a reference to the given string and assigns it to the Token field.
 func (o *CreateAlertingIntegrationCommand) SetToken(v string) {
-	o.Token.Set(&v)
-}
-// SetTokenNil sets the value for Token to be an explicit nil
-func (o *CreateAlertingIntegrationCommand) SetTokenNil() {
-	o.Token.Set(nil)
-}
-
-// UnsetToken ensures that no value is present for Token, not even an explicit nil
-func (o *CreateAlertingIntegrationCommand) UnsetToken() {
-	o.Token.Unset()
+	o.Token = &v
 }
 
 // GetAlertingIntegrationType returns the AlertingIntegrationType field value if set, zero value otherwise.
@@ -201,11 +181,11 @@ func (o CreateAlertingIntegrationCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateAlertingIntegrationCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
-	if o.Token.IsSet() {
-		toSerialize["token"] = o.Token.Get()
+	if !IsNil(o.Token) {
+		toSerialize["token"] = o.Token
 	}
 	if !IsNil(o.AlertingIntegrationType) {
 		toSerialize["alertingIntegrationType"] = o.AlertingIntegrationType

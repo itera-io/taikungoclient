@@ -20,8 +20,8 @@ var _ MappedNullable = &HelmReleaseChartSpec{}
 
 // HelmReleaseChartSpec struct for HelmReleaseChartSpec
 type HelmReleaseChartSpec struct {
-	Chart NullableString `json:"chart,omitempty"`
-	Version NullableString `json:"version,omitempty"`
+	Chart *string `json:"chart,omitempty"`
+	Version *string `json:"version,omitempty"`
 	SourceRef *HelmReleaseSourceRef `json:"sourceRef,omitempty"`
 }
 
@@ -42,88 +42,68 @@ func NewHelmReleaseChartSpecWithDefaults() *HelmReleaseChartSpec {
 	return &this
 }
 
-// GetChart returns the Chart field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetChart returns the Chart field value if set, zero value otherwise.
 func (o *HelmReleaseChartSpec) GetChart() string {
-	if o == nil || IsNil(o.Chart.Get()) {
+	if o == nil || IsNil(o.Chart) {
 		var ret string
 		return ret
 	}
-	return *o.Chart.Get()
+	return *o.Chart
 }
 
 // GetChartOk returns a tuple with the Chart field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmReleaseChartSpec) GetChartOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Chart) {
 		return nil, false
 	}
-	return o.Chart.Get(), o.Chart.IsSet()
+	return o.Chart, true
 }
 
 // HasChart returns a boolean if a field has been set.
 func (o *HelmReleaseChartSpec) HasChart() bool {
-	if o != nil && o.Chart.IsSet() {
+	if o != nil && !IsNil(o.Chart) {
 		return true
 	}
 
 	return false
 }
 
-// SetChart gets a reference to the given NullableString and assigns it to the Chart field.
+// SetChart gets a reference to the given string and assigns it to the Chart field.
 func (o *HelmReleaseChartSpec) SetChart(v string) {
-	o.Chart.Set(&v)
-}
-// SetChartNil sets the value for Chart to be an explicit nil
-func (o *HelmReleaseChartSpec) SetChartNil() {
-	o.Chart.Set(nil)
+	o.Chart = &v
 }
 
-// UnsetChart ensures that no value is present for Chart, not even an explicit nil
-func (o *HelmReleaseChartSpec) UnsetChart() {
-	o.Chart.Unset()
-}
-
-// GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *HelmReleaseChartSpec) GetVersion() string {
-	if o == nil || IsNil(o.Version.Get()) {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-	return *o.Version.Get()
+	return *o.Version
 }
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmReleaseChartSpec) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return o.Version.Get(), o.Version.IsSet()
+	return o.Version, true
 }
 
 // HasVersion returns a boolean if a field has been set.
 func (o *HelmReleaseChartSpec) HasVersion() bool {
-	if o != nil && o.Version.IsSet() {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
 	return false
 }
 
-// SetVersion gets a reference to the given NullableString and assigns it to the Version field.
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *HelmReleaseChartSpec) SetVersion(v string) {
-	o.Version.Set(&v)
-}
-// SetVersionNil sets the value for Version to be an explicit nil
-func (o *HelmReleaseChartSpec) SetVersionNil() {
-	o.Version.Set(nil)
-}
-
-// UnsetVersion ensures that no value is present for Version, not even an explicit nil
-func (o *HelmReleaseChartSpec) UnsetVersion() {
-	o.Version.Unset()
+	o.Version = &v
 }
 
 // GetSourceRef returns the SourceRef field value if set, zero value otherwise.
@@ -168,11 +148,11 @@ func (o HelmReleaseChartSpec) MarshalJSON() ([]byte, error) {
 
 func (o HelmReleaseChartSpec) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Chart.IsSet() {
-		toSerialize["chart"] = o.Chart.Get()
+	if !IsNil(o.Chart) {
+		toSerialize["chart"] = o.Chart
 	}
-	if o.Version.IsSet() {
-		toSerialize["version"] = o.Version.Get()
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	if !IsNil(o.SourceRef) {
 		toSerialize["sourceRef"] = o.SourceRef

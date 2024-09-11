@@ -20,12 +20,12 @@ var _ MappedNullable = &BindSubscriptionResponseDto{}
 
 // BindSubscriptionResponseDto struct for BindSubscriptionResponseDto
 type BindSubscriptionResponseDto struct {
-	Status NullableString `json:"status,omitempty"`
-	PaymentIntentClientSecret NullableString `json:"paymentIntentClientSecret,omitempty"`
-	PaymentIntentId NullableString `json:"paymentIntentId,omitempty"`
-	InvoiceFailureCode NullableString `json:"invoiceFailureCode,omitempty"`
-	InvoiceFailureMessage NullableString `json:"invoiceFailureMessage,omitempty"`
-	InvoiceFailureReason NullableString `json:"invoiceFailureReason,omitempty"`
+	Status *string `json:"status,omitempty"`
+	PaymentIntentClientSecret *string `json:"paymentIntentClientSecret,omitempty"`
+	PaymentIntentId *string `json:"paymentIntentId,omitempty"`
+	InvoiceFailureCode *string `json:"invoiceFailureCode,omitempty"`
+	InvoiceFailureMessage *string `json:"invoiceFailureMessage,omitempty"`
+	InvoiceFailureReason *string `json:"invoiceFailureReason,omitempty"`
 }
 
 // NewBindSubscriptionResponseDto instantiates a new BindSubscriptionResponseDto object
@@ -45,256 +45,196 @@ func NewBindSubscriptionResponseDtoWithDefaults() *BindSubscriptionResponseDto {
 	return &this
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *BindSubscriptionResponseDto) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
+	if o == nil || IsNil(o.Status) {
 		var ret string
 		return ret
 	}
-	return *o.Status.Get()
+	return *o.Status
 }
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindSubscriptionResponseDto) GetStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return o.Status.Get(), o.Status.IsSet()
+	return o.Status, true
 }
 
 // HasStatus returns a boolean if a field has been set.
 func (o *BindSubscriptionResponseDto) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
 	return false
 }
 
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
+// SetStatus gets a reference to the given string and assigns it to the Status field.
 func (o *BindSubscriptionResponseDto) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *BindSubscriptionResponseDto) SetStatusNil() {
-	o.Status.Set(nil)
+	o.Status = &v
 }
 
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *BindSubscriptionResponseDto) UnsetStatus() {
-	o.Status.Unset()
-}
-
-// GetPaymentIntentClientSecret returns the PaymentIntentClientSecret field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPaymentIntentClientSecret returns the PaymentIntentClientSecret field value if set, zero value otherwise.
 func (o *BindSubscriptionResponseDto) GetPaymentIntentClientSecret() string {
-	if o == nil || IsNil(o.PaymentIntentClientSecret.Get()) {
+	if o == nil || IsNil(o.PaymentIntentClientSecret) {
 		var ret string
 		return ret
 	}
-	return *o.PaymentIntentClientSecret.Get()
+	return *o.PaymentIntentClientSecret
 }
 
 // GetPaymentIntentClientSecretOk returns a tuple with the PaymentIntentClientSecret field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindSubscriptionResponseDto) GetPaymentIntentClientSecretOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentIntentClientSecret) {
 		return nil, false
 	}
-	return o.PaymentIntentClientSecret.Get(), o.PaymentIntentClientSecret.IsSet()
+	return o.PaymentIntentClientSecret, true
 }
 
 // HasPaymentIntentClientSecret returns a boolean if a field has been set.
 func (o *BindSubscriptionResponseDto) HasPaymentIntentClientSecret() bool {
-	if o != nil && o.PaymentIntentClientSecret.IsSet() {
+	if o != nil && !IsNil(o.PaymentIntentClientSecret) {
 		return true
 	}
 
 	return false
 }
 
-// SetPaymentIntentClientSecret gets a reference to the given NullableString and assigns it to the PaymentIntentClientSecret field.
+// SetPaymentIntentClientSecret gets a reference to the given string and assigns it to the PaymentIntentClientSecret field.
 func (o *BindSubscriptionResponseDto) SetPaymentIntentClientSecret(v string) {
-	o.PaymentIntentClientSecret.Set(&v)
-}
-// SetPaymentIntentClientSecretNil sets the value for PaymentIntentClientSecret to be an explicit nil
-func (o *BindSubscriptionResponseDto) SetPaymentIntentClientSecretNil() {
-	o.PaymentIntentClientSecret.Set(nil)
+	o.PaymentIntentClientSecret = &v
 }
 
-// UnsetPaymentIntentClientSecret ensures that no value is present for PaymentIntentClientSecret, not even an explicit nil
-func (o *BindSubscriptionResponseDto) UnsetPaymentIntentClientSecret() {
-	o.PaymentIntentClientSecret.Unset()
-}
-
-// GetPaymentIntentId returns the PaymentIntentId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPaymentIntentId returns the PaymentIntentId field value if set, zero value otherwise.
 func (o *BindSubscriptionResponseDto) GetPaymentIntentId() string {
-	if o == nil || IsNil(o.PaymentIntentId.Get()) {
+	if o == nil || IsNil(o.PaymentIntentId) {
 		var ret string
 		return ret
 	}
-	return *o.PaymentIntentId.Get()
+	return *o.PaymentIntentId
 }
 
 // GetPaymentIntentIdOk returns a tuple with the PaymentIntentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindSubscriptionResponseDto) GetPaymentIntentIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PaymentIntentId) {
 		return nil, false
 	}
-	return o.PaymentIntentId.Get(), o.PaymentIntentId.IsSet()
+	return o.PaymentIntentId, true
 }
 
 // HasPaymentIntentId returns a boolean if a field has been set.
 func (o *BindSubscriptionResponseDto) HasPaymentIntentId() bool {
-	if o != nil && o.PaymentIntentId.IsSet() {
+	if o != nil && !IsNil(o.PaymentIntentId) {
 		return true
 	}
 
 	return false
 }
 
-// SetPaymentIntentId gets a reference to the given NullableString and assigns it to the PaymentIntentId field.
+// SetPaymentIntentId gets a reference to the given string and assigns it to the PaymentIntentId field.
 func (o *BindSubscriptionResponseDto) SetPaymentIntentId(v string) {
-	o.PaymentIntentId.Set(&v)
-}
-// SetPaymentIntentIdNil sets the value for PaymentIntentId to be an explicit nil
-func (o *BindSubscriptionResponseDto) SetPaymentIntentIdNil() {
-	o.PaymentIntentId.Set(nil)
+	o.PaymentIntentId = &v
 }
 
-// UnsetPaymentIntentId ensures that no value is present for PaymentIntentId, not even an explicit nil
-func (o *BindSubscriptionResponseDto) UnsetPaymentIntentId() {
-	o.PaymentIntentId.Unset()
-}
-
-// GetInvoiceFailureCode returns the InvoiceFailureCode field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInvoiceFailureCode returns the InvoiceFailureCode field value if set, zero value otherwise.
 func (o *BindSubscriptionResponseDto) GetInvoiceFailureCode() string {
-	if o == nil || IsNil(o.InvoiceFailureCode.Get()) {
+	if o == nil || IsNil(o.InvoiceFailureCode) {
 		var ret string
 		return ret
 	}
-	return *o.InvoiceFailureCode.Get()
+	return *o.InvoiceFailureCode
 }
 
 // GetInvoiceFailureCodeOk returns a tuple with the InvoiceFailureCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindSubscriptionResponseDto) GetInvoiceFailureCodeOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceFailureCode) {
 		return nil, false
 	}
-	return o.InvoiceFailureCode.Get(), o.InvoiceFailureCode.IsSet()
+	return o.InvoiceFailureCode, true
 }
 
 // HasInvoiceFailureCode returns a boolean if a field has been set.
 func (o *BindSubscriptionResponseDto) HasInvoiceFailureCode() bool {
-	if o != nil && o.InvoiceFailureCode.IsSet() {
+	if o != nil && !IsNil(o.InvoiceFailureCode) {
 		return true
 	}
 
 	return false
 }
 
-// SetInvoiceFailureCode gets a reference to the given NullableString and assigns it to the InvoiceFailureCode field.
+// SetInvoiceFailureCode gets a reference to the given string and assigns it to the InvoiceFailureCode field.
 func (o *BindSubscriptionResponseDto) SetInvoiceFailureCode(v string) {
-	o.InvoiceFailureCode.Set(&v)
-}
-// SetInvoiceFailureCodeNil sets the value for InvoiceFailureCode to be an explicit nil
-func (o *BindSubscriptionResponseDto) SetInvoiceFailureCodeNil() {
-	o.InvoiceFailureCode.Set(nil)
+	o.InvoiceFailureCode = &v
 }
 
-// UnsetInvoiceFailureCode ensures that no value is present for InvoiceFailureCode, not even an explicit nil
-func (o *BindSubscriptionResponseDto) UnsetInvoiceFailureCode() {
-	o.InvoiceFailureCode.Unset()
-}
-
-// GetInvoiceFailureMessage returns the InvoiceFailureMessage field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInvoiceFailureMessage returns the InvoiceFailureMessage field value if set, zero value otherwise.
 func (o *BindSubscriptionResponseDto) GetInvoiceFailureMessage() string {
-	if o == nil || IsNil(o.InvoiceFailureMessage.Get()) {
+	if o == nil || IsNil(o.InvoiceFailureMessage) {
 		var ret string
 		return ret
 	}
-	return *o.InvoiceFailureMessage.Get()
+	return *o.InvoiceFailureMessage
 }
 
 // GetInvoiceFailureMessageOk returns a tuple with the InvoiceFailureMessage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindSubscriptionResponseDto) GetInvoiceFailureMessageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceFailureMessage) {
 		return nil, false
 	}
-	return o.InvoiceFailureMessage.Get(), o.InvoiceFailureMessage.IsSet()
+	return o.InvoiceFailureMessage, true
 }
 
 // HasInvoiceFailureMessage returns a boolean if a field has been set.
 func (o *BindSubscriptionResponseDto) HasInvoiceFailureMessage() bool {
-	if o != nil && o.InvoiceFailureMessage.IsSet() {
+	if o != nil && !IsNil(o.InvoiceFailureMessage) {
 		return true
 	}
 
 	return false
 }
 
-// SetInvoiceFailureMessage gets a reference to the given NullableString and assigns it to the InvoiceFailureMessage field.
+// SetInvoiceFailureMessage gets a reference to the given string and assigns it to the InvoiceFailureMessage field.
 func (o *BindSubscriptionResponseDto) SetInvoiceFailureMessage(v string) {
-	o.InvoiceFailureMessage.Set(&v)
-}
-// SetInvoiceFailureMessageNil sets the value for InvoiceFailureMessage to be an explicit nil
-func (o *BindSubscriptionResponseDto) SetInvoiceFailureMessageNil() {
-	o.InvoiceFailureMessage.Set(nil)
+	o.InvoiceFailureMessage = &v
 }
 
-// UnsetInvoiceFailureMessage ensures that no value is present for InvoiceFailureMessage, not even an explicit nil
-func (o *BindSubscriptionResponseDto) UnsetInvoiceFailureMessage() {
-	o.InvoiceFailureMessage.Unset()
-}
-
-// GetInvoiceFailureReason returns the InvoiceFailureReason field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInvoiceFailureReason returns the InvoiceFailureReason field value if set, zero value otherwise.
 func (o *BindSubscriptionResponseDto) GetInvoiceFailureReason() string {
-	if o == nil || IsNil(o.InvoiceFailureReason.Get()) {
+	if o == nil || IsNil(o.InvoiceFailureReason) {
 		var ret string
 		return ret
 	}
-	return *o.InvoiceFailureReason.Get()
+	return *o.InvoiceFailureReason
 }
 
 // GetInvoiceFailureReasonOk returns a tuple with the InvoiceFailureReason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BindSubscriptionResponseDto) GetInvoiceFailureReasonOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceFailureReason) {
 		return nil, false
 	}
-	return o.InvoiceFailureReason.Get(), o.InvoiceFailureReason.IsSet()
+	return o.InvoiceFailureReason, true
 }
 
 // HasInvoiceFailureReason returns a boolean if a field has been set.
 func (o *BindSubscriptionResponseDto) HasInvoiceFailureReason() bool {
-	if o != nil && o.InvoiceFailureReason.IsSet() {
+	if o != nil && !IsNil(o.InvoiceFailureReason) {
 		return true
 	}
 
 	return false
 }
 
-// SetInvoiceFailureReason gets a reference to the given NullableString and assigns it to the InvoiceFailureReason field.
+// SetInvoiceFailureReason gets a reference to the given string and assigns it to the InvoiceFailureReason field.
 func (o *BindSubscriptionResponseDto) SetInvoiceFailureReason(v string) {
-	o.InvoiceFailureReason.Set(&v)
-}
-// SetInvoiceFailureReasonNil sets the value for InvoiceFailureReason to be an explicit nil
-func (o *BindSubscriptionResponseDto) SetInvoiceFailureReasonNil() {
-	o.InvoiceFailureReason.Set(nil)
-}
-
-// UnsetInvoiceFailureReason ensures that no value is present for InvoiceFailureReason, not even an explicit nil
-func (o *BindSubscriptionResponseDto) UnsetInvoiceFailureReason() {
-	o.InvoiceFailureReason.Unset()
+	o.InvoiceFailureReason = &v
 }
 
 func (o BindSubscriptionResponseDto) MarshalJSON() ([]byte, error) {
@@ -307,23 +247,23 @@ func (o BindSubscriptionResponseDto) MarshalJSON() ([]byte, error) {
 
 func (o BindSubscriptionResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
-	if o.PaymentIntentClientSecret.IsSet() {
-		toSerialize["paymentIntentClientSecret"] = o.PaymentIntentClientSecret.Get()
+	if !IsNil(o.PaymentIntentClientSecret) {
+		toSerialize["paymentIntentClientSecret"] = o.PaymentIntentClientSecret
 	}
-	if o.PaymentIntentId.IsSet() {
-		toSerialize["paymentIntentId"] = o.PaymentIntentId.Get()
+	if !IsNil(o.PaymentIntentId) {
+		toSerialize["paymentIntentId"] = o.PaymentIntentId
 	}
-	if o.InvoiceFailureCode.IsSet() {
-		toSerialize["invoiceFailureCode"] = o.InvoiceFailureCode.Get()
+	if !IsNil(o.InvoiceFailureCode) {
+		toSerialize["invoiceFailureCode"] = o.InvoiceFailureCode
 	}
-	if o.InvoiceFailureMessage.IsSet() {
-		toSerialize["invoiceFailureMessage"] = o.InvoiceFailureMessage.Get()
+	if !IsNil(o.InvoiceFailureMessage) {
+		toSerialize["invoiceFailureMessage"] = o.InvoiceFailureMessage
 	}
-	if o.InvoiceFailureReason.IsSet() {
-		toSerialize["invoiceFailureReason"] = o.InvoiceFailureReason.Get()
+	if !IsNil(o.InvoiceFailureReason) {
+		toSerialize["invoiceFailureReason"] = o.InvoiceFailureReason
 	}
 	return toSerialize, nil
 }

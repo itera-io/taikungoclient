@@ -73,9 +73,9 @@ func (o *UnbindUserFromUserGroupCommand) SetUserGroupId(v int32) {
 	o.UserGroupId = &v
 }
 
-// GetUserIds returns the UserIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserIds returns the UserIds field value if set, zero value otherwise.
 func (o *UnbindUserFromUserGroupCommand) GetUserIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.UserIds) {
 		var ret []string
 		return ret
 	}
@@ -84,7 +84,6 @@ func (o *UnbindUserFromUserGroupCommand) GetUserIds() []string {
 
 // GetUserIdsOk returns a tuple with the UserIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UnbindUserFromUserGroupCommand) GetUserIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.UserIds) {
 		return nil, false
@@ -119,7 +118,7 @@ func (o UnbindUserFromUserGroupCommand) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.UserGroupId) {
 		toSerialize["userGroupId"] = o.UserGroupId
 	}
-	if o.UserIds != nil {
+	if !IsNil(o.UserIds) {
 		toSerialize["userIds"] = o.UserIds
 	}
 	return toSerialize, nil

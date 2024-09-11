@@ -21,10 +21,10 @@ var _ MappedNullable = &StripeInvoiceListDto{}
 
 // StripeInvoiceListDto struct for StripeInvoiceListDto
 type StripeInvoiceListDto struct {
-	Id NullableString `json:"id,omitempty"`
-	InvoiceStatus NullableString `json:"invoiceStatus,omitempty"`
-	ChargeStatus NullableString `json:"chargeStatus,omitempty"`
-	ChargeReason NullableString `json:"chargeReason,omitempty"`
+	Id *string `json:"id,omitempty"`
+	InvoiceStatus *string `json:"invoiceStatus,omitempty"`
+	ChargeStatus *string `json:"chargeStatus,omitempty"`
+	ChargeReason *string `json:"chargeReason,omitempty"`
 	Price *float64 `json:"price,omitempty"`
 	StartDate *time.Time `json:"startDate,omitempty"`
 	EndDate *time.Time `json:"endDate,omitempty"`
@@ -47,172 +47,132 @@ func NewStripeInvoiceListDtoWithDefaults() *StripeInvoiceListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *StripeInvoiceListDto) GetId() string {
-	if o == nil || IsNil(o.Id.Get()) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-	return *o.Id.Get()
+	return *o.Id
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StripeInvoiceListDto) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.Id.Get(), o.Id.IsSet()
+	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *StripeInvoiceListDto) HasId() bool {
-	if o != nil && o.Id.IsSet() {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given NullableString and assigns it to the Id field.
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *StripeInvoiceListDto) SetId(v string) {
-	o.Id.Set(&v)
-}
-// SetIdNil sets the value for Id to be an explicit nil
-func (o *StripeInvoiceListDto) SetIdNil() {
-	o.Id.Set(nil)
+	o.Id = &v
 }
 
-// UnsetId ensures that no value is present for Id, not even an explicit nil
-func (o *StripeInvoiceListDto) UnsetId() {
-	o.Id.Unset()
-}
-
-// GetInvoiceStatus returns the InvoiceStatus field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInvoiceStatus returns the InvoiceStatus field value if set, zero value otherwise.
 func (o *StripeInvoiceListDto) GetInvoiceStatus() string {
-	if o == nil || IsNil(o.InvoiceStatus.Get()) {
+	if o == nil || IsNil(o.InvoiceStatus) {
 		var ret string
 		return ret
 	}
-	return *o.InvoiceStatus.Get()
+	return *o.InvoiceStatus
 }
 
 // GetInvoiceStatusOk returns a tuple with the InvoiceStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StripeInvoiceListDto) GetInvoiceStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.InvoiceStatus) {
 		return nil, false
 	}
-	return o.InvoiceStatus.Get(), o.InvoiceStatus.IsSet()
+	return o.InvoiceStatus, true
 }
 
 // HasInvoiceStatus returns a boolean if a field has been set.
 func (o *StripeInvoiceListDto) HasInvoiceStatus() bool {
-	if o != nil && o.InvoiceStatus.IsSet() {
+	if o != nil && !IsNil(o.InvoiceStatus) {
 		return true
 	}
 
 	return false
 }
 
-// SetInvoiceStatus gets a reference to the given NullableString and assigns it to the InvoiceStatus field.
+// SetInvoiceStatus gets a reference to the given string and assigns it to the InvoiceStatus field.
 func (o *StripeInvoiceListDto) SetInvoiceStatus(v string) {
-	o.InvoiceStatus.Set(&v)
-}
-// SetInvoiceStatusNil sets the value for InvoiceStatus to be an explicit nil
-func (o *StripeInvoiceListDto) SetInvoiceStatusNil() {
-	o.InvoiceStatus.Set(nil)
+	o.InvoiceStatus = &v
 }
 
-// UnsetInvoiceStatus ensures that no value is present for InvoiceStatus, not even an explicit nil
-func (o *StripeInvoiceListDto) UnsetInvoiceStatus() {
-	o.InvoiceStatus.Unset()
-}
-
-// GetChargeStatus returns the ChargeStatus field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetChargeStatus returns the ChargeStatus field value if set, zero value otherwise.
 func (o *StripeInvoiceListDto) GetChargeStatus() string {
-	if o == nil || IsNil(o.ChargeStatus.Get()) {
+	if o == nil || IsNil(o.ChargeStatus) {
 		var ret string
 		return ret
 	}
-	return *o.ChargeStatus.Get()
+	return *o.ChargeStatus
 }
 
 // GetChargeStatusOk returns a tuple with the ChargeStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StripeInvoiceListDto) GetChargeStatusOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ChargeStatus) {
 		return nil, false
 	}
-	return o.ChargeStatus.Get(), o.ChargeStatus.IsSet()
+	return o.ChargeStatus, true
 }
 
 // HasChargeStatus returns a boolean if a field has been set.
 func (o *StripeInvoiceListDto) HasChargeStatus() bool {
-	if o != nil && o.ChargeStatus.IsSet() {
+	if o != nil && !IsNil(o.ChargeStatus) {
 		return true
 	}
 
 	return false
 }
 
-// SetChargeStatus gets a reference to the given NullableString and assigns it to the ChargeStatus field.
+// SetChargeStatus gets a reference to the given string and assigns it to the ChargeStatus field.
 func (o *StripeInvoiceListDto) SetChargeStatus(v string) {
-	o.ChargeStatus.Set(&v)
-}
-// SetChargeStatusNil sets the value for ChargeStatus to be an explicit nil
-func (o *StripeInvoiceListDto) SetChargeStatusNil() {
-	o.ChargeStatus.Set(nil)
+	o.ChargeStatus = &v
 }
 
-// UnsetChargeStatus ensures that no value is present for ChargeStatus, not even an explicit nil
-func (o *StripeInvoiceListDto) UnsetChargeStatus() {
-	o.ChargeStatus.Unset()
-}
-
-// GetChargeReason returns the ChargeReason field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetChargeReason returns the ChargeReason field value if set, zero value otherwise.
 func (o *StripeInvoiceListDto) GetChargeReason() string {
-	if o == nil || IsNil(o.ChargeReason.Get()) {
+	if o == nil || IsNil(o.ChargeReason) {
 		var ret string
 		return ret
 	}
-	return *o.ChargeReason.Get()
+	return *o.ChargeReason
 }
 
 // GetChargeReasonOk returns a tuple with the ChargeReason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StripeInvoiceListDto) GetChargeReasonOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ChargeReason) {
 		return nil, false
 	}
-	return o.ChargeReason.Get(), o.ChargeReason.IsSet()
+	return o.ChargeReason, true
 }
 
 // HasChargeReason returns a boolean if a field has been set.
 func (o *StripeInvoiceListDto) HasChargeReason() bool {
-	if o != nil && o.ChargeReason.IsSet() {
+	if o != nil && !IsNil(o.ChargeReason) {
 		return true
 	}
 
 	return false
 }
 
-// SetChargeReason gets a reference to the given NullableString and assigns it to the ChargeReason field.
+// SetChargeReason gets a reference to the given string and assigns it to the ChargeReason field.
 func (o *StripeInvoiceListDto) SetChargeReason(v string) {
-	o.ChargeReason.Set(&v)
-}
-// SetChargeReasonNil sets the value for ChargeReason to be an explicit nil
-func (o *StripeInvoiceListDto) SetChargeReasonNil() {
-	o.ChargeReason.Set(nil)
-}
-
-// UnsetChargeReason ensures that no value is present for ChargeReason, not even an explicit nil
-func (o *StripeInvoiceListDto) UnsetChargeReason() {
-	o.ChargeReason.Unset()
+	o.ChargeReason = &v
 }
 
 // GetPrice returns the Price field value if set, zero value otherwise.
@@ -321,17 +281,17 @@ func (o StripeInvoiceListDto) MarshalJSON() ([]byte, error) {
 
 func (o StripeInvoiceListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id.IsSet() {
-		toSerialize["id"] = o.Id.Get()
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
-	if o.InvoiceStatus.IsSet() {
-		toSerialize["invoiceStatus"] = o.InvoiceStatus.Get()
+	if !IsNil(o.InvoiceStatus) {
+		toSerialize["invoiceStatus"] = o.InvoiceStatus
 	}
-	if o.ChargeStatus.IsSet() {
-		toSerialize["chargeStatus"] = o.ChargeStatus.Get()
+	if !IsNil(o.ChargeStatus) {
+		toSerialize["chargeStatus"] = o.ChargeStatus
 	}
-	if o.ChargeReason.IsSet() {
-		toSerialize["chargeReason"] = o.ChargeReason.Get()
+	if !IsNil(o.ChargeReason) {
+		toSerialize["chargeReason"] = o.ChargeReason
 	}
 	if !IsNil(o.Price) {
 		toSerialize["price"] = o.Price

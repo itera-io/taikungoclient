@@ -73,9 +73,9 @@ func (o *AwsValidateOwnerCommand) SetCloudId(v int32) {
 	o.CloudId = &v
 }
 
-// GetOwners returns the Owners field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOwners returns the Owners field value if set, zero value otherwise.
 func (o *AwsValidateOwnerCommand) GetOwners() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Owners) {
 		var ret []string
 		return ret
 	}
@@ -84,7 +84,6 @@ func (o *AwsValidateOwnerCommand) GetOwners() []string {
 
 // GetOwnersOk returns a tuple with the Owners field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AwsValidateOwnerCommand) GetOwnersOk() ([]string, bool) {
 	if o == nil || IsNil(o.Owners) {
 		return nil, false
@@ -119,7 +118,7 @@ func (o AwsValidateOwnerCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CloudId) {
 		toSerialize["cloudId"] = o.CloudId
 	}
-	if o.Owners != nil {
+	if !IsNil(o.Owners) {
 		toSerialize["owners"] = o.Owners
 	}
 	return toSerialize, nil

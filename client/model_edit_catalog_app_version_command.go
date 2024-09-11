@@ -21,7 +21,7 @@ var _ MappedNullable = &EditCatalogAppVersionCommand{}
 // EditCatalogAppVersionCommand struct for EditCatalogAppVersionCommand
 type EditCatalogAppVersionCommand struct {
 	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
-	Version NullableString `json:"version,omitempty"`
+	Version *string `json:"version,omitempty"`
 }
 
 // NewEditCatalogAppVersionCommand instantiates a new EditCatalogAppVersionCommand object
@@ -73,46 +73,36 @@ func (o *EditCatalogAppVersionCommand) SetCatalogAppId(v int32) {
 	o.CatalogAppId = &v
 }
 
-// GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVersion returns the Version field value if set, zero value otherwise.
 func (o *EditCatalogAppVersionCommand) GetVersion() string {
-	if o == nil || IsNil(o.Version.Get()) {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
-	return *o.Version.Get()
+	return *o.Version
 }
 
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EditCatalogAppVersionCommand) GetVersionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
-	return o.Version.Get(), o.Version.IsSet()
+	return o.Version, true
 }
 
 // HasVersion returns a boolean if a field has been set.
 func (o *EditCatalogAppVersionCommand) HasVersion() bool {
-	if o != nil && o.Version.IsSet() {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
 	return false
 }
 
-// SetVersion gets a reference to the given NullableString and assigns it to the Version field.
+// SetVersion gets a reference to the given string and assigns it to the Version field.
 func (o *EditCatalogAppVersionCommand) SetVersion(v string) {
-	o.Version.Set(&v)
-}
-// SetVersionNil sets the value for Version to be an explicit nil
-func (o *EditCatalogAppVersionCommand) SetVersionNil() {
-	o.Version.Set(nil)
-}
-
-// UnsetVersion ensures that no value is present for Version, not even an explicit nil
-func (o *EditCatalogAppVersionCommand) UnsetVersion() {
-	o.Version.Unset()
+	o.Version = &v
 }
 
 func (o EditCatalogAppVersionCommand) MarshalJSON() ([]byte, error) {
@@ -128,8 +118,8 @@ func (o EditCatalogAppVersionCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CatalogAppId) {
 		toSerialize["catalogAppId"] = o.CatalogAppId
 	}
-	if o.Version.IsSet() {
-		toSerialize["version"] = o.Version.Get()
+	if !IsNil(o.Version) {
+		toSerialize["version"] = o.Version
 	}
 	return toSerialize, nil
 }

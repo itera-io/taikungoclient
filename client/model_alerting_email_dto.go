@@ -20,7 +20,7 @@ var _ MappedNullable = &AlertingEmailDto{}
 
 // AlertingEmailDto struct for AlertingEmailDto
 type AlertingEmailDto struct {
-	Email NullableString `json:"email,omitempty"`
+	Email *string `json:"email,omitempty"`
 }
 
 // NewAlertingEmailDto instantiates a new AlertingEmailDto object
@@ -40,46 +40,36 @@ func NewAlertingEmailDtoWithDefaults() *AlertingEmailDto {
 	return &this
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEmail returns the Email field value if set, zero value otherwise.
 func (o *AlertingEmailDto) GetEmail() string {
-	if o == nil || IsNil(o.Email.Get()) {
+	if o == nil || IsNil(o.Email) {
 		var ret string
 		return ret
 	}
-	return *o.Email.Get()
+	return *o.Email
 }
 
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingEmailDto) GetEmailOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Email) {
 		return nil, false
 	}
-	return o.Email.Get(), o.Email.IsSet()
+	return o.Email, true
 }
 
 // HasEmail returns a boolean if a field has been set.
 func (o *AlertingEmailDto) HasEmail() bool {
-	if o != nil && o.Email.IsSet() {
+	if o != nil && !IsNil(o.Email) {
 		return true
 	}
 
 	return false
 }
 
-// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
+// SetEmail gets a reference to the given string and assigns it to the Email field.
 func (o *AlertingEmailDto) SetEmail(v string) {
-	o.Email.Set(&v)
-}
-// SetEmailNil sets the value for Email to be an explicit nil
-func (o *AlertingEmailDto) SetEmailNil() {
-	o.Email.Set(nil)
-}
-
-// UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *AlertingEmailDto) UnsetEmail() {
-	o.Email.Unset()
+	o.Email = &v
 }
 
 func (o AlertingEmailDto) MarshalJSON() ([]byte, error) {
@@ -92,8 +82,8 @@ func (o AlertingEmailDto) MarshalJSON() ([]byte, error) {
 
 func (o AlertingEmailDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Email.IsSet() {
-		toSerialize["email"] = o.Email.Get()
+	if !IsNil(o.Email) {
+		toSerialize["email"] = o.Email
 	}
 	return toSerialize, nil
 }

@@ -20,10 +20,10 @@ var _ MappedNullable = &Subresource{}
 
 // Subresource struct for Subresource
 type Subresource struct {
-	Name NullableString `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
-	HourlyCost NullableString `json:"hourlyCost,omitempty"`
-	MonthlyCost NullableString `json:"monthlyCost,omitempty"`
+	HourlyCost *string `json:"hourlyCost,omitempty"`
+	MonthlyCost *string `json:"monthlyCost,omitempty"`
 	CostComponents []CostComponent `json:"costComponents,omitempty"`
 }
 
@@ -44,51 +44,41 @@ func NewSubresourceWithDefaults() *Subresource {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *Subresource) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subresource) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Subresource) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Subresource) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *Subresource) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *Subresource) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetMetadata returns the Metadata field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadata returns the Metadata field value if set, zero value otherwise.
 func (o *Subresource) GetMetadata() map[string]interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.Metadata) {
 		var ret map[string]interface{}
 		return ret
 	}
@@ -97,7 +87,6 @@ func (o *Subresource) GetMetadata() map[string]interface{} {
 
 // GetMetadataOk returns a tuple with the Metadata field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subresource) GetMetadataOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.Metadata) {
 		return map[string]interface{}{}, false
@@ -119,93 +108,73 @@ func (o *Subresource) SetMetadata(v map[string]interface{}) {
 	o.Metadata = v
 }
 
-// GetHourlyCost returns the HourlyCost field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHourlyCost returns the HourlyCost field value if set, zero value otherwise.
 func (o *Subresource) GetHourlyCost() string {
-	if o == nil || IsNil(o.HourlyCost.Get()) {
+	if o == nil || IsNil(o.HourlyCost) {
 		var ret string
 		return ret
 	}
-	return *o.HourlyCost.Get()
+	return *o.HourlyCost
 }
 
 // GetHourlyCostOk returns a tuple with the HourlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subresource) GetHourlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.HourlyCost) {
 		return nil, false
 	}
-	return o.HourlyCost.Get(), o.HourlyCost.IsSet()
+	return o.HourlyCost, true
 }
 
 // HasHourlyCost returns a boolean if a field has been set.
 func (o *Subresource) HasHourlyCost() bool {
-	if o != nil && o.HourlyCost.IsSet() {
+	if o != nil && !IsNil(o.HourlyCost) {
 		return true
 	}
 
 	return false
 }
 
-// SetHourlyCost gets a reference to the given NullableString and assigns it to the HourlyCost field.
+// SetHourlyCost gets a reference to the given string and assigns it to the HourlyCost field.
 func (o *Subresource) SetHourlyCost(v string) {
-	o.HourlyCost.Set(&v)
-}
-// SetHourlyCostNil sets the value for HourlyCost to be an explicit nil
-func (o *Subresource) SetHourlyCostNil() {
-	o.HourlyCost.Set(nil)
+	o.HourlyCost = &v
 }
 
-// UnsetHourlyCost ensures that no value is present for HourlyCost, not even an explicit nil
-func (o *Subresource) UnsetHourlyCost() {
-	o.HourlyCost.Unset()
-}
-
-// GetMonthlyCost returns the MonthlyCost field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMonthlyCost returns the MonthlyCost field value if set, zero value otherwise.
 func (o *Subresource) GetMonthlyCost() string {
-	if o == nil || IsNil(o.MonthlyCost.Get()) {
+	if o == nil || IsNil(o.MonthlyCost) {
 		var ret string
 		return ret
 	}
-	return *o.MonthlyCost.Get()
+	return *o.MonthlyCost
 }
 
 // GetMonthlyCostOk returns a tuple with the MonthlyCost field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subresource) GetMonthlyCostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MonthlyCost) {
 		return nil, false
 	}
-	return o.MonthlyCost.Get(), o.MonthlyCost.IsSet()
+	return o.MonthlyCost, true
 }
 
 // HasMonthlyCost returns a boolean if a field has been set.
 func (o *Subresource) HasMonthlyCost() bool {
-	if o != nil && o.MonthlyCost.IsSet() {
+	if o != nil && !IsNil(o.MonthlyCost) {
 		return true
 	}
 
 	return false
 }
 
-// SetMonthlyCost gets a reference to the given NullableString and assigns it to the MonthlyCost field.
+// SetMonthlyCost gets a reference to the given string and assigns it to the MonthlyCost field.
 func (o *Subresource) SetMonthlyCost(v string) {
-	o.MonthlyCost.Set(&v)
-}
-// SetMonthlyCostNil sets the value for MonthlyCost to be an explicit nil
-func (o *Subresource) SetMonthlyCostNil() {
-	o.MonthlyCost.Set(nil)
+	o.MonthlyCost = &v
 }
 
-// UnsetMonthlyCost ensures that no value is present for MonthlyCost, not even an explicit nil
-func (o *Subresource) UnsetMonthlyCost() {
-	o.MonthlyCost.Unset()
-}
-
-// GetCostComponents returns the CostComponents field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCostComponents returns the CostComponents field value if set, zero value otherwise.
 func (o *Subresource) GetCostComponents() []CostComponent {
-	if o == nil {
+	if o == nil || IsNil(o.CostComponents) {
 		var ret []CostComponent
 		return ret
 	}
@@ -214,7 +183,6 @@ func (o *Subresource) GetCostComponents() []CostComponent {
 
 // GetCostComponentsOk returns a tuple with the CostComponents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Subresource) GetCostComponentsOk() ([]CostComponent, bool) {
 	if o == nil || IsNil(o.CostComponents) {
 		return nil, false
@@ -246,19 +214,19 @@ func (o Subresource) MarshalJSON() ([]byte, error) {
 
 func (o Subresource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.Metadata != nil {
+	if !IsNil(o.Metadata) {
 		toSerialize["metadata"] = o.Metadata
 	}
-	if o.HourlyCost.IsSet() {
-		toSerialize["hourlyCost"] = o.HourlyCost.Get()
+	if !IsNil(o.HourlyCost) {
+		toSerialize["hourlyCost"] = o.HourlyCost
 	}
-	if o.MonthlyCost.IsSet() {
-		toSerialize["monthlyCost"] = o.MonthlyCost.Get()
+	if !IsNil(o.MonthlyCost) {
+		toSerialize["monthlyCost"] = o.MonthlyCost
 	}
-	if o.CostComponents != nil {
+	if !IsNil(o.CostComponents) {
 		toSerialize["costComponents"] = o.CostComponents
 	}
 	return toSerialize, nil

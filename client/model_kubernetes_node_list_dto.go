@@ -20,7 +20,7 @@ var _ MappedNullable = &KubernetesNodeListDto{}
 
 // KubernetesNodeListDto struct for KubernetesNodeListDto
 type KubernetesNodeListDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
+	MetadataName *string `json:"metadataName,omitempty"`
 	Type []string `json:"type,omitempty"`
 	Status []string `json:"status,omitempty"`
 	Reason []string `json:"reason,omitempty"`
@@ -44,51 +44,41 @@ func NewKubernetesNodeListDtoWithDefaults() *KubernetesNodeListDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value if set, zero value otherwise.
 func (o *KubernetesNodeListDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil || IsNil(o.MetadataName) {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName.Get()
+	return *o.MetadataName
 }
 
 // GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeListDto) GetMetadataNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.MetadataName) {
 		return nil, false
 	}
-	return o.MetadataName.Get(), o.MetadataName.IsSet()
+	return o.MetadataName, true
 }
 
 // HasMetadataName returns a boolean if a field has been set.
 func (o *KubernetesNodeListDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
+	if o != nil && !IsNil(o.MetadataName) {
 		return true
 	}
 
 	return false
 }
 
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName gets a reference to the given string and assigns it to the MetadataName field.
 func (o *KubernetesNodeListDto) SetMetadataName(v string) {
-	o.MetadataName.Set(&v)
-}
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *KubernetesNodeListDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
+	o.MetadataName = &v
 }
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *KubernetesNodeListDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetType returns the Type field value if set, zero value otherwise.
 func (o *KubernetesNodeListDto) GetType() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Type) {
 		var ret []string
 		return ret
 	}
@@ -97,7 +87,6 @@ func (o *KubernetesNodeListDto) GetType() []string {
 
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeListDto) GetTypeOk() ([]string, bool) {
 	if o == nil || IsNil(o.Type) {
 		return nil, false
@@ -119,9 +108,9 @@ func (o *KubernetesNodeListDto) SetType(v []string) {
 	o.Type = v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *KubernetesNodeListDto) GetStatus() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret []string
 		return ret
 	}
@@ -130,7 +119,6 @@ func (o *KubernetesNodeListDto) GetStatus() []string {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeListDto) GetStatusOk() ([]string, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
@@ -152,9 +140,9 @@ func (o *KubernetesNodeListDto) SetStatus(v []string) {
 	o.Status = v
 }
 
-// GetReason returns the Reason field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetReason returns the Reason field value if set, zero value otherwise.
 func (o *KubernetesNodeListDto) GetReason() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Reason) {
 		var ret []string
 		return ret
 	}
@@ -163,7 +151,6 @@ func (o *KubernetesNodeListDto) GetReason() []string {
 
 // GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeListDto) GetReasonOk() ([]string, bool) {
 	if o == nil || IsNil(o.Reason) {
 		return nil, false
@@ -185,9 +172,9 @@ func (o *KubernetesNodeListDto) SetReason(v []string) {
 	o.Reason = v
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMessage returns the Message field value if set, zero value otherwise.
 func (o *KubernetesNodeListDto) GetMessage() []string {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		var ret []string
 		return ret
 	}
@@ -196,7 +183,6 @@ func (o *KubernetesNodeListDto) GetMessage() []string {
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeListDto) GetMessageOk() ([]string, bool) {
 	if o == nil || IsNil(o.Message) {
 		return nil, false
@@ -228,19 +214,19 @@ func (o KubernetesNodeListDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesNodeListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
+	if !IsNil(o.MetadataName) {
+		toSerialize["metadataName"] = o.MetadataName
 	}
-	if o.Type != nil {
+	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-	if o.Status != nil {
+	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.Reason != nil {
+	if !IsNil(o.Reason) {
 		toSerialize["reason"] = o.Reason
 	}
-	if o.Message != nil {
+	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
 	return toSerialize, nil

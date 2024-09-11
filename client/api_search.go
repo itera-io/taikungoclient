@@ -2007,6 +2007,9 @@ func (a *SearchAPIService) SearchPartnersExecute(r ApiSearchPartnersRequest) (*P
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.partnersSearchCommand == nil {
+		return localVarReturnValue, nil, reportError("partnersSearchCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

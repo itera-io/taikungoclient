@@ -20,10 +20,10 @@ var _ MappedNullable = &ResourcePoolListCommand{}
 
 // ResourcePoolListCommand struct for ResourcePoolListCommand
 type ResourcePoolListCommand struct {
-	Url NullableString `json:"url,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	DatacenterId NullableString `json:"datacenterId,omitempty"`
+	Url *string `json:"url,omitempty"`
+	Username *string `json:"username,omitempty"`
+	Password *string `json:"password,omitempty"`
+	DatacenterId *string `json:"datacenterId,omitempty"`
 }
 
 // NewResourcePoolListCommand instantiates a new ResourcePoolListCommand object
@@ -43,172 +43,132 @@ func NewResourcePoolListCommandWithDefaults() *ResourcePoolListCommand {
 	return &this
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *ResourcePoolListCommand) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+	return *o.Url
 }
 
 // GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResourcePoolListCommand) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return o.Url, true
 }
 
 // HasUrl returns a boolean if a field has been set.
 func (o *ResourcePoolListCommand) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
+	if o != nil && !IsNil(o.Url) {
 		return true
 	}
 
 	return false
 }
 
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *ResourcePoolListCommand) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *ResourcePoolListCommand) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = &v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *ResourcePoolListCommand) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUsername returns the Username field value if set, zero value otherwise.
 func (o *ResourcePoolListCommand) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil || IsNil(o.Username) {
 		var ret string
 		return ret
 	}
-	return *o.Username.Get()
+	return *o.Username
 }
 
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResourcePoolListCommand) GetUsernameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Username) {
 		return nil, false
 	}
-	return o.Username.Get(), o.Username.IsSet()
+	return o.Username, true
 }
 
 // HasUsername returns a boolean if a field has been set.
 func (o *ResourcePoolListCommand) HasUsername() bool {
-	if o != nil && o.Username.IsSet() {
+	if o != nil && !IsNil(o.Username) {
 		return true
 	}
 
 	return false
 }
 
-// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
+// SetUsername gets a reference to the given string and assigns it to the Username field.
 func (o *ResourcePoolListCommand) SetUsername(v string) {
-	o.Username.Set(&v)
-}
-// SetUsernameNil sets the value for Username to be an explicit nil
-func (o *ResourcePoolListCommand) SetUsernameNil() {
-	o.Username.Set(nil)
+	o.Username = &v
 }
 
-// UnsetUsername ensures that no value is present for Username, not even an explicit nil
-func (o *ResourcePoolListCommand) UnsetUsername() {
-	o.Username.Unset()
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPassword returns the Password field value if set, zero value otherwise.
 func (o *ResourcePoolListCommand) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil || IsNil(o.Password) {
 		var ret string
 		return ret
 	}
-	return *o.Password.Get()
+	return *o.Password
 }
 
 // GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResourcePoolListCommand) GetPasswordOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Password) {
 		return nil, false
 	}
-	return o.Password.Get(), o.Password.IsSet()
+	return o.Password, true
 }
 
 // HasPassword returns a boolean if a field has been set.
 func (o *ResourcePoolListCommand) HasPassword() bool {
-	if o != nil && o.Password.IsSet() {
+	if o != nil && !IsNil(o.Password) {
 		return true
 	}
 
 	return false
 }
 
-// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
+// SetPassword gets a reference to the given string and assigns it to the Password field.
 func (o *ResourcePoolListCommand) SetPassword(v string) {
-	o.Password.Set(&v)
-}
-// SetPasswordNil sets the value for Password to be an explicit nil
-func (o *ResourcePoolListCommand) SetPasswordNil() {
-	o.Password.Set(nil)
+	o.Password = &v
 }
 
-// UnsetPassword ensures that no value is present for Password, not even an explicit nil
-func (o *ResourcePoolListCommand) UnsetPassword() {
-	o.Password.Unset()
-}
-
-// GetDatacenterId returns the DatacenterId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDatacenterId returns the DatacenterId field value if set, zero value otherwise.
 func (o *ResourcePoolListCommand) GetDatacenterId() string {
-	if o == nil || IsNil(o.DatacenterId.Get()) {
+	if o == nil || IsNil(o.DatacenterId) {
 		var ret string
 		return ret
 	}
-	return *o.DatacenterId.Get()
+	return *o.DatacenterId
 }
 
 // GetDatacenterIdOk returns a tuple with the DatacenterId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResourcePoolListCommand) GetDatacenterIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DatacenterId) {
 		return nil, false
 	}
-	return o.DatacenterId.Get(), o.DatacenterId.IsSet()
+	return o.DatacenterId, true
 }
 
 // HasDatacenterId returns a boolean if a field has been set.
 func (o *ResourcePoolListCommand) HasDatacenterId() bool {
-	if o != nil && o.DatacenterId.IsSet() {
+	if o != nil && !IsNil(o.DatacenterId) {
 		return true
 	}
 
 	return false
 }
 
-// SetDatacenterId gets a reference to the given NullableString and assigns it to the DatacenterId field.
+// SetDatacenterId gets a reference to the given string and assigns it to the DatacenterId field.
 func (o *ResourcePoolListCommand) SetDatacenterId(v string) {
-	o.DatacenterId.Set(&v)
-}
-// SetDatacenterIdNil sets the value for DatacenterId to be an explicit nil
-func (o *ResourcePoolListCommand) SetDatacenterIdNil() {
-	o.DatacenterId.Set(nil)
-}
-
-// UnsetDatacenterId ensures that no value is present for DatacenterId, not even an explicit nil
-func (o *ResourcePoolListCommand) UnsetDatacenterId() {
-	o.DatacenterId.Unset()
+	o.DatacenterId = &v
 }
 
 func (o ResourcePoolListCommand) MarshalJSON() ([]byte, error) {
@@ -221,17 +181,17 @@ func (o ResourcePoolListCommand) MarshalJSON() ([]byte, error) {
 
 func (o ResourcePoolListCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
 	}
-	if o.Username.IsSet() {
-		toSerialize["username"] = o.Username.Get()
+	if !IsNil(o.Username) {
+		toSerialize["username"] = o.Username
 	}
-	if o.Password.IsSet() {
-		toSerialize["password"] = o.Password.Get()
+	if !IsNil(o.Password) {
+		toSerialize["password"] = o.Password
 	}
-	if o.DatacenterId.IsSet() {
-		toSerialize["datacenterId"] = o.DatacenterId.Get()
+	if !IsNil(o.DatacenterId) {
+		toSerialize["datacenterId"] = o.DatacenterId
 	}
 	return toSerialize, nil
 }

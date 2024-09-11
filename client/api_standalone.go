@@ -72,6 +72,9 @@ func (a *StandaloneAPIService) StandaloneCreateExecute(r ApiStandaloneCreateRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createStandAloneVmCommand == nil {
+		return localVarReturnValue, nil, reportError("createStandAloneVmCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -261,13 +264,15 @@ func (a *StandaloneAPIService) StandaloneDetailsExecute(r ApiStandaloneDetailsRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
 
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
@@ -439,6 +444,9 @@ func (a *StandaloneAPIService) StandaloneIpManagementExecute(r ApiStandaloneIpMa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.standAloneVmIpManagementCommand == nil {
+		return nil, reportError("standAloneVmIpManagementCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -558,12 +566,14 @@ func (a *StandaloneAPIService) StandaloneIpManagementExecute(r ApiStandaloneIpMa
 type ApiStandaloneListRequest struct {
 	ctx context.Context
 	ApiService *StandaloneAPIService
-	limit *int32
-	offset *int32
-	projectId *int32
 	sortBy *string
 	sortDirection *string
 	search *string
+	searchId *string
+	filterBy *string
+	limit *int32
+	offset *int32
+	projectId *int32
 	startRam *float64
 	endRam *float64
 	startVolumeSize *int64
@@ -572,23 +582,6 @@ type ApiStandaloneListRequest struct {
 	endCpu *int32
 	organizationId *int32
 	id *int32
-	searchId *string
-	filterBy *string
-}
-
-func (r ApiStandaloneListRequest) Limit(limit int32) ApiStandaloneListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiStandaloneListRequest) Offset(offset int32) ApiStandaloneListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiStandaloneListRequest) ProjectId(projectId int32) ApiStandaloneListRequest {
-	r.projectId = &projectId
-	return r
 }
 
 func (r ApiStandaloneListRequest) SortBy(sortBy string) ApiStandaloneListRequest {
@@ -603,6 +596,31 @@ func (r ApiStandaloneListRequest) SortDirection(sortDirection string) ApiStandal
 
 func (r ApiStandaloneListRequest) Search(search string) ApiStandaloneListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiStandaloneListRequest) SearchId(searchId string) ApiStandaloneListRequest {
+	r.searchId = &searchId
+	return r
+}
+
+func (r ApiStandaloneListRequest) FilterBy(filterBy string) ApiStandaloneListRequest {
+	r.filterBy = &filterBy
+	return r
+}
+
+func (r ApiStandaloneListRequest) Limit(limit int32) ApiStandaloneListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiStandaloneListRequest) Offset(offset int32) ApiStandaloneListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiStandaloneListRequest) ProjectId(projectId int32) ApiStandaloneListRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -646,16 +664,6 @@ func (r ApiStandaloneListRequest) Id(id int32) ApiStandaloneListRequest {
 	return r
 }
 
-func (r ApiStandaloneListRequest) SearchId(searchId string) ApiStandaloneListRequest {
-	r.searchId = &searchId
-	return r
-}
-
-func (r ApiStandaloneListRequest) FilterBy(filterBy string) ApiStandaloneListRequest {
-	r.filterBy = &filterBy
-	return r
-}
-
 func (r ApiStandaloneListRequest) Execute() (*StandaloneVmsList, *http.Response, error) {
 	return r.ApiService.StandaloneListExecute(r)
 }
@@ -693,6 +701,21 @@ func (a *StandaloneAPIService) StandaloneListExecute(r ApiStandaloneListRequest)
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.searchId == nil {
+		return localVarReturnValue, nil, reportError("searchId is required and must be specified")
+	}
+	if r.filterBy == nil {
+		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -703,15 +726,9 @@ func (a *StandaloneAPIService) StandaloneListExecute(r ApiStandaloneListRequest)
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	if r.startRam != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "StartRam", r.startRam, "form", "")
 	}
@@ -736,12 +753,8 @@ func (a *StandaloneAPIService) StandaloneListExecute(r ApiStandaloneListRequest)
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
-	if r.searchId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
-	}
-	if r.filterBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SearchId", r.searchId, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -910,6 +923,9 @@ func (a *StandaloneAPIService) StandaloneResetExecute(r ApiStandaloneResetReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.resetStandAloneVmStatusCommand == nil {
+		return nil, reportError("resetStandAloneVmStatusCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1072,6 +1088,9 @@ func (a *StandaloneAPIService) StandaloneUpdateFlavorExecute(r ApiStandaloneUpda
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateStandAloneVmFlavorCommand == nil {
+		return nil, reportError("updateStandAloneVmFlavorCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

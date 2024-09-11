@@ -200,25 +200,15 @@ func (a *PackageAPIService) PackageDetailsExecute(r ApiPackageDetailsRequest) (*
 type ApiPackageListRequest struct {
 	ctx context.Context
 	ApiService *PackageAPIService
-	offset *int32
-	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	id *string
+	filterBy *string
+	offset *int32
+	limit *int32
 	catalogId *int32
 	isPrivate *bool
-	filterBy *string
-}
-
-func (r ApiPackageListRequest) Offset(offset int32) ApiPackageListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiPackageListRequest) Limit(limit int32) ApiPackageListRequest {
-	r.limit = &limit
-	return r
 }
 
 func (r ApiPackageListRequest) SortBy(sortBy string) ApiPackageListRequest {
@@ -241,6 +231,21 @@ func (r ApiPackageListRequest) Id(id string) ApiPackageListRequest {
 	return r
 }
 
+func (r ApiPackageListRequest) FilterBy(filterBy string) ApiPackageListRequest {
+	r.filterBy = &filterBy
+	return r
+}
+
+func (r ApiPackageListRequest) Offset(offset int32) ApiPackageListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiPackageListRequest) Limit(limit int32) ApiPackageListRequest {
+	r.limit = &limit
+	return r
+}
+
 func (r ApiPackageListRequest) CatalogId(catalogId int32) ApiPackageListRequest {
 	r.catalogId = &catalogId
 	return r
@@ -248,11 +253,6 @@ func (r ApiPackageListRequest) CatalogId(catalogId int32) ApiPackageListRequest 
 
 func (r ApiPackageListRequest) IsPrivate(isPrivate bool) ApiPackageListRequest {
 	r.isPrivate = &isPrivate
-	return r
-}
-
-func (r ApiPackageListRequest) FilterBy(filterBy string) ApiPackageListRequest {
-	r.filterBy = &filterBy
 	return r
 }
 
@@ -293,6 +293,21 @@ func (a *PackageAPIService) PackageListExecute(r ApiPackageListRequest) (*Availa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.id == nil {
+		return localVarReturnValue, nil, reportError("id is required and must be specified")
+	}
+	if r.filterBy == nil {
+		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
+	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
@@ -300,27 +315,17 @@ func (a *PackageAPIService) PackageListExecute(r ApiPackageListRequest) (*Availa
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	if r.catalogId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "CatalogId", r.catalogId, "form", "")
 	}
 	if r.isPrivate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsPrivate", r.isPrivate, "form", "")
 	}
-	if r.filterBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -20,8 +20,8 @@ var _ MappedNullable = &ResourcePoolSummary{}
 
 // ResourcePoolSummary struct for ResourcePoolSummary
 type ResourcePoolSummary struct {
-	Name NullableString `json:"name,omitempty"`
-	ResourcePool NullableString `json:"resourcePool,omitempty"`
+	Name *string `json:"name,omitempty"`
+	ResourcePool *string `json:"resourcePool,omitempty"`
 }
 
 // NewResourcePoolSummary instantiates a new ResourcePoolSummary object
@@ -41,88 +41,68 @@ func NewResourcePoolSummaryWithDefaults() *ResourcePoolSummary {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *ResourcePoolSummary) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResourcePoolSummary) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *ResourcePoolSummary) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *ResourcePoolSummary) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ResourcePoolSummary) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ResourcePoolSummary) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetResourcePool returns the ResourcePool field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetResourcePool returns the ResourcePool field value if set, zero value otherwise.
 func (o *ResourcePoolSummary) GetResourcePool() string {
-	if o == nil || IsNil(o.ResourcePool.Get()) {
+	if o == nil || IsNil(o.ResourcePool) {
 		var ret string
 		return ret
 	}
-	return *o.ResourcePool.Get()
+	return *o.ResourcePool
 }
 
 // GetResourcePoolOk returns a tuple with the ResourcePool field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ResourcePoolSummary) GetResourcePoolOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ResourcePool) {
 		return nil, false
 	}
-	return o.ResourcePool.Get(), o.ResourcePool.IsSet()
+	return o.ResourcePool, true
 }
 
 // HasResourcePool returns a boolean if a field has been set.
 func (o *ResourcePoolSummary) HasResourcePool() bool {
-	if o != nil && o.ResourcePool.IsSet() {
+	if o != nil && !IsNil(o.ResourcePool) {
 		return true
 	}
 
 	return false
 }
 
-// SetResourcePool gets a reference to the given NullableString and assigns it to the ResourcePool field.
+// SetResourcePool gets a reference to the given string and assigns it to the ResourcePool field.
 func (o *ResourcePoolSummary) SetResourcePool(v string) {
-	o.ResourcePool.Set(&v)
-}
-// SetResourcePoolNil sets the value for ResourcePool to be an explicit nil
-func (o *ResourcePoolSummary) SetResourcePoolNil() {
-	o.ResourcePool.Set(nil)
-}
-
-// UnsetResourcePool ensures that no value is present for ResourcePool, not even an explicit nil
-func (o *ResourcePoolSummary) UnsetResourcePool() {
-	o.ResourcePool.Unset()
+	o.ResourcePool = &v
 }
 
 func (o ResourcePoolSummary) MarshalJSON() ([]byte, error) {
@@ -135,11 +115,11 @@ func (o ResourcePoolSummary) MarshalJSON() ([]byte, error) {
 
 func (o ResourcePoolSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.ResourcePool.IsSet() {
-		toSerialize["resourcePool"] = o.ResourcePool.Get()
+	if !IsNil(o.ResourcePool) {
+		toSerialize["resourcePool"] = o.ResourcePool
 	}
 	return toSerialize, nil
 }

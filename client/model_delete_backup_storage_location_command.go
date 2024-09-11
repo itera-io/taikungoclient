@@ -21,7 +21,7 @@ var _ MappedNullable = &DeleteBackupStorageLocationCommand{}
 // DeleteBackupStorageLocationCommand struct for DeleteBackupStorageLocationCommand
 type DeleteBackupStorageLocationCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
-	StorageLocation NullableString `json:"storageLocation,omitempty"`
+	StorageLocation *string `json:"storageLocation,omitempty"`
 }
 
 // NewDeleteBackupStorageLocationCommand instantiates a new DeleteBackupStorageLocationCommand object
@@ -73,46 +73,36 @@ func (o *DeleteBackupStorageLocationCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-// GetStorageLocation returns the StorageLocation field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStorageLocation returns the StorageLocation field value if set, zero value otherwise.
 func (o *DeleteBackupStorageLocationCommand) GetStorageLocation() string {
-	if o == nil || IsNil(o.StorageLocation.Get()) {
+	if o == nil || IsNil(o.StorageLocation) {
 		var ret string
 		return ret
 	}
-	return *o.StorageLocation.Get()
+	return *o.StorageLocation
 }
 
 // GetStorageLocationOk returns a tuple with the StorageLocation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeleteBackupStorageLocationCommand) GetStorageLocationOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.StorageLocation) {
 		return nil, false
 	}
-	return o.StorageLocation.Get(), o.StorageLocation.IsSet()
+	return o.StorageLocation, true
 }
 
 // HasStorageLocation returns a boolean if a field has been set.
 func (o *DeleteBackupStorageLocationCommand) HasStorageLocation() bool {
-	if o != nil && o.StorageLocation.IsSet() {
+	if o != nil && !IsNil(o.StorageLocation) {
 		return true
 	}
 
 	return false
 }
 
-// SetStorageLocation gets a reference to the given NullableString and assigns it to the StorageLocation field.
+// SetStorageLocation gets a reference to the given string and assigns it to the StorageLocation field.
 func (o *DeleteBackupStorageLocationCommand) SetStorageLocation(v string) {
-	o.StorageLocation.Set(&v)
-}
-// SetStorageLocationNil sets the value for StorageLocation to be an explicit nil
-func (o *DeleteBackupStorageLocationCommand) SetStorageLocationNil() {
-	o.StorageLocation.Set(nil)
-}
-
-// UnsetStorageLocation ensures that no value is present for StorageLocation, not even an explicit nil
-func (o *DeleteBackupStorageLocationCommand) UnsetStorageLocation() {
-	o.StorageLocation.Unset()
+	o.StorageLocation = &v
 }
 
 func (o DeleteBackupStorageLocationCommand) MarshalJSON() ([]byte, error) {
@@ -128,8 +118,8 @@ func (o DeleteBackupStorageLocationCommand) ToMap() (map[string]interface{}, err
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
-	if o.StorageLocation.IsSet() {
-		toSerialize["storageLocation"] = o.StorageLocation.Get()
+	if !IsNil(o.StorageLocation) {
+		toSerialize["storageLocation"] = o.StorageLocation
 	}
 	return toSerialize, nil
 }

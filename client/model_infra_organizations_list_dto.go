@@ -22,9 +22,9 @@ var _ MappedNullable = &InfraOrganizationsListDto{}
 // InfraOrganizationsListDto struct for InfraOrganizationsListDto
 type InfraOrganizationsListDto struct {
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
+	OrganizationName *string `json:"organizationName,omitempty"`
 	CreatedAt *time.Time `json:"createdAt,omitempty"`
-	SubscriptionId NullableString `json:"subscriptionId,omitempty"`
+	SubscriptionId *string `json:"subscriptionId,omitempty"`
 	BillingStartDate NullableTime `json:"billingStartDate,omitempty"`
 	Yearly *bool `json:"yearly,omitempty"`
 }
@@ -78,46 +78,36 @@ func (o *InfraOrganizationsListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise.
 func (o *InfraOrganizationsListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || IsNil(o.OrganizationName) {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+	return *o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InfraOrganizationsListDto) GetOrganizationNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.OrganizationName) {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return o.OrganizationName, true
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
 func (o *InfraOrganizationsListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
+	if o != nil && !IsNil(o.OrganizationName) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName gets a reference to the given string and assigns it to the OrganizationName field.
 func (o *InfraOrganizationsListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *InfraOrganizationsListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
-
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *InfraOrganizationsListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
+	o.OrganizationName = &v
 }
 
 // GetCreatedAt returns the CreatedAt field value if set, zero value otherwise.
@@ -152,46 +142,36 @@ func (o *InfraOrganizationsListDto) SetCreatedAt(v time.Time) {
 	o.CreatedAt = &v
 }
 
-// GetSubscriptionId returns the SubscriptionId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSubscriptionId returns the SubscriptionId field value if set, zero value otherwise.
 func (o *InfraOrganizationsListDto) GetSubscriptionId() string {
-	if o == nil || IsNil(o.SubscriptionId.Get()) {
+	if o == nil || IsNil(o.SubscriptionId) {
 		var ret string
 		return ret
 	}
-	return *o.SubscriptionId.Get()
+	return *o.SubscriptionId
 }
 
 // GetSubscriptionIdOk returns a tuple with the SubscriptionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InfraOrganizationsListDto) GetSubscriptionIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SubscriptionId) {
 		return nil, false
 	}
-	return o.SubscriptionId.Get(), o.SubscriptionId.IsSet()
+	return o.SubscriptionId, true
 }
 
 // HasSubscriptionId returns a boolean if a field has been set.
 func (o *InfraOrganizationsListDto) HasSubscriptionId() bool {
-	if o != nil && o.SubscriptionId.IsSet() {
+	if o != nil && !IsNil(o.SubscriptionId) {
 		return true
 	}
 
 	return false
 }
 
-// SetSubscriptionId gets a reference to the given NullableString and assigns it to the SubscriptionId field.
+// SetSubscriptionId gets a reference to the given string and assigns it to the SubscriptionId field.
 func (o *InfraOrganizationsListDto) SetSubscriptionId(v string) {
-	o.SubscriptionId.Set(&v)
-}
-// SetSubscriptionIdNil sets the value for SubscriptionId to be an explicit nil
-func (o *InfraOrganizationsListDto) SetSubscriptionIdNil() {
-	o.SubscriptionId.Set(nil)
-}
-
-// UnsetSubscriptionId ensures that no value is present for SubscriptionId, not even an explicit nil
-func (o *InfraOrganizationsListDto) UnsetSubscriptionId() {
-	o.SubscriptionId.Unset()
+	o.SubscriptionId = &v
 }
 
 // GetBillingStartDate returns the BillingStartDate field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -281,14 +261,14 @@ func (o InfraOrganizationsListDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
+	if !IsNil(o.OrganizationName) {
+		toSerialize["organizationName"] = o.OrganizationName
 	}
 	if !IsNil(o.CreatedAt) {
 		toSerialize["createdAt"] = o.CreatedAt
 	}
-	if o.SubscriptionId.IsSet() {
-		toSerialize["subscriptionId"] = o.SubscriptionId.Get()
+	if !IsNil(o.SubscriptionId) {
+		toSerialize["subscriptionId"] = o.SubscriptionId
 	}
 	if o.BillingStartDate.IsSet() {
 		toSerialize["billingStartDate"] = o.BillingStartDate.Get()

@@ -73,6 +73,9 @@ func (a *InvoicesAPIService) InvoicesCreateExecute(r ApiInvoicesCreateRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createInvoiceCommand == nil {
+		return localVarReturnValue, nil, reportError("createInvoiceCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -377,36 +380,16 @@ func (a *InvoicesAPIService) InvoicesDownloadExecute(r ApiInvoicesDownloadReques
 type ApiInvoicesListRequest struct {
 	ctx context.Context
 	ApiService *InvoicesAPIService
-	offset *int32
-	limit *int32
-	startDate *time.Time
-	endDate *time.Time
 	search *string
 	filterBy *string
 	sortBy *string
 	sortDirection *string
+	offset *int32
+	limit *int32
+	startDate *time.Time
+	endDate *time.Time
 	organizationId *int32
 	partnerId *int32
-}
-
-func (r ApiInvoicesListRequest) Offset(offset int32) ApiInvoicesListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiInvoicesListRequest) Limit(limit int32) ApiInvoicesListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiInvoicesListRequest) StartDate(startDate time.Time) ApiInvoicesListRequest {
-	r.startDate = &startDate
-	return r
-}
-
-func (r ApiInvoicesListRequest) EndDate(endDate time.Time) ApiInvoicesListRequest {
-	r.endDate = &endDate
-	return r
 }
 
 func (r ApiInvoicesListRequest) Search(search string) ApiInvoicesListRequest {
@@ -426,6 +409,26 @@ func (r ApiInvoicesListRequest) SortBy(sortBy string) ApiInvoicesListRequest {
 
 func (r ApiInvoicesListRequest) SortDirection(sortDirection string) ApiInvoicesListRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiInvoicesListRequest) Offset(offset int32) ApiInvoicesListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiInvoicesListRequest) Limit(limit int32) ApiInvoicesListRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiInvoicesListRequest) StartDate(startDate time.Time) ApiInvoicesListRequest {
+	r.startDate = &startDate
+	return r
+}
+
+func (r ApiInvoicesListRequest) EndDate(endDate time.Time) ApiInvoicesListRequest {
+	r.endDate = &endDate
 	return r
 }
 
@@ -476,6 +479,18 @@ func (a *InvoicesAPIService) InvoicesListExecute(r ApiInvoicesListRequest) (*Inv
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.filterBy == nil {
+		return localVarReturnValue, nil, reportError("filterBy is required and must be specified")
+	}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
@@ -489,18 +504,10 @@ func (a *InvoicesAPIService) InvoicesListExecute(r ApiInvoicesListRequest) (*Inv
 	if r.endDate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "EndDate", r.endDate, "form", "")
 	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.filterBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
-	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
@@ -679,6 +686,9 @@ func (a *InvoicesAPIService) InvoicesUpdateExecute(r ApiInvoicesUpdateRequest) (
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.updateInvoiceDto == nil {
+		return nil, reportError("updateInvoiceDto is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

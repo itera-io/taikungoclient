@@ -45,9 +45,9 @@ func NewProjectChartDtoWithDefaults() *ProjectChartDto {
 	return &this
 }
 
-// GetSucceeded returns the Succeeded field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSucceeded returns the Succeeded field value if set, zero value otherwise.
 func (o *ProjectChartDto) GetSucceeded() []ProjectCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Succeeded) {
 		var ret []ProjectCommonRecordDto
 		return ret
 	}
@@ -56,7 +56,6 @@ func (o *ProjectChartDto) GetSucceeded() []ProjectCommonRecordDto {
 
 // GetSucceededOk returns a tuple with the Succeeded field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectChartDto) GetSucceededOk() ([]ProjectCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Succeeded) {
 		return nil, false
@@ -78,9 +77,9 @@ func (o *ProjectChartDto) SetSucceeded(v []ProjectCommonRecordDto) {
 	o.Succeeded = v
 }
 
-// GetUpdating returns the Updating field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUpdating returns the Updating field value if set, zero value otherwise.
 func (o *ProjectChartDto) GetUpdating() []ProjectCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Updating) {
 		var ret []ProjectCommonRecordDto
 		return ret
 	}
@@ -89,7 +88,6 @@ func (o *ProjectChartDto) GetUpdating() []ProjectCommonRecordDto {
 
 // GetUpdatingOk returns a tuple with the Updating field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectChartDto) GetUpdatingOk() ([]ProjectCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Updating) {
 		return nil, false
@@ -143,9 +141,9 @@ func (o *ProjectChartDto) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 
-// GetFailed returns the Failed field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFailed returns the Failed field value if set, zero value otherwise.
 func (o *ProjectChartDto) GetFailed() []ProjectCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Failed) {
 		var ret []ProjectCommonRecordDto
 		return ret
 	}
@@ -154,7 +152,6 @@ func (o *ProjectChartDto) GetFailed() []ProjectCommonRecordDto {
 
 // GetFailedOk returns a tuple with the Failed field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectChartDto) GetFailedOk() ([]ProjectCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Failed) {
 		return nil, false
@@ -176,9 +173,9 @@ func (o *ProjectChartDto) SetFailed(v []ProjectCommonRecordDto) {
 	o.Failed = v
 }
 
-// GetPurging returns the Purging field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPurging returns the Purging field value if set, zero value otherwise.
 func (o *ProjectChartDto) GetPurging() []ProjectCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Purging) {
 		var ret []ProjectCommonRecordDto
 		return ret
 	}
@@ -187,7 +184,6 @@ func (o *ProjectChartDto) GetPurging() []ProjectCommonRecordDto {
 
 // GetPurgingOk returns a tuple with the Purging field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectChartDto) GetPurgingOk() ([]ProjectCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Purging) {
 		return nil, false
@@ -209,9 +205,9 @@ func (o *ProjectChartDto) SetPurging(v []ProjectCommonRecordDto) {
 	o.Purging = v
 }
 
-// GetDeleting returns the Deleting field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDeleting returns the Deleting field value if set, zero value otherwise.
 func (o *ProjectChartDto) GetDeleting() []ProjectCommonRecordDto {
-	if o == nil {
+	if o == nil || IsNil(o.Deleting) {
 		var ret []ProjectCommonRecordDto
 		return ret
 	}
@@ -220,7 +216,6 @@ func (o *ProjectChartDto) GetDeleting() []ProjectCommonRecordDto {
 
 // GetDeletingOk returns a tuple with the Deleting field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectChartDto) GetDeletingOk() ([]ProjectCommonRecordDto, bool) {
 	if o == nil || IsNil(o.Deleting) {
 		return nil, false
@@ -252,22 +247,22 @@ func (o ProjectChartDto) MarshalJSON() ([]byte, error) {
 
 func (o ProjectChartDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Succeeded != nil {
+	if !IsNil(o.Succeeded) {
 		toSerialize["succeeded"] = o.Succeeded
 	}
-	if o.Updating != nil {
+	if !IsNil(o.Updating) {
 		toSerialize["updating"] = o.Updating
 	}
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
-	if o.Failed != nil {
+	if !IsNil(o.Failed) {
 		toSerialize["failed"] = o.Failed
 	}
-	if o.Purging != nil {
+	if !IsNil(o.Purging) {
 		toSerialize["purging"] = o.Purging
 	}
-	if o.Deleting != nil {
+	if !IsNil(o.Deleting) {
 		toSerialize["deleting"] = o.Deleting
 	}
 	return toSerialize, nil

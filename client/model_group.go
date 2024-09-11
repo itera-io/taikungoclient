@@ -21,8 +21,8 @@ var _ MappedNullable = &Group{}
 
 // Group struct for Group
 type Group struct {
-	Name NullableString `json:"name,omitempty"`
-	File NullableString `json:"file,omitempty"`
+	Name *string `json:"name,omitempty"`
+	File *string `json:"file,omitempty"`
 	Rules []Rule `json:"rules,omitempty"`
 	Interval *int64 `json:"interval,omitempty"`
 	EvaluationTime *float64 `json:"evaluationTime,omitempty"`
@@ -46,93 +46,73 @@ func NewGroupWithDefaults() *Group {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *Group) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Group) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *Group) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Group) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *Group) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *Group) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetFile returns the File field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFile returns the File field value if set, zero value otherwise.
 func (o *Group) GetFile() string {
-	if o == nil || IsNil(o.File.Get()) {
+	if o == nil || IsNil(o.File) {
 		var ret string
 		return ret
 	}
-	return *o.File.Get()
+	return *o.File
 }
 
 // GetFileOk returns a tuple with the File field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Group) GetFileOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.File) {
 		return nil, false
 	}
-	return o.File.Get(), o.File.IsSet()
+	return o.File, true
 }
 
 // HasFile returns a boolean if a field has been set.
 func (o *Group) HasFile() bool {
-	if o != nil && o.File.IsSet() {
+	if o != nil && !IsNil(o.File) {
 		return true
 	}
 
 	return false
 }
 
-// SetFile gets a reference to the given NullableString and assigns it to the File field.
+// SetFile gets a reference to the given string and assigns it to the File field.
 func (o *Group) SetFile(v string) {
-	o.File.Set(&v)
-}
-// SetFileNil sets the value for File to be an explicit nil
-func (o *Group) SetFileNil() {
-	o.File.Set(nil)
+	o.File = &v
 }
 
-// UnsetFile ensures that no value is present for File, not even an explicit nil
-func (o *Group) UnsetFile() {
-	o.File.Unset()
-}
-
-// GetRules returns the Rules field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRules returns the Rules field value if set, zero value otherwise.
 func (o *Group) GetRules() []Rule {
-	if o == nil {
+	if o == nil || IsNil(o.Rules) {
 		var ret []Rule
 		return ret
 	}
@@ -141,7 +121,6 @@ func (o *Group) GetRules() []Rule {
 
 // GetRulesOk returns a tuple with the Rules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Group) GetRulesOk() ([]Rule, bool) {
 	if o == nil || IsNil(o.Rules) {
 		return nil, false
@@ -269,13 +248,13 @@ func (o Group) MarshalJSON() ([]byte, error) {
 
 func (o Group) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.File.IsSet() {
-		toSerialize["file"] = o.File.Get()
+	if !IsNil(o.File) {
+		toSerialize["file"] = o.File
 	}
-	if o.Rules != nil {
+	if !IsNil(o.Rules) {
 		toSerialize["rules"] = o.Rules
 	}
 	if !IsNil(o.Interval) {

@@ -21,11 +21,11 @@ var _ MappedNullable = &EnableAutoscalingCommand{}
 // EnableAutoscalingCommand struct for EnableAutoscalingCommand
 type EnableAutoscalingCommand struct {
 	Id *int32 `json:"id,omitempty"`
-	AutoscalingGroupName NullableString `json:"autoscalingGroupName,omitempty"`
+	AutoscalingGroupName *string `json:"autoscalingGroupName,omitempty"`
 	MinSize *int32 `json:"minSize,omitempty"`
 	MaxSize *int32 `json:"maxSize,omitempty"`
 	DiskSize *float64 `json:"diskSize,omitempty"`
-	Flavor NullableString `json:"flavor,omitempty"`
+	Flavor *string `json:"flavor,omitempty"`
 	SpotEnabled *bool `json:"spotEnabled,omitempty"`
 }
 
@@ -78,46 +78,36 @@ func (o *EnableAutoscalingCommand) SetId(v int32) {
 	o.Id = &v
 }
 
-// GetAutoscalingGroupName returns the AutoscalingGroupName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAutoscalingGroupName returns the AutoscalingGroupName field value if set, zero value otherwise.
 func (o *EnableAutoscalingCommand) GetAutoscalingGroupName() string {
-	if o == nil || IsNil(o.AutoscalingGroupName.Get()) {
+	if o == nil || IsNil(o.AutoscalingGroupName) {
 		var ret string
 		return ret
 	}
-	return *o.AutoscalingGroupName.Get()
+	return *o.AutoscalingGroupName
 }
 
 // GetAutoscalingGroupNameOk returns a tuple with the AutoscalingGroupName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnableAutoscalingCommand) GetAutoscalingGroupNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AutoscalingGroupName) {
 		return nil, false
 	}
-	return o.AutoscalingGroupName.Get(), o.AutoscalingGroupName.IsSet()
+	return o.AutoscalingGroupName, true
 }
 
 // HasAutoscalingGroupName returns a boolean if a field has been set.
 func (o *EnableAutoscalingCommand) HasAutoscalingGroupName() bool {
-	if o != nil && o.AutoscalingGroupName.IsSet() {
+	if o != nil && !IsNil(o.AutoscalingGroupName) {
 		return true
 	}
 
 	return false
 }
 
-// SetAutoscalingGroupName gets a reference to the given NullableString and assigns it to the AutoscalingGroupName field.
+// SetAutoscalingGroupName gets a reference to the given string and assigns it to the AutoscalingGroupName field.
 func (o *EnableAutoscalingCommand) SetAutoscalingGroupName(v string) {
-	o.AutoscalingGroupName.Set(&v)
-}
-// SetAutoscalingGroupNameNil sets the value for AutoscalingGroupName to be an explicit nil
-func (o *EnableAutoscalingCommand) SetAutoscalingGroupNameNil() {
-	o.AutoscalingGroupName.Set(nil)
-}
-
-// UnsetAutoscalingGroupName ensures that no value is present for AutoscalingGroupName, not even an explicit nil
-func (o *EnableAutoscalingCommand) UnsetAutoscalingGroupName() {
-	o.AutoscalingGroupName.Unset()
+	o.AutoscalingGroupName = &v
 }
 
 // GetMinSize returns the MinSize field value if set, zero value otherwise.
@@ -216,46 +206,36 @@ func (o *EnableAutoscalingCommand) SetDiskSize(v float64) {
 	o.DiskSize = &v
 }
 
-// GetFlavor returns the Flavor field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFlavor returns the Flavor field value if set, zero value otherwise.
 func (o *EnableAutoscalingCommand) GetFlavor() string {
-	if o == nil || IsNil(o.Flavor.Get()) {
+	if o == nil || IsNil(o.Flavor) {
 		var ret string
 		return ret
 	}
-	return *o.Flavor.Get()
+	return *o.Flavor
 }
 
 // GetFlavorOk returns a tuple with the Flavor field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnableAutoscalingCommand) GetFlavorOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Flavor) {
 		return nil, false
 	}
-	return o.Flavor.Get(), o.Flavor.IsSet()
+	return o.Flavor, true
 }
 
 // HasFlavor returns a boolean if a field has been set.
 func (o *EnableAutoscalingCommand) HasFlavor() bool {
-	if o != nil && o.Flavor.IsSet() {
+	if o != nil && !IsNil(o.Flavor) {
 		return true
 	}
 
 	return false
 }
 
-// SetFlavor gets a reference to the given NullableString and assigns it to the Flavor field.
+// SetFlavor gets a reference to the given string and assigns it to the Flavor field.
 func (o *EnableAutoscalingCommand) SetFlavor(v string) {
-	o.Flavor.Set(&v)
-}
-// SetFlavorNil sets the value for Flavor to be an explicit nil
-func (o *EnableAutoscalingCommand) SetFlavorNil() {
-	o.Flavor.Set(nil)
-}
-
-// UnsetFlavor ensures that no value is present for Flavor, not even an explicit nil
-func (o *EnableAutoscalingCommand) UnsetFlavor() {
-	o.Flavor.Unset()
+	o.Flavor = &v
 }
 
 // GetSpotEnabled returns the SpotEnabled field value if set, zero value otherwise.
@@ -303,8 +283,8 @@ func (o EnableAutoscalingCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if o.AutoscalingGroupName.IsSet() {
-		toSerialize["autoscalingGroupName"] = o.AutoscalingGroupName.Get()
+	if !IsNil(o.AutoscalingGroupName) {
+		toSerialize["autoscalingGroupName"] = o.AutoscalingGroupName
 	}
 	if !IsNil(o.MinSize) {
 		toSerialize["minSize"] = o.MinSize
@@ -315,8 +295,8 @@ func (o EnableAutoscalingCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiskSize) {
 		toSerialize["diskSize"] = o.DiskSize
 	}
-	if o.Flavor.IsSet() {
-		toSerialize["flavor"] = o.Flavor.Get()
+	if !IsNil(o.Flavor) {
+		toSerialize["flavor"] = o.Flavor
 	}
 	if !IsNil(o.SpotEnabled) {
 		toSerialize["spotEnabled"] = o.SpotEnabled

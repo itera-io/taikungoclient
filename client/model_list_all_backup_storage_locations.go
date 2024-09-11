@@ -42,9 +42,9 @@ func NewListAllBackupStorageLocationsWithDefaults() *ListAllBackupStorageLocatio
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value if set, zero value otherwise.
 func (o *ListAllBackupStorageLocations) GetData() []BackupStorageLocationDto {
-	if o == nil {
+	if o == nil || IsNil(o.Data) {
 		var ret []BackupStorageLocationDto
 		return ret
 	}
@@ -53,7 +53,6 @@ func (o *ListAllBackupStorageLocations) GetData() []BackupStorageLocationDto {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListAllBackupStorageLocations) GetDataOk() ([]BackupStorageLocationDto, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
@@ -107,9 +106,9 @@ func (o *ListAllBackupStorageLocations) SetTotalCount(v int32) {
 	o.TotalCount = &v
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value if set, zero value otherwise.
 func (o *ListAllBackupStorageLocations) GetProjects() []int32 {
-	if o == nil {
+	if o == nil || IsNil(o.Projects) {
 		var ret []int32
 		return ret
 	}
@@ -118,7 +117,6 @@ func (o *ListAllBackupStorageLocations) GetProjects() []int32 {
 
 // GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListAllBackupStorageLocations) GetProjectsOk() ([]int32, bool) {
 	if o == nil || IsNil(o.Projects) {
 		return nil, false
@@ -150,13 +148,13 @@ func (o ListAllBackupStorageLocations) MarshalJSON() ([]byte, error) {
 
 func (o ListAllBackupStorageLocations) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Data != nil {
+	if !IsNil(o.Data) {
 		toSerialize["data"] = o.Data
 	}
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount
 	}
-	if o.Projects != nil {
+	if !IsNil(o.Projects) {
 		toSerialize["projects"] = o.Projects
 	}
 	return toSerialize, nil

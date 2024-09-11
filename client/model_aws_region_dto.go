@@ -20,8 +20,8 @@ var _ MappedNullable = &AwsRegionDto{}
 
 // AwsRegionDto struct for AwsRegionDto
 type AwsRegionDto struct {
-	Name NullableString `json:"name,omitempty"`
-	Region NullableString `json:"region,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Region *string `json:"region,omitempty"`
 }
 
 // NewAwsRegionDto instantiates a new AwsRegionDto object
@@ -41,88 +41,68 @@ func NewAwsRegionDtoWithDefaults() *AwsRegionDto {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *AwsRegionDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AwsRegionDto) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *AwsRegionDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *AwsRegionDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *AwsRegionDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = &v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *AwsRegionDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetRegion returns the Region field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRegion returns the Region field value if set, zero value otherwise.
 func (o *AwsRegionDto) GetRegion() string {
-	if o == nil || IsNil(o.Region.Get()) {
+	if o == nil || IsNil(o.Region) {
 		var ret string
 		return ret
 	}
-	return *o.Region.Get()
+	return *o.Region
 }
 
 // GetRegionOk returns a tuple with the Region field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AwsRegionDto) GetRegionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Region) {
 		return nil, false
 	}
-	return o.Region.Get(), o.Region.IsSet()
+	return o.Region, true
 }
 
 // HasRegion returns a boolean if a field has been set.
 func (o *AwsRegionDto) HasRegion() bool {
-	if o != nil && o.Region.IsSet() {
+	if o != nil && !IsNil(o.Region) {
 		return true
 	}
 
 	return false
 }
 
-// SetRegion gets a reference to the given NullableString and assigns it to the Region field.
+// SetRegion gets a reference to the given string and assigns it to the Region field.
 func (o *AwsRegionDto) SetRegion(v string) {
-	o.Region.Set(&v)
-}
-// SetRegionNil sets the value for Region to be an explicit nil
-func (o *AwsRegionDto) SetRegionNil() {
-	o.Region.Set(nil)
-}
-
-// UnsetRegion ensures that no value is present for Region, not even an explicit nil
-func (o *AwsRegionDto) UnsetRegion() {
-	o.Region.Unset()
+	o.Region = &v
 }
 
 func (o AwsRegionDto) MarshalJSON() ([]byte, error) {
@@ -135,11 +115,11 @@ func (o AwsRegionDto) MarshalJSON() ([]byte, error) {
 
 func (o AwsRegionDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
-	if o.Region.IsSet() {
-		toSerialize["region"] = o.Region.Get()
+	if !IsNil(o.Region) {
+		toSerialize["region"] = o.Region
 	}
 	return toSerialize, nil
 }

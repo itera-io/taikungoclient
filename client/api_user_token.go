@@ -27,24 +27,14 @@ type UserTokenAPIService service
 type ApiUsertokenAvailableEndpointsRequest struct {
 	ctx context.Context
 	ApiService *UserTokenAPIService
-	limit *int32
-	offset *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	id *string
+	limit *int32
+	offset *int32
 	isAdd *bool
 	isReadonly *bool
-}
-
-func (r ApiUsertokenAvailableEndpointsRequest) Limit(limit int32) ApiUsertokenAvailableEndpointsRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiUsertokenAvailableEndpointsRequest) Offset(offset int32) ApiUsertokenAvailableEndpointsRequest {
-	r.offset = &offset
-	return r
 }
 
 func (r ApiUsertokenAvailableEndpointsRequest) SortBy(sortBy string) ApiUsertokenAvailableEndpointsRequest {
@@ -64,6 +54,16 @@ func (r ApiUsertokenAvailableEndpointsRequest) Search(search string) ApiUsertoke
 
 func (r ApiUsertokenAvailableEndpointsRequest) Id(id string) ApiUsertokenAvailableEndpointsRequest {
 	r.id = &id
+	return r
+}
+
+func (r ApiUsertokenAvailableEndpointsRequest) Limit(limit int32) ApiUsertokenAvailableEndpointsRequest {
+	r.limit = &limit
+	return r
+}
+
+func (r ApiUsertokenAvailableEndpointsRequest) Offset(offset int32) ApiUsertokenAvailableEndpointsRequest {
+	r.offset = &offset
 	return r
 }
 
@@ -114,6 +114,18 @@ func (a *UserTokenAPIService) UsertokenAvailableEndpointsExecute(r ApiUsertokenA
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+	if r.id == nil {
+		return localVarReturnValue, nil, reportError("id is required and must be specified")
+	}
 
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
@@ -121,18 +133,10 @@ func (a *UserTokenAPIService) UsertokenAvailableEndpointsExecute(r ApiUsertokenA
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.id != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	if r.isAdd != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsAdd", r.isAdd, "form", "")
 	}
@@ -307,6 +311,9 @@ func (a *UserTokenAPIService) UsertokenBindUnbindExecute(r ApiUsertokenBindUnbin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.bindUnbindEndpointToTokenCommand == nil {
+		return nil, reportError("bindUnbindEndpointToTokenCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

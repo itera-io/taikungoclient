@@ -564,6 +564,9 @@ func (a *ProjectAppsAPIService) ProjectappInstallExecute(r ApiProjectappInstallR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.createProjectAppCommand == nil {
+		return localVarReturnValue, nil, reportError("createProjectAppCommand is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -692,23 +695,13 @@ func (a *ProjectAppsAPIService) ProjectappInstallExecute(r ApiProjectappInstallR
 type ApiProjectappListRequest struct {
 	ctx context.Context
 	ApiService *ProjectAppsAPIService
-	offset *int32
-	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
+	offset *int32
+	limit *int32
 	id *int32
 	projectId *int32
-}
-
-func (r ApiProjectappListRequest) Offset(offset int32) ApiProjectappListRequest {
-	r.offset = &offset
-	return r
-}
-
-func (r ApiProjectappListRequest) Limit(limit int32) ApiProjectappListRequest {
-	r.limit = &limit
-	return r
 }
 
 func (r ApiProjectappListRequest) SortBy(sortBy string) ApiProjectappListRequest {
@@ -723,6 +716,16 @@ func (r ApiProjectappListRequest) SortDirection(sortDirection string) ApiProject
 
 func (r ApiProjectappListRequest) Search(search string) ApiProjectappListRequest {
 	r.search = &search
+	return r
+}
+
+func (r ApiProjectappListRequest) Offset(offset int32) ApiProjectappListRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiProjectappListRequest) Limit(limit int32) ApiProjectappListRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -773,6 +776,15 @@ func (a *ProjectAppsAPIService) ProjectappListExecute(r ApiProjectappListRequest
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.sortBy == nil {
+		return localVarReturnValue, nil, reportError("sortBy is required and must be specified")
+	}
+	if r.sortDirection == nil {
+		return localVarReturnValue, nil, reportError("sortDirection is required and must be specified")
+	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
 
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
@@ -780,15 +792,9 @@ func (a *ProjectAppsAPIService) ProjectappListExecute(r ApiProjectappListRequest
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
 	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
