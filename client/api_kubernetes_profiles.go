@@ -364,6 +364,8 @@ type ApiKubernetesprofilesDropdownRequest struct {
 	organizationId *int32
 	search *string
 	cloudId *int32
+	offset *int32
+	limit *int32
 }
 
 func (r ApiKubernetesprofilesDropdownRequest) OrganizationId(organizationId int32) ApiKubernetesprofilesDropdownRequest {
@@ -378,6 +380,16 @@ func (r ApiKubernetesprofilesDropdownRequest) Search(search string) ApiKubernete
 
 func (r ApiKubernetesprofilesDropdownRequest) CloudId(cloudId int32) ApiKubernetesprofilesDropdownRequest {
 	r.cloudId = &cloudId
+	return r
+}
+
+func (r ApiKubernetesprofilesDropdownRequest) Offset(offset int32) ApiKubernetesprofilesDropdownRequest {
+	r.offset = &offset
+	return r
+}
+
+func (r ApiKubernetesprofilesDropdownRequest) Limit(limit int32) ApiKubernetesprofilesDropdownRequest {
+	r.limit = &limit
 	return r
 }
 
@@ -427,6 +439,18 @@ func (a *KubernetesProfilesAPIService) KubernetesprofilesDropdownExecute(r ApiKu
 	}
 	if r.cloudId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "CloudId", r.cloudId, "form", "")
+	}
+	if r.offset != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
+	} else {
+		var defaultValue int32 = 0
+		r.offset = &defaultValue
+	}
+	if r.limit != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
+	} else {
+		var defaultValue int32 = 1000
+		r.limit = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
