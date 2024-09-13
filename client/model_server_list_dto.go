@@ -29,17 +29,11 @@ type ServerListDto struct {
 	IpAddress NullableString `json:"ipAddress,omitempty"`
 	DiskSize *float64 `json:"diskSize,omitempty"`
 	KubernetesHealth NullableString `json:"kubernetesHealth,omitempty"`
-	GoogleMachineType NullableString `json:"googleMachineType,omitempty"`
-	TanzuFlavor NullableString `json:"tanzuFlavor,omitempty"`
-	ProxmoxFlavor NullableString `json:"proxmoxFlavor,omitempty"`
 	Cpu *int32 `json:"cpu,omitempty"`
 	Ram *float64 `json:"ram,omitempty"`
 	Role *CloudRole `json:"role,omitempty"`
 	Status NullableString `json:"status,omitempty"`
 	CreatedAt NullableString `json:"createdAt,omitempty"`
-	OpenstackFlavor NullableString `json:"openstackFlavor,omitempty"`
-	AwsInstanceType NullableString `json:"awsInstanceType,omitempty"`
-	AzureVmSize NullableString `json:"azureVmSize,omitempty"`
 	CloudType *CloudType `json:"cloudType,omitempty"`
 	CreatedBy NullableString `json:"createdBy,omitempty"`
 	LastModified NullableString `json:"lastModified,omitempty"`
@@ -51,17 +45,16 @@ type ServerListDto struct {
 	ProviderID NullableString `json:"providerID,omitempty"`
 	InstanceId NullableString `json:"instanceId,omitempty"`
 	AwsHostName NullableString `json:"awsHostName,omitempty"`
-	OpenshiftFlavor NullableString `json:"openshiftFlavor,omitempty"`
 	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
 	Hypervisor NullableString `json:"hypervisor,omitempty"`
 	HypervisorId NullableString `json:"hypervisorId,omitempty"`
-	VsphereFlavor NullableString `json:"vsphereFlavor,omitempty"`
 	ProxmoxRole *ProxmoxRole `json:"proxmoxRole,omitempty"`
 	ProxmoxExtraDiskSize *int32 `json:"proxmoxExtraDiskSize,omitempty"`
 	ActionButtons *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
 	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
 	ReplicaCount NullableInt32 `json:"replicaCount,omitempty"`
 	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
+	Flavor NullableString `json:"flavor,omitempty"`
 }
 
 // NewServerListDto instantiates a new ServerListDto object
@@ -419,132 +412,6 @@ func (o *ServerListDto) UnsetKubernetesHealth() {
 	o.KubernetesHealth.Unset()
 }
 
-// GetGoogleMachineType returns the GoogleMachineType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetGoogleMachineType() string {
-	if o == nil || IsNil(o.GoogleMachineType.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.GoogleMachineType.Get()
-}
-
-// GetGoogleMachineTypeOk returns a tuple with the GoogleMachineType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetGoogleMachineTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.GoogleMachineType.Get(), o.GoogleMachineType.IsSet()
-}
-
-// HasGoogleMachineType returns a boolean if a field has been set.
-func (o *ServerListDto) HasGoogleMachineType() bool {
-	if o != nil && o.GoogleMachineType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetGoogleMachineType gets a reference to the given NullableString and assigns it to the GoogleMachineType field.
-func (o *ServerListDto) SetGoogleMachineType(v string) {
-	o.GoogleMachineType.Set(&v)
-}
-// SetGoogleMachineTypeNil sets the value for GoogleMachineType to be an explicit nil
-func (o *ServerListDto) SetGoogleMachineTypeNil() {
-	o.GoogleMachineType.Set(nil)
-}
-
-// UnsetGoogleMachineType ensures that no value is present for GoogleMachineType, not even an explicit nil
-func (o *ServerListDto) UnsetGoogleMachineType() {
-	o.GoogleMachineType.Unset()
-}
-
-// GetTanzuFlavor returns the TanzuFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetTanzuFlavor() string {
-	if o == nil || IsNil(o.TanzuFlavor.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.TanzuFlavor.Get()
-}
-
-// GetTanzuFlavorOk returns a tuple with the TanzuFlavor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetTanzuFlavorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TanzuFlavor.Get(), o.TanzuFlavor.IsSet()
-}
-
-// HasTanzuFlavor returns a boolean if a field has been set.
-func (o *ServerListDto) HasTanzuFlavor() bool {
-	if o != nil && o.TanzuFlavor.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTanzuFlavor gets a reference to the given NullableString and assigns it to the TanzuFlavor field.
-func (o *ServerListDto) SetTanzuFlavor(v string) {
-	o.TanzuFlavor.Set(&v)
-}
-// SetTanzuFlavorNil sets the value for TanzuFlavor to be an explicit nil
-func (o *ServerListDto) SetTanzuFlavorNil() {
-	o.TanzuFlavor.Set(nil)
-}
-
-// UnsetTanzuFlavor ensures that no value is present for TanzuFlavor, not even an explicit nil
-func (o *ServerListDto) UnsetTanzuFlavor() {
-	o.TanzuFlavor.Unset()
-}
-
-// GetProxmoxFlavor returns the ProxmoxFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetProxmoxFlavor() string {
-	if o == nil || IsNil(o.ProxmoxFlavor.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ProxmoxFlavor.Get()
-}
-
-// GetProxmoxFlavorOk returns a tuple with the ProxmoxFlavor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetProxmoxFlavorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ProxmoxFlavor.Get(), o.ProxmoxFlavor.IsSet()
-}
-
-// HasProxmoxFlavor returns a boolean if a field has been set.
-func (o *ServerListDto) HasProxmoxFlavor() bool {
-	if o != nil && o.ProxmoxFlavor.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProxmoxFlavor gets a reference to the given NullableString and assigns it to the ProxmoxFlavor field.
-func (o *ServerListDto) SetProxmoxFlavor(v string) {
-	o.ProxmoxFlavor.Set(&v)
-}
-// SetProxmoxFlavorNil sets the value for ProxmoxFlavor to be an explicit nil
-func (o *ServerListDto) SetProxmoxFlavorNil() {
-	o.ProxmoxFlavor.Set(nil)
-}
-
-// UnsetProxmoxFlavor ensures that no value is present for ProxmoxFlavor, not even an explicit nil
-func (o *ServerListDto) UnsetProxmoxFlavor() {
-	o.ProxmoxFlavor.Unset()
-}
-
 // GetCpu returns the Cpu field value if set, zero value otherwise.
 func (o *ServerListDto) GetCpu() int32 {
 	if o == nil || IsNil(o.Cpu) {
@@ -723,132 +590,6 @@ func (o *ServerListDto) SetCreatedAtNil() {
 // UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
 func (o *ServerListDto) UnsetCreatedAt() {
 	o.CreatedAt.Unset()
-}
-
-// GetOpenstackFlavor returns the OpenstackFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetOpenstackFlavor() string {
-	if o == nil || IsNil(o.OpenstackFlavor.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.OpenstackFlavor.Get()
-}
-
-// GetOpenstackFlavorOk returns a tuple with the OpenstackFlavor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetOpenstackFlavorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OpenstackFlavor.Get(), o.OpenstackFlavor.IsSet()
-}
-
-// HasOpenstackFlavor returns a boolean if a field has been set.
-func (o *ServerListDto) HasOpenstackFlavor() bool {
-	if o != nil && o.OpenstackFlavor.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOpenstackFlavor gets a reference to the given NullableString and assigns it to the OpenstackFlavor field.
-func (o *ServerListDto) SetOpenstackFlavor(v string) {
-	o.OpenstackFlavor.Set(&v)
-}
-// SetOpenstackFlavorNil sets the value for OpenstackFlavor to be an explicit nil
-func (o *ServerListDto) SetOpenstackFlavorNil() {
-	o.OpenstackFlavor.Set(nil)
-}
-
-// UnsetOpenstackFlavor ensures that no value is present for OpenstackFlavor, not even an explicit nil
-func (o *ServerListDto) UnsetOpenstackFlavor() {
-	o.OpenstackFlavor.Unset()
-}
-
-// GetAwsInstanceType returns the AwsInstanceType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetAwsInstanceType() string {
-	if o == nil || IsNil(o.AwsInstanceType.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AwsInstanceType.Get()
-}
-
-// GetAwsInstanceTypeOk returns a tuple with the AwsInstanceType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetAwsInstanceTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AwsInstanceType.Get(), o.AwsInstanceType.IsSet()
-}
-
-// HasAwsInstanceType returns a boolean if a field has been set.
-func (o *ServerListDto) HasAwsInstanceType() bool {
-	if o != nil && o.AwsInstanceType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAwsInstanceType gets a reference to the given NullableString and assigns it to the AwsInstanceType field.
-func (o *ServerListDto) SetAwsInstanceType(v string) {
-	o.AwsInstanceType.Set(&v)
-}
-// SetAwsInstanceTypeNil sets the value for AwsInstanceType to be an explicit nil
-func (o *ServerListDto) SetAwsInstanceTypeNil() {
-	o.AwsInstanceType.Set(nil)
-}
-
-// UnsetAwsInstanceType ensures that no value is present for AwsInstanceType, not even an explicit nil
-func (o *ServerListDto) UnsetAwsInstanceType() {
-	o.AwsInstanceType.Unset()
-}
-
-// GetAzureVmSize returns the AzureVmSize field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetAzureVmSize() string {
-	if o == nil || IsNil(o.AzureVmSize.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AzureVmSize.Get()
-}
-
-// GetAzureVmSizeOk returns a tuple with the AzureVmSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetAzureVmSizeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AzureVmSize.Get(), o.AzureVmSize.IsSet()
-}
-
-// HasAzureVmSize returns a boolean if a field has been set.
-func (o *ServerListDto) HasAzureVmSize() bool {
-	if o != nil && o.AzureVmSize.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAzureVmSize gets a reference to the given NullableString and assigns it to the AzureVmSize field.
-func (o *ServerListDto) SetAzureVmSize(v string) {
-	o.AzureVmSize.Set(&v)
-}
-// SetAzureVmSizeNil sets the value for AzureVmSize to be an explicit nil
-func (o *ServerListDto) SetAzureVmSizeNil() {
-	o.AzureVmSize.Set(nil)
-}
-
-// UnsetAzureVmSize ensures that no value is present for AzureVmSize, not even an explicit nil
-func (o *ServerListDto) UnsetAzureVmSize() {
-	o.AzureVmSize.Unset()
 }
 
 // GetCloudType returns the CloudType field value if set, zero value otherwise.
@@ -1273,48 +1014,6 @@ func (o *ServerListDto) UnsetAwsHostName() {
 	o.AwsHostName.Unset()
 }
 
-// GetOpenshiftFlavor returns the OpenshiftFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetOpenshiftFlavor() string {
-	if o == nil || IsNil(o.OpenshiftFlavor.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.OpenshiftFlavor.Get()
-}
-
-// GetOpenshiftFlavorOk returns a tuple with the OpenshiftFlavor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetOpenshiftFlavorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OpenshiftFlavor.Get(), o.OpenshiftFlavor.IsSet()
-}
-
-// HasOpenshiftFlavor returns a boolean if a field has been set.
-func (o *ServerListDto) HasOpenshiftFlavor() bool {
-	if o != nil && o.OpenshiftFlavor.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOpenshiftFlavor gets a reference to the given NullableString and assigns it to the OpenshiftFlavor field.
-func (o *ServerListDto) SetOpenshiftFlavor(v string) {
-	o.OpenshiftFlavor.Set(&v)
-}
-// SetOpenshiftFlavorNil sets the value for OpenshiftFlavor to be an explicit nil
-func (o *ServerListDto) SetOpenshiftFlavorNil() {
-	o.OpenshiftFlavor.Set(nil)
-}
-
-// UnsetOpenshiftFlavor ensures that no value is present for OpenshiftFlavor, not even an explicit nil
-func (o *ServerListDto) UnsetOpenshiftFlavor() {
-	o.OpenshiftFlavor.Unset()
-}
-
 // GetAvailabilityZone returns the AvailabilityZone field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServerListDto) GetAvailabilityZone() string {
 	if o == nil || IsNil(o.AvailabilityZone.Get()) {
@@ -1439,48 +1138,6 @@ func (o *ServerListDto) SetHypervisorIdNil() {
 // UnsetHypervisorId ensures that no value is present for HypervisorId, not even an explicit nil
 func (o *ServerListDto) UnsetHypervisorId() {
 	o.HypervisorId.Unset()
-}
-
-// GetVsphereFlavor returns the VsphereFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetVsphereFlavor() string {
-	if o == nil || IsNil(o.VsphereFlavor.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.VsphereFlavor.Get()
-}
-
-// GetVsphereFlavorOk returns a tuple with the VsphereFlavor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetVsphereFlavorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.VsphereFlavor.Get(), o.VsphereFlavor.IsSet()
-}
-
-// HasVsphereFlavor returns a boolean if a field has been set.
-func (o *ServerListDto) HasVsphereFlavor() bool {
-	if o != nil && o.VsphereFlavor.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetVsphereFlavor gets a reference to the given NullableString and assigns it to the VsphereFlavor field.
-func (o *ServerListDto) SetVsphereFlavor(v string) {
-	o.VsphereFlavor.Set(&v)
-}
-// SetVsphereFlavorNil sets the value for VsphereFlavor to be an explicit nil
-func (o *ServerListDto) SetVsphereFlavorNil() {
-	o.VsphereFlavor.Set(nil)
-}
-
-// UnsetVsphereFlavor ensures that no value is present for VsphereFlavor, not even an explicit nil
-func (o *ServerListDto) UnsetVsphereFlavor() {
-	o.VsphereFlavor.Unset()
 }
 
 // GetProxmoxRole returns the ProxmoxRole field value if set, zero value otherwise.
@@ -1686,6 +1343,48 @@ func (o *ServerListDto) SetWasmEnabled(v bool) {
 	o.WasmEnabled = &v
 }
 
+// GetFlavor returns the Flavor field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerListDto) GetFlavor() string {
+	if o == nil || IsNil(o.Flavor.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Flavor.Get()
+}
+
+// GetFlavorOk returns a tuple with the Flavor field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerListDto) GetFlavorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Flavor.Get(), o.Flavor.IsSet()
+}
+
+// HasFlavor returns a boolean if a field has been set.
+func (o *ServerListDto) HasFlavor() bool {
+	if o != nil && o.Flavor.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetFlavor gets a reference to the given NullableString and assigns it to the Flavor field.
+func (o *ServerListDto) SetFlavor(v string) {
+	o.Flavor.Set(&v)
+}
+// SetFlavorNil sets the value for Flavor to be an explicit nil
+func (o *ServerListDto) SetFlavorNil() {
+	o.Flavor.Set(nil)
+}
+
+// UnsetFlavor ensures that no value is present for Flavor, not even an explicit nil
+func (o *ServerListDto) UnsetFlavor() {
+	o.Flavor.Unset()
+}
+
 func (o ServerListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1723,15 +1422,6 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	if o.KubernetesHealth.IsSet() {
 		toSerialize["kubernetesHealth"] = o.KubernetesHealth.Get()
 	}
-	if o.GoogleMachineType.IsSet() {
-		toSerialize["googleMachineType"] = o.GoogleMachineType.Get()
-	}
-	if o.TanzuFlavor.IsSet() {
-		toSerialize["tanzuFlavor"] = o.TanzuFlavor.Get()
-	}
-	if o.ProxmoxFlavor.IsSet() {
-		toSerialize["proxmoxFlavor"] = o.ProxmoxFlavor.Get()
-	}
 	if !IsNil(o.Cpu) {
 		toSerialize["cpu"] = o.Cpu
 	}
@@ -1746,15 +1436,6 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.CreatedAt.IsSet() {
 		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if o.OpenstackFlavor.IsSet() {
-		toSerialize["openstackFlavor"] = o.OpenstackFlavor.Get()
-	}
-	if o.AwsInstanceType.IsSet() {
-		toSerialize["awsInstanceType"] = o.AwsInstanceType.Get()
-	}
-	if o.AzureVmSize.IsSet() {
-		toSerialize["azureVmSize"] = o.AzureVmSize.Get()
 	}
 	if !IsNil(o.CloudType) {
 		toSerialize["cloudType"] = o.CloudType
@@ -1789,9 +1470,6 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	if o.AwsHostName.IsSet() {
 		toSerialize["awsHostName"] = o.AwsHostName.Get()
 	}
-	if o.OpenshiftFlavor.IsSet() {
-		toSerialize["openshiftFlavor"] = o.OpenshiftFlavor.Get()
-	}
 	if o.AvailabilityZone.IsSet() {
 		toSerialize["availabilityZone"] = o.AvailabilityZone.Get()
 	}
@@ -1800,9 +1478,6 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.HypervisorId.IsSet() {
 		toSerialize["hypervisorId"] = o.HypervisorId.Get()
-	}
-	if o.VsphereFlavor.IsSet() {
-		toSerialize["vsphereFlavor"] = o.VsphereFlavor.Get()
 	}
 	if !IsNil(o.ProxmoxRole) {
 		toSerialize["proxmoxRole"] = o.ProxmoxRole
@@ -1821,6 +1496,9 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.WasmEnabled) {
 		toSerialize["wasmEnabled"] = o.WasmEnabled
+	}
+	if o.Flavor.IsSet() {
+		toSerialize["flavor"] = o.Flavor.Get()
 	}
 	return toSerialize, nil
 }

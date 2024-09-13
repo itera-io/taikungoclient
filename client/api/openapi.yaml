@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-13T00:03:11.418106Z
-                  createdAt: 2024-09-13T00:03:11.418106Z
+                  lastValidated: 2024-09-13T07:09:05.2140668Z
+                  createdAt: 2024-09-13T07:09:05.2140668Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-13T00:03:11.418106Z
+                    lastBackup: 2024-09-13T07:09:05.2140668Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-13T00:03:11.418106Z
+                  createdAt: 2024-09-13T07:09:05.2140668Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-13T00:03:11.418106Z
+                  lastBackup: 2024-09-13T07:09:05.2140668Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-13T00:03:11.418106Z
-                  expiration: 2024-09-13T00:03:11.418106Z
+                  createdAt: 2024-09-13T07:09:05.2140668Z
+                  expiration: 2024-09-13T07:09:05.2140668Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-13T00:03:11.418106Z
+                  createdAt: 2024-09-13T07:09:05.2140668Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-13T00:03:11.418106+00:00
-                  startTimeStamp: 2024-09-13T00:03:11.418106+00:00
-                  createdAt: 2024-09-13T00:03:11.418106Z
+                  completionDateTime: 2024-09-13T07:09:05.2140668+00:00
+                  startTimeStamp: 2024-09-13T07:09:05.2140668+00:00
+                  createdAt: 2024-09-13T07:09:05.2140668Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -60178,12 +60178,9 @@ components:
     ServerListDto:
       additionalProperties: false
       example:
-        proxmoxFlavor: proxmoxFlavor
         proxmoxExtraDiskSize: 9
         role: Bastion
         spotPrice: 7.061401241503109
-        openshiftFlavor: openshiftFlavor
-        vsphereFlavor: vsphereFlavor
         awsHostName: awsHostName
         actionButtons:
           reboot: true
@@ -60200,7 +60197,6 @@ components:
         replicaCount: 3
         kubernetesHealth: kubernetesHealth
         instanceId: instanceId
-        googleMachineType: googleMachineType
         cloudType: NONE
         hypervisor: hypervisor
         id: 0
@@ -60210,19 +60206,16 @@ components:
         - value: value
           key: key
         ram: 2.3021358869347655
-        tanzuFlavor: tanzuFlavor
         organizationName: organizationName
-        awsInstanceType: awsInstanceType
         lastModifiedBy: lastModifiedBy
         ipAddress: ipAddress
         cpu: 5
         hypervisorId: hypervisorId
+        flavor: flavor
         wasmEnabled: true
         createdBy: createdBy
-        azureVmSize: azureVmSize
         providerID: providerID
         name: name
-        openstackFlavor: openstackFlavor
         lastModified: lastModified
         projectName: projectName
         projectId: 1
@@ -60255,15 +60248,6 @@ components:
         kubernetesHealth:
           nullable: true
           type: string
-        googleMachineType:
-          nullable: true
-          type: string
-        tanzuFlavor:
-          nullable: true
-          type: string
-        proxmoxFlavor:
-          nullable: true
-          type: string
         cpu:
           format: int32
           type: integer
@@ -60276,15 +60260,6 @@ components:
           nullable: true
           type: string
         createdAt:
-          nullable: true
-          type: string
-        openstackFlavor:
-          nullable: true
-          type: string
-        awsInstanceType:
-          nullable: true
-          type: string
-        azureVmSize:
           nullable: true
           type: string
         cloudType:
@@ -60317,9 +60292,6 @@ components:
         awsHostName:
           nullable: true
           type: string
-        openshiftFlavor:
-          nullable: true
-          type: string
         availabilityZone:
           nullable: true
           type: string
@@ -60327,9 +60299,6 @@ components:
           nullable: true
           type: string
         hypervisorId:
-          nullable: true
-          type: string
-        vsphereFlavor:
           nullable: true
           type: string
         proxmoxRole:
@@ -60350,6 +60319,9 @@ components:
           type: integer
         wasmEnabled:
           type: boolean
+        flavor:
+          nullable: true
+          type: string
       type: object
     ServerTemplateDto:
       additionalProperties: false
@@ -60388,12 +60360,9 @@ components:
       additionalProperties: false
       example:
         data:
-        - proxmoxFlavor: proxmoxFlavor
-          proxmoxExtraDiskSize: 9
+        - proxmoxExtraDiskSize: 9
           role: Bastion
           spotPrice: 7.061401241503109
-          openshiftFlavor: openshiftFlavor
-          vsphereFlavor: vsphereFlavor
           awsHostName: awsHostName
           actionButtons:
             reboot: true
@@ -60410,7 +60379,6 @@ components:
           replicaCount: 3
           kubernetesHealth: kubernetesHealth
           instanceId: instanceId
-          googleMachineType: googleMachineType
           cloudType: NONE
           hypervisor: hypervisor
           id: 0
@@ -60420,29 +60388,23 @@ components:
           - value: value
             key: key
           ram: 2.3021358869347655
-          tanzuFlavor: tanzuFlavor
           organizationName: organizationName
-          awsInstanceType: awsInstanceType
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
           hypervisorId: hypervisorId
+          flavor: flavor
           wasmEnabled: true
           createdBy: createdBy
-          azureVmSize: azureVmSize
           providerID: providerID
           name: name
-          openstackFlavor: openstackFlavor
           lastModified: lastModified
           projectName: projectName
           projectId: 1
           status: status
-        - proxmoxFlavor: proxmoxFlavor
-          proxmoxExtraDiskSize: 9
+        - proxmoxExtraDiskSize: 9
           role: Bastion
           spotPrice: 7.061401241503109
-          openshiftFlavor: openshiftFlavor
-          vsphereFlavor: vsphereFlavor
           awsHostName: awsHostName
           actionButtons:
             reboot: true
@@ -60459,7 +60421,6 @@ components:
           replicaCount: 3
           kubernetesHealth: kubernetesHealth
           instanceId: instanceId
-          googleMachineType: googleMachineType
           cloudType: NONE
           hypervisor: hypervisor
           id: 0
@@ -60469,19 +60430,16 @@ components:
           - value: value
             key: key
           ram: 2.3021358869347655
-          tanzuFlavor: tanzuFlavor
           organizationName: organizationName
-          awsInstanceType: awsInstanceType
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
           hypervisorId: hypervisorId
+          flavor: flavor
           wasmEnabled: true
           createdBy: createdBy
-          azureVmSize: azureVmSize
           providerID: providerID
           name: name
-          openstackFlavor: openstackFlavor
           lastModified: lastModified
           projectName: projectName
           projectId: 1
@@ -60501,12 +60459,9 @@ components:
       additionalProperties: false
       example:
         data:
-        - proxmoxFlavor: proxmoxFlavor
-          proxmoxExtraDiskSize: 9
+        - proxmoxExtraDiskSize: 9
           role: Bastion
           spotPrice: 7.061401241503109
-          openshiftFlavor: openshiftFlavor
-          vsphereFlavor: vsphereFlavor
           awsHostName: awsHostName
           actionButtons:
             reboot: true
@@ -60523,7 +60478,6 @@ components:
           replicaCount: 3
           kubernetesHealth: kubernetesHealth
           instanceId: instanceId
-          googleMachineType: googleMachineType
           cloudType: NONE
           hypervisor: hypervisor
           id: 0
@@ -60533,29 +60487,23 @@ components:
           - value: value
             key: key
           ram: 2.3021358869347655
-          tanzuFlavor: tanzuFlavor
           organizationName: organizationName
-          awsInstanceType: awsInstanceType
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
           hypervisorId: hypervisorId
+          flavor: flavor
           wasmEnabled: true
           createdBy: createdBy
-          azureVmSize: azureVmSize
           providerID: providerID
           name: name
-          openstackFlavor: openstackFlavor
           lastModified: lastModified
           projectName: projectName
           projectId: 1
           status: status
-        - proxmoxFlavor: proxmoxFlavor
-          proxmoxExtraDiskSize: 9
+        - proxmoxExtraDiskSize: 9
           role: Bastion
           spotPrice: 7.061401241503109
-          openshiftFlavor: openshiftFlavor
-          vsphereFlavor: vsphereFlavor
           awsHostName: awsHostName
           actionButtons:
             reboot: true
@@ -60572,7 +60520,6 @@ components:
           replicaCount: 3
           kubernetesHealth: kubernetesHealth
           instanceId: instanceId
-          googleMachineType: googleMachineType
           cloudType: NONE
           hypervisor: hypervisor
           id: 0
@@ -60582,19 +60529,16 @@ components:
           - value: value
             key: key
           ram: 2.3021358869347655
-          tanzuFlavor: tanzuFlavor
           organizationName: organizationName
-          awsInstanceType: awsInstanceType
           lastModifiedBy: lastModifiedBy
           ipAddress: ipAddress
           cpu: 5
           hypervisorId: hypervisorId
+          flavor: flavor
           wasmEnabled: true
           createdBy: createdBy
-          azureVmSize: azureVmSize
           providerID: providerID
           name: name
-          openstackFlavor: openstackFlavor
           lastModified: lastModified
           projectName: projectName
           projectId: 1
