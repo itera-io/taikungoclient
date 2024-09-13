@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the NtpServerListDto type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &NtpServerListDto{}
 
 // NtpServerListDto struct for NtpServerListDto
 type NtpServerListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Address NullableString `json:"address,omitempty"`
+	Id int32 `json:"id"`
+	Address NullableString `json:"address"`
 }
+
+type _NtpServerListDto NtpServerListDto
 
 // NewNtpServerListDto instantiates a new NtpServerListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNtpServerListDto() *NtpServerListDto {
+func NewNtpServerListDto(id int32, address NullableString) *NtpServerListDto {
 	this := NtpServerListDto{}
+	this.Id = id
+	this.Address = address
 	return &this
 }
 
@@ -41,48 +47,42 @@ func NewNtpServerListDtoWithDefaults() *NtpServerListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *NtpServerListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *NtpServerListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *NtpServerListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *NtpServerListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAddress returns the Address field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *NtpServerListDto) GetAddress() string {
-	if o == nil || IsNil(o.Address.Get()) {
+	if o == nil || o.Address.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Address.Get()
 }
 
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
+// GetAddressOk returns a tuple with the Address field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NtpServerListDto) GetAddressOk() (*string, bool) {
@@ -92,27 +92,9 @@ func (o *NtpServerListDto) GetAddressOk() (*string, bool) {
 	return o.Address.Get(), o.Address.IsSet()
 }
 
-// HasAddress returns a boolean if a field has been set.
-func (o *NtpServerListDto) HasAddress() bool {
-	if o != nil && o.Address.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAddress gets a reference to the given NullableString and assigns it to the Address field.
+// SetAddress sets field value
 func (o *NtpServerListDto) SetAddress(v string) {
 	o.Address.Set(&v)
-}
-// SetAddressNil sets the value for Address to be an explicit nil
-func (o *NtpServerListDto) SetAddressNil() {
-	o.Address.Set(nil)
-}
-
-// UnsetAddress ensures that no value is present for Address, not even an explicit nil
-func (o *NtpServerListDto) UnsetAddress() {
-	o.Address.Unset()
 }
 
 func (o NtpServerListDto) MarshalJSON() ([]byte, error) {
@@ -125,13 +107,47 @@ func (o NtpServerListDto) MarshalJSON() ([]byte, error) {
 
 func (o NtpServerListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Address.IsSet() {
-		toSerialize["address"] = o.Address.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["address"] = o.Address.Get()
 	return toSerialize, nil
+}
+
+func (o *NtpServerListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"address",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varNtpServerListDto := _NtpServerListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varNtpServerListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NtpServerListDto(varNtpServerListDto)
+
+	return err
 }
 
 type NullableNtpServerListDto struct {

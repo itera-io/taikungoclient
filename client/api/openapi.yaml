@@ -341,7 +341,7 @@ paths:
                 - id: 1
                   name: taikun
                   httpProxy: http://185.185.185.22
-                  organizationId: null
+                  organizationId: 1
                   organizationName: taikun
                   isLocked: false
                   dnsServers:
@@ -2693,7 +2693,7 @@ paths:
                 data:
                 - id: 1
                   description: taikun
-                  ipAddress: null
+                  ipAddress: 8.8.8.8
                   maskBits: 24
                   accessProfileId: 1
                   accessProfileName: taikun
@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-13T07:09:05.2140668Z
-                  createdAt: 2024-09-13T07:09:05.2140668Z
+                  lastValidated: 2024-09-13T08:44:17.4511482Z
+                  createdAt: 2024-09-13T08:44:17.4511482Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-13T07:09:05.2140668Z
+                    lastBackup: 2024-09-13T08:44:17.4511482Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-13T07:09:05.2140668Z
+                  createdAt: 2024-09-13T08:44:17.4511482Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-13T07:09:05.2140668Z
+                  lastBackup: 2024-09-13T08:44:17.4511482Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-13T07:09:05.2140668Z
-                  expiration: 2024-09-13T07:09:05.2140668Z
+                  createdAt: 2024-09-13T08:44:17.4511482Z
+                  expiration: 2024-09-13T08:44:17.4511482Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-13T07:09:05.2140668Z
+                  createdAt: 2024-09-13T08:44:17.4511482Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-13T07:09:05.2140668+00:00
-                  startTimeStamp: 2024-09-13T07:09:05.2140668+00:00
-                  createdAt: 2024-09-13T07:09:05.2140668Z
+                  completionDateTime: 2024-09-13T08:44:17.4511482+00:00
+                  startTimeStamp: 2024-09-13T08:44:17.4511482+00:00
+                  createdAt: 2024-09-13T08:44:17.4511482Z
                   warnings: 1
                   phase: Available
                 totalCount: 1
@@ -37958,6 +37958,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AccessProfilesListDto:
       additionalProperties: false
@@ -38005,7 +38008,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         httpProxy:
           nullable: true
@@ -38015,29 +38017,24 @@ components:
           nullable: true
           type: integer
         organizationName:
-          nullable: true
           type: string
         isLocked:
           type: boolean
         dnsServers:
           items:
             $ref: '#/components/schemas/DnsServerListDto'
-          nullable: true
           type: array
         ntpServers:
           items:
             $ref: '#/components/schemas/NtpServerListDto'
-          nullable: true
           type: array
         allowedHosts:
           items:
             $ref: '#/components/schemas/AllowedHostListDto'
-          nullable: true
           type: array
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         createdBy:
           nullable: true
@@ -38049,8 +38046,22 @@ components:
           nullable: true
           type: string
         createdAt:
-          nullable: true
           type: string
+      required:
+      - allowedHosts
+      - createdAt
+      - createdBy
+      - dnsServers
+      - httpProxy
+      - id
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - ntpServers
+      - organizationId
+      - organizationName
+      - projects
       type: object
     AccessProfilesLockManagementCommand:
       additionalProperties: false
@@ -39454,6 +39465,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AllowedHostListDto:
       additionalProperties: false
@@ -39472,7 +39486,6 @@ components:
           nullable: true
           type: string
         ipAddress:
-          nullable: true
           type: string
         maskBits:
           format: int32
@@ -39481,8 +39494,14 @@ components:
           format: int32
           type: integer
         accessProfileName:
-          nullable: true
           type: string
+      required:
+      - accessProfileId
+      - accessProfileName
+      - description
+      - id
+      - ipAddress
+      - maskBits
       type: object
     AmazonAvailabilityZonesCommand:
       additionalProperties: false
@@ -47001,6 +47020,9 @@ components:
         address:
           nullable: true
           type: string
+      required:
+      - address
+      - id
       type: object
     DnsServersListDto:
       additionalProperties: false
@@ -47018,6 +47040,10 @@ components:
         accessProfileName:
           nullable: true
           type: string
+      required:
+      - accessProfileName
+      - address
+      - id
       type: object
     DocumentationData:
       additionalProperties: false
@@ -52328,6 +52354,9 @@ components:
         address:
           nullable: true
           type: string
+      required:
+      - address
+      - id
       type: object
     NtpServersListDto:
       additionalProperties: false
@@ -52345,6 +52374,10 @@ components:
         accessProfileName:
           nullable: true
           type: string
+      required:
+      - accessProfileName
+      - address
+      - id
       type: object
     OpaMakeDefaultCommand:
       additionalProperties: false
@@ -53063,6 +53096,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     OpenstackCredentialsListDto:
       additionalProperties: false
@@ -53109,30 +53145,22 @@ components:
         isLocked:
           type: boolean
         name:
-          nullable: true
           type: string
         user:
-          nullable: true
           type: string
         url:
-          nullable: true
           type: string
         project:
-          nullable: true
           type: string
         domain:
-          nullable: true
           type: string
         region:
-          nullable: true
           type: string
         publicNetwork:
-          nullable: true
           type: string
         importNetwork:
           type: boolean
         tenantId:
-          nullable: true
           type: string
         availabilityZone:
           nullable: true
@@ -53146,16 +53174,12 @@ components:
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         createdBy:
-          nullable: true
           type: string
         lastModified:
-          nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
           type: string
         isDefault:
           type: boolean
@@ -53163,13 +53187,10 @@ components:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         createdAt:
-          nullable: true
           type: string
         continentName:
-          nullable: true
           type: string
         isAdmin:
           type: boolean
@@ -53179,6 +53200,35 @@ components:
           type: boolean
         skipTlsFlag:
           type: boolean
+      required:
+      - applicationCredEnabled
+      - availabilityZone
+      - continentName
+      - createdAt
+      - createdBy
+      - domain
+      - id
+      - importNetwork
+      - internalSubnetId
+      - isAdmin
+      - isDefault
+      - isInfra
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      - project
+      - projectCount
+      - projects
+      - publicNetwork
+      - region
+      - skipTlsFlag
+      - tenantId
+      - url
+      - user
+      - volumeType
       type: object
     OpenstackFlavorList:
       additionalProperties: false
@@ -58240,8 +58290,43 @@ components:
         createdAt: createdAt
         password: password
         partner:
+          whiteListDomains:
+          - name: name
+            id: 6
+          - name: name
+            id: 6
+          country: country
+          address: address
+          city: city
+          link: link
+          partnerImageSettings:
+            expanded: expanded
+            collapsed: collapsed
+          paymentEnabled: true
+          phone: phone
+          domain: domain
+          partnerColorSettings:
+            itemBgActive: itemBgActive
+            itemBgActiveHover: itemBgActiveHover
+            bg: bg
+            itemBg: itemBg
+            itemBgHover: itemBgHover
+            bgCollapsedSubItem: bgCollapsedSubItem
+            itemTextActive: itemTextActive
+            itemText: itemText
           name: name
+          organizations:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          logo: logo
+          requiredUserApproval: true
           id: 0
+          allowRegistration: true
+          email: email
+          vatNumber: vatNumber
+          backgroundImageUrl: backgroundImageUrl
         createdBy: createdBy
         price: 5.637376656633329
         name: name
@@ -58288,7 +58373,7 @@ components:
           nullable: true
           type: string
         partner:
-          $ref: '#/components/schemas/CommonDropdownDto'
+          $ref: '#/components/schemas/PartnerDetailsDto'
         operationCredential:
           $ref: '#/components/schemas/OperationCredentialsForOrganizationEntity'
         createdBy:
@@ -58332,8 +58417,43 @@ components:
           createdAt: createdAt
           password: password
           partner:
+            whiteListDomains:
+            - name: name
+              id: 6
+            - name: name
+              id: 6
+            country: country
+            address: address
+            city: city
+            link: link
+            partnerImageSettings:
+              expanded: expanded
+              collapsed: collapsed
+            paymentEnabled: true
+            phone: phone
+            domain: domain
+            partnerColorSettings:
+              itemBgActive: itemBgActive
+              itemBgActiveHover: itemBgActiveHover
+              bg: bg
+              itemBg: itemBg
+              itemBgHover: itemBgHover
+              bgCollapsedSubItem: bgCollapsedSubItem
+              itemTextActive: itemTextActive
+              itemText: itemText
             name: name
+            organizations:
+            - name: name
+              id: 0
+            - name: name
+              id: 0
+            logo: logo
+            requiredUserApproval: true
             id: 0
+            allowRegistration: true
+            email: email
+            vatNumber: vatNumber
+            backgroundImageUrl: backgroundImageUrl
           createdBy: createdBy
           price: 5.637376656633329
           name: name
@@ -58366,8 +58486,43 @@ components:
           createdAt: createdAt
           password: password
           partner:
+            whiteListDomains:
+            - name: name
+              id: 6
+            - name: name
+              id: 6
+            country: country
+            address: address
+            city: city
+            link: link
+            partnerImageSettings:
+              expanded: expanded
+              collapsed: collapsed
+            paymentEnabled: true
+            phone: phone
+            domain: domain
+            partnerColorSettings:
+              itemBgActive: itemBgActive
+              itemBgActiveHover: itemBgActiveHover
+              bg: bg
+              itemBg: itemBg
+              itemBgHover: itemBgHover
+              bgCollapsedSubItem: bgCollapsedSubItem
+              itemTextActive: itemTextActive
+              itemText: itemText
             name: name
+            organizations:
+            - name: name
+              id: 0
+            - name: name
+              id: 0
+            logo: logo
+            requiredUserApproval: true
             id: 0
+            allowRegistration: true
+            email: email
+            vatNumber: vatNumber
+            backgroundImageUrl: backgroundImageUrl
           createdBy: createdBy
           price: 5.637376656633329
           name: name
@@ -60984,6 +61139,11 @@ components:
         accessProfileName:
           nullable: true
           type: string
+      required:
+      - accessProfileName
+      - id
+      - name
+      - sshPublicKey
       type: object
     StandAloneMetaDataDto:
       additionalProperties: false
