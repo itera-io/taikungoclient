@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ZadaraCredentialsListDto type satisfies the MappedNullable interface at compile time
@@ -20,32 +22,52 @@ var _ MappedNullable = &ZadaraCredentialsListDto{}
 
 // ZadaraCredentialsListDto struct for ZadaraCredentialsListDto
 type ZadaraCredentialsListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	ProjectCount *int32 `json:"projectCount,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Region NullableString `json:"region,omitempty"`
-	AvailabilityZones []string `json:"availabilityZones,omitempty"`
-	AvailabilityZonesCount *int32 `json:"availabilityZonesCount,omitempty"`
-	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
-	IsDefault *bool `json:"isDefault,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	ContinentName NullableString `json:"continentName,omitempty"`
-	ZadaraApiUrl NullableString `json:"zadaraApiUrl,omitempty"`
-	ZadaraVolumeType NullableString `json:"zadaraVolumeType,omitempty"`
+	Id int32 `json:"id"`
+	ProjectCount int32 `json:"projectCount"`
+	IsLocked bool `json:"isLocked"`
+	Name string `json:"name"`
+	Region string `json:"region"`
+	AvailabilityZones []string `json:"availabilityZones"`
+	AvailabilityZonesCount int32 `json:"availabilityZonesCount"`
+	Projects []CommonDropdownDto `json:"projects"`
+	CreatedBy NullableString `json:"createdBy"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	IsDefault bool `json:"isDefault"`
+	OrganizationId int32 `json:"organizationId"`
+	OrganizationName string `json:"organizationName"`
+	CreatedAt NullableString `json:"createdAt"`
+	ContinentName NullableString `json:"continentName"`
+	ZadaraApiUrl string `json:"zadaraApiUrl"`
+	ZadaraVolumeType string `json:"zadaraVolumeType"`
 }
+
+type _ZadaraCredentialsListDto ZadaraCredentialsListDto
 
 // NewZadaraCredentialsListDto instantiates a new ZadaraCredentialsListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewZadaraCredentialsListDto() *ZadaraCredentialsListDto {
+func NewZadaraCredentialsListDto(id int32, projectCount int32, isLocked bool, name string, region string, availabilityZones []string, availabilityZonesCount int32, projects []CommonDropdownDto, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, isDefault bool, organizationId int32, organizationName string, createdAt NullableString, continentName NullableString, zadaraApiUrl string, zadaraVolumeType string) *ZadaraCredentialsListDto {
 	this := ZadaraCredentialsListDto{}
+	this.Id = id
+	this.ProjectCount = projectCount
+	this.IsLocked = isLocked
+	this.Name = name
+	this.Region = region
+	this.AvailabilityZones = availabilityZones
+	this.AvailabilityZonesCount = availabilityZonesCount
+	this.Projects = projects
+	this.CreatedBy = createdBy
+	this.LastModified = lastModified
+	this.LastModifiedBy = lastModifiedBy
+	this.IsDefault = isDefault
+	this.OrganizationId = organizationId
+	this.OrganizationName = organizationName
+	this.CreatedAt = createdAt
+	this.ContinentName = continentName
+	this.ZadaraApiUrl = zadaraApiUrl
+	this.ZadaraVolumeType = zadaraVolumeType
 	return &this
 }
 
@@ -57,294 +79,210 @@ func NewZadaraCredentialsListDtoWithDefaults() *ZadaraCredentialsListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *ZadaraCredentialsListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ZadaraCredentialsListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *ZadaraCredentialsListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetProjectCount returns the ProjectCount field value if set, zero value otherwise.
+// GetProjectCount returns the ProjectCount field value
 func (o *ZadaraCredentialsListDto) GetProjectCount() int32 {
-	if o == nil || IsNil(o.ProjectCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ProjectCount
+
+	return o.ProjectCount
 }
 
-// GetProjectCountOk returns a tuple with the ProjectCount field value if set, nil otherwise
+// GetProjectCountOk returns a tuple with the ProjectCount field value
 // and a boolean to check if the value has been set.
 func (o *ZadaraCredentialsListDto) GetProjectCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProjectCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectCount, true
+	return &o.ProjectCount, true
 }
 
-// HasProjectCount returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasProjectCount() bool {
-	if o != nil && !IsNil(o.ProjectCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectCount gets a reference to the given int32 and assigns it to the ProjectCount field.
+// SetProjectCount sets field value
 func (o *ZadaraCredentialsListDto) SetProjectCount(v int32) {
-	o.ProjectCount = &v
+	o.ProjectCount = v
 }
 
-// GetIsLocked returns the IsLocked field value if set, zero value otherwise.
+// GetIsLocked returns the IsLocked field value
 func (o *ZadaraCredentialsListDto) GetIsLocked() bool {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsLocked
+
+	return o.IsLocked
 }
 
-// GetIsLockedOk returns a tuple with the IsLocked field value if set, nil otherwise
+// GetIsLockedOk returns a tuple with the IsLocked field value
 // and a boolean to check if the value has been set.
 func (o *ZadaraCredentialsListDto) GetIsLockedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsLocked, true
+	return &o.IsLocked, true
 }
 
-// HasIsLocked returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasIsLocked() bool {
-	if o != nil && !IsNil(o.IsLocked) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsLocked gets a reference to the given bool and assigns it to the IsLocked field.
+// SetIsLocked sets field value
 func (o *ZadaraCredentialsListDto) SetIsLocked(v bool) {
-	o.IsLocked = &v
+	o.IsLocked = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *ZadaraCredentialsListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZadaraCredentialsListDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *ZadaraCredentialsListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ZadaraCredentialsListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ZadaraCredentialsListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetRegion returns the Region field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRegion returns the Region field value
 func (o *ZadaraCredentialsListDto) GetRegion() string {
-	if o == nil || IsNil(o.Region.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Region.Get()
+
+	return o.Region
 }
 
-// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// GetRegionOk returns a tuple with the Region field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZadaraCredentialsListDto) GetRegionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Region.Get(), o.Region.IsSet()
+	return &o.Region, true
 }
 
-// HasRegion returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasRegion() bool {
-	if o != nil && o.Region.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRegion gets a reference to the given NullableString and assigns it to the Region field.
+// SetRegion sets field value
 func (o *ZadaraCredentialsListDto) SetRegion(v string) {
-	o.Region.Set(&v)
-}
-// SetRegionNil sets the value for Region to be an explicit nil
-func (o *ZadaraCredentialsListDto) SetRegionNil() {
-	o.Region.Set(nil)
+	o.Region = v
 }
 
-// UnsetRegion ensures that no value is present for Region, not even an explicit nil
-func (o *ZadaraCredentialsListDto) UnsetRegion() {
-	o.Region.Unset()
-}
-
-// GetAvailabilityZones returns the AvailabilityZones field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAvailabilityZones returns the AvailabilityZones field value
 func (o *ZadaraCredentialsListDto) GetAvailabilityZones() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.AvailabilityZones
 }
 
-// GetAvailabilityZonesOk returns a tuple with the AvailabilityZones field value if set, nil otherwise
+// GetAvailabilityZonesOk returns a tuple with the AvailabilityZones field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZadaraCredentialsListDto) GetAvailabilityZonesOk() ([]string, bool) {
-	if o == nil || IsNil(o.AvailabilityZones) {
+	if o == nil {
 		return nil, false
 	}
 	return o.AvailabilityZones, true
 }
 
-// HasAvailabilityZones returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasAvailabilityZones() bool {
-	if o != nil && !IsNil(o.AvailabilityZones) {
-		return true
-	}
-
-	return false
-}
-
-// SetAvailabilityZones gets a reference to the given []string and assigns it to the AvailabilityZones field.
+// SetAvailabilityZones sets field value
 func (o *ZadaraCredentialsListDto) SetAvailabilityZones(v []string) {
 	o.AvailabilityZones = v
 }
 
-// GetAvailabilityZonesCount returns the AvailabilityZonesCount field value if set, zero value otherwise.
+// GetAvailabilityZonesCount returns the AvailabilityZonesCount field value
 func (o *ZadaraCredentialsListDto) GetAvailabilityZonesCount() int32 {
-	if o == nil || IsNil(o.AvailabilityZonesCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.AvailabilityZonesCount
+
+	return o.AvailabilityZonesCount
 }
 
-// GetAvailabilityZonesCountOk returns a tuple with the AvailabilityZonesCount field value if set, nil otherwise
+// GetAvailabilityZonesCountOk returns a tuple with the AvailabilityZonesCount field value
 // and a boolean to check if the value has been set.
 func (o *ZadaraCredentialsListDto) GetAvailabilityZonesCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.AvailabilityZonesCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AvailabilityZonesCount, true
+	return &o.AvailabilityZonesCount, true
 }
 
-// HasAvailabilityZonesCount returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasAvailabilityZonesCount() bool {
-	if o != nil && !IsNil(o.AvailabilityZonesCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetAvailabilityZonesCount gets a reference to the given int32 and assigns it to the AvailabilityZonesCount field.
+// SetAvailabilityZonesCount sets field value
 func (o *ZadaraCredentialsListDto) SetAvailabilityZonesCount(v int32) {
-	o.AvailabilityZonesCount = &v
+	o.AvailabilityZonesCount = v
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value
 func (o *ZadaraCredentialsListDto) GetProjects() []CommonDropdownDto {
 	if o == nil {
 		var ret []CommonDropdownDto
 		return ret
 	}
+
 	return o.Projects
 }
 
-// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
+// GetProjectsOk returns a tuple with the Projects field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZadaraCredentialsListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
-	if o == nil || IsNil(o.Projects) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Projects, true
 }
 
-// HasProjects returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasProjects() bool {
-	if o != nil && !IsNil(o.Projects) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjects gets a reference to the given []CommonDropdownDto and assigns it to the Projects field.
+// SetProjects sets field value
 func (o *ZadaraCredentialsListDto) SetProjects(v []CommonDropdownDto) {
 	o.Projects = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ZadaraCredentialsListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || o.CreatedBy.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CreatedBy.Get()
 }
 
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZadaraCredentialsListDto) GetCreatedByOk() (*string, bool) {
@@ -354,39 +292,23 @@ func (o *ZadaraCredentialsListDto) GetCreatedByOk() (*string, bool) {
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
 
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy sets field value
 func (o *ZadaraCredentialsListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *ZadaraCredentialsListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
-}
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *ZadaraCredentialsListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ZadaraCredentialsListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || o.LastModified.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModified.Get()
 }
 
-// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
+// GetLastModifiedOk returns a tuple with the LastModified field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZadaraCredentialsListDto) GetLastModifiedOk() (*string, bool) {
@@ -396,39 +318,23 @@ func (o *ZadaraCredentialsListDto) GetLastModifiedOk() (*string, bool) {
 	return o.LastModified.Get(), o.LastModified.IsSet()
 }
 
-// HasLastModified returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified sets field value
 func (o *ZadaraCredentialsListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *ZadaraCredentialsListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
-}
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *ZadaraCredentialsListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ZadaraCredentialsListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || o.LastModifiedBy.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModifiedBy.Get()
 }
 
-// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZadaraCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
@@ -438,145 +344,95 @@ func (o *ZadaraCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
 	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
 }
 
-// HasLastModifiedBy returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy sets field value
 func (o *ZadaraCredentialsListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *ZadaraCredentialsListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
 
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *ZadaraCredentialsListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
-}
-
-// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+// GetIsDefault returns the IsDefault field value
 func (o *ZadaraCredentialsListDto) GetIsDefault() bool {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDefault
+
+	return o.IsDefault
 }
 
-// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// GetIsDefaultOk returns a tuple with the IsDefault field value
 // and a boolean to check if the value has been set.
 func (o *ZadaraCredentialsListDto) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDefault, true
+	return &o.IsDefault, true
 }
 
-// HasIsDefault returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasIsDefault() bool {
-	if o != nil && !IsNil(o.IsDefault) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+// SetIsDefault sets field value
 func (o *ZadaraCredentialsListDto) SetIsDefault(v bool) {
-	o.IsDefault = &v
+	o.IsDefault = v
 }
 
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
+// GetOrganizationId returns the OrganizationId field value
 func (o *ZadaraCredentialsListDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationId
+
+	return o.OrganizationId
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 func (o *ZadaraCredentialsListDto) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationId, true
+	return &o.OrganizationId, true
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasOrganizationId() bool {
-	if o != nil && !IsNil(o.OrganizationId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *ZadaraCredentialsListDto) SetOrganizationId(v int32) {
-	o.OrganizationId = &v
+	o.OrganizationId = v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
 func (o *ZadaraCredentialsListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+
+	return o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZadaraCredentialsListDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return &o.OrganizationName, true
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *ZadaraCredentialsListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *ZadaraCredentialsListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+	o.OrganizationName = v
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *ZadaraCredentialsListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ZadaraCredentialsListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || o.CreatedAt.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CreatedAt.Get()
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZadaraCredentialsListDto) GetCreatedAtOk() (*string, bool) {
@@ -586,39 +442,23 @@ func (o *ZadaraCredentialsListDto) GetCreatedAtOk() (*string, bool) {
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *ZadaraCredentialsListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *ZadaraCredentialsListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *ZadaraCredentialsListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetContinentName returns the ContinentName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetContinentName returns the ContinentName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ZadaraCredentialsListDto) GetContinentName() string {
-	if o == nil || IsNil(o.ContinentName.Get()) {
+	if o == nil || o.ContinentName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.ContinentName.Get()
 }
 
-// GetContinentNameOk returns a tuple with the ContinentName field value if set, nil otherwise
+// GetContinentNameOk returns a tuple with the ContinentName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZadaraCredentialsListDto) GetContinentNameOk() (*string, bool) {
@@ -628,111 +468,57 @@ func (o *ZadaraCredentialsListDto) GetContinentNameOk() (*string, bool) {
 	return o.ContinentName.Get(), o.ContinentName.IsSet()
 }
 
-// HasContinentName returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasContinentName() bool {
-	if o != nil && o.ContinentName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetContinentName gets a reference to the given NullableString and assigns it to the ContinentName field.
+// SetContinentName sets field value
 func (o *ZadaraCredentialsListDto) SetContinentName(v string) {
 	o.ContinentName.Set(&v)
 }
-// SetContinentNameNil sets the value for ContinentName to be an explicit nil
-func (o *ZadaraCredentialsListDto) SetContinentNameNil() {
-	o.ContinentName.Set(nil)
-}
 
-// UnsetContinentName ensures that no value is present for ContinentName, not even an explicit nil
-func (o *ZadaraCredentialsListDto) UnsetContinentName() {
-	o.ContinentName.Unset()
-}
-
-// GetZadaraApiUrl returns the ZadaraApiUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetZadaraApiUrl returns the ZadaraApiUrl field value
 func (o *ZadaraCredentialsListDto) GetZadaraApiUrl() string {
-	if o == nil || IsNil(o.ZadaraApiUrl.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ZadaraApiUrl.Get()
+
+	return o.ZadaraApiUrl
 }
 
-// GetZadaraApiUrlOk returns a tuple with the ZadaraApiUrl field value if set, nil otherwise
+// GetZadaraApiUrlOk returns a tuple with the ZadaraApiUrl field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZadaraCredentialsListDto) GetZadaraApiUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ZadaraApiUrl.Get(), o.ZadaraApiUrl.IsSet()
+	return &o.ZadaraApiUrl, true
 }
 
-// HasZadaraApiUrl returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasZadaraApiUrl() bool {
-	if o != nil && o.ZadaraApiUrl.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetZadaraApiUrl gets a reference to the given NullableString and assigns it to the ZadaraApiUrl field.
+// SetZadaraApiUrl sets field value
 func (o *ZadaraCredentialsListDto) SetZadaraApiUrl(v string) {
-	o.ZadaraApiUrl.Set(&v)
-}
-// SetZadaraApiUrlNil sets the value for ZadaraApiUrl to be an explicit nil
-func (o *ZadaraCredentialsListDto) SetZadaraApiUrlNil() {
-	o.ZadaraApiUrl.Set(nil)
+	o.ZadaraApiUrl = v
 }
 
-// UnsetZadaraApiUrl ensures that no value is present for ZadaraApiUrl, not even an explicit nil
-func (o *ZadaraCredentialsListDto) UnsetZadaraApiUrl() {
-	o.ZadaraApiUrl.Unset()
-}
-
-// GetZadaraVolumeType returns the ZadaraVolumeType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetZadaraVolumeType returns the ZadaraVolumeType field value
 func (o *ZadaraCredentialsListDto) GetZadaraVolumeType() string {
-	if o == nil || IsNil(o.ZadaraVolumeType.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ZadaraVolumeType.Get()
+
+	return o.ZadaraVolumeType
 }
 
-// GetZadaraVolumeTypeOk returns a tuple with the ZadaraVolumeType field value if set, nil otherwise
+// GetZadaraVolumeTypeOk returns a tuple with the ZadaraVolumeType field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZadaraCredentialsListDto) GetZadaraVolumeTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ZadaraVolumeType.Get(), o.ZadaraVolumeType.IsSet()
+	return &o.ZadaraVolumeType, true
 }
 
-// HasZadaraVolumeType returns a boolean if a field has been set.
-func (o *ZadaraCredentialsListDto) HasZadaraVolumeType() bool {
-	if o != nil && o.ZadaraVolumeType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetZadaraVolumeType gets a reference to the given NullableString and assigns it to the ZadaraVolumeType field.
+// SetZadaraVolumeType sets field value
 func (o *ZadaraCredentialsListDto) SetZadaraVolumeType(v string) {
-	o.ZadaraVolumeType.Set(&v)
-}
-// SetZadaraVolumeTypeNil sets the value for ZadaraVolumeType to be an explicit nil
-func (o *ZadaraCredentialsListDto) SetZadaraVolumeTypeNil() {
-	o.ZadaraVolumeType.Set(nil)
-}
-
-// UnsetZadaraVolumeType ensures that no value is present for ZadaraVolumeType, not even an explicit nil
-func (o *ZadaraCredentialsListDto) UnsetZadaraVolumeType() {
-	o.ZadaraVolumeType.Unset()
+	o.ZadaraVolumeType = v
 }
 
 func (o ZadaraCredentialsListDto) MarshalJSON() ([]byte, error) {
@@ -745,61 +531,79 @@ func (o ZadaraCredentialsListDto) MarshalJSON() ([]byte, error) {
 
 func (o ZadaraCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.ProjectCount) {
-		toSerialize["projectCount"] = o.ProjectCount
-	}
-	if !IsNil(o.IsLocked) {
-		toSerialize["isLocked"] = o.IsLocked
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.Region.IsSet() {
-		toSerialize["region"] = o.Region.Get()
-	}
-	if o.AvailabilityZones != nil {
-		toSerialize["availabilityZones"] = o.AvailabilityZones
-	}
-	if !IsNil(o.AvailabilityZonesCount) {
-		toSerialize["availabilityZonesCount"] = o.AvailabilityZonesCount
-	}
-	if o.Projects != nil {
-		toSerialize["projects"] = o.Projects
-	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
-	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
-	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
-	}
-	if !IsNil(o.IsDefault) {
-		toSerialize["isDefault"] = o.IsDefault
-	}
-	if !IsNil(o.OrganizationId) {
-		toSerialize["organizationId"] = o.OrganizationId
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if o.ContinentName.IsSet() {
-		toSerialize["continentName"] = o.ContinentName.Get()
-	}
-	if o.ZadaraApiUrl.IsSet() {
-		toSerialize["zadaraApiUrl"] = o.ZadaraApiUrl.Get()
-	}
-	if o.ZadaraVolumeType.IsSet() {
-		toSerialize["zadaraVolumeType"] = o.ZadaraVolumeType.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["projectCount"] = o.ProjectCount
+	toSerialize["isLocked"] = o.IsLocked
+	toSerialize["name"] = o.Name
+	toSerialize["region"] = o.Region
+	toSerialize["availabilityZones"] = o.AvailabilityZones
+	toSerialize["availabilityZonesCount"] = o.AvailabilityZonesCount
+	toSerialize["projects"] = o.Projects
+	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["lastModified"] = o.LastModified.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["isDefault"] = o.IsDefault
+	toSerialize["organizationId"] = o.OrganizationId
+	toSerialize["organizationName"] = o.OrganizationName
+	toSerialize["createdAt"] = o.CreatedAt.Get()
+	toSerialize["continentName"] = o.ContinentName.Get()
+	toSerialize["zadaraApiUrl"] = o.ZadaraApiUrl
+	toSerialize["zadaraVolumeType"] = o.ZadaraVolumeType
 	return toSerialize, nil
+}
+
+func (o *ZadaraCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"projectCount",
+		"isLocked",
+		"name",
+		"region",
+		"availabilityZones",
+		"availabilityZonesCount",
+		"projects",
+		"createdBy",
+		"lastModified",
+		"lastModifiedBy",
+		"isDefault",
+		"organizationId",
+		"organizationName",
+		"createdAt",
+		"continentName",
+		"zadaraApiUrl",
+		"zadaraVolumeType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varZadaraCredentialsListDto := _ZadaraCredentialsListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varZadaraCredentialsListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ZadaraCredentialsListDto(varZadaraCredentialsListDto)
+
+	return err
 }
 
 type NullableZadaraCredentialsListDto struct {

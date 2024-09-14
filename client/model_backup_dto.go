@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the BackupDto type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &BackupDto{}
 
 // BackupDto struct for BackupDto
 type BackupDto struct {
-	IncludedNamespace []string `json:"includedNamespace,omitempty"`
-	ExcludedNamespace []string `json:"excludedNamespace,omitempty"`
+	IncludedNamespace []string `json:"includedNamespace"`
+	ExcludedNamespace []string `json:"excludedNamespace"`
 }
+
+type _BackupDto BackupDto
 
 // NewBackupDto instantiates a new BackupDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBackupDto() *BackupDto {
+func NewBackupDto(includedNamespace []string, excludedNamespace []string) *BackupDto {
 	this := BackupDto{}
+	this.IncludedNamespace = includedNamespace
+	this.ExcludedNamespace = excludedNamespace
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewBackupDtoWithDefaults() *BackupDto {
 	return &this
 }
 
-// GetIncludedNamespace returns the IncludedNamespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIncludedNamespace returns the IncludedNamespace field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *BackupDto) GetIncludedNamespace() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.IncludedNamespace
 }
 
-// GetIncludedNamespaceOk returns a tuple with the IncludedNamespace field value if set, nil otherwise
+// GetIncludedNamespaceOk returns a tuple with the IncludedNamespace field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupDto) GetIncludedNamespaceOk() ([]string, bool) {
@@ -60,30 +68,23 @@ func (o *BackupDto) GetIncludedNamespaceOk() ([]string, bool) {
 	return o.IncludedNamespace, true
 }
 
-// HasIncludedNamespace returns a boolean if a field has been set.
-func (o *BackupDto) HasIncludedNamespace() bool {
-	if o != nil && !IsNil(o.IncludedNamespace) {
-		return true
-	}
-
-	return false
-}
-
-// SetIncludedNamespace gets a reference to the given []string and assigns it to the IncludedNamespace field.
+// SetIncludedNamespace sets field value
 func (o *BackupDto) SetIncludedNamespace(v []string) {
 	o.IncludedNamespace = v
 }
 
-// GetExcludedNamespace returns the ExcludedNamespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExcludedNamespace returns the ExcludedNamespace field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *BackupDto) GetExcludedNamespace() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.ExcludedNamespace
 }
 
-// GetExcludedNamespaceOk returns a tuple with the ExcludedNamespace field value if set, nil otherwise
+// GetExcludedNamespaceOk returns a tuple with the ExcludedNamespace field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupDto) GetExcludedNamespaceOk() ([]string, bool) {
@@ -93,16 +94,7 @@ func (o *BackupDto) GetExcludedNamespaceOk() ([]string, bool) {
 	return o.ExcludedNamespace, true
 }
 
-// HasExcludedNamespace returns a boolean if a field has been set.
-func (o *BackupDto) HasExcludedNamespace() bool {
-	if o != nil && !IsNil(o.ExcludedNamespace) {
-		return true
-	}
-
-	return false
-}
-
-// SetExcludedNamespace gets a reference to the given []string and assigns it to the ExcludedNamespace field.
+// SetExcludedNamespace sets field value
 func (o *BackupDto) SetExcludedNamespace(v []string) {
 	o.ExcludedNamespace = v
 }
@@ -124,6 +116,44 @@ func (o BackupDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["excludedNamespace"] = o.ExcludedNamespace
 	}
 	return toSerialize, nil
+}
+
+func (o *BackupDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"includedNamespace",
+		"excludedNamespace",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varBackupDto := _BackupDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varBackupDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BackupDto(varBackupDto)
+
+	return err
 }
 
 type NullableBackupDto struct {

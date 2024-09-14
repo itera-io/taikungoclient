@@ -1485,7 +1485,7 @@ paths:
               example:
                 data:
                 - id: 1
-                  url: null
+                  url: https://www.google.com
                   name: taikun
                   type: Taikun
                   organizationId: 1
@@ -2431,19 +2431,19 @@ paths:
                 data:
                 - id: 1
                   name: taikun
-                  organizationId: null
+                  organizationId: 1
                   organizationName: taikun
-                  slackConfigurationId: null
-                  slackConfigurationName: null
+                  slackConfigurationId: 1
+                  slackConfigurationName: taikun
                   isLocked: false
                   emails:
                   - email: taikun@taikun.cloud
-                  webhooks: null
-                  projects: null
+                  webhooks: []
+                  projects: []
                   createdBy: taikun
                   lastModified: 2023-11-21T12:09:23Z
                   lastModifiedBy: taikun
-                  reminder: "0"
+                  reminder: None
                   createdAt: 2023-11-21T12:09:23Z
                 totalCount: 0
               schema:
@@ -3990,8 +3990,8 @@ paths:
                   projectCount: 1
                   isLocked: false
                   name: taikun
-                  region: null
-                  availabilityZones: null
+                  region: taikun
+                  availabilityZones: []
                   availabilityZonesCount: 0
                   projects:
                   - id: 1
@@ -4004,7 +4004,7 @@ paths:
                   organizationName: taikun.cloud a.s.
                   createdAt: 2023-11-21T12:09:23Z
                   continentName: Europe
-                totalCount: 1
+                totalCount: 0
               schema:
                 $ref: '#/components/schemas/AwsCredentialList'
           description: OK
@@ -4466,7 +4466,7 @@ paths:
                   organizationId: 1
                   organizationName: taikun.cloud a.s.
                   continentName: Europe
-                totalCount: 1
+                totalCount: 0
               schema:
                 $ref: '#/components/schemas/AzureCredentialList'
           description: OK
@@ -5434,12 +5434,12 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-13T08:44:17.4511482Z
-                  createdAt: 2024-09-13T08:44:17.4511482Z
+                  lastValidated: 2024-09-14T00:03:01.8866754Z
+                  createdAt: 2024-09-14T00:03:01.8866754Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
-                totalCount: 1
+                totalCount: 0
                 projects:
                 - 1
               schema:
@@ -5540,20 +5540,20 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-13T08:44:17.4511482Z
+                    lastBackup: 2024-09-14T00:03:01.8866754Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-13T08:44:17.4511482Z
+                  createdAt: 2024-09-14T00:03:01.8866754Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-13T08:44:17.4511482Z
+                  lastBackup: 2024-09-14T00:03:01.8866754Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
                   includedNamespaces:
                   - taikun.cloud/backup
-                totalCount: 1
+                totalCount: 0
               schema:
                 $ref: '#/components/schemas/ListAllSchedules'
           description: OK
@@ -5652,13 +5652,13 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-13T08:44:17.4511482Z
-                  expiration: 2024-09-13T08:44:17.4511482Z
+                  createdAt: 2024-09-14T00:03:01.8866754Z
+                  expiration: 2024-09-14T00:03:01.8866754Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
                   phase: Available
-                totalCount: 1
+                totalCount: 0
               schema:
                 $ref: '#/components/schemas/ListAllBackups'
           description: OK
@@ -5757,11 +5757,11 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-13T08:44:17.4511482Z
+                  createdAt: 2024-09-14T00:03:01.8866754Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
-                totalCount: 1
+                totalCount: 0
               schema:
                 $ref: '#/components/schemas/ListAllDeleteBackupRequests'
           description: OK
@@ -5867,12 +5867,12 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-13T08:44:17.4511482+00:00
-                  startTimeStamp: 2024-09-13T08:44:17.4511482+00:00
-                  createdAt: 2024-09-13T08:44:17.4511482Z
+                  completionDateTime: 2024-09-14T00:03:01.8866754+00:00
+                  startTimeStamp: 2024-09-14T00:03:01.8866754+00:00
+                  createdAt: 2024-09-14T00:03:01.8866754Z
                   warnings: 1
                   phase: Available
-                totalCount: 1
+                totalCount: 0
               schema:
                 $ref: '#/components/schemas/ListAllRestores'
           description: OK
@@ -29126,7 +29126,7 @@ paths:
                   createdAt: 2023-11-21T12:09:23Z
                   isDefault: false
                   isInfra: false
-                totalCount: 1
+                totalCount: 0
               schema:
                 $ref: '#/components/schemas/BackupCredentials'
           description: OK
@@ -37415,8 +37415,8 @@ paths:
                   projectCount: 1
                   isLocked: false
                   name: taikun
-                  region: null
-                  availabilityZones: null
+                  region: ""
+                  availabilityZones: []
                   availabilityZonesCount: 0
                   projects:
                   - id: 1
@@ -37429,8 +37429,8 @@ paths:
                   organizationName: taikun.cloud a.s.
                   createdAt: 2023-11-21T12:09:23Z
                   continentName: Europe
-                  zadaraApiUrl: null
-                  zadaraVolumeType: null
+                  zadaraApiUrl: ""
+                  zadaraVolumeType: ""
                 totalCount: 1
               schema:
                 $ref: '#/components/schemas/ZadaraCredentialList'
@@ -38289,6 +38289,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AdminOrganizationsListDto:
       additionalProperties: false
@@ -38303,17 +38306,21 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         customerId:
           nullable: true
           type: string
         partnerName:
-          nullable: true
           type: string
         partnerLogo:
           nullable: true
           type: string
+      required:
+      - customerId
+      - id
+      - name
+      - partnerLogo
+      - partnerName
       type: object
     AdminProjectUpdateCommand:
       additionalProperties: false
@@ -38346,7 +38353,7 @@ components:
           kubernetesCurrentVersion: kubernetesCurrentVersion
           kubesprayCurrentVersion: kubesprayCurrentVersion
           id: 0
-          status: status
+          status: "Null"
         - createdAt: createdAt
           organizationName: organizationName
           cloudType: NONE
@@ -38357,7 +38364,7 @@ components:
           kubernetesCurrentVersion: kubernetesCurrentVersion
           kubesprayCurrentVersion: kubesprayCurrentVersion
           id: 0
-          status: status
+          status: "Null"
         totalCount: 5
       properties:
         data:
@@ -38368,6 +38375,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AdminProjectsResponseData:
       additionalProperties: false
@@ -38382,7 +38392,7 @@ components:
         kubernetesCurrentVersion: kubernetesCurrentVersion
         kubesprayCurrentVersion: kubesprayCurrentVersion
         id: 0
-        status: status
+        status: "Null"
       properties:
         id:
           format: int32
@@ -38402,8 +38412,7 @@ components:
           nullable: true
           type: string
         status:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/ProjectStatus'
         serversCount:
           format: int32
           type: integer
@@ -38415,6 +38424,18 @@ components:
           type: string
         cloudType:
           $ref: '#/components/schemas/CloudType'
+      required:
+      - cloudType
+      - createdAt
+      - id
+      - isLocked
+      - kubernetesCurrentVersion
+      - kubesprayCurrentVersion
+      - name
+      - organizationName
+      - serversCount
+      - status
+      - tcu
       type: object
     AdminUpdateProjectKubeConfigCommand:
       additionalProperties: false
@@ -38464,14 +38485,14 @@ components:
       example:
         data:
         - owner: true
-          role: role
+          role: Admin
           organizationName: organizationName
           name: name
           id: id
           csm: true
           email: email
         - owner: true
-          role: role
+          role: Admin
           organizationName: organizationName
           name: name
           id: id
@@ -38487,12 +38508,15 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AdminUsersResponseData:
       additionalProperties: false
       example:
         owner: true
-        role: role
+        role: Admin
         organizationName: organizationName
         name: name
         id: id
@@ -38509,8 +38533,7 @@ components:
           nullable: true
           type: string
         role:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/UserRole'
         organizationName:
           nullable: true
           type: string
@@ -38518,6 +38541,14 @@ components:
           type: boolean
         csm:
           type: boolean
+      required:
+      - csm
+      - email
+      - id
+      - name
+      - organizationName
+      - owner
+      - role
       type: object
     AdminUsersUpdateEmailCommand:
       additionalProperties: false
@@ -38583,6 +38614,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AiCredentialsForOrganizationEntity:
       additionalProperties: false
@@ -38648,6 +38682,15 @@ components:
           type: array
         isDefault:
           type: boolean
+      required:
+      - id
+      - isDefault
+      - name
+      - organizationId
+      - organizationName
+      - projects
+      - type
+      - url
       type: object
     AiListDto:
       additionalProperties: false
@@ -39008,6 +39051,8 @@ components:
         email:
           nullable: true
           type: string
+      required:
+      - email
       type: object
     AlertingIntegrationDto:
       additionalProperties: false
@@ -39017,13 +39062,16 @@ components:
         alertingIntegrationType: Opsgenie
       properties:
         url:
-          nullable: true
           type: string
         token:
           nullable: true
           type: string
         alertingIntegrationType:
           $ref: '#/components/schemas/AlertingIntegrationType'
+      required:
+      - alertingIntegrationType
+      - token
+      - url
       type: object
     AlertingIntegrationType:
       enum:
@@ -39045,7 +39093,6 @@ components:
           format: int32
           type: integer
         url:
-          nullable: true
           type: string
         token:
           nullable: true
@@ -39053,8 +39100,13 @@ components:
         alertingIntegrationType:
           $ref: '#/components/schemas/AlertingIntegrationType'
         alertingProfileName:
-          nullable: true
           type: string
+      required:
+      - alertingIntegrationType
+      - alertingProfileName
+      - id
+      - token
+      - url
       type: object
     AlertingProfilesList:
       additionalProperties: false
@@ -39148,6 +39200,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AlertingProfilesListDto:
       additionalProperties: false
@@ -39196,7 +39251,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         organizationId:
           format: int32
@@ -39217,17 +39271,14 @@ components:
         emails:
           items:
             $ref: '#/components/schemas/AlertingEmailDto'
-          nullable: true
           type: array
         webhooks:
           items:
             $ref: '#/components/schemas/AlertingWebhookDto'
-          nullable: true
           type: array
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         createdBy:
           nullable: true
@@ -39241,8 +39292,23 @@ components:
         reminder:
           $ref: '#/components/schemas/AlertingReminder'
         createdAt:
-          nullable: true
           type: string
+      required:
+      - createdAt
+      - createdBy
+      - emails
+      - id
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      - projects
+      - reminder
+      - slackConfigurationId
+      - slackConfigurationName
+      - webhooks
       type: object
     AlertingProfilesLockManagerCommand:
       additionalProperties: false
@@ -39560,15 +39626,12 @@ components:
         isLocked:
           type: boolean
         name:
-          nullable: true
           type: string
         region:
-          nullable: true
           type: string
         availabilityZones:
           items:
             type: string
-          nullable: true
           type: array
         availabilityZonesCount:
           format: int32
@@ -39576,7 +39639,6 @@ components:
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         createdBy:
           nullable: true
@@ -39593,7 +39655,6 @@ components:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         createdAt:
           nullable: true
@@ -39601,6 +39662,23 @@ components:
         continentName:
           nullable: true
           type: string
+      required:
+      - availabilityZones
+      - availabilityZonesCount
+      - continentName
+      - createdAt
+      - createdBy
+      - id
+      - isDefault
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      - projectCount
+      - projects
+      - region
       type: object
     Annotations:
       additionalProperties: false
@@ -40188,6 +40266,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AwsFlavorList:
       additionalProperties: false
@@ -40363,6 +40444,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AzureCredentialList:
       additionalProperties: false
@@ -40424,6 +40508,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AzureCredentialsListDto:
       additionalProperties: false
@@ -40461,18 +40548,14 @@ components:
         isLocked:
           type: boolean
         name:
-          nullable: true
           type: string
         tenantId:
-          nullable: true
           type: string
         location:
-          nullable: true
           type: string
         availabilityZones:
           items:
             type: string
-          nullable: true
           type: array
         availabilityZonesCount:
           format: int32
@@ -40480,7 +40563,6 @@ components:
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         createdBy:
           nullable: true
@@ -40500,11 +40582,28 @@ components:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         continentName:
           nullable: true
           type: string
+      required:
+      - availabilityZones
+      - availabilityZonesCount
+      - continentName
+      - createdAt
+      - createdBy
+      - id
+      - isDefault
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - location
+      - name
+      - organizationId
+      - organizationName
+      - projectCount
+      - projects
+      - tenantId
       type: object
     AzureDashboardCommand:
       additionalProperties: false
@@ -40630,6 +40729,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AzurePublishersList:
       additionalProperties: false
@@ -40647,6 +40749,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AzureQuotaListRecordDto:
       additionalProperties: false
@@ -40681,6 +40786,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AzureSubscriptionListCommand:
       additionalProperties: false
@@ -40781,6 +40889,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     BackupCredentialsCreateCommand:
       additionalProperties: false
@@ -40858,16 +40969,12 @@ components:
           format: int32
           type: integer
         s3Name:
-          nullable: true
           type: string
         s3AccessKeyId:
-          nullable: true
           type: string
         s3Endpoint:
-          nullable: true
           type: string
         s3Region:
-          nullable: true
           type: string
         organizationId:
           format: int32
@@ -40879,7 +40986,6 @@ components:
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         isLocked:
           type: boolean
@@ -40899,6 +41005,22 @@ components:
           type: boolean
         isInfra:
           type: boolean
+      required:
+      - createdAt
+      - createdBy
+      - id
+      - isDefault
+      - isInfra
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - organizationId
+      - organizationName
+      - projects
+      - s3AccessKeyId
+      - s3Endpoint
+      - s3Name
+      - s3Region
       type: object
     BackupCredentialsSearchCommand:
       additionalProperties: false
@@ -40983,6 +41105,9 @@ components:
             type: string
           nullable: true
           type: array
+      required:
+      - excludedNamespace
+      - includedNamespace
       type: object
     BackupLockManagerCommand:
       additionalProperties: false
@@ -41019,13 +41144,10 @@ components:
         backupCredentialId: 0
       properties:
         metadataName:
-          nullable: true
           type: string
         provider:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         lastValidated:
           format: date-time
@@ -41036,7 +41158,6 @@ components:
           nullable: true
           type: string
         accessMode:
-          nullable: true
           type: string
         phase:
           nullable: true
@@ -41045,6 +41166,15 @@ components:
           format: int32
           nullable: true
           type: integer
+      required:
+      - accessMode
+      - backupCredentialId
+      - createdAt
+      - lastValidated
+      - metadataName
+      - namespace
+      - phase
+      - provider
       type: object
     BecomePartnerCommand:
       additionalProperties: false
@@ -41796,7 +41926,6 @@ components:
         location: location
       properties:
         metadataName:
-          nullable: true
           type: string
         createdAt:
           format: date-time
@@ -41810,7 +41939,6 @@ components:
           nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         location:
           nullable: true
@@ -41818,6 +41946,14 @@ components:
         phase:
           nullable: true
           type: string
+      required:
+      - createdAt
+      - expiration
+      - location
+      - metadataName
+      - namespace
+      - phase
+      - scheduleName
       type: object
     CDeleteBackupRequestDto:
       additionalProperties: false
@@ -41829,21 +41965,24 @@ components:
         backupName: backupName
       properties:
         metadataName:
-          nullable: true
           type: string
         createdAt:
           format: date-time
           nullable: true
           type: string
         backupName:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         phase:
           nullable: true
           type: string
+      required:
+      - backupName
+      - createdAt
+      - metadataName
+      - namespace
+      - phase
       type: object
     CRestoreDto:
       additionalProperties: false
@@ -41865,26 +42004,20 @@ components:
         - includeNamespaces
       properties:
         metadataName:
-          nullable: true
           type: string
         backupName:
-          nullable: true
           type: string
         scheduleName:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         excludeNamespaces:
           items:
             type: string
-          nullable: true
           type: array
         includeNamespaces:
           items:
             type: string
-          nullable: true
           type: array
         completionDateTime:
           format: date-time
@@ -41902,6 +42035,18 @@ components:
         phase:
           nullable: true
           type: string
+      required:
+      - backupName
+      - completionDateTime
+      - createdAt
+      - excludeNamespaces
+      - includeNamespaces
+      - metadataName
+      - namespace
+      - phase
+      - scheduleName
+      - startTimeStamp
+      - warnings
       type: object
     CScheduleDto:
       additionalProperties: false
@@ -41958,6 +42103,16 @@ components:
             type: string
           nullable: true
           type: array
+      required:
+      - createdAt
+      - excludedNamespaces
+      - includedNamespaces
+      - lastBackup
+      - metadataName
+      - namespace
+      - phase
+      - schedule
+      - ttl
       type: object
     CancelExpiredSubscriptionsCommand:
       additionalProperties: false
@@ -50405,31 +50560,36 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         url:
-          nullable: true
           type: string
         clientId:
-          nullable: true
           type: string
         clientSecret:
-          nullable: true
           type: string
         realmsName:
-          nullable: true
           type: string
         organizationId:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         partnerLogo:
           nullable: true
           type: string
         enabled:
           type: boolean
+      required:
+      - clientId
+      - clientSecret
+      - enabled
+      - id
+      - name
+      - organizationId
+      - organizationName
+      - partnerLogo
+      - realmsName
+      - url
       type: object
     KubeConfigForUserDto:
       additionalProperties: false
@@ -51530,6 +51690,10 @@ components:
             type: integer
           nullable: true
           type: array
+      required:
+      - data
+      - projects
+      - totalCount
       type: object
     ListAllBackups:
       additionalProperties: false
@@ -51559,6 +51723,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ListAllDeleteBackupRequests:
       additionalProperties: false
@@ -51584,6 +51751,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ListAllRestores:
       additionalProperties: false
@@ -51629,6 +51799,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ListAllSchedules:
       additionalProperties: false
@@ -51676,6 +51849,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ListCatalogAppAvailableVersionsCommand:
       additionalProperties: false
@@ -65205,6 +65381,10 @@ components:
         value:
           nullable: true
           type: string
+      required:
+      - id
+      - key
+      - value
       type: object
     WhiteListDomainCreateCommand:
       additionalProperties: false
@@ -65362,6 +65542,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ZadaraCredentialsListDto:
       additionalProperties: false
@@ -65400,15 +65583,12 @@ components:
         isLocked:
           type: boolean
         name:
-          nullable: true
           type: string
         region:
-          nullable: true
           type: string
         availabilityZones:
           items:
             type: string
-          nullable: true
           type: array
         availabilityZonesCount:
           format: int32
@@ -65416,7 +65596,6 @@ components:
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         createdBy:
           nullable: true
@@ -65433,7 +65612,6 @@ components:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         createdAt:
           nullable: true
@@ -65442,11 +65620,28 @@ components:
           nullable: true
           type: string
         zadaraApiUrl:
-          nullable: true
           type: string
         zadaraVolumeType:
-          nullable: true
           type: string
+      required:
+      - availabilityZones
+      - availabilityZonesCount
+      - continentName
+      - createdAt
+      - createdBy
+      - id
+      - isDefault
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      - projectCount
+      - projects
+      - region
+      - zadaraApiUrl
+      - zadaraVolumeType
       type: object
     ZadaraRegionListCommand:
       additionalProperties: false
@@ -65641,6 +65836,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ZededaListDto:
       additionalProperties: false
@@ -65700,12 +65898,10 @@ components:
         isLocked:
           type: boolean
         name:
-          nullable: true
           type: string
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         createdBy:
           nullable: true
@@ -65725,7 +65921,6 @@ components:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         continentName:
           nullable: true
@@ -65733,25 +65928,39 @@ components:
         edgeNodes:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         apiToken:
-          nullable: true
           type: string
         apiUrl:
-          nullable: true
           type: string
         project:
-          nullable: true
           type: string
         projectId:
-          nullable: true
           type: string
         zededaNetworks:
           items:
             $ref: '#/components/schemas/ZededaNetworkListDto'
-          nullable: true
           type: array
+      required:
+      - apiToken
+      - apiUrl
+      - continentName
+      - createdAt
+      - createdBy
+      - edgeNodes
+      - id
+      - isDefault
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      - project
+      - projectCount
+      - projectId
+      - projects
+      - zededaNetworks
       type: object
     ZededaNetworkListDto:
       additionalProperties: false
@@ -65770,19 +65979,15 @@ components:
           nullable: true
           type: string
         gateway:
-          nullable: true
           type: string
         ipAddress:
-          nullable: true
           type: string
         netMask:
           format: int32
           type: integer
         beginAllocationRange:
-          nullable: true
           type: string
         endAllocationRange:
-          nullable: true
           type: string
         isPrivate:
           type: boolean
@@ -65792,6 +65997,16 @@ components:
           format: int32
           nullable: true
           type: integer
+      required:
+      - beginAllocationRange
+      - bridge
+      - endAllocationRange
+      - gateway
+      - ipAddress
+      - isPrivate
+      - isVirtualLbNetwork
+      - netMask
+      - vlanId
       type: object
     ZededaProjectsCommand:
       additionalProperties: false

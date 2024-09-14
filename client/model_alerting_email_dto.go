@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AlertingEmailDto type satisfies the MappedNullable interface at compile time
@@ -20,15 +22,18 @@ var _ MappedNullable = &AlertingEmailDto{}
 
 // AlertingEmailDto struct for AlertingEmailDto
 type AlertingEmailDto struct {
-	Email NullableString `json:"email,omitempty"`
+	Email NullableString `json:"email"`
 }
+
+type _AlertingEmailDto AlertingEmailDto
 
 // NewAlertingEmailDto instantiates a new AlertingEmailDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertingEmailDto() *AlertingEmailDto {
+func NewAlertingEmailDto(email NullableString) *AlertingEmailDto {
 	this := AlertingEmailDto{}
+	this.Email = email
 	return &this
 }
 
@@ -40,16 +45,18 @@ func NewAlertingEmailDtoWithDefaults() *AlertingEmailDto {
 	return &this
 }
 
-// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEmail returns the Email field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AlertingEmailDto) GetEmail() string {
-	if o == nil || IsNil(o.Email.Get()) {
+	if o == nil || o.Email.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Email.Get()
 }
 
-// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingEmailDto) GetEmailOk() (*string, bool) {
@@ -59,27 +66,9 @@ func (o *AlertingEmailDto) GetEmailOk() (*string, bool) {
 	return o.Email.Get(), o.Email.IsSet()
 }
 
-// HasEmail returns a boolean if a field has been set.
-func (o *AlertingEmailDto) HasEmail() bool {
-	if o != nil && o.Email.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
+// SetEmail sets field value
 func (o *AlertingEmailDto) SetEmail(v string) {
 	o.Email.Set(&v)
-}
-// SetEmailNil sets the value for Email to be an explicit nil
-func (o *AlertingEmailDto) SetEmailNil() {
-	o.Email.Set(nil)
-}
-
-// UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *AlertingEmailDto) UnsetEmail() {
-	o.Email.Unset()
 }
 
 func (o AlertingEmailDto) MarshalJSON() ([]byte, error) {
@@ -92,10 +81,45 @@ func (o AlertingEmailDto) MarshalJSON() ([]byte, error) {
 
 func (o AlertingEmailDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Email.IsSet() {
-		toSerialize["email"] = o.Email.Get()
-	}
+	toSerialize["email"] = o.Email.Get()
 	return toSerialize, nil
+}
+
+func (o *AlertingEmailDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"email",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAlertingEmailDto := _AlertingEmailDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAlertingEmailDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AlertingEmailDto(varAlertingEmailDto)
+
+	return err
 }
 
 type NullableAlertingEmailDto struct {

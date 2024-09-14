@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AiCredentialsListDto type satisfies the MappedNullable interface at compile time
@@ -20,22 +22,32 @@ var _ MappedNullable = &AiCredentialsListDto{}
 
 // AiCredentialsListDto struct for AiCredentialsListDto
 type AiCredentialsListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Type *AiType `json:"type,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	IsDefault *bool `json:"isDefault,omitempty"`
+	Id int32 `json:"id"`
+	Url NullableString `json:"url"`
+	Name NullableString `json:"name"`
+	Type AiType `json:"type"`
+	OrganizationId NullableInt32 `json:"organizationId"`
+	OrganizationName NullableString `json:"organizationName"`
+	Projects []CommonDropdownDto `json:"projects"`
+	IsDefault bool `json:"isDefault"`
 }
+
+type _AiCredentialsListDto AiCredentialsListDto
 
 // NewAiCredentialsListDto instantiates a new AiCredentialsListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAiCredentialsListDto() *AiCredentialsListDto {
+func NewAiCredentialsListDto(id int32, url NullableString, name NullableString, type_ AiType, organizationId NullableInt32, organizationName NullableString, projects []CommonDropdownDto, isDefault bool) *AiCredentialsListDto {
 	this := AiCredentialsListDto{}
+	this.Id = id
+	this.Url = url
+	this.Name = name
+	this.Type = type_
+	this.OrganizationId = organizationId
+	this.OrganizationName = organizationName
+	this.Projects = projects
+	this.IsDefault = isDefault
 	return &this
 }
 
@@ -47,48 +59,42 @@ func NewAiCredentialsListDtoWithDefaults() *AiCredentialsListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *AiCredentialsListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *AiCredentialsListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *AiCredentialsListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *AiCredentialsListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AiCredentialsListDto) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || o.Url.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Url.Get()
 }
 
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AiCredentialsListDto) GetUrlOk() (*string, bool) {
@@ -98,39 +104,23 @@ func (o *AiCredentialsListDto) GetUrlOk() (*string, bool) {
 	return o.Url.Get(), o.Url.IsSet()
 }
 
-// HasUrl returns a boolean if a field has been set.
-func (o *AiCredentialsListDto) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl sets field value
 func (o *AiCredentialsListDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *AiCredentialsListDto) SetUrlNil() {
-	o.Url.Set(nil)
-}
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *AiCredentialsListDto) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AiCredentialsListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AiCredentialsListDto) GetNameOk() (*string, bool) {
@@ -140,71 +130,47 @@ func (o *AiCredentialsListDto) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *AiCredentialsListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *AiCredentialsListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *AiCredentialsListDto) SetNameNil() {
-	o.Name.Set(nil)
-}
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *AiCredentialsListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *AiCredentialsListDto) GetType() AiType {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret AiType
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *AiCredentialsListDto) GetTypeOk() (*AiType, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *AiCredentialsListDto) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given AiType and assigns it to the Type field.
+// SetType sets field value
 func (o *AiCredentialsListDto) SetType(v AiType) {
-	o.Type = &v
+	o.Type = v
 }
 
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationId returns the OrganizationId field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *AiCredentialsListDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId.Get()) {
+	if o == nil || o.OrganizationId.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AiCredentialsListDto) GetOrganizationIdOk() (*int32, bool) {
@@ -214,39 +180,23 @@ func (o *AiCredentialsListDto) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *AiCredentialsListDto) HasOrganizationId() bool {
-	if o != nil && o.OrganizationId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *AiCredentialsListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
-func (o *AiCredentialsListDto) SetOrganizationIdNil() {
-	o.OrganizationId.Set(nil)
-}
 
-// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
-func (o *AiCredentialsListDto) UnsetOrganizationId() {
-	o.OrganizationId.Unset()
-}
-
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AiCredentialsListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || o.OrganizationName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.OrganizationName.Get()
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AiCredentialsListDto) GetOrganizationNameOk() (*string, bool) {
@@ -256,39 +206,23 @@ func (o *AiCredentialsListDto) GetOrganizationNameOk() (*string, bool) {
 	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *AiCredentialsListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *AiCredentialsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *AiCredentialsListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *AiCredentialsListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value
+// If the value is explicit nil, the zero value for []CommonDropdownDto will be returned
 func (o *AiCredentialsListDto) GetProjects() []CommonDropdownDto {
 	if o == nil {
 		var ret []CommonDropdownDto
 		return ret
 	}
+
 	return o.Projects
 }
 
-// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
+// GetProjectsOk returns a tuple with the Projects field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AiCredentialsListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
@@ -298,50 +232,33 @@ func (o *AiCredentialsListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
 	return o.Projects, true
 }
 
-// HasProjects returns a boolean if a field has been set.
-func (o *AiCredentialsListDto) HasProjects() bool {
-	if o != nil && !IsNil(o.Projects) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjects gets a reference to the given []CommonDropdownDto and assigns it to the Projects field.
+// SetProjects sets field value
 func (o *AiCredentialsListDto) SetProjects(v []CommonDropdownDto) {
 	o.Projects = v
 }
 
-// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+// GetIsDefault returns the IsDefault field value
 func (o *AiCredentialsListDto) GetIsDefault() bool {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDefault
+
+	return o.IsDefault
 }
 
-// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// GetIsDefaultOk returns a tuple with the IsDefault field value
 // and a boolean to check if the value has been set.
 func (o *AiCredentialsListDto) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDefault, true
+	return &o.IsDefault, true
 }
 
-// HasIsDefault returns a boolean if a field has been set.
-func (o *AiCredentialsListDto) HasIsDefault() bool {
-	if o != nil && !IsNil(o.IsDefault) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+// SetIsDefault sets field value
 func (o *AiCredentialsListDto) SetIsDefault(v bool) {
-	o.IsDefault = &v
+	o.IsDefault = v
 }
 
 func (o AiCredentialsListDto) MarshalJSON() ([]byte, error) {
@@ -354,31 +271,61 @@ func (o AiCredentialsListDto) MarshalJSON() ([]byte, error) {
 
 func (o AiCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if o.OrganizationId.IsSet() {
-		toSerialize["organizationId"] = o.OrganizationId.Get()
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["url"] = o.Url.Get()
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["type"] = o.Type
+	toSerialize["organizationId"] = o.OrganizationId.Get()
+	toSerialize["organizationName"] = o.OrganizationName.Get()
 	if o.Projects != nil {
 		toSerialize["projects"] = o.Projects
 	}
-	if !IsNil(o.IsDefault) {
-		toSerialize["isDefault"] = o.IsDefault
-	}
+	toSerialize["isDefault"] = o.IsDefault
 	return toSerialize, nil
+}
+
+func (o *AiCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"url",
+		"name",
+		"type",
+		"organizationId",
+		"organizationName",
+		"projects",
+		"isDefault",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAiCredentialsListDto := _AiCredentialsListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAiCredentialsListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AiCredentialsListDto(varAiCredentialsListDto)
+
+	return err
 }
 
 type NullableAiCredentialsListDto struct {
