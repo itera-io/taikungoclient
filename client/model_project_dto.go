@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ProjectDto type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &ProjectDto{}
 
 // ProjectDto struct for ProjectDto
 type ProjectDto struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
+	ProjectId int32 `json:"projectId"`
+	ProjectName NullableString `json:"projectName"`
 }
+
+type _ProjectDto ProjectDto
 
 // NewProjectDto instantiates a new ProjectDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDto() *ProjectDto {
+func NewProjectDto(projectId int32, projectName NullableString) *ProjectDto {
 	this := ProjectDto{}
+	this.ProjectId = projectId
+	this.ProjectName = projectName
 	return &this
 }
 
@@ -41,48 +47,42 @@ func NewProjectDtoWithDefaults() *ProjectDto {
 	return &this
 }
 
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+// GetProjectId returns the ProjectId field value
 func (o *ProjectDto) GetProjectId() int32 {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ProjectId
+
+	return o.ProjectId
 }
 
-// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// GetProjectIdOk returns a tuple with the ProjectId field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDto) GetProjectIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectId, true
+	return &o.ProjectId, true
 }
 
-// HasProjectId returns a boolean if a field has been set.
-func (o *ProjectDto) HasProjectId() bool {
-	if o != nil && !IsNil(o.ProjectId) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
+// SetProjectId sets field value
 func (o *ProjectDto) SetProjectId(v int32) {
-	o.ProjectId = &v
+	o.ProjectId = v
 }
 
-// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjectName returns the ProjectName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDto) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName.Get()) {
+	if o == nil || o.ProjectName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.ProjectName.Get()
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
+// GetProjectNameOk returns a tuple with the ProjectName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDto) GetProjectNameOk() (*string, bool) {
@@ -92,27 +92,9 @@ func (o *ProjectDto) GetProjectNameOk() (*string, bool) {
 	return o.ProjectName.Get(), o.ProjectName.IsSet()
 }
 
-// HasProjectName returns a boolean if a field has been set.
-func (o *ProjectDto) HasProjectName() bool {
-	if o != nil && o.ProjectName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
+// SetProjectName sets field value
 func (o *ProjectDto) SetProjectName(v string) {
 	o.ProjectName.Set(&v)
-}
-// SetProjectNameNil sets the value for ProjectName to be an explicit nil
-func (o *ProjectDto) SetProjectNameNil() {
-	o.ProjectName.Set(nil)
-}
-
-// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
-func (o *ProjectDto) UnsetProjectName() {
-	o.ProjectName.Unset()
 }
 
 func (o ProjectDto) MarshalJSON() ([]byte, error) {
@@ -125,13 +107,47 @@ func (o ProjectDto) MarshalJSON() ([]byte, error) {
 
 func (o ProjectDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ProjectId) {
-		toSerialize["projectId"] = o.ProjectId
-	}
-	if o.ProjectName.IsSet() {
-		toSerialize["projectName"] = o.ProjectName.Get()
-	}
+	toSerialize["projectId"] = o.ProjectId
+	toSerialize["projectName"] = o.ProjectName.Get()
 	return toSerialize, nil
+}
+
+func (o *ProjectDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"projectId",
+		"projectName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varProjectDto := _ProjectDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProjectDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectDto(varProjectDto)
+
+	return err
 }
 
 type NullableProjectDto struct {

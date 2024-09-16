@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the WebhookHeaderDto type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &WebhookHeaderDto{}
 
 // WebhookHeaderDto struct for WebhookHeaderDto
 type WebhookHeaderDto struct {
-	Id int32 `json:"id"`
-	Key NullableString `json:"key"`
-	Value NullableString `json:"value"`
+	Id *int32 `json:"id,omitempty"`
+	Key NullableString `json:"key,omitempty"`
+	Value NullableString `json:"value,omitempty"`
 }
-
-type _WebhookHeaderDto WebhookHeaderDto
 
 // NewWebhookHeaderDto instantiates a new WebhookHeaderDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebhookHeaderDto(id int32, key NullableString, value NullableString) *WebhookHeaderDto {
+func NewWebhookHeaderDto() *WebhookHeaderDto {
 	this := WebhookHeaderDto{}
-	this.Id = id
-	this.Key = key
-	this.Value = value
 	return &this
 }
 
@@ -49,42 +42,48 @@ func NewWebhookHeaderDtoWithDefaults() *WebhookHeaderDto {
 	return &this
 }
 
-// GetId returns the Id field value
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *WebhookHeaderDto) GetId() int32 {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		var ret int32
 		return ret
 	}
-
-	return o.Id
+	return *o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *WebhookHeaderDto) GetIdOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return &o.Id, true
+	return o.Id, true
 }
 
-// SetId sets field value
+// HasId returns a boolean if a field has been set.
+func (o *WebhookHeaderDto) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given int32 and assigns it to the Id field.
 func (o *WebhookHeaderDto) SetId(v int32) {
-	o.Id = v
+	o.Id = &v
 }
 
-// GetKey returns the Key field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookHeaderDto) GetKey() string {
-	if o == nil || o.Key.Get() == nil {
+	if o == nil || IsNil(o.Key.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Key.Get()
 }
 
-// GetKeyOk returns a tuple with the Key field value
+// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookHeaderDto) GetKeyOk() (*string, bool) {
@@ -94,23 +93,39 @@ func (o *WebhookHeaderDto) GetKeyOk() (*string, bool) {
 	return o.Key.Get(), o.Key.IsSet()
 }
 
-// SetKey sets field value
+// HasKey returns a boolean if a field has been set.
+func (o *WebhookHeaderDto) HasKey() bool {
+	if o != nil && o.Key.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetKey gets a reference to the given NullableString and assigns it to the Key field.
 func (o *WebhookHeaderDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
+// SetKeyNil sets the value for Key to be an explicit nil
+func (o *WebhookHeaderDto) SetKeyNil() {
+	o.Key.Set(nil)
+}
 
-// GetValue returns the Value field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetKey ensures that no value is present for Key, not even an explicit nil
+func (o *WebhookHeaderDto) UnsetKey() {
+	o.Key.Unset()
+}
+
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *WebhookHeaderDto) GetValue() string {
-	if o == nil || o.Value.Get() == nil {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Value.Get()
 }
 
-// GetValueOk returns a tuple with the Value field value
+// GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *WebhookHeaderDto) GetValueOk() (*string, bool) {
@@ -120,9 +135,27 @@ func (o *WebhookHeaderDto) GetValueOk() (*string, bool) {
 	return o.Value.Get(), o.Value.IsSet()
 }
 
-// SetValue sets field value
+// HasValue returns a boolean if a field has been set.
+func (o *WebhookHeaderDto) HasValue() bool {
+	if o != nil && o.Value.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetValue gets a reference to the given NullableString and assigns it to the Value field.
 func (o *WebhookHeaderDto) SetValue(v string) {
 	o.Value.Set(&v)
+}
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *WebhookHeaderDto) SetValueNil() {
+	o.Value.Set(nil)
+}
+
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *WebhookHeaderDto) UnsetValue() {
+	o.Value.Unset()
 }
 
 func (o WebhookHeaderDto) MarshalJSON() ([]byte, error) {
@@ -135,49 +168,16 @@ func (o WebhookHeaderDto) MarshalJSON() ([]byte, error) {
 
 func (o WebhookHeaderDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["key"] = o.Key.Get()
-	toSerialize["value"] = o.Value.Get()
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
+	if o.Key.IsSet() {
+		toSerialize["key"] = o.Key.Get()
+	}
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
+	}
 	return toSerialize, nil
-}
-
-func (o *WebhookHeaderDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"key",
-		"value",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varWebhookHeaderDto := _WebhookHeaderDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varWebhookHeaderDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = WebhookHeaderDto(varWebhookHeaderDto)
-
-	return err
 }
 
 type NullableWebhookHeaderDto struct {

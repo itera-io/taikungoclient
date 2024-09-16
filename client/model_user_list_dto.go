@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the UserListDto type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &UserListDto{}
 
 // UserListDto struct for UserListDto
 type UserListDto struct {
-	Id NullableString `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Id NullableString `json:"id"`
+	Name NullableString `json:"name"`
 }
+
+type _UserListDto UserListDto
 
 // NewUserListDto instantiates a new UserListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserListDto() *UserListDto {
+func NewUserListDto(id NullableString, name NullableString) *UserListDto {
 	this := UserListDto{}
+	this.Id = id
+	this.Name = name
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewUserListDtoWithDefaults() *UserListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetId returns the Id field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *UserListDto) GetId() string {
-	if o == nil || IsNil(o.Id.Get()) {
+	if o == nil || o.Id.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Id.Get()
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserListDto) GetIdOk() (*string, bool) {
@@ -60,39 +68,23 @@ func (o *UserListDto) GetIdOk() (*string, bool) {
 	return o.Id.Get(), o.Id.IsSet()
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *UserListDto) HasId() bool {
-	if o != nil && o.Id.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given NullableString and assigns it to the Id field.
+// SetId sets field value
 func (o *UserListDto) SetId(v string) {
 	o.Id.Set(&v)
 }
-// SetIdNil sets the value for Id to be an explicit nil
-func (o *UserListDto) SetIdNil() {
-	o.Id.Set(nil)
-}
 
-// UnsetId ensures that no value is present for Id, not even an explicit nil
-func (o *UserListDto) UnsetId() {
-	o.Id.Unset()
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *UserListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserListDto) GetNameOk() (*string, bool) {
@@ -102,27 +94,9 @@ func (o *UserListDto) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *UserListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *UserListDto) SetName(v string) {
 	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *UserListDto) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *UserListDto) UnsetName() {
-	o.Name.Unset()
 }
 
 func (o UserListDto) MarshalJSON() ([]byte, error) {
@@ -135,13 +109,47 @@ func (o UserListDto) MarshalJSON() ([]byte, error) {
 
 func (o UserListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id.IsSet() {
-		toSerialize["id"] = o.Id.Get()
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
+	toSerialize["id"] = o.Id.Get()
+	toSerialize["name"] = o.Name.Get()
 	return toSerialize, nil
+}
+
+func (o *UserListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserListDto := _UserListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserListDto(varUserListDto)
+
+	return err
 }
 
 type NullableUserListDto struct {

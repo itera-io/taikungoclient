@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the UserDetails type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,22 @@ var _ MappedNullable = &UserDetails{}
 
 // UserDetails struct for UserDetails
 type UserDetails struct {
-	Data *UserForListDto `json:"data,omitempty"`
-	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
-	TrialDays NullableInt32 `json:"trialDays,omitempty"`
+	Data UserForListDto `json:"data"`
+	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
+	TrialDays NullableInt32 `json:"trialDays"`
 }
+
+type _UserDetails UserDetails
 
 // NewUserDetails instantiates a new UserDetails object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserDetails() *UserDetails {
+func NewUserDetails(data UserForListDto, isMaintenanceModeEnabled bool, trialDays NullableInt32) *UserDetails {
 	this := UserDetails{}
+	this.Data = data
+	this.IsMaintenanceModeEnabled = isMaintenanceModeEnabled
+	this.TrialDays = trialDays
 	return &this
 }
 
@@ -42,80 +49,66 @@ func NewUserDetailsWithDefaults() *UserDetails {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise.
+// GetData returns the Data field value
 func (o *UserDetails) GetData() UserForListDto {
-	if o == nil || IsNil(o.Data) {
+	if o == nil {
 		var ret UserForListDto
 		return ret
 	}
-	return *o.Data
+
+	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 func (o *UserDetails) GetDataOk() (*UserForListDto, bool) {
-	if o == nil || IsNil(o.Data) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Data, true
+	return &o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *UserDetails) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given UserForListDto and assigns it to the Data field.
+// SetData sets field value
 func (o *UserDetails) SetData(v UserForListDto) {
-	o.Data = &v
+	o.Data = v
 }
 
-// GetIsMaintenanceModeEnabled returns the IsMaintenanceModeEnabled field value if set, zero value otherwise.
+// GetIsMaintenanceModeEnabled returns the IsMaintenanceModeEnabled field value
 func (o *UserDetails) GetIsMaintenanceModeEnabled() bool {
-	if o == nil || IsNil(o.IsMaintenanceModeEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsMaintenanceModeEnabled
+
+	return o.IsMaintenanceModeEnabled
 }
 
-// GetIsMaintenanceModeEnabledOk returns a tuple with the IsMaintenanceModeEnabled field value if set, nil otherwise
+// GetIsMaintenanceModeEnabledOk returns a tuple with the IsMaintenanceModeEnabled field value
 // and a boolean to check if the value has been set.
 func (o *UserDetails) GetIsMaintenanceModeEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsMaintenanceModeEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsMaintenanceModeEnabled, true
+	return &o.IsMaintenanceModeEnabled, true
 }
 
-// HasIsMaintenanceModeEnabled returns a boolean if a field has been set.
-func (o *UserDetails) HasIsMaintenanceModeEnabled() bool {
-	if o != nil && !IsNil(o.IsMaintenanceModeEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsMaintenanceModeEnabled gets a reference to the given bool and assigns it to the IsMaintenanceModeEnabled field.
+// SetIsMaintenanceModeEnabled sets field value
 func (o *UserDetails) SetIsMaintenanceModeEnabled(v bool) {
-	o.IsMaintenanceModeEnabled = &v
+	o.IsMaintenanceModeEnabled = v
 }
 
-// GetTrialDays returns the TrialDays field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTrialDays returns the TrialDays field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *UserDetails) GetTrialDays() int32 {
-	if o == nil || IsNil(o.TrialDays.Get()) {
+	if o == nil || o.TrialDays.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.TrialDays.Get()
 }
 
-// GetTrialDaysOk returns a tuple with the TrialDays field value if set, nil otherwise
+// GetTrialDaysOk returns a tuple with the TrialDays field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserDetails) GetTrialDaysOk() (*int32, bool) {
@@ -125,27 +118,9 @@ func (o *UserDetails) GetTrialDaysOk() (*int32, bool) {
 	return o.TrialDays.Get(), o.TrialDays.IsSet()
 }
 
-// HasTrialDays returns a boolean if a field has been set.
-func (o *UserDetails) HasTrialDays() bool {
-	if o != nil && o.TrialDays.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTrialDays gets a reference to the given NullableInt32 and assigns it to the TrialDays field.
+// SetTrialDays sets field value
 func (o *UserDetails) SetTrialDays(v int32) {
 	o.TrialDays.Set(&v)
-}
-// SetTrialDaysNil sets the value for TrialDays to be an explicit nil
-func (o *UserDetails) SetTrialDaysNil() {
-	o.TrialDays.Set(nil)
-}
-
-// UnsetTrialDays ensures that no value is present for TrialDays, not even an explicit nil
-func (o *UserDetails) UnsetTrialDays() {
-	o.TrialDays.Unset()
 }
 
 func (o UserDetails) MarshalJSON() ([]byte, error) {
@@ -158,16 +133,49 @@ func (o UserDetails) MarshalJSON() ([]byte, error) {
 
 func (o UserDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Data) {
-		toSerialize["data"] = o.Data
-	}
-	if !IsNil(o.IsMaintenanceModeEnabled) {
-		toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
-	}
-	if o.TrialDays.IsSet() {
-		toSerialize["trialDays"] = o.TrialDays.Get()
-	}
+	toSerialize["data"] = o.Data
+	toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
+	toSerialize["trialDays"] = o.TrialDays.Get()
 	return toSerialize, nil
+}
+
+func (o *UserDetails) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+		"isMaintenanceModeEnabled",
+		"trialDays",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserDetails := _UserDetails{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserDetails)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserDetails(varUserDetails)
+
+	return err
 }
 
 type NullableUserDetails struct {

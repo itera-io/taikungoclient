@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-16T00:03:23.9413101Z
-                  createdAt: 2024-09-16T00:03:23.9413101Z
+                  lastValidated: 2024-09-16T13:49:35.9161054Z
+                  createdAt: 2024-09-16T13:49:35.9161054Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-16T00:03:23.9413101Z
+                    lastBackup: 2024-09-16T13:49:35.9161054Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-16T00:03:23.9413101Z
+                  createdAt: 2024-09-16T13:49:35.9161054Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-16T00:03:23.9413101Z
+                  lastBackup: 2024-09-16T13:49:35.9161054Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-16T00:03:23.9413101Z
-                  expiration: 2024-09-16T00:03:23.9413101Z
+                  createdAt: 2024-09-16T13:49:35.9161054Z
+                  expiration: 2024-09-16T13:49:35.9161054Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-16T00:03:23.9413101Z
+                  createdAt: 2024-09-16T13:49:35.9161054Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-16T00:03:23.9413101+00:00
-                  startTimeStamp: 2024-09-16T00:03:23.9413101+00:00
-                  createdAt: 2024-09-16T00:03:23.9413101Z
+                  completionDateTime: 2024-09-16T13:49:35.9161054+00:00
+                  startTimeStamp: 2024-09-16T13:49:35.9161054+00:00
+                  createdAt: 2024-09-16T13:49:35.9161054Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -39383,6 +39383,10 @@ components:
         cloudType:
           nullable: true
           type: string
+      required:
+      - cloudType
+      - data
+      - totalCount
       type: object
     AllTicketsDto:
       additionalProperties: false
@@ -39961,6 +39965,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AvailablePackageDetailsDto:
       additionalProperties: false
@@ -41913,6 +41920,10 @@ components:
           type: array
         hidden:
           type: boolean
+      required:
+      - enable
+      - hidden
+      - reasons
       type: object
     CBackupDto:
       additionalProperties: false
@@ -43151,6 +43162,12 @@ components:
           $ref: '#/components/schemas/CloudType'
         isDefault:
           type: boolean
+      required:
+      - cloudType
+      - fullName
+      - id
+      - isDefault
+      - projects
       type: object
     CloudCredentialsResponseData:
       additionalProperties: false
@@ -43627,6 +43644,9 @@ components:
           type: string
         isEu:
           type: boolean
+      required:
+      - isEu
+      - name
       type: object
     CrdListDto:
       additionalProperties: false
@@ -45557,6 +45577,10 @@ components:
           format: byte
           nullable: true
           type: string
+      required:
+      - content
+      - contentType
+      - fileName
       type: object
     DaemonSetDto:
       additionalProperties: false
@@ -47243,6 +47267,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     DownloadInvoiceCommand:
       additionalProperties: false
@@ -47577,6 +47604,12 @@ components:
         path:
           nullable: true
           type: string
+      required:
+      - controller
+      - description
+      - id
+      - method
+      - path
       type: object
     EnumList:
       additionalProperties: false
@@ -47842,6 +47875,33 @@ components:
             $ref: '#/components/schemas/CommonDropdownDto'
           nullable: true
           type: array
+      required:
+      - alertTypes
+      - alertingIntegrationTypes
+      - auditLogs
+      - availability
+      - awsPlatforms
+      - azureQuotas
+      - cloudTypes
+      - cronPeriods
+      - googleImageTypes
+      - openstackContinents
+      - projectStatuses
+      - prometheusTypes
+      - proxmoxRoles
+      - rebootOptions
+      - reminderTypes
+      - requestLogs
+      - retentionPeriods
+      - securityGroupRules
+      - serverRoles
+      - serverStatuses
+      - showbackKinds
+      - slackTypes
+      - standaloneVmStatuses
+      - ticketPriorities
+      - userRoles
+      - validityPeriods
       type: object
     EstimatedInfracost:
       additionalProperties: false
@@ -48930,6 +48990,9 @@ components:
         name:
           nullable: true
           type: string
+      required:
+      - cloudId
+      - name
       type: object
     ExceededQuotaList:
       additionalProperties: false
@@ -48949,6 +49012,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ExportKubeConfigCommand:
       additionalProperties: false
@@ -49055,7 +49121,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         description:
           nullable: true
@@ -49063,6 +49128,12 @@ components:
           format: double
           nullable: true
           type: number
+      required:
+      - cpu
+      - description
+      - maxDataDiskCount
+      - name
+      - ram
       type: object
     ForceToResetPasswordCommand:
       additionalProperties: false
@@ -51556,6 +51627,13 @@ components:
         podsTotalCount:
           format: int32
           type: integer
+      required:
+      - podsCapacity
+      - podsTotalCount
+      - sumOfCpu
+      - sumOfCpuUsage
+      - sumOfRamInGb
+      - sumOfRamUsage
       type: object
     KubernetesVersionListDto:
       additionalProperties: false
@@ -54506,7 +54584,6 @@ components:
         id: 1
       properties:
         name:
-          nullable: true
           type: string
         logo:
           nullable: true
@@ -54517,6 +54594,11 @@ components:
         id:
           format: int32
           type: integer
+      required:
+      - id
+      - link
+      - logo
+      - name
       type: object
     PartnerEntity:
       additionalProperties: false
@@ -56284,7 +56366,6 @@ components:
         projectStatus:
           $ref: '#/components/schemas/ProjectStatus'
         projectName:
-          nullable: true
           type: string
         projectId:
           format: int32
@@ -56292,14 +56373,12 @@ components:
         cloudType:
           $ref: '#/components/schemas/CloudType'
         cloudName:
-          nullable: true
           type: string
         cloudId:
           format: int32
           nullable: true
           type: integer
         organizationName:
-          nullable: true
           type: string
         organizationId:
           format: int32
@@ -56347,8 +56426,31 @@ components:
           nullable: true
           type: array
         expiredAt:
-          nullable: true
           type: string
+      required:
+      - allowFullSpotKubernetes
+      - allowSpotVMs
+      - allowSpotWorkers
+      - availabilityZones
+      - cloudCredentialRevision
+      - cloudId
+      - cloudName
+      - cloudType
+      - expiredAt
+      - hasSelectedFlavors
+      - hypervisors
+      - isDrsEnabled
+      - isLocked
+      - isMaintenanceModeEnabled
+      - isProjectMaintenanceModeEnabled
+      - maxSpotPrice
+      - organizationId
+      - organizationName
+      - projectCloudRevision
+      - projectId
+      - projectName
+      - projectStatus
+      - totalHourlyCost
       type: object
     ProjectDto:
       additionalProperties: false
@@ -56362,6 +56464,9 @@ components:
         projectName:
           nullable: true
           type: string
+      required:
+      - projectId
+      - projectName
       type: object
     ProjectExtendLifeTimeCommand:
       additionalProperties: false
@@ -56433,6 +56538,9 @@ components:
         name:
           nullable: true
           type: string
+      required:
+      - id
+      - name
       type: object
     ProjectGroupList:
       additionalProperties: false
@@ -64042,6 +64150,10 @@ components:
           format: int32
           nullable: true
           type: integer
+      required:
+      - data
+      - isMaintenanceModeEnabled
+      - trialDays
       type: object
     UserDto:
       additionalProperties: false
@@ -64167,6 +64279,32 @@ components:
           type: array
         partner:
           $ref: '#/components/schemas/PartnerDetailsForUserDto'
+      required:
+      - boundProjects
+      - createdAt
+      - displayName
+      - email
+      - hasCustomerId
+      - hasPaymentMethod
+      - hasRepo
+      - id
+      - is2FAEnabled
+      - isApprovedByPartner
+      - isCsm
+      - isEligibleUpdateSubscription
+      - isEmailConfirmed
+      - isEmailNotificationEnabled
+      - isForcedToResetPassword
+      - isLocked
+      - isNewOrganization
+      - isReadOnly
+      - lastLoginAt
+      - organizationId
+      - organizationName
+      - owner
+      - partner
+      - role
+      - username
       type: object
     UserGroupDetailsListDto:
       additionalProperties: false
@@ -64208,6 +64346,13 @@ components:
             $ref: '#/components/schemas/ProjectGroupEntityListDto'
           nullable: true
           type: array
+      required:
+      - id
+      - name
+      - organizationId
+      - organizationName
+      - projectGroups
+      - users
       type: object
     UserGroupEntityListDto:
       additionalProperties: false
@@ -64264,6 +64409,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     UserListDto:
       additionalProperties: false
@@ -64277,6 +64425,9 @@ components:
         name:
           nullable: true
           type: string
+      required:
+      - id
+      - name
       type: object
     UserResourceChartDto:
       additionalProperties: false
@@ -64399,6 +64550,13 @@ components:
         accessKey:
           nullable: true
           type: string
+      required:
+      - accessKey
+      - createdAt
+      - expireDate
+      - id
+      - isReadonly
+      - name
       type: object
     UsersList:
       additionalProperties: false
@@ -64480,6 +64638,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     UsersSearchCommand:
       additionalProperties: false
@@ -64595,6 +64756,12 @@ components:
           $ref: '#/components/schemas/ButtonStatusDto'
         unlock:
           $ref: '#/components/schemas/ButtonStatusDto'
+      required:
+      - attachAlertingProfile
+      - detachAlertingProfile
+      - lock
+      - projectMaintenanceMode
+      - unlock
       type: object
     VClusterList:
       additionalProperties: false
@@ -64756,6 +64923,10 @@ components:
           type: integer
         project:
           $ref: '#/components/schemas/ProjectDetailsForVmsDto'
+      required:
+      - data
+      - project
+      - totalCount
       type: object
     VClusterListDto:
       additionalProperties: false
@@ -64823,7 +64994,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         isVirtualCluster:
           type: boolean
@@ -64834,31 +65004,24 @@ components:
         isMaintenanceModeEnabled:
           type: boolean
         organizationName:
-          nullable: true
           type: string
         organizationId:
           format: int32
           type: integer
         kubernetesVersion:
-          nullable: true
           type: string
         createdAt:
-          nullable: true
           type: string
         createdBy:
-          nullable: true
           type: string
         lastModified:
-          nullable: true
           type: string
         lastModifiedBy:
-          nullable: true
           type: string
         alertsCount:
           format: int32
           type: integer
         expiredAt:
-          nullable: true
           type: string
         deleteOnExpiration:
           type: boolean
@@ -64870,7 +65033,6 @@ components:
           nullable: true
           type: string
         accessIp:
-          nullable: true
           type: string
         cloudType:
           $ref: '#/components/schemas/CloudType'
@@ -64890,6 +65052,35 @@ components:
           $ref: '#/components/schemas/ButtonStatusDto'
         resetStatusButton:
           $ref: '#/components/schemas/ButtonStatusDto'
+      required:
+      - accessIp
+      - alertingProfileId
+      - alertingProfileName
+      - alertsCount
+      - cloudType
+      - createdAt
+      - createdBy
+      - deleteButton
+      - deleteOnExpiration
+      - expiredAt
+      - hasKubeConfigFile
+      - health
+      - id
+      - isLocked
+      - isMaintenanceModeEnabled
+      - isVirtualCluster
+      - kubeInfoButton
+      - kubernetesVersion
+      - lastModified
+      - lastModifiedBy
+      - lockButton
+      - name
+      - organizationId
+      - organizationName
+      - resetStatusButton
+      - setExpirationDateButton
+      - status
+      - unlockButton
       type: object
     ValidateVsphereCommand:
       additionalProperties: false
@@ -65164,6 +65355,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     VsphereListDto:
       additionalProperties: false
@@ -65226,18 +65420,14 @@ components:
         isLocked:
           type: boolean
         name:
-          nullable: true
           type: string
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         createdBy:
-          nullable: true
           type: string
         createdAt:
-          nullable: true
           type: string
         lastModified:
           nullable: true
@@ -65250,13 +65440,11 @@ components:
         drsEnabled:
           type: boolean
         resourcePool:
-          nullable: true
           type: string
         organizationId:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         continentName:
           nullable: true
@@ -65264,33 +65452,50 @@ components:
         hypervisors:
           items:
             $ref: '#/components/schemas/CommonStringBasedDropdownDto'
-          nullable: true
           type: array
         username:
-          nullable: true
           type: string
         url:
-          nullable: true
           type: string
         datacenterId:
-          nullable: true
           type: string
         datacenterName:
-          nullable: true
           type: string
         datastore:
-          nullable: true
           type: string
         vmTemplateName:
-          nullable: true
           type: string
         vsphereNetworks:
           items:
             $ref: '#/components/schemas/VsphereNetworkListDto'
-          nullable: true
           type: array
         skipTlsFlag:
           type: boolean
+      required:
+      - continentName
+      - createdAt
+      - createdBy
+      - datacenterId
+      - datacenterName
+      - datastore
+      - drsEnabled
+      - hypervisors
+      - id
+      - isDefault
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      - projectCount
+      - projects
+      - resourcePool
+      - skipTlsFlag
+      - url
+      - username
+      - vmTemplateName
+      - vsphereNetworks
       type: object
     VsphereNetworkListDto:
       additionalProperties: false
@@ -65308,24 +65513,29 @@ components:
           nullable: true
           type: string
         gateway:
-          nullable: true
           type: string
         ipAddress:
-          nullable: true
           type: string
         netMask:
           format: int32
           type: integer
         beginAllocationRange:
-          nullable: true
           type: string
         endAllocationRange:
-          nullable: true
           type: string
         isPrivate:
           type: boolean
         isVirtualLbNetwork:
           type: boolean
+      required:
+      - beginAllocationRange
+      - endAllocationRange
+      - gateway
+      - ipAddress
+      - isPrivate
+      - isVirtualLbNetwork
+      - name
+      - netMask
       type: object
     VsphereVmTemplateData:
       additionalProperties: false
@@ -65381,10 +65591,6 @@ components:
         value:
           nullable: true
           type: string
-      required:
-      - id
-      - key
-      - value
       type: object
     WhiteListDomainCreateCommand:
       additionalProperties: false

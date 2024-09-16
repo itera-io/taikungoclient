@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ProjectDetailsForVmsDto type satisfies the MappedNullable interface at compile time
@@ -20,37 +22,62 @@ var _ MappedNullable = &ProjectDetailsForVmsDto{}
 
 // ProjectDetailsForVmsDto struct for ProjectDetailsForVmsDto
 type ProjectDetailsForVmsDto struct {
-	ProjectStatus *ProjectStatus `json:"projectStatus,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	CloudType *CloudType `json:"cloudType,omitempty"`
-	CloudName NullableString `json:"cloudName,omitempty"`
-	CloudId NullableInt32 `json:"cloudId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	IsProjectMaintenanceModeEnabled *bool `json:"isProjectMaintenanceModeEnabled,omitempty"`
-	HasSelectedFlavors NullableBool `json:"hasSelectedFlavors,omitempty"`
-	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
-	IsDrsEnabled *bool `json:"isDrsEnabled,omitempty"`
-	ProjectCloudRevision NullableInt32 `json:"projectCloudRevision,omitempty"`
-	CloudCredentialRevision NullableInt32 `json:"cloudCredentialRevision,omitempty"`
-	AllowFullSpotKubernetes *bool `json:"allowFullSpotKubernetes,omitempty"`
-	AllowSpotWorkers *bool `json:"allowSpotWorkers,omitempty"`
-	AllowSpotVMs *bool `json:"allowSpotVMs,omitempty"`
-	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice,omitempty"`
-	TotalHourlyCost *float64 `json:"totalHourlyCost,omitempty"`
-	AvailabilityZones []string `json:"availabilityZones,omitempty"`
-	Hypervisors []string `json:"hypervisors,omitempty"`
-	ExpiredAt NullableString `json:"expiredAt,omitempty"`
+	ProjectStatus ProjectStatus `json:"projectStatus"`
+	ProjectName string `json:"projectName"`
+	ProjectId int32 `json:"projectId"`
+	CloudType CloudType `json:"cloudType"`
+	CloudName string `json:"cloudName"`
+	CloudId NullableInt32 `json:"cloudId"`
+	OrganizationName string `json:"organizationName"`
+	OrganizationId int32 `json:"organizationId"`
+	IsLocked bool `json:"isLocked"`
+	IsProjectMaintenanceModeEnabled bool `json:"isProjectMaintenanceModeEnabled"`
+	HasSelectedFlavors NullableBool `json:"hasSelectedFlavors"`
+	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
+	IsDrsEnabled bool `json:"isDrsEnabled"`
+	ProjectCloudRevision NullableInt32 `json:"projectCloudRevision"`
+	CloudCredentialRevision NullableInt32 `json:"cloudCredentialRevision"`
+	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
+	AllowSpotWorkers bool `json:"allowSpotWorkers"`
+	AllowSpotVMs bool `json:"allowSpotVMs"`
+	MaxSpotPrice NullableFloat64 `json:"maxSpotPrice"`
+	TotalHourlyCost float64 `json:"totalHourlyCost"`
+	AvailabilityZones []string `json:"availabilityZones"`
+	Hypervisors []string `json:"hypervisors"`
+	ExpiredAt string `json:"expiredAt"`
 }
+
+type _ProjectDetailsForVmsDto ProjectDetailsForVmsDto
 
 // NewProjectDetailsForVmsDto instantiates a new ProjectDetailsForVmsDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDetailsForVmsDto() *ProjectDetailsForVmsDto {
+func NewProjectDetailsForVmsDto(projectStatus ProjectStatus, projectName string, projectId int32, cloudType CloudType, cloudName string, cloudId NullableInt32, organizationName string, organizationId int32, isLocked bool, isProjectMaintenanceModeEnabled bool, hasSelectedFlavors NullableBool, isMaintenanceModeEnabled bool, isDrsEnabled bool, projectCloudRevision NullableInt32, cloudCredentialRevision NullableInt32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, totalHourlyCost float64, availabilityZones []string, hypervisors []string, expiredAt string) *ProjectDetailsForVmsDto {
 	this := ProjectDetailsForVmsDto{}
+	this.ProjectStatus = projectStatus
+	this.ProjectName = projectName
+	this.ProjectId = projectId
+	this.CloudType = cloudType
+	this.CloudName = cloudName
+	this.CloudId = cloudId
+	this.OrganizationName = organizationName
+	this.OrganizationId = organizationId
+	this.IsLocked = isLocked
+	this.IsProjectMaintenanceModeEnabled = isProjectMaintenanceModeEnabled
+	this.HasSelectedFlavors = hasSelectedFlavors
+	this.IsMaintenanceModeEnabled = isMaintenanceModeEnabled
+	this.IsDrsEnabled = isDrsEnabled
+	this.ProjectCloudRevision = projectCloudRevision
+	this.CloudCredentialRevision = cloudCredentialRevision
+	this.AllowFullSpotKubernetes = allowFullSpotKubernetes
+	this.AllowSpotWorkers = allowSpotWorkers
+	this.AllowSpotVMs = allowSpotVMs
+	this.MaxSpotPrice = maxSpotPrice
+	this.TotalHourlyCost = totalHourlyCost
+	this.AvailabilityZones = availabilityZones
+	this.Hypervisors = hypervisors
+	this.ExpiredAt = expiredAt
 	return &this
 }
 
@@ -62,196 +89,138 @@ func NewProjectDetailsForVmsDtoWithDefaults() *ProjectDetailsForVmsDto {
 	return &this
 }
 
-// GetProjectStatus returns the ProjectStatus field value if set, zero value otherwise.
+// GetProjectStatus returns the ProjectStatus field value
 func (o *ProjectDetailsForVmsDto) GetProjectStatus() ProjectStatus {
-	if o == nil || IsNil(o.ProjectStatus) {
+	if o == nil {
 		var ret ProjectStatus
 		return ret
 	}
-	return *o.ProjectStatus
+
+	return o.ProjectStatus
 }
 
-// GetProjectStatusOk returns a tuple with the ProjectStatus field value if set, nil otherwise
+// GetProjectStatusOk returns a tuple with the ProjectStatus field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetProjectStatusOk() (*ProjectStatus, bool) {
-	if o == nil || IsNil(o.ProjectStatus) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectStatus, true
+	return &o.ProjectStatus, true
 }
 
-// HasProjectStatus returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasProjectStatus() bool {
-	if o != nil && !IsNil(o.ProjectStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectStatus gets a reference to the given ProjectStatus and assigns it to the ProjectStatus field.
+// SetProjectStatus sets field value
 func (o *ProjectDetailsForVmsDto) SetProjectStatus(v ProjectStatus) {
-	o.ProjectStatus = &v
+	o.ProjectStatus = v
 }
 
-// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjectName returns the ProjectName field value
 func (o *ProjectDetailsForVmsDto) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName.Get()
+
+	return o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
+// GetProjectNameOk returns a tuple with the ProjectName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetProjectNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName.Get(), o.ProjectName.IsSet()
+	return &o.ProjectName, true
 }
 
-// HasProjectName returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasProjectName() bool {
-	if o != nil && o.ProjectName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
+// SetProjectName sets field value
 func (o *ProjectDetailsForVmsDto) SetProjectName(v string) {
-	o.ProjectName.Set(&v)
-}
-// SetProjectNameNil sets the value for ProjectName to be an explicit nil
-func (o *ProjectDetailsForVmsDto) SetProjectNameNil() {
-	o.ProjectName.Set(nil)
+	o.ProjectName = v
 }
 
-// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
-func (o *ProjectDetailsForVmsDto) UnsetProjectName() {
-	o.ProjectName.Unset()
-}
-
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+// GetProjectId returns the ProjectId field value
 func (o *ProjectDetailsForVmsDto) GetProjectId() int32 {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ProjectId
+
+	return o.ProjectId
 }
 
-// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// GetProjectIdOk returns a tuple with the ProjectId field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetProjectIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectId, true
+	return &o.ProjectId, true
 }
 
-// HasProjectId returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasProjectId() bool {
-	if o != nil && !IsNil(o.ProjectId) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
+// SetProjectId sets field value
 func (o *ProjectDetailsForVmsDto) SetProjectId(v int32) {
-	o.ProjectId = &v
+	o.ProjectId = v
 }
 
-// GetCloudType returns the CloudType field value if set, zero value otherwise.
+// GetCloudType returns the CloudType field value
 func (o *ProjectDetailsForVmsDto) GetCloudType() CloudType {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		var ret CloudType
 		return ret
 	}
-	return *o.CloudType
+
+	return o.CloudType
 }
 
-// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
+// GetCloudTypeOk returns a tuple with the CloudType field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetCloudTypeOk() (*CloudType, bool) {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CloudType, true
+	return &o.CloudType, true
 }
 
-// HasCloudType returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasCloudType() bool {
-	if o != nil && !IsNil(o.CloudType) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
+// SetCloudType sets field value
 func (o *ProjectDetailsForVmsDto) SetCloudType(v CloudType) {
-	o.CloudType = &v
+	o.CloudType = v
 }
 
-// GetCloudName returns the CloudName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCloudName returns the CloudName field value
 func (o *ProjectDetailsForVmsDto) GetCloudName() string {
-	if o == nil || IsNil(o.CloudName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CloudName.Get()
+
+	return o.CloudName
 }
 
-// GetCloudNameOk returns a tuple with the CloudName field value if set, nil otherwise
+// GetCloudNameOk returns a tuple with the CloudName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetCloudNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CloudName.Get(), o.CloudName.IsSet()
+	return &o.CloudName, true
 }
 
-// HasCloudName returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasCloudName() bool {
-	if o != nil && o.CloudName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudName gets a reference to the given NullableString and assigns it to the CloudName field.
+// SetCloudName sets field value
 func (o *ProjectDetailsForVmsDto) SetCloudName(v string) {
-	o.CloudName.Set(&v)
-}
-// SetCloudNameNil sets the value for CloudName to be an explicit nil
-func (o *ProjectDetailsForVmsDto) SetCloudNameNil() {
-	o.CloudName.Set(nil)
+	o.CloudName = v
 }
 
-// UnsetCloudName ensures that no value is present for CloudName, not even an explicit nil
-func (o *ProjectDetailsForVmsDto) UnsetCloudName() {
-	o.CloudName.Unset()
-}
-
-// GetCloudId returns the CloudId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCloudId returns the CloudId field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *ProjectDetailsForVmsDto) GetCloudId() int32 {
-	if o == nil || IsNil(o.CloudId.Get()) {
+	if o == nil || o.CloudId.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.CloudId.Get()
 }
 
-// GetCloudIdOk returns a tuple with the CloudId field value if set, nil otherwise
+// GetCloudIdOk returns a tuple with the CloudId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetCloudIdOk() (*int32, bool) {
@@ -261,177 +230,119 @@ func (o *ProjectDetailsForVmsDto) GetCloudIdOk() (*int32, bool) {
 	return o.CloudId.Get(), o.CloudId.IsSet()
 }
 
-// HasCloudId returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasCloudId() bool {
-	if o != nil && o.CloudId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudId gets a reference to the given NullableInt32 and assigns it to the CloudId field.
+// SetCloudId sets field value
 func (o *ProjectDetailsForVmsDto) SetCloudId(v int32) {
 	o.CloudId.Set(&v)
 }
-// SetCloudIdNil sets the value for CloudId to be an explicit nil
-func (o *ProjectDetailsForVmsDto) SetCloudIdNil() {
-	o.CloudId.Set(nil)
-}
 
-// UnsetCloudId ensures that no value is present for CloudId, not even an explicit nil
-func (o *ProjectDetailsForVmsDto) UnsetCloudId() {
-	o.CloudId.Unset()
-}
-
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
 func (o *ProjectDetailsForVmsDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+
+	return o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return &o.OrganizationName, true
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *ProjectDetailsForVmsDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *ProjectDetailsForVmsDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+	o.OrganizationName = v
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *ProjectDetailsForVmsDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
+// GetOrganizationId returns the OrganizationId field value
 func (o *ProjectDetailsForVmsDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationId
+
+	return o.OrganizationId
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationId, true
+	return &o.OrganizationId, true
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasOrganizationId() bool {
-	if o != nil && !IsNil(o.OrganizationId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *ProjectDetailsForVmsDto) SetOrganizationId(v int32) {
-	o.OrganizationId = &v
+	o.OrganizationId = v
 }
 
-// GetIsLocked returns the IsLocked field value if set, zero value otherwise.
+// GetIsLocked returns the IsLocked field value
 func (o *ProjectDetailsForVmsDto) GetIsLocked() bool {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsLocked
+
+	return o.IsLocked
 }
 
-// GetIsLockedOk returns a tuple with the IsLocked field value if set, nil otherwise
+// GetIsLockedOk returns a tuple with the IsLocked field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetIsLockedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsLocked, true
+	return &o.IsLocked, true
 }
 
-// HasIsLocked returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasIsLocked() bool {
-	if o != nil && !IsNil(o.IsLocked) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsLocked gets a reference to the given bool and assigns it to the IsLocked field.
+// SetIsLocked sets field value
 func (o *ProjectDetailsForVmsDto) SetIsLocked(v bool) {
-	o.IsLocked = &v
+	o.IsLocked = v
 }
 
-// GetIsProjectMaintenanceModeEnabled returns the IsProjectMaintenanceModeEnabled field value if set, zero value otherwise.
+// GetIsProjectMaintenanceModeEnabled returns the IsProjectMaintenanceModeEnabled field value
 func (o *ProjectDetailsForVmsDto) GetIsProjectMaintenanceModeEnabled() bool {
-	if o == nil || IsNil(o.IsProjectMaintenanceModeEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsProjectMaintenanceModeEnabled
+
+	return o.IsProjectMaintenanceModeEnabled
 }
 
-// GetIsProjectMaintenanceModeEnabledOk returns a tuple with the IsProjectMaintenanceModeEnabled field value if set, nil otherwise
+// GetIsProjectMaintenanceModeEnabledOk returns a tuple with the IsProjectMaintenanceModeEnabled field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetIsProjectMaintenanceModeEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsProjectMaintenanceModeEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsProjectMaintenanceModeEnabled, true
+	return &o.IsProjectMaintenanceModeEnabled, true
 }
 
-// HasIsProjectMaintenanceModeEnabled returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasIsProjectMaintenanceModeEnabled() bool {
-	if o != nil && !IsNil(o.IsProjectMaintenanceModeEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsProjectMaintenanceModeEnabled gets a reference to the given bool and assigns it to the IsProjectMaintenanceModeEnabled field.
+// SetIsProjectMaintenanceModeEnabled sets field value
 func (o *ProjectDetailsForVmsDto) SetIsProjectMaintenanceModeEnabled(v bool) {
-	o.IsProjectMaintenanceModeEnabled = &v
+	o.IsProjectMaintenanceModeEnabled = v
 }
 
-// GetHasSelectedFlavors returns the HasSelectedFlavors field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHasSelectedFlavors returns the HasSelectedFlavors field value
+// If the value is explicit nil, the zero value for bool will be returned
 func (o *ProjectDetailsForVmsDto) GetHasSelectedFlavors() bool {
-	if o == nil || IsNil(o.HasSelectedFlavors.Get()) {
+	if o == nil || o.HasSelectedFlavors.Get() == nil {
 		var ret bool
 		return ret
 	}
+
 	return *o.HasSelectedFlavors.Get()
 }
 
-// GetHasSelectedFlavorsOk returns a tuple with the HasSelectedFlavors field value if set, nil otherwise
+// GetHasSelectedFlavorsOk returns a tuple with the HasSelectedFlavors field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetHasSelectedFlavorsOk() (*bool, bool) {
@@ -441,103 +352,71 @@ func (o *ProjectDetailsForVmsDto) GetHasSelectedFlavorsOk() (*bool, bool) {
 	return o.HasSelectedFlavors.Get(), o.HasSelectedFlavors.IsSet()
 }
 
-// HasHasSelectedFlavors returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasHasSelectedFlavors() bool {
-	if o != nil && o.HasSelectedFlavors.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetHasSelectedFlavors gets a reference to the given NullableBool and assigns it to the HasSelectedFlavors field.
+// SetHasSelectedFlavors sets field value
 func (o *ProjectDetailsForVmsDto) SetHasSelectedFlavors(v bool) {
 	o.HasSelectedFlavors.Set(&v)
 }
-// SetHasSelectedFlavorsNil sets the value for HasSelectedFlavors to be an explicit nil
-func (o *ProjectDetailsForVmsDto) SetHasSelectedFlavorsNil() {
-	o.HasSelectedFlavors.Set(nil)
-}
 
-// UnsetHasSelectedFlavors ensures that no value is present for HasSelectedFlavors, not even an explicit nil
-func (o *ProjectDetailsForVmsDto) UnsetHasSelectedFlavors() {
-	o.HasSelectedFlavors.Unset()
-}
-
-// GetIsMaintenanceModeEnabled returns the IsMaintenanceModeEnabled field value if set, zero value otherwise.
+// GetIsMaintenanceModeEnabled returns the IsMaintenanceModeEnabled field value
 func (o *ProjectDetailsForVmsDto) GetIsMaintenanceModeEnabled() bool {
-	if o == nil || IsNil(o.IsMaintenanceModeEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsMaintenanceModeEnabled
+
+	return o.IsMaintenanceModeEnabled
 }
 
-// GetIsMaintenanceModeEnabledOk returns a tuple with the IsMaintenanceModeEnabled field value if set, nil otherwise
+// GetIsMaintenanceModeEnabledOk returns a tuple with the IsMaintenanceModeEnabled field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetIsMaintenanceModeEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsMaintenanceModeEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsMaintenanceModeEnabled, true
+	return &o.IsMaintenanceModeEnabled, true
 }
 
-// HasIsMaintenanceModeEnabled returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasIsMaintenanceModeEnabled() bool {
-	if o != nil && !IsNil(o.IsMaintenanceModeEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsMaintenanceModeEnabled gets a reference to the given bool and assigns it to the IsMaintenanceModeEnabled field.
+// SetIsMaintenanceModeEnabled sets field value
 func (o *ProjectDetailsForVmsDto) SetIsMaintenanceModeEnabled(v bool) {
-	o.IsMaintenanceModeEnabled = &v
+	o.IsMaintenanceModeEnabled = v
 }
 
-// GetIsDrsEnabled returns the IsDrsEnabled field value if set, zero value otherwise.
+// GetIsDrsEnabled returns the IsDrsEnabled field value
 func (o *ProjectDetailsForVmsDto) GetIsDrsEnabled() bool {
-	if o == nil || IsNil(o.IsDrsEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDrsEnabled
+
+	return o.IsDrsEnabled
 }
 
-// GetIsDrsEnabledOk returns a tuple with the IsDrsEnabled field value if set, nil otherwise
+// GetIsDrsEnabledOk returns a tuple with the IsDrsEnabled field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetIsDrsEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDrsEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDrsEnabled, true
+	return &o.IsDrsEnabled, true
 }
 
-// HasIsDrsEnabled returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasIsDrsEnabled() bool {
-	if o != nil && !IsNil(o.IsDrsEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDrsEnabled gets a reference to the given bool and assigns it to the IsDrsEnabled field.
+// SetIsDrsEnabled sets field value
 func (o *ProjectDetailsForVmsDto) SetIsDrsEnabled(v bool) {
-	o.IsDrsEnabled = &v
+	o.IsDrsEnabled = v
 }
 
-// GetProjectCloudRevision returns the ProjectCloudRevision field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjectCloudRevision returns the ProjectCloudRevision field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *ProjectDetailsForVmsDto) GetProjectCloudRevision() int32 {
-	if o == nil || IsNil(o.ProjectCloudRevision.Get()) {
+	if o == nil || o.ProjectCloudRevision.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.ProjectCloudRevision.Get()
 }
 
-// GetProjectCloudRevisionOk returns a tuple with the ProjectCloudRevision field value if set, nil otherwise
+// GetProjectCloudRevisionOk returns a tuple with the ProjectCloudRevision field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetProjectCloudRevisionOk() (*int32, bool) {
@@ -547,39 +426,23 @@ func (o *ProjectDetailsForVmsDto) GetProjectCloudRevisionOk() (*int32, bool) {
 	return o.ProjectCloudRevision.Get(), o.ProjectCloudRevision.IsSet()
 }
 
-// HasProjectCloudRevision returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasProjectCloudRevision() bool {
-	if o != nil && o.ProjectCloudRevision.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectCloudRevision gets a reference to the given NullableInt32 and assigns it to the ProjectCloudRevision field.
+// SetProjectCloudRevision sets field value
 func (o *ProjectDetailsForVmsDto) SetProjectCloudRevision(v int32) {
 	o.ProjectCloudRevision.Set(&v)
 }
-// SetProjectCloudRevisionNil sets the value for ProjectCloudRevision to be an explicit nil
-func (o *ProjectDetailsForVmsDto) SetProjectCloudRevisionNil() {
-	o.ProjectCloudRevision.Set(nil)
-}
 
-// UnsetProjectCloudRevision ensures that no value is present for ProjectCloudRevision, not even an explicit nil
-func (o *ProjectDetailsForVmsDto) UnsetProjectCloudRevision() {
-	o.ProjectCloudRevision.Unset()
-}
-
-// GetCloudCredentialRevision returns the CloudCredentialRevision field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCloudCredentialRevision returns the CloudCredentialRevision field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *ProjectDetailsForVmsDto) GetCloudCredentialRevision() int32 {
-	if o == nil || IsNil(o.CloudCredentialRevision.Get()) {
+	if o == nil || o.CloudCredentialRevision.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.CloudCredentialRevision.Get()
 }
 
-// GetCloudCredentialRevisionOk returns a tuple with the CloudCredentialRevision field value if set, nil otherwise
+// GetCloudCredentialRevisionOk returns a tuple with the CloudCredentialRevision field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetCloudCredentialRevisionOk() (*int32, bool) {
@@ -589,135 +452,95 @@ func (o *ProjectDetailsForVmsDto) GetCloudCredentialRevisionOk() (*int32, bool) 
 	return o.CloudCredentialRevision.Get(), o.CloudCredentialRevision.IsSet()
 }
 
-// HasCloudCredentialRevision returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasCloudCredentialRevision() bool {
-	if o != nil && o.CloudCredentialRevision.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudCredentialRevision gets a reference to the given NullableInt32 and assigns it to the CloudCredentialRevision field.
+// SetCloudCredentialRevision sets field value
 func (o *ProjectDetailsForVmsDto) SetCloudCredentialRevision(v int32) {
 	o.CloudCredentialRevision.Set(&v)
 }
-// SetCloudCredentialRevisionNil sets the value for CloudCredentialRevision to be an explicit nil
-func (o *ProjectDetailsForVmsDto) SetCloudCredentialRevisionNil() {
-	o.CloudCredentialRevision.Set(nil)
-}
 
-// UnsetCloudCredentialRevision ensures that no value is present for CloudCredentialRevision, not even an explicit nil
-func (o *ProjectDetailsForVmsDto) UnsetCloudCredentialRevision() {
-	o.CloudCredentialRevision.Unset()
-}
-
-// GetAllowFullSpotKubernetes returns the AllowFullSpotKubernetes field value if set, zero value otherwise.
+// GetAllowFullSpotKubernetes returns the AllowFullSpotKubernetes field value
 func (o *ProjectDetailsForVmsDto) GetAllowFullSpotKubernetes() bool {
-	if o == nil || IsNil(o.AllowFullSpotKubernetes) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AllowFullSpotKubernetes
+
+	return o.AllowFullSpotKubernetes
 }
 
-// GetAllowFullSpotKubernetesOk returns a tuple with the AllowFullSpotKubernetes field value if set, nil otherwise
+// GetAllowFullSpotKubernetesOk returns a tuple with the AllowFullSpotKubernetes field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetAllowFullSpotKubernetesOk() (*bool, bool) {
-	if o == nil || IsNil(o.AllowFullSpotKubernetes) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AllowFullSpotKubernetes, true
+	return &o.AllowFullSpotKubernetes, true
 }
 
-// HasAllowFullSpotKubernetes returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasAllowFullSpotKubernetes() bool {
-	if o != nil && !IsNil(o.AllowFullSpotKubernetes) {
-		return true
-	}
-
-	return false
-}
-
-// SetAllowFullSpotKubernetes gets a reference to the given bool and assigns it to the AllowFullSpotKubernetes field.
+// SetAllowFullSpotKubernetes sets field value
 func (o *ProjectDetailsForVmsDto) SetAllowFullSpotKubernetes(v bool) {
-	o.AllowFullSpotKubernetes = &v
+	o.AllowFullSpotKubernetes = v
 }
 
-// GetAllowSpotWorkers returns the AllowSpotWorkers field value if set, zero value otherwise.
+// GetAllowSpotWorkers returns the AllowSpotWorkers field value
 func (o *ProjectDetailsForVmsDto) GetAllowSpotWorkers() bool {
-	if o == nil || IsNil(o.AllowSpotWorkers) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AllowSpotWorkers
+
+	return o.AllowSpotWorkers
 }
 
-// GetAllowSpotWorkersOk returns a tuple with the AllowSpotWorkers field value if set, nil otherwise
+// GetAllowSpotWorkersOk returns a tuple with the AllowSpotWorkers field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetAllowSpotWorkersOk() (*bool, bool) {
-	if o == nil || IsNil(o.AllowSpotWorkers) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AllowSpotWorkers, true
+	return &o.AllowSpotWorkers, true
 }
 
-// HasAllowSpotWorkers returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasAllowSpotWorkers() bool {
-	if o != nil && !IsNil(o.AllowSpotWorkers) {
-		return true
-	}
-
-	return false
-}
-
-// SetAllowSpotWorkers gets a reference to the given bool and assigns it to the AllowSpotWorkers field.
+// SetAllowSpotWorkers sets field value
 func (o *ProjectDetailsForVmsDto) SetAllowSpotWorkers(v bool) {
-	o.AllowSpotWorkers = &v
+	o.AllowSpotWorkers = v
 }
 
-// GetAllowSpotVMs returns the AllowSpotVMs field value if set, zero value otherwise.
+// GetAllowSpotVMs returns the AllowSpotVMs field value
 func (o *ProjectDetailsForVmsDto) GetAllowSpotVMs() bool {
-	if o == nil || IsNil(o.AllowSpotVMs) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AllowSpotVMs
+
+	return o.AllowSpotVMs
 }
 
-// GetAllowSpotVMsOk returns a tuple with the AllowSpotVMs field value if set, nil otherwise
+// GetAllowSpotVMsOk returns a tuple with the AllowSpotVMs field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetAllowSpotVMsOk() (*bool, bool) {
-	if o == nil || IsNil(o.AllowSpotVMs) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AllowSpotVMs, true
+	return &o.AllowSpotVMs, true
 }
 
-// HasAllowSpotVMs returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasAllowSpotVMs() bool {
-	if o != nil && !IsNil(o.AllowSpotVMs) {
-		return true
-	}
-
-	return false
-}
-
-// SetAllowSpotVMs gets a reference to the given bool and assigns it to the AllowSpotVMs field.
+// SetAllowSpotVMs sets field value
 func (o *ProjectDetailsForVmsDto) SetAllowSpotVMs(v bool) {
-	o.AllowSpotVMs = &v
+	o.AllowSpotVMs = v
 }
 
-// GetMaxSpotPrice returns the MaxSpotPrice field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMaxSpotPrice returns the MaxSpotPrice field value
+// If the value is explicit nil, the zero value for float64 will be returned
 func (o *ProjectDetailsForVmsDto) GetMaxSpotPrice() float64 {
-	if o == nil || IsNil(o.MaxSpotPrice.Get()) {
+	if o == nil || o.MaxSpotPrice.Get() == nil {
 		var ret float64
 		return ret
 	}
+
 	return *o.MaxSpotPrice.Get()
 }
 
-// GetMaxSpotPriceOk returns a tuple with the MaxSpotPrice field value if set, nil otherwise
+// GetMaxSpotPriceOk returns a tuple with the MaxSpotPrice field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetMaxSpotPriceOk() (*float64, bool) {
@@ -727,71 +550,47 @@ func (o *ProjectDetailsForVmsDto) GetMaxSpotPriceOk() (*float64, bool) {
 	return o.MaxSpotPrice.Get(), o.MaxSpotPrice.IsSet()
 }
 
-// HasMaxSpotPrice returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasMaxSpotPrice() bool {
-	if o != nil && o.MaxSpotPrice.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxSpotPrice gets a reference to the given NullableFloat64 and assigns it to the MaxSpotPrice field.
+// SetMaxSpotPrice sets field value
 func (o *ProjectDetailsForVmsDto) SetMaxSpotPrice(v float64) {
 	o.MaxSpotPrice.Set(&v)
 }
-// SetMaxSpotPriceNil sets the value for MaxSpotPrice to be an explicit nil
-func (o *ProjectDetailsForVmsDto) SetMaxSpotPriceNil() {
-	o.MaxSpotPrice.Set(nil)
-}
 
-// UnsetMaxSpotPrice ensures that no value is present for MaxSpotPrice, not even an explicit nil
-func (o *ProjectDetailsForVmsDto) UnsetMaxSpotPrice() {
-	o.MaxSpotPrice.Unset()
-}
-
-// GetTotalHourlyCost returns the TotalHourlyCost field value if set, zero value otherwise.
+// GetTotalHourlyCost returns the TotalHourlyCost field value
 func (o *ProjectDetailsForVmsDto) GetTotalHourlyCost() float64 {
-	if o == nil || IsNil(o.TotalHourlyCost) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.TotalHourlyCost
+
+	return o.TotalHourlyCost
 }
 
-// GetTotalHourlyCostOk returns a tuple with the TotalHourlyCost field value if set, nil otherwise
+// GetTotalHourlyCostOk returns a tuple with the TotalHourlyCost field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetTotalHourlyCostOk() (*float64, bool) {
-	if o == nil || IsNil(o.TotalHourlyCost) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalHourlyCost, true
+	return &o.TotalHourlyCost, true
 }
 
-// HasTotalHourlyCost returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasTotalHourlyCost() bool {
-	if o != nil && !IsNil(o.TotalHourlyCost) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalHourlyCost gets a reference to the given float64 and assigns it to the TotalHourlyCost field.
+// SetTotalHourlyCost sets field value
 func (o *ProjectDetailsForVmsDto) SetTotalHourlyCost(v float64) {
-	o.TotalHourlyCost = &v
+	o.TotalHourlyCost = v
 }
 
-// GetAvailabilityZones returns the AvailabilityZones field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAvailabilityZones returns the AvailabilityZones field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *ProjectDetailsForVmsDto) GetAvailabilityZones() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.AvailabilityZones
 }
 
-// GetAvailabilityZonesOk returns a tuple with the AvailabilityZones field value if set, nil otherwise
+// GetAvailabilityZonesOk returns a tuple with the AvailabilityZones field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetAvailabilityZonesOk() ([]string, bool) {
@@ -801,30 +600,23 @@ func (o *ProjectDetailsForVmsDto) GetAvailabilityZonesOk() ([]string, bool) {
 	return o.AvailabilityZones, true
 }
 
-// HasAvailabilityZones returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasAvailabilityZones() bool {
-	if o != nil && !IsNil(o.AvailabilityZones) {
-		return true
-	}
-
-	return false
-}
-
-// SetAvailabilityZones gets a reference to the given []string and assigns it to the AvailabilityZones field.
+// SetAvailabilityZones sets field value
 func (o *ProjectDetailsForVmsDto) SetAvailabilityZones(v []string) {
 	o.AvailabilityZones = v
 }
 
-// GetHypervisors returns the Hypervisors field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHypervisors returns the Hypervisors field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *ProjectDetailsForVmsDto) GetHypervisors() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Hypervisors
 }
 
-// GetHypervisorsOk returns a tuple with the Hypervisors field value if set, nil otherwise
+// GetHypervisorsOk returns a tuple with the Hypervisors field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetHypervisorsOk() ([]string, bool) {
@@ -834,60 +626,33 @@ func (o *ProjectDetailsForVmsDto) GetHypervisorsOk() ([]string, bool) {
 	return o.Hypervisors, true
 }
 
-// HasHypervisors returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasHypervisors() bool {
-	if o != nil && !IsNil(o.Hypervisors) {
-		return true
-	}
-
-	return false
-}
-
-// SetHypervisors gets a reference to the given []string and assigns it to the Hypervisors field.
+// SetHypervisors sets field value
 func (o *ProjectDetailsForVmsDto) SetHypervisors(v []string) {
 	o.Hypervisors = v
 }
 
-// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpiredAt returns the ExpiredAt field value
 func (o *ProjectDetailsForVmsDto) GetExpiredAt() string {
-	if o == nil || IsNil(o.ExpiredAt.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ExpiredAt.Get()
+
+	return o.ExpiredAt
 }
 
-// GetExpiredAtOk returns a tuple with the ExpiredAt field value if set, nil otherwise
+// GetExpiredAtOk returns a tuple with the ExpiredAt field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetExpiredAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ExpiredAt.Get(), o.ExpiredAt.IsSet()
+	return &o.ExpiredAt, true
 }
 
-// HasExpiredAt returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasExpiredAt() bool {
-	if o != nil && o.ExpiredAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetExpiredAt gets a reference to the given NullableString and assigns it to the ExpiredAt field.
+// SetExpiredAt sets field value
 func (o *ProjectDetailsForVmsDto) SetExpiredAt(v string) {
-	o.ExpiredAt.Set(&v)
-}
-// SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
-func (o *ProjectDetailsForVmsDto) SetExpiredAtNil() {
-	o.ExpiredAt.Set(nil)
-}
-
-// UnsetExpiredAt ensures that no value is present for ExpiredAt, not even an explicit nil
-func (o *ProjectDetailsForVmsDto) UnsetExpiredAt() {
-	o.ExpiredAt.Unset()
+	o.ExpiredAt = v
 }
 
 func (o ProjectDetailsForVmsDto) MarshalJSON() ([]byte, error) {
@@ -900,76 +665,93 @@ func (o ProjectDetailsForVmsDto) MarshalJSON() ([]byte, error) {
 
 func (o ProjectDetailsForVmsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ProjectStatus) {
-		toSerialize["projectStatus"] = o.ProjectStatus
-	}
-	if o.ProjectName.IsSet() {
-		toSerialize["projectName"] = o.ProjectName.Get()
-	}
-	if !IsNil(o.ProjectId) {
-		toSerialize["projectId"] = o.ProjectId
-	}
-	if !IsNil(o.CloudType) {
-		toSerialize["cloudType"] = o.CloudType
-	}
-	if o.CloudName.IsSet() {
-		toSerialize["cloudName"] = o.CloudName.Get()
-	}
-	if o.CloudId.IsSet() {
-		toSerialize["cloudId"] = o.CloudId.Get()
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
-	if !IsNil(o.OrganizationId) {
-		toSerialize["organizationId"] = o.OrganizationId
-	}
-	if !IsNil(o.IsLocked) {
-		toSerialize["isLocked"] = o.IsLocked
-	}
-	if !IsNil(o.IsProjectMaintenanceModeEnabled) {
-		toSerialize["isProjectMaintenanceModeEnabled"] = o.IsProjectMaintenanceModeEnabled
-	}
-	if o.HasSelectedFlavors.IsSet() {
-		toSerialize["hasSelectedFlavors"] = o.HasSelectedFlavors.Get()
-	}
-	if !IsNil(o.IsMaintenanceModeEnabled) {
-		toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
-	}
-	if !IsNil(o.IsDrsEnabled) {
-		toSerialize["isDrsEnabled"] = o.IsDrsEnabled
-	}
-	if o.ProjectCloudRevision.IsSet() {
-		toSerialize["projectCloudRevision"] = o.ProjectCloudRevision.Get()
-	}
-	if o.CloudCredentialRevision.IsSet() {
-		toSerialize["cloudCredentialRevision"] = o.CloudCredentialRevision.Get()
-	}
-	if !IsNil(o.AllowFullSpotKubernetes) {
-		toSerialize["allowFullSpotKubernetes"] = o.AllowFullSpotKubernetes
-	}
-	if !IsNil(o.AllowSpotWorkers) {
-		toSerialize["allowSpotWorkers"] = o.AllowSpotWorkers
-	}
-	if !IsNil(o.AllowSpotVMs) {
-		toSerialize["allowSpotVMs"] = o.AllowSpotVMs
-	}
-	if o.MaxSpotPrice.IsSet() {
-		toSerialize["maxSpotPrice"] = o.MaxSpotPrice.Get()
-	}
-	if !IsNil(o.TotalHourlyCost) {
-		toSerialize["totalHourlyCost"] = o.TotalHourlyCost
-	}
+	toSerialize["projectStatus"] = o.ProjectStatus
+	toSerialize["projectName"] = o.ProjectName
+	toSerialize["projectId"] = o.ProjectId
+	toSerialize["cloudType"] = o.CloudType
+	toSerialize["cloudName"] = o.CloudName
+	toSerialize["cloudId"] = o.CloudId.Get()
+	toSerialize["organizationName"] = o.OrganizationName
+	toSerialize["organizationId"] = o.OrganizationId
+	toSerialize["isLocked"] = o.IsLocked
+	toSerialize["isProjectMaintenanceModeEnabled"] = o.IsProjectMaintenanceModeEnabled
+	toSerialize["hasSelectedFlavors"] = o.HasSelectedFlavors.Get()
+	toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
+	toSerialize["isDrsEnabled"] = o.IsDrsEnabled
+	toSerialize["projectCloudRevision"] = o.ProjectCloudRevision.Get()
+	toSerialize["cloudCredentialRevision"] = o.CloudCredentialRevision.Get()
+	toSerialize["allowFullSpotKubernetes"] = o.AllowFullSpotKubernetes
+	toSerialize["allowSpotWorkers"] = o.AllowSpotWorkers
+	toSerialize["allowSpotVMs"] = o.AllowSpotVMs
+	toSerialize["maxSpotPrice"] = o.MaxSpotPrice.Get()
+	toSerialize["totalHourlyCost"] = o.TotalHourlyCost
 	if o.AvailabilityZones != nil {
 		toSerialize["availabilityZones"] = o.AvailabilityZones
 	}
 	if o.Hypervisors != nil {
 		toSerialize["hypervisors"] = o.Hypervisors
 	}
-	if o.ExpiredAt.IsSet() {
-		toSerialize["expiredAt"] = o.ExpiredAt.Get()
-	}
+	toSerialize["expiredAt"] = o.ExpiredAt
 	return toSerialize, nil
+}
+
+func (o *ProjectDetailsForVmsDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"projectStatus",
+		"projectName",
+		"projectId",
+		"cloudType",
+		"cloudName",
+		"cloudId",
+		"organizationName",
+		"organizationId",
+		"isLocked",
+		"isProjectMaintenanceModeEnabled",
+		"hasSelectedFlavors",
+		"isMaintenanceModeEnabled",
+		"isDrsEnabled",
+		"projectCloudRevision",
+		"cloudCredentialRevision",
+		"allowFullSpotKubernetes",
+		"allowSpotWorkers",
+		"allowSpotVMs",
+		"maxSpotPrice",
+		"totalHourlyCost",
+		"availabilityZones",
+		"hypervisors",
+		"expiredAt",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varProjectDetailsForVmsDto := _ProjectDetailsForVmsDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProjectDetailsForVmsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectDetailsForVmsDto(varProjectDetailsForVmsDto)
+
+	return err
 }
 
 type NullableProjectDetailsForVmsDto struct {

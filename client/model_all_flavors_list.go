@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AllFlavorsList type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,22 @@ var _ MappedNullable = &AllFlavorsList{}
 
 // AllFlavorsList struct for AllFlavorsList
 type AllFlavorsList struct {
-	Data []FlavorsListDto `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
-	CloudType NullableString `json:"cloudType,omitempty"`
+	Data []FlavorsListDto `json:"data"`
+	TotalCount int32 `json:"totalCount"`
+	CloudType NullableString `json:"cloudType"`
 }
+
+type _AllFlavorsList AllFlavorsList
 
 // NewAllFlavorsList instantiates a new AllFlavorsList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAllFlavorsList() *AllFlavorsList {
+func NewAllFlavorsList(data []FlavorsListDto, totalCount int32, cloudType NullableString) *AllFlavorsList {
 	this := AllFlavorsList{}
+	this.Data = data
+	this.TotalCount = totalCount
+	this.CloudType = cloudType
 	return &this
 }
 
@@ -42,16 +49,18 @@ func NewAllFlavorsListWithDefaults() *AllFlavorsList {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []FlavorsListDto will be returned
 func (o *AllFlavorsList) GetData() []FlavorsListDto {
 	if o == nil {
 		var ret []FlavorsListDto
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllFlavorsList) GetDataOk() ([]FlavorsListDto, bool) {
@@ -61,62 +70,47 @@ func (o *AllFlavorsList) GetDataOk() ([]FlavorsListDto, bool) {
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *AllFlavorsList) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []FlavorsListDto and assigns it to the Data field.
+// SetData sets field value
 func (o *AllFlavorsList) SetData(v []FlavorsListDto) {
 	o.Data = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value
 func (o *AllFlavorsList) GetTotalCount() int32 {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.TotalCount
+
+	return o.TotalCount
 }
 
-// GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
+// GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
 func (o *AllFlavorsList) GetTotalCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalCount, true
+	return &o.TotalCount, true
 }
 
-// HasTotalCount returns a boolean if a field has been set.
-func (o *AllFlavorsList) HasTotalCount() bool {
-	if o != nil && !IsNil(o.TotalCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+// SetTotalCount sets field value
 func (o *AllFlavorsList) SetTotalCount(v int32) {
-	o.TotalCount = &v
+	o.TotalCount = v
 }
 
-// GetCloudType returns the CloudType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCloudType returns the CloudType field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AllFlavorsList) GetCloudType() string {
-	if o == nil || IsNil(o.CloudType.Get()) {
+	if o == nil || o.CloudType.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CloudType.Get()
 }
 
-// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
+// GetCloudTypeOk returns a tuple with the CloudType field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllFlavorsList) GetCloudTypeOk() (*string, bool) {
@@ -126,27 +120,9 @@ func (o *AllFlavorsList) GetCloudTypeOk() (*string, bool) {
 	return o.CloudType.Get(), o.CloudType.IsSet()
 }
 
-// HasCloudType returns a boolean if a field has been set.
-func (o *AllFlavorsList) HasCloudType() bool {
-	if o != nil && o.CloudType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudType gets a reference to the given NullableString and assigns it to the CloudType field.
+// SetCloudType sets field value
 func (o *AllFlavorsList) SetCloudType(v string) {
 	o.CloudType.Set(&v)
-}
-// SetCloudTypeNil sets the value for CloudType to be an explicit nil
-func (o *AllFlavorsList) SetCloudTypeNil() {
-	o.CloudType.Set(nil)
-}
-
-// UnsetCloudType ensures that no value is present for CloudType, not even an explicit nil
-func (o *AllFlavorsList) UnsetCloudType() {
-	o.CloudType.Unset()
 }
 
 func (o AllFlavorsList) MarshalJSON() ([]byte, error) {
@@ -162,13 +138,48 @@ func (o AllFlavorsList) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	if !IsNil(o.TotalCount) {
-		toSerialize["totalCount"] = o.TotalCount
-	}
-	if o.CloudType.IsSet() {
-		toSerialize["cloudType"] = o.CloudType.Get()
-	}
+	toSerialize["totalCount"] = o.TotalCount
+	toSerialize["cloudType"] = o.CloudType.Get()
 	return toSerialize, nil
+}
+
+func (o *AllFlavorsList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+		"totalCount",
+		"cloudType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAllFlavorsList := _AllFlavorsList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAllFlavorsList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AllFlavorsList(varAllFlavorsList)
+
+	return err
 }
 
 type NullableAllFlavorsList struct {
