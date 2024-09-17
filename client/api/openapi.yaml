@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-16T13:49:35.9161054Z
-                  createdAt: 2024-09-16T13:49:35.9161054Z
+                  lastValidated: 2024-09-17T00:02:47.3267304Z
+                  createdAt: 2024-09-17T00:02:47.3267304Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-16T13:49:35.9161054Z
+                    lastBackup: 2024-09-17T00:02:47.3267304Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-16T13:49:35.9161054Z
+                  createdAt: 2024-09-17T00:02:47.3267304Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-16T13:49:35.9161054Z
+                  lastBackup: 2024-09-17T00:02:47.3267304Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-16T13:49:35.9161054Z
-                  expiration: 2024-09-16T13:49:35.9161054Z
+                  createdAt: 2024-09-17T00:02:47.3267304Z
+                  expiration: 2024-09-17T00:02:47.3267304Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-16T13:49:35.9161054Z
+                  createdAt: 2024-09-17T00:02:47.3267304Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-16T13:49:35.9161054+00:00
-                  startTimeStamp: 2024-09-16T13:49:35.9161054+00:00
-                  createdAt: 2024-09-16T13:49:35.9161054Z
+                  completionDateTime: 2024-09-17T00:02:47.3267304+00:00
+                  startTimeStamp: 2024-09-17T00:02:47.3267304+00:00
+                  createdAt: 2024-09-17T00:02:47.3267304Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -39407,25 +39407,19 @@ components:
         status: status
       properties:
         id:
-          nullable: true
           type: string
         name:
-          nullable: true
           type: string
         status:
-          nullable: true
           type: string
         createdAt:
-          nullable: true
           type: string
         organizationId:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         createdBy:
-          nullable: true
           type: string
         currentStatusDate:
           nullable: true
@@ -39440,14 +39434,27 @@ components:
           nullable: true
           type: string
         description:
-          nullable: true
           type: string
         partnerName:
           nullable: true
           type: string
         userId:
-          nullable: true
           type: string
+      required:
+      - createdAt
+      - createdBy
+      - currentStatusDate
+      - description
+      - id
+      - lastModifier
+      - name
+      - number
+      - organizationId
+      - organizationName
+      - partnerLogo
+      - partnerName
+      - status
+      - userId
       type: object
     AllTicketsList:
       additionalProperties: false
@@ -39491,6 +39498,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AllowedHostCreateDto:
       additionalProperties: false
@@ -39792,6 +39802,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ArticlesListDto:
       additionalProperties: false
@@ -39820,6 +39833,13 @@ components:
         userId:
           nullable: true
           type: string
+      required:
+      - body
+      - createAt
+      - isCsm
+      - messageId
+      - senderName
+      - userId
       type: object
     ArtifactRepositoryDto:
       additionalProperties: false
@@ -40313,6 +40333,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AwsFlavorListDto:
       additionalProperties: false
@@ -40657,6 +40680,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AzureFlavorsWithPriceDto:
       additionalProperties: false
@@ -41568,6 +41594,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     BoundFlavorsForProjectsListDto:
       additionalProperties: false
@@ -41591,7 +41620,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         cpu:
           format: int32
@@ -41604,7 +41632,6 @@ components:
           nullable: true
           type: integer
         projectName:
-          nullable: true
           type: string
         maxDataDiskCount:
           format: int32
@@ -41628,6 +41655,21 @@ components:
           type: string
         cloudType:
           $ref: '#/components/schemas/CloudType'
+      required:
+      - cloudType
+      - cpu
+      - existsLinuxSpotPrice
+      - existsWindowsSpotPrice
+      - id
+      - linuxPrice
+      - linuxSpotPrice
+      - maxDataDiskCount
+      - name
+      - projectId
+      - projectName
+      - ram
+      - windowsPrice
+      - windowsSpotPrice
       type: object
     BoundImagesForProjectsList:
       additionalProperties: false
@@ -43115,7 +43157,7 @@ components:
           isReady: true
           name: name
           id: 6
-        cloudType: cloudType
+        cloudType: NONE
         name: name
         id: 0
       properties:
@@ -43126,13 +43168,17 @@ components:
           nullable: true
           type: string
         cloudType:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/CloudType'
         projects:
           items:
             $ref: '#/components/schemas/ProjectWithFlavorsAndImagesDto'
           nullable: true
           type: array
+      required:
+      - cloudType
+      - id
+      - name
+      - projects
       type: object
     CloudCredentialsForOrganizationEntity:
       additionalProperties: false
@@ -49409,7 +49455,6 @@ components:
         linuxSpotPrice: 5.637376656633329
       properties:
         name:
-          nullable: true
           type: string
         cpu:
           format: int32
@@ -49437,6 +49482,15 @@ components:
           format: double
           nullable: true
           type: number
+      required:
+      - cpu
+      - description
+      - linuxPrice
+      - linuxSpotPrice
+      - name
+      - ram
+      - windowsPrice
+      - windowsSpotPrice
       type: object
     GoogleFlavorList:
       additionalProperties: false
@@ -49468,6 +49522,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     GoogleRegionListCommand:
       additionalProperties: false
@@ -53067,6 +53124,10 @@ components:
         ram:
           format: double
           type: number
+      required:
+      - cpu
+      - name
+      - ram
       type: object
     OpenshiftFlavorList:
       additionalProperties: false
@@ -53088,6 +53149,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     OpenshiftList:
       additionalProperties: false
@@ -53506,6 +53570,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     OpenstackFlavorListDto:
       additionalProperties: false
@@ -53522,11 +53589,15 @@ components:
           format: int64
           type: integer
         name:
-          nullable: true
           type: string
         description:
           nullable: true
           type: string
+      required:
+      - cpu
+      - description
+      - name
+      - ram
       type: object
     OpenstackNetworkDto:
       additionalProperties: false
@@ -57959,6 +58030,13 @@ components:
           type: array
         isReady:
           type: boolean
+      required:
+      - flavors
+      - id
+      - imageNames
+      - images
+      - isReady
+      - name
       type: object
     ProjectsForBillingDto:
       additionalProperties: false
@@ -58927,6 +59005,10 @@ components:
         ram:
           format: double
           type: number
+      required:
+      - cpu
+      - name
+      - ram
       type: object
     ProxmoxFlavorList:
       additionalProperties: false
@@ -58948,6 +59030,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ProxmoxHypervisorDto:
       additionalProperties: false
@@ -62972,6 +63057,19 @@ components:
         projectName:
           nullable: true
           type: string
+      required:
+      - hypervisorFirst
+      - hypervisorSecond
+      - id
+      - privateIpFirst
+      - privateIpSecond
+      - projectName
+      - publicIp
+      - svcName
+      - svcNamespace
+      - virtualLbIpFirst
+      - virtualLbIpSecond
+      - virtualRouterId
       type: object
     TanzuCredentialsList:
       additionalProperties: false
@@ -63031,6 +63129,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     TanzuCredentialsListDto:
       additionalProperties: false
@@ -63067,19 +63168,14 @@ components:
         isLocked:
           type: boolean
         name:
-          nullable: true
           type: string
         username:
-          nullable: true
           type: string
         url:
-          nullable: true
           type: string
         volumeType:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         port:
           format: int32
@@ -63088,13 +63184,10 @@ components:
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         createdBy:
-          nullable: true
           type: string
         createdAt:
-          nullable: true
           type: string
         lastModified:
           nullable: true
@@ -63108,11 +63201,29 @@ components:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         continentName:
           nullable: true
           type: string
+      required:
+      - continentName
+      - createdAt
+      - createdBy
+      - id
+      - isDefault
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - namespace
+      - organizationId
+      - organizationName
+      - port
+      - projectCount
+      - projects
+      - url
+      - username
+      - volumeType
       type: object
     TanzuFlavorList:
       additionalProperties: false
@@ -63134,6 +63245,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     TanzuFlavorsListDto:
       additionalProperties: false
@@ -63151,6 +63265,10 @@ components:
         ram:
           format: double
           type: number
+      required:
+      - cpu
+      - name
+      - ram
       type: object
     TanzuStorageListCommand:
       additionalProperties: false
@@ -63248,6 +63366,9 @@ components:
         userName:
           nullable: true
           type: string
+      required:
+      - userId
+      - userName
       type: object
     TransferTicketCommand:
       additionalProperties: false
@@ -65197,6 +65318,10 @@ components:
         ram:
           format: double
           type: number
+      required:
+      - cpu
+      - name
+      - ram
       type: object
     VsphereFlavorList:
       additionalProperties: false
@@ -65218,6 +65343,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     VsphereHypervisorListCommand:
       additionalProperties: false
@@ -65916,6 +66044,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ZededaInterfaceCommand:
       additionalProperties: false
