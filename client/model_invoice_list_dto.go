@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the InvoiceListDto type satisfies the MappedNullable interface at compile time
@@ -20,28 +22,44 @@ var _ MappedNullable = &InvoiceListDto{}
 
 // InvoiceListDto struct for InvoiceListDto
 type InvoiceListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	StartDate NullableString `json:"startDate,omitempty"`
-	EndDate NullableString `json:"endDate,omitempty"`
-	RequiredPaymentAction *bool `json:"requiredPaymentAction,omitempty"`
-	IsPaid *bool `json:"isPaid,omitempty"`
-	InvoiceId NullableString `json:"invoiceId,omitempty"`
-	SubscriptionType NullableString `json:"subscriptionType,omitempty"`
-	SubscriptionName NullableString `json:"subscriptionName,omitempty"`
-	Price *float64 `json:"price,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	InvoiceNumber NullableString `json:"invoiceNumber,omitempty"`
-	OrganizationSubscriptionId *int32 `json:"organizationSubscriptionId,omitempty"`
+	Id int32 `json:"id"`
+	Name string `json:"name"`
+	StartDate NullableString `json:"startDate"`
+	EndDate NullableString `json:"endDate"`
+	RequiredPaymentAction bool `json:"requiredPaymentAction"`
+	IsPaid bool `json:"isPaid"`
+	InvoiceId string `json:"invoiceId"`
+	SubscriptionType string `json:"subscriptionType"`
+	SubscriptionName string `json:"subscriptionName"`
+	Price float64 `json:"price"`
+	OrganizationId int32 `json:"organizationId"`
+	OrganizationName string `json:"organizationName"`
+	InvoiceNumber string `json:"invoiceNumber"`
+	OrganizationSubscriptionId int32 `json:"organizationSubscriptionId"`
 }
+
+type _InvoiceListDto InvoiceListDto
 
 // NewInvoiceListDto instantiates a new InvoiceListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvoiceListDto() *InvoiceListDto {
+func NewInvoiceListDto(id int32, name string, startDate NullableString, endDate NullableString, requiredPaymentAction bool, isPaid bool, invoiceId string, subscriptionType string, subscriptionName string, price float64, organizationId int32, organizationName string, invoiceNumber string, organizationSubscriptionId int32) *InvoiceListDto {
 	this := InvoiceListDto{}
+	this.Id = id
+	this.Name = name
+	this.StartDate = startDate
+	this.EndDate = endDate
+	this.RequiredPaymentAction = requiredPaymentAction
+	this.IsPaid = isPaid
+	this.InvoiceId = invoiceId
+	this.SubscriptionType = subscriptionType
+	this.SubscriptionName = subscriptionName
+	this.Price = price
+	this.OrganizationId = organizationId
+	this.OrganizationName = organizationName
+	this.InvoiceNumber = invoiceNumber
+	this.OrganizationSubscriptionId = organizationSubscriptionId
 	return &this
 }
 
@@ -53,90 +71,66 @@ func NewInvoiceListDtoWithDefaults() *InvoiceListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *InvoiceListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *InvoiceListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *InvoiceListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *InvoiceListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InvoiceListDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *InvoiceListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *InvoiceListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *InvoiceListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetStartDate returns the StartDate field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStartDate returns the StartDate field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *InvoiceListDto) GetStartDate() string {
-	if o == nil || IsNil(o.StartDate.Get()) {
+	if o == nil || o.StartDate.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.StartDate.Get()
 }
 
-// GetStartDateOk returns a tuple with the StartDate field value if set, nil otherwise
+// GetStartDateOk returns a tuple with the StartDate field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InvoiceListDto) GetStartDateOk() (*string, bool) {
@@ -146,39 +140,23 @@ func (o *InvoiceListDto) GetStartDateOk() (*string, bool) {
 	return o.StartDate.Get(), o.StartDate.IsSet()
 }
 
-// HasStartDate returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasStartDate() bool {
-	if o != nil && o.StartDate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStartDate gets a reference to the given NullableString and assigns it to the StartDate field.
+// SetStartDate sets field value
 func (o *InvoiceListDto) SetStartDate(v string) {
 	o.StartDate.Set(&v)
 }
-// SetStartDateNil sets the value for StartDate to be an explicit nil
-func (o *InvoiceListDto) SetStartDateNil() {
-	o.StartDate.Set(nil)
-}
 
-// UnsetStartDate ensures that no value is present for StartDate, not even an explicit nil
-func (o *InvoiceListDto) UnsetStartDate() {
-	o.StartDate.Unset()
-}
-
-// GetEndDate returns the EndDate field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEndDate returns the EndDate field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *InvoiceListDto) GetEndDate() string {
-	if o == nil || IsNil(o.EndDate.Get()) {
+	if o == nil || o.EndDate.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.EndDate.Get()
 }
 
-// GetEndDateOk returns a tuple with the EndDate field value if set, nil otherwise
+// GetEndDateOk returns a tuple with the EndDate field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InvoiceListDto) GetEndDateOk() (*string, bool) {
@@ -188,397 +166,249 @@ func (o *InvoiceListDto) GetEndDateOk() (*string, bool) {
 	return o.EndDate.Get(), o.EndDate.IsSet()
 }
 
-// HasEndDate returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasEndDate() bool {
-	if o != nil && o.EndDate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEndDate gets a reference to the given NullableString and assigns it to the EndDate field.
+// SetEndDate sets field value
 func (o *InvoiceListDto) SetEndDate(v string) {
 	o.EndDate.Set(&v)
 }
-// SetEndDateNil sets the value for EndDate to be an explicit nil
-func (o *InvoiceListDto) SetEndDateNil() {
-	o.EndDate.Set(nil)
-}
 
-// UnsetEndDate ensures that no value is present for EndDate, not even an explicit nil
-func (o *InvoiceListDto) UnsetEndDate() {
-	o.EndDate.Unset()
-}
-
-// GetRequiredPaymentAction returns the RequiredPaymentAction field value if set, zero value otherwise.
+// GetRequiredPaymentAction returns the RequiredPaymentAction field value
 func (o *InvoiceListDto) GetRequiredPaymentAction() bool {
-	if o == nil || IsNil(o.RequiredPaymentAction) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.RequiredPaymentAction
+
+	return o.RequiredPaymentAction
 }
 
-// GetRequiredPaymentActionOk returns a tuple with the RequiredPaymentAction field value if set, nil otherwise
+// GetRequiredPaymentActionOk returns a tuple with the RequiredPaymentAction field value
 // and a boolean to check if the value has been set.
 func (o *InvoiceListDto) GetRequiredPaymentActionOk() (*bool, bool) {
-	if o == nil || IsNil(o.RequiredPaymentAction) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RequiredPaymentAction, true
+	return &o.RequiredPaymentAction, true
 }
 
-// HasRequiredPaymentAction returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasRequiredPaymentAction() bool {
-	if o != nil && !IsNil(o.RequiredPaymentAction) {
-		return true
-	}
-
-	return false
-}
-
-// SetRequiredPaymentAction gets a reference to the given bool and assigns it to the RequiredPaymentAction field.
+// SetRequiredPaymentAction sets field value
 func (o *InvoiceListDto) SetRequiredPaymentAction(v bool) {
-	o.RequiredPaymentAction = &v
+	o.RequiredPaymentAction = v
 }
 
-// GetIsPaid returns the IsPaid field value if set, zero value otherwise.
+// GetIsPaid returns the IsPaid field value
 func (o *InvoiceListDto) GetIsPaid() bool {
-	if o == nil || IsNil(o.IsPaid) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsPaid
+
+	return o.IsPaid
 }
 
-// GetIsPaidOk returns a tuple with the IsPaid field value if set, nil otherwise
+// GetIsPaidOk returns a tuple with the IsPaid field value
 // and a boolean to check if the value has been set.
 func (o *InvoiceListDto) GetIsPaidOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsPaid) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsPaid, true
+	return &o.IsPaid, true
 }
 
-// HasIsPaid returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasIsPaid() bool {
-	if o != nil && !IsNil(o.IsPaid) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsPaid gets a reference to the given bool and assigns it to the IsPaid field.
+// SetIsPaid sets field value
 func (o *InvoiceListDto) SetIsPaid(v bool) {
-	o.IsPaid = &v
+	o.IsPaid = v
 }
 
-// GetInvoiceId returns the InvoiceId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInvoiceId returns the InvoiceId field value
 func (o *InvoiceListDto) GetInvoiceId() string {
-	if o == nil || IsNil(o.InvoiceId.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.InvoiceId.Get()
+
+	return o.InvoiceId
 }
 
-// GetInvoiceIdOk returns a tuple with the InvoiceId field value if set, nil otherwise
+// GetInvoiceIdOk returns a tuple with the InvoiceId field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InvoiceListDto) GetInvoiceIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.InvoiceId.Get(), o.InvoiceId.IsSet()
+	return &o.InvoiceId, true
 }
 
-// HasInvoiceId returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasInvoiceId() bool {
-	if o != nil && o.InvoiceId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetInvoiceId gets a reference to the given NullableString and assigns it to the InvoiceId field.
+// SetInvoiceId sets field value
 func (o *InvoiceListDto) SetInvoiceId(v string) {
-	o.InvoiceId.Set(&v)
-}
-// SetInvoiceIdNil sets the value for InvoiceId to be an explicit nil
-func (o *InvoiceListDto) SetInvoiceIdNil() {
-	o.InvoiceId.Set(nil)
+	o.InvoiceId = v
 }
 
-// UnsetInvoiceId ensures that no value is present for InvoiceId, not even an explicit nil
-func (o *InvoiceListDto) UnsetInvoiceId() {
-	o.InvoiceId.Unset()
-}
-
-// GetSubscriptionType returns the SubscriptionType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSubscriptionType returns the SubscriptionType field value
 func (o *InvoiceListDto) GetSubscriptionType() string {
-	if o == nil || IsNil(o.SubscriptionType.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.SubscriptionType.Get()
+
+	return o.SubscriptionType
 }
 
-// GetSubscriptionTypeOk returns a tuple with the SubscriptionType field value if set, nil otherwise
+// GetSubscriptionTypeOk returns a tuple with the SubscriptionType field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InvoiceListDto) GetSubscriptionTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.SubscriptionType.Get(), o.SubscriptionType.IsSet()
+	return &o.SubscriptionType, true
 }
 
-// HasSubscriptionType returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasSubscriptionType() bool {
-	if o != nil && o.SubscriptionType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSubscriptionType gets a reference to the given NullableString and assigns it to the SubscriptionType field.
+// SetSubscriptionType sets field value
 func (o *InvoiceListDto) SetSubscriptionType(v string) {
-	o.SubscriptionType.Set(&v)
-}
-// SetSubscriptionTypeNil sets the value for SubscriptionType to be an explicit nil
-func (o *InvoiceListDto) SetSubscriptionTypeNil() {
-	o.SubscriptionType.Set(nil)
+	o.SubscriptionType = v
 }
 
-// UnsetSubscriptionType ensures that no value is present for SubscriptionType, not even an explicit nil
-func (o *InvoiceListDto) UnsetSubscriptionType() {
-	o.SubscriptionType.Unset()
-}
-
-// GetSubscriptionName returns the SubscriptionName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSubscriptionName returns the SubscriptionName field value
 func (o *InvoiceListDto) GetSubscriptionName() string {
-	if o == nil || IsNil(o.SubscriptionName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.SubscriptionName.Get()
+
+	return o.SubscriptionName
 }
 
-// GetSubscriptionNameOk returns a tuple with the SubscriptionName field value if set, nil otherwise
+// GetSubscriptionNameOk returns a tuple with the SubscriptionName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InvoiceListDto) GetSubscriptionNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.SubscriptionName.Get(), o.SubscriptionName.IsSet()
+	return &o.SubscriptionName, true
 }
 
-// HasSubscriptionName returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasSubscriptionName() bool {
-	if o != nil && o.SubscriptionName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSubscriptionName gets a reference to the given NullableString and assigns it to the SubscriptionName field.
+// SetSubscriptionName sets field value
 func (o *InvoiceListDto) SetSubscriptionName(v string) {
-	o.SubscriptionName.Set(&v)
-}
-// SetSubscriptionNameNil sets the value for SubscriptionName to be an explicit nil
-func (o *InvoiceListDto) SetSubscriptionNameNil() {
-	o.SubscriptionName.Set(nil)
+	o.SubscriptionName = v
 }
 
-// UnsetSubscriptionName ensures that no value is present for SubscriptionName, not even an explicit nil
-func (o *InvoiceListDto) UnsetSubscriptionName() {
-	o.SubscriptionName.Unset()
-}
-
-// GetPrice returns the Price field value if set, zero value otherwise.
+// GetPrice returns the Price field value
 func (o *InvoiceListDto) GetPrice() float64 {
-	if o == nil || IsNil(o.Price) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.Price
+
+	return o.Price
 }
 
-// GetPriceOk returns a tuple with the Price field value if set, nil otherwise
+// GetPriceOk returns a tuple with the Price field value
 // and a boolean to check if the value has been set.
 func (o *InvoiceListDto) GetPriceOk() (*float64, bool) {
-	if o == nil || IsNil(o.Price) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Price, true
+	return &o.Price, true
 }
 
-// HasPrice returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasPrice() bool {
-	if o != nil && !IsNil(o.Price) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrice gets a reference to the given float64 and assigns it to the Price field.
+// SetPrice sets field value
 func (o *InvoiceListDto) SetPrice(v float64) {
-	o.Price = &v
+	o.Price = v
 }
 
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
+// GetOrganizationId returns the OrganizationId field value
 func (o *InvoiceListDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationId
+
+	return o.OrganizationId
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 func (o *InvoiceListDto) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationId, true
+	return &o.OrganizationId, true
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasOrganizationId() bool {
-	if o != nil && !IsNil(o.OrganizationId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *InvoiceListDto) SetOrganizationId(v int32) {
-	o.OrganizationId = &v
+	o.OrganizationId = v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
 func (o *InvoiceListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+
+	return o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InvoiceListDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return &o.OrganizationName, true
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *InvoiceListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *InvoiceListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+	o.OrganizationName = v
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *InvoiceListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetInvoiceNumber returns the InvoiceNumber field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInvoiceNumber returns the InvoiceNumber field value
 func (o *InvoiceListDto) GetInvoiceNumber() string {
-	if o == nil || IsNil(o.InvoiceNumber.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.InvoiceNumber.Get()
+
+	return o.InvoiceNumber
 }
 
-// GetInvoiceNumberOk returns a tuple with the InvoiceNumber field value if set, nil otherwise
+// GetInvoiceNumberOk returns a tuple with the InvoiceNumber field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *InvoiceListDto) GetInvoiceNumberOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.InvoiceNumber.Get(), o.InvoiceNumber.IsSet()
+	return &o.InvoiceNumber, true
 }
 
-// HasInvoiceNumber returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasInvoiceNumber() bool {
-	if o != nil && o.InvoiceNumber.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetInvoiceNumber gets a reference to the given NullableString and assigns it to the InvoiceNumber field.
+// SetInvoiceNumber sets field value
 func (o *InvoiceListDto) SetInvoiceNumber(v string) {
-	o.InvoiceNumber.Set(&v)
-}
-// SetInvoiceNumberNil sets the value for InvoiceNumber to be an explicit nil
-func (o *InvoiceListDto) SetInvoiceNumberNil() {
-	o.InvoiceNumber.Set(nil)
+	o.InvoiceNumber = v
 }
 
-// UnsetInvoiceNumber ensures that no value is present for InvoiceNumber, not even an explicit nil
-func (o *InvoiceListDto) UnsetInvoiceNumber() {
-	o.InvoiceNumber.Unset()
-}
-
-// GetOrganizationSubscriptionId returns the OrganizationSubscriptionId field value if set, zero value otherwise.
+// GetOrganizationSubscriptionId returns the OrganizationSubscriptionId field value
 func (o *InvoiceListDto) GetOrganizationSubscriptionId() int32 {
-	if o == nil || IsNil(o.OrganizationSubscriptionId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationSubscriptionId
+
+	return o.OrganizationSubscriptionId
 }
 
-// GetOrganizationSubscriptionIdOk returns a tuple with the OrganizationSubscriptionId field value if set, nil otherwise
+// GetOrganizationSubscriptionIdOk returns a tuple with the OrganizationSubscriptionId field value
 // and a boolean to check if the value has been set.
 func (o *InvoiceListDto) GetOrganizationSubscriptionIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.OrganizationSubscriptionId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationSubscriptionId, true
+	return &o.OrganizationSubscriptionId, true
 }
 
-// HasOrganizationSubscriptionId returns a boolean if a field has been set.
-func (o *InvoiceListDto) HasOrganizationSubscriptionId() bool {
-	if o != nil && !IsNil(o.OrganizationSubscriptionId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationSubscriptionId gets a reference to the given int32 and assigns it to the OrganizationSubscriptionId field.
+// SetOrganizationSubscriptionId sets field value
 func (o *InvoiceListDto) SetOrganizationSubscriptionId(v int32) {
-	o.OrganizationSubscriptionId = &v
+	o.OrganizationSubscriptionId = v
 }
 
 func (o InvoiceListDto) MarshalJSON() ([]byte, error) {
@@ -591,49 +421,71 @@ func (o InvoiceListDto) MarshalJSON() ([]byte, error) {
 
 func (o InvoiceListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.StartDate.IsSet() {
-		toSerialize["startDate"] = o.StartDate.Get()
-	}
-	if o.EndDate.IsSet() {
-		toSerialize["endDate"] = o.EndDate.Get()
-	}
-	if !IsNil(o.RequiredPaymentAction) {
-		toSerialize["requiredPaymentAction"] = o.RequiredPaymentAction
-	}
-	if !IsNil(o.IsPaid) {
-		toSerialize["isPaid"] = o.IsPaid
-	}
-	if o.InvoiceId.IsSet() {
-		toSerialize["invoiceId"] = o.InvoiceId.Get()
-	}
-	if o.SubscriptionType.IsSet() {
-		toSerialize["subscriptionType"] = o.SubscriptionType.Get()
-	}
-	if o.SubscriptionName.IsSet() {
-		toSerialize["subscriptionName"] = o.SubscriptionName.Get()
-	}
-	if !IsNil(o.Price) {
-		toSerialize["price"] = o.Price
-	}
-	if !IsNil(o.OrganizationId) {
-		toSerialize["organizationId"] = o.OrganizationId
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
-	if o.InvoiceNumber.IsSet() {
-		toSerialize["invoiceNumber"] = o.InvoiceNumber.Get()
-	}
-	if !IsNil(o.OrganizationSubscriptionId) {
-		toSerialize["organizationSubscriptionId"] = o.OrganizationSubscriptionId
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["startDate"] = o.StartDate.Get()
+	toSerialize["endDate"] = o.EndDate.Get()
+	toSerialize["requiredPaymentAction"] = o.RequiredPaymentAction
+	toSerialize["isPaid"] = o.IsPaid
+	toSerialize["invoiceId"] = o.InvoiceId
+	toSerialize["subscriptionType"] = o.SubscriptionType
+	toSerialize["subscriptionName"] = o.SubscriptionName
+	toSerialize["price"] = o.Price
+	toSerialize["organizationId"] = o.OrganizationId
+	toSerialize["organizationName"] = o.OrganizationName
+	toSerialize["invoiceNumber"] = o.InvoiceNumber
+	toSerialize["organizationSubscriptionId"] = o.OrganizationSubscriptionId
 	return toSerialize, nil
+}
+
+func (o *InvoiceListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"startDate",
+		"endDate",
+		"requiredPaymentAction",
+		"isPaid",
+		"invoiceId",
+		"subscriptionType",
+		"subscriptionName",
+		"price",
+		"organizationId",
+		"organizationName",
+		"invoiceNumber",
+		"organizationSubscriptionId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varInvoiceListDto := _InvoiceListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varInvoiceListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InvoiceListDto(varInvoiceListDto)
+
+	return err
 }
 
 type NullableInvoiceListDto struct {

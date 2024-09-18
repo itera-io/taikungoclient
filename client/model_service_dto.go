@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ServiceDto type satisfies the MappedNullable interface at compile time
@@ -20,19 +22,26 @@ var _ MappedNullable = &ServiceDto{}
 
 // ServiceDto struct for ServiceDto
 type ServiceDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Age NullableString `json:"age,omitempty"`
-	Type NullableString `json:"type,omitempty"`
-	Ip interface{} `json:"ip,omitempty"`
+	MetadataName string `json:"metadataName"`
+	Namespace string `json:"namespace"`
+	Age NullableString `json:"age"`
+	Type NullableString `json:"type"`
+	Ip interface{} `json:"ip"`
 }
+
+type _ServiceDto ServiceDto
 
 // NewServiceDto instantiates a new ServiceDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServiceDto() *ServiceDto {
+func NewServiceDto(metadataName string, namespace string, age NullableString, type_ NullableString, ip interface{}) *ServiceDto {
 	this := ServiceDto{}
+	this.MetadataName = metadataName
+	this.Namespace = namespace
+	this.Age = age
+	this.Type = type_
+	this.Ip = ip
 	return &this
 }
 
@@ -44,100 +53,66 @@ func NewServiceDtoWithDefaults() *ServiceDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value
 func (o *ServiceDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName.Get()
+
+	return o.MetadataName
 }
 
-// GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
+// GetMetadataNameOk returns a tuple with the MetadataName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceDto) GetMetadataNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.MetadataName.Get(), o.MetadataName.IsSet()
+	return &o.MetadataName, true
 }
 
-// HasMetadataName returns a boolean if a field has been set.
-func (o *ServiceDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName sets field value
 func (o *ServiceDto) SetMetadataName(v string) {
-	o.MetadataName.Set(&v)
-}
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *ServiceDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
+	o.MetadataName = v
 }
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *ServiceDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value
 func (o *ServiceDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+
+	return o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// GetNamespaceOk returns a tuple with the Namespace field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceDto) GetNamespaceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return &o.Namespace, true
 }
 
-// HasNamespace returns a boolean if a field has been set.
-func (o *ServiceDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace sets field value
 func (o *ServiceDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *ServiceDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *ServiceDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetAge returns the Age field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAge returns the Age field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServiceDto) GetAge() string {
-	if o == nil || IsNil(o.Age.Get()) {
+	if o == nil || o.Age.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Age.Get()
 }
 
-// GetAgeOk returns a tuple with the Age field value if set, nil otherwise
+// GetAgeOk returns a tuple with the Age field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceDto) GetAgeOk() (*string, bool) {
@@ -147,39 +122,23 @@ func (o *ServiceDto) GetAgeOk() (*string, bool) {
 	return o.Age.Get(), o.Age.IsSet()
 }
 
-// HasAge returns a boolean if a field has been set.
-func (o *ServiceDto) HasAge() bool {
-	if o != nil && o.Age.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAge gets a reference to the given NullableString and assigns it to the Age field.
+// SetAge sets field value
 func (o *ServiceDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
-// SetAgeNil sets the value for Age to be an explicit nil
-func (o *ServiceDto) SetAgeNil() {
-	o.Age.Set(nil)
-}
 
-// UnsetAge ensures that no value is present for Age, not even an explicit nil
-func (o *ServiceDto) UnsetAge() {
-	o.Age.Unset()
-}
-
-// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetType returns the Type field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServiceDto) GetType() string {
-	if o == nil || IsNil(o.Type.Get()) {
+	if o == nil || o.Type.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Type.Get()
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceDto) GetTypeOk() (*string, bool) {
@@ -189,39 +148,23 @@ func (o *ServiceDto) GetTypeOk() (*string, bool) {
 	return o.Type.Get(), o.Type.IsSet()
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *ServiceDto) HasType() bool {
-	if o != nil && o.Type.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given NullableString and assigns it to the Type field.
+// SetType sets field value
 func (o *ServiceDto) SetType(v string) {
 	o.Type.Set(&v)
 }
-// SetTypeNil sets the value for Type to be an explicit nil
-func (o *ServiceDto) SetTypeNil() {
-	o.Type.Set(nil)
-}
 
-// UnsetType ensures that no value is present for Type, not even an explicit nil
-func (o *ServiceDto) UnsetType() {
-	o.Type.Unset()
-}
-
-// GetIp returns the Ip field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIp returns the Ip field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *ServiceDto) GetIp() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
+
 	return o.Ip
 }
 
-// GetIpOk returns a tuple with the Ip field value if set, nil otherwise
+// GetIpOk returns a tuple with the Ip field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceDto) GetIpOk() (*interface{}, bool) {
@@ -231,16 +174,7 @@ func (o *ServiceDto) GetIpOk() (*interface{}, bool) {
 	return &o.Ip, true
 }
 
-// HasIp returns a boolean if a field has been set.
-func (o *ServiceDto) HasIp() bool {
-	if o != nil && !IsNil(o.Ip) {
-		return true
-	}
-
-	return false
-}
-
-// SetIp gets a reference to the given interface{} and assigns it to the Ip field.
+// SetIp sets field value
 func (o *ServiceDto) SetIp(v interface{}) {
 	o.Ip = v
 }
@@ -255,22 +189,55 @@ func (o ServiceDto) MarshalJSON() ([]byte, error) {
 
 func (o ServiceDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
-	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
-	}
-	if o.Age.IsSet() {
-		toSerialize["age"] = o.Age.Get()
-	}
-	if o.Type.IsSet() {
-		toSerialize["type"] = o.Type.Get()
-	}
+	toSerialize["metadataName"] = o.MetadataName
+	toSerialize["namespace"] = o.Namespace
+	toSerialize["age"] = o.Age.Get()
+	toSerialize["type"] = o.Type.Get()
 	if o.Ip != nil {
 		toSerialize["ip"] = o.Ip
 	}
 	return toSerialize, nil
+}
+
+func (o *ServiceDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"metadataName",
+		"namespace",
+		"age",
+		"type",
+		"ip",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varServiceDto := _ServiceDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varServiceDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServiceDto(varServiceDto)
+
+	return err
 }
 
 type NullableServiceDto struct {

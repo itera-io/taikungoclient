@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CrdListDto type satisfies the MappedNullable interface at compile time
@@ -20,20 +22,28 @@ var _ MappedNullable = &CrdListDto{}
 
 // CrdListDto struct for CrdListDto
 type CrdListDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	SpecNameKind NullableString `json:"specNameKind,omitempty"`
-	ListKind NullableString `json:"listKind,omitempty"`
-	Group NullableString `json:"group,omitempty"`
-	Labels interface{} `json:"labels,omitempty"`
-	Age NullableString `json:"age,omitempty"`
+	MetadataName string `json:"metadataName"`
+	SpecNameKind string `json:"specNameKind"`
+	ListKind string `json:"listKind"`
+	Group string `json:"group"`
+	Labels interface{} `json:"labels"`
+	Age NullableString `json:"age"`
 }
+
+type _CrdListDto CrdListDto
 
 // NewCrdListDto instantiates a new CrdListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCrdListDto() *CrdListDto {
+func NewCrdListDto(metadataName string, specNameKind string, listKind string, group string, labels interface{}, age NullableString) *CrdListDto {
 	this := CrdListDto{}
+	this.MetadataName = metadataName
+	this.SpecNameKind = specNameKind
+	this.ListKind = listKind
+	this.Group = group
+	this.Labels = labels
+	this.Age = age
 	return &this
 }
 
@@ -45,184 +55,114 @@ func NewCrdListDtoWithDefaults() *CrdListDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value
 func (o *CrdListDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName.Get()
+
+	return o.MetadataName
 }
 
-// GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
+// GetMetadataNameOk returns a tuple with the MetadataName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CrdListDto) GetMetadataNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.MetadataName.Get(), o.MetadataName.IsSet()
+	return &o.MetadataName, true
 }
 
-// HasMetadataName returns a boolean if a field has been set.
-func (o *CrdListDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName sets field value
 func (o *CrdListDto) SetMetadataName(v string) {
-	o.MetadataName.Set(&v)
-}
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *CrdListDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
+	o.MetadataName = v
 }
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *CrdListDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetSpecNameKind returns the SpecNameKind field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSpecNameKind returns the SpecNameKind field value
 func (o *CrdListDto) GetSpecNameKind() string {
-	if o == nil || IsNil(o.SpecNameKind.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.SpecNameKind.Get()
+
+	return o.SpecNameKind
 }
 
-// GetSpecNameKindOk returns a tuple with the SpecNameKind field value if set, nil otherwise
+// GetSpecNameKindOk returns a tuple with the SpecNameKind field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CrdListDto) GetSpecNameKindOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.SpecNameKind.Get(), o.SpecNameKind.IsSet()
+	return &o.SpecNameKind, true
 }
 
-// HasSpecNameKind returns a boolean if a field has been set.
-func (o *CrdListDto) HasSpecNameKind() bool {
-	if o != nil && o.SpecNameKind.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSpecNameKind gets a reference to the given NullableString and assigns it to the SpecNameKind field.
+// SetSpecNameKind sets field value
 func (o *CrdListDto) SetSpecNameKind(v string) {
-	o.SpecNameKind.Set(&v)
-}
-// SetSpecNameKindNil sets the value for SpecNameKind to be an explicit nil
-func (o *CrdListDto) SetSpecNameKindNil() {
-	o.SpecNameKind.Set(nil)
+	o.SpecNameKind = v
 }
 
-// UnsetSpecNameKind ensures that no value is present for SpecNameKind, not even an explicit nil
-func (o *CrdListDto) UnsetSpecNameKind() {
-	o.SpecNameKind.Unset()
-}
-
-// GetListKind returns the ListKind field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetListKind returns the ListKind field value
 func (o *CrdListDto) GetListKind() string {
-	if o == nil || IsNil(o.ListKind.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ListKind.Get()
+
+	return o.ListKind
 }
 
-// GetListKindOk returns a tuple with the ListKind field value if set, nil otherwise
+// GetListKindOk returns a tuple with the ListKind field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CrdListDto) GetListKindOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ListKind.Get(), o.ListKind.IsSet()
+	return &o.ListKind, true
 }
 
-// HasListKind returns a boolean if a field has been set.
-func (o *CrdListDto) HasListKind() bool {
-	if o != nil && o.ListKind.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetListKind gets a reference to the given NullableString and assigns it to the ListKind field.
+// SetListKind sets field value
 func (o *CrdListDto) SetListKind(v string) {
-	o.ListKind.Set(&v)
-}
-// SetListKindNil sets the value for ListKind to be an explicit nil
-func (o *CrdListDto) SetListKindNil() {
-	o.ListKind.Set(nil)
+	o.ListKind = v
 }
 
-// UnsetListKind ensures that no value is present for ListKind, not even an explicit nil
-func (o *CrdListDto) UnsetListKind() {
-	o.ListKind.Unset()
-}
-
-// GetGroup returns the Group field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGroup returns the Group field value
 func (o *CrdListDto) GetGroup() string {
-	if o == nil || IsNil(o.Group.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Group.Get()
+
+	return o.Group
 }
 
-// GetGroupOk returns a tuple with the Group field value if set, nil otherwise
+// GetGroupOk returns a tuple with the Group field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CrdListDto) GetGroupOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Group.Get(), o.Group.IsSet()
+	return &o.Group, true
 }
 
-// HasGroup returns a boolean if a field has been set.
-func (o *CrdListDto) HasGroup() bool {
-	if o != nil && o.Group.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetGroup gets a reference to the given NullableString and assigns it to the Group field.
+// SetGroup sets field value
 func (o *CrdListDto) SetGroup(v string) {
-	o.Group.Set(&v)
-}
-// SetGroupNil sets the value for Group to be an explicit nil
-func (o *CrdListDto) SetGroupNil() {
-	o.Group.Set(nil)
+	o.Group = v
 }
 
-// UnsetGroup ensures that no value is present for Group, not even an explicit nil
-func (o *CrdListDto) UnsetGroup() {
-	o.Group.Unset()
-}
-
-// GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLabels returns the Labels field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *CrdListDto) GetLabels() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
+
 	return o.Labels
 }
 
-// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
+// GetLabelsOk returns a tuple with the Labels field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CrdListDto) GetLabelsOk() (*interface{}, bool) {
@@ -232,30 +172,23 @@ func (o *CrdListDto) GetLabelsOk() (*interface{}, bool) {
 	return &o.Labels, true
 }
 
-// HasLabels returns a boolean if a field has been set.
-func (o *CrdListDto) HasLabels() bool {
-	if o != nil && !IsNil(o.Labels) {
-		return true
-	}
-
-	return false
-}
-
-// SetLabels gets a reference to the given interface{} and assigns it to the Labels field.
+// SetLabels sets field value
 func (o *CrdListDto) SetLabels(v interface{}) {
 	o.Labels = v
 }
 
-// GetAge returns the Age field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAge returns the Age field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CrdListDto) GetAge() string {
-	if o == nil || IsNil(o.Age.Get()) {
+	if o == nil || o.Age.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Age.Get()
 }
 
-// GetAgeOk returns a tuple with the Age field value if set, nil otherwise
+// GetAgeOk returns a tuple with the Age field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CrdListDto) GetAgeOk() (*string, bool) {
@@ -265,27 +198,9 @@ func (o *CrdListDto) GetAgeOk() (*string, bool) {
 	return o.Age.Get(), o.Age.IsSet()
 }
 
-// HasAge returns a boolean if a field has been set.
-func (o *CrdListDto) HasAge() bool {
-	if o != nil && o.Age.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAge gets a reference to the given NullableString and assigns it to the Age field.
+// SetAge sets field value
 func (o *CrdListDto) SetAge(v string) {
 	o.Age.Set(&v)
-}
-// SetAgeNil sets the value for Age to be an explicit nil
-func (o *CrdListDto) SetAgeNil() {
-	o.Age.Set(nil)
-}
-
-// UnsetAge ensures that no value is present for Age, not even an explicit nil
-func (o *CrdListDto) UnsetAge() {
-	o.Age.Unset()
 }
 
 func (o CrdListDto) MarshalJSON() ([]byte, error) {
@@ -298,25 +213,57 @@ func (o CrdListDto) MarshalJSON() ([]byte, error) {
 
 func (o CrdListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
-	}
-	if o.SpecNameKind.IsSet() {
-		toSerialize["specNameKind"] = o.SpecNameKind.Get()
-	}
-	if o.ListKind.IsSet() {
-		toSerialize["listKind"] = o.ListKind.Get()
-	}
-	if o.Group.IsSet() {
-		toSerialize["group"] = o.Group.Get()
-	}
+	toSerialize["metadataName"] = o.MetadataName
+	toSerialize["specNameKind"] = o.SpecNameKind
+	toSerialize["listKind"] = o.ListKind
+	toSerialize["group"] = o.Group
 	if o.Labels != nil {
 		toSerialize["labels"] = o.Labels
 	}
-	if o.Age.IsSet() {
-		toSerialize["age"] = o.Age.Get()
-	}
+	toSerialize["age"] = o.Age.Get()
 	return toSerialize, nil
+}
+
+func (o *CrdListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"metadataName",
+		"specNameKind",
+		"listKind",
+		"group",
+		"labels",
+		"age",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCrdListDto := _CrdListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCrdListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CrdListDto(varCrdListDto)
+
+	return err
 }
 
 type NullableCrdListDto struct {

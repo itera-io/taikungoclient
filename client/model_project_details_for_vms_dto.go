@@ -44,7 +44,7 @@ type ProjectDetailsForVmsDto struct {
 	TotalHourlyCost float64 `json:"totalHourlyCost"`
 	AvailabilityZones []string `json:"availabilityZones"`
 	Hypervisors []string `json:"hypervisors"`
-	ExpiredAt string `json:"expiredAt"`
+	ExpiredAt NullableString `json:"expiredAt"`
 }
 
 type _ProjectDetailsForVmsDto ProjectDetailsForVmsDto
@@ -53,7 +53,7 @@ type _ProjectDetailsForVmsDto ProjectDetailsForVmsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDetailsForVmsDto(projectStatus ProjectStatus, projectName string, projectId int32, cloudType CloudType, cloudName string, cloudId NullableInt32, organizationName string, organizationId int32, isLocked bool, isProjectMaintenanceModeEnabled bool, hasSelectedFlavors NullableBool, isMaintenanceModeEnabled bool, isDrsEnabled bool, projectCloudRevision NullableInt32, cloudCredentialRevision NullableInt32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, totalHourlyCost float64, availabilityZones []string, hypervisors []string, expiredAt string) *ProjectDetailsForVmsDto {
+func NewProjectDetailsForVmsDto(projectStatus ProjectStatus, projectName string, projectId int32, cloudType CloudType, cloudName string, cloudId NullableInt32, organizationName string, organizationId int32, isLocked bool, isProjectMaintenanceModeEnabled bool, hasSelectedFlavors NullableBool, isMaintenanceModeEnabled bool, isDrsEnabled bool, projectCloudRevision NullableInt32, cloudCredentialRevision NullableInt32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, totalHourlyCost float64, availabilityZones []string, hypervisors []string, expiredAt NullableString) *ProjectDetailsForVmsDto {
 	this := ProjectDetailsForVmsDto{}
 	this.ProjectStatus = projectStatus
 	this.ProjectName = projectName
@@ -632,27 +632,29 @@ func (o *ProjectDetailsForVmsDto) SetHypervisors(v []string) {
 }
 
 // GetExpiredAt returns the ExpiredAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForVmsDto) GetExpiredAt() string {
-	if o == nil {
+	if o == nil || o.ExpiredAt.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ExpiredAt
+	return *o.ExpiredAt.Get()
 }
 
 // GetExpiredAtOk returns a tuple with the ExpiredAt field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForVmsDto) GetExpiredAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ExpiredAt, true
+	return o.ExpiredAt.Get(), o.ExpiredAt.IsSet()
 }
 
 // SetExpiredAt sets field value
 func (o *ProjectDetailsForVmsDto) SetExpiredAt(v string) {
-	o.ExpiredAt = v
+	o.ExpiredAt.Set(&v)
 }
 
 func (o ProjectDetailsForVmsDto) MarshalJSON() ([]byte, error) {
@@ -691,7 +693,7 @@ func (o ProjectDetailsForVmsDto) ToMap() (map[string]interface{}, error) {
 	if o.Hypervisors != nil {
 		toSerialize["hypervisors"] = o.Hypervisors
 	}
-	toSerialize["expiredAt"] = o.ExpiredAt
+	toSerialize["expiredAt"] = o.ExpiredAt.Get()
 	return toSerialize, nil
 }
 

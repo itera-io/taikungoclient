@@ -218,6 +218,7 @@ docs/BridgeListCommand.md
 docs/ButtonStatusDto.md
 docs/CBackupDto.md
 docs/CDeleteBackupRequestDto.md
+docs/CNI.md
 docs/CRestoreDto.md
 docs/CScheduleDto.md
 docs/CardInformationDto.md
@@ -496,7 +497,6 @@ docs/KubeConfigForUserList.md
 docs/KubeConfigInteractiveShellCommand.md
 docs/KubeConfigResponse.md
 docs/KubeConfigRoleAPI.md
-docs/KubeConfigRoleDto.md
 docs/KubeConfigRoleResponse.md
 docs/KubernetesAPI.md
 docs/KubernetesAlertCreateDto.md
@@ -1135,6 +1135,7 @@ model_cloud_lock_manager_command.go
 model_cloud_role.go
 model_cloud_status.go
 model_cloud_type.go
+model_cni.go
 model_common_availability_dto.go
 model_common_dropdown_dto.go
 model_common_dropdown_is_bound_dto.go
@@ -1360,7 +1361,6 @@ model_kube_config_for_user_dto.go
 model_kube_config_for_user_list.go
 model_kube_config_interactive_shell_command.go
 model_kube_config_response.go
-model_kube_config_role_dto.go
 model_kube_config_role_response.go
 model_kubernetes_alert_create_dto.go
 model_kubernetes_alert_dto.go

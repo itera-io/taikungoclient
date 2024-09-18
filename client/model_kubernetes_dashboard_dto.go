@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubernetesDashboardDto type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &KubernetesDashboardDto{}
 
 // KubernetesDashboardDto struct for KubernetesDashboardDto
 type KubernetesDashboardDto struct {
-	Pods []PodDto `json:"pods,omitempty"`
-	Nodes []NodeDto `json:"nodes,omitempty"`
+	Pods []PodDto `json:"pods"`
+	Nodes []NodeDto `json:"nodes"`
 }
+
+type _KubernetesDashboardDto KubernetesDashboardDto
 
 // NewKubernetesDashboardDto instantiates a new KubernetesDashboardDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesDashboardDto() *KubernetesDashboardDto {
+func NewKubernetesDashboardDto(pods []PodDto, nodes []NodeDto) *KubernetesDashboardDto {
 	this := KubernetesDashboardDto{}
+	this.Pods = pods
+	this.Nodes = nodes
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewKubernetesDashboardDtoWithDefaults() *KubernetesDashboardDto {
 	return &this
 }
 
-// GetPods returns the Pods field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPods returns the Pods field value
+// If the value is explicit nil, the zero value for []PodDto will be returned
 func (o *KubernetesDashboardDto) GetPods() []PodDto {
 	if o == nil {
 		var ret []PodDto
 		return ret
 	}
+
 	return o.Pods
 }
 
-// GetPodsOk returns a tuple with the Pods field value if set, nil otherwise
+// GetPodsOk returns a tuple with the Pods field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesDashboardDto) GetPodsOk() ([]PodDto, bool) {
@@ -60,30 +68,23 @@ func (o *KubernetesDashboardDto) GetPodsOk() ([]PodDto, bool) {
 	return o.Pods, true
 }
 
-// HasPods returns a boolean if a field has been set.
-func (o *KubernetesDashboardDto) HasPods() bool {
-	if o != nil && !IsNil(o.Pods) {
-		return true
-	}
-
-	return false
-}
-
-// SetPods gets a reference to the given []PodDto and assigns it to the Pods field.
+// SetPods sets field value
 func (o *KubernetesDashboardDto) SetPods(v []PodDto) {
 	o.Pods = v
 }
 
-// GetNodes returns the Nodes field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNodes returns the Nodes field value
+// If the value is explicit nil, the zero value for []NodeDto will be returned
 func (o *KubernetesDashboardDto) GetNodes() []NodeDto {
 	if o == nil {
 		var ret []NodeDto
 		return ret
 	}
+
 	return o.Nodes
 }
 
-// GetNodesOk returns a tuple with the Nodes field value if set, nil otherwise
+// GetNodesOk returns a tuple with the Nodes field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesDashboardDto) GetNodesOk() ([]NodeDto, bool) {
@@ -93,16 +94,7 @@ func (o *KubernetesDashboardDto) GetNodesOk() ([]NodeDto, bool) {
 	return o.Nodes, true
 }
 
-// HasNodes returns a boolean if a field has been set.
-func (o *KubernetesDashboardDto) HasNodes() bool {
-	if o != nil && !IsNil(o.Nodes) {
-		return true
-	}
-
-	return false
-}
-
-// SetNodes gets a reference to the given []NodeDto and assigns it to the Nodes field.
+// SetNodes sets field value
 func (o *KubernetesDashboardDto) SetNodes(v []NodeDto) {
 	o.Nodes = v
 }
@@ -124,6 +116,44 @@ func (o KubernetesDashboardDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["nodes"] = o.Nodes
 	}
 	return toSerialize, nil
+}
+
+func (o *KubernetesDashboardDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pods",
+		"nodes",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubernetesDashboardDto := _KubernetesDashboardDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesDashboardDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesDashboardDto(varKubernetesDashboardDto)
+
+	return err
 }
 
 type NullableKubernetesDashboardDto struct {

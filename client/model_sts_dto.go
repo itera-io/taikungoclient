@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the StsDto type satisfies the MappedNullable interface at compile time
@@ -20,18 +22,24 @@ var _ MappedNullable = &StsDto{}
 
 // StsDto struct for StsDto
 type StsDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	Status NullableString `json:"status,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Age NullableString `json:"age,omitempty"`
+	MetadataName string `json:"metadataName"`
+	Status string `json:"status"`
+	Namespace string `json:"namespace"`
+	Age NullableString `json:"age"`
 }
+
+type _StsDto StsDto
 
 // NewStsDto instantiates a new StsDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStsDto() *StsDto {
+func NewStsDto(metadataName string, status string, namespace string, age NullableString) *StsDto {
 	this := StsDto{}
+	this.MetadataName = metadataName
+	this.Status = status
+	this.Namespace = namespace
+	this.Age = age
 	return &this
 }
 
@@ -43,142 +51,90 @@ func NewStsDtoWithDefaults() *StsDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value
 func (o *StsDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName.Get()
+
+	return o.MetadataName
 }
 
-// GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
+// GetMetadataNameOk returns a tuple with the MetadataName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StsDto) GetMetadataNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.MetadataName.Get(), o.MetadataName.IsSet()
+	return &o.MetadataName, true
 }
 
-// HasMetadataName returns a boolean if a field has been set.
-func (o *StsDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName sets field value
 func (o *StsDto) SetMetadataName(v string) {
-	o.MetadataName.Set(&v)
-}
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *StsDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
+	o.MetadataName = v
 }
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *StsDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStatus returns the Status field value
 func (o *StsDto) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Status.Get()
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StsDto) GetStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Status.Get(), o.Status.IsSet()
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *StsDto) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
+// SetStatus sets field value
 func (o *StsDto) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *StsDto) SetStatusNil() {
-	o.Status.Set(nil)
+	o.Status = v
 }
 
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *StsDto) UnsetStatus() {
-	o.Status.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value
 func (o *StsDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+
+	return o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// GetNamespaceOk returns a tuple with the Namespace field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StsDto) GetNamespaceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return &o.Namespace, true
 }
 
-// HasNamespace returns a boolean if a field has been set.
-func (o *StsDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace sets field value
 func (o *StsDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *StsDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *StsDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetAge returns the Age field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAge returns the Age field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *StsDto) GetAge() string {
-	if o == nil || IsNil(o.Age.Get()) {
+	if o == nil || o.Age.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Age.Get()
 }
 
-// GetAgeOk returns a tuple with the Age field value if set, nil otherwise
+// GetAgeOk returns a tuple with the Age field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StsDto) GetAgeOk() (*string, bool) {
@@ -188,27 +144,9 @@ func (o *StsDto) GetAgeOk() (*string, bool) {
 	return o.Age.Get(), o.Age.IsSet()
 }
 
-// HasAge returns a boolean if a field has been set.
-func (o *StsDto) HasAge() bool {
-	if o != nil && o.Age.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAge gets a reference to the given NullableString and assigns it to the Age field.
+// SetAge sets field value
 func (o *StsDto) SetAge(v string) {
 	o.Age.Set(&v)
-}
-// SetAgeNil sets the value for Age to be an explicit nil
-func (o *StsDto) SetAgeNil() {
-	o.Age.Set(nil)
-}
-
-// UnsetAge ensures that no value is present for Age, not even an explicit nil
-func (o *StsDto) UnsetAge() {
-	o.Age.Unset()
 }
 
 func (o StsDto) MarshalJSON() ([]byte, error) {
@@ -221,19 +159,51 @@ func (o StsDto) MarshalJSON() ([]byte, error) {
 
 func (o StsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
-	}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
-	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
-	}
-	if o.Age.IsSet() {
-		toSerialize["age"] = o.Age.Get()
-	}
+	toSerialize["metadataName"] = o.MetadataName
+	toSerialize["status"] = o.Status
+	toSerialize["namespace"] = o.Namespace
+	toSerialize["age"] = o.Age.Get()
 	return toSerialize, nil
+}
+
+func (o *StsDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"metadataName",
+		"status",
+		"namespace",
+		"age",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varStsDto := _StsDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varStsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StsDto(varStsDto)
+
+	return err
 }
 
 type NullableStsDto struct {

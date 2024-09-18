@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubernetesAlertDto type satisfies the MappedNullable interface at compile time
@@ -20,30 +22,48 @@ var _ MappedNullable = &KubernetesAlertDto{}
 
 // KubernetesAlertDto struct for KubernetesAlertDto
 type KubernetesAlertDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Labels interface{} `json:"labels,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	Title NullableString `json:"title,omitempty"`
-	Severity NullableString `json:"severity,omitempty"`
-	Fingerprint NullableString `json:"fingerprint,omitempty"`
-	Status NullableString `json:"status,omitempty"`
-	StartsAt NullableString `json:"startsAt,omitempty"`
-	EndAt NullableString `json:"endAt,omitempty"`
-	IsSolved *bool `json:"isSolved,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
-	IsSilenced *bool `json:"isSilenced,omitempty"`
-	SilenceReason NullableString `json:"silenceReason,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
-	IsMonitoringEnabled *bool `json:"isMonitoringEnabled,omitempty"`
+	Id int32 `json:"id"`
+	Labels interface{} `json:"labels"`
+	Description NullableString `json:"description"`
+	Title NullableString `json:"title"`
+	Severity NullableString `json:"severity"`
+	Fingerprint NullableString `json:"fingerprint"`
+	Status NullableString `json:"status"`
+	StartsAt NullableString `json:"startsAt"`
+	EndAt NullableString `json:"endAt"`
+	IsSolved bool `json:"isSolved"`
+	ProjectId int32 `json:"projectId"`
+	ProjectName string `json:"projectName"`
+	IsSilenced bool `json:"isSilenced"`
+	SilenceReason NullableString `json:"silenceReason"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 }
+
+type _KubernetesAlertDto KubernetesAlertDto
 
 // NewKubernetesAlertDto instantiates a new KubernetesAlertDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesAlertDto() *KubernetesAlertDto {
+func NewKubernetesAlertDto(id int32, labels interface{}, description NullableString, title NullableString, severity NullableString, fingerprint NullableString, status NullableString, startsAt NullableString, endAt NullableString, isSolved bool, projectId int32, projectName string, isSilenced bool, silenceReason NullableString, lastModifiedBy NullableString, isMonitoringEnabled bool) *KubernetesAlertDto {
 	this := KubernetesAlertDto{}
+	this.Id = id
+	this.Labels = labels
+	this.Description = description
+	this.Title = title
+	this.Severity = severity
+	this.Fingerprint = fingerprint
+	this.Status = status
+	this.StartsAt = startsAt
+	this.EndAt = endAt
+	this.IsSolved = isSolved
+	this.ProjectId = projectId
+	this.ProjectName = projectName
+	this.IsSilenced = isSilenced
+	this.SilenceReason = silenceReason
+	this.LastModifiedBy = lastModifiedBy
+	this.IsMonitoringEnabled = isMonitoringEnabled
 	return &this
 }
 
@@ -55,48 +75,42 @@ func NewKubernetesAlertDtoWithDefaults() *KubernetesAlertDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *KubernetesAlertDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesAlertDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *KubernetesAlertDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLabels returns the Labels field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *KubernetesAlertDto) GetLabels() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
+
 	return o.Labels
 }
 
-// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
+// GetLabelsOk returns a tuple with the Labels field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertDto) GetLabelsOk() (*interface{}, bool) {
@@ -106,30 +120,23 @@ func (o *KubernetesAlertDto) GetLabelsOk() (*interface{}, bool) {
 	return &o.Labels, true
 }
 
-// HasLabels returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasLabels() bool {
-	if o != nil && !IsNil(o.Labels) {
-		return true
-	}
-
-	return false
-}
-
-// SetLabels gets a reference to the given interface{} and assigns it to the Labels field.
+// SetLabels sets field value
 func (o *KubernetesAlertDto) SetLabels(v interface{}) {
 	o.Labels = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesAlertDto) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || o.Description.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Description.Get()
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertDto) GetDescriptionOk() (*string, bool) {
@@ -139,39 +146,23 @@ func (o *KubernetesAlertDto) GetDescriptionOk() (*string, bool) {
 	return o.Description.Get(), o.Description.IsSet()
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription sets field value
 func (o *KubernetesAlertDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *KubernetesAlertDto) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
 
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *KubernetesAlertDto) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetTitle returns the Title field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTitle returns the Title field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesAlertDto) GetTitle() string {
-	if o == nil || IsNil(o.Title.Get()) {
+	if o == nil || o.Title.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Title.Get()
 }
 
-// GetTitleOk returns a tuple with the Title field value if set, nil otherwise
+// GetTitleOk returns a tuple with the Title field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertDto) GetTitleOk() (*string, bool) {
@@ -181,39 +172,23 @@ func (o *KubernetesAlertDto) GetTitleOk() (*string, bool) {
 	return o.Title.Get(), o.Title.IsSet()
 }
 
-// HasTitle returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasTitle() bool {
-	if o != nil && o.Title.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTitle gets a reference to the given NullableString and assigns it to the Title field.
+// SetTitle sets field value
 func (o *KubernetesAlertDto) SetTitle(v string) {
 	o.Title.Set(&v)
 }
-// SetTitleNil sets the value for Title to be an explicit nil
-func (o *KubernetesAlertDto) SetTitleNil() {
-	o.Title.Set(nil)
-}
 
-// UnsetTitle ensures that no value is present for Title, not even an explicit nil
-func (o *KubernetesAlertDto) UnsetTitle() {
-	o.Title.Unset()
-}
-
-// GetSeverity returns the Severity field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSeverity returns the Severity field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesAlertDto) GetSeverity() string {
-	if o == nil || IsNil(o.Severity.Get()) {
+	if o == nil || o.Severity.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Severity.Get()
 }
 
-// GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
+// GetSeverityOk returns a tuple with the Severity field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertDto) GetSeverityOk() (*string, bool) {
@@ -223,39 +198,23 @@ func (o *KubernetesAlertDto) GetSeverityOk() (*string, bool) {
 	return o.Severity.Get(), o.Severity.IsSet()
 }
 
-// HasSeverity returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasSeverity() bool {
-	if o != nil && o.Severity.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSeverity gets a reference to the given NullableString and assigns it to the Severity field.
+// SetSeverity sets field value
 func (o *KubernetesAlertDto) SetSeverity(v string) {
 	o.Severity.Set(&v)
 }
-// SetSeverityNil sets the value for Severity to be an explicit nil
-func (o *KubernetesAlertDto) SetSeverityNil() {
-	o.Severity.Set(nil)
-}
 
-// UnsetSeverity ensures that no value is present for Severity, not even an explicit nil
-func (o *KubernetesAlertDto) UnsetSeverity() {
-	o.Severity.Unset()
-}
-
-// GetFingerprint returns the Fingerprint field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFingerprint returns the Fingerprint field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesAlertDto) GetFingerprint() string {
-	if o == nil || IsNil(o.Fingerprint.Get()) {
+	if o == nil || o.Fingerprint.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Fingerprint.Get()
 }
 
-// GetFingerprintOk returns a tuple with the Fingerprint field value if set, nil otherwise
+// GetFingerprintOk returns a tuple with the Fingerprint field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertDto) GetFingerprintOk() (*string, bool) {
@@ -265,39 +224,23 @@ func (o *KubernetesAlertDto) GetFingerprintOk() (*string, bool) {
 	return o.Fingerprint.Get(), o.Fingerprint.IsSet()
 }
 
-// HasFingerprint returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasFingerprint() bool {
-	if o != nil && o.Fingerprint.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetFingerprint gets a reference to the given NullableString and assigns it to the Fingerprint field.
+// SetFingerprint sets field value
 func (o *KubernetesAlertDto) SetFingerprint(v string) {
 	o.Fingerprint.Set(&v)
 }
-// SetFingerprintNil sets the value for Fingerprint to be an explicit nil
-func (o *KubernetesAlertDto) SetFingerprintNil() {
-	o.Fingerprint.Set(nil)
-}
 
-// UnsetFingerprint ensures that no value is present for Fingerprint, not even an explicit nil
-func (o *KubernetesAlertDto) UnsetFingerprint() {
-	o.Fingerprint.Unset()
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStatus returns the Status field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesAlertDto) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
+	if o == nil || o.Status.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Status.Get()
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertDto) GetStatusOk() (*string, bool) {
@@ -307,39 +250,23 @@ func (o *KubernetesAlertDto) GetStatusOk() (*string, bool) {
 	return o.Status.Get(), o.Status.IsSet()
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
+// SetStatus sets field value
 func (o *KubernetesAlertDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *KubernetesAlertDto) SetStatusNil() {
-	o.Status.Set(nil)
-}
 
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *KubernetesAlertDto) UnsetStatus() {
-	o.Status.Unset()
-}
-
-// GetStartsAt returns the StartsAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStartsAt returns the StartsAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesAlertDto) GetStartsAt() string {
-	if o == nil || IsNil(o.StartsAt.Get()) {
+	if o == nil || o.StartsAt.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.StartsAt.Get()
 }
 
-// GetStartsAtOk returns a tuple with the StartsAt field value if set, nil otherwise
+// GetStartsAtOk returns a tuple with the StartsAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertDto) GetStartsAtOk() (*string, bool) {
@@ -349,39 +276,23 @@ func (o *KubernetesAlertDto) GetStartsAtOk() (*string, bool) {
 	return o.StartsAt.Get(), o.StartsAt.IsSet()
 }
 
-// HasStartsAt returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasStartsAt() bool {
-	if o != nil && o.StartsAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStartsAt gets a reference to the given NullableString and assigns it to the StartsAt field.
+// SetStartsAt sets field value
 func (o *KubernetesAlertDto) SetStartsAt(v string) {
 	o.StartsAt.Set(&v)
 }
-// SetStartsAtNil sets the value for StartsAt to be an explicit nil
-func (o *KubernetesAlertDto) SetStartsAtNil() {
-	o.StartsAt.Set(nil)
-}
 
-// UnsetStartsAt ensures that no value is present for StartsAt, not even an explicit nil
-func (o *KubernetesAlertDto) UnsetStartsAt() {
-	o.StartsAt.Unset()
-}
-
-// GetEndAt returns the EndAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEndAt returns the EndAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesAlertDto) GetEndAt() string {
-	if o == nil || IsNil(o.EndAt.Get()) {
+	if o == nil || o.EndAt.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.EndAt.Get()
 }
 
-// GetEndAtOk returns a tuple with the EndAt field value if set, nil otherwise
+// GetEndAtOk returns a tuple with the EndAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertDto) GetEndAtOk() (*string, bool) {
@@ -391,177 +302,119 @@ func (o *KubernetesAlertDto) GetEndAtOk() (*string, bool) {
 	return o.EndAt.Get(), o.EndAt.IsSet()
 }
 
-// HasEndAt returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasEndAt() bool {
-	if o != nil && o.EndAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEndAt gets a reference to the given NullableString and assigns it to the EndAt field.
+// SetEndAt sets field value
 func (o *KubernetesAlertDto) SetEndAt(v string) {
 	o.EndAt.Set(&v)
 }
-// SetEndAtNil sets the value for EndAt to be an explicit nil
-func (o *KubernetesAlertDto) SetEndAtNil() {
-	o.EndAt.Set(nil)
-}
 
-// UnsetEndAt ensures that no value is present for EndAt, not even an explicit nil
-func (o *KubernetesAlertDto) UnsetEndAt() {
-	o.EndAt.Unset()
-}
-
-// GetIsSolved returns the IsSolved field value if set, zero value otherwise.
+// GetIsSolved returns the IsSolved field value
 func (o *KubernetesAlertDto) GetIsSolved() bool {
-	if o == nil || IsNil(o.IsSolved) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsSolved
+
+	return o.IsSolved
 }
 
-// GetIsSolvedOk returns a tuple with the IsSolved field value if set, nil otherwise
+// GetIsSolvedOk returns a tuple with the IsSolved field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesAlertDto) GetIsSolvedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsSolved) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsSolved, true
+	return &o.IsSolved, true
 }
 
-// HasIsSolved returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasIsSolved() bool {
-	if o != nil && !IsNil(o.IsSolved) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsSolved gets a reference to the given bool and assigns it to the IsSolved field.
+// SetIsSolved sets field value
 func (o *KubernetesAlertDto) SetIsSolved(v bool) {
-	o.IsSolved = &v
+	o.IsSolved = v
 }
 
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+// GetProjectId returns the ProjectId field value
 func (o *KubernetesAlertDto) GetProjectId() int32 {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ProjectId
+
+	return o.ProjectId
 }
 
-// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// GetProjectIdOk returns a tuple with the ProjectId field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesAlertDto) GetProjectIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectId, true
+	return &o.ProjectId, true
 }
 
-// HasProjectId returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasProjectId() bool {
-	if o != nil && !IsNil(o.ProjectId) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
+// SetProjectId sets field value
 func (o *KubernetesAlertDto) SetProjectId(v int32) {
-	o.ProjectId = &v
+	o.ProjectId = v
 }
 
-// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjectName returns the ProjectName field value
 func (o *KubernetesAlertDto) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName.Get()
+
+	return o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
+// GetProjectNameOk returns a tuple with the ProjectName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertDto) GetProjectNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName.Get(), o.ProjectName.IsSet()
+	return &o.ProjectName, true
 }
 
-// HasProjectName returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasProjectName() bool {
-	if o != nil && o.ProjectName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
+// SetProjectName sets field value
 func (o *KubernetesAlertDto) SetProjectName(v string) {
-	o.ProjectName.Set(&v)
-}
-// SetProjectNameNil sets the value for ProjectName to be an explicit nil
-func (o *KubernetesAlertDto) SetProjectNameNil() {
-	o.ProjectName.Set(nil)
+	o.ProjectName = v
 }
 
-// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
-func (o *KubernetesAlertDto) UnsetProjectName() {
-	o.ProjectName.Unset()
-}
-
-// GetIsSilenced returns the IsSilenced field value if set, zero value otherwise.
+// GetIsSilenced returns the IsSilenced field value
 func (o *KubernetesAlertDto) GetIsSilenced() bool {
-	if o == nil || IsNil(o.IsSilenced) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsSilenced
+
+	return o.IsSilenced
 }
 
-// GetIsSilencedOk returns a tuple with the IsSilenced field value if set, nil otherwise
+// GetIsSilencedOk returns a tuple with the IsSilenced field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesAlertDto) GetIsSilencedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsSilenced) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsSilenced, true
+	return &o.IsSilenced, true
 }
 
-// HasIsSilenced returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasIsSilenced() bool {
-	if o != nil && !IsNil(o.IsSilenced) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsSilenced gets a reference to the given bool and assigns it to the IsSilenced field.
+// SetIsSilenced sets field value
 func (o *KubernetesAlertDto) SetIsSilenced(v bool) {
-	o.IsSilenced = &v
+	o.IsSilenced = v
 }
 
-// GetSilenceReason returns the SilenceReason field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSilenceReason returns the SilenceReason field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesAlertDto) GetSilenceReason() string {
-	if o == nil || IsNil(o.SilenceReason.Get()) {
+	if o == nil || o.SilenceReason.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.SilenceReason.Get()
 }
 
-// GetSilenceReasonOk returns a tuple with the SilenceReason field value if set, nil otherwise
+// GetSilenceReasonOk returns a tuple with the SilenceReason field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertDto) GetSilenceReasonOk() (*string, bool) {
@@ -571,39 +424,23 @@ func (o *KubernetesAlertDto) GetSilenceReasonOk() (*string, bool) {
 	return o.SilenceReason.Get(), o.SilenceReason.IsSet()
 }
 
-// HasSilenceReason returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasSilenceReason() bool {
-	if o != nil && o.SilenceReason.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSilenceReason gets a reference to the given NullableString and assigns it to the SilenceReason field.
+// SetSilenceReason sets field value
 func (o *KubernetesAlertDto) SetSilenceReason(v string) {
 	o.SilenceReason.Set(&v)
 }
-// SetSilenceReasonNil sets the value for SilenceReason to be an explicit nil
-func (o *KubernetesAlertDto) SetSilenceReasonNil() {
-	o.SilenceReason.Set(nil)
-}
 
-// UnsetSilenceReason ensures that no value is present for SilenceReason, not even an explicit nil
-func (o *KubernetesAlertDto) UnsetSilenceReason() {
-	o.SilenceReason.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesAlertDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || o.LastModifiedBy.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModifiedBy.Get()
 }
 
-// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesAlertDto) GetLastModifiedByOk() (*string, bool) {
@@ -613,59 +450,33 @@ func (o *KubernetesAlertDto) GetLastModifiedByOk() (*string, bool) {
 	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
 }
 
-// HasLastModifiedBy returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy sets field value
 func (o *KubernetesAlertDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *KubernetesAlertDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
 
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *KubernetesAlertDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
-}
-
-// GetIsMonitoringEnabled returns the IsMonitoringEnabled field value if set, zero value otherwise.
+// GetIsMonitoringEnabled returns the IsMonitoringEnabled field value
 func (o *KubernetesAlertDto) GetIsMonitoringEnabled() bool {
-	if o == nil || IsNil(o.IsMonitoringEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsMonitoringEnabled
+
+	return o.IsMonitoringEnabled
 }
 
-// GetIsMonitoringEnabledOk returns a tuple with the IsMonitoringEnabled field value if set, nil otherwise
+// GetIsMonitoringEnabledOk returns a tuple with the IsMonitoringEnabled field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesAlertDto) GetIsMonitoringEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsMonitoringEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsMonitoringEnabled, true
+	return &o.IsMonitoringEnabled, true
 }
 
-// HasIsMonitoringEnabled returns a boolean if a field has been set.
-func (o *KubernetesAlertDto) HasIsMonitoringEnabled() bool {
-	if o != nil && !IsNil(o.IsMonitoringEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsMonitoringEnabled gets a reference to the given bool and assigns it to the IsMonitoringEnabled field.
+// SetIsMonitoringEnabled sets field value
 func (o *KubernetesAlertDto) SetIsMonitoringEnabled(v bool) {
-	o.IsMonitoringEnabled = &v
+	o.IsMonitoringEnabled = v
 }
 
 func (o KubernetesAlertDto) MarshalJSON() ([]byte, error) {
@@ -678,55 +489,77 @@ func (o KubernetesAlertDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesAlertDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	toSerialize["id"] = o.Id
 	if o.Labels != nil {
 		toSerialize["labels"] = o.Labels
 	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
-	if o.Title.IsSet() {
-		toSerialize["title"] = o.Title.Get()
-	}
-	if o.Severity.IsSet() {
-		toSerialize["severity"] = o.Severity.Get()
-	}
-	if o.Fingerprint.IsSet() {
-		toSerialize["fingerprint"] = o.Fingerprint.Get()
-	}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
-	}
-	if o.StartsAt.IsSet() {
-		toSerialize["startsAt"] = o.StartsAt.Get()
-	}
-	if o.EndAt.IsSet() {
-		toSerialize["endAt"] = o.EndAt.Get()
-	}
-	if !IsNil(o.IsSolved) {
-		toSerialize["isSolved"] = o.IsSolved
-	}
-	if !IsNil(o.ProjectId) {
-		toSerialize["projectId"] = o.ProjectId
-	}
-	if o.ProjectName.IsSet() {
-		toSerialize["projectName"] = o.ProjectName.Get()
-	}
-	if !IsNil(o.IsSilenced) {
-		toSerialize["isSilenced"] = o.IsSilenced
-	}
-	if o.SilenceReason.IsSet() {
-		toSerialize["silenceReason"] = o.SilenceReason.Get()
-	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
-	}
-	if !IsNil(o.IsMonitoringEnabled) {
-		toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
-	}
+	toSerialize["description"] = o.Description.Get()
+	toSerialize["title"] = o.Title.Get()
+	toSerialize["severity"] = o.Severity.Get()
+	toSerialize["fingerprint"] = o.Fingerprint.Get()
+	toSerialize["status"] = o.Status.Get()
+	toSerialize["startsAt"] = o.StartsAt.Get()
+	toSerialize["endAt"] = o.EndAt.Get()
+	toSerialize["isSolved"] = o.IsSolved
+	toSerialize["projectId"] = o.ProjectId
+	toSerialize["projectName"] = o.ProjectName
+	toSerialize["isSilenced"] = o.IsSilenced
+	toSerialize["silenceReason"] = o.SilenceReason.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
 	return toSerialize, nil
+}
+
+func (o *KubernetesAlertDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"labels",
+		"description",
+		"title",
+		"severity",
+		"fingerprint",
+		"status",
+		"startsAt",
+		"endAt",
+		"isSolved",
+		"projectId",
+		"projectName",
+		"isSilenced",
+		"silenceReason",
+		"lastModifiedBy",
+		"isMonitoringEnabled",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubernetesAlertDto := _KubernetesAlertDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesAlertDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesAlertDto(varKubernetesAlertDto)
+
+	return err
 }
 
 type NullableKubernetesAlertDto struct {

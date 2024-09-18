@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ListForPartnersDto type satisfies the MappedNullable interface at compile time
@@ -20,36 +22,60 @@ var _ MappedNullable = &ListForPartnersDto{}
 
 // ListForPartnersDto struct for ListForPartnersDto
 type ListForPartnersDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	ProjectLimit *int32 `json:"projectLimit,omitempty"`
-	ServerLimit *int32 `json:"serverLimit,omitempty"`
-	UserLimit *int32 `json:"userLimit,omitempty"`
-	CloudCredentialLimit *int32 `json:"cloudCredentialLimit,omitempty"`
-	MonthlyPrice *float64 `json:"monthlyPrice,omitempty"`
-	YearlyPrice *float64 `json:"yearlyPrice,omitempty"`
-	TcuPrice *float64 `json:"tcuPrice,omitempty"`
-	IsDeprecated *bool `json:"isDeprecated,omitempty"`
-	Currency NullableString `json:"currency,omitempty"`
-	IsEnterprise *bool `json:"isEnterprise,omitempty"`
-	Partner *PartnerDetailsForSubscription `json:"partner,omitempty"`
-	ExceededUser *bool `json:"exceededUser,omitempty"`
-	ExceededProject *bool `json:"exceededProject,omitempty"`
-	ExceededCloudCredential *bool `json:"exceededCloudCredential,omitempty"`
-	ExceededServers *bool `json:"exceededServers,omitempty"`
-	IsActive *bool `json:"isActive,omitempty"`
-	IsYearly *bool `json:"isYearly,omitempty"`
-	TrialDays *int32 `json:"trialDays,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	IsDemo *bool `json:"isDemo,omitempty"`
+	Id int32 `json:"id"`
+	Name NullableString `json:"name"`
+	ProjectLimit int32 `json:"projectLimit"`
+	ServerLimit int32 `json:"serverLimit"`
+	UserLimit int32 `json:"userLimit"`
+	CloudCredentialLimit int32 `json:"cloudCredentialLimit"`
+	MonthlyPrice float64 `json:"monthlyPrice"`
+	YearlyPrice float64 `json:"yearlyPrice"`
+	TcuPrice float64 `json:"tcuPrice"`
+	IsDeprecated bool `json:"isDeprecated"`
+	Currency NullableString `json:"currency"`
+	IsEnterprise bool `json:"isEnterprise"`
+	Partner PartnerDetailsForSubscription `json:"partner"`
+	ExceededUser bool `json:"exceededUser"`
+	ExceededProject bool `json:"exceededProject"`
+	ExceededCloudCredential bool `json:"exceededCloudCredential"`
+	ExceededServers bool `json:"exceededServers"`
+	IsActive bool `json:"isActive"`
+	IsYearly bool `json:"isYearly"`
+	TrialDays int32 `json:"trialDays"`
+	Description NullableString `json:"description"`
+	IsDemo bool `json:"isDemo"`
 }
+
+type _ListForPartnersDto ListForPartnersDto
 
 // NewListForPartnersDto instantiates a new ListForPartnersDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListForPartnersDto() *ListForPartnersDto {
+func NewListForPartnersDto(id int32, name NullableString, projectLimit int32, serverLimit int32, userLimit int32, cloudCredentialLimit int32, monthlyPrice float64, yearlyPrice float64, tcuPrice float64, isDeprecated bool, currency NullableString, isEnterprise bool, partner PartnerDetailsForSubscription, exceededUser bool, exceededProject bool, exceededCloudCredential bool, exceededServers bool, isActive bool, isYearly bool, trialDays int32, description NullableString, isDemo bool) *ListForPartnersDto {
 	this := ListForPartnersDto{}
+	this.Id = id
+	this.Name = name
+	this.ProjectLimit = projectLimit
+	this.ServerLimit = serverLimit
+	this.UserLimit = userLimit
+	this.CloudCredentialLimit = cloudCredentialLimit
+	this.MonthlyPrice = monthlyPrice
+	this.YearlyPrice = yearlyPrice
+	this.TcuPrice = tcuPrice
+	this.IsDeprecated = isDeprecated
+	this.Currency = currency
+	this.IsEnterprise = isEnterprise
+	this.Partner = partner
+	this.ExceededUser = exceededUser
+	this.ExceededProject = exceededProject
+	this.ExceededCloudCredential = exceededCloudCredential
+	this.ExceededServers = exceededServers
+	this.IsActive = isActive
+	this.IsYearly = isYearly
+	this.TrialDays = trialDays
+	this.Description = description
+	this.IsDemo = isDemo
 	return &this
 }
 
@@ -61,48 +87,42 @@ func NewListForPartnersDtoWithDefaults() *ListForPartnersDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *ListForPartnersDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *ListForPartnersDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ListForPartnersDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListForPartnersDto) GetNameOk() (*string, bool) {
@@ -112,295 +132,215 @@ func (o *ListForPartnersDto) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *ListForPartnersDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ListForPartnersDto) SetNameNil() {
-	o.Name.Set(nil)
-}
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ListForPartnersDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetProjectLimit returns the ProjectLimit field value if set, zero value otherwise.
+// GetProjectLimit returns the ProjectLimit field value
 func (o *ListForPartnersDto) GetProjectLimit() int32 {
-	if o == nil || IsNil(o.ProjectLimit) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ProjectLimit
+
+	return o.ProjectLimit
 }
 
-// GetProjectLimitOk returns a tuple with the ProjectLimit field value if set, nil otherwise
+// GetProjectLimitOk returns a tuple with the ProjectLimit field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetProjectLimitOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProjectLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectLimit, true
+	return &o.ProjectLimit, true
 }
 
-// HasProjectLimit returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasProjectLimit() bool {
-	if o != nil && !IsNil(o.ProjectLimit) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectLimit gets a reference to the given int32 and assigns it to the ProjectLimit field.
+// SetProjectLimit sets field value
 func (o *ListForPartnersDto) SetProjectLimit(v int32) {
-	o.ProjectLimit = &v
+	o.ProjectLimit = v
 }
 
-// GetServerLimit returns the ServerLimit field value if set, zero value otherwise.
+// GetServerLimit returns the ServerLimit field value
 func (o *ListForPartnersDto) GetServerLimit() int32 {
-	if o == nil || IsNil(o.ServerLimit) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ServerLimit
+
+	return o.ServerLimit
 }
 
-// GetServerLimitOk returns a tuple with the ServerLimit field value if set, nil otherwise
+// GetServerLimitOk returns a tuple with the ServerLimit field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetServerLimitOk() (*int32, bool) {
-	if o == nil || IsNil(o.ServerLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ServerLimit, true
+	return &o.ServerLimit, true
 }
 
-// HasServerLimit returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasServerLimit() bool {
-	if o != nil && !IsNil(o.ServerLimit) {
-		return true
-	}
-
-	return false
-}
-
-// SetServerLimit gets a reference to the given int32 and assigns it to the ServerLimit field.
+// SetServerLimit sets field value
 func (o *ListForPartnersDto) SetServerLimit(v int32) {
-	o.ServerLimit = &v
+	o.ServerLimit = v
 }
 
-// GetUserLimit returns the UserLimit field value if set, zero value otherwise.
+// GetUserLimit returns the UserLimit field value
 func (o *ListForPartnersDto) GetUserLimit() int32 {
-	if o == nil || IsNil(o.UserLimit) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.UserLimit
+
+	return o.UserLimit
 }
 
-// GetUserLimitOk returns a tuple with the UserLimit field value if set, nil otherwise
+// GetUserLimitOk returns a tuple with the UserLimit field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetUserLimitOk() (*int32, bool) {
-	if o == nil || IsNil(o.UserLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserLimit, true
+	return &o.UserLimit, true
 }
 
-// HasUserLimit returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasUserLimit() bool {
-	if o != nil && !IsNil(o.UserLimit) {
-		return true
-	}
-
-	return false
-}
-
-// SetUserLimit gets a reference to the given int32 and assigns it to the UserLimit field.
+// SetUserLimit sets field value
 func (o *ListForPartnersDto) SetUserLimit(v int32) {
-	o.UserLimit = &v
+	o.UserLimit = v
 }
 
-// GetCloudCredentialLimit returns the CloudCredentialLimit field value if set, zero value otherwise.
+// GetCloudCredentialLimit returns the CloudCredentialLimit field value
 func (o *ListForPartnersDto) GetCloudCredentialLimit() int32 {
-	if o == nil || IsNil(o.CloudCredentialLimit) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.CloudCredentialLimit
+
+	return o.CloudCredentialLimit
 }
 
-// GetCloudCredentialLimitOk returns a tuple with the CloudCredentialLimit field value if set, nil otherwise
+// GetCloudCredentialLimitOk returns a tuple with the CloudCredentialLimit field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetCloudCredentialLimitOk() (*int32, bool) {
-	if o == nil || IsNil(o.CloudCredentialLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CloudCredentialLimit, true
+	return &o.CloudCredentialLimit, true
 }
 
-// HasCloudCredentialLimit returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasCloudCredentialLimit() bool {
-	if o != nil && !IsNil(o.CloudCredentialLimit) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudCredentialLimit gets a reference to the given int32 and assigns it to the CloudCredentialLimit field.
+// SetCloudCredentialLimit sets field value
 func (o *ListForPartnersDto) SetCloudCredentialLimit(v int32) {
-	o.CloudCredentialLimit = &v
+	o.CloudCredentialLimit = v
 }
 
-// GetMonthlyPrice returns the MonthlyPrice field value if set, zero value otherwise.
+// GetMonthlyPrice returns the MonthlyPrice field value
 func (o *ListForPartnersDto) GetMonthlyPrice() float64 {
-	if o == nil || IsNil(o.MonthlyPrice) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.MonthlyPrice
+
+	return o.MonthlyPrice
 }
 
-// GetMonthlyPriceOk returns a tuple with the MonthlyPrice field value if set, nil otherwise
+// GetMonthlyPriceOk returns a tuple with the MonthlyPrice field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetMonthlyPriceOk() (*float64, bool) {
-	if o == nil || IsNil(o.MonthlyPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MonthlyPrice, true
+	return &o.MonthlyPrice, true
 }
 
-// HasMonthlyPrice returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasMonthlyPrice() bool {
-	if o != nil && !IsNil(o.MonthlyPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetMonthlyPrice gets a reference to the given float64 and assigns it to the MonthlyPrice field.
+// SetMonthlyPrice sets field value
 func (o *ListForPartnersDto) SetMonthlyPrice(v float64) {
-	o.MonthlyPrice = &v
+	o.MonthlyPrice = v
 }
 
-// GetYearlyPrice returns the YearlyPrice field value if set, zero value otherwise.
+// GetYearlyPrice returns the YearlyPrice field value
 func (o *ListForPartnersDto) GetYearlyPrice() float64 {
-	if o == nil || IsNil(o.YearlyPrice) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.YearlyPrice
+
+	return o.YearlyPrice
 }
 
-// GetYearlyPriceOk returns a tuple with the YearlyPrice field value if set, nil otherwise
+// GetYearlyPriceOk returns a tuple with the YearlyPrice field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetYearlyPriceOk() (*float64, bool) {
-	if o == nil || IsNil(o.YearlyPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.YearlyPrice, true
+	return &o.YearlyPrice, true
 }
 
-// HasYearlyPrice returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasYearlyPrice() bool {
-	if o != nil && !IsNil(o.YearlyPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetYearlyPrice gets a reference to the given float64 and assigns it to the YearlyPrice field.
+// SetYearlyPrice sets field value
 func (o *ListForPartnersDto) SetYearlyPrice(v float64) {
-	o.YearlyPrice = &v
+	o.YearlyPrice = v
 }
 
-// GetTcuPrice returns the TcuPrice field value if set, zero value otherwise.
+// GetTcuPrice returns the TcuPrice field value
 func (o *ListForPartnersDto) GetTcuPrice() float64 {
-	if o == nil || IsNil(o.TcuPrice) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.TcuPrice
+
+	return o.TcuPrice
 }
 
-// GetTcuPriceOk returns a tuple with the TcuPrice field value if set, nil otherwise
+// GetTcuPriceOk returns a tuple with the TcuPrice field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetTcuPriceOk() (*float64, bool) {
-	if o == nil || IsNil(o.TcuPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TcuPrice, true
+	return &o.TcuPrice, true
 }
 
-// HasTcuPrice returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasTcuPrice() bool {
-	if o != nil && !IsNil(o.TcuPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetTcuPrice gets a reference to the given float64 and assigns it to the TcuPrice field.
+// SetTcuPrice sets field value
 func (o *ListForPartnersDto) SetTcuPrice(v float64) {
-	o.TcuPrice = &v
+	o.TcuPrice = v
 }
 
-// GetIsDeprecated returns the IsDeprecated field value if set, zero value otherwise.
+// GetIsDeprecated returns the IsDeprecated field value
 func (o *ListForPartnersDto) GetIsDeprecated() bool {
-	if o == nil || IsNil(o.IsDeprecated) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDeprecated
+
+	return o.IsDeprecated
 }
 
-// GetIsDeprecatedOk returns a tuple with the IsDeprecated field value if set, nil otherwise
+// GetIsDeprecatedOk returns a tuple with the IsDeprecated field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetIsDeprecatedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDeprecated) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDeprecated, true
+	return &o.IsDeprecated, true
 }
 
-// HasIsDeprecated returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasIsDeprecated() bool {
-	if o != nil && !IsNil(o.IsDeprecated) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDeprecated gets a reference to the given bool and assigns it to the IsDeprecated field.
+// SetIsDeprecated sets field value
 func (o *ListForPartnersDto) SetIsDeprecated(v bool) {
-	o.IsDeprecated = &v
+	o.IsDeprecated = v
 }
 
-// GetCurrency returns the Currency field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCurrency returns the Currency field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ListForPartnersDto) GetCurrency() string {
-	if o == nil || IsNil(o.Currency.Get()) {
+	if o == nil || o.Currency.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Currency.Get()
 }
 
-// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// GetCurrencyOk returns a tuple with the Currency field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListForPartnersDto) GetCurrencyOk() (*string, bool) {
@@ -410,327 +350,239 @@ func (o *ListForPartnersDto) GetCurrencyOk() (*string, bool) {
 	return o.Currency.Get(), o.Currency.IsSet()
 }
 
-// HasCurrency returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasCurrency() bool {
-	if o != nil && o.Currency.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCurrency gets a reference to the given NullableString and assigns it to the Currency field.
+// SetCurrency sets field value
 func (o *ListForPartnersDto) SetCurrency(v string) {
 	o.Currency.Set(&v)
 }
-// SetCurrencyNil sets the value for Currency to be an explicit nil
-func (o *ListForPartnersDto) SetCurrencyNil() {
-	o.Currency.Set(nil)
-}
 
-// UnsetCurrency ensures that no value is present for Currency, not even an explicit nil
-func (o *ListForPartnersDto) UnsetCurrency() {
-	o.Currency.Unset()
-}
-
-// GetIsEnterprise returns the IsEnterprise field value if set, zero value otherwise.
+// GetIsEnterprise returns the IsEnterprise field value
 func (o *ListForPartnersDto) GetIsEnterprise() bool {
-	if o == nil || IsNil(o.IsEnterprise) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsEnterprise
+
+	return o.IsEnterprise
 }
 
-// GetIsEnterpriseOk returns a tuple with the IsEnterprise field value if set, nil otherwise
+// GetIsEnterpriseOk returns a tuple with the IsEnterprise field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetIsEnterpriseOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsEnterprise) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsEnterprise, true
+	return &o.IsEnterprise, true
 }
 
-// HasIsEnterprise returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasIsEnterprise() bool {
-	if o != nil && !IsNil(o.IsEnterprise) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsEnterprise gets a reference to the given bool and assigns it to the IsEnterprise field.
+// SetIsEnterprise sets field value
 func (o *ListForPartnersDto) SetIsEnterprise(v bool) {
-	o.IsEnterprise = &v
+	o.IsEnterprise = v
 }
 
-// GetPartner returns the Partner field value if set, zero value otherwise.
+// GetPartner returns the Partner field value
 func (o *ListForPartnersDto) GetPartner() PartnerDetailsForSubscription {
-	if o == nil || IsNil(o.Partner) {
+	if o == nil {
 		var ret PartnerDetailsForSubscription
 		return ret
 	}
-	return *o.Partner
+
+	return o.Partner
 }
 
-// GetPartnerOk returns a tuple with the Partner field value if set, nil otherwise
+// GetPartnerOk returns a tuple with the Partner field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetPartnerOk() (*PartnerDetailsForSubscription, bool) {
-	if o == nil || IsNil(o.Partner) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Partner, true
+	return &o.Partner, true
 }
 
-// HasPartner returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasPartner() bool {
-	if o != nil && !IsNil(o.Partner) {
-		return true
-	}
-
-	return false
-}
-
-// SetPartner gets a reference to the given PartnerDetailsForSubscription and assigns it to the Partner field.
+// SetPartner sets field value
 func (o *ListForPartnersDto) SetPartner(v PartnerDetailsForSubscription) {
-	o.Partner = &v
+	o.Partner = v
 }
 
-// GetExceededUser returns the ExceededUser field value if set, zero value otherwise.
+// GetExceededUser returns the ExceededUser field value
 func (o *ListForPartnersDto) GetExceededUser() bool {
-	if o == nil || IsNil(o.ExceededUser) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.ExceededUser
+
+	return o.ExceededUser
 }
 
-// GetExceededUserOk returns a tuple with the ExceededUser field value if set, nil otherwise
+// GetExceededUserOk returns a tuple with the ExceededUser field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetExceededUserOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExceededUser) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExceededUser, true
+	return &o.ExceededUser, true
 }
 
-// HasExceededUser returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasExceededUser() bool {
-	if o != nil && !IsNil(o.ExceededUser) {
-		return true
-	}
-
-	return false
-}
-
-// SetExceededUser gets a reference to the given bool and assigns it to the ExceededUser field.
+// SetExceededUser sets field value
 func (o *ListForPartnersDto) SetExceededUser(v bool) {
-	o.ExceededUser = &v
+	o.ExceededUser = v
 }
 
-// GetExceededProject returns the ExceededProject field value if set, zero value otherwise.
+// GetExceededProject returns the ExceededProject field value
 func (o *ListForPartnersDto) GetExceededProject() bool {
-	if o == nil || IsNil(o.ExceededProject) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.ExceededProject
+
+	return o.ExceededProject
 }
 
-// GetExceededProjectOk returns a tuple with the ExceededProject field value if set, nil otherwise
+// GetExceededProjectOk returns a tuple with the ExceededProject field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetExceededProjectOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExceededProject) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExceededProject, true
+	return &o.ExceededProject, true
 }
 
-// HasExceededProject returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasExceededProject() bool {
-	if o != nil && !IsNil(o.ExceededProject) {
-		return true
-	}
-
-	return false
-}
-
-// SetExceededProject gets a reference to the given bool and assigns it to the ExceededProject field.
+// SetExceededProject sets field value
 func (o *ListForPartnersDto) SetExceededProject(v bool) {
-	o.ExceededProject = &v
+	o.ExceededProject = v
 }
 
-// GetExceededCloudCredential returns the ExceededCloudCredential field value if set, zero value otherwise.
+// GetExceededCloudCredential returns the ExceededCloudCredential field value
 func (o *ListForPartnersDto) GetExceededCloudCredential() bool {
-	if o == nil || IsNil(o.ExceededCloudCredential) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.ExceededCloudCredential
+
+	return o.ExceededCloudCredential
 }
 
-// GetExceededCloudCredentialOk returns a tuple with the ExceededCloudCredential field value if set, nil otherwise
+// GetExceededCloudCredentialOk returns a tuple with the ExceededCloudCredential field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetExceededCloudCredentialOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExceededCloudCredential) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExceededCloudCredential, true
+	return &o.ExceededCloudCredential, true
 }
 
-// HasExceededCloudCredential returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasExceededCloudCredential() bool {
-	if o != nil && !IsNil(o.ExceededCloudCredential) {
-		return true
-	}
-
-	return false
-}
-
-// SetExceededCloudCredential gets a reference to the given bool and assigns it to the ExceededCloudCredential field.
+// SetExceededCloudCredential sets field value
 func (o *ListForPartnersDto) SetExceededCloudCredential(v bool) {
-	o.ExceededCloudCredential = &v
+	o.ExceededCloudCredential = v
 }
 
-// GetExceededServers returns the ExceededServers field value if set, zero value otherwise.
+// GetExceededServers returns the ExceededServers field value
 func (o *ListForPartnersDto) GetExceededServers() bool {
-	if o == nil || IsNil(o.ExceededServers) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.ExceededServers
+
+	return o.ExceededServers
 }
 
-// GetExceededServersOk returns a tuple with the ExceededServers field value if set, nil otherwise
+// GetExceededServersOk returns a tuple with the ExceededServers field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetExceededServersOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExceededServers) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExceededServers, true
+	return &o.ExceededServers, true
 }
 
-// HasExceededServers returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasExceededServers() bool {
-	if o != nil && !IsNil(o.ExceededServers) {
-		return true
-	}
-
-	return false
-}
-
-// SetExceededServers gets a reference to the given bool and assigns it to the ExceededServers field.
+// SetExceededServers sets field value
 func (o *ListForPartnersDto) SetExceededServers(v bool) {
-	o.ExceededServers = &v
+	o.ExceededServers = v
 }
 
-// GetIsActive returns the IsActive field value if set, zero value otherwise.
+// GetIsActive returns the IsActive field value
 func (o *ListForPartnersDto) GetIsActive() bool {
-	if o == nil || IsNil(o.IsActive) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsActive
+
+	return o.IsActive
 }
 
-// GetIsActiveOk returns a tuple with the IsActive field value if set, nil otherwise
+// GetIsActiveOk returns a tuple with the IsActive field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetIsActiveOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsActive) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsActive, true
+	return &o.IsActive, true
 }
 
-// HasIsActive returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasIsActive() bool {
-	if o != nil && !IsNil(o.IsActive) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsActive gets a reference to the given bool and assigns it to the IsActive field.
+// SetIsActive sets field value
 func (o *ListForPartnersDto) SetIsActive(v bool) {
-	o.IsActive = &v
+	o.IsActive = v
 }
 
-// GetIsYearly returns the IsYearly field value if set, zero value otherwise.
+// GetIsYearly returns the IsYearly field value
 func (o *ListForPartnersDto) GetIsYearly() bool {
-	if o == nil || IsNil(o.IsYearly) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsYearly
+
+	return o.IsYearly
 }
 
-// GetIsYearlyOk returns a tuple with the IsYearly field value if set, nil otherwise
+// GetIsYearlyOk returns a tuple with the IsYearly field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetIsYearlyOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsYearly) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsYearly, true
+	return &o.IsYearly, true
 }
 
-// HasIsYearly returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasIsYearly() bool {
-	if o != nil && !IsNil(o.IsYearly) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsYearly gets a reference to the given bool and assigns it to the IsYearly field.
+// SetIsYearly sets field value
 func (o *ListForPartnersDto) SetIsYearly(v bool) {
-	o.IsYearly = &v
+	o.IsYearly = v
 }
 
-// GetTrialDays returns the TrialDays field value if set, zero value otherwise.
+// GetTrialDays returns the TrialDays field value
 func (o *ListForPartnersDto) GetTrialDays() int32 {
-	if o == nil || IsNil(o.TrialDays) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.TrialDays
+
+	return o.TrialDays
 }
 
-// GetTrialDaysOk returns a tuple with the TrialDays field value if set, nil otherwise
+// GetTrialDaysOk returns a tuple with the TrialDays field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetTrialDaysOk() (*int32, bool) {
-	if o == nil || IsNil(o.TrialDays) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TrialDays, true
+	return &o.TrialDays, true
 }
 
-// HasTrialDays returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasTrialDays() bool {
-	if o != nil && !IsNil(o.TrialDays) {
-		return true
-	}
-
-	return false
-}
-
-// SetTrialDays gets a reference to the given int32 and assigns it to the TrialDays field.
+// SetTrialDays sets field value
 func (o *ListForPartnersDto) SetTrialDays(v int32) {
-	o.TrialDays = &v
+	o.TrialDays = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ListForPartnersDto) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || o.Description.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Description.Get()
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListForPartnersDto) GetDescriptionOk() (*string, bool) {
@@ -740,59 +592,33 @@ func (o *ListForPartnersDto) GetDescriptionOk() (*string, bool) {
 	return o.Description.Get(), o.Description.IsSet()
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription sets field value
 func (o *ListForPartnersDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *ListForPartnersDto) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
 
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *ListForPartnersDto) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetIsDemo returns the IsDemo field value if set, zero value otherwise.
+// GetIsDemo returns the IsDemo field value
 func (o *ListForPartnersDto) GetIsDemo() bool {
-	if o == nil || IsNil(o.IsDemo) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDemo
+
+	return o.IsDemo
 }
 
-// GetIsDemoOk returns a tuple with the IsDemo field value if set, nil otherwise
+// GetIsDemoOk returns a tuple with the IsDemo field value
 // and a boolean to check if the value has been set.
 func (o *ListForPartnersDto) GetIsDemoOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDemo) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDemo, true
+	return &o.IsDemo, true
 }
 
-// HasIsDemo returns a boolean if a field has been set.
-func (o *ListForPartnersDto) HasIsDemo() bool {
-	if o != nil && !IsNil(o.IsDemo) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDemo gets a reference to the given bool and assigns it to the IsDemo field.
+// SetIsDemo sets field value
 func (o *ListForPartnersDto) SetIsDemo(v bool) {
-	o.IsDemo = &v
+	o.IsDemo = v
 }
 
 func (o ListForPartnersDto) MarshalJSON() ([]byte, error) {
@@ -805,73 +631,87 @@ func (o ListForPartnersDto) MarshalJSON() ([]byte, error) {
 
 func (o ListForPartnersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if !IsNil(o.ProjectLimit) {
-		toSerialize["projectLimit"] = o.ProjectLimit
-	}
-	if !IsNil(o.ServerLimit) {
-		toSerialize["serverLimit"] = o.ServerLimit
-	}
-	if !IsNil(o.UserLimit) {
-		toSerialize["userLimit"] = o.UserLimit
-	}
-	if !IsNil(o.CloudCredentialLimit) {
-		toSerialize["cloudCredentialLimit"] = o.CloudCredentialLimit
-	}
-	if !IsNil(o.MonthlyPrice) {
-		toSerialize["monthlyPrice"] = o.MonthlyPrice
-	}
-	if !IsNil(o.YearlyPrice) {
-		toSerialize["yearlyPrice"] = o.YearlyPrice
-	}
-	if !IsNil(o.TcuPrice) {
-		toSerialize["tcuPrice"] = o.TcuPrice
-	}
-	if !IsNil(o.IsDeprecated) {
-		toSerialize["isDeprecated"] = o.IsDeprecated
-	}
-	if o.Currency.IsSet() {
-		toSerialize["currency"] = o.Currency.Get()
-	}
-	if !IsNil(o.IsEnterprise) {
-		toSerialize["isEnterprise"] = o.IsEnterprise
-	}
-	if !IsNil(o.Partner) {
-		toSerialize["partner"] = o.Partner
-	}
-	if !IsNil(o.ExceededUser) {
-		toSerialize["exceededUser"] = o.ExceededUser
-	}
-	if !IsNil(o.ExceededProject) {
-		toSerialize["exceededProject"] = o.ExceededProject
-	}
-	if !IsNil(o.ExceededCloudCredential) {
-		toSerialize["exceededCloudCredential"] = o.ExceededCloudCredential
-	}
-	if !IsNil(o.ExceededServers) {
-		toSerialize["exceededServers"] = o.ExceededServers
-	}
-	if !IsNil(o.IsActive) {
-		toSerialize["isActive"] = o.IsActive
-	}
-	if !IsNil(o.IsYearly) {
-		toSerialize["isYearly"] = o.IsYearly
-	}
-	if !IsNil(o.TrialDays) {
-		toSerialize["trialDays"] = o.TrialDays
-	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
-	if !IsNil(o.IsDemo) {
-		toSerialize["isDemo"] = o.IsDemo
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["projectLimit"] = o.ProjectLimit
+	toSerialize["serverLimit"] = o.ServerLimit
+	toSerialize["userLimit"] = o.UserLimit
+	toSerialize["cloudCredentialLimit"] = o.CloudCredentialLimit
+	toSerialize["monthlyPrice"] = o.MonthlyPrice
+	toSerialize["yearlyPrice"] = o.YearlyPrice
+	toSerialize["tcuPrice"] = o.TcuPrice
+	toSerialize["isDeprecated"] = o.IsDeprecated
+	toSerialize["currency"] = o.Currency.Get()
+	toSerialize["isEnterprise"] = o.IsEnterprise
+	toSerialize["partner"] = o.Partner
+	toSerialize["exceededUser"] = o.ExceededUser
+	toSerialize["exceededProject"] = o.ExceededProject
+	toSerialize["exceededCloudCredential"] = o.ExceededCloudCredential
+	toSerialize["exceededServers"] = o.ExceededServers
+	toSerialize["isActive"] = o.IsActive
+	toSerialize["isYearly"] = o.IsYearly
+	toSerialize["trialDays"] = o.TrialDays
+	toSerialize["description"] = o.Description.Get()
+	toSerialize["isDemo"] = o.IsDemo
 	return toSerialize, nil
+}
+
+func (o *ListForPartnersDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"projectLimit",
+		"serverLimit",
+		"userLimit",
+		"cloudCredentialLimit",
+		"monthlyPrice",
+		"yearlyPrice",
+		"tcuPrice",
+		"isDeprecated",
+		"currency",
+		"isEnterprise",
+		"partner",
+		"exceededUser",
+		"exceededProject",
+		"exceededCloudCredential",
+		"exceededServers",
+		"isActive",
+		"isYearly",
+		"trialDays",
+		"description",
+		"isDemo",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varListForPartnersDto := _ListForPartnersDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varListForPartnersDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ListForPartnersDto(varListForPartnersDto)
+
+	return err
 }
 
 type NullableListForPartnersDto struct {

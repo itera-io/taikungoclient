@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubeConfigResponse type satisfies the MappedNullable interface at compile time
@@ -20,15 +22,18 @@ var _ MappedNullable = &KubeConfigResponse{}
 
 // KubeConfigResponse struct for KubeConfigResponse
 type KubeConfigResponse struct {
-	Data NullableString `json:"data,omitempty"`
+	Data NullableString `json:"data"`
 }
+
+type _KubeConfigResponse KubeConfigResponse
 
 // NewKubeConfigResponse instantiates a new KubeConfigResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubeConfigResponse() *KubeConfigResponse {
+func NewKubeConfigResponse(data NullableString) *KubeConfigResponse {
 	this := KubeConfigResponse{}
+	this.Data = data
 	return &this
 }
 
@@ -40,16 +45,18 @@ func NewKubeConfigResponseWithDefaults() *KubeConfigResponse {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubeConfigResponse) GetData() string {
-	if o == nil || IsNil(o.Data.Get()) {
+	if o == nil || o.Data.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Data.Get()
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubeConfigResponse) GetDataOk() (*string, bool) {
@@ -59,27 +66,9 @@ func (o *KubeConfigResponse) GetDataOk() (*string, bool) {
 	return o.Data.Get(), o.Data.IsSet()
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *KubeConfigResponse) HasData() bool {
-	if o != nil && o.Data.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given NullableString and assigns it to the Data field.
+// SetData sets field value
 func (o *KubeConfigResponse) SetData(v string) {
 	o.Data.Set(&v)
-}
-// SetDataNil sets the value for Data to be an explicit nil
-func (o *KubeConfigResponse) SetDataNil() {
-	o.Data.Set(nil)
-}
-
-// UnsetData ensures that no value is present for Data, not even an explicit nil
-func (o *KubeConfigResponse) UnsetData() {
-	o.Data.Unset()
 }
 
 func (o KubeConfigResponse) MarshalJSON() ([]byte, error) {
@@ -92,10 +81,45 @@ func (o KubeConfigResponse) MarshalJSON() ([]byte, error) {
 
 func (o KubeConfigResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Data.IsSet() {
-		toSerialize["data"] = o.Data.Get()
-	}
+	toSerialize["data"] = o.Data.Get()
 	return toSerialize, nil
+}
+
+func (o *KubeConfigResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubeConfigResponse := _KubeConfigResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubeConfigResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubeConfigResponse(varKubeConfigResponse)
+
+	return err
 }
 
 type NullableKubeConfigResponse struct {

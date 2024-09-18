@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubernetesNodeListDto type satisfies the MappedNullable interface at compile time
@@ -20,19 +22,26 @@ var _ MappedNullable = &KubernetesNodeListDto{}
 
 // KubernetesNodeListDto struct for KubernetesNodeListDto
 type KubernetesNodeListDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	Type []string `json:"type,omitempty"`
-	Status []string `json:"status,omitempty"`
-	Reason []string `json:"reason,omitempty"`
-	Message []string `json:"message,omitempty"`
+	MetadataName NullableString `json:"metadataName"`
+	Type []string `json:"type"`
+	Status []string `json:"status"`
+	Reason []string `json:"reason"`
+	Message []string `json:"message"`
 }
+
+type _KubernetesNodeListDto KubernetesNodeListDto
 
 // NewKubernetesNodeListDto instantiates a new KubernetesNodeListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesNodeListDto() *KubernetesNodeListDto {
+func NewKubernetesNodeListDto(metadataName NullableString, type_ []string, status []string, reason []string, message []string) *KubernetesNodeListDto {
 	this := KubernetesNodeListDto{}
+	this.MetadataName = metadataName
+	this.Type = type_
+	this.Status = status
+	this.Reason = reason
+	this.Message = message
 	return &this
 }
 
@@ -44,16 +53,18 @@ func NewKubernetesNodeListDtoWithDefaults() *KubernetesNodeListDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesNodeListDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil || o.MetadataName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.MetadataName.Get()
 }
 
-// GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
+// GetMetadataNameOk returns a tuple with the MetadataName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeListDto) GetMetadataNameOk() (*string, bool) {
@@ -63,39 +74,23 @@ func (o *KubernetesNodeListDto) GetMetadataNameOk() (*string, bool) {
 	return o.MetadataName.Get(), o.MetadataName.IsSet()
 }
 
-// HasMetadataName returns a boolean if a field has been set.
-func (o *KubernetesNodeListDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName sets field value
 func (o *KubernetesNodeListDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *KubernetesNodeListDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
-}
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *KubernetesNodeListDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetType returns the Type field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *KubernetesNodeListDto) GetType() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeListDto) GetTypeOk() ([]string, bool) {
@@ -105,30 +100,23 @@ func (o *KubernetesNodeListDto) GetTypeOk() ([]string, bool) {
 	return o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *KubernetesNodeListDto) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given []string and assigns it to the Type field.
+// SetType sets field value
 func (o *KubernetesNodeListDto) SetType(v []string) {
 	o.Type = v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStatus returns the Status field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *KubernetesNodeListDto) GetStatus() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeListDto) GetStatusOk() ([]string, bool) {
@@ -138,30 +126,23 @@ func (o *KubernetesNodeListDto) GetStatusOk() ([]string, bool) {
 	return o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *KubernetesNodeListDto) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given []string and assigns it to the Status field.
+// SetStatus sets field value
 func (o *KubernetesNodeListDto) SetStatus(v []string) {
 	o.Status = v
 }
 
-// GetReason returns the Reason field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetReason returns the Reason field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *KubernetesNodeListDto) GetReason() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Reason
 }
 
-// GetReasonOk returns a tuple with the Reason field value if set, nil otherwise
+// GetReasonOk returns a tuple with the Reason field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeListDto) GetReasonOk() ([]string, bool) {
@@ -171,30 +152,23 @@ func (o *KubernetesNodeListDto) GetReasonOk() ([]string, bool) {
 	return o.Reason, true
 }
 
-// HasReason returns a boolean if a field has been set.
-func (o *KubernetesNodeListDto) HasReason() bool {
-	if o != nil && !IsNil(o.Reason) {
-		return true
-	}
-
-	return false
-}
-
-// SetReason gets a reference to the given []string and assigns it to the Reason field.
+// SetReason sets field value
 func (o *KubernetesNodeListDto) SetReason(v []string) {
 	o.Reason = v
 }
 
-// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMessage returns the Message field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *KubernetesNodeListDto) GetMessage() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Message
 }
 
-// GetMessageOk returns a tuple with the Message field value if set, nil otherwise
+// GetMessageOk returns a tuple with the Message field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeListDto) GetMessageOk() ([]string, bool) {
@@ -204,16 +178,7 @@ func (o *KubernetesNodeListDto) GetMessageOk() ([]string, bool) {
 	return o.Message, true
 }
 
-// HasMessage returns a boolean if a field has been set.
-func (o *KubernetesNodeListDto) HasMessage() bool {
-	if o != nil && !IsNil(o.Message) {
-		return true
-	}
-
-	return false
-}
-
-// SetMessage gets a reference to the given []string and assigns it to the Message field.
+// SetMessage sets field value
 func (o *KubernetesNodeListDto) SetMessage(v []string) {
 	o.Message = v
 }
@@ -228,9 +193,7 @@ func (o KubernetesNodeListDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesNodeListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
-	}
+	toSerialize["metadataName"] = o.MetadataName.Get()
 	if o.Type != nil {
 		toSerialize["type"] = o.Type
 	}
@@ -244,6 +207,47 @@ func (o KubernetesNodeListDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["message"] = o.Message
 	}
 	return toSerialize, nil
+}
+
+func (o *KubernetesNodeListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"metadataName",
+		"type",
+		"status",
+		"reason",
+		"message",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubernetesNodeListDto := _KubernetesNodeListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesNodeListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesNodeListDto(varKubernetesNodeListDto)
+
+	return err
 }
 
 type NullableKubernetesNodeListDto struct {

@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-17T00:02:47.3267304Z
-                  createdAt: 2024-09-17T00:02:47.3267304Z
+                  lastValidated: 2024-09-18T00:03:03.0934499Z
+                  createdAt: 2024-09-18T00:03:03.0934499Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-17T00:02:47.3267304Z
+                    lastBackup: 2024-09-18T00:03:03.0934499Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-17T00:02:47.3267304Z
+                  createdAt: 2024-09-18T00:03:03.0934499Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-17T00:02:47.3267304Z
+                  lastBackup: 2024-09-18T00:03:03.0934499Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-17T00:02:47.3267304Z
-                  expiration: 2024-09-17T00:02:47.3267304Z
+                  createdAt: 2024-09-18T00:03:03.0934499Z
+                  expiration: 2024-09-18T00:03:03.0934499Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-17T00:02:47.3267304Z
+                  createdAt: 2024-09-18T00:03:03.0934499Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-17T00:02:47.3267304+00:00
-                  startTimeStamp: 2024-09-17T00:02:47.3267304+00:00
-                  createdAt: 2024-09-17T00:02:47.3267304Z
+                  completionDateTime: 2024-09-18T00:03:03.0934499+00:00
+                  startTimeStamp: 2024-09-18T00:03:03.0934499+00:00
+                  createdAt: 2024-09-18T00:03:03.0934499Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -41703,6 +41703,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     BoundImagesForProjectsListDto:
       additionalProperties: false
@@ -41745,6 +41748,16 @@ components:
           type: boolean
         cloudType:
           $ref: '#/components/schemas/CloudType'
+      required:
+      - cloudId
+      - cloudType
+      - id
+      - imageId
+      - isWindows
+      - name
+      - projectId
+      - projectName
+      - size
       type: object
     Breakdown:
       additionalProperties: false
@@ -42037,6 +42050,12 @@ components:
       - namespace
       - phase
       type: object
+    CNI:
+      enum:
+      - Default
+      - Calico
+      - Flannel
+      type: string
     CRestoreDto:
       additionalProperties: false
       example:
@@ -43521,14 +43540,16 @@ components:
         age: age
       properties:
         metadataName:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         age:
           nullable: true
           type: string
+      required:
+      - age
+      - metadataName
+      - namespace
       type: object
     ConfigMapSearchCommand:
       additionalProperties: false
@@ -43596,6 +43617,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ConfirmEmailCommand:
       additionalProperties: false
@@ -43705,22 +43729,25 @@ components:
         labels: ""
       properties:
         metadataName:
-          nullable: true
           type: string
         specNameKind:
-          nullable: true
           type: string
         listKind:
-          nullable: true
           type: string
         group:
-          nullable: true
           type: string
         labels:
           nullable: true
         age:
           nullable: true
           type: string
+      required:
+      - age
+      - group
+      - labels
+      - listKind
+      - metadataName
+      - specNameKind
       type: object
     Crds:
       additionalProperties: false
@@ -43748,6 +43775,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     CreateAccessProfileCommand:
       additionalProperties: false
@@ -45637,17 +45667,19 @@ components:
         status: status
       properties:
         metadataName:
-          nullable: true
           type: string
         status:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         age:
           nullable: true
           type: string
+      required:
+      - age
+      - metadataName
+      - namespace
+      - status
       type: object
     DaemonSetSearchCommand:
       additionalProperties: false
@@ -45717,6 +45749,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     DashboardChart:
       additionalProperties: false
@@ -46619,17 +46654,19 @@ components:
         status: status
       properties:
         metadataName:
-          nullable: true
           type: string
         status:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         age:
           nullable: true
           type: string
+      required:
+      - age
+      - metadataName
+      - namespace
+      - status
       type: object
     DeploymentEnableAiCommand:
       additionalProperties: false
@@ -46747,6 +46784,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     DescribeConfigMapCommand:
       additionalProperties: false
@@ -49356,6 +49396,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     GoogleCredentialsListDto:
       additionalProperties: false
@@ -49389,18 +49432,15 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         organizationId:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         partnerLogo:
           nullable: true
@@ -49420,13 +49460,11 @@ components:
         zones:
           items:
             type: string
-          nullable: true
           type: array
         availabilityZonesCount:
           format: int32
           type: integer
         region:
-          nullable: true
           type: string
         isLocked:
           type: boolean
@@ -49441,6 +49479,25 @@ components:
         continentName:
           nullable: true
           type: string
+      required:
+      - availabilityZonesCount
+      - billingAccountId
+      - billingAccountName
+      - continentName
+      - createdAt
+      - folderId
+      - id
+      - isDefault
+      - isLocked
+      - name
+      - organizationId
+      - organizationName
+      - partnerLogo
+      - partnerName
+      - projectId
+      - projects
+      - region
+      - zones
       type: object
     GoogleFlavorDto:
       additionalProperties: false
@@ -49980,6 +50037,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     HelmStatus:
       additionalProperties: false
@@ -50212,17 +50272,20 @@ components:
         age: age
       properties:
         metadataName:
-          nullable: true
           type: string
         hosts:
           nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         age:
           nullable: true
           type: string
+      required:
+      - age
+      - hosts
+      - metadataName
+      - namespace
       type: object
     IngressSearchCommand:
       additionalProperties: false
@@ -50292,6 +50355,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     InstanceAppListDto:
       additionalProperties: false
@@ -50449,6 +50515,18 @@ components:
         dueDate:
           format: date-time
           type: string
+      required:
+      - documentNumber
+      - dueDate
+      - endDate
+      - id
+      - isPaid
+      - name
+      - organizationSubscriptionId
+      - price
+      - requiredPaymentAction
+      - startDate
+      - stripeInvoiceId
       type: object
     InvoiceListDto:
       additionalProperties: false
@@ -50472,7 +50550,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         startDate:
           nullable: true
@@ -50485,13 +50562,10 @@ components:
         isPaid:
           type: boolean
         invoiceId:
-          nullable: true
           type: string
         subscriptionType:
-          nullable: true
           type: string
         subscriptionName:
-          nullable: true
           type: string
         price:
           format: double
@@ -50500,14 +50574,27 @@ components:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         invoiceNumber:
-          nullable: true
           type: string
         organizationSubscriptionId:
           format: int32
           type: integer
+      required:
+      - endDate
+      - id
+      - invoiceId
+      - invoiceNumber
+      - isPaid
+      - name
+      - organizationId
+      - organizationName
+      - organizationSubscriptionId
+      - price
+      - requiredPaymentAction
+      - startDate
+      - subscriptionName
+      - subscriptionType
       type: object
     Invoices:
       additionalProperties: false
@@ -50551,6 +50638,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     IpAddressRangeCountCommand:
       additionalProperties: false
@@ -50759,17 +50849,14 @@ components:
           format: int32
           type: integer
         projectName:
-          nullable: true
           type: string
         isAccessibleForAll:
           type: boolean
         isAccessibleForManager:
           type: boolean
         kubeConfigRoleName:
-          nullable: true
           type: string
         createdBy:
-          nullable: true
           type: string
         createdAt:
           nullable: true
@@ -50786,6 +50873,24 @@ components:
           type: boolean
         canDelete:
           type: boolean
+      required:
+      - canAccessTerminal
+      - canDelete
+      - canDownload
+      - createdAt
+      - createdBy
+      - displayName
+      - expirationDate
+      - id
+      - isAccessibleForAll
+      - isAccessibleForManager
+      - kubeConfigRoleName
+      - namespace
+      - organizationId
+      - partnerId
+      - projectId
+      - projectName
+      - userId
       type: object
     KubeConfigForUserList:
       additionalProperties: false
@@ -50843,6 +50948,10 @@ components:
           type: integer
         canAdd:
           $ref: '#/components/schemas/ButtonStatusDto'
+      required:
+      - canAdd
+      - data
+      - totalCount
       type: object
     KubeConfigInteractiveShellCommand:
       additionalProperties: false
@@ -50869,19 +50978,8 @@ components:
         data:
           nullable: true
           type: string
-      type: object
-    KubeConfigRoleDto:
-      additionalProperties: false
-      example:
-        name: name
-        id: 0
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
+      required:
+      - data
       type: object
     KubeConfigRoleResponse:
       additionalProperties: false
@@ -50891,16 +50989,19 @@ components:
           id: 0
         - name: name
           id: 0
-        totalCount: 6
+        totalCount: 0
       properties:
         data:
           items:
-            $ref: '#/components/schemas/KubeConfigRoleDto'
+            $ref: '#/components/schemas/CommonDropdownDto'
           nullable: true
           type: array
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     KubernetesAlertCreateDto:
       additionalProperties: false
@@ -50983,7 +51084,6 @@ components:
           format: int32
           type: integer
         projectName:
-          nullable: true
           type: string
         isSilenced:
           type: boolean
@@ -50995,6 +51095,23 @@ components:
           type: string
         isMonitoringEnabled:
           type: boolean
+      required:
+      - description
+      - endAt
+      - fingerprint
+      - id
+      - isMonitoringEnabled
+      - isSilenced
+      - isSolved
+      - labels
+      - lastModifiedBy
+      - projectId
+      - projectName
+      - severity
+      - silenceReason
+      - startsAt
+      - status
+      - title
       type: object
     KubernetesAlertDtoForPoller:
       additionalProperties: false
@@ -51104,6 +51221,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     KubernetesAnnotations:
       additionalProperties: false
@@ -51143,7 +51263,6 @@ components:
         age: age
       properties:
         metadataName:
-          nullable: true
           type: string
         lastSchedule:
           nullable: true
@@ -51155,11 +51274,17 @@ components:
           nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         age:
           nullable: true
           type: string
+      required:
+      - age
+      - lastSchedule
+      - metadataName
+      - namespace
+      - schedule
+      - suspend
       type: object
     KubernetesCronJobsList:
       additionalProperties: false
@@ -51187,6 +51312,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     KubernetesDashboardDto:
       additionalProperties: false
@@ -51228,6 +51356,9 @@ components:
             $ref: '#/components/schemas/NodeDto'
           nullable: true
           type: array
+      required:
+      - nodes
+      - pods
       type: object
     KubernetesEventCreateDto:
       additionalProperties: false
@@ -51292,10 +51423,8 @@ components:
         age: age
       properties:
         metadataName:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         age:
           nullable: true
@@ -51307,6 +51436,12 @@ components:
         conditions:
           nullable: true
           type: string
+      required:
+      - age
+      - completions
+      - conditions
+      - metadataName
+      - namespace
       type: object
     KubernetesJobList:
       additionalProperties: false
@@ -51332,6 +51467,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     KubernetesNodeLabelsDto:
       additionalProperties: false
@@ -51386,6 +51524,12 @@ components:
             type: string
           nullable: true
           type: array
+      required:
+      - message
+      - metadataName
+      - reason
+      - status
+      - type
       type: object
     KubernetesOverviewDto:
       additionalProperties: false
@@ -51403,7 +51547,6 @@ components:
           format: int32
           type: integer
         projectName:
-          nullable: true
           type: string
         healthyPods:
           format: int32
@@ -51423,6 +51566,15 @@ components:
         kubernetesHealth:
           nullable: true
           type: string
+      required:
+      - alertsCount
+      - healthyNodes
+      - healthyPods
+      - kubernetesHealth
+      - projectId
+      - projectName
+      - unhealthyNodes
+      - unhealthyPods
       type: object
     KubernetesPodLogsCommand:
       additionalProperties: false
@@ -51487,7 +51639,7 @@ components:
           lastModified: lastModified
           nvidiaGpuOperatorEnabled: true
           uniqueClusterName: true
-          cni: cni
+          cni: Default
         - projects:
           - name: name
             id: 0
@@ -51510,7 +51662,7 @@ components:
           lastModified: lastModified
           nvidiaGpuOperatorEnabled: true
           uniqueClusterName: true
-          cni: cni
+          cni: Default
         totalCount: 1
       properties:
         data:
@@ -51521,6 +51673,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     KubernetesProfilesListDto:
       additionalProperties: false
@@ -51547,24 +51702,21 @@ components:
         lastModified: lastModified
         nvidiaGpuOperatorEnabled: true
         uniqueClusterName: true
-        cni: cni
+        cni: Default
       properties:
         id:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         organizationId:
           format: int32
           nullable: true
           type: integer
         organizationName:
-          nullable: true
           type: string
         cni:
-          nullable: true
-          type: string
+          $ref: '#/components/schemas/CNI'
         octaviaEnabled:
           type: boolean
         exposeNodePortOnBastion:
@@ -51580,7 +51732,6 @@ components:
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         createdBy:
           nullable: true
@@ -51600,6 +51751,26 @@ components:
           type: boolean
         wasmEnabled:
           type: boolean
+      required:
+      - allowSchedulingOnMaster
+      - cni
+      - createdAt
+      - createdBy
+      - exposeNodePortOnBastion
+      - id
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - nvidiaGpuOperatorEnabled
+      - octaviaEnabled
+      - organizationId
+      - organizationName
+      - projects
+      - proxmoxStorage
+      - taikunLBEnabled
+      - uniqueClusterName
+      - wasmEnabled
       type: object
     KubernetesProfilesLockManagerCommand:
       additionalProperties: false
@@ -52071,6 +52242,23 @@ components:
           type: boolean
         isEnterprise:
           type: boolean
+      required:
+      - cloudCredentialLimit
+      - currency
+      - description
+      - id
+      - isDeprecated
+      - isEnterprise
+      - isFree
+      - monthlyPrice
+      - name
+      - partnerId
+      - projectLimit
+      - serverLimit
+      - tcuPrice
+      - trialDays
+      - userLimit
+      - yearlyPrice
       type: object
     ListForOrganizationEditDto:
       additionalProperties: false
@@ -52171,6 +52359,29 @@ components:
           type: string
         isDemo:
           type: boolean
+      required:
+      - cloudCredentialLimit
+      - currency
+      - description
+      - exceededCloudCredential
+      - exceededProject
+      - exceededServers
+      - exceededUser
+      - id
+      - isActive
+      - isDemo
+      - isDeprecated
+      - isEnterprise
+      - isYearly
+      - monthlyPrice
+      - name
+      - partner
+      - projectLimit
+      - serverLimit
+      - tcuPrice
+      - trialDays
+      - userLimit
+      - yearlyPrice
       type: object
     LockProjectAppCommand:
       additionalProperties: false
@@ -52398,6 +52609,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     NetworkPolicyDto:
       additionalProperties: false
@@ -52409,20 +52623,21 @@ components:
         age: age
       properties:
         metadataName:
-          nullable: true
           type: string
         podSelector:
           additionalProperties:
-            nullable: true
             type: string
-          nullable: true
           type: object
         namespace:
-          nullable: true
           type: string
         age:
           nullable: true
           type: string
+      required:
+      - age
+      - metadataName
+      - namespace
+      - podSelector
       type: object
     NetworkSummary:
       additionalProperties: false
@@ -52473,6 +52688,12 @@ components:
           nullable: true
         kubeletMemory:
           nullable: true
+      required:
+      - kubeletDiskPressure
+      - kubeletMemory
+      - kubeletReady
+      - kubeletSufficient
+      - metadataName
       type: object
     NodeSearchResponseData:
       additionalProperties: false
@@ -54634,7 +54855,6 @@ components:
         id: 3
       properties:
         name:
-          nullable: true
           type: string
         logo:
           nullable: true
@@ -54645,6 +54865,11 @@ components:
         id:
           format: int32
           type: integer
+      required:
+      - id
+      - link
+      - logo
+      - name
       type: object
     PartnerDetailsForUserDto:
       additionalProperties: false
@@ -55132,10 +55357,8 @@ components:
         maxAvailable: ""
       properties:
         name:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         minAvailable:
           nullable: true
@@ -55146,6 +55369,13 @@ components:
         createdAt:
           nullable: true
           type: string
+      required:
+      - allowedDisruptions
+      - createdAt
+      - maxAvailable
+      - minAvailable
+      - name
+      - namespace
       type: object
     PodDisruptions:
       additionalProperties: false
@@ -55173,6 +55403,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     PodDto:
       additionalProperties: false
@@ -55186,7 +55419,6 @@ components:
         status: status
       properties:
         metadataName:
-          nullable: true
           type: string
         status:
           nullable: true
@@ -55195,7 +55427,6 @@ components:
           format: int32
           type: integer
         namespace:
-          nullable: true
           type: string
         age:
           format: date-time
@@ -55207,6 +55438,14 @@ components:
         phase:
           nullable: true
           type: string
+      required:
+      - age
+      - metadataName
+      - namespace
+      - node
+      - phase
+      - restartCount
+      - status
       type: object
     PodListDto:
       additionalProperties: false
@@ -55223,13 +55462,11 @@ components:
         status: status
       properties:
         metadataName:
-          nullable: true
           type: string
         restartCount:
           format: int32
           type: integer
         namespace:
-          nullable: true
           type: string
         node:
           nullable: true
@@ -55246,8 +55483,16 @@ components:
         container:
           items:
             type: string
-          nullable: true
           type: array
+      required:
+      - age
+      - container
+      - metadataName
+      - namespace
+      - node
+      - phase
+      - restartCount
+      - status
       type: object
     Pods:
       additionalProperties: false
@@ -55283,6 +55528,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     PodsSearchCommand:
       additionalProperties: false
@@ -55403,6 +55651,11 @@ components:
         activeSubscriptionStatus:
           nullable: true
           type: string
+      required:
+      - activeSubscriptionStatus
+      - data
+      - isEligibleToSwitch
+      - totalCount
       type: object
     ProblemDetails:
       additionalProperties: {}
@@ -56497,6 +56750,7 @@ components:
           nullable: true
           type: array
         expiredAt:
+          nullable: true
           type: string
       required:
       - allowFullSpotKubernetes
@@ -59329,6 +59583,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     PurgeExpiredProjectsCommand:
       additionalProperties: false
@@ -59344,7 +59601,6 @@ components:
         age: age
       properties:
         metadataName:
-          nullable: true
           type: string
         phase:
           nullable: true
@@ -59353,7 +59609,6 @@ components:
           nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         storageClassName:
           nullable: true
@@ -59361,6 +59616,13 @@ components:
         age:
           nullable: true
           type: string
+      required:
+      - age
+      - metadataName
+      - namespace
+      - phase
+      - size
+      - storageClassName
       type: object
     PvcSearchCommand:
       additionalProperties: false
@@ -59434,6 +59696,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     RebootServerCommand:
       additionalProperties: false
@@ -60063,14 +60328,16 @@ components:
         age: age
       properties:
         metadataName:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         age:
           nullable: true
           type: string
+      required:
+      - age
+      - metadataName
+      - namespace
       type: object
     SecretSearchCommand:
       additionalProperties: false
@@ -60138,6 +60405,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     SecurityGroupListDto:
       additionalProperties: false
@@ -60171,6 +60441,14 @@ components:
         profileName:
           nullable: true
           type: string
+      required:
+      - id
+      - name
+      - portMaxRange
+      - portMinRange
+      - profileName
+      - protocol
+      - remoteIpPrefix
       type: object
     SecurityGroupProtocol:
       enum:
@@ -61237,10 +61515,8 @@ components:
         age: age
       properties:
         metadataName:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         age:
           nullable: true
@@ -61250,6 +61526,12 @@ components:
           type: string
         ip:
           nullable: true
+      required:
+      - age
+      - ip
+      - metadataName
+      - namespace
+      - type
       type: object
     ServiceSearchCommand:
       additionalProperties: false
@@ -61321,6 +61603,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     SetTicketPriorityCommand:
       additionalProperties: false
@@ -61405,6 +61690,14 @@ components:
           type: integer
         slackType:
           $ref: '#/components/schemas/SlackType'
+      required:
+      - channel
+      - id
+      - name
+      - organizationId
+      - organizationName
+      - slackType
+      - url
       type: object
     SlackConfigurationList:
       additionalProperties: false
@@ -61434,6 +61727,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     SlackType:
       enum:
@@ -61543,6 +61839,10 @@ components:
         value:
           nullable: true
           type: string
+      required:
+      - id
+      - key
+      - value
       type: object
     StandAloneProfileCreateCommand:
       additionalProperties: false
@@ -61614,6 +61914,11 @@ components:
             $ref: '#/components/schemas/StandAloneProfileSecurityGroupForDetailsDto'
           nullable: true
           type: array
+      required:
+      - id
+      - name
+      - publicKey
+      - securityGroups
       type: object
     StandAloneProfileLockManagementCommand:
       additionalProperties: false
@@ -61683,6 +61988,14 @@ components:
           type: string
         isRdpPortEnabled:
           type: boolean
+      required:
+      - id
+      - isRdpPortEnabled
+      - name
+      - portMaxRange
+      - portMinRange
+      - protocol
+      - remoteIpPrefix
       type: object
     StandAloneProfileUpdateCommand:
       additionalProperties: false
@@ -61741,6 +62054,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     StandAloneProfilesListDto:
       additionalProperties: false
@@ -61789,6 +62105,16 @@ components:
         createdAt:
           nullable: true
           type: string
+      required:
+      - createdAt
+      - id
+      - isLocked
+      - name
+      - organizationId
+      - organizationName
+      - partnerLogo
+      - publicKey
+      - standaloneVms
       type: object
     StandAloneProfilesSearchCommand:
       additionalProperties: false
@@ -61893,6 +62219,15 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/StandAloneVmDiskStatus'
+      required:
+      - currentSize
+      - deviceName
+      - id
+      - lunId
+      - name
+      - status
+      - targetSize
+      - volumeType
       type: object
     StandAloneVmDiskStatus:
       enum:
@@ -62106,6 +62441,9 @@ components:
           type: array
         project:
           $ref: '#/components/schemas/ProjectDetailsForVmsDto'
+      required:
+      - data
+      - project
       type: object
     StandAloneVmSmallDetailDto:
       additionalProperties: false
@@ -62123,6 +62461,10 @@ components:
         projectId:
           format: int32
           type: integer
+      required:
+      - id
+      - name
+      - projectId
       type: object
     StandAloneVmStatus:
       enum:
@@ -62170,6 +62512,12 @@ components:
             $ref: '#/components/schemas/StandaloneProfileSecurityGroupListDto'
           nullable: true
           type: array
+      required:
+      - id
+      - isLocked
+      - name
+      - revision
+      - standAloneProfileSecurityGroups
       type: object
     StandaloneProfileSecurityGroupListDto:
       additionalProperties: false
@@ -62199,6 +62547,13 @@ components:
         remoteIpPrefix:
           nullable: true
           type: string
+      required:
+      - id
+      - name
+      - portMaxRange
+      - portMinRange
+      - protocol
+      - remoteIpPrefix
       type: object
     StandaloneVisibilityDto:
       additionalProperties: false
@@ -62225,6 +62580,14 @@ components:
           type: boolean
         reboot:
           type: boolean
+      required:
+      - reboot
+      - shelve
+      - showConsole
+      - showStatus
+      - start
+      - stop
+      - unshelve
       type: object
     StandaloneVmListDto:
       additionalProperties: false
@@ -62274,16 +62637,13 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         flavorId:
-          nullable: true
           type: string
         volumeSize:
           format: int64
           type: integer
         organizationName:
-          nullable: true
           type: string
         organizationId:
           format: int32
@@ -62295,7 +62655,6 @@ components:
           format: int32
           type: integer
         volumeType:
-          nullable: true
           type: string
         publicIpEnabled:
           type: boolean
@@ -62308,7 +62667,6 @@ components:
         cloudType:
           $ref: '#/components/schemas/CloudType'
         imageName:
-          nullable: true
           type: string
         revision:
           format: int32
@@ -62318,7 +62676,6 @@ components:
         status:
           $ref: '#/components/schemas/StandAloneVmStatus'
         projectName:
-          nullable: true
           type: string
         projectId:
           format: int32
@@ -62326,14 +62683,36 @@ components:
         standAloneProfile:
           $ref: '#/components/schemas/StandaloneProfileListDto'
         createdAt:
-          nullable: true
           type: string
         createdBy:
-          nullable: true
           type: string
         lastModified:
           nullable: true
           type: string
+      required:
+      - cloudType
+      - cpu
+      - createdAt
+      - createdBy
+      - flavorId
+      - id
+      - imageName
+      - ipAddress
+      - isWindows
+      - lastModified
+      - name
+      - organizationId
+      - organizationName
+      - projectId
+      - projectName
+      - publicIp
+      - publicIpEnabled
+      - ram
+      - revision
+      - standAloneProfile
+      - status
+      - volumeSize
+      - volumeType
       type: object
     StandaloneVmsForBillingDto:
       additionalProperties: false
@@ -62442,6 +62821,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     StandaloneVmsListForDetailsDto:
       additionalProperties: false
@@ -62526,31 +62908,24 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         imageName:
-          nullable: true
           type: string
         imageId:
-          nullable: true
           type: string
         status:
-          nullable: true
           type: string
         cloudInit:
           nullable: true
           type: string
         volumeType:
-          nullable: true
           type: string
         volumeSize:
           format: int64
           type: integer
         createdAt:
-          nullable: true
           type: string
         createdBy:
-          nullable: true
           type: string
         lastModified:
           nullable: true
@@ -62559,10 +62934,8 @@ components:
           nullable: true
           type: string
         sshPublicKey:
-          nullable: true
           type: string
         currentFlavor:
-          nullable: true
           type: string
         targetFlavor:
           nullable: true
@@ -62596,15 +62969,42 @@ components:
         disks:
           items:
             $ref: '#/components/schemas/StandAloneVmDiskForDetailsDto'
-          nullable: true
           type: array
         standAloneMetaDatas:
           items:
             $ref: '#/components/schemas/StandAloneMetaDataDtoForVm'
-          nullable: true
           type: array
         profile:
           $ref: '#/components/schemas/StandAloneProfileForDetailsDto'
+      required:
+      - actionButtons
+      - availabilityZone
+      - cloudInit
+      - createdAt
+      - createdBy
+      - currentFlavor
+      - disks
+      - hypervisor
+      - hypervisorId
+      - id
+      - imageId
+      - imageName
+      - ipAddress
+      - isWindows
+      - lastModified
+      - lastModifiedBy
+      - name
+      - profile
+      - publicIp
+      - publicIpEnabled
+      - spotInstance
+      - spotPrice
+      - sshPublicKey
+      - standAloneMetaDatas
+      - status
+      - targetFlavor
+      - volumeSize
+      - volumeType
       type: object
     StartStandaloneVmCommand:
       additionalProperties: false
@@ -62648,7 +63048,6 @@ components:
         age: age
       properties:
         metadataName:
-          nullable: true
           type: string
         age:
           nullable: true
@@ -62665,6 +63064,13 @@ components:
         allowVolumeExpansion:
           nullable: true
           type: boolean
+      required:
+      - age
+      - allowVolumeExpansion
+      - metadataName
+      - provisioner
+      - reclaimPolicy
+      - volumeBindingMode
       type: object
     StorageClasses:
       additionalProperties: false
@@ -62692,6 +63098,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     StorageListCommand:
       additionalProperties: false
@@ -62784,6 +63193,10 @@ components:
         productId:
           nullable: true
           type: string
+      required:
+      - priceId
+      - productId
+      - subscriptionItemId
       type: object
     StsDto:
       additionalProperties: false
@@ -62794,17 +63207,19 @@ components:
         status: status
       properties:
         metadataName:
-          nullable: true
           type: string
         status:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         age:
           nullable: true
           type: string
+      required:
+      - age
+      - metadataName
+      - namespace
+      - status
       type: object
     StsList:
       additionalProperties: false
@@ -62828,6 +63243,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     StsSearchCommand:
       additionalProperties: false
