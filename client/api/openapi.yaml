@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-18T00:03:03.0934499Z
-                  createdAt: 2024-09-18T00:03:03.0934499Z
+                  lastValidated: 2024-09-19T00:03:12.7568196Z
+                  createdAt: 2024-09-19T00:03:12.7568196Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-18T00:03:03.0934499Z
+                    lastBackup: 2024-09-19T00:03:12.7568196Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-18T00:03:03.0934499Z
+                  createdAt: 2024-09-19T00:03:12.7568196Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-18T00:03:03.0934499Z
+                  lastBackup: 2024-09-19T00:03:12.7568196Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-18T00:03:03.0934499Z
-                  expiration: 2024-09-18T00:03:03.0934499Z
+                  createdAt: 2024-09-19T00:03:12.7568196Z
+                  expiration: 2024-09-19T00:03:12.7568196Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-18T00:03:03.0934499Z
+                  createdAt: 2024-09-19T00:03:12.7568196Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-18T00:03:03.0934499+00:00
-                  startTimeStamp: 2024-09-18T00:03:03.0934499+00:00
-                  createdAt: 2024-09-18T00:03:03.0934499Z
+                  completionDateTime: 2024-09-19T00:03:12.7568196+00:00
+                  startTimeStamp: 2024-09-19T00:03:12.7568196+00:00
+                  createdAt: 2024-09-19T00:03:12.7568196Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -39766,6 +39766,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ArchiveTicketCommand:
       additionalProperties: false
@@ -39860,16 +39863,13 @@ components:
           nullable: true
           type: string
         name:
-          nullable: true
           type: string
         displayName:
           nullable: true
           type: string
         url:
-          nullable: true
           type: string
         organizationName:
-          nullable: true
           type: string
         disabled:
           type: boolean
@@ -39883,6 +39883,18 @@ components:
           type: boolean
         hasCatalogApp:
           type: boolean
+      required:
+      - disabled
+      - displayName
+      - hasCatalogApp
+      - isBound
+      - isTaikun
+      - name
+      - official
+      - organizationName
+      - repositoryId
+      - url
+      - verifiedPublisher
       type: object
     ArtifactUrlCheckerCommand:
       additionalProperties: false
@@ -51483,6 +51495,9 @@ components:
         value:
           nullable: true
           type: string
+      required:
+      - key
+      - value
       type: object
     KubernetesNodeListDto:
       additionalProperties: false
@@ -51907,6 +51922,11 @@ components:
           type: string
         isDeprecated:
           type: boolean
+      required:
+      - id
+      - isDeprecated
+      - kubernetesVersion
+      - version
       type: object
     Kubesprays:
       additionalProperties: false
@@ -51930,6 +51950,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     LeaveTaikunCommand:
       additionalProperties: false
@@ -56655,6 +56678,77 @@ components:
           format: double
           nullable: true
           type: number
+      required:
+      - accessIp
+      - accessProfileId
+      - accessProfileName
+      - aiCredentialId
+      - aiEnabled
+      - alertingProfileId
+      - alertingProfileName
+      - alertsTotalCount
+      - allowFullSpotKubernetes
+      - allowSpotVMs
+      - allowSpotWorkers
+      - autoscalingGroupName
+      - availabilityZones
+      - bastion
+      - certificationExpiredAt
+      - cloudId
+      - cloudName
+      - cloudType
+      - cpuLimit
+      - diskSize
+      - diskSizeLimit
+      - expiredAt
+      - flavor
+      - hasKubeConfigFile
+      - hasNfsServer
+      - hasSelectedFlavors
+      - hypervisors
+      - isAutoUpgrade
+      - isAutoscalingEnabled
+      - isAutoscalingSpotEnabled
+      - isBackupEnabled
+      - isDeprecated
+      - isDrsEnabled
+      - isLocked
+      - isMaintenanceModeEnabled
+      - isMonitoringEnabled
+      - isOpaEnabled
+      - isProjectMaintenanceModeEnabled
+      - kubernetesCurrentVersion
+      - kubernetesProfileId
+      - kubernetesProfileName
+      - masterReady
+      - maxSize
+      - maxSpotPrice
+      - minSize
+      - opaProfileId
+      - opaProfileName
+      - organizationId
+      - organizationName
+      - projectHealth
+      - projectId
+      - projectName
+      - projectStatus
+      - proxmoxStorage
+      - quotaId
+      - ramLimit
+      - s3CredentialId
+      - spotEnabled
+      - totalHourlyCost
+      - usedCpu
+      - usedDiskSize
+      - usedRam
+      - vmCpuLimit
+      - vmRamLimit
+      - vmUsedCpu
+      - vmUsedRam
+      - vmUsedVolumeSize
+      - vmVolumeSizeLimit
+      - wasmEnabled
+      - worker
       type: object
     ProjectDetailsForVmsDto:
       additionalProperties: false
@@ -59405,6 +59499,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ProxmoxListDto:
       additionalProperties: false
@@ -59517,6 +59614,27 @@ components:
           type: array
         skipTlsFlag:
           type: boolean
+      required:
+      - continentName
+      - createdAt
+      - createdBy
+      - hypervisors
+      - id
+      - isDefault
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      - projectCount
+      - projects
+      - proxmoxNetworks
+      - skipTlsFlag
+      - storage
+      - tokenId
+      - url
+      - vmTemplateName
       type: object
     ProxmoxNetworkListDto:
       additionalProperties: false
@@ -59552,6 +59670,15 @@ components:
           type: boolean
         isVirtualLbNetwork:
           type: boolean
+      required:
+      - beginAllocationRange
+      - bridge
+      - endAllocationRange
+      - gateway
+      - ipAddress
+      - isPrivate
+      - isVirtualLbNetwork
+      - netMask
       type: object
     ProxmoxRole:
       enum:
@@ -60527,6 +60654,10 @@ components:
           type: boolean
         console:
           type: boolean
+      required:
+      - console
+      - reboot
+      - status
       type: object
     ServerChartDto:
       additionalProperties: false
@@ -61027,13 +61158,10 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         projectName:
-          nullable: true
           type: string
         organizationName:
-          nullable: true
           type: string
         organizationId:
           format: int32
@@ -61048,7 +61176,6 @@ components:
           format: double
           type: number
         kubernetesHealth:
-          nullable: true
           type: string
         cpu:
           format: int32
@@ -61059,15 +61186,12 @@ components:
         role:
           $ref: '#/components/schemas/CloudRole'
         status:
-          nullable: true
           type: string
         createdAt:
-          nullable: true
           type: string
         cloudType:
           $ref: '#/components/schemas/CloudType'
         createdBy:
-          nullable: true
           type: string
         lastModified:
           nullable: true
@@ -61113,7 +61237,6 @@ components:
         kubernetesNodeLabels:
           items:
             $ref: '#/components/schemas/KubernetesNodeLabelsDto'
-          nullable: true
           type: array
         replicaCount:
           format: int32
@@ -61124,6 +61247,42 @@ components:
         flavor:
           nullable: true
           type: string
+      required:
+      - actionButtons
+      - autoscalingGroup
+      - availabilityZone
+      - awsHostName
+      - cloudType
+      - cpu
+      - createdAt
+      - createdBy
+      - diskSize
+      - flavor
+      - hypervisor
+      - hypervisorId
+      - id
+      - instanceId
+      - ipAddress
+      - kubernetesHealth
+      - kubernetesNodeLabels
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      - projectId
+      - projectName
+      - providerID
+      - proxmoxExtraDiskSize
+      - proxmoxRole
+      - ram
+      - replicaCount
+      - role
+      - shutOff
+      - spotInstance
+      - spotPrice
+      - status
+      - wasmEnabled
       type: object
     ServerTemplateDto:
       additionalProperties: false
@@ -61256,6 +61415,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ServersListForDetails:
       additionalProperties: false
@@ -61428,6 +61590,9 @@ components:
           type: array
         project:
           $ref: '#/components/schemas/ProjectDetailsForServersDto'
+      required:
+      - data
+      - project
       type: object
     ServersSearchCommand:
       additionalProperties: false
