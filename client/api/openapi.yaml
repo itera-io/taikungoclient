@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-19T00:03:12.7568196Z
-                  createdAt: 2024-09-19T00:03:12.7568196Z
+                  lastValidated: 2024-09-20T00:03:12.2576974Z
+                  createdAt: 2024-09-20T00:03:12.2576974Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-19T00:03:12.7568196Z
+                    lastBackup: 2024-09-20T00:03:12.2576974Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-19T00:03:12.7568196Z
+                  createdAt: 2024-09-20T00:03:12.2576974Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-19T00:03:12.7568196Z
+                  lastBackup: 2024-09-20T00:03:12.2576974Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-19T00:03:12.7568196Z
-                  expiration: 2024-09-19T00:03:12.7568196Z
+                  createdAt: 2024-09-20T00:03:12.2576974Z
+                  expiration: 2024-09-20T00:03:12.2576974Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-19T00:03:12.7568196Z
+                  createdAt: 2024-09-20T00:03:12.2576974Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-19T00:03:12.7568196+00:00
-                  startTimeStamp: 2024-09-19T00:03:12.7568196+00:00
-                  createdAt: 2024-09-19T00:03:12.7568196Z
+                  completionDateTime: 2024-09-20T00:03:12.2576974+00:00
+                  startTimeStamp: 2024-09-20T00:03:12.2576974+00:00
+                  createdAt: 2024-09-20T00:03:12.2576974Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -58737,6 +58737,10 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
+      - totalPrice
       type: object
     PrometheusBillingSummaryDto:
       additionalProperties: false
@@ -58764,7 +58768,6 @@ components:
           format: int32
           type: integer
         ruleName:
-          nullable: true
           type: string
         createdBy:
           nullable: true
@@ -58775,6 +58778,15 @@ components:
         lastModifiedBy:
           nullable: true
           type: string
+      required:
+      - createdBy
+      - endDate
+      - lastModified
+      - lastModifiedBy
+      - price
+      - prometheusRuleId
+      - ruleName
+      - startDate
       type: object
     PrometheusDashboardCreateCommand:
       additionalProperties: false
@@ -58896,7 +58908,12 @@ components:
           type: string
         ruleDiscountRate:
           format: double
+          nullable: true
           type: number
+      required:
+      - prometheusRuleId
+      - prometheusRuleName
+      - ruleDiscountRate
       type: object
     PrometheusLabelListDto:
       additionalProperties: false
@@ -58961,7 +58978,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         ruleDiscountRate:
           format: double
@@ -58969,6 +58985,11 @@ components:
         globalDiscountRate:
           format: double
           type: number
+      required:
+      - globalDiscountRate
+      - id
+      - name
+      - ruleDiscountRate
       type: object
     PrometheusRuleListDto:
       additionalProperties: false
@@ -59047,29 +59068,22 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         password:
-          nullable: true
           type: string
         userName:
-          nullable: true
           type: string
         url:
-          nullable: true
           type: string
         metricName:
-          nullable: true
           type: string
         labels:
           items:
             $ref: '#/components/schemas/PrometheusLabelListDto'
-          nullable: true
           type: array
         boundOrganizations:
           items:
             $ref: '#/components/schemas/PrometheusOrganizationDiscountDto'
-          nullable: true
           type: array
         type:
           $ref: '#/components/schemas/PrometheusType'
@@ -59087,7 +59101,6 @@ components:
         operationCredential:
           $ref: '#/components/schemas/OperationCredentialsForOrganizationEntity'
         createdBy:
-          nullable: true
           type: string
         lastModified:
           nullable: true
@@ -59095,6 +59108,24 @@ components:
         lastModifiedBy:
           nullable: true
           type: string
+      required:
+      - billingStartDate
+      - boundOrganizations
+      - createdAt
+      - createdBy
+      - id
+      - labels
+      - lastModified
+      - lastModifiedBy
+      - metricName
+      - name
+      - operationCredential
+      - partner
+      - password
+      - price
+      - type
+      - url
+      - userName
       type: object
     PrometheusRulesList:
       additionalProperties: false
@@ -59248,6 +59279,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     PrometheusRulesSearchCommand:
       additionalProperties: false
@@ -61822,6 +61856,9 @@ components:
         prometheusRuleName:
           nullable: true
           type: string
+      required:
+      - prometheusRuleId
+      - prometheusRuleName
       type: object
     SlackConfigurationDto:
       additionalProperties: false

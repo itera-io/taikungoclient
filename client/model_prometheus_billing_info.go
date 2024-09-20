@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PrometheusBillingInfo type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,22 @@ var _ MappedNullable = &PrometheusBillingInfo{}
 
 // PrometheusBillingInfo struct for PrometheusBillingInfo
 type PrometheusBillingInfo struct {
-	Data []PrometheusBillingSummaryDto `json:"data,omitempty"`
-	TotalPrice *float64 `json:"totalPrice,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Data []PrometheusBillingSummaryDto `json:"data"`
+	TotalPrice float64 `json:"totalPrice"`
+	TotalCount int32 `json:"totalCount"`
 }
+
+type _PrometheusBillingInfo PrometheusBillingInfo
 
 // NewPrometheusBillingInfo instantiates a new PrometheusBillingInfo object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusBillingInfo() *PrometheusBillingInfo {
+func NewPrometheusBillingInfo(data []PrometheusBillingSummaryDto, totalPrice float64, totalCount int32) *PrometheusBillingInfo {
 	this := PrometheusBillingInfo{}
+	this.Data = data
+	this.TotalPrice = totalPrice
+	this.TotalCount = totalCount
 	return &this
 }
 
@@ -42,16 +49,18 @@ func NewPrometheusBillingInfoWithDefaults() *PrometheusBillingInfo {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []PrometheusBillingSummaryDto will be returned
 func (o *PrometheusBillingInfo) GetData() []PrometheusBillingSummaryDto {
 	if o == nil {
 		var ret []PrometheusBillingSummaryDto
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusBillingInfo) GetDataOk() ([]PrometheusBillingSummaryDto, bool) {
@@ -61,82 +70,57 @@ func (o *PrometheusBillingInfo) GetDataOk() ([]PrometheusBillingSummaryDto, bool
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *PrometheusBillingInfo) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []PrometheusBillingSummaryDto and assigns it to the Data field.
+// SetData sets field value
 func (o *PrometheusBillingInfo) SetData(v []PrometheusBillingSummaryDto) {
 	o.Data = v
 }
 
-// GetTotalPrice returns the TotalPrice field value if set, zero value otherwise.
+// GetTotalPrice returns the TotalPrice field value
 func (o *PrometheusBillingInfo) GetTotalPrice() float64 {
-	if o == nil || IsNil(o.TotalPrice) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.TotalPrice
+
+	return o.TotalPrice
 }
 
-// GetTotalPriceOk returns a tuple with the TotalPrice field value if set, nil otherwise
+// GetTotalPriceOk returns a tuple with the TotalPrice field value
 // and a boolean to check if the value has been set.
 func (o *PrometheusBillingInfo) GetTotalPriceOk() (*float64, bool) {
-	if o == nil || IsNil(o.TotalPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalPrice, true
+	return &o.TotalPrice, true
 }
 
-// HasTotalPrice returns a boolean if a field has been set.
-func (o *PrometheusBillingInfo) HasTotalPrice() bool {
-	if o != nil && !IsNil(o.TotalPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalPrice gets a reference to the given float64 and assigns it to the TotalPrice field.
+// SetTotalPrice sets field value
 func (o *PrometheusBillingInfo) SetTotalPrice(v float64) {
-	o.TotalPrice = &v
+	o.TotalPrice = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value
 func (o *PrometheusBillingInfo) GetTotalCount() int32 {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.TotalCount
+
+	return o.TotalCount
 }
 
-// GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
+// GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
 func (o *PrometheusBillingInfo) GetTotalCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalCount, true
+	return &o.TotalCount, true
 }
 
-// HasTotalCount returns a boolean if a field has been set.
-func (o *PrometheusBillingInfo) HasTotalCount() bool {
-	if o != nil && !IsNil(o.TotalCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+// SetTotalCount sets field value
 func (o *PrometheusBillingInfo) SetTotalCount(v int32) {
-	o.TotalCount = &v
+	o.TotalCount = v
 }
 
 func (o PrometheusBillingInfo) MarshalJSON() ([]byte, error) {
@@ -152,13 +136,48 @@ func (o PrometheusBillingInfo) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	if !IsNil(o.TotalPrice) {
-		toSerialize["totalPrice"] = o.TotalPrice
-	}
-	if !IsNil(o.TotalCount) {
-		toSerialize["totalCount"] = o.TotalCount
-	}
+	toSerialize["totalPrice"] = o.TotalPrice
+	toSerialize["totalCount"] = o.TotalCount
 	return toSerialize, nil
+}
+
+func (o *PrometheusBillingInfo) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+		"totalPrice",
+		"totalCount",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPrometheusBillingInfo := _PrometheusBillingInfo{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrometheusBillingInfo)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusBillingInfo(varPrometheusBillingInfo)
+
+	return err
 }
 
 type NullablePrometheusBillingInfo struct {
