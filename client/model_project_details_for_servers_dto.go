@@ -26,17 +26,17 @@ type ProjectDetailsForServersDto struct {
 	Worker int32 `json:"worker"`
 	Bastion int32 `json:"bastion"`
 	ProjectStatus ProjectStatus `json:"projectStatus"`
-	ProjectName NullableString `json:"projectName"`
-	AccessIp NullableString `json:"accessIp"`
+	ProjectName string `json:"projectName"`
+	AccessIp string `json:"accessIp"`
 	ProjectId int32 `json:"projectId"`
 	MasterReady int32 `json:"masterReady"`
 	CloudType CloudType `json:"cloudType"`
-	CloudName NullableString `json:"cloudName"`
+	CloudName string `json:"cloudName"`
 	CloudId int32 `json:"cloudId"`
 	QuotaId int32 `json:"quotaId"`
-	OrganizationName NullableString `json:"organizationName"`
+	OrganizationName string `json:"organizationName"`
 	OrganizationId int32 `json:"organizationId"`
-	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion"`
+	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion"`
 	IsBackupEnabled bool `json:"isBackupEnabled"`
 	AiEnabled bool `json:"aiEnabled"`
 	IsLocked bool `json:"isLocked"`
@@ -60,24 +60,24 @@ type ProjectDetailsForServersDto struct {
 	VmUsedCpu int64 `json:"vmUsedCpu"`
 	VmUsedRam int64 `json:"vmUsedRam"`
 	VmUsedVolumeSize int64 `json:"vmUsedVolumeSize"`
-	AccessProfileName NullableString `json:"accessProfileName"`
+	AccessProfileName string `json:"accessProfileName"`
 	AccessProfileId NullableInt32 `json:"accessProfileId"`
-	KubernetesProfileName NullableString `json:"kubernetesProfileName"`
+	KubernetesProfileName string `json:"kubernetesProfileName"`
 	KubernetesProfileId NullableInt32 `json:"kubernetesProfileId"`
-	AlertingProfileName NullableString `json:"alertingProfileName"`
+	AlertingProfileName string `json:"alertingProfileName"`
 	ProjectHealth ProjectHealth `json:"projectHealth"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
 	S3CredentialId NullableInt32 `json:"s3CredentialId"`
 	AiCredentialId NullableInt32 `json:"aiCredentialId"`
-	ExpiredAt NullableString `json:"expiredAt"`
-	CertificationExpiredAt NullableString `json:"certificationExpiredAt"`
+	ExpiredAt string `json:"expiredAt"`
+	CertificationExpiredAt string `json:"certificationExpiredAt"`
 	OpaProfileId NullableInt32 `json:"opaProfileId"`
-	OpaProfileName NullableString `json:"opaProfileName"`
+	OpaProfileName string `json:"opaProfileName"`
 	AllowFullSpotKubernetes bool `json:"allowFullSpotKubernetes"`
 	AllowSpotWorkers bool `json:"allowSpotWorkers"`
 	AllowSpotVMs bool `json:"allowSpotVMs"`
 	TotalHourlyCost float64 `json:"totalHourlyCost"`
-	AutoscalingGroupName NullableString `json:"autoscalingGroupName"`
+	AutoscalingGroupName string `json:"autoscalingGroupName"`
 	MinSize NullableInt32 `json:"minSize"`
 	MaxSize NullableInt32 `json:"maxSize"`
 	DiskSize NullableFloat64 `json:"diskSize"`
@@ -100,7 +100,7 @@ type _ProjectDetailsForServersDto ProjectDetailsForServersDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDetailsForServersDto(alertsTotalCount int32, worker int32, bastion int32, projectStatus ProjectStatus, projectName NullableString, accessIp NullableString, projectId int32, masterReady int32, cloudType CloudType, cloudName NullableString, cloudId int32, quotaId int32, organizationName NullableString, organizationId int32, kubernetesCurrentVersion NullableString, isBackupEnabled bool, aiEnabled bool, isLocked bool, isAutoUpgrade bool, isMonitoringEnabled bool, isOpaEnabled bool, hasKubeConfigFile bool, hasSelectedFlavors bool, isMaintenanceModeEnabled bool, isProjectMaintenanceModeEnabled bool, isDeprecated bool, cpuLimit int64, ramLimit int64, diskSizeLimit int64, usedCpu int64, usedRam int64, usedDiskSize int64, vmCpuLimit int64, vmRamLimit int64, vmVolumeSizeLimit int64, vmUsedCpu int64, vmUsedRam int64, vmUsedVolumeSize int64, accessProfileName NullableString, accessProfileId NullableInt32, kubernetesProfileName NullableString, kubernetesProfileId NullableInt32, alertingProfileName NullableString, projectHealth ProjectHealth, alertingProfileId NullableInt32, s3CredentialId NullableInt32, aiCredentialId NullableInt32, expiredAt NullableString, certificationExpiredAt NullableString, opaProfileId NullableInt32, opaProfileName NullableString, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, totalHourlyCost float64, autoscalingGroupName NullableString, minSize NullableInt32, maxSize NullableInt32, diskSize NullableFloat64, flavor NullableString, spotEnabled NullableBool, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, hasNfsServer bool, wasmEnabled bool, availabilityZones []string, hypervisors []string, proxmoxStorage ProxmoxStorage, isDrsEnabled bool, maxSpotPrice NullableFloat64) *ProjectDetailsForServersDto {
+func NewProjectDetailsForServersDto(alertsTotalCount int32, worker int32, bastion int32, projectStatus ProjectStatus, projectName string, accessIp string, projectId int32, masterReady int32, cloudType CloudType, cloudName string, cloudId int32, quotaId int32, organizationName string, organizationId int32, kubernetesCurrentVersion string, isBackupEnabled bool, aiEnabled bool, isLocked bool, isAutoUpgrade bool, isMonitoringEnabled bool, isOpaEnabled bool, hasKubeConfigFile bool, hasSelectedFlavors bool, isMaintenanceModeEnabled bool, isProjectMaintenanceModeEnabled bool, isDeprecated bool, cpuLimit int64, ramLimit int64, diskSizeLimit int64, usedCpu int64, usedRam int64, usedDiskSize int64, vmCpuLimit int64, vmRamLimit int64, vmVolumeSizeLimit int64, vmUsedCpu int64, vmUsedRam int64, vmUsedVolumeSize int64, accessProfileName string, accessProfileId NullableInt32, kubernetesProfileName string, kubernetesProfileId NullableInt32, alertingProfileName string, projectHealth ProjectHealth, alertingProfileId NullableInt32, s3CredentialId NullableInt32, aiCredentialId NullableInt32, expiredAt string, certificationExpiredAt string, opaProfileId NullableInt32, opaProfileName string, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, totalHourlyCost float64, autoscalingGroupName string, minSize NullableInt32, maxSize NullableInt32, diskSize NullableFloat64, flavor NullableString, spotEnabled NullableBool, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, hasNfsServer bool, wasmEnabled bool, availabilityZones []string, hypervisors []string, proxmoxStorage ProxmoxStorage, isDrsEnabled bool, maxSpotPrice NullableFloat64) *ProjectDetailsForServersDto {
 	this := ProjectDetailsForServersDto{}
 	this.AlertsTotalCount = alertsTotalCount
 	this.Worker = worker
@@ -280,55 +280,51 @@ func (o *ProjectDetailsForServersDto) SetProjectStatus(v ProjectStatus) {
 }
 
 // GetProjectName returns the ProjectName field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForServersDto) GetProjectName() string {
-	if o == nil || o.ProjectName.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.ProjectName.Get()
+	return o.ProjectName
 }
 
 // GetProjectNameOk returns a tuple with the ProjectName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetProjectNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName.Get(), o.ProjectName.IsSet()
+	return &o.ProjectName, true
 }
 
 // SetProjectName sets field value
 func (o *ProjectDetailsForServersDto) SetProjectName(v string) {
-	o.ProjectName.Set(&v)
+	o.ProjectName = v
 }
 
 // GetAccessIp returns the AccessIp field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForServersDto) GetAccessIp() string {
-	if o == nil || o.AccessIp.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.AccessIp.Get()
+	return o.AccessIp
 }
 
 // GetAccessIpOk returns a tuple with the AccessIp field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetAccessIpOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccessIp.Get(), o.AccessIp.IsSet()
+	return &o.AccessIp, true
 }
 
 // SetAccessIp sets field value
 func (o *ProjectDetailsForServersDto) SetAccessIp(v string) {
-	o.AccessIp.Set(&v)
+	o.AccessIp = v
 }
 
 // GetProjectId returns the ProjectId field value
@@ -404,29 +400,27 @@ func (o *ProjectDetailsForServersDto) SetCloudType(v CloudType) {
 }
 
 // GetCloudName returns the CloudName field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForServersDto) GetCloudName() string {
-	if o == nil || o.CloudName.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.CloudName.Get()
+	return o.CloudName
 }
 
 // GetCloudNameOk returns a tuple with the CloudName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetCloudNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CloudName.Get(), o.CloudName.IsSet()
+	return &o.CloudName, true
 }
 
 // SetCloudName sets field value
 func (o *ProjectDetailsForServersDto) SetCloudName(v string) {
-	o.CloudName.Set(&v)
+	o.CloudName = v
 }
 
 // GetCloudId returns the CloudId field value
@@ -478,29 +472,27 @@ func (o *ProjectDetailsForServersDto) SetQuotaId(v int32) {
 }
 
 // GetOrganizationName returns the OrganizationName field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForServersDto) GetOrganizationName() string {
-	if o == nil || o.OrganizationName.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.OrganizationName.Get()
+	return o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return &o.OrganizationName, true
 }
 
 // SetOrganizationName sets field value
 func (o *ProjectDetailsForServersDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
+	o.OrganizationName = v
 }
 
 // GetOrganizationId returns the OrganizationId field value
@@ -528,29 +520,27 @@ func (o *ProjectDetailsForServersDto) SetOrganizationId(v int32) {
 }
 
 // GetKubernetesCurrentVersion returns the KubernetesCurrentVersion field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForServersDto) GetKubernetesCurrentVersion() string {
-	if o == nil || o.KubernetesCurrentVersion.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.KubernetesCurrentVersion.Get()
+	return o.KubernetesCurrentVersion
 }
 
 // GetKubernetesCurrentVersionOk returns a tuple with the KubernetesCurrentVersion field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetKubernetesCurrentVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.KubernetesCurrentVersion.Get(), o.KubernetesCurrentVersion.IsSet()
+	return &o.KubernetesCurrentVersion, true
 }
 
 // SetKubernetesCurrentVersion sets field value
 func (o *ProjectDetailsForServersDto) SetKubernetesCurrentVersion(v string) {
-	o.KubernetesCurrentVersion.Set(&v)
+	o.KubernetesCurrentVersion = v
 }
 
 // GetIsBackupEnabled returns the IsBackupEnabled field value
@@ -1106,29 +1096,27 @@ func (o *ProjectDetailsForServersDto) SetVmUsedVolumeSize(v int64) {
 }
 
 // GetAccessProfileName returns the AccessProfileName field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForServersDto) GetAccessProfileName() string {
-	if o == nil || o.AccessProfileName.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.AccessProfileName.Get()
+	return o.AccessProfileName
 }
 
 // GetAccessProfileNameOk returns a tuple with the AccessProfileName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetAccessProfileNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccessProfileName.Get(), o.AccessProfileName.IsSet()
+	return &o.AccessProfileName, true
 }
 
 // SetAccessProfileName sets field value
 func (o *ProjectDetailsForServersDto) SetAccessProfileName(v string) {
-	o.AccessProfileName.Set(&v)
+	o.AccessProfileName = v
 }
 
 // GetAccessProfileId returns the AccessProfileId field value
@@ -1158,29 +1146,27 @@ func (o *ProjectDetailsForServersDto) SetAccessProfileId(v int32) {
 }
 
 // GetKubernetesProfileName returns the KubernetesProfileName field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForServersDto) GetKubernetesProfileName() string {
-	if o == nil || o.KubernetesProfileName.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.KubernetesProfileName.Get()
+	return o.KubernetesProfileName
 }
 
 // GetKubernetesProfileNameOk returns a tuple with the KubernetesProfileName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetKubernetesProfileNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.KubernetesProfileName.Get(), o.KubernetesProfileName.IsSet()
+	return &o.KubernetesProfileName, true
 }
 
 // SetKubernetesProfileName sets field value
 func (o *ProjectDetailsForServersDto) SetKubernetesProfileName(v string) {
-	o.KubernetesProfileName.Set(&v)
+	o.KubernetesProfileName = v
 }
 
 // GetKubernetesProfileId returns the KubernetesProfileId field value
@@ -1210,29 +1196,27 @@ func (o *ProjectDetailsForServersDto) SetKubernetesProfileId(v int32) {
 }
 
 // GetAlertingProfileName returns the AlertingProfileName field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForServersDto) GetAlertingProfileName() string {
-	if o == nil || o.AlertingProfileName.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.AlertingProfileName.Get()
+	return o.AlertingProfileName
 }
 
 // GetAlertingProfileNameOk returns a tuple with the AlertingProfileName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetAlertingProfileNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AlertingProfileName.Get(), o.AlertingProfileName.IsSet()
+	return &o.AlertingProfileName, true
 }
 
 // SetAlertingProfileName sets field value
 func (o *ProjectDetailsForServersDto) SetAlertingProfileName(v string) {
-	o.AlertingProfileName.Set(&v)
+	o.AlertingProfileName = v
 }
 
 // GetProjectHealth returns the ProjectHealth field value
@@ -1338,55 +1322,51 @@ func (o *ProjectDetailsForServersDto) SetAiCredentialId(v int32) {
 }
 
 // GetExpiredAt returns the ExpiredAt field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForServersDto) GetExpiredAt() string {
-	if o == nil || o.ExpiredAt.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.ExpiredAt.Get()
+	return o.ExpiredAt
 }
 
 // GetExpiredAtOk returns a tuple with the ExpiredAt field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetExpiredAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ExpiredAt.Get(), o.ExpiredAt.IsSet()
+	return &o.ExpiredAt, true
 }
 
 // SetExpiredAt sets field value
 func (o *ProjectDetailsForServersDto) SetExpiredAt(v string) {
-	o.ExpiredAt.Set(&v)
+	o.ExpiredAt = v
 }
 
 // GetCertificationExpiredAt returns the CertificationExpiredAt field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForServersDto) GetCertificationExpiredAt() string {
-	if o == nil || o.CertificationExpiredAt.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.CertificationExpiredAt.Get()
+	return o.CertificationExpiredAt
 }
 
 // GetCertificationExpiredAtOk returns a tuple with the CertificationExpiredAt field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetCertificationExpiredAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CertificationExpiredAt.Get(), o.CertificationExpiredAt.IsSet()
+	return &o.CertificationExpiredAt, true
 }
 
 // SetCertificationExpiredAt sets field value
 func (o *ProjectDetailsForServersDto) SetCertificationExpiredAt(v string) {
-	o.CertificationExpiredAt.Set(&v)
+	o.CertificationExpiredAt = v
 }
 
 // GetOpaProfileId returns the OpaProfileId field value
@@ -1416,29 +1396,27 @@ func (o *ProjectDetailsForServersDto) SetOpaProfileId(v int32) {
 }
 
 // GetOpaProfileName returns the OpaProfileName field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForServersDto) GetOpaProfileName() string {
-	if o == nil || o.OpaProfileName.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.OpaProfileName.Get()
+	return o.OpaProfileName
 }
 
 // GetOpaProfileNameOk returns a tuple with the OpaProfileName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetOpaProfileNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OpaProfileName.Get(), o.OpaProfileName.IsSet()
+	return &o.OpaProfileName, true
 }
 
 // SetOpaProfileName sets field value
 func (o *ProjectDetailsForServersDto) SetOpaProfileName(v string) {
-	o.OpaProfileName.Set(&v)
+	o.OpaProfileName = v
 }
 
 // GetAllowFullSpotKubernetes returns the AllowFullSpotKubernetes field value
@@ -1538,29 +1516,27 @@ func (o *ProjectDetailsForServersDto) SetTotalHourlyCost(v float64) {
 }
 
 // GetAutoscalingGroupName returns the AutoscalingGroupName field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDetailsForServersDto) GetAutoscalingGroupName() string {
-	if o == nil || o.AutoscalingGroupName.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.AutoscalingGroupName.Get()
+	return o.AutoscalingGroupName
 }
 
 // GetAutoscalingGroupNameOk returns a tuple with the AutoscalingGroupName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetAutoscalingGroupNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AutoscalingGroupName.Get(), o.AutoscalingGroupName.IsSet()
+	return &o.AutoscalingGroupName, true
 }
 
 // SetAutoscalingGroupName sets field value
 func (o *ProjectDetailsForServersDto) SetAutoscalingGroupName(v string) {
-	o.AutoscalingGroupName.Set(&v)
+	o.AutoscalingGroupName = v
 }
 
 // GetMinSize returns the MinSize field value
@@ -1790,7 +1766,6 @@ func (o *ProjectDetailsForServersDto) SetWasmEnabled(v bool) {
 }
 
 // GetAvailabilityZones returns the AvailabilityZones field value
-// If the value is explicit nil, the zero value for []string will be returned
 func (o *ProjectDetailsForServersDto) GetAvailabilityZones() []string {
 	if o == nil {
 		var ret []string
@@ -1802,9 +1777,8 @@ func (o *ProjectDetailsForServersDto) GetAvailabilityZones() []string {
 
 // GetAvailabilityZonesOk returns a tuple with the AvailabilityZones field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetAvailabilityZonesOk() ([]string, bool) {
-	if o == nil || IsNil(o.AvailabilityZones) {
+	if o == nil {
 		return nil, false
 	}
 	return o.AvailabilityZones, true
@@ -1816,7 +1790,6 @@ func (o *ProjectDetailsForServersDto) SetAvailabilityZones(v []string) {
 }
 
 // GetHypervisors returns the Hypervisors field value
-// If the value is explicit nil, the zero value for []string will be returned
 func (o *ProjectDetailsForServersDto) GetHypervisors() []string {
 	if o == nil {
 		var ret []string
@@ -1828,9 +1801,8 @@ func (o *ProjectDetailsForServersDto) GetHypervisors() []string {
 
 // GetHypervisorsOk returns a tuple with the Hypervisors field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDetailsForServersDto) GetHypervisorsOk() ([]string, bool) {
-	if o == nil || IsNil(o.Hypervisors) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Hypervisors, true
@@ -1929,17 +1901,17 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["worker"] = o.Worker
 	toSerialize["bastion"] = o.Bastion
 	toSerialize["projectStatus"] = o.ProjectStatus
-	toSerialize["projectName"] = o.ProjectName.Get()
-	toSerialize["accessIp"] = o.AccessIp.Get()
+	toSerialize["projectName"] = o.ProjectName
+	toSerialize["accessIp"] = o.AccessIp
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["masterReady"] = o.MasterReady
 	toSerialize["cloudType"] = o.CloudType
-	toSerialize["cloudName"] = o.CloudName.Get()
+	toSerialize["cloudName"] = o.CloudName
 	toSerialize["cloudId"] = o.CloudId
 	toSerialize["quotaId"] = o.QuotaId
-	toSerialize["organizationName"] = o.OrganizationName.Get()
+	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["organizationId"] = o.OrganizationId
-	toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion.Get()
+	toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion
 	toSerialize["isBackupEnabled"] = o.IsBackupEnabled
 	toSerialize["aiEnabled"] = o.AiEnabled
 	toSerialize["isLocked"] = o.IsLocked
@@ -1963,24 +1935,24 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["vmUsedCpu"] = o.VmUsedCpu
 	toSerialize["vmUsedRam"] = o.VmUsedRam
 	toSerialize["vmUsedVolumeSize"] = o.VmUsedVolumeSize
-	toSerialize["accessProfileName"] = o.AccessProfileName.Get()
+	toSerialize["accessProfileName"] = o.AccessProfileName
 	toSerialize["accessProfileId"] = o.AccessProfileId.Get()
-	toSerialize["kubernetesProfileName"] = o.KubernetesProfileName.Get()
+	toSerialize["kubernetesProfileName"] = o.KubernetesProfileName
 	toSerialize["kubernetesProfileId"] = o.KubernetesProfileId.Get()
-	toSerialize["alertingProfileName"] = o.AlertingProfileName.Get()
+	toSerialize["alertingProfileName"] = o.AlertingProfileName
 	toSerialize["projectHealth"] = o.ProjectHealth
 	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	toSerialize["s3CredentialId"] = o.S3CredentialId.Get()
 	toSerialize["aiCredentialId"] = o.AiCredentialId.Get()
-	toSerialize["expiredAt"] = o.ExpiredAt.Get()
-	toSerialize["certificationExpiredAt"] = o.CertificationExpiredAt.Get()
+	toSerialize["expiredAt"] = o.ExpiredAt
+	toSerialize["certificationExpiredAt"] = o.CertificationExpiredAt
 	toSerialize["opaProfileId"] = o.OpaProfileId.Get()
-	toSerialize["opaProfileName"] = o.OpaProfileName.Get()
+	toSerialize["opaProfileName"] = o.OpaProfileName
 	toSerialize["allowFullSpotKubernetes"] = o.AllowFullSpotKubernetes
 	toSerialize["allowSpotWorkers"] = o.AllowSpotWorkers
 	toSerialize["allowSpotVMs"] = o.AllowSpotVMs
 	toSerialize["totalHourlyCost"] = o.TotalHourlyCost
-	toSerialize["autoscalingGroupName"] = o.AutoscalingGroupName.Get()
+	toSerialize["autoscalingGroupName"] = o.AutoscalingGroupName
 	toSerialize["minSize"] = o.MinSize.Get()
 	toSerialize["maxSize"] = o.MaxSize.Get()
 	toSerialize["diskSize"] = o.DiskSize.Get()
@@ -1990,12 +1962,8 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["isAutoscalingSpotEnabled"] = o.IsAutoscalingSpotEnabled
 	toSerialize["hasNfsServer"] = o.HasNfsServer
 	toSerialize["wasmEnabled"] = o.WasmEnabled
-	if o.AvailabilityZones != nil {
-		toSerialize["availabilityZones"] = o.AvailabilityZones
-	}
-	if o.Hypervisors != nil {
-		toSerialize["hypervisors"] = o.Hypervisors
-	}
+	toSerialize["availabilityZones"] = o.AvailabilityZones
+	toSerialize["hypervisors"] = o.Hypervisors
 	toSerialize["proxmoxStorage"] = o.ProxmoxStorage
 	toSerialize["isDrsEnabled"] = o.IsDrsEnabled
 	toSerialize["maxSpotPrice"] = o.MaxSpotPrice.Get()

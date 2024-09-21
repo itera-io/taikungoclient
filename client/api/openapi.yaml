@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-20T00:03:12.2576974Z
-                  createdAt: 2024-09-20T00:03:12.2576974Z
+                  lastValidated: 2024-09-21T00:02:59.4528735Z
+                  createdAt: 2024-09-21T00:02:59.4528735Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-20T00:03:12.2576974Z
+                    lastBackup: 2024-09-21T00:02:59.4528735Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-20T00:03:12.2576974Z
+                  createdAt: 2024-09-21T00:02:59.4528735Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-20T00:03:12.2576974Z
+                  lastBackup: 2024-09-21T00:02:59.4528735Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-20T00:03:12.2576974Z
-                  expiration: 2024-09-20T00:03:12.2576974Z
+                  createdAt: 2024-09-21T00:02:59.4528735Z
+                  expiration: 2024-09-21T00:02:59.4528735Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-20T00:03:12.2576974Z
+                  createdAt: 2024-09-21T00:02:59.4528735Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-20T00:03:12.2576974+00:00
-                  startTimeStamp: 2024-09-20T00:03:12.2576974+00:00
-                  createdAt: 2024-09-20T00:03:12.2576974Z
+                  completionDateTime: 2024-09-21T00:02:59.4528735+00:00
+                  startTimeStamp: 2024-09-21T00:02:59.4528735+00:00
+                  createdAt: 2024-09-21T00:02:59.4528735Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -35990,13 +35990,6 @@ paths:
           format: int32
           type: integer
         style: form
-      - explode: true
-        in: query
-        name: FilterBy
-        required: false
-        schema:
-          type: string
-        style: form
       responses:
         "200":
           content:
@@ -54897,6 +54890,7 @@ components:
     PartnerDetailsForUserDto:
       additionalProperties: false
       example:
+        domain: domain
         name: name
         link: link
         logo: logo
@@ -54910,10 +54904,14 @@ components:
         link:
           nullable: true
           type: string
+        domain:
+          nullable: true
+          type: string
         id:
           format: int32
           type: integer
       required:
+      - domain
       - id
       - link
       - logo
@@ -56489,10 +56487,8 @@ components:
         projectStatus:
           $ref: '#/components/schemas/ProjectStatus'
         projectName:
-          nullable: true
           type: string
         accessIp:
-          nullable: true
           type: string
         projectId:
           format: int32
@@ -56503,7 +56499,6 @@ components:
         cloudType:
           $ref: '#/components/schemas/CloudType'
         cloudName:
-          nullable: true
           type: string
         cloudId:
           format: int32
@@ -56512,13 +56507,11 @@ components:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         organizationId:
           format: int32
           type: integer
         kubernetesCurrentVersion:
-          nullable: true
           type: string
         isBackupEnabled:
           type: boolean
@@ -56579,21 +56572,18 @@ components:
           format: int64
           type: integer
         accessProfileName:
-          nullable: true
           type: string
         accessProfileId:
           format: int32
           nullable: true
           type: integer
         kubernetesProfileName:
-          nullable: true
           type: string
         kubernetesProfileId:
           format: int32
           nullable: true
           type: integer
         alertingProfileName:
-          nullable: true
           type: string
         projectHealth:
           $ref: '#/components/schemas/ProjectHealth'
@@ -56610,17 +56600,14 @@ components:
           nullable: true
           type: integer
         expiredAt:
-          nullable: true
           type: string
         certificationExpiredAt:
-          nullable: true
           type: string
         opaProfileId:
           format: int32
           nullable: true
           type: integer
         opaProfileName:
-          nullable: true
           type: string
         allowFullSpotKubernetes:
           type: boolean
@@ -56632,7 +56619,6 @@ components:
           format: double
           type: number
         autoscalingGroupName:
-          nullable: true
           type: string
         minSize:
           format: int32
@@ -56663,12 +56649,10 @@ components:
         availabilityZones:
           items:
             type: string
-          nullable: true
           type: array
         hypervisors:
           items:
             type: string
-          nullable: true
           type: array
         proxmoxStorage:
           $ref: '#/components/schemas/ProxmoxStorage'
@@ -63977,6 +63961,7 @@ components:
     TransferList:
       additionalProperties: false
       example:
+        role: Admin
         userName: userName
         userId: userId
       properties:
@@ -63986,7 +63971,10 @@ components:
         userName:
           nullable: true
           type: string
+        role:
+          $ref: '#/components/schemas/UserRole'
       required:
+      - role
       - userId
       - userName
       type: object
@@ -64874,6 +64862,7 @@ components:
           lastLoginAt: lastLoginAt
           isApprovedByPartner: true
           partner:
+            domain: domain
             name: name
             link: link
             logo: logo
@@ -64951,6 +64940,7 @@ components:
         lastLoginAt: lastLoginAt
         isApprovedByPartner: true
         partner:
+          domain: domain
           name: name
           link: link
           logo: logo
@@ -65329,6 +65319,7 @@ components:
           lastLoginAt: lastLoginAt
           isApprovedByPartner: true
           partner:
+            domain: domain
             name: name
             link: link
             logo: logo
@@ -65362,6 +65353,7 @@ components:
           lastLoginAt: lastLoginAt
           isApprovedByPartner: true
           partner:
+            domain: domain
             name: name
             link: link
             logo: logo

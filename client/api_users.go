@@ -1347,7 +1347,6 @@ type ApiUsersDropdownRequest struct {
 	organizationId *int32
 	search *string
 	projectId *int32
-	filterBy *string
 }
 
 func (r ApiUsersDropdownRequest) OrganizationId(organizationId int32) ApiUsersDropdownRequest {
@@ -1362,11 +1361,6 @@ func (r ApiUsersDropdownRequest) Search(search string) ApiUsersDropdownRequest {
 
 func (r ApiUsersDropdownRequest) ProjectId(projectId int32) ApiUsersDropdownRequest {
 	r.projectId = &projectId
-	return r
-}
-
-func (r ApiUsersDropdownRequest) FilterBy(filterBy string) ApiUsersDropdownRequest {
-	r.filterBy = &filterBy
 	return r
 }
 
@@ -1416,9 +1410,6 @@ func (a *UsersAPIService) UsersDropdownExecute(r ApiUsersDropdownRequest) ([]Com
 	}
 	if r.projectId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
-	}
-	if r.filterBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

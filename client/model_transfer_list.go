@@ -24,6 +24,7 @@ var _ MappedNullable = &TransferList{}
 type TransferList struct {
 	UserId NullableString `json:"userId"`
 	UserName NullableString `json:"userName"`
+	Role UserRole `json:"role"`
 }
 
 type _TransferList TransferList
@@ -32,10 +33,11 @@ type _TransferList TransferList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTransferList(userId NullableString, userName NullableString) *TransferList {
+func NewTransferList(userId NullableString, userName NullableString, role UserRole) *TransferList {
 	this := TransferList{}
 	this.UserId = userId
 	this.UserName = userName
+	this.Role = role
 	return &this
 }
 
@@ -99,6 +101,30 @@ func (o *TransferList) SetUserName(v string) {
 	o.UserName.Set(&v)
 }
 
+// GetRole returns the Role field value
+func (o *TransferList) GetRole() UserRole {
+	if o == nil {
+		var ret UserRole
+		return ret
+	}
+
+	return o.Role
+}
+
+// GetRoleOk returns a tuple with the Role field value
+// and a boolean to check if the value has been set.
+func (o *TransferList) GetRoleOk() (*UserRole, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Role, true
+}
+
+// SetRole sets field value
+func (o *TransferList) SetRole(v UserRole) {
+	o.Role = v
+}
+
 func (o TransferList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -111,6 +137,7 @@ func (o TransferList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["userId"] = o.UserId.Get()
 	toSerialize["userName"] = o.UserName.Get()
+	toSerialize["role"] = o.Role
 	return toSerialize, nil
 }
 
@@ -121,6 +148,7 @@ func (o *TransferList) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"userId",
 		"userName",
+		"role",
 	}
 
 	allProperties := make(map[string]interface{})

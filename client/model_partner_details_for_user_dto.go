@@ -25,6 +25,7 @@ type PartnerDetailsForUserDto struct {
 	Name string `json:"name"`
 	Logo NullableString `json:"logo"`
 	Link NullableString `json:"link"`
+	Domain NullableString `json:"domain"`
 	Id int32 `json:"id"`
 }
 
@@ -34,11 +35,12 @@ type _PartnerDetailsForUserDto PartnerDetailsForUserDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPartnerDetailsForUserDto(name string, logo NullableString, link NullableString, id int32) *PartnerDetailsForUserDto {
+func NewPartnerDetailsForUserDto(name string, logo NullableString, link NullableString, domain NullableString, id int32) *PartnerDetailsForUserDto {
 	this := PartnerDetailsForUserDto{}
 	this.Name = name
 	this.Logo = logo
 	this.Link = link
+	this.Domain = domain
 	this.Id = id
 	return &this
 }
@@ -127,6 +129,32 @@ func (o *PartnerDetailsForUserDto) SetLink(v string) {
 	o.Link.Set(&v)
 }
 
+// GetDomain returns the Domain field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *PartnerDetailsForUserDto) GetDomain() string {
+	if o == nil || o.Domain.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Domain.Get()
+}
+
+// GetDomainOk returns a tuple with the Domain field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PartnerDetailsForUserDto) GetDomainOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Domain.Get(), o.Domain.IsSet()
+}
+
+// SetDomain sets field value
+func (o *PartnerDetailsForUserDto) SetDomain(v string) {
+	o.Domain.Set(&v)
+}
+
 // GetId returns the Id field value
 func (o *PartnerDetailsForUserDto) GetId() int32 {
 	if o == nil {
@@ -164,6 +192,7 @@ func (o PartnerDetailsForUserDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["logo"] = o.Logo.Get()
 	toSerialize["link"] = o.Link.Get()
+	toSerialize["domain"] = o.Domain.Get()
 	toSerialize["id"] = o.Id
 	return toSerialize, nil
 }
@@ -176,6 +205,7 @@ func (o *PartnerDetailsForUserDto) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"logo",
 		"link",
+		"domain",
 		"id",
 	}
 
