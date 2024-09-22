@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"time"
 	"bytes"
 	"fmt"
 )
@@ -32,6 +33,7 @@ type UserForListDto struct {
 	Email NullableString `json:"email"`
 	DisplayName NullableString `json:"displayName"`
 	CreatedAt NullableString `json:"createdAt"`
+	Created NullableTime `json:"created,omitempty"`
 	IsEmailConfirmed bool `json:"isEmailConfirmed"`
 	IsEmailNotificationEnabled bool `json:"isEmailNotificationEnabled"`
 	IsForcedToResetPassword bool `json:"isForcedToResetPassword"`
@@ -343,6 +345,48 @@ func (o *UserForListDto) GetCreatedAtOk() (*string, bool) {
 // SetCreatedAt sets field value
 func (o *UserForListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
+}
+
+// GetCreated returns the Created field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UserForListDto) GetCreated() time.Time {
+	if o == nil || IsNil(o.Created.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.Created.Get()
+}
+
+// GetCreatedOk returns a tuple with the Created field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UserForListDto) GetCreatedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Created.Get(), o.Created.IsSet()
+}
+
+// HasCreated returns a boolean if a field has been set.
+func (o *UserForListDto) HasCreated() bool {
+	if o != nil && o.Created.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCreated gets a reference to the given NullableTime and assigns it to the Created field.
+func (o *UserForListDto) SetCreated(v time.Time) {
+	o.Created.Set(&v)
+}
+// SetCreatedNil sets the value for Created to be an explicit nil
+func (o *UserForListDto) SetCreatedNil() {
+	o.Created.Set(nil)
+}
+
+// UnsetCreated ensures that no value is present for Created, not even an explicit nil
+func (o *UserForListDto) UnsetCreated() {
+	o.Created.Unset()
 }
 
 // GetIsEmailConfirmed returns the IsEmailConfirmed field value
@@ -729,6 +773,9 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["email"] = o.Email.Get()
 	toSerialize["displayName"] = o.DisplayName.Get()
 	toSerialize["createdAt"] = o.CreatedAt.Get()
+	if o.Created.IsSet() {
+		toSerialize["created"] = o.Created.Get()
+	}
 	toSerialize["isEmailConfirmed"] = o.IsEmailConfirmed
 	toSerialize["isEmailNotificationEnabled"] = o.IsEmailNotificationEnabled
 	toSerialize["isForcedToResetPassword"] = o.IsForcedToResetPassword
