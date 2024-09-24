@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PartnerImageSettingsDto type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &PartnerImageSettingsDto{}
 
 // PartnerImageSettingsDto struct for PartnerImageSettingsDto
 type PartnerImageSettingsDto struct {
-	Expanded NullableString `json:"expanded,omitempty"`
-	Collapsed NullableString `json:"collapsed,omitempty"`
+	Expanded NullableString `json:"expanded"`
+	Collapsed NullableString `json:"collapsed"`
 }
+
+type _PartnerImageSettingsDto PartnerImageSettingsDto
 
 // NewPartnerImageSettingsDto instantiates a new PartnerImageSettingsDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPartnerImageSettingsDto() *PartnerImageSettingsDto {
+func NewPartnerImageSettingsDto(expanded NullableString, collapsed NullableString) *PartnerImageSettingsDto {
 	this := PartnerImageSettingsDto{}
+	this.Expanded = expanded
+	this.Collapsed = collapsed
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewPartnerImageSettingsDtoWithDefaults() *PartnerImageSettingsDto {
 	return &this
 }
 
-// GetExpanded returns the Expanded field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpanded returns the Expanded field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PartnerImageSettingsDto) GetExpanded() string {
-	if o == nil || IsNil(o.Expanded.Get()) {
+	if o == nil || o.Expanded.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Expanded.Get()
 }
 
-// GetExpandedOk returns a tuple with the Expanded field value if set, nil otherwise
+// GetExpandedOk returns a tuple with the Expanded field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerImageSettingsDto) GetExpandedOk() (*string, bool) {
@@ -60,39 +68,23 @@ func (o *PartnerImageSettingsDto) GetExpandedOk() (*string, bool) {
 	return o.Expanded.Get(), o.Expanded.IsSet()
 }
 
-// HasExpanded returns a boolean if a field has been set.
-func (o *PartnerImageSettingsDto) HasExpanded() bool {
-	if o != nil && o.Expanded.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetExpanded gets a reference to the given NullableString and assigns it to the Expanded field.
+// SetExpanded sets field value
 func (o *PartnerImageSettingsDto) SetExpanded(v string) {
 	o.Expanded.Set(&v)
 }
-// SetExpandedNil sets the value for Expanded to be an explicit nil
-func (o *PartnerImageSettingsDto) SetExpandedNil() {
-	o.Expanded.Set(nil)
-}
 
-// UnsetExpanded ensures that no value is present for Expanded, not even an explicit nil
-func (o *PartnerImageSettingsDto) UnsetExpanded() {
-	o.Expanded.Unset()
-}
-
-// GetCollapsed returns the Collapsed field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCollapsed returns the Collapsed field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PartnerImageSettingsDto) GetCollapsed() string {
-	if o == nil || IsNil(o.Collapsed.Get()) {
+	if o == nil || o.Collapsed.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Collapsed.Get()
 }
 
-// GetCollapsedOk returns a tuple with the Collapsed field value if set, nil otherwise
+// GetCollapsedOk returns a tuple with the Collapsed field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerImageSettingsDto) GetCollapsedOk() (*string, bool) {
@@ -102,27 +94,9 @@ func (o *PartnerImageSettingsDto) GetCollapsedOk() (*string, bool) {
 	return o.Collapsed.Get(), o.Collapsed.IsSet()
 }
 
-// HasCollapsed returns a boolean if a field has been set.
-func (o *PartnerImageSettingsDto) HasCollapsed() bool {
-	if o != nil && o.Collapsed.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCollapsed gets a reference to the given NullableString and assigns it to the Collapsed field.
+// SetCollapsed sets field value
 func (o *PartnerImageSettingsDto) SetCollapsed(v string) {
 	o.Collapsed.Set(&v)
-}
-// SetCollapsedNil sets the value for Collapsed to be an explicit nil
-func (o *PartnerImageSettingsDto) SetCollapsedNil() {
-	o.Collapsed.Set(nil)
-}
-
-// UnsetCollapsed ensures that no value is present for Collapsed, not even an explicit nil
-func (o *PartnerImageSettingsDto) UnsetCollapsed() {
-	o.Collapsed.Unset()
 }
 
 func (o PartnerImageSettingsDto) MarshalJSON() ([]byte, error) {
@@ -135,13 +109,47 @@ func (o PartnerImageSettingsDto) MarshalJSON() ([]byte, error) {
 
 func (o PartnerImageSettingsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Expanded.IsSet() {
-		toSerialize["expanded"] = o.Expanded.Get()
-	}
-	if o.Collapsed.IsSet() {
-		toSerialize["collapsed"] = o.Collapsed.Get()
-	}
+	toSerialize["expanded"] = o.Expanded.Get()
+	toSerialize["collapsed"] = o.Collapsed.Get()
 	return toSerialize, nil
+}
+
+func (o *PartnerImageSettingsDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"expanded",
+		"collapsed",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPartnerImageSettingsDto := _PartnerImageSettingsDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPartnerImageSettingsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PartnerImageSettingsDto(varPartnerImageSettingsDto)
+
+	return err
 }
 
 type NullablePartnerImageSettingsDto struct {

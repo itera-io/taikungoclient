@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-23T00:03:34.4304924Z
-                  createdAt: 2024-09-23T00:03:34.4304924Z
+                  lastValidated: 2024-09-24T00:03:19.9044251Z
+                  createdAt: 2024-09-24T00:03:19.9044251Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-23T00:03:34.4304924Z
+                    lastBackup: 2024-09-24T00:03:19.9044251Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-23T00:03:34.4304924Z
+                  createdAt: 2024-09-24T00:03:19.9044251Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-23T00:03:34.4304924Z
+                  lastBackup: 2024-09-24T00:03:19.9044251Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-23T00:03:34.4304924Z
-                  expiration: 2024-09-23T00:03:34.4304924Z
+                  createdAt: 2024-09-24T00:03:19.9044251Z
+                  expiration: 2024-09-24T00:03:19.9044251Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-23T00:03:34.4304924Z
+                  createdAt: 2024-09-24T00:03:19.9044251Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-23T00:03:34.4304924+00:00
-                  startTimeStamp: 2024-09-23T00:03:34.4304924+00:00
-                  createdAt: 2024-09-23T00:03:34.4304924Z
+                  completionDateTime: 2024-09-24T00:03:19.9044251+00:00
+                  startTimeStamp: 2024-09-24T00:03:19.9044251+00:00
+                  createdAt: 2024-09-24T00:03:19.9044251Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -38696,6 +38696,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     AiType:
       enum:
@@ -51179,6 +51182,22 @@ components:
         lastModifiedBy:
           nullable: true
           type: string
+      required:
+      - description
+      - endAt
+      - fingerprint
+      - id
+      - isSilenced
+      - isSolved
+      - labels
+      - lastModifiedBy
+      - projectId
+      - projectName
+      - severity
+      - silenceReason
+      - startsAt
+      - status
+      - title
       type: object
     KubernetesAlertList:
       additionalProperties: false
@@ -52579,6 +52598,12 @@ components:
         alertManagerUrl:
           nullable: true
           type: string
+      required:
+      - alertManagerUrl
+      - lokiUrl
+      - password
+      - prometheusUrl
+      - username
       type: object
     NetworkListCommand:
       additionalProperties: false
@@ -54738,6 +54763,15 @@ components:
         itemBgActiveHover:
           nullable: true
           type: string
+      required:
+      - bg
+      - bgCollapsedSubItem
+      - itemBg
+      - itemBgActive
+      - itemBgActiveHover
+      - itemBgHover
+      - itemText
+      - itemTextActive
       type: object
     PartnerDetailsDto:
       additionalProperties: false
@@ -54784,10 +54818,8 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         link:
-          nullable: true
           type: string
         domain:
           nullable: true
@@ -54817,10 +54849,13 @@ components:
           nullable: true
           type: string
         paymentEnabled:
+          nullable: true
           type: boolean
         allowRegistration:
+          nullable: true
           type: boolean
         requiredUserApproval:
+          nullable: true
           type: boolean
         organizations:
           items:
@@ -54836,6 +54871,26 @@ components:
           $ref: '#/components/schemas/PartnerColorSettingsDto'
         partnerImageSettings:
           $ref: '#/components/schemas/PartnerImageSettingsDto'
+      required:
+      - address
+      - allowRegistration
+      - backgroundImageUrl
+      - city
+      - country
+      - domain
+      - email
+      - id
+      - link
+      - logo
+      - name
+      - organizations
+      - partnerColorSettings
+      - partnerImageSettings
+      - paymentEnabled
+      - phone
+      - requiredUserApproval
+      - vatNumber
+      - whiteListDomains
       type: object
     PartnerDetailsForOrganizationsDto:
       additionalProperties: false
@@ -54942,6 +54997,9 @@ components:
         collapsed:
           nullable: true
           type: string
+      required:
+      - collapsed
+      - expanded
       type: object
     PartnerRecordDto:
       additionalProperties: false
@@ -55932,6 +55990,35 @@ components:
           $ref: '#/components/schemas/ButtonStatusDto'
         addVm:
           $ref: '#/components/schemas/ButtonStatusDto'
+      required:
+      - addServer
+      - addVm
+      - aiAssistant
+      - attachAlertingProfile
+      - commit
+      - detachAlertingProfile
+      - disableAi
+      - disableAutoscaler
+      - disableBackup
+      - disableFullSpot
+      - disableOpa
+      - disableSpotVm
+      - disableSpotWorker
+      - enableAi
+      - enableAutoscaler
+      - enableBackup
+      - enableFullSpot
+      - enableOpa
+      - enableSpotVm
+      - enableSpotWorker
+      - lock
+      - monitoring
+      - projectMaintenanceMode
+      - repair
+      - unlock
+      - upgrade
+      - vmCommit
+      - vmRepair
       type: object
     ProjectAlertsQuery:
       additionalProperties: false
@@ -56181,6 +56268,8 @@ components:
       properties:
         addVCluster:
           $ref: '#/components/schemas/ButtonStatusDto'
+      required:
+      - addVCluster
       type: object
     ProjectCatalogDto:
       additionalProperties: false
@@ -57744,6 +57833,59 @@ components:
           $ref: '#/components/schemas/ButtonStatusDto'
         resetStatusButton:
           $ref: '#/components/schemas/ButtonStatusDto'
+      required:
+      - aiEnabled
+      - alertingProfileId
+      - alertsCount
+      - allUsers
+      - allowFullSpotKubernetes
+      - allowSpotVMs
+      - allowSpotWorkers
+      - anyServer
+      - anyVm
+      - boundUsers
+      - certificateExpiredAt
+      - cloudCredentialName
+      - cloudType
+      - createdAt
+      - createdBy
+      - deleteButton
+      - deleteOnExpiration
+      - expiredAt
+      - hasExpirationWarning
+      - hasKubeConfigFile
+      - health
+      - id
+      - isAutoscalingEnabled
+      - isAutoscalingSpotEnabled
+      - isKubernetes
+      - isLocked
+      - isMaintenanceModeEnabled
+      - isMonitoringEnabled
+      - isVirtualCluster
+      - kubeInfoButton
+      - kubernetesCurrentVersion
+      - kubernetesTargetVersion
+      - kubesprayCurrentVersion
+      - kubesprayTargetVersion
+      - lastModified
+      - lastModifiedBy
+      - lockButton
+      - maxSpotPrice
+      - name
+      - opaProfileId
+      - organizationId
+      - organizationName
+      - parentProjectId
+      - projectAction
+      - quotaId
+      - resetStatusButton
+      - setExpirationDateButton
+      - status
+      - totalHourlyCost
+      - totalServersCount
+      - totalStandaloneVmsCount
+      - unlockButton
       type: object
     ProjectListDto:
       additionalProperties: false
@@ -57842,6 +57984,19 @@ components:
             $ref: '#/components/schemas/KubernetesAlertDtoForPoller'
           nullable: true
           type: array
+      required:
+      - hasKubeConfigFile
+      - health
+      - id
+      - isKubernetes
+      - isLocked
+      - isMonitoringEnabled
+      - kubernetesAlerts
+      - monitoringCredential
+      - name
+      - organizationId
+      - status
+      - token
       type: object
     ProjectLockManagerCommand:
       additionalProperties: false
@@ -58276,6 +58431,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ProjectTemplateListDto:
       additionalProperties: false
@@ -58317,6 +58475,17 @@ components:
           format: int32
           nullable: true
           type: integer
+      required:
+      - allowFullSpotKubernetes
+      - allowSpotVms
+      - allowSpotWorkers
+      - backupEnabled
+      - id
+      - kubernetesVersion
+      - monitoringEnabled
+      - name
+      - organizationId
+      - organizationName
       type: object
     ProjectType:
       enum:
@@ -58423,6 +58592,16 @@ components:
           type: array
         billingEnabled:
           type: boolean
+      required:
+      - billingEnabled
+      - billingStartDate
+      - createdAt
+      - id
+      - name
+      - organizationName
+      - price
+      - servers
+      - standaloneVms
       type: object
     ProjectsList:
       additionalProperties: false
@@ -58614,6 +58793,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ProjectsMonitoringAlertsCommand:
       additionalProperties: false
@@ -58911,6 +59093,9 @@ components:
         value:
           nullable: true
           type: string
+      required:
+      - label
+      - value
       type: object
     PrometheusMetricsCommand:
       additionalProperties: false
@@ -61334,6 +61519,9 @@ components:
         ram:
           format: int64
           type: integer
+      required:
+      - cpu
+      - ram
       type: object
     ServersList:
       additionalProperties: false
@@ -62912,6 +63100,9 @@ components:
         ram:
           format: int64
           type: integer
+      required:
+      - cpu
+      - ram
       type: object
     StandaloneVmsList:
       additionalProperties: false
@@ -64898,6 +65089,9 @@ components:
         userName:
           nullable: true
           type: string
+      required:
+      - userId
+      - userName
       type: object
     UserExistCommand:
       additionalProperties: false
@@ -66388,6 +66582,9 @@ components:
         name:
           nullable: true
           type: string
+      required:
+      - id
+      - name
       type: object
     WindowsInstancePasswordCommand:
       additionalProperties: false

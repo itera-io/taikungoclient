@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ProjectCanAddVClusterDto type satisfies the MappedNullable interface at compile time
@@ -20,15 +22,18 @@ var _ MappedNullable = &ProjectCanAddVClusterDto{}
 
 // ProjectCanAddVClusterDto struct for ProjectCanAddVClusterDto
 type ProjectCanAddVClusterDto struct {
-	AddVCluster *ButtonStatusDto `json:"addVCluster,omitempty"`
+	AddVCluster ButtonStatusDto `json:"addVCluster"`
 }
+
+type _ProjectCanAddVClusterDto ProjectCanAddVClusterDto
 
 // NewProjectCanAddVClusterDto instantiates a new ProjectCanAddVClusterDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectCanAddVClusterDto() *ProjectCanAddVClusterDto {
+func NewProjectCanAddVClusterDto(addVCluster ButtonStatusDto) *ProjectCanAddVClusterDto {
 	this := ProjectCanAddVClusterDto{}
+	this.AddVCluster = addVCluster
 	return &this
 }
 
@@ -40,36 +45,28 @@ func NewProjectCanAddVClusterDtoWithDefaults() *ProjectCanAddVClusterDto {
 	return &this
 }
 
-// GetAddVCluster returns the AddVCluster field value if set, zero value otherwise.
+// GetAddVCluster returns the AddVCluster field value
 func (o *ProjectCanAddVClusterDto) GetAddVCluster() ButtonStatusDto {
-	if o == nil || IsNil(o.AddVCluster) {
+	if o == nil {
 		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.AddVCluster
+
+	return o.AddVCluster
 }
 
-// GetAddVClusterOk returns a tuple with the AddVCluster field value if set, nil otherwise
+// GetAddVClusterOk returns a tuple with the AddVCluster field value
 // and a boolean to check if the value has been set.
 func (o *ProjectCanAddVClusterDto) GetAddVClusterOk() (*ButtonStatusDto, bool) {
-	if o == nil || IsNil(o.AddVCluster) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AddVCluster, true
+	return &o.AddVCluster, true
 }
 
-// HasAddVCluster returns a boolean if a field has been set.
-func (o *ProjectCanAddVClusterDto) HasAddVCluster() bool {
-	if o != nil && !IsNil(o.AddVCluster) {
-		return true
-	}
-
-	return false
-}
-
-// SetAddVCluster gets a reference to the given ButtonStatusDto and assigns it to the AddVCluster field.
+// SetAddVCluster sets field value
 func (o *ProjectCanAddVClusterDto) SetAddVCluster(v ButtonStatusDto) {
-	o.AddVCluster = &v
+	o.AddVCluster = v
 }
 
 func (o ProjectCanAddVClusterDto) MarshalJSON() ([]byte, error) {
@@ -82,10 +79,45 @@ func (o ProjectCanAddVClusterDto) MarshalJSON() ([]byte, error) {
 
 func (o ProjectCanAddVClusterDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.AddVCluster) {
-		toSerialize["addVCluster"] = o.AddVCluster
-	}
+	toSerialize["addVCluster"] = o.AddVCluster
 	return toSerialize, nil
+}
+
+func (o *ProjectCanAddVClusterDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"addVCluster",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varProjectCanAddVClusterDto := _ProjectCanAddVClusterDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProjectCanAddVClusterDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectCanAddVClusterDto(varProjectCanAddVClusterDto)
+
+	return err
 }
 
 type NullableProjectCanAddVClusterDto struct {

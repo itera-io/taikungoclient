@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the MonitoringCredentialsListDto type satisfies the MappedNullable interface at compile time
@@ -20,19 +22,26 @@ var _ MappedNullable = &MonitoringCredentialsListDto{}
 
 // MonitoringCredentialsListDto struct for MonitoringCredentialsListDto
 type MonitoringCredentialsListDto struct {
-	Username NullableString `json:"username,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	PrometheusUrl NullableString `json:"prometheusUrl,omitempty"`
-	LokiUrl NullableString `json:"lokiUrl,omitempty"`
-	AlertManagerUrl NullableString `json:"alertManagerUrl,omitempty"`
+	Username NullableString `json:"username"`
+	Password NullableString `json:"password"`
+	PrometheusUrl NullableString `json:"prometheusUrl"`
+	LokiUrl NullableString `json:"lokiUrl"`
+	AlertManagerUrl NullableString `json:"alertManagerUrl"`
 }
+
+type _MonitoringCredentialsListDto MonitoringCredentialsListDto
 
 // NewMonitoringCredentialsListDto instantiates a new MonitoringCredentialsListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMonitoringCredentialsListDto() *MonitoringCredentialsListDto {
+func NewMonitoringCredentialsListDto(username NullableString, password NullableString, prometheusUrl NullableString, lokiUrl NullableString, alertManagerUrl NullableString) *MonitoringCredentialsListDto {
 	this := MonitoringCredentialsListDto{}
+	this.Username = username
+	this.Password = password
+	this.PrometheusUrl = prometheusUrl
+	this.LokiUrl = lokiUrl
+	this.AlertManagerUrl = alertManagerUrl
 	return &this
 }
 
@@ -44,16 +53,18 @@ func NewMonitoringCredentialsListDtoWithDefaults() *MonitoringCredentialsListDto
 	return &this
 }
 
-// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUsername returns the Username field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *MonitoringCredentialsListDto) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil || o.Username.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Username.Get()
 }
 
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MonitoringCredentialsListDto) GetUsernameOk() (*string, bool) {
@@ -63,39 +74,23 @@ func (o *MonitoringCredentialsListDto) GetUsernameOk() (*string, bool) {
 	return o.Username.Get(), o.Username.IsSet()
 }
 
-// HasUsername returns a boolean if a field has been set.
-func (o *MonitoringCredentialsListDto) HasUsername() bool {
-	if o != nil && o.Username.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
+// SetUsername sets field value
 func (o *MonitoringCredentialsListDto) SetUsername(v string) {
 	o.Username.Set(&v)
 }
-// SetUsernameNil sets the value for Username to be an explicit nil
-func (o *MonitoringCredentialsListDto) SetUsernameNil() {
-	o.Username.Set(nil)
-}
 
-// UnsetUsername ensures that no value is present for Username, not even an explicit nil
-func (o *MonitoringCredentialsListDto) UnsetUsername() {
-	o.Username.Unset()
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPassword returns the Password field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *MonitoringCredentialsListDto) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil || o.Password.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Password.Get()
 }
 
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// GetPasswordOk returns a tuple with the Password field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MonitoringCredentialsListDto) GetPasswordOk() (*string, bool) {
@@ -105,39 +100,23 @@ func (o *MonitoringCredentialsListDto) GetPasswordOk() (*string, bool) {
 	return o.Password.Get(), o.Password.IsSet()
 }
 
-// HasPassword returns a boolean if a field has been set.
-func (o *MonitoringCredentialsListDto) HasPassword() bool {
-	if o != nil && o.Password.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
+// SetPassword sets field value
 func (o *MonitoringCredentialsListDto) SetPassword(v string) {
 	o.Password.Set(&v)
 }
-// SetPasswordNil sets the value for Password to be an explicit nil
-func (o *MonitoringCredentialsListDto) SetPasswordNil() {
-	o.Password.Set(nil)
-}
 
-// UnsetPassword ensures that no value is present for Password, not even an explicit nil
-func (o *MonitoringCredentialsListDto) UnsetPassword() {
-	o.Password.Unset()
-}
-
-// GetPrometheusUrl returns the PrometheusUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPrometheusUrl returns the PrometheusUrl field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *MonitoringCredentialsListDto) GetPrometheusUrl() string {
-	if o == nil || IsNil(o.PrometheusUrl.Get()) {
+	if o == nil || o.PrometheusUrl.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.PrometheusUrl.Get()
 }
 
-// GetPrometheusUrlOk returns a tuple with the PrometheusUrl field value if set, nil otherwise
+// GetPrometheusUrlOk returns a tuple with the PrometheusUrl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MonitoringCredentialsListDto) GetPrometheusUrlOk() (*string, bool) {
@@ -147,39 +126,23 @@ func (o *MonitoringCredentialsListDto) GetPrometheusUrlOk() (*string, bool) {
 	return o.PrometheusUrl.Get(), o.PrometheusUrl.IsSet()
 }
 
-// HasPrometheusUrl returns a boolean if a field has been set.
-func (o *MonitoringCredentialsListDto) HasPrometheusUrl() bool {
-	if o != nil && o.PrometheusUrl.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPrometheusUrl gets a reference to the given NullableString and assigns it to the PrometheusUrl field.
+// SetPrometheusUrl sets field value
 func (o *MonitoringCredentialsListDto) SetPrometheusUrl(v string) {
 	o.PrometheusUrl.Set(&v)
 }
-// SetPrometheusUrlNil sets the value for PrometheusUrl to be an explicit nil
-func (o *MonitoringCredentialsListDto) SetPrometheusUrlNil() {
-	o.PrometheusUrl.Set(nil)
-}
 
-// UnsetPrometheusUrl ensures that no value is present for PrometheusUrl, not even an explicit nil
-func (o *MonitoringCredentialsListDto) UnsetPrometheusUrl() {
-	o.PrometheusUrl.Unset()
-}
-
-// GetLokiUrl returns the LokiUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLokiUrl returns the LokiUrl field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *MonitoringCredentialsListDto) GetLokiUrl() string {
-	if o == nil || IsNil(o.LokiUrl.Get()) {
+	if o == nil || o.LokiUrl.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LokiUrl.Get()
 }
 
-// GetLokiUrlOk returns a tuple with the LokiUrl field value if set, nil otherwise
+// GetLokiUrlOk returns a tuple with the LokiUrl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MonitoringCredentialsListDto) GetLokiUrlOk() (*string, bool) {
@@ -189,39 +152,23 @@ func (o *MonitoringCredentialsListDto) GetLokiUrlOk() (*string, bool) {
 	return o.LokiUrl.Get(), o.LokiUrl.IsSet()
 }
 
-// HasLokiUrl returns a boolean if a field has been set.
-func (o *MonitoringCredentialsListDto) HasLokiUrl() bool {
-	if o != nil && o.LokiUrl.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLokiUrl gets a reference to the given NullableString and assigns it to the LokiUrl field.
+// SetLokiUrl sets field value
 func (o *MonitoringCredentialsListDto) SetLokiUrl(v string) {
 	o.LokiUrl.Set(&v)
 }
-// SetLokiUrlNil sets the value for LokiUrl to be an explicit nil
-func (o *MonitoringCredentialsListDto) SetLokiUrlNil() {
-	o.LokiUrl.Set(nil)
-}
 
-// UnsetLokiUrl ensures that no value is present for LokiUrl, not even an explicit nil
-func (o *MonitoringCredentialsListDto) UnsetLokiUrl() {
-	o.LokiUrl.Unset()
-}
-
-// GetAlertManagerUrl returns the AlertManagerUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAlertManagerUrl returns the AlertManagerUrl field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *MonitoringCredentialsListDto) GetAlertManagerUrl() string {
-	if o == nil || IsNil(o.AlertManagerUrl.Get()) {
+	if o == nil || o.AlertManagerUrl.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.AlertManagerUrl.Get()
 }
 
-// GetAlertManagerUrlOk returns a tuple with the AlertManagerUrl field value if set, nil otherwise
+// GetAlertManagerUrlOk returns a tuple with the AlertManagerUrl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *MonitoringCredentialsListDto) GetAlertManagerUrlOk() (*string, bool) {
@@ -231,27 +178,9 @@ func (o *MonitoringCredentialsListDto) GetAlertManagerUrlOk() (*string, bool) {
 	return o.AlertManagerUrl.Get(), o.AlertManagerUrl.IsSet()
 }
 
-// HasAlertManagerUrl returns a boolean if a field has been set.
-func (o *MonitoringCredentialsListDto) HasAlertManagerUrl() bool {
-	if o != nil && o.AlertManagerUrl.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAlertManagerUrl gets a reference to the given NullableString and assigns it to the AlertManagerUrl field.
+// SetAlertManagerUrl sets field value
 func (o *MonitoringCredentialsListDto) SetAlertManagerUrl(v string) {
 	o.AlertManagerUrl.Set(&v)
-}
-// SetAlertManagerUrlNil sets the value for AlertManagerUrl to be an explicit nil
-func (o *MonitoringCredentialsListDto) SetAlertManagerUrlNil() {
-	o.AlertManagerUrl.Set(nil)
-}
-
-// UnsetAlertManagerUrl ensures that no value is present for AlertManagerUrl, not even an explicit nil
-func (o *MonitoringCredentialsListDto) UnsetAlertManagerUrl() {
-	o.AlertManagerUrl.Unset()
 }
 
 func (o MonitoringCredentialsListDto) MarshalJSON() ([]byte, error) {
@@ -264,22 +193,53 @@ func (o MonitoringCredentialsListDto) MarshalJSON() ([]byte, error) {
 
 func (o MonitoringCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Username.IsSet() {
-		toSerialize["username"] = o.Username.Get()
-	}
-	if o.Password.IsSet() {
-		toSerialize["password"] = o.Password.Get()
-	}
-	if o.PrometheusUrl.IsSet() {
-		toSerialize["prometheusUrl"] = o.PrometheusUrl.Get()
-	}
-	if o.LokiUrl.IsSet() {
-		toSerialize["lokiUrl"] = o.LokiUrl.Get()
-	}
-	if o.AlertManagerUrl.IsSet() {
-		toSerialize["alertManagerUrl"] = o.AlertManagerUrl.Get()
-	}
+	toSerialize["username"] = o.Username.Get()
+	toSerialize["password"] = o.Password.Get()
+	toSerialize["prometheusUrl"] = o.PrometheusUrl.Get()
+	toSerialize["lokiUrl"] = o.LokiUrl.Get()
+	toSerialize["alertManagerUrl"] = o.AlertManagerUrl.Get()
 	return toSerialize, nil
+}
+
+func (o *MonitoringCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"username",
+		"password",
+		"prometheusUrl",
+		"lokiUrl",
+		"alertManagerUrl",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varMonitoringCredentialsListDto := _MonitoringCredentialsListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varMonitoringCredentialsListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = MonitoringCredentialsListDto(varMonitoringCredentialsListDto)
+
+	return err
 }
 
 type NullableMonitoringCredentialsListDto struct {
