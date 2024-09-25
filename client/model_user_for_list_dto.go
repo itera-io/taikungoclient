@@ -30,6 +30,7 @@ type UserForListDto struct {
 	HasPaymentMethod bool `json:"hasPaymentMethod"`
 	OrganizationId int32 `json:"organizationId"`
 	Role UserRole `json:"role"`
+	RoleName NullableString `json:"roleName,omitempty"`
 	Email NullableString `json:"email"`
 	DisplayName NullableString `json:"displayName"`
 	CreatedAt NullableString `json:"createdAt"`
@@ -267,6 +268,48 @@ func (o *UserForListDto) GetRoleOk() (*UserRole, bool) {
 // SetRole sets field value
 func (o *UserForListDto) SetRole(v UserRole) {
 	o.Role = v
+}
+
+// GetRoleName returns the RoleName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UserForListDto) GetRoleName() string {
+	if o == nil || IsNil(o.RoleName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.RoleName.Get()
+}
+
+// GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UserForListDto) GetRoleNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RoleName.Get(), o.RoleName.IsSet()
+}
+
+// HasRoleName returns a boolean if a field has been set.
+func (o *UserForListDto) HasRoleName() bool {
+	if o != nil && o.RoleName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleName gets a reference to the given NullableString and assigns it to the RoleName field.
+func (o *UserForListDto) SetRoleName(v string) {
+	o.RoleName.Set(&v)
+}
+// SetRoleNameNil sets the value for RoleName to be an explicit nil
+func (o *UserForListDto) SetRoleNameNil() {
+	o.RoleName.Set(nil)
+}
+
+// UnsetRoleName ensures that no value is present for RoleName, not even an explicit nil
+func (o *UserForListDto) UnsetRoleName() {
+	o.RoleName.Unset()
 }
 
 // GetEmail returns the Email field value
@@ -770,6 +813,9 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["hasPaymentMethod"] = o.HasPaymentMethod
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["role"] = o.Role
+	if o.RoleName.IsSet() {
+		toSerialize["roleName"] = o.RoleName.Get()
+	}
 	toSerialize["email"] = o.Email.Get()
 	toSerialize["displayName"] = o.DisplayName.Get()
 	toSerialize["createdAt"] = o.CreatedAt.Get()

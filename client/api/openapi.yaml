@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-24T00:03:19.9044251Z
-                  createdAt: 2024-09-24T00:03:19.9044251Z
+                  lastValidated: 2024-09-25T00:03:07.8406299Z
+                  createdAt: 2024-09-25T00:03:07.8406299Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-24T00:03:19.9044251Z
+                    lastBackup: 2024-09-25T00:03:07.8406299Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-24T00:03:19.9044251Z
+                  createdAt: 2024-09-25T00:03:07.8406299Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-24T00:03:19.9044251Z
+                  lastBackup: 2024-09-25T00:03:07.8406299Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-24T00:03:19.9044251Z
-                  expiration: 2024-09-24T00:03:19.9044251Z
+                  createdAt: 2024-09-25T00:03:07.8406299Z
+                  expiration: 2024-09-25T00:03:07.8406299Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-24T00:03:19.9044251Z
+                  createdAt: 2024-09-25T00:03:07.8406299Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-24T00:03:19.9044251+00:00
-                  startTimeStamp: 2024-09-24T00:03:19.9044251+00:00
-                  createdAt: 2024-09-24T00:03:19.9044251Z
+                  completionDateTime: 2024-09-25T00:03:07.8406299+00:00
+                  startTimeStamp: 2024-09-25T00:03:07.8406299+00:00
+                  createdAt: 2024-09-25T00:03:07.8406299Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -41331,6 +41331,13 @@ components:
         address:
           nullable: true
           type: string
+      required:
+      - address
+      - billingEmail
+      - city
+      - country
+      - legalName
+      - vatNumber
       type: object
     BillingPeriod:
       enum:
@@ -42225,6 +42232,13 @@ components:
         balance:
           format: int64
           type: integer
+      required:
+      - balance
+      - brand
+      - expirationMonth
+      - expirationYear
+      - holderName
+      - last4
       type: object
     CatalogAppDetailsDto:
       additionalProperties: false
@@ -50445,6 +50459,26 @@ components:
         logs:
           nullable: true
           type: string
+      required:
+      - appRepoName
+      - autoSync
+      - catalogAppId
+      - catalogAppName
+      - catalogId
+      - catalogName
+      - created
+      - createdBy
+      - id
+      - lastModified
+      - lastModifiedBy
+      - logo
+      - logs
+      - name
+      - namespace
+      - projectId
+      - projectName
+      - status
+      - version
       type: object
     InteractiveShellDto:
       additionalProperties: false
@@ -56071,33 +56105,26 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         namespace:
-          nullable: true
           type: string
         status:
           $ref: '#/components/schemas/EInstanceStatus'
         version:
-          nullable: true
           type: string
         catalogId:
           format: int32
           type: integer
         catalogName:
-          nullable: true
           type: string
         catalogAppName:
-          nullable: true
           type: string
         appRepoName:
-          nullable: true
           type: string
         logo:
           nullable: true
           type: string
         values:
-          nullable: true
           type: string
         autoSync:
           type: boolean
@@ -56105,10 +56132,8 @@ components:
           nullable: true
           type: string
         projectName:
-          nullable: true
           type: string
         helmResult:
-          nullable: true
           type: string
         projectId:
           format: int32
@@ -56119,7 +56144,6 @@ components:
           format: int32
           type: integer
         packageId:
-          nullable: true
           type: string
         logs:
           nullable: true
@@ -56129,6 +56153,28 @@ components:
             $ref: '#/components/schemas/ProjectAppParamDto'
           nullable: true
           type: array
+      required:
+      - appRepoName
+      - autoSync
+      - catalogAppId
+      - catalogAppName
+      - catalogId
+      - catalogName
+      - hasJsonSchema
+      - helmResult
+      - id
+      - logo
+      - logs
+      - name
+      - namespace
+      - packageId
+      - projectAppParams
+      - projectId
+      - projectName
+      - releaseNotes
+      - status
+      - values
+      - version
       type: object
     ProjectAppDto:
       additionalProperties: false
@@ -56220,6 +56266,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ProjectAppParamDto:
       additionalProperties: false
@@ -56242,6 +56291,12 @@ components:
           type: boolean
         isMandatory:
           type: boolean
+      required:
+      - isEditableAfterInstallation
+      - isEditableWhenInstalling
+      - isMandatory
+      - key
+      - value
       type: object
     ProjectAppParamsDto:
       additionalProperties: false
@@ -57017,6 +57072,13 @@ components:
             $ref: '#/components/schemas/UserGroupEntityListDto'
           nullable: true
           type: array
+      required:
+      - id
+      - name
+      - organizationId
+      - organizationName
+      - projects
+      - userGroups
       type: object
     ProjectGroupEntityListDto:
       additionalProperties: false
@@ -57076,6 +57138,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ProjectHealth:
       enum:
@@ -57899,6 +57964,9 @@ components:
         name:
           nullable: true
           type: string
+      required:
+      - id
+      - name
       type: object
     ProjectListForAlert:
       additionalProperties: false
@@ -58320,6 +58388,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     ProjectQuotaListDto:
       additionalProperties: false
@@ -58357,6 +58428,15 @@ components:
         projectName:
           nullable: true
           type: string
+      required:
+      - projectId
+      - projectName
+      - serverCpu
+      - serverDiskSize
+      - serverRam
+      - vmCpu
+      - vmRam
+      - vmVolumeSize
       type: object
     ProjectStatus:
       enum:
@@ -59006,6 +59086,13 @@ components:
           type: string
         isReadonly:
           type: boolean
+      required:
+      - description
+      - expressionDecoded
+      - expressionEncoded
+      - id
+      - isReadonly
+      - name
       type: object
     PrometheusDashboardListDto:
       additionalProperties: false
@@ -59033,6 +59120,9 @@ components:
             $ref: '#/components/schemas/PrometheusDashboardDto'
           nullable: true
           type: array
+      required:
+      - categoryName
+      - data
       type: object
     PrometheusDashboardUpdateCommand:
       additionalProperties: false
@@ -63528,6 +63618,14 @@ components:
         endDate:
           format: date-time
           type: string
+      required:
+      - chargeReason
+      - chargeStatus
+      - endDate
+      - id
+      - invoiceStatus
+      - price
+      - startDate
       type: object
     StripeInvoices:
       additionalProperties: false
@@ -63553,6 +63651,8 @@ components:
             $ref: '#/components/schemas/StripeInvoiceListDto'
           nullable: true
           type: array
+      required:
+      - data
       type: object
     StripeSubscriptionItemDto:
       additionalProperties: false
@@ -65059,6 +65159,7 @@ components:
             link: link
             logo: logo
             id: 1
+          roleName: roleName
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
@@ -65141,6 +65242,7 @@ components:
           link: link
           logo: logo
           id: 1
+        roleName: roleName
         isEmailNotificationEnabled: true
         username: username
         isEmailConfirmed: true
@@ -65163,6 +65265,9 @@ components:
           type: integer
         role:
           $ref: '#/components/schemas/UserRole'
+        roleName:
+          nullable: true
+          type: string
         email:
           nullable: true
           type: string
@@ -65297,6 +65402,9 @@ components:
         name:
           nullable: true
           type: string
+      required:
+      - id
+      - name
       type: object
     UserGroupList:
       additionalProperties: false
@@ -65525,6 +65633,7 @@ components:
             link: link
             logo: logo
             id: 1
+          roleName: roleName
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
@@ -65560,6 +65669,7 @@ components:
             link: link
             logo: logo
             id: 1
+          roleName: roleName
           isEmailNotificationEnabled: true
           username: username
           isEmailConfirmed: true
