@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the OperationCredentialsForOrganizationEntity type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,22 @@ var _ MappedNullable = &OperationCredentialsForOrganizationEntity{}
 
 // OperationCredentialsForOrganizationEntity struct for OperationCredentialsForOrganizationEntity
 type OperationCredentialsForOrganizationEntity struct {
-	OperationCredentialId NullableInt32 `json:"operationCredentialId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	IsDefault *bool `json:"isDefault,omitempty"`
+	OperationCredentialId NullableInt32 `json:"operationCredentialId"`
+	Name NullableString `json:"name"`
+	IsDefault bool `json:"isDefault"`
 }
+
+type _OperationCredentialsForOrganizationEntity OperationCredentialsForOrganizationEntity
 
 // NewOperationCredentialsForOrganizationEntity instantiates a new OperationCredentialsForOrganizationEntity object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOperationCredentialsForOrganizationEntity() *OperationCredentialsForOrganizationEntity {
+func NewOperationCredentialsForOrganizationEntity(operationCredentialId NullableInt32, name NullableString, isDefault bool) *OperationCredentialsForOrganizationEntity {
 	this := OperationCredentialsForOrganizationEntity{}
+	this.OperationCredentialId = operationCredentialId
+	this.Name = name
+	this.IsDefault = isDefault
 	return &this
 }
 
@@ -42,16 +49,18 @@ func NewOperationCredentialsForOrganizationEntityWithDefaults() *OperationCreden
 	return &this
 }
 
-// GetOperationCredentialId returns the OperationCredentialId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOperationCredentialId returns the OperationCredentialId field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *OperationCredentialsForOrganizationEntity) GetOperationCredentialId() int32 {
-	if o == nil || IsNil(o.OperationCredentialId.Get()) {
+	if o == nil || o.OperationCredentialId.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.OperationCredentialId.Get()
 }
 
-// GetOperationCredentialIdOk returns a tuple with the OperationCredentialId field value if set, nil otherwise
+// GetOperationCredentialIdOk returns a tuple with the OperationCredentialId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationCredentialsForOrganizationEntity) GetOperationCredentialIdOk() (*int32, bool) {
@@ -61,39 +70,23 @@ func (o *OperationCredentialsForOrganizationEntity) GetOperationCredentialIdOk()
 	return o.OperationCredentialId.Get(), o.OperationCredentialId.IsSet()
 }
 
-// HasOperationCredentialId returns a boolean if a field has been set.
-func (o *OperationCredentialsForOrganizationEntity) HasOperationCredentialId() bool {
-	if o != nil && o.OperationCredentialId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOperationCredentialId gets a reference to the given NullableInt32 and assigns it to the OperationCredentialId field.
+// SetOperationCredentialId sets field value
 func (o *OperationCredentialsForOrganizationEntity) SetOperationCredentialId(v int32) {
 	o.OperationCredentialId.Set(&v)
 }
-// SetOperationCredentialIdNil sets the value for OperationCredentialId to be an explicit nil
-func (o *OperationCredentialsForOrganizationEntity) SetOperationCredentialIdNil() {
-	o.OperationCredentialId.Set(nil)
-}
 
-// UnsetOperationCredentialId ensures that no value is present for OperationCredentialId, not even an explicit nil
-func (o *OperationCredentialsForOrganizationEntity) UnsetOperationCredentialId() {
-	o.OperationCredentialId.Unset()
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *OperationCredentialsForOrganizationEntity) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OperationCredentialsForOrganizationEntity) GetNameOk() (*string, bool) {
@@ -103,59 +96,33 @@ func (o *OperationCredentialsForOrganizationEntity) GetNameOk() (*string, bool) 
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *OperationCredentialsForOrganizationEntity) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *OperationCredentialsForOrganizationEntity) SetName(v string) {
 	o.Name.Set(&v)
 }
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *OperationCredentialsForOrganizationEntity) SetNameNil() {
-	o.Name.Set(nil)
-}
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *OperationCredentialsForOrganizationEntity) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+// GetIsDefault returns the IsDefault field value
 func (o *OperationCredentialsForOrganizationEntity) GetIsDefault() bool {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDefault
+
+	return o.IsDefault
 }
 
-// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// GetIsDefaultOk returns a tuple with the IsDefault field value
 // and a boolean to check if the value has been set.
 func (o *OperationCredentialsForOrganizationEntity) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDefault, true
+	return &o.IsDefault, true
 }
 
-// HasIsDefault returns a boolean if a field has been set.
-func (o *OperationCredentialsForOrganizationEntity) HasIsDefault() bool {
-	if o != nil && !IsNil(o.IsDefault) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+// SetIsDefault sets field value
 func (o *OperationCredentialsForOrganizationEntity) SetIsDefault(v bool) {
-	o.IsDefault = &v
+	o.IsDefault = v
 }
 
 func (o OperationCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
@@ -168,16 +135,49 @@ func (o OperationCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error)
 
 func (o OperationCredentialsForOrganizationEntity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.OperationCredentialId.IsSet() {
-		toSerialize["operationCredentialId"] = o.OperationCredentialId.Get()
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if !IsNil(o.IsDefault) {
-		toSerialize["isDefault"] = o.IsDefault
-	}
+	toSerialize["operationCredentialId"] = o.OperationCredentialId.Get()
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["isDefault"] = o.IsDefault
 	return toSerialize, nil
+}
+
+func (o *OperationCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"operationCredentialId",
+		"name",
+		"isDefault",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOperationCredentialsForOrganizationEntity := _OperationCredentialsForOrganizationEntity{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOperationCredentialsForOrganizationEntity)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OperationCredentialsForOrganizationEntity(varOperationCredentialsForOrganizationEntity)
+
+	return err
 }
 
 type NullableOperationCredentialsForOrganizationEntity struct {

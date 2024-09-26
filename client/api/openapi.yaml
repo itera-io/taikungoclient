@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-25T00:03:07.8406299Z
-                  createdAt: 2024-09-25T00:03:07.8406299Z
+                  lastValidated: 2024-09-26T00:03:07.8669802Z
+                  createdAt: 2024-09-26T00:03:07.8669802Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-25T00:03:07.8406299Z
+                    lastBackup: 2024-09-26T00:03:07.8669802Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-25T00:03:07.8406299Z
+                  createdAt: 2024-09-26T00:03:07.8669802Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-25T00:03:07.8406299Z
+                  lastBackup: 2024-09-26T00:03:07.8669802Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-25T00:03:07.8406299Z
-                  expiration: 2024-09-25T00:03:07.8406299Z
+                  createdAt: 2024-09-26T00:03:07.8669802Z
+                  expiration: 2024-09-26T00:03:07.8669802Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-25T00:03:07.8406299Z
+                  createdAt: 2024-09-26T00:03:07.8669802Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-25T00:03:07.8406299+00:00
-                  startTimeStamp: 2024-09-25T00:03:07.8406299+00:00
-                  createdAt: 2024-09-25T00:03:07.8406299Z
+                  completionDateTime: 2024-09-26T00:03:07.8669802+00:00
+                  startTimeStamp: 2024-09-26T00:03:07.8669802+00:00
+                  createdAt: 2024-09-26T00:03:07.8669802Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -52869,6 +52869,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     NotificationListDto:
       additionalProperties: false
@@ -52886,7 +52889,6 @@ components:
           nullable: true
           type: string
         actionMessage:
-          nullable: true
           type: string
         actionStatus:
           $ref: '#/components/schemas/ActionStatus'
@@ -52900,9 +52902,19 @@ components:
           type: string
         projectId:
           format: int32
+          nullable: true
           type: integer
         isDeleted:
           type: boolean
+      required:
+      - actionMessage
+      - actionStatus
+      - category
+      - createdAt
+      - isDeleted
+      - projectId
+      - projectName
+      - username
       type: object
     NotificationSendCommand:
       additionalProperties: false
@@ -53065,6 +53077,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     OpaProfileListDto:
       additionalProperties: false
@@ -53102,7 +53117,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         forbidNodePort:
           type: boolean
@@ -53119,17 +53133,14 @@ components:
         allowedRepo:
           items:
             type: string
-          nullable: true
           type: array
         forbidSpecificTags:
           items:
             type: string
-          nullable: true
           type: array
         ingressWhitelist:
           items:
             type: string
-          nullable: true
           type: array
         isLocked:
           type: boolean
@@ -53140,7 +53151,6 @@ components:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         createdAt:
           nullable: true
@@ -53150,8 +53160,26 @@ components:
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
+      required:
+      - allowedRepo
+      - createdAt
+      - forbidHttpIngress
+      - forbidNodePort
+      - forbidSpecificTags
+      - forcePodResource
+      - id
+      - ingressWhitelist
+      - isDefault
+      - isLocked
+      - name
+      - organizationId
+      - organizationName
+      - projects
+      - requireProbe
+      - revision
+      - uniqueIngresses
+      - uniqueServiceSelector
       type: object
     OpaProfileLockManagerCommand:
       additionalProperties: false
@@ -53501,6 +53529,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     OpenshiftListDto:
       additionalProperties: false
@@ -53529,24 +53560,19 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         baseDomain:
-          nullable: true
           type: string
         storageClass:
-          nullable: true
           type: string
         organizationId:
           format: int32
           type: integer
         organizationName:
-          nullable: true
           type: string
         projects:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
           type: array
         projectCount:
           format: int32
@@ -53568,8 +53594,23 @@ components:
           nullable: true
           type: string
         continentName:
-          nullable: true
           type: string
+      required:
+      - baseDomain
+      - continentName
+      - createdAt
+      - createdBy
+      - id
+      - isDefault
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      - projectCount
+      - projects
+      - storageClass
       type: object
     OpenshiftPullSecretCommand:
       additionalProperties: false
@@ -54164,6 +54205,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     OperationCredentialsCreateCommand:
       additionalProperties: false
@@ -54207,6 +54251,10 @@ components:
           type: string
         isDefault:
           type: boolean
+      required:
+      - isDefault
+      - name
+      - operationCredentialId
       type: object
     OperationCredentialsListDto:
       additionalProperties: false
@@ -54232,27 +54280,22 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         prometheusUsername:
-          nullable: true
           type: string
         prometheusUrl:
-          nullable: true
           type: string
         organizationId:
           format: int32
           nullable: true
           type: integer
         organizationName:
-          nullable: true
           type: string
         isLocked:
           type: boolean
         rules:
           items:
             $ref: '#/components/schemas/SimplePrometheusEntity'
-          nullable: true
           type: array
         createdBy:
           nullable: true
@@ -54265,6 +54308,19 @@ components:
           type: string
         isDefault:
           type: boolean
+      required:
+      - createdBy
+      - id
+      - isDefault
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      - prometheusUrl
+      - prometheusUsername
+      - rules
       type: object
     OperationCredentialsMakeDefaultCommand:
       additionalProperties: false
@@ -54494,6 +54550,10 @@ components:
         users:
           format: int32
           type: integer
+      required:
+      - id
+      - name
+      - users
       type: object
     OrganizationNameCheckerCommand:
       additionalProperties: false
@@ -54702,6 +54762,9 @@ components:
         totalCount:
           format: int32
           type: integer
+      required:
+      - data
+      - totalCount
       type: object
     PackageAutocompleteDto:
       additionalProperties: false
@@ -58460,6 +58523,8 @@ components:
       - UpdatingCredentials
       - UninstallVirtualCluster
       - Repairing
+      - Importing
+      - FailedToImport
       type: string
     ProjectTemplateDropdownListDto:
       additionalProperties: false
