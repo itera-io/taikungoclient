@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-26T00:03:07.8669802Z
-                  createdAt: 2024-09-26T00:03:07.8669802Z
+                  lastValidated: 2024-09-26T17:54:47.4642866Z
+                  createdAt: 2024-09-26T17:54:47.4642866Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-26T00:03:07.8669802Z
+                    lastBackup: 2024-09-26T17:54:47.4642866Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-26T00:03:07.8669802Z
+                  createdAt: 2024-09-26T17:54:47.4642866Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-26T00:03:07.8669802Z
+                  lastBackup: 2024-09-26T17:54:47.4642866Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-26T00:03:07.8669802Z
-                  expiration: 2024-09-26T00:03:07.8669802Z
+                  createdAt: 2024-09-26T17:54:47.4642866Z
+                  expiration: 2024-09-26T17:54:47.4642866Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-26T00:03:07.8669802Z
+                  createdAt: 2024-09-26T17:54:47.4642866Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-26T00:03:07.8669802+00:00
-                  startTimeStamp: 2024-09-26T00:03:07.8669802+00:00
-                  createdAt: 2024-09-26T00:03:07.8669802Z
+                  completionDateTime: 2024-09-26T17:54:47.4642866+00:00
+                  startTimeStamp: 2024-09-26T17:54:47.4642866+00:00
+                  createdAt: 2024-09-26T17:54:47.4642866Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -7337,6 +7337,48 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Check helm credential
+      tags:
+      - Checker
+  /api/v1/checker/import-cluster-kube-config:
+    post:
+      operationId: checker-import-cluster-kube-config
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ImportClusterValidateKubeConfigCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Check kube config
       tags:
       - Checker
   /api/v1/checker/keycloak:
@@ -43370,6 +43412,7 @@ components:
       - VSPHERE
       - ZADARA
       - ZEDEDA
+      - GENERICKUBERNETES
       type: string
     CommonAvailabilityDto:
       additionalProperties: false
@@ -50136,6 +50179,14 @@ components:
         sourceProjectId:
           format: int32
           type: integer
+      type: object
+    ImportClusterValidateKubeConfigCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
       type: object
     ImportRepoCommand:
       additionalProperties: false
