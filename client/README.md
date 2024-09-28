@@ -365,6 +365,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesExport**](docs/KubernetesAPI.md#kubernetesexport) | **Get** /api/v1/kubernetes/export | Export
 *KubernetesAPI* | [**KubernetesGetSupportedList**](docs/KubernetesAPI.md#kubernetesgetsupportedlist) | **Get** /api/v1/kubernetes/supported/list | Retrieve Taikun supported kubernetes versions
 *KubernetesAPI* | [**KubernetesHelmReleaseList**](docs/KubernetesAPI.md#kuberneteshelmreleaselist) | **Get** /api/v1/kubernetes/{projectId}/helmreleases | Retrieve a list of k8s helm releases for all namespaces
+*KubernetesAPI* | [**KubernetesIngressClasses**](docs/KubernetesAPI.md#kubernetesingressclasses) | **Post** /api/v1/kubernetes/ingress-classes | List of ingress classes
 *KubernetesAPI* | [**KubernetesIngressList**](docs/KubernetesAPI.md#kubernetesingresslist) | **Get** /api/v1/kubernetes/{projectId}/ingress | Retrieve a list of k8s ingress for all namespaces
 *KubernetesAPI* | [**KubernetesInteractiveShell**](docs/KubernetesAPI.md#kubernetesinteractiveshell) | **Post** /api/v1/kubernetes/interactive-shell | Produce interactive shell command
 *KubernetesAPI* | [**KubernetesJobsList**](docs/KubernetesAPI.md#kubernetesjobslist) | **Get** /api/v1/kubernetes/{projectId}/jobs | Retrieve a list of k8s jobs for all namespaces
@@ -517,6 +518,7 @@ Class | Method | HTTP request | Description
 *ProjectDeploymentAPI* | [**ProjectDeploymentEnableBackup**](docs/ProjectDeploymentAPI.md#projectdeploymentenablebackup) | **Post** /api/v1/project-deployment/enable-backup | Enable backup
 *ProjectDeploymentAPI* | [**ProjectDeploymentEnableMonitoring**](docs/ProjectDeploymentAPI.md#projectdeploymentenablemonitoring) | **Post** /api/v1/project-deployment/enable-monitoring | Enable monitoring
 *ProjectDeploymentAPI* | [**ProjectDeploymentEnableOpa**](docs/ProjectDeploymentAPI.md#projectdeploymentenableopa) | **Post** /api/v1/project-deployment/enable-opa | Enable opa
+*ProjectDeploymentAPI* | [**ProjectDeploymentImportCluster**](docs/ProjectDeploymentAPI.md#projectdeploymentimportcluster) | **Post** /api/v1/project-deployment/import-cluster | Import cluster
 *ProjectDeploymentAPI* | [**ProjectDeploymentRepair**](docs/ProjectDeploymentAPI.md#projectdeploymentrepair) | **Post** /api/v1/project-deployment/repair | Repair
 *ProjectDeploymentAPI* | [**ProjectDeploymentRepairVm**](docs/ProjectDeploymentAPI.md#projectdeploymentrepairvm) | **Post** /api/v1/project-deployment/repair-vm | Repair Vm
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpdate**](docs/ProjectDeploymentAPI.md#projectdeploymentupdate) | **Post** /api/v1/project-deployment/update | Update stage of project
@@ -1052,6 +1054,7 @@ Class | Method | HTTP request | Description
  - [DownloadInvoiceCommand](docs/DownloadInvoiceCommand.md)
  - [DownloadKubeConfigCommand](docs/DownloadKubeConfigCommand.md)
  - [DuplicateNameCheckerCommand](docs/DuplicateNameCheckerCommand.md)
+ - [EImportClusterType](docs/EImportClusterType.md)
  - [EInstanceStatus](docs/EInstanceStatus.md)
  - [EditAlertingIntegrationCommand](docs/EditAlertingIntegrationCommand.md)
  - [EditAllowedHostDto](docs/EditAllowedHostDto.md)
@@ -1109,6 +1112,7 @@ Class | Method | HTTP request | Description
  - [HypervisorListCommand](docs/HypervisorListCommand.md)
  - [ImageByIdCommand](docs/ImageByIdCommand.md)
  - [ImportBackupStorageLocationCommand](docs/ImportBackupStorageLocationCommand.md)
+ - [ImportClusterCommand](docs/ImportClusterCommand.md)
  - [ImportRepoCommand](docs/ImportRepoCommand.md)
  - [InfraBillingListCommand](docs/InfraBillingListCommand.md)
  - [InfraBillingSummariesCreateCommand](docs/InfraBillingSummariesCreateCommand.md)

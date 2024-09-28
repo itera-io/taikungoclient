@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-09-26T17:54:47.4642866Z
-                  createdAt: 2024-09-26T17:54:47.4642866Z
+                  lastValidated: 2024-09-27T19:51:41.6402316Z
+                  createdAt: 2024-09-27T19:51:41.6402316Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-09-26T17:54:47.4642866Z
+                    lastBackup: 2024-09-27T19:51:41.6402316Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-09-26T17:54:47.4642866Z
+                  createdAt: 2024-09-27T19:51:41.6402316Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-09-26T17:54:47.4642866Z
+                  lastBackup: 2024-09-27T19:51:41.6402316Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-26T17:54:47.4642866Z
-                  expiration: 2024-09-26T17:54:47.4642866Z
+                  createdAt: 2024-09-27T19:51:41.6402316Z
+                  expiration: 2024-09-27T19:51:41.6402316Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-09-26T17:54:47.4642866Z
+                  createdAt: 2024-09-27T19:51:41.6402316Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-09-26T17:54:47.4642866+00:00
-                  startTimeStamp: 2024-09-26T17:54:47.4642866+00:00
-                  createdAt: 2024-09-26T17:54:47.4642866Z
+                  completionDateTime: 2024-09-27T19:51:41.6402316+00:00
+                  startTimeStamp: 2024-09-27T19:51:41.6402316+00:00
+                  createdAt: 2024-09-27T19:51:41.6402316Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -15202,6 +15202,56 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve k8s pod logs
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/ingress-classes:
+    post:
+      operationId: kubernetes-ingress-classes
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/KubernetesIngressClassCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: List of ingress classes
       tags:
       - Kubernetes
   /api/v1/kubernetes/interactive-shell:
@@ -25178,6 +25228,48 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Enable opa
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/import-cluster:
+    post:
+      operationId: project-deployment-import-cluster
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportClusterCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Import cluster
       tags:
       - Project deployment
   /api/v1/project-deployment/repair:
@@ -38240,6 +38332,7 @@ components:
       - ScaleUpVms
       - StartAddingVCluster
       - AddingVCluster
+      - StartImportCluster
       type: string
     AddOrganizationsToRuleDto:
       additionalProperties: false
@@ -47466,6 +47559,12 @@ components:
           nullable: true
           type: string
       type: object
+    EImportClusterType:
+      enum:
+      - CloudCredential
+      - ReadOnly
+      - FullyManaged
+      type: string
     EInstanceStatus:
       enum:
       - None
@@ -50180,6 +50279,50 @@ components:
           format: int32
           type: integer
       type: object
+    ImportClusterCommand:
+      additionalProperties: false
+      example:
+        continent: continent
+        organizationId: 0
+        importType: CloudCredential
+        isTaikunIngressController: true
+        name: name
+        ingressClass: ingressClass
+        ingressHost: ingressHost
+        isExistingIngressController: true
+        config: ""
+      properties:
+        name:
+          type: string
+        config:
+          format: binary
+          type: string
+        isTaikunIngressController:
+          type: boolean
+        isExistingIngressController:
+          type: boolean
+        ingressClass:
+          nullable: true
+          type: string
+        ingressHost:
+          nullable: true
+          type: string
+        continent:
+          nullable: true
+          type: string
+        importType:
+          $ref: '#/components/schemas/EImportClusterType'
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - config
+      - importType
+      - isExistingIngressController
+      - isTaikunIngressController
+      - name
+      type: object
     ImportClusterValidateKubeConfigCommand:
       additionalProperties: false
       properties:
@@ -50187,6 +50330,8 @@ components:
           format: binary
           nullable: true
           type: string
+      required:
+      - config
       type: object
     ImportRepoCommand:
       additionalProperties: false
@@ -51508,6 +51653,16 @@ components:
         count:
           format: int32
           type: integer
+      type: object
+    KubernetesIngressClassCommand:
+      additionalProperties: false
+      properties:
+        config:
+          format: binary
+          nullable: true
+          type: string
+      required:
+      - config
       type: object
     KubernetesInteractiveShellDto:
       additionalProperties: false

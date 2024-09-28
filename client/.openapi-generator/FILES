@@ -403,6 +403,7 @@ docs/DocumentationsList.md
 docs/DownloadInvoiceCommand.md
 docs/DownloadKubeConfigCommand.md
 docs/DuplicateNameCheckerCommand.md
+docs/EImportClusterType.md
 docs/EInstanceStatus.md
 docs/EditAlertingIntegrationCommand.md
 docs/EditAllowedHostDto.md
@@ -464,6 +465,7 @@ docs/HypervisorListCommand.md
 docs/ImageByIdCommand.md
 docs/ImagesAPI.md
 docs/ImportBackupStorageLocationCommand.md
+docs/ImportClusterCommand.md
 docs/ImportRepoCommand.md
 docs/InfraAPI.md
 docs/InfraBillingListCommand.md
@@ -1277,6 +1279,7 @@ model_documentations_list.go
 model_download_invoice_command.go
 model_download_kube_config_command.go
 model_duplicate_name_checker_command.go
+model_e_import_cluster_type.go
 model_e_instance_status.go
 model_edit_alerting_integration_command.go
 model_edit_allowed_host_dto.go
@@ -1334,6 +1337,7 @@ model_helm_status.go
 model_hypervisor_list_command.go
 model_image_by_id_command.go
 model_import_backup_storage_location_command.go
+model_import_cluster_command.go
 model_import_repo_command.go
 model_infra_billing_list_command.go
 model_infra_billing_summaries_create_command.go

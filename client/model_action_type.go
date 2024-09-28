@@ -100,6 +100,7 @@ const (
 	ACTIONTYPE_SCALE_UP_VMS ActionType = "ScaleUpVms"
 	ACTIONTYPE_START_ADDING_V_CLUSTER ActionType = "StartAddingVCluster"
 	ACTIONTYPE_ADDING_V_CLUSTER ActionType = "AddingVCluster"
+	ACTIONTYPE_START_IMPORT_CLUSTER ActionType = "StartImportCluster"
 )
 
 // All allowed values of ActionType enum
@@ -183,6 +184,7 @@ var AllowedActionTypeEnumValues = []ActionType{
 	"ScaleUpVms",
 	"StartAddingVCluster",
 	"AddingVCluster",
+	"StartImportCluster",
 }
 
 func (v *ActionType) UnmarshalJSON(src []byte) error {

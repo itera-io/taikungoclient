@@ -1747,6 +1747,9 @@ func (a *CheckerAPIService) CheckerImportClusterKubeConfigExecute(r ApiCheckerIm
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.config == nil {
+		return nil, reportError("config is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
