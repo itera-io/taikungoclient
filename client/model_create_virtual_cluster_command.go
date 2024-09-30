@@ -21,6 +21,7 @@ var _ MappedNullable = &CreateVirtualClusterCommand{}
 
 // CreateVirtualClusterCommand struct for CreateVirtualClusterCommand
 type CreateVirtualClusterCommand struct {
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
 	ProjectId *int32 `json:"projectId,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	ExpiredAt NullableTime `json:"expiredAt,omitempty"`
@@ -44,6 +45,48 @@ func NewCreateVirtualClusterCommand() *CreateVirtualClusterCommand {
 func NewCreateVirtualClusterCommandWithDefaults() *CreateVirtualClusterCommand {
 	this := CreateVirtualClusterCommand{}
 	return &this
+}
+
+// GetCloudId returns the CloudId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateVirtualClusterCommand) GetCloudId() int32 {
+	if o == nil || IsNil(o.CloudId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CloudId.Get()
+}
+
+// GetCloudIdOk returns a tuple with the CloudId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateVirtualClusterCommand) GetCloudIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CloudId.Get(), o.CloudId.IsSet()
+}
+
+// HasCloudId returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasCloudId() bool {
+	if o != nil && o.CloudId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudId gets a reference to the given NullableInt32 and assigns it to the CloudId field.
+func (o *CreateVirtualClusterCommand) SetCloudId(v int32) {
+	o.CloudId.Set(&v)
+}
+// SetCloudIdNil sets the value for CloudId to be an explicit nil
+func (o *CreateVirtualClusterCommand) SetCloudIdNil() {
+	o.CloudId.Set(nil)
+}
+
+// UnsetCloudId ensures that no value is present for CloudId, not even an explicit nil
+func (o *CreateVirtualClusterCommand) UnsetCloudId() {
+	o.CloudId.Unset()
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
@@ -288,6 +331,9 @@ func (o CreateVirtualClusterCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateVirtualClusterCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.CloudId.IsSet() {
+		toSerialize["cloudId"] = o.CloudId.Get()
+	}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
 	}
