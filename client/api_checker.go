@@ -1705,10 +1705,16 @@ type ApiCheckerImportClusterKubeConfigRequest struct {
 	ctx context.Context
 	ApiService *CheckerAPIService
 	config *os.File
+	importType *EImportClusterType
 }
 
 func (r ApiCheckerImportClusterKubeConfigRequest) Config(config *os.File) ApiCheckerImportClusterKubeConfigRequest {
 	r.config = config
+	return r
+}
+
+func (r ApiCheckerImportClusterKubeConfigRequest) ImportType(importType EImportClusterType) ApiCheckerImportClusterKubeConfigRequest {
+	r.importType = &importType
 	return r
 }
 
@@ -1750,6 +1756,9 @@ func (a *CheckerAPIService) CheckerImportClusterKubeConfigExecute(r ApiCheckerIm
 	if r.config == nil {
 		return nil, reportError("config is required and must be specified")
 	}
+	if r.importType == nil {
+		return nil, reportError("importType is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -1783,6 +1792,7 @@ func (a *CheckerAPIService) CheckerImportClusterKubeConfigExecute(r ApiCheckerIm
 		configLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
 	}
+	parameterAddToHeaderOrQuery(localVarFormParams, "importType", r.importType, "", "")
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
