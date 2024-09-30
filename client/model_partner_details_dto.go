@@ -24,7 +24,7 @@ var _ MappedNullable = &PartnerDetailsDto{}
 type PartnerDetailsDto struct {
 	Id int32 `json:"id"`
 	Name string `json:"name"`
-	Link string `json:"link"`
+	Link NullableString `json:"link"`
 	Domain NullableString `json:"domain"`
 	Country NullableString `json:"country"`
 	City NullableString `json:"city"`
@@ -49,7 +49,7 @@ type _PartnerDetailsDto PartnerDetailsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPartnerDetailsDto(id int32, name string, link string, domain NullableString, country NullableString, city NullableString, vatNumber NullableString, backgroundImageUrl NullableString, address NullableString, logo NullableString, phone NullableString, email NullableString, paymentEnabled NullableBool, allowRegistration NullableBool, requiredUserApproval NullableBool, organizations []CommonDropdownDto, whiteListDomains []WhiteListDomainDto, partnerColorSettings PartnerColorSettingsDto, partnerImageSettings PartnerImageSettingsDto) *PartnerDetailsDto {
+func NewPartnerDetailsDto(id int32, name string, link NullableString, domain NullableString, country NullableString, city NullableString, vatNumber NullableString, backgroundImageUrl NullableString, address NullableString, logo NullableString, phone NullableString, email NullableString, paymentEnabled NullableBool, allowRegistration NullableBool, requiredUserApproval NullableBool, organizations []CommonDropdownDto, whiteListDomains []WhiteListDomainDto, partnerColorSettings PartnerColorSettingsDto, partnerImageSettings PartnerImageSettingsDto) *PartnerDetailsDto {
 	this := PartnerDetailsDto{}
 	this.Id = id
 	this.Name = name
@@ -130,27 +130,29 @@ func (o *PartnerDetailsDto) SetName(v string) {
 }
 
 // GetLink returns the Link field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PartnerDetailsDto) GetLink() string {
-	if o == nil {
+	if o == nil || o.Link.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Link
+	return *o.Link.Get()
 }
 
 // GetLinkOk returns a tuple with the Link field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerDetailsDto) GetLinkOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Link, true
+	return o.Link.Get(), o.Link.IsSet()
 }
 
 // SetLink sets field value
 func (o *PartnerDetailsDto) SetLink(v string) {
-	o.Link = v
+	o.Link.Set(&v)
 }
 
 // GetDomain returns the Domain field value
@@ -577,7 +579,7 @@ func (o PartnerDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	toSerialize["link"] = o.Link
+	toSerialize["link"] = o.Link.Get()
 	toSerialize["domain"] = o.Domain.Get()
 	toSerialize["country"] = o.Country.Get()
 	toSerialize["city"] = o.City.Get()
