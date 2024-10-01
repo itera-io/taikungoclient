@@ -27,7 +27,7 @@ type PrometheusRuleListDto struct {
 	Password string `json:"password"`
 	UserName string `json:"userName"`
 	Url string `json:"url"`
-	MetricName string `json:"metricName"`
+	MetricName NullableString `json:"metricName"`
 	Labels []PrometheusLabelListDto `json:"labels"`
 	BoundOrganizations []PrometheusOrganizationDiscountDto `json:"boundOrganizations"`
 	Type PrometheusType `json:"type"`
@@ -47,7 +47,7 @@ type _PrometheusRuleListDto PrometheusRuleListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusRuleListDto(id int32, name string, password string, userName string, url string, metricName string, labels []PrometheusLabelListDto, boundOrganizations []PrometheusOrganizationDiscountDto, type_ PrometheusType, price float64, billingStartDate NullableString, createdAt NullableString, partner PartnerDetailsDto, operationCredential OperationCredentialsForOrganizationEntity, createdBy string, lastModified NullableString, lastModifiedBy NullableString) *PrometheusRuleListDto {
+func NewPrometheusRuleListDto(id int32, name string, password string, userName string, url string, metricName NullableString, labels []PrometheusLabelListDto, boundOrganizations []PrometheusOrganizationDiscountDto, type_ PrometheusType, price float64, billingStartDate NullableString, createdAt NullableString, partner PartnerDetailsDto, operationCredential OperationCredentialsForOrganizationEntity, createdBy string, lastModified NullableString, lastModifiedBy NullableString) *PrometheusRuleListDto {
 	this := PrometheusRuleListDto{}
 	this.Id = id
 	this.Name = name
@@ -198,30 +198,33 @@ func (o *PrometheusRuleListDto) SetUrl(v string) {
 }
 
 // GetMetricName returns the MetricName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PrometheusRuleListDto) GetMetricName() string {
-	if o == nil {
+	if o == nil || o.MetricName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.MetricName
+	return *o.MetricName.Get()
 }
 
 // GetMetricNameOk returns a tuple with the MetricName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetMetricNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.MetricName, true
+	return o.MetricName.Get(), o.MetricName.IsSet()
 }
 
 // SetMetricName sets field value
 func (o *PrometheusRuleListDto) SetMetricName(v string) {
-	o.MetricName = v
+	o.MetricName.Set(&v)
 }
 
 // GetLabels returns the Labels field value
+// If the value is explicit nil, the zero value for []PrometheusLabelListDto will be returned
 func (o *PrometheusRuleListDto) GetLabels() []PrometheusLabelListDto {
 	if o == nil {
 		var ret []PrometheusLabelListDto
@@ -233,8 +236,9 @@ func (o *PrometheusRuleListDto) GetLabels() []PrometheusLabelListDto {
 
 // GetLabelsOk returns a tuple with the Labels field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetLabelsOk() ([]PrometheusLabelListDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Labels) {
 		return nil, false
 	}
 	return o.Labels, true
@@ -246,6 +250,7 @@ func (o *PrometheusRuleListDto) SetLabels(v []PrometheusLabelListDto) {
 }
 
 // GetBoundOrganizations returns the BoundOrganizations field value
+// If the value is explicit nil, the zero value for []PrometheusOrganizationDiscountDto will be returned
 func (o *PrometheusRuleListDto) GetBoundOrganizations() []PrometheusOrganizationDiscountDto {
 	if o == nil {
 		var ret []PrometheusOrganizationDiscountDto
@@ -257,8 +262,9 @@ func (o *PrometheusRuleListDto) GetBoundOrganizations() []PrometheusOrganization
 
 // GetBoundOrganizationsOk returns a tuple with the BoundOrganizations field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetBoundOrganizationsOk() ([]PrometheusOrganizationDiscountDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.BoundOrganizations) {
 		return nil, false
 	}
 	return o.BoundOrganizations, true
@@ -508,9 +514,13 @@ func (o PrometheusRuleListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["password"] = o.Password
 	toSerialize["userName"] = o.UserName
 	toSerialize["url"] = o.Url
-	toSerialize["metricName"] = o.MetricName
-	toSerialize["labels"] = o.Labels
-	toSerialize["boundOrganizations"] = o.BoundOrganizations
+	toSerialize["metricName"] = o.MetricName.Get()
+	if o.Labels != nil {
+		toSerialize["labels"] = o.Labels
+	}
+	if o.BoundOrganizations != nil {
+		toSerialize["boundOrganizations"] = o.BoundOrganizations
+	}
 	toSerialize["type"] = o.Type
 	toSerialize["price"] = o.Price
 	toSerialize["billingStartDate"] = o.BillingStartDate.Get()
