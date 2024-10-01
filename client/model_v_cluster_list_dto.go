@@ -38,6 +38,7 @@ type VClusterListDto struct {
 	AlertsCount int32 `json:"alertsCount"`
 	ExpiredAt string `json:"expiredAt"`
 	DeleteOnExpiration bool `json:"deleteOnExpiration"`
+	WasmEnabled bool `json:"wasmEnabled"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
 	AlertingProfileName NullableString `json:"alertingProfileName"`
 	AccessIp string `json:"accessIp"`
@@ -58,7 +59,7 @@ type _VClusterListDto VClusterListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType CloudType, status ProjectStatus, health ProjectHealth, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
+func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType CloudType, status ProjectStatus, health ProjectHealth, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
 	this := VClusterListDto{}
 	this.Id = id
 	this.Name = name
@@ -76,6 +77,7 @@ func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked b
 	this.AlertsCount = alertsCount
 	this.ExpiredAt = expiredAt
 	this.DeleteOnExpiration = deleteOnExpiration
+	this.WasmEnabled = wasmEnabled
 	this.AlertingProfileId = alertingProfileId
 	this.AlertingProfileName = alertingProfileName
 	this.AccessIp = accessIp
@@ -483,6 +485,30 @@ func (o *VClusterListDto) SetDeleteOnExpiration(v bool) {
 	o.DeleteOnExpiration = v
 }
 
+// GetWasmEnabled returns the WasmEnabled field value
+func (o *VClusterListDto) GetWasmEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.WasmEnabled
+}
+
+// GetWasmEnabledOk returns a tuple with the WasmEnabled field value
+// and a boolean to check if the value has been set.
+func (o *VClusterListDto) GetWasmEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.WasmEnabled, true
+}
+
+// SetWasmEnabled sets field value
+func (o *VClusterListDto) SetWasmEnabled(v bool) {
+	o.WasmEnabled = v
+}
+
 // GetAlertingProfileId returns the AlertingProfileId field value
 // If the value is explicit nil, the zero value for int32 will be returned
 func (o *VClusterListDto) GetAlertingProfileId() int32 {
@@ -801,6 +827,7 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["alertsCount"] = o.AlertsCount
 	toSerialize["expiredAt"] = o.ExpiredAt
 	toSerialize["deleteOnExpiration"] = o.DeleteOnExpiration
+	toSerialize["wasmEnabled"] = o.WasmEnabled
 	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	toSerialize["alertingProfileName"] = o.AlertingProfileName.Get()
 	toSerialize["accessIp"] = o.AccessIp
@@ -837,6 +864,7 @@ func (o *VClusterListDto) UnmarshalJSON(data []byte) (err error) {
 		"alertsCount",
 		"expiredAt",
 		"deleteOnExpiration",
+		"wasmEnabled",
 		"alertingProfileId",
 		"alertingProfileName",
 		"accessIp",

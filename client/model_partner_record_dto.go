@@ -27,8 +27,8 @@ type PartnerRecordDto struct {
 	BackgroundImageUrl NullableString `json:"backgroundImageUrl"`
 	PaymentEnabled bool `json:"paymentEnabled"`
 	AllowRegistration bool `json:"allowRegistration"`
-	PartnerColorSettings PartnerColorSettingsDto `json:"partnerColorSettings"`
-	PartnerImageSettings PartnerImageSettingsDto `json:"partnerImageSettings"`
+	PartnerColorSettings *PartnerColorSettingsDto `json:"partnerColorSettings,omitempty"`
+	PartnerImageSettings *PartnerImageSettingsDto `json:"partnerImageSettings,omitempty"`
 }
 
 type _PartnerRecordDto PartnerRecordDto
@@ -37,15 +37,13 @@ type _PartnerRecordDto PartnerRecordDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPartnerRecordDto(id int32, logoUrl NullableString, backgroundImageUrl NullableString, paymentEnabled bool, allowRegistration bool, partnerColorSettings PartnerColorSettingsDto, partnerImageSettings PartnerImageSettingsDto) *PartnerRecordDto {
+func NewPartnerRecordDto(id int32, logoUrl NullableString, backgroundImageUrl NullableString, paymentEnabled bool, allowRegistration bool) *PartnerRecordDto {
 	this := PartnerRecordDto{}
 	this.Id = id
 	this.LogoUrl = logoUrl
 	this.BackgroundImageUrl = backgroundImageUrl
 	this.PaymentEnabled = paymentEnabled
 	this.AllowRegistration = allowRegistration
-	this.PartnerColorSettings = partnerColorSettings
-	this.PartnerImageSettings = partnerImageSettings
 	return &this
 }
 
@@ -181,52 +179,68 @@ func (o *PartnerRecordDto) SetAllowRegistration(v bool) {
 	o.AllowRegistration = v
 }
 
-// GetPartnerColorSettings returns the PartnerColorSettings field value
+// GetPartnerColorSettings returns the PartnerColorSettings field value if set, zero value otherwise.
 func (o *PartnerRecordDto) GetPartnerColorSettings() PartnerColorSettingsDto {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerColorSettings) {
 		var ret PartnerColorSettingsDto
 		return ret
 	}
-
-	return o.PartnerColorSettings
+	return *o.PartnerColorSettings
 }
 
-// GetPartnerColorSettingsOk returns a tuple with the PartnerColorSettings field value
+// GetPartnerColorSettingsOk returns a tuple with the PartnerColorSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartnerRecordDto) GetPartnerColorSettingsOk() (*PartnerColorSettingsDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerColorSettings) {
 		return nil, false
 	}
-	return &o.PartnerColorSettings, true
+	return o.PartnerColorSettings, true
 }
 
-// SetPartnerColorSettings sets field value
+// HasPartnerColorSettings returns a boolean if a field has been set.
+func (o *PartnerRecordDto) HasPartnerColorSettings() bool {
+	if o != nil && !IsNil(o.PartnerColorSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerColorSettings gets a reference to the given PartnerColorSettingsDto and assigns it to the PartnerColorSettings field.
 func (o *PartnerRecordDto) SetPartnerColorSettings(v PartnerColorSettingsDto) {
-	o.PartnerColorSettings = v
+	o.PartnerColorSettings = &v
 }
 
-// GetPartnerImageSettings returns the PartnerImageSettings field value
+// GetPartnerImageSettings returns the PartnerImageSettings field value if set, zero value otherwise.
 func (o *PartnerRecordDto) GetPartnerImageSettings() PartnerImageSettingsDto {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerImageSettings) {
 		var ret PartnerImageSettingsDto
 		return ret
 	}
-
-	return o.PartnerImageSettings
+	return *o.PartnerImageSettings
 }
 
-// GetPartnerImageSettingsOk returns a tuple with the PartnerImageSettings field value
+// GetPartnerImageSettingsOk returns a tuple with the PartnerImageSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartnerRecordDto) GetPartnerImageSettingsOk() (*PartnerImageSettingsDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerImageSettings) {
 		return nil, false
 	}
-	return &o.PartnerImageSettings, true
+	return o.PartnerImageSettings, true
 }
 
-// SetPartnerImageSettings sets field value
+// HasPartnerImageSettings returns a boolean if a field has been set.
+func (o *PartnerRecordDto) HasPartnerImageSettings() bool {
+	if o != nil && !IsNil(o.PartnerImageSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerImageSettings gets a reference to the given PartnerImageSettingsDto and assigns it to the PartnerImageSettings field.
 func (o *PartnerRecordDto) SetPartnerImageSettings(v PartnerImageSettingsDto) {
-	o.PartnerImageSettings = v
+	o.PartnerImageSettings = &v
 }
 
 func (o PartnerRecordDto) MarshalJSON() ([]byte, error) {
@@ -244,8 +258,12 @@ func (o PartnerRecordDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["backgroundImageUrl"] = o.BackgroundImageUrl.Get()
 	toSerialize["paymentEnabled"] = o.PaymentEnabled
 	toSerialize["allowRegistration"] = o.AllowRegistration
-	toSerialize["partnerColorSettings"] = o.PartnerColorSettings
-	toSerialize["partnerImageSettings"] = o.PartnerImageSettings
+	if !IsNil(o.PartnerColorSettings) {
+		toSerialize["partnerColorSettings"] = o.PartnerColorSettings
+	}
+	if !IsNil(o.PartnerImageSettings) {
+		toSerialize["partnerImageSettings"] = o.PartnerImageSettings
+	}
 	return toSerialize, nil
 }
 
@@ -259,8 +277,6 @@ func (o *PartnerRecordDto) UnmarshalJSON(data []byte) (err error) {
 		"backgroundImageUrl",
 		"paymentEnabled",
 		"allowRegistration",
-		"partnerColorSettings",
-		"partnerImageSettings",
 	}
 
 	allProperties := make(map[string]interface{})

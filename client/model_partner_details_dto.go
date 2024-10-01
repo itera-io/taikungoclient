@@ -39,8 +39,8 @@ type PartnerDetailsDto struct {
 	RequiredUserApproval NullableBool `json:"requiredUserApproval"`
 	Organizations []CommonDropdownDto `json:"organizations"`
 	WhiteListDomains []WhiteListDomainDto `json:"whiteListDomains"`
-	PartnerColorSettings PartnerColorSettingsDto `json:"partnerColorSettings"`
-	PartnerImageSettings PartnerImageSettingsDto `json:"partnerImageSettings"`
+	PartnerColorSettings *PartnerColorSettingsDto `json:"partnerColorSettings,omitempty"`
+	PartnerImageSettings *PartnerImageSettingsDto `json:"partnerImageSettings,omitempty"`
 }
 
 type _PartnerDetailsDto PartnerDetailsDto
@@ -49,7 +49,7 @@ type _PartnerDetailsDto PartnerDetailsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPartnerDetailsDto(id int32, name string, link NullableString, domain NullableString, country NullableString, city NullableString, vatNumber NullableString, backgroundImageUrl NullableString, address NullableString, logo NullableString, phone NullableString, email NullableString, paymentEnabled NullableBool, allowRegistration NullableBool, requiredUserApproval NullableBool, organizations []CommonDropdownDto, whiteListDomains []WhiteListDomainDto, partnerColorSettings PartnerColorSettingsDto, partnerImageSettings PartnerImageSettingsDto) *PartnerDetailsDto {
+func NewPartnerDetailsDto(id int32, name string, link NullableString, domain NullableString, country NullableString, city NullableString, vatNumber NullableString, backgroundImageUrl NullableString, address NullableString, logo NullableString, phone NullableString, email NullableString, paymentEnabled NullableBool, allowRegistration NullableBool, requiredUserApproval NullableBool, organizations []CommonDropdownDto, whiteListDomains []WhiteListDomainDto) *PartnerDetailsDto {
 	this := PartnerDetailsDto{}
 	this.Id = id
 	this.Name = name
@@ -68,8 +68,6 @@ func NewPartnerDetailsDto(id int32, name string, link NullableString, domain Nul
 	this.RequiredUserApproval = requiredUserApproval
 	this.Organizations = organizations
 	this.WhiteListDomains = whiteListDomains
-	this.PartnerColorSettings = partnerColorSettings
-	this.PartnerImageSettings = partnerImageSettings
 	return &this
 }
 
@@ -519,52 +517,68 @@ func (o *PartnerDetailsDto) SetWhiteListDomains(v []WhiteListDomainDto) {
 	o.WhiteListDomains = v
 }
 
-// GetPartnerColorSettings returns the PartnerColorSettings field value
+// GetPartnerColorSettings returns the PartnerColorSettings field value if set, zero value otherwise.
 func (o *PartnerDetailsDto) GetPartnerColorSettings() PartnerColorSettingsDto {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerColorSettings) {
 		var ret PartnerColorSettingsDto
 		return ret
 	}
-
-	return o.PartnerColorSettings
+	return *o.PartnerColorSettings
 }
 
-// GetPartnerColorSettingsOk returns a tuple with the PartnerColorSettings field value
+// GetPartnerColorSettingsOk returns a tuple with the PartnerColorSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartnerDetailsDto) GetPartnerColorSettingsOk() (*PartnerColorSettingsDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerColorSettings) {
 		return nil, false
 	}
-	return &o.PartnerColorSettings, true
+	return o.PartnerColorSettings, true
 }
 
-// SetPartnerColorSettings sets field value
+// HasPartnerColorSettings returns a boolean if a field has been set.
+func (o *PartnerDetailsDto) HasPartnerColorSettings() bool {
+	if o != nil && !IsNil(o.PartnerColorSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerColorSettings gets a reference to the given PartnerColorSettingsDto and assigns it to the PartnerColorSettings field.
 func (o *PartnerDetailsDto) SetPartnerColorSettings(v PartnerColorSettingsDto) {
-	o.PartnerColorSettings = v
+	o.PartnerColorSettings = &v
 }
 
-// GetPartnerImageSettings returns the PartnerImageSettings field value
+// GetPartnerImageSettings returns the PartnerImageSettings field value if set, zero value otherwise.
 func (o *PartnerDetailsDto) GetPartnerImageSettings() PartnerImageSettingsDto {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerImageSettings) {
 		var ret PartnerImageSettingsDto
 		return ret
 	}
-
-	return o.PartnerImageSettings
+	return *o.PartnerImageSettings
 }
 
-// GetPartnerImageSettingsOk returns a tuple with the PartnerImageSettings field value
+// GetPartnerImageSettingsOk returns a tuple with the PartnerImageSettings field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *PartnerDetailsDto) GetPartnerImageSettingsOk() (*PartnerImageSettingsDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerImageSettings) {
 		return nil, false
 	}
-	return &o.PartnerImageSettings, true
+	return o.PartnerImageSettings, true
 }
 
-// SetPartnerImageSettings sets field value
+// HasPartnerImageSettings returns a boolean if a field has been set.
+func (o *PartnerDetailsDto) HasPartnerImageSettings() bool {
+	if o != nil && !IsNil(o.PartnerImageSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetPartnerImageSettings gets a reference to the given PartnerImageSettingsDto and assigns it to the PartnerImageSettings field.
 func (o *PartnerDetailsDto) SetPartnerImageSettings(v PartnerImageSettingsDto) {
-	o.PartnerImageSettings = v
+	o.PartnerImageSettings = &v
 }
 
 func (o PartnerDetailsDto) MarshalJSON() ([]byte, error) {
@@ -598,8 +612,12 @@ func (o PartnerDetailsDto) ToMap() (map[string]interface{}, error) {
 	if o.WhiteListDomains != nil {
 		toSerialize["whiteListDomains"] = o.WhiteListDomains
 	}
-	toSerialize["partnerColorSettings"] = o.PartnerColorSettings
-	toSerialize["partnerImageSettings"] = o.PartnerImageSettings
+	if !IsNil(o.PartnerColorSettings) {
+		toSerialize["partnerColorSettings"] = o.PartnerColorSettings
+	}
+	if !IsNil(o.PartnerImageSettings) {
+		toSerialize["partnerImageSettings"] = o.PartnerImageSettings
+	}
 	return toSerialize, nil
 }
 
@@ -625,8 +643,6 @@ func (o *PartnerDetailsDto) UnmarshalJSON(data []byte) (err error) {
 		"requiredUserApproval",
 		"organizations",
 		"whiteListDomains",
-		"partnerColorSettings",
-		"partnerImageSettings",
 	}
 
 	allProperties := make(map[string]interface{})

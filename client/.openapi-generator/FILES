@@ -466,7 +466,9 @@ docs/ImageByIdCommand.md
 docs/ImagesAPI.md
 docs/ImportBackupStorageLocationCommand.md
 docs/ImportClusterCommand.md
+docs/ImportClusterType.md
 docs/ImportRepoCommand.md
+docs/ImportedClusterDetailsDto.md
 docs/InfraAPI.md
 docs/InfraBillingListCommand.md
 docs/InfraBillingSummariesCreateCommand.md
@@ -1338,7 +1340,9 @@ model_hypervisor_list_command.go
 model_image_by_id_command.go
 model_import_backup_storage_location_command.go
 model_import_cluster_command.go
+model_import_cluster_type.go
 model_import_repo_command.go
+model_imported_cluster_details_dto.go
 model_infra_billing_list_command.go
 model_infra_billing_summaries_create_command.go
 model_infra_billing_summary_dto.go

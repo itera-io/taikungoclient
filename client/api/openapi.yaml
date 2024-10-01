@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-10-01T12:27:38.3237101Z
-                  createdAt: 2024-10-01T12:27:38.3237101Z
+                  lastValidated: 2024-10-01T14:21:53.10705Z
+                  createdAt: 2024-10-01T14:21:53.10705Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-10-01T12:27:38.3237101Z
+                    lastBackup: 2024-10-01T14:21:53.10705Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-10-01T12:27:38.3237101Z
+                  createdAt: 2024-10-01T14:21:53.10705Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-10-01T12:27:38.3237101Z
+                  lastBackup: 2024-10-01T14:21:53.10705Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-01T12:27:38.3237101Z
-                  expiration: 2024-10-01T12:27:38.3237101Z
+                  createdAt: 2024-10-01T14:21:53.10705Z
+                  expiration: 2024-10-01T14:21:53.10705Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-01T12:27:38.3237101Z
+                  createdAt: 2024-10-01T14:21:53.10705Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-10-01T12:27:38.3237101+00:00
-                  startTimeStamp: 2024-10-01T12:27:38.3237101+00:00
-                  createdAt: 2024-10-01T12:27:38.3237101Z
+                  completionDateTime: 2024-10-01T14:21:53.10705+00:00
+                  startTimeStamp: 2024-10-01T14:21:53.10705+00:00
+                  createdAt: 2024-10-01T14:21:53.10705Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -27472,6 +27472,58 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve list of projects for dropdown
+      tags:
+      - Projects
+  /api/v1/projects/imported/details/{projectId}:
+    get:
+      operationId: projects-imported-cluster-details
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportedClusterDetailsDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Imported cluster details
       tags:
       - Projects
   /api/v1/projects/forbilling:
@@ -50328,6 +50380,13 @@ components:
       - isTaikunIngressController
       - name
       type: object
+    ImportClusterType:
+      enum:
+      - None
+      - CloudCredential
+      - ReadOnly
+      - FullyManaged
+      type: string
     ImportClusterValidateKubeConfigCommand:
       additionalProperties: false
       properties:
@@ -50361,6 +50420,61 @@ components:
         url:
           nullable: true
           type: string
+      type: object
+    ImportedClusterDetailsDto:
+      additionalProperties: false
+      example:
+        organizationId: 6
+        accessIp: accessIp
+        organizationName: organizationName
+        name: name
+        importClusterType: None
+        cloudCredentialId: 1
+        health: "Null"
+        id: 0
+        cloudCredentialName: cloudCredentialName
+        kubernetesVersion: kubernetesVersion
+        status: "Null"
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        accessIp:
+          nullable: true
+          type: string
+        kubernetesVersion:
+          nullable: true
+          type: string
+        importClusterType:
+          $ref: '#/components/schemas/ImportClusterType'
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          type: string
+        cloudCredentialName:
+          nullable: true
+          type: string
+        cloudCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+        health:
+          $ref: '#/components/schemas/ProjectHealth'
+        status:
+          $ref: '#/components/schemas/ProjectStatus'
+      required:
+      - accessIp
+      - health
+      - id
+      - importClusterType
+      - kubernetesVersion
+      - name
+      - organizationId
+      - organizationName
+      - status
       type: object
     InfraBillingListCommand:
       additionalProperties: false
@@ -55196,8 +55310,6 @@ components:
       - logo
       - name
       - organizations
-      - partnerColorSettings
-      - partnerImageSettings
       - paymentEnabled
       - phone
       - requiredUserApproval
@@ -55356,8 +55468,6 @@ components:
       - backgroundImageUrl
       - id
       - logoUrl
-      - partnerColorSettings
-      - partnerImageSettings
       - paymentEnabled
       type: object
     PartnersList:
@@ -66150,6 +66260,7 @@ components:
             enable: true
           deleteOnExpiration: true
           alertingProfileId: 5
+          wasmEnabled: true
           createdBy: createdBy
           name: name
           lastModified: lastModified
@@ -66208,6 +66319,7 @@ components:
             enable: true
           deleteOnExpiration: true
           alertingProfileId: 5
+          wasmEnabled: true
           createdBy: createdBy
           name: name
           lastModified: lastModified
@@ -66314,6 +66426,7 @@ components:
           enable: true
         deleteOnExpiration: true
         alertingProfileId: 5
+        wasmEnabled: true
         createdBy: createdBy
         name: name
         lastModified: lastModified
@@ -66360,6 +66473,8 @@ components:
         expiredAt:
           type: string
         deleteOnExpiration:
+          type: boolean
+        wasmEnabled:
           type: boolean
         alertingProfileId:
           format: int32
@@ -66417,6 +66532,7 @@ components:
       - setExpirationDateButton
       - status
       - unlockButton
+      - wasmEnabled
       type: object
     ValidateVsphereCommand:
       additionalProperties: false
