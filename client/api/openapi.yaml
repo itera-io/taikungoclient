@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-10-01T15:24:19.7977938Z
-                  createdAt: 2024-10-01T15:24:19.7977938Z
+                  lastValidated: 2024-10-02T08:58:34.0917214Z
+                  createdAt: 2024-10-02T08:58:34.0917214Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-10-01T15:24:19.7977938Z
+                    lastBackup: 2024-10-02T08:58:34.0917214Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-10-01T15:24:19.7977938Z
+                  createdAt: 2024-10-02T08:58:34.0917214Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-10-01T15:24:19.7977938Z
+                  lastBackup: 2024-10-02T08:58:34.0917214Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-01T15:24:19.7977938Z
-                  expiration: 2024-10-01T15:24:19.7977938Z
+                  createdAt: 2024-10-02T08:58:34.0917214Z
+                  expiration: 2024-10-02T08:58:34.0917214Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-01T15:24:19.7977938Z
+                  createdAt: 2024-10-02T08:58:34.0917214Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-10-01T15:24:19.7977938+00:00
-                  startTimeStamp: 2024-10-01T15:24:19.7977938+00:00
-                  createdAt: 2024-10-01T15:24:19.7977938Z
+                  completionDateTime: 2024-10-02T08:58:34.0917214+00:00
+                  startTimeStamp: 2024-10-02T08:58:34.0917214+00:00
+                  createdAt: 2024-10-02T08:58:34.0917214Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -57405,7 +57405,6 @@ components:
           format: int32
           type: integer
         projectName:
-          nullable: true
           type: string
       required:
       - projectId
@@ -65649,13 +65648,10 @@ components:
         isEmailConfirmed: true
       properties:
         id:
-          nullable: true
           type: string
         username:
-          nullable: true
           type: string
         organizationName:
-          nullable: true
           type: string
         hasCustomerId:
           type: boolean
@@ -65670,13 +65666,10 @@ components:
           nullable: true
           type: string
         email:
-          nullable: true
           type: string
         displayName:
-          nullable: true
           type: string
         createdAt:
-          nullable: true
           type: string
         created:
           format: date-time
@@ -65707,12 +65700,10 @@ components:
         is2FAEnabled:
           type: boolean
         lastLoginAt:
-          nullable: true
           type: string
         boundProjects:
           items:
             $ref: '#/components/schemas/ProjectDto'
-          nullable: true
           type: array
         partner:
           $ref: '#/components/schemas/PartnerDetailsForUserDto'

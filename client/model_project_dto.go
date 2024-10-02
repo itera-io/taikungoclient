@@ -23,7 +23,7 @@ var _ MappedNullable = &ProjectDto{}
 // ProjectDto struct for ProjectDto
 type ProjectDto struct {
 	ProjectId int32 `json:"projectId"`
-	ProjectName NullableString `json:"projectName"`
+	ProjectName string `json:"projectName"`
 }
 
 type _ProjectDto ProjectDto
@@ -32,7 +32,7 @@ type _ProjectDto ProjectDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDto(projectId int32, projectName NullableString) *ProjectDto {
+func NewProjectDto(projectId int32, projectName string) *ProjectDto {
 	this := ProjectDto{}
 	this.ProjectId = projectId
 	this.ProjectName = projectName
@@ -72,29 +72,27 @@ func (o *ProjectDto) SetProjectId(v int32) {
 }
 
 // GetProjectName returns the ProjectName field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectDto) GetProjectName() string {
-	if o == nil || o.ProjectName.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.ProjectName.Get()
+	return o.ProjectName
 }
 
 // GetProjectNameOk returns a tuple with the ProjectName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDto) GetProjectNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName.Get(), o.ProjectName.IsSet()
+	return &o.ProjectName, true
 }
 
 // SetProjectName sets field value
 func (o *ProjectDto) SetProjectName(v string) {
-	o.ProjectName.Set(&v)
+	o.ProjectName = v
 }
 
 func (o ProjectDto) MarshalJSON() ([]byte, error) {
@@ -108,7 +106,7 @@ func (o ProjectDto) MarshalJSON() ([]byte, error) {
 func (o ProjectDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["projectName"] = o.ProjectName.Get()
+	toSerialize["projectName"] = o.ProjectName
 	return toSerialize, nil
 }
 
