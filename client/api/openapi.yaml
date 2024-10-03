@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-10-02T11:42:00.8772143Z
-                  createdAt: 2024-10-02T11:42:00.8772143Z
+                  lastValidated: 2024-10-03T00:03:17.9330216Z
+                  createdAt: 2024-10-03T00:03:17.9330216Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-10-02T11:42:00.8772143Z
+                    lastBackup: 2024-10-03T00:03:17.9330216Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-10-02T11:42:00.8772143Z
+                  createdAt: 2024-10-03T00:03:17.9330216Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-10-02T11:42:00.8772143Z
+                  lastBackup: 2024-10-03T00:03:17.9330216Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-02T11:42:00.8772143Z
-                  expiration: 2024-10-02T11:42:00.8772143Z
+                  createdAt: 2024-10-03T00:03:17.9330216Z
+                  expiration: 2024-10-03T00:03:17.9330216Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-02T11:42:00.8772143Z
+                  createdAt: 2024-10-03T00:03:17.9330216Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-10-02T11:42:00.8772143+00:00
-                  startTimeStamp: 2024-10-02T11:42:00.8772143+00:00
-                  createdAt: 2024-10-02T11:42:00.8772143Z
+                  completionDateTime: 2024-10-03T00:03:17.9330216+00:00
+                  startTimeStamp: 2024-10-03T00:03:17.9330216+00:00
+                  createdAt: 2024-10-03T00:03:17.9330216Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -45795,8 +45795,9 @@ components:
         google: 9
         aws: 5
         tanzu: 3
-        totalCount: 1
+        totalCount: 6
         proxmox: 2
+        genericK8S: 1
         azure: 2
       properties:
         aws:
@@ -45827,6 +45828,9 @@ components:
           format: int32
           type: integer
         zededa:
+          format: int32
+          type: integer
+        genericK8S:
           format: int32
           type: integer
         totalCount:
@@ -46009,146 +46013,158 @@ components:
             name: name
             id: 1
         servers:
-          totalOpenshiftCount: 2
+          totalOpenshiftCount: 6
+          totalGenericK8SCount: 3
           zededa:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           waiting:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           openshift:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
-          totalGoogleCount: 6
+            projectId: 7
+          totalGoogleCount: 1
           tanzu:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
-          totalCount: 7
+            projectId: 7
+          totalCount: 1
+          genericK8S:
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 7
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 7
           updating:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
-          totalCpu: 1
-          totalZadaraCount: 5
-          totalAzureCount: 6
-          totalVsphereCount: 6
-          totalZededaCount: 6
+            projectId: 7
+          totalCpu: 4
+          totalZadaraCount: 6
+          totalAzureCount: 3
+          totalVsphereCount: 5
+          totalZededaCount: 3
           proxmox:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           azure:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
-          totalUpdatingCount: 6
-          totalDiskSize: 5
+            projectId: 7
+          totalUpdatingCount: 8
+          totalDiskSize: 9
           zadara:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           google:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           failed:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
-          totalRam: 4
-          totalSucceededCount: 9
-          totalOpenstackCount: 3
-          totalPendingCount: 8
+            projectId: 7
+          totalRam: 5
+          totalSucceededCount: 6
+          totalOpenstackCount: 6
+          totalPendingCount: 9
           usedResources:
-          - diskSize: 3
-            maxRam: 7
-            cpu: 0
-            maxCpu: 6
+          - diskSize: 0
+            maxRam: 0
+            cpu: 6
+            maxCpu: 4
             projectName: projectName
-            maxDiskSize: 0
-            projectId: 3
+            maxDiskSize: 8
+            projectId: 7
             ram: 7
-          - diskSize: 3
-            maxRam: 7
-            cpu: 0
-            maxCpu: 6
+          - diskSize: 0
+            maxRam: 0
+            cpu: 6
+            maxCpu: 4
             projectName: projectName
-            maxDiskSize: 0
-            projectId: 3
+            maxDiskSize: 8
+            projectId: 7
             ram: 7
           totalProxmoxCount: 6
           deleting:
@@ -46156,211 +46172,223 @@ components:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           totalFailedCount: 9
           vsphere:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           openstack:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
-          totalAwsCount: 9
-          totalTanzuCount: 1
+            projectId: 7
+          totalAwsCount: 6
+          totalTanzuCount: 2
           aws:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           succeeded:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           purging:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
         standAloneVms:
-          totalOpenshiftCount: 2
+          totalOpenshiftCount: 6
+          totalGenericK8SCount: 3
           zededa:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           waiting:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           openshift:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
-          totalGoogleCount: 6
+            projectId: 7
+          totalGoogleCount: 1
           tanzu:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
-          totalCount: 7
+            projectId: 7
+          totalCount: 1
+          genericK8S:
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 7
+          - names:
+            - names
+            - names
+            projectName: projectName
+            projectId: 7
           updating:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
-          totalCpu: 1
-          totalZadaraCount: 5
-          totalAzureCount: 6
-          totalVsphereCount: 6
-          totalZededaCount: 6
+            projectId: 7
+          totalCpu: 4
+          totalZadaraCount: 6
+          totalAzureCount: 3
+          totalVsphereCount: 5
+          totalZededaCount: 3
           proxmox:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           azure:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
-          totalUpdatingCount: 6
-          totalDiskSize: 5
+            projectId: 7
+          totalUpdatingCount: 8
+          totalDiskSize: 9
           zadara:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           google:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           failed:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
-          totalRam: 4
-          totalSucceededCount: 9
-          totalOpenstackCount: 3
-          totalPendingCount: 8
+            projectId: 7
+          totalRam: 5
+          totalSucceededCount: 6
+          totalOpenstackCount: 6
+          totalPendingCount: 9
           usedResources:
-          - diskSize: 3
-            maxRam: 7
-            cpu: 0
-            maxCpu: 6
+          - diskSize: 0
+            maxRam: 0
+            cpu: 6
+            maxCpu: 4
             projectName: projectName
-            maxDiskSize: 0
-            projectId: 3
+            maxDiskSize: 8
+            projectId: 7
             ram: 7
-          - diskSize: 3
-            maxRam: 7
-            cpu: 0
-            maxCpu: 6
+          - diskSize: 0
+            maxRam: 0
+            cpu: 6
+            maxCpu: 4
             projectName: projectName
-            maxDiskSize: 0
-            projectId: 3
+            maxDiskSize: 8
+            projectId: 7
             ram: 7
           totalProxmoxCount: 6
           deleting:
@@ -46368,70 +46396,70 @@ components:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           totalFailedCount: 9
           vsphere:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           openstack:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
-          totalAwsCount: 9
-          totalTanzuCount: 1
+            projectId: 7
+          totalAwsCount: 6
+          totalTanzuCount: 2
           aws:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           succeeded:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           purging:
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
           - names:
             - names
             - names
             projectName: projectName
-            projectId: 6
+            projectId: 7
         organization:
           name: name
           id: 0
@@ -46445,8 +46473,9 @@ components:
           google: 9
           aws: 5
           tanzu: 3
-          totalCount: 1
+          totalCount: 6
           proxmox: 2
+          genericK8S: 1
           azure: 2
       properties:
         organization:
@@ -61355,146 +61384,158 @@ components:
     ServerChartDto:
       additionalProperties: false
       example:
-        totalOpenshiftCount: 2
+        totalOpenshiftCount: 6
+        totalGenericK8SCount: 3
         zededa:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         waiting:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         openshift:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
-        totalGoogleCount: 6
+          projectId: 7
+        totalGoogleCount: 1
         tanzu:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
-        totalCount: 7
+          projectId: 7
+        totalCount: 1
+        genericK8S:
+        - names:
+          - names
+          - names
+          projectName: projectName
+          projectId: 7
+        - names:
+          - names
+          - names
+          projectName: projectName
+          projectId: 7
         updating:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
-        totalCpu: 1
-        totalZadaraCount: 5
-        totalAzureCount: 6
-        totalVsphereCount: 6
-        totalZededaCount: 6
+          projectId: 7
+        totalCpu: 4
+        totalZadaraCount: 6
+        totalAzureCount: 3
+        totalVsphereCount: 5
+        totalZededaCount: 3
         proxmox:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         azure:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
-        totalUpdatingCount: 6
-        totalDiskSize: 5
+          projectId: 7
+        totalUpdatingCount: 8
+        totalDiskSize: 9
         zadara:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         google:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         failed:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
-        totalRam: 4
-        totalSucceededCount: 9
-        totalOpenstackCount: 3
-        totalPendingCount: 8
+          projectId: 7
+        totalRam: 5
+        totalSucceededCount: 6
+        totalOpenstackCount: 6
+        totalPendingCount: 9
         usedResources:
-        - diskSize: 3
-          maxRam: 7
-          cpu: 0
-          maxCpu: 6
+        - diskSize: 0
+          maxRam: 0
+          cpu: 6
+          maxCpu: 4
           projectName: projectName
-          maxDiskSize: 0
-          projectId: 3
+          maxDiskSize: 8
+          projectId: 7
           ram: 7
-        - diskSize: 3
-          maxRam: 7
-          cpu: 0
-          maxCpu: 6
+        - diskSize: 0
+          maxRam: 0
+          cpu: 6
+          maxCpu: 4
           projectName: projectName
-          maxDiskSize: 0
-          projectId: 3
+          maxDiskSize: 8
+          projectId: 7
           ram: 7
         totalProxmoxCount: 6
         deleting:
@@ -61502,70 +61543,70 @@ components:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         totalFailedCount: 9
         vsphere:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         openstack:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
-        totalAwsCount: 9
-        totalTanzuCount: 1
+          projectId: 7
+        totalAwsCount: 6
+        totalTanzuCount: 2
         aws:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         succeeded:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         purging:
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
         - names:
           - names
           - names
           projectName: projectName
-          projectId: 6
+          projectId: 7
       properties:
         aws:
           items:
@@ -61613,6 +61654,11 @@ components:
           nullable: true
           type: array
         zededa:
+          items:
+            $ref: '#/components/schemas/ServerCommonRecordDto'
+          nullable: true
+          type: array
+        genericK8S:
           items:
             $ref: '#/components/schemas/ServerCommonRecordDto'
           nullable: true
@@ -61701,6 +61747,9 @@ components:
         totalZededaCount:
           format: int32
           type: integer
+        totalGenericK8SCount:
+          format: int32
+          type: integer
         usedResources:
           items:
             $ref: '#/components/schemas/UserResourceChartDto'
@@ -61714,7 +61763,7 @@ components:
         - names
         - names
         projectName: projectName
-        projectId: 6
+        projectId: 7
       properties:
         projectId:
           format: int32
@@ -65863,13 +65912,13 @@ components:
     UserResourceChartDto:
       additionalProperties: false
       example:
-        diskSize: 3
-        maxRam: 7
-        cpu: 0
-        maxCpu: 6
+        diskSize: 0
+        maxRam: 0
+        cpu: 6
+        maxCpu: 4
         projectName: projectName
-        maxDiskSize: 0
-        projectId: 3
+        maxDiskSize: 8
+        projectId: 7
         ram: 7
       properties:
         projectName:

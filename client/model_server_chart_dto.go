@@ -30,6 +30,7 @@ type ServerChartDto struct {
 	Zadara []ServerCommonRecordDto `json:"zadara,omitempty"`
 	Openshift []ServerCommonRecordDto `json:"openshift,omitempty"`
 	Zededa []ServerCommonRecordDto `json:"zededa,omitempty"`
+	GenericK8S []ServerCommonRecordDto `json:"genericK8S,omitempty"`
 	Failed []ServerCommonRecordDto `json:"failed,omitempty"`
 	Succeeded []ServerCommonRecordDto `json:"succeeded,omitempty"`
 	Waiting []ServerCommonRecordDto `json:"waiting,omitempty"`
@@ -54,6 +55,7 @@ type ServerChartDto struct {
 	TotalVsphereCount *int32 `json:"totalVsphereCount,omitempty"`
 	TotalZadaraCount *int32 `json:"totalZadaraCount,omitempty"`
 	TotalZededaCount *int32 `json:"totalZededaCount,omitempty"`
+	TotalGenericK8SCount *int32 `json:"totalGenericK8SCount,omitempty"`
 	UsedResources []UserResourceChartDto `json:"usedResources,omitempty"`
 }
 
@@ -402,6 +404,39 @@ func (o *ServerChartDto) HasZededa() bool {
 // SetZededa gets a reference to the given []ServerCommonRecordDto and assigns it to the Zededa field.
 func (o *ServerChartDto) SetZededa(v []ServerCommonRecordDto) {
 	o.Zededa = v
+}
+
+// GetGenericK8S returns the GenericK8S field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ServerChartDto) GetGenericK8S() []ServerCommonRecordDto {
+	if o == nil {
+		var ret []ServerCommonRecordDto
+		return ret
+	}
+	return o.GenericK8S
+}
+
+// GetGenericK8SOk returns a tuple with the GenericK8S field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerChartDto) GetGenericK8SOk() ([]ServerCommonRecordDto, bool) {
+	if o == nil || IsNil(o.GenericK8S) {
+		return nil, false
+	}
+	return o.GenericK8S, true
+}
+
+// HasGenericK8S returns a boolean if a field has been set.
+func (o *ServerChartDto) HasGenericK8S() bool {
+	if o != nil && !IsNil(o.GenericK8S) {
+		return true
+	}
+
+	return false
+}
+
+// SetGenericK8S gets a reference to the given []ServerCommonRecordDto and assigns it to the GenericK8S field.
+func (o *ServerChartDto) SetGenericK8S(v []ServerCommonRecordDto) {
+	o.GenericK8S = v
 }
 
 // GetFailed returns the Failed field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -1178,6 +1213,38 @@ func (o *ServerChartDto) SetTotalZededaCount(v int32) {
 	o.TotalZededaCount = &v
 }
 
+// GetTotalGenericK8SCount returns the TotalGenericK8SCount field value if set, zero value otherwise.
+func (o *ServerChartDto) GetTotalGenericK8SCount() int32 {
+	if o == nil || IsNil(o.TotalGenericK8SCount) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalGenericK8SCount
+}
+
+// GetTotalGenericK8SCountOk returns a tuple with the TotalGenericK8SCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerChartDto) GetTotalGenericK8SCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalGenericK8SCount) {
+		return nil, false
+	}
+	return o.TotalGenericK8SCount, true
+}
+
+// HasTotalGenericK8SCount returns a boolean if a field has been set.
+func (o *ServerChartDto) HasTotalGenericK8SCount() bool {
+	if o != nil && !IsNil(o.TotalGenericK8SCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalGenericK8SCount gets a reference to the given int32 and assigns it to the TotalGenericK8SCount field.
+func (o *ServerChartDto) SetTotalGenericK8SCount(v int32) {
+	o.TotalGenericK8SCount = &v
+}
+
 // GetUsedResources returns the UsedResources field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServerChartDto) GetUsedResources() []UserResourceChartDto {
 	if o == nil {
@@ -1251,6 +1318,9 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	if o.Zededa != nil {
 		toSerialize["zededa"] = o.Zededa
 	}
+	if o.GenericK8S != nil {
+		toSerialize["genericK8S"] = o.GenericK8S
+	}
 	if o.Failed != nil {
 		toSerialize["failed"] = o.Failed
 	}
@@ -1322,6 +1392,9 @@ func (o ServerChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TotalZededaCount) {
 		toSerialize["totalZededaCount"] = o.TotalZededaCount
+	}
+	if !IsNil(o.TotalGenericK8SCount) {
+		toSerialize["totalGenericK8SCount"] = o.TotalGenericK8SCount
 	}
 	if o.UsedResources != nil {
 		toSerialize["usedResources"] = o.UsedResources
