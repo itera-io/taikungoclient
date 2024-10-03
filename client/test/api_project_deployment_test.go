@@ -209,6 +209,17 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentTofuMigrate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentTofuMigrate(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectDeploymentAPIService ProjectDeploymentUpdate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

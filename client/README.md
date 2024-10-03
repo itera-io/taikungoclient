@@ -289,6 +289,7 @@ Class | Method | HTTP request | Description
 *FlavorsAPI* | [**FlavorsVsphereFlavors**](docs/FlavorsAPI.md#flavorsvsphereflavors) | **Get** /api/v1/flavors/vsphere/{cloudId} | Retrieve vsphere flavors
 *FlavorsAPI* | [**FlavorsZadaraInstanceTypes**](docs/FlavorsAPI.md#flavorszadarainstancetypes) | **Get** /api/v1/flavors/zadara/{cloudId} | Retrieve zadara instance types
 *FlavorsAPI* | [**FlavorsZededaFlavors**](docs/FlavorsAPI.md#flavorszededaflavors) | **Get** /api/v1/flavors/zededa/{cloudId} | Retrieve zededa flavors
+*GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesList**](docs/GenericKubernetesCloudCredentialAPI.md#generickuberneteslist) | **Get** /api/v1/generic-kubernetes/list | Retrieve list of generic kubernetes cloud credentials
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | Create google cloud credential
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
@@ -521,6 +522,7 @@ Class | Method | HTTP request | Description
 *ProjectDeploymentAPI* | [**ProjectDeploymentImportCluster**](docs/ProjectDeploymentAPI.md#projectdeploymentimportcluster) | **Post** /api/v1/project-deployment/import-cluster | Import cluster
 *ProjectDeploymentAPI* | [**ProjectDeploymentRepair**](docs/ProjectDeploymentAPI.md#projectdeploymentrepair) | **Post** /api/v1/project-deployment/repair | Repair
 *ProjectDeploymentAPI* | [**ProjectDeploymentRepairVm**](docs/ProjectDeploymentAPI.md#projectdeploymentrepairvm) | **Post** /api/v1/project-deployment/repair-vm | Repair Vm
+*ProjectDeploymentAPI* | [**ProjectDeploymentTofuMigrate**](docs/ProjectDeploymentAPI.md#projectdeploymenttofumigrate) | **Post** /api/v1/project-deployment/tofu-migrate | Tofu migrate
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpdate**](docs/ProjectDeploymentAPI.md#projectdeploymentupdate) | **Post** /api/v1/project-deployment/update | Update stage of project
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpgrade**](docs/ProjectDeploymentAPI.md#projectdeploymentupgrade) | **Post** /api/v1/project-deployment/upgrade/{projectId} | Upgrade the project&#39;s Kubernetes to the next available version. Project must be READY.
 *ProjectGroupsAPI* | [**ProjectgroupsBindProject**](docs/ProjectGroupsAPI.md#projectgroupsbindproject) | **Post** /api/v1/projectgroups/bind-project | Bind Projects to group
@@ -1086,6 +1088,8 @@ Class | Method | HTTP request | Description
  - [ForceToResetPasswordCommand](docs/ForceToResetPasswordCommand.md)
  - [ForgotPasswordCommand](docs/ForgotPasswordCommand.md)
  - [FullSpotOperationCommand](docs/FullSpotOperationCommand.md)
+ - [GenericKubernetesList](docs/GenericKubernetesList.md)
+ - [GenericKubernetesListDto](docs/GenericKubernetesListDto.md)
  - [GetCatalogAppValueAutocompleteCommand](docs/GetCatalogAppValueAutocompleteCommand.md)
  - [GetCatalogAppValueCommand](docs/GetCatalogAppValueCommand.md)
  - [GetProjectOperationCommand](docs/GetProjectOperationCommand.md)
@@ -1475,6 +1479,7 @@ Class | Method | HTTP request | Description
  - [TanzuFlavorsListDto](docs/TanzuFlavorsListDto.md)
  - [TanzuStorageListCommand](docs/TanzuStorageListCommand.md)
  - [TicketPriority](docs/TicketPriority.md)
+ - [TofuMigrateCommand](docs/TofuMigrateCommand.md)
  - [ToggleExecutorCommand](docs/ToggleExecutorCommand.md)
  - [ToggleKeycloakCommand](docs/ToggleKeycloakCommand.md)
  - [ToggleMaintenanceModeCommand](docs/ToggleMaintenanceModeCommand.md)

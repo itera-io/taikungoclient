@@ -25,6 +25,7 @@ api_cron_job_service.go
 api_dns_servers.go
 api_executors.go
 api_flavors.go
+api_generic_kubernetes_cloud_credential.go
 api_google.go
 api_images.go
 api_infra.go
@@ -436,6 +437,9 @@ docs/FlavorsListDto.md
 docs/ForceToResetPasswordCommand.md
 docs/ForgotPasswordCommand.md
 docs/FullSpotOperationCommand.md
+docs/GenericKubernetesCloudCredentialAPI.md
+docs/GenericKubernetesList.md
+docs/GenericKubernetesListDto.md
 docs/GetCatalogAppValueAutocompleteCommand.md
 docs/GetCatalogAppValueCommand.md
 docs/GetProjectOperationCommand.md
@@ -874,6 +878,7 @@ docs/TanzuFlavorsListDto.md
 docs/TanzuStorageListCommand.md
 docs/TicketAPI.md
 docs/TicketPriority.md
+docs/TofuMigrateCommand.md
 docs/ToggleExecutorCommand.md
 docs/ToggleKeycloakCommand.md
 docs/ToggleMaintenanceModeCommand.md
@@ -1312,6 +1317,8 @@ model_flavors_list_dto.go
 model_force_to_reset_password_command.go
 model_forgot_password_command.go
 model_full_spot_operation_command.go
+model_generic_kubernetes_list.go
+model_generic_kubernetes_list_dto.go
 model_get_catalog_app_value_autocomplete_command.go
 model_get_catalog_app_value_command.go
 model_get_project_operation_command.go
@@ -1701,6 +1708,7 @@ model_tanzu_flavor_list.go
 model_tanzu_flavors_list_dto.go
 model_tanzu_storage_list_command.go
 model_ticket_priority.go
+model_tofu_migrate_command.go
 model_toggle_executor_command.go
 model_toggle_keycloak_command.go
 model_toggle_maintenance_mode_command.go
@@ -1821,6 +1829,7 @@ test/api_cron_job_service_test.go
 test/api_dns_servers_test.go
 test/api_executors_test.go
 test/api_flavors_test.go
+test/api_generic_kubernetes_cloud_credential_test.go
 test/api_google_test.go
 test/api_images_test.go
 test/api_infra_billing_summary_test.go

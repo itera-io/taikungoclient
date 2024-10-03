@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-10-03T00:03:17.9330216Z
-                  createdAt: 2024-10-03T00:03:17.9330216Z
+                  lastValidated: 2024-10-03T12:11:37.5812934Z
+                  createdAt: 2024-10-03T12:11:37.5812934Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-10-03T00:03:17.9330216Z
+                    lastBackup: 2024-10-03T12:11:37.5812934Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-10-03T00:03:17.9330216Z
+                  createdAt: 2024-10-03T12:11:37.5812934Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-10-03T00:03:17.9330216Z
+                  lastBackup: 2024-10-03T12:11:37.5812934Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-03T00:03:17.9330216Z
-                  expiration: 2024-10-03T00:03:17.9330216Z
+                  createdAt: 2024-10-03T12:11:37.5812934Z
+                  expiration: 2024-10-03T12:11:37.5812934Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-03T00:03:17.9330216Z
+                  createdAt: 2024-10-03T12:11:37.5812934Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-10-03T00:03:17.9330216+00:00
-                  startTimeStamp: 2024-10-03T00:03:17.9330216+00:00
-                  createdAt: 2024-10-03T00:03:17.9330216Z
+                  completionDateTime: 2024-10-03T12:11:37.5812934+00:00
+                  startTimeStamp: 2024-10-03T12:11:37.5812934+00:00
+                  createdAt: 2024-10-03T12:11:37.5812934Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -12013,6 +12013,110 @@ paths:
       summary: Retrieve zededa flavors
       tags:
       - Flavors
+  /api/v1/generic-kubernetes/list:
+    get:
+      operationId: generic-kubernetes-list
+      parameters:
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericKubernetesList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve list of generic kubernetes cloud credentials
+      tags:
+      - Generic kubernetes cloud credential
   /api/v1/googlecloud/billing-accounts:
     post:
       operationId: googlecloud-billing-account-list
@@ -25358,6 +25462,49 @@ paths:
       summary: Repair Vm
       tags:
       - Project deployment
+  /api/v1/project-deployment/tofu-migrate:
+    post:
+      operationId: project-deployment-tofu-migrate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TofuMigrateCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Tofu migrate
+      tags:
+      - Project deployment
   /api/v1/project-deployment/update:
     post:
       operationId: project-deployment-update
@@ -38385,6 +38532,7 @@ components:
       - StartAddingVCluster
       - AddingVCluster
       - StartImportCluster
+      - StartMigrationCluster
       type: string
     AddOrganizationsToRuleDto:
       additionalProperties: false
@@ -49502,6 +49650,145 @@ components:
           nullable: true
           type: string
       type: object
+    GenericKubernetesList:
+      additionalProperties: false
+      example:
+        data:
+        - projectCount: 6
+          organizationName: organizationName
+          lastModifiedBy: lastModifiedBy
+          associatedVClusters:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          mainProject:
+            name: name
+            id: 0
+          organizationId: 1
+          createdAt: createdAt
+          isDefault: true
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          id: 0
+          lastModified: lastModified
+          continentName: continentName
+        - projectCount: 6
+          organizationName: organizationName
+          lastModifiedBy: lastModifiedBy
+          associatedVClusters:
+          - name: name
+            id: 0
+          - name: name
+            id: 0
+          mainProject:
+            name: name
+            id: 0
+          organizationId: 1
+          createdAt: createdAt
+          isDefault: true
+          createdBy: createdBy
+          isLocked: true
+          name: name
+          id: 0
+          lastModified: lastModified
+          continentName: continentName
+        totalCount: 5
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/GenericKubernetesListDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      required:
+      - data
+      - totalCount
+      type: object
+    GenericKubernetesListDto:
+      additionalProperties: false
+      example:
+        projectCount: 6
+        organizationName: organizationName
+        lastModifiedBy: lastModifiedBy
+        associatedVClusters:
+        - name: name
+          id: 0
+        - name: name
+          id: 0
+        mainProject:
+          name: name
+          id: 0
+        organizationId: 1
+        createdAt: createdAt
+        isDefault: true
+        createdBy: createdBy
+        isLocked: true
+        name: name
+        id: 0
+        lastModified: lastModified
+        continentName: continentName
+      properties:
+        id:
+          format: int32
+          type: integer
+        projectCount:
+          format: int32
+          type: integer
+        isLocked:
+          type: boolean
+        name:
+          nullable: true
+          type: string
+        mainProject:
+          $ref: '#/components/schemas/CommonDropdownDto'
+        associatedVClusters:
+          items:
+            $ref: '#/components/schemas/CommonDropdownDto'
+          nullable: true
+          type: array
+        createdBy:
+          nullable: true
+          type: string
+        createdAt:
+          nullable: true
+          type: string
+        lastModified:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        isDefault:
+          type: boolean
+        organizationId:
+          format: int32
+          type: integer
+        organizationName:
+          nullable: true
+          type: string
+        continentName:
+          nullable: true
+          type: string
+      required:
+      - associatedVClusters
+      - continentName
+      - createdAt
+      - createdBy
+      - id
+      - isDefault
+      - isLocked
+      - lastModified
+      - lastModifiedBy
+      - mainProject
+      - name
+      - organizationId
+      - organizationName
+      - projectCount
+      type: object
     GetCatalogAppValueAutocompleteCommand:
       additionalProperties: false
       example:
@@ -58886,6 +59173,7 @@ components:
       - Repairing
       - Importing
       - FailedToImport
+      - Migrating
       type: string
     ProjectTemplateDropdownListDto:
       additionalProperties: false
@@ -61376,10 +61664,6 @@ components:
           type: boolean
         console:
           type: boolean
-      required:
-      - console
-      - reboot
-      - status
       type: object
     ServerChartDto:
       additionalProperties: false
@@ -61990,7 +62274,6 @@ components:
           nullable: true
           type: string
       required:
-      - actionButtons
       - autoscalingGroup
       - availabilityZone
       - awsHostName
@@ -64649,6 +64932,15 @@ components:
       - Medium
       - High
       type: string
+    TofuMigrateCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
     ToggleExecutorCommand:
       additionalProperties: false
       example:

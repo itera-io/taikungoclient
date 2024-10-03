@@ -43,6 +43,7 @@ const (
 	PROJECTSTATUS_REPAIRING ProjectStatus = "Repairing"
 	PROJECTSTATUS_IMPORTING ProjectStatus = "Importing"
 	PROJECTSTATUS_FAILED_TO_IMPORT ProjectStatus = "FailedToImport"
+	PROJECTSTATUS_MIGRATING ProjectStatus = "Migrating"
 )
 
 // All allowed values of ProjectStatus enum
@@ -69,6 +70,7 @@ var AllowedProjectStatusEnumValues = []ProjectStatus{
 	"Repairing",
 	"Importing",
 	"FailedToImport",
+	"Migrating",
 }
 
 func (v *ProjectStatus) UnmarshalJSON(src []byte) error {

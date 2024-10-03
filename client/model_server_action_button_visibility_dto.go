@@ -13,8 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"bytes"
-	"fmt"
 )
 
 // checks if the ServerActionButtonVisibilityDto type satisfies the MappedNullable interface at compile time
@@ -22,22 +20,17 @@ var _ MappedNullable = &ServerActionButtonVisibilityDto{}
 
 // ServerActionButtonVisibilityDto struct for ServerActionButtonVisibilityDto
 type ServerActionButtonVisibilityDto struct {
-	Status bool `json:"status"`
-	Reboot bool `json:"reboot"`
-	Console bool `json:"console"`
+	Status *bool `json:"status,omitempty"`
+	Reboot *bool `json:"reboot,omitempty"`
+	Console *bool `json:"console,omitempty"`
 }
-
-type _ServerActionButtonVisibilityDto ServerActionButtonVisibilityDto
 
 // NewServerActionButtonVisibilityDto instantiates a new ServerActionButtonVisibilityDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerActionButtonVisibilityDto(status bool, reboot bool, console bool) *ServerActionButtonVisibilityDto {
+func NewServerActionButtonVisibilityDto() *ServerActionButtonVisibilityDto {
 	this := ServerActionButtonVisibilityDto{}
-	this.Status = status
-	this.Reboot = reboot
-	this.Console = console
 	return &this
 }
 
@@ -49,76 +42,100 @@ func NewServerActionButtonVisibilityDtoWithDefaults() *ServerActionButtonVisibil
 	return &this
 }
 
-// GetStatus returns the Status field value
+// GetStatus returns the Status field value if set, zero value otherwise.
 func (o *ServerActionButtonVisibilityDto) GetStatus() bool {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		var ret bool
 		return ret
 	}
-
-	return o.Status
+	return *o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerActionButtonVisibilityDto) GetStatusOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
-	return &o.Status, true
+	return o.Status, true
 }
 
-// SetStatus sets field value
+// HasStatus returns a boolean if a field has been set.
+func (o *ServerActionButtonVisibilityDto) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given bool and assigns it to the Status field.
 func (o *ServerActionButtonVisibilityDto) SetStatus(v bool) {
-	o.Status = v
+	o.Status = &v
 }
 
-// GetReboot returns the Reboot field value
+// GetReboot returns the Reboot field value if set, zero value otherwise.
 func (o *ServerActionButtonVisibilityDto) GetReboot() bool {
-	if o == nil {
+	if o == nil || IsNil(o.Reboot) {
 		var ret bool
 		return ret
 	}
-
-	return o.Reboot
+	return *o.Reboot
 }
 
-// GetRebootOk returns a tuple with the Reboot field value
+// GetRebootOk returns a tuple with the Reboot field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerActionButtonVisibilityDto) GetRebootOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Reboot) {
 		return nil, false
 	}
-	return &o.Reboot, true
+	return o.Reboot, true
 }
 
-// SetReboot sets field value
+// HasReboot returns a boolean if a field has been set.
+func (o *ServerActionButtonVisibilityDto) HasReboot() bool {
+	if o != nil && !IsNil(o.Reboot) {
+		return true
+	}
+
+	return false
+}
+
+// SetReboot gets a reference to the given bool and assigns it to the Reboot field.
 func (o *ServerActionButtonVisibilityDto) SetReboot(v bool) {
-	o.Reboot = v
+	o.Reboot = &v
 }
 
-// GetConsole returns the Console field value
+// GetConsole returns the Console field value if set, zero value otherwise.
 func (o *ServerActionButtonVisibilityDto) GetConsole() bool {
-	if o == nil {
+	if o == nil || IsNil(o.Console) {
 		var ret bool
 		return ret
 	}
-
-	return o.Console
+	return *o.Console
 }
 
-// GetConsoleOk returns a tuple with the Console field value
+// GetConsoleOk returns a tuple with the Console field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerActionButtonVisibilityDto) GetConsoleOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Console) {
 		return nil, false
 	}
-	return &o.Console, true
+	return o.Console, true
 }
 
-// SetConsole sets field value
+// HasConsole returns a boolean if a field has been set.
+func (o *ServerActionButtonVisibilityDto) HasConsole() bool {
+	if o != nil && !IsNil(o.Console) {
+		return true
+	}
+
+	return false
+}
+
+// SetConsole gets a reference to the given bool and assigns it to the Console field.
 func (o *ServerActionButtonVisibilityDto) SetConsole(v bool) {
-	o.Console = v
+	o.Console = &v
 }
 
 func (o ServerActionButtonVisibilityDto) MarshalJSON() ([]byte, error) {
@@ -131,49 +148,16 @@ func (o ServerActionButtonVisibilityDto) MarshalJSON() ([]byte, error) {
 
 func (o ServerActionButtonVisibilityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["status"] = o.Status
-	toSerialize["reboot"] = o.Reboot
-	toSerialize["console"] = o.Console
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
+	}
+	if !IsNil(o.Reboot) {
+		toSerialize["reboot"] = o.Reboot
+	}
+	if !IsNil(o.Console) {
+		toSerialize["console"] = o.Console
+	}
 	return toSerialize, nil
-}
-
-func (o *ServerActionButtonVisibilityDto) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"status",
-		"reboot",
-		"console",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err;
-	}
-
-	for _, requiredProperty := range(requiredProperties) {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varServerActionButtonVisibilityDto := _ServerActionButtonVisibilityDto{}
-
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varServerActionButtonVisibilityDto)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ServerActionButtonVisibilityDto(varServerActionButtonVisibilityDto)
-
-	return err
 }
 
 type NullableServerActionButtonVisibilityDto struct {

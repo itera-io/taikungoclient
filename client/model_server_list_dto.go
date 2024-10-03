@@ -52,7 +52,7 @@ type ServerListDto struct {
 	HypervisorId NullableString `json:"hypervisorId"`
 	ProxmoxRole ProxmoxRole `json:"proxmoxRole"`
 	ProxmoxExtraDiskSize int32 `json:"proxmoxExtraDiskSize"`
-	ActionButtons ServerActionButtonVisibilityDto `json:"actionButtons"`
+	ActionButtons *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
 	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels"`
 	ReplicaCount NullableInt32 `json:"replicaCount"`
 	WasmEnabled bool `json:"wasmEnabled"`
@@ -65,7 +65,7 @@ type _ServerListDto ServerListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerListDto(id int32, name string, projectName string, organizationName string, organizationId int32, projectId int32, ipAddress NullableString, diskSize float64, kubernetesHealth string, cpu int32, ram float64, role CloudRole, status string, createdAt string, cloudType CloudType, createdBy string, lastModified NullableString, lastModifiedBy NullableString, spotPrice float64, spotInstance bool, shutOff bool, autoscalingGroup NullableString, providerID NullableString, instanceId NullableString, awsHostName NullableString, availabilityZone NullableString, hypervisor NullableString, hypervisorId NullableString, proxmoxRole ProxmoxRole, proxmoxExtraDiskSize int32, actionButtons ServerActionButtonVisibilityDto, kubernetesNodeLabels []KubernetesNodeLabelsDto, replicaCount NullableInt32, wasmEnabled bool, flavor NullableString) *ServerListDto {
+func NewServerListDto(id int32, name string, projectName string, organizationName string, organizationId int32, projectId int32, ipAddress NullableString, diskSize float64, kubernetesHealth string, cpu int32, ram float64, role CloudRole, status string, createdAt string, cloudType CloudType, createdBy string, lastModified NullableString, lastModifiedBy NullableString, spotPrice float64, spotInstance bool, shutOff bool, autoscalingGroup NullableString, providerID NullableString, instanceId NullableString, awsHostName NullableString, availabilityZone NullableString, hypervisor NullableString, hypervisorId NullableString, proxmoxRole ProxmoxRole, proxmoxExtraDiskSize int32, kubernetesNodeLabels []KubernetesNodeLabelsDto, replicaCount NullableInt32, wasmEnabled bool, flavor NullableString) *ServerListDto {
 	this := ServerListDto{}
 	this.Id = id
 	this.Name = name
@@ -97,7 +97,6 @@ func NewServerListDto(id int32, name string, projectName string, organizationNam
 	this.HypervisorId = hypervisorId
 	this.ProxmoxRole = proxmoxRole
 	this.ProxmoxExtraDiskSize = proxmoxExtraDiskSize
-	this.ActionButtons = actionButtons
 	this.KubernetesNodeLabels = kubernetesNodeLabels
 	this.ReplicaCount = replicaCount
 	this.WasmEnabled = wasmEnabled
@@ -853,28 +852,36 @@ func (o *ServerListDto) SetProxmoxExtraDiskSize(v int32) {
 	o.ProxmoxExtraDiskSize = v
 }
 
-// GetActionButtons returns the ActionButtons field value
+// GetActionButtons returns the ActionButtons field value if set, zero value otherwise.
 func (o *ServerListDto) GetActionButtons() ServerActionButtonVisibilityDto {
-	if o == nil {
+	if o == nil || IsNil(o.ActionButtons) {
 		var ret ServerActionButtonVisibilityDto
 		return ret
 	}
-
-	return o.ActionButtons
+	return *o.ActionButtons
 }
 
-// GetActionButtonsOk returns a tuple with the ActionButtons field value
+// GetActionButtonsOk returns a tuple with the ActionButtons field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetActionButtonsOk() (*ServerActionButtonVisibilityDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ActionButtons) {
 		return nil, false
 	}
-	return &o.ActionButtons, true
+	return o.ActionButtons, true
 }
 
-// SetActionButtons sets field value
+// HasActionButtons returns a boolean if a field has been set.
+func (o *ServerListDto) HasActionButtons() bool {
+	if o != nil && !IsNil(o.ActionButtons) {
+		return true
+	}
+
+	return false
+}
+
+// SetActionButtons gets a reference to the given ServerActionButtonVisibilityDto and assigns it to the ActionButtons field.
 func (o *ServerListDto) SetActionButtons(v ServerActionButtonVisibilityDto) {
-	o.ActionButtons = v
+	o.ActionButtons = &v
 }
 
 // GetKubernetesNodeLabels returns the KubernetesNodeLabels field value
@@ -1017,7 +1024,9 @@ func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["hypervisorId"] = o.HypervisorId.Get()
 	toSerialize["proxmoxRole"] = o.ProxmoxRole
 	toSerialize["proxmoxExtraDiskSize"] = o.ProxmoxExtraDiskSize
-	toSerialize["actionButtons"] = o.ActionButtons
+	if !IsNil(o.ActionButtons) {
+		toSerialize["actionButtons"] = o.ActionButtons
+	}
 	toSerialize["kubernetesNodeLabels"] = o.KubernetesNodeLabels
 	toSerialize["replicaCount"] = o.ReplicaCount.Get()
 	toSerialize["wasmEnabled"] = o.WasmEnabled
@@ -1060,7 +1069,6 @@ func (o *ServerListDto) UnmarshalJSON(data []byte) (err error) {
 		"hypervisorId",
 		"proxmoxRole",
 		"proxmoxExtraDiskSize",
-		"actionButtons",
 		"kubernetesNodeLabels",
 		"replicaCount",
 		"wasmEnabled",
