@@ -23,29 +23,29 @@ var _ MappedNullable = &ProjectListDetailDto{}
 // ProjectListDetailDto struct for ProjectListDetailDto
 type ProjectListDetailDto struct {
 	Id int32 `json:"id"`
-	Name NullableString `json:"name"`
+	Name string `json:"name"`
 	IsKubernetes bool `json:"isKubernetes"`
 	IsLocked bool `json:"isLocked"`
 	IsVirtualCluster bool `json:"isVirtualCluster"`
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
 	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
-	CloudCredentialName NullableString `json:"cloudCredentialName"`
-	OrganizationName NullableString `json:"organizationName"`
+	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
+	OrganizationName string `json:"organizationName"`
 	OrganizationId int32 `json:"organizationId"`
 	Status ProjectStatus `json:"status"`
 	Health ProjectHealth `json:"health"`
-	CloudType CloudType `json:"cloudType"`
-	KubesprayCurrentVersion NullableString `json:"kubesprayCurrentVersion"`
-	KubesprayTargetVersion NullableString `json:"kubesprayTargetVersion"`
-	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion"`
-	KubernetesTargetVersion NullableString `json:"kubernetesTargetVersion"`
-	CreatedAt NullableString `json:"createdAt"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
+	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion"`
+	KubesprayTargetVersion string `json:"kubesprayTargetVersion"`
+	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion"`
+	KubernetesTargetVersion string `json:"kubernetesTargetVersion"`
+	CreatedAt string `json:"createdAt"`
 	AlertsCount int32 `json:"alertsCount"`
 	TotalServersCount int32 `json:"totalServersCount"`
 	TotalStandaloneVmsCount int32 `json:"totalStandaloneVmsCount"`
 	BoundUsers []UserDto `json:"boundUsers"`
-	CreatedBy NullableString `json:"createdBy"`
+	CreatedBy string `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
 	ExpiredAt NullableString `json:"expiredAt"`
 	DeleteOnExpiration bool `json:"deleteOnExpiration"`
@@ -68,12 +68,12 @@ type ProjectListDetailDto struct {
 	ParentProjectId NullableInt32 `json:"parentProjectId"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
 	OpaProfileId NullableInt32 `json:"opaProfileId"`
-	LockButton ButtonStatusDto `json:"lockButton"`
-	UnlockButton ButtonStatusDto `json:"unlockButton"`
-	DeleteButton ButtonStatusDto `json:"deleteButton"`
-	KubeInfoButton ButtonStatusDto `json:"kubeInfoButton"`
-	SetExpirationDateButton ButtonStatusDto `json:"setExpirationDateButton"`
-	ResetStatusButton ButtonStatusDto `json:"resetStatusButton"`
+	LockButton *ButtonStatusDto `json:"lockButton,omitempty"`
+	UnlockButton *ButtonStatusDto `json:"unlockButton,omitempty"`
+	DeleteButton *ButtonStatusDto `json:"deleteButton,omitempty"`
+	KubeInfoButton *ButtonStatusDto `json:"kubeInfoButton,omitempty"`
+	SetExpirationDateButton *ButtonStatusDto `json:"setExpirationDateButton,omitempty"`
+	ResetStatusButton *ButtonStatusDto `json:"resetStatusButton,omitempty"`
 }
 
 type _ProjectListDetailDto ProjectListDetailDto
@@ -82,7 +82,7 @@ type _ProjectListDetailDto ProjectListDetailDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectListDetailDto(id int32, name NullableString, isKubernetes bool, isLocked bool, isVirtualCluster bool, isMonitoringEnabled bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, cloudCredentialName NullableString, organizationName NullableString, organizationId int32, status ProjectStatus, health ProjectHealth, cloudType CloudType, kubesprayCurrentVersion NullableString, kubesprayTargetVersion NullableString, kubernetesCurrentVersion NullableString, kubernetesTargetVersion NullableString, createdAt NullableString, alertsCount int32, totalServersCount int32, totalStandaloneVmsCount int32, boundUsers []UserDto, createdBy NullableString, lastModified NullableString, expiredAt NullableString, deleteOnExpiration bool, certificateExpiredAt NullableString, lastModifiedBy NullableString, quotaId int32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, projectAction bool, hasExpirationWarning bool, totalHourlyCost float64, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, aiEnabled bool, anyServer bool, anyVm bool, allUsers []string, parentProjectId NullableInt32, alertingProfileId NullableInt32, opaProfileId NullableInt32, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *ProjectListDetailDto {
+func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked bool, isVirtualCluster bool, isMonitoringEnabled bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, status ProjectStatus, health ProjectHealth, kubesprayCurrentVersion string, kubesprayTargetVersion string, kubernetesCurrentVersion string, kubernetesTargetVersion string, createdAt string, alertsCount int32, totalServersCount int32, totalStandaloneVmsCount int32, boundUsers []UserDto, createdBy string, lastModified NullableString, expiredAt NullableString, deleteOnExpiration bool, certificateExpiredAt NullableString, lastModifiedBy NullableString, quotaId int32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, projectAction bool, hasExpirationWarning bool, totalHourlyCost float64, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, aiEnabled bool, anyServer bool, anyVm bool, allUsers []string, parentProjectId NullableInt32, alertingProfileId NullableInt32, opaProfileId NullableInt32) *ProjectListDetailDto {
 	this := ProjectListDetailDto{}
 	this.Id = id
 	this.Name = name
@@ -92,12 +92,10 @@ func NewProjectListDetailDto(id int32, name NullableString, isKubernetes bool, i
 	this.IsMonitoringEnabled = isMonitoringEnabled
 	this.HasKubeConfigFile = hasKubeConfigFile
 	this.IsMaintenanceModeEnabled = isMaintenanceModeEnabled
-	this.CloudCredentialName = cloudCredentialName
 	this.OrganizationName = organizationName
 	this.OrganizationId = organizationId
 	this.Status = status
 	this.Health = health
-	this.CloudType = cloudType
 	this.KubesprayCurrentVersion = kubesprayCurrentVersion
 	this.KubesprayTargetVersion = kubesprayTargetVersion
 	this.KubernetesCurrentVersion = kubernetesCurrentVersion
@@ -130,12 +128,6 @@ func NewProjectListDetailDto(id int32, name NullableString, isKubernetes bool, i
 	this.ParentProjectId = parentProjectId
 	this.AlertingProfileId = alertingProfileId
 	this.OpaProfileId = opaProfileId
-	this.LockButton = lockButton
-	this.UnlockButton = unlockButton
-	this.DeleteButton = deleteButton
-	this.KubeInfoButton = kubeInfoButton
-	this.SetExpirationDateButton = setExpirationDateButton
-	this.ResetStatusButton = resetStatusButton
 	return &this
 }
 
@@ -172,29 +164,27 @@ func (o *ProjectListDetailDto) SetId(v int32) {
 }
 
 // GetName returns the Name field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectListDetailDto) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Name.Get()
+	return o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListDetailDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
 // SetName sets field value
 func (o *ProjectListDetailDto) SetName(v string) {
-	o.Name.Set(&v)
+	o.Name = v
 }
 
 // GetIsKubernetes returns the IsKubernetes field value
@@ -341,18 +331,16 @@ func (o *ProjectListDetailDto) SetIsMaintenanceModeEnabled(v bool) {
 	o.IsMaintenanceModeEnabled = v
 }
 
-// GetCloudCredentialName returns the CloudCredentialName field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetCloudCredentialName returns the CloudCredentialName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProjectListDetailDto) GetCloudCredentialName() string {
-	if o == nil || o.CloudCredentialName.Get() == nil {
+	if o == nil || IsNil(o.CloudCredentialName.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.CloudCredentialName.Get()
 }
 
-// GetCloudCredentialNameOk returns a tuple with the CloudCredentialName field value
+// GetCloudCredentialNameOk returns a tuple with the CloudCredentialName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListDetailDto) GetCloudCredentialNameOk() (*string, bool) {
@@ -362,35 +350,51 @@ func (o *ProjectListDetailDto) GetCloudCredentialNameOk() (*string, bool) {
 	return o.CloudCredentialName.Get(), o.CloudCredentialName.IsSet()
 }
 
-// SetCloudCredentialName sets field value
+// HasCloudCredentialName returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasCloudCredentialName() bool {
+	if o != nil && o.CloudCredentialName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudCredentialName gets a reference to the given NullableString and assigns it to the CloudCredentialName field.
 func (o *ProjectListDetailDto) SetCloudCredentialName(v string) {
 	o.CloudCredentialName.Set(&v)
 }
+// SetCloudCredentialNameNil sets the value for CloudCredentialName to be an explicit nil
+func (o *ProjectListDetailDto) SetCloudCredentialNameNil() {
+	o.CloudCredentialName.Set(nil)
+}
+
+// UnsetCloudCredentialName ensures that no value is present for CloudCredentialName, not even an explicit nil
+func (o *ProjectListDetailDto) UnsetCloudCredentialName() {
+	o.CloudCredentialName.Unset()
+}
 
 // GetOrganizationName returns the OrganizationName field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectListDetailDto) GetOrganizationName() string {
-	if o == nil || o.OrganizationName.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.OrganizationName.Get()
+	return o.OrganizationName
 }
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListDetailDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return &o.OrganizationName, true
 }
 
 // SetOrganizationName sets field value
 func (o *ProjectListDetailDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
+	o.OrganizationName = v
 }
 
 // GetOrganizationId returns the OrganizationId field value
@@ -465,158 +469,156 @@ func (o *ProjectListDetailDto) SetHealth(v ProjectHealth) {
 	o.Health = v
 }
 
-// GetCloudType returns the CloudType field value
+// GetCloudType returns the CloudType field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetCloudType() CloudType {
-	if o == nil {
+	if o == nil || IsNil(o.CloudType) {
 		var ret CloudType
 		return ret
 	}
-
-	return o.CloudType
+	return *o.CloudType
 }
 
-// GetCloudTypeOk returns a tuple with the CloudType field value
+// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectListDetailDto) GetCloudTypeOk() (*CloudType, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CloudType) {
 		return nil, false
 	}
-	return &o.CloudType, true
+	return o.CloudType, true
 }
 
-// SetCloudType sets field value
+// HasCloudType returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasCloudType() bool {
+	if o != nil && !IsNil(o.CloudType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
 func (o *ProjectListDetailDto) SetCloudType(v CloudType) {
-	o.CloudType = v
+	o.CloudType = &v
 }
 
 // GetKubesprayCurrentVersion returns the KubesprayCurrentVersion field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectListDetailDto) GetKubesprayCurrentVersion() string {
-	if o == nil || o.KubesprayCurrentVersion.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.KubesprayCurrentVersion.Get()
+	return o.KubesprayCurrentVersion
 }
 
 // GetKubesprayCurrentVersionOk returns a tuple with the KubesprayCurrentVersion field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListDetailDto) GetKubesprayCurrentVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.KubesprayCurrentVersion.Get(), o.KubesprayCurrentVersion.IsSet()
+	return &o.KubesprayCurrentVersion, true
 }
 
 // SetKubesprayCurrentVersion sets field value
 func (o *ProjectListDetailDto) SetKubesprayCurrentVersion(v string) {
-	o.KubesprayCurrentVersion.Set(&v)
+	o.KubesprayCurrentVersion = v
 }
 
 // GetKubesprayTargetVersion returns the KubesprayTargetVersion field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectListDetailDto) GetKubesprayTargetVersion() string {
-	if o == nil || o.KubesprayTargetVersion.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.KubesprayTargetVersion.Get()
+	return o.KubesprayTargetVersion
 }
 
 // GetKubesprayTargetVersionOk returns a tuple with the KubesprayTargetVersion field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListDetailDto) GetKubesprayTargetVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.KubesprayTargetVersion.Get(), o.KubesprayTargetVersion.IsSet()
+	return &o.KubesprayTargetVersion, true
 }
 
 // SetKubesprayTargetVersion sets field value
 func (o *ProjectListDetailDto) SetKubesprayTargetVersion(v string) {
-	o.KubesprayTargetVersion.Set(&v)
+	o.KubesprayTargetVersion = v
 }
 
 // GetKubernetesCurrentVersion returns the KubernetesCurrentVersion field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectListDetailDto) GetKubernetesCurrentVersion() string {
-	if o == nil || o.KubernetesCurrentVersion.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.KubernetesCurrentVersion.Get()
+	return o.KubernetesCurrentVersion
 }
 
 // GetKubernetesCurrentVersionOk returns a tuple with the KubernetesCurrentVersion field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListDetailDto) GetKubernetesCurrentVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.KubernetesCurrentVersion.Get(), o.KubernetesCurrentVersion.IsSet()
+	return &o.KubernetesCurrentVersion, true
 }
 
 // SetKubernetesCurrentVersion sets field value
 func (o *ProjectListDetailDto) SetKubernetesCurrentVersion(v string) {
-	o.KubernetesCurrentVersion.Set(&v)
+	o.KubernetesCurrentVersion = v
 }
 
 // GetKubernetesTargetVersion returns the KubernetesTargetVersion field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectListDetailDto) GetKubernetesTargetVersion() string {
-	if o == nil || o.KubernetesTargetVersion.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.KubernetesTargetVersion.Get()
+	return o.KubernetesTargetVersion
 }
 
 // GetKubernetesTargetVersionOk returns a tuple with the KubernetesTargetVersion field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListDetailDto) GetKubernetesTargetVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.KubernetesTargetVersion.Get(), o.KubernetesTargetVersion.IsSet()
+	return &o.KubernetesTargetVersion, true
 }
 
 // SetKubernetesTargetVersion sets field value
 func (o *ProjectListDetailDto) SetKubernetesTargetVersion(v string) {
-	o.KubernetesTargetVersion.Set(&v)
+	o.KubernetesTargetVersion = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectListDetailDto) GetCreatedAt() string {
-	if o == nil || o.CreatedAt.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.CreatedAt.Get()
+	return o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListDetailDto) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return &o.CreatedAt, true
 }
 
 // SetCreatedAt sets field value
 func (o *ProjectListDetailDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
+	o.CreatedAt = v
 }
 
 // GetAlertsCount returns the AlertsCount field value
@@ -692,7 +694,6 @@ func (o *ProjectListDetailDto) SetTotalStandaloneVmsCount(v int32) {
 }
 
 // GetBoundUsers returns the BoundUsers field value
-// If the value is explicit nil, the zero value for []UserDto will be returned
 func (o *ProjectListDetailDto) GetBoundUsers() []UserDto {
 	if o == nil {
 		var ret []UserDto
@@ -704,9 +705,8 @@ func (o *ProjectListDetailDto) GetBoundUsers() []UserDto {
 
 // GetBoundUsersOk returns a tuple with the BoundUsers field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListDetailDto) GetBoundUsersOk() ([]UserDto, bool) {
-	if o == nil || IsNil(o.BoundUsers) {
+	if o == nil {
 		return nil, false
 	}
 	return o.BoundUsers, true
@@ -718,29 +718,27 @@ func (o *ProjectListDetailDto) SetBoundUsers(v []UserDto) {
 }
 
 // GetCreatedBy returns the CreatedBy field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectListDetailDto) GetCreatedBy() string {
-	if o == nil || o.CreatedBy.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.CreatedBy.Get()
+	return o.CreatedBy
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListDetailDto) GetCreatedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
 // SetCreatedBy sets field value
 func (o *ProjectListDetailDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
+	o.CreatedBy = v
 }
 
 // GetLastModified returns the LastModified field value
@@ -1186,7 +1184,6 @@ func (o *ProjectListDetailDto) SetAnyVm(v bool) {
 }
 
 // GetAllUsers returns the AllUsers field value
-// If the value is explicit nil, the zero value for []string will be returned
 func (o *ProjectListDetailDto) GetAllUsers() []string {
 	if o == nil {
 		var ret []string
@@ -1198,9 +1195,8 @@ func (o *ProjectListDetailDto) GetAllUsers() []string {
 
 // GetAllUsersOk returns a tuple with the AllUsers field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectListDetailDto) GetAllUsersOk() ([]string, bool) {
-	if o == nil || IsNil(o.AllUsers) {
+	if o == nil {
 		return nil, false
 	}
 	return o.AllUsers, true
@@ -1289,148 +1285,196 @@ func (o *ProjectListDetailDto) SetOpaProfileId(v int32) {
 	o.OpaProfileId.Set(&v)
 }
 
-// GetLockButton returns the LockButton field value
+// GetLockButton returns the LockButton field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetLockButton() ButtonStatusDto {
-	if o == nil {
+	if o == nil || IsNil(o.LockButton) {
 		var ret ButtonStatusDto
 		return ret
 	}
-
-	return o.LockButton
+	return *o.LockButton
 }
 
-// GetLockButtonOk returns a tuple with the LockButton field value
+// GetLockButtonOk returns a tuple with the LockButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectListDetailDto) GetLockButtonOk() (*ButtonStatusDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LockButton) {
 		return nil, false
 	}
-	return &o.LockButton, true
+	return o.LockButton, true
 }
 
-// SetLockButton sets field value
+// HasLockButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasLockButton() bool {
+	if o != nil && !IsNil(o.LockButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetLockButton gets a reference to the given ButtonStatusDto and assigns it to the LockButton field.
 func (o *ProjectListDetailDto) SetLockButton(v ButtonStatusDto) {
-	o.LockButton = v
+	o.LockButton = &v
 }
 
-// GetUnlockButton returns the UnlockButton field value
+// GetUnlockButton returns the UnlockButton field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetUnlockButton() ButtonStatusDto {
-	if o == nil {
+	if o == nil || IsNil(o.UnlockButton) {
 		var ret ButtonStatusDto
 		return ret
 	}
-
-	return o.UnlockButton
+	return *o.UnlockButton
 }
 
-// GetUnlockButtonOk returns a tuple with the UnlockButton field value
+// GetUnlockButtonOk returns a tuple with the UnlockButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectListDetailDto) GetUnlockButtonOk() (*ButtonStatusDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.UnlockButton) {
 		return nil, false
 	}
-	return &o.UnlockButton, true
+	return o.UnlockButton, true
 }
 
-// SetUnlockButton sets field value
+// HasUnlockButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasUnlockButton() bool {
+	if o != nil && !IsNil(o.UnlockButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetUnlockButton gets a reference to the given ButtonStatusDto and assigns it to the UnlockButton field.
 func (o *ProjectListDetailDto) SetUnlockButton(v ButtonStatusDto) {
-	o.UnlockButton = v
+	o.UnlockButton = &v
 }
 
-// GetDeleteButton returns the DeleteButton field value
+// GetDeleteButton returns the DeleteButton field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetDeleteButton() ButtonStatusDto {
-	if o == nil {
+	if o == nil || IsNil(o.DeleteButton) {
 		var ret ButtonStatusDto
 		return ret
 	}
-
-	return o.DeleteButton
+	return *o.DeleteButton
 }
 
-// GetDeleteButtonOk returns a tuple with the DeleteButton field value
+// GetDeleteButtonOk returns a tuple with the DeleteButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectListDetailDto) GetDeleteButtonOk() (*ButtonStatusDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DeleteButton) {
 		return nil, false
 	}
-	return &o.DeleteButton, true
+	return o.DeleteButton, true
 }
 
-// SetDeleteButton sets field value
+// HasDeleteButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasDeleteButton() bool {
+	if o != nil && !IsNil(o.DeleteButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeleteButton gets a reference to the given ButtonStatusDto and assigns it to the DeleteButton field.
 func (o *ProjectListDetailDto) SetDeleteButton(v ButtonStatusDto) {
-	o.DeleteButton = v
+	o.DeleteButton = &v
 }
 
-// GetKubeInfoButton returns the KubeInfoButton field value
+// GetKubeInfoButton returns the KubeInfoButton field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetKubeInfoButton() ButtonStatusDto {
-	if o == nil {
+	if o == nil || IsNil(o.KubeInfoButton) {
 		var ret ButtonStatusDto
 		return ret
 	}
-
-	return o.KubeInfoButton
+	return *o.KubeInfoButton
 }
 
-// GetKubeInfoButtonOk returns a tuple with the KubeInfoButton field value
+// GetKubeInfoButtonOk returns a tuple with the KubeInfoButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectListDetailDto) GetKubeInfoButtonOk() (*ButtonStatusDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.KubeInfoButton) {
 		return nil, false
 	}
-	return &o.KubeInfoButton, true
+	return o.KubeInfoButton, true
 }
 
-// SetKubeInfoButton sets field value
+// HasKubeInfoButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasKubeInfoButton() bool {
+	if o != nil && !IsNil(o.KubeInfoButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeInfoButton gets a reference to the given ButtonStatusDto and assigns it to the KubeInfoButton field.
 func (o *ProjectListDetailDto) SetKubeInfoButton(v ButtonStatusDto) {
-	o.KubeInfoButton = v
+	o.KubeInfoButton = &v
 }
 
-// GetSetExpirationDateButton returns the SetExpirationDateButton field value
+// GetSetExpirationDateButton returns the SetExpirationDateButton field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetSetExpirationDateButton() ButtonStatusDto {
-	if o == nil {
+	if o == nil || IsNil(o.SetExpirationDateButton) {
 		var ret ButtonStatusDto
 		return ret
 	}
-
-	return o.SetExpirationDateButton
+	return *o.SetExpirationDateButton
 }
 
-// GetSetExpirationDateButtonOk returns a tuple with the SetExpirationDateButton field value
+// GetSetExpirationDateButtonOk returns a tuple with the SetExpirationDateButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectListDetailDto) GetSetExpirationDateButtonOk() (*ButtonStatusDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.SetExpirationDateButton) {
 		return nil, false
 	}
-	return &o.SetExpirationDateButton, true
+	return o.SetExpirationDateButton, true
 }
 
-// SetSetExpirationDateButton sets field value
+// HasSetExpirationDateButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasSetExpirationDateButton() bool {
+	if o != nil && !IsNil(o.SetExpirationDateButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetSetExpirationDateButton gets a reference to the given ButtonStatusDto and assigns it to the SetExpirationDateButton field.
 func (o *ProjectListDetailDto) SetSetExpirationDateButton(v ButtonStatusDto) {
-	o.SetExpirationDateButton = v
+	o.SetExpirationDateButton = &v
 }
 
-// GetResetStatusButton returns the ResetStatusButton field value
+// GetResetStatusButton returns the ResetStatusButton field value if set, zero value otherwise.
 func (o *ProjectListDetailDto) GetResetStatusButton() ButtonStatusDto {
-	if o == nil {
+	if o == nil || IsNil(o.ResetStatusButton) {
 		var ret ButtonStatusDto
 		return ret
 	}
-
-	return o.ResetStatusButton
+	return *o.ResetStatusButton
 }
 
-// GetResetStatusButtonOk returns a tuple with the ResetStatusButton field value
+// GetResetStatusButtonOk returns a tuple with the ResetStatusButton field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectListDetailDto) GetResetStatusButtonOk() (*ButtonStatusDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ResetStatusButton) {
 		return nil, false
 	}
-	return &o.ResetStatusButton, true
+	return o.ResetStatusButton, true
 }
 
-// SetResetStatusButton sets field value
+// HasResetStatusButton returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasResetStatusButton() bool {
+	if o != nil && !IsNil(o.ResetStatusButton) {
+		return true
+	}
+
+	return false
+}
+
+// SetResetStatusButton gets a reference to the given ButtonStatusDto and assigns it to the ResetStatusButton field.
 func (o *ProjectListDetailDto) SetResetStatusButton(v ButtonStatusDto) {
-	o.ResetStatusButton = v
+	o.ResetStatusButton = &v
 }
 
 func (o ProjectListDetailDto) MarshalJSON() ([]byte, error) {
@@ -1444,31 +1488,33 @@ func (o ProjectListDetailDto) MarshalJSON() ([]byte, error) {
 func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name.Get()
+	toSerialize["name"] = o.Name
 	toSerialize["isKubernetes"] = o.IsKubernetes
 	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["isVirtualCluster"] = o.IsVirtualCluster
 	toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
 	toSerialize["hasKubeConfigFile"] = o.HasKubeConfigFile
 	toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
-	toSerialize["cloudCredentialName"] = o.CloudCredentialName.Get()
-	toSerialize["organizationName"] = o.OrganizationName.Get()
+	if o.CloudCredentialName.IsSet() {
+		toSerialize["cloudCredentialName"] = o.CloudCredentialName.Get()
+	}
+	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["status"] = o.Status
 	toSerialize["health"] = o.Health
-	toSerialize["cloudType"] = o.CloudType
-	toSerialize["kubesprayCurrentVersion"] = o.KubesprayCurrentVersion.Get()
-	toSerialize["kubesprayTargetVersion"] = o.KubesprayTargetVersion.Get()
-	toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion.Get()
-	toSerialize["kubernetesTargetVersion"] = o.KubernetesTargetVersion.Get()
-	toSerialize["createdAt"] = o.CreatedAt.Get()
+	if !IsNil(o.CloudType) {
+		toSerialize["cloudType"] = o.CloudType
+	}
+	toSerialize["kubesprayCurrentVersion"] = o.KubesprayCurrentVersion
+	toSerialize["kubesprayTargetVersion"] = o.KubesprayTargetVersion
+	toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion
+	toSerialize["kubernetesTargetVersion"] = o.KubernetesTargetVersion
+	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["alertsCount"] = o.AlertsCount
 	toSerialize["totalServersCount"] = o.TotalServersCount
 	toSerialize["totalStandaloneVmsCount"] = o.TotalStandaloneVmsCount
-	if o.BoundUsers != nil {
-		toSerialize["boundUsers"] = o.BoundUsers
-	}
-	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["boundUsers"] = o.BoundUsers
+	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified.Get()
 	toSerialize["expiredAt"] = o.ExpiredAt.Get()
 	toSerialize["deleteOnExpiration"] = o.DeleteOnExpiration
@@ -1487,18 +1533,28 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["aiEnabled"] = o.AiEnabled
 	toSerialize["anyServer"] = o.AnyServer
 	toSerialize["anyVm"] = o.AnyVm
-	if o.AllUsers != nil {
-		toSerialize["allUsers"] = o.AllUsers
-	}
+	toSerialize["allUsers"] = o.AllUsers
 	toSerialize["parentProjectId"] = o.ParentProjectId.Get()
 	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	toSerialize["opaProfileId"] = o.OpaProfileId.Get()
-	toSerialize["lockButton"] = o.LockButton
-	toSerialize["unlockButton"] = o.UnlockButton
-	toSerialize["deleteButton"] = o.DeleteButton
-	toSerialize["kubeInfoButton"] = o.KubeInfoButton
-	toSerialize["setExpirationDateButton"] = o.SetExpirationDateButton
-	toSerialize["resetStatusButton"] = o.ResetStatusButton
+	if !IsNil(o.LockButton) {
+		toSerialize["lockButton"] = o.LockButton
+	}
+	if !IsNil(o.UnlockButton) {
+		toSerialize["unlockButton"] = o.UnlockButton
+	}
+	if !IsNil(o.DeleteButton) {
+		toSerialize["deleteButton"] = o.DeleteButton
+	}
+	if !IsNil(o.KubeInfoButton) {
+		toSerialize["kubeInfoButton"] = o.KubeInfoButton
+	}
+	if !IsNil(o.SetExpirationDateButton) {
+		toSerialize["setExpirationDateButton"] = o.SetExpirationDateButton
+	}
+	if !IsNil(o.ResetStatusButton) {
+		toSerialize["resetStatusButton"] = o.ResetStatusButton
+	}
 	return toSerialize, nil
 }
 
@@ -1515,12 +1571,10 @@ func (o *ProjectListDetailDto) UnmarshalJSON(data []byte) (err error) {
 		"isMonitoringEnabled",
 		"hasKubeConfigFile",
 		"isMaintenanceModeEnabled",
-		"cloudCredentialName",
 		"organizationName",
 		"organizationId",
 		"status",
 		"health",
-		"cloudType",
 		"kubesprayCurrentVersion",
 		"kubesprayTargetVersion",
 		"kubernetesCurrentVersion",
@@ -1553,12 +1607,6 @@ func (o *ProjectListDetailDto) UnmarshalJSON(data []byte) (err error) {
 		"parentProjectId",
 		"alertingProfileId",
 		"opaProfileId",
-		"lockButton",
-		"unlockButton",
-		"deleteButton",
-		"kubeInfoButton",
-		"setExpirationDateButton",
-		"resetStatusButton",
 	}
 
 	allProperties := make(map[string]interface{})

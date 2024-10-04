@@ -1117,7 +1117,6 @@ Class | Method | HTTP request | Description
  - [HypervisorListCommand](docs/HypervisorListCommand.md)
  - [ImageByIdCommand](docs/ImageByIdCommand.md)
  - [ImportBackupStorageLocationCommand](docs/ImportBackupStorageLocationCommand.md)
- - [ImportClusterCommand](docs/ImportClusterCommand.md)
  - [ImportClusterType](docs/ImportClusterType.md)
  - [ImportRepoCommand](docs/ImportRepoCommand.md)
  - [ImportedClusterDetailsDto](docs/ImportedClusterDetailsDto.md)

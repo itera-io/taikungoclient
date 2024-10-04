@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"os"
 )
 
 
@@ -2328,11 +2329,59 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentEnableOpaExecute(r ApiPro
 type ApiProjectDeploymentImportClusterRequest struct {
 	ctx context.Context
 	ApiService *ProjectDeploymentAPIService
-	importClusterCommand *ImportClusterCommand
+	name *string
+	config *os.File
+	isTaikunIngressController *bool
+	isExistingIngressController *bool
+	importType *EImportClusterType
+	ingressClass *string
+	ingressHost *string
+	continent *string
+	organizationId *int32
 }
 
-func (r ApiProjectDeploymentImportClusterRequest) ImportClusterCommand(importClusterCommand ImportClusterCommand) ApiProjectDeploymentImportClusterRequest {
-	r.importClusterCommand = &importClusterCommand
+func (r ApiProjectDeploymentImportClusterRequest) Name(name string) ApiProjectDeploymentImportClusterRequest {
+	r.name = &name
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) Config(config *os.File) ApiProjectDeploymentImportClusterRequest {
+	r.config = config
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) IsTaikunIngressController(isTaikunIngressController bool) ApiProjectDeploymentImportClusterRequest {
+	r.isTaikunIngressController = &isTaikunIngressController
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) IsExistingIngressController(isExistingIngressController bool) ApiProjectDeploymentImportClusterRequest {
+	r.isExistingIngressController = &isExistingIngressController
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) ImportType(importType EImportClusterType) ApiProjectDeploymentImportClusterRequest {
+	r.importType = &importType
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) IngressClass(ingressClass string) ApiProjectDeploymentImportClusterRequest {
+	r.ingressClass = &ingressClass
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) IngressHost(ingressHost string) ApiProjectDeploymentImportClusterRequest {
+	r.ingressHost = &ingressHost
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) Continent(continent string) ApiProjectDeploymentImportClusterRequest {
+	r.continent = &continent
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) OrganizationId(organizationId int32) ApiProjectDeploymentImportClusterRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -2371,9 +2420,24 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentImportClusterExecute(r Ap
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.name == nil {
+		return nil, reportError("name is required and must be specified")
+	}
+	if r.config == nil {
+		return nil, reportError("config is required and must be specified")
+	}
+	if r.isTaikunIngressController == nil {
+		return nil, reportError("isTaikunIngressController is required and must be specified")
+	}
+	if r.isExistingIngressController == nil {
+		return nil, reportError("isExistingIngressController is required and must be specified")
+	}
+	if r.importType == nil {
+		return nil, reportError("importType is required and must be specified")
+	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -2389,8 +2453,37 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentImportClusterExecute(r Ap
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.importClusterCommand
+	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
+	var configLocalVarFormFileName string
+	var configLocalVarFileName     string
+	var configLocalVarFileBytes    []byte
+
+	configLocalVarFormFileName = "config"
+	configLocalVarFile := r.config
+
+	if configLocalVarFile != nil {
+		fbs, _ := io.ReadAll(configLocalVarFile)
+
+		configLocalVarFileBytes = fbs
+		configLocalVarFileName = configLocalVarFile.Name()
+		configLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
+	}
+	parameterAddToHeaderOrQuery(localVarFormParams, "isTaikunIngressController", r.isTaikunIngressController, "", "")
+	parameterAddToHeaderOrQuery(localVarFormParams, "isExistingIngressController", r.isExistingIngressController, "", "")
+	if r.ingressClass != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "ingressClass", r.ingressClass, "", "")
+	}
+	if r.ingressHost != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "ingressHost", r.ingressHost, "", "")
+	}
+	if r.continent != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "continent", r.continent, "", "")
+	}
+	parameterAddToHeaderOrQuery(localVarFormParams, "importType", r.importType, "", "")
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "organizationId", r.organizationId, "", "")
+	}
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

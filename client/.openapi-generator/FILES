@@ -469,7 +469,6 @@ docs/HypervisorListCommand.md
 docs/ImageByIdCommand.md
 docs/ImagesAPI.md
 docs/ImportBackupStorageLocationCommand.md
-docs/ImportClusterCommand.md
 docs/ImportClusterType.md
 docs/ImportRepoCommand.md
 docs/ImportedClusterDetailsDto.md
@@ -1346,7 +1345,6 @@ model_helm_status.go
 model_hypervisor_list_command.go
 model_image_by_id_command.go
 model_import_backup_storage_location_command.go
-model_import_cluster_command.go
 model_import_cluster_type.go
 model_import_repo_command.go
 model_imported_cluster_details_dto.go
