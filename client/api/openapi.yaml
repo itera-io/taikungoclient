@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-10-06T00:03:44.5902969Z
-                  createdAt: 2024-10-06T00:03:44.5902969Z
+                  lastValidated: 2024-10-08T00:03:01.6351285Z
+                  createdAt: 2024-10-08T00:03:01.6351285Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-10-06T00:03:44.5902969Z
+                    lastBackup: 2024-10-08T00:03:01.6351285Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-10-06T00:03:44.5902969Z
+                  createdAt: 2024-10-08T00:03:01.6351285Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-10-06T00:03:44.5902969Z
+                  lastBackup: 2024-10-08T00:03:01.6351285Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-06T00:03:44.5902969Z
-                  expiration: 2024-10-06T00:03:44.5902969Z
+                  createdAt: 2024-10-08T00:03:01.6351285Z
+                  expiration: 2024-10-08T00:03:01.6351285Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-06T00:03:44.5902969Z
+                  createdAt: 2024-10-08T00:03:01.6351285Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-10-06T00:03:44.5902969+00:00
-                  startTimeStamp: 2024-10-06T00:03:44.5902969+00:00
-                  createdAt: 2024-10-06T00:03:44.5902969Z
+                  completionDateTime: 2024-10-08T00:03:01.6351285+00:00
+                  startTimeStamp: 2024-10-08T00:03:01.6351285+00:00
+                  createdAt: 2024-10-08T00:03:01.6351285Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -22560,6 +22560,14 @@ paths:
         schema:
           type: boolean
         style: form
+      - explode: true
+        in: query
+        name: PrometheusRuleId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -25462,14 +25470,14 @@ paths:
       summary: Repair Vm
       tags:
       - Project deployment
-  /api/v1/project-deployment/tofu-migrate:
+  /api/v1/project-deployment/tofu-migrate-servers:
     post:
-      operationId: project-deployment-tofu-migrate
+      operationId: project-deployment-tofu-migrate-servers
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TofuMigrateCommand'
+              $ref: '#/components/schemas/TofuServersMigrateCommand'
         required: true
       responses:
         "400":
@@ -25502,7 +25510,50 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Tofu migrate
+      summary: Tofu migrate servers
+      tags:
+      - Project deployment
+  /api/v1/project-deployment/tofu-migrate-vms:
+    post:
+      operationId: project-deployment-tofu-migrate-vms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TofuVmsMigrateCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Tofu migrate vms
       tags:
       - Project deployment
   /api/v1/project-deployment/update:
@@ -55146,7 +55197,6 @@ components:
       example:
         discountRate: 6.027456183070403
         isInfra: true
-        isBound: true
         name: name
         id: 0
       properties:
@@ -55157,8 +55207,6 @@ components:
           nullable: true
           type: string
         isInfra:
-          type: boolean
-        isBound:
           type: boolean
         discountRate:
           format: double
@@ -64900,7 +64948,16 @@ components:
       - Medium
       - High
       type: string
-    TofuMigrateCommand:
+    TofuServersMigrateCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    TofuVmsMigrateCommand:
       additionalProperties: false
       example:
         projectId: 0
