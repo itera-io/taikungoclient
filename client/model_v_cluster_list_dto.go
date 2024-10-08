@@ -22,15 +22,15 @@ var _ MappedNullable = &VClusterListDto{}
 
 // VClusterListDto struct for VClusterListDto
 type VClusterListDto struct {
-	Id int32 `json:"id"`
-	Name string `json:"name"`
+	ProjectId int32 `json:"projectId"`
+	ProjectName string `json:"projectName"`
 	IsVirtualCluster bool `json:"isVirtualCluster"`
 	IsLocked bool `json:"isLocked"`
 	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
 	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
 	OrganizationName string `json:"organizationName"`
 	OrganizationId int32 `json:"organizationId"`
-	KubernetesVersion string `json:"kubernetesVersion"`
+	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion"`
 	CreatedAt string `json:"createdAt"`
 	CreatedBy string `json:"createdBy"`
 	LastModified string `json:"lastModified"`
@@ -43,8 +43,8 @@ type VClusterListDto struct {
 	AlertingProfileName NullableString `json:"alertingProfileName"`
 	AccessIp string `json:"accessIp"`
 	CloudType CloudType `json:"cloudType"`
-	Status ProjectStatus `json:"status"`
-	Health ProjectHealth `json:"health"`
+	ProjectStatus ProjectStatus `json:"projectStatus"`
+	ProjectHealth ProjectHealth `json:"projectHealth"`
 	LockButton ButtonStatusDto `json:"lockButton"`
 	UnlockButton ButtonStatusDto `json:"unlockButton"`
 	DeleteButton ButtonStatusDto `json:"deleteButton"`
@@ -59,17 +59,17 @@ type _VClusterListDto VClusterListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType CloudType, status ProjectStatus, health ProjectHealth, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
+func NewVClusterListDto(projectId int32, projectName string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesCurrentVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType CloudType, projectStatus ProjectStatus, projectHealth ProjectHealth, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
 	this := VClusterListDto{}
-	this.Id = id
-	this.Name = name
+	this.ProjectId = projectId
+	this.ProjectName = projectName
 	this.IsVirtualCluster = isVirtualCluster
 	this.IsLocked = isLocked
 	this.HasKubeConfigFile = hasKubeConfigFile
 	this.IsMaintenanceModeEnabled = isMaintenanceModeEnabled
 	this.OrganizationName = organizationName
 	this.OrganizationId = organizationId
-	this.KubernetesVersion = kubernetesVersion
+	this.KubernetesCurrentVersion = kubernetesCurrentVersion
 	this.CreatedAt = createdAt
 	this.CreatedBy = createdBy
 	this.LastModified = lastModified
@@ -82,8 +82,8 @@ func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked b
 	this.AlertingProfileName = alertingProfileName
 	this.AccessIp = accessIp
 	this.CloudType = cloudType
-	this.Status = status
-	this.Health = health
+	this.ProjectStatus = projectStatus
+	this.ProjectHealth = projectHealth
 	this.LockButton = lockButton
 	this.UnlockButton = unlockButton
 	this.DeleteButton = deleteButton
@@ -101,52 +101,52 @@ func NewVClusterListDtoWithDefaults() *VClusterListDto {
 	return &this
 }
 
-// GetId returns the Id field value
-func (o *VClusterListDto) GetId() int32 {
+// GetProjectId returns the ProjectId field value
+func (o *VClusterListDto) GetProjectId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.Id
+	return o.ProjectId
 }
 
-// GetIdOk returns a tuple with the Id field value
+// GetProjectIdOk returns a tuple with the ProjectId field value
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetIdOk() (*int32, bool) {
+func (o *VClusterListDto) GetProjectIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Id, true
+	return &o.ProjectId, true
 }
 
-// SetId sets field value
-func (o *VClusterListDto) SetId(v int32) {
-	o.Id = v
+// SetProjectId sets field value
+func (o *VClusterListDto) SetProjectId(v int32) {
+	o.ProjectId = v
 }
 
-// GetName returns the Name field value
-func (o *VClusterListDto) GetName() string {
+// GetProjectName returns the ProjectName field value
+func (o *VClusterListDto) GetProjectName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Name
+	return o.ProjectName
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetProjectNameOk returns a tuple with the ProjectName field value
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetNameOk() (*string, bool) {
+func (o *VClusterListDto) GetProjectNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Name, true
+	return &o.ProjectName, true
 }
 
-// SetName sets field value
-func (o *VClusterListDto) SetName(v string) {
-	o.Name = v
+// SetProjectName sets field value
+func (o *VClusterListDto) SetProjectName(v string) {
+	o.ProjectName = v
 }
 
 // GetIsVirtualCluster returns the IsVirtualCluster field value
@@ -293,28 +293,28 @@ func (o *VClusterListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = v
 }
 
-// GetKubernetesVersion returns the KubernetesVersion field value
-func (o *VClusterListDto) GetKubernetesVersion() string {
+// GetKubernetesCurrentVersion returns the KubernetesCurrentVersion field value
+func (o *VClusterListDto) GetKubernetesCurrentVersion() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.KubernetesVersion
+	return o.KubernetesCurrentVersion
 }
 
-// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value
+// GetKubernetesCurrentVersionOk returns a tuple with the KubernetesCurrentVersion field value
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetKubernetesVersionOk() (*string, bool) {
+func (o *VClusterListDto) GetKubernetesCurrentVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.KubernetesVersion, true
+	return &o.KubernetesCurrentVersion, true
 }
 
-// SetKubernetesVersion sets field value
-func (o *VClusterListDto) SetKubernetesVersion(v string) {
-	o.KubernetesVersion = v
+// SetKubernetesCurrentVersion sets field value
+func (o *VClusterListDto) SetKubernetesCurrentVersion(v string) {
+	o.KubernetesCurrentVersion = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -609,52 +609,52 @@ func (o *VClusterListDto) SetCloudType(v CloudType) {
 	o.CloudType = v
 }
 
-// GetStatus returns the Status field value
-func (o *VClusterListDto) GetStatus() ProjectStatus {
+// GetProjectStatus returns the ProjectStatus field value
+func (o *VClusterListDto) GetProjectStatus() ProjectStatus {
 	if o == nil {
 		var ret ProjectStatus
 		return ret
 	}
 
-	return o.Status
+	return o.ProjectStatus
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetProjectStatusOk returns a tuple with the ProjectStatus field value
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetStatusOk() (*ProjectStatus, bool) {
+func (o *VClusterListDto) GetProjectStatusOk() (*ProjectStatus, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Status, true
+	return &o.ProjectStatus, true
 }
 
-// SetStatus sets field value
-func (o *VClusterListDto) SetStatus(v ProjectStatus) {
-	o.Status = v
+// SetProjectStatus sets field value
+func (o *VClusterListDto) SetProjectStatus(v ProjectStatus) {
+	o.ProjectStatus = v
 }
 
-// GetHealth returns the Health field value
-func (o *VClusterListDto) GetHealth() ProjectHealth {
+// GetProjectHealth returns the ProjectHealth field value
+func (o *VClusterListDto) GetProjectHealth() ProjectHealth {
 	if o == nil {
 		var ret ProjectHealth
 		return ret
 	}
 
-	return o.Health
+	return o.ProjectHealth
 }
 
-// GetHealthOk returns a tuple with the Health field value
+// GetProjectHealthOk returns a tuple with the ProjectHealth field value
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetHealthOk() (*ProjectHealth, bool) {
+func (o *VClusterListDto) GetProjectHealthOk() (*ProjectHealth, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Health, true
+	return &o.ProjectHealth, true
 }
 
-// SetHealth sets field value
-func (o *VClusterListDto) SetHealth(v ProjectHealth) {
-	o.Health = v
+// SetProjectHealth sets field value
+func (o *VClusterListDto) SetProjectHealth(v ProjectHealth) {
+	o.ProjectHealth = v
 }
 
 // GetLockButton returns the LockButton field value
@@ -811,15 +811,15 @@ func (o VClusterListDto) MarshalJSON() ([]byte, error) {
 
 func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
+	toSerialize["projectId"] = o.ProjectId
+	toSerialize["projectName"] = o.ProjectName
 	toSerialize["isVirtualCluster"] = o.IsVirtualCluster
 	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["hasKubeConfigFile"] = o.HasKubeConfigFile
 	toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
 	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["organizationId"] = o.OrganizationId
-	toSerialize["kubernetesVersion"] = o.KubernetesVersion
+	toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion
 	toSerialize["createdAt"] = o.CreatedAt
 	toSerialize["createdBy"] = o.CreatedBy
 	toSerialize["lastModified"] = o.LastModified
@@ -832,8 +832,8 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["alertingProfileName"] = o.AlertingProfileName.Get()
 	toSerialize["accessIp"] = o.AccessIp
 	toSerialize["cloudType"] = o.CloudType
-	toSerialize["status"] = o.Status
-	toSerialize["health"] = o.Health
+	toSerialize["projectStatus"] = o.ProjectStatus
+	toSerialize["projectHealth"] = o.ProjectHealth
 	toSerialize["lockButton"] = o.LockButton
 	toSerialize["unlockButton"] = o.UnlockButton
 	toSerialize["deleteButton"] = o.DeleteButton
@@ -848,15 +848,15 @@ func (o *VClusterListDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"id",
-		"name",
+		"projectId",
+		"projectName",
 		"isVirtualCluster",
 		"isLocked",
 		"hasKubeConfigFile",
 		"isMaintenanceModeEnabled",
 		"organizationName",
 		"organizationId",
-		"kubernetesVersion",
+		"kubernetesCurrentVersion",
 		"createdAt",
 		"createdBy",
 		"lastModified",
@@ -869,8 +869,8 @@ func (o *VClusterListDto) UnmarshalJSON(data []byte) (err error) {
 		"alertingProfileName",
 		"accessIp",
 		"cloudType",
-		"status",
-		"health",
+		"projectStatus",
+		"projectHealth",
 		"lockButton",
 		"unlockButton",
 		"deleteButton",
