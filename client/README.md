@@ -314,6 +314,9 @@ Class | Method | HTTP request | Description
 *ImagesAPI* | [**ImagesVsphereImages**](docs/ImagesAPI.md#imagesvsphereimages) | **Get** /api/v1/images/vsphere/{cloudId} | Retrieve vsphere images
 *ImagesAPI* | [**ImagesZadaraImagesList**](docs/ImagesAPI.md#imageszadaraimageslist) | **Post** /api/v1/images/zadara/{cloudId} | Retrieve zadara images
 *ImagesAPI* | [**ImagesZadaraPersonalImages**](docs/ImagesAPI.md#imageszadarapersonalimages) | **Get** /api/v1/images/zadara/personal/{cloudId} | Zadara personal images
+*ImportedClusterAPI* | [**ImportedClusterAsCloudCredential**](docs/ImportedClusterAPI.md#importedclusterascloudcredential) | **Get** /api/v1/imported-cluster/as-cloud-credential/{projectId} | Imported cluster as cloud credential
+*ImportedClusterAPI* | [**ImportedClusterAsFullyManaged**](docs/ImportedClusterAPI.md#importedclusterasfullymanaged) | **Get** /api/v1/imported-cluster/as-fully-managed/{projectId} | Imported cluster as fully managed
+*ImportedClusterAPI* | [**ImportedClusterAsReadOnly**](docs/ImportedClusterAPI.md#importedclusterasreadonly) | **Get** /api/v1/imported-cluster/as-read-only/{projectId} | Imported cluster as read only
 *InfraAPI* | [**InfraCreate**](docs/InfraAPI.md#infracreate) | **Post** /api/v1/infra/create | Create infra product
 *InfraAPI* | [**InfraDetails**](docs/InfraAPI.md#infradetails) | **Get** /api/v1/infra/details | Retrieve infra details
 *InfraAPI* | [**InfraOrganizationsList**](docs/InfraAPI.md#infraorganizationslist) | **Get** /api/v1/infra/organizations-list | Retrieve infra products list
@@ -1120,6 +1123,12 @@ Class | Method | HTTP request | Description
  - [ImportBackupStorageLocationCommand](docs/ImportBackupStorageLocationCommand.md)
  - [ImportClusterType](docs/ImportClusterType.md)
  - [ImportRepoCommand](docs/ImportRepoCommand.md)
+ - [ImportedAsCloudCredentialList](docs/ImportedAsCloudCredentialList.md)
+ - [ImportedAsCloudCredentialVisibility](docs/ImportedAsCloudCredentialVisibility.md)
+ - [ImportedAsFullyManagedList](docs/ImportedAsFullyManagedList.md)
+ - [ImportedAsFullyManagedVisibility](docs/ImportedAsFullyManagedVisibility.md)
+ - [ImportedAsReadOnlyList](docs/ImportedAsReadOnlyList.md)
+ - [ImportedAsReadOnlyVisibility](docs/ImportedAsReadOnlyVisibility.md)
  - [ImportedClusterDetailsDto](docs/ImportedClusterDetailsDto.md)
  - [InfraBillingListCommand](docs/InfraBillingListCommand.md)
  - [InfraBillingSummariesCreateCommand](docs/InfraBillingSummariesCreateCommand.md)

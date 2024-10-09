@@ -24,6 +24,7 @@ var _ MappedNullable = &ImportedClusterDetailsDto{}
 type ImportedClusterDetailsDto struct {
 	Id int32 `json:"id"`
 	Name string `json:"name"`
+	IsLocked bool `json:"isLocked"`
 	AccessIp NullableString `json:"accessIp"`
 	KubernetesVersion NullableString `json:"kubernetesVersion"`
 	ImportClusterType ImportClusterType `json:"importClusterType"`
@@ -32,6 +33,7 @@ type ImportedClusterDetailsDto struct {
 	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
 	CloudCredentialId NullableInt32 `json:"cloudCredentialId,omitempty"`
 	Health ProjectHealth `json:"health"`
+	CloudType *CloudType `json:"cloudType,omitempty"`
 	Status ProjectStatus `json:"status"`
 }
 
@@ -41,10 +43,11 @@ type _ImportedClusterDetailsDto ImportedClusterDetailsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportedClusterDetailsDto(id int32, name string, accessIp NullableString, kubernetesVersion NullableString, importClusterType ImportClusterType, organizationId int32, organizationName string, health ProjectHealth, status ProjectStatus) *ImportedClusterDetailsDto {
+func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp NullableString, kubernetesVersion NullableString, importClusterType ImportClusterType, organizationId int32, organizationName string, health ProjectHealth, status ProjectStatus) *ImportedClusterDetailsDto {
 	this := ImportedClusterDetailsDto{}
 	this.Id = id
 	this.Name = name
+	this.IsLocked = isLocked
 	this.AccessIp = accessIp
 	this.KubernetesVersion = kubernetesVersion
 	this.ImportClusterType = importClusterType
@@ -109,6 +112,30 @@ func (o *ImportedClusterDetailsDto) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *ImportedClusterDetailsDto) SetName(v string) {
 	o.Name = v
+}
+
+// GetIsLocked returns the IsLocked field value
+func (o *ImportedClusterDetailsDto) GetIsLocked() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsLocked
+}
+
+// GetIsLockedOk returns a tuple with the IsLocked field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterDetailsDto) GetIsLockedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsLocked, true
+}
+
+// SetIsLocked sets field value
+func (o *ImportedClusterDetailsDto) SetIsLocked(v bool) {
+	o.IsLocked = v
 }
 
 // GetAccessIp returns the AccessIp field value
@@ -343,6 +370,38 @@ func (o *ImportedClusterDetailsDto) SetHealth(v ProjectHealth) {
 	o.Health = v
 }
 
+// GetCloudType returns the CloudType field value if set, zero value otherwise.
+func (o *ImportedClusterDetailsDto) GetCloudType() CloudType {
+	if o == nil || IsNil(o.CloudType) {
+		var ret CloudType
+		return ret
+	}
+	return *o.CloudType
+}
+
+// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterDetailsDto) GetCloudTypeOk() (*CloudType, bool) {
+	if o == nil || IsNil(o.CloudType) {
+		return nil, false
+	}
+	return o.CloudType, true
+}
+
+// HasCloudType returns a boolean if a field has been set.
+func (o *ImportedClusterDetailsDto) HasCloudType() bool {
+	if o != nil && !IsNil(o.CloudType) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
+func (o *ImportedClusterDetailsDto) SetCloudType(v CloudType) {
+	o.CloudType = &v
+}
+
 // GetStatus returns the Status field value
 func (o *ImportedClusterDetailsDto) GetStatus() ProjectStatus {
 	if o == nil {
@@ -379,6 +438,7 @@ func (o ImportedClusterDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
+	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["accessIp"] = o.AccessIp.Get()
 	toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
 	toSerialize["importClusterType"] = o.ImportClusterType
@@ -391,6 +451,9 @@ func (o ImportedClusterDetailsDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["cloudCredentialId"] = o.CloudCredentialId.Get()
 	}
 	toSerialize["health"] = o.Health
+	if !IsNil(o.CloudType) {
+		toSerialize["cloudType"] = o.CloudType
+	}
 	toSerialize["status"] = o.Status
 	return toSerialize, nil
 }
@@ -402,6 +465,7 @@ func (o *ImportedClusterDetailsDto) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"name",
+		"isLocked",
 		"accessIp",
 		"kubernetesVersion",
 		"importClusterType",

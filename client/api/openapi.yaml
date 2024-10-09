@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-10-09T00:03:12.681539Z
-                  createdAt: 2024-10-09T00:03:12.681539Z
+                  lastValidated: 2024-10-09T14:47:30.982006Z
+                  createdAt: 2024-10-09T14:47:30.982006Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-10-09T00:03:12.681539Z
+                    lastBackup: 2024-10-09T14:47:30.982006Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-10-09T00:03:12.681539Z
+                  createdAt: 2024-10-09T14:47:30.982006Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-10-09T00:03:12.681539Z
+                  lastBackup: 2024-10-09T14:47:30.982006Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-09T00:03:12.681539Z
-                  expiration: 2024-10-09T00:03:12.681539Z
+                  createdAt: 2024-10-09T14:47:30.982006Z
+                  expiration: 2024-10-09T14:47:30.982006Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-09T00:03:12.681539Z
+                  createdAt: 2024-10-09T14:47:30.982006Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-10-09T00:03:12.681539+00:00
-                  startTimeStamp: 2024-10-09T00:03:12.681539+00:00
-                  createdAt: 2024-10-09T00:03:12.681539Z
+                  completionDateTime: 2024-10-09T14:47:30.982006+00:00
+                  startTimeStamp: 2024-10-09T14:47:30.982006+00:00
+                  createdAt: 2024-10-09T14:47:30.982006Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -13949,6 +13949,72 @@ paths:
       summary: Retrieve zadara images
       tags:
       - Images
+  /api/v1/imported-cluster/as-cloud-credential/{projectId}:
+    get:
+      operationId: imported-cluster-as-cloud-credential
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportedAsCloudCredentialList'
+          description: OK
+      summary: Imported cluster as cloud credential
+      tags:
+      - Imported Cluster
+  /api/v1/imported-cluster/as-fully-managed/{projectId}:
+    get:
+      operationId: imported-cluster-as-fully-managed
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportedAsFullyManagedList'
+          description: OK
+      summary: Imported cluster as fully managed
+      tags:
+      - Imported Cluster
+  /api/v1/imported-cluster/as-read-only/{projectId}:
+    get:
+      operationId: imported-cluster-as-read-only
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportedAsReadOnlyList'
+          description: OK
+      summary: Imported cluster as read only
+      tags:
+      - Imported Cluster
   /api/v1/infra/create:
     post:
       operationId: infra-create
@@ -50774,18 +50840,269 @@ components:
           nullable: true
           type: string
       type: object
+    ImportedAsCloudCredentialList:
+      additionalProperties: false
+      example:
+        visibility:
+          unlock:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lock:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          addVCluster:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+        data:
+          accessIp: accessIp
+          organizationName: organizationName
+          importClusterType: None
+          health: "Null"
+          cloudCredentialName: cloudCredentialName
+          organizationId: 6
+          cloudType: NONE
+          isLocked: true
+          name: name
+          cloudCredentialId: 1
+          id: 0
+          kubernetesVersion: kubernetesVersion
+          status: "Null"
+      properties:
+        visibility:
+          $ref: '#/components/schemas/ImportedAsCloudCredentialVisibility'
+        data:
+          $ref: '#/components/schemas/ImportedClusterDetailsDto'
+      required:
+      - data
+      - visibility
+      type: object
+    ImportedAsCloudCredentialVisibility:
+      additionalProperties: false
+      example:
+        unlock:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        lock:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        addVCluster:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+      properties:
+        lock:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        unlock:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        addVCluster:
+          $ref: '#/components/schemas/ButtonStatusDto'
+      required:
+      - addVCluster
+      - lock
+      - unlock
+      type: object
+    ImportedAsFullyManagedList:
+      additionalProperties: false
+      example:
+        visibility:
+          unlock:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          detachAlertingProfile:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lock:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          addVCluster:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          attachAlertingProfile:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+        data:
+          accessIp: accessIp
+          organizationName: organizationName
+          importClusterType: None
+          health: "Null"
+          cloudCredentialName: cloudCredentialName
+          organizationId: 6
+          cloudType: NONE
+          isLocked: true
+          name: name
+          cloudCredentialId: 1
+          id: 0
+          kubernetesVersion: kubernetesVersion
+          status: "Null"
+      properties:
+        visibility:
+          $ref: '#/components/schemas/ImportedAsFullyManagedVisibility'
+        data:
+          $ref: '#/components/schemas/ImportedClusterDetailsDto'
+      required:
+      - data
+      - visibility
+      type: object
+    ImportedAsFullyManagedVisibility:
+      additionalProperties: false
+      example:
+        unlock:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        detachAlertingProfile:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        lock:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        addVCluster:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        attachAlertingProfile:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+      properties:
+        lock:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        unlock:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        addVCluster:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        attachAlertingProfile:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        detachAlertingProfile:
+          $ref: '#/components/schemas/ButtonStatusDto'
+      required:
+      - addVCluster
+      - attachAlertingProfile
+      - detachAlertingProfile
+      - lock
+      - unlock
+      type: object
+    ImportedAsReadOnlyList:
+      additionalProperties: false
+      example:
+        visibility:
+          unlock:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lock:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+        data:
+          accessIp: accessIp
+          organizationName: organizationName
+          importClusterType: None
+          health: "Null"
+          cloudCredentialName: cloudCredentialName
+          organizationId: 6
+          cloudType: NONE
+          isLocked: true
+          name: name
+          cloudCredentialId: 1
+          id: 0
+          kubernetesVersion: kubernetesVersion
+          status: "Null"
+      properties:
+        visibility:
+          $ref: '#/components/schemas/ImportedAsReadOnlyVisibility'
+        data:
+          $ref: '#/components/schemas/ImportedClusterDetailsDto'
+      required:
+      - data
+      - visibility
+      type: object
+    ImportedAsReadOnlyVisibility:
+      additionalProperties: false
+      example:
+        unlock:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        lock:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+      properties:
+        lock:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        unlock:
+          $ref: '#/components/schemas/ButtonStatusDto'
+      required:
+      - lock
+      - unlock
+      type: object
     ImportedClusterDetailsDto:
       additionalProperties: false
       example:
-        organizationId: 6
         accessIp: accessIp
         organizationName: organizationName
-        name: name
         importClusterType: None
-        cloudCredentialId: 1
         health: "Null"
-        id: 0
         cloudCredentialName: cloudCredentialName
+        organizationId: 6
+        cloudType: NONE
+        isLocked: true
+        name: name
+        cloudCredentialId: 1
+        id: 0
         kubernetesVersion: kubernetesVersion
         status: "Null"
       properties:
@@ -50794,6 +51111,8 @@ components:
           type: integer
         name:
           type: string
+        isLocked:
+          type: boolean
         accessIp:
           nullable: true
           type: string
@@ -50816,6 +51135,8 @@ components:
           type: integer
         health:
           $ref: '#/components/schemas/ProjectHealth'
+        cloudType:
+          $ref: '#/components/schemas/CloudType'
         status:
           $ref: '#/components/schemas/ProjectStatus'
       required:
@@ -50823,6 +51144,7 @@ components:
       - health
       - id
       - importClusterType
+      - isLocked
       - kubernetesVersion
       - name
       - organizationId

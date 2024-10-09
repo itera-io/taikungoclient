@@ -28,6 +28,7 @@ api_flavors.go
 api_generic_kubernetes_cloud_credential.go
 api_google.go
 api_images.go
+api_imported_cluster.go
 api_infra.go
 api_infra_billing_summary.go
 api_invoices.go
@@ -471,6 +472,13 @@ docs/ImagesAPI.md
 docs/ImportBackupStorageLocationCommand.md
 docs/ImportClusterType.md
 docs/ImportRepoCommand.md
+docs/ImportedAsCloudCredentialList.md
+docs/ImportedAsCloudCredentialVisibility.md
+docs/ImportedAsFullyManagedList.md
+docs/ImportedAsFullyManagedVisibility.md
+docs/ImportedAsReadOnlyList.md
+docs/ImportedAsReadOnlyVisibility.md
+docs/ImportedClusterAPI.md
 docs/ImportedClusterDetailsDto.md
 docs/InfraAPI.md
 docs/InfraBillingListCommand.md
@@ -1348,6 +1356,12 @@ model_image_by_id_command.go
 model_import_backup_storage_location_command.go
 model_import_cluster_type.go
 model_import_repo_command.go
+model_imported_as_cloud_credential_list.go
+model_imported_as_cloud_credential_visibility.go
+model_imported_as_fully_managed_list.go
+model_imported_as_fully_managed_visibility.go
+model_imported_as_read_only_list.go
+model_imported_as_read_only_visibility.go
 model_imported_cluster_details_dto.go
 model_infra_billing_list_command.go
 model_infra_billing_summaries_create_command.go
@@ -1832,6 +1846,7 @@ test/api_flavors_test.go
 test/api_generic_kubernetes_cloud_credential_test.go
 test/api_google_test.go
 test/api_images_test.go
+test/api_imported_cluster_test.go
 test/api_infra_billing_summary_test.go
 test/api_infra_test.go
 test/api_invoices_test.go
