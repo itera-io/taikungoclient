@@ -22,9 +22,9 @@ var _ MappedNullable = &ProjectDetailsForVmsDto{}
 
 // ProjectDetailsForVmsDto struct for ProjectDetailsForVmsDto
 type ProjectDetailsForVmsDto struct {
-	ProjectStatus ProjectStatus `json:"projectStatus"`
-	ProjectName string `json:"projectName"`
-	ProjectId int32 `json:"projectId"`
+	Status ProjectStatus `json:"status"`
+	Name string `json:"name"`
+	Id int32 `json:"id"`
 	CloudType CloudType `json:"cloudType"`
 	CloudName string `json:"cloudName"`
 	CloudId NullableInt32 `json:"cloudId"`
@@ -53,11 +53,11 @@ type _ProjectDetailsForVmsDto ProjectDetailsForVmsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDetailsForVmsDto(projectStatus ProjectStatus, projectName string, projectId int32, cloudType CloudType, cloudName string, cloudId NullableInt32, organizationName string, organizationId int32, isLocked bool, isProjectMaintenanceModeEnabled bool, hasSelectedFlavors NullableBool, isMaintenanceModeEnabled bool, isDrsEnabled bool, projectCloudRevision NullableInt32, cloudCredentialRevision NullableInt32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, totalHourlyCost float64, availabilityZones []string, hypervisors []string, expiredAt NullableString) *ProjectDetailsForVmsDto {
+func NewProjectDetailsForVmsDto(status ProjectStatus, name string, id int32, cloudType CloudType, cloudName string, cloudId NullableInt32, organizationName string, organizationId int32, isLocked bool, isProjectMaintenanceModeEnabled bool, hasSelectedFlavors NullableBool, isMaintenanceModeEnabled bool, isDrsEnabled bool, projectCloudRevision NullableInt32, cloudCredentialRevision NullableInt32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, totalHourlyCost float64, availabilityZones []string, hypervisors []string, expiredAt NullableString) *ProjectDetailsForVmsDto {
 	this := ProjectDetailsForVmsDto{}
-	this.ProjectStatus = projectStatus
-	this.ProjectName = projectName
-	this.ProjectId = projectId
+	this.Status = status
+	this.Name = name
+	this.Id = id
 	this.CloudType = cloudType
 	this.CloudName = cloudName
 	this.CloudId = cloudId
@@ -89,76 +89,76 @@ func NewProjectDetailsForVmsDtoWithDefaults() *ProjectDetailsForVmsDto {
 	return &this
 }
 
-// GetProjectStatus returns the ProjectStatus field value
-func (o *ProjectDetailsForVmsDto) GetProjectStatus() ProjectStatus {
+// GetStatus returns the Status field value
+func (o *ProjectDetailsForVmsDto) GetStatus() ProjectStatus {
 	if o == nil {
 		var ret ProjectStatus
 		return ret
 	}
 
-	return o.ProjectStatus
+	return o.Status
 }
 
-// GetProjectStatusOk returns a tuple with the ProjectStatus field value
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDetailsForVmsDto) GetProjectStatusOk() (*ProjectStatus, bool) {
+func (o *ProjectDetailsForVmsDto) GetStatusOk() (*ProjectStatus, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectStatus, true
+	return &o.Status, true
 }
 
-// SetProjectStatus sets field value
-func (o *ProjectDetailsForVmsDto) SetProjectStatus(v ProjectStatus) {
-	o.ProjectStatus = v
+// SetStatus sets field value
+func (o *ProjectDetailsForVmsDto) SetStatus(v ProjectStatus) {
+	o.Status = v
 }
 
-// GetProjectName returns the ProjectName field value
-func (o *ProjectDetailsForVmsDto) GetProjectName() string {
+// GetName returns the Name field value
+func (o *ProjectDetailsForVmsDto) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ProjectName
+	return o.Name
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDetailsForVmsDto) GetProjectNameOk() (*string, bool) {
+func (o *ProjectDetailsForVmsDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return &o.Name, true
 }
 
-// SetProjectName sets field value
-func (o *ProjectDetailsForVmsDto) SetProjectName(v string) {
-	o.ProjectName = v
+// SetName sets field value
+func (o *ProjectDetailsForVmsDto) SetName(v string) {
+	o.Name = v
 }
 
-// GetProjectId returns the ProjectId field value
-func (o *ProjectDetailsForVmsDto) GetProjectId() int32 {
+// GetId returns the Id field value
+func (o *ProjectDetailsForVmsDto) GetId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.ProjectId
+	return o.Id
 }
 
-// GetProjectIdOk returns a tuple with the ProjectId field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDetailsForVmsDto) GetProjectIdOk() (*int32, bool) {
+func (o *ProjectDetailsForVmsDto) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectId, true
+	return &o.Id, true
 }
 
-// SetProjectId sets field value
-func (o *ProjectDetailsForVmsDto) SetProjectId(v int32) {
-	o.ProjectId = v
+// SetId sets field value
+func (o *ProjectDetailsForVmsDto) SetId(v int32) {
+	o.Id = v
 }
 
 // GetCloudType returns the CloudType field value
@@ -667,9 +667,9 @@ func (o ProjectDetailsForVmsDto) MarshalJSON() ([]byte, error) {
 
 func (o ProjectDetailsForVmsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["projectStatus"] = o.ProjectStatus
-	toSerialize["projectName"] = o.ProjectName
-	toSerialize["projectId"] = o.ProjectId
+	toSerialize["status"] = o.Status
+	toSerialize["name"] = o.Name
+	toSerialize["id"] = o.Id
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["cloudName"] = o.CloudName
 	toSerialize["cloudId"] = o.CloudId.Get()
@@ -702,9 +702,9 @@ func (o *ProjectDetailsForVmsDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"projectStatus",
-		"projectName",
-		"projectId",
+		"status",
+		"name",
+		"id",
 		"cloudType",
 		"cloudName",
 		"cloudId",

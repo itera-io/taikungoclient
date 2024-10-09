@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-10-08T09:54:27.3043538Z
-                  createdAt: 2024-10-08T09:54:27.3043538Z
+                  lastValidated: 2024-10-09T00:03:12.681539Z
+                  createdAt: 2024-10-09T00:03:12.681539Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-10-08T09:54:27.3043538Z
+                    lastBackup: 2024-10-09T00:03:12.681539Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-10-08T09:54:27.3043538Z
+                  createdAt: 2024-10-09T00:03:12.681539Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-10-08T09:54:27.3043538Z
+                  lastBackup: 2024-10-09T00:03:12.681539Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-08T09:54:27.3043538Z
-                  expiration: 2024-10-08T09:54:27.3043538Z
+                  createdAt: 2024-10-09T00:03:12.681539Z
+                  expiration: 2024-10-09T00:03:12.681539Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-08T09:54:27.3043538Z
+                  createdAt: 2024-10-09T00:03:12.681539Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-10-08T09:54:27.3043538+00:00
-                  startTimeStamp: 2024-10-08T09:54:27.3043538+00:00
-                  createdAt: 2024-10-08T09:54:27.3043538Z
+                  completionDateTime: 2024-10-09T00:03:12.681539+00:00
+                  startTimeStamp: 2024-10-09T00:03:12.681539+00:00
+                  createdAt: 2024-10-09T00:03:12.681539Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -50778,26 +50778,26 @@ components:
       additionalProperties: false
       example:
         organizationId: 6
-        projectStatus: "Null"
         accessIp: accessIp
         organizationName: organizationName
-        projectHealth: "Null"
+        name: name
         importClusterType: None
         cloudCredentialId: 1
-        kubernetesCurrentVersion: kubernetesCurrentVersion
-        projectName: projectName
+        health: "Null"
+        id: 0
         cloudCredentialName: cloudCredentialName
-        projectId: 0
+        kubernetesVersion: kubernetesVersion
+        status: "Null"
       properties:
-        projectId:
+        id:
           format: int32
           type: integer
-        projectName:
+        name:
           type: string
         accessIp:
           nullable: true
           type: string
-        kubernetesCurrentVersion:
+        kubernetesVersion:
           nullable: true
           type: string
         importClusterType:
@@ -50814,20 +50814,20 @@ components:
           format: int32
           nullable: true
           type: integer
-        projectHealth:
+        health:
           $ref: '#/components/schemas/ProjectHealth'
-        projectStatus:
+        status:
           $ref: '#/components/schemas/ProjectStatus'
       required:
       - accessIp
+      - health
+      - id
       - importClusterType
-      - kubernetesCurrentVersion
+      - kubernetesVersion
+      - name
       - organizationId
       - organizationName
-      - projectHealth
-      - projectId
-      - projectName
-      - projectStatus
+      - status
       type: object
     InfraBillingListCommand:
       additionalProperties: false
@@ -57291,7 +57291,6 @@ components:
       additionalProperties: false
       example:
         spotEnabled: true
-        alertsTotalCount: 2
         isOpaEnabled: true
         opaProfileId: 3
         availabilityZones:
@@ -57307,7 +57306,9 @@ components:
         kubernetesProfileId: 6
         minSize: 7
         bastion: 7
+        id: 1
         worker: 4
+        kubernetesVersion: kubernetesVersion
         usedCpu: 9
         vmVolumeSizeLimit: 6
         isAutoscalingSpotEnabled: true
@@ -57329,32 +57330,31 @@ components:
         proxmoxStorage: NFS
         usedDiskSize: 6
         vmUsedVolumeSize: 1
-        kubernetesCurrentVersion: kubernetesCurrentVersion
+        name: name
         allowFullSpotKubernetes: true
-        projectName: projectName
-        projectId: 1
+        status: "Null"
         accessProfileId: 2
         maxSize: 0
         autoscalingGroupName: autoscalingGroupName
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
         hasNfsServer: true
-        projectHealth: "Null"
         totalHourlyCost: 3.0937452626664474
         ramLimit: 4
         opaProfileName: opaProfileName
         s3CredentialId: 5
         isProjectMaintenanceModeEnabled: true
         isDeprecated: true
+        alertsCount: 2
         allowSpotVMs: true
         vmCpuLimit: 8
         aiCredentialId: 6
         aiEnabled: true
         isMonitoringEnabled: true
+        health: "Null"
         diskSizeLimit: 5
         masterReady: 1
         hasKubeConfigFile: true
-        projectStatus: "Null"
         alertingProfileId: 6
         wasmEnabled: true
         cloudName: cloudName
@@ -57365,7 +57365,7 @@ components:
         certificationExpiredAt: certificationExpiredAt
         isMaintenanceModeEnabled: true
       properties:
-        alertsTotalCount:
+        alertsCount:
           format: int32
           type: integer
         worker:
@@ -57374,13 +57374,13 @@ components:
         bastion:
           format: int32
           type: integer
-        projectStatus:
+        status:
           $ref: '#/components/schemas/ProjectStatus'
-        projectName:
+        name:
           type: string
         accessIp:
           type: string
-        projectId:
+        id:
           format: int32
           type: integer
         masterReady:
@@ -57401,7 +57401,7 @@ components:
         organizationId:
           format: int32
           type: integer
-        kubernetesCurrentVersion:
+        kubernetesVersion:
           type: string
         isBackupEnabled:
           type: boolean
@@ -57475,7 +57475,7 @@ components:
           type: integer
         alertingProfileName:
           type: string
-        projectHealth:
+        health:
           $ref: '#/components/schemas/ProjectHealth'
         alertingProfileId:
           format: int32
@@ -57560,7 +57560,7 @@ components:
       - aiEnabled
       - alertingProfileId
       - alertingProfileName
-      - alertsTotalCount
+      - alertsCount
       - allowFullSpotKubernetes
       - allowSpotVMs
       - allowSpotWorkers
@@ -57579,7 +57579,9 @@ components:
       - hasKubeConfigFile
       - hasNfsServer
       - hasSelectedFlavors
+      - health
       - hypervisors
+      - id
       - isAutoUpgrade
       - isAutoscalingEnabled
       - isAutoscalingSpotEnabled
@@ -57591,26 +57593,24 @@ components:
       - isMonitoringEnabled
       - isOpaEnabled
       - isProjectMaintenanceModeEnabled
-      - kubernetesCurrentVersion
       - kubernetesProfileId
       - kubernetesProfileName
+      - kubernetesVersion
       - masterReady
       - maxSize
       - maxSpotPrice
       - minSize
+      - name
       - opaProfileId
       - opaProfileName
       - organizationId
       - organizationName
-      - projectHealth
-      - projectId
-      - projectName
-      - projectStatus
       - proxmoxStorage
       - quotaId
       - ramLimit
       - s3CredentialId
       - spotEnabled
+      - status
       - totalHourlyCost
       - usedCpu
       - usedDiskSize
@@ -57639,27 +57639,27 @@ components:
         allowSpotWorkers: true
         maxSpotPrice: 7.457744773683766
         organizationId: 1
-        projectStatus: "Null"
         expiredAt: expiredAt
         cloudType: NONE
         cloudName: cloudName
         cloudId: 1
         isLocked: true
+        name: name
         allowFullSpotKubernetes: true
         hypervisors:
         - hypervisors
         - hypervisors
+        id: 7
         totalHourlyCost: 1.1730742509559433
-        projectName: projectName
         projectCloudRevision: 1
-        projectId: 7
+        status: "Null"
         isMaintenanceModeEnabled: true
       properties:
-        projectStatus:
+        status:
           $ref: '#/components/schemas/ProjectStatus'
-        projectName:
+        name:
           type: string
-        projectId:
+        id:
           format: int32
           type: integer
         cloudType:
@@ -57732,17 +57732,17 @@ components:
       - expiredAt
       - hasSelectedFlavors
       - hypervisors
+      - id
       - isDrsEnabled
       - isLocked
       - isMaintenanceModeEnabled
       - isProjectMaintenanceModeEnabled
       - maxSpotPrice
+      - name
       - organizationId
       - organizationName
       - projectCloudRevision
-      - projectId
-      - projectName
-      - projectStatus
+      - status
       - totalHourlyCost
       type: object
     ProjectDto:
@@ -58441,6 +58441,7 @@ components:
         parentProjectId: 3
         cloudType: NONE
         isLocked: true
+        id: 0
         setExpirationDateButton:
           reasons:
           - reasons
@@ -58463,11 +58464,11 @@ components:
         cloudCredentialName: cloudCredentialName
         allowSpotWorkers: true
         maxSpotPrice: 7.061401241503109
+        name: name
         kubernetesCurrentVersion: kubernetesCurrentVersion
         allowFullSpotKubernetes: true
         lastModified: lastModified
-        projectName: projectName
-        projectId: 0
+        status: "Null"
         allUsers:
         - allUsers
         - allUsers
@@ -58475,7 +58476,6 @@ components:
         anyVm: true
         expiredAt: expiredAt
         projectAction: true
-        projectHealth: "Null"
         totalHourlyCost: 9.301444243932576
         kubesprayTargetVersion: kubesprayTargetVersion
         alertsCount: 1
@@ -58484,9 +58484,9 @@ components:
         lastModifiedBy: lastModifiedBy
         aiEnabled: true
         isMonitoringEnabled: true
+        health: "Null"
         kubesprayCurrentVersion: kubesprayCurrentVersion
         hasKubeConfigFile: true
-        projectStatus: "Null"
         kubeInfoButton:
           reasons:
           - reasons
@@ -58505,10 +58505,10 @@ components:
           enable: true
         isMaintenanceModeEnabled: true
       properties:
-        projectId:
+        id:
           format: int32
           type: integer
-        projectName:
+        name:
           type: string
         isKubernetes:
           type: boolean
@@ -58530,9 +58530,9 @@ components:
         organizationId:
           format: int32
           type: integer
-        projectStatus:
+        status:
           $ref: '#/components/schemas/ProjectStatus'
-        projectHealth:
+        health:
           $ref: '#/components/schemas/ProjectHealth'
         cloudType:
           $ref: '#/components/schemas/CloudType'
@@ -58651,6 +58651,8 @@ components:
       - expiredAt
       - hasExpirationWarning
       - hasKubeConfigFile
+      - health
+      - id
       - isAutoscalingEnabled
       - isAutoscalingSpotEnabled
       - isKubernetes
@@ -58665,16 +58667,14 @@ components:
       - lastModified
       - lastModifiedBy
       - maxSpotPrice
+      - name
       - opaProfileId
       - organizationId
       - organizationName
       - parentProjectId
       - projectAction
-      - projectHealth
-      - projectId
-      - projectName
-      - projectStatus
       - quotaId
+      - status
       - totalHourlyCost
       - totalServersCount
       - totalStandaloneVmsCount
@@ -59442,6 +59442,7 @@ components:
           parentProjectId: 3
           cloudType: NONE
           isLocked: true
+          id: 0
           setExpirationDateButton:
             reasons:
             - reasons
@@ -59464,11 +59465,11 @@ components:
           cloudCredentialName: cloudCredentialName
           allowSpotWorkers: true
           maxSpotPrice: 7.061401241503109
+          name: name
           kubernetesCurrentVersion: kubernetesCurrentVersion
           allowFullSpotKubernetes: true
           lastModified: lastModified
-          projectName: projectName
-          projectId: 0
+          status: "Null"
           allUsers:
           - allUsers
           - allUsers
@@ -59476,7 +59477,6 @@ components:
           anyVm: true
           expiredAt: expiredAt
           projectAction: true
-          projectHealth: "Null"
           totalHourlyCost: 9.301444243932576
           kubesprayTargetVersion: kubesprayTargetVersion
           alertsCount: 1
@@ -59485,9 +59485,9 @@ components:
           lastModifiedBy: lastModifiedBy
           aiEnabled: true
           isMonitoringEnabled: true
+          health: "Null"
           kubesprayCurrentVersion: kubesprayCurrentVersion
           hasKubeConfigFile: true
-          projectStatus: "Null"
           kubeInfoButton:
             reasons:
             - reasons
@@ -59530,6 +59530,7 @@ components:
           parentProjectId: 3
           cloudType: NONE
           isLocked: true
+          id: 0
           setExpirationDateButton:
             reasons:
             - reasons
@@ -59552,11 +59553,11 @@ components:
           cloudCredentialName: cloudCredentialName
           allowSpotWorkers: true
           maxSpotPrice: 7.061401241503109
+          name: name
           kubernetesCurrentVersion: kubernetesCurrentVersion
           allowFullSpotKubernetes: true
           lastModified: lastModified
-          projectName: projectName
-          projectId: 0
+          status: "Null"
           allUsers:
           - allUsers
           - allUsers
@@ -59564,7 +59565,6 @@ components:
           anyVm: true
           expiredAt: expiredAt
           projectAction: true
-          projectHealth: "Null"
           totalHourlyCost: 9.301444243932576
           kubesprayTargetVersion: kubesprayTargetVersion
           alertsCount: 1
@@ -59573,9 +59573,9 @@ components:
           lastModifiedBy: lastModifiedBy
           aiEnabled: true
           isMonitoringEnabled: true
+          health: "Null"
           kubesprayCurrentVersion: kubesprayCurrentVersion
           hasKubeConfigFile: true
-          projectStatus: "Null"
           kubeInfoButton:
             reasons:
             - reasons
@@ -62553,7 +62553,6 @@ components:
           status: status
         project:
           spotEnabled: true
-          alertsTotalCount: 2
           isOpaEnabled: true
           opaProfileId: 3
           availabilityZones:
@@ -62569,7 +62568,9 @@ components:
           kubernetesProfileId: 6
           minSize: 7
           bastion: 7
+          id: 1
           worker: 4
+          kubernetesVersion: kubernetesVersion
           usedCpu: 9
           vmVolumeSizeLimit: 6
           isAutoscalingSpotEnabled: true
@@ -62591,32 +62592,31 @@ components:
           proxmoxStorage: NFS
           usedDiskSize: 6
           vmUsedVolumeSize: 1
-          kubernetesCurrentVersion: kubernetesCurrentVersion
+          name: name
           allowFullSpotKubernetes: true
-          projectName: projectName
-          projectId: 1
+          status: "Null"
           accessProfileId: 2
           maxSize: 0
           autoscalingGroupName: autoscalingGroupName
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           hasNfsServer: true
-          projectHealth: "Null"
           totalHourlyCost: 3.0937452626664474
           ramLimit: 4
           opaProfileName: opaProfileName
           s3CredentialId: 5
           isProjectMaintenanceModeEnabled: true
           isDeprecated: true
+          alertsCount: 2
           allowSpotVMs: true
           vmCpuLimit: 8
           aiCredentialId: 6
           aiEnabled: true
           isMonitoringEnabled: true
+          health: "Null"
           diskSizeLimit: 5
           masterReady: 1
           hasKubeConfigFile: true
-          projectStatus: "Null"
           alertingProfileId: 6
           wasmEnabled: true
           cloudName: cloudName
@@ -63630,20 +63630,20 @@ components:
           allowSpotWorkers: true
           maxSpotPrice: 7.457744773683766
           organizationId: 1
-          projectStatus: "Null"
           expiredAt: expiredAt
           cloudType: NONE
           cloudName: cloudName
           cloudId: 1
           isLocked: true
+          name: name
           allowFullSpotKubernetes: true
           hypervisors:
           - hypervisors
           - hypervisors
+          id: 7
           totalHourlyCost: 1.1730742509559433
-          projectName: projectName
           projectCloudRevision: 1
-          projectId: 7
+          status: "Null"
           isMaintenanceModeEnabled: true
       properties:
         data:
@@ -66586,15 +66586,16 @@ components:
           createdAt: createdAt
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          projectHealth: "Null"
           cloudType: NONE
           isLocked: true
+          id: 0
           setExpirationDateButton:
             reasons:
             - reasons
             - reasons
             hidden: true
             enable: true
+          kubernetesVersion: kubernetesVersion
           organizationName: organizationName
           accessIp: accessIp
           alertsCount: 1
@@ -66605,9 +66606,9 @@ components:
             hidden: true
             enable: true
           lastModifiedBy: lastModifiedBy
+          health: "Null"
           isVirtualCluster: true
           hasKubeConfigFile: true
-          projectStatus: "Null"
           kubeInfoButton:
             reasons:
             - reasons
@@ -66618,10 +66619,8 @@ components:
           alertingProfileId: 5
           wasmEnabled: true
           createdBy: createdBy
-          kubernetesCurrentVersion: kubernetesCurrentVersion
+          name: name
           lastModified: lastModified
-          projectName: projectName
-          projectId: 0
           resetStatusButton:
             reasons:
             - reasons
@@ -66629,6 +66628,7 @@ components:
             hidden: true
             enable: true
           isMaintenanceModeEnabled: true
+          status: "Null"
         - deleteButton:
             reasons:
             - reasons
@@ -66645,15 +66645,16 @@ components:
           createdAt: createdAt
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          projectHealth: "Null"
           cloudType: NONE
           isLocked: true
+          id: 0
           setExpirationDateButton:
             reasons:
             - reasons
             - reasons
             hidden: true
             enable: true
+          kubernetesVersion: kubernetesVersion
           organizationName: organizationName
           accessIp: accessIp
           alertsCount: 1
@@ -66664,9 +66665,9 @@ components:
             hidden: true
             enable: true
           lastModifiedBy: lastModifiedBy
+          health: "Null"
           isVirtualCluster: true
           hasKubeConfigFile: true
-          projectStatus: "Null"
           kubeInfoButton:
             reasons:
             - reasons
@@ -66677,10 +66678,8 @@ components:
           alertingProfileId: 5
           wasmEnabled: true
           createdBy: createdBy
-          kubernetesCurrentVersion: kubernetesCurrentVersion
+          name: name
           lastModified: lastModified
-          projectName: projectName
-          projectId: 0
           resetStatusButton:
             reasons:
             - reasons
@@ -66688,6 +66687,7 @@ components:
             hidden: true
             enable: true
           isMaintenanceModeEnabled: true
+          status: "Null"
         project:
           isProjectMaintenanceModeEnabled: true
           organizationName: organizationName
@@ -66701,20 +66701,20 @@ components:
           allowSpotWorkers: true
           maxSpotPrice: 7.457744773683766
           organizationId: 1
-          projectStatus: "Null"
           expiredAt: expiredAt
           cloudType: NONE
           cloudName: cloudName
           cloudId: 1
           isLocked: true
+          name: name
           allowFullSpotKubernetes: true
           hypervisors:
           - hypervisors
           - hypervisors
+          id: 7
           totalHourlyCost: 1.1730742509559433
-          projectName: projectName
           projectCloudRevision: 1
-          projectId: 7
+          status: "Null"
           isMaintenanceModeEnabled: true
         totalCount: 5
       properties:
@@ -66752,15 +66752,16 @@ components:
         createdAt: createdAt
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
-        projectHealth: "Null"
         cloudType: NONE
         isLocked: true
+        id: 0
         setExpirationDateButton:
           reasons:
           - reasons
           - reasons
           hidden: true
           enable: true
+        kubernetesVersion: kubernetesVersion
         organizationName: organizationName
         accessIp: accessIp
         alertsCount: 1
@@ -66771,9 +66772,9 @@ components:
           hidden: true
           enable: true
         lastModifiedBy: lastModifiedBy
+        health: "Null"
         isVirtualCluster: true
         hasKubeConfigFile: true
-        projectStatus: "Null"
         kubeInfoButton:
           reasons:
           - reasons
@@ -66784,10 +66785,8 @@ components:
         alertingProfileId: 5
         wasmEnabled: true
         createdBy: createdBy
-        kubernetesCurrentVersion: kubernetesCurrentVersion
+        name: name
         lastModified: lastModified
-        projectName: projectName
-        projectId: 0
         resetStatusButton:
           reasons:
           - reasons
@@ -66795,11 +66794,12 @@ components:
           hidden: true
           enable: true
         isMaintenanceModeEnabled: true
+        status: "Null"
       properties:
-        projectId:
+        id:
           format: int32
           type: integer
-        projectName:
+        name:
           type: string
         isVirtualCluster:
           type: boolean
@@ -66814,7 +66814,7 @@ components:
         organizationId:
           format: int32
           type: integer
-        kubernetesCurrentVersion:
+        kubernetesVersion:
           type: string
         createdAt:
           type: string
@@ -66844,9 +66844,9 @@ components:
           type: string
         cloudType:
           $ref: '#/components/schemas/CloudType'
-        projectStatus:
+        status:
           $ref: '#/components/schemas/ProjectStatus'
-        projectHealth:
+        health:
           $ref: '#/components/schemas/ProjectHealth'
         lockButton:
           $ref: '#/components/schemas/ButtonStatusDto'
@@ -66872,22 +66872,22 @@ components:
       - deleteOnExpiration
       - expiredAt
       - hasKubeConfigFile
+      - health
+      - id
       - isLocked
       - isMaintenanceModeEnabled
       - isVirtualCluster
       - kubeInfoButton
-      - kubernetesCurrentVersion
+      - kubernetesVersion
       - lastModified
       - lastModifiedBy
       - lockButton
+      - name
       - organizationId
       - organizationName
-      - projectHealth
-      - projectId
-      - projectName
-      - projectStatus
       - resetStatusButton
       - setExpirationDateButton
+      - status
       - unlockButton
       - wasmEnabled
       type: object

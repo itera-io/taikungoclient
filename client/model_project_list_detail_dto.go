@@ -22,8 +22,8 @@ var _ MappedNullable = &ProjectListDetailDto{}
 
 // ProjectListDetailDto struct for ProjectListDetailDto
 type ProjectListDetailDto struct {
-	ProjectId int32 `json:"projectId"`
-	ProjectName string `json:"projectName"`
+	Id int32 `json:"id"`
+	Name string `json:"name"`
 	IsKubernetes bool `json:"isKubernetes"`
 	IsLocked bool `json:"isLocked"`
 	IsVirtualCluster bool `json:"isVirtualCluster"`
@@ -33,8 +33,8 @@ type ProjectListDetailDto struct {
 	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
 	OrganizationName string `json:"organizationName"`
 	OrganizationId int32 `json:"organizationId"`
-	ProjectStatus ProjectStatus `json:"projectStatus"`
-	ProjectHealth ProjectHealth `json:"projectHealth"`
+	Status ProjectStatus `json:"status"`
+	Health ProjectHealth `json:"health"`
 	CloudType *CloudType `json:"cloudType,omitempty"`
 	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion"`
 	KubesprayTargetVersion string `json:"kubesprayTargetVersion"`
@@ -82,10 +82,10 @@ type _ProjectListDetailDto ProjectListDetailDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectListDetailDto(projectId int32, projectName string, isKubernetes bool, isLocked bool, isVirtualCluster bool, isMonitoringEnabled bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, projectStatus ProjectStatus, projectHealth ProjectHealth, kubesprayCurrentVersion string, kubesprayTargetVersion string, kubernetesCurrentVersion string, kubernetesTargetVersion string, createdAt string, alertsCount int32, totalServersCount int32, totalStandaloneVmsCount int32, boundUsers []UserDto, createdBy string, lastModified NullableString, expiredAt NullableString, deleteOnExpiration bool, certificateExpiredAt NullableString, lastModifiedBy NullableString, quotaId int32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, projectAction bool, hasExpirationWarning bool, totalHourlyCost float64, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, aiEnabled bool, anyServer bool, anyVm bool, allUsers []string, parentProjectId NullableInt32, alertingProfileId NullableInt32, opaProfileId NullableInt32) *ProjectListDetailDto {
+func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked bool, isVirtualCluster bool, isMonitoringEnabled bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, status ProjectStatus, health ProjectHealth, kubesprayCurrentVersion string, kubesprayTargetVersion string, kubernetesCurrentVersion string, kubernetesTargetVersion string, createdAt string, alertsCount int32, totalServersCount int32, totalStandaloneVmsCount int32, boundUsers []UserDto, createdBy string, lastModified NullableString, expiredAt NullableString, deleteOnExpiration bool, certificateExpiredAt NullableString, lastModifiedBy NullableString, quotaId int32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, projectAction bool, hasExpirationWarning bool, totalHourlyCost float64, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, aiEnabled bool, anyServer bool, anyVm bool, allUsers []string, parentProjectId NullableInt32, alertingProfileId NullableInt32, opaProfileId NullableInt32) *ProjectListDetailDto {
 	this := ProjectListDetailDto{}
-	this.ProjectId = projectId
-	this.ProjectName = projectName
+	this.Id = id
+	this.Name = name
 	this.IsKubernetes = isKubernetes
 	this.IsLocked = isLocked
 	this.IsVirtualCluster = isVirtualCluster
@@ -94,8 +94,8 @@ func NewProjectListDetailDto(projectId int32, projectName string, isKubernetes b
 	this.IsMaintenanceModeEnabled = isMaintenanceModeEnabled
 	this.OrganizationName = organizationName
 	this.OrganizationId = organizationId
-	this.ProjectStatus = projectStatus
-	this.ProjectHealth = projectHealth
+	this.Status = status
+	this.Health = health
 	this.KubesprayCurrentVersion = kubesprayCurrentVersion
 	this.KubesprayTargetVersion = kubesprayTargetVersion
 	this.KubernetesCurrentVersion = kubernetesCurrentVersion
@@ -139,52 +139,52 @@ func NewProjectListDetailDtoWithDefaults() *ProjectListDetailDto {
 	return &this
 }
 
-// GetProjectId returns the ProjectId field value
-func (o *ProjectListDetailDto) GetProjectId() int32 {
+// GetId returns the Id field value
+func (o *ProjectListDetailDto) GetId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.ProjectId
+	return o.Id
 }
 
-// GetProjectIdOk returns a tuple with the ProjectId field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ProjectListDetailDto) GetProjectIdOk() (*int32, bool) {
+func (o *ProjectListDetailDto) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectId, true
+	return &o.Id, true
 }
 
-// SetProjectId sets field value
-func (o *ProjectListDetailDto) SetProjectId(v int32) {
-	o.ProjectId = v
+// SetId sets field value
+func (o *ProjectListDetailDto) SetId(v int32) {
+	o.Id = v
 }
 
-// GetProjectName returns the ProjectName field value
-func (o *ProjectListDetailDto) GetProjectName() string {
+// GetName returns the Name field value
+func (o *ProjectListDetailDto) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ProjectName
+	return o.Name
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *ProjectListDetailDto) GetProjectNameOk() (*string, bool) {
+func (o *ProjectListDetailDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return &o.Name, true
 }
 
-// SetProjectName sets field value
-func (o *ProjectListDetailDto) SetProjectName(v string) {
-	o.ProjectName = v
+// SetName sets field value
+func (o *ProjectListDetailDto) SetName(v string) {
+	o.Name = v
 }
 
 // GetIsKubernetes returns the IsKubernetes field value
@@ -421,52 +421,52 @@ func (o *ProjectListDetailDto) SetOrganizationId(v int32) {
 	o.OrganizationId = v
 }
 
-// GetProjectStatus returns the ProjectStatus field value
-func (o *ProjectListDetailDto) GetProjectStatus() ProjectStatus {
+// GetStatus returns the Status field value
+func (o *ProjectListDetailDto) GetStatus() ProjectStatus {
 	if o == nil {
 		var ret ProjectStatus
 		return ret
 	}
 
-	return o.ProjectStatus
+	return o.Status
 }
 
-// GetProjectStatusOk returns a tuple with the ProjectStatus field value
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *ProjectListDetailDto) GetProjectStatusOk() (*ProjectStatus, bool) {
+func (o *ProjectListDetailDto) GetStatusOk() (*ProjectStatus, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectStatus, true
+	return &o.Status, true
 }
 
-// SetProjectStatus sets field value
-func (o *ProjectListDetailDto) SetProjectStatus(v ProjectStatus) {
-	o.ProjectStatus = v
+// SetStatus sets field value
+func (o *ProjectListDetailDto) SetStatus(v ProjectStatus) {
+	o.Status = v
 }
 
-// GetProjectHealth returns the ProjectHealth field value
-func (o *ProjectListDetailDto) GetProjectHealth() ProjectHealth {
+// GetHealth returns the Health field value
+func (o *ProjectListDetailDto) GetHealth() ProjectHealth {
 	if o == nil {
 		var ret ProjectHealth
 		return ret
 	}
 
-	return o.ProjectHealth
+	return o.Health
 }
 
-// GetProjectHealthOk returns a tuple with the ProjectHealth field value
+// GetHealthOk returns a tuple with the Health field value
 // and a boolean to check if the value has been set.
-func (o *ProjectListDetailDto) GetProjectHealthOk() (*ProjectHealth, bool) {
+func (o *ProjectListDetailDto) GetHealthOk() (*ProjectHealth, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectHealth, true
+	return &o.Health, true
 }
 
-// SetProjectHealth sets field value
-func (o *ProjectListDetailDto) SetProjectHealth(v ProjectHealth) {
-	o.ProjectHealth = v
+// SetHealth sets field value
+func (o *ProjectListDetailDto) SetHealth(v ProjectHealth) {
+	o.Health = v
 }
 
 // GetCloudType returns the CloudType field value if set, zero value otherwise.
@@ -1487,8 +1487,8 @@ func (o ProjectListDetailDto) MarshalJSON() ([]byte, error) {
 
 func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["projectId"] = o.ProjectId
-	toSerialize["projectName"] = o.ProjectName
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 	toSerialize["isKubernetes"] = o.IsKubernetes
 	toSerialize["isLocked"] = o.IsLocked
 	toSerialize["isVirtualCluster"] = o.IsVirtualCluster
@@ -1500,8 +1500,8 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["organizationId"] = o.OrganizationId
-	toSerialize["projectStatus"] = o.ProjectStatus
-	toSerialize["projectHealth"] = o.ProjectHealth
+	toSerialize["status"] = o.Status
+	toSerialize["health"] = o.Health
 	if !IsNil(o.CloudType) {
 		toSerialize["cloudType"] = o.CloudType
 	}
@@ -1563,8 +1563,8 @@ func (o *ProjectListDetailDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"projectId",
-		"projectName",
+		"id",
+		"name",
 		"isKubernetes",
 		"isLocked",
 		"isVirtualCluster",
@@ -1573,8 +1573,8 @@ func (o *ProjectListDetailDto) UnmarshalJSON(data []byte) (err error) {
 		"isMaintenanceModeEnabled",
 		"organizationName",
 		"organizationId",
-		"projectStatus",
-		"projectHealth",
+		"status",
+		"health",
 		"kubesprayCurrentVersion",
 		"kubesprayTargetVersion",
 		"kubernetesCurrentVersion",

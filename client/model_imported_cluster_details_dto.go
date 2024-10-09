@@ -22,17 +22,17 @@ var _ MappedNullable = &ImportedClusterDetailsDto{}
 
 // ImportedClusterDetailsDto struct for ImportedClusterDetailsDto
 type ImportedClusterDetailsDto struct {
-	ProjectId int32 `json:"projectId"`
-	ProjectName string `json:"projectName"`
+	Id int32 `json:"id"`
+	Name string `json:"name"`
 	AccessIp NullableString `json:"accessIp"`
-	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion"`
+	KubernetesVersion NullableString `json:"kubernetesVersion"`
 	ImportClusterType ImportClusterType `json:"importClusterType"`
 	OrganizationId int32 `json:"organizationId"`
 	OrganizationName string `json:"organizationName"`
 	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
 	CloudCredentialId NullableInt32 `json:"cloudCredentialId,omitempty"`
-	ProjectHealth ProjectHealth `json:"projectHealth"`
-	ProjectStatus ProjectStatus `json:"projectStatus"`
+	Health ProjectHealth `json:"health"`
+	Status ProjectStatus `json:"status"`
 }
 
 type _ImportedClusterDetailsDto ImportedClusterDetailsDto
@@ -41,17 +41,17 @@ type _ImportedClusterDetailsDto ImportedClusterDetailsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportedClusterDetailsDto(projectId int32, projectName string, accessIp NullableString, kubernetesCurrentVersion NullableString, importClusterType ImportClusterType, organizationId int32, organizationName string, projectHealth ProjectHealth, projectStatus ProjectStatus) *ImportedClusterDetailsDto {
+func NewImportedClusterDetailsDto(id int32, name string, accessIp NullableString, kubernetesVersion NullableString, importClusterType ImportClusterType, organizationId int32, organizationName string, health ProjectHealth, status ProjectStatus) *ImportedClusterDetailsDto {
 	this := ImportedClusterDetailsDto{}
-	this.ProjectId = projectId
-	this.ProjectName = projectName
+	this.Id = id
+	this.Name = name
 	this.AccessIp = accessIp
-	this.KubernetesCurrentVersion = kubernetesCurrentVersion
+	this.KubernetesVersion = kubernetesVersion
 	this.ImportClusterType = importClusterType
 	this.OrganizationId = organizationId
 	this.OrganizationName = organizationName
-	this.ProjectHealth = projectHealth
-	this.ProjectStatus = projectStatus
+	this.Health = health
+	this.Status = status
 	return &this
 }
 
@@ -63,52 +63,52 @@ func NewImportedClusterDetailsDtoWithDefaults() *ImportedClusterDetailsDto {
 	return &this
 }
 
-// GetProjectId returns the ProjectId field value
-func (o *ImportedClusterDetailsDto) GetProjectId() int32 {
+// GetId returns the Id field value
+func (o *ImportedClusterDetailsDto) GetId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.ProjectId
+	return o.Id
 }
 
-// GetProjectIdOk returns a tuple with the ProjectId field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterDetailsDto) GetProjectIdOk() (*int32, bool) {
+func (o *ImportedClusterDetailsDto) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectId, true
+	return &o.Id, true
 }
 
-// SetProjectId sets field value
-func (o *ImportedClusterDetailsDto) SetProjectId(v int32) {
-	o.ProjectId = v
+// SetId sets field value
+func (o *ImportedClusterDetailsDto) SetId(v int32) {
+	o.Id = v
 }
 
-// GetProjectName returns the ProjectName field value
-func (o *ImportedClusterDetailsDto) GetProjectName() string {
+// GetName returns the Name field value
+func (o *ImportedClusterDetailsDto) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ProjectName
+	return o.Name
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterDetailsDto) GetProjectNameOk() (*string, bool) {
+func (o *ImportedClusterDetailsDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return &o.Name, true
 }
 
-// SetProjectName sets field value
-func (o *ImportedClusterDetailsDto) SetProjectName(v string) {
-	o.ProjectName = v
+// SetName sets field value
+func (o *ImportedClusterDetailsDto) SetName(v string) {
+	o.Name = v
 }
 
 // GetAccessIp returns the AccessIp field value
@@ -137,30 +137,30 @@ func (o *ImportedClusterDetailsDto) SetAccessIp(v string) {
 	o.AccessIp.Set(&v)
 }
 
-// GetKubernetesCurrentVersion returns the KubernetesCurrentVersion field value
+// GetKubernetesVersion returns the KubernetesVersion field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *ImportedClusterDetailsDto) GetKubernetesCurrentVersion() string {
-	if o == nil || o.KubernetesCurrentVersion.Get() == nil {
+func (o *ImportedClusterDetailsDto) GetKubernetesVersion() string {
+	if o == nil || o.KubernetesVersion.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.KubernetesCurrentVersion.Get()
+	return *o.KubernetesVersion.Get()
 }
 
-// GetKubernetesCurrentVersionOk returns a tuple with the KubernetesCurrentVersion field value
+// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ImportedClusterDetailsDto) GetKubernetesCurrentVersionOk() (*string, bool) {
+func (o *ImportedClusterDetailsDto) GetKubernetesVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.KubernetesCurrentVersion.Get(), o.KubernetesCurrentVersion.IsSet()
+	return o.KubernetesVersion.Get(), o.KubernetesVersion.IsSet()
 }
 
-// SetKubernetesCurrentVersion sets field value
-func (o *ImportedClusterDetailsDto) SetKubernetesCurrentVersion(v string) {
-	o.KubernetesCurrentVersion.Set(&v)
+// SetKubernetesVersion sets field value
+func (o *ImportedClusterDetailsDto) SetKubernetesVersion(v string) {
+	o.KubernetesVersion.Set(&v)
 }
 
 // GetImportClusterType returns the ImportClusterType field value
@@ -319,52 +319,52 @@ func (o *ImportedClusterDetailsDto) UnsetCloudCredentialId() {
 	o.CloudCredentialId.Unset()
 }
 
-// GetProjectHealth returns the ProjectHealth field value
-func (o *ImportedClusterDetailsDto) GetProjectHealth() ProjectHealth {
+// GetHealth returns the Health field value
+func (o *ImportedClusterDetailsDto) GetHealth() ProjectHealth {
 	if o == nil {
 		var ret ProjectHealth
 		return ret
 	}
 
-	return o.ProjectHealth
+	return o.Health
 }
 
-// GetProjectHealthOk returns a tuple with the ProjectHealth field value
+// GetHealthOk returns a tuple with the Health field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterDetailsDto) GetProjectHealthOk() (*ProjectHealth, bool) {
+func (o *ImportedClusterDetailsDto) GetHealthOk() (*ProjectHealth, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectHealth, true
+	return &o.Health, true
 }
 
-// SetProjectHealth sets field value
-func (o *ImportedClusterDetailsDto) SetProjectHealth(v ProjectHealth) {
-	o.ProjectHealth = v
+// SetHealth sets field value
+func (o *ImportedClusterDetailsDto) SetHealth(v ProjectHealth) {
+	o.Health = v
 }
 
-// GetProjectStatus returns the ProjectStatus field value
-func (o *ImportedClusterDetailsDto) GetProjectStatus() ProjectStatus {
+// GetStatus returns the Status field value
+func (o *ImportedClusterDetailsDto) GetStatus() ProjectStatus {
 	if o == nil {
 		var ret ProjectStatus
 		return ret
 	}
 
-	return o.ProjectStatus
+	return o.Status
 }
 
-// GetProjectStatusOk returns a tuple with the ProjectStatus field value
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterDetailsDto) GetProjectStatusOk() (*ProjectStatus, bool) {
+func (o *ImportedClusterDetailsDto) GetStatusOk() (*ProjectStatus, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectStatus, true
+	return &o.Status, true
 }
 
-// SetProjectStatus sets field value
-func (o *ImportedClusterDetailsDto) SetProjectStatus(v ProjectStatus) {
-	o.ProjectStatus = v
+// SetStatus sets field value
+func (o *ImportedClusterDetailsDto) SetStatus(v ProjectStatus) {
+	o.Status = v
 }
 
 func (o ImportedClusterDetailsDto) MarshalJSON() ([]byte, error) {
@@ -377,10 +377,10 @@ func (o ImportedClusterDetailsDto) MarshalJSON() ([]byte, error) {
 
 func (o ImportedClusterDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["projectId"] = o.ProjectId
-	toSerialize["projectName"] = o.ProjectName
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
 	toSerialize["accessIp"] = o.AccessIp.Get()
-	toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion.Get()
+	toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
 	toSerialize["importClusterType"] = o.ImportClusterType
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["organizationName"] = o.OrganizationName
@@ -390,8 +390,8 @@ func (o ImportedClusterDetailsDto) ToMap() (map[string]interface{}, error) {
 	if o.CloudCredentialId.IsSet() {
 		toSerialize["cloudCredentialId"] = o.CloudCredentialId.Get()
 	}
-	toSerialize["projectHealth"] = o.ProjectHealth
-	toSerialize["projectStatus"] = o.ProjectStatus
+	toSerialize["health"] = o.Health
+	toSerialize["status"] = o.Status
 	return toSerialize, nil
 }
 
@@ -400,15 +400,15 @@ func (o *ImportedClusterDetailsDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"projectId",
-		"projectName",
+		"id",
+		"name",
 		"accessIp",
-		"kubernetesCurrentVersion",
+		"kubernetesVersion",
 		"importClusterType",
 		"organizationId",
 		"organizationName",
-		"projectHealth",
-		"projectStatus",
+		"health",
+		"status",
 	}
 
 	allProperties := make(map[string]interface{})

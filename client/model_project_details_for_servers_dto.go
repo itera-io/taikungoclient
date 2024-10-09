@@ -22,13 +22,13 @@ var _ MappedNullable = &ProjectDetailsForServersDto{}
 
 // ProjectDetailsForServersDto struct for ProjectDetailsForServersDto
 type ProjectDetailsForServersDto struct {
-	AlertsTotalCount int32 `json:"alertsTotalCount"`
+	AlertsCount int32 `json:"alertsCount"`
 	Worker int32 `json:"worker"`
 	Bastion int32 `json:"bastion"`
-	ProjectStatus ProjectStatus `json:"projectStatus"`
-	ProjectName string `json:"projectName"`
+	Status ProjectStatus `json:"status"`
+	Name string `json:"name"`
 	AccessIp string `json:"accessIp"`
-	ProjectId int32 `json:"projectId"`
+	Id int32 `json:"id"`
 	MasterReady int32 `json:"masterReady"`
 	CloudType CloudType `json:"cloudType"`
 	CloudName string `json:"cloudName"`
@@ -36,7 +36,7 @@ type ProjectDetailsForServersDto struct {
 	QuotaId int32 `json:"quotaId"`
 	OrganizationName string `json:"organizationName"`
 	OrganizationId int32 `json:"organizationId"`
-	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion"`
+	KubernetesVersion string `json:"kubernetesVersion"`
 	IsBackupEnabled bool `json:"isBackupEnabled"`
 	AiEnabled bool `json:"aiEnabled"`
 	IsLocked bool `json:"isLocked"`
@@ -65,7 +65,7 @@ type ProjectDetailsForServersDto struct {
 	KubernetesProfileName string `json:"kubernetesProfileName"`
 	KubernetesProfileId NullableInt32 `json:"kubernetesProfileId"`
 	AlertingProfileName string `json:"alertingProfileName"`
-	ProjectHealth ProjectHealth `json:"projectHealth"`
+	Health ProjectHealth `json:"health"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
 	S3CredentialId NullableInt32 `json:"s3CredentialId"`
 	AiCredentialId NullableInt32 `json:"aiCredentialId"`
@@ -100,15 +100,15 @@ type _ProjectDetailsForServersDto ProjectDetailsForServersDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDetailsForServersDto(alertsTotalCount int32, worker int32, bastion int32, projectStatus ProjectStatus, projectName string, accessIp string, projectId int32, masterReady int32, cloudType CloudType, cloudName string, cloudId int32, quotaId int32, organizationName string, organizationId int32, kubernetesCurrentVersion string, isBackupEnabled bool, aiEnabled bool, isLocked bool, isAutoUpgrade bool, isMonitoringEnabled bool, isOpaEnabled bool, hasKubeConfigFile bool, hasSelectedFlavors bool, isMaintenanceModeEnabled bool, isProjectMaintenanceModeEnabled bool, isDeprecated bool, cpuLimit int64, ramLimit int64, diskSizeLimit int64, usedCpu int64, usedRam int64, usedDiskSize int64, vmCpuLimit int64, vmRamLimit int64, vmVolumeSizeLimit int64, vmUsedCpu int64, vmUsedRam int64, vmUsedVolumeSize int64, accessProfileName string, accessProfileId NullableInt32, kubernetesProfileName string, kubernetesProfileId NullableInt32, alertingProfileName string, projectHealth ProjectHealth, alertingProfileId NullableInt32, s3CredentialId NullableInt32, aiCredentialId NullableInt32, expiredAt string, certificationExpiredAt string, opaProfileId NullableInt32, opaProfileName string, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, totalHourlyCost float64, autoscalingGroupName string, minSize NullableInt32, maxSize NullableInt32, diskSize NullableFloat64, flavor NullableString, spotEnabled NullableBool, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, hasNfsServer bool, wasmEnabled bool, availabilityZones []string, hypervisors []string, proxmoxStorage ProxmoxStorage, isDrsEnabled bool, maxSpotPrice NullableFloat64) *ProjectDetailsForServersDto {
+func NewProjectDetailsForServersDto(alertsCount int32, worker int32, bastion int32, status ProjectStatus, name string, accessIp string, id int32, masterReady int32, cloudType CloudType, cloudName string, cloudId int32, quotaId int32, organizationName string, organizationId int32, kubernetesVersion string, isBackupEnabled bool, aiEnabled bool, isLocked bool, isAutoUpgrade bool, isMonitoringEnabled bool, isOpaEnabled bool, hasKubeConfigFile bool, hasSelectedFlavors bool, isMaintenanceModeEnabled bool, isProjectMaintenanceModeEnabled bool, isDeprecated bool, cpuLimit int64, ramLimit int64, diskSizeLimit int64, usedCpu int64, usedRam int64, usedDiskSize int64, vmCpuLimit int64, vmRamLimit int64, vmVolumeSizeLimit int64, vmUsedCpu int64, vmUsedRam int64, vmUsedVolumeSize int64, accessProfileName string, accessProfileId NullableInt32, kubernetesProfileName string, kubernetesProfileId NullableInt32, alertingProfileName string, health ProjectHealth, alertingProfileId NullableInt32, s3CredentialId NullableInt32, aiCredentialId NullableInt32, expiredAt string, certificationExpiredAt string, opaProfileId NullableInt32, opaProfileName string, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, totalHourlyCost float64, autoscalingGroupName string, minSize NullableInt32, maxSize NullableInt32, diskSize NullableFloat64, flavor NullableString, spotEnabled NullableBool, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, hasNfsServer bool, wasmEnabled bool, availabilityZones []string, hypervisors []string, proxmoxStorage ProxmoxStorage, isDrsEnabled bool, maxSpotPrice NullableFloat64) *ProjectDetailsForServersDto {
 	this := ProjectDetailsForServersDto{}
-	this.AlertsTotalCount = alertsTotalCount
+	this.AlertsCount = alertsCount
 	this.Worker = worker
 	this.Bastion = bastion
-	this.ProjectStatus = projectStatus
-	this.ProjectName = projectName
+	this.Status = status
+	this.Name = name
 	this.AccessIp = accessIp
-	this.ProjectId = projectId
+	this.Id = id
 	this.MasterReady = masterReady
 	this.CloudType = cloudType
 	this.CloudName = cloudName
@@ -116,7 +116,7 @@ func NewProjectDetailsForServersDto(alertsTotalCount int32, worker int32, bastio
 	this.QuotaId = quotaId
 	this.OrganizationName = organizationName
 	this.OrganizationId = organizationId
-	this.KubernetesCurrentVersion = kubernetesCurrentVersion
+	this.KubernetesVersion = kubernetesVersion
 	this.IsBackupEnabled = isBackupEnabled
 	this.AiEnabled = aiEnabled
 	this.IsLocked = isLocked
@@ -145,7 +145,7 @@ func NewProjectDetailsForServersDto(alertsTotalCount int32, worker int32, bastio
 	this.KubernetesProfileName = kubernetesProfileName
 	this.KubernetesProfileId = kubernetesProfileId
 	this.AlertingProfileName = alertingProfileName
-	this.ProjectHealth = projectHealth
+	this.Health = health
 	this.AlertingProfileId = alertingProfileId
 	this.S3CredentialId = s3CredentialId
 	this.AiCredentialId = aiCredentialId
@@ -183,28 +183,28 @@ func NewProjectDetailsForServersDtoWithDefaults() *ProjectDetailsForServersDto {
 	return &this
 }
 
-// GetAlertsTotalCount returns the AlertsTotalCount field value
-func (o *ProjectDetailsForServersDto) GetAlertsTotalCount() int32 {
+// GetAlertsCount returns the AlertsCount field value
+func (o *ProjectDetailsForServersDto) GetAlertsCount() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.AlertsTotalCount
+	return o.AlertsCount
 }
 
-// GetAlertsTotalCountOk returns a tuple with the AlertsTotalCount field value
+// GetAlertsCountOk returns a tuple with the AlertsCount field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDetailsForServersDto) GetAlertsTotalCountOk() (*int32, bool) {
+func (o *ProjectDetailsForServersDto) GetAlertsCountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AlertsTotalCount, true
+	return &o.AlertsCount, true
 }
 
-// SetAlertsTotalCount sets field value
-func (o *ProjectDetailsForServersDto) SetAlertsTotalCount(v int32) {
-	o.AlertsTotalCount = v
+// SetAlertsCount sets field value
+func (o *ProjectDetailsForServersDto) SetAlertsCount(v int32) {
+	o.AlertsCount = v
 }
 
 // GetWorker returns the Worker field value
@@ -255,52 +255,52 @@ func (o *ProjectDetailsForServersDto) SetBastion(v int32) {
 	o.Bastion = v
 }
 
-// GetProjectStatus returns the ProjectStatus field value
-func (o *ProjectDetailsForServersDto) GetProjectStatus() ProjectStatus {
+// GetStatus returns the Status field value
+func (o *ProjectDetailsForServersDto) GetStatus() ProjectStatus {
 	if o == nil {
 		var ret ProjectStatus
 		return ret
 	}
 
-	return o.ProjectStatus
+	return o.Status
 }
 
-// GetProjectStatusOk returns a tuple with the ProjectStatus field value
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDetailsForServersDto) GetProjectStatusOk() (*ProjectStatus, bool) {
+func (o *ProjectDetailsForServersDto) GetStatusOk() (*ProjectStatus, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectStatus, true
+	return &o.Status, true
 }
 
-// SetProjectStatus sets field value
-func (o *ProjectDetailsForServersDto) SetProjectStatus(v ProjectStatus) {
-	o.ProjectStatus = v
+// SetStatus sets field value
+func (o *ProjectDetailsForServersDto) SetStatus(v ProjectStatus) {
+	o.Status = v
 }
 
-// GetProjectName returns the ProjectName field value
-func (o *ProjectDetailsForServersDto) GetProjectName() string {
+// GetName returns the Name field value
+func (o *ProjectDetailsForServersDto) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ProjectName
+	return o.Name
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDetailsForServersDto) GetProjectNameOk() (*string, bool) {
+func (o *ProjectDetailsForServersDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectName, true
+	return &o.Name, true
 }
 
-// SetProjectName sets field value
-func (o *ProjectDetailsForServersDto) SetProjectName(v string) {
-	o.ProjectName = v
+// SetName sets field value
+func (o *ProjectDetailsForServersDto) SetName(v string) {
+	o.Name = v
 }
 
 // GetAccessIp returns the AccessIp field value
@@ -327,28 +327,28 @@ func (o *ProjectDetailsForServersDto) SetAccessIp(v string) {
 	o.AccessIp = v
 }
 
-// GetProjectId returns the ProjectId field value
-func (o *ProjectDetailsForServersDto) GetProjectId() int32 {
+// GetId returns the Id field value
+func (o *ProjectDetailsForServersDto) GetId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.ProjectId
+	return o.Id
 }
 
-// GetProjectIdOk returns a tuple with the ProjectId field value
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDetailsForServersDto) GetProjectIdOk() (*int32, bool) {
+func (o *ProjectDetailsForServersDto) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectId, true
+	return &o.Id, true
 }
 
-// SetProjectId sets field value
-func (o *ProjectDetailsForServersDto) SetProjectId(v int32) {
-	o.ProjectId = v
+// SetId sets field value
+func (o *ProjectDetailsForServersDto) SetId(v int32) {
+	o.Id = v
 }
 
 // GetMasterReady returns the MasterReady field value
@@ -519,28 +519,28 @@ func (o *ProjectDetailsForServersDto) SetOrganizationId(v int32) {
 	o.OrganizationId = v
 }
 
-// GetKubernetesCurrentVersion returns the KubernetesCurrentVersion field value
-func (o *ProjectDetailsForServersDto) GetKubernetesCurrentVersion() string {
+// GetKubernetesVersion returns the KubernetesVersion field value
+func (o *ProjectDetailsForServersDto) GetKubernetesVersion() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.KubernetesCurrentVersion
+	return o.KubernetesVersion
 }
 
-// GetKubernetesCurrentVersionOk returns a tuple with the KubernetesCurrentVersion field value
+// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDetailsForServersDto) GetKubernetesCurrentVersionOk() (*string, bool) {
+func (o *ProjectDetailsForServersDto) GetKubernetesVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.KubernetesCurrentVersion, true
+	return &o.KubernetesVersion, true
 }
 
-// SetKubernetesCurrentVersion sets field value
-func (o *ProjectDetailsForServersDto) SetKubernetesCurrentVersion(v string) {
-	o.KubernetesCurrentVersion = v
+// SetKubernetesVersion sets field value
+func (o *ProjectDetailsForServersDto) SetKubernetesVersion(v string) {
+	o.KubernetesVersion = v
 }
 
 // GetIsBackupEnabled returns the IsBackupEnabled field value
@@ -1219,28 +1219,28 @@ func (o *ProjectDetailsForServersDto) SetAlertingProfileName(v string) {
 	o.AlertingProfileName = v
 }
 
-// GetProjectHealth returns the ProjectHealth field value
-func (o *ProjectDetailsForServersDto) GetProjectHealth() ProjectHealth {
+// GetHealth returns the Health field value
+func (o *ProjectDetailsForServersDto) GetHealth() ProjectHealth {
 	if o == nil {
 		var ret ProjectHealth
 		return ret
 	}
 
-	return o.ProjectHealth
+	return o.Health
 }
 
-// GetProjectHealthOk returns a tuple with the ProjectHealth field value
+// GetHealthOk returns a tuple with the Health field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDetailsForServersDto) GetProjectHealthOk() (*ProjectHealth, bool) {
+func (o *ProjectDetailsForServersDto) GetHealthOk() (*ProjectHealth, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ProjectHealth, true
+	return &o.Health, true
 }
 
-// SetProjectHealth sets field value
-func (o *ProjectDetailsForServersDto) SetProjectHealth(v ProjectHealth) {
-	o.ProjectHealth = v
+// SetHealth sets field value
+func (o *ProjectDetailsForServersDto) SetHealth(v ProjectHealth) {
+	o.Health = v
 }
 
 // GetAlertingProfileId returns the AlertingProfileId field value
@@ -1897,13 +1897,13 @@ func (o ProjectDetailsForServersDto) MarshalJSON() ([]byte, error) {
 
 func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["alertsTotalCount"] = o.AlertsTotalCount
+	toSerialize["alertsCount"] = o.AlertsCount
 	toSerialize["worker"] = o.Worker
 	toSerialize["bastion"] = o.Bastion
-	toSerialize["projectStatus"] = o.ProjectStatus
-	toSerialize["projectName"] = o.ProjectName
+	toSerialize["status"] = o.Status
+	toSerialize["name"] = o.Name
 	toSerialize["accessIp"] = o.AccessIp
-	toSerialize["projectId"] = o.ProjectId
+	toSerialize["id"] = o.Id
 	toSerialize["masterReady"] = o.MasterReady
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["cloudName"] = o.CloudName
@@ -1911,7 +1911,7 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["quotaId"] = o.QuotaId
 	toSerialize["organizationName"] = o.OrganizationName
 	toSerialize["organizationId"] = o.OrganizationId
-	toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion
+	toSerialize["kubernetesVersion"] = o.KubernetesVersion
 	toSerialize["isBackupEnabled"] = o.IsBackupEnabled
 	toSerialize["aiEnabled"] = o.AiEnabled
 	toSerialize["isLocked"] = o.IsLocked
@@ -1940,7 +1940,7 @@ func (o ProjectDetailsForServersDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["kubernetesProfileName"] = o.KubernetesProfileName
 	toSerialize["kubernetesProfileId"] = o.KubernetesProfileId.Get()
 	toSerialize["alertingProfileName"] = o.AlertingProfileName
-	toSerialize["projectHealth"] = o.ProjectHealth
+	toSerialize["health"] = o.Health
 	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
 	toSerialize["s3CredentialId"] = o.S3CredentialId.Get()
 	toSerialize["aiCredentialId"] = o.AiCredentialId.Get()
@@ -1975,13 +1975,13 @@ func (o *ProjectDetailsForServersDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"alertsTotalCount",
+		"alertsCount",
 		"worker",
 		"bastion",
-		"projectStatus",
-		"projectName",
+		"status",
+		"name",
 		"accessIp",
-		"projectId",
+		"id",
 		"masterReady",
 		"cloudType",
 		"cloudName",
@@ -1989,7 +1989,7 @@ func (o *ProjectDetailsForServersDto) UnmarshalJSON(data []byte) (err error) {
 		"quotaId",
 		"organizationName",
 		"organizationId",
-		"kubernetesCurrentVersion",
+		"kubernetesVersion",
 		"isBackupEnabled",
 		"aiEnabled",
 		"isLocked",
@@ -2018,7 +2018,7 @@ func (o *ProjectDetailsForServersDto) UnmarshalJSON(data []byte) (err error) {
 		"kubernetesProfileName",
 		"kubernetesProfileId",
 		"alertingProfileName",
-		"projectHealth",
+		"health",
 		"alertingProfileId",
 		"s3CredentialId",
 		"aiCredentialId",
