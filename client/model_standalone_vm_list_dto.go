@@ -30,20 +30,20 @@ type StandaloneVmListDto struct {
 	OrganizationId int32 `json:"organizationId"`
 	Ram int64 `json:"ram"`
 	Cpu int32 `json:"cpu"`
-	VolumeType string `json:"volumeType"`
+	VolumeType NullableString `json:"volumeType"`
 	PublicIpEnabled bool `json:"publicIpEnabled"`
 	PublicIp NullableString `json:"publicIp"`
 	IpAddress NullableString `json:"ipAddress"`
 	CloudType CloudType `json:"cloudType"`
-	ImageName string `json:"imageName"`
+	ImageName NullableString `json:"imageName"`
 	Revision int32 `json:"revision"`
 	IsWindows bool `json:"isWindows"`
 	Status StandAloneVmStatus `json:"status"`
 	ProjectName string `json:"projectName"`
 	ProjectId int32 `json:"projectId"`
 	StandAloneProfile StandaloneProfileListDto `json:"standAloneProfile"`
-	CreatedAt string `json:"createdAt"`
-	CreatedBy string `json:"createdBy"`
+	CreatedAt NullableString `json:"createdAt"`
+	CreatedBy NullableString `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
 }
 
@@ -53,7 +53,7 @@ type _StandaloneVmListDto StandaloneVmListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStandaloneVmListDto(id int32, name string, flavorId string, volumeSize int64, organizationName string, organizationId int32, ram int64, cpu int32, volumeType string, publicIpEnabled bool, publicIp NullableString, ipAddress NullableString, cloudType CloudType, imageName string, revision int32, isWindows bool, status StandAloneVmStatus, projectName string, projectId int32, standAloneProfile StandaloneProfileListDto, createdAt string, createdBy string, lastModified NullableString) *StandaloneVmListDto {
+func NewStandaloneVmListDto(id int32, name string, flavorId string, volumeSize int64, organizationName string, organizationId int32, ram int64, cpu int32, volumeType NullableString, publicIpEnabled bool, publicIp NullableString, ipAddress NullableString, cloudType CloudType, imageName NullableString, revision int32, isWindows bool, status StandAloneVmStatus, projectName string, projectId int32, standAloneProfile StandaloneProfileListDto, createdAt NullableString, createdBy NullableString, lastModified NullableString) *StandaloneVmListDto {
 	this := StandaloneVmListDto{}
 	this.Id = id
 	this.Name = name
@@ -282,27 +282,29 @@ func (o *StandaloneVmListDto) SetCpu(v int32) {
 }
 
 // GetVolumeType returns the VolumeType field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *StandaloneVmListDto) GetVolumeType() string {
-	if o == nil {
+	if o == nil || o.VolumeType.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.VolumeType
+	return *o.VolumeType.Get()
 }
 
 // GetVolumeTypeOk returns a tuple with the VolumeType field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandaloneVmListDto) GetVolumeTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.VolumeType, true
+	return o.VolumeType.Get(), o.VolumeType.IsSet()
 }
 
 // SetVolumeType sets field value
 func (o *StandaloneVmListDto) SetVolumeType(v string) {
-	o.VolumeType = v
+	o.VolumeType.Set(&v)
 }
 
 // GetPublicIpEnabled returns the PublicIpEnabled field value
@@ -406,27 +408,29 @@ func (o *StandaloneVmListDto) SetCloudType(v CloudType) {
 }
 
 // GetImageName returns the ImageName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *StandaloneVmListDto) GetImageName() string {
-	if o == nil {
+	if o == nil || o.ImageName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ImageName
+	return *o.ImageName.Get()
 }
 
 // GetImageNameOk returns a tuple with the ImageName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandaloneVmListDto) GetImageNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ImageName, true
+	return o.ImageName.Get(), o.ImageName.IsSet()
 }
 
 // SetImageName sets field value
 func (o *StandaloneVmListDto) SetImageName(v string) {
-	o.ImageName = v
+	o.ImageName.Set(&v)
 }
 
 // GetRevision returns the Revision field value
@@ -574,51 +578,55 @@ func (o *StandaloneVmListDto) SetStandAloneProfile(v StandaloneProfileListDto) {
 }
 
 // GetCreatedAt returns the CreatedAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *StandaloneVmListDto) GetCreatedAt() string {
-	if o == nil {
+	if o == nil || o.CreatedAt.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CreatedAt
+	return *o.CreatedAt.Get()
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandaloneVmListDto) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CreatedAt, true
+	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
 // SetCreatedAt sets field value
 func (o *StandaloneVmListDto) SetCreatedAt(v string) {
-	o.CreatedAt = v
+	o.CreatedAt.Set(&v)
 }
 
 // GetCreatedBy returns the CreatedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *StandaloneVmListDto) GetCreatedBy() string {
-	if o == nil {
+	if o == nil || o.CreatedBy.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.CreatedBy
+	return *o.CreatedBy.Get()
 }
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandaloneVmListDto) GetCreatedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CreatedBy, true
+	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
 
 // SetCreatedBy sets field value
 func (o *StandaloneVmListDto) SetCreatedBy(v string) {
-	o.CreatedBy = v
+	o.CreatedBy.Set(&v)
 }
 
 // GetLastModified returns the LastModified field value
@@ -665,20 +673,20 @@ func (o StandaloneVmListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["ram"] = o.Ram
 	toSerialize["cpu"] = o.Cpu
-	toSerialize["volumeType"] = o.VolumeType
+	toSerialize["volumeType"] = o.VolumeType.Get()
 	toSerialize["publicIpEnabled"] = o.PublicIpEnabled
 	toSerialize["publicIp"] = o.PublicIp.Get()
 	toSerialize["ipAddress"] = o.IpAddress.Get()
 	toSerialize["cloudType"] = o.CloudType
-	toSerialize["imageName"] = o.ImageName
+	toSerialize["imageName"] = o.ImageName.Get()
 	toSerialize["revision"] = o.Revision
 	toSerialize["isWindows"] = o.IsWindows
 	toSerialize["status"] = o.Status
 	toSerialize["projectName"] = o.ProjectName
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["standAloneProfile"] = o.StandAloneProfile
-	toSerialize["createdAt"] = o.CreatedAt
-	toSerialize["createdBy"] = o.CreatedBy
+	toSerialize["createdAt"] = o.CreatedAt.Get()
+	toSerialize["createdBy"] = o.CreatedBy.Get()
 	toSerialize["lastModified"] = o.LastModified.Get()
 	return toSerialize, nil
 }
