@@ -74,6 +74,7 @@ type ProjectListDetailDto struct {
 	KubeInfoButton *ButtonStatusDto `json:"kubeInfoButton,omitempty"`
 	SetExpirationDateButton *ButtonStatusDto `json:"setExpirationDateButton,omitempty"`
 	ResetStatusButton *ButtonStatusDto `json:"resetStatusButton,omitempty"`
+	ImportClusterType ImportClusterType `json:"importClusterType"`
 }
 
 type _ProjectListDetailDto ProjectListDetailDto
@@ -82,7 +83,7 @@ type _ProjectListDetailDto ProjectListDetailDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked bool, isVirtualCluster bool, isMonitoringEnabled bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, status ProjectStatus, health ProjectHealth, kubesprayCurrentVersion string, kubesprayTargetVersion string, kubernetesCurrentVersion string, kubernetesTargetVersion string, createdAt string, alertsCount int32, totalServersCount int32, totalStandaloneVmsCount int32, boundUsers []UserDto, createdBy string, lastModified NullableString, expiredAt NullableString, deleteOnExpiration bool, certificateExpiredAt NullableString, lastModifiedBy NullableString, quotaId int32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, projectAction bool, hasExpirationWarning bool, totalHourlyCost float64, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, aiEnabled bool, anyServer bool, anyVm bool, allUsers []string, parentProjectId NullableInt32, alertingProfileId NullableInt32, opaProfileId NullableInt32) *ProjectListDetailDto {
+func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked bool, isVirtualCluster bool, isMonitoringEnabled bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, status ProjectStatus, health ProjectHealth, kubesprayCurrentVersion string, kubesprayTargetVersion string, kubernetesCurrentVersion string, kubernetesTargetVersion string, createdAt string, alertsCount int32, totalServersCount int32, totalStandaloneVmsCount int32, boundUsers []UserDto, createdBy string, lastModified NullableString, expiredAt NullableString, deleteOnExpiration bool, certificateExpiredAt NullableString, lastModifiedBy NullableString, quotaId int32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, projectAction bool, hasExpirationWarning bool, totalHourlyCost float64, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, aiEnabled bool, anyServer bool, anyVm bool, allUsers []string, parentProjectId NullableInt32, alertingProfileId NullableInt32, opaProfileId NullableInt32, importClusterType ImportClusterType) *ProjectListDetailDto {
 	this := ProjectListDetailDto{}
 	this.Id = id
 	this.Name = name
@@ -128,6 +129,7 @@ func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked 
 	this.ParentProjectId = parentProjectId
 	this.AlertingProfileId = alertingProfileId
 	this.OpaProfileId = opaProfileId
+	this.ImportClusterType = importClusterType
 	return &this
 }
 
@@ -1477,6 +1479,30 @@ func (o *ProjectListDetailDto) SetResetStatusButton(v ButtonStatusDto) {
 	o.ResetStatusButton = &v
 }
 
+// GetImportClusterType returns the ImportClusterType field value
+func (o *ProjectListDetailDto) GetImportClusterType() ImportClusterType {
+	if o == nil {
+		var ret ImportClusterType
+		return ret
+	}
+
+	return o.ImportClusterType
+}
+
+// GetImportClusterTypeOk returns a tuple with the ImportClusterType field value
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetImportClusterTypeOk() (*ImportClusterType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ImportClusterType, true
+}
+
+// SetImportClusterType sets field value
+func (o *ProjectListDetailDto) SetImportClusterType(v ImportClusterType) {
+	o.ImportClusterType = v
+}
+
 func (o ProjectListDetailDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1555,6 +1581,7 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ResetStatusButton) {
 		toSerialize["resetStatusButton"] = o.ResetStatusButton
 	}
+	toSerialize["importClusterType"] = o.ImportClusterType
 	return toSerialize, nil
 }
 
@@ -1607,6 +1634,7 @@ func (o *ProjectListDetailDto) UnmarshalJSON(data []byte) (err error) {
 		"parentProjectId",
 		"alertingProfileId",
 		"opaProfileId",
+		"importClusterType",
 	}
 
 	allProperties := make(map[string]interface{})
