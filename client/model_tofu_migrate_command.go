@@ -15,33 +15,33 @@ import (
 	"encoding/json"
 )
 
-// checks if the TofuServersMigrateCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TofuServersMigrateCommand{}
+// checks if the TofuMigrateCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TofuMigrateCommand{}
 
-// TofuServersMigrateCommand struct for TofuServersMigrateCommand
-type TofuServersMigrateCommand struct {
+// TofuMigrateCommand struct for TofuMigrateCommand
+type TofuMigrateCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
 }
 
-// NewTofuServersMigrateCommand instantiates a new TofuServersMigrateCommand object
+// NewTofuMigrateCommand instantiates a new TofuMigrateCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTofuServersMigrateCommand() *TofuServersMigrateCommand {
-	this := TofuServersMigrateCommand{}
+func NewTofuMigrateCommand() *TofuMigrateCommand {
+	this := TofuMigrateCommand{}
 	return &this
 }
 
-// NewTofuServersMigrateCommandWithDefaults instantiates a new TofuServersMigrateCommand object
+// NewTofuMigrateCommandWithDefaults instantiates a new TofuMigrateCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTofuServersMigrateCommandWithDefaults() *TofuServersMigrateCommand {
-	this := TofuServersMigrateCommand{}
+func NewTofuMigrateCommandWithDefaults() *TofuMigrateCommand {
+	this := TofuMigrateCommand{}
 	return &this
 }
 
 // GetProjectId returns the ProjectId field value if set, zero value otherwise.
-func (o *TofuServersMigrateCommand) GetProjectId() int32 {
+func (o *TofuMigrateCommand) GetProjectId() int32 {
 	if o == nil || IsNil(o.ProjectId) {
 		var ret int32
 		return ret
@@ -51,7 +51,7 @@ func (o *TofuServersMigrateCommand) GetProjectId() int32 {
 
 // GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TofuServersMigrateCommand) GetProjectIdOk() (*int32, bool) {
+func (o *TofuMigrateCommand) GetProjectIdOk() (*int32, bool) {
 	if o == nil || IsNil(o.ProjectId) {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *TofuServersMigrateCommand) GetProjectIdOk() (*int32, bool) {
 }
 
 // HasProjectId returns a boolean if a field has been set.
-func (o *TofuServersMigrateCommand) HasProjectId() bool {
+func (o *TofuMigrateCommand) HasProjectId() bool {
 	if o != nil && !IsNil(o.ProjectId) {
 		return true
 	}
@@ -68,11 +68,11 @@ func (o *TofuServersMigrateCommand) HasProjectId() bool {
 }
 
 // SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
-func (o *TofuServersMigrateCommand) SetProjectId(v int32) {
+func (o *TofuMigrateCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
-func (o TofuServersMigrateCommand) MarshalJSON() ([]byte, error) {
+func (o TofuMigrateCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -80,7 +80,7 @@ func (o TofuServersMigrateCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o TofuServersMigrateCommand) ToMap() (map[string]interface{}, error) {
+func (o TofuMigrateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
@@ -88,38 +88,38 @@ func (o TofuServersMigrateCommand) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableTofuServersMigrateCommand struct {
-	value *TofuServersMigrateCommand
+type NullableTofuMigrateCommand struct {
+	value *TofuMigrateCommand
 	isSet bool
 }
 
-func (v NullableTofuServersMigrateCommand) Get() *TofuServersMigrateCommand {
+func (v NullableTofuMigrateCommand) Get() *TofuMigrateCommand {
 	return v.value
 }
 
-func (v *NullableTofuServersMigrateCommand) Set(val *TofuServersMigrateCommand) {
+func (v *NullableTofuMigrateCommand) Set(val *TofuMigrateCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTofuServersMigrateCommand) IsSet() bool {
+func (v NullableTofuMigrateCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTofuServersMigrateCommand) Unset() {
+func (v *NullableTofuMigrateCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTofuServersMigrateCommand(val *TofuServersMigrateCommand) *NullableTofuServersMigrateCommand {
-	return &NullableTofuServersMigrateCommand{value: val, isSet: true}
+func NewNullableTofuMigrateCommand(val *TofuMigrateCommand) *NullableTofuMigrateCommand {
+	return &NullableTofuMigrateCommand{value: val, isSet: true}
 }
 
-func (v NullableTofuServersMigrateCommand) MarshalJSON() ([]byte, error) {
+func (v NullableTofuMigrateCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTofuServersMigrateCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableTofuMigrateCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

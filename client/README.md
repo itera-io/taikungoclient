@@ -525,8 +525,7 @@ Class | Method | HTTP request | Description
 *ProjectDeploymentAPI* | [**ProjectDeploymentImportCluster**](docs/ProjectDeploymentAPI.md#projectdeploymentimportcluster) | **Post** /api/v1/project-deployment/import-cluster | Import cluster
 *ProjectDeploymentAPI* | [**ProjectDeploymentRepair**](docs/ProjectDeploymentAPI.md#projectdeploymentrepair) | **Post** /api/v1/project-deployment/repair | Repair
 *ProjectDeploymentAPI* | [**ProjectDeploymentRepairVm**](docs/ProjectDeploymentAPI.md#projectdeploymentrepairvm) | **Post** /api/v1/project-deployment/repair-vm | Repair Vm
-*ProjectDeploymentAPI* | [**ProjectDeploymentTofuMigrateServers**](docs/ProjectDeploymentAPI.md#projectdeploymenttofumigrateservers) | **Post** /api/v1/project-deployment/tofu-migrate-servers | Tofu migrate servers
-*ProjectDeploymentAPI* | [**ProjectDeploymentTofuMigrateVms**](docs/ProjectDeploymentAPI.md#projectdeploymenttofumigratevms) | **Post** /api/v1/project-deployment/tofu-migrate-vms | Tofu migrate vms
+*ProjectDeploymentAPI* | [**ProjectDeploymentTofuMigrate**](docs/ProjectDeploymentAPI.md#projectdeploymenttofumigrate) | **Post** /api/v1/project-deployment/tofu-migrate | Tofu migrate
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpdate**](docs/ProjectDeploymentAPI.md#projectdeploymentupdate) | **Post** /api/v1/project-deployment/update | Update stage of project
 *ProjectDeploymentAPI* | [**ProjectDeploymentUpgrade**](docs/ProjectDeploymentAPI.md#projectdeploymentupgrade) | **Post** /api/v1/project-deployment/upgrade/{projectId} | Upgrade the project&#39;s Kubernetes to the next available version. Project must be READY.
 *ProjectGroupsAPI* | [**ProjectgroupsBindProject**](docs/ProjectGroupsAPI.md#projectgroupsbindproject) | **Post** /api/v1/projectgroups/bind-project | Bind Projects to group
@@ -1488,8 +1487,7 @@ Class | Method | HTTP request | Description
  - [TanzuFlavorsListDto](docs/TanzuFlavorsListDto.md)
  - [TanzuStorageListCommand](docs/TanzuStorageListCommand.md)
  - [TicketPriority](docs/TicketPriority.md)
- - [TofuServersMigrateCommand](docs/TofuServersMigrateCommand.md)
- - [TofuVmsMigrateCommand](docs/TofuVmsMigrateCommand.md)
+ - [TofuMigrateCommand](docs/TofuMigrateCommand.md)
  - [ToggleExecutorCommand](docs/ToggleExecutorCommand.md)
  - [ToggleKeycloakCommand](docs/ToggleKeycloakCommand.md)
  - [ToggleMaintenanceModeCommand](docs/ToggleMaintenanceModeCommand.md)

@@ -885,8 +885,7 @@ docs/TanzuFlavorsListDto.md
 docs/TanzuStorageListCommand.md
 docs/TicketAPI.md
 docs/TicketPriority.md
-docs/TofuServersMigrateCommand.md
-docs/TofuVmsMigrateCommand.md
+docs/TofuMigrateCommand.md
 docs/ToggleExecutorCommand.md
 docs/ToggleKeycloakCommand.md
 docs/ToggleMaintenanceModeCommand.md
@@ -1721,8 +1720,7 @@ model_tanzu_flavor_list.go
 model_tanzu_flavors_list_dto.go
 model_tanzu_storage_list_command.go
 model_ticket_priority.go
-model_tofu_servers_migrate_command.go
-model_tofu_vms_migrate_command.go
+model_tofu_migrate_command.go
 model_toggle_executor_command.go
 model_toggle_keycloak_command.go
 model_toggle_maintenance_mode_command.go
