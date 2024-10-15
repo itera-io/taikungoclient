@@ -317,6 +317,7 @@ Class | Method | HTTP request | Description
 *ImportedClusterAPI* | [**ImportedClusterAsCloudCredential**](docs/ImportedClusterAPI.md#importedclusterascloudcredential) | **Get** /api/v1/imported-cluster/as-cloud-credential/{projectId} | Imported cluster as cloud credential
 *ImportedClusterAPI* | [**ImportedClusterAsFullyManaged**](docs/ImportedClusterAPI.md#importedclusterasfullymanaged) | **Get** /api/v1/imported-cluster/as-fully-managed/{projectId} | Imported cluster as fully managed
 *ImportedClusterAPI* | [**ImportedClusterAsReadOnly**](docs/ImportedClusterAPI.md#importedclusterasreadonly) | **Get** /api/v1/imported-cluster/as-read-only/{projectId} | Imported cluster as read only
+*ImportedClusterAPI* | [**ImportedClusterList**](docs/ImportedClusterAPI.md#importedclusterlist) | **Get** /api/v1/imported-cluster/{id} | Retrieve imported-cluster by given id
 *InfraAPI* | [**InfraCreate**](docs/InfraAPI.md#infracreate) | **Post** /api/v1/infra/create | Create infra product
 *InfraAPI* | [**InfraDetails**](docs/InfraAPI.md#infradetails) | **Get** /api/v1/infra/details | Retrieve infra details
 *InfraAPI* | [**InfraOrganizationsList**](docs/InfraAPI.md#infraorganizationslist) | **Get** /api/v1/infra/organizations-list | Retrieve infra products list
@@ -1129,6 +1130,8 @@ Class | Method | HTTP request | Description
  - [ImportedAsReadOnlyList](docs/ImportedAsReadOnlyList.md)
  - [ImportedAsReadOnlyVisibility](docs/ImportedAsReadOnlyVisibility.md)
  - [ImportedClusterDetailsDto](docs/ImportedClusterDetailsDto.md)
+ - [ImportedClusterList](docs/ImportedClusterList.md)
+ - [ImportedClusterListDto](docs/ImportedClusterListDto.md)
  - [InfraBillingListCommand](docs/InfraBillingListCommand.md)
  - [InfraBillingSummariesCreateCommand](docs/InfraBillingSummariesCreateCommand.md)
  - [InfraBillingSummaryDto](docs/InfraBillingSummaryDto.md)
@@ -1198,6 +1201,7 @@ Class | Method | HTTP request | Description
  - [LockProjectAppCommand](docs/LockProjectAppCommand.md)
  - [LoginCommand](docs/LoginCommand.md)
  - [LokiResponseDto](docs/LokiResponseDto.md)
+ - [MainProjectDto](docs/MainProjectDto.md)
  - [MakeCsmCommand](docs/MakeCsmCommand.md)
  - [MakeOwnerCommand](docs/MakeOwnerCommand.md)
  - [Metadata](docs/Metadata.md)

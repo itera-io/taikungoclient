@@ -26,7 +26,7 @@ type GenericKubernetesListDto struct {
 	ProjectCount int32 `json:"projectCount"`
 	IsLocked bool `json:"isLocked"`
 	Name NullableString `json:"name"`
-	MainProject CommonDropdownDto `json:"mainProject"`
+	MainProject MainProjectDto `json:"mainProject"`
 	AssociatedVClusters []CommonDropdownDto `json:"associatedVClusters"`
 	CreatedBy NullableString `json:"createdBy"`
 	CreatedAt NullableString `json:"createdAt"`
@@ -44,7 +44,7 @@ type _GenericKubernetesListDto GenericKubernetesListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGenericKubernetesListDto(id int32, projectCount int32, isLocked bool, name NullableString, mainProject CommonDropdownDto, associatedVClusters []CommonDropdownDto, createdBy NullableString, createdAt NullableString, lastModified NullableString, lastModifiedBy NullableString, isDefault bool, organizationId int32, organizationName NullableString, continentName NullableString) *GenericKubernetesListDto {
+func NewGenericKubernetesListDto(id int32, projectCount int32, isLocked bool, name NullableString, mainProject MainProjectDto, associatedVClusters []CommonDropdownDto, createdBy NullableString, createdAt NullableString, lastModified NullableString, lastModifiedBy NullableString, isDefault bool, organizationId int32, organizationName NullableString, continentName NullableString) *GenericKubernetesListDto {
 	this := GenericKubernetesListDto{}
 	this.Id = id
 	this.ProjectCount = projectCount
@@ -170,9 +170,9 @@ func (o *GenericKubernetesListDto) SetName(v string) {
 }
 
 // GetMainProject returns the MainProject field value
-func (o *GenericKubernetesListDto) GetMainProject() CommonDropdownDto {
+func (o *GenericKubernetesListDto) GetMainProject() MainProjectDto {
 	if o == nil {
-		var ret CommonDropdownDto
+		var ret MainProjectDto
 		return ret
 	}
 
@@ -181,7 +181,7 @@ func (o *GenericKubernetesListDto) GetMainProject() CommonDropdownDto {
 
 // GetMainProjectOk returns a tuple with the MainProject field value
 // and a boolean to check if the value has been set.
-func (o *GenericKubernetesListDto) GetMainProjectOk() (*CommonDropdownDto, bool) {
+func (o *GenericKubernetesListDto) GetMainProjectOk() (*MainProjectDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -189,7 +189,7 @@ func (o *GenericKubernetesListDto) GetMainProjectOk() (*CommonDropdownDto, bool)
 }
 
 // SetMainProject sets field value
-func (o *GenericKubernetesListDto) SetMainProject(v CommonDropdownDto) {
+func (o *GenericKubernetesListDto) SetMainProject(v MainProjectDto) {
 	o.MainProject = v
 }
 

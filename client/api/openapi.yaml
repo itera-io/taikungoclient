@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-10-14T06:48:43.0101723Z
-                  createdAt: 2024-10-14T06:48:43.0101723Z
+                  lastValidated: 2024-10-15T00:03:08.642315Z
+                  createdAt: 2024-10-15T00:03:08.642315Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-10-14T06:48:43.0101723Z
+                    lastBackup: 2024-10-15T00:03:08.642315Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-10-14T06:48:43.0101723Z
+                  createdAt: 2024-10-15T00:03:08.642315Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-10-14T06:48:43.0101723Z
+                  lastBackup: 2024-10-15T00:03:08.642315Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-14T06:48:43.0101723Z
-                  expiration: 2024-10-14T06:48:43.0101723Z
+                  createdAt: 2024-10-15T00:03:08.642315Z
+                  expiration: 2024-10-15T00:03:08.642315Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-14T06:48:43.0101723Z
+                  createdAt: 2024-10-15T00:03:08.642315Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-10-14T06:48:43.0101723+00:00
-                  startTimeStamp: 2024-10-14T06:48:43.0101723+00:00
-                  createdAt: 2024-10-14T06:48:43.0101723Z
+                  completionDateTime: 2024-10-15T00:03:08.642315+00:00
+                  startTimeStamp: 2024-10-15T00:03:08.642315+00:00
+                  createdAt: 2024-10-15T00:03:08.642315Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -14013,6 +14013,102 @@ paths:
                 $ref: '#/components/schemas/ImportedAsReadOnlyList'
           description: OK
       summary: Imported cluster as read only
+      tags:
+      - Imported Cluster
+  /api/v1/imported-cluster/{id}:
+    get:
+      operationId: imported-cluster-list
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportedClusterList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve imported-cluster by given id
       tags:
       - Imported Cluster
   /api/v1/infra/create:
@@ -49734,8 +49830,9 @@ components:
             id: 0
           mainProject:
             name: name
-            id: 0
-          organizationId: 1
+            id: 1
+            status: "Null"
+          organizationId: 5
           createdAt: createdAt
           isDefault: true
           createdBy: createdBy
@@ -49754,8 +49851,9 @@ components:
             id: 0
           mainProject:
             name: name
-            id: 0
-          organizationId: 1
+            id: 1
+            status: "Null"
+          organizationId: 5
           createdAt: createdAt
           isDefault: true
           createdBy: createdBy
@@ -49791,8 +49889,9 @@ components:
           id: 0
         mainProject:
           name: name
-          id: 0
-        organizationId: 1
+          id: 1
+          status: "Null"
+        organizationId: 5
         createdAt: createdAt
         isDefault: true
         createdBy: createdBy
@@ -49814,7 +49913,7 @@ components:
           nullable: true
           type: string
         mainProject:
-          $ref: '#/components/schemas/CommonDropdownDto'
+          $ref: '#/components/schemas/MainProjectDto'
         associatedVClusters:
           items:
             $ref: '#/components/schemas/CommonDropdownDto'
@@ -51107,6 +51206,312 @@ components:
       - organizationId
       - organizationName
       - status
+      type: object
+    ImportedClusterList:
+      additionalProperties: false
+      example:
+        data:
+        - deleteButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          organizationId: 6
+          createdAt: createdAt
+          expiredAt: expiredAt
+          alertingProfileName: alertingProfileName
+          cloudType: NONE
+          isLocked: true
+          id: 0
+          setExpirationDateButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          kubernetesVersion: kubernetesVersion
+          organizationName: organizationName
+          accessIp: accessIp
+          alertsCount: 1
+          unlockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lastModifiedBy: lastModifiedBy
+          health: "Null"
+          isVirtualCluster: true
+          hasKubeConfigFile: true
+          kubeInfoButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          deleteOnExpiration: true
+          alertingProfileId: 5
+          wasmEnabled: true
+          createdBy: createdBy
+          name: name
+          lastModified: lastModified
+          resetStatusButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          isMaintenanceModeEnabled: true
+          status: "Null"
+        - deleteButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          organizationId: 6
+          createdAt: createdAt
+          expiredAt: expiredAt
+          alertingProfileName: alertingProfileName
+          cloudType: NONE
+          isLocked: true
+          id: 0
+          setExpirationDateButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          kubernetesVersion: kubernetesVersion
+          organizationName: organizationName
+          accessIp: accessIp
+          alertsCount: 1
+          unlockButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lastModifiedBy: lastModifiedBy
+          health: "Null"
+          isVirtualCluster: true
+          hasKubeConfigFile: true
+          kubeInfoButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          deleteOnExpiration: true
+          alertingProfileId: 5
+          wasmEnabled: true
+          createdBy: createdBy
+          name: name
+          lastModified: lastModified
+          resetStatusButton:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          isMaintenanceModeEnabled: true
+          status: "Null"
+        project:
+          accessIp: accessIp
+          organizationName: organizationName
+          importClusterType: None
+          health: "Null"
+          cloudCredentialName: cloudCredentialName
+          organizationId: 6
+          cloudType: NONE
+          isLocked: true
+          name: name
+          cloudCredentialId: 1
+          id: 0
+          kubernetesVersion: kubernetesVersion
+          status: "Null"
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ImportedClusterListDto'
+          nullable: true
+          type: array
+        project:
+          $ref: '#/components/schemas/ImportedClusterDetailsDto'
+      required:
+      - data
+      - project
+      type: object
+    ImportedClusterListDto:
+      additionalProperties: false
+      example:
+        deleteButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        lockButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        organizationId: 6
+        createdAt: createdAt
+        expiredAt: expiredAt
+        alertingProfileName: alertingProfileName
+        cloudType: NONE
+        isLocked: true
+        id: 0
+        setExpirationDateButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        kubernetesVersion: kubernetesVersion
+        organizationName: organizationName
+        accessIp: accessIp
+        alertsCount: 1
+        unlockButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        lastModifiedBy: lastModifiedBy
+        health: "Null"
+        isVirtualCluster: true
+        hasKubeConfigFile: true
+        kubeInfoButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        deleteOnExpiration: true
+        alertingProfileId: 5
+        wasmEnabled: true
+        createdBy: createdBy
+        name: name
+        lastModified: lastModified
+        resetStatusButton:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        isMaintenanceModeEnabled: true
+        status: "Null"
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        isVirtualCluster:
+          type: boolean
+        isLocked:
+          type: boolean
+        hasKubeConfigFile:
+          type: boolean
+        isMaintenanceModeEnabled:
+          type: boolean
+        organizationName:
+          type: string
+        organizationId:
+          format: int32
+          type: integer
+        kubernetesVersion:
+          type: string
+        createdAt:
+          type: string
+        createdBy:
+          type: string
+        lastModified:
+          type: string
+        lastModifiedBy:
+          type: string
+        alertsCount:
+          format: int32
+          type: integer
+        expiredAt:
+          type: string
+        deleteOnExpiration:
+          type: boolean
+        wasmEnabled:
+          type: boolean
+        alertingProfileId:
+          format: int32
+          nullable: true
+          type: integer
+        alertingProfileName:
+          nullable: true
+          type: string
+        accessIp:
+          type: string
+        cloudType:
+          $ref: '#/components/schemas/CloudType'
+        status:
+          $ref: '#/components/schemas/ProjectStatus'
+        health:
+          $ref: '#/components/schemas/ProjectHealth'
+        lockButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        unlockButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        deleteButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        kubeInfoButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        setExpirationDateButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        resetStatusButton:
+          $ref: '#/components/schemas/ButtonStatusDto'
+      required:
+      - accessIp
+      - alertingProfileId
+      - alertingProfileName
+      - alertsCount
+      - cloudType
+      - createdAt
+      - createdBy
+      - deleteButton
+      - deleteOnExpiration
+      - expiredAt
+      - hasKubeConfigFile
+      - health
+      - id
+      - isLocked
+      - isMaintenanceModeEnabled
+      - isVirtualCluster
+      - kubeInfoButton
+      - kubernetesVersion
+      - lastModified
+      - lastModifiedBy
+      - lockButton
+      - name
+      - organizationId
+      - organizationName
+      - resetStatusButton
+      - setExpirationDateButton
+      - status
+      - unlockButton
+      - wasmEnabled
       type: object
     InfraBillingListCommand:
       additionalProperties: false
@@ -53505,6 +53910,22 @@ components:
           type: string
         canDownload:
           type: boolean
+      type: object
+    MainProjectDto:
+      additionalProperties: false
+      example:
+        name: name
+        id: 1
+        status: "Null"
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        status:
+          $ref: '#/components/schemas/ProjectStatus'
       type: object
     MakeCsmCommand:
       additionalProperties: false

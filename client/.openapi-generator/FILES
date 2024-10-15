@@ -480,6 +480,8 @@ docs/ImportedAsReadOnlyList.md
 docs/ImportedAsReadOnlyVisibility.md
 docs/ImportedClusterAPI.md
 docs/ImportedClusterDetailsDto.md
+docs/ImportedClusterList.md
+docs/ImportedClusterListDto.md
 docs/InfraAPI.md
 docs/InfraBillingListCommand.md
 docs/InfraBillingSummariesCreateCommand.md
@@ -558,6 +560,7 @@ docs/ListForPartnersDto.md
 docs/LockProjectAppCommand.md
 docs/LoginCommand.md
 docs/LokiResponseDto.md
+docs/MainProjectDto.md
 docs/MakeCsmCommand.md
 docs/MakeOwnerCommand.md
 docs/Metadata.md
@@ -1362,6 +1365,8 @@ model_imported_as_fully_managed_visibility.go
 model_imported_as_read_only_list.go
 model_imported_as_read_only_visibility.go
 model_imported_cluster_details_dto.go
+model_imported_cluster_list.go
+model_imported_cluster_list_dto.go
 model_infra_billing_list_command.go
 model_infra_billing_summaries_create_command.go
 model_infra_billing_summary_dto.go
@@ -1431,6 +1436,7 @@ model_list_for_partners_dto.go
 model_lock_project_app_command.go
 model_login_command.go
 model_loki_response_dto.go
+model_main_project_dto.go
 model_make_csm_command.go
 model_make_owner_command.go
 model_metadata.go
