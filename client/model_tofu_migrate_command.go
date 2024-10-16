@@ -21,6 +21,7 @@ var _ MappedNullable = &TofuMigrateCommand{}
 // TofuMigrateCommand struct for TofuMigrateCommand
 type TofuMigrateCommand struct {
 	ProjectId *int32 `json:"projectId,omitempty"`
+	Force *bool `json:"force,omitempty"`
 }
 
 // NewTofuMigrateCommand instantiates a new TofuMigrateCommand object
@@ -72,6 +73,38 @@ func (o *TofuMigrateCommand) SetProjectId(v int32) {
 	o.ProjectId = &v
 }
 
+// GetForce returns the Force field value if set, zero value otherwise.
+func (o *TofuMigrateCommand) GetForce() bool {
+	if o == nil || IsNil(o.Force) {
+		var ret bool
+		return ret
+	}
+	return *o.Force
+}
+
+// GetForceOk returns a tuple with the Force field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TofuMigrateCommand) GetForceOk() (*bool, bool) {
+	if o == nil || IsNil(o.Force) {
+		return nil, false
+	}
+	return o.Force, true
+}
+
+// HasForce returns a boolean if a field has been set.
+func (o *TofuMigrateCommand) HasForce() bool {
+	if o != nil && !IsNil(o.Force) {
+		return true
+	}
+
+	return false
+}
+
+// SetForce gets a reference to the given bool and assigns it to the Force field.
+func (o *TofuMigrateCommand) SetForce(v bool) {
+	o.Force = &v
+}
+
 func (o TofuMigrateCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -84,6 +117,9 @@ func (o TofuMigrateCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ProjectId) {
 		toSerialize["projectId"] = o.ProjectId
+	}
+	if !IsNil(o.Force) {
+		toSerialize["force"] = o.Force
 	}
 	return toSerialize, nil
 }
