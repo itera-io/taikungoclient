@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-10-16T07:49:01.2719227Z
-                  createdAt: 2024-10-16T07:49:01.2719227Z
+                  lastValidated: 2024-10-17T00:03:12.1311054Z
+                  createdAt: 2024-10-17T00:03:12.1311054Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-10-16T07:49:01.2719227Z
+                    lastBackup: 2024-10-17T00:03:12.1311054Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-10-16T07:49:01.2719227Z
+                  createdAt: 2024-10-17T00:03:12.1311054Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-10-16T07:49:01.2719227Z
+                  lastBackup: 2024-10-17T00:03:12.1311054Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-16T07:49:01.2719227Z
-                  expiration: 2024-10-16T07:49:01.2719227Z
+                  createdAt: 2024-10-17T00:03:12.1311054Z
+                  expiration: 2024-10-17T00:03:12.1311054Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-16T07:49:01.2719227Z
+                  createdAt: 2024-10-17T00:03:12.1311054Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-10-16T07:49:01.2719227+00:00
-                  startTimeStamp: 2024-10-16T07:49:01.2719227+00:00
-                  createdAt: 2024-10-16T07:49:01.2719227Z
+                  completionDateTime: 2024-10-17T00:03:12.1311054+00:00
+                  startTimeStamp: 2024-10-17T00:03:12.1311054+00:00
+                  createdAt: 2024-10-17T00:03:12.1311054Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -13949,75 +13949,9 @@ paths:
       summary: Retrieve zadara images
       tags:
       - Images
-  /api/v1/imported-cluster/as-cloud-credential/{projectId}:
-    get:
-      operationId: imported-cluster-as-cloud-credential
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ImportedAsCloudCredentialList'
-          description: OK
-      summary: Imported cluster as cloud credential
-      tags:
-      - Imported Cluster
-  /api/v1/imported-cluster/as-fully-managed/{projectId}:
-    get:
-      operationId: imported-cluster-as-fully-managed
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ImportedAsFullyManagedList'
-          description: OK
-      summary: Imported cluster as fully managed
-      tags:
-      - Imported Cluster
-  /api/v1/imported-cluster/as-read-only/{projectId}:
-    get:
-      operationId: imported-cluster-as-read-only
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ImportedAsReadOnlyList'
-          description: OK
-      summary: Imported cluster as read only
-      tags:
-      - Imported Cluster
   /api/v1/imported-cluster/{id}:
     get:
-      operationId: imported-cluster-list
+      operationId: imported-cluster-details
       parameters:
       - explode: false
         in: path
@@ -14109,6 +14043,176 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve imported-cluster by given id
+      tags:
+      - Imported Cluster
+  /api/v1/imported-cluster/as-cloud-credential/{projectId}:
+    get:
+      operationId: imported-cluster-as-cloud-credential
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportedAsCloudCredentialList'
+          description: OK
+      summary: Imported cluster as cloud credential
+      tags:
+      - Imported Cluster
+  /api/v1/imported-cluster/as-fully-managed/{projectId}:
+    get:
+      operationId: imported-cluster-as-fully-managed
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportedAsFullyManagedList'
+          description: OK
+      summary: Imported cluster as fully managed
+      tags:
+      - Imported Cluster
+  /api/v1/imported-cluster/as-read-only/{projectId}:
+    get:
+      operationId: imported-cluster-as-read-only
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportedAsReadOnlyList'
+          description: OK
+      summary: Imported cluster as read only
+      tags:
+      - Imported Cluster
+  /api/v1/imported-cluster/{parentProjectId}/virtual-clusters:
+    get:
+      operationId: imported-cluster-list
+      parameters:
+      - explode: false
+        in: path
+        name: parentProjectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: Limit
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: Offset
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Search
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SearchId
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: Id
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportedClusterVClusterList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve all vCluster(s) by given imported cluster
       tags:
       - Imported Cluster
   /api/v1/infra/create:
@@ -33009,7 +33113,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StandAloneProfileUpdateCommand'
-        required: true
       responses:
         "400":
           content:
@@ -45105,6 +45208,7 @@ components:
       additionalProperties: false
       example:
         extraValues: extraValues
+        taikunLinkEnabled: true
         name: name
         namespace: namespace
         autoSync: true
@@ -45132,6 +45236,8 @@ components:
           nullable: true
           type: string
         autoSync:
+          type: boolean
+        taikunLinkEnabled:
           type: boolean
         parameters:
           items:
@@ -50922,16 +51028,16 @@ components:
           accessIp: accessIp
           organizationName: organizationName
           importClusterType: None
-          health: "Null"
+          health: null
           cloudCredentialName: cloudCredentialName
-          organizationId: 6
-          cloudType: NONE
+          organizationId: 2
+          cloudType: null
           isLocked: true
           name: name
-          cloudCredentialId: 1
-          id: 0
+          cloudCredentialId: 7
+          id: 5
           kubernetesVersion: kubernetesVersion
-          status: "Null"
+          status: null
       properties:
         visibility:
           $ref: '#/components/schemas/ImportedAsCloudCredentialVisibility'
@@ -51012,16 +51118,16 @@ components:
           accessIp: accessIp
           organizationName: organizationName
           importClusterType: None
-          health: "Null"
+          health: null
           cloudCredentialName: cloudCredentialName
-          organizationId: 6
-          cloudType: NONE
+          organizationId: 2
+          cloudType: null
           isLocked: true
           name: name
-          cloudCredentialId: 1
-          id: 0
+          cloudCredentialId: 7
+          id: 5
           kubernetesVersion: kubernetesVersion
-          status: "Null"
+          status: null
       properties:
         visibility:
           $ref: '#/components/schemas/ImportedAsFullyManagedVisibility'
@@ -51102,16 +51208,16 @@ components:
           accessIp: accessIp
           organizationName: organizationName
           importClusterType: None
-          health: "Null"
+          health: null
           cloudCredentialName: cloudCredentialName
-          organizationId: 6
-          cloudType: NONE
+          organizationId: 2
+          cloudType: null
           isLocked: true
           name: name
-          cloudCredentialId: 1
-          id: 0
+          cloudCredentialId: 7
+          id: 5
           kubernetesVersion: kubernetesVersion
-          status: "Null"
+          status: null
       properties:
         visibility:
           $ref: '#/components/schemas/ImportedAsReadOnlyVisibility'
@@ -51151,16 +51257,16 @@ components:
         accessIp: accessIp
         organizationName: organizationName
         importClusterType: None
-        health: "Null"
+        health: null
         cloudCredentialName: cloudCredentialName
-        organizationId: 6
-        cloudType: NONE
+        organizationId: 2
+        cloudType: null
         isLocked: true
         name: name
-        cloudCredentialId: 1
-        id: 0
+        cloudCredentialId: 7
+        id: 5
         kubernetesVersion: kubernetesVersion
-        status: "Null"
+        status: null
       properties:
         id:
           format: int32
@@ -51208,6 +51314,186 @@ components:
       - status
       type: object
     ImportedClusterList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationName: organizationName
+          accessIp: accessIp
+          alertsCount: 1
+          lastModifiedBy: lastModifiedBy
+          health: "Null"
+          isVirtualCluster: true
+          hasKubeConfigFile: true
+          organizationId: 6
+          createdAt: createdAt
+          expiredAt: expiredAt
+          alertingProfileName: alertingProfileName
+          deleteOnExpiration: true
+          alertingProfileId: 5
+          wasmEnabled: true
+          createdBy: createdBy
+          cloudType: NONE
+          isLocked: true
+          name: name
+          id: 0
+          lastModified: lastModified
+          isMaintenanceModeEnabled: true
+          kubernetesVersion: kubernetesVersion
+          status: "Null"
+        - organizationName: organizationName
+          accessIp: accessIp
+          alertsCount: 1
+          lastModifiedBy: lastModifiedBy
+          health: "Null"
+          isVirtualCluster: true
+          hasKubeConfigFile: true
+          organizationId: 6
+          createdAt: createdAt
+          expiredAt: expiredAt
+          alertingProfileName: alertingProfileName
+          deleteOnExpiration: true
+          alertingProfileId: 5
+          wasmEnabled: true
+          createdBy: createdBy
+          cloudType: NONE
+          isLocked: true
+          name: name
+          id: 0
+          lastModified: lastModified
+          isMaintenanceModeEnabled: true
+          kubernetesVersion: kubernetesVersion
+          status: "Null"
+        project:
+          accessIp: accessIp
+          organizationName: organizationName
+          importClusterType: None
+          health: null
+          cloudCredentialName: cloudCredentialName
+          organizationId: 2
+          cloudType: null
+          isLocked: true
+          name: name
+          cloudCredentialId: 7
+          id: 5
+          kubernetesVersion: kubernetesVersion
+          status: null
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/ImportedClusterListDto'
+          nullable: true
+          type: array
+        project:
+          $ref: '#/components/schemas/ImportedClusterDetailsDto'
+      required:
+      - data
+      - project
+      type: object
+    ImportedClusterListDto:
+      additionalProperties: false
+      example:
+        organizationName: organizationName
+        accessIp: accessIp
+        alertsCount: 1
+        lastModifiedBy: lastModifiedBy
+        health: "Null"
+        isVirtualCluster: true
+        hasKubeConfigFile: true
+        organizationId: 6
+        createdAt: createdAt
+        expiredAt: expiredAt
+        alertingProfileName: alertingProfileName
+        deleteOnExpiration: true
+        alertingProfileId: 5
+        wasmEnabled: true
+        createdBy: createdBy
+        cloudType: NONE
+        isLocked: true
+        name: name
+        id: 0
+        lastModified: lastModified
+        isMaintenanceModeEnabled: true
+        kubernetesVersion: kubernetesVersion
+        status: "Null"
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          type: string
+        isVirtualCluster:
+          type: boolean
+        isLocked:
+          type: boolean
+        hasKubeConfigFile:
+          type: boolean
+        isMaintenanceModeEnabled:
+          type: boolean
+        organizationName:
+          type: string
+        organizationId:
+          format: int32
+          type: integer
+        kubernetesVersion:
+          type: string
+        createdAt:
+          type: string
+        createdBy:
+          type: string
+        lastModified:
+          type: string
+        lastModifiedBy:
+          type: string
+        alertsCount:
+          format: int32
+          type: integer
+        expiredAt:
+          type: string
+        deleteOnExpiration:
+          type: boolean
+        wasmEnabled:
+          type: boolean
+        alertingProfileId:
+          format: int32
+          nullable: true
+          type: integer
+        alertingProfileName:
+          nullable: true
+          type: string
+        accessIp:
+          type: string
+        cloudType:
+          $ref: '#/components/schemas/CloudType'
+        status:
+          $ref: '#/components/schemas/ProjectStatus'
+        health:
+          $ref: '#/components/schemas/ProjectHealth'
+      required:
+      - accessIp
+      - alertingProfileId
+      - alertingProfileName
+      - alertsCount
+      - cloudType
+      - createdAt
+      - createdBy
+      - deleteOnExpiration
+      - expiredAt
+      - hasKubeConfigFile
+      - health
+      - id
+      - isLocked
+      - isMaintenanceModeEnabled
+      - isVirtualCluster
+      - kubernetesVersion
+      - lastModified
+      - lastModifiedBy
+      - name
+      - organizationId
+      - organizationName
+      - status
+      - wasmEnabled
+      type: object
+    ImportedClusterVClusterList:
       additionalProperties: false
       example:
         data:
@@ -51333,29 +51619,34 @@ components:
           accessIp: accessIp
           organizationName: organizationName
           importClusterType: None
-          health: "Null"
+          health: null
           cloudCredentialName: cloudCredentialName
-          organizationId: 6
-          cloudType: NONE
+          organizationId: 2
+          cloudType: null
           isLocked: true
           name: name
-          cloudCredentialId: 1
-          id: 0
+          cloudCredentialId: 7
+          id: 5
           kubernetesVersion: kubernetesVersion
-          status: "Null"
+          status: null
+        totalCount: 5
       properties:
         data:
           items:
-            $ref: '#/components/schemas/ImportedClusterListDto'
+            $ref: '#/components/schemas/ImportedClusterVClusterListDto'
           nullable: true
           type: array
+        totalCount:
+          format: int32
+          type: integer
         project:
           $ref: '#/components/schemas/ImportedClusterDetailsDto'
       required:
       - data
       - project
+      - totalCount
       type: object
-    ImportedClusterListDto:
+    ImportedClusterVClusterListDto:
       additionalProperties: false
       example:
         deleteButton:
@@ -56147,6 +56438,7 @@ components:
     PackageAutocompleteDto:
       additionalProperties: false
       example:
+        isTaikunLink: true
         options:
         - options
         - options
@@ -56174,6 +56466,8 @@ components:
             type: string
           nullable: true
           type: array
+        isTaikunLink:
+          type: boolean
       type: object
     Parameter:
       additionalProperties: false

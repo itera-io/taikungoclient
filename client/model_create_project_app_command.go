@@ -26,6 +26,7 @@ type CreateProjectAppCommand struct {
 	CatalogAppId *int32 `json:"catalogAppId,omitempty"`
 	ExtraValues NullableString `json:"extraValues,omitempty"`
 	AutoSync *bool `json:"autoSync,omitempty"`
+	TaikunLinkEnabled *bool `json:"taikunLinkEnabled,omitempty"`
 	Parameters []ProjectAppParamsDto `json:"parameters,omitempty"`
 }
 
@@ -268,6 +269,38 @@ func (o *CreateProjectAppCommand) SetAutoSync(v bool) {
 	o.AutoSync = &v
 }
 
+// GetTaikunLinkEnabled returns the TaikunLinkEnabled field value if set, zero value otherwise.
+func (o *CreateProjectAppCommand) GetTaikunLinkEnabled() bool {
+	if o == nil || IsNil(o.TaikunLinkEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.TaikunLinkEnabled
+}
+
+// GetTaikunLinkEnabledOk returns a tuple with the TaikunLinkEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateProjectAppCommand) GetTaikunLinkEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.TaikunLinkEnabled) {
+		return nil, false
+	}
+	return o.TaikunLinkEnabled, true
+}
+
+// HasTaikunLinkEnabled returns a boolean if a field has been set.
+func (o *CreateProjectAppCommand) HasTaikunLinkEnabled() bool {
+	if o != nil && !IsNil(o.TaikunLinkEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetTaikunLinkEnabled gets a reference to the given bool and assigns it to the TaikunLinkEnabled field.
+func (o *CreateProjectAppCommand) SetTaikunLinkEnabled(v bool) {
+	o.TaikunLinkEnabled = &v
+}
+
 // GetParameters returns the Parameters field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectAppCommand) GetParameters() []ProjectAppParamsDto {
 	if o == nil {
@@ -328,6 +361,9 @@ func (o CreateProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AutoSync) {
 		toSerialize["autoSync"] = o.AutoSync
+	}
+	if !IsNil(o.TaikunLinkEnabled) {
+		toSerialize["taikunLinkEnabled"] = o.TaikunLinkEnabled
 	}
 	if o.Parameters != nil {
 		toSerialize["parameters"] = o.Parameters

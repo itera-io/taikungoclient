@@ -17,11 +17,11 @@ import (
 	"fmt"
 )
 
-// checks if the ImportedClusterListDto type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ImportedClusterListDto{}
+// checks if the ImportedClusterVClusterListDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ImportedClusterVClusterListDto{}
 
-// ImportedClusterListDto struct for ImportedClusterListDto
-type ImportedClusterListDto struct {
+// ImportedClusterVClusterListDto struct for ImportedClusterVClusterListDto
+type ImportedClusterVClusterListDto struct {
 	Id int32 `json:"id"`
 	Name string `json:"name"`
 	IsVirtualCluster bool `json:"isVirtualCluster"`
@@ -45,16 +45,22 @@ type ImportedClusterListDto struct {
 	CloudType CloudType `json:"cloudType"`
 	Status ProjectStatus `json:"status"`
 	Health ProjectHealth `json:"health"`
+	LockButton ButtonStatusDto `json:"lockButton"`
+	UnlockButton ButtonStatusDto `json:"unlockButton"`
+	DeleteButton ButtonStatusDto `json:"deleteButton"`
+	KubeInfoButton ButtonStatusDto `json:"kubeInfoButton"`
+	SetExpirationDateButton ButtonStatusDto `json:"setExpirationDateButton"`
+	ResetStatusButton ButtonStatusDto `json:"resetStatusButton"`
 }
 
-type _ImportedClusterListDto ImportedClusterListDto
+type _ImportedClusterVClusterListDto ImportedClusterVClusterListDto
 
-// NewImportedClusterListDto instantiates a new ImportedClusterListDto object
+// NewImportedClusterVClusterListDto instantiates a new ImportedClusterVClusterListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportedClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType CloudType, status ProjectStatus, health ProjectHealth) *ImportedClusterListDto {
-	this := ImportedClusterListDto{}
+func NewImportedClusterVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType CloudType, status ProjectStatus, health ProjectHealth, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *ImportedClusterVClusterListDto {
+	this := ImportedClusterVClusterListDto{}
 	this.Id = id
 	this.Name = name
 	this.IsVirtualCluster = isVirtualCluster
@@ -78,19 +84,25 @@ func NewImportedClusterListDto(id int32, name string, isVirtualCluster bool, isL
 	this.CloudType = cloudType
 	this.Status = status
 	this.Health = health
+	this.LockButton = lockButton
+	this.UnlockButton = unlockButton
+	this.DeleteButton = deleteButton
+	this.KubeInfoButton = kubeInfoButton
+	this.SetExpirationDateButton = setExpirationDateButton
+	this.ResetStatusButton = resetStatusButton
 	return &this
 }
 
-// NewImportedClusterListDtoWithDefaults instantiates a new ImportedClusterListDto object
+// NewImportedClusterVClusterListDtoWithDefaults instantiates a new ImportedClusterVClusterListDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewImportedClusterListDtoWithDefaults() *ImportedClusterListDto {
-	this := ImportedClusterListDto{}
+func NewImportedClusterVClusterListDtoWithDefaults() *ImportedClusterVClusterListDto {
+	this := ImportedClusterVClusterListDto{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *ImportedClusterListDto) GetId() int32 {
+func (o *ImportedClusterVClusterListDto) GetId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -101,7 +113,7 @@ func (o *ImportedClusterListDto) GetId() int32 {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetIdOk() (*int32, bool) {
+func (o *ImportedClusterVClusterListDto) GetIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -109,12 +121,12 @@ func (o *ImportedClusterListDto) GetIdOk() (*int32, bool) {
 }
 
 // SetId sets field value
-func (o *ImportedClusterListDto) SetId(v int32) {
+func (o *ImportedClusterVClusterListDto) SetId(v int32) {
 	o.Id = v
 }
 
 // GetName returns the Name field value
-func (o *ImportedClusterListDto) GetName() string {
+func (o *ImportedClusterVClusterListDto) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -125,7 +137,7 @@ func (o *ImportedClusterListDto) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetNameOk() (*string, bool) {
+func (o *ImportedClusterVClusterListDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -133,12 +145,12 @@ func (o *ImportedClusterListDto) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *ImportedClusterListDto) SetName(v string) {
+func (o *ImportedClusterVClusterListDto) SetName(v string) {
 	o.Name = v
 }
 
 // GetIsVirtualCluster returns the IsVirtualCluster field value
-func (o *ImportedClusterListDto) GetIsVirtualCluster() bool {
+func (o *ImportedClusterVClusterListDto) GetIsVirtualCluster() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -149,7 +161,7 @@ func (o *ImportedClusterListDto) GetIsVirtualCluster() bool {
 
 // GetIsVirtualClusterOk returns a tuple with the IsVirtualCluster field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetIsVirtualClusterOk() (*bool, bool) {
+func (o *ImportedClusterVClusterListDto) GetIsVirtualClusterOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -157,12 +169,12 @@ func (o *ImportedClusterListDto) GetIsVirtualClusterOk() (*bool, bool) {
 }
 
 // SetIsVirtualCluster sets field value
-func (o *ImportedClusterListDto) SetIsVirtualCluster(v bool) {
+func (o *ImportedClusterVClusterListDto) SetIsVirtualCluster(v bool) {
 	o.IsVirtualCluster = v
 }
 
 // GetIsLocked returns the IsLocked field value
-func (o *ImportedClusterListDto) GetIsLocked() bool {
+func (o *ImportedClusterVClusterListDto) GetIsLocked() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -173,7 +185,7 @@ func (o *ImportedClusterListDto) GetIsLocked() bool {
 
 // GetIsLockedOk returns a tuple with the IsLocked field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetIsLockedOk() (*bool, bool) {
+func (o *ImportedClusterVClusterListDto) GetIsLockedOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -181,12 +193,12 @@ func (o *ImportedClusterListDto) GetIsLockedOk() (*bool, bool) {
 }
 
 // SetIsLocked sets field value
-func (o *ImportedClusterListDto) SetIsLocked(v bool) {
+func (o *ImportedClusterVClusterListDto) SetIsLocked(v bool) {
 	o.IsLocked = v
 }
 
 // GetHasKubeConfigFile returns the HasKubeConfigFile field value
-func (o *ImportedClusterListDto) GetHasKubeConfigFile() bool {
+func (o *ImportedClusterVClusterListDto) GetHasKubeConfigFile() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -197,7 +209,7 @@ func (o *ImportedClusterListDto) GetHasKubeConfigFile() bool {
 
 // GetHasKubeConfigFileOk returns a tuple with the HasKubeConfigFile field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetHasKubeConfigFileOk() (*bool, bool) {
+func (o *ImportedClusterVClusterListDto) GetHasKubeConfigFileOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -205,12 +217,12 @@ func (o *ImportedClusterListDto) GetHasKubeConfigFileOk() (*bool, bool) {
 }
 
 // SetHasKubeConfigFile sets field value
-func (o *ImportedClusterListDto) SetHasKubeConfigFile(v bool) {
+func (o *ImportedClusterVClusterListDto) SetHasKubeConfigFile(v bool) {
 	o.HasKubeConfigFile = v
 }
 
 // GetIsMaintenanceModeEnabled returns the IsMaintenanceModeEnabled field value
-func (o *ImportedClusterListDto) GetIsMaintenanceModeEnabled() bool {
+func (o *ImportedClusterVClusterListDto) GetIsMaintenanceModeEnabled() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -221,7 +233,7 @@ func (o *ImportedClusterListDto) GetIsMaintenanceModeEnabled() bool {
 
 // GetIsMaintenanceModeEnabledOk returns a tuple with the IsMaintenanceModeEnabled field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetIsMaintenanceModeEnabledOk() (*bool, bool) {
+func (o *ImportedClusterVClusterListDto) GetIsMaintenanceModeEnabledOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -229,12 +241,12 @@ func (o *ImportedClusterListDto) GetIsMaintenanceModeEnabledOk() (*bool, bool) {
 }
 
 // SetIsMaintenanceModeEnabled sets field value
-func (o *ImportedClusterListDto) SetIsMaintenanceModeEnabled(v bool) {
+func (o *ImportedClusterVClusterListDto) SetIsMaintenanceModeEnabled(v bool) {
 	o.IsMaintenanceModeEnabled = v
 }
 
 // GetOrganizationName returns the OrganizationName field value
-func (o *ImportedClusterListDto) GetOrganizationName() string {
+func (o *ImportedClusterVClusterListDto) GetOrganizationName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -245,7 +257,7 @@ func (o *ImportedClusterListDto) GetOrganizationName() string {
 
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetOrganizationNameOk() (*string, bool) {
+func (o *ImportedClusterVClusterListDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -253,12 +265,12 @@ func (o *ImportedClusterListDto) GetOrganizationNameOk() (*string, bool) {
 }
 
 // SetOrganizationName sets field value
-func (o *ImportedClusterListDto) SetOrganizationName(v string) {
+func (o *ImportedClusterVClusterListDto) SetOrganizationName(v string) {
 	o.OrganizationName = v
 }
 
 // GetOrganizationId returns the OrganizationId field value
-func (o *ImportedClusterListDto) GetOrganizationId() int32 {
+func (o *ImportedClusterVClusterListDto) GetOrganizationId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -269,7 +281,7 @@ func (o *ImportedClusterListDto) GetOrganizationId() int32 {
 
 // GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetOrganizationIdOk() (*int32, bool) {
+func (o *ImportedClusterVClusterListDto) GetOrganizationIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -277,12 +289,12 @@ func (o *ImportedClusterListDto) GetOrganizationIdOk() (*int32, bool) {
 }
 
 // SetOrganizationId sets field value
-func (o *ImportedClusterListDto) SetOrganizationId(v int32) {
+func (o *ImportedClusterVClusterListDto) SetOrganizationId(v int32) {
 	o.OrganizationId = v
 }
 
 // GetKubernetesVersion returns the KubernetesVersion field value
-func (o *ImportedClusterListDto) GetKubernetesVersion() string {
+func (o *ImportedClusterVClusterListDto) GetKubernetesVersion() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -293,7 +305,7 @@ func (o *ImportedClusterListDto) GetKubernetesVersion() string {
 
 // GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetKubernetesVersionOk() (*string, bool) {
+func (o *ImportedClusterVClusterListDto) GetKubernetesVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -301,12 +313,12 @@ func (o *ImportedClusterListDto) GetKubernetesVersionOk() (*string, bool) {
 }
 
 // SetKubernetesVersion sets field value
-func (o *ImportedClusterListDto) SetKubernetesVersion(v string) {
+func (o *ImportedClusterVClusterListDto) SetKubernetesVersion(v string) {
 	o.KubernetesVersion = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *ImportedClusterListDto) GetCreatedAt() string {
+func (o *ImportedClusterVClusterListDto) GetCreatedAt() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -317,7 +329,7 @@ func (o *ImportedClusterListDto) GetCreatedAt() string {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetCreatedAtOk() (*string, bool) {
+func (o *ImportedClusterVClusterListDto) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -325,12 +337,12 @@ func (o *ImportedClusterListDto) GetCreatedAtOk() (*string, bool) {
 }
 
 // SetCreatedAt sets field value
-func (o *ImportedClusterListDto) SetCreatedAt(v string) {
+func (o *ImportedClusterVClusterListDto) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
 // GetCreatedBy returns the CreatedBy field value
-func (o *ImportedClusterListDto) GetCreatedBy() string {
+func (o *ImportedClusterVClusterListDto) GetCreatedBy() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -341,7 +353,7 @@ func (o *ImportedClusterListDto) GetCreatedBy() string {
 
 // GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetCreatedByOk() (*string, bool) {
+func (o *ImportedClusterVClusterListDto) GetCreatedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -349,12 +361,12 @@ func (o *ImportedClusterListDto) GetCreatedByOk() (*string, bool) {
 }
 
 // SetCreatedBy sets field value
-func (o *ImportedClusterListDto) SetCreatedBy(v string) {
+func (o *ImportedClusterVClusterListDto) SetCreatedBy(v string) {
 	o.CreatedBy = v
 }
 
 // GetLastModified returns the LastModified field value
-func (o *ImportedClusterListDto) GetLastModified() string {
+func (o *ImportedClusterVClusterListDto) GetLastModified() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -365,7 +377,7 @@ func (o *ImportedClusterListDto) GetLastModified() string {
 
 // GetLastModifiedOk returns a tuple with the LastModified field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetLastModifiedOk() (*string, bool) {
+func (o *ImportedClusterVClusterListDto) GetLastModifiedOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -373,12 +385,12 @@ func (o *ImportedClusterListDto) GetLastModifiedOk() (*string, bool) {
 }
 
 // SetLastModified sets field value
-func (o *ImportedClusterListDto) SetLastModified(v string) {
+func (o *ImportedClusterVClusterListDto) SetLastModified(v string) {
 	o.LastModified = v
 }
 
 // GetLastModifiedBy returns the LastModifiedBy field value
-func (o *ImportedClusterListDto) GetLastModifiedBy() string {
+func (o *ImportedClusterVClusterListDto) GetLastModifiedBy() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -389,7 +401,7 @@ func (o *ImportedClusterListDto) GetLastModifiedBy() string {
 
 // GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetLastModifiedByOk() (*string, bool) {
+func (o *ImportedClusterVClusterListDto) GetLastModifiedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -397,12 +409,12 @@ func (o *ImportedClusterListDto) GetLastModifiedByOk() (*string, bool) {
 }
 
 // SetLastModifiedBy sets field value
-func (o *ImportedClusterListDto) SetLastModifiedBy(v string) {
+func (o *ImportedClusterVClusterListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy = v
 }
 
 // GetAlertsCount returns the AlertsCount field value
-func (o *ImportedClusterListDto) GetAlertsCount() int32 {
+func (o *ImportedClusterVClusterListDto) GetAlertsCount() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -413,7 +425,7 @@ func (o *ImportedClusterListDto) GetAlertsCount() int32 {
 
 // GetAlertsCountOk returns a tuple with the AlertsCount field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetAlertsCountOk() (*int32, bool) {
+func (o *ImportedClusterVClusterListDto) GetAlertsCountOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -421,12 +433,12 @@ func (o *ImportedClusterListDto) GetAlertsCountOk() (*int32, bool) {
 }
 
 // SetAlertsCount sets field value
-func (o *ImportedClusterListDto) SetAlertsCount(v int32) {
+func (o *ImportedClusterVClusterListDto) SetAlertsCount(v int32) {
 	o.AlertsCount = v
 }
 
 // GetExpiredAt returns the ExpiredAt field value
-func (o *ImportedClusterListDto) GetExpiredAt() string {
+func (o *ImportedClusterVClusterListDto) GetExpiredAt() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -437,7 +449,7 @@ func (o *ImportedClusterListDto) GetExpiredAt() string {
 
 // GetExpiredAtOk returns a tuple with the ExpiredAt field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetExpiredAtOk() (*string, bool) {
+func (o *ImportedClusterVClusterListDto) GetExpiredAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -445,12 +457,12 @@ func (o *ImportedClusterListDto) GetExpiredAtOk() (*string, bool) {
 }
 
 // SetExpiredAt sets field value
-func (o *ImportedClusterListDto) SetExpiredAt(v string) {
+func (o *ImportedClusterVClusterListDto) SetExpiredAt(v string) {
 	o.ExpiredAt = v
 }
 
 // GetDeleteOnExpiration returns the DeleteOnExpiration field value
-func (o *ImportedClusterListDto) GetDeleteOnExpiration() bool {
+func (o *ImportedClusterVClusterListDto) GetDeleteOnExpiration() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -461,7 +473,7 @@ func (o *ImportedClusterListDto) GetDeleteOnExpiration() bool {
 
 // GetDeleteOnExpirationOk returns a tuple with the DeleteOnExpiration field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetDeleteOnExpirationOk() (*bool, bool) {
+func (o *ImportedClusterVClusterListDto) GetDeleteOnExpirationOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -469,12 +481,12 @@ func (o *ImportedClusterListDto) GetDeleteOnExpirationOk() (*bool, bool) {
 }
 
 // SetDeleteOnExpiration sets field value
-func (o *ImportedClusterListDto) SetDeleteOnExpiration(v bool) {
+func (o *ImportedClusterVClusterListDto) SetDeleteOnExpiration(v bool) {
 	o.DeleteOnExpiration = v
 }
 
 // GetWasmEnabled returns the WasmEnabled field value
-func (o *ImportedClusterListDto) GetWasmEnabled() bool {
+func (o *ImportedClusterVClusterListDto) GetWasmEnabled() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -485,7 +497,7 @@ func (o *ImportedClusterListDto) GetWasmEnabled() bool {
 
 // GetWasmEnabledOk returns a tuple with the WasmEnabled field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetWasmEnabledOk() (*bool, bool) {
+func (o *ImportedClusterVClusterListDto) GetWasmEnabledOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -493,13 +505,13 @@ func (o *ImportedClusterListDto) GetWasmEnabledOk() (*bool, bool) {
 }
 
 // SetWasmEnabled sets field value
-func (o *ImportedClusterListDto) SetWasmEnabled(v bool) {
+func (o *ImportedClusterVClusterListDto) SetWasmEnabled(v bool) {
 	o.WasmEnabled = v
 }
 
 // GetAlertingProfileId returns the AlertingProfileId field value
 // If the value is explicit nil, the zero value for int32 will be returned
-func (o *ImportedClusterListDto) GetAlertingProfileId() int32 {
+func (o *ImportedClusterVClusterListDto) GetAlertingProfileId() int32 {
 	if o == nil || o.AlertingProfileId.Get() == nil {
 		var ret int32
 		return ret
@@ -511,7 +523,7 @@ func (o *ImportedClusterListDto) GetAlertingProfileId() int32 {
 // GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ImportedClusterListDto) GetAlertingProfileIdOk() (*int32, bool) {
+func (o *ImportedClusterVClusterListDto) GetAlertingProfileIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -519,13 +531,13 @@ func (o *ImportedClusterListDto) GetAlertingProfileIdOk() (*int32, bool) {
 }
 
 // SetAlertingProfileId sets field value
-func (o *ImportedClusterListDto) SetAlertingProfileId(v int32) {
+func (o *ImportedClusterVClusterListDto) SetAlertingProfileId(v int32) {
 	o.AlertingProfileId.Set(&v)
 }
 
 // GetAlertingProfileName returns the AlertingProfileName field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *ImportedClusterListDto) GetAlertingProfileName() string {
+func (o *ImportedClusterVClusterListDto) GetAlertingProfileName() string {
 	if o == nil || o.AlertingProfileName.Get() == nil {
 		var ret string
 		return ret
@@ -537,7 +549,7 @@ func (o *ImportedClusterListDto) GetAlertingProfileName() string {
 // GetAlertingProfileNameOk returns a tuple with the AlertingProfileName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ImportedClusterListDto) GetAlertingProfileNameOk() (*string, bool) {
+func (o *ImportedClusterVClusterListDto) GetAlertingProfileNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -545,12 +557,12 @@ func (o *ImportedClusterListDto) GetAlertingProfileNameOk() (*string, bool) {
 }
 
 // SetAlertingProfileName sets field value
-func (o *ImportedClusterListDto) SetAlertingProfileName(v string) {
+func (o *ImportedClusterVClusterListDto) SetAlertingProfileName(v string) {
 	o.AlertingProfileName.Set(&v)
 }
 
 // GetAccessIp returns the AccessIp field value
-func (o *ImportedClusterListDto) GetAccessIp() string {
+func (o *ImportedClusterVClusterListDto) GetAccessIp() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -561,7 +573,7 @@ func (o *ImportedClusterListDto) GetAccessIp() string {
 
 // GetAccessIpOk returns a tuple with the AccessIp field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetAccessIpOk() (*string, bool) {
+func (o *ImportedClusterVClusterListDto) GetAccessIpOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -569,12 +581,12 @@ func (o *ImportedClusterListDto) GetAccessIpOk() (*string, bool) {
 }
 
 // SetAccessIp sets field value
-func (o *ImportedClusterListDto) SetAccessIp(v string) {
+func (o *ImportedClusterVClusterListDto) SetAccessIp(v string) {
 	o.AccessIp = v
 }
 
 // GetCloudType returns the CloudType field value
-func (o *ImportedClusterListDto) GetCloudType() CloudType {
+func (o *ImportedClusterVClusterListDto) GetCloudType() CloudType {
 	if o == nil {
 		var ret CloudType
 		return ret
@@ -585,7 +597,7 @@ func (o *ImportedClusterListDto) GetCloudType() CloudType {
 
 // GetCloudTypeOk returns a tuple with the CloudType field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetCloudTypeOk() (*CloudType, bool) {
+func (o *ImportedClusterVClusterListDto) GetCloudTypeOk() (*CloudType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -593,12 +605,12 @@ func (o *ImportedClusterListDto) GetCloudTypeOk() (*CloudType, bool) {
 }
 
 // SetCloudType sets field value
-func (o *ImportedClusterListDto) SetCloudType(v CloudType) {
+func (o *ImportedClusterVClusterListDto) SetCloudType(v CloudType) {
 	o.CloudType = v
 }
 
 // GetStatus returns the Status field value
-func (o *ImportedClusterListDto) GetStatus() ProjectStatus {
+func (o *ImportedClusterVClusterListDto) GetStatus() ProjectStatus {
 	if o == nil {
 		var ret ProjectStatus
 		return ret
@@ -609,7 +621,7 @@ func (o *ImportedClusterListDto) GetStatus() ProjectStatus {
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetStatusOk() (*ProjectStatus, bool) {
+func (o *ImportedClusterVClusterListDto) GetStatusOk() (*ProjectStatus, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -617,12 +629,12 @@ func (o *ImportedClusterListDto) GetStatusOk() (*ProjectStatus, bool) {
 }
 
 // SetStatus sets field value
-func (o *ImportedClusterListDto) SetStatus(v ProjectStatus) {
+func (o *ImportedClusterVClusterListDto) SetStatus(v ProjectStatus) {
 	o.Status = v
 }
 
 // GetHealth returns the Health field value
-func (o *ImportedClusterListDto) GetHealth() ProjectHealth {
+func (o *ImportedClusterVClusterListDto) GetHealth() ProjectHealth {
 	if o == nil {
 		var ret ProjectHealth
 		return ret
@@ -633,7 +645,7 @@ func (o *ImportedClusterListDto) GetHealth() ProjectHealth {
 
 // GetHealthOk returns a tuple with the Health field value
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterListDto) GetHealthOk() (*ProjectHealth, bool) {
+func (o *ImportedClusterVClusterListDto) GetHealthOk() (*ProjectHealth, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -641,11 +653,155 @@ func (o *ImportedClusterListDto) GetHealthOk() (*ProjectHealth, bool) {
 }
 
 // SetHealth sets field value
-func (o *ImportedClusterListDto) SetHealth(v ProjectHealth) {
+func (o *ImportedClusterVClusterListDto) SetHealth(v ProjectHealth) {
 	o.Health = v
 }
 
-func (o ImportedClusterListDto) MarshalJSON() ([]byte, error) {
+// GetLockButton returns the LockButton field value
+func (o *ImportedClusterVClusterListDto) GetLockButton() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.LockButton
+}
+
+// GetLockButtonOk returns a tuple with the LockButton field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterVClusterListDto) GetLockButtonOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LockButton, true
+}
+
+// SetLockButton sets field value
+func (o *ImportedClusterVClusterListDto) SetLockButton(v ButtonStatusDto) {
+	o.LockButton = v
+}
+
+// GetUnlockButton returns the UnlockButton field value
+func (o *ImportedClusterVClusterListDto) GetUnlockButton() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.UnlockButton
+}
+
+// GetUnlockButtonOk returns a tuple with the UnlockButton field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterVClusterListDto) GetUnlockButtonOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UnlockButton, true
+}
+
+// SetUnlockButton sets field value
+func (o *ImportedClusterVClusterListDto) SetUnlockButton(v ButtonStatusDto) {
+	o.UnlockButton = v
+}
+
+// GetDeleteButton returns the DeleteButton field value
+func (o *ImportedClusterVClusterListDto) GetDeleteButton() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.DeleteButton
+}
+
+// GetDeleteButtonOk returns a tuple with the DeleteButton field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterVClusterListDto) GetDeleteButtonOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DeleteButton, true
+}
+
+// SetDeleteButton sets field value
+func (o *ImportedClusterVClusterListDto) SetDeleteButton(v ButtonStatusDto) {
+	o.DeleteButton = v
+}
+
+// GetKubeInfoButton returns the KubeInfoButton field value
+func (o *ImportedClusterVClusterListDto) GetKubeInfoButton() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.KubeInfoButton
+}
+
+// GetKubeInfoButtonOk returns a tuple with the KubeInfoButton field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterVClusterListDto) GetKubeInfoButtonOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.KubeInfoButton, true
+}
+
+// SetKubeInfoButton sets field value
+func (o *ImportedClusterVClusterListDto) SetKubeInfoButton(v ButtonStatusDto) {
+	o.KubeInfoButton = v
+}
+
+// GetSetExpirationDateButton returns the SetExpirationDateButton field value
+func (o *ImportedClusterVClusterListDto) GetSetExpirationDateButton() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.SetExpirationDateButton
+}
+
+// GetSetExpirationDateButtonOk returns a tuple with the SetExpirationDateButton field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterVClusterListDto) GetSetExpirationDateButtonOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SetExpirationDateButton, true
+}
+
+// SetSetExpirationDateButton sets field value
+func (o *ImportedClusterVClusterListDto) SetSetExpirationDateButton(v ButtonStatusDto) {
+	o.SetExpirationDateButton = v
+}
+
+// GetResetStatusButton returns the ResetStatusButton field value
+func (o *ImportedClusterVClusterListDto) GetResetStatusButton() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.ResetStatusButton
+}
+
+// GetResetStatusButtonOk returns a tuple with the ResetStatusButton field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterVClusterListDto) GetResetStatusButtonOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ResetStatusButton, true
+}
+
+// SetResetStatusButton sets field value
+func (o *ImportedClusterVClusterListDto) SetResetStatusButton(v ButtonStatusDto) {
+	o.ResetStatusButton = v
+}
+
+func (o ImportedClusterVClusterListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -653,7 +809,7 @@ func (o ImportedClusterListDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ImportedClusterListDto) ToMap() (map[string]interface{}, error) {
+func (o ImportedClusterVClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
@@ -678,10 +834,16 @@ func (o ImportedClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["status"] = o.Status
 	toSerialize["health"] = o.Health
+	toSerialize["lockButton"] = o.LockButton
+	toSerialize["unlockButton"] = o.UnlockButton
+	toSerialize["deleteButton"] = o.DeleteButton
+	toSerialize["kubeInfoButton"] = o.KubeInfoButton
+	toSerialize["setExpirationDateButton"] = o.SetExpirationDateButton
+	toSerialize["resetStatusButton"] = o.ResetStatusButton
 	return toSerialize, nil
 }
 
-func (o *ImportedClusterListDto) UnmarshalJSON(data []byte) (err error) {
+func (o *ImportedClusterVClusterListDto) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -709,6 +871,12 @@ func (o *ImportedClusterListDto) UnmarshalJSON(data []byte) (err error) {
 		"cloudType",
 		"status",
 		"health",
+		"lockButton",
+		"unlockButton",
+		"deleteButton",
+		"kubeInfoButton",
+		"setExpirationDateButton",
+		"resetStatusButton",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -725,53 +893,53 @@ func (o *ImportedClusterListDto) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varImportedClusterListDto := _ImportedClusterListDto{}
+	varImportedClusterVClusterListDto := _ImportedClusterVClusterListDto{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varImportedClusterListDto)
+	err = decoder.Decode(&varImportedClusterVClusterListDto)
 
 	if err != nil {
 		return err
 	}
 
-	*o = ImportedClusterListDto(varImportedClusterListDto)
+	*o = ImportedClusterVClusterListDto(varImportedClusterVClusterListDto)
 
 	return err
 }
 
-type NullableImportedClusterListDto struct {
-	value *ImportedClusterListDto
+type NullableImportedClusterVClusterListDto struct {
+	value *ImportedClusterVClusterListDto
 	isSet bool
 }
 
-func (v NullableImportedClusterListDto) Get() *ImportedClusterListDto {
+func (v NullableImportedClusterVClusterListDto) Get() *ImportedClusterVClusterListDto {
 	return v.value
 }
 
-func (v *NullableImportedClusterListDto) Set(val *ImportedClusterListDto) {
+func (v *NullableImportedClusterVClusterListDto) Set(val *ImportedClusterVClusterListDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableImportedClusterListDto) IsSet() bool {
+func (v NullableImportedClusterVClusterListDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableImportedClusterListDto) Unset() {
+func (v *NullableImportedClusterVClusterListDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableImportedClusterListDto(val *ImportedClusterListDto) *NullableImportedClusterListDto {
-	return &NullableImportedClusterListDto{value: val, isSet: true}
+func NewNullableImportedClusterVClusterListDto(val *ImportedClusterVClusterListDto) *NullableImportedClusterVClusterListDto {
+	return &NullableImportedClusterVClusterListDto{value: val, isSet: true}
 }
 
-func (v NullableImportedClusterListDto) MarshalJSON() ([]byte, error) {
+func (v NullableImportedClusterVClusterListDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableImportedClusterListDto) UnmarshalJSON(src []byte) error {
+func (v *NullableImportedClusterVClusterListDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
