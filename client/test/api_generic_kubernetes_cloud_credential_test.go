@@ -34,4 +34,15 @@ func Test_taikuncore_GenericKubernetesCloudCredentialAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GenericKubernetesCloudCredentialAPIService GenericKubernetesUpdate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.GenericKubernetesCloudCredentialAPI.GenericKubernetesUpdate(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

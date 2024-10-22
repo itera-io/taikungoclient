@@ -911,6 +911,7 @@ docs/UpdateAlertingProfileCommand.md
 docs/UpdateAwsCommand.md
 docs/UpdateAzureCommand.md
 docs/UpdateEdgeNodesCommand.md
+docs/UpdateGenericKubernetesCommand.md
 docs/UpdateHealthStatusCommand.md
 docs/UpdateHypervisorsCommand.md
 docs/UpdateInvoiceDto.md
@@ -1751,6 +1752,7 @@ model_update_alerting_profile_command.go
 model_update_aws_command.go
 model_update_azure_command.go
 model_update_edge_nodes_command.go
+model_update_generic_kubernetes_command.go
 model_update_health_status_command.go
 model_update_hypervisors_command.go
 model_update_invoice_dto.go
