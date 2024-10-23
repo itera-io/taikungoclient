@@ -27,9 +27,12 @@ type OpaProfileUpdateCommand struct {
 	RequireProbe NullableBool `json:"requireProbe,omitempty"`
 	UniqueIngresses NullableBool `json:"uniqueIngresses,omitempty"`
 	UniqueServiceSelector NullableBool `json:"uniqueServiceSelector,omitempty"`
+	IsNodeNameForbiddenInVC NullableBool `json:"isNodeNameForbiddenInVC,omitempty"`
+	IsMasterTaintEnforced NullableBool `json:"isMasterTaintEnforced,omitempty"`
 	AllowedRepo []string `json:"allowedRepo,omitempty"`
 	ForbidSpecificTags []string `json:"forbidSpecificTags,omitempty"`
 	IngressWhitelist []string `json:"ingressWhitelist,omitempty"`
+	WhitelistMasterTaintNamespaces []string `json:"whitelistMasterTaintNamespaces,omitempty"`
 }
 
 // NewOpaProfileUpdateCommand instantiates a new OpaProfileUpdateCommand object
@@ -333,6 +336,90 @@ func (o *OpaProfileUpdateCommand) UnsetUniqueServiceSelector() {
 	o.UniqueServiceSelector.Unset()
 }
 
+// GetIsNodeNameForbiddenInVC returns the IsNodeNameForbiddenInVC field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OpaProfileUpdateCommand) GetIsNodeNameForbiddenInVC() bool {
+	if o == nil || IsNil(o.IsNodeNameForbiddenInVC.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IsNodeNameForbiddenInVC.Get()
+}
+
+// GetIsNodeNameForbiddenInVCOk returns a tuple with the IsNodeNameForbiddenInVC field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OpaProfileUpdateCommand) GetIsNodeNameForbiddenInVCOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsNodeNameForbiddenInVC.Get(), o.IsNodeNameForbiddenInVC.IsSet()
+}
+
+// HasIsNodeNameForbiddenInVC returns a boolean if a field has been set.
+func (o *OpaProfileUpdateCommand) HasIsNodeNameForbiddenInVC() bool {
+	if o != nil && o.IsNodeNameForbiddenInVC.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsNodeNameForbiddenInVC gets a reference to the given NullableBool and assigns it to the IsNodeNameForbiddenInVC field.
+func (o *OpaProfileUpdateCommand) SetIsNodeNameForbiddenInVC(v bool) {
+	o.IsNodeNameForbiddenInVC.Set(&v)
+}
+// SetIsNodeNameForbiddenInVCNil sets the value for IsNodeNameForbiddenInVC to be an explicit nil
+func (o *OpaProfileUpdateCommand) SetIsNodeNameForbiddenInVCNil() {
+	o.IsNodeNameForbiddenInVC.Set(nil)
+}
+
+// UnsetIsNodeNameForbiddenInVC ensures that no value is present for IsNodeNameForbiddenInVC, not even an explicit nil
+func (o *OpaProfileUpdateCommand) UnsetIsNodeNameForbiddenInVC() {
+	o.IsNodeNameForbiddenInVC.Unset()
+}
+
+// GetIsMasterTaintEnforced returns the IsMasterTaintEnforced field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OpaProfileUpdateCommand) GetIsMasterTaintEnforced() bool {
+	if o == nil || IsNil(o.IsMasterTaintEnforced.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IsMasterTaintEnforced.Get()
+}
+
+// GetIsMasterTaintEnforcedOk returns a tuple with the IsMasterTaintEnforced field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OpaProfileUpdateCommand) GetIsMasterTaintEnforcedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsMasterTaintEnforced.Get(), o.IsMasterTaintEnforced.IsSet()
+}
+
+// HasIsMasterTaintEnforced returns a boolean if a field has been set.
+func (o *OpaProfileUpdateCommand) HasIsMasterTaintEnforced() bool {
+	if o != nil && o.IsMasterTaintEnforced.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsMasterTaintEnforced gets a reference to the given NullableBool and assigns it to the IsMasterTaintEnforced field.
+func (o *OpaProfileUpdateCommand) SetIsMasterTaintEnforced(v bool) {
+	o.IsMasterTaintEnforced.Set(&v)
+}
+// SetIsMasterTaintEnforcedNil sets the value for IsMasterTaintEnforced to be an explicit nil
+func (o *OpaProfileUpdateCommand) SetIsMasterTaintEnforcedNil() {
+	o.IsMasterTaintEnforced.Set(nil)
+}
+
+// UnsetIsMasterTaintEnforced ensures that no value is present for IsMasterTaintEnforced, not even an explicit nil
+func (o *OpaProfileUpdateCommand) UnsetIsMasterTaintEnforced() {
+	o.IsMasterTaintEnforced.Unset()
+}
+
 // GetAllowedRepo returns the AllowedRepo field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OpaProfileUpdateCommand) GetAllowedRepo() []string {
 	if o == nil {
@@ -432,6 +519,39 @@ func (o *OpaProfileUpdateCommand) SetIngressWhitelist(v []string) {
 	o.IngressWhitelist = v
 }
 
+// GetWhitelistMasterTaintNamespaces returns the WhitelistMasterTaintNamespaces field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OpaProfileUpdateCommand) GetWhitelistMasterTaintNamespaces() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.WhitelistMasterTaintNamespaces
+}
+
+// GetWhitelistMasterTaintNamespacesOk returns a tuple with the WhitelistMasterTaintNamespaces field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OpaProfileUpdateCommand) GetWhitelistMasterTaintNamespacesOk() ([]string, bool) {
+	if o == nil || IsNil(o.WhitelistMasterTaintNamespaces) {
+		return nil, false
+	}
+	return o.WhitelistMasterTaintNamespaces, true
+}
+
+// HasWhitelistMasterTaintNamespaces returns a boolean if a field has been set.
+func (o *OpaProfileUpdateCommand) HasWhitelistMasterTaintNamespaces() bool {
+	if o != nil && !IsNil(o.WhitelistMasterTaintNamespaces) {
+		return true
+	}
+
+	return false
+}
+
+// SetWhitelistMasterTaintNamespaces gets a reference to the given []string and assigns it to the WhitelistMasterTaintNamespaces field.
+func (o *OpaProfileUpdateCommand) SetWhitelistMasterTaintNamespaces(v []string) {
+	o.WhitelistMasterTaintNamespaces = v
+}
+
 func (o OpaProfileUpdateCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -463,6 +583,12 @@ func (o OpaProfileUpdateCommand) ToMap() (map[string]interface{}, error) {
 	if o.UniqueServiceSelector.IsSet() {
 		toSerialize["uniqueServiceSelector"] = o.UniqueServiceSelector.Get()
 	}
+	if o.IsNodeNameForbiddenInVC.IsSet() {
+		toSerialize["isNodeNameForbiddenInVC"] = o.IsNodeNameForbiddenInVC.Get()
+	}
+	if o.IsMasterTaintEnforced.IsSet() {
+		toSerialize["isMasterTaintEnforced"] = o.IsMasterTaintEnforced.Get()
+	}
 	if o.AllowedRepo != nil {
 		toSerialize["allowedRepo"] = o.AllowedRepo
 	}
@@ -471,6 +597,9 @@ func (o OpaProfileUpdateCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.IngressWhitelist != nil {
 		toSerialize["ingressWhitelist"] = o.IngressWhitelist
+	}
+	if o.WhitelistMasterTaintNamespaces != nil {
+		toSerialize["whitelistMasterTaintNamespaces"] = o.WhitelistMasterTaintNamespaces
 	}
 	return toSerialize, nil
 }
