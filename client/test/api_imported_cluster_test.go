@@ -78,18 +78,4 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ImportedClusterAPIService ImportedClusterList", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var parentProjectId int32
-
-		resp, httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterList(context.Background(), parentProjectId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 }

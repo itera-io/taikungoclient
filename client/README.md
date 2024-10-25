@@ -319,7 +319,6 @@ Class | Method | HTTP request | Description
 *ImportedClusterAPI* | [**ImportedClusterAsFullyManaged**](docs/ImportedClusterAPI.md#importedclusterasfullymanaged) | **Get** /api/v1/imported-cluster/as-fully-managed/{projectId} | Imported cluster as fully managed
 *ImportedClusterAPI* | [**ImportedClusterAsReadOnly**](docs/ImportedClusterAPI.md#importedclusterasreadonly) | **Get** /api/v1/imported-cluster/as-read-only/{projectId} | Imported cluster as read only
 *ImportedClusterAPI* | [**ImportedClusterDetails**](docs/ImportedClusterAPI.md#importedclusterdetails) | **Get** /api/v1/imported-cluster/{id} | Retrieve imported-cluster by given id
-*ImportedClusterAPI* | [**ImportedClusterList**](docs/ImportedClusterAPI.md#importedclusterlist) | **Get** /api/v1/imported-cluster/{parentProjectId}/virtual-clusters | Retrieve all vCluster(s) by given imported cluster
 *InfraAPI* | [**InfraCreate**](docs/InfraAPI.md#infracreate) | **Post** /api/v1/infra/create | Create infra product
 *InfraAPI* | [**InfraDetails**](docs/InfraAPI.md#infradetails) | **Get** /api/v1/infra/details | Retrieve infra details
 *InfraAPI* | [**InfraOrganizationsList**](docs/InfraAPI.md#infraorganizationslist) | **Get** /api/v1/infra/organizations-list | Retrieve infra products list
@@ -378,6 +377,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesJobsList**](docs/KubernetesAPI.md#kubernetesjobslist) | **Get** /api/v1/kubernetes/{projectId}/jobs | Retrieve a list of k8s jobs for all namespaces
 *KubernetesAPI* | [**KubernetesKillPod**](docs/KubernetesAPI.md#kuberneteskillpod) | **Post** /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace} | Kill the pod
 *KubernetesAPI* | [**KubernetesKubeConfig**](docs/KubernetesAPI.md#kuberneteskubeconfig) | **Get** /api/v1/kubernetes/{projectId}/kubeconfig | Retrieve kube config file
+*KubernetesAPI* | [**KubernetesLivePod**](docs/KubernetesAPI.md#kuberneteslivepod) | **Get** /api/v1/kubernetes/{projectId}/live-pod | Watch live pods
 *KubernetesAPI* | [**KubernetesNamespaceList**](docs/KubernetesAPI.md#kubernetesnamespacelist) | **Get** /api/v1/kubernetes/{projectId}/namespaces | Retrieve kube config file
 *KubernetesAPI* | [**KubernetesNetworkPolicyList**](docs/KubernetesAPI.md#kubernetesnetworkpolicylist) | **Get** /api/v1/kubernetes/{projectId}/network-policies | Retrieve a list of k8s network-policies for all namespaces
 *KubernetesAPI* | [**KubernetesNodeList**](docs/KubernetesAPI.md#kubernetesnodelist) | **Get** /api/v1/kubernetes/{projectId}/node | Retrieve a list of k8s node
@@ -1134,8 +1134,6 @@ Class | Method | HTTP request | Description
  - [ImportedClusterDetailsDto](docs/ImportedClusterDetailsDto.md)
  - [ImportedClusterList](docs/ImportedClusterList.md)
  - [ImportedClusterListDto](docs/ImportedClusterListDto.md)
- - [ImportedClusterVClusterList](docs/ImportedClusterVClusterList.md)
- - [ImportedClusterVClusterListDto](docs/ImportedClusterVClusterListDto.md)
  - [InfraBillingListCommand](docs/InfraBillingListCommand.md)
  - [InfraBillingSummariesCreateCommand](docs/InfraBillingSummariesCreateCommand.md)
  - [InfraBillingSummaryDto](docs/InfraBillingSummaryDto.md)
