@@ -348,6 +348,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesConfigMapList**](docs/KubernetesAPI.md#kubernetesconfigmaplist) | **Get** /api/v1/kubernetes/{projectId}/configmap | Retrieve a list of k8s config map for all namespaces
 *KubernetesAPI* | [**KubernetesCrdList**](docs/KubernetesAPI.md#kubernetescrdlist) | **Get** /api/v1/kubernetes/{projectId}/crd | Retrieve a list of crd
 *KubernetesAPI* | [**KubernetesCronJobList**](docs/KubernetesAPI.md#kubernetescronjoblist) | **Get** /api/v1/kubernetes/{projectId}/cronjobs | Retrieve a list of k8s cron jobs for all namespaces
+*KubernetesAPI* | [**KubernetesCursorPodList**](docs/KubernetesAPI.md#kubernetescursorpodlist) | **Get** /api/v1/kubernetes/{projectId}/cursor-pod | Retrieve cursor list of k8s pod for all namespaces
 *KubernetesAPI* | [**KubernetesDaemonSetList**](docs/KubernetesAPI.md#kubernetesdaemonsetlist) | **Get** /api/v1/kubernetes/{projectId}/daemonset | Retrieve list of k8s daemonset
 *KubernetesAPI* | [**KubernetesDashboardList**](docs/KubernetesAPI.md#kubernetesdashboardlist) | **Get** /api/v1/kubernetes/{projectId}/dashboard | Retrieve a list of crd
 *KubernetesAPI* | [**KubernetesDeploymentList**](docs/KubernetesAPI.md#kubernetesdeploymentlist) | **Get** /api/v1/kubernetes/{projectId}/deployment | Retrieve a list of k8s deployment for all namespaces
@@ -1065,6 +1066,7 @@ Class | Method | HTTP request | Description
  - [DuplicateNameCheckerCommand](docs/DuplicateNameCheckerCommand.md)
  - [EImportClusterType](docs/EImportClusterType.md)
  - [EInstanceStatus](docs/EInstanceStatus.md)
+ - [EKubernetesState](docs/EKubernetesState.md)
  - [EditAlertingIntegrationCommand](docs/EditAlertingIntegrationCommand.md)
  - [EditAllowedHostDto](docs/EditAllowedHostDto.md)
  - [EditArticleCommand](docs/EditArticleCommand.md)
@@ -1169,6 +1171,7 @@ Class | Method | HTTP request | Description
  - [KubernetesCliCommand](docs/KubernetesCliCommand.md)
  - [KubernetesCronJobDto](docs/KubernetesCronJobDto.md)
  - [KubernetesCronJobsList](docs/KubernetesCronJobsList.md)
+ - [KubernetesCursorPodList](docs/KubernetesCursorPodList.md)
  - [KubernetesDashboardDto](docs/KubernetesDashboardDto.md)
  - [KubernetesEventCreateDto](docs/KubernetesEventCreateDto.md)
  - [KubernetesInteractiveShellDto](docs/KubernetesInteractiveShellDto.md)
@@ -1185,6 +1188,7 @@ Class | Method | HTTP request | Description
  - [KubernetesProfilesSearchCommand](docs/KubernetesProfilesSearchCommand.md)
  - [KubernetesProfilesSearchList](docs/KubernetesProfilesSearchList.md)
  - [KubernetesQuotaListDto](docs/KubernetesQuotaListDto.md)
+ - [KubernetesStateDto](docs/KubernetesStateDto.md)
  - [KubernetesVersionListDto](docs/KubernetesVersionListDto.md)
  - [KubesprayCreateCommand](docs/KubesprayCreateCommand.md)
  - [KubesprayListDto](docs/KubesprayListDto.md)

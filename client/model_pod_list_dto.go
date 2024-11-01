@@ -28,10 +28,10 @@ type PodListDto struct {
 	Namespace string `json:"namespace"`
 	Node NullableString `json:"node"`
 	Age NullableString `json:"age"`
-	Status NullableString `json:"status"`
-	Phase NullableString `json:"phase"`
+	Status NullableString `json:"status,omitempty"`
 	Container []string `json:"container"`
 	DeletionTimestamp NullableTime `json:"deletionTimestamp,omitempty"`
+	State *KubernetesStateDto `json:"state,omitempty"`
 }
 
 type _PodListDto PodListDto
@@ -40,15 +40,13 @@ type _PodListDto PodListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPodListDto(metadataName string, restartCount int32, namespace string, node NullableString, age NullableString, status NullableString, phase NullableString, container []string) *PodListDto {
+func NewPodListDto(metadataName string, restartCount int32, namespace string, node NullableString, age NullableString, container []string) *PodListDto {
 	this := PodListDto{}
 	this.MetadataName = metadataName
 	this.RestartCount = restartCount
 	this.Namespace = namespace
 	this.Node = node
 	this.Age = age
-	this.Status = status
-	this.Phase = phase
 	this.Container = container
 	return &this
 }
@@ -185,18 +183,16 @@ func (o *PodListDto) SetAge(v string) {
 	o.Age.Set(&v)
 }
 
-// GetStatus returns the Status field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PodListDto) GetStatus() string {
-	if o == nil || o.Status.Get() == nil {
+	if o == nil || IsNil(o.Status.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Status.Get()
 }
 
-// GetStatusOk returns a tuple with the Status field value
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodListDto) GetStatusOk() (*string, bool) {
@@ -206,35 +202,27 @@ func (o *PodListDto) GetStatusOk() (*string, bool) {
 	return o.Status.Get(), o.Status.IsSet()
 }
 
-// SetStatus sets field value
+// HasStatus returns a boolean if a field has been set.
+func (o *PodListDto) HasStatus() bool {
+	if o != nil && o.Status.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
 func (o *PodListDto) SetStatus(v string) {
 	o.Status.Set(&v)
 }
-
-// GetPhase returns the Phase field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *PodListDto) GetPhase() string {
-	if o == nil || o.Phase.Get() == nil {
-		var ret string
-		return ret
-	}
-
-	return *o.Phase.Get()
+// SetStatusNil sets the value for Status to be an explicit nil
+func (o *PodListDto) SetStatusNil() {
+	o.Status.Set(nil)
 }
 
-// GetPhaseOk returns a tuple with the Phase field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PodListDto) GetPhaseOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Phase.Get(), o.Phase.IsSet()
-}
-
-// SetPhase sets field value
-func (o *PodListDto) SetPhase(v string) {
-	o.Phase.Set(&v)
+// UnsetStatus ensures that no value is present for Status, not even an explicit nil
+func (o *PodListDto) UnsetStatus() {
+	o.Status.Unset()
 }
 
 // GetContainer returns the Container field value
@@ -303,6 +291,38 @@ func (o *PodListDto) UnsetDeletionTimestamp() {
 	o.DeletionTimestamp.Unset()
 }
 
+// GetState returns the State field value if set, zero value otherwise.
+func (o *PodListDto) GetState() KubernetesStateDto {
+	if o == nil || IsNil(o.State) {
+		var ret KubernetesStateDto
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PodListDto) GetStateOk() (*KubernetesStateDto, bool) {
+	if o == nil || IsNil(o.State) {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *PodListDto) HasState() bool {
+	if o != nil && !IsNil(o.State) {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given KubernetesStateDto and assigns it to the State field.
+func (o *PodListDto) SetState(v KubernetesStateDto) {
+	o.State = &v
+}
+
 func (o PodListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -318,11 +338,15 @@ func (o PodListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["namespace"] = o.Namespace
 	toSerialize["node"] = o.Node.Get()
 	toSerialize["age"] = o.Age.Get()
-	toSerialize["status"] = o.Status.Get()
-	toSerialize["phase"] = o.Phase.Get()
+	if o.Status.IsSet() {
+		toSerialize["status"] = o.Status.Get()
+	}
 	toSerialize["container"] = o.Container
 	if o.DeletionTimestamp.IsSet() {
 		toSerialize["deletionTimestamp"] = o.DeletionTimestamp.Get()
+	}
+	if !IsNil(o.State) {
+		toSerialize["state"] = o.State
 	}
 	return toSerialize, nil
 }
@@ -337,8 +361,6 @@ func (o *PodListDto) UnmarshalJSON(data []byte) (err error) {
 		"namespace",
 		"node",
 		"age",
-		"status",
-		"phase",
 		"container",
 	}
 

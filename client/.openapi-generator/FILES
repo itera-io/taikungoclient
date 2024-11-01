@@ -407,6 +407,7 @@ docs/DownloadKubeConfigCommand.md
 docs/DuplicateNameCheckerCommand.md
 docs/EImportClusterType.md
 docs/EInstanceStatus.md
+docs/EKubernetesState.md
 docs/EditAlertingIntegrationCommand.md
 docs/EditAllowedHostDto.md
 docs/EditArticleCommand.md
@@ -524,6 +525,7 @@ docs/KubernetesAnnotations.md
 docs/KubernetesCliCommand.md
 docs/KubernetesCronJobDto.md
 docs/KubernetesCronJobsList.md
+docs/KubernetesCursorPodList.md
 docs/KubernetesDashboardDto.md
 docs/KubernetesEventCreateDto.md
 docs/KubernetesInteractiveShellDto.md
@@ -541,6 +543,7 @@ docs/KubernetesProfilesLockManagerCommand.md
 docs/KubernetesProfilesSearchCommand.md
 docs/KubernetesProfilesSearchList.md
 docs/KubernetesQuotaListDto.md
+docs/KubernetesStateDto.md
 docs/KubernetesVersionListDto.md
 docs/KubesprayAPI.md
 docs/KubesprayCreateCommand.md
@@ -1299,6 +1302,7 @@ model_download_kube_config_command.go
 model_duplicate_name_checker_command.go
 model_e_import_cluster_type.go
 model_e_instance_status.go
+model_e_kubernetes_state.go
 model_edit_alerting_integration_command.go
 model_edit_allowed_host_dto.go
 model_edit_article_command.go
@@ -1403,6 +1407,7 @@ model_kubernetes_annotations.go
 model_kubernetes_cli_command.go
 model_kubernetes_cron_job_dto.go
 model_kubernetes_cron_jobs_list.go
+model_kubernetes_cursor_pod_list.go
 model_kubernetes_dashboard_dto.go
 model_kubernetes_event_create_dto.go
 model_kubernetes_interactive_shell_dto.go
@@ -1419,6 +1424,7 @@ model_kubernetes_profiles_lock_manager_command.go
 model_kubernetes_profiles_search_command.go
 model_kubernetes_profiles_search_list.go
 model_kubernetes_quota_list_dto.go
+model_kubernetes_state_dto.go
 model_kubernetes_version_list_dto.go
 model_kubespray_create_command.go
 model_kubespray_list_dto.go
