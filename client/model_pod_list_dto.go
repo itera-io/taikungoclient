@@ -13,7 +13,6 @@ package taikuncore
 
 import (
 	"encoding/json"
-	"time"
 	"bytes"
 	"fmt"
 )
@@ -30,8 +29,8 @@ type PodListDto struct {
 	Age NullableString `json:"age"`
 	Status NullableString `json:"status,omitempty"`
 	Container []string `json:"container"`
-	DeletionTimestamp NullableTime `json:"deletionTimestamp,omitempty"`
 	State *KubernetesStateDto `json:"state,omitempty"`
+	Type interface{} `json:"type,omitempty"`
 }
 
 type _PodListDto PodListDto
@@ -249,48 +248,6 @@ func (o *PodListDto) SetContainer(v []string) {
 	o.Container = v
 }
 
-// GetDeletionTimestamp returns the DeletionTimestamp field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PodListDto) GetDeletionTimestamp() time.Time {
-	if o == nil || IsNil(o.DeletionTimestamp.Get()) {
-		var ret time.Time
-		return ret
-	}
-	return *o.DeletionTimestamp.Get()
-}
-
-// GetDeletionTimestampOk returns a tuple with the DeletionTimestamp field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PodListDto) GetDeletionTimestampOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.DeletionTimestamp.Get(), o.DeletionTimestamp.IsSet()
-}
-
-// HasDeletionTimestamp returns a boolean if a field has been set.
-func (o *PodListDto) HasDeletionTimestamp() bool {
-	if o != nil && o.DeletionTimestamp.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDeletionTimestamp gets a reference to the given NullableTime and assigns it to the DeletionTimestamp field.
-func (o *PodListDto) SetDeletionTimestamp(v time.Time) {
-	o.DeletionTimestamp.Set(&v)
-}
-// SetDeletionTimestampNil sets the value for DeletionTimestamp to be an explicit nil
-func (o *PodListDto) SetDeletionTimestampNil() {
-	o.DeletionTimestamp.Set(nil)
-}
-
-// UnsetDeletionTimestamp ensures that no value is present for DeletionTimestamp, not even an explicit nil
-func (o *PodListDto) UnsetDeletionTimestamp() {
-	o.DeletionTimestamp.Unset()
-}
-
 // GetState returns the State field value if set, zero value otherwise.
 func (o *PodListDto) GetState() KubernetesStateDto {
 	if o == nil || IsNil(o.State) {
@@ -323,6 +280,39 @@ func (o *PodListDto) SetState(v KubernetesStateDto) {
 	o.State = &v
 }
 
+// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PodListDto) GetType() interface{} {
+	if o == nil {
+		var ret interface{}
+		return ret
+	}
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PodListDto) GetTypeOk() (*interface{}, bool) {
+	if o == nil || IsNil(o.Type) {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// HasType returns a boolean if a field has been set.
+func (o *PodListDto) HasType() bool {
+	if o != nil && !IsNil(o.Type) {
+		return true
+	}
+
+	return false
+}
+
+// SetType gets a reference to the given interface{} and assigns it to the Type field.
+func (o *PodListDto) SetType(v interface{}) {
+	o.Type = v
+}
+
 func (o PodListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -342,11 +332,11 @@ func (o PodListDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["status"] = o.Status.Get()
 	}
 	toSerialize["container"] = o.Container
-	if o.DeletionTimestamp.IsSet() {
-		toSerialize["deletionTimestamp"] = o.DeletionTimestamp.Get()
-	}
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
+	}
+	if o.Type != nil {
+		toSerialize["type"] = o.Type
 	}
 	return toSerialize, nil
 }

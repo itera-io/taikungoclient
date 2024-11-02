@@ -29,6 +29,8 @@ const (
 	EKUBERNETESSTATE_OOM_KILLED EKubernetesState = "OOMKilled"
 	EKUBERNETESSTATE_COMPLETED EKubernetesState = "Completed"
 	EKUBERNETESSTATE_RUNNING EKubernetesState = "Running"
+	EKUBERNETESSTATE_INIT_NM EKubernetesState = "InitNM"
+	EKUBERNETESSTATE_INIT_ERROR EKubernetesState = "InitError"
 )
 
 // All allowed values of EKubernetesState enum
@@ -41,6 +43,8 @@ var AllowedEKubernetesStateEnumValues = []EKubernetesState{
 	"OOMKilled",
 	"Completed",
 	"Running",
+	"InitNM",
+	"InitError",
 }
 
 func (v *EKubernetesState) UnmarshalJSON(src []byte) error {

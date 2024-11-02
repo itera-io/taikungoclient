@@ -497,19 +497,6 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test KubernetesAPIService KubernetesLivePod", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var projectId int32
-
-		httpRes, err := apiClient.KubernetesAPI.KubernetesLivePod(context.Background(), projectId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test KubernetesAPIService KubernetesNamespaceList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -749,6 +736,20 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 		httpRes, err := apiClient.KubernetesAPI.KubernetesRemovealerts(context.Background()).Execute()
 
 		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test KubernetesAPIService KubernetesResources", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId int32
+
+		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesResources(context.Background(), projectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-10-31T16:06:59.1036731Z
-                  createdAt: 2024-10-31T16:06:59.1036731Z
+                  lastValidated: 2024-11-02T00:03:12.0460735Z
+                  createdAt: 2024-11-02T00:03:12.0460735Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-10-31T16:06:59.1036731Z
+                    lastBackup: 2024-11-02T00:03:12.0460735Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-10-31T16:06:59.1036731Z
+                  createdAt: 2024-11-02T00:03:12.0460735Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-10-31T16:06:59.1036731Z
+                  lastBackup: 2024-11-02T00:03:12.0460735Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-31T16:06:59.1036731Z
-                  expiration: 2024-10-31T16:06:59.1036731Z
+                  createdAt: 2024-11-02T00:03:12.0460735Z
+                  expiration: 2024-11-02T00:03:12.0460735Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-10-31T16:06:59.1036731Z
+                  createdAt: 2024-11-02T00:03:12.0460735Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-10-31T16:06:59.1036731+00:00
-                  startTimeStamp: 2024-10-31T16:06:59.1036731+00:00
-                  createdAt: 2024-10-31T16:06:59.1036731Z
+                  completionDateTime: 2024-11-02T00:03:12.0460735+00:00
+                  startTimeStamp: 2024-11-02T00:03:12.0460735+00:00
+                  createdAt: 2024-11-02T00:03:12.0460735Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -16273,52 +16273,6 @@ paths:
       summary: Patch sts
       tags:
       - Kubernetes
-  /api/v1/kubernetes/{projectId}/live-pod:
-    get:
-      operationId: kubernetes-live-pod
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Watch live pods
-      tags:
-      - Kubernetes
   /api/v1/kubernetes/{projectId}/download:
     get:
       operationId: kubernetes-download
@@ -18559,6 +18513,58 @@ paths:
       summary: Overview kubernetes nodes and pods by organization id
       tags:
       - Kubernetes
+  /api/v1/kubernetes/{projectId}/resources:
+    get:
+      operationId: kubernetes-resources
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KubernetesResourcesDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve all total count
+      tags:
+      - Kubernetes
   /api/v1/kubernetes/describe/configmap:
     post:
       operationId: kubernetes-describe-config-map
@@ -19373,6 +19379,20 @@ paths:
       - explode: true
         in: query
         name: NextPageLink
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortBy
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: SortDirection
         required: false
         schema:
           type: string
@@ -48162,6 +48182,8 @@ components:
       - OOMKilled
       - Completed
       - Running
+      - InitNM
+      - InitError
       type: string
     EditAlertingIntegrationCommand:
       additionalProperties: false
@@ -52807,9 +52829,9 @@ components:
           state:
             reason: Terminating
             status: status
+          type: ""
           age: age
           status: status
-          deletionTimestamp: 2000-01-23T04:56:07.000+00:00
         - container:
           - container
           - container
@@ -52820,9 +52842,9 @@ components:
           state:
             reason: Terminating
             status: status
+          type: ""
           age: age
           status: status
-          deletionTimestamp: 2000-01-23T04:56:07.000+00:00
       properties:
         data:
           items:
@@ -52832,6 +52854,9 @@ components:
         nextPageLink:
           nullable: true
           type: string
+      required:
+      - data
+      - nextPageLink
       type: object
     KubernetesDashboardDto:
       additionalProperties: false
@@ -53392,6 +53417,102 @@ components:
       - sumOfCpuUsage
       - sumOfRamInGb
       - sumOfRamUsage
+      type: object
+    KubernetesResourcesDto:
+      additionalProperties: false
+      example:
+        storageClasses: 1
+        ingresses: 1
+        helmreleases: 1
+        pvcs: 7
+        jobs: 7
+        statefulSets: 2
+        services: 1
+        secrets: 1
+        daemonSets: 5
+        crds: 6
+        pdbs: 7
+        deployments: 5
+        cronJobs: 9
+        nodes: 4
+        configMaps: 3
+        networkPolicies: 6
+        pods: 0
+        namespaces: 2
+      properties:
+        pods:
+          format: int64
+          type: integer
+        crds:
+          format: int64
+          type: integer
+        helmreleases:
+          format: int64
+          type: integer
+        daemonSets:
+          format: int64
+          type: integer
+        deployments:
+          format: int64
+          type: integer
+        statefulSets:
+          format: int64
+          type: integer
+        jobs:
+          format: int64
+          type: integer
+        cronJobs:
+          format: int64
+          type: integer
+        configMaps:
+          format: int64
+          type: integer
+        namespaces:
+          format: int64
+          type: integer
+        nodes:
+          format: int64
+          type: integer
+        pvcs:
+          format: int64
+          type: integer
+        secrets:
+          format: int64
+          type: integer
+        services:
+          format: int64
+          type: integer
+        ingresses:
+          format: int64
+          type: integer
+        networkPolicies:
+          format: int64
+          type: integer
+        pdbs:
+          format: int64
+          type: integer
+        storageClasses:
+          format: int64
+          type: integer
+      required:
+      - configMaps
+      - crds
+      - cronJobs
+      - daemonSets
+      - deployments
+      - helmreleases
+      - ingresses
+      - jobs
+      - namespaces
+      - networkPolicies
+      - nodes
+      - pdbs
+      - pods
+      - pvcs
+      - secrets
+      - services
+      - statefulSets
+      - storageClasses
       type: object
     KubernetesStateDto:
       additionalProperties: false
@@ -57154,9 +57275,9 @@ components:
         state:
           reason: Terminating
           status: status
+        type: ""
         age: age
         status: status
-        deletionTimestamp: 2000-01-23T04:56:07.000+00:00
       properties:
         metadataName:
           type: string
@@ -57178,12 +57299,10 @@ components:
           items:
             type: string
           type: array
-        deletionTimestamp:
-          format: date-time
-          nullable: true
-          type: string
         state:
           $ref: '#/components/schemas/KubernetesStateDto'
+        type:
+          nullable: true
       required:
       - age
       - container
@@ -57206,9 +57325,9 @@ components:
           state:
             reason: Terminating
             status: status
+          type: ""
           age: age
           status: status
-          deletionTimestamp: 2000-01-23T04:56:07.000+00:00
         - container:
           - container
           - container
@@ -57219,9 +57338,9 @@ components:
           state:
             reason: Terminating
             status: status
+          type: ""
           age: age
           status: status
-          deletionTimestamp: 2000-01-23T04:56:07.000+00:00
         totalCount: 6
       properties:
         data:

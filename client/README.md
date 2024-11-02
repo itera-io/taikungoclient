@@ -378,7 +378,6 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesJobsList**](docs/KubernetesAPI.md#kubernetesjobslist) | **Get** /api/v1/kubernetes/{projectId}/jobs | Retrieve a list of k8s jobs for all namespaces
 *KubernetesAPI* | [**KubernetesKillPod**](docs/KubernetesAPI.md#kuberneteskillpod) | **Post** /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace} | Kill the pod
 *KubernetesAPI* | [**KubernetesKubeConfig**](docs/KubernetesAPI.md#kuberneteskubeconfig) | **Get** /api/v1/kubernetes/{projectId}/kubeconfig | Retrieve kube config file
-*KubernetesAPI* | [**KubernetesLivePod**](docs/KubernetesAPI.md#kuberneteslivepod) | **Get** /api/v1/kubernetes/{projectId}/live-pod | Watch live pods
 *KubernetesAPI* | [**KubernetesNamespaceList**](docs/KubernetesAPI.md#kubernetesnamespacelist) | **Get** /api/v1/kubernetes/{projectId}/namespaces | Retrieve kube config file
 *KubernetesAPI* | [**KubernetesNetworkPolicyList**](docs/KubernetesAPI.md#kubernetesnetworkpolicylist) | **Get** /api/v1/kubernetes/{projectId}/network-policies | Retrieve a list of k8s network-policies for all namespaces
 *KubernetesAPI* | [**KubernetesNodeList**](docs/KubernetesAPI.md#kubernetesnodelist) | **Get** /api/v1/kubernetes/{projectId}/node | Retrieve a list of k8s node
@@ -399,6 +398,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesPvcList**](docs/KubernetesAPI.md#kubernetespvclist) | **Get** /api/v1/kubernetes/{projectId}/pvc | Retrieve a list of k8s pvc for all namespaces
 *KubernetesAPI* | [**KubernetesQuota**](docs/KubernetesAPI.md#kubernetesquota) | **Get** /api/v1/kubernetes/{projectId}/quota | K8s quota usage
 *KubernetesAPI* | [**KubernetesRemovealerts**](docs/KubernetesAPI.md#kubernetesremovealerts) | **Post** /api/v1/kubernetes/removealerts | Remove k8s alerts
+*KubernetesAPI* | [**KubernetesResources**](docs/KubernetesAPI.md#kubernetesresources) | **Get** /api/v1/kubernetes/{projectId}/resources | Retrieve all total count
 *KubernetesAPI* | [**KubernetesRestartDaemonSet**](docs/KubernetesAPI.md#kubernetesrestartdaemonset) | **Post** /api/v1/kubernetes/restart/daemonset | Restart daemon set
 *KubernetesAPI* | [**KubernetesRestartDeployment**](docs/KubernetesAPI.md#kubernetesrestartdeployment) | **Post** /api/v1/kubernetes/restart/deployment | Restart deployment
 *KubernetesAPI* | [**KubernetesRestartSts**](docs/KubernetesAPI.md#kubernetesrestartsts) | **Post** /api/v1/kubernetes/restart/sts | Restart stateful set
@@ -1188,6 +1188,7 @@ Class | Method | HTTP request | Description
  - [KubernetesProfilesSearchCommand](docs/KubernetesProfilesSearchCommand.md)
  - [KubernetesProfilesSearchList](docs/KubernetesProfilesSearchList.md)
  - [KubernetesQuotaListDto](docs/KubernetesQuotaListDto.md)
+ - [KubernetesResourcesDto](docs/KubernetesResourcesDto.md)
  - [KubernetesStateDto](docs/KubernetesStateDto.md)
  - [KubernetesVersionListDto](docs/KubernetesVersionListDto.md)
  - [KubesprayCreateCommand](docs/KubesprayCreateCommand.md)

@@ -543,6 +543,7 @@ docs/KubernetesProfilesLockManagerCommand.md
 docs/KubernetesProfilesSearchCommand.md
 docs/KubernetesProfilesSearchList.md
 docs/KubernetesQuotaListDto.md
+docs/KubernetesResourcesDto.md
 docs/KubernetesStateDto.md
 docs/KubernetesVersionListDto.md
 docs/KubesprayAPI.md
@@ -1424,6 +1425,7 @@ model_kubernetes_profiles_lock_manager_command.go
 model_kubernetes_profiles_search_command.go
 model_kubernetes_profiles_search_list.go
 model_kubernetes_quota_list_dto.go
+model_kubernetes_resources_dto.go
 model_kubernetes_state_dto.go
 model_kubernetes_version_list_dto.go
 model_kubespray_create_command.go

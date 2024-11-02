@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubernetesCursorPodList type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &KubernetesCursorPodList{}
 
 // KubernetesCursorPodList struct for KubernetesCursorPodList
 type KubernetesCursorPodList struct {
-	Data []PodListDto `json:"data,omitempty"`
-	NextPageLink NullableString `json:"nextPageLink,omitempty"`
+	Data []PodListDto `json:"data"`
+	NextPageLink NullableString `json:"nextPageLink"`
 }
+
+type _KubernetesCursorPodList KubernetesCursorPodList
 
 // NewKubernetesCursorPodList instantiates a new KubernetesCursorPodList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesCursorPodList() *KubernetesCursorPodList {
+func NewKubernetesCursorPodList(data []PodListDto, nextPageLink NullableString) *KubernetesCursorPodList {
 	this := KubernetesCursorPodList{}
+	this.Data = data
+	this.NextPageLink = nextPageLink
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewKubernetesCursorPodListWithDefaults() *KubernetesCursorPodList {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []PodListDto will be returned
 func (o *KubernetesCursorPodList) GetData() []PodListDto {
 	if o == nil {
 		var ret []PodListDto
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesCursorPodList) GetDataOk() ([]PodListDto, bool) {
@@ -60,30 +68,23 @@ func (o *KubernetesCursorPodList) GetDataOk() ([]PodListDto, bool) {
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *KubernetesCursorPodList) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []PodListDto and assigns it to the Data field.
+// SetData sets field value
 func (o *KubernetesCursorPodList) SetData(v []PodListDto) {
 	o.Data = v
 }
 
-// GetNextPageLink returns the NextPageLink field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNextPageLink returns the NextPageLink field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesCursorPodList) GetNextPageLink() string {
-	if o == nil || IsNil(o.NextPageLink.Get()) {
+	if o == nil || o.NextPageLink.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.NextPageLink.Get()
 }
 
-// GetNextPageLinkOk returns a tuple with the NextPageLink field value if set, nil otherwise
+// GetNextPageLinkOk returns a tuple with the NextPageLink field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesCursorPodList) GetNextPageLinkOk() (*string, bool) {
@@ -93,27 +94,9 @@ func (o *KubernetesCursorPodList) GetNextPageLinkOk() (*string, bool) {
 	return o.NextPageLink.Get(), o.NextPageLink.IsSet()
 }
 
-// HasNextPageLink returns a boolean if a field has been set.
-func (o *KubernetesCursorPodList) HasNextPageLink() bool {
-	if o != nil && o.NextPageLink.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNextPageLink gets a reference to the given NullableString and assigns it to the NextPageLink field.
+// SetNextPageLink sets field value
 func (o *KubernetesCursorPodList) SetNextPageLink(v string) {
 	o.NextPageLink.Set(&v)
-}
-// SetNextPageLinkNil sets the value for NextPageLink to be an explicit nil
-func (o *KubernetesCursorPodList) SetNextPageLinkNil() {
-	o.NextPageLink.Set(nil)
-}
-
-// UnsetNextPageLink ensures that no value is present for NextPageLink, not even an explicit nil
-func (o *KubernetesCursorPodList) UnsetNextPageLink() {
-	o.NextPageLink.Unset()
 }
 
 func (o KubernetesCursorPodList) MarshalJSON() ([]byte, error) {
@@ -129,10 +112,46 @@ func (o KubernetesCursorPodList) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	if o.NextPageLink.IsSet() {
-		toSerialize["nextPageLink"] = o.NextPageLink.Get()
-	}
+	toSerialize["nextPageLink"] = o.NextPageLink.Get()
 	return toSerialize, nil
+}
+
+func (o *KubernetesCursorPodList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+		"nextPageLink",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubernetesCursorPodList := _KubernetesCursorPodList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesCursorPodList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesCursorPodList(varKubernetesCursorPodList)
+
+	return err
 }
 
 type NullableKubernetesCursorPodList struct {
