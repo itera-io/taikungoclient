@@ -482,6 +482,7 @@ docs/ImportedAsReadOnlyList.md
 docs/ImportedAsReadOnlyVisibility.md
 docs/ImportedClusterAPI.md
 docs/ImportedClusterDetailsDto.md
+docs/ImportedClusterEnableMonitoringCommand.md
 docs/ImportedClusterList.md
 docs/ImportedClusterListDto.md
 docs/InfraAPI.md
@@ -1373,6 +1374,7 @@ model_imported_as_fully_managed_visibility.go
 model_imported_as_read_only_list.go
 model_imported_as_read_only_visibility.go
 model_imported_cluster_details_dto.go
+model_imported_cluster_enable_monitoring_command.go
 model_imported_cluster_list.go
 model_imported_cluster_list_dto.go
 model_infra_billing_list_command.go

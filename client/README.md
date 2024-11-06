@@ -320,6 +320,7 @@ Class | Method | HTTP request | Description
 *ImportedClusterAPI* | [**ImportedClusterAsReadOnly**](docs/ImportedClusterAPI.md#importedclusterasreadonly) | **Get** /api/v1/imported-cluster/as-read-only/{projectId} | Imported cluster as read only
 *ImportedClusterAPI* | [**ImportedClusterDelete**](docs/ImportedClusterAPI.md#importedclusterdelete) | **Post** /api/v1/imported-cluster/delete | Delete imported cluster
 *ImportedClusterAPI* | [**ImportedClusterDetails**](docs/ImportedClusterAPI.md#importedclusterdetails) | **Get** /api/v1/imported-cluster/{id} | Retrieve imported-cluster by given id
+*ImportedClusterAPI* | [**ImportedClusterEnableMonitoring**](docs/ImportedClusterAPI.md#importedclusterenablemonitoring) | **Post** /api/v1/imported-cluster/enable-monitoring | Enable monitoring for imported cluster
 *InfraAPI* | [**InfraCreate**](docs/InfraAPI.md#infracreate) | **Post** /api/v1/infra/create | Create infra product
 *InfraAPI* | [**InfraDetails**](docs/InfraAPI.md#infradetails) | **Get** /api/v1/infra/details | Retrieve infra details
 *InfraAPI* | [**InfraOrganizationsList**](docs/InfraAPI.md#infraorganizationslist) | **Get** /api/v1/infra/organizations-list | Retrieve infra products list
@@ -1136,6 +1137,7 @@ Class | Method | HTTP request | Description
  - [ImportedAsReadOnlyList](docs/ImportedAsReadOnlyList.md)
  - [ImportedAsReadOnlyVisibility](docs/ImportedAsReadOnlyVisibility.md)
  - [ImportedClusterDetailsDto](docs/ImportedClusterDetailsDto.md)
+ - [ImportedClusterEnableMonitoringCommand](docs/ImportedClusterEnableMonitoringCommand.md)
  - [ImportedClusterList](docs/ImportedClusterList.md)
  - [ImportedClusterListDto](docs/ImportedClusterListDto.md)
  - [InfraBillingListCommand](docs/InfraBillingListCommand.md)

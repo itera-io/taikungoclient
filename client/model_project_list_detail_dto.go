@@ -75,6 +75,7 @@ type ProjectListDetailDto struct {
 	SetExpirationDateButton *ButtonStatusDto `json:"setExpirationDateButton,omitempty"`
 	ResetStatusButton *ButtonStatusDto `json:"resetStatusButton,omitempty"`
 	ImportClusterType ImportClusterType `json:"importClusterType"`
+	EImportClusterType *EImportClusterType `json:"eImportClusterType,omitempty"`
 }
 
 type _ProjectListDetailDto ProjectListDetailDto
@@ -1503,6 +1504,38 @@ func (o *ProjectListDetailDto) SetImportClusterType(v ImportClusterType) {
 	o.ImportClusterType = v
 }
 
+// GetEImportClusterType returns the EImportClusterType field value if set, zero value otherwise.
+func (o *ProjectListDetailDto) GetEImportClusterType() EImportClusterType {
+	if o == nil || IsNil(o.EImportClusterType) {
+		var ret EImportClusterType
+		return ret
+	}
+	return *o.EImportClusterType
+}
+
+// GetEImportClusterTypeOk returns a tuple with the EImportClusterType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectListDetailDto) GetEImportClusterTypeOk() (*EImportClusterType, bool) {
+	if o == nil || IsNil(o.EImportClusterType) {
+		return nil, false
+	}
+	return o.EImportClusterType, true
+}
+
+// HasEImportClusterType returns a boolean if a field has been set.
+func (o *ProjectListDetailDto) HasEImportClusterType() bool {
+	if o != nil && !IsNil(o.EImportClusterType) {
+		return true
+	}
+
+	return false
+}
+
+// SetEImportClusterType gets a reference to the given EImportClusterType and assigns it to the EImportClusterType field.
+func (o *ProjectListDetailDto) SetEImportClusterType(v EImportClusterType) {
+	o.EImportClusterType = &v
+}
+
 func (o ProjectListDetailDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -1582,6 +1615,9 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["resetStatusButton"] = o.ResetStatusButton
 	}
 	toSerialize["importClusterType"] = o.ImportClusterType
+	if !IsNil(o.EImportClusterType) {
+		toSerialize["eImportClusterType"] = o.EImportClusterType
+	}
 	return toSerialize, nil
 }
 

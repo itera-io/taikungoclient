@@ -1765,11 +1765,13 @@ components:
         data:
         - monitoringPassword: monitoringPassword
           name: name
+          kubernetesCurrentVersion: kubernetesCurrentVersion
           id: 0
           monitoringUrl: monitoringUrl
           monitoringUsername: monitoringUsername
         - monitoringPassword: monitoringPassword
           name: name
+          kubernetesCurrentVersion: kubernetesCurrentVersion
           id: 0
           monitoringUrl: monitoringUrl
           monitoringUsername: monitoringUsername
@@ -1789,6 +1791,7 @@ components:
       example:
         monitoringPassword: monitoringPassword
         name: name
+        kubernetesCurrentVersion: kubernetesCurrentVersion
         id: 0
         monitoringUrl: monitoringUrl
         monitoringUsername: monitoringUsername
@@ -1806,6 +1809,9 @@ components:
           nullable: true
           type: string
         monitoringPassword:
+          nullable: true
+          type: string
+        kubernetesCurrentVersion:
           nullable: true
           type: string
       type: object

@@ -34,6 +34,7 @@ type ProjectListForAlert struct {
 	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
 	MonitoringCredential MonitoringCredentialsListDto `json:"monitoringCredential"`
 	KubernetesAlerts []KubernetesAlertDtoForPoller `json:"kubernetesAlerts"`
+	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion"`
 }
 
 type _ProjectListForAlert ProjectListForAlert
@@ -42,7 +43,7 @@ type _ProjectListForAlert ProjectListForAlert
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectListForAlert(id int32, name NullableString, token NullableString, status NullableString, organizationId int32, health NullableString, isKubernetes bool, isLocked bool, isMonitoringEnabled bool, hasKubeConfigFile bool, monitoringCredential MonitoringCredentialsListDto, kubernetesAlerts []KubernetesAlertDtoForPoller) *ProjectListForAlert {
+func NewProjectListForAlert(id int32, name NullableString, token NullableString, status NullableString, organizationId int32, health NullableString, isKubernetes bool, isLocked bool, isMonitoringEnabled bool, hasKubeConfigFile bool, monitoringCredential MonitoringCredentialsListDto, kubernetesAlerts []KubernetesAlertDtoForPoller, kubernetesCurrentVersion NullableString) *ProjectListForAlert {
 	this := ProjectListForAlert{}
 	this.Id = id
 	this.Name = name
@@ -56,6 +57,7 @@ func NewProjectListForAlert(id int32, name NullableString, token NullableString,
 	this.HasKubeConfigFile = hasKubeConfigFile
 	this.MonitoringCredential = monitoringCredential
 	this.KubernetesAlerts = kubernetesAlerts
+	this.KubernetesCurrentVersion = kubernetesCurrentVersion
 	return &this
 }
 
@@ -365,6 +367,32 @@ func (o *ProjectListForAlert) SetKubernetesAlerts(v []KubernetesAlertDtoForPolle
 	o.KubernetesAlerts = v
 }
 
+// GetKubernetesCurrentVersion returns the KubernetesCurrentVersion field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *ProjectListForAlert) GetKubernetesCurrentVersion() string {
+	if o == nil || o.KubernetesCurrentVersion.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.KubernetesCurrentVersion.Get()
+}
+
+// GetKubernetesCurrentVersionOk returns a tuple with the KubernetesCurrentVersion field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectListForAlert) GetKubernetesCurrentVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.KubernetesCurrentVersion.Get(), o.KubernetesCurrentVersion.IsSet()
+}
+
+// SetKubernetesCurrentVersion sets field value
+func (o *ProjectListForAlert) SetKubernetesCurrentVersion(v string) {
+	o.KubernetesCurrentVersion.Set(&v)
+}
+
 func (o ProjectListForAlert) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -389,6 +417,7 @@ func (o ProjectListForAlert) ToMap() (map[string]interface{}, error) {
 	if o.KubernetesAlerts != nil {
 		toSerialize["kubernetesAlerts"] = o.KubernetesAlerts
 	}
+	toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion.Get()
 	return toSerialize, nil
 }
 
@@ -409,6 +438,7 @@ func (o *ProjectListForAlert) UnmarshalJSON(data []byte) (err error) {
 		"hasKubeConfigFile",
 		"monitoringCredential",
 		"kubernetesAlerts",
+		"kubernetesCurrentVersion",
 	}
 
 	allProperties := make(map[string]interface{})

@@ -2333,10 +2333,10 @@ type ApiProjectDeploymentImportClusterRequest struct {
 	config *os.File
 	isTaikunIngressController *bool
 	isExistingIngressController *bool
-	importType *EImportClusterType
 	ingressClass *string
 	ingressHost *string
 	continent *string
+	importType *EImportClusterType
 	organizationId *int32
 }
 
@@ -2360,11 +2360,6 @@ func (r ApiProjectDeploymentImportClusterRequest) IsExistingIngressController(is
 	return r
 }
 
-func (r ApiProjectDeploymentImportClusterRequest) ImportType(importType EImportClusterType) ApiProjectDeploymentImportClusterRequest {
-	r.importType = &importType
-	return r
-}
-
 func (r ApiProjectDeploymentImportClusterRequest) IngressClass(ingressClass string) ApiProjectDeploymentImportClusterRequest {
 	r.ingressClass = &ingressClass
 	return r
@@ -2377,6 +2372,11 @@ func (r ApiProjectDeploymentImportClusterRequest) IngressHost(ingressHost string
 
 func (r ApiProjectDeploymentImportClusterRequest) Continent(continent string) ApiProjectDeploymentImportClusterRequest {
 	r.continent = &continent
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) ImportType(importType EImportClusterType) ApiProjectDeploymentImportClusterRequest {
+	r.importType = &importType
 	return r
 }
 
@@ -2432,9 +2432,6 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentImportClusterExecute(r Ap
 	if r.isExistingIngressController == nil {
 		return nil, reportError("isExistingIngressController is required and must be specified")
 	}
-	if r.importType == nil {
-		return nil, reportError("importType is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -2480,7 +2477,9 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentImportClusterExecute(r Ap
 	if r.continent != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "continent", r.continent, "", "")
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "importType", r.importType, "", "")
+	if r.importType != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "importType", r.importType, "", "")
+	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "organizationId", r.organizationId, "", "")
 	}
