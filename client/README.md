@@ -318,6 +318,7 @@ Class | Method | HTTP request | Description
 *ImportedClusterAPI* | [**ImportedClusterAsCloudCredential**](docs/ImportedClusterAPI.md#importedclusterascloudcredential) | **Get** /api/v1/imported-cluster/as-cloud-credential/{projectId} | Imported cluster as cloud credential
 *ImportedClusterAPI* | [**ImportedClusterAsFullyManaged**](docs/ImportedClusterAPI.md#importedclusterasfullymanaged) | **Get** /api/v1/imported-cluster/as-fully-managed/{projectId} | Imported cluster as fully managed
 *ImportedClusterAPI* | [**ImportedClusterAsReadOnly**](docs/ImportedClusterAPI.md#importedclusterasreadonly) | **Get** /api/v1/imported-cluster/as-read-only/{projectId} | Imported cluster as read only
+*ImportedClusterAPI* | [**ImportedClusterDelete**](docs/ImportedClusterAPI.md#importedclusterdelete) | **Post** /api/v1/imported-cluster/delete | Delete imported cluster
 *ImportedClusterAPI* | [**ImportedClusterDetails**](docs/ImportedClusterAPI.md#importedclusterdetails) | **Get** /api/v1/imported-cluster/{id} | Retrieve imported-cluster by given id
 *InfraAPI* | [**InfraCreate**](docs/InfraAPI.md#infracreate) | **Post** /api/v1/infra/create | Create infra product
 *InfraAPI* | [**InfraDetails**](docs/InfraAPI.md#infradetails) | **Get** /api/v1/infra/details | Retrieve infra details
@@ -1008,6 +1009,7 @@ Class | Method | HTTP request | Description
  - [DeleteBackupStorageLocationCommand](docs/DeleteBackupStorageLocationCommand.md)
  - [DeleteExecutorCommand](docs/DeleteExecutorCommand.md)
  - [DeleteImageFromProjectCommand](docs/DeleteImageFromProjectCommand.md)
+ - [DeleteImportedProjectCommand](docs/DeleteImportedProjectCommand.md)
  - [DeleteKubeConfigByProjectIdCommand](docs/DeleteKubeConfigByProjectIdCommand.md)
  - [DeleteKubeConfigCommand](docs/DeleteKubeConfigCommand.md)
  - [DeleteProjectCommand](docs/DeleteProjectCommand.md)

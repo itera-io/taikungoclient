@@ -348,6 +348,7 @@ docs/DeleteBackupCommand.md
 docs/DeleteBackupStorageLocationCommand.md
 docs/DeleteExecutorCommand.md
 docs/DeleteImageFromProjectCommand.md
+docs/DeleteImportedProjectCommand.md
 docs/DeleteKubeConfigByProjectIdCommand.md
 docs/DeleteKubeConfigCommand.md
 docs/DeleteProjectCommand.md
@@ -1245,6 +1246,7 @@ model_delete_backup_command.go
 model_delete_backup_storage_location_command.go
 model_delete_executor_command.go
 model_delete_image_from_project_command.go
+model_delete_imported_project_command.go
 model_delete_kube_config_by_project_id_command.go
 model_delete_kube_config_command.go
 model_delete_project_command.go

@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-11-05T00:03:09.6098977Z
-                  createdAt: 2024-11-05T00:03:09.6098977Z
+                  lastValidated: 2024-11-06T00:03:09.9621712Z
+                  createdAt: 2024-11-06T00:03:09.9621712Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-11-05T00:03:09.6098977Z
+                    lastBackup: 2024-11-06T00:03:09.9621712Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-11-05T00:03:09.6098977Z
+                  createdAt: 2024-11-06T00:03:09.9621712Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-11-05T00:03:09.6098977Z
+                  lastBackup: 2024-11-06T00:03:09.9621712Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-05T00:03:09.6098977Z
-                  expiration: 2024-11-05T00:03:09.6098977Z
+                  createdAt: 2024-11-06T00:03:09.9621712Z
+                  expiration: 2024-11-06T00:03:09.9621712Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-05T00:03:09.6098977Z
+                  createdAt: 2024-11-06T00:03:09.9621712Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-11-05T00:03:09.6098977+00:00
-                  startTimeStamp: 2024-11-05T00:03:09.6098977+00:00
-                  createdAt: 2024-11-05T00:03:09.6098977Z
+                  completionDateTime: 2024-11-06T00:03:09.9621712+00:00
+                  startTimeStamp: 2024-11-06T00:03:09.9621712+00:00
+                  createdAt: 2024-11-06T00:03:09.9621712Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -13991,6 +13991,49 @@ paths:
       summary: Retrieve zadara images
       tags:
       - Images
+  /api/v1/imported-cluster/delete:
+    post:
+      operationId: imported-cluster-delete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteImportedProjectCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete imported cluster
+      tags:
+      - Imported Cluster
   /api/v1/imported-cluster/{id}:
     get:
       operationId: imported-cluster-details
@@ -47177,6 +47220,18 @@ components:
       type: object
     DeleteImportedBackupLocationsCommand:
       additionalProperties: false
+      type: object
+    DeleteImportedProjectCommand:
+      additionalProperties: false
+      example:
+        isForceDelete: true
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        isForceDelete:
+          type: boolean
       type: object
     DeleteKubeConfigByProjectIdCommand:
       additionalProperties: false
