@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-11-07T00:03:08.5370849Z
-                  createdAt: 2024-11-07T00:03:08.5370849Z
+                  lastValidated: 2024-11-07T15:40:00.4228102Z
+                  createdAt: 2024-11-07T15:40:00.4228102Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-11-07T00:03:08.5370849Z
+                    lastBackup: 2024-11-07T15:40:00.4228102Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-11-07T00:03:08.5370849Z
+                  createdAt: 2024-11-07T15:40:00.4228102Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-11-07T00:03:08.5370849Z
+                  lastBackup: 2024-11-07T15:40:00.4228102Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-07T00:03:08.5370849Z
-                  expiration: 2024-11-07T00:03:08.5370849Z
+                  createdAt: 2024-11-07T15:40:00.4228102Z
+                  expiration: 2024-11-07T15:40:00.4228102Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-07T00:03:08.5370849Z
+                  createdAt: 2024-11-07T15:40:00.4228102Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-11-07T00:03:08.5370849+00:00
-                  startTimeStamp: 2024-11-07T00:03:08.5370849+00:00
-                  createdAt: 2024-11-07T00:03:08.5370849Z
+                  completionDateTime: 2024-11-07T15:40:00.4228102+00:00
+                  startTimeStamp: 2024-11-07T15:40:00.4228102+00:00
+                  createdAt: 2024-11-07T15:40:00.4228102Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -51226,16 +51226,25 @@ components:
             hidden: true
             enable: true
         data:
+          s3CredentialId: 2
           accessIp: accessIp
           organizationName: organizationName
+          isOpaEnabled: true
+          aiCredentialId: 4
           importClusterType: None
+          aiEnabled: true
           health: null
+          isMonitoringEnabled: true
+          opaProfileId: 3
           cloudCredentialName: cloudCredentialName
           organizationId: 2
+          expiredAt: expiredAt
+          alertingProfileId: 9
           cloudType: null
           isLocked: true
           name: name
           cloudCredentialId: 7
+          isBackupEnabled: true
           id: 5
           kubernetesVersion: kubernetesVersion
           status: null
@@ -51291,13 +51300,19 @@ components:
             - reasons
             hidden: true
             enable: true
-          detachAlertingProfile:
+          enableMonitoring:
             reasons:
             - reasons
             - reasons
             hidden: true
             enable: true
-          lock:
+          disableMonitoring:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          enableOpa:
             reasons:
             - reasons
             - reasons
@@ -51315,17 +51330,68 @@ components:
             - reasons
             hidden: true
             enable: true
+          enableAi:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          disableBackup:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          disableAi:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          detachAlertingProfile:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          lock:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          disableOpa:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
+          enableBackup:
+            reasons:
+            - reasons
+            - reasons
+            hidden: true
+            enable: true
         data:
+          s3CredentialId: 2
           accessIp: accessIp
           organizationName: organizationName
+          isOpaEnabled: true
+          aiCredentialId: 4
           importClusterType: None
+          aiEnabled: true
           health: null
+          isMonitoringEnabled: true
+          opaProfileId: 3
           cloudCredentialName: cloudCredentialName
           organizationId: 2
+          expiredAt: expiredAt
+          alertingProfileId: 9
           cloudType: null
           isLocked: true
           name: name
           cloudCredentialId: 7
+          isBackupEnabled: true
           id: 5
           kubernetesVersion: kubernetesVersion
           status: null
@@ -51347,13 +51413,19 @@ components:
           - reasons
           hidden: true
           enable: true
-        detachAlertingProfile:
+        enableMonitoring:
           reasons:
           - reasons
           - reasons
           hidden: true
           enable: true
-        lock:
+        disableMonitoring:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        enableOpa:
           reasons:
           - reasons
           - reasons
@@ -51366,6 +51438,48 @@ components:
           hidden: true
           enable: true
         attachAlertingProfile:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        enableAi:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        disableBackup:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        disableAi:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        detachAlertingProfile:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        lock:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        disableOpa:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        enableBackup:
           reasons:
           - reasons
           - reasons
@@ -51382,10 +51496,34 @@ components:
           $ref: '#/components/schemas/ButtonStatusDto'
         detachAlertingProfile:
           $ref: '#/components/schemas/ButtonStatusDto'
+        enableMonitoring:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        disableMonitoring:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        enableAi:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        disableAi:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        enableOpa:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        disableOpa:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        enableBackup:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        disableBackup:
+          $ref: '#/components/schemas/ButtonStatusDto'
       required:
       - addVCluster
       - attachAlertingProfile
       - detachAlertingProfile
+      - disableAi
+      - disableBackup
+      - disableMonitoring
+      - disableOpa
+      - enableAi
+      - enableBackup
+      - enableMonitoring
+      - enableOpa
       - lock
       - unlock
       type: object
@@ -51406,16 +51544,25 @@ components:
             hidden: true
             enable: true
         data:
+          s3CredentialId: 2
           accessIp: accessIp
           organizationName: organizationName
+          isOpaEnabled: true
+          aiCredentialId: 4
           importClusterType: None
+          aiEnabled: true
           health: null
+          isMonitoringEnabled: true
+          opaProfileId: 3
           cloudCredentialName: cloudCredentialName
           organizationId: 2
+          expiredAt: expiredAt
+          alertingProfileId: 9
           cloudType: null
           isLocked: true
           name: name
           cloudCredentialId: 7
+          isBackupEnabled: true
           id: 5
           kubernetesVersion: kubernetesVersion
           status: null
@@ -51455,16 +51602,25 @@ components:
     ImportedClusterDetailsDto:
       additionalProperties: false
       example:
+        s3CredentialId: 2
         accessIp: accessIp
         organizationName: organizationName
+        isOpaEnabled: true
+        aiCredentialId: 4
         importClusterType: None
+        aiEnabled: true
         health: null
+        isMonitoringEnabled: true
+        opaProfileId: 3
         cloudCredentialName: cloudCredentialName
         organizationId: 2
+        expiredAt: expiredAt
+        alertingProfileId: 9
         cloudType: null
         isLocked: true
         name: name
         cloudCredentialId: 7
+        isBackupEnabled: true
         id: 5
         kubernetesVersion: kubernetesVersion
         status: null
@@ -51502,16 +51658,51 @@ components:
           $ref: '#/components/schemas/CloudType'
         status:
           $ref: '#/components/schemas/ProjectStatus'
+        isMonitoringEnabled:
+          type: boolean
+        alertingProfileId:
+          format: int32
+          nullable: true
+          type: integer
+        isOpaEnabled:
+          type: boolean
+        opaProfileId:
+          format: int32
+          nullable: true
+          type: integer
+        isBackupEnabled:
+          type: boolean
+        s3CredentialId:
+          format: int32
+          nullable: true
+          type: integer
+        aiEnabled:
+          type: boolean
+        aiCredentialId:
+          format: int32
+          nullable: true
+          type: integer
+        expiredAt:
+          type: string
       required:
       - accessIp
+      - aiCredentialId
+      - aiEnabled
+      - alertingProfileId
+      - expiredAt
       - health
       - id
       - importClusterType
+      - isBackupEnabled
       - isLocked
+      - isMonitoringEnabled
+      - isOpaEnabled
       - kubernetesVersion
       - name
+      - opaProfileId
       - organizationId
       - organizationName
+      - s3CredentialId
       - status
       type: object
     ImportedClusterEnableMonitoringCommand:
@@ -51574,16 +51765,25 @@ components:
           kubernetesVersion: kubernetesVersion
           status: "Null"
         project:
+          s3CredentialId: 2
           accessIp: accessIp
           organizationName: organizationName
+          isOpaEnabled: true
+          aiCredentialId: 4
           importClusterType: None
+          aiEnabled: true
           health: null
+          isMonitoringEnabled: true
+          opaProfileId: 3
           cloudCredentialName: cloudCredentialName
           organizationId: 2
+          expiredAt: expiredAt
+          alertingProfileId: 9
           cloudType: null
           isLocked: true
           name: name
           cloudCredentialId: 7
+          isBackupEnabled: true
           id: 5
           kubernetesVersion: kubernetesVersion
           status: null
@@ -57632,6 +57832,18 @@ components:
           - reasons
           hidden: true
           enable: true
+        enableMonitoring:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
+        disableMonitoring:
+          reasons:
+          - reasons
+          - reasons
+          hidden: true
+          enable: true
         enableOpa:
           reasons:
           - reasons
@@ -57740,12 +57952,6 @@ components:
           - reasons
           hidden: true
           enable: true
-        monitoring:
-          reasons:
-          - reasons
-          - reasons
-          hidden: true
-          enable: true
         enableSpotWorker:
           reasons:
           - reasons
@@ -57789,7 +57995,9 @@ components:
           $ref: '#/components/schemas/ButtonStatusDto'
         upgrade:
           $ref: '#/components/schemas/ButtonStatusDto'
-        monitoring:
+        enableMonitoring:
+          $ref: '#/components/schemas/ButtonStatusDto'
+        disableMonitoring:
           $ref: '#/components/schemas/ButtonStatusDto'
         enableBackup:
           $ref: '#/components/schemas/ButtonStatusDto'
@@ -57850,6 +58058,7 @@ components:
       - disableAutoscaler
       - disableBackup
       - disableFullSpot
+      - disableMonitoring
       - disableOpa
       - disableSpotVm
       - disableSpotWorker
@@ -57857,11 +58066,11 @@ components:
       - enableAutoscaler
       - enableBackup
       - enableFullSpot
+      - enableMonitoring
       - enableOpa
       - enableSpotVm
       - enableSpotWorker
       - lock
-      - monitoring
       - projectMaintenanceMode
       - repair
       - unlock

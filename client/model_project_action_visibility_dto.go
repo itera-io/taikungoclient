@@ -25,7 +25,8 @@ type ProjectActionVisibilityDto struct {
 	Commit ButtonStatusDto `json:"commit"`
 	Repair ButtonStatusDto `json:"repair"`
 	Upgrade ButtonStatusDto `json:"upgrade"`
-	Monitoring ButtonStatusDto `json:"monitoring"`
+	EnableMonitoring ButtonStatusDto `json:"enableMonitoring"`
+	DisableMonitoring ButtonStatusDto `json:"disableMonitoring"`
 	EnableBackup ButtonStatusDto `json:"enableBackup"`
 	DisableBackup ButtonStatusDto `json:"disableBackup"`
 	EnableOpa ButtonStatusDto `json:"enableOpa"`
@@ -58,12 +59,13 @@ type _ProjectActionVisibilityDto ProjectActionVisibilityDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectActionVisibilityDto(commit ButtonStatusDto, repair ButtonStatusDto, upgrade ButtonStatusDto, monitoring ButtonStatusDto, enableBackup ButtonStatusDto, disableBackup ButtonStatusDto, enableOpa ButtonStatusDto, disableOpa ButtonStatusDto, enableAutoscaler ButtonStatusDto, disableAutoscaler ButtonStatusDto, vmRepair ButtonStatusDto, vmCommit ButtonStatusDto, lock ButtonStatusDto, unlock ButtonStatusDto, enableSpotWorker ButtonStatusDto, disableSpotWorker ButtonStatusDto, enableFullSpot ButtonStatusDto, disableFullSpot ButtonStatusDto, enableSpotVm ButtonStatusDto, disableSpotVm ButtonStatusDto, attachAlertingProfile ButtonStatusDto, detachAlertingProfile ButtonStatusDto, enableAi ButtonStatusDto, disableAi ButtonStatusDto, aiAssistant ButtonStatusDto, projectMaintenanceMode ButtonStatusDto, addServer ButtonStatusDto, addVm ButtonStatusDto) *ProjectActionVisibilityDto {
+func NewProjectActionVisibilityDto(commit ButtonStatusDto, repair ButtonStatusDto, upgrade ButtonStatusDto, enableMonitoring ButtonStatusDto, disableMonitoring ButtonStatusDto, enableBackup ButtonStatusDto, disableBackup ButtonStatusDto, enableOpa ButtonStatusDto, disableOpa ButtonStatusDto, enableAutoscaler ButtonStatusDto, disableAutoscaler ButtonStatusDto, vmRepair ButtonStatusDto, vmCommit ButtonStatusDto, lock ButtonStatusDto, unlock ButtonStatusDto, enableSpotWorker ButtonStatusDto, disableSpotWorker ButtonStatusDto, enableFullSpot ButtonStatusDto, disableFullSpot ButtonStatusDto, enableSpotVm ButtonStatusDto, disableSpotVm ButtonStatusDto, attachAlertingProfile ButtonStatusDto, detachAlertingProfile ButtonStatusDto, enableAi ButtonStatusDto, disableAi ButtonStatusDto, aiAssistant ButtonStatusDto, projectMaintenanceMode ButtonStatusDto, addServer ButtonStatusDto, addVm ButtonStatusDto) *ProjectActionVisibilityDto {
 	this := ProjectActionVisibilityDto{}
 	this.Commit = commit
 	this.Repair = repair
 	this.Upgrade = upgrade
-	this.Monitoring = monitoring
+	this.EnableMonitoring = enableMonitoring
+	this.DisableMonitoring = disableMonitoring
 	this.EnableBackup = enableBackup
 	this.DisableBackup = disableBackup
 	this.EnableOpa = enableOpa
@@ -171,28 +173,52 @@ func (o *ProjectActionVisibilityDto) SetUpgrade(v ButtonStatusDto) {
 	o.Upgrade = v
 }
 
-// GetMonitoring returns the Monitoring field value
-func (o *ProjectActionVisibilityDto) GetMonitoring() ButtonStatusDto {
+// GetEnableMonitoring returns the EnableMonitoring field value
+func (o *ProjectActionVisibilityDto) GetEnableMonitoring() ButtonStatusDto {
 	if o == nil {
 		var ret ButtonStatusDto
 		return ret
 	}
 
-	return o.Monitoring
+	return o.EnableMonitoring
 }
 
-// GetMonitoringOk returns a tuple with the Monitoring field value
+// GetEnableMonitoringOk returns a tuple with the EnableMonitoring field value
 // and a boolean to check if the value has been set.
-func (o *ProjectActionVisibilityDto) GetMonitoringOk() (*ButtonStatusDto, bool) {
+func (o *ProjectActionVisibilityDto) GetEnableMonitoringOk() (*ButtonStatusDto, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Monitoring, true
+	return &o.EnableMonitoring, true
 }
 
-// SetMonitoring sets field value
-func (o *ProjectActionVisibilityDto) SetMonitoring(v ButtonStatusDto) {
-	o.Monitoring = v
+// SetEnableMonitoring sets field value
+func (o *ProjectActionVisibilityDto) SetEnableMonitoring(v ButtonStatusDto) {
+	o.EnableMonitoring = v
+}
+
+// GetDisableMonitoring returns the DisableMonitoring field value
+func (o *ProjectActionVisibilityDto) GetDisableMonitoring() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.DisableMonitoring
+}
+
+// GetDisableMonitoringOk returns a tuple with the DisableMonitoring field value
+// and a boolean to check if the value has been set.
+func (o *ProjectActionVisibilityDto) GetDisableMonitoringOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisableMonitoring, true
+}
+
+// SetDisableMonitoring sets field value
+func (o *ProjectActionVisibilityDto) SetDisableMonitoring(v ButtonStatusDto) {
+	o.DisableMonitoring = v
 }
 
 // GetEnableBackup returns the EnableBackup field value
@@ -784,7 +810,8 @@ func (o ProjectActionVisibilityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["commit"] = o.Commit
 	toSerialize["repair"] = o.Repair
 	toSerialize["upgrade"] = o.Upgrade
-	toSerialize["monitoring"] = o.Monitoring
+	toSerialize["enableMonitoring"] = o.EnableMonitoring
+	toSerialize["disableMonitoring"] = o.DisableMonitoring
 	toSerialize["enableBackup"] = o.EnableBackup
 	toSerialize["disableBackup"] = o.DisableBackup
 	toSerialize["enableOpa"] = o.EnableOpa
@@ -820,7 +847,8 @@ func (o *ProjectActionVisibilityDto) UnmarshalJSON(data []byte) (err error) {
 		"commit",
 		"repair",
 		"upgrade",
-		"monitoring",
+		"enableMonitoring",
+		"disableMonitoring",
 		"enableBackup",
 		"disableBackup",
 		"enableOpa",

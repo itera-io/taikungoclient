@@ -35,6 +35,15 @@ type ImportedClusterDetailsDto struct {
 	Health ProjectHealth `json:"health"`
 	CloudType *CloudType `json:"cloudType,omitempty"`
 	Status ProjectStatus `json:"status"`
+	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
+	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
+	IsOpaEnabled bool `json:"isOpaEnabled"`
+	OpaProfileId NullableInt32 `json:"opaProfileId"`
+	IsBackupEnabled bool `json:"isBackupEnabled"`
+	S3CredentialId NullableInt32 `json:"s3CredentialId"`
+	AiEnabled bool `json:"aiEnabled"`
+	AiCredentialId NullableInt32 `json:"aiCredentialId"`
+	ExpiredAt string `json:"expiredAt"`
 }
 
 type _ImportedClusterDetailsDto ImportedClusterDetailsDto
@@ -43,7 +52,7 @@ type _ImportedClusterDetailsDto ImportedClusterDetailsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp NullableString, kubernetesVersion NullableString, importClusterType ImportClusterType, organizationId int32, organizationName string, health ProjectHealth, status ProjectStatus) *ImportedClusterDetailsDto {
+func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp NullableString, kubernetesVersion NullableString, importClusterType ImportClusterType, organizationId int32, organizationName string, health ProjectHealth, status ProjectStatus, isMonitoringEnabled bool, alertingProfileId NullableInt32, isOpaEnabled bool, opaProfileId NullableInt32, isBackupEnabled bool, s3CredentialId NullableInt32, aiEnabled bool, aiCredentialId NullableInt32, expiredAt string) *ImportedClusterDetailsDto {
 	this := ImportedClusterDetailsDto{}
 	this.Id = id
 	this.Name = name
@@ -55,6 +64,15 @@ func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp
 	this.OrganizationName = organizationName
 	this.Health = health
 	this.Status = status
+	this.IsMonitoringEnabled = isMonitoringEnabled
+	this.AlertingProfileId = alertingProfileId
+	this.IsOpaEnabled = isOpaEnabled
+	this.OpaProfileId = opaProfileId
+	this.IsBackupEnabled = isBackupEnabled
+	this.S3CredentialId = s3CredentialId
+	this.AiEnabled = aiEnabled
+	this.AiCredentialId = aiCredentialId
+	this.ExpiredAt = expiredAt
 	return &this
 }
 
@@ -426,6 +444,230 @@ func (o *ImportedClusterDetailsDto) SetStatus(v ProjectStatus) {
 	o.Status = v
 }
 
+// GetIsMonitoringEnabled returns the IsMonitoringEnabled field value
+func (o *ImportedClusterDetailsDto) GetIsMonitoringEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsMonitoringEnabled
+}
+
+// GetIsMonitoringEnabledOk returns a tuple with the IsMonitoringEnabled field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterDetailsDto) GetIsMonitoringEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsMonitoringEnabled, true
+}
+
+// SetIsMonitoringEnabled sets field value
+func (o *ImportedClusterDetailsDto) SetIsMonitoringEnabled(v bool) {
+	o.IsMonitoringEnabled = v
+}
+
+// GetAlertingProfileId returns the AlertingProfileId field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *ImportedClusterDetailsDto) GetAlertingProfileId() int32 {
+	if o == nil || o.AlertingProfileId.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.AlertingProfileId.Get()
+}
+
+// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ImportedClusterDetailsDto) GetAlertingProfileIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AlertingProfileId.Get(), o.AlertingProfileId.IsSet()
+}
+
+// SetAlertingProfileId sets field value
+func (o *ImportedClusterDetailsDto) SetAlertingProfileId(v int32) {
+	o.AlertingProfileId.Set(&v)
+}
+
+// GetIsOpaEnabled returns the IsOpaEnabled field value
+func (o *ImportedClusterDetailsDto) GetIsOpaEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsOpaEnabled
+}
+
+// GetIsOpaEnabledOk returns a tuple with the IsOpaEnabled field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterDetailsDto) GetIsOpaEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsOpaEnabled, true
+}
+
+// SetIsOpaEnabled sets field value
+func (o *ImportedClusterDetailsDto) SetIsOpaEnabled(v bool) {
+	o.IsOpaEnabled = v
+}
+
+// GetOpaProfileId returns the OpaProfileId field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *ImportedClusterDetailsDto) GetOpaProfileId() int32 {
+	if o == nil || o.OpaProfileId.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.OpaProfileId.Get()
+}
+
+// GetOpaProfileIdOk returns a tuple with the OpaProfileId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ImportedClusterDetailsDto) GetOpaProfileIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OpaProfileId.Get(), o.OpaProfileId.IsSet()
+}
+
+// SetOpaProfileId sets field value
+func (o *ImportedClusterDetailsDto) SetOpaProfileId(v int32) {
+	o.OpaProfileId.Set(&v)
+}
+
+// GetIsBackupEnabled returns the IsBackupEnabled field value
+func (o *ImportedClusterDetailsDto) GetIsBackupEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsBackupEnabled
+}
+
+// GetIsBackupEnabledOk returns a tuple with the IsBackupEnabled field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterDetailsDto) GetIsBackupEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsBackupEnabled, true
+}
+
+// SetIsBackupEnabled sets field value
+func (o *ImportedClusterDetailsDto) SetIsBackupEnabled(v bool) {
+	o.IsBackupEnabled = v
+}
+
+// GetS3CredentialId returns the S3CredentialId field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *ImportedClusterDetailsDto) GetS3CredentialId() int32 {
+	if o == nil || o.S3CredentialId.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.S3CredentialId.Get()
+}
+
+// GetS3CredentialIdOk returns a tuple with the S3CredentialId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ImportedClusterDetailsDto) GetS3CredentialIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.S3CredentialId.Get(), o.S3CredentialId.IsSet()
+}
+
+// SetS3CredentialId sets field value
+func (o *ImportedClusterDetailsDto) SetS3CredentialId(v int32) {
+	o.S3CredentialId.Set(&v)
+}
+
+// GetAiEnabled returns the AiEnabled field value
+func (o *ImportedClusterDetailsDto) GetAiEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.AiEnabled
+}
+
+// GetAiEnabledOk returns a tuple with the AiEnabled field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterDetailsDto) GetAiEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AiEnabled, true
+}
+
+// SetAiEnabled sets field value
+func (o *ImportedClusterDetailsDto) SetAiEnabled(v bool) {
+	o.AiEnabled = v
+}
+
+// GetAiCredentialId returns the AiCredentialId field value
+// If the value is explicit nil, the zero value for int32 will be returned
+func (o *ImportedClusterDetailsDto) GetAiCredentialId() int32 {
+	if o == nil || o.AiCredentialId.Get() == nil {
+		var ret int32
+		return ret
+	}
+
+	return *o.AiCredentialId.Get()
+}
+
+// GetAiCredentialIdOk returns a tuple with the AiCredentialId field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ImportedClusterDetailsDto) GetAiCredentialIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AiCredentialId.Get(), o.AiCredentialId.IsSet()
+}
+
+// SetAiCredentialId sets field value
+func (o *ImportedClusterDetailsDto) SetAiCredentialId(v int32) {
+	o.AiCredentialId.Set(&v)
+}
+
+// GetExpiredAt returns the ExpiredAt field value
+func (o *ImportedClusterDetailsDto) GetExpiredAt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ExpiredAt
+}
+
+// GetExpiredAtOk returns a tuple with the ExpiredAt field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterDetailsDto) GetExpiredAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ExpiredAt, true
+}
+
+// SetExpiredAt sets field value
+func (o *ImportedClusterDetailsDto) SetExpiredAt(v string) {
+	o.ExpiredAt = v
+}
+
 func (o ImportedClusterDetailsDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -455,6 +697,15 @@ func (o ImportedClusterDetailsDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["cloudType"] = o.CloudType
 	}
 	toSerialize["status"] = o.Status
+	toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
+	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
+	toSerialize["isOpaEnabled"] = o.IsOpaEnabled
+	toSerialize["opaProfileId"] = o.OpaProfileId.Get()
+	toSerialize["isBackupEnabled"] = o.IsBackupEnabled
+	toSerialize["s3CredentialId"] = o.S3CredentialId.Get()
+	toSerialize["aiEnabled"] = o.AiEnabled
+	toSerialize["aiCredentialId"] = o.AiCredentialId.Get()
+	toSerialize["expiredAt"] = o.ExpiredAt
 	return toSerialize, nil
 }
 
@@ -473,6 +724,15 @@ func (o *ImportedClusterDetailsDto) UnmarshalJSON(data []byte) (err error) {
 		"organizationName",
 		"health",
 		"status",
+		"isMonitoringEnabled",
+		"alertingProfileId",
+		"isOpaEnabled",
+		"opaProfileId",
+		"isBackupEnabled",
+		"s3CredentialId",
+		"aiEnabled",
+		"aiCredentialId",
+		"expiredAt",
 	}
 
 	allProperties := make(map[string]interface{})

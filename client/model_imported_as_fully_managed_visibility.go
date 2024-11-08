@@ -27,6 +27,14 @@ type ImportedAsFullyManagedVisibility struct {
 	AddVCluster ButtonStatusDto `json:"addVCluster"`
 	AttachAlertingProfile ButtonStatusDto `json:"attachAlertingProfile"`
 	DetachAlertingProfile ButtonStatusDto `json:"detachAlertingProfile"`
+	EnableMonitoring ButtonStatusDto `json:"enableMonitoring"`
+	DisableMonitoring ButtonStatusDto `json:"disableMonitoring"`
+	EnableAi ButtonStatusDto `json:"enableAi"`
+	DisableAi ButtonStatusDto `json:"disableAi"`
+	EnableOpa ButtonStatusDto `json:"enableOpa"`
+	DisableOpa ButtonStatusDto `json:"disableOpa"`
+	EnableBackup ButtonStatusDto `json:"enableBackup"`
+	DisableBackup ButtonStatusDto `json:"disableBackup"`
 }
 
 type _ImportedAsFullyManagedVisibility ImportedAsFullyManagedVisibility
@@ -35,13 +43,21 @@ type _ImportedAsFullyManagedVisibility ImportedAsFullyManagedVisibility
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportedAsFullyManagedVisibility(lock ButtonStatusDto, unlock ButtonStatusDto, addVCluster ButtonStatusDto, attachAlertingProfile ButtonStatusDto, detachAlertingProfile ButtonStatusDto) *ImportedAsFullyManagedVisibility {
+func NewImportedAsFullyManagedVisibility(lock ButtonStatusDto, unlock ButtonStatusDto, addVCluster ButtonStatusDto, attachAlertingProfile ButtonStatusDto, detachAlertingProfile ButtonStatusDto, enableMonitoring ButtonStatusDto, disableMonitoring ButtonStatusDto, enableAi ButtonStatusDto, disableAi ButtonStatusDto, enableOpa ButtonStatusDto, disableOpa ButtonStatusDto, enableBackup ButtonStatusDto, disableBackup ButtonStatusDto) *ImportedAsFullyManagedVisibility {
 	this := ImportedAsFullyManagedVisibility{}
 	this.Lock = lock
 	this.Unlock = unlock
 	this.AddVCluster = addVCluster
 	this.AttachAlertingProfile = attachAlertingProfile
 	this.DetachAlertingProfile = detachAlertingProfile
+	this.EnableMonitoring = enableMonitoring
+	this.DisableMonitoring = disableMonitoring
+	this.EnableAi = enableAi
+	this.DisableAi = disableAi
+	this.EnableOpa = enableOpa
+	this.DisableOpa = disableOpa
+	this.EnableBackup = enableBackup
+	this.DisableBackup = disableBackup
 	return &this
 }
 
@@ -173,6 +189,198 @@ func (o *ImportedAsFullyManagedVisibility) SetDetachAlertingProfile(v ButtonStat
 	o.DetachAlertingProfile = v
 }
 
+// GetEnableMonitoring returns the EnableMonitoring field value
+func (o *ImportedAsFullyManagedVisibility) GetEnableMonitoring() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.EnableMonitoring
+}
+
+// GetEnableMonitoringOk returns a tuple with the EnableMonitoring field value
+// and a boolean to check if the value has been set.
+func (o *ImportedAsFullyManagedVisibility) GetEnableMonitoringOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnableMonitoring, true
+}
+
+// SetEnableMonitoring sets field value
+func (o *ImportedAsFullyManagedVisibility) SetEnableMonitoring(v ButtonStatusDto) {
+	o.EnableMonitoring = v
+}
+
+// GetDisableMonitoring returns the DisableMonitoring field value
+func (o *ImportedAsFullyManagedVisibility) GetDisableMonitoring() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.DisableMonitoring
+}
+
+// GetDisableMonitoringOk returns a tuple with the DisableMonitoring field value
+// and a boolean to check if the value has been set.
+func (o *ImportedAsFullyManagedVisibility) GetDisableMonitoringOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisableMonitoring, true
+}
+
+// SetDisableMonitoring sets field value
+func (o *ImportedAsFullyManagedVisibility) SetDisableMonitoring(v ButtonStatusDto) {
+	o.DisableMonitoring = v
+}
+
+// GetEnableAi returns the EnableAi field value
+func (o *ImportedAsFullyManagedVisibility) GetEnableAi() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.EnableAi
+}
+
+// GetEnableAiOk returns a tuple with the EnableAi field value
+// and a boolean to check if the value has been set.
+func (o *ImportedAsFullyManagedVisibility) GetEnableAiOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnableAi, true
+}
+
+// SetEnableAi sets field value
+func (o *ImportedAsFullyManagedVisibility) SetEnableAi(v ButtonStatusDto) {
+	o.EnableAi = v
+}
+
+// GetDisableAi returns the DisableAi field value
+func (o *ImportedAsFullyManagedVisibility) GetDisableAi() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.DisableAi
+}
+
+// GetDisableAiOk returns a tuple with the DisableAi field value
+// and a boolean to check if the value has been set.
+func (o *ImportedAsFullyManagedVisibility) GetDisableAiOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisableAi, true
+}
+
+// SetDisableAi sets field value
+func (o *ImportedAsFullyManagedVisibility) SetDisableAi(v ButtonStatusDto) {
+	o.DisableAi = v
+}
+
+// GetEnableOpa returns the EnableOpa field value
+func (o *ImportedAsFullyManagedVisibility) GetEnableOpa() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.EnableOpa
+}
+
+// GetEnableOpaOk returns a tuple with the EnableOpa field value
+// and a boolean to check if the value has been set.
+func (o *ImportedAsFullyManagedVisibility) GetEnableOpaOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnableOpa, true
+}
+
+// SetEnableOpa sets field value
+func (o *ImportedAsFullyManagedVisibility) SetEnableOpa(v ButtonStatusDto) {
+	o.EnableOpa = v
+}
+
+// GetDisableOpa returns the DisableOpa field value
+func (o *ImportedAsFullyManagedVisibility) GetDisableOpa() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.DisableOpa
+}
+
+// GetDisableOpaOk returns a tuple with the DisableOpa field value
+// and a boolean to check if the value has been set.
+func (o *ImportedAsFullyManagedVisibility) GetDisableOpaOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisableOpa, true
+}
+
+// SetDisableOpa sets field value
+func (o *ImportedAsFullyManagedVisibility) SetDisableOpa(v ButtonStatusDto) {
+	o.DisableOpa = v
+}
+
+// GetEnableBackup returns the EnableBackup field value
+func (o *ImportedAsFullyManagedVisibility) GetEnableBackup() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.EnableBackup
+}
+
+// GetEnableBackupOk returns a tuple with the EnableBackup field value
+// and a boolean to check if the value has been set.
+func (o *ImportedAsFullyManagedVisibility) GetEnableBackupOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnableBackup, true
+}
+
+// SetEnableBackup sets field value
+func (o *ImportedAsFullyManagedVisibility) SetEnableBackup(v ButtonStatusDto) {
+	o.EnableBackup = v
+}
+
+// GetDisableBackup returns the DisableBackup field value
+func (o *ImportedAsFullyManagedVisibility) GetDisableBackup() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.DisableBackup
+}
+
+// GetDisableBackupOk returns a tuple with the DisableBackup field value
+// and a boolean to check if the value has been set.
+func (o *ImportedAsFullyManagedVisibility) GetDisableBackupOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisableBackup, true
+}
+
+// SetDisableBackup sets field value
+func (o *ImportedAsFullyManagedVisibility) SetDisableBackup(v ButtonStatusDto) {
+	o.DisableBackup = v
+}
+
 func (o ImportedAsFullyManagedVisibility) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -188,6 +396,14 @@ func (o ImportedAsFullyManagedVisibility) ToMap() (map[string]interface{}, error
 	toSerialize["addVCluster"] = o.AddVCluster
 	toSerialize["attachAlertingProfile"] = o.AttachAlertingProfile
 	toSerialize["detachAlertingProfile"] = o.DetachAlertingProfile
+	toSerialize["enableMonitoring"] = o.EnableMonitoring
+	toSerialize["disableMonitoring"] = o.DisableMonitoring
+	toSerialize["enableAi"] = o.EnableAi
+	toSerialize["disableAi"] = o.DisableAi
+	toSerialize["enableOpa"] = o.EnableOpa
+	toSerialize["disableOpa"] = o.DisableOpa
+	toSerialize["enableBackup"] = o.EnableBackup
+	toSerialize["disableBackup"] = o.DisableBackup
 	return toSerialize, nil
 }
 
@@ -201,6 +417,14 @@ func (o *ImportedAsFullyManagedVisibility) UnmarshalJSON(data []byte) (err error
 		"addVCluster",
 		"attachAlertingProfile",
 		"detachAlertingProfile",
+		"enableMonitoring",
+		"disableMonitoring",
+		"enableAi",
+		"disableAi",
+		"enableOpa",
+		"disableOpa",
+		"enableBackup",
+		"disableBackup",
 	}
 
 	allProperties := make(map[string]interface{})
