@@ -320,6 +320,9 @@ Class | Method | HTTP request | Description
 *ImportedClusterAPI* | [**ImportedClusterAsReadOnly**](docs/ImportedClusterAPI.md#importedclusterasreadonly) | **Get** /api/v1/imported-cluster/as-read-only/{projectId} | Imported cluster as read only
 *ImportedClusterAPI* | [**ImportedClusterDelete**](docs/ImportedClusterAPI.md#importedclusterdelete) | **Post** /api/v1/imported-cluster/delete | Delete imported cluster
 *ImportedClusterAPI* | [**ImportedClusterDetails**](docs/ImportedClusterAPI.md#importedclusterdetails) | **Get** /api/v1/imported-cluster/{id} | Retrieve imported-cluster by given id
+*ImportedClusterAPI* | [**ImportedClusterDisableAi**](docs/ImportedClusterAPI.md#importedclusterdisableai) | **Post** /api/v1/imported-cluster/disable-ai | Disable ai for imported cluster
+*ImportedClusterAPI* | [**ImportedClusterDisableMonitoring**](docs/ImportedClusterAPI.md#importedclusterdisablemonitoring) | **Post** /api/v1/imported-cluster/disable-monitoring | Disable monitoring for imported cluster
+*ImportedClusterAPI* | [**ImportedClusterEnableAi**](docs/ImportedClusterAPI.md#importedclusterenableai) | **Post** /api/v1/imported-cluster/enable-ai | Enable ai for imported cluster
 *ImportedClusterAPI* | [**ImportedClusterEnableMonitoring**](docs/ImportedClusterAPI.md#importedclusterenablemonitoring) | **Post** /api/v1/imported-cluster/enable-monitoring | Enable monitoring for imported cluster
 *InfraAPI* | [**InfraCreate**](docs/InfraAPI.md#infracreate) | **Post** /api/v1/infra/create | Create infra product
 *InfraAPI* | [**InfraDetails**](docs/InfraAPI.md#infradetails) | **Get** /api/v1/infra/details | Retrieve infra details
@@ -1137,6 +1140,9 @@ Class | Method | HTTP request | Description
  - [ImportedAsReadOnlyList](docs/ImportedAsReadOnlyList.md)
  - [ImportedAsReadOnlyVisibility](docs/ImportedAsReadOnlyVisibility.md)
  - [ImportedClusterDetailsDto](docs/ImportedClusterDetailsDto.md)
+ - [ImportedClusterDisableAiCommand](docs/ImportedClusterDisableAiCommand.md)
+ - [ImportedClusterDisableMonitoringCommand](docs/ImportedClusterDisableMonitoringCommand.md)
+ - [ImportedClusterEnableAiCommand](docs/ImportedClusterEnableAiCommand.md)
  - [ImportedClusterEnableMonitoringCommand](docs/ImportedClusterEnableMonitoringCommand.md)
  - [ImportedClusterList](docs/ImportedClusterList.md)
  - [ImportedClusterListDto](docs/ImportedClusterListDto.md)

@@ -89,6 +89,39 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ImportedClusterAPIService ImportedClusterDisableAi", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableAi(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ImportedClusterAPIService ImportedClusterDisableMonitoring", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableMonitoring(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ImportedClusterAPIService ImportedClusterEnableAi", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableAi(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ImportedClusterAPIService ImportedClusterEnableMonitoring", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
