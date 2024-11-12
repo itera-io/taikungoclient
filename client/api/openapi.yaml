@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-11-09T00:03:21.4000837Z
-                  createdAt: 2024-11-09T00:03:21.4000837Z
+                  lastValidated: 2024-11-12T00:03:19.5190767Z
+                  createdAt: 2024-11-12T00:03:19.5190767Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-11-09T00:03:21.4000837Z
+                    lastBackup: 2024-11-12T00:03:19.5190767Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-11-09T00:03:21.4000837Z
+                  createdAt: 2024-11-12T00:03:19.5190767Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-11-09T00:03:21.4000837Z
+                  lastBackup: 2024-11-12T00:03:19.5190767Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-09T00:03:21.4000837Z
-                  expiration: 2024-11-09T00:03:21.4000837Z
+                  createdAt: 2024-11-12T00:03:19.5190767Z
+                  expiration: 2024-11-12T00:03:19.5190767Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-09T00:03:21.4000837Z
+                  createdAt: 2024-11-12T00:03:19.5190767Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-11-09T00:03:21.4000837+00:00
-                  startTimeStamp: 2024-11-09T00:03:21.4000837+00:00
-                  createdAt: 2024-11-09T00:03:21.4000837Z
+                  completionDateTime: 2024-11-12T00:03:19.5190767+00:00
+                  startTimeStamp: 2024-11-12T00:03:19.5190767+00:00
+                  createdAt: 2024-11-12T00:03:19.5190767Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -14077,6 +14077,49 @@ paths:
       summary: Disable ai for imported cluster
       tags:
       - Imported Cluster
+  /api/v1/imported-cluster/disable-backup:
+    post:
+      operationId: imported-cluster-disable-backup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportedClusterDisableBackupCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable backup for imported cluster
+      tags:
+      - Imported Cluster
   /api/v1/imported-cluster/disable-monitoring:
     post:
       operationId: imported-cluster-disable-monitoring
@@ -14118,6 +14161,49 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Disable monitoring for imported cluster
+      tags:
+      - Imported Cluster
+  /api/v1/imported-cluster/disable-opa:
+    post:
+      operationId: imported-cluster-disable-opa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportedClusterDisableOpaCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable opa for imported cluster
       tags:
       - Imported Cluster
   /api/v1/imported-cluster/enable-ai:
@@ -14163,6 +14249,49 @@ paths:
       summary: Enable ai for imported cluster
       tags:
       - Imported Cluster
+  /api/v1/imported-cluster/enable-backup:
+    post:
+      operationId: imported-cluster-enable-backup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportedClusterEnableBackupCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable backup for imported cluster
+      tags:
+      - Imported Cluster
   /api/v1/imported-cluster/enable-monitoring:
     post:
       operationId: imported-cluster-enable-monitoring
@@ -14204,6 +14333,49 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Enable monitoring for imported cluster
+      tags:
+      - Imported Cluster
+  /api/v1/imported-cluster/enable-opa:
+    post:
+      operationId: imported-cluster-enable-opa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportedClusterEnableOpaCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable opa for imported cluster
       tags:
       - Imported Cluster
   /api/v1/imported-cluster/{id}:
@@ -51843,7 +52015,25 @@ components:
           format: int32
           type: integer
       type: object
+    ImportedClusterDisableBackupCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
     ImportedClusterDisableMonitoringCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    ImportedClusterDisableOpaCommand:
       additionalProperties: false
       example:
         projectId: 0
@@ -51865,12 +52055,38 @@ components:
           format: int32
           type: integer
       type: object
+    ImportedClusterEnableBackupCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+        backupCredentialId: 6
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        backupCredentialId:
+          format: int32
+          type: integer
+      type: object
     ImportedClusterEnableMonitoringCommand:
       additionalProperties: false
       example:
         projectId: 0
       properties:
         projectId:
+          format: int32
+          type: integer
+      type: object
+    ImportedClusterEnableOpaCommand:
+      additionalProperties: false
+      example:
+        opaProfileId: 6
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        opaProfileId:
           format: int32
           type: integer
       type: object

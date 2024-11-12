@@ -100,11 +100,33 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ImportedClusterAPIService ImportedClusterDisableBackup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableBackup(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ImportedClusterAPIService ImportedClusterDisableMonitoring", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableMonitoring(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ImportedClusterAPIService ImportedClusterDisableOpa", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableOpa(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -122,11 +144,33 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ImportedClusterAPIService ImportedClusterEnableBackup", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableBackup(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ImportedClusterAPIService ImportedClusterEnableMonitoring", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableMonitoring(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ImportedClusterAPIService ImportedClusterEnableOpa", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableOpa(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
