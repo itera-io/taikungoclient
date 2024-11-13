@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-11-12T00:03:19.5190767Z
-                  createdAt: 2024-11-12T00:03:19.5190767Z
+                  lastValidated: 2024-11-12T14:31:35.6569576Z
+                  createdAt: 2024-11-12T14:31:35.6569576Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-11-12T00:03:19.5190767Z
+                    lastBackup: 2024-11-12T14:31:35.6569576Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-11-12T00:03:19.5190767Z
+                  createdAt: 2024-11-12T14:31:35.6569576Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-11-12T00:03:19.5190767Z
+                  lastBackup: 2024-11-12T14:31:35.6569576Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-12T00:03:19.5190767Z
-                  expiration: 2024-11-12T00:03:19.5190767Z
+                  createdAt: 2024-11-12T14:31:35.6569576Z
+                  expiration: 2024-11-12T14:31:35.6569576Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-12T00:03:19.5190767Z
+                  createdAt: 2024-11-12T14:31:35.6569576Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-11-12T00:03:19.5190767+00:00
-                  startTimeStamp: 2024-11-12T00:03:19.5190767+00:00
-                  createdAt: 2024-11-12T00:03:19.5190767Z
+                  completionDateTime: 2024-11-12T14:31:35.6569576+00:00
+                  startTimeStamp: 2024-11-12T14:31:35.6569576+00:00
+                  createdAt: 2024-11-12T14:31:35.6569576Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -51530,6 +51530,7 @@ components:
           s3CredentialId: 2
           accessIp: accessIp
           organizationName: organizationName
+          alertsCount: 7
           isOpaEnabled: true
           aiCredentialId: 4
           importClusterType: None
@@ -51677,6 +51678,7 @@ components:
           s3CredentialId: 2
           accessIp: accessIp
           organizationName: organizationName
+          alertsCount: 7
           isOpaEnabled: true
           aiCredentialId: 4
           importClusterType: None
@@ -51848,6 +51850,7 @@ components:
           s3CredentialId: 2
           accessIp: accessIp
           organizationName: organizationName
+          alertsCount: 7
           isOpaEnabled: true
           aiCredentialId: 4
           importClusterType: None
@@ -51906,6 +51909,7 @@ components:
         s3CredentialId: 2
         accessIp: accessIp
         organizationName: organizationName
+        alertsCount: 7
         isOpaEnabled: true
         aiCredentialId: 4
         importClusterType: None
@@ -51985,11 +51989,15 @@ components:
           type: integer
         expiredAt:
           type: string
+        alertsCount:
+          format: int32
+          type: integer
       required:
       - accessIp
       - aiCredentialId
       - aiEnabled
       - alertingProfileId
+      - alertsCount
       - expiredAt
       - health
       - id
@@ -52144,6 +52152,7 @@ components:
           s3CredentialId: 2
           accessIp: accessIp
           organizationName: organizationName
+          alertsCount: 7
           isOpaEnabled: true
           aiCredentialId: 4
           importClusterType: None

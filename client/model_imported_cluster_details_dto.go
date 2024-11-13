@@ -44,6 +44,7 @@ type ImportedClusterDetailsDto struct {
 	AiEnabled bool `json:"aiEnabled"`
 	AiCredentialId NullableInt32 `json:"aiCredentialId"`
 	ExpiredAt string `json:"expiredAt"`
+	AlertsCount int32 `json:"alertsCount"`
 }
 
 type _ImportedClusterDetailsDto ImportedClusterDetailsDto
@@ -52,7 +53,7 @@ type _ImportedClusterDetailsDto ImportedClusterDetailsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp NullableString, kubernetesVersion NullableString, importClusterType ImportClusterType, organizationId int32, organizationName string, health ProjectHealth, status ProjectStatus, isMonitoringEnabled bool, alertingProfileId NullableInt32, isOpaEnabled bool, opaProfileId NullableInt32, isBackupEnabled bool, s3CredentialId NullableInt32, aiEnabled bool, aiCredentialId NullableInt32, expiredAt string) *ImportedClusterDetailsDto {
+func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp NullableString, kubernetesVersion NullableString, importClusterType ImportClusterType, organizationId int32, organizationName string, health ProjectHealth, status ProjectStatus, isMonitoringEnabled bool, alertingProfileId NullableInt32, isOpaEnabled bool, opaProfileId NullableInt32, isBackupEnabled bool, s3CredentialId NullableInt32, aiEnabled bool, aiCredentialId NullableInt32, expiredAt string, alertsCount int32) *ImportedClusterDetailsDto {
 	this := ImportedClusterDetailsDto{}
 	this.Id = id
 	this.Name = name
@@ -73,6 +74,7 @@ func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp
 	this.AiEnabled = aiEnabled
 	this.AiCredentialId = aiCredentialId
 	this.ExpiredAt = expiredAt
+	this.AlertsCount = alertsCount
 	return &this
 }
 
@@ -668,6 +670,30 @@ func (o *ImportedClusterDetailsDto) SetExpiredAt(v string) {
 	o.ExpiredAt = v
 }
 
+// GetAlertsCount returns the AlertsCount field value
+func (o *ImportedClusterDetailsDto) GetAlertsCount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.AlertsCount
+}
+
+// GetAlertsCountOk returns a tuple with the AlertsCount field value
+// and a boolean to check if the value has been set.
+func (o *ImportedClusterDetailsDto) GetAlertsCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AlertsCount, true
+}
+
+// SetAlertsCount sets field value
+func (o *ImportedClusterDetailsDto) SetAlertsCount(v int32) {
+	o.AlertsCount = v
+}
+
 func (o ImportedClusterDetailsDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -706,6 +732,7 @@ func (o ImportedClusterDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["aiEnabled"] = o.AiEnabled
 	toSerialize["aiCredentialId"] = o.AiCredentialId.Get()
 	toSerialize["expiredAt"] = o.ExpiredAt
+	toSerialize["alertsCount"] = o.AlertsCount
 	return toSerialize, nil
 }
 
@@ -733,6 +760,7 @@ func (o *ImportedClusterDetailsDto) UnmarshalJSON(data []byte) (err error) {
 		"aiEnabled",
 		"aiCredentialId",
 		"expiredAt",
+		"alertsCount",
 	}
 
 	allProperties := make(map[string]interface{})
