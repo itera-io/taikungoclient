@@ -32,6 +32,7 @@ type CommonDropdownIsBoundDtoForProject struct {
 	CloudType *CloudType `json:"cloudType,omitempty"`
 	Status *ProjectStatus `json:"status,omitempty"`
 	Health *ProjectHealth `json:"health,omitempty"`
+	ImportClusterType *ImportClusterType `json:"importClusterType,omitempty"`
 }
 
 // NewCommonDropdownIsBoundDtoForProject instantiates a new CommonDropdownIsBoundDtoForProject object
@@ -465,6 +466,38 @@ func (o *CommonDropdownIsBoundDtoForProject) SetHealth(v ProjectHealth) {
 	o.Health = &v
 }
 
+// GetImportClusterType returns the ImportClusterType field value if set, zero value otherwise.
+func (o *CommonDropdownIsBoundDtoForProject) GetImportClusterType() ImportClusterType {
+	if o == nil || IsNil(o.ImportClusterType) {
+		var ret ImportClusterType
+		return ret
+	}
+	return *o.ImportClusterType
+}
+
+// GetImportClusterTypeOk returns a tuple with the ImportClusterType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CommonDropdownIsBoundDtoForProject) GetImportClusterTypeOk() (*ImportClusterType, bool) {
+	if o == nil || IsNil(o.ImportClusterType) {
+		return nil, false
+	}
+	return o.ImportClusterType, true
+}
+
+// HasImportClusterType returns a boolean if a field has been set.
+func (o *CommonDropdownIsBoundDtoForProject) HasImportClusterType() bool {
+	if o != nil && !IsNil(o.ImportClusterType) {
+		return true
+	}
+
+	return false
+}
+
+// SetImportClusterType gets a reference to the given ImportClusterType and assigns it to the ImportClusterType field.
+func (o *CommonDropdownIsBoundDtoForProject) SetImportClusterType(v ImportClusterType) {
+	o.ImportClusterType = &v
+}
+
 func (o CommonDropdownIsBoundDtoForProject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -510,6 +543,9 @@ func (o CommonDropdownIsBoundDtoForProject) ToMap() (map[string]interface{}, err
 	}
 	if !IsNil(o.Health) {
 		toSerialize["health"] = o.Health
+	}
+	if !IsNil(o.ImportClusterType) {
+		toSerialize["importClusterType"] = o.ImportClusterType
 	}
 	return toSerialize, nil
 }

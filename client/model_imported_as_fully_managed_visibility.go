@@ -35,6 +35,7 @@ type ImportedAsFullyManagedVisibility struct {
 	DisableOpa ButtonStatusDto `json:"disableOpa"`
 	EnableBackup ButtonStatusDto `json:"enableBackup"`
 	DisableBackup ButtonStatusDto `json:"disableBackup"`
+	AiAssistant ButtonStatusDto `json:"aiAssistant"`
 }
 
 type _ImportedAsFullyManagedVisibility ImportedAsFullyManagedVisibility
@@ -43,7 +44,7 @@ type _ImportedAsFullyManagedVisibility ImportedAsFullyManagedVisibility
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportedAsFullyManagedVisibility(lock ButtonStatusDto, unlock ButtonStatusDto, addVCluster ButtonStatusDto, attachAlertingProfile ButtonStatusDto, detachAlertingProfile ButtonStatusDto, enableMonitoring ButtonStatusDto, disableMonitoring ButtonStatusDto, enableAi ButtonStatusDto, disableAi ButtonStatusDto, enableOpa ButtonStatusDto, disableOpa ButtonStatusDto, enableBackup ButtonStatusDto, disableBackup ButtonStatusDto) *ImportedAsFullyManagedVisibility {
+func NewImportedAsFullyManagedVisibility(lock ButtonStatusDto, unlock ButtonStatusDto, addVCluster ButtonStatusDto, attachAlertingProfile ButtonStatusDto, detachAlertingProfile ButtonStatusDto, enableMonitoring ButtonStatusDto, disableMonitoring ButtonStatusDto, enableAi ButtonStatusDto, disableAi ButtonStatusDto, enableOpa ButtonStatusDto, disableOpa ButtonStatusDto, enableBackup ButtonStatusDto, disableBackup ButtonStatusDto, aiAssistant ButtonStatusDto) *ImportedAsFullyManagedVisibility {
 	this := ImportedAsFullyManagedVisibility{}
 	this.Lock = lock
 	this.Unlock = unlock
@@ -58,6 +59,7 @@ func NewImportedAsFullyManagedVisibility(lock ButtonStatusDto, unlock ButtonStat
 	this.DisableOpa = disableOpa
 	this.EnableBackup = enableBackup
 	this.DisableBackup = disableBackup
+	this.AiAssistant = aiAssistant
 	return &this
 }
 
@@ -381,6 +383,30 @@ func (o *ImportedAsFullyManagedVisibility) SetDisableBackup(v ButtonStatusDto) {
 	o.DisableBackup = v
 }
 
+// GetAiAssistant returns the AiAssistant field value
+func (o *ImportedAsFullyManagedVisibility) GetAiAssistant() ButtonStatusDto {
+	if o == nil {
+		var ret ButtonStatusDto
+		return ret
+	}
+
+	return o.AiAssistant
+}
+
+// GetAiAssistantOk returns a tuple with the AiAssistant field value
+// and a boolean to check if the value has been set.
+func (o *ImportedAsFullyManagedVisibility) GetAiAssistantOk() (*ButtonStatusDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AiAssistant, true
+}
+
+// SetAiAssistant sets field value
+func (o *ImportedAsFullyManagedVisibility) SetAiAssistant(v ButtonStatusDto) {
+	o.AiAssistant = v
+}
+
 func (o ImportedAsFullyManagedVisibility) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -404,6 +430,7 @@ func (o ImportedAsFullyManagedVisibility) ToMap() (map[string]interface{}, error
 	toSerialize["disableOpa"] = o.DisableOpa
 	toSerialize["enableBackup"] = o.EnableBackup
 	toSerialize["disableBackup"] = o.DisableBackup
+	toSerialize["aiAssistant"] = o.AiAssistant
 	return toSerialize, nil
 }
 
@@ -425,6 +452,7 @@ func (o *ImportedAsFullyManagedVisibility) UnmarshalJSON(data []byte) (err error
 		"disableOpa",
 		"enableBackup",
 		"disableBackup",
+		"aiAssistant",
 	}
 
 	allProperties := make(map[string]interface{})
