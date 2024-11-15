@@ -356,6 +356,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesCli**](docs/KubernetesAPI.md#kubernetescli) | **Post** /api/v1/kubernetes/cli | Execute k8s web socket namespaced pod
 *KubernetesAPI* | [**KubernetesConfigMapList**](docs/KubernetesAPI.md#kubernetesconfigmaplist) | **Get** /api/v1/kubernetes/{projectId}/configmap | Retrieve a list of k8s config map for all namespaces
 *KubernetesAPI* | [**KubernetesCrdList**](docs/KubernetesAPI.md#kubernetescrdlist) | **Get** /api/v1/kubernetes/{projectId}/crd | Retrieve a list of crd
+*KubernetesAPI* | [**KubernetesCreateResource**](docs/KubernetesAPI.md#kubernetescreateresource) | **Post** /api/v1/kubernetes/create-resource | Create kubernetes resource
 *KubernetesAPI* | [**KubernetesCronJobList**](docs/KubernetesAPI.md#kubernetescronjoblist) | **Get** /api/v1/kubernetes/{projectId}/cronjobs | Retrieve a list of k8s cron jobs for all namespaces
 *KubernetesAPI* | [**KubernetesCursorPodList**](docs/KubernetesAPI.md#kubernetescursorpodlist) | **Get** /api/v1/kubernetes/{projectId}/cursor-pod | Retrieve cursor list of k8s pod for all namespaces
 *KubernetesAPI* | [**KubernetesDaemonSetList**](docs/KubernetesAPI.md#kubernetesdaemonsetlist) | **Get** /api/v1/kubernetes/{projectId}/daemonset | Retrieve list of k8s daemonset
@@ -971,6 +972,7 @@ Class | Method | HTTP request | Description
  - [CreateInvoiceCommand](docs/CreateInvoiceCommand.md)
  - [CreateKubeConfigCommand](docs/CreateKubeConfigCommand.md)
  - [CreateKubernetesProfileCommand](docs/CreateKubernetesProfileCommand.md)
+ - [CreateKubernetesResourceCommand](docs/CreateKubernetesResourceCommand.md)
  - [CreateNtpServerCommand](docs/CreateNtpServerCommand.md)
  - [CreateOpaProfileCommand](docs/CreateOpaProfileCommand.md)
  - [CreateOpenstackCloudCommand](docs/CreateOpenstackCloudCommand.md)
@@ -1076,6 +1078,7 @@ Class | Method | HTTP request | Description
  - [DuplicateNameCheckerCommand](docs/DuplicateNameCheckerCommand.md)
  - [EImportClusterType](docs/EImportClusterType.md)
  - [EInstanceStatus](docs/EInstanceStatus.md)
+ - [EKubernetesResource](docs/EKubernetesResource.md)
  - [EKubernetesState](docs/EKubernetesState.md)
  - [EditAlertingIntegrationCommand](docs/EditAlertingIntegrationCommand.md)
  - [EditAllowedHostDto](docs/EditAllowedHostDto.md)

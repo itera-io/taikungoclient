@@ -682,7 +682,13 @@ func (a *CatalogAPIService) CatalogDeleteProjectExecute(r ApiCatalogDeleteProjec
 type ApiCatalogDropdownRequest struct {
 	ctx context.Context
 	ApiService *CatalogAPIService
+	organizationId *int32
 	search *string
+}
+
+func (r ApiCatalogDropdownRequest) OrganizationId(organizationId int32) ApiCatalogDropdownRequest {
+	r.organizationId = &organizationId
+	return r
 }
 
 func (r ApiCatalogDropdownRequest) Search(search string) ApiCatalogDropdownRequest {
@@ -728,6 +734,9 @@ func (a *CatalogAPIService) CatalogDropdownExecute(r ApiCatalogDropdownRequest) 
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
 	if r.search != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
 	}
@@ -1021,12 +1030,18 @@ func (a *CatalogAPIService) CatalogEditExecute(r ApiCatalogEditRequest) (*http.R
 type ApiCatalogListRequest struct {
 	ctx context.Context
 	ApiService *CatalogAPIService
+	organizationId *int32
 	offset *int32
 	limit *int32
 	sortBy *string
 	sortDirection *string
 	search *string
 	id *int32
+}
+
+func (r ApiCatalogListRequest) OrganizationId(organizationId int32) ApiCatalogListRequest {
+	r.organizationId = &organizationId
+	return r
 }
 
 func (r ApiCatalogListRequest) Offset(offset int32) ApiCatalogListRequest {
@@ -1097,6 +1112,9 @@ func (a *CatalogAPIService) CatalogListExecute(r ApiCatalogListRequest) (*Catalo
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
 	if r.offset != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Offset", r.offset, "form", "")
 	}

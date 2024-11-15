@@ -301,6 +301,7 @@ docs/CreateInfraProductCommand.md
 docs/CreateInvoiceCommand.md
 docs/CreateKubeConfigCommand.md
 docs/CreateKubernetesProfileCommand.md
+docs/CreateKubernetesResourceCommand.md
 docs/CreateNtpServerCommand.md
 docs/CreateOpaProfileCommand.md
 docs/CreateOpenstackCloudCommand.md
@@ -408,6 +409,7 @@ docs/DownloadKubeConfigCommand.md
 docs/DuplicateNameCheckerCommand.md
 docs/EImportClusterType.md
 docs/EInstanceStatus.md
+docs/EKubernetesResource.md
 docs/EKubernetesState.md
 docs/EditAlertingIntegrationCommand.md
 docs/EditAllowedHostDto.md
@@ -1208,6 +1210,7 @@ model_create_infra_product_command.go
 model_create_invoice_command.go
 model_create_kube_config_command.go
 model_create_kubernetes_profile_command.go
+model_create_kubernetes_resource_command.go
 model_create_ntp_server_command.go
 model_create_opa_profile_command.go
 model_create_openstack_cloud_command.go
@@ -1313,6 +1316,7 @@ model_download_kube_config_command.go
 model_duplicate_name_checker_command.go
 model_e_import_cluster_type.go
 model_e_instance_status.go
+model_e_kubernetes_resource.go
 model_e_kubernetes_state.go
 model_edit_alerting_integration_command.go
 model_edit_allowed_host_dto.go

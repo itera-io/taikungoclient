@@ -5434,8 +5434,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-11-13T18:03:23.3014269Z
-                  createdAt: 2024-11-13T18:03:23.3014269Z
+                  lastValidated: 2024-11-15T00:03:32.0559737Z
+                  createdAt: 2024-11-15T00:03:32.0559737Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5540,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-11-13T18:03:23.3014269Z
+                    lastBackup: 2024-11-15T00:03:32.0559737Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-11-13T18:03:23.3014269Z
+                  createdAt: 2024-11-15T00:03:32.0559737Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-11-13T18:03:23.3014269Z
+                  lastBackup: 2024-11-15T00:03:32.0559737Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5652,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-13T18:03:23.3014269Z
-                  expiration: 2024-11-13T18:03:23.3014269Z
+                  createdAt: 2024-11-15T00:03:32.0559737Z
+                  expiration: 2024-11-15T00:03:32.0559737Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5757,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-13T18:03:23.3014269Z
+                  createdAt: 2024-11-15T00:03:32.0559737Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5867,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-11-13T18:03:23.3014269+00:00
-                  startTimeStamp: 2024-11-13T18:03:23.3014269+00:00
-                  createdAt: 2024-11-13T18:03:23.3014269Z
+                  completionDateTime: 2024-11-15T00:03:32.0559737+00:00
+                  startTimeStamp: 2024-11-15T00:03:32.0559737+00:00
+                  createdAt: 2024-11-15T00:03:32.0559737Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -6482,6 +6482,14 @@ paths:
       parameters:
       - explode: true
         in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
         name: Search
         required: false
         schema:
@@ -6533,6 +6541,14 @@ paths:
     get:
       operationId: catalog-list
       parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       - explode: true
         in: query
         name: Offset
@@ -15756,6 +15772,49 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Add k8s event
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/create-resource:
+    post:
+      operationId: kubernetes-create-resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateKubernetesResourceCommand'
+        required: true
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Create kubernetes resource
       tags:
       - Kubernetes
   /api/v1/kubernetes/removealerts:
@@ -45240,6 +45299,7 @@ components:
     CreateCatalogCommand:
       additionalProperties: false
       example:
+        organizationId: 0
         name: name
         description: description
       properties:
@@ -45249,6 +45309,10 @@ components:
         description:
           nullable: true
           type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     CreateDnsServerCommand:
       additionalProperties: false
@@ -45452,6 +45516,22 @@ components:
           type: boolean
         wasmEnabled:
           type: boolean
+      type: object
+    CreateKubernetesResourceCommand:
+      additionalProperties: false
+      example:
+        kind: DaemonSet
+        projectId: 0
+        yaml: yaml
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        yaml:
+          nullable: true
+          type: string
+        kind:
+          $ref: '#/components/schemas/EKubernetesResource'
       type: object
     CreateNtpServerCommand:
       additionalProperties: false
@@ -48573,6 +48653,22 @@ components:
       - Ready
       - NotReady
       - Failure
+      type: string
+    EKubernetesResource:
+      enum:
+      - DaemonSet
+      - Pvc
+      - Deployment
+      - ConfigMap
+      - Secret
+      - StateFulSet
+      - Service
+      - Pod
+      - Ingress
+      - Pdb
+      - CronJob
+      - Job
+      - NetWorkPolicy
       type: string
     EKubernetesState:
       enum:
