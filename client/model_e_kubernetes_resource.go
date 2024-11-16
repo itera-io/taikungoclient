@@ -33,7 +33,7 @@ const (
 	EKUBERNETESRESOURCE_PDB EKubernetesResource = "Pdb"
 	EKUBERNETESRESOURCE_CRON_JOB EKubernetesResource = "CronJob"
 	EKUBERNETESRESOURCE_JOB EKubernetesResource = "Job"
-	EKUBERNETESRESOURCE_NET_WORK_POLICY EKubernetesResource = "NetWorkPolicy"
+	EKUBERNETESRESOURCE_NETWORK_POLICY EKubernetesResource = "NetworkPolicy"
 )
 
 // All allowed values of EKubernetesResource enum
@@ -50,7 +50,7 @@ var AllowedEKubernetesResourceEnumValues = []EKubernetesResource{
 	"Pdb",
 	"CronJob",
 	"Job",
-	"NetWorkPolicy",
+	"NetworkPolicy",
 }
 
 func (v *EKubernetesResource) UnmarshalJSON(src []byte) error {
