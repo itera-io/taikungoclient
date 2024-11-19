@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CreateKubernetesResourceCommand type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,22 @@ var _ MappedNullable = &CreateKubernetesResourceCommand{}
 
 // CreateKubernetesResourceCommand struct for CreateKubernetesResourceCommand
 type CreateKubernetesResourceCommand struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	Yaml NullableString `json:"yaml,omitempty"`
-	Kind *EKubernetesResource `json:"kind,omitempty"`
+	ProjectId int32 `json:"projectId"`
+	Yaml NullableString `json:"yaml"`
+	Kind EKubernetesResource `json:"kind"`
 }
+
+type _CreateKubernetesResourceCommand CreateKubernetesResourceCommand
 
 // NewCreateKubernetesResourceCommand instantiates a new CreateKubernetesResourceCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateKubernetesResourceCommand() *CreateKubernetesResourceCommand {
+func NewCreateKubernetesResourceCommand(projectId int32, yaml NullableString, kind EKubernetesResource) *CreateKubernetesResourceCommand {
 	this := CreateKubernetesResourceCommand{}
+	this.ProjectId = projectId
+	this.Yaml = yaml
+	this.Kind = kind
 	return &this
 }
 
@@ -42,48 +49,42 @@ func NewCreateKubernetesResourceCommandWithDefaults() *CreateKubernetesResourceC
 	return &this
 }
 
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+// GetProjectId returns the ProjectId field value
 func (o *CreateKubernetesResourceCommand) GetProjectId() int32 {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ProjectId
+
+	return o.ProjectId
 }
 
-// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// GetProjectIdOk returns a tuple with the ProjectId field value
 // and a boolean to check if the value has been set.
 func (o *CreateKubernetesResourceCommand) GetProjectIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectId, true
+	return &o.ProjectId, true
 }
 
-// HasProjectId returns a boolean if a field has been set.
-func (o *CreateKubernetesResourceCommand) HasProjectId() bool {
-	if o != nil && !IsNil(o.ProjectId) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
+// SetProjectId sets field value
 func (o *CreateKubernetesResourceCommand) SetProjectId(v int32) {
-	o.ProjectId = &v
+	o.ProjectId = v
 }
 
-// GetYaml returns the Yaml field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetYaml returns the Yaml field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CreateKubernetesResourceCommand) GetYaml() string {
-	if o == nil || IsNil(o.Yaml.Get()) {
+	if o == nil || o.Yaml.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Yaml.Get()
 }
 
-// GetYamlOk returns a tuple with the Yaml field value if set, nil otherwise
+// GetYamlOk returns a tuple with the Yaml field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CreateKubernetesResourceCommand) GetYamlOk() (*string, bool) {
@@ -93,59 +94,33 @@ func (o *CreateKubernetesResourceCommand) GetYamlOk() (*string, bool) {
 	return o.Yaml.Get(), o.Yaml.IsSet()
 }
 
-// HasYaml returns a boolean if a field has been set.
-func (o *CreateKubernetesResourceCommand) HasYaml() bool {
-	if o != nil && o.Yaml.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetYaml gets a reference to the given NullableString and assigns it to the Yaml field.
+// SetYaml sets field value
 func (o *CreateKubernetesResourceCommand) SetYaml(v string) {
 	o.Yaml.Set(&v)
 }
-// SetYamlNil sets the value for Yaml to be an explicit nil
-func (o *CreateKubernetesResourceCommand) SetYamlNil() {
-	o.Yaml.Set(nil)
-}
 
-// UnsetYaml ensures that no value is present for Yaml, not even an explicit nil
-func (o *CreateKubernetesResourceCommand) UnsetYaml() {
-	o.Yaml.Unset()
-}
-
-// GetKind returns the Kind field value if set, zero value otherwise.
+// GetKind returns the Kind field value
 func (o *CreateKubernetesResourceCommand) GetKind() EKubernetesResource {
-	if o == nil || IsNil(o.Kind) {
+	if o == nil {
 		var ret EKubernetesResource
 		return ret
 	}
-	return *o.Kind
+
+	return o.Kind
 }
 
-// GetKindOk returns a tuple with the Kind field value if set, nil otherwise
+// GetKindOk returns a tuple with the Kind field value
 // and a boolean to check if the value has been set.
 func (o *CreateKubernetesResourceCommand) GetKindOk() (*EKubernetesResource, bool) {
-	if o == nil || IsNil(o.Kind) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Kind, true
+	return &o.Kind, true
 }
 
-// HasKind returns a boolean if a field has been set.
-func (o *CreateKubernetesResourceCommand) HasKind() bool {
-	if o != nil && !IsNil(o.Kind) {
-		return true
-	}
-
-	return false
-}
-
-// SetKind gets a reference to the given EKubernetesResource and assigns it to the Kind field.
+// SetKind sets field value
 func (o *CreateKubernetesResourceCommand) SetKind(v EKubernetesResource) {
-	o.Kind = &v
+	o.Kind = v
 }
 
 func (o CreateKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
@@ -158,16 +133,49 @@ func (o CreateKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
 
 func (o CreateKubernetesResourceCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ProjectId) {
-		toSerialize["projectId"] = o.ProjectId
-	}
-	if o.Yaml.IsSet() {
-		toSerialize["yaml"] = o.Yaml.Get()
-	}
-	if !IsNil(o.Kind) {
-		toSerialize["kind"] = o.Kind
-	}
+	toSerialize["projectId"] = o.ProjectId
+	toSerialize["yaml"] = o.Yaml.Get()
+	toSerialize["kind"] = o.Kind
 	return toSerialize, nil
+}
+
+func (o *CreateKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"projectId",
+		"yaml",
+		"kind",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCreateKubernetesResourceCommand := _CreateKubernetesResourceCommand{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCreateKubernetesResourceCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreateKubernetesResourceCommand(varCreateKubernetesResourceCommand)
+
+	return err
 }
 
 type NullableCreateKubernetesResourceCommand struct {

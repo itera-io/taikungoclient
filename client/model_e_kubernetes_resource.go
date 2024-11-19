@@ -26,7 +26,7 @@ const (
 	EKUBERNETESRESOURCE_DEPLOYMENT EKubernetesResource = "Deployment"
 	EKUBERNETESRESOURCE_CONFIG_MAP EKubernetesResource = "ConfigMap"
 	EKUBERNETESRESOURCE_SECRET EKubernetesResource = "Secret"
-	EKUBERNETESRESOURCE_STATE_FUL_SET EKubernetesResource = "StateFulSet"
+	EKUBERNETESRESOURCE_STS EKubernetesResource = "Sts"
 	EKUBERNETESRESOURCE_SERVICE EKubernetesResource = "Service"
 	EKUBERNETESRESOURCE_POD EKubernetesResource = "Pod"
 	EKUBERNETESRESOURCE_INGRESS EKubernetesResource = "Ingress"
@@ -43,7 +43,7 @@ var AllowedEKubernetesResourceEnumValues = []EKubernetesResource{
 	"Deployment",
 	"ConfigMap",
 	"Secret",
-	"StateFulSet",
+	"Sts",
 	"Service",
 	"Pod",
 	"Ingress",

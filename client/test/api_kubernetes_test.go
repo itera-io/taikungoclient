@@ -562,110 +562,11 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test KubernetesAPIService KubernetesPatchCrd", func(t *testing.T) {
+	t.Run("Test KubernetesAPIService KubernetesPatchResource", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchCrd(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test KubernetesAPIService KubernetesPatchCronJob", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchCronJob(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test KubernetesAPIService KubernetesPatchIngress", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchIngress(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test KubernetesAPIService KubernetesPatchJob", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchJob(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test KubernetesAPIService KubernetesPatchNode", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchNode(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test KubernetesAPIService KubernetesPatchPdb", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchPdb(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test KubernetesAPIService KubernetesPatchPod", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchPod(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test KubernetesAPIService KubernetesPatchPvc", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchPvc(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test KubernetesAPIService KubernetesPatchSecret", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchSecret(context.Background()).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test KubernetesAPIService KubernetesPatchSts", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchSts(context.Background()).Execute()
+		httpRes, err := apiClient.KubernetesAPI.KubernetesPatchResource(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
