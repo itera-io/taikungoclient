@@ -21,6 +21,7 @@ var _ MappedNullable = &UnbindAppRepositoryCommand{}
 // UnbindAppRepositoryCommand struct for UnbindAppRepositoryCommand
 type UnbindAppRepositoryCommand struct {
 	Ids []string `json:"ids,omitempty"`
+	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
 }
 
 // NewUnbindAppRepositoryCommand instantiates a new UnbindAppRepositoryCommand object
@@ -73,6 +74,48 @@ func (o *UnbindAppRepositoryCommand) SetIds(v []string) {
 	o.Ids = v
 }
 
+// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *UnbindAppRepositoryCommand) GetOrganizationId() int32 {
+	if o == nil || IsNil(o.OrganizationId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.OrganizationId.Get()
+}
+
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *UnbindAppRepositoryCommand) GetOrganizationIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
+}
+
+// HasOrganizationId returns a boolean if a field has been set.
+func (o *UnbindAppRepositoryCommand) HasOrganizationId() bool {
+	if o != nil && o.OrganizationId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
+func (o *UnbindAppRepositoryCommand) SetOrganizationId(v int32) {
+	o.OrganizationId.Set(&v)
+}
+// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
+func (o *UnbindAppRepositoryCommand) SetOrganizationIdNil() {
+	o.OrganizationId.Set(nil)
+}
+
+// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
+func (o *UnbindAppRepositoryCommand) UnsetOrganizationId() {
+	o.OrganizationId.Unset()
+}
+
 func (o UnbindAppRepositoryCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -85,6 +128,9 @@ func (o UnbindAppRepositoryCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Ids != nil {
 		toSerialize["ids"] = o.Ids
+	}
+	if o.OrganizationId.IsSet() {
+		toSerialize["organizationId"] = o.OrganizationId.Get()
 	}
 	return toSerialize, nil
 }

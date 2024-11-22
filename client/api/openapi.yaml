@@ -2953,6 +2953,15 @@ paths:
   /api/v1/repository/list:
     get:
       operationId: repository-list
+      parameters:
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -3050,6 +3059,14 @@ paths:
         schema:
           type: boolean
         style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
       responses:
         "200":
           content:
@@ -3100,6 +3117,14 @@ paths:
         required: false
         schema:
           type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: OrganizationId
+        required: false
+        schema:
+          format: int32
+          type: integer
         style: form
       responses:
         "200":
@@ -5434,8 +5459,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-11-21T00:03:28.4620244Z
-                  createdAt: 2024-11-21T00:03:28.4620244Z
+                  lastValidated: 2024-11-22T00:03:30.9783046Z
+                  createdAt: 2024-11-22T00:03:30.9783046Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5540,14 +5565,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-11-21T00:03:28.4620244Z
+                    lastBackup: 2024-11-22T00:03:30.9783046Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-11-21T00:03:28.4620244Z
+                  createdAt: 2024-11-22T00:03:30.9783046Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-11-21T00:03:28.4620244Z
+                  lastBackup: 2024-11-22T00:03:30.9783046Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5652,8 +5677,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-21T00:03:28.4620244Z
-                  expiration: 2024-11-21T00:03:28.4620244Z
+                  createdAt: 2024-11-22T00:03:30.9783046Z
+                  expiration: 2024-11-22T00:03:30.9783046Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5757,7 +5782,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-21T00:03:28.4620244Z
+                  createdAt: 2024-11-22T00:03:30.9783046Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5867,9 +5892,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-11-21T00:03:28.4620244+00:00
-                  startTimeStamp: 2024-11-21T00:03:28.4620244+00:00
-                  createdAt: 2024-11-21T00:03:28.4620244Z
+                  completionDateTime: 2024-11-22T00:03:30.9783046+00:00
+                  startTimeStamp: 2024-11-22T00:03:30.9783046+00:00
+                  createdAt: 2024-11-22T00:03:30.9783046Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -42162,6 +42187,7 @@ components:
     BindAppRepositoryCommand:
       additionalProperties: false
       example:
+        organizationId: 0
         filteringElements:
         - organizationName: organizationName
           name: name
@@ -42173,6 +42199,10 @@ components:
             $ref: '#/components/schemas/FilteringElementDto'
           nullable: true
           type: array
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     BindFlavorToProjectCommand:
       additionalProperties: false
@@ -66339,6 +66369,7 @@ components:
     UnbindAppRepositoryCommand:
       additionalProperties: false
       example:
+        organizationId: 0
         ids:
         - ids
         - ids
@@ -66348,6 +66379,10 @@ components:
             type: string
           nullable: true
           type: array
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     UnbindFlavorFromProjectCommand:
       additionalProperties: false

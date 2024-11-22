@@ -33,6 +33,7 @@ type ApiRepositoryAvailableListRequest struct {
 	search *string
 	id *string
 	isPrivate *bool
+	organizationId *int32
 }
 
 func (r ApiRepositoryAvailableListRequest) Offset(offset int32) ApiRepositoryAvailableListRequest {
@@ -67,6 +68,11 @@ func (r ApiRepositoryAvailableListRequest) Id(id string) ApiRepositoryAvailableL
 
 func (r ApiRepositoryAvailableListRequest) IsPrivate(isPrivate bool) ApiRepositoryAvailableListRequest {
 	r.isPrivate = &isPrivate
+	return r
+}
+
+func (r ApiRepositoryAvailableListRequest) OrganizationId(organizationId int32) ApiRepositoryAvailableListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -128,6 +134,9 @@ func (a *AppRepositoriesAPIService) RepositoryAvailableListExecute(r ApiReposito
 	}
 	if r.isPrivate != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsPrivate", r.isPrivate, "form", "")
+	}
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -743,6 +752,12 @@ func (a *AppRepositoriesAPIService) RepositoryImportExecute(r ApiRepositoryImpor
 type ApiRepositoryListRequest struct {
 	ctx context.Context
 	ApiService *AppRepositoriesAPIService
+	organizationId *int32
+}
+
+func (r ApiRepositoryListRequest) OrganizationId(organizationId int32) ApiRepositoryListRequest {
+	r.organizationId = &organizationId
+	return r
 }
 
 func (r ApiRepositoryListRequest) Execute() ([]string, *http.Response, error) {
@@ -783,6 +798,9 @@ func (a *AppRepositoriesAPIService) RepositoryListExecute(r ApiRepositoryListReq
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -909,10 +927,16 @@ type ApiRepositoryRecommendedListRequest struct {
 	ctx context.Context
 	ApiService *AppRepositoriesAPIService
 	isTaikun *bool
+	organizationId *int32
 }
 
 func (r ApiRepositoryRecommendedListRequest) IsTaikun(isTaikun bool) ApiRepositoryRecommendedListRequest {
 	r.isTaikun = &isTaikun
+	return r
+}
+
+func (r ApiRepositoryRecommendedListRequest) OrganizationId(organizationId int32) ApiRepositoryRecommendedListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -956,6 +980,9 @@ func (a *AppRepositoriesAPIService) RepositoryRecommendedListExecute(r ApiReposi
 
 	if r.isTaikun != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsTaikun", r.isTaikun, "form", "")
+	}
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
