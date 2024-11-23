@@ -80,6 +80,7 @@ All URIs are relative to *http://localhost*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AWSCloudCredentialAPI* | [**AwsCreate**](docs/AWSCloudCredentialAPI.md#awscreate) | **Post** /api/v1/aws/create | Add Aws credentials
+*AWSCloudCredentialAPI* | [**AwsEksClusters**](docs/AWSCloudCredentialAPI.md#awseksclusters) | **Get** /api/v1/aws/eks-clusters/{cloudId} | Retrieve eks clusters list
 *AWSCloudCredentialAPI* | [**AwsList**](docs/AWSCloudCredentialAPI.md#awslist) | **Get** /api/v1/aws/list | Retrieve list of aws cloud credentials
 *AWSCloudCredentialAPI* | [**AwsOwners**](docs/AWSCloudCredentialAPI.md#awsowners) | **Get** /api/v1/aws/owners | Retrieve aws verified owner list
 *AWSCloudCredentialAPI* | [**AwsRegionlist**](docs/AWSCloudCredentialAPI.md#awsregionlist) | **Post** /api/v1/aws/regions | Retrieve aws regions list

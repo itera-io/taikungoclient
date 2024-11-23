@@ -2330,23 +2330,20 @@ type ApiProjectDeploymentImportClusterRequest struct {
 	ctx context.Context
 	ApiService *ProjectDeploymentAPIService
 	name *string
-	config *os.File
 	isTaikunIngressController *bool
 	isExistingIngressController *bool
+	config *os.File
 	ingressClass *string
 	ingressHost *string
 	continent *string
 	importType *EImportClusterType
 	organizationId *int32
+	cloudId *int32
+	importClusterName *string
 }
 
 func (r ApiProjectDeploymentImportClusterRequest) Name(name string) ApiProjectDeploymentImportClusterRequest {
 	r.name = &name
-	return r
-}
-
-func (r ApiProjectDeploymentImportClusterRequest) Config(config *os.File) ApiProjectDeploymentImportClusterRequest {
-	r.config = config
 	return r
 }
 
@@ -2357,6 +2354,11 @@ func (r ApiProjectDeploymentImportClusterRequest) IsTaikunIngressController(isTa
 
 func (r ApiProjectDeploymentImportClusterRequest) IsExistingIngressController(isExistingIngressController bool) ApiProjectDeploymentImportClusterRequest {
 	r.isExistingIngressController = &isExistingIngressController
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) Config(config *os.File) ApiProjectDeploymentImportClusterRequest {
+	r.config = config
 	return r
 }
 
@@ -2382,6 +2384,16 @@ func (r ApiProjectDeploymentImportClusterRequest) ImportType(importType EImportC
 
 func (r ApiProjectDeploymentImportClusterRequest) OrganizationId(organizationId int32) ApiProjectDeploymentImportClusterRequest {
 	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) CloudId(cloudId int32) ApiProjectDeploymentImportClusterRequest {
+	r.cloudId = &cloudId
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) ImportClusterName(importClusterName string) ApiProjectDeploymentImportClusterRequest {
+	r.importClusterName = &importClusterName
 	return r
 }
 
@@ -2422,9 +2434,6 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentImportClusterExecute(r Ap
 	localVarFormParams := url.Values{}
 	if r.name == nil {
 		return nil, reportError("name is required and must be specified")
-	}
-	if r.config == nil {
-		return nil, reportError("config is required and must be specified")
 	}
 	if r.isTaikunIngressController == nil {
 		return nil, reportError("isTaikunIngressController is required and must be specified")
@@ -2482,6 +2491,12 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentImportClusterExecute(r Ap
 	}
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "organizationId", r.organizationId, "", "")
+	}
+	if r.cloudId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "cloudId", r.cloudId, "", "")
+	}
+	if r.importClusterName != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "importClusterName", r.importClusterName, "", "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
