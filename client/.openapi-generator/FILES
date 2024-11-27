@@ -162,6 +162,7 @@ docs/AvailablePackageDetailsDto.md
 docs/AvailablePackagesDto.md
 docs/AvailablePackagesList.md
 docs/AwsCredentialList.md
+docs/AwsEksNodeGroupDto.md
 docs/AwsFlavorList.md
 docs/AwsFlavorListDto.md
 docs/AwsImagesPostListCommand.md
@@ -1070,6 +1071,7 @@ model_available_package_details_dto.go
 model_available_packages_dto.go
 model_available_packages_list.go
 model_aws_credential_list.go
+model_aws_eks_node_group_dto.go
 model_aws_flavor_list.go
 model_aws_flavor_list_dto.go
 model_aws_images_post_list_command.go

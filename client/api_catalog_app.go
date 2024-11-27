@@ -359,12 +359,6 @@ type ApiCatalogAppDetailsRequest struct {
 	ctx context.Context
 	ApiService *CatalogAppAPIService
 	catalogAppId int32
-	organizationId *int32
-}
-
-func (r ApiCatalogAppDetailsRequest) OrganizationId(organizationId int32) ApiCatalogAppDetailsRequest {
-	r.organizationId = &organizationId
-	return r
 }
 
 func (r ApiCatalogAppDetailsRequest) Execute() (*CatalogAppDetailsDto, *http.Response, error) {
@@ -408,9 +402,6 @@ func (a *CatalogAppAPIService) CatalogAppDetailsExecute(r ApiCatalogAppDetailsRe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.organizationId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

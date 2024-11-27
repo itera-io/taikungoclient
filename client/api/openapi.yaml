@@ -3989,6 +3989,60 @@ paths:
       summary: Retrieve eks clusters list
       tags:
       - AWS cloud credential
+  /api/v1/aws/eks-node-groups/{projectId}:
+    get:
+      operationId: aws-eks-node-groups
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AwsEksNodeGroupDto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve eks node group list
+      tags:
+      - AWS cloud credential
   /api/v1/aws/list:
     get:
       description: |-
@@ -5513,8 +5567,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-11-25T17:03:58.9687408Z
-                  createdAt: 2024-11-25T17:03:58.9687408Z
+                  lastValidated: 2024-11-26T15:39:43.676027Z
+                  createdAt: 2024-11-26T15:39:43.676027Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5619,14 +5673,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-11-25T17:03:58.9687408Z
+                    lastBackup: 2024-11-26T15:39:43.676027Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-11-25T17:03:58.9687408Z
+                  createdAt: 2024-11-26T15:39:43.676027Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-11-25T17:03:58.9687408Z
+                  lastBackup: 2024-11-26T15:39:43.676027Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5731,8 +5785,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-25T17:03:58.9687408Z
-                  expiration: 2024-11-25T17:03:58.9687408Z
+                  createdAt: 2024-11-26T15:39:43.676027Z
+                  expiration: 2024-11-26T15:39:43.676027Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5836,7 +5890,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-25T17:03:58.9687408Z
+                  createdAt: 2024-11-26T15:39:43.676027Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5946,9 +6000,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-11-25T17:03:58.9687408+00:00
-                  startTimeStamp: 2024-11-25T17:03:58.9687408+00:00
-                  createdAt: 2024-11-25T17:03:58.9687408Z
+                  completionDateTime: 2024-11-26T15:39:43.676027+00:00
+                  startTimeStamp: 2024-11-26T15:39:43.676027+00:00
+                  createdAt: 2024-11-26T15:39:43.676027Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -6939,14 +6993,6 @@ paths:
     get:
       operationId: catalog-app-details
       parameters:
-      - explode: true
-        in: query
-        name: OrganizationId
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
       - explode: false
         in: path
         name: catalogAppId
@@ -41168,6 +41214,79 @@ components:
       - data
       - totalCount
       type: object
+    AwsEksNodeGroupDto:
+      additionalProperties: false
+      example:
+        role: role
+        capacityType: capacityType
+        instanceTypes:
+        - instanceTypes
+        - instanceTypes
+        created: created
+        desiredSize: 6
+        maxSize: 1
+        version: version
+        diskSize: 0
+        healthIssues:
+        - healthIssues
+        - healthIssues
+        name: name
+        minSize: 5
+        amiType: amiType
+        amiReleaseVersion: amiReleaseVersion
+        arn: arn
+        status: status
+      properties:
+        name:
+          nullable: true
+          type: string
+        role:
+          nullable: true
+          type: string
+        amiType:
+          nullable: true
+          type: string
+        amiReleaseVersion:
+          nullable: true
+          type: string
+        arn:
+          nullable: true
+          type: string
+        capacityType:
+          nullable: true
+          type: string
+        healthIssues:
+          items:
+            type: string
+          nullable: true
+          type: array
+        status:
+          nullable: true
+          type: string
+        version:
+          nullable: true
+          type: string
+        created:
+          nullable: true
+          type: string
+        diskSize:
+          format: int32
+          type: integer
+        desiredSize:
+          format: int32
+          type: integer
+        maxSize:
+          format: int32
+          type: integer
+        minSize:
+          format: int32
+          type: integer
+        instanceTypes:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     AwsFlavorList:
       additionalProperties: false
       example:
@@ -45509,24 +45628,19 @@ components:
     CreateProjectAppCommand:
       additionalProperties: false
       example:
-        organizationId: 0
         extraValues: extraValues
         taikunLinkEnabled: true
         name: name
         namespace: namespace
         autoSync: true
-        projectId: 6
-        catalogAppId: 1
+        projectId: 0
+        catalogAppId: 6
         parameters:
         - value: value
           key: key
         - value: value
           key: key
       properties:
-        organizationId:
-          format: int32
-          nullable: true
-          type: integer
         name:
           nullable: true
           type: string
@@ -50415,16 +50529,11 @@ components:
     GetCatalogAppValueAutocompleteCommand:
       additionalProperties: false
       example:
-        organizationId: 0
         packageId: packageId
         isQuestion: true
         version: version
-        catalogAppId: 6
+        catalogAppId: 0
       properties:
-        organizationId:
-          format: int32
-          nullable: true
-          type: integer
         packageId:
           nullable: true
           type: string
@@ -54394,15 +54503,10 @@ components:
     ListCatalogAppAvailableVersionsCommand:
       additionalProperties: false
       example:
-        organizationId: 0
         repoName: repoName
         packageName: packageName
         currentVersion: currentVersion
       properties:
-        organizationId:
-          format: int32
-          nullable: true
-          type: integer
         repoName:
           nullable: true
           type: string

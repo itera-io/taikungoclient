@@ -81,6 +81,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AWSCloudCredentialAPI* | [**AwsCreate**](docs/AWSCloudCredentialAPI.md#awscreate) | **Post** /api/v1/aws/create | Add Aws credentials
 *AWSCloudCredentialAPI* | [**AwsEksClusters**](docs/AWSCloudCredentialAPI.md#awseksclusters) | **Get** /api/v1/aws/eks-clusters/{cloudId} | Retrieve eks clusters list
+*AWSCloudCredentialAPI* | [**AwsEksNodeGroups**](docs/AWSCloudCredentialAPI.md#awseksnodegroups) | **Get** /api/v1/aws/eks-node-groups/{projectId} | Retrieve eks node group list
 *AWSCloudCredentialAPI* | [**AwsList**](docs/AWSCloudCredentialAPI.md#awslist) | **Get** /api/v1/aws/list | Retrieve list of aws cloud credentials
 *AWSCloudCredentialAPI* | [**AwsOwners**](docs/AWSCloudCredentialAPI.md#awsowners) | **Get** /api/v1/aws/owners | Retrieve aws verified owner list
 *AWSCloudCredentialAPI* | [**AwsRegionlist**](docs/AWSCloudCredentialAPI.md#awsregionlist) | **Post** /api/v1/aws/regions | Retrieve aws regions list
@@ -833,6 +834,7 @@ Class | Method | HTTP request | Description
  - [AvailablePackagesDto](docs/AvailablePackagesDto.md)
  - [AvailablePackagesList](docs/AvailablePackagesList.md)
  - [AwsCredentialList](docs/AwsCredentialList.md)
+ - [AwsEksNodeGroupDto](docs/AwsEksNodeGroupDto.md)
  - [AwsFlavorList](docs/AwsFlavorList.md)
  - [AwsFlavorListDto](docs/AwsFlavorListDto.md)
  - [AwsImagesPostListCommand](docs/AwsImagesPostListCommand.md)
