@@ -187,6 +187,7 @@ Class | Method | HTTP request | Description
 *CatalogAPI* | [**CatalogCreate**](docs/CatalogAPI.md#catalogcreate) | **Post** /api/v1/catalog/create | Create catalog
 *CatalogAPI* | [**CatalogDelete**](docs/CatalogAPI.md#catalogdelete) | **Delete** /api/v1/catalog/{id} | Delete catalog
 *CatalogAPI* | [**CatalogDeleteProject**](docs/CatalogAPI.md#catalogdeleteproject) | **Put** /api/v1/catalog/{id}/projects | Delete projects from catalog
+*CatalogAPI* | [**CatalogDetails**](docs/CatalogAPI.md#catalogdetails) | **Get** /api/v1/catalog/{id}/details | Retrieve catalog details by id
 *CatalogAPI* | [**CatalogDropdown**](docs/CatalogAPI.md#catalogdropdown) | **Get** /api/v1/catalog/list | Catalog dropdown list for organization
 *CatalogAPI* | [**CatalogEdit**](docs/CatalogAPI.md#catalogedit) | **Put** /api/v1/catalog/edit | Edit catalog
 *CatalogAPI* | [**CatalogList**](docs/CatalogAPI.md#cataloglist) | **Get** /api/v1/catalog | Catalog list for organization
@@ -900,6 +901,7 @@ Class | Method | HTTP request | Description
  - [CatalogAppLockManagement](docs/CatalogAppLockManagement.md)
  - [CatalogAppParamsDetailsDto](docs/CatalogAppParamsDetailsDto.md)
  - [CatalogAppParamsDto](docs/CatalogAppParamsDto.md)
+ - [CatalogDetails](docs/CatalogDetails.md)
  - [CatalogDropdownDto](docs/CatalogDropdownDto.md)
  - [CatalogList](docs/CatalogList.md)
  - [CatalogListDto](docs/CatalogListDto.md)

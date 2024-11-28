@@ -30,6 +30,9 @@ type OpaProfileListDto struct {
 	UniqueIngresses bool `json:"uniqueIngresses"`
 	UniqueServiceSelector bool `json:"uniqueServiceSelector"`
 	ForcePodResource bool `json:"forcePodResource"`
+	IsNodeNameForbiddenInVC bool `json:"isNodeNameForbiddenInVC"`
+	IsMasterTaintEnforced bool `json:"isMasterTaintEnforced"`
+	WhitelistMasterTaintNamespaces []string `json:"whitelistMasterTaintNamespaces"`
 	AllowedRepo []string `json:"allowedRepo"`
 	ForbidSpecificTags []string `json:"forbidSpecificTags"`
 	IngressWhitelist []string `json:"ingressWhitelist"`
@@ -48,7 +51,7 @@ type _OpaProfileListDto OpaProfileListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOpaProfileListDto(id int32, name string, forbidNodePort bool, forbidHttpIngress bool, requireProbe bool, uniqueIngresses bool, uniqueServiceSelector bool, forcePodResource bool, allowedRepo []string, forbidSpecificTags []string, ingressWhitelist []string, isLocked bool, revision int32, organizationId int32, organizationName string, createdAt NullableString, isDefault bool, projects []CommonDropdownDto) *OpaProfileListDto {
+func NewOpaProfileListDto(id int32, name string, forbidNodePort bool, forbidHttpIngress bool, requireProbe bool, uniqueIngresses bool, uniqueServiceSelector bool, forcePodResource bool, isNodeNameForbiddenInVC bool, isMasterTaintEnforced bool, whitelistMasterTaintNamespaces []string, allowedRepo []string, forbidSpecificTags []string, ingressWhitelist []string, isLocked bool, revision int32, organizationId int32, organizationName string, createdAt NullableString, isDefault bool, projects []CommonDropdownDto) *OpaProfileListDto {
 	this := OpaProfileListDto{}
 	this.Id = id
 	this.Name = name
@@ -58,6 +61,9 @@ func NewOpaProfileListDto(id int32, name string, forbidNodePort bool, forbidHttp
 	this.UniqueIngresses = uniqueIngresses
 	this.UniqueServiceSelector = uniqueServiceSelector
 	this.ForcePodResource = forcePodResource
+	this.IsNodeNameForbiddenInVC = isNodeNameForbiddenInVC
+	this.IsMasterTaintEnforced = isMasterTaintEnforced
+	this.WhitelistMasterTaintNamespaces = whitelistMasterTaintNamespaces
 	this.AllowedRepo = allowedRepo
 	this.ForbidSpecificTags = forbidSpecificTags
 	this.IngressWhitelist = ingressWhitelist
@@ -269,6 +275,78 @@ func (o *OpaProfileListDto) GetForcePodResourceOk() (*bool, bool) {
 // SetForcePodResource sets field value
 func (o *OpaProfileListDto) SetForcePodResource(v bool) {
 	o.ForcePodResource = v
+}
+
+// GetIsNodeNameForbiddenInVC returns the IsNodeNameForbiddenInVC field value
+func (o *OpaProfileListDto) GetIsNodeNameForbiddenInVC() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsNodeNameForbiddenInVC
+}
+
+// GetIsNodeNameForbiddenInVCOk returns a tuple with the IsNodeNameForbiddenInVC field value
+// and a boolean to check if the value has been set.
+func (o *OpaProfileListDto) GetIsNodeNameForbiddenInVCOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsNodeNameForbiddenInVC, true
+}
+
+// SetIsNodeNameForbiddenInVC sets field value
+func (o *OpaProfileListDto) SetIsNodeNameForbiddenInVC(v bool) {
+	o.IsNodeNameForbiddenInVC = v
+}
+
+// GetIsMasterTaintEnforced returns the IsMasterTaintEnforced field value
+func (o *OpaProfileListDto) GetIsMasterTaintEnforced() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsMasterTaintEnforced
+}
+
+// GetIsMasterTaintEnforcedOk returns a tuple with the IsMasterTaintEnforced field value
+// and a boolean to check if the value has been set.
+func (o *OpaProfileListDto) GetIsMasterTaintEnforcedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsMasterTaintEnforced, true
+}
+
+// SetIsMasterTaintEnforced sets field value
+func (o *OpaProfileListDto) SetIsMasterTaintEnforced(v bool) {
+	o.IsMasterTaintEnforced = v
+}
+
+// GetWhitelistMasterTaintNamespaces returns the WhitelistMasterTaintNamespaces field value
+func (o *OpaProfileListDto) GetWhitelistMasterTaintNamespaces() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.WhitelistMasterTaintNamespaces
+}
+
+// GetWhitelistMasterTaintNamespacesOk returns a tuple with the WhitelistMasterTaintNamespaces field value
+// and a boolean to check if the value has been set.
+func (o *OpaProfileListDto) GetWhitelistMasterTaintNamespacesOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.WhitelistMasterTaintNamespaces, true
+}
+
+// SetWhitelistMasterTaintNamespaces sets field value
+func (o *OpaProfileListDto) SetWhitelistMasterTaintNamespaces(v []string) {
+	o.WhitelistMasterTaintNamespaces = v
 }
 
 // GetAllowedRepo returns the AllowedRepo field value
@@ -531,6 +609,9 @@ func (o OpaProfileListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["uniqueIngresses"] = o.UniqueIngresses
 	toSerialize["uniqueServiceSelector"] = o.UniqueServiceSelector
 	toSerialize["forcePodResource"] = o.ForcePodResource
+	toSerialize["isNodeNameForbiddenInVC"] = o.IsNodeNameForbiddenInVC
+	toSerialize["isMasterTaintEnforced"] = o.IsMasterTaintEnforced
+	toSerialize["whitelistMasterTaintNamespaces"] = o.WhitelistMasterTaintNamespaces
 	toSerialize["allowedRepo"] = o.AllowedRepo
 	toSerialize["forbidSpecificTags"] = o.ForbidSpecificTags
 	toSerialize["ingressWhitelist"] = o.IngressWhitelist
@@ -557,6 +638,9 @@ func (o *OpaProfileListDto) UnmarshalJSON(data []byte) (err error) {
 		"uniqueIngresses",
 		"uniqueServiceSelector",
 		"forcePodResource",
+		"isNodeNameForbiddenInVC",
+		"isMasterTaintEnforced",
+		"whitelistMasterTaintNamespaces",
 		"allowedRepo",
 		"forbidSpecificTags",
 		"ingressWhitelist",

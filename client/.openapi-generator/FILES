@@ -233,6 +233,7 @@ docs/CatalogAppListDto.md
 docs/CatalogAppLockManagement.md
 docs/CatalogAppParamsDetailsDto.md
 docs/CatalogAppParamsDto.md
+docs/CatalogDetails.md
 docs/CatalogDropdownDto.md
 docs/CatalogList.md
 docs/CatalogListDto.md
@@ -1136,6 +1137,7 @@ model_catalog_app_list_dto.go
 model_catalog_app_lock_management.go
 model_catalog_app_params_details_dto.go
 model_catalog_app_params_dto.go
+model_catalog_details.go
 model_catalog_dropdown_dto.go
 model_catalog_list.go
 model_catalog_list_dto.go

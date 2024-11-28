@@ -37,6 +37,7 @@ type ImportedClusterDetailsDto struct {
 	Status ProjectStatus `json:"status"`
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
+	AlertingProfileName NullableString `json:"alertingProfileName"`
 	IsOpaEnabled bool `json:"isOpaEnabled"`
 	OpaProfileId NullableInt32 `json:"opaProfileId"`
 	IsBackupEnabled bool `json:"isBackupEnabled"`
@@ -53,7 +54,7 @@ type _ImportedClusterDetailsDto ImportedClusterDetailsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp NullableString, kubernetesVersion NullableString, importClusterType ImportClusterType, organizationId int32, organizationName string, health ProjectHealth, status ProjectStatus, isMonitoringEnabled bool, alertingProfileId NullableInt32, isOpaEnabled bool, opaProfileId NullableInt32, isBackupEnabled bool, s3CredentialId NullableInt32, aiEnabled bool, aiCredentialId NullableInt32, expiredAt string, alertsCount int32) *ImportedClusterDetailsDto {
+func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp NullableString, kubernetesVersion NullableString, importClusterType ImportClusterType, organizationId int32, organizationName string, health ProjectHealth, status ProjectStatus, isMonitoringEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, isOpaEnabled bool, opaProfileId NullableInt32, isBackupEnabled bool, s3CredentialId NullableInt32, aiEnabled bool, aiCredentialId NullableInt32, expiredAt string, alertsCount int32) *ImportedClusterDetailsDto {
 	this := ImportedClusterDetailsDto{}
 	this.Id = id
 	this.Name = name
@@ -67,6 +68,7 @@ func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp
 	this.Status = status
 	this.IsMonitoringEnabled = isMonitoringEnabled
 	this.AlertingProfileId = alertingProfileId
+	this.AlertingProfileName = alertingProfileName
 	this.IsOpaEnabled = isOpaEnabled
 	this.OpaProfileId = opaProfileId
 	this.IsBackupEnabled = isBackupEnabled
@@ -496,6 +498,32 @@ func (o *ImportedClusterDetailsDto) SetAlertingProfileId(v int32) {
 	o.AlertingProfileId.Set(&v)
 }
 
+// GetAlertingProfileName returns the AlertingProfileName field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *ImportedClusterDetailsDto) GetAlertingProfileName() string {
+	if o == nil || o.AlertingProfileName.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.AlertingProfileName.Get()
+}
+
+// GetAlertingProfileNameOk returns a tuple with the AlertingProfileName field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ImportedClusterDetailsDto) GetAlertingProfileNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AlertingProfileName.Get(), o.AlertingProfileName.IsSet()
+}
+
+// SetAlertingProfileName sets field value
+func (o *ImportedClusterDetailsDto) SetAlertingProfileName(v string) {
+	o.AlertingProfileName.Set(&v)
+}
+
 // GetIsOpaEnabled returns the IsOpaEnabled field value
 func (o *ImportedClusterDetailsDto) GetIsOpaEnabled() bool {
 	if o == nil {
@@ -725,6 +753,7 @@ func (o ImportedClusterDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
 	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
+	toSerialize["alertingProfileName"] = o.AlertingProfileName.Get()
 	toSerialize["isOpaEnabled"] = o.IsOpaEnabled
 	toSerialize["opaProfileId"] = o.OpaProfileId.Get()
 	toSerialize["isBackupEnabled"] = o.IsBackupEnabled
@@ -753,6 +782,7 @@ func (o *ImportedClusterDetailsDto) UnmarshalJSON(data []byte) (err error) {
 		"status",
 		"isMonitoringEnabled",
 		"alertingProfileId",
+		"alertingProfileName",
 		"isOpaEnabled",
 		"opaProfileId",
 		"isBackupEnabled",

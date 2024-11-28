@@ -5567,8 +5567,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-11-26T15:39:43.676027Z
-                  createdAt: 2024-11-26T15:39:43.676027Z
+                  lastValidated: 2024-11-28T00:03:40.3787686Z
+                  createdAt: 2024-11-28T00:03:40.3787686Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5673,14 +5673,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-11-26T15:39:43.676027Z
+                    lastBackup: 2024-11-28T00:03:40.3787686Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-11-26T15:39:43.676027Z
+                  createdAt: 2024-11-28T00:03:40.3787686Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-11-26T15:39:43.676027Z
+                  lastBackup: 2024-11-28T00:03:40.3787686Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5785,8 +5785,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-26T15:39:43.676027Z
-                  expiration: 2024-11-26T15:39:43.676027Z
+                  createdAt: 2024-11-28T00:03:40.3787686Z
+                  expiration: 2024-11-28T00:03:40.3787686Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5890,7 +5890,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-11-26T15:39:43.676027Z
+                  createdAt: 2024-11-28T00:03:40.3787686Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6000,9 +6000,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-11-26T15:39:43.676027+00:00
-                  startTimeStamp: 2024-11-26T15:39:43.676027+00:00
-                  createdAt: 2024-11-26T15:39:43.676027Z
+                  completionDateTime: 2024-11-28T00:03:40.3787686+00:00
+                  startTimeStamp: 2024-11-28T00:03:40.3787686+00:00
+                  createdAt: 2024-11-28T00:03:40.3787686Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -6607,6 +6607,58 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Make catalog default
+      tags:
+      - Catalog
+  /api/v1/catalog/{id}/details:
+    get:
+      operationId: catalog-details
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogDetails'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve catalog details by id
       tags:
       - Catalog
   /api/v1/catalog/list:
@@ -43552,6 +43604,137 @@ components:
         isMandatory:
           type: boolean
       type: object
+    CatalogDetails:
+      additionalProperties: false
+      example:
+        organizationId: 6
+        boundApplications:
+        - appVersion: appVersion
+          logoImageId: logoImageId
+          deprecated: true
+          packageId: packageId
+          description: description
+          signed: true
+          stars: 7
+          repository:
+            scannerDisabled: true
+            isImported: true
+            organizationName: organizationName
+            organizationDisplayName: organizationDisplayName
+            kind: 1
+            name: name
+            repositoryId: repositoryId
+            official: true
+            verifiedPublisher: true
+            url: url
+          catalogAppId: 5
+          version: version
+          catalogId: 5
+          installedInstanceCount: 2
+          isLocked: true
+          name: name
+          isAdded: true
+          normalizedName: normalizedName
+          securityReportSummary:
+            high: 3
+            critical: 7
+            low: 9
+            medium: 2
+            unknown: 4
+          ts: ts
+        - appVersion: appVersion
+          logoImageId: logoImageId
+          deprecated: true
+          packageId: packageId
+          description: description
+          signed: true
+          stars: 7
+          repository:
+            scannerDisabled: true
+            isImported: true
+            organizationName: organizationName
+            organizationDisplayName: organizationDisplayName
+            kind: 1
+            name: name
+            repositoryId: repositoryId
+            official: true
+            verifiedPublisher: true
+            url: url
+          catalogAppId: 5
+          version: version
+          catalogId: 5
+          installedInstanceCount: 2
+          isLocked: true
+          name: name
+          isAdded: true
+          normalizedName: normalizedName
+          securityReportSummary:
+            high: 3
+            critical: 7
+            low: 9
+            medium: 2
+            unknown: 4
+          ts: ts
+        isDefault: true
+        isLocked: true
+        name: name
+        description: description
+        boundProjects:
+        - cloudType: NONE
+          isLocked: true
+          name: name
+          health: "Null"
+          id: 1
+          isVirtualCluster: true
+          maintenanceModeEnabled: true
+          kubernetesVersion: kubernetesVersion
+          status: "Null"
+        - cloudType: NONE
+          isLocked: true
+          name: name
+          health: "Null"
+          id: 1
+          isVirtualCluster: true
+          maintenanceModeEnabled: true
+          kubernetesVersion: kubernetesVersion
+          status: "Null"
+        id: 0
+        packageIds:
+        - packageIds
+        - packageIds
+      properties:
+        id:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        isLocked:
+          type: boolean
+        isDefault:
+          type: boolean
+        organizationId:
+          format: int32
+          type: integer
+        packageIds:
+          items:
+            type: string
+          nullable: true
+          type: array
+        boundProjects:
+          items:
+            $ref: '#/components/schemas/ProjectCatalogDto'
+          nullable: true
+          type: array
+        boundApplications:
+          items:
+            $ref: '#/components/schemas/AvailablePackagesDto'
+          nullable: true
+          type: array
+      type: object
     CatalogDropdownDto:
       additionalProperties: false
       example:
@@ -51451,6 +51634,7 @@ components:
     ImportRepoCommand:
       additionalProperties: false
       example:
+        organizationId: 0
         password: password
         name: name
         url: url
@@ -51468,6 +51652,10 @@ components:
         url:
           nullable: true
           type: string
+        organizationId:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     ImportedAsCloudCredentialList:
       additionalProperties: false
@@ -51506,6 +51694,7 @@ components:
           cloudCredentialName: cloudCredentialName
           organizationId: 2
           expiredAt: expiredAt
+          alertingProfileName: alertingProfileName
           alertingProfileId: 9
           cloudType: null
           isLocked: true
@@ -51660,6 +51849,7 @@ components:
           cloudCredentialName: cloudCredentialName
           organizationId: 2
           expiredAt: expiredAt
+          alertingProfileName: alertingProfileName
           alertingProfileId: 9
           cloudType: null
           isLocked: true
@@ -51841,6 +52031,7 @@ components:
           cloudCredentialName: cloudCredentialName
           organizationId: 2
           expiredAt: expiredAt
+          alertingProfileName: alertingProfileName
           alertingProfileId: 9
           cloudType: null
           isLocked: true
@@ -51900,6 +52091,7 @@ components:
         cloudCredentialName: cloudCredentialName
         organizationId: 2
         expiredAt: expiredAt
+        alertingProfileName: alertingProfileName
         alertingProfileId: 9
         cloudType: null
         isLocked: true
@@ -51949,6 +52141,9 @@ components:
           format: int32
           nullable: true
           type: integer
+        alertingProfileName:
+          nullable: true
+          type: string
         isOpaEnabled:
           type: boolean
         opaProfileId:
@@ -51977,6 +52172,7 @@ components:
       - aiCredentialId
       - aiEnabled
       - alertingProfileId
+      - alertingProfileName
       - alertsCount
       - expiredAt
       - health
@@ -52143,6 +52339,7 @@ components:
           cloudCredentialName: cloudCredentialName
           organizationId: 2
           expiredAt: expiredAt
+          alertingProfileName: alertingProfileName
           alertingProfileId: 9
           cloudType: null
           isLocked: true
@@ -55304,7 +55501,12 @@ components:
             id: 0
           - name: name
             id: 0
+          isMasterTaintEnforced: true
           organizationName: organizationName
+          isNodeNameForbiddenInVC: true
+          whitelistMasterTaintNamespaces:
+          - whitelistMasterTaintNamespaces
+          - whitelistMasterTaintNamespaces
           forbidSpecificTags:
           - forbidSpecificTags
           - forbidSpecificTags
@@ -55332,7 +55534,12 @@ components:
             id: 0
           - name: name
             id: 0
+          isMasterTaintEnforced: true
           organizationName: organizationName
+          isNodeNameForbiddenInVC: true
+          whitelistMasterTaintNamespaces:
+          - whitelistMasterTaintNamespaces
+          - whitelistMasterTaintNamespaces
           forbidSpecificTags:
           - forbidSpecificTags
           - forbidSpecificTags
@@ -55377,7 +55584,12 @@ components:
           id: 0
         - name: name
           id: 0
+        isMasterTaintEnforced: true
         organizationName: organizationName
+        isNodeNameForbiddenInVC: true
+        whitelistMasterTaintNamespaces:
+        - whitelistMasterTaintNamespaces
+        - whitelistMasterTaintNamespaces
         forbidSpecificTags:
         - forbidSpecificTags
         - forbidSpecificTags
@@ -55418,6 +55630,14 @@ components:
           type: boolean
         forcePodResource:
           type: boolean
+        isNodeNameForbiddenInVC:
+          type: boolean
+        isMasterTaintEnforced:
+          type: boolean
+        whitelistMasterTaintNamespaces:
+          items:
+            type: string
+          type: array
         allowedRepo:
           items:
             type: string
@@ -55460,6 +55680,8 @@ components:
       - ingressWhitelist
       - isDefault
       - isLocked
+      - isMasterTaintEnforced
+      - isNodeNameForbiddenInVC
       - name
       - organizationId
       - organizationName
@@ -55468,6 +55690,7 @@ components:
       - revision
       - uniqueIngresses
       - uniqueServiceSelector
+      - whitelistMasterTaintNamespaces
       type: object
     OpaProfileLockManagerCommand:
       additionalProperties: false
@@ -62178,6 +62401,7 @@ components:
       - NFS
       - OpenEBS
       - Longhorn
+      - LocalPath
       type: string
     PublicImageList:
       additionalProperties: false
