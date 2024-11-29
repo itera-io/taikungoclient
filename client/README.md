@@ -153,6 +153,7 @@ Class | Method | HTTP request | Description
 *AutoscalingAPI* | [**AutoscalingEdit**](docs/AutoscalingAPI.md#autoscalingedit) | **Post** /api/v1/autoscaling/edit | Edit autoscaling
 *AutoscalingAPI* | [**AutoscalingEnable**](docs/AutoscalingAPI.md#autoscalingenable) | **Post** /api/v1/autoscaling/enable | Enable autoscaling
 *AutoscalingAPI* | [**AutoscalingSync**](docs/AutoscalingAPI.md#autoscalingsync) | **Post** /api/v1/autoscaling/sync | Sync autoscaling
+*AzureCloudCredentialAPI* | [**AzureAksClusters**](docs/AzureCloudCredentialAPI.md#azureaksclusters) | **Post** /api/v1/azure/aks-clusters | Fetch AKS cluster list
 *AzureCloudCredentialAPI* | [**AzureCreate**](docs/AzureCloudCredentialAPI.md#azurecreate) | **Post** /api/v1/azure/create | Add Azure credentials
 *AzureCloudCredentialAPI* | [**AzureDashboard**](docs/AzureCloudCredentialAPI.md#azuredashboard) | **Post** /api/v1/azure/quota/list | Fetch Azure quota list
 *AzureCloudCredentialAPI* | [**AzureList**](docs/AzureCloudCredentialAPI.md#azurelist) | **Get** /api/v1/azure/list | Retrieve list of azure cloud credentials
@@ -798,6 +799,7 @@ Class | Method | HTTP request | Description
  - [AiCredentialsListDto](docs/AiCredentialsListDto.md)
  - [AiListDto](docs/AiListDto.md)
  - [AiType](docs/AiType.md)
+ - [AksClusterListCommand](docs/AksClusterListCommand.md)
  - [Alert](docs/Alert.md)
  - [AlertData](docs/AlertData.md)
  - [AlertLabels](docs/AlertLabels.md)
@@ -842,6 +844,7 @@ Class | Method | HTTP request | Description
  - [AwsRegionDto](docs/AwsRegionDto.md)
  - [AwsValidateOwnerCommand](docs/AwsValidateOwnerCommand.md)
  - [AzResult](docs/AzResult.md)
+ - [AzureAksClusterDto](docs/AzureAksClusterDto.md)
  - [AzureCredentialList](docs/AzureCredentialList.md)
  - [AzureCredentialsListDto](docs/AzureCredentialsListDto.md)
  - [AzureDashboardCommand](docs/AzureDashboardCommand.md)

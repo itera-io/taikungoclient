@@ -2340,6 +2340,7 @@ type ApiProjectDeploymentImportClusterRequest struct {
 	organizationId *int32
 	cloudId *int32
 	importClusterName *string
+	resourceGroupName *string
 }
 
 func (r ApiProjectDeploymentImportClusterRequest) Name(name string) ApiProjectDeploymentImportClusterRequest {
@@ -2394,6 +2395,11 @@ func (r ApiProjectDeploymentImportClusterRequest) CloudId(cloudId int32) ApiProj
 
 func (r ApiProjectDeploymentImportClusterRequest) ImportClusterName(importClusterName string) ApiProjectDeploymentImportClusterRequest {
 	r.importClusterName = &importClusterName
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) ResourceGroupName(resourceGroupName string) ApiProjectDeploymentImportClusterRequest {
+	r.resourceGroupName = &resourceGroupName
 	return r
 }
 
@@ -2497,6 +2503,9 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentImportClusterExecute(r Ap
 	}
 	if r.importClusterName != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "importClusterName", r.importClusterName, "", "")
+	}
+	if r.resourceGroupName != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "resourceGroupName", r.resourceGroupName, "", "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication

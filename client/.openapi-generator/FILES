@@ -119,6 +119,7 @@ docs/AiCredentialsForOrganizationEntity.md
 docs/AiCredentialsListDto.md
 docs/AiListDto.md
 docs/AiType.md
+docs/AksClusterListCommand.md
 docs/Alert.md
 docs/AlertData.md
 docs/AlertLabels.md
@@ -169,6 +170,7 @@ docs/AwsImagesPostListCommand.md
 docs/AwsRegionDto.md
 docs/AwsValidateOwnerCommand.md
 docs/AzResult.md
+docs/AzureAksClusterDto.md
 docs/AzureCloudCredentialAPI.md
 docs/AzureCredentialList.md
 docs/AzureCredentialsListDto.md
@@ -1035,6 +1037,7 @@ model_ai_credentials_for_organization_entity.go
 model_ai_credentials_list_dto.go
 model_ai_list_dto.go
 model_ai_type.go
+model_aks_cluster_list_command.go
 model_alert.go
 model_alert_data.go
 model_alert_labels.go
@@ -1079,6 +1082,7 @@ model_aws_images_post_list_command.go
 model_aws_region_dto.go
 model_aws_validate_owner_command.go
 model_az_result.go
+model_azure_aks_cluster_dto.go
 model_azure_credential_list.go
 model_azure_credentials_list_dto.go
 model_azure_dashboard_command.go
