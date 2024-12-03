@@ -378,6 +378,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesDescribePdb**](docs/KubernetesAPI.md#kubernetesdescribepdb) | **Post** /api/v1/kubernetes/describe/pdb | Describe pdb
 *KubernetesAPI* | [**KubernetesDescribePod**](docs/KubernetesAPI.md#kubernetesdescribepod) | **Post** /api/v1/kubernetes/describe/pod | Describe pod
 *KubernetesAPI* | [**KubernetesDescribePvc**](docs/KubernetesAPI.md#kubernetesdescribepvc) | **Post** /api/v1/kubernetes/describe/pvc | Describe pvc
+*KubernetesAPI* | [**KubernetesDescribeResource**](docs/KubernetesAPI.md#kubernetesdescriberesource) | **Post** /api/v1/kubernetes/describe-resource | Describe kubernetes resource
 *KubernetesAPI* | [**KubernetesDescribeSecret**](docs/KubernetesAPI.md#kubernetesdescribesecret) | **Post** /api/v1/kubernetes/describe/secret | Describe secret
 *KubernetesAPI* | [**KubernetesDescribeService**](docs/KubernetesAPI.md#kubernetesdescribeservice) | **Post** /api/v1/kubernetes/describe/service | Describe service
 *KubernetesAPI* | [**KubernetesDescribeStorageClass**](docs/KubernetesAPI.md#kubernetesdescribestorageclass) | **Post** /api/v1/kubernetes/describe/storageclass | Describe storage class
@@ -575,6 +576,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsMaintenanceManager**](docs/ProjectsAPI.md#projectsmaintenancemanager) | **Post** /api/v1/projects/maintenance-manager | Enable/disable project&#39;s maintenance mode
 *ProjectsAPI* | [**ProjectsMonitoringAlerts**](docs/ProjectsAPI.md#projectsmonitoringalerts) | **Post** /api/v1/projects/monitoringalerts | Monitoring alerts for project
 *ProjectsAPI* | [**ProjectsPrometheusMetrics**](docs/ProjectsAPI.md#projectsprometheusmetrics) | **Post** /api/v1/projects/prometheusmetrics | Prometheus metrics data project
+*ProjectsAPI* | [**ProjectsPrometheusMetricsAutocomplete**](docs/ProjectsAPI.md#projectsprometheusmetricsautocomplete) | **Post** /api/v1/projects/prometheusmetrics/autocomplete | Prometheus metrics autocomplete values
 *ProjectsAPI* | [**ProjectsToggleFullSpot**](docs/ProjectsAPI.md#projectstogglefullspot) | **Post** /api/v1/projects/toggle-full-spot | Full spot operations enable/disable
 *ProjectsAPI* | [**ProjectsToggleSpotVms**](docs/ProjectsAPI.md#projectstogglespotvms) | **Post** /api/v1/projects/toggle-spot-vms | Spot vm(s) operations enable/disable
 *ProjectsAPI* | [**ProjectsToggleSpotWorkers**](docs/ProjectsAPI.md#projectstogglespotworkers) | **Post** /api/v1/projects/toggle-spot-workers | Spot worker(s) operations enable/disable
@@ -1013,6 +1015,7 @@ Class | Method | HTTP request | Description
  - [DatastoreSummary](docs/DatastoreSummary.md)
  - [DateFilter](docs/DateFilter.md)
  - [DateInterval](docs/DateInterval.md)
+ - [DecimalPair](docs/DecimalPair.md)
  - [DeleteAlertCommand](docs/DeleteAlertCommand.md)
  - [DeleteBackupCommand](docs/DeleteBackupCommand.md)
  - [DeleteBackupStorageLocationCommand](docs/DeleteBackupStorageLocationCommand.md)
@@ -1053,6 +1056,7 @@ Class | Method | HTTP request | Description
  - [DescribeDeploymentCommand](docs/DescribeDeploymentCommand.md)
  - [DescribeIngressCommand](docs/DescribeIngressCommand.md)
  - [DescribeJobCommand](docs/DescribeJobCommand.md)
+ - [DescribeKubernetesResourceCommand](docs/DescribeKubernetesResourceCommand.md)
  - [DescribeNetworkPolicyCommand](docs/DescribeNetworkPolicyCommand.md)
  - [DescribeNodeCommand](docs/DescribeNodeCommand.md)
  - [DescribePodCommand](docs/DescribePodCommand.md)
@@ -1232,6 +1236,8 @@ Class | Method | HTTP request | Description
  - [MakeCsmCommand](docs/MakeCsmCommand.md)
  - [MakeOwnerCommand](docs/MakeOwnerCommand.md)
  - [Metadata](docs/Metadata.md)
+ - [MetricData](docs/MetricData.md)
+ - [MetricResult](docs/MetricResult.md)
  - [MonitoringCredentialsListDto](docs/MonitoringCredentialsListDto.md)
  - [NetworkListCommand](docs/NetworkListCommand.md)
  - [NetworkPolicies](docs/NetworkPolicies.md)
@@ -1376,6 +1382,8 @@ Class | Method | HTTP request | Description
  - [PrometheusDashboardUpdateCommand](docs/PrometheusDashboardUpdateCommand.md)
  - [PrometheusEntity](docs/PrometheusEntity.md)
  - [PrometheusLabelListDto](docs/PrometheusLabelListDto.md)
+ - [PrometheusMetricListDto](docs/PrometheusMetricListDto.md)
+ - [PrometheusMetricsAutocompleteCommand](docs/PrometheusMetricsAutocompleteCommand.md)
  - [PrometheusMetricsCommand](docs/PrometheusMetricsCommand.md)
  - [PrometheusOrganizationDiscountDto](docs/PrometheusOrganizationDiscountDto.md)
  - [PrometheusRuleListDto](docs/PrometheusRuleListDto.md)

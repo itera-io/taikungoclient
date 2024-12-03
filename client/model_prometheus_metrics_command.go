@@ -27,7 +27,6 @@ type PrometheusMetricsCommand struct {
 	Start NullableTime `json:"start,omitempty"`
 	End NullableTime `json:"end,omitempty"`
 	IsGraphEnabled *bool `json:"isGraphEnabled,omitempty"`
-	IsAutoComplete *bool `json:"isAutoComplete,omitempty"`
 	Step NullableString `json:"step,omitempty"`
 }
 
@@ -280,38 +279,6 @@ func (o *PrometheusMetricsCommand) SetIsGraphEnabled(v bool) {
 	o.IsGraphEnabled = &v
 }
 
-// GetIsAutoComplete returns the IsAutoComplete field value if set, zero value otherwise.
-func (o *PrometheusMetricsCommand) GetIsAutoComplete() bool {
-	if o == nil || IsNil(o.IsAutoComplete) {
-		var ret bool
-		return ret
-	}
-	return *o.IsAutoComplete
-}
-
-// GetIsAutoCompleteOk returns a tuple with the IsAutoComplete field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PrometheusMetricsCommand) GetIsAutoCompleteOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsAutoComplete) {
-		return nil, false
-	}
-	return o.IsAutoComplete, true
-}
-
-// HasIsAutoComplete returns a boolean if a field has been set.
-func (o *PrometheusMetricsCommand) HasIsAutoComplete() bool {
-	if o != nil && !IsNil(o.IsAutoComplete) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsAutoComplete gets a reference to the given bool and assigns it to the IsAutoComplete field.
-func (o *PrometheusMetricsCommand) SetIsAutoComplete(v bool) {
-	o.IsAutoComplete = &v
-}
-
 // GetStep returns the Step field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *PrometheusMetricsCommand) GetStep() string {
 	if o == nil || IsNil(o.Step.Get()) {
@@ -381,9 +348,6 @@ func (o PrometheusMetricsCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsGraphEnabled) {
 		toSerialize["isGraphEnabled"] = o.IsGraphEnabled
-	}
-	if !IsNil(o.IsAutoComplete) {
-		toSerialize["isAutoComplete"] = o.IsAutoComplete
 	}
 	if o.Step.IsSet() {
 		toSerialize["step"] = o.Step.Get()

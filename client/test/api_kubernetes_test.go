@@ -327,6 +327,17 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test KubernetesAPIService KubernetesDescribeResource", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeResource(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test KubernetesAPIService KubernetesDescribeSecret", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -348,6 +348,7 @@ docs/DatastoreListCommand.md
 docs/DatastoreSummary.md
 docs/DateFilter.md
 docs/DateInterval.md
+docs/DecimalPair.md
 docs/DeleteAlertCommand.md
 docs/DeleteBackupCommand.md
 docs/DeleteBackupStorageLocationCommand.md
@@ -388,6 +389,7 @@ docs/DescribeDaemonSetCommand.md
 docs/DescribeDeploymentCommand.md
 docs/DescribeIngressCommand.md
 docs/DescribeJobCommand.md
+docs/DescribeKubernetesResourceCommand.md
 docs/DescribeNetworkPolicyCommand.md
 docs/DescribeNodeCommand.md
 docs/DescribePodCommand.md
@@ -583,6 +585,8 @@ docs/MainProjectDto.md
 docs/MakeCsmCommand.md
 docs/MakeOwnerCommand.md
 docs/Metadata.md
+docs/MetricData.md
+docs/MetricResult.md
 docs/MonitoringCredentialsListDto.md
 docs/NetworkListCommand.md
 docs/NetworkPolicies.md
@@ -748,6 +752,8 @@ docs/PrometheusDashboardListDto.md
 docs/PrometheusDashboardUpdateCommand.md
 docs/PrometheusEntity.md
 docs/PrometheusLabelListDto.md
+docs/PrometheusMetricListDto.md
+docs/PrometheusMetricsAutocompleteCommand.md
 docs/PrometheusMetricsCommand.md
 docs/PrometheusOrganizationDiscountDto.md
 docs/PrometheusRuleListDto.md
@@ -1251,6 +1257,7 @@ model_datastore_list_command.go
 model_datastore_summary.go
 model_date_filter.go
 model_date_interval.go
+model_decimal_pair.go
 model_delete_alert_command.go
 model_delete_backup_command.go
 model_delete_backup_storage_location_command.go
@@ -1291,6 +1298,7 @@ model_describe_daemon_set_command.go
 model_describe_deployment_command.go
 model_describe_ingress_command.go
 model_describe_job_command.go
+model_describe_kubernetes_resource_command.go
 model_describe_network_policy_command.go
 model_describe_node_command.go
 model_describe_pod_command.go
@@ -1470,6 +1478,8 @@ model_main_project_dto.go
 model_make_csm_command.go
 model_make_owner_command.go
 model_metadata.go
+model_metric_data.go
+model_metric_result.go
 model_monitoring_credentials_list_dto.go
 model_network_list_command.go
 model_network_policies.go
@@ -1614,6 +1624,8 @@ model_prometheus_dashboard_list_dto.go
 model_prometheus_dashboard_update_command.go
 model_prometheus_entity.go
 model_prometheus_label_list_dto.go
+model_prometheus_metric_list_dto.go
+model_prometheus_metrics_autocomplete_command.go
 model_prometheus_metrics_command.go
 model_prometheus_organization_discount_dto.go
 model_prometheus_rule_list_dto.go

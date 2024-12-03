@@ -28,6 +28,9 @@ const (
 	EKUBERNETESRESOURCE_SECRET EKubernetesResource = "Secret"
 	EKUBERNETESRESOURCE_STS EKubernetesResource = "Sts"
 	EKUBERNETESRESOURCE_SERVICE EKubernetesResource = "Service"
+	EKUBERNETESRESOURCE_NODE EKubernetesResource = "Node"
+	EKUBERNETESRESOURCE_CRD EKubernetesResource = "Crd"
+	EKUBERNETESRESOURCE_STORAGE_CLASS EKubernetesResource = "StorageClass"
 	EKUBERNETESRESOURCE_POD EKubernetesResource = "Pod"
 	EKUBERNETESRESOURCE_INGRESS EKubernetesResource = "Ingress"
 	EKUBERNETESRESOURCE_PDB EKubernetesResource = "Pdb"
@@ -45,6 +48,9 @@ var AllowedEKubernetesResourceEnumValues = []EKubernetesResource{
 	"Secret",
 	"Sts",
 	"Service",
+	"Node",
+	"Crd",
+	"StorageClass",
 	"Pod",
 	"Ingress",
 	"Pdb",

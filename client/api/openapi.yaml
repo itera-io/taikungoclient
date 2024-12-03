@@ -5618,8 +5618,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-12-02T00:03:36.2229566Z
-                  createdAt: 2024-12-02T00:03:36.2229566Z
+                  lastValidated: 2024-12-03T00:03:47.46507Z
+                  createdAt: 2024-12-03T00:03:47.46507Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5724,14 +5724,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-12-02T00:03:36.2229566Z
+                    lastBackup: 2024-12-03T00:03:47.46507Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-12-02T00:03:36.2229566Z
+                  createdAt: 2024-12-03T00:03:47.46507Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-12-02T00:03:36.2229566Z
+                  lastBackup: 2024-12-03T00:03:47.46507Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5836,8 +5836,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-12-02T00:03:36.2229566Z
-                  expiration: 2024-12-02T00:03:36.2229566Z
+                  createdAt: 2024-12-03T00:03:47.46507Z
+                  expiration: 2024-12-03T00:03:47.46507Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5941,7 +5941,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-12-02T00:03:36.2229566Z
+                  createdAt: 2024-12-03T00:03:47.46507Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6051,9 +6051,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-12-02T00:03:36.2229566+00:00
-                  startTimeStamp: 2024-12-02T00:03:36.2229566+00:00
-                  createdAt: 2024-12-02T00:03:36.2229566Z
+                  completionDateTime: 2024-12-03T00:03:47.46507+00:00
+                  startTimeStamp: 2024-12-03T00:03:47.46507+00:00
+                  createdAt: 2024-12-03T00:03:47.46507Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -16101,6 +16101,48 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Remove k8s alerts
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/describe-resource:
+    post:
+      operationId: kubernetes-describe-resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DescribeKubernetesResourceCommand'
+      responses:
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Describe kubernetes resource
       tags:
       - Kubernetes
   /api/v1/kubernetes/cli:
@@ -27958,6 +28000,56 @@ paths:
       summary: Monitoring alerts for project
       tags:
       - Projects
+  /api/v1/projects/prometheusmetrics/autocomplete:
+    post:
+      operationId: projects-prometheus-metrics-autocomplete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrometheusMetricsAutocompleteCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Prometheus metrics autocomplete values
+      tags:
+      - Projects
   /api/v1/projects/prometheusmetrics:
     post:
       operationId: projects-prometheus-metrics
@@ -27970,7 +28062,8 @@ paths:
         "200":
           content:
             application/json:
-              schema: {}
+              schema:
+                $ref: '#/components/schemas/PrometheusMetricListDto'
           description: OK
         "400":
           content:
@@ -47690,6 +47783,19 @@ components:
           format: double
           type: number
       type: object
+    DecimalPair:
+      additionalProperties: false
+      example:
+        x: 0.8008281904610115
+        "y": 6.027456183070403
+      properties:
+        x:
+          format: double
+          type: number
+        "y":
+          format: double
+          type: number
+      type: object
     DeleteAlertCommand:
       additionalProperties: false
       example:
@@ -48256,6 +48362,30 @@ components:
           nullable: true
           type: string
       type: object
+    DescribeKubernetesResourceCommand:
+      additionalProperties: false
+      example:
+        kind: DaemonSet
+        name: name
+        namespace: namespace
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        kind:
+          $ref: '#/components/schemas/EKubernetesResource'
+      required:
+      - kind
+      - name
+      - projectId
+      type: object
     DescribeNetworkPolicyCommand:
       additionalProperties: false
       example:
@@ -48778,6 +48908,9 @@ components:
       - Secret
       - Sts
       - Service
+      - Node
+      - Crd
+      - StorageClass
       - Pod
       - Ingress
       - Pdb
@@ -55168,6 +55301,63 @@ components:
           type: string
         usageApiEnabled:
           type: boolean
+      type: object
+    MetricData:
+      additionalProperties: false
+      example:
+        result:
+        - metric:
+            key: metric
+          values:
+          - x: 0.8008281904610115
+            "y": 6.027456183070403
+          - x: 0.8008281904610115
+            "y": 6.027456183070403
+          value: ""
+        - metric:
+            key: metric
+          values:
+          - x: 0.8008281904610115
+            "y": 6.027456183070403
+          - x: 0.8008281904610115
+            "y": 6.027456183070403
+          value: ""
+        resultType: resultType
+      properties:
+        resultType:
+          nullable: true
+          type: string
+        result:
+          items:
+            $ref: '#/components/schemas/MetricResult'
+          nullable: true
+          type: array
+      type: object
+    MetricResult:
+      additionalProperties: false
+      example:
+        metric:
+          key: metric
+        values:
+        - x: 0.8008281904610115
+          "y": 6.027456183070403
+        - x: 0.8008281904610115
+          "y": 6.027456183070403
+        value: ""
+      properties:
+        metric:
+          additionalProperties:
+            nullable: true
+            type: string
+          nullable: true
+          type: object
+        value:
+          nullable: true
+        values:
+          items:
+            $ref: '#/components/schemas/DecimalPair'
+          nullable: true
+          type: array
       type: object
     MonitoringCredentialsListDto:
       additionalProperties: false
@@ -61677,10 +61867,48 @@ components:
       - label
       - value
       type: object
+    PrometheusMetricListDto:
+      additionalProperties: false
+      example:
+        data:
+          result:
+          - metric:
+              key: metric
+            values:
+            - x: 0.8008281904610115
+              "y": 6.027456183070403
+            - x: 0.8008281904610115
+              "y": 6.027456183070403
+            value: ""
+          - metric:
+              key: metric
+            values:
+            - x: 0.8008281904610115
+              "y": 6.027456183070403
+            - x: 0.8008281904610115
+              "y": 6.027456183070403
+            value: ""
+          resultType: resultType
+        status: status
+      properties:
+        status:
+          nullable: true
+          type: string
+        data:
+          $ref: '#/components/schemas/MetricData'
+      type: object
+    PrometheusMetricsAutocompleteCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
     PrometheusMetricsCommand:
       additionalProperties: false
       example:
-        isAutoComplete: true
         start: 2000-01-23T04:56:07.000+00:00
         end: 2000-01-23T04:56:07.000+00:00
         step: step
@@ -61708,8 +61936,6 @@ components:
           nullable: true
           type: string
         isGraphEnabled:
-          type: boolean
-        isAutoComplete:
           type: boolean
         step:
           nullable: true
