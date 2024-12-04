@@ -5618,8 +5618,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-12-03T00:03:47.46507Z
-                  createdAt: 2024-12-03T00:03:47.46507Z
+                  lastValidated: 2024-12-04T00:03:29.3679413Z
+                  createdAt: 2024-12-04T00:03:29.3679413Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5724,14 +5724,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-12-03T00:03:47.46507Z
+                    lastBackup: 2024-12-04T00:03:29.3679413Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-12-03T00:03:47.46507Z
+                  createdAt: 2024-12-04T00:03:29.3679413Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-12-03T00:03:47.46507Z
+                  lastBackup: 2024-12-04T00:03:29.3679413Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5836,8 +5836,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-12-03T00:03:47.46507Z
-                  expiration: 2024-12-03T00:03:47.46507Z
+                  createdAt: 2024-12-04T00:03:29.3679413Z
+                  expiration: 2024-12-04T00:03:29.3679413Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5941,7 +5941,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-12-03T00:03:47.46507Z
+                  createdAt: 2024-12-04T00:03:29.3679413Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6051,9 +6051,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-12-03T00:03:47.46507+00:00
-                  startTimeStamp: 2024-12-03T00:03:47.46507+00:00
-                  createdAt: 2024-12-03T00:03:47.46507Z
+                  completionDateTime: 2024-12-04T00:03:29.3679413+00:00
+                  startTimeStamp: 2024-12-04T00:03:29.3679413+00:00
+                  createdAt: 2024-12-04T00:03:29.3679413Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -47783,19 +47783,6 @@ components:
           format: double
           type: number
       type: object
-    DecimalPair:
-      additionalProperties: false
-      example:
-        x: 0.8008281904610115
-        "y": 6.027456183070403
-      properties:
-        x:
-          format: double
-          type: number
-        "y":
-          format: double
-          type: number
-      type: object
     DeleteAlertCommand:
       additionalProperties: false
       example:
@@ -55309,18 +55296,18 @@ components:
         - metric:
             key: metric
           values:
-          - x: 0.8008281904610115
-            "y": 6.027456183070403
-          - x: 0.8008281904610115
-            "y": 6.027456183070403
+          - - 0.8008281904610115
+            - 0.8008281904610115
+          - - 0.8008281904610115
+            - 0.8008281904610115
           value: ""
         - metric:
             key: metric
           values:
-          - x: 0.8008281904610115
-            "y": 6.027456183070403
-          - x: 0.8008281904610115
-            "y": 6.027456183070403
+          - - 0.8008281904610115
+            - 0.8008281904610115
+          - - 0.8008281904610115
+            - 0.8008281904610115
           value: ""
         resultType: resultType
       properties:
@@ -55339,10 +55326,10 @@ components:
         metric:
           key: metric
         values:
-        - x: 0.8008281904610115
-          "y": 6.027456183070403
-        - x: 0.8008281904610115
-          "y": 6.027456183070403
+        - - 0.8008281904610115
+          - 0.8008281904610115
+        - - 0.8008281904610115
+          - 0.8008281904610115
         value: ""
       properties:
         metric:
@@ -55355,7 +55342,10 @@ components:
           nullable: true
         values:
           items:
-            $ref: '#/components/schemas/DecimalPair'
+            items:
+              format: double
+              type: number
+            type: array
           nullable: true
           type: array
       type: object
@@ -60640,6 +60630,7 @@ components:
       additionalProperties: false
       example:
         isKubernetes: true
+        totalServersCount: 5
         health: health
         isMonitoringEnabled: true
         hasKubeConfigFile: true
@@ -60724,6 +60715,9 @@ components:
         kubernetesCurrentVersion:
           nullable: true
           type: string
+        totalServersCount:
+          format: int32
+          type: integer
       required:
       - hasKubeConfigFile
       - health
@@ -60738,6 +60732,7 @@ components:
       - organizationId
       - status
       - token
+      - totalServersCount
       type: object
     ProjectLockManagerCommand:
       additionalProperties: false
@@ -61875,18 +61870,18 @@ components:
           - metric:
               key: metric
             values:
-            - x: 0.8008281904610115
-              "y": 6.027456183070403
-            - x: 0.8008281904610115
-              "y": 6.027456183070403
+            - - 0.8008281904610115
+              - 0.8008281904610115
+            - - 0.8008281904610115
+              - 0.8008281904610115
             value: ""
           - metric:
               key: metric
             values:
-            - x: 0.8008281904610115
-              "y": 6.027456183070403
-            - x: 0.8008281904610115
-              "y": 6.027456183070403
+            - - 0.8008281904610115
+              - 0.8008281904610115
+            - - 0.8008281904610115
+              - 0.8008281904610115
             value: ""
           resultType: resultType
         status: status

@@ -348,7 +348,6 @@ docs/DatastoreListCommand.md
 docs/DatastoreSummary.md
 docs/DateFilter.md
 docs/DateInterval.md
-docs/DecimalPair.md
 docs/DeleteAlertCommand.md
 docs/DeleteBackupCommand.md
 docs/DeleteBackupStorageLocationCommand.md
@@ -1257,7 +1256,6 @@ model_datastore_list_command.go
 model_datastore_summary.go
 model_date_filter.go
 model_date_interval.go
-model_decimal_pair.go
 model_delete_alert_command.go
 model_delete_backup_command.go
 model_delete_backup_storage_location_command.go

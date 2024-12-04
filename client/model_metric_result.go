@@ -22,7 +22,7 @@ var _ MappedNullable = &MetricResult{}
 type MetricResult struct {
 	Metric map[string]string `json:"metric,omitempty"`
 	Value interface{} `json:"value,omitempty"`
-	Values []DecimalPair `json:"values,omitempty"`
+	Values [][]float64 `json:"values,omitempty"`
 }
 
 // NewMetricResult instantiates a new MetricResult object
@@ -109,9 +109,9 @@ func (o *MetricResult) SetValue(v interface{}) {
 }
 
 // GetValues returns the Values field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MetricResult) GetValues() []DecimalPair {
+func (o *MetricResult) GetValues() [][]float64 {
 	if o == nil {
-		var ret []DecimalPair
+		var ret [][]float64
 		return ret
 	}
 	return o.Values
@@ -120,7 +120,7 @@ func (o *MetricResult) GetValues() []DecimalPair {
 // GetValuesOk returns a tuple with the Values field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MetricResult) GetValuesOk() ([]DecimalPair, bool) {
+func (o *MetricResult) GetValuesOk() ([][]float64, bool) {
 	if o == nil || IsNil(o.Values) {
 		return nil, false
 	}
@@ -136,8 +136,8 @@ func (o *MetricResult) HasValues() bool {
 	return false
 }
 
-// SetValues gets a reference to the given []DecimalPair and assigns it to the Values field.
-func (o *MetricResult) SetValues(v []DecimalPair) {
+// SetValues gets a reference to the given [][]float64 and assigns it to the Values field.
+func (o *MetricResult) SetValues(v [][]float64) {
 	o.Values = v
 }
 

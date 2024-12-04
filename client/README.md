@@ -1015,7 +1015,6 @@ Class | Method | HTTP request | Description
  - [DatastoreSummary](docs/DatastoreSummary.md)
  - [DateFilter](docs/DateFilter.md)
  - [DateInterval](docs/DateInterval.md)
- - [DecimalPair](docs/DecimalPair.md)
  - [DeleteAlertCommand](docs/DeleteAlertCommand.md)
  - [DeleteBackupCommand](docs/DeleteBackupCommand.md)
  - [DeleteBackupStorageLocationCommand](docs/DeleteBackupStorageLocationCommand.md)

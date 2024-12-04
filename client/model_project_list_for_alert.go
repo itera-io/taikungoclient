@@ -35,6 +35,7 @@ type ProjectListForAlert struct {
 	MonitoringCredential MonitoringCredentialsListDto `json:"monitoringCredential"`
 	KubernetesAlerts []KubernetesAlertDtoForPoller `json:"kubernetesAlerts"`
 	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion"`
+	TotalServersCount int32 `json:"totalServersCount"`
 }
 
 type _ProjectListForAlert ProjectListForAlert
@@ -43,7 +44,7 @@ type _ProjectListForAlert ProjectListForAlert
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectListForAlert(id int32, name NullableString, token NullableString, status NullableString, organizationId int32, health NullableString, isKubernetes bool, isLocked bool, isMonitoringEnabled bool, hasKubeConfigFile bool, monitoringCredential MonitoringCredentialsListDto, kubernetesAlerts []KubernetesAlertDtoForPoller, kubernetesCurrentVersion NullableString) *ProjectListForAlert {
+func NewProjectListForAlert(id int32, name NullableString, token NullableString, status NullableString, organizationId int32, health NullableString, isKubernetes bool, isLocked bool, isMonitoringEnabled bool, hasKubeConfigFile bool, monitoringCredential MonitoringCredentialsListDto, kubernetesAlerts []KubernetesAlertDtoForPoller, kubernetesCurrentVersion NullableString, totalServersCount int32) *ProjectListForAlert {
 	this := ProjectListForAlert{}
 	this.Id = id
 	this.Name = name
@@ -58,6 +59,7 @@ func NewProjectListForAlert(id int32, name NullableString, token NullableString,
 	this.MonitoringCredential = monitoringCredential
 	this.KubernetesAlerts = kubernetesAlerts
 	this.KubernetesCurrentVersion = kubernetesCurrentVersion
+	this.TotalServersCount = totalServersCount
 	return &this
 }
 
@@ -393,6 +395,30 @@ func (o *ProjectListForAlert) SetKubernetesCurrentVersion(v string) {
 	o.KubernetesCurrentVersion.Set(&v)
 }
 
+// GetTotalServersCount returns the TotalServersCount field value
+func (o *ProjectListForAlert) GetTotalServersCount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.TotalServersCount
+}
+
+// GetTotalServersCountOk returns a tuple with the TotalServersCount field value
+// and a boolean to check if the value has been set.
+func (o *ProjectListForAlert) GetTotalServersCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TotalServersCount, true
+}
+
+// SetTotalServersCount sets field value
+func (o *ProjectListForAlert) SetTotalServersCount(v int32) {
+	o.TotalServersCount = v
+}
+
 func (o ProjectListForAlert) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -418,6 +444,7 @@ func (o ProjectListForAlert) ToMap() (map[string]interface{}, error) {
 		toSerialize["kubernetesAlerts"] = o.KubernetesAlerts
 	}
 	toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion.Get()
+	toSerialize["totalServersCount"] = o.TotalServersCount
 	return toSerialize, nil
 }
 
@@ -439,6 +466,7 @@ func (o *ProjectListForAlert) UnmarshalJSON(data []byte) (err error) {
 		"monitoringCredential",
 		"kubernetesAlerts",
 		"kubernetesCurrentVersion",
+		"totalServersCount",
 	}
 
 	allProperties := make(map[string]interface{})
