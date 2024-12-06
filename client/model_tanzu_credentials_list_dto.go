@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the TanzuCredentialsListDto type satisfies the MappedNullable interface at compile time
@@ -20,32 +22,52 @@ var _ MappedNullable = &TanzuCredentialsListDto{}
 
 // TanzuCredentialsListDto struct for TanzuCredentialsListDto
 type TanzuCredentialsListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	ProjectCount *int32 `json:"projectCount,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Username NullableString `json:"username,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	VolumeType NullableString `json:"volumeType,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Port NullableInt32 `json:"port,omitempty"`
-	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
-	IsDefault *bool `json:"isDefault,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	ContinentName NullableString `json:"continentName,omitempty"`
+	Id int32 `json:"id"`
+	ProjectCount int32 `json:"projectCount"`
+	IsLocked bool `json:"isLocked"`
+	Name string `json:"name"`
+	Username string `json:"username"`
+	Url string `json:"url"`
+	VolumeType string `json:"volumeType"`
+	Namespace string `json:"namespace"`
+	Port NullableInt32 `json:"port"`
+	Projects []CommonDropdownDto `json:"projects"`
+	CreatedBy string `json:"createdBy"`
+	CreatedAt string `json:"createdAt"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	IsDefault bool `json:"isDefault"`
+	OrganizationId int32 `json:"organizationId"`
+	OrganizationName string `json:"organizationName"`
+	ContinentName NullableString `json:"continentName"`
 }
+
+type _TanzuCredentialsListDto TanzuCredentialsListDto
 
 // NewTanzuCredentialsListDto instantiates a new TanzuCredentialsListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTanzuCredentialsListDto() *TanzuCredentialsListDto {
+func NewTanzuCredentialsListDto(id int32, projectCount int32, isLocked bool, name string, username string, url string, volumeType string, namespace string, port NullableInt32, projects []CommonDropdownDto, createdBy string, createdAt string, lastModified NullableString, lastModifiedBy NullableString, isDefault bool, organizationId int32, organizationName string, continentName NullableString) *TanzuCredentialsListDto {
 	this := TanzuCredentialsListDto{}
+	this.Id = id
+	this.ProjectCount = projectCount
+	this.IsLocked = isLocked
+	this.Name = name
+	this.Username = username
+	this.Url = url
+	this.VolumeType = volumeType
+	this.Namespace = namespace
+	this.Port = port
+	this.Projects = projects
+	this.CreatedBy = createdBy
+	this.CreatedAt = createdAt
+	this.LastModified = lastModified
+	this.LastModifiedBy = lastModifiedBy
+	this.IsDefault = isDefault
+	this.OrganizationId = organizationId
+	this.OrganizationName = organizationName
+	this.ContinentName = continentName
 	return &this
 }
 
@@ -57,322 +79,210 @@ func NewTanzuCredentialsListDtoWithDefaults() *TanzuCredentialsListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *TanzuCredentialsListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *TanzuCredentialsListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *TanzuCredentialsListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetProjectCount returns the ProjectCount field value if set, zero value otherwise.
+// GetProjectCount returns the ProjectCount field value
 func (o *TanzuCredentialsListDto) GetProjectCount() int32 {
-	if o == nil || IsNil(o.ProjectCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ProjectCount
+
+	return o.ProjectCount
 }
 
-// GetProjectCountOk returns a tuple with the ProjectCount field value if set, nil otherwise
+// GetProjectCountOk returns a tuple with the ProjectCount field value
 // and a boolean to check if the value has been set.
 func (o *TanzuCredentialsListDto) GetProjectCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProjectCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectCount, true
+	return &o.ProjectCount, true
 }
 
-// HasProjectCount returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasProjectCount() bool {
-	if o != nil && !IsNil(o.ProjectCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectCount gets a reference to the given int32 and assigns it to the ProjectCount field.
+// SetProjectCount sets field value
 func (o *TanzuCredentialsListDto) SetProjectCount(v int32) {
-	o.ProjectCount = &v
+	o.ProjectCount = v
 }
 
-// GetIsLocked returns the IsLocked field value if set, zero value otherwise.
+// GetIsLocked returns the IsLocked field value
 func (o *TanzuCredentialsListDto) GetIsLocked() bool {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsLocked
+
+	return o.IsLocked
 }
 
-// GetIsLockedOk returns a tuple with the IsLocked field value if set, nil otherwise
+// GetIsLockedOk returns a tuple with the IsLocked field value
 // and a boolean to check if the value has been set.
 func (o *TanzuCredentialsListDto) GetIsLockedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsLocked, true
+	return &o.IsLocked, true
 }
 
-// HasIsLocked returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasIsLocked() bool {
-	if o != nil && !IsNil(o.IsLocked) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsLocked gets a reference to the given bool and assigns it to the IsLocked field.
+// SetIsLocked sets field value
 func (o *TanzuCredentialsListDto) SetIsLocked(v bool) {
-	o.IsLocked = &v
+	o.IsLocked = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *TanzuCredentialsListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *TanzuCredentialsListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *TanzuCredentialsListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *TanzuCredentialsListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUsername returns the Username field value
 func (o *TanzuCredentialsListDto) GetUsername() string {
-	if o == nil || IsNil(o.Username.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Username.Get()
+
+	return o.Username
 }
 
-// GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
+// GetUsernameOk returns a tuple with the Username field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetUsernameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Username.Get(), o.Username.IsSet()
+	return &o.Username, true
 }
 
-// HasUsername returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasUsername() bool {
-	if o != nil && o.Username.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUsername gets a reference to the given NullableString and assigns it to the Username field.
+// SetUsername sets field value
 func (o *TanzuCredentialsListDto) SetUsername(v string) {
-	o.Username.Set(&v)
-}
-// SetUsernameNil sets the value for Username to be an explicit nil
-func (o *TanzuCredentialsListDto) SetUsernameNil() {
-	o.Username.Set(nil)
+	o.Username = v
 }
 
-// UnsetUsername ensures that no value is present for Username, not even an explicit nil
-func (o *TanzuCredentialsListDto) UnsetUsername() {
-	o.Username.Unset()
-}
-
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value
 func (o *TanzuCredentialsListDto) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+
+	return o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return &o.Url, true
 }
 
-// HasUrl returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl sets field value
 func (o *TanzuCredentialsListDto) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *TanzuCredentialsListDto) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *TanzuCredentialsListDto) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetVolumeType returns the VolumeType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVolumeType returns the VolumeType field value
 func (o *TanzuCredentialsListDto) GetVolumeType() string {
-	if o == nil || IsNil(o.VolumeType.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.VolumeType.Get()
+
+	return o.VolumeType
 }
 
-// GetVolumeTypeOk returns a tuple with the VolumeType field value if set, nil otherwise
+// GetVolumeTypeOk returns a tuple with the VolumeType field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetVolumeTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.VolumeType.Get(), o.VolumeType.IsSet()
+	return &o.VolumeType, true
 }
 
-// HasVolumeType returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasVolumeType() bool {
-	if o != nil && o.VolumeType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetVolumeType gets a reference to the given NullableString and assigns it to the VolumeType field.
+// SetVolumeType sets field value
 func (o *TanzuCredentialsListDto) SetVolumeType(v string) {
-	o.VolumeType.Set(&v)
-}
-// SetVolumeTypeNil sets the value for VolumeType to be an explicit nil
-func (o *TanzuCredentialsListDto) SetVolumeTypeNil() {
-	o.VolumeType.Set(nil)
+	o.VolumeType = v
 }
 
-// UnsetVolumeType ensures that no value is present for VolumeType, not even an explicit nil
-func (o *TanzuCredentialsListDto) UnsetVolumeType() {
-	o.VolumeType.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value
 func (o *TanzuCredentialsListDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+
+	return o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// GetNamespaceOk returns a tuple with the Namespace field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetNamespaceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return &o.Namespace, true
 }
 
-// HasNamespace returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace sets field value
 func (o *TanzuCredentialsListDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *TanzuCredentialsListDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *TanzuCredentialsListDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetPort returns the Port field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPort returns the Port field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *TanzuCredentialsListDto) GetPort() int32 {
-	if o == nil || IsNil(o.Port.Get()) {
+	if o == nil || o.Port.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.Port.Get()
 }
 
-// GetPortOk returns a tuple with the Port field value if set, nil otherwise
+// GetPortOk returns a tuple with the Port field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetPortOk() (*int32, bool) {
@@ -382,156 +292,95 @@ func (o *TanzuCredentialsListDto) GetPortOk() (*int32, bool) {
 	return o.Port.Get(), o.Port.IsSet()
 }
 
-// HasPort returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasPort() bool {
-	if o != nil && o.Port.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPort gets a reference to the given NullableInt32 and assigns it to the Port field.
+// SetPort sets field value
 func (o *TanzuCredentialsListDto) SetPort(v int32) {
 	o.Port.Set(&v)
 }
-// SetPortNil sets the value for Port to be an explicit nil
-func (o *TanzuCredentialsListDto) SetPortNil() {
-	o.Port.Set(nil)
-}
 
-// UnsetPort ensures that no value is present for Port, not even an explicit nil
-func (o *TanzuCredentialsListDto) UnsetPort() {
-	o.Port.Unset()
-}
-
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value
 func (o *TanzuCredentialsListDto) GetProjects() []CommonDropdownDto {
 	if o == nil {
 		var ret []CommonDropdownDto
 		return ret
 	}
+
 	return o.Projects
 }
 
-// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
+// GetProjectsOk returns a tuple with the Projects field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
-	if o == nil || IsNil(o.Projects) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Projects, true
 }
 
-// HasProjects returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasProjects() bool {
-	if o != nil && !IsNil(o.Projects) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjects gets a reference to the given []CommonDropdownDto and assigns it to the Projects field.
+// SetProjects sets field value
 func (o *TanzuCredentialsListDto) SetProjects(v []CommonDropdownDto) {
 	o.Projects = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value
 func (o *TanzuCredentialsListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy.Get()
+
+	return o.CreatedBy
 }
 
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetCreatedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy sets field value
 func (o *TanzuCredentialsListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
-}
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *TanzuCredentialsListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
+	o.CreatedBy = v
 }
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *TanzuCredentialsListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
 func (o *TanzuCredentialsListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *TanzuCredentialsListDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *TanzuCredentialsListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
+	o.CreatedAt = v
 }
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *TanzuCredentialsListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *TanzuCredentialsListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || o.LastModified.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModified.Get()
 }
 
-// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
+// GetLastModifiedOk returns a tuple with the LastModified field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetLastModifiedOk() (*string, bool) {
@@ -541,39 +390,23 @@ func (o *TanzuCredentialsListDto) GetLastModifiedOk() (*string, bool) {
 	return o.LastModified.Get(), o.LastModified.IsSet()
 }
 
-// HasLastModified returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified sets field value
 func (o *TanzuCredentialsListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *TanzuCredentialsListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
-}
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *TanzuCredentialsListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *TanzuCredentialsListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || o.LastModifiedBy.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModifiedBy.Get()
 }
 
-// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
@@ -583,145 +416,95 @@ func (o *TanzuCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
 	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
 }
 
-// HasLastModifiedBy returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy sets field value
 func (o *TanzuCredentialsListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *TanzuCredentialsListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
 
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *TanzuCredentialsListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
-}
-
-// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+// GetIsDefault returns the IsDefault field value
 func (o *TanzuCredentialsListDto) GetIsDefault() bool {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDefault
+
+	return o.IsDefault
 }
 
-// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// GetIsDefaultOk returns a tuple with the IsDefault field value
 // and a boolean to check if the value has been set.
 func (o *TanzuCredentialsListDto) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDefault, true
+	return &o.IsDefault, true
 }
 
-// HasIsDefault returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasIsDefault() bool {
-	if o != nil && !IsNil(o.IsDefault) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+// SetIsDefault sets field value
 func (o *TanzuCredentialsListDto) SetIsDefault(v bool) {
-	o.IsDefault = &v
+	o.IsDefault = v
 }
 
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
+// GetOrganizationId returns the OrganizationId field value
 func (o *TanzuCredentialsListDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationId
+
+	return o.OrganizationId
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 func (o *TanzuCredentialsListDto) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationId, true
+	return &o.OrganizationId, true
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasOrganizationId() bool {
-	if o != nil && !IsNil(o.OrganizationId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *TanzuCredentialsListDto) SetOrganizationId(v int32) {
-	o.OrganizationId = &v
+	o.OrganizationId = v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
 func (o *TanzuCredentialsListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+
+	return o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return &o.OrganizationName, true
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *TanzuCredentialsListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *TanzuCredentialsListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+	o.OrganizationName = v
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *TanzuCredentialsListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetContinentName returns the ContinentName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetContinentName returns the ContinentName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *TanzuCredentialsListDto) GetContinentName() string {
-	if o == nil || IsNil(o.ContinentName.Get()) {
+	if o == nil || o.ContinentName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.ContinentName.Get()
 }
 
-// GetContinentNameOk returns a tuple with the ContinentName field value if set, nil otherwise
+// GetContinentNameOk returns a tuple with the ContinentName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TanzuCredentialsListDto) GetContinentNameOk() (*string, bool) {
@@ -731,27 +514,9 @@ func (o *TanzuCredentialsListDto) GetContinentNameOk() (*string, bool) {
 	return o.ContinentName.Get(), o.ContinentName.IsSet()
 }
 
-// HasContinentName returns a boolean if a field has been set.
-func (o *TanzuCredentialsListDto) HasContinentName() bool {
-	if o != nil && o.ContinentName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetContinentName gets a reference to the given NullableString and assigns it to the ContinentName field.
+// SetContinentName sets field value
 func (o *TanzuCredentialsListDto) SetContinentName(v string) {
 	o.ContinentName.Set(&v)
-}
-// SetContinentNameNil sets the value for ContinentName to be an explicit nil
-func (o *TanzuCredentialsListDto) SetContinentNameNil() {
-	o.ContinentName.Set(nil)
-}
-
-// UnsetContinentName ensures that no value is present for ContinentName, not even an explicit nil
-func (o *TanzuCredentialsListDto) UnsetContinentName() {
-	o.ContinentName.Unset()
 }
 
 func (o TanzuCredentialsListDto) MarshalJSON() ([]byte, error) {
@@ -764,61 +529,79 @@ func (o TanzuCredentialsListDto) MarshalJSON() ([]byte, error) {
 
 func (o TanzuCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.ProjectCount) {
-		toSerialize["projectCount"] = o.ProjectCount
-	}
-	if !IsNil(o.IsLocked) {
-		toSerialize["isLocked"] = o.IsLocked
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.Username.IsSet() {
-		toSerialize["username"] = o.Username.Get()
-	}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
-	}
-	if o.VolumeType.IsSet() {
-		toSerialize["volumeType"] = o.VolumeType.Get()
-	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
-	}
-	if o.Port.IsSet() {
-		toSerialize["port"] = o.Port.Get()
-	}
-	if o.Projects != nil {
-		toSerialize["projects"] = o.Projects
-	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
-	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
-	}
-	if !IsNil(o.IsDefault) {
-		toSerialize["isDefault"] = o.IsDefault
-	}
-	if !IsNil(o.OrganizationId) {
-		toSerialize["organizationId"] = o.OrganizationId
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
-	if o.ContinentName.IsSet() {
-		toSerialize["continentName"] = o.ContinentName.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["projectCount"] = o.ProjectCount
+	toSerialize["isLocked"] = o.IsLocked
+	toSerialize["name"] = o.Name
+	toSerialize["username"] = o.Username
+	toSerialize["url"] = o.Url
+	toSerialize["volumeType"] = o.VolumeType
+	toSerialize["namespace"] = o.Namespace
+	toSerialize["port"] = o.Port.Get()
+	toSerialize["projects"] = o.Projects
+	toSerialize["createdBy"] = o.CreatedBy
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["lastModified"] = o.LastModified.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["isDefault"] = o.IsDefault
+	toSerialize["organizationId"] = o.OrganizationId
+	toSerialize["organizationName"] = o.OrganizationName
+	toSerialize["continentName"] = o.ContinentName.Get()
 	return toSerialize, nil
+}
+
+func (o *TanzuCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"projectCount",
+		"isLocked",
+		"name",
+		"username",
+		"url",
+		"volumeType",
+		"namespace",
+		"port",
+		"projects",
+		"createdBy",
+		"createdAt",
+		"lastModified",
+		"lastModifiedBy",
+		"isDefault",
+		"organizationId",
+		"organizationName",
+		"continentName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTanzuCredentialsListDto := _TanzuCredentialsListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTanzuCredentialsListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TanzuCredentialsListDto(varTanzuCredentialsListDto)
+
+	return err
 }
 
 type NullableTanzuCredentialsListDto struct {

@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SlackConfigurationDto type satisfies the MappedNullable interface at compile time
@@ -20,21 +22,30 @@ var _ MappedNullable = &SlackConfigurationDto{}
 
 // SlackConfigurationDto struct for SlackConfigurationDto
 type SlackConfigurationDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	Channel NullableString `json:"channel,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	SlackType *SlackType `json:"slackType,omitempty"`
+	Id int32 `json:"id"`
+	Name NullableString `json:"name"`
+	Url NullableString `json:"url"`
+	Channel NullableString `json:"channel"`
+	OrganizationName NullableString `json:"organizationName"`
+	OrganizationId NullableInt32 `json:"organizationId"`
+	SlackType SlackType `json:"slackType"`
 }
+
+type _SlackConfigurationDto SlackConfigurationDto
 
 // NewSlackConfigurationDto instantiates a new SlackConfigurationDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSlackConfigurationDto() *SlackConfigurationDto {
+func NewSlackConfigurationDto(id int32, name NullableString, url NullableString, channel NullableString, organizationName NullableString, organizationId NullableInt32, slackType SlackType) *SlackConfigurationDto {
 	this := SlackConfigurationDto{}
+	this.Id = id
+	this.Name = name
+	this.Url = url
+	this.Channel = channel
+	this.OrganizationName = organizationName
+	this.OrganizationId = organizationId
+	this.SlackType = slackType
 	return &this
 }
 
@@ -46,48 +57,42 @@ func NewSlackConfigurationDtoWithDefaults() *SlackConfigurationDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *SlackConfigurationDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *SlackConfigurationDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *SlackConfigurationDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *SlackConfigurationDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *SlackConfigurationDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlackConfigurationDto) GetNameOk() (*string, bool) {
@@ -97,39 +102,23 @@ func (o *SlackConfigurationDto) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *SlackConfigurationDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *SlackConfigurationDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *SlackConfigurationDto) SetNameNil() {
-	o.Name.Set(nil)
-}
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *SlackConfigurationDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *SlackConfigurationDto) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil || o.Url.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Url.Get()
 }
 
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlackConfigurationDto) GetUrlOk() (*string, bool) {
@@ -139,39 +128,23 @@ func (o *SlackConfigurationDto) GetUrlOk() (*string, bool) {
 	return o.Url.Get(), o.Url.IsSet()
 }
 
-// HasUrl returns a boolean if a field has been set.
-func (o *SlackConfigurationDto) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl sets field value
 func (o *SlackConfigurationDto) SetUrl(v string) {
 	o.Url.Set(&v)
 }
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *SlackConfigurationDto) SetUrlNil() {
-	o.Url.Set(nil)
-}
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *SlackConfigurationDto) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetChannel returns the Channel field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetChannel returns the Channel field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *SlackConfigurationDto) GetChannel() string {
-	if o == nil || IsNil(o.Channel.Get()) {
+	if o == nil || o.Channel.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Channel.Get()
 }
 
-// GetChannelOk returns a tuple with the Channel field value if set, nil otherwise
+// GetChannelOk returns a tuple with the Channel field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlackConfigurationDto) GetChannelOk() (*string, bool) {
@@ -181,39 +154,23 @@ func (o *SlackConfigurationDto) GetChannelOk() (*string, bool) {
 	return o.Channel.Get(), o.Channel.IsSet()
 }
 
-// HasChannel returns a boolean if a field has been set.
-func (o *SlackConfigurationDto) HasChannel() bool {
-	if o != nil && o.Channel.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetChannel gets a reference to the given NullableString and assigns it to the Channel field.
+// SetChannel sets field value
 func (o *SlackConfigurationDto) SetChannel(v string) {
 	o.Channel.Set(&v)
 }
-// SetChannelNil sets the value for Channel to be an explicit nil
-func (o *SlackConfigurationDto) SetChannelNil() {
-	o.Channel.Set(nil)
-}
 
-// UnsetChannel ensures that no value is present for Channel, not even an explicit nil
-func (o *SlackConfigurationDto) UnsetChannel() {
-	o.Channel.Unset()
-}
-
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *SlackConfigurationDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || o.OrganizationName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.OrganizationName.Get()
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlackConfigurationDto) GetOrganizationNameOk() (*string, bool) {
@@ -223,39 +180,23 @@ func (o *SlackConfigurationDto) GetOrganizationNameOk() (*string, bool) {
 	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *SlackConfigurationDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *SlackConfigurationDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *SlackConfigurationDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *SlackConfigurationDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationId returns the OrganizationId field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *SlackConfigurationDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId.Get()) {
+	if o == nil || o.OrganizationId.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SlackConfigurationDto) GetOrganizationIdOk() (*int32, bool) {
@@ -265,59 +206,33 @@ func (o *SlackConfigurationDto) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *SlackConfigurationDto) HasOrganizationId() bool {
-	if o != nil && o.OrganizationId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *SlackConfigurationDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
-func (o *SlackConfigurationDto) SetOrganizationIdNil() {
-	o.OrganizationId.Set(nil)
-}
 
-// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
-func (o *SlackConfigurationDto) UnsetOrganizationId() {
-	o.OrganizationId.Unset()
-}
-
-// GetSlackType returns the SlackType field value if set, zero value otherwise.
+// GetSlackType returns the SlackType field value
 func (o *SlackConfigurationDto) GetSlackType() SlackType {
-	if o == nil || IsNil(o.SlackType) {
+	if o == nil {
 		var ret SlackType
 		return ret
 	}
-	return *o.SlackType
+
+	return o.SlackType
 }
 
-// GetSlackTypeOk returns a tuple with the SlackType field value if set, nil otherwise
+// GetSlackTypeOk returns a tuple with the SlackType field value
 // and a boolean to check if the value has been set.
 func (o *SlackConfigurationDto) GetSlackTypeOk() (*SlackType, bool) {
-	if o == nil || IsNil(o.SlackType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SlackType, true
+	return &o.SlackType, true
 }
 
-// HasSlackType returns a boolean if a field has been set.
-func (o *SlackConfigurationDto) HasSlackType() bool {
-	if o != nil && !IsNil(o.SlackType) {
-		return true
-	}
-
-	return false
-}
-
-// SetSlackType gets a reference to the given SlackType and assigns it to the SlackType field.
+// SetSlackType sets field value
 func (o *SlackConfigurationDto) SetSlackType(v SlackType) {
-	o.SlackType = &v
+	o.SlackType = v
 }
 
 func (o SlackConfigurationDto) MarshalJSON() ([]byte, error) {
@@ -330,28 +245,57 @@ func (o SlackConfigurationDto) MarshalJSON() ([]byte, error) {
 
 func (o SlackConfigurationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
-	}
-	if o.Channel.IsSet() {
-		toSerialize["channel"] = o.Channel.Get()
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
-	if o.OrganizationId.IsSet() {
-		toSerialize["organizationId"] = o.OrganizationId.Get()
-	}
-	if !IsNil(o.SlackType) {
-		toSerialize["slackType"] = o.SlackType
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["url"] = o.Url.Get()
+	toSerialize["channel"] = o.Channel.Get()
+	toSerialize["organizationName"] = o.OrganizationName.Get()
+	toSerialize["organizationId"] = o.OrganizationId.Get()
+	toSerialize["slackType"] = o.SlackType
 	return toSerialize, nil
+}
+
+func (o *SlackConfigurationDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"url",
+		"channel",
+		"organizationName",
+		"organizationId",
+		"slackType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSlackConfigurationDto := _SlackConfigurationDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSlackConfigurationDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SlackConfigurationDto(varSlackConfigurationDto)
+
+	return err
 }
 
 type NullableSlackConfigurationDto struct {

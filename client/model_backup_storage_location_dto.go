@@ -14,6 +14,8 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the BackupStorageLocationDto type satisfies the MappedNullable interface at compile time
@@ -21,22 +23,32 @@ var _ MappedNullable = &BackupStorageLocationDto{}
 
 // BackupStorageLocationDto struct for BackupStorageLocationDto
 type BackupStorageLocationDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	Provider NullableString `json:"provider,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	LastValidated NullableTime `json:"lastValidated,omitempty"`
-	CreatedAt NullableTime `json:"createdAt,omitempty"`
-	AccessMode NullableString `json:"accessMode,omitempty"`
-	Phase NullableString `json:"phase,omitempty"`
-	BackupCredentialId NullableInt32 `json:"backupCredentialId,omitempty"`
+	MetadataName string `json:"metadataName"`
+	Provider string `json:"provider"`
+	Namespace string `json:"namespace"`
+	LastValidated NullableTime `json:"lastValidated"`
+	CreatedAt NullableTime `json:"createdAt"`
+	AccessMode string `json:"accessMode"`
+	Phase NullableString `json:"phase"`
+	BackupCredentialId NullableInt32 `json:"backupCredentialId"`
 }
+
+type _BackupStorageLocationDto BackupStorageLocationDto
 
 // NewBackupStorageLocationDto instantiates a new BackupStorageLocationDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBackupStorageLocationDto() *BackupStorageLocationDto {
+func NewBackupStorageLocationDto(metadataName string, provider string, namespace string, lastValidated NullableTime, createdAt NullableTime, accessMode string, phase NullableString, backupCredentialId NullableInt32) *BackupStorageLocationDto {
 	this := BackupStorageLocationDto{}
+	this.MetadataName = metadataName
+	this.Provider = provider
+	this.Namespace = namespace
+	this.LastValidated = lastValidated
+	this.CreatedAt = createdAt
+	this.AccessMode = accessMode
+	this.Phase = phase
+	this.BackupCredentialId = backupCredentialId
 	return &this
 }
 
@@ -48,142 +60,90 @@ func NewBackupStorageLocationDtoWithDefaults() *BackupStorageLocationDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value
 func (o *BackupStorageLocationDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName.Get()
+
+	return o.MetadataName
 }
 
-// GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
+// GetMetadataNameOk returns a tuple with the MetadataName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupStorageLocationDto) GetMetadataNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.MetadataName.Get(), o.MetadataName.IsSet()
+	return &o.MetadataName, true
 }
 
-// HasMetadataName returns a boolean if a field has been set.
-func (o *BackupStorageLocationDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName sets field value
 func (o *BackupStorageLocationDto) SetMetadataName(v string) {
-	o.MetadataName.Set(&v)
-}
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *BackupStorageLocationDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
+	o.MetadataName = v
 }
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *BackupStorageLocationDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetProvider returns the Provider field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProvider returns the Provider field value
 func (o *BackupStorageLocationDto) GetProvider() string {
-	if o == nil || IsNil(o.Provider.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Provider.Get()
+
+	return o.Provider
 }
 
-// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
+// GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupStorageLocationDto) GetProviderOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Provider.Get(), o.Provider.IsSet()
+	return &o.Provider, true
 }
 
-// HasProvider returns a boolean if a field has been set.
-func (o *BackupStorageLocationDto) HasProvider() bool {
-	if o != nil && o.Provider.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProvider gets a reference to the given NullableString and assigns it to the Provider field.
+// SetProvider sets field value
 func (o *BackupStorageLocationDto) SetProvider(v string) {
-	o.Provider.Set(&v)
-}
-// SetProviderNil sets the value for Provider to be an explicit nil
-func (o *BackupStorageLocationDto) SetProviderNil() {
-	o.Provider.Set(nil)
+	o.Provider = v
 }
 
-// UnsetProvider ensures that no value is present for Provider, not even an explicit nil
-func (o *BackupStorageLocationDto) UnsetProvider() {
-	o.Provider.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value
 func (o *BackupStorageLocationDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+
+	return o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// GetNamespaceOk returns a tuple with the Namespace field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupStorageLocationDto) GetNamespaceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return &o.Namespace, true
 }
 
-// HasNamespace returns a boolean if a field has been set.
-func (o *BackupStorageLocationDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace sets field value
 func (o *BackupStorageLocationDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *BackupStorageLocationDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *BackupStorageLocationDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetLastValidated returns the LastValidated field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastValidated returns the LastValidated field value
+// If the value is explicit nil, the zero value for time.Time will be returned
 func (o *BackupStorageLocationDto) GetLastValidated() time.Time {
-	if o == nil || IsNil(o.LastValidated.Get()) {
+	if o == nil || o.LastValidated.Get() == nil {
 		var ret time.Time
 		return ret
 	}
+
 	return *o.LastValidated.Get()
 }
 
-// GetLastValidatedOk returns a tuple with the LastValidated field value if set, nil otherwise
+// GetLastValidatedOk returns a tuple with the LastValidated field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupStorageLocationDto) GetLastValidatedOk() (*time.Time, bool) {
@@ -193,39 +153,23 @@ func (o *BackupStorageLocationDto) GetLastValidatedOk() (*time.Time, bool) {
 	return o.LastValidated.Get(), o.LastValidated.IsSet()
 }
 
-// HasLastValidated returns a boolean if a field has been set.
-func (o *BackupStorageLocationDto) HasLastValidated() bool {
-	if o != nil && o.LastValidated.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastValidated gets a reference to the given NullableTime and assigns it to the LastValidated field.
+// SetLastValidated sets field value
 func (o *BackupStorageLocationDto) SetLastValidated(v time.Time) {
 	o.LastValidated.Set(&v)
 }
-// SetLastValidatedNil sets the value for LastValidated to be an explicit nil
-func (o *BackupStorageLocationDto) SetLastValidatedNil() {
-	o.LastValidated.Set(nil)
-}
 
-// UnsetLastValidated ensures that no value is present for LastValidated, not even an explicit nil
-func (o *BackupStorageLocationDto) UnsetLastValidated() {
-	o.LastValidated.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
+// If the value is explicit nil, the zero value for time.Time will be returned
 func (o *BackupStorageLocationDto) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || o.CreatedAt.Get() == nil {
 		var ret time.Time
 		return ret
 	}
+
 	return *o.CreatedAt.Get()
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupStorageLocationDto) GetCreatedAtOk() (*time.Time, bool) {
@@ -235,81 +179,47 @@ func (o *BackupStorageLocationDto) GetCreatedAtOk() (*time.Time, bool) {
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *BackupStorageLocationDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableTime and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *BackupStorageLocationDto) SetCreatedAt(v time.Time) {
 	o.CreatedAt.Set(&v)
 }
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *BackupStorageLocationDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *BackupStorageLocationDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetAccessMode returns the AccessMode field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAccessMode returns the AccessMode field value
 func (o *BackupStorageLocationDto) GetAccessMode() string {
-	if o == nil || IsNil(o.AccessMode.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AccessMode.Get()
+
+	return o.AccessMode
 }
 
-// GetAccessModeOk returns a tuple with the AccessMode field value if set, nil otherwise
+// GetAccessModeOk returns a tuple with the AccessMode field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupStorageLocationDto) GetAccessModeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccessMode.Get(), o.AccessMode.IsSet()
+	return &o.AccessMode, true
 }
 
-// HasAccessMode returns a boolean if a field has been set.
-func (o *BackupStorageLocationDto) HasAccessMode() bool {
-	if o != nil && o.AccessMode.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessMode gets a reference to the given NullableString and assigns it to the AccessMode field.
+// SetAccessMode sets field value
 func (o *BackupStorageLocationDto) SetAccessMode(v string) {
-	o.AccessMode.Set(&v)
-}
-// SetAccessModeNil sets the value for AccessMode to be an explicit nil
-func (o *BackupStorageLocationDto) SetAccessModeNil() {
-	o.AccessMode.Set(nil)
+	o.AccessMode = v
 }
 
-// UnsetAccessMode ensures that no value is present for AccessMode, not even an explicit nil
-func (o *BackupStorageLocationDto) UnsetAccessMode() {
-	o.AccessMode.Unset()
-}
-
-// GetPhase returns the Phase field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPhase returns the Phase field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *BackupStorageLocationDto) GetPhase() string {
-	if o == nil || IsNil(o.Phase.Get()) {
+	if o == nil || o.Phase.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Phase.Get()
 }
 
-// GetPhaseOk returns a tuple with the Phase field value if set, nil otherwise
+// GetPhaseOk returns a tuple with the Phase field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupStorageLocationDto) GetPhaseOk() (*string, bool) {
@@ -319,39 +229,23 @@ func (o *BackupStorageLocationDto) GetPhaseOk() (*string, bool) {
 	return o.Phase.Get(), o.Phase.IsSet()
 }
 
-// HasPhase returns a boolean if a field has been set.
-func (o *BackupStorageLocationDto) HasPhase() bool {
-	if o != nil && o.Phase.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPhase gets a reference to the given NullableString and assigns it to the Phase field.
+// SetPhase sets field value
 func (o *BackupStorageLocationDto) SetPhase(v string) {
 	o.Phase.Set(&v)
 }
-// SetPhaseNil sets the value for Phase to be an explicit nil
-func (o *BackupStorageLocationDto) SetPhaseNil() {
-	o.Phase.Set(nil)
-}
 
-// UnsetPhase ensures that no value is present for Phase, not even an explicit nil
-func (o *BackupStorageLocationDto) UnsetPhase() {
-	o.Phase.Unset()
-}
-
-// GetBackupCredentialId returns the BackupCredentialId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBackupCredentialId returns the BackupCredentialId field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *BackupStorageLocationDto) GetBackupCredentialId() int32 {
-	if o == nil || IsNil(o.BackupCredentialId.Get()) {
+	if o == nil || o.BackupCredentialId.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.BackupCredentialId.Get()
 }
 
-// GetBackupCredentialIdOk returns a tuple with the BackupCredentialId field value if set, nil otherwise
+// GetBackupCredentialIdOk returns a tuple with the BackupCredentialId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupStorageLocationDto) GetBackupCredentialIdOk() (*int32, bool) {
@@ -361,27 +255,9 @@ func (o *BackupStorageLocationDto) GetBackupCredentialIdOk() (*int32, bool) {
 	return o.BackupCredentialId.Get(), o.BackupCredentialId.IsSet()
 }
 
-// HasBackupCredentialId returns a boolean if a field has been set.
-func (o *BackupStorageLocationDto) HasBackupCredentialId() bool {
-	if o != nil && o.BackupCredentialId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBackupCredentialId gets a reference to the given NullableInt32 and assigns it to the BackupCredentialId field.
+// SetBackupCredentialId sets field value
 func (o *BackupStorageLocationDto) SetBackupCredentialId(v int32) {
 	o.BackupCredentialId.Set(&v)
-}
-// SetBackupCredentialIdNil sets the value for BackupCredentialId to be an explicit nil
-func (o *BackupStorageLocationDto) SetBackupCredentialIdNil() {
-	o.BackupCredentialId.Set(nil)
-}
-
-// UnsetBackupCredentialId ensures that no value is present for BackupCredentialId, not even an explicit nil
-func (o *BackupStorageLocationDto) UnsetBackupCredentialId() {
-	o.BackupCredentialId.Unset()
 }
 
 func (o BackupStorageLocationDto) MarshalJSON() ([]byte, error) {
@@ -394,31 +270,59 @@ func (o BackupStorageLocationDto) MarshalJSON() ([]byte, error) {
 
 func (o BackupStorageLocationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
-	}
-	if o.Provider.IsSet() {
-		toSerialize["provider"] = o.Provider.Get()
-	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
-	}
-	if o.LastValidated.IsSet() {
-		toSerialize["lastValidated"] = o.LastValidated.Get()
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if o.AccessMode.IsSet() {
-		toSerialize["accessMode"] = o.AccessMode.Get()
-	}
-	if o.Phase.IsSet() {
-		toSerialize["phase"] = o.Phase.Get()
-	}
-	if o.BackupCredentialId.IsSet() {
-		toSerialize["backupCredentialId"] = o.BackupCredentialId.Get()
-	}
+	toSerialize["metadataName"] = o.MetadataName
+	toSerialize["provider"] = o.Provider
+	toSerialize["namespace"] = o.Namespace
+	toSerialize["lastValidated"] = o.LastValidated.Get()
+	toSerialize["createdAt"] = o.CreatedAt.Get()
+	toSerialize["accessMode"] = o.AccessMode
+	toSerialize["phase"] = o.Phase.Get()
+	toSerialize["backupCredentialId"] = o.BackupCredentialId.Get()
 	return toSerialize, nil
+}
+
+func (o *BackupStorageLocationDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"metadataName",
+		"provider",
+		"namespace",
+		"lastValidated",
+		"createdAt",
+		"accessMode",
+		"phase",
+		"backupCredentialId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varBackupStorageLocationDto := _BackupStorageLocationDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varBackupStorageLocationDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BackupStorageLocationDto(varBackupStorageLocationDto)
+
+	return err
 }
 
 type NullableBackupStorageLocationDto struct {

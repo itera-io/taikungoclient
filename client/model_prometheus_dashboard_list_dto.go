@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PrometheusDashboardListDto type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &PrometheusDashboardListDto{}
 
 // PrometheusDashboardListDto struct for PrometheusDashboardListDto
 type PrometheusDashboardListDto struct {
-	CategoryName NullableString `json:"categoryName,omitempty"`
-	Data []PrometheusDashboardDto `json:"data,omitempty"`
+	CategoryName NullableString `json:"categoryName"`
+	Data []PrometheusDashboardDto `json:"data"`
 }
+
+type _PrometheusDashboardListDto PrometheusDashboardListDto
 
 // NewPrometheusDashboardListDto instantiates a new PrometheusDashboardListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusDashboardListDto() *PrometheusDashboardListDto {
+func NewPrometheusDashboardListDto(categoryName NullableString, data []PrometheusDashboardDto) *PrometheusDashboardListDto {
 	this := PrometheusDashboardListDto{}
+	this.CategoryName = categoryName
+	this.Data = data
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewPrometheusDashboardListDtoWithDefaults() *PrometheusDashboardListDto {
 	return &this
 }
 
-// GetCategoryName returns the CategoryName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCategoryName returns the CategoryName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PrometheusDashboardListDto) GetCategoryName() string {
-	if o == nil || IsNil(o.CategoryName.Get()) {
+	if o == nil || o.CategoryName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CategoryName.Get()
 }
 
-// GetCategoryNameOk returns a tuple with the CategoryName field value if set, nil otherwise
+// GetCategoryNameOk returns a tuple with the CategoryName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusDashboardListDto) GetCategoryNameOk() (*string, bool) {
@@ -60,39 +68,23 @@ func (o *PrometheusDashboardListDto) GetCategoryNameOk() (*string, bool) {
 	return o.CategoryName.Get(), o.CategoryName.IsSet()
 }
 
-// HasCategoryName returns a boolean if a field has been set.
-func (o *PrometheusDashboardListDto) HasCategoryName() bool {
-	if o != nil && o.CategoryName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCategoryName gets a reference to the given NullableString and assigns it to the CategoryName field.
+// SetCategoryName sets field value
 func (o *PrometheusDashboardListDto) SetCategoryName(v string) {
 	o.CategoryName.Set(&v)
 }
-// SetCategoryNameNil sets the value for CategoryName to be an explicit nil
-func (o *PrometheusDashboardListDto) SetCategoryNameNil() {
-	o.CategoryName.Set(nil)
-}
 
-// UnsetCategoryName ensures that no value is present for CategoryName, not even an explicit nil
-func (o *PrometheusDashboardListDto) UnsetCategoryName() {
-	o.CategoryName.Unset()
-}
-
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []PrometheusDashboardDto will be returned
 func (o *PrometheusDashboardListDto) GetData() []PrometheusDashboardDto {
 	if o == nil {
 		var ret []PrometheusDashboardDto
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusDashboardListDto) GetDataOk() ([]PrometheusDashboardDto, bool) {
@@ -102,16 +94,7 @@ func (o *PrometheusDashboardListDto) GetDataOk() ([]PrometheusDashboardDto, bool
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *PrometheusDashboardListDto) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []PrometheusDashboardDto and assigns it to the Data field.
+// SetData sets field value
 func (o *PrometheusDashboardListDto) SetData(v []PrometheusDashboardDto) {
 	o.Data = v
 }
@@ -126,13 +109,49 @@ func (o PrometheusDashboardListDto) MarshalJSON() ([]byte, error) {
 
 func (o PrometheusDashboardListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.CategoryName.IsSet() {
-		toSerialize["categoryName"] = o.CategoryName.Get()
-	}
+	toSerialize["categoryName"] = o.CategoryName.Get()
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
 	return toSerialize, nil
+}
+
+func (o *PrometheusDashboardListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"categoryName",
+		"data",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPrometheusDashboardListDto := _PrometheusDashboardListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrometheusDashboardListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusDashboardListDto(varPrometheusDashboardListDto)
+
+	return err
 }
 
 type NullablePrometheusDashboardListDto struct {

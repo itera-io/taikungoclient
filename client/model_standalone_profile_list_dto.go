@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the StandaloneProfileListDto type satisfies the MappedNullable interface at compile time
@@ -20,19 +22,26 @@ var _ MappedNullable = &StandaloneProfileListDto{}
 
 // StandaloneProfileListDto struct for StandaloneProfileListDto
 type StandaloneProfileListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Revision *int32 `json:"revision,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	StandAloneProfileSecurityGroups []StandaloneProfileSecurityGroupListDto `json:"standAloneProfileSecurityGroups,omitempty"`
+	Id int32 `json:"id"`
+	Name NullableString `json:"name"`
+	Revision int32 `json:"revision"`
+	IsLocked bool `json:"isLocked"`
+	StandAloneProfileSecurityGroups []StandaloneProfileSecurityGroupListDto `json:"standAloneProfileSecurityGroups"`
 }
+
+type _StandaloneProfileListDto StandaloneProfileListDto
 
 // NewStandaloneProfileListDto instantiates a new StandaloneProfileListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStandaloneProfileListDto() *StandaloneProfileListDto {
+func NewStandaloneProfileListDto(id int32, name NullableString, revision int32, isLocked bool, standAloneProfileSecurityGroups []StandaloneProfileSecurityGroupListDto) *StandaloneProfileListDto {
 	this := StandaloneProfileListDto{}
+	this.Id = id
+	this.Name = name
+	this.Revision = revision
+	this.IsLocked = isLocked
+	this.StandAloneProfileSecurityGroups = standAloneProfileSecurityGroups
 	return &this
 }
 
@@ -44,48 +53,42 @@ func NewStandaloneProfileListDtoWithDefaults() *StandaloneProfileListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *StandaloneProfileListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *StandaloneProfileListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *StandaloneProfileListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *StandaloneProfileListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *StandaloneProfileListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandaloneProfileListDto) GetNameOk() (*string, bool) {
@@ -95,103 +98,71 @@ func (o *StandaloneProfileListDto) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *StandaloneProfileListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *StandaloneProfileListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *StandaloneProfileListDto) SetNameNil() {
-	o.Name.Set(nil)
-}
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *StandaloneProfileListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetRevision returns the Revision field value if set, zero value otherwise.
+// GetRevision returns the Revision field value
 func (o *StandaloneProfileListDto) GetRevision() int32 {
-	if o == nil || IsNil(o.Revision) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Revision
+
+	return o.Revision
 }
 
-// GetRevisionOk returns a tuple with the Revision field value if set, nil otherwise
+// GetRevisionOk returns a tuple with the Revision field value
 // and a boolean to check if the value has been set.
 func (o *StandaloneProfileListDto) GetRevisionOk() (*int32, bool) {
-	if o == nil || IsNil(o.Revision) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Revision, true
+	return &o.Revision, true
 }
 
-// HasRevision returns a boolean if a field has been set.
-func (o *StandaloneProfileListDto) HasRevision() bool {
-	if o != nil && !IsNil(o.Revision) {
-		return true
-	}
-
-	return false
-}
-
-// SetRevision gets a reference to the given int32 and assigns it to the Revision field.
+// SetRevision sets field value
 func (o *StandaloneProfileListDto) SetRevision(v int32) {
-	o.Revision = &v
+	o.Revision = v
 }
 
-// GetIsLocked returns the IsLocked field value if set, zero value otherwise.
+// GetIsLocked returns the IsLocked field value
 func (o *StandaloneProfileListDto) GetIsLocked() bool {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsLocked
+
+	return o.IsLocked
 }
 
-// GetIsLockedOk returns a tuple with the IsLocked field value if set, nil otherwise
+// GetIsLockedOk returns a tuple with the IsLocked field value
 // and a boolean to check if the value has been set.
 func (o *StandaloneProfileListDto) GetIsLockedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsLocked, true
+	return &o.IsLocked, true
 }
 
-// HasIsLocked returns a boolean if a field has been set.
-func (o *StandaloneProfileListDto) HasIsLocked() bool {
-	if o != nil && !IsNil(o.IsLocked) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsLocked gets a reference to the given bool and assigns it to the IsLocked field.
+// SetIsLocked sets field value
 func (o *StandaloneProfileListDto) SetIsLocked(v bool) {
-	o.IsLocked = &v
+	o.IsLocked = v
 }
 
-// GetStandAloneProfileSecurityGroups returns the StandAloneProfileSecurityGroups field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStandAloneProfileSecurityGroups returns the StandAloneProfileSecurityGroups field value
+// If the value is explicit nil, the zero value for []StandaloneProfileSecurityGroupListDto will be returned
 func (o *StandaloneProfileListDto) GetStandAloneProfileSecurityGroups() []StandaloneProfileSecurityGroupListDto {
 	if o == nil {
 		var ret []StandaloneProfileSecurityGroupListDto
 		return ret
 	}
+
 	return o.StandAloneProfileSecurityGroups
 }
 
-// GetStandAloneProfileSecurityGroupsOk returns a tuple with the StandAloneProfileSecurityGroups field value if set, nil otherwise
+// GetStandAloneProfileSecurityGroupsOk returns a tuple with the StandAloneProfileSecurityGroups field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandaloneProfileListDto) GetStandAloneProfileSecurityGroupsOk() ([]StandaloneProfileSecurityGroupListDto, bool) {
@@ -201,16 +172,7 @@ func (o *StandaloneProfileListDto) GetStandAloneProfileSecurityGroupsOk() ([]Sta
 	return o.StandAloneProfileSecurityGroups, true
 }
 
-// HasStandAloneProfileSecurityGroups returns a boolean if a field has been set.
-func (o *StandaloneProfileListDto) HasStandAloneProfileSecurityGroups() bool {
-	if o != nil && !IsNil(o.StandAloneProfileSecurityGroups) {
-		return true
-	}
-
-	return false
-}
-
-// SetStandAloneProfileSecurityGroups gets a reference to the given []StandaloneProfileSecurityGroupListDto and assigns it to the StandAloneProfileSecurityGroups field.
+// SetStandAloneProfileSecurityGroups sets field value
 func (o *StandaloneProfileListDto) SetStandAloneProfileSecurityGroups(v []StandaloneProfileSecurityGroupListDto) {
 	o.StandAloneProfileSecurityGroups = v
 }
@@ -225,22 +187,55 @@ func (o StandaloneProfileListDto) MarshalJSON() ([]byte, error) {
 
 func (o StandaloneProfileListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if !IsNil(o.Revision) {
-		toSerialize["revision"] = o.Revision
-	}
-	if !IsNil(o.IsLocked) {
-		toSerialize["isLocked"] = o.IsLocked
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["revision"] = o.Revision
+	toSerialize["isLocked"] = o.IsLocked
 	if o.StandAloneProfileSecurityGroups != nil {
 		toSerialize["standAloneProfileSecurityGroups"] = o.StandAloneProfileSecurityGroups
 	}
 	return toSerialize, nil
+}
+
+func (o *StandaloneProfileListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"revision",
+		"isLocked",
+		"standAloneProfileSecurityGroups",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varStandaloneProfileListDto := _StandaloneProfileListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varStandaloneProfileListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StandaloneProfileListDto(varStandaloneProfileListDto)
+
+	return err
 }
 
 type NullableStandaloneProfileListDto struct {

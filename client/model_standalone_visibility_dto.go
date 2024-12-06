@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the StandaloneVisibilityDto type satisfies the MappedNullable interface at compile time
@@ -20,21 +22,30 @@ var _ MappedNullable = &StandaloneVisibilityDto{}
 
 // StandaloneVisibilityDto struct for StandaloneVisibilityDto
 type StandaloneVisibilityDto struct {
-	ShowStatus *bool `json:"showStatus,omitempty"`
-	ShowConsole *bool `json:"showConsole,omitempty"`
-	Shelve *bool `json:"shelve,omitempty"`
-	Unshelve *bool `json:"unshelve,omitempty"`
-	Start *bool `json:"start,omitempty"`
-	Stop *bool `json:"stop,omitempty"`
-	Reboot *bool `json:"reboot,omitempty"`
+	ShowStatus bool `json:"showStatus"`
+	ShowConsole bool `json:"showConsole"`
+	Shelve bool `json:"shelve"`
+	Unshelve bool `json:"unshelve"`
+	Start bool `json:"start"`
+	Stop bool `json:"stop"`
+	Reboot bool `json:"reboot"`
 }
+
+type _StandaloneVisibilityDto StandaloneVisibilityDto
 
 // NewStandaloneVisibilityDto instantiates a new StandaloneVisibilityDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStandaloneVisibilityDto() *StandaloneVisibilityDto {
+func NewStandaloneVisibilityDto(showStatus bool, showConsole bool, shelve bool, unshelve bool, start bool, stop bool, reboot bool) *StandaloneVisibilityDto {
 	this := StandaloneVisibilityDto{}
+	this.ShowStatus = showStatus
+	this.ShowConsole = showConsole
+	this.Shelve = shelve
+	this.Unshelve = unshelve
+	this.Start = start
+	this.Stop = stop
+	this.Reboot = reboot
 	return &this
 }
 
@@ -46,228 +57,172 @@ func NewStandaloneVisibilityDtoWithDefaults() *StandaloneVisibilityDto {
 	return &this
 }
 
-// GetShowStatus returns the ShowStatus field value if set, zero value otherwise.
+// GetShowStatus returns the ShowStatus field value
 func (o *StandaloneVisibilityDto) GetShowStatus() bool {
-	if o == nil || IsNil(o.ShowStatus) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.ShowStatus
+
+	return o.ShowStatus
 }
 
-// GetShowStatusOk returns a tuple with the ShowStatus field value if set, nil otherwise
+// GetShowStatusOk returns a tuple with the ShowStatus field value
 // and a boolean to check if the value has been set.
 func (o *StandaloneVisibilityDto) GetShowStatusOk() (*bool, bool) {
-	if o == nil || IsNil(o.ShowStatus) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ShowStatus, true
+	return &o.ShowStatus, true
 }
 
-// HasShowStatus returns a boolean if a field has been set.
-func (o *StandaloneVisibilityDto) HasShowStatus() bool {
-	if o != nil && !IsNil(o.ShowStatus) {
-		return true
-	}
-
-	return false
-}
-
-// SetShowStatus gets a reference to the given bool and assigns it to the ShowStatus field.
+// SetShowStatus sets field value
 func (o *StandaloneVisibilityDto) SetShowStatus(v bool) {
-	o.ShowStatus = &v
+	o.ShowStatus = v
 }
 
-// GetShowConsole returns the ShowConsole field value if set, zero value otherwise.
+// GetShowConsole returns the ShowConsole field value
 func (o *StandaloneVisibilityDto) GetShowConsole() bool {
-	if o == nil || IsNil(o.ShowConsole) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.ShowConsole
+
+	return o.ShowConsole
 }
 
-// GetShowConsoleOk returns a tuple with the ShowConsole field value if set, nil otherwise
+// GetShowConsoleOk returns a tuple with the ShowConsole field value
 // and a boolean to check if the value has been set.
 func (o *StandaloneVisibilityDto) GetShowConsoleOk() (*bool, bool) {
-	if o == nil || IsNil(o.ShowConsole) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ShowConsole, true
+	return &o.ShowConsole, true
 }
 
-// HasShowConsole returns a boolean if a field has been set.
-func (o *StandaloneVisibilityDto) HasShowConsole() bool {
-	if o != nil && !IsNil(o.ShowConsole) {
-		return true
-	}
-
-	return false
-}
-
-// SetShowConsole gets a reference to the given bool and assigns it to the ShowConsole field.
+// SetShowConsole sets field value
 func (o *StandaloneVisibilityDto) SetShowConsole(v bool) {
-	o.ShowConsole = &v
+	o.ShowConsole = v
 }
 
-// GetShelve returns the Shelve field value if set, zero value otherwise.
+// GetShelve returns the Shelve field value
 func (o *StandaloneVisibilityDto) GetShelve() bool {
-	if o == nil || IsNil(o.Shelve) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Shelve
+
+	return o.Shelve
 }
 
-// GetShelveOk returns a tuple with the Shelve field value if set, nil otherwise
+// GetShelveOk returns a tuple with the Shelve field value
 // and a boolean to check if the value has been set.
 func (o *StandaloneVisibilityDto) GetShelveOk() (*bool, bool) {
-	if o == nil || IsNil(o.Shelve) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Shelve, true
+	return &o.Shelve, true
 }
 
-// HasShelve returns a boolean if a field has been set.
-func (o *StandaloneVisibilityDto) HasShelve() bool {
-	if o != nil && !IsNil(o.Shelve) {
-		return true
-	}
-
-	return false
-}
-
-// SetShelve gets a reference to the given bool and assigns it to the Shelve field.
+// SetShelve sets field value
 func (o *StandaloneVisibilityDto) SetShelve(v bool) {
-	o.Shelve = &v
+	o.Shelve = v
 }
 
-// GetUnshelve returns the Unshelve field value if set, zero value otherwise.
+// GetUnshelve returns the Unshelve field value
 func (o *StandaloneVisibilityDto) GetUnshelve() bool {
-	if o == nil || IsNil(o.Unshelve) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Unshelve
+
+	return o.Unshelve
 }
 
-// GetUnshelveOk returns a tuple with the Unshelve field value if set, nil otherwise
+// GetUnshelveOk returns a tuple with the Unshelve field value
 // and a boolean to check if the value has been set.
 func (o *StandaloneVisibilityDto) GetUnshelveOk() (*bool, bool) {
-	if o == nil || IsNil(o.Unshelve) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Unshelve, true
+	return &o.Unshelve, true
 }
 
-// HasUnshelve returns a boolean if a field has been set.
-func (o *StandaloneVisibilityDto) HasUnshelve() bool {
-	if o != nil && !IsNil(o.Unshelve) {
-		return true
-	}
-
-	return false
-}
-
-// SetUnshelve gets a reference to the given bool and assigns it to the Unshelve field.
+// SetUnshelve sets field value
 func (o *StandaloneVisibilityDto) SetUnshelve(v bool) {
-	o.Unshelve = &v
+	o.Unshelve = v
 }
 
-// GetStart returns the Start field value if set, zero value otherwise.
+// GetStart returns the Start field value
 func (o *StandaloneVisibilityDto) GetStart() bool {
-	if o == nil || IsNil(o.Start) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Start
+
+	return o.Start
 }
 
-// GetStartOk returns a tuple with the Start field value if set, nil otherwise
+// GetStartOk returns a tuple with the Start field value
 // and a boolean to check if the value has been set.
 func (o *StandaloneVisibilityDto) GetStartOk() (*bool, bool) {
-	if o == nil || IsNil(o.Start) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Start, true
+	return &o.Start, true
 }
 
-// HasStart returns a boolean if a field has been set.
-func (o *StandaloneVisibilityDto) HasStart() bool {
-	if o != nil && !IsNil(o.Start) {
-		return true
-	}
-
-	return false
-}
-
-// SetStart gets a reference to the given bool and assigns it to the Start field.
+// SetStart sets field value
 func (o *StandaloneVisibilityDto) SetStart(v bool) {
-	o.Start = &v
+	o.Start = v
 }
 
-// GetStop returns the Stop field value if set, zero value otherwise.
+// GetStop returns the Stop field value
 func (o *StandaloneVisibilityDto) GetStop() bool {
-	if o == nil || IsNil(o.Stop) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Stop
+
+	return o.Stop
 }
 
-// GetStopOk returns a tuple with the Stop field value if set, nil otherwise
+// GetStopOk returns a tuple with the Stop field value
 // and a boolean to check if the value has been set.
 func (o *StandaloneVisibilityDto) GetStopOk() (*bool, bool) {
-	if o == nil || IsNil(o.Stop) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Stop, true
+	return &o.Stop, true
 }
 
-// HasStop returns a boolean if a field has been set.
-func (o *StandaloneVisibilityDto) HasStop() bool {
-	if o != nil && !IsNil(o.Stop) {
-		return true
-	}
-
-	return false
-}
-
-// SetStop gets a reference to the given bool and assigns it to the Stop field.
+// SetStop sets field value
 func (o *StandaloneVisibilityDto) SetStop(v bool) {
-	o.Stop = &v
+	o.Stop = v
 }
 
-// GetReboot returns the Reboot field value if set, zero value otherwise.
+// GetReboot returns the Reboot field value
 func (o *StandaloneVisibilityDto) GetReboot() bool {
-	if o == nil || IsNil(o.Reboot) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Reboot
+
+	return o.Reboot
 }
 
-// GetRebootOk returns a tuple with the Reboot field value if set, nil otherwise
+// GetRebootOk returns a tuple with the Reboot field value
 // and a boolean to check if the value has been set.
 func (o *StandaloneVisibilityDto) GetRebootOk() (*bool, bool) {
-	if o == nil || IsNil(o.Reboot) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Reboot, true
+	return &o.Reboot, true
 }
 
-// HasReboot returns a boolean if a field has been set.
-func (o *StandaloneVisibilityDto) HasReboot() bool {
-	if o != nil && !IsNil(o.Reboot) {
-		return true
-	}
-
-	return false
-}
-
-// SetReboot gets a reference to the given bool and assigns it to the Reboot field.
+// SetReboot sets field value
 func (o *StandaloneVisibilityDto) SetReboot(v bool) {
-	o.Reboot = &v
+	o.Reboot = v
 }
 
 func (o StandaloneVisibilityDto) MarshalJSON() ([]byte, error) {
@@ -280,28 +235,57 @@ func (o StandaloneVisibilityDto) MarshalJSON() ([]byte, error) {
 
 func (o StandaloneVisibilityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ShowStatus) {
-		toSerialize["showStatus"] = o.ShowStatus
-	}
-	if !IsNil(o.ShowConsole) {
-		toSerialize["showConsole"] = o.ShowConsole
-	}
-	if !IsNil(o.Shelve) {
-		toSerialize["shelve"] = o.Shelve
-	}
-	if !IsNil(o.Unshelve) {
-		toSerialize["unshelve"] = o.Unshelve
-	}
-	if !IsNil(o.Start) {
-		toSerialize["start"] = o.Start
-	}
-	if !IsNil(o.Stop) {
-		toSerialize["stop"] = o.Stop
-	}
-	if !IsNil(o.Reboot) {
-		toSerialize["reboot"] = o.Reboot
-	}
+	toSerialize["showStatus"] = o.ShowStatus
+	toSerialize["showConsole"] = o.ShowConsole
+	toSerialize["shelve"] = o.Shelve
+	toSerialize["unshelve"] = o.Unshelve
+	toSerialize["start"] = o.Start
+	toSerialize["stop"] = o.Stop
+	toSerialize["reboot"] = o.Reboot
 	return toSerialize, nil
+}
+
+func (o *StandaloneVisibilityDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"showStatus",
+		"showConsole",
+		"shelve",
+		"unshelve",
+		"start",
+		"stop",
+		"reboot",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varStandaloneVisibilityDto := _StandaloneVisibilityDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varStandaloneVisibilityDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StandaloneVisibilityDto(varStandaloneVisibilityDto)
+
+	return err
 }
 
 type NullableStandaloneVisibilityDto struct {

@@ -14,6 +14,8 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CRestoreDto type satisfies the MappedNullable interface at compile time
@@ -21,25 +23,38 @@ var _ MappedNullable = &CRestoreDto{}
 
 // CRestoreDto struct for CRestoreDto
 type CRestoreDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	BackupName NullableString `json:"backupName,omitempty"`
-	ScheduleName NullableString `json:"scheduleName,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	ExcludeNamespaces []string `json:"excludeNamespaces,omitempty"`
-	IncludeNamespaces []string `json:"includeNamespaces,omitempty"`
-	CompletionDateTime *time.Time `json:"completionDateTime,omitempty"`
-	StartTimeStamp *time.Time `json:"startTimeStamp,omitempty"`
-	CreatedAt NullableTime `json:"createdAt,omitempty"`
-	Warnings *int64 `json:"warnings,omitempty"`
-	Phase NullableString `json:"phase,omitempty"`
+	MetadataName string `json:"metadataName"`
+	BackupName string `json:"backupName"`
+	ScheduleName string `json:"scheduleName"`
+	Namespace string `json:"namespace"`
+	ExcludeNamespaces []string `json:"excludeNamespaces"`
+	IncludeNamespaces []string `json:"includeNamespaces"`
+	CompletionDateTime time.Time `json:"completionDateTime"`
+	StartTimeStamp time.Time `json:"startTimeStamp"`
+	CreatedAt NullableTime `json:"createdAt"`
+	Warnings int64 `json:"warnings"`
+	Phase NullableString `json:"phase"`
 }
+
+type _CRestoreDto CRestoreDto
 
 // NewCRestoreDto instantiates a new CRestoreDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCRestoreDto() *CRestoreDto {
+func NewCRestoreDto(metadataName string, backupName string, scheduleName string, namespace string, excludeNamespaces []string, includeNamespaces []string, completionDateTime time.Time, startTimeStamp time.Time, createdAt NullableTime, warnings int64, phase NullableString) *CRestoreDto {
 	this := CRestoreDto{}
+	this.MetadataName = metadataName
+	this.BackupName = backupName
+	this.ScheduleName = scheduleName
+	this.Namespace = namespace
+	this.ExcludeNamespaces = excludeNamespaces
+	this.IncludeNamespaces = includeNamespaces
+	this.CompletionDateTime = completionDateTime
+	this.StartTimeStamp = startTimeStamp
+	this.CreatedAt = createdAt
+	this.Warnings = warnings
+	this.Phase = phase
 	return &this
 }
 
@@ -51,314 +66,210 @@ func NewCRestoreDtoWithDefaults() *CRestoreDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value
 func (o *CRestoreDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName.Get()
+
+	return o.MetadataName
 }
 
-// GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
+// GetMetadataNameOk returns a tuple with the MetadataName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CRestoreDto) GetMetadataNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.MetadataName.Get(), o.MetadataName.IsSet()
+	return &o.MetadataName, true
 }
 
-// HasMetadataName returns a boolean if a field has been set.
-func (o *CRestoreDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName sets field value
 func (o *CRestoreDto) SetMetadataName(v string) {
-	o.MetadataName.Set(&v)
-}
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *CRestoreDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
+	o.MetadataName = v
 }
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *CRestoreDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetBackupName returns the BackupName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBackupName returns the BackupName field value
 func (o *CRestoreDto) GetBackupName() string {
-	if o == nil || IsNil(o.BackupName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.BackupName.Get()
+
+	return o.BackupName
 }
 
-// GetBackupNameOk returns a tuple with the BackupName field value if set, nil otherwise
+// GetBackupNameOk returns a tuple with the BackupName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CRestoreDto) GetBackupNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.BackupName.Get(), o.BackupName.IsSet()
+	return &o.BackupName, true
 }
 
-// HasBackupName returns a boolean if a field has been set.
-func (o *CRestoreDto) HasBackupName() bool {
-	if o != nil && o.BackupName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBackupName gets a reference to the given NullableString and assigns it to the BackupName field.
+// SetBackupName sets field value
 func (o *CRestoreDto) SetBackupName(v string) {
-	o.BackupName.Set(&v)
-}
-// SetBackupNameNil sets the value for BackupName to be an explicit nil
-func (o *CRestoreDto) SetBackupNameNil() {
-	o.BackupName.Set(nil)
+	o.BackupName = v
 }
 
-// UnsetBackupName ensures that no value is present for BackupName, not even an explicit nil
-func (o *CRestoreDto) UnsetBackupName() {
-	o.BackupName.Unset()
-}
-
-// GetScheduleName returns the ScheduleName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetScheduleName returns the ScheduleName field value
 func (o *CRestoreDto) GetScheduleName() string {
-	if o == nil || IsNil(o.ScheduleName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ScheduleName.Get()
+
+	return o.ScheduleName
 }
 
-// GetScheduleNameOk returns a tuple with the ScheduleName field value if set, nil otherwise
+// GetScheduleNameOk returns a tuple with the ScheduleName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CRestoreDto) GetScheduleNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ScheduleName.Get(), o.ScheduleName.IsSet()
+	return &o.ScheduleName, true
 }
 
-// HasScheduleName returns a boolean if a field has been set.
-func (o *CRestoreDto) HasScheduleName() bool {
-	if o != nil && o.ScheduleName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetScheduleName gets a reference to the given NullableString and assigns it to the ScheduleName field.
+// SetScheduleName sets field value
 func (o *CRestoreDto) SetScheduleName(v string) {
-	o.ScheduleName.Set(&v)
-}
-// SetScheduleNameNil sets the value for ScheduleName to be an explicit nil
-func (o *CRestoreDto) SetScheduleNameNil() {
-	o.ScheduleName.Set(nil)
+	o.ScheduleName = v
 }
 
-// UnsetScheduleName ensures that no value is present for ScheduleName, not even an explicit nil
-func (o *CRestoreDto) UnsetScheduleName() {
-	o.ScheduleName.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value
 func (o *CRestoreDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+
+	return o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// GetNamespaceOk returns a tuple with the Namespace field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CRestoreDto) GetNamespaceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return &o.Namespace, true
 }
 
-// HasNamespace returns a boolean if a field has been set.
-func (o *CRestoreDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace sets field value
 func (o *CRestoreDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *CRestoreDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *CRestoreDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetExcludeNamespaces returns the ExcludeNamespaces field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExcludeNamespaces returns the ExcludeNamespaces field value
 func (o *CRestoreDto) GetExcludeNamespaces() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.ExcludeNamespaces
 }
 
-// GetExcludeNamespacesOk returns a tuple with the ExcludeNamespaces field value if set, nil otherwise
+// GetExcludeNamespacesOk returns a tuple with the ExcludeNamespaces field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CRestoreDto) GetExcludeNamespacesOk() ([]string, bool) {
-	if o == nil || IsNil(o.ExcludeNamespaces) {
+	if o == nil {
 		return nil, false
 	}
 	return o.ExcludeNamespaces, true
 }
 
-// HasExcludeNamespaces returns a boolean if a field has been set.
-func (o *CRestoreDto) HasExcludeNamespaces() bool {
-	if o != nil && !IsNil(o.ExcludeNamespaces) {
-		return true
-	}
-
-	return false
-}
-
-// SetExcludeNamespaces gets a reference to the given []string and assigns it to the ExcludeNamespaces field.
+// SetExcludeNamespaces sets field value
 func (o *CRestoreDto) SetExcludeNamespaces(v []string) {
 	o.ExcludeNamespaces = v
 }
 
-// GetIncludeNamespaces returns the IncludeNamespaces field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIncludeNamespaces returns the IncludeNamespaces field value
 func (o *CRestoreDto) GetIncludeNamespaces() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.IncludeNamespaces
 }
 
-// GetIncludeNamespacesOk returns a tuple with the IncludeNamespaces field value if set, nil otherwise
+// GetIncludeNamespacesOk returns a tuple with the IncludeNamespaces field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CRestoreDto) GetIncludeNamespacesOk() ([]string, bool) {
-	if o == nil || IsNil(o.IncludeNamespaces) {
+	if o == nil {
 		return nil, false
 	}
 	return o.IncludeNamespaces, true
 }
 
-// HasIncludeNamespaces returns a boolean if a field has been set.
-func (o *CRestoreDto) HasIncludeNamespaces() bool {
-	if o != nil && !IsNil(o.IncludeNamespaces) {
-		return true
-	}
-
-	return false
-}
-
-// SetIncludeNamespaces gets a reference to the given []string and assigns it to the IncludeNamespaces field.
+// SetIncludeNamespaces sets field value
 func (o *CRestoreDto) SetIncludeNamespaces(v []string) {
 	o.IncludeNamespaces = v
 }
 
-// GetCompletionDateTime returns the CompletionDateTime field value if set, zero value otherwise.
+// GetCompletionDateTime returns the CompletionDateTime field value
 func (o *CRestoreDto) GetCompletionDateTime() time.Time {
-	if o == nil || IsNil(o.CompletionDateTime) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.CompletionDateTime
+
+	return o.CompletionDateTime
 }
 
-// GetCompletionDateTimeOk returns a tuple with the CompletionDateTime field value if set, nil otherwise
+// GetCompletionDateTimeOk returns a tuple with the CompletionDateTime field value
 // and a boolean to check if the value has been set.
 func (o *CRestoreDto) GetCompletionDateTimeOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.CompletionDateTime) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CompletionDateTime, true
+	return &o.CompletionDateTime, true
 }
 
-// HasCompletionDateTime returns a boolean if a field has been set.
-func (o *CRestoreDto) HasCompletionDateTime() bool {
-	if o != nil && !IsNil(o.CompletionDateTime) {
-		return true
-	}
-
-	return false
-}
-
-// SetCompletionDateTime gets a reference to the given time.Time and assigns it to the CompletionDateTime field.
+// SetCompletionDateTime sets field value
 func (o *CRestoreDto) SetCompletionDateTime(v time.Time) {
-	o.CompletionDateTime = &v
+	o.CompletionDateTime = v
 }
 
-// GetStartTimeStamp returns the StartTimeStamp field value if set, zero value otherwise.
+// GetStartTimeStamp returns the StartTimeStamp field value
 func (o *CRestoreDto) GetStartTimeStamp() time.Time {
-	if o == nil || IsNil(o.StartTimeStamp) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.StartTimeStamp
+
+	return o.StartTimeStamp
 }
 
-// GetStartTimeStampOk returns a tuple with the StartTimeStamp field value if set, nil otherwise
+// GetStartTimeStampOk returns a tuple with the StartTimeStamp field value
 // and a boolean to check if the value has been set.
 func (o *CRestoreDto) GetStartTimeStampOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.StartTimeStamp) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StartTimeStamp, true
+	return &o.StartTimeStamp, true
 }
 
-// HasStartTimeStamp returns a boolean if a field has been set.
-func (o *CRestoreDto) HasStartTimeStamp() bool {
-	if o != nil && !IsNil(o.StartTimeStamp) {
-		return true
-	}
-
-	return false
-}
-
-// SetStartTimeStamp gets a reference to the given time.Time and assigns it to the StartTimeStamp field.
+// SetStartTimeStamp sets field value
 func (o *CRestoreDto) SetStartTimeStamp(v time.Time) {
-	o.StartTimeStamp = &v
+	o.StartTimeStamp = v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
+// If the value is explicit nil, the zero value for time.Time will be returned
 func (o *CRestoreDto) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || o.CreatedAt.Get() == nil {
 		var ret time.Time
 		return ret
 	}
+
 	return *o.CreatedAt.Get()
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CRestoreDto) GetCreatedAtOk() (*time.Time, bool) {
@@ -368,71 +279,47 @@ func (o *CRestoreDto) GetCreatedAtOk() (*time.Time, bool) {
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *CRestoreDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableTime and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *CRestoreDto) SetCreatedAt(v time.Time) {
 	o.CreatedAt.Set(&v)
 }
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *CRestoreDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *CRestoreDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetWarnings returns the Warnings field value if set, zero value otherwise.
+// GetWarnings returns the Warnings field value
 func (o *CRestoreDto) GetWarnings() int64 {
-	if o == nil || IsNil(o.Warnings) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.Warnings
+
+	return o.Warnings
 }
 
-// GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
+// GetWarningsOk returns a tuple with the Warnings field value
 // and a boolean to check if the value has been set.
 func (o *CRestoreDto) GetWarningsOk() (*int64, bool) {
-	if o == nil || IsNil(o.Warnings) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Warnings, true
+	return &o.Warnings, true
 }
 
-// HasWarnings returns a boolean if a field has been set.
-func (o *CRestoreDto) HasWarnings() bool {
-	if o != nil && !IsNil(o.Warnings) {
-		return true
-	}
-
-	return false
-}
-
-// SetWarnings gets a reference to the given int64 and assigns it to the Warnings field.
+// SetWarnings sets field value
 func (o *CRestoreDto) SetWarnings(v int64) {
-	o.Warnings = &v
+	o.Warnings = v
 }
 
-// GetPhase returns the Phase field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPhase returns the Phase field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CRestoreDto) GetPhase() string {
-	if o == nil || IsNil(o.Phase.Get()) {
+	if o == nil || o.Phase.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Phase.Get()
 }
 
-// GetPhaseOk returns a tuple with the Phase field value if set, nil otherwise
+// GetPhaseOk returns a tuple with the Phase field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CRestoreDto) GetPhaseOk() (*string, bool) {
@@ -442,27 +329,9 @@ func (o *CRestoreDto) GetPhaseOk() (*string, bool) {
 	return o.Phase.Get(), o.Phase.IsSet()
 }
 
-// HasPhase returns a boolean if a field has been set.
-func (o *CRestoreDto) HasPhase() bool {
-	if o != nil && o.Phase.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPhase gets a reference to the given NullableString and assigns it to the Phase field.
+// SetPhase sets field value
 func (o *CRestoreDto) SetPhase(v string) {
 	o.Phase.Set(&v)
-}
-// SetPhaseNil sets the value for Phase to be an explicit nil
-func (o *CRestoreDto) SetPhaseNil() {
-	o.Phase.Set(nil)
-}
-
-// UnsetPhase ensures that no value is present for Phase, not even an explicit nil
-func (o *CRestoreDto) UnsetPhase() {
-	o.Phase.Unset()
 }
 
 func (o CRestoreDto) MarshalJSON() ([]byte, error) {
@@ -475,40 +344,65 @@ func (o CRestoreDto) MarshalJSON() ([]byte, error) {
 
 func (o CRestoreDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
-	}
-	if o.BackupName.IsSet() {
-		toSerialize["backupName"] = o.BackupName.Get()
-	}
-	if o.ScheduleName.IsSet() {
-		toSerialize["scheduleName"] = o.ScheduleName.Get()
-	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
-	}
-	if o.ExcludeNamespaces != nil {
-		toSerialize["excludeNamespaces"] = o.ExcludeNamespaces
-	}
-	if o.IncludeNamespaces != nil {
-		toSerialize["includeNamespaces"] = o.IncludeNamespaces
-	}
-	if !IsNil(o.CompletionDateTime) {
-		toSerialize["completionDateTime"] = o.CompletionDateTime
-	}
-	if !IsNil(o.StartTimeStamp) {
-		toSerialize["startTimeStamp"] = o.StartTimeStamp
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if !IsNil(o.Warnings) {
-		toSerialize["warnings"] = o.Warnings
-	}
-	if o.Phase.IsSet() {
-		toSerialize["phase"] = o.Phase.Get()
-	}
+	toSerialize["metadataName"] = o.MetadataName
+	toSerialize["backupName"] = o.BackupName
+	toSerialize["scheduleName"] = o.ScheduleName
+	toSerialize["namespace"] = o.Namespace
+	toSerialize["excludeNamespaces"] = o.ExcludeNamespaces
+	toSerialize["includeNamespaces"] = o.IncludeNamespaces
+	toSerialize["completionDateTime"] = o.CompletionDateTime
+	toSerialize["startTimeStamp"] = o.StartTimeStamp
+	toSerialize["createdAt"] = o.CreatedAt.Get()
+	toSerialize["warnings"] = o.Warnings
+	toSerialize["phase"] = o.Phase.Get()
 	return toSerialize, nil
+}
+
+func (o *CRestoreDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"metadataName",
+		"backupName",
+		"scheduleName",
+		"namespace",
+		"excludeNamespaces",
+		"includeNamespaces",
+		"completionDateTime",
+		"startTimeStamp",
+		"createdAt",
+		"warnings",
+		"phase",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCRestoreDto := _CRestoreDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCRestoreDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CRestoreDto(varCRestoreDto)
+
+	return err
 }
 
 type NullableCRestoreDto struct {

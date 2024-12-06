@@ -37,6 +37,7 @@ type ApiFlavorsAwsInstanceTypesRequest struct {
 	search *string
 	sortBy *string
 	sortDirection *string
+	projectId *int32
 }
 
 func (r ApiFlavorsAwsInstanceTypesRequest) Limit(limit int32) ApiFlavorsAwsInstanceTypesRequest {
@@ -81,6 +82,11 @@ func (r ApiFlavorsAwsInstanceTypesRequest) SortBy(sortBy string) ApiFlavorsAwsIn
 
 func (r ApiFlavorsAwsInstanceTypesRequest) SortDirection(sortDirection string) ApiFlavorsAwsInstanceTypesRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiFlavorsAwsInstanceTypesRequest) ProjectId(projectId int32) ApiFlavorsAwsInstanceTypesRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -151,6 +157,9 @@ func (a *FlavorsAPIService) FlavorsAwsInstanceTypesExecute(r ApiFlavorsAwsInstan
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -287,6 +296,7 @@ type ApiFlavorsAzureVmSizesRequest struct {
 	search *string
 	sortBy *string
 	sortDirection *string
+	projectId *int32
 }
 
 func (r ApiFlavorsAzureVmSizesRequest) Limit(limit int32) ApiFlavorsAzureVmSizesRequest {
@@ -331,6 +341,11 @@ func (r ApiFlavorsAzureVmSizesRequest) SortBy(sortBy string) ApiFlavorsAzureVmSi
 
 func (r ApiFlavorsAzureVmSizesRequest) SortDirection(sortDirection string) ApiFlavorsAzureVmSizesRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiFlavorsAzureVmSizesRequest) ProjectId(projectId int32) ApiFlavorsAzureVmSizesRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -401,6 +416,9 @@ func (a *FlavorsAPIService) FlavorsAzureVmSizesExecute(r ApiFlavorsAzureVmSizesR
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -699,6 +717,7 @@ type ApiFlavorsGoogleMachineTypesRequest struct {
 	search *string
 	sortBy *string
 	sortDirection *string
+	projectId *int32
 }
 
 func (r ApiFlavorsGoogleMachineTypesRequest) Limit(limit int32) ApiFlavorsGoogleMachineTypesRequest {
@@ -743,6 +762,11 @@ func (r ApiFlavorsGoogleMachineTypesRequest) SortBy(sortBy string) ApiFlavorsGoo
 
 func (r ApiFlavorsGoogleMachineTypesRequest) SortDirection(sortDirection string) ApiFlavorsGoogleMachineTypesRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiFlavorsGoogleMachineTypesRequest) ProjectId(projectId int32) ApiFlavorsGoogleMachineTypesRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -813,6 +837,9 @@ func (a *FlavorsAPIService) FlavorsGoogleMachineTypesExecute(r ApiFlavorsGoogleM
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -949,6 +976,7 @@ type ApiFlavorsOpenshiftFlavorsRequest struct {
 	search *string
 	sortBy *string
 	sortDirection *string
+	projectId *int32
 }
 
 func (r ApiFlavorsOpenshiftFlavorsRequest) Limit(limit int32) ApiFlavorsOpenshiftFlavorsRequest {
@@ -993,6 +1021,11 @@ func (r ApiFlavorsOpenshiftFlavorsRequest) SortBy(sortBy string) ApiFlavorsOpens
 
 func (r ApiFlavorsOpenshiftFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsOpenshiftFlavorsRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiFlavorsOpenshiftFlavorsRequest) ProjectId(projectId int32) ApiFlavorsOpenshiftFlavorsRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -1063,6 +1096,9 @@ func (a *FlavorsAPIService) FlavorsOpenshiftFlavorsExecute(r ApiFlavorsOpenshift
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1199,6 +1235,7 @@ type ApiFlavorsOpenstackFlavorsRequest struct {
 	search *string
 	sortBy *string
 	sortDirection *string
+	projectId *int32
 }
 
 func (r ApiFlavorsOpenstackFlavorsRequest) Limit(limit int32) ApiFlavorsOpenstackFlavorsRequest {
@@ -1243,6 +1280,11 @@ func (r ApiFlavorsOpenstackFlavorsRequest) SortBy(sortBy string) ApiFlavorsOpens
 
 func (r ApiFlavorsOpenstackFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsOpenstackFlavorsRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiFlavorsOpenstackFlavorsRequest) ProjectId(projectId int32) ApiFlavorsOpenstackFlavorsRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -1313,6 +1355,9 @@ func (a *FlavorsAPIService) FlavorsOpenstackFlavorsExecute(r ApiFlavorsOpenstack
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1449,6 +1494,7 @@ type ApiFlavorsProxmoxFlavorsRequest struct {
 	search *string
 	sortBy *string
 	sortDirection *string
+	projectId *int32
 }
 
 func (r ApiFlavorsProxmoxFlavorsRequest) Limit(limit int32) ApiFlavorsProxmoxFlavorsRequest {
@@ -1493,6 +1539,11 @@ func (r ApiFlavorsProxmoxFlavorsRequest) SortBy(sortBy string) ApiFlavorsProxmox
 
 func (r ApiFlavorsProxmoxFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsProxmoxFlavorsRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiFlavorsProxmoxFlavorsRequest) ProjectId(projectId int32) ApiFlavorsProxmoxFlavorsRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -1563,6 +1614,9 @@ func (a *FlavorsAPIService) FlavorsProxmoxFlavorsExecute(r ApiFlavorsProxmoxFlav
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -1954,6 +2008,7 @@ type ApiFlavorsTanzuFlavorsRequest struct {
 	search *string
 	sortBy *string
 	sortDirection *string
+	projectId *int32
 }
 
 func (r ApiFlavorsTanzuFlavorsRequest) Limit(limit int32) ApiFlavorsTanzuFlavorsRequest {
@@ -1998,6 +2053,11 @@ func (r ApiFlavorsTanzuFlavorsRequest) SortBy(sortBy string) ApiFlavorsTanzuFlav
 
 func (r ApiFlavorsTanzuFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsTanzuFlavorsRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiFlavorsTanzuFlavorsRequest) ProjectId(projectId int32) ApiFlavorsTanzuFlavorsRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -2068,6 +2128,9 @@ func (a *FlavorsAPIService) FlavorsTanzuFlavorsExecute(r ApiFlavorsTanzuFlavorsR
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2369,6 +2432,7 @@ type ApiFlavorsVsphereFlavorsRequest struct {
 	search *string
 	sortBy *string
 	sortDirection *string
+	projectId *int32
 }
 
 func (r ApiFlavorsVsphereFlavorsRequest) Limit(limit int32) ApiFlavorsVsphereFlavorsRequest {
@@ -2413,6 +2477,11 @@ func (r ApiFlavorsVsphereFlavorsRequest) SortBy(sortBy string) ApiFlavorsVsphere
 
 func (r ApiFlavorsVsphereFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsVsphereFlavorsRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiFlavorsVsphereFlavorsRequest) ProjectId(projectId int32) ApiFlavorsVsphereFlavorsRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -2483,6 +2552,9 @@ func (a *FlavorsAPIService) FlavorsVsphereFlavorsExecute(r ApiFlavorsVsphereFlav
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2619,6 +2691,7 @@ type ApiFlavorsZadaraInstanceTypesRequest struct {
 	search *string
 	sortBy *string
 	sortDirection *string
+	projectId *int32
 }
 
 func (r ApiFlavorsZadaraInstanceTypesRequest) Limit(limit int32) ApiFlavorsZadaraInstanceTypesRequest {
@@ -2663,6 +2736,11 @@ func (r ApiFlavorsZadaraInstanceTypesRequest) SortBy(sortBy string) ApiFlavorsZa
 
 func (r ApiFlavorsZadaraInstanceTypesRequest) SortDirection(sortDirection string) ApiFlavorsZadaraInstanceTypesRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiFlavorsZadaraInstanceTypesRequest) ProjectId(projectId int32) ApiFlavorsZadaraInstanceTypesRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -2733,6 +2811,9 @@ func (a *FlavorsAPIService) FlavorsZadaraInstanceTypesExecute(r ApiFlavorsZadara
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -2869,6 +2950,7 @@ type ApiFlavorsZededaFlavorsRequest struct {
 	search *string
 	sortBy *string
 	sortDirection *string
+	projectId *int32
 }
 
 func (r ApiFlavorsZededaFlavorsRequest) Limit(limit int32) ApiFlavorsZededaFlavorsRequest {
@@ -2913,6 +2995,11 @@ func (r ApiFlavorsZededaFlavorsRequest) SortBy(sortBy string) ApiFlavorsZededaFl
 
 func (r ApiFlavorsZededaFlavorsRequest) SortDirection(sortDirection string) ApiFlavorsZededaFlavorsRequest {
 	r.sortDirection = &sortDirection
+	return r
+}
+
+func (r ApiFlavorsZededaFlavorsRequest) ProjectId(projectId int32) ApiFlavorsZededaFlavorsRequest {
+	r.projectId = &projectId
 	return r
 }
 
@@ -2983,6 +3070,9 @@ func (a *FlavorsAPIService) FlavorsZededaFlavorsExecute(r ApiFlavorsZededaFlavor
 	}
 	if r.sortDirection != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
+	}
+	if r.projectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "ProjectId", r.projectId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

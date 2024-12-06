@@ -14,6 +14,8 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CScheduleDto type satisfies the MappedNullable interface at compile time
@@ -22,23 +24,34 @@ var _ MappedNullable = &CScheduleDto{}
 // CScheduleDto struct for CScheduleDto
 type CScheduleDto struct {
 	Status *Status `json:"status,omitempty"`
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	CreatedAt NullableTime `json:"createdAt,omitempty"`
-	Schedule NullableString `json:"schedule,omitempty"`
-	Ttl NullableString `json:"ttl,omitempty"`
-	LastBackup NullableTime `json:"lastBackup,omitempty"`
-	Phase NullableString `json:"phase,omitempty"`
-	ExcludedNamespaces []string `json:"excludedNamespaces,omitempty"`
-	IncludedNamespaces []string `json:"includedNamespaces,omitempty"`
+	MetadataName NullableString `json:"metadataName"`
+	Namespace NullableString `json:"namespace"`
+	CreatedAt NullableTime `json:"createdAt"`
+	Schedule NullableString `json:"schedule"`
+	Ttl NullableString `json:"ttl"`
+	LastBackup NullableTime `json:"lastBackup"`
+	Phase NullableString `json:"phase"`
+	ExcludedNamespaces []string `json:"excludedNamespaces"`
+	IncludedNamespaces []string `json:"includedNamespaces"`
 }
+
+type _CScheduleDto CScheduleDto
 
 // NewCScheduleDto instantiates a new CScheduleDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCScheduleDto() *CScheduleDto {
+func NewCScheduleDto(metadataName NullableString, namespace NullableString, createdAt NullableTime, schedule NullableString, ttl NullableString, lastBackup NullableTime, phase NullableString, excludedNamespaces []string, includedNamespaces []string) *CScheduleDto {
 	this := CScheduleDto{}
+	this.MetadataName = metadataName
+	this.Namespace = namespace
+	this.CreatedAt = createdAt
+	this.Schedule = schedule
+	this.Ttl = ttl
+	this.LastBackup = lastBackup
+	this.Phase = phase
+	this.ExcludedNamespaces = excludedNamespaces
+	this.IncludedNamespaces = includedNamespaces
 	return &this
 }
 
@@ -82,16 +95,18 @@ func (o *CScheduleDto) SetStatus(v Status) {
 	o.Status = &v
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CScheduleDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil || o.MetadataName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.MetadataName.Get()
 }
 
-// GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
+// GetMetadataNameOk returns a tuple with the MetadataName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CScheduleDto) GetMetadataNameOk() (*string, bool) {
@@ -101,39 +116,23 @@ func (o *CScheduleDto) GetMetadataNameOk() (*string, bool) {
 	return o.MetadataName.Get(), o.MetadataName.IsSet()
 }
 
-// HasMetadataName returns a boolean if a field has been set.
-func (o *CScheduleDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName sets field value
 func (o *CScheduleDto) SetMetadataName(v string) {
 	o.MetadataName.Set(&v)
 }
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *CScheduleDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
-}
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *CScheduleDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CScheduleDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil || o.Namespace.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Namespace.Get()
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// GetNamespaceOk returns a tuple with the Namespace field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CScheduleDto) GetNamespaceOk() (*string, bool) {
@@ -143,39 +142,23 @@ func (o *CScheduleDto) GetNamespaceOk() (*string, bool) {
 	return o.Namespace.Get(), o.Namespace.IsSet()
 }
 
-// HasNamespace returns a boolean if a field has been set.
-func (o *CScheduleDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace sets field value
 func (o *CScheduleDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *CScheduleDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
-}
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *CScheduleDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
+// If the value is explicit nil, the zero value for time.Time will be returned
 func (o *CScheduleDto) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || o.CreatedAt.Get() == nil {
 		var ret time.Time
 		return ret
 	}
+
 	return *o.CreatedAt.Get()
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CScheduleDto) GetCreatedAtOk() (*time.Time, bool) {
@@ -185,39 +168,23 @@ func (o *CScheduleDto) GetCreatedAtOk() (*time.Time, bool) {
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *CScheduleDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableTime and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *CScheduleDto) SetCreatedAt(v time.Time) {
 	o.CreatedAt.Set(&v)
 }
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *CScheduleDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *CScheduleDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetSchedule returns the Schedule field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSchedule returns the Schedule field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CScheduleDto) GetSchedule() string {
-	if o == nil || IsNil(o.Schedule.Get()) {
+	if o == nil || o.Schedule.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Schedule.Get()
 }
 
-// GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
+// GetScheduleOk returns a tuple with the Schedule field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CScheduleDto) GetScheduleOk() (*string, bool) {
@@ -227,39 +194,23 @@ func (o *CScheduleDto) GetScheduleOk() (*string, bool) {
 	return o.Schedule.Get(), o.Schedule.IsSet()
 }
 
-// HasSchedule returns a boolean if a field has been set.
-func (o *CScheduleDto) HasSchedule() bool {
-	if o != nil && o.Schedule.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSchedule gets a reference to the given NullableString and assigns it to the Schedule field.
+// SetSchedule sets field value
 func (o *CScheduleDto) SetSchedule(v string) {
 	o.Schedule.Set(&v)
 }
-// SetScheduleNil sets the value for Schedule to be an explicit nil
-func (o *CScheduleDto) SetScheduleNil() {
-	o.Schedule.Set(nil)
-}
 
-// UnsetSchedule ensures that no value is present for Schedule, not even an explicit nil
-func (o *CScheduleDto) UnsetSchedule() {
-	o.Schedule.Unset()
-}
-
-// GetTtl returns the Ttl field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTtl returns the Ttl field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CScheduleDto) GetTtl() string {
-	if o == nil || IsNil(o.Ttl.Get()) {
+	if o == nil || o.Ttl.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Ttl.Get()
 }
 
-// GetTtlOk returns a tuple with the Ttl field value if set, nil otherwise
+// GetTtlOk returns a tuple with the Ttl field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CScheduleDto) GetTtlOk() (*string, bool) {
@@ -269,39 +220,23 @@ func (o *CScheduleDto) GetTtlOk() (*string, bool) {
 	return o.Ttl.Get(), o.Ttl.IsSet()
 }
 
-// HasTtl returns a boolean if a field has been set.
-func (o *CScheduleDto) HasTtl() bool {
-	if o != nil && o.Ttl.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTtl gets a reference to the given NullableString and assigns it to the Ttl field.
+// SetTtl sets field value
 func (o *CScheduleDto) SetTtl(v string) {
 	o.Ttl.Set(&v)
 }
-// SetTtlNil sets the value for Ttl to be an explicit nil
-func (o *CScheduleDto) SetTtlNil() {
-	o.Ttl.Set(nil)
-}
 
-// UnsetTtl ensures that no value is present for Ttl, not even an explicit nil
-func (o *CScheduleDto) UnsetTtl() {
-	o.Ttl.Unset()
-}
-
-// GetLastBackup returns the LastBackup field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastBackup returns the LastBackup field value
+// If the value is explicit nil, the zero value for time.Time will be returned
 func (o *CScheduleDto) GetLastBackup() time.Time {
-	if o == nil || IsNil(o.LastBackup.Get()) {
+	if o == nil || o.LastBackup.Get() == nil {
 		var ret time.Time
 		return ret
 	}
+
 	return *o.LastBackup.Get()
 }
 
-// GetLastBackupOk returns a tuple with the LastBackup field value if set, nil otherwise
+// GetLastBackupOk returns a tuple with the LastBackup field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CScheduleDto) GetLastBackupOk() (*time.Time, bool) {
@@ -311,39 +246,23 @@ func (o *CScheduleDto) GetLastBackupOk() (*time.Time, bool) {
 	return o.LastBackup.Get(), o.LastBackup.IsSet()
 }
 
-// HasLastBackup returns a boolean if a field has been set.
-func (o *CScheduleDto) HasLastBackup() bool {
-	if o != nil && o.LastBackup.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastBackup gets a reference to the given NullableTime and assigns it to the LastBackup field.
+// SetLastBackup sets field value
 func (o *CScheduleDto) SetLastBackup(v time.Time) {
 	o.LastBackup.Set(&v)
 }
-// SetLastBackupNil sets the value for LastBackup to be an explicit nil
-func (o *CScheduleDto) SetLastBackupNil() {
-	o.LastBackup.Set(nil)
-}
 
-// UnsetLastBackup ensures that no value is present for LastBackup, not even an explicit nil
-func (o *CScheduleDto) UnsetLastBackup() {
-	o.LastBackup.Unset()
-}
-
-// GetPhase returns the Phase field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPhase returns the Phase field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CScheduleDto) GetPhase() string {
-	if o == nil || IsNil(o.Phase.Get()) {
+	if o == nil || o.Phase.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Phase.Get()
 }
 
-// GetPhaseOk returns a tuple with the Phase field value if set, nil otherwise
+// GetPhaseOk returns a tuple with the Phase field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CScheduleDto) GetPhaseOk() (*string, bool) {
@@ -353,39 +272,23 @@ func (o *CScheduleDto) GetPhaseOk() (*string, bool) {
 	return o.Phase.Get(), o.Phase.IsSet()
 }
 
-// HasPhase returns a boolean if a field has been set.
-func (o *CScheduleDto) HasPhase() bool {
-	if o != nil && o.Phase.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPhase gets a reference to the given NullableString and assigns it to the Phase field.
+// SetPhase sets field value
 func (o *CScheduleDto) SetPhase(v string) {
 	o.Phase.Set(&v)
 }
-// SetPhaseNil sets the value for Phase to be an explicit nil
-func (o *CScheduleDto) SetPhaseNil() {
-	o.Phase.Set(nil)
-}
 
-// UnsetPhase ensures that no value is present for Phase, not even an explicit nil
-func (o *CScheduleDto) UnsetPhase() {
-	o.Phase.Unset()
-}
-
-// GetExcludedNamespaces returns the ExcludedNamespaces field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExcludedNamespaces returns the ExcludedNamespaces field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *CScheduleDto) GetExcludedNamespaces() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.ExcludedNamespaces
 }
 
-// GetExcludedNamespacesOk returns a tuple with the ExcludedNamespaces field value if set, nil otherwise
+// GetExcludedNamespacesOk returns a tuple with the ExcludedNamespaces field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CScheduleDto) GetExcludedNamespacesOk() ([]string, bool) {
@@ -395,30 +298,23 @@ func (o *CScheduleDto) GetExcludedNamespacesOk() ([]string, bool) {
 	return o.ExcludedNamespaces, true
 }
 
-// HasExcludedNamespaces returns a boolean if a field has been set.
-func (o *CScheduleDto) HasExcludedNamespaces() bool {
-	if o != nil && !IsNil(o.ExcludedNamespaces) {
-		return true
-	}
-
-	return false
-}
-
-// SetExcludedNamespaces gets a reference to the given []string and assigns it to the ExcludedNamespaces field.
+// SetExcludedNamespaces sets field value
 func (o *CScheduleDto) SetExcludedNamespaces(v []string) {
 	o.ExcludedNamespaces = v
 }
 
-// GetIncludedNamespaces returns the IncludedNamespaces field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIncludedNamespaces returns the IncludedNamespaces field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *CScheduleDto) GetIncludedNamespaces() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.IncludedNamespaces
 }
 
-// GetIncludedNamespacesOk returns a tuple with the IncludedNamespaces field value if set, nil otherwise
+// GetIncludedNamespacesOk returns a tuple with the IncludedNamespaces field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CScheduleDto) GetIncludedNamespacesOk() ([]string, bool) {
@@ -428,16 +324,7 @@ func (o *CScheduleDto) GetIncludedNamespacesOk() ([]string, bool) {
 	return o.IncludedNamespaces, true
 }
 
-// HasIncludedNamespaces returns a boolean if a field has been set.
-func (o *CScheduleDto) HasIncludedNamespaces() bool {
-	if o != nil && !IsNil(o.IncludedNamespaces) {
-		return true
-	}
-
-	return false
-}
-
-// SetIncludedNamespaces gets a reference to the given []string and assigns it to the IncludedNamespaces field.
+// SetIncludedNamespaces sets field value
 func (o *CScheduleDto) SetIncludedNamespaces(v []string) {
 	o.IncludedNamespaces = v
 }
@@ -455,27 +342,13 @@ func (o CScheduleDto) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
-	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if o.Schedule.IsSet() {
-		toSerialize["schedule"] = o.Schedule.Get()
-	}
-	if o.Ttl.IsSet() {
-		toSerialize["ttl"] = o.Ttl.Get()
-	}
-	if o.LastBackup.IsSet() {
-		toSerialize["lastBackup"] = o.LastBackup.Get()
-	}
-	if o.Phase.IsSet() {
-		toSerialize["phase"] = o.Phase.Get()
-	}
+	toSerialize["metadataName"] = o.MetadataName.Get()
+	toSerialize["namespace"] = o.Namespace.Get()
+	toSerialize["createdAt"] = o.CreatedAt.Get()
+	toSerialize["schedule"] = o.Schedule.Get()
+	toSerialize["ttl"] = o.Ttl.Get()
+	toSerialize["lastBackup"] = o.LastBackup.Get()
+	toSerialize["phase"] = o.Phase.Get()
 	if o.ExcludedNamespaces != nil {
 		toSerialize["excludedNamespaces"] = o.ExcludedNamespaces
 	}
@@ -483,6 +356,51 @@ func (o CScheduleDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["includedNamespaces"] = o.IncludedNamespaces
 	}
 	return toSerialize, nil
+}
+
+func (o *CScheduleDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"metadataName",
+		"namespace",
+		"createdAt",
+		"schedule",
+		"ttl",
+		"lastBackup",
+		"phase",
+		"excludedNamespaces",
+		"includedNamespaces",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCScheduleDto := _CScheduleDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCScheduleDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CScheduleDto(varCScheduleDto)
+
+	return err
 }
 
 type NullableCScheduleDto struct {

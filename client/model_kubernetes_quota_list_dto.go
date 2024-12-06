@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubernetesQuotaListDto type satisfies the MappedNullable interface at compile time
@@ -20,20 +22,28 @@ var _ MappedNullable = &KubernetesQuotaListDto{}
 
 // KubernetesQuotaListDto struct for KubernetesQuotaListDto
 type KubernetesQuotaListDto struct {
-	SumOfCpu *float64 `json:"sumOfCpu,omitempty"`
-	SumOfRamInGb *float64 `json:"sumOfRamInGb,omitempty"`
-	SumOfCpuUsage *float64 `json:"sumOfCpuUsage,omitempty"`
-	SumOfRamUsage *float64 `json:"sumOfRamUsage,omitempty"`
-	PodsCapacity *int32 `json:"podsCapacity,omitempty"`
-	PodsTotalCount *int32 `json:"podsTotalCount,omitempty"`
+	SumOfCpu float64 `json:"sumOfCpu"`
+	SumOfRamInGb float64 `json:"sumOfRamInGb"`
+	SumOfCpuUsage float64 `json:"sumOfCpuUsage"`
+	SumOfRamUsage float64 `json:"sumOfRamUsage"`
+	PodsCapacity int32 `json:"podsCapacity"`
+	PodsTotalCount int32 `json:"podsTotalCount"`
 }
+
+type _KubernetesQuotaListDto KubernetesQuotaListDto
 
 // NewKubernetesQuotaListDto instantiates a new KubernetesQuotaListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesQuotaListDto() *KubernetesQuotaListDto {
+func NewKubernetesQuotaListDto(sumOfCpu float64, sumOfRamInGb float64, sumOfCpuUsage float64, sumOfRamUsage float64, podsCapacity int32, podsTotalCount int32) *KubernetesQuotaListDto {
 	this := KubernetesQuotaListDto{}
+	this.SumOfCpu = sumOfCpu
+	this.SumOfRamInGb = sumOfRamInGb
+	this.SumOfCpuUsage = sumOfCpuUsage
+	this.SumOfRamUsage = sumOfRamUsage
+	this.PodsCapacity = podsCapacity
+	this.PodsTotalCount = podsTotalCount
 	return &this
 }
 
@@ -45,196 +55,148 @@ func NewKubernetesQuotaListDtoWithDefaults() *KubernetesQuotaListDto {
 	return &this
 }
 
-// GetSumOfCpu returns the SumOfCpu field value if set, zero value otherwise.
+// GetSumOfCpu returns the SumOfCpu field value
 func (o *KubernetesQuotaListDto) GetSumOfCpu() float64 {
-	if o == nil || IsNil(o.SumOfCpu) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.SumOfCpu
+
+	return o.SumOfCpu
 }
 
-// GetSumOfCpuOk returns a tuple with the SumOfCpu field value if set, nil otherwise
+// GetSumOfCpuOk returns a tuple with the SumOfCpu field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesQuotaListDto) GetSumOfCpuOk() (*float64, bool) {
-	if o == nil || IsNil(o.SumOfCpu) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SumOfCpu, true
+	return &o.SumOfCpu, true
 }
 
-// HasSumOfCpu returns a boolean if a field has been set.
-func (o *KubernetesQuotaListDto) HasSumOfCpu() bool {
-	if o != nil && !IsNil(o.SumOfCpu) {
-		return true
-	}
-
-	return false
-}
-
-// SetSumOfCpu gets a reference to the given float64 and assigns it to the SumOfCpu field.
+// SetSumOfCpu sets field value
 func (o *KubernetesQuotaListDto) SetSumOfCpu(v float64) {
-	o.SumOfCpu = &v
+	o.SumOfCpu = v
 }
 
-// GetSumOfRamInGb returns the SumOfRamInGb field value if set, zero value otherwise.
+// GetSumOfRamInGb returns the SumOfRamInGb field value
 func (o *KubernetesQuotaListDto) GetSumOfRamInGb() float64 {
-	if o == nil || IsNil(o.SumOfRamInGb) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.SumOfRamInGb
+
+	return o.SumOfRamInGb
 }
 
-// GetSumOfRamInGbOk returns a tuple with the SumOfRamInGb field value if set, nil otherwise
+// GetSumOfRamInGbOk returns a tuple with the SumOfRamInGb field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesQuotaListDto) GetSumOfRamInGbOk() (*float64, bool) {
-	if o == nil || IsNil(o.SumOfRamInGb) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SumOfRamInGb, true
+	return &o.SumOfRamInGb, true
 }
 
-// HasSumOfRamInGb returns a boolean if a field has been set.
-func (o *KubernetesQuotaListDto) HasSumOfRamInGb() bool {
-	if o != nil && !IsNil(o.SumOfRamInGb) {
-		return true
-	}
-
-	return false
-}
-
-// SetSumOfRamInGb gets a reference to the given float64 and assigns it to the SumOfRamInGb field.
+// SetSumOfRamInGb sets field value
 func (o *KubernetesQuotaListDto) SetSumOfRamInGb(v float64) {
-	o.SumOfRamInGb = &v
+	o.SumOfRamInGb = v
 }
 
-// GetSumOfCpuUsage returns the SumOfCpuUsage field value if set, zero value otherwise.
+// GetSumOfCpuUsage returns the SumOfCpuUsage field value
 func (o *KubernetesQuotaListDto) GetSumOfCpuUsage() float64 {
-	if o == nil || IsNil(o.SumOfCpuUsage) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.SumOfCpuUsage
+
+	return o.SumOfCpuUsage
 }
 
-// GetSumOfCpuUsageOk returns a tuple with the SumOfCpuUsage field value if set, nil otherwise
+// GetSumOfCpuUsageOk returns a tuple with the SumOfCpuUsage field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesQuotaListDto) GetSumOfCpuUsageOk() (*float64, bool) {
-	if o == nil || IsNil(o.SumOfCpuUsage) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SumOfCpuUsage, true
+	return &o.SumOfCpuUsage, true
 }
 
-// HasSumOfCpuUsage returns a boolean if a field has been set.
-func (o *KubernetesQuotaListDto) HasSumOfCpuUsage() bool {
-	if o != nil && !IsNil(o.SumOfCpuUsage) {
-		return true
-	}
-
-	return false
-}
-
-// SetSumOfCpuUsage gets a reference to the given float64 and assigns it to the SumOfCpuUsage field.
+// SetSumOfCpuUsage sets field value
 func (o *KubernetesQuotaListDto) SetSumOfCpuUsage(v float64) {
-	o.SumOfCpuUsage = &v
+	o.SumOfCpuUsage = v
 }
 
-// GetSumOfRamUsage returns the SumOfRamUsage field value if set, zero value otherwise.
+// GetSumOfRamUsage returns the SumOfRamUsage field value
 func (o *KubernetesQuotaListDto) GetSumOfRamUsage() float64 {
-	if o == nil || IsNil(o.SumOfRamUsage) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.SumOfRamUsage
+
+	return o.SumOfRamUsage
 }
 
-// GetSumOfRamUsageOk returns a tuple with the SumOfRamUsage field value if set, nil otherwise
+// GetSumOfRamUsageOk returns a tuple with the SumOfRamUsage field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesQuotaListDto) GetSumOfRamUsageOk() (*float64, bool) {
-	if o == nil || IsNil(o.SumOfRamUsage) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SumOfRamUsage, true
+	return &o.SumOfRamUsage, true
 }
 
-// HasSumOfRamUsage returns a boolean if a field has been set.
-func (o *KubernetesQuotaListDto) HasSumOfRamUsage() bool {
-	if o != nil && !IsNil(o.SumOfRamUsage) {
-		return true
-	}
-
-	return false
-}
-
-// SetSumOfRamUsage gets a reference to the given float64 and assigns it to the SumOfRamUsage field.
+// SetSumOfRamUsage sets field value
 func (o *KubernetesQuotaListDto) SetSumOfRamUsage(v float64) {
-	o.SumOfRamUsage = &v
+	o.SumOfRamUsage = v
 }
 
-// GetPodsCapacity returns the PodsCapacity field value if set, zero value otherwise.
+// GetPodsCapacity returns the PodsCapacity field value
 func (o *KubernetesQuotaListDto) GetPodsCapacity() int32 {
-	if o == nil || IsNil(o.PodsCapacity) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.PodsCapacity
+
+	return o.PodsCapacity
 }
 
-// GetPodsCapacityOk returns a tuple with the PodsCapacity field value if set, nil otherwise
+// GetPodsCapacityOk returns a tuple with the PodsCapacity field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesQuotaListDto) GetPodsCapacityOk() (*int32, bool) {
-	if o == nil || IsNil(o.PodsCapacity) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PodsCapacity, true
+	return &o.PodsCapacity, true
 }
 
-// HasPodsCapacity returns a boolean if a field has been set.
-func (o *KubernetesQuotaListDto) HasPodsCapacity() bool {
-	if o != nil && !IsNil(o.PodsCapacity) {
-		return true
-	}
-
-	return false
-}
-
-// SetPodsCapacity gets a reference to the given int32 and assigns it to the PodsCapacity field.
+// SetPodsCapacity sets field value
 func (o *KubernetesQuotaListDto) SetPodsCapacity(v int32) {
-	o.PodsCapacity = &v
+	o.PodsCapacity = v
 }
 
-// GetPodsTotalCount returns the PodsTotalCount field value if set, zero value otherwise.
+// GetPodsTotalCount returns the PodsTotalCount field value
 func (o *KubernetesQuotaListDto) GetPodsTotalCount() int32 {
-	if o == nil || IsNil(o.PodsTotalCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.PodsTotalCount
+
+	return o.PodsTotalCount
 }
 
-// GetPodsTotalCountOk returns a tuple with the PodsTotalCount field value if set, nil otherwise
+// GetPodsTotalCountOk returns a tuple with the PodsTotalCount field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesQuotaListDto) GetPodsTotalCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.PodsTotalCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PodsTotalCount, true
+	return &o.PodsTotalCount, true
 }
 
-// HasPodsTotalCount returns a boolean if a field has been set.
-func (o *KubernetesQuotaListDto) HasPodsTotalCount() bool {
-	if o != nil && !IsNil(o.PodsTotalCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetPodsTotalCount gets a reference to the given int32 and assigns it to the PodsTotalCount field.
+// SetPodsTotalCount sets field value
 func (o *KubernetesQuotaListDto) SetPodsTotalCount(v int32) {
-	o.PodsTotalCount = &v
+	o.PodsTotalCount = v
 }
 
 func (o KubernetesQuotaListDto) MarshalJSON() ([]byte, error) {
@@ -247,25 +209,55 @@ func (o KubernetesQuotaListDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesQuotaListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.SumOfCpu) {
-		toSerialize["sumOfCpu"] = o.SumOfCpu
-	}
-	if !IsNil(o.SumOfRamInGb) {
-		toSerialize["sumOfRamInGb"] = o.SumOfRamInGb
-	}
-	if !IsNil(o.SumOfCpuUsage) {
-		toSerialize["sumOfCpuUsage"] = o.SumOfCpuUsage
-	}
-	if !IsNil(o.SumOfRamUsage) {
-		toSerialize["sumOfRamUsage"] = o.SumOfRamUsage
-	}
-	if !IsNil(o.PodsCapacity) {
-		toSerialize["podsCapacity"] = o.PodsCapacity
-	}
-	if !IsNil(o.PodsTotalCount) {
-		toSerialize["podsTotalCount"] = o.PodsTotalCount
-	}
+	toSerialize["sumOfCpu"] = o.SumOfCpu
+	toSerialize["sumOfRamInGb"] = o.SumOfRamInGb
+	toSerialize["sumOfCpuUsage"] = o.SumOfCpuUsage
+	toSerialize["sumOfRamUsage"] = o.SumOfRamUsage
+	toSerialize["podsCapacity"] = o.PodsCapacity
+	toSerialize["podsTotalCount"] = o.PodsTotalCount
 	return toSerialize, nil
+}
+
+func (o *KubernetesQuotaListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"sumOfCpu",
+		"sumOfRamInGb",
+		"sumOfCpuUsage",
+		"sumOfRamUsage",
+		"podsCapacity",
+		"podsTotalCount",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubernetesQuotaListDto := _KubernetesQuotaListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesQuotaListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesQuotaListDto(varKubernetesQuotaListDto)
+
+	return err
 }
 
 type NullableKubernetesQuotaListDto struct {

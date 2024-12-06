@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubernetesProfilesListDto type satisfies the MappedNullable interface at compile time
@@ -20,33 +22,54 @@ var _ MappedNullable = &KubernetesProfilesListDto{}
 
 // KubernetesProfilesListDto struct for KubernetesProfilesListDto
 type KubernetesProfilesListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	Cni NullableString `json:"cni,omitempty"`
-	OctaviaEnabled *bool `json:"octaviaEnabled,omitempty"`
-	ExposeNodePortOnBastion *bool `json:"exposeNodePortOnBastion,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	TaikunLBEnabled *bool `json:"taikunLBEnabled,omitempty"`
-	AllowSchedulingOnMaster *bool `json:"allowSchedulingOnMaster,omitempty"`
-	UniqueClusterName *bool `json:"uniqueClusterName,omitempty"`
-	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
-	ProxmoxStorage *ProxmoxStorage `json:"proxmoxStorage,omitempty"`
-	NvidiaGpuOperatorEnabled *bool `json:"nvidiaGpuOperatorEnabled,omitempty"`
-	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
+	Id int32 `json:"id"`
+	Name string `json:"name"`
+	OrganizationId NullableInt32 `json:"organizationId"`
+	OrganizationName string `json:"organizationName"`
+	Cni CNI `json:"cni"`
+	OctaviaEnabled bool `json:"octaviaEnabled"`
+	ExposeNodePortOnBastion bool `json:"exposeNodePortOnBastion"`
+	IsLocked bool `json:"isLocked"`
+	TaikunLBEnabled bool `json:"taikunLBEnabled"`
+	AllowSchedulingOnMaster bool `json:"allowSchedulingOnMaster"`
+	UniqueClusterName bool `json:"uniqueClusterName"`
+	Projects []CommonDropdownDto `json:"projects"`
+	CreatedBy NullableString `json:"createdBy"`
+	CreatedAt NullableString `json:"createdAt"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	ProxmoxStorage ProxmoxStorage `json:"proxmoxStorage"`
+	NvidiaGpuOperatorEnabled bool `json:"nvidiaGpuOperatorEnabled"`
+	WasmEnabled bool `json:"wasmEnabled"`
 }
+
+type _KubernetesProfilesListDto KubernetesProfilesListDto
 
 // NewKubernetesProfilesListDto instantiates a new KubernetesProfilesListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesProfilesListDto() *KubernetesProfilesListDto {
+func NewKubernetesProfilesListDto(id int32, name string, organizationId NullableInt32, organizationName string, cni CNI, octaviaEnabled bool, exposeNodePortOnBastion bool, isLocked bool, taikunLBEnabled bool, allowSchedulingOnMaster bool, uniqueClusterName bool, projects []CommonDropdownDto, createdBy NullableString, createdAt NullableString, lastModified NullableString, lastModifiedBy NullableString, proxmoxStorage ProxmoxStorage, nvidiaGpuOperatorEnabled bool, wasmEnabled bool) *KubernetesProfilesListDto {
 	this := KubernetesProfilesListDto{}
+	this.Id = id
+	this.Name = name
+	this.OrganizationId = organizationId
+	this.OrganizationName = organizationName
+	this.Cni = cni
+	this.OctaviaEnabled = octaviaEnabled
+	this.ExposeNodePortOnBastion = exposeNodePortOnBastion
+	this.IsLocked = isLocked
+	this.TaikunLBEnabled = taikunLBEnabled
+	this.AllowSchedulingOnMaster = allowSchedulingOnMaster
+	this.UniqueClusterName = uniqueClusterName
+	this.Projects = projects
+	this.CreatedBy = createdBy
+	this.CreatedAt = createdAt
+	this.LastModified = lastModified
+	this.LastModifiedBy = lastModifiedBy
+	this.ProxmoxStorage = proxmoxStorage
+	this.NvidiaGpuOperatorEnabled = nvidiaGpuOperatorEnabled
+	this.WasmEnabled = wasmEnabled
 	return &this
 }
 
@@ -58,90 +81,66 @@ func NewKubernetesProfilesListDtoWithDefaults() *KubernetesProfilesListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *KubernetesProfilesListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesProfilesListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *KubernetesProfilesListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *KubernetesProfilesListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesProfilesListDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *KubernetesProfilesListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *KubernetesProfilesListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *KubernetesProfilesListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationId returns the OrganizationId field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *KubernetesProfilesListDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId.Get()) {
+	if o == nil || o.OrganizationId.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesProfilesListDto) GetOrganizationIdOk() (*int32, bool) {
@@ -151,348 +150,239 @@ func (o *KubernetesProfilesListDto) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasOrganizationId() bool {
-	if o != nil && o.OrganizationId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *KubernetesProfilesListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
-func (o *KubernetesProfilesListDto) SetOrganizationIdNil() {
-	o.OrganizationId.Set(nil)
-}
 
-// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
-func (o *KubernetesProfilesListDto) UnsetOrganizationId() {
-	o.OrganizationId.Unset()
-}
-
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
 func (o *KubernetesProfilesListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+
+	return o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesProfilesListDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return &o.OrganizationName, true
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *KubernetesProfilesListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *KubernetesProfilesListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+	o.OrganizationName = v
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *KubernetesProfilesListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetCni returns the Cni field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *KubernetesProfilesListDto) GetCni() string {
-	if o == nil || IsNil(o.Cni.Get()) {
-		var ret string
+// GetCni returns the Cni field value
+func (o *KubernetesProfilesListDto) GetCni() CNI {
+	if o == nil {
+		var ret CNI
 		return ret
 	}
-	return *o.Cni.Get()
+
+	return o.Cni
 }
 
-// GetCniOk returns a tuple with the Cni field value if set, nil otherwise
+// GetCniOk returns a tuple with the Cni field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *KubernetesProfilesListDto) GetCniOk() (*string, bool) {
+func (o *KubernetesProfilesListDto) GetCniOk() (*CNI, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Cni.Get(), o.Cni.IsSet()
+	return &o.Cni, true
 }
 
-// HasCni returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasCni() bool {
-	if o != nil && o.Cni.IsSet() {
-		return true
-	}
-
-	return false
+// SetCni sets field value
+func (o *KubernetesProfilesListDto) SetCni(v CNI) {
+	o.Cni = v
 }
 
-// SetCni gets a reference to the given NullableString and assigns it to the Cni field.
-func (o *KubernetesProfilesListDto) SetCni(v string) {
-	o.Cni.Set(&v)
-}
-// SetCniNil sets the value for Cni to be an explicit nil
-func (o *KubernetesProfilesListDto) SetCniNil() {
-	o.Cni.Set(nil)
-}
-
-// UnsetCni ensures that no value is present for Cni, not even an explicit nil
-func (o *KubernetesProfilesListDto) UnsetCni() {
-	o.Cni.Unset()
-}
-
-// GetOctaviaEnabled returns the OctaviaEnabled field value if set, zero value otherwise.
+// GetOctaviaEnabled returns the OctaviaEnabled field value
 func (o *KubernetesProfilesListDto) GetOctaviaEnabled() bool {
-	if o == nil || IsNil(o.OctaviaEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.OctaviaEnabled
+
+	return o.OctaviaEnabled
 }
 
-// GetOctaviaEnabledOk returns a tuple with the OctaviaEnabled field value if set, nil otherwise
+// GetOctaviaEnabledOk returns a tuple with the OctaviaEnabled field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesProfilesListDto) GetOctaviaEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.OctaviaEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OctaviaEnabled, true
+	return &o.OctaviaEnabled, true
 }
 
-// HasOctaviaEnabled returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasOctaviaEnabled() bool {
-	if o != nil && !IsNil(o.OctaviaEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetOctaviaEnabled gets a reference to the given bool and assigns it to the OctaviaEnabled field.
+// SetOctaviaEnabled sets field value
 func (o *KubernetesProfilesListDto) SetOctaviaEnabled(v bool) {
-	o.OctaviaEnabled = &v
+	o.OctaviaEnabled = v
 }
 
-// GetExposeNodePortOnBastion returns the ExposeNodePortOnBastion field value if set, zero value otherwise.
+// GetExposeNodePortOnBastion returns the ExposeNodePortOnBastion field value
 func (o *KubernetesProfilesListDto) GetExposeNodePortOnBastion() bool {
-	if o == nil || IsNil(o.ExposeNodePortOnBastion) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.ExposeNodePortOnBastion
+
+	return o.ExposeNodePortOnBastion
 }
 
-// GetExposeNodePortOnBastionOk returns a tuple with the ExposeNodePortOnBastion field value if set, nil otherwise
+// GetExposeNodePortOnBastionOk returns a tuple with the ExposeNodePortOnBastion field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesProfilesListDto) GetExposeNodePortOnBastionOk() (*bool, bool) {
-	if o == nil || IsNil(o.ExposeNodePortOnBastion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExposeNodePortOnBastion, true
+	return &o.ExposeNodePortOnBastion, true
 }
 
-// HasExposeNodePortOnBastion returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasExposeNodePortOnBastion() bool {
-	if o != nil && !IsNil(o.ExposeNodePortOnBastion) {
-		return true
-	}
-
-	return false
-}
-
-// SetExposeNodePortOnBastion gets a reference to the given bool and assigns it to the ExposeNodePortOnBastion field.
+// SetExposeNodePortOnBastion sets field value
 func (o *KubernetesProfilesListDto) SetExposeNodePortOnBastion(v bool) {
-	o.ExposeNodePortOnBastion = &v
+	o.ExposeNodePortOnBastion = v
 }
 
-// GetIsLocked returns the IsLocked field value if set, zero value otherwise.
+// GetIsLocked returns the IsLocked field value
 func (o *KubernetesProfilesListDto) GetIsLocked() bool {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsLocked
+
+	return o.IsLocked
 }
 
-// GetIsLockedOk returns a tuple with the IsLocked field value if set, nil otherwise
+// GetIsLockedOk returns a tuple with the IsLocked field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesProfilesListDto) GetIsLockedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsLocked, true
+	return &o.IsLocked, true
 }
 
-// HasIsLocked returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasIsLocked() bool {
-	if o != nil && !IsNil(o.IsLocked) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsLocked gets a reference to the given bool and assigns it to the IsLocked field.
+// SetIsLocked sets field value
 func (o *KubernetesProfilesListDto) SetIsLocked(v bool) {
-	o.IsLocked = &v
+	o.IsLocked = v
 }
 
-// GetTaikunLBEnabled returns the TaikunLBEnabled field value if set, zero value otherwise.
+// GetTaikunLBEnabled returns the TaikunLBEnabled field value
 func (o *KubernetesProfilesListDto) GetTaikunLBEnabled() bool {
-	if o == nil || IsNil(o.TaikunLBEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.TaikunLBEnabled
+
+	return o.TaikunLBEnabled
 }
 
-// GetTaikunLBEnabledOk returns a tuple with the TaikunLBEnabled field value if set, nil otherwise
+// GetTaikunLBEnabledOk returns a tuple with the TaikunLBEnabled field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesProfilesListDto) GetTaikunLBEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.TaikunLBEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TaikunLBEnabled, true
+	return &o.TaikunLBEnabled, true
 }
 
-// HasTaikunLBEnabled returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasTaikunLBEnabled() bool {
-	if o != nil && !IsNil(o.TaikunLBEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetTaikunLBEnabled gets a reference to the given bool and assigns it to the TaikunLBEnabled field.
+// SetTaikunLBEnabled sets field value
 func (o *KubernetesProfilesListDto) SetTaikunLBEnabled(v bool) {
-	o.TaikunLBEnabled = &v
+	o.TaikunLBEnabled = v
 }
 
-// GetAllowSchedulingOnMaster returns the AllowSchedulingOnMaster field value if set, zero value otherwise.
+// GetAllowSchedulingOnMaster returns the AllowSchedulingOnMaster field value
 func (o *KubernetesProfilesListDto) GetAllowSchedulingOnMaster() bool {
-	if o == nil || IsNil(o.AllowSchedulingOnMaster) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AllowSchedulingOnMaster
+
+	return o.AllowSchedulingOnMaster
 }
 
-// GetAllowSchedulingOnMasterOk returns a tuple with the AllowSchedulingOnMaster field value if set, nil otherwise
+// GetAllowSchedulingOnMasterOk returns a tuple with the AllowSchedulingOnMaster field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesProfilesListDto) GetAllowSchedulingOnMasterOk() (*bool, bool) {
-	if o == nil || IsNil(o.AllowSchedulingOnMaster) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AllowSchedulingOnMaster, true
+	return &o.AllowSchedulingOnMaster, true
 }
 
-// HasAllowSchedulingOnMaster returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasAllowSchedulingOnMaster() bool {
-	if o != nil && !IsNil(o.AllowSchedulingOnMaster) {
-		return true
-	}
-
-	return false
-}
-
-// SetAllowSchedulingOnMaster gets a reference to the given bool and assigns it to the AllowSchedulingOnMaster field.
+// SetAllowSchedulingOnMaster sets field value
 func (o *KubernetesProfilesListDto) SetAllowSchedulingOnMaster(v bool) {
-	o.AllowSchedulingOnMaster = &v
+	o.AllowSchedulingOnMaster = v
 }
 
-// GetUniqueClusterName returns the UniqueClusterName field value if set, zero value otherwise.
+// GetUniqueClusterName returns the UniqueClusterName field value
 func (o *KubernetesProfilesListDto) GetUniqueClusterName() bool {
-	if o == nil || IsNil(o.UniqueClusterName) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.UniqueClusterName
+
+	return o.UniqueClusterName
 }
 
-// GetUniqueClusterNameOk returns a tuple with the UniqueClusterName field value if set, nil otherwise
+// GetUniqueClusterNameOk returns a tuple with the UniqueClusterName field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesProfilesListDto) GetUniqueClusterNameOk() (*bool, bool) {
-	if o == nil || IsNil(o.UniqueClusterName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UniqueClusterName, true
+	return &o.UniqueClusterName, true
 }
 
-// HasUniqueClusterName returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasUniqueClusterName() bool {
-	if o != nil && !IsNil(o.UniqueClusterName) {
-		return true
-	}
-
-	return false
-}
-
-// SetUniqueClusterName gets a reference to the given bool and assigns it to the UniqueClusterName field.
+// SetUniqueClusterName sets field value
 func (o *KubernetesProfilesListDto) SetUniqueClusterName(v bool) {
-	o.UniqueClusterName = &v
+	o.UniqueClusterName = v
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value
 func (o *KubernetesProfilesListDto) GetProjects() []CommonDropdownDto {
 	if o == nil {
 		var ret []CommonDropdownDto
 		return ret
 	}
+
 	return o.Projects
 }
 
-// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
+// GetProjectsOk returns a tuple with the Projects field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesProfilesListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
-	if o == nil || IsNil(o.Projects) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Projects, true
 }
 
-// HasProjects returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasProjects() bool {
-	if o != nil && !IsNil(o.Projects) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjects gets a reference to the given []CommonDropdownDto and assigns it to the Projects field.
+// SetProjects sets field value
 func (o *KubernetesProfilesListDto) SetProjects(v []CommonDropdownDto) {
 	o.Projects = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesProfilesListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || o.CreatedBy.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CreatedBy.Get()
 }
 
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesProfilesListDto) GetCreatedByOk() (*string, bool) {
@@ -502,39 +392,23 @@ func (o *KubernetesProfilesListDto) GetCreatedByOk() (*string, bool) {
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
 
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy sets field value
 func (o *KubernetesProfilesListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *KubernetesProfilesListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
-}
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *KubernetesProfilesListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesProfilesListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || o.CreatedAt.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CreatedAt.Get()
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesProfilesListDto) GetCreatedAtOk() (*string, bool) {
@@ -544,39 +418,23 @@ func (o *KubernetesProfilesListDto) GetCreatedAtOk() (*string, bool) {
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *KubernetesProfilesListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *KubernetesProfilesListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *KubernetesProfilesListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesProfilesListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || o.LastModified.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModified.Get()
 }
 
-// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
+// GetLastModifiedOk returns a tuple with the LastModified field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesProfilesListDto) GetLastModifiedOk() (*string, bool) {
@@ -586,39 +444,23 @@ func (o *KubernetesProfilesListDto) GetLastModifiedOk() (*string, bool) {
 	return o.LastModified.Get(), o.LastModified.IsSet()
 }
 
-// HasLastModified returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified sets field value
 func (o *KubernetesProfilesListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *KubernetesProfilesListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
-}
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *KubernetesProfilesListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesProfilesListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || o.LastModifiedBy.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModifiedBy.Get()
 }
 
-// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesProfilesListDto) GetLastModifiedByOk() (*string, bool) {
@@ -628,123 +470,81 @@ func (o *KubernetesProfilesListDto) GetLastModifiedByOk() (*string, bool) {
 	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
 }
 
-// HasLastModifiedBy returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy sets field value
 func (o *KubernetesProfilesListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *KubernetesProfilesListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
 
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *KubernetesProfilesListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
-}
-
-// GetProxmoxStorage returns the ProxmoxStorage field value if set, zero value otherwise.
+// GetProxmoxStorage returns the ProxmoxStorage field value
 func (o *KubernetesProfilesListDto) GetProxmoxStorage() ProxmoxStorage {
-	if o == nil || IsNil(o.ProxmoxStorage) {
+	if o == nil {
 		var ret ProxmoxStorage
 		return ret
 	}
-	return *o.ProxmoxStorage
+
+	return o.ProxmoxStorage
 }
 
-// GetProxmoxStorageOk returns a tuple with the ProxmoxStorage field value if set, nil otherwise
+// GetProxmoxStorageOk returns a tuple with the ProxmoxStorage field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesProfilesListDto) GetProxmoxStorageOk() (*ProxmoxStorage, bool) {
-	if o == nil || IsNil(o.ProxmoxStorage) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProxmoxStorage, true
+	return &o.ProxmoxStorage, true
 }
 
-// HasProxmoxStorage returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasProxmoxStorage() bool {
-	if o != nil && !IsNil(o.ProxmoxStorage) {
-		return true
-	}
-
-	return false
-}
-
-// SetProxmoxStorage gets a reference to the given ProxmoxStorage and assigns it to the ProxmoxStorage field.
+// SetProxmoxStorage sets field value
 func (o *KubernetesProfilesListDto) SetProxmoxStorage(v ProxmoxStorage) {
-	o.ProxmoxStorage = &v
+	o.ProxmoxStorage = v
 }
 
-// GetNvidiaGpuOperatorEnabled returns the NvidiaGpuOperatorEnabled field value if set, zero value otherwise.
+// GetNvidiaGpuOperatorEnabled returns the NvidiaGpuOperatorEnabled field value
 func (o *KubernetesProfilesListDto) GetNvidiaGpuOperatorEnabled() bool {
-	if o == nil || IsNil(o.NvidiaGpuOperatorEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.NvidiaGpuOperatorEnabled
+
+	return o.NvidiaGpuOperatorEnabled
 }
 
-// GetNvidiaGpuOperatorEnabledOk returns a tuple with the NvidiaGpuOperatorEnabled field value if set, nil otherwise
+// GetNvidiaGpuOperatorEnabledOk returns a tuple with the NvidiaGpuOperatorEnabled field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesProfilesListDto) GetNvidiaGpuOperatorEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.NvidiaGpuOperatorEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.NvidiaGpuOperatorEnabled, true
+	return &o.NvidiaGpuOperatorEnabled, true
 }
 
-// HasNvidiaGpuOperatorEnabled returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasNvidiaGpuOperatorEnabled() bool {
-	if o != nil && !IsNil(o.NvidiaGpuOperatorEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetNvidiaGpuOperatorEnabled gets a reference to the given bool and assigns it to the NvidiaGpuOperatorEnabled field.
+// SetNvidiaGpuOperatorEnabled sets field value
 func (o *KubernetesProfilesListDto) SetNvidiaGpuOperatorEnabled(v bool) {
-	o.NvidiaGpuOperatorEnabled = &v
+	o.NvidiaGpuOperatorEnabled = v
 }
 
-// GetWasmEnabled returns the WasmEnabled field value if set, zero value otherwise.
+// GetWasmEnabled returns the WasmEnabled field value
 func (o *KubernetesProfilesListDto) GetWasmEnabled() bool {
-	if o == nil || IsNil(o.WasmEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.WasmEnabled
+
+	return o.WasmEnabled
 }
 
-// GetWasmEnabledOk returns a tuple with the WasmEnabled field value if set, nil otherwise
+// GetWasmEnabledOk returns a tuple with the WasmEnabled field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesProfilesListDto) GetWasmEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.WasmEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WasmEnabled, true
+	return &o.WasmEnabled, true
 }
 
-// HasWasmEnabled returns a boolean if a field has been set.
-func (o *KubernetesProfilesListDto) HasWasmEnabled() bool {
-	if o != nil && !IsNil(o.WasmEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetWasmEnabled gets a reference to the given bool and assigns it to the WasmEnabled field.
+// SetWasmEnabled sets field value
 func (o *KubernetesProfilesListDto) SetWasmEnabled(v bool) {
-	o.WasmEnabled = &v
+	o.WasmEnabled = v
 }
 
 func (o KubernetesProfilesListDto) MarshalJSON() ([]byte, error) {
@@ -757,64 +557,81 @@ func (o KubernetesProfilesListDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesProfilesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.OrganizationId.IsSet() {
-		toSerialize["organizationId"] = o.OrganizationId.Get()
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
-	if o.Cni.IsSet() {
-		toSerialize["cni"] = o.Cni.Get()
-	}
-	if !IsNil(o.OctaviaEnabled) {
-		toSerialize["octaviaEnabled"] = o.OctaviaEnabled
-	}
-	if !IsNil(o.ExposeNodePortOnBastion) {
-		toSerialize["exposeNodePortOnBastion"] = o.ExposeNodePortOnBastion
-	}
-	if !IsNil(o.IsLocked) {
-		toSerialize["isLocked"] = o.IsLocked
-	}
-	if !IsNil(o.TaikunLBEnabled) {
-		toSerialize["taikunLBEnabled"] = o.TaikunLBEnabled
-	}
-	if !IsNil(o.AllowSchedulingOnMaster) {
-		toSerialize["allowSchedulingOnMaster"] = o.AllowSchedulingOnMaster
-	}
-	if !IsNil(o.UniqueClusterName) {
-		toSerialize["uniqueClusterName"] = o.UniqueClusterName
-	}
-	if o.Projects != nil {
-		toSerialize["projects"] = o.Projects
-	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
-	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
-	}
-	if !IsNil(o.ProxmoxStorage) {
-		toSerialize["proxmoxStorage"] = o.ProxmoxStorage
-	}
-	if !IsNil(o.NvidiaGpuOperatorEnabled) {
-		toSerialize["nvidiaGpuOperatorEnabled"] = o.NvidiaGpuOperatorEnabled
-	}
-	if !IsNil(o.WasmEnabled) {
-		toSerialize["wasmEnabled"] = o.WasmEnabled
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["organizationId"] = o.OrganizationId.Get()
+	toSerialize["organizationName"] = o.OrganizationName
+	toSerialize["cni"] = o.Cni
+	toSerialize["octaviaEnabled"] = o.OctaviaEnabled
+	toSerialize["exposeNodePortOnBastion"] = o.ExposeNodePortOnBastion
+	toSerialize["isLocked"] = o.IsLocked
+	toSerialize["taikunLBEnabled"] = o.TaikunLBEnabled
+	toSerialize["allowSchedulingOnMaster"] = o.AllowSchedulingOnMaster
+	toSerialize["uniqueClusterName"] = o.UniqueClusterName
+	toSerialize["projects"] = o.Projects
+	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["createdAt"] = o.CreatedAt.Get()
+	toSerialize["lastModified"] = o.LastModified.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["proxmoxStorage"] = o.ProxmoxStorage
+	toSerialize["nvidiaGpuOperatorEnabled"] = o.NvidiaGpuOperatorEnabled
+	toSerialize["wasmEnabled"] = o.WasmEnabled
 	return toSerialize, nil
+}
+
+func (o *KubernetesProfilesListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"organizationId",
+		"organizationName",
+		"cni",
+		"octaviaEnabled",
+		"exposeNodePortOnBastion",
+		"isLocked",
+		"taikunLBEnabled",
+		"allowSchedulingOnMaster",
+		"uniqueClusterName",
+		"projects",
+		"createdBy",
+		"createdAt",
+		"lastModified",
+		"lastModifiedBy",
+		"proxmoxStorage",
+		"nvidiaGpuOperatorEnabled",
+		"wasmEnabled",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubernetesProfilesListDto := _KubernetesProfilesListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesProfilesListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesProfilesListDto(varKubernetesProfilesListDto)
+
+	return err
 }
 
 type NullableKubernetesProfilesListDto struct {

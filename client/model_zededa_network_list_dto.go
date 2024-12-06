@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ZededaNetworkListDto type satisfies the MappedNullable interface at compile time
@@ -20,23 +22,34 @@ var _ MappedNullable = &ZededaNetworkListDto{}
 
 // ZededaNetworkListDto struct for ZededaNetworkListDto
 type ZededaNetworkListDto struct {
-	Bridge NullableString `json:"bridge,omitempty"`
-	Gateway NullableString `json:"gateway,omitempty"`
-	IpAddress NullableString `json:"ipAddress,omitempty"`
-	NetMask *int32 `json:"netMask,omitempty"`
-	BeginAllocationRange NullableString `json:"beginAllocationRange,omitempty"`
-	EndAllocationRange NullableString `json:"endAllocationRange,omitempty"`
-	IsPrivate *bool `json:"isPrivate,omitempty"`
-	IsVirtualLbNetwork *bool `json:"isVirtualLbNetwork,omitempty"`
-	VlanId NullableInt32 `json:"vlanId,omitempty"`
+	Bridge NullableString `json:"bridge"`
+	Gateway string `json:"gateway"`
+	IpAddress string `json:"ipAddress"`
+	NetMask int32 `json:"netMask"`
+	BeginAllocationRange string `json:"beginAllocationRange"`
+	EndAllocationRange string `json:"endAllocationRange"`
+	IsPrivate bool `json:"isPrivate"`
+	IsVirtualLbNetwork bool `json:"isVirtualLbNetwork"`
+	VlanId NullableInt32 `json:"vlanId"`
 }
+
+type _ZededaNetworkListDto ZededaNetworkListDto
 
 // NewZededaNetworkListDto instantiates a new ZededaNetworkListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewZededaNetworkListDto() *ZededaNetworkListDto {
+func NewZededaNetworkListDto(bridge NullableString, gateway string, ipAddress string, netMask int32, beginAllocationRange string, endAllocationRange string, isPrivate bool, isVirtualLbNetwork bool, vlanId NullableInt32) *ZededaNetworkListDto {
 	this := ZededaNetworkListDto{}
+	this.Bridge = bridge
+	this.Gateway = gateway
+	this.IpAddress = ipAddress
+	this.NetMask = netMask
+	this.BeginAllocationRange = beginAllocationRange
+	this.EndAllocationRange = endAllocationRange
+	this.IsPrivate = isPrivate
+	this.IsVirtualLbNetwork = isVirtualLbNetwork
+	this.VlanId = vlanId
 	return &this
 }
 
@@ -48,16 +61,18 @@ func NewZededaNetworkListDtoWithDefaults() *ZededaNetworkListDto {
 	return &this
 }
 
-// GetBridge returns the Bridge field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBridge returns the Bridge field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ZededaNetworkListDto) GetBridge() string {
-	if o == nil || IsNil(o.Bridge.Get()) {
+	if o == nil || o.Bridge.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Bridge.Get()
 }
 
-// GetBridgeOk returns a tuple with the Bridge field value if set, nil otherwise
+// GetBridgeOk returns a tuple with the Bridge field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaNetworkListDto) GetBridgeOk() (*string, bool) {
@@ -67,303 +82,191 @@ func (o *ZededaNetworkListDto) GetBridgeOk() (*string, bool) {
 	return o.Bridge.Get(), o.Bridge.IsSet()
 }
 
-// HasBridge returns a boolean if a field has been set.
-func (o *ZededaNetworkListDto) HasBridge() bool {
-	if o != nil && o.Bridge.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBridge gets a reference to the given NullableString and assigns it to the Bridge field.
+// SetBridge sets field value
 func (o *ZededaNetworkListDto) SetBridge(v string) {
 	o.Bridge.Set(&v)
 }
-// SetBridgeNil sets the value for Bridge to be an explicit nil
-func (o *ZededaNetworkListDto) SetBridgeNil() {
-	o.Bridge.Set(nil)
-}
 
-// UnsetBridge ensures that no value is present for Bridge, not even an explicit nil
-func (o *ZededaNetworkListDto) UnsetBridge() {
-	o.Bridge.Unset()
-}
-
-// GetGateway returns the Gateway field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGateway returns the Gateway field value
 func (o *ZededaNetworkListDto) GetGateway() string {
-	if o == nil || IsNil(o.Gateway.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Gateway.Get()
+
+	return o.Gateway
 }
 
-// GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
+// GetGatewayOk returns a tuple with the Gateway field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaNetworkListDto) GetGatewayOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Gateway.Get(), o.Gateway.IsSet()
+	return &o.Gateway, true
 }
 
-// HasGateway returns a boolean if a field has been set.
-func (o *ZededaNetworkListDto) HasGateway() bool {
-	if o != nil && o.Gateway.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetGateway gets a reference to the given NullableString and assigns it to the Gateway field.
+// SetGateway sets field value
 func (o *ZededaNetworkListDto) SetGateway(v string) {
-	o.Gateway.Set(&v)
-}
-// SetGatewayNil sets the value for Gateway to be an explicit nil
-func (o *ZededaNetworkListDto) SetGatewayNil() {
-	o.Gateway.Set(nil)
+	o.Gateway = v
 }
 
-// UnsetGateway ensures that no value is present for Gateway, not even an explicit nil
-func (o *ZededaNetworkListDto) UnsetGateway() {
-	o.Gateway.Unset()
-}
-
-// GetIpAddress returns the IpAddress field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIpAddress returns the IpAddress field value
 func (o *ZededaNetworkListDto) GetIpAddress() string {
-	if o == nil || IsNil(o.IpAddress.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.IpAddress.Get()
+
+	return o.IpAddress
 }
 
-// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
+// GetIpAddressOk returns a tuple with the IpAddress field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaNetworkListDto) GetIpAddressOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.IpAddress.Get(), o.IpAddress.IsSet()
+	return &o.IpAddress, true
 }
 
-// HasIpAddress returns a boolean if a field has been set.
-func (o *ZededaNetworkListDto) HasIpAddress() bool {
-	if o != nil && o.IpAddress.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetIpAddress gets a reference to the given NullableString and assigns it to the IpAddress field.
+// SetIpAddress sets field value
 func (o *ZededaNetworkListDto) SetIpAddress(v string) {
-	o.IpAddress.Set(&v)
-}
-// SetIpAddressNil sets the value for IpAddress to be an explicit nil
-func (o *ZededaNetworkListDto) SetIpAddressNil() {
-	o.IpAddress.Set(nil)
+	o.IpAddress = v
 }
 
-// UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
-func (o *ZededaNetworkListDto) UnsetIpAddress() {
-	o.IpAddress.Unset()
-}
-
-// GetNetMask returns the NetMask field value if set, zero value otherwise.
+// GetNetMask returns the NetMask field value
 func (o *ZededaNetworkListDto) GetNetMask() int32 {
-	if o == nil || IsNil(o.NetMask) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.NetMask
+
+	return o.NetMask
 }
 
-// GetNetMaskOk returns a tuple with the NetMask field value if set, nil otherwise
+// GetNetMaskOk returns a tuple with the NetMask field value
 // and a boolean to check if the value has been set.
 func (o *ZededaNetworkListDto) GetNetMaskOk() (*int32, bool) {
-	if o == nil || IsNil(o.NetMask) {
+	if o == nil {
 		return nil, false
 	}
-	return o.NetMask, true
+	return &o.NetMask, true
 }
 
-// HasNetMask returns a boolean if a field has been set.
-func (o *ZededaNetworkListDto) HasNetMask() bool {
-	if o != nil && !IsNil(o.NetMask) {
-		return true
-	}
-
-	return false
-}
-
-// SetNetMask gets a reference to the given int32 and assigns it to the NetMask field.
+// SetNetMask sets field value
 func (o *ZededaNetworkListDto) SetNetMask(v int32) {
-	o.NetMask = &v
+	o.NetMask = v
 }
 
-// GetBeginAllocationRange returns the BeginAllocationRange field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBeginAllocationRange returns the BeginAllocationRange field value
 func (o *ZededaNetworkListDto) GetBeginAllocationRange() string {
-	if o == nil || IsNil(o.BeginAllocationRange.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.BeginAllocationRange.Get()
+
+	return o.BeginAllocationRange
 }
 
-// GetBeginAllocationRangeOk returns a tuple with the BeginAllocationRange field value if set, nil otherwise
+// GetBeginAllocationRangeOk returns a tuple with the BeginAllocationRange field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaNetworkListDto) GetBeginAllocationRangeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.BeginAllocationRange.Get(), o.BeginAllocationRange.IsSet()
+	return &o.BeginAllocationRange, true
 }
 
-// HasBeginAllocationRange returns a boolean if a field has been set.
-func (o *ZededaNetworkListDto) HasBeginAllocationRange() bool {
-	if o != nil && o.BeginAllocationRange.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBeginAllocationRange gets a reference to the given NullableString and assigns it to the BeginAllocationRange field.
+// SetBeginAllocationRange sets field value
 func (o *ZededaNetworkListDto) SetBeginAllocationRange(v string) {
-	o.BeginAllocationRange.Set(&v)
-}
-// SetBeginAllocationRangeNil sets the value for BeginAllocationRange to be an explicit nil
-func (o *ZededaNetworkListDto) SetBeginAllocationRangeNil() {
-	o.BeginAllocationRange.Set(nil)
+	o.BeginAllocationRange = v
 }
 
-// UnsetBeginAllocationRange ensures that no value is present for BeginAllocationRange, not even an explicit nil
-func (o *ZededaNetworkListDto) UnsetBeginAllocationRange() {
-	o.BeginAllocationRange.Unset()
-}
-
-// GetEndAllocationRange returns the EndAllocationRange field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEndAllocationRange returns the EndAllocationRange field value
 func (o *ZededaNetworkListDto) GetEndAllocationRange() string {
-	if o == nil || IsNil(o.EndAllocationRange.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.EndAllocationRange.Get()
+
+	return o.EndAllocationRange
 }
 
-// GetEndAllocationRangeOk returns a tuple with the EndAllocationRange field value if set, nil otherwise
+// GetEndAllocationRangeOk returns a tuple with the EndAllocationRange field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaNetworkListDto) GetEndAllocationRangeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.EndAllocationRange.Get(), o.EndAllocationRange.IsSet()
+	return &o.EndAllocationRange, true
 }
 
-// HasEndAllocationRange returns a boolean if a field has been set.
-func (o *ZededaNetworkListDto) HasEndAllocationRange() bool {
-	if o != nil && o.EndAllocationRange.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEndAllocationRange gets a reference to the given NullableString and assigns it to the EndAllocationRange field.
+// SetEndAllocationRange sets field value
 func (o *ZededaNetworkListDto) SetEndAllocationRange(v string) {
-	o.EndAllocationRange.Set(&v)
-}
-// SetEndAllocationRangeNil sets the value for EndAllocationRange to be an explicit nil
-func (o *ZededaNetworkListDto) SetEndAllocationRangeNil() {
-	o.EndAllocationRange.Set(nil)
+	o.EndAllocationRange = v
 }
 
-// UnsetEndAllocationRange ensures that no value is present for EndAllocationRange, not even an explicit nil
-func (o *ZededaNetworkListDto) UnsetEndAllocationRange() {
-	o.EndAllocationRange.Unset()
-}
-
-// GetIsPrivate returns the IsPrivate field value if set, zero value otherwise.
+// GetIsPrivate returns the IsPrivate field value
 func (o *ZededaNetworkListDto) GetIsPrivate() bool {
-	if o == nil || IsNil(o.IsPrivate) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsPrivate
+
+	return o.IsPrivate
 }
 
-// GetIsPrivateOk returns a tuple with the IsPrivate field value if set, nil otherwise
+// GetIsPrivateOk returns a tuple with the IsPrivate field value
 // and a boolean to check if the value has been set.
 func (o *ZededaNetworkListDto) GetIsPrivateOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsPrivate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsPrivate, true
+	return &o.IsPrivate, true
 }
 
-// HasIsPrivate returns a boolean if a field has been set.
-func (o *ZededaNetworkListDto) HasIsPrivate() bool {
-	if o != nil && !IsNil(o.IsPrivate) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsPrivate gets a reference to the given bool and assigns it to the IsPrivate field.
+// SetIsPrivate sets field value
 func (o *ZededaNetworkListDto) SetIsPrivate(v bool) {
-	o.IsPrivate = &v
+	o.IsPrivate = v
 }
 
-// GetIsVirtualLbNetwork returns the IsVirtualLbNetwork field value if set, zero value otherwise.
+// GetIsVirtualLbNetwork returns the IsVirtualLbNetwork field value
 func (o *ZededaNetworkListDto) GetIsVirtualLbNetwork() bool {
-	if o == nil || IsNil(o.IsVirtualLbNetwork) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsVirtualLbNetwork
+
+	return o.IsVirtualLbNetwork
 }
 
-// GetIsVirtualLbNetworkOk returns a tuple with the IsVirtualLbNetwork field value if set, nil otherwise
+// GetIsVirtualLbNetworkOk returns a tuple with the IsVirtualLbNetwork field value
 // and a boolean to check if the value has been set.
 func (o *ZededaNetworkListDto) GetIsVirtualLbNetworkOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsVirtualLbNetwork) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsVirtualLbNetwork, true
+	return &o.IsVirtualLbNetwork, true
 }
 
-// HasIsVirtualLbNetwork returns a boolean if a field has been set.
-func (o *ZededaNetworkListDto) HasIsVirtualLbNetwork() bool {
-	if o != nil && !IsNil(o.IsVirtualLbNetwork) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsVirtualLbNetwork gets a reference to the given bool and assigns it to the IsVirtualLbNetwork field.
+// SetIsVirtualLbNetwork sets field value
 func (o *ZededaNetworkListDto) SetIsVirtualLbNetwork(v bool) {
-	o.IsVirtualLbNetwork = &v
+	o.IsVirtualLbNetwork = v
 }
 
-// GetVlanId returns the VlanId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVlanId returns the VlanId field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *ZededaNetworkListDto) GetVlanId() int32 {
-	if o == nil || IsNil(o.VlanId.Get()) {
+	if o == nil || o.VlanId.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.VlanId.Get()
 }
 
-// GetVlanIdOk returns a tuple with the VlanId field value if set, nil otherwise
+// GetVlanIdOk returns a tuple with the VlanId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ZededaNetworkListDto) GetVlanIdOk() (*int32, bool) {
@@ -373,27 +276,9 @@ func (o *ZededaNetworkListDto) GetVlanIdOk() (*int32, bool) {
 	return o.VlanId.Get(), o.VlanId.IsSet()
 }
 
-// HasVlanId returns a boolean if a field has been set.
-func (o *ZededaNetworkListDto) HasVlanId() bool {
-	if o != nil && o.VlanId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetVlanId gets a reference to the given NullableInt32 and assigns it to the VlanId field.
+// SetVlanId sets field value
 func (o *ZededaNetworkListDto) SetVlanId(v int32) {
 	o.VlanId.Set(&v)
-}
-// SetVlanIdNil sets the value for VlanId to be an explicit nil
-func (o *ZededaNetworkListDto) SetVlanIdNil() {
-	o.VlanId.Set(nil)
-}
-
-// UnsetVlanId ensures that no value is present for VlanId, not even an explicit nil
-func (o *ZededaNetworkListDto) UnsetVlanId() {
-	o.VlanId.Unset()
 }
 
 func (o ZededaNetworkListDto) MarshalJSON() ([]byte, error) {
@@ -406,34 +291,61 @@ func (o ZededaNetworkListDto) MarshalJSON() ([]byte, error) {
 
 func (o ZededaNetworkListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Bridge.IsSet() {
-		toSerialize["bridge"] = o.Bridge.Get()
-	}
-	if o.Gateway.IsSet() {
-		toSerialize["gateway"] = o.Gateway.Get()
-	}
-	if o.IpAddress.IsSet() {
-		toSerialize["ipAddress"] = o.IpAddress.Get()
-	}
-	if !IsNil(o.NetMask) {
-		toSerialize["netMask"] = o.NetMask
-	}
-	if o.BeginAllocationRange.IsSet() {
-		toSerialize["beginAllocationRange"] = o.BeginAllocationRange.Get()
-	}
-	if o.EndAllocationRange.IsSet() {
-		toSerialize["endAllocationRange"] = o.EndAllocationRange.Get()
-	}
-	if !IsNil(o.IsPrivate) {
-		toSerialize["isPrivate"] = o.IsPrivate
-	}
-	if !IsNil(o.IsVirtualLbNetwork) {
-		toSerialize["isVirtualLbNetwork"] = o.IsVirtualLbNetwork
-	}
-	if o.VlanId.IsSet() {
-		toSerialize["vlanId"] = o.VlanId.Get()
-	}
+	toSerialize["bridge"] = o.Bridge.Get()
+	toSerialize["gateway"] = o.Gateway
+	toSerialize["ipAddress"] = o.IpAddress
+	toSerialize["netMask"] = o.NetMask
+	toSerialize["beginAllocationRange"] = o.BeginAllocationRange
+	toSerialize["endAllocationRange"] = o.EndAllocationRange
+	toSerialize["isPrivate"] = o.IsPrivate
+	toSerialize["isVirtualLbNetwork"] = o.IsVirtualLbNetwork
+	toSerialize["vlanId"] = o.VlanId.Get()
 	return toSerialize, nil
+}
+
+func (o *ZededaNetworkListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"bridge",
+		"gateway",
+		"ipAddress",
+		"netMask",
+		"beginAllocationRange",
+		"endAllocationRange",
+		"isPrivate",
+		"isVirtualLbNetwork",
+		"vlanId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varZededaNetworkListDto := _ZededaNetworkListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varZededaNetworkListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ZededaNetworkListDto(varZededaNetworkListDto)
+
+	return err
 }
 
 type NullableZededaNetworkListDto struct {

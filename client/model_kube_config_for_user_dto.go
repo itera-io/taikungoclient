@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubeConfigForUserDto type satisfies the MappedNullable interface at compile time
@@ -20,31 +22,50 @@ var _ MappedNullable = &KubeConfigForUserDto{}
 
 // KubeConfigForUserDto struct for KubeConfigForUserDto
 type KubeConfigForUserDto struct {
-	Id *int32 `json:"id,omitempty"`
-	UserId NullableString `json:"userId,omitempty"`
-	DisplayName NullableString `json:"displayName,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	PartnerId *int32 `json:"partnerId,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
-	IsAccessibleForAll *bool `json:"isAccessibleForAll,omitempty"`
-	IsAccessibleForManager *bool `json:"isAccessibleForManager,omitempty"`
-	KubeConfigRoleName NullableString `json:"kubeConfigRoleName,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	ExpirationDate NullableString `json:"expirationDate,omitempty"`
-	CanDownload *bool `json:"canDownload,omitempty"`
-	CanAccessTerminal *bool `json:"canAccessTerminal,omitempty"`
-	CanDelete *bool `json:"canDelete,omitempty"`
+	Id int32 `json:"id"`
+	UserId NullableString `json:"userId"`
+	DisplayName NullableString `json:"displayName"`
+	ProjectId int32 `json:"projectId"`
+	OrganizationId int32 `json:"organizationId"`
+	PartnerId int32 `json:"partnerId"`
+	ProjectName string `json:"projectName"`
+	IsAccessibleForAll bool `json:"isAccessibleForAll"`
+	IsAccessibleForManager bool `json:"isAccessibleForManager"`
+	KubeConfigRoleName string `json:"kubeConfigRoleName"`
+	CreatedBy string `json:"createdBy"`
+	CreatedAt NullableString `json:"createdAt"`
+	Namespace NullableString `json:"namespace"`
+	ExpirationDate NullableString `json:"expirationDate"`
+	CanDownload bool `json:"canDownload"`
+	CanAccessTerminal bool `json:"canAccessTerminal"`
+	CanDelete bool `json:"canDelete"`
 }
+
+type _KubeConfigForUserDto KubeConfigForUserDto
 
 // NewKubeConfigForUserDto instantiates a new KubeConfigForUserDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubeConfigForUserDto() *KubeConfigForUserDto {
+func NewKubeConfigForUserDto(id int32, userId NullableString, displayName NullableString, projectId int32, organizationId int32, partnerId int32, projectName string, isAccessibleForAll bool, isAccessibleForManager bool, kubeConfigRoleName string, createdBy string, createdAt NullableString, namespace NullableString, expirationDate NullableString, canDownload bool, canAccessTerminal bool, canDelete bool) *KubeConfigForUserDto {
 	this := KubeConfigForUserDto{}
+	this.Id = id
+	this.UserId = userId
+	this.DisplayName = displayName
+	this.ProjectId = projectId
+	this.OrganizationId = organizationId
+	this.PartnerId = partnerId
+	this.ProjectName = projectName
+	this.IsAccessibleForAll = isAccessibleForAll
+	this.IsAccessibleForManager = isAccessibleForManager
+	this.KubeConfigRoleName = kubeConfigRoleName
+	this.CreatedBy = createdBy
+	this.CreatedAt = createdAt
+	this.Namespace = namespace
+	this.ExpirationDate = expirationDate
+	this.CanDownload = canDownload
+	this.CanAccessTerminal = canAccessTerminal
+	this.CanDelete = canDelete
 	return &this
 }
 
@@ -56,48 +77,42 @@ func NewKubeConfigForUserDtoWithDefaults() *KubeConfigForUserDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *KubeConfigForUserDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *KubeConfigForUserDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *KubeConfigForUserDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetUserId returns the UserId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserId returns the UserId field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubeConfigForUserDto) GetUserId() string {
-	if o == nil || IsNil(o.UserId.Get()) {
+	if o == nil || o.UserId.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.UserId.Get()
 }
 
-// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
+// GetUserIdOk returns a tuple with the UserId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubeConfigForUserDto) GetUserIdOk() (*string, bool) {
@@ -107,39 +122,23 @@ func (o *KubeConfigForUserDto) GetUserIdOk() (*string, bool) {
 	return o.UserId.Get(), o.UserId.IsSet()
 }
 
-// HasUserId returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasUserId() bool {
-	if o != nil && o.UserId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUserId gets a reference to the given NullableString and assigns it to the UserId field.
+// SetUserId sets field value
 func (o *KubeConfigForUserDto) SetUserId(v string) {
 	o.UserId.Set(&v)
 }
-// SetUserIdNil sets the value for UserId to be an explicit nil
-func (o *KubeConfigForUserDto) SetUserIdNil() {
-	o.UserId.Set(nil)
-}
 
-// UnsetUserId ensures that no value is present for UserId, not even an explicit nil
-func (o *KubeConfigForUserDto) UnsetUserId() {
-	o.UserId.Unset()
-}
-
-// GetDisplayName returns the DisplayName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDisplayName returns the DisplayName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubeConfigForUserDto) GetDisplayName() string {
-	if o == nil || IsNil(o.DisplayName.Get()) {
+	if o == nil || o.DisplayName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.DisplayName.Get()
 }
 
-// GetDisplayNameOk returns a tuple with the DisplayName field value if set, nil otherwise
+// GetDisplayNameOk returns a tuple with the DisplayName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubeConfigForUserDto) GetDisplayNameOk() (*string, bool) {
@@ -149,325 +148,215 @@ func (o *KubeConfigForUserDto) GetDisplayNameOk() (*string, bool) {
 	return o.DisplayName.Get(), o.DisplayName.IsSet()
 }
 
-// HasDisplayName returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasDisplayName() bool {
-	if o != nil && o.DisplayName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDisplayName gets a reference to the given NullableString and assigns it to the DisplayName field.
+// SetDisplayName sets field value
 func (o *KubeConfigForUserDto) SetDisplayName(v string) {
 	o.DisplayName.Set(&v)
 }
-// SetDisplayNameNil sets the value for DisplayName to be an explicit nil
-func (o *KubeConfigForUserDto) SetDisplayNameNil() {
-	o.DisplayName.Set(nil)
-}
 
-// UnsetDisplayName ensures that no value is present for DisplayName, not even an explicit nil
-func (o *KubeConfigForUserDto) UnsetDisplayName() {
-	o.DisplayName.Unset()
-}
-
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+// GetProjectId returns the ProjectId field value
 func (o *KubeConfigForUserDto) GetProjectId() int32 {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ProjectId
+
+	return o.ProjectId
 }
 
-// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// GetProjectIdOk returns a tuple with the ProjectId field value
 // and a boolean to check if the value has been set.
 func (o *KubeConfigForUserDto) GetProjectIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectId, true
+	return &o.ProjectId, true
 }
 
-// HasProjectId returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasProjectId() bool {
-	if o != nil && !IsNil(o.ProjectId) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
+// SetProjectId sets field value
 func (o *KubeConfigForUserDto) SetProjectId(v int32) {
-	o.ProjectId = &v
+	o.ProjectId = v
 }
 
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
+// GetOrganizationId returns the OrganizationId field value
 func (o *KubeConfigForUserDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationId
+
+	return o.OrganizationId
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 func (o *KubeConfigForUserDto) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationId, true
+	return &o.OrganizationId, true
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasOrganizationId() bool {
-	if o != nil && !IsNil(o.OrganizationId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *KubeConfigForUserDto) SetOrganizationId(v int32) {
-	o.OrganizationId = &v
+	o.OrganizationId = v
 }
 
-// GetPartnerId returns the PartnerId field value if set, zero value otherwise.
+// GetPartnerId returns the PartnerId field value
 func (o *KubeConfigForUserDto) GetPartnerId() int32 {
-	if o == nil || IsNil(o.PartnerId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.PartnerId
+
+	return o.PartnerId
 }
 
-// GetPartnerIdOk returns a tuple with the PartnerId field value if set, nil otherwise
+// GetPartnerIdOk returns a tuple with the PartnerId field value
 // and a boolean to check if the value has been set.
 func (o *KubeConfigForUserDto) GetPartnerIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.PartnerId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PartnerId, true
+	return &o.PartnerId, true
 }
 
-// HasPartnerId returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasPartnerId() bool {
-	if o != nil && !IsNil(o.PartnerId) {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerId gets a reference to the given int32 and assigns it to the PartnerId field.
+// SetPartnerId sets field value
 func (o *KubeConfigForUserDto) SetPartnerId(v int32) {
-	o.PartnerId = &v
+	o.PartnerId = v
 }
 
-// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjectName returns the ProjectName field value
 func (o *KubeConfigForUserDto) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName.Get()
+
+	return o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
+// GetProjectNameOk returns a tuple with the ProjectName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubeConfigForUserDto) GetProjectNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName.Get(), o.ProjectName.IsSet()
+	return &o.ProjectName, true
 }
 
-// HasProjectName returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasProjectName() bool {
-	if o != nil && o.ProjectName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
+// SetProjectName sets field value
 func (o *KubeConfigForUserDto) SetProjectName(v string) {
-	o.ProjectName.Set(&v)
-}
-// SetProjectNameNil sets the value for ProjectName to be an explicit nil
-func (o *KubeConfigForUserDto) SetProjectNameNil() {
-	o.ProjectName.Set(nil)
+	o.ProjectName = v
 }
 
-// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
-func (o *KubeConfigForUserDto) UnsetProjectName() {
-	o.ProjectName.Unset()
-}
-
-// GetIsAccessibleForAll returns the IsAccessibleForAll field value if set, zero value otherwise.
+// GetIsAccessibleForAll returns the IsAccessibleForAll field value
 func (o *KubeConfigForUserDto) GetIsAccessibleForAll() bool {
-	if o == nil || IsNil(o.IsAccessibleForAll) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsAccessibleForAll
+
+	return o.IsAccessibleForAll
 }
 
-// GetIsAccessibleForAllOk returns a tuple with the IsAccessibleForAll field value if set, nil otherwise
+// GetIsAccessibleForAllOk returns a tuple with the IsAccessibleForAll field value
 // and a boolean to check if the value has been set.
 func (o *KubeConfigForUserDto) GetIsAccessibleForAllOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsAccessibleForAll) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsAccessibleForAll, true
+	return &o.IsAccessibleForAll, true
 }
 
-// HasIsAccessibleForAll returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasIsAccessibleForAll() bool {
-	if o != nil && !IsNil(o.IsAccessibleForAll) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsAccessibleForAll gets a reference to the given bool and assigns it to the IsAccessibleForAll field.
+// SetIsAccessibleForAll sets field value
 func (o *KubeConfigForUserDto) SetIsAccessibleForAll(v bool) {
-	o.IsAccessibleForAll = &v
+	o.IsAccessibleForAll = v
 }
 
-// GetIsAccessibleForManager returns the IsAccessibleForManager field value if set, zero value otherwise.
+// GetIsAccessibleForManager returns the IsAccessibleForManager field value
 func (o *KubeConfigForUserDto) GetIsAccessibleForManager() bool {
-	if o == nil || IsNil(o.IsAccessibleForManager) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsAccessibleForManager
+
+	return o.IsAccessibleForManager
 }
 
-// GetIsAccessibleForManagerOk returns a tuple with the IsAccessibleForManager field value if set, nil otherwise
+// GetIsAccessibleForManagerOk returns a tuple with the IsAccessibleForManager field value
 // and a boolean to check if the value has been set.
 func (o *KubeConfigForUserDto) GetIsAccessibleForManagerOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsAccessibleForManager) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsAccessibleForManager, true
+	return &o.IsAccessibleForManager, true
 }
 
-// HasIsAccessibleForManager returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasIsAccessibleForManager() bool {
-	if o != nil && !IsNil(o.IsAccessibleForManager) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsAccessibleForManager gets a reference to the given bool and assigns it to the IsAccessibleForManager field.
+// SetIsAccessibleForManager sets field value
 func (o *KubeConfigForUserDto) SetIsAccessibleForManager(v bool) {
-	o.IsAccessibleForManager = &v
+	o.IsAccessibleForManager = v
 }
 
-// GetKubeConfigRoleName returns the KubeConfigRoleName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubeConfigRoleName returns the KubeConfigRoleName field value
 func (o *KubeConfigForUserDto) GetKubeConfigRoleName() string {
-	if o == nil || IsNil(o.KubeConfigRoleName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.KubeConfigRoleName.Get()
+
+	return o.KubeConfigRoleName
 }
 
-// GetKubeConfigRoleNameOk returns a tuple with the KubeConfigRoleName field value if set, nil otherwise
+// GetKubeConfigRoleNameOk returns a tuple with the KubeConfigRoleName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubeConfigForUserDto) GetKubeConfigRoleNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.KubeConfigRoleName.Get(), o.KubeConfigRoleName.IsSet()
+	return &o.KubeConfigRoleName, true
 }
 
-// HasKubeConfigRoleName returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasKubeConfigRoleName() bool {
-	if o != nil && o.KubeConfigRoleName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetKubeConfigRoleName gets a reference to the given NullableString and assigns it to the KubeConfigRoleName field.
+// SetKubeConfigRoleName sets field value
 func (o *KubeConfigForUserDto) SetKubeConfigRoleName(v string) {
-	o.KubeConfigRoleName.Set(&v)
-}
-// SetKubeConfigRoleNameNil sets the value for KubeConfigRoleName to be an explicit nil
-func (o *KubeConfigForUserDto) SetKubeConfigRoleNameNil() {
-	o.KubeConfigRoleName.Set(nil)
+	o.KubeConfigRoleName = v
 }
 
-// UnsetKubeConfigRoleName ensures that no value is present for KubeConfigRoleName, not even an explicit nil
-func (o *KubeConfigForUserDto) UnsetKubeConfigRoleName() {
-	o.KubeConfigRoleName.Unset()
-}
-
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value
 func (o *KubeConfigForUserDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy.Get()
+
+	return o.CreatedBy
 }
 
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubeConfigForUserDto) GetCreatedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy sets field value
 func (o *KubeConfigForUserDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
-}
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *KubeConfigForUserDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
+	o.CreatedBy = v
 }
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *KubeConfigForUserDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubeConfigForUserDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || o.CreatedAt.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CreatedAt.Get()
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubeConfigForUserDto) GetCreatedAtOk() (*string, bool) {
@@ -477,39 +366,23 @@ func (o *KubeConfigForUserDto) GetCreatedAtOk() (*string, bool) {
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *KubeConfigForUserDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *KubeConfigForUserDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *KubeConfigForUserDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubeConfigForUserDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil || o.Namespace.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Namespace.Get()
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// GetNamespaceOk returns a tuple with the Namespace field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubeConfigForUserDto) GetNamespaceOk() (*string, bool) {
@@ -519,39 +392,23 @@ func (o *KubeConfigForUserDto) GetNamespaceOk() (*string, bool) {
 	return o.Namespace.Get(), o.Namespace.IsSet()
 }
 
-// HasNamespace returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace sets field value
 func (o *KubeConfigForUserDto) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *KubeConfigForUserDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
-}
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *KubeConfigForUserDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetExpirationDate returns the ExpirationDate field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpirationDate returns the ExpirationDate field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubeConfigForUserDto) GetExpirationDate() string {
-	if o == nil || IsNil(o.ExpirationDate.Get()) {
+	if o == nil || o.ExpirationDate.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.ExpirationDate.Get()
 }
 
-// GetExpirationDateOk returns a tuple with the ExpirationDate field value if set, nil otherwise
+// GetExpirationDateOk returns a tuple with the ExpirationDate field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubeConfigForUserDto) GetExpirationDateOk() (*string, bool) {
@@ -561,123 +418,81 @@ func (o *KubeConfigForUserDto) GetExpirationDateOk() (*string, bool) {
 	return o.ExpirationDate.Get(), o.ExpirationDate.IsSet()
 }
 
-// HasExpirationDate returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasExpirationDate() bool {
-	if o != nil && o.ExpirationDate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetExpirationDate gets a reference to the given NullableString and assigns it to the ExpirationDate field.
+// SetExpirationDate sets field value
 func (o *KubeConfigForUserDto) SetExpirationDate(v string) {
 	o.ExpirationDate.Set(&v)
 }
-// SetExpirationDateNil sets the value for ExpirationDate to be an explicit nil
-func (o *KubeConfigForUserDto) SetExpirationDateNil() {
-	o.ExpirationDate.Set(nil)
-}
 
-// UnsetExpirationDate ensures that no value is present for ExpirationDate, not even an explicit nil
-func (o *KubeConfigForUserDto) UnsetExpirationDate() {
-	o.ExpirationDate.Unset()
-}
-
-// GetCanDownload returns the CanDownload field value if set, zero value otherwise.
+// GetCanDownload returns the CanDownload field value
 func (o *KubeConfigForUserDto) GetCanDownload() bool {
-	if o == nil || IsNil(o.CanDownload) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.CanDownload
+
+	return o.CanDownload
 }
 
-// GetCanDownloadOk returns a tuple with the CanDownload field value if set, nil otherwise
+// GetCanDownloadOk returns a tuple with the CanDownload field value
 // and a boolean to check if the value has been set.
 func (o *KubeConfigForUserDto) GetCanDownloadOk() (*bool, bool) {
-	if o == nil || IsNil(o.CanDownload) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CanDownload, true
+	return &o.CanDownload, true
 }
 
-// HasCanDownload returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasCanDownload() bool {
-	if o != nil && !IsNil(o.CanDownload) {
-		return true
-	}
-
-	return false
-}
-
-// SetCanDownload gets a reference to the given bool and assigns it to the CanDownload field.
+// SetCanDownload sets field value
 func (o *KubeConfigForUserDto) SetCanDownload(v bool) {
-	o.CanDownload = &v
+	o.CanDownload = v
 }
 
-// GetCanAccessTerminal returns the CanAccessTerminal field value if set, zero value otherwise.
+// GetCanAccessTerminal returns the CanAccessTerminal field value
 func (o *KubeConfigForUserDto) GetCanAccessTerminal() bool {
-	if o == nil || IsNil(o.CanAccessTerminal) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.CanAccessTerminal
+
+	return o.CanAccessTerminal
 }
 
-// GetCanAccessTerminalOk returns a tuple with the CanAccessTerminal field value if set, nil otherwise
+// GetCanAccessTerminalOk returns a tuple with the CanAccessTerminal field value
 // and a boolean to check if the value has been set.
 func (o *KubeConfigForUserDto) GetCanAccessTerminalOk() (*bool, bool) {
-	if o == nil || IsNil(o.CanAccessTerminal) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CanAccessTerminal, true
+	return &o.CanAccessTerminal, true
 }
 
-// HasCanAccessTerminal returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasCanAccessTerminal() bool {
-	if o != nil && !IsNil(o.CanAccessTerminal) {
-		return true
-	}
-
-	return false
-}
-
-// SetCanAccessTerminal gets a reference to the given bool and assigns it to the CanAccessTerminal field.
+// SetCanAccessTerminal sets field value
 func (o *KubeConfigForUserDto) SetCanAccessTerminal(v bool) {
-	o.CanAccessTerminal = &v
+	o.CanAccessTerminal = v
 }
 
-// GetCanDelete returns the CanDelete field value if set, zero value otherwise.
+// GetCanDelete returns the CanDelete field value
 func (o *KubeConfigForUserDto) GetCanDelete() bool {
-	if o == nil || IsNil(o.CanDelete) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.CanDelete
+
+	return o.CanDelete
 }
 
-// GetCanDeleteOk returns a tuple with the CanDelete field value if set, nil otherwise
+// GetCanDeleteOk returns a tuple with the CanDelete field value
 // and a boolean to check if the value has been set.
 func (o *KubeConfigForUserDto) GetCanDeleteOk() (*bool, bool) {
-	if o == nil || IsNil(o.CanDelete) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CanDelete, true
+	return &o.CanDelete, true
 }
 
-// HasCanDelete returns a boolean if a field has been set.
-func (o *KubeConfigForUserDto) HasCanDelete() bool {
-	if o != nil && !IsNil(o.CanDelete) {
-		return true
-	}
-
-	return false
-}
-
-// SetCanDelete gets a reference to the given bool and assigns it to the CanDelete field.
+// SetCanDelete sets field value
 func (o *KubeConfigForUserDto) SetCanDelete(v bool) {
-	o.CanDelete = &v
+	o.CanDelete = v
 }
 
 func (o KubeConfigForUserDto) MarshalJSON() ([]byte, error) {
@@ -690,58 +505,77 @@ func (o KubeConfigForUserDto) MarshalJSON() ([]byte, error) {
 
 func (o KubeConfigForUserDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.UserId.IsSet() {
-		toSerialize["userId"] = o.UserId.Get()
-	}
-	if o.DisplayName.IsSet() {
-		toSerialize["displayName"] = o.DisplayName.Get()
-	}
-	if !IsNil(o.ProjectId) {
-		toSerialize["projectId"] = o.ProjectId
-	}
-	if !IsNil(o.OrganizationId) {
-		toSerialize["organizationId"] = o.OrganizationId
-	}
-	if !IsNil(o.PartnerId) {
-		toSerialize["partnerId"] = o.PartnerId
-	}
-	if o.ProjectName.IsSet() {
-		toSerialize["projectName"] = o.ProjectName.Get()
-	}
-	if !IsNil(o.IsAccessibleForAll) {
-		toSerialize["isAccessibleForAll"] = o.IsAccessibleForAll
-	}
-	if !IsNil(o.IsAccessibleForManager) {
-		toSerialize["isAccessibleForManager"] = o.IsAccessibleForManager
-	}
-	if o.KubeConfigRoleName.IsSet() {
-		toSerialize["kubeConfigRoleName"] = o.KubeConfigRoleName.Get()
-	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
-	}
-	if o.ExpirationDate.IsSet() {
-		toSerialize["expirationDate"] = o.ExpirationDate.Get()
-	}
-	if !IsNil(o.CanDownload) {
-		toSerialize["canDownload"] = o.CanDownload
-	}
-	if !IsNil(o.CanAccessTerminal) {
-		toSerialize["canAccessTerminal"] = o.CanAccessTerminal
-	}
-	if !IsNil(o.CanDelete) {
-		toSerialize["canDelete"] = o.CanDelete
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["userId"] = o.UserId.Get()
+	toSerialize["displayName"] = o.DisplayName.Get()
+	toSerialize["projectId"] = o.ProjectId
+	toSerialize["organizationId"] = o.OrganizationId
+	toSerialize["partnerId"] = o.PartnerId
+	toSerialize["projectName"] = o.ProjectName
+	toSerialize["isAccessibleForAll"] = o.IsAccessibleForAll
+	toSerialize["isAccessibleForManager"] = o.IsAccessibleForManager
+	toSerialize["kubeConfigRoleName"] = o.KubeConfigRoleName
+	toSerialize["createdBy"] = o.CreatedBy
+	toSerialize["createdAt"] = o.CreatedAt.Get()
+	toSerialize["namespace"] = o.Namespace.Get()
+	toSerialize["expirationDate"] = o.ExpirationDate.Get()
+	toSerialize["canDownload"] = o.CanDownload
+	toSerialize["canAccessTerminal"] = o.CanAccessTerminal
+	toSerialize["canDelete"] = o.CanDelete
 	return toSerialize, nil
+}
+
+func (o *KubeConfigForUserDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"userId",
+		"displayName",
+		"projectId",
+		"organizationId",
+		"partnerId",
+		"projectName",
+		"isAccessibleForAll",
+		"isAccessibleForManager",
+		"kubeConfigRoleName",
+		"createdBy",
+		"createdAt",
+		"namespace",
+		"expirationDate",
+		"canDownload",
+		"canAccessTerminal",
+		"canDelete",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubeConfigForUserDto := _KubeConfigForUserDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubeConfigForUserDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubeConfigForUserDto(varKubeConfigForUserDto)
+
+	return err
 }
 
 type NullableKubeConfigForUserDto struct {

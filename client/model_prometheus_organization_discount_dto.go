@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PrometheusOrganizationDiscountDto type satisfies the MappedNullable interface at compile time
@@ -20,18 +22,24 @@ var _ MappedNullable = &PrometheusOrganizationDiscountDto{}
 
 // PrometheusOrganizationDiscountDto struct for PrometheusOrganizationDiscountDto
 type PrometheusOrganizationDiscountDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	RuleDiscountRate *float64 `json:"ruleDiscountRate,omitempty"`
-	GlobalDiscountRate *float64 `json:"globalDiscountRate,omitempty"`
+	Id int32 `json:"id"`
+	Name string `json:"name"`
+	RuleDiscountRate float64 `json:"ruleDiscountRate"`
+	GlobalDiscountRate float64 `json:"globalDiscountRate"`
 }
+
+type _PrometheusOrganizationDiscountDto PrometheusOrganizationDiscountDto
 
 // NewPrometheusOrganizationDiscountDto instantiates a new PrometheusOrganizationDiscountDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusOrganizationDiscountDto() *PrometheusOrganizationDiscountDto {
+func NewPrometheusOrganizationDiscountDto(id int32, name string, ruleDiscountRate float64, globalDiscountRate float64) *PrometheusOrganizationDiscountDto {
 	this := PrometheusOrganizationDiscountDto{}
+	this.Id = id
+	this.Name = name
+	this.RuleDiscountRate = ruleDiscountRate
+	this.GlobalDiscountRate = globalDiscountRate
 	return &this
 }
 
@@ -43,142 +51,100 @@ func NewPrometheusOrganizationDiscountDtoWithDefaults() *PrometheusOrganizationD
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *PrometheusOrganizationDiscountDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *PrometheusOrganizationDiscountDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *PrometheusOrganizationDiscountDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *PrometheusOrganizationDiscountDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *PrometheusOrganizationDiscountDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusOrganizationDiscountDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *PrometheusOrganizationDiscountDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *PrometheusOrganizationDiscountDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *PrometheusOrganizationDiscountDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *PrometheusOrganizationDiscountDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetRuleDiscountRate returns the RuleDiscountRate field value if set, zero value otherwise.
+// GetRuleDiscountRate returns the RuleDiscountRate field value
 func (o *PrometheusOrganizationDiscountDto) GetRuleDiscountRate() float64 {
-	if o == nil || IsNil(o.RuleDiscountRate) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.RuleDiscountRate
+
+	return o.RuleDiscountRate
 }
 
-// GetRuleDiscountRateOk returns a tuple with the RuleDiscountRate field value if set, nil otherwise
+// GetRuleDiscountRateOk returns a tuple with the RuleDiscountRate field value
 // and a boolean to check if the value has been set.
 func (o *PrometheusOrganizationDiscountDto) GetRuleDiscountRateOk() (*float64, bool) {
-	if o == nil || IsNil(o.RuleDiscountRate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RuleDiscountRate, true
+	return &o.RuleDiscountRate, true
 }
 
-// HasRuleDiscountRate returns a boolean if a field has been set.
-func (o *PrometheusOrganizationDiscountDto) HasRuleDiscountRate() bool {
-	if o != nil && !IsNil(o.RuleDiscountRate) {
-		return true
-	}
-
-	return false
-}
-
-// SetRuleDiscountRate gets a reference to the given float64 and assigns it to the RuleDiscountRate field.
+// SetRuleDiscountRate sets field value
 func (o *PrometheusOrganizationDiscountDto) SetRuleDiscountRate(v float64) {
-	o.RuleDiscountRate = &v
+	o.RuleDiscountRate = v
 }
 
-// GetGlobalDiscountRate returns the GlobalDiscountRate field value if set, zero value otherwise.
+// GetGlobalDiscountRate returns the GlobalDiscountRate field value
 func (o *PrometheusOrganizationDiscountDto) GetGlobalDiscountRate() float64 {
-	if o == nil || IsNil(o.GlobalDiscountRate) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.GlobalDiscountRate
+
+	return o.GlobalDiscountRate
 }
 
-// GetGlobalDiscountRateOk returns a tuple with the GlobalDiscountRate field value if set, nil otherwise
+// GetGlobalDiscountRateOk returns a tuple with the GlobalDiscountRate field value
 // and a boolean to check if the value has been set.
 func (o *PrometheusOrganizationDiscountDto) GetGlobalDiscountRateOk() (*float64, bool) {
-	if o == nil || IsNil(o.GlobalDiscountRate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.GlobalDiscountRate, true
+	return &o.GlobalDiscountRate, true
 }
 
-// HasGlobalDiscountRate returns a boolean if a field has been set.
-func (o *PrometheusOrganizationDiscountDto) HasGlobalDiscountRate() bool {
-	if o != nil && !IsNil(o.GlobalDiscountRate) {
-		return true
-	}
-
-	return false
-}
-
-// SetGlobalDiscountRate gets a reference to the given float64 and assigns it to the GlobalDiscountRate field.
+// SetGlobalDiscountRate sets field value
 func (o *PrometheusOrganizationDiscountDto) SetGlobalDiscountRate(v float64) {
-	o.GlobalDiscountRate = &v
+	o.GlobalDiscountRate = v
 }
 
 func (o PrometheusOrganizationDiscountDto) MarshalJSON() ([]byte, error) {
@@ -191,19 +157,51 @@ func (o PrometheusOrganizationDiscountDto) MarshalJSON() ([]byte, error) {
 
 func (o PrometheusOrganizationDiscountDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if !IsNil(o.RuleDiscountRate) {
-		toSerialize["ruleDiscountRate"] = o.RuleDiscountRate
-	}
-	if !IsNil(o.GlobalDiscountRate) {
-		toSerialize["globalDiscountRate"] = o.GlobalDiscountRate
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["ruleDiscountRate"] = o.RuleDiscountRate
+	toSerialize["globalDiscountRate"] = o.GlobalDiscountRate
 	return toSerialize, nil
+}
+
+func (o *PrometheusOrganizationDiscountDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"ruleDiscountRate",
+		"globalDiscountRate",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPrometheusOrganizationDiscountDto := _PrometheusOrganizationDiscountDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrometheusOrganizationDiscountDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusOrganizationDiscountDto(varPrometheusOrganizationDiscountDto)
+
+	return err
 }
 
 type NullablePrometheusOrganizationDiscountDto struct {

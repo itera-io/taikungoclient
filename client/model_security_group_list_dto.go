@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SecurityGroupListDto type satisfies the MappedNullable interface at compile time
@@ -20,21 +22,30 @@ var _ MappedNullable = &SecurityGroupListDto{}
 
 // SecurityGroupListDto struct for SecurityGroupListDto
 type SecurityGroupListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Protocol NullableString `json:"protocol,omitempty"`
-	PortMinRange *int32 `json:"portMinRange,omitempty"`
-	PortMaxRange *int32 `json:"portMaxRange,omitempty"`
-	RemoteIpPrefix NullableString `json:"remoteIpPrefix,omitempty"`
-	ProfileName NullableString `json:"profileName,omitempty"`
+	Id int32 `json:"id"`
+	Name NullableString `json:"name"`
+	Protocol NullableString `json:"protocol"`
+	PortMinRange int32 `json:"portMinRange"`
+	PortMaxRange int32 `json:"portMaxRange"`
+	RemoteIpPrefix NullableString `json:"remoteIpPrefix"`
+	ProfileName NullableString `json:"profileName"`
 }
+
+type _SecurityGroupListDto SecurityGroupListDto
 
 // NewSecurityGroupListDto instantiates a new SecurityGroupListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecurityGroupListDto() *SecurityGroupListDto {
+func NewSecurityGroupListDto(id int32, name NullableString, protocol NullableString, portMinRange int32, portMaxRange int32, remoteIpPrefix NullableString, profileName NullableString) *SecurityGroupListDto {
 	this := SecurityGroupListDto{}
+	this.Id = id
+	this.Name = name
+	this.Protocol = protocol
+	this.PortMinRange = portMinRange
+	this.PortMaxRange = portMaxRange
+	this.RemoteIpPrefix = remoteIpPrefix
+	this.ProfileName = profileName
 	return &this
 }
 
@@ -46,48 +57,42 @@ func NewSecurityGroupListDtoWithDefaults() *SecurityGroupListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *SecurityGroupListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *SecurityGroupListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *SecurityGroupListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *SecurityGroupListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *SecurityGroupListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SecurityGroupListDto) GetNameOk() (*string, bool) {
@@ -97,39 +102,23 @@ func (o *SecurityGroupListDto) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *SecurityGroupListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *SecurityGroupListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *SecurityGroupListDto) SetNameNil() {
-	o.Name.Set(nil)
-}
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *SecurityGroupListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetProtocol returns the Protocol field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProtocol returns the Protocol field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *SecurityGroupListDto) GetProtocol() string {
-	if o == nil || IsNil(o.Protocol.Get()) {
+	if o == nil || o.Protocol.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Protocol.Get()
 }
 
-// GetProtocolOk returns a tuple with the Protocol field value if set, nil otherwise
+// GetProtocolOk returns a tuple with the Protocol field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SecurityGroupListDto) GetProtocolOk() (*string, bool) {
@@ -139,103 +128,71 @@ func (o *SecurityGroupListDto) GetProtocolOk() (*string, bool) {
 	return o.Protocol.Get(), o.Protocol.IsSet()
 }
 
-// HasProtocol returns a boolean if a field has been set.
-func (o *SecurityGroupListDto) HasProtocol() bool {
-	if o != nil && o.Protocol.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProtocol gets a reference to the given NullableString and assigns it to the Protocol field.
+// SetProtocol sets field value
 func (o *SecurityGroupListDto) SetProtocol(v string) {
 	o.Protocol.Set(&v)
 }
-// SetProtocolNil sets the value for Protocol to be an explicit nil
-func (o *SecurityGroupListDto) SetProtocolNil() {
-	o.Protocol.Set(nil)
-}
 
-// UnsetProtocol ensures that no value is present for Protocol, not even an explicit nil
-func (o *SecurityGroupListDto) UnsetProtocol() {
-	o.Protocol.Unset()
-}
-
-// GetPortMinRange returns the PortMinRange field value if set, zero value otherwise.
+// GetPortMinRange returns the PortMinRange field value
 func (o *SecurityGroupListDto) GetPortMinRange() int32 {
-	if o == nil || IsNil(o.PortMinRange) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.PortMinRange
+
+	return o.PortMinRange
 }
 
-// GetPortMinRangeOk returns a tuple with the PortMinRange field value if set, nil otherwise
+// GetPortMinRangeOk returns a tuple with the PortMinRange field value
 // and a boolean to check if the value has been set.
 func (o *SecurityGroupListDto) GetPortMinRangeOk() (*int32, bool) {
-	if o == nil || IsNil(o.PortMinRange) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PortMinRange, true
+	return &o.PortMinRange, true
 }
 
-// HasPortMinRange returns a boolean if a field has been set.
-func (o *SecurityGroupListDto) HasPortMinRange() bool {
-	if o != nil && !IsNil(o.PortMinRange) {
-		return true
-	}
-
-	return false
-}
-
-// SetPortMinRange gets a reference to the given int32 and assigns it to the PortMinRange field.
+// SetPortMinRange sets field value
 func (o *SecurityGroupListDto) SetPortMinRange(v int32) {
-	o.PortMinRange = &v
+	o.PortMinRange = v
 }
 
-// GetPortMaxRange returns the PortMaxRange field value if set, zero value otherwise.
+// GetPortMaxRange returns the PortMaxRange field value
 func (o *SecurityGroupListDto) GetPortMaxRange() int32 {
-	if o == nil || IsNil(o.PortMaxRange) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.PortMaxRange
+
+	return o.PortMaxRange
 }
 
-// GetPortMaxRangeOk returns a tuple with the PortMaxRange field value if set, nil otherwise
+// GetPortMaxRangeOk returns a tuple with the PortMaxRange field value
 // and a boolean to check if the value has been set.
 func (o *SecurityGroupListDto) GetPortMaxRangeOk() (*int32, bool) {
-	if o == nil || IsNil(o.PortMaxRange) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PortMaxRange, true
+	return &o.PortMaxRange, true
 }
 
-// HasPortMaxRange returns a boolean if a field has been set.
-func (o *SecurityGroupListDto) HasPortMaxRange() bool {
-	if o != nil && !IsNil(o.PortMaxRange) {
-		return true
-	}
-
-	return false
-}
-
-// SetPortMaxRange gets a reference to the given int32 and assigns it to the PortMaxRange field.
+// SetPortMaxRange sets field value
 func (o *SecurityGroupListDto) SetPortMaxRange(v int32) {
-	o.PortMaxRange = &v
+	o.PortMaxRange = v
 }
 
-// GetRemoteIpPrefix returns the RemoteIpPrefix field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRemoteIpPrefix returns the RemoteIpPrefix field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *SecurityGroupListDto) GetRemoteIpPrefix() string {
-	if o == nil || IsNil(o.RemoteIpPrefix.Get()) {
+	if o == nil || o.RemoteIpPrefix.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.RemoteIpPrefix.Get()
 }
 
-// GetRemoteIpPrefixOk returns a tuple with the RemoteIpPrefix field value if set, nil otherwise
+// GetRemoteIpPrefixOk returns a tuple with the RemoteIpPrefix field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SecurityGroupListDto) GetRemoteIpPrefixOk() (*string, bool) {
@@ -245,39 +202,23 @@ func (o *SecurityGroupListDto) GetRemoteIpPrefixOk() (*string, bool) {
 	return o.RemoteIpPrefix.Get(), o.RemoteIpPrefix.IsSet()
 }
 
-// HasRemoteIpPrefix returns a boolean if a field has been set.
-func (o *SecurityGroupListDto) HasRemoteIpPrefix() bool {
-	if o != nil && o.RemoteIpPrefix.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRemoteIpPrefix gets a reference to the given NullableString and assigns it to the RemoteIpPrefix field.
+// SetRemoteIpPrefix sets field value
 func (o *SecurityGroupListDto) SetRemoteIpPrefix(v string) {
 	o.RemoteIpPrefix.Set(&v)
 }
-// SetRemoteIpPrefixNil sets the value for RemoteIpPrefix to be an explicit nil
-func (o *SecurityGroupListDto) SetRemoteIpPrefixNil() {
-	o.RemoteIpPrefix.Set(nil)
-}
 
-// UnsetRemoteIpPrefix ensures that no value is present for RemoteIpPrefix, not even an explicit nil
-func (o *SecurityGroupListDto) UnsetRemoteIpPrefix() {
-	o.RemoteIpPrefix.Unset()
-}
-
-// GetProfileName returns the ProfileName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProfileName returns the ProfileName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *SecurityGroupListDto) GetProfileName() string {
-	if o == nil || IsNil(o.ProfileName.Get()) {
+	if o == nil || o.ProfileName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.ProfileName.Get()
 }
 
-// GetProfileNameOk returns a tuple with the ProfileName field value if set, nil otherwise
+// GetProfileNameOk returns a tuple with the ProfileName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SecurityGroupListDto) GetProfileNameOk() (*string, bool) {
@@ -287,27 +228,9 @@ func (o *SecurityGroupListDto) GetProfileNameOk() (*string, bool) {
 	return o.ProfileName.Get(), o.ProfileName.IsSet()
 }
 
-// HasProfileName returns a boolean if a field has been set.
-func (o *SecurityGroupListDto) HasProfileName() bool {
-	if o != nil && o.ProfileName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProfileName gets a reference to the given NullableString and assigns it to the ProfileName field.
+// SetProfileName sets field value
 func (o *SecurityGroupListDto) SetProfileName(v string) {
 	o.ProfileName.Set(&v)
-}
-// SetProfileNameNil sets the value for ProfileName to be an explicit nil
-func (o *SecurityGroupListDto) SetProfileNameNil() {
-	o.ProfileName.Set(nil)
-}
-
-// UnsetProfileName ensures that no value is present for ProfileName, not even an explicit nil
-func (o *SecurityGroupListDto) UnsetProfileName() {
-	o.ProfileName.Unset()
 }
 
 func (o SecurityGroupListDto) MarshalJSON() ([]byte, error) {
@@ -320,28 +243,57 @@ func (o SecurityGroupListDto) MarshalJSON() ([]byte, error) {
 
 func (o SecurityGroupListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.Protocol.IsSet() {
-		toSerialize["protocol"] = o.Protocol.Get()
-	}
-	if !IsNil(o.PortMinRange) {
-		toSerialize["portMinRange"] = o.PortMinRange
-	}
-	if !IsNil(o.PortMaxRange) {
-		toSerialize["portMaxRange"] = o.PortMaxRange
-	}
-	if o.RemoteIpPrefix.IsSet() {
-		toSerialize["remoteIpPrefix"] = o.RemoteIpPrefix.Get()
-	}
-	if o.ProfileName.IsSet() {
-		toSerialize["profileName"] = o.ProfileName.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["protocol"] = o.Protocol.Get()
+	toSerialize["portMinRange"] = o.PortMinRange
+	toSerialize["portMaxRange"] = o.PortMaxRange
+	toSerialize["remoteIpPrefix"] = o.RemoteIpPrefix.Get()
+	toSerialize["profileName"] = o.ProfileName.Get()
 	return toSerialize, nil
+}
+
+func (o *SecurityGroupListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"protocol",
+		"portMinRange",
+		"portMaxRange",
+		"remoteIpPrefix",
+		"profileName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSecurityGroupListDto := _SecurityGroupListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSecurityGroupListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SecurityGroupListDto(varSecurityGroupListDto)
+
+	return err
 }
 
 type NullableSecurityGroupListDto struct {

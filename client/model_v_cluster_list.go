@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the VClusterList type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,22 @@ var _ MappedNullable = &VClusterList{}
 
 // VClusterList struct for VClusterList
 type VClusterList struct {
-	Data []VClusterListDto `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
-	Project *ProjectDetailsForVmsDto `json:"project,omitempty"`
+	Data []VClusterListDto `json:"data"`
+	TotalCount int32 `json:"totalCount"`
+	Project ProjectDetailsForVmsDto `json:"project"`
 }
+
+type _VClusterList VClusterList
 
 // NewVClusterList instantiates a new VClusterList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterList() *VClusterList {
+func NewVClusterList(data []VClusterListDto, totalCount int32, project ProjectDetailsForVmsDto) *VClusterList {
 	this := VClusterList{}
+	this.Data = data
+	this.TotalCount = totalCount
+	this.Project = project
 	return &this
 }
 
@@ -42,16 +49,18 @@ func NewVClusterListWithDefaults() *VClusterList {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []VClusterListDto will be returned
 func (o *VClusterList) GetData() []VClusterListDto {
 	if o == nil {
 		var ret []VClusterListDto
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterList) GetDataOk() ([]VClusterListDto, bool) {
@@ -61,82 +70,57 @@ func (o *VClusterList) GetDataOk() ([]VClusterListDto, bool) {
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *VClusterList) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []VClusterListDto and assigns it to the Data field.
+// SetData sets field value
 func (o *VClusterList) SetData(v []VClusterListDto) {
 	o.Data = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value
 func (o *VClusterList) GetTotalCount() int32 {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.TotalCount
+
+	return o.TotalCount
 }
 
-// GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
+// GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
 func (o *VClusterList) GetTotalCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalCount, true
+	return &o.TotalCount, true
 }
 
-// HasTotalCount returns a boolean if a field has been set.
-func (o *VClusterList) HasTotalCount() bool {
-	if o != nil && !IsNil(o.TotalCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+// SetTotalCount sets field value
 func (o *VClusterList) SetTotalCount(v int32) {
-	o.TotalCount = &v
+	o.TotalCount = v
 }
 
-// GetProject returns the Project field value if set, zero value otherwise.
+// GetProject returns the Project field value
 func (o *VClusterList) GetProject() ProjectDetailsForVmsDto {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		var ret ProjectDetailsForVmsDto
 		return ret
 	}
-	return *o.Project
+
+	return o.Project
 }
 
-// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// GetProjectOk returns a tuple with the Project field value
 // and a boolean to check if the value has been set.
 func (o *VClusterList) GetProjectOk() (*ProjectDetailsForVmsDto, bool) {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Project, true
+	return &o.Project, true
 }
 
-// HasProject returns a boolean if a field has been set.
-func (o *VClusterList) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
-		return true
-	}
-
-	return false
-}
-
-// SetProject gets a reference to the given ProjectDetailsForVmsDto and assigns it to the Project field.
+// SetProject sets field value
 func (o *VClusterList) SetProject(v ProjectDetailsForVmsDto) {
-	o.Project = &v
+	o.Project = v
 }
 
 func (o VClusterList) MarshalJSON() ([]byte, error) {
@@ -152,13 +136,48 @@ func (o VClusterList) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	if !IsNil(o.TotalCount) {
-		toSerialize["totalCount"] = o.TotalCount
-	}
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
+	toSerialize["totalCount"] = o.TotalCount
+	toSerialize["project"] = o.Project
 	return toSerialize, nil
+}
+
+func (o *VClusterList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+		"totalCount",
+		"project",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVClusterList := _VClusterList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVClusterList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VClusterList(varVClusterList)
+
+	return err
 }
 
 type NullableVClusterList struct {

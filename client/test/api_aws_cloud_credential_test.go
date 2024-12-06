@@ -34,6 +34,34 @@ func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AWSCloudCredentialAPIService AwsEksClusters", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var cloudId int32
+
+		resp, httpRes, err := apiClient.AWSCloudCredentialAPI.AwsEksClusters(context.Background(), cloudId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AWSCloudCredentialAPIService AwsEksNodeGroups", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId int32
+
+		resp, httpRes, err := apiClient.AWSCloudCredentialAPI.AwsEksNodeGroups(context.Background(), projectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AWSCloudCredentialAPIService AwsList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

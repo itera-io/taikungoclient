@@ -26,6 +26,7 @@ type PackageAutocompleteDto struct {
 	Type *ParameterType `json:"type,omitempty"`
 	IsQuestion *bool `json:"isQuestion,omitempty"`
 	Options []string `json:"options,omitempty"`
+	IsTaikunLink *bool `json:"isTaikunLink,omitempty"`
 }
 
 // NewPackageAutocompleteDto instantiates a new PackageAutocompleteDto object
@@ -268,6 +269,38 @@ func (o *PackageAutocompleteDto) SetOptions(v []string) {
 	o.Options = v
 }
 
+// GetIsTaikunLink returns the IsTaikunLink field value if set, zero value otherwise.
+func (o *PackageAutocompleteDto) GetIsTaikunLink() bool {
+	if o == nil || IsNil(o.IsTaikunLink) {
+		var ret bool
+		return ret
+	}
+	return *o.IsTaikunLink
+}
+
+// GetIsTaikunLinkOk returns a tuple with the IsTaikunLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PackageAutocompleteDto) GetIsTaikunLinkOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsTaikunLink) {
+		return nil, false
+	}
+	return o.IsTaikunLink, true
+}
+
+// HasIsTaikunLink returns a boolean if a field has been set.
+func (o *PackageAutocompleteDto) HasIsTaikunLink() bool {
+	if o != nil && !IsNil(o.IsTaikunLink) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsTaikunLink gets a reference to the given bool and assigns it to the IsTaikunLink field.
+func (o *PackageAutocompleteDto) SetIsTaikunLink(v bool) {
+	o.IsTaikunLink = &v
+}
+
 func (o PackageAutocompleteDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -295,6 +328,9 @@ func (o PackageAutocompleteDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Options != nil {
 		toSerialize["options"] = o.Options
+	}
+	if !IsNil(o.IsTaikunLink) {
+		toSerialize["isTaikunLink"] = o.IsTaikunLink
 	}
 	return toSerialize, nil
 }

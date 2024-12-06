@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the StandAloneVmListForDetails type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &StandAloneVmListForDetails{}
 
 // StandAloneVmListForDetails struct for StandAloneVmListForDetails
 type StandAloneVmListForDetails struct {
-	Data []StandaloneVmsListForDetailsDto `json:"data,omitempty"`
-	Project *ProjectDetailsForVmsDto `json:"project,omitempty"`
+	Data []StandaloneVmsListForDetailsDto `json:"data"`
+	Project ProjectDetailsForVmsDto `json:"project"`
 }
+
+type _StandAloneVmListForDetails StandAloneVmListForDetails
 
 // NewStandAloneVmListForDetails instantiates a new StandAloneVmListForDetails object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStandAloneVmListForDetails() *StandAloneVmListForDetails {
+func NewStandAloneVmListForDetails(data []StandaloneVmsListForDetailsDto, project ProjectDetailsForVmsDto) *StandAloneVmListForDetails {
 	this := StandAloneVmListForDetails{}
+	this.Data = data
+	this.Project = project
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewStandAloneVmListForDetailsWithDefaults() *StandAloneVmListForDetails {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []StandaloneVmsListForDetailsDto will be returned
 func (o *StandAloneVmListForDetails) GetData() []StandaloneVmsListForDetailsDto {
 	if o == nil {
 		var ret []StandaloneVmsListForDetailsDto
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StandAloneVmListForDetails) GetDataOk() ([]StandaloneVmsListForDetailsDto, bool) {
@@ -60,50 +68,33 @@ func (o *StandAloneVmListForDetails) GetDataOk() ([]StandaloneVmsListForDetailsD
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *StandAloneVmListForDetails) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []StandaloneVmsListForDetailsDto and assigns it to the Data field.
+// SetData sets field value
 func (o *StandAloneVmListForDetails) SetData(v []StandaloneVmsListForDetailsDto) {
 	o.Data = v
 }
 
-// GetProject returns the Project field value if set, zero value otherwise.
+// GetProject returns the Project field value
 func (o *StandAloneVmListForDetails) GetProject() ProjectDetailsForVmsDto {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		var ret ProjectDetailsForVmsDto
 		return ret
 	}
-	return *o.Project
+
+	return o.Project
 }
 
-// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// GetProjectOk returns a tuple with the Project field value
 // and a boolean to check if the value has been set.
 func (o *StandAloneVmListForDetails) GetProjectOk() (*ProjectDetailsForVmsDto, bool) {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Project, true
+	return &o.Project, true
 }
 
-// HasProject returns a boolean if a field has been set.
-func (o *StandAloneVmListForDetails) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
-		return true
-	}
-
-	return false
-}
-
-// SetProject gets a reference to the given ProjectDetailsForVmsDto and assigns it to the Project field.
+// SetProject sets field value
 func (o *StandAloneVmListForDetails) SetProject(v ProjectDetailsForVmsDto) {
-	o.Project = &v
+	o.Project = v
 }
 
 func (o StandAloneVmListForDetails) MarshalJSON() ([]byte, error) {
@@ -119,10 +110,46 @@ func (o StandAloneVmListForDetails) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
+	toSerialize["project"] = o.Project
 	return toSerialize, nil
+}
+
+func (o *StandAloneVmListForDetails) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+		"project",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varStandAloneVmListForDetails := _StandAloneVmListForDetails{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varStandAloneVmListForDetails)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StandAloneVmListForDetails(varStandAloneVmListForDetails)
+
+	return err
 }
 
 type NullableStandAloneVmListForDetails struct {

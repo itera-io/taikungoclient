@@ -590,9 +590,6 @@ func (a *StandaloneProfileAPIService) StandaloneprofileEditExecute(r ApiStandalo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.standAloneProfileUpdateCommand == nil {
-		return nil, reportError("standAloneProfileUpdateCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

@@ -32,6 +32,7 @@ const (
 	CLOUDTYPE_VSPHERE CloudType = "VSPHERE"
 	CLOUDTYPE_ZADARA CloudType = "ZADARA"
 	CLOUDTYPE_ZEDEDA CloudType = "ZEDEDA"
+	CLOUDTYPE_GENERICKUBERNETES CloudType = "GENERICKUBERNETES"
 )
 
 // All allowed values of CloudType enum
@@ -47,6 +48,7 @@ var AllowedCloudTypeEnumValues = []CloudType{
 	"VSPHERE",
 	"ZADARA",
 	"ZEDEDA",
+	"GENERICKUBERNETES",
 }
 
 func (v *CloudType) UnmarshalJSON(src []byte) error {

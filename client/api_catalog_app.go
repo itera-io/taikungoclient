@@ -854,12 +854,18 @@ func (a *CatalogAppAPIService) CatalogAppEditVersionExecute(r ApiCatalogAppEditV
 type ApiCatalogAppListRequest struct {
 	ctx context.Context
 	ApiService *CatalogAppAPIService
+	organizationId *int32
 	catalogId *int32
 	search *string
 	sortBy *string
 	sortDirection *string
 	offset *int32
 	limit *int32
+}
+
+func (r ApiCatalogAppListRequest) OrganizationId(organizationId int32) ApiCatalogAppListRequest {
+	r.organizationId = &organizationId
+	return r
 }
 
 func (r ApiCatalogAppListRequest) CatalogId(catalogId int32) ApiCatalogAppListRequest {
@@ -930,6 +936,9 @@ func (a *CatalogAppAPIService) CatalogAppListExecute(r ApiCatalogAppListRequest)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
 	if r.catalogId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "CatalogId", r.catalogId, "form", "")
 	}

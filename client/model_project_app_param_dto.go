@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ProjectAppParamDto type satisfies the MappedNullable interface at compile time
@@ -20,19 +22,26 @@ var _ MappedNullable = &ProjectAppParamDto{}
 
 // ProjectAppParamDto struct for ProjectAppParamDto
 type ProjectAppParamDto struct {
-	Key NullableString `json:"key,omitempty"`
-	Value NullableString `json:"value,omitempty"`
-	IsEditableWhenInstalling *bool `json:"isEditableWhenInstalling,omitempty"`
-	IsEditableAfterInstallation *bool `json:"isEditableAfterInstallation,omitempty"`
-	IsMandatory *bool `json:"isMandatory,omitempty"`
+	Key NullableString `json:"key"`
+	Value NullableString `json:"value"`
+	IsEditableWhenInstalling bool `json:"isEditableWhenInstalling"`
+	IsEditableAfterInstallation bool `json:"isEditableAfterInstallation"`
+	IsMandatory bool `json:"isMandatory"`
 }
+
+type _ProjectAppParamDto ProjectAppParamDto
 
 // NewProjectAppParamDto instantiates a new ProjectAppParamDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectAppParamDto() *ProjectAppParamDto {
+func NewProjectAppParamDto(key NullableString, value NullableString, isEditableWhenInstalling bool, isEditableAfterInstallation bool, isMandatory bool) *ProjectAppParamDto {
 	this := ProjectAppParamDto{}
+	this.Key = key
+	this.Value = value
+	this.IsEditableWhenInstalling = isEditableWhenInstalling
+	this.IsEditableAfterInstallation = isEditableAfterInstallation
+	this.IsMandatory = isMandatory
 	return &this
 }
 
@@ -44,16 +53,18 @@ func NewProjectAppParamDtoWithDefaults() *ProjectAppParamDto {
 	return &this
 }
 
-// GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKey returns the Key field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectAppParamDto) GetKey() string {
-	if o == nil || IsNil(o.Key.Get()) {
+	if o == nil || o.Key.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Key.Get()
 }
 
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectAppParamDto) GetKeyOk() (*string, bool) {
@@ -63,39 +74,23 @@ func (o *ProjectAppParamDto) GetKeyOk() (*string, bool) {
 	return o.Key.Get(), o.Key.IsSet()
 }
 
-// HasKey returns a boolean if a field has been set.
-func (o *ProjectAppParamDto) HasKey() bool {
-	if o != nil && o.Key.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given NullableString and assigns it to the Key field.
+// SetKey sets field value
 func (o *ProjectAppParamDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
-// SetKeyNil sets the value for Key to be an explicit nil
-func (o *ProjectAppParamDto) SetKeyNil() {
-	o.Key.Set(nil)
-}
 
-// UnsetKey ensures that no value is present for Key, not even an explicit nil
-func (o *ProjectAppParamDto) UnsetKey() {
-	o.Key.Unset()
-}
-
-// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetValue returns the Value field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectAppParamDto) GetValue() string {
-	if o == nil || IsNil(o.Value.Get()) {
+	if o == nil || o.Value.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Value.Get()
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectAppParamDto) GetValueOk() (*string, bool) {
@@ -105,123 +100,81 @@ func (o *ProjectAppParamDto) GetValueOk() (*string, bool) {
 	return o.Value.Get(), o.Value.IsSet()
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *ProjectAppParamDto) HasValue() bool {
-	if o != nil && o.Value.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given NullableString and assigns it to the Value field.
+// SetValue sets field value
 func (o *ProjectAppParamDto) SetValue(v string) {
 	o.Value.Set(&v)
 }
-// SetValueNil sets the value for Value to be an explicit nil
-func (o *ProjectAppParamDto) SetValueNil() {
-	o.Value.Set(nil)
-}
 
-// UnsetValue ensures that no value is present for Value, not even an explicit nil
-func (o *ProjectAppParamDto) UnsetValue() {
-	o.Value.Unset()
-}
-
-// GetIsEditableWhenInstalling returns the IsEditableWhenInstalling field value if set, zero value otherwise.
+// GetIsEditableWhenInstalling returns the IsEditableWhenInstalling field value
 func (o *ProjectAppParamDto) GetIsEditableWhenInstalling() bool {
-	if o == nil || IsNil(o.IsEditableWhenInstalling) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsEditableWhenInstalling
+
+	return o.IsEditableWhenInstalling
 }
 
-// GetIsEditableWhenInstallingOk returns a tuple with the IsEditableWhenInstalling field value if set, nil otherwise
+// GetIsEditableWhenInstallingOk returns a tuple with the IsEditableWhenInstalling field value
 // and a boolean to check if the value has been set.
 func (o *ProjectAppParamDto) GetIsEditableWhenInstallingOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsEditableWhenInstalling) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsEditableWhenInstalling, true
+	return &o.IsEditableWhenInstalling, true
 }
 
-// HasIsEditableWhenInstalling returns a boolean if a field has been set.
-func (o *ProjectAppParamDto) HasIsEditableWhenInstalling() bool {
-	if o != nil && !IsNil(o.IsEditableWhenInstalling) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsEditableWhenInstalling gets a reference to the given bool and assigns it to the IsEditableWhenInstalling field.
+// SetIsEditableWhenInstalling sets field value
 func (o *ProjectAppParamDto) SetIsEditableWhenInstalling(v bool) {
-	o.IsEditableWhenInstalling = &v
+	o.IsEditableWhenInstalling = v
 }
 
-// GetIsEditableAfterInstallation returns the IsEditableAfterInstallation field value if set, zero value otherwise.
+// GetIsEditableAfterInstallation returns the IsEditableAfterInstallation field value
 func (o *ProjectAppParamDto) GetIsEditableAfterInstallation() bool {
-	if o == nil || IsNil(o.IsEditableAfterInstallation) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsEditableAfterInstallation
+
+	return o.IsEditableAfterInstallation
 }
 
-// GetIsEditableAfterInstallationOk returns a tuple with the IsEditableAfterInstallation field value if set, nil otherwise
+// GetIsEditableAfterInstallationOk returns a tuple with the IsEditableAfterInstallation field value
 // and a boolean to check if the value has been set.
 func (o *ProjectAppParamDto) GetIsEditableAfterInstallationOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsEditableAfterInstallation) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsEditableAfterInstallation, true
+	return &o.IsEditableAfterInstallation, true
 }
 
-// HasIsEditableAfterInstallation returns a boolean if a field has been set.
-func (o *ProjectAppParamDto) HasIsEditableAfterInstallation() bool {
-	if o != nil && !IsNil(o.IsEditableAfterInstallation) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsEditableAfterInstallation gets a reference to the given bool and assigns it to the IsEditableAfterInstallation field.
+// SetIsEditableAfterInstallation sets field value
 func (o *ProjectAppParamDto) SetIsEditableAfterInstallation(v bool) {
-	o.IsEditableAfterInstallation = &v
+	o.IsEditableAfterInstallation = v
 }
 
-// GetIsMandatory returns the IsMandatory field value if set, zero value otherwise.
+// GetIsMandatory returns the IsMandatory field value
 func (o *ProjectAppParamDto) GetIsMandatory() bool {
-	if o == nil || IsNil(o.IsMandatory) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsMandatory
+
+	return o.IsMandatory
 }
 
-// GetIsMandatoryOk returns a tuple with the IsMandatory field value if set, nil otherwise
+// GetIsMandatoryOk returns a tuple with the IsMandatory field value
 // and a boolean to check if the value has been set.
 func (o *ProjectAppParamDto) GetIsMandatoryOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsMandatory) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsMandatory, true
+	return &o.IsMandatory, true
 }
 
-// HasIsMandatory returns a boolean if a field has been set.
-func (o *ProjectAppParamDto) HasIsMandatory() bool {
-	if o != nil && !IsNil(o.IsMandatory) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsMandatory gets a reference to the given bool and assigns it to the IsMandatory field.
+// SetIsMandatory sets field value
 func (o *ProjectAppParamDto) SetIsMandatory(v bool) {
-	o.IsMandatory = &v
+	o.IsMandatory = v
 }
 
 func (o ProjectAppParamDto) MarshalJSON() ([]byte, error) {
@@ -234,22 +187,53 @@ func (o ProjectAppParamDto) MarshalJSON() ([]byte, error) {
 
 func (o ProjectAppParamDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Key.IsSet() {
-		toSerialize["key"] = o.Key.Get()
-	}
-	if o.Value.IsSet() {
-		toSerialize["value"] = o.Value.Get()
-	}
-	if !IsNil(o.IsEditableWhenInstalling) {
-		toSerialize["isEditableWhenInstalling"] = o.IsEditableWhenInstalling
-	}
-	if !IsNil(o.IsEditableAfterInstallation) {
-		toSerialize["isEditableAfterInstallation"] = o.IsEditableAfterInstallation
-	}
-	if !IsNil(o.IsMandatory) {
-		toSerialize["isMandatory"] = o.IsMandatory
-	}
+	toSerialize["key"] = o.Key.Get()
+	toSerialize["value"] = o.Value.Get()
+	toSerialize["isEditableWhenInstalling"] = o.IsEditableWhenInstalling
+	toSerialize["isEditableAfterInstallation"] = o.IsEditableAfterInstallation
+	toSerialize["isMandatory"] = o.IsMandatory
 	return toSerialize, nil
+}
+
+func (o *ProjectAppParamDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"key",
+		"value",
+		"isEditableWhenInstalling",
+		"isEditableAfterInstallation",
+		"isMandatory",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varProjectAppParamDto := _ProjectAppParamDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProjectAppParamDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectAppParamDto(varProjectAppParamDto)
+
+	return err
 }
 
 type NullableProjectAppParamDto struct {

@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubeConfigForUserList type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,22 @@ var _ MappedNullable = &KubeConfigForUserList{}
 
 // KubeConfigForUserList struct for KubeConfigForUserList
 type KubeConfigForUserList struct {
-	Data []KubeConfigForUserDto `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
-	CanAdd *ButtonStatusDto `json:"canAdd,omitempty"`
+	Data []KubeConfigForUserDto `json:"data"`
+	TotalCount int32 `json:"totalCount"`
+	CanAdd ButtonStatusDto `json:"canAdd"`
 }
+
+type _KubeConfigForUserList KubeConfigForUserList
 
 // NewKubeConfigForUserList instantiates a new KubeConfigForUserList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubeConfigForUserList() *KubeConfigForUserList {
+func NewKubeConfigForUserList(data []KubeConfigForUserDto, totalCount int32, canAdd ButtonStatusDto) *KubeConfigForUserList {
 	this := KubeConfigForUserList{}
+	this.Data = data
+	this.TotalCount = totalCount
+	this.CanAdd = canAdd
 	return &this
 }
 
@@ -42,16 +49,18 @@ func NewKubeConfigForUserListWithDefaults() *KubeConfigForUserList {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []KubeConfigForUserDto will be returned
 func (o *KubeConfigForUserList) GetData() []KubeConfigForUserDto {
 	if o == nil {
 		var ret []KubeConfigForUserDto
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubeConfigForUserList) GetDataOk() ([]KubeConfigForUserDto, bool) {
@@ -61,82 +70,57 @@ func (o *KubeConfigForUserList) GetDataOk() ([]KubeConfigForUserDto, bool) {
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *KubeConfigForUserList) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []KubeConfigForUserDto and assigns it to the Data field.
+// SetData sets field value
 func (o *KubeConfigForUserList) SetData(v []KubeConfigForUserDto) {
 	o.Data = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value
 func (o *KubeConfigForUserList) GetTotalCount() int32 {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.TotalCount
+
+	return o.TotalCount
 }
 
-// GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
+// GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
 func (o *KubeConfigForUserList) GetTotalCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalCount, true
+	return &o.TotalCount, true
 }
 
-// HasTotalCount returns a boolean if a field has been set.
-func (o *KubeConfigForUserList) HasTotalCount() bool {
-	if o != nil && !IsNil(o.TotalCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+// SetTotalCount sets field value
 func (o *KubeConfigForUserList) SetTotalCount(v int32) {
-	o.TotalCount = &v
+	o.TotalCount = v
 }
 
-// GetCanAdd returns the CanAdd field value if set, zero value otherwise.
+// GetCanAdd returns the CanAdd field value
 func (o *KubeConfigForUserList) GetCanAdd() ButtonStatusDto {
-	if o == nil || IsNil(o.CanAdd) {
+	if o == nil {
 		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.CanAdd
+
+	return o.CanAdd
 }
 
-// GetCanAddOk returns a tuple with the CanAdd field value if set, nil otherwise
+// GetCanAddOk returns a tuple with the CanAdd field value
 // and a boolean to check if the value has been set.
 func (o *KubeConfigForUserList) GetCanAddOk() (*ButtonStatusDto, bool) {
-	if o == nil || IsNil(o.CanAdd) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CanAdd, true
+	return &o.CanAdd, true
 }
 
-// HasCanAdd returns a boolean if a field has been set.
-func (o *KubeConfigForUserList) HasCanAdd() bool {
-	if o != nil && !IsNil(o.CanAdd) {
-		return true
-	}
-
-	return false
-}
-
-// SetCanAdd gets a reference to the given ButtonStatusDto and assigns it to the CanAdd field.
+// SetCanAdd sets field value
 func (o *KubeConfigForUserList) SetCanAdd(v ButtonStatusDto) {
-	o.CanAdd = &v
+	o.CanAdd = v
 }
 
 func (o KubeConfigForUserList) MarshalJSON() ([]byte, error) {
@@ -152,13 +136,48 @@ func (o KubeConfigForUserList) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	if !IsNil(o.TotalCount) {
-		toSerialize["totalCount"] = o.TotalCount
-	}
-	if !IsNil(o.CanAdd) {
-		toSerialize["canAdd"] = o.CanAdd
-	}
+	toSerialize["totalCount"] = o.TotalCount
+	toSerialize["canAdd"] = o.CanAdd
 	return toSerialize, nil
+}
+
+func (o *KubeConfigForUserList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+		"totalCount",
+		"canAdd",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubeConfigForUserList := _KubeConfigForUserList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubeConfigForUserList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubeConfigForUserList(varKubeConfigForUserList)
+
+	return err
 }
 
 type NullableKubeConfigForUserList struct {

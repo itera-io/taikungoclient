@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the BackupCredentialsListDto type satisfies the MappedNullable interface at compile time
@@ -20,29 +22,46 @@ var _ MappedNullable = &BackupCredentialsListDto{}
 
 // BackupCredentialsListDto struct for BackupCredentialsListDto
 type BackupCredentialsListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	S3Name NullableString `json:"s3Name,omitempty"`
-	S3AccessKeyId NullableString `json:"s3AccessKeyId,omitempty"`
-	S3Endpoint NullableString `json:"s3Endpoint,omitempty"`
-	S3Region NullableString `json:"s3Region,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	IsDefault *bool `json:"isDefault,omitempty"`
-	IsInfra *bool `json:"isInfra,omitempty"`
+	Id int32 `json:"id"`
+	S3Name string `json:"s3Name"`
+	S3AccessKeyId string `json:"s3AccessKeyId"`
+	S3Endpoint string `json:"s3Endpoint"`
+	S3Region string `json:"s3Region"`
+	OrganizationId NullableInt32 `json:"organizationId"`
+	OrganizationName NullableString `json:"organizationName"`
+	Projects []CommonDropdownDto `json:"projects"`
+	IsLocked bool `json:"isLocked"`
+	CreatedBy NullableString `json:"createdBy"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	CreatedAt NullableString `json:"createdAt"`
+	IsDefault bool `json:"isDefault"`
+	IsInfra bool `json:"isInfra"`
 }
+
+type _BackupCredentialsListDto BackupCredentialsListDto
 
 // NewBackupCredentialsListDto instantiates a new BackupCredentialsListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBackupCredentialsListDto() *BackupCredentialsListDto {
+func NewBackupCredentialsListDto(id int32, s3Name string, s3AccessKeyId string, s3Endpoint string, s3Region string, organizationId NullableInt32, organizationName NullableString, projects []CommonDropdownDto, isLocked bool, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, createdAt NullableString, isDefault bool, isInfra bool) *BackupCredentialsListDto {
 	this := BackupCredentialsListDto{}
+	this.Id = id
+	this.S3Name = s3Name
+	this.S3AccessKeyId = s3AccessKeyId
+	this.S3Endpoint = s3Endpoint
+	this.S3Region = s3Region
+	this.OrganizationId = organizationId
+	this.OrganizationName = organizationName
+	this.Projects = projects
+	this.IsLocked = isLocked
+	this.CreatedBy = createdBy
+	this.LastModified = lastModified
+	this.LastModifiedBy = lastModifiedBy
+	this.CreatedAt = createdAt
+	this.IsDefault = isDefault
+	this.IsInfra = isInfra
 	return &this
 }
 
@@ -54,216 +73,138 @@ func NewBackupCredentialsListDtoWithDefaults() *BackupCredentialsListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *BackupCredentialsListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *BackupCredentialsListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *BackupCredentialsListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetS3Name returns the S3Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetS3Name returns the S3Name field value
 func (o *BackupCredentialsListDto) GetS3Name() string {
-	if o == nil || IsNil(o.S3Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.S3Name.Get()
+
+	return o.S3Name
 }
 
-// GetS3NameOk returns a tuple with the S3Name field value if set, nil otherwise
+// GetS3NameOk returns a tuple with the S3Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupCredentialsListDto) GetS3NameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.S3Name.Get(), o.S3Name.IsSet()
+	return &o.S3Name, true
 }
 
-// HasS3Name returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasS3Name() bool {
-	if o != nil && o.S3Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetS3Name gets a reference to the given NullableString and assigns it to the S3Name field.
+// SetS3Name sets field value
 func (o *BackupCredentialsListDto) SetS3Name(v string) {
-	o.S3Name.Set(&v)
-}
-// SetS3NameNil sets the value for S3Name to be an explicit nil
-func (o *BackupCredentialsListDto) SetS3NameNil() {
-	o.S3Name.Set(nil)
+	o.S3Name = v
 }
 
-// UnsetS3Name ensures that no value is present for S3Name, not even an explicit nil
-func (o *BackupCredentialsListDto) UnsetS3Name() {
-	o.S3Name.Unset()
-}
-
-// GetS3AccessKeyId returns the S3AccessKeyId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetS3AccessKeyId returns the S3AccessKeyId field value
 func (o *BackupCredentialsListDto) GetS3AccessKeyId() string {
-	if o == nil || IsNil(o.S3AccessKeyId.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.S3AccessKeyId.Get()
+
+	return o.S3AccessKeyId
 }
 
-// GetS3AccessKeyIdOk returns a tuple with the S3AccessKeyId field value if set, nil otherwise
+// GetS3AccessKeyIdOk returns a tuple with the S3AccessKeyId field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupCredentialsListDto) GetS3AccessKeyIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.S3AccessKeyId.Get(), o.S3AccessKeyId.IsSet()
+	return &o.S3AccessKeyId, true
 }
 
-// HasS3AccessKeyId returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasS3AccessKeyId() bool {
-	if o != nil && o.S3AccessKeyId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetS3AccessKeyId gets a reference to the given NullableString and assigns it to the S3AccessKeyId field.
+// SetS3AccessKeyId sets field value
 func (o *BackupCredentialsListDto) SetS3AccessKeyId(v string) {
-	o.S3AccessKeyId.Set(&v)
-}
-// SetS3AccessKeyIdNil sets the value for S3AccessKeyId to be an explicit nil
-func (o *BackupCredentialsListDto) SetS3AccessKeyIdNil() {
-	o.S3AccessKeyId.Set(nil)
+	o.S3AccessKeyId = v
 }
 
-// UnsetS3AccessKeyId ensures that no value is present for S3AccessKeyId, not even an explicit nil
-func (o *BackupCredentialsListDto) UnsetS3AccessKeyId() {
-	o.S3AccessKeyId.Unset()
-}
-
-// GetS3Endpoint returns the S3Endpoint field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetS3Endpoint returns the S3Endpoint field value
 func (o *BackupCredentialsListDto) GetS3Endpoint() string {
-	if o == nil || IsNil(o.S3Endpoint.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.S3Endpoint.Get()
+
+	return o.S3Endpoint
 }
 
-// GetS3EndpointOk returns a tuple with the S3Endpoint field value if set, nil otherwise
+// GetS3EndpointOk returns a tuple with the S3Endpoint field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupCredentialsListDto) GetS3EndpointOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.S3Endpoint.Get(), o.S3Endpoint.IsSet()
+	return &o.S3Endpoint, true
 }
 
-// HasS3Endpoint returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasS3Endpoint() bool {
-	if o != nil && o.S3Endpoint.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetS3Endpoint gets a reference to the given NullableString and assigns it to the S3Endpoint field.
+// SetS3Endpoint sets field value
 func (o *BackupCredentialsListDto) SetS3Endpoint(v string) {
-	o.S3Endpoint.Set(&v)
-}
-// SetS3EndpointNil sets the value for S3Endpoint to be an explicit nil
-func (o *BackupCredentialsListDto) SetS3EndpointNil() {
-	o.S3Endpoint.Set(nil)
+	o.S3Endpoint = v
 }
 
-// UnsetS3Endpoint ensures that no value is present for S3Endpoint, not even an explicit nil
-func (o *BackupCredentialsListDto) UnsetS3Endpoint() {
-	o.S3Endpoint.Unset()
-}
-
-// GetS3Region returns the S3Region field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetS3Region returns the S3Region field value
 func (o *BackupCredentialsListDto) GetS3Region() string {
-	if o == nil || IsNil(o.S3Region.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.S3Region.Get()
+
+	return o.S3Region
 }
 
-// GetS3RegionOk returns a tuple with the S3Region field value if set, nil otherwise
+// GetS3RegionOk returns a tuple with the S3Region field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupCredentialsListDto) GetS3RegionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.S3Region.Get(), o.S3Region.IsSet()
+	return &o.S3Region, true
 }
 
-// HasS3Region returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasS3Region() bool {
-	if o != nil && o.S3Region.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetS3Region gets a reference to the given NullableString and assigns it to the S3Region field.
+// SetS3Region sets field value
 func (o *BackupCredentialsListDto) SetS3Region(v string) {
-	o.S3Region.Set(&v)
-}
-// SetS3RegionNil sets the value for S3Region to be an explicit nil
-func (o *BackupCredentialsListDto) SetS3RegionNil() {
-	o.S3Region.Set(nil)
+	o.S3Region = v
 }
 
-// UnsetS3Region ensures that no value is present for S3Region, not even an explicit nil
-func (o *BackupCredentialsListDto) UnsetS3Region() {
-	o.S3Region.Unset()
-}
-
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationId returns the OrganizationId field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *BackupCredentialsListDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId.Get()) {
+	if o == nil || o.OrganizationId.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupCredentialsListDto) GetOrganizationIdOk() (*int32, bool) {
@@ -273,39 +214,23 @@ func (o *BackupCredentialsListDto) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasOrganizationId() bool {
-	if o != nil && o.OrganizationId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *BackupCredentialsListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
-func (o *BackupCredentialsListDto) SetOrganizationIdNil() {
-	o.OrganizationId.Set(nil)
-}
 
-// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
-func (o *BackupCredentialsListDto) UnsetOrganizationId() {
-	o.OrganizationId.Unset()
-}
-
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *BackupCredentialsListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || o.OrganizationName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.OrganizationName.Get()
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupCredentialsListDto) GetOrganizationNameOk() (*string, bool) {
@@ -315,104 +240,71 @@ func (o *BackupCredentialsListDto) GetOrganizationNameOk() (*string, bool) {
 	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *BackupCredentialsListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *BackupCredentialsListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *BackupCredentialsListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value
 func (o *BackupCredentialsListDto) GetProjects() []CommonDropdownDto {
 	if o == nil {
 		var ret []CommonDropdownDto
 		return ret
 	}
+
 	return o.Projects
 }
 
-// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
+// GetProjectsOk returns a tuple with the Projects field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupCredentialsListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
-	if o == nil || IsNil(o.Projects) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Projects, true
 }
 
-// HasProjects returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasProjects() bool {
-	if o != nil && !IsNil(o.Projects) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjects gets a reference to the given []CommonDropdownDto and assigns it to the Projects field.
+// SetProjects sets field value
 func (o *BackupCredentialsListDto) SetProjects(v []CommonDropdownDto) {
 	o.Projects = v
 }
 
-// GetIsLocked returns the IsLocked field value if set, zero value otherwise.
+// GetIsLocked returns the IsLocked field value
 func (o *BackupCredentialsListDto) GetIsLocked() bool {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsLocked
+
+	return o.IsLocked
 }
 
-// GetIsLockedOk returns a tuple with the IsLocked field value if set, nil otherwise
+// GetIsLockedOk returns a tuple with the IsLocked field value
 // and a boolean to check if the value has been set.
 func (o *BackupCredentialsListDto) GetIsLockedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsLocked, true
+	return &o.IsLocked, true
 }
 
-// HasIsLocked returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasIsLocked() bool {
-	if o != nil && !IsNil(o.IsLocked) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsLocked gets a reference to the given bool and assigns it to the IsLocked field.
+// SetIsLocked sets field value
 func (o *BackupCredentialsListDto) SetIsLocked(v bool) {
-	o.IsLocked = &v
+	o.IsLocked = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *BackupCredentialsListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || o.CreatedBy.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CreatedBy.Get()
 }
 
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupCredentialsListDto) GetCreatedByOk() (*string, bool) {
@@ -422,39 +314,23 @@ func (o *BackupCredentialsListDto) GetCreatedByOk() (*string, bool) {
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
 
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy sets field value
 func (o *BackupCredentialsListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *BackupCredentialsListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
-}
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *BackupCredentialsListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *BackupCredentialsListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || o.LastModified.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModified.Get()
 }
 
-// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
+// GetLastModifiedOk returns a tuple with the LastModified field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupCredentialsListDto) GetLastModifiedOk() (*string, bool) {
@@ -464,39 +340,23 @@ func (o *BackupCredentialsListDto) GetLastModifiedOk() (*string, bool) {
 	return o.LastModified.Get(), o.LastModified.IsSet()
 }
 
-// HasLastModified returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified sets field value
 func (o *BackupCredentialsListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *BackupCredentialsListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
-}
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *BackupCredentialsListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *BackupCredentialsListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || o.LastModifiedBy.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModifiedBy.Get()
 }
 
-// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
@@ -506,39 +366,23 @@ func (o *BackupCredentialsListDto) GetLastModifiedByOk() (*string, bool) {
 	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
 }
 
-// HasLastModifiedBy returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy sets field value
 func (o *BackupCredentialsListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *BackupCredentialsListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
 
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *BackupCredentialsListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *BackupCredentialsListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || o.CreatedAt.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CreatedAt.Get()
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BackupCredentialsListDto) GetCreatedAtOk() (*string, bool) {
@@ -548,91 +392,57 @@ func (o *BackupCredentialsListDto) GetCreatedAtOk() (*string, bool) {
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *BackupCredentialsListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *BackupCredentialsListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *BackupCredentialsListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+// GetIsDefault returns the IsDefault field value
 func (o *BackupCredentialsListDto) GetIsDefault() bool {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDefault
+
+	return o.IsDefault
 }
 
-// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// GetIsDefaultOk returns a tuple with the IsDefault field value
 // and a boolean to check if the value has been set.
 func (o *BackupCredentialsListDto) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDefault, true
+	return &o.IsDefault, true
 }
 
-// HasIsDefault returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasIsDefault() bool {
-	if o != nil && !IsNil(o.IsDefault) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+// SetIsDefault sets field value
 func (o *BackupCredentialsListDto) SetIsDefault(v bool) {
-	o.IsDefault = &v
+	o.IsDefault = v
 }
 
-// GetIsInfra returns the IsInfra field value if set, zero value otherwise.
+// GetIsInfra returns the IsInfra field value
 func (o *BackupCredentialsListDto) GetIsInfra() bool {
-	if o == nil || IsNil(o.IsInfra) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsInfra
+
+	return o.IsInfra
 }
 
-// GetIsInfraOk returns a tuple with the IsInfra field value if set, nil otherwise
+// GetIsInfraOk returns a tuple with the IsInfra field value
 // and a boolean to check if the value has been set.
 func (o *BackupCredentialsListDto) GetIsInfraOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsInfra) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsInfra, true
+	return &o.IsInfra, true
 }
 
-// HasIsInfra returns a boolean if a field has been set.
-func (o *BackupCredentialsListDto) HasIsInfra() bool {
-	if o != nil && !IsNil(o.IsInfra) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsInfra gets a reference to the given bool and assigns it to the IsInfra field.
+// SetIsInfra sets field value
 func (o *BackupCredentialsListDto) SetIsInfra(v bool) {
-	o.IsInfra = &v
+	o.IsInfra = v
 }
 
 func (o BackupCredentialsListDto) MarshalJSON() ([]byte, error) {
@@ -645,52 +455,73 @@ func (o BackupCredentialsListDto) MarshalJSON() ([]byte, error) {
 
 func (o BackupCredentialsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.S3Name.IsSet() {
-		toSerialize["s3Name"] = o.S3Name.Get()
-	}
-	if o.S3AccessKeyId.IsSet() {
-		toSerialize["s3AccessKeyId"] = o.S3AccessKeyId.Get()
-	}
-	if o.S3Endpoint.IsSet() {
-		toSerialize["s3Endpoint"] = o.S3Endpoint.Get()
-	}
-	if o.S3Region.IsSet() {
-		toSerialize["s3Region"] = o.S3Region.Get()
-	}
-	if o.OrganizationId.IsSet() {
-		toSerialize["organizationId"] = o.OrganizationId.Get()
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
-	if o.Projects != nil {
-		toSerialize["projects"] = o.Projects
-	}
-	if !IsNil(o.IsLocked) {
-		toSerialize["isLocked"] = o.IsLocked
-	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
-	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
-	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if !IsNil(o.IsDefault) {
-		toSerialize["isDefault"] = o.IsDefault
-	}
-	if !IsNil(o.IsInfra) {
-		toSerialize["isInfra"] = o.IsInfra
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["s3Name"] = o.S3Name
+	toSerialize["s3AccessKeyId"] = o.S3AccessKeyId
+	toSerialize["s3Endpoint"] = o.S3Endpoint
+	toSerialize["s3Region"] = o.S3Region
+	toSerialize["organizationId"] = o.OrganizationId.Get()
+	toSerialize["organizationName"] = o.OrganizationName.Get()
+	toSerialize["projects"] = o.Projects
+	toSerialize["isLocked"] = o.IsLocked
+	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["lastModified"] = o.LastModified.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["createdAt"] = o.CreatedAt.Get()
+	toSerialize["isDefault"] = o.IsDefault
+	toSerialize["isInfra"] = o.IsInfra
 	return toSerialize, nil
+}
+
+func (o *BackupCredentialsListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"s3Name",
+		"s3AccessKeyId",
+		"s3Endpoint",
+		"s3Region",
+		"organizationId",
+		"organizationName",
+		"projects",
+		"isLocked",
+		"createdBy",
+		"lastModified",
+		"lastModifiedBy",
+		"createdAt",
+		"isDefault",
+		"isInfra",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varBackupCredentialsListDto := _BackupCredentialsListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varBackupCredentialsListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BackupCredentialsListDto(varBackupCredentialsListDto)
+
+	return err
 }
 
 type NullableBackupCredentialsListDto struct {

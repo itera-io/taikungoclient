@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the FlavorsListDto type satisfies the MappedNullable interface at compile time
@@ -20,19 +22,26 @@ var _ MappedNullable = &FlavorsListDto{}
 
 // FlavorsListDto struct for FlavorsListDto
 type FlavorsListDto struct {
-	Ram *float64 `json:"ram,omitempty"`
-	Cpu *int32 `json:"cpu,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Description interface{} `json:"description,omitempty"`
-	MaxDataDiskCount NullableFloat64 `json:"maxDataDiskCount,omitempty"`
+	Ram float64 `json:"ram"`
+	Cpu int32 `json:"cpu"`
+	Name string `json:"name"`
+	Description interface{} `json:"description"`
+	MaxDataDiskCount NullableFloat64 `json:"maxDataDiskCount"`
 }
+
+type _FlavorsListDto FlavorsListDto
 
 // NewFlavorsListDto instantiates a new FlavorsListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFlavorsListDto() *FlavorsListDto {
+func NewFlavorsListDto(ram float64, cpu int32, name string, description interface{}, maxDataDiskCount NullableFloat64) *FlavorsListDto {
 	this := FlavorsListDto{}
+	this.Ram = ram
+	this.Cpu = cpu
+	this.Name = name
+	this.Description = description
+	this.MaxDataDiskCount = maxDataDiskCount
 	return &this
 }
 
@@ -44,122 +53,90 @@ func NewFlavorsListDtoWithDefaults() *FlavorsListDto {
 	return &this
 }
 
-// GetRam returns the Ram field value if set, zero value otherwise.
+// GetRam returns the Ram field value
 func (o *FlavorsListDto) GetRam() float64 {
-	if o == nil || IsNil(o.Ram) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.Ram
+
+	return o.Ram
 }
 
-// GetRamOk returns a tuple with the Ram field value if set, nil otherwise
+// GetRamOk returns a tuple with the Ram field value
 // and a boolean to check if the value has been set.
 func (o *FlavorsListDto) GetRamOk() (*float64, bool) {
-	if o == nil || IsNil(o.Ram) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Ram, true
+	return &o.Ram, true
 }
 
-// HasRam returns a boolean if a field has been set.
-func (o *FlavorsListDto) HasRam() bool {
-	if o != nil && !IsNil(o.Ram) {
-		return true
-	}
-
-	return false
-}
-
-// SetRam gets a reference to the given float64 and assigns it to the Ram field.
+// SetRam sets field value
 func (o *FlavorsListDto) SetRam(v float64) {
-	o.Ram = &v
+	o.Ram = v
 }
 
-// GetCpu returns the Cpu field value if set, zero value otherwise.
+// GetCpu returns the Cpu field value
 func (o *FlavorsListDto) GetCpu() int32 {
-	if o == nil || IsNil(o.Cpu) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Cpu
+
+	return o.Cpu
 }
 
-// GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
+// GetCpuOk returns a tuple with the Cpu field value
 // and a boolean to check if the value has been set.
 func (o *FlavorsListDto) GetCpuOk() (*int32, bool) {
-	if o == nil || IsNil(o.Cpu) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Cpu, true
+	return &o.Cpu, true
 }
 
-// HasCpu returns a boolean if a field has been set.
-func (o *FlavorsListDto) HasCpu() bool {
-	if o != nil && !IsNil(o.Cpu) {
-		return true
-	}
-
-	return false
-}
-
-// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
+// SetCpu sets field value
 func (o *FlavorsListDto) SetCpu(v int32) {
-	o.Cpu = &v
+	o.Cpu = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *FlavorsListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FlavorsListDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *FlavorsListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *FlavorsListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *FlavorsListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *FlavorsListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *FlavorsListDto) GetDescription() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
+
 	return o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FlavorsListDto) GetDescriptionOk() (*interface{}, bool) {
@@ -169,30 +146,23 @@ func (o *FlavorsListDto) GetDescriptionOk() (*interface{}, bool) {
 	return &o.Description, true
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *FlavorsListDto) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given interface{} and assigns it to the Description field.
+// SetDescription sets field value
 func (o *FlavorsListDto) SetDescription(v interface{}) {
 	o.Description = v
 }
 
-// GetMaxDataDiskCount returns the MaxDataDiskCount field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMaxDataDiskCount returns the MaxDataDiskCount field value
+// If the value is explicit nil, the zero value for float64 will be returned
 func (o *FlavorsListDto) GetMaxDataDiskCount() float64 {
-	if o == nil || IsNil(o.MaxDataDiskCount.Get()) {
+	if o == nil || o.MaxDataDiskCount.Get() == nil {
 		var ret float64
 		return ret
 	}
+
 	return *o.MaxDataDiskCount.Get()
 }
 
-// GetMaxDataDiskCountOk returns a tuple with the MaxDataDiskCount field value if set, nil otherwise
+// GetMaxDataDiskCountOk returns a tuple with the MaxDataDiskCount field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *FlavorsListDto) GetMaxDataDiskCountOk() (*float64, bool) {
@@ -202,27 +172,9 @@ func (o *FlavorsListDto) GetMaxDataDiskCountOk() (*float64, bool) {
 	return o.MaxDataDiskCount.Get(), o.MaxDataDiskCount.IsSet()
 }
 
-// HasMaxDataDiskCount returns a boolean if a field has been set.
-func (o *FlavorsListDto) HasMaxDataDiskCount() bool {
-	if o != nil && o.MaxDataDiskCount.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxDataDiskCount gets a reference to the given NullableFloat64 and assigns it to the MaxDataDiskCount field.
+// SetMaxDataDiskCount sets field value
 func (o *FlavorsListDto) SetMaxDataDiskCount(v float64) {
 	o.MaxDataDiskCount.Set(&v)
-}
-// SetMaxDataDiskCountNil sets the value for MaxDataDiskCount to be an explicit nil
-func (o *FlavorsListDto) SetMaxDataDiskCountNil() {
-	o.MaxDataDiskCount.Set(nil)
-}
-
-// UnsetMaxDataDiskCount ensures that no value is present for MaxDataDiskCount, not even an explicit nil
-func (o *FlavorsListDto) UnsetMaxDataDiskCount() {
-	o.MaxDataDiskCount.Unset()
 }
 
 func (o FlavorsListDto) MarshalJSON() ([]byte, error) {
@@ -235,22 +187,55 @@ func (o FlavorsListDto) MarshalJSON() ([]byte, error) {
 
 func (o FlavorsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Ram) {
-		toSerialize["ram"] = o.Ram
-	}
-	if !IsNil(o.Cpu) {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
+	toSerialize["ram"] = o.Ram
+	toSerialize["cpu"] = o.Cpu
+	toSerialize["name"] = o.Name
 	if o.Description != nil {
 		toSerialize["description"] = o.Description
 	}
-	if o.MaxDataDiskCount.IsSet() {
-		toSerialize["maxDataDiskCount"] = o.MaxDataDiskCount.Get()
-	}
+	toSerialize["maxDataDiskCount"] = o.MaxDataDiskCount.Get()
 	return toSerialize, nil
+}
+
+func (o *FlavorsListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"ram",
+		"cpu",
+		"name",
+		"description",
+		"maxDataDiskCount",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varFlavorsListDto := _FlavorsListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varFlavorsListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = FlavorsListDto(varFlavorsListDto)
+
+	return err
 }
 
 type NullableFlavorsListDto struct {

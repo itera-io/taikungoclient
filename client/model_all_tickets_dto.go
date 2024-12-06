@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AllTicketsDto type satisfies the MappedNullable interface at compile time
@@ -20,28 +22,44 @@ var _ MappedNullable = &AllTicketsDto{}
 
 // AllTicketsDto struct for AllTicketsDto
 type AllTicketsDto struct {
-	Id NullableString `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Status NullableString `json:"status,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	CurrentStatusDate NullableString `json:"currentStatusDate,omitempty"`
-	LastModifier NullableString `json:"lastModifier,omitempty"`
-	Number *int32 `json:"number,omitempty"`
-	PartnerLogo NullableString `json:"partnerLogo,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	PartnerName NullableString `json:"partnerName,omitempty"`
-	UserId NullableString `json:"userId,omitempty"`
+	Id string `json:"id"`
+	Name string `json:"name"`
+	Status string `json:"status"`
+	CreatedAt string `json:"createdAt"`
+	OrganizationId int32 `json:"organizationId"`
+	OrganizationName string `json:"organizationName"`
+	CreatedBy string `json:"createdBy"`
+	CurrentStatusDate NullableString `json:"currentStatusDate"`
+	LastModifier NullableString `json:"lastModifier"`
+	Number int32 `json:"number"`
+	PartnerLogo NullableString `json:"partnerLogo"`
+	Description string `json:"description"`
+	PartnerName NullableString `json:"partnerName"`
+	UserId string `json:"userId"`
 }
+
+type _AllTicketsDto AllTicketsDto
 
 // NewAllTicketsDto instantiates a new AllTicketsDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAllTicketsDto() *AllTicketsDto {
+func NewAllTicketsDto(id string, name string, status string, createdAt string, organizationId int32, organizationName string, createdBy string, currentStatusDate NullableString, lastModifier NullableString, number int32, partnerLogo NullableString, description string, partnerName NullableString, userId string) *AllTicketsDto {
 	this := AllTicketsDto{}
+	this.Id = id
+	this.Name = name
+	this.Status = status
+	this.CreatedAt = createdAt
+	this.OrganizationId = organizationId
+	this.OrganizationName = organizationName
+	this.CreatedBy = createdBy
+	this.CurrentStatusDate = currentStatusDate
+	this.LastModifier = lastModifier
+	this.Number = number
+	this.PartnerLogo = partnerLogo
+	this.Description = description
+	this.PartnerName = partnerName
+	this.UserId = userId
 	return &this
 }
 
@@ -53,300 +71,186 @@ func NewAllTicketsDtoWithDefaults() *AllTicketsDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetId returns the Id field value
 func (o *AllTicketsDto) GetId() string {
-	if o == nil || IsNil(o.Id.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id.Get()
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllTicketsDto) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Id.Get(), o.Id.IsSet()
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasId() bool {
-	if o != nil && o.Id.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given NullableString and assigns it to the Id field.
+// SetId sets field value
 func (o *AllTicketsDto) SetId(v string) {
-	o.Id.Set(&v)
-}
-// SetIdNil sets the value for Id to be an explicit nil
-func (o *AllTicketsDto) SetIdNil() {
-	o.Id.Set(nil)
+	o.Id = v
 }
 
-// UnsetId ensures that no value is present for Id, not even an explicit nil
-func (o *AllTicketsDto) UnsetId() {
-	o.Id.Unset()
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *AllTicketsDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllTicketsDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *AllTicketsDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *AllTicketsDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *AllTicketsDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStatus returns the Status field value
 func (o *AllTicketsDto) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Status.Get()
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllTicketsDto) GetStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Status.Get(), o.Status.IsSet()
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
+// SetStatus sets field value
 func (o *AllTicketsDto) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *AllTicketsDto) SetStatusNil() {
-	o.Status.Set(nil)
+	o.Status = v
 }
 
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *AllTicketsDto) UnsetStatus() {
-	o.Status.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
 func (o *AllTicketsDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllTicketsDto) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *AllTicketsDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *AllTicketsDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
+	o.CreatedAt = v
 }
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *AllTicketsDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
+// GetOrganizationId returns the OrganizationId field value
 func (o *AllTicketsDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationId
+
+	return o.OrganizationId
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 func (o *AllTicketsDto) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationId, true
+	return &o.OrganizationId, true
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasOrganizationId() bool {
-	if o != nil && !IsNil(o.OrganizationId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *AllTicketsDto) SetOrganizationId(v int32) {
-	o.OrganizationId = &v
+	o.OrganizationId = v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
 func (o *AllTicketsDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+
+	return o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllTicketsDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return &o.OrganizationName, true
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *AllTicketsDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *AllTicketsDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+	o.OrganizationName = v
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *AllTicketsDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value
 func (o *AllTicketsDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy.Get()
+
+	return o.CreatedBy
 }
 
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllTicketsDto) GetCreatedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy sets field value
 func (o *AllTicketsDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
-}
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *AllTicketsDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
+	o.CreatedBy = v
 }
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *AllTicketsDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetCurrentStatusDate returns the CurrentStatusDate field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCurrentStatusDate returns the CurrentStatusDate field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AllTicketsDto) GetCurrentStatusDate() string {
-	if o == nil || IsNil(o.CurrentStatusDate.Get()) {
+	if o == nil || o.CurrentStatusDate.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CurrentStatusDate.Get()
 }
 
-// GetCurrentStatusDateOk returns a tuple with the CurrentStatusDate field value if set, nil otherwise
+// GetCurrentStatusDateOk returns a tuple with the CurrentStatusDate field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllTicketsDto) GetCurrentStatusDateOk() (*string, bool) {
@@ -356,39 +260,23 @@ func (o *AllTicketsDto) GetCurrentStatusDateOk() (*string, bool) {
 	return o.CurrentStatusDate.Get(), o.CurrentStatusDate.IsSet()
 }
 
-// HasCurrentStatusDate returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasCurrentStatusDate() bool {
-	if o != nil && o.CurrentStatusDate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCurrentStatusDate gets a reference to the given NullableString and assigns it to the CurrentStatusDate field.
+// SetCurrentStatusDate sets field value
 func (o *AllTicketsDto) SetCurrentStatusDate(v string) {
 	o.CurrentStatusDate.Set(&v)
 }
-// SetCurrentStatusDateNil sets the value for CurrentStatusDate to be an explicit nil
-func (o *AllTicketsDto) SetCurrentStatusDateNil() {
-	o.CurrentStatusDate.Set(nil)
-}
 
-// UnsetCurrentStatusDate ensures that no value is present for CurrentStatusDate, not even an explicit nil
-func (o *AllTicketsDto) UnsetCurrentStatusDate() {
-	o.CurrentStatusDate.Unset()
-}
-
-// GetLastModifier returns the LastModifier field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifier returns the LastModifier field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AllTicketsDto) GetLastModifier() string {
-	if o == nil || IsNil(o.LastModifier.Get()) {
+	if o == nil || o.LastModifier.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModifier.Get()
 }
 
-// GetLastModifierOk returns a tuple with the LastModifier field value if set, nil otherwise
+// GetLastModifierOk returns a tuple with the LastModifier field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllTicketsDto) GetLastModifierOk() (*string, bool) {
@@ -398,71 +286,47 @@ func (o *AllTicketsDto) GetLastModifierOk() (*string, bool) {
 	return o.LastModifier.Get(), o.LastModifier.IsSet()
 }
 
-// HasLastModifier returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasLastModifier() bool {
-	if o != nil && o.LastModifier.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifier gets a reference to the given NullableString and assigns it to the LastModifier field.
+// SetLastModifier sets field value
 func (o *AllTicketsDto) SetLastModifier(v string) {
 	o.LastModifier.Set(&v)
 }
-// SetLastModifierNil sets the value for LastModifier to be an explicit nil
-func (o *AllTicketsDto) SetLastModifierNil() {
-	o.LastModifier.Set(nil)
-}
 
-// UnsetLastModifier ensures that no value is present for LastModifier, not even an explicit nil
-func (o *AllTicketsDto) UnsetLastModifier() {
-	o.LastModifier.Unset()
-}
-
-// GetNumber returns the Number field value if set, zero value otherwise.
+// GetNumber returns the Number field value
 func (o *AllTicketsDto) GetNumber() int32 {
-	if o == nil || IsNil(o.Number) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Number
+
+	return o.Number
 }
 
-// GetNumberOk returns a tuple with the Number field value if set, nil otherwise
+// GetNumberOk returns a tuple with the Number field value
 // and a boolean to check if the value has been set.
 func (o *AllTicketsDto) GetNumberOk() (*int32, bool) {
-	if o == nil || IsNil(o.Number) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Number, true
+	return &o.Number, true
 }
 
-// HasNumber returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasNumber() bool {
-	if o != nil && !IsNil(o.Number) {
-		return true
-	}
-
-	return false
-}
-
-// SetNumber gets a reference to the given int32 and assigns it to the Number field.
+// SetNumber sets field value
 func (o *AllTicketsDto) SetNumber(v int32) {
-	o.Number = &v
+	o.Number = v
 }
 
-// GetPartnerLogo returns the PartnerLogo field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPartnerLogo returns the PartnerLogo field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AllTicketsDto) GetPartnerLogo() string {
-	if o == nil || IsNil(o.PartnerLogo.Get()) {
+	if o == nil || o.PartnerLogo.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.PartnerLogo.Get()
 }
 
-// GetPartnerLogoOk returns a tuple with the PartnerLogo field value if set, nil otherwise
+// GetPartnerLogoOk returns a tuple with the PartnerLogo field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllTicketsDto) GetPartnerLogoOk() (*string, bool) {
@@ -472,81 +336,47 @@ func (o *AllTicketsDto) GetPartnerLogoOk() (*string, bool) {
 	return o.PartnerLogo.Get(), o.PartnerLogo.IsSet()
 }
 
-// HasPartnerLogo returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasPartnerLogo() bool {
-	if o != nil && o.PartnerLogo.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerLogo gets a reference to the given NullableString and assigns it to the PartnerLogo field.
+// SetPartnerLogo sets field value
 func (o *AllTicketsDto) SetPartnerLogo(v string) {
 	o.PartnerLogo.Set(&v)
 }
-// SetPartnerLogoNil sets the value for PartnerLogo to be an explicit nil
-func (o *AllTicketsDto) SetPartnerLogoNil() {
-	o.PartnerLogo.Set(nil)
-}
 
-// UnsetPartnerLogo ensures that no value is present for PartnerLogo, not even an explicit nil
-func (o *AllTicketsDto) UnsetPartnerLogo() {
-	o.PartnerLogo.Unset()
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value
 func (o *AllTicketsDto) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+
+	return o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllTicketsDto) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return &o.Description, true
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription sets field value
 func (o *AllTicketsDto) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *AllTicketsDto) SetDescriptionNil() {
-	o.Description.Set(nil)
+	o.Description = v
 }
 
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *AllTicketsDto) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetPartnerName returns the PartnerName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPartnerName returns the PartnerName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AllTicketsDto) GetPartnerName() string {
-	if o == nil || IsNil(o.PartnerName.Get()) {
+	if o == nil || o.PartnerName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.PartnerName.Get()
 }
 
-// GetPartnerNameOk returns a tuple with the PartnerName field value if set, nil otherwise
+// GetPartnerNameOk returns a tuple with the PartnerName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllTicketsDto) GetPartnerNameOk() (*string, bool) {
@@ -556,69 +386,33 @@ func (o *AllTicketsDto) GetPartnerNameOk() (*string, bool) {
 	return o.PartnerName.Get(), o.PartnerName.IsSet()
 }
 
-// HasPartnerName returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasPartnerName() bool {
-	if o != nil && o.PartnerName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerName gets a reference to the given NullableString and assigns it to the PartnerName field.
+// SetPartnerName sets field value
 func (o *AllTicketsDto) SetPartnerName(v string) {
 	o.PartnerName.Set(&v)
 }
-// SetPartnerNameNil sets the value for PartnerName to be an explicit nil
-func (o *AllTicketsDto) SetPartnerNameNil() {
-	o.PartnerName.Set(nil)
-}
 
-// UnsetPartnerName ensures that no value is present for PartnerName, not even an explicit nil
-func (o *AllTicketsDto) UnsetPartnerName() {
-	o.PartnerName.Unset()
-}
-
-// GetUserId returns the UserId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserId returns the UserId field value
 func (o *AllTicketsDto) GetUserId() string {
-	if o == nil || IsNil(o.UserId.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.UserId.Get()
+
+	return o.UserId
 }
 
-// GetUserIdOk returns a tuple with the UserId field value if set, nil otherwise
+// GetUserIdOk returns a tuple with the UserId field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AllTicketsDto) GetUserIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.UserId.Get(), o.UserId.IsSet()
+	return &o.UserId, true
 }
 
-// HasUserId returns a boolean if a field has been set.
-func (o *AllTicketsDto) HasUserId() bool {
-	if o != nil && o.UserId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUserId gets a reference to the given NullableString and assigns it to the UserId field.
+// SetUserId sets field value
 func (o *AllTicketsDto) SetUserId(v string) {
-	o.UserId.Set(&v)
-}
-// SetUserIdNil sets the value for UserId to be an explicit nil
-func (o *AllTicketsDto) SetUserIdNil() {
-	o.UserId.Set(nil)
-}
-
-// UnsetUserId ensures that no value is present for UserId, not even an explicit nil
-func (o *AllTicketsDto) UnsetUserId() {
-	o.UserId.Unset()
+	o.UserId = v
 }
 
 func (o AllTicketsDto) MarshalJSON() ([]byte, error) {
@@ -631,49 +425,71 @@ func (o AllTicketsDto) MarshalJSON() ([]byte, error) {
 
 func (o AllTicketsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id.IsSet() {
-		toSerialize["id"] = o.Id.Get()
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if !IsNil(o.OrganizationId) {
-		toSerialize["organizationId"] = o.OrganizationId
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
-	}
-	if o.CurrentStatusDate.IsSet() {
-		toSerialize["currentStatusDate"] = o.CurrentStatusDate.Get()
-	}
-	if o.LastModifier.IsSet() {
-		toSerialize["lastModifier"] = o.LastModifier.Get()
-	}
-	if !IsNil(o.Number) {
-		toSerialize["number"] = o.Number
-	}
-	if o.PartnerLogo.IsSet() {
-		toSerialize["partnerLogo"] = o.PartnerLogo.Get()
-	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
-	if o.PartnerName.IsSet() {
-		toSerialize["partnerName"] = o.PartnerName.Get()
-	}
-	if o.UserId.IsSet() {
-		toSerialize["userId"] = o.UserId.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["status"] = o.Status
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["organizationId"] = o.OrganizationId
+	toSerialize["organizationName"] = o.OrganizationName
+	toSerialize["createdBy"] = o.CreatedBy
+	toSerialize["currentStatusDate"] = o.CurrentStatusDate.Get()
+	toSerialize["lastModifier"] = o.LastModifier.Get()
+	toSerialize["number"] = o.Number
+	toSerialize["partnerLogo"] = o.PartnerLogo.Get()
+	toSerialize["description"] = o.Description
+	toSerialize["partnerName"] = o.PartnerName.Get()
+	toSerialize["userId"] = o.UserId
 	return toSerialize, nil
+}
+
+func (o *AllTicketsDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"status",
+		"createdAt",
+		"organizationId",
+		"organizationName",
+		"createdBy",
+		"currentStatusDate",
+		"lastModifier",
+		"number",
+		"partnerLogo",
+		"description",
+		"partnerName",
+		"userId",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAllTicketsDto := _AllTicketsDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAllTicketsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AllTicketsDto(varAllTicketsDto)
+
+	return err
 }
 
 type NullableAllTicketsDto struct {

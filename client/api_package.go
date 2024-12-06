@@ -29,6 +29,12 @@ type ApiPackageDetailsRequest struct {
 	ApiService *PackageAPIService
 	repoName string
 	packageName string
+	organizationId *int32
+}
+
+func (r ApiPackageDetailsRequest) OrganizationId(organizationId int32) ApiPackageDetailsRequest {
+	r.organizationId = &organizationId
+	return r
 }
 
 func (r ApiPackageDetailsRequest) Execute() (*AvailablePackageDetailsDto, *http.Response, error) {
@@ -75,6 +81,9 @@ func (a *PackageAPIService) PackageDetailsExecute(r ApiPackageDetailsRequest) (*
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -209,6 +218,7 @@ type ApiPackageListRequest struct {
 	catalogId *int32
 	isPrivate *bool
 	filterBy *string
+	organizationId *int32
 }
 
 func (r ApiPackageListRequest) Offset(offset int32) ApiPackageListRequest {
@@ -253,6 +263,11 @@ func (r ApiPackageListRequest) IsPrivate(isPrivate bool) ApiPackageListRequest {
 
 func (r ApiPackageListRequest) FilterBy(filterBy string) ApiPackageListRequest {
 	r.filterBy = &filterBy
+	return r
+}
+
+func (r ApiPackageListRequest) OrganizationId(organizationId int32) ApiPackageListRequest {
+	r.organizationId = &organizationId
 	return r
 }
 
@@ -320,6 +335,9 @@ func (a *PackageAPIService) PackageListExecute(r ApiPackageListRequest) (*Availa
 	}
 	if r.filterBy != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "FilterBy", r.filterBy, "form", "")
+	}
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

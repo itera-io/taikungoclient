@@ -30,6 +30,7 @@ type CredentialChartDto struct {
 	Vsphere *int32 `json:"vsphere,omitempty"`
 	Zadara *int32 `json:"zadara,omitempty"`
 	Zededa *int32 `json:"zededa,omitempty"`
+	GenericK8S *int32 `json:"genericK8S,omitempty"`
 	TotalCount *int32 `json:"totalCount,omitempty"`
 }
 
@@ -370,6 +371,38 @@ func (o *CredentialChartDto) SetZededa(v int32) {
 	o.Zededa = &v
 }
 
+// GetGenericK8S returns the GenericK8S field value if set, zero value otherwise.
+func (o *CredentialChartDto) GetGenericK8S() int32 {
+	if o == nil || IsNil(o.GenericK8S) {
+		var ret int32
+		return ret
+	}
+	return *o.GenericK8S
+}
+
+// GetGenericK8SOk returns a tuple with the GenericK8S field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CredentialChartDto) GetGenericK8SOk() (*int32, bool) {
+	if o == nil || IsNil(o.GenericK8S) {
+		return nil, false
+	}
+	return o.GenericK8S, true
+}
+
+// HasGenericK8S returns a boolean if a field has been set.
+func (o *CredentialChartDto) HasGenericK8S() bool {
+	if o != nil && !IsNil(o.GenericK8S) {
+		return true
+	}
+
+	return false
+}
+
+// SetGenericK8S gets a reference to the given int32 and assigns it to the GenericK8S field.
+func (o *CredentialChartDto) SetGenericK8S(v int32) {
+	o.GenericK8S = &v
+}
+
 // GetTotalCount returns the TotalCount field value if set, zero value otherwise.
 func (o *CredentialChartDto) GetTotalCount() int32 {
 	if o == nil || IsNil(o.TotalCount) {
@@ -441,6 +474,9 @@ func (o CredentialChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Zededa) {
 		toSerialize["zededa"] = o.Zededa
+	}
+	if !IsNil(o.GenericK8S) {
+		toSerialize["genericK8S"] = o.GenericK8S
 	}
 	if !IsNil(o.TotalCount) {
 		toSerialize["totalCount"] = o.TotalCount

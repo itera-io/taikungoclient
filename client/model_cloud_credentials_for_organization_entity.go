@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CloudCredentialsForOrganizationEntity type satisfies the MappedNullable interface at compile time
@@ -20,19 +22,26 @@ var _ MappedNullable = &CloudCredentialsForOrganizationEntity{}
 
 // CloudCredentialsForOrganizationEntity struct for CloudCredentialsForOrganizationEntity
 type CloudCredentialsForOrganizationEntity struct {
-	Id *int32 `json:"id,omitempty"`
-	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	FullName NullableString `json:"fullName,omitempty"`
-	CloudType *CloudType `json:"cloudType,omitempty"`
-	IsDefault *bool `json:"isDefault,omitempty"`
+	Id int32 `json:"id"`
+	Projects []CommonDropdownDto `json:"projects"`
+	FullName NullableString `json:"fullName"`
+	CloudType CloudType `json:"cloudType"`
+	IsDefault bool `json:"isDefault"`
 }
+
+type _CloudCredentialsForOrganizationEntity CloudCredentialsForOrganizationEntity
 
 // NewCloudCredentialsForOrganizationEntity instantiates a new CloudCredentialsForOrganizationEntity object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCloudCredentialsForOrganizationEntity() *CloudCredentialsForOrganizationEntity {
+func NewCloudCredentialsForOrganizationEntity(id int32, projects []CommonDropdownDto, fullName NullableString, cloudType CloudType, isDefault bool) *CloudCredentialsForOrganizationEntity {
 	this := CloudCredentialsForOrganizationEntity{}
+	this.Id = id
+	this.Projects = projects
+	this.FullName = fullName
+	this.CloudType = cloudType
+	this.IsDefault = isDefault
 	return &this
 }
 
@@ -44,48 +53,42 @@ func NewCloudCredentialsForOrganizationEntityWithDefaults() *CloudCredentialsFor
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *CloudCredentialsForOrganizationEntity) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *CloudCredentialsForOrganizationEntity) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *CloudCredentialsForOrganizationEntity) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *CloudCredentialsForOrganizationEntity) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value
+// If the value is explicit nil, the zero value for []CommonDropdownDto will be returned
 func (o *CloudCredentialsForOrganizationEntity) GetProjects() []CommonDropdownDto {
 	if o == nil {
 		var ret []CommonDropdownDto
 		return ret
 	}
+
 	return o.Projects
 }
 
-// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
+// GetProjectsOk returns a tuple with the Projects field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CloudCredentialsForOrganizationEntity) GetProjectsOk() ([]CommonDropdownDto, bool) {
@@ -95,30 +98,23 @@ func (o *CloudCredentialsForOrganizationEntity) GetProjectsOk() ([]CommonDropdow
 	return o.Projects, true
 }
 
-// HasProjects returns a boolean if a field has been set.
-func (o *CloudCredentialsForOrganizationEntity) HasProjects() bool {
-	if o != nil && !IsNil(o.Projects) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjects gets a reference to the given []CommonDropdownDto and assigns it to the Projects field.
+// SetProjects sets field value
 func (o *CloudCredentialsForOrganizationEntity) SetProjects(v []CommonDropdownDto) {
 	o.Projects = v
 }
 
-// GetFullName returns the FullName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFullName returns the FullName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CloudCredentialsForOrganizationEntity) GetFullName() string {
-	if o == nil || IsNil(o.FullName.Get()) {
+	if o == nil || o.FullName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.FullName.Get()
 }
 
-// GetFullNameOk returns a tuple with the FullName field value if set, nil otherwise
+// GetFullNameOk returns a tuple with the FullName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CloudCredentialsForOrganizationEntity) GetFullNameOk() (*string, bool) {
@@ -128,91 +124,57 @@ func (o *CloudCredentialsForOrganizationEntity) GetFullNameOk() (*string, bool) 
 	return o.FullName.Get(), o.FullName.IsSet()
 }
 
-// HasFullName returns a boolean if a field has been set.
-func (o *CloudCredentialsForOrganizationEntity) HasFullName() bool {
-	if o != nil && o.FullName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetFullName gets a reference to the given NullableString and assigns it to the FullName field.
+// SetFullName sets field value
 func (o *CloudCredentialsForOrganizationEntity) SetFullName(v string) {
 	o.FullName.Set(&v)
 }
-// SetFullNameNil sets the value for FullName to be an explicit nil
-func (o *CloudCredentialsForOrganizationEntity) SetFullNameNil() {
-	o.FullName.Set(nil)
-}
 
-// UnsetFullName ensures that no value is present for FullName, not even an explicit nil
-func (o *CloudCredentialsForOrganizationEntity) UnsetFullName() {
-	o.FullName.Unset()
-}
-
-// GetCloudType returns the CloudType field value if set, zero value otherwise.
+// GetCloudType returns the CloudType field value
 func (o *CloudCredentialsForOrganizationEntity) GetCloudType() CloudType {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		var ret CloudType
 		return ret
 	}
-	return *o.CloudType
+
+	return o.CloudType
 }
 
-// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
+// GetCloudTypeOk returns a tuple with the CloudType field value
 // and a boolean to check if the value has been set.
 func (o *CloudCredentialsForOrganizationEntity) GetCloudTypeOk() (*CloudType, bool) {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CloudType, true
+	return &o.CloudType, true
 }
 
-// HasCloudType returns a boolean if a field has been set.
-func (o *CloudCredentialsForOrganizationEntity) HasCloudType() bool {
-	if o != nil && !IsNil(o.CloudType) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
+// SetCloudType sets field value
 func (o *CloudCredentialsForOrganizationEntity) SetCloudType(v CloudType) {
-	o.CloudType = &v
+	o.CloudType = v
 }
 
-// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+// GetIsDefault returns the IsDefault field value
 func (o *CloudCredentialsForOrganizationEntity) GetIsDefault() bool {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDefault
+
+	return o.IsDefault
 }
 
-// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// GetIsDefaultOk returns a tuple with the IsDefault field value
 // and a boolean to check if the value has been set.
 func (o *CloudCredentialsForOrganizationEntity) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDefault, true
+	return &o.IsDefault, true
 }
 
-// HasIsDefault returns a boolean if a field has been set.
-func (o *CloudCredentialsForOrganizationEntity) HasIsDefault() bool {
-	if o != nil && !IsNil(o.IsDefault) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+// SetIsDefault sets field value
 func (o *CloudCredentialsForOrganizationEntity) SetIsDefault(v bool) {
-	o.IsDefault = &v
+	o.IsDefault = v
 }
 
 func (o CloudCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
@@ -225,22 +187,55 @@ func (o CloudCredentialsForOrganizationEntity) MarshalJSON() ([]byte, error) {
 
 func (o CloudCredentialsForOrganizationEntity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	toSerialize["id"] = o.Id
 	if o.Projects != nil {
 		toSerialize["projects"] = o.Projects
 	}
-	if o.FullName.IsSet() {
-		toSerialize["fullName"] = o.FullName.Get()
-	}
-	if !IsNil(o.CloudType) {
-		toSerialize["cloudType"] = o.CloudType
-	}
-	if !IsNil(o.IsDefault) {
-		toSerialize["isDefault"] = o.IsDefault
-	}
+	toSerialize["fullName"] = o.FullName.Get()
+	toSerialize["cloudType"] = o.CloudType
+	toSerialize["isDefault"] = o.IsDefault
 	return toSerialize, nil
+}
+
+func (o *CloudCredentialsForOrganizationEntity) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"projects",
+		"fullName",
+		"cloudType",
+		"isDefault",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCloudCredentialsForOrganizationEntity := _CloudCredentialsForOrganizationEntity{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCloudCredentialsForOrganizationEntity)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CloudCredentialsForOrganizationEntity(varCloudCredentialsForOrganizationEntity)
+
+	return err
 }
 
 type NullableCloudCredentialsForOrganizationEntity struct {

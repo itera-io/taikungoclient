@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the UserGroupEntityListDto type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &UserGroupEntityListDto{}
 
 // UserGroupEntityListDto struct for UserGroupEntityListDto
 type UserGroupEntityListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	Id int32 `json:"id"`
+	Name NullableString `json:"name"`
 }
+
+type _UserGroupEntityListDto UserGroupEntityListDto
 
 // NewUserGroupEntityListDto instantiates a new UserGroupEntityListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserGroupEntityListDto() *UserGroupEntityListDto {
+func NewUserGroupEntityListDto(id int32, name NullableString) *UserGroupEntityListDto {
 	this := UserGroupEntityListDto{}
+	this.Id = id
+	this.Name = name
 	return &this
 }
 
@@ -41,48 +47,42 @@ func NewUserGroupEntityListDtoWithDefaults() *UserGroupEntityListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *UserGroupEntityListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *UserGroupEntityListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *UserGroupEntityListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *UserGroupEntityListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *UserGroupEntityListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserGroupEntityListDto) GetNameOk() (*string, bool) {
@@ -92,27 +92,9 @@ func (o *UserGroupEntityListDto) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *UserGroupEntityListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *UserGroupEntityListDto) SetName(v string) {
 	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *UserGroupEntityListDto) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *UserGroupEntityListDto) UnsetName() {
-	o.Name.Unset()
 }
 
 func (o UserGroupEntityListDto) MarshalJSON() ([]byte, error) {
@@ -125,13 +107,47 @@ func (o UserGroupEntityListDto) MarshalJSON() ([]byte, error) {
 
 func (o UserGroupEntityListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name.Get()
 	return toSerialize, nil
+}
+
+func (o *UserGroupEntityListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUserGroupEntityListDto := _UserGroupEntityListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUserGroupEntityListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserGroupEntityListDto(varUserGroupEntityListDto)
+
+	return err
 }
 
 type NullableUserGroupEntityListDto struct {

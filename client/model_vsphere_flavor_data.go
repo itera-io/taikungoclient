@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the VsphereFlavorData type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,22 @@ var _ MappedNullable = &VsphereFlavorData{}
 
 // VsphereFlavorData struct for VsphereFlavorData
 type VsphereFlavorData struct {
-	Name NullableString `json:"name,omitempty"`
-	Cpu *int32 `json:"cpu,omitempty"`
-	Ram *float64 `json:"ram,omitempty"`
+	Name NullableString `json:"name"`
+	Cpu int32 `json:"cpu"`
+	Ram float64 `json:"ram"`
 }
+
+type _VsphereFlavorData VsphereFlavorData
 
 // NewVsphereFlavorData instantiates a new VsphereFlavorData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVsphereFlavorData() *VsphereFlavorData {
+func NewVsphereFlavorData(name NullableString, cpu int32, ram float64) *VsphereFlavorData {
 	this := VsphereFlavorData{}
+	this.Name = name
+	this.Cpu = cpu
+	this.Ram = ram
 	return &this
 }
 
@@ -42,16 +49,18 @@ func NewVsphereFlavorDataWithDefaults() *VsphereFlavorData {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *VsphereFlavorData) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereFlavorData) GetNameOk() (*string, bool) {
@@ -61,91 +70,57 @@ func (o *VsphereFlavorData) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *VsphereFlavorData) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *VsphereFlavorData) SetName(v string) {
 	o.Name.Set(&v)
 }
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *VsphereFlavorData) SetNameNil() {
-	o.Name.Set(nil)
-}
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *VsphereFlavorData) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetCpu returns the Cpu field value if set, zero value otherwise.
+// GetCpu returns the Cpu field value
 func (o *VsphereFlavorData) GetCpu() int32 {
-	if o == nil || IsNil(o.Cpu) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Cpu
+
+	return o.Cpu
 }
 
-// GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
+// GetCpuOk returns a tuple with the Cpu field value
 // and a boolean to check if the value has been set.
 func (o *VsphereFlavorData) GetCpuOk() (*int32, bool) {
-	if o == nil || IsNil(o.Cpu) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Cpu, true
+	return &o.Cpu, true
 }
 
-// HasCpu returns a boolean if a field has been set.
-func (o *VsphereFlavorData) HasCpu() bool {
-	if o != nil && !IsNil(o.Cpu) {
-		return true
-	}
-
-	return false
-}
-
-// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
+// SetCpu sets field value
 func (o *VsphereFlavorData) SetCpu(v int32) {
-	o.Cpu = &v
+	o.Cpu = v
 }
 
-// GetRam returns the Ram field value if set, zero value otherwise.
+// GetRam returns the Ram field value
 func (o *VsphereFlavorData) GetRam() float64 {
-	if o == nil || IsNil(o.Ram) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.Ram
+
+	return o.Ram
 }
 
-// GetRamOk returns a tuple with the Ram field value if set, nil otherwise
+// GetRamOk returns a tuple with the Ram field value
 // and a boolean to check if the value has been set.
 func (o *VsphereFlavorData) GetRamOk() (*float64, bool) {
-	if o == nil || IsNil(o.Ram) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Ram, true
+	return &o.Ram, true
 }
 
-// HasRam returns a boolean if a field has been set.
-func (o *VsphereFlavorData) HasRam() bool {
-	if o != nil && !IsNil(o.Ram) {
-		return true
-	}
-
-	return false
-}
-
-// SetRam gets a reference to the given float64 and assigns it to the Ram field.
+// SetRam sets field value
 func (o *VsphereFlavorData) SetRam(v float64) {
-	o.Ram = &v
+	o.Ram = v
 }
 
 func (o VsphereFlavorData) MarshalJSON() ([]byte, error) {
@@ -158,16 +133,49 @@ func (o VsphereFlavorData) MarshalJSON() ([]byte, error) {
 
 func (o VsphereFlavorData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if !IsNil(o.Cpu) {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if !IsNil(o.Ram) {
-		toSerialize["ram"] = o.Ram
-	}
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["cpu"] = o.Cpu
+	toSerialize["ram"] = o.Ram
 	return toSerialize, nil
+}
+
+func (o *VsphereFlavorData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"cpu",
+		"ram",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVsphereFlavorData := _VsphereFlavorData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVsphereFlavorData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VsphereFlavorData(varVsphereFlavorData)
+
+	return err
 }
 
 type NullableVsphereFlavorData struct {

@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PrometheusLabelListDto type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &PrometheusLabelListDto{}
 
 // PrometheusLabelListDto struct for PrometheusLabelListDto
 type PrometheusLabelListDto struct {
-	Label NullableString `json:"label,omitempty"`
-	Value NullableString `json:"value,omitempty"`
+	Label NullableString `json:"label"`
+	Value NullableString `json:"value"`
 }
+
+type _PrometheusLabelListDto PrometheusLabelListDto
 
 // NewPrometheusLabelListDto instantiates a new PrometheusLabelListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusLabelListDto() *PrometheusLabelListDto {
+func NewPrometheusLabelListDto(label NullableString, value NullableString) *PrometheusLabelListDto {
 	this := PrometheusLabelListDto{}
+	this.Label = label
+	this.Value = value
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewPrometheusLabelListDtoWithDefaults() *PrometheusLabelListDto {
 	return &this
 }
 
-// GetLabel returns the Label field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLabel returns the Label field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PrometheusLabelListDto) GetLabel() string {
-	if o == nil || IsNil(o.Label.Get()) {
+	if o == nil || o.Label.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Label.Get()
 }
 
-// GetLabelOk returns a tuple with the Label field value if set, nil otherwise
+// GetLabelOk returns a tuple with the Label field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusLabelListDto) GetLabelOk() (*string, bool) {
@@ -60,39 +68,23 @@ func (o *PrometheusLabelListDto) GetLabelOk() (*string, bool) {
 	return o.Label.Get(), o.Label.IsSet()
 }
 
-// HasLabel returns a boolean if a field has been set.
-func (o *PrometheusLabelListDto) HasLabel() bool {
-	if o != nil && o.Label.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLabel gets a reference to the given NullableString and assigns it to the Label field.
+// SetLabel sets field value
 func (o *PrometheusLabelListDto) SetLabel(v string) {
 	o.Label.Set(&v)
 }
-// SetLabelNil sets the value for Label to be an explicit nil
-func (o *PrometheusLabelListDto) SetLabelNil() {
-	o.Label.Set(nil)
-}
 
-// UnsetLabel ensures that no value is present for Label, not even an explicit nil
-func (o *PrometheusLabelListDto) UnsetLabel() {
-	o.Label.Unset()
-}
-
-// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetValue returns the Value field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PrometheusLabelListDto) GetValue() string {
-	if o == nil || IsNil(o.Value.Get()) {
+	if o == nil || o.Value.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Value.Get()
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusLabelListDto) GetValueOk() (*string, bool) {
@@ -102,27 +94,9 @@ func (o *PrometheusLabelListDto) GetValueOk() (*string, bool) {
 	return o.Value.Get(), o.Value.IsSet()
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *PrometheusLabelListDto) HasValue() bool {
-	if o != nil && o.Value.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given NullableString and assigns it to the Value field.
+// SetValue sets field value
 func (o *PrometheusLabelListDto) SetValue(v string) {
 	o.Value.Set(&v)
-}
-// SetValueNil sets the value for Value to be an explicit nil
-func (o *PrometheusLabelListDto) SetValueNil() {
-	o.Value.Set(nil)
-}
-
-// UnsetValue ensures that no value is present for Value, not even an explicit nil
-func (o *PrometheusLabelListDto) UnsetValue() {
-	o.Value.Unset()
 }
 
 func (o PrometheusLabelListDto) MarshalJSON() ([]byte, error) {
@@ -135,13 +109,47 @@ func (o PrometheusLabelListDto) MarshalJSON() ([]byte, error) {
 
 func (o PrometheusLabelListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Label.IsSet() {
-		toSerialize["label"] = o.Label.Get()
-	}
-	if o.Value.IsSet() {
-		toSerialize["value"] = o.Value.Get()
-	}
+	toSerialize["label"] = o.Label.Get()
+	toSerialize["value"] = o.Value.Get()
 	return toSerialize, nil
+}
+
+func (o *PrometheusLabelListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"label",
+		"value",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPrometheusLabelListDto := _PrometheusLabelListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrometheusLabelListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusLabelListDto(varPrometheusLabelListDto)
+
+	return err
 }
 
 type NullablePrometheusLabelListDto struct {
