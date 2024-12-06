@@ -20,7 +20,7 @@ var _ MappedNullable = &DeleteRepositoryCommand{}
 
 // DeleteRepositoryCommand struct for DeleteRepositoryCommand
 type DeleteRepositoryCommand struct {
-	RepoName NullableString `json:"repoName,omitempty"`
+	AppRepoId *int32 `json:"appRepoId,omitempty"`
 }
 
 // NewDeleteRepositoryCommand instantiates a new DeleteRepositoryCommand object
@@ -40,46 +40,36 @@ func NewDeleteRepositoryCommandWithDefaults() *DeleteRepositoryCommand {
 	return &this
 }
 
-// GetRepoName returns the RepoName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *DeleteRepositoryCommand) GetRepoName() string {
-	if o == nil || IsNil(o.RepoName.Get()) {
-		var ret string
+// GetAppRepoId returns the AppRepoId field value if set, zero value otherwise.
+func (o *DeleteRepositoryCommand) GetAppRepoId() int32 {
+	if o == nil || IsNil(o.AppRepoId) {
+		var ret int32
 		return ret
 	}
-	return *o.RepoName.Get()
+	return *o.AppRepoId
 }
 
-// GetRepoNameOk returns a tuple with the RepoName field value if set, nil otherwise
+// GetAppRepoIdOk returns a tuple with the AppRepoId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DeleteRepositoryCommand) GetRepoNameOk() (*string, bool) {
-	if o == nil {
+func (o *DeleteRepositoryCommand) GetAppRepoIdOk() (*int32, bool) {
+	if o == nil || IsNil(o.AppRepoId) {
 		return nil, false
 	}
-	return o.RepoName.Get(), o.RepoName.IsSet()
+	return o.AppRepoId, true
 }
 
-// HasRepoName returns a boolean if a field has been set.
-func (o *DeleteRepositoryCommand) HasRepoName() bool {
-	if o != nil && o.RepoName.IsSet() {
+// HasAppRepoId returns a boolean if a field has been set.
+func (o *DeleteRepositoryCommand) HasAppRepoId() bool {
+	if o != nil && !IsNil(o.AppRepoId) {
 		return true
 	}
 
 	return false
 }
 
-// SetRepoName gets a reference to the given NullableString and assigns it to the RepoName field.
-func (o *DeleteRepositoryCommand) SetRepoName(v string) {
-	o.RepoName.Set(&v)
-}
-// SetRepoNameNil sets the value for RepoName to be an explicit nil
-func (o *DeleteRepositoryCommand) SetRepoNameNil() {
-	o.RepoName.Set(nil)
-}
-
-// UnsetRepoName ensures that no value is present for RepoName, not even an explicit nil
-func (o *DeleteRepositoryCommand) UnsetRepoName() {
-	o.RepoName.Unset()
+// SetAppRepoId gets a reference to the given int32 and assigns it to the AppRepoId field.
+func (o *DeleteRepositoryCommand) SetAppRepoId(v int32) {
+	o.AppRepoId = &v
 }
 
 func (o DeleteRepositoryCommand) MarshalJSON() ([]byte, error) {
@@ -92,8 +82,8 @@ func (o DeleteRepositoryCommand) MarshalJSON() ([]byte, error) {
 
 func (o DeleteRepositoryCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.RepoName.IsSet() {
-		toSerialize["repoName"] = o.RepoName.Get()
+	if !IsNil(o.AppRepoId) {
+		toSerialize["appRepoId"] = o.AppRepoId
 	}
 	return toSerialize, nil
 }

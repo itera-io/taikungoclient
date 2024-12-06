@@ -23,6 +23,7 @@ var _ MappedNullable = &ArtifactRepositoryDto{}
 // ArtifactRepositoryDto struct for ArtifactRepositoryDto
 type ArtifactRepositoryDto struct {
 	RepositoryId NullableString `json:"repositoryId"`
+	AppRepoId int32 `json:"appRepoId"`
 	Name string `json:"name"`
 	DisplayName NullableString `json:"displayName"`
 	Url string `json:"url"`
@@ -41,9 +42,10 @@ type _ArtifactRepositoryDto ArtifactRepositoryDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewArtifactRepositoryDto(repositoryId NullableString, name string, displayName NullableString, url string, organizationName string, disabled bool, verifiedPublisher bool, official bool, isBound bool, isTaikun bool, hasCatalogApp bool) *ArtifactRepositoryDto {
+func NewArtifactRepositoryDto(repositoryId NullableString, appRepoId int32, name string, displayName NullableString, url string, organizationName string, disabled bool, verifiedPublisher bool, official bool, isBound bool, isTaikun bool, hasCatalogApp bool) *ArtifactRepositoryDto {
 	this := ArtifactRepositoryDto{}
 	this.RepositoryId = repositoryId
+	this.AppRepoId = appRepoId
 	this.Name = name
 	this.DisplayName = displayName
 	this.Url = url
@@ -89,6 +91,30 @@ func (o *ArtifactRepositoryDto) GetRepositoryIdOk() (*string, bool) {
 // SetRepositoryId sets field value
 func (o *ArtifactRepositoryDto) SetRepositoryId(v string) {
 	o.RepositoryId.Set(&v)
+}
+
+// GetAppRepoId returns the AppRepoId field value
+func (o *ArtifactRepositoryDto) GetAppRepoId() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.AppRepoId
+}
+
+// GetAppRepoIdOk returns a tuple with the AppRepoId field value
+// and a boolean to check if the value has been set.
+func (o *ArtifactRepositoryDto) GetAppRepoIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AppRepoId, true
+}
+
+// SetAppRepoId sets field value
+func (o *ArtifactRepositoryDto) SetAppRepoId(v int32) {
+	o.AppRepoId = v
 }
 
 // GetName returns the Name field value
@@ -344,6 +370,7 @@ func (o ArtifactRepositoryDto) MarshalJSON() ([]byte, error) {
 func (o ArtifactRepositoryDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["repositoryId"] = o.RepositoryId.Get()
+	toSerialize["appRepoId"] = o.AppRepoId
 	toSerialize["name"] = o.Name
 	toSerialize["displayName"] = o.DisplayName.Get()
 	toSerialize["url"] = o.Url
@@ -363,6 +390,7 @@ func (o *ArtifactRepositoryDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"repositoryId",
+		"appRepoId",
 		"name",
 		"displayName",
 		"url",
