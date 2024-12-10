@@ -32,6 +32,7 @@ type ArtifactRepositoryDto struct {
 	VerifiedPublisher bool `json:"verifiedPublisher"`
 	Official bool `json:"official"`
 	IsBound bool `json:"isBound"`
+	IsPrivate *bool `json:"isPrivate,omitempty"`
 	IsTaikun bool `json:"isTaikun"`
 	HasCatalogApp bool `json:"hasCatalogApp"`
 }
@@ -311,6 +312,38 @@ func (o *ArtifactRepositoryDto) SetIsBound(v bool) {
 	o.IsBound = v
 }
 
+// GetIsPrivate returns the IsPrivate field value if set, zero value otherwise.
+func (o *ArtifactRepositoryDto) GetIsPrivate() bool {
+	if o == nil || IsNil(o.IsPrivate) {
+		var ret bool
+		return ret
+	}
+	return *o.IsPrivate
+}
+
+// GetIsPrivateOk returns a tuple with the IsPrivate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ArtifactRepositoryDto) GetIsPrivateOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsPrivate) {
+		return nil, false
+	}
+	return o.IsPrivate, true
+}
+
+// HasIsPrivate returns a boolean if a field has been set.
+func (o *ArtifactRepositoryDto) HasIsPrivate() bool {
+	if o != nil && !IsNil(o.IsPrivate) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsPrivate gets a reference to the given bool and assigns it to the IsPrivate field.
+func (o *ArtifactRepositoryDto) SetIsPrivate(v bool) {
+	o.IsPrivate = &v
+}
+
 // GetIsTaikun returns the IsTaikun field value
 func (o *ArtifactRepositoryDto) GetIsTaikun() bool {
 	if o == nil {
@@ -379,6 +412,9 @@ func (o ArtifactRepositoryDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["verifiedPublisher"] = o.VerifiedPublisher
 	toSerialize["official"] = o.Official
 	toSerialize["isBound"] = o.IsBound
+	if !IsNil(o.IsPrivate) {
+		toSerialize["isPrivate"] = o.IsPrivate
+	}
 	toSerialize["isTaikun"] = o.IsTaikun
 	toSerialize["hasCatalogApp"] = o.HasCatalogApp
 	return toSerialize, nil
