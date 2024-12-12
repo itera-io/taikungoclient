@@ -46,6 +46,18 @@ func Test_taikuncore_GoogleAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GoogleAPIService GooglecloudGkeClusters", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.GoogleAPI.GooglecloudGkeClusters(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test GoogleAPIService GooglecloudList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

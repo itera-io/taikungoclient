@@ -297,6 +297,7 @@ Class | Method | HTTP request | Description
 *GenericKubernetesCloudCredentialAPI* | [**GenericKubernetesUpdate**](docs/GenericKubernetesCloudCredentialAPI.md#generickubernetesupdate) | **Put** /api/v1/generic-kubernetes/update | Update Generic kubernetes credentials
 *GoogleAPI* | [**GooglecloudBillingAccountList**](docs/GoogleAPI.md#googlecloudbillingaccountlist) | **Post** /api/v1/googlecloud/billing-accounts | Retrieve google billing accounts list
 *GoogleAPI* | [**GooglecloudCreate**](docs/GoogleAPI.md#googlecloudcreate) | **Post** /api/v1/googlecloud/create | Create google cloud credential
+*GoogleAPI* | [**GooglecloudGkeClusters**](docs/GoogleAPI.md#googlecloudgkeclusters) | **Post** /api/v1/googlecloud/gke-clusters | List of gke clusters
 *GoogleAPI* | [**GooglecloudList**](docs/GoogleAPI.md#googlecloudlist) | **Get** /api/v1/googlecloud/list | Retrieve list of google cloud credentials
 *GoogleAPI* | [**GooglecloudRegionList**](docs/GoogleAPI.md#googlecloudregionlist) | **Post** /api/v1/googlecloud/regions | Retrieve google region list
 *GoogleAPI* | [**GooglecloudZoneList**](docs/GoogleAPI.md#googlecloudzonelist) | **Post** /api/v1/googlecloud/zones | Google zones list
@@ -1118,6 +1119,7 @@ Class | Method | HTTP request | Description
  - [GetProjectOperationCommand](docs/GetProjectOperationCommand.md)
  - [GetToken](docs/GetToken.md)
  - [GiveAccessToPartnerCommand](docs/GiveAccessToPartnerCommand.md)
+ - [GkeClustersListCommand](docs/GkeClustersListCommand.md)
  - [GoogleCredentialList](docs/GoogleCredentialList.md)
  - [GoogleCredentialsListDto](docs/GoogleCredentialsListDto.md)
  - [GoogleFlavorDto](docs/GoogleFlavorDto.md)
