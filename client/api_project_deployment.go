@@ -2168,9 +2168,9 @@ type ApiProjectDeploymentImportClusterRequest struct {
 	ctx context.Context
 	ApiService *ProjectDeploymentAPIService
 	name *string
+	config *os.File
 	isTaikunIngressController *bool
 	isExistingIngressController *bool
-	config *os.File
 	ingressClass *string
 	ingressHost *string
 	continent *string
@@ -2186,6 +2186,11 @@ func (r ApiProjectDeploymentImportClusterRequest) Name(name string) ApiProjectDe
 	return r
 }
 
+func (r ApiProjectDeploymentImportClusterRequest) Config(config *os.File) ApiProjectDeploymentImportClusterRequest {
+	r.config = config
+	return r
+}
+
 func (r ApiProjectDeploymentImportClusterRequest) IsTaikunIngressController(isTaikunIngressController bool) ApiProjectDeploymentImportClusterRequest {
 	r.isTaikunIngressController = &isTaikunIngressController
 	return r
@@ -2193,11 +2198,6 @@ func (r ApiProjectDeploymentImportClusterRequest) IsTaikunIngressController(isTa
 
 func (r ApiProjectDeploymentImportClusterRequest) IsExistingIngressController(isExistingIngressController bool) ApiProjectDeploymentImportClusterRequest {
 	r.isExistingIngressController = &isExistingIngressController
-	return r
-}
-
-func (r ApiProjectDeploymentImportClusterRequest) Config(config *os.File) ApiProjectDeploymentImportClusterRequest {
-	r.config = config
 	return r
 }
 
@@ -2279,12 +2279,6 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentImportClusterExecute(r Ap
 	if r.name == nil {
 		return nil, reportError("name is required and must be specified")
 	}
-	if r.isTaikunIngressController == nil {
-		return nil, reportError("isTaikunIngressController is required and must be specified")
-	}
-	if r.isExistingIngressController == nil {
-		return nil, reportError("isExistingIngressController is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -2319,8 +2313,12 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentImportClusterExecute(r Ap
 		configLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
 	}
-	parameterAddToHeaderOrQuery(localVarFormParams, "isTaikunIngressController", r.isTaikunIngressController, "", "")
-	parameterAddToHeaderOrQuery(localVarFormParams, "isExistingIngressController", r.isExistingIngressController, "", "")
+	if r.isTaikunIngressController != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "isTaikunIngressController", r.isTaikunIngressController, "", "")
+	}
+	if r.isExistingIngressController != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "isExistingIngressController", r.isExistingIngressController, "", "")
+	}
 	if r.ingressClass != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "ingressClass", r.ingressClass, "", "")
 	}

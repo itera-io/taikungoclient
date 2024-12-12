@@ -382,6 +382,7 @@ docs/GetCatalogAppValueCommand.md
 docs/GetProjectOperationCommand.md
 docs/GetToken.md
 docs/GiveAccessToPartnerCommand.md
+docs/GkeClustersListCommand.md
 docs/GoogleAPI.md
 docs/GoogleCredentialList.md
 docs/GoogleCredentialsListDto.md
@@ -1137,6 +1138,7 @@ model_get_catalog_app_value_command.go
 model_get_project_operation_command.go
 model_get_token.go
 model_give_access_to_partner_command.go
+model_gke_clusters_list_command.go
 model_google_credential_list.go
 model_google_credentials_list_dto.go
 model_google_flavor_dto.go
