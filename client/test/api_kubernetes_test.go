@@ -279,9 +279,10 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeResource(context.Background()).Execute()
+		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDescribeResource(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
