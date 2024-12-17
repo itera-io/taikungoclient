@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubernetesNodeLabelsDto type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &KubernetesNodeLabelsDto{}
 
 // KubernetesNodeLabelsDto struct for KubernetesNodeLabelsDto
 type KubernetesNodeLabelsDto struct {
-	Key NullableString `json:"key,omitempty"`
-	Value NullableString `json:"value,omitempty"`
+	Key NullableString `json:"key"`
+	Value NullableString `json:"value"`
 }
+
+type _KubernetesNodeLabelsDto KubernetesNodeLabelsDto
 
 // NewKubernetesNodeLabelsDto instantiates a new KubernetesNodeLabelsDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesNodeLabelsDto() *KubernetesNodeLabelsDto {
+func NewKubernetesNodeLabelsDto(key NullableString, value NullableString) *KubernetesNodeLabelsDto {
 	this := KubernetesNodeLabelsDto{}
+	this.Key = key
+	this.Value = value
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewKubernetesNodeLabelsDtoWithDefaults() *KubernetesNodeLabelsDto {
 	return &this
 }
 
-// GetKey returns the Key field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKey returns the Key field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesNodeLabelsDto) GetKey() string {
-	if o == nil || IsNil(o.Key.Get()) {
+	if o == nil || o.Key.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Key.Get()
 }
 
-// GetKeyOk returns a tuple with the Key field value if set, nil otherwise
+// GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeLabelsDto) GetKeyOk() (*string, bool) {
@@ -60,39 +68,23 @@ func (o *KubernetesNodeLabelsDto) GetKeyOk() (*string, bool) {
 	return o.Key.Get(), o.Key.IsSet()
 }
 
-// HasKey returns a boolean if a field has been set.
-func (o *KubernetesNodeLabelsDto) HasKey() bool {
-	if o != nil && o.Key.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetKey gets a reference to the given NullableString and assigns it to the Key field.
+// SetKey sets field value
 func (o *KubernetesNodeLabelsDto) SetKey(v string) {
 	o.Key.Set(&v)
 }
-// SetKeyNil sets the value for Key to be an explicit nil
-func (o *KubernetesNodeLabelsDto) SetKeyNil() {
-	o.Key.Set(nil)
-}
 
-// UnsetKey ensures that no value is present for Key, not even an explicit nil
-func (o *KubernetesNodeLabelsDto) UnsetKey() {
-	o.Key.Unset()
-}
-
-// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetValue returns the Value field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesNodeLabelsDto) GetValue() string {
-	if o == nil || IsNil(o.Value.Get()) {
+	if o == nil || o.Value.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Value.Get()
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesNodeLabelsDto) GetValueOk() (*string, bool) {
@@ -102,27 +94,9 @@ func (o *KubernetesNodeLabelsDto) GetValueOk() (*string, bool) {
 	return o.Value.Get(), o.Value.IsSet()
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *KubernetesNodeLabelsDto) HasValue() bool {
-	if o != nil && o.Value.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given NullableString and assigns it to the Value field.
+// SetValue sets field value
 func (o *KubernetesNodeLabelsDto) SetValue(v string) {
 	o.Value.Set(&v)
-}
-// SetValueNil sets the value for Value to be an explicit nil
-func (o *KubernetesNodeLabelsDto) SetValueNil() {
-	o.Value.Set(nil)
-}
-
-// UnsetValue ensures that no value is present for Value, not even an explicit nil
-func (o *KubernetesNodeLabelsDto) UnsetValue() {
-	o.Value.Unset()
 }
 
 func (o KubernetesNodeLabelsDto) MarshalJSON() ([]byte, error) {
@@ -135,13 +109,47 @@ func (o KubernetesNodeLabelsDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesNodeLabelsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Key.IsSet() {
-		toSerialize["key"] = o.Key.Get()
-	}
-	if o.Value.IsSet() {
-		toSerialize["value"] = o.Value.Get()
-	}
+	toSerialize["key"] = o.Key.Get()
+	toSerialize["value"] = o.Value.Get()
 	return toSerialize, nil
+}
+
+func (o *KubernetesNodeLabelsDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"key",
+		"value",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubernetesNodeLabelsDto := _KubernetesNodeLabelsDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesNodeLabelsDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesNodeLabelsDto(varKubernetesNodeLabelsDto)
+
+	return err
 }
 
 type NullableKubernetesNodeLabelsDto struct {

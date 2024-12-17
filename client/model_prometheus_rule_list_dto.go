@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PrometheusRuleListDto type satisfies the MappedNullable interface at compile time
@@ -20,31 +22,50 @@ var _ MappedNullable = &PrometheusRuleListDto{}
 
 // PrometheusRuleListDto struct for PrometheusRuleListDto
 type PrometheusRuleListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Password NullableString `json:"password,omitempty"`
-	UserName NullableString `json:"userName,omitempty"`
-	Url NullableString `json:"url,omitempty"`
-	MetricName NullableString `json:"metricName,omitempty"`
-	Labels []PrometheusLabelListDto `json:"labels,omitempty"`
-	BoundOrganizations []PrometheusOrganizationDiscountDto `json:"boundOrganizations,omitempty"`
-	Type *PrometheusType `json:"type,omitempty"`
-	Price *float64 `json:"price,omitempty"`
-	BillingStartDate NullableString `json:"billingStartDate,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	Partner *CommonDropdownDto `json:"partner,omitempty"`
-	OperationCredential *OperationCredentialsForOrganizationEntity `json:"operationCredential,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
+	Id int32 `json:"id"`
+	Name string `json:"name"`
+	Password string `json:"password"`
+	UserName string `json:"userName"`
+	Url string `json:"url"`
+	MetricName NullableString `json:"metricName"`
+	Labels []PrometheusLabelListDto `json:"labels"`
+	BoundOrganizations []PrometheusOrganizationDiscountDto `json:"boundOrganizations"`
+	Type PrometheusType `json:"type"`
+	Price float64 `json:"price"`
+	BillingStartDate NullableString `json:"billingStartDate"`
+	CreatedAt NullableString `json:"createdAt"`
+	Partner PartnerDetailsDto `json:"partner"`
+	OperationCredential OperationCredentialsForOrganizationEntity `json:"operationCredential"`
+	CreatedBy string `json:"createdBy"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
 }
+
+type _PrometheusRuleListDto PrometheusRuleListDto
 
 // NewPrometheusRuleListDto instantiates a new PrometheusRuleListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusRuleListDto() *PrometheusRuleListDto {
+func NewPrometheusRuleListDto(id int32, name string, password string, userName string, url string, metricName NullableString, labels []PrometheusLabelListDto, boundOrganizations []PrometheusOrganizationDiscountDto, type_ PrometheusType, price float64, billingStartDate NullableString, createdAt NullableString, partner PartnerDetailsDto, operationCredential OperationCredentialsForOrganizationEntity, createdBy string, lastModified NullableString, lastModifiedBy NullableString) *PrometheusRuleListDto {
 	this := PrometheusRuleListDto{}
+	this.Id = id
+	this.Name = name
+	this.Password = password
+	this.UserName = userName
+	this.Url = url
+	this.MetricName = metricName
+	this.Labels = labels
+	this.BoundOrganizations = boundOrganizations
+	this.Type = type_
+	this.Price = price
+	this.BillingStartDate = billingStartDate
+	this.CreatedAt = createdAt
+	this.Partner = partner
+	this.OperationCredential = operationCredential
+	this.CreatedBy = createdBy
+	this.LastModified = lastModified
+	this.LastModifiedBy = lastModifiedBy
 	return &this
 }
 
@@ -56,216 +77,138 @@ func NewPrometheusRuleListDtoWithDefaults() *PrometheusRuleListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *PrometheusRuleListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *PrometheusRuleListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *PrometheusRuleListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *PrometheusRuleListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *PrometheusRuleListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *PrometheusRuleListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *PrometheusRuleListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetPassword returns the Password field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPassword returns the Password field value
 func (o *PrometheusRuleListDto) GetPassword() string {
-	if o == nil || IsNil(o.Password.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Password.Get()
+
+	return o.Password
 }
 
-// GetPasswordOk returns a tuple with the Password field value if set, nil otherwise
+// GetPasswordOk returns a tuple with the Password field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetPasswordOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Password.Get(), o.Password.IsSet()
+	return &o.Password, true
 }
 
-// HasPassword returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasPassword() bool {
-	if o != nil && o.Password.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPassword gets a reference to the given NullableString and assigns it to the Password field.
+// SetPassword sets field value
 func (o *PrometheusRuleListDto) SetPassword(v string) {
-	o.Password.Set(&v)
-}
-// SetPasswordNil sets the value for Password to be an explicit nil
-func (o *PrometheusRuleListDto) SetPasswordNil() {
-	o.Password.Set(nil)
+	o.Password = v
 }
 
-// UnsetPassword ensures that no value is present for Password, not even an explicit nil
-func (o *PrometheusRuleListDto) UnsetPassword() {
-	o.Password.Unset()
-}
-
-// GetUserName returns the UserName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUserName returns the UserName field value
 func (o *PrometheusRuleListDto) GetUserName() string {
-	if o == nil || IsNil(o.UserName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.UserName.Get()
+
+	return o.UserName
 }
 
-// GetUserNameOk returns a tuple with the UserName field value if set, nil otherwise
+// GetUserNameOk returns a tuple with the UserName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetUserNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.UserName.Get(), o.UserName.IsSet()
+	return &o.UserName, true
 }
 
-// HasUserName returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasUserName() bool {
-	if o != nil && o.UserName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUserName gets a reference to the given NullableString and assigns it to the UserName field.
+// SetUserName sets field value
 func (o *PrometheusRuleListDto) SetUserName(v string) {
-	o.UserName.Set(&v)
-}
-// SetUserNameNil sets the value for UserName to be an explicit nil
-func (o *PrometheusRuleListDto) SetUserNameNil() {
-	o.UserName.Set(nil)
+	o.UserName = v
 }
 
-// UnsetUserName ensures that no value is present for UserName, not even an explicit nil
-func (o *PrometheusRuleListDto) UnsetUserName() {
-	o.UserName.Unset()
-}
-
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value
 func (o *PrometheusRuleListDto) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+
+	return o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return &o.Url, true
 }
 
-// HasUrl returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl sets field value
 func (o *PrometheusRuleListDto) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *PrometheusRuleListDto) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *PrometheusRuleListDto) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetMetricName returns the MetricName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetricName returns the MetricName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PrometheusRuleListDto) GetMetricName() string {
-	if o == nil || IsNil(o.MetricName.Get()) {
+	if o == nil || o.MetricName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.MetricName.Get()
 }
 
-// GetMetricNameOk returns a tuple with the MetricName field value if set, nil otherwise
+// GetMetricNameOk returns a tuple with the MetricName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetMetricNameOk() (*string, bool) {
@@ -275,39 +218,23 @@ func (o *PrometheusRuleListDto) GetMetricNameOk() (*string, bool) {
 	return o.MetricName.Get(), o.MetricName.IsSet()
 }
 
-// HasMetricName returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasMetricName() bool {
-	if o != nil && o.MetricName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMetricName gets a reference to the given NullableString and assigns it to the MetricName field.
+// SetMetricName sets field value
 func (o *PrometheusRuleListDto) SetMetricName(v string) {
 	o.MetricName.Set(&v)
 }
-// SetMetricNameNil sets the value for MetricName to be an explicit nil
-func (o *PrometheusRuleListDto) SetMetricNameNil() {
-	o.MetricName.Set(nil)
-}
 
-// UnsetMetricName ensures that no value is present for MetricName, not even an explicit nil
-func (o *PrometheusRuleListDto) UnsetMetricName() {
-	o.MetricName.Unset()
-}
-
-// GetLabels returns the Labels field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLabels returns the Labels field value
+// If the value is explicit nil, the zero value for []PrometheusLabelListDto will be returned
 func (o *PrometheusRuleListDto) GetLabels() []PrometheusLabelListDto {
 	if o == nil {
 		var ret []PrometheusLabelListDto
 		return ret
 	}
+
 	return o.Labels
 }
 
-// GetLabelsOk returns a tuple with the Labels field value if set, nil otherwise
+// GetLabelsOk returns a tuple with the Labels field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetLabelsOk() ([]PrometheusLabelListDto, bool) {
@@ -317,30 +244,23 @@ func (o *PrometheusRuleListDto) GetLabelsOk() ([]PrometheusLabelListDto, bool) {
 	return o.Labels, true
 }
 
-// HasLabels returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasLabels() bool {
-	if o != nil && !IsNil(o.Labels) {
-		return true
-	}
-
-	return false
-}
-
-// SetLabels gets a reference to the given []PrometheusLabelListDto and assigns it to the Labels field.
+// SetLabels sets field value
 func (o *PrometheusRuleListDto) SetLabels(v []PrometheusLabelListDto) {
 	o.Labels = v
 }
 
-// GetBoundOrganizations returns the BoundOrganizations field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBoundOrganizations returns the BoundOrganizations field value
+// If the value is explicit nil, the zero value for []PrometheusOrganizationDiscountDto will be returned
 func (o *PrometheusRuleListDto) GetBoundOrganizations() []PrometheusOrganizationDiscountDto {
 	if o == nil {
 		var ret []PrometheusOrganizationDiscountDto
 		return ret
 	}
+
 	return o.BoundOrganizations
 }
 
-// GetBoundOrganizationsOk returns a tuple with the BoundOrganizations field value if set, nil otherwise
+// GetBoundOrganizationsOk returns a tuple with the BoundOrganizations field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetBoundOrganizationsOk() ([]PrometheusOrganizationDiscountDto, bool) {
@@ -350,94 +270,71 @@ func (o *PrometheusRuleListDto) GetBoundOrganizationsOk() ([]PrometheusOrganizat
 	return o.BoundOrganizations, true
 }
 
-// HasBoundOrganizations returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasBoundOrganizations() bool {
-	if o != nil && !IsNil(o.BoundOrganizations) {
-		return true
-	}
-
-	return false
-}
-
-// SetBoundOrganizations gets a reference to the given []PrometheusOrganizationDiscountDto and assigns it to the BoundOrganizations field.
+// SetBoundOrganizations sets field value
 func (o *PrometheusRuleListDto) SetBoundOrganizations(v []PrometheusOrganizationDiscountDto) {
 	o.BoundOrganizations = v
 }
 
-// GetType returns the Type field value if set, zero value otherwise.
+// GetType returns the Type field value
 func (o *PrometheusRuleListDto) GetType() PrometheusType {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		var ret PrometheusType
 		return ret
 	}
-	return *o.Type
+
+	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
 func (o *PrometheusRuleListDto) GetTypeOk() (*PrometheusType, bool) {
-	if o == nil || IsNil(o.Type) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Type, true
+	return &o.Type, true
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasType() bool {
-	if o != nil && !IsNil(o.Type) {
-		return true
-	}
-
-	return false
-}
-
-// SetType gets a reference to the given PrometheusType and assigns it to the Type field.
+// SetType sets field value
 func (o *PrometheusRuleListDto) SetType(v PrometheusType) {
-	o.Type = &v
+	o.Type = v
 }
 
-// GetPrice returns the Price field value if set, zero value otherwise.
+// GetPrice returns the Price field value
 func (o *PrometheusRuleListDto) GetPrice() float64 {
-	if o == nil || IsNil(o.Price) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.Price
+
+	return o.Price
 }
 
-// GetPriceOk returns a tuple with the Price field value if set, nil otherwise
+// GetPriceOk returns a tuple with the Price field value
 // and a boolean to check if the value has been set.
 func (o *PrometheusRuleListDto) GetPriceOk() (*float64, bool) {
-	if o == nil || IsNil(o.Price) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Price, true
+	return &o.Price, true
 }
 
-// HasPrice returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasPrice() bool {
-	if o != nil && !IsNil(o.Price) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrice gets a reference to the given float64 and assigns it to the Price field.
+// SetPrice sets field value
 func (o *PrometheusRuleListDto) SetPrice(v float64) {
-	o.Price = &v
+	o.Price = v
 }
 
-// GetBillingStartDate returns the BillingStartDate field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBillingStartDate returns the BillingStartDate field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PrometheusRuleListDto) GetBillingStartDate() string {
-	if o == nil || IsNil(o.BillingStartDate.Get()) {
+	if o == nil || o.BillingStartDate.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.BillingStartDate.Get()
 }
 
-// GetBillingStartDateOk returns a tuple with the BillingStartDate field value if set, nil otherwise
+// GetBillingStartDateOk returns a tuple with the BillingStartDate field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetBillingStartDateOk() (*string, bool) {
@@ -447,39 +344,23 @@ func (o *PrometheusRuleListDto) GetBillingStartDateOk() (*string, bool) {
 	return o.BillingStartDate.Get(), o.BillingStartDate.IsSet()
 }
 
-// HasBillingStartDate returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasBillingStartDate() bool {
-	if o != nil && o.BillingStartDate.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBillingStartDate gets a reference to the given NullableString and assigns it to the BillingStartDate field.
+// SetBillingStartDate sets field value
 func (o *PrometheusRuleListDto) SetBillingStartDate(v string) {
 	o.BillingStartDate.Set(&v)
 }
-// SetBillingStartDateNil sets the value for BillingStartDate to be an explicit nil
-func (o *PrometheusRuleListDto) SetBillingStartDateNil() {
-	o.BillingStartDate.Set(nil)
-}
 
-// UnsetBillingStartDate ensures that no value is present for BillingStartDate, not even an explicit nil
-func (o *PrometheusRuleListDto) UnsetBillingStartDate() {
-	o.BillingStartDate.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PrometheusRuleListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || o.CreatedAt.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CreatedAt.Get()
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetCreatedAtOk() (*string, bool) {
@@ -489,145 +370,95 @@ func (o *PrometheusRuleListDto) GetCreatedAtOk() (*string, bool) {
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *PrometheusRuleListDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
 }
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *PrometheusRuleListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *PrometheusRuleListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetPartner returns the Partner field value if set, zero value otherwise.
-func (o *PrometheusRuleListDto) GetPartner() CommonDropdownDto {
-	if o == nil || IsNil(o.Partner) {
-		var ret CommonDropdownDto
+// GetPartner returns the Partner field value
+func (o *PrometheusRuleListDto) GetPartner() PartnerDetailsDto {
+	if o == nil {
+		var ret PartnerDetailsDto
 		return ret
 	}
-	return *o.Partner
+
+	return o.Partner
 }
 
-// GetPartnerOk returns a tuple with the Partner field value if set, nil otherwise
+// GetPartnerOk returns a tuple with the Partner field value
 // and a boolean to check if the value has been set.
-func (o *PrometheusRuleListDto) GetPartnerOk() (*CommonDropdownDto, bool) {
-	if o == nil || IsNil(o.Partner) {
+func (o *PrometheusRuleListDto) GetPartnerOk() (*PartnerDetailsDto, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Partner, true
+	return &o.Partner, true
 }
 
-// HasPartner returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasPartner() bool {
-	if o != nil && !IsNil(o.Partner) {
-		return true
-	}
-
-	return false
+// SetPartner sets field value
+func (o *PrometheusRuleListDto) SetPartner(v PartnerDetailsDto) {
+	o.Partner = v
 }
 
-// SetPartner gets a reference to the given CommonDropdownDto and assigns it to the Partner field.
-func (o *PrometheusRuleListDto) SetPartner(v CommonDropdownDto) {
-	o.Partner = &v
-}
-
-// GetOperationCredential returns the OperationCredential field value if set, zero value otherwise.
+// GetOperationCredential returns the OperationCredential field value
 func (o *PrometheusRuleListDto) GetOperationCredential() OperationCredentialsForOrganizationEntity {
-	if o == nil || IsNil(o.OperationCredential) {
+	if o == nil {
 		var ret OperationCredentialsForOrganizationEntity
 		return ret
 	}
-	return *o.OperationCredential
+
+	return o.OperationCredential
 }
 
-// GetOperationCredentialOk returns a tuple with the OperationCredential field value if set, nil otherwise
+// GetOperationCredentialOk returns a tuple with the OperationCredential field value
 // and a boolean to check if the value has been set.
 func (o *PrometheusRuleListDto) GetOperationCredentialOk() (*OperationCredentialsForOrganizationEntity, bool) {
-	if o == nil || IsNil(o.OperationCredential) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OperationCredential, true
+	return &o.OperationCredential, true
 }
 
-// HasOperationCredential returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasOperationCredential() bool {
-	if o != nil && !IsNil(o.OperationCredential) {
-		return true
-	}
-
-	return false
-}
-
-// SetOperationCredential gets a reference to the given OperationCredentialsForOrganizationEntity and assigns it to the OperationCredential field.
+// SetOperationCredential sets field value
 func (o *PrometheusRuleListDto) SetOperationCredential(v OperationCredentialsForOrganizationEntity) {
-	o.OperationCredential = &v
+	o.OperationCredential = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value
 func (o *PrometheusRuleListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy.Get()
+
+	return o.CreatedBy
 }
 
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetCreatedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy sets field value
 func (o *PrometheusRuleListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
-}
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *PrometheusRuleListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
+	o.CreatedBy = v
 }
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *PrometheusRuleListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PrometheusRuleListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || o.LastModified.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModified.Get()
 }
 
-// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
+// GetLastModifiedOk returns a tuple with the LastModified field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetLastModifiedOk() (*string, bool) {
@@ -637,39 +468,23 @@ func (o *PrometheusRuleListDto) GetLastModifiedOk() (*string, bool) {
 	return o.LastModified.Get(), o.LastModified.IsSet()
 }
 
-// HasLastModified returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified sets field value
 func (o *PrometheusRuleListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *PrometheusRuleListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
-}
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *PrometheusRuleListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PrometheusRuleListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || o.LastModifiedBy.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModifiedBy.Get()
 }
 
-// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusRuleListDto) GetLastModifiedByOk() (*string, bool) {
@@ -679,27 +494,9 @@ func (o *PrometheusRuleListDto) GetLastModifiedByOk() (*string, bool) {
 	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
 }
 
-// HasLastModifiedBy returns a boolean if a field has been set.
-func (o *PrometheusRuleListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy sets field value
 func (o *PrometheusRuleListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
-}
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *PrometheusRuleListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
-
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *PrometheusRuleListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
 }
 
 func (o PrometheusRuleListDto) MarshalJSON() ([]byte, error) {
@@ -712,58 +509,81 @@ func (o PrometheusRuleListDto) MarshalJSON() ([]byte, error) {
 
 func (o PrometheusRuleListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.Password.IsSet() {
-		toSerialize["password"] = o.Password.Get()
-	}
-	if o.UserName.IsSet() {
-		toSerialize["userName"] = o.UserName.Get()
-	}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
-	}
-	if o.MetricName.IsSet() {
-		toSerialize["metricName"] = o.MetricName.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["password"] = o.Password
+	toSerialize["userName"] = o.UserName
+	toSerialize["url"] = o.Url
+	toSerialize["metricName"] = o.MetricName.Get()
 	if o.Labels != nil {
 		toSerialize["labels"] = o.Labels
 	}
 	if o.BoundOrganizations != nil {
 		toSerialize["boundOrganizations"] = o.BoundOrganizations
 	}
-	if !IsNil(o.Type) {
-		toSerialize["type"] = o.Type
-	}
-	if !IsNil(o.Price) {
-		toSerialize["price"] = o.Price
-	}
-	if o.BillingStartDate.IsSet() {
-		toSerialize["billingStartDate"] = o.BillingStartDate.Get()
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if !IsNil(o.Partner) {
-		toSerialize["partner"] = o.Partner
-	}
-	if !IsNil(o.OperationCredential) {
-		toSerialize["operationCredential"] = o.OperationCredential
-	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
-	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
-	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
-	}
+	toSerialize["type"] = o.Type
+	toSerialize["price"] = o.Price
+	toSerialize["billingStartDate"] = o.BillingStartDate.Get()
+	toSerialize["createdAt"] = o.CreatedAt.Get()
+	toSerialize["partner"] = o.Partner
+	toSerialize["operationCredential"] = o.OperationCredential
+	toSerialize["createdBy"] = o.CreatedBy
+	toSerialize["lastModified"] = o.LastModified.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
 	return toSerialize, nil
+}
+
+func (o *PrometheusRuleListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"password",
+		"userName",
+		"url",
+		"metricName",
+		"labels",
+		"boundOrganizations",
+		"type",
+		"price",
+		"billingStartDate",
+		"createdAt",
+		"partner",
+		"operationCredential",
+		"createdBy",
+		"lastModified",
+		"lastModifiedBy",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPrometheusRuleListDto := _PrometheusRuleListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrometheusRuleListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusRuleListDto(varPrometheusRuleListDto)
+
+	return err
 }
 
 type NullablePrometheusRuleListDto struct {

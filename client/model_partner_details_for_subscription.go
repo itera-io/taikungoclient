@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PartnerDetailsForSubscription type satisfies the MappedNullable interface at compile time
@@ -20,18 +22,24 @@ var _ MappedNullable = &PartnerDetailsForSubscription{}
 
 // PartnerDetailsForSubscription struct for PartnerDetailsForSubscription
 type PartnerDetailsForSubscription struct {
-	Name NullableString `json:"name,omitempty"`
-	Logo NullableString `json:"logo,omitempty"`
-	Link NullableString `json:"link,omitempty"`
-	Id *int32 `json:"id,omitempty"`
+	Name string `json:"name"`
+	Logo NullableString `json:"logo"`
+	Link NullableString `json:"link"`
+	Id int32 `json:"id"`
 }
+
+type _PartnerDetailsForSubscription PartnerDetailsForSubscription
 
 // NewPartnerDetailsForSubscription instantiates a new PartnerDetailsForSubscription object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPartnerDetailsForSubscription() *PartnerDetailsForSubscription {
+func NewPartnerDetailsForSubscription(name string, logo NullableString, link NullableString, id int32) *PartnerDetailsForSubscription {
 	this := PartnerDetailsForSubscription{}
+	this.Name = name
+	this.Logo = logo
+	this.Link = link
+	this.Id = id
 	return &this
 }
 
@@ -43,58 +51,42 @@ func NewPartnerDetailsForSubscriptionWithDefaults() *PartnerDetailsForSubscripti
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *PartnerDetailsForSubscription) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerDetailsForSubscription) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *PartnerDetailsForSubscription) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *PartnerDetailsForSubscription) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *PartnerDetailsForSubscription) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *PartnerDetailsForSubscription) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetLogo returns the Logo field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLogo returns the Logo field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PartnerDetailsForSubscription) GetLogo() string {
-	if o == nil || IsNil(o.Logo.Get()) {
+	if o == nil || o.Logo.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Logo.Get()
 }
 
-// GetLogoOk returns a tuple with the Logo field value if set, nil otherwise
+// GetLogoOk returns a tuple with the Logo field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerDetailsForSubscription) GetLogoOk() (*string, bool) {
@@ -104,39 +96,23 @@ func (o *PartnerDetailsForSubscription) GetLogoOk() (*string, bool) {
 	return o.Logo.Get(), o.Logo.IsSet()
 }
 
-// HasLogo returns a boolean if a field has been set.
-func (o *PartnerDetailsForSubscription) HasLogo() bool {
-	if o != nil && o.Logo.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLogo gets a reference to the given NullableString and assigns it to the Logo field.
+// SetLogo sets field value
 func (o *PartnerDetailsForSubscription) SetLogo(v string) {
 	o.Logo.Set(&v)
 }
-// SetLogoNil sets the value for Logo to be an explicit nil
-func (o *PartnerDetailsForSubscription) SetLogoNil() {
-	o.Logo.Set(nil)
-}
 
-// UnsetLogo ensures that no value is present for Logo, not even an explicit nil
-func (o *PartnerDetailsForSubscription) UnsetLogo() {
-	o.Logo.Unset()
-}
-
-// GetLink returns the Link field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLink returns the Link field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PartnerDetailsForSubscription) GetLink() string {
-	if o == nil || IsNil(o.Link.Get()) {
+	if o == nil || o.Link.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Link.Get()
 }
 
-// GetLinkOk returns a tuple with the Link field value if set, nil otherwise
+// GetLinkOk returns a tuple with the Link field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerDetailsForSubscription) GetLinkOk() (*string, bool) {
@@ -146,59 +122,33 @@ func (o *PartnerDetailsForSubscription) GetLinkOk() (*string, bool) {
 	return o.Link.Get(), o.Link.IsSet()
 }
 
-// HasLink returns a boolean if a field has been set.
-func (o *PartnerDetailsForSubscription) HasLink() bool {
-	if o != nil && o.Link.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLink gets a reference to the given NullableString and assigns it to the Link field.
+// SetLink sets field value
 func (o *PartnerDetailsForSubscription) SetLink(v string) {
 	o.Link.Set(&v)
 }
-// SetLinkNil sets the value for Link to be an explicit nil
-func (o *PartnerDetailsForSubscription) SetLinkNil() {
-	o.Link.Set(nil)
-}
 
-// UnsetLink ensures that no value is present for Link, not even an explicit nil
-func (o *PartnerDetailsForSubscription) UnsetLink() {
-	o.Link.Unset()
-}
-
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *PartnerDetailsForSubscription) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *PartnerDetailsForSubscription) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *PartnerDetailsForSubscription) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *PartnerDetailsForSubscription) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
 func (o PartnerDetailsForSubscription) MarshalJSON() ([]byte, error) {
@@ -211,19 +161,51 @@ func (o PartnerDetailsForSubscription) MarshalJSON() ([]byte, error) {
 
 func (o PartnerDetailsForSubscription) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.Logo.IsSet() {
-		toSerialize["logo"] = o.Logo.Get()
-	}
-	if o.Link.IsSet() {
-		toSerialize["link"] = o.Link.Get()
-	}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
+	toSerialize["name"] = o.Name
+	toSerialize["logo"] = o.Logo.Get()
+	toSerialize["link"] = o.Link.Get()
+	toSerialize["id"] = o.Id
 	return toSerialize, nil
+}
+
+func (o *PartnerDetailsForSubscription) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"logo",
+		"link",
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPartnerDetailsForSubscription := _PartnerDetailsForSubscription{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPartnerDetailsForSubscription)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PartnerDetailsForSubscription(varPartnerDetailsForSubscription)
+
+	return err
 }
 
 type NullablePartnerDetailsForSubscription struct {

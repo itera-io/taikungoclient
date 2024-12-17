@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the VsphereNetworkListDto type satisfies the MappedNullable interface at compile time
@@ -20,22 +22,32 @@ var _ MappedNullable = &VsphereNetworkListDto{}
 
 // VsphereNetworkListDto struct for VsphereNetworkListDto
 type VsphereNetworkListDto struct {
-	Name NullableString `json:"name,omitempty"`
-	Gateway NullableString `json:"gateway,omitempty"`
-	IpAddress NullableString `json:"ipAddress,omitempty"`
-	NetMask *int32 `json:"netMask,omitempty"`
-	BeginAllocationRange NullableString `json:"beginAllocationRange,omitempty"`
-	EndAllocationRange NullableString `json:"endAllocationRange,omitempty"`
-	IsPrivate *bool `json:"isPrivate,omitempty"`
-	IsVirtualLbNetwork *bool `json:"isVirtualLbNetwork,omitempty"`
+	Name NullableString `json:"name"`
+	Gateway string `json:"gateway"`
+	IpAddress string `json:"ipAddress"`
+	NetMask int32 `json:"netMask"`
+	BeginAllocationRange string `json:"beginAllocationRange"`
+	EndAllocationRange string `json:"endAllocationRange"`
+	IsPrivate bool `json:"isPrivate"`
+	IsVirtualLbNetwork bool `json:"isVirtualLbNetwork"`
 }
+
+type _VsphereNetworkListDto VsphereNetworkListDto
 
 // NewVsphereNetworkListDto instantiates a new VsphereNetworkListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVsphereNetworkListDto() *VsphereNetworkListDto {
+func NewVsphereNetworkListDto(name NullableString, gateway string, ipAddress string, netMask int32, beginAllocationRange string, endAllocationRange string, isPrivate bool, isVirtualLbNetwork bool) *VsphereNetworkListDto {
 	this := VsphereNetworkListDto{}
+	this.Name = name
+	this.Gateway = gateway
+	this.IpAddress = ipAddress
+	this.NetMask = netMask
+	this.BeginAllocationRange = beginAllocationRange
+	this.EndAllocationRange = endAllocationRange
+	this.IsPrivate = isPrivate
+	this.IsVirtualLbNetwork = isVirtualLbNetwork
 	return &this
 }
 
@@ -47,16 +59,18 @@ func NewVsphereNetworkListDtoWithDefaults() *VsphereNetworkListDto {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *VsphereNetworkListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereNetworkListDto) GetNameOk() (*string, bool) {
@@ -66,291 +80,177 @@ func (o *VsphereNetworkListDto) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *VsphereNetworkListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *VsphereNetworkListDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *VsphereNetworkListDto) SetNameNil() {
-	o.Name.Set(nil)
-}
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *VsphereNetworkListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetGateway returns the Gateway field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGateway returns the Gateway field value
 func (o *VsphereNetworkListDto) GetGateway() string {
-	if o == nil || IsNil(o.Gateway.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Gateway.Get()
+
+	return o.Gateway
 }
 
-// GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
+// GetGatewayOk returns a tuple with the Gateway field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereNetworkListDto) GetGatewayOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Gateway.Get(), o.Gateway.IsSet()
+	return &o.Gateway, true
 }
 
-// HasGateway returns a boolean if a field has been set.
-func (o *VsphereNetworkListDto) HasGateway() bool {
-	if o != nil && o.Gateway.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetGateway gets a reference to the given NullableString and assigns it to the Gateway field.
+// SetGateway sets field value
 func (o *VsphereNetworkListDto) SetGateway(v string) {
-	o.Gateway.Set(&v)
-}
-// SetGatewayNil sets the value for Gateway to be an explicit nil
-func (o *VsphereNetworkListDto) SetGatewayNil() {
-	o.Gateway.Set(nil)
+	o.Gateway = v
 }
 
-// UnsetGateway ensures that no value is present for Gateway, not even an explicit nil
-func (o *VsphereNetworkListDto) UnsetGateway() {
-	o.Gateway.Unset()
-}
-
-// GetIpAddress returns the IpAddress field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIpAddress returns the IpAddress field value
 func (o *VsphereNetworkListDto) GetIpAddress() string {
-	if o == nil || IsNil(o.IpAddress.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.IpAddress.Get()
+
+	return o.IpAddress
 }
 
-// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
+// GetIpAddressOk returns a tuple with the IpAddress field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereNetworkListDto) GetIpAddressOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.IpAddress.Get(), o.IpAddress.IsSet()
+	return &o.IpAddress, true
 }
 
-// HasIpAddress returns a boolean if a field has been set.
-func (o *VsphereNetworkListDto) HasIpAddress() bool {
-	if o != nil && o.IpAddress.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetIpAddress gets a reference to the given NullableString and assigns it to the IpAddress field.
+// SetIpAddress sets field value
 func (o *VsphereNetworkListDto) SetIpAddress(v string) {
-	o.IpAddress.Set(&v)
-}
-// SetIpAddressNil sets the value for IpAddress to be an explicit nil
-func (o *VsphereNetworkListDto) SetIpAddressNil() {
-	o.IpAddress.Set(nil)
+	o.IpAddress = v
 }
 
-// UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
-func (o *VsphereNetworkListDto) UnsetIpAddress() {
-	o.IpAddress.Unset()
-}
-
-// GetNetMask returns the NetMask field value if set, zero value otherwise.
+// GetNetMask returns the NetMask field value
 func (o *VsphereNetworkListDto) GetNetMask() int32 {
-	if o == nil || IsNil(o.NetMask) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.NetMask
+
+	return o.NetMask
 }
 
-// GetNetMaskOk returns a tuple with the NetMask field value if set, nil otherwise
+// GetNetMaskOk returns a tuple with the NetMask field value
 // and a boolean to check if the value has been set.
 func (o *VsphereNetworkListDto) GetNetMaskOk() (*int32, bool) {
-	if o == nil || IsNil(o.NetMask) {
+	if o == nil {
 		return nil, false
 	}
-	return o.NetMask, true
+	return &o.NetMask, true
 }
 
-// HasNetMask returns a boolean if a field has been set.
-func (o *VsphereNetworkListDto) HasNetMask() bool {
-	if o != nil && !IsNil(o.NetMask) {
-		return true
-	}
-
-	return false
-}
-
-// SetNetMask gets a reference to the given int32 and assigns it to the NetMask field.
+// SetNetMask sets field value
 func (o *VsphereNetworkListDto) SetNetMask(v int32) {
-	o.NetMask = &v
+	o.NetMask = v
 }
 
-// GetBeginAllocationRange returns the BeginAllocationRange field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBeginAllocationRange returns the BeginAllocationRange field value
 func (o *VsphereNetworkListDto) GetBeginAllocationRange() string {
-	if o == nil || IsNil(o.BeginAllocationRange.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.BeginAllocationRange.Get()
+
+	return o.BeginAllocationRange
 }
 
-// GetBeginAllocationRangeOk returns a tuple with the BeginAllocationRange field value if set, nil otherwise
+// GetBeginAllocationRangeOk returns a tuple with the BeginAllocationRange field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereNetworkListDto) GetBeginAllocationRangeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.BeginAllocationRange.Get(), o.BeginAllocationRange.IsSet()
+	return &o.BeginAllocationRange, true
 }
 
-// HasBeginAllocationRange returns a boolean if a field has been set.
-func (o *VsphereNetworkListDto) HasBeginAllocationRange() bool {
-	if o != nil && o.BeginAllocationRange.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBeginAllocationRange gets a reference to the given NullableString and assigns it to the BeginAllocationRange field.
+// SetBeginAllocationRange sets field value
 func (o *VsphereNetworkListDto) SetBeginAllocationRange(v string) {
-	o.BeginAllocationRange.Set(&v)
-}
-// SetBeginAllocationRangeNil sets the value for BeginAllocationRange to be an explicit nil
-func (o *VsphereNetworkListDto) SetBeginAllocationRangeNil() {
-	o.BeginAllocationRange.Set(nil)
+	o.BeginAllocationRange = v
 }
 
-// UnsetBeginAllocationRange ensures that no value is present for BeginAllocationRange, not even an explicit nil
-func (o *VsphereNetworkListDto) UnsetBeginAllocationRange() {
-	o.BeginAllocationRange.Unset()
-}
-
-// GetEndAllocationRange returns the EndAllocationRange field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEndAllocationRange returns the EndAllocationRange field value
 func (o *VsphereNetworkListDto) GetEndAllocationRange() string {
-	if o == nil || IsNil(o.EndAllocationRange.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.EndAllocationRange.Get()
+
+	return o.EndAllocationRange
 }
 
-// GetEndAllocationRangeOk returns a tuple with the EndAllocationRange field value if set, nil otherwise
+// GetEndAllocationRangeOk returns a tuple with the EndAllocationRange field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VsphereNetworkListDto) GetEndAllocationRangeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.EndAllocationRange.Get(), o.EndAllocationRange.IsSet()
+	return &o.EndAllocationRange, true
 }
 
-// HasEndAllocationRange returns a boolean if a field has been set.
-func (o *VsphereNetworkListDto) HasEndAllocationRange() bool {
-	if o != nil && o.EndAllocationRange.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEndAllocationRange gets a reference to the given NullableString and assigns it to the EndAllocationRange field.
+// SetEndAllocationRange sets field value
 func (o *VsphereNetworkListDto) SetEndAllocationRange(v string) {
-	o.EndAllocationRange.Set(&v)
-}
-// SetEndAllocationRangeNil sets the value for EndAllocationRange to be an explicit nil
-func (o *VsphereNetworkListDto) SetEndAllocationRangeNil() {
-	o.EndAllocationRange.Set(nil)
+	o.EndAllocationRange = v
 }
 
-// UnsetEndAllocationRange ensures that no value is present for EndAllocationRange, not even an explicit nil
-func (o *VsphereNetworkListDto) UnsetEndAllocationRange() {
-	o.EndAllocationRange.Unset()
-}
-
-// GetIsPrivate returns the IsPrivate field value if set, zero value otherwise.
+// GetIsPrivate returns the IsPrivate field value
 func (o *VsphereNetworkListDto) GetIsPrivate() bool {
-	if o == nil || IsNil(o.IsPrivate) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsPrivate
+
+	return o.IsPrivate
 }
 
-// GetIsPrivateOk returns a tuple with the IsPrivate field value if set, nil otherwise
+// GetIsPrivateOk returns a tuple with the IsPrivate field value
 // and a boolean to check if the value has been set.
 func (o *VsphereNetworkListDto) GetIsPrivateOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsPrivate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsPrivate, true
+	return &o.IsPrivate, true
 }
 
-// HasIsPrivate returns a boolean if a field has been set.
-func (o *VsphereNetworkListDto) HasIsPrivate() bool {
-	if o != nil && !IsNil(o.IsPrivate) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsPrivate gets a reference to the given bool and assigns it to the IsPrivate field.
+// SetIsPrivate sets field value
 func (o *VsphereNetworkListDto) SetIsPrivate(v bool) {
-	o.IsPrivate = &v
+	o.IsPrivate = v
 }
 
-// GetIsVirtualLbNetwork returns the IsVirtualLbNetwork field value if set, zero value otherwise.
+// GetIsVirtualLbNetwork returns the IsVirtualLbNetwork field value
 func (o *VsphereNetworkListDto) GetIsVirtualLbNetwork() bool {
-	if o == nil || IsNil(o.IsVirtualLbNetwork) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsVirtualLbNetwork
+
+	return o.IsVirtualLbNetwork
 }
 
-// GetIsVirtualLbNetworkOk returns a tuple with the IsVirtualLbNetwork field value if set, nil otherwise
+// GetIsVirtualLbNetworkOk returns a tuple with the IsVirtualLbNetwork field value
 // and a boolean to check if the value has been set.
 func (o *VsphereNetworkListDto) GetIsVirtualLbNetworkOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsVirtualLbNetwork) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsVirtualLbNetwork, true
+	return &o.IsVirtualLbNetwork, true
 }
 
-// HasIsVirtualLbNetwork returns a boolean if a field has been set.
-func (o *VsphereNetworkListDto) HasIsVirtualLbNetwork() bool {
-	if o != nil && !IsNil(o.IsVirtualLbNetwork) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsVirtualLbNetwork gets a reference to the given bool and assigns it to the IsVirtualLbNetwork field.
+// SetIsVirtualLbNetwork sets field value
 func (o *VsphereNetworkListDto) SetIsVirtualLbNetwork(v bool) {
-	o.IsVirtualLbNetwork = &v
+	o.IsVirtualLbNetwork = v
 }
 
 func (o VsphereNetworkListDto) MarshalJSON() ([]byte, error) {
@@ -363,31 +263,59 @@ func (o VsphereNetworkListDto) MarshalJSON() ([]byte, error) {
 
 func (o VsphereNetworkListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.Gateway.IsSet() {
-		toSerialize["gateway"] = o.Gateway.Get()
-	}
-	if o.IpAddress.IsSet() {
-		toSerialize["ipAddress"] = o.IpAddress.Get()
-	}
-	if !IsNil(o.NetMask) {
-		toSerialize["netMask"] = o.NetMask
-	}
-	if o.BeginAllocationRange.IsSet() {
-		toSerialize["beginAllocationRange"] = o.BeginAllocationRange.Get()
-	}
-	if o.EndAllocationRange.IsSet() {
-		toSerialize["endAllocationRange"] = o.EndAllocationRange.Get()
-	}
-	if !IsNil(o.IsPrivate) {
-		toSerialize["isPrivate"] = o.IsPrivate
-	}
-	if !IsNil(o.IsVirtualLbNetwork) {
-		toSerialize["isVirtualLbNetwork"] = o.IsVirtualLbNetwork
-	}
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["gateway"] = o.Gateway
+	toSerialize["ipAddress"] = o.IpAddress
+	toSerialize["netMask"] = o.NetMask
+	toSerialize["beginAllocationRange"] = o.BeginAllocationRange
+	toSerialize["endAllocationRange"] = o.EndAllocationRange
+	toSerialize["isPrivate"] = o.IsPrivate
+	toSerialize["isVirtualLbNetwork"] = o.IsVirtualLbNetwork
 	return toSerialize, nil
+}
+
+func (o *VsphereNetworkListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"gateway",
+		"ipAddress",
+		"netMask",
+		"beginAllocationRange",
+		"endAllocationRange",
+		"isPrivate",
+		"isVirtualLbNetwork",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVsphereNetworkListDto := _VsphereNetworkListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVsphereNetworkListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VsphereNetworkListDto(varVsphereNetworkListDto)
+
+	return err
 }
 
 type NullableVsphereNetworkListDto struct {

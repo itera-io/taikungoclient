@@ -18,6 +18,7 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"os"
 )
 
 
@@ -2325,6 +2326,281 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentEnableOpaExecute(r ApiPro
 	return localVarHTTPResponse, nil
 }
 
+type ApiProjectDeploymentImportClusterRequest struct {
+	ctx context.Context
+	ApiService *ProjectDeploymentAPIService
+	name *string
+	config *os.File
+	isTaikunIngressController *bool
+	isExistingIngressController *bool
+	ingressClass *string
+	ingressHost *string
+	continent *string
+	importType *EImportClusterType
+	organizationId *int32
+	cloudId *int32
+	importClusterName *string
+	resourceGroupName *string
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) Name(name string) ApiProjectDeploymentImportClusterRequest {
+	r.name = &name
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) Config(config *os.File) ApiProjectDeploymentImportClusterRequest {
+	r.config = config
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) IsTaikunIngressController(isTaikunIngressController bool) ApiProjectDeploymentImportClusterRequest {
+	r.isTaikunIngressController = &isTaikunIngressController
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) IsExistingIngressController(isExistingIngressController bool) ApiProjectDeploymentImportClusterRequest {
+	r.isExistingIngressController = &isExistingIngressController
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) IngressClass(ingressClass string) ApiProjectDeploymentImportClusterRequest {
+	r.ingressClass = &ingressClass
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) IngressHost(ingressHost string) ApiProjectDeploymentImportClusterRequest {
+	r.ingressHost = &ingressHost
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) Continent(continent string) ApiProjectDeploymentImportClusterRequest {
+	r.continent = &continent
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) ImportType(importType EImportClusterType) ApiProjectDeploymentImportClusterRequest {
+	r.importType = &importType
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) OrganizationId(organizationId int32) ApiProjectDeploymentImportClusterRequest {
+	r.organizationId = &organizationId
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) CloudId(cloudId int32) ApiProjectDeploymentImportClusterRequest {
+	r.cloudId = &cloudId
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) ImportClusterName(importClusterName string) ApiProjectDeploymentImportClusterRequest {
+	r.importClusterName = &importClusterName
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) ResourceGroupName(resourceGroupName string) ApiProjectDeploymentImportClusterRequest {
+	r.resourceGroupName = &resourceGroupName
+	return r
+}
+
+func (r ApiProjectDeploymentImportClusterRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProjectDeploymentImportClusterExecute(r)
+}
+
+/*
+ProjectDeploymentImportCluster Import cluster
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectDeploymentImportClusterRequest
+*/
+func (a *ProjectDeploymentAPIService) ProjectDeploymentImportCluster(ctx context.Context) ApiProjectDeploymentImportClusterRequest {
+	return ApiProjectDeploymentImportClusterRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *ProjectDeploymentAPIService) ProjectDeploymentImportClusterExecute(r ApiProjectDeploymentImportClusterRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentAPIService.ProjectDeploymentImportCluster")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/project-deployment/import-cluster"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.name == nil {
+		return nil, reportError("name is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"multipart/form-data"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarFormParams, "name", r.name, "", "")
+	var configLocalVarFormFileName string
+	var configLocalVarFileName     string
+	var configLocalVarFileBytes    []byte
+
+	configLocalVarFormFileName = "config"
+	configLocalVarFile := r.config
+
+	if configLocalVarFile != nil {
+		fbs, _ := io.ReadAll(configLocalVarFile)
+
+		configLocalVarFileBytes = fbs
+		configLocalVarFileName = configLocalVarFile.Name()
+		configLocalVarFile.Close()
+		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
+	}
+	if r.isTaikunIngressController != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "isTaikunIngressController", r.isTaikunIngressController, "", "")
+	}
+	if r.isExistingIngressController != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "isExistingIngressController", r.isExistingIngressController, "", "")
+	}
+	if r.ingressClass != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "ingressClass", r.ingressClass, "", "")
+	}
+	if r.ingressHost != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "ingressHost", r.ingressHost, "", "")
+	}
+	if r.continent != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "continent", r.continent, "", "")
+	}
+	if r.importType != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "importType", r.importType, "", "")
+	}
+	if r.organizationId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "organizationId", r.organizationId, "", "")
+	}
+	if r.cloudId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "cloudId", r.cloudId, "", "")
+	}
+	if r.importClusterName != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "importClusterName", r.importClusterName, "", "")
+	}
+	if r.resourceGroupName != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "resourceGroupName", r.resourceGroupName, "", "")
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiProjectDeploymentRepairRequest struct {
 	ctx context.Context
 	ApiService *ProjectDeploymentAPIService
@@ -2559,6 +2835,171 @@ func (a *ProjectDeploymentAPIService) ProjectDeploymentRepairVmExecute(r ApiProj
 	}
 	// body params
 	localVarPostBody = r.projectDeploymentRepairVmCommand
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiProjectDeploymentTofuMigrateRequest struct {
+	ctx context.Context
+	ApiService *ProjectDeploymentAPIService
+	tofuMigrateCommand *TofuMigrateCommand
+}
+
+func (r ApiProjectDeploymentTofuMigrateRequest) TofuMigrateCommand(tofuMigrateCommand TofuMigrateCommand) ApiProjectDeploymentTofuMigrateRequest {
+	r.tofuMigrateCommand = &tofuMigrateCommand
+	return r
+}
+
+func (r ApiProjectDeploymentTofuMigrateRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ProjectDeploymentTofuMigrateExecute(r)
+}
+
+/*
+ProjectDeploymentTofuMigrate Tofu migrate
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiProjectDeploymentTofuMigrateRequest
+*/
+func (a *ProjectDeploymentAPIService) ProjectDeploymentTofuMigrate(ctx context.Context) ApiProjectDeploymentTofuMigrateRequest {
+	return ApiProjectDeploymentTofuMigrateRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *ProjectDeploymentAPIService) ProjectDeploymentTofuMigrateExecute(r ApiProjectDeploymentTofuMigrateRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectDeploymentAPIService.ProjectDeploymentTofuMigrate")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/project-deployment/tofu-migrate"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.tofuMigrateCommand == nil {
+		return nil, reportError("tofuMigrateCommand is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.tofuMigrateCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubesprayListDto type satisfies the MappedNullable interface at compile time
@@ -20,18 +22,24 @@ var _ MappedNullable = &KubesprayListDto{}
 
 // KubesprayListDto struct for KubesprayListDto
 type KubesprayListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Version NullableString `json:"version,omitempty"`
-	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
-	IsDeprecated *bool `json:"isDeprecated,omitempty"`
+	Id int32 `json:"id"`
+	Version NullableString `json:"version"`
+	KubernetesVersion NullableString `json:"kubernetesVersion"`
+	IsDeprecated bool `json:"isDeprecated"`
 }
+
+type _KubesprayListDto KubesprayListDto
 
 // NewKubesprayListDto instantiates a new KubesprayListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubesprayListDto() *KubesprayListDto {
+func NewKubesprayListDto(id int32, version NullableString, kubernetesVersion NullableString, isDeprecated bool) *KubesprayListDto {
 	this := KubesprayListDto{}
+	this.Id = id
+	this.Version = version
+	this.KubernetesVersion = kubernetesVersion
+	this.IsDeprecated = isDeprecated
 	return &this
 }
 
@@ -43,48 +51,42 @@ func NewKubesprayListDtoWithDefaults() *KubesprayListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *KubesprayListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *KubesprayListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *KubesprayListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *KubesprayListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetVersion returns the Version field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetVersion returns the Version field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubesprayListDto) GetVersion() string {
-	if o == nil || IsNil(o.Version.Get()) {
+	if o == nil || o.Version.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Version.Get()
 }
 
-// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// GetVersionOk returns a tuple with the Version field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubesprayListDto) GetVersionOk() (*string, bool) {
@@ -94,39 +96,23 @@ func (o *KubesprayListDto) GetVersionOk() (*string, bool) {
 	return o.Version.Get(), o.Version.IsSet()
 }
 
-// HasVersion returns a boolean if a field has been set.
-func (o *KubesprayListDto) HasVersion() bool {
-	if o != nil && o.Version.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetVersion gets a reference to the given NullableString and assigns it to the Version field.
+// SetVersion sets field value
 func (o *KubesprayListDto) SetVersion(v string) {
 	o.Version.Set(&v)
 }
-// SetVersionNil sets the value for Version to be an explicit nil
-func (o *KubesprayListDto) SetVersionNil() {
-	o.Version.Set(nil)
-}
 
-// UnsetVersion ensures that no value is present for Version, not even an explicit nil
-func (o *KubesprayListDto) UnsetVersion() {
-	o.Version.Unset()
-}
-
-// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubernetesVersion returns the KubernetesVersion field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubesprayListDto) GetKubernetesVersion() string {
-	if o == nil || IsNil(o.KubernetesVersion.Get()) {
+	if o == nil || o.KubernetesVersion.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.KubernetesVersion.Get()
 }
 
-// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
+// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubesprayListDto) GetKubernetesVersionOk() (*string, bool) {
@@ -136,59 +122,33 @@ func (o *KubesprayListDto) GetKubernetesVersionOk() (*string, bool) {
 	return o.KubernetesVersion.Get(), o.KubernetesVersion.IsSet()
 }
 
-// HasKubernetesVersion returns a boolean if a field has been set.
-func (o *KubesprayListDto) HasKubernetesVersion() bool {
-	if o != nil && o.KubernetesVersion.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetKubernetesVersion gets a reference to the given NullableString and assigns it to the KubernetesVersion field.
+// SetKubernetesVersion sets field value
 func (o *KubesprayListDto) SetKubernetesVersion(v string) {
 	o.KubernetesVersion.Set(&v)
 }
-// SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
-func (o *KubesprayListDto) SetKubernetesVersionNil() {
-	o.KubernetesVersion.Set(nil)
-}
 
-// UnsetKubernetesVersion ensures that no value is present for KubernetesVersion, not even an explicit nil
-func (o *KubesprayListDto) UnsetKubernetesVersion() {
-	o.KubernetesVersion.Unset()
-}
-
-// GetIsDeprecated returns the IsDeprecated field value if set, zero value otherwise.
+// GetIsDeprecated returns the IsDeprecated field value
 func (o *KubesprayListDto) GetIsDeprecated() bool {
-	if o == nil || IsNil(o.IsDeprecated) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDeprecated
+
+	return o.IsDeprecated
 }
 
-// GetIsDeprecatedOk returns a tuple with the IsDeprecated field value if set, nil otherwise
+// GetIsDeprecatedOk returns a tuple with the IsDeprecated field value
 // and a boolean to check if the value has been set.
 func (o *KubesprayListDto) GetIsDeprecatedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDeprecated) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDeprecated, true
+	return &o.IsDeprecated, true
 }
 
-// HasIsDeprecated returns a boolean if a field has been set.
-func (o *KubesprayListDto) HasIsDeprecated() bool {
-	if o != nil && !IsNil(o.IsDeprecated) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDeprecated gets a reference to the given bool and assigns it to the IsDeprecated field.
+// SetIsDeprecated sets field value
 func (o *KubesprayListDto) SetIsDeprecated(v bool) {
-	o.IsDeprecated = &v
+	o.IsDeprecated = v
 }
 
 func (o KubesprayListDto) MarshalJSON() ([]byte, error) {
@@ -201,19 +161,51 @@ func (o KubesprayListDto) MarshalJSON() ([]byte, error) {
 
 func (o KubesprayListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Version.IsSet() {
-		toSerialize["version"] = o.Version.Get()
-	}
-	if o.KubernetesVersion.IsSet() {
-		toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
-	}
-	if !IsNil(o.IsDeprecated) {
-		toSerialize["isDeprecated"] = o.IsDeprecated
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["version"] = o.Version.Get()
+	toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
+	toSerialize["isDeprecated"] = o.IsDeprecated
 	return toSerialize, nil
+}
+
+func (o *KubesprayListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"version",
+		"kubernetesVersion",
+		"isDeprecated",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubesprayListDto := _KubesprayListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubesprayListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubesprayListDto(varKubesprayListDto)
+
+	return err
 }
 
 type NullableKubesprayListDto struct {

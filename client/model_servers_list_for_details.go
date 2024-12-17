@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ServersListForDetails type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &ServersListForDetails{}
 
 // ServersListForDetails struct for ServersListForDetails
 type ServersListForDetails struct {
-	Data []ServerListDto `json:"data,omitempty"`
-	Project *ProjectDetailsForServersDto `json:"project,omitempty"`
+	Data []ServerListDto `json:"data"`
+	Project ProjectDetailsForServersDto `json:"project"`
 }
+
+type _ServersListForDetails ServersListForDetails
 
 // NewServersListForDetails instantiates a new ServersListForDetails object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServersListForDetails() *ServersListForDetails {
+func NewServersListForDetails(data []ServerListDto, project ProjectDetailsForServersDto) *ServersListForDetails {
 	this := ServersListForDetails{}
+	this.Data = data
+	this.Project = project
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewServersListForDetailsWithDefaults() *ServersListForDetails {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []ServerListDto will be returned
 func (o *ServersListForDetails) GetData() []ServerListDto {
 	if o == nil {
 		var ret []ServerListDto
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServersListForDetails) GetDataOk() ([]ServerListDto, bool) {
@@ -60,50 +68,33 @@ func (o *ServersListForDetails) GetDataOk() ([]ServerListDto, bool) {
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *ServersListForDetails) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []ServerListDto and assigns it to the Data field.
+// SetData sets field value
 func (o *ServersListForDetails) SetData(v []ServerListDto) {
 	o.Data = v
 }
 
-// GetProject returns the Project field value if set, zero value otherwise.
+// GetProject returns the Project field value
 func (o *ServersListForDetails) GetProject() ProjectDetailsForServersDto {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		var ret ProjectDetailsForServersDto
 		return ret
 	}
-	return *o.Project
+
+	return o.Project
 }
 
-// GetProjectOk returns a tuple with the Project field value if set, nil otherwise
+// GetProjectOk returns a tuple with the Project field value
 // and a boolean to check if the value has been set.
 func (o *ServersListForDetails) GetProjectOk() (*ProjectDetailsForServersDto, bool) {
-	if o == nil || IsNil(o.Project) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Project, true
+	return &o.Project, true
 }
 
-// HasProject returns a boolean if a field has been set.
-func (o *ServersListForDetails) HasProject() bool {
-	if o != nil && !IsNil(o.Project) {
-		return true
-	}
-
-	return false
-}
-
-// SetProject gets a reference to the given ProjectDetailsForServersDto and assigns it to the Project field.
+// SetProject sets field value
 func (o *ServersListForDetails) SetProject(v ProjectDetailsForServersDto) {
-	o.Project = &v
+	o.Project = v
 }
 
 func (o ServersListForDetails) MarshalJSON() ([]byte, error) {
@@ -119,10 +110,46 @@ func (o ServersListForDetails) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	if !IsNil(o.Project) {
-		toSerialize["project"] = o.Project
-	}
+	toSerialize["project"] = o.Project
 	return toSerialize, nil
+}
+
+func (o *ServersListForDetails) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+		"project",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varServersListForDetails := _ServersListForDetails{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varServersListForDetails)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServersListForDetails(varServersListForDetails)
+
+	return err
 }
 
 type NullableServersListForDetails struct {

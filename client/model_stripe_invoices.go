@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the StripeInvoices type satisfies the MappedNullable interface at compile time
@@ -20,15 +22,18 @@ var _ MappedNullable = &StripeInvoices{}
 
 // StripeInvoices struct for StripeInvoices
 type StripeInvoices struct {
-	Data []StripeInvoiceListDto `json:"data,omitempty"`
+	Data []StripeInvoiceListDto `json:"data"`
 }
+
+type _StripeInvoices StripeInvoices
 
 // NewStripeInvoices instantiates a new StripeInvoices object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStripeInvoices() *StripeInvoices {
+func NewStripeInvoices(data []StripeInvoiceListDto) *StripeInvoices {
 	this := StripeInvoices{}
+	this.Data = data
 	return &this
 }
 
@@ -40,16 +45,18 @@ func NewStripeInvoicesWithDefaults() *StripeInvoices {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []StripeInvoiceListDto will be returned
 func (o *StripeInvoices) GetData() []StripeInvoiceListDto {
 	if o == nil {
 		var ret []StripeInvoiceListDto
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StripeInvoices) GetDataOk() ([]StripeInvoiceListDto, bool) {
@@ -59,16 +66,7 @@ func (o *StripeInvoices) GetDataOk() ([]StripeInvoiceListDto, bool) {
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *StripeInvoices) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []StripeInvoiceListDto and assigns it to the Data field.
+// SetData sets field value
 func (o *StripeInvoices) SetData(v []StripeInvoiceListDto) {
 	o.Data = v
 }
@@ -87,6 +85,43 @@ func (o StripeInvoices) ToMap() (map[string]interface{}, error) {
 		toSerialize["data"] = o.Data
 	}
 	return toSerialize, nil
+}
+
+func (o *StripeInvoices) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varStripeInvoices := _StripeInvoices{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varStripeInvoices)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StripeInvoices(varStripeInvoices)
+
+	return err
 }
 
 type NullableStripeInvoices struct {

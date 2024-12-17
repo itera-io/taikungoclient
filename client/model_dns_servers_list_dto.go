@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the DnsServersListDto type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,22 @@ var _ MappedNullable = &DnsServersListDto{}
 
 // DnsServersListDto struct for DnsServersListDto
 type DnsServersListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Address NullableString `json:"address,omitempty"`
-	AccessProfileName NullableString `json:"accessProfileName,omitempty"`
+	Id int32 `json:"id"`
+	Address NullableString `json:"address"`
+	AccessProfileName NullableString `json:"accessProfileName"`
 }
+
+type _DnsServersListDto DnsServersListDto
 
 // NewDnsServersListDto instantiates a new DnsServersListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDnsServersListDto() *DnsServersListDto {
+func NewDnsServersListDto(id int32, address NullableString, accessProfileName NullableString) *DnsServersListDto {
 	this := DnsServersListDto{}
+	this.Id = id
+	this.Address = address
+	this.AccessProfileName = accessProfileName
 	return &this
 }
 
@@ -42,48 +49,42 @@ func NewDnsServersListDtoWithDefaults() *DnsServersListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *DnsServersListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *DnsServersListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *DnsServersListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *DnsServersListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetAddress returns the Address field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAddress returns the Address field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *DnsServersListDto) GetAddress() string {
-	if o == nil || IsNil(o.Address.Get()) {
+	if o == nil || o.Address.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Address.Get()
 }
 
-// GetAddressOk returns a tuple with the Address field value if set, nil otherwise
+// GetAddressOk returns a tuple with the Address field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DnsServersListDto) GetAddressOk() (*string, bool) {
@@ -93,39 +94,23 @@ func (o *DnsServersListDto) GetAddressOk() (*string, bool) {
 	return o.Address.Get(), o.Address.IsSet()
 }
 
-// HasAddress returns a boolean if a field has been set.
-func (o *DnsServersListDto) HasAddress() bool {
-	if o != nil && o.Address.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAddress gets a reference to the given NullableString and assigns it to the Address field.
+// SetAddress sets field value
 func (o *DnsServersListDto) SetAddress(v string) {
 	o.Address.Set(&v)
 }
-// SetAddressNil sets the value for Address to be an explicit nil
-func (o *DnsServersListDto) SetAddressNil() {
-	o.Address.Set(nil)
-}
 
-// UnsetAddress ensures that no value is present for Address, not even an explicit nil
-func (o *DnsServersListDto) UnsetAddress() {
-	o.Address.Unset()
-}
-
-// GetAccessProfileName returns the AccessProfileName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAccessProfileName returns the AccessProfileName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *DnsServersListDto) GetAccessProfileName() string {
-	if o == nil || IsNil(o.AccessProfileName.Get()) {
+	if o == nil || o.AccessProfileName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.AccessProfileName.Get()
 }
 
-// GetAccessProfileNameOk returns a tuple with the AccessProfileName field value if set, nil otherwise
+// GetAccessProfileNameOk returns a tuple with the AccessProfileName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DnsServersListDto) GetAccessProfileNameOk() (*string, bool) {
@@ -135,27 +120,9 @@ func (o *DnsServersListDto) GetAccessProfileNameOk() (*string, bool) {
 	return o.AccessProfileName.Get(), o.AccessProfileName.IsSet()
 }
 
-// HasAccessProfileName returns a boolean if a field has been set.
-func (o *DnsServersListDto) HasAccessProfileName() bool {
-	if o != nil && o.AccessProfileName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessProfileName gets a reference to the given NullableString and assigns it to the AccessProfileName field.
+// SetAccessProfileName sets field value
 func (o *DnsServersListDto) SetAccessProfileName(v string) {
 	o.AccessProfileName.Set(&v)
-}
-// SetAccessProfileNameNil sets the value for AccessProfileName to be an explicit nil
-func (o *DnsServersListDto) SetAccessProfileNameNil() {
-	o.AccessProfileName.Set(nil)
-}
-
-// UnsetAccessProfileName ensures that no value is present for AccessProfileName, not even an explicit nil
-func (o *DnsServersListDto) UnsetAccessProfileName() {
-	o.AccessProfileName.Unset()
 }
 
 func (o DnsServersListDto) MarshalJSON() ([]byte, error) {
@@ -168,16 +135,49 @@ func (o DnsServersListDto) MarshalJSON() ([]byte, error) {
 
 func (o DnsServersListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Address.IsSet() {
-		toSerialize["address"] = o.Address.Get()
-	}
-	if o.AccessProfileName.IsSet() {
-		toSerialize["accessProfileName"] = o.AccessProfileName.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["address"] = o.Address.Get()
+	toSerialize["accessProfileName"] = o.AccessProfileName.Get()
 	return toSerialize, nil
+}
+
+func (o *DnsServersListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"address",
+		"accessProfileName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDnsServersListDto := _DnsServersListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDnsServersListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DnsServersListDto(varDnsServersListDto)
+
+	return err
 }
 
 type NullableDnsServersListDto struct {

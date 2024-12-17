@@ -23,7 +23,6 @@ type OrganizationDropdownDto struct {
 	Id *int32 `json:"id,omitempty"`
 	Name NullableString `json:"name,omitempty"`
 	IsInfra *bool `json:"isInfra,omitempty"`
-	IsBound *bool `json:"isBound,omitempty"`
 	DiscountRate *float64 `json:"discountRate,omitempty"`
 }
 
@@ -150,38 +149,6 @@ func (o *OrganizationDropdownDto) SetIsInfra(v bool) {
 	o.IsInfra = &v
 }
 
-// GetIsBound returns the IsBound field value if set, zero value otherwise.
-func (o *OrganizationDropdownDto) GetIsBound() bool {
-	if o == nil || IsNil(o.IsBound) {
-		var ret bool
-		return ret
-	}
-	return *o.IsBound
-}
-
-// GetIsBoundOk returns a tuple with the IsBound field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationDropdownDto) GetIsBoundOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsBound) {
-		return nil, false
-	}
-	return o.IsBound, true
-}
-
-// HasIsBound returns a boolean if a field has been set.
-func (o *OrganizationDropdownDto) HasIsBound() bool {
-	if o != nil && !IsNil(o.IsBound) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsBound gets a reference to the given bool and assigns it to the IsBound field.
-func (o *OrganizationDropdownDto) SetIsBound(v bool) {
-	o.IsBound = &v
-}
-
 // GetDiscountRate returns the DiscountRate field value if set, zero value otherwise.
 func (o *OrganizationDropdownDto) GetDiscountRate() float64 {
 	if o == nil || IsNil(o.DiscountRate) {
@@ -232,9 +199,6 @@ func (o OrganizationDropdownDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsInfra) {
 		toSerialize["isInfra"] = o.IsInfra
-	}
-	if !IsNil(o.IsBound) {
-		toSerialize["isBound"] = o.IsBound
 	}
 	if !IsNil(o.DiscountRate) {
 		toSerialize["discountRate"] = o.DiscountRate

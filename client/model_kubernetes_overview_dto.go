@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubernetesOverviewDto type satisfies the MappedNullable interface at compile time
@@ -20,22 +22,32 @@ var _ MappedNullable = &KubernetesOverviewDto{}
 
 // KubernetesOverviewDto struct for KubernetesOverviewDto
 type KubernetesOverviewDto struct {
-	ProjectId *int32 `json:"projectId,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
-	HealthyPods *int32 `json:"healthyPods,omitempty"`
-	UnhealthyPods *int32 `json:"unhealthyPods,omitempty"`
-	HealthyNodes *int32 `json:"healthyNodes,omitempty"`
-	UnhealthyNodes *int32 `json:"unhealthyNodes,omitempty"`
-	AlertsCount *int32 `json:"alertsCount,omitempty"`
-	KubernetesHealth NullableString `json:"kubernetesHealth,omitempty"`
+	ProjectId int32 `json:"projectId"`
+	ProjectName string `json:"projectName"`
+	HealthyPods int32 `json:"healthyPods"`
+	UnhealthyPods int32 `json:"unhealthyPods"`
+	HealthyNodes int32 `json:"healthyNodes"`
+	UnhealthyNodes int32 `json:"unhealthyNodes"`
+	AlertsCount int32 `json:"alertsCount"`
+	KubernetesHealth NullableString `json:"kubernetesHealth"`
 }
+
+type _KubernetesOverviewDto KubernetesOverviewDto
 
 // NewKubernetesOverviewDto instantiates a new KubernetesOverviewDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesOverviewDto() *KubernetesOverviewDto {
+func NewKubernetesOverviewDto(projectId int32, projectName string, healthyPods int32, unhealthyPods int32, healthyNodes int32, unhealthyNodes int32, alertsCount int32, kubernetesHealth NullableString) *KubernetesOverviewDto {
 	this := KubernetesOverviewDto{}
+	this.ProjectId = projectId
+	this.ProjectName = projectName
+	this.HealthyPods = healthyPods
+	this.UnhealthyPods = unhealthyPods
+	this.HealthyNodes = healthyNodes
+	this.UnhealthyNodes = unhealthyNodes
+	this.AlertsCount = alertsCount
+	this.KubernetesHealth = kubernetesHealth
 	return &this
 }
 
@@ -47,250 +59,186 @@ func NewKubernetesOverviewDtoWithDefaults() *KubernetesOverviewDto {
 	return &this
 }
 
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+// GetProjectId returns the ProjectId field value
 func (o *KubernetesOverviewDto) GetProjectId() int32 {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ProjectId
+
+	return o.ProjectId
 }
 
-// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// GetProjectIdOk returns a tuple with the ProjectId field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesOverviewDto) GetProjectIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectId, true
+	return &o.ProjectId, true
 }
 
-// HasProjectId returns a boolean if a field has been set.
-func (o *KubernetesOverviewDto) HasProjectId() bool {
-	if o != nil && !IsNil(o.ProjectId) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
+// SetProjectId sets field value
 func (o *KubernetesOverviewDto) SetProjectId(v int32) {
-	o.ProjectId = &v
+	o.ProjectId = v
 }
 
-// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjectName returns the ProjectName field value
 func (o *KubernetesOverviewDto) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName.Get()
+
+	return o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
+// GetProjectNameOk returns a tuple with the ProjectName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesOverviewDto) GetProjectNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName.Get(), o.ProjectName.IsSet()
+	return &o.ProjectName, true
 }
 
-// HasProjectName returns a boolean if a field has been set.
-func (o *KubernetesOverviewDto) HasProjectName() bool {
-	if o != nil && o.ProjectName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
+// SetProjectName sets field value
 func (o *KubernetesOverviewDto) SetProjectName(v string) {
-	o.ProjectName.Set(&v)
-}
-// SetProjectNameNil sets the value for ProjectName to be an explicit nil
-func (o *KubernetesOverviewDto) SetProjectNameNil() {
-	o.ProjectName.Set(nil)
+	o.ProjectName = v
 }
 
-// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
-func (o *KubernetesOverviewDto) UnsetProjectName() {
-	o.ProjectName.Unset()
-}
-
-// GetHealthyPods returns the HealthyPods field value if set, zero value otherwise.
+// GetHealthyPods returns the HealthyPods field value
 func (o *KubernetesOverviewDto) GetHealthyPods() int32 {
-	if o == nil || IsNil(o.HealthyPods) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.HealthyPods
+
+	return o.HealthyPods
 }
 
-// GetHealthyPodsOk returns a tuple with the HealthyPods field value if set, nil otherwise
+// GetHealthyPodsOk returns a tuple with the HealthyPods field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesOverviewDto) GetHealthyPodsOk() (*int32, bool) {
-	if o == nil || IsNil(o.HealthyPods) {
+	if o == nil {
 		return nil, false
 	}
-	return o.HealthyPods, true
+	return &o.HealthyPods, true
 }
 
-// HasHealthyPods returns a boolean if a field has been set.
-func (o *KubernetesOverviewDto) HasHealthyPods() bool {
-	if o != nil && !IsNil(o.HealthyPods) {
-		return true
-	}
-
-	return false
-}
-
-// SetHealthyPods gets a reference to the given int32 and assigns it to the HealthyPods field.
+// SetHealthyPods sets field value
 func (o *KubernetesOverviewDto) SetHealthyPods(v int32) {
-	o.HealthyPods = &v
+	o.HealthyPods = v
 }
 
-// GetUnhealthyPods returns the UnhealthyPods field value if set, zero value otherwise.
+// GetUnhealthyPods returns the UnhealthyPods field value
 func (o *KubernetesOverviewDto) GetUnhealthyPods() int32 {
-	if o == nil || IsNil(o.UnhealthyPods) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.UnhealthyPods
+
+	return o.UnhealthyPods
 }
 
-// GetUnhealthyPodsOk returns a tuple with the UnhealthyPods field value if set, nil otherwise
+// GetUnhealthyPodsOk returns a tuple with the UnhealthyPods field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesOverviewDto) GetUnhealthyPodsOk() (*int32, bool) {
-	if o == nil || IsNil(o.UnhealthyPods) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UnhealthyPods, true
+	return &o.UnhealthyPods, true
 }
 
-// HasUnhealthyPods returns a boolean if a field has been set.
-func (o *KubernetesOverviewDto) HasUnhealthyPods() bool {
-	if o != nil && !IsNil(o.UnhealthyPods) {
-		return true
-	}
-
-	return false
-}
-
-// SetUnhealthyPods gets a reference to the given int32 and assigns it to the UnhealthyPods field.
+// SetUnhealthyPods sets field value
 func (o *KubernetesOverviewDto) SetUnhealthyPods(v int32) {
-	o.UnhealthyPods = &v
+	o.UnhealthyPods = v
 }
 
-// GetHealthyNodes returns the HealthyNodes field value if set, zero value otherwise.
+// GetHealthyNodes returns the HealthyNodes field value
 func (o *KubernetesOverviewDto) GetHealthyNodes() int32 {
-	if o == nil || IsNil(o.HealthyNodes) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.HealthyNodes
+
+	return o.HealthyNodes
 }
 
-// GetHealthyNodesOk returns a tuple with the HealthyNodes field value if set, nil otherwise
+// GetHealthyNodesOk returns a tuple with the HealthyNodes field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesOverviewDto) GetHealthyNodesOk() (*int32, bool) {
-	if o == nil || IsNil(o.HealthyNodes) {
+	if o == nil {
 		return nil, false
 	}
-	return o.HealthyNodes, true
+	return &o.HealthyNodes, true
 }
 
-// HasHealthyNodes returns a boolean if a field has been set.
-func (o *KubernetesOverviewDto) HasHealthyNodes() bool {
-	if o != nil && !IsNil(o.HealthyNodes) {
-		return true
-	}
-
-	return false
-}
-
-// SetHealthyNodes gets a reference to the given int32 and assigns it to the HealthyNodes field.
+// SetHealthyNodes sets field value
 func (o *KubernetesOverviewDto) SetHealthyNodes(v int32) {
-	o.HealthyNodes = &v
+	o.HealthyNodes = v
 }
 
-// GetUnhealthyNodes returns the UnhealthyNodes field value if set, zero value otherwise.
+// GetUnhealthyNodes returns the UnhealthyNodes field value
 func (o *KubernetesOverviewDto) GetUnhealthyNodes() int32 {
-	if o == nil || IsNil(o.UnhealthyNodes) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.UnhealthyNodes
+
+	return o.UnhealthyNodes
 }
 
-// GetUnhealthyNodesOk returns a tuple with the UnhealthyNodes field value if set, nil otherwise
+// GetUnhealthyNodesOk returns a tuple with the UnhealthyNodes field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesOverviewDto) GetUnhealthyNodesOk() (*int32, bool) {
-	if o == nil || IsNil(o.UnhealthyNodes) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UnhealthyNodes, true
+	return &o.UnhealthyNodes, true
 }
 
-// HasUnhealthyNodes returns a boolean if a field has been set.
-func (o *KubernetesOverviewDto) HasUnhealthyNodes() bool {
-	if o != nil && !IsNil(o.UnhealthyNodes) {
-		return true
-	}
-
-	return false
-}
-
-// SetUnhealthyNodes gets a reference to the given int32 and assigns it to the UnhealthyNodes field.
+// SetUnhealthyNodes sets field value
 func (o *KubernetesOverviewDto) SetUnhealthyNodes(v int32) {
-	o.UnhealthyNodes = &v
+	o.UnhealthyNodes = v
 }
 
-// GetAlertsCount returns the AlertsCount field value if set, zero value otherwise.
+// GetAlertsCount returns the AlertsCount field value
 func (o *KubernetesOverviewDto) GetAlertsCount() int32 {
-	if o == nil || IsNil(o.AlertsCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.AlertsCount
+
+	return o.AlertsCount
 }
 
-// GetAlertsCountOk returns a tuple with the AlertsCount field value if set, nil otherwise
+// GetAlertsCountOk returns a tuple with the AlertsCount field value
 // and a boolean to check if the value has been set.
 func (o *KubernetesOverviewDto) GetAlertsCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.AlertsCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AlertsCount, true
+	return &o.AlertsCount, true
 }
 
-// HasAlertsCount returns a boolean if a field has been set.
-func (o *KubernetesOverviewDto) HasAlertsCount() bool {
-	if o != nil && !IsNil(o.AlertsCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetAlertsCount gets a reference to the given int32 and assigns it to the AlertsCount field.
+// SetAlertsCount sets field value
 func (o *KubernetesOverviewDto) SetAlertsCount(v int32) {
-	o.AlertsCount = &v
+	o.AlertsCount = v
 }
 
-// GetKubernetesHealth returns the KubernetesHealth field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubernetesHealth returns the KubernetesHealth field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesOverviewDto) GetKubernetesHealth() string {
-	if o == nil || IsNil(o.KubernetesHealth.Get()) {
+	if o == nil || o.KubernetesHealth.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.KubernetesHealth.Get()
 }
 
-// GetKubernetesHealthOk returns a tuple with the KubernetesHealth field value if set, nil otherwise
+// GetKubernetesHealthOk returns a tuple with the KubernetesHealth field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesOverviewDto) GetKubernetesHealthOk() (*string, bool) {
@@ -300,27 +248,9 @@ func (o *KubernetesOverviewDto) GetKubernetesHealthOk() (*string, bool) {
 	return o.KubernetesHealth.Get(), o.KubernetesHealth.IsSet()
 }
 
-// HasKubernetesHealth returns a boolean if a field has been set.
-func (o *KubernetesOverviewDto) HasKubernetesHealth() bool {
-	if o != nil && o.KubernetesHealth.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetKubernetesHealth gets a reference to the given NullableString and assigns it to the KubernetesHealth field.
+// SetKubernetesHealth sets field value
 func (o *KubernetesOverviewDto) SetKubernetesHealth(v string) {
 	o.KubernetesHealth.Set(&v)
-}
-// SetKubernetesHealthNil sets the value for KubernetesHealth to be an explicit nil
-func (o *KubernetesOverviewDto) SetKubernetesHealthNil() {
-	o.KubernetesHealth.Set(nil)
-}
-
-// UnsetKubernetesHealth ensures that no value is present for KubernetesHealth, not even an explicit nil
-func (o *KubernetesOverviewDto) UnsetKubernetesHealth() {
-	o.KubernetesHealth.Unset()
 }
 
 func (o KubernetesOverviewDto) MarshalJSON() ([]byte, error) {
@@ -333,31 +263,59 @@ func (o KubernetesOverviewDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesOverviewDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ProjectId) {
-		toSerialize["projectId"] = o.ProjectId
-	}
-	if o.ProjectName.IsSet() {
-		toSerialize["projectName"] = o.ProjectName.Get()
-	}
-	if !IsNil(o.HealthyPods) {
-		toSerialize["healthyPods"] = o.HealthyPods
-	}
-	if !IsNil(o.UnhealthyPods) {
-		toSerialize["unhealthyPods"] = o.UnhealthyPods
-	}
-	if !IsNil(o.HealthyNodes) {
-		toSerialize["healthyNodes"] = o.HealthyNodes
-	}
-	if !IsNil(o.UnhealthyNodes) {
-		toSerialize["unhealthyNodes"] = o.UnhealthyNodes
-	}
-	if !IsNil(o.AlertsCount) {
-		toSerialize["alertsCount"] = o.AlertsCount
-	}
-	if o.KubernetesHealth.IsSet() {
-		toSerialize["kubernetesHealth"] = o.KubernetesHealth.Get()
-	}
+	toSerialize["projectId"] = o.ProjectId
+	toSerialize["projectName"] = o.ProjectName
+	toSerialize["healthyPods"] = o.HealthyPods
+	toSerialize["unhealthyPods"] = o.UnhealthyPods
+	toSerialize["healthyNodes"] = o.HealthyNodes
+	toSerialize["unhealthyNodes"] = o.UnhealthyNodes
+	toSerialize["alertsCount"] = o.AlertsCount
+	toSerialize["kubernetesHealth"] = o.KubernetesHealth.Get()
 	return toSerialize, nil
+}
+
+func (o *KubernetesOverviewDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"projectId",
+		"projectName",
+		"healthyPods",
+		"unhealthyPods",
+		"healthyNodes",
+		"unhealthyNodes",
+		"alertsCount",
+		"kubernetesHealth",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubernetesOverviewDto := _KubernetesOverviewDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesOverviewDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesOverviewDto(varKubernetesOverviewDto)
+
+	return err
 }
 
 type NullableKubernetesOverviewDto struct {

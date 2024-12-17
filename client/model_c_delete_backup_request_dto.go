@@ -14,6 +14,8 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CDeleteBackupRequestDto type satisfies the MappedNullable interface at compile time
@@ -21,19 +23,26 @@ var _ MappedNullable = &CDeleteBackupRequestDto{}
 
 // CDeleteBackupRequestDto struct for CDeleteBackupRequestDto
 type CDeleteBackupRequestDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	CreatedAt NullableTime `json:"createdAt,omitempty"`
-	BackupName NullableString `json:"backupName,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Phase NullableString `json:"phase,omitempty"`
+	MetadataName string `json:"metadataName"`
+	CreatedAt NullableTime `json:"createdAt"`
+	BackupName string `json:"backupName"`
+	Namespace string `json:"namespace"`
+	Phase NullableString `json:"phase"`
 }
+
+type _CDeleteBackupRequestDto CDeleteBackupRequestDto
 
 // NewCDeleteBackupRequestDto instantiates a new CDeleteBackupRequestDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCDeleteBackupRequestDto() *CDeleteBackupRequestDto {
+func NewCDeleteBackupRequestDto(metadataName string, createdAt NullableTime, backupName string, namespace string, phase NullableString) *CDeleteBackupRequestDto {
 	this := CDeleteBackupRequestDto{}
+	this.MetadataName = metadataName
+	this.CreatedAt = createdAt
+	this.BackupName = backupName
+	this.Namespace = namespace
+	this.Phase = phase
 	return &this
 }
 
@@ -45,58 +54,42 @@ func NewCDeleteBackupRequestDtoWithDefaults() *CDeleteBackupRequestDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value
 func (o *CDeleteBackupRequestDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName.Get()
+
+	return o.MetadataName
 }
 
-// GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
+// GetMetadataNameOk returns a tuple with the MetadataName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CDeleteBackupRequestDto) GetMetadataNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.MetadataName.Get(), o.MetadataName.IsSet()
+	return &o.MetadataName, true
 }
 
-// HasMetadataName returns a boolean if a field has been set.
-func (o *CDeleteBackupRequestDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName sets field value
 func (o *CDeleteBackupRequestDto) SetMetadataName(v string) {
-	o.MetadataName.Set(&v)
-}
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *CDeleteBackupRequestDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
+	o.MetadataName = v
 }
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *CDeleteBackupRequestDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
+// If the value is explicit nil, the zero value for time.Time will be returned
 func (o *CDeleteBackupRequestDto) GetCreatedAt() time.Time {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || o.CreatedAt.Get() == nil {
 		var ret time.Time
 		return ret
 	}
+
 	return *o.CreatedAt.Get()
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CDeleteBackupRequestDto) GetCreatedAtOk() (*time.Time, bool) {
@@ -106,123 +99,71 @@ func (o *CDeleteBackupRequestDto) GetCreatedAtOk() (*time.Time, bool) {
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *CDeleteBackupRequestDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableTime and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *CDeleteBackupRequestDto) SetCreatedAt(v time.Time) {
 	o.CreatedAt.Set(&v)
 }
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *CDeleteBackupRequestDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *CDeleteBackupRequestDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetBackupName returns the BackupName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBackupName returns the BackupName field value
 func (o *CDeleteBackupRequestDto) GetBackupName() string {
-	if o == nil || IsNil(o.BackupName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.BackupName.Get()
+
+	return o.BackupName
 }
 
-// GetBackupNameOk returns a tuple with the BackupName field value if set, nil otherwise
+// GetBackupNameOk returns a tuple with the BackupName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CDeleteBackupRequestDto) GetBackupNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.BackupName.Get(), o.BackupName.IsSet()
+	return &o.BackupName, true
 }
 
-// HasBackupName returns a boolean if a field has been set.
-func (o *CDeleteBackupRequestDto) HasBackupName() bool {
-	if o != nil && o.BackupName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBackupName gets a reference to the given NullableString and assigns it to the BackupName field.
+// SetBackupName sets field value
 func (o *CDeleteBackupRequestDto) SetBackupName(v string) {
-	o.BackupName.Set(&v)
-}
-// SetBackupNameNil sets the value for BackupName to be an explicit nil
-func (o *CDeleteBackupRequestDto) SetBackupNameNil() {
-	o.BackupName.Set(nil)
+	o.BackupName = v
 }
 
-// UnsetBackupName ensures that no value is present for BackupName, not even an explicit nil
-func (o *CDeleteBackupRequestDto) UnsetBackupName() {
-	o.BackupName.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value
 func (o *CDeleteBackupRequestDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+
+	return o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// GetNamespaceOk returns a tuple with the Namespace field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CDeleteBackupRequestDto) GetNamespaceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return &o.Namespace, true
 }
 
-// HasNamespace returns a boolean if a field has been set.
-func (o *CDeleteBackupRequestDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace sets field value
 func (o *CDeleteBackupRequestDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *CDeleteBackupRequestDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *CDeleteBackupRequestDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetPhase returns the Phase field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPhase returns the Phase field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CDeleteBackupRequestDto) GetPhase() string {
-	if o == nil || IsNil(o.Phase.Get()) {
+	if o == nil || o.Phase.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Phase.Get()
 }
 
-// GetPhaseOk returns a tuple with the Phase field value if set, nil otherwise
+// GetPhaseOk returns a tuple with the Phase field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CDeleteBackupRequestDto) GetPhaseOk() (*string, bool) {
@@ -232,27 +173,9 @@ func (o *CDeleteBackupRequestDto) GetPhaseOk() (*string, bool) {
 	return o.Phase.Get(), o.Phase.IsSet()
 }
 
-// HasPhase returns a boolean if a field has been set.
-func (o *CDeleteBackupRequestDto) HasPhase() bool {
-	if o != nil && o.Phase.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPhase gets a reference to the given NullableString and assigns it to the Phase field.
+// SetPhase sets field value
 func (o *CDeleteBackupRequestDto) SetPhase(v string) {
 	o.Phase.Set(&v)
-}
-// SetPhaseNil sets the value for Phase to be an explicit nil
-func (o *CDeleteBackupRequestDto) SetPhaseNil() {
-	o.Phase.Set(nil)
-}
-
-// UnsetPhase ensures that no value is present for Phase, not even an explicit nil
-func (o *CDeleteBackupRequestDto) UnsetPhase() {
-	o.Phase.Unset()
 }
 
 func (o CDeleteBackupRequestDto) MarshalJSON() ([]byte, error) {
@@ -265,22 +188,53 @@ func (o CDeleteBackupRequestDto) MarshalJSON() ([]byte, error) {
 
 func (o CDeleteBackupRequestDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if o.BackupName.IsSet() {
-		toSerialize["backupName"] = o.BackupName.Get()
-	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
-	}
-	if o.Phase.IsSet() {
-		toSerialize["phase"] = o.Phase.Get()
-	}
+	toSerialize["metadataName"] = o.MetadataName
+	toSerialize["createdAt"] = o.CreatedAt.Get()
+	toSerialize["backupName"] = o.BackupName
+	toSerialize["namespace"] = o.Namespace
+	toSerialize["phase"] = o.Phase.Get()
 	return toSerialize, nil
+}
+
+func (o *CDeleteBackupRequestDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"metadataName",
+		"createdAt",
+		"backupName",
+		"namespace",
+		"phase",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCDeleteBackupRequestDto := _CDeleteBackupRequestDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCDeleteBackupRequestDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CDeleteBackupRequestDto(varCDeleteBackupRequestDto)
+
+	return err
 }
 
 type NullableCDeleteBackupRequestDto struct {

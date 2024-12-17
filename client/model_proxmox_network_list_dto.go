@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ProxmoxNetworkListDto type satisfies the MappedNullable interface at compile time
@@ -20,22 +22,32 @@ var _ MappedNullable = &ProxmoxNetworkListDto{}
 
 // ProxmoxNetworkListDto struct for ProxmoxNetworkListDto
 type ProxmoxNetworkListDto struct {
-	Bridge NullableString `json:"bridge,omitempty"`
-	Gateway NullableString `json:"gateway,omitempty"`
-	IpAddress NullableString `json:"ipAddress,omitempty"`
-	NetMask *int32 `json:"netMask,omitempty"`
-	BeginAllocationRange NullableString `json:"beginAllocationRange,omitempty"`
-	EndAllocationRange NullableString `json:"endAllocationRange,omitempty"`
-	IsPrivate *bool `json:"isPrivate,omitempty"`
-	IsVirtualLbNetwork *bool `json:"isVirtualLbNetwork,omitempty"`
+	Bridge NullableString `json:"bridge"`
+	Gateway NullableString `json:"gateway"`
+	IpAddress NullableString `json:"ipAddress"`
+	NetMask int32 `json:"netMask"`
+	BeginAllocationRange NullableString `json:"beginAllocationRange"`
+	EndAllocationRange NullableString `json:"endAllocationRange"`
+	IsPrivate bool `json:"isPrivate"`
+	IsVirtualLbNetwork bool `json:"isVirtualLbNetwork"`
 }
+
+type _ProxmoxNetworkListDto ProxmoxNetworkListDto
 
 // NewProxmoxNetworkListDto instantiates a new ProxmoxNetworkListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProxmoxNetworkListDto() *ProxmoxNetworkListDto {
+func NewProxmoxNetworkListDto(bridge NullableString, gateway NullableString, ipAddress NullableString, netMask int32, beginAllocationRange NullableString, endAllocationRange NullableString, isPrivate bool, isVirtualLbNetwork bool) *ProxmoxNetworkListDto {
 	this := ProxmoxNetworkListDto{}
+	this.Bridge = bridge
+	this.Gateway = gateway
+	this.IpAddress = ipAddress
+	this.NetMask = netMask
+	this.BeginAllocationRange = beginAllocationRange
+	this.EndAllocationRange = endAllocationRange
+	this.IsPrivate = isPrivate
+	this.IsVirtualLbNetwork = isVirtualLbNetwork
 	return &this
 }
 
@@ -47,16 +59,18 @@ func NewProxmoxNetworkListDtoWithDefaults() *ProxmoxNetworkListDto {
 	return &this
 }
 
-// GetBridge returns the Bridge field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBridge returns the Bridge field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProxmoxNetworkListDto) GetBridge() string {
-	if o == nil || IsNil(o.Bridge.Get()) {
+	if o == nil || o.Bridge.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Bridge.Get()
 }
 
-// GetBridgeOk returns a tuple with the Bridge field value if set, nil otherwise
+// GetBridgeOk returns a tuple with the Bridge field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxmoxNetworkListDto) GetBridgeOk() (*string, bool) {
@@ -66,39 +80,23 @@ func (o *ProxmoxNetworkListDto) GetBridgeOk() (*string, bool) {
 	return o.Bridge.Get(), o.Bridge.IsSet()
 }
 
-// HasBridge returns a boolean if a field has been set.
-func (o *ProxmoxNetworkListDto) HasBridge() bool {
-	if o != nil && o.Bridge.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBridge gets a reference to the given NullableString and assigns it to the Bridge field.
+// SetBridge sets field value
 func (o *ProxmoxNetworkListDto) SetBridge(v string) {
 	o.Bridge.Set(&v)
 }
-// SetBridgeNil sets the value for Bridge to be an explicit nil
-func (o *ProxmoxNetworkListDto) SetBridgeNil() {
-	o.Bridge.Set(nil)
-}
 
-// UnsetBridge ensures that no value is present for Bridge, not even an explicit nil
-func (o *ProxmoxNetworkListDto) UnsetBridge() {
-	o.Bridge.Unset()
-}
-
-// GetGateway returns the Gateway field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetGateway returns the Gateway field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProxmoxNetworkListDto) GetGateway() string {
-	if o == nil || IsNil(o.Gateway.Get()) {
+	if o == nil || o.Gateway.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Gateway.Get()
 }
 
-// GetGatewayOk returns a tuple with the Gateway field value if set, nil otherwise
+// GetGatewayOk returns a tuple with the Gateway field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxmoxNetworkListDto) GetGatewayOk() (*string, bool) {
@@ -108,39 +106,23 @@ func (o *ProxmoxNetworkListDto) GetGatewayOk() (*string, bool) {
 	return o.Gateway.Get(), o.Gateway.IsSet()
 }
 
-// HasGateway returns a boolean if a field has been set.
-func (o *ProxmoxNetworkListDto) HasGateway() bool {
-	if o != nil && o.Gateway.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetGateway gets a reference to the given NullableString and assigns it to the Gateway field.
+// SetGateway sets field value
 func (o *ProxmoxNetworkListDto) SetGateway(v string) {
 	o.Gateway.Set(&v)
 }
-// SetGatewayNil sets the value for Gateway to be an explicit nil
-func (o *ProxmoxNetworkListDto) SetGatewayNil() {
-	o.Gateway.Set(nil)
-}
 
-// UnsetGateway ensures that no value is present for Gateway, not even an explicit nil
-func (o *ProxmoxNetworkListDto) UnsetGateway() {
-	o.Gateway.Unset()
-}
-
-// GetIpAddress returns the IpAddress field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIpAddress returns the IpAddress field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProxmoxNetworkListDto) GetIpAddress() string {
-	if o == nil || IsNil(o.IpAddress.Get()) {
+	if o == nil || o.IpAddress.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.IpAddress.Get()
 }
 
-// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
+// GetIpAddressOk returns a tuple with the IpAddress field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxmoxNetworkListDto) GetIpAddressOk() (*string, bool) {
@@ -150,71 +132,47 @@ func (o *ProxmoxNetworkListDto) GetIpAddressOk() (*string, bool) {
 	return o.IpAddress.Get(), o.IpAddress.IsSet()
 }
 
-// HasIpAddress returns a boolean if a field has been set.
-func (o *ProxmoxNetworkListDto) HasIpAddress() bool {
-	if o != nil && o.IpAddress.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetIpAddress gets a reference to the given NullableString and assigns it to the IpAddress field.
+// SetIpAddress sets field value
 func (o *ProxmoxNetworkListDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
-// SetIpAddressNil sets the value for IpAddress to be an explicit nil
-func (o *ProxmoxNetworkListDto) SetIpAddressNil() {
-	o.IpAddress.Set(nil)
-}
 
-// UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
-func (o *ProxmoxNetworkListDto) UnsetIpAddress() {
-	o.IpAddress.Unset()
-}
-
-// GetNetMask returns the NetMask field value if set, zero value otherwise.
+// GetNetMask returns the NetMask field value
 func (o *ProxmoxNetworkListDto) GetNetMask() int32 {
-	if o == nil || IsNil(o.NetMask) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.NetMask
+
+	return o.NetMask
 }
 
-// GetNetMaskOk returns a tuple with the NetMask field value if set, nil otherwise
+// GetNetMaskOk returns a tuple with the NetMask field value
 // and a boolean to check if the value has been set.
 func (o *ProxmoxNetworkListDto) GetNetMaskOk() (*int32, bool) {
-	if o == nil || IsNil(o.NetMask) {
+	if o == nil {
 		return nil, false
 	}
-	return o.NetMask, true
+	return &o.NetMask, true
 }
 
-// HasNetMask returns a boolean if a field has been set.
-func (o *ProxmoxNetworkListDto) HasNetMask() bool {
-	if o != nil && !IsNil(o.NetMask) {
-		return true
-	}
-
-	return false
-}
-
-// SetNetMask gets a reference to the given int32 and assigns it to the NetMask field.
+// SetNetMask sets field value
 func (o *ProxmoxNetworkListDto) SetNetMask(v int32) {
-	o.NetMask = &v
+	o.NetMask = v
 }
 
-// GetBeginAllocationRange returns the BeginAllocationRange field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetBeginAllocationRange returns the BeginAllocationRange field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProxmoxNetworkListDto) GetBeginAllocationRange() string {
-	if o == nil || IsNil(o.BeginAllocationRange.Get()) {
+	if o == nil || o.BeginAllocationRange.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.BeginAllocationRange.Get()
 }
 
-// GetBeginAllocationRangeOk returns a tuple with the BeginAllocationRange field value if set, nil otherwise
+// GetBeginAllocationRangeOk returns a tuple with the BeginAllocationRange field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxmoxNetworkListDto) GetBeginAllocationRangeOk() (*string, bool) {
@@ -224,39 +182,23 @@ func (o *ProxmoxNetworkListDto) GetBeginAllocationRangeOk() (*string, bool) {
 	return o.BeginAllocationRange.Get(), o.BeginAllocationRange.IsSet()
 }
 
-// HasBeginAllocationRange returns a boolean if a field has been set.
-func (o *ProxmoxNetworkListDto) HasBeginAllocationRange() bool {
-	if o != nil && o.BeginAllocationRange.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBeginAllocationRange gets a reference to the given NullableString and assigns it to the BeginAllocationRange field.
+// SetBeginAllocationRange sets field value
 func (o *ProxmoxNetworkListDto) SetBeginAllocationRange(v string) {
 	o.BeginAllocationRange.Set(&v)
 }
-// SetBeginAllocationRangeNil sets the value for BeginAllocationRange to be an explicit nil
-func (o *ProxmoxNetworkListDto) SetBeginAllocationRangeNil() {
-	o.BeginAllocationRange.Set(nil)
-}
 
-// UnsetBeginAllocationRange ensures that no value is present for BeginAllocationRange, not even an explicit nil
-func (o *ProxmoxNetworkListDto) UnsetBeginAllocationRange() {
-	o.BeginAllocationRange.Unset()
-}
-
-// GetEndAllocationRange returns the EndAllocationRange field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEndAllocationRange returns the EndAllocationRange field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProxmoxNetworkListDto) GetEndAllocationRange() string {
-	if o == nil || IsNil(o.EndAllocationRange.Get()) {
+	if o == nil || o.EndAllocationRange.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.EndAllocationRange.Get()
 }
 
-// GetEndAllocationRangeOk returns a tuple with the EndAllocationRange field value if set, nil otherwise
+// GetEndAllocationRangeOk returns a tuple with the EndAllocationRange field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProxmoxNetworkListDto) GetEndAllocationRangeOk() (*string, bool) {
@@ -266,91 +208,57 @@ func (o *ProxmoxNetworkListDto) GetEndAllocationRangeOk() (*string, bool) {
 	return o.EndAllocationRange.Get(), o.EndAllocationRange.IsSet()
 }
 
-// HasEndAllocationRange returns a boolean if a field has been set.
-func (o *ProxmoxNetworkListDto) HasEndAllocationRange() bool {
-	if o != nil && o.EndAllocationRange.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEndAllocationRange gets a reference to the given NullableString and assigns it to the EndAllocationRange field.
+// SetEndAllocationRange sets field value
 func (o *ProxmoxNetworkListDto) SetEndAllocationRange(v string) {
 	o.EndAllocationRange.Set(&v)
 }
-// SetEndAllocationRangeNil sets the value for EndAllocationRange to be an explicit nil
-func (o *ProxmoxNetworkListDto) SetEndAllocationRangeNil() {
-	o.EndAllocationRange.Set(nil)
-}
 
-// UnsetEndAllocationRange ensures that no value is present for EndAllocationRange, not even an explicit nil
-func (o *ProxmoxNetworkListDto) UnsetEndAllocationRange() {
-	o.EndAllocationRange.Unset()
-}
-
-// GetIsPrivate returns the IsPrivate field value if set, zero value otherwise.
+// GetIsPrivate returns the IsPrivate field value
 func (o *ProxmoxNetworkListDto) GetIsPrivate() bool {
-	if o == nil || IsNil(o.IsPrivate) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsPrivate
+
+	return o.IsPrivate
 }
 
-// GetIsPrivateOk returns a tuple with the IsPrivate field value if set, nil otherwise
+// GetIsPrivateOk returns a tuple with the IsPrivate field value
 // and a boolean to check if the value has been set.
 func (o *ProxmoxNetworkListDto) GetIsPrivateOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsPrivate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsPrivate, true
+	return &o.IsPrivate, true
 }
 
-// HasIsPrivate returns a boolean if a field has been set.
-func (o *ProxmoxNetworkListDto) HasIsPrivate() bool {
-	if o != nil && !IsNil(o.IsPrivate) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsPrivate gets a reference to the given bool and assigns it to the IsPrivate field.
+// SetIsPrivate sets field value
 func (o *ProxmoxNetworkListDto) SetIsPrivate(v bool) {
-	o.IsPrivate = &v
+	o.IsPrivate = v
 }
 
-// GetIsVirtualLbNetwork returns the IsVirtualLbNetwork field value if set, zero value otherwise.
+// GetIsVirtualLbNetwork returns the IsVirtualLbNetwork field value
 func (o *ProxmoxNetworkListDto) GetIsVirtualLbNetwork() bool {
-	if o == nil || IsNil(o.IsVirtualLbNetwork) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsVirtualLbNetwork
+
+	return o.IsVirtualLbNetwork
 }
 
-// GetIsVirtualLbNetworkOk returns a tuple with the IsVirtualLbNetwork field value if set, nil otherwise
+// GetIsVirtualLbNetworkOk returns a tuple with the IsVirtualLbNetwork field value
 // and a boolean to check if the value has been set.
 func (o *ProxmoxNetworkListDto) GetIsVirtualLbNetworkOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsVirtualLbNetwork) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsVirtualLbNetwork, true
+	return &o.IsVirtualLbNetwork, true
 }
 
-// HasIsVirtualLbNetwork returns a boolean if a field has been set.
-func (o *ProxmoxNetworkListDto) HasIsVirtualLbNetwork() bool {
-	if o != nil && !IsNil(o.IsVirtualLbNetwork) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsVirtualLbNetwork gets a reference to the given bool and assigns it to the IsVirtualLbNetwork field.
+// SetIsVirtualLbNetwork sets field value
 func (o *ProxmoxNetworkListDto) SetIsVirtualLbNetwork(v bool) {
-	o.IsVirtualLbNetwork = &v
+	o.IsVirtualLbNetwork = v
 }
 
 func (o ProxmoxNetworkListDto) MarshalJSON() ([]byte, error) {
@@ -363,31 +271,59 @@ func (o ProxmoxNetworkListDto) MarshalJSON() ([]byte, error) {
 
 func (o ProxmoxNetworkListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Bridge.IsSet() {
-		toSerialize["bridge"] = o.Bridge.Get()
-	}
-	if o.Gateway.IsSet() {
-		toSerialize["gateway"] = o.Gateway.Get()
-	}
-	if o.IpAddress.IsSet() {
-		toSerialize["ipAddress"] = o.IpAddress.Get()
-	}
-	if !IsNil(o.NetMask) {
-		toSerialize["netMask"] = o.NetMask
-	}
-	if o.BeginAllocationRange.IsSet() {
-		toSerialize["beginAllocationRange"] = o.BeginAllocationRange.Get()
-	}
-	if o.EndAllocationRange.IsSet() {
-		toSerialize["endAllocationRange"] = o.EndAllocationRange.Get()
-	}
-	if !IsNil(o.IsPrivate) {
-		toSerialize["isPrivate"] = o.IsPrivate
-	}
-	if !IsNil(o.IsVirtualLbNetwork) {
-		toSerialize["isVirtualLbNetwork"] = o.IsVirtualLbNetwork
-	}
+	toSerialize["bridge"] = o.Bridge.Get()
+	toSerialize["gateway"] = o.Gateway.Get()
+	toSerialize["ipAddress"] = o.IpAddress.Get()
+	toSerialize["netMask"] = o.NetMask
+	toSerialize["beginAllocationRange"] = o.BeginAllocationRange.Get()
+	toSerialize["endAllocationRange"] = o.EndAllocationRange.Get()
+	toSerialize["isPrivate"] = o.IsPrivate
+	toSerialize["isVirtualLbNetwork"] = o.IsVirtualLbNetwork
 	return toSerialize, nil
+}
+
+func (o *ProxmoxNetworkListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"bridge",
+		"gateway",
+		"ipAddress",
+		"netMask",
+		"beginAllocationRange",
+		"endAllocationRange",
+		"isPrivate",
+		"isVirtualLbNetwork",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varProxmoxNetworkListDto := _ProxmoxNetworkListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProxmoxNetworkListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProxmoxNetworkListDto(varProxmoxNetworkListDto)
+
+	return err
 }
 
 type NullableProxmoxNetworkListDto struct {

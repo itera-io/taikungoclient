@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PrivateSubscriptionList type satisfies the MappedNullable interface at compile time
@@ -20,18 +22,24 @@ var _ MappedNullable = &PrivateSubscriptionList{}
 
 // PrivateSubscriptionList struct for PrivateSubscriptionList
 type PrivateSubscriptionList struct {
-	Data []ListForPartnersDto `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
-	IsEligibleToSwitch *bool `json:"isEligibleToSwitch,omitempty"`
-	ActiveSubscriptionStatus NullableString `json:"activeSubscriptionStatus,omitempty"`
+	Data []ListForPartnersDto `json:"data"`
+	TotalCount int32 `json:"totalCount"`
+	IsEligibleToSwitch bool `json:"isEligibleToSwitch"`
+	ActiveSubscriptionStatus NullableString `json:"activeSubscriptionStatus"`
 }
+
+type _PrivateSubscriptionList PrivateSubscriptionList
 
 // NewPrivateSubscriptionList instantiates a new PrivateSubscriptionList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrivateSubscriptionList() *PrivateSubscriptionList {
+func NewPrivateSubscriptionList(data []ListForPartnersDto, totalCount int32, isEligibleToSwitch bool, activeSubscriptionStatus NullableString) *PrivateSubscriptionList {
 	this := PrivateSubscriptionList{}
+	this.Data = data
+	this.TotalCount = totalCount
+	this.IsEligibleToSwitch = isEligibleToSwitch
+	this.ActiveSubscriptionStatus = activeSubscriptionStatus
 	return &this
 }
 
@@ -43,16 +51,18 @@ func NewPrivateSubscriptionListWithDefaults() *PrivateSubscriptionList {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []ListForPartnersDto will be returned
 func (o *PrivateSubscriptionList) GetData() []ListForPartnersDto {
 	if o == nil {
 		var ret []ListForPartnersDto
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrivateSubscriptionList) GetDataOk() ([]ListForPartnersDto, bool) {
@@ -62,94 +72,71 @@ func (o *PrivateSubscriptionList) GetDataOk() ([]ListForPartnersDto, bool) {
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *PrivateSubscriptionList) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []ListForPartnersDto and assigns it to the Data field.
+// SetData sets field value
 func (o *PrivateSubscriptionList) SetData(v []ListForPartnersDto) {
 	o.Data = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value
 func (o *PrivateSubscriptionList) GetTotalCount() int32 {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.TotalCount
+
+	return o.TotalCount
 }
 
-// GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
+// GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
 func (o *PrivateSubscriptionList) GetTotalCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalCount, true
+	return &o.TotalCount, true
 }
 
-// HasTotalCount returns a boolean if a field has been set.
-func (o *PrivateSubscriptionList) HasTotalCount() bool {
-	if o != nil && !IsNil(o.TotalCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+// SetTotalCount sets field value
 func (o *PrivateSubscriptionList) SetTotalCount(v int32) {
-	o.TotalCount = &v
+	o.TotalCount = v
 }
 
-// GetIsEligibleToSwitch returns the IsEligibleToSwitch field value if set, zero value otherwise.
+// GetIsEligibleToSwitch returns the IsEligibleToSwitch field value
 func (o *PrivateSubscriptionList) GetIsEligibleToSwitch() bool {
-	if o == nil || IsNil(o.IsEligibleToSwitch) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsEligibleToSwitch
+
+	return o.IsEligibleToSwitch
 }
 
-// GetIsEligibleToSwitchOk returns a tuple with the IsEligibleToSwitch field value if set, nil otherwise
+// GetIsEligibleToSwitchOk returns a tuple with the IsEligibleToSwitch field value
 // and a boolean to check if the value has been set.
 func (o *PrivateSubscriptionList) GetIsEligibleToSwitchOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsEligibleToSwitch) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsEligibleToSwitch, true
+	return &o.IsEligibleToSwitch, true
 }
 
-// HasIsEligibleToSwitch returns a boolean if a field has been set.
-func (o *PrivateSubscriptionList) HasIsEligibleToSwitch() bool {
-	if o != nil && !IsNil(o.IsEligibleToSwitch) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsEligibleToSwitch gets a reference to the given bool and assigns it to the IsEligibleToSwitch field.
+// SetIsEligibleToSwitch sets field value
 func (o *PrivateSubscriptionList) SetIsEligibleToSwitch(v bool) {
-	o.IsEligibleToSwitch = &v
+	o.IsEligibleToSwitch = v
 }
 
-// GetActiveSubscriptionStatus returns the ActiveSubscriptionStatus field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetActiveSubscriptionStatus returns the ActiveSubscriptionStatus field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PrivateSubscriptionList) GetActiveSubscriptionStatus() string {
-	if o == nil || IsNil(o.ActiveSubscriptionStatus.Get()) {
+	if o == nil || o.ActiveSubscriptionStatus.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.ActiveSubscriptionStatus.Get()
 }
 
-// GetActiveSubscriptionStatusOk returns a tuple with the ActiveSubscriptionStatus field value if set, nil otherwise
+// GetActiveSubscriptionStatusOk returns a tuple with the ActiveSubscriptionStatus field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrivateSubscriptionList) GetActiveSubscriptionStatusOk() (*string, bool) {
@@ -159,27 +146,9 @@ func (o *PrivateSubscriptionList) GetActiveSubscriptionStatusOk() (*string, bool
 	return o.ActiveSubscriptionStatus.Get(), o.ActiveSubscriptionStatus.IsSet()
 }
 
-// HasActiveSubscriptionStatus returns a boolean if a field has been set.
-func (o *PrivateSubscriptionList) HasActiveSubscriptionStatus() bool {
-	if o != nil && o.ActiveSubscriptionStatus.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetActiveSubscriptionStatus gets a reference to the given NullableString and assigns it to the ActiveSubscriptionStatus field.
+// SetActiveSubscriptionStatus sets field value
 func (o *PrivateSubscriptionList) SetActiveSubscriptionStatus(v string) {
 	o.ActiveSubscriptionStatus.Set(&v)
-}
-// SetActiveSubscriptionStatusNil sets the value for ActiveSubscriptionStatus to be an explicit nil
-func (o *PrivateSubscriptionList) SetActiveSubscriptionStatusNil() {
-	o.ActiveSubscriptionStatus.Set(nil)
-}
-
-// UnsetActiveSubscriptionStatus ensures that no value is present for ActiveSubscriptionStatus, not even an explicit nil
-func (o *PrivateSubscriptionList) UnsetActiveSubscriptionStatus() {
-	o.ActiveSubscriptionStatus.Unset()
 }
 
 func (o PrivateSubscriptionList) MarshalJSON() ([]byte, error) {
@@ -195,16 +164,50 @@ func (o PrivateSubscriptionList) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	if !IsNil(o.TotalCount) {
-		toSerialize["totalCount"] = o.TotalCount
-	}
-	if !IsNil(o.IsEligibleToSwitch) {
-		toSerialize["isEligibleToSwitch"] = o.IsEligibleToSwitch
-	}
-	if o.ActiveSubscriptionStatus.IsSet() {
-		toSerialize["activeSubscriptionStatus"] = o.ActiveSubscriptionStatus.Get()
-	}
+	toSerialize["totalCount"] = o.TotalCount
+	toSerialize["isEligibleToSwitch"] = o.IsEligibleToSwitch
+	toSerialize["activeSubscriptionStatus"] = o.ActiveSubscriptionStatus.Get()
 	return toSerialize, nil
+}
+
+func (o *PrivateSubscriptionList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+		"totalCount",
+		"isEligibleToSwitch",
+		"activeSubscriptionStatus",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPrivateSubscriptionList := _PrivateSubscriptionList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrivateSubscriptionList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrivateSubscriptionList(varPrivateSubscriptionList)
+
+	return err
 }
 
 type NullablePrivateSubscriptionList struct {

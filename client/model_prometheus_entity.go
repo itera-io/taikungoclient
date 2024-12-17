@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PrometheusEntity type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,22 @@ var _ MappedNullable = &PrometheusEntity{}
 
 // PrometheusEntity struct for PrometheusEntity
 type PrometheusEntity struct {
-	PrometheusRuleId *int32 `json:"prometheusRuleId,omitempty"`
-	PrometheusRuleName NullableString `json:"prometheusRuleName,omitempty"`
-	RuleDiscountRate *float64 `json:"ruleDiscountRate,omitempty"`
+	PrometheusRuleId int32 `json:"prometheusRuleId"`
+	PrometheusRuleName NullableString `json:"prometheusRuleName"`
+	RuleDiscountRate NullableFloat64 `json:"ruleDiscountRate"`
 }
+
+type _PrometheusEntity PrometheusEntity
 
 // NewPrometheusEntity instantiates a new PrometheusEntity object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusEntity() *PrometheusEntity {
+func NewPrometheusEntity(prometheusRuleId int32, prometheusRuleName NullableString, ruleDiscountRate NullableFloat64) *PrometheusEntity {
 	this := PrometheusEntity{}
+	this.PrometheusRuleId = prometheusRuleId
+	this.PrometheusRuleName = prometheusRuleName
+	this.RuleDiscountRate = ruleDiscountRate
 	return &this
 }
 
@@ -42,48 +49,42 @@ func NewPrometheusEntityWithDefaults() *PrometheusEntity {
 	return &this
 }
 
-// GetPrometheusRuleId returns the PrometheusRuleId field value if set, zero value otherwise.
+// GetPrometheusRuleId returns the PrometheusRuleId field value
 func (o *PrometheusEntity) GetPrometheusRuleId() int32 {
-	if o == nil || IsNil(o.PrometheusRuleId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.PrometheusRuleId
+
+	return o.PrometheusRuleId
 }
 
-// GetPrometheusRuleIdOk returns a tuple with the PrometheusRuleId field value if set, nil otherwise
+// GetPrometheusRuleIdOk returns a tuple with the PrometheusRuleId field value
 // and a boolean to check if the value has been set.
 func (o *PrometheusEntity) GetPrometheusRuleIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.PrometheusRuleId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PrometheusRuleId, true
+	return &o.PrometheusRuleId, true
 }
 
-// HasPrometheusRuleId returns a boolean if a field has been set.
-func (o *PrometheusEntity) HasPrometheusRuleId() bool {
-	if o != nil && !IsNil(o.PrometheusRuleId) {
-		return true
-	}
-
-	return false
-}
-
-// SetPrometheusRuleId gets a reference to the given int32 and assigns it to the PrometheusRuleId field.
+// SetPrometheusRuleId sets field value
 func (o *PrometheusEntity) SetPrometheusRuleId(v int32) {
-	o.PrometheusRuleId = &v
+	o.PrometheusRuleId = v
 }
 
-// GetPrometheusRuleName returns the PrometheusRuleName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPrometheusRuleName returns the PrometheusRuleName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PrometheusEntity) GetPrometheusRuleName() string {
-	if o == nil || IsNil(o.PrometheusRuleName.Get()) {
+	if o == nil || o.PrometheusRuleName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.PrometheusRuleName.Get()
 }
 
-// GetPrometheusRuleNameOk returns a tuple with the PrometheusRuleName field value if set, nil otherwise
+// GetPrometheusRuleNameOk returns a tuple with the PrometheusRuleName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusEntity) GetPrometheusRuleNameOk() (*string, bool) {
@@ -93,59 +94,35 @@ func (o *PrometheusEntity) GetPrometheusRuleNameOk() (*string, bool) {
 	return o.PrometheusRuleName.Get(), o.PrometheusRuleName.IsSet()
 }
 
-// HasPrometheusRuleName returns a boolean if a field has been set.
-func (o *PrometheusEntity) HasPrometheusRuleName() bool {
-	if o != nil && o.PrometheusRuleName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPrometheusRuleName gets a reference to the given NullableString and assigns it to the PrometheusRuleName field.
+// SetPrometheusRuleName sets field value
 func (o *PrometheusEntity) SetPrometheusRuleName(v string) {
 	o.PrometheusRuleName.Set(&v)
 }
-// SetPrometheusRuleNameNil sets the value for PrometheusRuleName to be an explicit nil
-func (o *PrometheusEntity) SetPrometheusRuleNameNil() {
-	o.PrometheusRuleName.Set(nil)
-}
 
-// UnsetPrometheusRuleName ensures that no value is present for PrometheusRuleName, not even an explicit nil
-func (o *PrometheusEntity) UnsetPrometheusRuleName() {
-	o.PrometheusRuleName.Unset()
-}
-
-// GetRuleDiscountRate returns the RuleDiscountRate field value if set, zero value otherwise.
+// GetRuleDiscountRate returns the RuleDiscountRate field value
+// If the value is explicit nil, the zero value for float64 will be returned
 func (o *PrometheusEntity) GetRuleDiscountRate() float64 {
-	if o == nil || IsNil(o.RuleDiscountRate) {
+	if o == nil || o.RuleDiscountRate.Get() == nil {
 		var ret float64
 		return ret
 	}
-	return *o.RuleDiscountRate
+
+	return *o.RuleDiscountRate.Get()
 }
 
-// GetRuleDiscountRateOk returns a tuple with the RuleDiscountRate field value if set, nil otherwise
+// GetRuleDiscountRateOk returns a tuple with the RuleDiscountRate field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PrometheusEntity) GetRuleDiscountRateOk() (*float64, bool) {
-	if o == nil || IsNil(o.RuleDiscountRate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RuleDiscountRate, true
+	return o.RuleDiscountRate.Get(), o.RuleDiscountRate.IsSet()
 }
 
-// HasRuleDiscountRate returns a boolean if a field has been set.
-func (o *PrometheusEntity) HasRuleDiscountRate() bool {
-	if o != nil && !IsNil(o.RuleDiscountRate) {
-		return true
-	}
-
-	return false
-}
-
-// SetRuleDiscountRate gets a reference to the given float64 and assigns it to the RuleDiscountRate field.
+// SetRuleDiscountRate sets field value
 func (o *PrometheusEntity) SetRuleDiscountRate(v float64) {
-	o.RuleDiscountRate = &v
+	o.RuleDiscountRate.Set(&v)
 }
 
 func (o PrometheusEntity) MarshalJSON() ([]byte, error) {
@@ -158,16 +135,49 @@ func (o PrometheusEntity) MarshalJSON() ([]byte, error) {
 
 func (o PrometheusEntity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.PrometheusRuleId) {
-		toSerialize["prometheusRuleId"] = o.PrometheusRuleId
-	}
-	if o.PrometheusRuleName.IsSet() {
-		toSerialize["prometheusRuleName"] = o.PrometheusRuleName.Get()
-	}
-	if !IsNil(o.RuleDiscountRate) {
-		toSerialize["ruleDiscountRate"] = o.RuleDiscountRate
-	}
+	toSerialize["prometheusRuleId"] = o.PrometheusRuleId
+	toSerialize["prometheusRuleName"] = o.PrometheusRuleName.Get()
+	toSerialize["ruleDiscountRate"] = o.RuleDiscountRate.Get()
 	return toSerialize, nil
+}
+
+func (o *PrometheusEntity) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"prometheusRuleId",
+		"prometheusRuleName",
+		"ruleDiscountRate",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPrometheusEntity := _PrometheusEntity{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPrometheusEntity)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PrometheusEntity(varPrometheusEntity)
+
+	return err
 }
 
 type NullablePrometheusEntity struct {

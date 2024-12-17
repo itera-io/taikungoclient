@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the NodeDto type satisfies the MappedNullable interface at compile time
@@ -20,19 +22,26 @@ var _ MappedNullable = &NodeDto{}
 
 // NodeDto struct for NodeDto
 type NodeDto struct {
-	MetadataName interface{} `json:"metadataName,omitempty"`
-	KubeletReady interface{} `json:"kubeletReady,omitempty"`
-	KubeletSufficient interface{} `json:"kubeletSufficient,omitempty"`
-	KubeletDiskPressure interface{} `json:"kubeletDiskPressure,omitempty"`
-	KubeletMemory interface{} `json:"kubeletMemory,omitempty"`
+	MetadataName interface{} `json:"metadataName"`
+	KubeletReady interface{} `json:"kubeletReady"`
+	KubeletSufficient interface{} `json:"kubeletSufficient"`
+	KubeletDiskPressure interface{} `json:"kubeletDiskPressure"`
+	KubeletMemory interface{} `json:"kubeletMemory"`
 }
+
+type _NodeDto NodeDto
 
 // NewNodeDto instantiates a new NodeDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewNodeDto() *NodeDto {
+func NewNodeDto(metadataName interface{}, kubeletReady interface{}, kubeletSufficient interface{}, kubeletDiskPressure interface{}, kubeletMemory interface{}) *NodeDto {
 	this := NodeDto{}
+	this.MetadataName = metadataName
+	this.KubeletReady = kubeletReady
+	this.KubeletSufficient = kubeletSufficient
+	this.KubeletDiskPressure = kubeletDiskPressure
+	this.KubeletMemory = kubeletMemory
 	return &this
 }
 
@@ -44,16 +53,18 @@ func NewNodeDtoWithDefaults() *NodeDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *NodeDto) GetMetadataName() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
+
 	return o.MetadataName
 }
 
-// GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
+// GetMetadataNameOk returns a tuple with the MetadataName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeDto) GetMetadataNameOk() (*interface{}, bool) {
@@ -63,30 +74,23 @@ func (o *NodeDto) GetMetadataNameOk() (*interface{}, bool) {
 	return &o.MetadataName, true
 }
 
-// HasMetadataName returns a boolean if a field has been set.
-func (o *NodeDto) HasMetadataName() bool {
-	if o != nil && !IsNil(o.MetadataName) {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadataName gets a reference to the given interface{} and assigns it to the MetadataName field.
+// SetMetadataName sets field value
 func (o *NodeDto) SetMetadataName(v interface{}) {
 	o.MetadataName = v
 }
 
-// GetKubeletReady returns the KubeletReady field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubeletReady returns the KubeletReady field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *NodeDto) GetKubeletReady() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
+
 	return o.KubeletReady
 }
 
-// GetKubeletReadyOk returns a tuple with the KubeletReady field value if set, nil otherwise
+// GetKubeletReadyOk returns a tuple with the KubeletReady field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeDto) GetKubeletReadyOk() (*interface{}, bool) {
@@ -96,30 +100,23 @@ func (o *NodeDto) GetKubeletReadyOk() (*interface{}, bool) {
 	return &o.KubeletReady, true
 }
 
-// HasKubeletReady returns a boolean if a field has been set.
-func (o *NodeDto) HasKubeletReady() bool {
-	if o != nil && !IsNil(o.KubeletReady) {
-		return true
-	}
-
-	return false
-}
-
-// SetKubeletReady gets a reference to the given interface{} and assigns it to the KubeletReady field.
+// SetKubeletReady sets field value
 func (o *NodeDto) SetKubeletReady(v interface{}) {
 	o.KubeletReady = v
 }
 
-// GetKubeletSufficient returns the KubeletSufficient field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubeletSufficient returns the KubeletSufficient field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *NodeDto) GetKubeletSufficient() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
+
 	return o.KubeletSufficient
 }
 
-// GetKubeletSufficientOk returns a tuple with the KubeletSufficient field value if set, nil otherwise
+// GetKubeletSufficientOk returns a tuple with the KubeletSufficient field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeDto) GetKubeletSufficientOk() (*interface{}, bool) {
@@ -129,30 +126,23 @@ func (o *NodeDto) GetKubeletSufficientOk() (*interface{}, bool) {
 	return &o.KubeletSufficient, true
 }
 
-// HasKubeletSufficient returns a boolean if a field has been set.
-func (o *NodeDto) HasKubeletSufficient() bool {
-	if o != nil && !IsNil(o.KubeletSufficient) {
-		return true
-	}
-
-	return false
-}
-
-// SetKubeletSufficient gets a reference to the given interface{} and assigns it to the KubeletSufficient field.
+// SetKubeletSufficient sets field value
 func (o *NodeDto) SetKubeletSufficient(v interface{}) {
 	o.KubeletSufficient = v
 }
 
-// GetKubeletDiskPressure returns the KubeletDiskPressure field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubeletDiskPressure returns the KubeletDiskPressure field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *NodeDto) GetKubeletDiskPressure() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
+
 	return o.KubeletDiskPressure
 }
 
-// GetKubeletDiskPressureOk returns a tuple with the KubeletDiskPressure field value if set, nil otherwise
+// GetKubeletDiskPressureOk returns a tuple with the KubeletDiskPressure field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeDto) GetKubeletDiskPressureOk() (*interface{}, bool) {
@@ -162,30 +152,23 @@ func (o *NodeDto) GetKubeletDiskPressureOk() (*interface{}, bool) {
 	return &o.KubeletDiskPressure, true
 }
 
-// HasKubeletDiskPressure returns a boolean if a field has been set.
-func (o *NodeDto) HasKubeletDiskPressure() bool {
-	if o != nil && !IsNil(o.KubeletDiskPressure) {
-		return true
-	}
-
-	return false
-}
-
-// SetKubeletDiskPressure gets a reference to the given interface{} and assigns it to the KubeletDiskPressure field.
+// SetKubeletDiskPressure sets field value
 func (o *NodeDto) SetKubeletDiskPressure(v interface{}) {
 	o.KubeletDiskPressure = v
 }
 
-// GetKubeletMemory returns the KubeletMemory field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubeletMemory returns the KubeletMemory field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *NodeDto) GetKubeletMemory() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
+
 	return o.KubeletMemory
 }
 
-// GetKubeletMemoryOk returns a tuple with the KubeletMemory field value if set, nil otherwise
+// GetKubeletMemoryOk returns a tuple with the KubeletMemory field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *NodeDto) GetKubeletMemoryOk() (*interface{}, bool) {
@@ -195,16 +178,7 @@ func (o *NodeDto) GetKubeletMemoryOk() (*interface{}, bool) {
 	return &o.KubeletMemory, true
 }
 
-// HasKubeletMemory returns a boolean if a field has been set.
-func (o *NodeDto) HasKubeletMemory() bool {
-	if o != nil && !IsNil(o.KubeletMemory) {
-		return true
-	}
-
-	return false
-}
-
-// SetKubeletMemory gets a reference to the given interface{} and assigns it to the KubeletMemory field.
+// SetKubeletMemory sets field value
 func (o *NodeDto) SetKubeletMemory(v interface{}) {
 	o.KubeletMemory = v
 }
@@ -235,6 +209,47 @@ func (o NodeDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["kubeletMemory"] = o.KubeletMemory
 	}
 	return toSerialize, nil
+}
+
+func (o *NodeDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"metadataName",
+		"kubeletReady",
+		"kubeletSufficient",
+		"kubeletDiskPressure",
+		"kubeletMemory",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varNodeDto := _NodeDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varNodeDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = NodeDto(varNodeDto)
+
+	return err
 }
 
 type NullableNodeDto struct {

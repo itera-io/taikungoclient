@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ExceededQuotaDto type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &ExceededQuotaDto{}
 
 // ExceededQuotaDto struct for ExceededQuotaDto
 type ExceededQuotaDto struct {
-	CloudId *int32 `json:"cloudId,omitempty"`
-	Name NullableString `json:"name,omitempty"`
+	CloudId int32 `json:"cloudId"`
+	Name NullableString `json:"name"`
 }
+
+type _ExceededQuotaDto ExceededQuotaDto
 
 // NewExceededQuotaDto instantiates a new ExceededQuotaDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExceededQuotaDto() *ExceededQuotaDto {
+func NewExceededQuotaDto(cloudId int32, name NullableString) *ExceededQuotaDto {
 	this := ExceededQuotaDto{}
+	this.CloudId = cloudId
+	this.Name = name
 	return &this
 }
 
@@ -41,48 +47,42 @@ func NewExceededQuotaDtoWithDefaults() *ExceededQuotaDto {
 	return &this
 }
 
-// GetCloudId returns the CloudId field value if set, zero value otherwise.
+// GetCloudId returns the CloudId field value
 func (o *ExceededQuotaDto) GetCloudId() int32 {
-	if o == nil || IsNil(o.CloudId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.CloudId
+
+	return o.CloudId
 }
 
-// GetCloudIdOk returns a tuple with the CloudId field value if set, nil otherwise
+// GetCloudIdOk returns a tuple with the CloudId field value
 // and a boolean to check if the value has been set.
 func (o *ExceededQuotaDto) GetCloudIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.CloudId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CloudId, true
+	return &o.CloudId, true
 }
 
-// HasCloudId returns a boolean if a field has been set.
-func (o *ExceededQuotaDto) HasCloudId() bool {
-	if o != nil && !IsNil(o.CloudId) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudId gets a reference to the given int32 and assigns it to the CloudId field.
+// SetCloudId sets field value
 func (o *ExceededQuotaDto) SetCloudId(v int32) {
-	o.CloudId = &v
+	o.CloudId = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ExceededQuotaDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ExceededQuotaDto) GetNameOk() (*string, bool) {
@@ -92,27 +92,9 @@ func (o *ExceededQuotaDto) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ExceededQuotaDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *ExceededQuotaDto) SetName(v string) {
 	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ExceededQuotaDto) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ExceededQuotaDto) UnsetName() {
-	o.Name.Unset()
 }
 
 func (o ExceededQuotaDto) MarshalJSON() ([]byte, error) {
@@ -125,13 +107,47 @@ func (o ExceededQuotaDto) MarshalJSON() ([]byte, error) {
 
 func (o ExceededQuotaDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.CloudId) {
-		toSerialize["cloudId"] = o.CloudId
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
+	toSerialize["cloudId"] = o.CloudId
+	toSerialize["name"] = o.Name.Get()
 	return toSerialize, nil
+}
+
+func (o *ExceededQuotaDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"cloudId",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varExceededQuotaDto := _ExceededQuotaDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varExceededQuotaDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ExceededQuotaDto(varExceededQuotaDto)
+
+	return err
 }
 
 type NullableExceededQuotaDto struct {

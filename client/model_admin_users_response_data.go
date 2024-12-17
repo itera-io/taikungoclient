@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AdminUsersResponseData type satisfies the MappedNullable interface at compile time
@@ -20,21 +22,30 @@ var _ MappedNullable = &AdminUsersResponseData{}
 
 // AdminUsersResponseData struct for AdminUsersResponseData
 type AdminUsersResponseData struct {
-	Id NullableString `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Email NullableString `json:"email,omitempty"`
-	Role NullableString `json:"role,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	Owner *bool `json:"owner,omitempty"`
-	Csm *bool `json:"csm,omitempty"`
+	Id NullableString `json:"id"`
+	Name NullableString `json:"name"`
+	Email NullableString `json:"email"`
+	Role UserRole `json:"role"`
+	OrganizationName NullableString `json:"organizationName"`
+	Owner bool `json:"owner"`
+	Csm bool `json:"csm"`
 }
+
+type _AdminUsersResponseData AdminUsersResponseData
 
 // NewAdminUsersResponseData instantiates a new AdminUsersResponseData object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdminUsersResponseData() *AdminUsersResponseData {
+func NewAdminUsersResponseData(id NullableString, name NullableString, email NullableString, role UserRole, organizationName NullableString, owner bool, csm bool) *AdminUsersResponseData {
 	this := AdminUsersResponseData{}
+	this.Id = id
+	this.Name = name
+	this.Email = email
+	this.Role = role
+	this.OrganizationName = organizationName
+	this.Owner = owner
+	this.Csm = csm
 	return &this
 }
 
@@ -46,16 +57,18 @@ func NewAdminUsersResponseDataWithDefaults() *AdminUsersResponseData {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetId returns the Id field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AdminUsersResponseData) GetId() string {
-	if o == nil || IsNil(o.Id.Get()) {
+	if o == nil || o.Id.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Id.Get()
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminUsersResponseData) GetIdOk() (*string, bool) {
@@ -65,39 +78,23 @@ func (o *AdminUsersResponseData) GetIdOk() (*string, bool) {
 	return o.Id.Get(), o.Id.IsSet()
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *AdminUsersResponseData) HasId() bool {
-	if o != nil && o.Id.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given NullableString and assigns it to the Id field.
+// SetId sets field value
 func (o *AdminUsersResponseData) SetId(v string) {
 	o.Id.Set(&v)
 }
-// SetIdNil sets the value for Id to be an explicit nil
-func (o *AdminUsersResponseData) SetIdNil() {
-	o.Id.Set(nil)
-}
 
-// UnsetId ensures that no value is present for Id, not even an explicit nil
-func (o *AdminUsersResponseData) UnsetId() {
-	o.Id.Unset()
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AdminUsersResponseData) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminUsersResponseData) GetNameOk() (*string, bool) {
@@ -107,39 +104,23 @@ func (o *AdminUsersResponseData) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *AdminUsersResponseData) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *AdminUsersResponseData) SetName(v string) {
 	o.Name.Set(&v)
 }
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *AdminUsersResponseData) SetNameNil() {
-	o.Name.Set(nil)
-}
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *AdminUsersResponseData) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEmail returns the Email field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AdminUsersResponseData) GetEmail() string {
-	if o == nil || IsNil(o.Email.Get()) {
+	if o == nil || o.Email.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Email.Get()
 }
 
-// GetEmailOk returns a tuple with the Email field value if set, nil otherwise
+// GetEmailOk returns a tuple with the Email field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminUsersResponseData) GetEmailOk() (*string, bool) {
@@ -149,81 +130,47 @@ func (o *AdminUsersResponseData) GetEmailOk() (*string, bool) {
 	return o.Email.Get(), o.Email.IsSet()
 }
 
-// HasEmail returns a boolean if a field has been set.
-func (o *AdminUsersResponseData) HasEmail() bool {
-	if o != nil && o.Email.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEmail gets a reference to the given NullableString and assigns it to the Email field.
+// SetEmail sets field value
 func (o *AdminUsersResponseData) SetEmail(v string) {
 	o.Email.Set(&v)
 }
-// SetEmailNil sets the value for Email to be an explicit nil
-func (o *AdminUsersResponseData) SetEmailNil() {
-	o.Email.Set(nil)
-}
 
-// UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *AdminUsersResponseData) UnsetEmail() {
-	o.Email.Unset()
-}
-
-// GetRole returns the Role field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *AdminUsersResponseData) GetRole() string {
-	if o == nil || IsNil(o.Role.Get()) {
-		var ret string
+// GetRole returns the Role field value
+func (o *AdminUsersResponseData) GetRole() UserRole {
+	if o == nil {
+		var ret UserRole
 		return ret
 	}
-	return *o.Role.Get()
+
+	return o.Role
 }
 
-// GetRoleOk returns a tuple with the Role field value if set, nil otherwise
+// GetRoleOk returns a tuple with the Role field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *AdminUsersResponseData) GetRoleOk() (*string, bool) {
+func (o *AdminUsersResponseData) GetRoleOk() (*UserRole, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Role.Get(), o.Role.IsSet()
+	return &o.Role, true
 }
 
-// HasRole returns a boolean if a field has been set.
-func (o *AdminUsersResponseData) HasRole() bool {
-	if o != nil && o.Role.IsSet() {
-		return true
-	}
-
-	return false
+// SetRole sets field value
+func (o *AdminUsersResponseData) SetRole(v UserRole) {
+	o.Role = v
 }
 
-// SetRole gets a reference to the given NullableString and assigns it to the Role field.
-func (o *AdminUsersResponseData) SetRole(v string) {
-	o.Role.Set(&v)
-}
-// SetRoleNil sets the value for Role to be an explicit nil
-func (o *AdminUsersResponseData) SetRoleNil() {
-	o.Role.Set(nil)
-}
-
-// UnsetRole ensures that no value is present for Role, not even an explicit nil
-func (o *AdminUsersResponseData) UnsetRole() {
-	o.Role.Unset()
-}
-
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AdminUsersResponseData) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || o.OrganizationName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.OrganizationName.Get()
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AdminUsersResponseData) GetOrganizationNameOk() (*string, bool) {
@@ -233,91 +180,57 @@ func (o *AdminUsersResponseData) GetOrganizationNameOk() (*string, bool) {
 	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *AdminUsersResponseData) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *AdminUsersResponseData) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *AdminUsersResponseData) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *AdminUsersResponseData) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetOwner returns the Owner field value if set, zero value otherwise.
+// GetOwner returns the Owner field value
 func (o *AdminUsersResponseData) GetOwner() bool {
-	if o == nil || IsNil(o.Owner) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Owner
+
+	return o.Owner
 }
 
-// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
 func (o *AdminUsersResponseData) GetOwnerOk() (*bool, bool) {
-	if o == nil || IsNil(o.Owner) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Owner, true
+	return &o.Owner, true
 }
 
-// HasOwner returns a boolean if a field has been set.
-func (o *AdminUsersResponseData) HasOwner() bool {
-	if o != nil && !IsNil(o.Owner) {
-		return true
-	}
-
-	return false
-}
-
-// SetOwner gets a reference to the given bool and assigns it to the Owner field.
+// SetOwner sets field value
 func (o *AdminUsersResponseData) SetOwner(v bool) {
-	o.Owner = &v
+	o.Owner = v
 }
 
-// GetCsm returns the Csm field value if set, zero value otherwise.
+// GetCsm returns the Csm field value
 func (o *AdminUsersResponseData) GetCsm() bool {
-	if o == nil || IsNil(o.Csm) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.Csm
+
+	return o.Csm
 }
 
-// GetCsmOk returns a tuple with the Csm field value if set, nil otherwise
+// GetCsmOk returns a tuple with the Csm field value
 // and a boolean to check if the value has been set.
 func (o *AdminUsersResponseData) GetCsmOk() (*bool, bool) {
-	if o == nil || IsNil(o.Csm) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Csm, true
+	return &o.Csm, true
 }
 
-// HasCsm returns a boolean if a field has been set.
-func (o *AdminUsersResponseData) HasCsm() bool {
-	if o != nil && !IsNil(o.Csm) {
-		return true
-	}
-
-	return false
-}
-
-// SetCsm gets a reference to the given bool and assigns it to the Csm field.
+// SetCsm sets field value
 func (o *AdminUsersResponseData) SetCsm(v bool) {
-	o.Csm = &v
+	o.Csm = v
 }
 
 func (o AdminUsersResponseData) MarshalJSON() ([]byte, error) {
@@ -330,28 +243,57 @@ func (o AdminUsersResponseData) MarshalJSON() ([]byte, error) {
 
 func (o AdminUsersResponseData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Id.IsSet() {
-		toSerialize["id"] = o.Id.Get()
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.Email.IsSet() {
-		toSerialize["email"] = o.Email.Get()
-	}
-	if o.Role.IsSet() {
-		toSerialize["role"] = o.Role.Get()
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
-	if !IsNil(o.Owner) {
-		toSerialize["owner"] = o.Owner
-	}
-	if !IsNil(o.Csm) {
-		toSerialize["csm"] = o.Csm
-	}
+	toSerialize["id"] = o.Id.Get()
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["email"] = o.Email.Get()
+	toSerialize["role"] = o.Role
+	toSerialize["organizationName"] = o.OrganizationName.Get()
+	toSerialize["owner"] = o.Owner
+	toSerialize["csm"] = o.Csm
 	return toSerialize, nil
+}
+
+func (o *AdminUsersResponseData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"email",
+		"role",
+		"organizationName",
+		"owner",
+		"csm",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAdminUsersResponseData := _AdminUsersResponseData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAdminUsersResponseData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AdminUsersResponseData(varAdminUsersResponseData)
+
+	return err
 }
 
 type NullableAdminUsersResponseData struct {

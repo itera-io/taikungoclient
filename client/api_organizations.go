@@ -1766,6 +1766,7 @@ type ApiOrganizationsOrganizationListRequest struct {
 	partnerId *int32
 	search *string
 	isInfra *bool
+	prometheusRuleId *int32
 }
 
 func (r ApiOrganizationsOrganizationListRequest) PartnerId(partnerId int32) ApiOrganizationsOrganizationListRequest {
@@ -1780,6 +1781,11 @@ func (r ApiOrganizationsOrganizationListRequest) Search(search string) ApiOrgani
 
 func (r ApiOrganizationsOrganizationListRequest) IsInfra(isInfra bool) ApiOrganizationsOrganizationListRequest {
 	r.isInfra = &isInfra
+	return r
+}
+
+func (r ApiOrganizationsOrganizationListRequest) PrometheusRuleId(prometheusRuleId int32) ApiOrganizationsOrganizationListRequest {
+	r.prometheusRuleId = &prometheusRuleId
 	return r
 }
 
@@ -1829,6 +1835,9 @@ func (a *OrganizationsAPIService) OrganizationsOrganizationListExecute(r ApiOrga
 	}
 	if r.isInfra != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "IsInfra", r.isInfra, "form", "")
+	}
+	if r.prometheusRuleId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "PrometheusRuleId", r.prometheusRuleId, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

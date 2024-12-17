@@ -24,6 +24,7 @@ const (
 	PROXMOXSTORAGE_NFS ProxmoxStorage = "NFS"
 	PROXMOXSTORAGE_OPEN_EBS ProxmoxStorage = "OpenEBS"
 	PROXMOXSTORAGE_LONGHORN ProxmoxStorage = "Longhorn"
+	PROXMOXSTORAGE_LOCAL_PATH ProxmoxStorage = "LocalPath"
 )
 
 // All allowed values of ProxmoxStorage enum
@@ -31,6 +32,7 @@ var AllowedProxmoxStorageEnumValues = []ProxmoxStorage{
 	"NFS",
 	"OpenEBS",
 	"Longhorn",
+	"LocalPath",
 }
 
 func (v *ProxmoxStorage) UnmarshalJSON(src []byte) error {

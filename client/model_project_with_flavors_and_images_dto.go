@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ProjectWithFlavorsAndImagesDto type satisfies the MappedNullable interface at compile time
@@ -20,20 +22,28 @@ var _ MappedNullable = &ProjectWithFlavorsAndImagesDto{}
 
 // ProjectWithFlavorsAndImagesDto struct for ProjectWithFlavorsAndImagesDto
 type ProjectWithFlavorsAndImagesDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	Flavors []string `json:"flavors,omitempty"`
-	Images []string `json:"images,omitempty"`
-	ImageNames []string `json:"imageNames,omitempty"`
-	IsReady *bool `json:"isReady,omitempty"`
+	Id int32 `json:"id"`
+	Name NullableString `json:"name"`
+	Flavors []string `json:"flavors"`
+	Images []string `json:"images"`
+	ImageNames []string `json:"imageNames"`
+	IsReady bool `json:"isReady"`
 }
+
+type _ProjectWithFlavorsAndImagesDto ProjectWithFlavorsAndImagesDto
 
 // NewProjectWithFlavorsAndImagesDto instantiates a new ProjectWithFlavorsAndImagesDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectWithFlavorsAndImagesDto() *ProjectWithFlavorsAndImagesDto {
+func NewProjectWithFlavorsAndImagesDto(id int32, name NullableString, flavors []string, images []string, imageNames []string, isReady bool) *ProjectWithFlavorsAndImagesDto {
 	this := ProjectWithFlavorsAndImagesDto{}
+	this.Id = id
+	this.Name = name
+	this.Flavors = flavors
+	this.Images = images
+	this.ImageNames = imageNames
+	this.IsReady = isReady
 	return &this
 }
 
@@ -45,48 +55,42 @@ func NewProjectWithFlavorsAndImagesDtoWithDefaults() *ProjectWithFlavorsAndImage
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *ProjectWithFlavorsAndImagesDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ProjectWithFlavorsAndImagesDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *ProjectWithFlavorsAndImagesDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *ProjectWithFlavorsAndImagesDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectWithFlavorsAndImagesDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectWithFlavorsAndImagesDto) GetNameOk() (*string, bool) {
@@ -96,39 +100,23 @@ func (o *ProjectWithFlavorsAndImagesDto) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ProjectWithFlavorsAndImagesDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *ProjectWithFlavorsAndImagesDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ProjectWithFlavorsAndImagesDto) SetNameNil() {
-	o.Name.Set(nil)
-}
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ProjectWithFlavorsAndImagesDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetFlavors returns the Flavors field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFlavors returns the Flavors field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *ProjectWithFlavorsAndImagesDto) GetFlavors() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Flavors
 }
 
-// GetFlavorsOk returns a tuple with the Flavors field value if set, nil otherwise
+// GetFlavorsOk returns a tuple with the Flavors field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectWithFlavorsAndImagesDto) GetFlavorsOk() ([]string, bool) {
@@ -138,30 +126,23 @@ func (o *ProjectWithFlavorsAndImagesDto) GetFlavorsOk() ([]string, bool) {
 	return o.Flavors, true
 }
 
-// HasFlavors returns a boolean if a field has been set.
-func (o *ProjectWithFlavorsAndImagesDto) HasFlavors() bool {
-	if o != nil && !IsNil(o.Flavors) {
-		return true
-	}
-
-	return false
-}
-
-// SetFlavors gets a reference to the given []string and assigns it to the Flavors field.
+// SetFlavors sets field value
 func (o *ProjectWithFlavorsAndImagesDto) SetFlavors(v []string) {
 	o.Flavors = v
 }
 
-// GetImages returns the Images field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetImages returns the Images field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *ProjectWithFlavorsAndImagesDto) GetImages() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.Images
 }
 
-// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// GetImagesOk returns a tuple with the Images field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectWithFlavorsAndImagesDto) GetImagesOk() ([]string, bool) {
@@ -171,30 +152,23 @@ func (o *ProjectWithFlavorsAndImagesDto) GetImagesOk() ([]string, bool) {
 	return o.Images, true
 }
 
-// HasImages returns a boolean if a field has been set.
-func (o *ProjectWithFlavorsAndImagesDto) HasImages() bool {
-	if o != nil && !IsNil(o.Images) {
-		return true
-	}
-
-	return false
-}
-
-// SetImages gets a reference to the given []string and assigns it to the Images field.
+// SetImages sets field value
 func (o *ProjectWithFlavorsAndImagesDto) SetImages(v []string) {
 	o.Images = v
 }
 
-// GetImageNames returns the ImageNames field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetImageNames returns the ImageNames field value
+// If the value is explicit nil, the zero value for []string will be returned
 func (o *ProjectWithFlavorsAndImagesDto) GetImageNames() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
+
 	return o.ImageNames
 }
 
-// GetImageNamesOk returns a tuple with the ImageNames field value if set, nil otherwise
+// GetImageNamesOk returns a tuple with the ImageNames field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectWithFlavorsAndImagesDto) GetImageNamesOk() ([]string, bool) {
@@ -204,50 +178,33 @@ func (o *ProjectWithFlavorsAndImagesDto) GetImageNamesOk() ([]string, bool) {
 	return o.ImageNames, true
 }
 
-// HasImageNames returns a boolean if a field has been set.
-func (o *ProjectWithFlavorsAndImagesDto) HasImageNames() bool {
-	if o != nil && !IsNil(o.ImageNames) {
-		return true
-	}
-
-	return false
-}
-
-// SetImageNames gets a reference to the given []string and assigns it to the ImageNames field.
+// SetImageNames sets field value
 func (o *ProjectWithFlavorsAndImagesDto) SetImageNames(v []string) {
 	o.ImageNames = v
 }
 
-// GetIsReady returns the IsReady field value if set, zero value otherwise.
+// GetIsReady returns the IsReady field value
 func (o *ProjectWithFlavorsAndImagesDto) GetIsReady() bool {
-	if o == nil || IsNil(o.IsReady) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsReady
+
+	return o.IsReady
 }
 
-// GetIsReadyOk returns a tuple with the IsReady field value if set, nil otherwise
+// GetIsReadyOk returns a tuple with the IsReady field value
 // and a boolean to check if the value has been set.
 func (o *ProjectWithFlavorsAndImagesDto) GetIsReadyOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsReady) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsReady, true
+	return &o.IsReady, true
 }
 
-// HasIsReady returns a boolean if a field has been set.
-func (o *ProjectWithFlavorsAndImagesDto) HasIsReady() bool {
-	if o != nil && !IsNil(o.IsReady) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsReady gets a reference to the given bool and assigns it to the IsReady field.
+// SetIsReady sets field value
 func (o *ProjectWithFlavorsAndImagesDto) SetIsReady(v bool) {
-	o.IsReady = &v
+	o.IsReady = v
 }
 
 func (o ProjectWithFlavorsAndImagesDto) MarshalJSON() ([]byte, error) {
@@ -260,12 +217,8 @@ func (o ProjectWithFlavorsAndImagesDto) MarshalJSON() ([]byte, error) {
 
 func (o ProjectWithFlavorsAndImagesDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name.Get()
 	if o.Flavors != nil {
 		toSerialize["flavors"] = o.Flavors
 	}
@@ -275,10 +228,50 @@ func (o ProjectWithFlavorsAndImagesDto) ToMap() (map[string]interface{}, error) 
 	if o.ImageNames != nil {
 		toSerialize["imageNames"] = o.ImageNames
 	}
-	if !IsNil(o.IsReady) {
-		toSerialize["isReady"] = o.IsReady
-	}
+	toSerialize["isReady"] = o.IsReady
 	return toSerialize, nil
+}
+
+func (o *ProjectWithFlavorsAndImagesDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"flavors",
+		"images",
+		"imageNames",
+		"isReady",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varProjectWithFlavorsAndImagesDto := _ProjectWithFlavorsAndImagesDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProjectWithFlavorsAndImagesDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectWithFlavorsAndImagesDto(varProjectWithFlavorsAndImagesDto)
+
+	return err
 }
 
 type NullableProjectWithFlavorsAndImagesDto struct {

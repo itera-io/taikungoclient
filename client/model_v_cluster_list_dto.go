@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the VClusterListDto type satisfies the MappedNullable interface at compile time
@@ -20,42 +22,74 @@ var _ MappedNullable = &VClusterListDto{}
 
 // VClusterListDto struct for VClusterListDto
 type VClusterListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	IsVirtualCluster *bool `json:"isVirtualCluster,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	HasKubeConfigFile *bool `json:"hasKubeConfigFile,omitempty"`
-	IsMaintenanceModeEnabled *bool `json:"isMaintenanceModeEnabled,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	KubernetesVersion NullableString `json:"kubernetesVersion,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
-	AlertsCount *int32 `json:"alertsCount,omitempty"`
-	ExpiredAt NullableString `json:"expiredAt,omitempty"`
-	DeleteOnExpiration *bool `json:"deleteOnExpiration,omitempty"`
-	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
-	AlertingProfileName NullableString `json:"alertingProfileName,omitempty"`
-	AccessIp NullableString `json:"accessIp,omitempty"`
-	CloudType *CloudType `json:"cloudType,omitempty"`
-	Status *ProjectStatus `json:"status,omitempty"`
-	Health *ProjectHealth `json:"health,omitempty"`
-	LockButton *ButtonStatusDto `json:"lockButton,omitempty"`
-	UnlockButton *ButtonStatusDto `json:"unlockButton,omitempty"`
-	DeleteButton *ButtonStatusDto `json:"deleteButton,omitempty"`
-	KubeInfoButton *ButtonStatusDto `json:"kubeInfoButton,omitempty"`
-	SetExpirationDateButton *ButtonStatusDto `json:"setExpirationDateButton,omitempty"`
-	ResetStatusButton *ButtonStatusDto `json:"resetStatusButton,omitempty"`
+	Id int32 `json:"id"`
+	Name string `json:"name"`
+	IsVirtualCluster bool `json:"isVirtualCluster"`
+	IsLocked bool `json:"isLocked"`
+	HasKubeConfigFile bool `json:"hasKubeConfigFile"`
+	IsMaintenanceModeEnabled bool `json:"isMaintenanceModeEnabled"`
+	OrganizationName string `json:"organizationName"`
+	OrganizationId int32 `json:"organizationId"`
+	KubernetesVersion string `json:"kubernetesVersion"`
+	CreatedAt string `json:"createdAt"`
+	CreatedBy string `json:"createdBy"`
+	LastModified string `json:"lastModified"`
+	LastModifiedBy string `json:"lastModifiedBy"`
+	AlertsCount int32 `json:"alertsCount"`
+	ExpiredAt string `json:"expiredAt"`
+	DeleteOnExpiration bool `json:"deleteOnExpiration"`
+	WasmEnabled bool `json:"wasmEnabled"`
+	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
+	AlertingProfileName NullableString `json:"alertingProfileName"`
+	AccessIp string `json:"accessIp"`
+	CloudType CloudType `json:"cloudType"`
+	Status ProjectStatus `json:"status"`
+	Health ProjectHealth `json:"health"`
+	LockButton ButtonStatusDto `json:"lockButton"`
+	UnlockButton ButtonStatusDto `json:"unlockButton"`
+	DeleteButton ButtonStatusDto `json:"deleteButton"`
+	KubeInfoButton ButtonStatusDto `json:"kubeInfoButton"`
+	SetExpirationDateButton ButtonStatusDto `json:"setExpirationDateButton"`
+	ResetStatusButton ButtonStatusDto `json:"resetStatusButton"`
 }
+
+type _VClusterListDto VClusterListDto
 
 // NewVClusterListDto instantiates a new VClusterListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterListDto() *VClusterListDto {
+func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType CloudType, status ProjectStatus, health ProjectHealth, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
 	this := VClusterListDto{}
+	this.Id = id
+	this.Name = name
+	this.IsVirtualCluster = isVirtualCluster
+	this.IsLocked = isLocked
+	this.HasKubeConfigFile = hasKubeConfigFile
+	this.IsMaintenanceModeEnabled = isMaintenanceModeEnabled
+	this.OrganizationName = organizationName
+	this.OrganizationId = organizationId
+	this.KubernetesVersion = kubernetesVersion
+	this.CreatedAt = createdAt
+	this.CreatedBy = createdBy
+	this.LastModified = lastModified
+	this.LastModifiedBy = lastModifiedBy
+	this.AlertsCount = alertsCount
+	this.ExpiredAt = expiredAt
+	this.DeleteOnExpiration = deleteOnExpiration
+	this.WasmEnabled = wasmEnabled
+	this.AlertingProfileId = alertingProfileId
+	this.AlertingProfileName = alertingProfileName
+	this.AccessIp = accessIp
+	this.CloudType = cloudType
+	this.Status = status
+	this.Health = health
+	this.LockButton = lockButton
+	this.UnlockButton = unlockButton
+	this.DeleteButton = deleteButton
+	this.KubeInfoButton = kubeInfoButton
+	this.SetExpirationDateButton = setExpirationDateButton
+	this.ResetStatusButton = resetStatusButton
 	return &this
 }
 
@@ -67,608 +101,426 @@ func NewVClusterListDtoWithDefaults() *VClusterListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *VClusterListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *VClusterListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *VClusterListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *VClusterListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *VClusterListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *VClusterListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *VClusterListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *VClusterListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetIsVirtualCluster returns the IsVirtualCluster field value if set, zero value otherwise.
+// GetIsVirtualCluster returns the IsVirtualCluster field value
 func (o *VClusterListDto) GetIsVirtualCluster() bool {
-	if o == nil || IsNil(o.IsVirtualCluster) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsVirtualCluster
+
+	return o.IsVirtualCluster
 }
 
-// GetIsVirtualClusterOk returns a tuple with the IsVirtualCluster field value if set, nil otherwise
+// GetIsVirtualClusterOk returns a tuple with the IsVirtualCluster field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetIsVirtualClusterOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsVirtualCluster) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsVirtualCluster, true
+	return &o.IsVirtualCluster, true
 }
 
-// HasIsVirtualCluster returns a boolean if a field has been set.
-func (o *VClusterListDto) HasIsVirtualCluster() bool {
-	if o != nil && !IsNil(o.IsVirtualCluster) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsVirtualCluster gets a reference to the given bool and assigns it to the IsVirtualCluster field.
+// SetIsVirtualCluster sets field value
 func (o *VClusterListDto) SetIsVirtualCluster(v bool) {
-	o.IsVirtualCluster = &v
+	o.IsVirtualCluster = v
 }
 
-// GetIsLocked returns the IsLocked field value if set, zero value otherwise.
+// GetIsLocked returns the IsLocked field value
 func (o *VClusterListDto) GetIsLocked() bool {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsLocked
+
+	return o.IsLocked
 }
 
-// GetIsLockedOk returns a tuple with the IsLocked field value if set, nil otherwise
+// GetIsLockedOk returns a tuple with the IsLocked field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetIsLockedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsLocked, true
+	return &o.IsLocked, true
 }
 
-// HasIsLocked returns a boolean if a field has been set.
-func (o *VClusterListDto) HasIsLocked() bool {
-	if o != nil && !IsNil(o.IsLocked) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsLocked gets a reference to the given bool and assigns it to the IsLocked field.
+// SetIsLocked sets field value
 func (o *VClusterListDto) SetIsLocked(v bool) {
-	o.IsLocked = &v
+	o.IsLocked = v
 }
 
-// GetHasKubeConfigFile returns the HasKubeConfigFile field value if set, zero value otherwise.
+// GetHasKubeConfigFile returns the HasKubeConfigFile field value
 func (o *VClusterListDto) GetHasKubeConfigFile() bool {
-	if o == nil || IsNil(o.HasKubeConfigFile) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.HasKubeConfigFile
+
+	return o.HasKubeConfigFile
 }
 
-// GetHasKubeConfigFileOk returns a tuple with the HasKubeConfigFile field value if set, nil otherwise
+// GetHasKubeConfigFileOk returns a tuple with the HasKubeConfigFile field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetHasKubeConfigFileOk() (*bool, bool) {
-	if o == nil || IsNil(o.HasKubeConfigFile) {
+	if o == nil {
 		return nil, false
 	}
-	return o.HasKubeConfigFile, true
+	return &o.HasKubeConfigFile, true
 }
 
-// HasHasKubeConfigFile returns a boolean if a field has been set.
-func (o *VClusterListDto) HasHasKubeConfigFile() bool {
-	if o != nil && !IsNil(o.HasKubeConfigFile) {
-		return true
-	}
-
-	return false
-}
-
-// SetHasKubeConfigFile gets a reference to the given bool and assigns it to the HasKubeConfigFile field.
+// SetHasKubeConfigFile sets field value
 func (o *VClusterListDto) SetHasKubeConfigFile(v bool) {
-	o.HasKubeConfigFile = &v
+	o.HasKubeConfigFile = v
 }
 
-// GetIsMaintenanceModeEnabled returns the IsMaintenanceModeEnabled field value if set, zero value otherwise.
+// GetIsMaintenanceModeEnabled returns the IsMaintenanceModeEnabled field value
 func (o *VClusterListDto) GetIsMaintenanceModeEnabled() bool {
-	if o == nil || IsNil(o.IsMaintenanceModeEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsMaintenanceModeEnabled
+
+	return o.IsMaintenanceModeEnabled
 }
 
-// GetIsMaintenanceModeEnabledOk returns a tuple with the IsMaintenanceModeEnabled field value if set, nil otherwise
+// GetIsMaintenanceModeEnabledOk returns a tuple with the IsMaintenanceModeEnabled field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetIsMaintenanceModeEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsMaintenanceModeEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsMaintenanceModeEnabled, true
+	return &o.IsMaintenanceModeEnabled, true
 }
 
-// HasIsMaintenanceModeEnabled returns a boolean if a field has been set.
-func (o *VClusterListDto) HasIsMaintenanceModeEnabled() bool {
-	if o != nil && !IsNil(o.IsMaintenanceModeEnabled) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsMaintenanceModeEnabled gets a reference to the given bool and assigns it to the IsMaintenanceModeEnabled field.
+// SetIsMaintenanceModeEnabled sets field value
 func (o *VClusterListDto) SetIsMaintenanceModeEnabled(v bool) {
-	o.IsMaintenanceModeEnabled = &v
+	o.IsMaintenanceModeEnabled = v
 }
 
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
 func (o *VClusterListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+
+	return o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return &o.OrganizationName, true
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *VClusterListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *VClusterListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *VClusterListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+	o.OrganizationName = v
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *VClusterListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
+// GetOrganizationId returns the OrganizationId field value
 func (o *VClusterListDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationId
+
+	return o.OrganizationId
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationId, true
+	return &o.OrganizationId, true
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *VClusterListDto) HasOrganizationId() bool {
-	if o != nil && !IsNil(o.OrganizationId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *VClusterListDto) SetOrganizationId(v int32) {
-	o.OrganizationId = &v
+	o.OrganizationId = v
 }
 
-// GetKubernetesVersion returns the KubernetesVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubernetesVersion returns the KubernetesVersion field value
 func (o *VClusterListDto) GetKubernetesVersion() string {
-	if o == nil || IsNil(o.KubernetesVersion.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.KubernetesVersion.Get()
+
+	return o.KubernetesVersion
 }
 
-// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value if set, nil otherwise
+// GetKubernetesVersionOk returns a tuple with the KubernetesVersion field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetKubernetesVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.KubernetesVersion.Get(), o.KubernetesVersion.IsSet()
+	return &o.KubernetesVersion, true
 }
 
-// HasKubernetesVersion returns a boolean if a field has been set.
-func (o *VClusterListDto) HasKubernetesVersion() bool {
-	if o != nil && o.KubernetesVersion.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetKubernetesVersion gets a reference to the given NullableString and assigns it to the KubernetesVersion field.
+// SetKubernetesVersion sets field value
 func (o *VClusterListDto) SetKubernetesVersion(v string) {
-	o.KubernetesVersion.Set(&v)
-}
-// SetKubernetesVersionNil sets the value for KubernetesVersion to be an explicit nil
-func (o *VClusterListDto) SetKubernetesVersionNil() {
-	o.KubernetesVersion.Set(nil)
+	o.KubernetesVersion = v
 }
 
-// UnsetKubernetesVersion ensures that no value is present for KubernetesVersion, not even an explicit nil
-func (o *VClusterListDto) UnsetKubernetesVersion() {
-	o.KubernetesVersion.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
 func (o *VClusterListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *VClusterListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *VClusterListDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *VClusterListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
+	o.CreatedAt = v
 }
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *VClusterListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value
 func (o *VClusterListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy.Get()
+
+	return o.CreatedBy
 }
 
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetCreatedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *VClusterListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy sets field value
 func (o *VClusterListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
-}
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *VClusterListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
+	o.CreatedBy = v
 }
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *VClusterListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value
 func (o *VClusterListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.LastModified.Get()
+
+	return o.LastModified
 }
 
-// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
+// GetLastModifiedOk returns a tuple with the LastModified field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetLastModifiedOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModified.Get(), o.LastModified.IsSet()
+	return &o.LastModified, true
 }
 
-// HasLastModified returns a boolean if a field has been set.
-func (o *VClusterListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified sets field value
 func (o *VClusterListDto) SetLastModified(v string) {
-	o.LastModified.Set(&v)
-}
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *VClusterListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
+	o.LastModified = v
 }
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *VClusterListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value
 func (o *VClusterListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.LastModifiedBy.Get()
+
+	return o.LastModifiedBy
 }
 
-// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetLastModifiedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
+	return &o.LastModifiedBy, true
 }
 
-// HasLastModifiedBy returns a boolean if a field has been set.
-func (o *VClusterListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy sets field value
 func (o *VClusterListDto) SetLastModifiedBy(v string) {
-	o.LastModifiedBy.Set(&v)
-}
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *VClusterListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
+	o.LastModifiedBy = v
 }
 
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *VClusterListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
-}
-
-// GetAlertsCount returns the AlertsCount field value if set, zero value otherwise.
+// GetAlertsCount returns the AlertsCount field value
 func (o *VClusterListDto) GetAlertsCount() int32 {
-	if o == nil || IsNil(o.AlertsCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.AlertsCount
+
+	return o.AlertsCount
 }
 
-// GetAlertsCountOk returns a tuple with the AlertsCount field value if set, nil otherwise
+// GetAlertsCountOk returns a tuple with the AlertsCount field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetAlertsCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.AlertsCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AlertsCount, true
+	return &o.AlertsCount, true
 }
 
-// HasAlertsCount returns a boolean if a field has been set.
-func (o *VClusterListDto) HasAlertsCount() bool {
-	if o != nil && !IsNil(o.AlertsCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetAlertsCount gets a reference to the given int32 and assigns it to the AlertsCount field.
+// SetAlertsCount sets field value
 func (o *VClusterListDto) SetAlertsCount(v int32) {
-	o.AlertsCount = &v
+	o.AlertsCount = v
 }
 
-// GetExpiredAt returns the ExpiredAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetExpiredAt returns the ExpiredAt field value
 func (o *VClusterListDto) GetExpiredAt() string {
-	if o == nil || IsNil(o.ExpiredAt.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ExpiredAt.Get()
+
+	return o.ExpiredAt
 }
 
-// GetExpiredAtOk returns a tuple with the ExpiredAt field value if set, nil otherwise
+// GetExpiredAtOk returns a tuple with the ExpiredAt field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetExpiredAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ExpiredAt.Get(), o.ExpiredAt.IsSet()
+	return &o.ExpiredAt, true
 }
 
-// HasExpiredAt returns a boolean if a field has been set.
-func (o *VClusterListDto) HasExpiredAt() bool {
-	if o != nil && o.ExpiredAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetExpiredAt gets a reference to the given NullableString and assigns it to the ExpiredAt field.
+// SetExpiredAt sets field value
 func (o *VClusterListDto) SetExpiredAt(v string) {
-	o.ExpiredAt.Set(&v)
-}
-// SetExpiredAtNil sets the value for ExpiredAt to be an explicit nil
-func (o *VClusterListDto) SetExpiredAtNil() {
-	o.ExpiredAt.Set(nil)
+	o.ExpiredAt = v
 }
 
-// UnsetExpiredAt ensures that no value is present for ExpiredAt, not even an explicit nil
-func (o *VClusterListDto) UnsetExpiredAt() {
-	o.ExpiredAt.Unset()
-}
-
-// GetDeleteOnExpiration returns the DeleteOnExpiration field value if set, zero value otherwise.
+// GetDeleteOnExpiration returns the DeleteOnExpiration field value
 func (o *VClusterListDto) GetDeleteOnExpiration() bool {
-	if o == nil || IsNil(o.DeleteOnExpiration) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.DeleteOnExpiration
+
+	return o.DeleteOnExpiration
 }
 
-// GetDeleteOnExpirationOk returns a tuple with the DeleteOnExpiration field value if set, nil otherwise
+// GetDeleteOnExpirationOk returns a tuple with the DeleteOnExpiration field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetDeleteOnExpirationOk() (*bool, bool) {
-	if o == nil || IsNil(o.DeleteOnExpiration) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DeleteOnExpiration, true
+	return &o.DeleteOnExpiration, true
 }
 
-// HasDeleteOnExpiration returns a boolean if a field has been set.
-func (o *VClusterListDto) HasDeleteOnExpiration() bool {
-	if o != nil && !IsNil(o.DeleteOnExpiration) {
-		return true
+// SetDeleteOnExpiration sets field value
+func (o *VClusterListDto) SetDeleteOnExpiration(v bool) {
+	o.DeleteOnExpiration = v
+}
+
+// GetWasmEnabled returns the WasmEnabled field value
+func (o *VClusterListDto) GetWasmEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
 	}
 
-	return false
+	return o.WasmEnabled
 }
 
-// SetDeleteOnExpiration gets a reference to the given bool and assigns it to the DeleteOnExpiration field.
-func (o *VClusterListDto) SetDeleteOnExpiration(v bool) {
-	o.DeleteOnExpiration = &v
+// GetWasmEnabledOk returns a tuple with the WasmEnabled field value
+// and a boolean to check if the value has been set.
+func (o *VClusterListDto) GetWasmEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.WasmEnabled, true
 }
 
-// GetAlertingProfileId returns the AlertingProfileId field value if set, zero value otherwise (both if not set or set to explicit null).
+// SetWasmEnabled sets field value
+func (o *VClusterListDto) SetWasmEnabled(v bool) {
+	o.WasmEnabled = v
+}
+
+// GetAlertingProfileId returns the AlertingProfileId field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *VClusterListDto) GetAlertingProfileId() int32 {
-	if o == nil || IsNil(o.AlertingProfileId.Get()) {
+	if o == nil || o.AlertingProfileId.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.AlertingProfileId.Get()
 }
 
-// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value if set, nil otherwise
+// GetAlertingProfileIdOk returns a tuple with the AlertingProfileId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetAlertingProfileIdOk() (*int32, bool) {
@@ -678,39 +530,23 @@ func (o *VClusterListDto) GetAlertingProfileIdOk() (*int32, bool) {
 	return o.AlertingProfileId.Get(), o.AlertingProfileId.IsSet()
 }
 
-// HasAlertingProfileId returns a boolean if a field has been set.
-func (o *VClusterListDto) HasAlertingProfileId() bool {
-	if o != nil && o.AlertingProfileId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAlertingProfileId gets a reference to the given NullableInt32 and assigns it to the AlertingProfileId field.
+// SetAlertingProfileId sets field value
 func (o *VClusterListDto) SetAlertingProfileId(v int32) {
 	o.AlertingProfileId.Set(&v)
 }
-// SetAlertingProfileIdNil sets the value for AlertingProfileId to be an explicit nil
-func (o *VClusterListDto) SetAlertingProfileIdNil() {
-	o.AlertingProfileId.Set(nil)
-}
 
-// UnsetAlertingProfileId ensures that no value is present for AlertingProfileId, not even an explicit nil
-func (o *VClusterListDto) UnsetAlertingProfileId() {
-	o.AlertingProfileId.Unset()
-}
-
-// GetAlertingProfileName returns the AlertingProfileName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAlertingProfileName returns the AlertingProfileName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *VClusterListDto) GetAlertingProfileName() string {
-	if o == nil || IsNil(o.AlertingProfileName.Get()) {
+	if o == nil || o.AlertingProfileName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.AlertingProfileName.Get()
 }
 
-// GetAlertingProfileNameOk returns a tuple with the AlertingProfileName field value if set, nil otherwise
+// GetAlertingProfileNameOk returns a tuple with the AlertingProfileName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetAlertingProfileNameOk() (*string, bool) {
@@ -720,357 +556,249 @@ func (o *VClusterListDto) GetAlertingProfileNameOk() (*string, bool) {
 	return o.AlertingProfileName.Get(), o.AlertingProfileName.IsSet()
 }
 
-// HasAlertingProfileName returns a boolean if a field has been set.
-func (o *VClusterListDto) HasAlertingProfileName() bool {
-	if o != nil && o.AlertingProfileName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAlertingProfileName gets a reference to the given NullableString and assigns it to the AlertingProfileName field.
+// SetAlertingProfileName sets field value
 func (o *VClusterListDto) SetAlertingProfileName(v string) {
 	o.AlertingProfileName.Set(&v)
 }
-// SetAlertingProfileNameNil sets the value for AlertingProfileName to be an explicit nil
-func (o *VClusterListDto) SetAlertingProfileNameNil() {
-	o.AlertingProfileName.Set(nil)
-}
 
-// UnsetAlertingProfileName ensures that no value is present for AlertingProfileName, not even an explicit nil
-func (o *VClusterListDto) UnsetAlertingProfileName() {
-	o.AlertingProfileName.Unset()
-}
-
-// GetAccessIp returns the AccessIp field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAccessIp returns the AccessIp field value
 func (o *VClusterListDto) GetAccessIp() string {
-	if o == nil || IsNil(o.AccessIp.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.AccessIp.Get()
+
+	return o.AccessIp
 }
 
-// GetAccessIpOk returns a tuple with the AccessIp field value if set, nil otherwise
+// GetAccessIpOk returns a tuple with the AccessIp field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VClusterListDto) GetAccessIpOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.AccessIp.Get(), o.AccessIp.IsSet()
+	return &o.AccessIp, true
 }
 
-// HasAccessIp returns a boolean if a field has been set.
-func (o *VClusterListDto) HasAccessIp() bool {
-	if o != nil && o.AccessIp.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAccessIp gets a reference to the given NullableString and assigns it to the AccessIp field.
+// SetAccessIp sets field value
 func (o *VClusterListDto) SetAccessIp(v string) {
-	o.AccessIp.Set(&v)
-}
-// SetAccessIpNil sets the value for AccessIp to be an explicit nil
-func (o *VClusterListDto) SetAccessIpNil() {
-	o.AccessIp.Set(nil)
+	o.AccessIp = v
 }
 
-// UnsetAccessIp ensures that no value is present for AccessIp, not even an explicit nil
-func (o *VClusterListDto) UnsetAccessIp() {
-	o.AccessIp.Unset()
-}
-
-// GetCloudType returns the CloudType field value if set, zero value otherwise.
+// GetCloudType returns the CloudType field value
 func (o *VClusterListDto) GetCloudType() CloudType {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		var ret CloudType
 		return ret
 	}
-	return *o.CloudType
+
+	return o.CloudType
 }
 
-// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
+// GetCloudTypeOk returns a tuple with the CloudType field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetCloudTypeOk() (*CloudType, bool) {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CloudType, true
+	return &o.CloudType, true
 }
 
-// HasCloudType returns a boolean if a field has been set.
-func (o *VClusterListDto) HasCloudType() bool {
-	if o != nil && !IsNil(o.CloudType) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
+// SetCloudType sets field value
 func (o *VClusterListDto) SetCloudType(v CloudType) {
-	o.CloudType = &v
+	o.CloudType = v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value
 func (o *VClusterListDto) GetStatus() ProjectStatus {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		var ret ProjectStatus
 		return ret
 	}
-	return *o.Status
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetStatusOk() (*ProjectStatus, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *VClusterListDto) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given ProjectStatus and assigns it to the Status field.
+// SetStatus sets field value
 func (o *VClusterListDto) SetStatus(v ProjectStatus) {
-	o.Status = &v
+	o.Status = v
 }
 
-// GetHealth returns the Health field value if set, zero value otherwise.
+// GetHealth returns the Health field value
 func (o *VClusterListDto) GetHealth() ProjectHealth {
-	if o == nil || IsNil(o.Health) {
+	if o == nil {
 		var ret ProjectHealth
 		return ret
 	}
-	return *o.Health
+
+	return o.Health
 }
 
-// GetHealthOk returns a tuple with the Health field value if set, nil otherwise
+// GetHealthOk returns a tuple with the Health field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetHealthOk() (*ProjectHealth, bool) {
-	if o == nil || IsNil(o.Health) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Health, true
+	return &o.Health, true
 }
 
-// HasHealth returns a boolean if a field has been set.
-func (o *VClusterListDto) HasHealth() bool {
-	if o != nil && !IsNil(o.Health) {
-		return true
-	}
-
-	return false
-}
-
-// SetHealth gets a reference to the given ProjectHealth and assigns it to the Health field.
+// SetHealth sets field value
 func (o *VClusterListDto) SetHealth(v ProjectHealth) {
-	o.Health = &v
+	o.Health = v
 }
 
-// GetLockButton returns the LockButton field value if set, zero value otherwise.
+// GetLockButton returns the LockButton field value
 func (o *VClusterListDto) GetLockButton() ButtonStatusDto {
-	if o == nil || IsNil(o.LockButton) {
+	if o == nil {
 		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.LockButton
+
+	return o.LockButton
 }
 
-// GetLockButtonOk returns a tuple with the LockButton field value if set, nil otherwise
+// GetLockButtonOk returns a tuple with the LockButton field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetLockButtonOk() (*ButtonStatusDto, bool) {
-	if o == nil || IsNil(o.LockButton) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LockButton, true
+	return &o.LockButton, true
 }
 
-// HasLockButton returns a boolean if a field has been set.
-func (o *VClusterListDto) HasLockButton() bool {
-	if o != nil && !IsNil(o.LockButton) {
-		return true
-	}
-
-	return false
-}
-
-// SetLockButton gets a reference to the given ButtonStatusDto and assigns it to the LockButton field.
+// SetLockButton sets field value
 func (o *VClusterListDto) SetLockButton(v ButtonStatusDto) {
-	o.LockButton = &v
+	o.LockButton = v
 }
 
-// GetUnlockButton returns the UnlockButton field value if set, zero value otherwise.
+// GetUnlockButton returns the UnlockButton field value
 func (o *VClusterListDto) GetUnlockButton() ButtonStatusDto {
-	if o == nil || IsNil(o.UnlockButton) {
+	if o == nil {
 		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.UnlockButton
+
+	return o.UnlockButton
 }
 
-// GetUnlockButtonOk returns a tuple with the UnlockButton field value if set, nil otherwise
+// GetUnlockButtonOk returns a tuple with the UnlockButton field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetUnlockButtonOk() (*ButtonStatusDto, bool) {
-	if o == nil || IsNil(o.UnlockButton) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UnlockButton, true
+	return &o.UnlockButton, true
 }
 
-// HasUnlockButton returns a boolean if a field has been set.
-func (o *VClusterListDto) HasUnlockButton() bool {
-	if o != nil && !IsNil(o.UnlockButton) {
-		return true
-	}
-
-	return false
-}
-
-// SetUnlockButton gets a reference to the given ButtonStatusDto and assigns it to the UnlockButton field.
+// SetUnlockButton sets field value
 func (o *VClusterListDto) SetUnlockButton(v ButtonStatusDto) {
-	o.UnlockButton = &v
+	o.UnlockButton = v
 }
 
-// GetDeleteButton returns the DeleteButton field value if set, zero value otherwise.
+// GetDeleteButton returns the DeleteButton field value
 func (o *VClusterListDto) GetDeleteButton() ButtonStatusDto {
-	if o == nil || IsNil(o.DeleteButton) {
+	if o == nil {
 		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.DeleteButton
+
+	return o.DeleteButton
 }
 
-// GetDeleteButtonOk returns a tuple with the DeleteButton field value if set, nil otherwise
+// GetDeleteButtonOk returns a tuple with the DeleteButton field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetDeleteButtonOk() (*ButtonStatusDto, bool) {
-	if o == nil || IsNil(o.DeleteButton) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DeleteButton, true
+	return &o.DeleteButton, true
 }
 
-// HasDeleteButton returns a boolean if a field has been set.
-func (o *VClusterListDto) HasDeleteButton() bool {
-	if o != nil && !IsNil(o.DeleteButton) {
-		return true
-	}
-
-	return false
-}
-
-// SetDeleteButton gets a reference to the given ButtonStatusDto and assigns it to the DeleteButton field.
+// SetDeleteButton sets field value
 func (o *VClusterListDto) SetDeleteButton(v ButtonStatusDto) {
-	o.DeleteButton = &v
+	o.DeleteButton = v
 }
 
-// GetKubeInfoButton returns the KubeInfoButton field value if set, zero value otherwise.
+// GetKubeInfoButton returns the KubeInfoButton field value
 func (o *VClusterListDto) GetKubeInfoButton() ButtonStatusDto {
-	if o == nil || IsNil(o.KubeInfoButton) {
+	if o == nil {
 		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.KubeInfoButton
+
+	return o.KubeInfoButton
 }
 
-// GetKubeInfoButtonOk returns a tuple with the KubeInfoButton field value if set, nil otherwise
+// GetKubeInfoButtonOk returns a tuple with the KubeInfoButton field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetKubeInfoButtonOk() (*ButtonStatusDto, bool) {
-	if o == nil || IsNil(o.KubeInfoButton) {
+	if o == nil {
 		return nil, false
 	}
-	return o.KubeInfoButton, true
+	return &o.KubeInfoButton, true
 }
 
-// HasKubeInfoButton returns a boolean if a field has been set.
-func (o *VClusterListDto) HasKubeInfoButton() bool {
-	if o != nil && !IsNil(o.KubeInfoButton) {
-		return true
-	}
-
-	return false
-}
-
-// SetKubeInfoButton gets a reference to the given ButtonStatusDto and assigns it to the KubeInfoButton field.
+// SetKubeInfoButton sets field value
 func (o *VClusterListDto) SetKubeInfoButton(v ButtonStatusDto) {
-	o.KubeInfoButton = &v
+	o.KubeInfoButton = v
 }
 
-// GetSetExpirationDateButton returns the SetExpirationDateButton field value if set, zero value otherwise.
+// GetSetExpirationDateButton returns the SetExpirationDateButton field value
 func (o *VClusterListDto) GetSetExpirationDateButton() ButtonStatusDto {
-	if o == nil || IsNil(o.SetExpirationDateButton) {
+	if o == nil {
 		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.SetExpirationDateButton
+
+	return o.SetExpirationDateButton
 }
 
-// GetSetExpirationDateButtonOk returns a tuple with the SetExpirationDateButton field value if set, nil otherwise
+// GetSetExpirationDateButtonOk returns a tuple with the SetExpirationDateButton field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetSetExpirationDateButtonOk() (*ButtonStatusDto, bool) {
-	if o == nil || IsNil(o.SetExpirationDateButton) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SetExpirationDateButton, true
+	return &o.SetExpirationDateButton, true
 }
 
-// HasSetExpirationDateButton returns a boolean if a field has been set.
-func (o *VClusterListDto) HasSetExpirationDateButton() bool {
-	if o != nil && !IsNil(o.SetExpirationDateButton) {
-		return true
-	}
-
-	return false
-}
-
-// SetSetExpirationDateButton gets a reference to the given ButtonStatusDto and assigns it to the SetExpirationDateButton field.
+// SetSetExpirationDateButton sets field value
 func (o *VClusterListDto) SetSetExpirationDateButton(v ButtonStatusDto) {
-	o.SetExpirationDateButton = &v
+	o.SetExpirationDateButton = v
 }
 
-// GetResetStatusButton returns the ResetStatusButton field value if set, zero value otherwise.
+// GetResetStatusButton returns the ResetStatusButton field value
 func (o *VClusterListDto) GetResetStatusButton() ButtonStatusDto {
-	if o == nil || IsNil(o.ResetStatusButton) {
+	if o == nil {
 		var ret ButtonStatusDto
 		return ret
 	}
-	return *o.ResetStatusButton
+
+	return o.ResetStatusButton
 }
 
-// GetResetStatusButtonOk returns a tuple with the ResetStatusButton field value if set, nil otherwise
+// GetResetStatusButtonOk returns a tuple with the ResetStatusButton field value
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetResetStatusButtonOk() (*ButtonStatusDto, bool) {
-	if o == nil || IsNil(o.ResetStatusButton) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ResetStatusButton, true
+	return &o.ResetStatusButton, true
 }
 
-// HasResetStatusButton returns a boolean if a field has been set.
-func (o *VClusterListDto) HasResetStatusButton() bool {
-	if o != nil && !IsNil(o.ResetStatusButton) {
-		return true
-	}
-
-	return false
-}
-
-// SetResetStatusButton gets a reference to the given ButtonStatusDto and assigns it to the ResetStatusButton field.
+// SetResetStatusButton sets field value
 func (o *VClusterListDto) SetResetStatusButton(v ButtonStatusDto) {
-	o.ResetStatusButton = &v
+	o.ResetStatusButton = v
 }
 
 func (o VClusterListDto) MarshalJSON() ([]byte, error) {
@@ -1083,91 +811,101 @@ func (o VClusterListDto) MarshalJSON() ([]byte, error) {
 
 func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if !IsNil(o.IsVirtualCluster) {
-		toSerialize["isVirtualCluster"] = o.IsVirtualCluster
-	}
-	if !IsNil(o.IsLocked) {
-		toSerialize["isLocked"] = o.IsLocked
-	}
-	if !IsNil(o.HasKubeConfigFile) {
-		toSerialize["hasKubeConfigFile"] = o.HasKubeConfigFile
-	}
-	if !IsNil(o.IsMaintenanceModeEnabled) {
-		toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
-	if !IsNil(o.OrganizationId) {
-		toSerialize["organizationId"] = o.OrganizationId
-	}
-	if o.KubernetesVersion.IsSet() {
-		toSerialize["kubernetesVersion"] = o.KubernetesVersion.Get()
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
-	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
-	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
-	}
-	if !IsNil(o.AlertsCount) {
-		toSerialize["alertsCount"] = o.AlertsCount
-	}
-	if o.ExpiredAt.IsSet() {
-		toSerialize["expiredAt"] = o.ExpiredAt.Get()
-	}
-	if !IsNil(o.DeleteOnExpiration) {
-		toSerialize["deleteOnExpiration"] = o.DeleteOnExpiration
-	}
-	if o.AlertingProfileId.IsSet() {
-		toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
-	}
-	if o.AlertingProfileName.IsSet() {
-		toSerialize["alertingProfileName"] = o.AlertingProfileName.Get()
-	}
-	if o.AccessIp.IsSet() {
-		toSerialize["accessIp"] = o.AccessIp.Get()
-	}
-	if !IsNil(o.CloudType) {
-		toSerialize["cloudType"] = o.CloudType
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.Health) {
-		toSerialize["health"] = o.Health
-	}
-	if !IsNil(o.LockButton) {
-		toSerialize["lockButton"] = o.LockButton
-	}
-	if !IsNil(o.UnlockButton) {
-		toSerialize["unlockButton"] = o.UnlockButton
-	}
-	if !IsNil(o.DeleteButton) {
-		toSerialize["deleteButton"] = o.DeleteButton
-	}
-	if !IsNil(o.KubeInfoButton) {
-		toSerialize["kubeInfoButton"] = o.KubeInfoButton
-	}
-	if !IsNil(o.SetExpirationDateButton) {
-		toSerialize["setExpirationDateButton"] = o.SetExpirationDateButton
-	}
-	if !IsNil(o.ResetStatusButton) {
-		toSerialize["resetStatusButton"] = o.ResetStatusButton
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["isVirtualCluster"] = o.IsVirtualCluster
+	toSerialize["isLocked"] = o.IsLocked
+	toSerialize["hasKubeConfigFile"] = o.HasKubeConfigFile
+	toSerialize["isMaintenanceModeEnabled"] = o.IsMaintenanceModeEnabled
+	toSerialize["organizationName"] = o.OrganizationName
+	toSerialize["organizationId"] = o.OrganizationId
+	toSerialize["kubernetesVersion"] = o.KubernetesVersion
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["createdBy"] = o.CreatedBy
+	toSerialize["lastModified"] = o.LastModified
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy
+	toSerialize["alertsCount"] = o.AlertsCount
+	toSerialize["expiredAt"] = o.ExpiredAt
+	toSerialize["deleteOnExpiration"] = o.DeleteOnExpiration
+	toSerialize["wasmEnabled"] = o.WasmEnabled
+	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
+	toSerialize["alertingProfileName"] = o.AlertingProfileName.Get()
+	toSerialize["accessIp"] = o.AccessIp
+	toSerialize["cloudType"] = o.CloudType
+	toSerialize["status"] = o.Status
+	toSerialize["health"] = o.Health
+	toSerialize["lockButton"] = o.LockButton
+	toSerialize["unlockButton"] = o.UnlockButton
+	toSerialize["deleteButton"] = o.DeleteButton
+	toSerialize["kubeInfoButton"] = o.KubeInfoButton
+	toSerialize["setExpirationDateButton"] = o.SetExpirationDateButton
+	toSerialize["resetStatusButton"] = o.ResetStatusButton
 	return toSerialize, nil
+}
+
+func (o *VClusterListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"isVirtualCluster",
+		"isLocked",
+		"hasKubeConfigFile",
+		"isMaintenanceModeEnabled",
+		"organizationName",
+		"organizationId",
+		"kubernetesVersion",
+		"createdAt",
+		"createdBy",
+		"lastModified",
+		"lastModifiedBy",
+		"alertsCount",
+		"expiredAt",
+		"deleteOnExpiration",
+		"wasmEnabled",
+		"alertingProfileId",
+		"alertingProfileName",
+		"accessIp",
+		"cloudType",
+		"status",
+		"health",
+		"lockButton",
+		"unlockButton",
+		"deleteButton",
+		"kubeInfoButton",
+		"setExpirationDateButton",
+		"resetStatusButton",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVClusterListDto := _VClusterListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVClusterListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VClusterListDto(varVClusterListDto)
+
+	return err
 }
 
 type NullableVClusterListDto struct {

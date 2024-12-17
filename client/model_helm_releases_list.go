@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the HelmReleasesList type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &HelmReleasesList{}
 
 // HelmReleasesList struct for HelmReleasesList
 type HelmReleasesList struct {
-	Data []HelmReleaseDto `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Data []HelmReleaseDto `json:"data"`
+	TotalCount int32 `json:"totalCount"`
 }
+
+type _HelmReleasesList HelmReleasesList
 
 // NewHelmReleasesList instantiates a new HelmReleasesList object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmReleasesList() *HelmReleasesList {
+func NewHelmReleasesList(data []HelmReleaseDto, totalCount int32) *HelmReleasesList {
 	this := HelmReleasesList{}
+	this.Data = data
+	this.TotalCount = totalCount
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewHelmReleasesListWithDefaults() *HelmReleasesList {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []HelmReleaseDto will be returned
 func (o *HelmReleasesList) GetData() []HelmReleaseDto {
 	if o == nil {
 		var ret []HelmReleaseDto
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmReleasesList) GetDataOk() ([]HelmReleaseDto, bool) {
@@ -60,50 +68,33 @@ func (o *HelmReleasesList) GetDataOk() ([]HelmReleaseDto, bool) {
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *HelmReleasesList) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []HelmReleaseDto and assigns it to the Data field.
+// SetData sets field value
 func (o *HelmReleasesList) SetData(v []HelmReleaseDto) {
 	o.Data = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value
 func (o *HelmReleasesList) GetTotalCount() int32 {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.TotalCount
+
+	return o.TotalCount
 }
 
-// GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
+// GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
 func (o *HelmReleasesList) GetTotalCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalCount, true
+	return &o.TotalCount, true
 }
 
-// HasTotalCount returns a boolean if a field has been set.
-func (o *HelmReleasesList) HasTotalCount() bool {
-	if o != nil && !IsNil(o.TotalCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+// SetTotalCount sets field value
 func (o *HelmReleasesList) SetTotalCount(v int32) {
-	o.TotalCount = &v
+	o.TotalCount = v
 }
 
 func (o HelmReleasesList) MarshalJSON() ([]byte, error) {
@@ -119,10 +110,46 @@ func (o HelmReleasesList) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	if !IsNil(o.TotalCount) {
-		toSerialize["totalCount"] = o.TotalCount
-	}
+	toSerialize["totalCount"] = o.TotalCount
 	return toSerialize, nil
+}
+
+func (o *HelmReleasesList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+		"totalCount",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHelmReleasesList := _HelmReleasesList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHelmReleasesList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmReleasesList(varHelmReleasesList)
+
+	return err
 }
 
 type NullableHelmReleasesList struct {

@@ -25,6 +25,7 @@ type ShowbackProjectsListDto struct {
 	MonitoringUrl NullableString `json:"monitoringUrl,omitempty"`
 	MonitoringUsername NullableString `json:"monitoringUsername,omitempty"`
 	MonitoringPassword NullableString `json:"monitoringPassword,omitempty"`
+	KubernetesCurrentVersion NullableString `json:"kubernetesCurrentVersion,omitempty"`
 }
 
 // NewShowbackProjectsListDto instantiates a new ShowbackProjectsListDto object
@@ -244,6 +245,48 @@ func (o *ShowbackProjectsListDto) UnsetMonitoringPassword() {
 	o.MonitoringPassword.Unset()
 }
 
+// GetKubernetesCurrentVersion returns the KubernetesCurrentVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ShowbackProjectsListDto) GetKubernetesCurrentVersion() string {
+	if o == nil || IsNil(o.KubernetesCurrentVersion.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.KubernetesCurrentVersion.Get()
+}
+
+// GetKubernetesCurrentVersionOk returns a tuple with the KubernetesCurrentVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ShowbackProjectsListDto) GetKubernetesCurrentVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.KubernetesCurrentVersion.Get(), o.KubernetesCurrentVersion.IsSet()
+}
+
+// HasKubernetesCurrentVersion returns a boolean if a field has been set.
+func (o *ShowbackProjectsListDto) HasKubernetesCurrentVersion() bool {
+	if o != nil && o.KubernetesCurrentVersion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetKubernetesCurrentVersion gets a reference to the given NullableString and assigns it to the KubernetesCurrentVersion field.
+func (o *ShowbackProjectsListDto) SetKubernetesCurrentVersion(v string) {
+	o.KubernetesCurrentVersion.Set(&v)
+}
+// SetKubernetesCurrentVersionNil sets the value for KubernetesCurrentVersion to be an explicit nil
+func (o *ShowbackProjectsListDto) SetKubernetesCurrentVersionNil() {
+	o.KubernetesCurrentVersion.Set(nil)
+}
+
+// UnsetKubernetesCurrentVersion ensures that no value is present for KubernetesCurrentVersion, not even an explicit nil
+func (o *ShowbackProjectsListDto) UnsetKubernetesCurrentVersion() {
+	o.KubernetesCurrentVersion.Unset()
+}
+
 func (o ShowbackProjectsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -268,6 +311,9 @@ func (o ShowbackProjectsListDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.MonitoringPassword.IsSet() {
 		toSerialize["monitoringPassword"] = o.MonitoringPassword.Get()
+	}
+	if o.KubernetesCurrentVersion.IsSet() {
+		toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion.Get()
 	}
 	return toSerialize, nil
 }

@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ListForLandingPageDto type satisfies the MappedNullable interface at compile time
@@ -20,30 +22,48 @@ var _ MappedNullable = &ListForLandingPageDto{}
 
 // ListForLandingPageDto struct for ListForLandingPageDto
 type ListForLandingPageDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	ProjectLimit *int32 `json:"projectLimit,omitempty"`
-	ServerLimit *int32 `json:"serverLimit,omitempty"`
-	UserLimit *int32 `json:"userLimit,omitempty"`
-	CloudCredentialLimit *int32 `json:"cloudCredentialLimit,omitempty"`
-	MonthlyPrice *float64 `json:"monthlyPrice,omitempty"`
-	YearlyPrice *float64 `json:"yearlyPrice,omitempty"`
-	TcuPrice *float64 `json:"tcuPrice,omitempty"`
-	IsDeprecated *bool `json:"isDeprecated,omitempty"`
-	Currency NullableString `json:"currency,omitempty"`
-	PartnerId NullableInt32 `json:"partnerId,omitempty"`
-	TrialDays *int32 `json:"trialDays,omitempty"`
-	Description NullableString `json:"description,omitempty"`
-	IsFree *bool `json:"isFree,omitempty"`
-	IsEnterprise *bool `json:"isEnterprise,omitempty"`
+	Id int32 `json:"id"`
+	Name NullableString `json:"name"`
+	ProjectLimit int32 `json:"projectLimit"`
+	ServerLimit int32 `json:"serverLimit"`
+	UserLimit int32 `json:"userLimit"`
+	CloudCredentialLimit int32 `json:"cloudCredentialLimit"`
+	MonthlyPrice float64 `json:"monthlyPrice"`
+	YearlyPrice float64 `json:"yearlyPrice"`
+	TcuPrice float64 `json:"tcuPrice"`
+	IsDeprecated bool `json:"isDeprecated"`
+	Currency NullableString `json:"currency"`
+	PartnerId NullableInt32 `json:"partnerId"`
+	TrialDays int32 `json:"trialDays"`
+	Description NullableString `json:"description"`
+	IsFree bool `json:"isFree"`
+	IsEnterprise bool `json:"isEnterprise"`
 }
+
+type _ListForLandingPageDto ListForLandingPageDto
 
 // NewListForLandingPageDto instantiates a new ListForLandingPageDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListForLandingPageDto() *ListForLandingPageDto {
+func NewListForLandingPageDto(id int32, name NullableString, projectLimit int32, serverLimit int32, userLimit int32, cloudCredentialLimit int32, monthlyPrice float64, yearlyPrice float64, tcuPrice float64, isDeprecated bool, currency NullableString, partnerId NullableInt32, trialDays int32, description NullableString, isFree bool, isEnterprise bool) *ListForLandingPageDto {
 	this := ListForLandingPageDto{}
+	this.Id = id
+	this.Name = name
+	this.ProjectLimit = projectLimit
+	this.ServerLimit = serverLimit
+	this.UserLimit = userLimit
+	this.CloudCredentialLimit = cloudCredentialLimit
+	this.MonthlyPrice = monthlyPrice
+	this.YearlyPrice = yearlyPrice
+	this.TcuPrice = tcuPrice
+	this.IsDeprecated = isDeprecated
+	this.Currency = currency
+	this.PartnerId = partnerId
+	this.TrialDays = trialDays
+	this.Description = description
+	this.IsFree = isFree
+	this.IsEnterprise = isEnterprise
 	return &this
 }
 
@@ -55,48 +75,42 @@ func NewListForLandingPageDtoWithDefaults() *ListForLandingPageDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *ListForLandingPageDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ListForLandingPageDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *ListForLandingPageDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ListForLandingPageDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Name.Get()
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListForLandingPageDto) GetNameOk() (*string, bool) {
@@ -106,295 +120,215 @@ func (o *ListForLandingPageDto) GetNameOk() (*string, bool) {
 	return o.Name.Get(), o.Name.IsSet()
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *ListForLandingPageDto) SetName(v string) {
 	o.Name.Set(&v)
 }
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ListForLandingPageDto) SetNameNil() {
-	o.Name.Set(nil)
-}
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ListForLandingPageDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetProjectLimit returns the ProjectLimit field value if set, zero value otherwise.
+// GetProjectLimit returns the ProjectLimit field value
 func (o *ListForLandingPageDto) GetProjectLimit() int32 {
-	if o == nil || IsNil(o.ProjectLimit) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ProjectLimit
+
+	return o.ProjectLimit
 }
 
-// GetProjectLimitOk returns a tuple with the ProjectLimit field value if set, nil otherwise
+// GetProjectLimitOk returns a tuple with the ProjectLimit field value
 // and a boolean to check if the value has been set.
 func (o *ListForLandingPageDto) GetProjectLimitOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProjectLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectLimit, true
+	return &o.ProjectLimit, true
 }
 
-// HasProjectLimit returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasProjectLimit() bool {
-	if o != nil && !IsNil(o.ProjectLimit) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectLimit gets a reference to the given int32 and assigns it to the ProjectLimit field.
+// SetProjectLimit sets field value
 func (o *ListForLandingPageDto) SetProjectLimit(v int32) {
-	o.ProjectLimit = &v
+	o.ProjectLimit = v
 }
 
-// GetServerLimit returns the ServerLimit field value if set, zero value otherwise.
+// GetServerLimit returns the ServerLimit field value
 func (o *ListForLandingPageDto) GetServerLimit() int32 {
-	if o == nil || IsNil(o.ServerLimit) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ServerLimit
+
+	return o.ServerLimit
 }
 
-// GetServerLimitOk returns a tuple with the ServerLimit field value if set, nil otherwise
+// GetServerLimitOk returns a tuple with the ServerLimit field value
 // and a boolean to check if the value has been set.
 func (o *ListForLandingPageDto) GetServerLimitOk() (*int32, bool) {
-	if o == nil || IsNil(o.ServerLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ServerLimit, true
+	return &o.ServerLimit, true
 }
 
-// HasServerLimit returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasServerLimit() bool {
-	if o != nil && !IsNil(o.ServerLimit) {
-		return true
-	}
-
-	return false
-}
-
-// SetServerLimit gets a reference to the given int32 and assigns it to the ServerLimit field.
+// SetServerLimit sets field value
 func (o *ListForLandingPageDto) SetServerLimit(v int32) {
-	o.ServerLimit = &v
+	o.ServerLimit = v
 }
 
-// GetUserLimit returns the UserLimit field value if set, zero value otherwise.
+// GetUserLimit returns the UserLimit field value
 func (o *ListForLandingPageDto) GetUserLimit() int32 {
-	if o == nil || IsNil(o.UserLimit) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.UserLimit
+
+	return o.UserLimit
 }
 
-// GetUserLimitOk returns a tuple with the UserLimit field value if set, nil otherwise
+// GetUserLimitOk returns a tuple with the UserLimit field value
 // and a boolean to check if the value has been set.
 func (o *ListForLandingPageDto) GetUserLimitOk() (*int32, bool) {
-	if o == nil || IsNil(o.UserLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserLimit, true
+	return &o.UserLimit, true
 }
 
-// HasUserLimit returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasUserLimit() bool {
-	if o != nil && !IsNil(o.UserLimit) {
-		return true
-	}
-
-	return false
-}
-
-// SetUserLimit gets a reference to the given int32 and assigns it to the UserLimit field.
+// SetUserLimit sets field value
 func (o *ListForLandingPageDto) SetUserLimit(v int32) {
-	o.UserLimit = &v
+	o.UserLimit = v
 }
 
-// GetCloudCredentialLimit returns the CloudCredentialLimit field value if set, zero value otherwise.
+// GetCloudCredentialLimit returns the CloudCredentialLimit field value
 func (o *ListForLandingPageDto) GetCloudCredentialLimit() int32 {
-	if o == nil || IsNil(o.CloudCredentialLimit) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.CloudCredentialLimit
+
+	return o.CloudCredentialLimit
 }
 
-// GetCloudCredentialLimitOk returns a tuple with the CloudCredentialLimit field value if set, nil otherwise
+// GetCloudCredentialLimitOk returns a tuple with the CloudCredentialLimit field value
 // and a boolean to check if the value has been set.
 func (o *ListForLandingPageDto) GetCloudCredentialLimitOk() (*int32, bool) {
-	if o == nil || IsNil(o.CloudCredentialLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CloudCredentialLimit, true
+	return &o.CloudCredentialLimit, true
 }
 
-// HasCloudCredentialLimit returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasCloudCredentialLimit() bool {
-	if o != nil && !IsNil(o.CloudCredentialLimit) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudCredentialLimit gets a reference to the given int32 and assigns it to the CloudCredentialLimit field.
+// SetCloudCredentialLimit sets field value
 func (o *ListForLandingPageDto) SetCloudCredentialLimit(v int32) {
-	o.CloudCredentialLimit = &v
+	o.CloudCredentialLimit = v
 }
 
-// GetMonthlyPrice returns the MonthlyPrice field value if set, zero value otherwise.
+// GetMonthlyPrice returns the MonthlyPrice field value
 func (o *ListForLandingPageDto) GetMonthlyPrice() float64 {
-	if o == nil || IsNil(o.MonthlyPrice) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.MonthlyPrice
+
+	return o.MonthlyPrice
 }
 
-// GetMonthlyPriceOk returns a tuple with the MonthlyPrice field value if set, nil otherwise
+// GetMonthlyPriceOk returns a tuple with the MonthlyPrice field value
 // and a boolean to check if the value has been set.
 func (o *ListForLandingPageDto) GetMonthlyPriceOk() (*float64, bool) {
-	if o == nil || IsNil(o.MonthlyPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MonthlyPrice, true
+	return &o.MonthlyPrice, true
 }
 
-// HasMonthlyPrice returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasMonthlyPrice() bool {
-	if o != nil && !IsNil(o.MonthlyPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetMonthlyPrice gets a reference to the given float64 and assigns it to the MonthlyPrice field.
+// SetMonthlyPrice sets field value
 func (o *ListForLandingPageDto) SetMonthlyPrice(v float64) {
-	o.MonthlyPrice = &v
+	o.MonthlyPrice = v
 }
 
-// GetYearlyPrice returns the YearlyPrice field value if set, zero value otherwise.
+// GetYearlyPrice returns the YearlyPrice field value
 func (o *ListForLandingPageDto) GetYearlyPrice() float64 {
-	if o == nil || IsNil(o.YearlyPrice) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.YearlyPrice
+
+	return o.YearlyPrice
 }
 
-// GetYearlyPriceOk returns a tuple with the YearlyPrice field value if set, nil otherwise
+// GetYearlyPriceOk returns a tuple with the YearlyPrice field value
 // and a boolean to check if the value has been set.
 func (o *ListForLandingPageDto) GetYearlyPriceOk() (*float64, bool) {
-	if o == nil || IsNil(o.YearlyPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.YearlyPrice, true
+	return &o.YearlyPrice, true
 }
 
-// HasYearlyPrice returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasYearlyPrice() bool {
-	if o != nil && !IsNil(o.YearlyPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetYearlyPrice gets a reference to the given float64 and assigns it to the YearlyPrice field.
+// SetYearlyPrice sets field value
 func (o *ListForLandingPageDto) SetYearlyPrice(v float64) {
-	o.YearlyPrice = &v
+	o.YearlyPrice = v
 }
 
-// GetTcuPrice returns the TcuPrice field value if set, zero value otherwise.
+// GetTcuPrice returns the TcuPrice field value
 func (o *ListForLandingPageDto) GetTcuPrice() float64 {
-	if o == nil || IsNil(o.TcuPrice) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.TcuPrice
+
+	return o.TcuPrice
 }
 
-// GetTcuPriceOk returns a tuple with the TcuPrice field value if set, nil otherwise
+// GetTcuPriceOk returns a tuple with the TcuPrice field value
 // and a boolean to check if the value has been set.
 func (o *ListForLandingPageDto) GetTcuPriceOk() (*float64, bool) {
-	if o == nil || IsNil(o.TcuPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TcuPrice, true
+	return &o.TcuPrice, true
 }
 
-// HasTcuPrice returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasTcuPrice() bool {
-	if o != nil && !IsNil(o.TcuPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetTcuPrice gets a reference to the given float64 and assigns it to the TcuPrice field.
+// SetTcuPrice sets field value
 func (o *ListForLandingPageDto) SetTcuPrice(v float64) {
-	o.TcuPrice = &v
+	o.TcuPrice = v
 }
 
-// GetIsDeprecated returns the IsDeprecated field value if set, zero value otherwise.
+// GetIsDeprecated returns the IsDeprecated field value
 func (o *ListForLandingPageDto) GetIsDeprecated() bool {
-	if o == nil || IsNil(o.IsDeprecated) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDeprecated
+
+	return o.IsDeprecated
 }
 
-// GetIsDeprecatedOk returns a tuple with the IsDeprecated field value if set, nil otherwise
+// GetIsDeprecatedOk returns a tuple with the IsDeprecated field value
 // and a boolean to check if the value has been set.
 func (o *ListForLandingPageDto) GetIsDeprecatedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDeprecated) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDeprecated, true
+	return &o.IsDeprecated, true
 }
 
-// HasIsDeprecated returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasIsDeprecated() bool {
-	if o != nil && !IsNil(o.IsDeprecated) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDeprecated gets a reference to the given bool and assigns it to the IsDeprecated field.
+// SetIsDeprecated sets field value
 func (o *ListForLandingPageDto) SetIsDeprecated(v bool) {
-	o.IsDeprecated = &v
+	o.IsDeprecated = v
 }
 
-// GetCurrency returns the Currency field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCurrency returns the Currency field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ListForLandingPageDto) GetCurrency() string {
-	if o == nil || IsNil(o.Currency.Get()) {
+	if o == nil || o.Currency.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Currency.Get()
 }
 
-// GetCurrencyOk returns a tuple with the Currency field value if set, nil otherwise
+// GetCurrencyOk returns a tuple with the Currency field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListForLandingPageDto) GetCurrencyOk() (*string, bool) {
@@ -404,39 +338,23 @@ func (o *ListForLandingPageDto) GetCurrencyOk() (*string, bool) {
 	return o.Currency.Get(), o.Currency.IsSet()
 }
 
-// HasCurrency returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasCurrency() bool {
-	if o != nil && o.Currency.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCurrency gets a reference to the given NullableString and assigns it to the Currency field.
+// SetCurrency sets field value
 func (o *ListForLandingPageDto) SetCurrency(v string) {
 	o.Currency.Set(&v)
 }
-// SetCurrencyNil sets the value for Currency to be an explicit nil
-func (o *ListForLandingPageDto) SetCurrencyNil() {
-	o.Currency.Set(nil)
-}
 
-// UnsetCurrency ensures that no value is present for Currency, not even an explicit nil
-func (o *ListForLandingPageDto) UnsetCurrency() {
-	o.Currency.Unset()
-}
-
-// GetPartnerId returns the PartnerId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPartnerId returns the PartnerId field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *ListForLandingPageDto) GetPartnerId() int32 {
-	if o == nil || IsNil(o.PartnerId.Get()) {
+	if o == nil || o.PartnerId.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.PartnerId.Get()
 }
 
-// GetPartnerIdOk returns a tuple with the PartnerId field value if set, nil otherwise
+// GetPartnerIdOk returns a tuple with the PartnerId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListForLandingPageDto) GetPartnerIdOk() (*int32, bool) {
@@ -446,71 +364,47 @@ func (o *ListForLandingPageDto) GetPartnerIdOk() (*int32, bool) {
 	return o.PartnerId.Get(), o.PartnerId.IsSet()
 }
 
-// HasPartnerId returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasPartnerId() bool {
-	if o != nil && o.PartnerId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerId gets a reference to the given NullableInt32 and assigns it to the PartnerId field.
+// SetPartnerId sets field value
 func (o *ListForLandingPageDto) SetPartnerId(v int32) {
 	o.PartnerId.Set(&v)
 }
-// SetPartnerIdNil sets the value for PartnerId to be an explicit nil
-func (o *ListForLandingPageDto) SetPartnerIdNil() {
-	o.PartnerId.Set(nil)
-}
 
-// UnsetPartnerId ensures that no value is present for PartnerId, not even an explicit nil
-func (o *ListForLandingPageDto) UnsetPartnerId() {
-	o.PartnerId.Unset()
-}
-
-// GetTrialDays returns the TrialDays field value if set, zero value otherwise.
+// GetTrialDays returns the TrialDays field value
 func (o *ListForLandingPageDto) GetTrialDays() int32 {
-	if o == nil || IsNil(o.TrialDays) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.TrialDays
+
+	return o.TrialDays
 }
 
-// GetTrialDaysOk returns a tuple with the TrialDays field value if set, nil otherwise
+// GetTrialDaysOk returns a tuple with the TrialDays field value
 // and a boolean to check if the value has been set.
 func (o *ListForLandingPageDto) GetTrialDaysOk() (*int32, bool) {
-	if o == nil || IsNil(o.TrialDays) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TrialDays, true
+	return &o.TrialDays, true
 }
 
-// HasTrialDays returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasTrialDays() bool {
-	if o != nil && !IsNil(o.TrialDays) {
-		return true
-	}
-
-	return false
-}
-
-// SetTrialDays gets a reference to the given int32 and assigns it to the TrialDays field.
+// SetTrialDays sets field value
 func (o *ListForLandingPageDto) SetTrialDays(v int32) {
-	o.TrialDays = &v
+	o.TrialDays = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ListForLandingPageDto) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || o.Description.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Description.Get()
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ListForLandingPageDto) GetDescriptionOk() (*string, bool) {
@@ -520,91 +414,57 @@ func (o *ListForLandingPageDto) GetDescriptionOk() (*string, bool) {
 	return o.Description.Get(), o.Description.IsSet()
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription sets field value
 func (o *ListForLandingPageDto) SetDescription(v string) {
 	o.Description.Set(&v)
 }
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *ListForLandingPageDto) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
 
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *ListForLandingPageDto) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetIsFree returns the IsFree field value if set, zero value otherwise.
+// GetIsFree returns the IsFree field value
 func (o *ListForLandingPageDto) GetIsFree() bool {
-	if o == nil || IsNil(o.IsFree) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsFree
+
+	return o.IsFree
 }
 
-// GetIsFreeOk returns a tuple with the IsFree field value if set, nil otherwise
+// GetIsFreeOk returns a tuple with the IsFree field value
 // and a boolean to check if the value has been set.
 func (o *ListForLandingPageDto) GetIsFreeOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsFree) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsFree, true
+	return &o.IsFree, true
 }
 
-// HasIsFree returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasIsFree() bool {
-	if o != nil && !IsNil(o.IsFree) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsFree gets a reference to the given bool and assigns it to the IsFree field.
+// SetIsFree sets field value
 func (o *ListForLandingPageDto) SetIsFree(v bool) {
-	o.IsFree = &v
+	o.IsFree = v
 }
 
-// GetIsEnterprise returns the IsEnterprise field value if set, zero value otherwise.
+// GetIsEnterprise returns the IsEnterprise field value
 func (o *ListForLandingPageDto) GetIsEnterprise() bool {
-	if o == nil || IsNil(o.IsEnterprise) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsEnterprise
+
+	return o.IsEnterprise
 }
 
-// GetIsEnterpriseOk returns a tuple with the IsEnterprise field value if set, nil otherwise
+// GetIsEnterpriseOk returns a tuple with the IsEnterprise field value
 // and a boolean to check if the value has been set.
 func (o *ListForLandingPageDto) GetIsEnterpriseOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsEnterprise) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsEnterprise, true
+	return &o.IsEnterprise, true
 }
 
-// HasIsEnterprise returns a boolean if a field has been set.
-func (o *ListForLandingPageDto) HasIsEnterprise() bool {
-	if o != nil && !IsNil(o.IsEnterprise) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsEnterprise gets a reference to the given bool and assigns it to the IsEnterprise field.
+// SetIsEnterprise sets field value
 func (o *ListForLandingPageDto) SetIsEnterprise(v bool) {
-	o.IsEnterprise = &v
+	o.IsEnterprise = v
 }
 
 func (o ListForLandingPageDto) MarshalJSON() ([]byte, error) {
@@ -617,55 +477,75 @@ func (o ListForLandingPageDto) MarshalJSON() ([]byte, error) {
 
 func (o ListForLandingPageDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if !IsNil(o.ProjectLimit) {
-		toSerialize["projectLimit"] = o.ProjectLimit
-	}
-	if !IsNil(o.ServerLimit) {
-		toSerialize["serverLimit"] = o.ServerLimit
-	}
-	if !IsNil(o.UserLimit) {
-		toSerialize["userLimit"] = o.UserLimit
-	}
-	if !IsNil(o.CloudCredentialLimit) {
-		toSerialize["cloudCredentialLimit"] = o.CloudCredentialLimit
-	}
-	if !IsNil(o.MonthlyPrice) {
-		toSerialize["monthlyPrice"] = o.MonthlyPrice
-	}
-	if !IsNil(o.YearlyPrice) {
-		toSerialize["yearlyPrice"] = o.YearlyPrice
-	}
-	if !IsNil(o.TcuPrice) {
-		toSerialize["tcuPrice"] = o.TcuPrice
-	}
-	if !IsNil(o.IsDeprecated) {
-		toSerialize["isDeprecated"] = o.IsDeprecated
-	}
-	if o.Currency.IsSet() {
-		toSerialize["currency"] = o.Currency.Get()
-	}
-	if o.PartnerId.IsSet() {
-		toSerialize["partnerId"] = o.PartnerId.Get()
-	}
-	if !IsNil(o.TrialDays) {
-		toSerialize["trialDays"] = o.TrialDays
-	}
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
-	if !IsNil(o.IsFree) {
-		toSerialize["isFree"] = o.IsFree
-	}
-	if !IsNil(o.IsEnterprise) {
-		toSerialize["isEnterprise"] = o.IsEnterprise
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name.Get()
+	toSerialize["projectLimit"] = o.ProjectLimit
+	toSerialize["serverLimit"] = o.ServerLimit
+	toSerialize["userLimit"] = o.UserLimit
+	toSerialize["cloudCredentialLimit"] = o.CloudCredentialLimit
+	toSerialize["monthlyPrice"] = o.MonthlyPrice
+	toSerialize["yearlyPrice"] = o.YearlyPrice
+	toSerialize["tcuPrice"] = o.TcuPrice
+	toSerialize["isDeprecated"] = o.IsDeprecated
+	toSerialize["currency"] = o.Currency.Get()
+	toSerialize["partnerId"] = o.PartnerId.Get()
+	toSerialize["trialDays"] = o.TrialDays
+	toSerialize["description"] = o.Description.Get()
+	toSerialize["isFree"] = o.IsFree
+	toSerialize["isEnterprise"] = o.IsEnterprise
 	return toSerialize, nil
+}
+
+func (o *ListForLandingPageDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"projectLimit",
+		"serverLimit",
+		"userLimit",
+		"cloudCredentialLimit",
+		"monthlyPrice",
+		"yearlyPrice",
+		"tcuPrice",
+		"isDeprecated",
+		"currency",
+		"partnerId",
+		"trialDays",
+		"description",
+		"isFree",
+		"isEnterprise",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varListForLandingPageDto := _ListForLandingPageDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varListForLandingPageDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ListForLandingPageDto(varListForLandingPageDto)
+
+	return err
 }
 
 type NullableListForLandingPageDto struct {

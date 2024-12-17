@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the KubernetesCronJobDto type satisfies the MappedNullable interface at compile time
@@ -20,20 +22,28 @@ var _ MappedNullable = &KubernetesCronJobDto{}
 
 // KubernetesCronJobDto struct for KubernetesCronJobDto
 type KubernetesCronJobDto struct {
-	MetadataName NullableString `json:"metadataName,omitempty"`
-	LastSchedule NullableString `json:"lastSchedule,omitempty"`
-	Suspend NullableBool `json:"suspend,omitempty"`
-	Schedule NullableString `json:"schedule,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	Age NullableString `json:"age,omitempty"`
+	MetadataName string `json:"metadataName"`
+	LastSchedule NullableString `json:"lastSchedule"`
+	Suspend NullableBool `json:"suspend"`
+	Schedule NullableString `json:"schedule"`
+	Namespace string `json:"namespace"`
+	Age NullableString `json:"age"`
 }
+
+type _KubernetesCronJobDto KubernetesCronJobDto
 
 // NewKubernetesCronJobDto instantiates a new KubernetesCronJobDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKubernetesCronJobDto() *KubernetesCronJobDto {
+func NewKubernetesCronJobDto(metadataName string, lastSchedule NullableString, suspend NullableBool, schedule NullableString, namespace string, age NullableString) *KubernetesCronJobDto {
 	this := KubernetesCronJobDto{}
+	this.MetadataName = metadataName
+	this.LastSchedule = lastSchedule
+	this.Suspend = suspend
+	this.Schedule = schedule
+	this.Namespace = namespace
+	this.Age = age
 	return &this
 }
 
@@ -45,58 +55,42 @@ func NewKubernetesCronJobDtoWithDefaults() *KubernetesCronJobDto {
 	return &this
 }
 
-// GetMetadataName returns the MetadataName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMetadataName returns the MetadataName field value
 func (o *KubernetesCronJobDto) GetMetadataName() string {
-	if o == nil || IsNil(o.MetadataName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.MetadataName.Get()
+
+	return o.MetadataName
 }
 
-// GetMetadataNameOk returns a tuple with the MetadataName field value if set, nil otherwise
+// GetMetadataNameOk returns a tuple with the MetadataName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesCronJobDto) GetMetadataNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.MetadataName.Get(), o.MetadataName.IsSet()
+	return &o.MetadataName, true
 }
 
-// HasMetadataName returns a boolean if a field has been set.
-func (o *KubernetesCronJobDto) HasMetadataName() bool {
-	if o != nil && o.MetadataName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetMetadataName gets a reference to the given NullableString and assigns it to the MetadataName field.
+// SetMetadataName sets field value
 func (o *KubernetesCronJobDto) SetMetadataName(v string) {
-	o.MetadataName.Set(&v)
-}
-// SetMetadataNameNil sets the value for MetadataName to be an explicit nil
-func (o *KubernetesCronJobDto) SetMetadataNameNil() {
-	o.MetadataName.Set(nil)
+	o.MetadataName = v
 }
 
-// UnsetMetadataName ensures that no value is present for MetadataName, not even an explicit nil
-func (o *KubernetesCronJobDto) UnsetMetadataName() {
-	o.MetadataName.Unset()
-}
-
-// GetLastSchedule returns the LastSchedule field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastSchedule returns the LastSchedule field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesCronJobDto) GetLastSchedule() string {
-	if o == nil || IsNil(o.LastSchedule.Get()) {
+	if o == nil || o.LastSchedule.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastSchedule.Get()
 }
 
-// GetLastScheduleOk returns a tuple with the LastSchedule field value if set, nil otherwise
+// GetLastScheduleOk returns a tuple with the LastSchedule field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesCronJobDto) GetLastScheduleOk() (*string, bool) {
@@ -106,39 +100,23 @@ func (o *KubernetesCronJobDto) GetLastScheduleOk() (*string, bool) {
 	return o.LastSchedule.Get(), o.LastSchedule.IsSet()
 }
 
-// HasLastSchedule returns a boolean if a field has been set.
-func (o *KubernetesCronJobDto) HasLastSchedule() bool {
-	if o != nil && o.LastSchedule.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastSchedule gets a reference to the given NullableString and assigns it to the LastSchedule field.
+// SetLastSchedule sets field value
 func (o *KubernetesCronJobDto) SetLastSchedule(v string) {
 	o.LastSchedule.Set(&v)
 }
-// SetLastScheduleNil sets the value for LastSchedule to be an explicit nil
-func (o *KubernetesCronJobDto) SetLastScheduleNil() {
-	o.LastSchedule.Set(nil)
-}
 
-// UnsetLastSchedule ensures that no value is present for LastSchedule, not even an explicit nil
-func (o *KubernetesCronJobDto) UnsetLastSchedule() {
-	o.LastSchedule.Unset()
-}
-
-// GetSuspend returns the Suspend field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSuspend returns the Suspend field value
+// If the value is explicit nil, the zero value for bool will be returned
 func (o *KubernetesCronJobDto) GetSuspend() bool {
-	if o == nil || IsNil(o.Suspend.Get()) {
+	if o == nil || o.Suspend.Get() == nil {
 		var ret bool
 		return ret
 	}
+
 	return *o.Suspend.Get()
 }
 
-// GetSuspendOk returns a tuple with the Suspend field value if set, nil otherwise
+// GetSuspendOk returns a tuple with the Suspend field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesCronJobDto) GetSuspendOk() (*bool, bool) {
@@ -148,39 +126,23 @@ func (o *KubernetesCronJobDto) GetSuspendOk() (*bool, bool) {
 	return o.Suspend.Get(), o.Suspend.IsSet()
 }
 
-// HasSuspend returns a boolean if a field has been set.
-func (o *KubernetesCronJobDto) HasSuspend() bool {
-	if o != nil && o.Suspend.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSuspend gets a reference to the given NullableBool and assigns it to the Suspend field.
+// SetSuspend sets field value
 func (o *KubernetesCronJobDto) SetSuspend(v bool) {
 	o.Suspend.Set(&v)
 }
-// SetSuspendNil sets the value for Suspend to be an explicit nil
-func (o *KubernetesCronJobDto) SetSuspendNil() {
-	o.Suspend.Set(nil)
-}
 
-// UnsetSuspend ensures that no value is present for Suspend, not even an explicit nil
-func (o *KubernetesCronJobDto) UnsetSuspend() {
-	o.Suspend.Unset()
-}
-
-// GetSchedule returns the Schedule field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSchedule returns the Schedule field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesCronJobDto) GetSchedule() string {
-	if o == nil || IsNil(o.Schedule.Get()) {
+	if o == nil || o.Schedule.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Schedule.Get()
 }
 
-// GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
+// GetScheduleOk returns a tuple with the Schedule field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesCronJobDto) GetScheduleOk() (*string, bool) {
@@ -190,81 +152,47 @@ func (o *KubernetesCronJobDto) GetScheduleOk() (*string, bool) {
 	return o.Schedule.Get(), o.Schedule.IsSet()
 }
 
-// HasSchedule returns a boolean if a field has been set.
-func (o *KubernetesCronJobDto) HasSchedule() bool {
-	if o != nil && o.Schedule.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSchedule gets a reference to the given NullableString and assigns it to the Schedule field.
+// SetSchedule sets field value
 func (o *KubernetesCronJobDto) SetSchedule(v string) {
 	o.Schedule.Set(&v)
 }
-// SetScheduleNil sets the value for Schedule to be an explicit nil
-func (o *KubernetesCronJobDto) SetScheduleNil() {
-	o.Schedule.Set(nil)
-}
 
-// UnsetSchedule ensures that no value is present for Schedule, not even an explicit nil
-func (o *KubernetesCronJobDto) UnsetSchedule() {
-	o.Schedule.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value
 func (o *KubernetesCronJobDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+
+	return o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// GetNamespaceOk returns a tuple with the Namespace field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesCronJobDto) GetNamespaceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return &o.Namespace, true
 }
 
-// HasNamespace returns a boolean if a field has been set.
-func (o *KubernetesCronJobDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace sets field value
 func (o *KubernetesCronJobDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *KubernetesCronJobDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *KubernetesCronJobDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetAge returns the Age field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAge returns the Age field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *KubernetesCronJobDto) GetAge() string {
-	if o == nil || IsNil(o.Age.Get()) {
+	if o == nil || o.Age.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Age.Get()
 }
 
-// GetAgeOk returns a tuple with the Age field value if set, nil otherwise
+// GetAgeOk returns a tuple with the Age field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *KubernetesCronJobDto) GetAgeOk() (*string, bool) {
@@ -274,27 +202,9 @@ func (o *KubernetesCronJobDto) GetAgeOk() (*string, bool) {
 	return o.Age.Get(), o.Age.IsSet()
 }
 
-// HasAge returns a boolean if a field has been set.
-func (o *KubernetesCronJobDto) HasAge() bool {
-	if o != nil && o.Age.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAge gets a reference to the given NullableString and assigns it to the Age field.
+// SetAge sets field value
 func (o *KubernetesCronJobDto) SetAge(v string) {
 	o.Age.Set(&v)
-}
-// SetAgeNil sets the value for Age to be an explicit nil
-func (o *KubernetesCronJobDto) SetAgeNil() {
-	o.Age.Set(nil)
-}
-
-// UnsetAge ensures that no value is present for Age, not even an explicit nil
-func (o *KubernetesCronJobDto) UnsetAge() {
-	o.Age.Unset()
 }
 
 func (o KubernetesCronJobDto) MarshalJSON() ([]byte, error) {
@@ -307,25 +217,55 @@ func (o KubernetesCronJobDto) MarshalJSON() ([]byte, error) {
 
 func (o KubernetesCronJobDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.MetadataName.IsSet() {
-		toSerialize["metadataName"] = o.MetadataName.Get()
-	}
-	if o.LastSchedule.IsSet() {
-		toSerialize["lastSchedule"] = o.LastSchedule.Get()
-	}
-	if o.Suspend.IsSet() {
-		toSerialize["suspend"] = o.Suspend.Get()
-	}
-	if o.Schedule.IsSet() {
-		toSerialize["schedule"] = o.Schedule.Get()
-	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
-	}
-	if o.Age.IsSet() {
-		toSerialize["age"] = o.Age.Get()
-	}
+	toSerialize["metadataName"] = o.MetadataName
+	toSerialize["lastSchedule"] = o.LastSchedule.Get()
+	toSerialize["suspend"] = o.Suspend.Get()
+	toSerialize["schedule"] = o.Schedule.Get()
+	toSerialize["namespace"] = o.Namespace
+	toSerialize["age"] = o.Age.Get()
 	return toSerialize, nil
+}
+
+func (o *KubernetesCronJobDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"metadataName",
+		"lastSchedule",
+		"suspend",
+		"schedule",
+		"namespace",
+		"age",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varKubernetesCronJobDto := _KubernetesCronJobDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varKubernetesCronJobDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = KubernetesCronJobDto(varKubernetesCronJobDto)
+
+	return err
 }
 
 type NullableKubernetesCronJobDto struct {

@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PodDisruptionDto type satisfies the MappedNullable interface at compile time
@@ -20,20 +22,28 @@ var _ MappedNullable = &PodDisruptionDto{}
 
 // PodDisruptionDto struct for PodDisruptionDto
 type PodDisruptionDto struct {
-	Name NullableString `json:"name,omitempty"`
-	Namespace NullableString `json:"namespace,omitempty"`
-	MinAvailable interface{} `json:"minAvailable,omitempty"`
-	MaxAvailable interface{} `json:"maxAvailable,omitempty"`
-	AllowedDisruptions interface{} `json:"allowedDisruptions,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Name string `json:"name"`
+	Namespace string `json:"namespace"`
+	MinAvailable interface{} `json:"minAvailable"`
+	MaxAvailable interface{} `json:"maxAvailable"`
+	AllowedDisruptions interface{} `json:"allowedDisruptions"`
+	CreatedAt NullableString `json:"createdAt"`
 }
+
+type _PodDisruptionDto PodDisruptionDto
 
 // NewPodDisruptionDto instantiates a new PodDisruptionDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPodDisruptionDto() *PodDisruptionDto {
+func NewPodDisruptionDto(name string, namespace string, minAvailable interface{}, maxAvailable interface{}, allowedDisruptions interface{}, createdAt NullableString) *PodDisruptionDto {
 	this := PodDisruptionDto{}
+	this.Name = name
+	this.Namespace = namespace
+	this.MinAvailable = minAvailable
+	this.MaxAvailable = maxAvailable
+	this.AllowedDisruptions = allowedDisruptions
+	this.CreatedAt = createdAt
 	return &this
 }
 
@@ -45,100 +55,66 @@ func NewPodDisruptionDtoWithDefaults() *PodDisruptionDto {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *PodDisruptionDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodDisruptionDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *PodDisruptionDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *PodDisruptionDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *PodDisruptionDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *PodDisruptionDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetNamespace returns the Namespace field value
 func (o *PodDisruptionDto) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Namespace.Get()
+
+	return o.Namespace
 }
 
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// GetNamespaceOk returns a tuple with the Namespace field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodDisruptionDto) GetNamespaceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
+	return &o.Namespace, true
 }
 
-// HasNamespace returns a boolean if a field has been set.
-func (o *PodDisruptionDto) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
+// SetNamespace sets field value
 func (o *PodDisruptionDto) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *PodDisruptionDto) SetNamespaceNil() {
-	o.Namespace.Set(nil)
+	o.Namespace = v
 }
 
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *PodDisruptionDto) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
-// GetMinAvailable returns the MinAvailable field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMinAvailable returns the MinAvailable field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *PodDisruptionDto) GetMinAvailable() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
+
 	return o.MinAvailable
 }
 
-// GetMinAvailableOk returns a tuple with the MinAvailable field value if set, nil otherwise
+// GetMinAvailableOk returns a tuple with the MinAvailable field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodDisruptionDto) GetMinAvailableOk() (*interface{}, bool) {
@@ -148,30 +124,23 @@ func (o *PodDisruptionDto) GetMinAvailableOk() (*interface{}, bool) {
 	return &o.MinAvailable, true
 }
 
-// HasMinAvailable returns a boolean if a field has been set.
-func (o *PodDisruptionDto) HasMinAvailable() bool {
-	if o != nil && !IsNil(o.MinAvailable) {
-		return true
-	}
-
-	return false
-}
-
-// SetMinAvailable gets a reference to the given interface{} and assigns it to the MinAvailable field.
+// SetMinAvailable sets field value
 func (o *PodDisruptionDto) SetMinAvailable(v interface{}) {
 	o.MinAvailable = v
 }
 
-// GetMaxAvailable returns the MaxAvailable field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMaxAvailable returns the MaxAvailable field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *PodDisruptionDto) GetMaxAvailable() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
+
 	return o.MaxAvailable
 }
 
-// GetMaxAvailableOk returns a tuple with the MaxAvailable field value if set, nil otherwise
+// GetMaxAvailableOk returns a tuple with the MaxAvailable field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodDisruptionDto) GetMaxAvailableOk() (*interface{}, bool) {
@@ -181,30 +150,23 @@ func (o *PodDisruptionDto) GetMaxAvailableOk() (*interface{}, bool) {
 	return &o.MaxAvailable, true
 }
 
-// HasMaxAvailable returns a boolean if a field has been set.
-func (o *PodDisruptionDto) HasMaxAvailable() bool {
-	if o != nil && !IsNil(o.MaxAvailable) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxAvailable gets a reference to the given interface{} and assigns it to the MaxAvailable field.
+// SetMaxAvailable sets field value
 func (o *PodDisruptionDto) SetMaxAvailable(v interface{}) {
 	o.MaxAvailable = v
 }
 
-// GetAllowedDisruptions returns the AllowedDisruptions field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAllowedDisruptions returns the AllowedDisruptions field value
+// If the value is explicit nil, the zero value for interface{} will be returned
 func (o *PodDisruptionDto) GetAllowedDisruptions() interface{} {
 	if o == nil {
 		var ret interface{}
 		return ret
 	}
+
 	return o.AllowedDisruptions
 }
 
-// GetAllowedDisruptionsOk returns a tuple with the AllowedDisruptions field value if set, nil otherwise
+// GetAllowedDisruptionsOk returns a tuple with the AllowedDisruptions field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodDisruptionDto) GetAllowedDisruptionsOk() (*interface{}, bool) {
@@ -214,30 +176,23 @@ func (o *PodDisruptionDto) GetAllowedDisruptionsOk() (*interface{}, bool) {
 	return &o.AllowedDisruptions, true
 }
 
-// HasAllowedDisruptions returns a boolean if a field has been set.
-func (o *PodDisruptionDto) HasAllowedDisruptions() bool {
-	if o != nil && !IsNil(o.AllowedDisruptions) {
-		return true
-	}
-
-	return false
-}
-
-// SetAllowedDisruptions gets a reference to the given interface{} and assigns it to the AllowedDisruptions field.
+// SetAllowedDisruptions sets field value
 func (o *PodDisruptionDto) SetAllowedDisruptions(v interface{}) {
 	o.AllowedDisruptions = v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *PodDisruptionDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil || o.CreatedAt.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CreatedAt.Get()
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PodDisruptionDto) GetCreatedAtOk() (*string, bool) {
@@ -247,27 +202,9 @@ func (o *PodDisruptionDto) GetCreatedAtOk() (*string, bool) {
 	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *PodDisruptionDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *PodDisruptionDto) SetCreatedAt(v string) {
 	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *PodDisruptionDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
-
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *PodDisruptionDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
 }
 
 func (o PodDisruptionDto) MarshalJSON() ([]byte, error) {
@@ -280,12 +217,8 @@ func (o PodDisruptionDto) MarshalJSON() ([]byte, error) {
 
 func (o PodDisruptionDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
-	}
+	toSerialize["name"] = o.Name
+	toSerialize["namespace"] = o.Namespace
 	if o.MinAvailable != nil {
 		toSerialize["minAvailable"] = o.MinAvailable
 	}
@@ -295,10 +228,50 @@ func (o PodDisruptionDto) ToMap() (map[string]interface{}, error) {
 	if o.AllowedDisruptions != nil {
 		toSerialize["allowedDisruptions"] = o.AllowedDisruptions
 	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
+	toSerialize["createdAt"] = o.CreatedAt.Get()
 	return toSerialize, nil
+}
+
+func (o *PodDisruptionDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"namespace",
+		"minAvailable",
+		"maxAvailable",
+		"allowedDisruptions",
+		"createdAt",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPodDisruptionDto := _PodDisruptionDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPodDisruptionDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PodDisruptionDto(varPodDisruptionDto)
+
+	return err
 }
 
 type NullablePodDisruptionDto struct {

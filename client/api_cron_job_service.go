@@ -3983,11 +3983,11 @@ func (a *CronJobServiceAPIService) CronjobSyncOrganizationsExecute(r ApiCronjobS
 type ApiCronjobSyncProjectAppsRequest struct {
 	ctx context.Context
 	ApiService *CronJobServiceAPIService
-	body *map[string]interface{}
+	syncProjectAppsCommand *SyncProjectAppsCommand
 }
 
-func (r ApiCronjobSyncProjectAppsRequest) Body(body map[string]interface{}) ApiCronjobSyncProjectAppsRequest {
-	r.body = &body
+func (r ApiCronjobSyncProjectAppsRequest) SyncProjectAppsCommand(syncProjectAppsCommand SyncProjectAppsCommand) ApiCronjobSyncProjectAppsRequest {
+	r.syncProjectAppsCommand = &syncProjectAppsCommand
 	return r
 }
 
@@ -4026,8 +4026,8 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectAppsExecute(r ApiCronjobSyn
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.body == nil {
-		return nil, reportError("body is required and must be specified")
+	if r.syncProjectAppsCommand == nil {
+		return nil, reportError("syncProjectAppsCommand is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -4048,7 +4048,7 @@ func (a *CronJobServiceAPIService) CronjobSyncProjectAppsExecute(r ApiCronjobSyn
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.syncProjectAppsCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

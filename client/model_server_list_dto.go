@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ServerListDto type satisfies the MappedNullable interface at compile time
@@ -20,56 +22,85 @@ var _ MappedNullable = &ServerListDto{}
 
 // ServerListDto struct for ServerListDto
 type ServerListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	ProjectName NullableString `json:"projectName,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	OrganizationId *int32 `json:"organizationId,omitempty"`
-	ProjectId *int32 `json:"projectId,omitempty"`
-	IpAddress NullableString `json:"ipAddress,omitempty"`
-	DiskSize *float64 `json:"diskSize,omitempty"`
-	KubernetesHealth NullableString `json:"kubernetesHealth,omitempty"`
-	GoogleMachineType NullableString `json:"googleMachineType,omitempty"`
-	TanzuFlavor NullableString `json:"tanzuFlavor,omitempty"`
-	ProxmoxFlavor NullableString `json:"proxmoxFlavor,omitempty"`
-	Cpu *int32 `json:"cpu,omitempty"`
-	Ram *float64 `json:"ram,omitempty"`
-	Role *CloudRole `json:"role,omitempty"`
-	Status NullableString `json:"status,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
-	OpenstackFlavor NullableString `json:"openstackFlavor,omitempty"`
-	AwsInstanceType NullableString `json:"awsInstanceType,omitempty"`
-	AzureVmSize NullableString `json:"azureVmSize,omitempty"`
-	CloudType *CloudType `json:"cloudType,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
-	SpotPrice *float64 `json:"spotPrice,omitempty"`
-	SpotInstance *bool `json:"spotInstance,omitempty"`
-	ShutOff *bool `json:"shutOff,omitempty"`
-	AutoscalingGroup NullableString `json:"autoscalingGroup,omitempty"`
-	ProviderID NullableString `json:"providerID,omitempty"`
-	InstanceId NullableString `json:"instanceId,omitempty"`
-	AwsHostName NullableString `json:"awsHostName,omitempty"`
-	OpenshiftFlavor NullableString `json:"openshiftFlavor,omitempty"`
-	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
-	Hypervisor NullableString `json:"hypervisor,omitempty"`
-	HypervisorId NullableString `json:"hypervisorId,omitempty"`
-	VsphereFlavor NullableString `json:"vsphereFlavor,omitempty"`
-	ProxmoxRole *ProxmoxRole `json:"proxmoxRole,omitempty"`
-	ProxmoxExtraDiskSize *int32 `json:"proxmoxExtraDiskSize,omitempty"`
+	Id int32 `json:"id"`
+	Name string `json:"name"`
+	ProjectName string `json:"projectName"`
+	OrganizationName string `json:"organizationName"`
+	OrganizationId int32 `json:"organizationId"`
+	ProjectId int32 `json:"projectId"`
+	IpAddress NullableString `json:"ipAddress"`
+	DiskSize float64 `json:"diskSize"`
+	KubernetesHealth string `json:"kubernetesHealth"`
+	Cpu int32 `json:"cpu"`
+	Ram float64 `json:"ram"`
+	Role CloudRole `json:"role"`
+	Status string `json:"status"`
+	CreatedAt string `json:"createdAt"`
+	CloudType CloudType `json:"cloudType"`
+	CreatedBy string `json:"createdBy"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	SpotPrice float64 `json:"spotPrice"`
+	SpotInstance bool `json:"spotInstance"`
+	ShutOff bool `json:"shutOff"`
+	AutoscalingGroup NullableString `json:"autoscalingGroup"`
+	ProviderID NullableString `json:"providerID"`
+	InstanceId NullableString `json:"instanceId"`
+	AwsHostName NullableString `json:"awsHostName"`
+	AvailabilityZone NullableString `json:"availabilityZone"`
+	Hypervisor NullableString `json:"hypervisor"`
+	HypervisorId NullableString `json:"hypervisorId"`
+	ProxmoxRole ProxmoxRole `json:"proxmoxRole"`
+	ProxmoxExtraDiskSize int32 `json:"proxmoxExtraDiskSize"`
 	ActionButtons *ServerActionButtonVisibilityDto `json:"actionButtons,omitempty"`
-	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels,omitempty"`
-	ReplicaCount NullableInt32 `json:"replicaCount,omitempty"`
-	WasmEnabled *bool `json:"wasmEnabled,omitempty"`
+	KubernetesNodeLabels []KubernetesNodeLabelsDto `json:"kubernetesNodeLabels"`
+	ReplicaCount NullableInt32 `json:"replicaCount"`
+	WasmEnabled bool `json:"wasmEnabled"`
+	Flavor NullableString `json:"flavor"`
 }
+
+type _ServerListDto ServerListDto
 
 // NewServerListDto instantiates a new ServerListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerListDto() *ServerListDto {
+func NewServerListDto(id int32, name string, projectName string, organizationName string, organizationId int32, projectId int32, ipAddress NullableString, diskSize float64, kubernetesHealth string, cpu int32, ram float64, role CloudRole, status string, createdAt string, cloudType CloudType, createdBy string, lastModified NullableString, lastModifiedBy NullableString, spotPrice float64, spotInstance bool, shutOff bool, autoscalingGroup NullableString, providerID NullableString, instanceId NullableString, awsHostName NullableString, availabilityZone NullableString, hypervisor NullableString, hypervisorId NullableString, proxmoxRole ProxmoxRole, proxmoxExtraDiskSize int32, kubernetesNodeLabels []KubernetesNodeLabelsDto, replicaCount NullableInt32, wasmEnabled bool, flavor NullableString) *ServerListDto {
 	this := ServerListDto{}
+	this.Id = id
+	this.Name = name
+	this.ProjectName = projectName
+	this.OrganizationName = organizationName
+	this.OrganizationId = organizationId
+	this.ProjectId = projectId
+	this.IpAddress = ipAddress
+	this.DiskSize = diskSize
+	this.KubernetesHealth = kubernetesHealth
+	this.Cpu = cpu
+	this.Ram = ram
+	this.Role = role
+	this.Status = status
+	this.CreatedAt = createdAt
+	this.CloudType = cloudType
+	this.CreatedBy = createdBy
+	this.LastModified = lastModified
+	this.LastModifiedBy = lastModifiedBy
+	this.SpotPrice = spotPrice
+	this.SpotInstance = spotInstance
+	this.ShutOff = shutOff
+	this.AutoscalingGroup = autoscalingGroup
+	this.ProviderID = providerID
+	this.InstanceId = instanceId
+	this.AwsHostName = awsHostName
+	this.AvailabilityZone = availabilityZone
+	this.Hypervisor = hypervisor
+	this.HypervisorId = hypervisorId
+	this.ProxmoxRole = proxmoxRole
+	this.ProxmoxExtraDiskSize = proxmoxExtraDiskSize
+	this.KubernetesNodeLabels = kubernetesNodeLabels
+	this.ReplicaCount = replicaCount
+	this.WasmEnabled = wasmEnabled
+	this.Flavor = flavor
 	return &this
 }
 
@@ -81,238 +112,162 @@ func NewServerListDtoWithDefaults() *ServerListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *ServerListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *ServerListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *ServerListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *ServerListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ServerListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *ServerListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *ServerListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *ServerListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetProjectName returns the ProjectName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjectName returns the ProjectName field value
 func (o *ServerListDto) GetProjectName() string {
-	if o == nil || IsNil(o.ProjectName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ProjectName.Get()
+
+	return o.ProjectName
 }
 
-// GetProjectNameOk returns a tuple with the ProjectName field value if set, nil otherwise
+// GetProjectNameOk returns a tuple with the ProjectName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetProjectNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ProjectName.Get(), o.ProjectName.IsSet()
+	return &o.ProjectName, true
 }
 
-// HasProjectName returns a boolean if a field has been set.
-func (o *ServerListDto) HasProjectName() bool {
-	if o != nil && o.ProjectName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectName gets a reference to the given NullableString and assigns it to the ProjectName field.
+// SetProjectName sets field value
 func (o *ServerListDto) SetProjectName(v string) {
-	o.ProjectName.Set(&v)
-}
-// SetProjectNameNil sets the value for ProjectName to be an explicit nil
-func (o *ServerListDto) SetProjectNameNil() {
-	o.ProjectName.Set(nil)
+	o.ProjectName = v
 }
 
-// UnsetProjectName ensures that no value is present for ProjectName, not even an explicit nil
-func (o *ServerListDto) UnsetProjectName() {
-	o.ProjectName.Unset()
-}
-
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
 func (o *ServerListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.OrganizationName.Get()
+
+	return o.OrganizationName
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
+	return &o.OrganizationName, true
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *ServerListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *ServerListDto) SetOrganizationName(v string) {
-	o.OrganizationName.Set(&v)
-}
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *ServerListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
+	o.OrganizationName = v
 }
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *ServerListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise.
+// GetOrganizationId returns the OrganizationId field value
 func (o *ServerListDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.OrganizationId
+
+	return o.OrganizationId
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetOrganizationIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.OrganizationId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.OrganizationId, true
+	return &o.OrganizationId, true
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *ServerListDto) HasOrganizationId() bool {
-	if o != nil && !IsNil(o.OrganizationId) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given int32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *ServerListDto) SetOrganizationId(v int32) {
-	o.OrganizationId = &v
+	o.OrganizationId = v
 }
 
-// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+// GetProjectId returns the ProjectId field value
 func (o *ServerListDto) GetProjectId() int32 {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ProjectId
+
+	return o.ProjectId
 }
 
-// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// GetProjectIdOk returns a tuple with the ProjectId field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetProjectIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProjectId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProjectId, true
+	return &o.ProjectId, true
 }
 
-// HasProjectId returns a boolean if a field has been set.
-func (o *ServerListDto) HasProjectId() bool {
-	if o != nil && !IsNil(o.ProjectId) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjectId gets a reference to the given int32 and assigns it to the ProjectId field.
+// SetProjectId sets field value
 func (o *ServerListDto) SetProjectId(v int32) {
-	o.ProjectId = &v
+	o.ProjectId = v
 }
 
-// GetIpAddress returns the IpAddress field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetIpAddress returns the IpAddress field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetIpAddress() string {
-	if o == nil || IsNil(o.IpAddress.Get()) {
+	if o == nil || o.IpAddress.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.IpAddress.Get()
 }
 
-// GetIpAddressOk returns a tuple with the IpAddress field value if set, nil otherwise
+// GetIpAddressOk returns a tuple with the IpAddress field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetIpAddressOk() (*string, bool) {
@@ -322,619 +277,239 @@ func (o *ServerListDto) GetIpAddressOk() (*string, bool) {
 	return o.IpAddress.Get(), o.IpAddress.IsSet()
 }
 
-// HasIpAddress returns a boolean if a field has been set.
-func (o *ServerListDto) HasIpAddress() bool {
-	if o != nil && o.IpAddress.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetIpAddress gets a reference to the given NullableString and assigns it to the IpAddress field.
+// SetIpAddress sets field value
 func (o *ServerListDto) SetIpAddress(v string) {
 	o.IpAddress.Set(&v)
 }
-// SetIpAddressNil sets the value for IpAddress to be an explicit nil
-func (o *ServerListDto) SetIpAddressNil() {
-	o.IpAddress.Set(nil)
-}
 
-// UnsetIpAddress ensures that no value is present for IpAddress, not even an explicit nil
-func (o *ServerListDto) UnsetIpAddress() {
-	o.IpAddress.Unset()
-}
-
-// GetDiskSize returns the DiskSize field value if set, zero value otherwise.
+// GetDiskSize returns the DiskSize field value
 func (o *ServerListDto) GetDiskSize() float64 {
-	if o == nil || IsNil(o.DiskSize) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.DiskSize
+
+	return o.DiskSize
 }
 
-// GetDiskSizeOk returns a tuple with the DiskSize field value if set, nil otherwise
+// GetDiskSizeOk returns a tuple with the DiskSize field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetDiskSizeOk() (*float64, bool) {
-	if o == nil || IsNil(o.DiskSize) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DiskSize, true
+	return &o.DiskSize, true
 }
 
-// HasDiskSize returns a boolean if a field has been set.
-func (o *ServerListDto) HasDiskSize() bool {
-	if o != nil && !IsNil(o.DiskSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetDiskSize gets a reference to the given float64 and assigns it to the DiskSize field.
+// SetDiskSize sets field value
 func (o *ServerListDto) SetDiskSize(v float64) {
-	o.DiskSize = &v
+	o.DiskSize = v
 }
 
-// GetKubernetesHealth returns the KubernetesHealth field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubernetesHealth returns the KubernetesHealth field value
 func (o *ServerListDto) GetKubernetesHealth() string {
-	if o == nil || IsNil(o.KubernetesHealth.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.KubernetesHealth.Get()
+
+	return o.KubernetesHealth
 }
 
-// GetKubernetesHealthOk returns a tuple with the KubernetesHealth field value if set, nil otherwise
+// GetKubernetesHealthOk returns a tuple with the KubernetesHealth field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetKubernetesHealthOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.KubernetesHealth.Get(), o.KubernetesHealth.IsSet()
+	return &o.KubernetesHealth, true
 }
 
-// HasKubernetesHealth returns a boolean if a field has been set.
-func (o *ServerListDto) HasKubernetesHealth() bool {
-	if o != nil && o.KubernetesHealth.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetKubernetesHealth gets a reference to the given NullableString and assigns it to the KubernetesHealth field.
+// SetKubernetesHealth sets field value
 func (o *ServerListDto) SetKubernetesHealth(v string) {
-	o.KubernetesHealth.Set(&v)
-}
-// SetKubernetesHealthNil sets the value for KubernetesHealth to be an explicit nil
-func (o *ServerListDto) SetKubernetesHealthNil() {
-	o.KubernetesHealth.Set(nil)
+	o.KubernetesHealth = v
 }
 
-// UnsetKubernetesHealth ensures that no value is present for KubernetesHealth, not even an explicit nil
-func (o *ServerListDto) UnsetKubernetesHealth() {
-	o.KubernetesHealth.Unset()
-}
-
-// GetGoogleMachineType returns the GoogleMachineType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetGoogleMachineType() string {
-	if o == nil || IsNil(o.GoogleMachineType.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.GoogleMachineType.Get()
-}
-
-// GetGoogleMachineTypeOk returns a tuple with the GoogleMachineType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetGoogleMachineTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.GoogleMachineType.Get(), o.GoogleMachineType.IsSet()
-}
-
-// HasGoogleMachineType returns a boolean if a field has been set.
-func (o *ServerListDto) HasGoogleMachineType() bool {
-	if o != nil && o.GoogleMachineType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetGoogleMachineType gets a reference to the given NullableString and assigns it to the GoogleMachineType field.
-func (o *ServerListDto) SetGoogleMachineType(v string) {
-	o.GoogleMachineType.Set(&v)
-}
-// SetGoogleMachineTypeNil sets the value for GoogleMachineType to be an explicit nil
-func (o *ServerListDto) SetGoogleMachineTypeNil() {
-	o.GoogleMachineType.Set(nil)
-}
-
-// UnsetGoogleMachineType ensures that no value is present for GoogleMachineType, not even an explicit nil
-func (o *ServerListDto) UnsetGoogleMachineType() {
-	o.GoogleMachineType.Unset()
-}
-
-// GetTanzuFlavor returns the TanzuFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetTanzuFlavor() string {
-	if o == nil || IsNil(o.TanzuFlavor.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.TanzuFlavor.Get()
-}
-
-// GetTanzuFlavorOk returns a tuple with the TanzuFlavor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetTanzuFlavorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TanzuFlavor.Get(), o.TanzuFlavor.IsSet()
-}
-
-// HasTanzuFlavor returns a boolean if a field has been set.
-func (o *ServerListDto) HasTanzuFlavor() bool {
-	if o != nil && o.TanzuFlavor.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTanzuFlavor gets a reference to the given NullableString and assigns it to the TanzuFlavor field.
-func (o *ServerListDto) SetTanzuFlavor(v string) {
-	o.TanzuFlavor.Set(&v)
-}
-// SetTanzuFlavorNil sets the value for TanzuFlavor to be an explicit nil
-func (o *ServerListDto) SetTanzuFlavorNil() {
-	o.TanzuFlavor.Set(nil)
-}
-
-// UnsetTanzuFlavor ensures that no value is present for TanzuFlavor, not even an explicit nil
-func (o *ServerListDto) UnsetTanzuFlavor() {
-	o.TanzuFlavor.Unset()
-}
-
-// GetProxmoxFlavor returns the ProxmoxFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetProxmoxFlavor() string {
-	if o == nil || IsNil(o.ProxmoxFlavor.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ProxmoxFlavor.Get()
-}
-
-// GetProxmoxFlavorOk returns a tuple with the ProxmoxFlavor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetProxmoxFlavorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ProxmoxFlavor.Get(), o.ProxmoxFlavor.IsSet()
-}
-
-// HasProxmoxFlavor returns a boolean if a field has been set.
-func (o *ServerListDto) HasProxmoxFlavor() bool {
-	if o != nil && o.ProxmoxFlavor.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProxmoxFlavor gets a reference to the given NullableString and assigns it to the ProxmoxFlavor field.
-func (o *ServerListDto) SetProxmoxFlavor(v string) {
-	o.ProxmoxFlavor.Set(&v)
-}
-// SetProxmoxFlavorNil sets the value for ProxmoxFlavor to be an explicit nil
-func (o *ServerListDto) SetProxmoxFlavorNil() {
-	o.ProxmoxFlavor.Set(nil)
-}
-
-// UnsetProxmoxFlavor ensures that no value is present for ProxmoxFlavor, not even an explicit nil
-func (o *ServerListDto) UnsetProxmoxFlavor() {
-	o.ProxmoxFlavor.Unset()
-}
-
-// GetCpu returns the Cpu field value if set, zero value otherwise.
+// GetCpu returns the Cpu field value
 func (o *ServerListDto) GetCpu() int32 {
-	if o == nil || IsNil(o.Cpu) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Cpu
+
+	return o.Cpu
 }
 
-// GetCpuOk returns a tuple with the Cpu field value if set, nil otherwise
+// GetCpuOk returns a tuple with the Cpu field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetCpuOk() (*int32, bool) {
-	if o == nil || IsNil(o.Cpu) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Cpu, true
+	return &o.Cpu, true
 }
 
-// HasCpu returns a boolean if a field has been set.
-func (o *ServerListDto) HasCpu() bool {
-	if o != nil && !IsNil(o.Cpu) {
-		return true
-	}
-
-	return false
-}
-
-// SetCpu gets a reference to the given int32 and assigns it to the Cpu field.
+// SetCpu sets field value
 func (o *ServerListDto) SetCpu(v int32) {
-	o.Cpu = &v
+	o.Cpu = v
 }
 
-// GetRam returns the Ram field value if set, zero value otherwise.
+// GetRam returns the Ram field value
 func (o *ServerListDto) GetRam() float64 {
-	if o == nil || IsNil(o.Ram) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.Ram
+
+	return o.Ram
 }
 
-// GetRamOk returns a tuple with the Ram field value if set, nil otherwise
+// GetRamOk returns a tuple with the Ram field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetRamOk() (*float64, bool) {
-	if o == nil || IsNil(o.Ram) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Ram, true
+	return &o.Ram, true
 }
 
-// HasRam returns a boolean if a field has been set.
-func (o *ServerListDto) HasRam() bool {
-	if o != nil && !IsNil(o.Ram) {
-		return true
-	}
-
-	return false
-}
-
-// SetRam gets a reference to the given float64 and assigns it to the Ram field.
+// SetRam sets field value
 func (o *ServerListDto) SetRam(v float64) {
-	o.Ram = &v
+	o.Ram = v
 }
 
-// GetRole returns the Role field value if set, zero value otherwise.
+// GetRole returns the Role field value
 func (o *ServerListDto) GetRole() CloudRole {
-	if o == nil || IsNil(o.Role) {
+	if o == nil {
 		var ret CloudRole
 		return ret
 	}
-	return *o.Role
+
+	return o.Role
 }
 
-// GetRoleOk returns a tuple with the Role field value if set, nil otherwise
+// GetRoleOk returns a tuple with the Role field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetRoleOk() (*CloudRole, bool) {
-	if o == nil || IsNil(o.Role) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Role, true
+	return &o.Role, true
 }
 
-// HasRole returns a boolean if a field has been set.
-func (o *ServerListDto) HasRole() bool {
-	if o != nil && !IsNil(o.Role) {
-		return true
-	}
-
-	return false
-}
-
-// SetRole gets a reference to the given CloudRole and assigns it to the Role field.
+// SetRole sets field value
 func (o *ServerListDto) SetRole(v CloudRole) {
-	o.Role = &v
+	o.Role = v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetStatus returns the Status field value
 func (o *ServerListDto) GetStatus() string {
-	if o == nil || IsNil(o.Status.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Status.Get()
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetStatusOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Status.Get(), o.Status.IsSet()
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *ServerListDto) HasStatus() bool {
-	if o != nil && o.Status.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given NullableString and assigns it to the Status field.
+// SetStatus sets field value
 func (o *ServerListDto) SetStatus(v string) {
-	o.Status.Set(&v)
-}
-// SetStatusNil sets the value for Status to be an explicit nil
-func (o *ServerListDto) SetStatusNil() {
-	o.Status.Set(nil)
+	o.Status = v
 }
 
-// UnsetStatus ensures that no value is present for Status, not even an explicit nil
-func (o *ServerListDto) UnsetStatus() {
-	o.Status.Unset()
-}
-
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
 func (o *ServerListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *ServerListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *ServerListDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *ServerListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
+	o.CreatedAt = v
 }
 
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *ServerListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
-}
-
-// GetOpenstackFlavor returns the OpenstackFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetOpenstackFlavor() string {
-	if o == nil || IsNil(o.OpenstackFlavor.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.OpenstackFlavor.Get()
-}
-
-// GetOpenstackFlavorOk returns a tuple with the OpenstackFlavor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetOpenstackFlavorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OpenstackFlavor.Get(), o.OpenstackFlavor.IsSet()
-}
-
-// HasOpenstackFlavor returns a boolean if a field has been set.
-func (o *ServerListDto) HasOpenstackFlavor() bool {
-	if o != nil && o.OpenstackFlavor.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOpenstackFlavor gets a reference to the given NullableString and assigns it to the OpenstackFlavor field.
-func (o *ServerListDto) SetOpenstackFlavor(v string) {
-	o.OpenstackFlavor.Set(&v)
-}
-// SetOpenstackFlavorNil sets the value for OpenstackFlavor to be an explicit nil
-func (o *ServerListDto) SetOpenstackFlavorNil() {
-	o.OpenstackFlavor.Set(nil)
-}
-
-// UnsetOpenstackFlavor ensures that no value is present for OpenstackFlavor, not even an explicit nil
-func (o *ServerListDto) UnsetOpenstackFlavor() {
-	o.OpenstackFlavor.Unset()
-}
-
-// GetAwsInstanceType returns the AwsInstanceType field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetAwsInstanceType() string {
-	if o == nil || IsNil(o.AwsInstanceType.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AwsInstanceType.Get()
-}
-
-// GetAwsInstanceTypeOk returns a tuple with the AwsInstanceType field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetAwsInstanceTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AwsInstanceType.Get(), o.AwsInstanceType.IsSet()
-}
-
-// HasAwsInstanceType returns a boolean if a field has been set.
-func (o *ServerListDto) HasAwsInstanceType() bool {
-	if o != nil && o.AwsInstanceType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAwsInstanceType gets a reference to the given NullableString and assigns it to the AwsInstanceType field.
-func (o *ServerListDto) SetAwsInstanceType(v string) {
-	o.AwsInstanceType.Set(&v)
-}
-// SetAwsInstanceTypeNil sets the value for AwsInstanceType to be an explicit nil
-func (o *ServerListDto) SetAwsInstanceTypeNil() {
-	o.AwsInstanceType.Set(nil)
-}
-
-// UnsetAwsInstanceType ensures that no value is present for AwsInstanceType, not even an explicit nil
-func (o *ServerListDto) UnsetAwsInstanceType() {
-	o.AwsInstanceType.Unset()
-}
-
-// GetAzureVmSize returns the AzureVmSize field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetAzureVmSize() string {
-	if o == nil || IsNil(o.AzureVmSize.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.AzureVmSize.Get()
-}
-
-// GetAzureVmSizeOk returns a tuple with the AzureVmSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetAzureVmSizeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.AzureVmSize.Get(), o.AzureVmSize.IsSet()
-}
-
-// HasAzureVmSize returns a boolean if a field has been set.
-func (o *ServerListDto) HasAzureVmSize() bool {
-	if o != nil && o.AzureVmSize.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAzureVmSize gets a reference to the given NullableString and assigns it to the AzureVmSize field.
-func (o *ServerListDto) SetAzureVmSize(v string) {
-	o.AzureVmSize.Set(&v)
-}
-// SetAzureVmSizeNil sets the value for AzureVmSize to be an explicit nil
-func (o *ServerListDto) SetAzureVmSizeNil() {
-	o.AzureVmSize.Set(nil)
-}
-
-// UnsetAzureVmSize ensures that no value is present for AzureVmSize, not even an explicit nil
-func (o *ServerListDto) UnsetAzureVmSize() {
-	o.AzureVmSize.Unset()
-}
-
-// GetCloudType returns the CloudType field value if set, zero value otherwise.
+// GetCloudType returns the CloudType field value
 func (o *ServerListDto) GetCloudType() CloudType {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		var ret CloudType
 		return ret
 	}
-	return *o.CloudType
+
+	return o.CloudType
 }
 
-// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
+// GetCloudTypeOk returns a tuple with the CloudType field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetCloudTypeOk() (*CloudType, bool) {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CloudType, true
+	return &o.CloudType, true
 }
 
-// HasCloudType returns a boolean if a field has been set.
-func (o *ServerListDto) HasCloudType() bool {
-	if o != nil && !IsNil(o.CloudType) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
+// SetCloudType sets field value
 func (o *ServerListDto) SetCloudType(v CloudType) {
-	o.CloudType = &v
+	o.CloudType = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value
 func (o *ServerListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedBy.Get()
+
+	return o.CreatedBy
 }
 
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetCreatedByOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
+	return &o.CreatedBy, true
 }
 
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *ServerListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy sets field value
 func (o *ServerListDto) SetCreatedBy(v string) {
-	o.CreatedBy.Set(&v)
-}
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *ServerListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
+	o.CreatedBy = v
 }
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *ServerListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || o.LastModified.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModified.Get()
 }
 
-// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
+// GetLastModifiedOk returns a tuple with the LastModified field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetLastModifiedOk() (*string, bool) {
@@ -944,39 +519,23 @@ func (o *ServerListDto) GetLastModifiedOk() (*string, bool) {
 	return o.LastModified.Get(), o.LastModified.IsSet()
 }
 
-// HasLastModified returns a boolean if a field has been set.
-func (o *ServerListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified sets field value
 func (o *ServerListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *ServerListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
-}
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *ServerListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || o.LastModifiedBy.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModifiedBy.Get()
 }
 
-// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetLastModifiedByOk() (*string, bool) {
@@ -986,135 +545,95 @@ func (o *ServerListDto) GetLastModifiedByOk() (*string, bool) {
 	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
 }
 
-// HasLastModifiedBy returns a boolean if a field has been set.
-func (o *ServerListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy sets field value
 func (o *ServerListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *ServerListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
 
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *ServerListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
-}
-
-// GetSpotPrice returns the SpotPrice field value if set, zero value otherwise.
+// GetSpotPrice returns the SpotPrice field value
 func (o *ServerListDto) GetSpotPrice() float64 {
-	if o == nil || IsNil(o.SpotPrice) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.SpotPrice
+
+	return o.SpotPrice
 }
 
-// GetSpotPriceOk returns a tuple with the SpotPrice field value if set, nil otherwise
+// GetSpotPriceOk returns a tuple with the SpotPrice field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetSpotPriceOk() (*float64, bool) {
-	if o == nil || IsNil(o.SpotPrice) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SpotPrice, true
+	return &o.SpotPrice, true
 }
 
-// HasSpotPrice returns a boolean if a field has been set.
-func (o *ServerListDto) HasSpotPrice() bool {
-	if o != nil && !IsNil(o.SpotPrice) {
-		return true
-	}
-
-	return false
-}
-
-// SetSpotPrice gets a reference to the given float64 and assigns it to the SpotPrice field.
+// SetSpotPrice sets field value
 func (o *ServerListDto) SetSpotPrice(v float64) {
-	o.SpotPrice = &v
+	o.SpotPrice = v
 }
 
-// GetSpotInstance returns the SpotInstance field value if set, zero value otherwise.
+// GetSpotInstance returns the SpotInstance field value
 func (o *ServerListDto) GetSpotInstance() bool {
-	if o == nil || IsNil(o.SpotInstance) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.SpotInstance
+
+	return o.SpotInstance
 }
 
-// GetSpotInstanceOk returns a tuple with the SpotInstance field value if set, nil otherwise
+// GetSpotInstanceOk returns a tuple with the SpotInstance field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetSpotInstanceOk() (*bool, bool) {
-	if o == nil || IsNil(o.SpotInstance) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SpotInstance, true
+	return &o.SpotInstance, true
 }
 
-// HasSpotInstance returns a boolean if a field has been set.
-func (o *ServerListDto) HasSpotInstance() bool {
-	if o != nil && !IsNil(o.SpotInstance) {
-		return true
-	}
-
-	return false
-}
-
-// SetSpotInstance gets a reference to the given bool and assigns it to the SpotInstance field.
+// SetSpotInstance sets field value
 func (o *ServerListDto) SetSpotInstance(v bool) {
-	o.SpotInstance = &v
+	o.SpotInstance = v
 }
 
-// GetShutOff returns the ShutOff field value if set, zero value otherwise.
+// GetShutOff returns the ShutOff field value
 func (o *ServerListDto) GetShutOff() bool {
-	if o == nil || IsNil(o.ShutOff) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.ShutOff
+
+	return o.ShutOff
 }
 
-// GetShutOffOk returns a tuple with the ShutOff field value if set, nil otherwise
+// GetShutOffOk returns a tuple with the ShutOff field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetShutOffOk() (*bool, bool) {
-	if o == nil || IsNil(o.ShutOff) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ShutOff, true
+	return &o.ShutOff, true
 }
 
-// HasShutOff returns a boolean if a field has been set.
-func (o *ServerListDto) HasShutOff() bool {
-	if o != nil && !IsNil(o.ShutOff) {
-		return true
-	}
-
-	return false
-}
-
-// SetShutOff gets a reference to the given bool and assigns it to the ShutOff field.
+// SetShutOff sets field value
 func (o *ServerListDto) SetShutOff(v bool) {
-	o.ShutOff = &v
+	o.ShutOff = v
 }
 
-// GetAutoscalingGroup returns the AutoscalingGroup field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAutoscalingGroup returns the AutoscalingGroup field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetAutoscalingGroup() string {
-	if o == nil || IsNil(o.AutoscalingGroup.Get()) {
+	if o == nil || o.AutoscalingGroup.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.AutoscalingGroup.Get()
 }
 
-// GetAutoscalingGroupOk returns a tuple with the AutoscalingGroup field value if set, nil otherwise
+// GetAutoscalingGroupOk returns a tuple with the AutoscalingGroup field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetAutoscalingGroupOk() (*string, bool) {
@@ -1124,39 +643,23 @@ func (o *ServerListDto) GetAutoscalingGroupOk() (*string, bool) {
 	return o.AutoscalingGroup.Get(), o.AutoscalingGroup.IsSet()
 }
 
-// HasAutoscalingGroup returns a boolean if a field has been set.
-func (o *ServerListDto) HasAutoscalingGroup() bool {
-	if o != nil && o.AutoscalingGroup.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoscalingGroup gets a reference to the given NullableString and assigns it to the AutoscalingGroup field.
+// SetAutoscalingGroup sets field value
 func (o *ServerListDto) SetAutoscalingGroup(v string) {
 	o.AutoscalingGroup.Set(&v)
 }
-// SetAutoscalingGroupNil sets the value for AutoscalingGroup to be an explicit nil
-func (o *ServerListDto) SetAutoscalingGroupNil() {
-	o.AutoscalingGroup.Set(nil)
-}
 
-// UnsetAutoscalingGroup ensures that no value is present for AutoscalingGroup, not even an explicit nil
-func (o *ServerListDto) UnsetAutoscalingGroup() {
-	o.AutoscalingGroup.Unset()
-}
-
-// GetProviderID returns the ProviderID field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProviderID returns the ProviderID field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetProviderID() string {
-	if o == nil || IsNil(o.ProviderID.Get()) {
+	if o == nil || o.ProviderID.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.ProviderID.Get()
 }
 
-// GetProviderIDOk returns a tuple with the ProviderID field value if set, nil otherwise
+// GetProviderIDOk returns a tuple with the ProviderID field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetProviderIDOk() (*string, bool) {
@@ -1166,39 +669,23 @@ func (o *ServerListDto) GetProviderIDOk() (*string, bool) {
 	return o.ProviderID.Get(), o.ProviderID.IsSet()
 }
 
-// HasProviderID returns a boolean if a field has been set.
-func (o *ServerListDto) HasProviderID() bool {
-	if o != nil && o.ProviderID.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetProviderID gets a reference to the given NullableString and assigns it to the ProviderID field.
+// SetProviderID sets field value
 func (o *ServerListDto) SetProviderID(v string) {
 	o.ProviderID.Set(&v)
 }
-// SetProviderIDNil sets the value for ProviderID to be an explicit nil
-func (o *ServerListDto) SetProviderIDNil() {
-	o.ProviderID.Set(nil)
-}
 
-// UnsetProviderID ensures that no value is present for ProviderID, not even an explicit nil
-func (o *ServerListDto) UnsetProviderID() {
-	o.ProviderID.Unset()
-}
-
-// GetInstanceId returns the InstanceId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetInstanceId returns the InstanceId field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetInstanceId() string {
-	if o == nil || IsNil(o.InstanceId.Get()) {
+	if o == nil || o.InstanceId.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.InstanceId.Get()
 }
 
-// GetInstanceIdOk returns a tuple with the InstanceId field value if set, nil otherwise
+// GetInstanceIdOk returns a tuple with the InstanceId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetInstanceIdOk() (*string, bool) {
@@ -1208,39 +695,23 @@ func (o *ServerListDto) GetInstanceIdOk() (*string, bool) {
 	return o.InstanceId.Get(), o.InstanceId.IsSet()
 }
 
-// HasInstanceId returns a boolean if a field has been set.
-func (o *ServerListDto) HasInstanceId() bool {
-	if o != nil && o.InstanceId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetInstanceId gets a reference to the given NullableString and assigns it to the InstanceId field.
+// SetInstanceId sets field value
 func (o *ServerListDto) SetInstanceId(v string) {
 	o.InstanceId.Set(&v)
 }
-// SetInstanceIdNil sets the value for InstanceId to be an explicit nil
-func (o *ServerListDto) SetInstanceIdNil() {
-	o.InstanceId.Set(nil)
-}
 
-// UnsetInstanceId ensures that no value is present for InstanceId, not even an explicit nil
-func (o *ServerListDto) UnsetInstanceId() {
-	o.InstanceId.Unset()
-}
-
-// GetAwsHostName returns the AwsHostName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAwsHostName returns the AwsHostName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetAwsHostName() string {
-	if o == nil || IsNil(o.AwsHostName.Get()) {
+	if o == nil || o.AwsHostName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.AwsHostName.Get()
 }
 
-// GetAwsHostNameOk returns a tuple with the AwsHostName field value if set, nil otherwise
+// GetAwsHostNameOk returns a tuple with the AwsHostName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetAwsHostNameOk() (*string, bool) {
@@ -1250,81 +721,23 @@ func (o *ServerListDto) GetAwsHostNameOk() (*string, bool) {
 	return o.AwsHostName.Get(), o.AwsHostName.IsSet()
 }
 
-// HasAwsHostName returns a boolean if a field has been set.
-func (o *ServerListDto) HasAwsHostName() bool {
-	if o != nil && o.AwsHostName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAwsHostName gets a reference to the given NullableString and assigns it to the AwsHostName field.
+// SetAwsHostName sets field value
 func (o *ServerListDto) SetAwsHostName(v string) {
 	o.AwsHostName.Set(&v)
 }
-// SetAwsHostNameNil sets the value for AwsHostName to be an explicit nil
-func (o *ServerListDto) SetAwsHostNameNil() {
-	o.AwsHostName.Set(nil)
-}
 
-// UnsetAwsHostName ensures that no value is present for AwsHostName, not even an explicit nil
-func (o *ServerListDto) UnsetAwsHostName() {
-	o.AwsHostName.Unset()
-}
-
-// GetOpenshiftFlavor returns the OpenshiftFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetOpenshiftFlavor() string {
-	if o == nil || IsNil(o.OpenshiftFlavor.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.OpenshiftFlavor.Get()
-}
-
-// GetOpenshiftFlavorOk returns a tuple with the OpenshiftFlavor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetOpenshiftFlavorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OpenshiftFlavor.Get(), o.OpenshiftFlavor.IsSet()
-}
-
-// HasOpenshiftFlavor returns a boolean if a field has been set.
-func (o *ServerListDto) HasOpenshiftFlavor() bool {
-	if o != nil && o.OpenshiftFlavor.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOpenshiftFlavor gets a reference to the given NullableString and assigns it to the OpenshiftFlavor field.
-func (o *ServerListDto) SetOpenshiftFlavor(v string) {
-	o.OpenshiftFlavor.Set(&v)
-}
-// SetOpenshiftFlavorNil sets the value for OpenshiftFlavor to be an explicit nil
-func (o *ServerListDto) SetOpenshiftFlavorNil() {
-	o.OpenshiftFlavor.Set(nil)
-}
-
-// UnsetOpenshiftFlavor ensures that no value is present for OpenshiftFlavor, not even an explicit nil
-func (o *ServerListDto) UnsetOpenshiftFlavor() {
-	o.OpenshiftFlavor.Unset()
-}
-
-// GetAvailabilityZone returns the AvailabilityZone field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAvailabilityZone returns the AvailabilityZone field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetAvailabilityZone() string {
-	if o == nil || IsNil(o.AvailabilityZone.Get()) {
+	if o == nil || o.AvailabilityZone.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.AvailabilityZone.Get()
 }
 
-// GetAvailabilityZoneOk returns a tuple with the AvailabilityZone field value if set, nil otherwise
+// GetAvailabilityZoneOk returns a tuple with the AvailabilityZone field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetAvailabilityZoneOk() (*string, bool) {
@@ -1334,39 +747,23 @@ func (o *ServerListDto) GetAvailabilityZoneOk() (*string, bool) {
 	return o.AvailabilityZone.Get(), o.AvailabilityZone.IsSet()
 }
 
-// HasAvailabilityZone returns a boolean if a field has been set.
-func (o *ServerListDto) HasAvailabilityZone() bool {
-	if o != nil && o.AvailabilityZone.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetAvailabilityZone gets a reference to the given NullableString and assigns it to the AvailabilityZone field.
+// SetAvailabilityZone sets field value
 func (o *ServerListDto) SetAvailabilityZone(v string) {
 	o.AvailabilityZone.Set(&v)
 }
-// SetAvailabilityZoneNil sets the value for AvailabilityZone to be an explicit nil
-func (o *ServerListDto) SetAvailabilityZoneNil() {
-	o.AvailabilityZone.Set(nil)
-}
 
-// UnsetAvailabilityZone ensures that no value is present for AvailabilityZone, not even an explicit nil
-func (o *ServerListDto) UnsetAvailabilityZone() {
-	o.AvailabilityZone.Unset()
-}
-
-// GetHypervisor returns the Hypervisor field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHypervisor returns the Hypervisor field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetHypervisor() string {
-	if o == nil || IsNil(o.Hypervisor.Get()) {
+	if o == nil || o.Hypervisor.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Hypervisor.Get()
 }
 
-// GetHypervisorOk returns a tuple with the Hypervisor field value if set, nil otherwise
+// GetHypervisorOk returns a tuple with the Hypervisor field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetHypervisorOk() (*string, bool) {
@@ -1376,39 +773,23 @@ func (o *ServerListDto) GetHypervisorOk() (*string, bool) {
 	return o.Hypervisor.Get(), o.Hypervisor.IsSet()
 }
 
-// HasHypervisor returns a boolean if a field has been set.
-func (o *ServerListDto) HasHypervisor() bool {
-	if o != nil && o.Hypervisor.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetHypervisor gets a reference to the given NullableString and assigns it to the Hypervisor field.
+// SetHypervisor sets field value
 func (o *ServerListDto) SetHypervisor(v string) {
 	o.Hypervisor.Set(&v)
 }
-// SetHypervisorNil sets the value for Hypervisor to be an explicit nil
-func (o *ServerListDto) SetHypervisorNil() {
-	o.Hypervisor.Set(nil)
-}
 
-// UnsetHypervisor ensures that no value is present for Hypervisor, not even an explicit nil
-func (o *ServerListDto) UnsetHypervisor() {
-	o.Hypervisor.Unset()
-}
-
-// GetHypervisorId returns the HypervisorId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHypervisorId returns the HypervisorId field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *ServerListDto) GetHypervisorId() string {
-	if o == nil || IsNil(o.HypervisorId.Get()) {
+	if o == nil || o.HypervisorId.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.HypervisorId.Get()
 }
 
-// GetHypervisorIdOk returns a tuple with the HypervisorId field value if set, nil otherwise
+// GetHypervisorIdOk returns a tuple with the HypervisorId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetHypervisorIdOk() (*string, bool) {
@@ -1418,133 +799,57 @@ func (o *ServerListDto) GetHypervisorIdOk() (*string, bool) {
 	return o.HypervisorId.Get(), o.HypervisorId.IsSet()
 }
 
-// HasHypervisorId returns a boolean if a field has been set.
-func (o *ServerListDto) HasHypervisorId() bool {
-	if o != nil && o.HypervisorId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetHypervisorId gets a reference to the given NullableString and assigns it to the HypervisorId field.
+// SetHypervisorId sets field value
 func (o *ServerListDto) SetHypervisorId(v string) {
 	o.HypervisorId.Set(&v)
 }
-// SetHypervisorIdNil sets the value for HypervisorId to be an explicit nil
-func (o *ServerListDto) SetHypervisorIdNil() {
-	o.HypervisorId.Set(nil)
-}
 
-// UnsetHypervisorId ensures that no value is present for HypervisorId, not even an explicit nil
-func (o *ServerListDto) UnsetHypervisorId() {
-	o.HypervisorId.Unset()
-}
-
-// GetVsphereFlavor returns the VsphereFlavor field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ServerListDto) GetVsphereFlavor() string {
-	if o == nil || IsNil(o.VsphereFlavor.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.VsphereFlavor.Get()
-}
-
-// GetVsphereFlavorOk returns a tuple with the VsphereFlavor field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ServerListDto) GetVsphereFlavorOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.VsphereFlavor.Get(), o.VsphereFlavor.IsSet()
-}
-
-// HasVsphereFlavor returns a boolean if a field has been set.
-func (o *ServerListDto) HasVsphereFlavor() bool {
-	if o != nil && o.VsphereFlavor.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetVsphereFlavor gets a reference to the given NullableString and assigns it to the VsphereFlavor field.
-func (o *ServerListDto) SetVsphereFlavor(v string) {
-	o.VsphereFlavor.Set(&v)
-}
-// SetVsphereFlavorNil sets the value for VsphereFlavor to be an explicit nil
-func (o *ServerListDto) SetVsphereFlavorNil() {
-	o.VsphereFlavor.Set(nil)
-}
-
-// UnsetVsphereFlavor ensures that no value is present for VsphereFlavor, not even an explicit nil
-func (o *ServerListDto) UnsetVsphereFlavor() {
-	o.VsphereFlavor.Unset()
-}
-
-// GetProxmoxRole returns the ProxmoxRole field value if set, zero value otherwise.
+// GetProxmoxRole returns the ProxmoxRole field value
 func (o *ServerListDto) GetProxmoxRole() ProxmoxRole {
-	if o == nil || IsNil(o.ProxmoxRole) {
+	if o == nil {
 		var ret ProxmoxRole
 		return ret
 	}
-	return *o.ProxmoxRole
+
+	return o.ProxmoxRole
 }
 
-// GetProxmoxRoleOk returns a tuple with the ProxmoxRole field value if set, nil otherwise
+// GetProxmoxRoleOk returns a tuple with the ProxmoxRole field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetProxmoxRoleOk() (*ProxmoxRole, bool) {
-	if o == nil || IsNil(o.ProxmoxRole) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProxmoxRole, true
+	return &o.ProxmoxRole, true
 }
 
-// HasProxmoxRole returns a boolean if a field has been set.
-func (o *ServerListDto) HasProxmoxRole() bool {
-	if o != nil && !IsNil(o.ProxmoxRole) {
-		return true
-	}
-
-	return false
-}
-
-// SetProxmoxRole gets a reference to the given ProxmoxRole and assigns it to the ProxmoxRole field.
+// SetProxmoxRole sets field value
 func (o *ServerListDto) SetProxmoxRole(v ProxmoxRole) {
-	o.ProxmoxRole = &v
+	o.ProxmoxRole = v
 }
 
-// GetProxmoxExtraDiskSize returns the ProxmoxExtraDiskSize field value if set, zero value otherwise.
+// GetProxmoxExtraDiskSize returns the ProxmoxExtraDiskSize field value
 func (o *ServerListDto) GetProxmoxExtraDiskSize() int32 {
-	if o == nil || IsNil(o.ProxmoxExtraDiskSize) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ProxmoxExtraDiskSize
+
+	return o.ProxmoxExtraDiskSize
 }
 
-// GetProxmoxExtraDiskSizeOk returns a tuple with the ProxmoxExtraDiskSize field value if set, nil otherwise
+// GetProxmoxExtraDiskSizeOk returns a tuple with the ProxmoxExtraDiskSize field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetProxmoxExtraDiskSizeOk() (*int32, bool) {
-	if o == nil || IsNil(o.ProxmoxExtraDiskSize) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProxmoxExtraDiskSize, true
+	return &o.ProxmoxExtraDiskSize, true
 }
 
-// HasProxmoxExtraDiskSize returns a boolean if a field has been set.
-func (o *ServerListDto) HasProxmoxExtraDiskSize() bool {
-	if o != nil && !IsNil(o.ProxmoxExtraDiskSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetProxmoxExtraDiskSize gets a reference to the given int32 and assigns it to the ProxmoxExtraDiskSize field.
+// SetProxmoxExtraDiskSize sets field value
 func (o *ServerListDto) SetProxmoxExtraDiskSize(v int32) {
-	o.ProxmoxExtraDiskSize = &v
+	o.ProxmoxExtraDiskSize = v
 }
 
 // GetActionButtons returns the ActionButtons field value if set, zero value otherwise.
@@ -1579,49 +884,42 @@ func (o *ServerListDto) SetActionButtons(v ServerActionButtonVisibilityDto) {
 	o.ActionButtons = &v
 }
 
-// GetKubernetesNodeLabels returns the KubernetesNodeLabels field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetKubernetesNodeLabels returns the KubernetesNodeLabels field value
 func (o *ServerListDto) GetKubernetesNodeLabels() []KubernetesNodeLabelsDto {
 	if o == nil {
 		var ret []KubernetesNodeLabelsDto
 		return ret
 	}
+
 	return o.KubernetesNodeLabels
 }
 
-// GetKubernetesNodeLabelsOk returns a tuple with the KubernetesNodeLabels field value if set, nil otherwise
+// GetKubernetesNodeLabelsOk returns a tuple with the KubernetesNodeLabels field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetKubernetesNodeLabelsOk() ([]KubernetesNodeLabelsDto, bool) {
-	if o == nil || IsNil(o.KubernetesNodeLabels) {
+	if o == nil {
 		return nil, false
 	}
 	return o.KubernetesNodeLabels, true
 }
 
-// HasKubernetesNodeLabels returns a boolean if a field has been set.
-func (o *ServerListDto) HasKubernetesNodeLabels() bool {
-	if o != nil && !IsNil(o.KubernetesNodeLabels) {
-		return true
-	}
-
-	return false
-}
-
-// SetKubernetesNodeLabels gets a reference to the given []KubernetesNodeLabelsDto and assigns it to the KubernetesNodeLabels field.
+// SetKubernetesNodeLabels sets field value
 func (o *ServerListDto) SetKubernetesNodeLabels(v []KubernetesNodeLabelsDto) {
 	o.KubernetesNodeLabels = v
 }
 
-// GetReplicaCount returns the ReplicaCount field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetReplicaCount returns the ReplicaCount field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *ServerListDto) GetReplicaCount() int32 {
-	if o == nil || IsNil(o.ReplicaCount.Get()) {
+	if o == nil || o.ReplicaCount.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.ReplicaCount.Get()
 }
 
-// GetReplicaCountOk returns a tuple with the ReplicaCount field value if set, nil otherwise
+// GetReplicaCountOk returns a tuple with the ReplicaCount field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServerListDto) GetReplicaCountOk() (*int32, bool) {
@@ -1631,59 +929,59 @@ func (o *ServerListDto) GetReplicaCountOk() (*int32, bool) {
 	return o.ReplicaCount.Get(), o.ReplicaCount.IsSet()
 }
 
-// HasReplicaCount returns a boolean if a field has been set.
-func (o *ServerListDto) HasReplicaCount() bool {
-	if o != nil && o.ReplicaCount.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetReplicaCount gets a reference to the given NullableInt32 and assigns it to the ReplicaCount field.
+// SetReplicaCount sets field value
 func (o *ServerListDto) SetReplicaCount(v int32) {
 	o.ReplicaCount.Set(&v)
 }
-// SetReplicaCountNil sets the value for ReplicaCount to be an explicit nil
-func (o *ServerListDto) SetReplicaCountNil() {
-	o.ReplicaCount.Set(nil)
-}
 
-// UnsetReplicaCount ensures that no value is present for ReplicaCount, not even an explicit nil
-func (o *ServerListDto) UnsetReplicaCount() {
-	o.ReplicaCount.Unset()
-}
-
-// GetWasmEnabled returns the WasmEnabled field value if set, zero value otherwise.
+// GetWasmEnabled returns the WasmEnabled field value
 func (o *ServerListDto) GetWasmEnabled() bool {
-	if o == nil || IsNil(o.WasmEnabled) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.WasmEnabled
+
+	return o.WasmEnabled
 }
 
-// GetWasmEnabledOk returns a tuple with the WasmEnabled field value if set, nil otherwise
+// GetWasmEnabledOk returns a tuple with the WasmEnabled field value
 // and a boolean to check if the value has been set.
 func (o *ServerListDto) GetWasmEnabledOk() (*bool, bool) {
-	if o == nil || IsNil(o.WasmEnabled) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WasmEnabled, true
+	return &o.WasmEnabled, true
 }
 
-// HasWasmEnabled returns a boolean if a field has been set.
-func (o *ServerListDto) HasWasmEnabled() bool {
-	if o != nil && !IsNil(o.WasmEnabled) {
-		return true
+// SetWasmEnabled sets field value
+func (o *ServerListDto) SetWasmEnabled(v bool) {
+	o.WasmEnabled = v
+}
+
+// GetFlavor returns the Flavor field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *ServerListDto) GetFlavor() string {
+	if o == nil || o.Flavor.Get() == nil {
+		var ret string
+		return ret
 	}
 
-	return false
+	return *o.Flavor.Get()
 }
 
-// SetWasmEnabled gets a reference to the given bool and assigns it to the WasmEnabled field.
-func (o *ServerListDto) SetWasmEnabled(v bool) {
-	o.WasmEnabled = &v
+// GetFlavorOk returns a tuple with the Flavor field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ServerListDto) GetFlavorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Flavor.Get(), o.Flavor.IsSet()
+}
+
+// SetFlavor sets field value
+func (o *ServerListDto) SetFlavor(v string) {
+	o.Flavor.Set(&v)
 }
 
 func (o ServerListDto) MarshalJSON() ([]byte, error) {
@@ -1696,133 +994,114 @@ func (o ServerListDto) MarshalJSON() ([]byte, error) {
 
 func (o ServerListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.ProjectName.IsSet() {
-		toSerialize["projectName"] = o.ProjectName.Get()
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
-	if !IsNil(o.OrganizationId) {
-		toSerialize["organizationId"] = o.OrganizationId
-	}
-	if !IsNil(o.ProjectId) {
-		toSerialize["projectId"] = o.ProjectId
-	}
-	if o.IpAddress.IsSet() {
-		toSerialize["ipAddress"] = o.IpAddress.Get()
-	}
-	if !IsNil(o.DiskSize) {
-		toSerialize["diskSize"] = o.DiskSize
-	}
-	if o.KubernetesHealth.IsSet() {
-		toSerialize["kubernetesHealth"] = o.KubernetesHealth.Get()
-	}
-	if o.GoogleMachineType.IsSet() {
-		toSerialize["googleMachineType"] = o.GoogleMachineType.Get()
-	}
-	if o.TanzuFlavor.IsSet() {
-		toSerialize["tanzuFlavor"] = o.TanzuFlavor.Get()
-	}
-	if o.ProxmoxFlavor.IsSet() {
-		toSerialize["proxmoxFlavor"] = o.ProxmoxFlavor.Get()
-	}
-	if !IsNil(o.Cpu) {
-		toSerialize["cpu"] = o.Cpu
-	}
-	if !IsNil(o.Ram) {
-		toSerialize["ram"] = o.Ram
-	}
-	if !IsNil(o.Role) {
-		toSerialize["role"] = o.Role
-	}
-	if o.Status.IsSet() {
-		toSerialize["status"] = o.Status.Get()
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
-	if o.OpenstackFlavor.IsSet() {
-		toSerialize["openstackFlavor"] = o.OpenstackFlavor.Get()
-	}
-	if o.AwsInstanceType.IsSet() {
-		toSerialize["awsInstanceType"] = o.AwsInstanceType.Get()
-	}
-	if o.AzureVmSize.IsSet() {
-		toSerialize["azureVmSize"] = o.AzureVmSize.Get()
-	}
-	if !IsNil(o.CloudType) {
-		toSerialize["cloudType"] = o.CloudType
-	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
-	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
-	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
-	}
-	if !IsNil(o.SpotPrice) {
-		toSerialize["spotPrice"] = o.SpotPrice
-	}
-	if !IsNil(o.SpotInstance) {
-		toSerialize["spotInstance"] = o.SpotInstance
-	}
-	if !IsNil(o.ShutOff) {
-		toSerialize["shutOff"] = o.ShutOff
-	}
-	if o.AutoscalingGroup.IsSet() {
-		toSerialize["autoscalingGroup"] = o.AutoscalingGroup.Get()
-	}
-	if o.ProviderID.IsSet() {
-		toSerialize["providerID"] = o.ProviderID.Get()
-	}
-	if o.InstanceId.IsSet() {
-		toSerialize["instanceId"] = o.InstanceId.Get()
-	}
-	if o.AwsHostName.IsSet() {
-		toSerialize["awsHostName"] = o.AwsHostName.Get()
-	}
-	if o.OpenshiftFlavor.IsSet() {
-		toSerialize["openshiftFlavor"] = o.OpenshiftFlavor.Get()
-	}
-	if o.AvailabilityZone.IsSet() {
-		toSerialize["availabilityZone"] = o.AvailabilityZone.Get()
-	}
-	if o.Hypervisor.IsSet() {
-		toSerialize["hypervisor"] = o.Hypervisor.Get()
-	}
-	if o.HypervisorId.IsSet() {
-		toSerialize["hypervisorId"] = o.HypervisorId.Get()
-	}
-	if o.VsphereFlavor.IsSet() {
-		toSerialize["vsphereFlavor"] = o.VsphereFlavor.Get()
-	}
-	if !IsNil(o.ProxmoxRole) {
-		toSerialize["proxmoxRole"] = o.ProxmoxRole
-	}
-	if !IsNil(o.ProxmoxExtraDiskSize) {
-		toSerialize["proxmoxExtraDiskSize"] = o.ProxmoxExtraDiskSize
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["projectName"] = o.ProjectName
+	toSerialize["organizationName"] = o.OrganizationName
+	toSerialize["organizationId"] = o.OrganizationId
+	toSerialize["projectId"] = o.ProjectId
+	toSerialize["ipAddress"] = o.IpAddress.Get()
+	toSerialize["diskSize"] = o.DiskSize
+	toSerialize["kubernetesHealth"] = o.KubernetesHealth
+	toSerialize["cpu"] = o.Cpu
+	toSerialize["ram"] = o.Ram
+	toSerialize["role"] = o.Role
+	toSerialize["status"] = o.Status
+	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["cloudType"] = o.CloudType
+	toSerialize["createdBy"] = o.CreatedBy
+	toSerialize["lastModified"] = o.LastModified.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["spotPrice"] = o.SpotPrice
+	toSerialize["spotInstance"] = o.SpotInstance
+	toSerialize["shutOff"] = o.ShutOff
+	toSerialize["autoscalingGroup"] = o.AutoscalingGroup.Get()
+	toSerialize["providerID"] = o.ProviderID.Get()
+	toSerialize["instanceId"] = o.InstanceId.Get()
+	toSerialize["awsHostName"] = o.AwsHostName.Get()
+	toSerialize["availabilityZone"] = o.AvailabilityZone.Get()
+	toSerialize["hypervisor"] = o.Hypervisor.Get()
+	toSerialize["hypervisorId"] = o.HypervisorId.Get()
+	toSerialize["proxmoxRole"] = o.ProxmoxRole
+	toSerialize["proxmoxExtraDiskSize"] = o.ProxmoxExtraDiskSize
 	if !IsNil(o.ActionButtons) {
 		toSerialize["actionButtons"] = o.ActionButtons
 	}
-	if o.KubernetesNodeLabels != nil {
-		toSerialize["kubernetesNodeLabels"] = o.KubernetesNodeLabels
-	}
-	if o.ReplicaCount.IsSet() {
-		toSerialize["replicaCount"] = o.ReplicaCount.Get()
-	}
-	if !IsNil(o.WasmEnabled) {
-		toSerialize["wasmEnabled"] = o.WasmEnabled
-	}
+	toSerialize["kubernetesNodeLabels"] = o.KubernetesNodeLabels
+	toSerialize["replicaCount"] = o.ReplicaCount.Get()
+	toSerialize["wasmEnabled"] = o.WasmEnabled
+	toSerialize["flavor"] = o.Flavor.Get()
 	return toSerialize, nil
+}
+
+func (o *ServerListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"projectName",
+		"organizationName",
+		"organizationId",
+		"projectId",
+		"ipAddress",
+		"diskSize",
+		"kubernetesHealth",
+		"cpu",
+		"ram",
+		"role",
+		"status",
+		"createdAt",
+		"cloudType",
+		"createdBy",
+		"lastModified",
+		"lastModifiedBy",
+		"spotPrice",
+		"spotInstance",
+		"shutOff",
+		"autoscalingGroup",
+		"providerID",
+		"instanceId",
+		"awsHostName",
+		"availabilityZone",
+		"hypervisor",
+		"hypervisorId",
+		"proxmoxRole",
+		"proxmoxExtraDiskSize",
+		"kubernetesNodeLabels",
+		"replicaCount",
+		"wasmEnabled",
+		"flavor",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varServerListDto := _ServerListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varServerListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServerListDto(varServerListDto)
+
+	return err
 }
 
 type NullableServerListDto struct {

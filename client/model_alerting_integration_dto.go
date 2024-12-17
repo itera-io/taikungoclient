@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AlertingIntegrationDto type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,22 @@ var _ MappedNullable = &AlertingIntegrationDto{}
 
 // AlertingIntegrationDto struct for AlertingIntegrationDto
 type AlertingIntegrationDto struct {
-	Url NullableString `json:"url,omitempty"`
-	Token NullableString `json:"token,omitempty"`
-	AlertingIntegrationType *AlertingIntegrationType `json:"alertingIntegrationType,omitempty"`
+	Url string `json:"url"`
+	Token NullableString `json:"token"`
+	AlertingIntegrationType AlertingIntegrationType `json:"alertingIntegrationType"`
 }
+
+type _AlertingIntegrationDto AlertingIntegrationDto
 
 // NewAlertingIntegrationDto instantiates a new AlertingIntegrationDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertingIntegrationDto() *AlertingIntegrationDto {
+func NewAlertingIntegrationDto(url string, token NullableString, alertingIntegrationType AlertingIntegrationType) *AlertingIntegrationDto {
 	this := AlertingIntegrationDto{}
+	this.Url = url
+	this.Token = token
+	this.AlertingIntegrationType = alertingIntegrationType
 	return &this
 }
 
@@ -42,58 +49,42 @@ func NewAlertingIntegrationDtoWithDefaults() *AlertingIntegrationDto {
 	return &this
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetUrl returns the Url field value
 func (o *AlertingIntegrationDto) GetUrl() string {
-	if o == nil || IsNil(o.Url.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Url.Get()
+
+	return o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingIntegrationDto) GetUrlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Url.Get(), o.Url.IsSet()
+	return &o.Url, true
 }
 
-// HasUrl returns a boolean if a field has been set.
-func (o *AlertingIntegrationDto) HasUrl() bool {
-	if o != nil && o.Url.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+// SetUrl sets field value
 func (o *AlertingIntegrationDto) SetUrl(v string) {
-	o.Url.Set(&v)
-}
-// SetUrlNil sets the value for Url to be an explicit nil
-func (o *AlertingIntegrationDto) SetUrlNil() {
-	o.Url.Set(nil)
+	o.Url = v
 }
 
-// UnsetUrl ensures that no value is present for Url, not even an explicit nil
-func (o *AlertingIntegrationDto) UnsetUrl() {
-	o.Url.Unset()
-}
-
-// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetToken returns the Token field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AlertingIntegrationDto) GetToken() string {
-	if o == nil || IsNil(o.Token.Get()) {
+	if o == nil || o.Token.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Token.Get()
 }
 
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// GetTokenOk returns a tuple with the Token field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingIntegrationDto) GetTokenOk() (*string, bool) {
@@ -103,59 +94,33 @@ func (o *AlertingIntegrationDto) GetTokenOk() (*string, bool) {
 	return o.Token.Get(), o.Token.IsSet()
 }
 
-// HasToken returns a boolean if a field has been set.
-func (o *AlertingIntegrationDto) HasToken() bool {
-	if o != nil && o.Token.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetToken gets a reference to the given NullableString and assigns it to the Token field.
+// SetToken sets field value
 func (o *AlertingIntegrationDto) SetToken(v string) {
 	o.Token.Set(&v)
 }
-// SetTokenNil sets the value for Token to be an explicit nil
-func (o *AlertingIntegrationDto) SetTokenNil() {
-	o.Token.Set(nil)
-}
 
-// UnsetToken ensures that no value is present for Token, not even an explicit nil
-func (o *AlertingIntegrationDto) UnsetToken() {
-	o.Token.Unset()
-}
-
-// GetAlertingIntegrationType returns the AlertingIntegrationType field value if set, zero value otherwise.
+// GetAlertingIntegrationType returns the AlertingIntegrationType field value
 func (o *AlertingIntegrationDto) GetAlertingIntegrationType() AlertingIntegrationType {
-	if o == nil || IsNil(o.AlertingIntegrationType) {
+	if o == nil {
 		var ret AlertingIntegrationType
 		return ret
 	}
-	return *o.AlertingIntegrationType
+
+	return o.AlertingIntegrationType
 }
 
-// GetAlertingIntegrationTypeOk returns a tuple with the AlertingIntegrationType field value if set, nil otherwise
+// GetAlertingIntegrationTypeOk returns a tuple with the AlertingIntegrationType field value
 // and a boolean to check if the value has been set.
 func (o *AlertingIntegrationDto) GetAlertingIntegrationTypeOk() (*AlertingIntegrationType, bool) {
-	if o == nil || IsNil(o.AlertingIntegrationType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AlertingIntegrationType, true
+	return &o.AlertingIntegrationType, true
 }
 
-// HasAlertingIntegrationType returns a boolean if a field has been set.
-func (o *AlertingIntegrationDto) HasAlertingIntegrationType() bool {
-	if o != nil && !IsNil(o.AlertingIntegrationType) {
-		return true
-	}
-
-	return false
-}
-
-// SetAlertingIntegrationType gets a reference to the given AlertingIntegrationType and assigns it to the AlertingIntegrationType field.
+// SetAlertingIntegrationType sets field value
 func (o *AlertingIntegrationDto) SetAlertingIntegrationType(v AlertingIntegrationType) {
-	o.AlertingIntegrationType = &v
+	o.AlertingIntegrationType = v
 }
 
 func (o AlertingIntegrationDto) MarshalJSON() ([]byte, error) {
@@ -168,16 +133,49 @@ func (o AlertingIntegrationDto) MarshalJSON() ([]byte, error) {
 
 func (o AlertingIntegrationDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Url.IsSet() {
-		toSerialize["url"] = o.Url.Get()
-	}
-	if o.Token.IsSet() {
-		toSerialize["token"] = o.Token.Get()
-	}
-	if !IsNil(o.AlertingIntegrationType) {
-		toSerialize["alertingIntegrationType"] = o.AlertingIntegrationType
-	}
+	toSerialize["url"] = o.Url
+	toSerialize["token"] = o.Token.Get()
+	toSerialize["alertingIntegrationType"] = o.AlertingIntegrationType
 	return toSerialize, nil
+}
+
+func (o *AlertingIntegrationDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"url",
+		"token",
+		"alertingIntegrationType",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAlertingIntegrationDto := _AlertingIntegrationDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAlertingIntegrationDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AlertingIntegrationDto(varAlertingIntegrationDto)
+
+	return err
 }
 
 type NullableAlertingIntegrationDto struct {

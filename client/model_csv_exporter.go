@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the CsvExporter type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,22 @@ var _ MappedNullable = &CsvExporter{}
 
 // CsvExporter struct for CsvExporter
 type CsvExporter struct {
-	FileName NullableString `json:"fileName,omitempty"`
-	ContentType NullableString `json:"contentType,omitempty"`
-	Content NullableString `json:"content,omitempty"`
+	FileName NullableString `json:"fileName"`
+	ContentType NullableString `json:"contentType"`
+	Content NullableString `json:"content"`
 }
+
+type _CsvExporter CsvExporter
 
 // NewCsvExporter instantiates a new CsvExporter object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCsvExporter() *CsvExporter {
+func NewCsvExporter(fileName NullableString, contentType NullableString, content NullableString) *CsvExporter {
 	this := CsvExporter{}
+	this.FileName = fileName
+	this.ContentType = contentType
+	this.Content = content
 	return &this
 }
 
@@ -42,16 +49,18 @@ func NewCsvExporterWithDefaults() *CsvExporter {
 	return &this
 }
 
-// GetFileName returns the FileName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetFileName returns the FileName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CsvExporter) GetFileName() string {
-	if o == nil || IsNil(o.FileName.Get()) {
+	if o == nil || o.FileName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.FileName.Get()
 }
 
-// GetFileNameOk returns a tuple with the FileName field value if set, nil otherwise
+// GetFileNameOk returns a tuple with the FileName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CsvExporter) GetFileNameOk() (*string, bool) {
@@ -61,39 +70,23 @@ func (o *CsvExporter) GetFileNameOk() (*string, bool) {
 	return o.FileName.Get(), o.FileName.IsSet()
 }
 
-// HasFileName returns a boolean if a field has been set.
-func (o *CsvExporter) HasFileName() bool {
-	if o != nil && o.FileName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetFileName gets a reference to the given NullableString and assigns it to the FileName field.
+// SetFileName sets field value
 func (o *CsvExporter) SetFileName(v string) {
 	o.FileName.Set(&v)
 }
-// SetFileNameNil sets the value for FileName to be an explicit nil
-func (o *CsvExporter) SetFileNameNil() {
-	o.FileName.Set(nil)
-}
 
-// UnsetFileName ensures that no value is present for FileName, not even an explicit nil
-func (o *CsvExporter) UnsetFileName() {
-	o.FileName.Unset()
-}
-
-// GetContentType returns the ContentType field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetContentType returns the ContentType field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CsvExporter) GetContentType() string {
-	if o == nil || IsNil(o.ContentType.Get()) {
+	if o == nil || o.ContentType.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.ContentType.Get()
 }
 
-// GetContentTypeOk returns a tuple with the ContentType field value if set, nil otherwise
+// GetContentTypeOk returns a tuple with the ContentType field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CsvExporter) GetContentTypeOk() (*string, bool) {
@@ -103,39 +96,23 @@ func (o *CsvExporter) GetContentTypeOk() (*string, bool) {
 	return o.ContentType.Get(), o.ContentType.IsSet()
 }
 
-// HasContentType returns a boolean if a field has been set.
-func (o *CsvExporter) HasContentType() bool {
-	if o != nil && o.ContentType.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetContentType gets a reference to the given NullableString and assigns it to the ContentType field.
+// SetContentType sets field value
 func (o *CsvExporter) SetContentType(v string) {
 	o.ContentType.Set(&v)
 }
-// SetContentTypeNil sets the value for ContentType to be an explicit nil
-func (o *CsvExporter) SetContentTypeNil() {
-	o.ContentType.Set(nil)
-}
 
-// UnsetContentType ensures that no value is present for ContentType, not even an explicit nil
-func (o *CsvExporter) UnsetContentType() {
-	o.ContentType.Unset()
-}
-
-// GetContent returns the Content field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetContent returns the Content field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *CsvExporter) GetContent() string {
-	if o == nil || IsNil(o.Content.Get()) {
+	if o == nil || o.Content.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.Content.Get()
 }
 
-// GetContentOk returns a tuple with the Content field value if set, nil otherwise
+// GetContentOk returns a tuple with the Content field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CsvExporter) GetContentOk() (*string, bool) {
@@ -145,27 +122,9 @@ func (o *CsvExporter) GetContentOk() (*string, bool) {
 	return o.Content.Get(), o.Content.IsSet()
 }
 
-// HasContent returns a boolean if a field has been set.
-func (o *CsvExporter) HasContent() bool {
-	if o != nil && o.Content.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetContent gets a reference to the given NullableString and assigns it to the Content field.
+// SetContent sets field value
 func (o *CsvExporter) SetContent(v string) {
 	o.Content.Set(&v)
-}
-// SetContentNil sets the value for Content to be an explicit nil
-func (o *CsvExporter) SetContentNil() {
-	o.Content.Set(nil)
-}
-
-// UnsetContent ensures that no value is present for Content, not even an explicit nil
-func (o *CsvExporter) UnsetContent() {
-	o.Content.Unset()
 }
 
 func (o CsvExporter) MarshalJSON() ([]byte, error) {
@@ -178,16 +137,49 @@ func (o CsvExporter) MarshalJSON() ([]byte, error) {
 
 func (o CsvExporter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.FileName.IsSet() {
-		toSerialize["fileName"] = o.FileName.Get()
-	}
-	if o.ContentType.IsSet() {
-		toSerialize["contentType"] = o.ContentType.Get()
-	}
-	if o.Content.IsSet() {
-		toSerialize["content"] = o.Content.Get()
-	}
+	toSerialize["fileName"] = o.FileName.Get()
+	toSerialize["contentType"] = o.ContentType.Get()
+	toSerialize["content"] = o.Content.Get()
 	return toSerialize, nil
+}
+
+func (o *CsvExporter) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"fileName",
+		"contentType",
+		"content",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCsvExporter := _CsvExporter{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCsvExporter)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CsvExporter(varCsvExporter)
+
+	return err
 }
 
 type NullableCsvExporter struct {

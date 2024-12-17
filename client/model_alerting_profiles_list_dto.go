@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the AlertingProfilesListDto type satisfies the MappedNullable interface at compile time
@@ -20,29 +22,46 @@ var _ MappedNullable = &AlertingProfilesListDto{}
 
 // AlertingProfilesListDto struct for AlertingProfilesListDto
 type AlertingProfilesListDto struct {
-	Id *int32 `json:"id,omitempty"`
-	Name NullableString `json:"name,omitempty"`
-	OrganizationId NullableInt32 `json:"organizationId,omitempty"`
-	OrganizationName NullableString `json:"organizationName,omitempty"`
-	SlackConfigurationId NullableInt32 `json:"slackConfigurationId,omitempty"`
-	SlackConfigurationName NullableString `json:"slackConfigurationName,omitempty"`
-	IsLocked *bool `json:"isLocked,omitempty"`
-	Emails []AlertingEmailDto `json:"emails,omitempty"`
-	Webhooks []AlertingWebhookDto `json:"webhooks,omitempty"`
-	Projects []CommonDropdownDto `json:"projects,omitempty"`
-	CreatedBy NullableString `json:"createdBy,omitempty"`
-	LastModified NullableString `json:"lastModified,omitempty"`
-	LastModifiedBy NullableString `json:"lastModifiedBy,omitempty"`
-	Reminder *AlertingReminder `json:"reminder,omitempty"`
-	CreatedAt NullableString `json:"createdAt,omitempty"`
+	Id int32 `json:"id"`
+	Name string `json:"name"`
+	OrganizationId NullableInt32 `json:"organizationId"`
+	OrganizationName NullableString `json:"organizationName"`
+	SlackConfigurationId NullableInt32 `json:"slackConfigurationId"`
+	SlackConfigurationName NullableString `json:"slackConfigurationName"`
+	IsLocked bool `json:"isLocked"`
+	Emails []AlertingEmailDto `json:"emails"`
+	Webhooks []AlertingWebhookDto `json:"webhooks"`
+	Projects []CommonDropdownDto `json:"projects"`
+	CreatedBy NullableString `json:"createdBy"`
+	LastModified NullableString `json:"lastModified"`
+	LastModifiedBy NullableString `json:"lastModifiedBy"`
+	Reminder AlertingReminder `json:"reminder"`
+	CreatedAt string `json:"createdAt"`
 }
+
+type _AlertingProfilesListDto AlertingProfilesListDto
 
 // NewAlertingProfilesListDto instantiates a new AlertingProfilesListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertingProfilesListDto() *AlertingProfilesListDto {
+func NewAlertingProfilesListDto(id int32, name string, organizationId NullableInt32, organizationName NullableString, slackConfigurationId NullableInt32, slackConfigurationName NullableString, isLocked bool, emails []AlertingEmailDto, webhooks []AlertingWebhookDto, projects []CommonDropdownDto, createdBy NullableString, lastModified NullableString, lastModifiedBy NullableString, reminder AlertingReminder, createdAt string) *AlertingProfilesListDto {
 	this := AlertingProfilesListDto{}
+	this.Id = id
+	this.Name = name
+	this.OrganizationId = organizationId
+	this.OrganizationName = organizationName
+	this.SlackConfigurationId = slackConfigurationId
+	this.SlackConfigurationName = slackConfigurationName
+	this.IsLocked = isLocked
+	this.Emails = emails
+	this.Webhooks = webhooks
+	this.Projects = projects
+	this.CreatedBy = createdBy
+	this.LastModified = lastModified
+	this.LastModifiedBy = lastModifiedBy
+	this.Reminder = reminder
+	this.CreatedAt = createdAt
 	return &this
 }
 
@@ -54,90 +73,66 @@ func NewAlertingProfilesListDtoWithDefaults() *AlertingProfilesListDto {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *AlertingProfilesListDto) GetId() int32 {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *AlertingProfilesListDto) GetIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given int32 and assigns it to the Id field.
+// SetId sets field value
 func (o *AlertingProfilesListDto) SetId(v int32) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value
 func (o *AlertingProfilesListDto) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingProfilesListDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName sets field value
 func (o *AlertingProfilesListDto) SetName(v string) {
-	o.Name.Set(&v)
-}
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *AlertingProfilesListDto) SetNameNil() {
-	o.Name.Set(nil)
+	o.Name = v
 }
 
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *AlertingProfilesListDto) UnsetName() {
-	o.Name.Unset()
-}
-
-// GetOrganizationId returns the OrganizationId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationId returns the OrganizationId field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *AlertingProfilesListDto) GetOrganizationId() int32 {
-	if o == nil || IsNil(o.OrganizationId.Get()) {
+	if o == nil || o.OrganizationId.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.OrganizationId.Get()
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value if set, nil otherwise
+// GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingProfilesListDto) GetOrganizationIdOk() (*int32, bool) {
@@ -147,39 +142,23 @@ func (o *AlertingProfilesListDto) GetOrganizationIdOk() (*int32, bool) {
 	return o.OrganizationId.Get(), o.OrganizationId.IsSet()
 }
 
-// HasOrganizationId returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasOrganizationId() bool {
-	if o != nil && o.OrganizationId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationId gets a reference to the given NullableInt32 and assigns it to the OrganizationId field.
+// SetOrganizationId sets field value
 func (o *AlertingProfilesListDto) SetOrganizationId(v int32) {
 	o.OrganizationId.Set(&v)
 }
-// SetOrganizationIdNil sets the value for OrganizationId to be an explicit nil
-func (o *AlertingProfilesListDto) SetOrganizationIdNil() {
-	o.OrganizationId.Set(nil)
-}
 
-// UnsetOrganizationId ensures that no value is present for OrganizationId, not even an explicit nil
-func (o *AlertingProfilesListDto) UnsetOrganizationId() {
-	o.OrganizationId.Unset()
-}
-
-// GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrganizationName returns the OrganizationName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AlertingProfilesListDto) GetOrganizationName() string {
-	if o == nil || IsNil(o.OrganizationName.Get()) {
+	if o == nil || o.OrganizationName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.OrganizationName.Get()
 }
 
-// GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
+// GetOrganizationNameOk returns a tuple with the OrganizationName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingProfilesListDto) GetOrganizationNameOk() (*string, bool) {
@@ -189,39 +168,23 @@ func (o *AlertingProfilesListDto) GetOrganizationNameOk() (*string, bool) {
 	return o.OrganizationName.Get(), o.OrganizationName.IsSet()
 }
 
-// HasOrganizationName returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasOrganizationName() bool {
-	if o != nil && o.OrganizationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
+// SetOrganizationName sets field value
 func (o *AlertingProfilesListDto) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
-// SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *AlertingProfilesListDto) SetOrganizationNameNil() {
-	o.OrganizationName.Set(nil)
-}
 
-// UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *AlertingProfilesListDto) UnsetOrganizationName() {
-	o.OrganizationName.Unset()
-}
-
-// GetSlackConfigurationId returns the SlackConfigurationId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSlackConfigurationId returns the SlackConfigurationId field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *AlertingProfilesListDto) GetSlackConfigurationId() int32 {
-	if o == nil || IsNil(o.SlackConfigurationId.Get()) {
+	if o == nil || o.SlackConfigurationId.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.SlackConfigurationId.Get()
 }
 
-// GetSlackConfigurationIdOk returns a tuple with the SlackConfigurationId field value if set, nil otherwise
+// GetSlackConfigurationIdOk returns a tuple with the SlackConfigurationId field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingProfilesListDto) GetSlackConfigurationIdOk() (*int32, bool) {
@@ -231,39 +194,23 @@ func (o *AlertingProfilesListDto) GetSlackConfigurationIdOk() (*int32, bool) {
 	return o.SlackConfigurationId.Get(), o.SlackConfigurationId.IsSet()
 }
 
-// HasSlackConfigurationId returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasSlackConfigurationId() bool {
-	if o != nil && o.SlackConfigurationId.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSlackConfigurationId gets a reference to the given NullableInt32 and assigns it to the SlackConfigurationId field.
+// SetSlackConfigurationId sets field value
 func (o *AlertingProfilesListDto) SetSlackConfigurationId(v int32) {
 	o.SlackConfigurationId.Set(&v)
 }
-// SetSlackConfigurationIdNil sets the value for SlackConfigurationId to be an explicit nil
-func (o *AlertingProfilesListDto) SetSlackConfigurationIdNil() {
-	o.SlackConfigurationId.Set(nil)
-}
 
-// UnsetSlackConfigurationId ensures that no value is present for SlackConfigurationId, not even an explicit nil
-func (o *AlertingProfilesListDto) UnsetSlackConfigurationId() {
-	o.SlackConfigurationId.Unset()
-}
-
-// GetSlackConfigurationName returns the SlackConfigurationName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSlackConfigurationName returns the SlackConfigurationName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AlertingProfilesListDto) GetSlackConfigurationName() string {
-	if o == nil || IsNil(o.SlackConfigurationName.Get()) {
+	if o == nil || o.SlackConfigurationName.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.SlackConfigurationName.Get()
 }
 
-// GetSlackConfigurationNameOk returns a tuple with the SlackConfigurationName field value if set, nil otherwise
+// GetSlackConfigurationNameOk returns a tuple with the SlackConfigurationName field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingProfilesListDto) GetSlackConfigurationNameOk() (*string, bool) {
@@ -273,170 +220,119 @@ func (o *AlertingProfilesListDto) GetSlackConfigurationNameOk() (*string, bool) 
 	return o.SlackConfigurationName.Get(), o.SlackConfigurationName.IsSet()
 }
 
-// HasSlackConfigurationName returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasSlackConfigurationName() bool {
-	if o != nil && o.SlackConfigurationName.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSlackConfigurationName gets a reference to the given NullableString and assigns it to the SlackConfigurationName field.
+// SetSlackConfigurationName sets field value
 func (o *AlertingProfilesListDto) SetSlackConfigurationName(v string) {
 	o.SlackConfigurationName.Set(&v)
 }
-// SetSlackConfigurationNameNil sets the value for SlackConfigurationName to be an explicit nil
-func (o *AlertingProfilesListDto) SetSlackConfigurationNameNil() {
-	o.SlackConfigurationName.Set(nil)
-}
 
-// UnsetSlackConfigurationName ensures that no value is present for SlackConfigurationName, not even an explicit nil
-func (o *AlertingProfilesListDto) UnsetSlackConfigurationName() {
-	o.SlackConfigurationName.Unset()
-}
-
-// GetIsLocked returns the IsLocked field value if set, zero value otherwise.
+// GetIsLocked returns the IsLocked field value
 func (o *AlertingProfilesListDto) GetIsLocked() bool {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsLocked
+
+	return o.IsLocked
 }
 
-// GetIsLockedOk returns a tuple with the IsLocked field value if set, nil otherwise
+// GetIsLockedOk returns a tuple with the IsLocked field value
 // and a boolean to check if the value has been set.
 func (o *AlertingProfilesListDto) GetIsLockedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsLocked) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsLocked, true
+	return &o.IsLocked, true
 }
 
-// HasIsLocked returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasIsLocked() bool {
-	if o != nil && !IsNil(o.IsLocked) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsLocked gets a reference to the given bool and assigns it to the IsLocked field.
+// SetIsLocked sets field value
 func (o *AlertingProfilesListDto) SetIsLocked(v bool) {
-	o.IsLocked = &v
+	o.IsLocked = v
 }
 
-// GetEmails returns the Emails field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEmails returns the Emails field value
 func (o *AlertingProfilesListDto) GetEmails() []AlertingEmailDto {
 	if o == nil {
 		var ret []AlertingEmailDto
 		return ret
 	}
+
 	return o.Emails
 }
 
-// GetEmailsOk returns a tuple with the Emails field value if set, nil otherwise
+// GetEmailsOk returns a tuple with the Emails field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingProfilesListDto) GetEmailsOk() ([]AlertingEmailDto, bool) {
-	if o == nil || IsNil(o.Emails) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Emails, true
 }
 
-// HasEmails returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasEmails() bool {
-	if o != nil && !IsNil(o.Emails) {
-		return true
-	}
-
-	return false
-}
-
-// SetEmails gets a reference to the given []AlertingEmailDto and assigns it to the Emails field.
+// SetEmails sets field value
 func (o *AlertingProfilesListDto) SetEmails(v []AlertingEmailDto) {
 	o.Emails = v
 }
 
-// GetWebhooks returns the Webhooks field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetWebhooks returns the Webhooks field value
 func (o *AlertingProfilesListDto) GetWebhooks() []AlertingWebhookDto {
 	if o == nil {
 		var ret []AlertingWebhookDto
 		return ret
 	}
+
 	return o.Webhooks
 }
 
-// GetWebhooksOk returns a tuple with the Webhooks field value if set, nil otherwise
+// GetWebhooksOk returns a tuple with the Webhooks field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingProfilesListDto) GetWebhooksOk() ([]AlertingWebhookDto, bool) {
-	if o == nil || IsNil(o.Webhooks) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Webhooks, true
 }
 
-// HasWebhooks returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasWebhooks() bool {
-	if o != nil && !IsNil(o.Webhooks) {
-		return true
-	}
-
-	return false
-}
-
-// SetWebhooks gets a reference to the given []AlertingWebhookDto and assigns it to the Webhooks field.
+// SetWebhooks sets field value
 func (o *AlertingProfilesListDto) SetWebhooks(v []AlertingWebhookDto) {
 	o.Webhooks = v
 }
 
-// GetProjects returns the Projects field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetProjects returns the Projects field value
 func (o *AlertingProfilesListDto) GetProjects() []CommonDropdownDto {
 	if o == nil {
 		var ret []CommonDropdownDto
 		return ret
 	}
+
 	return o.Projects
 }
 
-// GetProjectsOk returns a tuple with the Projects field value if set, nil otherwise
+// GetProjectsOk returns a tuple with the Projects field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingProfilesListDto) GetProjectsOk() ([]CommonDropdownDto, bool) {
-	if o == nil || IsNil(o.Projects) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Projects, true
 }
 
-// HasProjects returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasProjects() bool {
-	if o != nil && !IsNil(o.Projects) {
-		return true
-	}
-
-	return false
-}
-
-// SetProjects gets a reference to the given []CommonDropdownDto and assigns it to the Projects field.
+// SetProjects sets field value
 func (o *AlertingProfilesListDto) SetProjects(v []CommonDropdownDto) {
 	o.Projects = v
 }
 
-// GetCreatedBy returns the CreatedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedBy returns the CreatedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AlertingProfilesListDto) GetCreatedBy() string {
-	if o == nil || IsNil(o.CreatedBy.Get()) {
+	if o == nil || o.CreatedBy.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.CreatedBy.Get()
 }
 
-// GetCreatedByOk returns a tuple with the CreatedBy field value if set, nil otherwise
+// GetCreatedByOk returns a tuple with the CreatedBy field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingProfilesListDto) GetCreatedByOk() (*string, bool) {
@@ -446,39 +342,23 @@ func (o *AlertingProfilesListDto) GetCreatedByOk() (*string, bool) {
 	return o.CreatedBy.Get(), o.CreatedBy.IsSet()
 }
 
-// HasCreatedBy returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasCreatedBy() bool {
-	if o != nil && o.CreatedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedBy gets a reference to the given NullableString and assigns it to the CreatedBy field.
+// SetCreatedBy sets field value
 func (o *AlertingProfilesListDto) SetCreatedBy(v string) {
 	o.CreatedBy.Set(&v)
 }
-// SetCreatedByNil sets the value for CreatedBy to be an explicit nil
-func (o *AlertingProfilesListDto) SetCreatedByNil() {
-	o.CreatedBy.Set(nil)
-}
 
-// UnsetCreatedBy ensures that no value is present for CreatedBy, not even an explicit nil
-func (o *AlertingProfilesListDto) UnsetCreatedBy() {
-	o.CreatedBy.Unset()
-}
-
-// GetLastModified returns the LastModified field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModified returns the LastModified field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AlertingProfilesListDto) GetLastModified() string {
-	if o == nil || IsNil(o.LastModified.Get()) {
+	if o == nil || o.LastModified.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModified.Get()
 }
 
-// GetLastModifiedOk returns a tuple with the LastModified field value if set, nil otherwise
+// GetLastModifiedOk returns a tuple with the LastModified field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingProfilesListDto) GetLastModifiedOk() (*string, bool) {
@@ -488,39 +368,23 @@ func (o *AlertingProfilesListDto) GetLastModifiedOk() (*string, bool) {
 	return o.LastModified.Get(), o.LastModified.IsSet()
 }
 
-// HasLastModified returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasLastModified() bool {
-	if o != nil && o.LastModified.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModified gets a reference to the given NullableString and assigns it to the LastModified field.
+// SetLastModified sets field value
 func (o *AlertingProfilesListDto) SetLastModified(v string) {
 	o.LastModified.Set(&v)
 }
-// SetLastModifiedNil sets the value for LastModified to be an explicit nil
-func (o *AlertingProfilesListDto) SetLastModifiedNil() {
-	o.LastModified.Set(nil)
-}
 
-// UnsetLastModified ensures that no value is present for LastModified, not even an explicit nil
-func (o *AlertingProfilesListDto) UnsetLastModified() {
-	o.LastModified.Unset()
-}
-
-// GetLastModifiedBy returns the LastModifiedBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastModifiedBy returns the LastModifiedBy field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *AlertingProfilesListDto) GetLastModifiedBy() string {
-	if o == nil || IsNil(o.LastModifiedBy.Get()) {
+	if o == nil || o.LastModifiedBy.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.LastModifiedBy.Get()
 }
 
-// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value if set, nil otherwise
+// GetLastModifiedByOk returns a tuple with the LastModifiedBy field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingProfilesListDto) GetLastModifiedByOk() (*string, bool) {
@@ -530,101 +394,57 @@ func (o *AlertingProfilesListDto) GetLastModifiedByOk() (*string, bool) {
 	return o.LastModifiedBy.Get(), o.LastModifiedBy.IsSet()
 }
 
-// HasLastModifiedBy returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasLastModifiedBy() bool {
-	if o != nil && o.LastModifiedBy.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetLastModifiedBy gets a reference to the given NullableString and assigns it to the LastModifiedBy field.
+// SetLastModifiedBy sets field value
 func (o *AlertingProfilesListDto) SetLastModifiedBy(v string) {
 	o.LastModifiedBy.Set(&v)
 }
-// SetLastModifiedByNil sets the value for LastModifiedBy to be an explicit nil
-func (o *AlertingProfilesListDto) SetLastModifiedByNil() {
-	o.LastModifiedBy.Set(nil)
-}
 
-// UnsetLastModifiedBy ensures that no value is present for LastModifiedBy, not even an explicit nil
-func (o *AlertingProfilesListDto) UnsetLastModifiedBy() {
-	o.LastModifiedBy.Unset()
-}
-
-// GetReminder returns the Reminder field value if set, zero value otherwise.
+// GetReminder returns the Reminder field value
 func (o *AlertingProfilesListDto) GetReminder() AlertingReminder {
-	if o == nil || IsNil(o.Reminder) {
+	if o == nil {
 		var ret AlertingReminder
 		return ret
 	}
-	return *o.Reminder
+
+	return o.Reminder
 }
 
-// GetReminderOk returns a tuple with the Reminder field value if set, nil otherwise
+// GetReminderOk returns a tuple with the Reminder field value
 // and a boolean to check if the value has been set.
 func (o *AlertingProfilesListDto) GetReminderOk() (*AlertingReminder, bool) {
-	if o == nil || IsNil(o.Reminder) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Reminder, true
+	return &o.Reminder, true
 }
 
-// HasReminder returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasReminder() bool {
-	if o != nil && !IsNil(o.Reminder) {
-		return true
-	}
-
-	return false
-}
-
-// SetReminder gets a reference to the given AlertingReminder and assigns it to the Reminder field.
+// SetReminder sets field value
 func (o *AlertingProfilesListDto) SetReminder(v AlertingReminder) {
-	o.Reminder = &v
+	o.Reminder = v
 }
 
-// GetCreatedAt returns the CreatedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetCreatedAt returns the CreatedAt field value
 func (o *AlertingProfilesListDto) GetCreatedAt() string {
-	if o == nil || IsNil(o.CreatedAt.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.CreatedAt.Get()
+
+	return o.CreatedAt
 }
 
-// GetCreatedAtOk returns a tuple with the CreatedAt field value if set, nil otherwise
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertingProfilesListDto) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.CreatedAt.Get(), o.CreatedAt.IsSet()
+	return &o.CreatedAt, true
 }
 
-// HasCreatedAt returns a boolean if a field has been set.
-func (o *AlertingProfilesListDto) HasCreatedAt() bool {
-	if o != nil && o.CreatedAt.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetCreatedAt gets a reference to the given NullableString and assigns it to the CreatedAt field.
+// SetCreatedAt sets field value
 func (o *AlertingProfilesListDto) SetCreatedAt(v string) {
-	o.CreatedAt.Set(&v)
-}
-// SetCreatedAtNil sets the value for CreatedAt to be an explicit nil
-func (o *AlertingProfilesListDto) SetCreatedAtNil() {
-	o.CreatedAt.Set(nil)
-}
-
-// UnsetCreatedAt ensures that no value is present for CreatedAt, not even an explicit nil
-func (o *AlertingProfilesListDto) UnsetCreatedAt() {
-	o.CreatedAt.Unset()
+	o.CreatedAt = v
 }
 
 func (o AlertingProfilesListDto) MarshalJSON() ([]byte, error) {
@@ -637,52 +457,73 @@ func (o AlertingProfilesListDto) MarshalJSON() ([]byte, error) {
 
 func (o AlertingProfilesListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
-	}
-	if o.OrganizationId.IsSet() {
-		toSerialize["organizationId"] = o.OrganizationId.Get()
-	}
-	if o.OrganizationName.IsSet() {
-		toSerialize["organizationName"] = o.OrganizationName.Get()
-	}
-	if o.SlackConfigurationId.IsSet() {
-		toSerialize["slackConfigurationId"] = o.SlackConfigurationId.Get()
-	}
-	if o.SlackConfigurationName.IsSet() {
-		toSerialize["slackConfigurationName"] = o.SlackConfigurationName.Get()
-	}
-	if !IsNil(o.IsLocked) {
-		toSerialize["isLocked"] = o.IsLocked
-	}
-	if o.Emails != nil {
-		toSerialize["emails"] = o.Emails
-	}
-	if o.Webhooks != nil {
-		toSerialize["webhooks"] = o.Webhooks
-	}
-	if o.Projects != nil {
-		toSerialize["projects"] = o.Projects
-	}
-	if o.CreatedBy.IsSet() {
-		toSerialize["createdBy"] = o.CreatedBy.Get()
-	}
-	if o.LastModified.IsSet() {
-		toSerialize["lastModified"] = o.LastModified.Get()
-	}
-	if o.LastModifiedBy.IsSet() {
-		toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
-	}
-	if !IsNil(o.Reminder) {
-		toSerialize["reminder"] = o.Reminder
-	}
-	if o.CreatedAt.IsSet() {
-		toSerialize["createdAt"] = o.CreatedAt.Get()
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["name"] = o.Name
+	toSerialize["organizationId"] = o.OrganizationId.Get()
+	toSerialize["organizationName"] = o.OrganizationName.Get()
+	toSerialize["slackConfigurationId"] = o.SlackConfigurationId.Get()
+	toSerialize["slackConfigurationName"] = o.SlackConfigurationName.Get()
+	toSerialize["isLocked"] = o.IsLocked
+	toSerialize["emails"] = o.Emails
+	toSerialize["webhooks"] = o.Webhooks
+	toSerialize["projects"] = o.Projects
+	toSerialize["createdBy"] = o.CreatedBy.Get()
+	toSerialize["lastModified"] = o.LastModified.Get()
+	toSerialize["lastModifiedBy"] = o.LastModifiedBy.Get()
+	toSerialize["reminder"] = o.Reminder
+	toSerialize["createdAt"] = o.CreatedAt
 	return toSerialize, nil
+}
+
+func (o *AlertingProfilesListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"organizationId",
+		"organizationName",
+		"slackConfigurationId",
+		"slackConfigurationName",
+		"isLocked",
+		"emails",
+		"webhooks",
+		"projects",
+		"createdBy",
+		"lastModified",
+		"lastModifiedBy",
+		"reminder",
+		"createdAt",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAlertingProfilesListDto := _AlertingProfilesListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAlertingProfilesListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AlertingProfilesListDto(varAlertingProfilesListDto)
+
+	return err
 }
 
 type NullableAlertingProfilesListDto struct {

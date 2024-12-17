@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the StorageClasses type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &StorageClasses{}
 
 // StorageClasses struct for StorageClasses
 type StorageClasses struct {
-	Data []StorageClassDto `json:"data,omitempty"`
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	Data []StorageClassDto `json:"data"`
+	TotalCount int32 `json:"totalCount"`
 }
+
+type _StorageClasses StorageClasses
 
 // NewStorageClasses instantiates a new StorageClasses object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStorageClasses() *StorageClasses {
+func NewStorageClasses(data []StorageClassDto, totalCount int32) *StorageClasses {
 	this := StorageClasses{}
+	this.Data = data
+	this.TotalCount = totalCount
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewStorageClassesWithDefaults() *StorageClasses {
 	return &this
 }
 
-// GetData returns the Data field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []StorageClassDto will be returned
 func (o *StorageClasses) GetData() []StorageClassDto {
 	if o == nil {
 		var ret []StorageClassDto
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *StorageClasses) GetDataOk() ([]StorageClassDto, bool) {
@@ -60,50 +68,33 @@ func (o *StorageClasses) GetDataOk() ([]StorageClassDto, bool) {
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *StorageClasses) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []StorageClassDto and assigns it to the Data field.
+// SetData sets field value
 func (o *StorageClasses) SetData(v []StorageClassDto) {
 	o.Data = v
 }
 
-// GetTotalCount returns the TotalCount field value if set, zero value otherwise.
+// GetTotalCount returns the TotalCount field value
 func (o *StorageClasses) GetTotalCount() int32 {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.TotalCount
+
+	return o.TotalCount
 }
 
-// GetTotalCountOk returns a tuple with the TotalCount field value if set, nil otherwise
+// GetTotalCountOk returns a tuple with the TotalCount field value
 // and a boolean to check if the value has been set.
 func (o *StorageClasses) GetTotalCountOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalCount) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalCount, true
+	return &o.TotalCount, true
 }
 
-// HasTotalCount returns a boolean if a field has been set.
-func (o *StorageClasses) HasTotalCount() bool {
-	if o != nil && !IsNil(o.TotalCount) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalCount gets a reference to the given int32 and assigns it to the TotalCount field.
+// SetTotalCount sets field value
 func (o *StorageClasses) SetTotalCount(v int32) {
-	o.TotalCount = &v
+	o.TotalCount = v
 }
 
 func (o StorageClasses) MarshalJSON() ([]byte, error) {
@@ -119,10 +110,46 @@ func (o StorageClasses) ToMap() (map[string]interface{}, error) {
 	if o.Data != nil {
 		toSerialize["data"] = o.Data
 	}
-	if !IsNil(o.TotalCount) {
-		toSerialize["totalCount"] = o.TotalCount
-	}
+	toSerialize["totalCount"] = o.TotalCount
 	return toSerialize, nil
+}
+
+func (o *StorageClasses) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"data",
+		"totalCount",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varStorageClasses := _StorageClasses{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varStorageClasses)
+
+	if err != nil {
+		return err
+	}
+
+	*o = StorageClasses(varStorageClasses)
+
+	return err
 }
 
 type NullableStorageClasses struct {
