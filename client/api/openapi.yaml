@@ -4610,8 +4610,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-12-17T13:38:54.5233945Z
-                  createdAt: 2024-12-17T13:38:54.5233945Z
+                  lastValidated: 2024-12-20T00:19:03.9391611Z
+                  createdAt: 2024-12-20T00:19:03.9391611Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -4716,14 +4716,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-12-17T13:38:54.5233945Z
+                    lastBackup: 2024-12-20T00:19:03.9391611Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-12-17T13:38:54.5233945Z
+                  createdAt: 2024-12-20T00:19:03.9391611Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-12-17T13:38:54.5233945Z
+                  lastBackup: 2024-12-20T00:19:03.9391611Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -4828,8 +4828,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-12-17T13:38:54.5233945Z
-                  expiration: 2024-12-17T13:38:54.5233945Z
+                  createdAt: 2024-12-20T00:19:03.9391611Z
+                  expiration: 2024-12-20T00:19:03.9391611Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -4933,7 +4933,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-12-17T13:38:54.5233945Z
+                  createdAt: 2024-12-20T00:19:03.9391611Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5043,9 +5043,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-12-17T13:38:54.5233945+00:00
-                  startTimeStamp: 2024-12-17T13:38:54.5233945+00:00
-                  createdAt: 2024-12-17T13:38:54.5233945Z
+                  completionDateTime: 2024-12-20T00:19:03.9391611+00:00
+                  startTimeStamp: 2024-12-20T00:19:03.9391611+00:00
+                  createdAt: 2024-12-20T00:19:03.9391611Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -12979,6 +12979,55 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: List of ingress classes
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/interactive-shell:
+    post:
+      operationId: kubernetes-interactive-shell
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InteractiveShellSendCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KubernetesInteractiveShellDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Produce interactive shell command
       tags:
       - Kubernetes
   /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace}:
@@ -43652,6 +43701,24 @@ components:
           nullable: true
           type: string
       type: object
+    InteractiveShellSendCommand:
+      additionalProperties: false
+      example:
+        instanceId: 6
+        projectId: 0
+        token: token
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        token:
+          nullable: true
+          type: string
+        instanceId:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
     KeycloakCheckerCommand:
       additionalProperties: false
       example:
@@ -44264,6 +44331,19 @@ components:
           type: string
       required:
       - config
+      type: object
+    KubernetesInteractiveShellDto:
+      additionalProperties: false
+      example:
+        kubeConfig: kubeConfig
+        podName: podName
+      properties:
+        kubeConfig:
+          nullable: true
+          type: string
+        podName:
+          nullable: true
+          type: string
       type: object
     KubernetesJobDto:
       additionalProperties: false

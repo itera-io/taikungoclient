@@ -437,6 +437,7 @@ docs/IngressSearchList.md
 docs/Ingresses.md
 docs/InstanceAppListDto.md
 docs/InteractiveShellDto.md
+docs/InteractiveShellSendCommand.md
 docs/KeycloakAPI.md
 docs/KeycloakCheckerCommand.md
 docs/KeycloakCreateCommand.md
@@ -456,6 +457,7 @@ docs/KubernetesCronJobDto.md
 docs/KubernetesCronJobsList.md
 docs/KubernetesCursorPodList.md
 docs/KubernetesDashboardDto.md
+docs/KubernetesInteractiveShellDto.md
 docs/KubernetesJobDto.md
 docs/KubernetesJobList.md
 docs/KubernetesNodeLabelsDto.md
@@ -1188,6 +1190,7 @@ model_ingress_search_list.go
 model_ingresses.go
 model_instance_app_list_dto.go
 model_interactive_shell_dto.go
+model_interactive_shell_send_command.go
 model_keycloak_checker_command.go
 model_keycloak_create_command.go
 model_keycloak_delete_command.go
@@ -1203,6 +1206,7 @@ model_kubernetes_cron_job_dto.go
 model_kubernetes_cron_jobs_list.go
 model_kubernetes_cursor_pod_list.go
 model_kubernetes_dashboard_dto.go
+model_kubernetes_interactive_shell_dto.go
 model_kubernetes_job_dto.go
 model_kubernetes_job_list.go
 model_kubernetes_node_labels_dto.go

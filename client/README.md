@@ -313,6 +313,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesHelmReleaseList**](docs/KubernetesAPI.md#kuberneteshelmreleaselist) | **Get** /api/v1/kubernetes/{projectId}/helmreleases | Retrieve a list of k8s helm releases for all namespaces
 *KubernetesAPI* | [**KubernetesIngressClasses**](docs/KubernetesAPI.md#kubernetesingressclasses) | **Post** /api/v1/kubernetes/ingress-classes | List of ingress classes
 *KubernetesAPI* | [**KubernetesIngressList**](docs/KubernetesAPI.md#kubernetesingresslist) | **Get** /api/v1/kubernetes/{projectId}/ingress | Retrieve a list of k8s ingress for all namespaces
+*KubernetesAPI* | [**KubernetesInteractiveShell**](docs/KubernetesAPI.md#kubernetesinteractiveshell) | **Post** /api/v1/kubernetes/interactive-shell | Produce interactive shell command
 *KubernetesAPI* | [**KubernetesJobsList**](docs/KubernetesAPI.md#kubernetesjobslist) | **Get** /api/v1/kubernetes/{projectId}/jobs | Retrieve a list of k8s jobs for all namespaces
 *KubernetesAPI* | [**KubernetesKillPod**](docs/KubernetesAPI.md#kuberneteskillpod) | **Post** /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace} | Kill the pod
 *KubernetesAPI* | [**KubernetesNetworkPolicyList**](docs/KubernetesAPI.md#kubernetesnetworkpolicylist) | **Get** /api/v1/kubernetes/{projectId}/network-policies | Retrieve a list of k8s network-policies for all namespaces
@@ -953,6 +954,7 @@ Class | Method | HTTP request | Description
  - [Ingresses](docs/Ingresses.md)
  - [InstanceAppListDto](docs/InstanceAppListDto.md)
  - [InteractiveShellDto](docs/InteractiveShellDto.md)
+ - [InteractiveShellSendCommand](docs/InteractiveShellSendCommand.md)
  - [KeycloakCheckerCommand](docs/KeycloakCheckerCommand.md)
  - [KeycloakCreateCommand](docs/KeycloakCreateCommand.md)
  - [KeycloakDeleteCommand](docs/KeycloakDeleteCommand.md)
@@ -968,6 +970,7 @@ Class | Method | HTTP request | Description
  - [KubernetesCronJobsList](docs/KubernetesCronJobsList.md)
  - [KubernetesCursorPodList](docs/KubernetesCursorPodList.md)
  - [KubernetesDashboardDto](docs/KubernetesDashboardDto.md)
+ - [KubernetesInteractiveShellDto](docs/KubernetesInteractiveShellDto.md)
  - [KubernetesJobDto](docs/KubernetesJobDto.md)
  - [KubernetesJobList](docs/KubernetesJobList.md)
  - [KubernetesNodeLabelsDto](docs/KubernetesNodeLabelsDto.md)
