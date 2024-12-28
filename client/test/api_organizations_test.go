@@ -26,9 +26,10 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.OrganizationsAPI.OrganizationsAcceptOffer(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsAcceptOffer(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -37,9 +38,10 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.OrganizationsAPI.OrganizationsAccessForPartner(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsAccessForPartner(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -50,9 +52,10 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 		var id int32
 
-		httpRes, err := apiClient.OrganizationsAPI.OrganizationsAddPrometheusrules(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsAddPrometheusrules(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -88,9 +91,10 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 		var id int32
 
-		httpRes, err := apiClient.OrganizationsAPI.OrganizationsDeletePrometheusrules(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsDeletePrometheusrules(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -159,9 +163,10 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.OrganizationsAPI.OrganizationsToggle(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsToggle(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -170,9 +175,10 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.OrganizationsAPI.OrganizationsUpdate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsUpdate(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -181,9 +187,10 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.OrganizationsAPI.OrganizationsUpdatePayment(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OrganizationsAPI.OrganizationsUpdatePayment(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

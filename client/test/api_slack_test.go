@@ -38,9 +38,10 @@ func Test_taikuncore_SlackAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.SlackAPI.SlackDeleteMultiple(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SlackAPI.SlackDeleteMultiple(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -75,9 +76,10 @@ func Test_taikuncore_SlackAPIService(t *testing.T) {
 
 		var id int32
 
-		httpRes, err := apiClient.SlackAPI.SlackUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.SlackAPI.SlackUpdate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -86,9 +88,10 @@ func Test_taikuncore_SlackAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.SlackAPI.SlackVerify(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SlackAPI.SlackVerify(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

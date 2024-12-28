@@ -26,9 +26,10 @@ func Test_taikuncore_NotificationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.NotificationsAPI.NotificationsCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NotificationsAPI.NotificationsCreate(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -61,9 +62,10 @@ func Test_taikuncore_NotificationsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.NotificationsAPI.NotificationsNotifyOwner(context.Background()).Execute()
+		resp, httpRes, err := apiClient.NotificationsAPI.NotificationsNotifyOwner(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

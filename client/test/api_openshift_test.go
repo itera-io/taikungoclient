@@ -26,9 +26,10 @@ func Test_taikuncore_OpenshiftAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.OpenshiftAPI.OpenshiftCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OpenshiftAPI.OpenshiftCreate(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -49,9 +50,10 @@ func Test_taikuncore_OpenshiftAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.OpenshiftAPI.OpenshiftPullSecret(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OpenshiftAPI.OpenshiftPullSecret(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -72,9 +74,10 @@ func Test_taikuncore_OpenshiftAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.OpenshiftAPI.OpenshiftValidate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OpenshiftAPI.OpenshiftValidate(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

@@ -42,9 +42,10 @@ func Test_taikuncore_TaikunLBAPIService(t *testing.T) {
 
 		var projectId int32
 
-		httpRes, err := apiClient.TaikunLBAPI.TaikunLbDeleteTaikunLb(context.Background(), projectId).Execute()
+		resp, httpRes, err := apiClient.TaikunLBAPI.TaikunLbDeleteTaikunLb(context.Background(), projectId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

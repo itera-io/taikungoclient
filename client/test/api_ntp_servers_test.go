@@ -53,9 +53,10 @@ func Test_taikuncore_NtpServersAPIService(t *testing.T) {
 
 		var id int32
 
-		httpRes, err := apiClient.NtpServersAPI.NtpserversEdit(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.NtpServersAPI.NtpserversEdit(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

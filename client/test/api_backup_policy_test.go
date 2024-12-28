@@ -41,9 +41,10 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BackupPolicyAPI.BackupCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BackupPolicyAPI.BackupCreate(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -52,9 +53,10 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BackupPolicyAPI.BackupDeleteBackup(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BackupPolicyAPI.BackupDeleteBackup(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -63,9 +65,10 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BackupPolicyAPI.BackupDeleteBackupLocation(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BackupPolicyAPI.BackupDeleteBackupLocation(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -74,9 +77,10 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BackupPolicyAPI.BackupDeleteRestore(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BackupPolicyAPI.BackupDeleteRestore(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -85,9 +89,10 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BackupPolicyAPI.BackupDeleteSchedule(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BackupPolicyAPI.BackupDeleteSchedule(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -141,9 +146,10 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BackupPolicyAPI.BackupImportBackupStorage(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BackupPolicyAPI.BackupImportBackupStorage(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -222,9 +228,10 @@ func Test_taikuncore_BackupPolicyAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.BackupPolicyAPI.BackupRestoreBackup(context.Background()).Execute()
+		resp, httpRes, err := apiClient.BackupPolicyAPI.BackupRestoreBackup(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

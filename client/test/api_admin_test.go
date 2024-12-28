@@ -26,9 +26,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminAddBalance(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminAddBalance(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -37,9 +38,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminBillingOperations(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminBillingOperations(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -48,9 +50,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminCreateUser(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminCreateUser(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -59,9 +62,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminDeleteOrg(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminDeleteOrg(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -70,9 +74,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminExtendTrialPeriod(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminExtendTrialPeriod(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -93,9 +98,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminMakeCsm(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminMakeCsm(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -104,9 +110,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminMakeOwner(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminMakeOwner(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -139,9 +146,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminRemoveOwner(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminRemoveOwner(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -150,9 +158,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminUpdateProject(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminUpdateProject(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -161,9 +170,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminUpdateProjectKube(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminUpdateProjectKube(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -172,9 +182,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminUpdateUser(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminUpdateUser(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -183,9 +194,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminUpdateUserKube(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminUpdateUserKube(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -194,9 +206,10 @@ func Test_taikuncore_AdminAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AdminAPI.AdminUpdateUsers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.AdminUpdateUsers(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

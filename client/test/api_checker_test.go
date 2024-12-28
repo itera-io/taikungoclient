@@ -26,9 +26,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerArtifact(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerArtifact(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -37,9 +38,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerAws(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerAws(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -48,9 +50,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerAzure(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerAzure(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -59,9 +62,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerAzureQuota(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerAzureQuota(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -70,9 +74,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerCidr(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerCidr(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -81,9 +86,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerCron(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerCron(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -92,9 +98,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerDns(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerDns(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -127,9 +134,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerHelm(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerHelm(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -138,9 +146,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerImportClusterKubeConfig(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerImportClusterKubeConfig(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -149,9 +158,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerKeycloak(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerKeycloak(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -172,9 +182,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerNode(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerNode(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -183,9 +194,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerNtp(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerNtp(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -194,9 +206,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerOpenAi(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerOpenAi(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -205,9 +218,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerOpenstack(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerOpenstack(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -218,9 +232,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		var id int32
 
-		httpRes, err := apiClient.CheckerAPI.CheckerOpenstackTaikunImage(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerOpenstackTaikunImage(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -231,9 +246,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		var id int32
 
-		httpRes, err := apiClient.CheckerAPI.CheckerOpenstackTaikunLbImage(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerOpenstackTaikunLbImage(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -242,9 +258,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerOrganization(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerOrganization(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -253,9 +270,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerPrometheus(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerPrometheus(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -264,9 +282,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerProxmox(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerProxmox(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -275,9 +294,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerS3(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerS3(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -286,9 +306,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerSsh(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerSsh(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -297,9 +318,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerTanzu(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerTanzu(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -308,9 +330,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerUser(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerUser(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -319,9 +342,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerYaml(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerYaml(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -330,9 +354,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerZadara(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerZadara(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -341,9 +366,10 @@ func Test_taikuncore_CheckerAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.CheckerAPI.CheckerZededa(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CheckerAPI.CheckerZededa(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

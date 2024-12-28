@@ -33,6 +33,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateAccessProfileDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -147,6 +153,12 @@ paths:
             schema:
               $ref: '#/components/schemas/AccessProfilesLockManagementCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -414,6 +426,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -457,6 +473,12 @@ paths:
               $ref: '#/components/schemas/AdminAddBalanceCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -500,6 +522,12 @@ paths:
               $ref: '#/components/schemas/AdminBillingOperationCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -542,6 +570,12 @@ paths:
             schema:
               $ref: '#/components/schemas/AdminUserCreateCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -585,6 +619,12 @@ paths:
               $ref: '#/components/schemas/AdminOrganizationsDeleteCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -628,6 +668,12 @@ paths:
               $ref: '#/components/schemas/ExtendTrialPeriodCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -671,6 +717,12 @@ paths:
               $ref: '#/components/schemas/MakeCsmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -714,6 +766,12 @@ paths:
               $ref: '#/components/schemas/MakeOwnerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -757,6 +815,12 @@ paths:
               $ref: '#/components/schemas/RemoveOwnerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -800,6 +864,12 @@ paths:
               $ref: '#/components/schemas/AdminUpdateProjectKubeConfigCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -843,6 +913,12 @@ paths:
               $ref: '#/components/schemas/AdminProjectUpdateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -886,6 +962,12 @@ paths:
               $ref: '#/components/schemas/AdminUsersUpdateEmailCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -929,6 +1011,12 @@ paths:
               $ref: '#/components/schemas/AdminUpdateUserKubeConfigCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -971,6 +1059,12 @@ paths:
             schema:
               $ref: '#/components/schemas/AdminUsersUpdatePasswordCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -1544,6 +1638,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -1680,6 +1778,12 @@ paths:
             schema:
               $ref: '#/components/schemas/EditAlertingIntegrationCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -1846,6 +1950,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -1901,6 +2009,12 @@ paths:
                 $ref: '#/components/schemas/AlertingEmailDto'
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -1961,6 +2075,12 @@ paths:
                 $ref: '#/components/schemas/AlertingWebhookDto'
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -2004,6 +2124,12 @@ paths:
               $ref: '#/components/schemas/AttachDetachAlertingProfileCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -2113,6 +2239,12 @@ paths:
               $ref: '#/components/schemas/AttachDetachAlertingProfileCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -2212,6 +2344,12 @@ paths:
             schema:
               $ref: '#/components/schemas/AlertingProfilesLockManagerCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -2256,6 +2394,12 @@ paths:
             schema:
               $ref: '#/components/schemas/VerifyWebhookCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -2495,6 +2639,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -2550,6 +2698,12 @@ paths:
             schema:
               $ref: '#/components/schemas/EditAllowedHostDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -2747,6 +2901,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -2789,6 +2947,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BindAppRepositoryCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -2832,6 +2996,12 @@ paths:
               $ref: '#/components/schemas/DeleteRepositoryCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -2874,6 +3044,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ImportRepoCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -2917,6 +3093,12 @@ paths:
               $ref: '#/components/schemas/UnbindAppRepositoryCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -3179,6 +3361,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ForgotPasswordCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -3216,6 +3404,12 @@ paths:
     get:
       operationId: auth-google
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -3368,6 +3562,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ResetPasswordCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -3415,6 +3615,10 @@ paths:
               $ref: '#/components/schemas/TryForFreeCommand'
       responses:
         "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
           description: OK
       summary: Try free
       tags:
@@ -3481,6 +3685,12 @@ paths:
             schema:
               $ref: '#/components/schemas/DisableAutoscalingCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -3527,6 +3737,12 @@ paths:
             schema:
               $ref: '#/components/schemas/EditAutoscalingCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -3577,6 +3793,12 @@ paths:
             schema:
               $ref: '#/components/schemas/EnableAutoscalingCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -3622,6 +3844,10 @@ paths:
               $ref: '#/components/schemas/AutoscalingSyncCommand'
       responses:
         "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
           description: OK
       summary: Sync autoscaling
       tags:
@@ -3639,6 +3865,12 @@ paths:
             schema:
               $ref: '#/components/schemas/AwsValidateOwnerCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -3854,6 +4086,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateAwsCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -4462,6 +4700,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateAzureCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -5009,6 +5253,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateBackupPolicyCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -5052,6 +5302,12 @@ paths:
               $ref: '#/components/schemas/DeleteBackupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -5097,6 +5353,12 @@ paths:
             schema:
               $ref: '#/components/schemas/DeleteBackupStorageLocationCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -5142,6 +5404,12 @@ paths:
             schema:
               $ref: '#/components/schemas/DeleteRestoreCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -5187,6 +5455,12 @@ paths:
             schema:
               $ref: '#/components/schemas/DeleteScheduleCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -5230,6 +5504,12 @@ paths:
               $ref: '#/components/schemas/ImportBackupStorageLocationCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -5280,6 +5560,12 @@ paths:
             schema:
               $ref: '#/components/schemas/RestoreBackupCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -5618,8 +5904,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-12-27T00:03:23.7232013Z
-                  createdAt: 2024-12-27T00:03:23.7232013Z
+                  lastValidated: 2024-12-27T14:44:52.6222922Z
+                  createdAt: 2024-12-27T14:44:52.6222922Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5724,14 +6010,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-12-27T00:03:23.7232013Z
+                    lastBackup: 2024-12-27T14:44:52.6222922Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-12-27T00:03:23.7232013Z
+                  createdAt: 2024-12-27T14:44:52.6222922Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-12-27T00:03:23.7232013Z
+                  lastBackup: 2024-12-27T14:44:52.6222922Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5836,8 +6122,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-12-27T00:03:23.7232013Z
-                  expiration: 2024-12-27T00:03:23.7232013Z
+                  createdAt: 2024-12-27T14:44:52.6222922Z
+                  expiration: 2024-12-27T14:44:52.6222922Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5941,7 +6227,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-12-27T00:03:23.7232013Z
+                  createdAt: 2024-12-27T14:44:52.6222922Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6051,9 +6337,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-12-27T00:03:23.7232013+00:00
-                  startTimeStamp: 2024-12-27T00:03:23.7232013+00:00
-                  createdAt: 2024-12-27T00:03:23.7232013Z
+                  completionDateTime: 2024-12-27T14:44:52.6222922+00:00
+                  startTimeStamp: 2024-12-27T14:44:52.6222922+00:00
+                  createdAt: 2024-12-27T14:44:52.6222922Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -6102,6 +6388,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateBillingSummaryCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -6402,6 +6694,12 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -6455,6 +6753,12 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -6498,6 +6802,12 @@ paths:
               $ref: '#/components/schemas/EditCatalogCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -6541,6 +6851,12 @@ paths:
               $ref: '#/components/schemas/CreateCatalogCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -6584,6 +6900,12 @@ paths:
               $ref: '#/components/schemas/CatalogLockManagementCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -6627,6 +6949,12 @@ paths:
               $ref: '#/components/schemas/CatalogMakeDefaultCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -6883,6 +7211,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -6925,6 +7257,12 @@ paths:
             schema:
               $ref: '#/components/schemas/EditCatalogAppParamCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -6968,6 +7306,12 @@ paths:
               $ref: '#/components/schemas/EditCatalogAppVersionCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7059,6 +7403,12 @@ paths:
               $ref: '#/components/schemas/CatalogAppLockManagement'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7310,6 +7660,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -7353,6 +7707,12 @@ paths:
               $ref: '#/components/schemas/OpenAiCheckerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7395,6 +7755,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ArtifactUrlCheckerCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7438,6 +7804,12 @@ paths:
               $ref: '#/components/schemas/CidrCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7481,6 +7853,12 @@ paths:
               $ref: '#/components/schemas/CronJobCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7524,6 +7902,12 @@ paths:
               $ref: '#/components/schemas/DnsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7566,6 +7950,12 @@ paths:
             schema:
               $ref: '#/components/schemas/HelmCredentialCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7608,6 +7998,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ImportClusterValidateKubeConfigCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7651,6 +8047,12 @@ paths:
               $ref: '#/components/schemas/KeycloakCheckerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7742,6 +8144,12 @@ paths:
               $ref: '#/components/schemas/NtpCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7785,6 +8193,12 @@ paths:
               $ref: '#/components/schemas/CheckPrometheusCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7828,6 +8242,12 @@ paths:
               $ref: '#/components/schemas/CheckS3Command'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7871,6 +8291,12 @@ paths:
               $ref: '#/components/schemas/SshKeyCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7914,6 +8340,12 @@ paths:
               $ref: '#/components/schemas/YamlValidatorCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8006,6 +8438,12 @@ paths:
               $ref: '#/components/schemas/NodeCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8049,6 +8487,12 @@ paths:
               $ref: '#/components/schemas/OrganizationNameCheckerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8091,6 +8535,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UserExistCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8134,6 +8584,12 @@ paths:
               $ref: '#/components/schemas/CheckAwsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8177,6 +8633,12 @@ paths:
               $ref: '#/components/schemas/CheckAzureCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8220,6 +8682,12 @@ paths:
               $ref: '#/components/schemas/CheckAzureCpuQuotaCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8310,6 +8778,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CheckOpenstackCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8356,6 +8830,12 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8402,6 +8882,12 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8445,6 +8931,12 @@ paths:
               $ref: '#/components/schemas/ProxmoxCheckerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8488,6 +8980,12 @@ paths:
               $ref: '#/components/schemas/CheckTanzuCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8531,6 +9029,12 @@ paths:
               $ref: '#/components/schemas/CheckZadaraCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8574,6 +9078,12 @@ paths:
               $ref: '#/components/schemas/ZededaCheckerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8617,6 +9127,12 @@ paths:
               $ref: '#/components/schemas/CloudLockManagerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8660,6 +9176,12 @@ paths:
               $ref: '#/components/schemas/CredentialMakeDefaultCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8703,6 +9225,12 @@ paths:
               $ref: '#/components/schemas/UpdateUsedIpAddressesCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9005,6 +9533,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -9208,6 +9740,12 @@ paths:
               $ref: '#/components/schemas/RemindUsersByAlertingProfileCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9251,6 +9789,12 @@ paths:
               $ref: '#/components/schemas/AutoUpgradeProjectsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9294,6 +9838,12 @@ paths:
               $ref: '#/components/schemas/CreateKeyPoolCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9337,6 +9887,12 @@ paths:
               $ref: '#/components/schemas/DeleteRemovedUsersKubeConfigCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9380,6 +9936,12 @@ paths:
               $ref: '#/components/schemas/DeleteRemovedSpotInstancesCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9423,6 +9985,12 @@ paths:
               $ref: '#/components/schemas/PurgeExpiredProjectsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9466,6 +10034,12 @@ paths:
               $ref: '#/components/schemas/SendEmailAboutProjectExpirationCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9509,6 +10083,12 @@ paths:
               $ref: '#/components/schemas/SyncBackupCredentialsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9552,6 +10132,12 @@ paths:
               $ref: '#/components/schemas/SyncOpaProfilesCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9595,6 +10181,12 @@ paths:
               $ref: '#/components/schemas/SyncProjectsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9637,6 +10229,12 @@ paths:
             schema:
               $ref: '#/components/schemas/TektonPipelinesCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9680,6 +10278,12 @@ paths:
               $ref: '#/components/schemas/UpdateProjectQuotaMessageCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9723,6 +10327,12 @@ paths:
               $ref: '#/components/schemas/BlockOrganizationCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9766,6 +10376,12 @@ paths:
               $ref: '#/components/schemas/FetchOrganizationDetailsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9809,6 +10425,12 @@ paths:
               $ref: '#/components/schemas/SyncOrganizationsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9852,6 +10474,12 @@ paths:
               $ref: '#/components/schemas/FetchKubernetesAlertDataCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9895,6 +10523,12 @@ paths:
               $ref: '#/components/schemas/FetchKubernetesOverviewDataCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9938,6 +10572,12 @@ paths:
               $ref: '#/components/schemas/CancelExpiredSubscriptionsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9981,6 +10621,12 @@ paths:
               $ref: '#/components/schemas/DeleteExpiredAlertsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10024,6 +10670,12 @@ paths:
               $ref: '#/components/schemas/DeleteExpiredHistoryLogsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10067,6 +10719,12 @@ paths:
               $ref: '#/components/schemas/DeleteExpiredRefreshTokensCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10110,6 +10768,12 @@ paths:
               $ref: '#/components/schemas/DeleteExpiredServersCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10153,6 +10817,12 @@ paths:
               $ref: '#/components/schemas/DeleteRedundantProjectActionsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10196,6 +10866,12 @@ paths:
               $ref: '#/components/schemas/DeleteRegisterExpiredOrganizationCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10239,6 +10915,12 @@ paths:
               $ref: '#/components/schemas/DeleteImportedBackupLocationsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10282,6 +10964,12 @@ paths:
               $ref: '#/components/schemas/FetchAzureFlavorPricesCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10324,6 +11012,12 @@ paths:
             schema:
               $ref: '#/components/schemas/FillArtifacthubOrganizationCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10367,6 +11061,12 @@ paths:
               $ref: '#/components/schemas/SyncProjectAppsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10410,6 +11110,12 @@ paths:
               $ref: '#/components/schemas/UpdateProjectAppStatusCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10463,6 +11169,12 @@ paths:
             schema:
               $ref: '#/components/schemas/DnsNtpAddressEditDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10625,6 +11337,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -10667,6 +11383,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateExecutorCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10710,6 +11432,12 @@ paths:
               $ref: '#/components/schemas/DeleteExecutorCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10752,6 +11480,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ToggleExecutorCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10794,6 +11528,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BindFlavorToProjectCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10837,6 +11577,12 @@ paths:
               $ref: '#/components/schemas/UnbindFlavorFromProjectCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -12362,6 +13108,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateGenericKubernetesCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -12914,6 +13666,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BindImageToProjectCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -13006,6 +13764,12 @@ paths:
               $ref: '#/components/schemas/DeleteImageFromProjectCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -14391,6 +15155,12 @@ paths:
               $ref: '#/components/schemas/DeleteImportedProjectCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -14434,6 +15204,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterDisableAiCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -14477,6 +15253,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterDisableBackupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -14520,6 +15302,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterDisableMonitoringCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -14563,6 +15351,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterDisableOpaCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -14606,6 +15400,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterEnableAiCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -14649,6 +15449,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterEnableBackupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -14692,6 +15498,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterEnableMonitoringCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -14735,6 +15547,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterEnableOpaCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -14940,6 +15758,12 @@ paths:
               $ref: '#/components/schemas/CreateInfraProductCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -15034,6 +15858,12 @@ paths:
             schema:
               $ref: '#/components/schemas/InfraBillingSummariesCreateCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -15136,6 +15966,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateInvoiceDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -15397,6 +16233,12 @@ paths:
               $ref: '#/components/schemas/KeycloakEditCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -15440,6 +16282,12 @@ paths:
               $ref: '#/components/schemas/KeycloakCreateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -15483,6 +16331,12 @@ paths:
               $ref: '#/components/schemas/KeycloakDeleteCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -15721,6 +16575,12 @@ paths:
               $ref: '#/components/schemas/DeleteKubeConfigCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -15764,6 +16624,12 @@ paths:
               $ref: '#/components/schemas/DeleteKubeConfigByProjectIdCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -16013,6 +16879,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateKubernetesAlertDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -16064,6 +16936,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateAlertDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -16115,6 +16993,12 @@ paths:
             schema:
               $ref: '#/components/schemas/KubernetesEventCreateDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -16157,6 +17041,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateKubernetesResourceCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -16200,6 +17090,12 @@ paths:
               $ref: '#/components/schemas/DeleteAlertCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -16505,6 +17401,8 @@ paths:
           type: string
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -16547,6 +17445,12 @@ paths:
             schema:
               $ref: '#/components/schemas/PatchKubernetesResourceCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -16590,6 +17494,12 @@ paths:
               $ref: '#/components/schemas/RestartDaemonSetCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -16633,6 +17543,12 @@ paths:
               $ref: '#/components/schemas/RestartDeploymentCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -16676,6 +17592,12 @@ paths:
               $ref: '#/components/schemas/RestartStsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -16719,6 +17641,12 @@ paths:
               $ref: '#/components/schemas/SilenceOperationsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20061,6 +20989,12 @@ paths:
               $ref: '#/components/schemas/KubernetesProfilesLockManagerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20211,6 +21145,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -20349,6 +21287,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -20391,6 +21333,12 @@ paths:
             schema:
               $ref: '#/components/schemas/NotificationSendCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20483,6 +21431,12 @@ paths:
               $ref: '#/components/schemas/NotifyOwnersCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20788,6 +21742,12 @@ paths:
             schema:
               $ref: '#/components/schemas/DnsNtpAddressEditDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20950,6 +21910,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -21095,6 +22059,12 @@ paths:
             schema:
               $ref: '#/components/schemas/OpaProfileUpdateCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -21187,6 +22157,12 @@ paths:
               $ref: '#/components/schemas/OpaProfileLockManagerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -21230,6 +22206,12 @@ paths:
               $ref: '#/components/schemas/OpaMakeDefaultCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -21273,6 +22255,12 @@ paths:
               $ref: '#/components/schemas/OpaProfileSyncCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -21380,6 +22368,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -21422,6 +22414,12 @@ paths:
             schema:
               $ref: '#/components/schemas/OpenshiftCreateCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -21464,6 +22462,12 @@ paths:
             schema:
               $ref: '#/components/schemas/OpenshiftPullSecretCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -21556,6 +22560,12 @@ paths:
             schema:
               $ref: '#/components/schemas/OpenshiftValidateCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22011,6 +23021,12 @@ paths:
               $ref: '#/components/schemas/UpdateOpenStackCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22376,6 +23392,12 @@ paths:
               $ref: '#/components/schemas/OperationCredentialLockManagerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22419,6 +23441,12 @@ paths:
               $ref: '#/components/schemas/OperationCredentialsMakeDefaultCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22623,6 +23651,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -22770,6 +23802,12 @@ paths:
                 $ref: '#/components/schemas/AddPrometheusRulesToOrganizationDto'
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22823,6 +23861,12 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22866,6 +23910,12 @@ paths:
               $ref: '#/components/schemas/AcceptOfferCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23052,6 +24102,12 @@ paths:
               $ref: '#/components/schemas/GiveAccessToPartnerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23144,6 +24200,12 @@ paths:
               $ref: '#/components/schemas/ToggleKeycloakCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23186,6 +24248,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateOrganizationCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23229,6 +24297,12 @@ paths:
               $ref: '#/components/schemas/UpdatePaymentIdCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23446,6 +24520,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -23835,6 +24913,12 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23888,6 +24972,12 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23930,6 +25020,12 @@ paths:
             schema:
               $ref: '#/components/schemas/WhiteListDomainCreateCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23972,6 +25068,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BecomePartnerCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -24014,6 +25116,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ContactUsCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -24056,6 +25164,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreatePartnerCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -24098,6 +25212,12 @@ paths:
             schema:
               $ref: '#/components/schemas/WhiteListDomainDeleteCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -24140,6 +25260,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdatePartnerCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -24426,6 +25552,12 @@ paths:
               $ref: '#/components/schemas/ClearCanceledPaymentMethodCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -24468,6 +25600,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateStripeCustomerCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -24560,6 +25698,10 @@ paths:
               $ref: '#/components/schemas/PayInvoiceCommand'
         required: true
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -24590,12 +25732,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/IResult'
-          description: OK
       summary: Pay invoice
       tags:
       - Payments
@@ -24609,6 +25745,12 @@ paths:
               $ref: '#/components/schemas/ChangeCardCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -24652,6 +25794,12 @@ paths:
               $ref: '#/components/schemas/PaymentWebhookCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -24841,6 +25989,12 @@ paths:
               $ref: '#/components/schemas/PrometheusDashboardCreateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -24884,6 +26038,12 @@ paths:
               $ref: '#/components/schemas/PrometheusDashboardUpdateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25038,6 +26198,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -25091,6 +26255,12 @@ paths:
                 $ref: '#/components/schemas/EditProjectAppParamsDto'
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25134,6 +26304,12 @@ paths:
               $ref: '#/components/schemas/AutoSyncManagementCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25225,6 +26401,12 @@ paths:
               $ref: '#/components/schemas/LockProjectAppCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25268,6 +26450,12 @@ paths:
               $ref: '#/components/schemas/SyncProjectAppCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25311,6 +26499,12 @@ paths:
               $ref: '#/components/schemas/UpdateProjectAppCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25354,6 +26548,12 @@ paths:
               $ref: '#/components/schemas/EditProjectAppExtraValuesCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25557,6 +26757,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -25599,6 +26803,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ProjectDeploymentCommitCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25642,6 +26852,12 @@ paths:
               $ref: '#/components/schemas/DeploymentCommitVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25684,6 +26900,12 @@ paths:
             schema:
               $ref: '#/components/schemas/DeploymentCompletedCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25727,6 +26949,12 @@ paths:
               $ref: '#/components/schemas/ProjectDeploymentDeleteServersCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25770,6 +26998,12 @@ paths:
               $ref: '#/components/schemas/ProjectDeploymentDeleteVmsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25812,6 +27046,12 @@ paths:
             schema:
               $ref: '#/components/schemas/DeleteVmDiskCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25855,6 +27095,12 @@ paths:
               $ref: '#/components/schemas/DeploymentDisableAiCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25898,6 +27144,12 @@ paths:
               $ref: '#/components/schemas/DeploymentDisableBackupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25941,6 +27193,12 @@ paths:
               $ref: '#/components/schemas/DeploymentDisableMonitoringCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25984,6 +27242,12 @@ paths:
               $ref: '#/components/schemas/DeploymentDisableOpaCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26027,6 +27291,12 @@ paths:
               $ref: '#/components/schemas/DeploymentEnableAiCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26070,6 +27340,12 @@ paths:
               $ref: '#/components/schemas/DeploymentEnableBackupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26113,6 +27389,12 @@ paths:
               $ref: '#/components/schemas/DeploymentEnableMonitoringCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26156,6 +27438,12 @@ paths:
               $ref: '#/components/schemas/DeploymentOpaEnableCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26198,6 +27486,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ImportClusterCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26241,6 +27535,12 @@ paths:
               $ref: '#/components/schemas/ProjectDeploymentRepairCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26284,6 +27584,12 @@ paths:
               $ref: '#/components/schemas/ProjectDeploymentRepairVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26327,6 +27633,12 @@ paths:
               $ref: '#/components/schemas/TofuMigrateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26369,6 +27681,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateStageCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26415,6 +27733,12 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26459,6 +27783,12 @@ paths:
               $ref: '#/components/schemas/BindProjectsToProjectGroupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26501,6 +27831,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BindUserGroupsToProjectGroupCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26591,6 +27927,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UnbindProjectFromProjectGroupCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26634,6 +27976,12 @@ paths:
               $ref: '#/components/schemas/UnbindUserGroupFromProjectGroupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26897,6 +28245,10 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -26991,6 +28343,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateQuotaCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27179,6 +28537,12 @@ paths:
               $ref: '#/components/schemas/CreateProjectFromTemplateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27383,6 +28747,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -27436,6 +28804,12 @@ paths:
                 type: string
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27488,6 +28862,12 @@ paths:
                 type: string
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27530,6 +28910,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateHealthStatusCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27573,6 +28959,12 @@ paths:
               $ref: '#/components/schemas/ResetProjectStatusCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27617,6 +29009,11 @@ paths:
               $ref: '#/components/schemas/ChatCompletionsCommand'
         required: true
       responses:
+        "200":
+          content:
+            application/json:
+              schema: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -27647,11 +29044,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-        "200":
-          content:
-            application/json:
-              schema: {}
-          description: OK
       summary: AI Chat completions
       tags:
       - Projects
@@ -27839,6 +29231,10 @@ paths:
               $ref: '#/components/schemas/DeleteProjectCommand'
         required: true
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -27883,6 +29279,12 @@ paths:
               $ref: '#/components/schemas/ProjectExtendLifeTimeCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27926,6 +29328,12 @@ paths:
               $ref: '#/components/schemas/FullSpotOperationCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27969,6 +29377,12 @@ paths:
               $ref: '#/components/schemas/ProjectLockManagerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28011,6 +29425,10 @@ paths:
             schema:
               $ref: '#/components/schemas/LokiResponseDto'
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -28054,6 +29472,12 @@ paths:
               $ref: '#/components/schemas/ProjectMaintenanceModeCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28244,6 +29668,12 @@ paths:
               $ref: '#/components/schemas/SpotVmOperationCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28287,6 +29717,12 @@ paths:
               $ref: '#/components/schemas/SpotWorkerOperationCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28963,6 +30399,12 @@ paths:
               $ref: '#/components/schemas/PrometheusBillingCreateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -29139,6 +30581,12 @@ paths:
                 $ref: '#/components/schemas/AddOrganizationsToRuleDto'
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -29192,6 +30640,12 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -29243,6 +30697,12 @@ paths:
             schema:
               $ref: '#/components/schemas/RuleForUpdateDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -29494,6 +30954,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -29737,6 +31201,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateProxmoxCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -29779,6 +31249,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateHypervisorsCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -29822,6 +31298,12 @@ paths:
               $ref: '#/components/schemas/UpdateUsedIpAddressesCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -30150,6 +31632,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BackupCredentialsUpdateCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -30195,6 +31683,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BackupLockManagerCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -30239,6 +31733,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BackupMakeDefaultCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -30415,6 +31915,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -31534,6 +33038,12 @@ paths:
             schema:
               $ref: '#/components/schemas/EditSecurityGroupCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -31682,6 +33192,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -31735,6 +33249,12 @@ paths:
                 $ref: '#/components/schemas/UpdateServerHealthDto'
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -31875,6 +33395,12 @@ paths:
               $ref: '#/components/schemas/RebootServerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -31917,6 +33443,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ResetServerStatusCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -32260,6 +33792,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateSlackConfigurationDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -32352,6 +33890,12 @@ paths:
               $ref: '#/components/schemas/DeleteSlackConfigCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -32395,6 +33939,12 @@ paths:
               $ref: '#/components/schemas/VerifySlackCredentialsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -32657,6 +34207,12 @@ paths:
               $ref: '#/components/schemas/DeleteSshUserCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -32710,6 +34266,12 @@ paths:
             schema:
               $ref: '#/components/schemas/EditSshUserCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -32872,6 +34434,12 @@ paths:
             schema:
               $ref: '#/components/schemas/StandAloneVmIpManagementCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -32914,6 +34482,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ResetStandAloneVmStatusCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -32956,6 +34530,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateStandAloneVmFlavorCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -33337,6 +34917,12 @@ paths:
               $ref: '#/components/schemas/RebootStandAloneVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -33380,6 +34966,12 @@ paths:
               $ref: '#/components/schemas/ShelveStandAloneVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -33423,6 +35015,12 @@ paths:
               $ref: '#/components/schemas/StartStandaloneVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -33466,6 +35064,12 @@ paths:
               $ref: '#/components/schemas/StopStandaloneVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -33509,6 +35113,12 @@ paths:
               $ref: '#/components/schemas/UnshelveStandaloneVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -33704,6 +35314,12 @@ paths:
               $ref: '#/components/schemas/DeleteStandAloneProfileCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -33746,6 +35362,12 @@ paths:
             schema:
               $ref: '#/components/schemas/StandAloneProfileUpdateCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -33789,6 +35411,12 @@ paths:
               $ref: '#/components/schemas/StandAloneProfileLockManagementCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -34047,6 +35675,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateStandaloneVmDiskSizeCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -34191,6 +35825,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateSubscriptionCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -34234,6 +35874,10 @@ paths:
               $ref: '#/components/schemas/DeleteSubscriptionCommand'
         required: true
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -34276,6 +35920,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateSubscriptionCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -34563,6 +36213,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateGenericTaikunLbDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -34773,6 +36429,12 @@ paths:
               $ref: '#/components/schemas/UpdateTanzuCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -34974,6 +36636,12 @@ paths:
               $ref: '#/components/schemas/ArchiveTicketCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35017,6 +36685,12 @@ paths:
               $ref: '#/components/schemas/CloseTicketCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35060,6 +36734,12 @@ paths:
               $ref: '#/components/schemas/CreateTicketCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35103,6 +36783,12 @@ paths:
               $ref: '#/components/schemas/EditTicketCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35146,6 +36832,12 @@ paths:
               $ref: '#/components/schemas/OpenTicketCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35189,6 +36881,12 @@ paths:
               $ref: '#/components/schemas/ReplyTicketCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35232,6 +36930,12 @@ paths:
               $ref: '#/components/schemas/SetTicketPriorityCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35275,6 +36979,12 @@ paths:
               $ref: '#/components/schemas/TransferTicketCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35318,6 +37028,12 @@ paths:
               $ref: '#/components/schemas/EditArticleCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35678,6 +37394,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateUserGroupDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35720,6 +37442,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BindProjectGroupsToUserGroupCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35763,6 +37491,12 @@ paths:
               $ref: '#/components/schemas/BindUsersToUserGroupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35854,6 +37588,12 @@ paths:
               $ref: '#/components/schemas/UnbindProjectGroupFromUserGroupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -35896,6 +37636,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UnbindUserFromUserGroupCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -36157,6 +37903,10 @@ paths:
               $ref: '#/components/schemas/DeleteUserGroupCommand'
         required: true
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -36304,6 +38054,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BindUnbindEndpointToTokenCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -36598,6 +38354,8 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -36650,6 +38408,8 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -36692,6 +38452,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ChangePasswordCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -36734,6 +38500,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ConfirmEmailCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -36825,6 +38597,12 @@ paths:
               $ref: '#/components/schemas/DeleteMyAccountCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -36868,6 +38646,12 @@ paths:
               $ref: '#/components/schemas/DisableUserCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -36911,6 +38695,12 @@ paths:
               $ref: '#/components/schemas/ForceToResetPasswordCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -36954,6 +38744,12 @@ paths:
               $ref: '#/components/schemas/ToggleMaintenanceModeCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -36997,6 +38793,12 @@ paths:
               $ref: '#/components/schemas/ToggleNotificationModeCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -37040,6 +38842,12 @@ paths:
               $ref: '#/components/schemas/ToggleTwoFactorAuthenticationCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -37082,6 +38890,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateUserCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -37125,6 +38939,12 @@ paths:
               $ref: '#/components/schemas/VerifyEmailCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -37477,6 +39297,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateVirtualClusterCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -37520,6 +39346,12 @@ paths:
               $ref: '#/components/schemas/DeleteVirtualClusterCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -38073,6 +39905,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateVsphereCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -38116,6 +39954,12 @@ paths:
               $ref: '#/components/schemas/UpdateVsphereHypervisorsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -38159,6 +40003,12 @@ paths:
               $ref: '#/components/schemas/ValidateVsphereCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -38476,6 +40326,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateZadaraCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -38957,6 +40813,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateEdgeNodesCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -51897,9 +53759,6 @@ components:
           format: int32
           nullable: true
           type: integer
-      type: object
-    IResult:
-      additionalProperties: false
       type: object
     ImageByIdCommand:
       additionalProperties: false
@@ -69166,6 +71025,9 @@ components:
         tokenSecret:
           nullable: true
           type: string
+      type: object
+    Void:
+      additionalProperties: false
       type: object
     VsphereFlavorData:
       additionalProperties: false

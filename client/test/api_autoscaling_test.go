@@ -26,9 +26,10 @@ func Test_taikuncore_AutoscalingAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AutoscalingAPI.AutoscalingDisable(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AutoscalingAPI.AutoscalingDisable(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -37,9 +38,10 @@ func Test_taikuncore_AutoscalingAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AutoscalingAPI.AutoscalingEdit(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AutoscalingAPI.AutoscalingEdit(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -48,9 +50,10 @@ func Test_taikuncore_AutoscalingAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AutoscalingAPI.AutoscalingEnable(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AutoscalingAPI.AutoscalingEnable(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -59,9 +62,10 @@ func Test_taikuncore_AutoscalingAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.AutoscalingAPI.AutoscalingSync(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AutoscalingAPI.AutoscalingSync(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

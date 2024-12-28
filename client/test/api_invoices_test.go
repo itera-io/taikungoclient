@@ -64,9 +64,10 @@ func Test_taikuncore_InvoicesAPIService(t *testing.T) {
 
 		var invoiceId int32
 
-		httpRes, err := apiClient.InvoicesAPI.InvoicesUpdate(context.Background(), invoiceId).Execute()
+		resp, httpRes, err := apiClient.InvoicesAPI.InvoicesUpdate(context.Background(), invoiceId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
