@@ -5904,8 +5904,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2024-12-27T14:44:52.6222922Z
-                  createdAt: 2024-12-27T14:44:52.6222922Z
+                  lastValidated: 2024-12-31T00:03:17.9626323Z
+                  createdAt: 2024-12-31T00:03:17.9626323Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6010,14 +6010,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2024-12-27T14:44:52.6222922Z
+                    lastBackup: 2024-12-31T00:03:17.9626323Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2024-12-27T14:44:52.6222922Z
+                  createdAt: 2024-12-31T00:03:17.9626323Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2024-12-27T14:44:52.6222922Z
+                  lastBackup: 2024-12-31T00:03:17.9626323Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6122,8 +6122,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-12-27T14:44:52.6222922Z
-                  expiration: 2024-12-27T14:44:52.6222922Z
+                  createdAt: 2024-12-31T00:03:17.9626323Z
+                  expiration: 2024-12-31T00:03:17.9626323Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6227,7 +6227,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2024-12-27T14:44:52.6222922Z
+                  createdAt: 2024-12-31T00:03:17.9626323Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6337,9 +6337,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2024-12-27T14:44:52.6222922+00:00
-                  startTimeStamp: 2024-12-27T14:44:52.6222922+00:00
-                  createdAt: 2024-12-27T14:44:52.6222922Z
+                  completionDateTime: 2024-12-31T00:03:17.9626323+00:00
+                  startTimeStamp: 2024-12-31T00:03:17.9626323+00:00
+                  createdAt: 2024-12-31T00:03:17.9626323Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -64022,43 +64022,8 @@ components:
         createdAt: createdAt
         password: password
         partner:
-          whiteListDomains:
-          - name: name
-            id: 6
-          - name: name
-            id: 6
-          country: country
-          address: address
-          city: city
-          link: link
-          partnerImageSettings:
-            expanded: expanded
-            collapsed: collapsed
-          paymentEnabled: true
-          phone: phone
-          domain: domain
-          partnerColorSettings:
-            itemBgActive: itemBgActive
-            itemBgActiveHover: itemBgActiveHover
-            bg: bg
-            itemBg: itemBg
-            itemBgHover: itemBgHover
-            bgCollapsedSubItem: bgCollapsedSubItem
-            itemTextActive: itemTextActive
-            itemText: itemText
-          name: name
-          organizations:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
-          logo: logo
-          requiredUserApproval: true
-          id: 0
-          allowRegistration: true
-          email: email
-          vatNumber: vatNumber
-          backgroundImageUrl: backgroundImageUrl
+          partnerName: partnerName
+          partnerId: 0
         createdBy: createdBy
         price: 5.637376656633329
         name: name
@@ -64101,7 +64066,7 @@ components:
           nullable: true
           type: string
         partner:
-          $ref: '#/components/schemas/PartnerDetailsDto'
+          $ref: '#/components/schemas/PartnerEntity'
         operationCredential:
           $ref: '#/components/schemas/OperationCredentialsForOrganizationEntity'
         createdBy:
@@ -64162,43 +64127,8 @@ components:
           createdAt: createdAt
           password: password
           partner:
-            whiteListDomains:
-            - name: name
-              id: 6
-            - name: name
-              id: 6
-            country: country
-            address: address
-            city: city
-            link: link
-            partnerImageSettings:
-              expanded: expanded
-              collapsed: collapsed
-            paymentEnabled: true
-            phone: phone
-            domain: domain
-            partnerColorSettings:
-              itemBgActive: itemBgActive
-              itemBgActiveHover: itemBgActiveHover
-              bg: bg
-              itemBg: itemBg
-              itemBgHover: itemBgHover
-              bgCollapsedSubItem: bgCollapsedSubItem
-              itemTextActive: itemTextActive
-              itemText: itemText
-            name: name
-            organizations:
-            - name: name
-              id: 0
-            - name: name
-              id: 0
-            logo: logo
-            requiredUserApproval: true
-            id: 0
-            allowRegistration: true
-            email: email
-            vatNumber: vatNumber
-            backgroundImageUrl: backgroundImageUrl
+            partnerName: partnerName
+            partnerId: 0
           createdBy: createdBy
           price: 5.637376656633329
           name: name
@@ -64231,43 +64161,8 @@ components:
           createdAt: createdAt
           password: password
           partner:
-            whiteListDomains:
-            - name: name
-              id: 6
-            - name: name
-              id: 6
-            country: country
-            address: address
-            city: city
-            link: link
-            partnerImageSettings:
-              expanded: expanded
-              collapsed: collapsed
-            paymentEnabled: true
-            phone: phone
-            domain: domain
-            partnerColorSettings:
-              itemBgActive: itemBgActive
-              itemBgActiveHover: itemBgActiveHover
-              bg: bg
-              itemBg: itemBg
-              itemBgHover: itemBgHover
-              bgCollapsedSubItem: bgCollapsedSubItem
-              itemTextActive: itemTextActive
-              itemText: itemText
-            name: name
-            organizations:
-            - name: name
-              id: 0
-            - name: name
-              id: 0
-            logo: logo
-            requiredUserApproval: true
-            id: 0
-            allowRegistration: true
-            email: email
-            vatNumber: vatNumber
-            backgroundImageUrl: backgroundImageUrl
+            partnerName: partnerName
+            partnerId: 0
           createdBy: createdBy
           price: 5.637376656633329
           name: name
