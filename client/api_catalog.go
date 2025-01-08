@@ -236,9 +236,6 @@ func (a *CatalogAPIService) CatalogCreateExecute(r ApiCatalogCreateRequest) (*ht
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createCatalogCommand == nil {
-		return nil, reportError("createCatalogCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
