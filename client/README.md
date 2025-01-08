@@ -278,6 +278,7 @@ Class | Method | HTTP request | Description
 *DnsServersAPI* | [**DnsserversList**](docs/DnsServersAPI.md#dnsserverslist) | **Get** /api/v1/dnsservers/{accessProfileId} | List dn servers by profile id
 *ExecutorsAPI* | [**ExecutorsCreate**](docs/ExecutorsAPI.md#executorscreate) | **Post** /api/v1/executors/create | Create an executor
 *ExecutorsAPI* | [**ExecutorsDelete**](docs/ExecutorsAPI.md#executorsdelete) | **Post** /api/v1/executors/delete | Delete an executor
+*ExecutorsAPI* | [**ExecutorsList**](docs/ExecutorsAPI.md#executorslist) | **Get** /api/v1/executors | Retrieve a list of kube configs of executors
 *ExecutorsAPI* | [**ExecutorsToggle**](docs/ExecutorsAPI.md#executorstoggle) | **Post** /api/v1/executors/toggle | Toggle an executor
 *FlavorsAPI* | [**FlavorsAwsInstanceTypes**](docs/FlavorsAPI.md#flavorsawsinstancetypes) | **Get** /api/v1/flavors/aws/{cloudId} | Retrieve awz instance types
 *FlavorsAPI* | [**FlavorsAzureVmSizes**](docs/FlavorsAPI.md#flavorsazurevmsizes) | **Get** /api/v1/flavors/azure/{cloudId} | Retrieve azure vm sizes
@@ -1102,6 +1103,8 @@ Class | Method | HTTP request | Description
  - [EstimatedInfracost](docs/EstimatedInfracost.md)
  - [ExceededQuotaDto](docs/ExceededQuotaDto.md)
  - [ExceededQuotaList](docs/ExceededQuotaList.md)
+ - [ExecutorEntityDto](docs/ExecutorEntityDto.md)
+ - [ExecutorListResponse](docs/ExecutorListResponse.md)
  - [ExportKubeConfigCommand](docs/ExportKubeConfigCommand.md)
  - [ExtendTrialPeriodCommand](docs/ExtendTrialPeriodCommand.md)
  - [Filter](docs/Filter.md)

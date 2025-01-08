@@ -435,6 +435,8 @@ docs/EnumList.md
 docs/EstimatedInfracost.md
 docs/ExceededQuotaDto.md
 docs/ExceededQuotaList.md
+docs/ExecutorEntityDto.md
+docs/ExecutorListResponse.md
 docs/ExecutorsAPI.md
 docs/ExportKubeConfigCommand.md
 docs/ExtendTrialPeriodCommand.md
@@ -1343,6 +1345,8 @@ model_enum_list.go
 model_estimated_infracost.go
 model_exceeded_quota_dto.go
 model_exceeded_quota_list.go
+model_executor_entity_dto.go
+model_executor_list_response.go
 model_export_kube_config_command.go
 model_extend_trial_period_command.go
 model_filter.go
