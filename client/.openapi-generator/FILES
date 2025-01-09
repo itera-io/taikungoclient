@@ -436,6 +436,7 @@ docs/EstimatedInfracost.md
 docs/ExceededQuotaDto.md
 docs/ExceededQuotaList.md
 docs/ExecutorEntityDto.md
+docs/ExecutorHealth.md
 docs/ExecutorListResponse.md
 docs/ExecutorsAPI.md
 docs/ExportKubeConfigCommand.md
@@ -457,6 +458,7 @@ docs/GetCatalogAppValueCommand.md
 docs/GetProjectOperationCommand.md
 docs/GetToken.md
 docs/GiveAccessToPartnerCommand.md
+docs/GkeClusterDto.md
 docs/GkeClustersListCommand.md
 docs/GoogleAPI.md
 docs/GoogleCredentialList.md
@@ -927,6 +929,7 @@ docs/UpdateAlertingProfileCommand.md
 docs/UpdateAwsCommand.md
 docs/UpdateAzureCommand.md
 docs/UpdateEdgeNodesCommand.md
+docs/UpdateExecutorHealthStatusCommand.md
 docs/UpdateGenericKubernetesCommand.md
 docs/UpdateHealthStatusCommand.md
 docs/UpdateHypervisorsCommand.md
@@ -1346,6 +1349,7 @@ model_estimated_infracost.go
 model_exceeded_quota_dto.go
 model_exceeded_quota_list.go
 model_executor_entity_dto.go
+model_executor_health.go
 model_executor_list_response.go
 model_export_kube_config_command.go
 model_extend_trial_period_command.go
@@ -1364,6 +1368,7 @@ model_get_catalog_app_value_command.go
 model_get_project_operation_command.go
 model_get_token.go
 model_give_access_to_partner_command.go
+model_gke_cluster_dto.go
 model_gke_clusters_list_command.go
 model_google_credential_list.go
 model_google_credentials_list_dto.go
@@ -1784,6 +1789,7 @@ model_update_alerting_profile_command.go
 model_update_aws_command.go
 model_update_azure_command.go
 model_update_edge_nodes_command.go
+model_update_executor_health_status_command.go
 model_update_generic_kubernetes_command.go
 model_update_health_status_command.go
 model_update_hypervisors_command.go

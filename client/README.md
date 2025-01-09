@@ -278,6 +278,7 @@ Class | Method | HTTP request | Description
 *DnsServersAPI* | [**DnsserversList**](docs/DnsServersAPI.md#dnsserverslist) | **Get** /api/v1/dnsservers/{accessProfileId} | List dn servers by profile id
 *ExecutorsAPI* | [**ExecutorsCreate**](docs/ExecutorsAPI.md#executorscreate) | **Post** /api/v1/executors/create | Create an executor
 *ExecutorsAPI* | [**ExecutorsDelete**](docs/ExecutorsAPI.md#executorsdelete) | **Post** /api/v1/executors/delete | Delete an executor
+*ExecutorsAPI* | [**ExecutorsEditHealth**](docs/ExecutorsAPI.md#executorsedithealth) | **Put** /api/v1/executors/edit/health | Update health status of the executor by Id
 *ExecutorsAPI* | [**ExecutorsList**](docs/ExecutorsAPI.md#executorslist) | **Get** /api/v1/executors | Retrieve a list of kube configs of executors
 *ExecutorsAPI* | [**ExecutorsToggle**](docs/ExecutorsAPI.md#executorstoggle) | **Post** /api/v1/executors/toggle | Toggle an executor
 *FlavorsAPI* | [**FlavorsAwsInstanceTypes**](docs/FlavorsAPI.md#flavorsawsinstancetypes) | **Get** /api/v1/flavors/aws/{cloudId} | Retrieve awz instance types
@@ -1104,6 +1105,7 @@ Class | Method | HTTP request | Description
  - [ExceededQuotaDto](docs/ExceededQuotaDto.md)
  - [ExceededQuotaList](docs/ExceededQuotaList.md)
  - [ExecutorEntityDto](docs/ExecutorEntityDto.md)
+ - [ExecutorHealth](docs/ExecutorHealth.md)
  - [ExecutorListResponse](docs/ExecutorListResponse.md)
  - [ExportKubeConfigCommand](docs/ExportKubeConfigCommand.md)
  - [ExtendTrialPeriodCommand](docs/ExtendTrialPeriodCommand.md)
@@ -1122,6 +1124,7 @@ Class | Method | HTTP request | Description
  - [GetProjectOperationCommand](docs/GetProjectOperationCommand.md)
  - [GetToken](docs/GetToken.md)
  - [GiveAccessToPartnerCommand](docs/GiveAccessToPartnerCommand.md)
+ - [GkeClusterDto](docs/GkeClusterDto.md)
  - [GkeClustersListCommand](docs/GkeClustersListCommand.md)
  - [GoogleCredentialList](docs/GoogleCredentialList.md)
  - [GoogleCredentialsListDto](docs/GoogleCredentialsListDto.md)
@@ -1542,6 +1545,7 @@ Class | Method | HTTP request | Description
  - [UpdateAwsCommand](docs/UpdateAwsCommand.md)
  - [UpdateAzureCommand](docs/UpdateAzureCommand.md)
  - [UpdateEdgeNodesCommand](docs/UpdateEdgeNodesCommand.md)
+ - [UpdateExecutorHealthStatusCommand](docs/UpdateExecutorHealthStatusCommand.md)
  - [UpdateGenericKubernetesCommand](docs/UpdateGenericKubernetesCommand.md)
  - [UpdateHealthStatusCommand](docs/UpdateHealthStatusCommand.md)
  - [UpdateHypervisorsCommand](docs/UpdateHypervisorsCommand.md)
