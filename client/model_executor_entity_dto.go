@@ -21,6 +21,8 @@ var _ MappedNullable = &ExecutorEntityDto{}
 // ExecutorEntityDto struct for ExecutorEntityDto
 type ExecutorEntityDto struct {
 	Id *int32 `json:"id,omitempty"`
+	Name NullableString `json:"name,omitempty"`
+	Health *ExecutorHealth `json:"health,omitempty"`
 	KubeConfig NullableString `json:"kubeConfig,omitempty"`
 }
 
@@ -71,6 +73,80 @@ func (o *ExecutorEntityDto) HasId() bool {
 // SetId gets a reference to the given int32 and assigns it to the Id field.
 func (o *ExecutorEntityDto) SetId(v int32) {
 	o.Id = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ExecutorEntityDto) GetName() string {
+	if o == nil || IsNil(o.Name.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Name.Get()
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ExecutorEntityDto) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Name.Get(), o.Name.IsSet()
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *ExecutorEntityDto) HasName() bool {
+	if o != nil && o.Name.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
+func (o *ExecutorEntityDto) SetName(v string) {
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *ExecutorEntityDto) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *ExecutorEntityDto) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetHealth returns the Health field value if set, zero value otherwise.
+func (o *ExecutorEntityDto) GetHealth() ExecutorHealth {
+	if o == nil || IsNil(o.Health) {
+		var ret ExecutorHealth
+		return ret
+	}
+	return *o.Health
+}
+
+// GetHealthOk returns a tuple with the Health field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ExecutorEntityDto) GetHealthOk() (*ExecutorHealth, bool) {
+	if o == nil || IsNil(o.Health) {
+		return nil, false
+	}
+	return o.Health, true
+}
+
+// HasHealth returns a boolean if a field has been set.
+func (o *ExecutorEntityDto) HasHealth() bool {
+	if o != nil && !IsNil(o.Health) {
+		return true
+	}
+
+	return false
+}
+
+// SetHealth gets a reference to the given ExecutorHealth and assigns it to the Health field.
+func (o *ExecutorEntityDto) SetHealth(v ExecutorHealth) {
+	o.Health = &v
 }
 
 // GetKubeConfig returns the KubeConfig field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -127,6 +203,12 @@ func (o ExecutorEntityDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
+	}
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
+	}
+	if !IsNil(o.Health) {
+		toSerialize["health"] = o.Health
 	}
 	if o.KubeConfig.IsSet() {
 		toSerialize["kubeConfig"] = o.KubeConfig.Get()
