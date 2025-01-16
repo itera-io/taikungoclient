@@ -22,6 +22,7 @@ var _ MappedNullable = &AzureAksClusterDto{}
 type AzureAksClusterDto struct {
 	ResourceGroupName NullableString `json:"resourceGroupName,omitempty"`
 	ClusterName NullableString `json:"clusterName,omitempty"`
+	Location NullableString `json:"location,omitempty"`
 }
 
 // NewAzureAksClusterDto instantiates a new AzureAksClusterDto object
@@ -125,6 +126,48 @@ func (o *AzureAksClusterDto) UnsetClusterName() {
 	o.ClusterName.Unset()
 }
 
+// GetLocation returns the Location field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AzureAksClusterDto) GetLocation() string {
+	if o == nil || IsNil(o.Location.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Location.Get()
+}
+
+// GetLocationOk returns a tuple with the Location field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AzureAksClusterDto) GetLocationOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Location.Get(), o.Location.IsSet()
+}
+
+// HasLocation returns a boolean if a field has been set.
+func (o *AzureAksClusterDto) HasLocation() bool {
+	if o != nil && o.Location.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLocation gets a reference to the given NullableString and assigns it to the Location field.
+func (o *AzureAksClusterDto) SetLocation(v string) {
+	o.Location.Set(&v)
+}
+// SetLocationNil sets the value for Location to be an explicit nil
+func (o *AzureAksClusterDto) SetLocationNil() {
+	o.Location.Set(nil)
+}
+
+// UnsetLocation ensures that no value is present for Location, not even an explicit nil
+func (o *AzureAksClusterDto) UnsetLocation() {
+	o.Location.Unset()
+}
+
 func (o AzureAksClusterDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -140,6 +183,9 @@ func (o AzureAksClusterDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ClusterName.IsSet() {
 		toSerialize["clusterName"] = o.ClusterName.Get()
+	}
+	if o.Location.IsSet() {
+		toSerialize["location"] = o.Location.Get()
 	}
 	return toSerialize, nil
 }

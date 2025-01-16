@@ -201,6 +201,12 @@ type ApiAwsEksClustersRequest struct {
 	ctx context.Context
 	ApiService *AWSCloudCredentialAPIService
 	cloudId int32
+	region *string
+}
+
+func (r ApiAwsEksClustersRequest) Region(region string) ApiAwsEksClustersRequest {
+	r.region = &region
+	return r
 }
 
 func (r ApiAwsEksClustersRequest) Execute() ([]string, *http.Response, error) {
@@ -244,6 +250,9 @@ func (a *AWSCloudCredentialAPIService) AwsEksClustersExecute(r ApiAwsEksClusters
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.region != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "Region", r.region, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

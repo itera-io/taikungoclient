@@ -1793,11 +1793,35 @@ type ApiCheckerImportClusterKubeConfigRequest struct {
 	ctx context.Context
 	ApiService *CheckerAPIService
 	config *os.File
+	cloudId *int32
+	region *string
+	importClusterName *string
+	resourceGroupName *string
 	importType *EImportClusterType
 }
 
 func (r ApiCheckerImportClusterKubeConfigRequest) Config(config *os.File) ApiCheckerImportClusterKubeConfigRequest {
 	r.config = config
+	return r
+}
+
+func (r ApiCheckerImportClusterKubeConfigRequest) CloudId(cloudId int32) ApiCheckerImportClusterKubeConfigRequest {
+	r.cloudId = &cloudId
+	return r
+}
+
+func (r ApiCheckerImportClusterKubeConfigRequest) Region(region string) ApiCheckerImportClusterKubeConfigRequest {
+	r.region = &region
+	return r
+}
+
+func (r ApiCheckerImportClusterKubeConfigRequest) ImportClusterName(importClusterName string) ApiCheckerImportClusterKubeConfigRequest {
+	r.importClusterName = &importClusterName
+	return r
+}
+
+func (r ApiCheckerImportClusterKubeConfigRequest) ResourceGroupName(resourceGroupName string) ApiCheckerImportClusterKubeConfigRequest {
+	r.resourceGroupName = &resourceGroupName
 	return r
 }
 
@@ -1843,9 +1867,6 @@ func (a *CheckerAPIService) CheckerImportClusterKubeConfigExecute(r ApiCheckerIm
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.config == nil {
-		return localVarReturnValue, nil, reportError("config is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -1878,6 +1899,18 @@ func (a *CheckerAPIService) CheckerImportClusterKubeConfigExecute(r ApiCheckerIm
 		configLocalVarFileName = configLocalVarFile.Name()
 		configLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
+	}
+	if r.cloudId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "cloudId", r.cloudId, "", "")
+	}
+	if r.region != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "", "")
+	}
+	if r.importClusterName != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "importClusterName", r.importClusterName, "", "")
+	}
+	if r.resourceGroupName != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "resourceGroupName", r.resourceGroupName, "", "")
 	}
 	if r.importType != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "importType", r.importType, "", "")
