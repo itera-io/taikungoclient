@@ -23,7 +23,7 @@ var _ MappedNullable = &DescribeKubernetesResourceCommand{}
 // DescribeKubernetesResourceCommand struct for DescribeKubernetesResourceCommand
 type DescribeKubernetesResourceCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Name NullableString `json:"name"`
+	Name string `json:"name"`
 	Namespace NullableString `json:"namespace,omitempty"`
 	Kind EKubernetesResource `json:"kind"`
 }
@@ -34,7 +34,7 @@ type _DescribeKubernetesResourceCommand DescribeKubernetesResourceCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDescribeKubernetesResourceCommand(projectId int32, name NullableString, kind EKubernetesResource) *DescribeKubernetesResourceCommand {
+func NewDescribeKubernetesResourceCommand(projectId int32, name string, kind EKubernetesResource) *DescribeKubernetesResourceCommand {
 	this := DescribeKubernetesResourceCommand{}
 	this.ProjectId = projectId
 	this.Name = name
@@ -75,29 +75,27 @@ func (o *DescribeKubernetesResourceCommand) SetProjectId(v int32) {
 }
 
 // GetName returns the Name field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *DescribeKubernetesResourceCommand) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Name.Get()
+	return o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DescribeKubernetesResourceCommand) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
 // SetName sets field value
 func (o *DescribeKubernetesResourceCommand) SetName(v string) {
-	o.Name.Set(&v)
+	o.Name = v
 }
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -177,7 +175,7 @@ func (o DescribeKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
 func (o DescribeKubernetesResourceCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["name"] = o.Name.Get()
+	toSerialize["name"] = o.Name
 	if o.Namespace.IsSet() {
 		toSerialize["namespace"] = o.Namespace.Get()
 	}

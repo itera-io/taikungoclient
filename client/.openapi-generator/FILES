@@ -411,6 +411,7 @@ docs/DocumentationData.md
 docs/DocumentationsList.md
 docs/DownloadInvoiceCommand.md
 docs/DownloadKubeConfigCommand.md
+docs/DownloadKubernetesResourceCommand.md
 docs/DuplicateNameCheckerCommand.md
 docs/EImportClusterType.md
 docs/EInstanceStatus.md
@@ -546,7 +547,6 @@ docs/KubernetesAnnotations.md
 docs/KubernetesCliCommand.md
 docs/KubernetesCronJobDto.md
 docs/KubernetesCronJobsList.md
-docs/KubernetesCursorPodList.md
 docs/KubernetesDashboardDto.md
 docs/KubernetesEventCreateDto.md
 docs/KubernetesInteractiveShellDto.md
@@ -1324,6 +1324,7 @@ model_documentation_data.go
 model_documentations_list.go
 model_download_invoice_command.go
 model_download_kube_config_command.go
+model_download_kubernetes_resource_command.go
 model_duplicate_name_checker_command.go
 model_e_import_cluster_type.go
 model_e_instance_status.go
@@ -1446,7 +1447,6 @@ model_kubernetes_annotations.go
 model_kubernetes_cli_command.go
 model_kubernetes_cron_job_dto.go
 model_kubernetes_cron_jobs_list.go
-model_kubernetes_cursor_pod_list.go
 model_kubernetes_dashboard_dto.go
 model_kubernetes_event_create_dto.go
 model_kubernetes_interactive_shell_dto.go

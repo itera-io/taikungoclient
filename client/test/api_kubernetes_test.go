@@ -130,20 +130,6 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test KubernetesAPIService KubernetesCursorPodList", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var projectId int32
-
-		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesCursorPodList(context.Background(), projectId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test KubernetesAPIService KubernetesDaemonSetList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -397,6 +383,18 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 		var projectId int32
 
 		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDownload(context.Background(), projectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test KubernetesAPIService KubernetesDownloadManifest", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDownloadManifest(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

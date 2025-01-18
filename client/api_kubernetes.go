@@ -1666,220 +1666,6 @@ func (a *KubernetesAPIService) KubernetesCronJobListExecute(r ApiKubernetesCronJ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiKubernetesCursorPodListRequest struct {
-	ctx context.Context
-	ApiService *KubernetesAPIService
-	projectId int32
-	limit *int32
-	search *string
-	nextPageLink *string
-	sortBy *string
-	sortDirection *string
-}
-
-func (r ApiKubernetesCursorPodListRequest) Limit(limit int32) ApiKubernetesCursorPodListRequest {
-	r.limit = &limit
-	return r
-}
-
-func (r ApiKubernetesCursorPodListRequest) Search(search string) ApiKubernetesCursorPodListRequest {
-	r.search = &search
-	return r
-}
-
-func (r ApiKubernetesCursorPodListRequest) NextPageLink(nextPageLink string) ApiKubernetesCursorPodListRequest {
-	r.nextPageLink = &nextPageLink
-	return r
-}
-
-func (r ApiKubernetesCursorPodListRequest) SortBy(sortBy string) ApiKubernetesCursorPodListRequest {
-	r.sortBy = &sortBy
-	return r
-}
-
-func (r ApiKubernetesCursorPodListRequest) SortDirection(sortDirection string) ApiKubernetesCursorPodListRequest {
-	r.sortDirection = &sortDirection
-	return r
-}
-
-func (r ApiKubernetesCursorPodListRequest) Execute() (*KubernetesCursorPodList, *http.Response, error) {
-	return r.ApiService.KubernetesCursorPodListExecute(r)
-}
-
-/*
-KubernetesCursorPodList Retrieve cursor list of k8s pod for all namespaces
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId
- @return ApiKubernetesCursorPodListRequest
-*/
-func (a *KubernetesAPIService) KubernetesCursorPodList(ctx context.Context, projectId int32) ApiKubernetesCursorPodListRequest {
-	return ApiKubernetesCursorPodListRequest{
-		ApiService: a,
-		ctx: ctx,
-		projectId: projectId,
-	}
-}
-
-// Execute executes the request
-//  @return KubernetesCursorPodList
-func (a *KubernetesAPIService) KubernetesCursorPodListExecute(r ApiKubernetesCursorPodListRequest) (*KubernetesCursorPodList, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *KubernetesCursorPodList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesCursorPodList")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/kubernetes/{projectId}/cursor-pod"
-	localVarPath = strings.Replace(localVarPath, "{"+"projectId"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if r.limit != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Limit", r.limit, "form", "")
-	}
-	if r.search != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "Search", r.search, "form", "")
-	}
-	if r.nextPageLink != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "NextPageLink", r.nextPageLink, "form", "")
-	}
-	if r.sortBy != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortBy", r.sortBy, "form", "")
-	}
-	if r.sortDirection != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "SortDirection", r.sortDirection, "form", "")
-	}
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["Bearer"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiKubernetesDaemonSetListRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
@@ -2533,6 +2319,8 @@ KubernetesDescribeConfigMap Describe configmap
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeConfigMapRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeConfigMap(ctx context.Context) ApiKubernetesDescribeConfigMapRequest {
 	return ApiKubernetesDescribeConfigMapRequest{
@@ -2543,6 +2331,7 @@ func (a *KubernetesAPIService) KubernetesDescribeConfigMap(ctx context.Context) 
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeConfigMapExecute(r ApiKubernetesDescribeConfigMapRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -2709,6 +2498,8 @@ KubernetesDescribeCrd Describe crd
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeCrdRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeCrd(ctx context.Context) ApiKubernetesDescribeCrdRequest {
 	return ApiKubernetesDescribeCrdRequest{
@@ -2719,6 +2510,7 @@ func (a *KubernetesAPIService) KubernetesDescribeCrd(ctx context.Context) ApiKub
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeCrdExecute(r ApiKubernetesDescribeCrdRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -2885,6 +2677,8 @@ KubernetesDescribeCronjob Describe cronjob
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeCronjobRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeCronjob(ctx context.Context) ApiKubernetesDescribeCronjobRequest {
 	return ApiKubernetesDescribeCronjobRequest{
@@ -2895,6 +2689,7 @@ func (a *KubernetesAPIService) KubernetesDescribeCronjob(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeCronjobExecute(r ApiKubernetesDescribeCronjobRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -3061,6 +2856,8 @@ KubernetesDescribeDaemonSet Describe daemonset
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeDaemonSetRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeDaemonSet(ctx context.Context) ApiKubernetesDescribeDaemonSetRequest {
 	return ApiKubernetesDescribeDaemonSetRequest{
@@ -3071,6 +2868,7 @@ func (a *KubernetesAPIService) KubernetesDescribeDaemonSet(ctx context.Context) 
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeDaemonSetExecute(r ApiKubernetesDescribeDaemonSetRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -3237,6 +3035,8 @@ KubernetesDescribeDeployment Describe deployment
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeDeploymentRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeDeployment(ctx context.Context) ApiKubernetesDescribeDeploymentRequest {
 	return ApiKubernetesDescribeDeploymentRequest{
@@ -3247,6 +3047,7 @@ func (a *KubernetesAPIService) KubernetesDescribeDeployment(ctx context.Context)
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeDeploymentExecute(r ApiKubernetesDescribeDeploymentRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -3413,6 +3214,8 @@ KubernetesDescribeIngress Describe ingress
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeIngressRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeIngress(ctx context.Context) ApiKubernetesDescribeIngressRequest {
 	return ApiKubernetesDescribeIngressRequest{
@@ -3423,6 +3226,7 @@ func (a *KubernetesAPIService) KubernetesDescribeIngress(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeIngressExecute(r ApiKubernetesDescribeIngressRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -3589,6 +3393,8 @@ KubernetesDescribeJob Describe job
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeJobRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeJob(ctx context.Context) ApiKubernetesDescribeJobRequest {
 	return ApiKubernetesDescribeJobRequest{
@@ -3599,6 +3405,7 @@ func (a *KubernetesAPIService) KubernetesDescribeJob(ctx context.Context) ApiKub
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeJobExecute(r ApiKubernetesDescribeJobRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -3765,6 +3572,8 @@ KubernetesDescribeNetworkPolicy Describe network policy
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeNetworkPolicyRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeNetworkPolicy(ctx context.Context) ApiKubernetesDescribeNetworkPolicyRequest {
 	return ApiKubernetesDescribeNetworkPolicyRequest{
@@ -3775,6 +3584,7 @@ func (a *KubernetesAPIService) KubernetesDescribeNetworkPolicy(ctx context.Conte
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeNetworkPolicyExecute(r ApiKubernetesDescribeNetworkPolicyRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -3941,6 +3751,8 @@ KubernetesDescribeNode Describe node
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeNodeRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeNode(ctx context.Context) ApiKubernetesDescribeNodeRequest {
 	return ApiKubernetesDescribeNodeRequest{
@@ -3951,6 +3763,7 @@ func (a *KubernetesAPIService) KubernetesDescribeNode(ctx context.Context) ApiKu
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeNodeExecute(r ApiKubernetesDescribeNodeRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -4117,6 +3930,8 @@ KubernetesDescribePdb Describe pdb
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribePdbRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribePdb(ctx context.Context) ApiKubernetesDescribePdbRequest {
 	return ApiKubernetesDescribePdbRequest{
@@ -4127,6 +3942,7 @@ func (a *KubernetesAPIService) KubernetesDescribePdb(ctx context.Context) ApiKub
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribePdbExecute(r ApiKubernetesDescribePdbRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -4293,6 +4109,8 @@ KubernetesDescribePod Describe pod
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribePodRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribePod(ctx context.Context) ApiKubernetesDescribePodRequest {
 	return ApiKubernetesDescribePodRequest{
@@ -4303,6 +4121,7 @@ func (a *KubernetesAPIService) KubernetesDescribePod(ctx context.Context) ApiKub
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribePodExecute(r ApiKubernetesDescribePodRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -4469,6 +4288,8 @@ KubernetesDescribePvc Describe pvc
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribePvcRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribePvc(ctx context.Context) ApiKubernetesDescribePvcRequest {
 	return ApiKubernetesDescribePvcRequest{
@@ -4479,6 +4300,7 @@ func (a *KubernetesAPIService) KubernetesDescribePvc(ctx context.Context) ApiKub
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribePvcExecute(r ApiKubernetesDescribePvcRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -4818,6 +4640,8 @@ KubernetesDescribeSecret Describe secret
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeSecretRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeSecret(ctx context.Context) ApiKubernetesDescribeSecretRequest {
 	return ApiKubernetesDescribeSecretRequest{
@@ -4828,6 +4652,7 @@ func (a *KubernetesAPIService) KubernetesDescribeSecret(ctx context.Context) Api
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeSecretExecute(r ApiKubernetesDescribeSecretRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -4994,6 +4819,8 @@ KubernetesDescribeService Describe service
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeServiceRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeService(ctx context.Context) ApiKubernetesDescribeServiceRequest {
 	return ApiKubernetesDescribeServiceRequest{
@@ -5004,6 +4831,7 @@ func (a *KubernetesAPIService) KubernetesDescribeService(ctx context.Context) Ap
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeServiceExecute(r ApiKubernetesDescribeServiceRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -5170,6 +4998,8 @@ KubernetesDescribeStorageClass Describe storage class
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeStorageClassRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeStorageClass(ctx context.Context) ApiKubernetesDescribeStorageClassRequest {
 	return ApiKubernetesDescribeStorageClassRequest{
@@ -5180,6 +5010,7 @@ func (a *KubernetesAPIService) KubernetesDescribeStorageClass(ctx context.Contex
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeStorageClassExecute(r ApiKubernetesDescribeStorageClassRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -5346,6 +5177,8 @@ KubernetesDescribeSts Describe stateful set
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiKubernetesDescribeStsRequest
+
+Deprecated
 */
 func (a *KubernetesAPIService) KubernetesDescribeSts(ctx context.Context) ApiKubernetesDescribeStsRequest {
 	return ApiKubernetesDescribeStsRequest{
@@ -5356,6 +5189,7 @@ func (a *KubernetesAPIService) KubernetesDescribeSts(ctx context.Context) ApiKub
 
 // Execute executes the request
 //  @return string
+// Deprecated
 func (a *KubernetesAPIService) KubernetesDescribeStsExecute(r ApiKubernetesDescribeStsRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
@@ -5566,6 +5400,179 @@ func (a *KubernetesAPIService) KubernetesDownloadExecute(r ApiKubernetesDownload
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["Bearer"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 400 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 401 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 403 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
+		if localVarHTTPResponse.StatusCode == 500 {
+			var v ProblemDetails
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiKubernetesDownloadManifestRequest struct {
+	ctx context.Context
+	ApiService *KubernetesAPIService
+	downloadKubernetesResourceCommand *DownloadKubernetesResourceCommand
+}
+
+func (r ApiKubernetesDownloadManifestRequest) DownloadKubernetesResourceCommand(downloadKubernetesResourceCommand DownloadKubernetesResourceCommand) ApiKubernetesDownloadManifestRequest {
+	r.downloadKubernetesResourceCommand = &downloadKubernetesResourceCommand
+	return r
+}
+
+func (r ApiKubernetesDownloadManifestRequest) Execute() (*CsvExporter, *http.Response, error) {
+	return r.ApiService.KubernetesDownloadManifestExecute(r)
+}
+
+/*
+KubernetesDownloadManifest Download manifest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiKubernetesDownloadManifestRequest
+*/
+func (a *KubernetesAPIService) KubernetesDownloadManifest(ctx context.Context) ApiKubernetesDownloadManifestRequest {
+	return ApiKubernetesDownloadManifestRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return CsvExporter
+func (a *KubernetesAPIService) KubernetesDownloadManifestExecute(r ApiKubernetesDownloadManifestRequest) (*CsvExporter, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *CsvExporter
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDownloadManifest")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/kubernetes/download-manifest"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.downloadKubernetesResourceCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

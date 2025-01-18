@@ -17,43 +17,41 @@ import (
 	"fmt"
 )
 
-// checks if the PatchKubernetesResourceCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PatchKubernetesResourceCommand{}
+// checks if the DownloadKubernetesResourceCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DownloadKubernetesResourceCommand{}
 
-// PatchKubernetesResourceCommand struct for PatchKubernetesResourceCommand
-type PatchKubernetesResourceCommand struct {
+// DownloadKubernetesResourceCommand struct for DownloadKubernetesResourceCommand
+type DownloadKubernetesResourceCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Yaml string `json:"yaml"`
 	Name string `json:"name"`
 	Namespace NullableString `json:"namespace,omitempty"`
 	Kind EKubernetesResource `json:"kind"`
 }
 
-type _PatchKubernetesResourceCommand PatchKubernetesResourceCommand
+type _DownloadKubernetesResourceCommand DownloadKubernetesResourceCommand
 
-// NewPatchKubernetesResourceCommand instantiates a new PatchKubernetesResourceCommand object
+// NewDownloadKubernetesResourceCommand instantiates a new DownloadKubernetesResourceCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPatchKubernetesResourceCommand(projectId int32, yaml string, name string, kind EKubernetesResource) *PatchKubernetesResourceCommand {
-	this := PatchKubernetesResourceCommand{}
+func NewDownloadKubernetesResourceCommand(projectId int32, name string, kind EKubernetesResource) *DownloadKubernetesResourceCommand {
+	this := DownloadKubernetesResourceCommand{}
 	this.ProjectId = projectId
-	this.Yaml = yaml
 	this.Name = name
 	this.Kind = kind
 	return &this
 }
 
-// NewPatchKubernetesResourceCommandWithDefaults instantiates a new PatchKubernetesResourceCommand object
+// NewDownloadKubernetesResourceCommandWithDefaults instantiates a new DownloadKubernetesResourceCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPatchKubernetesResourceCommandWithDefaults() *PatchKubernetesResourceCommand {
-	this := PatchKubernetesResourceCommand{}
+func NewDownloadKubernetesResourceCommandWithDefaults() *DownloadKubernetesResourceCommand {
+	this := DownloadKubernetesResourceCommand{}
 	return &this
 }
 
 // GetProjectId returns the ProjectId field value
-func (o *PatchKubernetesResourceCommand) GetProjectId() int32 {
+func (o *DownloadKubernetesResourceCommand) GetProjectId() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -64,7 +62,7 @@ func (o *PatchKubernetesResourceCommand) GetProjectId() int32 {
 
 // GetProjectIdOk returns a tuple with the ProjectId field value
 // and a boolean to check if the value has been set.
-func (o *PatchKubernetesResourceCommand) GetProjectIdOk() (*int32, bool) {
+func (o *DownloadKubernetesResourceCommand) GetProjectIdOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -72,36 +70,12 @@ func (o *PatchKubernetesResourceCommand) GetProjectIdOk() (*int32, bool) {
 }
 
 // SetProjectId sets field value
-func (o *PatchKubernetesResourceCommand) SetProjectId(v int32) {
+func (o *DownloadKubernetesResourceCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetYaml returns the Yaml field value
-func (o *PatchKubernetesResourceCommand) GetYaml() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Yaml
-}
-
-// GetYamlOk returns a tuple with the Yaml field value
-// and a boolean to check if the value has been set.
-func (o *PatchKubernetesResourceCommand) GetYamlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Yaml, true
-}
-
-// SetYaml sets field value
-func (o *PatchKubernetesResourceCommand) SetYaml(v string) {
-	o.Yaml = v
-}
-
 // GetName returns the Name field value
-func (o *PatchKubernetesResourceCommand) GetName() string {
+func (o *DownloadKubernetesResourceCommand) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -112,7 +86,7 @@ func (o *PatchKubernetesResourceCommand) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *PatchKubernetesResourceCommand) GetNameOk() (*string, bool) {
+func (o *DownloadKubernetesResourceCommand) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -120,12 +94,12 @@ func (o *PatchKubernetesResourceCommand) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *PatchKubernetesResourceCommand) SetName(v string) {
+func (o *DownloadKubernetesResourceCommand) SetName(v string) {
 	o.Name = v
 }
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PatchKubernetesResourceCommand) GetNamespace() string {
+func (o *DownloadKubernetesResourceCommand) GetNamespace() string {
 	if o == nil || IsNil(o.Namespace.Get()) {
 		var ret string
 		return ret
@@ -136,7 +110,7 @@ func (o *PatchKubernetesResourceCommand) GetNamespace() string {
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PatchKubernetesResourceCommand) GetNamespaceOk() (*string, bool) {
+func (o *DownloadKubernetesResourceCommand) GetNamespaceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -144,7 +118,7 @@ func (o *PatchKubernetesResourceCommand) GetNamespaceOk() (*string, bool) {
 }
 
 // HasNamespace returns a boolean if a field has been set.
-func (o *PatchKubernetesResourceCommand) HasNamespace() bool {
+func (o *DownloadKubernetesResourceCommand) HasNamespace() bool {
 	if o != nil && o.Namespace.IsSet() {
 		return true
 	}
@@ -153,21 +127,21 @@ func (o *PatchKubernetesResourceCommand) HasNamespace() bool {
 }
 
 // SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
-func (o *PatchKubernetesResourceCommand) SetNamespace(v string) {
+func (o *DownloadKubernetesResourceCommand) SetNamespace(v string) {
 	o.Namespace.Set(&v)
 }
 // SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *PatchKubernetesResourceCommand) SetNamespaceNil() {
+func (o *DownloadKubernetesResourceCommand) SetNamespaceNil() {
 	o.Namespace.Set(nil)
 }
 
 // UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *PatchKubernetesResourceCommand) UnsetNamespace() {
+func (o *DownloadKubernetesResourceCommand) UnsetNamespace() {
 	o.Namespace.Unset()
 }
 
 // GetKind returns the Kind field value
-func (o *PatchKubernetesResourceCommand) GetKind() EKubernetesResource {
+func (o *DownloadKubernetesResourceCommand) GetKind() EKubernetesResource {
 	if o == nil {
 		var ret EKubernetesResource
 		return ret
@@ -178,7 +152,7 @@ func (o *PatchKubernetesResourceCommand) GetKind() EKubernetesResource {
 
 // GetKindOk returns a tuple with the Kind field value
 // and a boolean to check if the value has been set.
-func (o *PatchKubernetesResourceCommand) GetKindOk() (*EKubernetesResource, bool) {
+func (o *DownloadKubernetesResourceCommand) GetKindOk() (*EKubernetesResource, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -186,11 +160,11 @@ func (o *PatchKubernetesResourceCommand) GetKindOk() (*EKubernetesResource, bool
 }
 
 // SetKind sets field value
-func (o *PatchKubernetesResourceCommand) SetKind(v EKubernetesResource) {
+func (o *DownloadKubernetesResourceCommand) SetKind(v EKubernetesResource) {
 	o.Kind = v
 }
 
-func (o PatchKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
+func (o DownloadKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -198,10 +172,9 @@ func (o PatchKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o PatchKubernetesResourceCommand) ToMap() (map[string]interface{}, error) {
+func (o DownloadKubernetesResourceCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["yaml"] = o.Yaml
 	toSerialize["name"] = o.Name
 	if o.Namespace.IsSet() {
 		toSerialize["namespace"] = o.Namespace.Get()
@@ -210,13 +183,12 @@ func (o PatchKubernetesResourceCommand) ToMap() (map[string]interface{}, error) 
 	return toSerialize, nil
 }
 
-func (o *PatchKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error) {
+func (o *DownloadKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"yaml",
 		"name",
 		"kind",
 	}
@@ -235,53 +207,53 @@ func (o *PatchKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error) 
 		}
 	}
 
-	varPatchKubernetesResourceCommand := _PatchKubernetesResourceCommand{}
+	varDownloadKubernetesResourceCommand := _DownloadKubernetesResourceCommand{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPatchKubernetesResourceCommand)
+	err = decoder.Decode(&varDownloadKubernetesResourceCommand)
 
 	if err != nil {
 		return err
 	}
 
-	*o = PatchKubernetesResourceCommand(varPatchKubernetesResourceCommand)
+	*o = DownloadKubernetesResourceCommand(varDownloadKubernetesResourceCommand)
 
 	return err
 }
 
-type NullablePatchKubernetesResourceCommand struct {
-	value *PatchKubernetesResourceCommand
+type NullableDownloadKubernetesResourceCommand struct {
+	value *DownloadKubernetesResourceCommand
 	isSet bool
 }
 
-func (v NullablePatchKubernetesResourceCommand) Get() *PatchKubernetesResourceCommand {
+func (v NullableDownloadKubernetesResourceCommand) Get() *DownloadKubernetesResourceCommand {
 	return v.value
 }
 
-func (v *NullablePatchKubernetesResourceCommand) Set(val *PatchKubernetesResourceCommand) {
+func (v *NullableDownloadKubernetesResourceCommand) Set(val *DownloadKubernetesResourceCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePatchKubernetesResourceCommand) IsSet() bool {
+func (v NullableDownloadKubernetesResourceCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePatchKubernetesResourceCommand) Unset() {
+func (v *NullableDownloadKubernetesResourceCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePatchKubernetesResourceCommand(val *PatchKubernetesResourceCommand) *NullablePatchKubernetesResourceCommand {
-	return &NullablePatchKubernetesResourceCommand{value: val, isSet: true}
+func NewNullableDownloadKubernetesResourceCommand(val *DownloadKubernetesResourceCommand) *NullableDownloadKubernetesResourceCommand {
+	return &NullableDownloadKubernetesResourceCommand{value: val, isSet: true}
 }
 
-func (v NullablePatchKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
+func (v NullableDownloadKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePatchKubernetesResourceCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableDownloadKubernetesResourceCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

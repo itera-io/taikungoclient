@@ -5912,8 +5912,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-01-17T00:03:36.0674976Z
-                  createdAt: 2025-01-17T00:03:36.0674976Z
+                  lastValidated: 2025-01-18T00:03:20.3120952Z
+                  createdAt: 2025-01-18T00:03:20.3120952Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6018,14 +6018,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-01-17T00:03:36.0674976Z
+                    lastBackup: 2025-01-18T00:03:20.3120952Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-01-17T00:03:36.0674976Z
+                  createdAt: 2025-01-18T00:03:20.3120952Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-01-17T00:03:36.0674976Z
+                  lastBackup: 2025-01-18T00:03:20.3120952Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6130,8 +6130,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-01-17T00:03:36.0674976Z
-                  expiration: 2025-01-17T00:03:36.0674976Z
+                  createdAt: 2025-01-18T00:03:20.3120952Z
+                  expiration: 2025-01-18T00:03:20.3120952Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6235,7 +6235,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-01-17T00:03:36.0674976Z
+                  createdAt: 2025-01-18T00:03:20.3120952Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6345,9 +6345,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-01-17T00:03:36.0674976+00:00
-                  startTimeStamp: 2025-01-17T00:03:36.0674976+00:00
-                  createdAt: 2025-01-17T00:03:36.0674976Z
+                  completionDateTime: 2025-01-18T00:03:20.3120952+00:00
+                  startTimeStamp: 2025-01-18T00:03:20.3120952+00:00
+                  createdAt: 2025-01-18T00:03:20.3120952Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -17321,6 +17321,54 @@ paths:
       summary: Describe kubernetes resource
       tags:
       - Kubernetes
+  /api/v1/kubernetes/download-manifest:
+    post:
+      operationId: kubernetes-download-manifest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DownloadKubernetesResourceCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CsvExporter'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Download manifest
+      tags:
+      - Kubernetes
   /api/v1/kubernetes/cli:
     post:
       operationId: kubernetes-cli
@@ -20118,6 +20166,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/configmap:
     post:
+      deprecated: true
       operationId: kubernetes-describe-config-map
       requestBody:
         content:
@@ -20167,6 +20216,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/crd:
     post:
+      deprecated: true
       operationId: kubernetes-describe-crd
       requestBody:
         content:
@@ -20216,6 +20266,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/cronjob:
     post:
+      deprecated: true
       operationId: kubernetes-describe-cronjob
       requestBody:
         content:
@@ -20265,6 +20316,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/daemonset:
     post:
+      deprecated: true
       operationId: kubernetes-describe-daemon-set
       requestBody:
         content:
@@ -20314,6 +20366,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/deployment:
     post:
+      deprecated: true
       operationId: kubernetes-describe-deployment
       requestBody:
         content:
@@ -20363,6 +20416,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/ingress:
     post:
+      deprecated: true
       operationId: kubernetes-describe-ingress
       requestBody:
         content:
@@ -20412,6 +20466,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/job:
     post:
+      deprecated: true
       operationId: kubernetes-describe-job
       requestBody:
         content:
@@ -20461,6 +20516,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/network-policy:
     post:
+      deprecated: true
       operationId: kubernetes-describe-network-policy
       requestBody:
         content:
@@ -20510,6 +20566,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/node:
     post:
+      deprecated: true
       operationId: kubernetes-describe-node
       requestBody:
         content:
@@ -20559,6 +20616,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/pdb:
     post:
+      deprecated: true
       operationId: kubernetes-describe-pdb
       requestBody:
         content:
@@ -20608,6 +20666,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/pod:
     post:
+      deprecated: true
       operationId: kubernetes-describe-pod
       requestBody:
         content:
@@ -20657,6 +20716,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/pvc:
     post:
+      deprecated: true
       operationId: kubernetes-describe-pvc
       requestBody:
         content:
@@ -20706,6 +20766,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/secret:
     post:
+      deprecated: true
       operationId: kubernetes-describe-secret
       requestBody:
         content:
@@ -20755,6 +20816,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/service:
     post:
+      deprecated: true
       operationId: kubernetes-describe-service
       requestBody:
         content:
@@ -20804,6 +20866,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/storageclass:
     post:
+      deprecated: true
       operationId: kubernetes-describe-storage-class
       requestBody:
         content:
@@ -20853,6 +20916,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/sts:
     post:
+      deprecated: true
       operationId: kubernetes-describe-sts
       requestBody:
         content:
@@ -20898,94 +20962,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Describe stateful set
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/cursor-pod:
-    get:
-      operationId: kubernetes-cursor-pod-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: NextPageLink
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/KubernetesCursorPodList'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve cursor list of k8s pod for all namespaces
       tags:
       - Kubernetes
   /api/v1/kubernetesprofiles:
@@ -50537,7 +50513,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         namespace:
           nullable: true
@@ -51029,6 +51004,29 @@ components:
           format: int32
           type: integer
       type: object
+    DownloadKubernetesResourceCommand:
+      additionalProperties: false
+      example:
+        kind: DaemonSet
+        name: name
+        namespace: namespace
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        kind:
+          $ref: '#/components/schemas/EKubernetesResource'
+      required:
+      - kind
+      - name
+      - projectId
+      type: object
     DuplicateNameCheckerCommand:
       additionalProperties: false
       example:
@@ -51080,6 +51078,7 @@ components:
       - CronJob
       - Job
       - NetworkPolicy
+      - Namespace
       type: string
     EKubernetesState:
       enum:
@@ -56138,50 +56137,6 @@ components:
       - data
       - totalCount
       type: object
-    KubernetesCursorPodList:
-      additionalProperties: false
-      example:
-        nextPageLink: nextPageLink
-        data:
-        - container:
-          - container
-          - container
-          node: node
-          restartCount: 0
-          namespace: namespace
-          metadataName: metadataName
-          state:
-            reason: Terminating
-            status: status
-          type: ""
-          age: age
-          status: status
-        - container:
-          - container
-          - container
-          node: node
-          restartCount: 0
-          namespace: namespace
-          metadataName: metadataName
-          state:
-            reason: Terminating
-            status: status
-          type: ""
-          age: age
-          status: status
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/PodListDto'
-          nullable: true
-          type: array
-        nextPageLink:
-          nullable: true
-          type: string
-      required:
-      - data
-      - nextPageLink
-      type: object
     KubernetesDashboardDto:
       additionalProperties: false
       example:
@@ -60345,10 +60300,8 @@ components:
           format: int32
           type: integer
         yaml:
-          nullable: true
           type: string
         name:
-          nullable: true
           type: string
         namespace:
           nullable: true
