@@ -5912,8 +5912,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-01-19T00:03:34.6989999Z
-                  createdAt: 2025-01-19T00:03:34.6989999Z
+                  lastValidated: 2025-01-20T13:30:40.5775893Z
+                  createdAt: 2025-01-20T13:30:40.5775893Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6018,14 +6018,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-01-19T00:03:34.6989999Z
+                    lastBackup: 2025-01-20T13:30:40.5775893Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-01-19T00:03:34.6989999Z
+                  createdAt: 2025-01-20T13:30:40.5775893Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-01-19T00:03:34.6989999Z
+                  lastBackup: 2025-01-20T13:30:40.5775893Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6130,8 +6130,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-01-19T00:03:34.6989999Z
-                  expiration: 2025-01-19T00:03:34.6989999Z
+                  createdAt: 2025-01-20T13:30:40.5775893Z
+                  expiration: 2025-01-20T13:30:40.5775893Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6235,7 +6235,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-01-19T00:03:34.6989999Z
+                  createdAt: 2025-01-20T13:30:40.5775893Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6345,9 +6345,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-01-19T00:03:34.6989999+00:00
-                  startTimeStamp: 2025-01-19T00:03:34.6989999+00:00
-                  createdAt: 2025-01-19T00:03:34.6989999Z
+                  completionDateTime: 2025-01-20T13:30:40.5775893+00:00
+                  startTimeStamp: 2025-01-20T13:30:40.5775893+00:00
+                  createdAt: 2025-01-20T13:30:40.5775893Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -17273,6 +17273,54 @@ paths:
       summary: Remove k8s alerts
       tags:
       - Kubernetes
+  /api/v1/kubernetes/delete-resource:
+    post:
+      operationId: kubernetes-delete-resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteKubernetesResourceCommand'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete kubernetes resource
+      tags:
+      - Kubernetes
   /api/v1/kubernetes/describe-resource:
     post:
       operationId: kubernetes-describe-resource
@@ -17568,6 +17616,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace}:
     post:
+      deprecated: true
       operationId: kubernetes-kill-pod
       parameters:
       - explode: false
@@ -17594,6 +17643,10 @@ paths:
         style: simple
       responses:
         "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -17973,6 +18026,60 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Export
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/forbidden-namespaces/{projectId}:
+    get:
+      operationId: kubernetes-forbidden-namespaces
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Forbidden namespaces for k8s actions
       tags:
       - Kubernetes
   /api/v1/kubernetes/{projectId}/configmap:
@@ -50037,6 +50144,29 @@ components:
         id:
           format: int32
           type: integer
+      type: object
+    DeleteKubernetesResourceCommand:
+      additionalProperties: false
+      example:
+        kind: DaemonSet
+        name: name
+        namespace: namespace
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        kind:
+          $ref: '#/components/schemas/EKubernetesResource'
+      required:
+      - kind
+      - name
+      - projectId
       type: object
     DeleteMyAccountCommand:
       additionalProperties: false

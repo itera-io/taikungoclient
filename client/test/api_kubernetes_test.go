@@ -158,6 +158,18 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test KubernetesAPIService KubernetesDeleteResource", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDeleteResource(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test KubernetesAPIService KubernetesDeploymentList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -414,6 +426,20 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test KubernetesAPIService KubernetesForbiddenNamespaces", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId int32
+
+		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesForbiddenNamespaces(context.Background(), projectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test KubernetesAPIService KubernetesGetSupportedList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -500,9 +526,10 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 		var metadataName string
 		var namespace string
 
-		httpRes, err := apiClient.KubernetesAPI.KubernetesKillPod(context.Background(), projectId, metadataName, namespace).Execute()
+		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesKillPod(context.Background(), projectId, metadataName, namespace).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

@@ -367,6 +367,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesCronJobList**](docs/KubernetesAPI.md#kubernetescronjoblist) | **Get** /api/v1/kubernetes/{projectId}/cronjobs | Retrieve a list of k8s cron jobs for all namespaces
 *KubernetesAPI* | [**KubernetesDaemonSetList**](docs/KubernetesAPI.md#kubernetesdaemonsetlist) | **Get** /api/v1/kubernetes/{projectId}/daemonset | Retrieve list of k8s daemonset
 *KubernetesAPI* | [**KubernetesDashboardList**](docs/KubernetesAPI.md#kubernetesdashboardlist) | **Get** /api/v1/kubernetes/{projectId}/dashboard | Retrieve a list of crd
+*KubernetesAPI* | [**KubernetesDeleteResource**](docs/KubernetesAPI.md#kubernetesdeleteresource) | **Post** /api/v1/kubernetes/delete-resource | Delete kubernetes resource
 *KubernetesAPI* | [**KubernetesDeploymentList**](docs/KubernetesAPI.md#kubernetesdeploymentlist) | **Get** /api/v1/kubernetes/{projectId}/deployment | Retrieve a list of k8s deployment for all namespaces
 *KubernetesAPI* | [**KubernetesDescribeConfigMap**](docs/KubernetesAPI.md#kubernetesdescribeconfigmap) | **Post** /api/v1/kubernetes/describe/configmap | Describe configmap
 *KubernetesAPI* | [**KubernetesDescribeCrd**](docs/KubernetesAPI.md#kubernetesdescribecrd) | **Post** /api/v1/kubernetes/describe/crd | Describe crd
@@ -388,6 +389,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesDownload**](docs/KubernetesAPI.md#kubernetesdownload) | **Get** /api/v1/kubernetes/{projectId}/download | Download kube config file
 *KubernetesAPI* | [**KubernetesDownloadManifest**](docs/KubernetesAPI.md#kubernetesdownloadmanifest) | **Post** /api/v1/kubernetes/download-manifest | Download manifest
 *KubernetesAPI* | [**KubernetesExport**](docs/KubernetesAPI.md#kubernetesexport) | **Get** /api/v1/kubernetes/export | Export
+*KubernetesAPI* | [**KubernetesForbiddenNamespaces**](docs/KubernetesAPI.md#kubernetesforbiddennamespaces) | **Get** /api/v1/kubernetes/forbidden-namespaces/{projectId} | Forbidden namespaces for k8s actions
 *KubernetesAPI* | [**KubernetesGetSupportedList**](docs/KubernetesAPI.md#kubernetesgetsupportedlist) | **Get** /api/v1/kubernetes/supported/list | Retrieve Taikun supported kubernetes versions
 *KubernetesAPI* | [**KubernetesHelmReleaseList**](docs/KubernetesAPI.md#kuberneteshelmreleaselist) | **Get** /api/v1/kubernetes/{projectId}/helmreleases | Retrieve a list of k8s helm releases for all namespaces
 *KubernetesAPI* | [**KubernetesIngressClasses**](docs/KubernetesAPI.md#kubernetesingressclasses) | **Post** /api/v1/kubernetes/ingress-classes | List of ingress classes
@@ -1026,6 +1028,7 @@ Class | Method | HTTP request | Description
  - [DeleteImportedProjectCommand](docs/DeleteImportedProjectCommand.md)
  - [DeleteKubeConfigByProjectIdCommand](docs/DeleteKubeConfigByProjectIdCommand.md)
  - [DeleteKubeConfigCommand](docs/DeleteKubeConfigCommand.md)
+ - [DeleteKubernetesResourceCommand](docs/DeleteKubernetesResourceCommand.md)
  - [DeleteProjectCommand](docs/DeleteProjectCommand.md)
  - [DeleteRepositoryCommand](docs/DeleteRepositoryCommand.md)
  - [DeleteRestoreCommand](docs/DeleteRestoreCommand.md)
