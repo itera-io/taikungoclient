@@ -21,7 +21,8 @@ var _ MappedNullable = &PartnerEntity{}
 // PartnerEntity struct for PartnerEntity
 type PartnerEntity struct {
 	PartnerId *int32 `json:"partnerId,omitempty"`
-	PartnerName NullableString `json:"partnerName,omitempty"`
+	PartnerName *string `json:"partnerName,omitempty"`
+	Logo NullableString `json:"logo,omitempty"`
 }
 
 // NewPartnerEntity instantiates a new PartnerEntity object
@@ -73,46 +74,78 @@ func (o *PartnerEntity) SetPartnerId(v int32) {
 	o.PartnerId = &v
 }
 
-// GetPartnerName returns the PartnerName field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPartnerName returns the PartnerName field value if set, zero value otherwise.
 func (o *PartnerEntity) GetPartnerName() string {
-	if o == nil || IsNil(o.PartnerName.Get()) {
+	if o == nil || IsNil(o.PartnerName) {
 		var ret string
 		return ret
 	}
-	return *o.PartnerName.Get()
+	return *o.PartnerName
 }
 
 // GetPartnerNameOk returns a tuple with the PartnerName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PartnerEntity) GetPartnerNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.PartnerName) {
 		return nil, false
 	}
-	return o.PartnerName.Get(), o.PartnerName.IsSet()
+	return o.PartnerName, true
 }
 
 // HasPartnerName returns a boolean if a field has been set.
 func (o *PartnerEntity) HasPartnerName() bool {
-	if o != nil && o.PartnerName.IsSet() {
+	if o != nil && !IsNil(o.PartnerName) {
 		return true
 	}
 
 	return false
 }
 
-// SetPartnerName gets a reference to the given NullableString and assigns it to the PartnerName field.
+// SetPartnerName gets a reference to the given string and assigns it to the PartnerName field.
 func (o *PartnerEntity) SetPartnerName(v string) {
-	o.PartnerName.Set(&v)
-}
-// SetPartnerNameNil sets the value for PartnerName to be an explicit nil
-func (o *PartnerEntity) SetPartnerNameNil() {
-	o.PartnerName.Set(nil)
+	o.PartnerName = &v
 }
 
-// UnsetPartnerName ensures that no value is present for PartnerName, not even an explicit nil
-func (o *PartnerEntity) UnsetPartnerName() {
-	o.PartnerName.Unset()
+// GetLogo returns the Logo field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PartnerEntity) GetLogo() string {
+	if o == nil || IsNil(o.Logo.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Logo.Get()
+}
+
+// GetLogoOk returns a tuple with the Logo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PartnerEntity) GetLogoOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Logo.Get(), o.Logo.IsSet()
+}
+
+// HasLogo returns a boolean if a field has been set.
+func (o *PartnerEntity) HasLogo() bool {
+	if o != nil && o.Logo.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLogo gets a reference to the given NullableString and assigns it to the Logo field.
+func (o *PartnerEntity) SetLogo(v string) {
+	o.Logo.Set(&v)
+}
+// SetLogoNil sets the value for Logo to be an explicit nil
+func (o *PartnerEntity) SetLogoNil() {
+	o.Logo.Set(nil)
+}
+
+// UnsetLogo ensures that no value is present for Logo, not even an explicit nil
+func (o *PartnerEntity) UnsetLogo() {
+	o.Logo.Unset()
 }
 
 func (o PartnerEntity) MarshalJSON() ([]byte, error) {
@@ -128,8 +161,11 @@ func (o PartnerEntity) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PartnerId) {
 		toSerialize["partnerId"] = o.PartnerId
 	}
-	if o.PartnerName.IsSet() {
-		toSerialize["partnerName"] = o.PartnerName.Get()
+	if !IsNil(o.PartnerName) {
+		toSerialize["partnerName"] = o.PartnerName
+	}
+	if o.Logo.IsSet() {
+		toSerialize["logo"] = o.Logo.Get()
 	}
 	return toSerialize, nil
 }
