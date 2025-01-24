@@ -21,6 +21,7 @@ type EKubernetesResource string
 
 // List of EKubernetesResource
 const (
+	EKUBERNETESRESOURCE_NONE EKubernetesResource = "None"
 	EKUBERNETESRESOURCE_DAEMON_SET EKubernetesResource = "DaemonSet"
 	EKUBERNETESRESOURCE_PVC EKubernetesResource = "Pvc"
 	EKUBERNETESRESOURCE_DEPLOYMENT EKubernetesResource = "Deployment"
@@ -42,6 +43,7 @@ const (
 
 // All allowed values of EKubernetesResource enum
 var AllowedEKubernetesResourceEnumValues = []EKubernetesResource{
+	"None",
 	"DaemonSet",
 	"Pvc",
 	"Deployment",

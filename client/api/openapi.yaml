@@ -5912,8 +5912,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-01-23T00:03:17.1518708Z
-                  createdAt: 2025-01-23T00:03:17.1518708Z
+                  lastValidated: 2025-01-24T00:03:13.6393012Z
+                  createdAt: 2025-01-24T00:03:13.6393012Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6018,14 +6018,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-01-23T00:03:17.1518708Z
+                    lastBackup: 2025-01-24T00:03:13.6393012Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-01-23T00:03:17.1518708Z
+                  createdAt: 2025-01-24T00:03:13.6393012Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-01-23T00:03:17.1518708Z
+                  lastBackup: 2025-01-24T00:03:13.6393012Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6130,8 +6130,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-01-23T00:03:17.1518708Z
-                  expiration: 2025-01-23T00:03:17.1518708Z
+                  createdAt: 2025-01-24T00:03:13.6393012Z
+                  expiration: 2025-01-24T00:03:13.6393012Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6235,7 +6235,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-01-23T00:03:17.1518708Z
+                  createdAt: 2025-01-24T00:03:13.6393012Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6345,9 +6345,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-01-23T00:03:17.1518708+00:00
-                  startTimeStamp: 2025-01-23T00:03:17.1518708+00:00
-                  createdAt: 2025-01-23T00:03:17.1518708Z
+                  completionDateTime: 2025-01-24T00:03:13.6393012+00:00
+                  startTimeStamp: 2025-01-24T00:03:13.6393012+00:00
+                  createdAt: 2025-01-24T00:03:13.6393012Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -47969,7 +47969,6 @@ components:
     CreateKubernetesResourceCommand:
       additionalProperties: false
       example:
-        kind: DaemonSet
         projectId: 0
         yaml: yaml
       properties:
@@ -47979,10 +47978,7 @@ components:
         yaml:
           nullable: true
           type: string
-        kind:
-          $ref: '#/components/schemas/EKubernetesResource'
       required:
-      - kind
       - projectId
       - yaml
       type: object
@@ -50148,7 +50144,7 @@ components:
     DeleteKubernetesResourceCommand:
       additionalProperties: false
       example:
-        kind: DaemonSet
+        kind: None
         name: name
         namespace: namespace
         projectId: 0
@@ -50634,7 +50630,7 @@ components:
     DescribeKubernetesResourceCommand:
       additionalProperties: false
       example:
-        kind: DaemonSet
+        kind: None
         name: name
         namespace: namespace
         projectId: 0
@@ -51137,7 +51133,7 @@ components:
     DownloadKubernetesResourceCommand:
       additionalProperties: false
       example:
-        kind: DaemonSet
+        kind: None
         name: name
         namespace: namespace
         projectId: 0
@@ -51192,6 +51188,7 @@ components:
       type: string
     EKubernetesResource:
       enum:
+      - None
       - DaemonSet
       - Pvc
       - Deployment
@@ -60423,7 +60420,6 @@ components:
     PatchKubernetesResourceCommand:
       additionalProperties: false
       example:
-        kind: DaemonSet
         name: name
         namespace: namespace
         projectId: 0
@@ -60439,10 +60435,7 @@ components:
         namespace:
           nullable: true
           type: string
-        kind:
-          $ref: '#/components/schemas/EKubernetesResource'
       required:
-      - kind
       - name
       - projectId
       - yaml

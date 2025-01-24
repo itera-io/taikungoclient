@@ -26,7 +26,6 @@ type PatchKubernetesResourceCommand struct {
 	Yaml string `json:"yaml"`
 	Name string `json:"name"`
 	Namespace NullableString `json:"namespace,omitempty"`
-	Kind EKubernetesResource `json:"kind"`
 }
 
 type _PatchKubernetesResourceCommand PatchKubernetesResourceCommand
@@ -35,12 +34,11 @@ type _PatchKubernetesResourceCommand PatchKubernetesResourceCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPatchKubernetesResourceCommand(projectId int32, yaml string, name string, kind EKubernetesResource) *PatchKubernetesResourceCommand {
+func NewPatchKubernetesResourceCommand(projectId int32, yaml string, name string) *PatchKubernetesResourceCommand {
 	this := PatchKubernetesResourceCommand{}
 	this.ProjectId = projectId
 	this.Yaml = yaml
 	this.Name = name
-	this.Kind = kind
 	return &this
 }
 
@@ -166,30 +164,6 @@ func (o *PatchKubernetesResourceCommand) UnsetNamespace() {
 	o.Namespace.Unset()
 }
 
-// GetKind returns the Kind field value
-func (o *PatchKubernetesResourceCommand) GetKind() EKubernetesResource {
-	if o == nil {
-		var ret EKubernetesResource
-		return ret
-	}
-
-	return o.Kind
-}
-
-// GetKindOk returns a tuple with the Kind field value
-// and a boolean to check if the value has been set.
-func (o *PatchKubernetesResourceCommand) GetKindOk() (*EKubernetesResource, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Kind, true
-}
-
-// SetKind sets field value
-func (o *PatchKubernetesResourceCommand) SetKind(v EKubernetesResource) {
-	o.Kind = v
-}
-
 func (o PatchKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -206,7 +180,6 @@ func (o PatchKubernetesResourceCommand) ToMap() (map[string]interface{}, error) 
 	if o.Namespace.IsSet() {
 		toSerialize["namespace"] = o.Namespace.Get()
 	}
-	toSerialize["kind"] = o.Kind
 	return toSerialize, nil
 }
 
@@ -218,7 +191,6 @@ func (o *PatchKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error) 
 		"projectId",
 		"yaml",
 		"name",
-		"kind",
 	}
 
 	allProperties := make(map[string]interface{})
