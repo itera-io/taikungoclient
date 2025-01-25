@@ -34,7 +34,7 @@ func (r ApiExecutorsCreateRequest) CreateExecutorCommand(createExecutorCommand C
 	return r
 }
 
-func (r ApiExecutorsCreateRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiExecutorsCreateRequest) Execute() (string, *http.Response, error) {
 	return r.ApiService.ExecutorsCreateExecute(r)
 }
 
@@ -52,13 +52,13 @@ func (a *ExecutorsAPIService) ExecutorsCreate(ctx context.Context) ApiExecutorsC
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ExecutorsAPIService) ExecutorsCreateExecute(r ApiExecutorsCreateRequest) (map[string]interface{}, *http.Response, error) {
+//  @return string
+func (a *ExecutorsAPIService) ExecutorsCreateExecute(r ApiExecutorsCreateRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ExecutorsAPIService.ExecutorsCreate")
