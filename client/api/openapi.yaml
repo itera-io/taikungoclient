@@ -5912,8 +5912,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-01-29T00:03:16.2245048Z
-                  createdAt: 2025-01-29T00:03:16.2245048Z
+                  lastValidated: 2025-01-30T00:03:09.7586332Z
+                  createdAt: 2025-01-30T00:03:09.7586332Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6018,14 +6018,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-01-29T00:03:16.2245048Z
+                    lastBackup: 2025-01-30T00:03:09.7586332Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-01-29T00:03:16.2245048Z
+                  createdAt: 2025-01-30T00:03:09.7586332Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-01-29T00:03:16.2245048Z
+                  lastBackup: 2025-01-30T00:03:09.7586332Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6130,8 +6130,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-01-29T00:03:16.2245048Z
-                  expiration: 2025-01-29T00:03:16.2245048Z
+                  createdAt: 2025-01-30T00:03:09.7586332Z
+                  expiration: 2025-01-30T00:03:09.7586332Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6235,7 +6235,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-01-29T00:03:16.2245048Z
+                  createdAt: 2025-01-30T00:03:09.7586332Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6345,9 +6345,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-01-29T00:03:16.2245048+00:00
-                  startTimeStamp: 2025-01-29T00:03:16.2245048+00:00
-                  createdAt: 2025-01-29T00:03:16.2245048Z
+                  completionDateTime: 2025-01-30T00:03:09.7586332+00:00
+                  startTimeStamp: 2025-01-30T00:03:09.7586332+00:00
+                  createdAt: 2025-01-30T00:03:09.7586332Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -17284,9 +17284,9 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
+            application/json:
               schema:
-                $ref: '#/components/schemas/Void'
+                $ref: '#/components/schemas/KubernetesActionRequest'
           description: OK
         "400":
           content:
@@ -50141,24 +50141,26 @@ components:
     DeleteKubernetesResourceCommand:
       additionalProperties: false
       example:
+        data:
+        - name: name
+          namespace: namespace
+        - name: name
+          namespace: namespace
         kind: None
-        name: name
-        namespace: namespace
         projectId: 0
       properties:
         projectId:
           format: int32
           type: integer
-        name:
-          type: string
-        namespace:
-          nullable: true
-          type: string
         kind:
           $ref: '#/components/schemas/EKubernetesResource'
+        data:
+          items:
+            $ref: '#/components/schemas/KubernetesActionRequest'
+          type: array
       required:
+      - data
       - kind
-      - name
       - projectId
       type: object
     DeleteMyAccountCommand:
@@ -55931,6 +55933,20 @@ components:
       required:
       - data
       - totalCount
+      type: object
+    KubernetesActionRequest:
+      additionalProperties: false
+      example:
+        name: name
+        namespace: namespace
+      properties:
+        name:
+          type: string
+        namespace:
+          nullable: true
+          type: string
+      required:
+      - name
       type: object
     KubernetesAlertCreateDto:
       additionalProperties: false

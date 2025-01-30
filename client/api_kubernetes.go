@@ -2078,7 +2078,7 @@ func (r ApiKubernetesDeleteResourceRequest) DeleteKubernetesResourceCommand(dele
 	return r
 }
 
-func (r ApiKubernetesDeleteResourceRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiKubernetesDeleteResourceRequest) Execute() (*KubernetesActionRequest, *http.Response, error) {
 	return r.ApiService.KubernetesDeleteResourceExecute(r)
 }
 
@@ -2096,13 +2096,13 @@ func (a *KubernetesAPIService) KubernetesDeleteResource(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDeleteResourceRequest) (map[string]interface{}, *http.Response, error) {
+//  @return KubernetesActionRequest
+func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDeleteResourceRequest) (*KubernetesActionRequest, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *KubernetesActionRequest
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDeleteResource")
@@ -2126,7 +2126,7 @@ func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDe
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

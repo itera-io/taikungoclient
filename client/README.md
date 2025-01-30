@@ -1198,6 +1198,7 @@ Class | Method | HTTP request | Description
  - [KubeConfigInteractiveShellCommand](docs/KubeConfigInteractiveShellCommand.md)
  - [KubeConfigResponse](docs/KubeConfigResponse.md)
  - [KubeConfigRoleResponse](docs/KubeConfigRoleResponse.md)
+ - [KubernetesActionRequest](docs/KubernetesActionRequest.md)
  - [KubernetesAlertCreateDto](docs/KubernetesAlertCreateDto.md)
  - [KubernetesAlertDto](docs/KubernetesAlertDto.md)
  - [KubernetesAlertDtoForPoller](docs/KubernetesAlertDtoForPoller.md)

@@ -23,9 +23,8 @@ var _ MappedNullable = &DeleteKubernetesResourceCommand{}
 // DeleteKubernetesResourceCommand struct for DeleteKubernetesResourceCommand
 type DeleteKubernetesResourceCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Name string `json:"name"`
-	Namespace NullableString `json:"namespace,omitempty"`
 	Kind EKubernetesResource `json:"kind"`
+	Data []KubernetesActionRequest `json:"data"`
 }
 
 type _DeleteKubernetesResourceCommand DeleteKubernetesResourceCommand
@@ -34,11 +33,11 @@ type _DeleteKubernetesResourceCommand DeleteKubernetesResourceCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeleteKubernetesResourceCommand(projectId int32, name string, kind EKubernetesResource) *DeleteKubernetesResourceCommand {
+func NewDeleteKubernetesResourceCommand(projectId int32, kind EKubernetesResource, data []KubernetesActionRequest) *DeleteKubernetesResourceCommand {
 	this := DeleteKubernetesResourceCommand{}
 	this.ProjectId = projectId
-	this.Name = name
 	this.Kind = kind
+	this.Data = data
 	return &this
 }
 
@@ -74,72 +73,6 @@ func (o *DeleteKubernetesResourceCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetName returns the Name field value
-func (o *DeleteKubernetesResourceCommand) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *DeleteKubernetesResourceCommand) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *DeleteKubernetesResourceCommand) SetName(v string) {
-	o.Name = v
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *DeleteKubernetesResourceCommand) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Namespace.Get()
-}
-
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *DeleteKubernetesResourceCommand) GetNamespaceOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
-}
-
-// HasNamespace returns a boolean if a field has been set.
-func (o *DeleteKubernetesResourceCommand) HasNamespace() bool {
-	if o != nil && o.Namespace.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given NullableString and assigns it to the Namespace field.
-func (o *DeleteKubernetesResourceCommand) SetNamespace(v string) {
-	o.Namespace.Set(&v)
-}
-// SetNamespaceNil sets the value for Namespace to be an explicit nil
-func (o *DeleteKubernetesResourceCommand) SetNamespaceNil() {
-	o.Namespace.Set(nil)
-}
-
-// UnsetNamespace ensures that no value is present for Namespace, not even an explicit nil
-func (o *DeleteKubernetesResourceCommand) UnsetNamespace() {
-	o.Namespace.Unset()
-}
-
 // GetKind returns the Kind field value
 func (o *DeleteKubernetesResourceCommand) GetKind() EKubernetesResource {
 	if o == nil {
@@ -164,6 +97,30 @@ func (o *DeleteKubernetesResourceCommand) SetKind(v EKubernetesResource) {
 	o.Kind = v
 }
 
+// GetData returns the Data field value
+func (o *DeleteKubernetesResourceCommand) GetData() []KubernetesActionRequest {
+	if o == nil {
+		var ret []KubernetesActionRequest
+		return ret
+	}
+
+	return o.Data
+}
+
+// GetDataOk returns a tuple with the Data field value
+// and a boolean to check if the value has been set.
+func (o *DeleteKubernetesResourceCommand) GetDataOk() ([]KubernetesActionRequest, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Data, true
+}
+
+// SetData sets field value
+func (o *DeleteKubernetesResourceCommand) SetData(v []KubernetesActionRequest) {
+	o.Data = v
+}
+
 func (o DeleteKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -175,11 +132,8 @@ func (o DeleteKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
 func (o DeleteKubernetesResourceCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["name"] = o.Name
-	if o.Namespace.IsSet() {
-		toSerialize["namespace"] = o.Namespace.Get()
-	}
 	toSerialize["kind"] = o.Kind
+	toSerialize["data"] = o.Data
 	return toSerialize, nil
 }
 
@@ -189,8 +143,8 @@ func (o *DeleteKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error)
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"name",
 		"kind",
+		"data",
 	}
 
 	allProperties := make(map[string]interface{})
