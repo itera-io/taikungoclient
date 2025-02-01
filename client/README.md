@@ -400,6 +400,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesKubeConfig**](docs/KubernetesAPI.md#kuberneteskubeconfig) | **Get** /api/v1/kubernetes/{projectId}/kubeconfig | Retrieve kube config file
 *KubernetesAPI* | [**KubernetesNamespaceList**](docs/KubernetesAPI.md#kubernetesnamespacelist) | **Get** /api/v1/kubernetes/{projectId}/namespaces | Retrieve kube config file
 *KubernetesAPI* | [**KubernetesNetworkPolicyList**](docs/KubernetesAPI.md#kubernetesnetworkpolicylist) | **Get** /api/v1/kubernetes/{projectId}/network-policies | Retrieve a list of k8s network-policies for all namespaces
+*KubernetesAPI* | [**KubernetesNodeActions**](docs/KubernetesAPI.md#kubernetesnodeactions) | **Post** /api/v1/kubernetes/nodes/actions | Node actions
 *KubernetesAPI* | [**KubernetesNodeList**](docs/KubernetesAPI.md#kubernetesnodelist) | **Get** /api/v1/kubernetes/{projectId}/node | Retrieve a list of k8s node
 *KubernetesAPI* | [**KubernetesOverview**](docs/KubernetesAPI.md#kubernetesoverview) | **Get** /api/v1/kubernetes/overview | Overview kubernetes nodes and pods by organization id
 *KubernetesAPI* | [**KubernetesPatchResource**](docs/KubernetesAPI.md#kubernetespatchresource) | **Post** /api/v1/kubernetes/patch-resource | Patch kubernetes resource
@@ -1089,6 +1090,7 @@ Class | Method | HTTP request | Description
  - [EInstanceStatus](docs/EInstanceStatus.md)
  - [EKubernetesResource](docs/EKubernetesResource.md)
  - [EKubernetesState](docs/EKubernetesState.md)
+ - [ENodeAction](docs/ENodeAction.md)
  - [EditAlertingIntegrationCommand](docs/EditAlertingIntegrationCommand.md)
  - [EditAllowedHostDto](docs/EditAllowedHostDto.md)
  - [EditArticleCommand](docs/EditArticleCommand.md)
@@ -1254,6 +1256,7 @@ Class | Method | HTTP request | Description
  - [NetworkPolicies](docs/NetworkPolicies.md)
  - [NetworkPolicyDto](docs/NetworkPolicyDto.md)
  - [NetworkSummary](docs/NetworkSummary.md)
+ - [NodeActionCommand](docs/NodeActionCommand.md)
  - [NodeCommand](docs/NodeCommand.md)
  - [NodeDto](docs/NodeDto.md)
  - [NodeSearchResponseData](docs/NodeSearchResponseData.md)

@@ -5912,8 +5912,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-01-30T17:34:37.2601436Z
-                  createdAt: 2025-01-30T17:34:37.2601436Z
+                  lastValidated: 2025-02-01T00:03:35.7621401Z
+                  createdAt: 2025-02-01T00:03:35.7621401Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6018,14 +6018,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-01-30T17:34:37.2601436Z
+                    lastBackup: 2025-02-01T00:03:35.7621401Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-01-30T17:34:37.2601436Z
+                  createdAt: 2025-02-01T00:03:35.7621401Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-01-30T17:34:37.2601436Z
+                  lastBackup: 2025-02-01T00:03:35.7621401Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6130,8 +6130,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-01-30T17:34:37.2601436Z
-                  expiration: 2025-01-30T17:34:37.2601436Z
+                  createdAt: 2025-02-01T00:03:35.7621401Z
+                  expiration: 2025-02-01T00:03:35.7621401Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6235,7 +6235,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-01-30T17:34:37.2601436Z
+                  createdAt: 2025-02-01T00:03:35.7621401Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6345,9 +6345,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-01-30T17:34:37.2601436+00:00
-                  startTimeStamp: 2025-01-30T17:34:37.2601436+00:00
-                  createdAt: 2025-01-30T17:34:37.2601436Z
+                  completionDateTime: 2025-02-01T00:03:35.7621401+00:00
+                  startTimeStamp: 2025-02-01T00:03:35.7621401+00:00
+                  createdAt: 2025-02-01T00:03:35.7621401Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -17679,6 +17679,54 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Kill the pod
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/nodes/actions:
+    post:
+      operationId: kubernetes-node-actions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeActionCommand'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Node actions
       tags:
       - Kubernetes
   /api/v1/kubernetes/patch-resource:
@@ -51219,6 +51267,12 @@ components:
       - InitNM
       - InitError
       type: string
+    ENodeAction:
+      enum:
+      - Cordon
+      - Uncordon
+      - Drain
+      type: string
     EditAlertingIntegrationCommand:
       additionalProperties: false
       example:
@@ -57827,6 +57881,26 @@ components:
         type:
           nullable: true
           type: string
+      type: object
+    NodeActionCommand:
+      additionalProperties: false
+      example:
+        name: name
+        action: Cordon
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        action:
+          $ref: '#/components/schemas/ENodeAction'
+      required:
+      - action
+      - name
+      - projectId
       type: object
     NodeCommand:
       additionalProperties: false

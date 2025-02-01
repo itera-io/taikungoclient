@@ -418,6 +418,7 @@ docs/EImportClusterType.md
 docs/EInstanceStatus.md
 docs/EKubernetesResource.md
 docs/EKubernetesState.md
+docs/ENodeAction.md
 docs/EditAlertingIntegrationCommand.md
 docs/EditAllowedHostDto.md
 docs/EditArticleCommand.md
@@ -598,6 +599,7 @@ docs/NetworkListCommand.md
 docs/NetworkPolicies.md
 docs/NetworkPolicyDto.md
 docs/NetworkSummary.md
+docs/NodeActionCommand.md
 docs/NodeCommand.md
 docs/NodeDto.md
 docs/NodeSearchResponseData.md
@@ -1333,6 +1335,7 @@ model_e_import_cluster_type.go
 model_e_instance_status.go
 model_e_kubernetes_resource.go
 model_e_kubernetes_state.go
+model_e_node_action.go
 model_edit_alerting_integration_command.go
 model_edit_allowed_host_dto.go
 model_edit_article_command.go
@@ -1498,6 +1501,7 @@ model_network_list_command.go
 model_network_policies.go
 model_network_policy_dto.go
 model_network_summary.go
+model_node_action_command.go
 model_node_command.go
 model_node_dto.go
 model_node_search_response_data.go
