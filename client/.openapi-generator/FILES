@@ -368,6 +368,7 @@ docs/DeleteSubscriptionCommand.md
 docs/DeleteUserGroupCommand.md
 docs/DeleteVirtualClusterCommand.md
 docs/DeleteVmDiskCommand.md
+docs/DeploymentActionCommand.md
 docs/DeploymentCommitVmCommand.md
 docs/DeploymentCompletedCommand.md
 docs/DeploymentDisableAiCommand.md
@@ -414,6 +415,7 @@ docs/DownloadInvoiceCommand.md
 docs/DownloadKubeConfigCommand.md
 docs/DownloadKubernetesResourceCommand.md
 docs/DuplicateNameCheckerCommand.md
+docs/EDeploymentAction.md
 docs/EImportClusterType.md
 docs/EInstanceStatus.md
 docs/EKubernetesResource.md
@@ -1286,6 +1288,7 @@ model_delete_subscription_command.go
 model_delete_user_group_command.go
 model_delete_virtual_cluster_command.go
 model_delete_vm_disk_command.go
+model_deployment_action_command.go
 model_deployment_commit_vm_command.go
 model_deployment_completed_command.go
 model_deployment_disable_ai_command.go
@@ -1331,6 +1334,7 @@ model_download_invoice_command.go
 model_download_kube_config_command.go
 model_download_kubernetes_resource_command.go
 model_duplicate_name_checker_command.go
+model_e_deployment_action.go
 model_e_import_cluster_type.go
 model_e_instance_status.go
 model_e_kubernetes_resource.go

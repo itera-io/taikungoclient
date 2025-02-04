@@ -102,7 +102,7 @@ const (
 	ACTIONTYPE_ADDING_V_CLUSTER ActionType = "AddingVCluster"
 	ACTIONTYPE_START_IMPORT_CLUSTER ActionType = "StartImportCluster"
 	ACTIONTYPE_START_MIGRATION_CLUSTER ActionType = "StartMigrationCluster"
-	ACTIONTYPE_CREATE_KUBERNETES_RESOURCE ActionType = "CreateKubernetesResource"
+	ACTIONTYPE_KUBERNETES_ACTION ActionType = "KubernetesAction"
 )
 
 // All allowed values of ActionType enum
@@ -188,7 +188,7 @@ var AllowedActionTypeEnumValues = []ActionType{
 	"AddingVCluster",
 	"StartImportCluster",
 	"StartMigrationCluster",
-	"CreateKubernetesResource",
+	"KubernetesAction",
 }
 
 func (v *ActionType) UnmarshalJSON(src []byte) error {

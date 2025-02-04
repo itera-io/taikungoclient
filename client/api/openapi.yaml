@@ -5912,8 +5912,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-01-31T16:32:29.5144899Z
-                  createdAt: 2025-01-31T16:32:29.5144899Z
+                  lastValidated: 2025-02-04T00:03:11.0367313Z
+                  createdAt: 2025-02-04T00:03:11.0367313Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6018,14 +6018,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-01-31T16:32:29.5144899Z
+                    lastBackup: 2025-02-04T00:03:11.0367313Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-01-31T16:32:29.5144899Z
+                  createdAt: 2025-02-04T00:03:11.0367313Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-01-31T16:32:29.5144899Z
+                  lastBackup: 2025-02-04T00:03:11.0367313Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6130,8 +6130,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-01-31T16:32:29.5144899Z
-                  expiration: 2025-01-31T16:32:29.5144899Z
+                  createdAt: 2025-02-04T00:03:11.0367313Z
+                  expiration: 2025-02-04T00:03:11.0367313Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6235,7 +6235,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-01-31T16:32:29.5144899Z
+                  createdAt: 2025-02-04T00:03:11.0367313Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6345,9 +6345,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-01-31T16:32:29.5144899+00:00
-                  startTimeStamp: 2025-01-31T16:32:29.5144899+00:00
-                  createdAt: 2025-01-31T16:32:29.5144899Z
+                  completionDateTime: 2025-02-04T00:03:11.0367313+00:00
+                  startTimeStamp: 2025-02-04T00:03:11.0367313+00:00
+                  createdAt: 2025-02-04T00:03:11.0367313Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -17321,6 +17321,54 @@ paths:
       summary: Delete kubernetes resource
       tags:
       - Kubernetes
+  /api/v1/kubernetes/deployment/actions:
+    post:
+      operationId: kubernetes-deployment-actions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentActionCommand'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Deployment actions
+      tags:
+      - Kubernetes
   /api/v1/kubernetes/describe-resource:
     post:
       operationId: kubernetes-describe-resource
@@ -17779,6 +17827,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/restart/daemonset:
     post:
+      deprecated: true
       operationId: kubernetes-restart-daemon-set
       requestBody:
         content:
@@ -17828,6 +17877,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/restart/deployment:
     post:
+      deprecated: true
       operationId: kubernetes-restart-deployment
       requestBody:
         content:
@@ -17877,6 +17927,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/restart/sts:
     post:
+      deprecated: true
       operationId: kubernetes-restart-sts
       requestBody:
         content:
@@ -41574,7 +41625,7 @@ components:
       - AddingVCluster
       - StartImportCluster
       - StartMigrationCluster
-      - CreateKubernetesResource
+      - KubernetesAction
       type: string
     AddOrganizationsToRuleDto:
       additionalProperties: false
@@ -50355,6 +50406,36 @@ components:
           nullable: true
           type: array
       type: object
+    DeploymentActionCommand:
+      additionalProperties: false
+      example:
+        name: name
+        namespace: namespace
+        action: Pause
+        projectId: 0
+        scaleReplicaCount: 6
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        scaleReplicaCount:
+          format: int32
+          nullable: true
+          type: integer
+        action:
+          $ref: '#/components/schemas/EDeploymentAction'
+      required:
+      - action
+      - name
+      - namespace
+      - projectId
+      type: object
     DeploymentCommitVmCommand:
       additionalProperties: false
       example:
@@ -51218,6 +51299,14 @@ components:
           nullable: true
           type: string
       type: object
+    EDeploymentAction:
+      enum:
+      - Pause
+      - Resume
+      - Restart
+      - Scale
+      - Rollback
+      type: string
     EImportClusterType:
       enum:
       - CloudCredential
