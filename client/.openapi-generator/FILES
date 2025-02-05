@@ -421,6 +421,7 @@ docs/EInstanceStatus.md
 docs/EKubernetesResource.md
 docs/EKubernetesState.md
 docs/ENodeAction.md
+docs/EStsAction.md
 docs/EditAlertingIntegrationCommand.md
 docs/EditAllowedHostDto.md
 docs/EditArticleCommand.md
@@ -894,6 +895,7 @@ docs/StripeAPI.md
 docs/StripeInvoiceListDto.md
 docs/StripeInvoices.md
 docs/StripeSubscriptionItemDto.md
+docs/StsActionCommand.md
 docs/StsDto.md
 docs/StsList.md
 docs/StsSearchCommand.md
@@ -1340,6 +1342,7 @@ model_e_instance_status.go
 model_e_kubernetes_resource.go
 model_e_kubernetes_state.go
 model_e_node_action.go
+model_e_sts_action.go
 model_edit_alerting_integration_command.go
 model_edit_allowed_host_dto.go
 model_edit_article_command.go
@@ -1764,6 +1767,7 @@ model_storage_list_command.go
 model_stripe_invoice_list_dto.go
 model_stripe_invoices.go
 model_stripe_subscription_item_dto.go
+model_sts_action_command.go
 model_sts_dto.go
 model_sts_list.go
 model_sts_search_command.go

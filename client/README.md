@@ -419,6 +419,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesServiceList**](docs/KubernetesAPI.md#kubernetesservicelist) | **Get** /api/v1/kubernetes/{projectId}/service | Retrieve a list of k8s service for all namespaces
 *KubernetesAPI* | [**KubernetesSilenceManager**](docs/KubernetesAPI.md#kubernetessilencemanager) | **Post** /api/v1/kubernetes/silencemanager | Silence management for k8s alerts
 *KubernetesAPI* | [**KubernetesStorageClassList**](docs/KubernetesAPI.md#kubernetesstorageclasslist) | **Get** /api/v1/kubernetes/{projectId}/storageclass | Retrieve a list of k8s storageclass for all namespaces
+*KubernetesAPI* | [**KubernetesStsActions**](docs/KubernetesAPI.md#kubernetesstsactions) | **Post** /api/v1/kubernetes/sts/actions | Stateful set actions
 *KubernetesAPI* | [**KubernetesStsList**](docs/KubernetesAPI.md#kubernetesstslist) | **Get** /api/v1/kubernetes/{projectId}/sts | Retrieve a list of k8s sts for all namespaces
 *KubernetesAPI* | [**KubernetesUpdateAlert**](docs/KubernetesAPI.md#kubernetesupdatealert) | **Put** /api/v1/kubernetes/updatealert/{alertId} | Update k8s alert
 *KubernetesProfilesAPI* | [**KubernetesprofilesCreate**](docs/KubernetesProfilesAPI.md#kubernetesprofilescreate) | **Post** /api/v1/kubernetesprofiles | Add kubernetes profile
@@ -1094,6 +1095,7 @@ Class | Method | HTTP request | Description
  - [EKubernetesResource](docs/EKubernetesResource.md)
  - [EKubernetesState](docs/EKubernetesState.md)
  - [ENodeAction](docs/ENodeAction.md)
+ - [EStsAction](docs/EStsAction.md)
  - [EditAlertingIntegrationCommand](docs/EditAlertingIntegrationCommand.md)
  - [EditAllowedHostDto](docs/EditAllowedHostDto.md)
  - [EditArticleCommand](docs/EditArticleCommand.md)
@@ -1518,6 +1520,7 @@ Class | Method | HTTP request | Description
  - [StripeInvoiceListDto](docs/StripeInvoiceListDto.md)
  - [StripeInvoices](docs/StripeInvoices.md)
  - [StripeSubscriptionItemDto](docs/StripeSubscriptionItemDto.md)
+ - [StsActionCommand](docs/StsActionCommand.md)
  - [StsDto](docs/StsDto.md)
  - [StsList](docs/StsList.md)
  - [StsSearchCommand](docs/StsSearchCommand.md)
