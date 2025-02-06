@@ -27,6 +27,7 @@ const (
 	EINSTANCESTATUS_READY EInstanceStatus = "Ready"
 	EINSTANCESTATUS_NOT_READY EInstanceStatus = "NotReady"
 	EINSTANCESTATUS_FAILURE EInstanceStatus = "Failure"
+	EINSTANCESTATUS_CANCELLED EInstanceStatus = "Cancelled"
 )
 
 // All allowed values of EInstanceStatus enum
@@ -37,6 +38,7 @@ var AllowedEInstanceStatusEnumValues = []EInstanceStatus{
 	"Ready",
 	"NotReady",
 	"Failure",
+	"Cancelled",
 }
 
 func (v *EInstanceStatus) UnmarshalJSON(src []byte) error {

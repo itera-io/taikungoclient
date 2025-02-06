@@ -15,35 +15,35 @@ import (
 	"encoding/json"
 )
 
-// checks if the TryForFreeCommand type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &TryForFreeCommand{}
+// checks if the RegistrationCommand type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &RegistrationCommand{}
 
-// TryForFreeCommand struct for TryForFreeCommand
-type TryForFreeCommand struct {
+// RegistrationCommand struct for RegistrationCommand
+type RegistrationCommand struct {
 	OrganizationName NullableString `json:"organizationName,omitempty"`
 	Username NullableString `json:"username,omitempty"`
 	Email NullableString `json:"email,omitempty"`
 }
 
-// NewTryForFreeCommand instantiates a new TryForFreeCommand object
+// NewRegistrationCommand instantiates a new RegistrationCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTryForFreeCommand() *TryForFreeCommand {
-	this := TryForFreeCommand{}
+func NewRegistrationCommand() *RegistrationCommand {
+	this := RegistrationCommand{}
 	return &this
 }
 
-// NewTryForFreeCommandWithDefaults instantiates a new TryForFreeCommand object
+// NewRegistrationCommandWithDefaults instantiates a new RegistrationCommand object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewTryForFreeCommandWithDefaults() *TryForFreeCommand {
-	this := TryForFreeCommand{}
+func NewRegistrationCommandWithDefaults() *RegistrationCommand {
+	this := RegistrationCommand{}
 	return &this
 }
 
 // GetOrganizationName returns the OrganizationName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TryForFreeCommand) GetOrganizationName() string {
+func (o *RegistrationCommand) GetOrganizationName() string {
 	if o == nil || IsNil(o.OrganizationName.Get()) {
 		var ret string
 		return ret
@@ -54,7 +54,7 @@ func (o *TryForFreeCommand) GetOrganizationName() string {
 // GetOrganizationNameOk returns a tuple with the OrganizationName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TryForFreeCommand) GetOrganizationNameOk() (*string, bool) {
+func (o *RegistrationCommand) GetOrganizationNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -62,7 +62,7 @@ func (o *TryForFreeCommand) GetOrganizationNameOk() (*string, bool) {
 }
 
 // HasOrganizationName returns a boolean if a field has been set.
-func (o *TryForFreeCommand) HasOrganizationName() bool {
+func (o *RegistrationCommand) HasOrganizationName() bool {
 	if o != nil && o.OrganizationName.IsSet() {
 		return true
 	}
@@ -71,21 +71,21 @@ func (o *TryForFreeCommand) HasOrganizationName() bool {
 }
 
 // SetOrganizationName gets a reference to the given NullableString and assigns it to the OrganizationName field.
-func (o *TryForFreeCommand) SetOrganizationName(v string) {
+func (o *RegistrationCommand) SetOrganizationName(v string) {
 	o.OrganizationName.Set(&v)
 }
 // SetOrganizationNameNil sets the value for OrganizationName to be an explicit nil
-func (o *TryForFreeCommand) SetOrganizationNameNil() {
+func (o *RegistrationCommand) SetOrganizationNameNil() {
 	o.OrganizationName.Set(nil)
 }
 
 // UnsetOrganizationName ensures that no value is present for OrganizationName, not even an explicit nil
-func (o *TryForFreeCommand) UnsetOrganizationName() {
+func (o *RegistrationCommand) UnsetOrganizationName() {
 	o.OrganizationName.Unset()
 }
 
 // GetUsername returns the Username field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TryForFreeCommand) GetUsername() string {
+func (o *RegistrationCommand) GetUsername() string {
 	if o == nil || IsNil(o.Username.Get()) {
 		var ret string
 		return ret
@@ -96,7 +96,7 @@ func (o *TryForFreeCommand) GetUsername() string {
 // GetUsernameOk returns a tuple with the Username field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TryForFreeCommand) GetUsernameOk() (*string, bool) {
+func (o *RegistrationCommand) GetUsernameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -104,7 +104,7 @@ func (o *TryForFreeCommand) GetUsernameOk() (*string, bool) {
 }
 
 // HasUsername returns a boolean if a field has been set.
-func (o *TryForFreeCommand) HasUsername() bool {
+func (o *RegistrationCommand) HasUsername() bool {
 	if o != nil && o.Username.IsSet() {
 		return true
 	}
@@ -113,21 +113,21 @@ func (o *TryForFreeCommand) HasUsername() bool {
 }
 
 // SetUsername gets a reference to the given NullableString and assigns it to the Username field.
-func (o *TryForFreeCommand) SetUsername(v string) {
+func (o *RegistrationCommand) SetUsername(v string) {
 	o.Username.Set(&v)
 }
 // SetUsernameNil sets the value for Username to be an explicit nil
-func (o *TryForFreeCommand) SetUsernameNil() {
+func (o *RegistrationCommand) SetUsernameNil() {
 	o.Username.Set(nil)
 }
 
 // UnsetUsername ensures that no value is present for Username, not even an explicit nil
-func (o *TryForFreeCommand) UnsetUsername() {
+func (o *RegistrationCommand) UnsetUsername() {
 	o.Username.Unset()
 }
 
 // GetEmail returns the Email field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TryForFreeCommand) GetEmail() string {
+func (o *RegistrationCommand) GetEmail() string {
 	if o == nil || IsNil(o.Email.Get()) {
 		var ret string
 		return ret
@@ -138,7 +138,7 @@ func (o *TryForFreeCommand) GetEmail() string {
 // GetEmailOk returns a tuple with the Email field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TryForFreeCommand) GetEmailOk() (*string, bool) {
+func (o *RegistrationCommand) GetEmailOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,7 +146,7 @@ func (o *TryForFreeCommand) GetEmailOk() (*string, bool) {
 }
 
 // HasEmail returns a boolean if a field has been set.
-func (o *TryForFreeCommand) HasEmail() bool {
+func (o *RegistrationCommand) HasEmail() bool {
 	if o != nil && o.Email.IsSet() {
 		return true
 	}
@@ -155,20 +155,20 @@ func (o *TryForFreeCommand) HasEmail() bool {
 }
 
 // SetEmail gets a reference to the given NullableString and assigns it to the Email field.
-func (o *TryForFreeCommand) SetEmail(v string) {
+func (o *RegistrationCommand) SetEmail(v string) {
 	o.Email.Set(&v)
 }
 // SetEmailNil sets the value for Email to be an explicit nil
-func (o *TryForFreeCommand) SetEmailNil() {
+func (o *RegistrationCommand) SetEmailNil() {
 	o.Email.Set(nil)
 }
 
 // UnsetEmail ensures that no value is present for Email, not even an explicit nil
-func (o *TryForFreeCommand) UnsetEmail() {
+func (o *RegistrationCommand) UnsetEmail() {
 	o.Email.Unset()
 }
 
-func (o TryForFreeCommand) MarshalJSON() ([]byte, error) {
+func (o RegistrationCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -176,7 +176,7 @@ func (o TryForFreeCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o TryForFreeCommand) ToMap() (map[string]interface{}, error) {
+func (o RegistrationCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.OrganizationName.IsSet() {
 		toSerialize["organizationName"] = o.OrganizationName.Get()
@@ -190,38 +190,38 @@ func (o TryForFreeCommand) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableTryForFreeCommand struct {
-	value *TryForFreeCommand
+type NullableRegistrationCommand struct {
+	value *RegistrationCommand
 	isSet bool
 }
 
-func (v NullableTryForFreeCommand) Get() *TryForFreeCommand {
+func (v NullableRegistrationCommand) Get() *RegistrationCommand {
 	return v.value
 }
 
-func (v *NullableTryForFreeCommand) Set(val *TryForFreeCommand) {
+func (v *NullableRegistrationCommand) Set(val *RegistrationCommand) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableTryForFreeCommand) IsSet() bool {
+func (v NullableRegistrationCommand) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableTryForFreeCommand) Unset() {
+func (v *NullableRegistrationCommand) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableTryForFreeCommand(val *TryForFreeCommand) *NullableTryForFreeCommand {
-	return &NullableTryForFreeCommand{value: val, isSet: true}
+func NewNullableRegistrationCommand(val *RegistrationCommand) *NullableRegistrationCommand {
+	return &NullableRegistrationCommand{value: val, isSet: true}
 }
 
-func (v NullableTryForFreeCommand) MarshalJSON() ([]byte, error) {
+func (v NullableRegistrationCommand) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableTryForFreeCommand) UnmarshalJSON(src []byte) error {
+func (v *NullableRegistrationCommand) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

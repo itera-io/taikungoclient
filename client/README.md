@@ -147,7 +147,7 @@ Class | Method | HTTP request | Description
 *AuthManagementAPI* | [**AuthLogin**](docs/AuthManagementAPI.md#authlogin) | **Post** /api/v1/auth/login | Login to API
 *AuthManagementAPI* | [**AuthRefresh**](docs/AuthManagementAPI.md#authrefresh) | **Post** /api/v1/auth/refresh | Refresh bearer token that generated automatically by API
 *AuthManagementAPI* | [**AuthResetPassword**](docs/AuthManagementAPI.md#authresetpassword) | **Post** /api/v1/auth/resetpassword | Reset password
-*AuthManagementAPI* | [**AuthTrial**](docs/AuthManagementAPI.md#authtrial) | **Post** /api/v1/auth/trial | Try free
+*AuthManagementAPI* | [**AuthTrial**](docs/AuthManagementAPI.md#authtrial) | **Post** /api/v1/auth/trial | New registration
 *AuthManagementAPI* | [**AuthVerify2fa**](docs/AuthManagementAPI.md#authverify2fa) | **Post** /api/v1/auth/verify-2fa | Verify 2FA
 *AutoscalingAPI* | [**AutoscalingDisable**](docs/AutoscalingAPI.md#autoscalingdisable) | **Post** /api/v1/autoscaling/disable | Disable autoscaling
 *AutoscalingAPI* | [**AutoscalingEdit**](docs/AutoscalingAPI.md#autoscalingedit) | **Post** /api/v1/autoscaling/edit | Edit autoscaling
@@ -366,6 +366,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesCreateResource**](docs/KubernetesAPI.md#kubernetescreateresource) | **Post** /api/v1/kubernetes/create-resource | Create kubernetes resource
 *KubernetesAPI* | [**KubernetesCronJobList**](docs/KubernetesAPI.md#kubernetescronjoblist) | **Get** /api/v1/kubernetes/{projectId}/cronjobs | Retrieve a list of k8s cron jobs for all namespaces
 *KubernetesAPI* | [**KubernetesDaemonSetList**](docs/KubernetesAPI.md#kubernetesdaemonsetlist) | **Get** /api/v1/kubernetes/{projectId}/daemonset | Retrieve list of k8s daemonset
+*KubernetesAPI* | [**KubernetesDaemonsetActions**](docs/KubernetesAPI.md#kubernetesdaemonsetactions) | **Post** /api/v1/kubernetes/daemonset/actions | Daemonset actions
 *KubernetesAPI* | [**KubernetesDashboardList**](docs/KubernetesAPI.md#kubernetesdashboardlist) | **Get** /api/v1/kubernetes/{projectId}/dashboard | Retrieve a list of crd
 *KubernetesAPI* | [**KubernetesDeleteResource**](docs/KubernetesAPI.md#kubernetesdeleteresource) | **Post** /api/v1/kubernetes/delete-resource | Delete kubernetes resource
 *KubernetesAPI* | [**KubernetesDeploymentActions**](docs/KubernetesAPI.md#kubernetesdeploymentactions) | **Post** /api/v1/kubernetes/deployment/actions | Deployment actions
@@ -518,6 +519,7 @@ Class | Method | HTTP request | Description
 *PreDefinedQueriesAPI* | [**PredefinedqueriesUpdate**](docs/PreDefinedQueriesAPI.md#predefinedqueriesupdate) | **Post** /api/v1/predefinedqueries/prometheus/dashboard/update | Update prometheus dashboard pre defined query
 *ProjectAppParamsAPI* | [**ProjectappparamEdit**](docs/ProjectAppParamsAPI.md#projectappparamedit) | **Put** /api/v1/projectappparam/edit/{projectAppId} | Edit project app params
 *ProjectAppsAPI* | [**ProjectappAutosync**](docs/ProjectAppsAPI.md#projectappautosync) | **Post** /api/v1/projectapp/autosync | AutoSync management
+*ProjectAppsAPI* | [**ProjectappCancel**](docs/ProjectAppsAPI.md#projectappcancel) | **Post** /api/v1/projectapp/cancel | Cancel an application
 *ProjectAppsAPI* | [**ProjectappDelete**](docs/ProjectAppsAPI.md#projectappdelete) | **Delete** /api/v1/projectapp/uninstall/{projectAppId} | Uninstall application
 *ProjectAppsAPI* | [**ProjectappDetails**](docs/ProjectAppsAPI.md#projectappdetails) | **Get** /api/v1/projectapp/{id} | Retrieve project app&#39;s details
 *ProjectAppsAPI* | [**ProjectappInstall**](docs/ProjectAppsAPI.md#projectappinstall) | **Post** /api/v1/projectapp/install | Install an application
@@ -907,6 +909,7 @@ Class | Method | HTTP request | Description
  - [CNI](docs/CNI.md)
  - [CRestoreDto](docs/CRestoreDto.md)
  - [CScheduleDto](docs/CScheduleDto.md)
+ - [CancelProjectAppCommand](docs/CancelProjectAppCommand.md)
  - [CardInformationDto](docs/CardInformationDto.md)
  - [CatalogAppDetailsDto](docs/CatalogAppDetailsDto.md)
  - [CatalogAppList](docs/CatalogAppList.md)
@@ -1016,6 +1019,7 @@ Class | Method | HTTP request | Description
  - [DaemonSetSearchCommand](docs/DaemonSetSearchCommand.md)
  - [DaemonSetSearchList](docs/DaemonSetSearchList.md)
  - [DaemonSets](docs/DaemonSets.md)
+ - [DaemonsetActionCommand](docs/DaemonsetActionCommand.md)
  - [DashboardChart](docs/DashboardChart.md)
  - [DatacenterListCommand](docs/DatacenterListCommand.md)
  - [DatacenterSummary](docs/DatacenterSummary.md)
@@ -1089,6 +1093,7 @@ Class | Method | HTTP request | Description
  - [DownloadKubeConfigCommand](docs/DownloadKubeConfigCommand.md)
  - [DownloadKubernetesResourceCommand](docs/DownloadKubernetesResourceCommand.md)
  - [DuplicateNameCheckerCommand](docs/DuplicateNameCheckerCommand.md)
+ - [EDaemonSetAction](docs/EDaemonSetAction.md)
  - [EDeploymentAction](docs/EDeploymentAction.md)
  - [EImportClusterType](docs/EImportClusterType.md)
  - [EInstanceStatus](docs/EInstanceStatus.md)
@@ -1430,6 +1435,7 @@ Class | Method | HTTP request | Description
  - [RebootStandAloneVmCommand](docs/RebootStandAloneVmCommand.md)
  - [RefreshTokenCommand](docs/RefreshTokenCommand.md)
  - [RegionListCommand](docs/RegionListCommand.md)
+ - [RegistrationCommand](docs/RegistrationCommand.md)
  - [RemindUsersByAlertingProfileCommand](docs/RemindUsersByAlertingProfileCommand.md)
  - [RemoveOwnerCommand](docs/RemoveOwnerCommand.md)
  - [ReplyTicketCommand](docs/ReplyTicketCommand.md)
@@ -1545,7 +1551,6 @@ Class | Method | HTTP request | Description
  - [ToggleTwoFactorAuthenticationCommand](docs/ToggleTwoFactorAuthenticationCommand.md)
  - [TransferList](docs/TransferList.md)
  - [TransferTicketCommand](docs/TransferTicketCommand.md)
- - [TryForFreeCommand](docs/TryForFreeCommand.md)
  - [UnbindAppRepositoryCommand](docs/UnbindAppRepositoryCommand.md)
  - [UnbindFlavorFromProjectCommand](docs/UnbindFlavorFromProjectCommand.md)
  - [UnbindProjectFromProjectGroupCommand](docs/UnbindProjectFromProjectGroupCommand.md)

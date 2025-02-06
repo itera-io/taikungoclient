@@ -3549,6 +3549,28 @@ paths:
       summary: Refresh bearer token that generated automatically by API
       tags:
       - Auth management
+  /api/v1/auth/trial:
+    post:
+      operationId: auth-trial
+      requestBody:
+        content:
+          application/json:
+            example:
+              organizationName: taikun.cloud a.s.
+              username: taikun
+              email: taikun@taikun.cloud
+            schema:
+              $ref: '#/components/schemas/RegistrationCommand'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
+      summary: New registration
+      tags:
+      - Auth management
   /api/v1/auth/resetpassword:
     post:
       operationId: auth-reset-password
@@ -3599,28 +3621,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Reset password
-      tags:
-      - Auth management
-  /api/v1/auth/trial:
-    post:
-      operationId: auth-trial
-      requestBody:
-        content:
-          application/json:
-            example:
-              organizationName: taikun.cloud a.s.
-              username: taikun
-              email: taikun@taikun.cloud
-            schema:
-              $ref: '#/components/schemas/TryForFreeCommand'
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
-          description: OK
-      summary: Try free
       tags:
       - Auth management
   /api/v1/auth/verify-2fa:
@@ -5912,8 +5912,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-02-05T00:03:26.1484355Z
-                  createdAt: 2025-02-05T00:03:26.1484355Z
+                  lastValidated: 2025-02-06T00:03:20.1037528Z
+                  createdAt: 2025-02-06T00:03:20.1037528Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6018,14 +6018,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-02-05T00:03:26.1484355Z
+                    lastBackup: 2025-02-06T00:03:20.1037528Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-02-05T00:03:26.1484355Z
+                  createdAt: 2025-02-06T00:03:20.1037528Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-02-05T00:03:26.1484355Z
+                  lastBackup: 2025-02-06T00:03:20.1037528Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6130,8 +6130,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-02-05T00:03:26.1484355Z
-                  expiration: 2025-02-05T00:03:26.1484355Z
+                  createdAt: 2025-02-06T00:03:20.1037528Z
+                  expiration: 2025-02-06T00:03:20.1037528Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6235,7 +6235,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-02-05T00:03:26.1484355Z
+                  createdAt: 2025-02-06T00:03:20.1037528Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6345,9 +6345,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-02-05T00:03:26.1484355+00:00
-                  startTimeStamp: 2025-02-05T00:03:26.1484355+00:00
-                  createdAt: 2025-02-05T00:03:26.1484355Z
+                  completionDateTime: 2025-02-06T00:03:20.1037528+00:00
+                  startTimeStamp: 2025-02-06T00:03:20.1037528+00:00
+                  createdAt: 2025-02-06T00:03:20.1037528Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -17224,6 +17224,54 @@ paths:
       summary: Create kubernetes resource
       tags:
       - Kubernetes
+  /api/v1/kubernetes/daemonset/actions:
+    post:
+      operationId: kubernetes-daemonset-actions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DaemonsetActionCommand'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Daemonset actions
+      tags:
+      - Kubernetes
   /api/v1/kubernetes/removealerts:
     post:
       operationId: kubernetes-removealerts
@@ -26714,6 +26762,55 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: AutoSync management
+      tags:
+      - Project apps
+  /api/v1/projectapp/cancel:
+    post:
+      operationId: projectapp-cancel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelProjectAppCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Cancel an application
       tags:
       - Project apps
   /api/v1/projectapp/install:
@@ -41645,6 +41742,7 @@ components:
       - ServerStatus
       - PatchKubernetes
       - InstallApplication
+      - CancelApplication
       - UninstallApplication
       - EnableAutoscaling
       - DisableAutoscaling
@@ -45797,6 +45895,15 @@ components:
     CancelExpiredSubscriptionsCommand:
       additionalProperties: false
       type: object
+    CancelProjectAppCommand:
+      additionalProperties: false
+      example:
+        projectAppId: 0
+      properties:
+        projectAppId:
+          format: int32
+          type: integer
+      type: object
     CardInformationDto:
       additionalProperties: false
       example:
@@ -49547,6 +49654,31 @@ components:
       - data
       - totalCount
       type: object
+    DaemonsetActionCommand:
+      additionalProperties: false
+      example:
+        name: name
+        namespace: namespace
+        action: Restart
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        action:
+          $ref: '#/components/schemas/EDaemonSetAction'
+      required:
+      - action
+      - name
+      - namespace
+      - projectId
+      type: object
     DashboardChart:
       additionalProperties: false
       example:
@@ -51347,6 +51479,11 @@ components:
           nullable: true
           type: string
       type: object
+    EDaemonSetAction:
+      enum:
+      - Restart
+      - Rollback
+      type: string
     EDeploymentAction:
       enum:
       - Pause
@@ -51369,6 +51506,7 @@ components:
       - Ready
       - NotReady
       - Failure
+      - Cancelled
       type: string
     EKubernetesResource:
       enum:
@@ -65396,6 +65534,23 @@ components:
           nullable: true
           type: integer
       type: object
+    RegistrationCommand:
+      additionalProperties: false
+      example:
+        organizationName: organizationName
+        email: email
+        username: username
+      properties:
+        organizationName:
+          nullable: true
+          type: string
+        username:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+      type: object
     RemindUsersByAlertingProfileCommand:
       additionalProperties: false
       example:
@@ -69571,23 +69726,6 @@ components:
           nullable: true
           type: string
         userId:
-          nullable: true
-          type: string
-      type: object
-    TryForFreeCommand:
-      additionalProperties: false
-      example:
-        organizationName: organizationName
-        email: email
-        username: username
-      properties:
-        organizationName:
-          nullable: true
-          type: string
-        username:
-          nullable: true
-          type: string
-        email:
           nullable: true
           type: string
       type: object

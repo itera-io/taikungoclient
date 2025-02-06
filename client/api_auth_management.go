@@ -883,11 +883,11 @@ func (a *AuthManagementAPIService) AuthResetPasswordExecute(r ApiAuthResetPasswo
 type ApiAuthTrialRequest struct {
 	ctx context.Context
 	ApiService *AuthManagementAPIService
-	tryForFreeCommand *TryForFreeCommand
+	registrationCommand *RegistrationCommand
 }
 
-func (r ApiAuthTrialRequest) TryForFreeCommand(tryForFreeCommand TryForFreeCommand) ApiAuthTrialRequest {
-	r.tryForFreeCommand = &tryForFreeCommand
+func (r ApiAuthTrialRequest) RegistrationCommand(registrationCommand RegistrationCommand) ApiAuthTrialRequest {
+	r.registrationCommand = &registrationCommand
 	return r
 }
 
@@ -896,7 +896,7 @@ func (r ApiAuthTrialRequest) Execute() (map[string]interface{}, *http.Response, 
 }
 
 /*
-AuthTrial Try free
+AuthTrial New registration
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthTrialRequest
@@ -947,7 +947,7 @@ func (a *AuthManagementAPIService) AuthTrialExecute(r ApiAuthTrialRequest) (map[
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.tryForFreeCommand
+	localVarPostBody = r.registrationCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

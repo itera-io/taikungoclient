@@ -74,6 +74,7 @@ const (
 	ACTIONTYPE_SERVER_STATUS ActionType = "ServerStatus"
 	ACTIONTYPE_PATCH_KUBERNETES ActionType = "PatchKubernetes"
 	ACTIONTYPE_INSTALL_APPLICATION ActionType = "InstallApplication"
+	ACTIONTYPE_CANCEL_APPLICATION ActionType = "CancelApplication"
 	ACTIONTYPE_UNINSTALL_APPLICATION ActionType = "UninstallApplication"
 	ACTIONTYPE_ENABLE_AUTOSCALING ActionType = "EnableAutoscaling"
 	ACTIONTYPE_DISABLE_AUTOSCALING ActionType = "DisableAutoscaling"
@@ -160,6 +161,7 @@ var AllowedActionTypeEnumValues = []ActionType{
 	"ServerStatus",
 	"PatchKubernetes",
 	"InstallApplication",
+	"CancelApplication",
 	"UninstallApplication",
 	"EnableAutoscaling",
 	"DisableAutoscaling",

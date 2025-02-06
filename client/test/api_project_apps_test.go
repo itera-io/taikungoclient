@@ -34,6 +34,18 @@ func Test_taikuncore_ProjectAppsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectAppsAPIService ProjectappCancel", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.ProjectAppsAPI.ProjectappCancel(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectAppsAPIService ProjectappDelete", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
