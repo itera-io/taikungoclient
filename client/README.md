@@ -365,6 +365,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesCrdList**](docs/KubernetesAPI.md#kubernetescrdlist) | **Get** /api/v1/kubernetes/{projectId}/crd | Retrieve a list of crd
 *KubernetesAPI* | [**KubernetesCreateResource**](docs/KubernetesAPI.md#kubernetescreateresource) | **Post** /api/v1/kubernetes/create-resource | Create kubernetes resource
 *KubernetesAPI* | [**KubernetesCronJobList**](docs/KubernetesAPI.md#kubernetescronjoblist) | **Get** /api/v1/kubernetes/{projectId}/cronjobs | Retrieve a list of k8s cron jobs for all namespaces
+*KubernetesAPI* | [**KubernetesCronjobActions**](docs/KubernetesAPI.md#kubernetescronjobactions) | **Post** /api/v1/kubernetes/cronjob/actions | Cronjob actions
 *KubernetesAPI* | [**KubernetesDaemonSetList**](docs/KubernetesAPI.md#kubernetesdaemonsetlist) | **Get** /api/v1/kubernetes/{projectId}/daemonset | Retrieve list of k8s daemonset
 *KubernetesAPI* | [**KubernetesDaemonsetActions**](docs/KubernetesAPI.md#kubernetesdaemonsetactions) | **Post** /api/v1/kubernetes/daemonset/actions | Daemonset actions
 *KubernetesAPI* | [**KubernetesDashboardList**](docs/KubernetesAPI.md#kubernetesdashboardlist) | **Get** /api/v1/kubernetes/{projectId}/dashboard | Retrieve a list of crd
@@ -1014,6 +1015,7 @@ Class | Method | HTTP request | Description
  - [CredentialChartDto](docs/CredentialChartDto.md)
  - [CredentialMakeDefaultCommand](docs/CredentialMakeDefaultCommand.md)
  - [CronJobCommand](docs/CronJobCommand.md)
+ - [CronjobActionCommand](docs/CronjobActionCommand.md)
  - [CsvExporter](docs/CsvExporter.md)
  - [DaemonSetDto](docs/DaemonSetDto.md)
  - [DaemonSetSearchCommand](docs/DaemonSetSearchCommand.md)
@@ -1093,6 +1095,7 @@ Class | Method | HTTP request | Description
  - [DownloadKubeConfigCommand](docs/DownloadKubeConfigCommand.md)
  - [DownloadKubernetesResourceCommand](docs/DownloadKubernetesResourceCommand.md)
  - [DuplicateNameCheckerCommand](docs/DuplicateNameCheckerCommand.md)
+ - [ECronJobAction](docs/ECronJobAction.md)
  - [EDaemonSetAction](docs/EDaemonSetAction.md)
  - [EDeploymentAction](docs/EDeploymentAction.md)
  - [EImportClusterType](docs/EImportClusterType.md)

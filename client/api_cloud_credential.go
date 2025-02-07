@@ -962,6 +962,7 @@ type ApiCloudcredentialsOrgListRequest struct {
 	ctx context.Context
 	ApiService *CloudCredentialAPIService
 	isAdmin *bool
+	cloudType *CloudType
 	organizationId *int32
 	search *string
 	isInfra *bool
@@ -970,6 +971,11 @@ type ApiCloudcredentialsOrgListRequest struct {
 
 func (r ApiCloudcredentialsOrgListRequest) IsAdmin(isAdmin bool) ApiCloudcredentialsOrgListRequest {
 	r.isAdmin = &isAdmin
+	return r
+}
+
+func (r ApiCloudcredentialsOrgListRequest) CloudType(cloudType CloudType) ApiCloudcredentialsOrgListRequest {
+	r.cloudType = &cloudType
 	return r
 }
 
@@ -1033,6 +1039,9 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 	if r.isAdmin == nil {
 		return localVarReturnValue, nil, reportError("isAdmin is required and must be specified")
 	}
+	if r.cloudType == nil {
+		return localVarReturnValue, nil, reportError("cloudType is required and must be specified")
+	}
 
 	if r.organizationId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "OrganizationId", r.organizationId, "form", "")
@@ -1047,6 +1056,7 @@ func (a *CloudCredentialAPIService) CloudcredentialsOrgListExecute(r ApiCloudcre
 	if r.id != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "Id", r.id, "form", "")
 	}
+	parameterAddToHeaderOrQuery(localVarQueryParams, "CloudType", r.cloudType, "form", "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -5912,8 +5912,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-02-06T00:03:20.1037528Z
-                  createdAt: 2025-02-06T00:03:20.1037528Z
+                  lastValidated: 2025-02-06T16:22:17.15902Z
+                  createdAt: 2025-02-06T16:22:17.15902Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6018,14 +6018,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-02-06T00:03:20.1037528Z
+                    lastBackup: 2025-02-06T16:22:17.15902Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-02-06T00:03:20.1037528Z
+                  createdAt: 2025-02-06T16:22:17.15902Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-02-06T00:03:20.1037528Z
+                  lastBackup: 2025-02-06T16:22:17.15902Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6130,8 +6130,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-02-06T00:03:20.1037528Z
-                  expiration: 2025-02-06T00:03:20.1037528Z
+                  createdAt: 2025-02-06T16:22:17.15902Z
+                  expiration: 2025-02-06T16:22:17.15902Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6235,7 +6235,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-02-06T00:03:20.1037528Z
+                  createdAt: 2025-02-06T16:22:17.15902Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6345,9 +6345,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-02-06T00:03:20.1037528+00:00
-                  startTimeStamp: 2025-02-06T00:03:20.1037528+00:00
-                  createdAt: 2025-02-06T00:03:20.1037528Z
+                  completionDateTime: 2025-02-06T16:22:17.15902+00:00
+                  startTimeStamp: 2025-02-06T16:22:17.15902+00:00
+                  createdAt: 2025-02-06T16:22:17.15902Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -9432,6 +9432,13 @@ paths:
         schema:
           format: int32
           type: integer
+        style: form
+      - explode: true
+        in: query
+        name: CloudType
+        required: true
+        schema:
+          $ref: '#/components/schemas/CloudType'
         style: form
       responses:
         "200":
@@ -17222,6 +17229,54 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Create kubernetes resource
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/cronjob/actions:
+    post:
+      operationId: kubernetes-cronjob-actions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CronjobActionCommand'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Cronjob actions
       tags:
       - Kubernetes
   /api/v1/kubernetes/daemonset/actions:
@@ -49540,6 +49595,31 @@ components:
           nullable: true
           type: string
       type: object
+    CronjobActionCommand:
+      additionalProperties: false
+      example:
+        name: name
+        namespace: namespace
+        action: Suspend
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        action:
+          $ref: '#/components/schemas/ECronJobAction'
+      required:
+      - action
+      - name
+      - namespace
+      - projectId
+      type: object
     CsvExporter:
       additionalProperties: false
       example:
@@ -51479,6 +51559,12 @@ components:
           nullable: true
           type: string
       type: object
+    ECronJobAction:
+      enum:
+      - Suspend
+      - Resume
+      - Trigger
+      type: string
     EDaemonSetAction:
       enum:
       - Restart
