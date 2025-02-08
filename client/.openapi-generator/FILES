@@ -550,6 +550,7 @@ docs/KubeConfigRoleAPI.md
 docs/KubeConfigRoleResponse.md
 docs/KubernetesAPI.md
 docs/KubernetesActionRequest.md
+docs/KubernetesActionResponse.md
 docs/KubernetesAlertCreateDto.md
 docs/KubernetesAlertDto.md
 docs/KubernetesAlertDtoForPoller.md
@@ -1463,6 +1464,7 @@ model_kube_config_interactive_shell_command.go
 model_kube_config_response.go
 model_kube_config_role_response.go
 model_kubernetes_action_request.go
+model_kubernetes_action_response.go
 model_kubernetes_alert_create_dto.go
 model_kubernetes_alert_dto.go
 model_kubernetes_alert_dto_for_poller.go

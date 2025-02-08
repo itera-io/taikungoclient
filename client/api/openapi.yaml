@@ -5912,8 +5912,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-02-06T16:22:17.15902Z
-                  createdAt: 2025-02-06T16:22:17.15902Z
+                  lastValidated: 2025-02-08T00:03:18.9979137Z
+                  createdAt: 2025-02-08T00:03:18.9979137Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6018,14 +6018,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-02-06T16:22:17.15902Z
+                    lastBackup: 2025-02-08T00:03:18.9979137Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-02-06T16:22:17.15902Z
+                  createdAt: 2025-02-08T00:03:18.9979137Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-02-06T16:22:17.15902Z
+                  lastBackup: 2025-02-08T00:03:18.9979137Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6130,8 +6130,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-02-06T16:22:17.15902Z
-                  expiration: 2025-02-06T16:22:17.15902Z
+                  createdAt: 2025-02-08T00:03:18.9979137Z
+                  expiration: 2025-02-08T00:03:18.9979137Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6235,7 +6235,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-02-06T16:22:17.15902Z
+                  createdAt: 2025-02-08T00:03:18.9979137Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6345,9 +6345,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-02-06T16:22:17.15902+00:00
-                  startTimeStamp: 2025-02-06T16:22:17.15902+00:00
-                  createdAt: 2025-02-06T16:22:17.15902Z
+                  completionDateTime: 2025-02-08T00:03:18.9979137+00:00
+                  startTimeStamp: 2025-02-08T00:03:18.9979137+00:00
+                  createdAt: 2025-02-08T00:03:18.9979137Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -9436,7 +9436,7 @@ paths:
       - explode: true
         in: query
         name: CloudType
-        required: true
+        required: false
         schema:
           $ref: '#/components/schemas/CloudType'
         style: form
@@ -17389,7 +17389,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/KubernetesActionRequest'
+                $ref: '#/components/schemas/KubernetesActionResponse'
           description: OK
         "400":
           content:
@@ -56369,6 +56369,27 @@ components:
       required:
       - name
       type: object
+    KubernetesActionResponse:
+      additionalProperties: false
+      example:
+        failed:
+        - failed
+        - failed
+        succeeded:
+        - succeeded
+        - succeeded
+      properties:
+        succeeded:
+          items:
+            type: string
+          nullable: true
+          type: array
+        failed:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     KubernetesAlertCreateDto:
       additionalProperties: false
       example:
@@ -56789,8 +56810,19 @@ components:
           format: binary
           nullable: true
           type: string
-      required:
-      - config
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
+        region:
+          nullable: true
+          type: string
+        importClusterName:
+          nullable: true
+          type: string
+        resourceGroupName:
+          nullable: true
+          type: string
       type: object
     KubernetesInteractiveShellDto:
       additionalProperties: false

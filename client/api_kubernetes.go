@@ -2424,7 +2424,7 @@ func (r ApiKubernetesDeleteResourceRequest) DeleteKubernetesResourceCommand(dele
 	return r
 }
 
-func (r ApiKubernetesDeleteResourceRequest) Execute() (*KubernetesActionRequest, *http.Response, error) {
+func (r ApiKubernetesDeleteResourceRequest) Execute() (*KubernetesActionResponse, *http.Response, error) {
 	return r.ApiService.KubernetesDeleteResourceExecute(r)
 }
 
@@ -2442,13 +2442,13 @@ func (a *KubernetesAPIService) KubernetesDeleteResource(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return KubernetesActionRequest
-func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDeleteResourceRequest) (*KubernetesActionRequest, *http.Response, error) {
+//  @return KubernetesActionResponse
+func (a *KubernetesAPIService) KubernetesDeleteResourceExecute(r ApiKubernetesDeleteResourceRequest) (*KubernetesActionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *KubernetesActionRequest
+		localVarReturnValue  *KubernetesActionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesDeleteResource")
@@ -7115,10 +7115,34 @@ type ApiKubernetesIngressClassesRequest struct {
 	ctx context.Context
 	ApiService *KubernetesAPIService
 	config *os.File
+	cloudId *int32
+	region *string
+	importClusterName *string
+	resourceGroupName *string
 }
 
 func (r ApiKubernetesIngressClassesRequest) Config(config *os.File) ApiKubernetesIngressClassesRequest {
 	r.config = config
+	return r
+}
+
+func (r ApiKubernetesIngressClassesRequest) CloudId(cloudId int32) ApiKubernetesIngressClassesRequest {
+	r.cloudId = &cloudId
+	return r
+}
+
+func (r ApiKubernetesIngressClassesRequest) Region(region string) ApiKubernetesIngressClassesRequest {
+	r.region = &region
+	return r
+}
+
+func (r ApiKubernetesIngressClassesRequest) ImportClusterName(importClusterName string) ApiKubernetesIngressClassesRequest {
+	r.importClusterName = &importClusterName
+	return r
+}
+
+func (r ApiKubernetesIngressClassesRequest) ResourceGroupName(resourceGroupName string) ApiKubernetesIngressClassesRequest {
+	r.resourceGroupName = &resourceGroupName
 	return r
 }
 
@@ -7159,9 +7183,6 @@ func (a *KubernetesAPIService) KubernetesIngressClassesExecute(r ApiKubernetesIn
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.config == nil {
-		return localVarReturnValue, nil, reportError("config is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -7194,6 +7215,18 @@ func (a *KubernetesAPIService) KubernetesIngressClassesExecute(r ApiKubernetesIn
 		configLocalVarFileName = configLocalVarFile.Name()
 		configLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
+	}
+	if r.cloudId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "cloudId", r.cloudId, "", "")
+	}
+	if r.region != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "", "")
+	}
+	if r.importClusterName != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "importClusterName", r.importClusterName, "", "")
+	}
+	if r.resourceGroupName != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "resourceGroupName", r.resourceGroupName, "", "")
 	}
 	if r.ctx != nil {
 		// API Key Authentication
