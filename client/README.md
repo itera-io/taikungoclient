@@ -273,7 +273,7 @@ Class | Method | HTTP request | Description
 *CronJobServiceAPI* | [**CronjobUpdateProjectAppStatus**](docs/CronJobServiceAPI.md#cronjobupdateprojectappstatus) | **Post** /api/v1/cronjob/update-project-app-status | Update project app status
 *CronJobServiceAPI* | [**CronjobUpdateProjectQuotaMessage**](docs/CronJobServiceAPI.md#cronjobupdateprojectquotamessage) | **Post** /api/v1/cronjob/update-project-quota-message | Update project quota message
 *DnsServersAPI* | [**DnsserversCreate**](docs/DnsServersAPI.md#dnsserverscreate) | **Post** /api/v1/dnsservers/create | Create dns servers for access profile
-*DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete dns server
+*DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete DNS server
 *DnsServersAPI* | [**DnsserversEdit**](docs/DnsServersAPI.md#dnsserversedit) | **Put** /api/v1/dnsservers/edit/{id} | Edit dns server
 *DnsServersAPI* | [**DnsserversList**](docs/DnsServersAPI.md#dnsserverslist) | **Get** /api/v1/dnsservers/{accessProfileId} | List dn servers by profile id
 *ExecutorsAPI* | [**ExecutorsCreate**](docs/ExecutorsAPI.md#executorscreate) | **Post** /api/v1/executors/create | Create an executor
