@@ -275,7 +275,7 @@ Class | Method | HTTP request | Description
 *DnsServersAPI* | [**DnsserversCreate**](docs/DnsServersAPI.md#dnsserverscreate) | **Post** /api/v1/dnsservers/create | Create dns servers for access profile
 *DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete DNS server
 *DnsServersAPI* | [**DnsserversEdit**](docs/DnsServersAPI.md#dnsserversedit) | **Put** /api/v1/dnsservers/edit/{id} | Edit dns server
-*DnsServersAPI* | [**DnsserversList**](docs/DnsServersAPI.md#dnsserverslist) | **Get** /api/v1/dnsservers/{accessProfileId} | List dn servers by profile id
+*DnsServersAPI* | [**DnsserversList**](docs/DnsServersAPI.md#dnsserverslist) | **Get** /api/v1/dnsservers/{accessProfileId} | List dns servers by profile id
 *ExecutorsAPI* | [**ExecutorsCreate**](docs/ExecutorsAPI.md#executorscreate) | **Post** /api/v1/executors/create | Create an executor
 *ExecutorsAPI* | [**ExecutorsDelete**](docs/ExecutorsAPI.md#executorsdelete) | **Post** /api/v1/executors/delete | Delete an executor
 *ExecutorsAPI* | [**ExecutorsEditHealth**](docs/ExecutorsAPI.md#executorsedithealth) | **Put** /api/v1/executors/edit/health | Update health status of the executor by Id

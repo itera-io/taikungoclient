@@ -53,10 +53,9 @@ func Test_taikuncore_DnsServersAPIService(t *testing.T) {
 
 		var id int32
 
-		resp, httpRes, err := apiClient.DnsServersAPI.DnsserversEdit(context.Background(), id).Execute()
+		httpRes, err := apiClient.DnsServersAPI.DnsserversEdit(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
