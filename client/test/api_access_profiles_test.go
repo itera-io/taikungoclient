@@ -88,10 +88,9 @@ func Test_taikuncore_AccessProfilesAPIService(t *testing.T) {
 
 		var id int32
 
-		resp, httpRes, err := apiClient.AccessProfilesAPI.AccessprofilesUpdate(context.Background(), id).Execute()
+		httpRes, err := apiClient.AccessProfilesAPI.AccessprofilesUpdate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
