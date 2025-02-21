@@ -1223,6 +1223,7 @@ Class | Method | HTTP request | Description
  - [KubernetesCliCommand](docs/KubernetesCliCommand.md)
  - [KubernetesCronJobDto](docs/KubernetesCronJobDto.md)
  - [KubernetesCronJobsList](docs/KubernetesCronJobsList.md)
+ - [KubernetesCronjobActionRequest](docs/KubernetesCronjobActionRequest.md)
  - [KubernetesDashboardDto](docs/KubernetesDashboardDto.md)
  - [KubernetesEventCreateDto](docs/KubernetesEventCreateDto.md)
  - [KubernetesInteractiveShellDto](docs/KubernetesInteractiveShellDto.md)

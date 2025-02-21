@@ -23,8 +23,7 @@ var _ MappedNullable = &CronjobActionCommand{}
 // CronjobActionCommand struct for CronjobActionCommand
 type CronjobActionCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Name NullableString `json:"name"`
-	Namespace NullableString `json:"namespace"`
+	Data []KubernetesCronjobActionRequest `json:"data"`
 	Action ECronJobAction `json:"action"`
 }
 
@@ -34,11 +33,10 @@ type _CronjobActionCommand CronjobActionCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCronjobActionCommand(projectId int32, name NullableString, namespace NullableString, action ECronJobAction) *CronjobActionCommand {
+func NewCronjobActionCommand(projectId int32, data []KubernetesCronjobActionRequest, action ECronJobAction) *CronjobActionCommand {
 	this := CronjobActionCommand{}
 	this.ProjectId = projectId
-	this.Name = name
-	this.Namespace = namespace
+	this.Data = data
 	this.Action = action
 	return &this
 }
@@ -75,56 +73,30 @@ func (o *CronjobActionCommand) SetProjectId(v int32) {
 	o.ProjectId = v
 }
 
-// GetName returns the Name field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *CronjobActionCommand) GetName() string {
-	if o == nil || o.Name.Get() == nil {
-		var ret string
+// GetData returns the Data field value
+// If the value is explicit nil, the zero value for []KubernetesCronjobActionRequest will be returned
+func (o *CronjobActionCommand) GetData() []KubernetesCronjobActionRequest {
+	if o == nil {
+		var ret []KubernetesCronjobActionRequest
 		return ret
 	}
 
-	return *o.Name.Get()
+	return o.Data
 }
 
-// GetNameOk returns a tuple with the Name field value
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CronjobActionCommand) GetNameOk() (*string, bool) {
-	if o == nil {
+func (o *CronjobActionCommand) GetDataOk() ([]KubernetesCronjobActionRequest, bool) {
+	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Data, true
 }
 
-// SetName sets field value
-func (o *CronjobActionCommand) SetName(v string) {
-	o.Name.Set(&v)
-}
-
-// GetNamespace returns the Namespace field value
-// If the value is explicit nil, the zero value for string will be returned
-func (o *CronjobActionCommand) GetNamespace() string {
-	if o == nil || o.Namespace.Get() == nil {
-		var ret string
-		return ret
-	}
-
-	return *o.Namespace.Get()
-}
-
-// GetNamespaceOk returns a tuple with the Namespace field value
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *CronjobActionCommand) GetNamespaceOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Namespace.Get(), o.Namespace.IsSet()
-}
-
-// SetNamespace sets field value
-func (o *CronjobActionCommand) SetNamespace(v string) {
-	o.Namespace.Set(&v)
+// SetData sets field value
+func (o *CronjobActionCommand) SetData(v []KubernetesCronjobActionRequest) {
+	o.Data = v
 }
 
 // GetAction returns the Action field value
@@ -162,8 +134,9 @@ func (o CronjobActionCommand) MarshalJSON() ([]byte, error) {
 func (o CronjobActionCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["name"] = o.Name.Get()
-	toSerialize["namespace"] = o.Namespace.Get()
+	if o.Data != nil {
+		toSerialize["data"] = o.Data
+	}
 	toSerialize["action"] = o.Action
 	return toSerialize, nil
 }
@@ -174,8 +147,7 @@ func (o *CronjobActionCommand) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"projectId",
-		"name",
-		"namespace",
+		"data",
 		"action",
 	}
 

@@ -510,13 +510,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AdminBillingOperationCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -5896,8 +5891,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-02-20T00:03:28.4305126Z
-                  createdAt: 2025-02-20T00:03:28.4305126Z
+                  lastValidated: 2025-02-20T11:41:24.3952378Z
+                  createdAt: 2025-02-20T11:41:24.3952378Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6002,14 +5997,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-02-20T00:03:28.4305126Z
+                    lastBackup: 2025-02-20T11:41:24.3952378Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-02-20T00:03:28.4305126Z
+                  createdAt: 2025-02-20T11:41:24.3952378Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-02-20T00:03:28.4305126Z
+                  lastBackup: 2025-02-20T11:41:24.3952378Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6114,8 +6109,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-02-20T00:03:28.4305126Z
-                  expiration: 2025-02-20T00:03:28.4305126Z
+                  createdAt: 2025-02-20T11:41:24.3952378Z
+                  expiration: 2025-02-20T11:41:24.3952378Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6219,7 +6214,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-02-20T00:03:28.4305126Z
+                  createdAt: 2025-02-20T11:41:24.3952378Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6329,9 +6324,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-02-20T00:03:28.4305126+00:00
-                  startTimeStamp: 2025-02-20T00:03:28.4305126+00:00
-                  createdAt: 2025-02-20T00:03:28.4305126Z
+                  completionDateTime: 2025-02-20T11:41:24.3952378+00:00
+                  startTimeStamp: 2025-02-20T11:41:24.3952378+00:00
+                  createdAt: 2025-02-20T11:41:24.3952378Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -17220,9 +17215,9 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
+            application/json:
               schema:
-                $ref: '#/components/schemas/Void'
+                $ref: '#/components/schemas/KubernetesActionResponse'
           description: OK
         "400":
           content:
@@ -49557,26 +49552,27 @@ components:
     CronjobActionCommand:
       additionalProperties: false
       example:
-        name: name
-        namespace: namespace
+        data:
+        - name: name
+          namespace: namespace
+        - name: name
+          namespace: namespace
         action: Suspend
         projectId: 0
       properties:
         projectId:
           format: int32
           type: integer
-        name:
+        data:
+          items:
+            $ref: '#/components/schemas/KubernetesCronjobActionRequest'
           nullable: true
-          type: string
-        namespace:
-          nullable: true
-          type: string
+          type: array
         action:
           $ref: '#/components/schemas/ECronJobAction'
       required:
       - action
-      - name
-      - namespace
+      - data
       - projectId
       type: object
     CsvExporter:
@@ -56677,6 +56673,22 @@ components:
       required:
       - data
       - totalCount
+      type: object
+    KubernetesCronjobActionRequest:
+      additionalProperties: false
+      example:
+        name: name
+        namespace: namespace
+      properties:
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+      required:
+      - name
+      - namespace
       type: object
     KubernetesDashboardDto:
       additionalProperties: false

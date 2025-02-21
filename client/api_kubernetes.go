@@ -1677,7 +1677,7 @@ func (r ApiKubernetesCronjobActionsRequest) CronjobActionCommand(cronjobActionCo
 	return r
 }
 
-func (r ApiKubernetesCronjobActionsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiKubernetesCronjobActionsRequest) Execute() (*KubernetesActionResponse, *http.Response, error) {
 	return r.ApiService.KubernetesCronjobActionsExecute(r)
 }
 
@@ -1695,13 +1695,13 @@ func (a *KubernetesAPIService) KubernetesCronjobActions(ctx context.Context) Api
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *KubernetesAPIService) KubernetesCronjobActionsExecute(r ApiKubernetesCronjobActionsRequest) (map[string]interface{}, *http.Response, error) {
+//  @return KubernetesActionResponse
+func (a *KubernetesAPIService) KubernetesCronjobActionsExecute(r ApiKubernetesCronjobActionsRequest) (*KubernetesActionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *KubernetesActionResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubernetesAPIService.KubernetesCronjobActions")
@@ -1725,7 +1725,7 @@ func (a *KubernetesAPIService) KubernetesCronjobActionsExecute(r ApiKubernetesCr
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
