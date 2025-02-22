@@ -461,13 +461,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AdminAddBalanceCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -556,10 +551,6 @@ paths:
               $ref: '#/components/schemas/AdminUserCreateCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -602,13 +593,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AdminOrganizationsDeleteCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -651,13 +637,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ExtendTrialPeriodCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -700,13 +681,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MakeCsmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -749,13 +725,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MakeOwnerCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -798,13 +769,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RemoveOwnerCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -847,13 +813,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AdminUpdateProjectKubeConfigCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -896,13 +857,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AdminProjectUpdateCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -945,13 +901,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AdminUsersUpdateEmailCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -994,13 +945,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AdminUpdateUserKubeConfigCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -1045,10 +991,6 @@ paths:
               $ref: '#/components/schemas/AdminUsersUpdatePasswordCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -5891,8 +5833,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-02-20T11:41:24.3952378Z
-                  createdAt: 2025-02-20T11:41:24.3952378Z
+                  lastValidated: 2025-02-22T00:03:12.9039831Z
+                  createdAt: 2025-02-22T00:03:12.9039831Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5997,14 +5939,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-02-20T11:41:24.3952378Z
+                    lastBackup: 2025-02-22T00:03:12.9039831Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-02-20T11:41:24.3952378Z
+                  createdAt: 2025-02-22T00:03:12.9039831Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-02-20T11:41:24.3952378Z
+                  lastBackup: 2025-02-22T00:03:12.9039831Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6109,8 +6051,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-02-20T11:41:24.3952378Z
-                  expiration: 2025-02-20T11:41:24.3952378Z
+                  createdAt: 2025-02-22T00:03:12.9039831Z
+                  expiration: 2025-02-22T00:03:12.9039831Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6214,7 +6156,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-02-20T11:41:24.3952378Z
+                  createdAt: 2025-02-22T00:03:12.9039831Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6324,9 +6266,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-02-20T11:41:24.3952378+00:00
-                  startTimeStamp: 2025-02-20T11:41:24.3952378+00:00
-                  createdAt: 2025-02-20T11:41:24.3952378Z
+                  completionDateTime: 2025-02-22T00:03:12.9039831+00:00
+                  startTimeStamp: 2025-02-22T00:03:12.9039831+00:00
+                  createdAt: 2025-02-22T00:03:12.9039831Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -70817,6 +70759,7 @@ components:
         email:
           type: string
         displayName:
+          nullable: true
           type: string
         createdAt:
           type: string
@@ -70849,6 +70792,7 @@ components:
         is2FAEnabled:
           type: boolean
         lastLoginAt:
+          nullable: true
           type: string
         boundProjects:
           items:
@@ -70875,7 +70819,6 @@ components:
       - isLocked
       - isNewOrganization
       - isReadOnly
-      - lastLoginAt
       - organizationId
       - organizationName
       - owner

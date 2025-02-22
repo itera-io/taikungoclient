@@ -32,7 +32,7 @@ type UserForListDto struct {
 	Role UserRole `json:"role"`
 	RoleName NullableString `json:"roleName,omitempty"`
 	Email string `json:"email"`
-	DisplayName string `json:"displayName"`
+	DisplayName NullableString `json:"displayName"`
 	CreatedAt string `json:"createdAt"`
 	Created NullableTime `json:"created,omitempty"`
 	IsEmailConfirmed bool `json:"isEmailConfirmed"`
@@ -47,7 +47,7 @@ type UserForListDto struct {
 	HasRepo bool `json:"hasRepo"`
 	IsNewOrganization bool `json:"isNewOrganization"`
 	Is2FAEnabled bool `json:"is2FAEnabled"`
-	LastLoginAt string `json:"lastLoginAt"`
+	LastLoginAt NullableString `json:"lastLoginAt,omitempty"`
 	BoundProjects []ProjectDto `json:"boundProjects"`
 	Partner PartnerDetailsForUserDto `json:"partner"`
 }
@@ -58,7 +58,7 @@ type _UserForListDto UserForListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUserForListDto(id string, username string, organizationName string, hasCustomerId bool, hasPaymentMethod bool, organizationId int32, role UserRole, email string, displayName string, createdAt string, isEmailConfirmed bool, isEmailNotificationEnabled bool, isForcedToResetPassword bool, isCsm bool, isEligibleUpdateSubscription bool, isLocked bool, isApprovedByPartner bool, owner bool, isReadOnly bool, hasRepo bool, isNewOrganization bool, is2FAEnabled bool, lastLoginAt string, boundProjects []ProjectDto, partner PartnerDetailsForUserDto) *UserForListDto {
+func NewUserForListDto(id string, username string, organizationName string, hasCustomerId bool, hasPaymentMethod bool, organizationId int32, role UserRole, email string, displayName NullableString, createdAt string, isEmailConfirmed bool, isEmailNotificationEnabled bool, isForcedToResetPassword bool, isCsm bool, isEligibleUpdateSubscription bool, isLocked bool, isApprovedByPartner bool, owner bool, isReadOnly bool, hasRepo bool, isNewOrganization bool, is2FAEnabled bool, boundProjects []ProjectDto, partner PartnerDetailsForUserDto) *UserForListDto {
 	this := UserForListDto{}
 	this.Id = id
 	this.Username = username
@@ -82,7 +82,6 @@ func NewUserForListDto(id string, username string, organizationName string, hasC
 	this.HasRepo = hasRepo
 	this.IsNewOrganization = isNewOrganization
 	this.Is2FAEnabled = is2FAEnabled
-	this.LastLoginAt = lastLoginAt
 	this.BoundProjects = boundProjects
 	this.Partner = partner
 	return &this
@@ -331,27 +330,29 @@ func (o *UserForListDto) SetEmail(v string) {
 }
 
 // GetDisplayName returns the DisplayName field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *UserForListDto) GetDisplayName() string {
-	if o == nil {
+	if o == nil || o.DisplayName.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.DisplayName
+	return *o.DisplayName.Get()
 }
 
 // GetDisplayNameOk returns a tuple with the DisplayName field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserForListDto) GetDisplayNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.DisplayName, true
+	return o.DisplayName.Get(), o.DisplayName.IsSet()
 }
 
 // SetDisplayName sets field value
 func (o *UserForListDto) SetDisplayName(v string) {
-	o.DisplayName = v
+	o.DisplayName.Set(&v)
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -708,28 +709,46 @@ func (o *UserForListDto) SetIs2FAEnabled(v bool) {
 	o.Is2FAEnabled = v
 }
 
-// GetLastLoginAt returns the LastLoginAt field value
+// GetLastLoginAt returns the LastLoginAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *UserForListDto) GetLastLoginAt() string {
-	if o == nil {
+	if o == nil || IsNil(o.LastLoginAt.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.LastLoginAt
+	return *o.LastLoginAt.Get()
 }
 
-// GetLastLoginAtOk returns a tuple with the LastLoginAt field value
+// GetLastLoginAtOk returns a tuple with the LastLoginAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *UserForListDto) GetLastLoginAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.LastLoginAt, true
+	return o.LastLoginAt.Get(), o.LastLoginAt.IsSet()
 }
 
-// SetLastLoginAt sets field value
+// HasLastLoginAt returns a boolean if a field has been set.
+func (o *UserForListDto) HasLastLoginAt() bool {
+	if o != nil && o.LastLoginAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastLoginAt gets a reference to the given NullableString and assigns it to the LastLoginAt field.
 func (o *UserForListDto) SetLastLoginAt(v string) {
-	o.LastLoginAt = v
+	o.LastLoginAt.Set(&v)
+}
+// SetLastLoginAtNil sets the value for LastLoginAt to be an explicit nil
+func (o *UserForListDto) SetLastLoginAtNil() {
+	o.LastLoginAt.Set(nil)
+}
+
+// UnsetLastLoginAt ensures that no value is present for LastLoginAt, not even an explicit nil
+func (o *UserForListDto) UnsetLastLoginAt() {
+	o.LastLoginAt.Unset()
 }
 
 // GetBoundProjects returns the BoundProjects field value
@@ -801,7 +820,7 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["roleName"] = o.RoleName.Get()
 	}
 	toSerialize["email"] = o.Email
-	toSerialize["displayName"] = o.DisplayName
+	toSerialize["displayName"] = o.DisplayName.Get()
 	toSerialize["createdAt"] = o.CreatedAt
 	if o.Created.IsSet() {
 		toSerialize["created"] = o.Created.Get()
@@ -818,7 +837,9 @@ func (o UserForListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["hasRepo"] = o.HasRepo
 	toSerialize["isNewOrganization"] = o.IsNewOrganization
 	toSerialize["is2FAEnabled"] = o.Is2FAEnabled
-	toSerialize["lastLoginAt"] = o.LastLoginAt
+	if o.LastLoginAt.IsSet() {
+		toSerialize["lastLoginAt"] = o.LastLoginAt.Get()
+	}
 	toSerialize["boundProjects"] = o.BoundProjects
 	toSerialize["partner"] = o.Partner
 	return toSerialize, nil
@@ -851,7 +872,6 @@ func (o *UserForListDto) UnmarshalJSON(data []byte) (err error) {
 		"hasRepo",
 		"isNewOrganization",
 		"is2FAEnabled",
-		"lastLoginAt",
 		"boundProjects",
 		"partner",
 	}
