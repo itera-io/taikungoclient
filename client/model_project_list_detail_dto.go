@@ -35,7 +35,7 @@ type ProjectListDetailDto struct {
 	OrganizationId int32 `json:"organizationId"`
 	Status ProjectStatus `json:"status"`
 	Health ProjectHealth `json:"health"`
-	CloudType *CloudType `json:"cloudType,omitempty"`
+	CloudType ECloudCredentialType `json:"cloudType"`
 	KubesprayCurrentVersion string `json:"kubesprayCurrentVersion"`
 	KubesprayTargetVersion string `json:"kubesprayTargetVersion"`
 	KubernetesCurrentVersion string `json:"kubernetesCurrentVersion"`
@@ -86,7 +86,7 @@ type _ProjectListDetailDto ProjectListDetailDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked bool, isVirtualCluster bool, isMonitoringEnabled bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, status ProjectStatus, health ProjectHealth, kubesprayCurrentVersion string, kubesprayTargetVersion string, kubernetesCurrentVersion string, kubernetesTargetVersion string, createdAt string, alertsCount int32, totalServersCount int32, totalStandaloneVmsCount int32, boundUsers []UserDto, createdBy string, lastModified NullableString, expiredAt NullableString, deleteOnExpiration bool, certificateExpiredAt NullableString, lastModifiedBy NullableString, quotaId int32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, projectAction bool, hasExpirationWarning bool, totalHourlyCost float64, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, aiEnabled bool, anyServer bool, anyVm bool, isBackupEnabled bool, isProjectMaintenanceModeEnabled bool, allUsers []string, parentProjectId NullableInt32, alertingProfileId NullableInt32, opaProfileId NullableInt32, importClusterType ImportClusterType) *ProjectListDetailDto {
+func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked bool, isVirtualCluster bool, isMonitoringEnabled bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, status ProjectStatus, health ProjectHealth, cloudType ECloudCredentialType, kubesprayCurrentVersion string, kubesprayTargetVersion string, kubernetesCurrentVersion string, kubernetesTargetVersion string, createdAt string, alertsCount int32, totalServersCount int32, totalStandaloneVmsCount int32, boundUsers []UserDto, createdBy string, lastModified NullableString, expiredAt NullableString, deleteOnExpiration bool, certificateExpiredAt NullableString, lastModifiedBy NullableString, quotaId int32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, projectAction bool, hasExpirationWarning bool, totalHourlyCost float64, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, aiEnabled bool, anyServer bool, anyVm bool, isBackupEnabled bool, isProjectMaintenanceModeEnabled bool, allUsers []string, parentProjectId NullableInt32, alertingProfileId NullableInt32, opaProfileId NullableInt32, importClusterType ImportClusterType) *ProjectListDetailDto {
 	this := ProjectListDetailDto{}
 	this.Id = id
 	this.Name = name
@@ -100,6 +100,7 @@ func NewProjectListDetailDto(id int32, name string, isKubernetes bool, isLocked 
 	this.OrganizationId = organizationId
 	this.Status = status
 	this.Health = health
+	this.CloudType = cloudType
 	this.KubesprayCurrentVersion = kubesprayCurrentVersion
 	this.KubesprayTargetVersion = kubesprayTargetVersion
 	this.KubernetesCurrentVersion = kubernetesCurrentVersion
@@ -476,36 +477,28 @@ func (o *ProjectListDetailDto) SetHealth(v ProjectHealth) {
 	o.Health = v
 }
 
-// GetCloudType returns the CloudType field value if set, zero value otherwise.
-func (o *ProjectListDetailDto) GetCloudType() CloudType {
-	if o == nil || IsNil(o.CloudType) {
-		var ret CloudType
+// GetCloudType returns the CloudType field value
+func (o *ProjectListDetailDto) GetCloudType() ECloudCredentialType {
+	if o == nil {
+		var ret ECloudCredentialType
 		return ret
 	}
-	return *o.CloudType
+
+	return o.CloudType
 }
 
-// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
+// GetCloudTypeOk returns a tuple with the CloudType field value
 // and a boolean to check if the value has been set.
-func (o *ProjectListDetailDto) GetCloudTypeOk() (*CloudType, bool) {
-	if o == nil || IsNil(o.CloudType) {
+func (o *ProjectListDetailDto) GetCloudTypeOk() (*ECloudCredentialType, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CloudType, true
+	return &o.CloudType, true
 }
 
-// HasCloudType returns a boolean if a field has been set.
-func (o *ProjectListDetailDto) HasCloudType() bool {
-	if o != nil && !IsNil(o.CloudType) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
-func (o *ProjectListDetailDto) SetCloudType(v CloudType) {
-	o.CloudType = &v
+// SetCloudType sets field value
+func (o *ProjectListDetailDto) SetCloudType(v ECloudCredentialType) {
+	o.CloudType = v
 }
 
 // GetKubesprayCurrentVersion returns the KubesprayCurrentVersion field value
@@ -1613,9 +1606,7 @@ func (o ProjectListDetailDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["organizationId"] = o.OrganizationId
 	toSerialize["status"] = o.Status
 	toSerialize["health"] = o.Health
-	if !IsNil(o.CloudType) {
-		toSerialize["cloudType"] = o.CloudType
-	}
+	toSerialize["cloudType"] = o.CloudType
 	toSerialize["kubesprayCurrentVersion"] = o.KubesprayCurrentVersion
 	toSerialize["kubesprayTargetVersion"] = o.KubesprayTargetVersion
 	toSerialize["kubernetesCurrentVersion"] = o.KubernetesCurrentVersion
@@ -1692,6 +1683,7 @@ func (o *ProjectListDetailDto) UnmarshalJSON(data []byte) (err error) {
 		"organizationId",
 		"status",
 		"health",
+		"cloudType",
 		"kubesprayCurrentVersion",
 		"kubesprayTargetVersion",
 		"kubernetesCurrentVersion",

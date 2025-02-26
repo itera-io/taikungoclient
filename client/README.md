@@ -1095,6 +1095,7 @@ Class | Method | HTTP request | Description
  - [DownloadKubeConfigCommand](docs/DownloadKubeConfigCommand.md)
  - [DownloadKubernetesResourceCommand](docs/DownloadKubernetesResourceCommand.md)
  - [DuplicateNameCheckerCommand](docs/DuplicateNameCheckerCommand.md)
+ - [ECloudCredentialType](docs/ECloudCredentialType.md)
  - [ECronJobAction](docs/ECronJobAction.md)
  - [EDaemonSetAction](docs/EDaemonSetAction.md)
  - [EDeploymentAction](docs/EDeploymentAction.md)
