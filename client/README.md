@@ -617,7 +617,7 @@ Class | Method | HTTP request | Description
 *S3CredentialsAPI* | [**S3credentialsDropdown**](docs/S3CredentialsAPI.md#s3credentialsdropdown) | **Get** /api/v1/s3credentials | Retrieve all S3 credentials for organization
 *S3CredentialsAPI* | [**S3credentialsList**](docs/S3CredentialsAPI.md#s3credentialslist) | **Get** /api/v1/s3credentials/list | Retrieve all S3 credentials
 *S3CredentialsAPI* | [**S3credentialsLockManagement**](docs/S3CredentialsAPI.md#s3credentialslockmanagement) | **Post** /api/v1/s3credentials/lockmanager | Lock/unlock s3 credential
-*S3CredentialsAPI* | [**S3credentialsMakeDeafult**](docs/S3CredentialsAPI.md#s3credentialsmakedeafult) | **Post** /api/v1/s3credentials/makedefault | Make default s3 credential
+*S3CredentialsAPI* | [**S3credentialsMakeDefault**](docs/S3CredentialsAPI.md#s3credentialsmakedefault) | **Post** /api/v1/s3credentials/makedefault | Make default s3 credential
 *S3CredentialsAPI* | [**S3credentialsUpdate**](docs/S3CredentialsAPI.md#s3credentialsupdate) | **Put** /api/v1/s3credentials | Update s3 credential
 *SearchAPI* | [**SearchAccessProfiles**](docs/SearchAPI.md#searchaccessprofiles) | **Post** /api/v1/search/access-profiles | Global search for access-profiles
 *SearchAPI* | [**SearchBackupCredentials**](docs/SearchAPI.md#searchbackupcredentials) | **Post** /api/v1/search/backup-credentials | Global search for backup-credentials

@@ -75,22 +75,20 @@ func Test_taikuncore_S3CredentialsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.S3CredentialsAPI.S3credentialsLockManagement(context.Background()).Execute()
+		httpRes, err := apiClient.S3CredentialsAPI.S3credentialsLockManagement(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test S3CredentialsAPIService S3credentialsMakeDeafult", func(t *testing.T) {
+	t.Run("Test S3CredentialsAPIService S3credentialsMakeDefault", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.S3CredentialsAPI.S3credentialsMakeDeafult(context.Background()).Execute()
+		httpRes, err := apiClient.S3CredentialsAPI.S3credentialsMakeDefault(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -99,10 +97,9 @@ func Test_taikuncore_S3CredentialsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.S3CredentialsAPI.S3credentialsUpdate(context.Background()).Execute()
+		httpRes, err := apiClient.S3CredentialsAPI.S3credentialsUpdate(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
