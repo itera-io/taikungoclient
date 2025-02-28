@@ -163,6 +163,7 @@ docs/AvailablePackageDetailsDto.md
 docs/AvailablePackagesDto.md
 docs/AvailablePackagesList.md
 docs/AwsCredentialList.md
+docs/AwsEksClusterDto.md
 docs/AwsEksNodeGroupDto.md
 docs/AwsFlavorList.md
 docs/AwsFlavorListDto.md
@@ -467,6 +468,7 @@ docs/GenericKubernetesList.md
 docs/GenericKubernetesListDto.md
 docs/GetCatalogAppValueAutocompleteCommand.md
 docs/GetCatalogAppValueCommand.md
+docs/GetEksClusterAuthCommand.md
 docs/GetProjectOperationCommand.md
 docs/GetToken.md
 docs/GiveAccessToPartnerCommand.md
@@ -1102,6 +1104,7 @@ model_available_package_details_dto.go
 model_available_packages_dto.go
 model_available_packages_list.go
 model_aws_credential_list.go
+model_aws_eks_cluster_dto.go
 model_aws_eks_node_group_dto.go
 model_aws_flavor_list.go
 model_aws_flavor_list_dto.go
@@ -1393,6 +1396,7 @@ model_generic_kubernetes_list.go
 model_generic_kubernetes_list_dto.go
 model_get_catalog_app_value_autocomplete_command.go
 model_get_catalog_app_value_command.go
+model_get_eks_cluster_auth_command.go
 model_get_project_operation_command.go
 model_get_token.go
 model_give_access_to_partner_command.go

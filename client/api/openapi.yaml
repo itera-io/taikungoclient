@@ -3881,6 +3881,54 @@ paths:
       summary: Add Aws credentials
       tags:
       - AWS cloud credential
+  /api/v1/aws/eks-auth-info:
+    post:
+      operationId: aws-get-eks-auth-info
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetEksClusterAuthCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AwsEksClusterDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Get EKS auth info
+      tags:
+      - AWS cloud credential
   /api/v1/aws/regions:
     post:
       operationId: aws-regionlist
@@ -5127,10 +5175,6 @@ paths:
               $ref: '#/components/schemas/CreateBackupPolicyCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -5173,13 +5217,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteBackupCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -5227,10 +5266,6 @@ paths:
               $ref: '#/components/schemas/DeleteBackupStorageLocationCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -5278,10 +5313,6 @@ paths:
               $ref: '#/components/schemas/DeleteRestoreCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -5329,10 +5360,6 @@ paths:
               $ref: '#/components/schemas/DeleteScheduleCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -5375,13 +5402,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ImportBackupStorageLocationCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -5434,10 +5456,6 @@ paths:
               $ref: '#/components/schemas/RestoreBackupCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -5777,8 +5795,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-02-28T00:03:13.138194Z
-                  createdAt: 2025-02-28T00:03:13.138194Z
+                  lastValidated: 2025-02-28T15:26:58.3140613Z
+                  createdAt: 2025-02-28T15:26:58.3140613Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5883,14 +5901,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-02-28T00:03:13.138194Z
+                    lastBackup: 2025-02-28T15:26:58.3140613Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-02-28T00:03:13.138194Z
+                  createdAt: 2025-02-28T15:26:58.3140613Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-02-28T00:03:13.138194Z
+                  lastBackup: 2025-02-28T15:26:58.3140613Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5995,8 +6013,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-02-28T00:03:13.138194Z
-                  expiration: 2025-02-28T00:03:13.138194Z
+                  createdAt: 2025-02-28T15:26:58.3140613Z
+                  expiration: 2025-02-28T15:26:58.3140613Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6100,7 +6118,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-02-28T00:03:13.138194Z
+                  createdAt: 2025-02-28T15:26:58.3140613Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6210,9 +6228,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-02-28T00:03:13.138194+00:00
-                  startTimeStamp: 2025-02-28T00:03:13.138194+00:00
-                  createdAt: 2025-02-28T00:03:13.138194Z
+                  completionDateTime: 2025-02-28T15:26:58.3140613+00:00
+                  startTimeStamp: 2025-02-28T15:26:58.3140613+00:00
+                  createdAt: 2025-02-28T15:26:58.3140613Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -43786,6 +43804,23 @@ components:
       - data
       - totalCount
       type: object
+    AwsEksClusterDto:
+      additionalProperties: false
+      example:
+        certificate: certificate
+        targetUrl: targetUrl
+        token: token
+      properties:
+        token:
+          nullable: true
+          type: string
+        targetUrl:
+          nullable: true
+          type: string
+        certificate:
+          nullable: true
+          type: string
+      type: object
     AwsEksNodeGroupDto:
       additionalProperties: false
       example:
@@ -53554,6 +53589,23 @@ components:
           nullable: true
           type: string
         version:
+          nullable: true
+          type: string
+      type: object
+    GetEksClusterAuthCommand:
+      additionalProperties: false
+      example:
+        kubeConfigName: kubeConfigName
+        configToken: configToken
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        kubeConfigName:
+          nullable: true
+          type: string
+        configToken:
           nullable: true
           type: string
       type: object
