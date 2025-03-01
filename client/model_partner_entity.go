@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PartnerEntity type satisfies the MappedNullable interface at compile time
@@ -20,17 +22,21 @@ var _ MappedNullable = &PartnerEntity{}
 
 // PartnerEntity struct for PartnerEntity
 type PartnerEntity struct {
-	PartnerId *int32 `json:"partnerId,omitempty"`
-	PartnerName *string `json:"partnerName,omitempty"`
+	PartnerId int32 `json:"partnerId"`
+	PartnerName string `json:"partnerName"`
 	Logo NullableString `json:"logo,omitempty"`
 }
+
+type _PartnerEntity PartnerEntity
 
 // NewPartnerEntity instantiates a new PartnerEntity object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPartnerEntity() *PartnerEntity {
+func NewPartnerEntity(partnerId int32, partnerName string) *PartnerEntity {
 	this := PartnerEntity{}
+	this.PartnerId = partnerId
+	this.PartnerName = partnerName
 	return &this
 }
 
@@ -42,68 +48,52 @@ func NewPartnerEntityWithDefaults() *PartnerEntity {
 	return &this
 }
 
-// GetPartnerId returns the PartnerId field value if set, zero value otherwise.
+// GetPartnerId returns the PartnerId field value
 func (o *PartnerEntity) GetPartnerId() int32 {
-	if o == nil || IsNil(o.PartnerId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.PartnerId
+
+	return o.PartnerId
 }
 
-// GetPartnerIdOk returns a tuple with the PartnerId field value if set, nil otherwise
+// GetPartnerIdOk returns a tuple with the PartnerId field value
 // and a boolean to check if the value has been set.
 func (o *PartnerEntity) GetPartnerIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.PartnerId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PartnerId, true
+	return &o.PartnerId, true
 }
 
-// HasPartnerId returns a boolean if a field has been set.
-func (o *PartnerEntity) HasPartnerId() bool {
-	if o != nil && !IsNil(o.PartnerId) {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerId gets a reference to the given int32 and assigns it to the PartnerId field.
+// SetPartnerId sets field value
 func (o *PartnerEntity) SetPartnerId(v int32) {
-	o.PartnerId = &v
+	o.PartnerId = v
 }
 
-// GetPartnerName returns the PartnerName field value if set, zero value otherwise.
+// GetPartnerName returns the PartnerName field value
 func (o *PartnerEntity) GetPartnerName() string {
-	if o == nil || IsNil(o.PartnerName) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.PartnerName
+
+	return o.PartnerName
 }
 
-// GetPartnerNameOk returns a tuple with the PartnerName field value if set, nil otherwise
+// GetPartnerNameOk returns a tuple with the PartnerName field value
 // and a boolean to check if the value has been set.
 func (o *PartnerEntity) GetPartnerNameOk() (*string, bool) {
-	if o == nil || IsNil(o.PartnerName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.PartnerName, true
+	return &o.PartnerName, true
 }
 
-// HasPartnerName returns a boolean if a field has been set.
-func (o *PartnerEntity) HasPartnerName() bool {
-	if o != nil && !IsNil(o.PartnerName) {
-		return true
-	}
-
-	return false
-}
-
-// SetPartnerName gets a reference to the given string and assigns it to the PartnerName field.
+// SetPartnerName sets field value
 func (o *PartnerEntity) SetPartnerName(v string) {
-	o.PartnerName = &v
+	o.PartnerName = v
 }
 
 // GetLogo returns the Logo field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -158,16 +148,50 @@ func (o PartnerEntity) MarshalJSON() ([]byte, error) {
 
 func (o PartnerEntity) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.PartnerId) {
-		toSerialize["partnerId"] = o.PartnerId
-	}
-	if !IsNil(o.PartnerName) {
-		toSerialize["partnerName"] = o.PartnerName
-	}
+	toSerialize["partnerId"] = o.PartnerId
+	toSerialize["partnerName"] = o.PartnerName
 	if o.Logo.IsSet() {
 		toSerialize["logo"] = o.Logo.Get()
 	}
 	return toSerialize, nil
+}
+
+func (o *PartnerEntity) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"partnerId",
+		"partnerName",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPartnerEntity := _PartnerEntity{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPartnerEntity)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PartnerEntity(varPartnerEntity)
+
+	return err
 }
 
 type NullablePartnerEntity struct {
