@@ -5795,8 +5795,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-03-01T00:03:53.3996033Z
-                  createdAt: 2025-03-01T00:03:53.3996033Z
+                  lastValidated: 2025-03-01T17:50:18.4032428Z
+                  createdAt: 2025-03-01T17:50:18.4032428Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5901,14 +5901,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-03-01T00:03:53.3996033Z
+                    lastBackup: 2025-03-01T17:50:18.4032428Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-03-01T00:03:53.3996033Z
+                  createdAt: 2025-03-01T17:50:18.4032428Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-03-01T00:03:53.3996033Z
+                  lastBackup: 2025-03-01T17:50:18.4032428Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6013,8 +6013,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-01T00:03:53.3996033Z
-                  expiration: 2025-03-01T00:03:53.3996033Z
+                  createdAt: 2025-03-01T17:50:18.4032428Z
+                  expiration: 2025-03-01T17:50:18.4032428Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6118,7 +6118,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-01T00:03:53.3996033Z
+                  createdAt: 2025-03-01T17:50:18.4032428Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6228,9 +6228,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-03-01T00:03:53.3996033+00:00
-                  startTimeStamp: 2025-03-01T00:03:53.3996033+00:00
-                  createdAt: 2025-03-01T00:03:53.3996033Z
+                  completionDateTime: 2025-03-01T17:50:18.4032428+00:00
+                  startTimeStamp: 2025-03-01T17:50:18.4032428+00:00
+                  createdAt: 2025-03-01T17:50:18.4032428Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -6280,10 +6280,6 @@ paths:
               $ref: '#/components/schemas/CreateBillingSummaryCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -6408,7 +6404,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupedBillingListQuery'
-        required: true
       responses:
         "200":
           content:
@@ -6586,10 +6581,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -6645,10 +6636,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -6680,7 +6667,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Delete projects from catalog
+      summary: Remove projects from catalog
       tags:
       - Catalog
   /api/v1/catalog/edit:
@@ -6691,13 +6678,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EditCatalogCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -6742,10 +6724,6 @@ paths:
               $ref: '#/components/schemas/CreateCatalogCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -6788,13 +6766,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CatalogLockManagementCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -6837,13 +6810,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CatalogMakeDefaultCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -7102,8 +7070,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:

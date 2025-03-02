@@ -188,7 +188,7 @@ Class | Method | HTTP request | Description
 *CatalogAPI* | [**CatalogAddProject**](docs/CatalogAPI.md#catalogaddproject) | **Post** /api/v1/catalog/{id}/projects | Add projects to catalog
 *CatalogAPI* | [**CatalogCreate**](docs/CatalogAPI.md#catalogcreate) | **Post** /api/v1/catalog/create | Create catalog
 *CatalogAPI* | [**CatalogDelete**](docs/CatalogAPI.md#catalogdelete) | **Delete** /api/v1/catalog/{id} | Delete catalog
-*CatalogAPI* | [**CatalogDeleteProject**](docs/CatalogAPI.md#catalogdeleteproject) | **Put** /api/v1/catalog/{id}/projects | Delete projects from catalog
+*CatalogAPI* | [**CatalogDeleteProject**](docs/CatalogAPI.md#catalogdeleteproject) | **Put** /api/v1/catalog/{id}/projects | Remove projects from catalog
 *CatalogAPI* | [**CatalogDetails**](docs/CatalogAPI.md#catalogdetails) | **Get** /api/v1/catalog/{id}/details | Retrieve catalog details by id
 *CatalogAPI* | [**CatalogDropdown**](docs/CatalogAPI.md#catalogdropdown) | **Get** /api/v1/catalog/list | Catalog dropdown list for organization
 *CatalogAPI* | [**CatalogEdit**](docs/CatalogAPI.md#catalogedit) | **Put** /api/v1/catalog/edit | Edit catalog
