@@ -65,10 +65,9 @@ func Test_taikuncore_CatalogAppAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CatalogAppAPI.CatalogAppEditParams(context.Background()).Execute()
+		httpRes, err := apiClient.CatalogAppAPI.CatalogAppEditParams(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -77,10 +76,9 @@ func Test_taikuncore_CatalogAppAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CatalogAppAPI.CatalogAppEditVersion(context.Background()).Execute()
+		httpRes, err := apiClient.CatalogAppAPI.CatalogAppEditVersion(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -101,10 +99,9 @@ func Test_taikuncore_CatalogAppAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CatalogAppAPI.CatalogAppLockManager(context.Background()).Execute()
+		httpRes, err := apiClient.CatalogAppAPI.CatalogAppLockManager(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
