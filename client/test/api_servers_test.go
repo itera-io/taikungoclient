@@ -116,10 +116,9 @@ func Test_taikuncore_ServersAPIService(t *testing.T) {
 
 		var projectId int32
 
-		resp, httpRes, err := apiClient.ServersAPI.ServersUpdateByProjectId(context.Background(), projectId).Execute()
+		httpRes, err := apiClient.ServersAPI.ServersUpdateByProjectId(context.Background(), projectId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

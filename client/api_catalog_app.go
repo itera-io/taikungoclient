@@ -1248,6 +1248,12 @@ type ApiCatalogAppParamDetailsRequest struct {
 	ctx context.Context
 	ApiService *CatalogAppAPIService
 	catalogAppId int32
+	isTaikunLink *bool
+}
+
+func (r ApiCatalogAppParamDetailsRequest) IsTaikunLink(isTaikunLink bool) ApiCatalogAppParamDetailsRequest {
+	r.isTaikunLink = &isTaikunLink
+	return r
 }
 
 func (r ApiCatalogAppParamDetailsRequest) Execute() ([]CatalogAppParamsDetailsDto, *http.Response, error) {
@@ -1291,6 +1297,9 @@ func (a *CatalogAppAPIService) CatalogAppParamDetailsExecute(r ApiCatalogAppPara
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.isTaikunLink != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsTaikunLink", r.isTaikunLink, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

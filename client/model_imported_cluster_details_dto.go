@@ -33,7 +33,7 @@ type ImportedClusterDetailsDto struct {
 	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
 	CloudCredentialId NullableInt32 `json:"cloudCredentialId,omitempty"`
 	Health ProjectHealth `json:"health"`
-	CloudType *CloudType `json:"cloudType,omitempty"`
+	CloudType *ECloudCredentialType `json:"cloudType,omitempty"`
 	Status ProjectStatus `json:"status"`
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
@@ -393,9 +393,9 @@ func (o *ImportedClusterDetailsDto) SetHealth(v ProjectHealth) {
 }
 
 // GetCloudType returns the CloudType field value if set, zero value otherwise.
-func (o *ImportedClusterDetailsDto) GetCloudType() CloudType {
+func (o *ImportedClusterDetailsDto) GetCloudType() ECloudCredentialType {
 	if o == nil || IsNil(o.CloudType) {
-		var ret CloudType
+		var ret ECloudCredentialType
 		return ret
 	}
 	return *o.CloudType
@@ -403,7 +403,7 @@ func (o *ImportedClusterDetailsDto) GetCloudType() CloudType {
 
 // GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ImportedClusterDetailsDto) GetCloudTypeOk() (*CloudType, bool) {
+func (o *ImportedClusterDetailsDto) GetCloudTypeOk() (*ECloudCredentialType, bool) {
 	if o == nil || IsNil(o.CloudType) {
 		return nil, false
 	}
@@ -419,8 +419,8 @@ func (o *ImportedClusterDetailsDto) HasCloudType() bool {
 	return false
 }
 
-// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
-func (o *ImportedClusterDetailsDto) SetCloudType(v CloudType) {
+// SetCloudType gets a reference to the given ECloudCredentialType and assigns it to the CloudType field.
+func (o *ImportedClusterDetailsDto) SetCloudType(v ECloudCredentialType) {
 	o.CloudType = &v
 }
 

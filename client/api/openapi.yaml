@@ -5795,8 +5795,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-03-03T00:03:28.1927355Z
-                  createdAt: 2025-03-03T00:03:28.1927355Z
+                  lastValidated: 2025-03-04T00:03:27.1273468Z
+                  createdAt: 2025-03-04T00:03:27.1273468Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5901,14 +5901,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-03-03T00:03:28.1927355Z
+                    lastBackup: 2025-03-04T00:03:27.1273468Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-03-03T00:03:28.1927355Z
+                  createdAt: 2025-03-04T00:03:27.1273468Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-03-03T00:03:28.1927355Z
+                  lastBackup: 2025-03-04T00:03:27.1273468Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6013,8 +6013,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-03T00:03:28.1927355Z
-                  expiration: 2025-03-03T00:03:28.1927355Z
+                  createdAt: 2025-03-04T00:03:27.1273468Z
+                  expiration: 2025-03-04T00:03:27.1273468Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6118,7 +6118,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-03T00:03:28.1927355Z
+                  createdAt: 2025-03-04T00:03:27.1273468Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6228,9 +6228,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-03-03T00:03:28.1927355+00:00
-                  startTimeStamp: 2025-03-03T00:03:28.1927355+00:00
-                  createdAt: 2025-03-03T00:03:28.1927355Z
+                  completionDateTime: 2025-03-04T00:03:27.1273468+00:00
+                  startTimeStamp: 2025-03-04T00:03:27.1273468+00:00
+                  createdAt: 2025-03-04T00:03:27.1273468Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -7447,6 +7447,13 @@ paths:
           format: int32
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: IsTaikunLink
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -7767,10 +7774,6 @@ paths:
               $ref: '#/components/schemas/HelmCredentialCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -7815,10 +7818,6 @@ paths:
               $ref: '#/components/schemas/ImportClusterValidateKubeConfigCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -7861,13 +7860,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KeycloakCheckerCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -33542,10 +33536,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -46043,6 +46033,7 @@ components:
     CatalogAppParamsDetailsDto:
       additionalProperties: false
       example:
+        isTaikunLink: true
         catalogAppName: catalogAppName
         hasJsonSchema: true
         isEditableWhenInstalling: true
@@ -46071,6 +46062,8 @@ components:
         isMandatory:
           type: boolean
         hasJsonSchema:
+          type: boolean
+        isTaikunLink:
           type: boolean
       type: object
     CatalogAppParamsDto:
@@ -46171,7 +46164,7 @@ components:
         name: name
         description: description
         boundProjects:
-        - cloudType: NONE
+        - cloudType: AWS
           isLocked: true
           name: name
           health: "Null"
@@ -46180,7 +46173,7 @@ components:
           maintenanceModeEnabled: true
           kubernetesVersion: kubernetesVersion
           status: "Null"
-        - cloudType: NONE
+        - cloudType: AWS
           isLocked: true
           name: name
           health: "Null"
@@ -46327,7 +46320,7 @@ components:
           name: name
           description: description
           boundProjects:
-          - cloudType: NONE
+          - cloudType: AWS
             isLocked: true
             name: name
             health: "Null"
@@ -46336,7 +46329,7 @@ components:
             maintenanceModeEnabled: true
             kubernetesVersion: kubernetesVersion
             status: "Null"
-          - cloudType: NONE
+          - cloudType: AWS
             isLocked: true
             name: name
             health: "Null"
@@ -46422,7 +46415,7 @@ components:
           name: name
           description: description
           boundProjects:
-          - cloudType: NONE
+          - cloudType: AWS
             isLocked: true
             name: name
             health: "Null"
@@ -46431,7 +46424,7 @@ components:
             maintenanceModeEnabled: true
             kubernetesVersion: kubernetesVersion
             status: "Null"
-          - cloudType: NONE
+          - cloudType: AWS
             isLocked: true
             name: name
             health: "Null"
@@ -46531,7 +46524,7 @@ components:
         name: name
         description: description
         boundProjects:
-        - cloudType: NONE
+        - cloudType: AWS
           isLocked: true
           name: name
           health: "Null"
@@ -46540,7 +46533,7 @@ components:
           maintenanceModeEnabled: true
           kubernetesVersion: kubernetesVersion
           status: "Null"
-        - cloudType: NONE
+        - cloudType: AWS
           isLocked: true
           name: name
           health: "Null"
@@ -54505,7 +54498,7 @@ components:
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           alertingProfileId: 9
-          cloudType: null
+          cloudType: AWS
           isLocked: true
           name: name
           cloudCredentialId: 7
@@ -54660,7 +54653,7 @@ components:
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           alertingProfileId: 9
-          cloudType: null
+          cloudType: AWS
           isLocked: true
           name: name
           cloudCredentialId: 7
@@ -54842,7 +54835,7 @@ components:
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           alertingProfileId: 9
-          cloudType: null
+          cloudType: AWS
           isLocked: true
           name: name
           cloudCredentialId: 7
@@ -54902,7 +54895,7 @@ components:
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
         alertingProfileId: 9
-        cloudType: null
+        cloudType: AWS
         isLocked: true
         name: name
         cloudCredentialId: 7
@@ -54941,7 +54934,7 @@ components:
         health:
           $ref: '#/components/schemas/ProjectHealth'
         cloudType:
-          $ref: '#/components/schemas/CloudType'
+          $ref: '#/components/schemas/ECloudCredentialType'
         status:
           $ref: '#/components/schemas/ProjectStatus'
         isMonitoringEnabled:
@@ -55150,7 +55143,7 @@ components:
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           alertingProfileId: 9
-          cloudType: null
+          cloudType: AWS
           isLocked: true
           name: name
           cloudCredentialId: 7
@@ -61400,12 +61393,14 @@ components:
           isEditableAfterInstallation: true
         catalogAppName: catalogAppName
         values: values
+        taikunLinkEnabled: true
         packageId: packageId
         autoSync: true
         version: version
         catalogAppId: 5
         catalogName: catalogName
         appRepoName: appRepoName
+        taikunLinkUrl: taikunLinkUrl
         catalogId: 6
         releaseNotes: releaseNotes
         helmResult: helmResult
@@ -61466,6 +61461,11 @@ components:
         logs:
           nullable: true
           type: string
+        taikunLinkUrl:
+          nullable: true
+          type: string
+        taikunLinkEnabled:
+          type: boolean
         projectAppParams:
           items:
             $ref: '#/components/schemas/ProjectAppParamDto'
@@ -61647,7 +61647,7 @@ components:
     ProjectCatalogDto:
       additionalProperties: false
       example:
-        cloudType: NONE
+        cloudType: AWS
         isLocked: true
         name: name
         health: "Null"
@@ -61673,7 +61673,7 @@ components:
         isVirtualCluster:
           type: boolean
         cloudType:
-          $ref: '#/components/schemas/CloudType'
+          $ref: '#/components/schemas/ECloudCredentialType'
         status:
           $ref: '#/components/schemas/ProjectStatus'
         health:
@@ -62236,7 +62236,7 @@ components:
         maxSpotPrice: 7.457744773683766
         organizationId: 1
         expiredAt: expiredAt
-        cloudType: NONE
+        cloudType: AWS
         cloudName: cloudName
         cloudId: 1
         isLocked: true
@@ -62259,7 +62259,7 @@ components:
           format: int32
           type: integer
         cloudType:
-          $ref: '#/components/schemas/CloudType'
+          $ref: '#/components/schemas/ECloudCredentialType'
         cloudName:
           type: string
         cloudId:
@@ -62324,7 +62324,6 @@ components:
       - cloudCredentialRevision
       - cloudId
       - cloudName
-      - cloudType
       - expiredAt
       - hasSelectedFlavors
       - hypervisors
@@ -68218,7 +68217,7 @@ components:
           maxSpotPrice: 7.457744773683766
           organizationId: 1
           expiredAt: expiredAt
-          cloudType: NONE
+          cloudType: AWS
           cloudName: cloudName
           cloudId: 1
           isLocked: true
@@ -71338,7 +71337,7 @@ components:
           maxSpotPrice: 7.457744773683766
           organizationId: 1
           expiredAt: expiredAt
-          cloudType: NONE
+          cloudType: AWS
           cloudName: cloudName
           cloudId: 1
           isLocked: true

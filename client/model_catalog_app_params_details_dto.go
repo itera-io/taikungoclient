@@ -28,6 +28,7 @@ type CatalogAppParamsDetailsDto struct {
 	IsEditableAfterInstallation *bool `json:"isEditableAfterInstallation,omitempty"`
 	IsMandatory *bool `json:"isMandatory,omitempty"`
 	HasJsonSchema *bool `json:"hasJsonSchema,omitempty"`
+	IsTaikunLink *bool `json:"isTaikunLink,omitempty"`
 }
 
 // NewCatalogAppParamsDetailsDto instantiates a new CatalogAppParamsDetailsDto object
@@ -333,6 +334,38 @@ func (o *CatalogAppParamsDetailsDto) SetHasJsonSchema(v bool) {
 	o.HasJsonSchema = &v
 }
 
+// GetIsTaikunLink returns the IsTaikunLink field value if set, zero value otherwise.
+func (o *CatalogAppParamsDetailsDto) GetIsTaikunLink() bool {
+	if o == nil || IsNil(o.IsTaikunLink) {
+		var ret bool
+		return ret
+	}
+	return *o.IsTaikunLink
+}
+
+// GetIsTaikunLinkOk returns a tuple with the IsTaikunLink field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CatalogAppParamsDetailsDto) GetIsTaikunLinkOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsTaikunLink) {
+		return nil, false
+	}
+	return o.IsTaikunLink, true
+}
+
+// HasIsTaikunLink returns a boolean if a field has been set.
+func (o *CatalogAppParamsDetailsDto) HasIsTaikunLink() bool {
+	if o != nil && !IsNil(o.IsTaikunLink) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsTaikunLink gets a reference to the given bool and assigns it to the IsTaikunLink field.
+func (o *CatalogAppParamsDetailsDto) SetIsTaikunLink(v bool) {
+	o.IsTaikunLink = &v
+}
+
 func (o CatalogAppParamsDetailsDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -366,6 +399,9 @@ func (o CatalogAppParamsDetailsDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HasJsonSchema) {
 		toSerialize["hasJsonSchema"] = o.HasJsonSchema
+	}
+	if !IsNil(o.IsTaikunLink) {
+		toSerialize["isTaikunLink"] = o.IsTaikunLink
 	}
 	return toSerialize, nil
 }
