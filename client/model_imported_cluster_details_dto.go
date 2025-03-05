@@ -33,7 +33,7 @@ type ImportedClusterDetailsDto struct {
 	CloudCredentialName NullableString `json:"cloudCredentialName,omitempty"`
 	CloudCredentialId NullableInt32 `json:"cloudCredentialId,omitempty"`
 	Health ProjectHealth `json:"health"`
-	CloudType *ECloudCredentialType `json:"cloudType,omitempty"`
+	CloudType ECloudCredentialType `json:"cloudType"`
 	Status ProjectStatus `json:"status"`
 	IsMonitoringEnabled bool `json:"isMonitoringEnabled"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
@@ -54,7 +54,7 @@ type _ImportedClusterDetailsDto ImportedClusterDetailsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp NullableString, kubernetesVersion NullableString, importClusterType ImportClusterType, organizationId int32, organizationName string, health ProjectHealth, status ProjectStatus, isMonitoringEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, isOpaEnabled bool, opaProfileId NullableInt32, isBackupEnabled bool, s3CredentialId NullableInt32, aiEnabled bool, aiCredentialId NullableInt32, expiredAt string, alertsCount int32) *ImportedClusterDetailsDto {
+func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp NullableString, kubernetesVersion NullableString, importClusterType ImportClusterType, organizationId int32, organizationName string, health ProjectHealth, cloudType ECloudCredentialType, status ProjectStatus, isMonitoringEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, isOpaEnabled bool, opaProfileId NullableInt32, isBackupEnabled bool, s3CredentialId NullableInt32, aiEnabled bool, aiCredentialId NullableInt32, expiredAt string, alertsCount int32) *ImportedClusterDetailsDto {
 	this := ImportedClusterDetailsDto{}
 	this.Id = id
 	this.Name = name
@@ -65,6 +65,7 @@ func NewImportedClusterDetailsDto(id int32, name string, isLocked bool, accessIp
 	this.OrganizationId = organizationId
 	this.OrganizationName = organizationName
 	this.Health = health
+	this.CloudType = cloudType
 	this.Status = status
 	this.IsMonitoringEnabled = isMonitoringEnabled
 	this.AlertingProfileId = alertingProfileId
@@ -392,36 +393,28 @@ func (o *ImportedClusterDetailsDto) SetHealth(v ProjectHealth) {
 	o.Health = v
 }
 
-// GetCloudType returns the CloudType field value if set, zero value otherwise.
+// GetCloudType returns the CloudType field value
 func (o *ImportedClusterDetailsDto) GetCloudType() ECloudCredentialType {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		var ret ECloudCredentialType
 		return ret
 	}
-	return *o.CloudType
+
+	return o.CloudType
 }
 
-// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
+// GetCloudTypeOk returns a tuple with the CloudType field value
 // and a boolean to check if the value has been set.
 func (o *ImportedClusterDetailsDto) GetCloudTypeOk() (*ECloudCredentialType, bool) {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CloudType, true
+	return &o.CloudType, true
 }
 
-// HasCloudType returns a boolean if a field has been set.
-func (o *ImportedClusterDetailsDto) HasCloudType() bool {
-	if o != nil && !IsNil(o.CloudType) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudType gets a reference to the given ECloudCredentialType and assigns it to the CloudType field.
+// SetCloudType sets field value
 func (o *ImportedClusterDetailsDto) SetCloudType(v ECloudCredentialType) {
-	o.CloudType = &v
+	o.CloudType = v
 }
 
 // GetStatus returns the Status field value
@@ -747,9 +740,7 @@ func (o ImportedClusterDetailsDto) ToMap() (map[string]interface{}, error) {
 		toSerialize["cloudCredentialId"] = o.CloudCredentialId.Get()
 	}
 	toSerialize["health"] = o.Health
-	if !IsNil(o.CloudType) {
-		toSerialize["cloudType"] = o.CloudType
-	}
+	toSerialize["cloudType"] = o.CloudType
 	toSerialize["status"] = o.Status
 	toSerialize["isMonitoringEnabled"] = o.IsMonitoringEnabled
 	toSerialize["alertingProfileId"] = o.AlertingProfileId.Get()
@@ -779,6 +770,7 @@ func (o *ImportedClusterDetailsDto) UnmarshalJSON(data []byte) (err error) {
 		"organizationId",
 		"organizationName",
 		"health",
+		"cloudType",
 		"status",
 		"isMonitoringEnabled",
 		"alertingProfileId",

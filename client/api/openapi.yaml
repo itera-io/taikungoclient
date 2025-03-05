@@ -5795,8 +5795,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-03-04T00:03:27.1273468Z
-                  createdAt: 2025-03-04T00:03:27.1273468Z
+                  lastValidated: 2025-03-05T00:03:18.6047748Z
+                  createdAt: 2025-03-05T00:03:18.6047748Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5901,14 +5901,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-03-04T00:03:27.1273468Z
+                    lastBackup: 2025-03-05T00:03:18.6047748Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-03-04T00:03:27.1273468Z
+                  createdAt: 2025-03-05T00:03:18.6047748Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-03-04T00:03:27.1273468Z
+                  lastBackup: 2025-03-05T00:03:18.6047748Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6013,8 +6013,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-04T00:03:27.1273468Z
-                  expiration: 2025-03-04T00:03:27.1273468Z
+                  createdAt: 2025-03-05T00:03:18.6047748Z
+                  expiration: 2025-03-05T00:03:18.6047748Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6118,7 +6118,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-04T00:03:27.1273468Z
+                  createdAt: 2025-03-05T00:03:18.6047748Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6228,9 +6228,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-03-04T00:03:27.1273468+00:00
-                  startTimeStamp: 2025-03-04T00:03:27.1273468+00:00
-                  createdAt: 2025-03-04T00:03:27.1273468Z
+                  completionDateTime: 2025-03-05T00:03:18.6047748+00:00
+                  startTimeStamp: 2025-03-05T00:03:18.6047748+00:00
+                  createdAt: 2025-03-05T00:03:18.6047748Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -7952,13 +7952,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NtpCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8001,13 +7996,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckPrometheusCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8050,13 +8040,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckS3Command'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8099,13 +8084,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SshKeyCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8148,13 +8128,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/YamlValidatorCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8245,11 +8220,10 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NodeCommand'
-        required: true
       responses:
         "200":
           content:
-            text/plain:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Void'
           description: OK
@@ -8294,13 +8268,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrganizationNameCheckerCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8345,10 +8314,6 @@ paths:
               $ref: '#/components/schemas/UserExistCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8573,10 +8538,6 @@ paths:
               $ref: '#/components/schemas/CheckOpenstackCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8625,10 +8586,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8677,10 +8634,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8723,13 +8676,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProxmoxCheckerCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8772,13 +8720,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckTanzuCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8821,13 +8764,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckZadaraCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -8870,13 +8808,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ZededaCheckerCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -32483,6 +32416,104 @@ paths:
       summary: Global search for config-maps
       tags:
       - Search
+  /api/v1/search/crds:
+    post:
+      operationId: search-crds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrdSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CrdSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for crds
+      tags:
+      - Search
+  /api/v1/search/cronjobs:
+    post:
+      operationId: search-cron-jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CronjobsSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronjobsSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for jobs
+      tags:
+      - Search
   /api/v1/search/daemon-sets:
     post:
       operationId: search-daemon-sets
@@ -32581,6 +32612,55 @@ paths:
       summary: Global search for deployments
       tags:
       - Search
+  /api/v1/search/helm-releases:
+    post:
+      operationId: search-helm-releases
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelmReleasesSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelmReleasesSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for helm-releases
+      tags:
+      - Search
   /api/v1/search/ingress:
     post:
       operationId: search-ingress
@@ -32630,6 +32710,104 @@ paths:
       summary: Global search for ingress
       tags:
       - Search
+  /api/v1/search/jobs:
+    post:
+      operationId: search-jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobsSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobsSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for jobs
+      tags:
+      - Search
+  /api/v1/search/pdb:
+    post:
+      operationId: search-pdb
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PdbSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PdbSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for pdb
+      tags:
+      - Search
   /api/v1/search/kubernetes-profiles:
     post:
       operationId: search-kubernetes-profiles
@@ -32677,6 +32855,104 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Global search for kubernetes-profiles
+      tags:
+      - Search
+  /api/v1/search/namespaces:
+    post:
+      operationId: search-namespaces
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NamespaceSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NamespaceSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for namespaces
+      tags:
+      - Search
+  /api/v1/search/network-policies:
+    post:
+      operationId: search-network-policies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkPoliciesSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkPoliciesSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for namespaces
       tags:
       - Search
   /api/v1/search/nodes:
@@ -33215,6 +33491,55 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Global search for stand-alone-profiles
+      tags:
+      - Search
+  /api/v1/search/storage-classes:
+    post:
+      operationId: search-storage-classes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageClassesSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageClassesSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for storage classes.
       tags:
       - Search
   /api/v1/search/sts:
@@ -47072,7 +47397,7 @@ components:
         hasKubeConfigFile: true
         alertingProfileId: 6
         isBound: true
-        cloudType: NONE
+        cloudType: AWS
         isLocked: true
         name: name
         id: 0
@@ -47104,7 +47429,7 @@ components:
           nullable: true
           type: integer
         cloudType:
-          $ref: '#/components/schemas/CloudType'
+          $ref: '#/components/schemas/ECloudCredentialType'
         status:
           $ref: '#/components/schemas/ProjectStatus'
         health:
@@ -47424,6 +47749,52 @@ components:
       - listKind
       - metadataName
       - specNameKind
+      type: object
+    CrdSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    CrdSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
       type: object
     Crds:
       additionalProperties: false
@@ -49384,6 +49755,52 @@ components:
       - action
       - data
       - projectId
+      type: object
+    CronjobsSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    CronjobsSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
       type: object
     CsvExporter:
       additionalProperties: false
@@ -54288,6 +54705,52 @@ components:
       - data
       - totalCount
       type: object
+    HelmReleasesSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    HelmReleasesSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     HelmStatus:
       additionalProperties: false
       example:
@@ -54976,6 +55439,7 @@ components:
       - alertingProfileId
       - alertingProfileName
       - alertsCount
+      - cloudType
       - expiredAt
       - health
       - id
@@ -55822,6 +56286,52 @@ components:
         gateway:
           nullable: true
           type: string
+      type: object
+    JobsSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    JobsSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
       type: object
     KeycloakCheckerCommand:
       additionalProperties: false
@@ -58001,6 +58511,52 @@ components:
       - prometheusUrl
       - username
       type: object
+    NamespaceSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    NamespaceSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     NetworkListCommand:
       additionalProperties: false
       example:
@@ -58049,6 +58605,52 @@ components:
       required:
       - data
       - totalCount
+      type: object
+    NetworkPoliciesSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    NetworkPoliciesSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
       type: object
     NetworkPolicyDto:
       additionalProperties: false
@@ -60753,6 +61355,52 @@ components:
     PaymentWebhookCommand:
       additionalProperties: false
       type: object
+    PdbSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    PdbSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     PodDisruptionDto:
       additionalProperties: false
       example:
@@ -62324,6 +62972,7 @@ components:
       - cloudCredentialRevision
       - cloudId
       - cloudName
+      - cloudType
       - expiredAt
       - hasSelectedFlavors
       - hypervisors
@@ -68907,6 +69556,52 @@ components:
       - data
       - totalCount
       type: object
+    StorageClassesSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    StorageClassesSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     StorageListCommand:
       additionalProperties: false
       example:
@@ -71221,7 +71916,7 @@ components:
           createdAt: createdAt
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          cloudType: NONE
+          cloudType: AWS
           isLocked: true
           id: 0
           setExpirationDateButton:
@@ -71280,7 +71975,7 @@ components:
           createdAt: createdAt
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          cloudType: NONE
+          cloudType: AWS
           isLocked: true
           id: 0
           setExpirationDateButton:
@@ -71387,7 +72082,7 @@ components:
         createdAt: createdAt
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
-        cloudType: NONE
+        cloudType: AWS
         isLocked: true
         id: 0
         setExpirationDateButton:
@@ -71478,7 +72173,7 @@ components:
         accessIp:
           type: string
         cloudType:
-          $ref: '#/components/schemas/CloudType'
+          $ref: '#/components/schemas/ECloudCredentialType'
         status:
           $ref: '#/components/schemas/ProjectStatus'
         health:

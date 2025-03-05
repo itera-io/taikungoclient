@@ -25,7 +25,7 @@ type ProjectDetailsForVmsDto struct {
 	Status ProjectStatus `json:"status"`
 	Name string `json:"name"`
 	Id int32 `json:"id"`
-	CloudType *ECloudCredentialType `json:"cloudType,omitempty"`
+	CloudType ECloudCredentialType `json:"cloudType"`
 	CloudName string `json:"cloudName"`
 	CloudId NullableInt32 `json:"cloudId"`
 	OrganizationName string `json:"organizationName"`
@@ -53,11 +53,12 @@ type _ProjectDetailsForVmsDto ProjectDetailsForVmsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDetailsForVmsDto(status ProjectStatus, name string, id int32, cloudName string, cloudId NullableInt32, organizationName string, organizationId int32, isLocked bool, isProjectMaintenanceModeEnabled bool, hasSelectedFlavors NullableBool, isMaintenanceModeEnabled bool, isDrsEnabled bool, projectCloudRevision NullableInt32, cloudCredentialRevision NullableInt32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, totalHourlyCost float64, availabilityZones []string, hypervisors []string, expiredAt NullableString) *ProjectDetailsForVmsDto {
+func NewProjectDetailsForVmsDto(status ProjectStatus, name string, id int32, cloudType ECloudCredentialType, cloudName string, cloudId NullableInt32, organizationName string, organizationId int32, isLocked bool, isProjectMaintenanceModeEnabled bool, hasSelectedFlavors NullableBool, isMaintenanceModeEnabled bool, isDrsEnabled bool, projectCloudRevision NullableInt32, cloudCredentialRevision NullableInt32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, totalHourlyCost float64, availabilityZones []string, hypervisors []string, expiredAt NullableString) *ProjectDetailsForVmsDto {
 	this := ProjectDetailsForVmsDto{}
 	this.Status = status
 	this.Name = name
 	this.Id = id
+	this.CloudType = cloudType
 	this.CloudName = cloudName
 	this.CloudId = cloudId
 	this.OrganizationName = organizationName
@@ -160,36 +161,28 @@ func (o *ProjectDetailsForVmsDto) SetId(v int32) {
 	o.Id = v
 }
 
-// GetCloudType returns the CloudType field value if set, zero value otherwise.
+// GetCloudType returns the CloudType field value
 func (o *ProjectDetailsForVmsDto) GetCloudType() ECloudCredentialType {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		var ret ECloudCredentialType
 		return ret
 	}
-	return *o.CloudType
+
+	return o.CloudType
 }
 
-// GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
+// GetCloudTypeOk returns a tuple with the CloudType field value
 // and a boolean to check if the value has been set.
 func (o *ProjectDetailsForVmsDto) GetCloudTypeOk() (*ECloudCredentialType, bool) {
-	if o == nil || IsNil(o.CloudType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CloudType, true
+	return &o.CloudType, true
 }
 
-// HasCloudType returns a boolean if a field has been set.
-func (o *ProjectDetailsForVmsDto) HasCloudType() bool {
-	if o != nil && !IsNil(o.CloudType) {
-		return true
-	}
-
-	return false
-}
-
-// SetCloudType gets a reference to the given ECloudCredentialType and assigns it to the CloudType field.
+// SetCloudType sets field value
 func (o *ProjectDetailsForVmsDto) SetCloudType(v ECloudCredentialType) {
-	o.CloudType = &v
+	o.CloudType = v
 }
 
 // GetCloudName returns the CloudName field value
@@ -677,9 +670,7 @@ func (o ProjectDetailsForVmsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["name"] = o.Name
 	toSerialize["id"] = o.Id
-	if !IsNil(o.CloudType) {
-		toSerialize["cloudType"] = o.CloudType
-	}
+	toSerialize["cloudType"] = o.CloudType
 	toSerialize["cloudName"] = o.CloudName
 	toSerialize["cloudId"] = o.CloudId.Get()
 	toSerialize["organizationName"] = o.OrganizationName
@@ -714,6 +705,7 @@ func (o *ProjectDetailsForVmsDto) UnmarshalJSON(data []byte) (err error) {
 		"status",
 		"name",
 		"id",
+		"cloudType",
 		"cloudName",
 		"cloudId",
 		"organizationName",

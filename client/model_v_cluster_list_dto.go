@@ -42,7 +42,7 @@ type VClusterListDto struct {
 	AlertingProfileId NullableInt32 `json:"alertingProfileId"`
 	AlertingProfileName NullableString `json:"alertingProfileName"`
 	AccessIp string `json:"accessIp"`
-	CloudType CloudType `json:"cloudType"`
+	CloudType ECloudCredentialType `json:"cloudType"`
 	Status ProjectStatus `json:"status"`
 	Health ProjectHealth `json:"health"`
 	LockButton ButtonStatusDto `json:"lockButton"`
@@ -59,7 +59,7 @@ type _VClusterListDto VClusterListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType CloudType, status ProjectStatus, health ProjectHealth, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
+func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType ECloudCredentialType, status ProjectStatus, health ProjectHealth, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
 	this := VClusterListDto{}
 	this.Id = id
 	this.Name = name
@@ -586,9 +586,9 @@ func (o *VClusterListDto) SetAccessIp(v string) {
 }
 
 // GetCloudType returns the CloudType field value
-func (o *VClusterListDto) GetCloudType() CloudType {
+func (o *VClusterListDto) GetCloudType() ECloudCredentialType {
 	if o == nil {
-		var ret CloudType
+		var ret ECloudCredentialType
 		return ret
 	}
 
@@ -597,7 +597,7 @@ func (o *VClusterListDto) GetCloudType() CloudType {
 
 // GetCloudTypeOk returns a tuple with the CloudType field value
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetCloudTypeOk() (*CloudType, bool) {
+func (o *VClusterListDto) GetCloudTypeOk() (*ECloudCredentialType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -605,7 +605,7 @@ func (o *VClusterListDto) GetCloudTypeOk() (*CloudType, bool) {
 }
 
 // SetCloudType sets field value
-func (o *VClusterListDto) SetCloudType(v CloudType) {
+func (o *VClusterListDto) SetCloudType(v ECloudCredentialType) {
 	o.CloudType = v
 }
 

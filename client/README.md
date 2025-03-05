@@ -625,13 +625,20 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**SearchBillingCredentials**](docs/SearchAPI.md#searchbillingcredentials) | **Post** /api/v1/search/billing-credentials | Global search for billing-credentials
 *SearchAPI* | [**SearchCloudCredentials**](docs/SearchAPI.md#searchcloudcredentials) | **Post** /api/v1/search/cloud-credentials | Global search for cloud-credentials
 *SearchAPI* | [**SearchConfigMaps**](docs/SearchAPI.md#searchconfigmaps) | **Post** /api/v1/search/config-maps | Global search for config-maps
+*SearchAPI* | [**SearchCrds**](docs/SearchAPI.md#searchcrds) | **Post** /api/v1/search/crds | Global search for crds
+*SearchAPI* | [**SearchCronJobs**](docs/SearchAPI.md#searchcronjobs) | **Post** /api/v1/search/cronjobs | Global search for jobs
 *SearchAPI* | [**SearchDaemonSets**](docs/SearchAPI.md#searchdaemonsets) | **Post** /api/v1/search/daemon-sets | Global search for daemon-sets
 *SearchAPI* | [**SearchDeployments**](docs/SearchAPI.md#searchdeployments) | **Post** /api/v1/search/deployments | Global search for deployments
+*SearchAPI* | [**SearchHelmReleases**](docs/SearchAPI.md#searchhelmreleases) | **Post** /api/v1/search/helm-releases | Global search for helm-releases
 *SearchAPI* | [**SearchIngress**](docs/SearchAPI.md#searchingress) | **Post** /api/v1/search/ingress | Global search for ingress
+*SearchAPI* | [**SearchJobs**](docs/SearchAPI.md#searchjobs) | **Post** /api/v1/search/jobs | Global search for jobs
 *SearchAPI* | [**SearchKubernetesProfiles**](docs/SearchAPI.md#searchkubernetesprofiles) | **Post** /api/v1/search/kubernetes-profiles | Global search for kubernetes-profiles
+*SearchAPI* | [**SearchNamespaces**](docs/SearchAPI.md#searchnamespaces) | **Post** /api/v1/search/namespaces | Global search for namespaces
+*SearchAPI* | [**SearchNetworkPolicies**](docs/SearchAPI.md#searchnetworkpolicies) | **Post** /api/v1/search/network-policies | Global search for namespaces
 *SearchAPI* | [**SearchNodes**](docs/SearchAPI.md#searchnodes) | **Post** /api/v1/search/nodes | Global search for nodes
 *SearchAPI* | [**SearchOrganizations**](docs/SearchAPI.md#searchorganizations) | **Post** /api/v1/search/organizations | Global search for organizations
 *SearchAPI* | [**SearchPartners**](docs/SearchAPI.md#searchpartners) | **Post** /api/v1/search/partners | Global search for partners
+*SearchAPI* | [**SearchPdb**](docs/SearchAPI.md#searchpdb) | **Post** /api/v1/search/pdb | Global search for pdb
 *SearchAPI* | [**SearchPods**](docs/SearchAPI.md#searchpods) | **Post** /api/v1/search/pods | Global search for pods
 *SearchAPI* | [**SearchProjects**](docs/SearchAPI.md#searchprojects) | **Post** /api/v1/search/projects | Global search for projects
 *SearchAPI* | [**SearchPrometheusRules**](docs/SearchAPI.md#searchprometheusrules) | **Post** /api/v1/search/prometheus-rules | Global search for prometheus-rules
@@ -640,6 +647,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**SearchServers**](docs/SearchAPI.md#searchservers) | **Post** /api/v1/search/servers | Global search for servers
 *SearchAPI* | [**SearchServices**](docs/SearchAPI.md#searchservices) | **Post** /api/v1/search/services | Global search for services
 *SearchAPI* | [**SearchStandAloneProfiles**](docs/SearchAPI.md#searchstandaloneprofiles) | **Post** /api/v1/search/stand-alone-profiles | Global search for stand-alone-profiles
+*SearchAPI* | [**SearchStorageClasses**](docs/SearchAPI.md#searchstorageclasses) | **Post** /api/v1/search/storage-classes | Global search for storage classes.
 *SearchAPI* | [**SearchSts**](docs/SearchAPI.md#searchsts) | **Post** /api/v1/search/sts | Global search for sts
 *SearchAPI* | [**SearchUsers**](docs/SearchAPI.md#searchusers) | **Post** /api/v1/search/users | Global search for users
 *SecurityGroupAPI* | [**SecuritygroupCreate**](docs/SecurityGroupAPI.md#securitygroupcreate) | **Post** /api/v1/securitygroup/create | Create standalonealone profile security group
@@ -967,6 +975,8 @@ Class | Method | HTTP request | Description
  - [CostComponent](docs/CostComponent.md)
  - [CountryListDto](docs/CountryListDto.md)
  - [CrdListDto](docs/CrdListDto.md)
+ - [CrdSearchCommand](docs/CrdSearchCommand.md)
+ - [CrdSearchList](docs/CrdSearchList.md)
  - [Crds](docs/Crds.md)
  - [CreateAccessProfileCommand](docs/CreateAccessProfileCommand.md)
  - [CreateAiCredentialCommand](docs/CreateAiCredentialCommand.md)
@@ -1018,6 +1028,8 @@ Class | Method | HTTP request | Description
  - [CredentialMakeDefaultCommand](docs/CredentialMakeDefaultCommand.md)
  - [CronJobCommand](docs/CronJobCommand.md)
  - [CronjobActionCommand](docs/CronjobActionCommand.md)
+ - [CronjobsSearchCommand](docs/CronjobsSearchCommand.md)
+ - [CronjobsSearchList](docs/CronjobsSearchList.md)
  - [CsvExporter](docs/CsvExporter.md)
  - [DaemonSetDto](docs/DaemonSetDto.md)
  - [DaemonSetSearchCommand](docs/DaemonSetSearchCommand.md)
@@ -1167,6 +1179,8 @@ Class | Method | HTTP request | Description
  - [HelmReleaseSourceRef](docs/HelmReleaseSourceRef.md)
  - [HelmReleaseSpec](docs/HelmReleaseSpec.md)
  - [HelmReleasesList](docs/HelmReleasesList.md)
+ - [HelmReleasesSearchCommand](docs/HelmReleasesSearchCommand.md)
+ - [HelmReleasesSearchList](docs/HelmReleasesSearchList.md)
  - [HelmStatus](docs/HelmStatus.md)
  - [HypervisorListCommand](docs/HypervisorListCommand.md)
  - [ImageByIdCommand](docs/ImageByIdCommand.md)
@@ -1207,6 +1221,8 @@ Class | Method | HTTP request | Description
  - [Invoices](docs/Invoices.md)
  - [IpAddressRangeCountCommand](docs/IpAddressRangeCountCommand.md)
  - [IpAddressRangeListCommand](docs/IpAddressRangeListCommand.md)
+ - [JobsSearchCommand](docs/JobsSearchCommand.md)
+ - [JobsSearchList](docs/JobsSearchList.md)
  - [KeycloakCheckerCommand](docs/KeycloakCheckerCommand.md)
  - [KeycloakCreateCommand](docs/KeycloakCreateCommand.md)
  - [KeycloakDeleteCommand](docs/KeycloakDeleteCommand.md)
@@ -1271,8 +1287,12 @@ Class | Method | HTTP request | Description
  - [MetricData](docs/MetricData.md)
  - [MetricResult](docs/MetricResult.md)
  - [MonitoringCredentialsListDto](docs/MonitoringCredentialsListDto.md)
+ - [NamespaceSearchCommand](docs/NamespaceSearchCommand.md)
+ - [NamespaceSearchList](docs/NamespaceSearchList.md)
  - [NetworkListCommand](docs/NetworkListCommand.md)
  - [NetworkPolicies](docs/NetworkPolicies.md)
+ - [NetworkPoliciesSearchCommand](docs/NetworkPoliciesSearchCommand.md)
+ - [NetworkPoliciesSearchList](docs/NetworkPoliciesSearchList.md)
  - [NetworkPolicyDto](docs/NetworkPolicyDto.md)
  - [NetworkSummary](docs/NetworkSummary.md)
  - [NodeActionCommand](docs/NodeActionCommand.md)
@@ -1350,6 +1370,8 @@ Class | Method | HTTP request | Description
  - [PartnersSearchResponseData](docs/PartnersSearchResponseData.md)
  - [PatchKubernetesResourceCommand](docs/PatchKubernetesResourceCommand.md)
  - [PayInvoiceCommand](docs/PayInvoiceCommand.md)
+ - [PdbSearchCommand](docs/PdbSearchCommand.md)
+ - [PdbSearchList](docs/PdbSearchList.md)
  - [PodDisruptionDto](docs/PodDisruptionDto.md)
  - [PodDisruptions](docs/PodDisruptions.md)
  - [PodDto](docs/PodDto.md)
@@ -1531,6 +1553,8 @@ Class | Method | HTTP request | Description
  - [StopStandaloneVmCommand](docs/StopStandaloneVmCommand.md)
  - [StorageClassDto](docs/StorageClassDto.md)
  - [StorageClasses](docs/StorageClasses.md)
+ - [StorageClassesSearchCommand](docs/StorageClassesSearchCommand.md)
+ - [StorageClassesSearchList](docs/StorageClassesSearchList.md)
  - [StorageListCommand](docs/StorageListCommand.md)
  - [StripeInvoiceListDto](docs/StripeInvoiceListDto.md)
  - [StripeInvoices](docs/StripeInvoices.md)
