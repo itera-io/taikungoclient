@@ -33,6 +33,8 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateAccessProfileDto'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -147,6 +149,8 @@ paths:
             schema:
               $ref: '#/components/schemas/AccessProfilesLockManagementCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -414,6 +418,8 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -702,6 +708,8 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -838,6 +846,8 @@ paths:
             schema:
               $ref: '#/components/schemas/EditAlertingIntegrationCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -1004,6 +1014,8 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -1059,6 +1071,8 @@ paths:
                 $ref: '#/components/schemas/AlertingEmailDto'
               type: array
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -1119,6 +1133,8 @@ paths:
                 $ref: '#/components/schemas/AlertingWebhookDto'
               type: array
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -1162,6 +1178,12 @@ paths:
               $ref: '#/components/schemas/AttachDetachAlertingProfileCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -1271,6 +1293,12 @@ paths:
               $ref: '#/components/schemas/AttachDetachAlertingProfileCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -1370,6 +1398,8 @@ paths:
             schema:
               $ref: '#/components/schemas/AlertingProfilesLockManagerCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -1401,6 +1431,52 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Lock/Unlock Alerting profiles
+      tags:
+      - Alerting Profiles
+  /api/v1/alertingprofiles/verifywebhook:
+    post:
+      operationId: alertingprofiles-verify
+      requestBody:
+        content:
+          application/json:
+            example:
+              url: https://www.google.com
+            schema:
+              $ref: '#/components/schemas/VerifyWebhookCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Verify webhook endpoint
       tags:
       - Alerting Profiles
   /api/v1/alertingprofiles/list:
@@ -1609,6 +1685,8 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -1664,6 +1742,8 @@ paths:
             schema:
               $ref: '#/components/schemas/EditAllowedHostDto'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -1861,6 +1941,8 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -1903,6 +1985,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BindAppRepositoryCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -1946,6 +2034,12 @@ paths:
               $ref: '#/components/schemas/DeleteRepositoryCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -1988,6 +2082,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ImportRepoCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -2031,6 +2131,12 @@ paths:
               $ref: '#/components/schemas/UnbindAppRepositoryCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -2293,6 +2399,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ForgotPasswordCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -2338,7 +2446,6 @@ paths:
               mode: token|autoscaling|keycloak
               accessKey: X9BZGP8TSTB7D4K6N9U8
               secretKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
-              local: false
             schema:
               $ref: '#/components/schemas/LoginCommand'
       responses:
@@ -2445,6 +2552,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ResetPasswordCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -2489,6 +2598,8 @@ paths:
             schema:
               $ref: '#/components/schemas/DisableAutoscalingCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -2535,6 +2646,8 @@ paths:
             schema:
               $ref: '#/components/schemas/EditAutoscalingCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -2585,6 +2698,8 @@ paths:
             schema:
               $ref: '#/components/schemas/EnableAutoscalingCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -2631,6 +2746,8 @@ paths:
             schema:
               $ref: '#/components/schemas/AwsValidateOwnerCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -2776,6 +2893,54 @@ paths:
       summary: Add Aws credentials
       tags:
       - AWS cloud credential
+  /api/v1/aws/eks-auth-info:
+    post:
+      operationId: aws-get-eks-auth-info
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetEksClusterAuthCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AwsEksClusterDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Get EKS auth info
+      tags:
+      - AWS cloud credential
   /api/v1/aws/regions:
     post:
       operationId: aws-regionlist
@@ -2785,6 +2950,7 @@ paths:
             example:
               awsAccessKeyId: X9BZGP8TSTB7D4K6N9U8
               awsSecretAccessKey: rd98DUXrLkcxI5rqcimJD2BkrsRUZmbqBSwcAcIm
+              cloudId: 1
             schema:
               $ref: '#/components/schemas/RegionListCommand'
       responses:
@@ -2846,6 +3012,8 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateAwsCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -2939,6 +3107,13 @@ paths:
           format: int32
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: Region
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -3174,7 +3349,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AksClusterListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -3454,6 +3628,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateAzureCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -4001,6 +4181,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateBackupPolicyCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -4042,8 +4224,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteBackupCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -4089,6 +4272,8 @@ paths:
             schema:
               $ref: '#/components/schemas/DeleteBackupStorageLocationCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -4134,6 +4319,8 @@ paths:
             schema:
               $ref: '#/components/schemas/DeleteRestoreCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -4179,6 +4366,8 @@ paths:
             schema:
               $ref: '#/components/schemas/DeleteScheduleCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -4220,8 +4409,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ImportBackupStorageLocationCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -4272,6 +4462,8 @@ paths:
             schema:
               $ref: '#/components/schemas/RestoreBackupCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -4610,8 +4802,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-03-06T00:19:53.3457365Z
-                  createdAt: 2025-03-06T00:19:53.3457365Z
+                  lastValidated: 2025-03-07T00:19:37.640378Z
+                  createdAt: 2025-03-07T00:19:37.640378Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -4716,14 +4908,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-03-06T00:19:53.3457365Z
+                    lastBackup: 2025-03-07T00:19:37.640378Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-03-06T00:19:53.3457365Z
+                  createdAt: 2025-03-07T00:19:37.640378Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-03-06T00:19:53.3457365Z
+                  lastBackup: 2025-03-07T00:19:37.640378Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -4828,8 +5020,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-06T00:19:53.3457365Z
-                  expiration: 2025-03-06T00:19:53.3457365Z
+                  createdAt: 2025-03-07T00:19:37.640378Z
+                  expiration: 2025-03-07T00:19:37.640378Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -4933,7 +5125,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-06T00:19:53.3457365Z
+                  createdAt: 2025-03-07T00:19:37.640378Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5043,9 +5235,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-03-06T00:19:53.3457365+00:00
-                  startTimeStamp: 2025-03-06T00:19:53.3457365+00:00
-                  createdAt: 2025-03-06T00:19:53.3457365Z
+                  completionDateTime: 2025-03-07T00:19:37.640378+00:00
+                  startTimeStamp: 2025-03-07T00:19:37.640378+00:00
+                  createdAt: 2025-03-07T00:19:37.640378Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -5175,7 +5367,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupedBillingListQuery'
-        required: true
       responses:
         "200":
           content:
@@ -5352,6 +5543,8 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -5405,6 +5598,8 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -5435,7 +5630,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Delete projects from catalog
+      summary: Remove projects from catalog
       tags:
       - Catalog
   /api/v1/catalog/edit:
@@ -5446,8 +5641,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EditCatalogCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -5489,8 +5685,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateCatalogCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -5532,8 +5729,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CatalogLockManagementCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -5575,8 +5773,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CatalogMakeDefaultCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -5833,6 +6032,8 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -5875,6 +6076,8 @@ paths:
             schema:
               $ref: '#/components/schemas/EditCatalogAppParamCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -5916,8 +6119,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/EditCatalogAppVersionCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6007,8 +6211,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CatalogAppLockManagement'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6205,6 +6410,13 @@ paths:
           format: int32
           type: integer
         style: simple
+      - explode: true
+        in: query
+        name: IsTaikunLink
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -6260,6 +6472,8 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6301,8 +6515,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OpenAiCheckerCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6345,6 +6560,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ArtifactUrlCheckerCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6386,8 +6603,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CidrCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6429,8 +6647,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CronJobCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6472,8 +6691,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DnsCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6516,6 +6736,8 @@ paths:
             schema:
               $ref: '#/components/schemas/HelmCredentialCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6558,6 +6780,8 @@ paths:
             schema:
               $ref: '#/components/schemas/ImportClusterValidateKubeConfigCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6599,8 +6823,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KeycloakCheckerCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6690,8 +6915,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NtpCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6733,8 +6959,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckPrometheusCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6776,8 +7003,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckS3Command'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6819,8 +7047,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SshKeyCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6862,8 +7091,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/YamlValidatorCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6905,7 +7135,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DuplicateNameCheckerCommand'
-        required: true
       responses:
         "200":
           content:
@@ -6954,8 +7183,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckAwsCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -6997,8 +7227,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckAzureCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -7040,8 +7271,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckAzureCpuQuotaCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -7132,6 +7364,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CheckOpenstackCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -7178,6 +7412,8 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -7224,6 +7460,8 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -7265,8 +7503,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProxmoxCheckerCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -7308,8 +7547,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckTanzuCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -7351,8 +7591,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckZadaraCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -7394,8 +7635,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ZededaCheckerCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -7439,6 +7681,12 @@ paths:
               $ref: '#/components/schemas/CloudLockManagerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7482,6 +7730,12 @@ paths:
               $ref: '#/components/schemas/CredentialMakeDefaultCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -7677,6 +7931,13 @@ paths:
           format: int32
           type: integer
         style: form
+      - explode: true
+        in: query
+        name: CloudType
+        required: false
+        schema:
+          $ref: '#/components/schemas/CloudType'
+        style: form
       responses:
         "200":
           content:
@@ -7732,6 +7993,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -7831,6 +8096,8 @@ paths:
             schema:
               $ref: '#/components/schemas/DnsNtpAddressEditDto'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -7977,7 +8244,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: List dn servers by profile id
+      summary: List dns servers by profile id
       tags:
       - Dns Servers
   /api/v1/dnsservers/{id}:
@@ -7993,6 +8260,8 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -8023,7 +8292,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Delete dns server
+      summary: Delete DNS server
       tags:
       - Dns Servers
   /api/v1/flavors/bind:
@@ -8035,6 +8304,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BindFlavorToProjectCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -8078,6 +8353,12 @@ paths:
               $ref: '#/components/schemas/UnbindFlavorFromProjectCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9528,6 +9809,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateGenericKubernetesCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -9780,7 +10067,7 @@ paths:
             application/json:
               schema:
                 items:
-                  type: string
+                  $ref: '#/components/schemas/GkeClusterDto'
                 type: array
           description: OK
         "400":
@@ -10080,6 +10367,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BindImageToProjectCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -10172,6 +10465,12 @@ paths:
               $ref: '#/components/schemas/DeleteImageFromProjectCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -11557,6 +11856,12 @@ paths:
               $ref: '#/components/schemas/DeleteImportedProjectCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -11600,6 +11905,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterDisableAiCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -11643,6 +11954,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterDisableBackupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -11686,6 +12003,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterDisableMonitoringCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -11729,6 +12052,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterDisableOpaCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -11772,6 +12101,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterEnableAiCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -11815,6 +12150,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterEnableBackupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -11858,6 +12199,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterEnableMonitoringCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -11901,6 +12248,12 @@ paths:
               $ref: '#/components/schemas/ImportedClusterEnableOpaCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -12194,6 +12547,12 @@ paths:
               $ref: '#/components/schemas/KeycloakEditCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -12237,6 +12596,12 @@ paths:
               $ref: '#/components/schemas/KeycloakCreateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -12280,6 +12645,12 @@ paths:
               $ref: '#/components/schemas/KeycloakDeleteCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -12518,6 +12889,12 @@ paths:
               $ref: '#/components/schemas/DeleteKubeConfigCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -12758,6 +13135,12 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateKubernetesResourceCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -12791,6 +13174,102 @@ paths:
       summary: Create kubernetes resource
       tags:
       - Kubernetes
+  /api/v1/kubernetes/cronjob/actions:
+    post:
+      operationId: kubernetes-cronjob-actions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CronjobActionCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KubernetesActionResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Cronjob actions
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/daemonset/actions:
+    post:
+      operationId: kubernetes-daemonset-actions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DaemonsetActionCommand'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Daemonset actions
+      tags:
+      - Kubernetes
   /api/v1/kubernetes/removealerts:
     post:
       operationId: kubernetes-removealerts
@@ -12801,6 +13280,12 @@ paths:
               $ref: '#/components/schemas/DeleteAlertCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -12832,6 +13317,102 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Remove k8s alerts
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/delete-resource:
+    post:
+      operationId: kubernetes-delete-resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteKubernetesResourceCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KubernetesActionResponse'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete kubernetes resource
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/deployment/actions:
+    post:
+      operationId: kubernetes-deployment-actions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentActionCommand'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Deployment actions
       tags:
       - Kubernetes
   /api/v1/kubernetes/describe-resource:
@@ -12880,6 +13461,54 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Describe kubernetes resource
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/download-manifest:
+    post:
+      operationId: kubernetes-download-manifest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DownloadKubernetesResourceCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CsvExporter'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Download manifest
       tags:
       - Kubernetes
   /api/v1/kubernetes/podLogs:
@@ -13032,6 +13661,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace}:
     post:
+      deprecated: true
       operationId: kubernetes-kill-pod
       parameters:
       - explode: false
@@ -13057,6 +13687,12 @@ paths:
           type: string
         style: simple
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -13090,6 +13726,54 @@ paths:
       summary: Kill the pod
       tags:
       - Kubernetes
+  /api/v1/kubernetes/nodes/actions:
+    post:
+      operationId: kubernetes-node-actions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NodeActionCommand'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Node actions
+      tags:
+      - Kubernetes
   /api/v1/kubernetes/patch-resource:
     post:
       operationId: kubernetes-patch-resource
@@ -13099,6 +13783,12 @@ paths:
             schema:
               $ref: '#/components/schemas/PatchKubernetesResourceCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -13134,6 +13824,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/restart/daemonset:
     post:
+      deprecated: true
       operationId: kubernetes-restart-daemon-set
       requestBody:
         content:
@@ -13142,6 +13833,12 @@ paths:
               $ref: '#/components/schemas/RestartDaemonSetCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -13177,6 +13874,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/restart/deployment:
     post:
+      deprecated: true
       operationId: kubernetes-restart-deployment
       requestBody:
         content:
@@ -13185,6 +13883,12 @@ paths:
               $ref: '#/components/schemas/RestartDeploymentCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -13220,6 +13924,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/restart/sts:
     post:
+      deprecated: true
       operationId: kubernetes-restart-sts
       requestBody:
         content:
@@ -13228,6 +13933,12 @@ paths:
               $ref: '#/components/schemas/RestartStsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -13271,6 +13982,12 @@ paths:
               $ref: '#/components/schemas/SilenceOperationsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -13302,6 +14019,54 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Silence management for k8s alerts
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/sts/actions:
+    post:
+      operationId: kubernetes-sts-actions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StsActionCommand'
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Stateful set actions
       tags:
       - Kubernetes
   /api/v1/kubernetes/export:
@@ -13354,6 +14119,60 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Export
+      tags:
+      - Kubernetes
+  /api/v1/kubernetes/forbidden-namespaces/{projectId}:
+    get:
+      operationId: kubernetes-forbidden-namespaces
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Forbidden namespaces for k8s actions
       tags:
       - Kubernetes
   /api/v1/kubernetes/{projectId}/configmap:
@@ -15331,6 +16150,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/configmap:
     post:
+      deprecated: true
       operationId: kubernetes-describe-config-map
       requestBody:
         content:
@@ -15380,6 +16200,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/crd:
     post:
+      deprecated: true
       operationId: kubernetes-describe-crd
       requestBody:
         content:
@@ -15429,6 +16250,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/cronjob:
     post:
+      deprecated: true
       operationId: kubernetes-describe-cronjob
       requestBody:
         content:
@@ -15478,6 +16300,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/daemonset:
     post:
+      deprecated: true
       operationId: kubernetes-describe-daemon-set
       requestBody:
         content:
@@ -15527,6 +16350,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/deployment:
     post:
+      deprecated: true
       operationId: kubernetes-describe-deployment
       requestBody:
         content:
@@ -15576,6 +16400,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/ingress:
     post:
+      deprecated: true
       operationId: kubernetes-describe-ingress
       requestBody:
         content:
@@ -15625,6 +16450,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/job:
     post:
+      deprecated: true
       operationId: kubernetes-describe-job
       requestBody:
         content:
@@ -15674,6 +16500,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/network-policy:
     post:
+      deprecated: true
       operationId: kubernetes-describe-network-policy
       requestBody:
         content:
@@ -15723,6 +16550,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/node:
     post:
+      deprecated: true
       operationId: kubernetes-describe-node
       requestBody:
         content:
@@ -15772,6 +16600,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/pdb:
     post:
+      deprecated: true
       operationId: kubernetes-describe-pdb
       requestBody:
         content:
@@ -15821,6 +16650,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/pod:
     post:
+      deprecated: true
       operationId: kubernetes-describe-pod
       requestBody:
         content:
@@ -15870,6 +16700,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/pvc:
     post:
+      deprecated: true
       operationId: kubernetes-describe-pvc
       requestBody:
         content:
@@ -15919,6 +16750,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/secret:
     post:
+      deprecated: true
       operationId: kubernetes-describe-secret
       requestBody:
         content:
@@ -15968,6 +16800,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/service:
     post:
+      deprecated: true
       operationId: kubernetes-describe-service
       requestBody:
         content:
@@ -16017,6 +16850,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/storageclass:
     post:
+      deprecated: true
       operationId: kubernetes-describe-storage-class
       requestBody:
         content:
@@ -16066,6 +16900,7 @@ paths:
       - Kubernetes
   /api/v1/kubernetes/describe/sts:
     post:
+      deprecated: true
       operationId: kubernetes-describe-sts
       requestBody:
         content:
@@ -16111,94 +16946,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Describe stateful set
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/cursor-pod:
-    get:
-      operationId: kubernetes-cursor-pod-list
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: true
-        in: query
-        name: Limit
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-      - explode: true
-        in: query
-        name: Search
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: NextPageLink
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortBy
-        required: false
-        schema:
-          type: string
-        style: form
-      - explode: true
-        in: query
-        name: SortDirection
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/KubernetesCursorPodList'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Retrieve cursor list of k8s pod for all namespaces
       tags:
       - Kubernetes
   /api/v1/kubernetesprofiles:
@@ -16295,7 +17042,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateKubernetesProfileCommand'
-        required: true
       responses:
         "200":
           content:
@@ -16346,6 +17092,12 @@ paths:
               $ref: '#/components/schemas/KubernetesProfilesLockManagerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -16496,6 +17248,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -16850,6 +17606,8 @@ paths:
             schema:
               $ref: '#/components/schemas/DnsNtpAddressEditDto'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -17012,6 +17770,8 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -17157,6 +17917,12 @@ paths:
             schema:
               $ref: '#/components/schemas/OpaProfileUpdateCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -17249,6 +18015,12 @@ paths:
               $ref: '#/components/schemas/OpaProfileLockManagerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -17292,6 +18064,12 @@ paths:
               $ref: '#/components/schemas/OpaMakeDefaultCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -17399,6 +18177,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -17441,6 +18223,12 @@ paths:
             schema:
               $ref: '#/components/schemas/OpenshiftCreateCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -17483,6 +18271,12 @@ paths:
             schema:
               $ref: '#/components/schemas/OpenshiftPullSecretCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -17575,6 +18369,12 @@ paths:
             schema:
               $ref: '#/components/schemas/OpenshiftValidateCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -18030,6 +18830,12 @@ paths:
               $ref: '#/components/schemas/UpdateOpenStackCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -18395,6 +19201,12 @@ paths:
               $ref: '#/components/schemas/OperationCredentialLockManagerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -18438,6 +19250,12 @@ paths:
               $ref: '#/components/schemas/OperationCredentialsMakeDefaultCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -18588,6 +19406,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -18641,6 +19463,12 @@ paths:
                 $ref: '#/components/schemas/AddPrometheusRulesToOrganizationDto'
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -18694,6 +19522,12 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -18880,6 +19714,12 @@ paths:
               $ref: '#/components/schemas/GiveAccessToPartnerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -18923,6 +19763,12 @@ paths:
               $ref: '#/components/schemas/ToggleKeycloakCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -18965,6 +19811,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateOrganizationCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -19063,6 +19915,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -19484,6 +20340,12 @@ paths:
               $ref: '#/components/schemas/PrometheusDashboardCreateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -19527,6 +20389,12 @@ paths:
               $ref: '#/components/schemas/PrometheusDashboardUpdateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -19681,6 +20549,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -19734,6 +20606,12 @@ paths:
                 $ref: '#/components/schemas/EditProjectAppParamsDto'
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -19777,6 +20655,12 @@ paths:
               $ref: '#/components/schemas/AutoSyncManagementCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -19808,6 +20692,55 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: AutoSync management
+      tags:
+      - Project apps
+  /api/v1/projectapp/cancel:
+    post:
+      operationId: projectapp-cancel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelProjectAppCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Cancel an application
       tags:
       - Project apps
   /api/v1/projectapp/install:
@@ -19868,6 +20801,12 @@ paths:
               $ref: '#/components/schemas/LockProjectAppCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -19911,6 +20850,12 @@ paths:
               $ref: '#/components/schemas/SyncProjectAppCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -19954,6 +20899,12 @@ paths:
               $ref: '#/components/schemas/EditProjectAppExtraValuesCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20157,6 +21108,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -20199,6 +21154,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ProjectDeploymentCommitCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20242,6 +21203,12 @@ paths:
               $ref: '#/components/schemas/DeploymentCommitVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20285,6 +21252,12 @@ paths:
               $ref: '#/components/schemas/ProjectDeploymentDeleteServersCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20328,6 +21301,12 @@ paths:
               $ref: '#/components/schemas/ProjectDeploymentDeleteVmsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20370,6 +21349,12 @@ paths:
             schema:
               $ref: '#/components/schemas/DeleteVmDiskCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20413,6 +21398,12 @@ paths:
               $ref: '#/components/schemas/DeploymentDisableAiCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20456,6 +21447,12 @@ paths:
               $ref: '#/components/schemas/DeploymentDisableBackupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20499,6 +21496,12 @@ paths:
               $ref: '#/components/schemas/DeploymentDisableMonitoringCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20542,6 +21545,12 @@ paths:
               $ref: '#/components/schemas/DeploymentDisableOpaCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20585,6 +21594,12 @@ paths:
               $ref: '#/components/schemas/DeploymentEnableAiCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20628,6 +21643,12 @@ paths:
               $ref: '#/components/schemas/DeploymentEnableBackupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20671,6 +21692,12 @@ paths:
               $ref: '#/components/schemas/DeploymentEnableMonitoringCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20714,6 +21741,12 @@ paths:
               $ref: '#/components/schemas/DeploymentOpaEnableCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20756,6 +21789,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ImportClusterCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20799,6 +21838,12 @@ paths:
               $ref: '#/components/schemas/ProjectDeploymentRepairCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20842,6 +21887,12 @@ paths:
               $ref: '#/components/schemas/ProjectDeploymentRepairVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20885,6 +21936,12 @@ paths:
               $ref: '#/components/schemas/TofuMigrateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20931,6 +21988,12 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -20975,6 +22038,12 @@ paths:
               $ref: '#/components/schemas/BindProjectsToProjectGroupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -21017,6 +22086,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BindUserGroupsToProjectGroupCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -21107,6 +22182,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UnbindProjectFromProjectGroupCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -21150,6 +22231,12 @@ paths:
               $ref: '#/components/schemas/UnbindUserGroupFromProjectGroupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -21413,6 +22500,10 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -21507,6 +22598,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateQuotaCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -21695,6 +22792,12 @@ paths:
               $ref: '#/components/schemas/CreateProjectFromTemplateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -21899,6 +23002,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -21952,6 +23059,12 @@ paths:
                 type: string
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22004,6 +23117,12 @@ paths:
                 type: string
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22221,6 +23340,10 @@ paths:
               $ref: '#/components/schemas/DeleteProjectCommand'
         required: true
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -22265,6 +23388,12 @@ paths:
               $ref: '#/components/schemas/ProjectExtendLifeTimeCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22308,6 +23437,12 @@ paths:
               $ref: '#/components/schemas/FullSpotOperationCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22351,6 +23486,12 @@ paths:
               $ref: '#/components/schemas/ProjectLockManagerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22393,6 +23534,10 @@ paths:
             schema:
               $ref: '#/components/schemas/LokiResponseDto'
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -22436,6 +23581,12 @@ paths:
               $ref: '#/components/schemas/ProjectMaintenanceModeCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22577,6 +23728,12 @@ paths:
               $ref: '#/components/schemas/SpotVmOperationCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -22620,6 +23777,12 @@ paths:
               $ref: '#/components/schemas/SpotWorkerOperationCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23019,6 +24182,12 @@ paths:
               $ref: '#/components/schemas/PrometheusBillingCreateCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23195,6 +24364,12 @@ paths:
                 $ref: '#/components/schemas/AddOrganizationsToRuleDto'
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23248,6 +24423,12 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23299,6 +24480,12 @@ paths:
             schema:
               $ref: '#/components/schemas/RuleForUpdateDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23496,6 +24683,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -23739,6 +24930,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateProxmoxCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -23781,6 +24978,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateHypervisorsCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -24109,6 +25312,8 @@ paths:
             schema:
               $ref: '#/components/schemas/BackupCredentialsUpdateCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -24154,6 +25359,8 @@ paths:
             schema:
               $ref: '#/components/schemas/BackupLockManagerCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -24189,7 +25396,7 @@ paths:
       - S3 Credentials
   /api/v1/s3credentials/makedefault:
     post:
-      operationId: s3credentials-make-deafult
+      operationId: s3credentials-make-default
       requestBody:
         content:
           application/json:
@@ -24198,6 +25405,8 @@ paths:
             schema:
               $ref: '#/components/schemas/BackupMakeDefaultCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -24374,6 +25583,8 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -24652,6 +25863,104 @@ paths:
       summary: Global search for config-maps
       tags:
       - Search
+  /api/v1/search/crds:
+    post:
+      operationId: search-crds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrdSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CrdSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for crds
+      tags:
+      - Search
+  /api/v1/search/cronjobs:
+    post:
+      operationId: search-cron-jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CronjobsSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronjobsSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for jobs
+      tags:
+      - Search
   /api/v1/search/daemon-sets:
     post:
       operationId: search-daemon-sets
@@ -24750,6 +26059,55 @@ paths:
       summary: Global search for deployments
       tags:
       - Search
+  /api/v1/search/helm-releases:
+    post:
+      operationId: search-helm-releases
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelmReleasesSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelmReleasesSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for helm-releases
+      tags:
+      - Search
   /api/v1/search/ingress:
     post:
       operationId: search-ingress
@@ -24799,6 +26157,104 @@ paths:
       summary: Global search for ingress
       tags:
       - Search
+  /api/v1/search/jobs:
+    post:
+      operationId: search-jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobsSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JobsSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for jobs
+      tags:
+      - Search
+  /api/v1/search/pdb:
+    post:
+      operationId: search-pdb
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PdbSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PdbSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for pdb
+      tags:
+      - Search
   /api/v1/search/kubernetes-profiles:
     post:
       operationId: search-kubernetes-profiles
@@ -24846,6 +26302,104 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Global search for kubernetes-profiles
+      tags:
+      - Search
+  /api/v1/search/namespaces:
+    post:
+      operationId: search-namespaces
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NamespaceSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NamespaceSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for namespaces
+      tags:
+      - Search
+  /api/v1/search/network-policies:
+    post:
+      operationId: search-network-policies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NetworkPoliciesSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkPoliciesSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for namespaces
       tags:
       - Search
   /api/v1/search/nodes:
@@ -25386,6 +26940,55 @@ paths:
       summary: Global search for stand-alone-profiles
       tags:
       - Search
+  /api/v1/search/storage-classes:
+    post:
+      operationId: search-storage-classes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorageClassesSearchCommand'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageClassesSearchList'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Global search for storage classes.
+      tags:
+      - Search
   /api/v1/search/sts:
     post:
       operationId: search-sts
@@ -25493,6 +27096,12 @@ paths:
             schema:
               $ref: '#/components/schemas/EditSecurityGroupCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25641,6 +27250,10 @@ paths:
           type: integer
         style: simple
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -25781,6 +27394,12 @@ paths:
               $ref: '#/components/schemas/RebootServerCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -25823,6 +27442,12 @@ paths:
             schema:
               $ref: '#/components/schemas/ResetServerStatusCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26166,6 +27791,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateSlackConfigurationDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26258,6 +27889,12 @@ paths:
               $ref: '#/components/schemas/DeleteSlackConfigCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26301,6 +27938,12 @@ paths:
               $ref: '#/components/schemas/VerifySlackCredentialsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26561,8 +28204,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteSshUserCommand'
-        required: true
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -26616,6 +28260,8 @@ paths:
             schema:
               $ref: '#/components/schemas/EditSshUserCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -26778,6 +28424,12 @@ paths:
             schema:
               $ref: '#/components/schemas/StandAloneVmIpManagementCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -26820,6 +28472,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateStandAloneVmFlavorCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27201,6 +28859,12 @@ paths:
               $ref: '#/components/schemas/RebootStandAloneVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27244,6 +28908,12 @@ paths:
               $ref: '#/components/schemas/ShelveStandAloneVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27287,6 +28957,12 @@ paths:
               $ref: '#/components/schemas/StartStandaloneVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27330,6 +29006,12 @@ paths:
               $ref: '#/components/schemas/StopStandaloneVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27373,6 +29055,12 @@ paths:
               $ref: '#/components/schemas/UnshelveStandaloneVmCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27568,6 +29256,12 @@ paths:
               $ref: '#/components/schemas/DeleteStandAloneProfileCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27610,6 +29304,12 @@ paths:
             schema:
               $ref: '#/components/schemas/StandAloneProfileUpdateCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27653,6 +29353,12 @@ paths:
               $ref: '#/components/schemas/StandAloneProfileLockManagementCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -27911,6 +29617,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateStandaloneVmDiskSizeCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28053,6 +29765,12 @@ paths:
               $ref: '#/components/schemas/UpdateTanzuCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28254,6 +29972,12 @@ paths:
               $ref: '#/components/schemas/CreateTicketCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28297,6 +30021,12 @@ paths:
               $ref: '#/components/schemas/EditTicketCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28340,6 +30070,12 @@ paths:
               $ref: '#/components/schemas/OpenTicketCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28383,6 +30119,12 @@ paths:
               $ref: '#/components/schemas/ReplyTicketCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28426,6 +30168,12 @@ paths:
               $ref: '#/components/schemas/SetTicketPriorityCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28469,6 +30217,12 @@ paths:
               $ref: '#/components/schemas/EditArticleCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28775,6 +30529,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateUserGroupDto'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28817,6 +30577,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BindProjectGroupsToUserGroupCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28860,6 +30626,12 @@ paths:
               $ref: '#/components/schemas/BindUsersToUserGroupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28951,6 +30723,12 @@ paths:
               $ref: '#/components/schemas/UnbindProjectGroupFromUserGroupCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -28993,6 +30771,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UnbindUserFromUserGroupCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -29254,6 +31038,10 @@ paths:
               $ref: '#/components/schemas/DeleteUserGroupCommand'
         required: true
       responses:
+        "200":
+          content:
+            application/json: {}
+          description: OK
         "400":
           content:
             application/json:
@@ -29401,6 +31189,12 @@ paths:
             schema:
               $ref: '#/components/schemas/BindUnbindEndpointToTokenCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -29695,6 +31489,8 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -29747,6 +31543,8 @@ paths:
                 type: integer
               type: array
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -29837,6 +31635,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateUserCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -30077,6 +31881,8 @@ paths:
             schema:
               $ref: '#/components/schemas/CreateVirtualClusterCommand'
       responses:
+        "200":
+          description: OK
         "400":
           content:
             application/json:
@@ -30120,6 +31926,12 @@ paths:
               $ref: '#/components/schemas/DeleteVirtualClusterCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -30673,6 +32485,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateVsphereCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -30716,6 +32534,12 @@ paths:
               $ref: '#/components/schemas/UpdateVsphereHypervisorsCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -30759,6 +32583,12 @@ paths:
               $ref: '#/components/schemas/ValidateVsphereCommand'
         required: true
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -31076,6 +32906,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateZadaraCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -31557,6 +33393,12 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateEdgeNodesCommand'
       responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Void'
+          description: OK
         "400":
           content:
             application/json:
@@ -32007,6 +33849,7 @@ components:
       - ServerStatus
       - PatchKubernetes
       - InstallApplication
+      - CancelApplication
       - UninstallApplication
       - EnableAutoscaling
       - DisableAutoscaling
@@ -32035,7 +33878,7 @@ components:
       - AddingVCluster
       - StartImportCluster
       - StartMigrationCluster
-      - CreateKubernetesResource
+      - KubernetesAction
       type: string
     AddOrganizationsToRuleDto:
       additionalProperties: false
@@ -33459,6 +35302,23 @@ components:
       - data
       - totalCount
       type: object
+    AwsEksClusterDto:
+      additionalProperties: false
+      example:
+        certificate: certificate
+        targetUrl: targetUrl
+        token: token
+      properties:
+        token:
+          nullable: true
+          type: string
+        targetUrl:
+          nullable: true
+          type: string
+        certificate:
+          nullable: true
+          type: string
+      type: object
     AwsEksNodeGroupDto:
       additionalProperties: false
       example:
@@ -33718,11 +35578,15 @@ components:
       example:
         resourceGroupName: resourceGroupName
         clusterName: clusterName
+        location: location
       properties:
         resourceGroupName:
           nullable: true
           type: string
         clusterName:
+          nullable: true
+          type: string
+        location:
           nullable: true
           type: string
       type: object
@@ -35385,6 +37249,15 @@ components:
       - schedule
       - ttl
       type: object
+    CancelProjectAppCommand:
+      additionalProperties: false
+      example:
+        projectAppId: 0
+      properties:
+        projectAppId:
+          format: int32
+          type: integer
+      type: object
     CatalogAppDetailsDto:
       additionalProperties: false
       example:
@@ -35662,6 +37535,7 @@ components:
     CatalogAppParamsDetailsDto:
       additionalProperties: false
       example:
+        isTaikunLink: true
         catalogAppName: catalogAppName
         hasJsonSchema: true
         isEditableWhenInstalling: true
@@ -35690,6 +37564,8 @@ components:
         isMandatory:
           type: boolean
         hasJsonSchema:
+          type: boolean
+        isTaikunLink:
           type: boolean
       type: object
     CatalogAppParamsDto:
@@ -35790,7 +37666,7 @@ components:
         name: name
         description: description
         boundProjects:
-        - cloudType: NONE
+        - cloudType: AWS
           isLocked: true
           name: name
           health: "Null"
@@ -35799,7 +37675,7 @@ components:
           maintenanceModeEnabled: true
           kubernetesVersion: kubernetesVersion
           status: "Null"
-        - cloudType: NONE
+        - cloudType: AWS
           isLocked: true
           name: name
           health: "Null"
@@ -35946,7 +37822,7 @@ components:
           name: name
           description: description
           boundProjects:
-          - cloudType: NONE
+          - cloudType: AWS
             isLocked: true
             name: name
             health: "Null"
@@ -35955,7 +37831,7 @@ components:
             maintenanceModeEnabled: true
             kubernetesVersion: kubernetesVersion
             status: "Null"
-          - cloudType: NONE
+          - cloudType: AWS
             isLocked: true
             name: name
             health: "Null"
@@ -36041,7 +37917,7 @@ components:
           name: name
           description: description
           boundProjects:
-          - cloudType: NONE
+          - cloudType: AWS
             isLocked: true
             name: name
             health: "Null"
@@ -36050,7 +37926,7 @@ components:
             maintenanceModeEnabled: true
             kubernetesVersion: kubernetesVersion
             status: "Null"
-          - cloudType: NONE
+          - cloudType: AWS
             isLocked: true
             name: name
             health: "Null"
@@ -36150,7 +38026,7 @@ components:
         name: name
         description: description
         boundProjects:
-        - cloudType: NONE
+        - cloudType: AWS
           isLocked: true
           name: name
           health: "Null"
@@ -36159,7 +38035,7 @@ components:
           maintenanceModeEnabled: true
           kubernetesVersion: kubernetesVersion
           status: "Null"
-        - cloudType: NONE
+        - cloudType: AWS
           isLocked: true
           name: name
           health: "Null"
@@ -36832,6 +38708,52 @@ components:
       - metadataName
       - specNameKind
       type: object
+    CrdSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    CrdSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     Crds:
       additionalProperties: false
       example:
@@ -37314,7 +39236,6 @@ components:
     CreateKubernetesResourceCommand:
       additionalProperties: false
       example:
-        kind: DaemonSet
         projectId: 0
         yaml: yaml
       properties:
@@ -37324,10 +39245,7 @@ components:
         yaml:
           nullable: true
           type: string
-        kind:
-          $ref: '#/components/schemas/EKubernetesResource'
       required:
-      - kind
       - projectId
       - yaml
       type: object
@@ -38482,6 +40400,78 @@ components:
           nullable: true
           type: string
       type: object
+    CronjobActionCommand:
+      additionalProperties: false
+      example:
+        data:
+        - name: name
+          namespace: namespace
+        - name: name
+          namespace: namespace
+        action: Suspend
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/KubernetesCronjobActionRequest'
+          nullable: true
+          type: array
+        action:
+          $ref: '#/components/schemas/ECronJobAction'
+      required:
+      - action
+      - data
+      - projectId
+      type: object
+    CronjobsSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    CronjobsSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     CsvExporter:
       additionalProperties: false
       example:
@@ -38490,14 +40480,11 @@ components:
         content: content
       properties:
         fileName:
-          nullable: true
           type: string
         contentType:
-          nullable: true
           type: string
         content:
           format: byte
-          nullable: true
           type: string
       required:
       - content
@@ -38550,10 +40537,42 @@ components:
           format: int32
           type: integer
       type: object
+    DaemonsetActionCommand:
+      additionalProperties: false
+      example:
+        name: name
+        namespace: namespace
+        action: Restart
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        action:
+          $ref: '#/components/schemas/EDaemonSetAction'
+      required:
+      - action
+      - name
+      - namespace
+      - projectId
+      type: object
     DashboardChart:
       additionalProperties: false
       example:
         projects:
+          failedToImport:
+          - expiredAt: expiredAt
+            name: name
+            id: 1
+          - expiredAt: expiredAt
+            name: name
+            id: 1
           updating:
           - expiredAt: expiredAt
             name: name
@@ -38584,6 +40603,13 @@ components:
             name: name
             id: 1
           purging:
+          - expiredAt: expiredAt
+            name: name
+            id: 1
+          - expiredAt: expiredAt
+            name: name
+            id: 1
+          importing:
           - expiredAt: expiredAt
             name: name
             id: 1
@@ -39241,6 +41267,31 @@ components:
           format: int32
           type: integer
       type: object
+    DeleteKubernetesResourceCommand:
+      additionalProperties: false
+      example:
+        data:
+        - name: name
+          namespace: namespace
+        - name: name
+          namespace: namespace
+        kind: None
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        kind:
+          $ref: '#/components/schemas/EKubernetesResource'
+        data:
+          items:
+            $ref: '#/components/schemas/KubernetesActionRequest'
+          type: array
+      required:
+      - data
+      - kind
+      - projectId
+      type: object
     DeleteProjectCommand:
       additionalProperties: false
       example:
@@ -39360,6 +41411,36 @@ components:
             type: integer
           nullable: true
           type: array
+      type: object
+    DeploymentActionCommand:
+      additionalProperties: false
+      example:
+        name: name
+        namespace: namespace
+        action: Pause
+        projectId: 0
+        scaleReplicaCount: 6
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        scaleReplicaCount:
+          format: int32
+          nullable: true
+          type: integer
+        action:
+          $ref: '#/components/schemas/EDeploymentAction'
+      required:
+      - action
+      - name
+      - namespace
+      - projectId
       type: object
     DeploymentCommitVmCommand:
       additionalProperties: false
@@ -39667,7 +41748,7 @@ components:
     DescribeKubernetesResourceCommand:
       additionalProperties: false
       example:
-        kind: DaemonSet
+        kind: None
         name: name
         namespace: namespace
         projectId: 0
@@ -39676,7 +41757,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         namespace:
           nullable: true
@@ -40143,6 +42223,29 @@ components:
           format: int32
           type: integer
       type: object
+    DownloadKubernetesResourceCommand:
+      additionalProperties: false
+      example:
+        kind: None
+        name: name
+        namespace: namespace
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        kind:
+          $ref: '#/components/schemas/EKubernetesResource'
+      required:
+      - kind
+      - name
+      - projectId
+      type: object
     DuplicateNameCheckerCommand:
       additionalProperties: false
       example:
@@ -40161,6 +42264,42 @@ components:
           nullable: true
           type: string
       type: object
+    ECloudCredentialType:
+      enum:
+      - AWS
+      - AZURE
+      - GOOGLE
+      - OPENSTACK
+      - PROXMOX
+      - TANZU
+      - OPENSHIFT
+      - VSPHERE
+      - ZADARA
+      - ZEDEDA
+      - EKS
+      - AKS
+      - GKE
+      - GENERICKUBERNETES
+      type: string
+    ECronJobAction:
+      enum:
+      - Suspend
+      - Resume
+      - Trigger
+      type: string
+    EDaemonSetAction:
+      enum:
+      - Restart
+      - Rollback
+      type: string
+    EDeploymentAction:
+      enum:
+      - Pause
+      - Resume
+      - Restart
+      - Scale
+      - Rollback
+      type: string
     EImportClusterType:
       enum:
       - CloudCredential
@@ -40175,9 +42314,11 @@ components:
       - Ready
       - NotReady
       - Failure
+      - Cancelled
       type: string
     EKubernetesResource:
       enum:
+      - None
       - DaemonSet
       - Pvc
       - Deployment
@@ -40194,6 +42335,7 @@ components:
       - CronJob
       - Job
       - NetworkPolicy
+      - Namespace
       type: string
     EKubernetesState:
       enum:
@@ -40207,6 +42349,18 @@ components:
       - Running
       - InitNM
       - InitError
+      type: string
+    ENodeAction:
+      enum:
+      - Cordon
+      - Uncordon
+      - Drain
+      type: string
+    EStsAction:
+      enum:
+      - Restart
+      - Scale
+      - Rollback
       type: string
     EditAlertingIntegrationCommand:
       additionalProperties: false
@@ -41833,6 +43987,23 @@ components:
           nullable: true
           type: string
       type: object
+    GetEksClusterAuthCommand:
+      additionalProperties: false
+      example:
+        kubeConfigName: kubeConfigName
+        configToken: configToken
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        kubeConfigName:
+          nullable: true
+          type: string
+        configToken:
+          nullable: true
+          type: string
+      type: object
     GetProjectOperationCommand:
       additionalProperties: false
       example:
@@ -41869,6 +44040,19 @@ components:
         mode: mode
       properties:
         mode:
+          nullable: true
+          type: string
+      type: object
+    GkeClusterDto:
+      additionalProperties: false
+      example:
+        name: name
+        location: location
+      properties:
+        location:
+          nullable: true
+          type: string
+        name:
           nullable: true
           type: string
       type: object
@@ -42457,6 +44641,52 @@ components:
       - data
       - totalCount
       type: object
+    HelmReleasesSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    HelmReleasesSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     HelmStatus:
       additionalProperties: false
       example:
@@ -42566,6 +44796,9 @@ components:
         resourceGroupName:
           nullable: true
           type: string
+        region:
+          nullable: true
+          type: string
       required:
       - name
       type: object
@@ -42583,10 +44816,21 @@ components:
           format: binary
           nullable: true
           type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
+        region:
+          nullable: true
+          type: string
+        importClusterName:
+          nullable: true
+          type: string
+        resourceGroupName:
+          nullable: true
+          type: string
         importType:
           $ref: '#/components/schemas/EImportClusterType'
-      required:
-      - config
       type: object
     ImportRepoCommand:
       additionalProperties: false
@@ -42653,7 +44897,7 @@ components:
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           alertingProfileId: 9
-          cloudType: null
+          cloudType: AWS
           isLocked: true
           name: name
           cloudCredentialId: 7
@@ -42808,7 +45052,7 @@ components:
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           alertingProfileId: 9
-          cloudType: null
+          cloudType: AWS
           isLocked: true
           name: name
           cloudCredentialId: 7
@@ -42990,7 +45234,7 @@ components:
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           alertingProfileId: 9
-          cloudType: null
+          cloudType: AWS
           isLocked: true
           name: name
           cloudCredentialId: 7
@@ -43050,7 +45294,7 @@ components:
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
         alertingProfileId: 9
-        cloudType: null
+        cloudType: AWS
         isLocked: true
         name: name
         cloudCredentialId: 7
@@ -43089,7 +45333,7 @@ components:
         health:
           $ref: '#/components/schemas/ProjectHealth'
         cloudType:
-          $ref: '#/components/schemas/CloudType'
+          $ref: '#/components/schemas/ECloudCredentialType'
         status:
           $ref: '#/components/schemas/ProjectStatus'
         isMonitoringEnabled:
@@ -43131,6 +45375,7 @@ components:
       - alertingProfileId
       - alertingProfileName
       - alertsCount
+      - cloudType
       - expiredAt
       - health
       - id
@@ -43298,7 +45543,7 @@ components:
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           alertingProfileId: 9
-          cloudType: null
+          cloudType: AWS
           isLocked: true
           name: name
           cloudCredentialId: 7
@@ -43719,6 +45964,52 @@ components:
           nullable: true
           type: integer
       type: object
+    JobsSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    JobsSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     KeycloakCheckerCommand:
       additionalProperties: false
       example:
@@ -44039,6 +46330,41 @@ components:
       - data
       - totalCount
       type: object
+    KubernetesActionRequest:
+      additionalProperties: false
+      example:
+        name: name
+        namespace: namespace
+      properties:
+        name:
+          type: string
+        namespace:
+          nullable: true
+          type: string
+      required:
+      - name
+      type: object
+    KubernetesActionResponse:
+      additionalProperties: false
+      example:
+        failed:
+        - failed
+        - failed
+        succeeded:
+        - succeeded
+        - succeeded
+      properties:
+        succeeded:
+          items:
+            type: string
+          nullable: true
+          type: array
+        failed:
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     KubernetesAlertDto:
       additionalProperties: false
       example:
@@ -44234,49 +46560,21 @@ components:
       - data
       - totalCount
       type: object
-    KubernetesCursorPodList:
+    KubernetesCronjobActionRequest:
       additionalProperties: false
       example:
-        nextPageLink: nextPageLink
-        data:
-        - container:
-          - container
-          - container
-          node: node
-          restartCount: 0
-          namespace: namespace
-          metadataName: metadataName
-          state:
-            reason: Terminating
-            status: status
-          type: ""
-          age: age
-          status: status
-        - container:
-          - container
-          - container
-          node: node
-          restartCount: 0
-          namespace: namespace
-          metadataName: metadataName
-          state:
-            reason: Terminating
-            status: status
-          type: ""
-          age: age
-          status: status
+        name: name
+        namespace: namespace
       properties:
-        data:
-          items:
-            $ref: '#/components/schemas/PodListDto'
+        name:
           nullable: true
-          type: array
-        nextPageLink:
+          type: string
+        namespace:
           nullable: true
           type: string
       required:
-      - data
-      - nextPageLink
+      - name
+      - namespace
       type: object
     KubernetesDashboardDto:
       additionalProperties: false
@@ -44329,8 +46627,19 @@ components:
           format: binary
           nullable: true
           type: string
-      required:
-      - config
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
+        region:
+          nullable: true
+          type: string
+        importClusterName:
+          nullable: true
+          type: string
+        resourceGroupName:
+          nullable: true
+          type: string
       type: object
     KubernetesInteractiveShellDto:
       additionalProperties: false
@@ -45158,7 +47467,6 @@ components:
         secretKey: secretKey
         accessKey: accessKey
         email: email
-        local: true
       properties:
         email:
           nullable: true
@@ -45175,8 +47483,6 @@ components:
         secretKey:
           nullable: true
           type: string
-        local:
-          type: boolean
       type: object
     LokiResponseDto:
       additionalProperties: false
@@ -45347,6 +47653,52 @@ components:
           nullable: true
           type: array
       type: object
+    NamespaceSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    NamespaceSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     NetworkListCommand:
       additionalProperties: false
       example:
@@ -45396,6 +47748,52 @@ components:
       - data
       - totalCount
       type: object
+    NetworkPoliciesSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    NetworkPoliciesSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     NetworkPolicyDto:
       additionalProperties: false
       example:
@@ -45438,6 +47836,26 @@ components:
         type:
           nullable: true
           type: string
+      type: object
+    NodeActionCommand:
+      additionalProperties: false
+      example:
+        name: name
+        action: Cordon
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        action:
+          $ref: '#/components/schemas/ENodeAction'
+      required:
+      - action
+      - name
+      - projectId
       type: object
     NodeDto:
       additionalProperties: false
@@ -47426,170 +49844,6 @@ components:
       - Array
       - Multiline
       type: string
-    PartnerColorSettingsDto:
-      additionalProperties: false
-      example:
-        itemBgActive: itemBgActive
-        itemBgActiveHover: itemBgActiveHover
-        bg: bg
-        itemBg: itemBg
-        itemBgHover: itemBgHover
-        bgCollapsedSubItem: bgCollapsedSubItem
-        itemTextActive: itemTextActive
-        itemText: itemText
-      properties:
-        bg:
-          nullable: true
-          type: string
-        bgCollapsedSubItem:
-          nullable: true
-          type: string
-        itemText:
-          nullable: true
-          type: string
-        itemBg:
-          nullable: true
-          type: string
-        itemBgHover:
-          nullable: true
-          type: string
-        itemTextActive:
-          nullable: true
-          type: string
-        itemBgActive:
-          nullable: true
-          type: string
-        itemBgActiveHover:
-          nullable: true
-          type: string
-      required:
-      - bg
-      - bgCollapsedSubItem
-      - itemBg
-      - itemBgActive
-      - itemBgActiveHover
-      - itemBgHover
-      - itemText
-      - itemTextActive
-      type: object
-    PartnerDetailsDto:
-      additionalProperties: false
-      example:
-        whiteListDomains:
-        - name: name
-          id: 7
-        - name: name
-          id: 7
-        country: country
-        address: address
-        city: city
-        link: link
-        partnerImageSettings:
-          expanded: expanded
-          collapsed: collapsed
-        paymentEnabled: true
-        phone: phone
-        domain: domain
-        partnerColorSettings:
-          itemBgActive: itemBgActive
-          itemBgActiveHover: itemBgActiveHover
-          bg: bg
-          itemBg: itemBg
-          itemBgHover: itemBgHover
-          bgCollapsedSubItem: bgCollapsedSubItem
-          itemTextActive: itemTextActive
-          itemText: itemText
-        name: name
-        organizations:
-        - name: name
-          id: 0
-        - name: name
-          id: 0
-        logo: logo
-        requiredUserApproval: true
-        id: 2
-        allowRegistration: true
-        email: email
-        vatNumber: vatNumber
-        backgroundImageUrl: backgroundImageUrl
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          type: string
-        link:
-          nullable: true
-          type: string
-        domain:
-          nullable: true
-          type: string
-        country:
-          nullable: true
-          type: string
-        city:
-          nullable: true
-          type: string
-        vatNumber:
-          nullable: true
-          type: string
-        backgroundImageUrl:
-          nullable: true
-          type: string
-        address:
-          nullable: true
-          type: string
-        logo:
-          nullable: true
-          type: string
-        phone:
-          nullable: true
-          type: string
-        email:
-          nullable: true
-          type: string
-        paymentEnabled:
-          nullable: true
-          type: boolean
-        allowRegistration:
-          nullable: true
-          type: boolean
-        requiredUserApproval:
-          nullable: true
-          type: boolean
-        organizations:
-          items:
-            $ref: '#/components/schemas/CommonDropdownDto'
-          nullable: true
-          type: array
-        whiteListDomains:
-          items:
-            $ref: '#/components/schemas/WhiteListDomainDto'
-          nullable: true
-          type: array
-        partnerColorSettings:
-          $ref: '#/components/schemas/PartnerColorSettingsDto'
-        partnerImageSettings:
-          $ref: '#/components/schemas/PartnerImageSettingsDto'
-      required:
-      - address
-      - allowRegistration
-      - backgroundImageUrl
-      - city
-      - country
-      - domain
-      - email
-      - id
-      - link
-      - logo
-      - name
-      - organizations
-      - paymentEnabled
-      - phone
-      - requiredUserApproval
-      - vatNumber
-      - whiteListDomains
-      type: object
     PartnerDetailsForOrganizationsDto:
       additionalProperties: false
       example:
@@ -47645,21 +49899,24 @@ components:
       - logo
       - name
       type: object
-    PartnerImageSettingsDto:
+    PartnerEntity:
       additionalProperties: false
       example:
-        expanded: expanded
-        collapsed: collapsed
+        partnerName: partnerName
+        logo: logo
+        partnerId: 2
       properties:
-        expanded:
-          nullable: true
+        partnerId:
+          format: int32
+          type: integer
+        partnerName:
           type: string
-        collapsed:
+        logo:
           nullable: true
           type: string
       required:
-      - collapsed
-      - expanded
+      - partnerId
+      - partnerName
       type: object
     PartnersSearchCommand:
       additionalProperties: false
@@ -47721,7 +49978,6 @@ components:
     PatchKubernetesResourceCommand:
       additionalProperties: false
       example:
-        kind: DaemonSet
         name: name
         namespace: namespace
         projectId: 0
@@ -47731,21 +49987,62 @@ components:
           format: int32
           type: integer
         yaml:
-          nullable: true
           type: string
         name:
-          nullable: true
           type: string
         namespace:
           nullable: true
           type: string
-        kind:
-          $ref: '#/components/schemas/EKubernetesResource'
       required:
-      - kind
       - name
       - projectId
       - yaml
+      type: object
+    PdbSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    PdbSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
       type: object
     PodDisruptionDto:
       additionalProperties: false
@@ -48308,12 +50605,14 @@ components:
           isEditableAfterInstallation: true
         catalogAppName: catalogAppName
         values: values
+        taikunLinkEnabled: true
         packageId: packageId
         autoSync: true
         version: version
         catalogAppId: 5
         catalogName: catalogName
         appRepoName: appRepoName
+        taikunLinkUrl: taikunLinkUrl
         catalogId: 6
         releaseNotes: releaseNotes
         helmResult: helmResult
@@ -48374,6 +50673,11 @@ components:
         logs:
           nullable: true
           type: string
+        taikunLinkUrl:
+          nullable: true
+          type: string
+        taikunLinkEnabled:
+          type: boolean
         projectAppParams:
           items:
             $ref: '#/components/schemas/ProjectAppParamDto'
@@ -48555,7 +50859,7 @@ components:
     ProjectCatalogDto:
       additionalProperties: false
       example:
-        cloudType: NONE
+        cloudType: AWS
         isLocked: true
         name: name
         health: "Null"
@@ -48581,7 +50885,7 @@ components:
         isVirtualCluster:
           type: boolean
         cloudType:
-          $ref: '#/components/schemas/CloudType'
+          $ref: '#/components/schemas/ECloudCredentialType'
         status:
           $ref: '#/components/schemas/ProjectStatus'
         health:
@@ -48590,6 +50894,13 @@ components:
     ProjectChartDto:
       additionalProperties: false
       example:
+        failedToImport:
+        - expiredAt: expiredAt
+          name: name
+          id: 1
+        - expiredAt: expiredAt
+          name: name
+          id: 1
         updating:
         - expiredAt: expiredAt
           name: name
@@ -48626,6 +50937,13 @@ components:
         - expiredAt: expiredAt
           name: name
           id: 1
+        importing:
+        - expiredAt: expiredAt
+          name: name
+          id: 1
+        - expiredAt: expiredAt
+          name: name
+          id: 1
       properties:
         succeeded:
           items:
@@ -48651,6 +50969,16 @@ components:
           nullable: true
           type: array
         deleting:
+          items:
+            $ref: '#/components/schemas/ProjectCommonRecordDto'
+          nullable: true
+          type: array
+        importing:
+          items:
+            $ref: '#/components/schemas/ProjectCommonRecordDto'
+          nullable: true
+          type: array
+        failedToImport:
           items:
             $ref: '#/components/schemas/ProjectCommonRecordDto'
           nullable: true
@@ -48779,7 +51107,7 @@ components:
         organizationId: 7
         diskSize: 7.058770351582356
         usedRam: 9
-        cloudType: null
+        cloudType: AWS
         cloudId: 1
         isLocked: true
         accessProfileName: accessProfileName
@@ -48867,7 +51195,7 @@ components:
           format: int32
           type: integer
         cloudType:
-          $ref: '#/components/schemas/CloudType'
+          $ref: '#/components/schemas/ECloudCredentialType'
         cloudName:
           type: string
         cloudId:
@@ -49120,7 +51448,7 @@ components:
         maxSpotPrice: 7.457744773683766
         organizationId: 1
         expiredAt: expiredAt
-        cloudType: NONE
+        cloudType: AWS
         cloudName: cloudName
         cloudId: 1
         isLocked: true
@@ -49143,7 +51471,7 @@ components:
           format: int32
           type: integer
         cloudType:
-          $ref: '#/components/schemas/CloudType'
+          $ref: '#/components/schemas/ECloudCredentialType'
         cloudName:
           type: string
         cloudId:
@@ -49919,7 +52247,7 @@ components:
         createdAt: createdAt
         totalStandaloneVmsCount: 5
         parentProjectId: 3
-        cloudType: NONE
+        cloudType: AWS
         isLocked: true
         id: 0
         setExpirationDateButton:
@@ -50019,7 +52347,7 @@ components:
         health:
           $ref: '#/components/schemas/ProjectHealth'
         cloudType:
-          $ref: '#/components/schemas/CloudType'
+          $ref: '#/components/schemas/ECloudCredentialType'
         kubesprayCurrentVersion:
           type: string
         kubesprayTargetVersion:
@@ -50137,6 +52465,7 @@ components:
       - anyVm
       - boundUsers
       - certificateExpiredAt
+      - cloudType
       - createdAt
       - createdBy
       - deleteOnExpiration
@@ -50485,7 +52814,7 @@ components:
           createdAt: createdAt
           totalStandaloneVmsCount: 5
           parentProjectId: 3
-          cloudType: NONE
+          cloudType: AWS
           isLocked: true
           id: 0
           setExpirationDateButton:
@@ -50577,7 +52906,7 @@ components:
           createdAt: createdAt
           totalStandaloneVmsCount: 5
           parentProjectId: 3
-          cloudType: NONE
+          cloudType: AWS
           isLocked: true
           id: 0
           setExpirationDateButton:
@@ -51090,43 +53419,9 @@ components:
         createdAt: createdAt
         password: password
         partner:
-          whiteListDomains:
-          - name: name
-            id: 7
-          - name: name
-            id: 7
-          country: country
-          address: address
-          city: city
-          link: link
-          partnerImageSettings:
-            expanded: expanded
-            collapsed: collapsed
-          paymentEnabled: true
-          phone: phone
-          domain: domain
-          partnerColorSettings:
-            itemBgActive: itemBgActive
-            itemBgActiveHover: itemBgActiveHover
-            bg: bg
-            itemBg: itemBg
-            itemBgHover: itemBgHover
-            bgCollapsedSubItem: bgCollapsedSubItem
-            itemTextActive: itemTextActive
-            itemText: itemText
-          name: name
-          organizations:
-          - name: name
-            id: 0
-          - name: name
-            id: 0
+          partnerName: partnerName
           logo: logo
-          requiredUserApproval: true
-          id: 2
-          allowRegistration: true
-          email: email
-          vatNumber: vatNumber
-          backgroundImageUrl: backgroundImageUrl
+          partnerId: 2
         createdBy: createdBy
         price: 5.637376656633329
         name: name
@@ -51169,7 +53464,7 @@ components:
           nullable: true
           type: string
         partner:
-          $ref: '#/components/schemas/PartnerDetailsDto'
+          $ref: '#/components/schemas/PartnerEntity'
         operationCredential:
           $ref: '#/components/schemas/OperationCredentialsForOrganizationEntity'
         createdBy:
@@ -51230,43 +53525,9 @@ components:
           createdAt: createdAt
           password: password
           partner:
-            whiteListDomains:
-            - name: name
-              id: 7
-            - name: name
-              id: 7
-            country: country
-            address: address
-            city: city
-            link: link
-            partnerImageSettings:
-              expanded: expanded
-              collapsed: collapsed
-            paymentEnabled: true
-            phone: phone
-            domain: domain
-            partnerColorSettings:
-              itemBgActive: itemBgActive
-              itemBgActiveHover: itemBgActiveHover
-              bg: bg
-              itemBg: itemBg
-              itemBgHover: itemBgHover
-              bgCollapsedSubItem: bgCollapsedSubItem
-              itemTextActive: itemTextActive
-              itemText: itemText
-            name: name
-            organizations:
-            - name: name
-              id: 0
-            - name: name
-              id: 0
+            partnerName: partnerName
             logo: logo
-            requiredUserApproval: true
-            id: 2
-            allowRegistration: true
-            email: email
-            vatNumber: vatNumber
-            backgroundImageUrl: backgroundImageUrl
+            partnerId: 2
           createdBy: createdBy
           price: 5.637376656633329
           name: name
@@ -51299,49 +53560,15 @@ components:
           createdAt: createdAt
           password: password
           partner:
-            whiteListDomains:
-            - name: name
-              id: 7
-            - name: name
-              id: 7
-            country: country
-            address: address
-            city: city
-            link: link
-            partnerImageSettings:
-              expanded: expanded
-              collapsed: collapsed
-            paymentEnabled: true
-            phone: phone
-            domain: domain
-            partnerColorSettings:
-              itemBgActive: itemBgActive
-              itemBgActiveHover: itemBgActiveHover
-              bg: bg
-              itemBg: itemBg
-              itemBgHover: itemBgHover
-              bgCollapsedSubItem: bgCollapsedSubItem
-              itemTextActive: itemTextActive
-              itemText: itemText
-            name: name
-            organizations:
-            - name: name
-              id: 0
-            - name: name
-              id: 0
+            partnerName: partnerName
             logo: logo
-            requiredUserApproval: true
-            id: 2
-            allowRegistration: true
-            email: email
-            vatNumber: vatNumber
-            backgroundImageUrl: backgroundImageUrl
+            partnerId: 2
           createdBy: createdBy
           price: 5.637376656633329
           name: name
           id: 0
           lastModified: lastModified
-        totalCount: 9
+        totalCount: 7
       properties:
         data:
           items:
@@ -51974,6 +54201,7 @@ components:
       additionalProperties: false
       example:
         awsAccessKeyId: awsAccessKeyId
+        cloudId: 0
         awsSecretAccessKey: awsSecretAccessKey
       properties:
         awsAccessKeyId:
@@ -51982,6 +54210,10 @@ components:
         awsSecretAccessKey:
           nullable: true
           type: string
+        cloudId:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     ReplyTicketCommand:
       additionalProperties: false
@@ -53469,7 +55701,7 @@ components:
           organizationId: 7
           diskSize: 7.058770351582356
           usedRam: 9
-          cloudType: null
+          cloudType: AWS
           cloudId: 1
           isLocked: true
           accessProfileName: accessProfileName
@@ -54539,7 +56771,7 @@ components:
           maxSpotPrice: 7.457744773683766
           organizationId: 1
           expiredAt: expiredAt
-          cloudType: NONE
+          cloudType: AWS
           cloudName: cloudName
           cloudId: 1
           isLocked: true
@@ -55213,6 +57445,52 @@ components:
       - data
       - totalCount
       type: object
+    StorageClassesSearchCommand:
+      additionalProperties: false
+      example:
+        searchTerm: searchTerm
+        offset: 6
+        limit: 0
+      properties:
+        limit:
+          format: int32
+          nullable: true
+          type: integer
+        offset:
+          format: int32
+          nullable: true
+          type: integer
+        searchTerm:
+          nullable: true
+          type: string
+      type: object
+    StorageClassesSearchList:
+      additionalProperties: false
+      example:
+        data:
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        - organizationId: 6
+          organizationName: organizationName
+          namespace: namespace
+          metadataName: metadataName
+          projectName: projectName
+          projectId: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonSearchKubernetesResponseData'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      type: object
     StorageListCommand:
       additionalProperties: false
       example:
@@ -55229,6 +57507,36 @@ components:
         tokenSecret:
           nullable: true
           type: string
+      type: object
+    StsActionCommand:
+      additionalProperties: false
+      example:
+        name: name
+        namespace: namespace
+        action: Restart
+        projectId: 0
+        scaleReplicaCount: 6
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        namespace:
+          nullable: true
+          type: string
+        scaleReplicaCount:
+          format: int32
+          nullable: true
+          type: integer
+        action:
+          $ref: '#/components/schemas/EStsAction'
+      required:
+      - action
+      - name
+      - namespace
+      - projectId
       type: object
     StsDto:
       additionalProperties: false
@@ -56365,6 +58673,7 @@ components:
         email:
           type: string
         displayName:
+          nullable: true
           type: string
         createdAt:
           type: string
@@ -56397,6 +58706,7 @@ components:
         is2FAEnabled:
           type: boolean
         lastLoginAt:
+          nullable: true
           type: string
         boundProjects:
           items:
@@ -56423,7 +58733,6 @@ components:
       - isLocked
       - isNewOrganization
       - isReadOnly
-      - lastLoginAt
       - organizationId
       - organizationName
       - owner
@@ -56917,7 +59226,7 @@ components:
           createdAt: createdAt
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          cloudType: NONE
+          cloudType: AWS
           isLocked: true
           id: 0
           setExpirationDateButton:
@@ -56976,7 +59285,7 @@ components:
           createdAt: createdAt
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          cloudType: NONE
+          cloudType: AWS
           isLocked: true
           id: 0
           setExpirationDateButton:
@@ -57033,7 +59342,7 @@ components:
           maxSpotPrice: 7.457744773683766
           organizationId: 1
           expiredAt: expiredAt
-          cloudType: NONE
+          cloudType: AWS
           cloudName: cloudName
           cloudId: 1
           isLocked: true
@@ -57083,7 +59392,7 @@ components:
         createdAt: createdAt
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
-        cloudType: NONE
+        cloudType: AWS
         isLocked: true
         id: 0
         setExpirationDateButton:
@@ -57174,7 +59483,7 @@ components:
         accessIp:
           type: string
         cloudType:
-          $ref: '#/components/schemas/CloudType'
+          $ref: '#/components/schemas/ECloudCredentialType'
         status:
           $ref: '#/components/schemas/ProjectStatus'
         health:
@@ -57256,6 +59565,15 @@ components:
           nullable: true
           type: string
       type: object
+    VerifyWebhookCommand:
+      additionalProperties: false
+      example:
+        url: url
+      properties:
+        url:
+          nullable: true
+          type: string
+      type: object
     VmConsoleScreenshotCommand:
       additionalProperties: false
       example:
@@ -57286,6 +59604,9 @@ components:
         tokenSecret:
           nullable: true
           type: string
+      type: object
+    Void:
+      additionalProperties: false
       type: object
     VsphereFlavorData:
       additionalProperties: false
@@ -57704,22 +60025,6 @@ components:
         value:
           nullable: true
           type: string
-      type: object
-    WhiteListDomainDto:
-      additionalProperties: false
-      example:
-        name: name
-        id: 7
-      properties:
-        id:
-          format: int32
-          type: integer
-        name:
-          nullable: true
-          type: string
-      required:
-      - id
-      - name
       type: object
     WindowsInstancePasswordCommand:
       additionalProperties: false

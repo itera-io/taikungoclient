@@ -37,9 +37,10 @@ func Test_taikuncore_VirtualClusterAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterDelete(context.Background()).Execute()
+		resp, httpRes, err := apiClient.VirtualClusterAPI.VirtualClusterDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

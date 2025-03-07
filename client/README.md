@@ -82,6 +82,7 @@ Class | Method | HTTP request | Description
 *AWSCloudCredentialAPI* | [**AwsCreate**](docs/AWSCloudCredentialAPI.md#awscreate) | **Post** /api/v1/aws/create | Add Aws credentials
 *AWSCloudCredentialAPI* | [**AwsEksClusters**](docs/AWSCloudCredentialAPI.md#awseksclusters) | **Get** /api/v1/aws/eks-clusters/{cloudId} | Retrieve eks clusters list
 *AWSCloudCredentialAPI* | [**AwsEksNodeGroups**](docs/AWSCloudCredentialAPI.md#awseksnodegroups) | **Get** /api/v1/aws/eks-node-groups/{projectId} | Retrieve eks node group list
+*AWSCloudCredentialAPI* | [**AwsGetEksAuthInfo**](docs/AWSCloudCredentialAPI.md#awsgeteksauthinfo) | **Post** /api/v1/aws/eks-auth-info | Get EKS auth info
 *AWSCloudCredentialAPI* | [**AwsList**](docs/AWSCloudCredentialAPI.md#awslist) | **Get** /api/v1/aws/list | Retrieve list of aws cloud credentials
 *AWSCloudCredentialAPI* | [**AwsOwners**](docs/AWSCloudCredentialAPI.md#awsowners) | **Get** /api/v1/aws/owners | Retrieve aws verified owner list
 *AWSCloudCredentialAPI* | [**AwsRegionlist**](docs/AWSCloudCredentialAPI.md#awsregionlist) | **Post** /api/v1/aws/regions | Retrieve aws regions list
@@ -113,6 +114,7 @@ Class | Method | HTTP request | Description
 *AlertingProfilesAPI* | [**AlertingprofilesEdit**](docs/AlertingProfilesAPI.md#alertingprofilesedit) | **Post** /api/v1/alertingprofiles/edit | Update Alerting profile
 *AlertingProfilesAPI* | [**AlertingprofilesList**](docs/AlertingProfilesAPI.md#alertingprofileslist) | **Get** /api/v1/alertingprofiles | Retrieve all Alerting profiles
 *AlertingProfilesAPI* | [**AlertingprofilesLockManager**](docs/AlertingProfilesAPI.md#alertingprofileslockmanager) | **Post** /api/v1/alertingprofiles/lockmanager | Lock/Unlock Alerting profiles
+*AlertingProfilesAPI* | [**AlertingprofilesVerify**](docs/AlertingProfilesAPI.md#alertingprofilesverify) | **Post** /api/v1/alertingprofiles/verifywebhook | Verify webhook endpoint
 *AllowedHostAPI* | [**AllowedhostCreate**](docs/AllowedHostAPI.md#allowedhostcreate) | **Post** /api/v1/allowedhost/create | Create access profile allowed host
 *AllowedHostAPI* | [**AllowedhostDelete**](docs/AllowedHostAPI.md#allowedhostdelete) | **Delete** /api/v1/allowedhost/{id} | Delete access profile allowed host
 *AllowedHostAPI* | [**AllowedhostEdit**](docs/AllowedHostAPI.md#allowedhostedit) | **Put** /api/v1/allowedhost/edit/{id} | Edit access profile allowed host
@@ -164,7 +166,7 @@ Class | Method | HTTP request | Description
 *CatalogAPI* | [**CatalogAddProject**](docs/CatalogAPI.md#catalogaddproject) | **Post** /api/v1/catalog/{id}/projects | Add projects to catalog
 *CatalogAPI* | [**CatalogCreate**](docs/CatalogAPI.md#catalogcreate) | **Post** /api/v1/catalog/create | Create catalog
 *CatalogAPI* | [**CatalogDelete**](docs/CatalogAPI.md#catalogdelete) | **Delete** /api/v1/catalog/{id} | Delete catalog
-*CatalogAPI* | [**CatalogDeleteProject**](docs/CatalogAPI.md#catalogdeleteproject) | **Put** /api/v1/catalog/{id}/projects | Delete projects from catalog
+*CatalogAPI* | [**CatalogDeleteProject**](docs/CatalogAPI.md#catalogdeleteproject) | **Put** /api/v1/catalog/{id}/projects | Remove projects from catalog
 *CatalogAPI* | [**CatalogDetails**](docs/CatalogAPI.md#catalogdetails) | **Get** /api/v1/catalog/{id}/details | Retrieve catalog details by id
 *CatalogAPI* | [**CatalogDropdown**](docs/CatalogAPI.md#catalogdropdown) | **Get** /api/v1/catalog/list | Catalog dropdown list for organization
 *CatalogAPI* | [**CatalogEdit**](docs/CatalogAPI.md#catalogedit) | **Put** /api/v1/catalog/edit | Edit catalog
@@ -213,9 +215,9 @@ Class | Method | HTTP request | Description
 *CommonAPI* | [**CommonCountries**](docs/CommonAPI.md#commoncountries) | **Get** /api/v1/common/countries | Retrieve country list
 *CommonAPI* | [**CommonSortingElements**](docs/CommonAPI.md#commonsortingelements) | **Get** /api/v1/common/sorting-elements/{type} | Retrieve sorting values
 *DnsServersAPI* | [**DnsserversCreate**](docs/DnsServersAPI.md#dnsserverscreate) | **Post** /api/v1/dnsservers/create | Create dns servers for access profile
-*DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete dns server
+*DnsServersAPI* | [**DnsserversDelete**](docs/DnsServersAPI.md#dnsserversdelete) | **Delete** /api/v1/dnsservers/{id} | Delete DNS server
 *DnsServersAPI* | [**DnsserversEdit**](docs/DnsServersAPI.md#dnsserversedit) | **Put** /api/v1/dnsservers/edit/{id} | Edit dns server
-*DnsServersAPI* | [**DnsserversList**](docs/DnsServersAPI.md#dnsserverslist) | **Get** /api/v1/dnsservers/{accessProfileId} | List dn servers by profile id
+*DnsServersAPI* | [**DnsserversList**](docs/DnsServersAPI.md#dnsserverslist) | **Get** /api/v1/dnsservers/{accessProfileId} | List dns servers by profile id
 *FlavorsAPI* | [**FlavorsAwsInstanceTypes**](docs/FlavorsAPI.md#flavorsawsinstancetypes) | **Get** /api/v1/flavors/aws/{cloudId} | Retrieve awz instance types
 *FlavorsAPI* | [**FlavorsAzureVmSizes**](docs/FlavorsAPI.md#flavorsazurevmsizes) | **Get** /api/v1/flavors/azure/{cloudId} | Retrieve azure vm sizes
 *FlavorsAPI* | [**FlavorsBindToProject**](docs/FlavorsAPI.md#flavorsbindtoproject) | **Post** /api/v1/flavors/bind | Bind flavors to project
@@ -288,8 +290,11 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesCrdList**](docs/KubernetesAPI.md#kubernetescrdlist) | **Get** /api/v1/kubernetes/{projectId}/crd | Retrieve a list of crd
 *KubernetesAPI* | [**KubernetesCreateResource**](docs/KubernetesAPI.md#kubernetescreateresource) | **Post** /api/v1/kubernetes/create-resource | Create kubernetes resource
 *KubernetesAPI* | [**KubernetesCronJobList**](docs/KubernetesAPI.md#kubernetescronjoblist) | **Get** /api/v1/kubernetes/{projectId}/cronjobs | Retrieve a list of k8s cron jobs for all namespaces
-*KubernetesAPI* | [**KubernetesCursorPodList**](docs/KubernetesAPI.md#kubernetescursorpodlist) | **Get** /api/v1/kubernetes/{projectId}/cursor-pod | Retrieve cursor list of k8s pod for all namespaces
+*KubernetesAPI* | [**KubernetesCronjobActions**](docs/KubernetesAPI.md#kubernetescronjobactions) | **Post** /api/v1/kubernetes/cronjob/actions | Cronjob actions
+*KubernetesAPI* | [**KubernetesDaemonsetActions**](docs/KubernetesAPI.md#kubernetesdaemonsetactions) | **Post** /api/v1/kubernetes/daemonset/actions | Daemonset actions
 *KubernetesAPI* | [**KubernetesDashboardList**](docs/KubernetesAPI.md#kubernetesdashboardlist) | **Get** /api/v1/kubernetes/{projectId}/dashboard | Retrieve a list of crd
+*KubernetesAPI* | [**KubernetesDeleteResource**](docs/KubernetesAPI.md#kubernetesdeleteresource) | **Post** /api/v1/kubernetes/delete-resource | Delete kubernetes resource
+*KubernetesAPI* | [**KubernetesDeploymentActions**](docs/KubernetesAPI.md#kubernetesdeploymentactions) | **Post** /api/v1/kubernetes/deployment/actions | Deployment actions
 *KubernetesAPI* | [**KubernetesDeploymentList**](docs/KubernetesAPI.md#kubernetesdeploymentlist) | **Get** /api/v1/kubernetes/{projectId}/deployment | Retrieve a list of k8s deployment for all namespaces
 *KubernetesAPI* | [**KubernetesDescribeConfigMap**](docs/KubernetesAPI.md#kubernetesdescribeconfigmap) | **Post** /api/v1/kubernetes/describe/configmap | Describe configmap
 *KubernetesAPI* | [**KubernetesDescribeCrd**](docs/KubernetesAPI.md#kubernetesdescribecrd) | **Post** /api/v1/kubernetes/describe/crd | Describe crd
@@ -308,7 +313,9 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesDescribeService**](docs/KubernetesAPI.md#kubernetesdescribeservice) | **Post** /api/v1/kubernetes/describe/service | Describe service
 *KubernetesAPI* | [**KubernetesDescribeStorageClass**](docs/KubernetesAPI.md#kubernetesdescribestorageclass) | **Post** /api/v1/kubernetes/describe/storageclass | Describe storage class
 *KubernetesAPI* | [**KubernetesDescribeSts**](docs/KubernetesAPI.md#kubernetesdescribests) | **Post** /api/v1/kubernetes/describe/sts | Describe stateful set
+*KubernetesAPI* | [**KubernetesDownloadManifest**](docs/KubernetesAPI.md#kubernetesdownloadmanifest) | **Post** /api/v1/kubernetes/download-manifest | Download manifest
 *KubernetesAPI* | [**KubernetesExport**](docs/KubernetesAPI.md#kubernetesexport) | **Get** /api/v1/kubernetes/export | Export
+*KubernetesAPI* | [**KubernetesForbiddenNamespaces**](docs/KubernetesAPI.md#kubernetesforbiddennamespaces) | **Get** /api/v1/kubernetes/forbidden-namespaces/{projectId} | Forbidden namespaces for k8s actions
 *KubernetesAPI* | [**KubernetesGetSupportedList**](docs/KubernetesAPI.md#kubernetesgetsupportedlist) | **Get** /api/v1/kubernetes/supported/list | Retrieve Taikun supported kubernetes versions
 *KubernetesAPI* | [**KubernetesHelmReleaseList**](docs/KubernetesAPI.md#kuberneteshelmreleaselist) | **Get** /api/v1/kubernetes/{projectId}/helmreleases | Retrieve a list of k8s helm releases for all namespaces
 *KubernetesAPI* | [**KubernetesIngressClasses**](docs/KubernetesAPI.md#kubernetesingressclasses) | **Post** /api/v1/kubernetes/ingress-classes | List of ingress classes
@@ -317,6 +324,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesJobsList**](docs/KubernetesAPI.md#kubernetesjobslist) | **Get** /api/v1/kubernetes/{projectId}/jobs | Retrieve a list of k8s jobs for all namespaces
 *KubernetesAPI* | [**KubernetesKillPod**](docs/KubernetesAPI.md#kuberneteskillpod) | **Post** /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace} | Kill the pod
 *KubernetesAPI* | [**KubernetesNetworkPolicyList**](docs/KubernetesAPI.md#kubernetesnetworkpolicylist) | **Get** /api/v1/kubernetes/{projectId}/network-policies | Retrieve a list of k8s network-policies for all namespaces
+*KubernetesAPI* | [**KubernetesNodeActions**](docs/KubernetesAPI.md#kubernetesnodeactions) | **Post** /api/v1/kubernetes/nodes/actions | Node actions
 *KubernetesAPI* | [**KubernetesNodeList**](docs/KubernetesAPI.md#kubernetesnodelist) | **Get** /api/v1/kubernetes/{projectId}/node | Retrieve a list of k8s node
 *KubernetesAPI* | [**KubernetesOverview**](docs/KubernetesAPI.md#kubernetesoverview) | **Get** /api/v1/kubernetes/overview | Overview kubernetes nodes and pods by organization id
 *KubernetesAPI* | [**KubernetesPatchResource**](docs/KubernetesAPI.md#kubernetespatchresource) | **Post** /api/v1/kubernetes/patch-resource | Patch kubernetes resource
@@ -334,6 +342,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesServiceList**](docs/KubernetesAPI.md#kubernetesservicelist) | **Get** /api/v1/kubernetes/{projectId}/service | Retrieve a list of k8s service for all namespaces
 *KubernetesAPI* | [**KubernetesSilenceManager**](docs/KubernetesAPI.md#kubernetessilencemanager) | **Post** /api/v1/kubernetes/silencemanager | Silence management for k8s alerts
 *KubernetesAPI* | [**KubernetesStorageClassList**](docs/KubernetesAPI.md#kubernetesstorageclasslist) | **Get** /api/v1/kubernetes/{projectId}/storageclass | Retrieve a list of k8s storageclass for all namespaces
+*KubernetesAPI* | [**KubernetesStsActions**](docs/KubernetesAPI.md#kubernetesstsactions) | **Post** /api/v1/kubernetes/sts/actions | Stateful set actions
 *KubernetesAPI* | [**KubernetesStsList**](docs/KubernetesAPI.md#kubernetesstslist) | **Get** /api/v1/kubernetes/{projectId}/sts | Retrieve a list of k8s sts for all namespaces
 *KubernetesProfilesAPI* | [**KubernetesprofilesCreate**](docs/KubernetesProfilesAPI.md#kubernetesprofilescreate) | **Post** /api/v1/kubernetesprofiles | Add kubernetes profile
 *KubernetesProfilesAPI* | [**KubernetesprofilesDelete**](docs/KubernetesProfilesAPI.md#kubernetesprofilesdelete) | **Delete** /api/v1/kubernetesprofiles/{id} | Delete kubernetes profile
@@ -397,6 +406,7 @@ Class | Method | HTTP request | Description
 *PreDefinedQueriesAPI* | [**PredefinedqueriesUpdate**](docs/PreDefinedQueriesAPI.md#predefinedqueriesupdate) | **Post** /api/v1/predefinedqueries/prometheus/dashboard/update | Update prometheus dashboard pre defined query
 *ProjectAppParamsAPI* | [**ProjectappparamEdit**](docs/ProjectAppParamsAPI.md#projectappparamedit) | **Put** /api/v1/projectappparam/edit/{projectAppId} | Edit project app params
 *ProjectAppsAPI* | [**ProjectappAutosync**](docs/ProjectAppsAPI.md#projectappautosync) | **Post** /api/v1/projectapp/autosync | AutoSync management
+*ProjectAppsAPI* | [**ProjectappCancel**](docs/ProjectAppsAPI.md#projectappcancel) | **Post** /api/v1/projectapp/cancel | Cancel an application
 *ProjectAppsAPI* | [**ProjectappDelete**](docs/ProjectAppsAPI.md#projectappdelete) | **Delete** /api/v1/projectapp/uninstall/{projectAppId} | Uninstall application
 *ProjectAppsAPI* | [**ProjectappDetails**](docs/ProjectAppsAPI.md#projectappdetails) | **Get** /api/v1/projectapp/{id} | Retrieve project app&#39;s details
 *ProjectAppsAPI* | [**ProjectappInstall**](docs/ProjectAppsAPI.md#projectappinstall) | **Post** /api/v1/projectapp/install | Install an application
@@ -480,20 +490,27 @@ Class | Method | HTTP request | Description
 *S3CredentialsAPI* | [**S3credentialsDropdown**](docs/S3CredentialsAPI.md#s3credentialsdropdown) | **Get** /api/v1/s3credentials | Retrieve all S3 credentials for organization
 *S3CredentialsAPI* | [**S3credentialsList**](docs/S3CredentialsAPI.md#s3credentialslist) | **Get** /api/v1/s3credentials/list | Retrieve all S3 credentials
 *S3CredentialsAPI* | [**S3credentialsLockManagement**](docs/S3CredentialsAPI.md#s3credentialslockmanagement) | **Post** /api/v1/s3credentials/lockmanager | Lock/unlock s3 credential
-*S3CredentialsAPI* | [**S3credentialsMakeDeafult**](docs/S3CredentialsAPI.md#s3credentialsmakedeafult) | **Post** /api/v1/s3credentials/makedefault | Make default s3 credential
+*S3CredentialsAPI* | [**S3credentialsMakeDefault**](docs/S3CredentialsAPI.md#s3credentialsmakedefault) | **Post** /api/v1/s3credentials/makedefault | Make default s3 credential
 *S3CredentialsAPI* | [**S3credentialsUpdate**](docs/S3CredentialsAPI.md#s3credentialsupdate) | **Put** /api/v1/s3credentials | Update s3 credential
 *SearchAPI* | [**SearchAccessProfiles**](docs/SearchAPI.md#searchaccessprofiles) | **Post** /api/v1/search/access-profiles | Global search for access-profiles
 *SearchAPI* | [**SearchBackupCredentials**](docs/SearchAPI.md#searchbackupcredentials) | **Post** /api/v1/search/backup-credentials | Global search for backup-credentials
 *SearchAPI* | [**SearchBillingCredentials**](docs/SearchAPI.md#searchbillingcredentials) | **Post** /api/v1/search/billing-credentials | Global search for billing-credentials
 *SearchAPI* | [**SearchCloudCredentials**](docs/SearchAPI.md#searchcloudcredentials) | **Post** /api/v1/search/cloud-credentials | Global search for cloud-credentials
 *SearchAPI* | [**SearchConfigMaps**](docs/SearchAPI.md#searchconfigmaps) | **Post** /api/v1/search/config-maps | Global search for config-maps
+*SearchAPI* | [**SearchCrds**](docs/SearchAPI.md#searchcrds) | **Post** /api/v1/search/crds | Global search for crds
+*SearchAPI* | [**SearchCronJobs**](docs/SearchAPI.md#searchcronjobs) | **Post** /api/v1/search/cronjobs | Global search for jobs
 *SearchAPI* | [**SearchDaemonSets**](docs/SearchAPI.md#searchdaemonsets) | **Post** /api/v1/search/daemon-sets | Global search for daemon-sets
 *SearchAPI* | [**SearchDeployments**](docs/SearchAPI.md#searchdeployments) | **Post** /api/v1/search/deployments | Global search for deployments
+*SearchAPI* | [**SearchHelmReleases**](docs/SearchAPI.md#searchhelmreleases) | **Post** /api/v1/search/helm-releases | Global search for helm-releases
 *SearchAPI* | [**SearchIngress**](docs/SearchAPI.md#searchingress) | **Post** /api/v1/search/ingress | Global search for ingress
+*SearchAPI* | [**SearchJobs**](docs/SearchAPI.md#searchjobs) | **Post** /api/v1/search/jobs | Global search for jobs
 *SearchAPI* | [**SearchKubernetesProfiles**](docs/SearchAPI.md#searchkubernetesprofiles) | **Post** /api/v1/search/kubernetes-profiles | Global search for kubernetes-profiles
+*SearchAPI* | [**SearchNamespaces**](docs/SearchAPI.md#searchnamespaces) | **Post** /api/v1/search/namespaces | Global search for namespaces
+*SearchAPI* | [**SearchNetworkPolicies**](docs/SearchAPI.md#searchnetworkpolicies) | **Post** /api/v1/search/network-policies | Global search for namespaces
 *SearchAPI* | [**SearchNodes**](docs/SearchAPI.md#searchnodes) | **Post** /api/v1/search/nodes | Global search for nodes
 *SearchAPI* | [**SearchOrganizations**](docs/SearchAPI.md#searchorganizations) | **Post** /api/v1/search/organizations | Global search for organizations
 *SearchAPI* | [**SearchPartners**](docs/SearchAPI.md#searchpartners) | **Post** /api/v1/search/partners | Global search for partners
+*SearchAPI* | [**SearchPdb**](docs/SearchAPI.md#searchpdb) | **Post** /api/v1/search/pdb | Global search for pdb
 *SearchAPI* | [**SearchPods**](docs/SearchAPI.md#searchpods) | **Post** /api/v1/search/pods | Global search for pods
 *SearchAPI* | [**SearchProjects**](docs/SearchAPI.md#searchprojects) | **Post** /api/v1/search/projects | Global search for projects
 *SearchAPI* | [**SearchPrometheusRules**](docs/SearchAPI.md#searchprometheusrules) | **Post** /api/v1/search/prometheus-rules | Global search for prometheus-rules
@@ -502,6 +519,7 @@ Class | Method | HTTP request | Description
 *SearchAPI* | [**SearchServers**](docs/SearchAPI.md#searchservers) | **Post** /api/v1/search/servers | Global search for servers
 *SearchAPI* | [**SearchServices**](docs/SearchAPI.md#searchservices) | **Post** /api/v1/search/services | Global search for services
 *SearchAPI* | [**SearchStandAloneProfiles**](docs/SearchAPI.md#searchstandaloneprofiles) | **Post** /api/v1/search/stand-alone-profiles | Global search for stand-alone-profiles
+*SearchAPI* | [**SearchStorageClasses**](docs/SearchAPI.md#searchstorageclasses) | **Post** /api/v1/search/storage-classes | Global search for storage classes.
 *SearchAPI* | [**SearchSts**](docs/SearchAPI.md#searchsts) | **Post** /api/v1/search/sts | Global search for sts
 *SearchAPI* | [**SearchUsers**](docs/SearchAPI.md#searchusers) | **Post** /api/v1/search/users | Global search for users
 *SecurityGroupAPI* | [**SecuritygroupCreate**](docs/SecurityGroupAPI.md#securitygroupcreate) | **Post** /api/v1/securitygroup/create | Create standalonealone profile security group
@@ -664,6 +682,7 @@ Class | Method | HTTP request | Description
  - [AvailablePackagesDto](docs/AvailablePackagesDto.md)
  - [AvailablePackagesList](docs/AvailablePackagesList.md)
  - [AwsCredentialList](docs/AwsCredentialList.md)
+ - [AwsEksClusterDto](docs/AwsEksClusterDto.md)
  - [AwsEksNodeGroupDto](docs/AwsEksNodeGroupDto.md)
  - [AwsFlavorList](docs/AwsFlavorList.md)
  - [AwsFlavorListDto](docs/AwsFlavorListDto.md)
@@ -721,6 +740,7 @@ Class | Method | HTTP request | Description
  - [CNI](docs/CNI.md)
  - [CRestoreDto](docs/CRestoreDto.md)
  - [CScheduleDto](docs/CScheduleDto.md)
+ - [CancelProjectAppCommand](docs/CancelProjectAppCommand.md)
  - [CatalogAppDetailsDto](docs/CatalogAppDetailsDto.md)
  - [CatalogAppList](docs/CatalogAppList.md)
  - [CatalogAppListDto](docs/CatalogAppListDto.md)
@@ -763,6 +783,8 @@ Class | Method | HTTP request | Description
  - [CostComponent](docs/CostComponent.md)
  - [CountryListDto](docs/CountryListDto.md)
  - [CrdListDto](docs/CrdListDto.md)
+ - [CrdSearchCommand](docs/CrdSearchCommand.md)
+ - [CrdSearchList](docs/CrdSearchList.md)
  - [Crds](docs/Crds.md)
  - [CreateAccessProfileCommand](docs/CreateAccessProfileCommand.md)
  - [CreateAiCredentialCommand](docs/CreateAiCredentialCommand.md)
@@ -805,9 +827,13 @@ Class | Method | HTTP request | Description
  - [CredentialChartDto](docs/CredentialChartDto.md)
  - [CredentialMakeDefaultCommand](docs/CredentialMakeDefaultCommand.md)
  - [CronJobCommand](docs/CronJobCommand.md)
+ - [CronjobActionCommand](docs/CronjobActionCommand.md)
+ - [CronjobsSearchCommand](docs/CronjobsSearchCommand.md)
+ - [CronjobsSearchList](docs/CronjobsSearchList.md)
  - [CsvExporter](docs/CsvExporter.md)
  - [DaemonSetSearchCommand](docs/DaemonSetSearchCommand.md)
  - [DaemonSetSearchList](docs/DaemonSetSearchList.md)
+ - [DaemonsetActionCommand](docs/DaemonsetActionCommand.md)
  - [DashboardChart](docs/DashboardChart.md)
  - [DatacenterListCommand](docs/DatacenterListCommand.md)
  - [DatacenterSummary](docs/DatacenterSummary.md)
@@ -821,6 +847,7 @@ Class | Method | HTTP request | Description
  - [DeleteImageFromProjectCommand](docs/DeleteImageFromProjectCommand.md)
  - [DeleteImportedProjectCommand](docs/DeleteImportedProjectCommand.md)
  - [DeleteKubeConfigCommand](docs/DeleteKubeConfigCommand.md)
+ - [DeleteKubernetesResourceCommand](docs/DeleteKubernetesResourceCommand.md)
  - [DeleteProjectCommand](docs/DeleteProjectCommand.md)
  - [DeleteRepositoryCommand](docs/DeleteRepositoryCommand.md)
  - [DeleteRestoreCommand](docs/DeleteRestoreCommand.md)
@@ -831,6 +858,7 @@ Class | Method | HTTP request | Description
  - [DeleteUserGroupCommand](docs/DeleteUserGroupCommand.md)
  - [DeleteVirtualClusterCommand](docs/DeleteVirtualClusterCommand.md)
  - [DeleteVmDiskCommand](docs/DeleteVmDiskCommand.md)
+ - [DeploymentActionCommand](docs/DeploymentActionCommand.md)
  - [DeploymentCommitVmCommand](docs/DeploymentCommitVmCommand.md)
  - [DeploymentDisableAiCommand](docs/DeploymentDisableAiCommand.md)
  - [DeploymentDisableBackupCommand](docs/DeploymentDisableBackupCommand.md)
@@ -871,11 +899,18 @@ Class | Method | HTTP request | Description
  - [DocumentationData](docs/DocumentationData.md)
  - [DocumentationsList](docs/DocumentationsList.md)
  - [DownloadKubeConfigCommand](docs/DownloadKubeConfigCommand.md)
+ - [DownloadKubernetesResourceCommand](docs/DownloadKubernetesResourceCommand.md)
  - [DuplicateNameCheckerCommand](docs/DuplicateNameCheckerCommand.md)
+ - [ECloudCredentialType](docs/ECloudCredentialType.md)
+ - [ECronJobAction](docs/ECronJobAction.md)
+ - [EDaemonSetAction](docs/EDaemonSetAction.md)
+ - [EDeploymentAction](docs/EDeploymentAction.md)
  - [EImportClusterType](docs/EImportClusterType.md)
  - [EInstanceStatus](docs/EInstanceStatus.md)
  - [EKubernetesResource](docs/EKubernetesResource.md)
  - [EKubernetesState](docs/EKubernetesState.md)
+ - [ENodeAction](docs/ENodeAction.md)
+ - [EStsAction](docs/EStsAction.md)
  - [EditAlertingIntegrationCommand](docs/EditAlertingIntegrationCommand.md)
  - [EditAllowedHostDto](docs/EditAllowedHostDto.md)
  - [EditArticleCommand](docs/EditArticleCommand.md)
@@ -901,9 +936,11 @@ Class | Method | HTTP request | Description
  - [GenericKubernetesListDto](docs/GenericKubernetesListDto.md)
  - [GetCatalogAppValueAutocompleteCommand](docs/GetCatalogAppValueAutocompleteCommand.md)
  - [GetCatalogAppValueCommand](docs/GetCatalogAppValueCommand.md)
+ - [GetEksClusterAuthCommand](docs/GetEksClusterAuthCommand.md)
  - [GetProjectOperationCommand](docs/GetProjectOperationCommand.md)
  - [GetToken](docs/GetToken.md)
  - [GiveAccessToPartnerCommand](docs/GiveAccessToPartnerCommand.md)
+ - [GkeClusterDto](docs/GkeClusterDto.md)
  - [GkeClustersListCommand](docs/GkeClustersListCommand.md)
  - [GoogleCredentialList](docs/GoogleCredentialList.md)
  - [GoogleCredentialsListDto](docs/GoogleCredentialsListDto.md)
@@ -922,6 +959,8 @@ Class | Method | HTTP request | Description
  - [HelmReleaseSourceRef](docs/HelmReleaseSourceRef.md)
  - [HelmReleaseSpec](docs/HelmReleaseSpec.md)
  - [HelmReleasesList](docs/HelmReleasesList.md)
+ - [HelmReleasesSearchCommand](docs/HelmReleasesSearchCommand.md)
+ - [HelmReleasesSearchList](docs/HelmReleasesSearchList.md)
  - [HelmStatus](docs/HelmStatus.md)
  - [HypervisorListCommand](docs/HypervisorListCommand.md)
  - [ImageByIdCommand](docs/ImageByIdCommand.md)
@@ -955,6 +994,8 @@ Class | Method | HTTP request | Description
  - [InstanceAppListDto](docs/InstanceAppListDto.md)
  - [InteractiveShellDto](docs/InteractiveShellDto.md)
  - [InteractiveShellSendCommand](docs/InteractiveShellSendCommand.md)
+ - [JobsSearchCommand](docs/JobsSearchCommand.md)
+ - [JobsSearchList](docs/JobsSearchList.md)
  - [KeycloakCheckerCommand](docs/KeycloakCheckerCommand.md)
  - [KeycloakCreateCommand](docs/KeycloakCreateCommand.md)
  - [KeycloakDeleteCommand](docs/KeycloakDeleteCommand.md)
@@ -964,11 +1005,13 @@ Class | Method | HTTP request | Description
  - [KubeConfigForUserList](docs/KubeConfigForUserList.md)
  - [KubeConfigInteractiveShellCommand](docs/KubeConfigInteractiveShellCommand.md)
  - [KubeConfigRoleResponse](docs/KubeConfigRoleResponse.md)
+ - [KubernetesActionRequest](docs/KubernetesActionRequest.md)
+ - [KubernetesActionResponse](docs/KubernetesActionResponse.md)
  - [KubernetesAlertDto](docs/KubernetesAlertDto.md)
  - [KubernetesAlertList](docs/KubernetesAlertList.md)
  - [KubernetesCronJobDto](docs/KubernetesCronJobDto.md)
  - [KubernetesCronJobsList](docs/KubernetesCronJobsList.md)
- - [KubernetesCursorPodList](docs/KubernetesCursorPodList.md)
+ - [KubernetesCronjobActionRequest](docs/KubernetesCronjobActionRequest.md)
  - [KubernetesDashboardDto](docs/KubernetesDashboardDto.md)
  - [KubernetesInteractiveShellDto](docs/KubernetesInteractiveShellDto.md)
  - [KubernetesJobDto](docs/KubernetesJobDto.md)
@@ -1000,10 +1043,15 @@ Class | Method | HTTP request | Description
  - [Metadata](docs/Metadata.md)
  - [MetricData](docs/MetricData.md)
  - [MetricResult](docs/MetricResult.md)
+ - [NamespaceSearchCommand](docs/NamespaceSearchCommand.md)
+ - [NamespaceSearchList](docs/NamespaceSearchList.md)
  - [NetworkListCommand](docs/NetworkListCommand.md)
  - [NetworkPolicies](docs/NetworkPolicies.md)
+ - [NetworkPoliciesSearchCommand](docs/NetworkPoliciesSearchCommand.md)
+ - [NetworkPoliciesSearchList](docs/NetworkPoliciesSearchList.md)
  - [NetworkPolicyDto](docs/NetworkPolicyDto.md)
  - [NetworkSummary](docs/NetworkSummary.md)
+ - [NodeActionCommand](docs/NodeActionCommand.md)
  - [NodeDto](docs/NodeDto.md)
  - [NodeSearchResponseData](docs/NodeSearchResponseData.md)
  - [NodesSearchCommand](docs/NodesSearchCommand.md)
@@ -1057,15 +1105,15 @@ Class | Method | HTTP request | Description
  - [PackageAutocompleteDto](docs/PackageAutocompleteDto.md)
  - [Parameter](docs/Parameter.md)
  - [ParameterType](docs/ParameterType.md)
- - [PartnerColorSettingsDto](docs/PartnerColorSettingsDto.md)
- - [PartnerDetailsDto](docs/PartnerDetailsDto.md)
  - [PartnerDetailsForOrganizationsDto](docs/PartnerDetailsForOrganizationsDto.md)
  - [PartnerDetailsForUserDto](docs/PartnerDetailsForUserDto.md)
- - [PartnerImageSettingsDto](docs/PartnerImageSettingsDto.md)
+ - [PartnerEntity](docs/PartnerEntity.md)
  - [PartnersSearchCommand](docs/PartnersSearchCommand.md)
  - [PartnersSearchList](docs/PartnersSearchList.md)
  - [PartnersSearchResponseData](docs/PartnersSearchResponseData.md)
  - [PatchKubernetesResourceCommand](docs/PatchKubernetesResourceCommand.md)
+ - [PdbSearchCommand](docs/PdbSearchCommand.md)
+ - [PdbSearchList](docs/PdbSearchList.md)
  - [PodDisruptionDto](docs/PodDisruptionDto.md)
  - [PodDisruptions](docs/PodDisruptions.md)
  - [PodDto](docs/PodDto.md)
@@ -1232,7 +1280,10 @@ Class | Method | HTTP request | Description
  - [StopStandaloneVmCommand](docs/StopStandaloneVmCommand.md)
  - [StorageClassDto](docs/StorageClassDto.md)
  - [StorageClasses](docs/StorageClasses.md)
+ - [StorageClassesSearchCommand](docs/StorageClassesSearchCommand.md)
+ - [StorageClassesSearchList](docs/StorageClassesSearchList.md)
  - [StorageListCommand](docs/StorageListCommand.md)
+ - [StsActionCommand](docs/StsActionCommand.md)
  - [StsDto](docs/StsDto.md)
  - [StsList](docs/StsList.md)
  - [StsSearchCommand](docs/StsSearchCommand.md)
@@ -1297,6 +1348,7 @@ Class | Method | HTTP request | Description
  - [VClusterListDto](docs/VClusterListDto.md)
  - [ValidateVsphereCommand](docs/ValidateVsphereCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)
+ - [VerifyWebhookCommand](docs/VerifyWebhookCommand.md)
  - [VmConsoleScreenshotCommand](docs/VmConsoleScreenshotCommand.md)
  - [VmTemplateListCommand](docs/VmTemplateListCommand.md)
  - [VsphereFlavorData](docs/VsphereFlavorData.md)
@@ -1308,7 +1360,6 @@ Class | Method | HTTP request | Description
  - [VsphereVmTemplateData](docs/VsphereVmTemplateData.md)
  - [VsphereVmTemplateListCommand](docs/VsphereVmTemplateListCommand.md)
  - [WebhookHeaderDto](docs/WebhookHeaderDto.md)
- - [WhiteListDomainDto](docs/WhiteListDomainDto.md)
  - [YamlValidatorCommand](docs/YamlValidatorCommand.md)
  - [ZadaraAvailabilityZonesCommand](docs/ZadaraAvailabilityZonesCommand.md)
  - [ZadaraCredentialList](docs/ZadaraCredentialList.md)

@@ -22,6 +22,7 @@ var _ MappedNullable = &RegionListCommand{}
 type RegionListCommand struct {
 	AwsAccessKeyId NullableString `json:"awsAccessKeyId,omitempty"`
 	AwsSecretAccessKey NullableString `json:"awsSecretAccessKey,omitempty"`
+	CloudId NullableInt32 `json:"cloudId,omitempty"`
 }
 
 // NewRegionListCommand instantiates a new RegionListCommand object
@@ -125,6 +126,48 @@ func (o *RegionListCommand) UnsetAwsSecretAccessKey() {
 	o.AwsSecretAccessKey.Unset()
 }
 
+// GetCloudId returns the CloudId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *RegionListCommand) GetCloudId() int32 {
+	if o == nil || IsNil(o.CloudId.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.CloudId.Get()
+}
+
+// GetCloudIdOk returns a tuple with the CloudId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *RegionListCommand) GetCloudIdOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CloudId.Get(), o.CloudId.IsSet()
+}
+
+// HasCloudId returns a boolean if a field has been set.
+func (o *RegionListCommand) HasCloudId() bool {
+	if o != nil && o.CloudId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudId gets a reference to the given NullableInt32 and assigns it to the CloudId field.
+func (o *RegionListCommand) SetCloudId(v int32) {
+	o.CloudId.Set(&v)
+}
+// SetCloudIdNil sets the value for CloudId to be an explicit nil
+func (o *RegionListCommand) SetCloudIdNil() {
+	o.CloudId.Set(nil)
+}
+
+// UnsetCloudId ensures that no value is present for CloudId, not even an explicit nil
+func (o *RegionListCommand) UnsetCloudId() {
+	o.CloudId.Unset()
+}
+
 func (o RegionListCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -140,6 +183,9 @@ func (o RegionListCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AwsSecretAccessKey.IsSet() {
 		toSerialize["awsSecretAccessKey"] = o.AwsSecretAccessKey.Get()
+	}
+	if o.CloudId.IsSet() {
+		toSerialize["cloudId"] = o.CloudId.Get()
 	}
 	return toSerialize, nil
 }

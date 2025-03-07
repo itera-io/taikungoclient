@@ -34,7 +34,7 @@ type PrometheusRuleListDto struct {
 	Price float64 `json:"price"`
 	BillingStartDate NullableString `json:"billingStartDate"`
 	CreatedAt NullableString `json:"createdAt"`
-	Partner PartnerDetailsDto `json:"partner"`
+	Partner PartnerEntity `json:"partner"`
 	OperationCredential OperationCredentialsForOrganizationEntity `json:"operationCredential"`
 	CreatedBy string `json:"createdBy"`
 	LastModified NullableString `json:"lastModified"`
@@ -47,7 +47,7 @@ type _PrometheusRuleListDto PrometheusRuleListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPrometheusRuleListDto(id int32, name string, password string, userName string, url string, metricName NullableString, labels []PrometheusLabelListDto, boundOrganizations []PrometheusOrganizationDiscountDto, type_ PrometheusType, price float64, billingStartDate NullableString, createdAt NullableString, partner PartnerDetailsDto, operationCredential OperationCredentialsForOrganizationEntity, createdBy string, lastModified NullableString, lastModifiedBy NullableString) *PrometheusRuleListDto {
+func NewPrometheusRuleListDto(id int32, name string, password string, userName string, url string, metricName NullableString, labels []PrometheusLabelListDto, boundOrganizations []PrometheusOrganizationDiscountDto, type_ PrometheusType, price float64, billingStartDate NullableString, createdAt NullableString, partner PartnerEntity, operationCredential OperationCredentialsForOrganizationEntity, createdBy string, lastModified NullableString, lastModifiedBy NullableString) *PrometheusRuleListDto {
 	this := PrometheusRuleListDto{}
 	this.Id = id
 	this.Name = name
@@ -376,9 +376,9 @@ func (o *PrometheusRuleListDto) SetCreatedAt(v string) {
 }
 
 // GetPartner returns the Partner field value
-func (o *PrometheusRuleListDto) GetPartner() PartnerDetailsDto {
+func (o *PrometheusRuleListDto) GetPartner() PartnerEntity {
 	if o == nil {
-		var ret PartnerDetailsDto
+		var ret PartnerEntity
 		return ret
 	}
 
@@ -387,7 +387,7 @@ func (o *PrometheusRuleListDto) GetPartner() PartnerDetailsDto {
 
 // GetPartnerOk returns a tuple with the Partner field value
 // and a boolean to check if the value has been set.
-func (o *PrometheusRuleListDto) GetPartnerOk() (*PartnerDetailsDto, bool) {
+func (o *PrometheusRuleListDto) GetPartnerOk() (*PartnerEntity, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -395,7 +395,7 @@ func (o *PrometheusRuleListDto) GetPartnerOk() (*PartnerDetailsDto, bool) {
 }
 
 // SetPartner sets field value
-func (o *PrometheusRuleListDto) SetPartner(v PartnerDetailsDto) {
+func (o *PrometheusRuleListDto) SetPartner(v PartnerEntity) {
 	o.Partner = v
 }
 

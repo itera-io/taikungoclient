@@ -24,7 +24,6 @@ var _ MappedNullable = &CreateKubernetesResourceCommand{}
 type CreateKubernetesResourceCommand struct {
 	ProjectId int32 `json:"projectId"`
 	Yaml NullableString `json:"yaml"`
-	Kind EKubernetesResource `json:"kind"`
 }
 
 type _CreateKubernetesResourceCommand CreateKubernetesResourceCommand
@@ -33,11 +32,10 @@ type _CreateKubernetesResourceCommand CreateKubernetesResourceCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateKubernetesResourceCommand(projectId int32, yaml NullableString, kind EKubernetesResource) *CreateKubernetesResourceCommand {
+func NewCreateKubernetesResourceCommand(projectId int32, yaml NullableString) *CreateKubernetesResourceCommand {
 	this := CreateKubernetesResourceCommand{}
 	this.ProjectId = projectId
 	this.Yaml = yaml
-	this.Kind = kind
 	return &this
 }
 
@@ -99,30 +97,6 @@ func (o *CreateKubernetesResourceCommand) SetYaml(v string) {
 	o.Yaml.Set(&v)
 }
 
-// GetKind returns the Kind field value
-func (o *CreateKubernetesResourceCommand) GetKind() EKubernetesResource {
-	if o == nil {
-		var ret EKubernetesResource
-		return ret
-	}
-
-	return o.Kind
-}
-
-// GetKindOk returns a tuple with the Kind field value
-// and a boolean to check if the value has been set.
-func (o *CreateKubernetesResourceCommand) GetKindOk() (*EKubernetesResource, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Kind, true
-}
-
-// SetKind sets field value
-func (o *CreateKubernetesResourceCommand) SetKind(v EKubernetesResource) {
-	o.Kind = v
-}
-
 func (o CreateKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -135,7 +109,6 @@ func (o CreateKubernetesResourceCommand) ToMap() (map[string]interface{}, error)
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
 	toSerialize["yaml"] = o.Yaml.Get()
-	toSerialize["kind"] = o.Kind
 	return toSerialize, nil
 }
 
@@ -146,7 +119,6 @@ func (o *CreateKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error)
 	requiredProperties := []string{
 		"projectId",
 		"yaml",
-		"kind",
 	}
 
 	allProperties := make(map[string]interface{})

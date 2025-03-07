@@ -28,9 +28,10 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 
 		var id int32
 
-		httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesAddOrganizations(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesAddOrganizations(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -66,9 +67,10 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 
 		var id int32
 
-		httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesDeleteOrganizations(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesDeleteOrganizations(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -91,9 +93,10 @@ func Test_taikuncore_PrometheusRulesAPIService(t *testing.T) {
 
 		var id int32
 
-		httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesUpdate(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.PrometheusRulesAPI.PrometheusrulesUpdate(context.Background(), id).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

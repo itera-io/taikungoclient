@@ -62,6 +62,18 @@ func Test_taikuncore_AWSCloudCredentialAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AWSCloudCredentialAPIService AwsGetEksAuthInfo", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.AWSCloudCredentialAPI.AwsGetEksAuthInfo(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AWSCloudCredentialAPIService AwsList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

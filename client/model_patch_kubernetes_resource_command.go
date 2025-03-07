@@ -23,10 +23,9 @@ var _ MappedNullable = &PatchKubernetesResourceCommand{}
 // PatchKubernetesResourceCommand struct for PatchKubernetesResourceCommand
 type PatchKubernetesResourceCommand struct {
 	ProjectId int32 `json:"projectId"`
-	Yaml NullableString `json:"yaml"`
-	Name NullableString `json:"name"`
+	Yaml string `json:"yaml"`
+	Name string `json:"name"`
 	Namespace NullableString `json:"namespace,omitempty"`
-	Kind EKubernetesResource `json:"kind"`
 }
 
 type _PatchKubernetesResourceCommand PatchKubernetesResourceCommand
@@ -35,12 +34,11 @@ type _PatchKubernetesResourceCommand PatchKubernetesResourceCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPatchKubernetesResourceCommand(projectId int32, yaml NullableString, name NullableString, kind EKubernetesResource) *PatchKubernetesResourceCommand {
+func NewPatchKubernetesResourceCommand(projectId int32, yaml string, name string) *PatchKubernetesResourceCommand {
 	this := PatchKubernetesResourceCommand{}
 	this.ProjectId = projectId
 	this.Yaml = yaml
 	this.Name = name
-	this.Kind = kind
 	return &this
 }
 
@@ -77,55 +75,51 @@ func (o *PatchKubernetesResourceCommand) SetProjectId(v int32) {
 }
 
 // GetYaml returns the Yaml field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *PatchKubernetesResourceCommand) GetYaml() string {
-	if o == nil || o.Yaml.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Yaml.Get()
+	return o.Yaml
 }
 
 // GetYamlOk returns a tuple with the Yaml field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchKubernetesResourceCommand) GetYamlOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Yaml.Get(), o.Yaml.IsSet()
+	return &o.Yaml, true
 }
 
 // SetYaml sets field value
 func (o *PatchKubernetesResourceCommand) SetYaml(v string) {
-	o.Yaml.Set(&v)
+	o.Yaml = v
 }
 
 // GetName returns the Name field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *PatchKubernetesResourceCommand) GetName() string {
-	if o == nil || o.Name.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.Name.Get()
+	return o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *PatchKubernetesResourceCommand) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return &o.Name, true
 }
 
 // SetName sets field value
 func (o *PatchKubernetesResourceCommand) SetName(v string) {
-	o.Name.Set(&v)
+	o.Name = v
 }
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -170,30 +164,6 @@ func (o *PatchKubernetesResourceCommand) UnsetNamespace() {
 	o.Namespace.Unset()
 }
 
-// GetKind returns the Kind field value
-func (o *PatchKubernetesResourceCommand) GetKind() EKubernetesResource {
-	if o == nil {
-		var ret EKubernetesResource
-		return ret
-	}
-
-	return o.Kind
-}
-
-// GetKindOk returns a tuple with the Kind field value
-// and a boolean to check if the value has been set.
-func (o *PatchKubernetesResourceCommand) GetKindOk() (*EKubernetesResource, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Kind, true
-}
-
-// SetKind sets field value
-func (o *PatchKubernetesResourceCommand) SetKind(v EKubernetesResource) {
-	o.Kind = v
-}
-
 func (o PatchKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -205,12 +175,11 @@ func (o PatchKubernetesResourceCommand) MarshalJSON() ([]byte, error) {
 func (o PatchKubernetesResourceCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["projectId"] = o.ProjectId
-	toSerialize["yaml"] = o.Yaml.Get()
-	toSerialize["name"] = o.Name.Get()
+	toSerialize["yaml"] = o.Yaml
+	toSerialize["name"] = o.Name
 	if o.Namespace.IsSet() {
 		toSerialize["namespace"] = o.Namespace.Get()
 	}
-	toSerialize["kind"] = o.Kind
 	return toSerialize, nil
 }
 
@@ -222,7 +191,6 @@ func (o *PatchKubernetesResourceCommand) UnmarshalJSON(data []byte) (err error) 
 		"projectId",
 		"yaml",
 		"name",
-		"kind",
 	}
 
 	allProperties := make(map[string]interface{})

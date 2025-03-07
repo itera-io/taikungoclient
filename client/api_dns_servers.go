@@ -208,7 +208,7 @@ func (r ApiDnsserversDeleteRequest) Execute() (*http.Response, error) {
 }
 
 /*
-DnsserversDelete Delete dns server
+DnsserversDelete Delete DNS server
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
@@ -538,7 +538,7 @@ func (r ApiDnsserversListRequest) Execute() ([]DnsServersListDto, *http.Response
 }
 
 /*
-DnsserversList List dn servers by profile id
+DnsserversList List dns servers by profile id
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param accessProfileId

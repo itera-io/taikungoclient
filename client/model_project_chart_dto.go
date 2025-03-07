@@ -26,6 +26,8 @@ type ProjectChartDto struct {
 	Failed []ProjectCommonRecordDto `json:"failed,omitempty"`
 	Purging []ProjectCommonRecordDto `json:"purging,omitempty"`
 	Deleting []ProjectCommonRecordDto `json:"deleting,omitempty"`
+	Importing []ProjectCommonRecordDto `json:"importing,omitempty"`
+	FailedToImport []ProjectCommonRecordDto `json:"failedToImport,omitempty"`
 }
 
 // NewProjectChartDto instantiates a new ProjectChartDto object
@@ -242,6 +244,72 @@ func (o *ProjectChartDto) SetDeleting(v []ProjectCommonRecordDto) {
 	o.Deleting = v
 }
 
+// GetImporting returns the Importing field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectChartDto) GetImporting() []ProjectCommonRecordDto {
+	if o == nil {
+		var ret []ProjectCommonRecordDto
+		return ret
+	}
+	return o.Importing
+}
+
+// GetImportingOk returns a tuple with the Importing field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectChartDto) GetImportingOk() ([]ProjectCommonRecordDto, bool) {
+	if o == nil || IsNil(o.Importing) {
+		return nil, false
+	}
+	return o.Importing, true
+}
+
+// HasImporting returns a boolean if a field has been set.
+func (o *ProjectChartDto) HasImporting() bool {
+	if o != nil && !IsNil(o.Importing) {
+		return true
+	}
+
+	return false
+}
+
+// SetImporting gets a reference to the given []ProjectCommonRecordDto and assigns it to the Importing field.
+func (o *ProjectChartDto) SetImporting(v []ProjectCommonRecordDto) {
+	o.Importing = v
+}
+
+// GetFailedToImport returns the FailedToImport field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectChartDto) GetFailedToImport() []ProjectCommonRecordDto {
+	if o == nil {
+		var ret []ProjectCommonRecordDto
+		return ret
+	}
+	return o.FailedToImport
+}
+
+// GetFailedToImportOk returns a tuple with the FailedToImport field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectChartDto) GetFailedToImportOk() ([]ProjectCommonRecordDto, bool) {
+	if o == nil || IsNil(o.FailedToImport) {
+		return nil, false
+	}
+	return o.FailedToImport, true
+}
+
+// HasFailedToImport returns a boolean if a field has been set.
+func (o *ProjectChartDto) HasFailedToImport() bool {
+	if o != nil && !IsNil(o.FailedToImport) {
+		return true
+	}
+
+	return false
+}
+
+// SetFailedToImport gets a reference to the given []ProjectCommonRecordDto and assigns it to the FailedToImport field.
+func (o *ProjectChartDto) SetFailedToImport(v []ProjectCommonRecordDto) {
+	o.FailedToImport = v
+}
+
 func (o ProjectChartDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -269,6 +337,12 @@ func (o ProjectChartDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Deleting != nil {
 		toSerialize["deleting"] = o.Deleting
+	}
+	if o.Importing != nil {
+		toSerialize["importing"] = o.Importing
+	}
+	if o.FailedToImport != nil {
+		toSerialize["failedToImport"] = o.FailedToImport
 	}
 	return toSerialize, nil
 }
