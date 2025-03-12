@@ -71,9 +71,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackCreateExecute(r ApiOpensta
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createOpenstackCloudCommand == nil {
-		return localVarReturnValue, nil, reportError("createOpenstackCloudCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -493,9 +490,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackNetworksExecute(r ApiOpens
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openStackNetworkListQuery == nil {
-		return localVarReturnValue, nil, reportError("openStackNetworkListQuery is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -669,9 +663,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackProjectsExecute(r ApiOpens
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openStackProjectListQuery == nil {
-		return localVarReturnValue, nil, reportError("openStackProjectListQuery is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -845,9 +836,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackQuotasExecute(r ApiOpensta
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openstackQuotasCommand == nil {
-		return localVarReturnValue, nil, reportError("openstackQuotasCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1021,9 +1009,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackRegionListExecute(r ApiOpe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openStackRegionListQuery == nil {
-		return localVarReturnValue, nil, reportError("openStackRegionListQuery is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1197,9 +1182,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackSubnetExecute(r ApiOpensta
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openstackSubnetListQuery == nil {
-		return localVarReturnValue, nil, reportError("openstackSubnetListQuery is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1336,7 +1318,7 @@ func (r ApiOpenstackUpdateRequest) UpdateOpenStackCommand(updateOpenStackCommand
 	return r
 }
 
-func (r ApiOpenstackUpdateRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiOpenstackUpdateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.OpenstackUpdateExecute(r)
 }
 
@@ -1354,18 +1336,16 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdate(ctx context.Context
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpenstackUpdateRequest) (map[string]interface{}, *http.Response, error) {
+func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpenstackUpdateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpenstackCloudCredentialAPIService.OpenstackUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/v1/openstack/update"
@@ -1373,9 +1353,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpensta
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateOpenStackCommand == nil {
-		return localVarReturnValue, nil, reportError("updateOpenStackCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1387,7 +1364,7 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpensta
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1412,19 +1389,19 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpensta
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1437,68 +1414,59 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpensta
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiOpenstackVolumesRequest struct {
@@ -1549,9 +1517,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackVolumesExecute(r ApiOpenst
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openstackVolumeTypeListQuery == nil {
-		return localVarReturnValue, nil, reportError("openstackVolumeTypeListQuery is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1725,9 +1690,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackZonesExecute(r ApiOpenstac
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openStackZoneListQuery == nil {
-		return localVarReturnValue, nil, reportError("openStackZoneListQuery is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

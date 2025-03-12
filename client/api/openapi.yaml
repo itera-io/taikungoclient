@@ -3629,10 +3629,6 @@ paths:
               $ref: '#/components/schemas/UpdateAzureCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -4802,8 +4798,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-03-07T00:19:37.640378Z
-                  createdAt: 2025-03-07T00:19:37.640378Z
+                  lastValidated: 2025-03-12T00:19:31.9091907Z
+                  createdAt: 2025-03-12T00:19:31.9091907Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -4908,14 +4904,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-03-07T00:19:37.640378Z
+                    lastBackup: 2025-03-12T00:19:31.9091907Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-03-07T00:19:37.640378Z
+                  createdAt: 2025-03-12T00:19:31.9091907Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-03-07T00:19:37.640378Z
+                  lastBackup: 2025-03-12T00:19:31.9091907Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5020,8 +5016,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-07T00:19:37.640378Z
-                  expiration: 2025-03-07T00:19:37.640378Z
+                  createdAt: 2025-03-12T00:19:31.9091907Z
+                  expiration: 2025-03-12T00:19:31.9091907Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5125,7 +5121,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-07T00:19:37.640378Z
+                  createdAt: 2025-03-12T00:19:31.9091907Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5235,9 +5231,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-03-07T00:19:37.640378+00:00
-                  startTimeStamp: 2025-03-07T00:19:37.640378+00:00
-                  createdAt: 2025-03-07T00:19:37.640378Z
+                  completionDateTime: 2025-03-12T00:19:31.9091907+00:00
+                  startTimeStamp: 2025-03-12T00:19:31.9091907+00:00
+                  createdAt: 2025-03-12T00:19:31.9091907Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -7679,13 +7675,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CloudLockManagerCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -7728,13 +7719,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CredentialMakeDefaultCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -7994,8 +7980,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -9811,7 +9795,7 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
+            application/json:
               schema:
                 $ref: '#/components/schemas/Void'
           description: OK
@@ -18224,10 +18208,6 @@ paths:
               $ref: '#/components/schemas/OpenshiftCreateCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -18272,10 +18252,6 @@ paths:
               $ref: '#/components/schemas/OpenshiftPullSecretCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -18370,10 +18346,6 @@ paths:
               $ref: '#/components/schemas/OpenshiftValidateCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -18520,7 +18492,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateOpenstackCloudCommand'
-        required: true
       responses:
         "200":
           content:
@@ -18569,7 +18540,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OpenStackNetworkListQuery'
-        required: true
       responses:
         "200":
           content:
@@ -18623,7 +18593,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OpenStackProjectListQuery'
-        required: true
       responses:
         "200":
           content:
@@ -18677,7 +18646,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OpenstackQuotasCommand'
-        required: true
       responses:
         "200":
           content:
@@ -18726,7 +18694,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OpenStackRegionListQuery'
-        required: true
       responses:
         "200":
           content:
@@ -18777,7 +18744,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OpenstackSubnetListQuery'
-        required: true
       responses:
         "200":
           content:
@@ -18828,13 +18794,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateOpenStackCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -18877,7 +18838,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OpenstackVolumeTypeListQuery'
-        required: true
       responses:
         "200":
           content:
@@ -18928,7 +18888,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OpenStackZoneListQuery'
-        required: true
       responses:
         "200":
           content:
@@ -24728,7 +24687,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BridgeListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -24827,7 +24785,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/HypervisorListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -24878,7 +24835,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StorageListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -24931,10 +24887,6 @@ paths:
               $ref: '#/components/schemas/UpdateProxmoxCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -24979,10 +24931,6 @@ paths:
               $ref: '#/components/schemas/UpdateHypervisorsCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -25025,7 +24973,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VmTemplateListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -38547,6 +38494,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -38561,6 +38509,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     ConfigMapSearchList:
       additionalProperties: false
@@ -38712,6 +38663,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -38726,6 +38678,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     CrdSearchList:
       additionalProperties: false
@@ -40430,6 +40385,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -40444,6 +40400,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     CronjobsSearchList:
       additionalProperties: false
@@ -40495,6 +40454,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -40509,6 +40469,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     DaemonSetSearchList:
       additionalProperties: false
@@ -41562,6 +41525,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -41576,6 +41540,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     DeploymentSearchList:
       additionalProperties: false
@@ -44645,6 +44612,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -44659,6 +44627,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     HelmReleasesSearchList:
       additionalProperties: false
@@ -45766,6 +45737,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -45780,6 +45752,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     IngressSearchList:
       additionalProperties: false
@@ -45968,6 +45943,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -45982,6 +45958,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     JobsSearchList:
       additionalProperties: false
@@ -47657,6 +47636,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -47671,6 +47651,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     NamespaceSearchList:
       additionalProperties: false
@@ -47752,6 +47735,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -47766,6 +47750,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     NetworkPoliciesSearchList:
       additionalProperties: false
@@ -47912,6 +47899,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -47926,6 +47914,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     NodesSearchList:
       additionalProperties: false
@@ -50002,6 +49993,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -50016,6 +50008,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     PdbSearchList:
       additionalProperties: false
@@ -50242,6 +50237,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -50256,6 +50252,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     PodsSearchList:
       additionalProperties: false
@@ -54086,6 +54085,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -54100,6 +54100,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     PvcSearchList:
       additionalProperties: false
@@ -54655,6 +54658,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -54669,6 +54673,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     SecretSearchList:
       additionalProperties: false
@@ -55886,6 +55893,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -55900,6 +55908,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     ServiceSearchList:
       additionalProperties: false
@@ -57449,6 +57460,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -57463,6 +57475,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     StorageClassesSearchList:
       additionalProperties: false
@@ -57591,6 +57606,7 @@ components:
       additionalProperties: false
       example:
         searchTerm: searchTerm
+        includePublicImportedClusters: true
         offset: 6
         limit: 0
       properties:
@@ -57605,6 +57621,9 @@ components:
         searchTerm:
           nullable: true
           type: string
+        includePublicImportedClusters:
+          nullable: true
+          type: boolean
       type: object
     StsSearchList:
       additionalProperties: false
