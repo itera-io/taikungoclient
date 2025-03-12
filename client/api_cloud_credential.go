@@ -1198,9 +1198,6 @@ func (a *CloudCredentialAPIService) CloudcredentialsUpdateIpAddressesExecute(r A
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateUsedIpAddressesCommand == nil {
-		return localVarReturnValue, nil, reportError("updateUsedIpAddressesCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

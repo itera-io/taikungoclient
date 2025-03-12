@@ -5782,8 +5782,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-03-11T00:03:28.3542012Z
-                  createdAt: 2025-03-11T00:03:28.3542012Z
+                  lastValidated: 2025-03-12T00:03:17.0875745Z
+                  createdAt: 2025-03-12T00:03:17.0875745Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5888,14 +5888,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-03-11T00:03:28.3542012Z
+                    lastBackup: 2025-03-12T00:03:17.0875745Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-03-11T00:03:28.3542012Z
+                  createdAt: 2025-03-12T00:03:17.0875745Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-03-11T00:03:28.3542012Z
+                  lastBackup: 2025-03-12T00:03:17.0875745Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6000,8 +6000,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-11T00:03:28.3542012Z
-                  expiration: 2025-03-11T00:03:28.3542012Z
+                  createdAt: 2025-03-12T00:03:17.0875745Z
+                  expiration: 2025-03-12T00:03:17.0875745Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6105,7 +6105,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-11T00:03:28.3542012Z
+                  createdAt: 2025-03-12T00:03:17.0875745Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6215,9 +6215,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-03-11T00:03:28.3542012+00:00
-                  startTimeStamp: 2025-03-11T00:03:28.3542012+00:00
-                  createdAt: 2025-03-11T00:03:28.3542012Z
+                  completionDateTime: 2025-03-12T00:03:17.0875745+00:00
+                  startTimeStamp: 2025-03-12T00:03:17.0875745+00:00
+                  createdAt: 2025-03-12T00:03:17.0875745Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -8927,7 +8927,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateUsedIpAddressesCommand'
-        required: true
       responses:
         "200":
           content:
@@ -31182,7 +31181,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BridgeListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -31281,7 +31279,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/HypervisorListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -31332,7 +31329,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StorageListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -31385,10 +31381,6 @@ paths:
               $ref: '#/components/schemas/UpdateProxmoxCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -31433,10 +31425,6 @@ paths:
               $ref: '#/components/schemas/UpdateHypervisorsCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -31479,13 +31467,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateUsedIpAddressesCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -31528,7 +31511,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VmTemplateListCommand'
-        required: true
       responses:
         "200":
           content:

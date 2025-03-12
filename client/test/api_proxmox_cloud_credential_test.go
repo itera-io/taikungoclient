@@ -86,10 +86,9 @@ func Test_taikuncore_ProxmoxCloudCredentialAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProxmoxCloudCredentialAPI.ProxmoxUpdate(context.Background()).Execute()
+		httpRes, err := apiClient.ProxmoxCloudCredentialAPI.ProxmoxUpdate(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -98,10 +97,9 @@ func Test_taikuncore_ProxmoxCloudCredentialAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProxmoxCloudCredentialAPI.ProxmoxUpdateHypervisors(context.Background()).Execute()
+		httpRes, err := apiClient.ProxmoxCloudCredentialAPI.ProxmoxUpdateHypervisors(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -110,10 +108,9 @@ func Test_taikuncore_ProxmoxCloudCredentialAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProxmoxCloudCredentialAPI.ProxmoxUpdateIpAddresses(context.Background()).Execute()
+		httpRes, err := apiClient.ProxmoxCloudCredentialAPI.ProxmoxUpdateIpAddresses(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
