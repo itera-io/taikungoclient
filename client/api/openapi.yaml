@@ -5782,8 +5782,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-03-12T00:03:17.0875745Z
-                  createdAt: 2025-03-12T00:03:17.0875745Z
+                  lastValidated: 2025-03-13T00:03:25.8499759Z
+                  createdAt: 2025-03-13T00:03:25.8499759Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5888,14 +5888,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-03-12T00:03:17.0875745Z
+                    lastBackup: 2025-03-13T00:03:25.8499759Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-03-12T00:03:17.0875745Z
+                  createdAt: 2025-03-13T00:03:25.8499759Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-03-12T00:03:17.0875745Z
+                  lastBackup: 2025-03-13T00:03:25.8499759Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6000,8 +6000,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-12T00:03:17.0875745Z
-                  expiration: 2025-03-12T00:03:17.0875745Z
+                  createdAt: 2025-03-13T00:03:25.8499759Z
+                  expiration: 2025-03-13T00:03:25.8499759Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6105,7 +6105,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-12T00:03:17.0875745Z
+                  createdAt: 2025-03-13T00:03:25.8499759Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6215,9 +6215,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-03-12T00:03:17.0875745+00:00
-                  startTimeStamp: 2025-03-12T00:03:17.0875745+00:00
-                  createdAt: 2025-03-12T00:03:17.0875745Z
+                  completionDateTime: 2025-03-13T00:03:25.8499759+00:00
+                  startTimeStamp: 2025-03-13T00:03:25.8499759+00:00
+                  createdAt: 2025-03-13T00:03:25.8499759Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -36858,7 +36858,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateTanzuCommand'
-        required: true
       responses:
         "200":
           content:
@@ -36957,13 +36956,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateTanzuCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -40175,7 +40169,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DatacenterListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -40226,7 +40219,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DatastoreListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -40277,7 +40269,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VsphereHypervisorListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -40328,7 +40319,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NetworkListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -40379,7 +40369,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ResourcePoolListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -40432,10 +40421,6 @@ paths:
               $ref: '#/components/schemas/UpdateVsphereCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -40478,13 +40463,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateVsphereHypervisorsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -40527,13 +40507,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ValidateVsphereCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -40576,7 +40551,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VsphereVmTemplateListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -53554,14 +53528,14 @@ components:
       additionalProperties: false
       example:
         organizationId: 0
-        days: 6
+        dateTime: 2000-01-23T04:56:07.000+00:00
       properties:
         organizationId:
           format: int32
           type: integer
-        days:
-          format: int32
-          type: integer
+        dateTime:
+          format: date-time
+          type: string
       type: object
     FetchAzureFlavorPricesCommand:
       additionalProperties: false

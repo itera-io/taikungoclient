@@ -13,6 +13,7 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the ExtendTrialPeriodCommand type satisfies the MappedNullable interface at compile time
@@ -21,7 +22,7 @@ var _ MappedNullable = &ExtendTrialPeriodCommand{}
 // ExtendTrialPeriodCommand struct for ExtendTrialPeriodCommand
 type ExtendTrialPeriodCommand struct {
 	OrganizationId *int32 `json:"organizationId,omitempty"`
-	Days *int32 `json:"days,omitempty"`
+	DateTime *time.Time `json:"dateTime,omitempty"`
 }
 
 // NewExtendTrialPeriodCommand instantiates a new ExtendTrialPeriodCommand object
@@ -73,36 +74,36 @@ func (o *ExtendTrialPeriodCommand) SetOrganizationId(v int32) {
 	o.OrganizationId = &v
 }
 
-// GetDays returns the Days field value if set, zero value otherwise.
-func (o *ExtendTrialPeriodCommand) GetDays() int32 {
-	if o == nil || IsNil(o.Days) {
-		var ret int32
+// GetDateTime returns the DateTime field value if set, zero value otherwise.
+func (o *ExtendTrialPeriodCommand) GetDateTime() time.Time {
+	if o == nil || IsNil(o.DateTime) {
+		var ret time.Time
 		return ret
 	}
-	return *o.Days
+	return *o.DateTime
 }
 
-// GetDaysOk returns a tuple with the Days field value if set, nil otherwise
+// GetDateTimeOk returns a tuple with the DateTime field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExtendTrialPeriodCommand) GetDaysOk() (*int32, bool) {
-	if o == nil || IsNil(o.Days) {
+func (o *ExtendTrialPeriodCommand) GetDateTimeOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.DateTime) {
 		return nil, false
 	}
-	return o.Days, true
+	return o.DateTime, true
 }
 
-// HasDays returns a boolean if a field has been set.
-func (o *ExtendTrialPeriodCommand) HasDays() bool {
-	if o != nil && !IsNil(o.Days) {
+// HasDateTime returns a boolean if a field has been set.
+func (o *ExtendTrialPeriodCommand) HasDateTime() bool {
+	if o != nil && !IsNil(o.DateTime) {
 		return true
 	}
 
 	return false
 }
 
-// SetDays gets a reference to the given int32 and assigns it to the Days field.
-func (o *ExtendTrialPeriodCommand) SetDays(v int32) {
-	o.Days = &v
+// SetDateTime gets a reference to the given time.Time and assigns it to the DateTime field.
+func (o *ExtendTrialPeriodCommand) SetDateTime(v time.Time) {
+	o.DateTime = &v
 }
 
 func (o ExtendTrialPeriodCommand) MarshalJSON() ([]byte, error) {
@@ -118,8 +119,8 @@ func (o ExtendTrialPeriodCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OrganizationId) {
 		toSerialize["organizationId"] = o.OrganizationId
 	}
-	if !IsNil(o.Days) {
-		toSerialize["days"] = o.Days
+	if !IsNil(o.DateTime) {
+		toSerialize["dateTime"] = o.DateTime
 	}
 	return toSerialize, nil
 }
