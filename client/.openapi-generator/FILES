@@ -243,6 +243,7 @@ docs/CatalogList.md
 docs/CatalogListDto.md
 docs/CatalogLockManagementCommand.md
 docs/CatalogMakeDefaultCommand.md
+docs/CatalogsForProjectDto.md
 docs/ChangeCardCommand.md
 docs/ChangePasswordCommand.md
 docs/ChatCompletionsCommand.md
@@ -1194,6 +1195,7 @@ model_catalog_list.go
 model_catalog_list_dto.go
 model_catalog_lock_management_command.go
 model_catalog_make_default_command.go
+model_catalogs_for_project_dto.go
 model_change_card_command.go
 model_change_password_command.go
 model_chat_completions_command.go

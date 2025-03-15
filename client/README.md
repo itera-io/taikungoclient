@@ -570,6 +570,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsAiAnalyzer**](docs/ProjectsAPI.md#projectsaianalyzer) | **Get** /api/v1/projects/ai-analyze/{projectId} | Analyze cluster by AI model
 *ProjectsAPI* | [**ProjectsAlerts**](docs/ProjectsAPI.md#projectsalerts) | **Post** /api/v1/projects/alerts | Project alerts
 *ProjectsAPI* | [**ProjectsCanAddVcluster**](docs/ProjectsAPI.md#projectscanaddvcluster) | **Get** /api/v1/projects/can-add-vcluster/{projectId} | Visibility of adding vcluster
+*ProjectsAPI* | [**ProjectsCatalogs**](docs/ProjectsAPI.md#projectscatalogs) | **Get** /api/v1/projects/catalogs/{projectId} | Catalogs for project
 *ProjectsAPI* | [**ProjectsChatCompletions**](docs/ProjectsAPI.md#projectschatcompletions) | **Post** /api/v1/projects/chat/completions | AI Chat completions
 *ProjectsAPI* | [**ProjectsCreate**](docs/ProjectsAPI.md#projectscreate) | **Post** /api/v1/projects | Create a new project
 *ProjectsAPI* | [**ProjectsDelete**](docs/ProjectsAPI.md#projectsdelete) | **Post** /api/v1/projects/delete | Delete the project. The project must be empty (no server) and in READY state
@@ -934,6 +935,7 @@ Class | Method | HTTP request | Description
  - [CatalogListDto](docs/CatalogListDto.md)
  - [CatalogLockManagementCommand](docs/CatalogLockManagementCommand.md)
  - [CatalogMakeDefaultCommand](docs/CatalogMakeDefaultCommand.md)
+ - [CatalogsForProjectDto](docs/CatalogsForProjectDto.md)
  - [ChangeCardCommand](docs/ChangeCardCommand.md)
  - [ChangePasswordCommand](docs/ChangePasswordCommand.md)
  - [ChatCompletionsCommand](docs/ChatCompletionsCommand.md)

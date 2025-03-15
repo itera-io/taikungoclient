@@ -26,10 +26,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobAutoUpgradeProjects(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobAutoUpgradeProjects(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -38,10 +37,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobBlockOrganization(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobBlockOrganization(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -50,10 +48,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobCancelExpiredSubscriptions(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobCancelExpiredSubscriptions(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -62,10 +59,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobCreateKeyPool(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobCreateKeyPool(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -74,10 +70,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteExpiredAlerts(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteExpiredAlerts(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -86,10 +81,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteExpiredHistoryLogs(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteExpiredHistoryLogs(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -98,10 +92,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteExpiredOrgs(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteExpiredOrgs(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -110,10 +103,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteExpiredRefreshTokens(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteExpiredRefreshTokens(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -122,10 +114,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteExpiredServers(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteExpiredServers(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -134,10 +125,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteImportedBackupLocation(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteImportedBackupLocation(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -146,10 +136,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteKubeConfigs(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteKubeConfigs(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -158,10 +147,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteRemovedSpotInstances(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteRemovedSpotInstances(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -170,10 +158,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteUselessProjectActions(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobDeleteUselessProjectActions(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -182,10 +169,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobEmailForProjectExpiration(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobEmailForProjectExpiration(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -194,10 +180,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobFetchArtifactOrganizations(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobFetchArtifactOrganizations(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -206,10 +191,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobFetchAzureFlavorPrices(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobFetchAzureFlavorPrices(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -218,10 +202,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobFetchK8sAlertData(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobFetchK8sAlertData(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -230,10 +213,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobFetchK8sOverviewData(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobFetchK8sOverviewData(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -242,10 +224,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobFetchOrganizationDetails(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobFetchOrganizationDetails(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -254,10 +235,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobPurgeExpiredProjects(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobPurgeExpiredProjects(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -266,10 +246,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobRemindUsersByAlertingProfile(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobRemindUsersByAlertingProfile(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -278,10 +257,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobSyncBackupCredentials(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobSyncBackupCredentials(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -290,10 +268,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobSyncOpaProfiles(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobSyncOpaProfiles(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -302,10 +279,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobSyncOrganizations(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobSyncOrganizations(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -314,10 +290,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobSyncProjectApps(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobSyncProjectApps(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -326,10 +301,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobSyncProjects(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobSyncProjects(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -338,10 +312,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobTektonPipelines(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobTektonPipelines(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -350,10 +323,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobUpdateProjectAppStatus(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobUpdateProjectAppStatus(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -362,10 +334,9 @@ func Test_taikuncore_CronJobServiceAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.CronJobServiceAPI.CronjobUpdateProjectQuotaMessage(context.Background()).Execute()
+		httpRes, err := apiClient.CronJobServiceAPI.CronjobUpdateProjectQuotaMessage(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

@@ -5782,8 +5782,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-03-14T00:03:14.3197027Z
-                  createdAt: 2025-03-14T00:03:14.3197027Z
+                  lastValidated: 2025-03-15T00:03:18.6245639Z
+                  createdAt: 2025-03-15T00:03:18.6245639Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5888,14 +5888,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-03-14T00:03:14.3197027Z
+                    lastBackup: 2025-03-15T00:03:18.6245639Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-03-14T00:03:14.3197027Z
+                  createdAt: 2025-03-15T00:03:18.6245639Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-03-14T00:03:14.3197027Z
+                  lastBackup: 2025-03-15T00:03:18.6245639Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6000,8 +6000,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-14T00:03:14.3197027Z
-                  expiration: 2025-03-14T00:03:14.3197027Z
+                  createdAt: 2025-03-15T00:03:18.6245639Z
+                  expiration: 2025-03-15T00:03:18.6245639Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6105,7 +6105,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-14T00:03:14.3197027Z
+                  createdAt: 2025-03-15T00:03:18.6245639Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6215,9 +6215,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-03-14T00:03:14.3197027+00:00
-                  startTimeStamp: 2025-03-14T00:03:14.3197027+00:00
-                  createdAt: 2025-03-14T00:03:14.3197027Z
+                  completionDateTime: 2025-03-15T00:03:18.6245639+00:00
+                  startTimeStamp: 2025-03-15T00:03:18.6245639+00:00
+                  createdAt: 2025-03-15T00:03:18.6245639Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -9286,7 +9286,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/IpAddressRangeCountCommand'
-        required: true
       responses:
         "200":
           content:
@@ -9336,7 +9335,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/IpAddressRangeListCommand'
-        required: true
       responses:
         "200":
           content:
@@ -9446,13 +9444,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RemindUsersByAlertingProfileCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -9495,13 +9488,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AutoUpgradeProjectsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -9544,13 +9532,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateKeyPoolCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -9593,13 +9576,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteRemovedUsersKubeConfigCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -9642,13 +9620,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteRemovedSpotInstancesCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -9691,13 +9664,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PurgeExpiredProjectsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -9740,13 +9708,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SendEmailAboutProjectExpirationCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -9789,13 +9752,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SyncBackupCredentialsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -9838,13 +9796,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SyncOpaProfilesCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -9887,13 +9840,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SyncProjectsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -9938,10 +9886,6 @@ paths:
               $ref: '#/components/schemas/TektonPipelinesCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -9984,13 +9928,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateProjectQuotaMessageCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10033,13 +9972,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BlockOrganizationCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10074,6 +10008,50 @@ paths:
       summary: Block organization
       tags:
       - Cron Job Service
+  /api/v1/cronjob/delete-expired-organizations:
+    post:
+      operationId: cronjob-delete-expired-orgs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteRegisterExpiredOrganizationCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Delete registration expired organizations
+      tags:
+      - Cron Job Service
   /api/v1/cronjob/fetch-organization-details:
     post:
       operationId: cronjob-fetch-organization-details
@@ -10082,13 +10060,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/FetchOrganizationDetailsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10131,13 +10104,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SyncOrganizationsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10180,13 +10148,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/FetchKubernetesAlertDataCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10229,13 +10192,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/FetchKubernetesOverviewDataCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10278,13 +10236,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CancelExpiredSubscriptionsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10327,13 +10280,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteExpiredAlertsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10376,13 +10324,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteExpiredHistoryLogsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10425,13 +10368,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteExpiredRefreshTokensCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10474,13 +10412,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteExpiredServersCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10523,13 +10456,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteRedundantProjectActionsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10564,55 +10492,6 @@ paths:
       summary: Delete useless project actions
       tags:
       - Cron Job Service
-  /api/v1/cronjob/delete-expired-organizations:
-    post:
-      operationId: cronjob-delete-expired-orgs
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeleteRegisterExpiredOrganizationCommand'
-        required: true
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Delete registration expired organizations
-      tags:
-      - Cron Job Service
   /api/v1/cronjob/backup-locations:
     post:
       operationId: cronjob-delete-imported-backup-location
@@ -10621,13 +10500,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteImportedBackupLocationsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10670,13 +10544,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/FetchAzureFlavorPricesCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10721,10 +10590,6 @@ paths:
               $ref: '#/components/schemas/FillArtifacthubOrganizationCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10767,13 +10632,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SyncProjectAppsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -10816,13 +10676,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateProjectAppStatusCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -29990,6 +29845,60 @@ paths:
       summary: Analyze cluster by AI model
       tags:
       - Projects
+  /api/v1/projects/catalogs/{projectId}:
+    get:
+      operationId: projects-catalogs
+      parameters:
+      - explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CatalogsForProjectDto'
+                type: array
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Catalogs for project
+      tags:
+      - Projects
   /api/v1/projects/describe/{projectId}:
     get:
       operationId: projects-describe
@@ -46836,6 +46745,26 @@ components:
         id:
           format: int32
           type: integer
+      type: object
+    CatalogsForProjectDto:
+      additionalProperties: false
+      example:
+        catalogName: catalogName
+        catalogId: 0
+        isBound: true
+      properties:
+        catalogId:
+          format: int32
+          type: integer
+        catalogName:
+          nullable: true
+          type: string
+        isBound:
+          type: boolean
+      required:
+      - catalogId
+      - catalogName
+      - isBound
       type: object
     ChangeCardCommand:
       additionalProperties: false
