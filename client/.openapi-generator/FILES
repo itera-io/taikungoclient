@@ -207,6 +207,7 @@ docs/CatalogList.md
 docs/CatalogListDto.md
 docs/CatalogLockManagementCommand.md
 docs/CatalogMakeDefaultCommand.md
+docs/CatalogsForProjectDto.md
 docs/CheckAwsCommand.md
 docs/CheckAzureCommand.md
 docs/CheckAzureCpuQuotaCommand.md
@@ -1003,6 +1004,7 @@ model_catalog_list.go
 model_catalog_list_dto.go
 model_catalog_lock_management_command.go
 model_catalog_make_default_command.go
+model_catalogs_for_project_dto.go
 model_check_aws_command.go
 model_check_azure_command.go
 model_check_azure_cpu_quota_command.go
