@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the UpdateExecutorHealthStatusCommand type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &UpdateExecutorHealthStatusCommand{}
 
 // UpdateExecutorHealthStatusCommand struct for UpdateExecutorHealthStatusCommand
 type UpdateExecutorHealthStatusCommand struct {
-	ExecutorId *int32 `json:"executorId,omitempty"`
-	Health *ExecutorHealth `json:"health,omitempty"`
+	ExecutorId int32 `json:"executorId"`
+	Health ExecutorHealth `json:"health"`
 }
+
+type _UpdateExecutorHealthStatusCommand UpdateExecutorHealthStatusCommand
 
 // NewUpdateExecutorHealthStatusCommand instantiates a new UpdateExecutorHealthStatusCommand object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewUpdateExecutorHealthStatusCommand() *UpdateExecutorHealthStatusCommand {
+func NewUpdateExecutorHealthStatusCommand(executorId int32, health ExecutorHealth) *UpdateExecutorHealthStatusCommand {
 	this := UpdateExecutorHealthStatusCommand{}
+	this.ExecutorId = executorId
+	this.Health = health
 	return &this
 }
 
@@ -41,68 +47,52 @@ func NewUpdateExecutorHealthStatusCommandWithDefaults() *UpdateExecutorHealthSta
 	return &this
 }
 
-// GetExecutorId returns the ExecutorId field value if set, zero value otherwise.
+// GetExecutorId returns the ExecutorId field value
 func (o *UpdateExecutorHealthStatusCommand) GetExecutorId() int32 {
-	if o == nil || IsNil(o.ExecutorId) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ExecutorId
+
+	return o.ExecutorId
 }
 
-// GetExecutorIdOk returns a tuple with the ExecutorId field value if set, nil otherwise
+// GetExecutorIdOk returns a tuple with the ExecutorId field value
 // and a boolean to check if the value has been set.
 func (o *UpdateExecutorHealthStatusCommand) GetExecutorIdOk() (*int32, bool) {
-	if o == nil || IsNil(o.ExecutorId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExecutorId, true
+	return &o.ExecutorId, true
 }
 
-// HasExecutorId returns a boolean if a field has been set.
-func (o *UpdateExecutorHealthStatusCommand) HasExecutorId() bool {
-	if o != nil && !IsNil(o.ExecutorId) {
-		return true
-	}
-
-	return false
-}
-
-// SetExecutorId gets a reference to the given int32 and assigns it to the ExecutorId field.
+// SetExecutorId sets field value
 func (o *UpdateExecutorHealthStatusCommand) SetExecutorId(v int32) {
-	o.ExecutorId = &v
+	o.ExecutorId = v
 }
 
-// GetHealth returns the Health field value if set, zero value otherwise.
+// GetHealth returns the Health field value
 func (o *UpdateExecutorHealthStatusCommand) GetHealth() ExecutorHealth {
-	if o == nil || IsNil(o.Health) {
+	if o == nil {
 		var ret ExecutorHealth
 		return ret
 	}
-	return *o.Health
+
+	return o.Health
 }
 
-// GetHealthOk returns a tuple with the Health field value if set, nil otherwise
+// GetHealthOk returns a tuple with the Health field value
 // and a boolean to check if the value has been set.
 func (o *UpdateExecutorHealthStatusCommand) GetHealthOk() (*ExecutorHealth, bool) {
-	if o == nil || IsNil(o.Health) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Health, true
+	return &o.Health, true
 }
 
-// HasHealth returns a boolean if a field has been set.
-func (o *UpdateExecutorHealthStatusCommand) HasHealth() bool {
-	if o != nil && !IsNil(o.Health) {
-		return true
-	}
-
-	return false
-}
-
-// SetHealth gets a reference to the given ExecutorHealth and assigns it to the Health field.
+// SetHealth sets field value
 func (o *UpdateExecutorHealthStatusCommand) SetHealth(v ExecutorHealth) {
-	o.Health = &v
+	o.Health = v
 }
 
 func (o UpdateExecutorHealthStatusCommand) MarshalJSON() ([]byte, error) {
@@ -115,13 +105,47 @@ func (o UpdateExecutorHealthStatusCommand) MarshalJSON() ([]byte, error) {
 
 func (o UpdateExecutorHealthStatusCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ExecutorId) {
-		toSerialize["executorId"] = o.ExecutorId
-	}
-	if !IsNil(o.Health) {
-		toSerialize["health"] = o.Health
-	}
+	toSerialize["executorId"] = o.ExecutorId
+	toSerialize["health"] = o.Health
 	return toSerialize, nil
+}
+
+func (o *UpdateExecutorHealthStatusCommand) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"executorId",
+		"health",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUpdateExecutorHealthStatusCommand := _UpdateExecutorHealthStatusCommand{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUpdateExecutorHealthStatusCommand)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdateExecutorHealthStatusCommand(varUpdateExecutorHealthStatusCommand)
+
+	return err
 }
 
 type NullableUpdateExecutorHealthStatusCommand struct {
