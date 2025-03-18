@@ -1652,7 +1652,7 @@ func (r ApiProjectappUpdateExtraValuesRequest) EditProjectAppExtraValuesCommand(
 	return r
 }
 
-func (r ApiProjectappUpdateExtraValuesRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiProjectappUpdateExtraValuesRequest) Execute() (*ApplicationSyncResponse, *http.Response, error) {
 	return r.ApiService.ProjectappUpdateExtraValuesExecute(r)
 }
 
@@ -1670,13 +1670,13 @@ func (a *ProjectAppsAPIService) ProjectappUpdateExtraValues(ctx context.Context)
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ProjectAppsAPIService) ProjectappUpdateExtraValuesExecute(r ApiProjectappUpdateExtraValuesRequest) (map[string]interface{}, *http.Response, error) {
+//  @return ApplicationSyncResponse
+func (a *ProjectAppsAPIService) ProjectappUpdateExtraValuesExecute(r ApiProjectappUpdateExtraValuesRequest) (*ApplicationSyncResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *ApplicationSyncResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAppsAPIService.ProjectappUpdateExtraValues")
@@ -1703,7 +1703,7 @@ func (a *ProjectAppsAPIService) ProjectappUpdateExtraValuesExecute(r ApiProjecta
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
