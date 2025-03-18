@@ -36,7 +36,7 @@ func (r ApiProjectappparamEditRequest) EditProjectAppParamsDto(editProjectAppPar
 	return r
 }
 
-func (r ApiProjectappparamEditRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiProjectappparamEditRequest) Execute() (*ApplicationSyncResponse, *http.Response, error) {
 	return r.ApiService.ProjectappparamEditExecute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *ProjectAppParamsAPIService) ProjectappparamEdit(ctx context.Context, pr
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *ProjectAppParamsAPIService) ProjectappparamEditExecute(r ApiProjectappparamEditRequest) (map[string]interface{}, *http.Response, error) {
+//  @return ApplicationSyncResponse
+func (a *ProjectAppParamsAPIService) ProjectappparamEditExecute(r ApiProjectappparamEditRequest) (*ApplicationSyncResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
+		localVarReturnValue  *ApplicationSyncResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectAppParamsAPIService.ProjectappparamEdit")
@@ -87,7 +87,7 @@ func (a *ProjectAppParamsAPIService) ProjectappparamEditExecute(r ApiProjectappp
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)

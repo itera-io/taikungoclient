@@ -846,6 +846,7 @@ Class | Method | HTTP request | Description
  - [Annotations](docs/Annotations.md)
  - [ApiResponse](docs/ApiResponse.md)
  - [AppRepositoryList](docs/AppRepositoryList.md)
+ - [ApplicationSyncResponse](docs/ApplicationSyncResponse.md)
  - [ArchiveTicketCommand](docs/ArchiveTicketCommand.md)
  - [ArticleList](docs/ArticleList.md)
  - [ArticlesListDto](docs/ArticlesListDto.md)
