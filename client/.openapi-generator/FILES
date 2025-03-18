@@ -117,6 +117,7 @@ docs/AmazonCredentialsListDto.md
 docs/ApiResponse.md
 docs/AppRepositoriesAPI.md
 docs/AppRepositoryList.md
+docs/ApplicationSyncResponse.md
 docs/ArticleList.md
 docs/ArticlesListDto.md
 docs/ArtifactRepositoryDto.md
@@ -922,6 +923,7 @@ model_amazon_availability_zones_command.go
 model_amazon_credentials_list_dto.go
 model_api_response.go
 model_app_repository_list.go
+model_application_sync_response.go
 model_article_list.go
 model_articles_list_dto.go
 model_artifact_repository_dto.go

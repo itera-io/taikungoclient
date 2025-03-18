@@ -671,6 +671,7 @@ Class | Method | HTTP request | Description
  - [AmazonCredentialsListDto](docs/AmazonCredentialsListDto.md)
  - [ApiResponse](docs/ApiResponse.md)
  - [AppRepositoryList](docs/AppRepositoryList.md)
+ - [ApplicationSyncResponse](docs/ApplicationSyncResponse.md)
  - [ArticleList](docs/ArticleList.md)
  - [ArticlesListDto](docs/ArticlesListDto.md)
  - [ArtifactRepositoryDto](docs/ArtifactRepositoryDto.md)
