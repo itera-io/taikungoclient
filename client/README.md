@@ -296,23 +296,7 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesDeleteResource**](docs/KubernetesAPI.md#kubernetesdeleteresource) | **Post** /api/v1/kubernetes/delete-resource | Delete kubernetes resource
 *KubernetesAPI* | [**KubernetesDeploymentActions**](docs/KubernetesAPI.md#kubernetesdeploymentactions) | **Post** /api/v1/kubernetes/deployment/actions | Deployment actions
 *KubernetesAPI* | [**KubernetesDeploymentList**](docs/KubernetesAPI.md#kubernetesdeploymentlist) | **Get** /api/v1/kubernetes/{projectId}/deployment | Retrieve a list of k8s deployment for all namespaces
-*KubernetesAPI* | [**KubernetesDescribeConfigMap**](docs/KubernetesAPI.md#kubernetesdescribeconfigmap) | **Post** /api/v1/kubernetes/describe/configmap | Describe configmap
-*KubernetesAPI* | [**KubernetesDescribeCrd**](docs/KubernetesAPI.md#kubernetesdescribecrd) | **Post** /api/v1/kubernetes/describe/crd | Describe crd
-*KubernetesAPI* | [**KubernetesDescribeCronjob**](docs/KubernetesAPI.md#kubernetesdescribecronjob) | **Post** /api/v1/kubernetes/describe/cronjob | Describe cronjob
-*KubernetesAPI* | [**KubernetesDescribeDaemonSet**](docs/KubernetesAPI.md#kubernetesdescribedaemonset) | **Post** /api/v1/kubernetes/describe/daemonset | Describe daemonset
-*KubernetesAPI* | [**KubernetesDescribeDeployment**](docs/KubernetesAPI.md#kubernetesdescribedeployment) | **Post** /api/v1/kubernetes/describe/deployment | Describe deployment
-*KubernetesAPI* | [**KubernetesDescribeIngress**](docs/KubernetesAPI.md#kubernetesdescribeingress) | **Post** /api/v1/kubernetes/describe/ingress | Describe ingress
-*KubernetesAPI* | [**KubernetesDescribeJob**](docs/KubernetesAPI.md#kubernetesdescribejob) | **Post** /api/v1/kubernetes/describe/job | Describe job
-*KubernetesAPI* | [**KubernetesDescribeNetworkPolicy**](docs/KubernetesAPI.md#kubernetesdescribenetworkpolicy) | **Post** /api/v1/kubernetes/describe/network-policy | Describe network policy
-*KubernetesAPI* | [**KubernetesDescribeNode**](docs/KubernetesAPI.md#kubernetesdescribenode) | **Post** /api/v1/kubernetes/describe/node | Describe node
-*KubernetesAPI* | [**KubernetesDescribePdb**](docs/KubernetesAPI.md#kubernetesdescribepdb) | **Post** /api/v1/kubernetes/describe/pdb | Describe pdb
-*KubernetesAPI* | [**KubernetesDescribePod**](docs/KubernetesAPI.md#kubernetesdescribepod) | **Post** /api/v1/kubernetes/describe/pod | Describe pod
-*KubernetesAPI* | [**KubernetesDescribePvc**](docs/KubernetesAPI.md#kubernetesdescribepvc) | **Post** /api/v1/kubernetes/describe/pvc | Describe pvc
 *KubernetesAPI* | [**KubernetesDescribeResource**](docs/KubernetesAPI.md#kubernetesdescriberesource) | **Post** /api/v1/kubernetes/describe-resource | Describe kubernetes resource
-*KubernetesAPI* | [**KubernetesDescribeSecret**](docs/KubernetesAPI.md#kubernetesdescribesecret) | **Post** /api/v1/kubernetes/describe/secret | Describe secret
-*KubernetesAPI* | [**KubernetesDescribeService**](docs/KubernetesAPI.md#kubernetesdescribeservice) | **Post** /api/v1/kubernetes/describe/service | Describe service
-*KubernetesAPI* | [**KubernetesDescribeStorageClass**](docs/KubernetesAPI.md#kubernetesdescribestorageclass) | **Post** /api/v1/kubernetes/describe/storageclass | Describe storage class
-*KubernetesAPI* | [**KubernetesDescribeSts**](docs/KubernetesAPI.md#kubernetesdescribests) | **Post** /api/v1/kubernetes/describe/sts | Describe stateful set
 *KubernetesAPI* | [**KubernetesDownloadManifest**](docs/KubernetesAPI.md#kubernetesdownloadmanifest) | **Post** /api/v1/kubernetes/download-manifest | Download manifest
 *KubernetesAPI* | [**KubernetesExport**](docs/KubernetesAPI.md#kubernetesexport) | **Get** /api/v1/kubernetes/export | Export
 *KubernetesAPI* | [**KubernetesForbiddenNamespaces**](docs/KubernetesAPI.md#kubernetesforbiddennamespaces) | **Get** /api/v1/kubernetes/forbidden-namespaces/{projectId} | Forbidden namespaces for k8s actions
@@ -384,7 +368,6 @@ Class | Method | HTTP request | Description
 *OperationCredentialsAPI* | [**OpscredentialsListByOrganizationId**](docs/OperationCredentialsAPI.md#opscredentialslistbyorganizationid) | **Get** /api/v1/opscredentials | Retrieve operation credentials by organization Id
 *OperationCredentialsAPI* | [**OpscredentialsLockManager**](docs/OperationCredentialsAPI.md#opscredentialslockmanager) | **Post** /api/v1/opscredentials/lockmanager | Lock/Unlock operation credential
 *OperationCredentialsAPI* | [**OpscredentialsMakeDefault**](docs/OperationCredentialsAPI.md#opscredentialsmakedefault) | **Post** /api/v1/opscredentials/makedefault | Choose default operation credential
-*OrganizationsAPI* | [**OrganizationsAccessForPartner**](docs/OrganizationsAPI.md#organizationsaccessforpartner) | **Post** /api/v1/organizations/access-for partner | Give access to partner
 *OrganizationsAPI* | [**OrganizationsAddPrometheusrules**](docs/OrganizationsAPI.md#organizationsaddprometheusrules) | **Post** /api/v1/organizations/{id}/prometheusrules | Add prometheus rule(s) to organization
 *OrganizationsAPI* | [**OrganizationsCreate**](docs/OrganizationsAPI.md#organizationscreate) | **Post** /api/v1/organizations | Add a new organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDelete**](docs/OrganizationsAPI.md#organizationsdelete) | **Delete** /api/v1/organizations/{id} | Delete the specified organization. Only available for admins.
@@ -875,23 +858,7 @@ Class | Method | HTTP request | Description
  - [DeploymentSearchCommand](docs/DeploymentSearchCommand.md)
  - [DeploymentSearchList](docs/DeploymentSearchList.md)
  - [Deployments](docs/Deployments.md)
- - [DescribeConfigMapCommand](docs/DescribeConfigMapCommand.md)
- - [DescribeCrdCommand](docs/DescribeCrdCommand.md)
- - [DescribeCronJobCommand](docs/DescribeCronJobCommand.md)
- - [DescribeDaemonSetCommand](docs/DescribeDaemonSetCommand.md)
- - [DescribeDeploymentCommand](docs/DescribeDeploymentCommand.md)
- - [DescribeIngressCommand](docs/DescribeIngressCommand.md)
- - [DescribeJobCommand](docs/DescribeJobCommand.md)
  - [DescribeKubernetesResourceCommand](docs/DescribeKubernetesResourceCommand.md)
- - [DescribeNetworkPolicyCommand](docs/DescribeNetworkPolicyCommand.md)
- - [DescribeNodeCommand](docs/DescribeNodeCommand.md)
- - [DescribePodCommand](docs/DescribePodCommand.md)
- - [DescribePodDisruptionCommand](docs/DescribePodDisruptionCommand.md)
- - [DescribePvcCommand](docs/DescribePvcCommand.md)
- - [DescribeSecretCommand](docs/DescribeSecretCommand.md)
- - [DescribeServiceCommand](docs/DescribeServiceCommand.md)
- - [DescribeStorageClassCommand](docs/DescribeStorageClassCommand.md)
- - [DescribeStsCommand](docs/DescribeStsCommand.md)
  - [Diff](docs/Diff.md)
  - [DisableAutoscalingCommand](docs/DisableAutoscalingCommand.md)
  - [DnsCommand](docs/DnsCommand.md)
@@ -942,7 +909,6 @@ Class | Method | HTTP request | Description
  - [GetEksClusterAuthCommand](docs/GetEksClusterAuthCommand.md)
  - [GetProjectOperationCommand](docs/GetProjectOperationCommand.md)
  - [GetToken](docs/GetToken.md)
- - [GiveAccessToPartnerCommand](docs/GiveAccessToPartnerCommand.md)
  - [GkeClusterDto](docs/GkeClusterDto.md)
  - [GkeClustersListCommand](docs/GkeClustersListCommand.md)
  - [GoogleCredentialList](docs/GoogleCredentialList.md)
