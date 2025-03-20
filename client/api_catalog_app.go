@@ -732,9 +732,6 @@ func (a *CatalogAppAPIService) CatalogAppEditVersionExecute(r ApiCatalogAppEditV
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.editCatalogAppVersionCommand == nil {
-		return nil, reportError("editCatalogAppVersionCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1131,9 +1128,6 @@ func (a *CatalogAppAPIService) CatalogAppLockManagerExecute(r ApiCatalogAppLockM
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.catalogAppLockManagement == nil {
-		return nil, reportError("catalogAppLockManagement is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1254,6 +1248,12 @@ type ApiCatalogAppParamDetailsRequest struct {
 	ctx context.Context
 	ApiService *CatalogAppAPIService
 	catalogAppId int32
+	isTaikunLink *bool
+}
+
+func (r ApiCatalogAppParamDetailsRequest) IsTaikunLink(isTaikunLink bool) ApiCatalogAppParamDetailsRequest {
+	r.isTaikunLink = &isTaikunLink
+	return r
 }
 
 func (r ApiCatalogAppParamDetailsRequest) Execute() ([]CatalogAppParamsDetailsDto, *http.Response, error) {
@@ -1297,6 +1297,9 @@ func (a *CatalogAppAPIService) CatalogAppParamDetailsExecute(r ApiCatalogAppPara
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.isTaikunLink != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "IsTaikunLink", r.isTaikunLink, "form", "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -30,7 +30,7 @@ type ProjectDetailsForServersDto struct {
 	AccessIp string `json:"accessIp"`
 	Id int32 `json:"id"`
 	MasterReady int32 `json:"masterReady"`
-	CloudType CloudType `json:"cloudType"`
+	CloudType ECloudCredentialType `json:"cloudType"`
 	CloudName string `json:"cloudName"`
 	CloudId int32 `json:"cloudId"`
 	QuotaId int32 `json:"quotaId"`
@@ -100,7 +100,7 @@ type _ProjectDetailsForServersDto ProjectDetailsForServersDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDetailsForServersDto(alertsCount int32, worker int32, bastion int32, status ProjectStatus, name string, accessIp string, id int32, masterReady int32, cloudType CloudType, cloudName string, cloudId int32, quotaId int32, organizationName string, organizationId int32, kubernetesVersion string, isBackupEnabled bool, aiEnabled bool, isLocked bool, isAutoUpgrade bool, isMonitoringEnabled bool, isOpaEnabled bool, hasKubeConfigFile bool, hasSelectedFlavors bool, isMaintenanceModeEnabled bool, isProjectMaintenanceModeEnabled bool, isDeprecated bool, cpuLimit int64, ramLimit int64, diskSizeLimit int64, usedCpu int64, usedRam int64, usedDiskSize int64, vmCpuLimit int64, vmRamLimit int64, vmVolumeSizeLimit int64, vmUsedCpu int64, vmUsedRam int64, vmUsedVolumeSize int64, accessProfileName string, accessProfileId NullableInt32, kubernetesProfileName string, kubernetesProfileId NullableInt32, alertingProfileName string, health ProjectHealth, alertingProfileId NullableInt32, s3CredentialId NullableInt32, aiCredentialId NullableInt32, expiredAt string, certificationExpiredAt string, opaProfileId NullableInt32, opaProfileName string, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, totalHourlyCost float64, autoscalingGroupName string, minSize NullableInt32, maxSize NullableInt32, diskSize NullableFloat64, flavor NullableString, spotEnabled NullableBool, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, hasNfsServer bool, wasmEnabled bool, availabilityZones []string, hypervisors []string, proxmoxStorage ProxmoxStorage, isDrsEnabled bool, maxSpotPrice NullableFloat64) *ProjectDetailsForServersDto {
+func NewProjectDetailsForServersDto(alertsCount int32, worker int32, bastion int32, status ProjectStatus, name string, accessIp string, id int32, masterReady int32, cloudType ECloudCredentialType, cloudName string, cloudId int32, quotaId int32, organizationName string, organizationId int32, kubernetesVersion string, isBackupEnabled bool, aiEnabled bool, isLocked bool, isAutoUpgrade bool, isMonitoringEnabled bool, isOpaEnabled bool, hasKubeConfigFile bool, hasSelectedFlavors bool, isMaintenanceModeEnabled bool, isProjectMaintenanceModeEnabled bool, isDeprecated bool, cpuLimit int64, ramLimit int64, diskSizeLimit int64, usedCpu int64, usedRam int64, usedDiskSize int64, vmCpuLimit int64, vmRamLimit int64, vmVolumeSizeLimit int64, vmUsedCpu int64, vmUsedRam int64, vmUsedVolumeSize int64, accessProfileName string, accessProfileId NullableInt32, kubernetesProfileName string, kubernetesProfileId NullableInt32, alertingProfileName string, health ProjectHealth, alertingProfileId NullableInt32, s3CredentialId NullableInt32, aiCredentialId NullableInt32, expiredAt string, certificationExpiredAt string, opaProfileId NullableInt32, opaProfileName string, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, totalHourlyCost float64, autoscalingGroupName string, minSize NullableInt32, maxSize NullableInt32, diskSize NullableFloat64, flavor NullableString, spotEnabled NullableBool, isAutoscalingEnabled bool, isAutoscalingSpotEnabled bool, hasNfsServer bool, wasmEnabled bool, availabilityZones []string, hypervisors []string, proxmoxStorage ProxmoxStorage, isDrsEnabled bool, maxSpotPrice NullableFloat64) *ProjectDetailsForServersDto {
 	this := ProjectDetailsForServersDto{}
 	this.AlertsCount = alertsCount
 	this.Worker = worker
@@ -376,9 +376,9 @@ func (o *ProjectDetailsForServersDto) SetMasterReady(v int32) {
 }
 
 // GetCloudType returns the CloudType field value
-func (o *ProjectDetailsForServersDto) GetCloudType() CloudType {
+func (o *ProjectDetailsForServersDto) GetCloudType() ECloudCredentialType {
 	if o == nil {
-		var ret CloudType
+		var ret ECloudCredentialType
 		return ret
 	}
 
@@ -387,7 +387,7 @@ func (o *ProjectDetailsForServersDto) GetCloudType() CloudType {
 
 // GetCloudTypeOk returns a tuple with the CloudType field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDetailsForServersDto) GetCloudTypeOk() (*CloudType, bool) {
+func (o *ProjectDetailsForServersDto) GetCloudTypeOk() (*ECloudCredentialType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -395,7 +395,7 @@ func (o *ProjectDetailsForServersDto) GetCloudTypeOk() (*CloudType, bool) {
 }
 
 // SetCloudType sets field value
-func (o *ProjectDetailsForServersDto) SetCloudType(v CloudType) {
+func (o *ProjectDetailsForServersDto) SetCloudType(v ECloudCredentialType) {
 	o.CloudType = v
 }
 

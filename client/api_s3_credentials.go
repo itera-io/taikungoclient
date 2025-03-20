@@ -951,43 +951,43 @@ func (a *S3CredentialsAPIService) S3credentialsLockManagementExecute(r ApiS3cred
 	return localVarHTTPResponse, nil
 }
 
-type ApiS3credentialsMakeDeafultRequest struct {
+type ApiS3credentialsMakeDefaultRequest struct {
 	ctx context.Context
 	ApiService *S3CredentialsAPIService
 	backupMakeDefaultCommand *BackupMakeDefaultCommand
 }
 
-func (r ApiS3credentialsMakeDeafultRequest) BackupMakeDefaultCommand(backupMakeDefaultCommand BackupMakeDefaultCommand) ApiS3credentialsMakeDeafultRequest {
+func (r ApiS3credentialsMakeDefaultRequest) BackupMakeDefaultCommand(backupMakeDefaultCommand BackupMakeDefaultCommand) ApiS3credentialsMakeDefaultRequest {
 	r.backupMakeDefaultCommand = &backupMakeDefaultCommand
 	return r
 }
 
-func (r ApiS3credentialsMakeDeafultRequest) Execute() (*http.Response, error) {
-	return r.ApiService.S3credentialsMakeDeafultExecute(r)
+func (r ApiS3credentialsMakeDefaultRequest) Execute() (*http.Response, error) {
+	return r.ApiService.S3credentialsMakeDefaultExecute(r)
 }
 
 /*
-S3credentialsMakeDeafult Make default s3 credential
+S3credentialsMakeDefault Make default s3 credential
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiS3credentialsMakeDeafultRequest
+ @return ApiS3credentialsMakeDefaultRequest
 */
-func (a *S3CredentialsAPIService) S3credentialsMakeDeafult(ctx context.Context) ApiS3credentialsMakeDeafultRequest {
-	return ApiS3credentialsMakeDeafultRequest{
+func (a *S3CredentialsAPIService) S3credentialsMakeDefault(ctx context.Context) ApiS3credentialsMakeDefaultRequest {
+	return ApiS3credentialsMakeDefaultRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-func (a *S3CredentialsAPIService) S3credentialsMakeDeafultExecute(r ApiS3credentialsMakeDeafultRequest) (*http.Response, error) {
+func (a *S3CredentialsAPIService) S3credentialsMakeDefaultExecute(r ApiS3credentialsMakeDefaultRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "S3CredentialsAPIService.S3credentialsMakeDeafult")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "S3CredentialsAPIService.S3credentialsMakeDefault")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

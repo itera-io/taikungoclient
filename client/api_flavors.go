@@ -2501,9 +2501,6 @@ func (a *FlavorsAPIService) FlavorsUnbindFromProjectExecute(r ApiFlavorsUnbindFr
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.unbindFlavorFromProjectCommand == nil {
-		return nil, reportError("unbindFlavorFromProjectCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

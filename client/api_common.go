@@ -303,9 +303,6 @@ func (a *CommonAPIService) CommonIpRangeCountExecute(r ApiCommonIpRangeCountRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.ipAddressRangeCountCommand == nil {
-		return localVarReturnValue, nil, reportError("ipAddressRangeCountCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -479,9 +476,6 @@ func (a *CommonAPIService) CommonIpRangeListExecute(r ApiCommonIpRangeListReques
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.ipAddressRangeListCommand == nil {
-		return localVarReturnValue, nil, reportError("ipAddressRangeListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

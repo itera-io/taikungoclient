@@ -27,6 +27,8 @@ type AdminOrganizationsListDto struct {
 	CustomerId NullableString `json:"customerId"`
 	PartnerName string `json:"partnerName"`
 	PartnerLogo NullableString `json:"partnerLogo"`
+	TrialEnds NullableString `json:"trialEnds"`
+	IsLocked bool `json:"isLocked"`
 }
 
 type _AdminOrganizationsListDto AdminOrganizationsListDto
@@ -35,13 +37,15 @@ type _AdminOrganizationsListDto AdminOrganizationsListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAdminOrganizationsListDto(id int32, name string, customerId NullableString, partnerName string, partnerLogo NullableString) *AdminOrganizationsListDto {
+func NewAdminOrganizationsListDto(id int32, name string, customerId NullableString, partnerName string, partnerLogo NullableString, trialEnds NullableString, isLocked bool) *AdminOrganizationsListDto {
 	this := AdminOrganizationsListDto{}
 	this.Id = id
 	this.Name = name
 	this.CustomerId = customerId
 	this.PartnerName = partnerName
 	this.PartnerLogo = partnerLogo
+	this.TrialEnds = trialEnds
+	this.IsLocked = isLocked
 	return &this
 }
 
@@ -177,6 +181,56 @@ func (o *AdminOrganizationsListDto) SetPartnerLogo(v string) {
 	o.PartnerLogo.Set(&v)
 }
 
+// GetTrialEnds returns the TrialEnds field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *AdminOrganizationsListDto) GetTrialEnds() string {
+	if o == nil || o.TrialEnds.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.TrialEnds.Get()
+}
+
+// GetTrialEndsOk returns a tuple with the TrialEnds field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AdminOrganizationsListDto) GetTrialEndsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TrialEnds.Get(), o.TrialEnds.IsSet()
+}
+
+// SetTrialEnds sets field value
+func (o *AdminOrganizationsListDto) SetTrialEnds(v string) {
+	o.TrialEnds.Set(&v)
+}
+
+// GetIsLocked returns the IsLocked field value
+func (o *AdminOrganizationsListDto) GetIsLocked() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsLocked
+}
+
+// GetIsLockedOk returns a tuple with the IsLocked field value
+// and a boolean to check if the value has been set.
+func (o *AdminOrganizationsListDto) GetIsLockedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsLocked, true
+}
+
+// SetIsLocked sets field value
+func (o *AdminOrganizationsListDto) SetIsLocked(v bool) {
+	o.IsLocked = v
+}
+
 func (o AdminOrganizationsListDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -192,6 +246,8 @@ func (o AdminOrganizationsListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["customerId"] = o.CustomerId.Get()
 	toSerialize["partnerName"] = o.PartnerName
 	toSerialize["partnerLogo"] = o.PartnerLogo.Get()
+	toSerialize["trialEnds"] = o.TrialEnds.Get()
+	toSerialize["isLocked"] = o.IsLocked
 	return toSerialize, nil
 }
 
@@ -205,6 +261,8 @@ func (o *AdminOrganizationsListDto) UnmarshalJSON(data []byte) (err error) {
 		"customerId",
 		"partnerName",
 		"partnerLogo",
+		"trialEnds",
+		"isLocked",
 	}
 
 	allProperties := make(map[string]interface{})

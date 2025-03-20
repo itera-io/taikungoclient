@@ -85,9 +85,10 @@ func Test_taikuncore_SubscriptionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.SubscriptionAPI.SubscriptionSubscription(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SubscriptionAPI.SubscriptionSubscription(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -96,9 +97,10 @@ func Test_taikuncore_SubscriptionAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.SubscriptionAPI.SubscriptionUpdate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.SubscriptionAPI.SubscriptionUpdate(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

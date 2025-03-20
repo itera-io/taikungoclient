@@ -71,9 +71,6 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxBridgeListExecute(r ApiProxmox
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.bridgeListCommand == nil {
-		return localVarReturnValue, nil, reportError("bridgeListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -420,9 +417,6 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxHypervisorListExecute(r ApiPro
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.hypervisorListCommand == nil {
-		return localVarReturnValue, nil, reportError("hypervisorListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -833,9 +827,6 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxStorageListExecute(r ApiProxmo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.storageListCommand == nil {
-		return localVarReturnValue, nil, reportError("storageListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1331,9 +1322,6 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxUpdateIpAddressesExecute(r Api
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateUsedIpAddressesCommand == nil {
-		return nil, reportError("updateUsedIpAddressesCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1498,9 +1486,6 @@ func (a *ProxmoxCloudCredentialAPIService) ProxmoxVmTemplateListExecute(r ApiPro
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.vmTemplateListCommand == nil {
-		return localVarReturnValue, nil, reportError("vmTemplateListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

@@ -527,7 +527,7 @@ func (r ApiCatalogDeleteProjectRequest) Execute() (*http.Response, error) {
 }
 
 /*
-CatalogDeleteProject Delete projects from catalog
+CatalogDeleteProject Remove projects from catalog
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param id
@@ -1074,9 +1074,6 @@ func (a *CatalogAPIService) CatalogEditExecute(r ApiCatalogEditRequest) (*http.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.editCatalogCommand == nil {
-		return nil, reportError("editCatalogCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1467,9 +1464,6 @@ func (a *CatalogAPIService) CatalogLockExecute(r ApiCatalogLockRequest) (*http.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.catalogLockManagementCommand == nil {
-		return nil, reportError("catalogLockManagementCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1632,9 +1626,6 @@ func (a *CatalogAPIService) CatalogMakeDefaultExecute(r ApiCatalogMakeDefaultReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.catalogMakeDefaultCommand == nil {
-		return nil, reportError("catalogMakeDefaultCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

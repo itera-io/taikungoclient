@@ -250,9 +250,6 @@ func (a *ImagesAPIService) ImagesAwsImagesListExecute(r ApiImagesAwsImagesListRe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.awsImagesPostListCommand == nil {
-		return localVarReturnValue, nil, reportError("awsImagesPostListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1793,9 +1790,6 @@ func (a *ImagesAPIService) ImagesImageDetailsExecute(r ApiImagesImageDetailsRequ
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.imageByIdCommand == nil {
-		return localVarReturnValue, nil, reportError("imageByIdCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3108,9 +3102,6 @@ func (a *ImagesAPIService) ImagesUnbindImagesFromProjectExecute(r ApiImagesUnbin
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.deleteImageFromProjectCommand == nil {
-		return nil, reportError("deleteImageFromProjectCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

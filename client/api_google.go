@@ -470,7 +470,7 @@ func (r ApiGooglecloudGkeClustersRequest) GkeClustersListCommand(gkeClustersList
 	return r
 }
 
-func (r ApiGooglecloudGkeClustersRequest) Execute() ([]string, *http.Response, error) {
+func (r ApiGooglecloudGkeClustersRequest) Execute() ([]GkeClusterDto, *http.Response, error) {
 	return r.ApiService.GooglecloudGkeClustersExecute(r)
 }
 
@@ -488,13 +488,13 @@ func (a *GoogleAPIService) GooglecloudGkeClusters(ctx context.Context) ApiGoogle
 }
 
 // Execute executes the request
-//  @return []string
-func (a *GoogleAPIService) GooglecloudGkeClustersExecute(r ApiGooglecloudGkeClustersRequest) ([]string, *http.Response, error) {
+//  @return []GkeClusterDto
+func (a *GoogleAPIService) GooglecloudGkeClustersExecute(r ApiGooglecloudGkeClustersRequest) ([]GkeClusterDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarReturnValue  []GkeClusterDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GoogleAPIService.GooglecloudGkeClusters")

@@ -233,9 +233,6 @@ func (a *CheckerAPIService) CheckerAwsExecute(r ApiCheckerAwsRequest) (*http.Res
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.checkAwsCommand == nil {
-		return nil, reportError("checkAwsCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -398,9 +395,6 @@ func (a *CheckerAPIService) CheckerAzureExecute(r ApiCheckerAzureRequest) (*http
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.checkAzureCommand == nil {
-		return nil, reportError("checkAzureCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -563,9 +557,6 @@ func (a *CheckerAPIService) CheckerAzureQuotaExecute(r ApiCheckerAzureQuotaReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.checkAzureCpuQuotaCommand == nil {
-		return nil, reportError("checkAzureCpuQuotaCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -728,9 +719,6 @@ func (a *CheckerAPIService) CheckerCidrExecute(r ApiCheckerCidrRequest) (*http.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cidrCommand == nil {
-		return nil, reportError("cidrCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -893,9 +881,6 @@ func (a *CheckerAPIService) CheckerCronExecute(r ApiCheckerCronRequest) (*http.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.cronJobCommand == nil {
-		return nil, reportError("cronJobCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1058,9 +1043,6 @@ func (a *CheckerAPIService) CheckerDnsExecute(r ApiCheckerDnsRequest) (*http.Res
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.dnsCommand == nil {
-		return nil, reportError("dnsCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1225,9 +1207,6 @@ func (a *CheckerAPIService) CheckerDuplicateNameExecute(r ApiCheckerDuplicateNam
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.duplicateNameCheckerCommand == nil {
-		return localVarReturnValue, nil, reportError("duplicateNameCheckerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1705,11 +1684,35 @@ type ApiCheckerImportClusterKubeConfigRequest struct {
 	ctx context.Context
 	ApiService *CheckerAPIService
 	config *os.File
+	cloudId *int32
+	region *string
+	importClusterName *string
+	resourceGroupName *string
 	importType *EImportClusterType
 }
 
 func (r ApiCheckerImportClusterKubeConfigRequest) Config(config *os.File) ApiCheckerImportClusterKubeConfigRequest {
 	r.config = config
+	return r
+}
+
+func (r ApiCheckerImportClusterKubeConfigRequest) CloudId(cloudId int32) ApiCheckerImportClusterKubeConfigRequest {
+	r.cloudId = &cloudId
+	return r
+}
+
+func (r ApiCheckerImportClusterKubeConfigRequest) Region(region string) ApiCheckerImportClusterKubeConfigRequest {
+	r.region = &region
+	return r
+}
+
+func (r ApiCheckerImportClusterKubeConfigRequest) ImportClusterName(importClusterName string) ApiCheckerImportClusterKubeConfigRequest {
+	r.importClusterName = &importClusterName
+	return r
+}
+
+func (r ApiCheckerImportClusterKubeConfigRequest) ResourceGroupName(resourceGroupName string) ApiCheckerImportClusterKubeConfigRequest {
+	r.resourceGroupName = &resourceGroupName
 	return r
 }
 
@@ -1753,9 +1756,6 @@ func (a *CheckerAPIService) CheckerImportClusterKubeConfigExecute(r ApiCheckerIm
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.config == nil {
-		return nil, reportError("config is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"multipart/form-data"}
@@ -1788,6 +1788,18 @@ func (a *CheckerAPIService) CheckerImportClusterKubeConfigExecute(r ApiCheckerIm
 		configLocalVarFileName = configLocalVarFile.Name()
 		configLocalVarFile.Close()
 		formFiles = append(formFiles, formFile{fileBytes: configLocalVarFileBytes, fileName: configLocalVarFileName, formFileName: configLocalVarFormFileName})
+	}
+	if r.cloudId != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "cloudId", r.cloudId, "", "")
+	}
+	if r.region != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "region", r.region, "", "")
+	}
+	if r.importClusterName != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "importClusterName", r.importClusterName, "", "")
+	}
+	if r.resourceGroupName != nil {
+		parameterAddToHeaderOrQuery(localVarFormParams, "resourceGroupName", r.resourceGroupName, "", "")
 	}
 	if r.importType != nil {
 		parameterAddToHeaderOrQuery(localVarFormParams, "importType", r.importType, "", "")
@@ -1934,9 +1946,6 @@ func (a *CheckerAPIService) CheckerKeycloakExecute(r ApiCheckerKeycloakRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.keycloakCheckerCommand == nil {
-		return nil, reportError("keycloakCheckerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2250,7 +2259,7 @@ func (r ApiCheckerNodeRequest) NodeCommand(nodeCommand NodeCommand) ApiCheckerNo
 	return r
 }
 
-func (r ApiCheckerNodeRequest) Execute() (*http.Response, error) {
+func (r ApiCheckerNodeRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.CheckerNodeExecute(r)
 }
 
@@ -2268,16 +2277,18 @@ func (a *CheckerAPIService) CheckerNode(ctx context.Context) ApiCheckerNodeReque
 }
 
 // Execute executes the request
-func (a *CheckerAPIService) CheckerNodeExecute(r ApiCheckerNodeRequest) (*http.Response, error) {
+//  @return map[string]interface{}
+func (a *CheckerAPIService) CheckerNodeExecute(r ApiCheckerNodeRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CheckerAPIService.CheckerNode")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/v1/checker/node"
@@ -2285,9 +2296,6 @@ func (a *CheckerAPIService) CheckerNodeExecute(r ApiCheckerNodeRequest) (*http.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.nodeCommand == nil {
-		return nil, reportError("nodeCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2324,19 +2332,19 @@ func (a *CheckerAPIService) CheckerNodeExecute(r ApiCheckerNodeRequest) (*http.R
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -2349,59 +2357,68 @@ func (a *CheckerAPIService) CheckerNodeExecute(r ApiCheckerNodeRequest) (*http.R
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarHTTPResponse, newErr
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
+				return localVarReturnValue, localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiCheckerNtpRequest struct {
@@ -2450,9 +2467,6 @@ func (a *CheckerAPIService) CheckerNtpExecute(r ApiCheckerNtpRequest) (*http.Res
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.ntpCommand == nil {
-		return nil, reportError("ntpCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2615,9 +2629,6 @@ func (a *CheckerAPIService) CheckerOpenAiExecute(r ApiCheckerOpenAiRequest) (*ht
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openAiCheckerCommand == nil {
-		return nil, reportError("openAiCheckerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3258,9 +3269,6 @@ func (a *CheckerAPIService) CheckerOrganizationExecute(r ApiCheckerOrganizationR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.organizationNameCheckerCommand == nil {
-		return nil, reportError("organizationNameCheckerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3423,9 +3431,6 @@ func (a *CheckerAPIService) CheckerPrometheusExecute(r ApiCheckerPrometheusReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.checkPrometheusCommand == nil {
-		return nil, reportError("checkPrometheusCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3588,9 +3593,6 @@ func (a *CheckerAPIService) CheckerProxmoxExecute(r ApiCheckerProxmoxRequest) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.proxmoxCheckerCommand == nil {
-		return nil, reportError("proxmoxCheckerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3753,9 +3755,6 @@ func (a *CheckerAPIService) CheckerS3Execute(r ApiCheckerS3Request) (*http.Respo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.checkS3Command == nil {
-		return nil, reportError("checkS3Command is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -3918,9 +3917,6 @@ func (a *CheckerAPIService) CheckerSshExecute(r ApiCheckerSshRequest) (*http.Res
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.sshKeyCommand == nil {
-		return nil, reportError("sshKeyCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4083,9 +4079,6 @@ func (a *CheckerAPIService) CheckerTanzuExecute(r ApiCheckerTanzuRequest) (*http
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.checkTanzuCommand == nil {
-		return nil, reportError("checkTanzuCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4410,9 +4403,6 @@ func (a *CheckerAPIService) CheckerYamlExecute(r ApiCheckerYamlRequest) (*http.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.yamlValidatorCommand == nil {
-		return nil, reportError("yamlValidatorCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4575,9 +4565,6 @@ func (a *CheckerAPIService) CheckerZadaraExecute(r ApiCheckerZadaraRequest) (*ht
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.checkZadaraCommand == nil {
-		return nil, reportError("checkZadaraCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -4740,9 +4727,6 @@ func (a *CheckerAPIService) CheckerZededaExecute(r ApiCheckerZededaRequest) (*ht
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.zededaCheckerCommand == nil {
-		return nil, reportError("zededaCheckerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

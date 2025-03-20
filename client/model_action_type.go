@@ -74,6 +74,7 @@ const (
 	ACTIONTYPE_SERVER_STATUS ActionType = "ServerStatus"
 	ACTIONTYPE_PATCH_KUBERNETES ActionType = "PatchKubernetes"
 	ACTIONTYPE_INSTALL_APPLICATION ActionType = "InstallApplication"
+	ACTIONTYPE_CANCEL_APPLICATION ActionType = "CancelApplication"
 	ACTIONTYPE_UNINSTALL_APPLICATION ActionType = "UninstallApplication"
 	ACTIONTYPE_ENABLE_AUTOSCALING ActionType = "EnableAutoscaling"
 	ACTIONTYPE_DISABLE_AUTOSCALING ActionType = "DisableAutoscaling"
@@ -102,7 +103,8 @@ const (
 	ACTIONTYPE_ADDING_V_CLUSTER ActionType = "AddingVCluster"
 	ACTIONTYPE_START_IMPORT_CLUSTER ActionType = "StartImportCluster"
 	ACTIONTYPE_START_MIGRATION_CLUSTER ActionType = "StartMigrationCluster"
-	ACTIONTYPE_CREATE_KUBERNETES_RESOURCE ActionType = "CreateKubernetesResource"
+	ACTIONTYPE_KUBERNETES_ACTION ActionType = "KubernetesAction"
+	ACTIONTYPE_DELETED_PROJECT ActionType = "DeletedProject"
 )
 
 // All allowed values of ActionType enum
@@ -160,6 +162,7 @@ var AllowedActionTypeEnumValues = []ActionType{
 	"ServerStatus",
 	"PatchKubernetes",
 	"InstallApplication",
+	"CancelApplication",
 	"UninstallApplication",
 	"EnableAutoscaling",
 	"DisableAutoscaling",
@@ -188,7 +191,8 @@ var AllowedActionTypeEnumValues = []ActionType{
 	"AddingVCluster",
 	"StartImportCluster",
 	"StartMigrationCluster",
-	"CreateKubernetesResource",
+	"KubernetesAction",
+	"DeletedProject",
 }
 
 func (v *ActionType) UnmarshalJSON(src []byte) error {

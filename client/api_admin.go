@@ -69,9 +69,6 @@ func (a *AdminAPIService) AdminAddBalanceExecute(r ApiAdminAddBalanceRequest) (*
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.adminAddBalanceCommand == nil {
-		return nil, reportError("adminAddBalanceCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -234,9 +231,6 @@ func (a *AdminAPIService) AdminBillingOperationsExecute(r ApiAdminBillingOperati
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.adminBillingOperationCommand == nil {
-		return nil, reportError("adminBillingOperationCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -561,9 +555,6 @@ func (a *AdminAPIService) AdminDeleteOrgExecute(r ApiAdminDeleteOrgRequest) (*ht
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.adminOrganizationsDeleteCommand == nil {
-		return nil, reportError("adminOrganizationsDeleteCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -726,9 +717,6 @@ func (a *AdminAPIService) AdminExtendTrialPeriodExecute(r ApiAdminExtendTrialPer
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.extendTrialPeriodCommand == nil {
-		return nil, reportError("extendTrialPeriodCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1074,9 +1062,6 @@ func (a *AdminAPIService) AdminMakeCsmExecute(r ApiAdminMakeCsmRequest) (*http.R
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.makeCsmCommand == nil {
-		return nil, reportError("makeCsmCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1239,9 +1224,6 @@ func (a *AdminAPIService) AdminMakeOwnerExecute(r ApiAdminMakeOwnerRequest) (*ht
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.makeOwnerCommand == nil {
-		return nil, reportError("makeOwnerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1806,9 +1788,6 @@ func (a *AdminAPIService) AdminRemoveOwnerExecute(r ApiAdminRemoveOwnerRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.removeOwnerCommand == nil {
-		return nil, reportError("removeOwnerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1971,9 +1950,6 @@ func (a *AdminAPIService) AdminUpdateProjectExecute(r ApiAdminUpdateProjectReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.adminProjectUpdateCommand == nil {
-		return nil, reportError("adminProjectUpdateCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2136,9 +2112,6 @@ func (a *AdminAPIService) AdminUpdateProjectKubeExecute(r ApiAdminUpdateProjectK
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.adminUpdateProjectKubeConfigCommand == nil {
-		return nil, reportError("adminUpdateProjectKubeConfigCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2463,9 +2436,6 @@ func (a *AdminAPIService) AdminUpdateUserKubeExecute(r ApiAdminUpdateUserKubeReq
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.adminUpdateUserKubeConfigCommand == nil {
-		return nil, reportError("adminUpdateUserKubeConfigCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -2628,9 +2598,6 @@ func (a *AdminAPIService) AdminUpdateUsersExecute(r ApiAdminUpdateUsersRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.adminUsersUpdateEmailCommand == nil {
-		return nil, reportError("adminUsersUpdateEmailCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

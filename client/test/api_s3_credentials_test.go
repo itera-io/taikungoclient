@@ -82,11 +82,11 @@ func Test_taikuncore_S3CredentialsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test S3CredentialsAPIService S3credentialsMakeDeafult", func(t *testing.T) {
+	t.Run("Test S3CredentialsAPIService S3credentialsMakeDefault", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.S3CredentialsAPI.S3credentialsMakeDeafult(context.Background()).Execute()
+		httpRes, err := apiClient.S3CredentialsAPI.S3credentialsMakeDefault(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

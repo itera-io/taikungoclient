@@ -28,9 +28,10 @@ func Test_taikuncore_ProjectAppParamsAPIService(t *testing.T) {
 
 		var projectAppId int32
 
-		httpRes, err := apiClient.ProjectAppParamsAPI.ProjectappparamEdit(context.Background(), projectAppId).Execute()
+		resp, httpRes, err := apiClient.ProjectAppParamsAPI.ProjectappparamEdit(context.Background(), projectAppId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

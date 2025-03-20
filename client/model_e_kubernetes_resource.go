@@ -21,6 +21,7 @@ type EKubernetesResource string
 
 // List of EKubernetesResource
 const (
+	EKUBERNETESRESOURCE_NONE EKubernetesResource = "None"
 	EKUBERNETESRESOURCE_DAEMON_SET EKubernetesResource = "DaemonSet"
 	EKUBERNETESRESOURCE_PVC EKubernetesResource = "Pvc"
 	EKUBERNETESRESOURCE_DEPLOYMENT EKubernetesResource = "Deployment"
@@ -37,10 +38,12 @@ const (
 	EKUBERNETESRESOURCE_CRON_JOB EKubernetesResource = "CronJob"
 	EKUBERNETESRESOURCE_JOB EKubernetesResource = "Job"
 	EKUBERNETESRESOURCE_NETWORK_POLICY EKubernetesResource = "NetworkPolicy"
+	EKUBERNETESRESOURCE_NAMESPACE EKubernetesResource = "Namespace"
 )
 
 // All allowed values of EKubernetesResource enum
 var AllowedEKubernetesResourceEnumValues = []EKubernetesResource{
+	"None",
 	"DaemonSet",
 	"Pvc",
 	"Deployment",
@@ -57,6 +60,7 @@ var AllowedEKubernetesResourceEnumValues = []EKubernetesResource{
 	"CronJob",
 	"Job",
 	"NetworkPolicy",
+	"Namespace",
 }
 
 func (v *EKubernetesResource) UnmarshalJSON(src []byte) error {

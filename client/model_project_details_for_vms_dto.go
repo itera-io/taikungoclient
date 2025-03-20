@@ -25,7 +25,7 @@ type ProjectDetailsForVmsDto struct {
 	Status ProjectStatus `json:"status"`
 	Name string `json:"name"`
 	Id int32 `json:"id"`
-	CloudType CloudType `json:"cloudType"`
+	CloudType ECloudCredentialType `json:"cloudType"`
 	CloudName string `json:"cloudName"`
 	CloudId NullableInt32 `json:"cloudId"`
 	OrganizationName string `json:"organizationName"`
@@ -53,7 +53,7 @@ type _ProjectDetailsForVmsDto ProjectDetailsForVmsDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectDetailsForVmsDto(status ProjectStatus, name string, id int32, cloudType CloudType, cloudName string, cloudId NullableInt32, organizationName string, organizationId int32, isLocked bool, isProjectMaintenanceModeEnabled bool, hasSelectedFlavors NullableBool, isMaintenanceModeEnabled bool, isDrsEnabled bool, projectCloudRevision NullableInt32, cloudCredentialRevision NullableInt32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, totalHourlyCost float64, availabilityZones []string, hypervisors []string, expiredAt NullableString) *ProjectDetailsForVmsDto {
+func NewProjectDetailsForVmsDto(status ProjectStatus, name string, id int32, cloudType ECloudCredentialType, cloudName string, cloudId NullableInt32, organizationName string, organizationId int32, isLocked bool, isProjectMaintenanceModeEnabled bool, hasSelectedFlavors NullableBool, isMaintenanceModeEnabled bool, isDrsEnabled bool, projectCloudRevision NullableInt32, cloudCredentialRevision NullableInt32, allowFullSpotKubernetes bool, allowSpotWorkers bool, allowSpotVMs bool, maxSpotPrice NullableFloat64, totalHourlyCost float64, availabilityZones []string, hypervisors []string, expiredAt NullableString) *ProjectDetailsForVmsDto {
 	this := ProjectDetailsForVmsDto{}
 	this.Status = status
 	this.Name = name
@@ -162,9 +162,9 @@ func (o *ProjectDetailsForVmsDto) SetId(v int32) {
 }
 
 // GetCloudType returns the CloudType field value
-func (o *ProjectDetailsForVmsDto) GetCloudType() CloudType {
+func (o *ProjectDetailsForVmsDto) GetCloudType() ECloudCredentialType {
 	if o == nil {
-		var ret CloudType
+		var ret ECloudCredentialType
 		return ret
 	}
 
@@ -173,7 +173,7 @@ func (o *ProjectDetailsForVmsDto) GetCloudType() CloudType {
 
 // GetCloudTypeOk returns a tuple with the CloudType field value
 // and a boolean to check if the value has been set.
-func (o *ProjectDetailsForVmsDto) GetCloudTypeOk() (*CloudType, bool) {
+func (o *ProjectDetailsForVmsDto) GetCloudTypeOk() (*ECloudCredentialType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -181,7 +181,7 @@ func (o *ProjectDetailsForVmsDto) GetCloudTypeOk() (*CloudType, bool) {
 }
 
 // SetCloudType sets field value
-func (o *ProjectDetailsForVmsDto) SetCloudType(v CloudType) {
+func (o *ProjectDetailsForVmsDto) SetCloudType(v ECloudCredentialType) {
 	o.CloudType = v
 }
 

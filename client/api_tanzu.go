@@ -72,9 +72,6 @@ func (a *TanzuAPIService) TanzuCreateExecute(r ApiTanzuCreateRequest) (*ApiRespo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createTanzuCommand == nil {
-		return localVarReturnValue, nil, reportError("createTanzuCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -825,9 +822,6 @@ func (a *TanzuAPIService) TanzuUpdateExecute(r ApiTanzuUpdateRequest) (*http.Res
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateTanzuCommand == nil {
-		return nil, reportError("updateTanzuCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

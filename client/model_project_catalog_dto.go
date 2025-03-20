@@ -26,7 +26,7 @@ type ProjectCatalogDto struct {
 	IsLocked *bool `json:"isLocked,omitempty"`
 	MaintenanceModeEnabled *bool `json:"maintenanceModeEnabled,omitempty"`
 	IsVirtualCluster *bool `json:"isVirtualCluster,omitempty"`
-	CloudType *CloudType `json:"cloudType,omitempty"`
+	CloudType *ECloudCredentialType `json:"cloudType,omitempty"`
 	Status *ProjectStatus `json:"status,omitempty"`
 	Health *ProjectHealth `json:"health,omitempty"`
 }
@@ -261,9 +261,9 @@ func (o *ProjectCatalogDto) SetIsVirtualCluster(v bool) {
 }
 
 // GetCloudType returns the CloudType field value if set, zero value otherwise.
-func (o *ProjectCatalogDto) GetCloudType() CloudType {
+func (o *ProjectCatalogDto) GetCloudType() ECloudCredentialType {
 	if o == nil || IsNil(o.CloudType) {
-		var ret CloudType
+		var ret ECloudCredentialType
 		return ret
 	}
 	return *o.CloudType
@@ -271,7 +271,7 @@ func (o *ProjectCatalogDto) GetCloudType() CloudType {
 
 // GetCloudTypeOk returns a tuple with the CloudType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProjectCatalogDto) GetCloudTypeOk() (*CloudType, bool) {
+func (o *ProjectCatalogDto) GetCloudTypeOk() (*ECloudCredentialType, bool) {
 	if o == nil || IsNil(o.CloudType) {
 		return nil, false
 	}
@@ -287,8 +287,8 @@ func (o *ProjectCatalogDto) HasCloudType() bool {
 	return false
 }
 
-// SetCloudType gets a reference to the given CloudType and assigns it to the CloudType field.
-func (o *ProjectCatalogDto) SetCloudType(v CloudType) {
+// SetCloudType gets a reference to the given ECloudCredentialType and assigns it to the CloudType field.
+func (o *ProjectCatalogDto) SetCloudType(v ECloudCredentialType) {
 	o.CloudType = &v
 }
 

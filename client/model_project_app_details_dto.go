@@ -42,6 +42,8 @@ type ProjectAppDetailsDto struct {
 	CatalogAppId int32 `json:"catalogAppId"`
 	PackageId string `json:"packageId"`
 	Logs NullableString `json:"logs"`
+	TaikunLinkUrl NullableString `json:"taikunLinkUrl,omitempty"`
+	TaikunLinkEnabled *bool `json:"taikunLinkEnabled,omitempty"`
 	ProjectAppParams []ProjectAppParamDto `json:"projectAppParams"`
 }
 
@@ -571,6 +573,80 @@ func (o *ProjectAppDetailsDto) SetLogs(v string) {
 	o.Logs.Set(&v)
 }
 
+// GetTaikunLinkUrl returns the TaikunLinkUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ProjectAppDetailsDto) GetTaikunLinkUrl() string {
+	if o == nil || IsNil(o.TaikunLinkUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.TaikunLinkUrl.Get()
+}
+
+// GetTaikunLinkUrlOk returns a tuple with the TaikunLinkUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ProjectAppDetailsDto) GetTaikunLinkUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TaikunLinkUrl.Get(), o.TaikunLinkUrl.IsSet()
+}
+
+// HasTaikunLinkUrl returns a boolean if a field has been set.
+func (o *ProjectAppDetailsDto) HasTaikunLinkUrl() bool {
+	if o != nil && o.TaikunLinkUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTaikunLinkUrl gets a reference to the given NullableString and assigns it to the TaikunLinkUrl field.
+func (o *ProjectAppDetailsDto) SetTaikunLinkUrl(v string) {
+	o.TaikunLinkUrl.Set(&v)
+}
+// SetTaikunLinkUrlNil sets the value for TaikunLinkUrl to be an explicit nil
+func (o *ProjectAppDetailsDto) SetTaikunLinkUrlNil() {
+	o.TaikunLinkUrl.Set(nil)
+}
+
+// UnsetTaikunLinkUrl ensures that no value is present for TaikunLinkUrl, not even an explicit nil
+func (o *ProjectAppDetailsDto) UnsetTaikunLinkUrl() {
+	o.TaikunLinkUrl.Unset()
+}
+
+// GetTaikunLinkEnabled returns the TaikunLinkEnabled field value if set, zero value otherwise.
+func (o *ProjectAppDetailsDto) GetTaikunLinkEnabled() bool {
+	if o == nil || IsNil(o.TaikunLinkEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.TaikunLinkEnabled
+}
+
+// GetTaikunLinkEnabledOk returns a tuple with the TaikunLinkEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ProjectAppDetailsDto) GetTaikunLinkEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.TaikunLinkEnabled) {
+		return nil, false
+	}
+	return o.TaikunLinkEnabled, true
+}
+
+// HasTaikunLinkEnabled returns a boolean if a field has been set.
+func (o *ProjectAppDetailsDto) HasTaikunLinkEnabled() bool {
+	if o != nil && !IsNil(o.TaikunLinkEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetTaikunLinkEnabled gets a reference to the given bool and assigns it to the TaikunLinkEnabled field.
+func (o *ProjectAppDetailsDto) SetTaikunLinkEnabled(v bool) {
+	o.TaikunLinkEnabled = &v
+}
+
 // GetProjectAppParams returns the ProjectAppParams field value
 // If the value is explicit nil, the zero value for []ProjectAppParamDto will be returned
 func (o *ProjectAppDetailsDto) GetProjectAppParams() []ProjectAppParamDto {
@@ -627,6 +703,12 @@ func (o ProjectAppDetailsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["catalogAppId"] = o.CatalogAppId
 	toSerialize["packageId"] = o.PackageId
 	toSerialize["logs"] = o.Logs.Get()
+	if o.TaikunLinkUrl.IsSet() {
+		toSerialize["taikunLinkUrl"] = o.TaikunLinkUrl.Get()
+	}
+	if !IsNil(o.TaikunLinkEnabled) {
+		toSerialize["taikunLinkEnabled"] = o.TaikunLinkEnabled
+	}
 	if o.ProjectAppParams != nil {
 		toSerialize["projectAppParams"] = o.ProjectAppParams
 	}

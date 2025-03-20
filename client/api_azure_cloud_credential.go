@@ -72,9 +72,6 @@ func (a *AzureCloudCredentialAPIService) AzureAksClustersExecute(r ApiAzureAksCl
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.aksClusterListCommand == nil {
-		return localVarReturnValue, nil, reportError("aksClusterListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

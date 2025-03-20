@@ -244,9 +244,6 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatacenterListExecute(r ApiVsp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.datacenterListCommand == nil {
-		return localVarReturnValue, nil, reportError("datacenterListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -420,9 +417,6 @@ func (a *VsphereCloudCredentialAPIService) VsphereDatastoreListExecute(r ApiVsph
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.datastoreListCommand == nil {
-		return localVarReturnValue, nil, reportError("datastoreListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -596,9 +590,6 @@ func (a *VsphereCloudCredentialAPIService) VsphereHypervisorListExecute(r ApiVsp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.vsphereHypervisorListCommand == nil {
-		return localVarReturnValue, nil, reportError("vsphereHypervisorListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1009,9 +1000,6 @@ func (a *VsphereCloudCredentialAPIService) VsphereNetworkListExecute(r ApiVspher
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.networkListCommand == nil {
-		return localVarReturnValue, nil, reportError("networkListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1185,9 +1173,6 @@ func (a *VsphereCloudCredentialAPIService) VsphereResourcePoolListExecute(r ApiV
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.resourcePoolListCommand == nil {
-		return localVarReturnValue, nil, reportError("resourcePoolListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1521,9 +1506,6 @@ func (a *VsphereCloudCredentialAPIService) VsphereUpdateVsphereHypervisorsExecut
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateVsphereHypervisorsCommand == nil {
-		return nil, reportError("updateVsphereHypervisorsCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1686,9 +1668,6 @@ func (a *VsphereCloudCredentialAPIService) VsphereValidateExecute(r ApiVsphereVa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.validateVsphereCommand == nil {
-		return nil, reportError("validateVsphereCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1853,9 +1832,6 @@ func (a *VsphereCloudCredentialAPIService) VsphereVmTemplateListExecute(r ApiVsp
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.vsphereVmTemplateListCommand == nil {
-		return localVarReturnValue, nil, reportError("vsphereVmTemplateListCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

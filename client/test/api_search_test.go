@@ -82,6 +82,30 @@ func Test_taikuncore_SearchAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SearchAPIService SearchCrds", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SearchAPI.SearchCrds(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SearchAPIService SearchCronJobs", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SearchAPI.SearchCronJobs(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SearchAPIService SearchDaemonSets", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -106,6 +130,18 @@ func Test_taikuncore_SearchAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SearchAPIService SearchHelmReleases", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SearchAPI.SearchHelmReleases(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SearchAPIService SearchIngress", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -118,11 +154,47 @@ func Test_taikuncore_SearchAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test SearchAPIService SearchJobs", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SearchAPI.SearchJobs(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test SearchAPIService SearchKubernetesProfiles", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SearchAPI.SearchKubernetesProfiles(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SearchAPIService SearchNamespaces", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SearchAPI.SearchNamespaces(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SearchAPIService SearchNetworkPolicies", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SearchAPI.SearchNetworkPolicies(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -159,6 +231,18 @@ func Test_taikuncore_SearchAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SearchAPI.SearchPartners(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SearchAPIService SearchPdb", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SearchAPI.SearchPdb(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -255,6 +339,18 @@ func Test_taikuncore_SearchAPIService(t *testing.T) {
 		t.Skip("skip test")  // remove to run test
 
 		resp, httpRes, err := apiClient.SearchAPI.SearchStandAloneProfiles(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test SearchAPIService SearchStorageClasses", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.SearchAPI.SearchStorageClasses(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

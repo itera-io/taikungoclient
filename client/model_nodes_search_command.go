@@ -23,6 +23,7 @@ type NodesSearchCommand struct {
 	Limit NullableInt32 `json:"limit,omitempty"`
 	Offset NullableInt32 `json:"offset,omitempty"`
 	SearchTerm NullableString `json:"searchTerm,omitempty"`
+	IncludePublicImportedClusters NullableBool `json:"includePublicImportedClusters,omitempty"`
 }
 
 // NewNodesSearchCommand instantiates a new NodesSearchCommand object
@@ -168,6 +169,48 @@ func (o *NodesSearchCommand) UnsetSearchTerm() {
 	o.SearchTerm.Unset()
 }
 
+// GetIncludePublicImportedClusters returns the IncludePublicImportedClusters field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *NodesSearchCommand) GetIncludePublicImportedClusters() bool {
+	if o == nil || IsNil(o.IncludePublicImportedClusters.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IncludePublicImportedClusters.Get()
+}
+
+// GetIncludePublicImportedClustersOk returns a tuple with the IncludePublicImportedClusters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *NodesSearchCommand) GetIncludePublicImportedClustersOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IncludePublicImportedClusters.Get(), o.IncludePublicImportedClusters.IsSet()
+}
+
+// HasIncludePublicImportedClusters returns a boolean if a field has been set.
+func (o *NodesSearchCommand) HasIncludePublicImportedClusters() bool {
+	if o != nil && o.IncludePublicImportedClusters.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIncludePublicImportedClusters gets a reference to the given NullableBool and assigns it to the IncludePublicImportedClusters field.
+func (o *NodesSearchCommand) SetIncludePublicImportedClusters(v bool) {
+	o.IncludePublicImportedClusters.Set(&v)
+}
+// SetIncludePublicImportedClustersNil sets the value for IncludePublicImportedClusters to be an explicit nil
+func (o *NodesSearchCommand) SetIncludePublicImportedClustersNil() {
+	o.IncludePublicImportedClusters.Set(nil)
+}
+
+// UnsetIncludePublicImportedClusters ensures that no value is present for IncludePublicImportedClusters, not even an explicit nil
+func (o *NodesSearchCommand) UnsetIncludePublicImportedClusters() {
+	o.IncludePublicImportedClusters.Unset()
+}
+
 func (o NodesSearchCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -186,6 +229,9 @@ func (o NodesSearchCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.SearchTerm.IsSet() {
 		toSerialize["searchTerm"] = o.SearchTerm.Get()
+	}
+	if o.IncludePublicImportedClusters.IsSet() {
+		toSerialize["includePublicImportedClusters"] = o.IncludePublicImportedClusters.Get()
 	}
 	return toSerialize, nil
 }

@@ -71,9 +71,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackCreateExecute(r ApiOpensta
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createOpenstackCloudCommand == nil {
-		return localVarReturnValue, nil, reportError("createOpenstackCloudCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -493,9 +490,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackNetworksExecute(r ApiOpens
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openStackNetworkListQuery == nil {
-		return localVarReturnValue, nil, reportError("openStackNetworkListQuery is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -669,9 +663,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackProjectsExecute(r ApiOpens
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openStackProjectListQuery == nil {
-		return localVarReturnValue, nil, reportError("openStackProjectListQuery is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -845,9 +836,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackQuotasExecute(r ApiOpensta
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openstackQuotasCommand == nil {
-		return localVarReturnValue, nil, reportError("openstackQuotasCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1021,9 +1009,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackRegionListExecute(r ApiOpe
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openStackRegionListQuery == nil {
-		return localVarReturnValue, nil, reportError("openStackRegionListQuery is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1197,9 +1182,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackSubnetExecute(r ApiOpensta
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openstackSubnetListQuery == nil {
-		return localVarReturnValue, nil, reportError("openstackSubnetListQuery is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1371,9 +1353,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackUpdateExecute(r ApiOpensta
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateOpenStackCommand == nil {
-		return nil, reportError("updateOpenStackCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1538,9 +1517,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackVolumesExecute(r ApiOpenst
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openstackVolumeTypeListQuery == nil {
-		return localVarReturnValue, nil, reportError("openstackVolumeTypeListQuery is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1714,9 +1690,6 @@ func (a *OpenstackCloudCredentialAPIService) OpenstackZonesExecute(r ApiOpenstac
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.openStackZoneListQuery == nil {
-		return localVarReturnValue, nil, reportError("openStackZoneListQuery is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
