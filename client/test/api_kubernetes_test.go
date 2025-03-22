@@ -294,22 +294,6 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test KubernetesAPIService KubernetesKillPod", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var projectId int32
-		var metadataName string
-		var namespace string
-
-		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesKillPod(context.Background(), projectId, metadataName, namespace).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test KubernetesAPIService KubernetesNetworkPolicyList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

@@ -306,7 +306,6 @@ Class | Method | HTTP request | Description
 *KubernetesAPI* | [**KubernetesIngressList**](docs/KubernetesAPI.md#kubernetesingresslist) | **Get** /api/v1/kubernetes/{projectId}/ingress | Retrieve a list of k8s ingress for all namespaces
 *KubernetesAPI* | [**KubernetesInteractiveShell**](docs/KubernetesAPI.md#kubernetesinteractiveshell) | **Post** /api/v1/kubernetes/interactive-shell | Produce interactive shell command
 *KubernetesAPI* | [**KubernetesJobsList**](docs/KubernetesAPI.md#kubernetesjobslist) | **Get** /api/v1/kubernetes/{projectId}/jobs | Retrieve a list of k8s jobs for all namespaces
-*KubernetesAPI* | [**KubernetesKillPod**](docs/KubernetesAPI.md#kuberneteskillpod) | **Post** /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace} | Kill the pod
 *KubernetesAPI* | [**KubernetesNetworkPolicyList**](docs/KubernetesAPI.md#kubernetesnetworkpolicylist) | **Get** /api/v1/kubernetes/{projectId}/network-policies | Retrieve a list of k8s network-policies for all namespaces
 *KubernetesAPI* | [**KubernetesNodeActions**](docs/KubernetesAPI.md#kubernetesnodeactions) | **Post** /api/v1/kubernetes/nodes/actions | Node actions
 *KubernetesAPI* | [**KubernetesNodeList**](docs/KubernetesAPI.md#kubernetesnodelist) | **Get** /api/v1/kubernetes/{projectId}/node | Retrieve a list of k8s node

@@ -68,10 +68,9 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDelete(context.Background()).Execute()
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -94,10 +93,9 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableAi(context.Background()).Execute()
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableAi(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -106,10 +104,9 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableBackup(context.Background()).Execute()
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableBackup(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -118,10 +115,9 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableMonitoring(context.Background()).Execute()
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableMonitoring(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -130,10 +126,9 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableOpa(context.Background()).Execute()
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterDisableOpa(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -142,10 +137,9 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableAi(context.Background()).Execute()
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableAi(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -154,10 +148,9 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableBackup(context.Background()).Execute()
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableBackup(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -166,10 +159,9 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableMonitoring(context.Background()).Execute()
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableMonitoring(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -178,10 +170,9 @@ func Test_taikuncore_ImportedClusterAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableOpa(context.Background()).Execute()
+		httpRes, err := apiClient.ImportedClusterAPI.ImportedClusterEnableOpa(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
