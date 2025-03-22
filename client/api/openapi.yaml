@@ -5782,8 +5782,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-03-21T00:02:18.2500968Z
-                  createdAt: 2025-03-21T00:02:18.2500968Z
+                  lastValidated: 2025-03-21T22:39:35.8751263Z
+                  createdAt: 2025-03-21T22:39:35.8751263Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5888,14 +5888,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-03-21T00:02:18.2500968Z
+                    lastBackup: 2025-03-21T22:39:35.8751263Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-03-21T00:02:18.2500968Z
+                  createdAt: 2025-03-21T22:39:35.8751263Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-03-21T00:02:18.2500968Z
+                  lastBackup: 2025-03-21T22:39:35.8751263Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6000,8 +6000,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-21T00:02:18.2500968Z
-                  expiration: 2025-03-21T00:02:18.2500968Z
+                  createdAt: 2025-03-21T22:39:35.8751263Z
+                  expiration: 2025-03-21T22:39:35.8751263Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6105,7 +6105,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-21T00:02:18.2500968Z
+                  createdAt: 2025-03-21T22:39:35.8751263Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6215,9 +6215,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-03-21T00:02:18.2500968+00:00
-                  startTimeStamp: 2025-03-21T00:02:18.2500968+00:00
-                  createdAt: 2025-03-21T00:02:18.2500968Z
+                  completionDateTime: 2025-03-21T22:39:35.8751263+00:00
+                  startTimeStamp: 2025-03-21T22:39:35.8751263+00:00
+                  createdAt: 2025-03-21T22:39:35.8751263Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -14810,13 +14810,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteImportedProjectCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -14859,13 +14854,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ImportedClusterDisableAiCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -14908,13 +14898,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ImportedClusterDisableBackupCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -14957,13 +14942,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ImportedClusterDisableMonitoringCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -15006,13 +14986,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ImportedClusterDisableOpaCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -15055,13 +15030,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ImportedClusterEnableAiCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -15104,13 +15074,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ImportedClusterEnableBackupCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -15153,13 +15118,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ImportedClusterEnableMonitoringCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -15202,13 +15162,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ImportedClusterEnableOpaCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -17269,73 +17224,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Produce interactive shell command
-      tags:
-      - Kubernetes
-  /api/v1/kubernetes/{projectId}/deletepod/{metadataName}/{namespace}:
-    post:
-      deprecated: true
-      operationId: kubernetes-kill-pod
-      parameters:
-      - explode: false
-        in: path
-        name: projectId
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: false
-        in: path
-        name: metadataName
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: namespace
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Kill the pod
       tags:
       - Kubernetes
   /api/v1/kubernetes/nodes/actions:
