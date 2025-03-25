@@ -34,7 +34,7 @@ func (r ApiKubeconfigroleListRequest) Search(search string) ApiKubeconfigroleLis
 	return r
 }
 
-func (r ApiKubeconfigroleListRequest) Execute() (*KubeConfigRoleResponse, *http.Response, error) {
+func (r ApiKubeconfigroleListRequest) Execute() (map[string]interface{}, *http.Response, error) {
 	return r.ApiService.KubeconfigroleListExecute(r)
 }
 
@@ -52,13 +52,13 @@ func (a *KubeConfigRoleAPIService) KubeconfigroleList(ctx context.Context) ApiKu
 }
 
 // Execute executes the request
-//  @return KubeConfigRoleResponse
-func (a *KubeConfigRoleAPIService) KubeconfigroleListExecute(r ApiKubeconfigroleListRequest) (*KubeConfigRoleResponse, *http.Response, error) {
+//  @return map[string]interface{}
+func (a *KubeConfigRoleAPIService) KubeconfigroleListExecute(r ApiKubeconfigroleListRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *KubeConfigRoleResponse
+		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "KubeConfigRoleAPIService.KubeconfigroleList")
