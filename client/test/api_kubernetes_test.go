@@ -28,10 +28,9 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 		var projectId int32
 
-		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesAddK8sAlert(context.Background(), projectId).Execute()
+		httpRes, err := apiClient.KubernetesAPI.KubernetesAddK8sAlert(context.Background(), projectId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -42,10 +41,9 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 		var projectId int32
 
-		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesAddK8sEvents(context.Background(), projectId).Execute()
+		httpRes, err := apiClient.KubernetesAPI.KubernetesAddK8sEvents(context.Background(), projectId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -80,10 +78,9 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesCreateResource(context.Background()).Execute()
+		httpRes, err := apiClient.KubernetesAPI.KubernetesCreateResource(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -104,10 +101,9 @@ func Test_taikuncore_KubernetesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.KubernetesAPI.KubernetesDaemonsetActions(context.Background()).Execute()
+		httpRes, err := apiClient.KubernetesAPI.KubernetesDaemonsetActions(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
