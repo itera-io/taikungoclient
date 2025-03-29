@@ -5782,8 +5782,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-03-27T15:39:39.1252293Z
-                  createdAt: 2025-03-27T15:39:39.1252293Z
+                  lastValidated: 2025-03-29T00:03:20.1302717Z
+                  createdAt: 2025-03-29T00:03:20.1302717Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5888,14 +5888,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-03-27T15:39:39.1252293Z
+                    lastBackup: 2025-03-29T00:03:20.1302717Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-03-27T15:39:39.1252293Z
+                  createdAt: 2025-03-29T00:03:20.1302717Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-03-27T15:39:39.1252293Z
+                  lastBackup: 2025-03-29T00:03:20.1302717Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6000,8 +6000,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-27T15:39:39.1252293Z
-                  expiration: 2025-03-27T15:39:39.1252293Z
+                  createdAt: 2025-03-29T00:03:20.1302717Z
+                  expiration: 2025-03-29T00:03:20.1302717Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6105,7 +6105,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-27T15:39:39.1252293Z
+                  createdAt: 2025-03-29T00:03:20.1302717Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6215,9 +6215,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-03-27T15:39:39.1252293+00:00
-                  startTimeStamp: 2025-03-27T15:39:39.1252293+00:00
-                  createdAt: 2025-03-27T15:39:39.1252293Z
+                  completionDateTime: 2025-03-29T00:03:20.1302717+00:00
+                  startTimeStamp: 2025-03-29T00:03:20.1302717+00:00
+                  createdAt: 2025-03-29T00:03:20.1302717Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -16737,13 +16737,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteAlertCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -16836,10 +16831,6 @@ paths:
               $ref: '#/components/schemas/DeploymentActionCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -17026,7 +17017,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KubernetesPodLogsCommand'
-        required: true
       responses:
         "200":
           content:
@@ -17125,7 +17115,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/InteractiveShellSendCommand'
-        required: true
       responses:
         "200":
           content:
@@ -17176,10 +17165,6 @@ paths:
               $ref: '#/components/schemas/NodeActionCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -17270,13 +17255,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SilenceOperationsCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
