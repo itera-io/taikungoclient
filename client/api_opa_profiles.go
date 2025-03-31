@@ -72,9 +72,6 @@ func (a *OpaProfilesAPIService) OpaprofilesCreateExecute(r ApiOpaprofilesCreateR
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.createOpaProfileCommand == nil {
-		return localVarReturnValue, nil, reportError("createOpaProfileCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -789,7 +786,7 @@ func (r ApiOpaprofilesLockManagerRequest) OpaProfileLockManagerCommand(opaProfil
 	return r
 }
 
-func (r ApiOpaprofilesLockManagerRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiOpaprofilesLockManagerRequest) Execute() (*http.Response, error) {
 	return r.ApiService.OpaprofilesLockManagerExecute(r)
 }
 
@@ -807,18 +804,16 @@ func (a *OpaProfilesAPIService) OpaprofilesLockManager(ctx context.Context) ApiO
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLockManagerRequest) (map[string]interface{}, *http.Response, error) {
+func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLockManagerRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesLockManager")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/v1/opaprofiles/lockmanager"
@@ -826,9 +821,6 @@ func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLo
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.opaProfileLockManagerCommand == nil {
-		return localVarReturnValue, nil, reportError("opaProfileLockManagerCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -840,7 +832,7 @@ func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLo
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -865,19 +857,19 @@ func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLo
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -890,68 +882,59 @@ func (a *OpaProfilesAPIService) OpaprofilesLockManagerExecute(r ApiOpaprofilesLo
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiOpaprofilesMakeDefaultRequest struct {
@@ -965,7 +948,7 @@ func (r ApiOpaprofilesMakeDefaultRequest) OpaMakeDefaultCommand(opaMakeDefaultCo
 	return r
 }
 
-func (r ApiOpaprofilesMakeDefaultRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiOpaprofilesMakeDefaultRequest) Execute() (*http.Response, error) {
 	return r.ApiService.OpaprofilesMakeDefaultExecute(r)
 }
 
@@ -983,18 +966,16 @@ func (a *OpaProfilesAPIService) OpaprofilesMakeDefault(ctx context.Context) ApiO
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMakeDefaultRequest) (map[string]interface{}, *http.Response, error) {
+func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMakeDefaultRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesMakeDefault")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/v1/opaprofiles/make-default"
@@ -1002,9 +983,6 @@ func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMa
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.opaMakeDefaultCommand == nil {
-		return localVarReturnValue, nil, reportError("opaMakeDefaultCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1016,7 +994,7 @@ func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMa
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1041,19 +1019,19 @@ func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMa
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1066,68 +1044,59 @@ func (a *OpaProfilesAPIService) OpaprofilesMakeDefaultExecute(r ApiOpaprofilesMa
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiOpaprofilesSyncRequest struct {
@@ -1141,7 +1110,7 @@ func (r ApiOpaprofilesSyncRequest) OpaProfileSyncCommand(opaProfileSyncCommand O
 	return r
 }
 
-func (r ApiOpaprofilesSyncRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiOpaprofilesSyncRequest) Execute() (*http.Response, error) {
 	return r.ApiService.OpaprofilesSyncExecute(r)
 }
 
@@ -1159,18 +1128,16 @@ func (a *OpaProfilesAPIService) OpaprofilesSync(ctx context.Context) ApiOpaprofi
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncRequest) (map[string]interface{}, *http.Response, error) {
+func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesSync")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/v1/opaprofiles/sync"
@@ -1178,9 +1145,6 @@ func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncReque
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.opaProfileSyncCommand == nil {
-		return localVarReturnValue, nil, reportError("opaProfileSyncCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -1192,7 +1156,7 @@ func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncReque
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1217,19 +1181,19 @@ func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncReque
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1242,68 +1206,59 @@ func (a *OpaProfilesAPIService) OpaprofilesSyncExecute(r ApiOpaprofilesSyncReque
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiOpaprofilesUpdateRequest struct {
@@ -1317,7 +1272,7 @@ func (r ApiOpaprofilesUpdateRequest) OpaProfileUpdateCommand(opaProfileUpdateCom
 	return r
 }
 
-func (r ApiOpaprofilesUpdateRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiOpaprofilesUpdateRequest) Execute() (*http.Response, error) {
 	return r.ApiService.OpaprofilesUpdateExecute(r)
 }
 
@@ -1335,18 +1290,16 @@ func (a *OpaProfilesAPIService) OpaprofilesUpdate(ctx context.Context) ApiOpapro
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *OpaProfilesAPIService) OpaprofilesUpdateExecute(r ApiOpaprofilesUpdateRequest) (map[string]interface{}, *http.Response, error) {
+func (a *OpaProfilesAPIService) OpaprofilesUpdateExecute(r ApiOpaprofilesUpdateRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpaProfilesAPIService.OpaprofilesUpdate")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/api/v1/opaprofiles"
@@ -1365,7 +1318,7 @@ func (a *OpaProfilesAPIService) OpaprofilesUpdateExecute(r ApiOpaprofilesUpdateR
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/plain", "application/json"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -1390,19 +1343,19 @@ func (a *OpaProfilesAPIService) OpaprofilesUpdateExecute(r ApiOpaprofilesUpdateR
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -1415,66 +1368,57 @@ func (a *OpaProfilesAPIService) OpaprofilesUpdateExecute(r ApiOpaprofilesUpdateR
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
-			return localVarReturnValue, localVarHTTPResponse, newErr
+			return localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
 			var v ProblemDetails
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
-				return localVarReturnValue, localVarHTTPResponse, newErr
+				return localVarHTTPResponse, newErr
 			}
 					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
 					newErr.model = v
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
