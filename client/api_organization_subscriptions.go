@@ -236,9 +236,6 @@ func (a *OrganizationSubscriptionsAPIService) OrganizationsubcriptionsUpdateExec
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.updateOrganizationSubscriptionCommand == nil {
-		return localVarReturnValue, nil, reportError("updateOrganizationSubscriptionCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

@@ -5782,8 +5782,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-03-31T00:04:01.1029329Z
-                  createdAt: 2025-03-31T00:04:01.1029329Z
+                  lastValidated: 2025-04-01T00:04:05.0939903Z
+                  createdAt: 2025-04-01T00:04:05.0939903Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5888,14 +5888,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-03-31T00:04:01.1029329Z
+                    lastBackup: 2025-04-01T00:04:05.0939903Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-03-31T00:04:01.1029329Z
+                  createdAt: 2025-04-01T00:04:05.0939903Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-03-31T00:04:01.1029329Z
+                  lastBackup: 2025-04-01T00:04:05.0939903Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6000,8 +6000,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-31T00:04:01.1029329Z
-                  expiration: 2025-03-31T00:04:01.1029329Z
+                  createdAt: 2025-04-01T00:04:05.0939903Z
+                  expiration: 2025-04-01T00:04:05.0939903Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6105,7 +6105,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-31T00:04:01.1029329Z
+                  createdAt: 2025-04-01T00:04:05.0939903Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6215,9 +6215,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-03-31T00:04:01.1029329+00:00
-                  startTimeStamp: 2025-03-31T00:04:01.1029329+00:00
-                  createdAt: 2025-03-31T00:04:01.1029329Z
+                  completionDateTime: 2025-04-01T00:04:05.0939903+00:00
+                  startTimeStamp: 2025-04-01T00:04:05.0939903+00:00
+                  createdAt: 2025-04-01T00:04:05.0939903Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -20729,7 +20729,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateOrganizationSubscriptionCommand'
-        required: true
       responses:
         "200":
           content:
@@ -20941,13 +20940,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AcceptOfferCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21133,7 +21127,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/LeaveTaikunCommand'
-        required: true
       responses:
         "200":
           content:
@@ -21182,13 +21175,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ToggleKeycloakCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21233,10 +21221,6 @@ paths:
               $ref: '#/components/schemas/UpdateOrganizationCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21279,13 +21263,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdatePaymentIdCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21505,8 +21484,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -21549,7 +21526,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetCatalogAppValueCommand'
-        required: true
       responses:
         "200":
           content:
@@ -21598,7 +21574,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GetCatalogAppValueAutocompleteCommand'
-        required: true
       responses:
         "200":
           content:
@@ -21649,7 +21624,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ListCatalogAppAvailableVersionsCommand'
-        required: true
       responses:
         "200":
           content:
