@@ -5782,8 +5782,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-04-01T00:04:05.0939903Z
-                  createdAt: 2025-04-01T00:04:05.0939903Z
+                  lastValidated: 2025-04-02T00:03:31.4875715Z
+                  createdAt: 2025-04-02T00:03:31.4875715Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5888,14 +5888,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-04-01T00:04:05.0939903Z
+                    lastBackup: 2025-04-02T00:03:31.4875715Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-04-01T00:04:05.0939903Z
+                  createdAt: 2025-04-02T00:03:31.4875715Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-04-01T00:04:05.0939903Z
+                  lastBackup: 2025-04-02T00:03:31.4875715Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6000,8 +6000,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-01T00:04:05.0939903Z
-                  expiration: 2025-04-01T00:04:05.0939903Z
+                  createdAt: 2025-04-02T00:03:31.4875715Z
+                  expiration: 2025-04-02T00:03:31.4875715Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6105,7 +6105,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-01T00:04:05.0939903Z
+                  createdAt: 2025-04-02T00:03:31.4875715Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6215,9 +6215,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-04-01T00:04:05.0939903+00:00
-                  startTimeStamp: 2025-04-01T00:04:05.0939903+00:00
-                  createdAt: 2025-04-01T00:04:05.0939903Z
+                  completionDateTime: 2025-04-02T00:03:31.4875715+00:00
+                  startTimeStamp: 2025-04-02T00:03:31.4875715+00:00
+                  createdAt: 2025-04-02T00:03:31.4875715Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -21872,10 +21872,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21931,10 +21927,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21966,7 +21958,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Delete organizations from a partner
+      summary: Unbind organizations from a partner
       tags:
       - Partners
   /api/v1/partner/add/whitelist/domain:
@@ -21979,10 +21971,6 @@ paths:
               $ref: '#/components/schemas/WhiteListDomainCreateCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22027,10 +22015,6 @@ paths:
               $ref: '#/components/schemas/BecomePartnerCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22075,10 +22059,6 @@ paths:
               $ref: '#/components/schemas/ContactUsCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22124,9 +22104,10 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
+            application/json:
               schema:
-                $ref: '#/components/schemas/Void'
+                format: int32
+                type: integer
           description: OK
         "400":
           content:
@@ -22171,10 +22152,6 @@ paths:
               $ref: '#/components/schemas/WhiteListDomainDeleteCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22220,9 +22197,10 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
+            application/json:
               schema:
-                $ref: '#/components/schemas/Void'
+                format: int32
+                type: integer
           description: OK
         "400":
           content:
@@ -22508,13 +22486,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ClearCanceledPaymentMethodCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22559,10 +22532,6 @@ paths:
               $ref: '#/components/schemas/CreateStripeCustomerCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22605,7 +22574,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/FinalPriceCommand'
-        required: true
       responses:
         "200":
           content:
@@ -22654,11 +22622,12 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PayInvoiceCommand'
-        required: true
       responses:
         "200":
           content:
-            application/json: {}
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvoiceSecret'
           description: OK
         "400":
           content:
@@ -22701,13 +22670,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ChangeCardCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -22750,13 +22714,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PaymentWebhookCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -52287,6 +52246,15 @@ components:
       - startDate
       - subscriptionName
       - subscriptionType
+      type: object
+    InvoiceSecret:
+      additionalProperties: false
+      example:
+        secret: secret
+      properties:
+        secret:
+          nullable: true
+          type: string
       type: object
     Invoices:
       additionalProperties: false

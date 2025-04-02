@@ -460,7 +460,7 @@ Class | Method | HTTP request | Description
 *PartnersAPI* | [**PartnerBecomeAPartner**](docs/PartnersAPI.md#partnerbecomeapartner) | **Post** /api/v1/partner/become-a-partner | Become a partner
 *PartnersAPI* | [**PartnerContactUs**](docs/PartnersAPI.md#partnercontactus) | **Post** /api/v1/partner/contact-us | Contact with us
 *PartnersAPI* | [**PartnerCreate**](docs/PartnersAPI.md#partnercreate) | **Post** /api/v1/partner/create | Add a partner
-*PartnersAPI* | [**PartnerDeleteOrganizations**](docs/PartnersAPI.md#partnerdeleteorganizations) | **Put** /api/v1/partner/{id}/organizations | Delete organizations from a partner
+*PartnersAPI* | [**PartnerDeleteOrganizations**](docs/PartnersAPI.md#partnerdeleteorganizations) | **Put** /api/v1/partner/{id}/organizations | Unbind organizations from a partner
 *PartnersAPI* | [**PartnerDeleteWhitelistDomain**](docs/PartnersAPI.md#partnerdeletewhitelistdomain) | **Post** /api/v1/partner/delete/whitelist/domain | Delete white list domain
 *PartnersAPI* | [**PartnerDetails**](docs/PartnersAPI.md#partnerdetails) | **Get** /api/v1/partner/details | Details of partners
 *PartnersAPI* | [**PartnerDropdown**](docs/PartnersAPI.md#partnerdropdown) | **Get** /api/v1/partner/list | Get partners dropdown
@@ -1146,6 +1146,7 @@ Class | Method | HTTP request | Description
  - [InteractiveShellSendCommand](docs/InteractiveShellSendCommand.md)
  - [InvoiceDto](docs/InvoiceDto.md)
  - [InvoiceListDto](docs/InvoiceListDto.md)
+ - [InvoiceSecret](docs/InvoiceSecret.md)
  - [Invoices](docs/Invoices.md)
  - [IpAddressRangeCountCommand](docs/IpAddressRangeCountCommand.md)
  - [IpAddressRangeListCommand](docs/IpAddressRangeListCommand.md)

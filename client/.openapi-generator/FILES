@@ -505,6 +505,7 @@ docs/InteractiveShellDto.md
 docs/InteractiveShellSendCommand.md
 docs/InvoiceDto.md
 docs/InvoiceListDto.md
+docs/InvoiceSecret.md
 docs/Invoices.md
 docs/InvoicesAPI.md
 docs/IpAddressRangeCountCommand.md
@@ -1383,6 +1384,7 @@ model_interactive_shell_dto.go
 model_interactive_shell_send_command.go
 model_invoice_dto.go
 model_invoice_list_dto.go
+model_invoice_secret.go
 model_invoices.go
 model_ip_address_range_count_command.go
 model_ip_address_range_list_command.go
