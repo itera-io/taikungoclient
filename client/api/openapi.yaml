@@ -5782,8 +5782,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-04-02T16:13:45.7519095Z
-                  createdAt: 2025-04-02T16:13:45.7519095Z
+                  lastValidated: 2025-04-04T00:03:25.2030255Z
+                  createdAt: 2025-04-04T00:03:25.2030255Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5888,14 +5888,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-04-02T16:13:45.7519095Z
+                    lastBackup: 2025-04-04T00:03:25.2030255Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-04-02T16:13:45.7519095Z
+                  createdAt: 2025-04-04T00:03:25.2030255Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-04-02T16:13:45.7519095Z
+                  lastBackup: 2025-04-04T00:03:25.2030255Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6000,8 +6000,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-02T16:13:45.7519095Z
-                  expiration: 2025-04-02T16:13:45.7519095Z
+                  createdAt: 2025-04-04T00:03:25.2030255Z
+                  expiration: 2025-04-04T00:03:25.2030255Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6105,7 +6105,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-02T16:13:45.7519095Z
+                  createdAt: 2025-04-04T00:03:25.2030255Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6215,9 +6215,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-04-02T16:13:45.7519095+00:00
-                  startTimeStamp: 2025-04-02T16:13:45.7519095+00:00
-                  createdAt: 2025-04-02T16:13:45.7519095Z
+                  completionDateTime: 2025-04-04T00:03:25.2030255+00:00
+                  startTimeStamp: 2025-04-04T00:03:25.2030255+00:00
+                  createdAt: 2025-04-04T00:03:25.2030255Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -23734,10 +23734,6 @@ paths:
               $ref: '#/components/schemas/ProjectDeploymentCommitCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -23780,13 +23776,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentCommitVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -23831,10 +23822,6 @@ paths:
               $ref: '#/components/schemas/DeploymentCompletedCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -23877,13 +23864,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectDeploymentDeleteServersCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -24463,13 +24445,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectDeploymentRepairCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -24512,13 +24489,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectDeploymentRepairVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
