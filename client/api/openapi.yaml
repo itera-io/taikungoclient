@@ -5782,8 +5782,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-04-07T00:03:54.067099Z
-                  createdAt: 2025-04-07T00:03:54.067099Z
+                  lastValidated: 2025-04-08T00:03:17.5795684Z
+                  createdAt: 2025-04-08T00:03:17.5795684Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5888,14 +5888,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-04-07T00:03:54.067099Z
+                    lastBackup: 2025-04-08T00:03:17.5795684Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-04-07T00:03:54.067099Z
+                  createdAt: 2025-04-08T00:03:17.5795684Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-04-07T00:03:54.067099Z
+                  lastBackup: 2025-04-08T00:03:17.5795684Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6000,8 +6000,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-07T00:03:54.067099Z
-                  expiration: 2025-04-07T00:03:54.067099Z
+                  createdAt: 2025-04-08T00:03:17.5795684Z
+                  expiration: 2025-04-08T00:03:17.5795684Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6105,7 +6105,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-07T00:03:54.067099Z
+                  createdAt: 2025-04-08T00:03:17.5795684Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6215,9 +6215,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-04-07T00:03:54.067099+00:00
-                  startTimeStamp: 2025-04-07T00:03:54.067099+00:00
-                  createdAt: 2025-04-07T00:03:54.067099Z
+                  completionDateTime: 2025-04-08T00:03:17.5795684+00:00
+                  startTimeStamp: 2025-04-08T00:03:17.5795684+00:00
+                  createdAt: 2025-04-08T00:03:17.5795684Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -24040,13 +24040,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentDisableBackupCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -24089,13 +24084,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentDisableMonitoringCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -24138,13 +24128,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentDisableOpaCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -24187,13 +24172,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentEnableAiCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -24236,13 +24216,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentEnableBackupCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -24285,13 +24260,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentEnableMonitoringCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -24334,13 +24304,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentOpaEnableCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -24385,10 +24350,6 @@ paths:
               $ref: '#/components/schemas/ImportClusterCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:

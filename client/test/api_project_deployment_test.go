@@ -103,10 +103,9 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentDisableBackup(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentDisableBackup(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -115,10 +114,9 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentDisableMonitoring(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentDisableMonitoring(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -127,10 +125,9 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentDisableOpa(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentDisableOpa(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -139,10 +136,9 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentEnableAi(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentEnableAi(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -151,10 +147,9 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentEnableBackup(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentEnableBackup(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -163,10 +158,9 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentEnableMonitoring(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentEnableMonitoring(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -175,10 +169,9 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentEnableOpa(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentEnableOpa(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -187,10 +180,9 @@ func Test_taikuncore_ProjectDeploymentAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentImportCluster(context.Background()).Execute()
+		httpRes, err := apiClient.ProjectDeploymentAPI.ProjectDeploymentImportCluster(context.Background()).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
