@@ -21,6 +21,7 @@ var _ MappedNullable = &SyncProjectAppCommand{}
 // SyncProjectAppCommand struct for SyncProjectAppCommand
 type SyncProjectAppCommand struct {
 	ProjectAppId *int32 `json:"projectAppId,omitempty"`
+	Timeout NullableInt32 `json:"timeout,omitempty"`
 }
 
 // NewSyncProjectAppCommand instantiates a new SyncProjectAppCommand object
@@ -72,6 +73,48 @@ func (o *SyncProjectAppCommand) SetProjectAppId(v int32) {
 	o.ProjectAppId = &v
 }
 
+// GetTimeout returns the Timeout field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SyncProjectAppCommand) GetTimeout() int32 {
+	if o == nil || IsNil(o.Timeout.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Timeout.Get()
+}
+
+// GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SyncProjectAppCommand) GetTimeoutOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Timeout.Get(), o.Timeout.IsSet()
+}
+
+// HasTimeout returns a boolean if a field has been set.
+func (o *SyncProjectAppCommand) HasTimeout() bool {
+	if o != nil && o.Timeout.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeout gets a reference to the given NullableInt32 and assigns it to the Timeout field.
+func (o *SyncProjectAppCommand) SetTimeout(v int32) {
+	o.Timeout.Set(&v)
+}
+// SetTimeoutNil sets the value for Timeout to be an explicit nil
+func (o *SyncProjectAppCommand) SetTimeoutNil() {
+	o.Timeout.Set(nil)
+}
+
+// UnsetTimeout ensures that no value is present for Timeout, not even an explicit nil
+func (o *SyncProjectAppCommand) UnsetTimeout() {
+	o.Timeout.Unset()
+}
+
 func (o SyncProjectAppCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -84,6 +127,9 @@ func (o SyncProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ProjectAppId) {
 		toSerialize["projectAppId"] = o.ProjectAppId
+	}
+	if o.Timeout.IsSet() {
+		toSerialize["timeout"] = o.Timeout.Get()
 	}
 	return toSerialize, nil
 }

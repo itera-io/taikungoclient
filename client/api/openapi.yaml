@@ -4798,8 +4798,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-03-22T00:19:34.2328858Z
-                  createdAt: 2025-03-22T00:19:34.2328858Z
+                  lastValidated: 2025-04-10T13:54:28.9749906Z
+                  createdAt: 2025-04-10T13:54:28.9749906Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -4904,14 +4904,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-03-22T00:19:34.2328858Z
+                    lastBackup: 2025-04-10T13:54:28.9749906Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-03-22T00:19:34.2328858Z
+                  createdAt: 2025-04-10T13:54:28.9749906Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-03-22T00:19:34.2328858Z
+                  lastBackup: 2025-04-10T13:54:28.9749906Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5016,8 +5016,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-22T00:19:34.2328858Z
-                  expiration: 2025-03-22T00:19:34.2328858Z
+                  createdAt: 2025-04-10T13:54:28.9749906Z
+                  expiration: 2025-04-10T13:54:28.9749906Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -5121,7 +5121,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-03-22T00:19:34.2328858Z
+                  createdAt: 2025-04-10T13:54:28.9749906Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -5231,9 +5231,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-03-22T00:19:34.2328858+00:00
-                  startTimeStamp: 2025-03-22T00:19:34.2328858+00:00
-                  createdAt: 2025-03-22T00:19:34.2328858Z
+                  completionDateTime: 2025-04-10T13:54:28.9749906+00:00
+                  startTimeStamp: 2025-04-10T13:54:28.9749906+00:00
+                  createdAt: 2025-04-10T13:54:28.9749906Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -38440,6 +38440,7 @@ components:
           key: key
         - value: value
           key: key
+        timeout: 1
       properties:
         name:
           nullable: true
@@ -38460,6 +38461,10 @@ components:
           type: boolean
         taikunLinkEnabled:
           type: boolean
+        timeout:
+          format: int32
+          nullable: true
+          type: integer
         parameters:
           items:
             $ref: '#/components/schemas/ProjectAppParamsDto'
@@ -41268,6 +41273,7 @@ components:
       example:
         extraValues: extraValues
         projectAppId: 0
+        timeout: 6
       properties:
         projectAppId:
           format: int32
@@ -41275,6 +41281,10 @@ components:
         extraValues:
           nullable: true
           type: string
+        timeout:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     EditProjectAppParamsDto:
       additionalProperties: false
@@ -56561,9 +56571,14 @@ components:
       additionalProperties: false
       example:
         projectAppId: 0
+        timeout: 6
       properties:
         projectAppId:
           format: int32
+          type: integer
+        timeout:
+          format: int32
+          nullable: true
           type: integer
       type: object
     TanzuCredentialsList:
