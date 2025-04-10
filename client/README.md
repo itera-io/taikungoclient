@@ -223,6 +223,7 @@ Class | Method | HTTP request | Description
 *CheckerAPI* | [**CheckerOpenstackTaikunImage**](docs/CheckerAPI.md#checkeropenstacktaikunimage) | **Post** /api/v1/checker/openstack-image/{id} | Check openstack taikun image
 *CheckerAPI* | [**CheckerOpenstackTaikunLbImage**](docs/CheckerAPI.md#checkeropenstacktaikunlbimage) | **Post** /api/v1/checker/taikun-lb-image/{id} | Check openstack taikun lb image
 *CheckerAPI* | [**CheckerOrganization**](docs/CheckerAPI.md#checkerorganization) | **Post** /api/v1/checker/organization | Check duplicate org name
+*CheckerAPI* | [**CheckerProjectApp**](docs/CheckerAPI.md#checkerprojectapp) | **Post** /api/v1/checker/project-app | Check duplicate project app
 *CheckerAPI* | [**CheckerPrometheus**](docs/CheckerAPI.md#checkerprometheus) | **Post** /api/v1/checker/prometheus | Check prometheus credentials
 *CheckerAPI* | [**CheckerProxmox**](docs/CheckerAPI.md#checkerproxmox) | **Post** /api/v1/checker/proxmox | Check proxmox credential
 *CheckerAPI* | [**CheckerS3**](docs/CheckerAPI.md#checkers3) | **Post** /api/v1/checker/s3 | Check s3 credential
@@ -1050,6 +1051,7 @@ Class | Method | HTTP request | Description
  - [DownloadKubeConfigCommand](docs/DownloadKubeConfigCommand.md)
  - [DownloadKubernetesResourceCommand](docs/DownloadKubernetesResourceCommand.md)
  - [DuplicateNameCheckerCommand](docs/DuplicateNameCheckerCommand.md)
+ - [DuplicateProjectAppCheckerCommand](docs/DuplicateProjectAppCheckerCommand.md)
  - [ECloudCredentialType](docs/ECloudCredentialType.md)
  - [ECronJobAction](docs/ECronJobAction.md)
  - [EDaemonSetAction](docs/EDaemonSetAction.md)

@@ -5782,8 +5782,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-04-09T00:03:26.8139663Z
-                  createdAt: 2025-04-09T00:03:26.8139663Z
+                  lastValidated: 2025-04-09T18:49:47.5676343Z
+                  createdAt: 2025-04-09T18:49:47.5676343Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5888,14 +5888,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-04-09T00:03:26.8139663Z
+                    lastBackup: 2025-04-09T18:49:47.5676343Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-04-09T00:03:26.8139663Z
+                  createdAt: 2025-04-09T18:49:47.5676343Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-04-09T00:03:26.8139663Z
+                  lastBackup: 2025-04-09T18:49:47.5676343Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6000,8 +6000,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-09T00:03:26.8139663Z
-                  expiration: 2025-04-09T00:03:26.8139663Z
+                  createdAt: 2025-04-09T18:49:47.5676343Z
+                  expiration: 2025-04-09T18:49:47.5676343Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6105,7 +6105,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-09T00:03:26.8139663Z
+                  createdAt: 2025-04-09T18:49:47.5676343Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6215,9 +6215,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-04-09T00:03:26.8139663+00:00
-                  startTimeStamp: 2025-04-09T00:03:26.8139663+00:00
-                  createdAt: 2025-04-09T00:03:26.8139663Z
+                  completionDateTime: 2025-04-09T18:49:47.5676343+00:00
+                  startTimeStamp: 2025-04-09T18:49:47.5676343+00:00
+                  createdAt: 2025-04-09T18:49:47.5676343Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -8197,6 +8197,50 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Duplicate name
+      tags:
+      - Checker
+  /api/v1/checker/project-app:
+    post:
+      operationId: checker-project-app
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DuplicateProjectAppCheckerCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Check duplicate project app
       tags:
       - Checker
   /api/v1/checker/node:
@@ -25621,10 +25665,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -45666,6 +45706,7 @@ components:
         hypervisor: hypervisor
         name: name
         standAloneProfileId: 6
+        useLocalDisk: true
         projectId: 1
         username: username
       properties:
@@ -45716,6 +45757,8 @@ components:
         hypervisor:
           nullable: true
           type: string
+        useLocalDisk:
+          type: boolean
         standAloneVmDisks:
           items:
             $ref: '#/components/schemas/StandAloneVmDiskDto'
@@ -47924,6 +47967,23 @@ components:
           nullable: true
           type: string
         name:
+          nullable: true
+          type: string
+      type: object
+    DuplicateProjectAppCheckerCommand:
+      additionalProperties: false
+      example:
+        name: name
+        namespace: namespace
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        name:
+          nullable: true
+          type: string
+        namespace:
           nullable: true
           type: string
       type: object

@@ -36,6 +36,7 @@ type CreateStandAloneVmCommand struct {
 	SpotInstance *bool `json:"spotInstance,omitempty"`
 	AvailabilityZone NullableString `json:"availabilityZone,omitempty"`
 	Hypervisor NullableString `json:"hypervisor,omitempty"`
+	UseLocalDisk *bool `json:"useLocalDisk,omitempty"`
 	StandAloneVmDisks []StandAloneVmDiskDto `json:"standAloneVmDisks,omitempty"`
 	StandAloneMetaDatas []StandAloneMetaDataDto `json:"standAloneMetaDatas,omitempty"`
 }
@@ -669,6 +670,38 @@ func (o *CreateStandAloneVmCommand) UnsetHypervisor() {
 	o.Hypervisor.Unset()
 }
 
+// GetUseLocalDisk returns the UseLocalDisk field value if set, zero value otherwise.
+func (o *CreateStandAloneVmCommand) GetUseLocalDisk() bool {
+	if o == nil || IsNil(o.UseLocalDisk) {
+		var ret bool
+		return ret
+	}
+	return *o.UseLocalDisk
+}
+
+// GetUseLocalDiskOk returns a tuple with the UseLocalDisk field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateStandAloneVmCommand) GetUseLocalDiskOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseLocalDisk) {
+		return nil, false
+	}
+	return o.UseLocalDisk, true
+}
+
+// HasUseLocalDisk returns a boolean if a field has been set.
+func (o *CreateStandAloneVmCommand) HasUseLocalDisk() bool {
+	if o != nil && !IsNil(o.UseLocalDisk) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseLocalDisk gets a reference to the given bool and assigns it to the UseLocalDisk field.
+func (o *CreateStandAloneVmCommand) SetUseLocalDisk(v bool) {
+	o.UseLocalDisk = &v
+}
+
 // GetStandAloneVmDisks returns the StandAloneVmDisks field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateStandAloneVmCommand) GetStandAloneVmDisks() []StandAloneVmDiskDto {
 	if o == nil {
@@ -792,6 +825,9 @@ func (o CreateStandAloneVmCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Hypervisor.IsSet() {
 		toSerialize["hypervisor"] = o.Hypervisor.Get()
+	}
+	if !IsNil(o.UseLocalDisk) {
+		toSerialize["useLocalDisk"] = o.UseLocalDisk
 	}
 	if o.StandAloneVmDisks != nil {
 		toSerialize["standAloneVmDisks"] = o.StandAloneVmDisks
