@@ -27,6 +27,7 @@ type CreateProjectAppCommand struct {
 	ExtraValues NullableString `json:"extraValues,omitempty"`
 	AutoSync *bool `json:"autoSync,omitempty"`
 	TaikunLinkEnabled *bool `json:"taikunLinkEnabled,omitempty"`
+	Timeout NullableInt32 `json:"timeout,omitempty"`
 	Parameters []ProjectAppParamsDto `json:"parameters,omitempty"`
 }
 
@@ -301,6 +302,48 @@ func (o *CreateProjectAppCommand) SetTaikunLinkEnabled(v bool) {
 	o.TaikunLinkEnabled = &v
 }
 
+// GetTimeout returns the Timeout field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *CreateProjectAppCommand) GetTimeout() int32 {
+	if o == nil || IsNil(o.Timeout.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Timeout.Get()
+}
+
+// GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CreateProjectAppCommand) GetTimeoutOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Timeout.Get(), o.Timeout.IsSet()
+}
+
+// HasTimeout returns a boolean if a field has been set.
+func (o *CreateProjectAppCommand) HasTimeout() bool {
+	if o != nil && o.Timeout.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeout gets a reference to the given NullableInt32 and assigns it to the Timeout field.
+func (o *CreateProjectAppCommand) SetTimeout(v int32) {
+	o.Timeout.Set(&v)
+}
+// SetTimeoutNil sets the value for Timeout to be an explicit nil
+func (o *CreateProjectAppCommand) SetTimeoutNil() {
+	o.Timeout.Set(nil)
+}
+
+// UnsetTimeout ensures that no value is present for Timeout, not even an explicit nil
+func (o *CreateProjectAppCommand) UnsetTimeout() {
+	o.Timeout.Unset()
+}
+
 // GetParameters returns the Parameters field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CreateProjectAppCommand) GetParameters() []ProjectAppParamsDto {
 	if o == nil {
@@ -364,6 +407,9 @@ func (o CreateProjectAppCommand) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.TaikunLinkEnabled) {
 		toSerialize["taikunLinkEnabled"] = o.TaikunLinkEnabled
+	}
+	if o.Timeout.IsSet() {
+		toSerialize["timeout"] = o.Timeout.Get()
 	}
 	if o.Parameters != nil {
 		toSerialize["parameters"] = o.Parameters

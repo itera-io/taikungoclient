@@ -2033,13 +2033,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AttachDetachAlertingProfileCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -2148,13 +2143,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AttachDetachAlertingProfileCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -5782,8 +5772,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-04-09T18:49:47.5676343Z
-                  createdAt: 2025-04-09T18:49:47.5676343Z
+                  lastValidated: 2025-04-10T11:33:06.5904328Z
+                  createdAt: 2025-04-10T11:33:06.5904328Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5888,14 +5878,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-04-09T18:49:47.5676343Z
+                    lastBackup: 2025-04-10T11:33:06.5904328Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-04-09T18:49:47.5676343Z
+                  createdAt: 2025-04-10T11:33:06.5904328Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-04-09T18:49:47.5676343Z
+                  lastBackup: 2025-04-10T11:33:06.5904328Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6000,8 +5990,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-09T18:49:47.5676343Z
-                  expiration: 2025-04-09T18:49:47.5676343Z
+                  createdAt: 2025-04-10T11:33:06.5904328Z
+                  expiration: 2025-04-10T11:33:06.5904328Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6105,7 +6095,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-09T18:49:47.5676343Z
+                  createdAt: 2025-04-10T11:33:06.5904328Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6215,9 +6205,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-04-09T18:49:47.5676343+00:00
-                  startTimeStamp: 2025-04-09T18:49:47.5676343+00:00
-                  createdAt: 2025-04-09T18:49:47.5676343Z
+                  completionDateTime: 2025-04-10T11:33:06.5904328+00:00
+                  startTimeStamp: 2025-04-10T11:33:06.5904328+00:00
+                  createdAt: 2025-04-10T11:33:06.5904328Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -8253,10 +8243,6 @@ paths:
               $ref: '#/components/schemas/NodeCommand'
       responses:
         "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -15357,6 +15343,36 @@ paths:
               schema:
                 $ref: '#/components/schemas/ImportedAsCloudCredentialList'
           description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
       summary: Imported cluster as cloud credential
       tags:
       - Imported Cluster
@@ -16439,7 +16455,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Void'
+                $ref: '#/components/schemas/KubeConfigRoleResponse'
           description: OK
         "400":
           content:
@@ -22241,10 +22257,7 @@ paths:
       responses:
         "200":
           content:
-            application/json:
-              schema:
-                format: int32
-                type: integer
+            application/json: {}
           description: OK
         "400":
           content:
@@ -45246,6 +45259,7 @@ components:
           key: key
         - value: value
           key: key
+        timeout: 1
       properties:
         name:
           nullable: true
@@ -45266,6 +45280,10 @@ components:
           type: boolean
         taikunLinkEnabled:
           type: boolean
+        timeout:
+          format: int32
+          nullable: true
+          type: integer
         parameters:
           items:
             $ref: '#/components/schemas/ProjectAppParamsDto'
@@ -48203,6 +48221,7 @@ components:
       example:
         extraValues: extraValues
         projectAppId: 0
+        timeout: 6
       properties:
         projectAppId:
           format: int32
@@ -48210,6 +48229,10 @@ components:
         extraValues:
           nullable: true
           type: string
+        timeout:
+          format: int32
+          nullable: true
+          type: integer
       type: object
     EditProjectAppParamsDto:
       additionalProperties: false
@@ -52600,6 +52623,28 @@ components:
           type: string
       required:
       - data
+      type: object
+    KubeConfigRoleResponse:
+      additionalProperties: false
+      example:
+        data:
+        - name: name
+          id: 0
+        - name: name
+          id: 0
+        totalCount: 0
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/CommonDropdownDto'
+          nullable: true
+          type: array
+        totalCount:
+          format: int32
+          type: integer
+      required:
+      - data
+      - totalCount
       type: object
     KubernetesActionRequest:
       additionalProperties: false
@@ -65215,9 +65260,14 @@ components:
       additionalProperties: false
       example:
         projectAppId: 0
+        timeout: 6
       properties:
         projectAppId:
           format: int32
+          type: integer
+        timeout:
+          format: int32
+          nullable: true
           type: integer
       type: object
     SyncProjectAppsCommand:

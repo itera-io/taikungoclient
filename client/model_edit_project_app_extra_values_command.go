@@ -22,6 +22,7 @@ var _ MappedNullable = &EditProjectAppExtraValuesCommand{}
 type EditProjectAppExtraValuesCommand struct {
 	ProjectAppId *int32 `json:"projectAppId,omitempty"`
 	ExtraValues NullableString `json:"extraValues,omitempty"`
+	Timeout NullableInt32 `json:"timeout,omitempty"`
 }
 
 // NewEditProjectAppExtraValuesCommand instantiates a new EditProjectAppExtraValuesCommand object
@@ -115,6 +116,48 @@ func (o *EditProjectAppExtraValuesCommand) UnsetExtraValues() {
 	o.ExtraValues.Unset()
 }
 
+// GetTimeout returns the Timeout field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EditProjectAppExtraValuesCommand) GetTimeout() int32 {
+	if o == nil || IsNil(o.Timeout.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Timeout.Get()
+}
+
+// GetTimeoutOk returns a tuple with the Timeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EditProjectAppExtraValuesCommand) GetTimeoutOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Timeout.Get(), o.Timeout.IsSet()
+}
+
+// HasTimeout returns a boolean if a field has been set.
+func (o *EditProjectAppExtraValuesCommand) HasTimeout() bool {
+	if o != nil && o.Timeout.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTimeout gets a reference to the given NullableInt32 and assigns it to the Timeout field.
+func (o *EditProjectAppExtraValuesCommand) SetTimeout(v int32) {
+	o.Timeout.Set(&v)
+}
+// SetTimeoutNil sets the value for Timeout to be an explicit nil
+func (o *EditProjectAppExtraValuesCommand) SetTimeoutNil() {
+	o.Timeout.Set(nil)
+}
+
+// UnsetTimeout ensures that no value is present for Timeout, not even an explicit nil
+func (o *EditProjectAppExtraValuesCommand) UnsetTimeout() {
+	o.Timeout.Unset()
+}
+
 func (o EditProjectAppExtraValuesCommand) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -130,6 +173,9 @@ func (o EditProjectAppExtraValuesCommand) ToMap() (map[string]interface{}, error
 	}
 	if o.ExtraValues.IsSet() {
 		toSerialize["extraValues"] = o.ExtraValues.Get()
+	}
+	if o.Timeout.IsSet() {
+		toSerialize["timeout"] = o.Timeout.Get()
 	}
 	return toSerialize, nil
 }

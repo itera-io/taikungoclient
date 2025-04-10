@@ -525,6 +525,7 @@ docs/KubeConfigForUserList.md
 docs/KubeConfigInteractiveShellCommand.md
 docs/KubeConfigResponse.md
 docs/KubeConfigRoleAPI.md
+docs/KubeConfigRoleResponse.md
 docs/KubernetesAPI.md
 docs/KubernetesActionRequest.md
 docs/KubernetesActionResponse.md
@@ -1401,6 +1402,7 @@ model_kube_config_for_user_dto.go
 model_kube_config_for_user_list.go
 model_kube_config_interactive_shell_command.go
 model_kube_config_response.go
+model_kube_config_role_response.go
 model_kubernetes_action_request.go
 model_kubernetes_action_response.go
 model_kubernetes_alert_create_dto.go
