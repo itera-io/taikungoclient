@@ -25,6 +25,7 @@ type GetToken struct {
 	RefreshToken NullableString `json:"refreshToken,omitempty"`
 	RefreshTokenExpireTime *time.Time `json:"refreshTokenExpireTime,omitempty"`
 	TempToken NullableString `json:"tempToken,omitempty"`
+	TwoFaEnabled NullableBool `json:"twoFaEnabled,omitempty"`
 }
 
 // NewGetToken instantiates a new GetToken object
@@ -202,6 +203,48 @@ func (o *GetToken) UnsetTempToken() {
 	o.TempToken.Unset()
 }
 
+// GetTwoFaEnabled returns the TwoFaEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetToken) GetTwoFaEnabled() bool {
+	if o == nil || IsNil(o.TwoFaEnabled.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.TwoFaEnabled.Get()
+}
+
+// GetTwoFaEnabledOk returns a tuple with the TwoFaEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetToken) GetTwoFaEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TwoFaEnabled.Get(), o.TwoFaEnabled.IsSet()
+}
+
+// HasTwoFaEnabled returns a boolean if a field has been set.
+func (o *GetToken) HasTwoFaEnabled() bool {
+	if o != nil && o.TwoFaEnabled.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTwoFaEnabled gets a reference to the given NullableBool and assigns it to the TwoFaEnabled field.
+func (o *GetToken) SetTwoFaEnabled(v bool) {
+	o.TwoFaEnabled.Set(&v)
+}
+// SetTwoFaEnabledNil sets the value for TwoFaEnabled to be an explicit nil
+func (o *GetToken) SetTwoFaEnabledNil() {
+	o.TwoFaEnabled.Set(nil)
+}
+
+// UnsetTwoFaEnabled ensures that no value is present for TwoFaEnabled, not even an explicit nil
+func (o *GetToken) UnsetTwoFaEnabled() {
+	o.TwoFaEnabled.Unset()
+}
+
 func (o GetToken) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -223,6 +266,9 @@ func (o GetToken) ToMap() (map[string]interface{}, error) {
 	}
 	if o.TempToken.IsSet() {
 		toSerialize["tempToken"] = o.TempToken.Get()
+	}
+	if o.TwoFaEnabled.IsSet() {
+		toSerialize["twoFaEnabled"] = o.TwoFaEnabled.Get()
 	}
 	return toSerialize, nil
 }

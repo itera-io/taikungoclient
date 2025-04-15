@@ -3235,6 +3235,54 @@ paths:
       summary: Retrieve taikun recommended repositories
       tags:
       - App repositories
+  /api/v1/2fa/setup:
+    post:
+      operationId: 2fa-setup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorAuthSetupCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TwoFactorAuthSetupResult'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Setup 2fa
+      tags:
+      - Auth management
   /api/v1/auth/forgotpassword:
     post:
       operationId: auth-forgot-password
@@ -5772,8 +5820,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-04-13T00:29:59.7053116Z
-                  createdAt: 2025-04-13T00:29:59.7053116Z
+                  lastValidated: 2025-04-14T14:38:16.1928166Z
+                  createdAt: 2025-04-14T14:38:16.1928166Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -5878,14 +5926,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-04-13T00:29:59.7053116Z
+                    lastBackup: 2025-04-14T14:38:16.1928166Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-04-13T00:29:59.7053116Z
+                  createdAt: 2025-04-14T14:38:16.1928166Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-04-13T00:29:59.7053116Z
+                  lastBackup: 2025-04-14T14:38:16.1928166Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -5990,8 +6038,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-13T00:29:59.7053116Z
-                  expiration: 2025-04-13T00:29:59.7053116Z
+                  createdAt: 2025-04-14T14:38:16.1928166Z
+                  expiration: 2025-04-14T14:38:16.1928166Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6095,7 +6143,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-13T00:29:59.7053116Z
+                  createdAt: 2025-04-14T14:38:16.1928166Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6205,9 +6253,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-04-13T00:29:59.7053116+00:00
-                  startTimeStamp: 2025-04-13T00:29:59.7053116+00:00
-                  createdAt: 2025-04-13T00:29:59.7053116Z
+                  completionDateTime: 2025-04-14T14:38:16.1928166+00:00
+                  startTimeStamp: 2025-04-14T14:38:16.1928166+00:00
+                  createdAt: 2025-04-14T14:38:16.1928166Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -50195,6 +50243,7 @@ components:
       example:
         refreshTokenExpireTime: 2000-01-23T04:56:07.000+00:00
         tempToken: tempToken
+        twoFaEnabled: true
         token: token
         refreshToken: refreshToken
       properties:
@@ -50210,6 +50259,9 @@ components:
         tempToken:
           nullable: true
           type: string
+        twoFaEnabled:
+          nullable: true
+          type: boolean
       type: object
     GkeClusterDto:
       additionalProperties: false
@@ -65670,6 +65722,22 @@ components:
           nullable: true
           type: string
         userId:
+          nullable: true
+          type: string
+      type: object
+    TwoFactorAuthSetupCommand:
+      additionalProperties: false
+      type: object
+    TwoFactorAuthSetupResult:
+      additionalProperties: false
+      example:
+        sharedKey: sharedKey
+        qrCodeUri: qrCodeUri
+      properties:
+        sharedKey:
+          nullable: true
+          type: string
+        qrCodeUri:
           nullable: true
           type: string
       type: object
