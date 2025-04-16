@@ -388,6 +388,7 @@ docs/DeploymentSearchList.md
 docs/DescribeKubernetesResourceCommand.md
 docs/Diff.md
 docs/DisableAutoscalingCommand.md
+docs/DisableTwoFactorAuthCommand.md
 docs/DisableUserCommand.md
 docs/DnsCommand.md
 docs/DnsNtpAddressEditDto.md
@@ -894,6 +895,8 @@ docs/ToggleTwoFactorAuthenticationCommand.md
 docs/TransferList.md
 docs/TransferTicketCommand.md
 docs/TwoFactorAuthSetupResult.md
+docs/TwoFactorAuthVerifyCommand.md
+docs/TwoFactorAuthVerifyResult.md
 docs/UnbindAppRepositoryCommand.md
 docs/UnbindFlavorFromProjectCommand.md
 docs/UnbindProjectFromProjectGroupCommand.md
@@ -1279,6 +1282,7 @@ model_deployment_search_list.go
 model_describe_kubernetes_resource_command.go
 model_diff.go
 model_disable_autoscaling_command.go
+model_disable_two_factor_auth_command.go
 model_disable_user_command.go
 model_dns_command.go
 model_dns_ntp_address_edit_dto.go
@@ -1731,6 +1735,8 @@ model_toggle_two_factor_authentication_command.go
 model_transfer_list.go
 model_transfer_ticket_command.go
 model_two_factor_auth_setup_result.go
+model_two_factor_auth_verify_command.go
+model_two_factor_auth_verify_result.go
 model_unbind_app_repository_command.go
 model_unbind_flavor_from_project_command.go
 model_unbind_project_from_project_group_command.go

@@ -150,7 +150,9 @@ Class | Method | HTTP request | Description
 *AuthManagementAPI* | [**AuthResetPassword**](docs/AuthManagementAPI.md#authresetpassword) | **Post** /api/v1/auth/resetpassword | Reset password
 *AuthManagementAPI* | [**AuthTrial**](docs/AuthManagementAPI.md#authtrial) | **Post** /api/v1/auth/trial | New registration
 *AuthManagementAPI* | [**AuthVerify2fa**](docs/AuthManagementAPI.md#authverify2fa) | **Post** /api/v1/auth/verify-2fa | Verify 2FA
+*AuthManagementAPI* | [**Call2faDisable**](docs/AuthManagementAPI.md#call2fadisable) | **Post** /api/v1/2fa/disable | Disable 2fa code
 *AuthManagementAPI* | [**Call2faSetup**](docs/AuthManagementAPI.md#call2fasetup) | **Post** /api/v1/2fa/setup | Setup 2fa
+*AuthManagementAPI* | [**Call2faVerify**](docs/AuthManagementAPI.md#call2faverify) | **Post** /api/v1/2fa/verify | Verify 2fa code
 *AutoscalingAPI* | [**AutoscalingDisable**](docs/AutoscalingAPI.md#autoscalingdisable) | **Post** /api/v1/autoscaling/disable | Disable autoscaling
 *AutoscalingAPI* | [**AutoscalingEdit**](docs/AutoscalingAPI.md#autoscalingedit) | **Post** /api/v1/autoscaling/edit | Edit autoscaling
 *AutoscalingAPI* | [**AutoscalingEnable**](docs/AutoscalingAPI.md#autoscalingenable) | **Post** /api/v1/autoscaling/enable | Enable autoscaling
@@ -1040,6 +1042,7 @@ Class | Method | HTTP request | Description
  - [DescribeKubernetesResourceCommand](docs/DescribeKubernetesResourceCommand.md)
  - [Diff](docs/Diff.md)
  - [DisableAutoscalingCommand](docs/DisableAutoscalingCommand.md)
+ - [DisableTwoFactorAuthCommand](docs/DisableTwoFactorAuthCommand.md)
  - [DisableUserCommand](docs/DisableUserCommand.md)
  - [DnsCommand](docs/DnsCommand.md)
  - [DnsNtpAddressEditDto](docs/DnsNtpAddressEditDto.md)
@@ -1492,6 +1495,8 @@ Class | Method | HTTP request | Description
  - [TransferList](docs/TransferList.md)
  - [TransferTicketCommand](docs/TransferTicketCommand.md)
  - [TwoFactorAuthSetupResult](docs/TwoFactorAuthSetupResult.md)
+ - [TwoFactorAuthVerifyCommand](docs/TwoFactorAuthVerifyCommand.md)
+ - [TwoFactorAuthVerifyResult](docs/TwoFactorAuthVerifyResult.md)
  - [UnbindAppRepositoryCommand](docs/UnbindAppRepositoryCommand.md)
  - [UnbindFlavorFromProjectCommand](docs/UnbindFlavorFromProjectCommand.md)
  - [UnbindProjectFromProjectGroupCommand](docs/UnbindProjectFromProjectGroupCommand.md)
