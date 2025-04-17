@@ -3235,9 +3235,9 @@ paths:
       summary: Retrieve taikun recommended repositories
       tags:
       - App repositories
-  /api/v1/2fa/disable:
+  /api/v1/two-factor-auth/disable:
     post:
-      operationId: 2fa-Disable
+      operationId: two-factor-auth-Disable
       requestBody:
         content:
           application/json:
@@ -3283,9 +3283,9 @@ paths:
       summary: Disable 2fa code
       tags:
       - Auth management
-  /api/v1/2fa/setup:
+  /api/v1/two-factor-auth/setup:
     post:
-      operationId: 2fa-setup
+      operationId: two-factor-auth-setup
       requestBody:
         content:
           application/json:
@@ -3331,9 +3331,9 @@ paths:
       summary: Setup 2fa
       tags:
       - Auth management
-  /api/v1/2fa/verify:
+  /api/v1/two-factor-auth/verify:
     post:
-      operationId: 2fa-Verify
+      operationId: two-factor-auth-Verify
       requestBody:
         content:
           application/json:
@@ -5916,8 +5916,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-04-15T14:03:59.4561467Z
-                  createdAt: 2025-04-15T14:03:59.4561467Z
+                  lastValidated: 2025-04-17T00:03:35.8884696Z
+                  createdAt: 2025-04-17T00:03:35.8884696Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6022,14 +6022,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-04-15T14:03:59.4561467Z
+                    lastBackup: 2025-04-17T00:03:35.8884696Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-04-15T14:03:59.4561467Z
+                  createdAt: 2025-04-17T00:03:35.8884696Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-04-15T14:03:59.4561467Z
+                  lastBackup: 2025-04-17T00:03:35.8884696Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6134,8 +6134,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-15T14:03:59.4561467Z
-                  expiration: 2025-04-15T14:03:59.4561467Z
+                  createdAt: 2025-04-17T00:03:35.8884696Z
+                  expiration: 2025-04-17T00:03:35.8884696Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6239,7 +6239,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-15T14:03:59.4561467Z
+                  createdAt: 2025-04-17T00:03:35.8884696Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6349,9 +6349,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-04-15T14:03:59.4561467+00:00
-                  startTimeStamp: 2025-04-15T14:03:59.4561467+00:00
-                  createdAt: 2025-04-15T14:03:59.4561467Z
+                  completionDateTime: 2025-04-17T00:03:35.8884696+00:00
+                  startTimeStamp: 2025-04-17T00:03:35.8884696+00:00
+                  createdAt: 2025-04-17T00:03:35.8884696Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -23878,7 +23878,7 @@ paths:
       tags:
       - Project apps
   /api/v1/projectapp/uninstall/{projectAppId}:
-    delete:
+    post:
       operationId: projectapp-delete
       parameters:
       - explode: false
@@ -23891,6 +23891,10 @@ paths:
         style: simple
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UninstallProjectAppResult'
           description: OK
         "400":
           content:
@@ -65973,6 +65977,14 @@ components:
             type: integer
           nullable: true
           type: array
+      type: object
+    UninstallProjectAppResult:
+      additionalProperties: false
+      example:
+        isJobSkipped: true
+      properties:
+        isJobSkipped:
+          type: boolean
       type: object
     UnshelveStandaloneVmCommand:
       additionalProperties: false

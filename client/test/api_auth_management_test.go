@@ -103,11 +103,11 @@ func Test_taikuncore_AuthManagementAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AuthManagementAPIService Call2faDisable", func(t *testing.T) {
+	t.Run("Test AuthManagementAPIService TwoFactorAuthDisable", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.AuthManagementAPI.Call2faDisable(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AuthManagementAPI.TwoFactorAuthDisable(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -115,11 +115,11 @@ func Test_taikuncore_AuthManagementAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AuthManagementAPIService Call2faSetup", func(t *testing.T) {
+	t.Run("Test AuthManagementAPIService TwoFactorAuthSetup", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.AuthManagementAPI.Call2faSetup(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AuthManagementAPI.TwoFactorAuthSetup(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -127,11 +127,11 @@ func Test_taikuncore_AuthManagementAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AuthManagementAPIService Call2faVerify", func(t *testing.T) {
+	t.Run("Test AuthManagementAPIService TwoFactorAuthVerify", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.AuthManagementAPI.Call2faVerify(context.Background()).Execute()
+		resp, httpRes, err := apiClient.AuthManagementAPI.TwoFactorAuthVerify(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

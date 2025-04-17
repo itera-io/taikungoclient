@@ -50,9 +50,10 @@ func Test_taikuncore_ProjectAppsAPIService(t *testing.T) {
 
 		var projectAppId int32
 
-		httpRes, err := apiClient.ProjectAppsAPI.ProjectappDelete(context.Background(), projectAppId).Execute()
+		resp, httpRes, err := apiClient.ProjectAppsAPI.ProjectappDelete(context.Background(), projectAppId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

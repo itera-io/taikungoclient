@@ -150,9 +150,9 @@ Class | Method | HTTP request | Description
 *AuthManagementAPI* | [**AuthResetPassword**](docs/AuthManagementAPI.md#authresetpassword) | **Post** /api/v1/auth/resetpassword | Reset password
 *AuthManagementAPI* | [**AuthTrial**](docs/AuthManagementAPI.md#authtrial) | **Post** /api/v1/auth/trial | New registration
 *AuthManagementAPI* | [**AuthVerify2fa**](docs/AuthManagementAPI.md#authverify2fa) | **Post** /api/v1/auth/verify-2fa | Verify 2FA
-*AuthManagementAPI* | [**Call2faDisable**](docs/AuthManagementAPI.md#call2fadisable) | **Post** /api/v1/2fa/disable | Disable 2fa code
-*AuthManagementAPI* | [**Call2faSetup**](docs/AuthManagementAPI.md#call2fasetup) | **Post** /api/v1/2fa/setup | Setup 2fa
-*AuthManagementAPI* | [**Call2faVerify**](docs/AuthManagementAPI.md#call2faverify) | **Post** /api/v1/2fa/verify | Verify 2fa code
+*AuthManagementAPI* | [**TwoFactorAuthDisable**](docs/AuthManagementAPI.md#twofactorauthdisable) | **Post** /api/v1/two-factor-auth/disable | Disable 2fa code
+*AuthManagementAPI* | [**TwoFactorAuthSetup**](docs/AuthManagementAPI.md#twofactorauthsetup) | **Post** /api/v1/two-factor-auth/setup | Setup 2fa
+*AuthManagementAPI* | [**TwoFactorAuthVerify**](docs/AuthManagementAPI.md#twofactorauthverify) | **Post** /api/v1/two-factor-auth/verify | Verify 2fa code
 *AutoscalingAPI* | [**AutoscalingDisable**](docs/AutoscalingAPI.md#autoscalingdisable) | **Post** /api/v1/autoscaling/disable | Disable autoscaling
 *AutoscalingAPI* | [**AutoscalingEdit**](docs/AutoscalingAPI.md#autoscalingedit) | **Post** /api/v1/autoscaling/edit | Edit autoscaling
 *AutoscalingAPI* | [**AutoscalingEnable**](docs/AutoscalingAPI.md#autoscalingenable) | **Post** /api/v1/autoscaling/enable | Enable autoscaling
@@ -488,7 +488,7 @@ Class | Method | HTTP request | Description
 *ProjectAppParamsAPI* | [**ProjectappparamEdit**](docs/ProjectAppParamsAPI.md#projectappparamedit) | **Put** /api/v1/projectappparam/edit/{projectAppId} | Edit project app params
 *ProjectAppsAPI* | [**ProjectappAutosync**](docs/ProjectAppsAPI.md#projectappautosync) | **Post** /api/v1/projectapp/autosync | AutoSync management
 *ProjectAppsAPI* | [**ProjectappCancel**](docs/ProjectAppsAPI.md#projectappcancel) | **Post** /api/v1/projectapp/cancel | Cancel an application
-*ProjectAppsAPI* | [**ProjectappDelete**](docs/ProjectAppsAPI.md#projectappdelete) | **Delete** /api/v1/projectapp/uninstall/{projectAppId} | Uninstall application
+*ProjectAppsAPI* | [**ProjectappDelete**](docs/ProjectAppsAPI.md#projectappdelete) | **Post** /api/v1/projectapp/uninstall/{projectAppId} | Uninstall application
 *ProjectAppsAPI* | [**ProjectappDetails**](docs/ProjectAppsAPI.md#projectappdetails) | **Get** /api/v1/projectapp/{id} | Retrieve project app&#39;s details
 *ProjectAppsAPI* | [**ProjectappInstall**](docs/ProjectAppsAPI.md#projectappinstall) | **Post** /api/v1/projectapp/install | Install an application
 *ProjectAppsAPI* | [**ProjectappList**](docs/ProjectAppsAPI.md#projectapplist) | **Get** /api/v1/projectapp/list | Retrieve all project apps according to current organization
@@ -1503,6 +1503,7 @@ Class | Method | HTTP request | Description
  - [UnbindProjectGroupFromUserGroupCommand](docs/UnbindProjectGroupFromUserGroupCommand.md)
  - [UnbindUserFromUserGroupCommand](docs/UnbindUserFromUserGroupCommand.md)
  - [UnbindUserGroupFromProjectGroupCommand](docs/UnbindUserGroupFromProjectGroupCommand.md)
+ - [UninstallProjectAppResult](docs/UninstallProjectAppResult.md)
  - [UnshelveStandaloneVmCommand](docs/UnshelveStandaloneVmCommand.md)
  - [UpdateAccessProfileDto](docs/UpdateAccessProfileDto.md)
  - [UpdateAlertingProfileCommand](docs/UpdateAlertingProfileCommand.md)

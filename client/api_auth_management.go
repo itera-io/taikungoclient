@@ -1139,29 +1139,29 @@ func (a *AuthManagementAPIService) AuthVerify2faExecute(r ApiAuthVerify2faReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCall2faDisableRequest struct {
+type ApiTwoFactorAuthDisableRequest struct {
 	ctx context.Context
 	ApiService *AuthManagementAPIService
 	disableTwoFactorAuthCommand *DisableTwoFactorAuthCommand
 }
 
-func (r ApiCall2faDisableRequest) DisableTwoFactorAuthCommand(disableTwoFactorAuthCommand DisableTwoFactorAuthCommand) ApiCall2faDisableRequest {
+func (r ApiTwoFactorAuthDisableRequest) DisableTwoFactorAuthCommand(disableTwoFactorAuthCommand DisableTwoFactorAuthCommand) ApiTwoFactorAuthDisableRequest {
 	r.disableTwoFactorAuthCommand = &disableTwoFactorAuthCommand
 	return r
 }
 
-func (r ApiCall2faDisableRequest) Execute() (map[string]interface{}, *http.Response, error) {
-	return r.ApiService.Call2faDisableExecute(r)
+func (r ApiTwoFactorAuthDisableRequest) Execute() (map[string]interface{}, *http.Response, error) {
+	return r.ApiService.TwoFactorAuthDisableExecute(r)
 }
 
 /*
-Call2faDisable Disable 2fa code
+TwoFactorAuthDisable Disable 2fa code
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCall2faDisableRequest
+ @return ApiTwoFactorAuthDisableRequest
 */
-func (a *AuthManagementAPIService) Call2faDisable(ctx context.Context) ApiCall2faDisableRequest {
-	return ApiCall2faDisableRequest{
+func (a *AuthManagementAPIService) TwoFactorAuthDisable(ctx context.Context) ApiTwoFactorAuthDisableRequest {
+	return ApiTwoFactorAuthDisableRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1169,7 +1169,7 @@ func (a *AuthManagementAPIService) Call2faDisable(ctx context.Context) ApiCall2f
 
 // Execute executes the request
 //  @return map[string]interface{}
-func (a *AuthManagementAPIService) Call2faDisableExecute(r ApiCall2faDisableRequest) (map[string]interface{}, *http.Response, error) {
+func (a *AuthManagementAPIService) TwoFactorAuthDisableExecute(r ApiTwoFactorAuthDisableRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1177,12 +1177,12 @@ func (a *AuthManagementAPIService) Call2faDisableExecute(r ApiCall2faDisableRequ
 		localVarReturnValue  map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.Call2faDisable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.TwoFactorAuthDisable")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/2fa/disable"
+	localVarPath := localBasePath + "/api/v1/two-factor-auth/disable"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1312,29 +1312,29 @@ func (a *AuthManagementAPIService) Call2faDisableExecute(r ApiCall2faDisableRequ
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCall2faSetupRequest struct {
+type ApiTwoFactorAuthSetupRequest struct {
 	ctx context.Context
 	ApiService *AuthManagementAPIService
 	body *map[string]interface{}
 }
 
-func (r ApiCall2faSetupRequest) Body(body map[string]interface{}) ApiCall2faSetupRequest {
+func (r ApiTwoFactorAuthSetupRequest) Body(body map[string]interface{}) ApiTwoFactorAuthSetupRequest {
 	r.body = &body
 	return r
 }
 
-func (r ApiCall2faSetupRequest) Execute() (*TwoFactorAuthSetupResult, *http.Response, error) {
-	return r.ApiService.Call2faSetupExecute(r)
+func (r ApiTwoFactorAuthSetupRequest) Execute() (*TwoFactorAuthSetupResult, *http.Response, error) {
+	return r.ApiService.TwoFactorAuthSetupExecute(r)
 }
 
 /*
-Call2faSetup Setup 2fa
+TwoFactorAuthSetup Setup 2fa
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCall2faSetupRequest
+ @return ApiTwoFactorAuthSetupRequest
 */
-func (a *AuthManagementAPIService) Call2faSetup(ctx context.Context) ApiCall2faSetupRequest {
-	return ApiCall2faSetupRequest{
+func (a *AuthManagementAPIService) TwoFactorAuthSetup(ctx context.Context) ApiTwoFactorAuthSetupRequest {
+	return ApiTwoFactorAuthSetupRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1342,7 +1342,7 @@ func (a *AuthManagementAPIService) Call2faSetup(ctx context.Context) ApiCall2faS
 
 // Execute executes the request
 //  @return TwoFactorAuthSetupResult
-func (a *AuthManagementAPIService) Call2faSetupExecute(r ApiCall2faSetupRequest) (*TwoFactorAuthSetupResult, *http.Response, error) {
+func (a *AuthManagementAPIService) TwoFactorAuthSetupExecute(r ApiTwoFactorAuthSetupRequest) (*TwoFactorAuthSetupResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1350,12 +1350,12 @@ func (a *AuthManagementAPIService) Call2faSetupExecute(r ApiCall2faSetupRequest)
 		localVarReturnValue  *TwoFactorAuthSetupResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.Call2faSetup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.TwoFactorAuthSetup")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/2fa/setup"
+	localVarPath := localBasePath + "/api/v1/two-factor-auth/setup"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1485,29 +1485,29 @@ func (a *AuthManagementAPIService) Call2faSetupExecute(r ApiCall2faSetupRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCall2faVerifyRequest struct {
+type ApiTwoFactorAuthVerifyRequest struct {
 	ctx context.Context
 	ApiService *AuthManagementAPIService
 	twoFactorAuthVerifyCommand *TwoFactorAuthVerifyCommand
 }
 
-func (r ApiCall2faVerifyRequest) TwoFactorAuthVerifyCommand(twoFactorAuthVerifyCommand TwoFactorAuthVerifyCommand) ApiCall2faVerifyRequest {
+func (r ApiTwoFactorAuthVerifyRequest) TwoFactorAuthVerifyCommand(twoFactorAuthVerifyCommand TwoFactorAuthVerifyCommand) ApiTwoFactorAuthVerifyRequest {
 	r.twoFactorAuthVerifyCommand = &twoFactorAuthVerifyCommand
 	return r
 }
 
-func (r ApiCall2faVerifyRequest) Execute() (*TwoFactorAuthVerifyResult, *http.Response, error) {
-	return r.ApiService.Call2faVerifyExecute(r)
+func (r ApiTwoFactorAuthVerifyRequest) Execute() (*TwoFactorAuthVerifyResult, *http.Response, error) {
+	return r.ApiService.TwoFactorAuthVerifyExecute(r)
 }
 
 /*
-Call2faVerify Verify 2fa code
+TwoFactorAuthVerify Verify 2fa code
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCall2faVerifyRequest
+ @return ApiTwoFactorAuthVerifyRequest
 */
-func (a *AuthManagementAPIService) Call2faVerify(ctx context.Context) ApiCall2faVerifyRequest {
-	return ApiCall2faVerifyRequest{
+func (a *AuthManagementAPIService) TwoFactorAuthVerify(ctx context.Context) ApiTwoFactorAuthVerifyRequest {
+	return ApiTwoFactorAuthVerifyRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -1515,7 +1515,7 @@ func (a *AuthManagementAPIService) Call2faVerify(ctx context.Context) ApiCall2fa
 
 // Execute executes the request
 //  @return TwoFactorAuthVerifyResult
-func (a *AuthManagementAPIService) Call2faVerifyExecute(r ApiCall2faVerifyRequest) (*TwoFactorAuthVerifyResult, *http.Response, error) {
+func (a *AuthManagementAPIService) TwoFactorAuthVerifyExecute(r ApiTwoFactorAuthVerifyRequest) (*TwoFactorAuthVerifyResult, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -1523,12 +1523,12 @@ func (a *AuthManagementAPIService) Call2faVerifyExecute(r ApiCall2faVerifyReques
 		localVarReturnValue  *TwoFactorAuthVerifyResult
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.Call2faVerify")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.TwoFactorAuthVerify")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/2fa/verify"
+	localVarPath := localBasePath + "/api/v1/two-factor-auth/verify"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
