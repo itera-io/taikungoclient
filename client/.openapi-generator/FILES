@@ -894,6 +894,7 @@ docs/ToggleNotificationModeCommand.md
 docs/ToggleTwoFactorAuthenticationCommand.md
 docs/TransferList.md
 docs/TransferTicketCommand.md
+docs/TwoFactorAuthLoginCommand.md
 docs/TwoFactorAuthSetupResult.md
 docs/TwoFactorAuthVerifyCommand.md
 docs/TwoFactorAuthVerifyResult.md
@@ -1735,6 +1736,7 @@ model_toggle_notification_mode_command.go
 model_toggle_two_factor_authentication_command.go
 model_transfer_list.go
 model_transfer_ticket_command.go
+model_two_factor_auth_login_command.go
 model_two_factor_auth_setup_result.go
 model_two_factor_auth_verify_command.go
 model_two_factor_auth_verify_result.go

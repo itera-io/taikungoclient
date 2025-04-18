@@ -151,6 +151,7 @@ Class | Method | HTTP request | Description
 *AuthManagementAPI* | [**AuthTrial**](docs/AuthManagementAPI.md#authtrial) | **Post** /api/v1/auth/trial | New registration
 *AuthManagementAPI* | [**AuthVerify2fa**](docs/AuthManagementAPI.md#authverify2fa) | **Post** /api/v1/auth/verify-2fa | Verify 2FA
 *AuthManagementAPI* | [**TwoFactorAuthDisable**](docs/AuthManagementAPI.md#twofactorauthdisable) | **Post** /api/v1/two-factor-auth/disable | Disable 2fa code
+*AuthManagementAPI* | [**TwoFactorAuthLogin**](docs/AuthManagementAPI.md#twofactorauthlogin) | **Post** /api/v1/two-factor-auth/login | Login to API by providing two-factor auth code
 *AuthManagementAPI* | [**TwoFactorAuthSetup**](docs/AuthManagementAPI.md#twofactorauthsetup) | **Post** /api/v1/two-factor-auth/setup | Setup 2fa
 *AuthManagementAPI* | [**TwoFactorAuthVerify**](docs/AuthManagementAPI.md#twofactorauthverify) | **Post** /api/v1/two-factor-auth/verify | Verify 2fa code
 *AutoscalingAPI* | [**AutoscalingDisable**](docs/AutoscalingAPI.md#autoscalingdisable) | **Post** /api/v1/autoscaling/disable | Disable autoscaling
@@ -1494,6 +1495,7 @@ Class | Method | HTTP request | Description
  - [ToggleTwoFactorAuthenticationCommand](docs/ToggleTwoFactorAuthenticationCommand.md)
  - [TransferList](docs/TransferList.md)
  - [TransferTicketCommand](docs/TransferTicketCommand.md)
+ - [TwoFactorAuthLoginCommand](docs/TwoFactorAuthLoginCommand.md)
  - [TwoFactorAuthSetupResult](docs/TwoFactorAuthSetupResult.md)
  - [TwoFactorAuthVerifyCommand](docs/TwoFactorAuthVerifyCommand.md)
  - [TwoFactorAuthVerifyResult](docs/TwoFactorAuthVerifyResult.md)

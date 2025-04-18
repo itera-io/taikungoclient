@@ -3283,6 +3283,54 @@ paths:
       summary: Disable 2fa code
       tags:
       - Auth management
+  /api/v1/two-factor-auth/login:
+    post:
+      operationId: two-factor-auth-login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TwoFactorAuthLoginCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetToken'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Login to API by providing two-factor auth code
+      tags:
+      - Auth management
   /api/v1/two-factor-auth/setup:
     post:
       operationId: two-factor-auth-setup
@@ -5916,8 +5964,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-04-17T00:03:35.8884696Z
-                  createdAt: 2025-04-17T00:03:35.8884696Z
+                  lastValidated: 2025-04-18T00:03:30.1734054Z
+                  createdAt: 2025-04-18T00:03:30.1734054Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6022,14 +6070,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-04-17T00:03:35.8884696Z
+                    lastBackup: 2025-04-18T00:03:30.1734054Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-04-17T00:03:35.8884696Z
+                  createdAt: 2025-04-18T00:03:30.1734054Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-04-17T00:03:35.8884696Z
+                  lastBackup: 2025-04-18T00:03:30.1734054Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6134,8 +6182,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-17T00:03:35.8884696Z
-                  expiration: 2025-04-17T00:03:35.8884696Z
+                  createdAt: 2025-04-18T00:03:30.1734054Z
+                  expiration: 2025-04-18T00:03:30.1734054Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6239,7 +6287,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-17T00:03:35.8884696Z
+                  createdAt: 2025-04-18T00:03:30.1734054Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6349,9 +6397,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-04-17T00:03:35.8884696+00:00
-                  startTimeStamp: 2025-04-17T00:03:35.8884696+00:00
-                  createdAt: 2025-04-17T00:03:35.8884696Z
+                  completionDateTime: 2025-04-18T00:03:30.1734054+00:00
+                  startTimeStamp: 2025-04-18T00:03:30.1734054+00:00
+                  createdAt: 2025-04-18T00:03:30.1734054Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -65834,6 +65882,15 @@ components:
           nullable: true
           type: string
         userId:
+          nullable: true
+          type: string
+      type: object
+    TwoFactorAuthLoginCommand:
+      additionalProperties: false
+      example:
+        verificationCode: verificationCode
+      properties:
+        verificationCode:
           nullable: true
           type: string
       type: object
