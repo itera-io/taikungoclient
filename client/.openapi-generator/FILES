@@ -968,6 +968,9 @@ docs/VerifySlackCredentialsCommand.md
 docs/VerifyTwoFactorTokenCommand.md
 docs/VerifyWebhookCommand.md
 docs/VirtualClusterAPI.md
+docs/VirtualClusterQuotaLimitRangeDto.md
+docs/VirtualClusterQuotaPresetDto.md
+docs/VirtualClusterQuotasDto.md
 docs/VmConsoleScreenshotCommand.md
 docs/VmTemplateListCommand.md
 docs/VsphereCloudCredentialAPI.md
@@ -1806,6 +1809,9 @@ model_verify_email_command.go
 model_verify_slack_credentials_command.go
 model_verify_two_factor_token_command.go
 model_verify_webhook_command.go
+model_virtual_cluster_quota_limit_range_dto.go
+model_virtual_cluster_quota_preset_dto.go
+model_virtual_cluster_quotas_dto.go
 model_vm_console_screenshot_command.go
 model_vm_template_list_command.go
 model_vsphere_flavor_data.go

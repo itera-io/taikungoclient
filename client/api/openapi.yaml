@@ -6099,8 +6099,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-04-23T08:56:00.7632452Z
-                  createdAt: 2025-04-23T08:56:00.7632452Z
+                  lastValidated: 2025-04-24T15:38:01.6710862Z
+                  createdAt: 2025-04-24T15:38:01.6710862Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6205,14 +6205,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-04-23T08:56:00.7632452Z
+                    lastBackup: 2025-04-24T15:38:01.6710862Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-04-23T08:56:00.7632452Z
+                  createdAt: 2025-04-24T15:38:01.6710862Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-04-23T08:56:00.7632452Z
+                  lastBackup: 2025-04-24T15:38:01.6710862Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6317,8 +6317,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-23T08:56:00.7632452Z
-                  expiration: 2025-04-23T08:56:00.7632452Z
+                  createdAt: 2025-04-24T15:38:01.6710862Z
+                  expiration: 2025-04-24T15:38:01.6710862Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6422,7 +6422,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-23T08:56:00.7632452Z
+                  createdAt: 2025-04-24T15:38:01.6710862Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6532,9 +6532,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-04-23T08:56:00.7632452+00:00
-                  startTimeStamp: 2025-04-23T08:56:00.7632452+00:00
-                  createdAt: 2025-04-23T08:56:00.7632452Z
+                  completionDateTime: 2025-04-24T15:38:01.6710862+00:00
+                  startTimeStamp: 2025-04-24T15:38:01.6710862+00:00
+                  createdAt: 2025-04-24T15:38:01.6710862Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -37127,6 +37127,49 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Retrieve vcluster quota details
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/quota-presets:
+    get:
+      operationId: virtual-cluster-quota-presets
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualClusterQuotasDto'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Retrieve vCluster quota presets
       tags:
       - Virtual Cluster
   /api/v1/virtual-cluster/visibility/{projectId}:
@@ -68020,6 +68063,143 @@ components:
         url:
           nullable: true
           type: string
+      type: object
+    VirtualClusterQuotaLimitRangeDto:
+      additionalProperties: false
+      example:
+        minRequest: 4.145608029883936
+        maxLimit: 2.027123023002322
+        defaultLimit: 7.386281948385884
+        name: name
+        defaultRequest: 1.2315135367772556
+      properties:
+        name:
+          nullable: true
+          type: string
+        maxLimit:
+          format: double
+          type: number
+        minRequest:
+          format: double
+          type: number
+        defaultLimit:
+          format: double
+          type: number
+        defaultRequest:
+          format: double
+          type: number
+      required:
+      - defaultLimit
+      - defaultRequest
+      - maxLimit
+      - minRequest
+      - name
+      type: object
+    VirtualClusterQuotaPresetDto:
+      additionalProperties: false
+      example:
+        ingresses: 9
+        pvcs: 2
+        name: name
+        loadBalancers: 3
+        pods: 0
+        ramRequests: 5
+        ramLimits: 5
+        cpuLimits: 1
+        cpuRequests: 6
+        totalPvcSize: 7
+      properties:
+        name:
+          nullable: true
+          type: string
+        pods:
+          format: int32
+          type: integer
+        cpuRequests:
+          format: int32
+          type: integer
+        cpuLimits:
+          format: int32
+          type: integer
+        ramRequests:
+          format: int64
+          type: integer
+        ramLimits:
+          format: int64
+          type: integer
+        pvcs:
+          format: int32
+          type: integer
+        totalPvcSize:
+          format: int64
+          type: integer
+        ingresses:
+          format: int32
+          type: integer
+        loadBalancers:
+          format: int32
+          type: integer
+      required:
+      - cpuLimits
+      - cpuRequests
+      - ingresses
+      - loadBalancers
+      - name
+      - pods
+      - pvcs
+      - ramLimits
+      - ramRequests
+      - totalPvcSize
+      type: object
+    VirtualClusterQuotasDto:
+      additionalProperties: false
+      example:
+        presets:
+        - ingresses: 9
+          pvcs: 2
+          name: name
+          loadBalancers: 3
+          pods: 0
+          ramRequests: 5
+          ramLimits: 5
+          cpuLimits: 1
+          cpuRequests: 6
+          totalPvcSize: 7
+        - ingresses: 9
+          pvcs: 2
+          name: name
+          loadBalancers: 3
+          pods: 0
+          ramRequests: 5
+          ramLimits: 5
+          cpuLimits: 1
+          cpuRequests: 6
+          totalPvcSize: 7
+        limitRanges:
+        - minRequest: 4.145608029883936
+          maxLimit: 2.027123023002322
+          defaultLimit: 7.386281948385884
+          name: name
+          defaultRequest: 1.2315135367772556
+        - minRequest: 4.145608029883936
+          maxLimit: 2.027123023002322
+          defaultLimit: 7.386281948385884
+          name: name
+          defaultRequest: 1.2315135367772556
+      properties:
+        presets:
+          items:
+            $ref: '#/components/schemas/VirtualClusterQuotaPresetDto'
+          nullable: true
+          type: array
+        limitRanges:
+          items:
+            $ref: '#/components/schemas/VirtualClusterQuotaLimitRangeDto'
+          nullable: true
+          type: array
+      required:
+      - limitRanges
+      - presets
       type: object
     VmConsoleScreenshotCommand:
       additionalProperties: false
