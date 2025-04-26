@@ -48,6 +48,8 @@ type EnumList struct {
 	RetentionPeriods []CommonStringBasedDropdownDto `json:"retentionPeriods"`
 	TicketPriorities []CommonDropdownDto `json:"ticketPriorities"`
 	ProxmoxRoles []CommonDropdownDto `json:"proxmoxRoles"`
+	ProjectResourceTypes []CommonDropdownDto `json:"projectResourceTypes"`
+	ProjectResourceUnits []CommonDropdownDto `json:"projectResourceUnits"`
 }
 
 type _EnumList EnumList
@@ -56,7 +58,7 @@ type _EnumList EnumList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnumList(cloudTypes []CommonDropdownDto, projectStatuses []CommonDropdownDto, serverRoles []CommonDropdownDto, serverStatuses []CommonDropdownDto, userRoles []CommonDropdownDto, securityGroupRules []CommonDropdownDto, prometheusTypes []CommonDropdownDto, auditLogs []CommonDropdownDto, rebootOptions []CommonDropdownDto, availability []CommonAvailabilityDto, slackTypes []CommonDropdownDto, requestLogs []CommonDropdownDto, azureQuotas []CommonDropdownDto, showbackKinds []CommonDropdownDto, alertTypes []CommonDropdownDto, reminderTypes []CommonDropdownDto, awsPlatforms []CommonStringBasedDropdownDto, cronPeriods []CommonStringBasedDropdownDto, validityPeriods []CommonDropdownDto, alertingIntegrationTypes []CommonDropdownDto, googleImageTypes []CommonDropdownDto, standaloneVmStatuses []CommonDropdownDto, openstackContinents []CommonStringBasedDropdownDto, retentionPeriods []CommonStringBasedDropdownDto, ticketPriorities []CommonDropdownDto, proxmoxRoles []CommonDropdownDto) *EnumList {
+func NewEnumList(cloudTypes []CommonDropdownDto, projectStatuses []CommonDropdownDto, serverRoles []CommonDropdownDto, serverStatuses []CommonDropdownDto, userRoles []CommonDropdownDto, securityGroupRules []CommonDropdownDto, prometheusTypes []CommonDropdownDto, auditLogs []CommonDropdownDto, rebootOptions []CommonDropdownDto, availability []CommonAvailabilityDto, slackTypes []CommonDropdownDto, requestLogs []CommonDropdownDto, azureQuotas []CommonDropdownDto, showbackKinds []CommonDropdownDto, alertTypes []CommonDropdownDto, reminderTypes []CommonDropdownDto, awsPlatforms []CommonStringBasedDropdownDto, cronPeriods []CommonStringBasedDropdownDto, validityPeriods []CommonDropdownDto, alertingIntegrationTypes []CommonDropdownDto, googleImageTypes []CommonDropdownDto, standaloneVmStatuses []CommonDropdownDto, openstackContinents []CommonStringBasedDropdownDto, retentionPeriods []CommonStringBasedDropdownDto, ticketPriorities []CommonDropdownDto, proxmoxRoles []CommonDropdownDto, projectResourceTypes []CommonDropdownDto, projectResourceUnits []CommonDropdownDto) *EnumList {
 	this := EnumList{}
 	this.CloudTypes = cloudTypes
 	this.ProjectStatuses = projectStatuses
@@ -84,6 +86,8 @@ func NewEnumList(cloudTypes []CommonDropdownDto, projectStatuses []CommonDropdow
 	this.RetentionPeriods = retentionPeriods
 	this.TicketPriorities = ticketPriorities
 	this.ProxmoxRoles = proxmoxRoles
+	this.ProjectResourceTypes = projectResourceTypes
+	this.ProjectResourceUnits = projectResourceUnits
 	return &this
 }
 
@@ -771,6 +775,58 @@ func (o *EnumList) SetProxmoxRoles(v []CommonDropdownDto) {
 	o.ProxmoxRoles = v
 }
 
+// GetProjectResourceTypes returns the ProjectResourceTypes field value
+// If the value is explicit nil, the zero value for []CommonDropdownDto will be returned
+func (o *EnumList) GetProjectResourceTypes() []CommonDropdownDto {
+	if o == nil {
+		var ret []CommonDropdownDto
+		return ret
+	}
+
+	return o.ProjectResourceTypes
+}
+
+// GetProjectResourceTypesOk returns a tuple with the ProjectResourceTypes field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EnumList) GetProjectResourceTypesOk() ([]CommonDropdownDto, bool) {
+	if o == nil || IsNil(o.ProjectResourceTypes) {
+		return nil, false
+	}
+	return o.ProjectResourceTypes, true
+}
+
+// SetProjectResourceTypes sets field value
+func (o *EnumList) SetProjectResourceTypes(v []CommonDropdownDto) {
+	o.ProjectResourceTypes = v
+}
+
+// GetProjectResourceUnits returns the ProjectResourceUnits field value
+// If the value is explicit nil, the zero value for []CommonDropdownDto will be returned
+func (o *EnumList) GetProjectResourceUnits() []CommonDropdownDto {
+	if o == nil {
+		var ret []CommonDropdownDto
+		return ret
+	}
+
+	return o.ProjectResourceUnits
+}
+
+// GetProjectResourceUnitsOk returns a tuple with the ProjectResourceUnits field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EnumList) GetProjectResourceUnitsOk() ([]CommonDropdownDto, bool) {
+	if o == nil || IsNil(o.ProjectResourceUnits) {
+		return nil, false
+	}
+	return o.ProjectResourceUnits, true
+}
+
+// SetProjectResourceUnits sets field value
+func (o *EnumList) SetProjectResourceUnits(v []CommonDropdownDto) {
+	o.ProjectResourceUnits = v
+}
+
 func (o EnumList) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -859,6 +915,12 @@ func (o EnumList) ToMap() (map[string]interface{}, error) {
 	if o.ProxmoxRoles != nil {
 		toSerialize["proxmoxRoles"] = o.ProxmoxRoles
 	}
+	if o.ProjectResourceTypes != nil {
+		toSerialize["projectResourceTypes"] = o.ProjectResourceTypes
+	}
+	if o.ProjectResourceUnits != nil {
+		toSerialize["projectResourceUnits"] = o.ProjectResourceUnits
+	}
 	return toSerialize, nil
 }
 
@@ -893,6 +955,8 @@ func (o *EnumList) UnmarshalJSON(data []byte) (err error) {
 		"retentionPeriods",
 		"ticketPriorities",
 		"proxmoxRoles",
+		"projectResourceTypes",
+		"projectResourceUnits",
 	}
 
 	allProperties := make(map[string]interface{})

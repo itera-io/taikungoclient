@@ -6099,8 +6099,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-04-24T15:38:01.6710862Z
-                  createdAt: 2025-04-24T15:38:01.6710862Z
+                  lastValidated: 2025-04-26T00:03:23.3010167Z
+                  createdAt: 2025-04-26T00:03:23.3010167Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6205,14 +6205,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-04-24T15:38:01.6710862Z
+                    lastBackup: 2025-04-26T00:03:23.3010167Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-04-24T15:38:01.6710862Z
+                  createdAt: 2025-04-26T00:03:23.3010167Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-04-24T15:38:01.6710862Z
+                  lastBackup: 2025-04-26T00:03:23.3010167Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6317,8 +6317,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-24T15:38:01.6710862Z
-                  expiration: 2025-04-24T15:38:01.6710862Z
+                  createdAt: 2025-04-26T00:03:23.3010167Z
+                  expiration: 2025-04-26T00:03:23.3010167Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6422,7 +6422,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-24T15:38:01.6710862Z
+                  createdAt: 2025-04-26T00:03:23.3010167Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6532,9 +6532,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-04-24T15:38:01.6710862+00:00
-                  startTimeStamp: 2025-04-24T15:38:01.6710862+00:00
-                  createdAt: 2025-04-24T15:38:01.6710862Z
+                  completionDateTime: 2025-04-26T00:03:23.3010167+00:00
+                  startTimeStamp: 2025-04-26T00:03:23.3010167+00:00
+                  createdAt: 2025-04-26T00:03:23.3010167Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -46355,9 +46355,32 @@ components:
         exposeHostname: exposeHostname
         deleteOnExpiration: true
         alertingProfileId: 1
+        limitRanges:
+        - minRequest: 1.0246457001441578
+          resourceUnit: Cores
+          maxLimit: 1.2315135367772556
+          defaultLimit: 1.4894159098541704
+          defaultRequest: 6.84685269835264
+          resourceType: Cpu
+        - minRequest: 1.0246457001441578
+          resourceUnit: Cores
+          maxLimit: 1.2315135367772556
+          defaultLimit: 1.4894159098541704
+          defaultRequest: 6.84685269835264
+          resourceType: Cpu
         cloudId: 0
         name: name
         projectId: 6
+        limits:
+          ingresses: 4
+          pvcs: 3
+          loadBalancers: 7
+          pods: 5
+          ramRequests: 7
+          ramLimits: 9
+          cpuLimits: 2.3021358869347655
+          cpuRequests: 5.637376656633329
+          totalPvcSize: 2
       properties:
         cloudId:
           format: int32
@@ -46367,7 +46390,6 @@ components:
           format: int32
           type: integer
         name:
-          nullable: true
           type: string
         expiredAt:
           format: date-time
@@ -46380,8 +46402,14 @@ components:
           nullable: true
           type: integer
         exposeHostname:
-          nullable: true
           type: string
+        limits:
+          $ref: '#/components/schemas/VirtualClusterResourceLimits'
+        limitRanges:
+          items:
+            $ref: '#/components/schemas/VirtualClusterResourceLimitRanges'
+          nullable: true
+          type: array
       type: object
     CreateVsphereCommand:
       additionalProperties: false
@@ -48472,6 +48500,17 @@ components:
       - Uncordon
       - Drain
       type: string
+    EProjectResourceType:
+      enum:
+      - Cpu
+      - Ram
+      - EphemeralStorage
+      type: string
+    EProjectResourceUnit:
+      enum:
+      - Cores
+      - Bytes
+      type: string
     EStsAction:
       enum:
       - Restart
@@ -48848,6 +48887,11 @@ components:
           id: 0
         - name: name
           id: 0
+        projectResourceTypes:
+        - name: name
+          id: 0
+        - name: name
+          id: 0
         alertTypes:
         - name: name
           id: 0
@@ -48879,6 +48923,11 @@ components:
         - name: name
           id: id
         serverRoles:
+        - name: name
+          id: 0
+        - name: name
+          id: 0
+        projectResourceUnits:
         - name: name
           id: 0
         - name: name
@@ -49034,6 +49083,16 @@ components:
             $ref: '#/components/schemas/CommonDropdownDto'
           nullable: true
           type: array
+        projectResourceTypes:
+          items:
+            $ref: '#/components/schemas/CommonDropdownDto'
+          nullable: true
+          type: array
+        projectResourceUnits:
+          items:
+            $ref: '#/components/schemas/CommonDropdownDto'
+          nullable: true
+          type: array
       required:
       - alertTypes
       - alertingIntegrationTypes
@@ -49045,6 +49104,8 @@ components:
       - cronPeriods
       - googleImageTypes
       - openstackContinents
+      - projectResourceTypes
+      - projectResourceUnits
       - projectStatuses
       - prometheusTypes
       - proxmoxRoles
@@ -68200,6 +68261,74 @@ components:
       required:
       - limitRanges
       - presets
+      type: object
+    VirtualClusterResourceLimitRanges:
+      additionalProperties: false
+      example:
+        minRequest: 1.0246457001441578
+        resourceUnit: Cores
+        maxLimit: 1.2315135367772556
+        defaultLimit: 1.4894159098541704
+        defaultRequest: 6.84685269835264
+        resourceType: Cpu
+      properties:
+        resourceType:
+          $ref: '#/components/schemas/EProjectResourceType'
+        resourceUnit:
+          $ref: '#/components/schemas/EProjectResourceUnit'
+        maxLimit:
+          format: double
+          type: number
+        minRequest:
+          format: double
+          type: number
+        defaultLimit:
+          format: double
+          type: number
+        defaultRequest:
+          format: double
+          type: number
+      type: object
+    VirtualClusterResourceLimits:
+      additionalProperties: false
+      example:
+        ingresses: 4
+        pvcs: 3
+        loadBalancers: 7
+        pods: 5
+        ramRequests: 7
+        ramLimits: 9
+        cpuLimits: 2.3021358869347655
+        cpuRequests: 5.637376656633329
+        totalPvcSize: 2
+      properties:
+        pods:
+          format: int32
+          type: integer
+        cpuRequests:
+          format: double
+          type: number
+        cpuLimits:
+          format: double
+          type: number
+        ramRequests:
+          format: int64
+          type: integer
+        ramLimits:
+          format: int64
+          type: integer
+        pvcs:
+          format: int32
+          type: integer
+        totalPvcSize:
+          format: int64
+          type: integer
+        ingresses:
+          format: int32
+          type: integer
+        loadBalancers:
+          format: int32
+          type: integer
       type: object
     VmConsoleScreenshotCommand:
       additionalProperties: false
