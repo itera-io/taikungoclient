@@ -20,6 +20,7 @@ var _ MappedNullable = &TwoFactorAuthLoginCommand{}
 
 // TwoFactorAuthLoginCommand struct for TwoFactorAuthLoginCommand
 type TwoFactorAuthLoginCommand struct {
+	TempKey NullableString `json:"tempKey,omitempty"`
 	VerificationCode NullableString `json:"verificationCode,omitempty"`
 }
 
@@ -38,6 +39,48 @@ func NewTwoFactorAuthLoginCommand() *TwoFactorAuthLoginCommand {
 func NewTwoFactorAuthLoginCommandWithDefaults() *TwoFactorAuthLoginCommand {
 	this := TwoFactorAuthLoginCommand{}
 	return &this
+}
+
+// GetTempKey returns the TempKey field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TwoFactorAuthLoginCommand) GetTempKey() string {
+	if o == nil || IsNil(o.TempKey.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.TempKey.Get()
+}
+
+// GetTempKeyOk returns a tuple with the TempKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TwoFactorAuthLoginCommand) GetTempKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TempKey.Get(), o.TempKey.IsSet()
+}
+
+// HasTempKey returns a boolean if a field has been set.
+func (o *TwoFactorAuthLoginCommand) HasTempKey() bool {
+	if o != nil && o.TempKey.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTempKey gets a reference to the given NullableString and assigns it to the TempKey field.
+func (o *TwoFactorAuthLoginCommand) SetTempKey(v string) {
+	o.TempKey.Set(&v)
+}
+// SetTempKeyNil sets the value for TempKey to be an explicit nil
+func (o *TwoFactorAuthLoginCommand) SetTempKeyNil() {
+	o.TempKey.Set(nil)
+}
+
+// UnsetTempKey ensures that no value is present for TempKey, not even an explicit nil
+func (o *TwoFactorAuthLoginCommand) UnsetTempKey() {
+	o.TempKey.Unset()
 }
 
 // GetVerificationCode returns the VerificationCode field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -92,6 +135,9 @@ func (o TwoFactorAuthLoginCommand) MarshalJSON() ([]byte, error) {
 
 func (o TwoFactorAuthLoginCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.TempKey.IsSet() {
+		toSerialize["tempKey"] = o.TempKey.Get()
+	}
 	if o.VerificationCode.IsSet() {
 		toSerialize["verificationCode"] = o.VerificationCode.Get()
 	}

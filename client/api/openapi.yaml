@@ -6099,8 +6099,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-04-27T06:51:13.7367955Z
-                  createdAt: 2025-04-27T06:51:13.7367955Z
+                  lastValidated: 2025-04-28T15:16:38.6796289Z
+                  createdAt: 2025-04-28T15:16:38.6796289Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6205,14 +6205,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-04-27T06:51:13.7367955Z
+                    lastBackup: 2025-04-28T15:16:38.6796289Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-04-27T06:51:13.7367955Z
+                  createdAt: 2025-04-28T15:16:38.6796289Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-04-27T06:51:13.7367955Z
+                  lastBackup: 2025-04-28T15:16:38.6796289Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6317,8 +6317,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-27T06:51:13.7367955Z
-                  expiration: 2025-04-27T06:51:13.7367955Z
+                  createdAt: 2025-04-28T15:16:38.6796289Z
+                  expiration: 2025-04-28T15:16:38.6796289Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6422,7 +6422,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-04-27T06:51:13.7367955Z
+                  createdAt: 2025-04-28T15:16:38.6796289Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6532,9 +6532,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-04-27T06:51:13.7367955+00:00
-                  startTimeStamp: 2025-04-27T06:51:13.7367955+00:00
-                  createdAt: 2025-04-27T06:51:13.7367955Z
+                  completionDateTime: 2025-04-28T15:16:38.6796289+00:00
+                  startTimeStamp: 2025-04-28T15:16:38.6796289+00:00
+                  createdAt: 2025-04-28T15:16:38.6796289Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -26063,10 +26063,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -26098,7 +26094,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Delete users from project
+      summary: Unbind users from project
       tags:
       - Projects
   /api/v1/projects/edit/health:
@@ -26473,13 +26469,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectExtendLifeTimeCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -45673,52 +45664,51 @@ components:
         - flavors
         - flavors
         taikunLBFlavor: taikunLBFlavor
-        routerIdStartRange: 3
-        accessProfileId: 5
+        routerIdStartRange: 9
+        accessProfileId: 1
         opaProfileId: 5
-        maxSize: 1
+        maxSize: 7
         autoscalingEnabled: true
         autoscalingGroupName: autoscalingGroupName
-        organizationId: 0
         expiredAt: 2000-01-23T04:56:07.000+00:00
-        diskSize: 1.0246457001441578
-        kubernetesProfileId: 2
-        minSize: 7
+        diskSize: 1.2315135367772556
+        kubernetesProfileId: 5
+        minSize: 4
         cidr: cidr
         autoscalingSpotEnabled: true
         kubernetesVersion: kubernetesVersion
-        s3CredentialId: 1
+        s3CredentialId: 6
         isAutoUpgrade: true
         isKubernetes: true
-        routerIdEndRange: 2
+        routerIdEndRange: 3
         allowSpotVMs: true
-        aiCredentialId: 7
+        aiCredentialId: 2
         netMask: 1
         aiEnabled: true
         isMonitoringEnabled: true
         allowSpotWorkers: true
-        maxSpotPrice: 4.145608029883936
+        maxSpotPrice: 2.027123023002322
         users:
         - users
         - users
         autoscalingFlavor: autoscalingFlavor
-        alertingProfileId: 9
+        alertingProfileId: 7
         deleteOnExpiration: true
         saveAsTemplate: true
         templateName: templateName
         name: name
-        cloudCredentialId: 6
+        cloudCredentialId: 0
         isBackupEnabled: true
         allowFullSpotKubernetes: true
         serverTemplates:
         - flavor: flavor
-          diskSize: 6.84685269835264
+          diskSize: 1.4894159098541704
           role: Bastion
-          count: 7
+          count: 6
         - flavor: flavor
-          diskSize: 6.84685269835264
+          diskSize: 1.4894159098541704
           role: Bastion
-          count: 7
+          count: 6
       properties:
         name:
           nullable: true
@@ -45726,10 +45716,6 @@ components:
         kubernetesVersion:
           nullable: true
           type: string
-        organizationId:
-          format: int32
-          nullable: true
-          type: integer
         cloudCredentialId:
           format: int32
           type: integer
@@ -63483,9 +63469,9 @@ components:
       additionalProperties: false
       example:
         flavor: flavor
-        diskSize: 6.84685269835264
+        diskSize: 1.4894159098541704
         role: Bastion
-        count: 7
+        count: 6
       properties:
         role:
           $ref: '#/components/schemas/CloudRole'
@@ -66136,8 +66122,12 @@ components:
     TwoFactorAuthLoginCommand:
       additionalProperties: false
       example:
+        tempKey: tempKey
         verificationCode: verificationCode
       properties:
+        tempKey:
+          nullable: true
+          type: string
         verificationCode:
           nullable: true
           type: string

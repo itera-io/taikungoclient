@@ -544,7 +544,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsChatCompletions**](docs/ProjectsAPI.md#projectschatcompletions) | **Post** /api/v1/projects/chat/completions | AI Chat completions
 *ProjectsAPI* | [**ProjectsCreate**](docs/ProjectsAPI.md#projectscreate) | **Post** /api/v1/projects | Create a new project
 *ProjectsAPI* | [**ProjectsDelete**](docs/ProjectsAPI.md#projectsdelete) | **Post** /api/v1/projects/delete | Delete the project. The project must be empty (no server) and in READY state
-*ProjectsAPI* | [**ProjectsDeleteProjectUsers**](docs/ProjectsAPI.md#projectsdeleteprojectusers) | **Put** /api/v1/projects/{id}/users | Delete users from project
+*ProjectsAPI* | [**ProjectsDeleteProjectUsers**](docs/ProjectsAPI.md#projectsdeleteprojectusers) | **Put** /api/v1/projects/{id}/users | Unbind users from project
 *ProjectsAPI* | [**ProjectsDescribe**](docs/ProjectsAPI.md#projectsdescribe) | **Get** /api/v1/projects/describe/{projectId} | Describe project by Id
 *ProjectsAPI* | [**ProjectsDropdown**](docs/ProjectsAPI.md#projectsdropdown) | **Get** /api/v1/projects/list | Retrieve list of projects for dropdown
 *ProjectsAPI* | [**ProjectsEditHealth**](docs/ProjectsAPI.md#projectsedithealth) | **Put** /api/v1/projects/edit/health | Update health status of the project by Id
