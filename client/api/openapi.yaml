@@ -6099,8 +6099,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-05-01T00:04:08.4389485Z
-                  createdAt: 2025-05-01T00:04:08.4389485Z
+                  lastValidated: 2025-05-02T00:03:35.3578062Z
+                  createdAt: 2025-05-02T00:03:35.3578062Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6205,14 +6205,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-05-01T00:04:08.4389485Z
+                    lastBackup: 2025-05-02T00:03:35.3578062Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-05-01T00:04:08.4389485Z
+                  createdAt: 2025-05-02T00:03:35.3578062Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-05-01T00:04:08.4389485Z
+                  lastBackup: 2025-05-02T00:03:35.3578062Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6317,8 +6317,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-01T00:04:08.4389485Z
-                  expiration: 2025-05-01T00:04:08.4389485Z
+                  createdAt: 2025-05-02T00:03:35.3578062Z
+                  expiration: 2025-05-02T00:03:35.3578062Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6422,7 +6422,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-01T00:04:08.4389485Z
+                  createdAt: 2025-05-02T00:03:35.3578062Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6532,9 +6532,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-05-01T00:04:08.4389485+00:00
-                  startTimeStamp: 2025-05-01T00:04:08.4389485+00:00
-                  createdAt: 2025-05-01T00:04:08.4389485Z
+                  completionDateTime: 2025-05-02T00:03:35.3578062+00:00
+                  startTimeStamp: 2025-05-02T00:03:35.3578062+00:00
+                  createdAt: 2025-05-02T00:03:35.3578062Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -46297,6 +46297,16 @@ components:
         exposeHostname: exposeHostname
         deleteOnExpiration: true
         alertingProfileId: 1
+        resourceQuotas:
+          ingresses: 4
+          pvcs: 3
+          loadBalancers: 7
+          pods: 5
+          ramRequests: 7
+          ramLimits: 9
+          cpuLimits: 2.3021358869347655
+          cpuRequests: 5.637376656633329
+          totalPvcSize: 2
         limitRanges:
         - minRequest: 1.0246457001441578
           resourceUnit: Cores
@@ -46313,16 +46323,6 @@ components:
         cloudId: 0
         name: name
         projectId: 6
-        limits:
-          ingresses: 4
-          pvcs: 3
-          loadBalancers: 7
-          pods: 5
-          ramRequests: 7
-          ramLimits: 9
-          cpuLimits: 2.3021358869347655
-          cpuRequests: 5.637376656633329
-          totalPvcSize: 2
       properties:
         cloudId:
           format: int32
@@ -46345,8 +46345,8 @@ components:
           type: integer
         exposeHostname:
           type: string
-        limits:
-          $ref: '#/components/schemas/VirtualClusterResourceLimits'
+        resourceQuotas:
+          $ref: '#/components/schemas/VirtualClusterResourceQuotas'
         limitRanges:
           items:
             $ref: '#/components/schemas/VirtualClusterResourceLimitRanges'
@@ -48437,6 +48437,7 @@ components:
       - Namespace
       - PersistentVolume
       - LimitRange
+      - ResourceQuota
       type: string
     ENodeAction:
       enum:
@@ -68303,7 +68304,7 @@ components:
           format: double
           type: number
       type: object
-    VirtualClusterResourceLimits:
+    VirtualClusterResourceQuotas:
       additionalProperties: false
       example:
         ingresses: 4

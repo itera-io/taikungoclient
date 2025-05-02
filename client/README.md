@@ -1575,7 +1575,7 @@ Class | Method | HTTP request | Description
  - [VirtualClusterQuotaPresetDto](docs/VirtualClusterQuotaPresetDto.md)
  - [VirtualClusterQuotasDto](docs/VirtualClusterQuotasDto.md)
  - [VirtualClusterResourceLimitRanges](docs/VirtualClusterResourceLimitRanges.md)
- - [VirtualClusterResourceLimits](docs/VirtualClusterResourceLimits.md)
+ - [VirtualClusterResourceQuotas](docs/VirtualClusterResourceQuotas.md)
  - [VmConsoleScreenshotCommand](docs/VmConsoleScreenshotCommand.md)
  - [VmTemplateListCommand](docs/VmTemplateListCommand.md)
  - [VsphereFlavorData](docs/VsphereFlavorData.md)

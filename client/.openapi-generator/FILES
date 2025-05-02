@@ -975,7 +975,7 @@ docs/VirtualClusterQuotaLimitRangeDto.md
 docs/VirtualClusterQuotaPresetDto.md
 docs/VirtualClusterQuotasDto.md
 docs/VirtualClusterResourceLimitRanges.md
-docs/VirtualClusterResourceLimits.md
+docs/VirtualClusterResourceQuotas.md
 docs/VmConsoleScreenshotCommand.md
 docs/VmTemplateListCommand.md
 docs/VsphereCloudCredentialAPI.md
@@ -1821,7 +1821,7 @@ model_virtual_cluster_quota_limit_range_dto.go
 model_virtual_cluster_quota_preset_dto.go
 model_virtual_cluster_quotas_dto.go
 model_virtual_cluster_resource_limit_ranges.go
-model_virtual_cluster_resource_limits.go
+model_virtual_cluster_resource_quotas.go
 model_vm_console_screenshot_command.go
 model_vm_template_list_command.go
 model_vsphere_flavor_data.go
