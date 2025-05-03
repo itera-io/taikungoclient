@@ -3282,50 +3282,6 @@ paths:
       summary: Retrieve taikun recommended repositories
       tags:
       - App repositories
-  /api/v1/two-factor-auth/complete:
-    post:
-      operationId: two-factor-auth-complete
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TwoFactorAuthCompleteCommand'
-      responses:
-        "200":
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Complete 2fa
-      tags:
-      - Auth management
   /api/v1/two-factor-auth/disable:
     post:
       operationId: two-factor-auth-disable
@@ -3368,6 +3324,54 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Disable 2fa by code
+      tags:
+      - Auth management
+  /api/v1/two-factor-auth/complete:
+    post:
+      operationId: two-factor-auth-complete
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnsureCodesDownloadedCommand'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetToken'
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Ensure recovery codes saved
       tags:
       - Auth management
   /api/v1/two-factor-auth/login:
@@ -3820,56 +3824,6 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Reset password
-      tags:
-      - Auth management
-  /api/v1/auth/verify-2fa:
-    post:
-      operationId: auth-verify-2fa
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/VerifyTwoFactorTokenCommand'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                items:
-                  type: string
-                type: array
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Verify 2FA
       tags:
       - Auth management
   /api/v1/autoscaling/disable:
@@ -6099,8 +6053,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-05-02T00:03:35.3578062Z
-                  createdAt: 2025-05-02T00:03:35.3578062Z
+                  lastValidated: 2025-05-03T00:03:14.4887744Z
+                  createdAt: 2025-05-03T00:03:14.4887744Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6205,14 +6159,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-05-02T00:03:35.3578062Z
+                    lastBackup: 2025-05-03T00:03:14.4887744Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-05-02T00:03:35.3578062Z
+                  createdAt: 2025-05-03T00:03:14.4887744Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-05-02T00:03:35.3578062Z
+                  lastBackup: 2025-05-03T00:03:14.4887744Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6317,8 +6271,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-02T00:03:35.3578062Z
-                  expiration: 2025-05-02T00:03:35.3578062Z
+                  createdAt: 2025-05-03T00:03:14.4887744Z
+                  expiration: 2025-05-03T00:03:14.4887744Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6422,7 +6376,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-02T00:03:35.3578062Z
+                  createdAt: 2025-05-03T00:03:14.4887744Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6532,9 +6486,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-05-02T00:03:35.3578062+00:00
-                  startTimeStamp: 2025-05-02T00:03:35.3578062+00:00
-                  createdAt: 2025-05-02T00:03:35.3578062Z
+                  completionDateTime: 2025-05-03T00:03:14.4887744+00:00
+                  startTimeStamp: 2025-05-03T00:03:14.4887744+00:00
+                  createdAt: 2025-05-03T00:03:14.4887744Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -36371,55 +36325,6 @@ paths:
       summary: Toggle notification mode
       tags:
       - Users
-  /api/v1/users/toggle-2fa:
-    post:
-      operationId: users-toggle-2fa-mode
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ToggleTwoFactorAuthenticationCommand'
-        required: true
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
-          description: OK
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Bad Request
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Unauthorized
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Forbidden
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Not Found
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-          description: Internal Server Error
-      summary: Toggle 2FA mode
-      tags:
-      - Users
   /api/v1/users/update:
     post:
       operationId: users-update-user
@@ -48754,6 +48659,17 @@ components:
       - method
       - path
       type: object
+    EnsureCodesDownloadedCommand:
+      additionalProperties: false
+      example:
+        data:
+          recoveryCodes:
+          - recoveryCodes
+          - recoveryCodes
+      properties:
+        data:
+          $ref: '#/components/schemas/TwoFactorAuthVerifyResult'
+      type: object
     EnumList:
       additionalProperties: false
       example:
@@ -50592,7 +50508,6 @@ components:
       additionalProperties: false
       example:
         refreshTokenExpireTime: 2000-01-23T04:56:07.000+00:00
-        tempToken: tempToken
         twoFaEnabled: true
         token: token
         refreshToken: refreshToken
@@ -50605,9 +50520,6 @@ components:
           type: string
         refreshTokenExpireTime:
           format: date-time
-          type: string
-        tempToken:
-          nullable: true
           type: string
         twoFaEnabled:
           nullable: true
@@ -66099,15 +66011,6 @@ components:
           nullable: true
           type: string
       type: object
-    ToggleTwoFactorAuthenticationCommand:
-      additionalProperties: false
-      example:
-        mode: mode
-      properties:
-        mode:
-          nullable: true
-          type: string
-      type: object
     TransferList:
       additionalProperties: false
       example:
@@ -66141,18 +66044,11 @@ components:
           nullable: true
           type: string
       type: object
-    TwoFactorAuthCompleteCommand:
-      additionalProperties: false
-      type: object
     TwoFactorAuthLoginCommand:
       additionalProperties: false
       example:
-        tempKey: tempKey
         verificationCode: verificationCode
       properties:
-        tempKey:
-          nullable: true
-          type: string
         verificationCode:
           nullable: true
           type: string
@@ -68115,19 +68011,6 @@ components:
           nullable: true
           type: string
         channel:
-          nullable: true
-          type: string
-      type: object
-    VerifyTwoFactorTokenCommand:
-      additionalProperties: false
-      example:
-        code: code
-        twoFactorTempKey: twoFactorTempKey
-      properties:
-        twoFactorTempKey:
-          nullable: true
-          type: string
-        code:
           nullable: true
           type: string
       type: object

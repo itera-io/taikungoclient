@@ -966,50 +966,50 @@ func (a *AuthManagementAPIService) AuthTrialExecute(r ApiAuthTrialRequest) (*htt
 	return localVarHTTPResponse, nil
 }
 
-type ApiAuthVerify2faRequest struct {
+type ApiTwoFactorAuthCompleteRequest struct {
 	ctx context.Context
 	ApiService *AuthManagementAPIService
-	verifyTwoFactorTokenCommand *VerifyTwoFactorTokenCommand
+	ensureCodesDownloadedCommand *EnsureCodesDownloadedCommand
 }
 
-func (r ApiAuthVerify2faRequest) VerifyTwoFactorTokenCommand(verifyTwoFactorTokenCommand VerifyTwoFactorTokenCommand) ApiAuthVerify2faRequest {
-	r.verifyTwoFactorTokenCommand = &verifyTwoFactorTokenCommand
+func (r ApiTwoFactorAuthCompleteRequest) EnsureCodesDownloadedCommand(ensureCodesDownloadedCommand EnsureCodesDownloadedCommand) ApiTwoFactorAuthCompleteRequest {
+	r.ensureCodesDownloadedCommand = &ensureCodesDownloadedCommand
 	return r
 }
 
-func (r ApiAuthVerify2faRequest) Execute() ([]string, *http.Response, error) {
-	return r.ApiService.AuthVerify2faExecute(r)
+func (r ApiTwoFactorAuthCompleteRequest) Execute() (*GetToken, *http.Response, error) {
+	return r.ApiService.TwoFactorAuthCompleteExecute(r)
 }
 
 /*
-AuthVerify2fa Verify 2FA
+TwoFactorAuthComplete Ensure recovery codes saved
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthVerify2faRequest
+ @return ApiTwoFactorAuthCompleteRequest
 */
-func (a *AuthManagementAPIService) AuthVerify2fa(ctx context.Context) ApiAuthVerify2faRequest {
-	return ApiAuthVerify2faRequest{
+func (a *AuthManagementAPIService) TwoFactorAuthComplete(ctx context.Context) ApiTwoFactorAuthCompleteRequest {
+	return ApiTwoFactorAuthCompleteRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
-func (a *AuthManagementAPIService) AuthVerify2faExecute(r ApiAuthVerify2faRequest) ([]string, *http.Response, error) {
+//  @return GetToken
+func (a *AuthManagementAPIService) TwoFactorAuthCompleteExecute(r ApiTwoFactorAuthCompleteRequest) (*GetToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarReturnValue  *GetToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.AuthVerify2fa")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.TwoFactorAuthComplete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/auth/verify-2fa"
+	localVarPath := localBasePath + "/api/v1/two-factor-auth/complete"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1033,7 +1033,7 @@ func (a *AuthManagementAPIService) AuthVerify2faExecute(r ApiAuthVerify2faReques
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.verifyTwoFactorTokenCommand
+	localVarPostBody = r.ensureCodesDownloadedCommand
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -1137,168 +1137,6 @@ func (a *AuthManagementAPIService) AuthVerify2faExecute(r ApiAuthVerify2faReques
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiTwoFactorAuthCompleteRequest struct {
-	ctx context.Context
-	ApiService *AuthManagementAPIService
-	body *map[string]interface{}
-}
-
-func (r ApiTwoFactorAuthCompleteRequest) Body(body map[string]interface{}) ApiTwoFactorAuthCompleteRequest {
-	r.body = &body
-	return r
-}
-
-func (r ApiTwoFactorAuthCompleteRequest) Execute() (*http.Response, error) {
-	return r.ApiService.TwoFactorAuthCompleteExecute(r)
-}
-
-/*
-TwoFactorAuthComplete Complete 2fa
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiTwoFactorAuthCompleteRequest
-*/
-func (a *AuthManagementAPIService) TwoFactorAuthComplete(ctx context.Context) ApiTwoFactorAuthCompleteRequest {
-	return ApiTwoFactorAuthCompleteRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-func (a *AuthManagementAPIService) TwoFactorAuthCompleteExecute(r ApiTwoFactorAuthCompleteRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodPost
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AuthManagementAPIService.TwoFactorAuthComplete")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/two-factor-auth/complete"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.body
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["Bearer"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		if localVarHTTPResponse.StatusCode == 400 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 401 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 403 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 404 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-			return localVarHTTPResponse, newErr
-		}
-		if localVarHTTPResponse.StatusCode == 500 {
-			var v ProblemDetails
-			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-			if err != nil {
-				newErr.error = err.Error()
-				return localVarHTTPResponse, newErr
-			}
-					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
-					newErr.model = v
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
 }
 
 type ApiTwoFactorAuthDisableRequest struct {

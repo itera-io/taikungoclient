@@ -150,8 +150,7 @@ Class | Method | HTTP request | Description
 *AuthManagementAPI* | [**AuthRefresh**](docs/AuthManagementAPI.md#authrefresh) | **Post** /api/v1/auth/refresh | Refresh bearer token that generated automatically by API
 *AuthManagementAPI* | [**AuthResetPassword**](docs/AuthManagementAPI.md#authresetpassword) | **Post** /api/v1/auth/resetpassword | Reset password
 *AuthManagementAPI* | [**AuthTrial**](docs/AuthManagementAPI.md#authtrial) | **Post** /api/v1/auth/trial | New registration
-*AuthManagementAPI* | [**AuthVerify2fa**](docs/AuthManagementAPI.md#authverify2fa) | **Post** /api/v1/auth/verify-2fa | Verify 2FA
-*AuthManagementAPI* | [**TwoFactorAuthComplete**](docs/AuthManagementAPI.md#twofactorauthcomplete) | **Post** /api/v1/two-factor-auth/complete | Complete 2fa
+*AuthManagementAPI* | [**TwoFactorAuthComplete**](docs/AuthManagementAPI.md#twofactorauthcomplete) | **Post** /api/v1/two-factor-auth/complete | Ensure recovery codes saved
 *AuthManagementAPI* | [**TwoFactorAuthDisable**](docs/AuthManagementAPI.md#twofactorauthdisable) | **Post** /api/v1/two-factor-auth/disable | Disable 2fa by code
 *AuthManagementAPI* | [**TwoFactorAuthLogin**](docs/AuthManagementAPI.md#twofactorauthlogin) | **Post** /api/v1/two-factor-auth/login | Login with TOTP
 *AuthManagementAPI* | [**TwoFactorAuthRecovery**](docs/AuthManagementAPI.md#twofactorauthrecovery) | **Post** /api/v1/two-factor-auth/recovery | Login with recovery code
@@ -725,7 +724,6 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**UsersExportCsv**](docs/UsersAPI.md#usersexportcsv) | **Get** /api/v1/users/export | Export Csv
 *UsersAPI* | [**UsersForceToResetPassword**](docs/UsersAPI.md#usersforcetoresetpassword) | **Post** /api/v1/users/force-to-reset | Force to reset password
 *UsersAPI* | [**UsersList**](docs/UsersAPI.md#userslist) | **Get** /api/v1/users | Retrieve all users
-*UsersAPI* | [**UsersToggle2faMode**](docs/UsersAPI.md#userstoggle2famode) | **Post** /api/v1/users/toggle-2fa | Toggle 2FA mode
 *UsersAPI* | [**UsersToggleMaintenanceMode**](docs/UsersAPI.md#userstogglemaintenancemode) | **Post** /api/v1/users/togglemaintenancemode | Toggle maintenance mode
 *UsersAPI* | [**UsersToggleNotificationMode**](docs/UsersAPI.md#userstogglenotificationmode) | **Post** /api/v1/users/togglenotificationmode | Toggle notification mode
 *UsersAPI* | [**UsersUpdateUser**](docs/UsersAPI.md#usersupdateuser) | **Post** /api/v1/users/update | Update user
@@ -1087,6 +1085,7 @@ Class | Method | HTTP request | Description
  - [EmailMode](docs/EmailMode.md)
  - [EnableAutoscalingCommand](docs/EnableAutoscalingCommand.md)
  - [EndpointElements](docs/EndpointElements.md)
+ - [EnsureCodesDownloadedCommand](docs/EnsureCodesDownloadedCommand.md)
  - [EnumList](docs/EnumList.md)
  - [EstimatedInfracost](docs/EstimatedInfracost.md)
  - [ExceededQuotaDto](docs/ExceededQuotaDto.md)
@@ -1499,7 +1498,6 @@ Class | Method | HTTP request | Description
  - [ToggleKeycloakCommand](docs/ToggleKeycloakCommand.md)
  - [ToggleMaintenanceModeCommand](docs/ToggleMaintenanceModeCommand.md)
  - [ToggleNotificationModeCommand](docs/ToggleNotificationModeCommand.md)
- - [ToggleTwoFactorAuthenticationCommand](docs/ToggleTwoFactorAuthenticationCommand.md)
  - [TransferList](docs/TransferList.md)
  - [TransferTicketCommand](docs/TransferTicketCommand.md)
  - [TwoFactorAuthLoginCommand](docs/TwoFactorAuthLoginCommand.md)
@@ -1569,7 +1567,6 @@ Class | Method | HTTP request | Description
  - [ValidateVsphereCommand](docs/ValidateVsphereCommand.md)
  - [VerifyEmailCommand](docs/VerifyEmailCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)
- - [VerifyTwoFactorTokenCommand](docs/VerifyTwoFactorTokenCommand.md)
  - [VerifyWebhookCommand](docs/VerifyWebhookCommand.md)
  - [VirtualClusterQuotaLimitRangeDto](docs/VirtualClusterQuotaLimitRangeDto.md)
  - [VirtualClusterQuotaPresetDto](docs/VirtualClusterQuotaPresetDto.md)

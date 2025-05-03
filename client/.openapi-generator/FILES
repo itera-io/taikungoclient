@@ -429,6 +429,7 @@ docs/EditTicketCommand.md
 docs/EmailMode.md
 docs/EnableAutoscalingCommand.md
 docs/EndpointElements.md
+docs/EnsureCodesDownloadedCommand.md
 docs/EnumList.md
 docs/EstimatedInfracost.md
 docs/ExceededQuotaDto.md
@@ -894,7 +895,6 @@ docs/ToggleExecutorCommand.md
 docs/ToggleKeycloakCommand.md
 docs/ToggleMaintenanceModeCommand.md
 docs/ToggleNotificationModeCommand.md
-docs/ToggleTwoFactorAuthenticationCommand.md
 docs/TransferList.md
 docs/TransferTicketCommand.md
 docs/TwoFactorAuthLoginCommand.md
@@ -968,7 +968,6 @@ docs/VClusterListDto.md
 docs/ValidateVsphereCommand.md
 docs/VerifyEmailCommand.md
 docs/VerifySlackCredentialsCommand.md
-docs/VerifyTwoFactorTokenCommand.md
 docs/VerifyWebhookCommand.md
 docs/VirtualClusterAPI.md
 docs/VirtualClusterQuotaLimitRangeDto.md
@@ -1333,6 +1332,7 @@ model_edit_ticket_command.go
 model_email_mode.go
 model_enable_autoscaling_command.go
 model_endpoint_elements.go
+model_ensure_codes_downloaded_command.go
 model_enum_list.go
 model_estimated_infracost.go
 model_exceeded_quota_dto.go
@@ -1745,7 +1745,6 @@ model_toggle_executor_command.go
 model_toggle_keycloak_command.go
 model_toggle_maintenance_mode_command.go
 model_toggle_notification_mode_command.go
-model_toggle_two_factor_authentication_command.go
 model_transfer_list.go
 model_transfer_ticket_command.go
 model_two_factor_auth_login_command.go
@@ -1815,7 +1814,6 @@ model_v_cluster_list_dto.go
 model_validate_vsphere_command.go
 model_verify_email_command.go
 model_verify_slack_credentials_command.go
-model_verify_two_factor_token_command.go
 model_verify_webhook_command.go
 model_virtual_cluster_quota_limit_range_dto.go
 model_virtual_cluster_quota_preset_dto.go

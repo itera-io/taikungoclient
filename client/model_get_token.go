@@ -24,7 +24,6 @@ type GetToken struct {
 	Token NullableString `json:"token,omitempty"`
 	RefreshToken NullableString `json:"refreshToken,omitempty"`
 	RefreshTokenExpireTime *time.Time `json:"refreshTokenExpireTime,omitempty"`
-	TempToken NullableString `json:"tempToken,omitempty"`
 	TwoFaEnabled NullableBool `json:"twoFaEnabled,omitempty"`
 }
 
@@ -161,48 +160,6 @@ func (o *GetToken) SetRefreshTokenExpireTime(v time.Time) {
 	o.RefreshTokenExpireTime = &v
 }
 
-// GetTempToken returns the TempToken field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *GetToken) GetTempToken() string {
-	if o == nil || IsNil(o.TempToken.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.TempToken.Get()
-}
-
-// GetTempTokenOk returns a tuple with the TempToken field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *GetToken) GetTempTokenOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TempToken.Get(), o.TempToken.IsSet()
-}
-
-// HasTempToken returns a boolean if a field has been set.
-func (o *GetToken) HasTempToken() bool {
-	if o != nil && o.TempToken.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTempToken gets a reference to the given NullableString and assigns it to the TempToken field.
-func (o *GetToken) SetTempToken(v string) {
-	o.TempToken.Set(&v)
-}
-// SetTempTokenNil sets the value for TempToken to be an explicit nil
-func (o *GetToken) SetTempTokenNil() {
-	o.TempToken.Set(nil)
-}
-
-// UnsetTempToken ensures that no value is present for TempToken, not even an explicit nil
-func (o *GetToken) UnsetTempToken() {
-	o.TempToken.Unset()
-}
-
 // GetTwoFaEnabled returns the TwoFaEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *GetToken) GetTwoFaEnabled() bool {
 	if o == nil || IsNil(o.TwoFaEnabled.Get()) {
@@ -263,9 +220,6 @@ func (o GetToken) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RefreshTokenExpireTime) {
 		toSerialize["refreshTokenExpireTime"] = o.RefreshTokenExpireTime
-	}
-	if o.TempToken.IsSet() {
-		toSerialize["tempToken"] = o.TempToken.Get()
 	}
 	if o.TwoFaEnabled.IsSet() {
 		toSerialize["twoFaEnabled"] = o.TwoFaEnabled.Get()
