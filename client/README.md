@@ -139,7 +139,7 @@ Class | Method | HTTP request | Description
 *AllowedHostAPI* | [**AllowedhostList**](docs/AllowedHostAPI.md#allowedhostlist) | **Get** /api/v1/allowedhost/list/{accessProfileId} | List allowed hosts by access profile id
 *AppRepositoriesAPI* | [**RepositoryAvailableList**](docs/AppRepositoriesAPI.md#repositoryavailablelist) | **Get** /api/v1/repository/available | Retrieve available repositories
 *AppRepositoriesAPI* | [**RepositoryBind**](docs/AppRepositoriesAPI.md#repositorybind) | **Post** /api/v1/repository/bind | Bind repo to organization
-*AppRepositoriesAPI* | [**RepositoryDelete**](docs/AppRepositoriesAPI.md#repositorydelete) | **Post** /api/v1/repository/delete | Delete repo from organization
+*AppRepositoriesAPI* | [**RepositoryDelete**](docs/AppRepositoriesAPI.md#repositorydelete) | **Post** /api/v1/repository/delete | Unbind repo from organization
 *AppRepositoriesAPI* | [**RepositoryImport**](docs/AppRepositoriesAPI.md#repositoryimport) | **Post** /api/v1/repository/import | Import repo to artifact
 *AppRepositoriesAPI* | [**RepositoryList**](docs/AppRepositoriesAPI.md#repositorylist) | **Get** /api/v1/repository/list | Retrieve repo names
 *AppRepositoriesAPI* | [**RepositoryRecommendedList**](docs/AppRepositoriesAPI.md#repositoryrecommendedlist) | **Get** /api/v1/repository/recommended | Retrieve taikun recommended repositories
@@ -448,7 +448,7 @@ Class | Method | HTTP request | Description
 *OrganizationsAPI* | [**OrganizationsAddPrometheusrules**](docs/OrganizationsAPI.md#organizationsaddprometheusrules) | **Post** /api/v1/organizations/{id}/prometheusrules | Add prometheus rule(s) to organization
 *OrganizationsAPI* | [**OrganizationsCreate**](docs/OrganizationsAPI.md#organizationscreate) | **Post** /api/v1/organizations | Add a new organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDelete**](docs/OrganizationsAPI.md#organizationsdelete) | **Delete** /api/v1/organizations/{id} | Delete the specified organization. Only available for admins.
-*OrganizationsAPI* | [**OrganizationsDeletePrometheusrules**](docs/OrganizationsAPI.md#organizationsdeleteprometheusrules) | **Put** /api/v1/organizations/{id}/prometheusrules | Delete prometheus rule(s) from organization
+*OrganizationsAPI* | [**OrganizationsDeletePrometheusrules**](docs/OrganizationsAPI.md#organizationsdeleteprometheusrules) | **Put** /api/v1/organizations/{id}/prometheusrules | Unbind prometheus rule(s) from organization
 *OrganizationsAPI* | [**OrganizationsDetawils**](docs/OrganizationsAPI.md#organizationsdetawils) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
 *OrganizationsAPI* | [**OrganizationsExportCsv**](docs/OrganizationsAPI.md#organizationsexportcsv) | **Get** /api/v1/organizations/export | Export Csv file
 *OrganizationsAPI* | [**OrganizationsLeave**](docs/OrganizationsAPI.md#organizationsleave) | **Post** /api/v1/organizations/leave | Leave taikun
@@ -570,7 +570,7 @@ Class | Method | HTTP request | Description
 *PrometheusRulesAPI* | [**PrometheusrulesAddOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesaddorganizations) | **Post** /api/v1/prometheusrules/{id}/organizations | Add organizations to prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesCreate**](docs/PrometheusRulesAPI.md#prometheusrulescreate) | **Post** /api/v1/prometheusrules | Add prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesDelete**](docs/PrometheusRulesAPI.md#prometheusrulesdelete) | **Delete** /api/v1/prometheusrules/{id} | Remove prometheus rule
-*PrometheusRulesAPI* | [**PrometheusrulesDeleteOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesdeleteorganizations) | **Put** /api/v1/prometheusrules/{id}/organizations | Delete organizations from prometheus rule
+*PrometheusRulesAPI* | [**PrometheusrulesDeleteOrganizations**](docs/PrometheusRulesAPI.md#prometheusrulesdeleteorganizations) | **Put** /api/v1/prometheusrules/{id}/organizations | Unbind organizations from prometheus rule
 *PrometheusRulesAPI* | [**PrometheusrulesDetails**](docs/PrometheusRulesAPI.md#prometheusrulesdetails) | **Get** /api/v1/prometheusrules/details | Retrieve all prometheus rules with detailed info
 *PrometheusRulesAPI* | [**PrometheusrulesList**](docs/PrometheusRulesAPI.md#prometheusruleslist) | **Get** /api/v1/prometheusrules | Retrieve a list of prometheus rules
 *PrometheusRulesAPI* | [**PrometheusrulesUpdate**](docs/PrometheusRulesAPI.md#prometheusrulesupdate) | **Put** /api/v1/prometheusrules/edit/{id} | Edit prometheus rule
@@ -1562,8 +1562,10 @@ Class | Method | HTTP request | Description
  - [UsersSearchList](docs/UsersSearchList.md)
  - [UsersSearchResponseData](docs/UsersSearchResponseData.md)
  - [VClusterActionVisibilityDto](docs/VClusterActionVisibilityDto.md)
+ - [VClusterLimitRangeListDto](docs/VClusterLimitRangeListDto.md)
  - [VClusterList](docs/VClusterList.md)
  - [VClusterListDto](docs/VClusterListDto.md)
+ - [VClusterResourceQuotaListDto](docs/VClusterResourceQuotaListDto.md)
  - [ValidateVsphereCommand](docs/ValidateVsphereCommand.md)
  - [VerifyEmailCommand](docs/VerifyEmailCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)

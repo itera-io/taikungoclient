@@ -45,6 +45,8 @@ type VClusterListDto struct {
 	CloudType ECloudCredentialType `json:"cloudType"`
 	Status ProjectStatus `json:"status"`
 	Health ProjectHealth `json:"health"`
+	ResourceQuota VClusterResourceQuotaListDto `json:"resourceQuota"`
+	LimitRanges []VClusterLimitRangeListDto `json:"limitRanges"`
 	LockButton ButtonStatusDto `json:"lockButton"`
 	UnlockButton ButtonStatusDto `json:"unlockButton"`
 	DeleteButton ButtonStatusDto `json:"deleteButton"`
@@ -59,7 +61,7 @@ type _VClusterListDto VClusterListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType ECloudCredentialType, status ProjectStatus, health ProjectHealth, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
+func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType ECloudCredentialType, status ProjectStatus, health ProjectHealth, resourceQuota VClusterResourceQuotaListDto, limitRanges []VClusterLimitRangeListDto, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
 	this := VClusterListDto{}
 	this.Id = id
 	this.Name = name
@@ -84,6 +86,8 @@ func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked b
 	this.CloudType = cloudType
 	this.Status = status
 	this.Health = health
+	this.ResourceQuota = resourceQuota
+	this.LimitRanges = limitRanges
 	this.LockButton = lockButton
 	this.UnlockButton = unlockButton
 	this.DeleteButton = deleteButton
@@ -657,6 +661,56 @@ func (o *VClusterListDto) SetHealth(v ProjectHealth) {
 	o.Health = v
 }
 
+// GetResourceQuota returns the ResourceQuota field value
+func (o *VClusterListDto) GetResourceQuota() VClusterResourceQuotaListDto {
+	if o == nil {
+		var ret VClusterResourceQuotaListDto
+		return ret
+	}
+
+	return o.ResourceQuota
+}
+
+// GetResourceQuotaOk returns a tuple with the ResourceQuota field value
+// and a boolean to check if the value has been set.
+func (o *VClusterListDto) GetResourceQuotaOk() (*VClusterResourceQuotaListDto, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ResourceQuota, true
+}
+
+// SetResourceQuota sets field value
+func (o *VClusterListDto) SetResourceQuota(v VClusterResourceQuotaListDto) {
+	o.ResourceQuota = v
+}
+
+// GetLimitRanges returns the LimitRanges field value
+// If the value is explicit nil, the zero value for []VClusterLimitRangeListDto will be returned
+func (o *VClusterListDto) GetLimitRanges() []VClusterLimitRangeListDto {
+	if o == nil {
+		var ret []VClusterLimitRangeListDto
+		return ret
+	}
+
+	return o.LimitRanges
+}
+
+// GetLimitRangesOk returns a tuple with the LimitRanges field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VClusterListDto) GetLimitRangesOk() ([]VClusterLimitRangeListDto, bool) {
+	if o == nil || IsNil(o.LimitRanges) {
+		return nil, false
+	}
+	return o.LimitRanges, true
+}
+
+// SetLimitRanges sets field value
+func (o *VClusterListDto) SetLimitRanges(v []VClusterLimitRangeListDto) {
+	o.LimitRanges = v
+}
+
 // GetLockButton returns the LockButton field value
 func (o *VClusterListDto) GetLockButton() ButtonStatusDto {
 	if o == nil {
@@ -834,6 +888,10 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["status"] = o.Status
 	toSerialize["health"] = o.Health
+	toSerialize["resourceQuota"] = o.ResourceQuota
+	if o.LimitRanges != nil {
+		toSerialize["limitRanges"] = o.LimitRanges
+	}
 	toSerialize["lockButton"] = o.LockButton
 	toSerialize["unlockButton"] = o.UnlockButton
 	toSerialize["deleteButton"] = o.DeleteButton
@@ -871,6 +929,8 @@ func (o *VClusterListDto) UnmarshalJSON(data []byte) (err error) {
 		"cloudType",
 		"status",
 		"health",
+		"resourceQuota",
+		"limitRanges",
 		"lockButton",
 		"unlockButton",
 		"deleteButton",

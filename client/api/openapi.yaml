@@ -2880,10 +2880,6 @@ paths:
               $ref: '#/components/schemas/BindAppRepositoryCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -2926,13 +2922,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteRepositoryCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -2964,7 +2955,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Delete repo from organization
+      summary: Unbind repo from organization
       tags:
       - App repositories
   /api/v1/repository/import:
@@ -2977,10 +2968,6 @@ paths:
               $ref: '#/components/schemas/ImportRepoCommand'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -3023,13 +3010,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UnbindAppRepositoryCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -6053,8 +6035,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-05-05T18:57:48.9010183Z
-                  createdAt: 2025-05-05T18:57:48.9010183Z
+                  lastValidated: 2025-05-07T00:03:37.6678031Z
+                  createdAt: 2025-05-07T00:03:37.6678031Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6159,14 +6141,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-05-05T18:57:48.9010183Z
+                    lastBackup: 2025-05-07T00:03:37.6678031Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-05-05T18:57:48.9010183Z
+                  createdAt: 2025-05-07T00:03:37.6678031Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-05-05T18:57:48.9010183Z
+                  lastBackup: 2025-05-07T00:03:37.6678031Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6271,8 +6253,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-05T18:57:48.9010183Z
-                  expiration: 2025-05-05T18:57:48.9010183Z
+                  createdAt: 2025-05-07T00:03:37.6678031Z
+                  expiration: 2025-05-07T00:03:37.6678031Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6376,7 +6358,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-05T18:57:48.9010183Z
+                  createdAt: 2025-05-07T00:03:37.6678031Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6486,9 +6468,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-05-05T18:57:48.9010183+00:00
-                  startTimeStamp: 2025-05-05T18:57:48.9010183+00:00
-                  createdAt: 2025-05-05T18:57:48.9010183Z
+                  completionDateTime: 2025-05-07T00:03:37.6678031+00:00
+                  startTimeStamp: 2025-05-07T00:03:37.6678031+00:00
+                  createdAt: 2025-05-07T00:03:37.6678031Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -21176,10 +21158,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21235,10 +21213,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -21270,7 +21244,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Delete prometheus rule(s) from organization
+      summary: Unbind prometheus rule(s) from organization
       tags:
       - Organizations
   /api/v1/organizations/accept-offer:
@@ -27543,13 +27517,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrometheusBillingCreateCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -27667,7 +27636,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupedPrometheusBillingListQuery'
-        required: true
       responses:
         "200":
           content:
@@ -27728,10 +27696,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -27787,10 +27751,6 @@ paths:
               type: array
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -27822,7 +27782,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
-      summary: Delete organizations from prometheus rule
+      summary: Unbind organizations from prometheus rule
       tags:
       - Prometheus Rules
   /api/v1/prometheusrules/edit/{id}:
@@ -27844,10 +27804,6 @@ paths:
               $ref: '#/components/schemas/RuleForUpdateDto'
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -28101,8 +28057,6 @@ paths:
         style: simple
       responses:
         "200":
-          content:
-            application/json: {}
           description: OK
         "400":
           content:
@@ -67635,6 +67589,31 @@ components:
       - projectMaintenanceMode
       - unlock
       type: object
+    VClusterLimitRangeListDto:
+      additionalProperties: false
+      example:
+        minRequest: minRequest
+        maxLimit: maxLimit
+        defaultLimit: defaultLimit
+        defaultRequest: defaultRequest
+        resourceType: resourceType
+      properties:
+        resourceType:
+          nullable: true
+          type: string
+        maxLimit:
+          nullable: true
+          type: string
+        minRequest:
+          nullable: true
+          type: string
+        defaultLimit:
+          nullable: true
+          type: string
+        defaultRequest:
+          nullable: true
+          type: string
+      type: object
     VClusterList:
       additionalProperties: false
       example:
@@ -67655,6 +67634,27 @@ components:
           createdAt: createdAt
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
+          resourceQuota:
+            ingresses: 3
+            pvcs: 9
+            loadBalancers: 2
+            pods: 5
+            ramRequests: ramRequests
+            ramLimits: ramLimits
+            cpuLimits: 7
+            cpuRequests: 2
+            totalPvcSize: totalPvcSize
+          limitRanges:
+          - minRequest: minRequest
+            maxLimit: maxLimit
+            defaultLimit: defaultLimit
+            defaultRequest: defaultRequest
+            resourceType: resourceType
+          - minRequest: minRequest
+            maxLimit: maxLimit
+            defaultLimit: defaultLimit
+            defaultRequest: defaultRequest
+            resourceType: resourceType
           cloudType: AWS
           isLocked: true
           id: 0
@@ -67714,6 +67714,27 @@ components:
           createdAt: createdAt
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
+          resourceQuota:
+            ingresses: 3
+            pvcs: 9
+            loadBalancers: 2
+            pods: 5
+            ramRequests: ramRequests
+            ramLimits: ramLimits
+            cpuLimits: 7
+            cpuRequests: 2
+            totalPvcSize: totalPvcSize
+          limitRanges:
+          - minRequest: minRequest
+            maxLimit: maxLimit
+            defaultLimit: defaultLimit
+            defaultRequest: defaultRequest
+            resourceType: resourceType
+          - minRequest: minRequest
+            maxLimit: maxLimit
+            defaultLimit: defaultLimit
+            defaultRequest: defaultRequest
+            resourceType: resourceType
           cloudType: AWS
           isLocked: true
           id: 0
@@ -67785,7 +67806,7 @@ components:
           projectCloudRevision: 1
           status: "Null"
           isMaintenanceModeEnabled: true
-        totalCount: 5
+        totalCount: 4
       properties:
         data:
           items:
@@ -67821,6 +67842,27 @@ components:
         createdAt: createdAt
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
+        resourceQuota:
+          ingresses: 3
+          pvcs: 9
+          loadBalancers: 2
+          pods: 5
+          ramRequests: ramRequests
+          ramLimits: ramLimits
+          cpuLimits: 7
+          cpuRequests: 2
+          totalPvcSize: totalPvcSize
+        limitRanges:
+        - minRequest: minRequest
+          maxLimit: maxLimit
+          defaultLimit: defaultLimit
+          defaultRequest: defaultRequest
+          resourceType: resourceType
+        - minRequest: minRequest
+          maxLimit: maxLimit
+          defaultLimit: defaultLimit
+          defaultRequest: defaultRequest
+          resourceType: resourceType
         cloudType: AWS
         isLocked: true
         id: 0
@@ -67917,6 +67959,13 @@ components:
           $ref: '#/components/schemas/ProjectStatus'
         health:
           $ref: '#/components/schemas/ProjectHealth'
+        resourceQuota:
+          $ref: '#/components/schemas/VClusterResourceQuotaListDto'
+        limitRanges:
+          items:
+            $ref: '#/components/schemas/VClusterLimitRangeListDto'
+          nullable: true
+          type: array
         lockButton:
           $ref: '#/components/schemas/ButtonStatusDto'
         unlockButton:
@@ -67950,15 +67999,58 @@ components:
       - kubernetesVersion
       - lastModified
       - lastModifiedBy
+      - limitRanges
       - lockButton
       - name
       - organizationId
       - organizationName
       - resetStatusButton
+      - resourceQuota
       - setExpirationDateButton
       - status
       - unlockButton
       - wasmEnabled
+      type: object
+    VClusterResourceQuotaListDto:
+      additionalProperties: false
+      example:
+        ingresses: 3
+        pvcs: 9
+        loadBalancers: 2
+        pods: 5
+        ramRequests: ramRequests
+        ramLimits: ramLimits
+        cpuLimits: 7
+        cpuRequests: 2
+        totalPvcSize: totalPvcSize
+      properties:
+        pods:
+          format: int32
+          type: integer
+        cpuRequests:
+          format: int32
+          type: integer
+        cpuLimits:
+          format: int32
+          type: integer
+        ramRequests:
+          nullable: true
+          type: string
+        ramLimits:
+          nullable: true
+          type: string
+        pvcs:
+          format: int32
+          type: integer
+        totalPvcSize:
+          nullable: true
+          type: string
+        ingresses:
+          format: int32
+          type: integer
+        loadBalancers:
+          format: int32
+          type: integer
       type: object
     ValidateVsphereCommand:
       additionalProperties: false
