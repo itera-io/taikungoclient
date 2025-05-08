@@ -73,9 +73,6 @@ func (a *StandaloneActionsAPIService) StandaloneactionsConsoleExecute(r ApiStand
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.vmConsoleScreenshotCommand == nil {
-		return localVarReturnValue, nil, reportError("vmConsoleScreenshotCommand is required and must be specified")
-	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}

@@ -6035,8 +6035,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-05-07T00:03:37.6678031Z
-                  createdAt: 2025-05-07T00:03:37.6678031Z
+                  lastValidated: 2025-05-08T00:03:38.3947828Z
+                  createdAt: 2025-05-08T00:03:38.3947828Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6141,14 +6141,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-05-07T00:03:37.6678031Z
+                    lastBackup: 2025-05-08T00:03:38.3947828Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-05-07T00:03:37.6678031Z
+                  createdAt: 2025-05-08T00:03:38.3947828Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-05-07T00:03:37.6678031Z
+                  lastBackup: 2025-05-08T00:03:38.3947828Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6253,8 +6253,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-07T00:03:37.6678031Z
-                  expiration: 2025-05-07T00:03:37.6678031Z
+                  createdAt: 2025-05-08T00:03:38.3947828Z
+                  expiration: 2025-05-08T00:03:38.3947828Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6358,7 +6358,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-07T00:03:37.6678031Z
+                  createdAt: 2025-05-08T00:03:38.3947828Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6468,9 +6468,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-05-07T00:03:37.6678031+00:00
-                  startTimeStamp: 2025-05-07T00:03:37.6678031+00:00
-                  createdAt: 2025-05-07T00:03:37.6678031Z
+                  completionDateTime: 2025-05-08T00:03:38.3947828+00:00
+                  startTimeStamp: 2025-05-08T00:03:38.3947828+00:00
+                  createdAt: 2025-05-08T00:03:38.3947828Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -29029,7 +29029,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/AccessProfilesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29078,7 +29077,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BackupCredentialsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29127,7 +29125,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BillingCredentialsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29176,7 +29173,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CloudCredentialsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29225,7 +29221,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ConfigMapSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29274,7 +29269,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CrdSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29323,7 +29317,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CronjobsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29372,7 +29365,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DaemonSetSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29421,7 +29413,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeploymentSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29470,7 +29461,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/HelmReleasesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29519,7 +29509,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/IngressSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29568,7 +29557,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/JobsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29617,7 +29605,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PdbSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29666,7 +29653,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/KubernetesProfilesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29715,7 +29701,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NamespaceSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29764,7 +29749,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NetworkPoliciesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29813,7 +29797,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/NodesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29862,7 +29845,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/OrganizationSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -29959,7 +29941,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PvcSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -30008,7 +29989,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PodsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -30057,7 +30037,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ProjectsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -30106,7 +30085,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/PrometheusRulesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -30155,7 +30133,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/SecretSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -30204,7 +30181,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ServersSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -30253,7 +30229,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ServiceSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -30302,7 +30277,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StandAloneProfilesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -30351,7 +30325,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StorageClassesSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -30400,7 +30373,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StsSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -30449,7 +30421,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UsersSearchCommand'
-        required: true
       responses:
         "200":
           content:
@@ -30753,7 +30724,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ConsoleScreenshotCommand'
-        required: true
       responses:
         "200":
           content:
@@ -32266,7 +32236,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/VmConsoleScreenshotCommand'
-        required: true
       responses:
         "200":
           content:
@@ -67592,27 +67561,31 @@ components:
     VClusterLimitRangeListDto:
       additionalProperties: false
       example:
-        minRequest: minRequest
-        maxLimit: maxLimit
-        defaultLimit: defaultLimit
-        defaultRequest: defaultRequest
+        minRequest: 7.386281948385884
+        resourceUnit: resourceUnit
+        maxLimit: 4.145608029883936
+        defaultLimit: 1.2315135367772556
+        defaultRequest: 1.0246457001441578
         resourceType: resourceType
       properties:
         resourceType:
           nullable: true
           type: string
+        resourceUnit:
+          nullable: true
+          type: string
         maxLimit:
-          nullable: true
-          type: string
+          format: double
+          type: number
         minRequest:
-          nullable: true
-          type: string
+          format: double
+          type: number
         defaultLimit:
-          nullable: true
-          type: string
+          format: double
+          type: number
         defaultRequest:
-          nullable: true
-          type: string
+          format: double
+          type: number
       type: object
     VClusterList:
       additionalProperties: false
@@ -67645,15 +67618,17 @@ components:
             cpuRequests: 2
             totalPvcSize: totalPvcSize
           limitRanges:
-          - minRequest: minRequest
-            maxLimit: maxLimit
-            defaultLimit: defaultLimit
-            defaultRequest: defaultRequest
+          - minRequest: 7.386281948385884
+            resourceUnit: resourceUnit
+            maxLimit: 4.145608029883936
+            defaultLimit: 1.2315135367772556
+            defaultRequest: 1.0246457001441578
             resourceType: resourceType
-          - minRequest: minRequest
-            maxLimit: maxLimit
-            defaultLimit: defaultLimit
-            defaultRequest: defaultRequest
+          - minRequest: 7.386281948385884
+            resourceUnit: resourceUnit
+            maxLimit: 4.145608029883936
+            defaultLimit: 1.2315135367772556
+            defaultRequest: 1.0246457001441578
             resourceType: resourceType
           cloudType: AWS
           isLocked: true
@@ -67725,15 +67700,17 @@ components:
             cpuRequests: 2
             totalPvcSize: totalPvcSize
           limitRanges:
-          - minRequest: minRequest
-            maxLimit: maxLimit
-            defaultLimit: defaultLimit
-            defaultRequest: defaultRequest
+          - minRequest: 7.386281948385884
+            resourceUnit: resourceUnit
+            maxLimit: 4.145608029883936
+            defaultLimit: 1.2315135367772556
+            defaultRequest: 1.0246457001441578
             resourceType: resourceType
-          - minRequest: minRequest
-            maxLimit: maxLimit
-            defaultLimit: defaultLimit
-            defaultRequest: defaultRequest
+          - minRequest: 7.386281948385884
+            resourceUnit: resourceUnit
+            maxLimit: 4.145608029883936
+            defaultLimit: 1.2315135367772556
+            defaultRequest: 1.0246457001441578
             resourceType: resourceType
           cloudType: AWS
           isLocked: true
@@ -67806,7 +67783,7 @@ components:
           projectCloudRevision: 1
           status: "Null"
           isMaintenanceModeEnabled: true
-        totalCount: 4
+        totalCount: 1
       properties:
         data:
           items:
@@ -67853,15 +67830,17 @@ components:
           cpuRequests: 2
           totalPvcSize: totalPvcSize
         limitRanges:
-        - minRequest: minRequest
-          maxLimit: maxLimit
-          defaultLimit: defaultLimit
-          defaultRequest: defaultRequest
+        - minRequest: 7.386281948385884
+          resourceUnit: resourceUnit
+          maxLimit: 4.145608029883936
+          defaultLimit: 1.2315135367772556
+          defaultRequest: 1.0246457001441578
           resourceType: resourceType
-        - minRequest: minRequest
-          maxLimit: maxLimit
-          defaultLimit: defaultLimit
-          defaultRequest: defaultRequest
+        - minRequest: 7.386281948385884
+          resourceUnit: resourceUnit
+          maxLimit: 4.145608029883936
+          defaultLimit: 1.2315135367772556
+          defaultRequest: 1.0246457001441578
           resourceType: resourceType
         cloudType: AWS
         isLocked: true

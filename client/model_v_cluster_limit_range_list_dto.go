@@ -21,10 +21,11 @@ var _ MappedNullable = &VClusterLimitRangeListDto{}
 // VClusterLimitRangeListDto struct for VClusterLimitRangeListDto
 type VClusterLimitRangeListDto struct {
 	ResourceType NullableString `json:"resourceType,omitempty"`
-	MaxLimit NullableString `json:"maxLimit,omitempty"`
-	MinRequest NullableString `json:"minRequest,omitempty"`
-	DefaultLimit NullableString `json:"defaultLimit,omitempty"`
-	DefaultRequest NullableString `json:"defaultRequest,omitempty"`
+	ResourceUnit NullableString `json:"resourceUnit,omitempty"`
+	MaxLimit *float64 `json:"maxLimit,omitempty"`
+	MinRequest *float64 `json:"minRequest,omitempty"`
+	DefaultLimit *float64 `json:"defaultLimit,omitempty"`
+	DefaultRequest *float64 `json:"defaultRequest,omitempty"`
 }
 
 // NewVClusterLimitRangeListDto instantiates a new VClusterLimitRangeListDto object
@@ -86,172 +87,174 @@ func (o *VClusterLimitRangeListDto) UnsetResourceType() {
 	o.ResourceType.Unset()
 }
 
-// GetMaxLimit returns the MaxLimit field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VClusterLimitRangeListDto) GetMaxLimit() string {
-	if o == nil || IsNil(o.MaxLimit.Get()) {
+// GetResourceUnit returns the ResourceUnit field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VClusterLimitRangeListDto) GetResourceUnit() string {
+	if o == nil || IsNil(o.ResourceUnit.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MaxLimit.Get()
+	return *o.ResourceUnit.Get()
+}
+
+// GetResourceUnitOk returns a tuple with the ResourceUnit field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VClusterLimitRangeListDto) GetResourceUnitOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ResourceUnit.Get(), o.ResourceUnit.IsSet()
+}
+
+// HasResourceUnit returns a boolean if a field has been set.
+func (o *VClusterLimitRangeListDto) HasResourceUnit() bool {
+	if o != nil && o.ResourceUnit.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceUnit gets a reference to the given NullableString and assigns it to the ResourceUnit field.
+func (o *VClusterLimitRangeListDto) SetResourceUnit(v string) {
+	o.ResourceUnit.Set(&v)
+}
+// SetResourceUnitNil sets the value for ResourceUnit to be an explicit nil
+func (o *VClusterLimitRangeListDto) SetResourceUnitNil() {
+	o.ResourceUnit.Set(nil)
+}
+
+// UnsetResourceUnit ensures that no value is present for ResourceUnit, not even an explicit nil
+func (o *VClusterLimitRangeListDto) UnsetResourceUnit() {
+	o.ResourceUnit.Unset()
+}
+
+// GetMaxLimit returns the MaxLimit field value if set, zero value otherwise.
+func (o *VClusterLimitRangeListDto) GetMaxLimit() float64 {
+	if o == nil || IsNil(o.MaxLimit) {
+		var ret float64
+		return ret
+	}
+	return *o.MaxLimit
 }
 
 // GetMaxLimitOk returns a tuple with the MaxLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VClusterLimitRangeListDto) GetMaxLimitOk() (*string, bool) {
-	if o == nil {
+func (o *VClusterLimitRangeListDto) GetMaxLimitOk() (*float64, bool) {
+	if o == nil || IsNil(o.MaxLimit) {
 		return nil, false
 	}
-	return o.MaxLimit.Get(), o.MaxLimit.IsSet()
+	return o.MaxLimit, true
 }
 
 // HasMaxLimit returns a boolean if a field has been set.
 func (o *VClusterLimitRangeListDto) HasMaxLimit() bool {
-	if o != nil && o.MaxLimit.IsSet() {
+	if o != nil && !IsNil(o.MaxLimit) {
 		return true
 	}
 
 	return false
 }
 
-// SetMaxLimit gets a reference to the given NullableString and assigns it to the MaxLimit field.
-func (o *VClusterLimitRangeListDto) SetMaxLimit(v string) {
-	o.MaxLimit.Set(&v)
-}
-// SetMaxLimitNil sets the value for MaxLimit to be an explicit nil
-func (o *VClusterLimitRangeListDto) SetMaxLimitNil() {
-	o.MaxLimit.Set(nil)
+// SetMaxLimit gets a reference to the given float64 and assigns it to the MaxLimit field.
+func (o *VClusterLimitRangeListDto) SetMaxLimit(v float64) {
+	o.MaxLimit = &v
 }
 
-// UnsetMaxLimit ensures that no value is present for MaxLimit, not even an explicit nil
-func (o *VClusterLimitRangeListDto) UnsetMaxLimit() {
-	o.MaxLimit.Unset()
-}
-
-// GetMinRequest returns the MinRequest field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VClusterLimitRangeListDto) GetMinRequest() string {
-	if o == nil || IsNil(o.MinRequest.Get()) {
-		var ret string
+// GetMinRequest returns the MinRequest field value if set, zero value otherwise.
+func (o *VClusterLimitRangeListDto) GetMinRequest() float64 {
+	if o == nil || IsNil(o.MinRequest) {
+		var ret float64
 		return ret
 	}
-	return *o.MinRequest.Get()
+	return *o.MinRequest
 }
 
 // GetMinRequestOk returns a tuple with the MinRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VClusterLimitRangeListDto) GetMinRequestOk() (*string, bool) {
-	if o == nil {
+func (o *VClusterLimitRangeListDto) GetMinRequestOk() (*float64, bool) {
+	if o == nil || IsNil(o.MinRequest) {
 		return nil, false
 	}
-	return o.MinRequest.Get(), o.MinRequest.IsSet()
+	return o.MinRequest, true
 }
 
 // HasMinRequest returns a boolean if a field has been set.
 func (o *VClusterLimitRangeListDto) HasMinRequest() bool {
-	if o != nil && o.MinRequest.IsSet() {
+	if o != nil && !IsNil(o.MinRequest) {
 		return true
 	}
 
 	return false
 }
 
-// SetMinRequest gets a reference to the given NullableString and assigns it to the MinRequest field.
-func (o *VClusterLimitRangeListDto) SetMinRequest(v string) {
-	o.MinRequest.Set(&v)
-}
-// SetMinRequestNil sets the value for MinRequest to be an explicit nil
-func (o *VClusterLimitRangeListDto) SetMinRequestNil() {
-	o.MinRequest.Set(nil)
+// SetMinRequest gets a reference to the given float64 and assigns it to the MinRequest field.
+func (o *VClusterLimitRangeListDto) SetMinRequest(v float64) {
+	o.MinRequest = &v
 }
 
-// UnsetMinRequest ensures that no value is present for MinRequest, not even an explicit nil
-func (o *VClusterLimitRangeListDto) UnsetMinRequest() {
-	o.MinRequest.Unset()
-}
-
-// GetDefaultLimit returns the DefaultLimit field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VClusterLimitRangeListDto) GetDefaultLimit() string {
-	if o == nil || IsNil(o.DefaultLimit.Get()) {
-		var ret string
+// GetDefaultLimit returns the DefaultLimit field value if set, zero value otherwise.
+func (o *VClusterLimitRangeListDto) GetDefaultLimit() float64 {
+	if o == nil || IsNil(o.DefaultLimit) {
+		var ret float64
 		return ret
 	}
-	return *o.DefaultLimit.Get()
+	return *o.DefaultLimit
 }
 
 // GetDefaultLimitOk returns a tuple with the DefaultLimit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VClusterLimitRangeListDto) GetDefaultLimitOk() (*string, bool) {
-	if o == nil {
+func (o *VClusterLimitRangeListDto) GetDefaultLimitOk() (*float64, bool) {
+	if o == nil || IsNil(o.DefaultLimit) {
 		return nil, false
 	}
-	return o.DefaultLimit.Get(), o.DefaultLimit.IsSet()
+	return o.DefaultLimit, true
 }
 
 // HasDefaultLimit returns a boolean if a field has been set.
 func (o *VClusterLimitRangeListDto) HasDefaultLimit() bool {
-	if o != nil && o.DefaultLimit.IsSet() {
+	if o != nil && !IsNil(o.DefaultLimit) {
 		return true
 	}
 
 	return false
 }
 
-// SetDefaultLimit gets a reference to the given NullableString and assigns it to the DefaultLimit field.
-func (o *VClusterLimitRangeListDto) SetDefaultLimit(v string) {
-	o.DefaultLimit.Set(&v)
-}
-// SetDefaultLimitNil sets the value for DefaultLimit to be an explicit nil
-func (o *VClusterLimitRangeListDto) SetDefaultLimitNil() {
-	o.DefaultLimit.Set(nil)
+// SetDefaultLimit gets a reference to the given float64 and assigns it to the DefaultLimit field.
+func (o *VClusterLimitRangeListDto) SetDefaultLimit(v float64) {
+	o.DefaultLimit = &v
 }
 
-// UnsetDefaultLimit ensures that no value is present for DefaultLimit, not even an explicit nil
-func (o *VClusterLimitRangeListDto) UnsetDefaultLimit() {
-	o.DefaultLimit.Unset()
-}
-
-// GetDefaultRequest returns the DefaultRequest field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VClusterLimitRangeListDto) GetDefaultRequest() string {
-	if o == nil || IsNil(o.DefaultRequest.Get()) {
-		var ret string
+// GetDefaultRequest returns the DefaultRequest field value if set, zero value otherwise.
+func (o *VClusterLimitRangeListDto) GetDefaultRequest() float64 {
+	if o == nil || IsNil(o.DefaultRequest) {
+		var ret float64
 		return ret
 	}
-	return *o.DefaultRequest.Get()
+	return *o.DefaultRequest
 }
 
 // GetDefaultRequestOk returns a tuple with the DefaultRequest field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VClusterLimitRangeListDto) GetDefaultRequestOk() (*string, bool) {
-	if o == nil {
+func (o *VClusterLimitRangeListDto) GetDefaultRequestOk() (*float64, bool) {
+	if o == nil || IsNil(o.DefaultRequest) {
 		return nil, false
 	}
-	return o.DefaultRequest.Get(), o.DefaultRequest.IsSet()
+	return o.DefaultRequest, true
 }
 
 // HasDefaultRequest returns a boolean if a field has been set.
 func (o *VClusterLimitRangeListDto) HasDefaultRequest() bool {
-	if o != nil && o.DefaultRequest.IsSet() {
+	if o != nil && !IsNil(o.DefaultRequest) {
 		return true
 	}
 
 	return false
 }
 
-// SetDefaultRequest gets a reference to the given NullableString and assigns it to the DefaultRequest field.
-func (o *VClusterLimitRangeListDto) SetDefaultRequest(v string) {
-	o.DefaultRequest.Set(&v)
-}
-// SetDefaultRequestNil sets the value for DefaultRequest to be an explicit nil
-func (o *VClusterLimitRangeListDto) SetDefaultRequestNil() {
-	o.DefaultRequest.Set(nil)
-}
-
-// UnsetDefaultRequest ensures that no value is present for DefaultRequest, not even an explicit nil
-func (o *VClusterLimitRangeListDto) UnsetDefaultRequest() {
-	o.DefaultRequest.Unset()
+// SetDefaultRequest gets a reference to the given float64 and assigns it to the DefaultRequest field.
+func (o *VClusterLimitRangeListDto) SetDefaultRequest(v float64) {
+	o.DefaultRequest = &v
 }
 
 func (o VClusterLimitRangeListDto) MarshalJSON() ([]byte, error) {
@@ -267,17 +270,20 @@ func (o VClusterLimitRangeListDto) ToMap() (map[string]interface{}, error) {
 	if o.ResourceType.IsSet() {
 		toSerialize["resourceType"] = o.ResourceType.Get()
 	}
-	if o.MaxLimit.IsSet() {
-		toSerialize["maxLimit"] = o.MaxLimit.Get()
+	if o.ResourceUnit.IsSet() {
+		toSerialize["resourceUnit"] = o.ResourceUnit.Get()
 	}
-	if o.MinRequest.IsSet() {
-		toSerialize["minRequest"] = o.MinRequest.Get()
+	if !IsNil(o.MaxLimit) {
+		toSerialize["maxLimit"] = o.MaxLimit
 	}
-	if o.DefaultLimit.IsSet() {
-		toSerialize["defaultLimit"] = o.DefaultLimit.Get()
+	if !IsNil(o.MinRequest) {
+		toSerialize["minRequest"] = o.MinRequest
 	}
-	if o.DefaultRequest.IsSet() {
-		toSerialize["defaultRequest"] = o.DefaultRequest.Get()
+	if !IsNil(o.DefaultLimit) {
+		toSerialize["defaultLimit"] = o.DefaultLimit
+	}
+	if !IsNil(o.DefaultRequest) {
+		toSerialize["defaultRequest"] = o.DefaultRequest
 	}
 	return toSerialize, nil
 }
