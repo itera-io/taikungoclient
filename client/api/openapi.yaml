@@ -6035,8 +6035,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-05-08T00:03:38.3947828Z
-                  createdAt: 2025-05-08T00:03:38.3947828Z
+                  lastValidated: 2025-05-09T00:03:36.1113282Z
+                  createdAt: 2025-05-09T00:03:36.1113282Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6141,14 +6141,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-05-08T00:03:38.3947828Z
+                    lastBackup: 2025-05-09T00:03:36.1113282Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-05-08T00:03:38.3947828Z
+                  createdAt: 2025-05-09T00:03:36.1113282Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-05-08T00:03:38.3947828Z
+                  lastBackup: 2025-05-09T00:03:36.1113282Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6253,8 +6253,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-08T00:03:38.3947828Z
-                  expiration: 2025-05-08T00:03:38.3947828Z
+                  createdAt: 2025-05-09T00:03:36.1113282Z
+                  expiration: 2025-05-09T00:03:36.1113282Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6358,7 +6358,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-08T00:03:38.3947828Z
+                  createdAt: 2025-05-09T00:03:36.1113282Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6468,9 +6468,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-05-08T00:03:38.3947828+00:00
-                  startTimeStamp: 2025-05-08T00:03:38.3947828+00:00
-                  createdAt: 2025-05-08T00:03:38.3947828Z
+                  completionDateTime: 2025-05-09T00:03:36.1113282+00:00
+                  startTimeStamp: 2025-05-09T00:03:36.1113282+00:00
+                  createdAt: 2025-05-09T00:03:36.1113282Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -36740,6 +36740,50 @@ paths:
       summary: Delete virtual cluster
       tags:
       - Virtual Cluster
+  /api/v1/virtual-cluster/edit/quotas:
+    post:
+      operationId: virtual-cluster-edit-quotas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditVirtualClusterQuotasCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Edit virtual cluster resource quotas and limit ranges
+      tags:
+      - Virtual Cluster
   /api/v1/virtual-cluster/{parentProjectId}:
     get:
       operationId: virtual-cluster-list
@@ -46127,22 +46171,27 @@ components:
           cpuLimits: 2.3021358869347655
           cpuRequests: 5.637376656633329
           totalPvcSize: 2
-        limitRanges:
-        - minRequest: 1.0246457001441578
-          resourceUnit: Cores
-          maxLimit: 1.2315135367772556
-          defaultLimit: 1.4894159098541704
-          defaultRequest: 6.84685269835264
-          resourceType: Cpu
-        - minRequest: 1.0246457001441578
-          resourceUnit: Cores
-          maxLimit: 1.2315135367772556
-          defaultLimit: 1.4894159098541704
-          defaultRequest: 6.84685269835264
-          resourceType: Cpu
         cloudId: 0
         name: name
+        ramLimitRanges:
+          minRequest: 1.0246457001441578
+          resourceUnit: Cores
+          maxLimit: 1.2315135367772556
+          defaultLimit: 1.4894159098541704
+          defaultRequest: 6.84685269835264
         projectId: 6
+        cpuLimitRanges:
+          minRequest: 1.0246457001441578
+          resourceUnit: Cores
+          maxLimit: 1.2315135367772556
+          defaultLimit: 1.4894159098541704
+          defaultRequest: 6.84685269835264
+        ephemeralStorageLimitRanges:
+          minRequest: 1.0246457001441578
+          resourceUnit: Cores
+          maxLimit: 1.2315135367772556
+          defaultLimit: 1.4894159098541704
+          defaultRequest: 6.84685269835264
       properties:
         cloudId:
           format: int32
@@ -46166,12 +46215,78 @@ components:
         exposeHostname:
           type: string
         resourceQuotas:
-          $ref: '#/components/schemas/VirtualClusterResourceQuotas'
-        limitRanges:
-          items:
-            $ref: '#/components/schemas/VirtualClusterResourceLimitRanges'
-          nullable: true
-          type: array
+          $ref: '#/components/schemas/CreateVirtualClusterResourceQuotas'
+        cpuLimitRanges:
+          $ref: '#/components/schemas/CreateVirtualClusterResourceLimitRanges'
+        ramLimitRanges:
+          $ref: '#/components/schemas/CreateVirtualClusterResourceLimitRanges'
+        ephemeralStorageLimitRanges:
+          $ref: '#/components/schemas/CreateVirtualClusterResourceLimitRanges'
+      type: object
+    CreateVirtualClusterResourceLimitRanges:
+      additionalProperties: false
+      example:
+        minRequest: 1.0246457001441578
+        resourceUnit: Cores
+        maxLimit: 1.2315135367772556
+        defaultLimit: 1.4894159098541704
+        defaultRequest: 6.84685269835264
+      properties:
+        resourceUnit:
+          $ref: '#/components/schemas/EProjectResourceUnit'
+        maxLimit:
+          format: double
+          type: number
+        minRequest:
+          format: double
+          type: number
+        defaultLimit:
+          format: double
+          type: number
+        defaultRequest:
+          format: double
+          type: number
+      type: object
+    CreateVirtualClusterResourceQuotas:
+      additionalProperties: false
+      example:
+        ingresses: 4
+        pvcs: 3
+        loadBalancers: 7
+        pods: 5
+        ramRequests: 7
+        ramLimits: 9
+        cpuLimits: 2.3021358869347655
+        cpuRequests: 5.637376656633329
+        totalPvcSize: 2
+      properties:
+        pods:
+          format: int32
+          type: integer
+        cpuRequests:
+          format: double
+          type: number
+        cpuLimits:
+          format: double
+          type: number
+        ramRequests:
+          format: int64
+          type: integer
+        ramLimits:
+          format: int64
+          type: integer
+        pvcs:
+          format: int32
+          type: integer
+        totalPvcSize:
+          format: int64
+          type: integer
+        ingresses:
+          format: int32
+          type: integer
+        loadBalancers:
+          format: int32
+          type: integer
       type: object
     CreateVsphereCommand:
       additionalProperties: false
@@ -48265,12 +48380,6 @@ components:
       - Uncordon
       - Drain
       type: string
-    EProjectResourceType:
-      enum:
-      - Cpu
-      - Ram
-      - EphemeralStorage
-      type: string
     EProjectResourceUnit:
       enum:
       - Cores
@@ -48505,6 +48614,116 @@ components:
         description:
           nullable: true
           type: string
+      type: object
+    EditVirtualClusterQuotasCommand:
+      additionalProperties: false
+      example:
+        resourceQuotas:
+          ingresses: 3
+          pvcs: 7
+          loadBalancers: 2
+          pods: 6
+          ramRequests: 5
+          ramLimits: 2
+          cpuLimits: 5.962133916683182
+          cpuRequests: 1.4658129805029452
+          totalPvcSize: 9
+        vClusterId: 0
+        ramLimitRanges:
+          minRequest: 7.386281948385884
+          resourceUnit: Cores
+          maxLimit: 4.145608029883936
+          defaultLimit: 1.2315135367772556
+          defaultRequest: 1.0246457001441578
+        cpuLimitRanges:
+          minRequest: 7.386281948385884
+          resourceUnit: Cores
+          maxLimit: 4.145608029883936
+          defaultLimit: 1.2315135367772556
+          defaultRequest: 1.0246457001441578
+        ephemeralStorageLimitRanges:
+          minRequest: 7.386281948385884
+          resourceUnit: Cores
+          maxLimit: 4.145608029883936
+          defaultLimit: 1.2315135367772556
+          defaultRequest: 1.0246457001441578
+      properties:
+        vClusterId:
+          format: int32
+          type: integer
+        resourceQuotas:
+          $ref: '#/components/schemas/EditVirtualClusterResourceQuotas'
+        cpuLimitRanges:
+          $ref: '#/components/schemas/EditVirtualClusterResourceLimitRanges'
+        ramLimitRanges:
+          $ref: '#/components/schemas/EditVirtualClusterResourceLimitRanges'
+        ephemeralStorageLimitRanges:
+          $ref: '#/components/schemas/EditVirtualClusterResourceLimitRanges'
+      type: object
+    EditVirtualClusterResourceLimitRanges:
+      additionalProperties: false
+      example:
+        minRequest: 7.386281948385884
+        resourceUnit: Cores
+        maxLimit: 4.145608029883936
+        defaultLimit: 1.2315135367772556
+        defaultRequest: 1.0246457001441578
+      properties:
+        resourceUnit:
+          $ref: '#/components/schemas/EProjectResourceUnit'
+        maxLimit:
+          format: double
+          type: number
+        minRequest:
+          format: double
+          type: number
+        defaultLimit:
+          format: double
+          type: number
+        defaultRequest:
+          format: double
+          type: number
+      type: object
+    EditVirtualClusterResourceQuotas:
+      additionalProperties: false
+      example:
+        ingresses: 3
+        pvcs: 7
+        loadBalancers: 2
+        pods: 6
+        ramRequests: 5
+        ramLimits: 2
+        cpuLimits: 5.962133916683182
+        cpuRequests: 1.4658129805029452
+        totalPvcSize: 9
+      properties:
+        pods:
+          format: int32
+          type: integer
+        cpuRequests:
+          format: double
+          type: number
+        cpuLimits:
+          format: double
+          type: number
+        ramRequests:
+          format: int64
+          type: integer
+        ramLimits:
+          format: int64
+          type: integer
+        pvcs:
+          format: int32
+          type: integer
+        totalPvcSize:
+          format: int64
+          type: integer
+        ingresses:
+          format: int32
+          type: integer
+        loadBalancers:
+          format: int32
+          type: integer
       type: object
     EmailMode:
       enum:
@@ -67566,11 +67785,7 @@ components:
         maxLimit: 4.145608029883936
         defaultLimit: 1.2315135367772556
         defaultRequest: 1.0246457001441578
-        resourceType: resourceType
       properties:
-        resourceType:
-          nullable: true
-          type: string
         resourceUnit:
           nullable: true
           type: string
@@ -67617,19 +67832,6 @@ components:
             cpuLimits: 7
             cpuRequests: 2
             totalPvcSize: totalPvcSize
-          limitRanges:
-          - minRequest: 7.386281948385884
-            resourceUnit: resourceUnit
-            maxLimit: 4.145608029883936
-            defaultLimit: 1.2315135367772556
-            defaultRequest: 1.0246457001441578
-            resourceType: resourceType
-          - minRequest: 7.386281948385884
-            resourceUnit: resourceUnit
-            maxLimit: 4.145608029883936
-            defaultLimit: 1.2315135367772556
-            defaultRequest: 1.0246457001441578
-            resourceType: resourceType
           cloudType: AWS
           isLocked: true
           id: 0
@@ -67651,8 +67853,20 @@ components:
             enable: true
           lastModifiedBy: lastModifiedBy
           health: "Null"
+          ramLimitRanges:
+            minRequest: 7.386281948385884
+            resourceUnit: resourceUnit
+            maxLimit: 4.145608029883936
+            defaultLimit: 1.2315135367772556
+            defaultRequest: 1.0246457001441578
           isVirtualCluster: true
           hasKubeConfigFile: true
+          ephemeralStorageLimitRanges:
+            minRequest: 7.386281948385884
+            resourceUnit: resourceUnit
+            maxLimit: 4.145608029883936
+            defaultLimit: 1.2315135367772556
+            defaultRequest: 1.0246457001441578
           kubeInfoButton:
             reasons:
             - reasons
@@ -67673,6 +67887,12 @@ components:
             enable: true
           isMaintenanceModeEnabled: true
           status: "Null"
+          cpuLimitRanges:
+            minRequest: 7.386281948385884
+            resourceUnit: resourceUnit
+            maxLimit: 4.145608029883936
+            defaultLimit: 1.2315135367772556
+            defaultRequest: 1.0246457001441578
         - deleteButton:
             reasons:
             - reasons
@@ -67699,19 +67919,6 @@ components:
             cpuLimits: 7
             cpuRequests: 2
             totalPvcSize: totalPvcSize
-          limitRanges:
-          - minRequest: 7.386281948385884
-            resourceUnit: resourceUnit
-            maxLimit: 4.145608029883936
-            defaultLimit: 1.2315135367772556
-            defaultRequest: 1.0246457001441578
-            resourceType: resourceType
-          - minRequest: 7.386281948385884
-            resourceUnit: resourceUnit
-            maxLimit: 4.145608029883936
-            defaultLimit: 1.2315135367772556
-            defaultRequest: 1.0246457001441578
-            resourceType: resourceType
           cloudType: AWS
           isLocked: true
           id: 0
@@ -67733,8 +67940,20 @@ components:
             enable: true
           lastModifiedBy: lastModifiedBy
           health: "Null"
+          ramLimitRanges:
+            minRequest: 7.386281948385884
+            resourceUnit: resourceUnit
+            maxLimit: 4.145608029883936
+            defaultLimit: 1.2315135367772556
+            defaultRequest: 1.0246457001441578
           isVirtualCluster: true
           hasKubeConfigFile: true
+          ephemeralStorageLimitRanges:
+            minRequest: 7.386281948385884
+            resourceUnit: resourceUnit
+            maxLimit: 4.145608029883936
+            defaultLimit: 1.2315135367772556
+            defaultRequest: 1.0246457001441578
           kubeInfoButton:
             reasons:
             - reasons
@@ -67755,6 +67974,12 @@ components:
             enable: true
           isMaintenanceModeEnabled: true
           status: "Null"
+          cpuLimitRanges:
+            minRequest: 7.386281948385884
+            resourceUnit: resourceUnit
+            maxLimit: 4.145608029883936
+            defaultLimit: 1.2315135367772556
+            defaultRequest: 1.0246457001441578
         project:
           isProjectMaintenanceModeEnabled: true
           organizationName: organizationName
@@ -67829,19 +68054,6 @@ components:
           cpuLimits: 7
           cpuRequests: 2
           totalPvcSize: totalPvcSize
-        limitRanges:
-        - minRequest: 7.386281948385884
-          resourceUnit: resourceUnit
-          maxLimit: 4.145608029883936
-          defaultLimit: 1.2315135367772556
-          defaultRequest: 1.0246457001441578
-          resourceType: resourceType
-        - minRequest: 7.386281948385884
-          resourceUnit: resourceUnit
-          maxLimit: 4.145608029883936
-          defaultLimit: 1.2315135367772556
-          defaultRequest: 1.0246457001441578
-          resourceType: resourceType
         cloudType: AWS
         isLocked: true
         id: 0
@@ -67863,8 +68075,20 @@ components:
           enable: true
         lastModifiedBy: lastModifiedBy
         health: "Null"
+        ramLimitRanges:
+          minRequest: 7.386281948385884
+          resourceUnit: resourceUnit
+          maxLimit: 4.145608029883936
+          defaultLimit: 1.2315135367772556
+          defaultRequest: 1.0246457001441578
         isVirtualCluster: true
         hasKubeConfigFile: true
+        ephemeralStorageLimitRanges:
+          minRequest: 7.386281948385884
+          resourceUnit: resourceUnit
+          maxLimit: 4.145608029883936
+          defaultLimit: 1.2315135367772556
+          defaultRequest: 1.0246457001441578
         kubeInfoButton:
           reasons:
           - reasons
@@ -67885,6 +68109,12 @@ components:
           enable: true
         isMaintenanceModeEnabled: true
         status: "Null"
+        cpuLimitRanges:
+          minRequest: 7.386281948385884
+          resourceUnit: resourceUnit
+          maxLimit: 4.145608029883936
+          defaultLimit: 1.2315135367772556
+          defaultRequest: 1.0246457001441578
       properties:
         id:
           format: int32
@@ -67940,11 +68170,12 @@ components:
           $ref: '#/components/schemas/ProjectHealth'
         resourceQuota:
           $ref: '#/components/schemas/VClusterResourceQuotaListDto'
-        limitRanges:
-          items:
-            $ref: '#/components/schemas/VClusterLimitRangeListDto'
-          nullable: true
-          type: array
+        cpuLimitRanges:
+          $ref: '#/components/schemas/VClusterLimitRangeListDto'
+        ramLimitRanges:
+          $ref: '#/components/schemas/VClusterLimitRangeListDto'
+        ephemeralStorageLimitRanges:
+          $ref: '#/components/schemas/VClusterLimitRangeListDto'
         lockButton:
           $ref: '#/components/schemas/ButtonStatusDto'
         unlockButton:
@@ -67963,10 +68194,12 @@ components:
       - alertingProfileName
       - alertsCount
       - cloudType
+      - cpuLimitRanges
       - createdAt
       - createdBy
       - deleteButton
       - deleteOnExpiration
+      - ephemeralStorageLimitRanges
       - expiredAt
       - hasKubeConfigFile
       - health
@@ -67978,11 +68211,11 @@ components:
       - kubernetesVersion
       - lastModified
       - lastModifiedBy
-      - limitRanges
       - lockButton
       - name
       - organizationId
       - organizationName
+      - ramLimitRanges
       - resetStatusButton
       - resourceQuota
       - setExpirationDateButton
@@ -68222,74 +68455,6 @@ components:
       required:
       - limitRanges
       - presets
-      type: object
-    VirtualClusterResourceLimitRanges:
-      additionalProperties: false
-      example:
-        minRequest: 1.0246457001441578
-        resourceUnit: Cores
-        maxLimit: 1.2315135367772556
-        defaultLimit: 1.4894159098541704
-        defaultRequest: 6.84685269835264
-        resourceType: Cpu
-      properties:
-        resourceType:
-          $ref: '#/components/schemas/EProjectResourceType'
-        resourceUnit:
-          $ref: '#/components/schemas/EProjectResourceUnit'
-        maxLimit:
-          format: double
-          type: number
-        minRequest:
-          format: double
-          type: number
-        defaultLimit:
-          format: double
-          type: number
-        defaultRequest:
-          format: double
-          type: number
-      type: object
-    VirtualClusterResourceQuotas:
-      additionalProperties: false
-      example:
-        ingresses: 4
-        pvcs: 3
-        loadBalancers: 7
-        pods: 5
-        ramRequests: 7
-        ramLimits: 9
-        cpuLimits: 2.3021358869347655
-        cpuRequests: 5.637376656633329
-        totalPvcSize: 2
-      properties:
-        pods:
-          format: int32
-          type: integer
-        cpuRequests:
-          format: double
-          type: number
-        cpuLimits:
-          format: double
-          type: number
-        ramRequests:
-          format: int64
-          type: integer
-        ramLimits:
-          format: int64
-          type: integer
-        pvcs:
-          format: int32
-          type: integer
-        totalPvcSize:
-          format: int64
-          type: integer
-        ingresses:
-          format: int32
-          type: integer
-        loadBalancers:
-          format: int32
-          type: integer
       type: object
     VmConsoleScreenshotCommand:
       additionalProperties: false

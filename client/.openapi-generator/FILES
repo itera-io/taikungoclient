@@ -329,6 +329,8 @@ docs/CreateTicketCommand.md
 docs/CreateUserCommand.md
 docs/CreateUserGroupCommand.md
 docs/CreateVirtualClusterCommand.md
+docs/CreateVirtualClusterResourceLimitRanges.md
+docs/CreateVirtualClusterResourceQuotas.md
 docs/CreateVsphereCommand.md
 docs/CreateVsphereNetworkDto.md
 docs/CreateZadaraCloudCommand.md
@@ -411,7 +413,6 @@ docs/EImportClusterType.md
 docs/EInstanceStatus.md
 docs/EKubernetesResource.md
 docs/ENodeAction.md
-docs/EProjectResourceType.md
 docs/EProjectResourceUnit.md
 docs/EStsAction.md
 docs/EditAlertingIntegrationCommand.md
@@ -426,6 +427,9 @@ docs/EditProjectAppParamsDto.md
 docs/EditSecurityGroupCommand.md
 docs/EditSshUserCommand.md
 docs/EditTicketCommand.md
+docs/EditVirtualClusterQuotasCommand.md
+docs/EditVirtualClusterResourceLimitRanges.md
+docs/EditVirtualClusterResourceQuotas.md
 docs/EmailMode.md
 docs/EnableAutoscalingCommand.md
 docs/EndpointElements.md
@@ -975,8 +979,6 @@ docs/VirtualClusterAPI.md
 docs/VirtualClusterQuotaLimitRangeDto.md
 docs/VirtualClusterQuotaPresetDto.md
 docs/VirtualClusterQuotasDto.md
-docs/VirtualClusterResourceLimitRanges.md
-docs/VirtualClusterResourceQuotas.md
 docs/VmConsoleScreenshotCommand.md
 docs/VmTemplateListCommand.md
 docs/VsphereCloudCredentialAPI.md
@@ -1236,6 +1238,8 @@ model_create_ticket_command.go
 model_create_user_command.go
 model_create_user_group_command.go
 model_create_virtual_cluster_command.go
+model_create_virtual_cluster_resource_limit_ranges.go
+model_create_virtual_cluster_resource_quotas.go
 model_create_vsphere_command.go
 model_create_vsphere_network_dto.go
 model_create_zadara_cloud_command.go
@@ -1316,7 +1320,6 @@ model_e_import_cluster_type.go
 model_e_instance_status.go
 model_e_kubernetes_resource.go
 model_e_node_action.go
-model_e_project_resource_type.go
 model_e_project_resource_unit.go
 model_e_sts_action.go
 model_edit_alerting_integration_command.go
@@ -1331,6 +1334,9 @@ model_edit_project_app_params_dto.go
 model_edit_security_group_command.go
 model_edit_ssh_user_command.go
 model_edit_ticket_command.go
+model_edit_virtual_cluster_quotas_command.go
+model_edit_virtual_cluster_resource_limit_ranges.go
+model_edit_virtual_cluster_resource_quotas.go
 model_email_mode.go
 model_enable_autoscaling_command.go
 model_endpoint_elements.go
@@ -1822,8 +1828,6 @@ model_verify_webhook_command.go
 model_virtual_cluster_quota_limit_range_dto.go
 model_virtual_cluster_quota_preset_dto.go
 model_virtual_cluster_quotas_dto.go
-model_virtual_cluster_resource_limit_ranges.go
-model_virtual_cluster_resource_quotas.go
 model_vm_console_screenshot_command.go
 model_vm_template_list_command.go
 model_vsphere_flavor_data.go

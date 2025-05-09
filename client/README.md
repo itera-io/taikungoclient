@@ -731,6 +731,7 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**UsersVerifyEmail**](docs/UsersAPI.md#usersverifyemail) | **Post** /api/v1/users/verifyemail | Verify user email
 *VirtualClusterAPI* | [**VirtualClusterCreate**](docs/VirtualClusterAPI.md#virtualclustercreate) | **Post** /api/v1/virtual-cluster/create | Create virtual cluster
 *VirtualClusterAPI* | [**VirtualClusterDelete**](docs/VirtualClusterAPI.md#virtualclusterdelete) | **Post** /api/v1/virtual-cluster/delete | Delete virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterEditQuotas**](docs/VirtualClusterAPI.md#virtualclustereditquotas) | **Post** /api/v1/virtual-cluster/edit/quotas | Edit virtual cluster resource quotas and limit ranges
 *VirtualClusterAPI* | [**VirtualClusterList**](docs/VirtualClusterAPI.md#virtualclusterlist) | **Get** /api/v1/virtual-cluster/{parentProjectId} | Retrieve all vCluster by given project
 *VirtualClusterAPI* | [**VirtualClusterQuota**](docs/VirtualClusterAPI.md#virtualclusterquota) | **Get** /api/v1/virtual-cluster/quota/{projectId} | Retrieve vcluster quota details
 *VirtualClusterAPI* | [**VirtualClusterQuotaPresets**](docs/VirtualClusterAPI.md#virtualclusterquotapresets) | **Get** /api/v1/virtual-cluster/quota-presets | Retrieve vCluster quota presets
@@ -987,6 +988,8 @@ Class | Method | HTTP request | Description
  - [CreateUserCommand](docs/CreateUserCommand.md)
  - [CreateUserGroupCommand](docs/CreateUserGroupCommand.md)
  - [CreateVirtualClusterCommand](docs/CreateVirtualClusterCommand.md)
+ - [CreateVirtualClusterResourceLimitRanges](docs/CreateVirtualClusterResourceLimitRanges.md)
+ - [CreateVirtualClusterResourceQuotas](docs/CreateVirtualClusterResourceQuotas.md)
  - [CreateVsphereCommand](docs/CreateVsphereCommand.md)
  - [CreateVsphereNetworkDto](docs/CreateVsphereNetworkDto.md)
  - [CreateZadaraCloudCommand](docs/CreateZadaraCloudCommand.md)
@@ -1067,7 +1070,6 @@ Class | Method | HTTP request | Description
  - [EInstanceStatus](docs/EInstanceStatus.md)
  - [EKubernetesResource](docs/EKubernetesResource.md)
  - [ENodeAction](docs/ENodeAction.md)
- - [EProjectResourceType](docs/EProjectResourceType.md)
  - [EProjectResourceUnit](docs/EProjectResourceUnit.md)
  - [EStsAction](docs/EStsAction.md)
  - [EditAlertingIntegrationCommand](docs/EditAlertingIntegrationCommand.md)
@@ -1082,6 +1084,9 @@ Class | Method | HTTP request | Description
  - [EditSecurityGroupCommand](docs/EditSecurityGroupCommand.md)
  - [EditSshUserCommand](docs/EditSshUserCommand.md)
  - [EditTicketCommand](docs/EditTicketCommand.md)
+ - [EditVirtualClusterQuotasCommand](docs/EditVirtualClusterQuotasCommand.md)
+ - [EditVirtualClusterResourceLimitRanges](docs/EditVirtualClusterResourceLimitRanges.md)
+ - [EditVirtualClusterResourceQuotas](docs/EditVirtualClusterResourceQuotas.md)
  - [EmailMode](docs/EmailMode.md)
  - [EnableAutoscalingCommand](docs/EnableAutoscalingCommand.md)
  - [EndpointElements](docs/EndpointElements.md)
@@ -1573,8 +1578,6 @@ Class | Method | HTTP request | Description
  - [VirtualClusterQuotaLimitRangeDto](docs/VirtualClusterQuotaLimitRangeDto.md)
  - [VirtualClusterQuotaPresetDto](docs/VirtualClusterQuotaPresetDto.md)
  - [VirtualClusterQuotasDto](docs/VirtualClusterQuotasDto.md)
- - [VirtualClusterResourceLimitRanges](docs/VirtualClusterResourceLimitRanges.md)
- - [VirtualClusterResourceQuotas](docs/VirtualClusterResourceQuotas.md)
  - [VmConsoleScreenshotCommand](docs/VmConsoleScreenshotCommand.md)
  - [VmTemplateListCommand](docs/VmTemplateListCommand.md)
  - [VsphereFlavorData](docs/VsphereFlavorData.md)
