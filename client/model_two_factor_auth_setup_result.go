@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the TwoFactorAuthSetupResult type satisfies the MappedNullable interface at compile time
@@ -20,16 +22,20 @@ var _ MappedNullable = &TwoFactorAuthSetupResult{}
 
 // TwoFactorAuthSetupResult struct for TwoFactorAuthSetupResult
 type TwoFactorAuthSetupResult struct {
-	SharedKey NullableString `json:"sharedKey,omitempty"`
-	QrCodeUri NullableString `json:"qrCodeUri,omitempty"`
+	SharedKey NullableString `json:"sharedKey"`
+	QrCodeUri NullableString `json:"qrCodeUri"`
 }
+
+type _TwoFactorAuthSetupResult TwoFactorAuthSetupResult
 
 // NewTwoFactorAuthSetupResult instantiates a new TwoFactorAuthSetupResult object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTwoFactorAuthSetupResult() *TwoFactorAuthSetupResult {
+func NewTwoFactorAuthSetupResult(sharedKey NullableString, qrCodeUri NullableString) *TwoFactorAuthSetupResult {
 	this := TwoFactorAuthSetupResult{}
+	this.SharedKey = sharedKey
+	this.QrCodeUri = qrCodeUri
 	return &this
 }
 
@@ -41,16 +47,18 @@ func NewTwoFactorAuthSetupResultWithDefaults() *TwoFactorAuthSetupResult {
 	return &this
 }
 
-// GetSharedKey returns the SharedKey field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetSharedKey returns the SharedKey field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *TwoFactorAuthSetupResult) GetSharedKey() string {
-	if o == nil || IsNil(o.SharedKey.Get()) {
+	if o == nil || o.SharedKey.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.SharedKey.Get()
 }
 
-// GetSharedKeyOk returns a tuple with the SharedKey field value if set, nil otherwise
+// GetSharedKeyOk returns a tuple with the SharedKey field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TwoFactorAuthSetupResult) GetSharedKeyOk() (*string, bool) {
@@ -60,39 +68,23 @@ func (o *TwoFactorAuthSetupResult) GetSharedKeyOk() (*string, bool) {
 	return o.SharedKey.Get(), o.SharedKey.IsSet()
 }
 
-// HasSharedKey returns a boolean if a field has been set.
-func (o *TwoFactorAuthSetupResult) HasSharedKey() bool {
-	if o != nil && o.SharedKey.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSharedKey gets a reference to the given NullableString and assigns it to the SharedKey field.
+// SetSharedKey sets field value
 func (o *TwoFactorAuthSetupResult) SetSharedKey(v string) {
 	o.SharedKey.Set(&v)
 }
-// SetSharedKeyNil sets the value for SharedKey to be an explicit nil
-func (o *TwoFactorAuthSetupResult) SetSharedKeyNil() {
-	o.SharedKey.Set(nil)
-}
 
-// UnsetSharedKey ensures that no value is present for SharedKey, not even an explicit nil
-func (o *TwoFactorAuthSetupResult) UnsetSharedKey() {
-	o.SharedKey.Unset()
-}
-
-// GetQrCodeUri returns the QrCodeUri field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetQrCodeUri returns the QrCodeUri field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *TwoFactorAuthSetupResult) GetQrCodeUri() string {
-	if o == nil || IsNil(o.QrCodeUri.Get()) {
+	if o == nil || o.QrCodeUri.Get() == nil {
 		var ret string
 		return ret
 	}
+
 	return *o.QrCodeUri.Get()
 }
 
-// GetQrCodeUriOk returns a tuple with the QrCodeUri field value if set, nil otherwise
+// GetQrCodeUriOk returns a tuple with the QrCodeUri field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *TwoFactorAuthSetupResult) GetQrCodeUriOk() (*string, bool) {
@@ -102,27 +94,9 @@ func (o *TwoFactorAuthSetupResult) GetQrCodeUriOk() (*string, bool) {
 	return o.QrCodeUri.Get(), o.QrCodeUri.IsSet()
 }
 
-// HasQrCodeUri returns a boolean if a field has been set.
-func (o *TwoFactorAuthSetupResult) HasQrCodeUri() bool {
-	if o != nil && o.QrCodeUri.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetQrCodeUri gets a reference to the given NullableString and assigns it to the QrCodeUri field.
+// SetQrCodeUri sets field value
 func (o *TwoFactorAuthSetupResult) SetQrCodeUri(v string) {
 	o.QrCodeUri.Set(&v)
-}
-// SetQrCodeUriNil sets the value for QrCodeUri to be an explicit nil
-func (o *TwoFactorAuthSetupResult) SetQrCodeUriNil() {
-	o.QrCodeUri.Set(nil)
-}
-
-// UnsetQrCodeUri ensures that no value is present for QrCodeUri, not even an explicit nil
-func (o *TwoFactorAuthSetupResult) UnsetQrCodeUri() {
-	o.QrCodeUri.Unset()
 }
 
 func (o TwoFactorAuthSetupResult) MarshalJSON() ([]byte, error) {
@@ -135,13 +109,47 @@ func (o TwoFactorAuthSetupResult) MarshalJSON() ([]byte, error) {
 
 func (o TwoFactorAuthSetupResult) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.SharedKey.IsSet() {
-		toSerialize["sharedKey"] = o.SharedKey.Get()
-	}
-	if o.QrCodeUri.IsSet() {
-		toSerialize["qrCodeUri"] = o.QrCodeUri.Get()
-	}
+	toSerialize["sharedKey"] = o.SharedKey.Get()
+	toSerialize["qrCodeUri"] = o.QrCodeUri.Get()
 	return toSerialize, nil
+}
+
+func (o *TwoFactorAuthSetupResult) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"sharedKey",
+		"qrCodeUri",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varTwoFactorAuthSetupResult := _TwoFactorAuthSetupResult{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varTwoFactorAuthSetupResult)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TwoFactorAuthSetupResult(varTwoFactorAuthSetupResult)
+
+	return err
 }
 
 type NullableTwoFactorAuthSetupResult struct {

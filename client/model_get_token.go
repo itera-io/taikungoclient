@@ -14,6 +14,8 @@ package taikuncore
 import (
 	"encoding/json"
 	"time"
+	"bytes"
+	"fmt"
 )
 
 // checks if the GetToken type satisfies the MappedNullable interface at compile time
@@ -21,18 +23,21 @@ var _ MappedNullable = &GetToken{}
 
 // GetToken struct for GetToken
 type GetToken struct {
-	Token NullableString `json:"token,omitempty"`
+	Token string `json:"token"`
 	RefreshToken NullableString `json:"refreshToken,omitempty"`
 	RefreshTokenExpireTime *time.Time `json:"refreshTokenExpireTime,omitempty"`
 	TwoFaEnabled NullableBool `json:"twoFaEnabled,omitempty"`
 }
 
+type _GetToken GetToken
+
 // NewGetToken instantiates a new GetToken object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetToken() *GetToken {
+func NewGetToken(token string) *GetToken {
 	this := GetToken{}
+	this.Token = token
 	return &this
 }
 
@@ -44,46 +49,28 @@ func NewGetTokenWithDefaults() *GetToken {
 	return &this
 }
 
-// GetToken returns the Token field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetToken returns the Token field value
 func (o *GetToken) GetToken() string {
-	if o == nil || IsNil(o.Token.Get()) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Token.Get()
+
+	return o.Token
 }
 
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// GetTokenOk returns a tuple with the Token field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *GetToken) GetTokenOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Token.Get(), o.Token.IsSet()
+	return &o.Token, true
 }
 
-// HasToken returns a boolean if a field has been set.
-func (o *GetToken) HasToken() bool {
-	if o != nil && o.Token.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetToken gets a reference to the given NullableString and assigns it to the Token field.
+// SetToken sets field value
 func (o *GetToken) SetToken(v string) {
-	o.Token.Set(&v)
-}
-// SetTokenNil sets the value for Token to be an explicit nil
-func (o *GetToken) SetTokenNil() {
-	o.Token.Set(nil)
-}
-
-// UnsetToken ensures that no value is present for Token, not even an explicit nil
-func (o *GetToken) UnsetToken() {
-	o.Token.Unset()
+	o.Token = v
 }
 
 // GetRefreshToken returns the RefreshToken field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -212,9 +199,7 @@ func (o GetToken) MarshalJSON() ([]byte, error) {
 
 func (o GetToken) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Token.IsSet() {
-		toSerialize["token"] = o.Token.Get()
-	}
+	toSerialize["token"] = o.Token
 	if o.RefreshToken.IsSet() {
 		toSerialize["refreshToken"] = o.RefreshToken.Get()
 	}
@@ -225,6 +210,43 @@ func (o GetToken) ToMap() (map[string]interface{}, error) {
 		toSerialize["twoFaEnabled"] = o.TwoFaEnabled.Get()
 	}
 	return toSerialize, nil
+}
+
+func (o *GetToken) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"token",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGetToken := _GetToken{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGetToken)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GetToken(varGetToken)
+
+	return err
 }
 
 type NullableGetToken struct {
