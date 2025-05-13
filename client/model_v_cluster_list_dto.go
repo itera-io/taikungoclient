@@ -45,10 +45,10 @@ type VClusterListDto struct {
 	CloudType ECloudCredentialType `json:"cloudType"`
 	Status ProjectStatus `json:"status"`
 	Health ProjectHealth `json:"health"`
-	ResourceQuota VClusterResourceQuotaListDto `json:"resourceQuota"`
-	CpuLimitRanges VClusterLimitRangeListDto `json:"cpuLimitRanges"`
-	RamLimitRanges VClusterLimitRangeListDto `json:"ramLimitRanges"`
-	EphemeralStorageLimitRanges VClusterLimitRangeListDto `json:"ephemeralStorageLimitRanges"`
+	ResourceQuota *VClusterResourceQuotaListDto `json:"resourceQuota,omitempty"`
+	CpuLimitRanges *VClusterLimitRangeListDto `json:"cpuLimitRanges,omitempty"`
+	RamLimitRanges *VClusterLimitRangeListDto `json:"ramLimitRanges,omitempty"`
+	EphemeralStorageLimitRanges *VClusterLimitRangeListDto `json:"ephemeralStorageLimitRanges,omitempty"`
 	LockButton ButtonStatusDto `json:"lockButton"`
 	UnlockButton ButtonStatusDto `json:"unlockButton"`
 	DeleteButton ButtonStatusDto `json:"deleteButton"`
@@ -63,7 +63,7 @@ type _VClusterListDto VClusterListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType ECloudCredentialType, status ProjectStatus, health ProjectHealth, resourceQuota VClusterResourceQuotaListDto, cpuLimitRanges VClusterLimitRangeListDto, ramLimitRanges VClusterLimitRangeListDto, ephemeralStorageLimitRanges VClusterLimitRangeListDto, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
+func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked bool, hasKubeConfigFile bool, isMaintenanceModeEnabled bool, organizationName string, organizationId int32, kubernetesVersion string, createdAt string, createdBy string, lastModified string, lastModifiedBy string, alertsCount int32, expiredAt string, deleteOnExpiration bool, wasmEnabled bool, alertingProfileId NullableInt32, alertingProfileName NullableString, accessIp string, cloudType ECloudCredentialType, status ProjectStatus, health ProjectHealth, lockButton ButtonStatusDto, unlockButton ButtonStatusDto, deleteButton ButtonStatusDto, kubeInfoButton ButtonStatusDto, setExpirationDateButton ButtonStatusDto, resetStatusButton ButtonStatusDto) *VClusterListDto {
 	this := VClusterListDto{}
 	this.Id = id
 	this.Name = name
@@ -88,10 +88,6 @@ func NewVClusterListDto(id int32, name string, isVirtualCluster bool, isLocked b
 	this.CloudType = cloudType
 	this.Status = status
 	this.Health = health
-	this.ResourceQuota = resourceQuota
-	this.CpuLimitRanges = cpuLimitRanges
-	this.RamLimitRanges = ramLimitRanges
-	this.EphemeralStorageLimitRanges = ephemeralStorageLimitRanges
 	this.LockButton = lockButton
 	this.UnlockButton = unlockButton
 	this.DeleteButton = deleteButton
@@ -665,100 +661,132 @@ func (o *VClusterListDto) SetHealth(v ProjectHealth) {
 	o.Health = v
 }
 
-// GetResourceQuota returns the ResourceQuota field value
+// GetResourceQuota returns the ResourceQuota field value if set, zero value otherwise.
 func (o *VClusterListDto) GetResourceQuota() VClusterResourceQuotaListDto {
-	if o == nil {
+	if o == nil || IsNil(o.ResourceQuota) {
 		var ret VClusterResourceQuotaListDto
 		return ret
 	}
-
-	return o.ResourceQuota
+	return *o.ResourceQuota
 }
 
-// GetResourceQuotaOk returns a tuple with the ResourceQuota field value
+// GetResourceQuotaOk returns a tuple with the ResourceQuota field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetResourceQuotaOk() (*VClusterResourceQuotaListDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ResourceQuota) {
 		return nil, false
 	}
-	return &o.ResourceQuota, true
+	return o.ResourceQuota, true
 }
 
-// SetResourceQuota sets field value
+// HasResourceQuota returns a boolean if a field has been set.
+func (o *VClusterListDto) HasResourceQuota() bool {
+	if o != nil && !IsNil(o.ResourceQuota) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceQuota gets a reference to the given VClusterResourceQuotaListDto and assigns it to the ResourceQuota field.
 func (o *VClusterListDto) SetResourceQuota(v VClusterResourceQuotaListDto) {
-	o.ResourceQuota = v
+	o.ResourceQuota = &v
 }
 
-// GetCpuLimitRanges returns the CpuLimitRanges field value
+// GetCpuLimitRanges returns the CpuLimitRanges field value if set, zero value otherwise.
 func (o *VClusterListDto) GetCpuLimitRanges() VClusterLimitRangeListDto {
-	if o == nil {
+	if o == nil || IsNil(o.CpuLimitRanges) {
 		var ret VClusterLimitRangeListDto
 		return ret
 	}
-
-	return o.CpuLimitRanges
+	return *o.CpuLimitRanges
 }
 
-// GetCpuLimitRangesOk returns a tuple with the CpuLimitRanges field value
+// GetCpuLimitRangesOk returns a tuple with the CpuLimitRanges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetCpuLimitRangesOk() (*VClusterLimitRangeListDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.CpuLimitRanges) {
 		return nil, false
 	}
-	return &o.CpuLimitRanges, true
+	return o.CpuLimitRanges, true
 }
 
-// SetCpuLimitRanges sets field value
+// HasCpuLimitRanges returns a boolean if a field has been set.
+func (o *VClusterListDto) HasCpuLimitRanges() bool {
+	if o != nil && !IsNil(o.CpuLimitRanges) {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuLimitRanges gets a reference to the given VClusterLimitRangeListDto and assigns it to the CpuLimitRanges field.
 func (o *VClusterListDto) SetCpuLimitRanges(v VClusterLimitRangeListDto) {
-	o.CpuLimitRanges = v
+	o.CpuLimitRanges = &v
 }
 
-// GetRamLimitRanges returns the RamLimitRanges field value
+// GetRamLimitRanges returns the RamLimitRanges field value if set, zero value otherwise.
 func (o *VClusterListDto) GetRamLimitRanges() VClusterLimitRangeListDto {
-	if o == nil {
+	if o == nil || IsNil(o.RamLimitRanges) {
 		var ret VClusterLimitRangeListDto
 		return ret
 	}
-
-	return o.RamLimitRanges
+	return *o.RamLimitRanges
 }
 
-// GetRamLimitRangesOk returns a tuple with the RamLimitRanges field value
+// GetRamLimitRangesOk returns a tuple with the RamLimitRanges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetRamLimitRangesOk() (*VClusterLimitRangeListDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RamLimitRanges) {
 		return nil, false
 	}
-	return &o.RamLimitRanges, true
+	return o.RamLimitRanges, true
 }
 
-// SetRamLimitRanges sets field value
+// HasRamLimitRanges returns a boolean if a field has been set.
+func (o *VClusterListDto) HasRamLimitRanges() bool {
+	if o != nil && !IsNil(o.RamLimitRanges) {
+		return true
+	}
+
+	return false
+}
+
+// SetRamLimitRanges gets a reference to the given VClusterLimitRangeListDto and assigns it to the RamLimitRanges field.
 func (o *VClusterListDto) SetRamLimitRanges(v VClusterLimitRangeListDto) {
-	o.RamLimitRanges = v
+	o.RamLimitRanges = &v
 }
 
-// GetEphemeralStorageLimitRanges returns the EphemeralStorageLimitRanges field value
+// GetEphemeralStorageLimitRanges returns the EphemeralStorageLimitRanges field value if set, zero value otherwise.
 func (o *VClusterListDto) GetEphemeralStorageLimitRanges() VClusterLimitRangeListDto {
-	if o == nil {
+	if o == nil || IsNil(o.EphemeralStorageLimitRanges) {
 		var ret VClusterLimitRangeListDto
 		return ret
 	}
-
-	return o.EphemeralStorageLimitRanges
+	return *o.EphemeralStorageLimitRanges
 }
 
-// GetEphemeralStorageLimitRangesOk returns a tuple with the EphemeralStorageLimitRanges field value
+// GetEphemeralStorageLimitRangesOk returns a tuple with the EphemeralStorageLimitRanges field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *VClusterListDto) GetEphemeralStorageLimitRangesOk() (*VClusterLimitRangeListDto, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.EphemeralStorageLimitRanges) {
 		return nil, false
 	}
-	return &o.EphemeralStorageLimitRanges, true
+	return o.EphemeralStorageLimitRanges, true
 }
 
-// SetEphemeralStorageLimitRanges sets field value
+// HasEphemeralStorageLimitRanges returns a boolean if a field has been set.
+func (o *VClusterListDto) HasEphemeralStorageLimitRanges() bool {
+	if o != nil && !IsNil(o.EphemeralStorageLimitRanges) {
+		return true
+	}
+
+	return false
+}
+
+// SetEphemeralStorageLimitRanges gets a reference to the given VClusterLimitRangeListDto and assigns it to the EphemeralStorageLimitRanges field.
 func (o *VClusterListDto) SetEphemeralStorageLimitRanges(v VClusterLimitRangeListDto) {
-	o.EphemeralStorageLimitRanges = v
+	o.EphemeralStorageLimitRanges = &v
 }
 
 // GetLockButton returns the LockButton field value
@@ -938,10 +966,18 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["status"] = o.Status
 	toSerialize["health"] = o.Health
-	toSerialize["resourceQuota"] = o.ResourceQuota
-	toSerialize["cpuLimitRanges"] = o.CpuLimitRanges
-	toSerialize["ramLimitRanges"] = o.RamLimitRanges
-	toSerialize["ephemeralStorageLimitRanges"] = o.EphemeralStorageLimitRanges
+	if !IsNil(o.ResourceQuota) {
+		toSerialize["resourceQuota"] = o.ResourceQuota
+	}
+	if !IsNil(o.CpuLimitRanges) {
+		toSerialize["cpuLimitRanges"] = o.CpuLimitRanges
+	}
+	if !IsNil(o.RamLimitRanges) {
+		toSerialize["ramLimitRanges"] = o.RamLimitRanges
+	}
+	if !IsNil(o.EphemeralStorageLimitRanges) {
+		toSerialize["ephemeralStorageLimitRanges"] = o.EphemeralStorageLimitRanges
+	}
 	toSerialize["lockButton"] = o.LockButton
 	toSerialize["unlockButton"] = o.UnlockButton
 	toSerialize["deleteButton"] = o.DeleteButton
@@ -979,10 +1015,6 @@ func (o *VClusterListDto) UnmarshalJSON(data []byte) (err error) {
 		"cloudType",
 		"status",
 		"health",
-		"resourceQuota",
-		"cpuLimitRanges",
-		"ramLimitRanges",
-		"ephemeralStorageLimitRanges",
 		"lockButton",
 		"unlockButton",
 		"deleteButton",

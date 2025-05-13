@@ -731,7 +731,15 @@ Class | Method | HTTP request | Description
 *UsersAPI* | [**UsersVerifyEmail**](docs/UsersAPI.md#usersverifyemail) | **Post** /api/v1/users/verifyemail | Verify user email
 *VirtualClusterAPI* | [**VirtualClusterCreate**](docs/VirtualClusterAPI.md#virtualclustercreate) | **Post** /api/v1/virtual-cluster/create | Create virtual cluster
 *VirtualClusterAPI* | [**VirtualClusterDelete**](docs/VirtualClusterAPI.md#virtualclusterdelete) | **Post** /api/v1/virtual-cluster/delete | Delete virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterDisableAi**](docs/VirtualClusterAPI.md#virtualclusterdisableai) | **Post** /api/v1/virtual-cluster/disable-ai | Disable ai for virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterDisableBackup**](docs/VirtualClusterAPI.md#virtualclusterdisablebackup) | **Post** /api/v1/virtual-cluster/disable-backup | Disable backup for virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterDisableMonitoring**](docs/VirtualClusterAPI.md#virtualclusterdisablemonitoring) | **Post** /api/v1/virtual-cluster/disable-monitoring | Disable monitoring for virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterDisableOpa**](docs/VirtualClusterAPI.md#virtualclusterdisableopa) | **Post** /api/v1/virtual-cluster/disable-opa | Disable opa for virtual cluster
 *VirtualClusterAPI* | [**VirtualClusterEditQuotas**](docs/VirtualClusterAPI.md#virtualclustereditquotas) | **Post** /api/v1/virtual-cluster/edit/quotas | Edit virtual cluster resource quotas and limit ranges
+*VirtualClusterAPI* | [**VirtualClusterEnableAi**](docs/VirtualClusterAPI.md#virtualclusterenableai) | **Post** /api/v1/virtual-cluster/enable-ai | Enable ai for virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterEnableBackup**](docs/VirtualClusterAPI.md#virtualclusterenablebackup) | **Post** /api/v1/virtual-cluster/enable-backup | Enable backup for virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterEnableMonitoring**](docs/VirtualClusterAPI.md#virtualclusterenablemonitoring) | **Post** /api/v1/virtual-cluster/enable-monitoring | Enable monitoring for virtual cluster
+*VirtualClusterAPI* | [**VirtualClusterEnableOpa**](docs/VirtualClusterAPI.md#virtualclusterenableopa) | **Post** /api/v1/virtual-cluster/enable-opa | Enable opa for virtual cluster
 *VirtualClusterAPI* | [**VirtualClusterList**](docs/VirtualClusterAPI.md#virtualclusterlist) | **Get** /api/v1/virtual-cluster/{parentProjectId} | Retrieve all vCluster by given project
 *VirtualClusterAPI* | [**VirtualClusterQuota**](docs/VirtualClusterAPI.md#virtualclusterquota) | **Get** /api/v1/virtual-cluster/quota/{projectId} | Retrieve vcluster quota details
 *VirtualClusterAPI* | [**VirtualClusterQuotaPresets**](docs/VirtualClusterAPI.md#virtualclusterquotapresets) | **Get** /api/v1/virtual-cluster/quota-presets | Retrieve vCluster quota presets
@@ -1575,6 +1583,14 @@ Class | Method | HTTP request | Description
  - [VerifyEmailCommand](docs/VerifyEmailCommand.md)
  - [VerifySlackCredentialsCommand](docs/VerifySlackCredentialsCommand.md)
  - [VerifyWebhookCommand](docs/VerifyWebhookCommand.md)
+ - [VirtualClusterDisableAiCommand](docs/VirtualClusterDisableAiCommand.md)
+ - [VirtualClusterDisableBackupCommand](docs/VirtualClusterDisableBackupCommand.md)
+ - [VirtualClusterDisableMonitoringCommand](docs/VirtualClusterDisableMonitoringCommand.md)
+ - [VirtualClusterDisableOpaCommand](docs/VirtualClusterDisableOpaCommand.md)
+ - [VirtualClusterEnableAiCommand](docs/VirtualClusterEnableAiCommand.md)
+ - [VirtualClusterEnableBackupCommand](docs/VirtualClusterEnableBackupCommand.md)
+ - [VirtualClusterEnableMonitoringCommand](docs/VirtualClusterEnableMonitoringCommand.md)
+ - [VirtualClusterEnableOpaCommand](docs/VirtualClusterEnableOpaCommand.md)
  - [VirtualClusterQuotaLimitRangeDto](docs/VirtualClusterQuotaLimitRangeDto.md)
  - [VirtualClusterQuotaPresetDto](docs/VirtualClusterQuotaPresetDto.md)
  - [VirtualClusterQuotasDto](docs/VirtualClusterQuotasDto.md)

@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the EditVirtualClusterResourceQuotas type satisfies the MappedNullable interface at compile time
@@ -20,23 +22,34 @@ var _ MappedNullable = &EditVirtualClusterResourceQuotas{}
 
 // EditVirtualClusterResourceQuotas struct for EditVirtualClusterResourceQuotas
 type EditVirtualClusterResourceQuotas struct {
-	Pods *int32 `json:"pods,omitempty"`
-	CpuRequests *float64 `json:"cpuRequests,omitempty"`
-	CpuLimits *float64 `json:"cpuLimits,omitempty"`
-	RamRequests *int64 `json:"ramRequests,omitempty"`
-	RamLimits *int64 `json:"ramLimits,omitempty"`
-	Pvcs *int32 `json:"pvcs,omitempty"`
-	TotalPvcSize *int64 `json:"totalPvcSize,omitempty"`
-	Ingresses *int32 `json:"ingresses,omitempty"`
-	LoadBalancers *int32 `json:"loadBalancers,omitempty"`
+	Pods int32 `json:"pods"`
+	CpuRequests float64 `json:"cpuRequests"`
+	CpuLimits float64 `json:"cpuLimits"`
+	RamRequests int64 `json:"ramRequests"`
+	RamLimits int64 `json:"ramLimits"`
+	Pvcs int32 `json:"pvcs"`
+	TotalPvcSize int64 `json:"totalPvcSize"`
+	Ingresses int32 `json:"ingresses"`
+	LoadBalancers int32 `json:"loadBalancers"`
 }
+
+type _EditVirtualClusterResourceQuotas EditVirtualClusterResourceQuotas
 
 // NewEditVirtualClusterResourceQuotas instantiates a new EditVirtualClusterResourceQuotas object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditVirtualClusterResourceQuotas() *EditVirtualClusterResourceQuotas {
+func NewEditVirtualClusterResourceQuotas(pods int32, cpuRequests float64, cpuLimits float64, ramRequests int64, ramLimits int64, pvcs int32, totalPvcSize int64, ingresses int32, loadBalancers int32) *EditVirtualClusterResourceQuotas {
 	this := EditVirtualClusterResourceQuotas{}
+	this.Pods = pods
+	this.CpuRequests = cpuRequests
+	this.CpuLimits = cpuLimits
+	this.RamRequests = ramRequests
+	this.RamLimits = ramLimits
+	this.Pvcs = pvcs
+	this.TotalPvcSize = totalPvcSize
+	this.Ingresses = ingresses
+	this.LoadBalancers = loadBalancers
 	return &this
 }
 
@@ -48,292 +61,220 @@ func NewEditVirtualClusterResourceQuotasWithDefaults() *EditVirtualClusterResour
 	return &this
 }
 
-// GetPods returns the Pods field value if set, zero value otherwise.
+// GetPods returns the Pods field value
 func (o *EditVirtualClusterResourceQuotas) GetPods() int32 {
-	if o == nil || IsNil(o.Pods) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Pods
+
+	return o.Pods
 }
 
-// GetPodsOk returns a tuple with the Pods field value if set, nil otherwise
+// GetPodsOk returns a tuple with the Pods field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceQuotas) GetPodsOk() (*int32, bool) {
-	if o == nil || IsNil(o.Pods) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Pods, true
+	return &o.Pods, true
 }
 
-// HasPods returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceQuotas) HasPods() bool {
-	if o != nil && !IsNil(o.Pods) {
-		return true
-	}
-
-	return false
-}
-
-// SetPods gets a reference to the given int32 and assigns it to the Pods field.
+// SetPods sets field value
 func (o *EditVirtualClusterResourceQuotas) SetPods(v int32) {
-	o.Pods = &v
+	o.Pods = v
 }
 
-// GetCpuRequests returns the CpuRequests field value if set, zero value otherwise.
+// GetCpuRequests returns the CpuRequests field value
 func (o *EditVirtualClusterResourceQuotas) GetCpuRequests() float64 {
-	if o == nil || IsNil(o.CpuRequests) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.CpuRequests
+
+	return o.CpuRequests
 }
 
-// GetCpuRequestsOk returns a tuple with the CpuRequests field value if set, nil otherwise
+// GetCpuRequestsOk returns a tuple with the CpuRequests field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceQuotas) GetCpuRequestsOk() (*float64, bool) {
-	if o == nil || IsNil(o.CpuRequests) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CpuRequests, true
+	return &o.CpuRequests, true
 }
 
-// HasCpuRequests returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceQuotas) HasCpuRequests() bool {
-	if o != nil && !IsNil(o.CpuRequests) {
-		return true
-	}
-
-	return false
-}
-
-// SetCpuRequests gets a reference to the given float64 and assigns it to the CpuRequests field.
+// SetCpuRequests sets field value
 func (o *EditVirtualClusterResourceQuotas) SetCpuRequests(v float64) {
-	o.CpuRequests = &v
+	o.CpuRequests = v
 }
 
-// GetCpuLimits returns the CpuLimits field value if set, zero value otherwise.
+// GetCpuLimits returns the CpuLimits field value
 func (o *EditVirtualClusterResourceQuotas) GetCpuLimits() float64 {
-	if o == nil || IsNil(o.CpuLimits) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.CpuLimits
+
+	return o.CpuLimits
 }
 
-// GetCpuLimitsOk returns a tuple with the CpuLimits field value if set, nil otherwise
+// GetCpuLimitsOk returns a tuple with the CpuLimits field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceQuotas) GetCpuLimitsOk() (*float64, bool) {
-	if o == nil || IsNil(o.CpuLimits) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CpuLimits, true
+	return &o.CpuLimits, true
 }
 
-// HasCpuLimits returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceQuotas) HasCpuLimits() bool {
-	if o != nil && !IsNil(o.CpuLimits) {
-		return true
-	}
-
-	return false
-}
-
-// SetCpuLimits gets a reference to the given float64 and assigns it to the CpuLimits field.
+// SetCpuLimits sets field value
 func (o *EditVirtualClusterResourceQuotas) SetCpuLimits(v float64) {
-	o.CpuLimits = &v
+	o.CpuLimits = v
 }
 
-// GetRamRequests returns the RamRequests field value if set, zero value otherwise.
+// GetRamRequests returns the RamRequests field value
 func (o *EditVirtualClusterResourceQuotas) GetRamRequests() int64 {
-	if o == nil || IsNil(o.RamRequests) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.RamRequests
+
+	return o.RamRequests
 }
 
-// GetRamRequestsOk returns a tuple with the RamRequests field value if set, nil otherwise
+// GetRamRequestsOk returns a tuple with the RamRequests field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceQuotas) GetRamRequestsOk() (*int64, bool) {
-	if o == nil || IsNil(o.RamRequests) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RamRequests, true
+	return &o.RamRequests, true
 }
 
-// HasRamRequests returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceQuotas) HasRamRequests() bool {
-	if o != nil && !IsNil(o.RamRequests) {
-		return true
-	}
-
-	return false
-}
-
-// SetRamRequests gets a reference to the given int64 and assigns it to the RamRequests field.
+// SetRamRequests sets field value
 func (o *EditVirtualClusterResourceQuotas) SetRamRequests(v int64) {
-	o.RamRequests = &v
+	o.RamRequests = v
 }
 
-// GetRamLimits returns the RamLimits field value if set, zero value otherwise.
+// GetRamLimits returns the RamLimits field value
 func (o *EditVirtualClusterResourceQuotas) GetRamLimits() int64 {
-	if o == nil || IsNil(o.RamLimits) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.RamLimits
+
+	return o.RamLimits
 }
 
-// GetRamLimitsOk returns a tuple with the RamLimits field value if set, nil otherwise
+// GetRamLimitsOk returns a tuple with the RamLimits field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceQuotas) GetRamLimitsOk() (*int64, bool) {
-	if o == nil || IsNil(o.RamLimits) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RamLimits, true
+	return &o.RamLimits, true
 }
 
-// HasRamLimits returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceQuotas) HasRamLimits() bool {
-	if o != nil && !IsNil(o.RamLimits) {
-		return true
-	}
-
-	return false
-}
-
-// SetRamLimits gets a reference to the given int64 and assigns it to the RamLimits field.
+// SetRamLimits sets field value
 func (o *EditVirtualClusterResourceQuotas) SetRamLimits(v int64) {
-	o.RamLimits = &v
+	o.RamLimits = v
 }
 
-// GetPvcs returns the Pvcs field value if set, zero value otherwise.
+// GetPvcs returns the Pvcs field value
 func (o *EditVirtualClusterResourceQuotas) GetPvcs() int32 {
-	if o == nil || IsNil(o.Pvcs) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Pvcs
+
+	return o.Pvcs
 }
 
-// GetPvcsOk returns a tuple with the Pvcs field value if set, nil otherwise
+// GetPvcsOk returns a tuple with the Pvcs field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceQuotas) GetPvcsOk() (*int32, bool) {
-	if o == nil || IsNil(o.Pvcs) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Pvcs, true
+	return &o.Pvcs, true
 }
 
-// HasPvcs returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceQuotas) HasPvcs() bool {
-	if o != nil && !IsNil(o.Pvcs) {
-		return true
-	}
-
-	return false
-}
-
-// SetPvcs gets a reference to the given int32 and assigns it to the Pvcs field.
+// SetPvcs sets field value
 func (o *EditVirtualClusterResourceQuotas) SetPvcs(v int32) {
-	o.Pvcs = &v
+	o.Pvcs = v
 }
 
-// GetTotalPvcSize returns the TotalPvcSize field value if set, zero value otherwise.
+// GetTotalPvcSize returns the TotalPvcSize field value
 func (o *EditVirtualClusterResourceQuotas) GetTotalPvcSize() int64 {
-	if o == nil || IsNil(o.TotalPvcSize) {
+	if o == nil {
 		var ret int64
 		return ret
 	}
-	return *o.TotalPvcSize
+
+	return o.TotalPvcSize
 }
 
-// GetTotalPvcSizeOk returns a tuple with the TotalPvcSize field value if set, nil otherwise
+// GetTotalPvcSizeOk returns a tuple with the TotalPvcSize field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceQuotas) GetTotalPvcSizeOk() (*int64, bool) {
-	if o == nil || IsNil(o.TotalPvcSize) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalPvcSize, true
+	return &o.TotalPvcSize, true
 }
 
-// HasTotalPvcSize returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceQuotas) HasTotalPvcSize() bool {
-	if o != nil && !IsNil(o.TotalPvcSize) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalPvcSize gets a reference to the given int64 and assigns it to the TotalPvcSize field.
+// SetTotalPvcSize sets field value
 func (o *EditVirtualClusterResourceQuotas) SetTotalPvcSize(v int64) {
-	o.TotalPvcSize = &v
+	o.TotalPvcSize = v
 }
 
-// GetIngresses returns the Ingresses field value if set, zero value otherwise.
+// GetIngresses returns the Ingresses field value
 func (o *EditVirtualClusterResourceQuotas) GetIngresses() int32 {
-	if o == nil || IsNil(o.Ingresses) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Ingresses
+
+	return o.Ingresses
 }
 
-// GetIngressesOk returns a tuple with the Ingresses field value if set, nil otherwise
+// GetIngressesOk returns a tuple with the Ingresses field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceQuotas) GetIngressesOk() (*int32, bool) {
-	if o == nil || IsNil(o.Ingresses) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Ingresses, true
+	return &o.Ingresses, true
 }
 
-// HasIngresses returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceQuotas) HasIngresses() bool {
-	if o != nil && !IsNil(o.Ingresses) {
-		return true
-	}
-
-	return false
-}
-
-// SetIngresses gets a reference to the given int32 and assigns it to the Ingresses field.
+// SetIngresses sets field value
 func (o *EditVirtualClusterResourceQuotas) SetIngresses(v int32) {
-	o.Ingresses = &v
+	o.Ingresses = v
 }
 
-// GetLoadBalancers returns the LoadBalancers field value if set, zero value otherwise.
+// GetLoadBalancers returns the LoadBalancers field value
 func (o *EditVirtualClusterResourceQuotas) GetLoadBalancers() int32 {
-	if o == nil || IsNil(o.LoadBalancers) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.LoadBalancers
+
+	return o.LoadBalancers
 }
 
-// GetLoadBalancersOk returns a tuple with the LoadBalancers field value if set, nil otherwise
+// GetLoadBalancersOk returns a tuple with the LoadBalancers field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceQuotas) GetLoadBalancersOk() (*int32, bool) {
-	if o == nil || IsNil(o.LoadBalancers) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LoadBalancers, true
+	return &o.LoadBalancers, true
 }
 
-// HasLoadBalancers returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceQuotas) HasLoadBalancers() bool {
-	if o != nil && !IsNil(o.LoadBalancers) {
-		return true
-	}
-
-	return false
-}
-
-// SetLoadBalancers gets a reference to the given int32 and assigns it to the LoadBalancers field.
+// SetLoadBalancers sets field value
 func (o *EditVirtualClusterResourceQuotas) SetLoadBalancers(v int32) {
-	o.LoadBalancers = &v
+	o.LoadBalancers = v
 }
 
 func (o EditVirtualClusterResourceQuotas) MarshalJSON() ([]byte, error) {
@@ -346,34 +287,61 @@ func (o EditVirtualClusterResourceQuotas) MarshalJSON() ([]byte, error) {
 
 func (o EditVirtualClusterResourceQuotas) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Pods) {
-		toSerialize["pods"] = o.Pods
-	}
-	if !IsNil(o.CpuRequests) {
-		toSerialize["cpuRequests"] = o.CpuRequests
-	}
-	if !IsNil(o.CpuLimits) {
-		toSerialize["cpuLimits"] = o.CpuLimits
-	}
-	if !IsNil(o.RamRequests) {
-		toSerialize["ramRequests"] = o.RamRequests
-	}
-	if !IsNil(o.RamLimits) {
-		toSerialize["ramLimits"] = o.RamLimits
-	}
-	if !IsNil(o.Pvcs) {
-		toSerialize["pvcs"] = o.Pvcs
-	}
-	if !IsNil(o.TotalPvcSize) {
-		toSerialize["totalPvcSize"] = o.TotalPvcSize
-	}
-	if !IsNil(o.Ingresses) {
-		toSerialize["ingresses"] = o.Ingresses
-	}
-	if !IsNil(o.LoadBalancers) {
-		toSerialize["loadBalancers"] = o.LoadBalancers
-	}
+	toSerialize["pods"] = o.Pods
+	toSerialize["cpuRequests"] = o.CpuRequests
+	toSerialize["cpuLimits"] = o.CpuLimits
+	toSerialize["ramRequests"] = o.RamRequests
+	toSerialize["ramLimits"] = o.RamLimits
+	toSerialize["pvcs"] = o.Pvcs
+	toSerialize["totalPvcSize"] = o.TotalPvcSize
+	toSerialize["ingresses"] = o.Ingresses
+	toSerialize["loadBalancers"] = o.LoadBalancers
 	return toSerialize, nil
+}
+
+func (o *EditVirtualClusterResourceQuotas) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pods",
+		"cpuRequests",
+		"cpuLimits",
+		"ramRequests",
+		"ramLimits",
+		"pvcs",
+		"totalPvcSize",
+		"ingresses",
+		"loadBalancers",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEditVirtualClusterResourceQuotas := _EditVirtualClusterResourceQuotas{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEditVirtualClusterResourceQuotas)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EditVirtualClusterResourceQuotas(varEditVirtualClusterResourceQuotas)
+
+	return err
 }
 
 type NullableEditVirtualClusterResourceQuotas struct {

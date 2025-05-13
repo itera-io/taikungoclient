@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the EditVirtualClusterResourceLimitRanges type satisfies the MappedNullable interface at compile time
@@ -20,19 +22,26 @@ var _ MappedNullable = &EditVirtualClusterResourceLimitRanges{}
 
 // EditVirtualClusterResourceLimitRanges struct for EditVirtualClusterResourceLimitRanges
 type EditVirtualClusterResourceLimitRanges struct {
-	ResourceUnit *EProjectResourceUnit `json:"resourceUnit,omitempty"`
-	MaxLimit *float64 `json:"maxLimit,omitempty"`
-	MinRequest *float64 `json:"minRequest,omitempty"`
-	DefaultLimit *float64 `json:"defaultLimit,omitempty"`
-	DefaultRequest *float64 `json:"defaultRequest,omitempty"`
+	ResourceUnit EProjectResourceUnit `json:"resourceUnit"`
+	MaxLimit float64 `json:"maxLimit"`
+	MinRequest float64 `json:"minRequest"`
+	DefaultLimit float64 `json:"defaultLimit"`
+	DefaultRequest float64 `json:"defaultRequest"`
 }
+
+type _EditVirtualClusterResourceLimitRanges EditVirtualClusterResourceLimitRanges
 
 // NewEditVirtualClusterResourceLimitRanges instantiates a new EditVirtualClusterResourceLimitRanges object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditVirtualClusterResourceLimitRanges() *EditVirtualClusterResourceLimitRanges {
+func NewEditVirtualClusterResourceLimitRanges(resourceUnit EProjectResourceUnit, maxLimit float64, minRequest float64, defaultLimit float64, defaultRequest float64) *EditVirtualClusterResourceLimitRanges {
 	this := EditVirtualClusterResourceLimitRanges{}
+	this.ResourceUnit = resourceUnit
+	this.MaxLimit = maxLimit
+	this.MinRequest = minRequest
+	this.DefaultLimit = defaultLimit
+	this.DefaultRequest = defaultRequest
 	return &this
 }
 
@@ -44,164 +53,124 @@ func NewEditVirtualClusterResourceLimitRangesWithDefaults() *EditVirtualClusterR
 	return &this
 }
 
-// GetResourceUnit returns the ResourceUnit field value if set, zero value otherwise.
+// GetResourceUnit returns the ResourceUnit field value
 func (o *EditVirtualClusterResourceLimitRanges) GetResourceUnit() EProjectResourceUnit {
-	if o == nil || IsNil(o.ResourceUnit) {
+	if o == nil {
 		var ret EProjectResourceUnit
 		return ret
 	}
-	return *o.ResourceUnit
+
+	return o.ResourceUnit
 }
 
-// GetResourceUnitOk returns a tuple with the ResourceUnit field value if set, nil otherwise
+// GetResourceUnitOk returns a tuple with the ResourceUnit field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceLimitRanges) GetResourceUnitOk() (*EProjectResourceUnit, bool) {
-	if o == nil || IsNil(o.ResourceUnit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ResourceUnit, true
+	return &o.ResourceUnit, true
 }
 
-// HasResourceUnit returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceLimitRanges) HasResourceUnit() bool {
-	if o != nil && !IsNil(o.ResourceUnit) {
-		return true
-	}
-
-	return false
-}
-
-// SetResourceUnit gets a reference to the given EProjectResourceUnit and assigns it to the ResourceUnit field.
+// SetResourceUnit sets field value
 func (o *EditVirtualClusterResourceLimitRanges) SetResourceUnit(v EProjectResourceUnit) {
-	o.ResourceUnit = &v
+	o.ResourceUnit = v
 }
 
-// GetMaxLimit returns the MaxLimit field value if set, zero value otherwise.
+// GetMaxLimit returns the MaxLimit field value
 func (o *EditVirtualClusterResourceLimitRanges) GetMaxLimit() float64 {
-	if o == nil || IsNil(o.MaxLimit) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.MaxLimit
+
+	return o.MaxLimit
 }
 
-// GetMaxLimitOk returns a tuple with the MaxLimit field value if set, nil otherwise
+// GetMaxLimitOk returns a tuple with the MaxLimit field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceLimitRanges) GetMaxLimitOk() (*float64, bool) {
-	if o == nil || IsNil(o.MaxLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MaxLimit, true
+	return &o.MaxLimit, true
 }
 
-// HasMaxLimit returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceLimitRanges) HasMaxLimit() bool {
-	if o != nil && !IsNil(o.MaxLimit) {
-		return true
-	}
-
-	return false
-}
-
-// SetMaxLimit gets a reference to the given float64 and assigns it to the MaxLimit field.
+// SetMaxLimit sets field value
 func (o *EditVirtualClusterResourceLimitRanges) SetMaxLimit(v float64) {
-	o.MaxLimit = &v
+	o.MaxLimit = v
 }
 
-// GetMinRequest returns the MinRequest field value if set, zero value otherwise.
+// GetMinRequest returns the MinRequest field value
 func (o *EditVirtualClusterResourceLimitRanges) GetMinRequest() float64 {
-	if o == nil || IsNil(o.MinRequest) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.MinRequest
+
+	return o.MinRequest
 }
 
-// GetMinRequestOk returns a tuple with the MinRequest field value if set, nil otherwise
+// GetMinRequestOk returns a tuple with the MinRequest field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceLimitRanges) GetMinRequestOk() (*float64, bool) {
-	if o == nil || IsNil(o.MinRequest) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MinRequest, true
+	return &o.MinRequest, true
 }
 
-// HasMinRequest returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceLimitRanges) HasMinRequest() bool {
-	if o != nil && !IsNil(o.MinRequest) {
-		return true
-	}
-
-	return false
-}
-
-// SetMinRequest gets a reference to the given float64 and assigns it to the MinRequest field.
+// SetMinRequest sets field value
 func (o *EditVirtualClusterResourceLimitRanges) SetMinRequest(v float64) {
-	o.MinRequest = &v
+	o.MinRequest = v
 }
 
-// GetDefaultLimit returns the DefaultLimit field value if set, zero value otherwise.
+// GetDefaultLimit returns the DefaultLimit field value
 func (o *EditVirtualClusterResourceLimitRanges) GetDefaultLimit() float64 {
-	if o == nil || IsNil(o.DefaultLimit) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.DefaultLimit
+
+	return o.DefaultLimit
 }
 
-// GetDefaultLimitOk returns a tuple with the DefaultLimit field value if set, nil otherwise
+// GetDefaultLimitOk returns a tuple with the DefaultLimit field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceLimitRanges) GetDefaultLimitOk() (*float64, bool) {
-	if o == nil || IsNil(o.DefaultLimit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DefaultLimit, true
+	return &o.DefaultLimit, true
 }
 
-// HasDefaultLimit returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceLimitRanges) HasDefaultLimit() bool {
-	if o != nil && !IsNil(o.DefaultLimit) {
-		return true
-	}
-
-	return false
-}
-
-// SetDefaultLimit gets a reference to the given float64 and assigns it to the DefaultLimit field.
+// SetDefaultLimit sets field value
 func (o *EditVirtualClusterResourceLimitRanges) SetDefaultLimit(v float64) {
-	o.DefaultLimit = &v
+	o.DefaultLimit = v
 }
 
-// GetDefaultRequest returns the DefaultRequest field value if set, zero value otherwise.
+// GetDefaultRequest returns the DefaultRequest field value
 func (o *EditVirtualClusterResourceLimitRanges) GetDefaultRequest() float64 {
-	if o == nil || IsNil(o.DefaultRequest) {
+	if o == nil {
 		var ret float64
 		return ret
 	}
-	return *o.DefaultRequest
+
+	return o.DefaultRequest
 }
 
-// GetDefaultRequestOk returns a tuple with the DefaultRequest field value if set, nil otherwise
+// GetDefaultRequestOk returns a tuple with the DefaultRequest field value
 // and a boolean to check if the value has been set.
 func (o *EditVirtualClusterResourceLimitRanges) GetDefaultRequestOk() (*float64, bool) {
-	if o == nil || IsNil(o.DefaultRequest) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DefaultRequest, true
+	return &o.DefaultRequest, true
 }
 
-// HasDefaultRequest returns a boolean if a field has been set.
-func (o *EditVirtualClusterResourceLimitRanges) HasDefaultRequest() bool {
-	if o != nil && !IsNil(o.DefaultRequest) {
-		return true
-	}
-
-	return false
-}
-
-// SetDefaultRequest gets a reference to the given float64 and assigns it to the DefaultRequest field.
+// SetDefaultRequest sets field value
 func (o *EditVirtualClusterResourceLimitRanges) SetDefaultRequest(v float64) {
-	o.DefaultRequest = &v
+	o.DefaultRequest = v
 }
 
 func (o EditVirtualClusterResourceLimitRanges) MarshalJSON() ([]byte, error) {
@@ -214,22 +183,53 @@ func (o EditVirtualClusterResourceLimitRanges) MarshalJSON() ([]byte, error) {
 
 func (o EditVirtualClusterResourceLimitRanges) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ResourceUnit) {
-		toSerialize["resourceUnit"] = o.ResourceUnit
-	}
-	if !IsNil(o.MaxLimit) {
-		toSerialize["maxLimit"] = o.MaxLimit
-	}
-	if !IsNil(o.MinRequest) {
-		toSerialize["minRequest"] = o.MinRequest
-	}
-	if !IsNil(o.DefaultLimit) {
-		toSerialize["defaultLimit"] = o.DefaultLimit
-	}
-	if !IsNil(o.DefaultRequest) {
-		toSerialize["defaultRequest"] = o.DefaultRequest
-	}
+	toSerialize["resourceUnit"] = o.ResourceUnit
+	toSerialize["maxLimit"] = o.MaxLimit
+	toSerialize["minRequest"] = o.MinRequest
+	toSerialize["defaultLimit"] = o.DefaultLimit
+	toSerialize["defaultRequest"] = o.DefaultRequest
 	return toSerialize, nil
+}
+
+func (o *EditVirtualClusterResourceLimitRanges) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"resourceUnit",
+		"maxLimit",
+		"minRequest",
+		"defaultLimit",
+		"defaultRequest",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEditVirtualClusterResourceLimitRanges := _EditVirtualClusterResourceLimitRanges{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEditVirtualClusterResourceLimitRanges)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EditVirtualClusterResourceLimitRanges(varEditVirtualClusterResourceLimitRanges)
+
+	return err
 }
 
 type NullableEditVirtualClusterResourceLimitRanges struct {

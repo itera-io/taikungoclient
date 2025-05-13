@@ -6035,8 +6035,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-05-12T00:04:07.7897524Z
-                  createdAt: 2025-05-12T00:04:07.7897524Z
+                  lastValidated: 2025-05-12T16:07:30.9750228Z
+                  createdAt: 2025-05-12T16:07:30.9750228Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6141,14 +6141,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-05-12T00:04:07.7897524Z
+                    lastBackup: 2025-05-12T16:07:30.9750228Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-05-12T00:04:07.7897524Z
+                  createdAt: 2025-05-12T16:07:30.9750228Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-05-12T00:04:07.7897524Z
+                  lastBackup: 2025-05-12T16:07:30.9750228Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6253,8 +6253,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-12T00:04:07.7897524Z
-                  expiration: 2025-05-12T00:04:07.7897524Z
+                  createdAt: 2025-05-12T16:07:30.9750228Z
+                  expiration: 2025-05-12T16:07:30.9750228Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6358,7 +6358,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-12T00:04:07.7897524Z
+                  createdAt: 2025-05-12T16:07:30.9750228Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6468,9 +6468,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-05-12T00:04:07.7897524+00:00
-                  startTimeStamp: 2025-05-12T00:04:07.7897524+00:00
-                  createdAt: 2025-05-12T00:04:07.7897524Z
+                  completionDateTime: 2025-05-12T16:07:30.9750228+00:00
+                  startTimeStamp: 2025-05-12T16:07:30.9750228+00:00
+                  createdAt: 2025-05-12T16:07:30.9750228Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -36731,6 +36731,182 @@ paths:
       summary: Delete virtual cluster
       tags:
       - Virtual Cluster
+  /api/v1/virtual-cluster/disable-ai:
+    post:
+      operationId: virtual-cluster-disable-ai
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterDisableAiCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable ai for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/disable-backup:
+    post:
+      operationId: virtual-cluster-disable-backup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterDisableBackupCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable backup for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/disable-monitoring:
+    post:
+      operationId: virtual-cluster-disable-monitoring
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterDisableMonitoringCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable monitoring for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/disable-opa:
+    post:
+      operationId: virtual-cluster-disable-opa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterDisableOpaCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Disable opa for virtual cluster
+      tags:
+      - Virtual Cluster
   /api/v1/virtual-cluster/edit/quotas:
     post:
       operationId: virtual-cluster-edit-quotas
@@ -36773,6 +36949,182 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
           description: Internal Server Error
       summary: Edit virtual cluster resource quotas and limit ranges
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/enable-ai:
+    post:
+      operationId: virtual-cluster-enable-ai
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterEnableAiCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable ai for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/enable-backup:
+    post:
+      operationId: virtual-cluster-enable-backup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterEnableBackupCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable backup for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/enable-monitoring:
+    post:
+      operationId: virtual-cluster-enable-monitoring
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterEnableMonitoringCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable monitoring for virtual cluster
+      tags:
+      - Virtual Cluster
+  /api/v1/virtual-cluster/enable-opa:
+    post:
+      operationId: virtual-cluster-enable-opa
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VirtualClusterEnableOpaCommand'
+      responses:
+        "200":
+          description: OK
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Bad Request
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Unauthorized
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Forbidden
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Not Found
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+          description: Internal Server Error
+      summary: Enable opa for virtual cluster
       tags:
       - Virtual Cluster
   /api/v1/virtual-cluster/{parentProjectId}:
@@ -46237,6 +46589,12 @@ components:
         defaultRequest:
           format: double
           type: number
+      required:
+      - defaultLimit
+      - defaultRequest
+      - maxLimit
+      - minRequest
+      - resourceUnit
       type: object
     CreateVirtualClusterResourceQuotas:
       additionalProperties: false
@@ -46278,6 +46636,16 @@ components:
         loadBalancers:
           format: int32
           type: integer
+      required:
+      - cpuLimits
+      - cpuRequests
+      - ingresses
+      - loadBalancers
+      - pods
+      - pvcs
+      - ramLimits
+      - ramRequests
+      - totalPvcSize
       type: object
     CreateVsphereCommand:
       additionalProperties: false
@@ -48650,6 +49018,12 @@ components:
           $ref: '#/components/schemas/EditVirtualClusterResourceLimitRanges'
         ephemeralStorageLimitRanges:
           $ref: '#/components/schemas/EditVirtualClusterResourceLimitRanges'
+      required:
+      - cpuLimitRanges
+      - ephemeralStorageLimitRanges
+      - ramLimitRanges
+      - resourceQuotas
+      - vClusterId
       type: object
     EditVirtualClusterResourceLimitRanges:
       additionalProperties: false
@@ -48674,6 +49048,12 @@ components:
         defaultRequest:
           format: double
           type: number
+      required:
+      - defaultLimit
+      - defaultRequest
+      - maxLimit
+      - minRequest
+      - resourceUnit
       type: object
     EditVirtualClusterResourceQuotas:
       additionalProperties: false
@@ -48715,6 +49095,16 @@ components:
         loadBalancers:
           format: int32
           type: integer
+      required:
+      - cpuLimits
+      - cpuRequests
+      - ingresses
+      - loadBalancers
+      - pods
+      - pvcs
+      - ramLimits
+      - ramRequests
+      - totalPvcSize
       type: object
     EmailMode:
       enum:
@@ -67775,11 +68165,11 @@ components:
     VClusterLimitRangeListDto:
       additionalProperties: false
       example:
-        minRequest: 7.386281948385884
+        minRequest: 1.4894159098541704
         resourceUnit: resourceUnit
-        maxLimit: 4.145608029883936
-        defaultLimit: 1.2315135367772556
-        defaultRequest: 1.0246457001441578
+        maxLimit: 1.0246457001441578
+        defaultLimit: 6.84685269835264
+        defaultRequest: 7.457744773683766
       properties:
         resourceUnit:
           nullable: true
@@ -67796,6 +68186,12 @@ components:
         defaultRequest:
           format: double
           type: number
+      required:
+      - defaultLimit
+      - defaultRequest
+      - maxLimit
+      - minRequest
+      - resourceUnit
       type: object
     VClusterList:
       additionalProperties: false
@@ -67818,15 +68214,15 @@ components:
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           resourceQuota:
-            ingresses: 3
-            pvcs: 9
-            loadBalancers: 2
+            ingresses: 7
+            pvcs: 2
+            loadBalancers: 1
             pods: 5
-            ramRequests: ramRequests
-            ramLimits: ramLimits
-            cpuLimits: 7
-            cpuRequests: 2
-            totalPvcSize: totalPvcSize
+            ramRequests: 9
+            ramLimits: 3
+            cpuLimits: 7.061401241503109
+            cpuRequests: 2.3021358869347655
+            totalPvcSize: 4
           cloudType: AWS
           isLocked: true
           id: 0
@@ -67849,19 +68245,19 @@ components:
           lastModifiedBy: lastModifiedBy
           health: "Null"
           ramLimitRanges:
-            minRequest: 7.386281948385884
+            minRequest: 1.4894159098541704
             resourceUnit: resourceUnit
-            maxLimit: 4.145608029883936
-            defaultLimit: 1.2315135367772556
-            defaultRequest: 1.0246457001441578
+            maxLimit: 1.0246457001441578
+            defaultLimit: 6.84685269835264
+            defaultRequest: 7.457744773683766
           isVirtualCluster: true
           hasKubeConfigFile: true
           ephemeralStorageLimitRanges:
-            minRequest: 7.386281948385884
+            minRequest: 1.4894159098541704
             resourceUnit: resourceUnit
-            maxLimit: 4.145608029883936
-            defaultLimit: 1.2315135367772556
-            defaultRequest: 1.0246457001441578
+            maxLimit: 1.0246457001441578
+            defaultLimit: 6.84685269835264
+            defaultRequest: 7.457744773683766
           kubeInfoButton:
             reasons:
             - reasons
@@ -67883,11 +68279,11 @@ components:
           isMaintenanceModeEnabled: true
           status: "Null"
           cpuLimitRanges:
-            minRequest: 7.386281948385884
+            minRequest: 1.4894159098541704
             resourceUnit: resourceUnit
-            maxLimit: 4.145608029883936
-            defaultLimit: 1.2315135367772556
-            defaultRequest: 1.0246457001441578
+            maxLimit: 1.0246457001441578
+            defaultLimit: 6.84685269835264
+            defaultRequest: 7.457744773683766
         - deleteButton:
             reasons:
             - reasons
@@ -67905,15 +68301,15 @@ components:
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
           resourceQuota:
-            ingresses: 3
-            pvcs: 9
-            loadBalancers: 2
+            ingresses: 7
+            pvcs: 2
+            loadBalancers: 1
             pods: 5
-            ramRequests: ramRequests
-            ramLimits: ramLimits
-            cpuLimits: 7
-            cpuRequests: 2
-            totalPvcSize: totalPvcSize
+            ramRequests: 9
+            ramLimits: 3
+            cpuLimits: 7.061401241503109
+            cpuRequests: 2.3021358869347655
+            totalPvcSize: 4
           cloudType: AWS
           isLocked: true
           id: 0
@@ -67936,19 +68332,19 @@ components:
           lastModifiedBy: lastModifiedBy
           health: "Null"
           ramLimitRanges:
-            minRequest: 7.386281948385884
+            minRequest: 1.4894159098541704
             resourceUnit: resourceUnit
-            maxLimit: 4.145608029883936
-            defaultLimit: 1.2315135367772556
-            defaultRequest: 1.0246457001441578
+            maxLimit: 1.0246457001441578
+            defaultLimit: 6.84685269835264
+            defaultRequest: 7.457744773683766
           isVirtualCluster: true
           hasKubeConfigFile: true
           ephemeralStorageLimitRanges:
-            minRequest: 7.386281948385884
+            minRequest: 1.4894159098541704
             resourceUnit: resourceUnit
-            maxLimit: 4.145608029883936
-            defaultLimit: 1.2315135367772556
-            defaultRequest: 1.0246457001441578
+            maxLimit: 1.0246457001441578
+            defaultLimit: 6.84685269835264
+            defaultRequest: 7.457744773683766
           kubeInfoButton:
             reasons:
             - reasons
@@ -67970,11 +68366,11 @@ components:
           isMaintenanceModeEnabled: true
           status: "Null"
           cpuLimitRanges:
-            minRequest: 7.386281948385884
+            minRequest: 1.4894159098541704
             resourceUnit: resourceUnit
-            maxLimit: 4.145608029883936
-            defaultLimit: 1.2315135367772556
-            defaultRequest: 1.0246457001441578
+            maxLimit: 1.0246457001441578
+            defaultLimit: 6.84685269835264
+            defaultRequest: 7.457744773683766
         project:
           isProjectMaintenanceModeEnabled: true
           organizationName: organizationName
@@ -68040,15 +68436,15 @@ components:
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
         resourceQuota:
-          ingresses: 3
-          pvcs: 9
-          loadBalancers: 2
+          ingresses: 7
+          pvcs: 2
+          loadBalancers: 1
           pods: 5
-          ramRequests: ramRequests
-          ramLimits: ramLimits
-          cpuLimits: 7
-          cpuRequests: 2
-          totalPvcSize: totalPvcSize
+          ramRequests: 9
+          ramLimits: 3
+          cpuLimits: 7.061401241503109
+          cpuRequests: 2.3021358869347655
+          totalPvcSize: 4
         cloudType: AWS
         isLocked: true
         id: 0
@@ -68071,19 +68467,19 @@ components:
         lastModifiedBy: lastModifiedBy
         health: "Null"
         ramLimitRanges:
-          minRequest: 7.386281948385884
+          minRequest: 1.4894159098541704
           resourceUnit: resourceUnit
-          maxLimit: 4.145608029883936
-          defaultLimit: 1.2315135367772556
-          defaultRequest: 1.0246457001441578
+          maxLimit: 1.0246457001441578
+          defaultLimit: 6.84685269835264
+          defaultRequest: 7.457744773683766
         isVirtualCluster: true
         hasKubeConfigFile: true
         ephemeralStorageLimitRanges:
-          minRequest: 7.386281948385884
+          minRequest: 1.4894159098541704
           resourceUnit: resourceUnit
-          maxLimit: 4.145608029883936
-          defaultLimit: 1.2315135367772556
-          defaultRequest: 1.0246457001441578
+          maxLimit: 1.0246457001441578
+          defaultLimit: 6.84685269835264
+          defaultRequest: 7.457744773683766
         kubeInfoButton:
           reasons:
           - reasons
@@ -68105,11 +68501,11 @@ components:
         isMaintenanceModeEnabled: true
         status: "Null"
         cpuLimitRanges:
-          minRequest: 7.386281948385884
+          minRequest: 1.4894159098541704
           resourceUnit: resourceUnit
-          maxLimit: 4.145608029883936
-          defaultLimit: 1.2315135367772556
-          defaultRequest: 1.0246457001441578
+          maxLimit: 1.0246457001441578
+          defaultLimit: 6.84685269835264
+          defaultRequest: 7.457744773683766
       properties:
         id:
           format: int32
@@ -68189,12 +68585,10 @@ components:
       - alertingProfileName
       - alertsCount
       - cloudType
-      - cpuLimitRanges
       - createdAt
       - createdBy
       - deleteButton
       - deleteOnExpiration
-      - ephemeralStorageLimitRanges
       - expiredAt
       - hasKubeConfigFile
       - health
@@ -68210,9 +68604,7 @@ components:
       - name
       - organizationId
       - organizationName
-      - ramLimitRanges
       - resetStatusButton
-      - resourceQuota
       - setExpirationDateButton
       - status
       - unlockButton
@@ -68221,43 +68613,53 @@ components:
     VClusterResourceQuotaListDto:
       additionalProperties: false
       example:
-        ingresses: 3
-        pvcs: 9
-        loadBalancers: 2
+        ingresses: 7
+        pvcs: 2
+        loadBalancers: 1
         pods: 5
-        ramRequests: ramRequests
-        ramLimits: ramLimits
-        cpuLimits: 7
-        cpuRequests: 2
-        totalPvcSize: totalPvcSize
+        ramRequests: 9
+        ramLimits: 3
+        cpuLimits: 7.061401241503109
+        cpuRequests: 2.3021358869347655
+        totalPvcSize: 4
       properties:
         pods:
           format: int32
           type: integer
         cpuRequests:
-          format: int32
-          type: integer
+          format: double
+          type: number
         cpuLimits:
-          format: int32
-          type: integer
+          format: double
+          type: number
         ramRequests:
-          nullable: true
-          type: string
+          format: int64
+          type: integer
         ramLimits:
-          nullable: true
-          type: string
+          format: int64
+          type: integer
         pvcs:
           format: int32
           type: integer
         totalPvcSize:
-          nullable: true
-          type: string
+          format: int64
+          type: integer
         ingresses:
           format: int32
           type: integer
         loadBalancers:
           format: int32
           type: integer
+      required:
+      - cpuLimits
+      - cpuRequests
+      - ingresses
+      - loadBalancers
+      - pods
+      - pvcs
+      - ramLimits
+      - ramRequests
+      - totalPvcSize
       type: object
     ValidateVsphereCommand:
       additionalProperties: false
@@ -68313,6 +68715,90 @@ components:
         url:
           nullable: true
           type: string
+      type: object
+    VirtualClusterDisableAiCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterDisableBackupCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterDisableMonitoringCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterDisableOpaCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterEnableAiCommand:
+      additionalProperties: false
+      example:
+        aiCredentialId: 6
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        aiCredentialId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterEnableBackupCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+        backupCredentialId: 6
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        backupCredentialId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterEnableMonitoringCommand:
+      additionalProperties: false
+      example:
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+      type: object
+    VirtualClusterEnableOpaCommand:
+      additionalProperties: false
+      example:
+        opaProfileId: 6
+        projectId: 0
+      properties:
+        projectId:
+          format: int32
+          type: integer
+        opaProfileId:
+          format: int32
+          type: integer
       type: object
     VirtualClusterQuotaLimitRangeDto:
       additionalProperties: false

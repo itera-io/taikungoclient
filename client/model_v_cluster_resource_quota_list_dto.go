@@ -13,6 +13,8 @@ package taikuncore
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the VClusterResourceQuotaListDto type satisfies the MappedNullable interface at compile time
@@ -20,23 +22,34 @@ var _ MappedNullable = &VClusterResourceQuotaListDto{}
 
 // VClusterResourceQuotaListDto struct for VClusterResourceQuotaListDto
 type VClusterResourceQuotaListDto struct {
-	Pods *int32 `json:"pods,omitempty"`
-	CpuRequests *int32 `json:"cpuRequests,omitempty"`
-	CpuLimits *int32 `json:"cpuLimits,omitempty"`
-	RamRequests NullableString `json:"ramRequests,omitempty"`
-	RamLimits NullableString `json:"ramLimits,omitempty"`
-	Pvcs *int32 `json:"pvcs,omitempty"`
-	TotalPvcSize NullableString `json:"totalPvcSize,omitempty"`
-	Ingresses *int32 `json:"ingresses,omitempty"`
-	LoadBalancers *int32 `json:"loadBalancers,omitempty"`
+	Pods int32 `json:"pods"`
+	CpuRequests float64 `json:"cpuRequests"`
+	CpuLimits float64 `json:"cpuLimits"`
+	RamRequests int64 `json:"ramRequests"`
+	RamLimits int64 `json:"ramLimits"`
+	Pvcs int32 `json:"pvcs"`
+	TotalPvcSize int64 `json:"totalPvcSize"`
+	Ingresses int32 `json:"ingresses"`
+	LoadBalancers int32 `json:"loadBalancers"`
 }
+
+type _VClusterResourceQuotaListDto VClusterResourceQuotaListDto
 
 // NewVClusterResourceQuotaListDto instantiates a new VClusterResourceQuotaListDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterResourceQuotaListDto() *VClusterResourceQuotaListDto {
+func NewVClusterResourceQuotaListDto(pods int32, cpuRequests float64, cpuLimits float64, ramRequests int64, ramLimits int64, pvcs int32, totalPvcSize int64, ingresses int32, loadBalancers int32) *VClusterResourceQuotaListDto {
 	this := VClusterResourceQuotaListDto{}
+	this.Pods = pods
+	this.CpuRequests = cpuRequests
+	this.CpuLimits = cpuLimits
+	this.RamRequests = ramRequests
+	this.RamLimits = ramLimits
+	this.Pvcs = pvcs
+	this.TotalPvcSize = totalPvcSize
+	this.Ingresses = ingresses
+	this.LoadBalancers = loadBalancers
 	return &this
 }
 
@@ -48,322 +61,220 @@ func NewVClusterResourceQuotaListDtoWithDefaults() *VClusterResourceQuotaListDto
 	return &this
 }
 
-// GetPods returns the Pods field value if set, zero value otherwise.
+// GetPods returns the Pods field value
 func (o *VClusterResourceQuotaListDto) GetPods() int32 {
-	if o == nil || IsNil(o.Pods) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Pods
+
+	return o.Pods
 }
 
-// GetPodsOk returns a tuple with the Pods field value if set, nil otherwise
+// GetPodsOk returns a tuple with the Pods field value
 // and a boolean to check if the value has been set.
 func (o *VClusterResourceQuotaListDto) GetPodsOk() (*int32, bool) {
-	if o == nil || IsNil(o.Pods) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Pods, true
+	return &o.Pods, true
 }
 
-// HasPods returns a boolean if a field has been set.
-func (o *VClusterResourceQuotaListDto) HasPods() bool {
-	if o != nil && !IsNil(o.Pods) {
-		return true
-	}
-
-	return false
-}
-
-// SetPods gets a reference to the given int32 and assigns it to the Pods field.
+// SetPods sets field value
 func (o *VClusterResourceQuotaListDto) SetPods(v int32) {
-	o.Pods = &v
+	o.Pods = v
 }
 
-// GetCpuRequests returns the CpuRequests field value if set, zero value otherwise.
-func (o *VClusterResourceQuotaListDto) GetCpuRequests() int32 {
-	if o == nil || IsNil(o.CpuRequests) {
-		var ret int32
+// GetCpuRequests returns the CpuRequests field value
+func (o *VClusterResourceQuotaListDto) GetCpuRequests() float64 {
+	if o == nil {
+		var ret float64
 		return ret
 	}
-	return *o.CpuRequests
+
+	return o.CpuRequests
 }
 
-// GetCpuRequestsOk returns a tuple with the CpuRequests field value if set, nil otherwise
+// GetCpuRequestsOk returns a tuple with the CpuRequests field value
 // and a boolean to check if the value has been set.
-func (o *VClusterResourceQuotaListDto) GetCpuRequestsOk() (*int32, bool) {
-	if o == nil || IsNil(o.CpuRequests) {
-		return nil, false
-	}
-	return o.CpuRequests, true
-}
-
-// HasCpuRequests returns a boolean if a field has been set.
-func (o *VClusterResourceQuotaListDto) HasCpuRequests() bool {
-	if o != nil && !IsNil(o.CpuRequests) {
-		return true
-	}
-
-	return false
-}
-
-// SetCpuRequests gets a reference to the given int32 and assigns it to the CpuRequests field.
-func (o *VClusterResourceQuotaListDto) SetCpuRequests(v int32) {
-	o.CpuRequests = &v
-}
-
-// GetCpuLimits returns the CpuLimits field value if set, zero value otherwise.
-func (o *VClusterResourceQuotaListDto) GetCpuLimits() int32 {
-	if o == nil || IsNil(o.CpuLimits) {
-		var ret int32
-		return ret
-	}
-	return *o.CpuLimits
-}
-
-// GetCpuLimitsOk returns a tuple with the CpuLimits field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *VClusterResourceQuotaListDto) GetCpuLimitsOk() (*int32, bool) {
-	if o == nil || IsNil(o.CpuLimits) {
-		return nil, false
-	}
-	return o.CpuLimits, true
-}
-
-// HasCpuLimits returns a boolean if a field has been set.
-func (o *VClusterResourceQuotaListDto) HasCpuLimits() bool {
-	if o != nil && !IsNil(o.CpuLimits) {
-		return true
-	}
-
-	return false
-}
-
-// SetCpuLimits gets a reference to the given int32 and assigns it to the CpuLimits field.
-func (o *VClusterResourceQuotaListDto) SetCpuLimits(v int32) {
-	o.CpuLimits = &v
-}
-
-// GetRamRequests returns the RamRequests field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VClusterResourceQuotaListDto) GetRamRequests() string {
-	if o == nil || IsNil(o.RamRequests.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.RamRequests.Get()
-}
-
-// GetRamRequestsOk returns a tuple with the RamRequests field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VClusterResourceQuotaListDto) GetRamRequestsOk() (*string, bool) {
+func (o *VClusterResourceQuotaListDto) GetCpuRequestsOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.RamRequests.Get(), o.RamRequests.IsSet()
+	return &o.CpuRequests, true
 }
 
-// HasRamRequests returns a boolean if a field has been set.
-func (o *VClusterResourceQuotaListDto) HasRamRequests() bool {
-	if o != nil && o.RamRequests.IsSet() {
-		return true
-	}
-
-	return false
+// SetCpuRequests sets field value
+func (o *VClusterResourceQuotaListDto) SetCpuRequests(v float64) {
+	o.CpuRequests = v
 }
 
-// SetRamRequests gets a reference to the given NullableString and assigns it to the RamRequests field.
-func (o *VClusterResourceQuotaListDto) SetRamRequests(v string) {
-	o.RamRequests.Set(&v)
-}
-// SetRamRequestsNil sets the value for RamRequests to be an explicit nil
-func (o *VClusterResourceQuotaListDto) SetRamRequestsNil() {
-	o.RamRequests.Set(nil)
-}
-
-// UnsetRamRequests ensures that no value is present for RamRequests, not even an explicit nil
-func (o *VClusterResourceQuotaListDto) UnsetRamRequests() {
-	o.RamRequests.Unset()
-}
-
-// GetRamLimits returns the RamLimits field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VClusterResourceQuotaListDto) GetRamLimits() string {
-	if o == nil || IsNil(o.RamLimits.Get()) {
-		var ret string
+// GetCpuLimits returns the CpuLimits field value
+func (o *VClusterResourceQuotaListDto) GetCpuLimits() float64 {
+	if o == nil {
+		var ret float64
 		return ret
 	}
-	return *o.RamLimits.Get()
+
+	return o.CpuLimits
 }
 
-// GetRamLimitsOk returns a tuple with the RamLimits field value if set, nil otherwise
+// GetCpuLimitsOk returns a tuple with the CpuLimits field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VClusterResourceQuotaListDto) GetRamLimitsOk() (*string, bool) {
+func (o *VClusterResourceQuotaListDto) GetCpuLimitsOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.RamLimits.Get(), o.RamLimits.IsSet()
+	return &o.CpuLimits, true
 }
 
-// HasRamLimits returns a boolean if a field has been set.
-func (o *VClusterResourceQuotaListDto) HasRamLimits() bool {
-	if o != nil && o.RamLimits.IsSet() {
-		return true
+// SetCpuLimits sets field value
+func (o *VClusterResourceQuotaListDto) SetCpuLimits(v float64) {
+	o.CpuLimits = v
+}
+
+// GetRamRequests returns the RamRequests field value
+func (o *VClusterResourceQuotaListDto) GetRamRequests() int64 {
+	if o == nil {
+		var ret int64
+		return ret
 	}
 
-	return false
+	return o.RamRequests
 }
 
-// SetRamLimits gets a reference to the given NullableString and assigns it to the RamLimits field.
-func (o *VClusterResourceQuotaListDto) SetRamLimits(v string) {
-	o.RamLimits.Set(&v)
-}
-// SetRamLimitsNil sets the value for RamLimits to be an explicit nil
-func (o *VClusterResourceQuotaListDto) SetRamLimitsNil() {
-	o.RamLimits.Set(nil)
-}
-
-// UnsetRamLimits ensures that no value is present for RamLimits, not even an explicit nil
-func (o *VClusterResourceQuotaListDto) UnsetRamLimits() {
-	o.RamLimits.Unset()
+// GetRamRequestsOk returns a tuple with the RamRequests field value
+// and a boolean to check if the value has been set.
+func (o *VClusterResourceQuotaListDto) GetRamRequestsOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RamRequests, true
 }
 
-// GetPvcs returns the Pvcs field value if set, zero value otherwise.
+// SetRamRequests sets field value
+func (o *VClusterResourceQuotaListDto) SetRamRequests(v int64) {
+	o.RamRequests = v
+}
+
+// GetRamLimits returns the RamLimits field value
+func (o *VClusterResourceQuotaListDto) GetRamLimits() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.RamLimits
+}
+
+// GetRamLimitsOk returns a tuple with the RamLimits field value
+// and a boolean to check if the value has been set.
+func (o *VClusterResourceQuotaListDto) GetRamLimitsOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.RamLimits, true
+}
+
+// SetRamLimits sets field value
+func (o *VClusterResourceQuotaListDto) SetRamLimits(v int64) {
+	o.RamLimits = v
+}
+
+// GetPvcs returns the Pvcs field value
 func (o *VClusterResourceQuotaListDto) GetPvcs() int32 {
-	if o == nil || IsNil(o.Pvcs) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Pvcs
+
+	return o.Pvcs
 }
 
-// GetPvcsOk returns a tuple with the Pvcs field value if set, nil otherwise
+// GetPvcsOk returns a tuple with the Pvcs field value
 // and a boolean to check if the value has been set.
 func (o *VClusterResourceQuotaListDto) GetPvcsOk() (*int32, bool) {
-	if o == nil || IsNil(o.Pvcs) {
-		return nil, false
-	}
-	return o.Pvcs, true
-}
-
-// HasPvcs returns a boolean if a field has been set.
-func (o *VClusterResourceQuotaListDto) HasPvcs() bool {
-	if o != nil && !IsNil(o.Pvcs) {
-		return true
-	}
-
-	return false
-}
-
-// SetPvcs gets a reference to the given int32 and assigns it to the Pvcs field.
-func (o *VClusterResourceQuotaListDto) SetPvcs(v int32) {
-	o.Pvcs = &v
-}
-
-// GetTotalPvcSize returns the TotalPvcSize field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *VClusterResourceQuotaListDto) GetTotalPvcSize() string {
-	if o == nil || IsNil(o.TotalPvcSize.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.TotalPvcSize.Get()
-}
-
-// GetTotalPvcSizeOk returns a tuple with the TotalPvcSize field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VClusterResourceQuotaListDto) GetTotalPvcSizeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.TotalPvcSize.Get(), o.TotalPvcSize.IsSet()
+	return &o.Pvcs, true
 }
 
-// HasTotalPvcSize returns a boolean if a field has been set.
-func (o *VClusterResourceQuotaListDto) HasTotalPvcSize() bool {
-	if o != nil && o.TotalPvcSize.IsSet() {
-		return true
+// SetPvcs sets field value
+func (o *VClusterResourceQuotaListDto) SetPvcs(v int32) {
+	o.Pvcs = v
+}
+
+// GetTotalPvcSize returns the TotalPvcSize field value
+func (o *VClusterResourceQuotaListDto) GetTotalPvcSize() int64 {
+	if o == nil {
+		var ret int64
+		return ret
 	}
 
-	return false
+	return o.TotalPvcSize
 }
 
-// SetTotalPvcSize gets a reference to the given NullableString and assigns it to the TotalPvcSize field.
-func (o *VClusterResourceQuotaListDto) SetTotalPvcSize(v string) {
-	o.TotalPvcSize.Set(&v)
-}
-// SetTotalPvcSizeNil sets the value for TotalPvcSize to be an explicit nil
-func (o *VClusterResourceQuotaListDto) SetTotalPvcSizeNil() {
-	o.TotalPvcSize.Set(nil)
-}
-
-// UnsetTotalPvcSize ensures that no value is present for TotalPvcSize, not even an explicit nil
-func (o *VClusterResourceQuotaListDto) UnsetTotalPvcSize() {
-	o.TotalPvcSize.Unset()
+// GetTotalPvcSizeOk returns a tuple with the TotalPvcSize field value
+// and a boolean to check if the value has been set.
+func (o *VClusterResourceQuotaListDto) GetTotalPvcSizeOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.TotalPvcSize, true
 }
 
-// GetIngresses returns the Ingresses field value if set, zero value otherwise.
+// SetTotalPvcSize sets field value
+func (o *VClusterResourceQuotaListDto) SetTotalPvcSize(v int64) {
+	o.TotalPvcSize = v
+}
+
+// GetIngresses returns the Ingresses field value
 func (o *VClusterResourceQuotaListDto) GetIngresses() int32 {
-	if o == nil || IsNil(o.Ingresses) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.Ingresses
+
+	return o.Ingresses
 }
 
-// GetIngressesOk returns a tuple with the Ingresses field value if set, nil otherwise
+// GetIngressesOk returns a tuple with the Ingresses field value
 // and a boolean to check if the value has been set.
 func (o *VClusterResourceQuotaListDto) GetIngressesOk() (*int32, bool) {
-	if o == nil || IsNil(o.Ingresses) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Ingresses, true
+	return &o.Ingresses, true
 }
 
-// HasIngresses returns a boolean if a field has been set.
-func (o *VClusterResourceQuotaListDto) HasIngresses() bool {
-	if o != nil && !IsNil(o.Ingresses) {
-		return true
-	}
-
-	return false
-}
-
-// SetIngresses gets a reference to the given int32 and assigns it to the Ingresses field.
+// SetIngresses sets field value
 func (o *VClusterResourceQuotaListDto) SetIngresses(v int32) {
-	o.Ingresses = &v
+	o.Ingresses = v
 }
 
-// GetLoadBalancers returns the LoadBalancers field value if set, zero value otherwise.
+// GetLoadBalancers returns the LoadBalancers field value
 func (o *VClusterResourceQuotaListDto) GetLoadBalancers() int32 {
-	if o == nil || IsNil(o.LoadBalancers) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.LoadBalancers
+
+	return o.LoadBalancers
 }
 
-// GetLoadBalancersOk returns a tuple with the LoadBalancers field value if set, nil otherwise
+// GetLoadBalancersOk returns a tuple with the LoadBalancers field value
 // and a boolean to check if the value has been set.
 func (o *VClusterResourceQuotaListDto) GetLoadBalancersOk() (*int32, bool) {
-	if o == nil || IsNil(o.LoadBalancers) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LoadBalancers, true
+	return &o.LoadBalancers, true
 }
 
-// HasLoadBalancers returns a boolean if a field has been set.
-func (o *VClusterResourceQuotaListDto) HasLoadBalancers() bool {
-	if o != nil && !IsNil(o.LoadBalancers) {
-		return true
-	}
-
-	return false
-}
-
-// SetLoadBalancers gets a reference to the given int32 and assigns it to the LoadBalancers field.
+// SetLoadBalancers sets field value
 func (o *VClusterResourceQuotaListDto) SetLoadBalancers(v int32) {
-	o.LoadBalancers = &v
+	o.LoadBalancers = v
 }
 
 func (o VClusterResourceQuotaListDto) MarshalJSON() ([]byte, error) {
@@ -376,34 +287,61 @@ func (o VClusterResourceQuotaListDto) MarshalJSON() ([]byte, error) {
 
 func (o VClusterResourceQuotaListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Pods) {
-		toSerialize["pods"] = o.Pods
-	}
-	if !IsNil(o.CpuRequests) {
-		toSerialize["cpuRequests"] = o.CpuRequests
-	}
-	if !IsNil(o.CpuLimits) {
-		toSerialize["cpuLimits"] = o.CpuLimits
-	}
-	if o.RamRequests.IsSet() {
-		toSerialize["ramRequests"] = o.RamRequests.Get()
-	}
-	if o.RamLimits.IsSet() {
-		toSerialize["ramLimits"] = o.RamLimits.Get()
-	}
-	if !IsNil(o.Pvcs) {
-		toSerialize["pvcs"] = o.Pvcs
-	}
-	if o.TotalPvcSize.IsSet() {
-		toSerialize["totalPvcSize"] = o.TotalPvcSize.Get()
-	}
-	if !IsNil(o.Ingresses) {
-		toSerialize["ingresses"] = o.Ingresses
-	}
-	if !IsNil(o.LoadBalancers) {
-		toSerialize["loadBalancers"] = o.LoadBalancers
-	}
+	toSerialize["pods"] = o.Pods
+	toSerialize["cpuRequests"] = o.CpuRequests
+	toSerialize["cpuLimits"] = o.CpuLimits
+	toSerialize["ramRequests"] = o.RamRequests
+	toSerialize["ramLimits"] = o.RamLimits
+	toSerialize["pvcs"] = o.Pvcs
+	toSerialize["totalPvcSize"] = o.TotalPvcSize
+	toSerialize["ingresses"] = o.Ingresses
+	toSerialize["loadBalancers"] = o.LoadBalancers
 	return toSerialize, nil
+}
+
+func (o *VClusterResourceQuotaListDto) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"pods",
+		"cpuRequests",
+		"cpuLimits",
+		"ramRequests",
+		"ramLimits",
+		"pvcs",
+		"totalPvcSize",
+		"ingresses",
+		"loadBalancers",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVClusterResourceQuotaListDto := _VClusterResourceQuotaListDto{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVClusterResourceQuotaListDto)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VClusterResourceQuotaListDto(varVClusterResourceQuotaListDto)
+
+	return err
 }
 
 type NullableVClusterResourceQuotaListDto struct {
