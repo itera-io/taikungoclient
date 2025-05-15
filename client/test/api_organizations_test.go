@@ -96,6 +96,28 @@ func Test_taikuncore_OrganizationsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrganizationsAPIService OrganizationsDisable2faManagement", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.OrganizationsAPI.OrganizationsDisable2faManagement(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationsAPIService OrganizationsEnable2faManagement", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.OrganizationsAPI.OrganizationsEnable2faManagement(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationsAPIService OrganizationsExportCsv", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

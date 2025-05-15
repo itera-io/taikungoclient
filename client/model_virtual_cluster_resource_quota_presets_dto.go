@@ -17,11 +17,11 @@ import (
 	"fmt"
 )
 
-// checks if the VirtualClusterQuotaPresetDto type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &VirtualClusterQuotaPresetDto{}
+// checks if the VirtualClusterResourceQuotaPresetsDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &VirtualClusterResourceQuotaPresetsDto{}
 
-// VirtualClusterQuotaPresetDto struct for VirtualClusterQuotaPresetDto
-type VirtualClusterQuotaPresetDto struct {
+// VirtualClusterResourceQuotaPresetsDto struct for VirtualClusterResourceQuotaPresetsDto
+type VirtualClusterResourceQuotaPresetsDto struct {
 	Name NullableString `json:"name"`
 	Pods int32 `json:"pods"`
 	CpuRequests int32 `json:"cpuRequests"`
@@ -32,16 +32,18 @@ type VirtualClusterQuotaPresetDto struct {
 	TotalPvcSize int64 `json:"totalPvcSize"`
 	Ingresses int32 `json:"ingresses"`
 	LoadBalancers int32 `json:"loadBalancers"`
+	EphemeralStorageLimits int64 `json:"ephemeralStorageLimits"`
+	EphemeralStorageRequests int64 `json:"ephemeralStorageRequests"`
 }
 
-type _VirtualClusterQuotaPresetDto VirtualClusterQuotaPresetDto
+type _VirtualClusterResourceQuotaPresetsDto VirtualClusterResourceQuotaPresetsDto
 
-// NewVirtualClusterQuotaPresetDto instantiates a new VirtualClusterQuotaPresetDto object
+// NewVirtualClusterResourceQuotaPresetsDto instantiates a new VirtualClusterResourceQuotaPresetsDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVirtualClusterQuotaPresetDto(name NullableString, pods int32, cpuRequests int32, cpuLimits int32, ramRequests int64, ramLimits int64, pvcs int32, totalPvcSize int64, ingresses int32, loadBalancers int32) *VirtualClusterQuotaPresetDto {
-	this := VirtualClusterQuotaPresetDto{}
+func NewVirtualClusterResourceQuotaPresetsDto(name NullableString, pods int32, cpuRequests int32, cpuLimits int32, ramRequests int64, ramLimits int64, pvcs int32, totalPvcSize int64, ingresses int32, loadBalancers int32, ephemeralStorageLimits int64, ephemeralStorageRequests int64) *VirtualClusterResourceQuotaPresetsDto {
+	this := VirtualClusterResourceQuotaPresetsDto{}
 	this.Name = name
 	this.Pods = pods
 	this.CpuRequests = cpuRequests
@@ -52,20 +54,22 @@ func NewVirtualClusterQuotaPresetDto(name NullableString, pods int32, cpuRequest
 	this.TotalPvcSize = totalPvcSize
 	this.Ingresses = ingresses
 	this.LoadBalancers = loadBalancers
+	this.EphemeralStorageLimits = ephemeralStorageLimits
+	this.EphemeralStorageRequests = ephemeralStorageRequests
 	return &this
 }
 
-// NewVirtualClusterQuotaPresetDtoWithDefaults instantiates a new VirtualClusterQuotaPresetDto object
+// NewVirtualClusterResourceQuotaPresetsDtoWithDefaults instantiates a new VirtualClusterResourceQuotaPresetsDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewVirtualClusterQuotaPresetDtoWithDefaults() *VirtualClusterQuotaPresetDto {
-	this := VirtualClusterQuotaPresetDto{}
+func NewVirtualClusterResourceQuotaPresetsDtoWithDefaults() *VirtualClusterResourceQuotaPresetsDto {
+	this := VirtualClusterResourceQuotaPresetsDto{}
 	return &this
 }
 
 // GetName returns the Name field value
 // If the value is explicit nil, the zero value for string will be returned
-func (o *VirtualClusterQuotaPresetDto) GetName() string {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetName() string {
 	if o == nil || o.Name.Get() == nil {
 		var ret string
 		return ret
@@ -77,7 +81,7 @@ func (o *VirtualClusterQuotaPresetDto) GetName() string {
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *VirtualClusterQuotaPresetDto) GetNameOk() (*string, bool) {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -85,12 +89,12 @@ func (o *VirtualClusterQuotaPresetDto) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *VirtualClusterQuotaPresetDto) SetName(v string) {
+func (o *VirtualClusterResourceQuotaPresetsDto) SetName(v string) {
 	o.Name.Set(&v)
 }
 
 // GetPods returns the Pods field value
-func (o *VirtualClusterQuotaPresetDto) GetPods() int32 {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetPods() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -101,7 +105,7 @@ func (o *VirtualClusterQuotaPresetDto) GetPods() int32 {
 
 // GetPodsOk returns a tuple with the Pods field value
 // and a boolean to check if the value has been set.
-func (o *VirtualClusterQuotaPresetDto) GetPodsOk() (*int32, bool) {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetPodsOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -109,12 +113,12 @@ func (o *VirtualClusterQuotaPresetDto) GetPodsOk() (*int32, bool) {
 }
 
 // SetPods sets field value
-func (o *VirtualClusterQuotaPresetDto) SetPods(v int32) {
+func (o *VirtualClusterResourceQuotaPresetsDto) SetPods(v int32) {
 	o.Pods = v
 }
 
 // GetCpuRequests returns the CpuRequests field value
-func (o *VirtualClusterQuotaPresetDto) GetCpuRequests() int32 {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetCpuRequests() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -125,7 +129,7 @@ func (o *VirtualClusterQuotaPresetDto) GetCpuRequests() int32 {
 
 // GetCpuRequestsOk returns a tuple with the CpuRequests field value
 // and a boolean to check if the value has been set.
-func (o *VirtualClusterQuotaPresetDto) GetCpuRequestsOk() (*int32, bool) {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetCpuRequestsOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -133,12 +137,12 @@ func (o *VirtualClusterQuotaPresetDto) GetCpuRequestsOk() (*int32, bool) {
 }
 
 // SetCpuRequests sets field value
-func (o *VirtualClusterQuotaPresetDto) SetCpuRequests(v int32) {
+func (o *VirtualClusterResourceQuotaPresetsDto) SetCpuRequests(v int32) {
 	o.CpuRequests = v
 }
 
 // GetCpuLimits returns the CpuLimits field value
-func (o *VirtualClusterQuotaPresetDto) GetCpuLimits() int32 {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetCpuLimits() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -149,7 +153,7 @@ func (o *VirtualClusterQuotaPresetDto) GetCpuLimits() int32 {
 
 // GetCpuLimitsOk returns a tuple with the CpuLimits field value
 // and a boolean to check if the value has been set.
-func (o *VirtualClusterQuotaPresetDto) GetCpuLimitsOk() (*int32, bool) {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetCpuLimitsOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -157,12 +161,12 @@ func (o *VirtualClusterQuotaPresetDto) GetCpuLimitsOk() (*int32, bool) {
 }
 
 // SetCpuLimits sets field value
-func (o *VirtualClusterQuotaPresetDto) SetCpuLimits(v int32) {
+func (o *VirtualClusterResourceQuotaPresetsDto) SetCpuLimits(v int32) {
 	o.CpuLimits = v
 }
 
 // GetRamRequests returns the RamRequests field value
-func (o *VirtualClusterQuotaPresetDto) GetRamRequests() int64 {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetRamRequests() int64 {
 	if o == nil {
 		var ret int64
 		return ret
@@ -173,7 +177,7 @@ func (o *VirtualClusterQuotaPresetDto) GetRamRequests() int64 {
 
 // GetRamRequestsOk returns a tuple with the RamRequests field value
 // and a boolean to check if the value has been set.
-func (o *VirtualClusterQuotaPresetDto) GetRamRequestsOk() (*int64, bool) {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetRamRequestsOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -181,12 +185,12 @@ func (o *VirtualClusterQuotaPresetDto) GetRamRequestsOk() (*int64, bool) {
 }
 
 // SetRamRequests sets field value
-func (o *VirtualClusterQuotaPresetDto) SetRamRequests(v int64) {
+func (o *VirtualClusterResourceQuotaPresetsDto) SetRamRequests(v int64) {
 	o.RamRequests = v
 }
 
 // GetRamLimits returns the RamLimits field value
-func (o *VirtualClusterQuotaPresetDto) GetRamLimits() int64 {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetRamLimits() int64 {
 	if o == nil {
 		var ret int64
 		return ret
@@ -197,7 +201,7 @@ func (o *VirtualClusterQuotaPresetDto) GetRamLimits() int64 {
 
 // GetRamLimitsOk returns a tuple with the RamLimits field value
 // and a boolean to check if the value has been set.
-func (o *VirtualClusterQuotaPresetDto) GetRamLimitsOk() (*int64, bool) {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetRamLimitsOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -205,12 +209,12 @@ func (o *VirtualClusterQuotaPresetDto) GetRamLimitsOk() (*int64, bool) {
 }
 
 // SetRamLimits sets field value
-func (o *VirtualClusterQuotaPresetDto) SetRamLimits(v int64) {
+func (o *VirtualClusterResourceQuotaPresetsDto) SetRamLimits(v int64) {
 	o.RamLimits = v
 }
 
 // GetPvcs returns the Pvcs field value
-func (o *VirtualClusterQuotaPresetDto) GetPvcs() int32 {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetPvcs() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -221,7 +225,7 @@ func (o *VirtualClusterQuotaPresetDto) GetPvcs() int32 {
 
 // GetPvcsOk returns a tuple with the Pvcs field value
 // and a boolean to check if the value has been set.
-func (o *VirtualClusterQuotaPresetDto) GetPvcsOk() (*int32, bool) {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetPvcsOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -229,12 +233,12 @@ func (o *VirtualClusterQuotaPresetDto) GetPvcsOk() (*int32, bool) {
 }
 
 // SetPvcs sets field value
-func (o *VirtualClusterQuotaPresetDto) SetPvcs(v int32) {
+func (o *VirtualClusterResourceQuotaPresetsDto) SetPvcs(v int32) {
 	o.Pvcs = v
 }
 
 // GetTotalPvcSize returns the TotalPvcSize field value
-func (o *VirtualClusterQuotaPresetDto) GetTotalPvcSize() int64 {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetTotalPvcSize() int64 {
 	if o == nil {
 		var ret int64
 		return ret
@@ -245,7 +249,7 @@ func (o *VirtualClusterQuotaPresetDto) GetTotalPvcSize() int64 {
 
 // GetTotalPvcSizeOk returns a tuple with the TotalPvcSize field value
 // and a boolean to check if the value has been set.
-func (o *VirtualClusterQuotaPresetDto) GetTotalPvcSizeOk() (*int64, bool) {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetTotalPvcSizeOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -253,12 +257,12 @@ func (o *VirtualClusterQuotaPresetDto) GetTotalPvcSizeOk() (*int64, bool) {
 }
 
 // SetTotalPvcSize sets field value
-func (o *VirtualClusterQuotaPresetDto) SetTotalPvcSize(v int64) {
+func (o *VirtualClusterResourceQuotaPresetsDto) SetTotalPvcSize(v int64) {
 	o.TotalPvcSize = v
 }
 
 // GetIngresses returns the Ingresses field value
-func (o *VirtualClusterQuotaPresetDto) GetIngresses() int32 {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetIngresses() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -269,7 +273,7 @@ func (o *VirtualClusterQuotaPresetDto) GetIngresses() int32 {
 
 // GetIngressesOk returns a tuple with the Ingresses field value
 // and a boolean to check if the value has been set.
-func (o *VirtualClusterQuotaPresetDto) GetIngressesOk() (*int32, bool) {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetIngressesOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -277,12 +281,12 @@ func (o *VirtualClusterQuotaPresetDto) GetIngressesOk() (*int32, bool) {
 }
 
 // SetIngresses sets field value
-func (o *VirtualClusterQuotaPresetDto) SetIngresses(v int32) {
+func (o *VirtualClusterResourceQuotaPresetsDto) SetIngresses(v int32) {
 	o.Ingresses = v
 }
 
 // GetLoadBalancers returns the LoadBalancers field value
-func (o *VirtualClusterQuotaPresetDto) GetLoadBalancers() int32 {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetLoadBalancers() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -293,7 +297,7 @@ func (o *VirtualClusterQuotaPresetDto) GetLoadBalancers() int32 {
 
 // GetLoadBalancersOk returns a tuple with the LoadBalancers field value
 // and a boolean to check if the value has been set.
-func (o *VirtualClusterQuotaPresetDto) GetLoadBalancersOk() (*int32, bool) {
+func (o *VirtualClusterResourceQuotaPresetsDto) GetLoadBalancersOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -301,11 +305,59 @@ func (o *VirtualClusterQuotaPresetDto) GetLoadBalancersOk() (*int32, bool) {
 }
 
 // SetLoadBalancers sets field value
-func (o *VirtualClusterQuotaPresetDto) SetLoadBalancers(v int32) {
+func (o *VirtualClusterResourceQuotaPresetsDto) SetLoadBalancers(v int32) {
 	o.LoadBalancers = v
 }
 
-func (o VirtualClusterQuotaPresetDto) MarshalJSON() ([]byte, error) {
+// GetEphemeralStorageLimits returns the EphemeralStorageLimits field value
+func (o *VirtualClusterResourceQuotaPresetsDto) GetEphemeralStorageLimits() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.EphemeralStorageLimits
+}
+
+// GetEphemeralStorageLimitsOk returns a tuple with the EphemeralStorageLimits field value
+// and a boolean to check if the value has been set.
+func (o *VirtualClusterResourceQuotaPresetsDto) GetEphemeralStorageLimitsOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EphemeralStorageLimits, true
+}
+
+// SetEphemeralStorageLimits sets field value
+func (o *VirtualClusterResourceQuotaPresetsDto) SetEphemeralStorageLimits(v int64) {
+	o.EphemeralStorageLimits = v
+}
+
+// GetEphemeralStorageRequests returns the EphemeralStorageRequests field value
+func (o *VirtualClusterResourceQuotaPresetsDto) GetEphemeralStorageRequests() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.EphemeralStorageRequests
+}
+
+// GetEphemeralStorageRequestsOk returns a tuple with the EphemeralStorageRequests field value
+// and a boolean to check if the value has been set.
+func (o *VirtualClusterResourceQuotaPresetsDto) GetEphemeralStorageRequestsOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EphemeralStorageRequests, true
+}
+
+// SetEphemeralStorageRequests sets field value
+func (o *VirtualClusterResourceQuotaPresetsDto) SetEphemeralStorageRequests(v int64) {
+	o.EphemeralStorageRequests = v
+}
+
+func (o VirtualClusterResourceQuotaPresetsDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -313,7 +365,7 @@ func (o VirtualClusterQuotaPresetDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o VirtualClusterQuotaPresetDto) ToMap() (map[string]interface{}, error) {
+func (o VirtualClusterResourceQuotaPresetsDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name.Get()
 	toSerialize["pods"] = o.Pods
@@ -325,10 +377,12 @@ func (o VirtualClusterQuotaPresetDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["totalPvcSize"] = o.TotalPvcSize
 	toSerialize["ingresses"] = o.Ingresses
 	toSerialize["loadBalancers"] = o.LoadBalancers
+	toSerialize["ephemeralStorageLimits"] = o.EphemeralStorageLimits
+	toSerialize["ephemeralStorageRequests"] = o.EphemeralStorageRequests
 	return toSerialize, nil
 }
 
-func (o *VirtualClusterQuotaPresetDto) UnmarshalJSON(data []byte) (err error) {
+func (o *VirtualClusterResourceQuotaPresetsDto) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -343,6 +397,8 @@ func (o *VirtualClusterQuotaPresetDto) UnmarshalJSON(data []byte) (err error) {
 		"totalPvcSize",
 		"ingresses",
 		"loadBalancers",
+		"ephemeralStorageLimits",
+		"ephemeralStorageRequests",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -359,53 +415,53 @@ func (o *VirtualClusterQuotaPresetDto) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varVirtualClusterQuotaPresetDto := _VirtualClusterQuotaPresetDto{}
+	varVirtualClusterResourceQuotaPresetsDto := _VirtualClusterResourceQuotaPresetsDto{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVirtualClusterQuotaPresetDto)
+	err = decoder.Decode(&varVirtualClusterResourceQuotaPresetsDto)
 
 	if err != nil {
 		return err
 	}
 
-	*o = VirtualClusterQuotaPresetDto(varVirtualClusterQuotaPresetDto)
+	*o = VirtualClusterResourceQuotaPresetsDto(varVirtualClusterResourceQuotaPresetsDto)
 
 	return err
 }
 
-type NullableVirtualClusterQuotaPresetDto struct {
-	value *VirtualClusterQuotaPresetDto
+type NullableVirtualClusterResourceQuotaPresetsDto struct {
+	value *VirtualClusterResourceQuotaPresetsDto
 	isSet bool
 }
 
-func (v NullableVirtualClusterQuotaPresetDto) Get() *VirtualClusterQuotaPresetDto {
+func (v NullableVirtualClusterResourceQuotaPresetsDto) Get() *VirtualClusterResourceQuotaPresetsDto {
 	return v.value
 }
 
-func (v *NullableVirtualClusterQuotaPresetDto) Set(val *VirtualClusterQuotaPresetDto) {
+func (v *NullableVirtualClusterResourceQuotaPresetsDto) Set(val *VirtualClusterResourceQuotaPresetsDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableVirtualClusterQuotaPresetDto) IsSet() bool {
+func (v NullableVirtualClusterResourceQuotaPresetsDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableVirtualClusterQuotaPresetDto) Unset() {
+func (v *NullableVirtualClusterResourceQuotaPresetsDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableVirtualClusterQuotaPresetDto(val *VirtualClusterQuotaPresetDto) *NullableVirtualClusterQuotaPresetDto {
-	return &NullableVirtualClusterQuotaPresetDto{value: val, isSet: true}
+func NewNullableVirtualClusterResourceQuotaPresetsDto(val *VirtualClusterResourceQuotaPresetsDto) *NullableVirtualClusterResourceQuotaPresetsDto {
+	return &NullableVirtualClusterResourceQuotaPresetsDto{value: val, isSet: true}
 }
 
-func (v NullableVirtualClusterQuotaPresetDto) MarshalJSON() ([]byte, error) {
+func (v NullableVirtualClusterResourceQuotaPresetsDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableVirtualClusterQuotaPresetDto) UnmarshalJSON(src []byte) error {
+func (v *NullableVirtualClusterResourceQuotaPresetsDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

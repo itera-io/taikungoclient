@@ -23,8 +23,6 @@ var _ MappedNullable = &VClusterLimitRangeListDto{}
 // VClusterLimitRangeListDto struct for VClusterLimitRangeListDto
 type VClusterLimitRangeListDto struct {
 	ResourceUnit NullableString `json:"resourceUnit"`
-	MaxLimit float64 `json:"maxLimit"`
-	MinRequest float64 `json:"minRequest"`
 	DefaultLimit float64 `json:"defaultLimit"`
 	DefaultRequest float64 `json:"defaultRequest"`
 }
@@ -35,11 +33,9 @@ type _VClusterLimitRangeListDto VClusterLimitRangeListDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVClusterLimitRangeListDto(resourceUnit NullableString, maxLimit float64, minRequest float64, defaultLimit float64, defaultRequest float64) *VClusterLimitRangeListDto {
+func NewVClusterLimitRangeListDto(resourceUnit NullableString, defaultLimit float64, defaultRequest float64) *VClusterLimitRangeListDto {
 	this := VClusterLimitRangeListDto{}
 	this.ResourceUnit = resourceUnit
-	this.MaxLimit = maxLimit
-	this.MinRequest = minRequest
 	this.DefaultLimit = defaultLimit
 	this.DefaultRequest = defaultRequest
 	return &this
@@ -77,54 +73,6 @@ func (o *VClusterLimitRangeListDto) GetResourceUnitOk() (*string, bool) {
 // SetResourceUnit sets field value
 func (o *VClusterLimitRangeListDto) SetResourceUnit(v string) {
 	o.ResourceUnit.Set(&v)
-}
-
-// GetMaxLimit returns the MaxLimit field value
-func (o *VClusterLimitRangeListDto) GetMaxLimit() float64 {
-	if o == nil {
-		var ret float64
-		return ret
-	}
-
-	return o.MaxLimit
-}
-
-// GetMaxLimitOk returns a tuple with the MaxLimit field value
-// and a boolean to check if the value has been set.
-func (o *VClusterLimitRangeListDto) GetMaxLimitOk() (*float64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.MaxLimit, true
-}
-
-// SetMaxLimit sets field value
-func (o *VClusterLimitRangeListDto) SetMaxLimit(v float64) {
-	o.MaxLimit = v
-}
-
-// GetMinRequest returns the MinRequest field value
-func (o *VClusterLimitRangeListDto) GetMinRequest() float64 {
-	if o == nil {
-		var ret float64
-		return ret
-	}
-
-	return o.MinRequest
-}
-
-// GetMinRequestOk returns a tuple with the MinRequest field value
-// and a boolean to check if the value has been set.
-func (o *VClusterLimitRangeListDto) GetMinRequestOk() (*float64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.MinRequest, true
-}
-
-// SetMinRequest sets field value
-func (o *VClusterLimitRangeListDto) SetMinRequest(v float64) {
-	o.MinRequest = v
 }
 
 // GetDefaultLimit returns the DefaultLimit field value
@@ -186,8 +134,6 @@ func (o VClusterLimitRangeListDto) MarshalJSON() ([]byte, error) {
 func (o VClusterLimitRangeListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["resourceUnit"] = o.ResourceUnit.Get()
-	toSerialize["maxLimit"] = o.MaxLimit
-	toSerialize["minRequest"] = o.MinRequest
 	toSerialize["defaultLimit"] = o.DefaultLimit
 	toSerialize["defaultRequest"] = o.DefaultRequest
 	return toSerialize, nil
@@ -199,8 +145,6 @@ func (o *VClusterLimitRangeListDto) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"resourceUnit",
-		"maxLimit",
-		"minRequest",
 		"defaultLimit",
 		"defaultRequest",
 	}

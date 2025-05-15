@@ -31,6 +31,8 @@ type CreateVirtualClusterResourceQuotas struct {
 	TotalPvcSize int64 `json:"totalPvcSize"`
 	Ingresses int32 `json:"ingresses"`
 	LoadBalancers int32 `json:"loadBalancers"`
+	EphemeralStorageRequests int64 `json:"ephemeralStorageRequests"`
+	EphemeralStorageLimits int64 `json:"ephemeralStorageLimits"`
 }
 
 type _CreateVirtualClusterResourceQuotas CreateVirtualClusterResourceQuotas
@@ -39,7 +41,7 @@ type _CreateVirtualClusterResourceQuotas CreateVirtualClusterResourceQuotas
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateVirtualClusterResourceQuotas(pods int32, cpuRequests float64, cpuLimits float64, ramRequests int64, ramLimits int64, pvcs int32, totalPvcSize int64, ingresses int32, loadBalancers int32) *CreateVirtualClusterResourceQuotas {
+func NewCreateVirtualClusterResourceQuotas(pods int32, cpuRequests float64, cpuLimits float64, ramRequests int64, ramLimits int64, pvcs int32, totalPvcSize int64, ingresses int32, loadBalancers int32, ephemeralStorageRequests int64, ephemeralStorageLimits int64) *CreateVirtualClusterResourceQuotas {
 	this := CreateVirtualClusterResourceQuotas{}
 	this.Pods = pods
 	this.CpuRequests = cpuRequests
@@ -50,6 +52,8 @@ func NewCreateVirtualClusterResourceQuotas(pods int32, cpuRequests float64, cpuL
 	this.TotalPvcSize = totalPvcSize
 	this.Ingresses = ingresses
 	this.LoadBalancers = loadBalancers
+	this.EphemeralStorageRequests = ephemeralStorageRequests
+	this.EphemeralStorageLimits = ephemeralStorageLimits
 	return &this
 }
 
@@ -277,6 +281,54 @@ func (o *CreateVirtualClusterResourceQuotas) SetLoadBalancers(v int32) {
 	o.LoadBalancers = v
 }
 
+// GetEphemeralStorageRequests returns the EphemeralStorageRequests field value
+func (o *CreateVirtualClusterResourceQuotas) GetEphemeralStorageRequests() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.EphemeralStorageRequests
+}
+
+// GetEphemeralStorageRequestsOk returns a tuple with the EphemeralStorageRequests field value
+// and a boolean to check if the value has been set.
+func (o *CreateVirtualClusterResourceQuotas) GetEphemeralStorageRequestsOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EphemeralStorageRequests, true
+}
+
+// SetEphemeralStorageRequests sets field value
+func (o *CreateVirtualClusterResourceQuotas) SetEphemeralStorageRequests(v int64) {
+	o.EphemeralStorageRequests = v
+}
+
+// GetEphemeralStorageLimits returns the EphemeralStorageLimits field value
+func (o *CreateVirtualClusterResourceQuotas) GetEphemeralStorageLimits() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.EphemeralStorageLimits
+}
+
+// GetEphemeralStorageLimitsOk returns a tuple with the EphemeralStorageLimits field value
+// and a boolean to check if the value has been set.
+func (o *CreateVirtualClusterResourceQuotas) GetEphemeralStorageLimitsOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EphemeralStorageLimits, true
+}
+
+// SetEphemeralStorageLimits sets field value
+func (o *CreateVirtualClusterResourceQuotas) SetEphemeralStorageLimits(v int64) {
+	o.EphemeralStorageLimits = v
+}
+
 func (o CreateVirtualClusterResourceQuotas) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -296,6 +348,8 @@ func (o CreateVirtualClusterResourceQuotas) ToMap() (map[string]interface{}, err
 	toSerialize["totalPvcSize"] = o.TotalPvcSize
 	toSerialize["ingresses"] = o.Ingresses
 	toSerialize["loadBalancers"] = o.LoadBalancers
+	toSerialize["ephemeralStorageRequests"] = o.EphemeralStorageRequests
+	toSerialize["ephemeralStorageLimits"] = o.EphemeralStorageLimits
 	return toSerialize, nil
 }
 
@@ -313,6 +367,8 @@ func (o *CreateVirtualClusterResourceQuotas) UnmarshalJSON(data []byte) (err err
 		"totalPvcSize",
 		"ingresses",
 		"loadBalancers",
+		"ephemeralStorageRequests",
+		"ephemeralStorageLimits",
 	}
 
 	allProperties := make(map[string]interface{})

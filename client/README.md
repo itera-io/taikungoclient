@@ -450,6 +450,8 @@ Class | Method | HTTP request | Description
 *OrganizationsAPI* | [**OrganizationsDelete**](docs/OrganizationsAPI.md#organizationsdelete) | **Delete** /api/v1/organizations/{id} | Delete the specified organization. Only available for admins.
 *OrganizationsAPI* | [**OrganizationsDeletePrometheusrules**](docs/OrganizationsAPI.md#organizationsdeleteprometheusrules) | **Put** /api/v1/organizations/{id}/prometheusrules | Unbind prometheus rule(s) from organization
 *OrganizationsAPI* | [**OrganizationsDetawils**](docs/OrganizationsAPI.md#organizationsdetawils) | **Get** /api/v1/organizations/details | Retrieve all data about current organization by Id
+*OrganizationsAPI* | [**OrganizationsDisable2faManagement**](docs/OrganizationsAPI.md#organizationsdisable2famanagement) | **Post** /api/v1/organizations/disable-2fa-management | Disable 2fa management
+*OrganizationsAPI* | [**OrganizationsEnable2faManagement**](docs/OrganizationsAPI.md#organizationsenable2famanagement) | **Post** /api/v1/organizations/enable-2fa-management | Enable 2fa management
 *OrganizationsAPI* | [**OrganizationsExportCsv**](docs/OrganizationsAPI.md#organizationsexportcsv) | **Get** /api/v1/organizations/export | Export Csv file
 *OrganizationsAPI* | [**OrganizationsLeave**](docs/OrganizationsAPI.md#organizationsleave) | **Post** /api/v1/organizations/leave | Leave taikun
 *OrganizationsAPI* | [**OrganizationsList**](docs/OrganizationsAPI.md#organizationslist) | **Get** /api/v1/organizations | Retrieve all organizations
@@ -1056,6 +1058,7 @@ Class | Method | HTTP request | Description
  - [DescribeKubernetesResourceCommand](docs/DescribeKubernetesResourceCommand.md)
  - [Diff](docs/Diff.md)
  - [DisableAutoscalingCommand](docs/DisableAutoscalingCommand.md)
+ - [DisableTwoFaManagementCommand](docs/DisableTwoFaManagementCommand.md)
  - [DisableTwoFactorAuthCommand](docs/DisableTwoFactorAuthCommand.md)
  - [DisableUserCommand](docs/DisableUserCommand.md)
  - [DnsCommand](docs/DnsCommand.md)
@@ -1592,8 +1595,8 @@ Class | Method | HTTP request | Description
  - [VirtualClusterEnableMonitoringCommand](docs/VirtualClusterEnableMonitoringCommand.md)
  - [VirtualClusterEnableOpaCommand](docs/VirtualClusterEnableOpaCommand.md)
  - [VirtualClusterQuotaLimitRangeDto](docs/VirtualClusterQuotaLimitRangeDto.md)
- - [VirtualClusterQuotaPresetDto](docs/VirtualClusterQuotaPresetDto.md)
- - [VirtualClusterQuotasDto](docs/VirtualClusterQuotasDto.md)
+ - [VirtualClusterQuotaPresetsDto](docs/VirtualClusterQuotaPresetsDto.md)
+ - [VirtualClusterResourceQuotaPresetsDto](docs/VirtualClusterResourceQuotaPresetsDto.md)
  - [VmConsoleScreenshotCommand](docs/VmConsoleScreenshotCommand.md)
  - [VmTemplateListCommand](docs/VmTemplateListCommand.md)
  - [VsphereFlavorData](docs/VsphereFlavorData.md)

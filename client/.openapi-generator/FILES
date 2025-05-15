@@ -390,6 +390,7 @@ docs/DeploymentSearchList.md
 docs/DescribeKubernetesResourceCommand.md
 docs/Diff.md
 docs/DisableAutoscalingCommand.md
+docs/DisableTwoFaManagementCommand.md
 docs/DisableTwoFactorAuthCommand.md
 docs/DisableUserCommand.md
 docs/DnsCommand.md
@@ -985,8 +986,8 @@ docs/VirtualClusterEnableBackupCommand.md
 docs/VirtualClusterEnableMonitoringCommand.md
 docs/VirtualClusterEnableOpaCommand.md
 docs/VirtualClusterQuotaLimitRangeDto.md
-docs/VirtualClusterQuotaPresetDto.md
-docs/VirtualClusterQuotasDto.md
+docs/VirtualClusterQuotaPresetsDto.md
+docs/VirtualClusterResourceQuotaPresetsDto.md
 docs/VmConsoleScreenshotCommand.md
 docs/VmTemplateListCommand.md
 docs/VsphereCloudCredentialAPI.md
@@ -1306,6 +1307,7 @@ model_deployment_search_list.go
 model_describe_kubernetes_resource_command.go
 model_diff.go
 model_disable_autoscaling_command.go
+model_disable_two_fa_management_command.go
 model_disable_two_factor_auth_command.go
 model_disable_user_command.go
 model_dns_command.go
@@ -1842,8 +1844,8 @@ model_virtual_cluster_enable_backup_command.go
 model_virtual_cluster_enable_monitoring_command.go
 model_virtual_cluster_enable_opa_command.go
 model_virtual_cluster_quota_limit_range_dto.go
-model_virtual_cluster_quota_preset_dto.go
-model_virtual_cluster_quotas_dto.go
+model_virtual_cluster_quota_presets_dto.go
+model_virtual_cluster_resource_quota_presets_dto.go
 model_vm_console_screenshot_command.go
 model_vm_template_list_command.go
 model_vsphere_flavor_data.go

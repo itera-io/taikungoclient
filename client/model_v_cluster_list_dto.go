@@ -46,6 +46,7 @@ type VClusterListDto struct {
 	Status ProjectStatus `json:"status"`
 	Health ProjectHealth `json:"health"`
 	ResourceQuota *VClusterResourceQuotaListDto `json:"resourceQuota,omitempty"`
+	ResourceQuotaUsage *VClusterResourceQuotaListDto `json:"resourceQuotaUsage,omitempty"`
 	CpuLimitRanges *VClusterLimitRangeListDto `json:"cpuLimitRanges,omitempty"`
 	RamLimitRanges *VClusterLimitRangeListDto `json:"ramLimitRanges,omitempty"`
 	EphemeralStorageLimitRanges *VClusterLimitRangeListDto `json:"ephemeralStorageLimitRanges,omitempty"`
@@ -693,6 +694,38 @@ func (o *VClusterListDto) SetResourceQuota(v VClusterResourceQuotaListDto) {
 	o.ResourceQuota = &v
 }
 
+// GetResourceQuotaUsage returns the ResourceQuotaUsage field value if set, zero value otherwise.
+func (o *VClusterListDto) GetResourceQuotaUsage() VClusterResourceQuotaListDto {
+	if o == nil || IsNil(o.ResourceQuotaUsage) {
+		var ret VClusterResourceQuotaListDto
+		return ret
+	}
+	return *o.ResourceQuotaUsage
+}
+
+// GetResourceQuotaUsageOk returns a tuple with the ResourceQuotaUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VClusterListDto) GetResourceQuotaUsageOk() (*VClusterResourceQuotaListDto, bool) {
+	if o == nil || IsNil(o.ResourceQuotaUsage) {
+		return nil, false
+	}
+	return o.ResourceQuotaUsage, true
+}
+
+// HasResourceQuotaUsage returns a boolean if a field has been set.
+func (o *VClusterListDto) HasResourceQuotaUsage() bool {
+	if o != nil && !IsNil(o.ResourceQuotaUsage) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceQuotaUsage gets a reference to the given VClusterResourceQuotaListDto and assigns it to the ResourceQuotaUsage field.
+func (o *VClusterListDto) SetResourceQuotaUsage(v VClusterResourceQuotaListDto) {
+	o.ResourceQuotaUsage = &v
+}
+
 // GetCpuLimitRanges returns the CpuLimitRanges field value if set, zero value otherwise.
 func (o *VClusterListDto) GetCpuLimitRanges() VClusterLimitRangeListDto {
 	if o == nil || IsNil(o.CpuLimitRanges) {
@@ -968,6 +1001,9 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["health"] = o.Health
 	if !IsNil(o.ResourceQuota) {
 		toSerialize["resourceQuota"] = o.ResourceQuota
+	}
+	if !IsNil(o.ResourceQuotaUsage) {
+		toSerialize["resourceQuotaUsage"] = o.ResourceQuotaUsage
 	}
 	if !IsNil(o.CpuLimitRanges) {
 		toSerialize["cpuLimitRanges"] = o.CpuLimitRanges

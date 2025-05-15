@@ -27,6 +27,7 @@ type GetToken struct {
 	RefreshToken NullableString `json:"refreshToken,omitempty"`
 	RefreshTokenExpireTime *time.Time `json:"refreshTokenExpireTime,omitempty"`
 	TwoFaEnabled NullableBool `json:"twoFaEnabled,omitempty"`
+	IsForcedToEnabled2Fa NullableBool `json:"isForcedToEnabled2Fa,omitempty"`
 }
 
 type _GetToken GetToken
@@ -189,6 +190,48 @@ func (o *GetToken) UnsetTwoFaEnabled() {
 	o.TwoFaEnabled.Unset()
 }
 
+// GetIsForcedToEnabled2Fa returns the IsForcedToEnabled2Fa field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GetToken) GetIsForcedToEnabled2Fa() bool {
+	if o == nil || IsNil(o.IsForcedToEnabled2Fa.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.IsForcedToEnabled2Fa.Get()
+}
+
+// GetIsForcedToEnabled2FaOk returns a tuple with the IsForcedToEnabled2Fa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GetToken) GetIsForcedToEnabled2FaOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IsForcedToEnabled2Fa.Get(), o.IsForcedToEnabled2Fa.IsSet()
+}
+
+// HasIsForcedToEnabled2Fa returns a boolean if a field has been set.
+func (o *GetToken) HasIsForcedToEnabled2Fa() bool {
+	if o != nil && o.IsForcedToEnabled2Fa.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIsForcedToEnabled2Fa gets a reference to the given NullableBool and assigns it to the IsForcedToEnabled2Fa field.
+func (o *GetToken) SetIsForcedToEnabled2Fa(v bool) {
+	o.IsForcedToEnabled2Fa.Set(&v)
+}
+// SetIsForcedToEnabled2FaNil sets the value for IsForcedToEnabled2Fa to be an explicit nil
+func (o *GetToken) SetIsForcedToEnabled2FaNil() {
+	o.IsForcedToEnabled2Fa.Set(nil)
+}
+
+// UnsetIsForcedToEnabled2Fa ensures that no value is present for IsForcedToEnabled2Fa, not even an explicit nil
+func (o *GetToken) UnsetIsForcedToEnabled2Fa() {
+	o.IsForcedToEnabled2Fa.Unset()
+}
+
 func (o GetToken) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -208,6 +251,9 @@ func (o GetToken) ToMap() (map[string]interface{}, error) {
 	}
 	if o.TwoFaEnabled.IsSet() {
 		toSerialize["twoFaEnabled"] = o.TwoFaEnabled.Get()
+	}
+	if o.IsForcedToEnabled2Fa.IsSet() {
+		toSerialize["isForcedToEnabled2Fa"] = o.IsForcedToEnabled2Fa.Get()
 	}
 	return toSerialize, nil
 }
