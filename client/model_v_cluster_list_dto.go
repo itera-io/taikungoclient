@@ -45,8 +45,8 @@ type VClusterListDto struct {
 	CloudType ECloudCredentialType `json:"cloudType"`
 	Status ProjectStatus `json:"status"`
 	Health ProjectHealth `json:"health"`
-	ResourceQuota *VClusterResourceQuotaListDto `json:"resourceQuota,omitempty"`
-	ResourceQuotaUsage *VClusterResourceQuotaListDto `json:"resourceQuotaUsage,omitempty"`
+	ResourceQuotas *VClusterResourceQuotaListDto `json:"resourceQuotas,omitempty"`
+	ResourceQuotaUsages *VClusterResourceQuotaListDto `json:"resourceQuotaUsages,omitempty"`
 	CpuLimitRanges *VClusterLimitRangeListDto `json:"cpuLimitRanges,omitempty"`
 	RamLimitRanges *VClusterLimitRangeListDto `json:"ramLimitRanges,omitempty"`
 	EphemeralStorageLimitRanges *VClusterLimitRangeListDto `json:"ephemeralStorageLimitRanges,omitempty"`
@@ -662,68 +662,68 @@ func (o *VClusterListDto) SetHealth(v ProjectHealth) {
 	o.Health = v
 }
 
-// GetResourceQuota returns the ResourceQuota field value if set, zero value otherwise.
-func (o *VClusterListDto) GetResourceQuota() VClusterResourceQuotaListDto {
-	if o == nil || IsNil(o.ResourceQuota) {
+// GetResourceQuotas returns the ResourceQuotas field value if set, zero value otherwise.
+func (o *VClusterListDto) GetResourceQuotas() VClusterResourceQuotaListDto {
+	if o == nil || IsNil(o.ResourceQuotas) {
 		var ret VClusterResourceQuotaListDto
 		return ret
 	}
-	return *o.ResourceQuota
+	return *o.ResourceQuotas
 }
 
-// GetResourceQuotaOk returns a tuple with the ResourceQuota field value if set, nil otherwise
+// GetResourceQuotasOk returns a tuple with the ResourceQuotas field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetResourceQuotaOk() (*VClusterResourceQuotaListDto, bool) {
-	if o == nil || IsNil(o.ResourceQuota) {
+func (o *VClusterListDto) GetResourceQuotasOk() (*VClusterResourceQuotaListDto, bool) {
+	if o == nil || IsNil(o.ResourceQuotas) {
 		return nil, false
 	}
-	return o.ResourceQuota, true
+	return o.ResourceQuotas, true
 }
 
-// HasResourceQuota returns a boolean if a field has been set.
-func (o *VClusterListDto) HasResourceQuota() bool {
-	if o != nil && !IsNil(o.ResourceQuota) {
+// HasResourceQuotas returns a boolean if a field has been set.
+func (o *VClusterListDto) HasResourceQuotas() bool {
+	if o != nil && !IsNil(o.ResourceQuotas) {
 		return true
 	}
 
 	return false
 }
 
-// SetResourceQuota gets a reference to the given VClusterResourceQuotaListDto and assigns it to the ResourceQuota field.
-func (o *VClusterListDto) SetResourceQuota(v VClusterResourceQuotaListDto) {
-	o.ResourceQuota = &v
+// SetResourceQuotas gets a reference to the given VClusterResourceQuotaListDto and assigns it to the ResourceQuotas field.
+func (o *VClusterListDto) SetResourceQuotas(v VClusterResourceQuotaListDto) {
+	o.ResourceQuotas = &v
 }
 
-// GetResourceQuotaUsage returns the ResourceQuotaUsage field value if set, zero value otherwise.
-func (o *VClusterListDto) GetResourceQuotaUsage() VClusterResourceQuotaListDto {
-	if o == nil || IsNil(o.ResourceQuotaUsage) {
+// GetResourceQuotaUsages returns the ResourceQuotaUsages field value if set, zero value otherwise.
+func (o *VClusterListDto) GetResourceQuotaUsages() VClusterResourceQuotaListDto {
+	if o == nil || IsNil(o.ResourceQuotaUsages) {
 		var ret VClusterResourceQuotaListDto
 		return ret
 	}
-	return *o.ResourceQuotaUsage
+	return *o.ResourceQuotaUsages
 }
 
-// GetResourceQuotaUsageOk returns a tuple with the ResourceQuotaUsage field value if set, nil otherwise
+// GetResourceQuotaUsagesOk returns a tuple with the ResourceQuotaUsages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VClusterListDto) GetResourceQuotaUsageOk() (*VClusterResourceQuotaListDto, bool) {
-	if o == nil || IsNil(o.ResourceQuotaUsage) {
+func (o *VClusterListDto) GetResourceQuotaUsagesOk() (*VClusterResourceQuotaListDto, bool) {
+	if o == nil || IsNil(o.ResourceQuotaUsages) {
 		return nil, false
 	}
-	return o.ResourceQuotaUsage, true
+	return o.ResourceQuotaUsages, true
 }
 
-// HasResourceQuotaUsage returns a boolean if a field has been set.
-func (o *VClusterListDto) HasResourceQuotaUsage() bool {
-	if o != nil && !IsNil(o.ResourceQuotaUsage) {
+// HasResourceQuotaUsages returns a boolean if a field has been set.
+func (o *VClusterListDto) HasResourceQuotaUsages() bool {
+	if o != nil && !IsNil(o.ResourceQuotaUsages) {
 		return true
 	}
 
 	return false
 }
 
-// SetResourceQuotaUsage gets a reference to the given VClusterResourceQuotaListDto and assigns it to the ResourceQuotaUsage field.
-func (o *VClusterListDto) SetResourceQuotaUsage(v VClusterResourceQuotaListDto) {
-	o.ResourceQuotaUsage = &v
+// SetResourceQuotaUsages gets a reference to the given VClusterResourceQuotaListDto and assigns it to the ResourceQuotaUsages field.
+func (o *VClusterListDto) SetResourceQuotaUsages(v VClusterResourceQuotaListDto) {
+	o.ResourceQuotaUsages = &v
 }
 
 // GetCpuLimitRanges returns the CpuLimitRanges field value if set, zero value otherwise.
@@ -999,11 +999,11 @@ func (o VClusterListDto) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloudType"] = o.CloudType
 	toSerialize["status"] = o.Status
 	toSerialize["health"] = o.Health
-	if !IsNil(o.ResourceQuota) {
-		toSerialize["resourceQuota"] = o.ResourceQuota
+	if !IsNil(o.ResourceQuotas) {
+		toSerialize["resourceQuotas"] = o.ResourceQuotas
 	}
-	if !IsNil(o.ResourceQuotaUsage) {
-		toSerialize["resourceQuotaUsage"] = o.ResourceQuotaUsage
+	if !IsNil(o.ResourceQuotaUsages) {
+		toSerialize["resourceQuotaUsages"] = o.ResourceQuotaUsages
 	}
 	if !IsNil(o.CpuLimitRanges) {
 		toSerialize["cpuLimitRanges"] = o.CpuLimitRanges

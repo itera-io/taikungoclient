@@ -6035,8 +6035,8 @@ paths:
                 - metadataName: default
                   provider: taikun
                   namespace: velero
-                  lastValidated: 2025-05-15T00:03:33.5479646Z
-                  createdAt: 2025-05-15T00:03:33.5479646Z
+                  lastValidated: 2025-05-16T00:03:54.5264361Z
+                  createdAt: 2025-05-16T00:03:54.5264361Z
                   accessMode: default
                   phase: Available
                   backupCredentialId: 1
@@ -6141,14 +6141,14 @@ paths:
               example:
                 data:
                 - status:
-                    lastBackup: 2025-05-15T00:03:33.5479646Z
+                    lastBackup: 2025-05-16T00:03:54.5264361Z
                     phase: Available
                   metadataName: default
                   namespace: velero
-                  createdAt: 2025-05-15T00:03:33.5479646Z
+                  createdAt: 2025-05-16T00:03:54.5264361Z
                   schedule: 0 0 12 * * ?
                   ttl: 720h
-                  lastBackup: 2025-05-15T00:03:33.5479646Z
+                  lastBackup: 2025-05-16T00:03:54.5264361Z
                   phase: Available
                   excludedNamespaces:
                   - taikun.cloud/backup
@@ -6253,8 +6253,8 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-15T00:03:33.5479646Z
-                  expiration: 2025-05-15T00:03:33.5479646Z
+                  createdAt: 2025-05-16T00:03:54.5264361Z
+                  expiration: 2025-05-16T00:03:54.5264361Z
                   scheduleName: taikun
                   namespace: velero
                   location: storage-location
@@ -6358,7 +6358,7 @@ paths:
               example:
                 data:
                 - metadataName: default
-                  createdAt: 2025-05-15T00:03:33.5479646Z
+                  createdAt: 2025-05-16T00:03:54.5264361Z
                   backupName: test-20240109144001
                   namespace: velero
                   phase: Available
@@ -6468,9 +6468,9 @@ paths:
                   - taikun.cloud/backup
                   includeNamespaces:
                   - taikun.cloud/backup
-                  completionDateTime: 2025-05-15T00:03:33.5479646+00:00
-                  startTimeStamp: 2025-05-15T00:03:33.5479646+00:00
-                  createdAt: 2025-05-15T00:03:33.5479646Z
+                  completionDateTime: 2025-05-16T00:03:54.5264361+00:00
+                  startTimeStamp: 2025-05-16T00:03:54.5264361+00:00
+                  createdAt: 2025-05-16T00:03:54.5264361Z
                   warnings: 1
                   phase: Available
                 totalCount: 0
@@ -32396,13 +32396,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/RebootStandAloneVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -32445,13 +32440,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ShelveStandAloneVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -32494,13 +32484,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StartStandaloneVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -32543,13 +32528,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/StopStandaloneVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -32592,13 +32572,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UnshelveStandaloneVmCommand'
-        required: true
       responses:
         "200":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/Void'
           description: OK
         "400":
           content:
@@ -68291,7 +68266,7 @@ components:
           createdAt: createdAt
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          resourceQuota:
+          resourceQuotas:
             ingresses: 7
             pvcs: 2
             ephemeralStorageRequests: 1
@@ -68312,18 +68287,6 @@ components:
             - reasons
             hidden: true
             enable: true
-          resourceQuotaUsage:
-            ingresses: 7
-            pvcs: 2
-            ephemeralStorageRequests: 1
-            ephemeralStorageLimits: 1
-            loadBalancers: 1
-            pods: 5
-            ramRequests: 9
-            ramLimits: 3
-            cpuLimits: 7.061401241503109
-            cpuRequests: 2.3021358869347655
-            totalPvcSize: 4
           kubernetesVersion: kubernetesVersion
           organizationName: organizationName
           accessIp: accessIp
@@ -68336,6 +68299,18 @@ components:
             enable: true
           lastModifiedBy: lastModifiedBy
           health: "Null"
+          resourceQuotaUsages:
+            ingresses: 7
+            pvcs: 2
+            ephemeralStorageRequests: 1
+            ephemeralStorageLimits: 1
+            loadBalancers: 1
+            pods: 5
+            ramRequests: 9
+            ramLimits: 3
+            cpuLimits: 7.061401241503109
+            cpuRequests: 2.3021358869347655
+            totalPvcSize: 4
           ramLimitRanges:
             resourceUnit: resourceUnit
             defaultLimit: 6.84685269835264
@@ -68386,7 +68361,7 @@ components:
           createdAt: createdAt
           expiredAt: expiredAt
           alertingProfileName: alertingProfileName
-          resourceQuota:
+          resourceQuotas:
             ingresses: 7
             pvcs: 2
             ephemeralStorageRequests: 1
@@ -68407,18 +68382,6 @@ components:
             - reasons
             hidden: true
             enable: true
-          resourceQuotaUsage:
-            ingresses: 7
-            pvcs: 2
-            ephemeralStorageRequests: 1
-            ephemeralStorageLimits: 1
-            loadBalancers: 1
-            pods: 5
-            ramRequests: 9
-            ramLimits: 3
-            cpuLimits: 7.061401241503109
-            cpuRequests: 2.3021358869347655
-            totalPvcSize: 4
           kubernetesVersion: kubernetesVersion
           organizationName: organizationName
           accessIp: accessIp
@@ -68431,6 +68394,18 @@ components:
             enable: true
           lastModifiedBy: lastModifiedBy
           health: "Null"
+          resourceQuotaUsages:
+            ingresses: 7
+            pvcs: 2
+            ephemeralStorageRequests: 1
+            ephemeralStorageLimits: 1
+            loadBalancers: 1
+            pods: 5
+            ramRequests: 9
+            ramLimits: 3
+            cpuLimits: 7.061401241503109
+            cpuRequests: 2.3021358869347655
+            totalPvcSize: 4
           ramLimitRanges:
             resourceUnit: resourceUnit
             defaultLimit: 6.84685269835264
@@ -68529,7 +68504,7 @@ components:
         createdAt: createdAt
         expiredAt: expiredAt
         alertingProfileName: alertingProfileName
-        resourceQuota:
+        resourceQuotas:
           ingresses: 7
           pvcs: 2
           ephemeralStorageRequests: 1
@@ -68550,18 +68525,6 @@ components:
           - reasons
           hidden: true
           enable: true
-        resourceQuotaUsage:
-          ingresses: 7
-          pvcs: 2
-          ephemeralStorageRequests: 1
-          ephemeralStorageLimits: 1
-          loadBalancers: 1
-          pods: 5
-          ramRequests: 9
-          ramLimits: 3
-          cpuLimits: 7.061401241503109
-          cpuRequests: 2.3021358869347655
-          totalPvcSize: 4
         kubernetesVersion: kubernetesVersion
         organizationName: organizationName
         accessIp: accessIp
@@ -68574,6 +68537,18 @@ components:
           enable: true
         lastModifiedBy: lastModifiedBy
         health: "Null"
+        resourceQuotaUsages:
+          ingresses: 7
+          pvcs: 2
+          ephemeralStorageRequests: 1
+          ephemeralStorageLimits: 1
+          loadBalancers: 1
+          pods: 5
+          ramRequests: 9
+          ramLimits: 3
+          cpuLimits: 7.061401241503109
+          cpuRequests: 2.3021358869347655
+          totalPvcSize: 4
         ramLimitRanges:
           resourceUnit: resourceUnit
           defaultLimit: 6.84685269835264
@@ -68661,9 +68636,9 @@ components:
           $ref: '#/components/schemas/ProjectStatus'
         health:
           $ref: '#/components/schemas/ProjectHealth'
-        resourceQuota:
+        resourceQuotas:
           $ref: '#/components/schemas/VClusterResourceQuotaListDto'
-        resourceQuotaUsage:
+        resourceQuotaUsages:
           $ref: '#/components/schemas/VClusterResourceQuotaListDto'
         cpuLimitRanges:
           $ref: '#/components/schemas/VClusterLimitRangeListDto'
