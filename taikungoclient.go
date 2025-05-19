@@ -99,7 +99,7 @@ func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 				if err != nil {
 					return nil, CreateError(body, err)
 				}
-				c.Client.token = *result.Token.Get()
+				c.Client.token = result.Token
 				c.Client.refreshToken = *result.RefreshToken.Get()
 
 			}
@@ -112,7 +112,7 @@ func (c *customTransport) RoundTrip(req *http.Request) (*http.Response, error) {
 				if err != nil {
 					return nil, CreateError(body, err)
 				}
-				c.Client.token = *result.Token.Get()
+				c.Client.token = result.Token
 				c.Client.refreshToken = *result.RefreshToken.Get()
 			}
 		}
