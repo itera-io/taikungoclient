@@ -2226,7 +2226,7 @@ type ApiVirtualClusterQuotaPresetsRequest struct {
 	ApiService *VirtualClusterAPIService
 }
 
-func (r ApiVirtualClusterQuotaPresetsRequest) Execute() (*VirtualClusterQuotaPresetsDto, *http.Response, error) {
+func (r ApiVirtualClusterQuotaPresetsRequest) Execute() (*VirtualClusterQuotasDto, *http.Response, error) {
 	return r.ApiService.VirtualClusterQuotaPresetsExecute(r)
 }
 
@@ -2244,13 +2244,13 @@ func (a *VirtualClusterAPIService) VirtualClusterQuotaPresets(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return VirtualClusterQuotaPresetsDto
-func (a *VirtualClusterAPIService) VirtualClusterQuotaPresetsExecute(r ApiVirtualClusterQuotaPresetsRequest) (*VirtualClusterQuotaPresetsDto, *http.Response, error) {
+//  @return VirtualClusterQuotasDto
+func (a *VirtualClusterAPIService) VirtualClusterQuotaPresetsExecute(r ApiVirtualClusterQuotaPresetsRequest) (*VirtualClusterQuotasDto, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *VirtualClusterQuotaPresetsDto
+		localVarReturnValue  *VirtualClusterQuotasDto
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "VirtualClusterAPIService.VirtualClusterQuotaPresets")

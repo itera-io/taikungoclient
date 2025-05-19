@@ -102,4 +102,15 @@ func Test_taikuncore_AppRepositoriesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AppRepositoriesAPIService RepositoryUpdatePassword", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		httpRes, err := apiClient.AppRepositoriesAPI.RepositoryUpdatePassword(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

@@ -23,10 +23,10 @@ var _ MappedNullable = &EditVirtualClusterQuotasCommand{}
 // EditVirtualClusterQuotasCommand struct for EditVirtualClusterQuotasCommand
 type EditVirtualClusterQuotasCommand struct {
 	VClusterId int32 `json:"vClusterId"`
-	ResourceQuotas EditVirtualClusterResourceQuotas `json:"resourceQuotas"`
-	CpuLimitRanges EditVirtualClusterResourceLimitRanges `json:"cpuLimitRanges"`
-	RamLimitRanges EditVirtualClusterResourceLimitRanges `json:"ramLimitRanges"`
-	EphemeralStorageLimitRanges EditVirtualClusterResourceLimitRanges `json:"ephemeralStorageLimitRanges"`
+	WorkloadResources EditVirtualClusterWorkloadResources `json:"workloadResources"`
+	CpuLimits EditVirtualClusterResourceLimits `json:"cpuLimits"`
+	RamLimits EditVirtualClusterResourceLimits `json:"ramLimits"`
+	EphemeralStorageLimits EditVirtualClusterResourceLimits `json:"ephemeralStorageLimits"`
 }
 
 type _EditVirtualClusterQuotasCommand EditVirtualClusterQuotasCommand
@@ -35,13 +35,13 @@ type _EditVirtualClusterQuotasCommand EditVirtualClusterQuotasCommand
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEditVirtualClusterQuotasCommand(vClusterId int32, resourceQuotas EditVirtualClusterResourceQuotas, cpuLimitRanges EditVirtualClusterResourceLimitRanges, ramLimitRanges EditVirtualClusterResourceLimitRanges, ephemeralStorageLimitRanges EditVirtualClusterResourceLimitRanges) *EditVirtualClusterQuotasCommand {
+func NewEditVirtualClusterQuotasCommand(vClusterId int32, workloadResources EditVirtualClusterWorkloadResources, cpuLimits EditVirtualClusterResourceLimits, ramLimits EditVirtualClusterResourceLimits, ephemeralStorageLimits EditVirtualClusterResourceLimits) *EditVirtualClusterQuotasCommand {
 	this := EditVirtualClusterQuotasCommand{}
 	this.VClusterId = vClusterId
-	this.ResourceQuotas = resourceQuotas
-	this.CpuLimitRanges = cpuLimitRanges
-	this.RamLimitRanges = ramLimitRanges
-	this.EphemeralStorageLimitRanges = ephemeralStorageLimitRanges
+	this.WorkloadResources = workloadResources
+	this.CpuLimits = cpuLimits
+	this.RamLimits = ramLimits
+	this.EphemeralStorageLimits = ephemeralStorageLimits
 	return &this
 }
 
@@ -77,100 +77,100 @@ func (o *EditVirtualClusterQuotasCommand) SetVClusterId(v int32) {
 	o.VClusterId = v
 }
 
-// GetResourceQuotas returns the ResourceQuotas field value
-func (o *EditVirtualClusterQuotasCommand) GetResourceQuotas() EditVirtualClusterResourceQuotas {
+// GetWorkloadResources returns the WorkloadResources field value
+func (o *EditVirtualClusterQuotasCommand) GetWorkloadResources() EditVirtualClusterWorkloadResources {
 	if o == nil {
-		var ret EditVirtualClusterResourceQuotas
+		var ret EditVirtualClusterWorkloadResources
 		return ret
 	}
 
-	return o.ResourceQuotas
+	return o.WorkloadResources
 }
 
-// GetResourceQuotasOk returns a tuple with the ResourceQuotas field value
+// GetWorkloadResourcesOk returns a tuple with the WorkloadResources field value
 // and a boolean to check if the value has been set.
-func (o *EditVirtualClusterQuotasCommand) GetResourceQuotasOk() (*EditVirtualClusterResourceQuotas, bool) {
+func (o *EditVirtualClusterQuotasCommand) GetWorkloadResourcesOk() (*EditVirtualClusterWorkloadResources, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ResourceQuotas, true
+	return &o.WorkloadResources, true
 }
 
-// SetResourceQuotas sets field value
-func (o *EditVirtualClusterQuotasCommand) SetResourceQuotas(v EditVirtualClusterResourceQuotas) {
-	o.ResourceQuotas = v
+// SetWorkloadResources sets field value
+func (o *EditVirtualClusterQuotasCommand) SetWorkloadResources(v EditVirtualClusterWorkloadResources) {
+	o.WorkloadResources = v
 }
 
-// GetCpuLimitRanges returns the CpuLimitRanges field value
-func (o *EditVirtualClusterQuotasCommand) GetCpuLimitRanges() EditVirtualClusterResourceLimitRanges {
+// GetCpuLimits returns the CpuLimits field value
+func (o *EditVirtualClusterQuotasCommand) GetCpuLimits() EditVirtualClusterResourceLimits {
 	if o == nil {
-		var ret EditVirtualClusterResourceLimitRanges
+		var ret EditVirtualClusterResourceLimits
 		return ret
 	}
 
-	return o.CpuLimitRanges
+	return o.CpuLimits
 }
 
-// GetCpuLimitRangesOk returns a tuple with the CpuLimitRanges field value
+// GetCpuLimitsOk returns a tuple with the CpuLimits field value
 // and a boolean to check if the value has been set.
-func (o *EditVirtualClusterQuotasCommand) GetCpuLimitRangesOk() (*EditVirtualClusterResourceLimitRanges, bool) {
+func (o *EditVirtualClusterQuotasCommand) GetCpuLimitsOk() (*EditVirtualClusterResourceLimits, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CpuLimitRanges, true
+	return &o.CpuLimits, true
 }
 
-// SetCpuLimitRanges sets field value
-func (o *EditVirtualClusterQuotasCommand) SetCpuLimitRanges(v EditVirtualClusterResourceLimitRanges) {
-	o.CpuLimitRanges = v
+// SetCpuLimits sets field value
+func (o *EditVirtualClusterQuotasCommand) SetCpuLimits(v EditVirtualClusterResourceLimits) {
+	o.CpuLimits = v
 }
 
-// GetRamLimitRanges returns the RamLimitRanges field value
-func (o *EditVirtualClusterQuotasCommand) GetRamLimitRanges() EditVirtualClusterResourceLimitRanges {
+// GetRamLimits returns the RamLimits field value
+func (o *EditVirtualClusterQuotasCommand) GetRamLimits() EditVirtualClusterResourceLimits {
 	if o == nil {
-		var ret EditVirtualClusterResourceLimitRanges
+		var ret EditVirtualClusterResourceLimits
 		return ret
 	}
 
-	return o.RamLimitRanges
+	return o.RamLimits
 }
 
-// GetRamLimitRangesOk returns a tuple with the RamLimitRanges field value
+// GetRamLimitsOk returns a tuple with the RamLimits field value
 // and a boolean to check if the value has been set.
-func (o *EditVirtualClusterQuotasCommand) GetRamLimitRangesOk() (*EditVirtualClusterResourceLimitRanges, bool) {
+func (o *EditVirtualClusterQuotasCommand) GetRamLimitsOk() (*EditVirtualClusterResourceLimits, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.RamLimitRanges, true
+	return &o.RamLimits, true
 }
 
-// SetRamLimitRanges sets field value
-func (o *EditVirtualClusterQuotasCommand) SetRamLimitRanges(v EditVirtualClusterResourceLimitRanges) {
-	o.RamLimitRanges = v
+// SetRamLimits sets field value
+func (o *EditVirtualClusterQuotasCommand) SetRamLimits(v EditVirtualClusterResourceLimits) {
+	o.RamLimits = v
 }
 
-// GetEphemeralStorageLimitRanges returns the EphemeralStorageLimitRanges field value
-func (o *EditVirtualClusterQuotasCommand) GetEphemeralStorageLimitRanges() EditVirtualClusterResourceLimitRanges {
+// GetEphemeralStorageLimits returns the EphemeralStorageLimits field value
+func (o *EditVirtualClusterQuotasCommand) GetEphemeralStorageLimits() EditVirtualClusterResourceLimits {
 	if o == nil {
-		var ret EditVirtualClusterResourceLimitRanges
+		var ret EditVirtualClusterResourceLimits
 		return ret
 	}
 
-	return o.EphemeralStorageLimitRanges
+	return o.EphemeralStorageLimits
 }
 
-// GetEphemeralStorageLimitRangesOk returns a tuple with the EphemeralStorageLimitRanges field value
+// GetEphemeralStorageLimitsOk returns a tuple with the EphemeralStorageLimits field value
 // and a boolean to check if the value has been set.
-func (o *EditVirtualClusterQuotasCommand) GetEphemeralStorageLimitRangesOk() (*EditVirtualClusterResourceLimitRanges, bool) {
+func (o *EditVirtualClusterQuotasCommand) GetEphemeralStorageLimitsOk() (*EditVirtualClusterResourceLimits, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.EphemeralStorageLimitRanges, true
+	return &o.EphemeralStorageLimits, true
 }
 
-// SetEphemeralStorageLimitRanges sets field value
-func (o *EditVirtualClusterQuotasCommand) SetEphemeralStorageLimitRanges(v EditVirtualClusterResourceLimitRanges) {
-	o.EphemeralStorageLimitRanges = v
+// SetEphemeralStorageLimits sets field value
+func (o *EditVirtualClusterQuotasCommand) SetEphemeralStorageLimits(v EditVirtualClusterResourceLimits) {
+	o.EphemeralStorageLimits = v
 }
 
 func (o EditVirtualClusterQuotasCommand) MarshalJSON() ([]byte, error) {
@@ -184,10 +184,10 @@ func (o EditVirtualClusterQuotasCommand) MarshalJSON() ([]byte, error) {
 func (o EditVirtualClusterQuotasCommand) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["vClusterId"] = o.VClusterId
-	toSerialize["resourceQuotas"] = o.ResourceQuotas
-	toSerialize["cpuLimitRanges"] = o.CpuLimitRanges
-	toSerialize["ramLimitRanges"] = o.RamLimitRanges
-	toSerialize["ephemeralStorageLimitRanges"] = o.EphemeralStorageLimitRanges
+	toSerialize["workloadResources"] = o.WorkloadResources
+	toSerialize["cpuLimits"] = o.CpuLimits
+	toSerialize["ramLimits"] = o.RamLimits
+	toSerialize["ephemeralStorageLimits"] = o.EphemeralStorageLimits
 	return toSerialize, nil
 }
 
@@ -197,10 +197,10 @@ func (o *EditVirtualClusterQuotasCommand) UnmarshalJSON(data []byte) (err error)
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"vClusterId",
-		"resourceQuotas",
-		"cpuLimitRanges",
-		"ramLimitRanges",
-		"ephemeralStorageLimitRanges",
+		"workloadResources",
+		"cpuLimits",
+		"ramLimits",
+		"ephemeralStorageLimits",
 	}
 
 	allProperties := make(map[string]interface{})

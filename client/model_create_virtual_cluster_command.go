@@ -28,10 +28,10 @@ type CreateVirtualClusterCommand struct {
 	DeleteOnExpiration *bool `json:"deleteOnExpiration,omitempty"`
 	AlertingProfileId NullableInt32 `json:"alertingProfileId,omitempty"`
 	ExposeHostname *string `json:"exposeHostname,omitempty"`
-	ResourceQuotas *CreateVirtualClusterResourceQuotas `json:"resourceQuotas,omitempty"`
-	CpuLimitRanges *CreateVirtualClusterResourceLimitRanges `json:"cpuLimitRanges,omitempty"`
-	RamLimitRanges *CreateVirtualClusterResourceLimitRanges `json:"ramLimitRanges,omitempty"`
-	EphemeralStorageLimitRanges *CreateVirtualClusterResourceLimitRanges `json:"ephemeralStorageLimitRanges,omitempty"`
+	WorkloadResources *CreateVirtualClusterWorkloadResources `json:"workloadResources,omitempty"`
+	CpuLimits *CreateVirtualClusterResourceLimits `json:"cpuLimits,omitempty"`
+	RamLimits *CreateVirtualClusterResourceLimits `json:"ramLimits,omitempty"`
+	EphemeralStorageLimits *CreateVirtualClusterResourceLimits `json:"ephemeralStorageLimits,omitempty"`
 }
 
 // NewCreateVirtualClusterCommand instantiates a new CreateVirtualClusterCommand object
@@ -305,132 +305,132 @@ func (o *CreateVirtualClusterCommand) SetExposeHostname(v string) {
 	o.ExposeHostname = &v
 }
 
-// GetResourceQuotas returns the ResourceQuotas field value if set, zero value otherwise.
-func (o *CreateVirtualClusterCommand) GetResourceQuotas() CreateVirtualClusterResourceQuotas {
-	if o == nil || IsNil(o.ResourceQuotas) {
-		var ret CreateVirtualClusterResourceQuotas
+// GetWorkloadResources returns the WorkloadResources field value if set, zero value otherwise.
+func (o *CreateVirtualClusterCommand) GetWorkloadResources() CreateVirtualClusterWorkloadResources {
+	if o == nil || IsNil(o.WorkloadResources) {
+		var ret CreateVirtualClusterWorkloadResources
 		return ret
 	}
-	return *o.ResourceQuotas
+	return *o.WorkloadResources
 }
 
-// GetResourceQuotasOk returns a tuple with the ResourceQuotas field value if set, nil otherwise
+// GetWorkloadResourcesOk returns a tuple with the WorkloadResources field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVirtualClusterCommand) GetResourceQuotasOk() (*CreateVirtualClusterResourceQuotas, bool) {
-	if o == nil || IsNil(o.ResourceQuotas) {
+func (o *CreateVirtualClusterCommand) GetWorkloadResourcesOk() (*CreateVirtualClusterWorkloadResources, bool) {
+	if o == nil || IsNil(o.WorkloadResources) {
 		return nil, false
 	}
-	return o.ResourceQuotas, true
+	return o.WorkloadResources, true
 }
 
-// HasResourceQuotas returns a boolean if a field has been set.
-func (o *CreateVirtualClusterCommand) HasResourceQuotas() bool {
-	if o != nil && !IsNil(o.ResourceQuotas) {
+// HasWorkloadResources returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasWorkloadResources() bool {
+	if o != nil && !IsNil(o.WorkloadResources) {
 		return true
 	}
 
 	return false
 }
 
-// SetResourceQuotas gets a reference to the given CreateVirtualClusterResourceQuotas and assigns it to the ResourceQuotas field.
-func (o *CreateVirtualClusterCommand) SetResourceQuotas(v CreateVirtualClusterResourceQuotas) {
-	o.ResourceQuotas = &v
+// SetWorkloadResources gets a reference to the given CreateVirtualClusterWorkloadResources and assigns it to the WorkloadResources field.
+func (o *CreateVirtualClusterCommand) SetWorkloadResources(v CreateVirtualClusterWorkloadResources) {
+	o.WorkloadResources = &v
 }
 
-// GetCpuLimitRanges returns the CpuLimitRanges field value if set, zero value otherwise.
-func (o *CreateVirtualClusterCommand) GetCpuLimitRanges() CreateVirtualClusterResourceLimitRanges {
-	if o == nil || IsNil(o.CpuLimitRanges) {
-		var ret CreateVirtualClusterResourceLimitRanges
+// GetCpuLimits returns the CpuLimits field value if set, zero value otherwise.
+func (o *CreateVirtualClusterCommand) GetCpuLimits() CreateVirtualClusterResourceLimits {
+	if o == nil || IsNil(o.CpuLimits) {
+		var ret CreateVirtualClusterResourceLimits
 		return ret
 	}
-	return *o.CpuLimitRanges
+	return *o.CpuLimits
 }
 
-// GetCpuLimitRangesOk returns a tuple with the CpuLimitRanges field value if set, nil otherwise
+// GetCpuLimitsOk returns a tuple with the CpuLimits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVirtualClusterCommand) GetCpuLimitRangesOk() (*CreateVirtualClusterResourceLimitRanges, bool) {
-	if o == nil || IsNil(o.CpuLimitRanges) {
+func (o *CreateVirtualClusterCommand) GetCpuLimitsOk() (*CreateVirtualClusterResourceLimits, bool) {
+	if o == nil || IsNil(o.CpuLimits) {
 		return nil, false
 	}
-	return o.CpuLimitRanges, true
+	return o.CpuLimits, true
 }
 
-// HasCpuLimitRanges returns a boolean if a field has been set.
-func (o *CreateVirtualClusterCommand) HasCpuLimitRanges() bool {
-	if o != nil && !IsNil(o.CpuLimitRanges) {
+// HasCpuLimits returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasCpuLimits() bool {
+	if o != nil && !IsNil(o.CpuLimits) {
 		return true
 	}
 
 	return false
 }
 
-// SetCpuLimitRanges gets a reference to the given CreateVirtualClusterResourceLimitRanges and assigns it to the CpuLimitRanges field.
-func (o *CreateVirtualClusterCommand) SetCpuLimitRanges(v CreateVirtualClusterResourceLimitRanges) {
-	o.CpuLimitRanges = &v
+// SetCpuLimits gets a reference to the given CreateVirtualClusterResourceLimits and assigns it to the CpuLimits field.
+func (o *CreateVirtualClusterCommand) SetCpuLimits(v CreateVirtualClusterResourceLimits) {
+	o.CpuLimits = &v
 }
 
-// GetRamLimitRanges returns the RamLimitRanges field value if set, zero value otherwise.
-func (o *CreateVirtualClusterCommand) GetRamLimitRanges() CreateVirtualClusterResourceLimitRanges {
-	if o == nil || IsNil(o.RamLimitRanges) {
-		var ret CreateVirtualClusterResourceLimitRanges
+// GetRamLimits returns the RamLimits field value if set, zero value otherwise.
+func (o *CreateVirtualClusterCommand) GetRamLimits() CreateVirtualClusterResourceLimits {
+	if o == nil || IsNil(o.RamLimits) {
+		var ret CreateVirtualClusterResourceLimits
 		return ret
 	}
-	return *o.RamLimitRanges
+	return *o.RamLimits
 }
 
-// GetRamLimitRangesOk returns a tuple with the RamLimitRanges field value if set, nil otherwise
+// GetRamLimitsOk returns a tuple with the RamLimits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVirtualClusterCommand) GetRamLimitRangesOk() (*CreateVirtualClusterResourceLimitRanges, bool) {
-	if o == nil || IsNil(o.RamLimitRanges) {
+func (o *CreateVirtualClusterCommand) GetRamLimitsOk() (*CreateVirtualClusterResourceLimits, bool) {
+	if o == nil || IsNil(o.RamLimits) {
 		return nil, false
 	}
-	return o.RamLimitRanges, true
+	return o.RamLimits, true
 }
 
-// HasRamLimitRanges returns a boolean if a field has been set.
-func (o *CreateVirtualClusterCommand) HasRamLimitRanges() bool {
-	if o != nil && !IsNil(o.RamLimitRanges) {
+// HasRamLimits returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasRamLimits() bool {
+	if o != nil && !IsNil(o.RamLimits) {
 		return true
 	}
 
 	return false
 }
 
-// SetRamLimitRanges gets a reference to the given CreateVirtualClusterResourceLimitRanges and assigns it to the RamLimitRanges field.
-func (o *CreateVirtualClusterCommand) SetRamLimitRanges(v CreateVirtualClusterResourceLimitRanges) {
-	o.RamLimitRanges = &v
+// SetRamLimits gets a reference to the given CreateVirtualClusterResourceLimits and assigns it to the RamLimits field.
+func (o *CreateVirtualClusterCommand) SetRamLimits(v CreateVirtualClusterResourceLimits) {
+	o.RamLimits = &v
 }
 
-// GetEphemeralStorageLimitRanges returns the EphemeralStorageLimitRanges field value if set, zero value otherwise.
-func (o *CreateVirtualClusterCommand) GetEphemeralStorageLimitRanges() CreateVirtualClusterResourceLimitRanges {
-	if o == nil || IsNil(o.EphemeralStorageLimitRanges) {
-		var ret CreateVirtualClusterResourceLimitRanges
+// GetEphemeralStorageLimits returns the EphemeralStorageLimits field value if set, zero value otherwise.
+func (o *CreateVirtualClusterCommand) GetEphemeralStorageLimits() CreateVirtualClusterResourceLimits {
+	if o == nil || IsNil(o.EphemeralStorageLimits) {
+		var ret CreateVirtualClusterResourceLimits
 		return ret
 	}
-	return *o.EphemeralStorageLimitRanges
+	return *o.EphemeralStorageLimits
 }
 
-// GetEphemeralStorageLimitRangesOk returns a tuple with the EphemeralStorageLimitRanges field value if set, nil otherwise
+// GetEphemeralStorageLimitsOk returns a tuple with the EphemeralStorageLimits field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateVirtualClusterCommand) GetEphemeralStorageLimitRangesOk() (*CreateVirtualClusterResourceLimitRanges, bool) {
-	if o == nil || IsNil(o.EphemeralStorageLimitRanges) {
+func (o *CreateVirtualClusterCommand) GetEphemeralStorageLimitsOk() (*CreateVirtualClusterResourceLimits, bool) {
+	if o == nil || IsNil(o.EphemeralStorageLimits) {
 		return nil, false
 	}
-	return o.EphemeralStorageLimitRanges, true
+	return o.EphemeralStorageLimits, true
 }
 
-// HasEphemeralStorageLimitRanges returns a boolean if a field has been set.
-func (o *CreateVirtualClusterCommand) HasEphemeralStorageLimitRanges() bool {
-	if o != nil && !IsNil(o.EphemeralStorageLimitRanges) {
+// HasEphemeralStorageLimits returns a boolean if a field has been set.
+func (o *CreateVirtualClusterCommand) HasEphemeralStorageLimits() bool {
+	if o != nil && !IsNil(o.EphemeralStorageLimits) {
 		return true
 	}
 
 	return false
 }
 
-// SetEphemeralStorageLimitRanges gets a reference to the given CreateVirtualClusterResourceLimitRanges and assigns it to the EphemeralStorageLimitRanges field.
-func (o *CreateVirtualClusterCommand) SetEphemeralStorageLimitRanges(v CreateVirtualClusterResourceLimitRanges) {
-	o.EphemeralStorageLimitRanges = &v
+// SetEphemeralStorageLimits gets a reference to the given CreateVirtualClusterResourceLimits and assigns it to the EphemeralStorageLimits field.
+func (o *CreateVirtualClusterCommand) SetEphemeralStorageLimits(v CreateVirtualClusterResourceLimits) {
+	o.EphemeralStorageLimits = &v
 }
 
 func (o CreateVirtualClusterCommand) MarshalJSON() ([]byte, error) {
@@ -464,17 +464,17 @@ func (o CreateVirtualClusterCommand) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExposeHostname) {
 		toSerialize["exposeHostname"] = o.ExposeHostname
 	}
-	if !IsNil(o.ResourceQuotas) {
-		toSerialize["resourceQuotas"] = o.ResourceQuotas
+	if !IsNil(o.WorkloadResources) {
+		toSerialize["workloadResources"] = o.WorkloadResources
 	}
-	if !IsNil(o.CpuLimitRanges) {
-		toSerialize["cpuLimitRanges"] = o.CpuLimitRanges
+	if !IsNil(o.CpuLimits) {
+		toSerialize["cpuLimits"] = o.CpuLimits
 	}
-	if !IsNil(o.RamLimitRanges) {
-		toSerialize["ramLimitRanges"] = o.RamLimitRanges
+	if !IsNil(o.RamLimits) {
+		toSerialize["ramLimits"] = o.RamLimits
 	}
-	if !IsNil(o.EphemeralStorageLimitRanges) {
-		toSerialize["ephemeralStorageLimitRanges"] = o.EphemeralStorageLimitRanges
+	if !IsNil(o.EphemeralStorageLimits) {
+		toSerialize["ephemeralStorageLimits"] = o.EphemeralStorageLimits
 	}
 	return toSerialize, nil
 }

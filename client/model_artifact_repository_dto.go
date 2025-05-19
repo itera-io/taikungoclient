@@ -35,6 +35,7 @@ type ArtifactRepositoryDto struct {
 	IsPrivate *bool `json:"isPrivate,omitempty"`
 	IsTaikun bool `json:"isTaikun"`
 	HasCatalogApp bool `json:"hasCatalogApp"`
+	PasswordProtected *bool `json:"passwordProtected,omitempty"`
 }
 
 type _ArtifactRepositoryDto ArtifactRepositoryDto
@@ -392,6 +393,38 @@ func (o *ArtifactRepositoryDto) SetHasCatalogApp(v bool) {
 	o.HasCatalogApp = v
 }
 
+// GetPasswordProtected returns the PasswordProtected field value if set, zero value otherwise.
+func (o *ArtifactRepositoryDto) GetPasswordProtected() bool {
+	if o == nil || IsNil(o.PasswordProtected) {
+		var ret bool
+		return ret
+	}
+	return *o.PasswordProtected
+}
+
+// GetPasswordProtectedOk returns a tuple with the PasswordProtected field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ArtifactRepositoryDto) GetPasswordProtectedOk() (*bool, bool) {
+	if o == nil || IsNil(o.PasswordProtected) {
+		return nil, false
+	}
+	return o.PasswordProtected, true
+}
+
+// HasPasswordProtected returns a boolean if a field has been set.
+func (o *ArtifactRepositoryDto) HasPasswordProtected() bool {
+	if o != nil && !IsNil(o.PasswordProtected) {
+		return true
+	}
+
+	return false
+}
+
+// SetPasswordProtected gets a reference to the given bool and assigns it to the PasswordProtected field.
+func (o *ArtifactRepositoryDto) SetPasswordProtected(v bool) {
+	o.PasswordProtected = &v
+}
+
 func (o ArtifactRepositoryDto) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -417,6 +450,9 @@ func (o ArtifactRepositoryDto) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["isTaikun"] = o.IsTaikun
 	toSerialize["hasCatalogApp"] = o.HasCatalogApp
+	if !IsNil(o.PasswordProtected) {
+		toSerialize["passwordProtected"] = o.PasswordProtected
+	}
 	return toSerialize, nil
 }
 

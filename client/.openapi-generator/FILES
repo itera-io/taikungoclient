@@ -286,6 +286,7 @@ docs/ConsoleScreenshotCommand.md
 docs/ContactUsCommand.md
 docs/CostComponent.md
 docs/CountryListDto.md
+docs/CpuLimitsDto.md
 docs/CrdSearchCommand.md
 docs/CrdSearchList.md
 docs/CreateAccessProfileCommand.md
@@ -329,8 +330,8 @@ docs/CreateTicketCommand.md
 docs/CreateUserCommand.md
 docs/CreateUserGroupCommand.md
 docs/CreateVirtualClusterCommand.md
-docs/CreateVirtualClusterResourceLimitRanges.md
-docs/CreateVirtualClusterResourceQuotas.md
+docs/CreateVirtualClusterResourceLimits.md
+docs/CreateVirtualClusterWorkloadResources.md
 docs/CreateVsphereCommand.md
 docs/CreateVsphereNetworkDto.md
 docs/CreateZadaraCloudCommand.md
@@ -429,13 +430,14 @@ docs/EditSecurityGroupCommand.md
 docs/EditSshUserCommand.md
 docs/EditTicketCommand.md
 docs/EditVirtualClusterQuotasCommand.md
-docs/EditVirtualClusterResourceLimitRanges.md
-docs/EditVirtualClusterResourceQuotas.md
+docs/EditVirtualClusterResourceLimits.md
+docs/EditVirtualClusterWorkloadResources.md
 docs/EmailMode.md
 docs/EnableAutoscalingCommand.md
 docs/EndpointElements.md
 docs/EnsureCodesDownloadedCommand.md
 docs/EnumList.md
+docs/EphemeralStorageLimitsDto.md
 docs/EstimatedInfracost.md
 docs/ExceededQuotaDto.md
 docs/ExceededQuotaList.md
@@ -777,6 +779,7 @@ docs/ProxmoxStorage.md
 docs/PublicImageList.md
 docs/PvcSearchCommand.md
 docs/PvcSearchList.md
+docs/RamLimitsDto.md
 docs/RebootServerCommand.md
 docs/RebootStandAloneVmCommand.md
 docs/RefreshTokenCommand.md
@@ -793,6 +796,7 @@ docs/ResetStandAloneVmStatusCommand.md
 docs/Resource.md
 docs/ResourcePoolListCommand.md
 docs/ResourcePoolSummary.md
+docs/ResourcePresetDto.md
 docs/RestoreBackupCommand.md
 docs/Rule.md
 docs/RuleCreateCommand.md
@@ -933,6 +937,7 @@ docs/UpdatePaymentIdCommand.md
 docs/UpdateProjectAppCommand.md
 docs/UpdateProxmoxCommand.md
 docs/UpdateQuotaCommand.md
+docs/UpdateRepoPasswordCommand.md
 docs/UpdateServerHealthDto.md
 docs/UpdateSlackConfigurationDto.md
 docs/UpdateStageCommand.md
@@ -985,9 +990,7 @@ docs/VirtualClusterEnableAiCommand.md
 docs/VirtualClusterEnableBackupCommand.md
 docs/VirtualClusterEnableMonitoringCommand.md
 docs/VirtualClusterEnableOpaCommand.md
-docs/VirtualClusterQuotaLimitRangeDto.md
-docs/VirtualClusterQuotaPresetsDto.md
-docs/VirtualClusterResourceQuotaPresetsDto.md
+docs/VirtualClusterQuotasDto.md
 docs/VmConsoleScreenshotCommand.md
 docs/VmTemplateListCommand.md
 docs/VsphereCloudCredentialAPI.md
@@ -1004,6 +1007,7 @@ docs/WhiteListDomainCreateCommand.md
 docs/WhiteListDomainCreateDto.md
 docs/WhiteListDomainDeleteCommand.md
 docs/WhiteListDomainDto.md
+docs/WorkloadResourceLimitsDto.md
 docs/YamlValidatorCommand.md
 docs/ZadaraAvailabilityZonesCommand.md
 docs/ZadaraCloudCredentialAPI.md
@@ -1204,6 +1208,7 @@ model_console_screenshot_command.go
 model_contact_us_command.go
 model_cost_component.go
 model_country_list_dto.go
+model_cpu_limits_dto.go
 model_crd_search_command.go
 model_crd_search_list.go
 model_create_access_profile_command.go
@@ -1247,8 +1252,8 @@ model_create_ticket_command.go
 model_create_user_command.go
 model_create_user_group_command.go
 model_create_virtual_cluster_command.go
-model_create_virtual_cluster_resource_limit_ranges.go
-model_create_virtual_cluster_resource_quotas.go
+model_create_virtual_cluster_resource_limits.go
+model_create_virtual_cluster_workload_resources.go
 model_create_vsphere_command.go
 model_create_vsphere_network_dto.go
 model_create_zadara_cloud_command.go
@@ -1345,13 +1350,14 @@ model_edit_security_group_command.go
 model_edit_ssh_user_command.go
 model_edit_ticket_command.go
 model_edit_virtual_cluster_quotas_command.go
-model_edit_virtual_cluster_resource_limit_ranges.go
-model_edit_virtual_cluster_resource_quotas.go
+model_edit_virtual_cluster_resource_limits.go
+model_edit_virtual_cluster_workload_resources.go
 model_email_mode.go
 model_enable_autoscaling_command.go
 model_endpoint_elements.go
 model_ensure_codes_downloaded_command.go
 model_enum_list.go
+model_ephemeral_storage_limits_dto.go
 model_estimated_infracost.go
 model_exceeded_quota_dto.go
 model_exceeded_quota_list.go
@@ -1655,6 +1661,7 @@ model_proxmox_storage.go
 model_public_image_list.go
 model_pvc_search_command.go
 model_pvc_search_list.go
+model_ram_limits_dto.go
 model_reboot_server_command.go
 model_reboot_stand_alone_vm_command.go
 model_refresh_token_command.go
@@ -1671,6 +1678,7 @@ model_reset_stand_alone_vm_status_command.go
 model_resource.go
 model_resource_pool_list_command.go
 model_resource_pool_summary.go
+model_resource_preset_dto.go
 model_restore_backup_command.go
 model_rule.go
 model_rule_create_command.go
@@ -1796,6 +1804,7 @@ model_update_payment_id_command.go
 model_update_project_app_command.go
 model_update_proxmox_command.go
 model_update_quota_command.go
+model_update_repo_password_command.go
 model_update_server_health_dto.go
 model_update_slack_configuration_dto.go
 model_update_stage_command.go
@@ -1843,9 +1852,7 @@ model_virtual_cluster_enable_ai_command.go
 model_virtual_cluster_enable_backup_command.go
 model_virtual_cluster_enable_monitoring_command.go
 model_virtual_cluster_enable_opa_command.go
-model_virtual_cluster_quota_limit_range_dto.go
-model_virtual_cluster_quota_presets_dto.go
-model_virtual_cluster_resource_quota_presets_dto.go
+model_virtual_cluster_quotas_dto.go
 model_vm_console_screenshot_command.go
 model_vm_template_list_command.go
 model_vsphere_flavor_data.go
@@ -1861,6 +1868,7 @@ model_white_list_domain_create_command.go
 model_white_list_domain_create_dto.go
 model_white_list_domain_delete_command.go
 model_white_list_domain_dto.go
+model_workload_resource_limits_dto.go
 model_yaml_validator_command.go
 model_zadara_availability_zones_command.go
 model_zadara_credential_list.go
